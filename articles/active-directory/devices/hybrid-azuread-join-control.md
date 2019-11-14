@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809228"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073616"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
 
@@ -33,7 +33,7 @@ Aby bylo možné provádět řízené ověřování služby Azure AD JOIN v sou�
 1. Vymažte položku bodu připojení služby (SCP) ze služby Active Directory (AD), pokud existuje.
 1. Konfigurace nastavení registru na straně klienta pro spojovací bod služby na počítačích připojených k doméně pomocí objektu Zásady skupiny (GPO)
 1. Pokud používáte AD FS, musíte taky nakonfigurovat nastavení registru na straně klienta pro spojovací bod služby na serveru AD FS pomocí objektu zásad skupiny.  
-
+1. Je také možné, že budete muset [přizpůsobit možnosti synchronizace](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect) v Azure AD Connect, aby bylo možné povolit synchronizaci zařízení. 
 
 
 ### <a name="clear-the-scp-from-ad"></a>Vymazání spojovacího bodu služby ve službě AD
@@ -82,7 +82,7 @@ Pomocí následujícího příkladu vytvořte objekt Zásady skupiny (GPO), kter
 Pokud používáte AD FS, musíte nejprve nakonfigurovat spojovací bod služby na straně klienta pomocí výše uvedených pokynů, ale propojování objektu zásad skupiny se servery AD FS. Objekt spojovacího bodu služby definuje zdroj autority pro objekty zařízení. Může to být místní nebo Azure AD. Pokud je tato konfigurace nakonfigurovaná pro AD FS, je zdroj pro objekty zařízení vytvořený jako Azure AD.
 
 > [!NOTE]
-> Pokud se nezdařila konfigurace spojovacího bodu služby na serverech AD FS, považuje se zdroj identit zařízení za místní, a pokud máte zpětný zápis zařízení, AD FS by začal odstraňovat objekty zařízení z místního registrovaného kontejneru zařízení po stanovenou dobu.
+> Pokud se nezdařila konfigurace spojovacího bodu služby klienta na serverech AD FS, bude zdroj pro identity zařízení považován za místní. Služba AD FS pak začne odstraňovat objekty zařízení z místního adresáře po stanoveném období definovaném v atributu registrace zařízení ADFS "MaximumInactiveDays". Objekty registrace zařízení ADFS najdete pomocí [rutiny Get-AdfsDeviceRegistration](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Řízené ověřování připojení k hybridní službě Azure AD na zařízeních nižší úrovně Windows
 

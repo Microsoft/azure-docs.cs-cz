@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření virtuálních počítačů, na kterých běží SQL, IIS, .NET Stack v Azure | Microsoft Docs
+title: Kurz – vytvoření virtuálních počítačů, na kterých běží SQL, IIS a .NET Stack v Azure
 description: V tomto kurzu zjistíte, jak na virtuální počítač s Windows v Azure nainstalovat stack SQL Azure, služby IIS a .NET.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8b2cf6f5475966426ee75cf73ce7bd84abc9ba42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 286d00ce718a34dea15a075984cc3b2a5e4cfec3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101613"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064663"
 ---
-# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Kurz: Instalace sady SQL, IIS a .NET Stack na virtuálním počítači s Windows pomocí Azure PowerShell
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Kurz: instalace sady SQL, IIS, .NET Stack na virtuálním počítači s Windows pomocí Azure PowerShell
 
 V tomto kurzu nainstalujeme sadu SQL, IIS a .NET Stack pomocí Azure PowerShell. Tento stack se skládá ze dvou virtuálních počítačů s Windows Serverem 2016. Na jednom je služba IIS a .NET a na druhém SQL Server.
 
@@ -127,7 +127,7 @@ Set-AzVMSqlServerExtension `
    -Location "EastUS"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nainstalovali stack SQL&#92;IIS&#92;.NET pomocí Azure PowerShellu. Naučili jste se tyto postupy:
 

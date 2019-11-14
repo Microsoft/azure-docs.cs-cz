@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Získání výsledků automatických návrhů pomocí rozhraní API pro automatické návrhy Bingu'
+title: 'Kurz: získání výsledků automatických návrhů pomocí rozhraní API pro automatické návrhy Bingu'
 titleSuffix: Azure Cognitive Services
-description: Ukazuje, jak používat Automatické návrhy Bingu.
+description: V tomto kurzu vytvoříte webovou stránku, která uživatelům umožní zadat dotaz na rozhraní API pro automatické návrhy Bingu a zobrazí výsledky dotazu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: d208187b7ba61fc0d217cef05a1bda559ca0c42b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996789"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072842"
 ---
-# <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Kurz: Získat návrhy hledání na webové stránce
+# <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Kurz: získání návrhů vyhledávání na webové stránce
 
 V tomto kurzu vytvoříme webovou stránku, která umožňuje uživatelům zadávat dotazy do rozhraní API pro automatické návrhy Bingu.
 
@@ -29,7 +29,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro automatické návrhy Bingu. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
+Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro automatické návrhy Bingu. Pokud ho nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
 
 ## <a name="create-a-new-web-page"></a>Vytvoření nové webové stránky
 
@@ -66,7 +66,7 @@ Přidejte informace hlavičky HTML a začněte oddíl script tak, jak vidíte na
 
 ## <a name="getsubscriptionkey-function"></a>Funkce getSubscriptionKey
 
-Funkce getSubscriptionKey vrací klíč rozhraní API pro automatické návrhy Bingu. Buď ho získá z místního úložiště (t.j. souboru cookie), nebo v případě potřeby vyzve uživatele k jeho zadání.
+Funkce getSubscriptionKey vrací klíč rozhraní API pro automatické návrhy Bingu. Buď ho získá z místního úložiště (tj. ze souboru cookie), nebo v případě potřeby vyzve uživatele k jeho zadání.
 
 Začněte s funkcí getSubscriptionKey a deklarujte název souboru cookie následujícím způsobem.
 
@@ -118,7 +118,7 @@ Podpůrná funkce getSubscriptionKeyLocalStorage se nejprve pokusí načíst kl�
     }
 ```
 
-Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate**. Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API pro automatické návrhy Bingu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API pro automatické návrhy Bingu.
+Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API pro automatické návrhy Bingu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API pro automatické návrhy Bingu.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -349,7 +349,7 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Požadavky na použití a zobrazení](../UseAndDisplayRequirements.md)

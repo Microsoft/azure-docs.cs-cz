@@ -3,12 +3,12 @@ title: Ukázky dotazů pro začátečníky
 description: Pomocí Azure Resource graphu můžete spouštět některé úvodní dotazy, včetně počítání prostředků, řazení prostředků nebo konkrétní značky.
 ms.date: 10/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: f98ef101b53af4f595d31670d2af5aee66170487
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ca7fc2ba3e952f93f85c677eb8a8a7322901c7d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958626"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076116"
 ---
 # <a name="starter-resource-graph-queries"></a>Úvodní dotazy na Resource Graph
 
@@ -250,7 +250,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ---
 
 > [!NOTE]
-> Uvědomte si, že zatímco `=~` umožňuje nerozlišovat malá a velká písmena, použití vlastností (jako například **properties.storageProfile.osDisk.osType**) v dotazu vyžaduje rozlišování malých a velkých písmen. Jestliže je vlastnost nesprávná velikost písmen, stále může hodnotu vrátit, ale seskupení nebo shrnutí nebude správné.
+> Uvědomte si, že zatímco `=~` umožňuje nerozlišovat malá a velká písmena, použití vlastností (jako například **properties.storageProfile.osDisk.osType**) v dotazu vyžaduje rozlišování malých a velkých písmen. Pokud je vlastnost nesprávného případu, je vrácena hodnota null nebo nesprávná hodnota a seskupení nebo sumarizace by byly nesprávné.
 
 ## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a><a name="show-storage" />zobrazit prostředky, které obsahují úložiště
 

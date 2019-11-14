@@ -1,7 +1,7 @@
 ---
 title: Hledání vlastního zobrazení – Vlastní vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: V této části najdete popis postupu při hledání vlastního zobrazení webu.
+description: Po nakonfigurování vlastního vyhledávacího prostředí ho můžete otestovat na portálu Vlastní vyhledávání Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 814f57d4011823da80e53cce41ffcb523fc0bf1b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404998"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072744"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání instance Vlastní vyhledávání Bingu z portálu
 
@@ -26,7 +26,7 @@ Po nakonfigurování vlastního vyhledávacího prostředí ho můžete otestova
 
 Po přihlášení k [portálu](https://customsearch.ai)vlastní vyhledávání Bingu vyberte svou instanci hledání a klikněte na kartu **Výroba** . V části **koncové body**vyberte koncový bod rozhraní API (například webové rozhraní API). Vaše předplatné určuje, jaké koncové body se zobrazí.
 
-Vyhledávací dotaz vytvoříte zadáním hodnot parametrů pro koncový bod. Všimněte si, že parametry zobrazené na portálu se můžou měnit v závislosti na koncovém bodu, který zvolíte. Další informace najdete v referenčních informacích k [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) . Chcete-li změnit předplatné, které vaše instance vyhledávání používá, přidejte příslušný klíč předplatného a aktualizujte příslušné parametry trhu nebo jazyka.
+Vyhledávací dotaz vytvoříte zadáním hodnot parametrů pro koncový bod. Všimněte si, že parametry zobrazené na portálu se můžou měnit v závislosti na koncovém bodu, který zvolíte. Další informace najdete v [referenčních](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) informacích k rozhraní API pro vlastní vyhledávání. Chcete-li změnit předplatné, které vaše instance vyhledávání používá, přidejte příslušný klíč předplatného a aktualizujte příslušné parametry trhu nebo jazyka.
 
 Níže jsou uvedeny některé důležité parametry:
 
@@ -44,8 +44,8 @@ Kliknutím na **Další parametry** se odhalí následující parametry:
 |---------|---------|
 |Safe Search     | Filtr použitý k filtrování webových stránek pro obsah určený pro dospělé K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní.        |
 |Jazyk uživatelského rozhraní    | Jazyk používaný pro řetězce uživatelského rozhraní. Pokud například povolíte image a videa v hostovaném uživatelském rozhraní, na kartách **Obrázek** a **video** se použije zadaný jazyk.        |
-|Count     | Počet výsledků hledání, které se mají vrátit v odpovědi K dispozici pouze pro koncové body webu, obrázku a videa.         |
-|Offset    | Počet výsledků hledání, které se mají přeskočit před vrácením výsledků K dispozici pouze pro koncové body webu, obrázku a videa.        |
+|Počet     | Počet výsledků hledání, které se mají vrátit v odpovědi K dispozici pouze pro koncové body webu, obrázku a videa.         |
+|Posun    | Počet výsledků hledání, které se mají přeskočit před vrácením výsledků K dispozici pouze pro koncové body webu, obrázku a videa.        |
     
 Po zadání všech požadovaných možností klikněte na **zavolat** , aby se zobrazila odpověď JSON v pravém podokně. Pokud vyberete koncový bod hostovaného uživatelského rozhraní, můžete otestovat možnosti vyhledávání v dolním podokně.
 
@@ -53,7 +53,7 @@ Po zadání všech požadovaných možností klikněte na **zavolat** , aby se z
 
 Předplatné přidružené k vaší instanci Vlastní vyhledávání Bingu můžete změnit bez vytvoření nové instance. Pokud chcete, aby se volání rozhraní API poslala a vyrovnala novému předplatnému, vytvořte v Azure Portal nový prostředek Vlastní vyhledávání Bingu. Použijte nový klíč předplatného v požadavcích rozhraní API spolu s ID vlastní konfigurace vaší instance.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zavolejte vlastní zobrazení pomocíC#](./call-endpoint-csharp.md)
 - [Volání vlastního zobrazení pomocí Java](./call-endpoint-java.md)

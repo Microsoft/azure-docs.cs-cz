@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 800acb622a54ae922300d4c1b188f7ec19f5a95f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969237"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074251"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Správa záloh virtuálních počítačů Azure pomocí služby Azure Backup
 
@@ -34,8 +34,8 @@ Zálohy můžete spravovat pomocí řídicího panelu a přechodem k jednotlivý
 
 Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
-2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Recovery Services**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **úložiště Recovery Services**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Služby zotavení**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **úložiště Recovery Services**.
 
     ![Vytvoření trezoru Služeb zotavení](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
@@ -60,7 +60,7 @@ Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
 Správa zásad zálohování:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
 2. Na dlaždici **zálohované položky** vyberte **Azure Virtual Machines**.
 
     ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/contoso-vault-1606.png)
@@ -167,9 +167,9 @@ Existují dva způsoby, jak odstranit data zálohy virtuálního počítače:
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Zálohovaná položka, ve které už primární zdroj dat neexistuje
 
-* Pokud jsou virtuální počítače Azure nakonfigurované pro službu Azure Backup buď odstraněny, nebo přesunuty bez zastavení ochrany, pak úlohy zálohování naplánované zálohovací úlohy i na vyžádání (ad-hoc) selžou s chybou UserErrorVmNotFoundV2. Předběžná kontroly zálohování se budou zobrazovat jako kritická jenom pro nezdařené úlohy zálohování ad hoc (naplánované úlohy, které selhaly, se nezobrazují).
+* Pokud jsou virtuální počítače Azure nakonfigurované pro službu Azure Backup buď odstraněny, nebo přesunuty bez zastavení ochrany, pak úlohy zálohování naplánované zálohovací úlohy i na vyžádání (ad-hoc) selžou s chybou UserErrorVmNotFoundV2. Předběžná kontroly zálohování se budou zobrazovat jako kritická jenom pro nezdařené úlohy zálohování na vyžádání (naplánované úlohy, které selhaly, se nezobrazují).
 * Tyto zálohované položky zůstávají aktivní v systému, který dodržuje zásady zálohování a uchovávání dat nastavené uživatelem. Zálohovaná data pro tyto virtuální počítače Azure se budou uchovávat podle zásad uchovávání informací. Body obnovení s vypršenou platností (s výjimkou posledního bodu obnovení) se vyčistí podle rozsahu uchování nastaveného v zásadách zálohování.
-* Uživatelům se doporučuje odstranit zálohované položky, kde primární zdroj dat už neexistuje, abyste se vyhnuli dalším poplatkům, pokud se zálohovaná položka/data pro prostředky Delete už nevyžadují, protože poslední bod obnovení je trvale zachované a uživatel se účtuje jako podle příslušných cen za zálohování.
+* Uživatelům se doporučuje odstranit zálohované položky, ve kterých primární zdroj dat už neexistuje, abyste se vyhnuli jakýmkoli dodatečným poplatkům, pokud se zálohovaná položka/data pro odstranit prostředky už nevyžadují, protože poslední bod obnovení je trvale zachované a uživatel se účtuje podle platných cen za zálohování.
 
 ## <a name="next-steps"></a>Další kroky
 

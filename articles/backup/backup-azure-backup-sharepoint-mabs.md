@@ -8,58 +8,69 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: bdf0f64bf24f77d54a8fed8714a0cc7c3de814b1
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a9a72a9b9df18462c1a4dfe470c7c7393cf356d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210470"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074288"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Zálohování farmy služby SharePoint do Azure pomocí MABS
+
 Můžete zálohovat farmu služby SharePoint a Microsoft Azure pomocí Microsoft Azure Backup serveru (MABS), a to podobně jako při zálohování jiných zdrojů dat. Azure Backup poskytuje flexibilitu v plánu zálohování k vytvoření denních, týdenních, měsíčních nebo ročních záložních bodů a poskytuje možnosti zásad uchovávání pro různé body zálohování. Poskytuje taky možnost ukládat kopie místních disků pro cíle rychlého obnovení (RTO) a ukládat kopie do Azure pro účely ekonomického a dlouhodobého uchovávání.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Podporované verze SharePointu a související scénáře ochrany
+
 Azure Backup pro DPM podporuje následující scénáře:
 
 | Úloha | Version | Nasazení služby SharePoint | Ochrana a obnovení |
 | --- | --- | --- | --- |
-| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |SharePoint nasazený jako fyzický server nebo virtuální počítač s technologií Hyper-V nebo VMware <br> -------------- <br> SQL AlwaysOn | Chránit možnosti obnovení farmy služby SharePoint: Z bodů obnovení z disku se nachází farma, databáze a soubor nebo položka seznamu pro obnovení.  Farma a obnovení databáze z bodů obnovení Azure. |
+| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |SharePoint nasazený jako fyzický server nebo virtuální počítač s technologií Hyper-V nebo VMware <br> -------------- <br> SQL AlwaysOn | Ochrana možností obnovení farmy služby SharePoint: farma, databáze a soubor nebo položka seznamu z bodů obnovení disku.  Farma a obnovení databáze z bodů obnovení Azure. |
 
 ## <a name="before-you-start"></a>Než začnete
+
 Před zálohováním farmy služby SharePoint do Azure je třeba potvrdit několik věcí.
 
 ### <a name="prerequisites"></a>Požadavky
+
 Než budete pokračovat, ujistěte se, že jste [nainstalovali a připravili Azure Backup Server](backup-azure-microsoft-azure-backup.md) pro ochranu úloh.
 
 ### <a name="protection-agent"></a>Agent ochrany
+
 Agent Azure Backup musí být nainstalován na serveru, na kterém je spuštěna služba SharePoint, na serverech se systémem SQL Server a na všech ostatních serverech, které jsou součástí farmy služby SharePoint. Další informace o tom, jak nastavit agenta ochrany, najdete v tématu [instalace agenta ochrany](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedinou výjimkou je, že agenta nainstalujete jenom na jeden server s webovým front-end (WFE). Azure Backup Server vyžaduje, aby byl agent na jednom WFE serveru sloužit jenom jako vstupní bod pro ochranu.
 
 ### <a name="sharepoint-farm"></a>Farmy služby SharePoint
+
 Pro každý 10 000 000 položek ve farmě musí být na svazku, kde se nachází složka MABS, aspoň 2 GB místa. Toto místo se vyžaduje pro generování katalogu. Aby MABS obnovil konkrétní položky (kolekce webů, weby, seznamy, knihovny dokumentů, složky, jednotlivé dokumenty a položky seznamu), generování katalogu vytvoří seznam adres URL, které jsou obsaženy v jednotlivých databázích obsahu. Seznam adres URL můžete zobrazit v podokně obnovitelné položky v oblasti úlohy obnovení v konzole **pro** správu MABS.
 
 ### <a name="sql-server"></a>SQL Server
+
 Azure Backup Server spouští jako účet LocalSystem. Pro zálohování SQL Server databází potřebuje MABS oprávnění správce systému pro tento účet pro server, na kterém běží SQL Server. Před zálohováním nastavte NT AUTHORITY\SYSTEM na *sysadmin* na serveru, na kterém běží SQL Server.
 
 Pokud má farma služby SharePoint SQL Server databáze nakonfigurované s aliasy SQL Server, nainstalujte SQL Server součásti klienta na front-end webovém serveru, který MABS bude chránit.
 
 ### <a name="sharepoint-server"></a>SharePoint Server
+
 I když výkon závisí na mnoha faktorech, jako je třeba velikost farmy služby SharePoint, protože obecné pokyny One MABS mohou chránit 25 TB farmy služby SharePoint.
 
 ### <a name="whats-not-supported"></a>Co není podporováno
+
 * MABS, který chrání farmu služby SharePoint, nechrání vyhledávací indexy ani databáze služby Application Service. Ochranu těchto databází bude nutné nakonfigurovat samostatně.
 * MABS neposkytuje zálohu databází SharePoint SQL Server hostovaných ve sdílených složkách souborového serveru se škálováním na více systému (SOFS).
 
 ## <a name="configure-sharepoint-protection"></a>Konfigurace ochrany SharePointu
+
 Než budete moct použít MABS k ochraně SharePointu, musíte nakonfigurovat službu SharePoint VSS Writer (WSS Writer Service) pomocí **ConfigureSharePoint. exe**.
 
 **ConfigureSharePoint. exe** najdete na front-end webovém serveru ve složce [Instalační cesta nástroje MABS]. Tento nástroj poskytuje agentovi ochrany pověření pro farmu služby SharePoint. Spouštíte ji na jednom serveru WFE. Pokud máte více serverů WFE, při konfiguraci skupiny ochrany vyberte jenom jednu.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>Konfigurace služby SharePoint VSS Writer
+
 1. Na serveru WFE, na příkazovém řádku, přejít na [umístění instalace MABS] \Bin\
 2. Zadejte ConfigureSharePoint-EnableSharePointProtection.
 3. Zadejte přihlašovací údaje správce farmy. Tento účet by měl být členem místní skupiny správců na serveru WFE. Pokud správce farmy není místní správce, udělte na serveru WFE tato oprávnění:
-   * Udělte skupině WSS_Admin_WPG úplné řízení ke složce aplikace DPM (% Program Files%\Microsoft Azure Backup\DPM).
-   * Udělte skupině WSS_Admin_WPG přístup pro čtení ke klíči registru DPM (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager).
+   * Udělte skupině WSS_Admin_WPG úplné řízení ke složce DPM (% Program Files%\Microsoft Azure Backup\DPM).
+   * Udělte skupině WSS_Admin_WPG oprávnění ke čtení klíče registru DPM (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
 > [!NOTE]
 > Pokud dojde ke změně přihlašovacích údajů správce farmy služby SharePoint, budete muset znovu spustit ConfigureSharePoint. exe.
@@ -67,11 +78,13 @@ Než budete moct použít MABS k ochraně SharePointu, musíte nakonfigurovat sl
 >
 
 ## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>Zálohování farmy služby SharePoint pomocí MABS
+
 Až nakonfigurujete MABS a farmu služby SharePoint, jak je vysvětleno dříve, SharePoint může být chráněn pomocí MABS.
 
 ### <a name="to-protect-a-sharepoint-farm"></a>Ochrana farmy služby SharePoint
+
 1. Na kartě **ochrana** v konzole pro správu MABS klikněte na **Nový**.
-    ![Nová karta ochrana](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
+    ](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png) kartu ![nové ochrany
 2. Na stránce **Vybrat typ skupiny ochrany** v průvodci **vytvořením nové skupiny ochrany** vyberte **servery**a potom klikněte na **Další**.
 
     ![Vybrat typ skupiny ochrany](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
@@ -138,6 +151,7 @@ Až nakonfigurujete MABS a farmu služby SharePoint, jak je vysvětleno dříve,
     ![Souhrn](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Obnovení položky SharePointu z disku pomocí MABS
+
 V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstraněno a je třeba je obnovit.
 ![MABS SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
@@ -199,6 +213,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
     >
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Obnovení databáze služby SharePoint z Azure pomocí DPM
+
 1. Chcete-li obnovit databázi obsahu služby SharePoint, procházejte různými body obnovení (jak je uvedeno dříve) a vyberte bod obnovení, který chcete obnovit.
 
     ![MABS SharePoint Protection8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
@@ -212,7 +227,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
 
     ![MABS SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
-    Otevře se okno stav **opětovného zařazení do katalogu** v cloudu.
+    Otevře se okno stav **opětovného zařazení do katalogu v cloudu** .
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 

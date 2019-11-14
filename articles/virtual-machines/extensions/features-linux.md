@@ -1,5 +1,5 @@
 ---
-title: Rozšíření a funkce virtuálních počítačů Azure pro Linux | Microsoft Docs
+title: Rozšíření a funkce virtuálních počítačů Azure pro Linux
 description: Zjistěte, jaká rozšíření jsou k dispozici pro virtuální počítače Azure seskupená podle toho, co poskytují nebo zlepšují.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: f66ec2ea9d0c042b698db1725980e981a27a55d0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169010"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073751"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -85,7 +85,7 @@ Pomocí následujících metod lze spustit rozšíření pro existující virtu�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Rozšíření virtuálních počítačů Azure je možné spustit s existujícím virtuálním počítačem pomocí příkazu [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) . Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*. Nahraďte ukázkový název skupiny prostředků, název virtuálního počítače a skript, který se má\/spustit (https:/RAW.githubusercontent.com/me/Project/Hello.sh), s vašimi vlastními informacemi. 
+Rozšíření virtuálních počítačů Azure je možné spustit s existujícím virtuálním počítačem pomocí příkazu [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) . Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*. Nahraďte ukázkový název skupiny prostředků, název virtuálního počítače a skript, který se má spustit (https:\//raw.githubusercontent.com/me/project/hello.sh), vlastními informacemi. 
 
 ```azurecli
 az vm extension set `
@@ -241,7 +241,7 @@ Při instalaci agenta se vytvoří nadřazený démon. Tato nadřazená položka
 
 Nadřazený proces nelze automaticky aktualizovat. Nadřazenou položku lze aktualizovat pouze pomocí aktualizace balíčku distribuce.
 
-Pokud chcete zjistit, jakou verzi máte spuštěnou, `waagent` Podívejte se na následující:
+Pokud chcete zjistit, jakou verzi používáte, podívejte se `waagent` následujícím způsobem:
 
 ```bash
 waagent --version
@@ -336,7 +336,7 @@ Následující kroky pro řešení potíží se vztahují na všechna rozšíře
 
 1. Pokud chcete zkontrolovat protokol agenta pro Linux, podívejte se na aktivitu při zřizování rozšíření v */var/log/waagent.log* .
 
-2. Další podrobnosti najdete v protokolech *\<rozšíření/var/log/Azure/>*
+2. Další podrobnosti najdete v protokolech */var/log/azure/\<rozšíření >*
 
 3. Podívejte se na oddíly řešení potíží v dokumentaci ke konkrétnímu rozšíření pro kódy chyb, známé problémy atd.
 

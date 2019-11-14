@@ -1,7 +1,7 @@
 ---
 title: Pravidla přepisu na základě popisku – služba řeči
 titleSuffix: Azure Cognitive Services
-description: Pokud chcete zlepšit přesnost rozpoznávání, zejména problémy, které jsou způsobeny odstraněním nebo nesprávným nahrazením slov, budete chtít použít přepisy, které jsou pro vaše zvuková data k popisku. Co jsou Přepisy na základě popisku? To je snadné – jedná se o slovo do Wordu, doslovného přepisu zvukového souboru.
+description: Chcete-li zlepšit přesnost rozpoznávání řeči, například pokud jsou slova odstraněna nebo nesprávně nahrazena, můžete společně se zvukovými daty použít přepisy. Přepisy na základě popisku jsou slova na základě slova, doslovného přepisu zvukového souboru.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: e629152372dae0b03386f76fd5506ae901dff12f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 1eeb2e7ccf5c365fedd02a8de4c6b442dd3d5bc8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802473"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075818"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit přepisy s lidským popiskem
 
@@ -30,7 +30,7 @@ Přepisy v angličtině pro angličtinu musí být zadány jako prostý text, a 
 Tady je pár příkladů:
 
 | Znaky, které se mají zabránit | Nahrazení | Poznámky |
-|---------------------|--------------|-------|
+| ------------------- | ------------ | ----- |
 | Hello World | Hello World | Levé a pravé uvozovky se nahradily odpovídajícími znaky ASCII. |
 | Den Jan | Den Jan | Apostrof byl nahrazen příslušným znakem ASCII. |
 | to bylo dobré – ne, bylo skvělé! | je dobrá – ne, bylo skvělé! | Em pomlčka byla nahrazena dvěma pomlčkami. |
@@ -39,44 +39,44 @@ Tady je pár příkladů:
 
 Normalizace textu je transformace slov do konzistentního formátu, který se používá při výuce modelu. Některá pravidla normalizace se aplikují na text automaticky, doporučujeme ale tyto pokyny použít při přípravě dat přepisu na základě popisku:
 
-* Vypište zkratky v slovech.
-* Vypište nestandardní číselné řetězce v slovech (například účetní termíny).
-* Neabecední znaky nebo smíšené alfanumerické znaky by měly být přepisu jako vyslovované.
-* Zkratky, které jsou vyslovované jako slova, by se neměly upravovat (například "paprsky", "Laser", "RAM" nebo "NATO").
-* Odpište zkratky, které jsou vyslovované jako samostatná písmena s každým písmenem oddělené mezerou.
+- Vypište zkratky v slovech.
+- Vypište nestandardní číselné řetězce v slovech (například účetní termíny).
+- Neabecední znaky nebo smíšené alfanumerické znaky by měly být přepisu jako vyslovované.
+- Zkratky, které jsou vyslovované jako slova, by se neměly upravovat (například "paprsky", "Laser", "RAM" nebo "NATO").
+- Odpište zkratky, které jsou vyslovované jako samostatná písmena s každým písmenem oddělené mezerou.
 
 Tady je několik příkladů normalizace, které byste měli provést na přepisu:
 
-| Původní text | Text po normalizaci |
-|---------------|--------------------------|
-| Dr. Banner Bruce | Bruce banner pro lékaře |
-| Jan dluhopis, 007 | Jan dluhopis, dvojitý Oh 7 |
-| Ke$ha | Kesha |
-| Jak dlouho je 2x4 | Jak dlouho jsou dva čtyři |
+| Původní text               | Text po normalizaci              |
+| --------------------------- | ------------------------------------- |
+| Banner Dr. Bruce            | Bruce banner pro lékaře                   |
+| Jan dluhopis, 007             | Jan dluhopis, dvojitý Oh 7           |
+| Ke$ha                       | Kesha                                 |
+| Jak dlouho je 2x4         | Jak dlouho jsou dva čtyři           |
 | Schůzka směřuje z 1 – 3pm | Schůzka bude směrována z jedné na tři odpoledne. |
-| Moje krevní typ je O + | Můj typ krevního typu je O kladné |
-| Voda je H20 | Voda je H 2 O |
-| Hraní OU812 po Van Halen | Přehrát O U 8 1 2 od Van Halen |
-| UTF-8 s BOM | U T F 8 pomocí kusovníku |
+| Moje krevní typ je O +         | Můj typ krevního typu je O kladné           |
+| Voda je H20                | Voda je H 2 O                        |
+| Hraní OU812 po Van Halen     | Přehrát O U 8 1 2 od Van Halen           |
+| UTF-8 s BOM              | U T F 8 pomocí kusovníku                      |
 
 Následující pravidla normalizace se automaticky aplikují na Přepisy:
 
-* Používejte malá písmena.
-* Odebrat všechna interpunkční znaménka s výjimkou apostrofů v rámci slov.
-* Rozbalí čísla do slov nebo mluveného formuláře, jako jsou třeba částky dolaru.
+- Používejte malá písmena.
+- Odebrat všechna interpunkční znaménka s výjimkou apostrofů v rámci slov.
+- Rozbalí čísla do slov nebo mluveného formuláře, jako jsou třeba částky dolaru.
 
 Tady je několik příkladů normalizace, které se automaticky provedou na přepisu:
 
-| Původní text | Text po normalizaci |
-|---------------|--------------------------|
-| "Svatý kráva" zmíněné Batman. | Svatý kráva, na kterou se říká Batman |
+| Původní text                          | Text po normalizaci          |
+| -------------------------------------- | --------------------------------- |
+| "Svatý kráva" zmíněné Batman.               | Svatý kráva, na kterou se říká Batman              |
 | "Co?" v tomto Batman je to Sidekick, Robin. | Co říká dotaz na Batman – Sidekick |
-| Získat – em! | získat em |
-| Já jsem se zdvojnásobil | Jsem se zdvojnásobil |
-| 104 Elm Street | ELM ulice 1 0 4 |
-| Vylaďte 102,7 | vyladit až 1 0 2 bodů 7 |
-| Pi má přibližně 3,14 | Pi má přibližně tři body 1 4 |
-Náklady na IT $3,14| náklady na IT 3 14 |
+| Získat – em!                            | získat em                         |
+| Já jsem se zdvojnásobil                     | Jsem se zdvojnásobil                |
+| 104 Elm Street                         | ELM ulice 1 0 4            |
+| Vylaďte 102,7                          | vyladit až 1 0 2 bodů 7    |
+| Pi má přibližně 3,14                       | Pi má přibližně tři body 1 4  |
+| Náklady na IT \$3,14                        | náklady na IT 3 14           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Mandarin čínština (zh-CN)
 
@@ -84,43 +84,43 @@ Přepisy na základě popisku pro formát mandarinek pro lidskou čínštinu mus
 
 Tady je pár příkladů:
 
-| Znaky, které se mají zabránit | Nahrazení | Poznámky |
-|---------------------|--------------|-------|
+| Znaky, které se mají zabránit | Nahrazení   | Poznámky |
+| ------------------- | -------------- | ----- |
 | "你好" | "你好" | Úvodní a koncové uvozovky byly nahrazeny příslušnými znaky. |
-| 需要什么帮助? | 需要什么帮助？ | Otazník byl nahrazen vhodným znakem. |
+| 需要什么帮助? | 需要什么帮助？| Otazník byl nahrazen vhodným znakem. |
 
 ### <a name="text-normalization-for-mandarin-chinese"></a>Normalizace textu u Mandarinie v čínštině
 
 Normalizace textu je transformace slov do konzistentního formátu, který se používá při výuce modelu. Některá pravidla normalizace se aplikují na text automaticky, doporučujeme ale tyto pokyny použít při přípravě dat přepisu na základě popisku:
 
-* Vypište zkratky v slovech.
-* Vypište číselné řetězce v mluvené formě.
+- Vypište zkratky v slovech.
+- Vypište číselné řetězce v mluvené formě.
 
 Tady je několik příkladů normalizace, které byste měli provést na přepisu:
 
 | Původní text | Text po normalizaci |
-|---------------|--------------------------|
-| 我今年21 | 我今年二十一 |
-| 3号楼504 | 三号 楼 五 零 四 |
+| ------------- | ------------------------ |
+| 我今年 21 | 我今年二十一 |
+| 3 号楼 504 | 三号 楼 五 零 四 |
 
 Následující pravidla normalizace se automaticky aplikují na Přepisy:
 
-* Odebrat všechna interpunkční znaménka
-* Rozbalit čísla do mluveného formuláře
-* Převést písmena s plnou šířkou na písmena s poloviční šířkou
-* Použití velkých písmen pro všechna anglická slova
+- Odebrat všechna interpunkční znaménka
+- Rozbalit čísla do mluveného formuláře
+- Převést písmena s plnou šířkou na písmena s poloviční šířkou
+- Použití velkých písmen pro všechna anglická slova
 
 Tady je několik příkladů normalizace, které se automaticky provedou na přepisu:
 
 | Původní text | Text po normalizaci |
-|---------------|--------------------------|
+| ------------- | ------------------------ |
 | 3,1415 | 三 点 一 四 一 五 |
 | ¥3,5 | 三 元 五 角 |
-| w f y z |W F Y Z |
+| w f y z | W F Y Z |
 | 1992 年 8 月 8 日 | 一 九 九 二 年 八 月 八 日 |
 | 你吃饭了吗? | 你 吃饭 了 吗 |
-| 下午5:00的航班 | 下午 五点 的 航班 |
-| 我今年21岁 | 我 今年 二十 一 岁 |
+| 下午 5:00 的航班 | 下午 五点 的 航班 |
+| 我今年 21 岁 | 我 今年 二十 一 岁 |
 
 ## <a name="german-de-de-and-other-languages"></a>Němčina (de-DE) a další jazyky
 
@@ -130,42 +130,42 @@ Přepisy pro německý zvuk (a jiné jazyky jiné než anglické nebo Mandarine)
 
 Normalizace textu je transformace slov do konzistentního formátu, který se používá při výuce modelu. Některá pravidla normalizace se aplikují na text automaticky, doporučujeme ale tyto pokyny použít při přípravě dat přepisu na základě popisku:
 
-*   Zápis desetinných míst jako "," a nikoli ".".
-*   Oddělovače času zápisu jako ":", nikoli "." (například: 12:00 Uhr).
-*   Zkratky jako "CA". nejsou nahrazeny. Doporučujeme, abyste použili úplný mluvený formulář.
-*   Čtyři hlavní matematické operátory (+,-, \*a/) se odeberou. Doporučujeme, abyste je nahradili pomocí vytvořeného formuláře: "plus", "mínus" "," "", "" "
-*   Operátory porovnání jsou odebrány (=, < a >). Doporučujeme, abyste je nahradili "Gleich", "Kleiner ALS" a "grösser ALS".
-*   Zapište zlomky, například 3/4, v písemné podobě (například "Drei Viertel" namísto 3/4).
-*   Nahraďte symbol "€" jeho napsaným formulářem "euro".
+- Zápis desetinných míst jako "," a nikoli ".".
+- Oddělovače času zápisu jako ":", nikoli "." (například: 12:00 Uhr).
+- Zkratky jako "CA". nejsou nahrazeny. Doporučujeme, abyste použili úplný mluvený formulář.
+- Odeberou se čtyři hlavní matematické operátory (+,-, \*a/). Doporučujeme, abyste je nahradili pomocí vytvořeného formuláře: "plus", "mínus" "," "", "" "
+- Operátory porovnání jsou odebrány (=, < a >). Doporučujeme, abyste je nahradili "Gleich", "Kleiner ALS" a "grösser ALS".
+- Zapište zlomky, například 3/4, v písemné podobě (například "Drei Viertel" namísto 3/4).
+- Nahraďte symbol "€" jeho napsaným formulářem "euro".
 
 Tady je několik příkladů normalizace, které byste měli provést na přepisu:
 
-| Původní text | Text po normalizaci uživatele | Text po normalizaci systému |
-|---------------|-------------------------------|---------------------------------|
-| ES tis 12,23 Uhr | ES tis 12:23 Uhr | ES tis Zwölf Uhr Drei und zwanzig Uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf |
-| 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier |
+| Původní text    | Text po normalizaci uživatele | Text po normalizaci systému       |
+| ---------------- | ----------------------------- | ------------------------------------- |
+| ES tis 12,23 Uhr | ES tis 12:23 Uhr              | ES tis Zwölf Uhr Drei und zwanzig Uhr |
+| {12.45}          | {12,45}                       | zwölf komma vier fünf                 |
+| 2 + 3 - 4        | 2 plus 3 minus 4              | zwei plus drei minus vier             |
 
 Následující pravidla normalizace se automaticky aplikují na Přepisy:
 
-* Pro veškerý text použijte malá písmena.
-* Odebrat veškerou interpunkci, včetně různých typů uvozovek ("test", "test", "test" a «test» "OK).
-* Zahodí řádky se všemi speciálními znaky z této sady: ¢ ¤ y ¦ § © ª ¬® ° ± 20. až ¬ ¬.
-* Rozbalíte čísla do mluveného formuláře, včetně částek dolaru nebo eura.
-* Přijměte umlauts jenom pro a, o a vy. Ostatní budou nahrazeny "th" nebo budou zahozeny.
+- Pro veškerý text použijte malá písmena.
+- Odebrat veškerou interpunkci, včetně různých typů uvozovek ("test", "test", "test" a «test» "OK).
+- Zahodí řádky se všemi speciálními znaky z této sady: ¢ ¤ y ¦ § © ª ¬® ° ± 20. až ¬ ¬.
+- Rozbalíte čísla do mluveného formuláře, včetně částek dolaru nebo eura.
+- Přijměte umlauts jenom pro a, o a vy. Ostatní budou nahrazeny "th" nebo budou zahozeny.
 
 Tady je několik příkladů normalizace, které se automaticky provedou na přepisu:
 
-| Původní text | Text po normalizaci |
-|---------------|--------------------------|
-| Frankfurter Ring | Frankfurter Ring |
-| ¡Eine Frage! | eine frage |
-| wir, haben | wir haben |
+| Původní text    | Text po normalizaci |
+| ---------------- | ------------------------ |
+| Frankfurter Ring | Frankfurter Ring         |
+| ¡Eine Frage!     | eine frage               |
+| wir, haben       | wir haben                |
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Příprava a testování dat](how-to-custom-speech-test-data.md)
-* [Kontrola dat](how-to-custom-speech-inspect-data.md)
-* [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Výuka modelu](how-to-custom-speech-train-model.md)
-* [Nasazení modelu](how-to-custom-speech-deploy-model.md)
+- [Příprava a testování dat](how-to-custom-speech-test-data.md)
+- [Kontrola dat](how-to-custom-speech-inspect-data.md)
+- [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
+- [Výuka modelu](how-to-custom-speech-train-model.md)
+- [Nasazení modelu](how-to-custom-speech-deploy-model.md)

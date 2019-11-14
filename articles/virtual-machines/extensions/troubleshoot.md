@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s chybami rozšíření virtuálních počítačů s Windows | Microsoft Docs
+title: Řešení potíží s chybami rozšíření virtuálních počítačů s Windows
 description: Přečtěte si, jak řešit potíže s chybami rozšíření Azure Windows VM
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 6108b3c8d4f4c5c93bc2543042294bc8167d4dd9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084297"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073658"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží s chybami rozšíření Azure Windows VM
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -33,7 +33,7 @@ Azure PowerShell:
 
       Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
 
-Tady je ukázkový výstup:
+Zde je ukázkový výstup:
 
       Extensions:  {
       "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
@@ -61,7 +61,7 @@ Tady je ukázkový výstup:
 ## <a name="troubleshooting-extension-failures"></a>Řešení potíží se selháním rozšíření
 ### <a name="rerun-the-extension-on-the-vm"></a>Znovu spustit rozšíření na virtuálním počítači
 Pokud spouštíte skripty na virtuálním počítači pomocí rozšíření vlastních skriptů, někdy můžete spustit chybu, při které byl virtuální počítač úspěšně vytvořen, ale skript se nezdařil. Za těchto podmínek se doporučuje obnovit z této chyby rozšíření a znovu znovu spustit šablonu.
-Poznámka: V budoucnu by se tato funkce vylepšila tak, aby se odstranila nutnost Odinstalace rozšíření.
+Poznámka: v budoucnu by se tato funkce rozšířila, aby se odstranila nutnost Odinstalace rozšíření.
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Odebrat rozšíření z Azure PowerShell
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"

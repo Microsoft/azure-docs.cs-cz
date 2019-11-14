@@ -1,20 +1,20 @@
 ---
-title: Kurz – Vytvoření záznamu aliasu Azure DNS odkazujícího na veřejnou IP adresu Azure
+title: 'Kurz: vytvoření záznamu aliasu Azure DNS, který odkazuje na veřejnou IP adresu Azure'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat záznam aliasu Azure DNS tak, aby odkazoval na veřejnou IP adresu Azure.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 7dcbfdaf00b0e628541cfd1a3b79df8cf8334ed3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 81dfbe5f46116d263c4a04d6178437a2c8bc1185
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430609"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072135"
 ---
-# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Kurz: Konfigurace záznamu o aliasu odkazovat na veřejnou IP adresu Azure 
+# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Kurz: Konfigurace záznamu aliasu odkazujícího na veřejnou IP adresu Azure 
 
 V tomto kurzu se naučíte:
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
-Pokyny k hostování domény v Azure DNS najdete v tématu [kurzu: Hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
+Pokyny k hostování domény v Azure DNS najdete v [kurzu hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastní název domény.
 
@@ -56,7 +56,7 @@ Na virtuální počítač **Web-01** nainstalujte službu IIS.
 
 1. Připojte se k virtuálnímu počítači **Web-01** a přihlaste se.
 2. Na řídicím panelu **Správce serveru** vyberte **Přidat role a funkce**.
-3. Třikrát vyberte **Další**. Na stránce **Role serveru** vyberte **Webový server (IIS)**.
+3. Třikrát vyberte **Další**. Na stránce **Role serveru** vyberte **Webový server (IIS)** .
 4. Vyberte **Přidat funkce** a pak **Další**.
 5. Čtyřikrát vyberte **Další** a pak vyberte **Nainstalovat**. Dokončení tohoto postupu trvá několik minut.
 6. Po dokončení instalace vyberte **Zavřít**.
@@ -89,7 +89,7 @@ Tento postup proběhne úspěšně, protože jste použili záznam aliasu odkazu
 Pokud už prostředky vytvořené pro účely tohoto kurzu nepotřebujete, odstraňte skupinu prostředků **RG-DNS-Alias-pip**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili záznam aliasu odkazující na veřejnou IP adresu Azure. Další informace o Azure DNS a webových aplikacích získáte v kurzu o webových aplikacích.
 

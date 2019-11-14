@@ -1,5 +1,5 @@
 ---
-title: Rozšíření a funkce virtuálních počítačů Azure | Microsoft Docs
+title: Rozšíření a funkce virtuálních počítačů Azure
 description: Přečtěte si, jaká rozšíření virtuálních počítačů Azure jsou a jak se dají používat s virtuálními počítači Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
-ms.openlocfilehash: deb49267a262705370e48e150cc5ed6c4dc04247
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168884"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072978"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Rozšíření a funkce virtuálních počítačů Azure
 Rozšíření virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. můžete použít existující image a pak je přizpůsobit jako součást nasazení. dostanete se k vlastnímu podnikání. vytváření obrázků.
@@ -54,7 +54,7 @@ Rozšíření instalují aplikace, stejně jako u všech aplikací, pro rozší�
 
 Informace o řešení potíží pro jednotlivá rozšíření najdete v části **řešení potíží a podpora** v tématu Přehled tohoto rozšíření. Tady je seznam informací o řešení problémů, které jsou k dispozici:
 
-| Obor názvů | Řešení potíží |
+| Obor názvů | Poradce při potížích |
 |-----------|-----------------|
 | Microsoft. Azure. Monitoring. dependencyagent. dependencyagentlinux | [Závislost Azure Monitor pro Linux](agent-dependency-linux.md#troubleshoot-and-support) |
 | Microsoft. Azure. Monitoring. dependencyagent. dependencyagentwindows | [Azure Monitor závislost pro Windows](agent-dependency-windows.md#troubleshoot-and-support) |

@@ -1,20 +1,18 @@
 ---
-title: Asymetrické směrování – Azure ExpressRoute | Dokumentace Microsoftu
+title: 'Azure ExpressRoute: asymetrické směrování'
 description: Tento článek vás provede problémy, se kterými může setkat s asymetrickým směrováním v síti, která má víc propojení k cíli.
-documentationcenter: na
 services: expressroute
 author: osamazia
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
-ms.custom: seodec18
-ms.openlocfilehash: 2b2b678cad50e45660fb763c2a1f9194500edf8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730206"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072147"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymetrické směrování s několika síťovými cestami
 Tento článek vysvětluje, jak může dopředný a zpětný síťový provoz využívat různé trasy, pokud je mezi zdrojem a cílem v síti k dispozici více cest.
@@ -50,7 +48,7 @@ Pro lepší pochopení účinku těchto dvou změn v síti se podívejme na něk
 
 Pak zapnete ExpressRoute a začnete využívat služby nabízené Microsoftem prostřednictvím ExpressRoute. Všechny ostatní služby z Microsoftu se využívají přes internet. Na hranici připojení k ExpressRoute nasadíte samostatnou bránu firewall. Microsoft ve vaší síti přes ExpressRoute inzeruje pro určité služby konkrétnější předpony. Vaše infrastruktura směrování zvolí jako upřednostňovanou cestu pro tyto předpony ExpressRoute. Pokud neinzerujete své veřejné IP adresy Microsoftu přes ExpressRoute, Microsoft komunikuje s vašimi veřejnými IP adresami přes internet. Provoz z vaší sítě do Microsoftu používá ExpressRoute a zpětný provoz z Microsoftu používá internet. Když brána firewall na hranici obdrží paket odezvy pro tok, který nenajde ve stavové tabulce, zpětný provoz zruší.
 
-Pokud budete chtít inzerovat stejný fond překladu adres sítě pro ExpressRoute a pro Internet, zobrazí se vám obdobným problémům s klienty v síti na privátních IP adresách. Žádosti o služby, jako je například Windows Update, procházejí přes internet, protože IP adresy pro tyto služby se neinzerují prostřednictvím ExpressRoute. Zpětný přenos se ale vrací přes ExpressRoute. Pokud Microsoft obdrží IP adresu se stejnou maskou podsítě z internetu i ExpressRoute, upřednostňuje ExpressRoute před internetem. Pokud brána firewall nebo jiné stavové zařízení na hranici vaší sítě, které je připojené k ExpressRoute, nemá žádné předchozí informace o toku, zahodí pakety, které do tohoto toku patří.
+Pokud se rozhodnete inzerovat stejný fond překladu adres (NAT) pro ExpressRoute a pro Internet, zobrazí se podobné problémy u klientů ve vaší síti na privátních IP adresách. Žádosti o služby, jako je například Windows Update, procházejí přes internet, protože IP adresy pro tyto služby se neinzerují prostřednictvím ExpressRoute. Zpětný přenos se ale vrací přes ExpressRoute. Pokud Microsoft obdrží IP adresu se stejnou maskou podsítě z internetu i ExpressRoute, upřednostňuje ExpressRoute před internetem. Pokud brána firewall nebo jiné stavové zařízení na hranici vaší sítě, které je připojené k ExpressRoute, nemá žádné předchozí informace o toku, zahodí pakety, které do tohoto toku patří.
 
 ## <a name="asymmetric-routing-solutions"></a>Řešení asymetrického směrování
 Máte dvě hlavní možnosti, jak vyřešit problém asymetrického směrování. Jedna je prostřednictvím směrování a druhá prostřednictvím překladu adres na základě zdroje (SNAT).

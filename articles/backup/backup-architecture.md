@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888487"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074348"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -134,7 +134,7 @@ Virtuální počítače Azure vyžadují přístup k Internetu pro řídicí př
     - Agent MARS používá pouze operaci zápisu systému Windows k zachycení snímku.
     - Vzhledem k tomu, že agent nepoužívá žádné aplikace zapisovače služby VSS, nezachycuje snímky konzistentní vzhledem k aplikacím.
 1. Po pořízení snímku pomocí VSS vytvoří agent MARS virtuální pevný disk (VHD) ve složce mezipaměti, kterou jste zadali při konfiguraci zálohování. Agent také ukládá kontrolní součty pro každý blok dat.
-1. Přírůstkové zálohování se spouští podle plánu, který zadáte, Pokud nespustíte zálohování ad hoc.
+1. Přírůstkové zálohování se spouští podle plánu, který zadáte, Pokud nespustíte zálohování na vyžádání.
 1. V přírůstkových zálohách se identifikují změněné soubory a vytvoří se nový virtuální pevný disk. Virtuální pevný disk je komprimovaný a zašifrovaný a pak se pošle do trezoru.
 1. Po dokončení přírůstkového zálohování se nový virtuální pevný disk sloučí s virtuálním pevným diskem vytvořeným po počáteční replikaci. Tento sloučený virtuální pevný disk poskytuje nejnovější stav, který se má použít pro porovnání probíhajícího zálohování.
 
@@ -148,7 +148,7 @@ Virtuální počítače Azure vyžadují přístup k Internetu pro řídicí př
     - Pomocí aplikace DPM/MABS můžete chránit záložní svazky, sdílené složky, soubory a složky. Můžete také chránit stav systému počítače (holý počítač) a můžete chránit konkrétní aplikace pomocí nastavení zálohování s podporou aplikací.
 1. Když nastavíte ochranu pro počítač nebo aplikaci v DPM/MABS, vyberete možnost zálohovat na místní disk MABS/DPM pro krátkodobé ukládání a do Azure pro online ochranu. Také určíte, kdy se má spustit zálohování do místního úložiště DPM/MABS a kdy se má spustit online zálohování do Azure.
 1. Disk chráněné úlohy se zálohuje na místní disky MABS/DPM podle plánu, který jste zadali.
-4. DPM/MABS disky se zálohují do trezoru agentem MARS, který běží na serveru DPM nebo MABS.
+1. DPM/MABS disky se zálohují do trezoru agentem MARS, který běží na serveru DPM nebo MABS.
 
 ![Zálohování počítačů a úloh chráněných aplikací DPM nebo MABS](./media/backup-architecture/architecture-dpm-mabs.png)
 

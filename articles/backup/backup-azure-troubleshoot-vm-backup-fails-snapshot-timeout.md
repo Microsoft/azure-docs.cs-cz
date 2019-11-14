@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 50db82206bbc0b98dcc80bd504022799011697d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969084"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074123"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -29,7 +29,7 @@ Tento článek popisuje kroky pro řešení potíží, které vám pomohou vyře
 
 Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekonzistentním stavu nebo není nainstalovaný a zabránit tomu, aby služba Azure Backup spustila snímky.  
 
-- Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, **restartujte agenta** a zkuste operaci zálohování zopakovat (zkuste použít zálohu ad-hoc). Postup pro restartování agenta najdete v tématu [virtuální počítače s Windows](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) nebo [virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)se systémem Linux.
+- Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, **restartujte agenta** a zkuste operaci zálohování zopakovat (vyzkoušejte zálohování na vyžádání). Postup restartování najdete v tématu věnovaném [virtuálním počítačům s Windows](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) nebo [virtuálním počítačům s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
 - Pokud není agent virtuálního počítače nainstalovaný nebo je zastaralý, nainstalujte nebo aktualizujte agenta virtuálního počítače a zkuste operaci zálohování zopakovat. Postup instalace nebo aktualizace agenta najdete v tématu [virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)se systémem Linux.  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nepovedlo se komunikovat s agentem virtuálního počítače pro stav snímku.
@@ -213,7 +213,7 @@ Odinstalujte rozšíření pro vynucení opětovného načtení rozšíření VM
 Postup při odinstalaci rozšíření:
 
 1. V [Azure Portal](https://portal.azure.com/)přejdete na virtuální počítač, u kterého dochází k chybě zálohování.
-2. Vyberte **Nastavení**.
+2. Vyberte **nastavení**.
 3. Vyberte **Extensions** (Rozšíření).
 4. Vyberte **rozšíření VMSnapshot**.
 5. Vyberte **odinstalovat**.
@@ -224,7 +224,7 @@ Provedením těchto kroků dojde k přeinstalování rozšíření během pří�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_`<number>`.
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a klikněte na **Odstranit**.
@@ -239,22 +239,22 @@ Pokud odstraníte skupinu prostředků virtuálního počítače nebo samotný v
 
 Chcete-li vyčistit body obnovení, postupujte podle kterékoli z těchto metod:<br>
 
-- [Vyčištění kolekce bodů obnovení spuštěním služby ad hoc Backup](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [Vyčištění kolekce bodů obnovení spuštěním zálohování na vyžádání](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
 - [Vyčistit kolekci bodů obnovení z Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Vyčištění kolekce bodů obnovení spuštěním služby ad hoc Backup
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Vyčištění kolekce bodů obnovení spuštěním zálohování na vyžádání
 
-Po odebrání zámku spusťte ad hoc/ruční zálohování. Tím se zajistí, že body obnovení se automaticky vyčistí. Je možné, že se tato ad hoc nebo ruční operace poprvé nezdařila. ale zajistí automatické vyčištění místo ručního odstranění bodů obnovení. Po vyčištění by mělo být úspěšné další plánované zálohování.
+Po odebrání zámku aktivujte zálohování na vyžádání. Tím se zajistí, že body obnovení se automaticky vyčistí. Tuto operaci na vyžádání byste měli očekávat při prvním selhání. ale zajistí automatické vyčištění místo ručního odstranění bodů obnovení. Po vyčištění by mělo být úspěšné další plánované zálohování.
 
 > [!NOTE]
-> Automatické čištění proběhne po několika hodinách aktivace ad hoc/ruční zálohy. Pokud se naplánované zálohování stále nedaří, zkuste kolekci bodů obnovení ručně odstranit pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
+> Automatické čištění proběhne po několika hodinách spuštění zálohování na vyžádání. Pokud se naplánované zálohování stále nedaří, zkuste kolekci bodů obnovení ručně odstranit pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Vyčistit kolekci bodů obnovení z Azure Portal <br>
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
-2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_`<Geo>`_`<number>`, kde se váš virtuální počítač nachází.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_`<Geo>`_`<number>`, kde se virtuální počítač nachází.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/resource-group.png)
 

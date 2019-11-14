@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ee9594e7aa3b55f7eb6fc7ba41783708555bd15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513767"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075293"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Zřízení samoobslužné brány v Azure API Management
 
@@ -26,19 +26,20 @@ Zřízení prostředku brány v instanci Azure API Management je předpokladem p
 > [!NOTE]
 > Funkce brány pro samoobslužné hostování je ve verzi Preview. V rámci verze Preview je brána v místním prostředí dostupná jenom pro vývojáře a úrovně Premium bez dalších poplatků. Úroveň pro vývojáře je omezená na jediné nasazení samoobslužné brány.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="provision-a-self-hosted-gateway"></a>Zřídit samoobslužnou bránu
+## <a name="provision-a-self-hosted-gateway"></a>Zřízení brány v místním prostředí
 
 1. V části **Nastavení**vyberte **brány** .
 2. Klikněte na tlačítko **+ Přidat**.
 3. Zadejte **název** a **oblast** brány.
 > [!TIP]
 > **Oblast** určuje zamýšlené umístění uzlů brány, které budou přidruženy k tomuto prostředku brány. Je sémanticky ekvivalentní s podobnou vlastností přidruženou k libovolnému prostředku Azure, ale může jim být přiřazena libovolná hodnota řetězce.
+
 4. Volitelně zadejte **Popis** prostředku brány.
 5. V případě potřeby můžete v části **rozhraní API** vybrat **+** k přidružení jednoho nebo více rozhraní API k tomuto prostředku brány.
 > [!TIP]
@@ -46,7 +47,8 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
 > [!IMPORTANT]
 > Ve výchozím nastavení se k novému prostředku brány nepřidruží žádná existující rozhraní API. Proto se pokusy o jejich vyvolání přes novou bránu povedou `404 Resource Not Found` odezvy.
-6. Klikněte na tlačítko **Přidat**.
+
+6. Klikněte na **Přidat**.
 
 V instanci API Management byl nyní prostředek brány zřízen. Můžete pokračovat v nasazení brány.
 

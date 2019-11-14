@@ -1,5 +1,5 @@
 ---
-title: Ukázky konfigurace směrovače - Azure ExpressRoute | Dokumentace Microsoftu
+title: 'Azure ExpressRoute: Ukázky konfigurace směrovače'
 description: Tato stránka obsahuje ukázky konfigurace směrovače pro směrovačů Cisco a Juniper.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367468"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076663"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače nastavit a spravovat směrování
 Tato stránka obsahuje rozhraní a směrování ukázky konfigurace pro Cisco IOS-XE a Juniper MX řady směrovače, při práci se službou ExpressRoute. Ty by měla být ukázky pouze pokyny a nesmí se používat je. Můžete pracovat s vaším dodavatelem přijít s odpovídající konfigurací pro vaši síť. 
@@ -33,7 +32,7 @@ Ukázky konfigurace směrovače níže se vztahují na všechny partnerské vzta
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE na základě směrovače
 Příklady v této části platí pro všechny směrovače řady operačního systému IOS XE.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurace rozhraní a dílčí rozhraní
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. konfigurace rozhraní a podřízených rozhraní
 Budete potřebovat sub rozhraní na partnerský vztah v každé směrovače, ke kterému se připojíte k Microsoftu. Dílčí rozhraní lze identifikovat s ID sítě VLAN nebo pár skládaný ID sítě VLAN a IP adresu.
 
 **Definice rozhraní Dot1Q**
@@ -52,7 +51,7 @@ Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní se dva 
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Nastavení relace eBGP
+### <a name="2-setting-up-ebgp-sessions"></a>2. nastavení relací eBGP
 Musíte nastavit relace protokolu BGP s Microsoftem pro každý partnerský vztah. Následující ukázka umožňuje nastavení relace protokolu BGP s Microsoftem. Pokud adresu IPv4, které jste použili pro vaše rozhraní sub a.b.c.d, IP adresa (Microsoft) okolní sítě BGP budou a.b.c.d+1. Poslední oktet IPv4 adresy okolní sítě BGP budou vždy sudé číslo.
 
     router bgp <Customer_ASN>
@@ -64,7 +63,7 @@ Musíte nastavit relace protokolu BGP s Microsoftem pro každý partnerský vzta
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Nastavení předpon inzerovaných během relace protokolu BGP
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. nastavení předpon, které se mají inzerovat přes relaci protokolu BGP
 Můžete nakonfigurovat směrovače inzerovat vyberte předpony společnosti Microsoft. Můžete tak učinit pomocí ukázky níže.
 
     router bgp <Customer_ASN>
@@ -77,7 +76,7 @@ Můžete nakonfigurovat směrovače inzerovat vyberte předpony společnosti Mic
      exit-address-family
     !
 
-### <a name="4-route-maps"></a>4. Mapuje trasy
+### <a name="4-route-maps"></a>4. mapy tras
 Můžete použít trasy mapy a předponu v seznamech předpony filtru rozšíří do vaší sítě. Následující ukázky můžete použít ke splnění úkolu. Ujistěte se, že máte příslušné předpony seznamy nastavení.
 
     router bgp <Customer_ASN>
@@ -98,7 +97,7 @@ Můžete použít trasy mapy a předponu v seznamech předpony filtru rozšíř�
 ## <a name="juniper-mx-series-routers"></a>Řada směrovače Juniper MX
 Příklady v této části platí pro všechny řady směrovače Juniper MX.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurace rozhraní a dílčí rozhraní
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. konfigurace rozhraní a podřízených rozhraní
 
 **Definice rozhraní Dot1Q**
 
@@ -133,7 +132,7 @@ Tato ukázka obsahuje definici dílčí rozhraní pro dílčí rozhraní se dva 
         }                                   
     }                           
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Nastavení relace eBGP
+### <a name="2-setting-up-ebgp-sessions"></a>2. nastavení relací eBGP
 Musíte nastavit relace protokolu BGP s Microsoftem pro každý partnerský vztah. Následující ukázka umožňuje nastavení relace protokolu BGP s Microsoftem. Pokud adresu IPv4, které jste použili pro vaše rozhraní sub a.b.c.d, IP adresa (Microsoft) okolní sítě BGP budou a.b.c.d+1. Poslední oktet IPv4 adresy okolní sítě BGP budou vždy sudé číslo.
 
     routing-options {
@@ -149,7 +148,7 @@ Musíte nastavit relace protokolu BGP s Microsoftem pro každý partnerský vzta
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Nastavení předpon inzerovaných během relace protokolu BGP
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. nastavení předpon, které se mají inzerovat přes relaci protokolu BGP
 Můžete nakonfigurovat směrovače inzerovat vyberte předpony společnosti Microsoft. Můžete tak učinit pomocí ukázky níže.
 
     policy-options {
@@ -174,7 +173,7 @@ Můžete nakonfigurovat směrovače inzerovat vyberte předpony společnosti Mic
     }
 
 
-### <a name="4-route-maps"></a>4. Mapuje trasy
+### <a name="4-route-maps"></a>4. mapy tras
 Můžete použít trasy mapy a předponu v seznamech předpony filtru rozšíří do vaší sítě. Následující ukázky můžete použít ke splnění úkolu. Ujistěte se, že máte příslušné předpony seznamy nastavení.
 
     policy-options {

@@ -1,7 +1,7 @@
 ---
 title: Definování vlastních návrhů pro automatické návrhy – Vlastní vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Popisuje, jak nakonfigurovat vlastní automatické návrhy pomocí vlastních návrhů.
+description: Vlastní Automatický návrh vrátí seznam řetězců navrhovaných vyhledávacích dotazů, které jsou relevantní pro vaše možnosti vyhledávání.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: b08eb49b0c4f9655326d2ab09ce39210205e28a9
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405099"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072809"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurace vlastního prostředí pro automatické návrhy
 
@@ -36,7 +36,7 @@ Chcete-li povolit návrhy Bingu, přepněte na pozici posuvník **automatických
 
 ## <a name="add-your-own-suggestions"></a>Přidání vlastních návrhů
 
-Chcete-li přidat vlastní návrhy řetězce dotazu, přidejte je do seznamu v části **uživatelsky definované návrhy**. Po přidání návrhu do seznamu stiskněte klávesu ENTER nebo klikněte **+** na ikonu. Návrh můžete zadat v libovolném jazyce. Můžete přidat maximálně 5 000 návrhů řetězce dotazu.
+Chcete-li přidat vlastní návrhy řetězce dotazu, přidejte je do seznamu v části **uživatelsky definované návrhy**. Po přidání návrhu do seznamu stiskněte klávesu ENTER nebo klikněte na ikonu **+** . Návrh můžete zadat v libovolném jazyce. Můžete přidat maximálně 5 000 návrhů řetězce dotazu.
 
 ## <a name="upload-suggestions"></a>Nahrávání návrhů
 
@@ -48,7 +48,7 @@ Chcete-li odebrat návrh řetězce dotazu, klikněte na ikonu odebrat vedle náv
 
 ## <a name="block-suggestions"></a>Zablokovat návrhy
 
-Pokud zahrnete návrhy Bingu, můžete přidat seznam řetězců vyhledávacích dotazů, které nechcete, aby Bing vracel. Pokud chcete přidat blokované řetězce dotazů, klikněte na **Zobrazit blokované návrhy**. Přidejte řetězec dotazu do seznamu a stiskněte klávesu ENTER nebo klikněte **+** na ikonu. Můžete přidat maximálně 50 zablokovaných řetězců dotazů.
+Pokud zahrnete návrhy Bingu, můžete přidat seznam řetězců vyhledávacích dotazů, které nechcete, aby Bing vracel. Pokud chcete přidat blokované řetězce dotazů, klikněte na **Zobrazit blokované návrhy**. Přidejte řetězec dotazu do seznamu a stiskněte klávesu ENTER nebo klikněte na ikonu **+** . Můžete přidat maximálně 50 zablokovaných řetězců dotazů.
 
 
 
@@ -60,12 +60,12 @@ Pokud zahrnete návrhy Bingu, můžete přidat seznam řetězců vyhledávacích
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>Povolení automatické návrhy v hostovaném uživatelském rozhraní
 
-Pokud chcete pro hostované uživatelské rozhraní povolit návrhy řetězce dotazu, klikněte na **hostované uživatelské rozhraní**. Přejděte dolů do části **Další konfigurační** oddíl. V části **vyhledávání na webu**vyberte možnost **zapnuto** pro možnost Povolit automatický **Návrh**. Chcete-li povolit Automatický návrh, je nutné vybrat rozložení, které obsahuje vyhledávací pole.
+Pokud chcete pro hostované uživatelské rozhraní povolit návrhy řetězce dotazu, klikněte na **hostované uživatelské rozhraní**. Přejděte dolů do části **Další konfigurační** oddíl. V části **vyhledávání na webu**vyberte možnost **zapnuto** pro možnost **Povolit automatický návrh**. Chcete-li povolit Automatický návrh, je nutné vybrat rozložení, které obsahuje vyhledávací pole.
 
 
 ## <a name="calling-the-autosuggest-api"></a>Volání rozhraní API pro automatické návrhy
 
-Chcete-li získat navržené řetězce dotazu pomocí rozhraní API pro vlastní vyhledávání Bingu, odešlete `GET` požadavek do následujícího koncového bodu.
+Chcete-li získat navržené řetězce dotazu pomocí rozhraní API pro vlastní vyhledávání Bingu, odešlete požadavek `GET` na následující koncový bod.
 
 ```
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions 
@@ -81,9 +81,9 @@ Odpověď obsahuje seznam `SearchAction` objektů, které obsahují navrhované 
         },  
 ```
 
-Každý návrh zahrnuje `displayText` pole a `query` . `displayText` Pole obsahuje navrhovaný řetězec dotazu, který použijete k naplnění rozevíracího seznamu vyhledávacího pole.
+Každý návrh zahrnuje pole `displayText` a `query`. Pole `displayText` obsahuje navrhovaný řetězec dotazu, který použijete k naplnění rozevíracího seznamu vyhledávacího pole.
 
-Pokud uživatel vybere navrhovaný řetězec dotazu z rozevíracího seznamu, použijte řetězec dotazu v `query` poli při volání [rozhraní API pro vlastní vyhledávání Bingu](overview.md).
+Pokud uživatel vybere navrhovaný řetězec dotazu z rozevíracího seznamu, použijte řetězec dotazu v poli `query` při volání [rozhraní API pro vlastní vyhledávání Bingu](overview.md).
 
 
 ## <a name="next-steps"></a>Další kroky

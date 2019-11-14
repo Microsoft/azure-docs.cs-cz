@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 33fa474d719ec8a20142f35f56cc697c11e03e86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0dd2ca35453859dcc16ef78ef4845a4198aad95
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926638"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066347"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
-[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. Vzhledem k tomu, že soubory Azure jsou plně spravované, jejich nasazení v produkčních scénářích je mnohem jednodušší než nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek popisuje témata, která je potřeba vzít v úvahu při nasazení sdílené složky Azure pro produkční použití v rámci vaší organizace.
+[Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Vzhledem k tomu, že soubory Azure jsou plně spravované, jejich nasazení v produkčních scénářích je mnohem jednodušší než nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek popisuje témata, která je potřeba vzít v úvahu při nasazení sdílené složky Azure pro produkční použití v rámci vaší organizace.
 
 ## <a name="management-concepts"></a>Koncepty správy
 
@@ -124,12 +124,12 @@ Následující tabulka ilustruje několik příkladů těchto vzorců pro zříz
 |---------|---------|---------|---------|---------|
 |100         | 100     | Až 300     | 66   | 44   |
 |500         | 500     | Až 1 500   | 90   | 60   |
-|1 024       | 1 024   | Až 3 072   | 122   | 81   |
+|1,024       | 1,024   | Až 3 072   | 122   | 81   |
 |5 120       | 5 120   | Až 15 360  | 368   | 245   |
 |10 240      | 10 240  | Až 30 720  | 675 | 450   |
 |33 792      | 33 792  | Až 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Až 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Až 100 000 | 6 204 | 4 136   |
+|102 400     | 100,000 | Až 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > Výkon sdílených složek závisí na omezeních sítě počítačů, dostupné šířce pásma sítě, velikosti v/v, paralelních operacích, mezi mnoha dalšími faktory. Chcete-li dosáhnout maximálního rozsahu výkonu, rozšíříte zatížení napříč více virtuálními počítači. Některé běžné problémy s výkonem a alternativní řešení najdete v [Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) .
@@ -199,7 +199,7 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny sdílen
 
 - Převod účtu LRS/ZRS na GRS/GZRS nebude možné použít pro žádný účet úložiště s povolenými velkými sdílenými složkami.
 
-### <a name="regional-availability"></a>Dostupnost podle oblastí
+### <a name="regional-availability"></a>Regionální dostupnost
 
 Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB. V některých oblastech jsou k dispozici s omezením 100 TiB, tyto oblasti jsou uvedeny v následující tabulce:
 
@@ -208,17 +208,21 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |Austrálie – východ |LRS     |
 |Austrálie – jihovýchod|LRS |
 |Kanada – střed  |LRS     |
-|Střední Indie  |LRS     |
+|Kanada – východ     |LRS     |
+|Střed Indie  |LRS     |
+|Střed USA *   |LRS     |
 |Východní Asie      |LRS     |
 |Východní USA *        |LRS     |
+|Východní USA 2 *      |LRS     |
 |Francie – střed |LRS, ZRS|
 |Francie – jih   |LRS     |
-|Jižní Indie    |LRS     |
+|Severní Evropa   |LRS     |
+|Indie – jih    |LRS     |
 |Jihovýchodní Asie |LRS, ZRS|
 |Středozápadní USA|LRS     |
 |Západní Evropa *    |LRS, ZRS|
 |Západní USA *        |LRS     |
-|Západní USA 2      |LRS, ZRS|
+|USA – západ 2      |LRS, ZRS|
 
 \* pro nové účty podporované, ne všechny stávající účty dokončily proces upgradu. Můžete zjistit, jestli vaše stávající účty úložiště dokončily proces upgradu tím, že se pokusí [Povolit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
 

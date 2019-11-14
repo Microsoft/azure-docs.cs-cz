@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: cd3efbea7b194da54bc1d9bebd1cc77987bd9dea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720755"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072351"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme s Azure Cost Management pro partnery
 
-Azure Cost Management je nativně dostupná pro partnery, kteří se připojili k zákaznickým smlouvám Microsoftu. Tento článek vysvětluje, jak partneři používají funkce [Azure cost management](https://docs.microsoft.com/azure/cost-management/) . Také popisuje, jak partneři umožňují Cost Management přístupu pro své zákazníky. Zákazníci můžou používat funkce Cost Management, když je povolí jejich partner CSP.
+Azure Cost Management je nativně k dispozici pro partnery, kteří zavedli registraci svých zákazníků do smlouvy o zákaznících Microsoftu a zakoupili jste plán Azure. Tento článek vysvětluje, jak partneři používají funkce [Azure cost management](https://docs.microsoft.com/azure/cost-management/) . Také popisuje, jak partneři umožňují Cost Management přístupu pro své zákazníky. Zákazníci můžou používat funkce Cost Management, když je povolí jejich partner CSP.
 
 Partneři CSP používají Cost Management k těmto akcím:
 

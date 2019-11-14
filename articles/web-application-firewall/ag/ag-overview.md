@@ -1,18 +1,19 @@
 ---
-title: Seznámení s firewallem webových aplikací Azure v Azure Application Gateway
+title: Úvod do firewallu webových aplikací Azure
+titleSuffix: Azure Web Application Firewall
 description: Tento článek poskytuje přehled firewallu webových aplikací (WAF) na Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4ba2772ffb89809c2262880385207a12c74882cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607314"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067148"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Firewall webových aplikací Azure v Azure Application Gateway
 
@@ -139,7 +140,7 @@ Monitorování stavu službu Application Gateway je velmi důležité. Monitorov
 
 Protokoly Application Gateway jsou integrovány s [Azure monitor](../../azure-monitor/overview.md). To vám umožní sledovat diagnostické informace, včetně výstrah a protokolů WAF. K této funkci můžete přistupovat na kartě **Diagnostika** v prostředku Application Gateway na portálu nebo přímo prostřednictvím Azure monitor. Další informace o povolení protokolů najdete v tématu [diagnostika Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
-#### <a name="azure-security-center"></a>Centrum zabezpečení Azure
+#### <a name="azure-security-center"></a>Azure Security Center
 
 [Security Center](../../security-center/security-center-intro.md) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Application Gateway je [integrována s Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center prohledá vaše prostředí a detekuje nechráněné webové aplikace. Může doporučit Application Gateway WAF k ochraně těchto ohrožených prostředků. Brány firewall vytvoříte přímo z Security Center. Tyto instance WAF jsou integrované s Security Center. Odesílají výstrahy a informace o stavu Security Center pro vytváření sestav.
 
@@ -198,7 +199,7 @@ Application Gateway WAF poskytuje podrobné hlášení o každé zjištěné hro
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Ceny SKU WAF služby Application Gateway
 
-Cenové modely se liší pro skladové položky WAF_v1 a WAF_v2. Další informace najdete na stránce s [cenami Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
+Cenové modely se liší od WAF_v1 a WAF_v2 SKU. Další informace najdete na stránce s [cenami Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
 
 ## <a name="next-steps"></a>Další kroky
 

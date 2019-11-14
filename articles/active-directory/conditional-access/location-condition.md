@@ -1,6 +1,6 @@
 ---
-title: Co je podmínka umístění v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
-description: Další informace o použití podmínka umístění pro řízení přístupu k vašim cloudovým aplikacím založené na síťovém umístění uživatele.
+title: Jaká je podmínka umístění v Azure Active Directory podmíněný přístup? | Dokumenty Microsoft
+description: Naučte se používat podmínku umístění k řízení přístupu ke cloudovým aplikacím na základě síťového umístění uživatele.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,141 +12,141 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd62cda209a8ac95a41fa271ce3a96001a3b4811
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 799a994e1351f62fac9f5a07060658cea60c9274
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164778"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065737"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění v Azure Active Directory podmíněného přístupu? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Jaká je podmínka umístění v Azure Active Directory podmíněný přístup? 
 
-S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), můžete určit, jak Autorizovaní uživatelé můžou přistupovat k vašim cloudovým aplikacím. Podmínka umístění zásad podmíněného přístupu můžete spojit nastavení ovládacích prvků přístupu do síťových umístění vašich uživatelů.
+Pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)můžete řídit, jak můžou autorizovaní uživatelé přistupovat k vašim cloudovým aplikacím. Podmínka umístění zásad podmíněného přístupu umožňuje propojení nastavení řízení přístupu k síťovým umístěním vašich uživatelů.
 
-Tento článek obsahuje informace, na kterých je nutné nakonfigurovat podmínka umístění.
+Tento článek poskytuje informace, které potřebujete ke konfiguraci podmínky umístění.
 
 ## <a name="locations"></a>Umístění
 
-Azure AD umožňuje jednotné přihlašování pro zařízení, aplikací a službám odkudkoli na veřejném Internetu. Podmínka umístění můžete řídit přístup k vašim cloudovým aplikacím založené na síťovém umístění uživatele. Běžné případy použití pro podmínku umístění jsou:
+Azure AD umožňuje jednotné přihlašování k zařízením, aplikacím a službám odkudkoli na veřejném Internetu. V případě podmínky umístění můžete řídit přístup k vašim cloudovým aplikacím na základě síťového umístění uživatele. Běžné případy použití pro podmínku umístění:
 
-- Vyžadování vícefaktorového ověřování pro uživatele, kteří používají službu, když jsou mimo firemní síť.
-- Blokuje přístup pro uživatele, kteří používají službu z určitých zemích nebo oblastech.
+- Vyžadování služby Multi-Factor Authentication pro uživatele, kteří přistupují ke službě, když jsou mimo podnikovou síť.
+- Blokování přístupu pro uživatele, kteří přistupují ke službě z určitých zemí nebo oblastí.
 
-Umístění je popisek umístění v síti, že buď představuje umístění s názvem nebo ověřování službou Multi-Factor Authentication důvěryhodné IP adresy.
+Umístění je popisek pro síťové umístění, které buď představuje pojmenované umístění nebo důvěryhodné IP adresy služby Multi-Factor Authentication.
 
 ## <a name="named-locations"></a>Pojmenovaná umístění
 
-Pojmenovaná umístění vytvoříte logické skupiny rozsahů IP adres nebo jiných zemí a oblastí.
+Pomocí pojmenovaných umístění můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí.
 
-Můžete přistupovat k vaší pojmenovaná umístění v **spravovat** část stránky podmíněného přístupu.
+K pojmenovaným umístěním se dostanete v části **Správa** na stránce podmíněný přístup.
 
-![Pojmenovaná umístění podmíněného přístupu](./media/location-condition/02.png)
+![Pojmenovaná umístění v podmíněném přístupu](./media/location-condition/02.png)
 
 Pojmenované umístění má následující komponenty:
 
-![Vytvořte novou s názvem umístění](./media/location-condition/42.png)
+![Vytvořit nové pojmenované umístění](./media/location-condition/42.png)
 
-- **Název** – zobrazovaný název pojmenované umístění.
-- **Rozsahy IP adres** – jeden nebo více rozsahů adres IPv4 ve formátu CIDR. Zadání rozsahu adres IPv6 není podporováno.
+- **Name** – zobrazovaný název pojmenovaného umístění.
+- **Rozsahy IP** adres – jeden nebo víc rozsahů IPv4 adres ve formátu CIDR. Zadání rozsahu IPv6 adres se nepodporuje.
 
    > [!NOTE]
-   > Pojmenované umístění nemůže být součástí aktuálně rangess adresu IPv6. Rozsahy IPv6 tento measn nelze vyloučit ze zásad podmíněného přístupu.
+   > Rozsahy IPv6 adres se aktuálně nedají zahrnout do pojmenovaného umístění. To znamená, že rozsahy IPv6 nelze vyloučit ze zásady podmíněného přístupu.
 
-- **Označit jako důvěryhodné umístění** -příznak, který můžete nastavit pro pojmenované umístění pro důvěryhodného umístění. Důvěryhodná umístění jsou obvykle oblastem sítě, které jsou řízené vaším IT oddělením. Kromě podmíněného přístupu, důvěryhodné pojmenovaná umístění jsou také používány zprávy o zabezpečení Azure Identity Protection a Azure AD ke snížení [počet falešně pozitivních výsledků](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
-- **Země nebo oblasti** – tato možnost umožňuje vybrat jeden nebo více zemi nebo oblast pro definování pojmenovaných umístění.
-- **Včetně neznámých oblastí** – některé IP adresy, které nejsou namapované na konkrétní zemi nebo oblast. Tato možnost umožňuje zvolit, pokud se tyto IP adresy, měly by být součástí pojmenované umístění. Toto nastavení použijte, když zásady pomocí pojmenovaných umístění by se měly používat pro neznámými umístěními.
+- **Označit jako důvěryhodné umístění** – příznak, který můžete nastavit pro pojmenované umístění k označení důvěryhodného umístění. Obvykle jsou důvěryhodná umístění síťová oblast, která je řízena vaším IT oddělením. Kromě podmíněného přístupu jsou důvěryhodná pojmenovaná umístění používána také v sestavách Azure Identity Protection a Azure AD k omezení [falešně pozitivních](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)událostí.
+- **Země nebo oblasti** – Tato možnost umožňuje vybrat jednu nebo více zemí nebo oblastí k definování pojmenovaného umístění.
+- **Zahrnout neznámé oblasti** – některé IP adresy nejsou namapované na konkrétní zemi nebo oblast. Tato možnost umožňuje zvolit, jestli se mají tyto IP adresy zahrnout do pojmenovaného umístění. Toto nastavení použijte, pokud se zásada používající pojmenované umístění má vztahovat na neznámá umístění.
 
-Počet pojmenovaná umístění, které můžete nakonfigurovat je omezen velikostí související objekt ve službě Azure AD. Můžete nakonfigurovat umístěních v závislosti na následující omezení:
+Počet pojmenovaných umístění, která můžete konfigurovat, se omezuje na velikost souvisejícího objektu ve službě Azure AD. Umístění můžete nakonfigurovat na základě následujících omezení:
 
-- Jeden s názvem umístění s až 1200 rozsahy IP adres.
-- Maximálně 90 pojmenovaná umístění s jeden rozsah IP adres přiřazené ke každému z nich.
+- Jedno pojmenované umístění s rozsahem IP adres až 1200.
+- Do každé z nich se přiřadí maximálně 90 pojmenovaných umístění s jedním rozsahem IP adres.
 
-Zásady podmíněného přístupu platí pro přenosy protokolu IPv4 a IPv6. Aktuálně pojmenovaná umístění neumožňují rozsahy IPv6 potřeba nakonfigurovat. Toto omezení způsobí, že v následujících případech:
+Zásady podmíněného přístupu se vztahují na přenosy IPv4 a IPv6. Aktuálně pojmenovaná umístění neumožňují konfigurovat rozsahy IPv6. Toto omezení způsobuje následující situace:
 
-- Zásady podmíněného přístupu nelze cílit na konkrétní rozsahy IPv6
-- Zásady podmíněného přístupu nejde vyloučit konkrétní rozsahy IPV6
+- Zásady podmíněného přístupu se nedají cílit na konkrétní rozsahy IPv6.
+- Zásady podmíněného přístupu nemůžou vyloučit konkrétní rozsahy IPV6.
 
-Pokud zásady je nakonfigurovaný na použití pro "Libovolné umístění", bude platit pro přenosy protokolu IPv4 a IPv6. Pojmenovaná umístění nakonfigurované pro zadaný zemích a oblastech se podporují jenom adresy IPv4. Přenosy protokolu IPv6 je pouze pokud je vybrána možnost "včetně neznámých oblastí" zahrnuty.
+Pokud je zásada nakonfigurovaná tak, aby se nastavila na jakékoli místo, bude se vztahovat na přenosy IPv4 a IPv6. Pojmenovaná umístění konfigurovaná pro zadané země a oblasti podporují pouze adresy IPv4. Přenos IPv6 je zahrnutý jenom v případě, že je vybraná možnost zahrnout neznámé oblasti.
 
 ## <a name="trusted-ips"></a>Důvěryhodné IP adresy
 
-Můžete taky nakonfigurovat představující vaše organizace místní intranet v rozsahy IP adres [nastavení služby Multi-Factor authentication](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Tato funkce umožňuje konfigurovat až 50 rozsahy IP adres. Rozsahy IP adres jsou ve formátu CIDR. Další informace najdete v tématu [důvěryhodné IP adresy](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
+V [nastavení služby Multi-Factor Authentication Service](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)můžete také nakonfigurovat rozsahy IP adres reprezentující místní intranet vaší organizace. Tato funkce vám umožní nakonfigurovat až 50 rozsahů IP adres. Rozsahy IP adres jsou ve formátu CIDR. Další informace najdete v tématu [důvěryhodné IP adresy](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-Pokud máte důvěryhodné IP adresy nakonfigurované, zobrazí se jako **důvěryhodné IP adresy MFA** v seznamu umístění pro umístění podmínku.
+Pokud máte nakonfigurované důvěryhodné IP adresy, zobrazí se v seznamu umístění pro podmínku umístění jako **důvěryhodné IP adresy MFA** .
 
-### <a name="skipping-multi-factor-authentication"></a>Přeskočení ověřování služby Multi-Factor Authentication
+### <a name="skipping-multi-factor-authentication"></a>Přeskakuje se Multi-Factor Authentication
 
-Na stránce nastavení služby Multi-Factor authentication service můžete identifikovat podnikové uživatele tak, že vyberete **přeskočit ověřování službou Multi-Factor Authentication pro žádosti od federovaných uživatelů v mém intranetu**. Toto nastavení určuje, že uvnitř podnikové sítě deklarace identity, které vystaví služba AD FS, musí důvěryhodnou a používá se k identifikaci uživatelů jako v podnikové síti. Další informace najdete v tématu [povolit funkci důvěryhodné IP adresy pomocí podmíněného přístupu](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+Na stránce nastavení služby Multi-Factor Authentication Service můžete identifikovat uživatele firemní sítě intranet tak, že **pro žádosti od federovaných uživatelů v mém intranetu vyberete přeskočit vícefaktorové ověřování**. Toto nastavení indikuje, že deklarace identity uvnitř podnikové sítě, která je vydaná AD FS, by měla být důvěryhodná a slouží k identifikaci uživatele jako v podnikové síti. Další informace najdete v tématu [Povolení funkce důvěryhodných IP adres pomocí podmíněného přístupu](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
-Po kontrole tuto možnost, včetně pojmenovaných umístění **důvěryhodné IP adresy MFA** budou platit pro všechny zásady se tato možnost aktivní.
+Po zaškrtnutí této možnosti, včetně pojmenovaného umístění, **důvěryhodných IP adres MFA** budou platit pro všechny zásady s vybranou možností.
 
-Pro mobilní i desktopové aplikace, které mají dlouhodobě doby trvání relace, podmíněný přístup je pravidelně již znovu. Výchozí hodnota je jednou za hodinu. Když uvnitř deklarace identity podnikové sítě pouze vydává v době počáteční ověřování, Azure AD nemůže mít seznam Důvěryhodné rozsahy IP adres. V takovém případě je obtížnější k určení, zda uživatel je stále v podnikové síti:
+U mobilních a desktopových aplikací, které mají dlouhodobé životnosti relací, se podmíněný přístup pravidelně znovu vyhodnocuje. Výchozí hodnota je jednou hodinu. Pokud je deklarace identity uvnitř podnikové sítě vydaná jenom v době počátečního ověřování, služba Azure AD nemusí mít seznam důvěryhodných IP adres. V takovém případě je obtížné zjistit, jestli je uživatel stále v podnikové síti:
 
-1. Zkontrolujte, jestli je IP adresa uživatele v jednom z důvěryhodné rozsahy IP adres.
-2. Zkontrolujte, zda první tři oktety IP adresa uživatele odpovídá první tři oktety počáteční ověřování IP adresu. IP adresa je ve srovnání s počáteční ověřování, pokud je uvnitř podnikové sítě deklarace identity byl původně vydaný a umístění uživatele byl ověřen.
+1. Ověřte, zda je IP adresa uživatele v jednom z rozsahů důvěryhodných IP adres.
+2. Ověřte, zda první tři oktety IP adresy uživatele odpovídají prvním třem oktetům IP adresy počátečního ověřování. IP adresa je porovnávána s počátečním ověřováním, když byla původně vydaná deklarace identity uvnitř podnikové sítě a bylo ověřené umístění uživatele.
 
-Pokud se oba kroky nezdaří, uživatel se považuje za už za důvěryhodné IP adresy.
+Pokud dojde k selhání obou kroků, bude uživatel považován za již nepřipojený k důvěryhodné IP adrese.
 
 ## <a name="location-condition-configuration"></a>Konfigurace podmínky umístění
 
-Při konfiguraci umístění podmínky, máte možnost k rozlišení mezi:
+Když konfigurujete podmínku umístění, máte možnost rozlišovat mezi:
 
-- Libovolné umístění
+- Jakékoli umístění
 - Všechna důvěryhodná umístění
 - Vybraná umístění
 
 ![Konfigurace podmínky umístění](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Libovolné umístění
+### <a name="any-location"></a>Jakékoli umístění
 
-Ve výchozím nastavení že vyberete **libovolného umístění** způsobí, že se zásady použijí pro všechny IP adresy, což znamená, že jakákoli adresa v síti Internet. Toto nastavení není omezený na IP adresy, které jste nakonfigurovali jako pojmenované umístění. Když vyberete **libovolného umístění**, stále můžete vyloučit konkrétní umístění na základě zásady. Můžete například použít zásady ke všem místům s výjimkou důvěryhodných umístění k nastavení oboru ke všem místům, s výjimkou v podnikové síti.
+Ve výchozím nastavení při výběru **kteréhokoli umístění** dojde k použití zásad pro všechny IP adresy, což znamená libovolnou adresu na internetu. Toto nastavení není omezeno na IP adresy, které jste nakonfigurovali jako pojmenované umístění. Když vyberete **libovolné umístění**, můžete i nadále vyloučit konkrétní umístění ze zásad. Můžete například použít zásadu na všechna umístění kromě důvěryhodných umístění a nastavit obor na všechna umístění kromě podnikové sítě.
 
 ### <a name="all-trusted-locations"></a>Všechna důvěryhodná umístění
 
-Tato možnost platí pro:
+Tato možnost se týká:
 
-- Všechna místa, které jsou označené jako důvěryhodné umístění
-- **Důvěryhodné IP adresy MFA** (je-li konfigurováno)
+- Všechna umístění, která byla označena jako důvěryhodná umístění
+- **Důvěryhodné IP adresy MFA** (pokud jsou nakonfigurované)
 
 ### <a name="selected-locations"></a>Vybraná umístění
 
-Pomocí této možnosti můžete vybrat jeden nebo více pojmenovaná umístění. Pro zásadu pomocí tohoto nastavení můžete použít uživatel potřebuje pro připojení z kterékoli z vybraného umístění. Po kliknutí na **vyberte** otevře pojmenované sítě ovládacího prvku pro výběr, který zobrazuje seznam pojmenované sítě. Také v seznamu uvedena, pokud umístění v síti byl označen jako důvěryhodné. Volá se umístění s názvem **důvěryhodné IP adresy MFA** je použít k zahrnutí nastavení IP adresy, které lze nastavit na stránce nastavení služby Multi-Factor authentication.
+Pomocí této možnosti můžete vybrat jedno nebo více pojmenovaných umístění. Chcete-li použít zásadu s tímto nastavením, musí se uživatel připojit z libovolného umístění. Když kliknete na **Vybrat** ovládací prvek pro výběr sítě, který zobrazuje seznam pojmenovaných sítí, otevře se. V seznamu se zobrazí také informace o tom, zda bylo síťové umístění označeno jako důvěryhodné. Pojmenované umístění s názvem **MFA Trusted IP** adresa slouží k zahrnutí nastavení IP adresy, která se dají konfigurovat na stránce nastavení služby Multi-Factor Authentication Service.
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-### <a name="when-is-a-location-evaluated"></a>Když je vyhodnocen na místě?
+### <a name="when-is-a-location-evaluated"></a>Kdy je vyhodnoceno umístění?
 
-Zásady podmíněného přístupu se vyhodnocují při:
+Zásady podmíněného přístupu jsou vyhodnocovány v těchto případech:
 
-- Zpočátku přihlášení uživatele k webové aplikaci app, mobily nebo stolní počítače.
-- Desktopové nebo mobilní aplikaci, která používá moderní ověřování, obnovovací token používá k získání nového tokenu přístupu. Ve výchozím nastavení je tato kontrola jednou za hodinu.
+- Uživatel se zpočátku přihlašuje k webové aplikaci, mobilní aplikaci nebo aplikaci klasické pracovní plochy.
+- Mobilní aplikace nebo aplikace klasické pracovní plochy, která používá moderní ověřování, používá k získání nového přístupového tokenu obnovovací token. Ve výchozím nastavení je tato kontrolu jednou za hodinu.
 
-Tato kontrola znamená, že pro mobilní a desktopové aplikace používající moderní ověřování, změna umístění by se zjistilo během hodiny po změně umístění v síti. Pro mobilní i desktopové aplikace, které nepoužívají moderní ověřování které zásady platí v každé žádosti o token. Frekvence žádosti může lišit v závislosti na aplikaci. Pro webové aplikace podobně zásady platí při počáteční přihlášení a je vhodný pro po dobu platnosti relace webové aplikace. Z důvodu rozdílů v doby trvání relace mezi aplikacemi se také liší čas mezi vyhodnocení zásad. Pokaždé, když aplikace požádá o nový token přihlášení, které zásady platí.
+Tato kontrolu znamená, že mobilní a desktopové aplikace využívají moderní ověřování, v průběhu změny síťového umístění se zjistí změna v umístění. Pro mobilní a desktopové aplikace, které nepoužívají moderní ověřování, se zásady použijí u každé žádosti o token. Frekvence požadavku se může lišit v závislosti na aplikaci. Podobně platí, že u webových aplikací se zásady aplikují při počátečním přihlašování a jsou vhodné po dobu života relace ve webové aplikaci. V důsledku rozdílů v životnosti relací napříč aplikacemi se čas mezi vyhodnocením zásad liší také. Pokaždé, když aplikace požádá o nový token přihlášení, zásada se použije.
 
-Ve výchozím nastavení Azure AD vydá token po hodinách. Po přesunutí mimo podnikovou síť, do jedné hodiny zásady se vynucují pro aplikace používající moderní ověřování.
+Ve výchozím nastavení služba Azure AD vydá token po hodinách. Po přesunu podnikové sítě do celé hodiny se zásady vynutily pro aplikace používající moderní ověřování.
 
-### <a name="user-ip-address"></a>IP adresy uživatele
+### <a name="user-ip-address"></a>IP adresa uživatele
 
-IP adresa, která se používá v hodnocení zásad je veřejnou IP adresu uživatele. Pro zařízení v privátní síti tato IP adresa není IP adresa klienta zařízení uživatele v síti intranet, je adresa použitá v síti se připojit k veřejnému Internetu.
+IP adresa, která se používá při vyhodnocování zásad, je veřejná IP adresa uživatele. V případě zařízení v privátní síti tato IP adresa nepředstavuje IP adresu klienta zařízení uživatele v intranetu, jedná se o adresu, kterou síť používá pro připojení k veřejnému Internetu.
 
 > [!WARNING]
-> Pokud vaše zařízení má jenom adresy IPv6, konfigurace podmínka umístění se nepodporuje.
+> Pokud má vaše zařízení jenom adresu IPv6, konfigurace podmínky umístění není podporovaná.
 
-### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Hromadné nahrávání a stahování pojmenovaná umístění
+### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Hromadné nahrávání a stahování pojmenovaných umístění
 
-Při vytvoření nebo aktualizaci pojmenovaná umístění pro hromadné aktualizace je odeslání nebo stažení souboru CSV s rozsahy IP adres. Nahrání nahradí rozsahy IP adres v seznamu těch ze souboru. Každý řádek souboru obsahuje jeden rozsah IP adres ve formátu CIDR.
+Při vytváření nebo aktualizaci pojmenovaných umístění můžete pro hromadné aktualizace nahrát nebo stáhnout soubor CSV s rozsahy IP adres. Nahrávání nahradí rozsahy IP adres v seznamu hodnotami ze souboru. Každý řádek souboru obsahuje jeden rozsah IP adres ve formátu CIDR.
 
-### <a name="cloud-proxies-and-vpns"></a>Cloudová proxy servery a sítěmi VPN
+### <a name="cloud-proxies-and-vpns"></a>Cloudové proxy servery a sítě VPN
 
-Pokud používáte proxy server hostované v cloudu nebo řešení sítě VPN, IP adresu služby Azure AD používá při vyhodnocování zásad je IP adresa proxy serveru. Záhlaví X-Forwarded-For (XFF), které obsahuje veřejné IP adresy uživatele není použita, protože neexistuje žádné ověření, který pochází z důvěryhodného zdroje, takže by k dispozici metoda faking IP adresu.
+Pokud používáte cloudové proxy hostované nebo řešení sítě VPN, IP adresa Azure AD používá při vyhodnocování zásad je IP adresa proxy serveru. Záhlaví X-předané (XFF), které obsahuje veřejnou IP adresu uživatele, se nepoužívá, protože neexistuje žádné ověření, které pochází z důvěryhodného zdroje, takže by mohla představovat metodu pro Faking IP adresu.
 
-Když cloudový proxy server je v místě, zásadu, která se používá k vyžadovat zařízení připojené k doméně je možné nebo uvnitř podnikové sítě deklarací ze služby AD FS.
+Pokud je cloudový proxy server, je možné použít zásadu, která vyžaduje zařízení připojené k doméně, nebo Corpnet deklaraci identity v rámci AD FS.
 
-### <a name="api-support-and-powershell"></a>Podpora rozhraní API a Powershellu
+### <a name="api-support-and-powershell"></a>Podpora rozhraní API a prostředí PowerShell
 
-Rozhraní API a PowerShell není dosud podporována pro pojmenovaná umístění, nebo pro zásady podmíněného přístupu.
+Rozhraní API a PowerShell se zatím nepodporují pro pojmenovaná umístění nebo pro zásady podmíněného přístupu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- Pokud chcete zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

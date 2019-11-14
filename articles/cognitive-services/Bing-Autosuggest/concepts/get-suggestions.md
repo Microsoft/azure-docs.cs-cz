@@ -1,7 +1,7 @@
 ---
 title: Navrhněte hledané výrazy pomocí rozhraní API pro automatické návrhy Bingu
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat rozhraní API pro automatické návrhy Bingu.
+description: Tento článek popisuje pojem navrhování výrazů pro dotazování pomocí rozhraní API pro automatické návrhy Bingu a dopad délky dotazů na relevanci.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: cee4f68b734f0c2bec9fd629986ba7f6559f207e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882450"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072888"
 ---
 # <a name="suggesting-query-terms"></a>Návrhy termínů dotazu
 
-Obvykle byste vyvolali rozhraní API pro automatické návrhy Bingu pokaždé, když uživatel do vyhledávacího pole aplikace zadá nový znak. Úplnost řetězce dotazu má vliv na relevanci navrhovaných termínů dotazu, které rozhraní API vrátí. Čím je řetězec dotazu úplnější, tím relevantnější seznam navrhovaných termínů dotazů se zobrazí. Například návrhy, které může rozhraní API vracet pro `s` , mohou být méně důležité než dotazy, pro `sailing dinghies`které se vrátí.
+Obvykle byste vyvolali rozhraní API pro automatické návrhy Bingu pokaždé, když uživatel do vyhledávacího pole aplikace zadá nový znak. Úplnost řetězce dotazu má vliv na relevanci navrhovaných termínů dotazu, které rozhraní API vrátí. Čím je řetězec dotazu úplnější, tím relevantnější seznam navrhovaných termínů dotazů se zobrazí. Například návrhy, které může rozhraní API vracet pro `s`, jsou pravděpodobně méně důležité než dotazy, které vrací pro `sailing dinghies`.
 
 ## <a name="example-request"></a>Příklad požadavku
 
@@ -55,6 +55,6 @@ Následující příklad ukazuje rozevírací vyhledávací pole s navrhovanými
 
 Pokud uživatel vybere z rozevíracího seznamu navrhovaný dotaz, použijete termín dotazu v poli `query` k volání [rozhraní API Bingu pro vyhledávání na webu](../../bing-web-search/search-the-web.md) a zobrazení výsledků. Nebo můžete použít adresu URL v poli `url` a odeslat uživatele na stránku s výsledky hledání Bingu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Co je rozhraní API pro automatické návrhy Bingu?](../get-suggested-search-terms.md)

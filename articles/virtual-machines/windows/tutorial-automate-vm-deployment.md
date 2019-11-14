@@ -1,5 +1,5 @@
 ---
-title: Kurz instalace aplikací na virtuální počítač s Windows v Azure | Microsoft Docs
+title: Kurz – instalace aplikací na virtuální počítač s Windows v Azure
 description: V tomto kurzu zjistíte, jak používat rozšíření vlastních skriptů ke spouštění skriptů a nasazení aplikací na virtuálních počítačích s Windows v Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 02c038a1eefefb62dceb42e511b9a895691ef47b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 610f8efad473b5f4bed1abc6b2c063ec0ead66ed
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101725"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065365"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Kurz nasazení aplikací na virtuální počítač s Windows v Azure pomocí rozšíření vlastních skriptů
 
-K rychlému a konzistentnímu konfigurování virtuálních počítačů můžete použít [rozšíření vlastních skriptů pro Windows](extensions-customscript.md). V tomto kurzu se naučíte:
+K rychlému a konzistentnímu konfigurování virtuálních počítačů můžete použít [rozšíření vlastních skriptů pro Windows](extensions-customscript.md). Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Použít rozšíření vlastních skriptů k instalaci služby IIS
@@ -99,7 +99,7 @@ Veřejnou IP adresu pak můžete zadat do webového prohlížeče. Zobrazí se w
 ![Spuštění webu služby IIS](./media/tutorial-automate-vm-deployment/running-iis-website.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste automatizovali instalaci služby IIS na virtuálním počítači. Naučili jste se tyto postupy:
 

@@ -1,5 +1,5 @@
 ---
-title: Přehled agenta virtuálního počítače Azure Linux | Microsoft Docs
+title: Přehled agenta virtuálního počítače Azure Linux
 description: Naučte se instalovat a konfigurovat agenta pro Linux (waagent), abyste mohli spravovat interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bc28c7454296f32dda09894ad3dca2f4fae99b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169160"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073855"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Porozumění a použití agenta Azure Linux
 
@@ -48,7 +48,7 @@ Agent Microsoft Azure Linux (waagent) spravuje systémy Linux & FreeBSD a intera
   * Zajišťuje stabilitu názvu síťového rozhraní.
 * **Kernel**
   
-  * Nakonfiguruje virtuální technologii NUMA (zakázat pro`2.6.37`jádro <).
+  * Nakonfiguruje virtuální technologii NUMA (zakázat pro jádro <`2.6.37`).
   * Spotřebovává entropii technologie Hyper-V pro/dev/random.
   * Konfiguruje časové limity SCSI pro kořenové zařízení (které by mohlo být vzdálené).
 * **Diagnostika**
@@ -60,7 +60,7 @@ Agent Microsoft Azure Linux (waagent) spravuje systémy Linux & FreeBSD a intera
 * **Rozšíření virtuálního počítače**
   
   * Vložení součásti, kterou vytvořila Microsoft a partneři, do virtuálního počítače se systémem Linux (IaaS), aby bylo možné povolit automatizaci softwaru a konfigurace
-  * Implementace odkazu na rozšíření virtuálních počítačů na[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Referenční implementace rozšíření virtuálních počítačů na [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Komunikace
 Tok informací z platformy k agentům probíhá prostřednictvím dvou kanálů:
@@ -72,7 +72,7 @@ Tok informací z platformy k agentům probíhá prostřednictvím dvou kanálů:
 Následující systémy byly testovány a jsou známy pro práci s agentem Azure Linux:
 
 > [!NOTE]
-> Tento seznam se může lišit od oficiálního seznamu podporovaných systémů na platformě Microsoft Azure, jak je popsáno zde:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Tento seznam se může lišit od oficiálního seznamu podporovaných systémů na platformě Microsoft Azure, jak je popsáno zde: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -107,12 +107,12 @@ Další možnosti instalace najdete v dokumentaci v [úložišti agenta Azure Li
 
 ## <a name="command-line-options"></a>Možnosti příkazového řádku
 ### <a name="flags"></a>příznaky
-* Podrobné Zvýšit podrobnost zadaného příkazu
-* ode Přeskočit interaktivní potvrzení pro některé příkazy
+* verbose: zvýšit podrobnost zadaného příkazu
+* Force: přeskočit interaktivní potvrzení u některých příkazů
 
 ### <a name="commands"></a>Příkazy
-* Pomoc: Zobrazuje seznam podporovaných příkazů a příznaků.
-* zrušení zřízení Pokuste se systém vyčistit a zajistit, aby byl vhodný pro opětovné zřízení. Následující operace odstraní:
+* Help: vypíše podporované příkazy a příznaky.
+* zrušení zřízení: pokus o vyčištění systému a jeho vhodné pro opětovné zřízení. Následující operace odstraní:
   
   * Všechny klíče hostitele SSH (Pokud zřizování. RegenerateSshHostKeyPair je v konfiguračním souboru ' y ')
   * Konfigurace názvový server v/etc/resolv.conf
@@ -125,13 +125,13 @@ Další možnosti instalace najdete v dokumentaci v [úložišti agenta Azure Li
 > 
 > 
 
-* zrušit zřízení a uživatele: Provede vše za zrušení zřízení (výše) a odstraní také naposledy zřízený uživatelský účet (získaný z/var/lib/waagent) a přidružená data. Tento parametr je při rušení zřizování image, která se dřív zřídila v Azure, aby se mohla zachytit a znovu použít.
-* Znění Zobrazí verzi waagent.
-* serialconsole: Nakonfiguruje GRUB tak, aby označil ttyS0 (první sériový port) jako spouštěcí konzolu. Tím se zajistí, že se protokoly spouštění jádra odesílají do sériového portu a zpřístupní se pro ladění.
-* proces Spusťte waagent jako démona pro správu interakce s platformou. Tento argument je zadán jako waagent ve skriptu init waagent.
-* Čína Spustit waagent jako proces na pozadí
+* zrušení zřízení + uživatel: provede vše za zrušení zřízení (výše) a odstraní také naposledy zřízený uživatelský účet (získaný z/var/lib/waagent) a přidružená data. Tento parametr je při rušení zřizování image, která se dřív zřídila v Azure, aby se mohla zachytit a znovu použít.
+* Version (verze): Zobrazuje verzi waagent
+* serialconsole: konfiguruje GRUB tak, aby označil ttyS0 (první sériový port) jako spouštěcí konzolu. Tím se zajistí, že se protokoly spouštění jádra odesílají do sériového portu a zpřístupní se pro ladění.
+* démon: Spusťte waagent jako démona pro správu interakce s platformou. Tento argument je zadán jako waagent ve skriptu init waagent.
+* spustit: spustit waagent jako proces na pozadí
 
-## <a name="configuration"></a>Konfiguraci
+## <a name="configuration"></a>Konfigurace
 Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. V následujícím příkladu vidíte Ukázkový konfigurační soubor:
 
     ```
@@ -170,7 +170,7 @@ Default: y
 To uživateli umožňuje povolit nebo zakázat funkce zřizování v agentovi. Platné hodnoty jsou "y" nebo "n". Pokud je zřizování zakázané, zachovají se klíče hostitele SSH a uživatele v imagi a veškerá konfigurace zadaná v rozhraní API zřizování Azure se ignoruje.
 
 > [!NOTE]
-> `Provisioning.Enabled` Parametr má ve výchozím nastavení hodnotu "n" na Ubuntu cloudových imagí, které pro zřizování používají Cloud-init.
+> Parametr `Provisioning.Enabled` v cloudových imagí Ubuntu standardně "n", které pro zřizování používají Cloud-init.
 > 
 > 
 
@@ -343,6 +343,6 @@ Cloudové image Ubuntu využívají [Cloud-init](https://launchpad.net/ubuntu/+s
 
 * Další informace najdete v následujících zdrojích konfigurace přípojného bodu disku prostředku a záměna místa na Ubuntu cloudových imagí během zřizování:
   
-  * [Ubuntu Wiki: Konfigurace swapových oddílů](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu wiki: konfigurace odkládacích oddílů](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Vkládání vlastních dat do virtuálního počítače Azure](../windows/classic/inject-custom-data.md)
 

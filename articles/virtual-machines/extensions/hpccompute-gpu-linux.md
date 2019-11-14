@@ -1,5 +1,5 @@
 ---
-title: Rozšíření ovladače NVIDIA GPU – virtuální počítače Azure Linux | Microsoft Docs
+title: Rozšíření ovladače NVIDIA GPU – virtuální počítače Azure Linux
 description: Microsoft Azure rozšíření pro instalaci ovladačů NVIDIA GPU na výpočetní virtuální počítače řady N-Series se systémem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174016"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073744"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače NVIDIA GPU pro Linux
 
@@ -26,8 +26,8 @@ ms.locfileid: "71174016"
 
 Toto rozšíření nainstaluje ovladače NVIDIA GPU na virtuální počítače se systémem Linux N-Series. V závislosti na rodině virtuálních počítačů rozšíření nainstaluje ovladače CUDA nebo GRIDu. Když instalujete ovladače NVIDIA pomocí tohoto rozšíření, přijímáte podmínky [licenční smlouvy pro koncové uživatele NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330)a souhlasíte s nimi. Během procesu instalace může být virtuální počítač restartován, aby bylo možné dokončit instalaci ovladače.
 
-Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde.](
-https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)
+Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
 K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU na [virtuálních počítačích s Windows N-Series](hpccompute-gpu-windows.md).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -70,24 +70,24 @@ Následující JSON zobrazuje schéma pro rozšíření.
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Vlastnosti
 
-| Name | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
+| publisher | Microsoft.HpcCompute | řetězec |
+| type | NvidiaGpuDriverLinux | řetězec |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Nastavení
 
 Všechna nastavení jsou volitelná. Výchozím chováním je neaktualizovat jádro, pokud není pro instalaci ovladače vyžadováno, nainstalujte nejnovější podporovaný ovladač a CUDA Toolkit (podle potřeby).
 
-| Name | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
+| Název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false | true, false | boolean |
-| driverVersion | STÁL Verze ovladače mřížky<br> NC/ND: Verze sady nástrojů CUDA Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | latest | MŘÍŽKY "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
-| installCUDA | Nainstalujte sadu CUDA Toolkit. Platí jenom pro virtuální počítače řady NC/ND. | true | true, false | boolean |
+| updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false (nepravda) | true, false | Boolean |
+| driverVersion | NV: verze ovladače mřížky<br> NC/ND: verze sady CUDA Toolkit. Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | nejnovější | GRID: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130"; "9.2.88"; "9.1.85" | řetězec |
+| installCUDA | Nainstalujte sadu CUDA Toolkit. Platí jenom pro virtuální počítače řady NC/ND. | true | true, false | Boolean |
 
 
 ## <a name="deployment"></a>Nasazení
@@ -175,7 +175,7 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 
 ### <a name="exit-codes"></a>Ukončovací kódy
 
-| Kód ukončení | Význam | Je to možné akce |
+| Ukončovací kód | Význam | Je to možné akce |
 | :---: | --- | --- |
 | 0 | Operace byla úspěšná. |
 | 1 | Nesprávné použití rozšíření | Kontrolovat výstupní protokol spuštění |

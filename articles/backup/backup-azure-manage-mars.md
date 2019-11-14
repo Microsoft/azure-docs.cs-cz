@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903219"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074998"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services pomocí služby Azure Backup
 
@@ -39,7 +39,7 @@ Vytvořte zásadu následujícím způsobem:
     ![Vybrané položky k zálohování](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 6. Na stránce **Vyberte položky, které chcete zálohovat** klikněte na **Další**.
-7. Na stránce **zadat plán zálohování** zadejte, kdy chcete provést denní nebo týdenní zálohování. Pak klikněte na tlačítko **Další**.
+7. Na stránce **zadat plán zálohování** zadejte, kdy chcete provést denní nebo týdenní zálohování. Potom klikněte na tlačítko **Další**.
 
     - Bod obnovení se vytvoří při vytvoření zálohy.
     - Počet bodů obnovení vytvořených ve vašem prostředí závisí na plánu zálohování.
@@ -52,7 +52,7 @@ Vytvořte zásadu následujícím způsobem:
 
     ![Týdenní plán](./media/backup-configure-vault/week-schedule.png)
 
-10. Na stránce **Vybrat zásady uchovávání informací** určete způsob ukládání historických kopií vašich dat. Pak klikněte na tlačítko **Další**.
+10. Na stránce **Vybrat zásady uchovávání informací** určete způsob ukládání historických kopií vašich dat. Potom klikněte na tlačítko **Další**.
 
     - Nastavení uchovávání určují, které body obnovení by se měly ukládat a jak dlouho se mají ukládat.
     - Když například nastavíte denní nastavení uchovávání, označíte si, že v době určené pro denní uchovávání se bude pro zadaný počet dnů uchovávat nejnovější bod obnovení. Nebo jako jiný příklad můžete zadat měsíční zásady uchovávání informací, které označují, že bod obnovení vytvořený na 30. den v měsíci by měl být uložený na 12 měsíců.
@@ -209,4 +209,4 @@ Pokud jste zastavili ochranu při zachování dat a rozhodli jste se obnovit och
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o podporovaných scénářích a omezeních najdete v části [support Matrix pro Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
-- Přečtěte si další informace o [chování uchovávání zásad zálohování ad hoc](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior).
+- Přečtěte si další informace o [chování uchovávání zásad zálohování na vyžádání](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).

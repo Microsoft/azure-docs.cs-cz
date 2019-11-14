@@ -1,5 +1,5 @@
 ---
-title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series – Storage | Microsoft Docs
+title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series – úložiště
 description: Přečtěte si, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích řady Lsv2-Series.
 services: virtual-machines-windows
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a14e38cd93e7d6273282e209db8ce83ec99f16db
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101783"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068164"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích řady Lsv2-Series
 
@@ -39,7 +39,7 @@ Virtuální počítače řady Lsv2-Series používají procesory AMD EYPC™ ser
 
 * Lsv2 uživatelé by neměli spoléhat na informace NUMA zařízení (všechny 0) hlášené v rámci virtuálního počítače, aby se pro své aplikace rozhodly spřažení NUMA. Doporučený způsob, jak zajistit lepší výkon, je rozložit úlohy napříč procesory, pokud je to možné. 
 
-* Maximální podporovaná hloubka fronty na dvojici v/v fronty pro Lsv2 virtuálního počítače NVMe je 1024 (vs. I3 hloubka fronty pro Amazon – 32). Lsv2 uživatelé by měli omezit své (syntetické) úlohy srovnávacích testů na hloubku fronty 1024 nebo nižší, aby nedocházelo k vystavování úplných podmínek zařazování do fronty, což může snížit výkon.
+* Maximální podporovaná hloubka fronty na dvojici vstupně-výstupních front pro zařízení Lsv2 VM NVMe je 1024 (vs. Amazon i3 hloubka fronty 32). Lsv2 uživatelé by měli omezit své (syntetické) úlohy srovnávacích testů na hloubku fronty 1024 nebo nižší, aby nedocházelo k vystavování úplných podmínek zařazování do fronty, což může snížit výkon.
 
 ## <a name="utilizing-local-nvme-storage"></a>Využití místního úložiště NVMe
 
@@ -96,6 +96,6 @@ Další informace o možnostech zálohování dat v místním úložišti najdet
 * **Je možné upravit nastavení cyklického dotazování ve Windows serveru 2019?**  
    Nastavení cyklického dotazování není uživatelsky seřiditelné.
    
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Podívejte se na specifikace pro všechny [virtuální počítače optimalizované pro výkon úložiště](sizes-storage.md) v Azure.

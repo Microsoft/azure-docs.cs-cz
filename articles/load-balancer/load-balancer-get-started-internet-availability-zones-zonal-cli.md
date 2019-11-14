@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Load Balancer s oblastmi front-endu Azure CLI
-titlesuffix: Azure Load Balancer
+title: Vytvoření nástroje pro vyrovnávání zatížení s oblastmi front-endu Azure CLI
+titleSuffix: Azure Load Balancer
 description: Naučte se vytvářet Standard Load Balancer s použitím rozhraní příkazového řádku Azure pomocí Azure CLI.
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 663567f6e3b078c1cb2afc60c3aaa9fcfb7af4dd
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 620e4456e86a8610819495bd490353a3a5681738
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275243"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076088"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Vytvoření Standard Load Balancer pomocí rozhraní příkazového řádku Azure ve front-endu
 
@@ -77,7 +77,7 @@ az network lb rule create --resource-group myResourceGroupZLB --lb-name myLoadBa
   --backend-pool-name myBackEndPool --probe-name myHealthProbe
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md).
 
 

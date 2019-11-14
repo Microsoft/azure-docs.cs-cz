@@ -1,7 +1,7 @@
 ---
 title: Co jsou Automatické návrhy Bingu?
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat rozhraní API pro automatické návrhy Bingu.
+description: Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě částečného řetězce dotazu ve vyhledávacím poli.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 13606fa5a58106575648a39e5074507f5d3bf471
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405383"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072875"
 ---
 # <a name="what-is-bing-autosuggest"></a>Co jsou Automatické návrhy Bingu?
 
@@ -35,7 +35,7 @@ Rozhraní API pro automatické návrhy Bingu je webová služba RESTful, která 
 2. Pokaždé, když uživatel do vyhledávacího pole aplikace zadá nový znak, pošle se mu požadavek na toto rozhraní API.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
-Toto rozhraní API obvykle vyvoláte pokaždé, když uživatel zadá do vyhledávacího pole aplikace nový znak. Po zadání více znaků vrátí rozhraní API relevantnější navrhované vyhledávací dotazy. Například návrhy, které může rozhraní API vracet pro jednu `s` z nich, budou pravděpodobně méně relevantní než pro. `sail`
+Toto rozhraní API obvykle vyvoláte pokaždé, když uživatel zadá do vyhledávacího pole aplikace nový znak. Po zadání více znaků vrátí rozhraní API relevantnější navrhované vyhledávací dotazy. Například návrhy, které může rozhraní API vracet pro jeden `s`, jsou pravděpodobně méně důležité než pro `sail`.
 
 Následující příklad ukazuje rozevírací vyhledávací pole s navrhovanými výrazy dotazu z rozhraní API pro automatické návrhy Bingu.
 
@@ -43,7 +43,7 @@ Následující příklad ukazuje rozevírací vyhledávací pole s navrhovanými
 
 Když uživatel vybere návrh z rozevíracího seznamu, můžete ho použít k zahájení hledání v jednom z rozhraní API pro vyhledávání Bingu, nebo přímo přejít na stránku výsledků hledání Bingu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete rychle začít s vaším prvním požadavkem, projděte si popis [vytvoření prvního dotazu](quickstarts/csharp.md).
 

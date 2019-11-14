@@ -1,21 +1,18 @@
 ---
 title: Další Azure Policy pro modul AKS
 description: Přečtěte si, jak Azure Policy používá CustomResourceDefinitions a Open Agent zásad z gatekeeper V3 ke správě clusterů pomocí stroje AKS.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 71f3f26b9ea7f24d674c911e18c785b0798a072c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512129"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072065"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Vysvětlení Azure Policy pro modul AKS
 
-Azure Policy se integruje s [modulem AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md), což je systém, který poskytuje praktické nástroje pro rychlé spuštění samoobslužně spravovaného clusteru Kubernetes v Azure. Tato integrace umožňuje v rámci samoobslužného a konzistentního výkonu provádět vynucování a zabezpečení AKSch clusterů v modulu pro správu. Rozšířením používání [otevřeného agenta zásad](https://www.openpolicyagent.org/) (Neprů) [gatekeeper](https://github.com/open-policy-agent/gatekeeper) V3 (beta) se _Webhook kontroleru_ připojení pro Kubernetes Azure Policy umožňuje spravovat a hlásit stav dodržování předpisů pro prostředky Azure a modul AKS. samy spravované clustery z jednoho místa.
+Azure Policy se integruje s [modulem AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md), což je systém, který poskytuje praktické nástroje pro rychlé spuštění samoobslužně spravovaného clusteru Kubernetes v Azure. Tato integrace umožňuje v rámci samoobslužného a konzistentního výkonu provádět vynucování a zabezpečení AKSch clusterů v modulu pro správu. Rozšířením používání [otevřeného agenta zásad](https://www.openpolicyagent.org/) (Neprů) [gatekeeper](https://github.com/open-policy-agent/gatekeeper) V3 (beta) se _Webhook kontroleru_ připojení pro Kubernetes Azure Policy umožňuje spravovat a nahlásit stav dodržování předpisů vašich prostředků Azure a samoobslužně spravovaných clusterů AKS Engine z jednoho místa.
 
 > [!NOTE]
 > Azure Policy pro modul AKS je v Public Preview a nemá žádnou smlouvu SLA. Server Gatekeeper v3 je ve verzi beta a je podporovaný komunitou open source. Služba podporuje pouze předdefinované definice zásad a jeden cluster AKS Engine pro každou skupinu prostředků nakonfigurovanou s instančním objektem.
@@ -32,7 +29,7 @@ Pokud chcete povolit a používat Azure Policy pro modul AKS s vaším samoobslu
 - [Přiřazení definice zásady pro modul AKS](#built-in-policies)
 - [Počkat na ověření](#validation-and-reporting-frequency)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. PolicyInsights** a vytvořit přiřazení role pro instanční objekt služby. 
 
@@ -236,7 +233,7 @@ Chcete-li odebrat Azure Policy doplněk a server gatekeeper z clusteru AKS Engin
 
   1. Odebrat stará omezení
 
-     V současné době odinstalační mechanizmus odebere jenom systém gatekeeper, neodebere žádné prostředky _ConstraintTemplate_, _omezení_nebo _Konfigurace_ , které vytvořil uživatel, ani neodebere jejich doprovodné _CRDs._ .
+     V současné době odinstalační mechanizmus odebere jenom systém gatekeeper, neodebere žádné prostředky _ConstraintTemplate_, _omezení_nebo _Konfigurace_ , které vytvořil uživatel, ani neodebere jejich doprovodné _CRDs_.
 
      Když je server gatekeeper spuštěný, je možné odebrat nežádoucí omezení:
 

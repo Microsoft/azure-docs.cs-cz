@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997883"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075663"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -38,7 +38,7 @@ Vzhledem k tomu, že emulátor Azure Cosmos poskytuje emulované prostředí bě
 * Emulátor Azure Cosmos není škálovatelná služba a nebude podporovat velký počet kontejnerů.
 * Emulátor Azure Cosmos nenabízí různé [Azure Cosmos dB úrovně konzistence](consistency-levels.md).
 * Emulátor Azure Cosmos nenabízí replikaci ve [více oblastech](distribute-data-globally.md).
-* Protože vaše kopie emulátoru Azure Cosmos nemusí být vždycky aktuální s nejnovějšími změnami ve službě Azure Cosmos DB, měli byste se podívat na [Azure Cosmos DB Capacity Planneru](https://www.documentdb.com/capacityplanner) a přesně odhadnout potřeby produkční propustnosti (ru). použití.
+* Protože vaše kopie emulátoru Azure Cosmos nemusí být vždycky aktuální s nejnovějšími změnami ve službě Azure Cosmos DB, měli byste se podívat na [Azure Cosmos DB Capacity Planneru](https://www.documentdb.com/capacityplanner) a přesně odhadnout, jaké jsou požadavky vaší aplikace v produkční propustnosti (ru).
 * Při použití emulátoru Azure Cosmos ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikostí (podporované jenom pomocí sad SDK pro Azure Cosmos DB) nebo 5 neomezených kontejnerů pomocí emulátoru Azure Cosmos. Další informace o změně této hodnoty najdete v části [Nastavení hodnoty PartitionCount](#set-partitioncount).
 
 ## <a name="system-requirements"></a>Požadavky na systém
@@ -69,7 +69,7 @@ Po spuštění emulátoru se v oznamovací oblasti hlavního panelu Windows zobr
 
 Emulátor Azure Cosmos ve výchozím nastavení běží na místním počítači (localhost), který naslouchá na portu 8081.
 
-Emulátor Azure Cosmos je `C:\Program Files\Azure Cosmos DB Emulator` ve výchozím nastavení nainstalovaný. Emulátor můžete také spustit a zastavit z příkazového řádku. Další informace najdete v [referenčních informacích k nástroji příkazového řádku](#command-line).
+Emulátor Azure Cosmos se ve výchozím nastavení nainstaluje do `C:\Program Files\Azure Cosmos DB Emulator`. Emulátor můžete také spustit a zastavit z příkazového řádku. Další informace najdete v [referenčních informacích k nástroji příkazového řádku](#command-line).
 
 ## <a name="start-data-explorer"></a>Spuštění Průzkumníka dat
 
@@ -97,13 +97,13 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > Hlavní klíč podporovaný emulátorem Azure Cosmos je určený jenom pro použití s emulátorem. V emulátoru Azure Cosmos nemůžete použít svůj účet a klíč produkčního Azure Cosmos DB.
 
 > [!NOTE]
-> Pokud jste spustili emulátor s možností/Key, pak použijte vygenerovaný klíč místo `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`. Další informace o možnosti/Key naleznete v tématu [Reference k nástroji příkazového řádku.](#command-line)
+> Pokud jste spustili emulátor s možností/Key, použijte vygenerovaný klíč místo `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`. Další informace o možnosti/Key naleznete v tématu [Reference k nástroji příkazového řádku.](#command-line)
 
 Jako u Azure Cosmos DB emulátor Azure Cosmos podporuje jenom zabezpečenou komunikaci přes SSL.
 
 ## <a name="running-on-a-local-network"></a>Spuštění v místní síti
 
-Emulátor můžete spustit v místní síti. Pokud chcete povolit přístup k síti, `/AllowNetworkAccess` zadejte na [příkazovém řádku](#command-line-syntax)možnost, která také vyžaduje, abyste zadali `/Key=key_string` nebo. `/KeyFile=file_name` Můžete použít `/GenKeyFile=file_name` k vygenerování souboru s náhodným klíčem. Pak můžete předat to `/KeyFile=file_name` nebo. `/Key=contents_of_file`
+Emulátor můžete spustit v místní síti. Pokud chcete povolit přístup k síti, zadejte na [příkazovém řádku](#command-line-syntax)možnost `/AllowNetworkAccess`, která také vyžaduje, abyste zadali `/Key=key_string` nebo `/KeyFile=file_name`. K vygenerování souboru s náhodným klíčem můžete použít `/GenKeyFile=file_name`. Pak můžete předat `/KeyFile=file_name` nebo `/Key=contents_of_file`.
 
 Pro povolení přístupu k síti uživateli při prvním spuštění emulátoru a odstranění datového adresáře emulátoru (%LOCALAPPDATA%\CosmosDBEmulator).
 
@@ -149,7 +149,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="cassandra-api"></a>Rozhraní Cassandra API
 
-Spusťte emulátor z příkazového řádku správce s názvem "/EnableCassandraEndpoint". Případně můžete také nastavit proměnnou `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true`prostředí.
+Spusťte emulátor z příkazového řádku správce s názvem "/EnableCassandraEndpoint". Případně můžete také nastavit proměnnou prostředí `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true`.
 
 * [Instalace Pythonu 2,7](https://www.python.org/downloads/release/python-2716/)
 
@@ -179,7 +179,7 @@ Spusťte emulátor z příkazového řádku správce s názvem "/EnableCassandra
 
 ### <a name="gremlin-api"></a>Rozhraní Gremlin API
 
-Spusťte emulátor z příkazového řádku správce s názvem "/EnableGremlinEndpoint". Případně můžete také nastavit proměnnou prostředí.`AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
+Spusťte emulátor z příkazového řádku správce s názvem "/EnableGremlinEndpoint". Případně můžete také nastavit proměnnou prostředí `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
 * [Instalace Apache-tinkerpop-Gremlin-Console-3.3.4](https://tinkerpop.apache.org/downloads.html)
 
@@ -240,37 +240,37 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 |---|---|---|---|
 |[Žádné argumenty] | Spustí emulátor Azure Cosmos s výchozími nastaveními. |CosmosDB.Emulator.exe| |
 |[Nápověda] |Zobrazí seznam podporovaných argumentů příkazového řádku.|CosmosDB.Emulator.exe /? | |
-| GetStatus |Získá stav emulátoru Azure Cosmos. Stav je označen ukončovacím kódem: 1 = začíná, 2 = spuštěno, 3 = zastaveno. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | CosmosDB.Emulator.exe /GetStatus| |
+| GetStatus |Získá stav emulátoru Azure Cosmos. Stav je indikován ukončovacím kódem: 1 = spouštění, 2 = spuštěno, 3 = zastaveno. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | CosmosDB.Emulator.exe /GetStatus| |
 | Shutdown| Ukončí emulátor Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
-|DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je%LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<Cesta k\>DataPath: Přístupná cesta |
-|Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: Jedno číslo portu |
-| ComputePort | Určuje číslo portu, které se má použít pro službu COMPUTE Interop Gateway. Port testu koncového bodu HTTP brány se počítá jako ComputePort + 79. Proto musí být ComputePort a ComputePort + 79 otevřené a dostupné. Výchozí hodnoty jsou 8900, 8979. | CosmosDB. emulátor. exe/ComputePort = \<ComputePort\> | \<computeport\>: Jedno číslo portu |
+|DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je%LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<cesta k datům\> | \<cesta k datům\>: přístupná cesta |
+|Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: číslo jednoho portu |
+| ComputePort | Určuje číslo portu, které se má použít pro službu COMPUTE Interop Gateway. Port testu koncového bodu HTTP brány se počítá jako ComputePort + 79. Proto musí být ComputePort a ComputePort + 79 otevřené a dostupné. Výchozí hodnoty jsou 8900, 8979. | CosmosDB. emulátor. exe/ComputePort = \<ComputePort\> | \<computeport\>: jedno číslo portu |
 | EnableMongoDbEndpoint | Povolí rozhraní MongoDB API. | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
-| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>: Jedno číslo portu|
+| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongo port\>: číslo jednoho portu|
 | EnableCassandraEndpoint | Povolí rozhraní API Cassandra | CosmosDB. emulátor. exe/EnableCassandraEndpoint | |
-| CassandraPort | Určuje číslo portu, který se má použít pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB. emulátor. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: Jedno číslo portu |
+| CassandraPort | Určuje číslo portu, který se má použít pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB. emulátor. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: jedno číslo portu |
 | EnableGremlinEndpoint | Povolí rozhraní Gremlin API. | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
-| GremlinPort | Číslo portu, které se má použít pro koncový bod Gremlin Výchozí hodnota je 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: Jedno číslo portu |
+| GremlinPort | Číslo portu, které se má použít pro koncový bod Gremlin Výchozí hodnota je 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: číslo jednoho portu |
 |EnableTableEndpoint | Povolí Azure rozhraní API pro tabulky | CosmosDB. emulátor. exe/EnableTableEndpoint | |
-|TablePort | Číslo portu, které se má použít pro koncový bod tabulky Azure Výchozí hodnota je 8902. | CosmosDB. emulátor. exe/TablePort =\<port\> | \<port\>: Jedno číslo portu|
-| KeyFile | Načte autorizační klíč ze zadaného souboru. Pro vytvoření souboru klíče použijte možnost/GenKeyFile | CosmosDB. emulátor. exe/keyfile =\<název_souboru\> | \<název_souboru\>: Cesta k souboru |
-| ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí hodnota%LOCALAPPDATA%\CosmosDbEmulator. | CosmosDB. emulátor. exe/ResetDataPath =\<cesta > | \<cesta\>: Cesta k souboru  |
+|TablePort | Číslo portu, které se má použít pro koncový bod tabulky Azure Výchozí hodnota je 8902. | CosmosDB. emulátor. exe/TablePort =\<port\> | \<port\>: číslo jednoho portu|
+| KeyFile | Načte autorizační klíč ze zadaného souboru. Pro vytvoření souboru klíče použijte možnost/GenKeyFile | CosmosDB. emulátor. exe/KeyFile =\<file_name\> | \<file_name\>: cesta k souboru |
+| ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí hodnota%LOCALAPPDATA%\CosmosDbEmulator. | CosmosDB. emulátor. exe/ResetDataPath =\<cesta > | \<cesta\>: cesta k souboru  |
 | StartTraces  |  Spusťte shromažďování protokolů trasování ladění. | CosmosDB. emulátor. exe/StartTraces | |
 | StopTraces     | Zastavte shromažďování protokolů trasování ladění. | CosmosDB. emulátor. exe/StopTraces  | |
 |FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátor znovu vygeneruje svůj certifikát SSL podepsaný svým držitelem, pokud síť SAN s certifikátem nezahrnuje název domény hostitele emulátoru, místní adresu IPv4, localhost a adresu 127.0.0.1. Tato možnost způsobí, že emulátor při spuštění selže. Pak použijte možnost/GenCert a vytvořte a nainstalujte nový certifikát SSL podepsaný svým držitelem. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. Volitelně můžete zahrnout čárkami oddělený seznam dalších názvů DNS pro přístup k emulátoru přes síť. | CosmosDB. emulátor. exe/GenCert =\<DNS-Names\> |\<názvy\>DNS: Volitelný čárkami oddělený seznam dalších názvů DNS  |
-| DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<přímé porty\> | \<directports\>: Seznam 4 portů oddělených čárkami |
-| Klíč |Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64. | CosmosDB.Emulator.exe /Key:\<klíč\> | \<klíč\>: Klíč musí být kódování Base-64 pro vektor 64-byte.|
+| GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. Volitelně můžete zahrnout čárkami oddělený seznam dalších názvů DNS pro přístup k emulátoru přes síť. | CosmosDB. emulátor. exe/GenCert =\<DNS-Names\> |\<názvů DNS\>: volitelný čárkami oddělený seznam dalších názvů DNS  |
+| DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<přímé porty\> | \<přímé porty\>: seznam 4 portů oddělených čárkami |
+| Klíč |Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64. | CosmosDB.Emulator.exe /Key:\<klíč\> | \<klíč\>: klíč musí být 64bajtový vektor s kódováním base-64.|
 | EnableRateLimiting | Určuje, že je povoleno chování omezující četnost požadavků. |CosmosDB.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |Určuje, že je zakázáno chování omezující četnost požadavků. |CosmosDB.Emulator.exe /DisableRateLimiting | |
 | NoUI | Nezobrazuje uživatelské rozhraní emulátoru. | CosmosDB.Emulator.exe /NoUI | |
 | NoExplorer | Nezobrazuje Průzkumníka dat při spuštění. |CosmosDB.Emulator.exe /NoExplorer | | 
-| PartitionCount | Určuje maximální počet kontejnerů rozdělený na oddíly. Další informace najdete v tématu [Změna počtu kontejnerů](#set-partitioncount) . | CosmosDB.Emulator.exe /PartitionCount=\<počet oddílů\> | \<partitionCount\>: Maximální počet povolených kontejnerů s jedním oddílem. Výchozí hodnota je 25. Maximální povolený počet je 250.|
-| DefaultPartitionCount| Určuje výchozí počet oddílů pro kontejner rozdělený na oddíly. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<výchozí\> hodnota defaultpartitioncount je 25.|
-| AllowNetworkAccess | Povolí přístup k emulátoru přes síť. Pokud chcete povolit přístup k síti, je nutné předat taky možnosti /Key =\<řetězec_klíče\> nebo/KeyFile =\<název_souboru\>. | CosmosDB. emulátor. exe/AllowNetworkAccess/Key =\<key_string\> nebo CosmosDB. emulátor. exe/AllowNetworkAccess/keyfile =\<název_souboru\>| |
+| PartitionCount | Určuje maximální počet kontejnerů rozdělený na oddíly. Další informace najdete v tématu [Změna počtu kontejnerů](#set-partitioncount) . | CosmosDB.Emulator.exe /PartitionCount=\<počet oddílů\> | \<partitionCount\>: maximální počet povolených kontejnerů s jedním oddílem. Výchozí hodnota je 25. Maximální povolený počet je 250.|
+| DefaultPartitionCount| Určuje výchozí počet oddílů pro kontejner rozdělený na oddíly. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<výchozí počet oddílů\> | Výchozí hodnota \<defaultpartitioncount\> je 25.|
+| AllowNetworkAccess | Povolí přístup k emulátoru přes síť. Pokud chcete povolit přístup k síti, je nutné předat taky možnosti /Key =\<řetězec_klíče\> nebo/KeyFile =\<název_souboru\>. | CosmosDB. emulátor. exe/AllowNetworkAccess/Key =\<key_string\> nebo CosmosDB. emulátor. exe/AllowNetworkAccess/KeyFile =\<file_name\>| |
 | NoFirewall | Neupravujte pravidla brány firewall, pokud se používá možnost/AllowNetworkAccess. |CosmosDB.Emulator.exe /NoFirewall | |
 | GenKeyFile | Vygeneruje nový autorizační klíč a uloží ho do zadaného souboru. Generovaný klíč lze použít s možností /Key nebo/KeyFile. | CosmosDB. emulátor. exe/GenKeyFile =\<cesta k souboru klíče\> | |
-| Konzistence | Nastaví výchozí úroveň konzistence pro účet. | CosmosDB.Emulator.exe /Consistency=\<konzistence\> | \<konzistence\>: Hodnota musí být jedna z následujících [úrovní konzistence](consistency-levels.md): Relace, silná, případná nebo BoundedStaleness. Výchozí hodnota je Session. |
+| Konzistence | Nastaví výchozí úroveň konzistence pro účet. | CosmosDB.Emulator.exe /Consistency=\<konzistence\> | \<konzistence\>: hodnota musí být jedna z následujících [úrovní konzistence](consistency-levels.md): Session, Strong, Eventual nebo BoundedStaleness. Výchozí hodnota je Session. |
 | ? | Zobrazí zprávu nápovědy.| | |
 
 ## <a id="set-partitioncount"></a>Změna počtu kontejnerů
@@ -280,16 +280,16 @@ Ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikost
 Pokud se pokusíte vytvořit kontejner po překročení aktuálního počtu oddílů, emulátor vyvolá výjimku ServiceUnavailable s následující zprávou.
 
 Omlouváme se, ale v tuto chvíli máme vysokou poptávku a v tuto chvíli nemůže váš požadavek splnit. Průběžně pracujeme na zajištění více a větší kapacity online a pomůžeme vám to zkusit znovu.
-Váhají se na e-mail askcosmosdb@microsoft.com kdykoliv nebo z jakéhokoli důvodu.
-ActivityId 12345678-1234-1234-1234-123456789abc"
+Neváhají e-mailové askcosmosdb@microsoft.com kdykoli ani z nějakého důvodu.
+ActivityId: 12345678-1234-1234-1234-123456789ABC "
 
 Pokud chcete změnit počet kontejnerů dostupných v emulátoru Azure Cosmos, spusťte následující postup:
 
 1. Kliknutím pravým tlačítkem na ikonu **emulátoru Azure Cosmos DB** na hlavním panelu a kliknutím na **resetovat data**odstraňte všechna místní data emulátoru Azure Cosmos.
-2. Odstraní všechna data emulátoru v této `%LOCALAPPDATA%\CosmosDBEmulator`složce.
+2. Odstraňte všechna data emulátoru v této složce `%LOCALAPPDATA%\CosmosDBEmulator`.
 3. Ukončete všechny otevřené instance tak, že kliknete pravým tlačítkem myši na ikonu **emulátoru služby Azure Cosmos DB** na hlavním panelu systému a potom kliknete na **Exit** (Konec). Ukončení všech instancí může chvíli trvat.
 4. Nainstalujte nejnovější verzi [emulátoru Azure Cosmos](https://aka.ms/cosmosdb-emulator).
-5. Spusťte emulátor s příznakem PartitionCount nastaveným na hodnotu < = 250. Například: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
+5. Spusťte emulátor s příznakem PartitionCount nastaveným na hodnotu < = 250. Příklad: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
 
 ## <a name="controlling-the-emulator"></a>Řízení emulátoru
 
@@ -299,7 +299,7 @@ Emulátor se dodává s modulem PowerShellu pro spuštění, zastavení, odinsta
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
 ```
 
-nebo umístěte `PSModules` adresář na svůj `PSModulesPath` a naimportujte ho, jak je znázorněno v následujícím příkazu:
+případně do `PSModulesPath` umístěte adresář `PSModules` a naimportujte ho tak, jak je znázorněno v následujícím příkazu:
 
 ```powershell
 $env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
@@ -316,7 +316,7 @@ Zde je uveden seznam příkazů pro řízení emulátoru z PowerShellu:
 
 **Poznámky**
 
-Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus. StartPending, ServiceControllerStatus. Running nebo ServiceControllerStatus. Stopped.
+Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus.StartPending, ServiceControllerStatus.Running nebo ServiceControllerStatus.Stopped.
 
 ### `Start-CosmosDbEmulator`
 
@@ -417,6 +417,24 @@ Pokud chcete otevřít Průzkumníka dat, přejděte v prohlížeči na následu
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+Pokud máte klientskou aplikaci .NET spuštěnou v kontejneru Docker Linux a používáte emulátor Azure Cosmos na hostitelském počítači, v takovém případě se k účtu Azure Cosmos z emulátoru nemůžete připojit. Vzhledem k tomu, že aplikace není spuštěna na hostitelském počítači, nelze přidat certifikát zaregistrovaný v kontejneru Linux, který odpovídá koncovému bodu emulátoru. 
+
+Jako alternativní řešení můžete zakázat ověřování certifikátu SSL serveru z klientské aplikace předáním `HttpClientHandler` instance, jak je znázorněno v následující ukázce kódu .NET. Toto řešení se dá použít jenom v případě, že používáte `Microsoft.Azure.DocumentDB` balíček NuGet, ale balíček NuGet `Microsoft.Azure.Cosmos` nepodporuje:
+ 
+ ```csharp
+var httpHandler = new HttpClientHandler()
+{
+    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+};
+ 
+using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+{
+    RunDatabaseDemo(client).GetAwaiter().GetResult();
+}
+```
+
+Kromě zakázání ověřování certifikátu SSL je důležité, abyste spustili emulátor s možností `/allownetworkaccess` a koncový bod emulátoru je dostupný z IP adresy hostitele místo `host.docker.internal` DNS.
+
 ## Spuštění v systému Mac nebo Linux<a id="mac"></a>
 
 V současné době se emulátor Cosmos dá spustit jenom ve Windows. Uživatelé se systémem Mac nebo Linux můžou spustit emulátor na virtuálním počítači s Windows, který hostuje hypervisor, jako je Parallel nebo VirtualBox. Tady je postup, jak to povolit.
@@ -427,7 +445,7 @@ Ve virtuálním počítači s Windows spusťte níže uvedený příkaz a poznam
 ipconfig.exe
 ```
 
-V rámci aplikace potřebujete změnit identifikátor URI pro objekt DocumentClient, aby používal adresu IPv4, kterou vrátí `ipconfig.exe`. Dalším krokem je obejít ověřování CA při vytváření objektu DocumentClient. Za tímto účelem bude nutné poskytnout HttpClientHandler konstruktoru DocumentClient, který má vlastní implementaci pro ServerCertificateCustomValidationCallback.
+V rámci aplikace potřebujete změnit identifikátor URI pro objekt DocumentClient tak, aby používal adresu IPv4 vrácenou `ipconfig.exe`. Dalším krokem je obejít ověřování CA při vytváření objektu DocumentClient. Za tímto účelem bude nutné poskytnout HttpClientHandler konstruktoru DocumentClient, který má vlastní implementaci pro ServerCertificateCustomValidationCallback.
 
 Níže je uveden příklad toho, jak by měl kód vypadat jako.
 
@@ -469,15 +487,15 @@ Nakonec z virtuálního počítače s Windows spusťte emulátor Cosmos z přík
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Následující tipy vám pomůžou při řešení problémů, ke kterým dochází v emulátoru Azure Cosmos:
 
 - Pokud jste nainstalovali novou verzi emulátoru a dochází k chybám, proveďte obnovení dat. Data můžete obnovit kliknutím pravým tlačítkem na ikonu emulátoru Azure Cosmos na hlavním panelu systému a kliknutím na resetovat data.... Pokud to neopraví chyby, můžete emulátor a všechny starší verze emulátoru odinstalovat, odebrat adresář "C:\Program files\Azure Cosmos DB emulátor" a přeinstalovat emulátor. Pokyny najdete v části [Odinstalace místního emulátoru](#uninstall).
 
-- Pokud dojde k selhání emulátoru Azure Cosmos, shromážděte soubory s výpisem paměti ze složky '%LOCALAPPDATA%\CrashDumps ', Zkomprimujte je a připojte je [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)k e-mailu.
+- Pokud dojde k selhání emulátoru Azure Cosmos, shromážděte soubory s výpisem paměti ze složky '%LOCALAPPDATA%\CrashDumps ', Zkomprimujte je a připojte je k e-mailu [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
 
-- Pokud dojde k chybě `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe`, může to být příznak, ve kterém jsou čítače výkonu v poškozeném stavu. Obvykle se při spuštění následujícího příkazu z příkazového řádku správce vyřeší problém:
+- Pokud dojde k chybě v `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe`, může se jednat o příznak, ve kterém jsou čítače výkonu v poškozeném stavu. Obvykle se při spuštění následujícího příkazu z příkazového řádku správce vyřeší problém:
 
   ```cmd
   lodctr /R
@@ -509,7 +527,7 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 3. V seznamu aplikací se posuňte na položku **Azure Cosmos DB Emulator**, vyberte ji, klikněte na **Odinstalovat**, potvrďte a znovu klikněte na **Odinstalovat**.
 4. Když je aplikace odinstalovaná, přejděte do složky `%LOCALAPPDATA%\CosmosDBEmulator` a odstraňte ji.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak používat místní emulátor pro bezplatný místní vývoj. Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak exportovat certifikáty SSL emulátoru.
 

@@ -1,7 +1,7 @@
 ---
 title: Protokolování sady Speech SDK – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Povolte protokolování v sadě Speech SDK.
+description: Přečtěte si, jak povolit protokolování v sadě Speech SDKC++( C#,, Python, objektiv-C, Java).
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f6c97ac819947f84735bc0bc4c125b43db58dc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559490"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075804"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Povolení protokolování v sadě Speech SDK
 
@@ -26,7 +26,7 @@ Protokolování do souboru je volitelnou funkcí sady Speech SDK. Během protoko
 
 ## <a name="sample"></a>Ukázka
 
-Název souboru protokolu je zadán v objektu konfigurace. Vezměte jako příklad a za předpokladu, že jste vytvořili instanci s názvem `config`: `SpeechConfig`
+Název souboru protokolu je zadán v objektu konfigurace. Pořizování `SpeechConfig` jako příklad a za předpokladu, že jste vytvořili instanci s názvem `config`:
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -79,9 +79,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Výše uvedený kód uloží soubor protokolu do externího úložiště v kořenovém adresáři adresáře, který je specifický pro aplikaci. Uživatel má k souboru přístup pomocí Správce souborů (obvykle v aplikaci `Android/data/ApplicationName/logfile.txt`). Soubor bude odstraněn při odinstalaci aplikace.
+Výše uvedený kód uloží soubor protokolu do externího úložiště v kořenovém adresáři adresáře, který je specifický pro aplikaci. Uživatel má k souboru přístup pomocí Správce souborů (obvykle v `Android/data/ApplicationName/logfile.txt`). Soubor bude odstraněn při odinstalaci aplikace.
 
-Musíte taky požádat o `WRITE_EXTERNAL_STORAGE` oprávnění v souboru manifestu:
+V souboru manifestu je také potřeba požádat o `WRITE_EXTERNAL_STORAGE` oprávnění:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -104,7 +104,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Chcete-li získat přístup k vytvořenému souboru, přidejte níže `Info.plist` uvedené vlastnosti do seznamu vlastností aplikace:
+Chcete-li získat přístup k vytvořenému souboru, přidejte níže uvedené vlastnosti do seznamu vlastností `Info.plist` aplikace:
 
 ```xml
 <key>UIFileSharingEnabled</key>
@@ -115,7 +115,7 @@ Chcete-li získat přístup k vytvořenému souboru, přidejte níže `Info.plis
 
 Další informace o systému souborů iOS najdete [tady](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte naše ukázky na GitHubu](https://aka.ms/csspeech/samples)

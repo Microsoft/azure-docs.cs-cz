@@ -1,5 +1,5 @@
 ---
-title: Rozšíření virtuálního počítače služby Azure Network Watcher Agent pro Linux | Microsoft Docs
+title: Rozšíření virtuálního počítače služby Azure Network Watcher Agent pro Linux
 description: Nasaďte agenta Network Watcher na virtuálním počítači se systémem Linux pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: b59e4c570032bdd3341dc7d519f23f4cd86984c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084449"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073035"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače Network Watcher agenta pro Linux
 
@@ -105,7 +105,7 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 ## <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Data o stavu nasazení rozšíření můžete načíst pomocí Azure Portal nebo prostřednictvím rozhraní příkazového řádku Azure.
 

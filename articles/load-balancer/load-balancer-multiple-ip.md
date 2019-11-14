@@ -1,7 +1,7 @@
 ---
 title: Vyrovnávání zatížení u více konfigurací IP adres – Azure Portal
-titlesuffix: Azure Load Balancer
-description: Vyrovnávání zatížení napříč primárními a sekundárními konfiguracemi IP adres.
+titleSuffix: Azure Load Balancer
+description: V tomto článku se dozvíte víc o vyrovnávání zatížení napříč primárními a sekundárními konfiguracemi IP adres pomocí Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: dbf8cdd326d3e1c8f32f6dc2bd3486146993e06b
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274737"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077005"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení u více konfigurací protokolu IP pomocí Azure Portal
 
@@ -62,7 +62,7 @@ Provedením následujících kroků dosáhnete scénáře popsaného v tomto čl
 
 Pro každý virtuální počítač ve vaší virtuální síti přidejte konfiguraci protokolu IP pro sekundární síťovou kartu:  
 
-1. Přejděte k Azure Portal: https://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
+1. Přejděte do Azure Portal: https://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
 
 2. V levém horním rohu obrazovky vyberte ikonu **skupiny prostředků** . Pak vyberte skupinu prostředků, ve které se vaše virtuální počítače nacházejí (například **contosofabrikam**). V podokně **skupiny prostředků** se zobrazí všechny prostředky a síťové karty pro virtuální počítače.
 
@@ -86,9 +86,9 @@ Po dokončení druhé konfigurace protokolu IP pro sekundární síťovou kartu 
 
 Vytvořte Nástroj pro vyrovnávání zatížení pro konfiguraci:
 
-1. Přejděte k Azure Portal: https://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
+1. Přejděte do Azure Portal: https://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
 
-2. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **síť** > **Load Balancer**. V dalším kroku vyberte **vytvořit**.
+2. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **síťové** > **Load Balancer**. V dalším kroku vyberte **vytvořit**.
 
 3. V části **vytvořit nástroj pro vyrovnávání zatížení**zadejte název nástroje pro vyrovnávání zatížení. V tomto scénáři používáme název **mylb**.
 
@@ -186,12 +186,12 @@ Pro každý web (contoso.com a fabrikam.com) nakonfigurujte pravidla vyrovnává
 
 7. Vytvořte druhé pravidlo nástroje pro vyrovnávání zatížení opakováním <a href="#step6-1">kroků 1</a> až <a href="#step6-6">6</a> v této části.
 
-Po nakonfigurování pravidel se zobrazí pod nastavením **pravidel** vyrovnávání zatížení nástroje pro vyrovnávání zatížení.
+Po nakonfigurování pravidel se zobrazí pod nastavením **pravidel vyrovnávání zatížení nástroje pro vyrovnávání** zatížení.
 
 ### <a name="step-7-configure-dns-records"></a>Krok 7: Konfigurace záznamů DNS
 
 V posledním kroku nakonfigurujte záznamy prostředků DNS tak, aby odkazovaly na příslušné front-endové IP adresy vašeho nástroje pro vyrovnávání zatížení. Domény můžete hostovat v Azure DNS. Další informace o použití Azure DNS s Load Balancer najdete v tématu [použití Azure DNS s dalšími službami Azure](../dns/dns-for-azure-services.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o tom, jak kombinovat služby Vyrovnávání zatížení v Azure [pomocí služeb vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
 - Přečtěte si, jak můžete pomocí různých typů protokolů spravovat a řešit potíže nástroje pro vyrovnávání zatížení v [Azure monitor protokoly pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

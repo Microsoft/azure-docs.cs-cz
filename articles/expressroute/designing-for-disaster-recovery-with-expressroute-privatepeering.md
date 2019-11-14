@@ -1,153 +1,150 @@
 ---
-title: Navrhování pro zotavení po havárii s využitím Azure ExpressRoute | Dokumentace Microsoftu
-description: Tato stránka obsahuje architektury doporučení pro zotavení po havárii pomocí Azure ExpressRoute.
-documentationcenter: na
-services: networking
+title: 'Azure ExpressRoute: návrh pro zotavení po havárii'
+description: Tato stránka poskytuje doporučení pro architekturu pro zotavení po havárii při používání Azure ExpressRoute.
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: cf2b4e385de901254fde3c3d3e807feda98d5b41
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466068"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076692"
 ---
-# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Navrhování pro zotavení po havárii pomocí privátního partnerského vztahu ExpressRoute
+# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute
 
-ExpressRoute je navržené pro zajištění vysoké dostupnosti a tím zajistit dopravce připojení privátní sítě na podnikové úrovni k prostředkům společnosti Microsoft. Jinými slovy neexistuje žádný jediný bod selhání v cestě ExpressRoute v rámci sítě Microsoftu. Aspekty návrhu pro maximalizaci dostupnosti okruhu ExpressRoute, naleznete v tématu [navrhování pro vysokou dostupnost s využitím ExpressRoute][HA].
+ExpressRoute je navržená tak, aby poskytovala vysokou dostupnost k zajištění privátní síťové připojení k prostředkům Microsoftu. Jinými slovy, v ExpressRoute cestě v síti Microsoftu neexistuje jediný bod selhání. Pokyny k návrhu pro maximalizaci dostupnosti okruhu ExpressRoute najdete v tématu [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA].
 
-Ale trvá Murphy od oblíbených adage –*Pokud nic můžete zvrtne, bude*– v úvahu, v tomto článku nám umožní soustředit se na řešení, která přesahují chyby, které se dají řešit pomocí jednoho okruhu ExpressRoute. Jinými slovy v tomto článku Podívejme se na důležité informace o architektuře síťové pro vytvoření robustního back-end připojení k síti pro zotavení po havárii pomocí geograficky redundantního okruhy ExpressRoute.
+Pokud se ale Murphya oblíbená pořekadlem – Pokud se něco nepovede *, může se*v tomto článku soustředit na řešení, která přesahují selhání, která se dají řešit pomocí jednoho okruhu ExpressRoute. Jinými slovy, v tomto článku se podíváme na požadavky architektury sítě, které vám pomůžou vytvářet robustní back-end síť pro zotavení po havárii pomocí geograficky redundantních okruhů ExpressRoute.
 
-## <a name="need-for-redundant-connectivity-solution"></a>Potřebu řešení pro redundantní připojení
+## <a name="need-for-redundant-connectivity-solution"></a>Nutné řešení redundantního připojení
 
-Existují možnosti a instance, ve kterém získá snížený výkon celé oblasti služby (třeba které síti poskytovatele služeb, zákazníka nebo dalších poskytovatelů cloudových služeb společnosti Microsoft,). Původní příčinu těchto regionálních služeb široký dopad patří fyzická calamity. Pro provozní kontinuitu a zásadně důležité podnikové aplikace je tedy důležité mít plán pro zotavení po havárii.   
+Existují možnosti a instance, ve kterých se snižuje výkon celé místní služby (to je to, že poskytovatelé Microsoftu, poskytovatelé síťových služeb, zákazníci nebo jiní poskytovatelé cloudových služeb). Hlavní příčina tohoto dopadu na regionální služby zahrnuje přirozené Calamity. Proto je pro zajištění kontinuity podnikových a důležitých aplikací důležité naplánovat zotavení po havárii.   
 
-Bez ohledu na to, jestli používáte nepostradatelné aplikace v oblasti Azure nebo v místním nebo kdekoli jinde můžete použít jiné oblasti Azure jako lokalitu pro převzetí služeb při selhání. Následující články adresy zotavení po havárii z aplikací a perspektivy přístup front-endu:
+Bez ohledu na to, jestli vaše nejdůležitější aplikace spouštíte v oblasti Azure nebo v místním prostředí nebo kdekoli jinde, můžete jako web pro převzetí služeb při selhání použít jinou oblast Azure. Následující články řeší zotavení po havárii z aplikací a perspektiv přístupu na front-end:
 
-- [Zotavení po havárii na podnikové úrovni][Enterprise DR]
+- [Zotavení po havárii v podnikovém měřítku][Enterprise DR]
 - [Zotavení po havárii SMB pomocí Azure Site Recovery][SMB DR]
 
-Pokud se spoléháte na připojení ExpressRoute mezi místní sítí a Microsoftem pro zásadně důležité operace, plán zotavení po havárii by měl obsahovat také geograficky redundantní síťové připojení. 
+Pokud jste se spoléhali na ExpressRoute konektivitu mezi vaší místní sítí a Microsoftem pro důležité operace, měl by váš plán zotavení po havárii zahrnovat taky geograficky redundantní síťové připojení. 
 
-## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Obtíže spojené s pomocí víc okruhů ExpressRoute
+## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Výzvy k používání více okruhů ExpressRoute
 
-Připojit stejnou sadu sítím pomocí více než jedno připojení zavádíte paralelní cesty mezi sítěmi. Paralelní cesty, když není správně navržený, může vést k asymetrické směrování. Pokud máte v cestě stavové entity (například NAT, brána firewall), asymetrické směrování by mohla blokovat tok provozu.  Obvykle za cestou soukromého partnerského vztahu ExpressRoute nebude narazíte na stavové entit, jako je například NAT nebo branami firewall. Proto asymetrické směrování přes privátní partnerský vztah ExpressRoute nedochází k blokování nutně tok provozu.
+Při propojení stejné sady sítí pomocí více než jednoho připojení zavedete mezi sítě paralelní cesty. Paralelní směrování, pokud není správně navrženo, by mohlo vést k asymetrickému směrování. Pokud máte v cestě stavové entity (například NAT, firewall), může asymetrické směrování blokovat přenosový tok.  Obvykle se přes cestu soukromého partnerského vztahu ExpressRoute nepřijdete mezi stavové entity, jako jsou třeba NAT nebo brány firewall. Asymetrické směrování přes ExpressRoute privátní partnerské vztahy proto nutně neblokuje tok přenosů.
  
-Nicméně pokud můžete vyrovnávat zatížení provozu mezi geograficky redundantní cesty paralelní, bez ohledu na to, zda je třeba stavové entity nebo Ne, neprovádějí nekonzistentní síťový výkon. V tomto článku Pojďme se na tom, jak tyto problémy.
+Pokud ale vyrovnáváte zatížení v rámci geograficky redundantních paralelních cest bez ohledu na to, jestli máte stavové entity, nebo ne, dojde k nekonzistentnímu výkonu sítě. V tomto článku se podíváme na to, jak tyto výzvy řešit.
 
-## <a name="small-to-medium-on-premises-network-considerations"></a>Malé a střední místní síťové požadavky
+## <a name="small-to-medium-on-premises-network-considerations"></a>Doporučení pro malé až střední požadavky na místní síť
 
-Pojďme se podívat sítě příklad znázorněný v následujícím diagramu. V tomto příkladu je geograficky redundantní připojení ExpressRoute navázat mezi místním umístěním společnosti Contoso a virtuální síť společnosti Contoso v oblasti Azure. V diagramu plná zelená čára označuje stane upřednostňovanou cestou (přes ExpressRoute 1) a tečkovaná ten představuje cestu pohotovostní (přes ExpressRoute 2).
+Podívejme se na příklad sítě znázorněné v následujícím diagramu. V tomto příkladu je geograficky redundantní připojení ExpressRoute vytvořeno mezi místním umístěním společnosti Contoso a virtuální sítí contoso v oblasti Azure. V diagramu se plná zelená čára označuje jako upřednostňovaná cesta (přes ExpressRoute 1) a tečkovaná jedna představuje cestu k umístění (prostřednictvím ExpressRoute 2).
 
 [![1]][1]
 
-Při navrhování připojení ExpressRoute pro zotavení po havárii, je potřeba zvážit:
+Pokud navrhujete ExpressRoute konektivitu pro zotavení po havárii, je třeba vzít v úvahu:
 
-- pomocí geograficky redundantního okruhy ExpressRoute
-- používat různé služby poskytovatele sítí pro jiný okruh ExpressRoute
-- Každý okruh ExpressRoute pro navrhování [vysoké dostupnosti][HA]
-- Ukončuje se jiný okruh ExpressRoute do jiného umístění v síti zákazníka
+- použití geograficky redundantních okruhů ExpressRoute
+- používání různých sítí poskytovatele služeb pro různé okruhy ExpressRoute
+- návrh každého okruhu ExpressRoute pro zajištění [vysoké dostupnosti][HA]
+- ukončení jiného okruhu ExpressRoute v jiném umístění v síti zákazníka
 
-Ve výchozím nastavení Pokud jste inzerování tras, stejně jako u všech cest ExpressRoute, Azure bude provoz vázaný na místě – nástroj pro vyrovnávání zatížení mezi všechny cesty ExpressRoute používající směrování na náklady na stejné více cest (ECMP).
+Ve výchozím nastavení platí, že pokud inzerujete trasy stejně jako všechny ExpressRoute cesty, Azure vyrovnává místní vázaný provoz napříč všemi ExpressRoute cestami pomocí směrování s rovnými náklady (ECMP).
 
-Nicméně s geograficky redundantní okruhy ExpressRoute potřebujeme brát v úvahu výkonů jinou síť s jinou síť cesty (zejména latence sítě). Chcete-li získat více konzistentní výkon sítě při normálním provozu, můžete chtít preferovali okruh ExpressRoute, který nabízí minimální latenci.
+U geograficky redundantních okruhů ExpressRoute ale musíme vzít v úvahu různé síťové výkony s různými síťovými cestami (zejména u latence sítě). Aby bylo možné dosáhnout větší konzistence sítě během normálního provozu, můžete chtít upřednostnit okruh ExpressRoute, který nabízí minimální latenci.
 
-Můžete ovlivnit Azure, aby preferovali jeden okruh ExpressRoute přes jiný pomocí jedné z následujících postupů (uvedené v pořadí efektivitu):
+Můžete ovlivnit Azure tak, aby dával jeden okruh ExpressRoute přes jiný, a to pomocí jedné z následujících technik (uvedených v pořadí efektivity):
 
-- inzerování konkrétnější trasu upřednostňovanou okruhu ExpressRoute ve srovnání s jiné okruhy ExpressRoute
-- konfigurace vyšší váhu připojení na připojení, které odkazuje virtuální síť na preferované okruh ExpressRoute
-- inzerování tras méně upřednostňované okruhu ExpressRoute s delší cestu AS (jak předřaďte cesta)
+- inzerce konkrétnějšího směrování přes upřednostňovaný okruh ExpressRoute ve srovnání s ostatními okruhy ExpressRoute
+- Konfigurace vysoké váhy připojení u připojení, které propojuje virtuální síť s preferovaným okruhem ExpressRoute
+- inzerce tras přes méně upřednostňovaný okruh ExpressRoute s delším využitím cesty (jako předřazení cesty)
 
-### <a name="more-specific-route"></a>Konkrétnější trasu
+### <a name="more-specific-route"></a>Konkrétnější trasa
 
-Následující diagram znázorňuje vliv cestu výběr ExpressRoute pomocí konkrétnější inzerování tras. V tomto příkladu ilustrované Contoso místní/24 rozsah IP adres, která je ohlášena jako rozsahy adres dvě /25 prostřednictvím stane upřednostňovanou cestou (ExpressRoute 1) a jako /24 prostřednictvím cesty pohotovostní (ExpressRoute 2).
+Následující diagram ilustruje vliv výběru cest ExpressRoute pomocí konkrétnější inzerce tras. V následujícím příkladu je místní/24 IP rozsah společnosti Contoso inzerován jako dva/25 rozsahů adres přes upřednostňovanou cestu (ExpressRoute 1) a jako/24 prostřednictvím cesty (ExpressRoute 2).
 
 [![2]][2]
 
-Protože /25 je specifičtější, ve srovnání s /24, Azure bude posílat provoz směřující do 10.1.11.0/24 přes ExpressRoute 1 do normálního stavu. Pokud připojení ExpressRoute 1, přestanou fungovat, pak virtuální síť zobrazoval inzerování tras 10.1.11.0/24 jenom přes ExpressRoute 2; a proto pohotovostní okruh se používá v tomto stavu selhání.
+Vzhledem k tomu, že/25 je přesnější, v porovnání s/24, Azure odešle provoz určený k 10.1.11.0/24 prostřednictvím ExpressRoute 1 v normálním stavu. Pokud připojení ExpressRoute 1 přestanou platit, pak síť VNet uvidí trasovou reklamu 10.1.11.0/24 pouze prostřednictvím ExpressRoute 2; Proto se v tomto stavu selhání používá pohotovostní okruh.
 
-### <a name="connection-weight"></a>Váhy připojení
+### <a name="connection-weight"></a>Váha připojení
 
-Nakonfigurujete váhy připojení ExpressRoute pomocí webu Azure portal je znázorněný na následujícím snímku obrazovky.
+Následující snímek obrazovky ukazuje konfiguraci váhy ExpressRoute připojení prostřednictvím Azure Portal.
 
 [![3]][3]
 
-Následující diagram znázorňuje vliv cestu výběr ExpressRoute pomocí váhy připojení. Výchozí váhy připojení je 0. V následujícím příkladu váhy připojení ExpressRoute 1 nastavená na 100. Pokud virtuální síť obdrží předponu trasy, inzerované prostřednictvím více než jeden okruh ExpressRoute, virtuální síť přednost připojení v nejvyšší váhou.
+Následující diagram ilustruje vliv výběru cesty ExpressRoute pomocí váhy připojení. Výchozí váha připojení je 0. V následujícím příkladu je váha připojení pro ExpressRoute 1 nakonfigurovaná jako 100. Když virtuální síť přijme předponu trasy inzerovanou přes více než jeden okruh ExpressRoute, virtuální síť bude upřednostňovat připojení s nejvyšší váhou.
 
 [![4]][4]
 
-Pokud připojení ExpressRoute 1, přestanou fungovat, pak virtuální síť zobrazoval inzerování tras 10.1.11.0/24 jenom přes ExpressRoute 2; a proto pohotovostní okruh se používá v tomto stavu selhání.
+Pokud připojení ExpressRoute 1 přestanou platit, pak síť VNet uvidí trasovou reklamu 10.1.11.0/24 pouze prostřednictvím ExpressRoute 2; Proto se v tomto stavu selhání používá pohotovostní okruh.
 
-### <a name="as-path-prepend"></a>JAKO cestu předřaďte
+### <a name="as-path-prepend"></a>Jako předřadit jako cestu
 
-Následující diagram znázorňuje vliv cestu výběr ExpressRoute pomocí předřaďte cestu. V diagramu inzerování tras přes ExpressRoute 1 označuje výchozí chování eBGP. Na inzerování tras přes ExpressRoute 2 ASN v místní síti se přidá jako předpona kromě na trasy jako cestu. Při přijetí stejné směrování přes víc okruhů ExpressRoute, jeden proces výběru eBGP trasy, virtuální sítě raději směrování s nejkratší jako cestu. 
+Následující diagram ilustruje vliv výběru cesty ExpressRoute pomocí jako předřazení cesty. V diagramu indikuje inzerce trasy přes ExpressRoute 1 výchozí chování eBGP. Na trase inzerce přes ExpressRoute 2 se v cestě k této trase na cestě k místní síti přiřadí také číslo ASN. Pokud je stejná trasa přijata prostřednictvím několika okruhů ExpressRoute, na základě procesu výběru trasy eBGP, virtuální síť upřednostňuje směrování s nejkratší cestou. 
 
 [![5]][5]
 
-Pokud připojení ExpressRoute 1, přestanou fungovat, virtuální síť zobrazoval inzerování tras 10.1.11.0/24 jenom přes ExpressRoute 2. Consequentially tím déle, protože cesta by se mohla stát relevantní. Proto se použije v tomto stavu selhání pohotovostní okruhu.
+Pokud se obě připojení ExpressRoute 1 rozstanou, pak síť VNet uvidí oznámení trasy 10.1.11.0/24 jenom prostřednictvím ExpressRoute 2. Postupně by měl být nepodstatný. Proto by byl pohotovostní okruh použit v tomto stavu selhání.
 
-Pomocí kteréhokoli z technik, pokud ovlivnit Azure preferovat jeden přes ExpressRoute přes ostatní, je také potřeba zajistit v místní síti také dáváte přednost stejnou cestu k ExpressRoute pro Azure vázat provozu, aby asymetrického toky. Hodnotu local preference obvykle se používá k ovlivnění místní sítě k preferovali jeden okruh ExpressRoute prostřednictvím jiné. Místní předvoleb je interní metriky protokolu BGP (iBGP). Trasa protokolu BGP s nejvyšší hodnotu local preference je upřednostňována.
+Pokud budete chtít, aby Azure při použití některé z těchto postupů dával přednost jednomu z vašich ExpressRoute, musíte taky zajistit, aby místní síť také dávala stejnou ExpressRoute cestu pro přenos dat na Azure, aby se předešlo asymetrickým tokům. Lokální hodnota předvolby se obvykle používá k ovlivnění místní sítě a upřednostňuje jeden okruh ExpressRoute přes jiné. Lokální preference je interní metrika protokolu BGP (iBGP). Upřednostňuje se trasa protokolu BGP s nejvyšší hodnotou místní předvolby.
 
 > [!IMPORTANT]
-> Použijete-li jako pohotovostní určité okruhy ExpressRoute, budete muset aktivně spravovat a pravidelně testovat převzetí služeb při selhání. 
+> Pokud používáte určité okruhy ExpressRoute jako samostatné, musíte je aktivně spravovat a pravidelně testovat operace převzetí služeb při selhání. 
 > 
 
-## <a name="large-distributed-enterprise-network"></a>Velké distribuované rozlehlé sítě
+## <a name="large-distributed-enterprise-network"></a>Velká distribuovaná podniková síť
 
-Pokud máte velký podnik distribuované sítě, budete pravděpodobně máte víc okruhů ExpressRoute. V této části se podíváme se na postup návrhu zotavení po havárii pomocí typu aktivní aktivní okruhy ExpressRoute, bez nutnosti dalších neslo okruhy. 
+Pokud máte rozsáhlou distribuovanou podnikovou síť, pravděpodobně budete mít více okruhů ExpressRoute. V této části se podíváme na návrh zotavení po havárii pomocí okruhů aktivní-aktivní ExpressRoute, aniž byste museli potřebovat další obvody. 
 
-Pojďme se na příklad znázorněný v následujícím diagramu. V tomto příkladu Contoso má dva místními umístěními připojené k dvě nasazení IaaS společnosti Contoso ve dvou různých oblastech Azure prostřednictvím okruhů ExpressRoute ve dvou různých umístění partnerského vztahu. 
+Pojďme považovat příklad znázorněný v následujícím diagramu. V tomto příkladu má společnost Contoso dvě místní umístění připojená ke dvěma různým nasazením contoso IaaS ve dvou různých oblastech Azure prostřednictvím ExpressRoute okruhů ve dvou různých umístěních partnerských vztahů. 
 
 [![6]][6]
 
-Jak stojí zotavení po havárii má vliv na různé oblasti pro různé umístění (region1/region2 k location2/location1) směrování provozu. Pojďme se na dva různé po havárii architektury, které směruje provoz mezi místo oblasti odlišně.
+Způsob, jakým architekt zotavení po havárii má vliv na směrování provozu mezi různými oblastmi (Region1/region2 a Location2/location1). Pojďme se považovat za dvě různé architektury havárií, které směrují provoz mezi oblastmi a různými oblastmi.
 
 ### <a name="scenario-1"></a>Scénář 1
 
-Do prvního scénáře můžeme navrhnout zotavení po havárii tak, aby veškerý provoz mezi Azure oblasti a místní sítí procházet skrz místnímu okruhu ExpressRoute do stabilního stavu. Pokud místní okruh ExpressRoute selže, pak ke vzdálenému okruhu ExpressRoute se používá pro všechny toky přenosů mezi Azure a místní síť.
+V prvním scénáři navrhneme zotavení po havárii tak, aby veškerý provoz mezi oblastí Azure a místní sítí pokračoval prostřednictvím místního okruhu ExpressRoute v rovnovážném stavu. Pokud se místní okruh ExpressRoute nepovede, použije se vzdálený okruh ExpressRoute pro všechny přenosy dat mezi Azure a místní sítí.
 
-Scénář 1 je znázorněné v následujícím diagramu. V diagramu označení zelené čáry cesty pro tok přenosů mezi ze sítě VNet1 a místní sítí. Modré čáry označují cesty pro tok přenosů mezi sítě VNet2 a místní sítí. Plné čáry označují požadovanou cestu do stabilního stavu a přerušované čáry označují provoz cesta selhání odpovídající okruh ExpressRoute, které má tok provozu stabilního stavu. 
+Scénář 1 je znázorněný v následujícím diagramu. V diagramu zelené čáry označují cesty pro přenos toků mezi VNet1 a místními sítěmi. Modré čáry označují cesty pro přenos toků mezi VNet2 a místními sítěmi. Plné čáry označují požadovanou cestu v ustáleném stavu a přerušované čáry označují cestu provozu při selhání odpovídajícího okruhu ExpressRoute, který přenáší tok přenosů v ustáleném stavu. 
 
 [![7]][7]
 
-Můžete navrhovat scénář s využitím váhy připojení k ovlivnění virtuálních sítí s dáváte přednost, že provoz vázaný připojení k místní umístění partnerského vztahu ExpressRoute pro místní síť. K dokončení řešení, je potřeba zajistit tok symetrické zpětný provoz. Můžete použít místní preference iBGP relace mezi vašimi směrovači protokolu BGP (na kterých okruhy ExpressRoute jsou ukončeny na straně místní) k preferovali okruh ExpressRoute. Toto řešení je znázorněn v následujícím diagramu. 
+Scénář můžete rozpravit pomocí váhy připojení, aby se virtuální sítěy preferované připojení k umístění místních partnerských vztahů ExpressRoute pro provoz vázaný na místní síť. K dokončení řešení je potřeba zajistit symetrický tok zpětného provozu. V relaci iBGP můžete použít místní preference mezi směrovači BGP (na kterých jsou ExpressRoute okruhy ukončeny na místní straně) a upřednostnit okruh ExpressRoute. Řešení je znázorněno v následujícím diagramu. 
 
 [![8]][8]
 
 ### <a name="scenario-2"></a>Scénář 2
 
-Scénář 2 je znázorněn v následujícím diagramu. V diagramu označení zelené čáry cesty pro tok přenosů mezi ze sítě VNet1 a místní sítí. Modré čáry označují cesty pro tok přenosů mezi sítě VNet2 a místní sítí. V stálé (plné čáry v diagramu) všechny přenosy mezi virtuálními sítěmi a místními umístěními flow přes páteřní infrastrukturu Microsoftu ve většině případů a prochází přes propojení mezi místními umístěními pouze ve stavu selhání (tečkované čáry v diagram) z ExpressRoute.
+Scénář 2 je znázorněn v následujícím diagramu. V diagramu zelené čáry označují cesty pro přenos toků mezi VNet1 a místními sítěmi. Modré čáry označují cesty pro přenos toků mezi VNet2 a místními sítěmi. V ustáleném stavu (pevné čáry v diagramu) se veškerý provoz mezi virtuální sítě a místními umístěními nachází přes páteřní síť Microsoftu a natéká mezi propojeními mezi místními umístěními pouze ve stavu selhání (tečkované řádky v diagram) ExpressRoute.
 
 [![9]][9]
 
-Toto řešení je znázorněn v následujícím diagramu. Jak je znázorněno, můžete navrhovat scénář buď pomocí konkrétnější trasu (možnost 1) nebo AS path předřaďte (možnost 2) a ovlivnit výběr cesty virtuální sítě. K ovlivnění výběr směrování místní sítě vázané provozu Azure, potřebujete nakonfigurovat propojení mezi místním umístěním jako méně vhodnější. Konfigurace propojení odkazu jako vhodnější Howe závisí na směrovací protokol použitý v místní síti. Použít local preference s iBGP nebo metriky s IGP (protokolu OSPF nebo je je).
+Řešení je znázorněno v následujícím diagramu. Jak je znázorněno, můžete scénář navrhovat buď pomocí konkrétnější trasy (možnost 1), nebo jako předřazení AS-Path (možnost 2) pro ovlivnění výběru cest virtuální sítě. Aby bylo možné ovlivnit místní síťové směrování pro přenos dat na pracovišti Azure, je nutné nakonfigurovat vzájemné propojení mezi místním umístěním, a to tak, aby bylo možné méně preferovat. Howa nakonfigurujete propojení propojení tak, jak upřednostňujete, závisí na směrovacím protokolu používaném v místní síti. Můžete použít místní preference s iBGP nebo metrikou s IGP (OSPF nebo IS-IS).
 
 [![10]][10]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jsme probírali postup návrhu pro zotavení po havárii okruhu soukromého partnerského vztahu připojení ExpressRoute. Následující články adresy zotavení po havárii z aplikací a perspektivy přístup front-endu:
+V tomto článku jsme probrali, jak navrhnout zotavení po havárii privátního partnerského vztahu ExpressRoute okruhu. Následující články řeší zotavení po havárii z aplikací a perspektiv přístupu na front-end:
 
-- [Zotavení po havárii na podnikové úrovni][Enterprise DR]
+- [Zotavení po havárii v podnikovém měřítku][Enterprise DR]
 - [Zotavení po havárii SMB pomocí Azure Site Recovery][SMB DR]
 
 <!--Image References-->
-[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "malé a střední velikosti místní síťové požadavky"
-[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "vliv cestu výběr pomocí konkrétnější trasy"
-[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "konfigurace váhy připojení prostřednictvím webu Azure portal"
-[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "vliv cestu výběr pomocí váhy připojení"
-[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "předřaďte vliv cestu výběr pomocí jako cesta"
-[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "velkých distribuovaných místní síťové požadavky"
-[7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png "scénář 1"
-[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "řešení 1 okruhy ExpressRoute aktivní aktivní"
-[9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png "scenario 2"
-[10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "okruhy ExpressRoute aktivní aktivní řešení 2"
+[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "malé až středně velké požadavky na místní síť"
+[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "vliv výběru cesty pomocí konkrétnějších tras"
+[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "Konfigurace váhy připojení prostřednictvím Azure Portal"
+[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "výběr cesty s použitím váhy připojení"
+[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "vliv výběru cesty s použitím jako předřazení jako cesty"
+[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "velkých distribuovaných místních síťových požadavků"
+[7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png. "scénář 1"
+[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "ExpressRoutech okruhů aktivní-aktivní – řešení 1"
+[9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png "scénář 2"
+[10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "řešení ExpressRoute okruhů aktivních – aktivní 2"
 
 <!--Link References-->
 [HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute

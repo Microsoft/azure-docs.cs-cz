@@ -1,6 +1,6 @@
 ---
 title: Sestavy přístupu a využití pro Azure MFA – Azure Active Directory
-description: V této části se dozvíte, jak používat funkci Azure Multi-Factor Authentication – sestavy.
+description: V této části se dozvíte, jak používat Multi-Factor Authentication sestav funkcí Azure.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,29 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25cd36b6b3e8a6974618189985152e55c2676999
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: bb90fafb48be1d3389597c6188b0200743f90c3e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874301"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065981"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
 
-Azure Multi-Factor Authentication poskytuje několik sestav, které vám a vaše organizace můžou být přístupné prostřednictvím Azure Portal. V následující tabulce jsou uvedeny dostupné sestavy:
+Azure Multi-Factor Authentication poskytuje několik sestav, které můžete používat vy a vaše organizace přístupné prostřednictvím Azure Portal. V následující tabulce jsou uvedeny dostupné sestavy:
 
-| Zpráva | Location | Popis |
+| Zpráva | Umístění | Popis |
 |:--- |:--- |:--- |
-| Historie blokovaného uživatele | Azure AD > MFA Server > blokování a odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
+| Historie blokovaného uživatele | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
 | Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
-| Využití pro místní součásti | Sestava o aktivitě > serveru Azure AD > MFA | Poskytuje informace o celkovém využití MFA prostřednictvím rozšíření NPS, ADFS a MFA serveru. |
-| Historie uživatele s jednorázovým přihlášením | Azure AD > MFA Server > jednorázové přihlášení | Poskytuje historii žádostí o obejít službu Multi-Factor Authentication pro uživatele. |
-| Stav serveru | Stav serveru služby Azure AD > MFA Server > | Zobrazuje stav Multi-Factor Authentication serverů přidružených k vašemu účtu. |
+| Využití pro místní součásti | Zpráva o aktivitě > > MFA služby Azure AD > Security | Poskytuje informace o celkovém využití MFA prostřednictvím rozšíření NPS, ADFS a MFA serveru. |
+| Historie obcházení uživatelů | Zabezpečení Azure AD > > MFA > jednorázové přihlášení | Poskytuje historii žádostí o obejít Multi-Factor Authentication pro uživatele. |
+| Stav serveru | Azure AD > Security > MFA > Server – stav | Zobrazuje stav serverů Multi-Factor Authentication přidružených k vašemu účtu. |
 
 ## <a name="view-mfa-reports"></a>Zobrazit sestavy MFA
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **MFA Server**.
+2. Na levé straně vyberte **Azure Active Directory** > **Security** > **MFA**.
 3. Vyberte sestavu, kterou chcete zobrazit.
 
    ![Zpráva o stavu serveru MFA Server v Azure Portal](./media/howto-mfa-reporting/report.png)
@@ -59,9 +59,9 @@ Tato data jsou k dispozici prostřednictvím [Azure Portal](https://portal.azure
 
 Sestavy aktivit přihlašování pro vícefaktorové ověřování poskytují přístup k následujícím informacím:
 
-**Vyžaduje se MFA:** Zda je pro přihlášení vyžadováno MFA nebo ne. Vícefaktorové ověřování se může vyžadovat v důsledku MFA, podmíněného přístupu pro jednotlivé uživatele nebo z jiných důvodů. Možné hodnoty jsou **Ano** nebo **ne**.
+**Vyžadování vícefaktorového ověřování:** Uvádí, jestli se pro přihlašování vyžaduje vícefaktorové ověřování, nebo ne. Vícefaktorové ověřování se může vyžadovat v důsledku MFA, podmíněného přístupu pro jednotlivé uživatele nebo z jiných důvodů. Možné hodnoty jsou **Ano** nebo **ne**.
 
-**Výsledek MFA:** Další informace o tom, jestli bylo MFA vyhověno nebo odepřeno:
+**Výsledek vícefaktorového ověřování:** Další informace o splnění nebo odepření vícefaktorového ověřování:
 
 - Pokud bylo vícefaktorové ověřování splněno, v tomto sloupci se zobrazí informace o způsobu splnění vícefaktorového ověřování.
    - Azure Multi-Factor Authentication
@@ -104,21 +104,21 @@ Sestavy aktivit přihlašování pro vícefaktorové ověřování poskytují p�
       - uživatel nenalezen
       - ověřovací kód již byl použitý
 
-**Metoda ověřování MFA:** Metoda ověřování, kterou uživatel použil k dokončení VÍCEFAKTOROVÉHO ověřování. Možné hodnoty:
+**Metoda vícefaktorového ověřování:** Metoda ověřování, kterou uživatel dokončil vícefaktorové ověřování. Možné hodnoty:
 
-- Zpráva SMS
+- Textová zpráva
 - Oznámení mobilní aplikace
 - Telefonní hovor (telefon pro ověření)
 - Ověřovací kód z mobilní aplikace
 - Telefonní hovor (telefon do kanceláře)
 - Telefonní hovor (telefon pro alternativní ověření)
 
-**Podrobnosti ověřování MFA:** OdXXXXXXXX64 verze telefonního čísla, například: + X.
+**Podrobnosti o vícefaktorovém ověřování:** Zkrácená verze telefonního čísla, například: +X XXXXXXXX64.
 
 **Podmíněný přístup** Vyhledejte informace o zásadách podmíněného přístupu, které ovlivnily pokus o přihlášení, včetně:
 
 - Název zásady
-- Udělit řízení
+- Udělit ovládací prvky
 - Ovládací prvky relace
 - Výsledek
 
@@ -140,51 +140,51 @@ Následující tabulka může sloužit k řešení vícefaktorového ověřován
 
 | Výsledek volání | Popis | Obecný popis |
 | --- | --- | --- |
-| SUCCESS_WITH_PIN | Byl zadán kód PIN. | Uživatel zadal kód PIN.  Pokud ověření proběhlo úspěšně, zadali jste správný PIN kód.  Pokud je ověřování odepřeno, zadali jste nesprávný kód PIN nebo je uživatel nastaven na standardní režim. |
+| SUCCESS_WITH_PIN | Zadán kód PIN | Uživatel zadal kód PIN.  Pokud ověření proběhlo úspěšně, zadali jste správný PIN kód.  Pokud je ověřování odepřeno, zadali jste nesprávný kód PIN nebo je uživatel nastaven na standardní režim. |
 | SUCCESS_NO_PIN | Pouze zadání # | Pokud je uživatel nastavený na režim připnutí a ověřování je odepřeno, znamená to, že uživatel nezadal PIN kód a zadali jste jenom #.  Pokud je uživatel nastavený na standardní režim a ověřování je úspěšné, znamená to, že uživatel zadal jenom #, což je správné nastavení v režimu Standard. |
 | SUCCESS_WITH_PIN_BUT_TIMEOUT | # Nestisknuté po zadání | Uživatel neodeslal žádné číslice DTMF, protože nebyl zadán znak #.  Jiné zadané číslice nejsou odesílány, pokud není zadáno #, což znamená dokončení záznamu. |
 |SUCCESS_NO_PIN_BUT_TIMEOUT | Žádný telefonní vstup – vypršel časový limit. | Volání bylo zodpovězeno, ale nedošlo k žádné odezvě.  To obvykle znamená, že volání bylo převzato pomocí hlasové pošty. |
-| SUCCESS_PIN_EXPIRED | Platnost kódu PIN vypršela a kód nebyl změněn. | Platnost PIN kódu uživatele vypršela a zobrazila se jim výzva k jeho změně, ale změna kódu PIN nebyla úspěšně dokončena. |
-| SUCCESS_USED_CACHE | Použitá mezipaměť | Ověřování bylo úspěšné bez volání služby Multi-Factor Authentication, protože v nakonfigurovaném časovém rámci mezipaměti bylo provedeno předchozí úspěšné ověření pro stejné uživatelské jméno. |
-| SUCCESS_BYPASSED_AUTH | Vynechané ověřování | Ověřování bylo úspěšné pomocí jednorázového přihlášení iniciované pro uživatele.  Další informace o obejití najdete v sestavě historie uživatelů. |
-| SUCCESS_USED_IP_BASED_CACHE | Použitá mezipaměť založená na protokolu IP | Ověřování bylo úspěšné bez volání služby Multi-Factor Authentication od předchozího úspěšného ověření pro stejné uživatelské jméno, typ ověřování, název aplikace a IP adresa v nakonfigurovaném časovém rámci mezipaměti. |
-| SUCCESS_USED_APP_BASED_CACHE | Použitá mezipaměť na základě aplikace | Ověřování bylo úspěšné bez volání služby Multi-Factor Authentication od předchozího úspěšného ověření pro stejné uživatelské jméno, typ ověřování a název aplikace v rámci konfigurovaného časového rámce mezipaměti. |
+| SUCCESS_PIN_EXPIRED | KÓD PIN vypršel a nebyl změněn. | Platnost PIN kódu uživatele vypršela a zobrazila se jim výzva k jeho změně, ale změna kódu PIN nebyla úspěšně dokončena. |
+| SUCCESS_USED_CACHE | Použitá mezipaměť | Ověřování bylo úspěšné bez Multi-Factor Authentication volání, protože v rámci nakonfigurovaného časového období mezipaměti došlo k předchozímu úspěšnému ověření pro stejné uživatelské jméno. |
+| SUCCESS_BYPASSED_AUTH | Obcházení ověřování | Ověřování bylo úspěšné pomocí jednorázového přihlášení iniciované pro uživatele.  Další informace o obejití najdete v sestavě historie uživatelů. |
+| SUCCESS_USED_IP_BASED_CACHE | Použitá mezipaměť založená na protokolu IP | Ověřování bylo úspěšné bez Multi-Factor Authentication volání od předchozího úspěšného ověření pro stejné uživatelské jméno, typ ověřování, název aplikace a IP adresa v rámci nakonfigurovaného časového období mezipaměti. |
+| SUCCESS_USED_APP_BASED_CACHE | Použitá mezipaměť na základě aplikace | Ověřování bylo úspěšné bez Multi-Factor Authentication volání od předchozího úspěšného ověření pro stejné uživatelské jméno, typ ověřování a název aplikace v rámci nakonfigurovaného časového období mezipaměti. |
 | SUCCESS_INVALID_INPUT | Neplatný telefonní vstup | Odpověď odesílaná z telefonu není platná.  Může to být z faxového zařízení nebo modemu nebo uživatel zadal * jako součást svého PIN kódu. |
-| SUCCESS_USER_BLOCKED | Uživatel je blokován. | Telefonní číslo uživatele je blokované.  Blokované číslo může být iniciováno uživatelem během volání ověřování nebo správcem pomocí Azure Portal. <br> POZNÁMKA:  Blokované číslo je také byproduct výstrahy na podvod. |
+| SUCCESS_USER_BLOCKED | Uživatel je zablokován. | Telefonní číslo uživatele je blokované.  Blokované číslo může být iniciováno uživatelem během volání ověřování nebo správcem pomocí Azure Portal. <br> Poznámka: blokované číslo je také byproduct výstrahy na podvod. |
 | SUCCESS_SMS_AUTHENTICATED | Textová zpráva byla ověřena. | Pro obousměrnou zkušební zprávu uživatel správně odpověděl s použitím jednorázového hesla nebo hesla + PIN. |
 | SUCCESS_SMS_SENT | Textová zpráva byla odeslána. | Textová zpráva obsahující jednorázové heslo (jednorázové heslo) byla pro textovou zprávu úspěšně odeslána.  Uživatel zadá do aplikace jednorázové heslo nebo jednorázové heslo a kód PIN, aby se ověřování dokončilo. |
-| SUCCESS_PHONE_APP_AUTHENTICATED | Mobilní aplikace – ověřeno | Uživatel se úspěšně ověřil přes mobilní aplikaci. |
-| SUCCESS_OATH_CODE_PENDING | Probíhá zpracování kódu OATH. | Uživateli se zobrazila výzva k zadání kódu OATH, ale neodpověděl. |
+| SUCCESS_PHONE_APP_AUTHENTICATED | Mobilní aplikace ověřena | Uživatel se úspěšně ověřil přes mobilní aplikaci. |
+| SUCCESS_OATH_CODE_PENDING | Nedokončený kód OATH | Uživateli se zobrazila výzva k zadání kódu OATH, ale neodpověděl. |
 | SUCCESS_OATH_CODE_VERIFIED | Kód OATH byl ověřen. | Po zobrazení výzvy uživatel zadal platný kód OATH. |
-| SUCCESS_FALLBACK_OATH_CODE_VERIFIED | Nouzový kód OATH byl ověřen. | Uživateli bylo odepřeno ověřování pomocí své primární metody vícefaktorového ověřování a poté byl pro záložní použití zadán platný kód OATH. |
-| SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | Nouzové bezpečnostní otázky byly zodpovězeny. | Uživateli bylo odepřeno ověřování pomocí své primární metody služby Multi-Factor Authentication a poté byly správně zodpovězeny své bezpečnostní otázky. |
+| SUCCESS_FALLBACK_OATH_CODE_VERIFIED | Nouzový kód OATH byl ověřen. | Uživateli bylo odepřeno ověřování pomocí své primární metody Multi-Factor Authentication a pak zadali platný kód OATH pro použití náhradní. |
+| SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | Záložní bezpečnostní otázky byly zodpovězeny | Uživateli bylo odepřeno ověřování pomocí své primární metody Multi-Factor Authentication a poté byly správně zodpovězeny své bezpečnostní otázky. |
 | FAILED_PHONE_BUSY | Ověřování již probíhá. | Multi-Factor Authentication již zpracovává ověřování pro tohoto uživatele.  To je často způsobeno klienty RADIUS, kteří odesílají více žádostí o ověření během stejného přihlašování. |
-| CONFIG_ISSUE | Telefon není dostupný. | Došlo k pokusu o volání, ale buď nebylo možné umístit, nebo nebylo zodpovězeno.  To zahrnuje zaneprázdněný signál, rychlý zaneprázdněn signál (odpojeno), Tri-tónů (číslo již v provozu), časový limit při cyklickém vyzvánění atd. |
+| CONFIG_ISSUE | Telefon nedosažitelný | Došlo k pokusu o volání, ale buď nebylo možné umístit, nebo nebylo zodpovězeno.  To zahrnuje zaneprázdněný signál, rychlý zaneprázdněn signál (odpojeno), Tri-tónů (číslo již v provozu), časový limit při cyklickém vyzvánění atd. |
 | FAILED_INVALID_PHONENUMBER | Neplatný formát telefonního čísla | Telefonní číslo má neplatný formát.  Telefonní čísla musí být číselná a musí obsahovat 10 číslic pro kód země + 1 (USA & Kanada). |
-| FAILED_USER_HUNGUP_ON_US | Uživatel zavěsil telefon. | Uživatel odpověděl na telefon, ale pak se zablokoval bez stisknutí žádného tlačítka. |
-| FAILED_INVALID_EXTENSION | Neplatná linka | Přípona obsahuje neplatné znaky.  Jsou povoleny pouze číslice, čárky, * a #.  Může být také použita předpona @. |
+| FAILED_USER_HUNGUP_ON_US | Uživatel přestal telefonem. | Uživatel odpověděl na telefon, ale pak se zablokoval bez stisknutí žádného tlačítka. |
+| FAILED_INVALID_EXTENSION | Neplatná přípona | Přípona obsahuje neplatné znaky.  Jsou povoleny pouze číslice, čárky, * a #.  Může být také použita předpona @. |
 | FAILED_FRAUD_CODE_ENTERED | Byl zadán podvodný kód. | Uživatel se rozhodl nahlásit podvod během volání, což vedlo k odepřenému ověření a zablokovanému telefonnímu číslu.| 
-| FAILED_SERVER_ERROR | Nelze vytočit hovor. | Služba Multi-Factor Authentication nedokázala umístit volání. |
+| FAILED_SERVER_ERROR | Nejde umístit volání. | Služba Multi-Factor Authentication nedokázala umístit volání. |
 | FAILED_SMS_NOT_SENT | Textovou zprávu se nepodařilo odeslat. | Textovou zprávu nelze odeslat.  Ověřování bylo odepřeno. |
-| FAILED_SMS_OTP_INCORRECT | Ověřování jednorázovým heslem prostřednictvím textové zprávy není povoleno. | Uživatel zadal neplatné jednorázové heslo (JEDNORÁZOVé heslo) z textové zprávy, kterou obdržel.  Ověřování bylo odepřeno. |
+| FAILED_SMS_OTP_INCORRECT | Textová zpráva – neplatné jednorázové heslo | Uživatel zadal neplatné jednorázové heslo (JEDNORÁZOVé heslo) z textové zprávy, kterou obdržel.  Ověřování bylo odepřeno. |
 | FAILED_SMS_OTP_PIN_INCORRECT | Textová zpráva – jednorázové heslo + kód PIN | Uživatel zadal nesprávné jednorázové heslo (jednorázové heslo) a/nebo nesprávný PIN kód uživatele.  Ověřování bylo odepřeno. |
 | FAILED_SMS_MAX_OTP_RETRY_REACHED | Překročení maximálního počtu textových zpráv pro JEDNORÁZOVé přihlášení | Uživatel překročil maximální počet pokusů o jednorázové heslo (jednorázového hesla). |
-| FAILED_PHONE_APP_DENIED | Mobilní aplikace – zamítnuto | Uživatel odepřel ověřování v mobilní aplikaci stisknutím tlačítka odepřít. |
+| FAILED_PHONE_APP_DENIED | Mobilní aplikace byla odepřena | Uživatel odepřel ověřování v mobilní aplikaci stisknutím tlačítka odepřít. |
 | FAILED_PHONE_APP_INVALID_PIN | Mobilní aplikace – neplatný kód PIN | Uživatel zadal neplatný kód PIN při ověřování v mobilní aplikaci. |
-| FAILED_PHONE_APP_PIN_NOT_CHANGED | Mobilní aplikace - kód PIN nebyl změněn. | Uživatel neúspěšně dokončil požadovanou změnu PIN kódu v mobilní aplikaci. |
-| FAILED_FRAUD_REPORTED | Byl nahlášen podvod. | Uživatel ohlásil podvod v mobilní aplikaci. |
+| FAILED_PHONE_APP_PIN_NOT_CHANGED | PIN kód mobilní aplikace se nezměnil. | Uživatel neúspěšně dokončil požadovanou změnu PIN kódu v mobilní aplikaci. |
+| FAILED_FRAUD_REPORTED | Oznámeno podvodům | Uživatel ohlásil podvod v mobilní aplikaci. |
 | FAILED_PHONE_APP_NO_RESPONSE | Mobilní aplikace – žádná odpověď | Uživatel neodpověděl na žádost o ověření mobilní aplikace. |
 | FAILED_PHONE_APP_ALL_DEVICES_BLOCKED | Mobilní aplikace – všechna zařízení blokována | Zařízení mobilní aplikace pro tohoto uživatele již nereagují na oznámení a byla zablokována. |
-| FAILED_PHONE_APP_NOTIFICATION_FAILED | Mobilní aplikace – oznámení selhalo. | Při pokusu o odeslání oznámení do mobilní aplikace na zařízení uživatele došlo k chybě. |
+| FAILED_PHONE_APP_NOTIFICATION_FAILED | Oznámení mobilní aplikace selhalo. | Při pokusu o odeslání oznámení do mobilní aplikace na zařízení uživatele došlo k chybě. |
 | FAILED_PHONE_APP_INVALID_RESULT | Mobilní aplikace – neplatný výsledek | Mobilní aplikace vrátila neplatný výsledek. |
 | FAILED_OATH_CODE_INCORRECT | Kód OATH je nesprávný. | Uživatel zadal nesprávný kód OATH.  Ověřování bylo odepřeno. |
 | FAILED_OATH_CODE_PIN_INCORRECT | Kód OATH + kód PIN je nesprávný | Uživatel zadal nesprávný kód OATH nebo nesprávný kód PIN uživatele.  Ověřování bylo odepřeno. |
 | FAILED_OATH_CODE_DUPLICATE | Duplicitní kód OATH | Uživatel zadal kód OATH, který byl dříve použit.  Ověřování bylo odepřeno. |
 | FAILED_OATH_CODE_OLD | Kód OATH je zastaralý. | Uživatel zadal kód OATH, který předchází dříve použitý kód OATH.  Ověřování bylo odepřeno. |
-| FAILED_OATH_TOKEN_TIMEOUT | Časový limit výsledku kódu OATH. | Uživatel trval zadání kódu OATH příliš dlouho a pokus o přihlášení ke službě Multi-Factor Authentication již vypršel. |
-| FAILED_SECURITY_QUESTIONS_TIMEOUT | Časový limit výsledku bezpečnostních otázek | Uživatel trval příliš dlouho na odpověď na bezpečnostní otázky a pokus o přihlášení ke službě Multi-Factor Authentication již vypršel. |
-| FAILED_AUTH_RESULT_TIMEOUT | Časový limit výsledku ověřování | Dokončení pokusu o vícefaktorové ověřování trvalo uživateli příliš dlouho. |
-| FAILED_AUTHENTICATION_THROTTLED | Ověřování bylo omezené. | Služba Multi-Factor Authentication vyvolala omezení služby. |
+| FAILED_OATH_TOKEN_TIMEOUT | Časový limit výsledku kódu OATH | Uživatel trval zadání kódu OATH příliš dlouho a Multi-Factor Authentication pokus již vypršel. |
+| FAILED_SECURITY_QUESTIONS_TIMEOUT | Časový limit výsledku bezpečnostních otázek | Uživatel trval příliš dlouho, aby zadával odpověď na bezpečnostní otázky a Multi-Factor Authentication pokusu již vypršel časový limit. |
+| FAILED_AUTH_RESULT_TIMEOUT | Časový limit výsledku ověřování | Dokončení Multi-Factor Authentication pokusu uživatele trvalo příliš dlouho. |
+| FAILED_AUTHENTICATION_THROTTLED | Ověřování bylo omezené. | Pokus o Multi-Factor Authentication byl službou omezen. |
 
 ## <a name="next-steps"></a>Další kroky
 

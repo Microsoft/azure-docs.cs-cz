@@ -1,5 +1,5 @@
 ---
-title: Obslužná rutina rozšíření konfigurace požadovaného stavu Azure | Microsoft Docs
+title: Obslužná rutina rozšíření pro konfiguraci požadovaného stavu Azure
 description: Nahrání a použití konfigurace PowerShellu DSC na virtuálním počítači Azure s použitím rozšíření DSC
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: ee5a6c732bcb48cd347b8d87b95d2896d7230a08
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092373"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073790"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
 
@@ -106,21 +106,21 @@ Následující JSON zobrazuje schéma pro část nastavení rozšíření DSC v 
 
 ### <a name="settings-property-values"></a>Hodnoty vlastností nastavení
 
-| Name | Typ dat | Popis
+| Název | Typ dat | Popis
 | ---- | ---- | ---- |
 | Settings. wmfVersion | řetězec | Určuje verzi rozhraní Windows Management Framework, která má být nainstalována na VIRTUÁLNÍm počítači. Když nastavíte tuto vlastnost na nejnovější, nainstaluje se aktualizovaná verze WMF. Pro tuto vlastnost jsou dostupné jenom aktuální hodnoty "4,0", "5,0" a "nejnovější". Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je ' nejnovější '. |
 | settings.configuration.url | řetězec | Určuje umístění adresy URL, ze kterého se má stáhnout soubor zip konfigurace DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, bude nutné nastavit vlastnost protectedSettings. configurationUrlSasToken na hodnotu vašeho tokenu SAS. Tato vlastnost je povinná, pokud jsou definovaná nastavení. Configuration. Script a/nebo Settings. Configuration. Function.
 | settings.configuration.script | řetězec | Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce souboru ZIP staženého z adresy URL určené vlastností Configuration. URL. Tato vlastnost je povinná, pokud jsou definovaná nastavení. Configuration. URL nebo Settings. Configuration. Script.
 | settings.configuration.function | řetězec | Určuje název konfigurace DSC. Konfigurace s názvem musí být obsažena ve skriptu definovaném Configuration. Script. Tato vlastnost je povinná, pokud jsou definována nastavení. Configuration. URL nebo Settings. Configuration. Function.
-| settings.configurationArguments | Collection | Definuje všechny parametry, které byste chtěli předat konfiguraci DSC. Tato vlastnost nebude zašifrována.
+| settings.configurationArguments | Kolekce | Definuje všechny parametry, které byste chtěli předat konfiguraci DSC. Tato vlastnost nebude zašifrována.
 | settings.configurationData.url | řetězec | Určuje adresu URL, ze které se má stáhnout soubor konfiguračních dat (. pds1), který se použije jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, bude nutné nastavit vlastnost protectedSettings. configurationDataUrlSasToken na hodnotu vašeho tokenu SAS.
 | settings.privacy.dataEnabled | řetězec | Povolí nebo zakáže shromažďování telemetrie. Jedinou možnou hodnotou této vlastnosti jsou Enable, Disable, nebo $null. Když tuto vlastnost necháte prázdnou, nebo hodnota null, povolí se telemetrie.
-| settings.advancedOptions.forcePullAndApply | Bool | Toto nastavení je navrženo pro zlepšení možností práce s rozšířením pro registraci uzlů pomocí Azure Automation DSC.  Pokud je `$true`hodnota, bude rozšíření čekat na první spuštění konfigurace, která byla ze služby načtena, a teprve potom vrátí úspěch nebo selhání.  Pokud je hodnota nastavena na $false, stav vrácený rozšířením bude odkazovat pouze na to, zda byl uzel registrován s konfigurací stavu Azure Automation úspěšně a že konfigurace uzlu nebude spuštěna během registrace.
-| settings.advancedOptions.downloadMappings | Collection | Definuje alternativní umístění pro stahování závislostí, jako jsou WMF a .NET.
+| settings.advancedOptions.forcePullAndApply | Bool | Toto nastavení je navrženo pro zlepšení možností práce s rozšířením pro registraci uzlů pomocí Azure Automation DSC.  Pokud je hodnota `$true`, bude rozšíření čekat na první spuštění konfigurace načtené ze služby před vrácením úspěchu/neúspěchu.  Pokud je hodnota nastavena na $false, stav vrácený rozšířením bude odkazovat pouze na to, zda byl uzel registrován s konfigurací stavu Azure Automation úspěšně a že konfigurace uzlu nebude spuštěna během registrace.
+| settings.advancedOptions.downloadMappings | Kolekce | Definuje alternativní umístění pro stahování závislostí, jako jsou WMF a .NET.
 
 ### <a name="protected-settings-property-values"></a>Hodnoty vlastností chráněných nastavení
 
-| Name | Typ dat | Popis
+| Název | Typ dat | Popis
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | řetězec | Definuje všechny parametry, které byste chtěli předat konfiguraci DSC. Tato vlastnost bude zašifrována. |
 | protectedSettings.configurationUrlSasToken | řetězec | Určuje token SAS pro přístup k adrese URL definované pomocí Configuration. URL. Tato vlastnost bude zašifrována. |

@@ -1,5 +1,5 @@
 ---
-title: Ukázky konfigurace směrovače - NAT - Azure ExpressRoute | Dokumentace Microsoftu
+title: 'Azure ExpressRoute: Ukázky konfigurace směrovače – překlad adres (NAT)'
 description: Tato stránka obsahuje ukázky konfigurace směrovače pro směrovačů Cisco a Juniper.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: ccee0f0c01119ebbfb5ba9c5980ee006a555a399
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367604"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072113"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Ukázky konfigurace směrovače pro nastavení a správu NAT
 
@@ -83,7 +82,7 @@ NAT příkazy:
 
 
 ## <a name="juniper-srx-series-routers"></a>Směrovače Juniper SRX řady
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Vytvoření redundantní rozhraní sítě Ethernet pro cluster
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Vytvořte redundantní rozhraní sítě Ethernet pro cluster.
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -123,7 +122,7 @@ NAT příkazy:
     zabezpečení {zóny {zóny zabezpečení důvěryhodnosti {-inbound provozu hostitele {systému služby {ping;                   } protokoly {bgp;                   rozhraní}} {reth0.100;               }} nedůvěryhodných zóny zabezpečení {-inbound provozu hostitele {systému služby {ping;                   } protokoly {bgp;                   rozhraní}} {reth1.100;               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>3. Vytvoření zásad zabezpečení mezi zónami
+### <a name="3-create-security-policies-between-zones"></a>3. vytvoření zásad zabezpečení mezi zónami
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -154,7 +153,7 @@ NAT příkazy:
     }
 
 
-### <a name="4-configure-nat-policies"></a>4. Konfigurace zásad NAT
+### <a name="4-configure-nat-policies"></a>4. konfigurace zásad NAT
 * Vytvořte dva fondy NAT. Jeden se použije k provozu NAT odchozí společnosti Microsoft a jiných od Microsoftu k zákazníkovi.
 * Vytvoření pravidel NAT příslušných provozu
   
@@ -213,10 +212,10 @@ NAT příkazy:
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Nakonfigurovat protokol BGP k inzerování selektivní předpony v každém směru
-Podívejte se na ukázky v [ukázky konfigurace směrování](expressroute-config-samples-routing.md) stránky.
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. konfigurace protokolu BGP pro inzerování selektivních předpon v každém směru
+Přečtěte si ukázky na stránce [ukázky konfigurace směrování](expressroute-config-samples-routing.md) .
 
-### <a name="6-create-policies"></a>6. Vytvoření zásad
+### <a name="6-create-policies"></a>6. vytvoření zásad
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -311,6 +310,6 @@ Podívejte se na ukázky v [ukázky konfigurace směrování](expressroute-confi
         }
     }
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další podrobnosti najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 

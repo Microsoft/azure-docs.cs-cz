@@ -1,6 +1,6 @@
 ---
 title: Datový model Azure Monitor protokolů pro Azure Backup
-description: V tomto článku se seznámíte s informacemi o datových modelech Azure Monitor protokolů pro Azure Backup data.
+description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.reviewer: adigan
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: dacurwin
-ms.openlocfilehash: 878e4e7508d82f78e82f1fd8bda69079d9468e9f
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 283dc4c1ad4bc683833da3d689d842fa84079a00
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689237"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074954"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -34,11 +34,11 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | AlertUniqueId_s |Text |Jedinečný identifikátor vygenerované výstrahy |
 | AlertType_s |Text |Typ výstrahy, například zálohování |
 | AlertStatus_s |Text |Stav výstrahy, například aktivní |
-| AlertOccurrenceDateTime_s |Date/Time |Datum a čas vytvoření výstrahy |
+| AlertOccurrenceDateTime_s |Datum a čas |Datum a čas vytvoření výstrahy |
 | AlertSeverity_s |Text |Závažnost výstrahy, například kritická |
-|AlertTimeToResolveInMinutes_s    | Number        |Čas potřebný k vyřešení výstrahy. Prázdné pro aktivní výstrahy.         |
+|AlertTimeToResolveInMinutes_s    | Číslo        |Čas potřebný k vyřešení výstrahy. Prázdné pro aktivní výstrahy.         |
 |AlertConsolidationStatus_s   |Text         |Zjistit, jestli je výstraha konsolidovaná výstraha nebo ne         |
-|CountOfAlertsConsolidated_s     |Number         |Počet sloučených výstrah, pokud se jedná o konsolidovanou výstrahu          |
+|CountOfAlertsConsolidated_s     |Číslo         |Počet sloučených výstrah, pokud se jedná o konsolidovanou výstrahu          |
 |AlertRaisedOn_s     |Text         |Typ entity, na které se aktivuje výstraha         |
 |AlertCode_s     |Text         |Kód pro jedinečnou identifikaci typu výstrahy         |
 |RecommendedAction_s   |Text         |Akce doporučená pro vyřešení výstrahy         |
@@ -49,15 +49,15 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | BackupManagementType_s |Text |Typ poskytovatele pro provádění zálohování, například IaaSVM, složku, do které tato výstraha patří |
 | OperationName |Text |Název aktuální operace, například výstraha |
 | Kategorie |Text |Kategorie dat diagnostiky nabízených do protokolů Azure Monitor Vždy AzureBackupReport |
-| Resource |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
+| Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | ProtectedContainerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přidruženého k výstraze (byl ProtectedServerUniqueId_s v V1)|
 | VaultUniqueId_s |Text |Jedinečný identifikátor chráněného trezoru přidruženého k výstraze |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text |Jedinečný identifikátor prostředku, pro který se shromažďují data Například ID prostředku úložiště Recovery Services |
+| ResourceId |Text |Jedinečný identifikátor prostředku, pro který se shromažďují data Například ID prostředku úložiště Recovery Services |
 | SubscriptionId |Text |Identifikátor předplatného prostředku (např. Recovery Services trezor), pro který se shromažďují data |
-| Skupina prostředků |Text |Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
+| ResourceGroup |Text |Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
 | ResourceProvider |Text |Poskytovatel prostředků, pro který se shromažďují data Například Microsoft. RecoveryServices |
-| Typ prostředku |Text |Typ prostředku, pro který se shromažďují data Například trezory |
+| ResourceType |Text |Typ prostředku, pro který se shromažďují data Například trezory |
 
 ### <a name="backupitem"></a>BackupItem
 
@@ -81,13 +81,13 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s položkou záloho
 | BackupManagementType_s |Text |Typ poskytovatele pro provádění zálohování, například IaaSVM, složku, do které patří tato položka zálohy |
 | OperationName |Text |Název operace, například BackupItem |
 | Kategorie |Text |Kategorie dat diagnostiky nabízených do protokolů Azure Monitor Vždy AzureBackupReport |
-| Resource |Text |Prostředek, pro který se data shromažďují, například Recovery Services název trezoru |
+| Prostředek |Text |Prostředek, pro který se data shromažďují, například Recovery Services název trezoru |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text |ID prostředku pro shromažďovaná data, například ID prostředku úložiště Recovery Services |
+| ResourceId |Text |ID prostředku pro shromažďovaná data, například ID prostředku úložiště Recovery Services |
 | SubscriptionId |Text |Identifikátor předplatného prostředku (pro např. Recovery Services trezor) pro shromažďovaná data |
-| Skupina prostředků |Text |Skupina prostředků prostředku (pro např. Recovery Services trezor) pro shromažďovaná data |
+| ResourceGroup |Text |Skupina prostředků prostředku (pro např. Recovery Services trezor) pro shromažďovaná data |
 | ResourceProvider |Text |Poskytovatel prostředků pro shromažďovaná data, například Microsoft. RecoveryServices |
-| Typ prostředku |Text |Typ prostředku pro shromažďovaná data, například trezory |
+| ResourceType |Text |Typ prostředku pro shromažďovaná data, například trezory |
 
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 
@@ -104,15 +104,15 @@ Tato tabulka poskytuje podrobnosti o přidružení zálohových položek s různ
 | BackupManagementServerUniqueId_s |Text | Pole k jednoznačné identifikaci záložního serveru pro správu, ve kterém je chráněná položka, pokud je k dispozici |
 | Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do Log Analytics, je AzureBackupReport |
 | OperationName |Text |Toto pole představuje název aktuální operace – BackupItemAssociation |
-| Resource |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
-| ProtectedContainerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přidruženého k zálohované položce (byl ProtectedServerUniqueId_s v V1) |
+| Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
+| ProtectedContainerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přidruženého k zálohované položce (ProtectedServerUniqueId_s v V1) |
 | VaultUniqueId_s |Text |Jedinečný identifikátor trezoru obsahujícího zálohovanou položku |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
+| ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
 | SubscriptionId |Text |Identifikátor předplatného prostředku (pro např. Recovery Services trezor), pro který se shromažďují data |
-| Skupina prostředků |Text |Skupina prostředků prostředku (pro např. Recovery Services trezor), pro který se shromažďují data |
+| ResourceGroup |Text |Skupina prostředků prostředku (pro např. Recovery Services trezor), pro který se shromažďují data |
 | ResourceProvider |Text |Poskytovatel prostředků pro shromažďovaná data, například Microsoft. RecoveryServices |
-| Typ prostředku |Text |Typ prostředku pro shromažďování dat, například trezory |
+| ResourceType |Text |Typ prostředku pro shromažďování dat, například trezory |
 
 ### <a name="backupmanagementserver"></a>BackupManagementServer
 
@@ -127,11 +127,11 @@ Tato tabulka poskytuje podrobnosti o přidružení zálohových položek s různ
 |BackupManagementServerType_s     |Text         |Typ záložního serveru pro správu, jako je MABS, SC DPM|
 |BackupManagementServerUniqueId_s     |Text         |Pole pro jedinečnou identifikaci serveru pro správu zálohování       |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
+| ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
 | SubscriptionId |Text |Identifikátor předplatného prostředku (pro např. Recovery Services trezor), pro který se shromažďují data |
-| Skupina prostředků |Text |Skupina prostředků prostředku (pro např. Recovery Services trezor), pro který se shromažďují data |
+| ResourceGroup |Text |Skupina prostředků prostředku (pro např. Recovery Services trezor), pro který se shromažďují data |
 | ResourceProvider |Text |Poskytovatel prostředků pro shromažďovaná data, například Microsoft. RecoveryServices |
-| Typ prostředku |Text |Typ prostředku pro shromažďování dat, například trezory |
+| ResourceType |Text |Typ prostředku pro shromažďování dat, například trezory |
 
 ### <a name="job"></a>Úloha
 
@@ -146,28 +146,28 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | BackupManagementType_s |Text |Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | OperationName |Text |Toto pole představuje název aktuální operace – úloha |
 | Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
-| Resource |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
+| Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | ProtectedServerUniqueId_s |Text |Jedinečný identifikátor přidruženého serveru k úloze |
 | ProtectedContainerUniqueId_s |Text | Jedinečné ID pro identifikaci chráněného kontejneru, na kterém je úloha spuštěná |
 | VaultUniqueId_s |Text |Jedinečný identifikátor chráněného trezoru |
 | JobOperation_s |Text |Operace, pro kterou je úloha spuštěná, například zálohování, obnovení, konfigurace zálohování |
 | JobStatus_s |Text |Stav dokončené úlohy, například dokončeno, neúspěšné |
 | JobFailureCode_s |Text |Řetězec kódu chyby, protože došlo k selhání úlohy |
-| JobStartDateTime_s |Date/Time |Datum a čas spuštění úlohy |
+| JobStartDateTime_s |Datum a čas |Datum a čas spuštění úlohy |
 | BackupStorageDestination_s |Text |Cíl úložiště zálohování, třeba Cloud, disk  |
 | AdHocOrScheduledJob_s |Text | Pole, které určuje, jestli má být úloha ad hoc nebo plánovaná |
-| JobDurationInSecs_s | Number |Celková doba trvání úlohy v sekundách |
-| DataTransferredInMB_s | Number |Data přenesená v MB pro tuto úlohu|
+| JobDurationInSecs_s | Číslo |Celková doba trvání úlohy v sekundách |
+| DataTransferredInMB_s | Číslo |Data přenesená v MB pro tuto úlohu|
 | JobUniqueId_g |Text |Jedinečné ID pro identifikaci úlohy |
 | RecoveryJobDestination_s |Text | Cíl úlohy obnovení, kde se data obnovují |
-| RecoveryJobRPDateTime_s |Datetime | Datum a čas vytvoření bodu obnovení, který se má obnovit |
+| RecoveryJobRPDateTime_s |Datum a čas | Datum a čas vytvoření bodu obnovení, který se má obnovit |
 | RecoveryJobRPLocation_s |Text | Umístění, kam se uložil bod obnovení, který se má obnovit|
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services|
+| ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services|
 | SubscriptionId |Text |Identifikátor předplatného prostředku (např. Recovery Services trezor), pro který se shromažďují data |
-| Skupina prostředků |Text |Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
+| ResourceGroup |Text |Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
 | ResourceProvider |Text |Poskytovatel prostředků, pro který se shromažďují data Například Microsoft. RecoveryServices |
-| Typ prostředku |Text |Typ prostředku, pro který se shromažďují data Například trezory |
+| ResourceType |Text |Typ prostředku, pro který se shromažďují data Například trezory |
 
 ### <a name="policy"></a>Zásada
 
@@ -181,7 +181,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 | BackupManagementType_s |Text ||Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | OperationName |Text ||Toto pole představuje název aktuální operace – zásady |
 | Kategorie |Text ||Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
-| Resource |Text ||Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
+| Prostředek |Text ||Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | PolicyUniqueId_g |Text ||Jedinečné ID pro identifikaci zásad |
 | PolicyName_s |Text ||Název definované zásady |
 | BackupFrequency_s |Text ||Frekvence, se kterou se spouštějí zálohy, například denně, týdně |
@@ -205,17 +205,17 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 | YearlyRetentionDaysOfTheMonth_s |Text ||Data v měsíci vybraná pro roční uchování |
 | SynchronisationFrequencyPerDay_s |Celé číslo |v2|Počet pokusů za den, kdy je záloha souborů synchronizovaná pro SC DPM a MABS |
 | DiffBackupFormat_s |Text |v2|Formát pro rozdílové zálohování SQL v zálohování virtuálních počítačů Azure |
-| DiffBackupTime_s |Time |v2|Čas rozdílového zálohování SQL v zálohování virtuálních počítačů Azure|
+| DiffBackupTime_s |Čas |v2|Čas rozdílového zálohování SQL v zálohování virtuálních počítačů Azure|
 | DiffBackupRetentionDuration_s |Desetinné číslo |v2|Doba uchování rozdílového zálohování pro SQL v zálohování virtuálních počítačů Azure|
 | LogBackupFrequency_s |Desetinné číslo |v2|Frekvence zálohování protokolů pro SQL|
 | LogBackupRetentionDuration_s |Desetinné číslo |v2|Doba uchování pro zálohování protokolů pro SQL v zálohování virtuálních počítačů Azure|
 | DiffBackupDaysofTheWeek_s |Text |v2|Dny v týdnu pro rozdílové zálohy pro SQL v zálohování virtuálních počítačů Azure|
 | SourceSystem |Text ||Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text ||Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
+| ResourceId |Text ||Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
 | SubscriptionId |Text ||Identifikátor předplatného prostředku (např. Recovery Services trezor), pro který se shromažďují data |
-| Skupina prostředků |Text ||Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
+| ResourceGroup |Text ||Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
 | ResourceProvider |Text ||Poskytovatel prostředků, pro který se shromažďují data Například Microsoft. RecoveryServices |
-| Typ prostředku |Text ||Typ prostředku, pro který se shromažďují data Například trezory |
+| ResourceType |Text ||Typ prostředku, pro který se shromažďují data Například trezory |
 
 ### <a name="policyassociation"></a>PolicyAssociation
 
@@ -229,16 +229,16 @@ Tato tabulka poskytuje podrobnosti o přidružení zásad s různými entitami.
 | BackupManagementType_s |Text ||Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | OperationName |Text ||Toto pole představuje název aktuální operace – PolicyAssociation |
 | Kategorie |Text ||Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
-| Resource |Text ||Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
+| Prostředek |Text ||Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | PolicyUniqueId_g |Text ||Jedinečné ID pro identifikaci zásad |
 | VaultUniqueId_s |Text ||Jedinečné ID trezoru, ke kterému patří tato zásada |
 | BackupManagementServerUniqueId_s |Text |v2 |Pole k jednoznačné identifikaci záložního serveru pro správu, ve kterém je chráněná položka, pokud je k dispozici        |
 | SourceSystem |Text ||Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text ||Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
+| ResourceId |Text ||Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
 | SubscriptionId |Text ||Identifikátor předplatného prostředku (např. Recovery Services trezor), pro který se shromažďují data |
-| Skupina prostředků |Text ||Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
+| ResourceGroup |Text ||Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
 | ResourceProvider |Text ||Poskytovatel prostředků, pro který se shromažďují data Například Microsoft. RecoveryServices |
-| Typ prostředku |Text ||Typ prostředku, pro který se shromažďují data Například trezory |
+| ResourceType |Text ||Typ prostředku, pro který se shromažďují data Například trezory |
 
 ### <a name="protected-container"></a>Chráněný kontejner
 
@@ -257,7 +257,7 @@ Tato tabulka poskytuje základní pole o chráněných kontejnerech. (Byl Protec
 | ProtectedContainerWorkloadType_s |Text |Typ zálohovaného chráněného kontejneru. Například IaaSVMContainer |
 | ProtectedContainerLocation_s |Text |Bez ohledu na to, jestli je chráněný kontejner umístěný místně nebo v Azure |
 | ProtectedContainerType_s |Text |Zda chráněný kontejner je server nebo kontejner |
-| ProtectedContainerProtectionState_s'  |Text |Stav ochrany chráněného kontejneru |
+| ProtectedContainerProtectionState_s  |Text |Stav ochrany chráněného kontejneru |
 
 ### <a name="storage"></a>Storage
 
@@ -273,15 +273,15 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 | BackupManagementType_s |Text |Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | OperationName |Text |Toto pole představuje název aktuální operace – úložiště. |
 | Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
-| Resource |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
+| Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | ProtectedServerUniqueId_s |Text |Jedinečné ID chráněného serveru, pro který se počítá úložiště |
 | VaultUniqueId_s |Text |Počítá se jedinečné ID trezoru pro úložiště. |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
+| ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
 | SubscriptionId |Text |Identifikátor předplatného prostředku (např. Recovery Services trezor), pro který se shromažďují data |
-| Skupina prostředků |Text |Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
+| ResourceGroup |Text |Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
 | ResourceProvider |Text |Poskytovatel prostředků, pro který se shromažďují data Například Microsoft. RecoveryServices |
-| Typ prostředku |Text |Typ prostředku, pro který se shromažďují data Například trezory |
+| ResourceType |Text |Typ prostředku, pro který se shromažďují data Například trezory |
 | StorageUniqueId_s |Text |Jedinečné ID použité k identifikaci entity úložiště |
 | StorageType_s |Text |Typ úložiště, například Cloud, svazek, disk |
 | StorageName_s |Text |Název entity úložiště, například jednotku e:\ |
@@ -298,8 +298,8 @@ Tato tabulka poskytuje základní pole související s úložištěm, která pro
 | BackupItemUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci zálohované položky související s entitou úložiště |
 | BackupManagementServerUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci management server zálohy související s entitou úložiště|
 | VaultUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci trezoru souvisejícího s entitou úložiště|
-| StorageConsumedInMBs_s |Number|Velikost úložiště spotřebovaného odpovídající zálohovanou položkou v příslušném úložišti |
-| StorageAllocatedInMBs_s |Number |Velikost úložiště přidělená odpovídající zálohovanou položkou v odpovídajícím úložišti typu disk|
+| StorageConsumedInMBs_s |Číslo|Velikost úložiště spotřebovaného odpovídající zálohovanou položkou v příslušném úložišti |
+| StorageAllocatedInMBs_s |Číslo |Velikost úložiště přidělená odpovídající zálohovanou položkou v odpovídajícím úložišti typu disk|
 
 ### <a name="vault"></a>Trezor
 
@@ -312,17 +312,17 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s trezorem.
 | State_s |Text |Aktuální stav objektu trezoru, například aktivní, odstraněn |
 | OperationName |Text |Toto pole představuje název aktuální operace – trezor |
 | Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
-| Resource |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
+| Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | VaultUniqueId_s |Text |Jedinečné ID trezoru |
 | VaultName_s |Text |Název trezoru |
 | AzureDataCenter_s |Text |Datové centrum, kde se nachází trezor |
 | StorageReplicationType_s |Text |Typ replikace úložiště pro trezor, například, Neredundantní |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| Prostředku |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
+| ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
 | SubscriptionId |Text |Identifikátor předplatného prostředku (např. Recovery Services trezor), pro který se shromažďují data |
-| Skupina prostředků |Text |Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
+| ResourceGroup |Text |Skupina prostředků prostředku (např. Recovery Services trezor), pro který se shromažďují data |
 | ResourceProvider |Text |Poskytovatel prostředků, pro který se shromažďují data Například Microsoft. RecoveryServices |
-| Typ prostředku |Text |Typ prostředku, pro který se shromažďují data Například trezory |
+| ResourceType |Text |Typ prostředku, pro který se shromažďují data Například trezory |
 
 ### <a name="backup-management-server"></a>Server pro správu zálohování
 
@@ -368,6 +368,6 @@ Tato tabulka poskytuje základní pole související s bodem obnovení.
 | LatestRecoveryPointTime_s |Text |Datum a čas posledního bodu obnovení pro zálohovanou položku|
 | LatestRecoveryPointLocation_s |Text |Umístění posledního bodu obnovení pro zálohovanou položku|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po kontrole datového modelu můžete začít [vytvářet vlastní dotazy](../azure-monitor/learn/tutorial-logs-dashboards.md) v protokolech Azure monitor a vytvořit si tak vlastní řídicí panel.

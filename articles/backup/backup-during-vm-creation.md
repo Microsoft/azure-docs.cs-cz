@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e873980ce7aab1c5454a28e88df24bdb189c4860
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639714"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074852"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
 
@@ -52,11 +52,8 @@ Pokud jste k vašemu účtu ještě přihlášeni, přihlaste se k [Azure Portal
 
       ![Výchozí zásady zálohování](./media/backup-during-vm-creation/daily-policy.png)
 
-
 > [!NOTE]
-> Služba Azure Backup vytvoří samostatnou skupinu prostředků (jinou než skupinu prostředků virtuálního počítače) k uložení snímku s formátem názvů **AzureBackupRG_geography_number** (příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovávají po dobu ve dnech, jak je uvedeno v části *uchování snímku okamžitého obnovení* v zásadách zálohování virtuálních počítačů Azure.  Použití zámku u této skupiny prostředků může způsobit selhání zálohování.<br>
-Tato skupina prostředků by se měla taky vyloučit z omezení podle názvů nebo značek, protože zásady omezení by zablokovaly vytváření kolekcí bodů prostředků v takovém případě, že způsobí selhání zálohování.
-
+> Služba Azure Backup vytvoří samostatnou skupinu prostředků (jinou než skupinu prostředků virtuálního počítače) k uložení snímku s formátem názvů **AzureBackupRG_geography_number** (příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovávají po dobu ve dnech, jak je uvedeno v části *uchování snímku okamžitého obnovení* v zásadách zálohování virtuálních počítačů Azure.  Použití zámku u této skupiny prostředků může způsobit selhání zálohování. <br> Tato skupina prostředků by se měla taky vyloučit z omezení podle názvů nebo značek, protože zásady omezení by zablokovaly vytváření kolekcí bodů prostředků v takovém případě, že způsobí selhání zálohování.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Po vytvoření virtuálního počítače spustit zálohování
 
@@ -72,8 +69,6 @@ Po vytvoření virtuálního počítače postupujte takto:
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Použití šablony Správce prostředků k nasazení chráněného virtuálního počítače
 
 Předchozí kroky vysvětlují, jak pomocí Azure Portal vytvořit virtuální počítač a chránit ho v trezoru Recovery Services. Pokud chcete rychle nasadit jeden nebo více virtuálních počítačů a chránit je v úložišti Recovery Services, podívejte se do šablony [nasazení virtuálního počítače s Windows a povolení zálohování](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
-
-
 
 ## <a name="next-steps"></a>Další kroky
 

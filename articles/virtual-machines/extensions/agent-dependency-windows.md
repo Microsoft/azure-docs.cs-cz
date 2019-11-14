@@ -1,5 +1,5 @@
 ---
-title: Rozšíření virtuálního počítače závislosti Azure Monitor pro Windows | Microsoft Docs
+title: Rozšíření virtuálního počítače závislosti Azure Monitor pro Windows
 description: Nasaďte agenta závislostí Azure Monitor na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: b2a86ffab0286559cfcce89252c889c530f00871
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 858aba2a45a6b8cf133e6f94bac45e721535ab25
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750111"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073266"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Windows
 
-Funkce mapa Azure Monitor pro virtuální počítače získá data od agenta závislostí společnosti Microsoft. Rozšíření virtuálního počítače Azure VM Dependency Agent pro Windows je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta závislostí na virtuální počítače Azure. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače agenta závislostí virtuálních počítačů Azure pro Windows.
+Azure Monitor pro funkci mapování virtuálních počítačů získává data od agenta Microsoft Dependency. Rozšíření virtuálního počítače Azure VM Dependency Agent pro Windows je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta závislostí na virtuální počítače Azure. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače agenta závislostí virtuálních počítačů Azure pro Windows.
 
 ## <a name="operating-system"></a>Operační systém
 
@@ -74,7 +74,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 | Název | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| Microsoft | Microsoft. Azure. Monitoring. DependencyAgent |
+| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
@@ -82,7 +82,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 
 Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon Azure Resource Manager. Pomocí schématu JSON popsaného v předchozí části šablony Azure Resource Manager můžete během nasazování Azure Resource Manager šablony spustit rozšíření agenta závislostí virtuálních počítačů Azure.
 
-JSON pro rozšíření virtuálního počítače může být vnořený do prostředku virtuálního počítače. Nebo ho můžete umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [Nastavení názvu a typu pro podřízené prostředky](../../azure-resource-manager/child-resource-name-type.md).
+JSON pro rozšíření virtuálního počítače může být vnořený do prostředku virtuálního počítače. Nebo ho můžete umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/child-resource-name-type.md).
 
 Následující příklad předpokládá, že rozšíření agenta závislosti je vnořené uvnitř prostředku virtuálního počítače. Při vnořování prostředku rozšíření je kód JSON umístěn do objektu `"resources": []` virtuálního počítače.
 
@@ -158,4 +158,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Nebo můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**. Informace o tom, jak používat podporu Azure, najdete v části [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Nebo můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**. Informace o tom, jak používat podporu Azure, najdete v části [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).

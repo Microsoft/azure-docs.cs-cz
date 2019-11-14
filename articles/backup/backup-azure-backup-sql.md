@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: d564cc16a1261cdf71d783ce9f40e577177ff74c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 069d1e7cb81fe8d3528b27e676886710f57ea5f1
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954793"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074272"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
+
 Tento článek vás provede kroky konfigurace pro zálohování SQL Server databází pomocí Azure Backup.
 
 K zálohování databází SQL Server do Azure potřebujete účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -27,9 +28,11 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
 3. Obnovte databázi z Azure.
 
 ## <a name="before-you-start"></a>Než začnete
+
 Než začnete, ujistěte se, že byly splněny všechny [požadavky](backup-azure-dpm-introduction.md#prerequisites-and-limitations) pro použití Microsoft Azure Backup k ochraně úloh. Požadavky zahrnují úlohy, jako například: vytvoření trezoru služby Backup, stažení přihlašovacích údajů trezoru, instalace agenta Azure Backup a registrace serveru v trezoru.
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Vytvoření zásady zálohování pro ochranu SQL Serverch databází do Azure
+
 1. Na serveru DPM klikněte na pracovní prostor **ochrana** .
 2. Na pásu karet nástroje klikněte na **Nový** a vytvořte novou skupinu ochrany.
 
@@ -68,7 +71,7 @@ Než začnete, ujistěte se, že byly splněny všechny [požadavky](backup-azur
 
     ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze) z provozního serveru (SQL Server počítače) na server DPM. Tato data můžou být velká a přenos dat přes síť by mohl překročit šířku pásma. Z tohoto důvodu se můžou správci rozhodnout pro přenos prvotní zálohy: **Ručně** (pomocí vyměnitelného média) se vyhnete zahlcení šířky pásma nebo **automaticky přes síť** (v určitou dobu).
+    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze) z provozního serveru (SQL Server počítače) na server DPM. Tato data můžou být velká a přenos dat přes síť by mohl překročit šířku pásma. Z tohoto důvodu můžou správci přenést počáteční zálohu **ručně** (pomocí vyměnitelného média), aby se předešlo zahlcení šířky pásma nebo **automaticky přes síť** (v určitou dobu).
 
     Po dokončení prvotního zálohování jsou zbývající zálohy přírůstkové zálohy v prvotní záložní kopii. Přírůstkové zálohování je obvykle malé a snadno se přenáší přes síť.
 10. Vyberte, kdy chcete spustit kontrolu konzistence, a klikněte na tlačítko **Další**.
@@ -90,7 +93,7 @@ Než začnete, ujistěte se, že byly splněny všechny [požadavky](backup-azur
     >
     >
 
-    **Osvědčené postupy**: Zajistěte, aby se zálohy Azure naplánovaly po dokončení zálohování místních disků pomocí DPM. To umožňuje zkopírovat nejnovější zálohu disku do Azure.
+    **Osvědčený postup**: Ujistěte se, že jsou zálohy Azure naplánované po dokončení zálohování místních disků pomocí DPM. To umožňuje zkopírovat nejnovější zálohu disku do Azure.
 
 13. Vyberte plán zásad uchovávání informací. Podrobnosti o tom, jak fungují zásady uchovávání informací, najdete v [článku použití Azure Backup k nahrazení vaší páskové infrastruktury](backup-azure-backup-cloud-as-tape.md).
 
@@ -108,11 +111,12 @@ Než začnete, ujistěte se, že byly splněny všechny [požadavky](backup-azur
     * Způsob práce s **offline zálohováním** je vysvětleno v tématu [pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md).
 
     Vyberte příslušný přenosový mechanismus pro odeslání prvotní záložní kopie do Azure a klikněte na **Další**.
-15. Po kontrole podrobností zásad na obrazovce souhrnu dokončete pracovní postup kliknutím na tlačítko **vytvořit skupinu** . Můžete kliknout na tlačítko **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
+15. Po kontrole podrobností zásad na obrazovce **souhrnu** dokončete pracovní postup kliknutím na tlačítko **vytvořit skupinu** . Můžete kliknout na tlačítko **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
 
     ![Probíhá vytváření skupiny ochrany.](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>Zálohování databáze SQL Server na vyžádání
+
 Zatímco předchozí kroky vytvořily zásady zálohování, vytvoří se bod obnovení jenom v případě, že dojde k prvnímu zálohování. Místo čekání na vystavení plánovače pak níže uvedené kroky aktivují vytvoření bodu obnovení ručně.
 
 1. Před vytvořením bodu obnovení počkejte, až se stav skupiny ochrany zobrazí v poli **OK** pro databázi.
@@ -129,6 +133,7 @@ Zatímco předchozí kroky vytvořily zásady zálohování, vytvoří se bod ob
     ![Konzola monitorování](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Obnovení databáze SQL Server z Azure
+
 K obnovení chráněné entity (SQL Server databáze) z Azure se vyžadují následující kroky.
 
 1. Otevřete konzolu pro správu serveru DPM. Přejděte do pracovního prostoru **obnovení** , kde vidíte servery zálohované aplikací DPM. Vyhledejte požadovanou databázi (v tomto případě ReportServer $ MSDPM2012). Vyberte **obnovení z** času, který končí na **online**.
@@ -151,5 +156,6 @@ K obnovení chráněné entity (SQL Server databáze) z Azure se vyžadují nás
 
     Po dokončení obnovení je obnovená databáze konzistentní vzhledem k aplikacím.
 
-### <a name="next-steps"></a>Další kroky:
-• [Azure Backup Nejčastější dotazy](backup-azure-backup-faq.md)
+## <a name="next-steps"></a>Další kroky
+
+* [Nejčastější dotazy k Azure Backup](backup-azure-backup-faq.md)

@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – vytvoření virtuálního počítače s Windows pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+title: Rychlý Start – vytvoření virtuálního počítače s Windows pomocí Azure CLI
 description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit virtuální počítač s Windows.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e6709a6efff80df01d7504db8b39f8ff5c2c5e49
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a3ad81091fa93993f71c6d65175e50f6ee216757
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088841"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073468"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Windows pomocí Azure CLI
 
@@ -46,8 +46,8 @@ az group create --name myResourceGroup --location eastus
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač *myVM*. V tomto příkladu se pro uživatelské jméno správce používá *azureuser* . 
 
-Je nutné změnit hodnotu `--admin-password` nebo se nezdaří. Změňte si heslo, které splňuje požadavky na [heslo pro virtuální počítače](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-)Azure. Uživatelské jméno a heslo se použijí později, až se připojíte k virtuálnímu počítači.
+Je nutné změnit hodnotu `--admin-password` nebo se nezdaří. Změňte si heslo, které splňuje požadavky na [heslo pro virtuální počítače Azure](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+). Uživatelské jméno a heslo se použijí později, až se připojíte k virtuálnímu počítači.
 
 ```azurecli-interactive
 az vm create \
@@ -115,7 +115,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili jednoduchý virtuální počítač, otevřeli jste síťový port pro webový provoz a nainstalovali jste základní webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Windows.
 

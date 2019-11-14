@@ -1,5 +1,5 @@
 ---
-title: Omezení instalace rozšíření virtuálních počítačů pomocí Azure Policyu | Microsoft Docs
+title: Omezení instalace rozšíření virtuálních počítačů pomocí Azure Policy
 description: K omezení nasazení rozšíření virtuálních počítačů použijte Azure Policy.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 20099bb32a1984be0bfbbaaa4e7bc6cd4481a806
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 113736198f40510981c80909c862282fa07ac68d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174029"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073775"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Omezení instalace rozšíření na virtuálních počítačích se systémem Linux pomocí Azure Policy
 
@@ -30,7 +30,7 @@ V tomto kurzu se používá CLI v rámci Azure Cloud Shell, který se průběžn
 
 Chcete-li omezit, jaká rozšíření lze nainstalovat, je nutné mít [pravidlo](../../governance/policy/concepts/definition-structure.md#policy-rule) , které poskytne Logic pro identifikaci rozšíření.
 
-V tomto příkladu se dozvíte, jak zamítnout instalaci rozšíření publikovaných souborem ' Microsoft. OSTCExtensions ' vytvořením souboru pravidel v Azure Cloud Shell, ale pokud pracujete v rozhraní příkazového řádku místně, můžete také vytvořit místní soubor a nahradit cestu (~/clouddrive) cestou k místní soubor na vašem počítači.
+V tomto příkladu se dozvíte, jak zamítnout instalaci rozšíření publikovaných souborem ' Microsoft. OSTCExtensions ' vytvořením souboru pravidel v Azure Cloud Shell, ale pokud pracujete v rozhraní příkazového řádku místně, můžete také vytvořit místní soubor a nahradit cestu (~/clouddrive) cestou k místnímu souboru na počítači.
 
 Do [bash Cloud Shell](https://shell.azure.com/bash)zadejte:
 

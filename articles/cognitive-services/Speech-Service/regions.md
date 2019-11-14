@@ -1,7 +1,7 @@
 ---
 title: Oblasti – služba řeči
 titleSuffix: Azure Cognitive Services
-description: Referenční informace pro oblasti služby Speech.
+description: Seznam dostupných oblastí a koncových bodů pro službu rozpoznávání řeči, včetně převodu řeči na text, převod textu na řeč a překladu řeči.
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 469dab093ed7a62171d232695af3258cc874b5f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481306"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072444"
 ---
-# <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
+# <a name="speech-service-supported-regions"></a>Speech Service podporované oblasti
 
-Služba rozpoznávání řeči umožňuje aplikaci převést zvuk na text, provést překlad řeči a převést text na řeč. Služba je dostupná ve více oblastech s jedinečnými koncovými body pro sadu Speech SDK a rozhraní REST API.
+Služba Speech umožňuje vaší aplikaci převod zvuku na text, překlad řeči a převod textu na řeč. Služba je k dispozici v několika oblastech pomocí jedinečných koncových bodů pro rozhraní API REST a sadou SDK pro řeč.
 
-Ujistěte se, že používáte koncový bod, který odpovídá oblasti vašeho předplatného.
+Ujistěte se, že používáte koncového bodu, který se shoduje s oblastí pro vaše předplatné.
 
 ## <a name="speech-sdk"></a>Speech SDK
 
@@ -32,65 +32,65 @@ V [sadě Speech SDK](speech-sdk.md)jsou oblasti určeny jako řetězec (napřík
 
 Sada Speech SDK je k dispozici v těchto oblastech pro **rozpoznávání řeči**, převod **textu na řeč**a **překlady**:
 
-  Oblast | Parametr sady Speech SDK | Portál pro přizpůsobení řeči
- ------|-------|--------
- Západní USA | `westus` | https://westus.cris.ai
- Západní USA 2 | `westus2` | https://westus2.cris.ai
- USA – východ | `eastus` | https://eastus.cris.ai
- Východ USA 2 | `eastus2` | https://eastus2.cris.ai
- Střední USA | `centralus` | https://centralus.cris.ai
- Středoseverní USA | `northcentralus` | https://northcentralus.cris.ai
- Středojižní USA | `southcentralus` | https://southcentralus.cris.ai
- Střední Indie | `centralindia` | https://centralindia.cris.ai
- Východní Asie | `eastasia` | https://eastasia.cris.ai
- Jihovýchodní Asie | `southeastasia` | https://southeastasia.cris.ai
- Japonsko – východ | `japaneast` | https://japaneast.cris.ai
- Korea – střed | `koreacentral` | https://koreacentral.cris.ai
- Austrálie – východ | `australiaeast` | https://australiaeast.cris.ai
- Kanada – střed | `canadacentral` | https://canadacentral.cris.ai
- Severní Evropa | `northeurope` | https://northeurope.cris.ai
- Západní Evropa | `westeurope` | https://westeurope.cris.ai
- Velká Británie – jih | `uksouth` | https://uksouth.cris.ai
- Francie – střed | `francecentral` | https://francecentral.cris.ai
+| Oblast           | Parametr SDK řeči | Přizpůsobení portálu řeči    |
+| ---------------- | -------------------- | ------------------------------ |
+| Západní USA          | `westus`             | https://westus.cris.ai         |
+| USA – západ 2        | `westus2`            | https://westus2.cris.ai        |
+| East US          | `eastus`             | https://eastus.cris.ai         |
+| Východní USA 2        | `eastus2`            | https://eastus2.cris.ai        |
+| Střed USA       | `centralus`          | https://centralus.cris.ai      |
+| Středoseverní USA | `northcentralus`     | https://northcentralus.cris.ai |
+| Středojižní USA | `southcentralus`     | https://southcentralus.cris.ai |
+| Střed Indie    | `centralindia`       | https://centralindia.cris.ai   |
+| Východní Asie        | `eastasia`           | https://eastasia.cris.ai       |
+| Jihovýchodní Asie   | `southeastasia`      | https://southeastasia.cris.ai  |
+| Japonsko – východ       | `japaneast`          | https://japaneast.cris.ai      |
+| Jižní Korea – střed    | `koreacentral`       | https://koreacentral.cris.ai   |
+| Austrálie – východ   | `australiaeast`      | https://australiaeast.cris.ai  |
+| Kanada – střed   | `canadacentral`      | https://canadacentral.cris.ai  |
+| Severní Evropa     | `northeurope`        | https://northeurope.cris.ai    |
+| Západní Evropa      | `westeurope`         | https://westeurope.cris.ai     |
+| Velká Británie – jih         | `uksouth`            | https://uksouth.cris.ai        |
+| Francie – střed   | `francecentral`      | https://francecentral.cris.ai  |
 
 ### <a name="intent-recognition"></a>Rozpoznávání záměru
 
 Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speech SDK jsou následující:
 
- Globální oblast | Oblast | Parametr sady Speech SDK
- ------|-------|--------
- Asie | Východní Asie | `eastasia`
- Asie | Jihovýchodní Asie | `southeastasia`
- Austrálie | Austrálie – východ | `australiaeast`
- Evropa | Severní Evropa | `northeurope`
- Evropa | Západní Evropa | `westeurope`
- Severní Amerika | USA – východ | `eastus`
- Severní Amerika | Východ USA 2 | `eastus2`
- Severní Amerika | Středojižní USA | `southcentralus`
- Severní Amerika | Středozápadní USA | `westcentralus`
- Severní Amerika | Západní USA | `westus`
- Severní Amerika | Západní USA 2 | `westus2`
- Jižní Amerika | Brazílie – jih | `brazilsouth`
+| Globální oblast | Oblast           | Parametr SDK řeči |
+| ------------- | ---------------- | -------------------- |
+| Asie          | Východní Asie        | `eastasia`           |
+| Asie          | Jihovýchodní Asie   | `southeastasia`      |
+| Austrálie     | Austrálie – východ   | `australiaeast`      |
+| Evropa        | Severní Evropa     | `northeurope`        |
+| Evropa        | Západní Evropa      | `westeurope`         |
+| Severní Amerika | East US          | `eastus`             |
+| Severní Amerika | Východní USA 2        | `eastus2`            |
+| Severní Amerika | Středojižní USA | `southcentralus`     |
+| Severní Amerika | Středozápadní USA  | `westcentralus`      |
+| Severní Amerika | Západní USA          | `westus`             |
+| Severní Amerika | USA – západ 2        | `westus2`            |
+| Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
 
 Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
 
-### <a name="voice-assistants"></a>Asistenti hlasu
+### <a name="voice-assistants"></a>Hlasoví asistenti
 
 [Sada Speech SDK](speech-sdk.md) podporuje možnosti **hlasového asistenta** v těchto oblastech:
 
-Oblast | Parametr sady Speech SDK
--------|---------------------
-Západní USA | `westus`
-Západní USA 2 | `westus2`
-USA – východ | `eastus`
-Východ USA 2 | `eastus2`
-Západní Evropa | `westeurope`
-Severní Evropa | `northeurope`
-Jihovýchodní Asie | `southeastasia`
+| Oblast         | Parametr SDK řeči |
+| -------------- | -------------------- |
+| Západní USA        | `westus`             |
+| USA – západ 2      | `westus2`            |
+| East US        | `eastus`             |
+| Východní USA 2      | `eastus2`            |
+| Západní Evropa    | `westeurope`         |
+| Severní Evropa   | `northeurope`        |
+| Jihovýchodní Asie | `southeastasia`      |
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
-Služba Speech také zpřístupňuje koncové body REST pro požadavky řeči na text a převod textu na řeč.
+Speech service také poskytuje koncové body REST pro požadavky na převod řeči na text a převod textu na řeč.
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 

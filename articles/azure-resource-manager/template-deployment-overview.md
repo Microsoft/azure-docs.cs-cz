@@ -1,19 +1,19 @@
 ---
-title: Šablony Azure Resource Manageru
-description: Popisuje způsob použití šablon Azure Resource Manager pro nasazení prostředků.
+title: Přehled šablon Azure Resource Manager
+description: V této části najdete popis výhod používání šablon Azure Resource Manager pro nasazení prostředků.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 956450e5a47e4d0e16de44b6bc72c6cb24d05889
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71300159"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074390"
 ---
-# <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
+# <a name="azure-resource-manager-templates-overview"></a>Přehled šablon Azure Resource Manager
 
 Díky přesunu do cloudu mnoho týmů přijalo agilní metody vývoje. Tyto týmy iterují rychle. Potřebují opakovaně nasadit svá řešení do cloudu a znáte jejich infrastrukturu v spolehlivém stavu. Jelikož se infrastruktura stala součástí iteračního procesu, dělení mezi operacemi a vývojem zmizelo. Týmy potřebují spravovat infrastrukturu a kód aplikace pomocí sjednoceného procesu.
 
@@ -125,5 +125,6 @@ Informace o vnořených šablonách najdete v tématu [Použití propojených š
 
 ## <a name="next-steps"></a>Další kroky
 
+* Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v tématu [kurz: vytvoření a nasazení první šablony Azure Resource Manager](template-tutorial-create-first-template.md).
 * Informace o vlastnostech v souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
 * Další informace o exportu šablon najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).

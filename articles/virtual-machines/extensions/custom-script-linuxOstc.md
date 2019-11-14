@@ -1,5 +1,5 @@
 ---
-title: Spouštění vlastních skriptů na virtuálních počítačích se systémem Linux v Azure | Microsoft Docs
+title: Spouštění vlastních skriptů na virtuálních počítačích se systémem Linux v Azure
 description: Automatizace úloh konfigurace virtuálních počítačů se systémem Linux pomocí rozšíření vlastních skriptů v1
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: e5ef1bde9420104b596c22837048b054f918b3cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b7dbabf5be8b1f223f6e39f294b9d7022b83c4f8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092631"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073182"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 1 s virtuálními počítači se systémem Linux
 
@@ -37,7 +37,7 @@ Existují dvě rozšíření vlastních skriptů pro Linux:
 
 * Verze 2 – Microsoft. Azure. Extensions. CustomScript
 
-Místo toho prosím přepněte nová a existující nasazení na použití nové verze ([Microsoft. Azure. Extensions. CustomScript](custom-script-linux.md)). Nová verze je určena jako náhrada odkládacího umístění. Proto je migrace stejně jednoduché jako změna názvu a verze, takže nemusíte měnit konfiguraci rozšíření.
+Místo toho prosím přepněte nová a existující nasazení na použití nové verze ([Microsoft. Azure. Extensions. CustomScript](custom-script-linux.md)). Nová verze představuje funkční náhradu starší verze. Proto při migraci není potřeba měnit konfiguraci rozšíření, ale stačí změnit jeho název a verzi.
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -69,7 +69,7 @@ Pokud je váš skript na místním serveru, můžete přesto potřebovat další
 * Zajistěte, aby skripty při spuštění nevyžadovaly vstup uživatele.
 * Pro spuštění skriptu je povolených 90 minut, což bude mít za následek neúspěšné zřízení rozšíření.
 * Neumísťujte do skriptu restartování, což způsobí problémy s dalšími nainstalovanými rozšířeními a po restartování po restartování nebude rozšíření pokračovat. 
-* Pokud máte skript, který způsobí restartování, pak nainstaluje aplikace, spustí skripty atd. Restartování byste měli naplánovat pomocí úlohy cron nebo pomocí nástrojů, jako je DSC nebo Puppet rozšíření.
+* Pokud máte skript, který způsobí restartování, nainstalujte aplikace a spusťte skripty atd. Restartování byste měli naplánovat pomocí úlohy cron nebo pomocí nástrojů, jako je DSC nebo Puppet rozšíření.
 * Rozšíření spustí pouze jeden skript, pokud chcete spustit skript při každém spuštění, můžete použít [bitovou kopii Cloud-init](../linux/using-cloud-init.md) a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modul. Případně můžete použít skript k vytvoření jednotky systémové služby.
 * Pokud chcete naplánovat, kdy se skript spustí, měli byste použít rozšíření k vytvoření úlohy cron.
 * Když je skript spuštěný, na webu Azure Portal nebo v rozhraní příkazového řádku se rozšíření zobrazí pouze v přechodném stavu. Pokud chcete častěji aktualizovat stav spuštěného skriptu, budete muset vytvořit vlastní řešení.
@@ -123,10 +123,10 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft. OSTCExtensions | řetězec |
 | type | CustomScriptForLinux | řetězec |
-| typeHandlerVersion | 1.5 | int |
-| fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| typeHandlerVersion | 1,5 | int |
+| fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | pole |
 | commandToExecute (např.) | python MyPythonScript.py \<Moje param1\> | řetězec |
-| enableInternalDNSCheck | true | boolean |
+| enableInternalDNSCheck | true | Boolean |
 | storageAccountName (např.) | examplestorageacct | řetězec |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | řetězec |
 
@@ -134,9 +134,9 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 * `fileUris`: (volitelné, pole řetězců) seznam identifikátorů URI skriptů
 * `enableInternalDNSCheck`: (volitelné, bool) výchozí hodnota je true, nastavením na hodnotu false zakážete kontrolu DNS.
-* `commandToExecute`: (volitelné, String) skript vstupního bodu, který se má spustit
-* `storageAccountName`: (volitelné, String) název účtu úložiště
-* `storageAccountKey`: (volitelné, String) přístupový klíč účtu úložiště
+* `commandToExecute`: (nepovinný, String) skript EntryPoint, který se má spustit
+* `storageAccountName`: (nepovinný, String) název účtu úložiště
+* `storageAccountKey`: (nepovinný, String) přístupový klíč účtu úložiště
 
 V nastavení veřejné nebo chráněné nastavení lze nastavit následující hodnoty, ale v nastavení veřejné a chráněné nastavení nesmí být tyto hodnoty nastaveny níže.
 
@@ -258,9 +258,9 @@ az vm extension set
   --protected-settings ./protected-config.json
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
-Když se rozšíření vlastních skriptů spustí, skript se vytvoří nebo stáhne do adresáře, který je podobný následujícímu příkladu. Výstup příkazu je také uložen do tohoto adresáře v `stdout` souborech a. `stderr`
+Když se rozšíření vlastních skriptů spustí, skript se vytvoří nebo stáhne do adresáře, který je podobný následujícímu příkladu. Výstup příkazu je také uložen do tohoto adresáře v souboru `stdout` a `stderr`.
 
 ```bash
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-<version>/download/1
@@ -295,7 +295,7 @@ Poznámka:
 
 1. Povolit je při spuštění příkazu.
 1. Stažení se týká stahování balíčku rozšíření CustomScript z Azure, nikoli souborů skriptu zadaných v identifikátorech URI.
-1. Můžete si také prohlédnout, na který soubor protokolu se zapisuje.`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. Můžete také zjistit, který soubor protokolu se zapisuje do `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 Dalším krokem je Projděte si soubor protokolu, který má následující formát:
 
@@ -353,6 +353,6 @@ Name                  ProvisioningState    Publisher                   Version  
 CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  True
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li zobrazit kód, aktuální problémy a verze, přečtěte si téma [úložiště rozšíření CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript).

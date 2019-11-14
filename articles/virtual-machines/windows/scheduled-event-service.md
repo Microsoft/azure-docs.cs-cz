@@ -1,5 +1,5 @@
 ---
-title: Monitorování naplánovaných událostí pro virtuální počítače s Windows v Azure | Microsoft Docs
+title: Monitorování naplánovaných událostí pro virtuální počítače s Windows v Azure
 description: Naučte se monitorovat virtuální počítače Azure pro plánované události.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376202"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073319"
 ---
 # <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
 
@@ -32,7 +32,7 @@ V tomto článku Vás provedeme procesem zaznamenání údržby Scheduled Events
 
 ![Diagram znázorňující životní cyklus události](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto příkladu budete muset vytvořit [virtuální počítač s Windows ve skupině dostupnosti](tutorial-availability-sets.md). Scheduled Events poskytují oznámení o změnách, které můžou ovlivnit některý z virtuálních počítačů ve vaší skupině dostupnosti, cloudové službě, sadě škálování virtuálních počítačů nebo samostatných virtuálních počítačích. Budeme používat [službu](https://github.com/microsoft/AzureScheduledEventsService) , která se dotazuje na naplánované události na jednom z virtuálních počítačů, které se budou chovat jako kolektor, a získat tak události pro všechny ostatní virtuální počítače ve skupině dostupnosti.    
 
@@ -61,7 +61,7 @@ New-AzVm `
 
 Stáhněte si soubor instalace. zip projektu z [GitHubu](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Připojte se k **myCollectorVM** a zkopírujte soubor. zip do virtuálního počítače a Extrahujte všechny soubory. Na svém VIRTUÁLNÍm počítači otevřete příkazový řádek PowerShellu. Přesuňte výzvu do složky obsahující `SchService.ps1`, například: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, a nastavte službu.
+Připojte se k **myCollectorVM** a zkopírujte soubor. zip do virtuálního počítače a Extrahujte všechny soubory. Na svém VIRTUÁLNÍm počítači otevřete příkazový řádek PowerShellu. Přesuňte výzvu do složky obsahující `SchService.ps1`, například: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`a nastavte službu.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -81,7 +81,7 @@ Ověřte stav služby a ujistěte se, že je spuštěný.
 .\SchService.ps1 -status  
 ```
 
-Tato hodnota by měla vracet `Running`.
+To by mělo vrátit `Running`.
 
 Služba se teď začne dotazovat každých 10 sekund na jakékoli naplánované události a schválí události, aby se tato údržba urychlila.  Zablokování, restartování, opětovné nasazení a přerušení jsou události zachycené událostmi plánování. Před schválením události můžete skript roztáhnout, aby se aktivovaly některé zmírnění.
 
@@ -157,9 +157,9 @@ Po vložení událostí do Log Analytics můžete spustit následující [dotaz]
 
     ![Uložit dotaz](./media/notifications/save-query.png)
 
-1. Vyberte **nové pravidlo výstrahy**. 
-1. Na stránce **vytvořit pravidlo** ponechte jako **prostředek**`collectorworkspace`.
-1. V části **Podmínka**vyberte položku *vždy, když je hledání v protokolu zákazníků <login undefined>* . Otevře se stránka **Konfigurovat logiku signálu** .
+1. Vyberte **Nové pravidlo upozornění**. 
+1. Na stránce **vytvořit pravidlo** ponechte `collectorworkspace` jako **prostředek**.
+1. V části **Podmínka**vyberte položku *vždy, když je <login undefined>prohledávání protokolu zákazníka* . Otevře se stránka **Konfigurovat logiku signálu** .
 1. V části **prahová hodnota**zadejte *0* a potom vyberte **Hotovo**.
 1. V části **Akce**vyberte **vytvořit skupinu akcí**. Otevře se stránka **Přidat skupinu akcí** .
 1. Do **název skupiny akcí**zadejte *myActionGroup*.

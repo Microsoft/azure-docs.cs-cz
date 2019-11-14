@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
-ms.openlocfilehash: 8d2b818846eeae44ffe05b4546a333510c638621
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4c0fd0968ce52e50a9171eecb3dfaebd1e2a4c46
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196150"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075020"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Vytvoření šablon Azure Resource Manager pomocí Visual Studio Code
 
@@ -70,7 +70,7 @@ Při najetí myší na názvy funkcí rozšíření zobrazuje nápovědu k podpi
 
 ### <a name="go-to-definition-for-variable-and-parameter-references"></a>Přejít k definici pro proměnné a odkazy na parametry
 
-Můžete přejít k definici pomocí **kombinace kláves Ctrl + kliknutí**nebo pomocí kontextové nabídky, jak je znázorněno na snímku obrazovky: ![Rozšíření Správce prostředků nástrojů Visual Studio Code přejdou na definici.](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
+Můžete přejít k definici pomocí **kombinace kláves Ctrl + kliknutí**nebo pomocí kontextové nabídky, jak je znázorněno na snímku obrazovky: ![Visual Studio Code správce prostředků rozšíření nástrojů přejděte na definice](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
 
 Definici můžete otevřít na stranu **stisknutím kombinace kláves Ctrl + Alt + kliknutí**.
 
@@ -119,7 +119,7 @@ Mezi upozornění patří:
 - Nepoužité parametry
 - Nepoužité proměnné
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o šablonách Správce prostředků a Správce prostředků najdete v tématu [přehled Azure Resource Manager](./resource-group-overview.md).
-- Postup rychlý Start pomocí Visual Studio Code najdete v tématu [rychlý Start: Vytváření Azure Resource Manager šablon pomocí Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)
+- Další informace o vytváření šablon Azure Resource Manager najdete v tématu [kurz: vytvoření a nasazení první šablony Azure Resource Manager](template-tutorial-create-first-template.md).
+- Postup rychlý Start pomocí Visual Studio Code najdete v tématu [rychlý Start: vytvoření Azure Resource Manager šablon pomocí Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)

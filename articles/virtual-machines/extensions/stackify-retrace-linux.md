@@ -1,5 +1,5 @@
 ---
-title: Stackify znovu trasovat rozšíření agenta Azure Linux | Microsoft Docs
+title: Stackify znovu trasovat rozšíření agenta Azure Linux
 description: Nasaďte agenta Stackify Retrace pro Linux na virtuálním počítači se systémem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
-ms.openlocfilehash: 2278f1bef3a72408b097f9a2d676931fd07369f4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173972"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073637"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Rozšíření agenta Stackify retracee pro Linux
 
@@ -54,14 +54,14 @@ Agenta přetrasování lze spustit pro tyto distribuce systému Linux.
 
 Rozšíření agenta Stackify pro Linux vyžaduje, aby byl cílový virtuální počítač připojený k Internetu. 
 
-Možná budete muset upravit konfiguraci sítě, aby povolovala připojení k Stackify, viz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Možná budete muset upravit konfiguraci sítě, aby povolovala připojení k Stackify, a přečtěte si téma https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
 ---
 
-Následující JSON zobrazuje schéma pro rozšíření agenta Stackify Retrace. Přípona vyžaduje `environment` a `activationKey`.
+Následující JSON zobrazuje schéma pro rozšíření agenta Stackify Retrace. Rozšíření vyžaduje `environment` a `activationKey`.
 
 ```json
     {
@@ -95,7 +95,7 @@ JSON pro rozšíření virtuálního počítače se dá vnořit do prostředku v
 
 Následující příklad předpokládá, že rozšíření Stackify Retrace pro Linux je vnořeno do prostředku virtuálního počítače. Při vnořování prostředku rozšíření je kód JSON umístěn do objektu Resources: [] virtuálního počítače.
 
-Přípona vyžaduje `environment` a `activationKey`.
+Rozšíření vyžaduje `environment` a `activationKey`.
 
 ```json
     {
@@ -150,9 +150,9 @@ Při vkládání rozšíření JSON v kořenovém adresáři šablony, název pr
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
 
-`Set-AzVMExtension` Příkaz se dá použít k nasazení rozšíření virtuálního počítače Stackify Retrace agenta pro Linux do existujícího virtuálního počítače. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu.
+Pomocí příkazu `Set-AzVMExtension` se dá nasadit rozšíření virtuálního počítače pro přetrasování Stackify do existujícího virtuálního počítače. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu.
 
-Přípona vyžaduje `environment` a `activationKey`.
+Rozšíření vyžaduje `environment` a `activationKey`.
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -173,7 +173,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 Nástroj rozhraní příkazového řádku Azure je možné použít k nasazení rozšíření virtuálního počítače Stackify Retrace agenta pro Linux do existujícího virtuálního počítače.  
 
-Přípona vyžaduje `environment` a `activationKey`.
+Rozšíření vyžaduje `environment` a `activationKey`.
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -191,11 +191,11 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 40 | Chyba instalace | activationKey je povinný údaj. |
 | 51 | Chyba instalace | Distribuce OS se nepodporuje. |
 | 60 | Chyba instalace | prostředí je povinné. |
-| 70 | Chyba instalace | Neznámé |
+| 70 | Chyba instalace | Není známo |
 | 80 | Povolit chybu | Instalace služby se nezdařila |
 | 90 | Povolit chybu | Spuštění služby se nezdařilo |
 | 100 | Zakázat chybu | Zastavení služby se nezdařilo |
 | 110 | Zakázat chybu | Nepovedlo se odebrat službu. |
 | 120 | Chyba odinstalace | Zastavení služby se nezdařilo |
 
-Pokud potřebujete další pomoc, můžete kontaktovat podporu Stackify na adrese https://support.stackify.com.
+Pokud potřebujete další pomoc, můžete kontaktovat podporu Stackify na https://support.stackify.com.

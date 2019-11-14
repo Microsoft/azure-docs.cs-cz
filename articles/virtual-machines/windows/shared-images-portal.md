@@ -1,5 +1,5 @@
 ---
-title: Vytvoření sdílených imagí virtuálních počítačů Azure pro Windows pomocí portálu | Microsoft Docs
+title: Vytvoření sdílených imagí virtuálních počítačů Azure pro Windows pomocí portálu
 description: Naučte se používat Azure Portal k vytváření a sdílení imagí virtuálních počítačů.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8dac15a39355f3faf749327431423629fa6ce09b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0823942964f2bdb9f943d6eb778a3132574af0f7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903659"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065534"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Vytvoření galerie sdílených imagí pomocí Azure Portal
 

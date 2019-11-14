@@ -1,5 +1,5 @@
 ---
-title: Změna velikosti virtuálního počítače s Windows v Azure pomocí PowerShellu | Microsoft Docs
+title: Změna velikosti virtuálního počítače s Windows v Azure pomocí PowerShellu
 description: Změňte velikost virtuálního počítače s Windows vytvořeného v modelu nasazení Správce prostředků pomocí Azure PowerShellu.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 1f5f8f3a315b894ab8bc972d36008b5bce85d8e7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749240"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073367"
 ---
 # <a name="resize-a-windows-vm"></a>Změna velikosti virtuálního počítače s Windows
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak přesunout virtuální počítač na jinou [Ve
 
 Po vytvoření virtuálního počítače můžete virtuální počítač škálovat nahoru nebo dolů změnou velikosti virtuálního počítače. V některých případech je nutné nejprve zrušit přidělení virtuálního počítače. K tomu může dojít v případě, že nová velikost není k dispozici v hardwarovém clusteru, který je aktuálně hostitelem virtuálního počítače.
 
-Pokud virtuální počítač používá Premium Storage, ujistěte se, že zvolíte verzi **s** , abyste získali Premium Storage podporu. Například vyberte Standard_E4**s**_V3 namísto Standard_E4_v3.
+Pokud virtuální počítač používá Premium Storage, ujistěte se, že zvolíte verzi **s** , abyste získali Premium Storage podporu. Například vyberte Standard_E4**s**_v3 namísto Standard_E4_v3.
 
  
 

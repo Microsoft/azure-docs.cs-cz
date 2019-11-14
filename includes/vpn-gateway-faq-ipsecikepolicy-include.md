@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799753"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075414"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
-Vlastní zásady IPsec/IKE jsou podporovány v branách Azure VPN Gateway úrovně **VpnGw1, VpnGw2, VpnGw3, Standard** a **HighPerformance**. Skladová položka **Basic** **není** podporována.
+Vlastní zásady IPsec/IKE se podporují ve všech SKU Azure s výjimkou základní skladové položky (SKU).
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Kolik zásad můžu zadat pro jedno připojení?
 Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
@@ -27,22 +27,22 @@ Ne, musíte zadat všechny algoritmy a parametry pro protokol IKE (hlavní reži
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Jaké algoritmy a síly klíče jsou podporované ve vlastních zásadách?
 Následující tabulka uvádí podporované kryptografické algoritmy a síly klíče, které můžou zákazníci konfigurovat. Pro každé pole musíte vybrat jednu možnost.
 
-| **IPsec/IKEv1, IKEv2**  | **Možnosti**                                                                   |
-| ---                     | ---                                                                           |
-| IKEv1, šifrování IKEv2 | AES256, AES192, AES128, DES3, DES                                             |
-| IKEv1, integrita IKEv2  | SHA384, SHA256, SHA1, MD5                                                     |
-| Skupina DH                | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Žádná  |
-| Šifrování protokolem IPsec        | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Žádné      |
-| Integrita protokolu IPsec         | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
-| Skupina PFS               | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Žádná                              |
-| Doba života přidružení zabezpečení v rychlém režimu          | Sekundy (integer; **min. 300** / výchozí hodnota 27 000 sekund)<br>Kilobajty (integer; **min. 1024** / výchozí hodnota 102 400 000 kilobajtů) |
-| Selektor provozu        | UsePolicyBasedTrafficSelectors ($True nebo $False; výchozí hodnota je $False)                 |
-|                         |                                                                               |
+| **IPsec/IKEv2**  | **Možnosti**                                                                   |
+| ---              | ---                                                                           |
+| Šifrování protokolem IKEv2 | AES256, AES192, AES128, DES3, DES                                             |
+| Integrita protokolu IKEv2  | SHA384, SHA256, SHA1, MD5                                                     |
+| Skupina DH         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Žádná |
+| Šifrování protokolem IPsec | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Žádné      |
+| Integrita protokolu IPsec  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
+| Skupina PFS        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Žádná                              |
+| Doba života přidružení zabezpečení v rychlém režimu   | Sekundy (integer; **min. 300** / výchozí hodnota 27 000 sekund)<br>Kilobajty (integer; **min. 1024** / výchozí hodnota 102 400 000 kilobajtů)           |
+| Selektor provozu | UsePolicyBasedTrafficSelectors ($True nebo $False; výchozí hodnota je $False)                 |
+|                  |                                                                               |
 
 > [!IMPORTANT]
 > 1. DHGroup2048 a PFS2048 jsou stejná skupina Diffie-Hellman **14** v PFS protokolů IKE a IPsec. Kompletní mapování najdete v části [Skupiny Diffie-Hellman](#DH).
 > 2. V případě algoritmů GCMAES musíte zadat stejný algoritmus GCMAES a délku klíče pro šifrování protokolem IPsec i integritu dat.
-> 3. Životnost SA v hlavním režimu IKEv1 a IKEv2 se v bráně Azure VPN Gateway stanoví na 28 800 sekund.
+> 3. Životnost SA hlavního režimu IKEv2 je opravena na 28 800 sekund ve službě Azure VPN Gateway.
 > 4. Doby života přidružení zabezpečení v rychlém režimu jsou volitelné parametry. Pokud nebyla zadána žádná doba života, použijí se výchozí hodnoty 27 000 sekund (7,5 hodiny) a 102 400 000 kilobajtů (102 GB).
 > 5. UsePolicyBasedTrafficSelector je parametr možnosti v připojení. Podívejte se na další položku nejčastějších dotazů týkající se možnosti UsePolicyBasedTrafficSelectors.
 

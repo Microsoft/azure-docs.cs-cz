@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 8aeef72c23f3ed40a7f187c976c67c2ae117189a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958493"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069633"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
 
@@ -123,7 +123,7 @@ Druhé kvorum Zookeeper je nezávislé na prvním kvoru, takže aktivní NameNod
 
 Clustery HDInsight založené na Apache Hadoop 2,4 nebo vyšší podporují vysokou dostupnost prostředků PŘÍZového správce. Existují dva správce prostředků, RM1 a RM2, spuštěné v hlavnímu uzlu 0 a hlavnímu uzlu 1 v uvedeném pořadí. Podobně jako NameNode je také pro automatické převzetí služeb při selhání nakonfigurován správce prostředků PŘÍZe. Pokud aktuální aktivní Správce prostředků přestane reagovat nebo nereaguje, bude se automaticky aktivovat jiný správce prostředků.
 
-PŘÍZ ResourceManager používá svůj vložený *ActiveStandbyElector* jako detektor selhání a vodicího voliče. Na rozdíl od HDFS NodeManager nepotřebuje PŘÍZe ResourceManager samostatný ZKFC démon. Aktivní Správce prostředků zapisuje své stavy do Apache Zookeeper.
+PŘÍZ ResourceManager používá svůj vložený *ActiveStandbyElector* jako detektor selhání a vodicího voliče. Na rozdíl od HDFS NameNode nepotřebuje PŘÍZe ResourceManager samostatný ZKFC démon. Aktivní Správce prostředků zapisuje své stavy do Apache Zookeeper.
 
 Vysoká dostupnost PŘÍZového správce prostředků je nezávislá na NameNode a dalších službách HDInsight HA. Aktivní Správce prostředků se nemusí spustit na aktivním hlavnímu uzlu nebo hlavnímu uzlu, kde běží aktivní NameNode. Další informace o vysoké dostupnosti správce prostředků PŘÍZe najdete v tématu [Vysoká dostupnost správce prostředků](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html).
 

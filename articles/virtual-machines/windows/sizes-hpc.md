@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Azure s Windows – HPC | Microsoft Docs
+title: Velikosti virtuálních počítačů Azure s Windows – HPC
 description: Obsahuje seznam různých velikostí dostupných pro virtuální počítače Windows s vysokým výkonem v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: 0c5398caf85566f78c7ebe9e8ba114a53d2f6271
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e96c74eb4b9b96459bb5de7db2faeb47ed99a82e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088523"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065441"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -73,7 +73,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 * **Virtuální počítače** – nasazení virtuálních počítačů HPC s podporou RDMA ve stejné skupině dostupnosti (při použití modelu nasazení Azure Resource Manager). Pokud používáte model nasazení Classic, nasaďte virtuální počítače do stejné cloudové služby. 
 
-* **Virtual Machine Scale Sets** – v sadě škálování virtuálního počítače Nezapomeňte toto nasazení omezit na jednu skupinu umístění. Například v šabloně správce prostředků nastavte `singlePlacementGroup` vlastnost na. `true` 
+* **Virtual Machine Scale Sets** – v sadě škálování virtuálního počítače Nezapomeňte toto nasazení omezit na jednu skupinu umístění. Například v šabloně Správce prostředků nastavte vlastnost `singlePlacementGroup` na `true`. 
 
 * **MPI mezi virtuálními počítači** – Pokud se vyžaduje komunikace MPI mezi virtuálními počítači, ujistěte se, že jsou virtuální počítače ve stejné skupině dostupnosti nebo ve stejné sadě škálování virtuálního počítače.
 
@@ -81,7 +81,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 * **Azure Batch** – vytvořte fond [Azure Batch](/azure/batch/) pro spouštění úloh MPI na výpočetních uzlech Windows serveru. Další informace najdete v tématu [použití instancí podporujících technologii RDMA nebo GPU ve fondech služby Batch](../../batch/batch-pool-compute-intensive-sizes.md). Pro spouštění úloh založených na kontejnerech ve službě Batch se také zobrazí projekt [Batch loděnice](https://github.com/Azure/batch-shipyard) .
 
-* **Sada Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) obsahuje běhové prostředí pro MS-MPI, které používá síť Azure RDMA při nasazení na virtuální počítače s Windows s podporou RDMA. Například nasazení najdete v tématu [Nastavení clusteru Windows RDMA se sadou HPC Pack pro spouštění aplikací MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* Sada **Microsoft HPC pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) zahrnuje běhové prostředí pro MS-MPI, které používá síť Azure RDMA při nasazení na virtuální počítače s Windows s podporou RDMA. Například nasazení najdete v tématu [Nastavení clusteru Windows RDMA se sadou HPC Pack pro spouštění aplikací MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="other-sizes"></a>Jiné velikosti
 - [Obecné účely](sizes-general.md)
@@ -91,7 +91,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Předchozí generace](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Kontrolní seznamy pro použití výpočetně náročných instancí se sadou HPC Pack na Windows serveru najdete v tématu [Nastavení clusteru Windows RDMA se sadou HPC Pack pro spouštění aplikací MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

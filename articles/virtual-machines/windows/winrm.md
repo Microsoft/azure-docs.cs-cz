@@ -1,5 +1,5 @@
 ---
-title: Nastavení přístupu WinRM pro virtuální počítač Azure | Microsoft Docs
+title: Nastavení přístupu WinRM pro virtuální počítač Azure
 description: Nastavte přístup WinRM pro použití s virtuálním počítačem Azure vytvořeným v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ca52a458104b4de0f7b3ed2aa3f76109a5623c97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749050"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067319"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Nastavení přístupu WinRM pro Virtual Machines v Azure Resource Manager
 
 Tady jsou kroky, které musíte provést při nastavování virtuálního počítače pomocí připojení WinRM.
 
 1. Vytvoření trezoru klíčů
-2. Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+2. Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 3. Nahrání certifikátu podepsaného svým držitelem do Key Vault
 4. Získat adresu URL certifikátu podepsaného svým držitelem v Key Vault
 5. Odkazování na adresu URL certifikátů podepsaných svým držitelem při vytváření virtuálního počítače

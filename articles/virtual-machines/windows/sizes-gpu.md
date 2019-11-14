@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Azure s Windows – GPU | Microsoft Docs
+title: Velikosti virtuálních počítačů Azure s Windows – GPU
 description: Obsahuje seznam různých velikostí GPU, které jsou dostupné pro virtuální počítače s Windows v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 0e809690f0453806402c27773ad0029fc5f64be2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5b2da3076f3970d2f11301b3ea412ce52c257111
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102348"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075357"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
 
@@ -43,6 +43,6 @@ Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si t�
 - [Optimalizované z hlediska úložiště](sizes-storage.md)
 - [Předchozí generace](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
 

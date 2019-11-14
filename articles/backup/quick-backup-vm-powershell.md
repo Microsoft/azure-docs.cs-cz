@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 741c6c1f937988dcce41603417a1bc7dc95091cb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747080"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073979"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Zálohování virtuálního počítače v Azure pomocí PowerShellu
 
@@ -106,18 +106,18 @@ Zapněte zálohování následujícím způsobem:
 
 ## <a name="start-a-backup-job"></a>Spuštění úlohy zálohování
 
-Zálohy běží v souladu s plánem zadaným v zásadách zálohování. Můžete také spustit zálohování ad hoc:
+Zálohování se spouští podle plánu uvedeného v zásadách zálohování. Můžete také spustit zálohování na vyžádání:
 
 - První úloha počátečního zálohování vytvoří úplný bod obnovení.
 - Po počátečním zálohování Každá úloha zálohování vytvoří přírůstkové body obnovení.
 - Přírůstkové body obnovení jsou efektivní z hlediska úložiště a času, protože přenášejí pouze změny provedené od posledního zálohování.
 
-Pokud chcete spustit zálohování ad hoc, použijte [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
+Pokud chcete spustit zálohování na vyžádání, použijte [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
 - V trezoru zadáte kontejner, který uchovává data záloh pomocí [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
 - Každý virtuální počítač určený k zálohování se považuje za položku. Pokud chcete spustit úlohu zálohování, získáte informace o virtuálním počítači pomocí [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
-Spusťte úlohu zálohování ad hoc následujícím způsobem:
+Spusťte úlohu zálohování na vyžádání následujícím způsobem:
 
 1. Zadejte kontejner, Získejte informace o virtuálním počítači a spusťte zálohování.
 

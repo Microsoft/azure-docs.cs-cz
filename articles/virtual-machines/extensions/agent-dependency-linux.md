@@ -1,5 +1,5 @@
 ---
-title: Rozšíření virtuálního počítače závislosti Azure Monitor pro Linux | Microsoft Docs
+title: Rozšíření virtuálního počítače závislosti Azure Monitor pro Linux
 description: Nasaďte agenta závislostí Azure Monitor na virtuálním počítači se systémem Linux pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 416b0c89105f97514efdfcc859a630d78f7ba7f5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46b0ddeeb70e263723b657ef3150dc5548fcc742
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084833"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073876"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Linux
 
@@ -73,7 +73,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad |
+| Název | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
@@ -86,7 +86,7 @@ Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon 
 
 JSON pro rozšíření virtuálního počítače může být vnořený do prostředku virtuálního počítače. Nebo ho můžete umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/child-resource-name-type.md).
 
-Následující příklad předpokládá, že rozšíření agenta závislosti je vnořené uvnitř prostředku virtuálního počítače. Při vnořování prostředku rozšíření je kód JSON umístěn v `"resources": []` objektu virtuálního počítače.
+Následující příklad předpokládá, že rozšíření agenta závislosti je vnořené uvnitř prostředku virtuálního počítače. Při vnořování prostředku rozšíření je kód JSON umístěn do objektu `"resources": []` virtuálního počítače.
 
 
 ```json

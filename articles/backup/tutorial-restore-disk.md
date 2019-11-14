@@ -8,17 +8,19 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: ddbf2e5349a77a45155fafd07da5489d0073b093
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4dcf1e8a0ba9fd7c1e8d02ee8c8307dc63d9e231
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876380"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074667"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Obnovení disku a vytvoření obnoveného virtuálního počítače v Azure
-Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek vysvětluje postup obnovení celého virtuálního počítače pomocí rozhraní příkazového řádku. V tomto kurzu se naučíte:
+
+Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek vysvětluje postup obnovení celého virtuálního počítače pomocí rozhraní příkazového řádku. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
+>
 > * Výpis a výběr bodů obnovení
 > * Obnovení disku z bodu obnovení
 > * Vytvoření virtuálního počítače z obnoveného disku
@@ -27,23 +29,23 @@ Informace o obnovení disku a vytvoření chráněného počítače pomocí Powe
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.18 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
-
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.18 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Požadavky
+
 Tento kurz vyžaduje virtuální počítač s Linuxem chráněný službou Azure Backup. Pro simulaci náhodného odstranění virtuálního počítače a procesu obnovení vytvoříte virtuální počítač z disku v bodu obnovení. Pokud potřebujete virtuální počítač s Linuxem chráněný pomocí služby Azure Backup, přečtěte si téma [Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku](quick-backup-vm-cli.md).
 
-
 ## <a name="backup-overview"></a>Přehled služby Backup
+
 Když Azure zahájí zálohování, rozšíření zálohování na virtuálním počítači pořídí snímek v daném okamžiku. Rozšíření zálohování se na virtuální počítač nainstaluje při vyžádání prvního zálohování. Azure Backup může pořídit také snímek základního úložiště, pokud virtuální počítač není při zálohování spuštěný.
 
 Ve výchozím nastavení provede Azure Backup zálohování konzistentní vzhledem k systému souborů. Jakmile Azure Backup pořídí snímek, data se přenesou do trezoru služby Recovery Services. Pro maximalizaci efektivity Azure Backup identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování.
 
 Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 
-
 ## <a name="list-available-recovery-points"></a>Výpis dostupných bodů obnovení
-Když chcete obnovit disk, vyberete bod obnovení jako zdroj dat obnovení. Vzhledem k tomu, že výchozí zásady vytváří body obnovení každý den a uchovávají je po dobu 30 dnů, můžete udržovat sadu bodů obnovení, které vám umožní pro obnovení vybrat konkrétní bod v čase. 
+
+Když chcete obnovit disk, vyberete bod obnovení jako zdroj dat obnovení. Vzhledem k tomu, že výchozí zásady vytváří body obnovení každý den a uchovávají je po dobu 30 dnů, můžete udržovat sadu bodů obnovení, které vám umožní pro obnovení vybrat konkrétní bod v čase.
 
 Seznam dostupných bodů obnovení zobrazíte pomocí příkazu [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). **Název** bodu obnovení slouží k obnovení disků. V tomto kurzu chceme nejnovější dostupný bod obnovení. Parametr `--query [0].name` následujícím způsobem vybere název nejnovějšího bodu obnovení:
 
@@ -57,8 +59,8 @@ az backup recoverypoint list \
     --output tsv
 ```
 
-
 ## <a name="restore-a-vm-disk"></a>Obnovení disku virtuálního počítače
+
 Když chcete obnovit disk z bodu obnovení, nejprve vytvoříte účet úložiště Azure. Tento účet úložiště se použije k uložení obnoveného disku. V dalších krocích se obnovený disk použije k vytvoření virtuálního počítače.
 
 1. Účet úložiště vytvoříte pomocí příkazu [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Název účtu úložiště musí být malými písmeny a globálně jedinečný. Nahraďte *mystorageaccount* vlastním jedinečným názvem:
@@ -82,11 +84,11 @@ Když chcete obnovit disk z bodu obnovení, nejprve vytvoříte účet úložiš
         --rp-name myRecoveryPointName
     ```
 
-
 ## <a name="monitor-the-restore-job"></a>Monitorování úlohy obnovení
+
 Pokud chcete monitorovat stav úlohy obnovení, použijte příkaz [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
 
-```azurecli-interactive 
+```azurecli-interactive
 az backup job list \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
@@ -105,12 +107,12 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 Až se *Status* (Stav) úlohy obnovení změní na *Completed* (Dokončeno), disk bude obnovený v účtu úložiště.
 
-
 ## <a name="convert-the-restored-disk-to-a-managed-disk"></a>Převod obnoveného disku na spravovaný disk
+
 Úloha obnovení vytvoří nespravovaný disk. Pokud chcete z disku vytvořit virtuální počítač, musí se nejprve převést na spravovaný disk.
 
 1. Získejte informace o připojení k vašemu účtu úložiště pomocí příkazu [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string). Následujícím způsobem nahraďte *mystorageaccount* názvem vašeho účtu úložiště:
-    
+
     ```azurecli-interactive
     export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
         --resource-group myResourceGroup \
@@ -143,8 +145,8 @@ Až se *Status* (Stav) úlohy obnovení změní na *Completed* (Dokončeno), dis
         --name mystorageaccount
     ```
 
-
 ## <a name="create-a-vm-from-the-restored-disk"></a>Vytvoření virtuálního počítače z obnoveného disku
+
 Posledním krokem je vytvoření virtuálního počítače ze spravovaného disku.
 
 1. Následujícím způsobem vytvořte ze svého spravovaného disku virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create):
@@ -163,11 +165,12 @@ Posledním krokem je vytvoření virtuálního počítače ze spravovaného disk
     az vm list --resource-group myResourceGroup --output table
     ```
 
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
 V tomto kurzu jste obnovili disk z bodu obnovení a pak jste z tohoto disku vytvořili virtuální počítač. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
+>
 > * Výpis a výběr bodů obnovení
 > * Obnovení disku z bodu obnovení
 > * Vytvoření virtuálního počítače z obnoveného disku
@@ -176,4 +179,3 @@ V dalším kurzu najdete informace o obnovování jednotlivých souborů z bodu 
 
 > [!div class="nextstepaction"]
 > [Obnovení souborů do virtuálního počítače v Azure](tutorial-restore-files.md)
-

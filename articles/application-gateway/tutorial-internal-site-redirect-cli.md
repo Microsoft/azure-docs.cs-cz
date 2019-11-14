@@ -1,23 +1,19 @@
 ---
-title: Vytvoření aplikační brány s interním přesměrování – Azure CLI | Microsoft Docs
+title: Interní přesměrování pomocí rozhraní příkazového řádku
+titleSuffix: Azure Application Gateway
 description: Naučte se, jak vytvořit Aplikační bránu, která přesměruje vnitřní webový provoz do příslušného fondu pomocí Azure CLI.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2018
 ms.author: victorh
-ms.openlocfilehash: 6a4a47f93054c4c93043b5215371b5eea7244d46
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: eea3f4bb38b0a6a796bc2ba7c8652f20ce159735
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834994"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074472"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s interním přesměrování pomocí Azure CLI
 
@@ -27,10 +23,10 @@ V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvoření Application Gateway
+> * Vytvoření služby Application Gateway
 > * Přidat naslouchací procesy a pravidlo přesměrování
 > * Vytvoření sady škálování virtuálních počítačů s back-end fondem
-> * Vytvořit záznam CNAME v doméně
+> * Vytvoření záznamu CNAME v doméně
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -101,7 +97,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 ## <a name="add-listeners-and-rules"></a>Přidání naslouchacích procesů a pravidel 
 
-Naslouchací proces je potřebný k tomu, aby aplikační brána správně směrovala provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu se vytvoří naslouchací procesy pro domény *www\.contoso.com* a *www\.contoso.org*.
+Naslouchací proces je potřeba k tomu, aby brána Application Gateway mohla správně směrovat provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu se vytvoří naslouchací procesy pro domény *www\.contoso.com* a *www\.contoso.org*.
 
 Přidejte back-endové naslouchací procesy, které jsou potřeba ke směrování provozu, příkazem [az network application-gateway http-listener create](/cli/azure/network/application-gateway).
 
@@ -221,10 +217,10 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvoření Application Gateway
+> * Vytvoření služby Application Gateway
 > * Přidat naslouchací procesy a pravidlo přesměrování
 > * Vytvoření sady škálování virtuálních počítačů s back-end fondem
-> * Vytvořit záznam CNAME v doméně
+> * Vytvoření záznamu CNAME v doméně
 
 > [!div class="nextstepaction"]
 > [Další informace o možnostech aplikační brány](./application-gateway-introduction.md)

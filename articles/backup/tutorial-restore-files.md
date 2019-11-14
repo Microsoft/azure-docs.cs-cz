@@ -8,39 +8,41 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: b150dc8e0688b27fdc677bf23a75389c493f1325
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 8d23eb5c177464642ffcafec8877fd2649c0d4f7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210193"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073995"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Obnovení souborů do virtuálního počítače v Azure
-Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek podrobně popisuje, jak obnovit jednotlivé soubory. V tomto kurzu se naučíte:
+
+Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek podrobně popisuje, jak obnovit jednotlivé soubory. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
+>
 > * Výpis a výběr bodů obnovení
 > * Připojení bodu obnovení k virtuálnímu počítači
 > * Obnovení souborů z bodu obnovení
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.18 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
-
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.18 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Požadavky
+
 Tento kurz vyžaduje virtuální počítač s Linuxem chráněný službou Azure Backup. K simulaci náhodného odstranění souboru a procesu obnovení odstraníte stránku z webového serveru. Pokud potřebujete virtuální počítač s Linuxem a webovým serverem, který je chráněný pomocí služby Azure Backup, přečtěte si téma [Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku](quick-backup-vm-cli.md).
 
-
 ## <a name="backup-overview"></a>Přehled služby Backup
+
 Když Azure zahájí zálohování, rozšíření zálohování na virtuálním počítači pořídí snímek v daném okamžiku. Rozšíření zálohování se na virtuální počítač nainstaluje při vyžádání prvního zálohování. Azure Backup může pořídit také snímek základního úložiště, pokud virtuální počítač není při zálohování spuštěný.
 
 Ve výchozím nastavení provede Azure Backup zálohování konzistentní vzhledem k systému souborů. Jakmile Azure Backup pořídí snímek, data se přenesou do trezoru služby Recovery Services. Pro maximalizaci efektivity Azure Backup identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování.
 
 Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 
-
 ## <a name="delete-a-file-from-a-vm"></a>Odstranění souboru z virtuálního počítače
+
 Pokud omylem odstraníte nebo změníte soubor, můžete jednotlivé soubory obnovit z bodu obnovení. Tento proces umožňuje procházet zálohované soubory v bodu obnovení a obnovit pouze soubory, které potřebujete. V tomto příkladu odstraníme soubor z webového serveru, abychom předvedli proces obnovení na úrovni souborů.
 
 1. Abyste se mohli připojit ke svému virtuálnímu počítači, získejte jeho IP adresu pomocí příkazu [az vm show](/cli/azure/vm?view=azure-cli-latest#az-vm-show):
@@ -75,8 +77,8 @@ Pokud omylem odstraníte nebo změníte soubor, můžete jednotlivé soubory obn
     exit
     ```
 
-
 ## <a name="generate-file-recovery-script"></a>Generování skriptu pro obnovení souborů
+
 Pro obnovení souborů poskytuje Azure Backup skript, který můžete spustit na svém virtuálním počítači a který připojí bod obnovení jako místní jednotku. Tuto místní jednotku můžete procházet, obnovit soubory do virtuálního počítače a pak bod obnovení odpojit. Azure Backup pokračuje v zálohování vašich dat na základě přiřazené zásady určující plán a uchovávání.
 
 1. Pokud chcete vypsat body obnovení pro váš virtuální počítač, použijte příkaz [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). V tomto příkladu vybíráme nejnovější bod obnovení pro virtuální počítač *myVM*, který je chráněný v trezoru *myRecoveryServicesVault*:
@@ -116,8 +118,8 @@ Pro obnovení souborů poskytuje Azure Backup skript, který můžete spustit na
     scp myVM_we_1571974050985163527.sh 52.174.241.110:
     ```
 
-
 ## <a name="restore-file-to-your-vm"></a>Obnovení souboru do virtuálního počítače
+
 Po zkopírování skriptu pro obnovení do svého virtuálního počítače teď můžete připojit bod obnovení a obnovit soubory.
 
 1. Připojte se ke svému virtuálnímu počítači přes SSH. Nahraďte *publicIpAddress* veřejnou IP adresou vašeho virtuálního počítače:
@@ -146,19 +148,19 @@ Po zkopírování skriptu pro obnovení do svého virtuálního počítače teď
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
     Please enter the password as shown on the portal to securely connect to the recovery point. : c068a041ce12465
-    
+
     Connecting to recovery point using ISCSI service...
-    
+
     Connection succeeded!
-    
+
     Please wait while we attach volumes of the recovery point to this machine...
-    
+
     ************ Volumes of the recovery point and their mount paths on this machine ************
-    
+
     Sr.No.  |  Disk  |  Volume  |  MountPath
-    
+
     1)  | /dev/sdc  |  /dev/sdc1  |  /home/azureuser/myVM-20170919213536/Volume1
-    
+
     ************ Open File Explorer to browse for files. ************
     ```
 
@@ -168,20 +170,20 @@ Po zkopírování skriptu pro obnovení do svého virtuálního počítače teď
     sudo cp /home/azureuser/myVM-20170919213536/Volume1/var/www/html/index.nginx-debian.html /var/www/html/
     ```
 
-6. Ve webovém prohlížeči aktualizujte webovou stránku. Web se teď opět načte správně, jak je znázorněno v následujícím příkladu:
+5. Ve webovém prohlížeči aktualizujte webovou stránku. Web se teď opět načte správně, jak je znázorněno v následujícím příkladu:
 
     ![Web serveru NGINX se teď načte správně](./media/tutorial-restore-files/nginx-restored.png)
 
-7. Následujícím způsobem ukončete relaci SSH k vašemu virtuálnímu počítači:
+6. Následujícím způsobem ukončete relaci SSH k vašemu virtuálnímu počítači:
 
     ```bash
     exit
     ```
 
-8. Odpojte bod obnovení ze svého virtuálního počítače pomocí příkazu [az backup restore files unmount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-unmount-rp). Následující příklad odpojí bod obnovení z virtuálního počítače *myVM* v trezoru *myRecoveryServicesVault*.
+7. Odpojte bod obnovení ze svého virtuálního počítače pomocí příkazu [az backup restore files unmount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-unmount-rp). Následující příklad odpojí bod obnovení z virtuálního počítače *myVM* v trezoru *myRecoveryServicesVault*.
 
     Nahraďte *myRecoveryPointName* názvem vašeho bodu obnovení, který jste získali v předchozích příkazech:
-    
+
     ```azurecli-interactive
     az backup restore files unmount-rp \
         --resource-group myResourceGroup \
@@ -192,9 +194,11 @@ Po zkopírování skriptu pro obnovení do svého virtuálního počítače teď
     ```
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste připojili bod obnovení k virtuálnímu počítači a obnovili jste soubory pro webový server. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
+>
 > * Výpis a výběr bodů obnovení
 > * Připojení bodu obnovení k virtuálnímu počítači
 > * Obnovení souborů z bodu obnovení
@@ -203,4 +207,3 @@ Přejděte k dalšímu kurzu, kde se dozvíte, jak zálohovat Windows Server do 
 
 > [!div class="nextstepaction"]
 > [Zálohování Windows Serveru do Azure](tutorial-backup-windows-server-to-azure.md)
-

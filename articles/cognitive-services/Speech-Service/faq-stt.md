@@ -1,7 +1,7 @@
 ---
 title: Nejčastější dotazy týkající se služby Speech to text Service v Azure
 titleSuffix: Azure Cognitive Services
-description: Získejte odpovědi na nejoblíbenější otázky týkající se řeči a textové služby.
+description: Získejte odpovědi na nejčastější dotazy týkající se rozpoznávání řeči s textovou službou.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f03a937aff17c6ee622f3b5ab6045f912b51bbf2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010646"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072584"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -25,7 +25,7 @@ Pokud nemůžete najít odpovědi na vaše otázky v těchto nejčastějších d
 
 **Otázka: Jaký je rozdíl mezi směrným modelem a vlastním převodem textu na textový model?**
 
-Odpověď **: základní**model byl vyučen pomocí dat vlastněných společností Microsoft a již je nasazen v cloudu.  Vlastní model můžete použít k přizpůsobení modelu, aby lépe vyhovoval konkrétnímu prostředí, které má určitý okolní hluk nebo jazyk. Podlahová výroba, automobily nebo převozy na vysokou úroveň by vyžadovala upravený akustický model. Témata, jako jsou biologie, fyzika, radiologie, názvy produktů a vlastní akronymy, vyžadují upravený jazykový model.
+Odpověď **: základní**model byl vyučen pomocí dat vlastněných společností Microsoft a již je nasazen v cloudu. Vlastní model můžete použít k přizpůsobení modelu, aby lépe vyhovoval konkrétnímu prostředí, které má určitý okolní hluk nebo jazyk. Podlahová výroba, automobily nebo převozy na vysokou úroveň by vyžadovala upravený akustický model. Témata, jako jsou biologie, fyzika, radiologie, názvy produktů a vlastní akronymy, vyžadují upravený jazykový model.
 
 **Otázka: kde se mám začít používat základní model?**
 
@@ -123,13 +123,13 @@ Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdet
 
 **O**: aktuální limit pro datovou sadu je 2 GB. Omezení je způsobeno omezením velikosti souboru pro nahrání protokolu HTTP.
 
-**Otázka: můžu odeslat textové soubory, aby mohl nahrát větší textový soubor?** 
+**Otázka: můžu odeslat textové soubory, aby mohl nahrát větší textový soubor?**
 
 Odpověď **: ne**. V současné době jsou povoleny pouze nekomprimované textové soubory.
 
 **Otázka: v sestavě dat se zobrazí zpráva, že došlo k chybě projevy. Jaký je problém?**
 
-**O**: selhání nahrání 100% projevy v souboru není problém. Pokud je velká většina projevy v akustické nebo jazykové datové sadě (například více než 95 procent) úspěšně naimportována, lze datovou sadu použít. Doporučujeme však, abyste se seznámili s tím, proč se projevy nezdařila, a opravili problémy. Nejběžnější problémy, jako jsou například chyby formátování, lze snadno opravit. 
+**O**: selhání nahrání 100% projevy v souboru není problém. Pokud je velká většina projevy v akustické nebo jazykové datové sadě (například více než 95 procent) úspěšně naimportována, lze datovou sadu použít. Doporučujeme však, abyste se seznámili s tím, proč se projevy nezdařila, a opravili problémy. Nejběžnější problémy, jako jsou například chyby formátování, lze snadno opravit.
 
 ## <a name="creating-an-acoustic-model"></a>Vytvoření akustického modelu
 
@@ -139,11 +139,11 @@ Odpověď **: doporučujeme**začít od 30 minut a jedné hodiny akustických da
 
 **Otázka: jaká data mám shromažďovat?**
 
-Odpověď **: Shromážděte**data, která jsou blízko scénáře použití aplikace, a případ použití. Shromažďování dat by se mělo shodovat s cílovou aplikací a uživateli z pohledu zařízení nebo zařízení, prostředí a typů mluvčích. Obecně byste měli shromažďovat data z co největší škály mluvčích mluvčích. 
+Odpověď **: Shromážděte**data, která jsou blízko scénáře použití aplikace, a případ použití. Shromažďování dat by se mělo shodovat s cílovou aplikací a uživateli z pohledu zařízení nebo zařízení, prostředí a typů mluvčích. Obecně byste měli shromažďovat data z co největší škály mluvčích mluvčích.
 
 **Otázka: Jak mám shromažďovat akustická data?**
 
-Odpověď: můžete vytvořit samostatnou aplikaci pro shromažďování dat nebo použít software pro záznam **zvuku z provozu**. Můžete také vytvořit verzi aplikace, která zaznamená zvuková data a následně data použije. 
+Odpověď: můžete vytvořit samostatnou aplikaci pro shromažďování dat nebo použít software pro záznam **zvuku z provozu**. Můžete také vytvořit verzi aplikace, která zaznamená zvuková data a následně data použije.
 
 **Otázka: Potřebuji přepisovat přizpůsobit data?**
 
@@ -167,7 +167,7 @@ Odpověď **: wer**je metrika vyhodnocení pro rozpoznávání řeči. Služba W
 
 Odpověď **: výsledky**znázorňují porovnání mezi směrným modelem a modelem, který jste přizpůsobili. Měli byste se zaměřit na přesměrovat základní model, aby bylo přizpůsobení vhodné.
 
-**Otázka: Návody určení služby WER základního modelu, aby bylo možné zjistit, zda došlo k vylepšení?** 
+**Otázka: Návody určení služby WER základního modelu, aby bylo možné zjistit, zda došlo k vylepšení?**
 
 Odpověď **: výsledky**offline testu ukazují přesnost směrného plánu vlastního modelu a zlepšení oproti směrnému plánu.
 
@@ -179,21 +179,21 @@ Odpověď **: závisí**na tom, jak se liší slovní a slovní fráze používa
 
 **Otázka: mohu nahrát jenom seznam slov?**
 
-Odpověď: nahráním seznamu slov budou do slovníku přidána slova, ale nezpůsobí systém, jak jsou slova obvykle používána. Poskytnutím úplných nebo částečných projevy (vět nebo frází věcí, které uživatelé nejspíš říkají), se může jazykový model naučit nová slova a jejich použití. Vlastní jazykový model je dobrý, nejen pro přidávání nových slov do systému, ale také pro úpravu pravděpodobnosti známých slov pro vaši aplikaci. Poskytování úplných projevy pomáhá lépe se seznámit se systémem. 
+Odpověď: nahráním seznamu slov budou do slovníku přidána slova, ale nezpůsobí systém, jak jsou slova obvykle používána. Poskytnutím úplných nebo částečných projevy (vět nebo frází věcí, které uživatelé nejspíš říkají), se může jazykový model naučit nová slova a jejich použití. Vlastní jazykový model je dobrý, nejen pro přidávání nových slov do systému, ale také pro úpravu pravděpodobnosti známých slov pro vaši aplikaci. Poskytování úplných projevy pomáhá lépe se seznámit se systémem.
 
 ## <a name="tenant-model-custom-speech-with-office-365-data"></a>Model tenanta (Custom Speech s daty sady Office 365)
 
 **Otázka: Jaké informace jsou součástí modelu tenanta a jak se vytvoří?**
 
-**A:** Model tenanta se sestavuje pomocí e-mailů a dokumentů [veřejných skupin](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) , které může kdokoli ve vaší organizaci vidět. 
- 
+**A:** Model tenanta se sestavuje pomocí e-mailů a dokumentů [veřejných skupin](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) , které může kdokoli ve vaší organizaci vidět.
+
 **Otázka: Jaké prostředí pro rozpoznávání řeči vylepšuje model tenanta?**
 
-**A:** Když je model tenanta povolený, vytvořený a publikovaný, používá se ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech. Tím se také předává token AAD uživatele, který indikuje členství v podniku.
+**A:** Když je model tenanta povolený, vytvořený a publikovaný, používá se ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech. Tím se také předají token AAD uživatele, který indikuje členství v podniku.
 
 Prostředí pro rozpoznávání řeči, která jsou integrovaná do Office 365, jako je například popis diktování a aplikace PowerPoint, se při vytváření modelu tenanta pro aplikace služby Speech nemění.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řešení potíží](troubleshooting.md)
-* [Poznámky k verzi](releasenotes.md)
+- [Řešení potíží](troubleshooting.md)
+- [Poznámky k verzi](releasenotes.md)

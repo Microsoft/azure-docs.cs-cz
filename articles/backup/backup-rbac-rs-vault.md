@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: dacurwin
-ms.openlocfilehash: d0d2663fcf7be9662325b24f9f063a8f3def668a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 8ba28829d3ee18b441227e537cb0a7ca97fb7638
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688518"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074040"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Pro správu Azure Backup bodů obnovení použít Access Control na základě rolí
+
 Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
 
 > [!IMPORTANT]
@@ -29,9 +30,8 @@ Azure Backup poskytuje tři předdefinované role pro řízení operací správy
 
 Pokud chcete definovat vlastní role pro ještě více ovládacích prvků, přečtěte si téma Jak [vytvořit vlastní role](../role-based-access-control/custom-roles.md) v Azure RBAC.
 
-
-
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Mapování předdefinovaných rolí zálohování na akce správy zálohování
+
 Následující tabulka zachycuje akce správy zálohování a odpovídající minimální roli RBAC potřebné k provedení této operace.
 
 | Operace správy | Vyžaduje se minimální role RBAC. | Požadován rozsah |
@@ -40,15 +40,15 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající mi
 | Povolení zálohování virtuálních počítačů Azure | Operátor zálohování | Skupina prostředků obsahující trezor |
 | | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
 | Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Prostředek trezoru pro obnovení |
-| Obnovit virtuální počítač | Operátor zálohování | Trezor Recovery Services |
+| Obnovit virtuální počítač | Operátor zálohování | Trezor služby Recovery Services |
 | | Přispěvatel | Skupina prostředků, do které se virtuální počítač nasadí |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |
 | Obnovení zálohy virtuálního počítače nespravovaných disků | Operátor zálohování | Prostředek trezoru pro obnovení |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |
-| | Přispěvatel účtů úložiště | Prostředek účtu úložiště, kde se budou disky obnovovat |
+| | Přispěvatel účtu úložiště | Prostředek účtu úložiště, kde se budou disky obnovovat |
 | Obnovení spravovaných disků ze zálohy virtuálního počítače | Operátor zálohování | Prostředek trezoru pro obnovení |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |
-| | Přispěvatel účtů úložiště | V rámci obnovení je vybraný dočasný účet úložiště, který bude obsahovat data z trezoru před jejich převodem na spravované disky. |
+| | Přispěvatel účtu úložiště | V rámci obnovení je vybraný dočasný účet úložiště, který bude obsahovat data z trezoru před jejich převodem na spravované disky. |
 | | Přispěvatel | Skupina prostředků, do které budou obnoveny spravované disky |
 | Obnovení jednotlivých souborů ze zálohy virtuálního počítače | Operátor zálohování | Prostředek trezoru pro obnovení |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |
@@ -63,26 +63,27 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající mi
 > Pokud zadáte Přispěvatel virtuálních počítačů do oboru prostředků virtuálních počítačů a kliknete na zálohovat jako součást nastavení virtuálního počítače, otevře se obrazovka povolit zálohování, i když je virtuální počítač už zálohovaný, protože volání pro ověření stavu zálohování funguje jenom na úrovni předplatného. Pokud tomu chcete předejít, buď si přečtěte do trezoru, otevřete zobrazení zálohovaná položka virtuálního počítače nebo zadejte roli Přispěvatel virtuálních počítačů na úrovni předplatného.
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Minimální požadavky na role pro zálohu sdílené složky Azure
+
 Následující tabulka zachycuje akce správy zálohování a odpovídající roli nutnou k provedení operace Azure File Share.
 
-| Operace správy | Je vyžadována role. | Zdroje a prostředky |
+| Operace správy | Je vyžadována role. | Prostředky |
 | --- | --- | --- |
-| Povolení zálohování sdílených složek Azure | Přispěvatel zálohování | Trezor Recovery Services |
-| | Účet úložiště | Prostředek účtu úložiště pro přispěvatele |
-| Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Trezor Recovery Services |
-| Obnovit sdílenou složku | Operátor zálohování | Trezor Recovery Services |
-| | Přispěvatel účtů úložiště | Prostředky účtu úložiště, ve kterých jsou přítomné obnovení zdrojových a cílových souborů sdílené složky |
-| Obnovení jednotlivých souborů | Operátor zálohování | Trezor Recovery Services |
-| | Přispěvatel účtů úložiště |   Prostředky účtu úložiště, ve kterých jsou přítomné obnovení zdrojových a cílových souborů sdílené složky |
-| Zastavení ochrany | Přispěvatel zálohování | Trezor Recovery Services |      
-| Zrušení registrace účtu úložiště z trezoru |   Přispěvatel zálohování | Trezor Recovery Services |
-| | Přispěvatel účtů úložiště | Prostředek účtu úložiště|
+| Povolení zálohování sdílených složek Azure | Přispěvatel zálohování |Trezor služby Recovery Services |
+| |Účet úložiště | Prostředek účtu úložiště pro přispěvatele |
+| Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Trezor služby Recovery Services |
+| Obnovit sdílenou složku | Operátor zálohování | Trezor služby Recovery Services |
+| | Přispěvatel účtu úložiště | Prostředky účtu úložiště, ve kterých jsou přítomné obnovení zdrojových a cílových souborů sdílené složky |
+| Obnovení jednotlivých souborů | Operátor zálohování | Trezor služby Recovery Services |
+| |Přispěvatel účtu úložiště|Prostředky účtu úložiště, ve kterých jsou přítomné obnovení zdrojových a cílových souborů sdílené složky |
+| Zastavení ochrany |Přispěvatel zálohování | Trezor služby Recovery Services |
+| Zrušení registrace účtu úložiště z trezoru |Přispěvatel zálohování | Trezor služby Recovery Services |
+| |Přispěvatel účtu úložiště | Prostředek účtu úložiště|
 
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
-* [Access Control na základě rolí](../role-based-access-control/role-assignments-portal.md): Začněte s RBAC v Azure Portal.
+* [Access Control založené na rolích](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC v Azure Portal.
 * Naučte se spravovat přístup pomocí:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Řešení potíží s Access Control na základě rolí](../role-based-access-control/troubleshooting.md): Získejte návrhy na řešení běžných problémů.
+* [Řešení potíží s Access Control na základě rolí](../role-based-access-control/troubleshooting.md): Získejte návrhy pro řešení běžných problémů.

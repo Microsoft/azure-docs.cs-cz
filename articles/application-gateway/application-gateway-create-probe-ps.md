@@ -1,51 +1,44 @@
 ---
-title: Vytvoření vlastního testu paměti – Azure Application Gateway – PowerShell | Dokumentace Microsoftu
-description: Informace o vytvoření vlastního testu paměti pro službu Application Gateway pomocí prostředí PowerShell v Resource Manageru
+title: Vytvoření vlastního testu pomocí PowerShellu
+titleSuffix: Azure Application Gateway
+description: Naučte se, jak vytvořit vlastní test pro Application Gateway pomocí prostředí PowerShell v Správce prostředků
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135246"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075262"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastního testu paměti pro službu Azure Application Gateway pomocí prostředí PowerShell pro Azure Resource Manageru
+# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastního testu pro Azure Application Gateway pomocí prostředí PowerShell pro Azure Resource Manager
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
-V tomto článku přidáte vlastní test paměti existující aplikační bráně pomocí Powershellu. Vlastní sondy jsou užitečné pro aplikace, které mají konkrétní stránky kontroly stavu nebo pro aplikace, které neposkytují úspěšné odpovědi na výchozí webovou aplikaci.
+V tomto článku přidáte vlastní test paměti do existující aplikační brány pomocí PowerShellu. Vlastní sondy jsou užitečné pro aplikace, které mají konkrétní stránku kontroly stavu nebo pro aplikace, které neposkytují úspěšnou odpověď na výchozí webovou aplikaci.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway-with-a-custom-probe"></a>Vytvoření služby application gateway s vlastní test paměti
+## <a name="create-an-application-gateway-with-a-custom-probe"></a>Vytvoření aplikační brány s vlastní sondou
 
-### <a name="sign-in-and-create-resource-group"></a>Přihlaste se a vytvořte skupinu prostředků
+### <a name="sign-in-and-create-resource-group"></a>Přihlášení a vytvoření skupiny prostředků
 
-1. Použití `Connect-AzAccount` k ověření.
+1. K ověření použijte `Connect-AzAccount`.
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Získáte předplatná pro příslušný účet.
+1. Získejte předplatná pro tento účet.
 
    ```powershell
    Get-AzSubscription
@@ -63,13 +56,13 @@ V tomto článku přidáte vlastní test paměti existující aplikační brán�
    New-AzResourceGroup -Name appgw-rg -Location 'West US'
    ```
 
-Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. Toto umístění slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření služby application gateway používají stejnou skupinu prostředků.
+Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. Toto umístění slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření služby Application Gateway používají stejnou skupinu prostředků.
 
-V předchozím příkladu jsme vytvořili skupinu prostředků s názvem **appgw-RG** v umístění **USA – západ**.
+V předchozím příkladu jsme vytvořili skupinu prostředků s názvem **appgw-RG** v umístění **západní USA**.
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>Vytvoření virtuální sítě a podsítě
 
-Následující příklad vytvoří virtuální síť a podsíť pro službu application gateway. Application gateway vyžaduje vlastní podsíť pro použití. Z tohoto důvodu je podsíť vytvořená pro službu application gateway by měl být menší než adresní prostor virtuální sítě pro ostatní podsítě k vytvoření a použití.
+Následující příklad vytvoří virtuální síť a podsíť pro aplikační bránu. Aplikační brána vyžaduje vlastní podsíť pro použití. Z tohoto důvodu by podsíť vytvořená pro aplikační bránu měla být menší než adresní prostor virtuální sítě, aby bylo možné vytvářet a používat jiné podsítě.
 
 ```powershell
 # Assign the address range 10.0.0.0/24 to a subnet variable to be used to create a virtual network.
@@ -84,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
 
-Vytvořte prostředek veřejné IP adresy **publicIP01** ve skupině prostředků **appgw-rg** pro oblast Západní USA. Tento příklad používá veřejné IP adresy pro front-endovou IP adresu služby application gateway.  Služba Application gateway vyžaduje dynamicky generovaný název DNS proto mít veřejnou IP adresu `-DomainNameLabel` nelze zadat během vytváření veřejné IP adresy.
+Vytvořte prostředek veřejné IP adresy **publicIP01** ve skupině prostředků **appgw-rg** pro oblast Západní USA. V tomto příkladu se používá veřejná IP adresa pro front-end IP adresu aplikační brány.  Služba Application Gateway vyžaduje, aby veřejná IP adresa měla dynamicky vytvořený název DNS, takže `-DomainNameLabel` nejde zadat během vytváření veřejné IP adresy.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -92,17 +85,17 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 ### <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Nastavit všechny položky konfigurace před vytvořením služby application gateway. Následující příklad vytvoří položky konfigurace, které jsou potřebné pro prostředek aplikační brány.
+Před vytvořením služby Application Gateway se nastavují všechny položky konfigurace. Následující příklad vytvoří položky konfigurace, které jsou potřeba pro prostředek aplikační brány.
 
 | **Komponenta** | **Popis** |
 |---|---|
-| **Konfiguraci IP adresy brány** | Konfigurace IP aplikační brány.|
-| **Back-endový fond** | Fond IP adres, plně kvalifikovaný název domény společnosti nebo síťové adaptéry, které jsou na aplikační servery, které jsou hostiteli webové aplikace|
-| **Sonda stavu** | Vlastní test paměti používá k monitorování stavu členů fondu back-end|
-| **Nastavení HTTP** | Kolekce nastavení, včetně, port, protokol, spřažení na základě souborů cookie, testu a vypršení časového limitu.  Tato nastavení určují, jak se provoz směruje do členů fondu back-endu|
-| **Front-endový port** | Port, který application gateway naslouchá provozu|
-| **Naslouchací proces** | Kombinace protokolu, front-endová konfigurace protokolu IP a front-endový port. Je to, co naslouchá příchozím požadavkům.
-|**Pravidlo**| Směrování provozu do příslušného back-endu podle nastavení protokolu HTTP.|
+| **Konfigurace IP adresy brány** | Konfigurace protokolu IP pro aplikační bránu.|
+| **Back-end fond** | Fond IP adres, plně kvalifikovaného názvu domény nebo síťových adaptérů, které jsou aplikačním serverům, které hostují webovou aplikaci.|
+| **Sonda stavu** | Vlastní test, který slouží k monitorování stavu členů fondu back-end|
+| **Nastavení HTTP** | Kolekce nastavení včetně, portu, protokolu, spřažení založeného na souborech cookie, sondy a časového limitu.  Tato nastavení určují způsob směrování provozu do členů fondu back-end.|
+| **Port front-endu** | Port, na kterém brána Application Gateway naslouchá provozu|
+| **Služby** | Kombinace protokolu, konfigurace IP adresy front-endu a portu front-endu. To naslouchá příchozím žádostem.
+|**Pravidlo**| Směruje provoz do příslušného back-endu na základě nastavení HTTP.|
 
 ```powershell
 # Creates an application gateway Frontend IP configuration named gatewayIP01
@@ -136,9 +129,9 @@ $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location 'West US' -BackendAddressPools $pool -Probes $probe -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-## <a name="add-a-probe-to-an-existing-application-gateway"></a>Přidat test do existující aplikační bráně
+## <a name="add-a-probe-to-an-existing-application-gateway"></a>Přidání sondy do stávající aplikační brány
 
-Následující fragment kódu přidá test do existující aplikační bráně.
+Následující fragment kódu přidá test do existující aplikační brány.
 
 ```powershell
 # Load the application gateway resource into a PowerShell variable by using Get-AzApplicationGateway.
@@ -154,9 +147,9 @@ $getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw 
 Set-AzApplicationGateway -ApplicationGateway $getgw
 ```
 
-## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Odebrat test z existující aplikační bráně
+## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Odebrání testu z existující aplikační brány
 
-Následující fragment kódu odstraní testu z existující aplikační bráně.
+Následující fragment kódu odebere test z existující aplikační brány.
 
 ```powershell
 # Load the application gateway resource into a PowerShell variable by using Get-AzApplicationGateway.
@@ -202,7 +195,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Naučte se konfigurovat návštěvou snižování zátěže protokolu SSL: [Konfigurace přesměrování zpracování SSL](application-gateway-ssl-arm.md)
+Naučte se konfigurovat snižování zátěže SSL návštěvou: [konfigurace přesměrování zpracování SSL](application-gateway-ssl-arm.md)
 

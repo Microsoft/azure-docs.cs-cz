@@ -1,17 +1,14 @@
 ---
 title: Ukázka-audit SQL Server nastavení auditu
 description: Tato ukázková definice zásad Audituje nastavení auditování SQL serveru pomocí auditIfNotExists.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: c548d1e0e9f21f482a0cfc4b19c482e040d7f298
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 5a0d758bd96937ca443d434b76d22aaefc618687
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980370"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069799"
 ---
 # <a name="sample---audit-sql-server-audit-settings"></a>Ukázka – auditovat nastavení auditu SQL serveru
 
@@ -59,7 +56,7 @@ Předejte hodnotu parametru v následujícím formátu:
 
 Při přiřazování zásad vyberte z dostupných integrovaných definic **Auditování nastavení auditování na úrovni SQL Serveru**.
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -77,7 +74,7 @@ Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 Remove-AzPolicyAssignment -Name "SQL Audit audit" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -85,7 +82,7 @@ Remove-AzPolicyAssignment -Name "SQL Audit audit" -Scope <scope>
 az policy assignment create --scope <scope> --name "SQL Audit audit" --policy a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9 --params '{"setting": {"value":"enabled"}}'
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 

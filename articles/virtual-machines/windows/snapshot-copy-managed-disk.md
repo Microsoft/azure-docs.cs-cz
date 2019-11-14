@@ -1,5 +1,5 @@
 ---
-title: Vytvoření snímku VHD v Azure | Microsoft Docs
+title: Vytvoření snímku VHD v Azure
 description: Naučte se, jak vytvořit kopii virtuálního počítače Azure, který se použije jako záložní nebo pro řešení problémů.
 documentationcenter: ''
 author: roygara
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b564e20ca8aa5acd7fbd4ea69ac2b1cd72e66d5e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749147"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075344"
 ---
 # <a name="create-a-snapshot"></a>Vytvoření snímku
 
@@ -29,7 +29,7 @@ Pokud se chystáte použít snímek k vytvoření nového virtuálního počíta
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal 
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **vytvořit prostředek**a pak vyhledejte a vyberte **snímek**.
 3. V okně **snímku** vyberte **vytvořit**. Zobrazí se okno **vytvořit snímek** .
 4. Zadejte **název** snímku.

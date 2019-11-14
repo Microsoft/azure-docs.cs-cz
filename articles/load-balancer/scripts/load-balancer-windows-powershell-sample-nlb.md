@@ -1,6 +1,6 @@
 ---
-title: Příklad Powershellu – Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti – Azure
-titlesuffix: Azure Load Balancer
+title: Vyrovnávání zatížení pro virtuální počítače pro HA-Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Tento ukázkový skript Azure PowerShellu provádí vyrovnávání zatížení provozu na virtuálních počítačích pro zajištění vysoké dostupnosti.
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 956a67897fa08fdd2c0d602ba514fcf58fabc292
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ccc9ed364ce7ec5b18d04a71a8215675f7876b81
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273521"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075910"
 ---
-# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Ukázkový skript Azure Powershellu: Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti
+# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Ukázkový skript Azure PowerShellu: Vyrovnávání zatížení provozu na virtuálních počítačích pro zajištění vysoké dostupnosti
 
 Tento ukázkový skript Azure PowerShellu vytvoří vše potřebné pro spuštění několika virtuálních počítačů s Windows v konfiguraci s vysokou dostupností a vyrovnáváním zatížení. Po spuštění skriptu budete mít tři virtuální počítače připojené ke skupině dostupnosti Azure a přístupné přes službu Azure Load Balancer.
 
@@ -63,7 +63,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview).
 

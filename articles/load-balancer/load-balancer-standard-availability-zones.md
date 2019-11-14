@@ -1,7 +1,7 @@
 ---
 title: Standard Load Balancer a Zóny dostupnosti Azure
-titlesuffix: Azure Load Balancer
-description: Load Balancer úrovně Standard a zóny dostupnosti
+titleSuffix: Azure Load Balancer
+description: Pomocí této cesty výukového programu Začínáme s Azure Standard Load Balancer a Zóny dostupnosti.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 925e7857d337f7f2fd501e4e4467c05952b0da65
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882950"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076992"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -35,9 +35,9 @@ Prostředek Load Balancer sám o sobě není oblast.  A virtuální síť a pods
 
 V kontextu zón dostupnosti se chování a vlastnosti pravidla Load Balancer popisují jako redundantní nebo oblasti.  Redundantní zóna a oblast popisují zonality vlastnosti.  V souvislosti s Load Balancer se v zóně – redundantní vždy znamená, že *několik zón a oblastí* znamená izolaci služby do *jedné zóny*.
 
-Veřejné i interní Load Balancer podporují scénáře redundantních a oblastí a oba můžou směrovat provoz napříč zónami podle potřeby (vyrovnávání*zatížení mezi zónami*). 
+Veřejné i interní Load Balancer podporují scénáře redundantních a oblastí a oba můžou směrovat provoz napříč zónami podle potřeby (*Vyrovnávání zatížení mezi zónami*). 
 
-### <a name="frontend"></a>Front-end
+### <a name="frontend"></a>Endy
 
 Front-end Load Balancer je konfigurace IP adresy front-endu, která odkazuje buď na prostředek veřejné IP adresy, nebo na privátní IP adresu v rámci sítě virtuálního síťového prostředku.  Vytvoří koncový bod s vyrovnáváním zatížení, ve kterém je vaše služba vystavená.
 
@@ -88,7 +88,7 @@ Následující úryvek představuje ukázku definování IP adresy redundantní 
                 ],
 ```
 
-Předchozí výňatky nejsou kompletními šablonami, jejichž cílem je Ukázat, jak vyjádřit vlastnosti zón dostupnosti.  Tyto příkazy musíte zahrnout do svých šablon.
+Předchozí výňatky nejsou kompletními šablonami, které mají Ukázat, jak vyjádřit vlastnosti zón dostupnosti.  Tyto příkazy musíte zahrnout do svých šablon.
 
 #### <a name="optional-zone-isolation"></a>Volitelná izolace zóny
 
@@ -100,7 +100,7 @@ Pokud chcete tyto koncepty (zóny redundantní a oblasti pro stejný back-end) k
 
 U veřejné Load Balancer front-endu přidejte parametr *Zones* do prostředku veřejné IP adresy, na který odkazuje konfigurace IP adresy front-endu používané příslušným pravidlem.
 
-U interního front-endu Load Balancer přidejte do konfigurace protokolu IP front-endu interní Load Balancer parametr Zones. Oblast front-end způsobí, že Load Balancer garantuje IP adresu v podsíti s konkrétní zónou.
+U interního front-endu Load Balancer přidejte do konfigurace protokolu IP front-endu interní Load Balancer parametr *Zones* . Oblast front-end způsobí, že Load Balancer garantuje IP adresu v podsíti s konkrétní zónou.
 
 Následující úryvek je příkladem, jak v Zóna 1 dostupnosti definovat standardní veřejnou IP adresu Zona. Pokud v konfiguraci používáte existující šablony Správce prostředků, přidejte k těmto šablonám oddíl **SKU** .
 
@@ -214,7 +214,7 @@ Neexistují žádné obecné pokyny, které je lepší volbou než druhá bez zn
 
 - Zatímco rovina dat je zcela redundantní (není-li zaručena oblastce), provozní operace roviny nejsou plně v zóně redundantní.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [zóny dostupnosti](../availability-zones/az-overview.md)
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md)
 - Přečtěte si, jak [vyrovnávat zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](load-balancer-standard-public-zonal-cli.md) .

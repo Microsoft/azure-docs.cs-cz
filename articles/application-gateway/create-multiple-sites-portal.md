@@ -1,5 +1,6 @@
 ---
-title: Kurz – vytvoření aplikační brány, která hostuje několik webů pomocí Azure Portal
+title: 'Kurz: hostitelem několika webů pomocí Azure Portal'
+titleSuffix: Azure Application Gateway
 description: V tomto kurzu se naučíte, jak vytvořit Aplikační bránu, která hostuje několik webů pomocí Azure Portal.
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 3b6818d68b62b574e49817b574450625c231506c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833570"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075151"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Kurz: vytvoření a konfigurace aplikační brány pro hostování více webů pomocí Azure Portal
 
@@ -21,12 +22,12 @@ Můžete použít Azure Portal ke [konfiguraci hostování více](multiple-site-
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření Application Gateway
+> * Vytvoření služby Application Gateway
 > * Vytváření virtuálních počítačů pro back-end servery
 > * Vytváření back-end fondů se servery back-end
 > * Vytvořit back-endové naslouchací procesy
 > * Vytvořit pravidla směrování
-> * Vytvořit záznam CNAME v doméně
+> * Vytvoření záznamu CNAME v doméně
 
 ![Příklad směrování na více webů](./media/create-multiple-sites-portal/scenario.png)
 
@@ -36,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
 1. V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
 
@@ -99,7 +100,7 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 
 4. Na kartě **back-endy** vyberte **Další: Konfigurace**.
 
-### <a name="configuration-tab"></a>Karta konfigurace
+### <a name="configuration-tab"></a>Karta Konfigurace
 
 Na kartě **Konfigurace** propojíte front-endové a back-endové fondy, které jste vytvořili pomocí pravidla směrování.
 

@@ -1,5 +1,5 @@
 ---
-title: Zálohování souborů ve Azure Stack virtuálních počítačích
+title: Zálohování souborů ve Azure Stack virtuálních počítačích – Azure Backup
 description: Pomocí Azure Backup můžete zálohovat a obnovovat Azure Stack soubory a aplikace do prostředí Azure Stack.
 ms.reviewer: adigan
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210211"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074098"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací ve službě Azure Stack
 
@@ -45,7 +45,7 @@ Pokud chcete nakonfigurovat Azure Backup Server k ochraně souborů v Azure Stac
 
     ![Otevře se Průvodce novou skupinou ochrany.](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. Na obrazovce **Vybrat členy skupiny** kliknutím **+** rozbalte seznam podpoložek. Pro všechny položky, které chcete chránit, zaškrtněte políčko. Po výběru všech položek klikněte na **Další**.
+3. Na obrazovce **Vybrat členy skupiny** kliknutím na **+** rozbalte seznam podpoložek. Pro všechny položky, které chcete chránit, zaškrtněte políčko. Po výběru všech položek klikněte na **Další**.
 
     ![Otevře se Průvodce novou skupinou ochrany.](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
@@ -55,12 +55,12 @@ Pokud chcete nakonfigurovat Azure Backup Server k ochraně souborů v Azure Stac
 
     ![Otevře se Průvodce novou skupinou ochrany.](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Chcete-li vybrat možnost Chci **online ochranu**, musíte nejprve vybrat možnost **Chci krátkodobou ochranu pomocí:** Disk. Azure Backup Server není chráněn na pásku, takže disk je jedinou volbou pro krátkodobou ochranu.
+    Chcete-li vybrat možnost Chci **online ochranu**, musíte nejprve vybrat možnost **Chci krátkodobou ochranu pomocí:** disk. Azure Backup Server není chráněn na pásku, takže disk je jedinou volbou pro krátkodobou ochranu.
 
 5. Na obrazovce **zadat krátkodobé cíle** zvolte, jak dlouho chcete zachovat body obnovení uložené na disk a kdy se mají ukládat přírůstkové zálohy. Klikněte na **Další**.
 
     > [!IMPORTANT]
-    > Neměli byste uchovávat data obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
+    > **Neměli byste uchovávat data** obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
     >
 
     ![Otevře se Průvodce novou skupinou ochrany.](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat Azure Backup Server k ochraně souborů v Azure Stac
 
 7. V části **Vybrat způsob vytvoření repliky**vyberte, jak chcete zpracovat počáteční úplnou replikaci dat. Pokud se rozhodnete provést replikaci přes síť, Azure vám doporučuje vybrat dobu mimo špičku. Pro velké objemy dat nebo méně, než jsou optimální síťové podmínky, zvažte replikaci dat pomocí vyměnitelných médií.
 
-8. V **možnosti vybrat nastavení**kontroly konzistence vyberte, jak chcete automatizovat kontroly konzistence. Povolte kontroly konzistence, aby se spouštěly jenom v případě, že se replikace dat neshoduje, nebo podle plánu. Pokud nechcete konfigurovat automatickou kontrolu konzistence, spusťte ruční kontrolu kdykoli pomocí:
+8. V **možnosti vybrat nastavení kontroly konzistence**vyberte, jak chcete automatizovat kontroly konzistence. Povolte kontroly konzistence, aby se spouštěly jenom v případě, že se replikace dat neshoduje, nebo podle plánu. Pokud nechcete konfigurovat automatickou kontrolu konzistence, spusťte ruční kontrolu kdykoli pomocí:
     * V oblasti **ochrana** konzoly Azure Backup Server klikněte pravým tlačítkem na skupinu ochrany a vyberte **provést kontrolu konzistence**.
 
 9. Pokud se rozhodnete zálohovat do Azure, na stránce **zadat data online ochrany** se ujistěte, že jsou vybrané úlohy, které chcete zálohovat do Azure.
@@ -134,7 +134,7 @@ Chcete-li zobrazit Azure Backup Server entit v Azure Portal, můžete postupovat
 2. Klikněte na infrastruktura zálohování.
 3. Zobrazit servery pro správu zálohování.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 Informace o použití Azure Backup Server k ochraně dalších úloh naleznete v jednom z následujících článků:
 

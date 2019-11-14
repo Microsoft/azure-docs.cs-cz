@@ -1,21 +1,22 @@
 ---
-title: Rychlý start – Směrování webového provozu pomocí služby Azure Application Gateway – Azure CLI | Microsoft Docs
+title: 'Rychlý Start: směrování webového provozu pomocí rozhraní příkazového řádku'
+titleSuffix: Azure Application Gateway
 description: Naučte se používat Azure CLI k vytvoření Application Gateway Azure, která směruje webový provoz do virtuálních počítačů v back-endu fondu.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: de1f30d949509ab48999d0080ccc4df74321ce01
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314898"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075204"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Rychlý start: Přímý webový provoz pomocí Azure Application Gateway – Azure CLI
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure CLI
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit Aplikační bránu.  Po vytvoření služby Application Gateway ji otestujete, abyste se ujistili, že funguje správně. V případě Azure Application Gateway nasměrujete webový provoz aplikace na konkrétní prostředky přiřazením posluchačů k portům, vytvořením pravidel a přidáním prostředků do back-endového fondu. Tento článek používá jednoduché nastavení s veřejnou front-end IP adresou, základní naslouchací proces, který hostuje jednu lokalitu v aplikační bráně, dva virtuální počítače používané pro back-end fond a pravidlo základního směrování požadavku.
 
@@ -29,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, spusťte Azure CLI verze 2.0.4 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz **AZ--Version**. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>Skupina prostředků
 
 V Azure přidělíte související prostředky skupině prostředků. Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create). 
 
@@ -159,11 +160,11 @@ az network application-gateway create \
 
 Může trvat až 30 minut, než Azure vytvoří Aplikační bránu. Po vytvoření můžete zobrazit následující nastavení v části **Nastavení** na stránce **aplikační brány** :
 
-- **appGatewayBackendPool**: Nachází se na stránce **back-end fondy** . Určuje požadovaný back-end fond.
-- **appGatewayBackendHttpSettings**: Nachází se na stránce **nastavení protokolu HTTP** . Určuje, že Aplikační brána používá port 80 a protokol HTTP pro komunikaci.
-- **appGatewayHttpListener**: Umístěný na **stránce naslouchací procesy**. Určuje výchozí naslouchací proces přidružený k **appGatewayBackendPool**.
-- **appGatewayFrontendIP**: Nachází se na stránce **Konfigurace IP adresy front-endu** . Přiřadí *myAGPublicIPAddress* k **appGatewayHttpListener**.
-- **rule1**: Nachází se na stránce **pravidla** . Určuje výchozí pravidlo směrování, které je přidruženo k **appGatewayHttpListener**.
+- **appGatewayBackendPool**: nachází se na stránce **back-end fondy** . Určuje požadovaný back-end fond.
+- **appGatewayBackendHttpSettings**: nachází se na stránce **nastavení protokolu HTTP** . Určuje, že Aplikační brána používá port 80 a protokol HTTP pro komunikaci.
+- **appGatewayHttpListener**: nachází se na **stránce naslouchací procesy**. Určuje výchozí naslouchací proces přidružený k **appGatewayBackendPool**.
+- **appGatewayFrontendIP**: nachází se na stránce **Konfigurace IP adresy front-endu** . Přiřadí *myAGPublicIPAddress* k **appGatewayHttpListener**.
+- **rule1**: nachází se na stránce **pravidel** . Určuje výchozí pravidlo směrování, které je přidruženo k **appGatewayHttpListener**.
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
@@ -191,7 +192,7 @@ Pokud už nepotřebujete prostředky, které jste vytvořili v rámci služby Ap
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Správa webového provozu pomocí aplikační brány a Azure CLI](./tutorial-manage-web-traffic-cli.md)

@@ -1,5 +1,5 @@
 ---
-title: Kurz – Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Windows | Microsoft Docs
+title: Kurz – vytváření a správa virtuálních sítí Azure pro virtuální počítače s Windows
 description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu vytvářet a spravovat virtuální sítě Azure pro virtuální počítače s Windows.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5a780617b8f46c5ec5f00fbfc45b7d91c29a836
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67cfb04f67e3454bde25969b634116f2871cbeb5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100211"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064741"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Windows pomocí Azure PowerShell
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Windows pomocí Azure PowerShellu
 
 Virtuální počítače Azure používají pro interní i externí síťovou komunikaci sítě Azure. Tento kurz vás provede nasazením dvou virtuálních počítačů a konfigurací sítě Azure pro tyto virtuální počítače. V příkladech v tomto kurzu se předpokládá, že virtuální počítače jsou hostiteli webové aplikace s back-end databází, ale v tomto kurzu není nasazená aplikace. V tomto kurzu se naučíte:
 

@@ -1,18 +1,19 @@
 ---
-title: Skupiny pravidel a pravidla pro Firewall webových aplikací v Azure Application Gateway
+title: Skupiny pravidel a pravidla pro počítačový počítač
+titleSuffix: Azure Web Application Firewall
 description: Tato stránka poskytuje informace o skupinách pravidel a pravidlech pro Firewall webových aplikací.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59e4203ca219802a95a09761b90c00a039b47631
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516965"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075374"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Skupiny pravidel a pravidla pro počítačový rezervační Firewall webových aplikací
 
@@ -121,7 +122,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |913120|Našel se název souboru/argument pro požadavek přidružený ke skeneru zabezpečení.|
 
 
-### <a name="crs920-31"></a> <p x-ms-format-detection="none">POŽADAVEK-920-PROTOKOL – VYNUCENÍ</p>
+### <a name="crs920-31"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
 |ruleId|Popis|
 |---|---|
@@ -187,7 +188,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |921170|Znečištění parametru HTTP|
 |921180|Znečišťování parametru HTTP (% {TX. 1})|
 
-### <a name="crs930-31"></a> <p x-ms-format-detection="none">POŽADAVEK-930-APLIKACE – ÚTOK – LFI</p>
+### <a name="crs930-31"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |ruleId|Popis|
 |---|---|
@@ -242,7 +243,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |933180|Útok injektáže PHP = Nalezeno volání proměnné funkce|
 |933190|Útok injektáže PHP: našla se koncová značka PHP.|
 
-### <a name="crs941-31"></a> <p x-ms-format-detection="none">POŽADAVEK – 941 – ÚTOK APLIKACÍ – XSS</p>
+### <a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |ruleId|Popis|
 |---|---|
@@ -274,7 +275,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |941350|Bylo zjištěno útoku kódování UTF-7 v IE XSS.|
 
 
-### <a name="crs942-31"></a> <p x-ms-format-detection="none">POŽADAVEK-942-APLIKACE – ÚTOK – SQLI</p>
+### <a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |ruleId|Popis|
 |---|---|
@@ -296,7 +297,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |942251|Detekuje, že se mají injektáže|
 |942260|Detekuje základní pokusy o obejití ověřování SQL 2/3|
 |942270|Hledání základního vkládání SQL Běžný řetězec útoku pro MySQL Oracle a další|
-|942280|Detekuje vkládání Postgres pg_sleep, WAITFOR zpoždění a pokusy o vypnutí databáze|
+|942280|Detekuje Postgres vkládání pg_sleep, WAITFOR zpoždění a pokusy o vypnutí databáze.|
 |942290|Vyhledá základní pokusy o vkládání SQL MongoDB.|
 |942300|Detekuje komentáře MySQL, podmínky a injektáže r (ch) r|
 |942310|Detekuje zřetězené pokusy o vkládání SQL 2/2|
@@ -366,7 +367,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |913101|Našel se uživatelský agent přidružený ke skriptování nebo obecnému klientovi HTTP.|
 |913102|Našel se uživatelský agent přidružený k webovému nástroji nebo bot.|
 
-### <a name="crs920-30"></a> <p x-ms-format-detection="none">POŽADAVEK-920-PROTOKOL – VYNUCENÍ</p>
+### <a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
 |ruleId|Popis|
 |---|---|
@@ -427,7 +428,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |921170|Znečištění parametru HTTP|
 |921180|Znečišťování parametru HTTP (% @ {TX. 1})|
 
-### <a name="crs930-30"></a> <p x-ms-format-detection="none">POŽADAVEK-930-APLIKACE – ÚTOK – LFI</p>
+### <a name="crs930-30"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |ruleId|Popis|
 |---|---|
@@ -472,7 +473,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |933161|Útok injektáže PHP = nalezené volání funkce PHP s nízkou hodnotou|
 |933111|Útok injektáže PHP = nahrání souboru skriptu PHP se našlo.|
 
-### <a name="crs941-30"></a> <p x-ms-format-detection="none">POŽADAVEK – 941 – ÚTOK APLIKACÍ – XSS</p>
+### <a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |ruleId|Popis|
 |---|---|
@@ -499,7 +500,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |941350|Bylo zjištěno útoku kódování UTF-7 v IE XSS.|
 |941320|Byl zjištěn možný útok XSS – obslužná rutina značky HTML|
 
-### <a name="crs942-30"></a> <p x-ms-format-detection="none">POŽADAVEK-942-APLIKACE – ÚTOK – SQLI</p>
+### <a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |ruleId|Popis|
 |---|---|
@@ -603,7 +604,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |960035|Přípona souboru adresy URL je omezená zásadami.|
 |960038|Hlavička protokolu HTTP je omezená zásadami.|
 
-### <a name="crs35"></a>crs_35_bad_robots
+### <a name="crs35"></a> crs_35_bad_robots
 
 |ruleId|Popis|
 |---|---|
@@ -641,7 +642,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |958976|Útok injektáže PHP|
 |958977|Útok injektáže PHP|
 
-### <a name="crs41sql"></a>crs_41_sql_injection_attacks
+### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
 |ruleId|Popis|
 |---|---|

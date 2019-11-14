@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a Správa virtuálního počítače s Windows v Azure pomocí Pythonu | Microsoft Docs
+title: Vytvoření a Správa virtuálního počítače s Windows v Azure pomocí Pythonu
 description: Naučte se pomocí Pythonu vytvářet a spravovat virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: fcbf4e054359534f924b401f2f42e1d4c33890be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102487"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065603"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Pythonu
 
@@ -29,7 +29,7 @@ ms.locfileid: "70102487"
 > * Vytvoření projektu ve Visual Studiu
 > * Instalace balíčků
 > * Vytvořit pověření
-> * Vytvořit prostředky
+> * Vytvoření prostředků
 > * Provádění úloh správy
 > * Odstranění prostředků
 > * Spuštění aplikace
@@ -38,7 +38,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj** v Pythonu a pak klikněte na **nainstalovat**. V souhrnu vidíte, že je pro vás automaticky vybraný **Python 3 64-bit (3.6.0)** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu Pythonu pomocí spouštěče sady Visual Studio.
+1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj v Pythonu** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že je pro vás automaticky vybraný **Python 3 64-bit (3.6.0)** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu Pythonu pomocí spouštěče sady Visual Studio.
 2. Po instalaci a spuštění sady Visual Studio klikněte na **soubor** > **Nový** > **projekt**.
 3. Klikněte na **šablony** > **Python** > **Python Application**, jako název projektu zadejte *myPythonProject* , vyberte umístění projektu a pak klikněte na **OK**.
 
@@ -79,7 +79,7 @@ Než zahájíte tento krok, ujistěte se, že máte [instanční objekt služby 
     VM_NAME = 'myVM'
     ```
 
-    Nahraďte **ID** předplatného identifikátorem vašeho předplatného.
+    Nahraďte **ID předplatného** identifikátorem vašeho předplatného.
 
 4. Pokud chcete vytvořit přihlašovací údaje služby Active Directory, které potřebujete k vytvoření žádostí, přidejte tuto funkci za proměnné v souboru. py:
 
@@ -102,7 +102,7 @@ Než zahájíte tento krok, ujistěte se, že máte [instanční objekt služby 
     credentials = get_credentials()
     ```
 
-## <a name="create-resources"></a>Vytvořit prostředky
+## <a name="create-resources"></a>Vytvoření prostředků
  
 ### <a name="initialize-management-clients"></a>Inicializace klientů pro správu
 
@@ -439,7 +439,7 @@ Můžete zastavit virtuální počítač a zachovat všechna jeho nastavení, al
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Pokud chcete zrušit přidělení virtuálního počítače, změňte volání power_off na tento kód:
+    Pokud chcete zrušit přidělení virtuálního počítače, změňte power_off volání tohoto kódu:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7d09e7839356c040e6632ef728cc579abaa17268
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: d9272aa4a46a5835558be8c695b62ec0770e3827
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968350"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074065"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -74,7 +74,7 @@ Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesíl
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 
-V nabídce **úloha zálohování** se zobrazí pouze úlohy zálohování ad-hoc. Pro naplánovaná úloha použijte [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+V nabídce **úloha zálohování** se zobrazí pouze úlohy zálohování na vyžádání. Pro naplánovaná úloha použijte [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Jsou budoucí databáze automaticky přidány pro zálohování?
 

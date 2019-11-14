@@ -1,7 +1,7 @@
 ---
 title: Odesílání požadavků do rozhraní API pro automatické návrhy Bingu
 titleSuffix: Azure Cognitive Services
-description: Naučte se odesílat požadavky do rozhraní API pro automatické návrhy Bingu.
+description: Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě částečného řetězce dotazu ve vyhledávacím poli. Přečtěte si další informace o odesílání požadavků.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: dbc8e2ccbd0a9d8c395a3b4e8a95e4e51f152792
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882424"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072852"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Odesílání požadavků do rozhraní API pro automatické návrhy Bingu.
 
@@ -25,9 +25,9 @@ Pokud vaše aplikace odesílá dotazy do některého z rozhraní API pro vyhled�
 
 **Rozhraní API pro automatické návrhy Bingu** obsahuje jeden koncový bod, který vrací seznam navrhovaných dotazů z částečného hledaného výrazu.
 
-Pokud chcete získat navrhované dotazy pomocí rozhraní API Bingu, `GET` odešlete požadavek na následující koncový bod. K definování dalších specifikací použijte záhlaví a parametry URL.
+Pokud chcete získat navrhované dotazy pomocí rozhraní API Bingu, odešlete `GET` požadavek do následujícího koncového bodu. K definování dalších specifikací použijte záhlaví a parametry URL.
 
-**Služba** Vrátí návrhy hledání jako výsledky JSON, které jsou relevantní pro vstup uživatele definovaný pomocí `?q=""`.
+**Koncový bod:** Vrátí návrhy hledání jako výsledky JSON, které jsou relevantní pro vstup uživatele definovaný `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
@@ -57,7 +57,7 @@ Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.mi
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
 - [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
-IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.
+Adresa IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.
 
 Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
 
@@ -95,11 +95,11 @@ Následující příklad ukazuje požadavek, který vrací navrhované řetězce
 
 Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. Hlavičku ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
-Následující skupina návrhů webu představuje odpověď na výše uvedený požadavek. Skupina obsahuje seznam návrhů vyhledávacích dotazů, přičemž každý návrh zahrnuje `displayText`pole, `query`a `url` .
+Následující skupina návrhů webu představuje odpověď na výše uvedený požadavek. Skupina obsahuje seznam návrhů vyhledávacích dotazů, přičemž každý návrh zahrnuje `displayText`pole, `query`a `url`.
 
 Pole `displayText` obsahuje navrhovaný dotaz, který můžete použít k vyplnění rozevíracího seznamu vašeho vyhledávacího pole. Musíte zobrazit všechny návrhy, které odpověď obsahuje, v uvedeném pořadí.  
 
-Pokud uživatel vybere dotaz z rozevíracího seznamu, můžete jej použít k volání jedné z [rozhraní API pro vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) a zobrazení výsledků sami nebo můžete uživatele odeslat na stránku výsledků Bingu pomocí vráceného `url` pole.
+Pokud uživatel vybere dotaz z rozevíracího seznamu, můžete jej použít k volání jedné z [rozhraní API pro vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) a zobrazení výsledků sami nebo můžete uživatele odeslat na stránku výsledků Bingu pomocí vráceného pole `url`.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -167,7 +167,7 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
 - [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

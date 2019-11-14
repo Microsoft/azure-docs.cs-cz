@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b9a292d06ce68d211b5c758e287f2935411c6f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968371"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074783"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a sledování zálohovaných SQL Server databází
 
@@ -42,7 +42,7 @@ Vzhledem k tomu, že se zálohy protokolů vyskytují každých 15 minut, může
 
 Monitorování výstrah zálohování databáze:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Na řídicím panelu trezoru vyberte **výstrahy a události**.
 
@@ -117,7 +117,7 @@ Můžete spouštět různé typy zálohování na vyžádání:
 - Rozdílové zálohování
 - Zálohování protokolů
 
-I když potřebujete zadat dobu uchování pro úplné zálohování, rozsah uchování pro ad hoc úplné zálohování bude automaticky nastaven na 45 dní od aktuálního času.
+I když potřebujete zadat dobu uchování pro úplné zálohování, rozsah uchování pro úplné zálohování na vyžádání bude automaticky nastaven na 45 dní od aktuálního času.
 
 Další informace najdete v tématu [SQL Server typy zálohování](backup-architecture.md#sql-server-backup-types).
 

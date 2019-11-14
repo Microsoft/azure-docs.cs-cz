@@ -1,5 +1,5 @@
 ---
-title: Přidání diagnostiky & monitorování do virtuálního počítače Azure | Microsoft Docs
+title: Přidání diagnostiky & monitorování do virtuálního počítače Azure
 description: K vytvoření nového virtuálního počítače s Windows pomocí rozšíření Azure Diagnostics použijte šablonu Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ba8fdba3b7283185920432b5b096b80b2e32021
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092539"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073846"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Použití monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon
 Rozšíření Azure Diagnostics poskytuje funkce pro monitorování a diagnostiku na virtuálním počítači Azure se systémem Windows. Tyto možnosti můžete na virtuálním počítači povolit zahrnutím rozšíření jako části šablony Azure Resource Manager. Další informace o začlenění všech rozšíření v rámci šablony virtuálního počítače najdete v tématu [vytváření Azure Resource Manager šablon s rozšířeními virtuálních počítačů](../windows/template-description.md#extensions) . Tento článek popisuje, jak můžete přidat rozšíření Azure Diagnostics do šablony virtuálního počítače s Windows.  
@@ -157,24 +157,24 @@ Hodnota MetricAggregation *PT1M* a *PT1H* značí agregaci za minutu a agregaci 
 ## <a name="wadmetrics-tables-in-storage"></a>Tabulky WADMetrics v úložišti
 Výše uvedená konfigurace metrik generuje tabulky v účtu úložiště diagnostiky s následujícími konvencemi pro pojmenování:
 
-* **WADMetrics**: Standardní předpona pro všechny tabulky WADMetrics
-* **PT1H** nebo **PT1M**: Značí, že tabulka obsahuje agregovaná data v průběhu 1 hodiny nebo 1 minuta.
-* **P10D**: Označuje, že tabulka bude obsahovat data po dobu 10 dní od okamžiku, kdy tabulka začala shromažďovat data.
-* **V2S**: Řetězcová konstanta
-* **RRRRMMDD**: Datum, kdy tabulka začala shromažďovat data
+* **WADMetrics**: standardní předpona pro všechny tabulky WADMetrics
+* **PT1H** nebo **PT1M**: značí, že tabulka obsahuje agregovaná data za 1 hodinu nebo 1 minutu.
+* **P10D**: značí, že tabulka bude obsahovat data po dobu 10 dní od okamžiku, kdy tabulka začala shromažďovat data.
+* **V2S**: String – konstanta
+* **RRRRMMDD**: datum, kdy tabulka začala shromažďovat data
 
 Příklad: *WADMetricsPT1HP10DV2S20151108* obsahuje data metrik agregovaná za hodinu po dobu 10 dní od 11. listopadu 2015.    
 
 Každá tabulka WADMetrics obsahuje následující sloupce:
 
-* **PartitionKey**: Klíč oddílu je vytvořen na základě hodnoty *ResourceID* k jedinečné identifikaci prostředku virtuálního počítače. Příklad: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: Postupuje podle `<Descending time tick>:<Performance Counter Name>`formátu. Výpočet vzestupného časového intervalu je maximální časový interval v čase začátku agregačního období. Pokud například začíná ukázková Perioda 10. listopadu-2015 a 00:00Hrs UTC, pak výpočet by byl: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. V čítači výkonu dostupné bajty paměti bude klíč řádku vypadat takto:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
-* **CounterName**: Je název čítače výkonu. To odpovídá *counterSpecifier* definovanému v konfiguraci XML.
-* **Maximum**: Maximální hodnota čítače výkonu v rámci agregovaného období.
-* **Minimum**: Minimální hodnota čítače výkonu v rámci agregovaného období.
-* **Celkem**: Součet všech hodnot čítače výkonu hlášených v rámci agregačního období.
-* **Počet**: Celkový počet hodnot hlášených pro čítač výkonu.
-* **Průměr**: Průměrná hodnota (celková hodnota/počet) čítače výkonu v rámci agregovaného období.
+* **PartitionKey**: klíč oddílu je vytvořen na základě hodnoty *ResourceID* k jedinečné identifikaci prostředku virtuálního počítače. Příklad: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **RowKey**: následuje `<Descending time tick>:<Performance Counter Name>`formátu. Výpočet vzestupného časového intervalu je maximální časový interval v čase začátku agregačního období. Pokud například začíná ukázková Perioda 10. listopadu-2015 a 00:00Hrs UTC, pak bude výpočet: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. V čítači výkonu dostupné bajty paměti bude klíč řádku vypadat takto: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **CounterName**: je název čítače výkonu. To odpovídá *counterSpecifier* definovanému v konfiguraci XML.
+* **Maximum**: maximální hodnota čítače výkonu v rámci agregačního období.
+* **Minimum**: minimální hodnota čítače výkonu v rámci agregačního období.
+* **Total**: součet všech hodnot čítače výkonu hlášených v rámci agregačního období.
+* **Count**: celkový počet hodnot hlášených pro čítač výkonu.
+* **Average**: Průměrná hodnota (celková hodnota/počet) čítače výkonu v rámci agregovaného období.
 
 ## <a name="next-steps"></a>Další kroky
 * Úplnou ukázkovou šablonu virtuálního počítače s Windows s diagnostickým rozšířením najdete v tématu [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension) .   

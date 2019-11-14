@@ -7,14 +7,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.author: dacurwin
-ms.openlocfilehash: 3be3a2e3355793a8d0b4fcaf0e7f62668f78f0c8
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d646cd40312765b11c711f4c63c0943c9e8555
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954882"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074330"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Přesunutí dlouhodobého úložiště z pásky do cloudu Azure
+
 Zákazníci Azure Backup a System Center Data Protection Manager můžou:
 
 * Zálohujte data v plánech, které nejlépe vyhovují potřebám organizace.
@@ -24,6 +25,7 @@ Zákazníci Azure Backup a System Center Data Protection Manager můžou:
 Tento článek vysvětluje, jak můžou zákazníci povolit zásady zálohování a uchovávání informací. Zákazníci, kteří používají pásky k řešení svých potřeb dlouhodobé uchovávání, teď mají výkonnou a životaschopnou alternativu s dostupností této funkce. Tato funkce je povolená v nejnovější verzi Azure Backup (která je dostupná [tady](https://aka.ms/azurebackup_agent)). Před použitím aplikace DPM se službou Azure Backup musí zákazníci nástroje System Center DPM aktualizovat aspoň na DPM 2012 R2.
 
 ## <a name="what-is-the-backup-schedule"></a>Jaký je plán zálohování?
+
 Plán zálohování indikuje četnost operace zálohování. Například nastavení na následující obrazovce označují, že zálohování probíhá denně na 18:00 a na půlnoci.
 
 ![Denní plán](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
@@ -33,6 +35,7 @@ Zákazníci mohou také naplánovat týdenní zálohování. Například nastave
 ![Týdenní plán](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
 
 ## <a name="what-is-the-retention-policy"></a>Co jsou zásady uchovávání informací?
+
 Zásada uchovávání informací Určuje dobu, po kterou musí být záloha uložena. Místo toho, aby pro všechny body zálohy nezadali "ploché zásady", můžou zákazníci zadat různé zásady uchovávání informací na základě toho, kdy se zálohování provádí. Například bod zálohování vydaný každý den, který slouží jako bod obnovení, se zachová po dobu 90 dnů. Bod zálohování pořízený na konci každého čtvrtletí pro účely auditu se zachová delší dobu.
 
 ![Zásady uchovávání informací](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
@@ -40,12 +43,13 @@ Zásada uchovávání informací Určuje dobu, po kterou musí být záloha ulo�
 Celkový počet "bodů uchování" zadaných v této zásadě je 90 (denní body) + 40 (jedno čtvrtletí po dobu 10 let) = 130.
 
 ## <a name="example--putting-both-together"></a>Příklad – vložení společně
+
 ![Ukázková obrazovka](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Denní zásady uchovávání informací**: Zálohy se denně uchovávají po dobu sedmi dnů.
-2. **Týdenní zásady uchovávání informací**: Zálohy provedené každý den v půlnoci a 18:00 sobotu se uchovávají po dobu čtyř týdnů.
-3. **Měsíční zásady uchovávání informací**: Zálohy provedené po půlnoci a 18:00 v poslední sobotu v měsíci se uchovávají po dobu 12 měsíců.
-4. **Roční zásady uchovávání informací**: Zálohy provedené po půlnoci na poslední sobotu v každé březnu jsou zachované po dobu 10 let.
+1. **Denní zásady uchovávání informací**: zálohování se ukládá na dny po dobu sedmi dnů.
+2. **Týdenní zásady uchovávání informací**: zálohy provedené každý den v půlnoci a 18:00 sobotu se uchovávají po dobu čtyř týdnů.
+3. **Měsíční zásady uchovávání informací**: zálohy provedené po půlnoci a 18:00 v poslední sobotu v měsíci se uchovávají po dobu 12 měsíců.
+4. **Roční zásady uchovávání informací**: zálohy provedené při půlnoci na poslední sobotu v každé březnu jsou zachované po dobu 10 let.
 
 Celkový počet "bodů uchovávání" (body, ze kterých může zákazník obnovit data) v předchozím diagramu se vypočítává takto:
 
@@ -61,11 +65,13 @@ Celkový počet bodů obnovení je 56.
 >
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
+
 Když na předchozí obrazovce kliknete na **Upravit** , zákazníci mají větší flexibilitu při určování plánů uchovávání.
 
-![Změnit](./media/backup-azure-backup-cloud-as-tape/modify.png)
+![Úpravy](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>Další kroky
+
 Další informace o Azure Backup najdete v tématech:
 
 * [Seznámení s Azure Backup](backup-introduction-to-azure-backup.md)

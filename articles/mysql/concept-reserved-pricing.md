@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: e3b4249aa9fbc31f8a6ca4a33ef8167bd076adec
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 595a96d07cc1804d3ee0830618a70557b768a3b5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609174"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067092"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Platba za Azure Database for MySQL výpočetních prostředků s rezervovanou kapacitou
 
@@ -32,7 +32,7 @@ Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžn
 
 Velikost rezervace by měla být založená na celkovém množství výpočetních operací používaných existujícím nebo již nasazeným serverem v konkrétní oblasti a pomocí stejné úrovně výkonu a generování hardwaru.</br>
 
-Předpokládejme například, že máte spuštěný jeden pro obecné účely, Gen5 – 32 vCore MySQL Database a dvě paměťově optimalizované databáze MySQL Gen5 – 16 vCore. V dalším měsíci byste se měli chtít nasadit ještě další 32 Gen5 elastický fond vCore a jeden paměťově optimalizovanou databázový server Gen5 – 16 vCore. Dejme tomu, že víte, že tyto prostředky budete potřebovat aspoň 1 rok. V takovém případě byste si měli koupit 64 (2x32) virtuální jádra, rezervaci 1 roku pro izolovanou databázi pro obecné účely – Gen5 a 48 (2x16 + 16) pro paměť s izolovanými databázemi – Vcore.
+Předpokládejme například, že máte spuštěný jeden pro obecné účely, Gen5 – 32 vCore MySQL Database a dvě paměťově optimalizované databáze MySQL Gen5 – 16 vCore. V dalším měsíci byste si měli naplánovat nasazení za další měsíc, což je další obecné účely, Gen5 – 32 vCore databázového serveru a jedna paměťově optimalizovaná, Gen5 – 16 vCore databázový server. Dejme tomu, že víte, že tyto prostředky budete potřebovat aspoň 1 rok. V takovém případě byste si měli koupit 64 (2x32) virtuální jádra, rezervaci 1 roku pro izolovanou databázi pro obecné účely – Gen5 a 48 (2x16 + 16) pro paměť s izolovanými databázemi – Vcore.
 
 
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>Koupit Azure Database for MySQL rezervovanou kapacitu
@@ -52,10 +52,10 @@ V následující tabulce jsou popsána povinná pole.
 | :------------ | :------- |
 | Předplatné   | Předplatné použité pro platbu Azure Database for MySQL rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity Azure Database for MySQL. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
 | Rozsah | Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, Azure Database for MySQL na servery běžící v rámci vašeho fakturačního kontextu se použije sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> Pro Azure Database for MySQL servery v tomto **předplatném**se použije sleva za rezervované Vcore. </br></br> **Jedna skupina prostředků**, použije se sleva rezervace pro Azure Database for MySQL servery ve vybraném předplatném a v rámci daného předplatného.
-| Region (Oblast) | Oblast Azure, která je pokrytá rezervací rezervované kapacity Azure Database for MySQL.
+| Oblast | Oblast Azure, která je pokrytá rezervací rezervované kapacity Azure Database for MySQL.
 | Typ nasazení | Typ prostředku Azure Database for MySQL, pro který chcete zakoupit rezervaci.
 | Úroveň výkonu | Vrstva služby pro servery Azure Database for MySQL.
-| Doba účinnosti | Jeden rok
+| Termín | Jeden rok
 | Množství | Množství výpočetních prostředků, které se zakoupí v rámci rezervace rezervované kapacity Azure Database for MySQL. Množství je počet virtuální jádra ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit Azure Database for MySQL servery s celkovou výpočetní kapacitou Gen5 16 virtuální jádra v oblasti Východní USA, pak byste zadali množství na 16, aby se zajistilo zvýšení výhod pro všechny servery.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
