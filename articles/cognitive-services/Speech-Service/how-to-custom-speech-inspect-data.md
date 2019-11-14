@@ -1,7 +1,7 @@
 ---
 title: Kontrola kvality dat pro službu Custom Speech – Speech
 titleSuffix: Azure Cognitive Services
-description: Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Z portálu Custom Speech můžete přehrát nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný.  Tento nástroj umožňuje rychlou kontrolu kvality vlastního modelu rozpoznávání řeči (Speech-to-text) a vyškolený vlastní model bez nutnosti přepisovatovat data zvuku.
+description: Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Můžete přehrát nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cf0deffb6fe484f7e3ee38b95f285bb4b7cc809c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801468"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072564"
 ---
 # <a name="inspect-custom-speech-data"></a>Kontrola Custom Speech dat
 
@@ -43,18 +43,18 @@ Po úspěšném vytvoření testu můžete porovnat modely vedle sebe.
 
 ## <a name="side-by-side-model-comparisons"></a>Porovnání modelů souběžného sdílení
 
-Po *úspěšném*stavu testu klikněte na název testovací položky a zobrazí se podrobnosti testu. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady.
+Po _úspěšném_stavu testu klikněte na název testovací položky a zobrazí se podrobnosti testu. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady.
 
 Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnávání výsledků rozpoznávání v jednotlivých sloupcích (ukazující přepis a výsledky dvou typů řeči na text) se můžete rozhodnout, který model vyhovuje vašim potřebám a kde jsou nutná vylepšení.
 
-Kontrola kvality testování je užitečná, pokud chcete ověřit, jestli je kvalita koncového bodu rozpoznávání řeči pro aplikaci dostačující.  V případě míry přesnosti, která vyžaduje přepisu zvuk, postupujte podle pokynů uvedených v části [vyhodnocení přesnosti](how-to-custom-speech-evaluate-data.md).
+Kontrola kvality testování je užitečná, pokud chcete ověřit, jestli je kvalita koncového bodu rozpoznávání řeči pro aplikaci dostačující. V případě míry přesnosti, která vyžaduje přepisu zvuk, postupujte podle pokynů uvedených v části [vyhodnocení přesnosti](how-to-custom-speech-evaluate-data.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Výuka modelu](how-to-custom-speech-train-model.md)
-* [Nasazení modelu](how-to-custom-speech-deploy-model.md)
+- [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
+- [Výuka modelu](how-to-custom-speech-train-model.md)
+- [Nasazení modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Příprava testovacích dat pro Custom Speech](how-to-custom-speech-test-data.md)
+- [Příprava testovacích dat pro Custom Speech](how-to-custom-speech-test-data.md)

@@ -1,7 +1,7 @@
 ---
 title: Load Balancer resetování protokolu TCP při nečinnosti v Azure
-titlesuffix: Azure Load Balancer
-description: Load Balancer s obousměrnými pakety TCP RST při nečinnosti
+titleSuffix: Azure Load Balancer
+description: V tomto článku se dozvíte, jak Azure Load Balancer s obousměrnými pakety TCP RST při nečinnosti.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b37253f37043d902d33504b99401781eb1c761c5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274158"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075939"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer s resetováním protokolu TCP po nečinnosti (Public Preview)
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer s resetováním při nečinnosti TCP (Public Preview)
 
 Pomocí [Standard Load Balancer](load-balancer-standard-overview.md) můžete pro své scénáře vytvořit předvídatelné chování aplikace tím, že pro dané pravidlo povolíte resetování protokolu TCP pro nečinnost. Výchozím chováním Load Balancer je nejenom tiché vyřazení toků při dosažení časového limitu nečinnosti toku.  Povolení této funkce způsobí, že Load Balancer odesílat obousměrné resety TCP (TCP RST Packet) na časový limit nečinnosti.  Tím se informují koncové body vaší aplikace, ke kterým vypršel časový limit připojení a které už nejsou použitelné.  Koncové body můžou v případě potřeby okamžitě vytvořit nové připojení.
 
@@ -76,7 +76,7 @@ K dispozici ve všech oblastech.
 - Portál nelze použít ke konfiguraci nebo zobrazení resetu protokolu TCP.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
 - TCP RST se posílá pouze během připojení TCP v navázaném stavu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [Load balanceru úrovně Standard](load-balancer-standard-overview.md).
 - Přečtěte si o [odchozích pravidlech](load-balancer-outbound-rules-overview.md).

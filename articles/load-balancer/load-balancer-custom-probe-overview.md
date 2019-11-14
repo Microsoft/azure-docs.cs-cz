@@ -1,11 +1,11 @@
 ---
-title: Použití sond stavu Azure Load Balancer k škálování a zajištění vysoké dostupnosti pro vaši službu
-titlesuffix: Azure Load Balancer
-description: Informace o používání sond stavu k monitorování instancí za nástroj pro vyrovnávání zatížení
+title: Sondy stavu pro škálování a zajištění vysoké dostupnosti pro vaši službu
+titleSuffix: Azure Load Balancer
+description: V tomto článku se dozvíte, jak pomocí sond stavu monitorovat instance za Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: d9873c4d8d4ca2b74532706f079c7384bf38db42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033820"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077075"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 

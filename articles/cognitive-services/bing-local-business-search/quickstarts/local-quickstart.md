@@ -1,7 +1,7 @@
 ---
 title: Rychlý Start – odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací vC#
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto článku můžete začít používat rozhraní API pro vyhledávání místních obchodních aplikací C#Bing v.
+description: Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 04/26/2019
 ms.author: rosh
-ms.openlocfilehash: 163a85a7fb7521054ebec58fb9ac86373963f2b9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: d14e9dd8d02db7ca0131927682804fe81b750d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906315"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072329"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý start: Poslat dotaz na rozhraní API Bingu pro vyhledávání na místních obchodechC#
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací vC#
 
 Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v C#systému, rozhraní API je webová služba RESTful, která je kompatibilní s libovolným programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
 
-Tato ukázková aplikace získá data místní odpovědi z rozhraní API vyhledávacího dotazu `hotel in Bellevue`.
+Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
-Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-the-request"></a>Vytvoření žádosti 
 
@@ -208,7 +208,7 @@ namespace localSearch
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
 - [Rychlý Start uzlu místního hledání firmy](local-search-node-quickstart.md)
 - [Rychlý Start pro místní vyhledávání v Pythonu](local-search-python-quickstart.md)

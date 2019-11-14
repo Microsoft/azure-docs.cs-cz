@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: e519df8c116244b0c74be6b189d99599d89dee77
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7605bbc1824e2e859cc94296834daf4e4e0907b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582830"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072368"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role v Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Níže jsou uvedené předdefinované role podporované nástrojem Azure Cosmos 
 
 |**Předdefinovaná role**  |**Popis**  |
 |---------|---------|
-|[Přispěvatel účtů DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB.|
+|[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB.|
 |[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu.|
 |[Cosmos – operátor zálohování](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Může odeslat žádost o obnovení pro databázi Azure Cosmos nebo kontejner.|
 |[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Může zřídit účty, databáze a kontejnery Azure Cosmos, ale nemůže získat přístup k klíčům, které jsou nutné pro přístup k datům.|

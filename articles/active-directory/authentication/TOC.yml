@@ -139,8 +139,6 @@
           href: howto-authentication-passwordless-security-key.md
         - name: Windows 10 bez hesla
           href: howto-authentication-passwordless-security-key-windows.md
-        - name: Místní prostředí bez hesla
-          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Přihlašování telefonem bez hesla
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello pro firmy

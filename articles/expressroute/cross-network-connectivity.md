@@ -1,143 +1,140 @@
 ---
-title: Možnosti připojení mezi sítě Azure | Dokumentace Microsoftu
-description: Tato stránka popisuje scénář aplikací pro různé připojení k síti a řešení založené na Azure síťových funkcí.
-documentationcenter: na
-services: networking
+title: Připojení mezi sítěmi Azure
+description: Tato stránka popisuje scénář aplikace pro různé připojení k síti a řešení v závislosti na síťových funkcích Azure.
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e503dc2b4ae8773ebfedc7a9b73bc5ea93dd9d5a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866005"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076754"
 ---
 # <a name="cross-network-connectivity"></a>Možnosti připojení mezi sítěmi
 
-Společnost Fabrikam, Inc. má velký fyzickou přítomnost a nasazení Azure v oblasti východní USA. Společnost Fabrikam má back-end připojení mezi místní a nasazení Azure přes ExpressRoute. Podobně Contoso Ltd. má prezentace a nasazení Azure v oblasti západní USA. Contoso má back-end připojení mezi místní a nasazení Azure přes ExpressRoute.  
+Společnost Fabrikam Inc. má rozsáhlou fyzickou přítomnost a nasazení Azure v Východní USA. Společnost Fabrikam má back-end propojení mezi místními a nasazeními Azure prostřednictvím ExpressRoute. Podobně společnost Contoso Ltd. má přítomnost a nasazení Azure v Západní USA. Společnost Contoso má back-end propojení mezi místními a nasazeními Azure prostřednictvím ExpressRoute.  
 
-Společnost Fabrikam, Inc. získá Contoso Ltd. Po spojení Fabrikam chce propojení sítí. Scénář znázorňuje následující obrázek:
+Společnost Fabrikam Inc. získá společnost Contoso Ltd. Po fúzi chce společnost Fabrikam propojit sítě. Následující obrázek znázorňuje scénář:
 
  [![1]][1]
 
-Přerušované šipky uprostřed na výše uvedeném obrázku označují požadované síťové propojení. Existují tři typy požadovaného křížové připojení: Společnost Fabrikam a Contoso virtuálních sítí pro různé připojení (1), 2) mezi místní s místními a virtuálními sítěmi mezi připojí (který je, připojení Fabrikam místní sítě k virtuální síti Contoso a propojení Contoso místní sítě k virtuální síti Fabrikam) a (3) Fabrikam a Contoso připojení mezi místní sítí. 
+Přerušované šipky uprostřed výše uvedeného obrázku označují požadovaná propojení sítě. Konkrétně jsou k dispozici tři typy vzájemného připojení: 1) Fabrikam a contoso virtuální sítě křížové propojení, 2) meziregionální a virtuální sítě křížové propojení (tj. propojení místní sítě Fabrikam do virtuální sítě contoso a připojení společnosti Contoso místní síť k virtuální síti Fabrikam) a 3) Společnost Fabrikam a místní síť společnosti Contoso pro různé připojení. 
 
-V následující tabulce jsou uvedeny soukromý partnerský vztah ExpressRoute ze společnosti Contoso Ltd., před spojením směrovací tabulky.
+V následující tabulce je uvedena směrovací tabulka privátního partnerského vztahu ExpressRoute společnosti Contoso Ltd. před fúzí.
 
 [![2]][2]
 
-Efektivní trasy virtuální počítač v rámci předplatného Contoso, před spojením v následující tabulce. Na tabulku je seznámen adresní prostor virtuální sítě a v místní síti Contoso, kromě výchozích šablon virtuálních počítačů ve virtuální síti. 
+Následující tabulka ukazuje efektivní trasy virtuálního počítače v předplatném společnosti Contoso před fúzí. Na základě tabulky virtuální počítač ve virtuální síti ví o adresním prostoru virtuální sítě a místní síti společnosti Contoso, a to od výchozích. 
 
 [![4]][4]
 
-V následující tabulce jsou uvedeny soukromý partnerský vztah na ExpressRoute ze společnosti Fabrikam Inc., před spojením směrovací tabulky.
+V následující tabulce je uvedena směrovací tabulka privátního partnerského vztahu ExpressRoute společnosti Fabrikam Inc. před fúzí.
 
 [![3]][3]
 
-Efektivní trasy virtuální počítač v rámci předplatného společnosti Fabrikam, před spojením v následující tabulce. Na tabulku je seznámen adresní prostor virtuální sítě a v místní síti Fabrikam, kromě výchozích šablon virtuálních počítačů ve virtuální síti.
+Následující tabulka ukazuje efektivní trasy virtuálního počítače v předplatném Fabrikam před fúzí. Na základě tabulky virtuální počítač ve virtuální síti ví o adresním prostoru virtuální sítě a místní síti Fabrikam, a to od výchozích.
 
 [![5]][5]
 
-V tomto článku Podívejme se krok za krokem a diskuzi o tom, abyste dosáhli požadovaného křížové připojení pomocí následujících tipů síť Azure:
+V tomto článku si projdeme krok za krokem a diskuzi o tom, jak dosáhnout požadovaných vzájemných připojení pomocí následujících funkcí Azure Network:
 
-* [Partnerský vztah virtuální sítě][Virtual network peering] 
-* [Virtuální síť připojení ExpressRoute][connection]
-* [Globální dosah][Global Reach] 
+* [Partnerské vztahy virtuálních sítí][Virtual network peering] 
+* [Připojení ExpressRoute virtuální sítě][connection]
+* [Global Reach][Global Reach] 
 
-## <a name="cross-connecting-vnets"></a>Propojení virtuálních sítí pro různé
+## <a name="cross-connecting-vnets"></a>Vzájemné propojení virtuální sítě
 
-Partnerské vztahy virtuálních sítí (VNet peering) poskytuje nejlepší výkon sítě a nejoptimálnější při propojení dvou virtuálních sítí. Partnerský vztah virtuální sítě podporuje partnerský vztah dvou virtuálních sítí v rámci stejné oblasti Azure (označovaného jako VNet peering) a ve dvou různých oblastech Azure (označovaného jako globální VNet peering). 
+Partnerský vztah virtuální sítě (VNet peering) poskytuje optimální a nejlepší výkon sítě při připojování dvou virtuálních sítí. Partnerský vztah virtuálních sítí podporuje partnerský vztah dvou virtuální sítě ve stejné oblasti Azure (obvykle se označuje jako partnerský vztah virtuálních sítí) a ve dvou různých oblastech Azure (obvykle se označuje jako globální partnerské vztahy virtuálních sítí). 
 
-Nakonfigurujme globální VNet peering mezi virtuálními sítěmi ve společnosti Contoso a Fabrikam Azure předplatných. Jak vytvořit virtuální síť vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi, najdete v článku [vytvoření partnerského vztahu virtuálních sítí] [ Configure VNet peering] článku.
+Pojďme nakonfigurovat globální partnerský vztah virtuálních sítí mezi virtuální sítě v předplatných společnosti Contoso a Fabrikam Azure. Postup vytvoření partnerského vztahu virtuální sítě mezi dvěma virtuálními sítěmi najdete v článku [vytvoření partnerského vztahu virtuální sítě][Configure VNet peering] .
 
-Následující obrázek znázorňuje síťovou architekturu po konfiguraci globální VNet peering.
+Následující obrázek ukazuje architekturu sítě po konfiguraci globálního partnerského vztahu virtuální sítě.
 
 [![6]][6]
 
-Následující tabulka obsahuje trasy známé Contoso předplatné virtuálního počítače. Věnujte pozornost poslední položky v tabulce. Tato položka je výsledek pro různé propojení virtuálních sítí.
+Následující tabulka uvádí trasy známé virtuálnímu počítači předplatného společnosti Contoso. Věnujte pozornost poslednímu zadání tabulky. Tato položka je výsledkem vzájemného propojení virtuálních sítí.
 
 [![7]][7]
 
-Následující tabulka uvádí známé k předplatnému virtuálních počítačů společnosti Fabrikam trasy. Věnujte pozornost poslední položky v tabulce. Tato položka je výsledek pro různé propojení virtuálních sítí.
+Následující tabulka uvádí trasy známé virtuálnímu počítači předplatného Fabrikam. Věnujte pozornost poslednímu zadání tabulky. Tato položka je výsledkem vzájemného propojení virtuálních sítí.
 
 [![8]][8]
 
-Přímo VNet peering propojuje dvě virtuální sítě (viz neexistují žádné další segment směrování *VNetGlobalPeering* položka ve výše uvedených dvou tabulkách)
+Partnerský vztah virtuálních sítí přímo propojuje dvě virtuální sítě (viz téma žádné další směrování pro záznam *VNetGlobalPeering* ve výše uvedených dvou tabulkách).
 
-## <a name="cross-connecting-vnets-to-the-on-premises-networks"></a>Různé připojení virtuálních sítí k místním sítím
+## <a name="cross-connecting-vnets-to-the-on-premises-networks"></a>Vzájemné propojení virtuální sítě s místními sítěmi
 
-Okruh ExpressRoute můžeme připojit k více virtuálním sítím. Zobrazit [předplatné a omezení služeb] [ Subscription limits] pro maximální počet virtuálních sítí, které lze připojit k okruhu ExpressRoute. 
+Okruh ExpressRoute můžeme propojit s několika virtuálními sítěmi. Maximální počet virtuálních sítí, které se dají připojit k okruhu ExpressRoute, najdete v tématu [omezení předplatného a služby][Subscription limits] . 
 
-Umožňuje připojení k předplatnému Fabrikam virtuální sítí umožňuje křížové připojení mezi virtuálními sítěmi a místními sítěmi okruh Fabrikam ExpressRoute na Contoso předplatné virtuální sítě a podobně okruh Contoso ExpressRoute. Pro připojení virtuální sítě k okruhu ExpressRoute v jiném předplatném, potřebujeme vytvořit a používat autorizaci.  Přečtěte si článek: [Připojení virtuální sítě k okruhu ExpressRoute][Connect-ER-VNet].
+Pojďme připojit ExpressRoute okruh Fabrikam k virtuální síti předplatného společnosti Contoso a podobně contoso ExpressRoute okruh na virtuální síť předplatného společnosti Fabrikam a umožnit tak vzájemnou konektivitu mezi virtuálními sítěmi a místními sítěmi. Abychom mohli připojit virtuální síť k okruhu ExpressRoute v jiném předplatném, musíme vytvořit a použít autorizaci.  Podívejte se na článek: [připojení virtuální sítě k okruhu ExpressRoute][Connect-ER-VNet].
 
-Následující obrázek ukazuje architekturu sítě po dokončení konfigurace ExpressRoute křížové připojení k virtuálním sítím.
+Následující obrázek ukazuje architekturu sítě po nakonfigurování ExpressRouteho vzájemného připojení k virtuálním sítím.
 
 [![9]][9]
 
-V následující tabulce jsou uvedeny směrovací tabulky soukromého partnerského vztahu z ExpressRoute Contoso Ltd. po křížové připojení virtuální sítě do místní sítě prostřednictvím ExpressRoute. Podívejte se, že směrovací tabulka obsahuje trasy, které patří do virtuální sítě.
+V následující tabulce je uvedena směrovací tabulka privátního partnerského vztahu ExpressRoute společnosti Contoso Ltd. po křížovém propojení virtuálních sítí s místními sítěmi prostřednictvím ExpressRoute. Podívejte se, že směrovací tabulka obsahuje trasy patřící do obou virtuálních sítí.
 
 [![10]][10]
 
-V následující tabulce jsou uvedeny směrovací tabulky privátní partnerský vztah ExpressRoute Fabrikam Inc. po křížové připojení virtuální sítě do místní sítě prostřednictvím ExpressRoute. Podívejte se, že směrovací tabulka obsahuje trasy, které patří do virtuální sítě.
+V následující tabulce je uvedena směrovací tabulka privátního partnerského vztahu ExpressRoute společnosti Fabrikam Inc. po křížovém propojení virtuálních sítí s místními sítěmi prostřednictvím ExpressRoute. Podívejte se, že směrovací tabulka obsahuje trasy patřící do obou virtuálních sítí.
 
-[![11]][11]
+[![odst]][11]
 
-Následující tabulka obsahuje trasy známé Contoso předplatné virtuálního počítače. Věnujte pozornost *Brána virtuální sítě* položky v tabulce. Virtuální počítač se zobrazí trasy pro místní sítě.
+Následující tabulka uvádí trasy známé virtuálnímu počítači předplatného společnosti Contoso. Věnujte pozornost položkám *brány virtuální sítě* v tabulce. Virtuální počítač vidí trasy pro místní sítě.
 
-[![12]][12]
+[![12,5]][12]
 
-Následující tabulka uvádí známé k předplatnému virtuálních počítačů společnosti Fabrikam trasy. Věnujte pozornost *Brána virtuální sítě* položky v tabulce. Virtuální počítač se zobrazí trasy pro místní sítě.
+Následující tabulka uvádí trasy známé virtuálnímu počítači předplatného Fabrikam. Věnujte pozornost položkám *brány virtuální sítě* v tabulce. Virtuální počítač vidí trasy pro místní sítě.
 
-[![13]][13]
+[![13,5]][13]
 
 >[!NOTE]
->Ve společnosti Fabrikam a/nebo Contoso odběry, které je také možné virtuální sítě paprsků k centru příslušné virtuální síti (hvězdicové návrhu není ukázáno v diagramy architektury v tomto článku). Křížové spojení mezi brány virtuální sítě centra ke službě ExpressRoute vám také umožní komunikaci mezi – východ a v západní rozbočovače a paprsky.
+>V předplatných společnosti Fabrikam a/nebo contoso můžete také paprsky virtuální sítě k příslušné virtuální síti centra (návrh centra a paprsků není znázorněn v diagramech architektury v tomto článku). Vzájemné propojení mezi branami virtuální sítě mezi rozbočovači a ExpressRoute budou také umožňovat komunikaci mezi východem a západkou rozbočovače a paprsky.
 >
 
-## <a name="cross-connecting-on-premises-networks"></a>Připojení místních sítí pro různé
+## <a name="cross-connecting-on-premises-networks"></a>Vzájemné propojení místních sítí
 
-Globální dosah ExpressRoute poskytuje připojení mezi místními sítěmi, které jsou připojené k jiné okruhy ExpressRoute. Nakonfigurujme globální dosah mezi Contoso a Fabrikam ExpressRoute okruhy. Okruhy ExpressRoute jsou umístěny v různých předplatných, potřebujeme vytvořit a používat autorizaci. Zobrazit [nakonfigurovat globální dosah ExpressRoute] [ Configure Global Reach] článku Pokyny krok za krokem.
+ExpressRoute Global Reach poskytuje připojení mezi místními sítěmi, které jsou připojené k různým okruhům ExpressRoute. Umožňuje nakonfigurovat Global Reach mezi ExpressRoute okruhy contoso a Fabrikam. Protože okruhy ExpressRoute jsou v různých předplatných, musíme vytvořit a použít autorizaci. Podrobné pokyny najdete v článku [konfigurace Global REACH ExpressRoute][Configure Global Reach] .
 
-Následující obrázek znázorňuje síťovou architekturu po konfiguraci globální dosah.
+Následující obrázek ukazuje architekturu sítě po konfiguraci Global Reach.
 
-[![14]][14]
+[![čtrnáct]][14]
 
-V následující tabulce jsou uvedeny směrovací tabulky soukromého partnerského vztahu z ExpressRoute Contoso Ltd. Po konfiguraci globální dosah. Podívejte se, že směrovací tabulka obsahuje trasy, které patří do místní sítě. 
+V následující tabulce je uvedena směrovací tabulka privátního partnerského vztahu ExpressRoute společnosti Contoso Ltd. po konfiguraci Global Reach. Podívejte se, že směrovací tabulka obsahuje trasy patřící do místních sítí. 
 
 [![15]][15]
 
-V následující tabulce jsou uvedeny směrovací tabulky privátní partnerský vztah ExpressRoute Fabrikam Inc., až nakonfigurujete globální dosah. Podívejte se, že směrovací tabulka obsahuje trasy, které patří do místní sítě.
+V následující tabulce je uvedena směrovací tabulka privátního partnerského vztahu ExpressRoute společnosti Fabrikam Inc. po konfiguraci Global Reach. Podívejte se, že směrovací tabulka obsahuje trasy patřící do místních sítí.
 
-[![16]][16]
+[![16bitovém]][16]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [virtuální sítě – nejčastější dotazy][VNet-FAQ]pro všechny další otázky týkající se virtuální sítě a partnerský vztah virtuální sítě. Zobrazit [ExpressRoute – nejčastější dotazy] [ ER-FAQ] pro připojení k nějaké další dotazy na ExpressRoute a virtuální síti.
+Další otázky k virtuální síti a partnerskému vztahu VNet najdete v tématu [Nejčastější dotazy k virtuálním sítím][VNet-FAQ]. Další otázky k připojení ExpressRoute a virtuální sítě najdete v tématu [ExpressRoute – nejčastější][ER-FAQ] dotazy.
 
-Globální dosah nasazení na základě země nebo oblast podle země nebo oblast. Pokud je dostupný v zemích nebo oblastech, které mají globální dosah, najdete v sekci [ExpressRoute globální dosah][Global Reach].
+Global Reach se zavádějí do země nebo oblasti podle země nebo oblasti. Pokud chcete zjistit, jestli je Global Reach k dispozici v zemích nebo oblastech, které chcete, přečtěte si téma [ExpressRoute Global REACH][Global Reach].
 
 <!--Image References-->
 [1]: ./media/cross-network-connectivity/premergerscenario.png "scénář aplikace"
-[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "Contoso ExpressRoute směrovací tabulku před spojení"
-[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "Fabrikam ExpressRoute směrovací tabulku před spojení"
-[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "trasy virtuálních počítačů společnosti Contoso před spojení"
-[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "trasy virtuálních počítačů společnosti Fabrikam před spojení"
-[6]: ./media/cross-network-connectivity/vnet-peering.png "architektura po vytvoření partnerského vztahu virtuální sítě"
-[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "trasy virtuálních počítačů společnosti Contoso po vytvoření partnerského vztahu virtuální sítě"
-[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "trasy virtuálních počítačů společnosti Fabrikam po vytvoření partnerského vztahu virtuální sítě"
-[9]: ./media/cross-network-connectivity/exr-x-connect.png "the Architecture po ExpressRoutes přes připojení"
-[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "Contoso ExpressRoute směrovací tabulky po křížové připojení ExR a virtuálními sítěmi"
-[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "Fabrikam ExpressRoute směrovací tabulky po křížové připojení ExR a virtuálními sítěmi"
-[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "trasy virtuálních počítačů společnosti Contoso za různé spojovací ExR a virtuálními sítěmi"
-[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "trasy virtuálních počítačů společnosti Fabrikam po křížové připojení ExR a virtuálními sítěmi"
-[14]: ./media/cross-network-connectivity/globalreach.png "the Architecture po konfiguraci globální dosah"
-[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "Contoso ExpressRoute směrovací tabulky po globální dosah"
-[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "Fabrikam ExpressRoute směrovací tabulky po globální dosah"
+[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "tabulka směrování contoso ExpressRoute před fúzí"
+[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png. "ExpressRoute směrovací tabulka společnosti Fabrikam před fúzí"
+[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "trasy virtuálních počítačů contoso před fúzí"
+[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "tras virtuálních počítačů Fabrikam před fúzí"
+[6]: ./media/cross-network-connectivity/vnet-peering.png "architekturu po partnerském vztahu VNet"
+[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "trasy virtuálních počítačů contoso po partnerském vztahu virtuální" sítě
+[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "tras virtuálních počítačů Fabrikam po partnerských sítích VNet"
+[9]: ./media/cross-network-connectivity/exr-x-connect.png "Architektura po ExpressRoutes vzájemném připojení"
+[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "ExpressRoute směrovací tabulka společnosti Contoso po vzájemném propojení ExR a virtuální sítě"
+[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png. "ExpressRoute směrovací tabulka společnosti Fabrikam po vzájemném propojení ExR a virtuální sítě"
+[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "trasy virtuálních počítačů contoso po vzájemném propojení ExR a virtuální sítě"
+[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "trasy virtuálních počítačů Fabrikam po vzájemném propojení ExR a virtuální sítě"
+[14]: ./media/cross-network-connectivity/globalreach.png "architektura po konfiguraci Global REACH"
+[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "ExpressRoute směrovací tabulka společnosti Contoso po Global REACH"
+[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "ExpressRoute směrování směrovací tabulky po Global REACH"
 
 <!--Link References-->
 [Virtual network peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

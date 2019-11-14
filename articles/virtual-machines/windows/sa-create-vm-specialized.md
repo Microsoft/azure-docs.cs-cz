@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače ze specializovaného disku v Azure | Microsoft Docs
+title: Vytvoření virtuálního počítače ze specializovaného disku v Azure
 description: Vytvořte nový virtuální počítač připojením specializovaného nespravovaného disku v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cdbf55aae52cec9df1ba34cbeb34c67b8e5fc5d0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d887ef2ef74bb433d6e8ae7f53cd0b77f5948303
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749197"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073351"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště
 
@@ -185,7 +185,7 @@ Transfer failed:         0
 Elapsed time:            00.00:13:07
 ```
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 * Pokud se při použití AZCopy zobrazí chyba "Server selhal při ověření žádosti", ujistěte se, že je hodnota autorizační hlavičky správně vytvořená, včetně signatury. Pokud používáte klíč 2 nebo sekundární klíč úložiště, zkuste použít primární nebo první klíč úložiště.
 
 ## <a name="create-the-new-vm"></a>Vytvoření nového virtuálního počítače 

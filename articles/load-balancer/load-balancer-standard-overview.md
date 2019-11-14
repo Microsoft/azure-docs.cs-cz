@@ -1,7 +1,7 @@
 ---
 title: Co je Azure Standard Load Balancer?
 titlesuffix: Azure Load Balancer
-description: Přehled funkcí služby Azure Standard Load Balancer
+description: Pomocí této cesty výukového programu začněte s přehledem funkcí Azure Standard Load Balancer.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: allensu
-ms.openlocfilehash: 8eb8134452685add53b9dc339437ac262ecc8a9f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c14cf572410d02892aa8a2b3e9f0f42fce46d411
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274402"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068782"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Standard Load Balancer
 
@@ -68,7 +68,7 @@ Při zvažování, jak navrhnout back-end fond, můžete navrhnout minimální p
   
 Standard Load Balancer přidává podporu [sond stavu https](load-balancer-custom-probe-overview.md#httpprobe) (Test http s obálkou TLS (Transport Layer Security)), aby bylo možné přesně monitorovat aplikace https.  
 
-Kromě toho, když se [test](load-balancer-custom-probe-overview.md#probedown)celého fondu back-endu vypíná, Standard Load Balancer umožní pokračovat v navázání připojení TCP. (Základní Load Balancer ukončí všechna připojení TCP ke všem instancím).
+Kromě toho, když se test celého fondu back-endu [vypíná](load-balancer-custom-probe-overview.md#probedown), Standard Load Balancer umožní pokračovat v navázání připojení TCP. (Základní Load Balancer ukončí všechna připojení TCP ke všem instancím).
 
 Podrobnosti najdete v [Load Balancer sondy stavu](load-balancer-custom-probe-overview.md) .
 
@@ -85,7 +85,7 @@ Navíc můžete zaručit front-end pro konkrétní zónu. Oblast front-endu se p
 
 Pro back-end fond je k dispozici vyrovnávání zatížení mezi zónami a každý prostředek virtuálního počítače ve virtuální síti může být součástí fondu back-endu.
 
-Přečtěte si podrobnou [diskuzi o schopnostech souvisejících s zóny dostupnosti](load-balancer-standard-availability-zones.md).
+Přečtěte si [podrobnou diskuzi o schopnostech souvisejících s zóny dostupnosti](load-balancer-standard-availability-zones.md).
 
 ### <a name="diagnostics"></a>Diagnostiky
 
@@ -100,7 +100,7 @@ Standard Load Balancer poskytuje multidimenzionální metriky prostřednictvím 
 | Čítače bajtů | Standard Load Balancer hlásí data zpracovaná za front-end.|
 | Čítače paketů | Standard Load Balancer hlásí zpracované pakety za front-endu.|
 
-Přečtěte si podrobnou [diskuzi o diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
+Přečtěte si [podrobnou diskuzi o diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
 
 ### <a name="haports"></a>Porty HA
 
@@ -113,7 +113,7 @@ Pravidlo vyrovnávání zatížení portů HA vám umožní vytvářet aktivní 
 >[!IMPORTANT]
 > Pokud plánujete použít síťové virtuální zařízení, obraťte se na dodavatele a Projděte si informace o tom, jestli se jejich produkt testuje pomocí portů HA, a postupujte podle svých specifických pokynů k implementaci. 
 
-Přečtěte si podrobnou [diskuzi o portech ha](load-balancer-ha-ports-overview.md).
+Přečtěte si [podrobnou diskuzi o portech ha](load-balancer-ha-ports-overview.md).
 
 ### <a name="securebydefault"></a>Zabezpečení ve výchozím nastavení
 
@@ -226,12 +226,12 @@ Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [ce
 - SKU nejsou proměnlivé. Nemůžete změnit SKU existujícího prostředku.
 - Samostatný prostředek virtuálního počítače, prostředek sady dostupnosti nebo prostředek sady škálování virtuálního počítače můžou odkazovat na jednu SKU, nikdy ne obojí.
 - Pravidlo Load Balancer nemůže zasahovat do dvou virtuálních sítí.  Front-endové a jejich související instance back-end musí být umístěné ve stejné virtuální síti.  
-- [Operace přesunu](../azure-resource-manager/resource-group-move-resources.md) předplatného se u prostředků Standard SKU a PIP nepodporují.
+- [Operace přesunu předplatného](../azure-resource-manager/resource-group-move-resources.md) se u prostředků Standard SKU a PIP nepodporují.
 - Role webového pracovního procesu bez virtuální sítě a dalších služeb platformy Microsoft můžou být dostupné, když se k vedlejšímu účinku používá jenom vnitřní Standard Load Balancer, která se dá použít jenom pro služby předplatného a jiné služby platformy. Nesmíte spoléhat na to, že se jedná o samotnou službu nebo že se může změnit základní platforma bez předchozího upozornění. Vždy musíte předpokládat, že pokud budete chtít používat jenom interní Standard Load Balancer, musíte v případě potřeby explicitně vytvořit [odchozí připojení](load-balancer-outbound-connections.md) .
-- Load Balancer je produkt TCP nebo UDP určený k vyrovnávání zatížení a přesměrování portů pro tyto konkrétní protokoly IP.  Pravidla vyrovnávání zatížení a příchozí pravidla překladu adres (NAT) se podporují pro protokoly TCP a UDP, ale nikoli pro ostatní protokoly IP včetně protokolu ICMP. Load Balancer neukončuje datovou část toku protokolu UDP ani TCP, nereaguje na ni, ani s ní neprovádí jiné interakce. Nejedná se o proxy server. Úspěšné ověření připojení k front-endu musí probíhat v pásmu se stejným protokolem, který se používá ve vyrovnávání zatížení nebo příchozím pravidlu NAT (TCP nebo UDP) _, a_ nejméně jeden z vašich virtuálních počítačů musí vygenerovat odpověď pro klienta, aby zobrazil odpověď od front-end.  Nepříjem vložené odpovědi z Load Balancer front-endu indikuje, že žádné virtuální počítače nedokázaly odpovědět.  Není možné pracovat s Load Balancer front-endu bez toho, aby virtuální počítač mohl reagovat.  To platí i pro odchozí připojení, kde se [maskovací SNAT portů](load-balancer-outbound-connections.md#snat) podporuje pouze pro protokoly TCP a UDP – všechny ostatní protokoly IP včetně protokolu ICMP také selžou.  Pokud chcete tento problém zmírnit, přiřaďte veřejnou IP adresu na úrovni instance.
-- Na rozdíl od veřejných nástrojů pro vyrovnávání zatížení, které poskytují [odchozí připojení](load-balancer-outbound-connections.md) při přechodu z privátních IP adres uvnitř virtuální sítě na veřejné IP adresy, interní nástroje pro vyrovnávání zatížení nepřevádějí odchozí vytvořená připojení k front-endu. interní Load Balancer jak jsou v privátním adresním prostoru IP adres.  Tím se zabrání možnému vyčerpání SNAT v rámci jedinečného interního adresního prostoru IP adres, kde překlad není požadován.  Vedlejším účinkem je to, že pokud odchozí tok z virtuálního počítače v záložním fondu pokusy o tok do front-endu interního Load Balancer, ve kterém se nachází fond, _a_ namapuje se zpátky na sebe, obě ramena toku se neshodují a tok selže.  Pokud tok nemapoval zpátky na stejný virtuální počítač ve fondu back-end, který tok vytvořil pro front-end, tok bude úspěšný.   Když se tok mapuje zpátky sám na sebe, zdá se, že odchozí tok pochází z virtuálního počítače na front-end a odpovídající příchozí tok se zdá, že pochází z virtuálního počítače do sebe samé. Z pohledu hostovaného operačního systému se příchozí a odchozí části stejného toku na virtuálním počítači neshodují. Zásobník protokolu TCP nerozpozná, že jsou tyto poloviny stejného toku součástí stejného toku, protože se zdroj neshoduje s cílem.  Když se tok mapuje na jakýkoli jiný virtuální počítač ve fondu back-end, budou se tyto poloviny toku shodovat a virtuální počítač může úspěšně reagovat na tok.  Příznakem pro tento scénář jsou přerušované časové limity připojení. Existuje několik běžných alternativních řešení pro spolehlivé dosažení tohoto scénáře (pocházející z fondu back-end do fondů back-endu odpovídajících interním Load Balancer front-end), který zahrnuje vložení proxy serveru třetí strany za interní zátěží. Vyrovnávání zatížení nebo [použití pravidel stylu DSR](load-balancer-multivip-overview.md).  Přestože ke zmírnění problému můžete použít veřejný Load Balancer, výsledný scénář je náchylný k [vyčerpání SNAT](load-balancer-outbound-connections.md#snat) a měli byste se mu vyhnout, pokud nebude pečlivě řízený.
+- Load Balancer je produkt TCP nebo UDP určený k vyrovnávání zatížení a přesměrování portů pro tyto konkrétní protokoly IP.  Pravidla vyrovnávání zatížení a příchozí pravidla překladu adres (NAT) se podporují pro protokoly TCP a UDP, ale nikoli pro ostatní protokoly IP včetně protokolu ICMP. Load Balancer neukončuje datovou část toku protokolu UDP ani TCP, nereaguje na ni, ani s ní neprovádí jiné interakce. Nejedná se o proxy server. Úspěšné ověření připojení k front-endu musí probíhat v pásmu se stejným protokolem, který se používá ve vyrovnávání zatížení nebo příchozím pravidlu NAT (TCP nebo UDP) _, a_ nejméně jeden z vašich virtuálních počítačů musí vygenerovat odpověď pro klienta, aby zobrazil odpověď z front-endu.  Nepříjem vložené odpovědi z Load Balancer front-endu indikuje, že žádné virtuální počítače nedokázaly odpovědět.  Není možné pracovat s Load Balancer front-endu bez toho, aby virtuální počítač mohl reagovat.  To platí i pro odchozí připojení, kde se [maskovací SNAT portů](load-balancer-outbound-connections.md#snat) podporuje pouze pro protokoly TCP a UDP – všechny ostatní protokoly IP včetně protokolu ICMP také selžou.  Pokud chcete tento problém zmírnit, přiřaďte veřejnou IP adresu na úrovni instance.
+- Na rozdíl od veřejných nástrojů pro vyrovnávání zatížení, které poskytují [odchozí připojení](load-balancer-outbound-connections.md) při přechodu z privátních IP adres uvnitř virtuální sítě na veřejné IP adresy, interní nástroje pro vyrovnávání zatížení nepřevádějí odchozí nepřipojená připojení k front-endu interního Load Balancer, jak jsou v privátním adresním prostoru IP adres.  Tím se zabrání možnému vyčerpání SNAT v rámci jedinečného interního adresního prostoru IP adres, kde překlad není požadován.  Vedlejším účinkem je to, že pokud odchozí tok z virtuálního počítače v záložním fondu pokusy o tok do front-endu interního Load Balancer, ve kterém se nachází fond, _a_ namapuje se zpátky na sebe, obě ramena toku se neshodují a tok selže.  Pokud tok nemapoval zpátky na stejný virtuální počítač ve fondu back-end, který tok vytvořil pro front-end, tok bude úspěšný.   Když se tok mapuje zpátky sám na sebe, zdá se, že odchozí tok pochází z virtuálního počítače na front-end a odpovídající příchozí tok se zdá, že pochází z virtuálního počítače do sebe samé. Z pohledu hostovaného operačního systému se příchozí a odchozí části stejného toku na virtuálním počítači neshodují. Zásobník protokolu TCP nerozpozná, že jsou tyto poloviny stejného toku součástí stejného toku, protože se zdroj neshoduje s cílem.  Když se tok mapuje na jakýkoli jiný virtuální počítač ve fondu back-end, budou se tyto poloviny toku shodovat a virtuální počítač může úspěšně reagovat na tok.  Příznakem pro tento scénář jsou přerušované časové limity připojení. Existuje několik běžných alternativních řešení pro spolehlivé dosažení tohoto scénáře (pocházející z fondu back-end do fondů back-endu odpovídajících interním Load Balancer front-end), který zahrnuje vložení proxy serveru třetí strany za interní Load Balancer nebo [použití pravidel stylu DSR](load-balancer-multivip-overview.md).  Přestože ke zmírnění problému můžete použít veřejný Load Balancer, výsledný scénář je náchylný k [vyčerpání SNAT](load-balancer-outbound-connections.md#snat) a měli byste se mu vyhnout, pokud nebude pečlivě řízený.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o používání [Standard Load Balancer a zóny dostupnosti](load-balancer-standard-availability-zones.md).
 - Seznamte se s [sondami stavu](load-balancer-custom-probe-overview.md).

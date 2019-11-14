@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží
+title: Poradce při potížích
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 0afdc0ac246e4cacbd4f45cca36c3c57b1c26e02
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005981"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072197"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -94,9 +94,13 @@ Navzdory chybové zprávě při spuštění `az aks use-dev-spaces` s verzí roz
 
 Pokud chcete tento problém vyřešit, aktualizujte instalaci [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) na 2.0.63 nebo novější. Tato aktualizace vyřeší chybovou zprávu, která se zobrazí při spuštění `az aks use-dev-spaces`. Případně můžete dál používat aktuální verzi rozhraní příkazového řádku Azure CLI a Azure Dev Spaces CLI.
 
-### <a name="aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Clustery AKS s povolenými rozsahy IP adres serveru API
+### <a name="error-unable-to-reach-kube-apiserver"></a>Chyba "nepovedlo se kontaktovat Kube-apiserver".
 
-Pokud máte povolené [rozsahy IP adres serveru API](../aks/api-server-authorized-ip-ranges.md) pro váš cluster AKS, musíte taky [vytvořit](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) nebo [aktualizovat](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) cluster a [Povolit další rozsahy založené na vaší oblasti](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+Tato chyba se může zobrazit, když se Azure Dev Spaces nedokáže připojit k serveru rozhraní API clusteru AKS. 
+
+Pokud je přístup k serveru API clusteru AKS uzamčený nebo pokud máte povolené [rozsahy IP adres serveru API](../aks/api-server-authorized-ip-ranges.md) pro váš cluster AKS, musíte taky [vytvořit](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) nebo [aktualizovat](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) cluster a [Povolit další rozsahy založené na vaší oblasti](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+
+Zajistěte, aby byl server rozhraní API dostupný spuštěním příkazů kubectl. Pokud server rozhraní API není k dispozici, obraťte se prosím na podporu AKS a zkuste to znovu, až Server API funguje.
 
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Běžné problémy při přípravě projektu na Azure Dev Spaces
 
@@ -376,7 +380,7 @@ Aktualizace role uživatele RBAC pro kontroler:
     * V případě *role*vyberte možnost *Přispěvatel* nebo *vlastník*.
     * V případě *přiřazení přístupu k*vyberte možnost *uživatel, skupina nebo instanční objekt služby Azure AD*.
     * V části *Vybrat*vyhledejte uživatele, kterému chcete udělit oprávnění.
-1. Klikněte na možnost *Uložit*.
+1. Klikněte na *Uložit*.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Překlad názvů DNS pro veřejnou adresu URL související se službou Dev prostory nezdaří
 

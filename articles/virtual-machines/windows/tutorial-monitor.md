@@ -1,5 +1,5 @@
 ---
-title: Kurz – monitorování virtuálních počítačů s Windows v Azure | Microsoft Docs
+title: Kurz – monitorování virtuálních počítačů s Windows v Azure
 description: V tomto kurzu se naučíte monitorovat výkon a zjištěné součásti aplikace spuštěné na virtuálních počítačích s Windows.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a2f4083841c801db3edf1b2838b8d3271b700731
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 13e5cc9ee45cf230668ef7a7cbe85b6437044643
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71680061"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064758"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování virtuálního počítače s Windows v Azure
 
@@ -30,27 +30,27 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Povolení diagnostiky spouštění na virtuálním počítači
-> * Zobrazit diagnostiku spouštění
-> * Zobrazit metriky hostitele virtuálních počítačů
+> * Zobrazení diagnostiky spouštění
+> * Zobrazení metrik hostitele virtuálního počítače
 > * Povolit Azure Monitor pro virtuální počítače
 > * Zobrazit metriky výkonu virtuálních počítačů
-> * Vytvořit výstrahu
+> * Vytvoření upozornění
 
-## <a name="launch-azure-cloud-shell"></a>Spustit Azure Cloud Shell
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění kroků v tomto článku. Má společné nástroje Azure, které jsou předinstalované a nakonfigurované pro použití s vaším účtem. 
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Chcete-li otevřít Cloud Shell, stačí vybrat příkaz **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy ENTER ji spusťte.
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
-## <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Pokud chcete v tomto kurzu nakonfigurovat službu Azure Monitoring and Update Management, potřebujete virtuální počítač s Windows v Azure. Nejdřív pro virtuální počítač nastavte uživatelské jméno a heslo správce pomocí [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete potřebovat virtuální počítač s Windows v Azure. Nejdřív pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) nastavte uživatelské jméno a heslo správce virtuálního počítače:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Nyní vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS* . Pokud ještě neexistují, vytvoří se skupina prostředků *myResourceGroupMonitorMonitor* a podpůrné síťové prostředky:
+Nyní vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupMonitorMonitor* a podpůrné síťové prostředky:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -62,38 +62,38 @@ New-AzVm `
 
 Vytvoření prostředků a virtuálního počítače trvá několik minut.
 
-## <a name="view-boot-diagnostics"></a>Zobrazit diagnostiku spouštění
+## <a name="view-boot-diagnostics"></a>Zobrazení diagnostiky spouštění
 
-Při spuštění virtuálních počítačů s Windows zachytí agent diagnostiky spouštění výstup obrazovky, který se dá použít pro účely odstraňování potíží. Tato funkce je ve výchozím nastavení povolená. Zachycené snímky obrazovky se ukládají v účtu služby Azure Storage, který je také vytvořen ve výchozím nastavení.
+Při spouštění virtuálních počítačů s Windows zachytí agent diagnostiky spouštění výstup na obrazovce, který můžete použít pro účely řešení potíží. Tato funkce je ve výchozím nastavení zapnuta. Zachycené snímky obrazovky se ukládají v účtu služby Azure Storage, který je také vytvořen ve výchozím nastavení.
 
-Data diagnostiky spouštění můžete získat pomocí příkazu [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) . V následujícím příkladu se Diagnostika spouštění stáhne do kořenové složky jednotky * c: \*.
+Diagnostická data spouštění můžete získat pomocí příkazu [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata). V následujícím příkladu se diagnostika spouštění stáhne do kořenové složky na jednotce *c:\*.
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
 ```
 
-## <a name="view-host-metrics"></a>Zobrazit metriky hostitele
+## <a name="view-host-metrics"></a>Zobrazení metrik hostitele
 
-Virtuální počítač s Windows má vyhrazený hostitelský virtuální počítač v Azure, se kterým komunikuje. Metriky se automaticky shromažďují pro hostitele a dají se zobrazit v Azure Portal.
+Virtuální počítač s Windows má vyhrazený virtuální počítač hostitele v Azure, který s ním komunikuje. Metriky se pro hostitele shromažďují automaticky a lze je zobrazit na portálu Azure Portal.
 
-1. V Azure Portal klikněte na **skupiny prostředků**, vyberte **myResourceGroupMonitor**a potom v seznamu prostředků vyberte **myVM** .
-2. V okně virtuálního počítače klikněte na **metriky** a potom v části **dostupná metriky** vyberte libovolnou metriky hostitele, abyste viděli, jak funguje hostitelský virtuální počítač.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
+2. Pokud chcete zjistit, jaký je výkon virtuálního počítače hostitele, klikněte na **Metriky** v okně virtuálního počítače a potom vyberte některou z metrik hostitele v části **Dostupné metriky**.
 
-    ![Zobrazit metriky hostitele](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
+    ![Zobrazení metrik hostitele](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
 
 ## <a name="enable-advanced-monitoring"></a>Povolit rozšířené monitorování
 
 Postup povolení monitorování virtuálního počítače Azure pomocí Azure Monitor pro virtuální počítače:
 
-1. V Azure Portal klikněte na **skupiny prostředků**, vyberte **myResourceGroupMonitor**a potom v seznamu prostředků vyberte **myVM** .
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 
-2. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
+2. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)** .
 
-3. Na stránce **přehledy (Preview)** vyberte **vyzkoušet nyní**.
+3. Na **Insights (preview)** stránce **vyzkoušet**.
 
-    ![Povolení Azure Monitor pro virtuální počítače pro virtuální počítač](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Povolit monitorování Azure pro virtuální počítače pro virtuální počítač](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-4. Pokud máte v rámci stejného předplatného pracovní prostor Log Analytics, v rozevíracím seznamu vyberte na stránce pro **registraci Azure monitor Insights** .  
+4. Na **připojování Přehled monitorování Azure** stránky, pokud máte existující Log Analytics vyberte pracovní prostor v rámci stejného předplatného, v rozevíracím seznamu.  
 
     Seznam předchází výchozí pracovní prostor a umístění, kde je virtuální počítač nasazený v předplatném. 
 
@@ -102,52 +102,52 @@ Postup povolení monitorování virtuálního počítače Azure pomocí Azure Mo
 
 Po povolení monitorování může být nutné počkat několik minut, než budete moci zobrazit metriky výkonu pro virtuální počítač.
 
-![Povolení zpracování nasazení Azure Monitor pro virtuální počítače monitorování](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Povolit Azure Monitor pro monitorování zpracování nasazení virtuálních počítačů](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>Zobrazit metriky výkonu virtuálních počítačů
 
 Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které cílí na několik klíčových ukazatelů výkonu (KPI), které vám pomůžou určit, jak dobře je virtuální počítač prováděn. Pokud chcete získat přístup z virtuálního počítače, proveďte následující kroky.
 
-1. V Azure Portal klikněte na **skupiny prostředků**, vyberte **myResourceGroupMonitor**a potom v seznamu prostředků vyberte **myVM** .
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 
-2. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
+2. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)** .
 
 3. Vyberte kartu **výkon** .
 
 Tato stránka nejen zahrnuje grafy využití výkonu, ale také tabulku ukazující pro každý zjištěný logický disk, jeho kapacitu, využití a celkový průměr podle jednotlivých měr.
 
-## <a name="create-alerts"></a>Vytváření výstrah
+## <a name="create-alerts"></a>Vytváření upozornění
 
-Můžete vytvářet výstrahy na základě konkrétních metrik výkonu. Výstrahy můžete použít k upozornění, když průměrné využití procesoru překročí určitou prahovou hodnotu nebo je dostupné volné místo na disku pod určitou velikostí, například. Výstrahy se zobrazují v Azure Portal nebo je lze odeslat e-mailem. V reakci na vygenerované výstrahy můžete také aktivovat Azure Automation Runbooky nebo Azure Logic Apps.
+Na základě konkrétních metrik výkonu můžete vytvořit výstrahy. Výstrahy lze například použít k upozornění, že průměrné využití procesoru překračuje prahovou hodnotu nebo že volné místo na disku kleslo pod určitou velikost. Výstrahy ze zobrazují v portálu Azure Portal nebo je lze odeslat e-mailem. V reakci na vygenerované výstrahy můžete také aktivovat runbooky Azure Automation nebo Azure Logic Apps.
 
-Následující příklad vytvoří výstrahu pro průměrné využití procesoru.
+Následující příklad vytvoří výstrahu týkající se průměrného využití procesoru.
 
-1. V Azure Portal klikněte na **skupiny prostředků**, vyberte **myResourceGroupMonitor**a potom v seznamu prostředků vyberte **myVM** .
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 
-2. V okně virtuálního počítače klikněte na **pravidla výstrah** a pak v horní části okna výstrahy klikněte na **Přidat upozornění na metriku** .
+2. Klikněte na tlačítko **Pravidla výstrah** v okně virtuálního počítače a potom na **Přidat upozornění metriky** v horní části okna výstrahy.
 
-3. Zadejte **název** upozornění, například *myAlertRule* .
+3. Zadejte **Název** výstrahy, například *mojePravidloVystrahy*.
 
-4. Pokud chcete aktivovat upozornění, když procento procesoru překročí 1,0 po dobu pěti minut, ponechte vybrané ostatní výchozí hodnoty.
+4. Pokud chcete spustit výstrahu, pokud procento využití procesoru překročí hodnotu 1,0 po dobu pěti minut, ponechte výchozí výběr všech ostatních nastavení.
 
-5. Volitelně můžete zaškrtnout políčko *vlastníkům e-mailu, přispěvatelům a čtenářům* poslat oznámení e-mailem. Výchozí akcí je zobrazení oznámení na portálu.
+5. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
 
-6. Klikněte na tlačítko **OK** .
+6. Klikněte na tlačítko **OK**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali a prohlíželi výkon svého virtuálního počítače. Zjistili jste, jak:
+V tomto kurzu jste nakonfigurovali a prohlíželi výkon svého virtuálního počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření skupiny prostředků a virtuálního počítače
-> * Povolení diagnostiky spouštění na virtuálním počítači
-> * Zobrazit diagnostiku spouštění
-> * Zobrazit metriky hostitele
+> * Povolení diagnostiky spouštění ve virtuálním počítači
+> * Zobrazení diagnostiky spouštění
+> * Zobrazení metrik hostitele
 > * Povolit Azure Monitor pro virtuální počítače
-> * Zobrazit metriky virtuálních počítačů
-> * Vytvořit výstrahu
+> * Zobrazení metrik virtuálního počítače
+> * Vytvoření upozornění
 
-V dalším kurzu se dozvíte o Azure Security Center.
+V dalším kurzu se dozvíte něco o Azure Security Center.
 
 > [!div class="nextstepaction"]
 > [Správa zabezpečení virtuálních počítačů](../../security/fundamentals/overview.md)

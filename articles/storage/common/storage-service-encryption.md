@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cfac7fdbbdbf06ae74385fbc33e61d11cb99ff87
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795696"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066317"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage šifrování dat v klidovém umístění
 
 Azure Storage automaticky šifruje vaše data při jejich uchování do cloudu. Šifrování chrání vaše data a usnadňuje splnění závazků týkajících se zabezpečení a dodržování předpisů v organizaci. Data v Azure Storage jsou šifrována a dešifrována transparentně pomocí 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), je k dispozici jedna z nejúčinnějších šifrovacích šifr a je kompatibilní se standardem FIPS 140-2. Šifrování Azure Storage se v systému Windows podobá šifrování BitLockeru.
 
-Pro všechny nové a existující účty úložiště je povolené šifrování Azure Storage a nedá se zakázat. Vzhledem k tomu, že vaše data jsou zabezpečená ve výchozím nastavení, nemusíte upravovat kód ani aplikace, abyste mohli využívat Azure Storage šifrování.
+Pro všechny nové účty úložiště je povolené šifrování Azure Storage a nedá se zakázat. Vzhledem k tomu, že vaše data jsou zabezpečená ve výchozím nastavení, nemusíte upravovat kód ani aplikace, abyste mohli využívat Azure Storage šifrování.
 
 Účty úložiště se šifrují bez ohledu na jejich úroveň výkonu (Standard nebo Premium) nebo modelu nasazení (Azure Resource Manager nebo Classic). Všechny možnosti redundance Azure Storage podporují šifrování a všechny kopie účtu úložiště jsou zašifrované. Všechny prostředky Azure Storage jsou zašifrované, včetně objektů blob, disků, souborů, front a tabulek. Všechna metadata objektů jsou také šifrována.
 
@@ -40,7 +40,7 @@ Následující tabulka porovnává možnosti správy klíčů pro Azure Storage 
 |                                        |    Klíče spravované společností Microsoft                             |    Klíče spravované zákazníkem                                                                                                                        |    Klíče poskytované zákazníky                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Operace šifrování a dešifrování    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Podporované služby Azure Storage Services    |    Všechno                                                |    BLOB Storage, soubory Azure                                                                                                               |    Blob Storage                                                                  |
+|    Podporované služby Azure Storage Services    |    Vše                                                |    BLOB Storage, soubory Azure                                                                                                               |    Blob Storage                                                                  |
 |    Úložiště klíčů                         |    Úložiště klíčů Microsoftu    |    Azure Key Vault                                                                                                                              |    Azure Key Vault nebo jakékoli jiné úložiště klíčů                                                                 |
 |    Zodpovědnost za střídání klíčů         |    Microsoft                                          |    Zákazník                                                                                                                                     |    Zákazník                                                                      |
 |    Použití klíče                           |    Microsoft                                          |    Azure Portal, poskytovatel prostředků úložiště REST API, Azure Storage knihovny pro správu, PowerShell, rozhraní příkazového řádku        |    Azure Storage REST API (BLOB Storage), Azure Storage klientských knihoven    |
@@ -194,7 +194,7 @@ public static void UploadBlobWithClientKey(CloudBlobContainer container)
 
 ## <a name="azure-storage-encryption-versus-disk-encryption"></a>Azure Storage šifrování oproti šifrování disku
 
-Při šifrování Azure Storage jsou všechny účty Azure Storage a prostředky, které obsahují, zašifrované, včetně objektů blob stránky, které se nacházejí na discích virtuálních počítačů Azure. Kromě toho můžou být disky virtuálních počítačů Azure zašifrované pomocí [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md). Azure Disk Encryption používá standardní [Nástroj BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) ve Windows a [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) v systému Linux, který poskytuje řešení šifrování založená na operačním systému, která jsou integrovaná s Azure Key Vault.
+Azure Storage šifrování šifruje objekty blob stránky, které se nacházejí na discích virtuálních počítačů Azure. Kromě toho mohou být všechny disky virtuálních počítačů Azure, včetně místních dočasných disků, šifrovány pomocí [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md). Azure Disk Encryption používá standardní [Nástroj BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) ve Windows a [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) v systému Linux, který poskytuje řešení šifrování založená na operačním systému, která jsou integrovaná s Azure Key Vault.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Čas synchronizace pro virtuální počítače s Windows v Azure | Microsoft Docs
+title: Čas synchronizace pro virtuální počítače s Windows v Azure
 description: Čas synchronizace pro virtuální počítače s Windows
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 04b2eb70a9e304fb50f4f6cb94daf0a0dda86d63
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58824b13cfac264c051de6bea45d2dab3aae8fae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100265"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068108"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Čas synchronizace pro virtuální počítače s Windows v Azure
 
@@ -28,7 +28,7 @@ Azure je teď zálohovaný infrastrukturou, na které běží Windows Server 201
 
 
 >[!NOTE]
->Rychlý přehled služby Systémový čas najdete v tomto videu s [přehledem vysoké úrovně](https://aka.ms/WS2016TimeVideo).
+>Rychlý přehled služby Systémový čas najdete v tomto [videu s přehledem vysoké úrovně](https://aka.ms/WS2016TimeVideo).
 >
 > Další informace najdete v tématu [přesný čas pro Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
@@ -174,7 +174,7 @@ Ověřte, jaké příznaky se používají pro používané servery NTP.
 w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Níže jsou uvedeny odkazy na Další informace o čase synchronizace:
 

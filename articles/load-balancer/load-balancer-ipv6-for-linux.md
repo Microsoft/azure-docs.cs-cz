@@ -1,7 +1,7 @@
 ---
 title: Konfigurace protokolu DHCPv6 pro virtuální počítače s Linuxem
 titlesuffix: Azure Load Balancer
-description: Postup konfigurace protokolu DHCPv6 pro virtuální počítače s Linuxem.
+description: V tomto článku se dozvíte, jak nakonfigurovat DHCPv6 pro virtuální počítače se systémem Linux.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1eea6d71b06bac47dcc4fdca9302ee937e0fd54d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274917"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077038"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurace protokolu DHCPv6 pro virtuální počítače s Linuxem
 
@@ -64,7 +64,7 @@ Pro každé rozhraní sítě Ethernet ve vaší konfiguraci uveďte příkaz *dh
             eno1:
               dhcp6: true
 
-Během předčasného spuštění netplan "Nástroj pro vyřízení sítě" zapisuje konfiguraci do programu/Run, aby bylo možné předat řízení zařízení zadanému síťovému démonu pro https://netplan.io/reference referenční informace o netplan najdete v tématu.
+Během předčasného spuštění netplan "Nástroj pro vyřízení sítě" zapisuje konfiguraci do/run, aby bylo možné předat řízení zařízení zadanému síťovému démonu pro referenční informace o NETPLAN, viz https://netplan.io/reference.
  
 ## <a name="debian"></a>Debian
 

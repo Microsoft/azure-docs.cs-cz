@@ -1,12 +1,10 @@
 ---
-title: Ukázka CLI – Použití služby Load Balancer pro virtuální počítače v rámci zóny – Azure | Microsoft Docs
+title: Vyrovnávání zatížení virtuálních počítačů v rámci zóny – Azure CLI
 description: Tento ukázkový skript Azure CLI provádí vyrovnávání zatížení provozu na virtuálních počítačích v rámci konkrétní zóny dostupnosti
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
-manager: jeconnoc
-editor: tysonn
-tags: ''
+manager: kumudD
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
@@ -16,14 +14,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 29671283a1ef2906e03685a59d62ccc13c1307fe
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c99e232243e95d3aa0a85e09c2534973114e28ea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273732"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068762"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu na virtuální počítače v rámci konkrétní zóny dostupnosti
 
 Tento ukázkový skript Azure CLI vytvoří vše potřebné pro spuštění několika virtuálních počítačů s Ubuntu v konfiguraci s vysokou dostupností a vyrovnáváním zatížení v rámci konkrétní zóny dostupnosti. Po spuštění skriptu budete mít v jedné zóně dostupnosti v rámci oblasti tři virtuální počítače, které budou přístupné přes službu Azure Standard Load Balancer. 
 
@@ -183,7 +181,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](/cli/azure/vm#az-vm-create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

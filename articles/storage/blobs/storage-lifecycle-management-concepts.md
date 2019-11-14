@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 5cf4689534a813d778c25a7a712b983aafe6f5a9
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881588"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077121"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -38,7 +38,7 @@ Zásady správy životního cyklu jsou dostupné s účty Pro obecné účely v2
 
 Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady na [seznam objektů BLOB seznamu](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a nastavování volání rozhraní API na [úrovni objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability"></a>Dostupnost podle oblastí
+## <a name="regional-availability"></a>Regionální dostupnost
 
 Funkce správy životního cyklu je dostupná ve všech oblastech Azure.
 
@@ -65,7 +65,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Zobrazení seznamu Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
@@ -86,7 +86,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 9. Pokud chcete přidat novou zásadu, vyberte **Přidat** .
 
 #### <a name="azure-portal-code-view"></a>Azure Portal zobrazení kódu
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
@@ -122,7 +122,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
    }
    ```
 
-5. Vyberte **Save** (Uložit).
+5. Vyberte **Uložit**.
 
 6. Další informace o tomto příkladu JSON najdete v částech [zásady](#policy) a [pravidla](#rules) .
 
@@ -200,7 +200,7 @@ Správu životního cyklu můžete definovat pomocí Azure Resource Manager šab
 
 ---
 
-## <a name="policy"></a>Zásady
+## <a name="policy"></a>Zásada
 
 Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
@@ -232,10 +232,10 @@ Každé pravidlo v zásadě má několik parametrů:
 
 | Název parametru | Typ parametru | Poznámky | Požaduje se |
 |----------------|----------------|-------|----------|
-| `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | True |
-| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | False | 
-| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle`. | True |
-| `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | True |
+| `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | Pravda |
+| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Nepravda | 
+| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle`. | Pravda |
+| `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | Pravda |
 
 ## <a name="rules"></a>Pravidla
 
@@ -297,9 +297,9 @@ Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a 
 
 | Akce        | Základní objekt BLOB                                   | Snímek      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporováno |
-| tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporováno |
-| delete        | Podporováno                                   | Podporováno     |
+| tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporuje se |
+| tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporuje se |
+| delete        | Podporuje se                                   | Podporuje se     |
 
 >[!NOTE]
 >Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.
@@ -427,10 +427,13 @@ Pro data, která se pravidelně upravují a přibývají k nim přistupovaly bě
 }
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Vytvořili jsem novou zásadu, proč se akce nespouštějí hned?**  
 Platforma spouští zásady životního cyklu jednou denně. Po nakonfigurování zásady může trvat až 24 hodin, než se některé akce poprvé spustí.  
+
+**Pokud aktualizujem existující zásady, jak dlouho trvá, než se akce spustí?**  
+Aktualizovaná zásada trvá až 24 hodin, než se dostanou platit. Jakmile se zásada uplatní, může trvat až 24 hodin, než se akce spustí. Proto může spuštění těchto zásad trvat až 48 hodin.   
 
 **Jak zabráním ručnímu recyklení archivovaného objektu blob, jak brání jeho přesunutí do archivní úrovně dočasně?**  
 Když se objekt BLOB přesune z jedné úrovně přístupu na jiný, čas poslední změny se nezmění. Pokud jste archivovaný objekt BLOB ručně znovu vypnuli do vrstvy Hot, bude se ho modul pro správu životního cyklu přesunout zpátky do archivní úrovně. Zakažte pravidlo, které bude mít dočasně vliv na tento objekt blob, aby se zabránilo jeho archivaci znovu. Znovu povolí pravidlo, když se dá objekt BLOB bezpečně přesunout zpátky do archivní úrovně. Objekt blob můžete také zkopírovat do jiného umístění, pokud je potřeba udržet se trvale na horké nebo studené úrovni.

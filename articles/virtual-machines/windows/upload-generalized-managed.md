@@ -1,5 +1,5 @@
 ---
-title: Vytvoření spravovaného virtuálního počítače Azure z zobecněného místního virtuálního pevného disku | Microsoft Docs
+title: Vytvoření spravovaného virtuálního počítače Azure z zobecněného místního virtuálního pevného disku
 description: Nahrajte zobecněný virtuální pevný disk do Azure a použijte ho k vytvoření nových virtuálních počítačů v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: ead44c321ffb7afb69295d1bf8c0e1acd26cb9ce
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d0995fed61d169cc173ca01767c2e48f4f798b0d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749077"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067437"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Nahrajte zobecněný virtuální pevný disk a použijte ho k vytvoření nových virtuálních počítačů v Azure.
 

@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/13/2019
+ms.openlocfilehash: 8967b61115d2e2e644dea93cb236f8a7cdfcfcbd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014182"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072290"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -58,14 +58,9 @@ Nakonfigurujte aplikaci Azure Active Directory tak, aby používala tok implicit
 
     [schválení souhlasu správce ![](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
+1. Nakonfigurujte druhý **identifikátor URI pro přesměrování** na `https://www.getpostman.com/oauth2/callback`.
 
-1. Vyberte **manifest** pro otevření manifestu aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* na `true`.
-
-    [implicitní tok ![Azure Active Directory](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
-
-1. Nakonfigurujte **adresu URL odpovědi** na `https://www.getpostman.com/oauth2/callback`.
-
-    [Adresa URL odpovědi ![Azure Active Directory](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [![přidat identifikátor URI pro přesměrování post](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
 1. Zkopírujte a zachovejte **ID aplikace** vaší aplikace Azure Active Directory. Používá se v následujících krocích.
 
@@ -106,10 +101,6 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     [Příklad ![klienta po straně](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Vyberte **token žádosti**.
-
-    >[!TIP]
-    >Pokud se zobrazí chybová zpráva "OAuth 2 nelze dokončit", vyzkoušejte následující:
-    > * Zavřete okno post a znovu ho otevřete a zkuste to znovu.
   
 1. Posuňte se dolů a vyberte **použít token**.
 
@@ -117,13 +108,13 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
 
 Po dokončení předchozích kroků nakonfigurujte metodu post, aby se ověřil ověřený požadavek HTTP na více než jedna z nich:
 
-1. Na kartě **záhlaví** přidejte klíč HLAVIČKY požadavku HTTP **– typ obsahu** s hodnotou `multipart/mixed`.
+1. Na kartě **hlavičky** přidejte klíč HLAVIČKY požadavku HTTP **– typ obsahu** s hodnotou `multipart/mixed`.
 
    [![typ obsahu multipart/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serializace jiných než textových dat do souborů. Data JSON by se uložila jako soubor JSON.
 1. Na kartě **tělo** vyberte `form-data`. 
-1. Přidejte každý soubor tak, že mu přiřadíte název **klíče** a vyberete `file`.
+1. Přidejte každý soubor tak, že mu přiřadíte název **klíče** a vyberete `File`.
 1. Pak vyberte jednotlivé soubory pomocí tlačítka **zvolit soubor** .
 
    [Příklad ![klienta po straně](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
@@ -133,7 +124,7 @@ Po dokončení předchozích kroků nakonfigurujte metodu post, aby se ověřil 
    > * Pro každou část není nutné zadávat tato záhlaví.
    > * Pro celý požadavek musíte vybrat `multipart/mixed` nebo jiný vhodný **typ obsahu** .
 
-1. Nakonec vyberte **Odeslat** a odešlete požadavek HTTP POST s více částmi.
+1. Nakonec vyberte **Odeslat** a odešlete požadavek HTTP POST s více částmi. Stavový kód `200` nebo `201` označuje úspěšnou žádost. Zobrazí se také příslušná zpráva odpovědi.
 
 ## <a name="next-steps"></a>Další kroky
 

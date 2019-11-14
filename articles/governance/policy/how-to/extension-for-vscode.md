@@ -1,17 +1,14 @@
 ---
 title: Azure Policy rozšíření pro Visual Studio Code
 description: Přečtěte si, jak pomocí rozšíření Azure Policy Visual Studio Code vyhledat Správce prostředků aliasy.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 20af29c40ec13add90294e28d64f0166acc95319
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cbc0e14ed70fbacc297126aef58cd722d2235a3d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514807"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072037"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použít rozšíření Azure Policy pro Visual Studio Code
 
@@ -24,7 +21,7 @@ Azure Policy rozšíření pro Visual Studio Code lze nainstalovat na všechny p
 > [!NOTE]
 > Změny provedené lokálně v zásadách zobrazených v rozšíření Azure Policy pro Visual Studio Code se nesynchronizují do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
@@ -77,7 +74,7 @@ K vyhodnocení prostředků a aliasů pro vyhledávání musíte být připojeni
 
 1. Postupujte podle pokynů pro přihlášení a přihlaste se k Azure. Po připojení se váš název účtu Azure zobrazí na stavovém řádku v dolní části okna Visual Studio Code.
 
-## <a name="select-subscriptions"></a>Vybrat odběry
+## <a name="select-subscriptions"></a>Vybrat předplatná
 
 Při prvním přihlášení se rozšíření Azure Policy načte jenom výchozí prostředky a zásady předplatného. Pokud chcete přidat nebo odebrat předplatná, která se budou zobrazovat v prostředcích a zásadách, použijte následující postup:
 
@@ -154,7 +151,7 @@ Když vyberete zásadu nebo přiřazení, ať už přes vyhledávací rozhraní,
 
 ## <a name="sign-out"></a>Odhlásit se
 
-V řádku nabídek přejděte na **zobrazení** **paleta příkazů** >  a pak zadejte **Azure: odhlásit**se.
+V řádku nabídek přejděte na **zobrazit** > **paleta příkazů**a pak zadejte **Azure: odhlásit**se.
 
 ## <a name="next-steps"></a>Další kroky
 

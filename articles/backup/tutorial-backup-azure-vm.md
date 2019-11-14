@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 1d2888c12cb9d17f1b144f539c312b8bc29f203a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c290e44d8bfecfbf57be8f8e1c596a294f077229
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014252"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074709"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Zálohování virtuálních počítačů Azure pomocí PowerShellu
 
@@ -88,7 +88,7 @@ Pokud chcete povolit a zálohovat virtuální počítač Azure v tomto kurzu, pr
 
 1. V trezoru zadejte kontejner, který uchovává data záloh pomocí [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
 2. Každý virtuální počítač pro zálohování je položka. Pokud chcete spustit úlohu zálohování, získáte informace o virtuálním počítači pomocí [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
-3. Spusťte zálohování ad hoc pomocí rutiny[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
+3. Spusťte zálohování na vyžádání pomocí rutiny[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
     * První úloha počátečního zálohování vytvoří úplný bod obnovení.
     * Po počátečním zálohování Každá úloha zálohování vytvoří přírůstkové body obnovení.
     * Přírůstkové body obnovení jsou efektivní z hlediska úložiště a času, protože přenášejí pouze změny provedené od posledního zálohování.
@@ -101,7 +101,7 @@ $item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadTyp
 $job = Backup-AzRecoveryServicesBackupItem -Item $item
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud narazíte na problémy při zálohování virtuálního počítače, přečtěte si tento [článek o řešení potíží](backup-azure-vms-troubleshoot.md).
 

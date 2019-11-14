@@ -1,19 +1,20 @@
 ---
-title: Vytvoření aplikační brány, která hostuje více webů – Azure PowerShell
+title: Hostování více webů pomocí prostředí PowerShell
+titleSuffix: Azure Application Gateway
 description: Přečtěte si, jak vytvořit v Azure PowerShellu aplikační bránu, která hostuje více webů.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: db2582cada453d95faa91eeeec8dd20b9a82ae6c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3bc69f8bd946fa50ba272c287047aae7981af4e3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688207"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074451"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Vytvoření aplikační brány v Azure PowerShellu, která hostuje více webů
 
@@ -27,7 +28,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvořit back-endové naslouchací procesy
 > * Vytvořit pravidla směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvořit v doméně záznam CNAME
+> * Vytvoření záznamu CNAME v doméně
 
 ![Příklad směrování na více webů](./media/tutorial-multiple-sites-powershell/scenario.png)
 
@@ -49,7 +50,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Vytvořte konfigurace podsítě pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) s konfiguracemi podsítí. A nakonec Vytvořte veřejnou IP adresu pomocí příkazu [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
+Vytvořte konfigurace podsítě pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) s konfiguracemi podsítí. A nakonec Vytvořte veřejnou IP adresu pomocí příkazu [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Pomocí těchto prostředků se bude poskytovat síťové připojení k bráně Application Gateway a jejím přidruženým prostředkům.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -123,7 +124,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Naslouchací procesy jsou potřeba k tomu, aby aplikační brána správně směrovala provoz na back-endové fondy adres. V tomto článku vytvoříte dva naslouchací procesy pro vaše dvě domény. Pro domény *contoso.com* a *fabrikam.com* se vytvářejí naslouchací procesy.
 
-Vytvořte první naslouchací proces pomocí [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) s konfigurací front-end a dříve vytvořeným portem front-endu. Pravidlo je potřeba k tomu, aby naslouchací proces poznal, který back-endový fond má použít pro příchozí provoz. Vytvořte základní pravidlo s názvem *contosoRule* pomocí [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Vytvořte první naslouchací proces pomocí [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) s konfigurací front-end a dříve vytvořeným portem front-endu. Aby naslouchací proces věděl, který back-endový fond se má použít pro příchozí provoz, potřebuje pravidlo. Vytvořte základní pravidlo s názvem *contosoRule* pomocí [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -181,7 +182,7 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte dvě škálovací sady virtuálních počítačů, které podporují dva vytvořené back-endové fondy. Vytvořené škálovací sady se jmenují *myvmss1* a *myvmss2*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
+V tomto příkladu vytvoříte dvě škálovací sady virtuálních počítačů, které podporují dva vytvořené back-endové fondy. Vytvořené škálovací sady se jmenují *myvmss1* a *myvmss2*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS. K back-endovému fondu je přiřadíte během konfigurace nastavení IP adres.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -299,6 +300,6 @@ Pokud už je nepotřebujete, odeberte skupinu prostředků, aplikační bránu a
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření aplikační brány s pravidly směrování založenými na cestě URL](./tutorial-url-route-powershell.md)

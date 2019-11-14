@@ -1,5 +1,5 @@
 ---
-title: Kurz použití služby Azure Security Center pro virtuální počítače s Windows v Azure | Microsoft Docs
+title: Kurz – použití Azure Security Center pro virtuální počítače s Windows v Azure
 description: V tomto kurzu získáte informace o funkcích služby Azure Security Center k ochraně a zabezpečení virtuálních počítačů s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e65e9670facdfcbf9d1aac04fa25ee53996a9c4b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100310"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064960"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití Azure Security Center k monitorování virtuálních počítačů s Windows
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Windows
 
 Azure Security Center vám může pomoct získat přehled o postupech zabezpečení vašich prostředků Azure. Security Center nabízí integrované monitorování zabezpečení. Dokáže detekovat hrozby, kterých byste si jinak možná nevšimli. V tomto kurzu se seznámíte s Azure Security Center a následujícími postupy:
 
@@ -123,7 +123,7 @@ Výběrem výstrahy zobrazíte informace. Můžete například zobrazit popis hr
 
 ![Útok na protokol RDP](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center zkontrolovali virtuální počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

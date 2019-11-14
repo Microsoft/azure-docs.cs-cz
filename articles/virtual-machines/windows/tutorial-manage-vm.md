@@ -1,5 +1,5 @@
 ---
-title: Kurz – Vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShellu | Microsoft Docs
+title: Kurz – vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShell
 description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu vytvářet a spravovat virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c60cd335e9d280d59fd872d1d0724f2eabd3afb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101575"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067814"
 ---
-# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytvoření a správa virtuálních počítačů s Windows pomocí Azure PowerShell
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShellu
 
 Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní výpočetní prostředí. Tento kurz se zaměřuje na základní úlohy při nasazování virtuálních počítačů Azure, jako jsou výběr velikosti virtuálního počítače, výběr image virtuálního počítače a nasazení virtuálního počítače. Získáte informace o těchto tématech:
 
@@ -180,7 +180,7 @@ Velikost virtuálního počítače určuje množství výpočetních prostředk�
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
 
-| type                     | Běžné velikosti           |    Popis       |
+| Typ                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)   | Fsv2          | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
@@ -244,7 +244,7 @@ Virtuální počítač Azure může mít jeden z mnoha stavů napájení.
 | Stav napájení | Popis
 |----|----|
 | Spouštění | Virtuální počítač se právě spouští. |
-| Spuštěno | Virtuální počítač je spuštěný. |
+| Běží | Virtuální počítač je spuštěný. |
 | Zastavování | Virtuální počítač se právě zastavuje. |
 | Zastaveno | Virtuální počítač je zastavený. Poplatky za výpočetní výkon se účtují i za virtuální počítače v zastaveném stavu.  |
 | Rušení přidělení | Probíhá navýšení virtuálního počítače. |
@@ -293,7 +293,7 @@ Start-AzVM `
    -Name "myVM"
 ```
 
-### <a name="delete-resource-group"></a>Odstranit skupinu prostředků
+### <a name="delete-resource-group"></a>Odstranění skupiny prostředků
 
 Při odstranění skupiny prostředků se odstraní všechno, co se nachází uvnitř skupiny prostředků.
 

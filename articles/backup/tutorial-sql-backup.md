@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747028"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074657"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Zálohování databáze SQL Server na virtuálním počítači Azure
 
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak zálohovat databázi SQL Server běžící na vir
 > * Vytvořte a nakonfigurujte trezor.
 > * Objevte databáze a nastavte zálohy.
 > * Nastavte automatickou ochranu pro databáze.
-> * Spusťte zálohování ad hoc.
+> * Spusťte zálohování na vyžádání.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -102,7 +102,7 @@ Zjišťovat databáze běžící na virtuálním počítači.
 
     ![Zpráva o úspěšném nasazení](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure Backup zjistí všechny databáze SQL Server na virtuálním počítači. Při zjišťování níže dochází na pozadí:
+8. Azure Backup zjistí všechny databáze SQL Server na virtuálním počítači. Během zjišťování se na pozadí objeví následující:
 
     * Azure Backup Zaregistrujte virtuální počítač s trezorem pro zálohování úloh. Všechny databáze na zaregistrovaném virtuálním počítači se dají zálohovat jenom do tohoto trezoru.
     * Azure Backup nainstaluje na virtuální počítač rozšíření **AzureBackupWindowsWorkload** . V databázi SQL není nainstalován žádný agent.
@@ -215,7 +215,7 @@ Vytvoření zásady zálohování:
 
 14. Po dokončení úprav zásad zálohování vyberte **OK**.
 
-## <a name="run-an-ad-hoc-backup"></a>Spuštění zálohování ad hoc
+## <a name="run-an-on-demand-backup"></a>Spuštění zálohování na vyžádání
 
 1. V Recovery Services trezoru vyberte zálohované položky.
 2. Klikněte na SQL na virtuálním počítači Azure.
@@ -233,7 +233,7 @@ V tomto kurzu jste pomocí webu Azure Portal provedli následující kroky:
 > * Vytvořte a nakonfigurujte trezor.
 > * Objevte databáze a nastavte zálohy.
 > * Nastavte automatickou ochranu pro databáze.
-> * Spusťte zálohování ad hoc.
+> * Spusťte zálohování na vyžádání.
 
 Přejděte k dalšímu kurzu, kde obnovíte virtuální počítač Azure z disku.
 

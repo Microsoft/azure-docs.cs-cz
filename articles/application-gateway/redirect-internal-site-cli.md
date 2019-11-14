@@ -1,27 +1,23 @@
 ---
-title: Vytvoření služby application gateway s interním přesměrování – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Informace o vytvoření služby application gateway, který přesměruje interní webový provoz do příslušného fondu pomocí Azure CLI.
+title: Interní přesměrování pomocí rozhraní příkazového řádku
+titleSuffix: Azure Application Gateway
+description: Naučte se, jak vytvořit Aplikační bránu, která přesměruje vnitřní webový provoz do příslušného fondu pomocí Azure CLI.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 25c50d400a68cdbfb9110a9e8e9d66477ad4710a
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513362"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074547"
 ---
-# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway s interním přesměrování pomocí Azure CLI
+# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s interním přesměrování pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [přesměrování webového provozu](multiple-site-overview.md) při vytváření [služba application gateway](overview.md). V tomto kurzu definujete fondu back-end pomocí škálovací sady virtuálních počítačů. Pak nakonfigurujte naslouchací procesy a pravidel založených na doménách, které vlastníte, abyste měli jistotu, že webový provoz dorazí na příslušného fondu. V tomto kurzu se předpokládá, že jste vlastníkem více domén a používá příklady *www\.contoso.com* a *www\.contoso.org*.
+Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [přesměrování webového provozu](multiple-site-overview.md) při vytváření [aplikační brány](overview.md). V tomto kurzu definujete back-end fond pomocí sady škálování virtuálních počítačů. Pak můžete nakonfigurovat naslouchací procesy a pravidla na základě domén, které vlastníte, aby se zajistilo, že webový provoz přijde do příslušného fondu. V tomto kurzu se předpokládá, že vlastníte více domén a používáte příklady *webových\.contoso.com* a *www\.contoso.org*.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -29,8 +25,8 @@ V tomto článku získáte informace o těchto tématech:
 > * Nastavit síť
 > * Vytvoření služby Application Gateway
 > * Přidat naslouchací procesy a pravidlo přesměrování
-> * Vytvoření virtuálního počítače škálovací sady s back-endový fond
-> * Vytvořit záznam CNAME v doméně
+> * Vytvoření sady škálování virtuálních počítačů s back-end fondem
+> * Vytvoření záznamu CNAME v doméně
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -50,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Poté můžete přidat podsíť s názvem *myBackendSubnet* , který je potřeba pro back-endový fond serverů pomocí [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem [myAGSubnet](/cli/azure/network/vnet). Pak můžete přidat podsíť s názvem *myBackendSubnet* , kterou potřebuje back-end fond serverů, pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet). Pomocí příkazu *az network public-ip create* vytvořte veřejnou IP adresu s názvem [myAGPublicIPAddress](/cli/azure/network/public-ip#az-network-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -72,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. 
+K vytvoření aplikační brány s názvem [myAppGateway](/cli/azure/network/application-gateway) použijte příkaz *az network application-gateway create*. Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -101,7 +97,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 ## <a name="add-listeners-and-rules"></a>Přidání naslouchacích procesů a pravidel 
 
-Naslouchací proces je potřebný k tomu, aby aplikační brána správně směrovala provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu se vytvoří naslouchací procesy pro doménách *www\.contoso.com* a *www\.contoso.org*.
+Naslouchací proces je potřeba k tomu, aby brána Application Gateway mohla správně směrovat provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu se vytvoří naslouchací procesy pro domény *www\.contoso.com* a *www\.contoso.org*.
 
 Přidejte back-endové naslouchací procesy, které jsou potřeba ke směrování provozu, příkazem [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
 
@@ -124,7 +120,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidat konfiguraci přesměrování, který odesílá síťový provoz z *www\.consoto.org* pro naslouchací proces pro *www\.contoso.com* ve službě application gateway pomocí [az network application-gateway přesměrování config vytvořit](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Přidejte konfiguraci přesměrování, která odesílá provoz ze služby *www\.consoto.org* do naslouchacího procesu pro *webovou\.contoso.com* ve službě Application Gateway pomocí funkce [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -139,9 +135,9 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-routing-rules"></a>Přidání pravidel směrování
 
-Pravidla se zpracovávají v pořadí, ve kterém jsou vytvořeny a provoz se směřuje, že pomocí první pravidlo, které odpovídá adrese URL odeslán ke službě application gateway. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
+Pravidla se zpracovávají v pořadí, ve kterém jsou vytvořená, a provoz se směruje pomocí prvního pravidla, které odpovídá adrese URL odeslané do aplikační brány. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
 
-V tomto příkladu vytvoříte dvě nová pravidla a odstranit výchozí pravidlo, které bylo vytvořeno.  Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+V tomto příkladu vytvoříte dvě nová pravidla a odstraníte vytvořené výchozí pravidlo.  Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -166,7 +162,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která podporuje back-endový fond, který jste vytvořili. Škálovací sady, kterou vytvoříte jmenuje *myvmss* a obsahuje dvě instance virtuálních počítačů, na kterých instalujete server NGINX.
+V tomto příkladu vytvoříte sadu škálování virtuálního počítače, která podporuje fond back-end, který jste vytvořili. Sada škálování, kterou vytvoříte, má název *myvmss* a obsahuje dvě instance virtuálních počítačů, na kterých instalujete Nginx.
 
 ```azurecli-interactive
 az vmss create \
@@ -186,7 +182,7 @@ az vmss create \
 
 ### <a name="install-nginx"></a>Instalace serveru NGINX
 
-V okně prostředí spuštěním tohoto příkazu:
+Spusťte tento příkaz v okně prostředí:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -217,14 +213,14 @@ Do adresního řádku prohlížeče zadejte název domény. Například http:\//
 
 ![Testování webu Contoso v aplikační bráně](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-Změnit adresu do jiné domény, třeba http:\//www.contoso.org a měli byste vidět, že provoz byl přesměrován zpět na naslouchací proces pro www\.contoso.com.
+Změňte adresu na jinou doménu, například http:\//www.contoso.org, a měli byste vidět, že přenos byl přesměrován zpět na naslouchací proces pro webovou\.contoso.com.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > * Nastavit síť
 > * Vytvoření služby Application Gateway
 > * Přidat naslouchací procesy a pravidlo přesměrování
-> * Vytvoření virtuálního počítače škálovací sady s back-endový fond
-> * Vytvořit záznam CNAME v doméně
+> * Vytvoření sady škálování virtuálních počítačů s back-end fondem
+> * Vytvoření záznamu CNAME v doméně

@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Azure s Windows – předchozí generace | Microsoft Docs
+title: Velikosti virtuálních počítačů Azure s Windows – předchozí generace
 description: Uvádí předchozí generace velikostí dostupné pro virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 43fecfcdbb381588f0c717b7ca771c23c19f367d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b5d1483082b319c5668fba41a7adfec8ba45d25c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088479"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066158"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -40,6 +40,6 @@ ms.locfileid: "70088479"
 - [GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

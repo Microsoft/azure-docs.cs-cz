@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault rozšíření virtuálního počítače pro Windows | Microsoft Docs
+title: Azure Key Vault rozšíření virtuálního počítače pro Windows
 description: Nasaďte agenta, který provádí automatickou aktualizaci Key Vault tajných klíčů na virtuálních počítačích pomocí rozšíření virtuálního počítače.
 services: virtual-machines-windows
 author: msmbaldwin
@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 7c730ad3f14cc26cd1251b497ef2d146fe99e448
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4a2323212d2112e17dc613040434d54516aad9d3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584357"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073697"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -65,23 +65,23 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota/příklad | Typ dat |
+| Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| Microsoft | Microsoft. Azure. webtrezor. EDP | řetězec |
+| publisher | Microsoft. Azure. webtrezor. EDP | řetězec |
 | type | KeyVaultForWindows | řetězec |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | MY | řetězec |
 | linkOnRenewal | false (nepravda) | Boolean |
 | certificateStoreLocation  | LocalMachine | řetězec |
-| requiredInitialSync | true (pravda) | Boolean |
+| requiredInitialSync | true | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují aktualizaci po nasazení certifikátů. Toto rozšíření se dá nasadit na jednotlivé virtuální počítače nebo sady škálování virtuálních počítačů. Schéma a konfigurace jsou společné pro oba typy šablon. 
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují aktualizaci po nasazení certifikátů. Toto rozšíření se dá nasadit na jednotlivé virtuální počítače nebo sady škálování virtuálních počítačů. Schéma a konfigurace jsou společné pro oba typy šablon. 
 
 Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořená v rámci fragmentu prostředků virtuálního počítače šablony, konkrétně `"resources": []` objekt pro šablonu virtuálního počítače a v případě sady škálování virtuálního počítače v objektu `"virtualMachineProfile":"extensionProfile":{"extensions" :[]`.
 
@@ -157,7 +157,7 @@ Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního 
     
     ```
 
-## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
+## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
 Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Key Vault virtuálního počítače do existujícího virtuálního počítače nebo sady škálování virtuálních počítačů. 
  
@@ -205,7 +205,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
 
-Výstup spuštění rozšíření se zaznamená do následujícího souboru:
+Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 
 ```
 %windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.Edp.KeyVaultForWindows\<version>\akvvm_service_<date>.log
@@ -214,4 +214,4 @@ Výstup spuštění rozšíření se zaznamená do následujícího souboru:
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).

@@ -1,21 +1,22 @@
 ---
-title: Rychlý start – Směrování webového provozu pomocí služby Azure Application Gateway – Azure PowerShell | Microsoft Docs
+title: 'Rychlý Start: přímý webový provoz pomocí prostředí PowerShell'
+titleSuffix: Azure Application Gateway
 description: Naučte se, jak pomocí Azure PowerShell vytvořit Azure Application Gateway, který směruje webový provoz do virtuálních počítačů v back-endu fondu.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a55f602833cacd27cd82adafd888c67c544564c2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d5b0ebc2d1b64dd4be677c38de30af7f7a954637
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359972"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075102"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Rychlý start: Přímý webový provoz pomocí Azure Application Gateway-Azure PowerShell
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Rychlý Start: směrování webového provozu pomocí Azure Application Gateway pomocí Azure PowerShell
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShell rychle vytvořit Aplikační bránu.  Po vytvoření služby Application Gateway ji otestujete a ujistěte se, že funguje správně. V případě Azure Application Gateway nasměrujete webový provoz aplikace na konkrétní prostředky přiřazením posluchačů k portům, vytvořením pravidel a přidáním prostředků do back-endového fondu. V zájmu zjednodušení Tento článek používá jednoduché nastavení s veřejnou front-end IP adresou, základní naslouchací proces, který hostuje jednu lokalitu v této aplikační bráně, dva virtuální počítače používané pro back-end fond a pravidlo základního směrování požadavků.
 
@@ -34,7 +35,7 @@ Pokud se rozhodnete nainstalovat a používat Azure PowerShell v místním prost
 1. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). 
 2. Pokud chcete vytvořit připojení k Azure, spusťte `Login-AzAccount`.
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>Skupina prostředků
 
 V Azure přidělíte související prostředky skupině prostředků. Můžete použít buď existující skupinu prostředků, nebo vytvořit novou. V tomto příkladu vytvoříte novou skupinu prostředků pomocí rutiny [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) , jak je znázorněno níže: 
 
@@ -239,7 +240,7 @@ Pokud chcete odebrat skupinu prostředků, zavolejte rutinu [Remove-AzResourceGr
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Správa webového provozu pomocí aplikační brány v Azure PowerShellu](./tutorial-manage-web-traffic-powershell.md)

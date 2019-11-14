@@ -1,7 +1,7 @@
 ---
-title: Vytvoření nástroje pro vyrovnávání zatížení Azure s využitím REST API
-titlesuffix: Azure Load Balancer
-description: Zjistěte, jak vytvořit pomocí rozhraní REST API služby Azure Load Balancer.
+title: Vytvoření nástroje pro vyrovnávání zatížení pomocí REST API
+titleSuffix: Azure Load Balancer
+description: V tomto článku se dozvíte, jak vytvořit Azure Load Balancer pomocí REST API.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275543"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077090"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Vytvoření Azure Load balancer úrovně Basic pomocí rozhraní REST API
 
-Azure Load Balancer distribuuje nové příchozí toky, které přicházejí na front-endu nástroje pro vyrovnávání zatížení do fondu instancí back-endu, podle pravidel a sond stavu. Load Balancer je k dispozici ve dvou SKU: Basic a Standard. Abyste pochopili rozdíl mezi dvě verze SKU, [SKU nástroje pro vyrovnávání zatížení porovnání](load-balancer-overview.md#skus).
+Azure Load Balancer distribuuje nové příchozí toky, které přicházejí na front-endu nástroje pro vyrovnávání zatížení do fondu instancí back-endu, podle pravidel a sond stavu. Nástroje pro vyrovnávání zatížení je k dispozici ve dvou skladových položkách: Basic a Standard. Abyste pochopili rozdíl mezi dvě verze SKU, [SKU nástroje pro vyrovnávání zatížení porovnání](load-balancer-overview.md#skus).
  
 Tento návod ukazuje, jak vytvořit objekt pomocí Azure Load balancer úrovně Basic [rozhraní Azure REST API](/rest/api/azure/) zavádějí vyrovnávat příchozí požadavek na víc virtuálních počítačů v rámci virtuální sítě Azure. Úplnou referenční dokumentaci a další ukázky jsou k dispozici v [Reference k rozhraní REST nástroje pro vyrovnávání zatížení Azure](/rest/api/load-balancer/).
  
-## <a name="build-the-request"></a>Žádost o sestavení
+## <a name="build-the-request"></a>Sestavení požadavku
 Pomocí následující požadavek HTTP PUT můžete vytvořit nový Azure Load balancer úrovně Basic.
  ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}?api-version=2018-02-01
@@ -35,10 +35,10 @@ Pomocí následující požadavek HTTP PUT můžete vytvořit nový Azure Load b
 
 |Název  |V  |Požaduje se |Typ |Popis |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  True       |   string      |  Přihlašovací údaje předplatného, které jedinečně identifikují předplatné Microsoft Azure. ID předplatného je součástí identifikátoru URI pro každé volání služby.      |
-|resourceGroupName     |     path    | True        |  string       |   Název skupiny prostředků.     |
-|loadBalancerName     |  path       |      True   |    string     |    Název nástroje pro vyrovnávání zatížení.    |
-|api-version    |   query     |  True       |     string    |  Verze rozhraní API klienta.      |
+|subscriptionId   |  path       |  Pravda       |   řetězec      |  Přihlašovací údaje předplatného, které jedinečně identifikují předplatné Microsoft Azure. ID předplatného je součástí identifikátoru URI pro každé volání služby.      |
+|resourceGroupName     |     path    | Pravda        |  řetězec       |   Název skupiny prostředků.     |
+|loadBalancerName     |  path       |      Pravda   |    řetězec     |    Název nástroje pro vyrovnávání zatížení.    |
+|api-version    |   query     |  Pravda       |     řetězec    |  Verze rozhraní API klienta.      |
 
 
 
@@ -48,10 +48,10 @@ Jediný požadovaný parametr `location`. Pokud nedefinujete *SKU* verze, zákla
 
 | Název | Typ | Popis |
 | :--- | :--- | :---------- |
-| location | string | Umístění prostředku. Získat aktuální seznam umístění s využitím [seznamu umístění](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operace. |
+| location | řetězec | Umístění prostředku. Získat aktuální seznam umístění s využitím [seznamu umístění](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operace. |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>Příklad: Vytvoření a aktualizace základního Load Balancer
+## <a name="example-create-and-update-a-basic-load-balancer"></a>Příklad: Vytvoření a aktualizaci základní nástroje pro vyrovnávání zatížení
 
 V tomto příkladu nejdřív vytvoření Load Balanceru úrovně Basic spolu s jeho prostředky. Dále je nutné nakonfigurovat prostředky nástroje pro vyrovnávání zatížení, které zahrnují konfigurace protokolu IP front-endu, back-endový fond adres, pravidla, sondu stavu a příchozí pravidlo NAT Vyrovnávání zatížení.
 

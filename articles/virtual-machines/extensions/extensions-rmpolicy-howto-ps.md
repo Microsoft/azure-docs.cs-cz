@@ -1,5 +1,5 @@
 ---
-title: Omezení instalace rozšíření virtuálních počítačů pomocí Azure Policyu | Microsoft Docs
+title: Omezení instalace rozšíření virtuálních počítačů pomocí Azure Policy
 description: Použijte Azure Policy k omezení nasazení rozšíření.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 599417131f228c95168641c54ffbb947e3682f7b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 428db340ce43463939ce71ffadd4188060f3e732
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750003"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073117"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Omezení instalace rozšíření na virtuálních počítačích s Windows pomocí Azure Policy
 

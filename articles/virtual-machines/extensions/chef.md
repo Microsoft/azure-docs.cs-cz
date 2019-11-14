@@ -1,5 +1,5 @@
 ---
-title: Rozšíření pro Azure pro virtuální počítače Azure | Microsoft Docs
+title: Rozšíření pro Azure pro virtuální počítače Azure
 description: Nasaďte do virtuálního počítače klienta systému pro nasazení pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169147"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073187"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Rozšíření VM VM pro Linux a Windows
 
@@ -36,7 +36,7 @@ Rozšíření virtuálních počítačů pro virtuální počítače vyžaduje, 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma rozšíření virtuálního počítače pro rozhraní. Přípona vyžaduje minimálně adresu URL serveru pro název klienta, název ověřovacího klienta a ověřovací klíč pro server s názvem. Tyto hodnoty najdete v `knife.rb` souboru na Starter-Kit. zip, který se stáhne při instalaci nástroje pro [automatizaci](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) nebo samostatného [serveru](https://downloads.chef.io/chef-server). Vzhledem k tomu, že ověřovací klíč by měl být považován za citlivá data, měl by být nakonfigurován v rámci elementu **protectedSettings** , což znamená, že bude pouze dešifrován v cílovém virtuálním počítači.
+Následující JSON zobrazuje schéma rozšíření virtuálního počítače pro rozhraní. Přípona vyžaduje minimálně adresu URL serveru pro název klienta, název ověřovacího klienta a ověřovací klíč pro server s názvem. Tyto hodnoty najdete v souboru `knife.rb` ve formátu Starter-Kit. zip, který se stáhne při instalaci nástroje pro [automatizaci](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) nebo samostatného [serveru](https://downloads.chef.io/chef-server). Vzhledem k tomu, že ověřovací klíč by měl být považován za citlivá data, měl by být nakonfigurován v rámci elementu **protectedSettings** , což znamená, že bude pouze dešifrován v cílovém virtuálním počítači.
 
 ```json
 {
@@ -67,26 +67,26 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 ### <a name="core-property-values"></a>Hodnoty základních vlastností
 
-| Name | Hodnota / příklad | Typ dat
+| Název | Hodnota / příklad | Typ dat
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | string |
+| publisher | `Chef.Bootstrap.WindowsAzure` | řetězec |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | řetězec |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Nastavení
 
-| Name | Hodnota / příklad | Typ dat | Požadováno?
+| Název | Hodnota / příklad | Typ dat | Požadováno?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Ano |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Ano |
-| settings/runlist | `recipe[mycookbook::default]` | string | Ano |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Ano |
+| settings/runlist | `recipe[mycookbook::default]` | řetězec | Ano |
 
 ### <a name="protected-settings"></a>Chráněná nastavení
 
-| Name | Příklad | Typ dat | Požadováno?
+| Název | Příklad | Typ dat | Požadováno?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Ano |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Ano |
 
 <!--
 ### Linux-specific settings
@@ -110,7 +110,7 @@ JSON konfigurace pro rozšíření virtuálního počítače můžete vnořit do
 
 ## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
-Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření virtuálních počítačů s virtuálním počítačem do existujícího virtuálního počítače. Nahraďte **validation_key** obsahem ověřovacího klíče (Tento soubor jako `.pem` rozšíření).  Nahraďte **validation_client_name**, **chef_server_url** a **run_list** hodnotami ze `knife.rb` souboru v úvodní sadě.
+Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření virtuálních počítačů s virtuálním počítačem do existujícího virtuálního počítače. Nahraďte **validation_key** obsahem ověřovacího klíče (Tento soubor je rozšířením `.pem`).  Hodnoty **validation_client_name**, **chef_server_url** a **run_list** nahraďte z `knife.rb` souboru v úvodní sadě.
 
 ```azurecli
 az vm extension set \

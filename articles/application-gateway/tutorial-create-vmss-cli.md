@@ -1,25 +1,23 @@
 ---
-title: Vytvoření služby application gateway se škálovací sadou virtuálních počítačů – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Informace o vytvoření služby application gateway s virtuálního počítače škálovací sady pomocí Azure CLI.
+title: Použití back-endu sady škálování virtuálního počítače – rozhraní příkazového řádku
+titleSuffix: Azure Application Gateway
+description: Naučte se, jak vytvořit službu Application Gateway se sadou škálování virtuálních počítačů pomocí Azure CLI.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 792d6da36851f74429d97a9779aff1727e8f64db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec1837419390fc29e53565881e41fd4265914f78
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133647"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074529"
 ---
-# <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Vytvoření služby application gateway s virtuálního počítače škálovací sady s použitím rozhraní příkazového řádku Azure
+# <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Vytvoření služby Application Gateway s využitím sady škálování virtuálních počítačů pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít k vytvoření [služba application gateway](application-gateway-introduction.md) , která používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end serverů. V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
+Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](application-gateway-introduction.md) , která používá [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end servery. V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -46,7 +44,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem [myAGSubnet](/cli/azure/network/vnet). Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu *az network public-ip create* vytvořte veřejnou IP adresu s názvem [myAGPublicIPAddress](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -68,7 +66,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Application gateway je přiřazeno *myAGSubnet* a *myPublicIPAddress* , kterou jste vytvořili. 
+K vytvoření aplikační brány s názvem [myAppGateway](/cli/azure/network/application-gateway) použijte příkaz *az network application-gateway create*. Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k *myAGSubnet* a *myPublicIPAddress* , které jste vytvořili dříve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -140,7 +138,7 @@ az network public-ip show \
 
 ![Otestování základní adresy URL v aplikační bráně](./media/tutorial-create-vmss-cli/tutorial-nginxtest.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
@@ -149,4 +147,4 @@ V tomto kurzu jste se naučili:
 > * Vytvoření služby Application Gateway
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Další informace o aplikačních bran a jejich souvisejících prostředcích najdete i nadále články s postupy.
+Další informace o aplikačních branách a jejich souvisejících prostředcích najdete v článcích s postupy.

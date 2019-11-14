@@ -1,5 +1,5 @@
 ---
-title: Sdílení imagí Galerie napříč klienty v Azure | Microsoft Docs
+title: Sdílení imagí Galerie napříč klienty v Azure
 description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí.
 services: virtual-machines-windows
 author: cynthn
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: 6bf627b5456cbd878580d7b346536c98a513ca6a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903689"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065521"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure
 

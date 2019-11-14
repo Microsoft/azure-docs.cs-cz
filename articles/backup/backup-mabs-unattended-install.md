@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a02d9f42242b9a762c58ef65a798ff6ab8f53914
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210165"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074799"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Spuštění bezobslužné instalace Azure Backup Server
 
@@ -55,11 +55,12 @@ Tyto kroky neplatí, pokud instalujete Azure Backup Server v1.
 
 Tyto příznaky můžete použít pro instalaci:</br>
 **/f**:. ini cesta k souboru</br>
-**/l**: Cesta protokolu</br>
+**/l**: protokolová cesta</br>
 **/i**: Instalační cesta</br>
-**/x**: Odinstalace cesty</br>
+**/x**: odinstalace cesty</br>
 
 ## <a name="next-steps"></a>Další kroky
+
 Po instalaci záložního serveru se dozvíte, jak připravit server nebo začít chránit úlohu.
 
 - [Příprava úloh záložního serveru](backup-azure-microsoft-azure-backup.md)

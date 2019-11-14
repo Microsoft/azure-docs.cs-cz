@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: e600fdb882294d14bb9f9216ac8d621ba5254170
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614400"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074718"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -31,7 +31,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 | Severity | Popis | Možné příčiny | Doporučená akce |
 |---|---|---|---|
-| Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování neprovede pro zálohování ad hoc.
+| Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -50,7 +50,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Řetěz protokolů je porušený. | Databáze nebo virtuální počítač se zálohují v jiném řešení zálohování, které zkrátí řetězec protokolu.|<ul><li>Ověřte, jestli se nepoužívá jiné řešení zálohování nebo skript. Pokud ano, zastavte další řešení zálohování. </li><li>Pokud se jedná o zálohu protokolu ad hoc, spusťte úplnou zálohu, aby se spustil nový řetěz protokolu. U plánovaných záloh protokolů není potřeba žádná akce, protože služba Azure Backup automaticky aktivuje úplnou zálohu pro vyřešení tohoto problému.</li>|
+| Řetěz protokolů je porušený. | Databáze nebo virtuální počítač se zálohují v jiném řešení zálohování, které zkrátí řetězec protokolu.|<ul><li>Ověřte, jestli se nepoužívá jiné řešení zálohování nebo skript. Pokud ano, zastavte další řešení zálohování. </li><li>Pokud byla záloha zálohování protokolu na vyžádání, spusťte pro spuštění nového řetězce protokolu úplnou zálohu. U plánovaných záloh protokolů není potřeba žádná akce, protože služba Azure Backup automaticky aktivuje úplnou zálohu pro vyřešení tohoto problému.</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -62,7 +62,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Pro tento zdroj dat chybí první úplná záloha. | Pro databázi chybí úplné zálohování. Protokoly a rozdílové zálohy jsou nadřazené k úplnému zálohování, proto nezapomeňte před aktivací rozdílových nebo protokolu zálohování provést úplné zálohování. | Aktivovat úplné zálohování ad hoc.   |
+| Pro tento zdroj dat chybí první úplná záloha. | Pro databázi chybí úplné zálohování. Protokoly a rozdílové zálohy jsou nadřazené k úplnému zálohování, proto nezapomeňte před aktivací rozdílových nebo protokolu zálohování provést úplné zálohování. | Aktivovat úplné zálohování na vyžádání.   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 

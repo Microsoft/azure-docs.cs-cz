@@ -1,11 +1,11 @@
 ---
-title: Vytvoření internetového nástroje pro vyrovnávání zatížení s využitím IPv6-PowerShellu
-titlesuffix: Azure Load Balancer
+title: Vytvoření internetového nástroje pro vyrovnávání zatížení s protokolem IPv6-Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, nativní IPv6, mobilní zařízení, IoT
+keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025792"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077059"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
 
@@ -28,14 +28,14 @@ ms.locfileid: "73025792"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Šablona](load-balancer-ipv6-internet-template.md)
 
->[! Poznámka: Změna v osvědčených postupech pro protokol IPv6] Tento článek popisuje úvodní funkci IPv6, která umožňuje základním nástrojům pro vyrovnávání zatížení poskytovat připojení protokolem IPv4 i IPv6.  K dispozici jsou teď komplexnější možnosti připojení pomocí protokolu IPv6 [pro Azure virtuální sítě](../virtual-network/ipv6-overview.md) , které integrují připojení IPv6 k vašim virtuálním sítím a obsahuje klíčové funkce, jako jsou pravidla skupiny zabezpečení sítě IPv6, uživatelem definované směrování IPv6, IPv6 Basic a Vyrovnávání zatížení úrovně Standard a další.  Protokol IPv6 pro Azure virtuální sítě je doporučeným osvědčeným postupem pro aplikace IPv6 v Azure. 
+>[! Poznámka: Změna v osvědčených postupech pro protokol IPv6] Tento článek popisuje úvodní funkci IPv6, která umožňuje základním nástrojům pro vyrovnávání zatížení poskytovat připojení protokolem IPv4 i IPv6.  K dispozici jsou teď komplexnější možnosti připojení pomocí protokolu IPv6 [pro Azure virtuální sítě](../virtual-network/ipv6-overview.md) , které integrují připojení IPv6 k vašim virtuálním sítím a obsahuje klíčové funkce, jako jsou pravidla skupiny zabezpečení sítě IPv6, uživatelem definované směrování IPv6, protokol IPv6 Basic a standardní vyrovnávání zatížení a další.  Protokol IPv6 pro Azure virtuální sítě je doporučeným osvědčeným postupem pro aplikace IPv6 v Azure. 
 >[Nasazení PowerShellu pro virtuální síť Azure najdete v protokolu IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) . 
 
 Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroj pro vyrovnávání zatížení poskytuje vysokou dostupnost díky distribuci příchozích přenosů mezi instance služeb, které jsou v pořádku, v cloudových službách nebo virtuálních počítačích v sadě nástroje pro vyrovnávání zatížení. Azure Load Balancer můžete také tyto služby prezentovat na více portech, více IP adresách nebo obojím.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="example-deployment-scenario"></a>Ukázkový scénář nasazení
+## <a name="example-deployment-scenario"></a>Příklad scénáře nasazení
 
 Následující diagram znázorňuje řešení vyrovnávání zatížení, které je nasazené v tomto článku.
 

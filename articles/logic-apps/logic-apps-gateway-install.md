@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 6daf9351e48603824aa6cec30adb4a6b82349784
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049042"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076942"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
 Než se budete moct [připojit k místním zdrojům dat z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), Stáhněte a nainstalujte místní [bránu dat](https://aka.ms/on-premises-data-gateway-installer) do místního počítače. Brána funguje jako most, který poskytuje rychlý přenos dat a šifrování mezi zdroji dat místně a vašimi Logic Apps. Stejnou instalaci brány můžete použít i u jiných cloudových služeb, jako je Power BI, automatizace, Power Apps a Azure Analysis Services. Informace o tom, jak používat bránu s těmito službami, najdete v těchto článcích:
 
-* [Místní brána dat Power BI Microsoftu](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Místní brána dat Microsoft Power Apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Automatizace místní brány dat](/power-automate/gateway-reference)
+* [Microsoft Power Automatizujte místní bránu dat](/power-automate/gateway-reference)
+* [Místní brána dat Power BI Microsoftu](/power-bi/service-gateway-onprem)
+* [Místní brána dat Microsoft Power Apps](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services místní bránu dat](../analysis-services/analysis-services-gateway.md)
 
 Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu dat, abyste mohli přistupovat k místním zdrojům dat z Azure Logic Apps. Další informace o [tom, jak brána pro data funguje](#gateway-cloud-service) , najdete dál v tomto tématu. Další informace o bráně najdete v tématu [co je místní brána](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019066"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074830"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
@@ -27,19 +27,19 @@ Azure Backup Server v2 a novější podporuje Moderní úložiště zálohován�
 
 Záložní server v2 nebo novější akceptuje svazky úložiště. Když přidáte svazek, záložní server naformátuje svazek na odolný systém souborů (ReFS), který Moderní úložiště zálohování vyžaduje. Pokud chcete přidat svazek a později ho rozšířit, pokud potřebujete, doporučujeme použít tento pracovní postup:
 
-1.  Nastavení záložního serveru na virtuálním počítači.
-2.  Vytvoření svazku na virtuálním disku ve fondu úložiště:
-    1.  Přidejte disk do fondu úložiště a vytvořte virtuální disk s jednoduchým rozložením.
-    2.  Přidejte další disky a virtuální disk prodlužte.
-    3.  Vytvořte svazky na virtuálním disku.
-3.  Přidejte svazky na záložní server.
-4.  Nakonfigurujte úložiště s podporou úloh.
+1. Nastavení záložního serveru na virtuálním počítači.
+2. Vytvoření svazku na virtuálním disku ve fondu úložiště:
+    1. Přidejte disk do fondu úložiště a vytvořte virtuální disk s jednoduchým rozložením.
+    2. Přidejte další disky a virtuální disk prodlužte.
+    3. Vytvořte svazky na virtuálním disku.
+3. Přidejte svazky na záložní server.
+4. Nakonfigurujte úložiště s podporou úloh.
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>Vytvořit svazek pro Moderní úložiště zálohování
 
 Používání služby Backup Server v2 nebo novější se svazky jako diskové úložiště vám může pomoci udržet si kontrolu nad úložištěm. Svazek může být jeden disk. Pokud ale chcete úložiště v budoucnu zvětšit, vytvořte svazek z disku vytvořeného pomocí prostorů úložiště. To může být užitečné, pokud chcete rozšířit svazek pro úložiště zálohování. Tato část nabízí osvědčené postupy pro vytvoření svazku s tímto nastavením.
 
-1.  > V správce serveru vyberte souborové**fondy úložiště** **souborové služby a služby** > úložiště. V části **fyzické disky**vyberte **Nový fond úložiště**.
+1. V Správce serveru vyberte **souborové služby a služby úložiště** > **svazky** > **fondy úložišť**. V části **fyzické disky**vyberte **Nový fond úložiště**.
 
     ![Vytvořit nový fond úložiště](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -75,7 +75,7 @@ V případě úložiště s podporou úloh můžete vybrat svazky, které mají 
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Úložiště s podporou úloh můžete nastavit pomocí rutiny PowerShellu Update-DPMDiskStorage, která aktualizuje vlastnosti svazku ve fondu úložiště na Azure Backup Server. 
+Úložiště s podporou úloh můžete nastavit pomocí rutiny PowerShellu Update-DPMDiskStorage, která aktualizuje vlastnosti svazku ve fondu úložiště na Azure Backup Server.
 
 Syntaktick
 
@@ -84,6 +84,7 @@ Syntaktick
 ```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
+
 Následující snímek obrazovky ukazuje rutinu Update-DPMDiskStorage v okně PowerShellu.
 
 ![Příkaz Update-DPMDiskStorage v okně PowerShellu](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
@@ -92,8 +93,8 @@ Změny, které provedete pomocí PowerShellu, se projeví v konzole správce zá
 
 ![Disky a svazky v konzole pro správu](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Migrace starší verze úložiště do Moderní úložiště zálohování
+
 Po upgradu na nebo instalaci záložního serveru v2 a upgradu operačního systému na Windows Server 2016 aktualizujte skupiny ochrany tak, aby používaly Moderní úložiště zálohování. Ve výchozím nastavení se skupiny ochrany nemění. Budou i nadále fungovat, jak byly původně nastaveny.
 
 Aktualizace skupin ochrany na použití Moderní úložiště zálohování je volitelná. Chcete-li aktualizovat skupinu ochrany, zastavte ochranu všech zdrojů dat pomocí možnosti zachovat data. Pak přidejte zdroje dat do nové skupiny ochrany.
@@ -102,7 +103,7 @@ Aktualizace skupin ochrany na použití Moderní úložiště zálohování je v
 
    ![Zastavení ochrany člena](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. V dialogovém okně **Odebrat ze skupiny** zkontrolujte využité místo na disku a dostupné volné místo pro fond úložiště. Ve výchozím nastavení je ponecháno ponechat body obnovení na disku a nechat vypršení platnosti podle přidružených zásad uchovávání informací. Klikněte na **OK**.
+2. V dialogovém okně **Odebrat ze skupiny** zkontrolujte využité místo na disku a dostupné volné místo pro fond úložiště. Ve výchozím nastavení je ponecháno ponechat body obnovení na disku a nechat vypršení platnosti podle přidružených zásad uchovávání informací. Klikněte na tlačítko **OK**.
 
    Pokud chcete hned vrátit využité místo na disku do fondu volných úložišť, zaškrtněte políčko **Odstranit repliku na disku** , chcete-li odstranit data zálohy (a body obnovení) přidružené k tomuto členu.
 
@@ -116,15 +117,16 @@ Pokud chcete používat starší verze úložiště se záložním serverem, mo�
 
 Přidání diskového úložiště:
 
-1. V konzole pro správu vyberte **Správa** > **Disk Storage** > **Přidat**.
+1. V konzole pro správu vyberte > **správy** **Disk Storage** > **Přidat**.
 
     ![Přidat Disk Storage – dialogové okno](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. V dialogovém okně **přidat disk Storage** vyberte **Přidat disky**.
+2. V dialogovém okně **přidat disk Storage** vyberte **Přidat disky**.
 
-5. V seznamu dostupných disků vyberte disky, které chcete přidat, vyberte **Přidat**a pak vyberte **OK**.
+3. V seznamu dostupných disků vyberte disky, které chcete přidat, vyberte **Přidat**a pak vyberte **OK**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 Po instalaci záložního serveru se dozvíte, jak připravit server nebo začít chránit úlohu.
 
 - [Příprava úloh záložního serveru](backup-azure-microsoft-azure-backup.md)

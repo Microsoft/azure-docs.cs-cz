@@ -1,21 +1,18 @@
 ---
-title: Návrh pro zajištění vysoké dostupnosti s využitím Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: návrh pro vysokou dostupnost'
 description: Tato stránka poskytuje doporučení pro architekturu pro vysokou dostupnost při používání Azure ExpressRoute.
-documentationcenter: na
-services: networking
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67466653"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076678"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Návrh pro zajištění vysoké dostupnosti pomocí ExpressRoute
 
@@ -54,7 +51,7 @@ Další možností je spuštění primárního a sekundárního připojení okru
 
 Partnerský vztah Microsoftu je určený pro komunikaci mezi veřejnými koncovými body. To znamená, že místní privátní koncové body jsou přeložené ze sítě (NATed) s veřejnou IP adresou v síti zákazníka nebo partnera předtím, než budou komunikovat s partnerským vztahem Microsoftu. Za předpokladu, že používáte primární i sekundární připojení v režimu aktivní-aktivní, kde a jak vaše NAT má vliv na to, jak rychle obnovujete po selhání jednoho z ExpressRoute připojení. Na následujícím obrázku jsou znázorněny dvě různé možnosti překladu adres (NAT):
 
-[![1]][3]
+[![3]][3]
 
 V možnosti 1 se překlad adres (NAT) použije po rozdělení provozu mezi primárním a sekundárním připojením ExpressRoute. Aby bylo možné splnit stavové požadavky překladu adres (NAT), používají se nezávislé fondy NAT mezi primárním a sekundárním zařízením, takže návratová přenosová data přicházejí do stejného hraničního zařízení, přes které tok vzdává výstup.
 
@@ -87,8 +84,8 @@ V tomto článku jsme probrali, jak navrhnout vysokou dostupnost připojení okr
 Pokyny k návrhu pro sestavení geograficky redundantního síťového připojení k páteřní síti Microsoftu, která může odolat závažným chybám, které ovlivňují celou oblast, najdete v tématu [navrhování pro zotavení po havárii s privátním partnerským vztahem ExpressRoute][DR].
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "doporučený způsob připojení pomocí ExpressRoute"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "neoptimální připojení poslední míle"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "Doporučený způsob připojení pomocí ExpressRoute"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "Neoptimální připojení poslední míle"
 [3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "Možnosti NAT"
 
 

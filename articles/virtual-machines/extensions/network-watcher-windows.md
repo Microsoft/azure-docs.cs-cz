@@ -1,5 +1,5 @@
 ---
-title: Rozšíření virtuálního počítače služby Azure Network Watcher Agent pro Windows | Microsoft Docs
+title: Rozšíření pro virtuální počítače s agentem Azure Network Watcher pro Windows
 description: Nasaďte agenta Network Watcher na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 77685fd6549906cfb050e12d53ec151c964fda42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 998e160edce25b9d466a1db090abcefeb7870172
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084417"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073685"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Network Watcher agenta pro Windows
 
@@ -78,7 +78,7 @@ Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon 
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
 
-`Set-AzVMExtension` Pomocí příkazu nasaďte rozšíření Network Watcher agenta virtuálního počítače do existujícího virtuálního počítače:
+Pomocí příkazu `Set-AzVMExtension` nasaďte rozšíření virtuálního počítače Network Watcher agenta do existujícího virtuálního počítače:
 
 ```powershell
 Set-AzVMExtension `
@@ -93,7 +93,7 @@ Set-AzVMExtension `
 
 ## <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Data o stavu nasazení rozšíření můžete načíst z Azure Portal a PowerShellu. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell:
 

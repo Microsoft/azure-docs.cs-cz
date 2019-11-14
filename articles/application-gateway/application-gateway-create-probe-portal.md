@@ -1,26 +1,19 @@
 ---
-title: Vytvoření vlastní sondy – Azure Application Gateway-Azure Portal | Microsoft Docs
+title: Vytvoření vlastního testu pomocí portálu
+titleSuffix: Azure Application Gateway
 description: Zjistěte, jak vytvořit vlastní test pro Application Gateway pomocí portálu.
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/14/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 18799d928f7239eea311aa39159bfa0b5416ca1a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821086"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074612"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Vytvoření vlastního testu pro Application Gateway pomocí portálu
 
@@ -41,7 +34,7 @@ Testy se konfigurují v procesu se dvěma kroky prostřednictvím portálu. Prvn
 
 ### <a name="createprobe"></a>Zadat vlastnosti testu paměti
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
 
 2. V podokně Oblíbené Azure Portal klikněte na všechny prostředky. V okně všechny prostředky klikněte na Aplikační brána. Pokud předplatné, které jste vybrali, již obsahuje několik prostředků, můžete zadat partners.contoso.net do pole filtrovat podle názvu... pro snadný přístup ke službě Application Gateway.
 
@@ -90,7 +83,7 @@ Testy se konfigurují v procesu se dvěma kroky prostřednictvím portálu. Prvn
 
 ### <a name="createprobe"></a>Vytvoření testu paměti
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
 
 2. V podokně Oblíbené Azure Portal vyberte **všechny prostředky**. Na stránce **všechny prostředky** vyberte Aplikační brána. Pokud předplatné, které jste vybrali, již obsahuje několik prostředků, můžete zadat partners.contoso.net do pole filtrovat podle názvu... pro snadný přístup ke službě Application Gateway.
 

@@ -1,7 +1,6 @@
 ---
-title: Odchozí pravidla v Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: Použití odchozích pravidel k definování odchozích překladů síťových adres
+title: Odchozí pravidla – Azure Load Balancer
+description: Pomocí této cesty výukového programu můžete začít používat odchozí pravidla k definování odchozích překladů síťových adres.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,41 +12,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: d1874d610feb041545e1675ad5b40a1b5e753b67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 316b28faa458b03431cb48f02a8087116415b061
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497977"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075900"
 ---
-# <a name="load-balancer-outbound-rules"></a>Load Balancer odchozí pravidla
+# <a name="load-balancer-outbound-rules"></a>Odchozí pravidla nástroje pro vyrovnávání zatížení
 
-Azure Load Balancer poskytuje kromě příchozího i odchozí připojení z virtuální sítě.  Odchozí pravidla usnadňují konfiguraci odchozího překladu síťových adres pro veřejné [Standard Load Balancer](load-balancer-standard-overview.md).  Máte plnou deklarativní kontrolu nad odchozím připojením, abyste mohli škálovat a ladit tuto možnost podle vašich konkrétních potřeb.
+Azure Load Balancer poskytuje odchozí připojení z virtuální sítě navíc příchozí.  Odchozí pravidla se dají jednoduše nakonfigurovat veřejný [Load balanceru úrovně Standard](load-balancer-standard-overview.md)na odchozí překladu adres.  Budete mít úplný deklarativní kontrolu nad odchozí připojení ke škálování a optimalizaci tato možnost vašim konkrétním potřebám.
 
-![Load Balancer odchozí pravidla](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
+![Odchozí pravidla nástroje pro vyrovnávání zatížení](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
-Pomocí odchozích pravidel můžete použít Load Balancer k těmto akcím: 
-- definice odchozího překladu adres (NAT) od začátku
-- Škálujte a optimalizujte chování stávajícího odchozího překladu adres (NAT). 
+U odchozích pravidel můžete použít nástroje pro vyrovnávání zatížení: 
+- Definujte odchozí NAT úplně od začátku.
+- škálování a optimalizaci chování existující odchozí NAT. 
 
 Odchozí pravidla umožňují řídit:
-- které virtuální počítače by se měly přeložit na které veřejné IP adresy. 
-- Jak by měly být přiděleny [Odchozí porty SNAT](load-balancer-outbound-connections.md#snat) .
-- které protokoly pro zajištění odchozího překladu pro.
+- které virtuální počítače by měl přeložit na které veřejné IP adresy. 
+- Jak [odchozích portech SNAT](load-balancer-outbound-connections.md#snat) by měly být přiděleny.
+- protokoly, které k poskytování odchozí překlad.
 - Jaká doba se má použít pro časový limit nečinnosti odchozího připojení (4-120 minut).
-- Určuje, zda má být pro časový limit nečinnosti (v Public Preview) odesláno resetování protokolu TCP. 
+- Určuje, zda odesílat TCP Reset na časový limit nečinnosti (ve verzi Public Preview). 
 
-Odchozí pravidla rozbalí [scénář 2](load-balancer-outbound-connections.md#lb) , který je popsaný v článku o [odchozích připojeních](load-balancer-outbound-connections.md) , a Priorita scénáře zůstane tak, jak je.
+Odchozí pravidla rozšiřují [scénář 2](load-balancer-outbound-connections.md#lb) v podle [odchozí připojení](load-balancer-outbound-connections.md) článku a určování priorit scénář bude nadála – je.
 
 ## <a name="outbound-rule"></a>Odchozí pravidlo
 
-Stejně jako všechna pravidla Load Balancer se odchozí pravidla řídí stejnou známou syntaxí jako vyrovnávání zatížení a příchozí pravidla překladu adres (NAT):
+Stejně jako všechna pravidla služby Load balancer úrovně odchozí pravidla postupujte podle stejné syntaxe známé jako Vyrovnávání zatížení a pravidla příchozího překladu adres:
 
-**parametry** + **front-endu** + **back-end fondu**
+**front-endu** + **parametry** + **back-endový fond**
 
-Odchozí pravidlo konfiguruje odchozí překlad adres (NAT) pro _všechny virtuální počítače identifikované fondem back-end_ pro překlad do _front-endu_.  _Parametry_ a poskytují další jemně odstupňovanou kontrolu nad odchozím algoritmem NAT.
+Nakonfiguruje odchozí NAT pro odchozí pravidlo _všechny virtuální počítače identifikované back-endový fond_ mají být převedeny na _front-endu_.  A _parametry_ poskytují další Pokud potřebujete jemněji odstupňované řízení odchozí NAT algoritmus.
 
-Verze rozhraní API "2018-07-01" umožňuje strukturované definování odchozích pravidel takto:
+Rozhraní API ve verzi "2018-07-01" povoluje definici odchozí pravidlo strukturované následujícím způsobem:
 
 ```json
       "outboundRules": [
@@ -63,70 +62,70 @@ Verze rozhraní API "2018-07-01" umožňuje strukturované definování odchozí
 ```
 
 >[!NOTE]
->Platná konfigurace odchozího překladu adres (NAT) je složený ze všech odchozích pravidel a pravidel vyrovnávání zatížení. Odchozí pravidla jsou přírůstková na pravidla vyrovnávání zatížení. Přečtěte si téma [zakázání odchozího překladu adres (NAT) pro pravidlo vyrovnávání zatížení](#disablesnat) pro správu efektivního překladu NAT, když se na virtuální počítač vztahuje víc pravidel Při definování odchozího pravidla, které používá stejnou veřejnou IP adresu jako pravidlo vyrovnávání zatížení, je nutné [Zakázat odchozí SNAT](#disablesnat) .
+>Efektivní odchozí NAT. je složený všechny odchozí pravidla a pravidla Vyrovnávání zatížení. Odchozí pravidla se přičítají k pravidla Vyrovnávání zatížení. Kontrola [zakázání odchozí NAT pro pravidlo Vyrovnávání zatížení](#disablesnat) ke správě efektivní odchozí překlad síťových adres při více pravidla se vztahují k virtuálnímu počítači. Je nutné [zakázat odchozí SNAT](#disablesnat) při definování odchozí pravidlo, které používá stejnou veřejnou IP adresu jako pravidlo Vyrovnávání zatížení.
 
-### <a name="scale"></a>Škálování odchozího překladu adres (NAT) s několika IP adresami
+### <a name="scale"></a> Škálování odchozí NAT s několika IP adresami
 
-I když se odchozí pravidlo dá použít jenom s jednou veřejnou IP adresou, odchozí pravidla zjednodušují zátěž v konfiguraci pro škálování odchozího překladu adres (NAT). Pro plánování rozsáhlých scénářů můžete použít více IP adres a pomocí odchozích pravidel můžete zmírnit vzory náchylné k [vyčerpání SNAT](load-balancer-outbound-connections.md#snatexhaust) .  
+Zatímco odchozí pravidlo lze použít s právě jednu veřejnou IP adresu, odchozí pravidla usnadnění konfigurace zatížení pro škálování odchozí NAT. Několik IP adres můžete použít k plánování pro scénáře, ve velkém měřítku a odchozích pravidel můžete použít ke zmírnění [SNAT vyčerpání](load-balancer-outbound-connections.md#snatexhaust) vzory náchylné k chybám.  
 
-Každá další IP adresa poskytovaná front-endu poskytuje 64 000 dočasných portů, které Load Balancer použít jako porty SNAT. I když mají pravidla vyrovnávání zatížení nebo příchozího překladu adres (NAT) jeden front-end, toto pravidlo rozšíří rozhraní front-end a umožní více front-endu na jedno pravidlo.  U několika front-endu na pravidlo je množství dostupných portů SNAT vynásobeno každou veřejnou IP adresou a může být podporováno velké scénáře.
+Každá další IP adresa poskytovaná front-endu poskytuje 64 000 dočasných portů, které Load Balancer použít jako porty SNAT. Vyrovnávání zatížení nebo pravidla příchozího překladu adres mají jeden front-endu, odchozí pravidlo rozšiřuje pojem front-endu a umožňuje několik front-endů v jednotlivém pravidle.  Několik front-endů pro každé pravidlo počet dostupných portů SNAT se násobí s každou veřejnou IP adresu a velké scénářích může být podporovaný.
 
-Kromě toho můžete použít [předponu veřejné IP adresy](https://aka.ms/lbpublicipprefix) přímo s odchozím pravidlem.  Použití předpony veřejných IP adres poskytuje snazší škálování a zjednodušený seznam toků pocházejících z nasazení Azure. Konfiguraci IP adresy front-endu můžete v rámci prostředku Load Balancer nakonfigurovat tak, aby odkazovala přímo na předponu veřejné IP adresy.  To umožňuje Load Balancer exkluzivní kontrolu nad předponou veřejné IP adresy a odchozí pravidlo automaticky použije všechny veřejné IP adresy obsažené v předponě veřejných IP adres pro odchozí připojení.  Jednotlivé IP adresy v rozsahu předpony veřejných IP adres poskytují 64 000 dočasných portů na IP adresu Load Balancer použít jako porty SNAT.   
+Kromě toho můžete použít [předponu veřejné IP](https://aka.ms/lbpublicipprefix) přímo s pravidlem odchozí.  Pomocí veřejné IP adresy umožňuje snazší škálování a zjednodušené seznamu povolených toků pocházející z nasazení vašeho řešení Azure předponu. Můžete nakonfigurovat IP konfigurace front-endu v rámci prostředek nástroje pro vyrovnávání zatížení, který chcete odkazovat přímo předponu veřejné IP adresy.  Díky tomu nástroje pro vyrovnávání zatížení výhradní kontrolu nad veřejných předpon adres IP a odchozí pravidla budou automaticky používat všechny veřejné IP adresy obsažené v rozsahu předpony veřejných IP pro odchozí připojení.  Jednotlivé IP adresy v rozsahu předpony veřejných IP adres poskytují 64 000 dočasných portů na IP adresu Load Balancer použít jako porty SNAT.   
 
-Při použití této možnosti nemůžete mít jednotlivé prostředky veřejné IP adresy vytvořené z předpony veřejných IP adres, protože odchozí pravidlo musí mít úplnou kontrolu nad předponou veřejné IP adresy.  Pokud potřebujete přesnější kontrolu, můžete vytvořit samostatný prostředek veřejné IP adresy z předpony veřejné IP adresy a jednotlivě přiřadit více veřejných IP adres do front-endu odchozího pravidla.
+Nemůžete mít jednotlivé prostředky pro adres veřejné IP adresy vytvořené z veřejných předpon adres IP při použití této možnosti jako odchozí pravidlo musí mít úplnou kontrolu nad veřejných předpon adres IP.  Pokud potřebujete více jemné kontrolu, můžete vytvořit jednotlivé prostředek veřejné IP adresy z veřejných předpon adres IP a jednotlivě přiřadit několik veřejných IP adres frontendu odchozí pravidlo.
 
-### <a name="snatports"></a>Vyladit alokaci portů SNAT
+### <a name="snatports"></a> Ladit přidělování SNAT portů
 
-Pomocí odchozích pravidel můžete vyladit [automatické přidělování portů SNAT na základě velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) a přidělit více nebo méně, než jaké automatické přidělování portů SNAT nabízí.
+Odchozí pravidla můžete použít k ladění [automatické přidělování port SNAT podle velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) a přidělit víc nebo míň, než poskytuje funkce pro automatické přidělování port SNAT.
 
-K přidělení portů 10 000 SNAT na virtuální počítač (konfigurace IP adresy NIC) použijte následující parametr.
+Použijte tento parametr k přidělení 10 000 SNAT porty na virtuálním počítači (Konfigurace IP adresy NIC).
  
 
           "allocatedOutboundPorts": 10000
 
-Každá veřejná IP adresa ze všech front-endu odchozího pravidla přispívá až 64 000 dočasných portů, které se použijí jako porty SNAT.  Load Balancer přiděluje porty SNAT v násobcích 8. Pokud zadáte hodnotu, která není dělitelná 8, operace konfigurace se odmítne.  Pokud se pokusíte přidělit více portů SNAT, než je k dispozici na základě počtu veřejných IP adres, je operace konfigurace odmítnuta.  Pokud například přidělíte porty 10 000 na virtuální počítač a 7 virtuálních počítačů ve fondu back-end, bude se jednat o jednu veřejnou IP adresu, konfigurace se odmítne (7 x 10 000 SNAT portů > 64 000 portů SNAT).  Můžete přidat další veřejné IP adresy do front-endu odchozího pravidla a povolit tak scénář.
+Každá veřejná IP adresa ze všech front-endu odchozího pravidla přispívá až 64 000 dočasných portů, které se použijí jako porty SNAT.  Nástroj pro vyrovnávání zatížení přiděluje SNAT porty v násobcích po 8. Pokud zadáte hodnotu není dělitelná 8, operace konfigurace byl odmítnut.  Při pokusu o přidělení více SNAT porty, než je k dispozici na základě počtu veřejných IP adres, operace konfigurace byl odmítnut.  Pokud například přidělíte porty 10 000 na virtuální počítač a 7 virtuálních počítačů ve fondu back-end, bude se jednat o jednu veřejnou IP adresu, konfigurace se odmítne (7 x 10 000 SNAT portů > 64 000 portů SNAT).  Můžete přidat více veřejné IP adresy pro front-endu odchozí pravidla povolit tento scénář.
 
-Můžete vrátit zpět na [automatické přidělování portů SNAT na základě velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro počet portů. V takovém případě získají první 50 instancí virtuálních počítačů 1024 portů, 51-100 instancí virtuálních počítačů bude 512 a tak podle tabulky.
+Můžete se vrátit zpět k [automatické přidělování port SNAT podle velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro čísla portů. V takovém případě získají první 50 instancí virtuálních počítačů 1024 portů, 51-100 instancí virtuálních počítačů bude 512 a tak podle tabulky.
 
-### <a name="idletimeout"></a>Řízení časového limitu nečinnosti odchozího toku
+### <a name="idletimeout"></a> Časový limit nečinnosti odchozího toku řízení
 
-Odchozí pravidla poskytují konfigurační parametr pro řízení časového limitu nečinnosti odchozího toku a jejich párování s požadavky vaší aplikace.  Výchozí časový limit nečinnosti ve výchozím nastavení na 4 minuty.  Parametr přijímá hodnotu od 4 do 120 pro určitý počet minut pro časový limit nečinnosti pro toky, které odpovídají tomuto konkrétnímu pravidlu.
+Odchozí pravidla poskytují parametr konfigurace k řízení odchozího toku časový limit nečinnosti a přizpůsobit potřebám vaší aplikace.  Výchozí odchozí časový limit nečinnosti 4 minuty.  Parametr přijímá hodnotu od 4 do 120 pro určitý počet minut pro časový limit nečinnosti pro toky, které odpovídají tomuto konkrétnímu pravidlu.
 
-Pro nastavení odchozího časového limitu nečinnosti na 1 hodinu použijte následující parametr:
+K nastavení odchozí časový limit nečinnosti na 1 hodinu, použijte následující parametr:
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a><a name="tcpreset"></a> Povolit resetování protokolu TCP při nečinnosti časového limitu (Preview)
+### <a name="tcprst"></a> <a name="tcpreset"></a> Povolte resetování TCP na časový limit nečinnosti (Preview)
 
-Výchozím chováním Load Balancer je vyřazení toku v tichém režimu v případě dosažení odchozího časového limitu nečinnosti.  Pomocí parametru enableTCPReset můžete povolit předvídatelné chování aplikace a určit, jestli se má v době nečinnosti odchozího nečinnosti odesílat obousměrné resetování protokolu TCP (TCP RST). 
+Výchozí chování nástroje pro vyrovnávání zatížení je tiše síťový tok, když se dosáhlo odchozí časový limit nečinnosti.  S parametrem enableTCPReset můžete povolit předvídatelnějšího chování aplikace a řídit, jestli se má odeslat obousměrné TCP Reset (TCP RVNÍ) na časový limit odchozí časový limit nečinnosti. 
 
-Pro povolení resetování protokolu TCP u odchozího pravidla použijte následující parametr:
+Povolte resetování TCP na odchozí pravidlo pomocí následující parametr:
 
            "enableTcpReset": true
 
-Podrobnosti o dostupnosti v oblasti najdete v podrobnostech o [vypršení platnosti protokolu TCP při nečinnosti (Preview)](https://aka.ms/lbtcpreset) .
+Kontrola [TCP vynulují časový limit nečinnosti (Preview)](https://aka.ms/lbtcpreset) podrobnosti, včetně dostupnosti oblast.
 
-### <a name="proto"></a>Podpora přenosových protokolů TCP i UDP s jedním pravidlem
+### <a name="proto"></a> Podpora přenosové protokoly TCP a UDP s jedním pravidlem
 
-Pro transportní protokol odchozího pravidla pravděpodobně budete chtít použít "vše", ale můžete také použít odchozí pravidlo na konkrétní transportní protokol a také v případě, že to je potřeba udělat.
+Budete pravděpodobně chtít použít "All" pro přenosový protokol odchozí pravidla, ale můžete také použít odchozí pravidlo na konkrétní přenosový protokol a pokud je potřeba udělat.
 
-Pomocí následujícího parametru nastavte protokol na TCP a UDP:
+Nastavení protokolu TCP a UDP, použijte následující parametr:
 
           "protocol": "All"
 
-### <a name="disablesnat"></a>Zakázat odchozí překlad adres (NAT) pro pravidlo vyrovnávání zatížení
+### <a name="disablesnat"></a> Zakázat odchozí NAT pro pravidlo Vyrovnávání zatížení
 
-Jak bylo uvedeno dříve, pravidla vyrovnávání zatížení poskytují automatické programování odchozího překladu adres (NAT). Některé scénáře ale mají výhodu nebo vyžadují, abyste v rámci pravidla vyrovnávání zatížení zakázali automatické programování odchozího překladu adres (NAT), které vám umožní ovládací prvek nebo Upřesnit jeho chování.  Odchozí pravidla mají scénáře, kde je důležité zastavit automatické odchozí připojení NAT.
+Jak bylo uvedeno dříve, pravidla Vyrovnávání zatížení poskytnout automatické programování odchozí NAT. Některé scénáře však výhody nebo vyžadovat, abyste zakázat automatické programování odchozí NAT, že pravidlo, které umožňují řídit nebo Upřesnit chování Vyrovnávání zatížení.  Odchozí pravidla mají scénáře, kdy je potřeba zastavit automatické odchozí NAT programování.
 
-Tento parametr můžete použít dvěma způsoby:
-- Volitelné potlačení používání příchozí IP adresy pro odchozí překlad adres (NAT).  Odchozí pravidla jsou přírůstková na pravidla vyrovnávání zatížení a s touto sadou parametrů je odchozí pravidlo řízení.
+Tento parametr lze použít dvěma způsoby:
+- Volitelné potlačení použití příchozí IP adresu pro odchozí NAT.  Odchozí pravidla se přičítají k pravidla Vyrovnávání zatížení a tento parametr nastaven, odchozí pravidlo je v ovládacím prvku.
   
-- Vyladění odchozích parametrů NAT pro IP adresu, která se používá pro příchozí a odchozí provoz.  Aby bylo možné převzít řízení odchozího pravidla, musí být toto automatické programování NAT zakázané.  Chcete-li například změnit přidělení portu SNAT adresy, která se používá také pro příchozí, musí být tento parametr nastaven na hodnotu true.  Pokud se pokusíte použít odchozí pravidlo k předefinování parametrů IP adresy, která se používá také pro příchozí a která neuvolnila odchozí programování služby NAT pravidla vyrovnávání zatížení, operace Konfigurace odchozího pravidla se nezdaří.
+- Vyladění odchozí NAT parametry současně použít pro příchozí a odchozí IP adresy.  Povolit odchozí pravidlo převzít kontrolu, musí se zakázat automatické odchozí NAT programování.  Například, chcete-li změnit port přidělení SNAT adresy také použít pro příchozí, tento parametr musí být nastaven na hodnotu true.  Pokud se pokusíte použít odchozí pravidlo k předefinování parametry IP adresy používá také pro příchozí a nebyly vydané odchozí NAT programování pravidlo Vyrovnávání zatížení, se nezdaří operace konfigurace odchozí pravidla.
 
 >[!IMPORTANT]
-> Pokud nastavíte tento parametr na hodnotu true a nemáte odchozí pravidlo (nebo [scénář veřejné IP adresy na úrovni instance](load-balancer-outbound-connections.md#ilpip) pro definování odchozího připojení), váš virtuální počítač nebude mít odchozí připojení.  Některé operace virtuálního počítače nebo vaší aplikace můžou záviset na dostupnosti odchozího připojení. Ujistěte se, že rozumíte závislostem vašeho scénáře a že se tyto změny považují za důsledky.
+> Váš virtuální počítač nebude mít odchozí připojení, pokud tento parametr nastaven na hodnotu true a není nutné odchozí pravidlo (nebo [veřejného scénáře IP na úrovni instance](load-balancer-outbound-connections.md#ilpip) definovat odchozí připojení.  Některé operace virtuálního počítače nebo vaše aplikace může záviset na s odchozí připojení k dispozici. Ujistěte se, že přehled o závislostech váš scénář a mít považovat za dopad provedení této změny.
 
-Odchozí SNAT pro pravidlo vyrovnávání zatížení můžete zakázat s tímto parametrem konfigurace:
+Můžete zakázat odchozí SNAT na pravidlo s tímto parametrem konfiguraci Vyrovnávání zatížení:
 
 ```json
       "loadBalancingRules": [
@@ -136,83 +135,83 @@ Odchozí SNAT pro pravidlo vyrovnávání zatížení můžete zakázat s tímto
       ]
 ```
 
-Parametr disableOutboundSNAT má výchozí hodnotu false, což znamená, že pravidlo vyrovnávání **zatížení poskytuje automatické** odchozí překlad adres (NAT) jako zrcadlový obraz konfigurace pravidla vyrovnávání zatížení.  
+DisableOutboundSNAT parametr výchozí hodnotu false, což znamená, že pravidla Vyrovnávání zatížení **nemá** poskytují automatickou odchozí NAT jako zrcadlový obraz konfiguraci pravidla Vyrovnávání zatížení.  
 
-Pokud nastavíte disableOutboundSnat na hodnotu true pro pravidlo vyrovnávání zatížení, pravidlo vyrovnávání zatížení vydává kontrolu nad jinak automatické programování odchozího překladu adres (NAT).  Odchozí SNAT v důsledku pravidla vyrovnávání zatížení je zakázané.
+Pokud nastavíte disableOutboundSnat na hodnotu true pro pravidlo Vyrovnávání zatížení, pravidla Vyrovnávání zatížení uvolní řízení jinak automatické odchozí NAT programování.  Odchozí SNAT v důsledku pravidla Vyrovnávání zatížení je zakázaná.
 
-### <a name="reuse-existing-or-define-new-backend-pools"></a>Znovu použít existující nebo definovat nové back-endové fondy
+### <a name="reuse-existing-or-define-new-backend-pools"></a>Znovu použít existující, nebo definujte nové back-endové fondy
 
-Odchozí pravidla nezavádí nový koncept pro definování skupiny virtuálních počítačů, na které by se mělo pravidlo vztahovat.  Místo toho znovu použijí koncept fondu back-end, který se používá také pro pravidla vyrovnávání zatížení. Tuto možnost můžete použít ke zjednodušení konfigurace buď opětovným použitím existující definice back-end fondu, nebo vytvořením speciálně pro odchozí pravidlo.
+Odchozí pravidla nezavádí nové konceptu k definování skupiny virtuálních počítačů, pro které má pravidlo platit.  Místo toho použít koncept back-endový fond, který se používá také pro pravidla Vyrovnávání zatížení. Můžete to zjednodušit konfiguraci tím, že opětovné použití existující definice fondu back-end nebo vytvoření nového speciálně pro odchozí pravidlo.
 
 ## <a name="scenarios"></a>Scénáře
 
-### <a name="groom"></a>Odchozí připojení výmazu dat ke konkrétní sadě veřejných IP adres
+### <a name="groom"></a> Odchozí připojení výmazu dat pro konkrétní sadu veřejné IP adresy
 
-Můžete použít odchozí pravidlo pro vymazání odchozích připojení, která se mají vyskytnout z konkrétní sady veřejných IP adres, aby se usnadnily scénáře přidávání na seznam povolených.  Tato veřejná IP adresa se může shodovat s použitím pravidla vyrovnávání zatížení nebo jiné sady veřejných IP adres, než je používá pravidlo vyrovnávání zatížení.  
+Odchozí pravidlo slouží k pravidelnému mazání odchozí připojení se zobrazí jenom na úzkou konkrétní sadu veřejné IP adresy k usnadnění scénářů na seznam povolených.  Tuto veřejnou IP adresu zdroje může být stejný jako pravidla Vyrovnávání zatížení nebo jinou sadu veřejných IP adres než používá pravidla Vyrovnávání zatížení.  
 
-1. Vytvořit [předponu veřejné IP](https://aka.ms/lbpublicipprefix) adresy (nebo veřejné IP adresy z předpony veřejných IP adres)
+1. Vytvoření [předponu veřejné IP](https://aka.ms/lbpublicipprefix) (nebo veřejné IP adresy z veřejných předpon adres IP)
 2. Vytvoření veřejného Load Balanceru úrovně Standard
-3. Vytvoření front-endu odkazujících na předponu veřejné IP adresy (nebo veřejné IP adresy), které chcete použít
-4. Znovu použijte back-end fond nebo vytvořte fond back-end a umístěte virtuální počítače do back-endového fondu veřejné Load Balancer
-5. Konfigurace odchozího pravidla na veřejném Load Balancer pro programování odchozího překladu adres (NAT) pro tyto virtuální počítače pomocí front-endu
+3. Vytvoření front-endů odkazující na veřejnosti předpon adres IP (nebo veřejné IP adresy), které chcete použít
+4. Opakovaně používat back-endový fond nebo vytvořte back-endového fondu a umístěte virtuální počítače do back-endový fond veřejného nástroje pro vyrovnávání zatížení
+5. Odchozí pravidlo nakonfigurovat na veřejný Load balancer úrovně programovat odchozí NAT pro tyto virtuální počítače pomocí front-endů
    
-Pokud nechcete, aby se pravidlo vyrovnávání zatížení používalo pro odchozí připojení, musíte [Zakázat odchozí SNAT](#disablesnat) v pravidle vyrovnávání zatížení.
+Pokud nechcete, aby pro pravidlo Vyrovnávání zatížení má být použit pro odchozí, budete muset [zakázat odchozí SNAT](#disablesnat) na pravidla Vyrovnávání zatížení.
 
-### <a name="modifysnat"></a>Úprava přidělení portu SNAT
+### <a name="modifysnat"></a> Upravit přidělení SNAT portu
 
-Pomocí odchozích pravidel můžete vyladit [automatické přidělování portů SNAT na základě velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports).
+Odchozí pravidla můžete použít k ladění [automatické přidělování port SNAT podle velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports).
 
-Pokud například máte dva virtuální počítače sdílející jednu veřejnou IP adresu pro odchozí NAT, možná budete chtít zvýšit počet portů SNAT přidělených z výchozích portů 1024, pokud máte vyčerpání SNAT. Každá veřejná IP adresa může přispívat až 64 000 dočasných portů.  Pokud nakonfigurujete odchozí pravidlo s jednou front-endu veřejné IP adresy, můžete do virtuálních počítačů ve fondu back-endu distribuovat celkem 64 000 portů SNAT.  Pro dva virtuální počítače se dá přidělit maximálně 32 000 portů SNAT pomocí odchozího pravidla (2x 32 000 = 64 000).
+Pokud budete mít dva virtuální počítače sdílení jednu veřejnou IP adresu pro odchozí NAT, můžete chtít zvýšit počet portů SNAT přiděluje z výchozí porty 1024, pokud dochází k vyčerpání SNAT. Každá veřejná IP adresa může přispívat až 64 000 dočasných portů.  Pokud nakonfigurujete odchozí pravidlo s jednou front-endu veřejné IP adresy, můžete do virtuálních počítačů ve fondu back-endu distribuovat celkem 64 000 portů SNAT.  Pro dva virtuální počítače se dá přidělit maximálně 32 000 portů SNAT pomocí odchozího pravidla (2x 32 000 = 64 000).
 
-Zkontrolujte [odchozí připojení](load-balancer-outbound-connections.md) a podrobnosti o přidělování a používání portů [SNAT](load-balancer-outbound-connections.md#snat) .
+Kontrola [odchozí připojení](load-balancer-outbound-connections.md) a podrobnosti o [SNAT](load-balancer-outbound-connections.md#snat) porty jsou přidělovány a využívány.
 
-### <a name="outboundonly"></a>Povolit pouze odchozí
+### <a name="outboundonly"></a> Povolit pouze odchozí
 
-K poskytování odchozího překladu adres (NAT) pro skupinu virtuálních počítačů můžete použít veřejné Standard Load Balancer. V tomto scénáři můžete použít odchozí pravidlo samostatně, aniž byste museli mít žádná další pravidla.
+Veřejného Load balanceru úrovně Standard můžete použít k poskytnutí odchozí NAT pro skupinu virtuálních počítačů. V tomto scénáři můžete použít odchozí pravidlo samostatně, bez nutnosti jakékoli další pravidla.
 
-#### <a name="outbound-nat-for-vms-only-no-inbound"></a>Odchozí překlad adres (NAT) pouze pro virtuální počítače (žádné příchozí)
+#### <a name="outbound-nat-for-vms-only-no-inbound"></a>Odchozí NAT pro virtuální počítače pouze (ne příchozí)
 
-Definujte veřejné Standard Load Balancer, umístěte virtuální počítače do back-endu fondu a nakonfigurujte odchozí pravidlo pro programování odchozího překladu adres (NAT) a výmaz dat z konkrétní veřejné IP adresy. Můžete také použít předponu veřejné IP adresy zjednodušit výpis zdroje odchozích připojení.
+Definovat veřejný Load Balancer Standard, umístěte virtuální počítače do back-endového fondu a nakonfigurovat odchozí pravidlo programu odchozí NAT a mazání odchozí připojení k pocházejí z konkrétní veřejné IP adresy. Můžete také použít veřejných předpon adres IP pro zjednodušení seznamu povolených zdroj odchozí připojení.
 
-1. Vytvořte veřejnou Standard Load Balancer.
-2. Vytvořte back-end fond a umístěte virtuální počítače do back-endového fondu veřejné Load Balancer.
-3. Nakonfigurujte odchozí pravidlo na veřejném Load Balancer pro programování odchozího překladu adres (NAT) pro tyto virtuální počítače.
+1. Vytvoření veřejného Load Balanceru úrovně Standard.
+2. Vytvořte back-endový fond a umístěte virtuální počítače do back-endový fond veřejného nástroje pro vyrovnávání zatížení.
+3. Odchozí pravidlo nakonfigurujte na veřejný Load balancer úrovně programovat odchozí NAT pro tyto virtuální počítače.
 
-#### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>Odchozí překlad adres (NAT) pro interní Standard Load Balancer scénáře
+#### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>Odchozí NAT pro interní nástroj pro vyrovnávání zatížení scénáře
 
-Při použití interního Standard Load Balancer není odchozí překlad adres (NAT) dostupný, dokud není explicitně deklarované odchozí připojení. Odchozí připojení můžete definovat pomocí odchozího pravidla pro vytvoření odchozího připojení pro virtuální počítače za interním Standard Load Balancer s těmito kroky:
+Při použití interní Load balanceru úrovně Standard, odchozí NAT není k dispozici, dokud explicitně deklarovány odchozí připojení. Můžete definovat odchozí připojení pomocí odchozí pravidla vytvořit odchozí připojení pro virtuální počítače za bránou interní Load balanceru úrovně Standard pomocí těchto kroků:
 
-1. Vytvořte veřejnou Standard Load Balancer.
-2. Vytvořte fond back-end a umístěte virtuální počítače do back-endového fondu veřejných Load Balancer kromě interní Load Balancer.
-3. Nakonfigurujte odchozí pravidlo na veřejném Load Balancer pro programování odchozího překladu adres (NAT) pro tyto virtuální počítače.
+1. Vytvoření veřejného Load Balanceru úrovně Standard.
+2. Vytvořte back-endového fondu a umístěte virtuální počítače do back-endový fond veřejného Load balanceru úrovně kromě interního nástroje pro vyrovnávání zatížení.
+3. Odchozí pravidlo nakonfigurujte na veřejný Load balancer úrovně programovat odchozí NAT pro tyto virtuální počítače.
 
-#### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>Povolit protokoly TCP & UDP pro odchozí překlad adres (NAT) s veřejným Standard Load Balancer
+#### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>Povolit protokoly TCP a UDP pro odchozí NAT s veřejného Load balanceru úrovně Standard
 
-- Při použití veřejné Standard Load Balancer se zadané automatické odchozí přenosy NAT shodují s transportním protokolem pravidla vyrovnávání zatížení.  
+- Při použití veřejného Load balanceru úrovně Standard, automatické odchozí NAT programování poskytuje odpovídá přenosový protokol pravidlo Vyrovnávání zatížení.  
 
-   1. Zakáže odchozí SNAT u pravidla vyrovnávání zatížení.
-   2. Nakonfigurujte odchozí pravidlo pro stejné Load Balancer.
-   3. Znovu použijte back-end fond, který už používá vaše virtuální počítače.
-   4. Jako součást odchozího pravidla zadejte "protokol": "vše".
+   1. Zakážete odchozí SNAT na pravidla Vyrovnávání zatížení.
+   2. Odchozí pravidlo nakonfigurujte na stejné nástroje pro vyrovnávání zatížení.
+   3. Opakovaně používat back-endový fond už používá vaše virtuální počítače.
+   4. Zadejte "protokol": "Vše" jako součást odchozí pravidla.
 
-- Když se používají jenom pravidla příchozího překladu adres (NAT), neposkytne se žádné odchozí NAT.
+- Pokud se používá jenom příchozích pravidel NAT, je k dispozici žádná odchozí NAT.
 
-   1. Umístěte virtuální počítače do back-endového fondu.
-   2. Definujte jednu nebo víc konfigurací IP front-endu s veřejnými IP adresami nebo předponou veřejné IP adresy.
-   3. Nakonfigurujte odchozí pravidlo pro stejné Load Balancer.
-   4. Zadejte "protokol": "All" jako součást odchozího pravidla
+   1. Umístěte virtuální počítače v back-endový fond.
+   2. Definujte jeden nebo více konfigurací protokolu IP front-endu pomocí veřejné IP adresy nebo předpony veřejných IP.
+   3. Odchozí pravidlo nakonfigurujte na stejné nástroje pro vyrovnávání zatížení.
+   4. Zadejte "protokol": "Vše" jako součást odchozí pravidla
 
 ## <a name="limitations"></a>Omezení
 
 - Maximální počet použitelných dočasných portů na IP adresu front-endu je 64 000.
 - Rozsah konfigurovatelného odchozího časového limitu nečinnosti je 4 až 120 minut (240 až 7200 sekund).
-- Load Balancer nepodporuje protokol ICMP pro odchozí překlad adres (NAT).
-- Portál nelze použít ke konfiguraci nebo zobrazení odchozích pravidel.  Místo toho použijte šablony REST API AZ CLI 2,0 nebo PowerShell.
+- Nástroj pro vyrovnávání zatížení nepodporuje protokol ICMP pro odchozí NAT.
+- Portál nelze použít ke konfiguraci nebo zobrazení odchozí pravidla.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
 - Odchozí pravidla se dají použít jenom u primární konfigurace IP adresy síťového adaptéru.  Podporuje se víc síťových adaptérů.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o použití [Load Balancer pro odchozí připojení](load-balancer-outbound-connections.md).
-- Přečtěte si o [Standard Load Balancer](load-balancer-standard-overview.md).
-- Přečtěte si o [Nastavení obousměrného protokolu TCP při nečinnosti](load-balancer-tcp-reset.md).
-- [Nakonfigurujte odchozí pravidla pomocí Azure CLI 2,0](configure-load-balancer-outbound-cli.md).
+- Další informace o použití [nástroje pro vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md).
+- Další informace o [Load balanceru úrovně Standard](load-balancer-standard-overview.md).
+- Další informace o [obousměrné TCP Reset na časový limit nečinnosti](load-balancer-tcp-reset.md).
+- [Nakonfigurujte odchozí pravidla pomocí Azure CLI 2.0](configure-load-balancer-outbound-cli.md).

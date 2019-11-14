@@ -6,18 +6,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 065f392f3089f4d6872cd39c6aaab2098afc6c90
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8fe665ed9a9c580f5ce7d7bf43e71b9672a2bc5b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012160"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075036"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopení struktury a syntaxe šablon Azure Resource Manager
 
 Tento článek popisuje strukturu Azure Resource Manager šablony. Zobrazuje různé oddíly šablony a vlastnosti, které jsou k dispozici v těchto oddílech.
 
-Tento článek je určený pro uživatele, kteří mají určitou znalost Správce prostředků šablon. Poskytuje podrobné informace o struktuře šablony. Pokud chcete seznámení s vytvářením šablony, přečtěte si téma [Azure Resource Manager šablony](template-deployment-overview.md).
+Tento článek je určený pro uživatele, kteří mají určitou znalost Správce prostředků šablon. Poskytuje podrobné informace o struktuře šablony. Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v tématu [kurz: vytvoření a nasazení první šablony Azure Resource Manager](template-tutorial-create-first-template.md).
 
 ## <a name="template-format"></a>Formát šablony
 

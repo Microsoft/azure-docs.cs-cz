@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Vytvoření virtuálního počítače s Windows pomocí Azure PowerShellu | Microsoft Docs
+title: Rychlý Start – vytvoření virtuálního počítače s Windows pomocí Azure PowerShell
 description: V tomto rychlém startu zjistíte, jak pomocí Azure PowerShellu vytvořit virtuální počítač s Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0a8e6ab04cbb1c5a3ef9be299a08380912aad7ef
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 607ad17af42b88737d8ca4ebc379504d9b0b40df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088800"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073446"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Rychlý start: Vytvoření virtuálního počítače s Windows v Azure pomocí PowerShellu
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Zadejte názvy pro každý z prostředků a `New-AzVM` rutina vytvoří, pokud ještě neexistují.
+Vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Zadejte názvy pro každý z prostředků a rutina `New-AzVM` vytvoří, pokud ještě neexistují.
 
 Po zobrazení výzvy zadejte uživatelské jméno a heslo, které se použije jako přihlašovací údaje pro virtuální počítač:
 

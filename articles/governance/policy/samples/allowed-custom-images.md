@@ -1,17 +1,14 @@
 ---
 title: Image virtuálních počítačů schválené vzorkem
 description: Tato ukázková definice zásad vyžaduje, aby ve vašem prostředí byly nasazené jenom schválené vlastní image.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 34a3cf54879dcf6fc25fab50bcbabde28fff653a
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: f8b5911cfa7700ef14dfac610ab4533c57f22e76
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980850"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076482"
 ---
 # <a name="sample---approved-virtual-machine-images"></a>Image virtuálních počítačů schválené vzorkem
 
@@ -51,7 +48,7 @@ Kód JSON definující parametry zásady, který se používá Azure CLI a Azure
 
 ## <a name="parameters"></a>Parametry
 
-|Name (Název) |Typ |Pole |Popis |
+|Název |Typ |Pole |Popis |
 |---|---|---|---|
 |imageIds |Pole |Microsoft.Compute/imageIds |Seznam schválených imagí virtuálních počítačů|
 
@@ -71,10 +68,10 @@ V tomto ukázkovém parametru se povolí pouze image _ContosoStdImage_ ve skupin
 }
 ```
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>portál Azure
 
-[@no__t – 1Deploy vzor zásady do azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
-[![Deploy vzor zásady do Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![nasazení ukázky zásad do azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -124,7 +121,7 @@ Ve skriptech nasazení a odebrání se používají následující příkazy. Ka
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
@@ -162,11 +159,11 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 | [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Odebere stávající přiřazení Azure Policy. |
 | [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Odebere stávající definici Azure Policy. |
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
 Při práci s rozhraním REST API Resource Manageru můžete použít několik nástrojů, jako je [ARMClient](https://github.com/projectkudu/ARMClient) nebo PowerShell. Příklad volání rozhraní REST API z PowerShellu najdete v části **Aliasy** v článku věnovaném [struktuře definic zásad](../concepts/definition-structure.md#aliases).
 
-### <a name="deploy-with-rest-api"></a>Nasazení pomocí REST API
+### <a name="deploy-with-rest-api"></a>Nasazení pomocí rozhraní REST API
 
 - Vytvořte definici zásady (v oboru předplatného). Jako text požadavku použijte JSON s [definicí zásady](#policy-definition).
 

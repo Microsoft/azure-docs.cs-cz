@@ -1,63 +1,60 @@
 ---
 title: Ukázka – vysazení značky a hodnoty ve skupinách prostředků
 description: Tato definice ukázkové zásady vyžaduje značku a hodnotu ve skupině prostředků.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/31/2019
-ms.author: dacoulte
-ms.openlocfilehash: 5f4af5ee88ad491e7864e82afc337801e47f2204
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 1a4bf9d27971b149e3df422987f58d0f184181c2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255770"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076278"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Ukázka – vynutilo značku a její hodnotu ve skupinách prostředků
 
-Tato zásada vyžaduje pro skupinu prostředků značku a hodnotu. Zadejte požadovaný název a hodnotu značky.
+Tato zásada vyžaduje značku a hodnotu u skupiny prostředků. Zadejte požadovaný název a hodnotu značky.
 
-Tuto ukázkovou zásadu můžete nasadit pomocí:
+K nasazení této ukázkové zásady můžete použít:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
-- [Rozhraní příkazového řádku Azure](#azure-cli)
+- [Azure CLI](#azure-cli)
 - [REST API](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-policy"></a>Ukázkové zásady
+## <a name="sample-policy"></a>Ukázková zásada
 
-### <a name="policy-definition"></a>Definice zásad
+### <a name="policy-definition"></a>Definice zásady
 
-Kompletní definice zásady složeného JSON, kterou používají REST API, nasadit do Azure a ručně na portálu.
+Kompletní složená definice zásady JSON, která se používá v rozhraní REST API, pro tlačítka Nasadit do Azure a při ručním vytváření na portálu.
 
 [!code-json[main](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.json "Enforce tag and its value on resource groups")]
 
 > [!NOTE]
-> Pokud zásadu vytváříte ručně na portálu, použijte výše uvedené části **Properties. Parameters** a **Properties. policyRule** . Zabalte dvě části dohromady se složenými závorkami `{}`, aby se zajistil platný formát JSON.
+> Pokud zásadu vytváříte ručně na portálu, použijte části **properties.parameters** a **properties.policyRule** uvedené výše. Obě části zabalte pomocí složených závorek `{}`, aby byl kód JSON platný.
 
-### <a name="policy-rules"></a>Pravidla zásad
+### <a name="policy-rules"></a>Pravidla zásady
 
-JSON definující pravidla zásad, která používá Azure CLI a Azure PowerShell.
+Kód JSON definující pravidla zásady, který se používá v Azure CLI a Azure PowerShellu.
 
 [!code-json[rule](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.rules.json "Policy rules (JSON)")]
 
 ### <a name="policy-parameters"></a>Parametry zásad
 
-JSON definující parametry zásad, které používá Azure CLI a Azure PowerShell.
+Kód JSON definující parametry zásady, který se používá Azure CLI a Azure PowerShellu.
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Jméno |Type |Pole |Description |
+|Název |Typ |Pole |Popis |
 |---|---|---|---|
-|Značky |Řetězec |značky |Název značky, například costCenter|
-|tagValue |Řetězec |značky |Hodnota značky, například sídel|
+|tagName |Řetězec |značek |Název značky, třeba costCenter|
+|tagValue |Řetězec |značek |Hodnota značky, třeba headquarter|
 
-Při vytváření přiřazení prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure můžete hodnoty parametrů předat jako JSON buď v řetězci, nebo prostřednictvím souboru pomocí `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
-PowerShell také podporuje `-PolicyParameterObject`, která vyžaduje předání rutiny s názvem a hodnotou hash, kde **název** je název parametru a **hodnota** je jediná hodnota nebo pole hodnot předávaných během přiřazení.
+Při vytváření přiřazení přes PowerShell nebo Azure CLI je možné předat hodnoty parametrů ve formátu JSON buď v řetězci, nebo prostřednictvím souboru pomocí parametru `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
+PowerShell podporuje také parametr `-PolicyParameterObject`, který vyžaduje, aby se rutině předala zatřiďovací tabulka názvů a hodnot, kde **název** je název parametru a **hodnota** je jedna hodnota nebo pole hodnot, které se předávají během přiřazení.
 
-V tomto příkladu parametru je definována _TagName_ z **costCenter** a _tagValue_ of **sídel** .
+V tomto ukázkovém parametru se definuje vlastnost _tagName_ s hodnotou **costCenter** a vlastnost _tagValue_ s hodnotou **headquarter**.
 
 ```json
 {
@@ -70,16 +67,16 @@ V tomto příkladu parametru je definována _TagName_ z **costCenter** a _tagVal
 }
 ```
 
-## <a name="azure-portal"></a>Portál Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
-[@no__t – 1Deploy vzor zásady do azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
-[![Deploy vzor zásady do Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
+[![nasazení ukázky zásad do azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-### <a name="deploy-with-azure-powershell"></a>Nasazení pomocí Azure PowerShell
+### <a name="deploy-with-azure-powershell"></a>Nasazení pomocí Azure PowerShellu
 
 ```azurepowershell-interactive
 # Create the Policy Definition (Subscription scope)
@@ -95,9 +92,9 @@ $policyParam = '{ "tagName": { "value": "costCenter" }, "tagValue": { "value": "
 $assignment = New-AzPolicyAssignment -Name 'enforce-resourceGroup-tags-assignment' -Scope $scope.ResourceId -PolicyDefinition $definition -PolicyParameter $policyParam
 ```
 
-### <a name="remove-with-azure-powershell"></a>Odebrat s Azure PowerShell
+### <a name="remove-with-azure-powershell"></a>Odebrání pomocí Azure PowerShellu
 
-Spuštěním následujících příkazů odeberte předchozí přiřazení a definici:
+Pokud chcete odebrat předchozí přiřazení a definici, spusťte následující příkazy:
 
 ```azurepowershell-interactive
 # Remove the Policy Assignment
@@ -107,23 +104,23 @@ Remove-AzPolicyAssignment -Id $assignment.ResourceId
 Remove-AzPolicyDefinition -Id $definition.ResourceId
 ```
 
-### <a name="azure-powershell-explanation"></a>Vysvětlení Azure PowerShell
+### <a name="azure-powershell-explanation"></a>Vysvětlení Azure PowerShellu
 
-Skripty nasazení a odebrání používají následující příkazy. Každý příkaz v následující tabulce odkazuje na dokumentaci specifickou pro příkaz:
+Ve skriptech nasazení a odebrání se používají následující příkazy. Každý příkaz v následující tabulce odkazuje na příslušnou část dokumentace:
 
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Vytvoří novou definici Azure Policy. |
-| [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Načte jednu skupinu prostředků. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Vytvoří nové přiřazení Azure Policy. V tomto příkladu poskytujeme definici, ale může také vzít v úvahu podnět. |
-| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Odebere existující přiřazení Azure Policy. |
-| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Odebere existující definici Azure Policy. |
+| [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Získá jednu skupinu prostředků. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Vytvoří nové přiřazení Azure Policy. V tomto příkladu zadáme definici, příkaz ale může převzít také iniciativu. |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Odebere stávající přiřazení Azure Policy. |
+| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Odebere stávající definici Azure Policy. |
 
-## <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Nasazení pomocí Azure CLI
+### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
@@ -140,9 +137,9 @@ assignment=$(
 az policy assignment create --name 'enforce-resourceGroup-tags-assignment' --display-name 'Enforce tag and its value on resource groups'  --scope `echo $scope | jq '.id' -r` --policy `echo $definition | jq '.name' -r` --params "$policyparam")
 ```
 
-### <a name="remove-with-azure-cli"></a>Odebrat pomocí Azure CLI
+### <a name="remove-with-azure-cli"></a>Odebrání pomocí Azure CLI
 
-Spuštěním následujících příkazů odeberte předchozí přiřazení a definici:
+Pokud chcete odebrat předchozí přiřazení a definici, spusťte následující příkazy:
 
 ```azurecli-interactive
 # Remove the Policy Assignment
@@ -156,31 +153,31 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ Policy definition Create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Vytvoří novou definici Azure Policy. |
-| [AZ Group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Načte jednu skupinu prostředků. |
-| [AZ Policy Assignment Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Vytvoří nové přiřazení Azure Policy. V tomto příkladu poskytujeme definici, ale může také vzít v úvahu podnět. |
-| [AZ Policy Assignment DELETE](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Odebere existující přiřazení Azure Policy. |
-| [AZ Policy definition DELETE](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Odebere existující definici Azure Policy. |
+| [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Vytvoří novou definici Azure Policy. |
+| [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Získá jednu skupinu prostředků. |
+| [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Vytvoří nové přiřazení Azure Policy. V tomto příkladu zadáme definici, příkaz ale může převzít také iniciativu. |
+| [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Odebere stávající přiřazení Azure Policy. |
+| [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Odebere stávající definici Azure Policy. |
 
-Existuje několik nástrojů, které lze použít k interakci s Správce prostředků REST API, jako je například [ARMClient](https://github.com/projectkudu/ARMClient) nebo PowerShell. Příklad volání REST API z PowerShellu najdete v části **aliasy** v části [Struktura definice zásad](../concepts/definition-structure.md#aliases).
+Při práci s rozhraním REST API Resource Manageru můžete použít několik nástrojů, jako je [ARMClient](https://github.com/projectkudu/ARMClient) nebo PowerShell. Příklad volání rozhraní REST API z PowerShellu najdete v části **Aliasy** v článku věnovaném [struktuře definic zásad](../concepts/definition-structure.md#aliases).
 
 ## <a name="rest-api"></a>REST API
 
-### <a name="deploy-with-rest-api"></a>Nasazení pomocí REST API
+### <a name="deploy-with-rest-api"></a>Nasazení pomocí rozhraní REST API
 
-- Vytvořte definici zásady (obor předplatného). Pro tělo žádosti použijte JSON [definice zásad](#policy-definition) .
+- Vytvořte definici zásady (v oboru předplatného). Jako text požadavku použijte JSON s [definicí zásady](#policy-definition).
 
   ```http
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/enforce-resourceGroup-tags?api-version=2016-12-01
   ```
 
-- Vytvoření přiřazení zásady (rozsah skupiny prostředků)
+- Vytvořte přiřazení zásady (v oboru skupiny prostředků).
 
   ```http
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/YourResourceGroup/providers/Microsoft.Authorization/policyAssignments/enforce-resourceGroup-tags-assignment?api-version=2017-06-01-preview
   ```
 
-  Pro tělo žádosti použijte následující příklad JSON:
+  Jako text požadavku použijte následující příklad JSON:
 
 ```json
   {
@@ -199,30 +196,30 @@ Existuje několik nástrojů, které lze použít k interakci s Správce prostř
   }
   ```
 
-### <a name="remove-with-rest-api"></a>Odebrat s REST API
+### <a name="remove-with-rest-api"></a>Odebrání pomocí rozhraní REST API
 
-- Odebrat přiřazení zásady
+- Odebrání přiřazení zásady
 
   ```http
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/enforce-resourceGroup-tags-assignment?api-version=2017-06-01-preview
   ```
 
-- Odebrat definici zásady
+- Odebrání definice zásady
 
   ```http
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/enforce-resourceGroup-tags?api-version=2016-12-01
   ```
 
-### <a name="rest-api-explanation"></a>Vysvětlení REST API
+### <a name="rest-api-explanation"></a>Vysvětlení rozhraní REST API
 
 | Služba | Skupina | Operace | Poznámky |
 |---|---|---|---|
-| Správa prostředků | Definice zásad | [Vytvořit](/rest/api/resources/policydefinitions/createorupdate) | Vytvoří novou definici Azure Policy v rámci předplatného. Alternativa: [vytvořit ve skupině pro správu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
-| Správa prostředků | Přiřazení zásad | [Vytvořit](/rest/api/resources/policyassignments/create) | Vytvoří nové přiřazení Azure Policy. V tomto příkladu poskytujeme definici, ale může také vzít v úvahu podnět. |
-| Správa prostředků | Přiřazení zásad | [Odstranit](/rest/api/resources/policyassignments/delete) | Odebere existující přiřazení Azure Policy. |
-| Správa prostředků | Definice zásad | [Odstranit](/rest/api/resources/policydefinitions/delete) | Odebere existující definici Azure Policy. Alternativní: [odstranění ve skupině pro správu](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Správa prostředků | Definice zásad | [Vytvoření](/rest/api/resources/policydefinitions/createorupdate) | Vytvoří v předplatném novou definici Azure Policy. Alternativa: [Vytvoření skupiny pro správu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Správa prostředků | Přiřazení zásad | [Vytvoření](/rest/api/resources/policyassignments/create) | Vytvoří nové přiřazení Azure Policy. V tomto příkladu zadáme definici, příkaz ale může převzít také iniciativu. |
+| Správa prostředků | Přiřazení zásad | [Odstranění](/rest/api/resources/policyassignments/delete) | Odebere stávající přiřazení Azure Policy. |
+| Správa prostředků | Definice zásad | [Odstranění](/rest/api/resources/policydefinitions/delete) | Odebere stávající definici Azure Policy. Alternativa: [Odstranění skupiny pro správu](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Kontrola dalších [ukázek Azure Policy](index.md)
-- Kontrola [Azure Policy struktury definice](../concepts/definition-structure.md)
+- Prohlédněte si další [ukázky pro Azure Policy](index.md).
+- Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).

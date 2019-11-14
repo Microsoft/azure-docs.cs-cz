@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: ec21c26c705dab94b15c1f76be5e62207b9f206f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6fc17f08db5951a3d693c7a5e3d5556d848d2efb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815669"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075044"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Virtuální síť je privátní síť v cloudu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro instanci Redis Premium Azure cache.
@@ -39,7 +39,7 @@ Podpora Virtual Network (VNet) je nakonfigurovaná v **novém okně Azure cache 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Po výběru cenové úrovně Premium můžete nakonfigurovat integraci virtuální sítě Redis tak, že vyberete virtuální síť, která se nachází ve stejném předplatném a umístění jako vaše mezipaměť. Pokud chcete použít novou virtuální síť, vytvořte ji jako první pomocí postupu v části [vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/manage-virtual-network.md#create-a-virtual-network) nebo [vytvořte virtuální síť (classic) pomocí Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a pak se vraťte do **nového okna Azure cache pro Redis** a vytvořte a Nakonfigurujte mezipaměť Premium.
+Po výběru cenové úrovně Premium můžete nakonfigurovat integraci virtuální sítě Redis tak, že vyberete virtuální síť, která se nachází ve stejném předplatném a umístění jako vaše mezipaměť. Pokud chcete použít novou virtuální síť, vytvořte ji jako první pomocí postupu v části [vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/manage-virtual-network.md#create-a-virtual-network) nebo [vytvořte virtuální síť (classic) pomocí Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a pak se vraťte do **nového okna Azure cache pro Redis** a vytvořte a nakonfigurujte mezipaměť Premium.
 
 Pokud chcete pro novou mezipaměť nakonfigurovat virtuální síť, klikněte na **Virtual Network** v **novém okně Azure cache pro Redis** a v rozevíracím seznamu vyberte požadovanou virtuální síť.
 
@@ -104,16 +104,17 @@ Když je Azure cache for Redis hostovaný ve virtuální síti, použijí se por
 
 #### <a name="outbound-port-requirements"></a>Požadavky na Odchozí porty
 
-K dispozici jsou sedm požadavků na Odchozí porty.
+K dispozici jsou devět požadavků na Odchozí porty.
 
 - Všechna odchozí připojení k Internetu je možné provést prostřednictvím místního zařízení auditu klienta.
 - Tři z portů směrují provoz do Azure Endpoints Servicing Azure Storage a Azure DNS.
 - Zbývající rozsahy portů a interní komunikace podsítě Redis. Pro interní komunikaci mezi podsítěmi Redis se nevyžadují žádná NSG pravidla podsítě.
 
-| Port (y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
+| Port (y) | Direction | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Odchozí |TCP |Redis závislosti na Azure Storage/PKI (Internet) | (Podsíť Redis) |* |
-| 53 |Odchozí |TCP/UDP |Redis závislosti na DNS (Internet/VNet) | (Podsíť Redis) | 168.63.129.16 a 169.254.169.254 <sup>1</sup> a jakýkoli vlastní server DNS pro podsíť <sup>3</sup> |
+| 443 | Odchozí | TCP | Redis závislost na Azure Key Vault | (Podsíť Redis) | AzureKeyVault <sup>1</sup> |
+| 53 |Odchozí |TCP/UDP |Redis závislosti na DNS (Internet/VNet) | (Podsíť Redis) | 168.63.129.16 a 169.254.169.254 <sup>2</sup> a jakýkoli vlastní server DNS pro podsíť <sup>3</sup> |
 | 8443 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) | (Podsíť Redis) |
 | 10221-10231 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) | (Podsíť Redis) |
 | 20226 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
@@ -121,7 +122,9 @@ K dispozici jsou sedm požadavků na Odchozí porty.
 | 15000-15999 |Odchozí |TCP |Interní komunikace pro Redis a geografickou replikaci | (Podsíť Redis) |(Podsíť Redis) (Geografická podsíť pro rovnocenné repliky) |
 | 6379-6380 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
 
-<sup>1</sup> tyto IP adresy vlastněné Microsoftem slouží k adresování HOSTITELSKÉHO virtuálního počítače, který slouží Azure DNS.
+<sup>1</sup> můžete použít značku služby AzureKeyVault s správce prostředkůmi skupinami zabezpečení sítě.
+
+<sup>2</sup> tyto IP adresy vlastněné Microsoftem slouží k adresování HOSTITELSKÉHO virtuálního počítače, který slouží Azure DNS.
 
 <sup>3</sup> není potřeba pro podsítě bez vlastního serveru DNS ani novějších mezipamětí Redis, které ignorují vlastní DNS.
 
@@ -133,18 +136,18 @@ Pokud používáte mezi mezipamětí v Azure Virtual Networkch replikaci mezi me
 
 Existuje osm požadavků na rozsah příchozích portů. Příchozí požadavky v těchto rozsahech jsou buď příchozí z jiných služeb hostovaných ve stejné virtuální síti, nebo interní pro komunikaci podsítě Redis.
 
-| Port (y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
+| Port (y) | Direction | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Příchozí |TCP |Komunikace klienta s Redis, Vyrovnávání zatížení Azure | (Podsíť Redis) | (Redis podsíť), Virtual Network Azure Load Balancer <sup>2</sup> |
+| 6379, 6380 |Příchozí |TCP |Komunikace klienta s Redis, Vyrovnávání zatížení Azure | (Podsíť Redis) | (Redis podsíť), Virtual Network Azure Load Balancer <sup>1</sup> |
 | 8443 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
-| 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Nástroj pro vyrovnávání zatížení Azure |
+| 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Azure Load Balancer |
 | 10221-10231 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Redis podsíť), Azure Load Balancer |
 | 13000-13999 |Příchozí |TCP |Komunikace klienta s Redis clustery, Vyrovnávání zatížení Azure | (Podsíť Redis) |Virtual Network Azure Load Balancer |
 | 15000-15999 |Příchozí |TCP |Komunikace klientů s Redis clustery, vyrovnáváním zatížení Azure a geografickou replikací | (Podsíť Redis) |Virtual Network, Azure Load Balancer (geografická podsíť druhé repliky) |
-| 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Nástroj pro vyrovnávání zatížení Azure |
+| 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Azure Load Balancer |
 | 20226 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
 
-<sup>2</sup> můžete použít značku služby ' AzureLoadBalancer ' (Správce prostředků) (nebo ' AZURE_LOADBALANCER ' pro klasický) pro vytváření pravidel NSG.
+<sup>1</sup> můžete použít značku služby ' AzureLoadBalancer ' (Správce prostředků) (nebo ' AZURE_LOADBALANCER ' pro klasický) pro vytváření pravidel NSG.
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>Další požadavky na připojení k síti virtuální sítě
 
@@ -166,11 +169,11 @@ Po nakonfigurování požadavků na porty, jak je popsáno v předchozí části
 
 - [Restartujte](cache-administration.md#reboot) všechny uzly mezipaměti. Pokud není dostupný žádný z požadovaných závislostí mezipaměti (jak je uvedeno v [požadavcích na příchozí porty](cache-how-to-premium-vnet.md#inbound-port-requirements) a [odchozí požadavky na porty](cache-how-to-premium-vnet.md#outbound-port-requirements)), mezipaměť nebude možné úspěšně restartovat.
 - Po restartování uzlů mezipaměti (jak je uvedeno v Azure Portal stavu mezipaměti) můžete provádět následující testy:
-  - Otestujte koncový bod mezipaměti (pomocí portu 6380) z počítače, který je ve stejné virtuální síti jako mezipaměť, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Například:
+  - Otestujte koncový bod mezipaměti (pomocí portu 6380) z počítače, který je ve stejné virtuální síti jako mezipaměť, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Příklad:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
-    Pokud nástroj `tcping` hlásí, že je port otevřený, je mezipaměť k dispozici pro připojení od klientů ve virtuální síti.
+    Pokud nástroj `tcping` hlásí, že je port otevřený, je mezipaměť dostupná pro připojení od klientů ve virtuální síti.
 
   - Další možností testování je vytvořit klienta testovací mezipaměti (což může být jednoduchá Konzolová aplikace s použitím StackExchange. Redis), která se připojuje k mezipaměti a přidává a načítá některé položky z mezipaměti. Nainstalujte ukázkovou klientskou aplikaci do virtuálního počítače, který je ve stejné virtuální síti jako mezipaměť, a spusťte ho, abyste ověřili připojení k mezipaměti.
 
@@ -189,7 +192,7 @@ Vyhněte se použití IP adresy, která je podobná následujícímu připojovac
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Pokud nemůžete přeložit název DNS, některé klientské knihovny obsahují možnosti konfigurace, jako je `sslHost`, které poskytuje klient StackExchange. Redis. To vám umožní přepsat název hostitele, který se používá k ověření certifikátu. Například:
+Pokud nemůžete přeložit název DNS, některé klientské knihovny zahrnují možnosti konfigurace, jako je `sslHost`, které poskytuje klient StackExchange. Redis. To vám umožní přepsat název hostitele, který se používá k ověření certifikátu. Příklad:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -254,4 +257,3 @@ Naučte se používat víc funkcí mezipaměti Premium.
 [redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
-

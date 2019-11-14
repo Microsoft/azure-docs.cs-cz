@@ -1,19 +1,19 @@
 ---
-title: Azure VPN Gateway | Microsoft Docs
+title: O službě Azure VPN Gateway
 description: Zjistěte, co je brána VPN a jak se pomocí ní můžete připojit k virtuálním sítím Azure. Zahrnuje řešení IPSec/IKE typu Site-to-Site mezi místními sítěmi a IPSec/IKE typu VNet-to-VNet a sítě VPN typu Point-to-Site.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/31/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495705"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075444"
 ---
 # <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
 
@@ -53,7 +53,10 @@ Následující tabulka vám může pomoci se zvolením nejlepší možnosti při
 
 ## <a name="gwsku"></a>SKU brány
 
-Při vytváření brány virtuální sítě zadáváte jednotku SKU brány, kterou chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA. Další informace o SKU brány, včetně podporovaných funkcí, produkčního a vývojového a testovacího prostředí, najdete v článku [VPN Gateway nastavení – SKU brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku) . Informace o starších verzích SKU najdete v tématu [práce se staršími SKU](vpn-gateway-about-skus-legacy.md).
+Při vytváření brány virtuální sítě zadáváte jednotku SKU brány, kterou chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA.
+
+* Další informace o SKU brány, včetně podporovaných funkcí, produkčního a vývojového a testovacího prostředí, najdete v článku [VPN Gateway nastavení – SKU brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku) .
+* Informace o starších verzích SKU najdete v tématu [práce se staršími SKU](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>SKU brány podle tunelu, připojení a propustnosti
 
@@ -93,7 +96,6 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 Na rozdíl od připojení S2S nevyžadují připojení P2S místní veřejnou IP adresu ani zařízení VPN. Připojení typu P2S je možné použít s připojeními typu S2S prostřednictvím stejné brány VPN za předpokladu, že všechny požadavky na konfiguraci obou připojení jsou kompatibilní. Další informace o připojení Point-to-Site najdete v tématu věnovaném [síti VPN typu Point-to-Site](point-to-site-about.md).
 
-
 ![Příklad propojení Point-to-Site pomocí Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/point-to-site.png)
 
 ### <a name="deployment-models-and-methods-for-p2s"></a>Modely a metody nasazení pro P2S
@@ -116,7 +118,7 @@ Virtuální sítě, které propojujete, můžou být:
 
 Azure v současné době nabízí dva modely nasazení: Classic a Resource Manager. Pokud již Azure nějakou dobu používáte, pravděpodobně vaše virtuální počítače a role instancí Azure fungují ve virtuální síti Classic. Vaše novější virtuální počítače a role instancí však mohou používat virtuální síť vytvořenou v nástroji Resource Manager. Můžete vytvořit připojení mezi virtuálními sítěmi umožňující prostředkům v jedné virtuální síti přímo komunikovat s prostředky v jiné.
 
-### <a name="vnet-peering"></a>VNet Peering
+### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
 Pokud virtuální síť splňuje určité požadavky, je možné k vytvoření připojení využít metodu VNet peering. VNet peering nepoužívá bránu virtuální sítě. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 

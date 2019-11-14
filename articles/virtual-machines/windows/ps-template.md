@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače s Windows ze šablony v Azure | Microsoft Docs
+title: Vytvoření virtuálního počítače s Windows ze šablony v Azure
 description: K snadnému vytvoření nového virtuálního počítače s Windows použijte šablonu Správce prostředků a PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e1f50753f155d1583de3a1e8426975e1b0d6aee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 99e292930414ae027c9cbbf3a901d550041899d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102517"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065552"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Vytvoření virtuálního počítače s Windows ze šablony Správce prostředků
 
@@ -60,7 +60,7 @@ New-AzResourceGroupDeployment `
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně místo z Azure Cloud shellu, tento kurz vyžaduje modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzAccount` vytvořit připojení k Azure.
 
-V předchozím příkladu jste zadali šablonu uloženou v GitHubu. Můžete si také stáhnout nebo vytvořit šablonu a zadat místní cestu s `--template-file` parametrem.
+V předchozím příkladu jste zadali šablonu uloženou v GitHubu. Můžete si také stáhnout nebo vytvořit šablonu a zadat místní cestu s parametrem `--template-file`.
 
 Tady je několik dalších prostředků:
 

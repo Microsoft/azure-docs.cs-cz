@@ -1,5 +1,5 @@
 ---
-title: Nahrání virtuálního pevného disku pomocí generalizace pro vytvoření více virtuálních počítačů v Azure | Microsoft Docs
+title: Nahrání virtuálního pevného disku pomocí generalizace pro vytvoření více virtuálních počítačů v Azure
 description: Nahrajte zobecněný virtuální pevný disk do účtu služby Azure Storage a vytvořte virtuální počítač s Windows pro použití s modelem nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 933b648f15418c4838d3da1ea8379267765c784b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749176"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073323"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Nahrání zobecněného virtuálního pevného disku do Azure za účelem vytvoření nového virtuálního počítače
 
@@ -68,7 +68,7 @@ Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počíta
 
 Nahrajte virtuální pevný disk do účtu služby Azure Storage.
 
-### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+### <a name="log-in-to-azure"></a>Přihlášení k Azure
 Pokud ještě nemáte nainstalované prostředí PowerShell verze 1,4 nebo novější, přečtěte si, [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
 
 1. Otevřete Azure PowerShell a přihlaste se ke svému účtu Azure. Otevře se automaticky otevírané okno, ve kterém můžete zadat svoje přihlašovací údaje k účtu Azure.

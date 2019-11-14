@@ -1,17 +1,14 @@
 ---
 title: Ukázka – nastavení diagnostiky auditu
 description: Tato ukázková definice zásad Audituje, jestli pro zadané typy prostředků nejsou zapnutá nastavení diagnostiky.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: b71876195ffd3993b49794835781e8ccbd1648d3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 5940fcc86221d4089609ac2d0828b0c710de7fbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977465"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076406"
 ---
 # <a name="sample---audit-diagnostic-setting"></a>Ukázka – nastavení diagnostiky auditu
 
@@ -37,7 +34,7 @@ Předejte hodnotu parametru v následujícím formátu:
 
 Při přiřazování zásad vyberte z dostupných integrovaných definic **Auditování nastavení diagnostiky**.
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -55,7 +52,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzPolicyAssignment -Name "Audit diagnostics" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -63,7 +60,7 @@ Remove-AzPolicyAssignment -Name "Audit diagnostics" -Scope <scope>
 az policy assignment create --scope <scope> --name "Audit diagnostics" --policy 7f89b1eb-583c-429a-8828-af049802c1d9 --params '{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}'
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

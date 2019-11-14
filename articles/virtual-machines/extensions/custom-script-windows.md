@@ -1,5 +1,5 @@
 ---
-title: Rozšíření vlastních skriptů Azure pro Windows | Microsoft Docs
+title: Rozšíření vlastních skriptů Azure pro Windows
 description: Automatizace úloh konfigurace virtuálních počítačů s Windows pomocí rozšíření vlastních skriptů
 services: virtual-machines-windows
 manager: carmonm
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204199"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073826"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro Windows
 
@@ -112,7 +112,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | publisher | Microsoft.Compute | řetězec |
 | type | CustomScriptExtension | řetězec |
 | typeHandlerVersion | 1.9 | int |
-| fileUris (např.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
+| fileUris (např.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | pole |
 | timestamp (např.) | 123456789 | 32-bitové celé číslo |
 | commandToExecute (např.) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | řetězec |
 | storageAccountName (např.) | examplestorageacct | řetězec |
@@ -123,11 +123,11 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 #### <a name="property-value-details"></a>Podrobnosti hodnoty vlastnosti
 
-* `commandToExecute`: (**Required**; String) skript vstupního bodu, který se má provést. Místo toho použijte toto pole, pokud váš příkaz obsahuje tajné kódy, jako jsou hesla, nebo jsou vaše identifikátory URI typu "citlivé".
-* `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory, které mají být staženy.
-* `timestamp`(volitelné, 32 celé číslo) Toto pole použijte pouze k aktivaci opětovného spuštění skriptu změnou hodnoty tohoto pole.  Je přijatelné libovolné celočíselné hodnoty; musí se lišit jenom od předchozí hodnoty.
-* `storageAccountName`: (volitelné, řetězec) název účtu úložiště. Pokud zadáte přihlašovací údaje úložiště, `fileUris` musí být všechny adresy URL pro objekty blob Azure.
-* `storageAccountKey`: (volitelné, String) přístupový klíč účtu úložiště
+* `commandToExecute`: (**Required**, String) skript vstupního bodu, který se má spustit. Místo toho použijte toto pole, pokud váš příkaz obsahuje tajné kódy, jako jsou hesla, nebo jsou vaše identifikátory URI typu "citlivé".
+* `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory, které se mají stáhnout.
+* `timestamp` (volitelné, 32 celé číslo) použijte toto pole pouze k aktivaci opětovného spuštění skriptu změnou hodnoty tohoto pole.  Je přijatelné libovolné celočíselné hodnoty; musí se lišit jenom od předchozí hodnoty.
+* `storageAccountName`: (nepovinný, String) název účtu úložiště. Pokud zadáte přihlašovací údaje úložiště, musí být všechny `fileUris` adresy URL pro objekty blob Azure.
+* `storageAccountKey`: (nepovinný, String) přístupový klíč účtu úložiště
 
 V rámci veřejného nebo chráněného nastavení lze nastavit následující hodnoty, rozšíření bude odmítat všechny konfigurace, kde jsou níže uvedené hodnoty nastaveny v nastavení veřejné i chráněné.
 
@@ -141,12 +141,12 @@ Veřejné nastavení se odesílá ve formě prostého textu do virtuálního po�
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které je podrobně popsáno v předchozí části, lze použít v šabloně Azure Resource Manager ke spuštění rozšíření vlastních skriptů během nasazování. Následující ukázky ukazují, jak používat rozšíření vlastních skriptů:
 
-* [Kurz: Nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manager](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Kurz: nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manager](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [Nasazení dvou aplikačních vrstev ve Windows a Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
 
-Pomocí `Set-AzVMCustomScriptExtension` příkazu můžete přidat rozšíření vlastních skriptů do existujícího virtuálního počítače. Další informace najdete v tématu [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
+Pomocí příkazu `Set-AzVMCustomScriptExtension` lze přidat rozšíření vlastních skriptů do existujícího virtuálního počítače. Další informace najdete v tématu [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
@@ -161,7 +161,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>Používání více skriptů
 
-V tomto příkladu máte tři skripty, které se používají k sestavení serveru. **CommandToExecute** volá první skript, potom máte možnosti, jak jsou voláni ostatními. Můžete mít například hlavní skript, který řídí provádění, se správným zpracováním chyb, protokolováním a správou stavu. Skripty se stáhnou do místního počítače, aby je bylo možné spustit. Například `1_Add_Tools.ps1` byste volali `2_Add_Features.ps1` přidání `.\2_Add_Features.ps1` do skriptu a tento postup opakujte pro ostatní skripty, které definujete v `$settings`.
+V tomto příkladu máte tři skripty, které se používají k sestavení serveru. **CommandToExecute** volá první skript, potom máte možnosti, jak jsou voláni ostatními. Můžete mít například hlavní skript, který řídí provádění, se správným zpracováním chyb, protokolováním a správou stavu. Skripty se stáhnou do místního počítače, aby je bylo možné spustit. Například v `1_Add_Tools.ps1` byste volali `2_Add_Features.ps1` přidáním `.\2_Add_Features.ps1` do skriptu a tento postup opakujte pro ostatní skripty, které definujete v `$settings`.
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -273,17 +273,17 @@ Zadané soubory jsou staženy do následující složky v cílovém virtuálním
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 
-kde `<n>` je desítkové celé číslo, které se může změnit mezi spouštěním rozšíření.  Hodnota odpovídá skutečné aktuální `typeHandlerVersion` hodnotě rozšíření. `1.*`  Například skutečný adresář může být `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+kde `<n>` je desítkové celé číslo, které se může změnit mezi spouštěními rozšíření.  Hodnota `1.*` se shoduje se skutečnou aktuální `typeHandlerVersion` hodnotou rozšíření.  Skutečný adresář může být například `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
 
-Při provádění `commandToExecute` příkazu rozšíření nastaví tento adresář ( `...\Downloads\2`například) jako aktuální pracovní adresář. Tento proces umožňuje použití relativních cest k vyhledání souborů stažených prostřednictvím `fileURIs` vlastnosti. Příklady najdete v následující tabulce.
+Při spuštění příkazu `commandToExecute` rozšíření nastaví tento adresář (například `...\Downloads\2`) jako aktuální pracovní adresář. Tento proces umožňuje použití relativních cest k vyhledání souborů stažených prostřednictvím vlastnosti `fileURIs`. Příklady najdete v následující tabulce.
 
-Vzhledem k tomu, že absolutní cesta ke stažení se může v průběhu času lišit, je lepší vyjádřit výslovný souhlas s relativními cestami Script/File v `commandToExecute` řetězci, kdykoli je to možné. Příklad:
+Vzhledem k tomu, že absolutní cesta ke stažení se může v průběhu času lišit, je lepší vyjádřit souhlas s relativními cestami skriptů a souborů v řetězci `commandToExecute`, kdykoli je to možné. Příklad:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-Informace o cestě po prvním segmentu URI se uchovávají pro soubory stažené přes `fileUris` seznam vlastností.  Jak je znázorněno v následující tabulce, stažené soubory jsou namapovány na podadresáře ke stažení `fileUris` , aby odrážely strukturu hodnot.  
+Informace o cestě po prvním segmentu URI se uchovávají pro soubory stažené prostřednictvím seznamu vlastností `fileUris`.  Jak je znázorněno v následující tabulce, stažené soubory jsou namapovány na podadresáře ke stažení, aby odrážely strukturu `fileUris`ch hodnot.  
 
 #### <a name="examples-of-downloaded-files"></a>Příklady stažených souborů
 

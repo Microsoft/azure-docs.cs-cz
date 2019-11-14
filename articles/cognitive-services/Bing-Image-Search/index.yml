@@ -5,7 +5,7 @@ metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: 'Dokumentace k rozhraní API pro Vyhledávání obrázků Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
   titleSuffix: Azure Cognitive Services
-  description: 'Zjistěte, jak vyhledávat obrázky na webu pomocí rozhraní API Bingu pro vyhledávání obrázků.'
+  description: Rozhraní API Bingu pro vyhledávání obrázků umožňuje využívat kognitivní možnosti vyhledávání obrázků Bingu ve vaší aplikaci.
   services: cognitive-services
   author: nitinme
   manager: nitinme

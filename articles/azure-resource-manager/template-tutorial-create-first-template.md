@@ -1,28 +1,28 @@
 ---
-title: Kurz – vytvoření a nasazení první šablony Azure Resource Manager
-description: Popisuje kroky k vytvoření první šablony Azure Resource Manager. Dozvíte se o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
+title: Kurz – vytvoření & nasazení Azure Resource Manager šabloně
+description: Vytvořte svou první šablonu Azure Resource Manager. V tomto kurzu se dozvíte o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
 manager: carmonmills
 ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e84c3bfa5a5f43ec652f12d70718ab63bd7a19e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029552"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074373"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Kurz: vytvoření a nasazení první šablony Azure Resource Manager
 
-V tomto kurzu se seznámíte s Správce prostředků šablon. Ukazuje, jak vytvořit úvodní šablonu a jak ji nasadit do Azure. Seznámíte se se strukturou šablony a nástroji, které budete potřebovat pro práci se šablonami. Dokončení tohoto kurzu trvá přibližně **12 minut** , ale skutečný čas se bude lišit podle toho, kolik nástrojů potřebujete nainstalovat.
+V tomto kurzu se seznámíte s Azure Resource Manager šablon. Ukazuje, jak vytvořit úvodní šablonu a jak ji nasadit do Azure. Seznámíte se se strukturou šablony a nástroji, které budete potřebovat pro práci se šablonami. Dokončení tohoto kurzu trvá přibližně **12 minut** , ale skutečný čas se bude lišit podle toho, kolik nástrojů potřebujete nainstalovat.
 
 Tento kurz je první z řad. Jak budete postupovat podle řady, upravíte počáteční šablonu krok za krokem, dokud neprojdete všechny základní části šablony Správce prostředků. Tyto prvky jsou stavebními bloky pro mnohem složitější šablony. Doufáme, že na konci řady jste si jistí, že máte jistotu, že vytváříte vlastní šablony a jste připraveni automatizovat nasazení pomocí šablon.
 
 Pokud se chcete dozvědět o výhodách používání šablon a proč byste měli automatizovat nasazení se šablonami, přečtěte si téma [Azure Resource Manager šablony](template-deployment-overview.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="get-tools"></a>Získat nástroje
 
@@ -36,7 +36,7 @@ Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete
 
 K nasazení šablony budete taky potřebovat buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Pokyny k instalaci najdete v těchto tématech:
 
-- [Nainstalovat Azure PowerShell](/powershell/azure/install-az-ps)
+- [Instalace Azure PowerShellu](/powershell/azure/install-az-ps)
 - [Instalace rozhraní příkazového řádku Azure CLI ve Windows](/cli/azure/install-azure-cli-windows)
 - [Instalace rozhraní příkazového řádku Azure CLI v systému Linux](/cli/azure/install-azure-cli-linux)
 
@@ -77,28 +77,28 @@ V pořádku budete připraveni začít se získáváním informací o šablonác
 
 Blahopřejeme, vytvořili jste svou první šablonu.
 
-## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Pokud chcete začít pracovat s Azure PowerShell/Azure CLI, přihlaste se pomocí přihlašovacích údajů Azure.
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az login
 ```
 
 ---
-## <a name="create-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
 Když nasadíte šablonu, zadáte skupinu prostředků, která bude obsahovat prostředky. Před spuštěním příkazu k nasazení vytvořte skupinu prostředků buď pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. Vyberte karty v následující části kódu a vyberte si mezi Azure PowerShell a Azure CLI.
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -106,7 +106,7 @@ New-AzResourceGroup `
   -Location "Central US"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -116,11 +116,11 @@ az group create \
 
 ---
 
-## <a name="deploy-template"></a>Nasadit šablonu
+## <a name="deploy-template"></a>Nasazení šablony
 
 K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell. Použijte skupinu prostředků, kterou jste vytvořili. Zadejte název nasazení, abyste ho mohli snadno identifikovat v historii nasazení. Pro usnadnění práce vytvořte také proměnnou, která ukládá cestu k souboru šablony. Tato proměnná usnadňuje spuštění příkazů nasazení, protože nemusíte znovu zadávat cestu pokaždé, když nasadíte.
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -130,7 +130,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 $templateFile="{provide-the-path-to-the-template-file}"
@@ -142,23 +142,23 @@ az group deployment create \
 
 ---
 
-Příkaz pro nasazení vrátí výsledky. Vyhledejte `ProvisioningState`, abyste viděli, jestli se nasazení úspěšně dokončilo.
+Příkaz pro nasazení vrátí výsledky. Vyhledejte `ProvisioningState` a zjistěte, jestli nasazení proběhlo úspěšně.
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![Stav zřizování nasazení PowerShellu](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ![Stav zřizování nasazení Azure CLI](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
 
-## <a name="verify-deployment"></a>Ověřit nasazení
+## <a name="verify-deployment"></a>Ověření nasazení
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 
@@ -182,10 +182,10 @@ Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu pr
 
 Pokud nyní provádíte zastavování, možná budete chtít odstranit skupinu prostředků.
 
-1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
-2. Do pole **filtrovat podle názvu** zadejte název skupiny prostředků.
+1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
+2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
+4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 

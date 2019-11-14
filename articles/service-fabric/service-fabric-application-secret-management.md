@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: b05473fd9868821285853b089fe711aa48f347fc
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a24f670314d2f6679e37b438a74421e0e84604e2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973437"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075491"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Správa šifrovaných tajných kódů v aplikacích Service Fabric
 Tento průvodce vás provede jednotlivými kroky správy tajných kódů v aplikaci Service Fabric. Tajné kódy můžou obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.
@@ -37,7 +37,7 @@ Nastavení šifrovacího certifikátu a jeho použití k šifrování tajných k
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Určení šifrovaných tajných klíčů v aplikaci
 Předchozí krok popisuje, jak šifrovat tajný klíč pomocí certifikátu a vytvořit řetězec s kódováním Base-64 pro použití v aplikaci. Tento řetězec zakódovaný v základní-64 se dá zadat jako zašifrovaný [parametr][parameters-link] v nastavení služby. XML nebo jako zašifrovaná [Proměnná prostředí][environment-variables-link] v souboru ServiceManifest. XML služby.
 
-Zadejte zašifrovaný [parametr][parameters-link] do konfiguračního souboru Settings. XML vaší služby s atributem `IsEncrypted` nastaveným na `true`:
+V konfiguračním souboru Settings. XML vaší služby zadejte zašifrovaný [parametr][parameters-link] s atributem `IsEncrypted` nastaveným na `true`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -105,7 +105,7 @@ Chcete-li přepsat hodnoty v souboru Settings. XML, deklarujte parametr přepsá
 
 Nyní je možné při vytváření instance aplikace zadat hodnotu jako *parametr aplikace* . Vytvoření instance aplikace může být skriptem pomocí PowerShellu nebo napsaného C#v systému pro jednoduchou integraci v procesu sestavení.
 
-Pomocí PowerShellu se parametr doplní příkazem `New-ServiceFabricApplication` jako [zatřiďovací tabulka](https://technet.microsoft.com/library/ee692803.aspx):
+Pomocí PowerShellu se parametr doplní do příkazu `New-ServiceFabricApplication` jako [zatřiďovací tabulka](https://technet.microsoft.com/library/ee692803.aspx):
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
@@ -147,10 +147,12 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [zabezpečení aplikací a služeb](service-fabric-application-and-service-security.md)
+* Service Fabric [úložiště tajných](service-fabric-application-secret-store.md) kódů 
+* Další informace o [zabezpečení aplikací a služeb](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md
 [secret-management-windows-specific-link]: service-fabric-application-secret-management-windows.md
 [secret-management-linux-specific-link]: service-fabric-application-secret-management-linux.md
+[service fabric secrets store]: service-fabric-application-secret-store.md

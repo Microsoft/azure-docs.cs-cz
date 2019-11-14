@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bf79957bec4b330ca9acce3f8b92aab1a0944440
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747258"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074858"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -118,12 +118,12 @@ K dispozici jsou tyto možnosti:
 
 | Možnost | Podrobnosti | Výchozí |
 | --- | --- | --- |
-| parametr |Tichá instalace |- |
+| /q |Tichá instalace |- |
 | /p: "umístění" |Cesta k instalační složce pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: umístění |Cesta ke složce mezipaměti pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| řetězec |Výslovný souhlas s Microsoft Update |- |
+| /m |Výslovný souhlas s Microsoft Update |- |
 | /nu |Po dokončení instalace Nekontrolovat aktualizace |- |
-| parametr |Odinstaluje agenta Microsoft Azure Recovery Services. |- |
+| /d |Odinstaluje agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa hostitele proxy serveru |- |
 | /po |Číslo portu hostitele proxy serveru |- |
 | /pu |Uživatelské jméno hostitele proxy serveru |- |
@@ -547,9 +547,9 @@ IsExclude : True
 IsRecursive : True
 ```
 
-### <a name="performing-an-ad-hoc-backup"></a>Provádění zálohování ad hoc
+### <a name="performing-an-on-demand-backup"></a>Provádění zálohování na vyžádání
 
-Po nastavení zásady zálohování se budou zálohy vyskytnout podle plánu. Aktivace zálohy ad hoc je také možné pomocí rutiny [Start-OBBackup](https://technet.microsoft.com/library/hh770426) :
+Po nastavení zásady zálohování se budou zálohy vyskytnout podle plánu. Spuštění zálohování na vyžádání je také možné pomocí rutiny [Start-OBBackup](https://technet.microsoft.com/library/hh770426) :
 
 ```powershell
 Get-OBPolicy | Start-OBBackup

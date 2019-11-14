@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961665"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076893"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
@@ -164,12 +164,12 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 
 ## <a name="debug-locally"></a>Místní ladění
 
-Pokud narazíte na problémy s nasazením modelu do ACI nebo AKS, zkuste ho nasadit jako místní. Použití místního prostředí usnadňuje řešení problémů. Image Docker obsahující model se stáhne a spustí v místním systému.
+Pokud narazíte na problémy s nasazením modelu do ACI nebo AKS, zkuste ho nasadit jako místní webovou službu. Použití místní webové služby usnadňuje řešení problémů. Image Docker obsahující model se stáhne a spustí v místním systému.
 
 > [!WARNING]
-> Místní nasazení se pro produkční scénáře nepodporují.
+> Nasazení místních webových služeb se v produkčních scénářích nepodporují.
 
-Chcete-li nasadit místně, upravte kód tak, aby používal `LocalWebservice.deploy_configuration()` k vytvoření konfigurace nasazení. Pak použijte `Model.deploy()` k nasazení služby. Následující příklad nasadí model (obsažený v proměnné `model`) jako místní:
+Chcete-li nasadit místně, upravte kód tak, aby používal `LocalWebservice.deploy_configuration()` k vytvoření konfigurace nasazení. Pak použijte `Model.deploy()` k nasazení služby. Následující příklad nasadí model (obsažený v `model` proměnné) jako místní webovou službu:
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -180,14 +180,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the  endpoint
+# Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the  is available on
+# Display the port that the web service is available on
 print(service.port)
 ```
 
@@ -297,7 +297,7 @@ K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 5
     > [!IMPORTANT]
     > Tato změna nezpůsobí *rychlejší*vytváření replik. Místo toho jsou vytvořeny s nižší prahovou hodnotou využití. Místo čekání na vyčerpání služby 70% se změna hodnoty na 30% způsobí, že se repliky vytvoří, když dojde k 30% využití.
     
-    Pokud už používá aktuální maximální počet replik a stále se zobrazuje stavové kódy 503, zvyšte hodnotu `autoscale_max_replicas`, abyste zvýšili maximální počet replik.
+    Pokud už webová služba používá aktuální maximální počet replik a stále se zobrazuje stavové kódy 503, zvyšte hodnotu `autoscale_max_replicas`, abyste zvýšili maximální počet replik.
 
 * Změňte minimální počet replik. Zvýšení minimálního počet replik poskytuje větší fond pro zpracování příchozích špiček.
 
@@ -333,7 +333,7 @@ V některých případech možná budete muset interaktivně ladit kód Pythonu 
 > [!IMPORTANT]
 > Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit Image pomocí třídy [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) . 
 
-Místní nasazení vyžadují v místním systému pracovní instalaci do dokovacího prostředí. Další informace o používání Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
+Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovacího prostředí v místním systému. Další informace o používání Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
 
 ### <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 

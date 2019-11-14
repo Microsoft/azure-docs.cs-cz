@@ -1,24 +1,25 @@
 ---
-title: Správa provozu na víceklientské aplikace, jako je App Service Web Apps, pomocí Azure Application Gateway – portál
+title: Správa provozu do aplikací víceklientské aplikace pomocí portálu
+titleSuffix: Azure Application Gateway
 description: V tomto článku najdete pokyny, jak nakonfigurovat službu Azure App Service Web Apps jako členy ve fondu back-endu v existující nebo nové službě Application Gateway.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: dee4859c57172a703517848510a31b70ff1f24cd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68370425"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075165"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurace App Service s využitím Application Gateway
 
 Vzhledem k tomu, že App Service je víceklientské služby místo nasazení, používá se v příchozím požadavku Hlavička hostitele k vyřešení požadavku na správný koncový bod služby App Service. Název DNS aplikace, který je zase název DNS přidružený ke službě Application Gateway front-App Service, se obvykle liší od názvu domény služby back-end App Service. Proto Hlavička hostitele v původní žádosti přijatá aplikační bránou není stejná jako název hostitele back-end služby. Z tohoto důvodu se v případě, že Hlavička hostitele v požadavku od služby Application Gateway do back-endu změní na název hostitele back-end služby, nedokáže aplikace back-end s více klienty přeložit požadavek na správný koncový bod.
 
-Application Gateway poskytuje přepínač s názvem `Pick host name from backend address` , který Přepisuje hlavičku hostitele v žádosti názvem hostitele back-endu při směrování požadavku z Application Gateway do back-endu. Tato schopnost povoluje podporu pro back-endové back-endové služby, jako je Azure App Service a API Management. 
+Application Gateway poskytuje přepínač s názvem `Pick host name from backend address`, který Přepisuje hlavičku hostitele v žádosti názvem hostitele back-endu při směrování požadavku z Application Gateway do back-endu. Tato schopnost povoluje podporu pro back-endové back-endové služby, jako je Azure App Service a API Management. 
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -47,7 +48,7 @@ V tomto článku získáte informace o těchto tématech:
    ![Back-end App Service](./media/configure-web-app-portal/backendpool.png)
    
    > [!NOTE]
-   > V rozevíracím seznamu se naplní jenom ty služby App Services, které jsou ve stejném předplatném jako vaše Application Gateway. Pokud chcete používat službu App Service, která je v jiném předplatném než ta, ve které je Application Gateway, vyberte možnost **App Services** v rozevíracím seznamu **cíle** , zvolte **IP adresu nebo název hostitele** a zadejte název hostitele (příklad: azurewebsites.net) služby App Service.
+   > V rozevíracím seznamu se naplní jenom ty služby App Services, které jsou ve stejném předplatném jako vaše Application Gateway. Pokud chcete použít službu App Service, která je v jiném předplatném, než je ta, ve které je Application Gateway, vyberte možnost **App Services** v rozevíracím seznamu **cíle** , zvolte **IP adresu nebo název hostitele** a zadejte název hostitele (příklad. azurewebsites.net) služby App Service.
 
 ## <a name="create-http-settings-for-app-service"></a>Vytvoření nastavení HTTP pro službu App Service
 
@@ -60,11 +61,11 @@ V tomto článku získáte informace o těchto tématech:
    > [!NOTE]
    > Pokud vyberete HTTPS, nemusíte nahrávat žádný certifikát pro ověřování ani důvěryhodný kořenový certifikát pro seznam povolených služeb App Service, protože App Service je důvěryhodná služba Azure.
 
-4. Zaškrtněte políčko pro **použití pro App Service** . Všimněte si, že `Create a probe with pick host name from backend address` přepínače `Pick host name from backend address` a budou automaticky povoleny.`Pick host name from backend address` přepíše hlavičku hostitele v žádosti s názvem hostitele back-endu, pokud je požadavek směrován z Application Gateway do back-endu.  
+4. Zaškrtněte políčko pro **použití pro App Service** . Všimněte si, že přepínače `Create a probe with pick host name from backend address` a `Pick host name from backend address` automaticky aktivují.`Pick host name from backend address` přepíše hlavičku hostitele v žádosti s názvem hostitele back-endu, pokud je požadavek směrován z Application Gateway do back-endu.  
 
-   `Create a probe with pick host name from backend address`automaticky vytvoří sondu stavu a přidruží ho k tomuto nastavení HTTP. Pro toto nastavení HTTP nemusíte vytvářet žádné další testy stavu. Můžete ověřit, že se v seznamu sond stavu přidala <HTTP Setting name> nová sonda s názvem <Unique GUID> a že tento přepínač `Pick host name from backend http settings enabled`už má.
+   `Create a probe with pick host name from backend address` automaticky vytvoří sondu stavu a přidruží ji k tomuto nastavení HTTP. Pro toto nastavení HTTP nemusíte vytvářet žádné další testy stavu. Můžete ověřit, že se v seznamu sond stavu přidala nová sonda s názvem <HTTP Setting name><Unique GUID> a že už má `Pick host name from backend http settings enabled`přepínače.
 
-   Pokud už máte jedno nebo víc nastavení HTTP, které se používá pro službu App Service, a pokud tato nastavení HTTP používají stejný protokol jako ten, který používáte, který využijete v jednom z nich, `Create a probe with pick host name from backend address` zobrazí se rozevírací seznam, který vybere jednu z hodnot c. vlastní sondy. Důvodem je to, že už existuje nastavení HTTP ve službě App Service, proto by existovala také sonda stavu, která má přepínač `Pick host name from backend http settings enabled` . Z rozevíracího seznamu vyberte tento vlastní test paměti.
+   Pokud už máte jedno nebo víc nastavení HTTP, které se používá pro službu App Service, a pokud tato nastavení HTTP používají stejný protokol jako ten, který používáte, který využijete, místo přepínače `Create a probe with pick host name from backend address` zobrazíte rozevírací seznam, který vybere jednu z vlastních sond. Důvodem je to, že už existuje nastavení HTTP ve službě App Service, proto by existovala také sonda stavu, která má přepínač `Pick host name from backend http settings enabled`. Z rozevíracího seznamu vyberte tento vlastní test paměti.
 
 5. Kliknutím na tlačítko **OK** vytvořte nastavení protokolu HTTP.
 
@@ -90,7 +91,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Další konfigurace v případě přesměrování na relativní cestu služby App Service
 
-Když služba App Service pošle klientovi odezvu přesměrování na přesměrování na jeho relativní cestu (například přesměrování z contoso.azurewebsites.net/path1 na contoso.azurewebsites.net/path2), používá stejný název hostitele v hlavičce umístění odpovědi. jako v žádosti, kterou obdržela od služby Application Gateway. Proto klient provede požadavek přímo na contoso.azurewebsites.net/path2 namísto průchodu přes Aplikační bránu (contoso.com/path2). Obcházení aplikační brány není žádoucí.
+Když služba App Service pošle klientovi odezvu přesměrování na přesměrování na jeho relativní cestu (například přesměrování z contoso.azurewebsites.net/path1 na contoso.azurewebsites.net/path2), používá stejný název hostitele v hlavičce umístění odpovědi jako ten v požadavku, který obdržel od služby Application Gateway. Proto klient provede požadavek přímo na contoso.azurewebsites.net/path2 namísto průchodu přes Aplikační bránu (contoso.com/path2). Obcházení aplikační brány není žádoucí.
 
 Pokud v případu použití existují situace, kdy bude služba App Service potřebovat poslat klientovi odezvu přesměrování, proveďte [Další kroky, abyste přepsali hlavičku umístění](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration).
 
@@ -100,6 +101,6 @@ Webové aplikace nasazené v těchto příkladech používají veřejné IP adre
 
 Jedním ze způsobů, jak omezit přístup k webovým aplikacím, je použít [Azure App Service omezení statických IP adres](../app-service/app-service-ip-restrictions.md). Můžete například omezit webovou aplikaci tak, aby přijímala pouze provoz z aplikační brány. Pomocí funkce omezení IP adres služby App Service můžete zobrazit seznam VIP adres Application Gateway jako jedinou adresu s přístupem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě App Service a dalších víceklientské podpoře k aplikační bráně najdete v tématu [Podpora víceklientské služby s aplikační bránou](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).

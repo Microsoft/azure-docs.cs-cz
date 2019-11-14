@@ -1,7 +1,7 @@
 ---
 title: Služba pro převod textu na řeč
 titleSuffix: Azure Cognitive Services
-description: Funkce převodu textu na řeč ve službě Speech je funkce, která umožňuje vašim aplikacím, nástrojům a zařízením převádět text na syntetizované rozpoznávání řeči na přirozeném člověku. Vyberte si ze standardních nebo neuronové hlasů nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy jsou k dispozici ve 4 jazycích a národních prostředích.
+description: Funkce převodu textu na řeč ve službě rozpoznávání řeči umožňuje vašim aplikacím, nástrojům a zařízením převádět text na přirozeného mluveného slova přirozeného lidského typu. Vyberte přednastavené hlasy nebo vytvořte vlastní hlas.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d3d4777d54e3ef6b20ab0ac0f0890da958411297
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468679"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075710"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
 Převod textu na řeč z Azure Speech Services je služba, která umožňuje vašim aplikacím, nástrojům a zařízením převádět text na přirozený řeč, který se na něj člověk líbí. Vyberte si ze standardních nebo neuronové hlasů nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy jsou k dispozici ve 4 jazycích a národních prostředích. Úplný seznam najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
 Technologie převodu textu na řeč umožňuje autorům obsahu pracovat různými způsoby s uživateli. Převod textu na řeč může zlepšit přístupnost tím, že poskytuje uživatelům možnost pracovat s obsahem audibly. Bez ohledu na to, jestli má uživatel vizuální poškození, zdravotní postižení, nebo vyžaduje navigační informace, ale při jízdě, může převod textu na řeč zlepšit stávající prostředí. Převod textu na řeč je také užitečným doplňkem pro hlasové roboty a hlasové asistenty.
-
 
 Když využijete SSML (Speech syntézy Language), jazyk značek založený na jazyce XML, můžou vývojáři, kteří používají službu Převod textu na řeč, určit, jak se vstupní text převede na syntetizované řeč. Pomocí SSML můžete upravovat rozteč, výslovnost, míru řeči, objem a další. Další informace najdete v tématu [SSML](#speech-synthesis-markup-language-ssml).
 
@@ -54,10 +53,10 @@ Všechny textové vstupy odesílané službě převod textu na řeč musí být 
 
 Při použití služby převod textu na řeč se vám bude účtovat každý znak, který se převede na řeč, včetně interpunkce. I když samotný dokument SSML není fakturovatelný, volitelné prvky, které slouží k úpravě způsobu převodu textu na řeč, jako je fonémy a rozteč, se počítají jako Fakturovatelné znaky. Tady je seznam toho, co je Fakturovatelné:
 
-* Text předaný do služby převodu textu na řeč v SSML textu žádosti
-* Všechny značky v textovém poli textu žádosti ve formátu SSML s výjimkou značek `<speak>` a `<voice>`
-* Písmena, interpunkční znaménka, mezery, tabulátory, značky a všechny prázdné znaky
-* Každý bod kódu definovaný v kódování Unicode
+- Text předaný do služby převodu textu na řeč v SSML textu žádosti
+- Všechny značky v textovém poli textu žádosti ve formátu SSML s výjimkou značek `<speak>` a `<voice>`
+- Písmena, interpunkční znaménka, mezery, tabulátory, značky a všechny prázdné znaky
+- Každý bod kódu definovaný v kódování Unicode
 
 Podrobné informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
@@ -68,16 +67,16 @@ Podrobné informace najdete v tématu [ceny](https://azure.microsoft.com/pricing
 
 Tato tabulka uvádí základní funkce pro převod textu na řeč:
 
-| Případ použití | SDK | REST |
-|----------|-----|------|
-| Převod textu na řeč | Ano | Ano |
-| Nahrajte datové sady pro přizpůsobení hlasu. | Ne | Ano\* |
-| Vytvářejte a spravujte modely hlasových písem. | Ne | Ano\* |
-| Vytváření a Správa nasazení hlasových písem | Ne | Ano\* |
-| Vytvářejte a spravujte testy hlasových písem. | Ne | Ano\* |
-| Správa předplatných. | Ne | Ano\* |
+| Případ použití                                  | Sada SDK | REST  |
+| ----------------------------------------- | --- | ----- |
+| Převod textu na řeč                   | Ano | Ano   |
+| Nahrajte datové sady pro přizpůsobení hlasu.     | Ne  | Ano\* |
+| Vytvářejte a spravujte modely hlasových písem.      | Ne  | Ano\* |
+| Vytváření a Správa nasazení hlasových písem | Ne  | Ano\* |
+| Vytvářejte a spravujte testy hlasových písem.       | Ne  | Ano\* |
+| Správa předplatných.                     | Ne  | Ano\* |
 
-\* *tyto služby jsou k dispozici pomocí koncového bodu CRIS.AI. Viz [odkaz Swagger](https://westus.cris.ai/swagger/ui/index). Tato vlastní rozhraní API pro školení a správu hlasu implementují omezení, které omezuje požadavky na 25 za 5 sekund, zatímco rozhraní API pro syntézu řeči sám implementuje omezení, které umožňuje 200 požadavků za sekundu jako nejvyšší. Když dojde k omezení, budete upozorněni prostřednictvím záhlaví zpráv.*
+\*_tyto služby jsou k dispozici pomocí koncového bodu CRIS.AI. Viz [odkaz Swagger](https://westus.cris.ai/swagger/ui/index). Tato vlastní rozhraní API pro školení a správu hlasu implementují omezení, které omezuje požadavky na 25 za 5 sekund, zatímco rozhraní API pro syntézu řeči sám implementuje omezení, které umožňuje 200 požadavků za sekundu jako nejvyšší. Když dojde k omezení, budete upozorněni prostřednictvím záhlaví zpráv._
 
 ## <a name="get-started-with-text-to-speech"></a>Začínáme s převodem textu na řeč
 
@@ -85,46 +84,46 @@ Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za mén
 
 ### <a name="sdk-quickstarts"></a>Rychlé starty sady SDK
 
-| Rychlý Start (SDK) | Platforma | Referenční materiály k rozhraním API |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
-| [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
-| [C#, Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Hlíží](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Hlíží](https://aka.ms/csspeech/cppref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Hlíží](https://aka.ms/csspeech/cppref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Hlíží](https://aka.ms/csspeech/javaref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Hlíží](https://aka.ms/csspeech/javaref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Hlíží](https://aka.ms/csspeech/objectivecref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Hlíží](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Hlíží](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Hlíží](https://aka.ms/csspeech/objectivecref) |
-| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window, Linux, macOS | [Hlíží](https://aka.ms/csspeech/pythonref) |
+| Rychlý Start (SDK) | Platforma | Referenční materiály k rozhraní API |
+| ---------------- | -------- | ------------- |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
+| [C#, .NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
+| [C#, Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Procházet](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Procházet](https://aka.ms/csspeech/cppref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Procházet](https://aka.ms/csspeech/cppref) |
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Procházet](https://aka.ms/csspeech/javaref) |
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Procházet](https://aka.ms/csspeech/javaref) |
+| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Procházet](https://aka.ms/csspeech/objectivecref) |
+| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Procházet](https://aka.ms/csspeech/objectivecref) |
+| SWIFT (~/articles/Cognitive-Services/Speech-Service/QuickStarts/text-to-Speech-langs/SWIFT-MacOS.MD | macOS | [Procházet](https://aka.ms/csspeech/objectivecref) |
+| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Procházet](https://aka.ms/csspeech/objectivecref) |
+| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window, Linux, macOS | [Procházet](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>Rychlé starty REST
 
-| Rychlý Start (REST) | Platforma | Referenční materiály k rozhraním API |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Hlíží](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno, macOS, Linux | [Hlíží](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Okno, macOS, Linux | [Hlíží](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| Rychlý Start (REST) | Platforma | API – referenční informace |
+| ----------------- | -------- | ------------- |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Okno, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 
 Vzorový kód pro převod textu na řeč je k dispozici na GitHubu. Tyto ukázky překrývají převod textu na řeč v nejoblíbenějších programovacích jazycích.
 
-* [Ukázky převodu textu na řeč (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [Ukázky převodu textu na řeč (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [Ukázky převodu textu na řeč (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Ukázky převodu textu na řeč (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Speech SDK](speech-sdk-reference.md)
-* [Sada Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: Převod řeči na text](rest-speech-to-text.md)
-* [REST API: převod textu na řeč](rest-text-to-speech.md)
-* [REST API: přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
+- [Speech SDK](speech-sdk-reference.md)
+- [Sada Speech Devices SDK](speech-devices-sdk.md)
+- [REST API: Převod řeči na text](rest-speech-to-text.md)
+- [REST API: převod textu na řeč](rest-text-to-speech.md)
+- [REST API: přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získání bezplatného předplatného služby Speech Services](get-started.md)
-* [Vytváření vlastních hlasových písem](how-to-customize-voice-font.md)
+- [Získání bezplatného předplatného služby Speech Services](get-started.md)
+- [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption pro Linux | Microsoft Docs
+title: Azure Disk Encryption pro Linux
 description: Nasadí Azure Disk Encryption pro Linux do virtuálního počítače pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 1801ca8bd59153de81ef680253da229e2bd4a338
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4fa7f7d1419a8cd1006a632ba67587ab3434bf5a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597867"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073814"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
@@ -26,7 +26,7 @@ ms.locfileid: "72597867"
 
 Azure Disk Encryption využívá podsystém dm-crypt v systému Linux, který poskytuje úplné šifrování disků na [vybraných distribucích systému Azure Linux](https://aka.ms/adelinux).  Toto řešení je integrované s Azure Key Vault pro správu klíčů a tajných kódů disku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Úplný seznam požadovaných součástí najdete v tématu [Azure Disk Encryption pro virtuální počítače se systémem Linux](../linux/disk-encryption-overview.md), konkrétně v následujících oddílech:
 
@@ -132,29 +132,29 @@ Použití `AADClientCertificate`:
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota/příklad | Typ dat |
+| Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Microsoft | Microsoft. Azure. Security | string |
-| type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0,1, 1,1 | int |
-| (schéma 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Hlavních | 
-| (schéma 0,1) AADClientSecret | heslo | string |
-| (schéma 0,1) AADClientCertificate | kryptografický | string |
-| DiskFormatQuery | {"dev_path": "", "Name": "", "file_system": ""} | Slovník JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | "RSA-VÝPLNĚ OAEP", "RSA-VÝPLNĚ OAEP-256", "RSA1_5" | string |
-| keyEncryptionKeyURL | url | string |
-| volitelné KeyVaultURL | url | string |
-| Hesel | heslo | string | 
-| sequenceVersion | uniqueidentifier | string |
-| volumeType | Operační systém, data, vše | string |
+| publisher | Microsoft.Azure.Security | řetězec |
+| type | AzureDiskEncryptionForLinux | řetězec |
+| typeHandlerVersion | 0.1, 1.1 | int |
+| (schéma 0.1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (schéma 0,1) AADClientSecret | heslo | řetězec |
+| (schéma 0,1) AADClientCertificate | thumbprint | řetězec |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Slovník JSON |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
+| KeyEncryptionAlgorithm | ' RSA-VÝPLNĚ OAEP ', ' RSA-VÝPLNĚ OAEP-256 ', ' RSA1_5 ' | řetězec |
+| KeyEncryptionKeyURL | url | řetězec |
+| volitelné KeyVaultURL | url | řetězec |
+| Passphrase | heslo | řetězec | 
+| SequenceVersion | uniqueidentifier | řetězec |
+| VolumeType | Operační systém, data, vše | řetězec |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
 Příklad nasazení šablony najdete v tématu [povolení šifrování na běžícím virtuálním počítači se systémem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
 
-## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
+## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
 Pokyny najdete v nejnovější [dokumentaci k Azure CLI](/cli/azure/vm/encryption?view=azure-cli-latest). 
 
@@ -166,7 +166,7 @@ Informace o řešení potíží najdete v [Průvodci odstraňováním potíží 
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/community/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/community/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f162b9dc84b863c54d92313307ef4abca76ebb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792835"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074237"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
@@ -209,7 +209,7 @@ Výchozí grafy vám umožní Kusto dotazy na základní scénáře, ve kterých
 Diagnostická data z trezoru se do Log Analyticsho pracovního prostoru napumpa s určitou prodlevou. Každá událost se doručí na Log Analytics pracovní prostor od *20 do 30 minut* od jeho vložení z trezoru Recovery Services. Tady jsou další podrobnosti o prodlevě:
 
 - V rámci všech řešení se integrované výstrahy služby Backup odešlou hned po jejich vytvoření. Proto se obvykle zobrazují v pracovním prostoru Log Analytics po 20 až 30 minutách.
-- V rámci všech řešení se úlohy zálohování ad hoc a obnovované úlohy hned po *dokončení*dostanou.
+- V rámci všech řešení se úlohy zálohování na vyžádání a úlohy obnovení odešlou hned po *dokončení*.
 - Pro všechna řešení kromě zálohování SQL se naplánované úlohy zálohování odešlou hned po *dokončení*.
 - U služby SQL Backup, protože k zálohování protokolů může docházet každých 15 minut, informace o všech dokončených úlohách plánovaného zálohování, včetně protokolů, jsou dávkové a vložené každých 6 hodin.
 - V rámci všech řešení se pro všechny ostatní informace, jako je například zálohovaná položka, zásada, body obnovení, úložiště a tak dále, je alespoň *jednou denně* nabízena.

@@ -7,18 +7,21 @@ ms.author: dacurwin
 ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 1182c7d4ac9a103e752a8cd0c392c5e57f1eebd0
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a6914fadcc69db534bb8476bbd8c89aa716a8bcb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637567"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074694"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Řešení problémů se zálohováním sdílených složek Azure
+
 K řešení problémů a chyb, ke kterým dochází při používání zálohování sdílených složek Azure, můžete využít informace uvedené v následujících tabulkách.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure během období Preview
+
 Zálohování sdílených složek Azure je ve verzi Preview. Podporují se sdílené složky Azure v účtech úložiště pro obecné účely v1 i pro obecné účely v2. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
+
 - K dispozici není žádné rozhraní příkazového řádku pro ochranu souborů Azure pomocí Azure Backup.
 - Maximální počet plánovaných záloh je jedna za den.
 - Maximální počet záloh na vyžádání jsou čtyři za den.
@@ -29,17 +32,17 @@ Zálohování sdílených složek Azure je ve verzi Preview. Podporují se sdíl
 Zálohování sdílených složek Azure v účtech úložiště s replikací [zóny redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je aktuálně k dispozici pouze v střed USA (kapacitní jednotky), východní USA (EUS), východní USA 2 (EUS2), Severní Evropa (ne), jihovýchodní Asie (moře), západní Evropa (We) a západní USA 2 (WUS2).
 
 ## <a name="configuring-backup"></a>Konfigurace zálohování
+
 Následující tabulka se týká konfigurace zálohování:
 
 | Chybové zprávy | Alternativní řešení nebo tipy k řešení |
 | ------------------ | ----------------------------- |
-| Nemůžu najít svůj účet úložiště pro konfiguraci zálohování sdílené složky Azure. | <ul><li>Počkejte na dokončení zjišťování. <li>Zkontrolujte, jestli nějaká sdílená složka z daného účtu úložiště již není chráněná pomocí jiného trezoru služby Recovery Services. **Poznámka:** Všechny sdílené složky v účtu úložiště je možné chránit jenom v rámci jednoho trezoru Recovery Services. <li>Ujistěte se, že se sdílená složka nenachází v žádném z nepodporovaných účtů úložiště.|
+| Nemůžu najít svůj účet úložiště pro konfiguraci zálohování sdílené složky Azure. | <ul><li>Počkejte na dokončení zjišťování. <li>Zkontrolujte, jestli nějaká sdílená složka z daného účtu úložiště již není chráněná pomocí jiného trezoru služby Recovery Services. **Poznámka:** Všechny sdílené složky v účtu úložiště je možné chránit pouze v jednom trezoru služby Recovery Services. <li>Ujistěte se, že se sdílená složka nenachází v žádném z nepodporovaných účtů úložiště.|
 | Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo. | Pokud máte partnerské předplatné (s podporou poskytovatele CSP), chybu ignorujte. Pokud vaše předplatné nepodporuje poskytovatele CSP a vaše účty úložiště nejde zjistit, kontaktujte podporu.|
 | Nepodařilo se ověřit nebo zaregistrovat vybraný účet úložiště.| Zkuste operaci zopakovat. Pokud problém přetrvává, kontaktujte podporu.|
 | Nepodařilo se vypsat nebo najít sdílené složky ve vybraném účtu úložiště. | <ul><li> Ujistěte se, že účet úložiště existuje ve skupině prostředků (a nebyl odstraněn nebo přesunut po posledním ověření nebo registraci v trezoru).<li>Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná. <li>Ujistěte se, že účet úložiště podporuje zálohování sdílených složek.<li>Zkontrolujte, jestli daná sdílená složka již není chráněná ve stejném trezoru služby Recovery Services.|
 | Konfigurace zálohování sdílené složky (nebo konfigurace zásad ochrany) se nedaří. | <ul><li>Zkuste operaci zopakovat a zjistěte, jestli problém přetrvává. <li> Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná. <li> Pokud se pokoušíte chránit více sdílených složek najednou a u některých z nich se to nedaří, zkuste znovu nakonfigurovat zálohování sdílených složek, u kterých došlo k chybě. |
 | Po zrušení ochrany sdílené složky nejde odstranit trezor služby Recovery Services. | Na webu Azure Portal otevřete Trezor > **Infrastruktura zálohování** > **Účty úložiště** a kliknutím na **Zrušit registraci** odeberte příslušný účet úložiště z trezoru služby Recovery Services.|
-
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>Chybové zprávy pro selhání úloh zálohování nebo obnovení
 
@@ -47,7 +50,7 @@ Následující tabulka se týká konfigurace zálohování:
 | -------------- | ----------------------------- |
 | Operace selhala, protože se sdílená složka nenašla. | Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná.|
 | Účet úložiště se nenašel nebo se nepodporuje. | <ul><li>Ujistěte se, že účet úložiště existuje ve skupině prostředků a nebyl z ní odstraněn nebo odebrán po posledním ověření. <li> Ujistěte se, že účet úložiště podporuje zálohování sdílených složek.|
-| Dosáhli jste maximálního počtu snímků pro tuto sdílenou složku, další snímky budete moci pořídit po vypršení platnosti starších snímků. | <ul><li> K této chybě může dojít v případě, že vytvoříte více záloh souboru na vyžádání. <li> Platí omezení 200 snímků na sdílenou složku, a to včetně snímků pořízených službou Azure Backup. Starší naplánované zálohy (nebo snímky) se čistí automaticky. Zálohy (nebo snímky) na vyžádání se musí odstranit, pokud dojde k dosažení maximálního omezení.<li> Odstraňte zálohy na vyžádání (snímky sdílené složky Azure) na portálu Soubory Azure. **Poznámka:** Pokud odstraníte snímky vytvořené pomocí Azure Backup, ztratíte body obnovení. |
+| Dosáhli jste maximálního počtu snímků pro tuto sdílenou složku, další snímky budete moci pořídit po vypršení platnosti starších snímků. | <ul><li> K této chybě může dojít v případě, že vytvoříte více záloh souboru na vyžádání. <li> Platí omezení 200 snímků na sdílenou složku, a to včetně snímků pořízených službou Azure Backup. Starší naplánované zálohy (nebo snímky) se čistí automaticky. Zálohy (nebo snímky) na vyžádání se musí odstranit, pokud dojde k dosažení maximálního omezení.<li> Odstraňte zálohy na vyžádání (snímky sdílené složky Azure) na portálu Soubory Azure. **Poznámka:** Pokud odstraníte snímky vytvořené službou Azure Backup, přijdete o body obnovení. |
 | Zálohování nebo obnovení sdílené složky selhalo kvůli omezování služby úložiště. Pravděpodobnou příčinou je zaneprázdněnost služby úložiště zpracováním jiných požadavků pro daný účet úložiště.| Po nějaké době zkuste operaci zopakovat. |
 | Obnovení selhalo s chybou Cílová sdílená složka se nenašla. | <ul><li>Ujistěte se, že vybraný účet úložiště existuje a cílová sdílená složka není odstraněná. <li> Ujistěte se, že účet úložiště podporuje zálohování sdílených složek. |
 | Úlohy zálohování nebo obnovení selhaly kvůli tomu, že je účet úložiště v uzamčeném stavu. | Odeberte zámek účtu úložiště nebo místo zámku pro čtení použijte zámek proti odstranění a zkuste operaci zopakovat. |
@@ -59,15 +62,16 @@ Následující tabulka se týká konfigurace zálohování:
 | Operace obnovení selhala, protože došlo k chybě při provádění operací před obnovením s prostředky Synchronizace souborů přidruženými k cílové sdílené složce. | Zkuste operaci zopakovat později, a pokud se problém nevyřeší, kontaktujte podporu Azure. |
 | Jeden nebo více souborů nebylo možné úspěšně obnovit. Další informace najdete v seznamu souborů, u kterých došlo k chybě, v cestě uvedené výše. | <ul> <li> Důvody selhání obnovení jsou uvedené v souboru (cestu najdete v podrobnostech o úloze). Vyřešte tyto důvody a zopakujte operaci obnovení pouze pro soubory, u kterých došlo k chybě. <li> Běžné důvody selhání obnovení souborů: <br/> – Ujistěte se, že se soubory, u kterých došlo k chybě, aktuálně nepoužívají. <br/> – V nadřazeném adresáři existuje adresář se stejným názvem jako soubor, u kterého došlo k chybě. |
 
-
 ## <a name="modify-policy"></a>Upravit zásadu
+
 | Chybové zprávy | Alternativní řešení nebo tipy k řešení |
 | ------------------ | ----------------------------- |
-| U této položky právě probíhá jiná operace konfigurace ochrany. | Počkejte prosím, než se předchozí operace Upravit zásadu dokončí, a zkuste to za chvíli znovu.|
+| Pro tuto položku probíhá jiná operace konfigurace ochrany. | Počkejte prosím, než se předchozí operace Upravit zásadu dokončí, a zkuste to za chvíli znovu.|
 | U vybrané položky právě probíhá jiná operace. | Počkejte prosím na dokončení jiné probíhající operace a zkuste to znovu po nějaké době. |
 
+## <a name="next-steps"></a>Další kroky
 
-## <a name="see-also"></a>Viz také
-Další informace o zálohování sdílených složek Azure najdete tady:
+Další informace o zálohování sdílených složek Azure najdete v těchto tématech:
+
 - [Zálohování sdílených složek Azure](backup-azure-files.md)
 - [Nejčastější dotazy k zálohování sdílených složek Azure](backup-azure-files-faq.md)
