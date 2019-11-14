@@ -109,7 +109,7 @@
     - name: Ochrana obsahu
       items:
         - name: Dynamické šifrování a doručování klíčů
-          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
+          displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
         - name: Návrh systému s více variantami DRM
           displayName: 'drm, access control'
