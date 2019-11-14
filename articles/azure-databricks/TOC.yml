@@ -856,11 +856,20 @@
             - name: Přehled sledování
               href: /azure/databricks/applications/mlflow/tracking
               maintainContext: true
-            - name: Příklady sledování MLflow
-              href: /azure/databricks/applications/mlflow/  tracking-examples
+            - name: Trénování modelu scikit-learn
+              href: /azure/databricks/applications/mlflow/tracking-ex-scikit
+              maintainContext: true
+            - name: Trénování modelu PyTorch
+              href: /azure/databricks/applications/mlflow/tracking-ex-pytorch
+              maintainContext: true
+            - name: Trénování modelu PySpark a uložení ve formátech MLeap
+              href: /azure/databricks/applications/mlflow/tracking-ex-pyspark
+              maintainContext: true
+            - name: Sledování trénovacích dat modelu ML s využitím Delta Lake
+              href: /azure/databricks/applications/mlflow/tracking-ex-delta
               maintainContext: true
             - name: Externí přístup ke sledování
-              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
         - name: 'Ukládání, nahrávání a nasazování modelů'
           items:
@@ -911,6 +920,9 @@
             - name: Kanál typu Tumor/Normal
               href: /azure/databricks/applications/genomics/secondary/tumor-normal-pipeline
               maintainContext: true
+            - name: Anotace variant s využitím Pipe Transformeru
+              href: /azure/databricks/applications/genomics/secondary/variant-annotation-pipe
+              maintainContext: true
             - name: Metody anotace variant
               href: /azure/databricks/applications/genomics/secondary/annotate-variants
               maintainContext: true
@@ -920,26 +932,6 @@
             - name: Kanál Vep
               href: /azure/databricks/applications/genomics/secondary/vep-pipeline
               maintainContext: true
-        - name: ETL
-          items:
-            - name: Přehled ETL pro Genomics
-              href: /azure/databricks/applications/genomics/etl/index
-              maintainContext: true
-            - name: V/V variant s využitím Apache Spark SQL
-              href: /azure/databricks/applications/genomics/etl/variant-data
-              maintainContext: true
-            - name: Vytvoření Delta Lake služby Genomics
-              href: /azure/databricks/applications/genomics/etl/vcf2delta
-              maintainContext: true
-            - name: Řízení kvality variant
-              href: /azure/databricks/applications/genomics/etl/variant-qc
-              maintainContext: true
-            - name: Řízení kvality ukázek
-              href: /azure/databricks/applications/genomics/etl/sample-qc
-              maintainContext: true
-            - name: Funkce LiftOver
-              href: /azure/databricks/applications/genomics/etl/lift-over
-              maintainContext: true
         - name: Terciární analýza
           items:
             - name: Přehled terciární analýzy
@@ -947,18 +939,6 @@
               maintainContext: true
             - name: Společný kanál pro určování genotypu
               href: /azure/databricks/applications/genomics/tertiary/joint-genotyping-pipeline
-              maintainContext: true
-            - name: Paralelizace nástrojů pro příkazový řádek s využitím Pipe Transformeru
-              href: /azure/databricks/applications/genomics/tertiary/pipe-transformer
-              maintainContext: true
-            - name: Normalizace variant
-              href: /azure/databricks/applications/genomics/tertiary/variant-normalization
-              maintainContext: true
-            - name: Regresní testy
-              href: /azure/databricks/applications/genomics/tertiary/regression-tests
-              maintainContext: true
-            - name: Knihovny statistik Pythonu
-              href: /azure/databricks/applications/genomics/tertiary/pandas-udf
               maintainContext: true
             - name: SAIGE
               href: /azure/databricks/applications/genomics/tertiary/saige
@@ -1228,7 +1208,10 @@
               maintainContext: true
             - name: Neúspěšná detekce kódování v JSON
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true j
+              maintainContext: true
+            - name: Nejde číst soubory ve WASB
+              href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
         - name: DBFS
           items:
             - name: Nejde číst objekty uložené v kořeni DBFS
@@ -1550,6 +1533,9 @@
           items:
             - name: Poznámky k verzi platformy
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Listopad 2019
+              href: /azure/databricks/release-notes/product/2019/november
               maintainContext: true
             - name: Říjen 2019
               href: /azure/databricks/release-notes/product/2019/october

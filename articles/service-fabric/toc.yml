@@ -482,6 +482,8 @@
               href: service-fabric-tutorial-deploy-api-management.md
             - name: Správa tajných klíčů aplikací
               href: service-fabric-application-secret-management.md
+            - name: Použití úložiště tajných kódů služby Service Fabric
+              href: service-fabric-application-secret-store.md
               items:
                 - name: Nastavení šifrovacího certifikátu a šifrování tajných kódů ve Windows
                   href: service-fabric-application-secret-management-windows.md

@@ -539,11 +539,11 @@
           items:
             - name: Microsoft.Azure.Storage.Common (verze 11.x)
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-            - name: Azure.Storage.Common (verze 12.x – Preview)
+            - name: Azure.Storage.Common (verze 12.x)
               href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
             - name: Microsoft.Azure.Storage.Blob (verze 11.x)
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/'
-            - name: Azure.Storage.Blob (verze 12.x – Preview)
+            - name: Azure.Storage.Blob (verze 12.x)
               href: 'https://www.nuget.org/packages/Azure.Storage.Blobs/'
             - name: Azure Configuration Manager
               href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
@@ -557,7 +557,7 @@
               items:
                 - name: Klientská knihovna Azure Storage
                   items:
-                    - name: Verze 12.x (Preview)
+                    - name: Verze 12.x
                       href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
                     - name: Verze 11. x a starší
                       href: 'https://github.com/Azure/azure-storage-net'
@@ -567,19 +567,19 @@
                   href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
             - name: Java
               items:
-                - name: Klientská knihovna Azure Storage verze 12.x (Preview)
+                - name: Klientská knihovna Azure Storage verze 12.x
                   href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
                 - name: Klientská knihovna Azure Storage verze 8.x a starší
                   href: 'https://github.com/Azure/azure-storage-java'
             - name: Node.js
               items:
-                - name: Klientská knihovna Azure Storage verze 12.x (Preview)
+                - name: Klientská knihovna Azure Storage verze 12.x
                   href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
                 - name: Klientská knihovna Azure Storage verze 10.x
                   href: 'https://github.com/Azure/azure-storage-node'
             - name: Python
               items:
-                - name: Klientská knihovna Azure Storage verze 12.x (Preview)
+                - name: Klientská knihovna Azure Storage verze 12.x
                   href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
                 - name: Klientská knihovna Azure Storage verze 2.1
                   href: 'https://github.com/Azure/azure-storage-python'
@@ -754,7 +754,7 @@
             - name: Poskytovatel prostředků úložiště
               href: /java/api/overview/azure/storage/management
         - name: JavaScript (verze 12.x)
-          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+          href: /javascript/api/@azure/storage-blob/
         - name: Python (verze 12.x)
           href: /python/api/azure-storage-blob/
         - name: REST

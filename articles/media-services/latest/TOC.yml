@@ -138,6 +138,8 @@
         - name: Posun času a funkce Live-to-VOD
           displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
+        - name: Živý přepis
+          href: live-transcription.md
         - name: Porovnání funkcí
           href: live-event-types-comparison.md
         - name: Stavy a fakturace

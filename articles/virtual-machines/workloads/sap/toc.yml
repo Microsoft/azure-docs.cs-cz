@@ -166,6 +166,8 @@
               href: sap-high-availability-guide-wsfc-shared-disk.md
             - name: HA ve Windows se sdílenou složkou SOFS pro instanci (A)SCS
               href: sap-high-availability-guide-wsfc-file-share.md
+            - name: HA pro SAP NetWeaver ve Windows s využitím Azure NetApp Files (SMB)
+              href: high-availability-guide-windows-netapp-files-smb.md
             - name: HA v SUSE Linuxu pro instanci (A)SCS
               href: high-availability-guide-suse.md
             - name: HA v SUSE Linuxu pro instanci (A)SCS s využitím Azure NetApp Files

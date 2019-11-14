@@ -114,6 +114,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: Směrování oznámení trezoru klíčů s využitím Event Gridu
       href: event-grid-tutorial.md
+    - name: Integrace se službou Azure Policy
+      href: azure-policy.md
     - name: Protokolování v Azure Key Vaultu
       href: key-vault-logging.md
     - name: Přístup přes bránu firewall
