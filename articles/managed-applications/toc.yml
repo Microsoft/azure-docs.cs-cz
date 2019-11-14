@@ -75,6 +75,8 @@
           href: key-vault-access.md
         - name: Nasazení s využitím spravované identity
           href: publish-managed-identity.md
+        - name: Nasazení s využitím oznámení
+          href: publish-notifications.md
     - name: Příjemci
       items:
         - name: Monitorování spravované aplikace

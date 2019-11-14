@@ -24,6 +24,8 @@
 - name: Koncepty
   expanded: true
   items:
+    - name: Osvědčené postupy správy aplikací
+      href: application-management-fundamentals.md
     - name: Cloudové aplikace a jednotné přihlašování
       items:
         - name: Plánování integrace cloudových aplikací
