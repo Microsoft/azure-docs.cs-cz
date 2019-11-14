@@ -1,5 +1,5 @@
 ---
-title: Vytvoření spravované image v Azure | Microsoft Docs
+title: Vytvoření spravované image v Azure
 description: Vytvořte spravovanou image zobecněného virtuálního počítače nebo virtuálního pevného disku v Azure. Image lze použít k vytvoření více virtuálních počítačů, které používají spravované disky.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 54743b191b0334c92c63f374d38870a7dbfd9a38
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749620"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033666"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
@@ -70,7 +70,7 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Vytvoření spravované image na portálu 
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 
 2. V nabídce na levé straně vyberte **virtuální počítače** a pak ze seznamu vyberte virtuální počítač.
 

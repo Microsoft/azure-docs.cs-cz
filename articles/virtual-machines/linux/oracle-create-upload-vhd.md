@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a nahrání Oracle Linux VHD | Microsoft Docs
+title: Vytvoření a nahrání Oracle Linux VHD
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje Oracle Linux operační systém.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: ede12520fc6db089aea2d22b02dc32e72496830c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 16f3bc9e70f8fac6ab28318e1654742a2c3b76a1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082462"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035374"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Oracle Linuxem pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -35,8 +35,8 @@ V tomto článku se předpokládá, že jste už Oracle Linux operační systém
 * Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou použít na datových discích, pokud jsou preferované.
 * Technologie NUMA není podporovaná pro větší velikosti virtuálních počítačů z důvodu chyby ve verzích jádra systému Linux, které jsou 2.6.37. Tento problém se týká především distribucí pomocí 2.6.32 jádra Red Hat. Ruční instalace agenta Azure Linux (waagent) automaticky zakáže technologii NUMA v konfiguraci GRUB pro jádro Linux. Další informace o tomto postupu najdete v následujících krocích.
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
-* Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v poznámkách k [instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
-* Ujistěte se, že `Addons` je úložiště povolené. `/etc/yum.repos.d/public-yum-ol6.repo`Upravte soubor (Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) a v tomto souboru změňte řádek `enabled=0` na `enabled=1` **[ol6_addons]** nebo **[ol7_addons]** .
+* Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
+* Ujistěte se, že je povoleno úložiště `Addons`. Upravte soubor `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) a změňte řádek `enabled=0` na `enabled=1` v části **[ol6_addons]** nebo **[ol7_addons]** v tomto souboru.
 
 ## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
 Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému provést konkrétní konfigurační kroky.
@@ -48,11 +48,11 @@ Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému
         # sudo rpm -e --nodeps NetworkManager
    
     **Poznámka:** Pokud balíček ještě není nainstalovaný, tento příkaz se nezdaří a zobrazí se chybová zpráva. To se očekává.
-4. V`/etc/sysconfig/` adresáři vytvořte soubor s názvem **Network** , který obsahuje následující text:
+4. V `/etc/sysconfig/` adresáři vytvořte soubor s názvem **Network** , který obsahuje následující text:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. Vytvořte soubor s názvem **soubor ifcfg-eth0** v `/etc/sysconfig/network-scripts/` adresáři, který obsahuje následující text:
+5. Vytvořte soubor s názvem **soubor ifcfg-eth0** v adresáři `/etc/sysconfig/network-scripts/`, který obsahuje následující text:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -83,7 +83,7 @@ Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému
    
    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.
    
-   `crashkernel` Možnost může být ponechána v případě potřeby nakonfigurovaná, ale Všimněte si, že tento parametr sníží velikost dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+   V případě potřeby může být možnost `crashkernel` nakonfigurované, ale Všimněte si, že tento parametr sníží velikost dostupné paměti virtuálního počítače o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 10. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění.  Obvykle se jedná o výchozí nastavení.
 11. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu. Nejnovější verze je 2.0.15.
     
@@ -121,11 +121,11 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 2. Kliknutím na **připojit** otevřete okno konzoly pro virtuální počítač.
-3. V`/etc/sysconfig/` adresáři vytvořte soubor s názvem **Network** , který obsahuje následující text:
+3. V `/etc/sysconfig/` adresáři vytvořte soubor s názvem **Network** , který obsahuje následující text:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. Vytvořte soubor s názvem **soubor ifcfg-eth0** v `/etc/sysconfig/network-scripts/` adresáři, který obsahuje následující text:
+4. Vytvořte soubor s názvem **soubor ifcfg-eth0** v adresáři `/etc/sysconfig/network-scripts/`, který obsahuje následující text:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -147,7 +147,7 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
    
         # sudo yum clean all
         # sudo yum -y update
-9. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Uděláte to tak, že v textovém editoru otevřete "/etc/default/GRUB" a upravíte `GRUB_CMDLINE_LINUX` parametr, například:
+9. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Uděláte to tak, že v textovém editoru otevřete "/etc/default/GRUB" a upravíte parametr `GRUB_CMDLINE_LINUX`, například:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -157,7 +157,7 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
    
    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.
    
-   `crashkernel` Možnost může být ponechána v případě potřeby nakonfigurovaná, ale Všimněte si, že tento parametr sníží velikost dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+   V případě potřeby může být možnost `crashkernel` nakonfigurované, ale Všimněte si, že tento parametr sníží velikost dostupné paměti virtuálního počítače o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 10. Až budete hotovi s úpravou "/etc/default/GRUB", spusťte následující příkaz, který znovu sestaví konfiguraci grub:
     
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -182,6 +182,6 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
         # logout
 15. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Nyní jste připraveni k vytváření nových virtuálních počítačů v Azure pomocí Oracle Linux. VHD. Pokud soubor. VHD do Azure nahráváte poprvé, přečtěte si článek [Vytvoření virtuálního počítače se systémem Linux z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).
 

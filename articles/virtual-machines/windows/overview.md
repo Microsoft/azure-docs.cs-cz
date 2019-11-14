@@ -1,5 +1,5 @@
 ---
-title: Přehled virtuálních počítačů s Windows – Azure | Microsoft Docs
+title: Přehled Windows Virtual Machines – Azure
 description: Zjistěte, jak vytvářet a spravovat virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0f2929218b3a304099b1eb009df8e93d0e43c103
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe62f67071b77c464d5b3b8649d16db597d9ab21
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839880"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033042"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 

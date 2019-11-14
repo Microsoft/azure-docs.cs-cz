@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – konfigurace virtuálních počítačů s Linuxem v Azure pomocí Ansible | Dokumentace Microsoftu
-description: V tomto rychlém startu zjistěte, jak vytvořit virtuální počítač s Linuxem v Azure pomocí Ansible
+title: Rychlý Start – konfigurace virtuálních počítačů se systémem Linux v Azure pomocí Ansible
+description: V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač se systémem Linux v Azure pomocí Ansible.
 keywords: ansible, azure, devops, virtual machine
 ms.topic: tutorial
 ms.service: ansible
@@ -8,16 +8,16 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 32d4486138f21bd99c3d75ee72ae5dd0df667e41
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 325b581910bc343f57a2da00ab3ed6e447c1e9e3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668650"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037080"
 ---
-# <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>Rychlý start: Konfigurace virtuálních počítačů s Linuxem v Azure pomocí Ansible
+# <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>Rychlý Start: Konfigurace virtuálních počítačů se systémem Linux v Azure pomocí Ansible
 
-Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, konfiguraci a nasazování prostředků Azure prostřednictvím *playbooků* Ansible. Tento článek představuje playbook Ansible ukázky pro konfiguraci virtuálních počítačů s Linuxem. [Kompletní playbook Ansible](#complete-sample-ansible-playbook) je uvedený na konci tohoto článku.
+Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, konfiguraci a nasazování prostředků Azure prostřednictvím *playbooků* Ansible. Tento článek představuje ukázkovou Ansible PlayBook pro konfiguraci virtuálních počítačů se systémem Linux. [Kompletní playbook Ansible](#complete-sample-ansible-playbook) je uvedený na konci tohoto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,7 +66,7 @@ Následující část ukázkového playbooku Ansible vytvoří podsíť `mySubne
 
 
 
-[Veřejné IP adresy](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) umožňují internetovým prostředkům příchozí komunikaci s prostředky Azure. Veřejné IP adresy taky umožňují prostředkům Azure odchozí komunikaci s veřejně přístupných služeb Azure. V obou případech IP adresu přiřazenou k prostředku, ke kterému přistupujete. Adresa je pro prostředek vyhrazená, dokud je její přiřazení zrušit. Pokud k prostředku není přiřazena veřejná IP adresa, prostředek můžete stále odchozí komunikaci k Internetu. Navázání připojení Azure dynamicky přiřazuje dostupnou IP adresu. Dynamicky přidělovanou adresu není pro prostředek vyhrazená.
+[Veřejné IP adresy](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) umožňují internetovým prostředkům příchozí komunikaci s prostředky Azure. Veřejné IP adresy taky umožňují prostředkům Azure komunikovat odchozím službám Azure, které jsou veřejně přístupné. V obou případech IP adresa přiřazená k prostředku, ke kterému se přistupoval. Adresa je vyhrazená pro prostředek, dokud ho neodstraníte. Pokud není k prostředku přiřazená veřejná IP adresa, může prostředek dál komunikovat odchozí připojení k Internetu. Připojení provede Azure dynamicky přiřazující dostupnou IP adresu. Dynamicky přiřazená adresa není pro prostředek vyhrazená.
 
 Následující část ukázkového playbooku Ansible vytvoří veřejnou IP adresu `myPublicIP`:
 
@@ -80,9 +80,9 @@ Následující část ukázkového playbooku Ansible vytvoří veřejnou IP adre
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-[Skupiny zabezpečení sítě](/azure/virtual-network/security-overview) filtrování síťového provozu mezi prostředky ve virtuální síti Azure. Pravidla zabezpečení jsou definovány, kterými se řídí příchozí a odchozí provoz do a z prostředků Azure. Další informace o prostředcích Azure a skupiny zabezpečení sítě najdete v tématu [integrace virtuální sítě pro služby Azure](/azure/virtual-network/virtual-network-for-azure-services)
+[Skupiny zabezpečení sítě](/azure/virtual-network/security-overview) filtrují síťový provoz mezi prostředky Azure ve virtuální síti. Jsou definovaná pravidla zabezpečení, která řídí příchozí a odchozí provoz do a z prostředků Azure. Další informace o prostředcích Azure a skupinách zabezpečení sítě najdete v tématu [Integrace virtuální sítě pro služby Azure](/azure/virtual-network/virtual-network-for-azure-services) .
 
-Následující playbook vytvoří skupinu zabezpečení sítě s názvem `myNetworkSecurityGroup`. Skupina zabezpečení sítě obsahuje pravidla, které umožní provoz SSH na portu TCP 22.
+Následující PlayBook vytvoří skupinu zabezpečení sítě s názvem `myNetworkSecurityGroup`. Skupina zabezpečení sítě obsahuje pravidlo, které povoluje provoz SSH na portu TCP 22.
 
 ```yaml
 - name: Create Network Security Group that allows SSH
@@ -102,7 +102,7 @@ Následující playbook vytvoří skupinu zabezpečení sítě s názvem `myNetw
 
 Virtuální síťová karta propojí váš virtuální počítač s danou virtuální sítí, veřejnou IP adresou a skupinou zabezpečení sítě. 
 
-Následující části sekce playbook Ansible ukázka vytvoří virtuální síťové karty s názvem `myNIC` připojené k virtuální síťové prostředky, které jste vytvořili:
+V následující části ukázkového oddílu Ansible PlayBook se vytvoří virtuální síťová karta s názvem `myNIC` připojená k prostředkům virtuální sítě, kterou jste vytvořili:
 
 ```yaml
 - name: Create virtual network interface card
@@ -214,7 +214,7 @@ Tato část obsahuje úplný ukázkový playbook Ansible, který jste vytvořili
 
 Tato část vás provede spuštěním ukázkového playbooku Ansible z tohoto článku.
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Cloud Shell](/azure/cloud-shell/overview).
 
@@ -286,7 +286,7 @@ Tato část vás provede spuštěním ukázkového playbooku Ansible z tohoto č
     ssh azureuser@<ip-address>
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Rychlé zprovoznění: Spravovat virtuální počítač s Linuxem v Azure pomocí Ansible](./ansible-manage-linux-vm.md)
+> [Rychlý Start: Správa virtuálního počítače se systémem Linux v Azure pomocí Ansible](./ansible-manage-linux-vm.md)

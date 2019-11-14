@@ -1,24 +1,24 @@
 ---
-title: Oprávnění role vlastního správce pro správu registrace aplikací – Azure Active Directory | Microsoft Docs
+title: Dostupná oprávnění vlastní role správce – Azure AD | Microsoft Docs
 description: Oprávnění role vlastního správce pro delegování správy identit.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ebffbc1c451404d93383a483eecdd4a25acf6b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928618"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025153"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Podtypy registrace aplikace a oprávnění v Azure Active Directory
 
@@ -52,7 +52,7 @@ Oprávnění CREATE udělte přístup k příkazu **New Registration** .
 
 Existují dvě oprávnění, která jsou k dispozici pro udělení možnosti odstraňovat registrace aplikací:
 
-#### <a name="microsoftdirectoryapplicationsdelete"></a>Microsoft. Directory/aplikace/odstranit
+#### <a name="microsoftdirectoryapplicationsdelete"></a>microsoft.directory/applications/delete
 
 Udělí možnost odstraňovat registrace aplikací bez ohledu na podtyp; To znamená jeden tenant i víceklientské aplikace.
 
@@ -91,7 +91,7 @@ Udělí přístup ke čtení standardních vlastností registrace aplikace. To z
 
 Udělí stejná oprávnění jako Microsoft. Directory/Applications/Standard/Read, ale jenom pro aplikace s jedním klientem.
 
-### <a name="update"></a>Aktualizovat
+### <a name="update"></a>Aktualizace
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>Microsoft. Directory/Applications/allProperties/Update
 
@@ -101,7 +101,7 @@ Možnost aktualizovat všechny vlastnosti v jednom adresáři a ve více adresá
 
 Udělí stejná oprávnění jako Microsoft. Directory/Applications/allProperties/Update, ale pouze pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>Microsoft. Directory/Applications/publikum/Update
+#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
 Možnost aktualizovat vlastnost podporovaného typu účtu (signInAudience) na jednom adresáři a ve více adresářových aplikacích.
 
@@ -111,7 +111,7 @@ Možnost aktualizovat vlastnost podporovaného typu účtu (signInAudience) na j
 
 Udělí stejná oprávnění jako Microsoft. Directory/Applications/publikum/Update, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>Microsoft. Directory/Applications/Authentication/Update
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft.directory/applications/authentication/update
 
 Možnost aktualizace adres URL odpovědi, adresy URL pro odhlášení, implicitního toku a vlastností domény vydavatele v rámci jednoho tenanta a víceklientské aplikace. Udělí přístup ke všem polím na stránce ověřování registrace aplikace s výjimkou podporovaných typů účtů:
 
@@ -121,7 +121,7 @@ Možnost aktualizace adres URL odpovědi, adresy URL pro odhlášení, implicitn
 
 Udělí stejná oprávnění jako Microsoft. Directory/Applications/Authentication/Update, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>Microsoft. Directory/Applications/Basic/Update
+#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>microsoft.directory/applications/basic/update
 
 Možnost aktualizace vlastností název, logo, adresa URL domovské stránky, adresa URL podmínek služby a vlastnosti adresy URL prohlášení o zásadách ochrany osobních údajů v aplikacích pro jednoho tenanta a víceklientské úrovni. Udělí přístup ke všem polím na stránce s informacemi o registraci aplikace:
 
@@ -131,7 +131,7 @@ Možnost aktualizace vlastností název, logo, adresa URL domovské stránky, ad
 
 Udělí stejná oprávnění jako Microsoft. Directory/Applications/Basic/Update, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft.directory/applications/credentials/update
 
 Možnost aktualizace certifikátů a vlastností tajných kódů klienta v aplikacích s jedním klientem a víceklientské aplikace. Udělí přístup ke všem polím na stránce certifikáty pro registraci aplikací & tajných kódů:
 
@@ -141,7 +141,7 @@ Možnost aktualizace certifikátů a vlastností tajných kódů klienta v aplik
 
 Udělí stejná oprávnění jako Microsoft. Directory/Applications/Credentials/Update, ale jenom pro aplikace s jedním adresářem.
 
-#### <a name="microsoftdirectoryapplicationsownersupdate"></a>Microsoft. Directory/aplikace/vlastníci/aktualizace
+#### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft.directory/applications/owners/update
 
 Možnost aktualizovat vlastnost Owner v jednom tenantovi a víceklientském tenantovi. Uděluje přístup ke všem polím na stránce vlastníci registrace aplikace:
 
@@ -151,7 +151,7 @@ Možnost aktualizovat vlastnost Owner v jednom tenantovi a víceklientském tena
 
 Udělí stejná oprávnění jako Microsoft. Directory/Applications/Owners/Update, ale jenom pro aplikace s jedním klientem.
 
-#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>Microsoft. Directory/aplikace/oprávnění/aktualizace
+#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>microsoft.directory/applications/permissions/update
 
 Možnost aktualizovat delegovaná oprávnění, oprávnění aplikace, autorizované klientské aplikace, požadovaná oprávnění a udělit vlastnosti souhlasu pro jeden tenant a víceklientské aplikace. Neuděluje možnost provádět souhlas. Uděluje přístup všem polím v rozhraní API pro registraci aplikace a zpřístupňuje stránky rozhraní API:
 

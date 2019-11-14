@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796057"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033967"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Přístup k více protokolům na Azure Data Lake Storage
 
@@ -47,10 +47,11 @@ Položky, které se zobrazují v této tabulce, se v průběhu času změní, pr
 
 |Funkce BLOB Storage | Úroveň podpory |
 |---|---|
-|[Studená úroveň přístupu](storage-blob-storage-tiers.md)|Všeobecně dostupné|
-|Sady SDK objektů BLOB |Všeobecně dostupné|
-|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Všeobecně dostupné|
-|[Rozhraní příkazového řádku](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Všeobecně dostupné|
+|[Studená úroveň přístupu](storage-blob-storage-tiers.md)|Obecně dostupná|
+|Sady SDK objektů BLOB |Obecně dostupná|
+|Rozhraní REST API pro objekty blob|Obecně k dispozici|
+|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Obecně dostupná|
+|[Rozhraní příkazového řádku](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Obecně dostupná|
 |[Diagnostické protokoly](../common/storage-analytics-logging.md)| Preview|
 |[Zásady správy životního cyklu](storage-lifecycle-management-concepts.md)| Preview|
 |[Oznámení prostřednictvím Azure Event Grid](data-lake-storage-events.md)|Preview|
@@ -74,11 +75,11 @@ Stejně jako v seznamu podporovaných funkcí BLOB Storage se položky, které s
 
 |Služba Azure | Úroveň podpory |
 |---|---|
-|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Všeobecně dostupné|
-|[Azure Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Všeobecně dostupné|
-|[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Všeobecně dostupné|
-|[IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Všeobecně dostupné|
-|[Logic Apps](https://azure.microsoft.com/services/logic-apps/)|Všeobecně dostupné|
+|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Obecně dostupná|
+|[Azure Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Obecně dostupná|
+|[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Obecně dostupná|
+|[IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Obecně dostupná|
+|[Logic Apps](https://azure.microsoft.com/services/logic-apps/)|Obecně dostupná|
 |[Kognitivní hledání Azure](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|Preview|
 
 Úplný seznam podpory Azure ekosystému pro Data Lake Storage Gen2 najdete v tématu věnovaném [integraci Azure Data Lake Storage se službami Azure](data-lake-storage-integrate-with-azure-services.md).

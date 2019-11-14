@@ -1,6 +1,6 @@
 ---
-title: Registrace osobních zařízení v síti vaší organizace – Azure Active Directory | Dokumentace Microsoftu
-description: Informace o postupu registrace osobních zařízení v síti vaší organizace, aby měli přístup k chráněným prostředkům vaší organizace.
+title: Registrace osobních zařízení v síti organizace – Azure AD
+description: Zjistěte, jak zaregistrovat svoje osobní zařízení v síti vaší organizace, abyste měli přístup k chráněným prostředkům vaší organizace.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,63 +14,63 @@ ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 879fa55df422e6039c6830e25e43637fc31b8037
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473646"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028483"
 ---
-# <a name="register-your-personal-device-on-your-organizations-network"></a>Registrace osobních zařízení v síti vaší organizace
-Zaregistrujte své osobní zařízení (obvykle telefon nebo tablet) v síti vaší organizace. Po registraci zařízení bude mít přístup k prostředkům vaší organizace s omezeným přístupem.
+# <a name="register-your-personal-device-on-your-organizations-network"></a>Registrace svého osobního zařízení v síti vaší organizace
+Zaregistrujte své osobní zařízení (obvykle telefon nebo tablet) v síti vaší organizace. Po zaregistrování zařízení bude mít přístup k prostředkům s omezeným přístupem vaší organizace.
 
 >[!Note]
->Tento článek používá zařízení s Windows pro demonstrační účely, ale budete taky moct registrovat zařízení se systémem iOS, Android a macOS.
+>Tento článek používá pro demonstrační účely zařízení s Windows, ale můžete také registrovat zařízení s iOS, Androidem nebo macOS.
 
-## <a name="what-happens-when-you-register-your-device"></a>Co se stane při registraci zařízení
-Když se registrace zařízení v síti vaší organizace, se stane následující akce:
+## <a name="what-happens-when-you-register-your-device"></a>Co se stane, když zaregistrujete zařízení
+Při registraci zařízení v síti vaší organizace dojde k následujícím akcím:
 
-- Windows zaregistruje zařízení v síti vaší organizace.
+- Systém Windows zaregistruje vaše zařízení v síti vaší organizace.
 
-- Volitelně můžete na základě vaší organizace voleb, můžete být požádáni nastavit dvoustupňové ověřování pomocí kteréhokoliv [ověřování službou Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) nebo [bezpečnostní údaje](user-help-security-info-overview.md).
+- V závislosti na volbách vaší organizace se může zobrazit výzva k nastavení dvoustupňového ověřování prostřednictvím [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) nebo [bezpečnostních údajů](user-help-security-info-overview.md).
 
-- Volitelně můžete podle volby vaší organizace, vám může být automaticky zaregistroval do správy mobilních zařízení, jako je například Microsoft Intune. Další informace o registraci v Microsoft Intune najdete v tématu [registrace zařízení v Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- Volitelně můžete v závislosti na volbách vaší organizace automaticky zaregistrované v rámci správy mobilních zařízení, například Microsoft Intune. Další informace o registraci v Microsoft Intune najdete v tématu [registrace zařízení v Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
 
-- Přejdete prostřednictvím procesu přihlášení pomocí uživatelského jména a hesla pro váš pracovní nebo školní účet.
+- Projdete přihlašovacím jménem a heslem svého pracovního nebo školního účtu.
 
-## <a name="to-register-your-windows-device"></a>K registraci zařízení s Windows
+## <a name="to-register-your-windows-device"></a>Registrace zařízení s Windows
 
-Postupujte podle těchto kroků k registraci osobních zařízení ve vaší síti.
+Pomocí těchto kroků zaregistrujete své osobní zařízení v síti.
 
-1. Otevřít **nastavení**a pak vyberte **účty**.
-
-    ![Účty na obrazovce nastavení](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
-
-2. Vyberte **přístup do práce nebo do školy**a pak vyberte **připojit** z **přístup do práce nebo do školy** obrazovky.
-
-    ![Přístup k pracovním nebo školním obrazovky se zvýrazněnou možností připojení](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
-
-3. Na **přidat pracovní nebo školní účet** obrazovky, zadejte e-mailovou adresu pro váš pracovní nebo školní účet a potom vyberte **Další**. Například, alain@contoso.com.
-
-4. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak vyberte **přihlášení**.
-
-5. Dokončete proces registrace, včetně schvalování žádosti o ověření identity (Pokud používáte dvoustupňové ověřování) a nastavení Windows Hello (v případě potřeby).
-
-## <a name="to-verify-that-youre-registered"></a>Chcete-li ověřit, že budete zaregistrováni
-Abyste měli jistotu, že budete zaregistrováni podle nastavení.
-
-1. Otevřít **nastavení**a pak vyberte **účty**.
+1. Otevřete **Nastavení**a pak vyberte **účty**.
 
     ![Účty na obrazovce nastavení](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Vyberte **přístup do práce nebo do školy**a ujistěte se, že se zobrazí váš pracovní nebo školní účet.
+2. Vyberte možnost **přístup do práce nebo do školy**a pak vyberte **připojit** z **pracovní nebo školní** obrazovky.
 
-    ![Přístup k obrazovce pracovním nebo školním účtem připojených contoso](./media/user-help-register-device-on-network/register-device-setup-verify.png)
+    ![Přístup k pracovní nebo školní obrazovce s zvýrazněnou možností připojit](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-## <a name="next-steps"></a>Další postup
-Až dokončíte registraci osobních zařízení k síti vaší organizace, byste měli mít přístup k maximální využití vašich prostředků.
+3. Na obrazovce **Přidat pracovní nebo školní účet** zadejte e-mailovou adresu svého pracovního nebo školního účtu a pak vyberte **Další**. Například, alain@contoso.com.
 
-- Pokud vaše organizace chce, abyste připojení pracovních zařízení, přečtěte si téma [připojení pracovních zařízení k síti vaší organizace](user-help-join-device-on-network.md).
+4. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak vyberte **Přihlásit**se.
+
+5. Dokončete zbývající část procesu registrace, včetně schvalování žádosti o ověření identity (Pokud používáte dvoustupňové ověřování) a nastavte Windows Hello (v případě potřeby).
+
+## <a name="to-verify-that-youre-registered"></a>Ověření, že jste zaregistrováni
+Můžete se ujistit, že jste zaregistrováni, a to tak, že si prohlédněte nastavení.
+
+1. Otevřete **Nastavení**a pak vyberte **účty**.
+
+    ![Účty na obrazovce nastavení](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
+
+2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že jste viděli svůj pracovní nebo školní účet.
+
+    ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-register-device-on-network/register-device-setup-verify.png)
+
+## <a name="next-steps"></a>Další kroky
+Po registraci osobního zařízení do sítě vaší organizace byste měli mít přístup k většině svých prostředků.
+
+- Pokud vaše organizace požaduje, abyste se připojili k pracovnímu zařízení, přečtěte si téma [připojení pracovního zařízení k síti vaší organizace](user-help-join-device-on-network.md).
 
 
 

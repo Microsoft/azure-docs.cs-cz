@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Azure Linux – akcelerované výpočetní prostředky | Microsoft Docs
+title: Velikosti virtuálních počítačů Azure Linux – akcelerované výpočetní prostředky
 description: Obsahuje seznam různých velikostí GPU, které jsou dostupné pro virtuální počítače Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: ed8af91701a5ed77636bb86e8798981f37546f23
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 983e85dc0ebefb27804c0f3a794360def6050ba9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082135"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034911"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
 
@@ -37,7 +37,7 @@ Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si t�
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* Neměli byste instalovat X server nebo jiné systémy, které používají `Nouveau` ovladač na virtuálních počítačích Ubuntu NC. Před instalací ovladačů NVIDIA GPU je potřeba `Nouveau` ovladač zakázat.  
+* Neměli byste instalovat X server nebo jiné systémy, které používají `Nouveau` ovladače na virtuálních počítačích Ubuntu NC. Před instalací ovladačů NVIDIA GPU je potřeba zakázat ovladač `Nouveau`.  
 
 ## <a name="other-sizes"></a>Jiné velikosti
 - [Obecné účely](sizes-general.md)
@@ -47,5 +47,5 @@ Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si t�
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

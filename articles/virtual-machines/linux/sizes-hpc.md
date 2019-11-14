@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Azure Linux – HPC | Microsoft Docs
+title: Velikosti virtuálních počítačů Azure Linux – HPC
 description: Obsahuje seznam různých velikostí dostupných pro virtuální počítače s vysokým výkonem pro Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: ee99869c2b7a7b3ab38fdd9eae0687862ea53819
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 214ab48b6b0dca37eff3b3f155aaa92afc7fee16
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100865"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034898"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -88,7 +88,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 * **Virtuální počítače** – nasazení virtuálních počítačů HPC s podporou RDMA ve stejné skupině dostupnosti (při použití modelu nasazení Azure Resource Manager). Pokud používáte model nasazení Classic, nasaďte virtuální počítače do stejné cloudové služby. 
 
-* **Virtual Machine Scale Sets** – v sadě škálování virtuálního počítače Nezapomeňte toto nasazení omezit na jednu skupinu umístění. Například v šabloně správce prostředků nastavte `singlePlacementGroup` vlastnost na. `true` 
+* **Virtual Machine Scale Sets** – v sadě škálování virtuálního počítače Nezapomeňte toto nasazení omezit na jednu skupinu umístění. Například v šabloně Správce prostředků nastavte vlastnost `singlePlacementGroup` na `true`. 
 
 * **MPI mezi virtuálními počítači** – Pokud se vyžaduje komunikace MPI mezi virtuálními počítači, ujistěte se, že jsou virtuální počítače ve stejné skupině dostupnosti nebo ve stejné sadě škálování virtuálního počítače.
 
@@ -96,7 +96,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 * **Azure Batch** – vytvoření fondu [Azure Batch](/azure/batch/) pro spouštění úloh MPI na výpočetních uzlech se systémem Linux. Další informace najdete v tématu [použití instancí podporujících technologii RDMA nebo GPU ve fondech služby Batch](../../batch/batch-pool-compute-intensive-sizes.md). Pro spouštění úloh založených na kontejnerech ve službě Batch se také zobrazí projekt [Batch loděnice](https://github.com/Azure/batch-shipyard) .
 
-* **Sada Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) podporuje několik distribucí Linux na výpočetní uzly nasazené ve virtuálních počítačích Azure s podporou RDMA, které spravuje hlavní uzel Windows serveru. Ukázkové nasazení najdete [v tématu Vytvoření clusteru HPC Pack Linux RDMA v Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+* Sada **Microsoft HPC pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) podporuje ve výpočetních uzlech nasazených na virtuálních počítačích Azure, které jsou spravovány hlavním uzlem Windows serveru, několik distribucí Linux. Ukázkové nasazení najdete [v tématu Vytvoření clusteru HPC Pack Linux RDMA v Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 
 ### <a name="network-considerations"></a>Síťové požadavky
@@ -114,7 +114,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 - [GPU](../windows/sizes-gpu.md)
 - [Předchozí generace](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o tom, jak nastavit, optimalizovat a škálovat [úlohy prostředí HPC](../workloads/hpc/configure.md) v Azure.
 - Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

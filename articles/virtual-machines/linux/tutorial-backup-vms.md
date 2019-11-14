@@ -1,5 +1,5 @@
 ---
-title: Kurz zálohování virtuálních počítačů s Linuxem na portálu Azure | Microsoft Docs
+title: Kurz – zálohování virtuálních počítačů se systémem Linux v Azure Portal
 description: V tomto kurzu se naučíte, jak využít portál Azure k ochraně virtuálních počítačů s Linuxem pomocí Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 890d4ab0dcbaa814b4ce3365025e4c35e4ba4c6b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103546"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034589"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnovení souborů pro virtuální počítače se systémem Linux v Azure
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Linuxem v Azure
 
-Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo určité soubory. Tento článek vysvětluje, jak obnovit jeden soubor na virtuální počítač s Linuxem a serverem NGINX. Pokud ještě nemáte virtuální počítač, který byste mohli použít, můžete si ho vytvořit pomocí postupu v [rychlém startu pro Linux](quick-create-cli.md). V tomto kurzu se naučíte:
+Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo určité soubory. Tento článek vysvětluje, jak obnovit jeden soubor na virtuální počítač s Linuxem a serverem NGINX. Pokud ještě nemáte virtuální počítač, který byste mohli použít, můžete si ho vytvořit pomocí postupu v [rychlém startu pro Linux](quick-create-cli.md). Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření zálohy virtuálního počítače
@@ -43,7 +43,7 @@ Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 ## <a name="create-a-backup"></a>Vytvoření zálohy
 Vytvořte plánované denní zálohování do trezoru služby Recovery Services:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **Virtuální počítače**. 
 3. V seznamu vyberte virtuální počítač, který chcete zálohovat.
 4. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Povolit zálohování**.
@@ -93,8 +93,8 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
 7. V seznamu vyberte virtuální počítač.
 8. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Zálohování**. 
 9. V nabídce v horní části okna vyberte **Obnovení souborů**. Otevře se okno **Obnovení souborů**.
-10. V **kroku 1: Vyberte bod**obnovení, vyberte bod obnovení z rozevíracího seznamu.
-11. V **kroku 2: Stažení skriptu pro procházení a obnovení souborů**klikněte na tlačítko **stáhnout spustitelný soubor** . Uložte stažený soubor na svůj místní počítač.
+10. V části **Krok 1: Výběr bodu obnovení** vyberte z rozevíracího seznamu bod obnovení.
+11. V části **Krok 2: Stažení skriptu pro procházení a obnovení souborů** klikněte na tlačítko **Stáhnout spustitelný soubor**. Uložte stažený soubor na svůj místní počítač.
 7. Kliknutím na **Stáhnout skript** místně stáhněte soubor skriptu.
 8. Otevřete příkazový řádek Bash a zadejte následující, přičemž nahraďte *Linux_myVM_05-05-2017.sh* za správnou cestu a název souboru staženého skriptu, *azureuser* za uživatelné jméno pro virtuální počítač a *13.69.75.209* za veřejnou IP adresu vašeho virtuálního počítače.
     
@@ -155,10 +155,10 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
 
     ![Výchozí webová stránka serveru NGINX](./media/tutorial-backup-vms/nginx-working.png)
 
-18. V místním počítači se vraťte na kartu prohlížeče pro Azure Portal a v **kroku 3: Odpojte disky po obnovení** klikněte na tlačítko **Odpojit disky** . Pokud tento krok zapomenete provést, připojení k přípojnému bodu se automaticky ukončí po 12 hodinách. Po těchto 12 hodinách musíte pro vytvoření nového přípojného bodu stáhnout nový skript.
+18. Na svém místním počítači se vraťte na kartu prohlížeče s webem Azure Portal a v části **Krok 3: Odpojení disků po obnovení** klikněte na tlačítko **Odpojit disky**. Pokud tento krok zapomenete provést, připojení k přípojnému bodu se automaticky ukončí po 12 hodinách. Po těchto 12 hodinách musíte pro vytvoření nového přípojného bodu stáhnout nový skript.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

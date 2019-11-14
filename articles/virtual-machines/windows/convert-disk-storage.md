@@ -1,5 +1,5 @@
 ---
-title: Převod úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard | Microsoft Docs
+title: Převod úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard
 description: Jak převést službu Azure Managed disks z úrovně Standard na Premium nebo Premium na standard pomocí Azure PowerShell.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 274697d555974f286c2c71f26280640077c11f81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749544"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033929"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizace typu úložiště spravovaného disku
 

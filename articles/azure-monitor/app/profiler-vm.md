@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
-ms.date: 08/06/2018
+ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 44f45c53a12c7ac73c3de3f2734f024cb9bc6dd5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899990"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031014"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilování webových aplikací běžících na virtuálním počítači Azure nebo v sadě škálování virtuálního počítače pomocí Application Insights Profiler
 
@@ -89,15 +89,15 @@ Ještě nepoužíváme způsob, jak nastavit Application Insights Profiler jímk
 
     ![Ověřte, jestli je nainstalované rozšíření WAD.][wadextension]
 
-1. Najděte pro svůj virtuální počítač rozšíření pro diagnostiku virtuálních počítačů. Rozbalte skupinu prostředků, Microsoft. COMPUTE virtualMachines, název a rozšíření virtuálního počítače.  
+2. Najděte pro svůj virtuální počítač rozšíření pro diagnostiku virtuálních počítačů. Přejděte do [ (Nastavení)https://resources.azure.com](https://resources.azure.com) (Integrace a služby). Rozbalte skupinu prostředků, Microsoft. COMPUTE virtualMachines, název a rozšíření virtuálního počítače.  
 
     ![V Azure Resource Explorer přejděte na WAD config.][azureresourceexplorer]
 
-1. Přidejte Application Insights Profiler jímka do uzlu SinksConfig pod WadCfg. Pokud ještě nemáte oddíl SinksConfig, možná ho budete muset přidat. Nezapomeňte zadat správné Application Insights iKey v nastavení. V pravém horním rohu budete muset přepnout do režimu Průzkumníka, aby bylo možné číst a zapisovat a stisknout modré tlačítko Upravit.
+3. Přidejte Application Insights Profiler jímka do uzlu SinksConfig pod WadCfg. Pokud ještě nemáte oddíl SinksConfig, možná ho budete muset přidat. Nezapomeňte zadat správné Application Insights iKey v nastavení. V pravém horním rohu budete muset přepnout do režimu Průzkumníka, aby bylo možné číst a zapisovat a stisknout modré tlačítko Upravit.
 
     ![Přidat Application Insights Profiler jímka][resourceexplorersinksconfig]
 
-1. Až budete hotovi s úpravou konfigurace, stiskněte tlačítko PUT. Pokud je operace Put úspěšná, zobrazí se v prostřední části obrazovky zelená zaškrtávací políčka.
+4. Až budete hotovi s úpravou konfigurace, stiskněte tlačítko PUT. Pokud je operace Put úspěšná, zobrazí se v prostřední části obrazovky zelená zaškrtávací políčka.
 
     ![Odeslat požadavek PUT pro uplatnění změn][resourceexplorerput]
 

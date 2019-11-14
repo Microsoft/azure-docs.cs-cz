@@ -1,27 +1,28 @@
 ---
-title: Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti Always On v Azure | Microsoft Docs
-description: Tento kurz používá prostředky vytvořené pomocí modelu nasazení Classic a vytvoří naslouchací proces skupiny dostupnosti Always On v Azure, který používá interní nástroj pro vyrovnávání zatížení.
+title: Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti (Classic)
+description: V tomto kurzu se používají prostředky vytvořené pomocí modelu nasazení Classic a vytvoří se naslouchací proces skupiny dostupnosti Always On v pro SQL Server virtuální počítač v Azure, který používá interní nástroj pro vyrovnávání zatížení.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
-ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
+ms.assetid: 291288a0-740b-4cfa-af62-053218beba77j
 ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: ca8adf4f9ce221533240e6c797f1fb01dacf6e8d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 29aaedeafb3995cc09e221d2e049dd538808904a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101910"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032661"
 ---
-# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti Always On v Azure
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti na virtuálních počítačích Azure SQL Server
 > [!div class="op_single_selector"]
 > * [Interní naslouchací proces](../classic/ps-sql-int-listener.md)
 > * [Externí naslouchací proces](../classic/ps-sql-ext-listener.md)
@@ -31,7 +32,7 @@ ms.locfileid: "70101910"
 ## <a name="overview"></a>Přehled
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Azure Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Doporučujeme, aby většina nových nasazení používala model Správce prostředků.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Azure Resource Manager a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Doporučujeme, aby většina nových nasazení používala model Správce prostředků.
 
 Pokud chcete nakonfigurovat naslouchací proces pro skupinu dostupnosti Always On v modelu Správce prostředků, přečtěte si téma [Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On v Azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
@@ -66,7 +67,7 @@ Vytvořte koncový bod s vyrovnáváním zatížení pro každý virtuální po�
 
 6. Spusťte `Get-AzurePublishSettingsFile`. Tato rutina vás přesměruje na prohlížeč a stáhne soubor nastavení publikování do místního adresáře. Může se zobrazit výzva k zadání přihlašovacích údajů k vašemu předplatnému Azure.
 
-7. Spusťte následující `Import-AzurePublishSettingsFile` příkaz s cestou k souboru nastavení publikování, který jste stáhli:
+7. Spusťte následující příkaz `Import-AzurePublishSettingsFile` s cestou k souboru nastavení publikování, který jste stáhli:
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
@@ -77,7 +78,7 @@ Vytvořte koncový bod s vyrovnáváním zatížení pro každý virtuální po�
         (Get-AzureVNetConfig).XMLConfiguration
 9. Poznamenejte si název *podsítě* , která obsahuje virtuální počítače, které hostí repliky. Tento název se používá ve skriptu $SubnetName parametrem.
 
-10. Poznamenejte si název *VirtualNetworkSite* a spouštěcí *AddressPrefix* pro podsíť, která obsahuje virtuální počítače, které hostí repliky. Vyhledejte dostupnou IP adresu předáním obou hodnot do `Test-AzureStaticVNetIP` příkazu a prozkoumáním *AvailableAddresses*. Pokud má například virtuální síť název *MyVNet* a rozsah adres podsítě, který začíná na *172.16.0.128*, následující příkaz zobrazí seznam dostupných adres:
+10. Poznamenejte si název *VirtualNetworkSite* a spouštěcí *AddressPrefix* pro podsíť, která obsahuje virtuální počítače, které hostí repliky. Vyhledejte dostupnou IP adresu předáním obou hodnot do příkazu `Test-AzureStaticVNetIP` a prozkoumáním *AvailableAddressesu*. Pokud má například virtuální síť název *MyVNet* a rozsah adres podsítě, který začíná na *172.16.0.128*, následující příkaz zobrazí seznam dostupných adres:
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. Vyberte jednu z dostupných adres a použijte ji v parametru $ILBStaticIP skriptu v dalším kroku.
@@ -150,7 +151,7 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejdřív vy
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Po nastavení proměnných otevřete okno Windows PowerShellu se zvýšenými oprávněními, vložte skript z textového editoru do relace PowerShellu a spusťte ho. Pokud se výzva stále zobrazuje **>>** , stiskněte ENTER znovu a ujistěte se, že se skript spustí.
+3. Po nastavení proměnných otevřete okno Windows PowerShellu se zvýšenými oprávněními, vložte skript z textového editoru do relace PowerShellu a spusťte ho. Pokud se výzva stále zobrazuje **>>** , znovu stiskněte klávesu ENTER a ujistěte se, že se skript začne spouštět.
 
 4. Předchozí kroky opakujte pro každý virtuální počítač.  
     Tento skript nakonfiguruje prostředek IP adresy s IP adresou cloudové služby a nastaví další parametry, jako je například port testu. Když se prostředek IP adresy přepne do online režimu, může reagovat na cyklické dotazování na portu sondy z koncového bodu s vyrovnáváním zatížení, který jste vytvořili dříve.
@@ -164,5 +165,5 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejdřív vy
 ## <a name="test-the-availability-group-listener-within-the-same-virtual-network"></a>Testování naslouchacího procesu skupiny dostupnosti (v rámci stejné virtuální sítě)
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]

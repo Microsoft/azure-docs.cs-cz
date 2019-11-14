@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 76b34e11bba00105792ac5163c5163184c185e09
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686165"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039625"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
 
@@ -22,7 +22,7 @@ Tento článek shrnuje, co je podporováno při používání služby [Azure Sit
 > Replikaci do sekundární lokality můžete provést pouze v případě, že jsou hostitelé Hyper-V spravováni v cloudech VMM.
 
 > [!WARNING]
-> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
+> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](site-to-site-deprecation.md) .
 
 
 ## <a name="host-servers"></a>Hostitelské servery
@@ -67,13 +67,13 @@ Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
 Virtuální počítač hosta – více síťových karet | Ano
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
 **Úložiště (hostitel)** | **Podporuje se**
 --- | --- 
-NFS | Není dostupné.
+NFS | neuvedeno
 SMB 3.0 |  Ano
 SÍŤ SAN (ISCSI) | Ano
 Multipath (multi-Path) | Ano
@@ -82,15 +82,15 @@ Multipath (multi-Path) | Ano
 
 **Konfigurace** | **Podporuje se**
 --- | --- | 
-FORMÁTU |  Není dostupné.
+VMDK |  neuvedeno
 VHD/VHDX | Ano (až 16 disků)
 Virtuální počítač 2. generace | Ano
 Disk sdíleného clusteru | Ne
 Zašifrovaný disk | Ne
-UEFI| Není dostupné.
+UEFI| neuvedeno
 NFS | Ne
 SMB 3.0 | Ne
-RDM | Není dostupné.
+RDM | neuvedeno
 Disk > 1 TB | Ano
 Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
 Prostory úložiště | Ano

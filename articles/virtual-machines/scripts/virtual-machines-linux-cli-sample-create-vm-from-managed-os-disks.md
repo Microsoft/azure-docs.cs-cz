@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem | Microsoft Docs
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 3ec3d152864ab8caf9f0c68966b6d4f8fd9e64dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05263df1327eff49d0c9ec84316447ba563695ca
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301911"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039165"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Vytvoření virtuálního počítače s použitím existujícího spravovaného disku s operačním systémem pomocí rozhraní příkazového řádku
 
@@ -50,11 +50,11 @@ az group delete --name myResourceGroup
 
 Tento skript k získání vlastností spravovaného disku, připojení spravovaného disku k novému virtuálnímu počítači a vytvoření virtuálního počítače používá následující příkazy. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | Získá vlastnosti spravovaného disku s použitím názvu disku a názvu skupiny prostředků. Vlastnost ID se použije k připojení spravovaného disku k novému virtuálnímu počítači. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač s použitím spravovaného disku s operačním systémem. |
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

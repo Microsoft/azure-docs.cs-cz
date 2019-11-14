@@ -1,6 +1,6 @@
 ---
 title: Měření reálných uživatelů v Azure Traffic Manager
-description: Úvod do Měření reálných uživatelů v Traffic Manager
+description: V tomto úvodu se dozvíte, jak Azure Traffic Manager Měření reálných uživatelů fungovat.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 4aa2649ba2e49e1fec1b9b124a9b82313280cee9
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1cb3bd1f4a665da4422d296641b193b1e45e45a2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333725"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037956"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Přehled Traffic Manager Měření reálných uživatelů
 
@@ -75,7 +75,7 @@ Při použití Měření reálných uživatelů se fakturuje na základě počtu
 
 * [Zvýší se využití šířky pásma Azure při použití Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Naučte se používat [měření reálných uživatelů s webovými stránkami](traffic-manager-create-rum-web-pages.md)
 - Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
 - Další informace o [Mobile Center](https://docs.microsoft.com/mobile-center/)

@@ -1,5 +1,5 @@
 ---
-title: Nastavení Key Vault pro virtuální počítače s Windows v Azure Resource Manager | Microsoft Docs
+title: Nastavení Key Vault pro virtuální počítače s Windows v Azure Resource Manager
 description: Jak nastavit Key Vault pro použití s virtuálním počítačem s Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 225ce9fcbb18aa374f413e8e237c911c85cc77a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999353"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038215"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Nastavení Key Vault pro virtuální počítače v Azure Resource Manager
 
@@ -56,7 +56,7 @@ Pak pokud chcete povolit Key Vault pro použití s nasazením šablony, spusťte
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Použití šablon k nastavení Key Vault
-Při použití šablony je nutné nastavit `enabledForDeployment` vlastnost na `true` hodnotu pro prostředek Key Vault.
+Když použijete šablonu, musíte nastavit vlastnost `enabledForDeployment` na `true` pro prostředek Key Vault.
 
     {
       "type": "Microsoft.KeyVault/vaults",

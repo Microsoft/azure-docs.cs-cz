@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 42b8bde9adb6980ff2c7004d43b02fc1fdc38363
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 7b5f566757dd77a61f252b123d0c9c1b74303fbe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513452"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034125"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy jobs show
 
@@ -31,6 +31,13 @@ Pokud je nastaven příznak `with-status`, zobrazí se seznam přenosů v úloze
 azcopy jobs show [jobID] [flags]
 ```
 
+## <a name="related-conceptual-articles"></a>Související koncepční články
+
+- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+
 ## <a name="options"></a>Možnosti
 
 |Možnost|Popis|
@@ -45,6 +52,6 @@ azcopy jobs show [jobID] [flags]
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [AzCopy úlohy](storage-ref-azcopy-jobs.md)

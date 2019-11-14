@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 99b7de8c0e24fdbd12742b26394e61c956638525
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684422"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038281"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrace místních SSIS úloh do SSIS v ADF
 
@@ -48,7 +48,7 @@ Data Migration Assistant (DMA) je pro tento účel volně zaváděný nástroj, 
   - MSDB, což je systémová databáze v SQL Server používaná k ukládání balíčků SSIS.
   - Spravovaný systém souborů, což je specifická složka v SQL Server cesta instalace používaná k ukládání balíčků SSIS.
 
-DMA aktuálně podporuje dávkové vyhodnocení balíčků uložených v typu úložiště **systému souborů** od **verze DMA verze 4.5**.
+DMA aktuálně podporuje dávkové vyhodnocení balíčků uložených v **systému souborů**, v obchodě s **balíčky**a v **katalogu SSIS** od **verze DMA verze 5.0**.
 
 Získejte [přímý přístup do paměti](https://docs.microsoft.com/sql/dma/dma-overview)a [proveďte posouzení balíčku](https://docs.microsoft.com/sql/dma/dma-assess-ssis).
 

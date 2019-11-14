@@ -1,17 +1,14 @@
 ---
 title: Mapování ukázkových ovládacích prvků podle ISO 27001
 description: Mapování ovládacího prvku ukázka ISO 27001. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: f187bf5a77f756bbc6293a14e1873d13788d3929
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6d77573a37c27aba96bace1f6d228ac892b0ecd9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162471"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038341"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku ukázka ISO 27001
 
@@ -50,7 +47,7 @@ Principy prostředků, které jsou v rozporu s těmito zásadami, vám pomůžou
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A. 9.2.3 Správa privilegovaných přístupových práv
 
-Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřazuje čtyři definice [Azure Policy](../../../policy/overview.md) pro audit externích účtů s oprávněními vlastníka nebo zápisu a s oprávněními k zápisu a s oprávněním k zápisu, které nemají. ověřování Multi-Factor Authentication je povolené. Azure implementuje řízení přístupu na základě role (RBAC), které umožňuje spravovat, kdo má přístup k prostředkům Azure. Tento podrobný plán také přiřadí tři Azure Policy definice k auditu používání ověřování Azure Active Directory pro servery SQL a Service Fabric. Ověřování pomocí Azure Active Directory umožňuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu. Tento podrobný plán také přiřadí definici Azure Policy pro audit používání vlastních pravidel RBAC. Princip implementace vlastních pravidel RBAC vám může pomáhat při ověřování potřeb a správné implementace, protože vlastní pravidla RBAC jsou náchylná k chybám.
+Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřazuje čtyři definice [Azure Policy](../../../policy/overview.md) k auditu externích účtů s oprávněním vlastníka nebo zápisu a s oprávněními k zápisu a s oprávněním k zápisu, u kterých není povolené ověřování službou Multi-Factor Authentication. Azure implementuje řízení přístupu na základě role (RBAC), které umožňuje spravovat, kdo má přístup k prostředkům Azure. Tento podrobný plán také přiřadí tři Azure Policy definice k auditu používání ověřování Azure Active Directory pro servery SQL a Service Fabric. Ověřování pomocí Azure Active Directory umožňuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu. Tento podrobný plán také přiřadí definici Azure Policy pro audit používání vlastních pravidel RBAC. Princip implementace vlastních pravidel RBAC vám může pomáhat při ověřování potřeb a správné implementace, protože vlastní pravidla RBAC jsou náchylná k chybám.
 
 - \[Preview\]: audit účtů s oprávněními vlastníka, kteří nejsou u předplatného povolená MFA
 - \[Preview\]: audit účtů s oprávněními k zápisu, kteří nejsou u předplatného povolená MFA
@@ -173,7 +170,7 @@ Adaptivní řízení aplikací je řešení z Azure Security Center, které vám
 
 ## <a name="a1261-management-of-technical-vulnerabilities"></a>A. 12.6.1 správu technických ohrožení zabezpečení
 
-Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení pěti [Azure Policych](../../../policy/overview.md) definic, které monitorují chybějící aktualizace systému, chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v nástroji. Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase.
+Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení pěti [Azure Policych](../../../policy/overview.md) definic, které monitorují chybějící aktualizace systému, chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase.
 
 - \]\[Preview: monitorovat chybějící Endpoint Protection v Azure Security Center
 - \[verze Preview\]: monitorovat chybějící aktualizace systému v Azure Security Center
@@ -209,9 +206,9 @@ Teď, když jste zkontrolovali mapování ovládacích prvků ISO 27001, najdete
 
 > [!div class="nextstepaction"]
 > [ISO 27001 podrobný přehled](./index.md)
-> [ISO 27001 Details-Deploy Steps](./deploy.md)
+> [ISO 27001 podrobný postup nasazení](./deploy.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

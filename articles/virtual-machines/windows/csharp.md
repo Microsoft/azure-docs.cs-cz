@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a Správa virtuálního počítače Azure pomocí C# služby | Microsoft Docs
+title: Vytvoření a Správa virtuálního počítače Azure pomocíC#
 description: Pomocí C# a Azure Resource Manager můžete nasadit virtuální počítač a všechny jeho podpůrné prostředky.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c6d092889deec934f1db1f1c93c06aa0dc217df5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe838ade7a65161efaeb60b9e4d8de17a7080da1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079595"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032794"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocíC# #
 
@@ -29,7 +29,7 @@ ms.locfileid: "70079595"
 > * Vytvoření projektu ve Visual Studiu
 > * Instalace balíčku
 > * Vytvořit pověření
-> * Vytvořit prostředky
+> * Vytvoření prostředků
 > * Provádění úloh správy
 > * Odstranění prostředků
 > * Spuštění aplikace
@@ -40,7 +40,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
 
 1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj pro desktopy .NET** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že se pro vás automaticky vybraly **.NET Framework nástroje pro vývoj 4-4,6** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu rozhraní .NET pomocí spouštěče sady Visual Studio.
 2. V sadě Visual Studio klikněte na **Soubor** > **Nový** > **Projekt**.
-3. V**vizuálu C#**  **šablony** > vyberte **Konzolová aplikace (.NET Framework)** , jako název projektu zadejte *myDotnetProject* , vyberte umístění projektu a pak klikněte na **OK**.
+3. V **části šablony** > **C#vizuál**vyberte **Konzolová aplikace (.NET Framework)** , jako název projektu zadejte *myDotnetProject* , vyberte umístění projektu a pak klikněte na **OK**.
 
 ## <a name="install-the-package"></a>Instalace balíčku
 
@@ -59,7 +59,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
 
 ### <a name="create-the-authorization-file"></a>Vytvoření autorizačního souboru
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na *myDotnetProject* > **Přidat** > **novou položku**a pak vyberte **textový soubor** v *položkách vizuálů C#* . Pojmenujte soubor *azureauth. Properties*a pak klikněte na **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a potom v části *vizuální C# položky*vyberte **textový soubor** . Pojmenujte soubor *azureauth. Properties*a pak klikněte na **Přidat**.
 2. Přidejte tyto vlastnosti autorizace:
 
     ```
@@ -73,10 +73,10 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
     graphURL=https://graph.windows.net/
     ```
 
-    Nahraďte **&lt;ID&gt;** předplatného identifikátorem vašeho předplatného,  **&lt;ID&gt; aplikace** s identifikátorem aplikace služby Active Directory, **&lt;Authentication Key pomocí&gt;** klíče aplikace a  **&lt;ID&gt; tenanta** s identifikátorem tenanta.
+    Nahraďte **&lt;ID předplatného&gt;** pomocí identifikátoru předplatného, **&lt;&gt;ID aplikace** s identifikátorem aplikace služby Active Directory, **&lt;Authentication-Key&gt;** s klíčem aplikace a **&lt;ID tenanta**&gt;s identifikátorem tenanta.
 
 3. Uložte soubor azureauth. Properties. 
-4. Nastavte proměnnou prostředí ve Windows s názvem AZURE_AUTH_LOCATION s úplnou cestou k autorizačnímu souboru, který jste vytvořili. Například můžete použít následující příkaz prostředí PowerShell:
+4. V systému Windows nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k autorizačnímu souboru, který jste vytvořili. Například můžete použít následující příkaz prostředí PowerShell:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -107,7 +107,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
         .WithDefaultSubscription();
     ```
 
-## <a name="create-resources"></a>Vytvořit prostředky
+## <a name="create-resources"></a>Vytvoření prostředků
 
 ### <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -393,6 +393,6 @@ Spuštění této konzolové aplikace z začátku do konce by mělo trvat přibl
 
 2. Než stisknete **ENTER** a začnete odstraňovat prostředky, může trvat několik minut, než se ověří vytváření prostředků v Azure Portal. Kliknutím na stav nasazení zobrazíte informace o nasazení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Využijte výhod používání šablony k vytvoření virtuálního počítače pomocí informací v části [nasazení virtuálního počítače Azure pomocí C# a správce prostředků šablony](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Přečtěte si další informace o používání [knihoven Azure pro .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).

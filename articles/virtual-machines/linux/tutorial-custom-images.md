@@ -1,5 +1,5 @@
 ---
-title: Kurz – Vytváření vlastních imagí virtuálních počítačů pomocí Azure CLI | Microsoft Docs
+title: Kurz – vytváření vlastních imagí virtuálních počítačů pomocí Azure CLI
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvořit vlastní image virtuálního počítače v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ee88eee7c4618306f86b4338a94f81c1403e3120
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e629c605c0ffd3a7e0e1e53c3d661642b9dd01b7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299359"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034497"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI
 

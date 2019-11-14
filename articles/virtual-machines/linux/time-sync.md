@@ -1,5 +1,5 @@
 ---
-title: Čas synchronizace pro virtuální počítače se systémem Linux v Azure | Microsoft Docs
+title: Čas synchronizace pro virtuální počítače se systémem Linux v Azure
 description: Čas synchronizace pro virtuální počítače se systémem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e5d68a31db3797f9919d044eed284d0d09052390
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100790"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034647"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Čas synchronizace pro virtuální počítače se systémem Linux v Azure
 
@@ -27,7 +27,7 @@ Synchronizace času je důležitá pro korelaci zabezpečení a událostí. Něk
 Azure je zajištěn infrastrukturou, na které běží Windows Server 2016. Systém Windows Server 2016 má vylepšené algoritmy používané pro správný čas a podmínky, že se místní hodiny synchronizují s časem UTC.  Funkce přesný čas systému Windows Server 2016 významně vylepšuje, jak služba VMICTimeSync řídí virtuálním počítačům s hostitelem pro přesný čas. Mezi vylepšení patří přesnější počáteční čas při spuštění virtuálního počítače nebo oprava latence pro obnovení virtuálního počítače a přerušení. 
 
 >[!NOTE]
->Rychlý přehled služby Systémový čas najdete v tomto videu s [přehledem vysoké úrovně](https://aka.ms/WS2016TimeVideo).
+>Rychlý přehled služby Systémový čas najdete v tomto [videu s přehledem vysoké úrovně](https://aka.ms/WS2016TimeVideo).
 >
 > Další informace najdete v tématu [přesný čas pro Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
@@ -67,7 +67,7 @@ Ve výchozím nastavení je většina Azure Marketplace imagí pro Linux nakonfi
 
 V novějších distribucích systému Linux služba VMICTimeSync používá protokol PTP (Precision Time Protocol), ale starší distribuce nemusí podporovat PTP a při získávání času od hostitele se vrátí do NTP.
 
-Pokud chcete potvrdit, že `ntpq -p` se NTP synchronizuje správně, spusťte příkaz.
+Pokud chcete potvrdit, že se NTP synchronizuje správně, spusťte příkaz `ntpq -p`.
 
 ### <a name="host-only"></a>Pouze hostitel 
 
@@ -87,7 +87,7 @@ K dispozici jsou některé základní příkazy pro kontrolu konfigurace synchro
 
 ### <a name="integration-services"></a>Integrační služby
 
-Zkontrolujte, jestli je načtená integrační služba (hv_utils).
+Zkontrolujte, zda je načtena integrační služba (hv_utils).
 
 ```bash
 lsmod | grep hv_utils
@@ -148,7 +148,7 @@ Pokud jsou současně povoleny současně Chrony i TimeSync zdroje, můžete jed
 
 ### <a name="systemd"></a>systemd 
 
-V Ubuntu a SUSE čas synchronizace se konfiguruje pomocí [systému](https://www.freedesktop.org/wiki/Software/systemd/). Další informace o Ubuntu najdete v tématu [synchronizace času](https://help.ubuntu.com/lts/serverguide/NTP.html). Další informace o SUSE najdete v části 4.5.8 v poznámkách k [verzi SUSE Linux Enterprise Server 12 SP3](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
+V Ubuntu a SUSE čas synchronizace se konfiguruje pomocí [systému](https://www.freedesktop.org/wiki/Software/systemd/). Další informace o Ubuntu najdete v tématu [synchronizace času](https://help.ubuntu.com/lts/serverguide/NTP.html). Další informace o SUSE najdete v části 4.5.8 v [poznámkách k verzi SUSE Linux Enterprise Server 12 SP3](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Šifrování virtuálního počítače s Windows | Microsoft Docs
+title: Ukázkový skript Azure CLI – Šifrování virtuálního počítače s Windows
 description: Ukázkový skript Azure CLI – Šifrování virtuálního počítače s Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 4b6cf773069582e8164a86b37bdb669b71e2f2da
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f37288cb028a3965dfa5b880f0f8c7de35728ba9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703267"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039859"
 ---
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Šifrování virtuálního počítače s Windows v Azure
 
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup
 
 Tento skript k vytvoření skupiny prostředků, služby Azure Key Vault, instančního objektu, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault) | Vytvoří službu Azure Key Vault pro ukládání zabezpečených dat, jako jsou šifrovací klíče. |
@@ -58,7 +58,7 @@ Tento skript k vytvoření skupiny prostředků, služby Azure Key Vault, instan
 | [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption) | Zobrazí stav procesu šifrování virtuálního počítače. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

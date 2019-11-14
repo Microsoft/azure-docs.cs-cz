@@ -1,54 +1,53 @@
 ---
-title: Vlastnosti více tenantů interakce – Azure Active Directory | Dokumentace Microsoftu
-description: Pochopením vašich klientů jako plně nezávislý prostředky spravovat klienty tenanta Azure Active
+title: Charakteristiky interakce s více klienty – Azure AD | Microsoft Docs
+description: Spravujte klienty Azure Active tenant tím, že porozumíte svým klientům jako plně nezávislé prostředky.
 services: active-tenant
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45f48b6d8ef29d14606f18d4ccee77bd742a670a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0ce791ee3536b9ab07605787209e59b7e5d60126
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60470068"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026292"
 ---
-# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Vysvětlení, jak více tenantů Azure Active Directory komunikovat
+# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Pochopení způsobu interakce více Azure Active Directory tenantů
 
-Ve službě Azure Active Directory (Azure AD), každý tenant je plně nezávislý prostředek: partnerské zařízení, která je logicky nezávislý na ostatních tenantů, která spravujete. Není žádný vztah nadřízenosti a podřízenosti mezi tenanty. Tato nezávislost mezi tenanty zahrnuje nezávislost prostředků, nezávislost správy a nezávislost synchronizace.
+V Azure Active Directory (Azure AD) je každý tenant plně nezávislý prostředek: partner, který je logicky nezávislý na ostatních klientech, které spravujete. Mezi klienty neexistuje žádný vztah nadřazený-podřízený. Tato nezávislost mezi klienty zahrnuje nezávislost prostředků, nezávislost správy a nezávislost synchronizace.
 
 ## <a name="resource-independence"></a>Nezávislost prostředků
-* Pokud vytvoříte nebo odstranění prostředku v jednoho tenanta, nemá žádný vliv na prostředky v jiném tenantovi částečnou výjimku, externích uživatelů. 
-* Pokud používáte některou názvy domén s jednoho tenanta, nelze použít s žádným jiným tenantem.
+* Pokud vytvoříte nebo odstraníte prostředek v jednom tenantovi, nemá žádný vliv na žádný prostředek v jiném tenantovi s částečnou výjimkou externích uživatelů. 
+* Pokud použijete jeden z názvů domén s jedním klientem, nedá se použít s žádným jiným klientem.
 
 ## <a name="administrative-independence"></a>Nezávislost správy
-Pokud uživatel bez oprávnění správce tenanta "Contoso" vytvoří testovacího tenanta "Test", pak:
+Pokud uživatel bez oprávnění správce klienta contoso vytvoří testovacího tenanta, pak:
 
-* Ve výchozím nastavení uživatel vytvářející tenanta přidán jako externí uživatel do tohoto nového tenanta a přiřazenou roli globálního správce v tomto tenantovi.
-* Správci tenanta "Contoso" nemají žádná přímá oprávnění pro tenanta "Test", správu, pokud "Test" konkrétně jim správce udělí oprávnění. Však administrators "Contoso" můžou řídit přístup k tenantovi "Test", jakým se řídí uživatelský účet, který vytvoří "Test".
-* Pokud můžete přidat nebo odebrat roli správce u uživatele do jednoho tenanta, tato změna nemá vliv rolí správce, které má uživatel v jiném tenantovi.
+* Ve výchozím nastavení se uživatel, který vytvoří tenanta, přidá jako externí uživatel v tomto novém tenantovi a přiřadí roli globálního správce v tomto tenantovi.
+* Správci klienta contoso nemají žádná přímá oprávnění pro správu pro tenanta test, a to jenom v případě, že mu správce testu tyto oprávnění výslovně neudělí. Správci společnosti Contoso ale můžou řídit přístup k tenantovi test, pokud ovládají uživatelský účet, který vytvořil test.
+* Pokud přidáte nebo odeberete roli správce pro uživatele v jednom tenantovi, změna nemá vliv na role správce, které má uživatel v jiném tenantovi.
 
 ## <a name="synchronization-independence"></a>Nezávislost synchronizace
-Můžete nakonfigurovat nezávisle tak, aby se data synchronizovala z jedné instance buď každého tenanta služby Azure AD:
+Každý tenant služby Azure AD můžete nakonfigurovat nezávisle na tom, aby se data synchronizovaná z jedné instance jednoho z nich:
 
-* Nástroj Azure AD Connect pro synchronizaci dat s jednou doménovou strukturou služby AD.
-* Azure Active tenanta konektor pro produkt Forefront Identity Manager, k synchronizaci dat s jedním nebo více místními doménovými strukturami, a/nebo zdroje dat mimo Azure AD.
+* Nástroj Azure AD Connect, který slouží k synchronizaci dat s jednou doménovou strukturou služby AD.
+* Konektor Azure Active tenant pro Forefront Identity Manager, který slouží k synchronizaci dat s jednou nebo více místními doménovými strukturami nebo zdroji dat mimo Azure AD.
 
-## <a name="add-an-azure-ad-tenant"></a>Přidání tenanta Azure AD
-Přidání tenanta služby Azure AD na webu Azure Portal, přihlaste se k [na webu Azure portal](https://portal.azure.com) pomocí účtu, který je globální správce Azure AD a na levé straně, vyberte **nový**.
+## <a name="add-an-azure-ad-tenant"></a>Přidat tenanta Azure AD
+Pokud chcete do Azure Portal přidat tenanta Azure AD, přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu, který je globálním správcem služby Azure AD, a na levé straně vyberte **Nový**.
 
 > [!NOTE]
-> Na rozdíl od jiných prostředků služby Azure vašim klientům nejsou podřízenými prostředky předplatného služby Azure. Pokud vaše předplatné Azure zruší nebo vypršela platnost, budete k němu přístup data tenanta pomocí Azure Powershellu, Azure Graph API nebo Centrum pro správu Microsoftu 365. Můžete také [přidružit jiné předplatné tenanta](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> Na rozdíl od jiných prostředků Azure nejsou vaši klienti podřízenými prostředky předplatného Azure. Pokud se vaše předplatné Azure zruší nebo vypršela jeho platnost, můžete k datům tenanta přistupovat pomocí Azure PowerShell, Graph API Azure nebo centra pro správu Microsoft 365. K tenantovi taky můžete [přidružit jiné předplatné](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
-## <a name="next-steps"></a>Další postup
-Široký přehled o problémy s licencí Azure AD a doporučené postupy, najdete v části [co je Azure Active tenanta licencování?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).
+## <a name="next-steps"></a>Další kroky
+Obecný přehled problémů s licencováním Azure AD a osvědčenými postupy najdete v tématu [co je licencování Azure Active tenant](../fundamentals/active-directory-licensing-whatis-azure-portal.md).

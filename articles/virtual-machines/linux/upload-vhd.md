@@ -1,5 +1,5 @@
 ---
-title: Nahrání nebo zkopírování vlastního virtuálního počítače se systémem Linux pomocí Azure CLI | Microsoft Docs
+title: Nahrání nebo zkopírování vlastního virtuálního počítače se systémem Linux pomocí Azure CLI
 description: Nahrání nebo zkopírování vlastního virtuálního počítače pomocí modelu nasazení Správce prostředků a Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6cc01266bb6e7f122868257e8a5b9e88e78dddea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553497"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034291"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak nahrát přizpůsobený virtuální pevný dis
 Pokud chcete vytvořit víc virtuálních počítačů z přizpůsobeného disku, nejdřív vytvořte image z virtuálního počítače nebo virtuálního pevného disku. Další informace najdete v tématu [Vytvoření vlastní image virtuálního počítače Azure pomocí rozhraní](tutorial-custom-images.md)příkazového řádku (CLI).
 
 Máte dvě možnosti, jak vytvořit vlastní disk:
-* Nahrávání virtuálního pevného disku
+* Nahrání virtuálního pevného disku
 * Kopírovat existující virtuální počítač Azure
 
 
@@ -51,7 +51,7 @@ K provedení následujících kroků budete potřebovat:
 
 - Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a jste přihlášení k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
 
-V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami, například `myResourceGroup`, `mystorageaccount` a `mydisks`.
+V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami, například `myResourceGroup`, `mystorageaccount`a `mydisks`.
 
 <a id="prepimage"> </a>
 

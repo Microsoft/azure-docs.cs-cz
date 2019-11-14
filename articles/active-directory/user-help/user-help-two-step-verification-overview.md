@@ -1,5 +1,5 @@
 ---
-title: Přehled dvou faktorů ověřování a pracovního nebo školního účtu – Azure Active Directory | Microsoft Docs
+title: Ověření zabezpečení & svého pracovního nebo školního účtu – Azure AD
 description: Přečtěte si, jak nastavit metody ověřování zabezpečení pro použití dvojúrovňového ověřování u svého pracovního nebo školního účtu.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e8cda4b04a4555ed7747bb9444c2a5ec2e266573
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616004"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028468"
 ---
-# <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>Přehled dvou faktorů ověřování a pracovního nebo školního účtu
+# <a name="two-factor-verification-and-your-work-or-school-account"></a>Dvojúrovňové ověřování a váš pracovní nebo školní účet
 
 Od někoho z IT nebo od šéfa jste dostali e-mail s informací, že k vašemu účtu organizace přidala další ověřování zabezpečení. Co to tedy znamená? Znamená to, že vaše organizace podniká další kroky k zajištění, že jste tím, za koho se při přihlášení vydáváte. Toto dodatečné ověření, označované také jako dvojúrovňové ověřování, se provádí kombinací uživatelského jména, hesla a mobilního zařízení nebo telefonu.
 
@@ -29,7 +29,7 @@ Dvojúrovňové ověřování je bezpečnější než heslo, protože spoléhá 
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 >
->Tento obsah je taky určený jenom pro použití s vaším pracovním nebo školním účtem, který vám poskytla vaše organizace (například alain@contoso.com). Pokud máte problémy se dvojúrovňovém ověřováním a osobními účet Microsoft, účet, který jste si nastavili pro sebe (například danielle@outlook.com), najdete v tématu [Zapnutí nebo vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Tento obsah je taky určený jenom pro použití s vaším pracovním nebo školním účtem, který vám poskytla vaše organizace (například alain@contoso.com). Pokud máte problémy se dvojúrovňovém ověřováním a osobním účet Microsoft, účet, který jste si nastavili pro sebe (například danielle@outlook.com), najdete v tématu [Zapnutí nebo vypnutí dvojúrovňového ověřování pro vaše účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Kdo se rozhodne, jestli tuto funkci používáte?
 

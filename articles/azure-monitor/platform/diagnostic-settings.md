@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c1b7f81c62217d9e113f3293a8f351d908a6a576
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887272"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023741"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure
 [Protokoly platforem](resource-logs-overview.md) v Azure poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro shromažďování protokolů platforem do různých umístění.
@@ -42,7 +42,8 @@ Protokoly platforem lze odeslat do cílových umístění v následující tabul
 | [Účet služby Azure Storage](resource-logs-collect-storage.md) | Archivace protokolů na účet služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. |
 
 
-
+> [!IMPORTANT]
+> Účty Azure Data Lake Storage Gen2 nejsou v současné době podporovány jako cíl pro nastavení diagnostiky, i když mohou být v Azure Portal uvedeny jako platná možnost.
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Vytvořit nastavení diagnostiky v Azure Portal
 Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabídky Azure Monitor, nebo z nabídky pro daný prostředek.
@@ -55,13 +56,13 @@ Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabí
 
     ![Nastavení diagnostiky](media/diagnostic-settings/menu-resource.png)
 
-2. Pokud u vybraného prostředku neexistuje žádné nastavení, zobrazí se výzva k vytvoření nastavení. Klikněte na **Zapnout diagnostiku**.
+2. Pokud neexistuje žádná nastavení pro prostředek jste vybrali, se zobrazí výzva k vytvoření nastavení. Klikněte na **Zapnout diagnostiku**.
 
-   ![Přidat nastavení diagnostiky – žádná existující nastavení](media/diagnostic-settings/add-setting.png)
+   ![Přidejte nastavení diagnostiky – žádná existující nastavení](media/diagnostic-settings/add-setting.png)
 
    Pokud je u prostředku k dispozici existující nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná. Kliknutím na **Přidat nastavení diagnostiky** můžete přidat nové nastavení nebo **Upravit nastavení** a upravit existující. Každé nastavení nemůže mít více než jeden z cílových typů.
 
-   ![Přidat nastavení diagnostiky – existující nastavení](media/diagnostic-settings/edit-setting.png)
+   ![Přidejte nastavení diagnostiky – stávající nastavení](media/diagnostic-settings/edit-setting.png)
 
 3. Dejte nastavení název, pokud ho ještě nikdo nemá.
 4. Zaškrtněte políčko pro všechny cílové umístění pro odeslání protokolů. Klikněte na **Konfigurovat** a určete jejich nastavení, jak je popsáno v následující tabulce.
@@ -72,9 +73,9 @@ Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabí
     | Účet úložiště | Název účtu úložiště |
     | Obor názvů centra událostí | Obor názvů, ve kterém se vytvoří centrum událostí (Pokud se jedná o vaše první přihlášení ke streamování protokolů) nebo streamování do služby (Pokud už existují prostředky streamující do tohoto oboru názvů do kategorie log).
     | Název centra událostí | Volitelně můžete zadat název centra událostí, který bude odesílat všechna data v nastavení. Pokud název nezadáte, vytvoří se v každé kategorii protokolu centrum událostí. Pokud posíláte více kategorií, možná budete chtít zadat název pro omezení počtu vytvořených Center událostí. Podrobnosti najdete v tématu [kvóty a omezení pro Azure Event Hubs](../../event-hubs/event-hubs-quotas.md) . |
-    | Název zásad centra událostí | Definuje oprávnění, která má mechanismus streamování. |
+    | Název zásady centra událostí | Definuje oprávnění, která má mechanismus streamování. |
 
-    ![Přidat nastavení diagnostiky – existující nastavení](media/diagnostic-settings/setting-details.png)
+    ![Přidejte nastavení diagnostiky – stávající nastavení](media/diagnostic-settings/setting-details.png)
 
 5. Zaškrtněte políčko u každé kategorie dat, která se mají odeslat do určených cílů. Pokud jste vybrali možnost **archivovat do účtu úložiště**, budete také muset zadat [dobu uchování](resource-logs-collect-storage.md#data-retention).
 
@@ -85,7 +86,7 @@ Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabí
 >
 > *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 
-4. Klikněte na **Uložit**.
+4. Klikněte na možnost **Uložit**.
 
 Po chvíli se nové nastavení objeví v seznamu nastavení tohoto prostředku a protokoly se streamují do zadaných cílů, protože se generují nová data události. Všimněte si, že mezi při vygenerování události a jejím [zobrazením v Log Analytics pracovním prostoru](data-ingestion-time.md)může trvat až 15 minut.
 

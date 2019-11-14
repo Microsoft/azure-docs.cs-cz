@@ -1,6 +1,6 @@
 ---
-title: Metriky a upozornění v Azure Traffic Manageru
-description: Tento článek popisuje dostupné metriky pro Traffic Manager v Azure.
+title: Metriky a výstrahy v Azure Traffic Manager
+description: V tomto článku se seznámíte s metrikami a upozorněními dostupnými pro Traffic Manager v Azure.
 services: traffic-manager
 author: asudbring
 ms.service: traffic-manager
@@ -10,59 +10,59 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: allensu
-ms.openlocfilehash: e689398a38030a712ec6beb651131d0424e44476
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e374e11053f0a1baabed72fdb240b34e2107b2a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071121"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038064"
 ---
-# <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager metrik a výstrah
+# <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager metriky a výstrahy
 
-Traffic Manager poskytuje Vyrovnávání zatížení na základě DNS, který obsahuje více metod směrování a možnosti monitorování koncových bodů. Tento článek popisuje, metriky a související výstrahy, které jsou k dispozici zákazníkům. 
+Traffic Manager poskytuje vyrovnávání zatížení založené na DNS, které zahrnuje několik metod směrování a možností monitorování koncových bodů. Tento článek popisuje metriky a související výstrahy, které jsou k dispozici pro zákazníky. 
 
-## <a name="metrics-available-in-traffic-manager"></a>Metriky, které jsou k dispozici v Traffic Manageru 
+## <a name="metrics-available-in-traffic-manager"></a>Metriky dostupné v Traffic Manager 
 
-Traffic Manager poskytuje následující metriky na základě na profilu, který zákazníci můžou využít k jejich použití Traffic Manageru a stav jejich koncové body v rámci tohoto profilu.  
+Traffic Manager poskytuje následující metriky pro jednotlivé profily, které zákazníci můžou použít k pochopení jejich používání Traffic Manageru a stavu jejich koncových bodů v rámci tohoto profilu.  
 
-### <a name="queries-by-endpoint-returned"></a>Dotazy podle koncový bod vrátil
-Použití [tuto metriku](../azure-monitor/platform/metrics-supported.md) zobrazíte počet dotazů, které se profil služby Traffic Manager zpracovává v zadaném období. Tyto informace můžete zobrazit také na úrovně členitosti koncový bod, který pomáhá zjistit, jak v mnoha případech koncový bod vrátila v odpovědi na dotaz z Traffic Manageru.
+### <a name="queries-by-endpoint-returned"></a>Dotazy podle vráceného koncového bodu
+Pomocí [této metriky](../azure-monitor/platform/metrics-supported.md) můžete zobrazit počet dotazů, které profil Traffic Manager zpracuje v zadaném období. Můžete také zobrazit stejné informace v členitosti na úrovni koncového bodu, které vám pomohou pochopit, kolikrát byl vrácen koncový bod v odpovědích na dotaz z Traffic Manager.
 
-Obrázek 1 v následujícím příkladu se zobrazí všechny odpovědi na dotaz, které vrátí profil Traffic Manageru. 
+V následujícím příkladu obrázek 1 zobrazí všechny odpovědi na dotazy, které vrací profil Traffic Manager. 
 
   
-![Souhrnné zobrazení všech dotazů](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
+![Agregované zobrazení všech dotazů](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
-*Obrázek 1: Souhrnné zobrazení se všechny dotazy*
+*Obrázek 1: agregované zobrazení se všemi dotazy*
   
-Obrázek 2 zobrazuje stejné informace, ale je rozdělený podle koncových bodů. V důsledku toho můžete zobrazit objem odpovědi na dotazy ve kterých byl vrácen určitého koncového bodu.
+Obrázek 2 zobrazuje stejné informace, ale je rozdělen podle koncových bodů. V důsledku toho můžete zobrazit objem odpovědí na dotaz, ve kterých byl vrácen konkrétní koncový bod.
 
-![Metriky Traffic Manager – rozdělené zobrazení množství dotazů za koncový bod](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
+![Traffic Manager metriky – rozdělené zobrazení svazku dotazů na koncový bod](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
 
-*Obrázek 2: Rozdělené zobrazení se zobrazí jeden koncový bod vrátil množství dotazů*
+*Obrázek 2: rozdělené zobrazení se zobrazeným svazkem dotazu za vráceným koncovým bodem*
 
-## <a name="endpoint-status-by-endpoint"></a>Stav koncového bodu pomocí koncového bodu
-Použití [tuto metriku](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) porozumět stavu koncových bodů v profilu. To má dvě hodnoty:
- - použít **1** Pokud koncový bod je v provozu.
- - použít **0** Pokud koncový bod je mimo provoz.
+## <a name="endpoint-status-by-endpoint"></a>Stav koncového bodu podle koncového bodu
+[Tuto metriku](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) použijte k pochopení stavu koncových bodů v profilu. Má dvě hodnoty:
+ - Pokud je koncový bod v provozu, použijte hodnotu **1** .
+ - Pokud koncový bod nefunguje, použijte **hodnotu 0** .
 
-Tuto metriku můžete zobrazit buď jako agregovaná hodnota představující stav všech metrik (obrázek 3), nebo může být rozdělen (viz obrázek 4) k zobrazení stavu konkrétní koncové body. Pokud původní, pokud je vybrána úroveň agregace **Avg**, přínosem této metriky je aritmetický průměr stav všech koncových bodů. Například pokud profil, který má dva koncové body a pouze jeden je v pořádku, pak tato metrika má hodnotu **0,50** jak je znázorněno na obrázku 3. 
-
-
-![Traffic Manager metriky – složené zobrazení stavu koncových bodů](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
-
-*Obrázek 3: Složený zobrazení metriky stav koncového bodu – vybrané agregace "Avg"*
+Tato metrika se dá zobrazit buď jako agregovaná hodnota představující stav všech metrik (obrázek 3), nebo může být rozdělená (viz obrázek 4), aby se zobrazil stav konkrétních koncových bodů. Pokud se používá, pokud je úroveň agregace vybraná jako **střední**, hodnota této metriky je aritmetický průměr stavu všech koncových bodů. Pokud má například profil dva koncové body a pouze jeden je v pořádku, má tato metrika hodnotu **0,50** , jak je znázorněno na obrázku 3. 
 
 
-![Metriky Traffic Manager – rozdělené zobrazení stavu koncových bodů](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
+![Metriky Traffic Manager – kompozitní pohled na stav koncového bodu](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
 
-*Obrázek 4: Rozdělené zobrazení metrik stav koncového bodu*
+*Obrázek 3: kompozitní zobrazení metriky stavu koncového bodu – výběr agregace "průměr"*
 
-Můžete využívat tyto metriky prostřednictvím [služby Azure Monitor](../azure-monitor/platform/metrics-supported.md)na portálu, [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor), a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights), nebo prostřednictvím části metriky z prostředí portálu Traffic Manageru.
 
-## <a name="alerts-on-traffic-manager-metrics"></a>Upozornění na metriky Traffic Manageru
-Kromě zpracování a zobrazení metrik z Traffic Manageru, Azure Monitor umožňuje nakonfigurovat a přijímat výstrahy přidružené k těmto metrikám. Můžete zvolit co podmínky nutné splnit v tyto metriky pro upozornění na výskyt, jak často je potřeba monitorovat tyto podmínky a jak výstrahy poslat vám. Další informace najdete v tématu [upozornění služby Azure Monitor dokumentaci](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+![Traffic Manager metriky – rozdělené zobrazení stavu koncového bodu](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [služby Azure Monitor](../azure-monitor/platform/metrics-supported.md)
-- Zjistěte, jak [vytvoření grafu pomocí Azure monitoru](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)
+*Obrázek 4: rozdělené zobrazení metrik stavu koncového bodu*
+
+Tyto metriky můžete využívat prostřednictvím portálu [služby Azure monitor](../azure-monitor/platform/metrics-supported.md), [REST API](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)nebo prostřednictvím části metriky v prostředí portálu Traffic Manager.
+
+## <a name="alerts-on-traffic-manager-metrics"></a>Výstrahy na Traffic Manager metriky
+Kromě zpracování a zobrazování metrik z Azure Monitor Traffic Manager umožňuje zákazníkům nakonfigurovat a přijímat výstrahy spojené s těmito metrikami. V těchto metrikách si můžete vybrat, jaké podmínky je potřeba splnit, aby se zobrazila výstraha, jak často se tyto podmínky musí monitorovat a jak se mají výstrahy posílat. Další informace najdete v [dokumentaci Azure monitor Alerts](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+
+## <a name="next-steps"></a>Další kroky
+- Další informace o [službě Azure Monitor Service](../azure-monitor/platform/metrics-supported.md)
+- Naučte se [vytvořit graf pomocí Azure monitor](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)

@@ -1,6 +1,6 @@
 ---
-title: Známé problémy s Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Přečtěte si o omezeních a známých problémech s Azure Data Lake Storage Gen2
+title: Známé problémy s Azure Data Lake Storage Gen2 | Dokumentace Microsoftu
+description: Další informace o omezeních a známých problémech s Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 95f2dbdbb34ff349d14be430b4e5a4fa84df0f5a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581487"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033945"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -57,7 +57,7 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 | **Zásady správy životního cyklu Azure Blob Storage** | Podporují se všechny úrovně přístupu. Úroveň přístupu archivu je momentálně ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno. |
 | **Azure Content Delivery Network (CDN)** | Zatím nepodporováno|
 | **Hledání Azure** |Podporováno (Preview)|
-| **Azure Storage Explorer** | Podpora specifická pro verzi <br><br>Použijte pouze `1.6.0` verze nebo vyšší. <br>Verze `1.6.0` je k dispozici [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).|
+| **Azure Storage Explorer** | Podpora specifická pro verzi <br><br>Pomocí `1.10.0``1.6.0` pouze verze. <br> Verze `1.10.0` je k dispozici [zdarma ke stažení](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). Verze `1.11.0` ještě není podporovaná.|
 | **Seznamy ACL kontejneru objektů BLOB** |Zatím nepodporováno|
 | **Blobfuse** |Zatím nepodporováno|
 | **Vlastní domény** |Zatím nepodporováno|

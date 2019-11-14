@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991913"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037242"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který pod
 
 RBAC používá přiřazení rolí k efektivnímu použití sad oprávnění pro *objekty zabezpečení*. Objekt *zabezpečení* je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která je definovaná v Azure Active Directory (AD), která žádá o přístup k prostředkům Azure.
 
-Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například: Účty Azure Storage). V případě Azure Storage a následně Azure Data Lake Storage Gen2 tento mechanismus byl rozšířen na prostředek kontejneru (systém souborů).
+Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například: Azure Storage účty). V případě Azure Storage a následně Azure Data Lake Storage Gen2 tento mechanismus byl rozšířen na prostředek kontejneru (systém souborů).
 
 Informace o tom, jak přiřadit role k objektům zabezpečení v rozsahu svého účtu úložiště, najdete [v tématu udělení přístupu k datům služby Azure Blob a frontě pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -36,7 +36,7 @@ Zatímco použití přiřazení rolí RBAC je účinným mechanismem pro řízen
 Když je objektu zabezpečení uděleno oprávnění k datům RBAC prostřednictvím [předdefinované role](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)nebo prostřednictvím vlastní role, tato oprávnění se vyhodnotí jako první při autorizaci žádosti. Pokud je požadovaná operace autorizována přiřazeními RBAC objektu zabezpečení, je autorizace okamžitě vyřešena a nejsou provedeny žádné další kontroly seznamu ACL. Případně platí, že pokud objekt zabezpečení nemá přiřazení RBAC, nebo se operace požadavku neshoduje s přiřazeným oprávněním, provedou se kontroly seznamů ACL, aby bylo možné zjistit, zda je objekt zabezpečení autorizován k provedení požadované operace.
 
 > [!NOTE]
-> Pokud byl objektu zabezpečení přiřazeno předdefinované přiřazení role objektu BLOB úložiště, pak je objekt zabezpečení považován za *superuživatele* a má plný přístup ke všem následným operacím, včetně nastavení vlastníka adresáře nebo souborů i seznamů ACL pro adresáře a soubory, pro které nejsou vlastníkem. Přístup super uživatele je jediný autorizovaný způsob, jak změnit vlastníka prostředku.
+> Pokud byl objektu zabezpečení přiřazeno přiřazení role úložiště dat objektu BLOB úložiště, pak je objekt zabezpečení považován za *superuživatele* a má plný přístup ke všem následným operacím, včetně nastavení vlastníka adresáře nebo souboru a seznamů ACL pro adresáře a soubory, pro které nejsou vlastníkem. Přístup super uživatele je jediný autorizovaný způsob, jak změnit vlastníka prostředku.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Ověřování sdíleného klíče a sdíleného přístupového podpisu (SAS)
 
@@ -64,7 +64,7 @@ Chcete-li nastavit oprávnění na úrovni souborů a adresářů, přečtěte s
 |REST API    |[Cesta – aktualizace](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Pokud je objekt zabezpečení instanční objekt , je důležité použít ID objektu instančního objektu a nikoli ID objektu související registrace aplikace. Pokud chcete získat ID objektu instančního objektu, otevřete Azure CLI a pak použijte tento příkaz: `az ad sp show --id <Your App ID> --query objectId`. `<Your App ID>` zástupný text nahraďte ID aplikace registrace vaší aplikace.
+> Pokud *je objekt zabezpečení instanční objekt* , je důležité použít ID objektu instančního objektu a nikoli ID objektu související registrace aplikace. Pokud chcete získat ID objektu instančního objektu, otevřete Azure CLI a pak použijte tento příkaz: `az ad sp show --id <Your App ID> --query objectId`. zástupný symbol `<Your App ID>` nahraďte ID aplikace registrace vaší aplikace.
 
 ### <a name="types-of-access-control-lists"></a>Typy seznamů řízení přístupu
 
@@ -83,14 +83,14 @@ Přístupové seznamy ACL a výchozí seznamy ACL mají stejnou strukturu.
 
 Oprávnění pro objekt kontejneru jsou **čtení**, **zápis**a **spouštění**a lze je použít u souborů a adresářů, jak je znázorněno v následující tabulce:
 
-|            |    File     |   Adresář |
+|            |    Soubor     |   Adresář |
 |------------|-------------|----------|
 | **Číst (R)** | Může číst obsah souboru | K vypsání obsahu adresáře vyžaduje **čtení** a **provedení** . |
 | **Zapisovat (W)** | Může zapisovat do souboru nebo k němu připojovat data | Pro vytváření podřízených položek v adresáři vyžaduje **zápis** a **provedení** . |
 | **Provést (X)** | Neznamená cokoli v kontextu Data Lake Storage Gen2 | Vyžaduje se pro procházení podřízených položek adresáře. |
 
 > [!NOTE]
-> Pokud udělujete oprávnění jenom pomocí seznamů ACL (bez RBAC), pak udělíte instančnímu objektu přístup pro čtení nebo zápis do souboru, musíte mu přidělit oprávnění ke **spuštění** tohoto kontejneru a ke každé složce v hierarchii složek, které vést k souboru.
+> Pokud udělujete oprávnění jenom pomocí seznamů ACL (bez RBAC), pak udělíte objektu zabezpečení nebo přístupu pro zápis k souboru, musíte objektu zabezpečení udělit oprávnění ke **spuštění** kontejneru a ke každé složce v hierarchii složek, které soubor zavedl.
 
 #### <a name="short-forms-for-permissions"></a>Zkrácené verze oprávnění
 
@@ -154,8 +154,8 @@ V seznamech ACL pro POSIX je každý uživatel přidružený k *primární skupi
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Přiřazení vlastnící skupiny pro nový soubor nebo adresář
 
-* **Případ 1**: Kořenový adresář "/". Tento adresář se vytvoří při vytvoření kontejneru Data Lake Storage Gen2. V takovém případě je vlastnící skupina nastavena na uživatele, který kontejner vytvořil, pokud byl proveden pomocí protokolu OAuth. Pokud je kontejner vytvořený pomocí sdíleného klíče, SAS účtu nebo SAS služby, pak je vlastník a vlastnící skupina nastavená na **$superuser**.
-* **Případ 2** (Všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazeného adresáře.
+* **Případ 1**: kořenový adresář "/". Tento adresář se vytvoří při vytvoření kontejneru Data Lake Storage Gen2. V takovém případě je vlastnící skupina nastavena na uživatele, který kontejner vytvořil, pokud byl proveden pomocí protokolu OAuth. Pokud je kontejner vytvořený pomocí sdíleného klíče, SAS účtu nebo SAS služby, pak je vlastník a vlastnící skupina nastavená na **$superuser**.
+* **Případ 2** (všechny ostatní případy): při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazeného adresáře.
 
 ##### <a name="changing-the-owning-group"></a>Změna vlastnící skupiny
 
@@ -307,9 +307,9 @@ Zobrazí se identifikátor GUID, pokud položka představuje uživatele a tento 
 
 ### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Návody pro instanční objekt správně nastavit seznamy ACL?
 
-Při definování seznamů ACL pro instanční objekty je důležité použít ID objektu (OID) instančního objektu pro registraci aplikace, kterou jste vytvořili. Je důležité si uvědomit, že registrované aplikace mají samostatný instanční objekt v konkrétním tenantovi služby Azure AD. Registrované aplikace mají identifikátor OID, který je viditelný v Azure Portal, ale *instanční objekt* má jiný (odlišný) identifikátor OID.
+Při definování seznamů ACL pro instanční objekty je důležité použít ID objektu (OID) *instančního* objektu pro registraci aplikace, kterou jste vytvořili. Je důležité si uvědomit, že registrované aplikace mají samostatný instanční objekt v konkrétním tenantovi služby Azure AD. Registrované aplikace mají identifikátor OID, který je viditelný v Azure Portal, ale *instanční objekt* má jiný (odlišný) identifikátor OID.
 
-K získání Oid objektu služby, který odpovídá registraci aplikace, můžete použít `az ad sp show` příkaz. Jako parametr zadejte ID aplikace. Tady je příklad získání OID objektu služby, který odpovídá registraci aplikace s ID aplikace = 18218b12-1895-43E9-ad80-6e8fc1ea88ce. V Azure CLI spusťte následující příkaz:
+K získání OID objektu služby, který odpovídá registraci aplikace, můžete použít příkaz `az ad sp show`. Jako parametr zadejte ID aplikace. Tady je příklad získání OID objektu služby, který odpovídá registraci aplikace s ID aplikace = 18218b12-1895-43E9-ad80-6e8fc1ea88ce. V Azure CLI spusťte následující příkaz:
 
 ```
 $ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
@@ -335,6 +335,6 @@ Seznamy ACL nedědí. Výchozí seznamy ACL je ale možné použít k nastavení
 * [POSIX ACL na Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přehled Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

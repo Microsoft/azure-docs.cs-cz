@@ -1,18 +1,18 @@
 ---
 title: Vizualizace dat z Azure Průzkumník dat pomocí Grafana
-description: V tomto postupu se naučíte, jak nastavit službu Azure Průzkumník dat jako zdroj dat pro Grafana a pak vizualizovat data z ukázkového clusteru.
+description: V tomto článku se naučíte, jak nastavit službu Azure Průzkumník dat jako zdroj dat pro Grafana a pak vizualizovat data z ukázkového clusteru.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 6/30/2019
-ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/13/2019
+ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582031"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038031"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Vizualizace dat z Azure Průzkumník dat v Grafana
 
@@ -26,7 +26,7 @@ Případně můžete [nakonfigurovat zdroj dat](#configure-the-data-source) a [v
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto postupu potřebujete následující:
+K dokončení tohoto článku potřebujete následující:
 
 * [Grafana verze 5.3.0 nebo novější](https://docs.grafana.org/installation/) pro váš operační systém
 
@@ -66,7 +66,7 @@ S instančním objektem přiřazeným k roli *Návštěvníci* teď v instanci G
 
 1. Vyberte **uložit & test**.
 
-    Pokud je test úspěšný, pokračujte k další části. Pokud narazíte na nějaké problémy, zkontrolujte hodnoty zadané v Grafana a Projděte si předchozí kroky.
+    Pokud je test úspěšný, pokračujte k další části. Pokud přecházíte mezi všemi problémy, zkontrolujte hodnoty zadané v Grafana a Projděte si předchozí kroky.
 
 ## <a name="visualize-data"></a>Vizualizace dat
 
@@ -111,8 +111,26 @@ Nyní jste dokončili konfiguraci služby Azure Průzkumník dat jako zdroje dat
 
 1. V horní nabídce vyberte ikonu Uložit: ![Ikona Uložit](media/grafana/save-icon.png).
 
+## <a name="create-alerts"></a>Vytváření výstrah
+
+1. V řídicím panelu Domů vyberte **upozorňování** > **kanály oznámení** pro vytvoření nového kanálu oznámení.
+
+    ![Vytvoření kanálu oznámení](media/grafana/create-notification-channel.png)
+
+1. Vytvořte nový **kanál oznámení**a pak ho **uložte**.
+
+    ![Vytvořit nový kanál oznámení](media/grafana/new-notification-channel-adx.png)
+
+1. Na **řídicím panelu**vyberte v rozevíracím seznamu možnost **Upravit** .
+
+    ![vybrat upravit na řídicím panelu](media/grafana/edit-panel-4-alert.png)
+
+1. Vyberte ikonu zvonku výstrahy a otevřete tak podokno **výstrah** . Vyberte **vytvořit výstrahu**. V podokně **Výstraha** vyplňte následující vlastnosti.
+
+    ![vlastnosti výstrahy](media/grafana/alert-properties.png)
+
+1. Kliknutím na ikonu **Uložit řídicí panel** uložte změny.
+
 ## <a name="next-steps"></a>Další kroky
 
 * [Psaní dotazů pro Azure Data Explorer](write-queries.md)
-
-* [Kurz: vizualizace dat z Azure Průzkumník dat v Power BI](visualize-power-bi.md)

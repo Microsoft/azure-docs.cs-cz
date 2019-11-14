@@ -1,5 +1,5 @@
 ---
-title: Přehled virtuálních počítačů s Linuxem v Azure | Dokumentace Microsoftu
+title: Přehled virtuálních počítačů se systémem Linux v Azure
 description: Popis služeb Azure Compute, Storage a síťové služby Azure s použitím virtuálních počítačů s Linuxem.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 14ed21efec47e15663724bd782ad931903fb8f13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dc0145e23b940f6aca9021186254b966592f343d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082423"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035345"
 ---
 # <a name="azure-and-linux"></a>Azure a Linux
 Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových služeb včetně analýz, virtuálních počítačů, databází, mobilních a síťových služeb, úložiště a webu &mdash; je tak ideální pro hostování vašich řešení.  Microsoft Azure poskytuje škálovatelnou výpočetní platformu, s kterou můžete platit jenom za to, co používáte a když to potřebujete – nemusíte tak investovat do hardwaru místně ve své firmě.  Platforma Azure dokáže flexibilně reagovat na vaše potřeby. Můžete tak libovolně škálovat kapacitu (vertikálně i horizontálně) pro svá řešení podle požadavků svých klientů.
@@ -120,7 +120,7 @@ Virtuální počítač je teď spuštěný v Azure a vy jste připraveni se k n�
 * [Otevření portů k virtuálnímu počítači s Linuxem v Azure](nsg-quickstart.md)
 * [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](portal-create-fqdn.md)
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 * [Virtuální počítače a kontejnery v Azure](containers.md)
 * [Úvod do služby Azure Container Service](../../container-service/container-service-intro.md)
 * [Nasazení clusteru Azure Container Service](../../container-service/dcos-swarm/container-service-deployment.md)

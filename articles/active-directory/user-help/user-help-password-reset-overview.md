@@ -1,5 +1,5 @@
 ---
-title: Přehled resetování vlastního pracovního nebo školního hesla – Azure Active Directory | Microsoft Docs
+title: Přehled resetování vlastního pracovního nebo školního hesla – Azure AD
 description: Seznam odkazů na články o registraci a resetování svého pracovního nebo školního hesla bez pomoci správce.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15fbc526822f3b6659bc190ee67c6c17ff96b067
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160599"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028493"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Přehled resetování vlastního pracovního nebo školního hesla
 
@@ -34,5 +34,5 @@ Podrobné informace a pokyny k registraci vašeho účtu pro resetování hesla 
 
 |Článek |Popis |
 |------|------------|
-| [Registrace pro Samoobslužné resetování hesla](active-directory-passwords-reset-register.md) ] Pokyny k ověření metod ověřování a registraci k samoobslužnému resetování hesla, abyste mohli resetovat vlastní heslo.|
-| [Resetování hesla](active-directory-passwords-update-your-own-password.md) ] Pokyny, jak resetovat nebo odemknout heslo pro pracovní nebo školní účet.|
+| [Registrace samoobslužného resetování hesla](active-directory-passwords-reset-register.md) | Pokyny k ověření metod ověřování a registraci k samoobslužnému resetování hesla, abyste mohli resetovat vlastní heslo. |
+| [Resetování hesla](active-directory-passwords-update-your-own-password.md) | Pokyny, jak resetovat nebo odemknout heslo pro pracovní nebo školní účet. |

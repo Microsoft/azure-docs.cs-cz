@@ -1,25 +1,25 @@
 ---
-title: Rychlý Start zásad vypršení platnosti pro skupiny Office 365 – Azure Active Directory | Microsoft Docs
+title: Rychlý Start pro zásady vypršení platnosti skupiny – Azure AD | Microsoft Docs
 description: Vypršení platnosti u skupin Office 365 – Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 10/24/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d98dd0f4f9cdc506b8807932a255d14d3022d49
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024616"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026903"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Rychlý start: Nastavení vypršení platnosti skupin Office 365 v Azure Active Directory
 

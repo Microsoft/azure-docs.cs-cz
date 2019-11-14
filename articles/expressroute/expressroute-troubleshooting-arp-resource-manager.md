@@ -1,5 +1,5 @@
 ---
-title: 'Získání tabulek ARP – řešení potíží – ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: získání tabulek ARP – řešení potíží'
 description: Tato stránka poskytuje pokyny k získání tabulek ARP pro okruh ExpressRoute.
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: e35020923405ec072ac9c42093752ec5a9290824
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2410465052bd9ff83090c6f7122ffab2855af1d0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748164"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033437"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Získání tabulek protokolu ARP v modelu nasazení Správce prostředků
 > [!div class="op_single_selector"]
@@ -178,5 +178,5 @@ nebo
   * Získat souhrn tras k určení stavu relací protokolu BGP 
   * Získat směrovací tabulku, která určuje, které předpony se budou inzerovat napříč ExpressRoute
 * Ověření přenosu dat kontrolou bajtů v/v
-* Pokud stále dochází k problémům, otevřete lístek podpory s [podporou Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
+* Vytvořit lístek podpory s [podpory Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Pokud stále dochází k problémům.
 

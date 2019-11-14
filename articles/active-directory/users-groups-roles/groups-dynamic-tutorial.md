@@ -1,28 +1,27 @@
 ---
-title: Dynamické členství ve skupině přidat odebrat uživatele – kurz – Azure Active Directory
+title: Přidání uživatelů do dynamické skupiny – kurz – Azure AD | Microsoft Docs
 description: V tomto kurzu použijete skupiny s pravidly členství uživatelů k automatickému přidávání nebo odebírání uživatelů.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1429841ca1376d67c7372f36bd35694afd4cd7ce
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102632"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027114"
 ---
-# <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Přidat nebo odebrat členy skupiny automaticky
+# <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Automatické přidávání nebo odebírání členů skupin
 
 V Azure Active Directory (Azure AD) můžete automaticky přidávat uživatele do skupin zabezpečení nebo skupin Office 365 nebo je z nich odebírat, abyste to pokaždé nemuseli dělat ručně. Při každé změně jakýchkoli vlastností uživatele nebo zařízení Azure AD vyhodnotí všechna dynamická pravidla skupin ve vašem tenantovi a zjistí, jestli má změna přidat nebo odebrat členy.
 
@@ -44,13 +43,13 @@ Uživatelům, kteří mají být členy dynamických skupin, licence přiřazova
 
 Nejprve vytvoříte skupinu pro uživatele typu host, kteří jsou všichni z jedné partnerské společnosti. Potřebují zvláštní licencování, takže je efektivnější pro tento účel vytvořit skupinu.
 
-1. Přihlaste se k Azure Portal https://portal.azure.com) (pomocí účtu, který je globálním správcem vašeho tenanta).
+1. Přihlaste se k Azure Portal (https://portal.azure.com) pomocí účtu, který je globálním správcem vašeho tenanta.
 2. Vyberte **Azure Active Directory** > **Skupiny** > **Nová skupina**.
-   ![výběrem příkazu zahájíte novou skupinu.](./media/groups-dynamic-tutorial/new-group.png)
+   ![příkazu SELECT pro spuštění nové skupiny](./media/groups-dynamic-tutorial/new-group.png)
 3. V okně **Skupina**:
   
    * Jako typ skupiny vyberte **zabezpečení** .
-   * Jako `Guest users Contoso` název a popis skupiny zadejte.
+   * Jako název a popis skupiny zadejte `Guest users Contoso`.
    * Změňte **typ členství** na **dynamický uživatel**.
    
 4. Vyberte **vlastníci** a v okně **Přidat vlastníky** vyhledejte požadované vlastníky. Klikněte na požadované vlastníky a přidejte je do výběru.
@@ -70,7 +69,7 @@ Nejprve vytvoříte skupinu pro uživatele typu host, kteří jsou všichni z je
    
 8. V okně **Skupina** výběrem možnosti **Vytvořit** vytvořte skupinu.
 
-## <a name="assign-licenses"></a>Přiřadit licence
+## <a name="assign-licenses"></a>Přiřazení licencí
 
 Teď, když máte novou skupinu, můžete použít licence, které tito uživatelé z partnerské společnosti potřebují.
 
@@ -96,7 +95,7 @@ Možná je vaším konečným správním plánem přiřadit všechny uživatele 
 1. Vyberte **Azure Active Directory** > **Skupiny**. Výběrem názvu skupiny **Všichni uživatelé** otevřete skupinu.
 1. Vyberte **Pravidla dynamického členství**, vymažte veškerý text pravidla a vyberte **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]

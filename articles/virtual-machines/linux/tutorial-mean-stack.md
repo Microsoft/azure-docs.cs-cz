@@ -1,5 +1,5 @@
 ---
-title: Kurz vytvoření stacku MEAN na virtuálním počítači s Linuxem v Azure | Microsoft Docs
+title: Kurz – vytvoření STŘEDNÍho zásobníku na virtuálním počítači se systémem Linux v Azure
 description: V tomto kurzu se dozvíte, jak vytvořit stack MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5a1d1f738d8f32777bc4a6ea7d04fb0abf2accf7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300799"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034406"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak implementovat stack MongoDB, Express, AngularJS a
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Linuxem
-> * Instalovat Node.js
+> * Instalace Node.js
 > * Instalace MongoDB a nastavení serveru
 > * Instalace Express a nastavení tras k serveru
 > * Přístup k trasám pomocí AngularJS
@@ -79,7 +79,7 @@ Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci 
 ssh azureuser@13.72.77.9
 ```
 
-## <a name="install-nodejs"></a>Instalovat Node.js
+## <a name="install-nodejs"></a>Instalace Node.js
 
 [Node.js](https://nodejs.org/en/) je modul runtime JavaScriptu založený na modulu JavaScript V8 v Chrome. Node.js se v tomto kurzu používá k nastavení tras Express a kontrolerů AngularJS.
 
@@ -323,11 +323,11 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http: \//13.72.77.9:* . Zobrazená stránka by měla vypadat přibližně takto:
+2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http:\//13.72.77.9:* . Zobrazená stránka by měla vypadat přibližně takto:
 
     ![Záznam o knize](media/tutorial-mean/meanstack-init.png)
 
-3. Do textových polí zadejte data a klikněte na **Add** (Přidat). Například:
+3. Do textových polí zadejte data a klikněte na **Add** (Přidat). Příklad:
 
     ![Přidání záznamu o knize](media/tutorial-mean/meanstack-add.png)
 
@@ -343,7 +343,7 @@ V tomto kurzu jste pomocí stacku MEAN na virtuálním počítači s Linuxem vyt
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Linuxem
-> * Instalovat Node.js
+> * Instalace Node.js
 > * Instalace MongoDB a nastavení serveru
 > * Instalace Express a nastavení tras k serveru
 > * Přístup k trasám pomocí AngularJS

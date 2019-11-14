@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b7348e3790166e1a1aecab422e571b8f2fc7cd5f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f02c1afadf18a7d3170eb178696487464e4a0bd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513517"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034099"
 ---
 # <a name="azcopy-list"></a>azcopy list
 
@@ -26,6 +26,13 @@ V aktuální verzi jsou podporovány pouze kontejnery objektů BLOB.
 ```azcopy
 azcopy list [containerURL] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Související koncepční články
+
+- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Příklady
 
@@ -49,6 +56,6 @@ azcopy list [containerURL]
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [AzCopy](storage-ref-azcopy.md)

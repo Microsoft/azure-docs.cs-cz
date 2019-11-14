@@ -1,5 +1,5 @@
 ---
-title: OpenShift Container Platform 3,11 v Azure – předpoklady | Microsoft Docs
+title: OpenShift kontejnerová platforma 3,11 v požadavcích Azure
 description: Požadavky na nasazení OpenShift kontejneru platformy 3,11 v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 0b7eaaf68c1b0907b6d687b823ef71a7c9bd0102
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882400"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035475"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Běžné požadavky pro nasazení OpenShift kontejneru Platform 3,11 v Azure
 
@@ -139,7 +139,7 @@ Další informace o instančních objektech najdete v tématu [Vytvoření insta
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Požadavky, které se vztahují pouze na šablonu Správce prostředků
 
-Pro privátní klíč SSH (**sshPrivateKey**) se musí vytvořit tajná hesla, tajný klíč klienta Azure AD (**aadClientSecret**), heslo správce OpenShift (**openshiftPassword**) a heslo správce předplatného Red Hat nebo aktivační klíč ( **rhsmPasswordOrActivationKey**).  Pokud se navíc použijí vlastní certifikáty SSL, musí se vytvořit šest dalších tajných klíčů – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**a  **masterkeyfile**.  Tyto parametry budou podrobněji vysvětleny.
+Pro privátní klíč SSH (**sshPrivateKey**) se musí vytvořit tajné kódy, tajný klíč klienta Azure AD (**aadClientSecret**), heslo správce OpenShift (**openshiftPassword**) a heslo správce předplatného Red Hat (**rhsmPasswordOrActivationKey**).  Pokud se navíc použijí vlastní certifikáty SSL, musí se vytvořit šest dalších tajných klíčů – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**a **masterkeyfile**.  Tyto parametry budou podrobněji vysvětleny.
 
 Šablona odkazuje na konkrétní tajné názvy, takže je **nutné** použít tučné názvy uvedené výše (rozlišuje velká a malá písmena).
 

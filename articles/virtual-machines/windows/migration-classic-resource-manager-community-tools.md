@@ -1,5 +1,5 @@
 ---
-title: Komunitní nástroje – přesunutí klasických prostředků do Azure Resource Manager | Microsoft Docs
+title: Komunitní nástroje – přesunutí klasických prostředků do Azure Resource Manager
 description: Tento článek obsahuje katalog nástrojů poskytovaných komunitou, které vám pomůžou migrovat prostředky IaaS z modelu nasazení Classic na model nasazení Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 2b5d218812878db6fb110c043afffd2f9a2d344d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a4a7ed6d57e72deb7f49895935e522e65e18f7d9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102665"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033316"
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Nástroje komunity pro migraci prostředků IaaS z modelu Classic na Azure Resource Manager
 Tento článek obsahuje katalog nástrojů poskytovaných komunitou pro pomoc s migrací prostředků IaaS z modelu Classic na model nasazení Azure Resource Manager.
@@ -41,7 +41,7 @@ Jedná se o kolekci pomocných nástrojů vytvořených v rámci migrace Enterpr
 [Odkaz na dokumentaci k nástroji](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
 ## <a name="migaz"></a>migAz
-migAz je další možnost migrace kompletní sady klasických prostředků IaaS na prostředky Azure Resource Manager IaaS. K migraci může dojít v rámci stejného předplatného nebo mezi různými předplatnými a typy předplatného (např.: Předplatná CSP).
+migAz je další možnost migrace kompletní sady klasických prostředků IaaS na prostředky Azure Resource Manager IaaS. K migraci může dojít v rámci stejného předplatného nebo mezi různými předplatnými a typy předplatného (např.: předplatná CSP).
 
 [Odkaz na dokumentaci k nástroji](https://github.com/Azure/migAz)
 

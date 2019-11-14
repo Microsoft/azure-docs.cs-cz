@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření spravovaného disku ze snímku | Microsoft Docs
+title: Ukázkový skript Azure CLI – Vytvoření spravovaného disku ze snímku
 description: Ukázkový skript Azure CLI – Vytvoření spravovaného disku ze snímku
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 030f3d9455956c3c728e450aca058b2df10eb3d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a219b24c4d4b82363094ccba74db22e3b4018c4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302411"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023320"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Vytvoření spravovaného disku ze snímku pomocí rozhraní příkazového řádku
 
@@ -41,12 +41,12 @@ Tento skript vytvoří spravovaný disk ze snímku. Použijte ho k obnovení vir
 
 Tento skript k vytvoření spravovaného disku ze snímku používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Získá všechny vlastnosti snímku s použitím názvu a vlastností skupiny prostředků snímku. Vlastnost ID se použije k vytvoření spravovaného disku.  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Vytvoří spravovaný disk s použitím ID spravovaného snímku. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 

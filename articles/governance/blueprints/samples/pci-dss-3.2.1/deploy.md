@@ -1,18 +1,14 @@
 ---
 title: Ukázkový plán PCI-DSS v 3.2.1 – nasazení kroků
 description: Nasaďte kroky pro ukázka zabezpečení dat v odvětví platební karty Standard v 3.2.1, včetně podrobností o parametrech artefaktu podrobného plánu.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: b765782adfa5fd63bc270ad28b74cf3bd1ca1d4a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b29a1a66b7407558769e506deed5e65f7ecb064c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163030"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037258"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán
 
@@ -99,7 +95,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |-|-|-|-|
 |\[Preview\] audit PCI v 3.2.1:2018 řídí ovládací prvky a nasazují specifická rozšíření virtuálních počítačů pro podporu požadavků na audit.|Přiřazení zásad|Seznam typů prostředků | Auditování nastavení diagnostiky pro vybrané typy prostředků. Výchozí hodnota jsou vybrané všechny prostředky.| 
 |Povolená umístění|Přiřazení zásad|Seznam povolených umístění|Seznam umístění datových center povolených pro všechny prostředky, které se mají nasadit do. Tento seznam je globálně přizpůsobitelný pro požadovaná umístění Azure. Vyberte umístění, která chcete přidělit.| 
-|Povolená umístění pro skupiny prostředků|Přiřazení zásad |Povolené umístění |Tato zásada vám umožní omezit umístění, ve kterých může organizace vytvářet skupiny prostředků. Použijte k vymáhání vašich požadavků na geografické dodržování předpisů.| 
+|Povolená umístění pro skupiny prostředků|Přiřazení zásad |Povolené umístění |Tato zásada vám umožní omezit umístění, ve kterých může organizace vytvářet skupiny prostředků. Můžete je využít k vynucování vašich požadavků na geografické dodržování předpisů.| 
 |Nasazení auditování na SQL serverech|Přiřazení zásad|Dny uchování|Uchovávání dat v počtu dnů. Výchozí hodnota je 180, ale sběrnice PCI vyžaduje 365.| 
 |Nasazení auditování na SQL serverech|Přiřazení zásad|Název skupiny prostředků pro účet úložiště|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti).| 
 
@@ -109,9 +105,9 @@ Teď, když jste si prohlédli postup nasazení ukázky pro PCI-DSS v 3.2.1 podr
 
 > [!div class="nextstepaction"]
 > [PCI-DSS v 3.2.1 podrobný plán – přehled](./index.md)
-> [PCI-DSS v 3.2.1 podrobného plánu – mapování ovládacích prvků](./control-mapping.md)
+> [PCI-DSS v 3.2.1 podrobný plán – mapování ovládacích prvků](./control-mapping.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 05/25/2017
+ms.date: 11/12/2019
 tags: active-directory
 ms.author: mimart
 author: v-miegge
@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6aee049f91aaa071595ab42e9bb4d6b2f5e8616d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795178"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021845"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
@@ -46,7 +46,7 @@ Pokud jste tato nastavení nedávno změnili nebo přiřadili k uživateli roli 
 
 ## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Uživatel, kterého jsem pozval, obdrží při uplatnění chyby chybu
 
-Mezi běžné chyby patří:
+Běžné chyby patří:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Správce pozvání nepovolil, aby se EmailVerified uživatelé ve svém tenantovi vytvořili.
 
@@ -62,7 +62,7 @@ Aby bylo možné tento problém vyřešit, musí správce externího uživatele 
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak aplikace "\#", což není obvykle platný znak, se synchronizuje se službou Azure AD?
 
-"\#" je vyhrazený znak v UPN pro spolupráci Azure AD B2B nebo externí uživatele, protože pozvaný účet se user@contoso.com user_contoso. com # EXT #@fabrikam.onmicrosoft.com. Proto se \# v UPN přicházejících z místního prostředí nemůžou přihlásit k Azure Portal. 
+"\#" je vyhrazený znak v UPN pro spolupráci Azure AD B2B nebo externí uživatele, protože pozvaný účet user@contoso.com se stal user_contoso. com # EXT #@fabrikam.onmicrosoft.com. Proto se \# v UPN přicházejících z místního prostředí nemůžou přihlásit k Azure Portal. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Při přidávání externích uživatelů do synchronizované skupiny se zobrazí chyba
 
@@ -94,6 +94,10 @@ Chcete-li tento problém vyřešit, musíte převzít klienta, který se zrušil
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Uživatel typu host s klientem za běhu nebo virového tenanta nemůže resetovat heslo.
 
 Pokud je tenant identity za běhu (JIT) nebo virového tenanta (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
+
+## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Uživatel typu Host nemůže použít modul AzureAD PowerShell v1.
+
+Od 18. listopadu 2019 se zablokují uživatelům typu Host v adresáři (definovaným jako uživatelské účty, u kterých se vlastnost **userType** rovná **Host**), aby používal modul AzureAD PowerShell v1. V opačném případě bude uživatel muset být buď členem uživatele (kde **userType** má hodnotu **člen**), nebo použít modul AzureAD PowerShell v2.
 
 ## <a name="next-steps"></a>Další kroky
 

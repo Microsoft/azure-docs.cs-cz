@@ -1,5 +1,5 @@
 ---
-title: Nasazení OKD v Azure | Microsoft Docs
+title: Nasazení OKD v Azure
 description: Nasaďte OKD v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390534"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035407"
 ---
 # <a name="deploy-okd-in-azure"></a>Nasazení OKD v Azure
 
@@ -143,7 +143,7 @@ Dokončení nasazení trvá nejméně 30 minut, a to na základě celkového po�
 }
 ```
 
-Pokud nechcete provést propojení s příkazovým řádkem, který čeká na dokončení nasazení, přidejte `--no-wait` jako jednu z možností pro nasazení skupiny. Výstup z nasazení lze načíst z Azure Portal v části nasazení pro skupinu prostředků.
+Pokud nechcete vytvořit vazbu na příkazový řádek, který čeká na dokončení nasazení, přidejte `--no-wait` jako jednu z možností pro nasazení skupiny. Výstup z nasazení lze načíst z Azure Portal v části nasazení pro skupinu prostředků.
 
 ## <a name="connect-to-the-okd-cluster"></a>Připojení ke clusteru OKD
 

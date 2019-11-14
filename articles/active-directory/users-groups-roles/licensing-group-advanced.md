@@ -1,26 +1,26 @@
 ---
-title: Další scénáře licencování na základě skupin – Azure Active Directory | Microsoft Docs
+title: Další scénáře licencování na základě skupin – Azure AD | Microsoft Docs
 description: Další scénáře pro Azure Active Directory licencování na základě skupin
 services: active-directory
 keywords: Licencování Azure AD
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cfdb8b979d20b77bcbf2f6b0d17855dfa0ac817
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034146"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025951"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
 
@@ -28,7 +28,7 @@ Následující informace a příklady vám pomůžou získat pokročilejší pri
 
 ## <a name="usage-location"></a>Umístění použití
 
-Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v **profilu** **uživatel** &gt; – **Nastavení**&gt;.
+Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v **Nastavení**&gt; profilu **uživatele** &gt; .
 
 Pro přiřazení licence skupiny budou mít všichni uživatelé bez zadaného umístění v adresáři k dispozici umístění adresáře. Pokud máte uživatele ve více umístěních, nezapomeňte se před přidáním uživatelů do skupin s licencemi správně projevit v svých uživatelských zdrojích.
 
@@ -43,7 +43,7 @@ Můžete například vytvořit dynamickou skupinu pro některé sady produktů, 
 
 Licence se uživateli po přidání do skupiny přiřadí krátce. Po změně atributu uživatel opustí skupiny a licence budou odebrány.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Vezměte v úvahu příklad místního řešení pro správu identit, které určuje, kteří uživatelé mají mít přístup k webovým službám Microsoftu. Používá **extensionAttribute1** k uložení řetězcové hodnoty představující licence, které má uživatel mít. Azure AD Connect synchronizuje s Azure AD.
 
@@ -130,7 +130,7 @@ Ke kontrole, jestli mají uživatelé přiřazenou licenci přímo nebo zděděn
 
 1. Spusťte rutinu `connect-msolservice` pro ověření a připojení k vašemu tenantovi.
 
-2. `Get-MsolAccountSku` se dá použít ke zjištění všech zřízených licencí produktu v tenantovi.
+2. `Get-MsolAccountSku` lze použít ke zjištění všech zřízených licencí produktu v tenantovi.
 
    ![Snímek obrazovky s rutinou Get-MsolAccountSku Zjistěte](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -193,7 +193,7 @@ Tento ukázkový výstup ukazuje začátek zpracování, všechny výsledné zm�
 
 Skupinu s přiřazenou aktivní licencí není možné odstranit. Správce může odstranit skupinu, která neposkytuje, aby způsobila odebrání licencí z uživatelů – z tohoto důvodu vyžadujeme, aby se z této skupiny odebraly nejprve všechny licence, aby je bylo možné odstranit.
 
-Při pokusu o odstranění skupiny v Azure Portal se může zobrazit chybová zpráva s oznámením, že @no__t – odstranění skupiny 0Screenshot se nezdařilo @ no__t-1.
+Při pokusu o odstranění skupiny v Azure Portal se může zobrazit oznámení o chybě, například: ![odstranění skupiny snímků obrazovky](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Přejděte na kartu **licence** ve skupině a zkontrolujte, jestli jsou přiřazené nějaké licence. Pokud ano, odeberte tyto licence a pokuste se skupinu odstranit znovu.
 
@@ -227,5 +227,5 @@ Další informace o jiných scénářích pro správu licencí pomocí licencov�
 * [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
 * [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
-* [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

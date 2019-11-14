@@ -1,5 +1,5 @@
 ---
-title: Přesuňte virtuální počítač SQL Server do jiné oblasti v rámci Azure pomocí služeb Azure Site Recovery | Microsoft Docs
+title: Přesunout virtuální počítač do jiné oblasti (Azure Site Recovery)
 description: Přečtěte si, jak můžete migrovat virtuální počítač s SQL Server z jedné oblasti do jiné v rámci Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,23 +14,24 @@ ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 063876316c92780d061388283a55c7f50dd3d78a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3b84119cdcc1bb7e8603de64e3d23c69dac70cc3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100524"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022292"
 ---
 # <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>Přesunutí virtuálního počítače SQL Server do jiné oblasti v rámci Azure pomocí služeb Azure Site Recovery
 
 V tomto článku se naučíte, jak pomocí Azure Site Recovery migrovat virtuální počítač s SQL Server z jedné oblasti do druhé v rámci Azure. 
 
 Přesunutí SQL Server virtuálního počítače do jiné oblasti vyžaduje následující kroky:
-1. [](#prepare-to-move)Připravuje se: Potvrďte, že váš zdrojový SQL Server virtuální počítač i cílová oblast jsou pro přesun vhodně připravené. 
-1. [**Konfigurace**](#configure-azure-site-recovery-vault): Přesunutím SQL Server virtuálního počítače se vyžaduje, aby se jedná o replikovaný objekt v rámci trezoru Azure Site Recovery. Do trezoru Azure Site Recovery musíte přidat svůj SQL Server virtuální počítač. 
-1. [**Testování**](#test-move-process): Migrace SQL Server virtuálního počítače vyžaduje, aby převzala služby při selhání ze zdrojové oblasti do replikované cílové oblasti. Aby se zajistilo, že proces přesunu bude úspěšný, musíte nejdřív otestovat, že váš virtuální počítač SQL Server může úspěšně převzít služby při selhání do cílové oblasti. To vám pomůže odhalit případné problémy a vyhnout se jim při provádění skutečného přesunu. 
-1. [**Přesun**](#move-the-sql-server-vm): Po úspěšném provedení testovacího převzetí služeb při selhání a víte, že jste bezpečně migrovali SQL Server virtuální počítač, můžete provést přesun virtuálního počítače do cílové oblasti. 
-1. [**Čištění**](#clean-up-source-resources): Abyste se vyhnuli poplatkům za účtování, odeberte z trezoru SQL Server virtuální počítač a všechny nepotřebné prostředky, které zůstaly ve skupině prostředků. 
+1. [**Příprava**](#prepare-to-move): potvrďte, že je váš zdrojový SQL Server virtuální počítač i cílový region dostatečně připravené pro přesun. 
+1. [**Konfigurace**](#configure-azure-site-recovery-vault): přesunutí virtuálního počítače s SQL Server vyžaduje, aby se jedná o replikovaný objekt v rámci trezoru Azure Site Recovery. Do trezoru Azure Site Recovery musíte přidat svůj SQL Server virtuální počítač. 
+1. [**Testování**](#test-move-process): migrace SQL Server virtuálního počítače vyžaduje, aby převzala služby při selhání ze zdrojové oblasti do replikované cílové oblasti. Aby se zajistilo, že proces přesunu bude úspěšný, musíte nejdřív otestovat, že váš virtuální počítač SQL Server může úspěšně převzít služby při selhání do cílové oblasti. To vám pomůže odhalit případné problémy a vyhnout se jim při provádění skutečného přesunu. 
+1. [**Přesunutí**](#move-the-sql-server-vm): po úspěšném dokončení testovacího převzetí služeb při selhání a víte, že jste bezpečně MIGROVALI SQL Server virtuální počítač, můžete provést přesun virtuálního počítače do cílové oblasti. 
+1. [**Čištění**](#clean-up-source-resources): Pokud se chcete vyhnout poplatkům za účtování, odeberte z trezoru SQL Server virtuální počítač a všechny nepotřebné prostředky, které zůstaly ve skupině prostředků. 
 
 ## <a name="verify-prerequisites"></a>Ověření požadavků 
 
@@ -78,10 +79,10 @@ Následující kroky ukazují, jak použít Azure Site Recovery ke kopírování
 1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) vytvořte novou skupinu prostředků v cílové oblasti nebo vyberte existující skupinu prostředků v cílové oblasti. 
 1. V části **Podrobnosti o instanci**zadejte název vašeho trezoru a potom z rozevíracího seznamu vyberte svou cílovou **oblast** . 
 1. Vyberte **zkontrolovat + vytvořit** a vytvořte svůj Recovery Services trezor. 
-1. V levém horním rohu navigačního podokna a do vyhledávacího pole `recovery services`vyberte **všechny služby** . 
+1. V levém horním rohu navigačního podokna vyberte **všechny služby** a do vyhledávacího pole zadejte `recovery services`. 
 1. Volitelně Vyberte hvězdičku vedle **Recovery Services trezory** a přidejte je do rychlého navigačního panelu. 
 1. Vyberte **trezory služby Recovery Services** a pak vyberte Recovery Services trezor, který jste vytvořili. 
-1. V podokně **Přehled** vyberte replikovat. 
+1. V podokně **Přehled** vyberte **replikovat**. 
 
    ![Konfigurace replikace](media/virtual-machines-windows-sql-move-to-new-region/configure-replication.png)
 
@@ -90,7 +91,7 @@ Následující kroky ukazují, jak použít Azure Site Recovery ke kopírování
 1. Vyberte **Nastavení**a potom z rozevíracího seznamu zvolte **cílové umístění** . Mělo by se jednat o skupinu prostředků, kterou jste připravili dříve. 
 1. Po přizpůsobení replikace vyberte **vytvořit cílové prostředky** a vytvořte prostředky v novém umístění. 
 1. Po vytvoření prostředku vyberte **Povolit replikaci** , aby se spustila replikace SQL Server virtuálního počítače ze zdroje do cílové oblasti.
-1. Stav replikace můžete zjistit tak, že přejdete do trezoru pro obnovení, vyberete **replikované položky** a zobrazíte **stav** svého virtuálního počítače s SQL Server. Stav chráněno znamená, že se replikace dokončila. 
+1. Stav replikace můžete zjistit tak, že přejdete do trezoru pro obnovení, vyberete **replikované položky** a zobrazíte **stav** svého virtuálního počítače s SQL Server. Stav **chráněno** znamená, že se replikace dokončila. 
 
    ![Ověřit stav replikace](media/virtual-machines-windows-sql-move-to-new-region/check-replication-status.png)
 
@@ -112,8 +113,8 @@ Následující kroky ukazují, jak použít Azure Site Recovery k otestování p
 
    ![Sledovat průběh testu převzetí služeb při selhání](media/virtual-machines-windows-sql-move-to-new-region/monitor-failover-test-job.png)
 
-1. Po dokončení testu přejděte k virtuálním **počítačům** na portálu a Prohlédněte si nově vytvořený virtuální počítač. Ujistěte se, že je virtuální počítač SQL Server spuštěný, má odpovídající velikost a je připojený k příslušné síti. 
-1. Odstraňte virtuální počítač, který byl vytvořen jako součást testu, protože možnost **převzetí služeb při** selhání bude šedá až do vyčištění prostředků testu převzetí služeb při selhání. Přejděte zpátky do trezoru, vyberte **replikované položky**, vyberte SQL Server virtuální počítač a pak vyberte **vyčistit testovací převzetí služeb při selhání**. Zaznamenejte a uložte všechny poznámky spojené s testem v části s poznámkami a zaškrtněte políčko vedle **položky testování bylo dokončeno. Odstraňte virtuální počítače**testovacího převzetí služeb při selhání. Výběrem **OK** vyčistěte prostředky po testu. 
+1. Po dokončení testu přejděte k **virtuálním počítačům** na portálu a Prohlédněte si nově vytvořený virtuální počítač. Ujistěte se, že je virtuální počítač SQL Server spuštěný, má odpovídající velikost a je připojený k příslušné síti. 
+1. Odstraňte virtuální počítač, který byl vytvořen jako součást testu, protože možnost **převzetí služeb při** selhání bude šedá až do vyčištění prostředků testu převzetí služeb při selhání. Přejděte zpátky do trezoru, vyberte **replikované položky**, vyberte SQL Server virtuální počítač a pak vyberte **vyčistit testovací převzetí služeb při selhání**. Zaznamenejte a uložte všechny poznámky spojené s testem v části s **poznámkami** a zaškrtněte políčko vedle položky **testování bylo dokončeno. Odstraňte virtuální počítače testovacího převzetí služeb při selhání**. Výběrem **OK** vyčistěte prostředky po testu. 
 
    ![vyčistit položky po testu převzetí služeb při selhání](media/virtual-machines-windows-sql-move-to-new-region/cleanup-test-items.png)
 
@@ -122,7 +123,7 @@ Následující kroky ukazují, jak přesunout SQL Server virtuální počítač 
 
 1. Přejděte do trezoru **Recovery Services** , vyberte **replikované položky**, vyberte virtuální počítač a pak vyberte **převzetí služeb při selhání**. 
 
-   ![Zahájit převzetí služeb při selhání](media/virtual-machines-windows-sql-move-to-new-region/initiate-failover.png)
+   ![Iniciovat převzetí služeb při selhání](media/virtual-machines-windows-sql-move-to-new-region/initiate-failover.png)
 
 1. V **bodu obnovení**vyberte nejnovější bod obnovení **konzistentní vzhledem k aplikacím** . 
 1. **Před zahájením převzetí služeb při selhání**vyberte zaškrtávací políčko vedle počítače. Site Recovery se před aktivací převzetí služeb při selhání pokusí vypnout zdrojový virtuální počítač. Převzetí služeb při selhání bude pokračovat i v případě selhání vypnutí. 

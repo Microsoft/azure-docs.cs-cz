@@ -1,5 +1,5 @@
 ---
-title: OpenShift kontejnerová platforma 3,11 v úlohách po nasazení Azure | Microsoft Docs
+title: OpenShift kontejnerová platforma 3,11 v úlohách po nasazení Azure
 description: Další úlohy pro po nasazení clusteru OpenShift Container Platform 3,11
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: c1e04f048c081da4777045e5bee43991c95b4625
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392771"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035509"
 ---
 # <a name="post-deployment-tasks"></a>Úkoly po nasazení
 
-Po nasazení clusteru OpenShift můžete nakonfigurovat další položky. Tento článek popisuje:
+Po nasazení clusteru OpenShift můžete nakonfigurovat další položky. Tento článek se týká:
 
 - Jak nakonfigurovat jednotné přihlašování pomocí Azure Active Directory (Azure AD)
 - Jak nakonfigurovat protokoly Azure Monitor pro monitorování OpenShift
@@ -74,7 +74,7 @@ Poznamenejte si vlastnost appId vrácenou z příkazu pro pozdější krok.
 
 Na webu Azure Portal:
 
-1. Vyberte **Azure Active Directory** **registraci aplikace** > .
+1. Vyberte **Azure Active Directory** > **registraci aplikace**.
 2. Vyhledejte registraci vaší aplikace (například OCPAzureAD).
 3. Ve výsledcích klikněte na registrace aplikace.
 4. V části **Nastavení**vyberte **požadovaná oprávnění**.

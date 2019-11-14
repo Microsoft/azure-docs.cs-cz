@@ -1,30 +1,29 @@
 ---
-title: Převzetí správce nespravovaného adresáře Azure Active Directory | Microsoft Docs
-description: Postup převzetí názvu domény DNS v nespravovaném adresáři (stínový tenant) v Azure Active Directory.
+title: Převzetí správce nespravovaného adresáře – Azure AD | Microsoft Docs
+description: Postup převzetí názvu domény DNS v nespravované organizaci Azure AD (stínový tenant).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 08/01/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315727"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027379"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Přebírat nespravovaný adresář jako správce v Azure Active Directory
 
-Tento článek popisuje dva způsoby, jak převzít název domény DNS v nespravovaném adresáři v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužném nebo virové registraci ke službě najdete v tématu [co je samoobslužná registrace pro Azure Active Directory?](directory-self-service-signup.md)
+Tento článek popisuje dva způsoby, jak převzít název domény DNS v nespravovaném adresáři v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné registraci a registraci ke službě najdete v tématu [co je samoobslužná registrace pro Azure Active Directory?](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Rozhodněte, jak chcete převzít nespravovaný adresář
 Během procesu převzetí správce můžete vlastnictví prokázat způsobem popsaným v tématu [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md). Další části popisují prostředí pro správu podrobněji, ale tady je shrnutí:
@@ -58,13 +57,13 @@ Po dokončení předchozích kroků jste nyní globálním správcem čtvrtého 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Přidání názvu domény do spravovaného tenanta ve službě Azure AD
 
 1. Otevřete [Centrum pro správu Microsoft 365](https://admin.microsoft.com).
-2. Vyberte kartu **Uživatelé** a vytvořte nový uživatelský účet s názvem, jako je například *Uživatel\@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastní název domény. 
+2. Vyberte kartu **Uživatelé** a vytvořte nový uživatelský účet s názvem, například *uživatel\@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastní název domény. 
 3. Ujistěte se, že nový uživatelský účet má pro tenanta Azure AD oprávnění globálního správce.
 4. Otevřete kartu **domény** v centru pro správu Microsoft 365, vyberte název domény a vyberte **Odebrat**. 
   
    ![odebrat název domény z Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Pokud máte v sadě Office 365 nějaké uživatele nebo skupiny, které odkazují na odebraný název domény, musí být přejmenovány do domény. onmicrosoft.com. Pokud vynutíte odstranění názvu domény, všichni uživatelé budou automaticky přejmenováni v tomto příkladu *na\@fourthcoffeexyz.onmicrosoft.com uživatele*.
+5. Pokud máte v sadě Office 365 nějaké uživatele nebo skupiny, které odkazují na odebraný název domény, musí být přejmenovány do domény. onmicrosoft.com. Pokud vynutíte odstranění názvu domény, budou automaticky přejmenováni všichni uživatelé, v tomto příkladu na *user\@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Přihlaste se k [centru pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem TENANTA Azure AD.
   
@@ -73,7 +72,7 @@ Po dokončení předchozích kroků jste nyní globálním správcem čtvrtého 
    ![Doména ověřena jako přidaná do Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v tenantovi Office 365, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je *například\@uživatel fourthcoffeexyz.onmicrosoft.com* *, nikoli\@User fourthcoffee. xyz*.
+> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v tenantovi Office 365, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je například *uživatel\@fourthcoffeexyz.onmicrosoft.com* , nikoli *uživatel\@fourthcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Převzetí externích správců
 
@@ -105,7 +104,7 @@ Volitelně můžete použít [možnost **ForceTakeover** ](#azure-ad-powershell-
 
 #### <a name="more-information-about-rms-for-individuals"></a>Další informace o RMS pro jednotlivce
 
-U [služby RMS pro jednotlivce](/azure/information-protection/rms-for-individuals)platí, že pokud je nespravovaný tenant ve stejné oblasti jako tenant, který vlastníte, automaticky se vytvoří [Azure Information Protection klíč tenanta](/azure/information-protection/plan-implement-tenant-key) a [výchozí šablony ochrany](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) se taky přesouvají přes název domény
+U [služby RMS pro jednotlivce](/azure/information-protection/rms-for-individuals)platí, že pokud je nespravovaný tenant ve stejné oblasti jako tenant, který vlastníte, automaticky se vytvoří [Azure Information Protection klíč tenanta](/azure/information-protection/plan-implement-tenant-key) a [výchozí šablony ochrany](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) se také přesouvají s názvem domény.
 
 Klíč a šablony nejsou přesunuty, pokud se nespravovaný tenant nachází v jiné oblasti. Například pokud je nespravovaný klient v Evropě a organizace, kterou vlastníte, je v Severní Amerika.
 

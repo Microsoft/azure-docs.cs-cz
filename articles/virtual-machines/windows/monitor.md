@@ -1,6 +1,6 @@
 ---
-title: Monitorování virtuálních počítačů Windows v Azure | Dokumentace Microsoftu
-description: Další informace o monitorování možnosti pro Windows virtual machines v Azure.
+title: Monitorování virtuálních počítačů s Windows v Azure
+description: Seznamte se s možnostmi monitorování pro virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 6cc7a48bb11057f0cd6785d9d26e001ade896512
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b08c63d544ce40b439ce179621f323e99fcb55e5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720181"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033190"
 ---
-# <a name="how-to-monitor-virtual-machines-in-azure"></a>Monitorování virtuálních počítačů v Azure
+# <a name="how-to-monitor-virtual-machines-in-azure"></a>Jak monitorovat virtuální počítače v Azure
 
 [!INCLUDE [virtual-machines-monitor](../../../includes/virtual-machines-monitor.md)]

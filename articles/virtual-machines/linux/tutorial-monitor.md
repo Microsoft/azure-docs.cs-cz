@@ -1,5 +1,5 @@
 ---
-title: Kurz – monitorování virtuálních počítačů se systémem Linux v Azure | Microsoft Docs
+title: Kurz – monitorování virtuálních počítačů se systémem Linux v Azure
 description: V tomto kurzu se naučíte monitorovat výkon a zjištěné součásti aplikace spuštěné na virtuálních počítačích se systémem Linux.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eb3f73f3ceb27bec05d4e2e88877ea398de7cdf5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71680075"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034370"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Kurz: monitorování virtuálního počítače se systémem Linux v Azure
 
@@ -52,7 +52,7 @@ Pokud chcete vidět, jak funguje diagnostika a metriky, potřebujete virtuální
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Následující příklad vytvoří virtuální počítač *myVM*, a pokud klíče SSH ještě neexistují, vytvoří je v umístění *~/.ssh/* :
+Teď pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) vytvořte virtuální počítač. Následující příklad vytvoří virtuální počítač *myVM*, a pokud klíče SSH ještě neexistují, vytvoří je v umístění *~/.ssh/* :
 
 ```azurecli-interactive
 az vm create \
@@ -119,7 +119,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 Virtuální počítač s Linuxem má vyhrazeného hostitele v Azure, který s ním komunikuje. Metriky se pro hostitele shromažďují automaticky a lze je zobrazit na portálu Azure Portal následujícím způsobem:
 
 1. Na webu Azure Portal vyberte **Skupiny prostředků**, zvolte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
-1. Pokud chcete získat informace o výkonu virtuálního počítače hostitele, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z metrik *[hostitele]* .
+1. Pokud chcete získat informace o výkonu virtuálního počítače hostitele, vyberte v okně virtuálního počítače **Metriky** a potom v části *Dostupné metriky* vyberte některou z metrik **[hostitele]** .
 
     ![Zobrazení metrik hostitele](./media/tutorial-monitoring/monitor-host-metrics.png)
 
@@ -129,13 +129,13 @@ Postup povolení monitorování virtuálního počítače Azure pomocí Azure Mo
 
 1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 
-2. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
+2. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)** .
 
-3. Na stránce **přehledy (Preview)** vyberte **vyzkoušet nyní**.
+3. Na **Insights (preview)** stránce **vyzkoušet**.
 
-    ![Povolení Azure Monitor pro virtuální počítače pro virtuální počítač](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Povolit monitorování Azure pro virtuální počítače pro virtuální počítač](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-4. Pokud máte v rámci stejného předplatného pracovní prostor Log Analytics, v rozevíracím seznamu vyberte na stránce pro **registraci Azure monitor Insights** .  
+4. Na **připojování Přehled monitorování Azure** stránky, pokud máte existující Log Analytics vyberte pracovní prostor v rámci stejného předplatného, v rozevíracím seznamu.  
 
     Seznam předchází výchozí pracovní prostor a umístění, kde je virtuální počítač nasazený v předplatném. 
 
@@ -144,7 +144,7 @@ Postup povolení monitorování virtuálního počítače Azure pomocí Azure Mo
 
 Po povolení monitorování může být nutné počkat několik minut, než budete moci zobrazit metriky výkonu pro virtuální počítač.
 
-![Povolení zpracování nasazení Azure Monitor pro virtuální počítače monitorování](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Povolit Azure Monitor pro monitorování zpracování nasazení virtuálních počítačů](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>Zobrazit metriky výkonu virtuálních počítačů
 
@@ -152,7 +152,7 @@ Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které c
 
 1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 
-2. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
+2. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)** .
 
 3. Vyberte kartu **výkon** .
 

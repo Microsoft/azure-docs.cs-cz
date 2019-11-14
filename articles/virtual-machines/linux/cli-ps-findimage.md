@@ -1,6 +1,6 @@
 ---
-title: Vyberte Image virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak používat rozhraní příkazového řádku Azure k určení vydavatele, nabídky, SKU a verze pro Image Marketplace virtuálních počítačů.
+title: Výběr imagí virtuálních počítačů se systémem Linux pomocí Azure CLI
+description: Naučte se používat Azure CLI k určení vydavatele, nabídky, SKU a verze imagí virtuálních počítačů Marketplace.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,32 +16,32 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbe98c4ad3a1b737b9df0d2ea53d53875f26ba54
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e4dd51640c4eeda2ec99c14812a534ee506faeda
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668371"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036869"
 ---
-# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace pomocí Azure CLI
+# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Nalezení imagí virtuálních počítačů se systémem Linux v Azure Marketplace pomocí Azure CLI
 
-Toto téma popisuje, jak používat rozhraní příkazového řádku Azure k vyhledání imagí virtuálních počítačů na webu Azure Marketplace. Tyto informace slouží k určení Marketplace image, pokud vytvoříte virtuální počítač programově pomocí rozhraní příkazového řádku, šablon Resource Manageru nebo jiných nástrojů.
+Toto téma popisuje, jak pomocí rozhraní příkazového řádku Azure vyhledat image virtuálních počítačů v Azure Marketplace. Tyto informace slouží k určení image Marketplace při programovém vytvoření virtuálního počítače pomocí rozhraní příkazového řádku, Správce prostředků šablon nebo jiných nástrojů.
 
-Také procházet dostupné Image a pomocí nabídky [Azure Marketplace](https://azuremarketplace.microsoft.com/) výkladní skříň, [webu Azure portal](https://portal.azure.com), nebo [prostředí Azure PowerShell](../windows/cli-ps-findimage.md). 
+K dispozici je také procházení dostupných imagí a nabídek pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) prezentace, [Azure Portal](https://portal.azure.com)nebo [Azure PowerShell](../windows/cli-ps-findimage.md). 
 
-Ujistěte se, že jste nainstalovali nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a přihlášení k účtu Azure (`az login`).
+Ujistěte se, že jste nainstalovali nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a že jste přihlášeni k účtu azure (`az login`).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="list-popular-images"></a>Seznam oblíbených imagí
+## <a name="list-popular-images"></a>Výpis oblíbených imagí
 
-Spustit [az vm image seznamu](/cli/azure/vm/image) příkazu, aniž by `--all` možnost, chcete-li zobrazit seznam oblíbených imagí virtuálních počítačů na webu Azure Marketplace. Například spuštěním následujícího příkazu můžete zobrazit seznam oblíbených imagí v mezipaměti ve formátu tabulky:
+Spuštěním příkazu [AZ VM Image list](/cli/azure/vm/image) , bez možnosti `--all`, zobrazte seznam oblíbených imagí virtuálních počítačů v Azure Marketplace. Spusťte například následující příkaz, který zobrazí seznam oblíbených imagí v mezipaměti ve formátu tabulky:
 
 ```azurecli
 az vm image list --output table
 ```
 
-Výstup obsahuje image URN (hodnota v *Urn* sloupec). Při vytváření virtuálního počítače s jedním z těchto oblíbených imagí Marketplace, můžete alternativně zadat *UrnAlias*, zkrácený tvar, jako *UbuntuLTS*.
+Výstup obsahuje identifikátor URN obrázku (hodnota ve sloupci *urn* ). Když vytváříte virtuální počítač s jednou z těchto oblíbených imagí na webu Marketplace, můžete případně zadat *UrnAlias*, zkrácenou formu, jako je *UbuntuLTS*.
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -59,9 +59,9 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ## <a name="find-specific-images"></a>Vyhledání konkrétních imagí
 
-Chcete-li najít konkrétní image virtuálního počítače na webu Marketplace, použijte `az vm image list` příkazů `--all` možnost. Tato verze příkazu trvá nějakou dobu pro dokončení a může vrátit zdlouhavé výstup, takže obvykle filtrovat seznam podle `--publisher` nebo jiný parametr. 
+Pokud chcete na webu Marketplace najít konkrétní image virtuálního počítače, použijte příkaz `az vm image list` s možností `--all`. Dokončení této verze příkazu trvá nějakou dobu a může vracet výstup s délkou, takže tento seznam obvykle vyfiltrujete `--publisher` nebo jiným parametrem. 
 
-Například následující příkaz zobrazí všechny Debian nabídky (mějte na paměti, aniž by `--all` přepnout, prohledá pouze místní mezipaměť obvyklých imagí):
+Například následující příkaz zobrazí všechny nabídky Debian (Nezapomeňte, že bez přepínače `--all`, hledá pouze místní mezipaměť běžných imagí):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -108,11 +108,11 @@ Debian             credativ     8                    credativ:Debian:8:8.0.20190
 ...
 ```
 
-Podobné filtry se použijí `--location`, `--publisher`, a `--sku` možnosti. Můžete provádět částečné shody na filtr, jako je například hledání `--offer Deb` najít všechny Image Debian.
+Použijte podobné filtry s možnostmi `--location`, `--publisher`a `--sku`. U filtru můžete provádět částečné shody, jako je například hledání `--offer Deb` k vyhledání všech imagí Debian.
 
-Pokud nezadáte konkrétní umístění s `--location` možnost, jsou vráceny hodnoty pro výchozí umístění. (Spuštěním nastavit jiné výchozí umístění `az configure --defaults location=<location>`.)
+Pokud nezadáte konkrétní umístění s možností `--location`, vrátí se hodnoty pro výchozí umístění. (Nastavte jiné výchozí umístění spuštěním `az configure --defaults location=<location>`.)
 
-Například následující příkaz zobrazí seznam všech SKU Debian 8 v umístění západní Evropa:
+Například následující příkaz vypíše všechny SKU Debian 8 v umístění Západní Evropa:
 
 ```azurecli
 az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
@@ -150,17 +150,17 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201901221        
 ...
 ```
 
-## <a name="navigate-the-images"></a>Procházením imagí
+## <a name="navigate-the-images"></a>Navigace v obrázcích
  
-Dalším způsobem, jak najít image v umístění je spustit [az virtuálního počítače image list-publishers](/cli/azure/vm/image), [az virtuální počítač image list-offers](/cli/azure/vm/image), a [az image list-skladové položky virtuálních počítačů](/cli/azure/vm/image) příkazy v pořadí. Tyto hodnoty můžete určit pomocí následujících příkazů:
+Dalším způsobem, jak najít obrázek v umístění, je spuštění příkazu [AZ VM Image list-Publishers](/cli/azure/vm/image), [AZ VM Image list-nabídky](/cli/azure/vm/image)a [AZ VM Image list-SKU](/cli/azure/vm/image) Commands v sekvenci. Pomocí těchto příkazů určíte tyto hodnoty:
 
 1. Vypsat vydavatele imagí.
 2. Pro daného vydavatele vypsat jeho nabídky.
 3. Pro danou nabídku vypsat její skladovou jednotku (SKU).
 
-Pak pro vybraná skladová položka, můžete vybrat verze nasazení.
+Pak můžete pro vybranou SKLADOVOU položku zvolit verzi, kterou chcete nasadit.
 
-Například následující příkaz zobrazí seznam vydavatelů imagí v umístění USA – západ:
+Například následující příkaz zobrazí seznam vydavatelů obrázků v umístění Západní USA:
 
 ```azurecli
 az vm image list-publishers --location westus --output table
@@ -196,7 +196,7 @@ westus      akumina
 ...
 ```
 
-Tyto informace slouží k hledání nabídek od konkrétního vydavatele. Třeba *Canonical* najít vydavatele v umístění USA – západ nabízí spuštěním `azure vm image list-offers`. Předejte umístění a vydavatele jako v následujícím příkladu:
+Tyto informace slouží k vyhledání nabídek od konkrétního vydavatele. Například pro *kanonický* Vydavatel v umístění západní USA Najděte nabídky spuštěním `azure vm image list-offers`. Předejte umístění a vydavatele jako v následujícím příkladu:
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -213,7 +213,7 @@ westus      UbunturollingSnappy
 westus      UbuntuServer
 westus      Ubuntu_Core
 ```
-Uvidíte, že v oblasti USA – západ Canonical publikuje *UbuntuServer* nabídky v Azure. Ale co skladové jednotky (SKU)? K získání těchto hodnot, spusťte `azure vm image list-skus` a nastavit umístění, vydavatele a nabídky, který jste zjistili:
+Vidíte, že v oblasti Západní USA je kanonické publikovat nabídku *UbuntuServer* v Azure. Ale co skladové jednotky (SKU)? Chcete-li získat tyto hodnoty, spusťte `azure vm image list-skus` a nastavte umístění, vydavatele a nabídku, kterou jste zjistili:
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -244,7 +244,7 @@ westus      18.10-DAILY
 westus      19.04-DAILY
 ```
 
-Nakonec použijte `az vm image list` příkaz k vyhledání konkrétní verze SKU, například *18.04 LTS*:
+Nakonec pomocí příkazu `az vm image list` Najděte konkrétní verzi požadované skladové položky, například *18,04-LTS*:
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
@@ -278,17 +278,17 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-Nyní můžete přesně tu image, kterou chcete použít provedením poznamenejte si hodnotu URN. Předat tuto hodnotu `--image` při vytváření virtuálního počítače se [vytvořit az vm](/cli/azure/vm) příkaz. Mějte na paměti, že můžete volitelně nahradit číslo verze v URN "poslední zálohy". Tato verze je vždy nejnovější verzi image. 
+Nyní můžete zvolit přesně obrázek, který chcete použít, a to poznámkou s hodnotou URN. Pokud vytvoříte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) , předejte tuto hodnotu parametrem `--image`. Mějte na paměti, že můžete volitelně nahradit číslo verze v názvu URN řetězcem "poslední". Tato verze je vždycky nejnovější verze image. 
 
-Pokud provádíte nasazení virtuálního počítače pomocí šablony Resource Manageru, můžete nastavit parametry image jednotlivě v `imageReference` vlastnosti. Viz [referenční informace k šablonám](/azure/templates/microsoft.compute/virtualmachines).
+Pokud nasadíte virtuální počítač s Správce prostředků šablonou, nastavte parametry obrázku jednotlivě ve vlastnostech `imageReference`. Viz [referenční informace k šablonám](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Zobrazit vlastnosti plánu
 
-Chcete-li zobrazit informace o plánu nákupní obrazu, spusťte [az vm image show](/cli/azure/image) příkazu. Pokud `plan` vlastnost ve výstupu není `null`, bitová kopie je podmínky musíte přijmout před programové nasazení.
+Chcete-li zobrazit informace o plánu nákupu obrázku, spusťte příkaz [AZ VM Image show](/cli/azure/image) . Pokud vlastnost `plan` ve výstupu není `null`, image má podmínky, které je třeba přijmout před programovým nasazením.
 
-Image Canonical Ubuntu serveru 18.04 LTS například nemá další podmínky, protože `plan` informace `null`:
+Například obrázek kanonické Ubuntu serveru 18,04 LTS nemá další výrazy, protože informace o `plan` jsou `null`:
 
 ```azurecli
 az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
@@ -310,7 +310,7 @@ Výstup:
 }
 ```
 
-Podobně jako příkazu pro RabbitMQ certifikovaný Bitnami obrázek ukazuje následující `plan` vlastnosti: `name`, `product`, a `publisher`. (Některé obrázky také mít `promotion code` vlastnosti.) Pokud chcete nasadit tuto bitovou kopii, naleznete v následujících částech k přijetí podmínek a povolit programové nasazení.
+Spuštění podobného příkazu pro Image RabbitMQ certifikováno Bitnami zobrazuje následující vlastnosti `plan`: `name`, `product`a `publisher`. (Některé obrázky mají také vlastnost `promotion code`.) Chcete-li nasadit tuto bitovou kopii, v následujících částech přijměte podmínky a povolte programové nasazení.
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -337,13 +337,13 @@ Výstup:
 
 ### <a name="accept-the-terms"></a>Přijměte podmínky
 
-Chcete-li zobrazit a přijměte licenční podmínky, použijte [az vm image přijmout – podmínky](/cli/azure/vm/image?) příkazu. Pokud souhlasíte s podmínkami, povolit programové nasazení v rámci vašeho předplatného. Stačí přijmout podmínky jednou za předplatné pro bitovou kopii. Příklad:
+Pokud si chcete zobrazit a přijmout licenční podmínky, použijte příkaz [AZ VM Image Accept-terms](/cli/azure/vm/image?) . Když souhlasíte s podmínkami, povolíte v předplatném programové nasazení. Pro bitovou kopii musíte pro Image přijmout jenom jednou za odběr. Příklad:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
-Výstup obsahuje `licenseTextLink` na licenční podmínky a znamená, že hodnotu `accepted` je `true`:
+Výstup obsahuje `licenseTextLink` licenčních podmínek a označuje, že hodnota `accepted` je `true`:
 
 ```
 {
@@ -362,9 +362,9 @@ Výstup obsahuje `licenseTextLink` na licenční podmínky a znamená, že hodno
 }
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>Nasazení pomocí parametrů koupit plán
+### <a name="deploy-using-purchase-plan-parameters"></a>Nasazení pomocí parametrů plánu nákupu
 
-Po přijetí podmínek pro bitovou kopii, můžete nasadit virtuální počítač v rámci předplatného. K nasazení image s použitím `az vm create` příkaz, aby parametry plánu nákupů kromě URN bitové kopie. Chcete-li například nasazení virtuálního počítače s certifikací RabbitMQ Bitnami Image:
+Po přijetí podmínek pro image můžete nasadit virtuální počítač v rámci předplatného. K nasazení bitové kopie pomocí příkazu `az vm create` zadejte kromě názvu URN pro obrázek parametry pro plán nákupu. Pokud například chcete nasadit virtuální počítač s RabbitMQ certifikováno pomocí Bitnami Image:
 
 ```azurecli
 az group create --name myResourceGroupVM --location westus
@@ -372,5 +372,5 @@ az group create --name myResourceGroupVM --location westus
 az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
 ```
 
-## <a name="next-steps"></a>Další postup
-Pokud chcete rychle vytvořit virtuální počítač pomocí image informace, přečtěte si téma [vytvořit a spravovat virtuální počítače s Linuxem pomocí Azure CLI](tutorial-manage-vm.md).
+## <a name="next-steps"></a>Další kroky
+Pokud chcete rychle vytvořit virtuální počítač pomocí informací o imagi, přečtěte si téma [Vytvoření a správa virtuálních počítačů se systémem Linux pomocí Azure CLI](tutorial-manage-vm.md).

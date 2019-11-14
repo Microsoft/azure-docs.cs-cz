@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače s Windows ze specializovaného virtuálního pevného disku v Azure | Microsoft Docs
+title: Vytvoření virtuálního počítače s Windows ze specializovaného virtuálního pevného disku v Azure
 description: Vytvořte nový virtuální počítač s Windows připojením specializovaného spravovaného disku jako disku s operačním systémem pomocí modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 author: cynthn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: be773779b25a32a5904012ae31950b18c33341dc
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553432"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033861"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows z specializovaného disku pomocí PowerShellu
 
@@ -267,7 +267,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Ověřte, že byl virtuální počítač vytvořen.
-Nově vytvořený virtuální počítač by se měl zobrazit buď v [Azure Portal](https://portal.azure.com) v části **procházet** **virtuální počítače** >  nebo pomocí následujících příkazů PowerShellu.
+Nově vytvořený virtuální počítač by se měl zobrazit buď v [Azure Portal](https://portal.azure.com) v části **Procházet** > **virtuální počítače**nebo pomocí následujících příkazů PowerShellu.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

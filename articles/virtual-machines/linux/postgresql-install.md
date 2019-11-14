@@ -1,5 +1,5 @@
 ---
-title: Nastavení PostgreSQL na virtuálním počítači se systémem Linux | Microsoft Docs
+title: Nastavení PostgreSQL na virtuálním počítači se systémem Linux
 description: Informace o tom, jak nainstalovat a nakonfigurovat PostgreSQL na virtuálním počítači se systémem Linux v Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 7fc8cb7c07dd27cd42dc4c6a7e0a576f0efe04e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091726"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035269"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je pokročilá open source databáze podobná Oracle a DB2. Zahrnuje funkce připravené pro podnikové prostředí, jako je plně KYSELé dodržování předpisů, spolehlivé zpracování transakcí a řízení souběžnosti s více verzemi. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálek cizích dat pro Oracle, MySQL, MongoDB a mnoho dalších). Je vysoce rozšiřitelná s podporou více než 12 procedurálních jazyků, GIN a registrových indexů, podpory prostorových dat a několika NoSQL funkcí podobných funkcím pro aplikace založené na formátu JSON nebo klíč-hodnota.
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat PostgreSQL na vi
 
 ## <a name="install-postgresql"></a>Nainstalovat PostgreSQL
 > [!NOTE]
-> Aby bylo možné dokončit tento kurz, musíte mít již virtuální počítač Azure se systémem Linux. Pokud chcete před pokračováním vytvořit a nastavit virtuální počítač se systémem Linux, přečtěte si kurz k VIRTUÁLNÍm počítačům [Azure Linux](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Aby bylo možné dokončit tento kurz, musíte mít již virtuální počítač Azure se systémem Linux. Pokud chcete před pokračováním vytvořit a nastavit virtuální počítač se systémem Linux, přečtěte si [kurz k virtuálním počítačům Azure Linux](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 

@@ -1,26 +1,25 @@
 ---
-title: Správa administrativních jednotek (Preview) – Azure Active Directory | Microsoft Docs
+title: Správa administrativních jednotek (Preview) – Azure AD | Microsoft Docs
 description: Použití jednotek pro správu k podrobnějšímu delegování oprávnění v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 08/01/2019
+ms.date: 11/13/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b61186a876af90c812ec7faf41fa9f5b14bf4e
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 3c4958975a080a98fb900bf317229ba9eda795d5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336923"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028417"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Správa administrativních jednotek v Azure Active Directory (Preview)
 
@@ -40,7 +39,7 @@ Chcete-li použít jednotky pro správu, vyžaduje licenci Azure Active Director
 
 V této verzi Preview je jediným způsobem, jak můžete vytvářet a spravovat jednotky pro správu, použití modulu Azure Active Directory pro rutiny prostředí Windows PowerShell, jak je popsáno v tématu [práce s jednotkami pro správu](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0) .
 
-Další informace o požadavcích na software a o instalaci modulu Azure AD a referenční informace o rutinách modulu Azure AD pro správu jednotek pro správu, včetně syntaxe, popisů parametrů a příkladů, najdete v tématu [Azure Active. PowerShellový adresář](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)
+Další informace o požadavcích na software a o instalaci modulu Azure AD a referenční informace o rutinách modulu Azure AD pro správu jednotek pro správu, včetně syntaxe, popisů parametrů a příkladů, najdete v tématu [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
 ## <a name="next-steps"></a>Další kroky
 

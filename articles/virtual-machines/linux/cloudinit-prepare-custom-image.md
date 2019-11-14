@@ -1,6 +1,6 @@
 ---
-title: Příprava image virtuálního počítače Azure pro použití s nástrojem cloud-init | Dokumentace Microsoftu
-description: Jak připravit předem existující image virtuálního počítače Azure pro nasazení s nástrojem cloud-init
+title: Příprava image virtuálního počítače Azure pro použití s cloudem a inicializací
+description: Příprava existující image virtuálního počítače Azure pro nasazení pomocí Cloud-init
 services: virtual-machines-linux
 documentationcenter: ''
 author: danis
@@ -14,21 +14,21 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: 1f9f6042b52c722280a8227754960ffb270e94b8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a75bceebe584522ee999f86664b8afb9fa00f17b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668251"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036750"
 ---
-# <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Příprava image existujícího virtuálního počítače Azure s Linuxem pro použití s nástrojem cloud-init
-Tento článek popisuje, jak využít stávající virtuální počítač Azure a připravit ho bude opakovaně nasazeném a připravené k použití cloud-init. Výsledná bitová kopie lze použít k nasazení nového virtuálního počítače nebo škálovací sady virtuálních počítačů – každý z nich může potom dají dál přizpůsobit pomocí cloud-init v době nasazení.  Tyto skripty cloud-init spustit při prvním spuštění, jakmile se zřizují prostředky Azure. Další informace o tom, jak funguje cloud-init nativně v Azure a podporovaných distribucích systému Linux, najdete v části [přehled cloud-init](using-cloud-init.md)
+# <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Příprava stávající image virtuálního počítače Azure pro Linux pro použití s cloudovým inicializací
+V tomto článku se dozvíte, jak převést existující virtuální počítač Azure a připravit ho na opětovné nasazení a začít používat Cloud-init. Výsledná image se dá použít k nasazení nového virtuálního počítače nebo sady škálování virtuálních počítačů – jednu z nich pak můžete v době nasazení dále upravit pomocí Cloud-init.  Tyto skripty Cloud-init se spouštějí při prvním spuštění, jakmile se prostředky zřídí v Azure. Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .
 
 ## <a name="prerequisites"></a>Požadavky
-Tento dokument předpokládá, že již máte spuštěné v Azure virtuální počítač s podporovanou verzi operačního systému Linux. Jste už nakonfigurovali počítač tak, aby odpovídala vašim potřebám, nainstalované všechny požadované moduly, zpracování všech požadovaných aktualizací a otestovali tak, že splňuje vaše požadavky. 
+Tento dokument předpokládá, že už máte spuštěný virtuální počítač Azure s podporovanou verzí operačního systému Linux. Počítač jste už nakonfigurovali tak, aby vyhovoval vašim potřebám, nainstalovaná všechny požadované moduly, zpracoval všechny požadované aktualizace a otestovali jste je, aby splňovaly vaše požadavky. 
 
-## <a name="preparing-rhel-76--centos-76"></a>Příprava RHEL 7.6 / CentOS 7.6
-Budete si muset SSH do virtuálního počítače s Linuxem a spusťte následující příkazy, abyste mohli nainstalovat cloud-init.
+## <a name="preparing-rhel-76--centos-76"></a>Příprava RHEL 7,6/CentOS 7,6
+Pokud chcete nainstalovat Cloud-init, musíte se přes SSH do virtuálního počítače se systémem Linux a spustit následující příkazy.
 
 ```bash
 sudo yum makecache fast
@@ -36,13 +36,13 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-Aktualizace `cloud_init_modules` tématu `/etc/cloud/cloud.cfg` zahrnout následující moduly:
+Aktualizujte část `cloud_init_modules` v `/etc/cloud/cloud.cfg` tak, aby obsahovala následující moduly:
 ```bash
 - disk_setup
 - mounts
 ```
 
-Toto je ukázka jaké pro obecné účely `cloud_init_modules` oddíl vypadá jako.
+Tady je ukázka toho, co vypadá oddíl pro obecné účely `cloud_init_modules`.
 ```bash
 cloud_init_modules:
  - migrator
@@ -59,7 +59,7 @@ cloud_init_modules:
  - users-groups
  - ssh
 ```
-Počet úloh souvisejících se zřizováním a zpracování dočasné disky potřeba aktualizovat v `/etc/waagent.conf`. Spuštěním následujících příkazů aktualizujte odpovídající nastavení. 
+V `/etc/waagent.conf`je potřeba aktualizovat řadu úloh týkajících se zřizování a manipulace s dočasnými disky. Spusťte následující příkazy a aktualizujte příslušná nastavení. 
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
@@ -68,23 +68,23 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-Povolit Azure jenom jako zdroj dat pro agenta Azure Linux tak, že vytvoříte nový soubor `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` pomocí editoru podle vašeho výběru s následující řádek:
+Pro agenta Azure Linux Povolte jenom Azure jako zdroj dat, a to vytvořením nového souboru `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` pomocí editoru podle vašeho výběru s následujícím řádkem:
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
 ```
 
-Pokud vaše stávající image Azure má odkládací soubor nakonfigurovaný a chcete změnit konfiguraci odkládací soubor pro nové Image pomocí cloud-init, musíte odebrat existující odkládacího souboru.
+Pokud má vaše stávající image Azure nakonfigurované odkládací soubor a chcete změnit konfiguraci stránkovacího souboru pro nové Image pomocí Cloud-init, je nutné odebrat existující odkládací soubor.
 
-Pro Red Hat na základě Image - postupujte podle pokynů následující Red Hat dokument s vysvětlením, jak [odebrat odkládací soubor](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
+Pro image založené na Red Hat – postupujte podle pokynů v následujícím dokumentu Red Hat, který vysvětluje, jak [Odebrat odkládací soubor](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
 
-Image CentOS, stránkovacího souboru povolená můžete spustit následující příkaz k vypnutí možnosti stránkovacího souboru:
+Pro Image CentOS s povoleným swapfile můžete spustit následující příkaz, který vypne swapfile:
 ```bash
 sudo swapoff /mnt/resource/swapfile
 ```
 
-Zajištění odkaz stránkovacího souboru je odebrán z `/etc/fstab` -by měla vypadat podobně jako následující výstup:
+Ujistěte se, že odkaz swapfile je odebraný z `/etc/fstab` – měl by vypadat nějak takto:
 ```text
 # /etc/fstab
 # Accessible filesystems, by reference, are maintained under '/dev/disk'
@@ -94,31 +94,31 @@ UUID=99cf66df-2fef-4aad-b226-382883643a1c / xfs defaults 0 0
 UUID=7c473048-a4e7-4908-bad3-a9be22e9d37d /boot xfs defaults 0 0
 ```
 
-Z důvodu šetření místem a odebrat odkládací soubor můžete spustit následující příkaz:
+Pokud chcete ušetřit místo a odebrat odkládací soubor, můžete spustit následující příkaz:
 ```bash
 rm /mnt/resource/swapfile
 ```
-## <a name="extra-step-for-cloud-init-prepared-image"></a>Přidat další krok pro cloud-init připravenou image
+## <a name="extra-step-for-cloud-init-prepared-image"></a>Dodatečný krok pro připravenou bitovou kopii Cloud-init
 > [!NOTE]
-> Pokud vaše image byla dříve **cloud-init** připravené a nakonfigurovanou image, musíte udělat následující kroky.
+> Pokud byla image dříve připravená a nakonfigurovaná image **pro inicializaci cloudu** , musíte provést následující kroky.
 
-Následující tři příkazy používají pouze v případě přizpůsobení být novou bitovou kopii specializované zdrojového virtuálního počítače byla dříve povolené nástrojem cloud-init.  Nemusíte spouštět vaše image se nakonfigurovalo pomocí agenta Azure Linux.
+Následující tři příkazy se použijí pouze v případě, že virtuální počítač, který přidáváte jako novou specializovanou zdrojovou image, byl dříve zřízen modulem Cloud-init.  Nemusíte je spouštět, pokud byla image nakonfigurovaná pomocí agenta Azure Linux.
 
 ```bash
 sudo cloud-init clean --logs
 sudo waagent -deprovision+user -force
 ```
 
-## <a name="finalizing-linux-agent-setting"></a>Finalizuje se agenta pro Linux nastavení 
-Všechny Image platformy Azure máte Azure Linux a nainstalovanými agenty, bez ohledu na to se nakonfigurovalo pomocí cloud-init, nebo ne.  Spusťte následující příkaz na dokončení zrušení zřízení uživatele v počítači s Linuxem. 
+## <a name="finalizing-linux-agent-setting"></a>Dokončuje se nastavení agenta pro Linux. 
+Všechny Image platformy Azure mají nainstalovaného agenta Azure Linux bez ohledu na to, jestli byl nakonfigurovaný pomocí Cloud-init nebo ne.  Spuštěním následujícího příkazu dokončete zrušení zřízení uživatele z počítače se systémem Linux. 
 
 ```bash
 sudo waagent -deprovision+user -force
 ```
 
-Další informace o příkazech zrušení zřízení agenta Azure Linux, najdete v článku [agenta Azure Linux](../extensions/agent-linux.md) další podrobnosti.
+Další informace o příkazech zrušení zřízení agenta Azure Linux naleznete v tématu [Agent Azure Linux](../extensions/agent-linux.md) , kde najdete další podrobnosti.
 
-Ukončete relaci SSH a pak z vašeho prostředí bash spusťte následující příkazy AzureCLI uvolnění, generalizace a vytvořte novou image virtuálního počítače Azure.  Nahraďte `myResourceGroup` a `sourceVmName` odráží vaše sourceVM odpovídajícími informacemi.
+Ukončete relaci SSH a potom z prostředí bash spusťte následující příkazy Azure CLI k uvolnění, generalizaci a vytvoření nové image virtuálního počítače Azure.  `myResourceGroup` a `sourceVmName` nahraďte odpovídajícími informacemi, které odpovídají vašemu sourceVM.
 
 ```bash
 az vm deallocate --resource-group myResourceGroup --name sourceVmName
@@ -126,10 +126,10 @@ az vm generalize --resource-group myResourceGroup --name sourceVmName
 az image create --resource-group myResourceGroup --name myCloudInitImage --source sourceVmName
 ```
 
-## <a name="next-steps"></a>Další postup
-Příklady cloud-init další změny konfigurace najdete tady:
+## <a name="next-steps"></a>Další kroky
+Další příklady cloudových inicializací změn konfigurace najdete v následujících tématech:
  
-- [Přidání dalších uživatelů Linuxu na virtuální počítač](cloudinit-add-user.md)
-- [Spusťte Správce balíčků aktualizovat existující balíčky při prvním spuštění](cloudinit-update-vm.md)
+- [Přidání dalšího uživatele se systémem Linux k virtuálnímu počítači](cloudinit-add-user.md)
+- [Spusťte Správce balíčků, aby při prvním spuštění aktualizoval existující balíčky.](cloudinit-update-vm.md)
 - [Změnit místní název hostitele virtuálního počítače](cloudinit-update-vm-hostname.md) 
-- [Instalace balíčku aplikace, aktualizovat konfigurační soubory a klíče pro vložení](tutorial-automate-vm-deployment.md)
+- [Instalace balíčku aplikace, aktualizace konfiguračních souborů a vkládání klíčů](tutorial-automate-vm-deployment.md)

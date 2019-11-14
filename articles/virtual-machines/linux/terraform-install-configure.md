@@ -1,5 +1,5 @@
 ---
-title: Instalace a konfigurace Terraformu pro zřizování prostředků Azure | Microsoft Docs
+title: Instalace a konfigurace Terraformu pro zřizování prostředků Azure
 description: Naučte se instalovat a konfigurovat Terraformu k vytváření prostředků Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168730"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034681"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Instalace a konfigurace Terraformu pro zřizování prostředků Azure
  
@@ -35,7 +35,7 @@ Terraformu se ve výchozím nastavení instaluje v [Cloud Shell](/azure/terrafor
 
 Pro instalaci Terraformu [Stáhněte](https://www.terraform.io/downloads.html) příslušný balíček pro váš operační systém do samostatného instalačního adresáře. Stažení obsahuje jeden spustitelný soubor, pro který byste také měli definovat globální cestu. Pokyny, jak nastavit cestu pro Linux a Mac, najdete na [této webové stránce](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Pokyny, jak nastavit cestu ve Windows, najdete na [této webové stránce](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows).
 
-Ověřte konfiguraci cesty pomocí `terraform` příkazu. Zobrazí se seznam dostupných možností Terraformu, jako v následujícím příkladu výstupu:
+Ověřte konfiguraci cesty pomocí příkazu `terraform`. Zobrazí se seznam dostupných možností Terraformu, jako v následujícím příkladu výstupu:
 
 ```console
 azureuser@Azure:~$ terraform
@@ -52,7 +52,7 @@ Pokud máte několik předplatných Azure, nejdřív Dotazujte svůj účet pomo
 az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
-Chcete-li použít vybrané předplatné, nastavte odběr této relace pomocí [AZ Account set](/cli/azure/account#az-account-set). Nastavte proměnnou `id` prostředí tak, aby obsahovala hodnotu vráceného pole z předplatného, které chcete použít: `SUBSCRIPTION_ID`
+Chcete-li použít vybrané předplatné, nastavte odběr této relace pomocí [AZ Account set](/cli/azure/account#az-account-set). Nastavte proměnnou prostředí `SUBSCRIPTION_ID` tak, aby obsahovala hodnotu vráceného `id` pole z předplatného, které chcete použít:
 
 ```azurecli-interactive
 az account set --subscription="${SUBSCRIPTION_ID}"
@@ -64,7 +64,7 @@ Nyní můžete vytvořit instanční objekt pro použití s Terraformu. Použijt
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-Vrátí `appId`se `password`vaše ,`sp_name`, a`tenant` . Poznamenejte `appId` si a `password`.
+Vrátí se `appId`, `password`, `sp_name`a `tenant`. Poznamenejte si `appId` a `password`.
 
 ## <a name="configure-terraform-environment-variables"></a>Konfigurace proměnných prostředí Terraformu
 
@@ -92,7 +92,7 @@ export ARM_ENVIRONMENT=public
 
 ## <a name="run-a-sample-script"></a>Spuštění ukázkového skriptu
 
-Vytvořte soubor v `test.tf` prázdném adresáři a vložte ho do následujícího skriptu.
+Vytvořte soubor `test.tf` v prázdném adresáři a vložte ho do následujícího skriptu.
 
 ```hcl
 provider "azurerm" {

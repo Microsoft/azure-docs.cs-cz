@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Azure Linux řady B-Series | Microsoft Docs
+title: Velikosti virtuálních počítačů Azure Linux řady B-Series
 description: Popisuje B-série velikostí virtuálních počítačů Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/25/2019
 ms.author: ayshak
-ms.openlocfilehash: 01da424872cdfde6c7e035cadd2b948117fb996c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b9e55d64636b6ee8bf2cff72d44c73e73bf877c1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084009"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036982"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -34,5 +34,5 @@ ms.locfileid: "70084009"
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

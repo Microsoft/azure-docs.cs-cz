@@ -1,58 +1,58 @@
 ---
-title: Zobrazte a přiřaďte roli oprávnění – Azure Active Directory správce | Dokumentace Microsoftu
-description: Teď můžete zobrazit a spravovat členy role správce Azure AD na portálu. Pro ty, kteří často Spravovat přiřazení rolí.
+title: Zobrazení a přiřazení oprávnění role správce – Azure AD | Microsoft Docs
+description: Na portálu teď můžete zobrazit a spravovat členy role správce Azure AD. Pro ty, kteří často spravují přiřazení rolí.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20842c8c644a351b59322569661abf82bb524449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472562"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027884"
 ---
-# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Zobrazení a přiřazení rolí správce ve službě Azure Active Directory
+# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Zobrazení a přiřazení rolí správce v Azure Active Directory
 
-Teď můžete zobrazit a spravovat všechny členy rolí správce v portálu Azure Active Directory. Pokud často Spravovat přiřazení rolí, bude pravděpodobně dáváte přednost toto prostředí. A pokud jste už jste někdy přemýšleli "Co zrušíte pracovníci v těchto rolích ve skutečnosti udělat?", zobrazí se podrobný seznam oprávnění pro každou z role správce Azure AD.
+V portálu Azure Active Directory nyní můžete zobrazit a spravovat všechny členy rolí správce. Pokud často spravujete přiřazení rolí, budete pravděpodobně chtít vyzkoušet toto prostředí. A pokud jste někdy přemýšleli "Jaké aškrtněte tyto role skutečně dělají?", můžete zobrazit podrobný seznam oprávnění pro každou roli správce Azure AD.
 
 ## <a name="view-all-roles"></a>Zobrazit všechny role
 
-Ve službě Azure Active Directory, vyberte **role a správci** zobrazíte seznam všech dostupných rolí. 
+V Azure Active Directory vyberte **role a správci** , aby se zobrazil seznam všech dostupných rolí. 
 
-Klikněte na tlačítko se třemi tečkami na pravé straně každého řádku otevřete podrobný popis role.
+Kliknutím na tři tečky na pravé straně každého řádku otevřete podrobný popis role.
 
 ![seznam rolí na portálu Azure AD](./media/directory-manage-roles-portal/role-list.png)
 
-## <a name="view-my-roles"></a>Zobrazit Moje role
+## <a name="view-my-roles"></a>Zobrazení mých rolí
 
-Je snadné, chcete-li zobrazit také vlastní oprávnění. Vyberte **vaše Role** na **role a správci** stránku, abyste zobrazili role, které jsou aktuálně přiřazeno vám.
+Je snadné zobrazit také vlastní oprávnění. Výběrem **role** na stránce **role a správci** zobrazíte aktuálně přiřazené role.
 
-## <a name="view-assignments-for-a-role"></a>Zobrazit přiřazení role
+## <a name="view-assignments-for-a-role"></a>Zobrazení přiřazení pro roli
 
-Klikněte na roli, kterou chcete zobrazit uživatele, které jsou přiřazeny k roli. Můžete vybrat **spravovat v PIM** pro další možnosti správy. Správce privilegovaných rolí můžete změnit "Trvalé" (vždy aktivní v roli) přiřazení na "Oprávněné" (v roli jenom v případě, že se zvýšenými oprávněními). Pokud nemáte PIM, stále můžete vybrat **spravovat v PIM** si zaregistrovat zkušební verzi. Privileged Identity Management vyžaduje [licenční plán Azure AD Premium P2](../privileged-identity-management/subscription-requirements.md).
+Kliknutím na roli zobrazíte uživatele přiřazené k této roli. Pro další možnosti správy můžete vybrat **spravovat v PIM** . Správci privilegovaných rolí můžou změnit přiřazení "trvalé" (vždy aktivní v roli) přiřazení na "opravňující" (v roli jenom při zvýšeném oprávnění). Pokud nemáte PIM, můžete si i nadále vybrat **spravovat v PIM** , abyste se mohli zaregistrovat ke zkušební verzi. Privileged Identity Management vyžaduje [plán licencí Azure AD Premium P2](../privileged-identity-management/subscription-requirements.md).
 
 ![seznam členů role správce](./media/directory-manage-roles-portal/member-list.png)
 
-Pokud jste globální správce nebo správce privilegovaných rolí, můžete snadno přidat nebo odebrat členy, seznam můžete filtrovat nebo vyberte člena zobrazíte jejich aktivní přiřazené role.
+Pokud jste globální správce nebo správce privilegovaných rolí, můžete snadno přidávat nebo odebírat členy, filtrovat seznam nebo vybrat člena a zobrazit jejich aktivní přiřazené role.
 
 ## <a name="view-a-users-role-permissions"></a>Zobrazit oprávnění role uživatele
 
-Při zobrazení členů role, vyberte **popis** zobrazíte úplný seznam všech oprávnění udělená přiřazení role. Stránka obsahuje odkazy na relevantní dokumentaci, která vás provede spravovat role adresáře.
+Při prohlížení členů role vyberte možnost **Popis** a zobrazí se úplný seznam oprávnění udělených přiřazením role. Stránka obsahuje odkazy na příslušnou dokumentaci, která vám pomůže s tím, jak spravovat role adresáře.
 
-![ze seznamu oprávnění pro roli správce](./media/directory-manage-roles-portal/role-description.png)
+![seznam oprávnění pro roli správce](./media/directory-manage-roles-portal/role-description.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Nebojte se budou sdílet s námi na [fórum správní role Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Další informace o rolích a přiřazení role správce, naleznete v tématu [přiřazení rolí správce](directory-assign-admin-roles.md).
-* Výchozí oprávnění uživatelů, najdete v článku [porovnání výchozí uživatelská oprávnění hostů a člen](../fundamentals/users-default-permissions.md).
+* Můžete s námi sdílet na [fóru role pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+* Další informace o rolích a přiřazení rolí správců najdete v tématu [přiřazení rolí správce](directory-assign-admin-roles.md).
+* Pro výchozí uživatelská oprávnění si přečtěte téma [Porovnání výchozích oprávnění typu Host a uživatel](../fundamentals/users-default-permissions.md).

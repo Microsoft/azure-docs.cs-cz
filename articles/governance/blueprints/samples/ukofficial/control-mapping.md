@@ -1,18 +1,14 @@
 ---
 title: '& Oficiální Velká Británie – ukázky NHS Details – mapování řízení'
 description: Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: e86c7040e94553b032b565e282639047a1ed8750
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ba7cf481276b236c9299e660acb9668feeea683
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162960"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037769"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 
@@ -48,7 +44,7 @@ Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptogr
 
 ## <a name="52-vulnerability-management"></a>Správa ohrožení zabezpečení 5,2
 
-Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policych](../../../policy/overview.md) definic, které monitorují chybějící službu Endpoint Protection, chybějící aktualizace systému, ohrožení zabezpečení operačního systému, chyby zabezpečení SQL a virtuální. ohrožení zabezpečení počítače. Tyto přehledy poskytují informace o stavu zabezpečení nasazených prostředků v reálném čase a můžou vám pomůžou určit prioritu nápravných akcí.
+Tento podrobný plán vám pomůže spravovat chyby zabezpečení informací o systému pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které monitorují chybějící službu Endpoint Protection, chybějící aktualizace systému, ohrožení zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů. Tyto přehledy poskytují informace o stavu zabezpečení nasazených prostředků v reálném čase a můžou vám pomůžou určit prioritu nápravných akcí.
 
 - Monitorovat chybějící Endpoint Protection v Azure Security Center
 - Do vašich počítačů by se měly nainstalovat aktualizace systému
@@ -67,7 +63,7 @@ Tento podrobný plán vám pomůže chránit assety informačních systémů tí
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 zabezpečená Správa uživatelů/10 Identita a ověřování
 
-Azure implementuje řízení přístupu na základě role (RBAC), které vám pomůže se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán vám pomůže omezit a řídit přístupová práva tím, že přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněními vlastníka nebo čtení/zápisu a s účty s oprávněním vlastníka, čtení a zápisu, která nemají Multi-Factor. ověřování je povoleno.
+Azure implementuje řízení přístupu na základě role (RBAC), které vám pomůže se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán vám pomůže omezit a řídit přístupová práva tím, že jim přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněními vlastníka nebo čtení/zápisu a s účty s oprávněním vlastníka, čtení nebo zápisu, u kterých není povolené ověřování službou Multi-Factor Authentication.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
 - V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
@@ -124,7 +120,7 @@ Kromě používání více než 25 zásad pro příslušnou zabezpečenou správ
 
 ## <a name="12-secure-service-administration"></a>12. Správa zabezpečené služby
 
-Azure implementuje řízení přístupu na základě role (RBAC), které vám pomůže se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřazuje pět definic [Azure Policy](../../../policy/overview.md) k auditu externích účtů s oprávněním vlastníka nebo zápisu a s oprávněním k zápisu, která nemají. ověřování Multi-Factor Authentication je povolené.
+Azure implementuje řízení přístupu na základě role (RBAC), které vám pomůže se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřazuje pět definic [Azure Policy](../../../policy/overview.md) pro audit externích účtů s oprávněním vlastníka nebo zápisu a s oprávněními k zápisu a s oprávněním k zápisu, která nemají povolený vícefaktorové ověřování.
 
 Systémy používané pro správu cloudové služby budou mít vysoce privilegovaný přístup k této službě. Jejich ohrožení by mělo významný dopad, včetně prostředků pro obejít řízení zabezpečení a odcizit nebo manipulovat s velkými objemy dat. Metody používané správci poskytovatele služeb ke správě provozní služby by měly být navržené tak, aby zmírnily riziko využívání, které by mohlo ohrozit zabezpečení služby. Pokud tento princip není implementován, může útočník obejít ovládací prvky zabezpečení a ukrást nebo manipulovat s velkými objemy dat.
 
@@ -156,8 +152,8 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování na úrovni SQL serveru
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 - Při vytváření virtuálních sítí nasadit sledovací proces sítě
 
 ## <a name="next-steps"></a>Další kroky
@@ -165,10 +161,10 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 Teď, když jste zkontrolovali mapování ovládacího prvku OFICIÁLNÍch a NHSch plánů UK, najdete v následujících článcích informace o přehledu a způsobu nasazení této ukázky:
 
 > [!div class="nextstepaction"]
-> [Oficiální a NHS modrotisky pro Spojené království – přehledy](./index.md)
-> [UK oficiální a Velká Británie NHS modrotisky – postup nasazení](./deploy.md)
+> [Oficiální a NHS plány UK – přehled](./index.md)
+> [UK oficiální a UK NHS modrotisky – nasazení kroků](./deploy.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

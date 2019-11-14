@@ -1,5 +1,5 @@
 ---
-title: Vytvoření plně kvalifikovaného názvu domény pro virtuální počítač s Windows v Azure Portal | Microsoft Docs
+title: Vytvoření plně kvalifikovaného názvu domény pro virtuální počítač s Windows v Azure Portal
 description: Naučte se vytvořit plně kvalifikovaný název domény nebo plně kvalifikovaný název domény pro virtuální počítač založený na Správce prostředků v Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c86e2739efd951ad9274f2fa0829b9fd7e13e3e5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 727636b4b59bf4b31fd7592b1a0f2d52d5dbbfd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102600"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032994"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač s Windows
 

@@ -1,6 +1,6 @@
 ---
-title: 'Propojení virtuální sítě s okruhem ExpressRoute: Azure Portal | Microsoft Docs'
-description: 'Připojení virtuální sítě k okruhu Azure ExpressRoute. Postupy: kroky.'
+title: 'ExpressRoute: propojení virtuální sítě s okruhem: Azure Portal'
+description: 'Připojte virtuální síť k okruhu Azure ExpressRoute. Postupy: kroky.'
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088903"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022191"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "71088903"
 
 Tento článek vám pomůže vytvořit připojení k propojení virtuální sítě k okruhu Azure ExpressRoute pomocí webu Azure portal. Virtuální sítě, které se připojují k váš okruh Azure ExpressRoute může být ve stejném předplatném nebo můžou být součástí jiné předplatné.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Zkontrolujte [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 
@@ -71,7 +71,7 @@ Okruh ExpressRoute můžete sdílet napříč několika předplatnými. Následu
 
 - Každá z menších cloudy v rámci velkých cloudových se používá k reprezentování odběry, které patří k různým oblastem v rámci organizace.
 - Vlastní předplatné každé oddělení v rámci organizace můžete použít k nasazení svých služeb, ale můžou sdílet jeden okruh ExpressRoute pro připojení zpět k místní síti.
-- Jedno oddělení (v tomto příkladu: Může to vlastnit okruh ExpressRoute. Okruh ExpressRoute a povolení přidružené k okruhu, včetně předplatných přidružených k jiných tenantů Azure Active Directory a registrace smlouvy Enterprise, můžete použít jiných předplatných v rámci organizace.
+- Jednoho oddělení (v tomto příkladu: IT) může vlastnit okruh ExpressRoute. Okruh ExpressRoute a povolení přidružené k okruhu, včetně předplatných přidružených k jiných tenantů Azure Active Directory a registrace smlouvy Enterprise, můžete použít jiných předplatných v rámci organizace.
 
   > [!NOTE]
   > Poplatky za připojení a šířku pásma pro vyhrazeného okruhu uplatní se na vlastníka okruhu ExpressRoute. Všechny virtuální sítě sdílejí stejnou šířku pásma.
@@ -122,7 +122,7 @@ ID prostředku a autorizační klíč z vlastníka okruhu, musí uživatel okruh
 
    ![Základní informace o stránce](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. V **nastavení** stránky, vyberte **Brána virtuální sítě** a zkontrolujte **uplatnit autorizaci** zaškrtávací políčko.
-6. Zadejte **autorizační klíč** a **identifikátor URI okruhu partnerských uzlů** a zadejte název připojení. Klikněte na **OK**. **Identifikátor URI partnerského okruhu** je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
+6. Zadejte **autorizační klíč** a **identifikátor URI okruhu partnerských uzlů** a zadejte název připojení. Klikněte na tlačítko **OK**. **Identifikátor URI partnerského okruhu** je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
 
    ![Stránka Nastavení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Zkontrolujte informace **Souhrn** stránky a klikněte na tlačítko **OK**.
@@ -135,5 +135,5 @@ Povolení můžete uvolnit tak, že odstraníte okruh ExpressRoute k virtuální
 
 Můžete odstranit připojení a zrušit propojení virtuální sítě k okruhu ExpressRoute, tak, že vyberete **odstranit** ikonu na stránce pro připojení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

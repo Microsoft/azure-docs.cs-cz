@@ -1,5 +1,5 @@
 ---
-title: Přehled spravovaného disku Azure Disk Storage pro virtuální počítače s Windows | Microsoft Docs
+title: Přehled spravovaného disku Azure Disk Storage pro virtuální počítače s Windows
 description: Přehled služby Azure Managed disks, které při používání virtuálních počítačů Azure s Windows zpracovávají účty úložiště.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c71d51580c064b5b2b0bbbbf7bf95d50aa40f72f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c23cfbc418cca82393a0a66b0ceace622b2833f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515566"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038165"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Seznámení se službou Azure Managed disks
 

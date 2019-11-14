@@ -1,5 +1,5 @@
 ---
-title: Přesunutí virtuálních počítačů s Windows AWS do Azure | Microsoft Docs
+title: Přesunutí virtuálních počítačů s Windows AWS do Azure
 description: Přesuňte Amazon Web Services (AWS) EC2 instanci Windows na virtuální počítač Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 31f6ffc4f114039e0c53c1994f8c4364dea18298
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9bd01f24ac2cada02f51089d238519cd6c7e0248
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089503"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039281"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Přesunutí virtuálního počítače s Windows z Amazon Web Services (AWS) na virtuální počítač Azure
 
@@ -38,7 +38,7 @@ Do Azure můžete nahrát jak generalizované, tak specializované virtuální p
 
  
 - **Specializovaný VHD** – specializovaný virtuální pevný disk udržuje uživatelské účty, aplikace a další stavová data z původního virtuálního počítače. Pokud máte v úmyslu použít virtuální pevný disk jako vytvoření nového virtuálního počítače, ujistěte se, že jsou splněné následující kroky.  
-    * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md). Neprovádějte GENERALIZACI virtuálního počítače pomocí nástroje Sysprep. 
+    * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md). **Neprovádějte generalizaci** virtuálního počítače pomocí nástroje Sysprep. 
     * Odeberte všechny virtualizační nástroje a agenty hosta, které jsou nainstalované na virtuálním počítači (například nástroje VMware). 
     * Ujistěte se, že je virtuální počítač nakonfigurovaný tak, aby z protokolu DHCP vyčetl adresu IP a nastavení DNS. Tím se zajistí, že server při spuštění získá IP adresu v rámci virtuální sítě.  
 
@@ -60,11 +60,11 @@ Po exportu virtuálního pevného disku postupujte podle pokynů v tématu [Jak 
 > Poplatky za přenos dat AWS poplatků za stažení virtuálního pevného disku. Další informace najdete v tématu [ceny služby Amazon S3](https://aws.amazon.com/s3/pricing/) .
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď můžete nahrát virtuální pevný disk do Azure a vytvořit nový virtuální počítač. 
 
-- Pokud jste na svém zdroji spustili nástroj Sysprep , abyste ho generalizoval před exportem, přečtěte si téma [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nových virtuálních počítačů v Azure](upload-generalized-managed.md)
+- Pokud jste na svém zdroji spustili nástroj Sysprep, abyste ho **generalizoval** před exportem, přečtěte si téma [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nových virtuálních počítačů v Azure](upload-generalized-managed.md)
 - Pokud jste před exportem nespustili Sysprep, virtuální pevný disk se považuje za **specializovaný**, viz [nahrání specializovaného virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](create-vm-specialized.md) .
 
  

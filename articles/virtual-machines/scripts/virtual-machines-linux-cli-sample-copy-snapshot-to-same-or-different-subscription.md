@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Kopírování (přesun) snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku | Microsoft Docs
+title: Ukázkový skript Azure CLI – Kopírování (přesun) snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 description: Ukázkový skript Azure CLI – Kopírování (přesun) snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,20 +16,20 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: d52e710cadbc37b8ad6c1de61f75df3b96704daa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23886256e405f57c5a581356b4212498779ae6e5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302428"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038240"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Kopírování snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 
-Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného předplatného. Tento skript použijte v následujících scénářích:
+Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného předplatného. Tento skript použijte pro následující scénáře:
 
-1. Migrace snímku ve službě storage úrovně Premium (Premium_LRS) do úložiště úrovně Standard (Standard_LRS nebo Standard_ZRS) sníží vaše náklady.
-1. Migrace snímek z místně redundantní úložiště (Premium_LRS, Standard_LRS) do zónově redundantní úložiště (Standard_ZRS), abyste využili výhod vyšší spolehlivost úložiště ZRS.
-1. Přesunete snímek do jiného předplatného ve stejné oblasti pro delší dobu uchování.
+1. Migrujte snímek ve službě Premium Storage (Premium_LRS) do úložiště úrovně Standard (Standard_LRS nebo Standard_ZRS), abyste snížili náklady.
+1. Migrujte snímek z místně redundantního úložiště (Premium_LRS, Standard_LRS) do zóny redundantního úložiště (Standard_ZRS), abyste využili vyšší spolehlivosti úložiště ZRS.
+1. Přesunutí snímku do jiného předplatného ve stejné oblasti pro delší dobu uchování.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -44,12 +44,12 @@ Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného p�
 
 Tento skript k vytvoření snímku v cílovém předplatném pomocí ID zdrojového snímku používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Získá všechny vlastnosti snímku s použitím názvu a vlastností skupiny prostředků snímku. Vlastnost ID se použije ke zkopírování snímku do jiného předplatného.  |
 | [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot) | Zkopíruje snímek vytvořením snímku v jiném předplatném s použitím ID a názvu nadřazeného snímku.  |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření virtuálního počítače ze snímku](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

@@ -1,5 +1,5 @@
 ---
-title: Podpora Azure pro virtuální počítače 2. generace | Microsoft Docs
+title: Podpora Azure pro virtuální počítače 2. generace
 description: Přehled podpory Azure pro virtuální počítače 2. generace
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: b5cc4a511d6347d28a1737932c1b4b5b768d3fc4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7747d1b5e2b18ddf02403ad21fe875c498e43820
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891570"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036054"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -35,7 +35,7 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Řady B-Series](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [DC-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
 * Řady [Dsv2-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) a [Dsv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
-* [Esv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
+* [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
 * [Řady GS](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [Řady s více procesory](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
@@ -60,7 +60,7 @@ Virtuální počítače generace 2 podporují následující image na webu Marke
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04, 18.04, 19,04, 19,10 
-* RHEL 8,0
+* RHEL 8.0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní a Azure generace 2 – virtuální počítače
 
@@ -81,7 +81,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 | Funkce | Generace 1 | Generace 2 |
 |---------|--------------|--------------|
 | Spouštění             | PCAT         | UEFI |
-| Řadiče disku | IDE          | SCSI |
+| Řadiče disku | IDE – integrované vývojové prostředí          | SCSI |
 | Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 vs. generace 2 – možnosti

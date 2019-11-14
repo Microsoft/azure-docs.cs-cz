@@ -1,33 +1,33 @@
 ---
-title: Opravte problémy dynamické členství pro skupiny – Azure Active Directory | Dokumentace Microsoftu
-description: Tipy pro řešení potíží pro dynamické členství ve skupinách ve službě Azure AD.
+title: Oprava problémů s dynamickými členství ve skupinách – Azure AD | Microsoft Docs
+description: Tipy pro řešení potíží pro členství v dynamické skupině v Azure Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eededcc180d7652fd52c79b85ca3c34f65a22a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469699"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026545"
 ---
-# <a name="troubleshoot-and-resolve-groups-issues"></a>Odstraňovat potíže a řešit problémy skupiny
+# <a name="troubleshoot-and-resolve-groups-issues"></a>Řešení potíží se skupinami a řešení problémů
 
-## <a name="troubleshooting-group-creation-issues"></a>Řešení potíží s vytvořením skupiny
+## <a name="troubleshooting-group-creation-issues"></a>Řešení potíží s vytvářením skupin
 
-**Můžu zakázané vytvoření skupiny zabezpečení na webu Azure Portal, ale skupiny stále možné vytvářet přes Powershell** **uživatele můžou na portálech Azure vytvářet skupiny zabezpečení** nastavení v ovládacích prvcích Azure portal, zda je či není bez oprávnění správce. uživatelé můžou vytvářet skupiny zabezpečení v přístupovém panelu nebo na webu Azure portal. Ho neřídí vytvoření skupiny zabezpečení přes Powershell.
+**V Azure Portal bylo zakázané vytvořit skupinu zabezpečení, ale skupiny se dají vytvářet i přes PowerShell** . **Uživatel může vytvořit skupiny zabezpečení na portálech Azure** v nastavení Azure Portal určuje, jestli uživatelé, kteří nejsou správci, můžou vytvářet skupiny zabezpečení na přístupovém panelu nebo v Azure Portal. Neřídí vytváření skupin zabezpečení prostřednictvím PowerShellu.
 
-Chcete-li zakázat vytvoření skupiny pro uživatele bez oprávnění správce v prostředí Powershell:
-1. Ověřte, že uživatelé bez oprávnění správce můžou vytvářet skupiny:
+Zakázání vytváření skupin pro uživatele, kteří nejsou správci, v PowerShellu:
+1. Ověřte, že uživatelé, kteří nejsou správci, můžou vytvářet skupiny:
    
 
    ```powershell
@@ -35,42 +35,42 @@ Chcete-li zakázat vytvoření skupiny pro uživatele bez oprávnění správce 
    ```
 
   
-2. Vrátí-li `UsersPermissionToCreateGroupsEnabled : True`, pak uživatelé bez oprávnění správce můžou vytvářet skupiny. Chcete zakázat tuto funkci:
+2. Pokud vrátí `UsersPermissionToCreateGroupsEnabled : True`, mohou vytvářet skupiny i uživatelé, kteří nejsou správci. Zakázání této funkce:
   
 
    ``` 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```
 
-<br/>**Zobrazila se mi maximální počet skupin povolena Chyba při pokusu o vytvoření dynamické skupiny v prostředí Powershell**<br/>
-Pokud se zobrazí zpráva v prostředí Powershell, která označuje _dynamická skupina zásady maximální povolený počet skupin dosaženo_, to znamená, že jste dosáhli maximálního limitu pro dynamické skupiny ve vašem tenantovi. Maximální počet dynamické skupiny na tenanta je 5 000.
+<br/>**Při pokusu o vytvoření dynamické skupiny v prostředí PowerShell se mi zobrazila chyba maximálního počtu povolených skupin**<br/>
+Pokud se v PowerShellu zobrazí zpráva, že _bylo dosaženo maximálního počtu povolených skupin pro dynamické zásady skupiny_, znamená to, že jste dosáhli maximálního limitu pro dynamické skupiny ve vašem tenantovi. Maximální počet dynamických skupin na tenanta je 5 000.
 
-Vytvářet žádné nové dynamické skupiny, budete nejdřív muset odstraňte některé stávající dynamických skupin. Neexistuje žádný způsob, jak zvýšit limit.
+Pokud chcete vytvořit nové dynamické skupiny, musíte nejdřív odstranit některé existující dynamické skupiny. Neexistuje žádný způsob, jak tento limit navýšit.
 
 ## <a name="troubleshooting-dynamic-memberships-for-groups"></a>Řešení potíží s dynamickým členstvím ve skupinách
 
-**Mohu konfigurovat pravidlo pro skupinu, ale aktualizovat žádné členství ve skupině**<br/>
-1. Ověřte hodnoty pro uživatele nebo zařízení atributy v pravidle. Ujistěte se, že uživatelé, kteří splňují pravidla. Pro zařízení zkontrolujte vlastnosti zařízení, aby všechny synchronizované atributy obsahují očekávané hodnoty.<br/>
-2. Zkontrolujte členství zpracování stavu potvrzení, pokud je kompletní. Můžete zkontrolovat [členství stav zpracování](groups-create-rule.md#check-processing-status-for-a-rule) a datum poslední aktualizace na **přehled** stránce pro skupinu.
+**Nakonfiguroval (a) jsem pravidlo pro skupinu, ale ve skupině se neaktualizovalo žádné členství.**<br/>
+1. Ověřte hodnoty atributů uživatele nebo zařízení v pravidle. Ujistěte se, že existují uživatelé, kteří pravidlo splní. U zařízení zkontrolujte vlastnosti zařízení a zajistěte, aby synchronizované atributy obsahovaly očekávané hodnoty.<br/>
+2. Zkontrolujte stav zpracování členství a potvrďte, zda je dokončeno. [Stav zpracování členství](groups-create-rule.md#check-processing-status-for-a-rule) a datum poslední aktualizace můžete ověřit na stránce **Přehled** pro danou skupinu.
 
-Pokud vše vypadá v pořádku, počkejte prosím chvíli se skupina naplní. V závislosti na velikosti tenanta může první naplnění skupiny nebo její naplnění po změně pravidel trvat až 24 hodin.
+Pokud vše vypadá dobře, počkejte prosím nějakou dobu, než se skupina naplní. V závislosti na velikosti tenanta může první naplnění skupiny nebo její naplnění po změně pravidel trvat až 24 hodin.
 
-**Jsem nakonfiguroval pravidla, ale teď jsou odebrána existující členy pravidla**<br/>Toto je očekávané chování. Existující členy skupiny se odeberou, když pravidlo povolit nebo změnit. Uživatelé vrácená vyhodnocení tohoto pravidla jsou přidáni jako členové do skupiny.
+**Nakonfiguroval (a) jsem pravidlo, ale teď se odeberou stávající členové pravidla**<br/>Toto je očekávané chování. Existující členové skupiny se odeberou, když je pravidlo povolené nebo se změní. Uživatelé, kteří se vrátili z vyhodnocení pravidla, se přidají do skupiny jako členové.
 
-**Nevidím, že se změní okamžitě při přidání nebo změna pravidla, případně proč bezpečná není?**<br/>Hodnocení vyhrazené členství se provádí pravidelně v procesu asynchronní na pozadí. Jak dlouho trvá procesu se určuje podle počtu uživatelů ve vašem adresáři a velikost skupiny vytvořené v důsledku pravidlo. Obvykle adresáře s malý počet uživatelů se zobrazí změny členství ve skupině za méně než několik minut. Adresáře s velkým množstvím uživatelů může trvat 30 minut nebo i delší dobu naplnit.
+**Nevidím při přidání nebo změně pravidla změny členství, proč ne?**<br/>Vyhrazené vyhodnocení členství je provedeno pravidelně v asynchronním procesu na pozadí. Doba trvání procesu je určena počtem uživatelů v adresáři a velikostí skupiny vytvořenou v důsledku pravidla. Obvykle se v adresářích s malým počtem uživatelů zobrazí změny členství ve skupinách během méně než několik minut. V adresářích s velkým počtem uživatelů může být naplnění trvat 30 minut nebo déle.
 
-**Jak můžete vynutit skupinu, kterou chcete zpracovat, nyní?**<br/>
-V současné době neexistuje žádný způsob, jak automaticky aktivuje skupina ke zpracování na vyžádání. Můžete však ručně aktivujete opětovné zpracování pravidla členství, chcete-li přidat prázdný znak na konci aktualizací.  
+**Jak můžu vynutit, aby se skupina právě zpracovala?**<br/>
+V současné době neexistuje způsob, jak automaticky aktivovat skupinu, která se má zpracovat na vyžádání. Opětovnou rezpracování můžete ale aktivovat ručně tak, že aktualizujete pravidlo členství, aby se na konci přidalo prázdné místo.  
 
-**Vyskytl se pravidlo chyba zpracování**<br/>V následující tabulce jsou uvedeny běžné chyby pravidla dynamického členství a jak je opravit.
+**Zjistila se chyba zpracování pravidla**<br/>V následující tabulce jsou uvedeny běžné chyby pravidla dynamického členství a jejich oprava.
 
-| Chyba analyzátoru pravidla | Chyba využití | Opravené využití |
+| Chyba analyzátoru pravidla | Chyba použití | Opravené použití |
 | --- | --- | --- |
-| Chyba: Atribut není podporován. |(user.invalidProperty - eq "Value") |(user.department - eq "value")<br/><br/>Ujistěte se, že se o atribut [podporované seznam vlastností](groups-dynamic-membership.md#supported-properties). |
-| Chyba: Operátor není podporován u atributu. |(user.accountEnabled – obsahuje hodnotu true) |(user.accountEnabled - eq true)<br/><br/>Operátor používá není podporován pro tento typ vlastnosti (v tomto příkladu – obsahuje nedá použít u typu boolean). Použijte správnou operátory pro tento typ vlastnosti. |
-| Chyba: Chyba při kompilaci dotazu. | 1. (user.department - eq "Prodej") (user.department - eq "Marketing")<br>2. (user.userPrincipalName-odpovídají "*@domain.ext") | 1. Chybějící operátor. Pomocí parametru - a - nebo dvě spojení predikátů<br>(user.department - eq "Prodej")- nebo (user.department - eq "Marketing")<br>2. Chyba v regulární výraz používaný s parametrem - odpovídat<br>(user.userPrincipalName-odpovídají ". *@domain.ext")<br>nebo alternativně: (user.userPrincipalName-odpovídají "@domain.ext$") |
+| Chyba: atribut není podporován. |(User. invalidProperty-EQ "value") |(User. Department-EQ "hodnota")<br/><br/>Ujistěte se, že je atribut v [seznamu podporovaných vlastností](groups-dynamic-membership.md#supported-properties). |
+| Chyba: operátor není podporován u atributu. |(User. accountEnabled-Contains true) |(User. accountEnabled-EQ true)<br/><br/>Použitý operátor není podporován pro typ vlastnosti (v tomto příkladu-Contains nelze použít pro typ Boolean). Použijte správné operátory pro typ vlastnosti. |
+| Chyba: Chyba kompilace dotazu. | 1. (User. Department-EQ "prodej") (User. Department-EQ "marketing")<br>2. (User. userPrincipalName-Match "*@domain.ext") | 1. chybí operátor. Použití nebo dva predikáty JOIN<br>(User. Department-EQ "Sales")-or (User. Department-EQ "marketing")<br>2. Chyba v regulárním výrazu se používá s-Match.<br>(User. userPrincipalName-Match ". *@domain.ext")<br>nebo případně: (User. userPrincipalName-Match "@domain.ext$") |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující články poskytují další informace o službě Azure Active Directory.
 

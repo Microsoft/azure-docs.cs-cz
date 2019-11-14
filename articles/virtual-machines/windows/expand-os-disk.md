@@ -1,5 +1,5 @@
 ---
-title: Rozšíření jednotky operačního systému Windows na virtuálním počítači v Azure | Microsoft Docs
+title: Rozšíření jednotky operačního systému Windows na virtuálním počítači v Azure
 description: Zvětšete velikost jednotky operačního systému virtuálního počítače pomocí prostředí Azure PowerShell v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 12fa8cb09a9864b49c9368462ae3d5ca1d88f2c9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c76f57d15cd4cbdad5ded3b7545aab4d57272a50
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749410"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033499"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Postup rozšíření jednotky operačního systému virtuálního počítače
 

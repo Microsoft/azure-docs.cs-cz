@@ -1,5 +1,5 @@
 ---
-title: Stažení virtuálního pevného disku s Windows z Azure | Microsoft Docs
+title: Stažení virtuálního pevného disku s Windows z Azure
 description: Stažení virtuálního pevného disku s Windows pomocí Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5891d7ea2b53ab3524cfff267e71b4f05779cfc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079620"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033597"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Stažení virtuálního pevného disku s Windows z Azure
 
@@ -55,7 +55,7 @@ Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného p
 3.  Nastavte čas vypršení platnosti adresy URL na *36000*.
 4.  Klikněte na **vygenerovat adresu URL**.
 
-    ![Vygenerovat URL](./media/download-vhd/export-generate-new.png)
+    ![Vygenerovat adresu URL](./media/download-vhd/export-generate-new.png)
 
 > [!NOTE]
 > Čas vypršení platnosti se zvýší z výchozí hodnoty a poskytne dostatek času ke stažení velkého souboru VHD pro operační systém Windows Server. Můžete očekávat, že soubor VHD, který obsahuje operační systém Windows Server, bude trvat několik hodin, než se stáhne v závislosti na vašem připojení. Pokud stahujete VHD pro datový disk, je výchozí čas dostačující. 
@@ -72,7 +72,7 @@ Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného p
 
     ![V prohlížeči klikněte na Uložit.](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak [nahrát soubor VHD do Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Vytvořte spravované disky z nespravovaných disků v účtu úložiště](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace brány virtuální sítě pro ExpressRoute - classic: Prostředí Azure PowerShell | Dokumentace Microsoftu'
+title: 'Azure ExpressRoute: přidání brány do virtuální sítě: Classic'
 description: Konfigurace brány virtuální sítě pro nasazení classic model virtuální sítě pomocí prostředí PowerShell pro konfiguraci služby ExpressRoute.
 services: expressroute
 author: charwen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 101e03d07a15e9058ef236a575251b052017db32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75c2b400a2caf4e5f2e14589fc007bb506b46338
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365118"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031864"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurace brány virtuální sítě pro ExpressRoute přes PowerShell (classic)
 > [!div class="op_single_selector"]
@@ -36,6 +36,6 @@ Ověřte, že máte nainstalovanou rutin Azure Powershellu, které jsou potřebn
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po vytvoření brány virtuální sítě můžete propojit vaši virtuální síť k okruhu ExpressRoute. Zobrazit [propojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-classic.md).
 
