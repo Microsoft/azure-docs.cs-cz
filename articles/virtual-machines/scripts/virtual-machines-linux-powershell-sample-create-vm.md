@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače s Linuxem | Microsoft Docs
+title: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače s Linuxem
 description: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače s Linuxem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c61f09920eb85c7a2608795c8a3e1c5798c2ea8a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bd627cb0d735f2f69111234cd5d4099f03e200d5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749878"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040019"
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>Vytvoření plně nakonfigurovaného virtuálního počítače pomocí PowerShellu
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě. |

@@ -1,5 +1,5 @@
 ---
-title: Nahrání generalizovaného virtuálního pevného disku do prostředí Azure PowerShell pomocí ukázkového skriptu | Microsoft Docs
+title: Nahrání zobecněného virtuálního pevného disku do skriptu Azure PowerShell Sample
 description: Ukázkový skript PowerShellu nahraje generalizovaný virtuální pevný disk do Azure a vytvoří nový virtuální počítač pomocí modelu nasazení Resource Manager a Spravovaných disků.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bd1be056576275194a013671cf0aae1f7855df69
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f2c739d90917bd00bbde5d680a20a18271a581cc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749698"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038884"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače
 
@@ -129,7 +129,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz                                                                                                             | Poznámky                                                                                                                                                                                |
+| Příkaz                                                                                                             | Poznámky:                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)                           | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky.                                                                                                                          |
 | [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)                         | Vytvoří účet úložiště.                                                                                                                                                           |

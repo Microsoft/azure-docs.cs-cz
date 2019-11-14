@@ -1,6 +1,6 @@
 ---
-title: Získání dat o používání virtuálních počítačů Azure pomocí rozhraní REST API | Dokumentace Microsoftu
-description: Použijte rozhraní Azure REST API pro shromažďování metrik využití pro virtuální počítač.
+title: Získat data o využití virtuálních počítačů Azure pomocí REST API
+description: K shromažďování metrik využití pro virtuální počítač použijte rozhraní Azure REST API.
 services: virtual-machines
 author: rloutlaw
 ms.reviewer: routlaw
@@ -10,22 +10,22 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 53e93d20f4a8c4877374d8242521ca97d481e15d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 523b81e53f2b0622b237993dbd88fb9492079c86
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667459"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035809"
 ---
-# <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálního počítače pomocí rozhraní REST API
+# <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálních počítačů pomocí REST API
 
-Tento příklad ukazuje, jak načíst využití procesoru pro [virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) pomocí [rozhraní Azure REST API](/rest/api/azure/).
+Tento příklad ukazuje, jak načíst využití CPU pro [virtuální počítač se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) pomocí [REST API Azure](/rest/api/azure/).
 
-Úplnou referenční dokumentaci a další ukázky pro rozhraní REST API jsou k dispozici v [Reference k rozhraní REST pro monitorování Azure](/rest/api/monitor). 
+Kompletní Referenční dokumentace a další ukázky pro REST API jsou k dispozici v [Referenční příručce Azure monitor REST](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Žádost o sestavení
+## <a name="build-the-request"></a>Sestavení požadavku
 
-Můžete shromažďovat následující požadavek GET [metriky využití CPU](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) z virtuálního počítače
+Pomocí následující žádosti GET Shromážděte [procento metriky procesoru](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) z virtuálního počítače.
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -33,32 +33,32 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Vyžadují se následující hlavičky: 
+Jsou vyžadovány následující hlavičky: 
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Povinný parametr. Nastavte na `application/json`.|  
-|*Authorization:*|Povinný parametr. Nastaven na platné `Bearer` [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Authorization:*|Povinná hodnota. Nastavte na platný `Bearer`přístupový token[ ](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Name | Popis |
+| Název | Popis |
 | :--- | :---------- |
-| subscriptionId | ID předplatného, který identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| resourceGroupName | Název skupiny prostředků Azure, které jsou přidružené k prostředku. Tuto hodnotu lze získat z rozhraní API Azure Resource Manageru, rozhraní příkazového řádku nebo portálu. |
-| vmname | Název virtuálního počítače Azure. |
-| metricnames | Čárkami oddělený seznam platných [metriky Load balanceru úrovně](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| api-version | Verze rozhraní API, která se má použít pro daný požadavek.<br /><br /> Tento dokument popisuje verzi api-version `2018-01-01`, který je obsažen v adrese URL výše.  |
-| TimeSpan | Řetězec v následujícím formátu `startDateTime_ISO/endDateTime_ISO` , který definuje časový rozsah vrácené metrik. Tento nepovinný parametr je nastaven na vrátit data za jeden den v příkladu. |
+| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| resourceGroupName | Název skupiny prostředků Azure přidružené k prostředku. Tuto hodnotu můžete získat z rozhraní Azure Resource Manager API, CLI nebo na portálu. |
+| VMName | Název virtuálního počítače Azure. |
+| metricnames | Čárkami oddělený seznam platných [metrik Load Balancer](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| api-version | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje rozhraní API-Version `2018-01-01`zahrnuté do výše uvedené adresy URL.  |
+| TimeSpan | Řetězec s následujícím formátem `startDateTime_ISO/endDateTime_ISO` definující časový rozsah vrácených metrik. Tento volitelný parametr je nastaven tak, aby v příkladu vrátil data o hodnotě dne. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Text požadavku
 
-Pro tuto operaci je potřeba není datová část požadavku.
+Pro tuto operaci není nutný žádný text žádosti.
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-Pokud seznam hodnot metriky byla úspěšně vrácena se vrátí stavový kód 200. Úplný seznam kódů chyb je k dispozici v [referenční dokumentaci](/rest/api/monitor/metrics/list#errorresponse).
+Po úspěšném vrácení seznamu hodnot metriky se vrátí stavový kód 200. V [referenční dokumentaci](/rest/api/monitor/metrics/list#errorresponse)je dostupný úplný seznam chybových kódů.
 
 ## <a name="example-response"></a>Příklad odpovědi 
 

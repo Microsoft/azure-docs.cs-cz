@@ -1,5 +1,5 @@
 ---
-title: Zvýhodněné hybridní využití Azure pro Windows Server | Microsoft Docs
+title: Azure Hybrid Benefit pro Windows Server
 description: Přečtěte si, jak maximalizovat výhody programu Software Assurance pro Windows, aby se do Azure přinášejí místní licence.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 1c16ebe1f0b07e5ee5ef73dc3dd4781161f934b6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749378"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038625"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
 Zákazníci se Software Assurance, Zvýhodněné hybridní využití Azure pro Windows Server, vám umožní využívat místní licence k Windows serveru a spouštět virtuální počítače s Windows v Azure s nižšími náklady. K nasazení nových virtuálních počítačů s operačním systémem Windows můžete použít Zvýhodněné hybridní využití Azure pro Windows Server. Tento článek se dokončí postupem, jak nasadit nové virtuální počítače s Zvýhodněné hybridní využití Azure pro Windows Server a jak aktualizovat existující běžící virtuální počítače. Další informace o Zvýhodněné hybridní využití Azure pro licencování Windows serveru a úspory nákladů najdete na [stránce zvýhodněné hybridní využití Azure licencování Windows serveru](https://azure.microsoft.com/pricing/hybrid-use-benefit/).

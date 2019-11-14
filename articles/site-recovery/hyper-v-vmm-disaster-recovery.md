@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0fa4dbc336067ee3e3b2baa49ec872f65a3154b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d3fe578444b99cc7f8c762ae9e96766ca10aa305
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933533"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039673"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -30,9 +30,9 @@ V tomto článku se dozvíte, jak nastavit zotavení po havárii do sekundární
 > * Povolit replikaci virtuálního počítače
 
 > [!WARNING]
-> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
+> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](site-to-site-deprecation.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Požadavky pro dokončení tohoto scénáře:
 
@@ -118,7 +118,7 @@ Vyberte cílový server VMM a cloud:
 1. Klikněte na **Připravit infrastrukturu** > **Cíl** a vyberte cílový server VMM.
 2. Zobrazí se cloudy VMM synchronizované se Site Recovery. Vyberte cílový cloud.
 
-   ![Výběr cílového umístění](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Cíl](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace

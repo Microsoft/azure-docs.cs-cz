@@ -1,5 +1,5 @@
 ---
-title: Vytvoření sdílených imagí virtuálních počítačů Azure pro Linux pomocí portálu | Microsoft Docs
+title: Vytváření sdílených imagí virtuálních počítačů Azure pro Linux pomocí portálu
 description: Naučte se používat Azure Portal k vytváření a sdílení imagí virtuálních počítačů.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: a56b34318725667a9eef143bbf2be90f411b74a1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 89c98379a8e79d1b00db47021ae737ae471f79b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904969"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035010"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Vytvoření galerie sdílených imagí pomocí Azure Portal
 

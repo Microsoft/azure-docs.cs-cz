@@ -1,5 +1,5 @@
 ---
-title: Kurz vysoké dostupnosti pro virtuální počítače s Linuxem v Azure | Microsoft Docs
+title: Kurz – vysoká dostupnost pro virtuální počítače se systémem Linux v Azure
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI nasazovat vysoce dostupné virtuální počítače ve skupinách dostupnosti.
 documentationcenter: ''
 services: virtual-machines-linux
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 10458e3c5f1e4dc9034206470fdfec19e13417fb
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cd0366a0029ccc4816308e280ac93b7c724bb82a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299447"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034629"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů pomocí Azure CLI
 
-V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost svých řešení, která využívají virtuální počítače v Azure, pomocí funkce označované jako skupiny dostupnosti. Skupiny dostupnosti zajišťují distribuci virtuálních počítačů nasazených v Azure napříč několika izolovanými hardwarovými clustery. To zajišťuje, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to pouze podmnožinu vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
+V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost svých řešení využívajících virtuální počítače v Azure pomocí schopnosti označované jako skupiny dostupnosti. Skupiny dostupnosti zajišťují distribuci virtuálních počítačů nasazených v Azure napříč několika izolovanými hardwarovými clustery. To zajišťuje, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to pouze podmnožinu vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
 
 V tomto kurzu se naučíte:
 
@@ -44,9 +44,9 @@ Pokud chcete v Azure nasadit spolehlivé řešení založená na virtuálních p
 
 ### <a name="availability-set-overview"></a>Přehled skupiny dostupnosti
 
-Skupina dostupnosti je funkce logického seskupení, pomocí které můžete v Azure zajistit, že prostředky virtuálních počítačů, které do ní umístíte, jsou při nasazení v datacentru Azure od sebe navzájem izolované. Azure zajišťuje, že virtuální počítače, které umístíte do skupiny dostupnosti, se budou spouštět napříč několika fyzickými servery, výpočetními racky, jednotkami úložiště a síťovými přepínači. Pokud dojde k selhání hardwaru nebo softwaru Azure, ovlivní to pouze dílčí část vašich virtuálních počítačů a váš výpočetní systém zůstane v provozu a bude pro zákazníky dál dostupný. Skupiny dostupnosti představují základní funkci pro vytváření spolehlivých cloudových řešení.
+Skupina dostupnosti je funkce logického seskupení, pomocí které můžete v Azure zajistit, že prostředky virtuálních počítačů, které do ní umístíte, jsou při nasazení v datacentru Azure od sebe navzájem izolované. Azure zajišťuje, že virtuální počítače, které umístíte do skupiny dostupnosti, se budou spouštět napříč několika fyzickými servery, výpočetními racky, jednotkami úložiště a síťovými přepínači. Pokud dojde k selhání hardwaru nebo softwaru Azure, ovlivní to pouze dílčí část vašich virtuálních počítačů a váš výpočetní systém zůstane v provozu a bude pro zákazníky dál dostupný. Skupiny dostupnosti představují základní schopnost při sestavování spolehlivých cloudových řešení.
 
-Zvažte typické řešení založené na virtuálních počítačích, kdy máte čtyři front-end webové servery a používáte dva back-end virtuální počítače hostující databázi. V případě Azure byste před nasazením virtuálních počítačů měli definovat dvě skupiny dostupnosti: jednu skupinu dostupnosti pro webovou vrstvu a jednu skupinu dostupnosti pro databázovou vrstvu. Při vytváření nového virtuálního počítače pak můžete zadat skupinu dostupnosti jako parametr příkazu az vm create a Azure automaticky zajistí izolaci virtuálních počítačů vytvořených v rámci skupiny dostupnosti napříč několika fyzickými hardwarovými prostředky. Pokud dojde k problému s fyzickým hardwarem, na kterém běží virtuální počítače s webovým nebo databázovým serverem, máte jistotu, že ostatní instance virtuálních počítačů s webovým serverem a databází zůstanou spuštěné, protože jsou na jiném hardwaru.
+Zvažte typické řešení založené na virtuálních počítačích, kdy máte čtyři front-end webové servery a používáte dva back-end virtuální počítače hostující databázi. V případě Azure byste před nasazením virtuálních počítačů měli definovat dvě skupiny dostupnosti: jednu skupinu dostupnosti pro webovou vrstvu a jednu skupinu dostupnosti pro databázovou vrstvu. Při vytváření nového virtuálního počítače pak můžete zadat skupinu dostupnosti jako parametr příkazu az vm create a Azure automaticky zajistí izolaci virtuálních počítačů vytvořených v rámci skupiny dostupnosti napříč více fyzickými hardwarovými prostředky. Pokud dojde k problému s fyzickým hardwarem, na kterém běží virtuální počítače s webovým nebo databázovým serverem, máte jistotu, že ostatní instance virtuálních počítačů s webovým serverem a databází zůstanou spuštěné, protože jsou na jiném hardwaru.
 
 ### <a name="availability-zone-overview"></a>Přehled zóny dostupnosti
 
@@ -120,7 +120,7 @@ V tomto kurzu jste se naučili:
 > * Vytvoření virtuálního počítače ve skupině dostupnosti
 > * Kontrola dostupných velikostí virtuálních počítačů
 
-V dalším kurzu najdete informace o škálovacích sadách virtuálních počítačů.
+Přejděte k dalšímu kurzu, kde se seznámíte se škálovacími sadami virtuálních počítačů.
 
 > [!div class="nextstepaction"]
 > [Vytvoření škálovací sady virtuálních počítačů](tutorial-create-vmss.md)

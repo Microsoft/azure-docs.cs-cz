@@ -1,5 +1,5 @@
 ---
-title: Nasazení vyhrazených hostitelů Azure pomocí rozhraní příkazového řádku | Microsoft Docs
+title: Nasazení vyhrazených hostitelů Azure pomocí rozhraní příkazového řádku
 description: Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c060e2ab94c0a57d4d4dc897702e115cfabd9a0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827286"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036407"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Verze Preview: Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Verze Preview: nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
  
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.70 nebo novější a přihlásili jste se k účtu `az login`Azure pomocí. 
+Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.70 nebo novější a přihlásili jste se k účtu Azure pomocí `az login`. 
 
 > [!IMPORTANT]
 > Vyhrazené hostitele Azure jsou momentálně ve verzi Public Preview.
@@ -239,7 +239,7 @@ az vm host get-instance-view \
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Tento příkaz vytvoří `myDHResourceGroup.json` soubor v aktuálním pracovním adresáři. Když z této šablony vytvoříte prostředí, zobrazí se výzva k zadání všech názvů prostředků. Tyto názvy můžete vyplnit v souboru šablony přidáním `--include-parameter-default-value` parametru `az group export` do příkazu. Upravte šablonu JSON tak, aby určovala názvy prostředků, nebo vytvořte soubor Parameters. JSON, který určuje názvy prostředků.
+Tento příkaz vytvoří soubor `myDHResourceGroup.json` v aktuálním pracovním adresáři. Když z této šablony vytvoříte prostředí, zobrazí se výzva k zadání všech názvů prostředků. Tyto názvy můžete vyplnit v souboru šablony přidáním parametru `--include-parameter-default-value` do příkazu `az group export`. Upravte šablonu JSON tak, aby určovala názvy prostředků, nebo vytvořte soubor Parameters. JSON, který určuje názvy prostředků.
  
 Pokud chcete vytvořit prostředí ze šablony, použijte příkaz [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create).
 
@@ -278,7 +278,7 @@ Celou skupinu prostředků můžete také odstranit v jednom příkazu. Tím se 
 az group delete -n myDHResourceGroup 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace najdete v tématu Přehled [vyhrazených hostitelů](dedicated-hosts.md) .
 

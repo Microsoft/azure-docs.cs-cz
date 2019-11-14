@@ -1,5 +1,5 @@
 ---
-title: Automatizace úloh správy na virtuálních počítačích Azure pomocí rozšíření agenta SQL Server IaaS | Microsoft Docs
+title: Automatizace úloh správy pomocí rozšíření agenta IaaS
 description: Tento článek popisuje, jak spravovat rozšíření agenta SQL Server IaaS, které automatizuje konkrétní úlohy správy SQL Server. Mezi ně patří automatizované zálohování, automatizované opravy a Integrace Azure Key Vault.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3240bb689447c16de8c62e9e8118b0b0df2b1ea3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9aae386e21df6711fc4984a7abfd34f418399f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259432"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034202"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatizace úloh správy na virtuálních počítačích Azure pomocí rozšíření agenta SQL Server IaaS
 > [!div class="op_single_selector"]
@@ -58,7 +59,7 @@ Tady jsou požadavky na použití rozšíření agenta SQL Server IaaS na vašem
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
-* Windows Server. 2019 
+* Windows Server 2019 
 
 **Verze SQL Server**:
 
@@ -120,7 +121,7 @@ Předchozí příkaz potvrdí, že je agent nainstalovaný a poskytuje obecné i
     $sqlext.AutoBackupSettings
    ```
 
-## <a name="removal"></a>Odebrání
+## <a name="removal"></a>Instalační
 V Azure Portal můžete rozšíření odinstalovat tak, že vyberete tři tečky v okně **rozšíření** ve vlastnostech virtuálního počítače. Vyberte **Odstranit**.
 
 ![Odinstalace rozšíření agenta SQL Server IaaS v Azure Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
@@ -131,7 +132,7 @@ Můžete také použít rutinu prostředí PowerShell **Remove-AzVMSqlServerExte
     Remove-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Začněte používat jednu ze služeb, které podporuje rozšíření. Další informace najdete v článcích, na které se odkazuje v tomto článku v části věnované [podporovaným službám](#supported-services) .
 
 Další informace o spouštění SQL Server v Azure Virtual Machines najdete v tématu [co je SQL Server na Virtual Machines Azure](virtual-machines-windows-sql-server-iaas-overview.md).

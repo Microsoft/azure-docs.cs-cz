@@ -1,18 +1,14 @@
 ---
 title: Ukázkový plán CAF Foundation – postup nasazení
 description: Nasaďte kroky ukázky podrobného plánu CAF Foundation.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
-ms.service: blueprints
-ms.custom: fasttrack-new
-ms.openlocfilehash: a7daf460e65c294b464f9a5deb5d9676b762c5f7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ad5d7ce2fb895032f9ae5d19ee6d2978830ccc89
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163585"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038483"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Nasazení rozhraní Microsoft Cloud pro přijetí v ukázce pro Azure Foundation podrobný plán
 
@@ -110,7 +106,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Povolené SKU virtuálních počítačů|Přiřazení zásad|Policy_Allowed-VM – SKU|Povolené SKU virtuálních počítačů|
 |Přidat značku CostCenter do skupin prostředků|Přiřazení zásad|Policy_CostCenter_Tag|Připojit značku CostCenter a její hodnotu ze skupiny prostředků|
 |Typy prostředků, které nechcete ve svém prostředí povolit|Přiřazení zásad|_Allowed zásad – typy prostředků|Které prostředky Azure mají být ve vašem prostředí povolené|
-|Nasazení Key Vault|Šablona Resource Manageru|KV – AccessPolicy|**Uzamčené** – skupina nebo uživatel Azure AD <Object ID> pro udělení oprávnění v Key Vault|
+|Nasazení Key Vault|Šablona Resource Manageru|KV – AccessPolicy|**Uzamčené** – skupina nebo uživatel služby Azure AD, kterým <Object ID> udělit oprávnění v Key Vault|
 |Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_DataRetention|**Uzamčený** počet dní, po které se budou uchovávat data v Log Analytics|
 |Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_Location|**Zamčené** – oblast použitá při vytváření pracovního prostoru|
 
@@ -121,7 +117,7 @@ Teď, když jste si prohlédli postup nasazení ukázky podrobného plánu CAF F
 > [!div class="nextstepaction"]
 > [Podrobný plán CAF Foundation – přehled](./index.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

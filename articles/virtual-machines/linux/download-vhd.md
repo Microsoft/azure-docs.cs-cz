@@ -1,5 +1,5 @@
 ---
-title: Stažení virtuálního pevného disku se systémem Linux z Azure | Microsoft Docs
+title: Stažení virtuálního pevného disku se systémem Linux z Azure
 description: Stažení virtuálního pevného disku se systémem Linux pomocí rozhraní příkazového řádku Azure a Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: ed79df03a42c1558b975cd1c21c79716d50d4616
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083489"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036291"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stažení virtuálního pevného disku se systémem Linux z Azure
 
@@ -56,7 +56,7 @@ Pokud chcete virtuální pevný disk použít jako image k vytvoření dalších
 
 Pokud chcete virtuální pevný disk použít jako disk pro novou instanci existujícího virtuálního počítače nebo datového disku, proveďte tyto kroky:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1.  Přihlásit se na [Azure Portal](https://portal.azure.com/).
 2.  V nabídce vlevo vyberte **Virtual Machines**.
 3.  V seznamu vyberte virtuální počítač.
 4.  Na stránce pro virtuální počítač vyberte **zastavit**.
@@ -71,13 +71,13 @@ Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného p
 2.  Vyberte disk s operačním systémem pro virtuální počítač a pak vyberte **exportovat disk**.
 3.  Vyberte **generovat adresu URL**.
 
-    ![Vygenerovat URL](./media/download-vhd/export-generate.png)
+    ![Vygenerovat adresu URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Stáhnout VHD
 
 1.  V části vygenerovaná adresa URL vyberte **Stáhnout soubor VHD**.
 **
-    ![Stáhnout VHD](./media/download-vhd/export-download.png)
+    ![stáhnout VHD](./media/download-vhd/export-download.png)
 
 2.  Možná budete muset vybrat **Uložit** v prohlížeči a zahájit stahování. Výchozí název souboru VHD je *abcd*.
 

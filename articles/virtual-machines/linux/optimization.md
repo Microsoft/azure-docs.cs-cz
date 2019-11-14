@@ -1,5 +1,5 @@
 ---
-title: Optimalizace virtuálního počítače se systémem Linux v Azure | Microsoft Docs
+title: Optimalizace virtuálního počítače s Linuxem v Azure
 description: Seznamte se s tipy pro optimalizaci a ujistěte se, že jste nastavili virtuální počítač Linux pro zajištění optimálního výkonu v Azure.
 keywords: virtuální počítač Linux, virtuální počítač Linux, virtuální počítač s Ubuntu
 services: virtual-machines-linux
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eb5ef067d4c9be4debd1bdc98ac4eb57a89d1100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091689"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035394"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytváření virtuálních počítačů se systémem Linux je snadné z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit, že jste ho nastavili tak, aby optimalizoval jeho výkon na platformě Microsoft Azure. V tomto tématu se používá virtuální počítač s Ubuntu serverem, ale můžete také vytvořit virtuální počítač se systémem Linux pomocí [vlastních imagí jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -37,9 +37,9 @@ Na základě velikosti virtuálního počítače můžete připojit až 16 dalš
 
 Aby bylo možné získat nejvyšší IOps na Premium Storage discích, kde nastavení mezipaměti bylo nastaveno na hodnotu **jen pro čtení** nebo **žádné**, je nutné zakázat **bariéry** při připojování systému souborů v systému Linux. Nepotřebujete překážky, protože zápisy do Premium Storage zálohovaných disků jsou pro tato nastavení mezipaměti trvalé.
 
-* Pokud používáte **reiserFS**, zakažte bariéry pomocí možnosti `barrier=none` připojení (Pokud chcete povolit bariéry, použijte `barrier=flush`).
-* Pokud používáte **ext3/ext4**, zakažte bariéry pomocí možnosti `barrier=0` připojení (pro povolení bariéry použijte `barrier=1`).
-* Pokud používáte **XFS**, zakažte bariéry pomocí možnosti `nobarrier` připojení (pro povolení bariéry použijte možnost `barrier`).
+* Pokud používáte **reiserFS**, zakažte bariéry pomocí možnosti připojení `barrier=none` (pro povolení bariéry použijte `barrier=flush`).
+* Pokud používáte **ext3/ext4**, zakažte bariéry pomocí možnosti připojení `barrier=0` (pro povolení bariéry použijte `barrier=1`).
+* Pokud používáte **XFS**, zakažte bariéry pomocí možnosti připojení `nobarrier` (pro povolení bariéry použijte možnost `barrier`).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Požadavky na účet nespravovaného úložiště
 Výchozí akcí při vytváření virtuálního počítače pomocí Azure CLI je použití Azure Managed Disks.  Tyto disky jsou zpracovávány platformou Azure a nevyžadují žádnou přípravu ani umístění k jejich uložení.  Nespravované disky vyžadují účet úložiště a mají nějaké další požadavky na výkon.  Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).  V následující části jsou popsány požadavky na výkon pouze v případě, že používáte nespravované disky.  Výchozím a doporučeným řešením úložiště je znovu použít Managed disks.
@@ -50,7 +50,7 @@ Když se zaměříte na úlohy s vysokým počtem vstupně-výstupních operací
  
 
 ## <a name="your-vm-temporary-drive"></a>Dočasná jednotka virtuálního počítače
-Když vytvoříte virtuální počítač, Azure ve výchozím nastavení poskytuje disk s operačním systémem ( **/dev/sda**) a dočasný disk ( **/dev/sdb**).  Všechny další disky, které přidáte, se zobrazí jako **/dev/sdc**, **/dev/SDD**, **/dev/SDE** atd. Všechna data na dočasném disku ( **/dev/sdb**) nejsou trvalá a můžou se ztratit, pokud konkrétní události, jako je změna velikosti virtuálního počítače, opětovné nasazení nebo údržba, vynutí restartování vašeho virtuálního počítače.  Velikost a typ dočasného disku souvisí s velikostí virtuálního počítače, kterou jste zvolili v době nasazení. Všechny virtuální počítače s velikostí Premium (DS, G a DS v2 Series) dočasné jednotky se zálohují na místní jednotku SSD, která má další výkon až 48k IOps. 
+Když vytvoříte virtuální počítač, Azure ve výchozím nastavení poskytuje disk s operačním systémem ( **/dev/sda**) a dočasný disk ( **/dev/sdb**).  Všechny další disky, které přidáte, se zobrazí jako **/dev/sdc**, **/dev/SDD**, **/dev/SDE** atd. Všechna data na dočasném disku ( **/dev/sdb**) nejsou trvalá a můžou se ztratit, pokud konkrétní události, jako je změna velikosti virtuálního počítače, opětovné nasazení nebo údržba, vynutí restartování vašeho virtuálního počítače.  Velikost a typ dočasného disku souvisí s velikostí virtuálního počítače, kterou jste zvolili v době nasazení. Na všech virtuálních počítačích s velikostí Premium (DS, G a DS_V2 Series) se dočasná jednotka zálohuje místní jednotkou SSD, aby se mohl zvýšit výkon až na 48k IOps. 
 
 ## <a name="linux-swap-partition"></a>Oddíl odkládacího oddílu Linux
 Pokud je váš virtuální počítač Azure z image Ubuntu nebo CoreOS, můžete k odeslání cloudové konfigurace do Cloud-init použít CustomData. Pokud jste [nahráli vlastní image Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , která používá Cloud-init, nakonfigurujete také odkládací oddíly pomocí Cloud-init.
@@ -59,14 +59,14 @@ V případě cloudových imagí Ubuntu je potřeba ke konfiguraci odkládacího 
 
 U imagí bez podpory Cloud-init mají image virtuálních počítačů nasazené z Azure Marketplace agenta pro Linux virtuálního počítače integrovaný s operačním systémem. Tento agent umožňuje VIRTUÁLNÍm počítačům komunikovat s různými službami Azure. Za předpokladu, že jste nasadili standardní bitovou kopii z Azure Marketplace, musíte provést následující kroky, abyste správně nakonfigurovali nastavení souborů odkládacího souboru se systémem Linux:
 
-Vyhledejte a upravte dvě položky v souboru **/etc/waagent.conf** . Řídí existenci vyhrazeného stránkovacího souboru a velikosti odkládacího souboru. Parametry, které je třeba ověřit `ResourceDisk.EnableSwap` , jsou a`ResourceDisk.SwapSizeMB` 
+Vyhledejte a upravte dvě položky v souboru **/etc/waagent.conf** . Řídí existenci vyhrazeného stránkovacího souboru a velikosti odkládacího souboru. Parametry, které je třeba ověřit, jsou `ResourceDisk.EnableSwap` a `ResourceDisk.SwapSizeMB` 
 
 Pokud chcete povolit řádně povolený disk a připojený soubor odkládacího souboru, ujistěte se, že parametry mají následující nastavení:
 
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk. SwapSizeMB = {Size in MB pro splnění vašich potřeb 
 
-Jakmile provedete změnu, musíte restartovat waagent nebo restartovat virtuální počítač se systémem Linux, aby se tyto změny projevily.  Věděli jste, že byly provedeny změny a při použití `free` příkazu k zobrazení volného místa byl vytvořen odkládací soubor. Následující příklad obsahuje 512 MB souboru vytvořeného v důsledku změny souboru **waagent. conf** :
+Jakmile provedete změnu, musíte restartovat waagent nebo restartovat virtuální počítač se systémem Linux, aby se tyto změny projevily.  Zjistili jste, že byly provedeny změny a byl vytvořen odkládací soubor, když použijete příkaz `free` k zobrazení volného místa. Následující příklad obsahuje 512 MB souboru vytvořeného v důsledku změny souboru **waagent. conf** :
 
 ```bash
 azuseruser@myVM:~$ free

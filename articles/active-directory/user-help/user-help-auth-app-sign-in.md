@@ -1,5 +1,5 @@
 ---
-title: Přihlaste se ke svým účtům pomocí aplikace Microsoft Authenticator Azure Active Directory | Microsoft Docs
+title: Přihlášení pomocí aplikace Microsoft Authenticator – Azure AD
 description: Pomocí aplikace Microsoft Authenticator se přihlaste ke svému pracovnímu nebo školnímu účtu nebo k osobním účtům společnosti Microsoft a jiným, a to Pomocí dvojúrovňového ověřování nebo přihlášení k telefonnímu programu.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af3549984bd29a6e896e498bf4a2e6c67d7e0e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4cf9b92793d6c769751590dd0a375cbc8894759c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616019"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028969"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se ke svým účtům pomocí aplikace Microsoft Authenticator.
 
@@ -52,7 +52,7 @@ Přihlášení telefonem je dostupné jenom v zařízeních s iOS a Androidem, n
 
 - Otevřete aplikaci Microsoft Authenticator, pokračujte na svůj pracovní nebo školní účet a zapněte přihlašování telefonem:
 
-    - **Pokud se zobrazí ![ikona této ikony, která ukazuje, že](media/user-help-auth-app-sign-in/icon.png)jste nastavili.** Pokud se tato ikona zobrazí vedle názvu pracovního nebo školního účtu, znamená to, že jste už pro tento účet nastavili přihlašování telefonem. Může se zobrazit výzva, abyste přidali nabízená oznámení pro svůj účet, abyste si mohli všimnout žádostí o ověření mimo aplikaci.
+    - **Pokud se zobrazí tato ikona ![ikona ukazující, že jste nastavili](media/user-help-auth-app-sign-in/icon.png).** Pokud se tato ikona zobrazí vedle názvu pracovního nebo školního účtu, znamená to, že jste už pro tento účet nastavili přihlašování telefonem. Může se zobrazit výzva, abyste přidali nabízená oznámení pro svůj účet, abyste si mohli všimnout žádostí o ověření mimo aplikaci.
 
     - **Pokud jste aplikaci používali pro dvoustupňové ověřování.** Pokud jste už aplikaci a dvojúrovňové ověřování používali, můžete zvolit šipku rozevíracího seznamu vedle názvu účtu a pak vybrat **Povolit přihlášení k telefonu**.
 
@@ -85,7 +85,7 @@ Pro osobní účet Microsoft můžete zapnout přihlášení telefonem, napřík
 
 - Otevřete aplikaci Microsoft Authenticator, pokračujte na osobní účet Microsoft a zapněte přihlašování telefonem:
 
-    - **Pokud se zobrazí ![ikona této ikony, která ukazuje, že](media/user-help-auth-app-sign-in/icon.png)jste nastavili.** Pokud se tato ikona zobrazí vedle názvu vašeho účtu, znamená to, že jste už pro tento účet nastavili přihlášení telefonem. Může se zobrazit výzva, abyste přidali nabízená oznámení pro svůj účet, abyste si mohli všimnout žádostí o ověření mimo aplikaci.
+    - **Pokud se zobrazí tato ikona ![ikona ukazující, že jste nastavili](media/user-help-auth-app-sign-in/icon.png).** Pokud se tato ikona zobrazí vedle názvu vašeho účtu, znamená to, že jste už pro tento účet nastavili přihlášení telefonem. Může se zobrazit výzva, abyste přidali nabízená oznámení pro svůj účet, abyste si mohli všimnout žádostí o ověření mimo aplikaci.
 
     - **Pokud jste aplikaci používali pro dvoustupňové ověřování.** Pokud jste už aplikaci a dvojúrovňové ověřování používali, můžete zvolit šipku rozevíracího seznamu vedle názvu účtu a pak vybrat **Povolit přihlášení k telefonu**.
 
@@ -101,7 +101,7 @@ Pro osobní účet Microsoft můžete zapnout přihlášení telefonem, napřík
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Přihlaste se Pomocí dvojúrovňového ověřování pro váš účet.
 
-Standardní metoda dvojúrovňové ověřování vyžaduje, abyste zadali uživatelské jméno a heslo do zařízení, ke kterému se přihlašujete, a pak zvolíte, jestli Microsoft Authenticator Aplikace pošle oznámení, nebo pokud byste chtěli zkopírovat přidružené ověření. kód z obrazovky **účty** aplikace Microsoft Authenticator. V rámci procesu přidávání účtu do aplikace Microsoft Authenticator zapnete dvojúrovňové ověřování pro váš účet.
+Standardní metoda dvojúrovňové ověřování vyžaduje zadání uživatelského jména a hesla do zařízení, ke kterému se přihlašujete, a pak zvolte, jestli Microsoft Authenticator Aplikace pošle oznámení, nebo pokud byste chtěli zkopírovat přidružený ověřovací kód z obrazovky **účtů** aplikace Microsoft Authenticator. V rámci procesu přidávání účtu do aplikace Microsoft Authenticator zapnete dvojúrovňové ověřování pro váš účet.
 
 >[!Note]
 >Pokud nevidíte svůj pracovní nebo školní účet nebo osobní účet na obrazovce **účty** aplikace Microsoft Authenticator, znamená to, že jste účet nepřidali do aplikace Microsoft Authenticator. Pokud chcete přidat svůj účet, přečtěte si téma [Přidání pracovního nebo školního účtu](user-help-auth-app-add-work-school-account.md) nebo [Přidání osobních účtů](user-help-auth-app-add-personal-ms-account.md).
@@ -120,7 +120,7 @@ Kroky nezbytné pro přihlášení k pracovnímu nebo školnímu účtu nebo k v
 | Proč pro přihlašování telefonem nemůžem použít více než jeden pracovní nebo školní účet? | Telefon musí být zaregistrovaný do jednoho pracovního nebo školního účtu. Pokud chcete zapnout přihlášení k telefonu pro jiný pracovní nebo školní účet, musíte nejdřív zrušit registraci starého zařízení na stránce **Nastavení** . |
 | Můžu se k počítači přihlásit pomocí telefonu? | Pro váš počítač doporučujeme přihlásit se pomocí Windows Hello ve Windows 10. Windows Hello vám umožní přihlašovat se pomocí svého obličeje, otisku prstu nebo PIN kódu. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud máte potíže s získáním ověřovacího kódu pro osobní účet Microsoft, přečtěte si část **problémy s ověřovacím kódem pro řešení potíží** v článku [účet Microsoft informace o zabezpečení & ověřovací kódy](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
 

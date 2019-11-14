@@ -1,5 +1,5 @@
 ---
-title: Možnosti dostupnosti Azure pro virtuální počítače se systémem Linux | Microsoft Docs
+title: Možnosti dostupnosti Azure pro virtuální počítače se systémem Linux
 description: Přečtěte si o funkcích dostupnosti pro spouštění virtuálních počítačů se systémem Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3e4e036e4f2fe7bd4eb829e374a2be369567a40c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 25b8f2487ec9dc582d5670203151473ff78fc9f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011550"
+ms.locfileid: "74037023"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Možnosti dostupnosti pro virtuální počítače v Azure
 [!INCLUDE [virtual-machines-common-availability](../../../includes/virtual-machines-common-availability.md)]

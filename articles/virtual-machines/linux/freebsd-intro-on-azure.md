@@ -1,5 +1,5 @@
 ---
-title: Seznámení s FreeBSD v Azure | Microsoft Docs
+title: Úvod do FreeBSD v Azure
 description: Informace o používání virtuálních počítačů s FreeBSD v Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: c1ac7a0310eda032b45fb57cea95ba38b753ef1d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: d243806d619aa6d7328220eae53804d734737489
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695353"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036109"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Úvod do FreeBSD v Azure
 Tento článek poskytuje přehled o spuštění virtuálního počítače s FreeBSD v Azure.
@@ -59,7 +59,7 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-Během instalace se zobrazí výzva `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Pokud odpovíte `y` a jako `a path to an rc file to update` zadáte `/etc/rc.conf`, může se stát, že bude problém `ERROR: [Errno 13] Permission denied`. Chcete-li tento problém vyřešit, měli byste uživateli udělit právo k zápisu na soubor `etc/rc.conf`.
+Během instalace budete požádáni o `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Pokud odpovíte `y` a zadáte `/etc/rc.conf` jako `a path to an rc file to update`, můžete splnit `ERROR: [Errno 13] Permission denied`problému. Chcete-li tento problém vyřešit, měli byste uživateli udělit oprávnění k zápisu pro soubor `etc/rc.conf`.
 
 Nyní se můžete přihlásit k Azure a vytvořit virtuální počítač s FreeBSD. Níže je příklad vytvoření virtuálního počítače s FreeBSD 11,0. Můžete také přidat parametr `--public-ip-address-dns-name` s globálně jedinečným názvem DNS pro nově vytvořenou veřejnou IP adresu. 
 

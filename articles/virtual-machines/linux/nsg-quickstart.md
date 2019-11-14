@@ -1,6 +1,6 @@
 ---
-title: Otevření portů k virtuálnímu počítači s Linuxem pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak otevřít port / vytvořit koncový bod virtuálního počítače s Linuxem pomocí modelu nasazení Azure resource manager a Azure CLI
+title: Otevření portů pro virtuální počítač se systémem Linux pomocí Azure CLI
+description: Zjistěte, jak otevřít port/vytvořit koncový bod pro virtuální počítač se systémem Linux pomocí modelu nasazení Azure Resource Manager a Azure CLI.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 1dec41f9c33bba94db2cd75b60d3490fe853482c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 424dfc1dac21f227869f23e7401a083b06cef1d9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671147"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035552"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač s Linuxem pomocí Azure CLI
+# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač se systémem Linux pomocí Azure CLI
 
-Otevření portu nebo vytvoření koncového bodu, virtuálního počítače (VM) v Azure vytvořte filtr sítě pro podsíť nebo síťové rozhraní virtuálního počítače. Tyto filtry, které řídí příchozí a odchozí přenosy dat, umístíte na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz. Použijeme běžným Příkladem webového provozu na portu 80. Tento článek popisuje postup otevření portů k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure. 
-
-
-Chcete-li vytvořit skupinu zabezpečení sítě a pravidel, je třeba nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index).
-
-V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myNetworkSecurityGroup*, a *myVnet*.
+Otevřete port nebo vytvořte koncový bod s virtuálním počítačem v Azure vytvořením síťového filtru v podsíti nebo síťovém rozhraní virtuálního počítače. Tyto filtry umístíte, což řídí příchozí i odchozí provoz, ve skupině zabezpečení sítě připojené k prostředku, který přijímá provoz. Pojďme použít běžný příklad webového provozu na portu 80. V tomto článku se dozvíte, jak otevřít port k virtuálnímu počítači pomocí Azure CLI. 
 
 
-## <a name="quickly-open-a-port-for-a-vm"></a>Rychle otevření portu pro virtuální počítač
-Pokud potřebujete rychle otevření portu pro virtuální počítač ve scénáři pro vývoj/testování, můžete použít [az vm open-port](/cli/azure/vm) příkazu. Tento příkaz vytvoří skupinu zabezpečení sítě, přidá pravidlo a použije ho k virtuálnímu počítači nebo podsítě. Následující příklad otevře port *80* na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
+Pokud chcete vytvořit skupinu zabezpečení sítě a pravidla, která potřebujete, nainstalujte nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
+
+V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myNetworkSecurityGroup*a *myVnet*.
+
+
+## <a name="quickly-open-a-port-for-a-vm"></a>Rychlé otevření portu pro virtuální počítač
+Pokud potřebujete rychle otevřít port pro virtuální počítač ve scénáři pro vývoj/testování, můžete použít příkaz [AZ VM Open-port](/cli/azure/vm) . Tento příkaz vytvoří skupinu zabezpečení sítě, přidá pravidlo a použije ho pro virtuální počítač nebo podsíť. Následující příklad otevře port *80* na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
 
 ```azure-cli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
 ```
 
-Pro větší kontrolu nad pravidla, například definování zdrojového rozsahu IP adres pokračujte další kroky v tomto článku.
+Pro lepší kontrolu pravidel, jako je například definování rozsahu zdrojových IP adres, pokračujte dalšími kroky v tomto článku.
 
 
 ## <a name="create-a-network-security-group-and-rules"></a>Vytvoření skupiny zabezpečení sítě a pravidel
-Vytvořit skupinu zabezpečení sítě s [az network nsg vytvořit](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup* v *eastus* umístění:
+Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup* v umístění *eastus* :
 
 ```azurecli
 az network nsg create \
@@ -51,7 +51,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Přidat pravidlo s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule) povolit provoz protokolu HTTP na svůj webový server (nebo upravit vlastní scénáře, jako je například přístup nebo databáze připojení SSH). Následující příklad vytvoří pravidlo *myNetworkSecurityGroupRule* umožňující provoz TCP na portu 80:
+Přidejte pravidlo pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule) , aby se POVOLIL přenos HTTP na váš server (nebo upravte vlastní situaci, třeba přístup SSH nebo připojení k databázi). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRule* , které povoluje přenosy TCP na portu 80:
 
 ```azurecli
 az network nsg rule create \
@@ -64,8 +64,8 @@ az network nsg rule create \
 ```
 
 
-## <a name="apply-network-security-group-to-vm"></a>Použít skupinu zabezpečení sítě k virtuálnímu počítači
-Přidružení skupiny zabezpečení sítě virtuálního počítače a síťové rozhraní (NIC) s [az network nic update](/cli/azure/network/nic). Následující příklad přiřadí existující síťovou kartu s názvem *myNic* se skupinou zabezpečení sítě s názvem *myNetworkSecurityGroup*:
+## <a name="apply-network-security-group-to-vm"></a>Použít skupinu zabezpečení sítě pro virtuální počítač
+Přidružte skupinu zabezpečení sítě k síťovému rozhraní (NIC) vašeho virtuálního počítače pomocí [AZ Network nic Update](/cli/azure/network/nic). Následující příklad přidruží stávající síťové rozhraní s názvem *myNic* ke skupině zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nic update \
@@ -74,7 +74,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Alternativně můžete přidružit skupiny zabezpečení sítě k podsíti virtuální sítě s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet) , nikoli pouze k síťovému rozhraní na jeden virtuální počítač. Následující příklad přiřadí existující podsíť s názvem *mySubnet* v *myVnet* virtuální sítě se skupinou zabezpečení sítě s názvem *myNetworkSecurityGroup*:
+Případně můžete skupinu zabezpečení sítě přidružit k podsíti virtuální sítě pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet) místo pouze síťového rozhraní na jednom virtuálním počítači. Následující příklad přidruží existující podsíť s názvem *mySubnet* ve virtuální síti *MyVnet* se skupinou zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```azurecli
 az network vnet subnet update \
@@ -85,12 +85,12 @@ az network vnet subnet update \
 ```
 
 ## <a name="more-information-on-network-security-groups"></a>Další informace o skupinách zabezpečení sítě
-Rychlé příkazy umožní začít pracovat s přenosy směřující do virtuálního počítače. Skupiny zabezpečení sítě poskytují mnoho skvělých funkcí a členitost řízení přístupu k vašim prostředkům. Další informace o [vytvoření skupiny zabezpečení sítě a seznamu ACL pravidla zde](tutorial-virtual-network.md#secure-network-traffic).
+Rychlé příkazy, které vám pomůžou začít pracovat s přenosem dat do virtuálního počítače. Skupiny zabezpečení sítě poskytují mnoho skvělých funkcí a členitosti pro řízení přístupu k vašim prostředkům. Tady si můžete přečíst další informace o [vytváření skupin zabezpečení sítě a pravidel seznamu ACL](tutorial-virtual-network.md#secure-network-traffic).
 
-U vysoce dostupných webových aplikací by měl umístěte své virtuální počítače za nástrojem Azure Load Balancer. Nástroje pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů pomocí skupiny zabezpečení sítě, která poskytuje filtrování provozu. Další informace najdete v tématu [zatížení vyrovnávat virtuální počítače s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
+Pro webové aplikace s vysokou dostupností byste měli své virtuální počítače umístit za Azure Load Balancer. Nástroj pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů pomocí skupiny zabezpečení sítě, která poskytuje filtrování přenosů. Další informace najdete v tématu [Postup při vyrovnávání zatížení virtuálních počítačů se systémem Linux v Azure za účelem vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Další postup
-V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení provozu HTTP. Můžete najít informace o vytváření podrobnější prostředí v následujících článcích:
+## <a name="next-steps"></a>Další kroky
+V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení přenosů HTTP. Informace o vytváření podrobnějších prostředí najdete v následujících článcích:
 
 * [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)
 * [Co je skupina zabezpečení sítě (NSG)?](../../virtual-network/security-overview.md)

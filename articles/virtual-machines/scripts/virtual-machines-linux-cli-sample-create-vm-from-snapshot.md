@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače ze snímku | Microsoft Docs
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače ze snímku
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače ze snímku
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 33f21786b1af4d169d184487a030b7e4ea321327
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92f56ef06583bbd59509337352e1509b35b449a6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304527"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032604"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>Vytvoření virtuálního počítače ze snímku pomocí rozhraní příkazového řádku
 
@@ -47,13 +47,13 @@ az group delete --name myResourceGroup
 
 Tento skript k vytvoření spravovaného disku, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Získá snímek s použitím názvu snímku a názvu skupiny prostředků. Vlastnost ID vráceného objektu se použije k vytvoření spravovaného disku.  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Vytvoří ze snímku spravované disky s použitím ID snímku, názvu disku, velikosti a typu úložiště.  |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač s použitím spravovaného disku s operačním systémem. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

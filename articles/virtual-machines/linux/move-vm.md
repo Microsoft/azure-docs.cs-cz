@@ -1,6 +1,6 @@
 ---
-title: Přesunutí virtuálního počítače s Linuxem v Azure | Dokumentace Microsoftu
-description: Přesuňte virtuální počítač s Linuxem do jiného Azure předplatné nebo skupinu prostředků v modelu nasazení Resource Manager.
+title: Přesunutí virtuálního počítače se systémem Linux v Azure
+description: Přesuňte virtuální počítač se systémem Linux do jiného předplatného Azure nebo do skupiny prostředků v modelu nasazení Správce prostředků.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,41 +15,41 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c22fe8beea894bccb311a63a1be70c972188e59
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8fc04b4689ea8707ac2c605e3e4242a117773151
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667288"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035633"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Přesunout na jiné předplatné nebo skupinu prostředků virtuálního počítače s Linuxem
-Tento článek vás provede přesun virtuálního počítače s Linuxem (VM) mezi skupinami prostředků nebo předplatných. Přesun virtuálního počítače mezi předplatnými může být užitečné, pokud jste vytvořili virtuální počítač v rámci osobní předplatného a teď chcete přesunout do předplatného ve vaší společnosti.
+# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Přesunutí virtuálního počítače se systémem Linux do jiného předplatného nebo skupiny prostředků
+Tento článek vás seznámí s postupem přesunutí virtuálního počítače se systémem Linux mezi skupinami prostředků nebo odběry. Přesunutí virtuálního počítače mezi předplatnými může být užitečné, pokud jste vytvořili virtuální počítač v osobním předplatném a teď ho chcete přesunout do předplatného vaší společnosti.
 
 > [!IMPORTANT]
->V tuto chvíli nelze přesunout Azure Managed Disks. 
+>V tuto chvíli nejde přesunout službu Azure Managed Disks. 
 >
->Nové ID prostředků vytvořených jako součást přesunu. Po přesunutí virtuálního počítače, je potřeba aktualizovat nástroje a skripty, které používaly nové ID prostředků. 
+>V rámci přesunutí se vytvoří nová ID prostředků. Po přesunutí virtuálního počítače budete muset aktualizovat nástroje a skripty, aby používaly nová ID prostředků. 
 > 
 > 
 
-## <a name="use-the-azure-cli-to-move-a-vm"></a>Přesun virtuálních počítačů pomocí Azure CLI
+## <a name="use-the-azure-cli-to-move-a-vm"></a>Přesunutí virtuálního počítače pomocí rozhraní příkazového řádku Azure
 
 
-Předtím, než můžete přesunout virtuální počítač pomocí rozhraní příkazového řádku Azure, budete muset ujistěte, že zdrojové a cílové předplatné existuje ve stejném tenantovi. Chcete-li zkontrolovat, že oba odběry obsahují stejné ID tenanta, použijte [zobrazit účet az](/cli/azure/account).
+Než budete moct virtuální počítač přesunout pomocí rozhraní příkazového řádku Azure, musíte se ujistit, že ve stejném tenantovi existují zdrojové a cílové odběry. Pokud chcete ověřit, že obě předplatná mají stejné ID tenanta, použijte příkaz [AZ Account show](/cli/azure/account).
 
 ```azurecli-interactive
 az account show --subscription mySourceSubscription --query tenantId
 az account show --subscription myDestinationSubscription --query tenantId
 ```
-Pokud zdrojové a cílové předplatné ID tenantů se neshodují, obraťte se na [podporují](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) prostředky přesunout do nového tenanta.
+Pokud ID tenanta pro zdrojové a cílové odběry nejsou stejné, musíte kontaktovat [podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , aby se prostředky přesunuly do nového tenanta.
 
-Chcete-li úspěšně přesunout virtuální počítač, budete potřebovat přesunout virtuální počítač a všechny její Podpůrné prostředky. Použití [az resource list](/cli/azure/resource) seznam všech prostředků ve skupině prostředků a jejich ID příkazu. Umožňuje do kanálu výstup tohoto příkazu do souboru, takže můžete zkopírovat a vložit ID novější příkazy.
+K úspěšnému přesunu virtuálního počítače je potřeba přesunout virtuální počítač a všechny jeho podpůrné prostředky. Pomocí příkazu [AZ Resource list](/cli/azure/resource) zobrazíte seznam všech prostředků ve skupině prostředků a jejich ID. Pomáhá přesměrovat výstup tohoto příkazu do souboru, aby bylo možné kopírovat a vkládat ID do pozdějších příkazů.
 
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
 
-Chcete-li přesunout virtuální počítač a jejích prostředků do jiné skupiny prostředků, použijte [přesunutí prostředku az](/cli/azure/resource). Následující příklad ukazuje, jak přesunout virtuální počítač a nejčastěji používaných prostředků, které vyžaduje. Použití **– ID** parametr a předejte jí seznam oddělený čárkami (bez mezer) ID pro prostředky k přesunutí.
+Pokud chcete přesunout virtuální počítač a jeho prostředky do jiné skupiny prostředků, použijte příkaz [AZ Resource Move](/cli/azure/resource). Následující příklad ukazuje, jak přesunout virtuální počítač a nejběžnější prostředky, které vyžaduje. Použijte parametr **-IDS** a předejte seznam oddělený čárkami (bez mezer) pro prostředky, které se mají přesunout.
 
 ```azurecli-interactive
 vm=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM
@@ -65,12 +65,12 @@ az resource move \
     --destination-group "myDestinationResourceGroup"
 ```
 
-Pokud chcete přesunout virtuální počítač a její prostředky do jiného předplatného, přidejte **– určení subscriptionId** parametr k určení cílové předplatné.
+Pokud chcete přesunout virtuální počítač a jeho prostředky do jiného předplatného, přidejte parametr **--Destination-SubscriptionId** pro určení cílového předplatného.
 
-Pokud budete vyzváni k potvrzení, že chcete přesunout zadané prostředky, zadejte **Y** potvrďte.
+Po zobrazení výzvy k potvrzení, že chcete přesunout zadané prostředky, potvrďte zadáním **Y** .
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Mnoho různých typů prostředků můžou přesouvat mezi skupinami prostředků a předplatných. Další informace najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).    
+Mezi skupinami prostředků a předplatnými můžete přesunout mnoho různých typů prostředků. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).    
 

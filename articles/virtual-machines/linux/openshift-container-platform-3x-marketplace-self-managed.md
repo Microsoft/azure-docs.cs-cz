@@ -1,5 +1,5 @@
 ---
-title: Nasazení nabídky OpenShift Container Platform 3,11 pro samoobslužnou správu v Azure | Microsoft Docs
+title: Nasazení nabídky OpenShift Container Platform 3,11 pro samoobslužnou správu v Azure
 description: Nasaďte v Azure nabídku OpenShift Container Platform 3,11, která je samostatně spravovaná.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d5028ff6378fec5939aee3218071fe6f4eb1e843
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791611"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035528"
 ---
 # <a name="configure-prerequisites"></a>Konfigurovat požadavky
 
@@ -89,7 +89,7 @@ Zadejte hodnoty pro vstupní parametry a klikněte na tlačítko **OK**.
 | Nové nebo existující Virtual Network | Vytvoření nové virtuální sítě (výchozí) nebo použití existující virtuální sítě |
 | Výběr výchozích nastavení CIDR nebo přizpůsobení rozsahu IP adres (CIDR) | Přijměte výchozí rozsahy CIDR nebo vyberte **vlastní rozsah IP adres** a zadejte vlastní informace o CIDR.  Ve výchozím nastavení se vytvoří virtuální síť s CIDR CIDR 10.0.0.0/14, hlavní podsíť s 10.1.0.0/16, podsíť v 10.2.0.0/16 a podsíť COMPUTE a CNS s 10.3.0.0/16. |
 | Název skupiny prostředků Key Vault | Název skupiny prostředků, která obsahuje Key Vault |
-| Název Key Vault | Název Key Vault, který obsahuje tajný klíč, s privátním klíčem SSH.  Jsou povoleny pouze alfanumerické znaky a spojovníky a musí být v rozmezí 3 až 24 znaků. |
+| Název trezoru klíčů | Název Key Vault, který obsahuje tajný klíč, s privátním klíčem SSH.  Jsou povoleny pouze alfanumerické znaky a spojovníky a musí být v rozmezí 3 až 24 znaků. |
 | Název tajného kódu | Název tajného klíče, který obsahuje privátní klíč SSH.  Jsou povoleny pouze alfanumerické znaky a spojovníky. |
 
    ![Okno nabídky infrastruktury](media/openshift-marketplace-self-managed/ocp-inframain.png)  

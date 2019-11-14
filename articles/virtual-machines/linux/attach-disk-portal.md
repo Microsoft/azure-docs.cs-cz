@@ -1,5 +1,5 @@
 ---
-title: Připojit datový disk k virtuálnímu počítači se systémem Linux | Microsoft Docs
+title: Připojení datového disku k virtuálnímu počítači se systémem Linux
 description: Pomocí portálu připojte nový nebo existující datový disk k virtuálnímu počítači se systémem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036363"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037050"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
 V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -33,7 +33,7 @@ Než připojíte disky k VIRTUÁLNÍmu počítači, přečtěte si tyto tipy:
 
 
 ## <a name="find-the-virtual-machine"></a>Najít virtuální počítač
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo klikněte na **Virtual Machines**.
 3. Ze seznamu vyberte virtuální počítač.
 4. Na stránce virtuální počítače v části **základy**klikněte na **disky**.
@@ -79,7 +79,7 @@ Pokud chcete svůj nový disk rozdělit do oddílů, zformátovat ho a připojit
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Po připojení k VIRTUÁLNÍmu počítači jste připraveni k připojení disku. Nejdřív Najděte disk s použitím `dmesg` (metoda, kterou použijete ke zjišťování nového disku), se může lišit. Následující příklad používá dmesg k filtrování na discích *SCSI* :
+Po připojení k VIRTUÁLNÍmu počítači jste připraveni k připojení disku. Nejdřív Najděte disk pomocí `dmesg` (metoda, kterou použijete ke zjišťování nového disku, se může lišit). Následující příklad používá dmesg k filtrování na discích *SCSI* :
 
 ```bash
 dmesg | grep SCSI
@@ -103,13 +103,13 @@ Pokud používáte existující disk, který obsahuje data, přeskočte k připo
 > [!NOTE]
 > Doporučuje se používat nejnovější verze nástroje Fdisk nebo částečně, které jsou k dispozici pro vaši distribuce.
 
-Rozdělte disk na oddíly pomocí příkazu `fdisk`. Pokud je velikost disku 2 tebibytes (TIB) nebo větší, je nutné použít dělení GPT, pomocí `parted` kterých můžete provádět dělení GPT. Pokud je velikost disku pod 2TiB, můžete použít dělení na oddíly MBR nebo GPT. Nastavte primární disk na oddíl 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` proces na */dev/sdc*:
+Rozdělte disk na oddíly pomocí příkazu `fdisk`. Pokud je velikost disku 2 tebibytes (TiB) nebo větší, je nutné použít dělení GPT, pomocí `parted` můžete provádět dělení GPT. Pokud je velikost disku pod 2TiB, můžete použít dělení na oddíly MBR nebo GPT. Nastavte primární disk na oddíl 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` proces na */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-K přidání nového oddílu použijte příkaz.`n` V tomto příkladu jsme také zvolili `p` pro primární oddíl a přijali zbytek výchozích hodnot. Výstup bude vypadat podobně jako v následujícím příkladu:
+K přidání nového oddílu použijte příkaz `n`. V tomto příkladu jsme také zvolili `p` pro primární oddíl a přijali zbytek výchozích hodnot. Výstup bude vypadat podobně jako v následujícím příkladu:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -131,7 +131,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Vytiskněte tabulku oddílů zadáním `p` a pak použijte `w` k zápisu tabulky na disk a konec. Výstup by měl vypadat podobně jako v následujícím příkladu:
+Vytiskněte tabulku oddílů zadáním `p` a potom pomocí `w` zapište tabulku na disk a ukončete. Výstup by měl vypadat podobně jako v následujícím příkladu:
 
 ```bash
 Command (m for help): p
@@ -153,7 +153,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Nyní do oddílu zapište systém souborů pomocí `mkfs` příkazu. Zadejte typ systému souborů a název zařízení. Následující příklad vytvoří systém souborů *ext4* na oddílu */dev/sdc1* , který byl vytvořen v předchozích krocích:
+Nyní zapište systém souborů do oddílu pomocí příkazu `mkfs`. Zadejte typ systému souborů a název zařízení. Následující příklad vytvoří systém souborů *ext4* na oddílu */dev/sdc1* , který byl vytvořen v předchozích krocích:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -190,13 +190,13 @@ Vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následuj
 sudo mkdir /datadrive
 ```
 
-K `mount` následnému připojení systému souborů použijte. Následující příklad připojí oddíl */dev/sdc1* k přípojnému bodu */datadrive* :
+K následnému připojení systému souborů použijte `mount`. Následující příklad připojí oddíl */dev/sdc1* k přípojnému bodu */datadrive* :
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Aby bylo zajištěno, že se jednotka po restartování automaticky znovu připojí, je nutné ji přidat do souboru */etc/fstab* . Důrazně doporučujeme, abyste v */etc/fstab* použili UUID (univerzálně jedinečný identifikátor), aby odkazoval na jednotku, a ne jenom název zařízení (například, */dev/sdc1*). Pokud operační systém při spuštění detekuje chybu disku, při použití UUID se vyhnete nesprávnému disku připojenému k danému umístění. K zbývajícím datovým diskům by pak byla přiřazena stejná ID zařízení. Chcete-li zjistit UUID nové jednotky, použijte `blkid` nástroj:
+Aby bylo zajištěno, že se jednotka po restartování automaticky znovu připojí, je nutné ji přidat do souboru */etc/fstab* . Důrazně doporučujeme, abyste v */etc/fstab* použili UUID (univerzálně jedinečný identifikátor), aby odkazoval na jednotku, a ne jenom název zařízení (například, */dev/sdc1*). Pokud operační systém při spuštění detekuje chybu disku, při použití UUID se vyhnete nesprávnému disku připojenému k danému umístění. K zbývajícím datovým diskům by pak byla přiřazena stejná ID zařízení. Chcete-li zjistit UUID nové jednotky, použijte nástroj `blkid`:
 
 ```bash
 sudo -i blkid
@@ -235,12 +235,12 @@ Některé jádro systému Linux podporují operace OŘEZÁVÁNÍ a odmapování,
 
 Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux povolit podporu OŘEZÁVÁNÍ. V obvyklých případech si prostudujte doporučený postup:
 
-* Použijte možnost Mount v/etc/fstab, například: `discard`
+* V */etc/fstab*použijte možnost připojení `discard`, například:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* V některých případech může mít `discard` možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
+* V některých případech může mít možnost `discard` dopad na výkon. Alternativně můžete spustit příkaz `fstrim` ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
   
     **Ubuntu**
   

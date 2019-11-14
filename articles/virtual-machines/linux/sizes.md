@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Linux v Azure | Microsoft Docs
+title: Velikosti virtuálních počítačů Linux v Azure
 description: Zobrazuje seznam různých velikostí dostupných pro virtuální počítače se systémem Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 468ae6f249f21f04681d56c660d03a8cd7806634
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 668e87050809da24a3bcedd7c388e37db2215ff0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719082"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034822"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Velikosti pro virtuální počítače se systémem Linux v Azure
 Tento článek popisuje dostupné velikosti a možnosti pro virtuální počítače Azure, které můžete použít ke spouštění aplikací a úloh pro Linux. Nabízí také informace o nasazení, které vám pomůžeme při plánování používání těchto prostředků. Tento článek je k dispozici také pro [virtuální počítače s Windows](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -32,7 +32,7 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 | [Optimalizované z hlediska paměti](sizes-memory.md)         | Esv3, Ev3, Easv3, Eav3, Mv2, M, DSv2, Dv2  | Vysoký poměr paměti k procesoru. Velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti.                 |
 | [Optimalizované z hlediska úložiště](sizes-storage.md)        | Lsv2                | Vysoká propustnost disku a vstupně-výstupní operace jsou ideální pro velké objemy dat, SQL, databáze NoSQL, datové sklady a velké transakční databáze.  |
 | [GPU](sizes-gpu.md)            | NC, NCv2, NCv3, ND, NDv2 (Preview), NV, NVv3  | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa a také školení modelů a Inferencing (ND) s hloubkovým učením. K dispozici s jedním nebo více grafickými procesory.       |
-| [Vysokovýkonné výpočetní prostředí](sizes-hpc.md) | NEJENOM, HC, H | Naše nejrychlejší a procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
+| [Vysokovýkonné výpočetní prostředí](sizes-hpc.md) | HB, HC,  H | Naše nejrychlejší a procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
 
 <br>
 

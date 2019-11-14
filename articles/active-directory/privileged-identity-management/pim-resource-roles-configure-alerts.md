@@ -4,23 +4,23 @@ description: Naučte se konfigurovat výstrahy zabezpečení pro role prostředk
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f191eac841bd9f79844a09cd25725de7ea8b154
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895781"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023072"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Konfigurace výstrah zabezpečení pro role prostředků Azure v Privileged Identity Management
 
@@ -36,13 +36,13 @@ Vyberte výstrahu, chcete-li zobrazit sestavu se seznamem uživatelů nebo rolí
 
 ## <a name="alerts"></a>Výstrahy
 
-| Upozornění | Závažnost | Trigger | Doporučení |
+| Výstrahy | Severity | Trigger | Doporučení |
 | --- | --- | --- | --- |
-| **K prostředku je přiřazeno příliš mnoho vlastníků.** |Střední |Role vlastníka má příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte k méně privilegovaným rolím. |
-| **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Střední |K roli je trvale přiřazeno příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte, aby vyžadovaly aktivaci pro použití role. |
-| **Duplicitní role se vytvořila.** |Střední |Více rolí má stejné kritérium. |Použijte pouze jednu z těchto rolí. |
+| **K prostředku je přiřazeno příliš mnoho vlastníků.** |Střednědobé používání |Role vlastníka má příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte k méně privilegovaným rolím. |
+| **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Střednědobé používání |K roli je trvale přiřazeno příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte, aby vyžadovaly aktivaci pro použití role. |
+| **Duplicitní role se vytvořila.** |Střednědobé používání |Více rolí má stejné kritérium. |Použijte pouze jednu z těchto rolí. |
 
-### <a name="severity"></a>Závažnost
+### <a name="severity"></a>Severity
 
 - **Vysoká**: vyžaduje okamžitou akci kvůli porušení zásad. 
 - **Střední**: nevyžaduje okamžitou akci, ale signalizuje potenciální porušení zásad.

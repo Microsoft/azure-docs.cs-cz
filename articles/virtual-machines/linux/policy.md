@@ -1,5 +1,5 @@
 ---
-title: Vynutilit zabezpečení pomocí zásad pro virtuální počítače se systémem Linux v Azure | Microsoft Docs
+title: Vynutilit zabezpečení pomocí zásad pro virtuální počítače se systémem Linux v Azure
 description: Jak použít zásadu na virtuální počítač s Azure Resource Manager Linux
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: c0399044e1776d10a70cf4bcb1dca8d87e4981c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091582"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035320"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Použití zásad pro virtuální počítače se systémem Linux pomocí Azure Resource Manager
 Pomocí zásad může organizace vyhovět různým konvencím a pravidlům v celém podniku. Vynucování požadovaného chování může přispět k zmírnění rizika při přispívání na úspěch organizace. V tomto článku popisujeme, jak můžete pomocí zásad Azure Resource Manager definovat požadované chování pro Virtual Machines vaší organizace.
@@ -208,7 +208,7 @@ Možná budete chtít zakázat používání určitých typů rozšíření. Nap
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Po definování pravidla zásad (jak je znázorněno v předchozích příkladech) musíte vytvořit definici zásady a přiřadit ji k oboru. Oborem může být předplatné, skupina prostředků nebo prostředek. Pokud chcete přiřadit zásady, přečtěte si téma [použití Azure Portal k přiřazení a správě zásad prostředků](../../governance/policy/assign-policy-portal.md), [použití PowerShellu k přiřazování zásad](../../governance/policy/assign-policy-powershell.md)nebo použití rozhraní příkazového [řádku Azure k přiřazení zásad](../../governance/policy/assign-policy-azurecli.md).
 * Úvod do zásad prostředků najdete v tématu [co je Azure Policy?](../../governance/policy/overview.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

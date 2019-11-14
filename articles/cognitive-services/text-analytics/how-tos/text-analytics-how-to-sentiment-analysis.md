@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: a930a22472dd4329c555539704747af9a2359c33
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837162"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031463"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Příklad: zjištění mínění pomocí Analýza textu
 
@@ -36,7 +36,7 @@ Analýza mínění se provádí pro celý dokument, ne jako extrakce mínění u
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Verze Public Preview Analýza mínění V3
 
-[Další verze analýza mínění](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c9) je nyní k dispozici ve verzi Public Preview. Přináší významné vylepšení přesnosti a podrobností o kategorizaci a bodování textu rozhraní API.
+[Další verze analýza mínění](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) je nyní k dispozici ve verzi Public Preview. Přináší významné vylepšení přesnosti a podrobností o kategorizaci a bodování textu rozhraní API.
 
 > [!NOTE]
 > * Formát požadavku Analýza mínění v3 a [omezení dat](../overview.md#data-limits) jsou stejné jako předchozí verze.
@@ -215,7 +215,7 @@ Další informace o definici žádosti naleznete v tématu [Call the rozhraní A
 
 + Vytvoření žádosti POST. Dokumentaci k rozhraní API pro tento požadavek najdete v tématu [rozhraní API pro analýza mínění](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
 
-+ Nastavte koncový bod HTTP pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Do adresy URL musíte zahrnout `/text/analytics/v2.1/sentiment`. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
++ Nastavte koncový bod HTTP pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Do adresy URL musíte zahrnout `/text/analytics/v2.1/sentiment`. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 

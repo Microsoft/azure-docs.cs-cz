@@ -1,6 +1,6 @@
 ---
 title: Zobrazení přenosů v Azure Traffic Manager
-description: Úvod do Traffic Manager Zobrazení přenosů
+description: V tomto úvodu se dozvíte, jak funguje zobrazení provozu Traffic Manageru.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1cdad5873ea0f6d2fab129aef7be012ea11e8a60
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035460"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023245"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Zobrazení přenosů
 
@@ -64,7 +64,7 @@ Oblasti Azure, ve kterých se nachází koncové body, se zobrazují na mapě ja
 
 ## <a name="tabular-listing-and-raw-data-download"></a>Stažení tabulkového zobrazení a nezpracovaná data
 
-Data Zobrazení přenosů můžete zobrazit v tabulkovém formátu v Azure Portal. Existuje záznam pro každý pár IP/koncový bod překladače DNS, který zobrazuje IP adresu překladače DNS, název a zeměpisnou polohu oblasti Azure, ve které se nachází koncový bod (Pokud je k dispozici), ke kterému je přiřazený objem požadavků přidružených k tomuto Překladači DNS. Tento koncový bod a reprezentativní latence spojené s koncovými uživateli, kteří používají tuto službu DNS (tam, kde je k dispozici). Data Zobrazení přenosů můžete také stáhnout jako soubor CSV, který se dá použít jako součást pracovního postupu analýzy podle vašeho výběru.
+Data Zobrazení přenosů můžete zobrazit v tabulkovém formátu v Azure Portal. Existuje záznam pro každý pár IP/koncový bod překladače DNS, který zobrazuje IP adresu překladače DNS, název a zeměpisnou polohu oblasti Azure, ve které se nachází koncový bod (Pokud je k dispozici), objem požadavků přidružených k tomuto koncovému bodu DNS a zástupce pro koncové uživatele, který používá tuto službu DNS (tam, kde je k dispozici). Data Zobrazení přenosů můžete také stáhnout jako soubor CSV, který se dá použít jako součást pracovního postupu analýzy podle vašeho výběru.
 
 ## <a name="billing"></a>Fakturace
 

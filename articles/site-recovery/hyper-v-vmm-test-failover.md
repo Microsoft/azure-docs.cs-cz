@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 444868f1716ae55f1851e50c057b172f5e3eb3d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961402"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039739"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Hyper-V do sekundární lokality
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak provést zotavení po havárii (DR) pro virtuální
 Spuštěním testovacího převzetí služeb při selhání ověříte strategii replikace a provedete postup zotavení po havárii, aniž by došlo ke ztrátě dat nebo výpadkům. Testovací převzetí služeb při selhání nemá žádný vliv na probíhající replikaci nebo na produkční prostředí. 
 
 > [!WARNING]
-> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
+> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](site-to-site-deprecation.md) .
 
 
 ## <a name="how-do-test-failovers-work"></a>Jak testovací převzetí služeb při selhání funguje?

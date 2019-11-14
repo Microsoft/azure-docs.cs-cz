@@ -1,25 +1,25 @@
 ---
-title: Vytvořte dynamickou skupinu a ověřte stav-Azure Active Directory | Microsoft Docs
+title: Vytvořit dynamickou skupinu a ověřit stav – Azure AD | Microsoft Docs
 description: Postup vytvoření pravidla členství ve skupině v Azure Portal najdete v části stav.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343acce228c38e38152fc2ea9d8fe0a59d8254d4
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193946"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027244"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Vytvořit dynamickou skupinu a ověřit stav
 
@@ -35,7 +35,7 @@ Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které d
 - Pravidlo s více než pěti výrazy
 - Pravidlo přímých sestav
 - Nastavení [priority operátoru](groups-dynamic-membership.md#operator-precedence)
-- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
@@ -76,17 +76,17 @@ Stav zpracování členství a datum poslední aktualizace můžete zobrazit na 
 
 Pro stav **zpracování členství** lze zobrazit následující stavové zprávy:
 
-- **Vyhodnocení**:  Byla přijata změna skupiny a probíhá vyhodnocení aktualizací.
-- **Zpracovává**se: Probíhá zpracování aktualizací.
-- **Aktualizace dokončena**: Zpracování bylo dokončeno a všechny použitelné aktualizace byly provedeny.
-- **Chyba zpracování**:  Zpracování se nepodařilo dokončit kvůli chybě při vyhodnocování pravidla členství.
-- **Aktualizace**pozastavena: Správci pozastavili aktualizace pravidla dynamického členství. MembershipRuleProcessingState je nastavené na pozastaveno.
+- **Vyhodnocování**: byla přijata změna skupiny a probíhá vyhodnocení aktualizací.
+- **Zpracování**: probíhá zpracování aktualizací.
+- **Aktualizace byla dokončena**: zpracování bylo dokončeno a všechny použitelné aktualizace byly provedeny.
+- **Chyba zpracování**: zpracování nebylo dokončeno z důvodu chyby při vyhodnocování pravidla členství.
+- **Aktualizace pozastavena**: Správce pozastavil aktualizace pravidla dynamického členství. MembershipRuleProcessingState je nastavené na pozastaveno.
 
 Pro stav **Poslední aktualizace členství** se můžou zobrazit tyto stavové zprávy:
 
-- &lt;**Datum a čas**&gt;: Čas poslední aktualizace členství.
-- **Probíhá**: Aktuálně probíhá aktualizace.
-- **Neznámý**: Čas poslední aktualizace nelze načíst. Tato skupina může být nová.
+- &lt;**Datum a čas**&gt;: čas poslední aktualizace členství.
+- **Probíhá: aktuálně**probíhá aktualizace.
+- **Neznámé**: čas poslední aktualizace se nedá načíst. Tato skupina může být nová.
 
 Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud není možné zpracovat žádné nedokončené dynamické aktualizace členství pro všechny skupiny v tenantovi za více než 24 hodin, zobrazí se v horní části **všech skupin**výstraha.
 

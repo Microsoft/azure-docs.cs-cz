@@ -1,6 +1,6 @@
 ---
-title: Konfigurace VPN typu Site-to-site přes Microsoft peering – ExpressRoute – Azure | Microsoft Docs
-description: Pomocí brány VPN typu Site-to-site můžete nakonfigurovat připojení protokolem IPsec/IKE k Azure přes okruh ExpressRoute s partnerským vztahem Microsoftu.
+title: 'Azure ExpressRoute: Konfigurace S2S VPN přes partnerský vztah Microsoftu'
+description: Konfigurace protokolu IPsec/IKE připojení k Azure přes partnerský vztah okruhu ExpressRoute Microsoft pomocí brány VPN typu site-to-site.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: d26210ab226f8e907aa845d51dca94f59badd6a3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748065"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038108"
 ---
-# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurace VPN typu Site-to-site přes partnerský vztah Microsoftu ExpressRoute
+# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurace VPN typu site-to-site přes partnerský vztah ExpressRoute Microsoftu
 
-Tento článek vám pomůže s konfigurací zabezpečeného šifrovaného připojení mezi vaší místní sítí a virtuálními sítěmi Azure (virtuální sítě) prostřednictvím privátního připojení ExpressRoute. Partnerský vztah Microsoftu můžete použít k navázání tunelu VPN typu Site-to-site s protokolem IPsec/IKE mezi vybranými místními sítěmi a Azure virtuální sítě. Konfigurace zabezpečeného tunelového propojení přes ExpressRoute umožňuje výměnu dat s důvěrnými daty, proti nim, pravě a integritě.
+Tento článek vám pomůže nakonfigurovat zabezpečené šifrovaná připojení mezi vaší místní sítí a virtuálním sítím Azure (Vnet) přes privátní připojení ExpressRoute. Můžete vytvořit tunelové propojení site-to-site VPN IPsec/IKE mezi vybrané místní sítě a sítě Azure Vnet partnerského vztahu Microsoftu. Konfigurace zabezpečeného tunelového propojení prostřednictvím ExpressRoute umožňuje výměna dat s důvěrnost, zneužitím, pravosti a integrita.
 
 >[!NOTE]
->Když nastavíte síť Site-to-Site VPN přes partnerský vztah Microsoftu, budou se vám účtovat přenosy VPN Gateway a VPN. Další informace najdete v tématu [VPN Gateway ceny](https://azure.microsoft.com/pricing/details/vpn-gateway).
+>Při nastavování VPN typu site-to-site přes Microsoft partnerský vztah, bude vám účtována VPN gateway a výchozí přenos dat sítě VPN. Další informace najdete v tématu [ceny služby VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
 
@@ -32,38 +32,38 @@ Tento článek vám pomůže s konfigurací zabezpečeného šifrovaného připo
   ![Přehled připojení](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 
 
-Pro zajištění vysoké dostupnosti a redundance můžete nakonfigurovat několik tunelových propojení přes dva páry MSEE-PE okruhu ExpressRoute a povolit vyrovnávání zatížení mezi tunely.
+Pro vysokou dostupnost a redundance můžete nakonfigurovat více tunelových propojení přes dvě dvojice směrovači MSEE PE okruhu ExpressRoute a povolit Vyrovnávání zatížení mezi tunely.
 
-  ![možnosti vysoké dostupnosti](./media/site-to-site-vpn-over-microsoft-peering/HighAvailability.png)
+  ![Možnosti vysoké dostupnosti](./media/site-to-site-vpn-over-microsoft-peering/HighAvailability.png)
 
-Tunely VPN přes partnerský vztah Microsoftu se můžou ukončit buď pomocí služby VPN Gateway, nebo pomocí vhodného síťového virtuálního zařízení (síťové virtuální zařízení) dostupného prostřednictvím Azure Marketplace. Trasy můžete vyměňovat staticky nebo dynamicky prostřednictvím šifrovaných tunelů, aniž byste vystavili výměnu trasy k základnímu partnerskému vztahu Microsoftu. V příkladech v tomto článku se protokol BGP (jiný z relace protokolu BGP použitý k vytvoření partnerského vztahu Microsoftu) používá k dynamické výměně předpon přes šifrovaná tunely.
+Tunely VPN přes partnerský vztah Microsoftu můžete ukončit pomocí VPN gateway, nebo pomocí příslušné síťové virtuální zařízení (NVA) k dispozici prostřednictvím Azure Marketplace. Můžete si mohou vyměňovat trasy staticky nebo dynamicky přes šifrované tunely bez vystavení výměna tras základní partnerského vztahu Microsoftu. V příkladech v tomto článku protokol BGP (jiné relace protokolu BGP použitý k vytvoření partnerského vztahu Microsoftu) umožňuje dynamicky exchange předpony přes šifrované tunely.
 
 >[!IMPORTANT]
->Pro místní stranu se obvykle ukončí partnerský vztah Microsoftu na DMZ a privátní partnerské vztahy se ukončí v zóně základní sítě. Tyto dvě zóny budou oddělené pomocí bran firewall. Pokud konfigurujete partnerský vztah Microsoftu pro povolení zabezpečeného tunelování přes ExpressRoute, nezapomeňte filtrovat jenom veřejné IP adresy, které jsou inzerovány prostřednictvím partnerského vztahu Microsoftu.
+>Pro stranu místní obvykle partnerského vztahu Microsoftu je ukončený v hraniční síti a soukromého partnerského vztahu je ukončený v zóně základní sítě. Dvě zóny by být odděleny pomocí brány firewall. Pokud konfigurujete partnerský vztah Microsoftu výhradně pro povolení zabezpečené tunelové propojení prostřednictvím ExpressRoute, nezapomeňte filtrovat jenom veřejné IP adresy zájmu, které jsou získávání neinzerují prostřednictvím partnerského vztahu Microsoftu.
 >
 >
 
-## <a name="workflow"></a>Pracovního postupu
+## <a name="workflow"></a>Pracovní postup
 
-1. Nakonfigurujte partnerský vztah Microsoftu pro okruh ExpressRoute.
-2. Inzerovat vybrané místní veřejné předpony Azure do místní sítě prostřednictvím partnerského vztahu Microsoftu.
-3. Konfigurace brány VPN a vytvoření tunelů IPsec
+1. Konfigurace partnerského vztahu Microsoftu pro váš okruh ExpressRoute.
+2. Inzerovat vybrané Azure regionální veřejné předpony k místní síti prostřednictvím partnerského vztahu Microsoftu.
+3. Konfigurace brány VPN a vytvořit tunely IPsec
 4. Nakonfigurujte místní zařízení VPN.
-5. Vytvořte připojení Site-to-site s protokolem IPsec/IKE.
-6. Volitelné Nakonfigurujte brány firewall nebo filtrování na místním zařízení VPN.
-7. Otestujte a ověřte komunikaci protokolu IPsec přes okruh ExpressRoute.
+5. Vytvoření připojení site-to-site protokolu IPsec/IKE.
+6. (Volitelné) Konfigurace brány firewall nebo filtrování na místní zařízení VPN.
+7. Testování a ověřování IPsec komunikace v rámci okruhu ExpressRoute.
 
 ## <a name="peering"></a>1. konfigurace partnerského vztahu Microsoftu
 
-Pokud chcete nakonfigurovat připojení VPN typu Site-to-site přes ExpressRoute, musíte využít partnerský vztah Microsoft ExpressRoute.
+Ke konfiguraci připojení VPN typu site-to-site přes ExpressRoute, musí využívat, partnerský vztah ExpressRoute Microsoftu.
 
-* Pokud chcete nakonfigurovat nový okruh ExpressRoute, začněte v článku [požadavky ExpressRoute](expressroute-prerequisites.md) a pak [vytvořte a upravte okruh ExpressRoute](expressroute-howto-circuit-arm.md).
+* Ke konfiguraci nového okruhu ExpressRoute, začínat [požadavky služby ExpressRoute](expressroute-prerequisites.md) článku a potom [vytvoření a úprava okruhu ExpressRoute](expressroute-howto-circuit-arm.md).
 
-* Pokud už máte okruh ExpressRoute, ale nemáte nakonfigurovaného partnerského vztahu Microsoftu, nakonfigurujte partnerský vztah Microsoftu pomocí článku [Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](expressroute-howto-routing-arm.md#msft) .
+* Pokud už máte okruh ExpressRoute, ale není nutné nakonfigurovat partnerský vztah Microsoftu, konfigurace partnerského vztahu Microsoftu pomocí [vytvořit a upravit partnerský vztah pro okruh ExpressRoute](expressroute-howto-routing-arm.md#msft) článku.
 
-Po nakonfigurování okruhu a partnerského vztahu Microsoftu ho můžete snadno zobrazit pomocí stránky **Přehled** v Azure Portal.
+Po nakonfigurování okruh a partnerský vztah Microsoftu můžete snadno zobrazit pomocí **přehled** stránky na webu Azure Portal.
 
-![přerušení](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
+![okruh](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
 ## <a name="routefilter"></a>2. konfigurace filtrů tras
 
@@ -71,21 +71,21 @@ Filtr tras umožňuje identifikovat služby, které chcete využívat prostředn
 
 ![filtr tras](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
-V tomto příkladu je nasazení jenom v oblasti *Azure západní USA 2* . Přidá se pravidlo filtru tras, které umožní jenom reklamu Západní USA 2 regionální předpony Azure, která má komunitu BGP hodnotu *12076:51026*. Místní předpony, které chcete zakázat, určíte tak, že vyberete **Spravovat pravidlo**.
+V tomto příkladu je nasazení jenom v *Azure USA – západ 2* oblasti. Pravidlo filtru tras se přidá do povolit pouze oznámení o inzerovaném programu z Azure USA – západ 2 regionální předpon, který má hodnotu komunity protokolu BGP *12076:51026*. Zadejte místní předpony, které chcete povolit tak, že vyberete **Správa pravidel**.
 
-V rámci filtru tras je také nutné zvolit okruhy ExpressRoute, pro které je použit filtr směrování. Okruhy ExpressRoute můžete vybrat tak, že vyberete **Přidat okruh**. Na předchozím obrázku je filtr tras přidružený k ukázkovému okruhu ExpressRoute.
+V rámci se filtr tras musíte také zvolit okruhy ExpressRoute, pro které platí filtr tras. Okruhy ExpressRoute můžete zvolit výběrem **přidat okruh**. Na předchozím obrázku filtr tras souvisí s příkladem okruh ExpressRoute.
 
-### <a name="configfilter"></a>2,1 konfigurace filtru tras
+### <a name="configfilter"></a>2.1 konfigurace filtr tras
 
-Nakonfigurujte filtr tras. Postup najdete v tématu [Konfigurace filtrů směrování pro partnerský vztah Microsoftu](how-to-routefilter-portal.md).
+Konfigurujte filtr tras. Pokyny najdete v tématu [konfigurace filtrů směrování pro partnerský vztah Microsoftu](how-to-routefilter-portal.md).
 
-### <a name="verifybgp"></a>2,2 ověření tras protokolu BGP
+### <a name="verifybgp"></a>2.2 ověřte trasy protokolu BGP
 
-Po úspěšném vytvoření partnerského vztahu Microsoftu přes okruh ExpressRoute a přidružení filtru tras k okruhu můžete ověřit trasy protokolu BGP přijaté z směrovači msee na zařízeních PE, která jsou v partnerském vztahu s směrovači msee. Příkaz ověřování se liší v závislosti na operačním systému vašich zařízení PE.
+Jakmile úspěšně jste vytvořili přes váš okruh ExpressRoute partnerského vztahu Microsoftu a přidružené k filtru tras okruh, můžete ověřit, trasy protokolu BGP poslal Msee na zařízeních PE, které jsou vytvoření partnerského vztahu se směrovači Msee. Příkaz ověření se liší v závislosti na operačním systému zařízení PE.
 
 #### <a name="cisco-examples"></a>Příklady Cisco
 
-V tomto příkladu se používá příkaz Cisco IOS-XE. V tomto příkladu se k izolaci přenosů partnerských vztahů používá instance virtuálního směrování a předávání (VRF).
+Tento příklad používá příkaz Cisco IOS-XE. V tomto příkladu virtuální směrování a předávání instance (VRF) slouží k izolaci provozu partnerského vztahu.
 
 ```
 show ip bgp vpnv4 vrf 10 summary
@@ -100,13 +100,13 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 X.243.229.34    4        12076   17671   17650    25228    0    0 1w4d           68
 ```
 
-Pokud chcete zobrazit seznam předpon přijatých ze souseda, použijte následující příklad:
+Pokud chcete zobrazit seznam předpony přijaté od souseda, použijte následující příklad:
 
 ```
 sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 ```
 
-Pokud chcete potvrdit, že jste obdrželi správnou sadu předpon, můžete křížově ověřit. Následující příkaz Azure PowerShell výstupu obsahuje seznam předpon inzerovaných prostřednictvím partnerského vztahu Microsoftu pro každou službu a pro každou oblast Azure:
+Pokud chcete potvrdit, že vám posíláme, správnou sadu předpon, můžete mezi ověřit. Následující výstup příkazového prostředí Azure PowerShell seznam předpony inzerované prostřednictvím Microsoft partnerský vztah pro každou službu a pro každou oblast Azure:
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
@@ -114,36 +114,36 @@ Get-AzBgpServiceCommunity
 
 ## <a name="vpngateway"></a>3. konfigurace služby VPN Gateway a tunelů IPsec
 
-V této části se vytvoří tunelové propojení VPN IPsec mezi službou Azure VPN Gateway a místním zařízením VPN. V příkladech se používají zařízení VPN sítě Cisco Cloud Service router (CSR1000).
+V této části se vytvářejí tunely IPsec VPN mezi Azure VPN gateway a místním zařízením VPN. V příkladech se používá zařízení VPN směrovač Cisco cloudových služeb (CSR1000).
 
-Následující diagram znázorňuje tunelová propojení VPN IPsec vytvořená mezi místními zařízeními VPN 1 a dvojicí instance služby Azure VPN Gateway. V diagramu nejsou znázorněné dva tunelové propojení VPN IPsec navázaná mezi místními zařízeními VPN 2 a dvojicí instancí služby Azure VPN Gateway. Podrobnosti o konfiguraci nejsou uvedené. Ale další tunely VPN zvyšují vysokou dostupnost.
+Následující diagram znázorňuje IPsec VPN tunely mezi místním zařízením VPN 1 a pár instance brány Azure VPN. Vytváří se mezi místním zařízením VPN 2 dva tunely IPsec VPN a pár instance brány Azure VPN není znázorněné v diagramu a nejsou uvedené podrobnosti o konfiguraci. S další tunely VPN však zlepšuje vysokou dostupnost.
 
-  ![Tunely VPN](./media/site-to-site-vpn-over-microsoft-peering/EstablishTunnels.png)
+  ![Tunelová propojení sítě VPN](./media/site-to-site-vpn-over-microsoft-peering/EstablishTunnels.png)
 
-Přes dvojici tunelu protokolu IPsec se naváže relace eBGP k výměně tras privátních sítí. Následující diagram ukazuje relaci eBGP vytvořenou v páru tunelů IPsec:
+Za pár tunel IPsec eBGP se relace k výměně tras privátní sítě. Následující diagram znázorňuje relace eBGP byly vytvořené během pár tunel IPsec:
 
-  ![eBGP relace přes pár tunelů](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
+  ![relace eBGP přes tunel pár](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
 
-Následující diagram znázorňuje abstraktní přehled ukázkové sítě:
+Následující diagram znázorňuje abstrahovanou přehled sítě příkladu:
 
   ![Příklad sítě](./media/site-to-site-vpn-over-microsoft-peering/OverviewRef.png)
 
-### <a name="about-the-azure-resource-manager-template-examples"></a>Příklady šablon Azure Resource Manager
+### <a name="about-the-azure-resource-manager-template-examples"></a>O Příklady šablon Azure Resource Manageru
 
-V příkladech se Brána VPN a ukončení tunelu IPsec konfigurují pomocí šablony Azure Resource Manager. Pokud s použitím šablon Správce prostředků nepoužíváte, nebo chcete-li pochopit základy Správce prostředků šablony, přečtěte si téma [porozumění struktuře a syntaxi šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Šablona v této části vytvoří prostředí Azure bezserverová (VNet). Pokud ale máte existující virtuální síť, můžete na ni odkazovat v šabloně. Pokud nejste obeznámeni s konfigurací site-to-site služby VPN Gateway IPsec/IKE, přečtěte si téma [vytvoření připojení typu Site-to-site](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
+V příkladech ukončení tunelu IPsec a brány VPN jsou nakonfigurované pomocí šablony Azure Resource Manageru. Pokud začínáte pomocí šablon Resource Manageru, nebo pochopit základy šablony Resource Manageru, najdete v článku [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). Šablona v této části se vytvoří úplně nové prostředí Azure (VNet). Nicméně pokud máte existující virtuální síť, můžete na něj mohli odkazovat v šabloně. Pokud nejste obeznámeni s konfigurací site-to-site protokolu IPsec/IKE VPN gateway, přečtěte si téma [vytvoření připojení site-to-site](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 >[!NOTE]
->K vytvoření této konfigurace nemusíte používat šablony Azure Resource Manager. Tuto konfiguraci můžete vytvořit pomocí Azure Portal nebo PowerShellu.
+>Nemusíte pomocí šablon Azure Resource Manageru k vytvoření této konfigurace. Můžete vytvořit tuto konfiguraci pomocí webu Azure portal nebo Powershellu.
 >
 >
 
-### <a name="variables3"></a>3,1 deklarace proměnných
+### <a name="variables3"></a>3.1 deklarujte proměnné
 
-V tomto příkladu deklarace proměnných odpovídají ukázkové síti. Při deklaraci proměnných upravte tuto část tak, aby odrážela vaše prostředí.
+V tomto příkladu odpovídají deklarace proměnných příklad sítě. Při deklarování proměnné, upravte tuto část, aby se zohlednilo vaše prostředí.
 
-* Proměnná **localAddressPrefix** je pole místních IP adres pro ukončení tunelů IPsec.
-* **GatewaySku** určuje propustnost sítě VPN. Další informace o gatewaySku a vpnType najdete v tématu [nastavení konfigurace VPN Gateway](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Ceny najdete v tématu [VPN Gateway ceny](https://azure.microsoft.com/pricing/details/vpn-gateway).
-* Nastavte **vpnType** na **RouteBased**.
+* Proměnná **localAddressPrefix** je pole místních IP adres k ukončení tunelových propojení IPsec.
+* **GatewaySku** určuje propustnosti sítě VPN. Další informace o gatewaySku a typ sítě VPN najdete v tématu [nastavení konfigurace služby VPN Gateway](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Ceny najdete v tématu [ceny služby VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway).
+* Nastavte **vpnType** k **RouteBased**.
 
 ```json
 "variables": {
@@ -175,9 +175,9 @@ V tomto příkladu deklarace proměnných odpovídají ukázkové síti. Při de
 },
 ```
 
-### <a name="vnet"></a>3,2 vytvoření virtuální sítě (VNet)
+### <a name="vnet"></a>3.2 vytvoření virtuální sítě (VNet)
 
-Pokud přidružíte existující virtuální síť k tunelovým propojením VPN, můžete tento krok přeskočit.
+Pokud přiřazujete existující virtuální síť s tunely VPN, můžete tento krok přeskočit.
 
 ```json
 {
@@ -210,9 +210,9 @@ Pokud přidružíte existující virtuální síť k tunelovým propojením VPN,
 },
 ```
 
-### <a name="ip"></a>3,3 přiřazení veřejných IP adres instancím služby VPN Gateway
+### <a name="ip"></a>3.3 přiřadíte veřejné IP adresy instance brány sítě VPN
  
-Přiřaďte veřejnou IP adresu pro každou instanci brány VPN Gateway.
+Přiřadíte veřejnou IP adresu pro každou instanci brány sítě VPN.
 
 ```json
 {
@@ -237,9 +237,9 @@ Přiřaďte veřejnou IP adresu pro každou instanci brány VPN Gateway.
   },
 ```
 
-### <a name="termination"></a>3,4 Zadejte ukončení tunelu místního připojení VPN (místní síťová brána).
+### <a name="termination"></a>3.4 ukončení tunelu VPN s místními (brány místní sítě) zadejte
 
-Místní zařízení VPN se označují jako **Brána místní sítě**. Následující fragment kódu JSON také určuje podrobnosti vzdáleného partnerského uzlu protokolu BGP:
+Místní zařízení VPN se označují jako **bránu místní sítě**. Následující fragment kódu json také určuje vzdálené podrobnosti o partnerském vztahu protokolu BGP:
 
 ```json
 {
@@ -262,13 +262,13 @@ Místní zařízení VPN se označují jako **Brána místní sítě**. Následu
 },
 ```
 
-### <a name="creategw"></a>3,5 Vytvoření brány VPN
+### <a name="creategw"></a>3.5 vytvoření brány VPN
 
-Tato část šablony konfiguruje bránu VPN s požadovaným nastavením pro konfiguraci typu aktivní-aktivní. Pamatujte na následující požadavky:
+Tato část šablony nakonfiguruje bránu VPN se požadovaná nastavení pro konfiguraci aktivní aktivní. Mějte na paměti následující požadavky:
 
-* Vytvořte bránu VPN s VpnType **"RouteBased"** . Toto nastavení je povinné, pokud chcete povolit směrování protokolu BGP mezi bránou VPN a místní sítí VPN.
-* Aby bylo možné vytvořit tunely VPN mezi dvěma instancemi brány VPN a místním zařízením v režimu aktivní-aktivní, je parametr **"aktivní"** v šabloně správce prostředků nastaven na **hodnotu true** . Další informace o bránách VPN s vysokou dostupností najdete v tématu [připojení k bráně VPN s vysokou dostupností](../vpn-gateway/vpn-gateway-highlyavailable.md).
-* Pokud chcete nakonfigurovat eBGP relace mezi tunely sítě VPN, musíte na obou stranách zadat dvě různé čísla ASN. Je vhodnější zadat čísla privátních ASN. Další informace najdete v tématu [Přehled služby BGP a bran Azure VPN](../vpn-gateway/vpn-gateway-bgp-overview.md).
+* Vytvoření brány VPN pomocí služby **"RouteBased"** typ sítě VPN. Toto nastavení je povinný, pokud chcete povolit směrování protokolu BGP mezi bránou VPN a síti VPN v místním.
+* K navázání VPN s2s mezi dvě instance brány sítě VPN a daný místních zařízení v režimu aktivní aktivní, **"aktivní"** parametr je nastaven na **true** v šabloně Resource Manageru . Další informace o vysoce dostupné brány VPN najdete v tématu [vysoce dostupných připojení brány VPN](../vpn-gateway/vpn-gateway-highlyavailable.md).
+* Konfigurace relace eBGP mezi tunelová propojení sítě VPN, je nutné zadat dvě různá čísla ASN na obou stranách. Doporučuje se určit privátní čísla ASN. Další informace najdete v tématu [přehled protokolu BGP a sítě Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
 ```json
 {
@@ -324,9 +324,9 @@ Tato část šablony konfiguruje bránu VPN s požadovaným nastavením pro konf
   },
 ```
 
-### <a name="ipsectunnel"></a>3,6 Vytvoření tunelů IPsec
+### <a name="ipsectunnel"></a>3.6 vytvořit tunely IPsec
 
-Poslední akce skriptu vytvoří tunely IPsec mezi službou Azure VPN Gateway a místním zařízením VPN.
+Poslední akce skriptu vytvoří tunely IPsec mezi Azure VPN gateway a místním zařízením VPN.
 
 ```json
 {
@@ -356,18 +356,18 @@ Poslední akce skriptu vytvoří tunely IPsec mezi službou Azure VPN Gateway a 
 
 ## <a name="device"></a>4. konfigurace místního zařízení VPN
 
-Brána Azure VPN Gateway je kompatibilní s mnoha zařízeními VPN od různých dodavatelů. Informace o konfiguraci a zařízeních, která byla ověřena pro práci s bránou VPN, najdete v tématu [informace o zařízeních VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
+Azure VPN gateway je kompatibilní s mnoha zařízení VPN od různých dodavatelů. Informace o konfiguraci a zařízení, která se ověřily pro práci se službou VPN gateway najdete v tématu [informace o zařízeních VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
-Při konfiguraci zařízení VPN potřebujete následující položky:
+Při konfiguraci zařízení VPN, budete potřebovat následující položky:
 
-* Sdílený klíč. Jedná se o stejný sdílený klíč, který zadáte při vytváření připojení VPN typu Site-to-site. V příkladech se používá základní sdílený klíč. Doporučujeme, abyste pro použití vygenerovali složitější klíč.
-* Veřejná IP adresa vaší brány VPN. Veřejnou IP adresu můžete zobrazit pomocí webu Azure Portal, PowerShellu nebo rozhraní příkazového řádku. Pokud chcete zjistit veřejnou IP adresu vaší brány VPN pomocí Azure Portal, přejděte na brány virtuální sítě a klikněte na název brány.
+* Sdílený klíč. Jde o stejný sdílený klíč, který jste zadali při vytvoření připojení site-to-site VPN. V příkladech se používá základní sdílený klíč. Doporučujeme, abyste pro použití vygenerovali složitější klíč.
+* Veřejnou IP adresu vaší brány VPN. Veřejnou IP adresu můžete zobrazit pomocí webu Azure Portal, PowerShellu nebo rozhraní příkazového řádku. Chcete-li najít veřejnou IP adresu brány VPN pomocí webu Azure portal, přejděte do brány virtuální sítě a pak klikněte na název brány.
 
-Obvykle jsou eBGP partneři přímo připojeni (často prostřednictvím připojení WAN). Pokud ale konfigurujete eBGP přes tunelová propojení VPN přes protokol IPsec prostřednictvím partnerského vztahu Microsoftu ExpressRoute, existuje více domén směrování mezi partnerskými uzly eBGP. Pomocí příkazu **ebgp-multihop** vytvořte vztah ebgp souseda mezi dvěma nepřímými připojenými partnery. Celé číslo, které následuje za příkazem ebgp-multihop, určuje hodnotu TTL v paketech protokolu BGP. Příkaz **maximální cesty eibgp 2** umožňuje vyrovnávání zatížení přenosu mezi dvěma cestami protokolu BGP.
+Partnerské uzly eBGP jsou obvykle připojeny přímo (často přes sítě WAN připojení). Při konfiguraci eBGP přes tunely IPsec VPN přes partnerský vztah ExpressRoute Microsoftu, existuje ale několik domén směrování mezi rovnocennými počítači eBGP. Použití **ebgp pokus** příkaz, který vytvoří vztah eBGP sousední mezi těmito dvěma není – přímo připojených partnerských uzlů. Celé číslo, který následuje ebgp pokus příkaz určuje hodnota TTL v paketech protokolu BGP. Příkaz **maximální cesty eibgp 2** umožňuje Vyrovnávání zatížení provozu mezi dvěma cestami protokolu BGP.
 
-### <a name="cisco1"></a>Příklad Cisco CSR1000
+### <a name="cisco1"></a>Příklad CSR1000 Cisco
 
-Následující příklad ukazuje konfiguraci pro Cisco CSR1000 na virtuálním počítači s technologií Hyper-V jako místní zařízení VPN:
+Následující příklad znázorňuje konfiguraci pro Cisco CSR1000 ve virtuálním počítači Hyper-V tak, aby v místním zařízením VPN:
 
 ```
 !
@@ -477,11 +477,11 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 
 ## <a name="firewalls"></a>5. Konfigurace filtrování a bran firewall zařízení VPN (volitelné)
 
-Nakonfigurujte bránu firewall a filtrování podle svých požadavků.
+Konfigurace brány firewall a filtrování podle vašich požadavků.
 
 ## <a name="testipsec"></a>6. testování a ověření tunelu IPsec
 
-Stav tunelových propojení IPsec lze ověřit pomocí příkazů PowerShellu v bráně Azure VPN:
+Stav tunelových propojení IPsec dá ověřit ve službě Azure VPN gateway pomocí příkazů prostředí Powershell:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
@@ -495,7 +495,7 @@ EgressBytesTransferred  : 17734660
 IngressBytesTransferred : 10538211
 ```
 
-Pokud chcete zjistit stav tunelových propojení na instancích služby Azure VPN Gateway nezávisle, použijte následující příklad:
+Pokud chcete zkontrolovat stav tunely na instance brány Azure VPN nezávisle na sobě, použijte následující příklad:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
@@ -517,9 +517,9 @@ EgressBytesTransferred           : 8980589
 LastConnectionEstablishedUtcTime : 11/04/2017 17:03:13
 ```
 
-Můžete také kontrolovat stav tunelu na místním zařízení VPN.
+Tunelové propojení stav můžete zkontrolovat také na vaše místní zařízení VPN.
 
-Příklad Cisco CSR1000:
+Příklad CSR1000 Cisco:
 
 ```
 show crypto session detail
@@ -571,7 +571,7 @@ Peer: 52.175.253.112 port 4500 fvrf: (none) ivrf: (none)
         Outbound: #pkts enc'ed 477 drop 0 life (KB/Sec) 4607953/437
 ```
 
-Protokol řádku na virtuálním tunelovém rozhraní (VTI) se nemění, dokud se nedokončí fáze 2 protokolu IKE. Následující příkaz ověří přidružení zabezpečení:
+Protokol řádku na virtuální rozhraní tunelového propojení (VTI) nezmění na "nahoru", dokud se nedokončí protokolu IKE fáze 2. Následující příkaz ověří přidružení zabezpečení:
 
 ```
 csr1#show crypto ikev2 sa
@@ -597,9 +597,9 @@ csr1#show crypto ipsec sa | inc encaps|decaps
     #pkts decaps: 746, #pkts decrypt: 746, #pkts verify: 746
 ```
 
-### <a name="verifye2e"></a>Ověření komplexního připojení mezi místní sítí a virtuální sítí Azure
+### <a name="verifye2e"></a>Zkontrolujte připojení začátku do konce uvnitř sítě místní a virtuální síť Azure
 
-Pokud jsou tunely IPsec v pořádku a jsou správně nastavené statické trasy, měli byste být schopni testovat IP adresu vzdáleného partnerského uzlu protokolu BGP:
+Pokud se tunely IPsec nastavené a statické trasy správně nastavené, byste měli poslat příkaz ping IP adresu vzdáleného partnerského uzlu protokolu BGP:
 
 ```
 csr1#ping 10.2.0.228
@@ -615,9 +615,9 @@ Sending 5, 100-byte ICMP Echos to 10.2.0.229, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 ```
 
-### <a name="verifybgp"></a>Ověření relací protokolu BGP přes IPsec
+### <a name="verifybgp"></a>Ověřte relací protokolu BGP prostřednictvím protokolu IPsec
 
-V bráně Azure VPN Gateway ověřte stav partnerského uzlu BGP:
+Ve službě Azure VPN gateway ověřte stav partnerského uzlu protokolu BGP:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
@@ -633,13 +633,13 @@ Příklad výstupu:
 65000 07:13:51.0109601  10.2.0.228              507          500   10.2.0.229               6 Connected
 ```
 
-Pokud chcete ověřit seznam předpon sítě přijatých prostřednictvím eBGP z koncentrátoru sítě VPN v místním prostředí, můžete filtrovat podle atributu "Origin":
+Pokud chcete ověřit seznam přijatých prostřednictvím eBGP ze sítě VPN koncentrátor místní předpony sítě, můžete filtrovat podle atributu "Zdroj":
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
-V příkladu výstupu je číslo ASN 65010 číslem autonomního systému protokolu BGP v místní síti VPN.
+Ukázkový výstup je číslo ASN 65010 BGP číslo autonomního systému v síti VPN v místním.
 
 ```azurepowershell
 AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
@@ -648,7 +648,7 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 65010  10.2.0.228   10.0.0.0/24  172.16.0.10 EBgp   172.16.0.10  32768
 ```
 
-Seznam inzerovaných tras zobrazíte takto:
+Pokud chcete zobrazit seznam Inzerovat trasy:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
@@ -667,7 +667,7 @@ AsPath LocalAddress Network        NextHop    Origin SourcePeer Weight
 65010  10.2.0.229   10.0.0.0/24    10.2.0.229 Igp                  0
 ```
 
-Příklad pro místní Cisco CSR1000:
+Příklad pro Cisco CSR1000 on-premises:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 routes
@@ -688,7 +688,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 4
 ```
 
-Seznam sítí inzerovaných z místních Cisco CSR1000 a Azure VPN Gateway je možné uvést pomocí tohoto příkazu:
+Seznam sítí inzerované CSR1000 Cisco místní ke službě Azure VPN gateway je možný, pomocí následujícího příkazu:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 advertised-routes
@@ -711,4 +711,4 @@ Total number of prefixes 2
 
 * [Konfigurace Network Performance Monitor pro ExpressRoute](how-to-npm.md)
 
-* [Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením služby VPN Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [Přidat připojení site-to-site k virtuální síti s existujícím připojením brány VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)

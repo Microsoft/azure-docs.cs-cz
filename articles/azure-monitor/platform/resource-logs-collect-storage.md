@@ -8,18 +8,23 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8a1802f0f24ba5ccad3ec1c45f3baa29dfe6909f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262554"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030875"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivace protokolů prostředků Azure do účtu úložiště
 [Protokoly prostředků](resource-logs-overview.md) v Azure poskytují bohatě a často větší údaje o interním provozu prostředku Azure. Tento článek popisuje, jak shromažďovat protokoly prostředků do účtu služby Azure Storage a uchovávat tak data k archivaci.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte [účet úložiště Azure](../../storage/common/storage-quickstart-create-account.md) , musíte ho vytvořit. Účet úložiště nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
+
+
+> [!IMPORTANT]
+> Účty Azure Data Lake Storage Gen2 nejsou v současné době podporovány jako cíl pro nastavení diagnostiky, i když mohou být v Azure Portal uvedeny jako platná možnost.
+
 
 Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům monitorování. Pokud i přesto archivujte [Protokol aktivit](activity-logs-overview.md) do účtu úložiště, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
 

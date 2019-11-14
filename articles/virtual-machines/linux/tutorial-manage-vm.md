@@ -1,5 +1,5 @@
 ---
-title: Kurz – Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI | Microsoft Docs
+title: Kurz – vytváření a správa virtuálních počítačů se systémem Linux pomocí Azure CLI
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvářet a spravovat virtuální počítače s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11c12058229a2eadfdc3834d311c085c2365b17d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300793"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034422"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
 
@@ -30,7 +30,7 @@ Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní v
 > * Vytvoření a připojení virtuálního počítače
 > * Výběr a použití imagí virtuálních počítačů
 > * Zobrazení a použití specifických velikostí virtuálních počítačů
-> * Změna velikosti virtuálního počítač
+> * Změna velikosti virtuálního počítače
 > * Zobrazení a pochopení stavu virtuálního počítače
 
 V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
@@ -208,7 +208,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-### <a name="resize-a-vm"></a>Změna velikosti virtuálního počítač
+### <a name="resize-a-vm"></a>Změna velikosti virtuálního počítače
 
 Po nasazení virtuálního počítače můžete jeho velikost změnit, čímž se zvýší nebo sníží přidělení prostředků. Aktuální velikost virtuálního počítače je možné zobrazit pomocí příkazu [az vm show](/cli/azure/vm):
 
@@ -254,7 +254,7 @@ Virtuální počítač Azure může mít jeden z mnoha stavů napájení. Tento 
 | Stav napájení | Popis
 |----|----|
 | Spouštění | Označuje, že virtuální počítač se právě spouští. |
-| Spuštěno | Označuje, že virtuální počítač běží (je spuštěný). |
+| Běží | Označuje, že virtuální počítač běží (je spuštěný). |
 | Zastavování | Označuje, že virtuální počítač se právě zastavuje. | 
 | Zastaveno | Označuje, že virtuální počítač je zastavený. Poplatky za výpočetní výkon se účtují i za virtuální počítače v zastaveném stavu.  |
 | Rušení přidělení | Označuje, že se právě ruší přidělení virtuálního počítače. |
@@ -320,7 +320,7 @@ V tomto kurzu jste se dozvěděli o základních úkolech při vytváření a sp
 > * Vytvoření a připojení virtuálního počítače
 > * Výběr a použití imagí virtuálních počítačů
 > * Zobrazení a použití specifických velikostí virtuálních počítačů
-> * Změna velikosti virtuálního počítač
+> * Změna velikosti virtuálního počítače
 > * Zobrazení a pochopení stavu virtuálního počítače
 
 V dalším kurzu se dozvíte něco o discích virtuálních počítačů.  

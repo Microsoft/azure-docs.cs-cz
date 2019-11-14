@@ -1,6 +1,6 @@
 ---
-title: Povolit transparentní šifrování dat pro Stretch Database TSQL – Azure | Dokumentace Microsoftu
-description: Povolit transparentní šifrování dat (TDE) pro SQL Server Stretch Database na Azure TSQL
+title: Povolit transparentní šifrování dat pro Stretch Database (T-SQL)
+description: Povolení transparentní šifrování dat (TDE) pro SQL Server Stretch Database v Azure TSQL
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: 27753d91-9ca2-4d47-b34d-b5e2c2f029bb
@@ -13,49 +13,50 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 9718db18ea675fa744262f0736aff3c07732e1d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002879"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033960"
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Povolit transparentní šifrování dat (TDE) pro Stretch Database v Azure (Transact-SQL)
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Povolení transparentní šifrování dat (TDE) pro Stretch Database v Azure (Transact-SQL)
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
-Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit pomocí provádí v reálném čase šifrování a dešifrování databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu bez nutnosti změny aplikace.
+Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit tím, že provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolu transakcí v reálném čase bez nutnosti změny aplikace.
 
-Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze. Šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server Azure. Microsoft automaticky otočí tyto certifikáty nejméně každých 90 dní. Obecný popis transparentní šifrování dat, naleznete v tématu [Transparentní šifrování dat].
+TDE šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze. Šifrovací klíč databáze je chráněn integrovaným certifikátem serveru. Integrovaný certifikát serveru je pro každý server Azure jedinečný. Microsoft tyto certifikáty automaticky přetočí nejméně každých 90 dnů. Obecný popis TDE naleznete v tématu [Transparentní šifrování dat].
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Povolit transparentní šifrování dat pro Azure migrovat databázi, která ukládá data z databáze povolenou funkcí Stretch SQL serveru, proveďte následující akce:
+Pokud chcete povolit TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Server s povolenou funkcí Stretch, proveďte následující akce:
 
-1. Připojte se k *hlavní* databáze na serveru Azure hostujícím databázi pomocí přihlášení, které je správce nebo členem skupiny **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojte se k *Hlavní* databázi na serveru Azure, který je hostitelem databáze, pomocí přihlašovacích údajů, které jsou správcem nebo členem role **dbmanager** v hlavní databázi.
+2. Spusťte následující příkaz k zašifrování databáze.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ```
 
-## <a name="disabling-encryption"></a>Zakázáním šifrování
-Zakázat transparentní šifrování dat pro Azure migrovat databázi, která ukládá data z databáze povolenou funkcí Stretch SQL serveru, proveďte následující akce:
+## <a name="disabling-encryption"></a>Zakázání šifrování
+Pokud chcete zakázat TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Server s povolenou funkcí Stretch, proveďte následující akce:
 
-1. Připojení k *hlavní* databáze pomocí přihlášení, který je správce nebo člen **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojení k *Hlavní* databázi pomocí přihlášení, které je správcem nebo členem role **dbmanager** v hlavní databázi
+2. Spusťte následující příkaz k zašifrování databáze.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ```
 
-## <a name="verifying-encryption"></a>Ověření šifrování
-Pokud chcete ověřit, že stav šifrování pro databázi Azure, který ukládá data migrovaná z databáze SQL serveru s povolenou funkcí Stretch, proveďte následující akce:
+## <a name="verifying-encryption"></a>Ověřování šifrování
+Pokud chcete ověřit stav šifrování databáze Azure, která ukládá data migrovaná z databáze SQL Server s povolenou funkcí Stretch, proveďte následující akce:
 
-1. Připojení k *hlavní* nebo instanci databáze pomocí přihlášení, který je správce nebo člen **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojte se k *Hlavní* databázi nebo databázi instance pomocí přihlášení, které je správcem nebo členem role **dbmanager** v hlavní databázi.
+2. Spusťte následující příkaz k zašifrování databáze.
 
 ```sql
 SELECT
@@ -65,7 +66,7 @@ FROM
     sys.databases;
 ```
 
-Výsledkem ```1``` Určuje databázi šifrované ```0``` Určuje databázi bez šifrování.
+Výsledek ```1``` označuje šifrovanou databázi, ```0``` označuje nešifrovanou databázi.
 
 <!--Anchors-->
 [Transparentní šifrování dat]: https://msdn.microsoft.com/library/bb934049.aspx

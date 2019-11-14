@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a Správa virtuálního počítače Azure pomocí Java | Microsoft Docs
+title: Vytvoření a Správa virtuálního počítače Azure pomocí Java
 description: Pomocí jazyků Java a Azure Resource Manager nasaďte virtuální počítač a všechny jeho podpůrné prostředky.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103025"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039724"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Java
 
@@ -29,7 +29,7 @@ ms.locfileid: "70103025"
 > * Vytvoření projektu Maven
 > * Přidat závislosti
 > * Vytvořit pověření
-> * Vytvořit prostředky
+> * Vytvoření prostředků
 > * Provádění úloh správy
 > * Odstranění prostředků
 > * Spuštění aplikace
@@ -51,7 +51,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-1. Ve složce otevřete soubor a &lt;přidejte do projektu&gt; konfiguraci sestavení, aby bylo možné sestavit aplikaci: `pom.xml` `testAzureApp`
+1. Ve složce `testAzureApp` otevřete soubor `pom.xml` a přidejte konfiguraci sestavení do &lt;&gt; projektu pro povolení sestavení vaší aplikace:
 
     ```xml
     <build>
@@ -133,14 +133,14 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
     graphURL=https://graph.windows.net/
     ```
 
-    Nahraďte **&lt;ID&gt;** předplatného identifikátorem vašeho předplatného,  **&lt;ID&gt; aplikace** s identifikátorem aplikace služby Active Directory, **&lt;Authentication Key pomocí&gt;** klíče aplikace a  **&lt;ID&gt; tenanta** s identifikátorem tenanta.
+    Nahraďte **&lt;ID předplatného&gt;** pomocí identifikátoru předplatného, **&lt;&gt;ID aplikace** s identifikátorem aplikace služby Active Directory, **&lt;Authentication-Key&gt;** s klíčem aplikace a **&lt;ID tenanta**&gt;s identifikátorem tenanta.
 
 2. Uložte soubor.
 3. V prostředí nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k ověřovacímu souboru.
 
 ### <a name="create-the-management-client"></a>Vytvořit klienta pro správu
 
-1. Otevřete soubor v části `src\main\java\com\fabrikam` a ujistěte se, že je tento příkaz balíčku v horní části: `App.java`
+1. Otevřete soubor `App.java` v části `src\main\java\com\fabrikam` a ujistěte se, že je tento příkaz balíčku v horní části:
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -184,7 +184,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
 
     ```
 
-## <a name="create-resources"></a>Vytvořit prostředky
+## <a name="create-resources"></a>Vytvoření prostředků
 
 ### <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -470,6 +470,6 @@ Spuštění této konzolové aplikace z začátku do konce by mělo trvat přibl
 2. Než stisknete **ENTER** a začnete odstraňovat prostředky, může trvat několik minut, než se ověří vytváření prostředků v Azure Portal. Kliknutím na stav nasazení zobrazíte informace o nasazení.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o používání [knihoven Azure pro Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
 

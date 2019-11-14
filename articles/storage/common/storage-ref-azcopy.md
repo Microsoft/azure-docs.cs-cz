@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0772446b0259b12d3f76b2020eeed4c9c2de1119
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882224"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038094"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -25,6 +25,13 @@ Obecný formát příkazů je: `azcopy [command] [arguments] --[flag-name]=[flag
 
 Chcete-li nahlásit problémy nebo získat další informace o nástroji, přečtěte si téma [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
 
+## <a name="related-conceptual-articles"></a>Související koncepční články
+
+- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+
 ## <a name="options"></a>Možnosti
 
 **--Cap – Mbps**   Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.
@@ -33,7 +40,7 @@ Chcete-li nahlásit problémy nebo získat další informace o nástroji, přeč
       
 **--výstupní typ**  Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text". (výchozí "text")
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Začínáme s AzCopy](storage-use-azcopy-v10.md)
 - [AzCopy](storage-ref-azcopy-bench.md)

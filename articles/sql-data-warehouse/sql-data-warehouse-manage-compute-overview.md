@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 11/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f93996d834ab805f2228543a833c4ce601042dc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692630"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039087"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočetních prostředků v Azure SQL Data Warehouse
 Přečtěte si o správě výpočetních prostředků v Azure SQL Data Warehouse. Snižte náklady tím, že pozastavíte datový sklad nebo Škálujte datový sklad, abyste splnili nároky na výkon. 
@@ -34,19 +34,23 @@ Chcete-li provést operaci škálování, SQL Data Warehouse nejprve zajistěte,
 Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní uzel při změně jednotek datového skladu.  DWU6000 poskytuje 60 výpočetních uzlů a dosahuje mnohem vyššího výkonu dotazů než DWU100. 
 
 | Jednotky datového skladu  | \# výpočetních uzlů | \# distribucí na uzel |
-| ---- | ------------------ | ---------------------------- |
-| 100  | 1                  | 60                           |
-| 200  | 2                  | 30                           |
-| 300  | 3                  | 20                           |
-| 400  | 4                  | 15                           |
-| 500  | 5                  | 12                           |
-| 600  | 6                  | 10                           |
-| 1 000 | 10                 | 6                            |
-| 1200 | 12                 | 5                            |
-| 1 500 | 15                 | 4                            |
-| 2000 | 20                 | 3                            |
-| 3000 | 30                 | 2                            |
-| 6000 | 60                 | 1                            |
+| -------- | ---------------- | -------------------------- |
+| DW100c   | 1                | 60                         |
+| DW200c   | 1                | 60                         |
+| DW300c   | 1                | 60                         |
+| DW400c   | 1                | 60                         |
+| DW500c   | 1                | 60                         |
+| DW1000c  | 2                | 30                         |
+| DW1500c  | 3                | 20                         |
+| DW2000c  | 4                | 15                         |
+| DW2500c  | 5                | 12                         |
+| DW3000c  | 6                | 10                         |
+| DW5000c  | 10               | 6                          |
+| DW6000c  | 12               | 5                          |
+| DW7500c  | 15               | 4                          |
+| DW10000c | 20               | 3                          |
+| DW15000c | 30               | 2                          |
+| DW30000c | 60               | 1                          |
 
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>Zjištění správné velikosti jednotek datového skladu

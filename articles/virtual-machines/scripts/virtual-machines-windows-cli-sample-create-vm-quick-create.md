@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Rychlé vytvoření virtuálního počítače s Windows Serverem 2016 | Microsoft Docs
+title: Ukázkový skript Azure CLI – Rychlé vytvoření virtuálního počítače s Windows Serverem 2016
 description: Ukázkový skript Azure CLI – Rychlé vytvoření virtuálního počítače s Windows Serverem 2016
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 565c660473d819a046ce54c6bb3dfa05c90ee5df
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: a7be615584c4994619683a3670898d4c47c91d25
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173818"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039892"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Rychlé vytvoření virtuálního počítače pomocí Azure CLI
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup --yes
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině zabezpečení sítě. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |

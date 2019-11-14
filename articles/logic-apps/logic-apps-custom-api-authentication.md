@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: ecec237eab42cf434ab8627ebdf9b1e34f3ab3f1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838128"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039126"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Zabezpečená volání vlastních rozhraní API z Azure Logic Apps
 
@@ -203,7 +203,7 @@ Otevřete definici aplikace logiky v zobrazení kódu, vyhledejte část definic
 | Vlastnost | Požaduje se | Popis | 
 | -------- | -------- | ----------- | 
 | tenant | Ano | Identifikátor GUID pro tenanta Azure AD | 
-| osoby | Ano | Identifikátor GUID cílového prostředku, ke kterému chcete získat přístup, což je ID klienta z identity aplikace pro webovou aplikaci nebo aplikaci API. | 
+| audience | Ano | Identifikátor GUID cílového prostředku, ke kterému chcete získat přístup, což je ID klienta z identity aplikace pro webovou aplikaci nebo aplikaci API. | 
 | clientId | Ano | Identifikátor GUID pro klienta požadujícího přístup, což je ID klienta z identity aplikace pro vaši aplikaci logiky. | 
 | Tajný kód | Ano | Klíč nebo heslo z identity aplikace pro klienta, který žádá o přístupový token | 
 | type | Ano | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth`. | 
@@ -251,12 +251,12 @@ V části **autorizace** zahrňte tyto vlastnosti:
 } 
 ```
 
-| Vlastnost | Požaduje se | Popis | 
-| -------- | -------- | ----------- | 
-| type | Ano | Typ ověřování. Pro klientské certifikáty SSL musí být hodnota `ClientCertificate`. | 
-| heslo | Ano | Heslo pro přístup k klientskému certifikátu (soubor PFX) | 
-| PFX | Ano | Obsah klientského certifikátu kódovaný v Base64 (soubor PFX) | 
-|||| 
+| Vlastnost | Požaduje se | Popis |
+| -------- | -------- | ----------- |
+| `type` | Ano | Typ ověřování. Pro klientské certifikáty SSL musí být hodnota `ClientCertificate`. |
+| `password` | Ne | Heslo pro přístup k klientskému certifikátu (soubor PFX) |
+| `pfx` | Ano | Obsah klientského certifikátu kódovaný v Base64 (soubor PFX) |
+||||
 
 <a name="basic"></a>
 

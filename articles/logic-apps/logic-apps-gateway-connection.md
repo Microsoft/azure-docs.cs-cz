@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 356eab6122272162f20e1516a9ef7f4ea0127084
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796256"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049056"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -28,7 +28,7 @@ Tento článek ukazuje, jak vytvořit prostředek brány Azure pro dříve [nain
 Informace o tom, jak používat bránu s dalšími službami, najdete v těchto článcích:
 
 * [Místní brána dat Power BI Microsoftu](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Automatizace místní brány dat](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Automatizace místní brány dat](/power-automate/gateway-reference)
 * [Místní brána dat Microsoft Power Apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services místní bránu dat](../analysis-services/analysis-services-gateway.md)
 

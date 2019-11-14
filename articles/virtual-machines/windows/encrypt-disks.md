@@ -1,5 +1,5 @@
 ---
-title: Šifrování disků na virtuálním počítači s Windows v Azure | Microsoft Docs
+title: Šifrování disků na virtuálním počítači s Windows v Azure
 description: Šifrování virtuálních disků na virtuálním počítači s Windows kvůli zvýšení zabezpečení pomocí Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 73f38760153a6e1db5621801282c71216b3e8560
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 096fe779c077424b01df3ead5965cb799866a03b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749434"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033529"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Šifrování virtuálních disků na virtuálním počítači s Windows
 Pro rozšířené zabezpečení virtuálních počítačů a dodržování předpisů můžete virtuální disky v Azure šifrovat. Disky se šifrují pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Můžete řídit tyto kryptografické klíče a auditovat jejich použití. Tento článek popisuje, jak pomocí Azure PowerShell šifrovat virtuální disky na virtuálním počítači s Windows. Můžete také [Šifrovat virtuální počítače se systémem Linux](../linux/disk-encryption-overview.md).

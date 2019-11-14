@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure | Microsoft Docs
+title: Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure
 description: Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 4301d81a4d14c36c34d29a54bc146bc8985dfc00
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392758"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035487"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure
 
@@ -96,7 +96,7 @@ Zobrazí se chyba, že oprávnění pro SSH bylo zamítnuto. SSH pro hostitele P
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Tajný kód trezoru klíčů s privátním klíčem nebyl správně vytvořen.
 
-Privátní klíč se zkopíruje do hostitele Ansible PlayBook – ~/.ssh/id_rsa. Potvrďte, že je tento soubor správný. Otestujte otevřením relace SSH na jednom z uzlů clusteru z PlayBook hostitele Ansible.
+Privátní klíč se zkopíruje do hostitele PlayBook Ansible-~/.ssh/id_rsa. Potvrďte, že je tento soubor správný. Otestujte otevřením relace SSH na jednom z uzlů clusteru z PlayBook hostitele Ansible.
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>Přihlašovací údaje instančního objektu byly zadány nesprávně.
 
@@ -118,5 +118,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 V případě některých chyb můžete k získání dalších informací použít také následující příkazy:
 
-1. stav systemctl @no__t – 0service >
+1. Služba stavu systemctl \<>
 2. journalctl – XE

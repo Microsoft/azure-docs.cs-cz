@@ -1,5 +1,5 @@
 ---
-title: Kurz – CI/CD z Jenkins na virtuální počítače Azure pomocí služby Azure DevOps Services | Microsoft Docs
+title: Kurz – CI/CD z Jenkinse do virtuálních počítačů Azure s Azure DevOps Services
 description: V tomto kurzu se naučíte, jak nastavit kontinuální integraci (CI) a průběžné nasazování (CD) aplikace Node.js pomocí Jenkins na virtuální počítače Azure ze správy vydaných verzí v produktech Visual Studio Team Services nebo Microsoft Team Foundation Server.
 author: tomarchermsft
 manager: jpconnock
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 42e1ede7c762fef1f33436ea4c757b0c0531a8f2
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828433"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034568"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace na linuxové virtuální počítače v Azure pomocí Jenkins a Azure DevOps Services
 
@@ -77,7 +77,7 @@ Nejprve musíte nakonfigurovat dva moduly plug-in Jenkins: **NodeJS** a **VS Tea
 5. Přejděte zpět na řídicí panel Jenkins a vyberte **Manage Jenkins** (Spravovat Jenkins).
 6. Vyberte **Global Tool Configuration** (Globální konfigurace nástroje). Najděte **NodeJS** a vyberte **NodeJS installations** (Instalace NodeJS).
 7. Vyberte možnost **Install automatically** (Nainstalovat automaticky) a pak zadejte hodnotu **Name** (Název).
-8. Vyberte **Save** (Uložit).
+8. Vyberte **Uložit**.
 
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Konfigurace projektu Jenkins Freestyle pro Node.js
 
@@ -130,7 +130,7 @@ Koncový bod služby umožňuje službě Azure DevOps Services připojení k Jen
    > [!NOTE]
    > V následujícím postupu nainstalujte všechno, co je potřeba, a *nespouštějte skript s oprávněními sudo*.
 
-1. Otevřete kartu **Vydání** centra **Sestavení a vydání**, otevřete **Skupiny nasazení** a vyberte **+ Nový**.
+1. Otevřete kartu **Vydání** centra **Sestavení a vydání&amp;, otevřete** Skupiny nasazení**a vyberte**+ Nový **.
 2. Zadejte název skupiny nasazení a volitelný popis. Potom vyberte **Vytvořit**.
 3. Zvolte operační systém virtuálního počítače cíle nasazení. Vyberte například **Ubuntu 16.04+** .
 4. Vyberte **Použít ve skriptu token PAT k ověřování**.
@@ -146,7 +146,7 @@ Kanál verze určuje proces, který Azure Pipelines používá k nasazení aplik
 
 Kanál verze vytvoříte v Azure Pipelines takto:
 
-1. Otevřete kartu **Vydání** centra **Sestavení a vydání** a vyberte **Vytvořit kanál verze**. 
+1. Otevřete kartu **Vydání** centra **Sestavení a vydání&amp; a vyberte** Vytvořit kanál verze **. 
 2. Zvolte, že chcete začít **prázdným procesem** a vyberte **prázdnou** šablonu.
 3. V části **Artefakty** vyberte **+ Přidat artefakt** a jako **Typ zdroje** zvolte **Jenkins**. Vyberte připojení ke koncovému bodu služby Jenkins. Pak vyberte zdrojovou úlohu Jenkins a vyberte **Přidat**.
 4. Vyberte tři tečky vedle **Prostředí 1**. Vyberte **Přidat fázi skupiny nasazení**.

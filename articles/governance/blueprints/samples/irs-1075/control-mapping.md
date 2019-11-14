@@ -1,17 +1,14 @@
 ---
 title: Mapování ukázkových ovládacích prvků pro finanční úřad finančního úřadu 1075
 description: Mapování ovládacího prvku ukázkového plánu 1075. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: faaa16cb69ec7aaeb88696b3094b426b208a9939
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b56e1a2c8a71e3bb7927dc487e0c2f1e7709d413
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161391"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032212"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Mapování ovládacího prvku ukázka finančního úřadu 1075
 
@@ -84,7 +81,7 @@ Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného 
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Pro aplikaci API by mělo být vypnuto vzdálené ladění.
 - Vzdálené ladění by mělo být pro Function App vypnuté.
-- Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.
+- Vzdálené ladění by měl být vypnuté pro webovou aplikaci
 
 ## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) obsah auditu záznamů | Centralizovaná správa obsahu plánovaného záznamu auditu
 
@@ -92,11 +89,11 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 odpověď AU-5 na selhání zpracování auditu
 
@@ -113,11 +110,11 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním 
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU – 12. generace auditu
 
@@ -125,11 +122,11 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování na úrovni SQL serveru
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
@@ -250,10 +247,10 @@ Tento podrobný plán vám pomůže chránit důvěrnou a integritu odesílanýc
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
 - Auditovat webové servery systému Windows, které nepoužívají protokoly zabezpečených komunikací
 - Nasaďte požadavky na auditovat webové servery Windows, které nepoužívají protokoly zabezpečené komunikace.
-- Function App by měl být přístupný jenom přes HTTPS
+- Funkce aplikace by měla být přístupná jen přes HTTPS
 - Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
 - Zabezpečený přenos do účtů úložiště by měl být povolený.
-- Webová aplikace by měla být přístupná jen přes protokol HTTPS
+- Webová aplikace by měla být přístupná jen přes HTTPS
 
 ## <a name="93166-sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>9.3.16.6 SC-28 (1) Ochrana informací v klidovém znění | Kryptografická ochrana
 
@@ -300,11 +297,11 @@ Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a v
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 - Nasazení pokročilých zabezpečení dat na SQL serverech
@@ -329,7 +326,7 @@ Teď, když jste zkontrolovali mapování ovládacího prvku pro plán 1075, Pro
 > [!div class="nextstepaction"]
 > [Finanční úřad pro 1075 – přehled](./index.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

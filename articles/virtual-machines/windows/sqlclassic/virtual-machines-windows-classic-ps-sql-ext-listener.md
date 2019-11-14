@@ -1,5 +1,5 @@
 ---
-title: Konfigurace externího naslouchacího procesu pro skupiny dostupnosti Always On | Microsoft Docs
+title: Konfigurace externího naslouchacího procesu pro skupiny dostupnosti
 description: Tento kurz vás provede jednotlivými kroky při vytváření naslouchacího procesu skupiny dostupnosti Always On v Azure, který je externě přístupný pomocí veřejné virtuální IP adresy přidružené cloudové služby.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 78881830d4e558daaad6e1929b30287e2731fb1b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100417"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032721"
 ---
-# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurace externího naslouchacího procesu pro skupiny dostupnosti Always On v Azure
+# <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurace externího naslouchacího procesu pro skupiny dostupnosti na virtuálních počítačích Azure SQL Server
 > [!div class="op_single_selector"]
 > * [Interní naslouchací proces](../classic/ps-sql-int-listener.md)
 > * [Externí naslouchací proces](../classic/ps-sql-ext-listener.md)
@@ -31,7 +32,7 @@ ms.locfileid: "70100417"
 V tomto tématu se dozvíte, jak nakonfigurovat naslouchací proces pro skupinu dostupnosti Always On, která je externě přístupná na internetu. To je umožněno přiřazením **veřejné virtuální IP adresy (VIP)** cloudové služby k naslouchacímu procesu.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
 Vaše skupina dostupnosti může obsahovat jenom repliky, které jsou jenom místní, jenom Azure, nebo v místním prostředí i v Azure pro hybridní konfigurace. Repliky Azure se můžou nacházet ve stejné oblasti nebo v několika oblastech pomocí více virtuálních sítí (virtuální sítě). Následující postup předpokládá, že jste už [nakonfigurovali skupinu dostupnosti](../classic/portal-sql-alwayson-availability-groups.md) , ale nenakonfigurovali jste naslouchací proces.
 
@@ -126,10 +127,10 @@ Aby bylo možné přistupovat k naslouchacímu procesu mimo virtuální síť, m
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-Na rozdíl od předchozího příkladu musí být použito ověřování SQL, protože volající nemůže používat ověřování systému Windows přes Internet. Další informace najdete v tématu [Skupina dostupnosti Always On na virtuálním počítači Azure: Scénáře](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)připojení klientů. Pokud používáte ověřování SQL, ujistěte se, že jste v obou replikách vytvořili stejné přihlašovací údaje. Další informace o řešení potíží s přihlášeními pomocí skupin dostupnosti najdete v tématech [Postup mapování přihlášení nebo použití obsaženého uživatele SQL Database pro připojení k ostatním replikám a mapování na databáze dostupnosti](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
+Na rozdíl od předchozího příkladu musí být použito ověřování SQL, protože volající nemůže používat ověřování systému Windows přes Internet. Další informace najdete v tématu [Skupina dostupnosti Always On na virtuálním počítači Azure: scénáře připojení klientů](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Pokud používáte ověřování SQL, ujistěte se, že jste v obou replikách vytvořili stejné přihlašovací údaje. Další informace o řešení potíží s přihlášeními pomocí skupin dostupnosti najdete v tématech [Postup mapování přihlášení nebo použití obsaženého uživatele SQL Database pro připojení k ostatním replikám a mapování na databáze dostupnosti](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 
 Pokud jsou repliky Always On v různých podsítích, klienti musí v připojovacím řetězci zadat **MultiSubnetFailover = true** . Výsledkem je paralelní pokusy o připojení k replikám v různých podsítích. Všimněte si, že tento scénář zahrnuje nasazení skupiny dostupnosti AlwaysOn pro více oblastí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
 

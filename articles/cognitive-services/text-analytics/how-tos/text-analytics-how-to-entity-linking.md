@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: b139f473bb20dbecde75c3b08dd92371849f096e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835670"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031431"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -33,7 +33,7 @@ Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé en
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Rozpoznávání pojmenovaných entit V3 Public Preview
 
-[Další verze rozpoznávání pojmenovaných entit](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) je nyní k dispozici ve verzi Public Preview. Poskytuje aktualizace pro odkazování na entity i pro rozpoznávání pojmenovaných entit. 
+[Další verze rozpoznávání pojmenovaných entit]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) je nyní k dispozici ve verzi Public Preview. Poskytuje aktualizace pro odkazování na entity i pro rozpoznávání pojmenovaných entit. 
 
 :::row:::
     :::column span="":::
@@ -99,7 +99,7 @@ Propojení entit
 > [!NOTE]
 > Následující entity jsou podporovány funkcí rozpoznávání pojmenovaných entit (NER) verze 2. [Ner V3](#named-entity-recognition-v3-public-preview) je ve verzi Public Preview a významně rozšiřuje počet a hloubku entit rozpoznaných v textu.   
 
-| Typ  | Podtyp | Příklad |
+| Typ  | SubType | Příklad |
 |:-----------   |:------------- |:---------|
 | Person (Osoba)        | Není k dispozici\*         | Jan, vyúčtování Branch     |
 | Umístění      | Není k dispozici\*         | "Redmond, Washington", "Paříž"  |
@@ -111,14 +111,14 @@ Propojení entit
 | Množství      | Měna      | "10,99 USD"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
 | Množství      | Teplota   | "32 stupňů"    |
-| DateTime      | Není k dispozici\*         | "4. února 2012 – 18:30"      |
-| DateTime      | Datum          | "2. května 2017", "2. 5. 2017"   |
-| DateTime      | Time          | "8:00", "8:00"  |
-| DateTime      | Rozsah dat     | "2. května až 5. května"    |
-| DateTime      | Časový rozsah     | "18:00 až 19:00"     |
-| DateTime      | Doba trvání      | "1 minuta a 45 sekund"   |
-| DateTime      | Sada           | "každé úterý"     |
-| zprostředkovatele identity           | Není k dispozici\*         | "https:\//www.bing.com"    |
+| Datum a čas      | Není k dispozici\*         | "4. února 2012 – 18:30"      |
+| Datum a čas      | Datum          | "2. května 2017", "2. 5. 2017"   |
+| Datum a čas      | Čas          | "8:00", "8:00"  |
+| Datum a čas      | Rozsah dat     | "2. května až 5. května"    |
+| Datum a čas      | Časový rozsah     | "18:00 až 19:00"     |
+| Datum a čas      | Doba trvání      | "1 minuta a 45 sekund"   |
+| Datum a čas      | Nastavit           | "každé úterý"     |
+| Adresa URL           | Není k dispozici\*         | "https:\//www.bing.com"    |
 | Email         | Není k dispozici\*         | support@contoso.com |
 
 \* v závislosti na vstupních a extrahovaných entitách, mohou některé entity vynechat `SubType`.  Všechny uvedené podporované typy entit jsou k dispozici pouze pro jazyky anglické, zjednodušené, francouzštiny, němčiny a španělštiny.
@@ -158,7 +158,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 + Vytvořte žádost **POST**. Přečtěte si dokumentaci k rozhraní API pro tento požadavek: [entity API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Je nutné zahrnout `/text/analytics/v2.1/entities`. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
++ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Je nutné zahrnout `/text/analytics/v2.1/entities`. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 

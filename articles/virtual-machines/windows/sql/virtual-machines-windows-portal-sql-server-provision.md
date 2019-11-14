@@ -1,5 +1,5 @@
 ---
-title: Příručka pro zřizování pro virtuální počítače s Windows SQL Server v Azure Portal | Microsoft Docs
+title: Zřídit virtuální počítač s Azure Portal
 description: Tato příručka popisuje vaše možnosti vytváření virtuálních počítačů s Windows SQL Server 2017 v Azure Portal.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1e0bc4647476cd5c6aa0f38456ef8890b4ddcaa5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 68fda45038da48660da0c29787b3a86e00d9b129
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828789"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033589"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak zřídit virtuální počítač s Windows SQL Server v Azure Portal
 
@@ -52,7 +53,7 @@ Když vytváříte virtuální počítač s SQL Server, můžete z Galerie virtu
    > Další informace o těchto možnostech najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 
 ## <a name="1-configure-basic-settings"></a>1. Konfigurace základního nastavení
@@ -117,7 +118,7 @@ Na kartě **síť** nakonfigurujte možnosti sítě.
 
 ![Nastavení sítě virtuálního počítače SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-networking.png)
 
-#### <a name="monitoring"></a>Sledování
+#### <a name="monitoring"></a>Monitorování
 
 Na kartě **monitorování** nakonfigurujte monitorování a automatické vypnutí. 
 
@@ -162,7 +163,7 @@ Obecně se doporučuje zvýšit zabezpečení výběrem nejvíce omezujícího p
 
 
 
-### <a name="authentication"></a>Ověření
+### <a name="authentication"></a>Ověřování
 
 Pokud požadujete SQL Server ověřování, klikněte na **Povolit** pod **ověřováním SQL** na kartě **nastavení SQL Server** .
 
@@ -186,7 +187,7 @@ V následující tabulce jsou uvedeny parametry, které jsou nezbytné pro konfi
 
 | PARAMETR | POPIS | PŘÍKLAD |
 | --- | --- | --- |
-| **Adresa URL služby Key Vault** |Umístění služby Key Vault |https: \//contosokeyvault. trezor. Azure. NET/ |
+| **Adresa URL služby Key Vault** |Umístění služby Key Vault |https:\//contosokeyvault.vault.azure.net/ |
 | **Název objektu zabezpečení** |Hlavní název služby Azure Active Directory. Tento název se také označuje jako ID klienta. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **Tajný kód objektu zabezpečení** |Tajný klíč objektu zabezpečení služby Azure Active Directory. Tento tajný klíč se také označuje jako Tajný klíč klienta. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **Název přihlašovacího údaje** |**Název přihlašovacího údaje:** Integrace se službou Azure Key Vault vytvoří přihlašovací údaje v rámci SQL Serveru, díky čemuž mají virtuální počítače přístup do trezoru klíčů. Zvolte název pro tyto přihlašovací údaje. |moje_přihlaš1 |

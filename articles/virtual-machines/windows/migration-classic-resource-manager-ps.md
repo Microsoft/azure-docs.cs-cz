@@ -1,5 +1,5 @@
 ---
-title: Migrace na Správce prostředků s využitím PowerShellu | Microsoft Docs
+title: Migrace na Správce prostředků s využitím PowerShellu
 description: Tento článek vás provede migrací prostředků IaaS podporovaných platformou, jako jsou virtuální počítače, virtuální sítě (virtuální sítě) a účty úložiště z modelu Classic na Azure Resource Manager (ARM) pomocí příkazů Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 01d5670add82291cb91264ab41fcd312a338840c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 99650b090a84fd417fca5bbeb1ce3f58d32729bb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749326"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033208"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí Azure PowerShell
 Tyto kroky ukazují, jak používat Azure PowerShell příkazy k migraci prostředků infrastruktury jako služby (IaaS) z modelu nasazení Classic do modelu nasazení Azure Resource Manager.

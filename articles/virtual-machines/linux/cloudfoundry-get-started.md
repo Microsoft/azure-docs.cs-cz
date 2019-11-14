@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Cloud Foundry na Microsoft Azure | Microsoft Docs
+title: Začínáme s Cloud Foundry na Microsoft Azure
 description: Spuštění OSS nebo Pivot Cloud Foundry v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: d91ad0bea7f79dd67edd4f0bb9e06a37a0f86bea
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 447550d2f6bca570869c9fa93724e4dbaba02132
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091927"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036806"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry v Azure
 
@@ -63,7 +63,7 @@ Pokud používáte Cloud Foundry Pivoted, služba Service Broker je také [k dis
 
 Cloud Foundry je vhodný pro agilní vývoj softwaru, včetně použití průběžné integrace (CI) a průběžného doručování (CD). Použijete-li Azure DevOps Services ke správě projektů a chcete nastavit kanál CI/CD, který cílí na Cloud Foundry, můžete použít [rozšíření build Cloud Foundry Azure DevOps Services](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). Modul plug-in usnadňuje konfiguraci a automatizaci nasazení Cloud Foundry, ať už běží v Azure nebo jiném prostředí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Nasazení Pivot Cloud Foundry z Azure Marketplace](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
 - [Nasazení aplikace pro Cloud Foundry v Azure](./cloudfoundry-deploy-your-first-app.md)

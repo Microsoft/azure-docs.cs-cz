@@ -1,5 +1,5 @@
 ---
-title: Připojení k virtuálnímu počítači s Windows Serverem | Dokumentace Microsoftu
+title: Připojení k virtuálnímu počítači s Windows serverem
 description: Zjistěte, jak se připojit a přihlásit k virtuálnímu počítači s Windows pomocí Azure Portal a modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 6566ce4b9cec9ff09666e734625f15033c85127b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 43b6d541cfb3d2e5bd583223d9d93921982c65e0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749569"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039441"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlásit k virtuálnímu počítači Azure s Windows
 Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív se připojíte k virtuálnímu počítači a potom se přihlásíte.

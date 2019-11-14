@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 0c570702e4c3899ef2847883e6fc8649e603a787
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953972"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039693"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
@@ -32,8 +32,6 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejjednodušší cestu k nasazení scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v článcích v [dokumentaci k Site Recovery](https://docs.microsoft.com/azure/site-recovery)v části **návody** .
 
-> [!WARNING]
-> Podpora zotavení po havárii virtuálních počítačů Hyper-V s využitím nástroje System Center VMM se v blízké budoucnosti už nepoužívá. Než budete pokračovat, doporučujeme přečíst si podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
 
 
 ## <a name="before-you-begin"></a>Než začnete

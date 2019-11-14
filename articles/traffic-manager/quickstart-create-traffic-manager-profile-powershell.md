@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – vytvoření profilu Traffic Manageru k zajištění vysoké dostupnosti aplikací pomocí Azure Powershellu
-description: Tento článek Rychlý start popisuje, jak vytvořit profil Traffic Manageru k vytvoření vysoce dostupných webových aplikací.
+title: 'Rychlý Start: vytvoření profilu pro vysokou dostupnost aplikací – Azure PowerShell – Azure Traffic Manager'
+description: Tento článek rychlý Start popisuje, jak vytvořit profil Traffic Manager pro sestavení webové aplikace s vysokou dostupností.
 services: traffic-manager
 author: asudbring
 mnager: twooley
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2019
 ms.author: allensu
-ms.openlocfilehash: ce05d594555095c061e43df2464b906138811448
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0b1a0040c3cf6d517b19445be689dcc786334325
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051113"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038854"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Rychlý start: Vytvořit profil Traffic Manageru s vysokou dostupností webové aplikace s využitím Azure Powershellu
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Rychlý Start: vytvoření profilu Traffic Manager pro webovou aplikaci s vysokou dostupností pomocí Azure PowerShell
 
-Tento rychlý start popisuje, jak vytvořit profil služby Traffic Manager, který poskytuje vysokou dostupnost pro vaši webovou aplikaci.
+V tomto rychlém startu se dozvíte, jak vytvořit profil Traffic Manager, který poskytuje vysokou dostupnost vaší webové aplikace.
 
-V tomto rychlém startu vytvoříte dvě instance webové aplikace. Každý z nich je spuštěna v jiné oblasti Azure. Vytvoříte profil Traffic Manageru na základě [Priorita koncového bodu](traffic-manager-routing-methods.md#priority). Profil, který bude směrovat uživatelský provoz do primární lokality spuštění webové aplikace. Traffic Manager neustále monitoruje webové aplikace. V případě, že primární lokalita není k dispozici, poskytuje automatické převzetí služeb při selhání zálohování lokality.
+V tomto rychlém startu vytvoříte dvě instance webové aplikace. Každý z nich je spuštěný v jiné oblasti Azure. Vytvoříte profil Traffic Manager na základě [priority koncového bodu](traffic-manager-routing-methods.md#priority). Profil směruje uživatelský provoz do primární lokality, na které běží webová aplikace. Traffic Manager nepřetržitě monitoruje webovou aplikaci. Pokud primární lokalita není k dispozici, poskytuje automatické převzetí služeb při selhání pro záložní lokalitu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Abyste vytvořili skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
+Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
 
 ```azurepowershell-interactive
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name MyResourceGroup -Location $Location1
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
-Vytvoření profilu Traffic Manageru pomocí [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) , který směruje provoz uživatelů na základě priority koncových bodů.
+Vytvořte profil Traffic Manager pomocí [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) , který směruje provoz uživatele na základě priority koncového bodu.
 
 ```azurepowershell-interactive
 
@@ -65,12 +65,12 @@ New-AzTrafficManagerProfile `
 -MonitorPort 80
 ```
 
-## <a name="create-web-apps"></a>Vytvoření webové aplikace
+## <a name="create-web-apps"></a>Vytvořit Web Apps
 
-Pro účely tohoto rychlého startu budete potřebovat dvě instance webové aplikace nasazené ve dvou různých oblastech Azure (*USA – západ* a *USA – východ*). Každá bude sloužit jako primární server a převzetí služeb při selhání koncových bodů Traffic Manageru.
+Pro účely tohoto rychlého startu budete potřebovat dvě instance webové aplikace nasazené ve dvou různých oblastech Azure (*západní USA* a *východní USA*). Každý bude sloužit jako primární koncová body a koncové body převzetí služeb při selhání pro Traffic Manager
 
-### <a name="create-web-app-service-plans"></a>Vytvoření plánů služby App Service Web
-Vytvoření webové aplikace služby plány pomocí [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) pro dvě instance webové aplikace, kterou nasadíte ve dvou různých oblastech Azure.
+### <a name="create-web-app-service-plans"></a>Vytváření plánů Web App Service
+Pomocí [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) můžete vytvářet plány služby Web App Service pro dvě instance webové aplikace, které nasadíte ve dvou různých oblastech Azure.
 
 ```azurepowershell-interactive
 
@@ -85,8 +85,8 @@ New-AzAppservicePlan -Name "$App1Name-Plan" -ResourceGroupName MyResourceGroup -
 New-AzAppservicePlan -Name "$App2Name-Plan" -ResourceGroupName MyResourceGroup -Location $Location2 -Tier Standard
 
 ```
-### <a name="create-a-web-app-in-the-app-service-plan"></a>Vytvoření webové aplikace v plánu služby App Service
-Vytvořte dvě instance webové aplikace pomocí [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) ve službě App Service plány v *USA – západ* a *USA – východ* oblastí Azure.
+### <a name="create-a-web-app-in-the-app-service-plan"></a>Vytvoření webové aplikace v plánu App Service
+Vytvořte dvě instance webové aplikace pomocí [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) v plánech App Service ve *západní USA* a *východní USA* oblastech Azure.
 
 ```azurepowershell-interactive
 $App1ResourceId=(New-AzWebApp -Name $App1Name -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "$App1Name-Plan").Id
@@ -95,9 +95,9 @@ $App2ResourceId=(New-AzWebApp -Name $App2Name -ResourceGroupName MyResourceGroup
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
-Přidání dvou webových aplikací jako koncových bodů Traffic Manageru pomocí [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) profilu Traffic Manageru následujícím způsobem:
-- Přidání webové aplikace v *USA – západ* oblasti Azure jako primární koncový bod ke směrování uživatelského provozu. 
-- Přidání webové aplikace v *USA – východ* oblasti Azure jako koncový bod převzetí služeb při selhání. Primární koncový bod není k dispozici, provoz automaticky směruje do koncového bodu převzetí služeb při selhání.
+Přidejte tyto dva Web Apps jako Traffic Manager koncových bodů pomocí příkazu [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) do profilu Traffic Manager následujícím způsobem:
+- Přidejte webovou aplikaci umístěnou v *západní USA* oblasti Azure jako primární koncový bod pro směrování všech uživatelských přenosů. 
+- Přidejte webovou aplikaci umístěnou v *východní USA* oblasti Azure jako koncový bod převzetí služeb při selhání. Když je primární koncový bod nedostupný, provoz se automaticky směruje na koncový bod převzetí služeb při selhání.
 
 ```azurepowershell-interactive
 New-AzTrafficManagerEndpoint -Name "$App1Name-$Location1" `
@@ -117,25 +117,25 @@ New-AzTrafficManagerEndpoint -Name "$App2Name-$Location2" `
 
 ## <a name="test-traffic-manager-profile"></a>Test profilu služby Traffic Manager
 
-V této části budete zkontrolovat název domény vašeho profilu Traffic Manageru. Pokud nakonfigurujete primární koncový bod do nedostupný. Nakonec získáte v tématu, že je webová aplikace stále k dispozici. Je to proto, že Traffic Manager odesílá provoz do koncového bodu převzetí služeb při selhání.
+V této části zkontrolujete název domény vašeho profilu Traffic Manager. Také nakonfigurujete primární koncový bod jako nedostupný. Nakonec se zobrazí, že je webová aplikace stále k dispozici. Je to proto, že Traffic Manager odesílá provoz do koncového bodu převzetí služeb při selhání.
 
 ### <a name="determine-the-dns-name"></a>Určení názvu DNS
 
-Určení názvu DNS na profil Traffic Manageru pomocí [Get-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile).
+Pomocí [Get-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile)určete název DNS profilu Traffic Manager.
 
 ```azurepowershell-interactive
 Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
 -ResourceGroupName MyResourceGroup
 ```
 
-Kopírovat **RelativeDnsName** hodnotu. Je název DNS pro váš profil Traffic Manageru *http://<* relativednsname *>. trafficmanager.net*. 
+Zkopírujte hodnotu **RelativeDnsName** . Název DNS vašeho profilu Traffic Manager je *http://<* relativednsname *>. trafficmanager. NET*. 
 
 ### <a name="view-traffic-manager-in-action"></a>Zobrazení služby Traffic Manager v akci
-1. Ve webovém prohlížeči, zadejte název DNS vašeho profilu Traffic Manageru (*http://<* relativednsname *>. trafficmanager.net*) Chcete-li zobrazit výchozího webu webové aplikace.
+1. Ve webovém prohlížeči zadejte název DNS profilu Traffic Manager (*http://<* relativednsname *>. trafficmanager. NET*) a zobrazte výchozí web webové aplikace.
 
     > [!NOTE]
-    > V tomto rychlém startu scénáři směrovat všechny požadavky na primární koncový bod. Je nastavený na **Priority 1**.
-2. Chcete-li zobrazit Traffic Manageru převzetí služeb při selhání v akci, zakažte primární lokalitě pomocí [zakázat AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint).
+    > V tomto scénáři rychlého startu všechny požadavky směrují do primárního koncového bodu. Je nastavená na **priority 1**.
+2. Pokud chcete zobrazit Traffic Manager převzetí služeb při selhání v akci, zakažte primární lokalitu pomocí [Disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint).
 
    ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name $App1Name-$Location1 `
@@ -144,20 +144,20 @@ Kopírovat **RelativeDnsName** hodnotu. Je název DNS pro váš profil Traffic M
     -ResourceGroupName MyResourceGroup `
     -Force
    ```
-3. Zkopírujte název DNS vašeho profilu Traffic Manageru (*http://<* relativednsname *>. trafficmanager.net*) Chcete-li zobrazit na webu v nové relaci webového prohlížeče.
-4. Ověřte, že je webová aplikace stále k dispozici.
+3. Zkopírujte název DNS profilu Traffic Manager (*http://<* relativednsname *>. trafficmanager. NET*) a zobrazte si web v nové relaci webového prohlížeče.
+4. Ověřte, zda je webová aplikace stále k dispozici.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Jakmile budete hotovi, odstranění skupiny prostředků, webové aplikace a všech souvisejících prostředků pomocí [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
+Až budete hotovi, odstraňte skupiny prostředků, webové aplikace a všechny související prostředky pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili profil služby Traffic Manager, který poskytuje vysokou dostupnost pro vaši webovou aplikaci. Další informace o směrování provozu, nadále v kurzech Traffic Manageru.
+V tomto rychlém startu jste vytvořili profil Traffic Manager, který poskytuje vysokou dostupnost vaší webové aplikace. Pokud se chcete dozvědět víc o provozu směrování, přejděte k Traffic Manager kurzům.
 
 > [!div class="nextstepaction"]
 > [Kurzy pro službu Traffic Manager](tutorial-traffic-manager-improve-website-response.md)

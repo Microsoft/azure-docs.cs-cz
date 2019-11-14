@@ -1,5 +1,5 @@
 ---
-title: Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB | Microsoft Docs
+title: Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
 description: Postup připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB pomocí rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828401"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035661"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
 
@@ -39,9 +39,9 @@ Vytvořte v umístění *východní USA* skupinu prostředků s názvem *myResou
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT @ no__t-1random number >* a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, a to pomocí `$RANDOM` připojuje číslo k elementu end, aby bylo možné ho označit jako jedinečný.
+V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT\<náhodným číslem >* a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, a to pomocí `$RANDOM` připojí číslo ke konci, aby bylo jedinečné.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -99,7 +99,7 @@ Připojte sdílenou složku Azure k místnímu adresáři.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Výše uvedený příkaz používá příkaz [Mount](https://linux.die.net/man/8/mount) k připojení sdílené složky Azure a možností specifických pro [CIFS](https://linux.die.net/man/8/mount.cifs). Konkrétně možnosti file_mode a dir_mode nastaví soubory a adresáře na oprávnění `0777`. Oprávnění `0777` poskytuje všem uživatelům oprávnění ke čtení, zápisu a spouštění. Tato oprávnění můžete změnit nahrazením hodnot pomocí dalších [oprávnění chmod](https://en.wikipedia.org/wiki/Chmod). Můžete také použít další možnosti [CIFS](https://linux.die.net/man/8/mount.cifs) , například GID nebo UID. 
+Výše uvedený příkaz používá příkaz [Mount](https://linux.die.net/man/8/mount) k připojení sdílené složky Azure a možností specifických pro [CIFS](https://linux.die.net/man/8/mount.cifs). Konkrétně možnosti file_mode a dir_mode nastaví soubory a adresáře na `0777`oprávnění. Oprávnění `0777` poskytuje všem uživatelům oprávnění ke čtení, zápisu a spouštění. Tato oprávnění můžete změnit nahrazením hodnot pomocí dalších [oprávnění chmod](https://en.wikipedia.org/wiki/Chmod). Můžete také použít další možnosti [CIFS](https://linux.die.net/man/8/mount.cifs) , například GID nebo UID. 
 
 
 ## <a name="persist-the-mount"></a>Zachovat připojení

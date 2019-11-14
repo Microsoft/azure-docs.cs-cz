@@ -1,18 +1,18 @@
 ---
-title: Kurz – vytvoření aplikační brány s firewallem webových aplikací – Azure Portal
+title: 'Kurz: vytvoření pomocí portálu – Firewall webových aplikací'
 description: V tomto kurzu se naučíte, jak vytvořit Aplikační bránu pomocí brány firewall webových aplikací pomocí Azure Portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d439703f1637282c73cd960923733460502c55bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501705"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049222"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Kurz: vytvoření aplikační brány pomocí brány firewall webových aplikací pomocí Azure Portal
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
 > * Vytvoření virtuálních počítačů používaných jako servery back-end
-> * Vytvořit účet úložiště a nakonfigurovat diagnostiku
+> * Vytvoření účtu úložiště a konfigurace diagnostiky
 > * Testování brány Application Gateway
 
 ![Příklad Firewallu webových aplikací](../media/application-gateway-web-application-firewall-portal/scenario-waf.png)
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
 Aby mohl Azure komunikovat mezi prostředky, potřebuje virtuální síť. Můžete buď vytvořit novou virtuální síť, nebo použít existující. V tomto příkladu vytvoříte novou virtuální síť. Virtuální síť můžete vytvořit současně s aplikační bránou. Instance Application Gateway se vytvářejí v oddělených podsítích. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery.
 
@@ -103,7 +103,7 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 
 4. Na kartě **back-endy** vyberte **Další: Konfigurace**.
 
-### <a name="configuration-tab"></a>Karta konfigurace
+### <a name="configuration-tab"></a>Karta Konfigurace
 
 Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fondu, který jste vytvořili pomocí pravidla směrování.
 
@@ -203,13 +203,13 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
     ![Přidání back-endových serverů](../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 7. Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
-## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvořit účet úložiště a nakonfigurovat diagnostiku
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvoření účtu úložiště a konfigurace diagnostiky
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Pro účely tohoto článku používá Aplikační brána účet úložiště k ukládání dat pro účely detekce a prevence. K zaznamenávání dat můžete použít také protokoly Azure Monitor nebo centra událostí.
 
@@ -230,7 +230,7 @@ Nakonfigurujte diagnostiku, aby se data zaznamenávala do protokolů Application
 4. Jako název pro nastavení diagnostiky zadejte *myDiagnosticsSettings* .
 5. Vyberte možnost **archivovat do účtu úložiště**a pak vyberte **Konfigurovat** a vyberte účet úložiště *myagstore1* , který jste vytvořili dříve, a pak vyberte **OK**.
 6. Vyberte protokoly aplikační brány, které chcete shromažďovat a uchovávat.
-7. Vyberte **Save** (Uložit).
+7. Vyberte **Uložit**.
 
     ![Konfigurace diagnostiky](../media/application-gateway-web-application-firewall-portal/application-gateway-diagnostics.png)
 

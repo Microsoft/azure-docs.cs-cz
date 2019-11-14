@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a NLB | Microsoft Docs
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a NLB
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a NLB
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: b1cbb48bc6dcfcaf20d4331b93ba61e57979692c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: eab50ec5bbd6fa3942cf4845a556779da047b02f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703255"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039815"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Vyrovnávání zatížení provozu mezi vysoce dostupnými virtuálními počítači
 
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup --yes
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a podsíť. |
@@ -62,7 +62,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

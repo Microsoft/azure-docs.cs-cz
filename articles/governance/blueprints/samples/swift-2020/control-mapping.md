@@ -1,17 +1,14 @@
 ---
 title: Ukázka – SWIFT CSP – CSCF v2020 – mapování ovládacích prvků
 description: Mapování ovládacího prvku ukázka SWIFT CSP-CSCF v2020 details Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 8ef32a2cf385c052437c5e5cbd7c95077a262e83
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0e5b45ec86acbe7c55aed0aa1611f499316e9118
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163003"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037826"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Mapování ovládacího prvku Sample CSP-CSCF v2020 details
 
@@ -80,7 +77,7 @@ Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného 
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Pro aplikaci API by mělo být vypnuto vzdálené ladění.
 - Vzdálené ladění by mělo být pro Function App vypnuté.
-- Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.
+- Vzdálené ladění by měl být vypnuté pro webovou aplikaci
 
 ## <a name="13-and-64-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>1,3 a 6,4 obsahu záznamů auditu | Centralizovaná správa obsahu plánovaného záznamu auditu
 
@@ -88,9 +85,9 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>2,2, 2,7 a 6,4 Reakce na selhání zpracování auditu
 
@@ -106,9 +103,9 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním 
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1,3, 2,2, 2,7, 6,4 a 6.5 generování auditu
 
@@ -116,9 +113,9 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování na úrovni SQL serveru
 - Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
@@ -229,10 +226,10 @@ Tento podrobný plán vám pomůže chránit důvěrnou a integritu odesílanýc
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
 - Zobrazit výsledky auditu z webových serverů Windows, které nepoužívají protokoly zabezpečené komunikace
 - Nasazení požadavků pro audit webových serverů Windows, které nepoužívají zabezpečené komunikační protokoly
-- Function App by měl být přístupný jenom přes HTTPS
+- Funkce aplikace by měla být přístupná jen přes HTTPS
 - Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
 - Zabezpečený přenos do účtů úložiště by měl být povolený.
-- Webová aplikace by měla být přístupná jen přes protokol HTTPS
+- Webová aplikace by měla být přístupná jen přes HTTPS
 
 ## <a name="22-23-25-41-and-27-protection-of-information-at-rest--cryptographic-protection"></a>2,2, 2,3, 2,5, 4,1 a 2,7 Ochrana informací v klidovém znění | Kryptografická ochrana
 
@@ -275,9 +272,9 @@ Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a v
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 - Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 - Pokročilá nastavení zabezpečení dat pro SQL Server by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.
 - Měly by být povolené diagnostické protokoly v Azure Stream Analytics.
@@ -301,9 +298,9 @@ Teď, když jste zkontrolovali mapování ovládacího prvku SWIFT CSP-CSCF v202
 
 > [!div class="nextstepaction"]
 > [SWIFT CSP – CSCF v2020 podrobný plán – přehled](./index.md)
-> [SWIFT CSP – CSCF v2020 detail – kroky nasazení](./deploy.md)
+> [SWIFT CSP – CSCF v2020 detailed – kroky pro nasazení](./deploy.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

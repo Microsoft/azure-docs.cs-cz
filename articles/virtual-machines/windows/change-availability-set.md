@@ -1,5 +1,5 @@
 ---
-title: Změna skupiny dostupnosti virtuálních počítačů | Microsoft Docs
+title: Změna skupiny dostupnosti virtuálních počítačů
 description: Naučte se, jak změnit skupinu dostupnosti pro virtuální počítače pomocí Azure PowerShell a modelu nasazení Správce prostředků.
 keywords: ''
 services: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 5390643723f2907301554e69a1142cef181deb13
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7d03d684edfded1450043b943fc188c7aa07dc16
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749608"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039576"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Změna skupiny dostupnosti pro virtuální počítač s Windows
 Následující postup popisuje, jak změnit skupinu dostupnosti virtuálního počítače pomocí Azure PowerShell. Virtuální počítač se dá přidat do skupiny dostupnosti jenom při jeho vytvoření. Chcete-li změnit skupinu dostupnosti, je nutné odstranit a znovu vytvořit virtuální počítač. 

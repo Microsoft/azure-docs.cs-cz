@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem | Microsoft Docs
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 14675497bf0e042cfdf6a6548181e3a6adfd278a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3c0710f75df4cdd1cdf015c0acc374a3d06652b7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708196"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039881"
 ---
 # <a name="create-a-virtual-machine-with-the-azure-cli"></a>Vytvoření virtuálního počítače pomocí Azure CLI
 
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup --yes
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a podsíť. |
@@ -56,7 +56,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

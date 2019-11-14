@@ -1,5 +1,5 @@
 ---
-title: 'Nakonfigurujte filtry tras pro partnerský vztah Microsoftu: Azure ExpressRoute – portál | Microsoft Docs'
+title: 'ExpressRoute: filtry tras – partnerský vztah Microsoftu: Azure Portal'
 description: Tento článek popisuje postup konfigurace filtrů směrování pro partnerský vztah Microsoftu pomocí webu Azure portal.
 services: expressroute
 author: ganesr
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: c49b1fa1e2e8421146f5d5012de983c14934c23c
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0b8e06ad5688374e5ab4aaa72d8485e6da797afe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122945"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037445"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Nakonfigurujte filtry tras pro partnerský vztah Microsoftu: portál Azure
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: Azure portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -60,7 +60,7 @@ Abyste mohli úspěšně připojit ke službám prostřednictvím partnerského 
 
 -  Je nutné připojit filtr tras k okruhu ExpressRoute.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete s konfigurací, ujistěte se, že splňujete následující kritéria:
 
@@ -71,21 +71,21 @@ Než začnete s konfigurací, ujistěte se, že splňujete následující krité
  - Musíte mít active partnerský vztah Microsoftu. Postupujte podle pokynů na adrese [vytvoření a změny konfigurace partnerského vztahu](expressroute-howto-routing-portal-resource-manager.md)
 
 
-## <a name="prefixes"></a>Krok 1: Získání seznamu předpon a hodnot komunity protokolu BGP
+## <a name="prefixes"></a>Krok 1: Získání seznamu předpon a hodnotami komunity protokolu BGP
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. Získání seznamu sad hodnotami komunity protokolu BGP
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. získání seznamu hodnot komunity protokolu BGP
 
 Je k dispozici v související se službami, které jsou přístupné prostřednictvím partnerského vztahu Microsoftu hodnotami komunity protokolu BGP [požadavky na směrování služby ExpressRoute](expressroute-routing.md) stránky.
 
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Vytvořte seznam hodnot, které chcete použít
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Vytvořte seznam hodnot, které chcete použít.
 
 Vytvořte seznam [hodnot komunity protokolu BGP](expressroute-routing.md#bgp) , které chcete použít ve filtru tras. 
 
-## <a name="filter"></a>Krok 2: Vytvoření filtru tras a pravidla filtru
+## <a name="filter"></a>Krok 2: Vytvoření filtru tras a pravidlo filtru
 
 Filtr tras může mít jenom jedno pravidlo a pravidlo musí být typu "Povolit". Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
 
-### <a name="1-create-a-route-filter"></a>1. Vytvořit filtr tras
+### <a name="1-create-a-route-filter"></a>1. Vytvoření filtru tras
 Můžete vytvořit filtr tras tak, že vyberete možnost vytvořit nový prostředek. Klikněte na tlačítko **vytvořit prostředek** > **sítě** > **RouteFilter**, jak je znázorněno na následujícím obrázku:
 
 ![Vytvořit filtr tras](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
@@ -94,7 +94,7 @@ Filtr tras musíte umístit do skupiny prostředků.
 
 ![Vytvořit filtr tras](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
-### <a name="2-create-a-filter-rule"></a>2. Vytvořit pravidlo filtru
+### <a name="2-create-a-filter-rule"></a>2. vytvoření pravidla filtru
 
 Můžete přidat a aktualizovat pravidla tak, že vyberete kartu spravovat pravidla pro váš filtr tras.
 
@@ -106,7 +106,7 @@ V rozevíracím seznamu můžete vybrat služby, ke kterým se chcete připojit,
 ![Vytvořit filtr tras](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>Krok 3: Připojení filtru tras k okruhu ExpressRoute
+## <a name="attach"></a>Krok 3: Připojení filtr tras k okruhu ExpressRoute
 
 Filtr směrování můžete připojit k okruhu tak, že vyberete tlačítko Přidat okruh a v rozevíracím seznamu vyberete okruh ExpressRoute.
 

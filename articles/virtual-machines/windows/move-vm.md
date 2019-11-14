@@ -1,6 +1,6 @@
 ---
-title: Přesunutí prostředku virtuálního počítače Windows v Azure | Dokumentace Microsoftu
-description: Přesunutí virtuálního počítače s Windows do jiného Azure předplatné nebo skupinu prostředků v modelu nasazení Resource Manager.
+title: Přesunutí prostředku virtuálního počítače s Windows v Azure
+description: Přesuňte virtuální počítač s Windows do jiného předplatného Azure nebo skupiny prostředků v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,39 +13,39 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 6b189c4bfcc61084ed197649d376cae8fdf2eb56
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 9264e36922cb88c541ba9fb2fe54a9606f371b72
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723085"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033177"
 ---
-# <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Přesunout do jiného Azure předplatné nebo skupinu prostředků virtuálního počítače s Windows
-Tento článek vás provede postupy přesunout virtuální počítač s Windows (VM) mezi skupinami prostředků nebo předplatná. Přesun mezi předplatnými může být užitečné, pokud původně vytvořili virtuální počítač v rámci osobní předplatného a teď chcete přesunout do předplatného vaší společnosti chcete-li pokračovat v práci. Není potřeba spusťte virtuální počítač, aby bylo možné přesunout a má pokračovat spuštění během přesunu.
+# <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Přesunutí virtuálního počítače s Windows do jiného předplatného nebo skupiny prostředků Azure
+Tento článek vás provede postupem přesunutí virtuálního počítače s Windows mezi skupinami prostředků nebo odběry. Přesunutí mezi předplatnými může být užitečné, pokud jste původně vytvořili virtuální počítač v osobním předplatném a chcete ho teď přesunout do předplatného vaší společnosti, abyste mohli pokračovat v práci. Virtuální počítač není nutné spouštět, aby jej bylo možné přesunout a měl by během přesunu pokračovat v běhu.
 
 > [!IMPORTANT]
->Nové ID prostředků vytvořených jako součást přesunu. Po přesunutí virtuálního počítače, je potřeba aktualizovat nástroje a skripty, které používaly nové ID prostředků. 
+>V rámci přesunutí se vytvoří nová ID prostředků. Po přesunutí virtuálního počítače budete muset aktualizovat nástroje a skripty, aby používaly nová ID prostředků. 
 > 
 > 
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
-## <a name="use-powershell-to-move-a-vm"></a>Přesun virtuálního počítače pomocí Powershellu
+## <a name="use-powershell-to-move-a-vm"></a>Použití PowerShellu k přesunu virtuálního počítače
 
-Chcete-li přesunout virtuální počítač do jiné skupiny prostředků, ujistěte se, že také přesunout všechny závislé prostředky. Chcete-li získat seznam s ID prostředku, každý z těchto prostředků, použijte [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) rutiny.
+Pokud chcete přesunout virtuální počítač do jiné skupiny prostředků, musíte se ujistit, že také přesunete všechny závislé prostředky. Seznam s ID prostředku každého z těchto prostředků získáte pomocí rutiny [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) .
 
 ```azurepowershell-interactive
  Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-list -wrap -Property ResourceId 
 ```
 
-Výstup předchozího příkazu, můžete použít jako čárkami oddělený seznam ID prostředku pro [přesunout AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) přesunout do cílového umístění každého prostředku. 
+Výstup předchozího příkazu můžete použít jako čárkami oddělený seznam ID prostředků pro [Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) pro přesun jednotlivých prostředků do cílového umístění. 
 
 ```azurepowershell-interactive
 Move-AzResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
     
-Prostředky přesunout do jiného předplatného, zahrňte **- DestinationSubscriptionId** parametru. 
+Pokud chcete přesunout prostředky do jiného předplatného, zadejte parametr **-DestinationSubscriptionId** . 
 
 ```azurepowershell-interactive
 Move-AzResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
@@ -54,8 +54,8 @@ Move-AzResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
 ```
 
 
-Pokud budete vyzváni k potvrzení, že chcete přesunout zadané prostředky, zadejte **Y** potvrďte.
+Po zobrazení výzvy k potvrzení, že chcete přesunout zadané prostředky, potvrďte zadáním **Y** .
 
-## <a name="next-steps"></a>Další postup
-Mnoho různých typů prostředků můžou přesouvat mezi skupinami prostředků a předplatných. Další informace najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).    
+## <a name="next-steps"></a>Další kroky
+Mezi skupinami prostředků a předplatnými můžete přesunout mnoho různých typů prostředků. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).    
 

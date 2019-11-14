@@ -1,5 +1,5 @@
 ---
-title: Přehled vyhrazených hostitelů Azure pro virtuální počítače | Microsoft Docs
+title: Přehled vyhrazených hostitelů Azure pro virtuální počítače
 description: Přečtěte si další informace o tom, jak se můžou používat vyhrazené hostitele Azure pro nasazení virtuálních počítačů.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 5f2b34b3acb559d74414ea622fba2769ede7f0a7
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: f4a5e78afdf774af056d7c9b8a108c3418c2caa4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976655"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036397"
 ---
-# <a name="preview-azure-dedicated-hosts"></a>Verze Preview: Vyhrazení hostitelé Azure
+# <a name="preview-azure-dedicated-hosts"></a>Verze Preview: vyhrazené hostitele Azure
 
 Vyhrazený hostitel Azure je služba, která poskytuje fyzické servery – schopné hostovat jeden nebo víc virtuálních počítačů, které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé jsou stejné fyzické servery, které se používají v našich datových centrech, které jsou poskytované jako prostředek. Můžete zřídit vyhrazené hostitele v rámci oblasti, zóny dostupnosti a domény selhání. Pak můžete virtuální počítače umístit přímo do zřízených hostitelů, v libovolné konfiguraci nejlépe vyhovuje vašim potřebám.
 
@@ -33,7 +33,7 @@ virtual-machines-common-dedicated-hosts-preview.md
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vyhrazeného hostitele můžete nasadit pomocí [Azure CLI](dedicated-hosts-cli.md), [portálu](dedicated-hosts-portal.md)a PowerShellu. [](../windows/dedicated-hosts-powershell.md)
+- Vyhrazeného hostitele můžete nasadit pomocí [Azure CLI](dedicated-hosts-cli.md), [portálu](dedicated-hosts-portal.md)a [PowerShellu](../windows/dedicated-hosts-powershell.md).
 
 - Další informace najdete v tématu Přehled [vyhrazených hostitelů](dedicated-hosts.md) .
 

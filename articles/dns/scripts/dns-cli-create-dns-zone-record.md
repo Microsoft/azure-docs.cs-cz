@@ -1,5 +1,5 @@
 ---
-title: Příklad rozhraní příkazového řádku Azure – vytvoření zóny a záznamu DNS pro název domény
+title: Vytvoření zóny DNS a záznamu pro název domény – Azure CLI-Azure DNS
 description: Tento ukázkový skript Azure CLI předvádí, jak pro název domény vytvořit zónu a záznam DNS.
 services: dns
 author: vhorne
@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 691eeebf61ffd4ea7bee6b5ac6c60cafb076e11d
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 8ae4e8c515b658ac3f0bb4eb0d88706814993355
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156223"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037151"
 ---
-# <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Ukázkový skript Azure CLI: Vytvoření záznamu a zóny DNS
+# <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Ukázkový skript Azure CLI: Vytvoření zóny a záznamu DNS
 
 Tento ukázkový skript Azure CLI vytváří zónu a záznam DNS pro název domény. 
 
@@ -38,7 +38,7 @@ az group delete -n myResourceGroup
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | Vytvoří zónu Azure DNS. |

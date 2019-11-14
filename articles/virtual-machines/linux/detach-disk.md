@@ -1,5 +1,5 @@
 ---
-title: Odpojení datového disku od virtuálního počítače se systémem Linux – Azure | Microsoft Docs
+title: Odpojení datového disku od virtuálního počítače se systémem Linux – Azure
 description: Naučte se odpojit datový disk od virtuálního počítače v Azure pomocí rozhraní příkazového řádku Azure nebo Azure Portal.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e026617db4da58c12a454000f6d97f8b6843e95d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695864"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036367"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Odpojení datového disku od virtuálního počítače se systémem Linux
 
@@ -82,7 +82,7 @@ V tomto příkladu je nutné odstranit následující řádek ze souboru */etc/f
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-K `umount` odpojení disku použijte. Následující příklad odpojí oddíl */dev/sdc1* z přípojného bodu */datadrive* :
+K odpojení disku použijte `umount`. Následující příklad odpojí oddíl */dev/sdc1* z přípojného bodu */datadrive* :
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -109,7 +109,7 @@ Disk zůstává v úložišti, ale už není připojený k virtuálnímu počít
 2. Vyberte virtuální počítač s datovým diskem, který chcete odpojit, a kliknutím na tlačítko **zastavit** nasaďte virtuální počítač.
 3. V podokně virtuální počítač vyberte **disky**.
 4. V horní části podokna **disky** vyberte **Upravit**.
-5. V podokně **disky** klikněte na úplně vpravo od datového disku, který chcete odpojit, a klikněte ![na tlačítko Odpojit obrázek](./media/detach-disk/detach.png) tlačítka odpojit.
+5. V podokně **disky** v pravém dolním rohu datového disku, který chcete odpojit, klikněte na obrázek tlačítka pro odpojení ![](./media/detach-disk/detach.png) tlačítko Odpojit.
 5. Po odebrání disku klikněte na Uložit v horní části podokna.
 6. V podokně virtuální počítač klikněte na **Přehled** a potom kliknutím na tlačítko **Start** v horní části podokna restartujte virtuální počítač.
 
@@ -117,6 +117,6 @@ Disk zůstává v úložišti, ale už není připojený k virtuálnímu počít
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud chcete znovu použít datový disk, můžete [ho jednoduše připojit k jinému virtuálnímu počítači](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

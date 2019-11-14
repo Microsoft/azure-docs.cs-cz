@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy týkající se virtuálních počítačů s Windows v Azure | Microsoft Docs
+title: Nejčastější dotazy týkající se virtuálních počítačů s Windows v Azure
 description: Obsahuje odpovědi na některé běžné dotazy týkající se virtuálních počítačů s Windows vytvořených pomocí modelu Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 95b7644ab8e0254a53eb4a0872a5af98a0894aec
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0ebf4049827a4abd9cfcb2eda354d0c796cbdbdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839242"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039175"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Nejčastější dotazy týkající se Windows Virtual Machines
 Tento článek popisuje některé běžné dotazy k virtuálním počítačům s Windows vytvořeným v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Linux najdete v tématu [Nejčastější dotazy o Linux Virtual Machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -116,12 +116,12 @@ Následující hesla nejsou povolena:
     <tr>
         <td>abc@123</td>
         <td>iloveyou!</td>
-        <td>P @ $ $w 0rd</td>
+        <td>P@ $ $w 0rd</td>
         <td>P@ssw0rd</td>
         <td>P@ssword123</td>
     </tr>
     <tr>
-        <td>PA $ $word</td>
+        <td>Pa$$word</td>
         <td>pass@word1</td>
         <td>Zadáno!</td>
         <td>Heslo1</td>

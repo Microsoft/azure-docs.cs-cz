@@ -1,5 +1,5 @@
 ---
-title: Přehled možností zálohování pro virtuální počítače Azure s Linuxem | Microsoft Docs
+title: Přehled možností zálohování pro virtuální počítače platformy Linux
 description: Přehled možností zálohování virtuálních počítačů Azure pro Linux
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: b5f698510a40de127340746fd2f5327e8934ac27
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1462b8dc84d15977cc4b91c781a14a730f7cdd94
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092118"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036970"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Možnosti zálohování a obnovení pro virtuální počítače se systémem Linux v Azure
 

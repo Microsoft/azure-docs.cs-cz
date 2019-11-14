@@ -1,5 +1,5 @@
 ---
-title: Vytvoření brány firewall v Azure pomocí filtru paketů FreeBSD | Microsoft Docs
+title: Pomocí filtru paketů FreeBSD vytvořit bránu firewall v Azure
 description: Naučte se, jak nasadit bránu firewall překladu adres (NAT) pomocí FreeBSD PF v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 8f06762fd84767ac4c6dfce67d547a1f311afcba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5daceeb2c8f2497288c7891dbe3fb3e0771b2ed5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083245"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036103"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak pomocí filtru paketů FreeBSD vytvořit zabezpečenou bránu firewall v Azure
 Tento článek popisuje, jak nasadit firewall překladu adres (NAT) pomocí filtru FreeBSD Pack Azure Resource Manager prostřednictvím šablony pro běžný scénář webového serveru.
@@ -34,7 +34,7 @@ Pokud vás zajímá nastavení zabezpečené brány firewall v cloudu pro vaše 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Nasazení prostřednictvím rozhraní příkazového řádku Azure
-Potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index). Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří název `myResourceGroup` skupiny prostředků `West US` v umístění.
+Potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index). Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří název skupiny prostředků `myResourceGroup` v umístění `West US`.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -48,7 +48,7 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-Po asi pět minut se zobrazí informace o `"provisioningState": "Succeeded"`. Pak můžete pomocí protokolu SSH přejít k virtuálnímu počítači front-end (NAT) nebo přistupovat k webovému serveru Nginx v prohlížeči pomocí veřejné IP adresy nebo plně kvalifikovaného názvu domény (NAT). Následující příklad vypíše plně kvalifikovaný název domény a veřejnou IP adresu, která se přiřadí virtuálnímu počítači `myResourceGroup` front-endu (NAT) ve skupině prostředků. 
+Po asi pěti minutách získáte informace o `"provisioningState": "Succeeded"`. Pak můžete pomocí protokolu SSH přejít k virtuálnímu počítači front-end (NAT) nebo přistupovat k webovému serveru Nginx v prohlížeči pomocí veřejné IP adresy nebo plně kvalifikovaného názvu domény (NAT). Následující příklad vypíše plně kvalifikovaný název domény a veřejnou IP adresu, která se přiřadí virtuálnímu počítači front-endu (NAT) ve skupině prostředků `myResourceGroup`. 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup

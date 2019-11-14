@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače se systémem Linux pomocí Azure CLI | Microsoft Docs
+title: Vytvoření virtuálního počítače se systémem Linux pomocí Azure CLI
 description: Vytvoření virtuálního počítače se systémem Linux v zóně dostupnosti pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: e732693a63b3c866dc767e98bbe298474286f178
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1cb8222b5e7bf2efee36673f9b80738500345754
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173886"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036563"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux v zóně dostupnosti pomocí Azure CLI
 
@@ -75,13 +75,13 @@ Skupina prostředků se zadává při vytváření nebo úpravách virtuálních
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). 
 
-Při vytváření virtuálního počítače je k dispozici několik možností, jako jsou image operačního systému, velikost disku a přihlašovací údaje pro správu. V tomto příkladu se vytvoří virtuální počítač s názvem *myVM*, na kterém poběží Ubuntu Server. Virtuální počítač se vytvoří v zóně dostupnosti *1*. Ve výchozím nastavení se virtuální počítač vytvoří v *Standard_DS1_v2* velikosti.
+Při vytváření virtuálního počítače je k dispozici několik možností, jako jsou image operačního systému, velikost disku a přihlašovací údaje pro správu. V tomto příkladu se vytvoří virtuální počítač s názvem *myVM*, na kterém poběží Ubuntu Server. Virtuální počítač se vytvoří v zóně dostupnosti *1*. Ve výchozím nastavení se virtuální počítač vytvoří ve velikosti *Standard_DS1_v2* .
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
-Vytvoření virtuálního počítače může několik minut trvat. Po vytvoření virtuálního počítače o něm Azure CLI vypíše informace. Poznamenejte `zones` si hodnotu, která indikuje zónu dostupnosti, ve které je virtuální počítač spuštěný. 
+Vytvoření virtuálního počítače může několik minut trvat. Po vytvoření virtuálního počítače o něm Azure CLI vypíše informace. Poznamenejte si hodnotu `zones`, která indikuje zónu dostupnosti, ve které je virtuální počítač spuštěný. 
 
 ```azurecli 
 {

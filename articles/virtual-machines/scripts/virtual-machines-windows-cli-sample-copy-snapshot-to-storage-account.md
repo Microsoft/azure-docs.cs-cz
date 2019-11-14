@@ -1,5 +1,5 @@
 ---
-title: Ukázkový Azure CLI – kopírování snímku do úložiště účtu v jiné oblasti | Dokumentace Microsoftu
+title: Ukázka Azure CLI – zkopírování snímku do účtu úložiště v jiné oblasti
 description: Ukázkový skript Azure CLI – Export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné nebo jiné oblasti.
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 9a1e0058e440f9cea60361a8b6b64dd4c7ab789b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e9ba52357703238c35d31823462d9ff3bd04c87
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307457"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040044"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Export nebo kopírování snímku do účtu úložiště v jiné oblasti pomocí rozhraní příkazového řádku
 
@@ -39,15 +39,15 @@ Tento skript exportuje spravovaný snímek do účtu úložiště v jiné oblast
 
 Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a zkopírování snímku do účtu úložiště s použitím tohoto identifikátoru URI SAS používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot) | Vygeneruje sdílený přístupový podpis jen pro čtení, který se použije ke zkopírování základního souboru VHD do účtu úložiště nebo jeho stažení do místního prostředí.  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | Asynchronně zkopíruje objekt blob z jednoho účtu úložiště do jiného. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření spravovaného disku z virtuálního pevného disku](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další virtuální počítače a spravované disky ukázkové skripty rozhraní příkazového řádku najdete v [dokumentaci virtuálního počítače s Windows Azure](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače a služby Managed disks najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

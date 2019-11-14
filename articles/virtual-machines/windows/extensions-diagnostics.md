@@ -1,5 +1,5 @@
 ---
-title: Azure Diagnostics rozšíření pro Windows | Microsoft Docs
+title: Azure Diagnostics rozšíření pro Windows
 description: Monitorování virtuálních počítačů Azure s Windows pomocí rozšíření Azure Diagnostics
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 4230e2aac8d386c759a403b9008029d68049569c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749402"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033485"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozšíření Azure Diagnostics pro virtuální počítače s Windows
 
@@ -41,9 +41,9 @@ Rozšíření Azure Diagnostics vyžaduje, aby byl cílový virtuální počíta
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Schéma JSON popsané v předchozí části lze použít v šabloně Azure Resource Manager ke spuštění rozšíření Azure Diagnostics během nasazování šablony Azure Resource Manager. Přečtěte si téma [použití monitorování a diagnostiky s virtuálními počítači s Windows a šablonami Azure Resource Manager](extensions-diagnostics-template.md).
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON popsané v předchozí části lze použít v šabloně Azure Resource Manager ke spuštění rozšíření Azure Diagnostics během nasazování šablony Azure Resource Manager. Přečtěte si téma [použití monitorování a diagnostiky s virtuálními počítači s Windows a šablonami Azure Resource Manager](extensions-diagnostics-template.md).
 
-## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
+## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
 Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Azure Diagnostics do existujícího virtuálního počítače. Nahraďte vlastnosti Protected Settings a Settings platným JSON ze schématu rozšíření výše. 
 
@@ -78,7 +78,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
+Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -88,7 +88,7 @@ Podrobný průvodce odstraňováním potíží pro Azure Diagnostics rozšířen
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Další kroky
 * [Další informace o rozšíření Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md)

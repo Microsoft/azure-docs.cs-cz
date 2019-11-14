@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Kopírování (přesun) spravovaných disků do stejného nebo jiného předplatného | Microsoft Docs
+title: Ukázkový skript Azure CLI – Kopírování (přesun) spravovaných disků do stejného nebo jiného předplatného
 description: Ukázkový skript Azure CLI – Kopírování (přesun) spravovaných disků do stejného nebo jiného předplatného
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: aea21d09aa37eb2f0902df6245e9baebfcbb37fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f3859d632b14f1ec22ecd37ee0f10b01cbc7cd5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61127471"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038294"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Kopírování spravovaných disků do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 
-Tento skript zkopíruje spravovaný disk do stejného nebo jiného předplatného ve stejné oblasti. Kopie funguje pouze v případě, že předplatná jsou součástí stejného tenanta AAD.
+Tento skript zkopíruje spravovaný disk do stejného nebo jiného předplatného ve stejné oblasti. Kopie funguje pouze v případě, že odběry jsou součástí stejného tenanta AAD.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -41,12 +41,12 @@ Tento skript zkopíruje spravovaný disk do stejného nebo jiného předplatnéh
 
 Tento skript k vytvoření nového spravovaného disku v cílovém předplatném pomocí ID zdrojového spravovaného disku používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | Získá všechny vlastnosti spravovaného disku s použitím názvu a vlastností skupiny prostředků spravovaného disku. Vlastnost ID se použije ke zkopírování spravovaného disku do jiného předplatného.  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Zkopíruje spravovaný disk vytvořením nového spravovaného disku v jiném předplatném s použitím ID a názvu nadřazeného spravovaného disku.  |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření virtuálního počítače ze spravovaného disku](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 

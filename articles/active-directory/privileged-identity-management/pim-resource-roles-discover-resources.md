@@ -1,25 +1,25 @@
 ---
-title: Zjištění prostředků Azure pro správu v Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Zjištění prostředků Azure pro správu v PIM – Azure AD | Microsoft Docs
 description: Naučte se zjišťovat prostředky Azure pro správu v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7e401426e1c9448caaae28648abce481f426d38
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 87da43100c7494937ddc842e0f903ba3a360959e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895690"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022889"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Zjištění prostředků Azure pro správu v Privileged Identity Management
 
@@ -29,7 +29,7 @@ Když nakonfigurujete Privileged Identity Management pro prostředky Azure, je p
 
 ## <a name="discover-resources"></a>Zjistit prostředky
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – Správa virtuálních počítačů s Linuxem v Azure pomocí Ansible | Dokumentace Microsoftu
-description: V tomto rychlém startu zjistěte, jak spravovat virtuální počítač s Linuxem v Azure pomocí Ansible
+title: Rychlý Start – Správa virtuálních počítačů se systémem Linux v Azure pomocí Ansible
+description: V tomto rychlém startu se dozvíte, jak spravovat virtuální počítač se systémem Linux v Azure pomocí Ansible.
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
 ms.service: ansible
@@ -8,27 +8,27 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: c4878902425a26086ad77647ea06568f2110ccfe
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: fb6c4c7c6f90aa4fb9ac566433c62690e51db20d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668619"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037030"
 ---
-# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Rychlý start: Správa virtuálních počítačů s Linuxem v Azure pomocí Ansible
+# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Rychlý Start: Správa virtuálních počítačů se systémem Linux v Azure pomocí Ansible
 
-Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. V tomto článku použijete Ansible playbook spuštění a zastavení virtuálního počítače s Linuxem. 
+Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. V tomto článku použijete Ansible PlayBook ke spuštění a zastavení virtuálního počítače se systémem Linux. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="stop-a-virtual-machine"></a>Zastavit virtuální počítač
+## <a name="stop-a-virtual-machine"></a>Zastavení virtuálního počítače
 
-V této části pomocí Ansible zrušit přidělení virtuálního počítače Azure (Zastavit).
+V této části použijete Ansible k navrácení (zastavení) virtuálního počítače Azure.
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Cloud Shell](/azure/cloud-shell/overview).
 
@@ -52,17 +52,17 @@ V této části pomocí Ansible zrušit přidělení virtuálního počítače A
             allocated: no
     ```
 
-1. Nahradit `{{ resource_group_name }}` a `{{ vm_name }}` zástupné symboly vašimi hodnotami.
+1. Nahraďte `{{ resource_group_name }}` a zástupné symboly `{{ vm_name }}` hodnotami.
 
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
-1. Spuštění playbooku pomocí `ansible-playbook` příkaz:
+1. Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
     ```bash
     ansible-playbook azure-vm-stop.yml
     ```
 
-1. Po spuštění playbooku, se zobrazí výstup podobný následující výsledky:
+1. Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
 
     ```bash
     PLAY [Stop Azure VM] ********************************************************
@@ -79,9 +79,9 @@ V této části pomocí Ansible zrušit přidělení virtuálního počítače A
 
 ## <a name="start-a-virtual-machine"></a>Spuštění virtuálního počítače
 
-V této části pomocí Ansible spustí uvolnění (zastavené) Azure virtuální počítač.
+V této části použijete Ansible ke spuštění navráceného (zastaveného) virtuálního počítače Azure.
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Cloud Shell](/azure/cloud-shell/overview).
 
@@ -104,17 +104,17 @@ V této části pomocí Ansible spustí uvolnění (zastavené) Azure virtuáln�
             name: {{ vm_name }}
     ```
 
-1. Nahradit `{{ resource_group_name }}` a `{{ vm_name }}` zástupné symboly vašimi hodnotami.
+1. Nahraďte `{{ resource_group_name }}` a zástupné symboly `{{ vm_name }}` hodnotami.
 
-1. Uložte soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
-1. Spuštění playbooku pomocí `ansible-playbook` příkaz:
+1. Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
     ```bash
     ansible-playbook azure-vm-start.yml
     ```
 
-1. Po spuštění playbooku, se zobrazí výstup podobný následující výsledky:
+1. Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
 
     ```bash
     PLAY [Start Azure VM] ********************************************************
@@ -129,7 +129,7 @@ V této části pomocí Ansible spustí uvolnění (zastavené) Azure virtuáln�
     localhost                  : ok=2    changed=1    unreachable=0    failed=0
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Kurz: Správa Azure dynamického inventáře pomocí Ansible](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)
+> [Kurz: Správa dynamických inventářů Azure pomocí Ansible](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)

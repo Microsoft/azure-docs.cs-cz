@@ -1,18 +1,14 @@
 ---
 title: Mapování ukázkových ovládacích prvků PCI-DSS v 3.2.1 podrobného řízení
 description: Mapování ovládacího prvku ukázka zabezpečení dat v odvětví platební karty Standard v 3.2.1 pro Azure Policy a RBAC.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3e72f923ea3d752d829731d1f741bda090ae9fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163062"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037270"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Mapování ovládacích prvků pro ukázka PCI-DSS v 3.2.1 podrobný plán
 
@@ -34,8 +30,8 @@ Tento podrobný plán vám pomůže se správou a řízením sítí tím, že p�
 
 Tento podrobný plán vám pomůže vyhovět zásadám pomocí ovládacích prvků cryptograph přiřazením definicí [Azure Policy](../../../policy/overview.md) , které vynutily konkrétní ovládací prvky cryptograph a auditují použití slabého kryptografického nastavení. Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptografické konfigurace, můžou podniknout nápravné akce, které zajistí konfiguraci prostředků v souladu s vašimi zásadami zabezpečení informací. Konkrétně zásady přiřazené tímto plánem vyžadují transparentní šifrování dat v databázích SQL. Auditovat chybějící šifrování u účtů úložiště a proměnných účtu Automation. K dispozici jsou také zásady, které řeší nezabezpečená připojení k účtům úložiště, aplikacím funkcí, WebApp, API Apps a Redis Cache a auditují nešifrované Service Fabric komunikace.
 
-- Function App by měl být přístupný jenom přes HTTPS
-- Webová aplikace by měla být přístupná jen přes protokol HTTPS
+- Funkce aplikace by měla být přístupná jen přes HTTPS
+- Webová aplikace by měla být přístupná jen přes HTTPS
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
 - Je třeba povolit transparentní šifrování dat databází SQL.
 - Na virtuálních počítačích by se mělo použít šifrování disku
@@ -48,7 +44,7 @@ Tento podrobný plán vám pomůže vyhovět zásadám pomocí ovládacích prvk
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 a 11.2.1, kontrola ohrožení zabezpečení a aktualizace systému
 
-Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policych](../../../policy/overview.md) definic, které monitorují chybějící aktualizace systému, chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure. Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase.
+Tento podrobný plán vám pomůže spravovat chyby zabezpečení informací o systému pomocí přiřazování [Azure Policy](../../../policy/overview.md) definicí, které monitorují chybějící aktualizace systému, chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase.
 
 - Monitorovat chybějící Endpoint Protection v Azure Security Center
 - Nasadit výchozí rozšíření Microsoft IaaSAntimalware pro Windows Server
@@ -67,7 +63,7 @@ Jenom jeden vlastník předplatného Azure nepovoluje redundanci správy. I kdy�
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a a 8.3.1. b Správa privilegovaných přístupových práv
 
-Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněním vlastníka, zápisu a čtení a účtů zaměstnanců s oprávněním vlastníka nebo zápisu, které nemají. ověřování Multi-Factor Authentication je povolené. Azure implementuje řízení přístupu na základě role (RBAC), které umožňuje spravovat, kdo má přístup k prostředkům Azure. Princip implementace vlastních pravidel RBAC vám může pomáhat při ověřování potřeb a správné implementace, protože vlastní pravidla RBAC jsou náchylná k chybám. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL. Použití ověřování Azure Active Directory zjednodušuje správu oprávnění a centralizaci správy identit uživatelů databáze a dalších společností Microsoft.  
+Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněním vlastníka, zápisu a čtení a účtů zaměstnanců s oprávněním vlastníka nebo zápisu, u kterých není povolené ověřování službou Multi-Factor Authentication. Azure implementuje řízení přístupu na základě role (RBAC), které umožňuje spravovat, kdo má přístup k prostředkům Azure. Princip implementace vlastních pravidel RBAC vám může pomáhat při ověřování potřeb a správné implementace, protože vlastní pravidla RBAC jsou náchylná k chybám. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL. Použití ověřování Azure Active Directory zjednodušuje správu oprávnění a centralizaci správy identit uživatelů databáze a dalších společností Microsoft.  
 orgány.
  
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
@@ -134,7 +130,7 @@ Teď, když jste zkontrolovali mapování ovládacího prvku PCI-DSS v 3.2.1, Pr
 > [PCI-DSS v 3.2.1 podrobný plán – přehled](./index.md)
 > [PCI-DSS v 3.2.1 podrobný plán – nasazení kroků](./deploy.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

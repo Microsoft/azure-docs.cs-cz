@@ -1,5 +1,5 @@
 ---
-title: Skupiny dostupnosti SQL Server – virtuální počítače Azure – požadavků | Microsoft Docs
+title: 'Kurz: předpoklady pro skupinu dostupnosti'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat předpoklady pro vytvoření skupiny dostupnosti Always On SQL Server na virtuálních počítačích Azure.
 services: virtual-machines
 documentationCenter: na
@@ -9,24 +9,24 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 62232283fb0b2f499601615702fef3292bb88317
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 17b1f58a950f2e0589986e9f1da1295671599341
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100739"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037475"
 ---
-# <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Splnění požadavků pro vytváření skupin dostupnosti Always On na virtuálních počítačích Azure
+# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On na SQL Server ve virtuálních počítačích Azure
 
 V tomto kurzu se dozvíte, jak dokončit požadavky na vytvoření [skupiny dostupnosti Always on SQL Server na virtuálních počítačích Azure (VM)](virtual-machines-windows-portal-sql-availability-group-tutorial.md). Po dokončení požadovaných součástí máte řadič domény, dva SQL Server virtuální počítače a monitorovací server v jedné skupině prostředků.
 
-**Časový odhad**: Splnění požadavků může trvat několik hodin. Mnohé z těchto časů stráví vytváření virtuálních počítačů.
+**Časový odhad**: dokončení požadavků může trvat několik hodin. Mnohé z těchto časů stráví vytváření virtuálních počítačů.
 
 Následující diagram znázorňuje, co sestavíte v tomto kurzu.
 
@@ -41,22 +41,22 @@ V tomto kurzu se předpokládá, že máte základní znalosti skupin dostupnost
 Potřebujete mít účet Azure. Můžete si [otevřít bezplatný účet Azure](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Kliknutím **+** vytvoříte nový objekt na portálu.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+2. Kliknutím na **+** vytvoříte nový objekt na portálu.
 
    ![Nový objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
 3. V okně hledání na **Marketplace** zadejte **skupinu prostředků** .
 
-   ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
+   ![Skupina prostředků](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Klikněte na **Skupina prostředků**.
-5. Klikněte na možnost **Vytvořit**.
+5. Klikněte na **Vytvořit**.
 6. V části **název skupiny prostředků**zadejte název skupiny prostředků. Zadejte například příkaz **SQL-ha-RG**.
 7. Pokud máte více předplatných Azure, ověřte, že předplatné je předplatné Azure, ve kterém chcete vytvořit skupinu dostupnosti.
 8. Vyberte umístění. Umístění je oblast Azure, ve které chcete vytvořit skupinu dostupnosti. Tento článek vytvoří všechny prostředky v jednom umístění Azure.
 9. Ověřte, že je zaškrtnuté políčko **Připnout na řídicí panel** . Toto volitelné nastavení umístí zástupce pro skupinu prostředků na řídicím panelu Azure Portal.
 
-   ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
+   ![Skupina prostředků](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
 
 10. Kliknutím na **vytvořit** vytvořte skupinu prostředků.
 
@@ -80,7 +80,7 @@ Vytvoření virtuální sítě:
 
     Následující tabulka ukazuje nastavení pro virtuální síť:
 
-   | **Pole** | Value |
+   | **Pole** | Hodnota |
    | --- | --- |
    | **Název** |autoHAVNET |
    | **Adresní prostor** |10.33.0.0/24 |
@@ -88,13 +88,13 @@ Vytvoření virtuální sítě:
    | **Rozsah adres podsítě** |10.33.0.0/29 |
    | **Předplatné** |Zadejte předplatné, které chcete použít. Pokud máte pouze jedno předplatné, je **předplatné** prázdné. |
    | **Skupina prostředků** |Zvolte **použít existující** a vyberte název skupiny prostředků. |
-   | **Location** |Zadejte umístění Azure. |
+   | **Umístění** |Zadejte umístění Azure. |
 
    Rozsah adresního prostoru a rozsahu adres podsítě se může lišit od tabulky. V závislosti na vašem předplatném navrhne portál dostupný adresní prostor a odpovídající rozsah adres podsítě. Pokud není k dispozici žádný dostatek adresního prostoru, použijte jiné předplatné.
 
    V příkladu se používá název podsítě **správce**. Tato podsíť je určena pro řadiče domény.
 
-5. Klikněte na možnost **Vytvořit**.
+5. Klikněte na **Vytvořit**.
 
    ![Konfigurace virtuální sítě](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
@@ -114,13 +114,13 @@ Nová virtuální síť má jednu podsíť s názvem **admin**. Řadiče domény
    ![Konfigurace virtuální sítě](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
 5. Vytvořte druhou podsíť. Klikněte na **+ podsíť**.
 6. V části **Přidat podsíť**nakonfigurujte podsíť zadáním **sqlsubnet** pod **názvem**. Azure automaticky určí platný **Rozsah adres**. Ověřte, zda je v tomto rozsahu adres alespoň 10 adres. V produkčním prostředí můžete potřebovat víc adres.
-7. Klikněte na **OK**.
+7. Klikněte na tlačítko **OK**.
 
     ![Konfigurace virtuální sítě](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
 
 Následující tabulka shrnuje nastavení konfigurace sítě:
 
-| **Pole** | Value |
+| **Pole** | Hodnota |
 | --- | --- |
 | **Název** |**autoHAVNET** |
 | **Adresní prostor** |Tato hodnota závisí na dostupných adresních prostorech v rámci vašeho předplatného. Typická hodnota je 10.0.0.0/16. |
@@ -130,7 +130,7 @@ Následující tabulka shrnuje nastavení konfigurace sítě:
 | **Rozsah adres podsítě** |Tato hodnota závisí na dostupných rozsahech adres v rámci vašeho předplatného. Typickou hodnotou je 10.0.1.0/24. |
 | **Předplatné** |Zadejte předplatné, které chcete použít. |
 | **Skupina prostředků** |**SQL-HA-RG** |
-| **Location** |Zadejte stejné umístění, které jste zvolili pro skupinu prostředků. |
+| **Umístění** |Zadejte stejné umístění, které jste zvolili pro skupinu prostředků. |
 
 ## <a name="create-availability-sets"></a>Vytvoření skupin dostupnosti
 
@@ -173,7 +173,7 @@ Zopakováním předchozích kroků vytvořte dva virtuální počítače. Pojmen
 
 Následující tabulka uvádí nastavení těchto dvou počítačů:
 
-| **Pole** | Value |
+| **Pole** | Hodnota |
 | --- | --- |
 | **Název** |První řadič domény: *AD-Primary-DC*.</br>Druhý řadič domény *služby AD-Secondary-DC*. |
 | **Typ disku virtuálního počítače** |SSD |
@@ -181,7 +181,7 @@ Následující tabulka uvádí nastavení těchto dvou počítačů:
 | **Heslo** |Contoso!0000 |
 | **Předplatné** |*Vaše předplatné* |
 | **Skupina prostředků** |SQL-HA-RG |
-| **Location** |*Vaše umístění* |
+| **Umístění** |*Vaše umístění* |
 | **Velikost** |DS1_V2 |
 | **Storage** | **Použít spravované disky** - **Ano** |
 | **Virtuální síť** |autoHAVNET |
@@ -189,7 +189,7 @@ Následující tabulka uvádí nastavení těchto dvou počítačů:
 | **Veřejná IP adresa** |*Stejný název jako virtuální počítač* |
 | **Skupina zabezpečení sítě** |*Stejný název jako virtuální počítač* |
 | **Skupina dostupnosti** |adavailabilityset </br>**Domény selhání**: 2 </br>**Aktualizovat domény**: 2|
-| **Diagnostika** |Enabled |
+| **Diagnostika** |Povoleno |
 | **Účet úložiště diagnostiky** |*Automaticky vytvořeno* |
 
    >[!IMPORTANT]
@@ -226,14 +226,14 @@ V následujících krocích nakonfigurujte počítač **AD-Primary-DC** jako řa
 11. Klikněte na odkaz **Další** na žlutém výstražném panelu.
 
     ![Dialog služba AD DS na virtuálním počítači serveru DNS](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/24-addsmore.png)
-12. Ve sloupci **Akce** v dialogu **Podrobnosti úlohy serveru** klikněte na povýšit **Tento server na řadič domény**.
+12. Ve sloupci **Akce** v dialogu **Podrobnosti úlohy serveru** klikněte na **povýšit tento server na řadič domény**.
 13. V **Průvodci konfigurací Active Directory Domain Services**použijte následující hodnoty:
 
     | **Stránka** | Nastavení |
     | --- | --- |
     | **Konfigurace nasazení** |**Přidat novou doménovou strukturu**<br/> **Název kořenové domény** = Corp.contoso.com |
     | **Možnosti řadiče domény** |**DSRM Password** = contoso! 0000<br/>**Potvrzení hesla** = contoso! 0000 |
-14. Kliknutím na tlačítko **Další** přejdete na ostatní stránky v průvodci. Na stránce **Kontrola předpokladů** ověřte, že se zobrazí následující zpráva: **Všechny kontroly požadovaných součástí byly úspěšně úspěšné**. Můžete si prohlédnout jakékoli použitelné varovné zprávy, ale je možné pokračovat v instalaci.
+14. Kliknutím na tlačítko **Další** přejdete na ostatní stránky v průvodci. Na stránce **Kontrola předpokladů** ověřte, že se zobrazí následující zpráva: **všechny kontroly požadovaných součástí byly úspěšně úspěšné**. Můžete si prohlédnout jakékoli použitelné varovné zprávy, ale je možné pokračovat v instalaci.
 15. Klikněte na tlačítko **nainstalovat**. Virtuální počítač **AD-Primary-DC** se automaticky restartuje.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Poznamenejte si IP adresu primárního řadiče domény.
@@ -261,7 +261,7 @@ Po vytvoření prvního řadiče domény a povolení DNS na prvním serveru nako
 
 3. Klikněte na **vlastní**a zadejte privátní IP adresu primárního řadiče domény.
 
-4. Klikněte na **Uložit**.
+4. Klikněte na možnost **Uložit**.
 
 ### <a name="configure-the-second-domain-controller"></a>Konfigurace druhého řadiče domény
 Po restartování primárního řadiče domény můžete nakonfigurovat druhý řadič domény. Tento volitelný krok je určen pro vysokou dostupnost. Pomocí těchto kroků nakonfigurujete druhý řadič domény:
@@ -289,10 +289,10 @@ Po restartování primárního řadiče domény můžete nakonfigurovat druhý �
 13. Po dokončení instalace funkcí se vraťte na řídicí panel **Správce serveru** .
 14. V levém podokně vyberte možnost Nová **Služba AD DS** .
 15. Klikněte na odkaz **Další** na žlutém výstražném panelu.
-16. Ve sloupci **Akce** v dialogu **Podrobnosti úlohy serveru** klikněte na povýšit **Tento server na řadič domény**.
+16. Ve sloupci **Akce** v dialogu **Podrobnosti úlohy serveru** klikněte na **povýšit tento server na řadič domény**.
 17. V části **Konfigurace nasazení**vyberte **Přidat řadič domény do existující domény**.
-    ![Konfigurace nasazení](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
-18. Klikněte na tlačítko **vyberte**.
+    Konfigurace nasazení ![](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
+18. Klikněte na **Vybrat**.
 19. Připojte se pomocí účtu správce (**Corp. CONTOSO. COM\domainadmin**) a heslo (**Contoso! 0000**).
 20. V **části Vybrat doménu z doménové struktury**klikněte na svou doménu a pak klikněte na **OK**.
 21. V **Možnosti řadič domény**použijte výchozí hodnoty a nastavte heslo DSRM.
@@ -368,14 +368,14 @@ Dále vytvořte tři virtuální počítače – dva SQL Server virtuální poč
 | --- | --- | --- | --- |
 | Vyberte příslušnou položku galerie. |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise v systému Windows Server 2016** |**SQL Server 2016 SP1 Enterprise v systému Windows Server 2016** |
 | **Základy** konfigurace virtuálních počítačů |**Název** = cluster – FSW<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |**Název** = SQLServer-0<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |**Název** = SQLServer-1<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |
-| **Velikost** konfigurace virtuálního počítače |**Velikost** = DS1\_v2 (1 vCPU, 3,5 GB) |**Size** = DS2\_v2 (2 vCPU, 7 GB)</br>Velikost musí podporovat úložiště SSD (podpora disků úrovně Premium. )) |**Size** = DS2\_v2 (2 vCPU, 7 GB) |
-| **Nastavení** konfigurace virtuálního počítače |**Úložiště**: Používejte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Úložiště**: Používejte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Úložiště**: Používejte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |
-| **Nastavení SQL Server** konfigurace virtuálního počítače |Nelze použít |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |
+| **Velikost** konfigurace virtuálního počítače |**Size** = DS1\_v2 (1 vCPU, 3,5 GB) |**Size** = DS2\_v2 (2 vCPU, 7 GB)</br>Velikost musí podporovat úložiště SSD (podpora disků úrovně Premium. )) |**Size** = DS2\_v2 (2 vCPU, 7 GB) |
+| **Nastavení** konfigurace virtuálního počítače |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |
+| **Nastavení SQL Server** konfigurace virtuálního počítače |Neuvedeno |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |
 
 <br/>
 
 > [!NOTE]
-> Doporučené velikosti počítačů jsou určeny pro testování skupin dostupnosti ve virtuálních počítačích Azure. Nejlepší výkon pro produkční úlohy najdete v doporučeních pro SQL Server velikosti počítačů a konfiguraci v tématu osvědčené [postupy pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Doporučené velikosti počítačů jsou určeny pro testování skupin dostupnosti ve virtuálních počítačích Azure. Nejlepší výkon pro produkční úlohy najdete v doporučeních pro SQL Server velikosti počítačů a konfiguraci v tématu [osvědčené postupy pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 >
 >
 
@@ -389,7 +389,7 @@ Nyní se můžete připojit k virtuálním počítačům a **Corp.contoso.com**.
 2. V **Správce serveru**klikněte na **místní server**.
 3. Klikněte na odkaz **pracovní skupina** .
 4. V části **název počítače** klikněte na **změnit**.
-5. Zaškrtněte políčko **doména** a do textového pole zadejte **Corp.contoso.com** . Klikněte na **OK**.
+5. Zaškrtněte políčko **doména** a do textového pole zadejte **Corp.contoso.com** . Klikněte na tlačítko **OK**.
 6. V místním okně **zabezpečení systému Windows** zadejte pověření pro výchozí účet správce domény (**CORP\DomainAdmin**) a heslo (**Contoso! 0000**).
 7. Až se zobrazí zpráva "Vítejte ve corp.contoso.com doméně", klikněte na **OK**.
 8. Klikněte na **Zavřít**a potom v automaticky otevřeném okně klikněte na **restartovat** .
@@ -400,7 +400,7 @@ Po restartování každého virtuálního počítače jako člena domény přide
 
 1. Počkejte, až se virtuální počítač restartuje, a pak znovu spusťte soubor RDP z primárního řadiče domény, abyste se přihlásili k **SQLServer-0** pomocí účtu **CORP\DomainAdmin** .
    >[!TIP]
-   >Ujistěte se, že se přihlašujete pomocí účtu správce domény. V předchozích krocích jste používali integrovaný účet správce. Teď, když je server v doméně, použijte účet domény. V relaci RDP zadejte*uživatelské jméno* *domény*\\.
+   >Ujistěte se, že se přihlašujete pomocí účtu správce domény. V předchozích krocích jste používali integrovaný účet správce. Teď, když je server v doméně, použijte účet domény. V relaci RDP zadejte\\*uživatelské jméno*v *doméně* .
 
 2. V **Správce serveru**vyberte **nástroje**a pak klikněte na **Správa počítače**.
 3. V okně **Správa počítače** rozbalte **místní uživatelé a skupiny**a pak vyberte **skupiny**.
@@ -425,7 +425,7 @@ U SQL Server skupin dostupnosti musí být každý SQL Server virtuální počí
 
 Pro konfiguraci skupiny dostupnosti použijte účet instalace (CORP\install). Tento účet musí být členem pevné role serveru **sysadmin** na každém SQL SERVERm virtuálním počítači. Následující postup vytvoří přihlášení k instalačnímu účtu:
 
-1. Připojte se k serveru přes protokol RDP (Remote Desktop Protocol) (RDP)  *\<pomocí účtu\>MachineName \DomainAdmin* .
+1. Připojte se k serveru přes protokol RDP (Remote Desktop Protocol) (RDP) pomocí účtu *\<nazev_pocitace\>\DomainAdmin* .
 
 1. Otevřete SQL Server Management Studio a připojte se k místní instanci SQL Server.
 
@@ -443,7 +443,7 @@ Pro konfiguraci skupiny dostupnosti použijte účet instalace (CORP\install). T
 
 1. Nastavte přihlášení jako člen pevné role serveru **sysadmin** .
 
-1. Klikněte na **OK**.
+1. Klikněte na tlačítko **OK**.
 
 Předchozí kroky opakujte na druhém virtuálním počítači s SQL Server.
 
@@ -466,7 +466,7 @@ Opakujte postup na jiném SQL Serverovém virtuálním počítači.
   > Tento krok, společně se skutečným připojením k SQL Server virtuálním počítačům do clusteru s podporou převzetí služeb při selhání, se teď dá automatizovat pomocí [Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) a [šablon Azure pro rychlý Start](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
-## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall">Konfigurace brány firewall na každém virtuálním počítači s SQL Server
+## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> nakonfigurovat bránu firewall na každém virtuálním počítači s SQL Server
 
 Řešení vyžaduje, aby v bráně firewall byly otevřené následující porty TCP:
 
@@ -483,7 +483,7 @@ Způsob otevření portů závisí na použitém řešení brány firewall. V da
 
 ### <a name="open-a-tcp-port-in-the-firewall"></a>Otevření portu TCP v bráně firewall
 
-1. Na první obrazovce SQL Server **Start** otevřete bránu **Windows Firewall s pokročilým zabezpečením**.
+1. Na první obrazovce SQL Server **Start** otevřete **bránu Windows Firewall s pokročilým zabezpečením**.
 2. V levém podokně vyberte **příchozí pravidla**. V pravém podokně klikněte na **nové pravidlo**.
 3. Jako **Typ pravidla**vyberte **port**.
 4. Pro port zadejte **TCP** a zadejte odpovídající čísla portů. Prohlédněte si následující příklad:
@@ -493,7 +493,7 @@ Způsob otevření portů závisí na použitém řešení brány firewall. V da
 5. Klikněte na **Další**.
 6. Na stránce **Akce** ponechte vybrané **připojení** a pak klikněte na **Další**.
 7. Na stránce **profil** přijměte výchozí nastavení a potom klikněte na tlačítko **Další**.
-8. Na stránce **název** zadejte do textového pole **název** název pravidla (třeba **Azure**dissonde) a pak klikněte na **Dokončit**.
+8. Na stránce **název** zadejte do textového pole **název** název pravidla (třeba **Azure dissonde**) a pak klikněte na **Dokončit**.
 
 Opakujte tyto kroky na druhém SQL Serverm virtuálním počítači.
 
@@ -501,7 +501,7 @@ Opakujte tyto kroky na druhém SQL Serverm virtuálním počítači.
 
 Chcete-li vytvořit účet pro systémový účet a udělit příslušná oprávnění, proveďte následující kroky u každé instance SQL Server:
 
-1. Vytvořte účet pro `[NT AUTHORITY\SYSTEM]` každou instanci SQL Server. Tento účet vytvoří následující skript:
+1. Vytvořte účet pro `[NT AUTHORITY\SYSTEM]` v každé instanci SQL Server. Tento účet vytvoří následující skript:
 
    ```sql
    USE [master]
@@ -510,7 +510,7 @@ Chcete-li vytvořit účet pro systémový účet a udělit příslušná opráv
    GO 
    ```
 
-1. Pro `[NT AUTHORITY\SYSTEM]` každou instanci SQL Server udělte následující oprávnění:
+1. U každé instance SQL Server udělte následující oprávnění `[NT AUTHORITY\SYSTEM]`:
 
    - `ALTER ANY AVAILABILITY GROUP`
    - `CONNECT SQL`
@@ -527,6 +527,6 @@ Chcete-li vytvořit účet pro systémový účet a udělit příslušná opráv
    GO 
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření skupiny dostupnosti Always On SQL Server na virtuálních počítačích Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md)

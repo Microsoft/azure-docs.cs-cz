@@ -1,5 +1,5 @@
 ---
-title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series – Storage | Microsoft Docs
+title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series – úložiště
 description: Přečtěte si, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích řady Lsv2-Series.
 services: virtual-machines-linux
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: ea64a4274eda947aebf0f693657c17a120bec560
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d99f63ae084b4f1dae3c0125420eaecf5655e2d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081787"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034753"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích řady Lsv2-Series
 
@@ -37,7 +37,7 @@ Virtuální počítače řady Lsv2-Series používají procesory AMD EYPC™ ser
 
 ## <a name="tips-to-maximize-performance"></a>Tipy pro maximalizaci výkonu
 
-* Pokud nahráváte vlastní GuestOS pro Linux pro vaše úlohy, pamatujte, že urychlené síťové služby budou ve výchozím nastavení vypnuté. Pokud máte v úmyslu povolit akcelerované síťové služby, povolte ji v době vytváření virtuálního počítače, aby se co nejlépe vypnul.
+* Pokud nahráváte vlastní GuestOS pro Linux pro vaše úlohy, pamatujte, že urychlené síťové služby budou ve výchozím nastavení **vypnuté** . Pokud máte v úmyslu povolit akcelerované síťové služby, povolte ji v době vytváření virtuálního počítače, aby se co nejlépe vypnul.
 
 * Hardware, který využívá virtuální počítače řady Lsv2-Series, používá zařízení NVMe s dvojicemi páry vstupně-výstupních front (QP) s. Každá fronta NVMe zařízení v/v je ve skutečnosti páry: fronta pro odesílání a fronta pro doplňování. Ovladač NVMe je nastavený tak, aby optimalizoval využití těchto osmi vstupně-výstupních QPsů tím, že distribuuje vstupně-výstupní operace v plánu kruhového dotazování. Chcete-li získat maximální výkon, spusťte osm úloh na zařízení, které chcete porovnat.
 
@@ -45,7 +45,7 @@ Virtuální počítače řady Lsv2-Series používají procesory AMD EYPC™ ser
 
 * Lsv2 uživatelé by neměli spoléhat na informace NUMA zařízení (všechny 0) hlášené v rámci virtuálního počítače, aby se pro své aplikace rozhodly spřažení NUMA. Doporučený způsob, jak zajistit lepší výkon, je rozložit úlohy napříč procesory, pokud je to možné.
 
-* Maximální podporovaná hloubka fronty na dvojici v/v fronty pro Lsv2 virtuálního počítače NVMe je 1024 (vs. I3 hloubka fronty pro Amazon – 32). Lsv2 uživatelé by měli omezit své (syntetické) úlohy srovnávacích testů na hloubku fronty 1024 nebo nižší, aby nedocházelo k vystavování úplných podmínek zařazování do fronty, což může snížit výkon.
+* Maximální podporovaná hloubka fronty na dvojici vstupně-výstupních front pro zařízení Lsv2 VM NVMe je 1024 (vs. Amazon i3 hloubka fronty 32). Lsv2 uživatelé by měli omezit své (syntetické) úlohy srovnávacích testů na hloubku fronty 1024 nebo nižší, aby nedocházelo k vystavování úplných podmínek zařazování do fronty, což může snížit výkon.
 
 ## <a name="utilizing-local-nvme-storage"></a>Využití místního úložiště NVMe
 
@@ -93,21 +93,21 @@ Další informace o možnostech zálohování dat v místním úložišti najdet
 * **Dojde k selhání jednoho NVMe disku k selhání všech virtuálních počítačů v hostiteli?**  
    Pokud je v uzlu hardwaru zjištěna chyba disku, je hardware ve stavu selhání. V takovém případě jsou všechny virtuální počítače v uzlu automaticky nepřiděleny a přesunuty do uzlu v pořádku. U virtuálních počítačů Lsv2-Series to znamená, že data zákazníka v neúspěšném uzlu jsou také bezpečně smazána a bude nutné je znovu vytvořit zákazníkem na novém uzlu. Jak je uvedeno dříve, než bude migrace za provozu na Lsv2 k dispozici, data v neúspěšném uzlu se proaktivně přesunou s virtuálními počítači, když se přenesou do jiného uzlu.
 
-* **Musím pro výkon udělat nějaké úpravy rq_affinity?**  
-   Nastavení rq_affinity je menší úprava při použití absolutních maximálních vstupně-výstupních operací za sekundu (IOPS). Až všechno ostatní funguje dobře, zkuste nastavit rq_affinity na 0, abyste viděli, jestli se jedná o rozdíl.
+* **Musím rq_affinity pro výkon udělat nějaké úpravy?**  
+   Nastavení rq_affinity je menší úprava při použití absolutních maximálních vstupně-výstupních operací za sekundu (IOPS). Jakmile všechno ostatní funguje dobře, zkuste nastavit rq_affinity na 0, abyste viděli, jestli se jedná o rozdíl.
 
 * **Potřebuji změnit nastavení blk_mq?**  
-   RHEL/CentOS 7. x automaticky používá BLK-MQ pro zařízení NVMe. Nejsou nutné žádné změny konfigurace ani nastavení. Nastavení scsi_mod. use _blk_mq je pouze pro SCSI a bylo použito během Lsv2 Preview, protože zařízení NVMe byla na virtuálních počítačích hosta zobrazena jako zařízení SCSI. V současné době se zařízení NVMe zobrazují jako zařízení NVMe, takže nastavení SCSI BLK-MQ není důležité.
+   RHEL/CentOS 7. x automaticky používá BLK-MQ pro zařízení NVMe. Nejsou nutné žádné změny konfigurace ani nastavení. Nastavení scsi_mod. use_blk_mq je jenom pro SCSI a používá se během Lsv2 Preview, protože zařízení NVMe se na virtuálních počítačích hosta zobrazila jako zařízení SCSI. V současné době se zařízení NVMe zobrazují jako zařízení NVMe, takže nastavení SCSI BLK-MQ není důležité.
 
 * **Potřebuji změnit "Fio"?**  
-   Pokud chcete získat maximální IOPS s nástrojem pro měření výkonu, jako je FIO ve velikosti virtuálního počítače L64v2 a L80v2, nastavte u každého zařízení NVMe hodnotu rq_affinity na 0.  Tento příkazový řádek například nastaví "rq_affinity" na nulu pro všechna 10 NVMe zařízení na virtuálním počítači L80v2:
+   Pokud chcete získat maximální IOPS s nástrojem pro měření výkonu, jako je FIO ve velikosti virtuálního počítače L64v2 a L80v2, nastavte u každého zařízení NVMe hodnotu rq_affinity na 0.  Tento příkazový řádek například nastaví "rq_affinity" na nulu pro všechna 10 zařízení NVMe ve virtuálním počítači s L80v2:
 
    ```console
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Upozorňujeme také, že nejlepší výkon získáte, když se v/v dokončí přímo na každé nezpracované zařízení NVMe bez dělení, žádné souborové systémy, žádná konfigurace RAID 0 atd. Než začnete s testovací relací, ujistěte se, že je konfigurace ve známém stavu a v čistém stavu, a to spuštěním `blkdiscard` na každém zařízení NVMe.
+   Upozorňujeme také, že nejlepší výkon získáte, když se v/v dokončí přímo na každé nezpracované zařízení NVMe bez dělení, žádné souborové systémy, žádná konfigurace RAID 0 atd. Než začnete s testovací relací, ujistěte se, že je konfigurace ve známém stavu, a to spuštěním `blkdiscard` na každém zařízení NVMe.
    
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Podívejte se na specifikace pro všechny [virtuální počítače optimalizované pro výkon úložiště](sizes-storage.md) v Azure.

@@ -1,12 +1,12 @@
 ---
-title: Osvědčené postupy pro přístup zabezpečeným správcem – Azure Active Directory | Microsoft Docs
+title: Osvědčené postupy pro přístup zabezpečeným správcem – Azure AD | Microsoft Docs
 description: Ujistěte se, že účty pro správu a přístup správce vaší organizace jsou zabezpečené. Pro systémové architekty a odborníky na IT, kteří konfigurují služby Azure AD, Azure a Microsoft Online Services.
 services: active-directory
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
-ms.date: 03/18/2019
+ms.date: 11/13/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
@@ -14,19 +14,19 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259411"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028453"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
 Zabezpečení většiny nebo všech podnikových prostředků v moderních organizacích závisí na integritě privilegovaných účtů, které spravují a spravují systémy IT. Škodlivé objekty actor, včetně počítačů, které jsou často cílené na účty správců, a další prvky privilegovaného přístupu, které se pokoušejí rychle získat přístup k citlivým datům a systémům pomocí útoků krádeže přihlašovacích údajů. Pro cloudové služby jsou prevence a reakce společné zodpovědnosti poskytovatele cloudové služby a zákazníka. Další informace o nejnovějších hrozbách koncových bodů a cloudu najdete v [sestavě Microsoft Security Intelligence](https://www.microsoft.com/security/operations/security-intelligence-report). Tento článek vám může pomoci při vývoji plánu pro uzavírání mezer mezi aktuálními plány a pokyny, které jsou zde popsané.
 
 > [!NOTE]
-> Společnost Microsoft se zavazuje k nejvyšší úrovni důvěryhodnosti, transparentnosti, dodržování standardů a dodržování předpisů. Přečtěte si další informace o tom, jak tým globálních odpovědí na incidenty Microsoftu snižuje důsledky útoků na cloudové služby a jak je zabudované zabezpečení v obchodních produktech a cloudových službách Microsoftu v [Centru zabezpečení Microsoftu – Security](https://www.microsoft.com/trustcenter/security) a Microsoft. cíle dodržování předpisů v [Centru zabezpečení Microsoft – dodržování předpisů](https://www.microsoft.com/trustcenter/compliance)
+> Společnost Microsoft se zavazuje k nejvyšší úrovni důvěryhodnosti, transparentnosti, dodržování standardů a dodržování předpisů. Přečtěte si další informace o tom, jak tým globálních odpovědí na incidenty od Microsoftu omezuje důsledky útoků na cloudové služby a jak je zabudované zabezpečení v obchodních produktech a cloudových službách Microsoftu v centru [zabezpečení Microsoftu –](https://www.microsoft.com/trustcenter/security) dodržování předpisů a cílů dodržování předpisů Microsoftu v [Centru zabezpečení Microsoftu – dodržování předpisů](https://www.microsoft.com/trustcenter/compliance).
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -60,21 +60,21 @@ Tento dokument se zaměřuje hlavně na vytvoření plánu zabezpečení identit
 
 ## <a name="develop-a-roadmap"></a>Vývoj plánu 
 
-Microsoft doporučuje vyvinout a postupovat podle plánu zabezpečení privilegovaného přístupu proti internetovým útočníkům. Plán můžete kdykoli upravit tak, aby vyhovoval vašim stávajícím funkcím a konkrétním požadavkům v rámci vaší organizace. Každá fáze plánu by měla zvýšit náklady a obtížnost nežádoucí osoby, aby mohl ohrozit privilegovaný přístup k místním, cloudovým a hybridním prostředkům. Microsoft doporučuje následující čtyři fáze Průvodce: Tento doporučený plán nejprve plánuje a nejrychleji vychází, a to na základě zkušeností Microsoftu s implementací incidentu a reakce na počítačové útoky. Časové osy pro tento plán jsou přibližné.
+Microsoft doporučuje vyvinout a postupovat podle plánu zabezpečení privilegovaného přístupu proti internetovým útočníkům. Plán můžete kdykoli upravit tak, aby vyhovoval vašim stávajícím funkcím a konkrétním požadavkům v rámci vaší organizace. Každá fáze plánu by měla zvýšit náklady a obtížnost nežádoucí osoby, aby mohl ohrozit privilegovaný přístup k místním, cloudovým a hybridním prostředkům. Microsoft doporučuje následující čtyři fáze plánu: Tento doporučený plán plánuje nejefektivnější a nejrychlejší implementaci na základě zkušeností Microsoftu s implementací incidentů a odpovědí na Internet. Časové osy pro tento plán jsou přibližné.
 
 ![Fáze plánu s časovými čárami](./media/directory-admin-roles-secure/roadmap-timeline.png)
 
-* Fáze 1 (24-48 hodin): Kritické položky, které vám doporučujeme hned
+* Fáze 1 (24-48 hodin): kritické položky, které vám doporučujeme hned
 
-* Fáze 2 (2-4 týdny): Zmírnění nejčastěji používaných technik útoku
+* Fáze 2 (2-4 týdny): zmírnění nejčastěji používaných technik útoku
 
-* Fáze 3 (1-3 měsíců): Viditelnost sestavení a sestavení úplné řízení aktivity správce
+* Fáze 3 (1-3 měsíců): viditelnost sestavení a sestavení úplné řízení aktivity správce
 
-* Fáze 4 (šest měsíců a mimo): Pokračování v budování ochrany za účelem dalšího posílení vaší platformy zabezpečení
+* Fáze 4 (šest měsíců a mimo): pokračování v sestavování ochrany za účelem dalšího posílení zabezpečení platformy
 
 Tento rámec plánu je navržený tak, aby maximalizoval používání technologií Microsoftu, které jste už možná nasadili. Můžete také využít výhod klíčových současných a nadcházejících technologií zabezpečení a integrovat nástroje zabezpečení od jiných dodavatelů, které jste již nasadili nebo uvažujete o jejich nasazení. 
 
-## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>Fáze 1: Kritické položky, které vám doporučujeme hned
+## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>Fáze 1: kritické položky, které doporučujeme hned hned
 
 ![Fáze 1 nejdůležitějších položek, které se mají provést jako první](./media/directory-admin-roles-secure/stage-one.png)
 
@@ -123,9 +123,9 @@ Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globální
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Zapnutí vícefaktorového ověřování a registrace všech dalších vysoce privilegovaných účtů pro jednoho uživatele, kteří nejsou federované
 
-Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: Globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup). Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, Privileged role, správce Exchange Online a SharePoint Správce online. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé zaregistrovali [https://aka.ms/mfasetup](https://aka.ms/mfasetup). Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
-## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Fáze 2: Zmírnění nejčastěji používaných technik útoku
+## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Fáze 2: zmírnění nejčastěji používaných technik útoku
 
 ![Fáze 2 zmírňující často používané útoky](./media/directory-admin-roles-secure/stage-two.png)
 
@@ -179,7 +179,7 @@ Azure AD Identity Protection je nástroj pro monitorování a vytváření sesta
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Získání zabezpečeného skóre Office 365 (při použití Office 365)
 
-V rámci zabezpečeného skóre se dozvíte, jaké služby Office 365 používáte (jako je OneDrive, SharePoint a Exchange), a potom se podíváme na vaše nastavení a aktivity a porovnávají je se směrným plánem vytvořeným Microsoftem. Získáte skóre na základě toho, jak jste se s osvědčenými postupy zabezpečení dostali. Každý, kdo má oprávnění správce (globální správce nebo vlastní role správce) pro předplatné Office 365 Business Premium nebo Enterprise, má přístup k zabezpečenému skóre [https://securescore.office.com](https://securescore.office.com/)na adrese.
+V rámci zabezpečeného skóre se dozvíte, jaké služby Office 365 používáte (jako je OneDrive, SharePoint a Exchange), a potom se podíváme na vaše nastavení a aktivity a porovnávají je se směrným plánem vytvořeným Microsoftem. Získáte skóre na základě toho, jak jste se s osvědčenými postupy zabezpečení dostali. Každý, kdo má oprávnění správce (globální správce nebo vlastní role správce) pro předplatné Office 365 Business Premium nebo Enterprise, má přístup k zabezpečenému skóre na [https://securescore.office.com](https://securescore.office.com/).
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Přečtěte si pokyny pro zabezpečení a dodržování předpisů Office 365 (Pokud používáte Office 365).
 
@@ -195,7 +195,7 @@ Efektivní provádění reakce na incidenty je složitým podnikem. Proto je pot
 
 #### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>Zabezpečení místních privilegovaných účtů správců, pokud se ještě neudělaly
 
-Pokud je váš tenant Azure Active Directory synchronizovaný s místní službou Active Directory, postupujte podle pokynů v části [Průvodce zabezpečením privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Fáze 1. To zahrnuje vytvoření samostatných účtů správců pro uživatele, kteří potřebují provádět místní úlohy správy, nasazovat pracovní stanice s privilegovaným přístupem pro správce služby Active Directory a vytvářet jedinečná hesla místních správců pro pracovní stanice a servery.
+Pokud je váš tenant Azure Active Directory synchronizovaný s místní službou Active Directory, postupujte podle pokynů v části [Průvodce zabezpečením privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): fáze 1. To zahrnuje vytvoření samostatných účtů správců pro uživatele, kteří potřebují provádět místní úlohy správy, nasazovat pracovní stanice s privilegovaným přístupem pro správce služby Active Directory a vytvářet jedinečná hesla místních správců pro pracovní stanice a servery.
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Další kroky pro organizace, které spravují přístup k Azure
 
@@ -218,7 +218,7 @@ Protokol aktivit Azure poskytuje historii událostí na úrovni předplatného v
 Připravte zásady podmíněného přístupu pro místní a cloudové aplikace hostované v cloudu. Pokud máte zařízení připojená k síti na pracovišti, získáte další informace z [nastavení místního podmíněného přístupu pomocí registrace zařízení Azure Active Directory](../active-directory-device-registration-on-premises-setup.md).
 
 
-## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>Fáze 3: Viditelnost sestavení a úplné řízení aktivity správce
+## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>Fáze 3: sestavovat viditelnost a převzít úplnou kontrolu nad aktivitou správy
 
 ![Fáze 3 převzít kontrolu nad aktivitou správy](./media/directory-admin-roles-secure/stage-three.png)
 
@@ -261,7 +261,7 @@ Pokud již používáte Azure AD Privileged Identity Management, upravte časov�
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Určení vystavení přihlašovacích protokolů založených na heslech (Pokud používáte Exchange Online)
 
-V minulosti protokoly předpokládaly, že kombinace uživatelského jména a hesla byly vloženy do zařízení, e-mailových účtů, telefonů atd. Ale teď s rizikem pro počítačové útoky v cloudu doporučujeme identifikovat každého potenciálního uživatele, který (pokud by jejich přihlašovací údaje byly ohroženy), může být pro organizaci nenáročné a vyloučit z nich možnost přihlásit se k e-mailu prostřednictvím uživatelského jména/ heslo implementací požadavků na silné ověřování a podmíněného přístupu. [Pomocí podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)můžete zablokovat starší ověřování. Podívejte se prosím na podrobnosti, [Jak blokovat základní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) prostřednictvím exchnage online. 
+V minulosti protokoly předpokládaly, že kombinace uživatelského jména a hesla byly vloženy do zařízení, e-mailových účtů, telefonů atd. Ale teď s rizikem pro počítačové útoky v cloudu doporučujeme identifikovat každého potenciálního uživatele, který, pokud by jejich přihlašovací údaje byly ohroženy, může být pro organizaci nenáročné a vyloučit je z možností přihlášení k e-mailu pomocí uživatelského jména a hesla implementací požadavků silného ověřování a podmíněného přístupu. [Pomocí podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)můžete zablokovat starší ověřování. Podívejte se prosím na podrobnosti, [Jak blokovat základní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) prostřednictvím exchnage online. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Dokončení vyhodnocení přezkoumání rolí u rolí Office 365 (Pokud používáte Office 365)
 
@@ -273,7 +273,7 @@ Tuto sestavu můžete stáhnout ze [správy incidentů zabezpečení v systém M
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Pokračovat v zabezpečení místních privilegovaných účtů pro správu
 
-Pokud je váš Azure Active Directory připojený k místní službě Active Directory, postupujte podle pokynů v části [plán zabezpečení privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Fáze 2. To zahrnuje nasazení přístupových stanic privilegovaného přístupu pro všechny správce, vyžadování MFA, použití jenom dostatečného správce pro údržbu řadiče domény, snížení prostoru pro útoky na útoky a nasazení ATA pro detekci útoků.
+Pokud je váš Azure Active Directory připojený k místní službě Active Directory, postupujte podle pokynů v části [plán zabezpečení privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): fáze 2. To zahrnuje nasazení přístupových stanic privilegovaného přístupu pro všechny správce, vyžadování MFA, použití jenom dostatečného správce pro údržbu řadiče domény, snížení prostoru pro útoky na útoky a nasazení ATA pro detekci útoků.
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Další kroky pro organizace, které spravují přístup k Azure
 
@@ -320,7 +320,7 @@ Abyste měli jistotu, že je přístup uživatelů chráněný i v připojených
 
 Agent Cloud App Security SIEM integruje Cloud App Security se serverem SIEM, aby umožnil centralizované monitorování výstrah a aktivit Office 365. Spouští se na vašem serveru a vybírá výstrahy a aktivity z Cloud App Security a streamuje je na server SIEM. Další informace najdete v tématu [integrace řešení SIEM](https://docs.microsoft.com/cloud-app-security/siem).
 
-## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Fáze 4: Pokračovat v budování obrany pro aktivnější stav zabezpečení
+## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Fáze 4: pokračování v budování ochrany pro aktivnější stav zabezpečení
 
 ![Fáze 4 – přijetí proaktivní stav zabezpečení](./media/directory-admin-roles-secure/stage-four.png)
 
@@ -387,43 +387,43 @@ Určete, jestli potřebujete [přenášet vlastnictví předplatného Azure na j
 
 Další informace o tom, jak systém Microsoft Office 365 zpracovává incidenty zabezpečení, najdete [v tématu Správa incidentů zabezpečení v systém Microsoft Office 365](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>Nejčastější dotazy: Běžné otázky týkající se zabezpečení privilegovaného přístupu  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>Nejčastější dotazy: nejčastější dotazy týkající se zabezpečení privilegovaného přístupu  
 
 **Otázka:** Jak mám postupovat, pokud jsem ještě neimplementoval nějaké součásti zabezpečeného přístupu?
 
-**Zodpovědět** Definujte aspoň dva účty pro přerušení, přiřaďte MFA účtům privilegovaného správce a oddělte uživatelské účty z účtů globálních správců.
+**Odpověď:** Definujte aspoň dva účty pro přerušení, přiřaďte MFA účtům privilegovaného správce a oddělte uživatelské účty z účtů globálních správců.
 
 **Otázka:** Jaký je hlavní problém, který je třeba vyřešit jako první, co je v rozporu?
 
-**Zodpovědět** Ujistěte se, že požadujete nejsilnější ověřování pro vysoce exponované uživatele.
+**Odpověď:** Ujistěte se, že požadujete nejsilnější ověřování pro vysoce exponované uživatele.
 
 **Otázka:** Co se stane, když jsme deaktivovali naše privilegované správce?
 
-**Zodpovědět** Vytvořte účet globálního správce, který je vždy aktuální.
+**Odpověď:** Vytvořte účet globálního správce, který je vždy aktuální.
 
 **Otázka:** Co se stane, když je nalevo jenom jeden globální správce a nedají se k němu získat přístup? 
 
-**Zodpovědět** K získání okamžitého privilegovaného přístupu použijte jeden z vašich účtů se systémem Break.
+**Odpověď:** K získání okamžitého privilegovaného přístupu použijte jeden z vašich účtů se systémem Break.
 
 **Otázka:** Jak můžu chránit správce v mojí organizaci?
 
-**Zodpovědět** Správci mají vždycky v běžném podnikání jako standardní "Neprivilegovaný" uživatel.
+**Odpověď:** Správci mají vždycky v běžném podnikání jako standardní "Neprivilegovaný" uživatel.
 
 **Otázka:** Jaké jsou osvědčené postupy pro vytváření účtů správců v rámci služby Azure AD?
 
-**Zodpovědět** Rezervujte privilegovaný přístup pro konkrétní úlohy správce.
+**Odpověď:** Rezervujte privilegovaný přístup pro konkrétní úlohy správce.
 
 **Otázka:** Jaké nástroje existují pro omezení trvalého přístupu správce?
 
-**Zodpovědět** Privileged Identity Management (PIM) a role správce Azure AD.
+**Odpověď:** Privileged Identity Management (PIM) a role správce Azure AD.
 
 **Otázka:** Jaká je Microsoft pozice při synchronizaci účtů správců se službou Azure AD?
 
-**Zodpovědět** Účty správců vrstvy 0 (včetně účtů, skupin a dalších prostředků, které mají přímou nebo nepřímou administrativní kontrolu nad doménovou strukturou služby AD, doménami nebo řadiči domény a všemi prostředky), jsou využívány pouze pro místní účty služby AD a nejsou obvykle synchronizované pro Azure AD pro Cloud.
+**Odpověď:** Účty správců vrstvy 0 (včetně účtů, skupin a dalších prostředků, které mají přímou nebo nepřímou administrativní kontrolu nad doménovou strukturou služby AD, doménami nebo řadiči domény a všemi prostředky), jsou využívány pouze pro místní účty služby AD a nejsou obvykle synchronizovány pro službu Azure AD pro Cloud.
 
 **Otázka:** Jak správcům bráníme v přiřazení náhodného přístupu správce na portálu?
 
-**Zodpovědět** Používejte neprivilegované účty pro všechny uživatele a většinu správců. Začněte tím, že vyvíjíte řadu organizací, abyste zjistili, který z nich by měl mít oprávnění k privilegovanému účtu správce. A monitorujte nově vytvořené administrativní uživatele.
+**Odpověď:** Používejte neprivilegované účty pro všechny uživatele a většinu správců. Začněte tím, že vyvíjíte řadu organizací, abyste zjistili, který z nich by měl mít oprávnění k privilegovanému účtu správce. A monitorujte nově vytvořené administrativní uživatele.
 
 ## <a name="next-steps"></a>Další kroky
 

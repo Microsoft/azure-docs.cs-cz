@@ -1,17 +1,14 @@
 ---
 title: Ukázka ISO 27001 Details – nasazení kroků
 description: Nasaďte kroky pro samostatnou ukázku ISO 27001 podrobného plánu včetně podrobností parametrů artefaktu podrobného plánu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 683caf0f899c9873e0d8ca16f3131ad06ce4446a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8b12b448d4c218549838b95260fd6b1f874b6b83
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162419"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038312"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Nasazení ukázky ISO 27001 details
 
@@ -104,12 +101,12 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |-|-|-|-|
 |\[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
 |\[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače se systémem Linux|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
+|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače se systémem Linux|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
+|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
 |\[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Log Analytics pracovní prostor pro Windows VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
 |\[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače s Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
+|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače s Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
+|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
 |Povolené skladové položky účtu úložiště|Přiřazení zásad|Seznam povolených SKU úložiště|Seznam SKU, které lze zadat pro účty úložiště.|
 |Povolené SKU virtuálních počítačů|Přiřazení zásad|Seznam povolených SKU virtuálních počítačů|Seznam SKU, které lze zadat pro virtuální počítače.|
 |Plán iniciativy pro ISO 27001|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
@@ -119,10 +116,10 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 Teď, když jste si prohlédli postup nasazení ukázky ISO 27001, najdete v následujících článcích informace o architektuře a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [ISO 27001 Details – přehled](./index.md)
-> [ISO 27001 podrobné mapování ovládacích prvků](./control-mapping.md)
+> [ISO 27001 Details-přehled](./index.md)
+> [ISO 27001 podrobného řízení mapování](./control-mapping.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

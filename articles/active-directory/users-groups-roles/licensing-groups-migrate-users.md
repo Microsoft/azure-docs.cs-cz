@@ -1,31 +1,31 @@
 ---
-title: Přidat uživatele s licencí na základě skupin – Azure Active Directory | Microsoft Docs
+title: Přidání uživatelů s přímými licencemi do skupin licencování – Azure AD | Microsoft Docs
 description: Postup migrace z individuálních uživatelských licencí na licencování na základě skupin pomocí Azure Active Directory
 services: active-directory
 keywords: Licencování Azure AD
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/26/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034755"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025686"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Postup migrace uživatelů s jednotlivými licencemi do skupin pro licencování
 
-Mohli jste mít k uživatelům v organizacích nasazené stávající licence prostřednictvím "přímého přiřazení"; To znamená, že pomocí skriptů PowerShellu nebo jiných nástrojů přiřadíte jednotlivé uživatelské licence. Než začnete používat licencování na základě skupin pro správu licencí ve vaší organizaci, můžete tento plán migrace použít k bezproblémovému nahrazení stávajících řešení pomocí licencování na základě skupin.
+Mohli jste mít k uživatelům v organizacích nasazené stávající licence prostřednictvím přímého přiřazení; To znamená, že pomocí skriptů PowerShellu nebo jiných nástrojů přiřadíte jednotlivé uživatelské licence. Než začnete používat licencování na základě skupin pro správu licencí ve vaší organizaci, můžete tento plán migrace použít k bezproblémovému nahrazení stávajících řešení pomocí licencování na základě skupin.
 
 Je důležité si uvědomit, že byste se měli vyhnout situaci, kdy se migrace na licencování na základě skupin bude povést k tomu, že uživatelé dočasně ztratí své aktuálně přiřazené licence. Jakýkoli proces, který by mohl způsobit odebrání licencí, by se zabránilo odebrání rizika, že uživatelé ztratili přístup ke službám a jejich datům.
 
@@ -84,6 +84,6 @@ Další informace o dalších scénářích pro správu licencí skupin:
 - [Co je licencování na základě skupin v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 - [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
 - [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-- [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](licensing-groups-change-licenses.md)
+- [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](licensing-groups-change-licenses.md)
 - [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)
-- [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](licensing-ps-examples.md)
+- [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](licensing-ps-examples.md)

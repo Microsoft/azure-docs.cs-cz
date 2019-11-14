@@ -1,5 +1,5 @@
 ---
-title: Nastavení Azure Key Vault pro virtuální počítače se systémem Linux | Microsoft Docs
+title: Nastavení Azure Key Vault pro virtuální počítače se systémem Linux
 description: Jak nastavit Key Vault pro použití s virtuálním počítačem s Azure Resource Manager pomocí Azure CLI.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: kasing
-ms.openlocfilehash: cbc8b6be09fcf4232636b580dc0c62482b83bd60
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 25ef1d43af9d37cebde4a28479010776cc148b6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002162"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035941"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Jak nastavit Key Vault pro virtuální počítače pomocí Azure CLI
 
@@ -29,21 +29,21 @@ V Azure Resource Managerovém zásobníku se tajné klíče a certifikáty model
 K provedení těchto kroků potřebujete mít nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásili se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
 ## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
-Vytvořte Trezor klíčů a přiřaďte zásady nasazení pomocí [AZ klíčů Create](/cli/azure/keyvault). Následující příklad vytvoří Trezor klíčů s názvem `myKeyVault` `myResourceGroup` ve skupině prostředků:
+Vytvořte Trezor klíčů a přiřaďte zásady nasazení pomocí [AZ klíčů Create](/cli/azure/keyvault). Následující příklad vytvoří Trezor klíčů s názvem `myKeyVault` ve skupině prostředků `myResourceGroup`:
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
 ## <a name="update-a-key-vault-for-use-with-vms"></a>Aktualizace Key Vault pro použití s virtuálními počítači
-Nastavte zásady nasazení v existujícím trezoru klíčů pomocí [AZ Key trezor Update](/cli/azure/keyvault). Následující aktualizace trezoru klíčů s názvem `myKeyVault` `myResourceGroup` ve skupině prostředků:
+Nastavte zásady nasazení v existujícím trezoru klíčů pomocí [AZ Key trezor Update](/cli/azure/keyvault). Následující aktualizace trezoru klíčů s názvem `myKeyVault` ve skupině prostředků `myResourceGroup`:
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
 ```
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Použití šablon k nastavení Key Vault
-Když použijete šablonu, musíte nastavit `enabledForDeployment` vlastnost na `true` pro prostředek Key Vault následujícím způsobem:
+Když použijete šablonu, musíte nastavit vlastnost `enabledForDeployment` na `true` pro prostředek Key Vault následujícím způsobem:
 
 ```json
 {
@@ -59,5 +59,5 @@ Když použijete šablonu, musíte nastavit `enabledForDeployment` vlastnost na 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další možnosti, které můžete nakonfigurovat při vytváření Key Vault pomocí šablon, najdete v tématu [Vytvoření trezoru klíčů](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

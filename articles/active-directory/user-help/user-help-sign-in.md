@@ -1,6 +1,6 @@
 ---
-title: Přihlaste se se dvěma kroky ověřování nebo bezpečnostní informace – Azure Active Directory | Microsoft Docs
-description: Přečtěte si, jak se přihlásit pomocí různých metod ověřování identity v informacích o zabezpečení.
+title: Přihlaste se pomocí informací o ověřování identity – Azure AD
+description: Přečtěte si, jak se přihlašovat pomocí různých metod ověřování identity v informacích o zabezpečení.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,12 +13,12 @@ ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b20ea1131ceda0527ed35d1a1082d05f25da6bac
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1c79e82680ae81137ee4164e88e62235f934565a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382294"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028514"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlášení pomocí dvoustupňového ověřování nebo bezpečnostních údajů
 
@@ -89,7 +89,7 @@ Pokud z nějakého důvodu nemůžete použít vaši primární metodu přihlaš
 
 3. Po obnovení účtu můžete aktualizovat metody ověřování (v případě potřeby). Další informace o přidání nebo změně vašich metod najdete v článku [Správa nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](user-help-security-info-overview.md) .
 
@@ -97,4 +97,4 @@ Pokud z nějakého důvodu nemůžete použít vaši primární metodu přihlaš
 
 - Resetování hesla, pokud jste ho ztratili nebo zapomněli, na [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/)
 
-- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se nemůžete [přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .
+- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se [nemůžete přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .

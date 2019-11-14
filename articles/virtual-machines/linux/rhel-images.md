@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux imagí v Azure | Microsoft Docs
+title: Red Hat Enterprise Linux imagí v Azure
 description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: eaabe9da20c22dd3e4d924887adcbc7081857e91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764307"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035119"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux imagí v Azure
 Tento článek popisuje dostupné image Red Hat Enterprise Linux (RHEL) v Azure Marketplace společně se zásadami týkajícími se jejich pojmenování a uchovávání.
@@ -42,7 +42,7 @@ az vm image list --publisher RedHat --all
 ## <a name="naming-convention"></a>Konvence pojmenování
 Image virtuálních počítačů v Azure jsou seřazené podle vydavatele, nabídky, SKU a verze. Kombinace vydavatele: nabídka: SKU: verze je identifikátor URN image a jednoznačně identifikuje obrázek, který se má použít.
 
-Například `RedHat:RHEL:7-RAW:7.6.2018103108` odkazuje na bitovou kopii RHEL 7,6 RAW-partition vytvořenou 31. října 2018.
+`RedHat:RHEL:7-RAW:7.6.2018103108` například odkazuje na bitovou kopii RHEL 7,6 RAW-partition vytvořenou 31. října 2018.
 
 Ukázka, jak vytvořit virtuální počítač s RHEL 7,6, je uvedená níže.
 ```azurecli-interactive
@@ -52,7 +52,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:7.6
 ### <a name="the-latest-moniker"></a>Moniker "poslední"
 Azure REST API povoluje použití monikeru "nejnovější" pro verzi místo konkrétní verze. Když použijete "nejnovější", zřídí se nejnovější dostupná image pro daného vydavatele, nabídku a SKU.
 
-Například `RedHat:RHEL:7-RAW:latest` odkazuje na nejnovější dostupnou bitovou kopii RHEL 7 s nezpracovanými oddíly.
+`RedHat:RHEL:7-RAW:latest` například odkazuje na nejnovější dostupnou bitovou kopii s nezpracovanými oddíly pro RHEL 7 Family.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:latest --no-wait
@@ -88,7 +88,7 @@ Můžete například zobrazit následující 2 dostupné image RHEL 7,4:
 RedHat:RHEL:7-RAW:7.4.2018010506
 RedHat:RHEL:7.4:7.4.2019041718
 ```
-V tomto případě `RedHat:RHEL:7.4:7.4.2019041718` se ve výchozím nastavení připojí k úložištím EUS a `RedHat:RHEL:7-RAW:7.4.2018010506` ve výchozím nastavení se připojí k úložištím bez EUS.
+V takovém případě se `RedHat:RHEL:7.4:7.4.2019041718` ve výchozím nastavení připojí k úložištím EUS a ve výchozím nastavení se `RedHat:RHEL:7-RAW:7.4.2018010506` připojí k úložištím bez EUS.
 
 ### <a name="for-customers-that-dont-want-to-use-eus-images"></a>Pro zákazníky, kteří nechtějí používat image EUS:
 Pokud nechcete použít image, která je ve výchozím nastavení připojená k EUS, nasaďte ji pomocí Image, která v SKU neobsahuje číslo dílčí verze.
@@ -106,13 +106,13 @@ Dílčí verze |Příklad obrázku EUS              |Stav EUS                   
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších budou ve výchozím nastavení EUS|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších budou ve výchozím nastavení EUS |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publikované obrázky můžou 2019 a novější EUS ve výchozím nastavení.  |
-RHEL 8.0      |Není k dispozici                            | Není dostupný žádný EUS ze Red Hat.                               |
+RHEL 8.0      |neuvedeno                            | Není dostupný žádný EUS ze Red Hat.                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>Seznam dostupných imagí RHEL
 Pro obecné použití jsou momentálně dostupné tyto nabídky:
 
-Nabídka| SKU | Dělení | Zřizování | Poznámky
+Nabídka| Skladová položka | Dělení | Zřizování | Poznámky:
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 7 – RAW    | ZÍSKÁNÍ    | Linuxový agent | RHEL 7. x rodina imagí. <br> Nepřipojeno k úložištím EUS ve výchozím nastavení.
 |             | 7 – LVM    | LVM    | Linuxový agent | RHEL 7. x rodina imagí. <br> Nepřipojeno k úložištím EUS ve výchozím nastavení.
@@ -147,7 +147,7 @@ RHEL-SAP-HA   | 7.4      | LVM    | Linuxový agent | RHEL 7,4 pro SAP s doplňk
 Číselné jednotky SKU najdete v seznamu úplných imagí. Microsoft a Red Hat vytvoří nové číselné SKU, když se objeví nová dílčí verze.
 
 ### <a name="other-available-offers-and-skus"></a>Další dostupné nabídky a SKU
-Úplný seznam dostupných nabídek a SKU může zahrnovat další obrázky nad rámec toho, co je uvedeno v tabulce výše, `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`například. Tyto nabídky se dají použít k poskytování podpory pro konkrétní řešení na webu Marketplace nebo můžou být publikované pro účely verze Preview a testování. Můžou se kdykoli změnit nebo odebrat bez upozornění. Nepoužívejte je v případě, že jejich přítomnost není veřejně dokumentována společností Microsoft nebo Red Hat.
+Úplný seznam dostupných nabídek a SKU může zahrnovat další obrázky nad rámec toho, co je uvedeno v tabulce výše, například `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Tyto nabídky se dají použít k poskytování podpory pro konkrétní řešení na webu Marketplace nebo můžou být publikované pro účely verze Preview a testování. Můžou se kdykoli změnit nebo odebrat bez upozornění. Nepoužívejte je v případě, že jejich přítomnost není veřejně dokumentována společností Microsoft nebo Red Hat.
 
 ## <a name="publishing-policy"></a>Zásady publikování
 Obrázky aktualizací Microsoft a Red Hat jako nové podverze se uvolňují podle požadavků na konkrétní CVEs nebo pro příležitostné změny nebo aktualizace konfigurace. Usilujeme o poskytování aktualizovaných imagí co nejdříve – do tří pracovních dnů po vydání nebo dostupnosti CVE opravy.

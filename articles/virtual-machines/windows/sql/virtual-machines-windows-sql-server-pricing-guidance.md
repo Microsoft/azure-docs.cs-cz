@@ -1,10 +1,9 @@
 ---
-title: Efektivní správa nákladů pro SQL Server na virtuálních počítačích Azure | Microsoft Docs
+title: Doprovodné materiály k cenám & správy nákladů
 description: Poskytuje osvědčené postupy pro výběr správného SQL Server cenového modelu virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028622"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038865"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>Doprovodné materiály k ceníkům pro SQL Server virtuálních počítačů Azure
+# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Doprovodné materiály k cenám pro virtuální počítače Azure SQL Server
 
 Tento článek poskytuje cenové poradenství pro [SQL Server virtuální počítače](virtual-machines-windows-sql-server-iaas-overview.md) v Azure. Existuje několik možností, které mají vliv na náklady, a je důležité vybrat správnou image, která bude vyrovnávat náklady s obchodními požadavky.
 
@@ -54,10 +54,10 @@ Pokud chcete vytvořit virtuální počítač s SQL Server 2017 Azure s jednou z
 
 Pokud máte neodlehčené provozní úlohy, použijte jednu z následujících edic SQL Server:
 
-| Edice SQL Server | Úloha |
+| SQL Server Edition | Úloha |
 |-----|-----|
 | Web | Malé weby |
-| Úroveň Standard | Malá a středně velká zatížení |
+| Standard | Malá a středně velká zatížení |
 | Enterprise | Velké nebo důležité úlohy|
 
 Máte dvě možnosti, jak platíte za SQL Server licencování pro tyto edice: *Plaťte za použití* nebo *využijte vlastní licenci (BYOL)* .
@@ -139,7 +139,7 @@ Náklady na licencování SQL Server přímo souvisí s počtem vCPU. Vyberte ve
 
 Existují nové velikosti počítačů, které dobře fungují s určitými typy SQL Server úloh. Tyto počítače mají na paměti udržování vysoké úrovně paměti, úložiště a vstupně-výstupních propustností, ale mají nižší virtualizovaný počet jader. Zvažte například následující příklad:
 
-| Velikost virtuálního počítače | vCPU | Paměť | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (COMPUTE a licencování) |
+| Velikost virtuálního počítače | vCPU | Memory (Paměť) | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (COMPUTE a licencování) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 IOPS nebo 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 IOPS nebo 768 MB/s | 75% nižší | 57% nižší |
@@ -147,7 +147,7 @@ Existují nové velikosti počítačů, které dobře fungují s určitými typy
 > [!IMPORTANT]
 > Toto je příklad v daném časovém okamžiku. Nejnovější specifikace najdete v článcích o velikostech počítačů a na stránce s cenami Azure pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-V předchozím příkladu vidíte, že specifikace pro **Standard_DS14v2** a **Standard_DS14-4v2** jsou identické s výjimkou pro vCPU. Přípona **-4v2** na konci velikosti počítače **Standard_DS14-4v2** označuje počet aktivních vCPU. Vzhledem k tomu, že SQL Server náklady na licencování jsou vázané na počet vCPU, významně snižuje náklady na virtuální počítač ve scénářích, kde nejsou potřeba další vCPU. Jedná se o jeden příklad a existuje mnoho velikostí počítačů s omezenými vCPU, které jsou identifikované pomocí tohoto vzoru přípon. Další informace najdete v blogovém příspěvku s [oznámením nových velikostí virtuálních počítačů Azure](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/), které vám poúčtují cenově výhodnější databázovou práci.
+V předchozím příkladu vidíte, že specifikace pro **Standard_DS14v2** a **Standard_DS14-4v2** jsou stejné s výjimkou vCPU. Přípona **4v2** na konci velikosti počítače **Standard_DS14-4v2** označuje počet aktivních vCPU. Vzhledem k tomu, že SQL Server náklady na licencování jsou vázané na počet vCPU, významně snižuje náklady na virtuální počítač ve scénářích, kde nejsou potřeba další vCPU. Jedná se o jeden příklad a existuje mnoho velikostí počítačů s omezenými vCPU, které jsou identifikované pomocí tohoto vzoru přípon. Další informace najdete v blogovém příspěvku s [oznámením nových velikostí virtuálních počítačů Azure](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/), které vám poúčtují cenově výhodnější databázovou práci.
 
 ### <a name="shut-down-your-vm-when-possible"></a>Pokud je to možné, vypněte virtuální počítač.
 

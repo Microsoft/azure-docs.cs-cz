@@ -1,5 +1,5 @@
 ---
-title: Otevření portů k virtuálnímu počítači pomocí Azure Portal | Microsoft Docs
+title: Otevření portů k virtuálnímu počítači pomocí Azure Portal
 description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač s Windows pomocí modelu nasazení Resource Manager na webu Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: f9edee7a0ff19a536d0ea719ede6d0cd2e9d6ac7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102637"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033109"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Postup otevření portů na virtuálním počítači s Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -79,7 +79,7 @@ Posledním krokem je přidružení skupiny zabezpečení sítě k podsíti nebo 
 
 Příkazy popsané v tomto článku vám umožní rychle získat provoz do svého virtuálního počítače. Skupiny zabezpečení sítě poskytují mnoho skvělých funkcí a členitosti pro řízení přístupu k vašim prostředkům. Další informace najdete v tématu [filtrování síťového provozu pomocí skupiny zabezpečení sítě](../../virtual-network/tutorial-filter-network-traffic.md).
 
-V případě webových aplikací s vysokou dostupností zvažte umístění virtuálních počítačů za nástroj pro vyrovnávání zatížení Azure. Nástroj pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů pomocí skupiny zabezpečení sítě, která poskytuje filtrování přenosů. Další informace najdete v tématu věnovaném vyrovnávání [zatížení virtuálních počítačů s Windows v Azure za účelem vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
+V případě webových aplikací s vysokou dostupností zvažte umístění virtuálních počítačů za nástroj pro vyrovnávání zatížení Azure. Nástroj pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů pomocí skupiny zabezpečení sítě, která poskytuje filtrování přenosů. Další informace najdete v tématu věnovaném [Vyrovnávání zatížení virtuálních počítačů s Windows v Azure za účelem vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste vytvořili skupinu zabezpečení sítě, vytvořili příchozí pravidlo, které umožňuje přenosy HTTP na portu 80 a pak toto pravidlo přidružit k podsíti. 

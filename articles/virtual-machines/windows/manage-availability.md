@@ -1,5 +1,5 @@
 ---
-title: Správa dostupnosti virtuálních počítačů s Windows v Azure | Microsoft Docs
+title: Správa dostupnosti virtuálních počítačů s Windows v Azure
 description: Naučte se používat víc virtuálních počítačů, abyste zajistili vysokou dostupnost vaší aplikace pro Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c7de139c83128f92c9c28fbdb002246f6dbbf0ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 44db2b0b42175f7968852ad9a0f7769b05e2c008
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079247"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038179"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Správa dostupnosti virtuálních počítačů s Windows v Azure 
 
@@ -30,6 +30,6 @@ Pokyny k vytváření a používání skupin dostupnosti při použití modelu n
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
-## <a name="next-steps"></a>Další postup
-Další informace o vyrovnávání zatížení virtuálních počítačů najdete v tématu vyrovnávání [zatížení virtuálních počítačů](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>Další kroky
+Další informace o vyrovnávání zatížení virtuálních počítačů najdete v tématu [Vyrovnávání zatížení virtuálních počítačů](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

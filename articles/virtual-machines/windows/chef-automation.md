@@ -1,5 +1,5 @@
 ---
-title: Nasazení virtuálního počítače Azure s využitím Microsoft Docs
+title: Nasazení virtuálního počítače Azure s využitím
 description: Naučte se používat k automatickému nasazení a konfiguraci virtuálních počítačů na Microsoft Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58642cdbf164523390d5e4925290b43f6c05549b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080091"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039549"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatizace nasazení virtuálních počítačů Azure pomocí Chefu
 
@@ -36,7 +36,7 @@ Následující diagram znázorňuje architekturu s vysokou úrovní.
 
 ![][2]
 
-Má tři hlavní součásti architektury: Server pro stavbu, klient pro klientské aplikace (uzel) a pracovní stanice pro příkaz.
+Aplikace pro stavbu má tři hlavní součásti architektury: Server na pracovišti, klient pro klientské aplikace (uzel) a pracovní stanice pro příkaz.
 
 Server s nástrojem pro správu je bod správy a existují dvě možnosti pro server s podporou: hostované řešení nebo místní řešení.
 
@@ -78,7 +78,7 @@ V tomto průvodci se předpokládá, že se přihlásíte k hostovanému hostite
 
 Pokud ještě nepoužíváte server systému, můžete:
 
-* Zaregistrujte [](https://manage.chef.io/signup)se do hostovaného zprovoznění, což je nejrychlejší způsob, jak začít pracovat s nástrojem.
+* Zaregistrujte se do [hostovaného](https://manage.chef.io/signup)zprovoznění, což je nejrychlejší způsob, jak začít pracovat s nástrojem.
 * Nainstalujte samostatný server systému pro počítače se systémem Linux, a to podle [pokynů k instalaci](https://docs.chef.io/install_server.html) z [docs](https://docs.chef.io/).
 
 ### <a name="creating-a-hosted-chef-account"></a>Vytvoření hostovaného účtu pro prostředí pro hostování
@@ -97,17 +97,17 @@ Po vytvoření vaší organizace si stáhněte úvodní sadu.
 > Pokud se zobrazí výzva s upozorněním, že se vaše klíče resetují, je možné pokračovat, protože ještě není nakonfigurovaná žádná stávající infrastruktura.
 >
 
-Tento soubor zip sady Starter obsahuje konfigurační soubory vaší organizace a klíč uživatele v `.chef` adresáři.
+Tento soubor zip úvodní sady obsahuje konfigurační soubory vaší organizace a klíč uživatele v adresáři `.chef`.
 
-Je `organization-validator.pem` nutné se stáhnout samostatně, protože se jedná o privátní klíč a privátní klíče by se neměly ukládat na server systému. V části [Správa](https://manage.chef.io/)v nástroji pro správu webu použijte příkaz "resetovat ověřovací klíč", který poskytuje soubor, který se má stáhnout samostatně. Uložte soubor do c:\chef.
+`organization-validator.pem` je třeba stáhnout samostatně, protože se jedná o privátní klíč a privátní klíče by se neměly ukládat na server systému. V části [Správa](https://manage.chef.io/)v nástroji pro správu webu použijte příkaz "resetovat ověřovací klíč", který poskytuje soubor, který se má stáhnout samostatně. Uložte soubor do c:\chef.
 
 ### <a name="configuring-your-chef-workstation"></a>Konfigurace pracovní stanice pro správce
 
 Extrakce obsahu souboru Chef-Starter. zip na c:\chef.
 
-Zkopírujte všechny soubory v rámci\.Chef-starter\chef-repo do adresáře c:\chef.
+Zkopírujte všechny soubory pod Chef-starter\chef-repo\.do svého adresáře c:\chef.
 
-`organization-validator.pem` Zkopírovat soubor do c:\chef, pokud je uložený v c:\downloads
+Zkopírovat soubor `organization-validator.pem` do c:\chef, pokud je uložený v c:\Downloads
 
 Váš adresář by teď měl vypadat podobně jako v následujícím příkladu.
 
@@ -149,7 +149,7 @@ Do nůž. RB přidejte následující informace:
 
 validation_client_name "myorg-validátor"
 
-validation_key "#{current_dir}/myorg.pem"
+validation_key "# {current_dir}/myorg.pem"
 
 knife[:azure_tenant_id] =         "0000000-1111-aaaa-bbbb-222222222222"
 
@@ -193,9 +193,9 @@ knife[:azure_client_secret] = "#1234p$wdchef19"
 Pak [Stáhněte a nainstalujte](https://downloads.chef.io/chef-workstation/) pracovní stanici systému.
 Nainstalujte do výchozího umístění pracovní stanici systému pro instalaci. Tato instalace může trvat několik minut.
 
-Na ploše uvidíte "PowerShell PowerShell", což je prostředí načtené pomocí nástroje, které budete potřebovat pro interakci s produkty systému Desktop. Prostředí PowerShell pro SH zpřístupňuje nové příkazy ad hoc, `chef-run` jako jsou i tradiční příkazy rozhraní příkazového `chef`řádku. Podívejte se na vaši nainstalovanou verzi sady nástrojů pro správu systému `chef -v`pomocí nástroje. Verzi pracovní stanice si můžete prohlédnout taky tak, že v aplikaci pro pracovní stanici zaškrtnete "o pracovní stanici pro správce \.
+Na ploše uvidíte "PowerShell PowerShell", což je prostředí načtené pomocí nástroje, které budete potřebovat pro interakci s produkty systému Desktop. Prostředí PowerShell pro SH nabízí nové dostupné příkazy ad hoc, například `chef-run` a tradiční příkazy rozhraní příkazového řádku pro rozhraní příkazového řádku, jako je například `chef`. Podívejte se na vaši nainstalovanou verzi sady nástrojů pro správu systému a nástroje pro správu systému `chef -v`. Verzi pracovní stanice si můžete prohlédnout taky tak, že v aplikaci pro pracovní stanici zaškrtnete "o pracovní stanici pro správce \.
 
-`chef --version`měla by vracet něco jako:
+`chef --version` by měl vracet něco podobného:
 
 ```
 Chef Workstation: 0.4.2
@@ -277,7 +277,7 @@ Spuštěním následujícího příkazu vygenerujte šablonu:
 
     chef generate template webserver Default.htm
 
-Přejděte k `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` souboru. Upravte soubor tak, že přidáte nějaký jednoduchý kód HTML "Hello World" a pak soubor uložte.
+Přejděte do souboru `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb`. Upravte soubor tak, že přidáte nějaký jednoduchý kód HTML "Hello World" a pak soubor uložte.
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>Nahrání kuchařka na server s
 V tomto kroku vytvoříte kopii kuchařka, kterou jste vytvořili v místním počítači, a nahrajete ji na hostovaný Server. Po nahrání se kuchařka zobrazí na kartě **zásady** .
@@ -309,7 +309,7 @@ Příklad příkazu se zobrazí jako další.
     -r "recipe[webserver]"
 
 
-Výše uvedený příklad vytvoří virtuální počítač s Standard_DS2_v2 s Windows serverem 2016 nainstalovaným v oblasti Západní USA. Nahraďte konkrétní proměnné a spusťte příkaz.
+Výše uvedený příklad vytvoří virtuální počítač Standard_DS2_v2 s Windows serverem 2016 nainstalovaným v rámci Západní USA oblasti. Nahraďte konkrétní proměnné a spusťte příkaz.
 
 > [!NOTE]
 > Pomocí příkazového řádku jsem také automatizuje pravidla filtru sítě koncového bodu pomocí parametru – TCP-Endpoints. Otevřel (a) jsem porty 80 a 3389, které poskytují přístup k webové stránce a relaci RDP.

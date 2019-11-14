@@ -1,5 +1,5 @@
 ---
-title: Příklad návodu k infrastruktuře Azure | Microsoft Docs
+title: Příklad postupu infrastruktury Azure
 description: Přečtěte si pokyny pro návrh a implementaci klíčů pro nasazení ukázkové infrastruktury v Azure.
 documentationcenter: ''
 services: virtual-machines-linux
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71b0dd15d183f3209c7424c537dde1e3df29d097
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cf63db18dac5fa202bbf339723c6555c4acb2ca2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083142"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036039"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Příklad návodu k infrastruktuře Azure pro virtuální počítače se systémem Linux
 Tento článek vás provede vytvořením ukázkové aplikační infrastruktury. Podrobně popisujeme infrastrukturu jednoduchého online úložiště, která přináší všechny pokyny a rozhodnutí týkající se konvencí pojmenování, skupin dostupnosti, virtuálních sítí a nástrojů pro vyrovnávání zatížení a skutečně nasazování virtuálních počítačů (VM).
@@ -47,7 +47,7 @@ Výsledný návrh musí zahrnovat:
 * Spravované disky Azure
 * Virtuální síť se dvěma podsítěmi
 * Skupiny dostupnosti pro virtuální počítače s podobnou rolí
-* Virtuální počítače
+* Virtual Machines
 
 U všech výše uvedených zásad vytváření názvů použijte tyto zásady:
 
@@ -60,7 +60,7 @@ U všech výše uvedených zásad vytváření názvů použijte tyto zásady:
 ## <a name="azure-subscriptions-and-accounts"></a>Předplatná a účty Azure
 Adventure Works Cycles používá své podnikové předplatné s názvem Adventure Works Enterprise Subscription k poskytování fakturace za tuto úlohu IT.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 V případě cyklů Adventure Works se zjistí, že by měly používat Azure Managed Disks. Při vytváření virtuálních počítačů se používají obě úrovně úložiště dostupné pro úložiště:
 
 * **Storage úrovně Standard** pro webové servery, aplikační servery a řadiče domény a jejich datové disky.
@@ -72,13 +72,13 @@ Vzhledem k tomu, že virtuální síť nepotřebuje nepřetržité připojení k
 Vytvořili jenom cloudovou virtuální síť s následujícím nastavením pomocí Azure Portal:
 
 * Název: AZOS-USE-VN01
-* Oblasti Východní USA 2
+* Umístění: Východní USA 2
 * Adresní prostor virtuální sítě: 10.0.0.0/8
 * První podsíť:
-  * Název: FrontEnd
+  * Název: front-end
   * Adresní prostor: 10.0.1.0/24
 * Druhá podsíť:
-  * Název: BackEnd
+  * Název: back-end
   * Adresní prostor: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
@@ -89,7 +89,7 @@ Aby se zachovala vysoká dostupnost všech čtyř vrstev svého online úložiš
 * **azos-use-as-DB** pro servery v clusteru MongoDB horizontálně dělené
 * **azos-use-as-DC** pro řadiče domény
 
-## <a name="virtual-machines"></a>Virtuální počítače
+## <a name="virtual-machines"></a>Virtual Machines
 Na následujících názvech se u svých virtuálních počítačů Azure rozhodly Adventure Works Cycles:
 
 * **azos-use-VM-web01** pro první webový server

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace LVM ve virtuálním počítači se systémem Linux | Microsoft Docs
+title: Konfigurace LVM na virtuálním počítači se systémem Linux
 description: Přečtěte si, jak nakonfigurovat LVM pro Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.subservice: disks
-ms.openlocfilehash: 1ab545edf9b45e37082509452a858a154b361251
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083821"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036684"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuálním počítači se systémem Linux v Azure
 Tento dokument popisuje, jak na virtuálním počítači Azure nakonfigurovat Správce logických svazků (LVM). LVM se dá použít na disku s operačním systémem nebo na datových discích ve virtuálních počítačích Azure, ale ve výchozím nastavení většina cloudových imagí nebude mít LVM nakonfigurovanou na disku s operačním systémem. Následující postup se zaměřuje na konfiguraci LVM pro datové disky.
@@ -59,14 +59,14 @@ Jeden bude obvykle chtít začít se dvěma nebo více prázdnými datovými dis
     sudo zypper install lvm2
     ```
 
-    V SLES11 musíte také upravit `/etc/sysconfig/lvm` a nastavit `LVM_ACTIVATED_ON_DISCOVERED` na Povolit:
+    V SLES11 musíte také upravit `/etc/sysconfig/lvm` a nastavit `LVM_ACTIVATED_ON_DISCOVERED` na "Povolit":
 
     ```sh   
     LVM_ACTIVATED_ON_DISCOVERED="enable" 
     ```
 
 ## <a name="configure-lvm"></a>Konfigurace LVM
-V tomto průvodci předpokládáme, že máte připojené tři datové disky, které budeme označovat jako `/dev/sdc` `/dev/sdd` a `/dev/sde`. Tyto cesty nemusí odpovídat názvům cest k disku ve vašem VIRTUÁLNÍm počítači. Můžete spustit`sudo fdisk -l`nebo podobný příkaz pro výpis dostupných disků.
+V tomto průvodci předpokládáme, že máte připojené tři datové disky, které budeme označovat jako `/dev/sdc`, `/dev/sdd` a `/dev/sde`. Tyto cesty nemusí odpovídat názvům cest k disku ve vašem VIRTUÁLNÍm počítači. K vypsání dostupných disků můžete spustit "`sudo fdisk -l`" nebo podobný příkaz.
 
 1. Příprava fyzických svazků:
 
@@ -77,7 +77,7 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
     Physical volume "/dev/sde" successfully created
     ```
 
-2. Vytvořte skupinu svazků. V tomto příkladu voláme skupinu `data-vg01`svazků:
+2. Vytvořte skupinu svazků. V tomto příkladu voláme skupinu svazků `data-vg01`:
 
     ```bash    
     sudo vgcreate data-vg01 /dev/sd[cde]
@@ -98,11 +98,11 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
     ```
    
    > [!NOTE]
-   > Pomocí SLES11 použijte `-t ext3` místo ext4. SLES11 podporuje přístup jen pro čtení k systémům souborů ext4.
+   > SLES11 místo ext4 použít `-t ext3`. SLES11 podporuje přístup jen pro čtení k systémům souborů ext4.
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Přidat nový systém souborů do/etc/fstab
 > [!IMPORTANT]
-> Nesprávná úprava `/etc/fstab` souboru by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, přečtěte si dokumentaci k distribuci, kde najdete informace o tom, jak tento soubor správně upravit. Doporučuje se také vytvořit zálohu `/etc/fstab` souboru před úpravou.
+> Nesprávná úprava `/etc/fstab` souboru by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, přečtěte si dokumentaci k distribuci, kde najdete informace o tom, jak tento soubor správně upravit. Před úpravou se taky doporučuje vytvořit zálohu `/etc/fstab`ho souboru.
 
 1. Vytvořte požadovaný přípojný bod pro nový systém souborů, například:
 
@@ -119,22 +119,22 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
     ....
     ```
 
-3. Otevřete `/etc/fstab` v textovém editoru a přidejte položku pro nový systém souborů, například:
+3. V textovém editoru otevřete `/etc/fstab` a přidejte položku pro nový systém souborů, například:
 
     ```bash    
     /dev/data-vg01/data-lv01  /data  ext4  defaults  0  2
     ```   
-    Pak ho uložte a zavřete `/etc/fstab`.
+    Pak `/etc/fstab`uložte a zavřete.
 
-4. Otestujte správnost položky `/etc/fstab` :
+4. Otestujte správnost položky `/etc/fstab`:
 
     ```bash    
     sudo mount -a
     ```
 
-    Pokud tento příkaz způsobí chybovou zprávu, Projděte si syntaxi v `/etc/fstab` souboru.
+    Pokud tento příkaz způsobí chybovou zprávu, Projděte si syntaxi v souboru `/etc/fstab`.
    
-    V dalším kroku `mount` spusťte příkaz, abyste zajistili, že je systém souborů připojený:
+    Dále spusťte příkaz `mount`, abyste zajistili, že je systém souborů připojen:
 
     ```bash    
     mount
@@ -142,9 +142,9 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. Volitelné Failsafe parametry spuštění v`/etc/fstab`
+5. Volitelné Failsafe parametry spuštění v `/etc/fstab`
    
-    Mnoho distribucí zahrnuje buď `nobootwait` parametry připojení nebo `nofail` parametry, které `/etc/fstab` mohou být přidány do souboru. Tyto parametry umožňují selhání při připojování konkrétního systému souborů a umožňuje, aby se systém Linux spouštěl i v případě, že není schopen správně připojit systém souborů RAID. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
+    Mnoho distribucí zahrnuje buď parametry `nobootwait`, nebo `nofail` připojení, které mohou být přidány do souboru `/etc/fstab`. Tyto parametry umožňují selhání při připojování konkrétního systému souborů a umožňuje, aby se systém Linux spouštěl i v případě, že není schopen správně připojit systém souborů RAID. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
    
     Příklad (Ubuntu):
 
@@ -157,13 +157,13 @@ Některé jádro systému Linux podporují operace OŘEZÁVÁNÍ a odmapování,
 
 Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux povolit podporu OŘEZÁVÁNÍ. V obvyklých případech si prostudujte doporučený postup:
 
-- Použijte možnost `/etc/fstab`připojení v, například: `discard`
+- V `/etc/fstab`použijte možnost `discard` připojení, například:
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2
     ```
 
-- V některých případech může `discard` mít možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
+- V některých případech může mít možnost `discard` dopad na výkon. Alternativně můžete spustit příkaz `fstrim` ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
 
     **Ubuntu**
 

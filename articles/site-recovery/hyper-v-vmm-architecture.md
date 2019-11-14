@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 716f8e053ad05ba701b3415946cd8d3a56044e62
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: f7fa5d7ef68613301c30e26d21f69a80559dbcb9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953985"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030018"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektura – replikace Hyper-V do sekundární lokality
 
 Tento článek popisuje komponenty a procesy využívané při replikaci místních virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do sekundární lokality VMM s využitím služby [Azure Site Recovery](site-recovery-overview.md) na webu Azure Portal.
 
 > [!WARNING]
-> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
+> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](site-to-site-deprecation.md) .
 
 ## <a name="architectural-components"></a>Komponenty architektury
 

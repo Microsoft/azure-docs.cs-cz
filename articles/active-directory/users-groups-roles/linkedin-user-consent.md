@@ -1,83 +1,83 @@
 ---
-title: Účet LinkedIn připojení sdílení dat a vyjádření souhlasu – Azure Active Directory | Dokumentace Microsoftu
-description: Vysvětluje, jak integrace LinkedIn sdílí data prostřednictvím aplikace Microsoftu ve službě Azure Active Directory
+title: Sdílení a souhlas s daty LinkedIn – Azure Active Directory | Microsoft Docs
+description: Vysvětluje, jak integrace LinkedInu sdílí data přes aplikace Microsoftu v Azure Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a21c986ccfe96bae5d341e0ba2ee6622d998d076
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469629"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025389"
 ---
-# <a name="linkedin-account-connections-data-sharing-and-consent"></a>Sdílení dat prostřednictvím připojení se účet LinkedIn a vyjádření souhlasu
+# <a name="linkedin-account-connections-data-sharing-and-consent"></a>Účet LinkedIn připojení ke sdílení dat a jejich souhlas
 
-Umožníte uživatelům ve vaší organizaci Active Directory (Azure AD) vyjádřit souhlas se připojit své pracovní nebo školní účet ke svému účtu LinkedIn. Jakmile se uživatel připojí svoje účty, jsou k dispozici v některých aplikacím a službám Microsoftu informace a vybraná vystoupení z Linkedinu. Uživatelé také mohou očekávat své síťové prostředí na Linkedinu vylepšené a rozšiřují o informace od Microsoftu.
+Uživatelům v organizaci služby Active Directory (Azure AD) můžete povolit souhlas s připojením svého pracovního nebo školního účtu Microsoftu k účtu LinkedIn. Jakmile uživatel připojí své účty, informace a nejdůležitější informace z LinkedInu jsou k dispozici v některých aplikacích a službách společnosti Microsoft. Uživatelé taky můžou očekávat, že se síťové prostředí na LinkedInu zlepší a obohacuje s informacemi od Microsoftu.
 
-Pokud chcete zobrazit informace Linkedinu v aplikacím a službám Microsoftu, uživatelé musí udělit souhlas připojit své účty Microsoft a LinkedIn. Uživatelům se výzva k připojit své účty při prvním kliknutí zobrazíte informace LinkedIn jiného uživatele na kartě profil v Outlooku, Onedrivu nebo Sharepointu Online. S účtem LinkedIn nejsou povolené plně pro vaše uživatele, dokud se souhlas ještě neznáte a připojit své účty.
+Chcete-li zobrazit informace LinkedInu v aplikacích a službách společnosti Microsoft, musí uživatelé souhlasit s připojením vlastních účtů Microsoft a LinkedIn. Uživatelům se zobrazí výzva k připojení svých účtů při prvním kliknutí, aby viděli informace o LinkedInu na kartě profilu v Outlooku, OneDrivu nebo SharePointu Online. Připojení k účtu LinkedIn nejsou pro vaše uživatele plně povolena, dokud nebudou souhlasit s prostředím a připojíte své účty.
 
 [!INCLUDE [active-directory-gdpr-note](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="benefits-of-sharing-linkedin-information"></a>Výhody sdílení informací LinkedIn
+## <a name="benefits-of-sharing-linkedin-information"></a>Výhody sdílení informací o LinkedInu
 
-Přístup k informacím o Linkedinu v rámci aplikacím a službám Microsoftu usnadňuje uživatelům připojení, zapojení a vytvářet profesionální vztahy s kolegy, zákazníky a partnery uvnitř i mimo vaši organizaci. Noví uživatelé mohou rychle začít rychlejší připojení s kolegy, získání informací o nich a snadného přístupu k další informace. Tady je příklad toho, jak se zobrazuje na kartě profil v aplikacích Microsoft, LinkedIn informace:
+Přístup k informacím LinkedIn v aplikacích a službách Microsoftu usnadňuje uživatelům připojení, zapojení a sestavování profesionálních vztahů s kolegy, zákazníky a partnery v rámci vaší organizace i mimo ni. Noví uživatelé můžou zrychlit rychlejším připojením k kolegům, učit se o nich více a snadno získat další informace. Tady je příklad, jak se informace LinkedInu zobrazují na kartě Profil v aplikacích Microsoftu:
 
-![Povolení integrace LinkedIn ve vaší organizaci](./media/linkedin-user-consent/display-example.png)
+![Povolení integrace LinkedInu ve vaší organizaci](./media/linkedin-user-consent/display-example.png)
 
-## <a name="enable-and-announce-linkedin-integration"></a>Povolit a oznamujeme integrace LinkedIn
+## <a name="enable-and-announce-linkedin-integration"></a>Povolení a oznámení integrace LinkedInu
 
-Musíte být správce Azure Active Directory ke správě nastavení pro vaši organizaci. Můžete ji povolit pro všechny uživatele, nebo pro konkrétní skupinu uživatelů.
+Abyste mohli spravovat nastavení vaší organizace, musíte být správcem Azure Active Directory. Můžete ji povolit pro všechny uživatele nebo pro konkrétní skupinu uživatelů.
 
-1. Chcete-li povolit nebo zakázat integraci, postupujte podle kroků v [souhlas integrace LinkedIn ve vaší organizaci Azure AD](linkedin-integration.md).
-2. Když oznamujeme integrace LinkedIn ve vaší organizaci, přejděte na vaši uživatelé v části Nejčastější dotazy o [LinkedIn informace v aplikacím a službám Microsoftu](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Tento článek poskytuje informace o tom, kde informace LinkedIn se zobrazí, jak se připojit účty a další.
+1. Pokud chcete povolit nebo zakázat integraci, postupujte podle kroků v části [vyjádření souhlasu s integrací LinkedIn pro vaši organizaci Azure AD](linkedin-integration.md).
+2. Když oznamujete integraci LinkedInu ve vaší organizaci, nasměrujte uživatele na nejčastější dotazy týkající se [informací o LinkedInu v aplikacích a službách Microsoftu](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Tento článek obsahuje informace o tom, kde se zobrazují informace o LinkedInu, způsobu připojení účtů a dalších.
 
-## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Souhlas uživatele pro přístup k datům v Microsoft a LinkedIn
+## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Souhlas uživatele s přístupem k datům v Microsoft a LinkedInu
 
-Data, která je přístupná z Linkedinu není trvale uložený ve službě Microsoft. Data, která je přístupná z Microsoft není trvale uložen s Linkedinem, s výjimkou kontakty. Microsoft Contacts jsou uložené na Linkedinu dokud uživatelé odebrat je, jak je popsáno v [odstraňování kontaktů importované z Linkedinu](https://www.linkedin.com/help/linkedin/answer/43377).
+Data, ke kterým se dostanete z LinkedInu, se na služby Microsoftu neukládají trvale. Data, ke kterým se dostanete od Microsoftu, se neukládají trvale pomocí LinkedInu s výjimkou kontaktů. Kontakty společnosti Microsoft jsou uloženy na LinkedIn, dokud je uživatelé neodstraní, jak je popsáno v tématu [odstranění importovaných kontaktů z LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
 
-Když se uživatelé připojí svoje účty, jsou k dispozici v některých aplikacích Microsoftu, jako je karta profilu informace a přehledy z Linkedinu. Uživatelé také mohou očekávat své síťové prostředí na Linkedinu vylepšené a rozšiřují o informace od Microsoftu.
-Pokud uživatelé ve vaší organizaci připojit svou práci LinkedIn a Microsoft nebo školních účtů, mají dvě možnosti:
+Když uživatelé připojí své účty, informace a přehledy z LinkedInu jsou k dispozici v některých aplikacích Microsoftu, jako je karta profilace. Uživatelé taky můžou očekávat, že se síťové prostředí na LinkedInu zlepší a obohacuje s informacemi od Microsoftu.
+Když uživatelé ve vaší organizaci připojí své pracovní nebo školní účty pro LinkedIn a Microsoft, mají dvě možnosti:
 
-* Udělení oprávnění pro přístup z obou účtů data. To znamená, že udělit oprávnění pro jejich společnost Microsoft nebo pracovní účet pro přístup k datům z jejich účet LinkedIn a to u [svůj účet LinkedIn, přístup k datům z jejich pracovní nebo školní účet](https://www.linkedin.com/help/linkedin/answer/84077).
-* Udělení oprávnění pro LinkedIn data své společnosti Microsoft přístup k pracovní a školní účet.
+* Udělte oprávnění pro přístup k datům z obou účtů. To znamená, že poskytují oprávnění pro svůj účet Microsoft nebo pracovní postup pro přístup k datům z jejich účtu LinkedIn a pro [svůj účet LinkedIn pro přístup k datům ze svého pracovního nebo školního účtu Microsoftu](https://www.linkedin.com/help/linkedin/answer/84077).
+* Poskytněte oprávnění pouze pro přístup k datům LinkedIn, ke kterým mají přístup jejich pracovní a školní účet Microsoftu.
 
-Uživatelé mohou odpojení účtů a odeberte oprávnění pro přístup k datům v okamžiku, a [uživatelé můžou řídit, jak zobrazit své vlastní profilu LinkedIn](https://www.linkedin.com/help/linkedin/answer/83), včetně Určuje, zda jejich profil může zobrazovat v aplikacích Microsoftu.
+Uživatelé můžou odpojit účty a kdykoli odebrat oprávnění k přístupu k datům a [Uživatelé můžou řídit, jak se bude zobrazovat vlastní linkedinový profil](https://www.linkedin.com/help/linkedin/answer/83), včetně toho, jestli se jejich profil dá zobrazit v aplikacích Microsoftu.
 
 ### <a name="linkedin-account-data"></a>Data účtu LinkedIn
 
-Když připojíte účtů Microsoft a LinkedIn, dáváte linkedinu svolení poskytovat následující data společnosti Microsoft:
+Po připojení účtů Microsoft a LinkedInu vám LinkedIn umožní poskytovat Microsoftu tato data:
 
-* Data profilu – zahrnuje identita LinkedIn, kontaktní informace a informace o sdílení s ostatními ve vaší [profilu LinkedIn](https://www.linkedin.com/help/linkedin/answer/15493).
-* Zajímá data – zahrnuje zájmy na Linkedinu, jako jsou lidé a témata postupovat podle kurzů skupiny a obsah je, jako je a sdílet.
-* Předplatná data – zahrnuje předplatné LinkedIn aplikací a služeb společně s přidružená data. 
-* Připojení dat – zahrnuje vaše [síť LinkedIn](https://www.linkedin.com/help/linkedin/answer/110) také profily a kontaktní údaje z vašich připojení stupeň 1. dne.
+* Data profilu – zahrnuje identitu LinkedIn, kontaktní údaje a informace, které sdílíte s ostatními v [profilu LinkedIn](https://www.linkedin.com/help/linkedin/answer/15493).
+* Data o zájmech – zahrnuje podíly na LinkedInu, jako jsou lidé a témata, které sledujete, skupiny kurzů a obsah, který chcete sdílet.
+* Data předplatných – zahrnuje odběry aplikací a služeb LinkedIn spolu s přidruženými daty. 
+* Data připojení – zahrnuje vaši [síť LinkedIn](https://www.linkedin.com/help/linkedin/answer/110) včetně profilů a kontaktních informací o připojeních od prvního stupně.
 
-Data, která je přístupná z Linkedinu není trvale uložený ve službě Microsoft. Další informace o používání společnosti Microsoft osobní údaje, najdete v článku [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/privacystatement/).
+Data, ke kterým se dostanete z LinkedInu, se na služby Microsoftu neukládají trvale. Další informace o používání osobních údajů od Microsoftu najdete v tématu [prohlášení o zásadách ochrany osobních údajů společnosti](https://privacy.microsoft.com/privacystatement/)Microsoft.
 
-### <a name="microsoft-work-or-school-account-data"></a>Microsoft pracovní nebo školní data účtu
+### <a name="microsoft-work-or-school-account-data"></a>Data pracovního nebo školního účtu Microsoft
 
-Když se připojíte účtů Microsoft a LinkedIn, udělujete Microsoftu na LinkedIn, které poskytují následující data:
+Když propojíte účty Microsoft a LinkedIn, umožníte Microsoftu, aby na LinkedInu poskytoval následující data:
 
-* Data profilu – obsahuje informace, jako jsou vaše křestní jméno, název, profilové fotky, e-mailovou adresu, správce a poslední osoby, které spravujete.
-* Data v kalendáři – zahrnuje ve vašich kalendářích, jejich časy, umístění a kontaktní údaje účastníků schůzky. Informace o schůzce, jako je program, obsah nebo splnění název není součástí kalendářní data.
-* Zajímá data – zahrnuje zájmu spojené s vaším účtem, založené na používání služeb Microsoft, jako je Cortana a Bing pro firmy.
-* Předplatná data – zahrnuje předplatná, poskytnuté vaší organizací Microsoft aplikacích a službách, jako je Office 365.
-* Kontaktuje data – zahrnuje seznamy kontaktů v Outlooku, Skypu a dalších službách účtu Microsoft, včetně kontaktních informací pro lidé často komunikaci nebo spolupráci s. Kontakty bude pravidelně importované uložený a používá LinkedIn, třeba navrhnout připojení pomáhá uspořádat kontakty a zobrazit aktualizace o kontaktech.
+* Data profilu – obsahuje informace, jako je vaše křestní jméno, příjmení, fotografie profilu, e-mailová adresa, nadřízený a lidé, které spravujete.
+* Data kalendáře – obsahuje schůzky v kalendářích, jejich časy, umístění a kontaktní údaje účastníků. Údaje o schůzce, jako je agenda, obsah nebo název schůzky, nejsou zahrnuté do kalendářních dat.
+* Data o zájmech – zahrnuje zájmy spojené s vaším účtem, a to na základě vašeho používání služeb Microsoftu, jako je Cortana a Bing pro firmy.
+* Data předplatných – včetně předplatných poskytovaných vaší organizací pro aplikace a služby Microsoftu, jako je například Office 365.
+* Data kontaktů – obsahuje seznamy kontaktů v Outlooku, Skypu a dalších službách účet Microsoft, včetně kontaktních informací pro lidi, se kterými často komunikujete nebo spolupracujete. Kontakty se pravidelně importují, ukládají a používají LinkedIn, například k navrhování připojení, k organizování kontaktů a zobrazování aktualizací kontaktů.
 
-Data, která je přístupná z Microsoft není trvale uložen s Linkedinem, s výjimkou kontakty. Microsoft Contacts jsou uloženy na LinkedIn, dokud neodeberete uživatelé. Další informace o [odstraňování kontaktů importované z Linkedinu](https://www.linkedin.com/help/linkedin/answer/43377).
+Data, ke kterým se dostanete od Microsoftu, se neukládají trvale pomocí LinkedInu s výjimkou kontaktů. Kontakty společnosti Microsoft jsou uloženy na LinkedIn, dokud je uživatelé neodstraní. Přečtěte si další informace o [odstraňování importovaných kontaktů z LinkedInu](https://www.linkedin.com/help/linkedin/answer/43377).
 
-Další informace o použití na LinkedIn osobní údaje, najdete v článku [zásady ochrany osobních údajů LinkedIn](https://www.linkedin.com/legal/privacy-policy). Pro LinkedIn služby, přenos dat a úložiště, může tok dat z Evropské unie Spojených států a zpět a ochranu vašich osobních údajů je chráněný, jak je popsáno v [přenosů dat v rámci Evropské unie](https://www.linkedin.com/help/linkedin/answer/62533).
+Další informace o použití osobních údajů na LinkedInu najdete v tématu [Zásady ochrany osobních údajů na LinkedInu](https://www.linkedin.com/legal/privacy-policy). U LinkedIn Services, přenosu dat a úložiště můžou data přenášet z evropského sjednocení do USA a zpátky a vaše ochrana osobních údajů je chráněná, jak je popsáno v tématu [datové přenosy v Evropské unii](https://www.linkedin.com/help/linkedin/answer/62533).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [LinkedIn v aplikacích Microsoftu pomocí svého pracovního nebo školního účtu](https://www.linkedin.com/help/linkedin/answer/84077)
+* [LinkedIn v aplikacích Microsoftu pomocí pracovního nebo školního účtu](https://www.linkedin.com/help/linkedin/answer/84077)

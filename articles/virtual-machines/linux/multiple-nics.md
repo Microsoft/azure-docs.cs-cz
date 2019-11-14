@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Linuxem v Azure s několika síťovými kartami | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit virtuální počítač s Linuxem s více síťovými kartami připojenými k němu pomocí šablon Resource Manageru nebo rozhraní příkazového řádku Azure.
+title: Vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami
+description: Přečtěte si, jak vytvořit virtuální počítač se systémem Linux s více připojenými síťovými kartami pomocí šablon Azure CLI nebo Správce prostředků.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 04aaa1da304657ac3cc305b8939ac4fcce126145
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b4ab46a59bd83bf2d1c08e3a238df3c59797f3e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671172"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035614"
 ---
-# <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet
+# <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami
 
 
-Tento článek podrobně popisuje, jak vytvořit virtuální počítač s několika síťovými kartami pomocí Azure CLI.
+Tento článek podrobně popisuje, jak vytvořit virtuální počítač s více síťovými kartami pomocí Azure CLI.
 
-## <a name="create-supporting-resources"></a>Vytvořte Podpůrné prostředky
-Nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index).
+## <a name="create-supporting-resources"></a>Vytvoření podpůrných prostředků
+Nainstalujte si nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
-V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *mystorageaccount*, a *myVM*.
+V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *mystorageaccount*a *myVM*.
 
 Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
@@ -37,7 +37,7 @@ Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cl
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvoření virtuální sítě s [az network vnet vytvořit](/cli/azure/network/vnet). Následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnetFrontEnd*:
+Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet). Následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnetFrontEnd*:
 
 ```azurecli
 az network vnet create \
@@ -48,7 +48,7 @@ az network vnet create \
     --subnet-prefix 10.0.1.0/24
 ```
 
-Vytvořte podsíť pro back-end provozu s využitím [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet). Následující příklad vytvoří podsíť s názvem *mySubnetBackEnd*:
+Vytvořte podsíť pro back-end přenos pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet). Následující příklad vytvoří podsíť s názvem *mySubnetBackEnd*:
 
 ```azurecli
 az network vnet subnet create \
@@ -58,7 +58,7 @@ az network vnet subnet create \
     --address-prefix 10.0.2.0/24
 ```
 
-Vytvořte skupinu zabezpečení sítě pomocí [az network nsg vytvořit](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě *myNetworkSecurityGroup*:
+Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -66,8 +66,8 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-## <a name="create-and-configure-multiple-nics"></a>Vytvořit a nakonfigurovat více síťových rozhraní
-Vytvořit dva síťové adaptéry s [az network nic vytvořit](/cli/azure/network/nic). Následující příklad vytvoří dva síťové adaptéry s názvem *myNic1* a *myNic2*, připojené skupiny zabezpečení sítě s jednou síťovou KARTOU připojení ke každé podsíti:
+## <a name="create-and-configure-multiple-nics"></a>Vytvoření a konfigurace více síťových karet
+Pomocí [AZ Network nic Create vytvořte](/cli/azure/network/nic)dvě síťové karty. Následující příklad vytvoří dvě síťová rozhraní s názvem *myNic1* a *myNic2*, připojenou ke skupině zabezpečení sítě s jednou síťovou kartou připojujícími se ke každé podsíti:
 
 ```azurecli
 az network nic create \
@@ -84,8 +84,8 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="create-a-vm-and-attach-the-nics"></a>Vytvoření virtuálního počítače a připojte síťové karty
-Při vytváření virtuálního počítače, zadejte síťová rozhraní jste vytvořili pomocí `--nics`. Také je potřeba dbát při volbě velikosti virtuálního počítače. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace o [velikosti virtuálního počítače s Linuxem](sizes.md).
+## <a name="create-a-vm-and-attach-the-nics"></a>Vytvoření virtuálního počítače a připojení síťových karet
+Když vytváříte virtuální počítač, zadejte síťové karty, které jste vytvořili pomocí `--nics`. Při výběru velikosti virtuálního počítače se také musíte postarat. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Přečtěte si víc o [velikostech virtuálních počítačů se systémem Linux](sizes.md).
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač *myVM*:
 
@@ -100,12 +100,12 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
-Přidání tabulek směrování do hostovaného operačního systému podle postupu uvedeného v [konfigurace hostovaného operačního systému pro několik síťových karet](#configure-guest-os-for-multiple-nics).
+Přidejte směrovací tabulky do hostovaného operačního systému, a to provedením kroků v části [Konfigurace hostovaného operačního systému pro více síťových karet](#configure-guest-os-for-multiple-nics).
 
-## <a name="add-a-nic-to-a-vm"></a>Přidat síťové rozhraní k virtuálnímu počítači
-V předchozích krocích vytvořili virtuální počítač s několika síťovými kartami. Síťové adaptéry můžete také přidat do existujícího virtuálního počítače pomocí Azure CLI. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](change-vm-size.md).
+## <a name="add-a-nic-to-a-vm"></a>Přidání síťového rozhraní do virtuálního počítače
+Předchozí kroky vytvořily virtuální počítač s více síťovými kartami. Můžete taky přidat síťové karty do existujícího virtuálního počítače pomocí Azure CLI. Různé [velikosti virtuálních počítačů](sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](change-vm-size.md).
 
-Vytvořte další síťová karta s [az network nic vytvořit](/cli/azure/network/nic). Následující příklad vytvoří síťové rozhraní s názvem *myNic3* připojené k back endové podsítě a skupinu zabezpečení sítě vytvořené v předchozích krocích:
+Vytvořte další síťovou kartu pomocí [AZ Network nic Create](/cli/azure/network/nic). Následující příklad vytvoří síťovou kartu s názvem *myNic3* připojenou k back-endové podsíti a skupině zabezpečení sítě vytvořenou v předchozích krocích:
 
 ```azurecli
 az network nic create \
@@ -116,14 +116,14 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Chcete-li přidat síťové rozhraní existujícímu virtuálnímu počítači, nejprve zrušte přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM*:
+Pokud chcete přidat síťové rozhraní k existujícímu virtuálnímu počítači, nejdřív nasaďte virtuální počítač pomocí [AZ VM disallocate](/cli/azure/vm). Následující příklad zruší přidělení virtuálního počítače s názvem *myVM*:
 
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Přidání síťového rozhraní s [az vm nic přidat](/cli/azure/vm/nic). Následující příklad přidá *myNic3* k *myVM*:
+Přidejte síťovou kartu pomocí [AZ VM nic Add](/cli/azure/vm/nic). Následující příklad přidá *myNic3* do *myVM*:
 
 ```azurecli
 az vm nic add \
@@ -132,22 +132,22 @@ az vm nic add \
     --nics myNic3
 ```
 
-Spusťte virtuální počítač s [az vm start](/cli/azure/vm):
+Spusťte virtuální počítač pomocí [AZ VM Start](/cli/azure/vm):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
-Přidání tabulek směrování do hostovaného operačního systému podle postupu uvedeného v [konfigurace hostovaného operačního systému pro několik síťových karet](#configure-guest-os-for-multiple-nics).
+Přidejte směrovací tabulky do hostovaného operačního systému, a to provedením kroků v části [Konfigurace hostovaného operačního systému pro více síťových karet](#configure-guest-os-for-multiple-nics).
 
-## <a name="remove-a-nic-from-a-vm"></a>Z virtuálního počítače odeberte síťovou kartu
-Odebrání síťové rozhraní z existujícího virtuálního počítače, nejprve zrušte přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM*:
+## <a name="remove-a-nic-from-a-vm"></a>Odebrání síťového rozhraní z virtuálního počítače
+Pokud chcete odebrat síťovou kartu z existujícího virtuálního počítače, nejdřív nasaďte virtuální počítač pomocí [AZ VM disallocate](/cli/azure/vm). Následující příklad zruší přidělení virtuálního počítače s názvem *myVM*:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Odebrání síťového adaptéru s [az vm nic odebrat](/cli/azure/vm/nic). Následující příklad odebere *myNic3* z *myVM*:
+Odeberte síťovou kartu pomocí [AZ VM nic Remove](/cli/azure/vm/nic). Následující příklad odebere *myNic3* z *myVM*:
 
 ```azurecli
 az vm nic remove \
@@ -156,15 +156,15 @@ az vm nic remove \
     --nics myNic3
 ```
 
-Spusťte virtuální počítač s [az vm start](/cli/azure/vm):
+Spusťte virtuální počítač pomocí [AZ VM Start](/cli/azure/vm):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
 
-## <a name="create-multiple-nics-using-resource-manager-templates"></a>Vytvoření více síťových adaptérů pomocí šablon Resource Manageru
-Šablony Azure Resource Manageru pomocí deklarativní soubory JSON definovat vaše prostředí. Můžete si přečíst [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md). Šablony Resource Manageru poskytují způsob, jak vytvořit více instancí prostředku během nasazení, jako je vytvoření více síťových rozhraní. Použijete *kopírování* k určení počtu instancí na vytvoření:
+## <a name="create-multiple-nics-using-resource-manager-templates"></a>Vytvoření více síťových karet pomocí šablon Správce prostředků
+Azure Resource Manager šablony používají k definování vašeho prostředí deklarativní soubory JSON. Můžete si přečíst [přehled Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Šablony Správce prostředků poskytují způsob vytvoření více instancí prostředku během nasazování, například vytvoření více síťových karet. Pomocí *Kopírovat* určíte počet instancí, které se mají vytvořit:
 
 ```json
 "copy": {
@@ -173,23 +173,23 @@ az vm start --resource-group myResourceGroup --name myVM
 }
 ```
 
-Další informace o [vytvoření více instancí pomocí *kopírování*](../../resource-group-create-multiple.md). 
+Přečtěte si další informace o [vytváření více instancí pomocí *kopírování*](../../resource-group-create-multiple.md). 
 
-Můžete také použít `copyIndex()` pak připojte číslo s názvem prostředku, který vám umožní vytvořit `myNic1`, `myNic2`atd. Následuje příklad připojení hodnotu indexu:
+Můžete také použít `copyIndex()` a potom k názvu prostředku připojit číslo, což vám umožní vytvořit `myNic1`, `myNic2`atd. Následující příklad ukazuje, jak připojit hodnotu indexu:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
 ```
 
-Úplný příklad si můžete přečíst [vytvoření více síťových adaptérů pomocí šablon Resource Manageru](../../virtual-network/template-samples.md).
+Můžete si přečíst kompletní příklad [vytvoření více síťových karet pomocí šablon Správce prostředků](../../virtual-network/template-samples.md).
 
-Přidání tabulek směrování do hostovaného operačního systému podle postupu uvedeného v [konfigurace hostovaného operačního systému pro několik síťových karet](#configure-guest-os-for-multiple-nics).
+Přidejte směrovací tabulky do hostovaného operačního systému, a to provedením kroků v části [Konfigurace hostovaného operačního systému pro více síťových karet](#configure-guest-os-for-multiple-nics).
 
-## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurace hostovaného operačního systému pro více síťových rozhraní
+## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurace hostovaného operačního systému pro více síťových karet
 
-V předchozích krocích vytvořili virtuální síť a podsíť, připojené síťové karty a vytvořili virtuální počítač. Nebyly vytvořeny veřejné IP adresy a síťového pravidla skupiny zabezpečení, které umožní provoz SSH. Konfigurace hostovaného operačního systému pro více síťových adaptérů, budete muset povolit vzdálené připojení a spouštění místních příkazů na virtuálním počítači.
+Předchozí kroky vytvořily virtuální síť a podsíť, připojené síťové karty a pak vytvořily virtuální počítač. Nelze vytvořit pravidla veřejné IP adresy a skupiny zabezpečení sítě, která umožňují provoz protokolu SSH. Pokud chcete nakonfigurovat hostovaný operační systém pro víc síťových adaptérů, musíte na virtuálním počítači zapnout vzdálená připojení a spustit příkazy místně.
 
-Povolit provoz SSH, vytvořte pravidlo skupiny zabezpečení sítě s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) následujícím způsobem:
+Pokud chcete povolený provoz SSH, vytvořte pravidlo skupiny zabezpečení sítě pomocí příkazu [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) následujícím způsobem:
 
 ```azurecli
 az network nsg rule create \
@@ -200,7 +200,7 @@ az network nsg rule create \
     --destination-port-ranges 22
 ```
 
-Vytvoření veřejné IP adresy s [az network public-ip vytvořit](/cli/azure/network/public-ip#az-network-public-ip-create) a přiřaďte ho ke první síťové rozhraní s [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
+Vytvořte veřejnou IP adresu pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) a přiřaďte ji k PRVNÍmu síťovému rozhraní pomocí [AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
 
 ```azurecli
 az network public-ip create --resource-group myResourceGroup --name myPublicIP
@@ -212,23 +212,23 @@ az network nic ip-config update \
     --public-ip myPublicIP
 ```
 
-Chcete-li zobrazit veřejnou IP adresu virtuálního počítače, použijte [az vm show](/cli/azure/vm#az-vm-show) následujícím způsobem:
+Veřejnou IP adresu virtuálního počítače zobrazíte pomocí příkazu [AZ VM show](/cli/azure/vm#az-vm-show) následujícím způsobem:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Nyní SSH na veřejnou IP adresu vašeho virtuálního počítače. Výchozí uživatelské jméno uvedené v předchozím kroku se *azureuser*. Zadejte své uživatelské jméno a veřejnou IP adresu:
+Teď můžete SSH na veřejnou IP adresu vašeho virtuálního počítače. Výchozí uživatelské jméno, které jste zadali v předchozím kroku, bylo *azureuser*. Zadejte své uživatelské jméno a veřejnou IP adresu:
 
 ```bash
 ssh azureuser@137.117.58.232
 ```
 
-K odeslání do nebo ze sekundární síťové rozhraní, budete muset ručně přidat trvalé trasy pro operační systém pro každý sekundární síťové rozhraní. V tomto článku *eth1* je sekundární rozhraní. Pokyny pro přidání trvalé trasy v operačním systému se liší podle distribuce. Najdete v dokumentaci vaší distribuce pokyny.
+Pro odesílání do nebo ze sekundárního síťového rozhraní je nutné ručně přidat trvalé trasy k operačnímu systému pro každé sekundární síťové rozhraní. V tomto článku je *eth1* sekundárním rozhraním. Pokyny pro přidání trvalých tras k operačnímu systému se liší podle distribuce. Pokyny najdete v dokumentaci k distribuce.
 
-Při přidání trasy pro operační systém, je adresa brány *.1* podle toho, která podsítě síťové rozhraní nachází. Například, pokud je síťové rozhraní je přiřazena adresa *10.0.2.4*, brána zadáte pro trasy je *10.0.2.1*. Můžete definovat konkrétní síť pro cíl vaší trasy, nebo zadat cílového umístění *0.0.0.0*, pokud chcete, aby veškerý provoz pro rozhraní a absolvovat zadané brány. Pro každou podsíť brány se spravuje přes virtuální síť.
+Při přidávání trasy k operačnímu systému je adresa brány *1* , pro každou podsíť, ve které se síťové rozhraní nachází. Například pokud se síťovému rozhraní přiřadí adresa *10.0.2.4*, brána, kterou zadáte pro trasu, je *10.0.2.1*. Můžete definovat konkrétní síť pro cíl trasy nebo určit cíl *0.0.0.0*, pokud chcete, aby veškerý provoz rozhraní procházel zadanou bránou. Bránu pro každou podsíť spravuje virtuální síť.
 
-Po přidání trasy pro sekundární rozhraní, ověřte, zda trasy ve směrovací tabulce s `route -n`. Následující příklad výstupu je pro směrovací tabulka, která má dvě síťová rozhraní, přidat do virtuálního počítače v tomto článku:
+Po přidání trasy pro sekundární rozhraní ověřte, že je trasa ve vaší směrovací tabulce s `route -n`. Následující příklad výstupu je pro směrovací tabulku, která má dvě síťová rozhraní přidaná k virtuálnímu počítači v tomto článku:
 
 ```bash
 Kernel IP routing table
@@ -241,13 +241,13 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
 ```
 
-Potvrďte, že trasy, které jste přidali se uchovávají napříč restartování počítače tak, že zkontrolujete směrovací tabulku znovu po restartování. Chcete-li otestovat připojení, můžete zadat následující příkaz, například, kde *eth1* je název sekundární síťové rozhraní:
+Zkontrolujte, jestli se při restartování trasy, kterou jste přidali, překontroluje směrovací tabulku po restartování. Chcete-li otestovat připojení, můžete zadat následující příkaz, například, kde *eth1* je název sekundárního síťového rozhraní:
 
 ```bash
 ping bing.com -c 4 -I eth1
 ```
 
-## <a name="next-steps"></a>Další postup
-Kontrola [velikosti virtuálního počítače s Linuxem](sizes.md) při pokusu o vytvoření virtuálního počítače s několika síťovými kartami. Věnujte pozornost maximální počet síťových adaptérů podporuje všechny velikosti virtuálních počítačů.
+## <a name="next-steps"></a>Další kroky
+Při pokusu o vytvoření virtuálního počítače s několika síťovými kartami si Projděte [velikost virtuálních počítačů se systémem Linux](sizes.md) . Věnujte pozornost maximálnímu počtu síťových adaptérů, které každá velikost virtuálního počítače podporuje.
 
-Na další zabezpečení vašich virtuálních počítačů použít dočasný přístup virtuálních počítačů v. Tato funkce se otevře pravidla skupiny zabezpečení sítě pro provoz SSH, pokud je nepotřebujete a definovaného časového období. Další informace najdete v tématu popisujícím [správu přístupu k virtuálním počítačům pomocí metody právě včas](../../security-center/security-center-just-in-time.md).
+K lepšímu zabezpečení virtuálních počítačů použijte přístup k VIRTUÁLNÍmu počítači podle potřeby. Tato funkce otevře pravidla skupiny zabezpečení sítě pro provoz SSH v případě potřeby a v určeném časovém období. Další informace najdete v tématu popisujícím [správu přístupu k virtuálním počítačům pomocí metody právě včas](../../security-center/security-center-just-in-time.md).

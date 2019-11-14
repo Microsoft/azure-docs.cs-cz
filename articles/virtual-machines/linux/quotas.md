@@ -1,5 +1,5 @@
 ---
-title: vCPU kvóty pro Azure | Microsoft Docs
+title: vCPU kvóty pro Azure
 description: Přečtěte si o kvótách vCPU pro Azure.
 keywords: ''
 services: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: add0170c016b1a8226424ccf9b25cfde3a4c196f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 04ab96058650e6165a745b48f4c0fc213c2f9412
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091440"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035184"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů pro virtuální počítače
 
@@ -62,10 +62,10 @@ Premium Storage Managed Disks                  5    10000
 ```
 
 ## <a name="reserved-vm-instances"></a>Rezervované instance virtuálních počítačů
-Pro rezervované instance virtuálních počítačů, které jsou vymezené na jedno předplatné bez flexibilní velikosti virtuálních počítačů, se do kvót vCPU přidá nový aspekt. Tyto hodnoty popisují počet instancí uvedené velikosti, které je nutné nasadit v předplatném. V systému kvót fungují jako zástupný symbol, aby bylo zajištěno, že je kvóta vyhrazena pro zajištění nasazení rezervací Azure v rámci předplatného. Pokud má například určitý odběr 10 Standard_D1 rezervací, omezení využití pro Standard_D1 rezervace budou 10. Tím dojde k tomu, že Azure zajistí, že bude k dispozici vždy aspoň 10 vCPU v celkové místní kvótě vCPU, která se má použít pro instance Standard_D1, a v standardní kvótě pro vCPU řady D je k dispozici aspoň 10 vCPU, které se dají použít pro instance Standard_D1.
+Pro rezervované instance virtuálních počítačů, které jsou vymezené na jedno předplatné bez flexibilní velikosti virtuálních počítačů, se do kvót vCPU přidá nový aspekt. Tyto hodnoty popisují počet instancí uvedené velikosti, které je nutné nasadit v předplatném. V systému kvót fungují jako zástupný symbol, aby bylo zajištěno, že je kvóta vyhrazena pro zajištění nasazení rezervací Azure v rámci předplatného. Pokud má například konkrétní předplatné 10 Standard_D1 rezervací, omezení využití pro Standard_D1 rezervace budou 10. Tím dojde k tomu, že Azure zajistí, že bude k dispozici vždy aspoň 10 vCPU v celkové místní kvótě vCPU, která se má použít pro instance Standard_D1 a k dispozici je aspoň 10 vCPU v úrovni Standard řady D Family vCPU, která se bude používat pro Standard_D1 instance.
 
 Pokud se vyžaduje navýšení kvóty k nákupu jediného předplatného na rezervovaném počítači, můžete [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) u svého předplatného.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o fakturaci a kvótách najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

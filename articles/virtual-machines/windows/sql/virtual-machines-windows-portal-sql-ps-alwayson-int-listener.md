@@ -1,5 +1,5 @@
 ---
-title: Konfigurace naslouchacího procesu skupiny dostupnosti Always On – Microsoft Azure | Microsoft Docs
+title: Konfigurace posluchačů skupiny dostupnosti & nástroje pro vyrovnávání zatížení (PowerShell)
 description: Nakonfigurujte naslouchací procesy skupiny dostupnosti u Azure Resource Manager modelu pomocí interního nástroje pro vyrovnávání zatížení s jednou nebo více IP adresami.
 services: virtual-machines
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 7d6427e88960ec3ff550affb1624dd82e561a6bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102180"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037463"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurace jednoho nebo více naslouchacích skupin dostupnosti Always On – Správce prostředků
 V tomto tématu se dozvíte, jak:
@@ -57,28 +58,28 @@ Pokud omezíte přístup ke skupině zabezpečení sítě Azure, zajistěte, aby
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Určení požadované SKU nástroje pro vyrovnávání zatížení
 
-[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) je k dispozici ve 2 SKU: Základní & Standard. Doporučuje se standardní nástroj pro vyrovnávání zatížení. Pokud jsou virtuální počítače ve skupině dostupnosti, je povolený nástroj Load Balancer úrovně Basic. Load Balancer úrovně Standard vyžaduje, aby všechny IP adresy virtuálních počítačů používaly standardní IP adresy.
+[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) je k dispozici ve 2 SKU: základní & Standard. Doporučuje se standardní nástroj pro vyrovnávání zatížení. Pokud jsou virtuální počítače ve skupině dostupnosti, je povolený nástroj Load Balancer úrovně Basic. Load Balancer úrovně Standard vyžaduje, aby všechny IP adresy virtuálních počítačů používaly standardní IP adresy.
 
 Aktuální [Šablona společnosti Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) pro skupinu dostupnosti používá základní nástroj pro vyrovnávání zatížení se základními IP adresami.
 
-Příklady v tomto článku určují standardní nástroj pro vyrovnávání zatížení. V příkladech obsahuje `-sku Standard`skript.
+Příklady v tomto článku určují standardní nástroj pro vyrovnávání zatížení. V příkladech obsahuje skript `-sku Standard`.
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Pokud chcete vytvořit nástroj pro vyrovnávání zatížení `-sku Standard` Basic, odeberte z řádku, který vytváří nástroj pro vyrovnávání zatížení. Příklad:
+Pokud chcete vytvořit nástroj pro vyrovnávání zatížení Basic, odeberte `-sku Standard` z řádku, který vytváří nástroj pro vyrovnávání zatížení. Příklad:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 
-## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Ukázkový skript: Vytvoření interního nástroje pro vyrovnávání zatížení pomocí PowerShellu
+## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Ukázkový skript: vytvoření interního nástroje pro vyrovnávání zatížení pomocí PowerShellu
 
 > [!NOTE]
-> Pokud jste vytvořili skupinu dostupnosti se šablonou [Microsoftu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), interní nástroj pro vyrovnávání zatížení už je vytvořený.
+> Pokud jste vytvořili skupinu dostupnosti se [šablonou Microsoftu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), interní nástroj pro vyrovnávání zatížení už je vytvořený.
 
-Následující skript prostředí PowerShell vytvoří interní nástroj pro vyrovnávání zatížení, nakonfiguruje pravidla vyrovnávání zatížení a nastaví IP adresu nástroje pro vyrovnávání zatížení. Chcete-li spustit skript, otevřete Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell a vložte skript do podokna skript. Použijte `Connect-AzAccount` k přihlášení do PowerShellu. Pokud máte více předplatných Azure, `Select-AzSubscription` použijte k nastavení předplatného. 
+Následující skript prostředí PowerShell vytvoří interní nástroj pro vyrovnávání zatížení, nakonfiguruje pravidla vyrovnávání zatížení a nastaví IP adresu nástroje pro vyrovnávání zatížení. Chcete-li spustit skript, otevřete Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell a vložte skript do podokna skript. K přihlášení do PowerShellu použijte `Connect-AzAccount`. Pokud máte více předplatných Azure, nastavte předplatné pomocí `Select-AzSubscription`. 
 
 ```powershell
 # Connect-AzAccount
@@ -188,7 +189,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Spusťte SQL Server Management Studio a připojte se k primární replice.
 
-1. Přejděte | na**naslouchací procesy**skupin dostupnosti **AlwaysOn vysoké dostupnosti** | . 
+1. Přejděte do **skupin dostupnosti** **AlwaysOn s vysokou dostupností** |  | **naslouchací procesy skupiny dostupnosti**. 
 
 1. Nyní byste měli vidět název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem myši na název naslouchacího procesu a klikněte na **vlastnosti**.
 

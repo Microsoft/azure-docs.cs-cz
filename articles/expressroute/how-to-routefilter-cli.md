@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace filtrů tras pro Microsoft peering – ExpressRoute: Rozhraní příkazového řádku Azure | Microsoft Docs'
+title: 'ExpressRoute: filtry tras – partnerské vztahy Microsoftu: Azure CLI'
 description: Tento článek popisuje postup konfigurace filtrů směrování pro Peering Microsoft pomocí Azure CLI
 services: expressroute
 author: anzaman
@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: f60bf8de33cd9552bf7c903f4c8921d50e911643
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123340"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033419"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Nakonfigurujte filtry tras pro partnerský vztah Microsoftu: Azure CLI
+# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
@@ -60,7 +60,7 @@ Abyste mohli úspěšně připojit ke službám prostřednictvím partnerského 
 
 * Je nutné připojit filtr tras k okruhu ExpressRoute.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématech [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
 
@@ -90,32 +90,32 @@ Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute.
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>Krok 1: Získání seznamu předpon a hodnot komunity protokolu BGP
+## <a name="prefixes"></a>Krok 1: Získání seznamu předpon a hodnotami komunity protokolu BGP
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. Získání seznamu sad hodnotami komunity protokolu BGP
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. získání seznamu hodnot komunity protokolu BGP
 
 Chcete-li získat seznam hodnot komunity protokolu BGP přidružené služby přístupné prostřednictvím partnerského vztahu Microsoftu a seznam předpon, které jsou k nim má přiřazené použijte následující rutinu:
 
 ```azurecli-interactive
 az network route-filter rule list-service-communities
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Vytvořte seznam hodnot, které chcete použít
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Vytvořte seznam hodnot, které chcete použít.
 
 Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru tras.
 
-## <a name="filter"></a>Krok 2: Vytvoření filtru tras a pravidla filtru
+## <a name="filter"></a>Krok 2: Vytvoření filtru tras a pravidlo filtru
 
 Filtr tras může mít jenom jedno pravidlo a pravidlo musí být typu "Povolit". Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
 
-### <a name="1-create-a-route-filter"></a>1. Vytvořit filtr tras
+### <a name="1-create-a-route-filter"></a>1. Vytvoření filtru tras
 
-Nejprve vytvořte filtr tras. Příkaz `az network route-filter create` vytvoří pouze prostředek filtru tras. Po vytvoření prostředku, musí pak vytvořte pravidlo a připojení k objektu filtru trasy. Spuštěním následujícího příkazu vytvořte prostředek filtr trasy:
+Nejprve vytvořte filtr tras. Příkaz `az network route-filter create` pouze vytvořit prostředek filtru tras. Po vytvoření prostředku, musí pak vytvořte pravidlo a připojení k objektu filtru trasy. Spuštěním následujícího příkazu vytvořte prostředek filtr trasy:
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. Vytvořit pravidlo filtru
+### <a name="2-create-a-filter-rule"></a>2. vytvoření pravidla filtru
 
 Spuštěním následujícího příkazu vytvořte nové pravidlo:
  
@@ -123,7 +123,7 @@ Spuštěním následujícího příkazu vytvořte nové pravidlo:
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
-## <a name="attach"></a>Krok 3: Připojení filtru tras k okruhu ExpressRoute
+## <a name="attach"></a>Krok 3: Připojení filtr tras k okruhu ExpressRoute
 
 Spusťte následující příkaz připojit filtr tras k okruhu ExpressRoute:
 

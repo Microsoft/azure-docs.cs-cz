@@ -1,5 +1,5 @@
 ---
-title: Nasazení vyhrazených hostitelů Azure pomocí Azure PowerShell | Microsoft Docs
+title: Nasazení vyhrazených hostitelů Azure pomocí Azure PowerShell
 description: Nasaďte virtuální počítače na vyhrazené hostitele pomocí Azure PowerShell.
 services: virtual-machines-windows
 author: cynthn
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261698"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033371"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Verze Preview: Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Preview: nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.4.2 nebo novější a že jste se přihlásili k účtu Azure v `Connect-AzAccount`rámci. Pokud chcete nainstalovat verzi 2.4.2, otevřete příkazový řádek PowerShellu a zadejte:
+Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.4.2 nebo novější a že jste se k účtu Azure přihlásili pomocí `Connect-AzAccount`. Pokud chcete nainstalovat verzi 2.4.2, otevřete příkazový řádek PowerShellu a zadejte:
 
 ```powershell
 Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
@@ -115,7 +115,7 @@ New-AzVM `
 
 ## <a name="check-the-status-of-the-host"></a>Zkontroluje stav hostitele.
 
-Můžete kontrolovat stav hostitele a počet virtuálních počítačů, které můžete nasadit na hostitele pomocí [GetAzHost](/powershell/module/az.compute/get-azhost) s `-InstanceView` parametrem.
+Můžete kontrolovat stav hostitele a počet virtuálních počítačů, které můžete nasadit na hostitele pomocí [GetAzHost](/powershell/module/az.compute/get-azhost) s parametrem `-InstanceView`.
 
 ```
 Get-AzHost `

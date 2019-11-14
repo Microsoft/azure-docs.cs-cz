@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače s SQL Server v Azure PowerShell (Classic) | Microsoft Docs
+title: Vytvoření virtuálního počítače s klasickým SQL Server (PowerShell)
 description: Poskytuje kroky a skripty PowerShellu pro vytvoření virtuálního počítače Azure s SQL Server imagí z Galerie virtuálních počítačů. Toto téma používá klasický režim nasazení.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,19 +14,20 @@ ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a4c7c29736cdd80ef7ebe413a377aba630d61858
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8757b634b76867a2d5ccce3dcfdc9d66ef25c25e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101868"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032738"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Zřízení virtuálního počítače s SQL Server pomocí Azure PowerShell (Classic)
 
 Tento článek popisuje kroky, jak vytvořit virtuální počítač s SQL Server v Azure pomocí rutin PowerShellu.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
 Správce prostředků verzi tohoto tématu najdete v tématu [zřízení virtuálního počítače s SQL Server pomocí Azure PowerShell správce prostředků](../sql/virtual-machines-windows-ps-sql-create.md).
 
@@ -77,7 +78,7 @@ Váš virtuální počítač s SQL Server bude hostovaný v cloudové službě, 
    ```
 
    > [!NOTE]
-   > Pokud vyžadujete nový účet úložiště, vytvořte nejdřív název účtu úložiště s nižšími písmeny pomocí příkazu New-AzureStorageAccount, jako v následujícím příkladu:`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
+   > Pokud vyžadujete nový účet úložiště, vytvořte nejdřív název účtu úložiště s nižšími písmeny pomocí příkazu New-AzureStorageAccount, jako v následujícím příkladu: `New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
 4. Přiřaďte **$staccount**název cílového účtu úložiště. Pak pomocí **set-AzureSubscription** nastavte předplatné a aktuální účet úložiště.
 

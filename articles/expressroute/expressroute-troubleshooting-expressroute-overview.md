@@ -1,5 +1,5 @@
 ---
-title: 'Ověření připojení – Průvodce odstraňováním potíží s ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: ověření připojení – Průvodce odstraňováním potíží'
 description: Tato stránka poskytuje pokyny pro řešení potíží a ověření koncového připojení okruhu ExpressRoute.
 services: expressroute
 author: rambk
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580303"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033787"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
 Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíže. ExpressRoute rozšiřuje místní síť do cloudu Microsoftu přes soukromé připojení, které běžně usnadňuje poskytovatel připojení. Připojení ExpressRoute tradičně zahrnuje tři odlišné síťové zóny, a to takto:
@@ -289,7 +289,7 @@ Ukázkový výstup příkazu pro neexistující partnerský vztah:
     StatusCode: 400
 
 ## <a name="next-steps"></a>Další kroky
-Další informace nebo nápovědu najdete na následujících odkazech:
+Další informace a nápovědu najdete na následujících odkazech:
 
 - [podpora Microsoftu][Support]
 - [Vytvoření a úprava okruhu ExpressRoute][CreateCircuit]

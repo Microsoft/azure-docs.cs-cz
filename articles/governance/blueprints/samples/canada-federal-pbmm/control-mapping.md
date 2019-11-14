@@ -1,17 +1,14 @@
 ---
 title: Mapování ukázek a ovládacích prvků v Kanadě – federální PBMM plán
 description: Mapování ovládacích prvků pro ukázky federální PBMM podrobného plánu pro Kanadu Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: e74d3328e1ed41a7184569d30cc46ae7cd29a5ba
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0be73497de36ac3c11637b80a492ab0a8558206d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163513"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039707"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Mapování ovládacích prvků pro ukázku federálního PBMM podrobného plánu pro Kanadu
 
@@ -93,7 +90,7 @@ Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného 
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Pro aplikaci API by mělo být vypnuto vzdálené ladění.
 - Vzdálené ladění by mělo být pro Function App vypnuté.
-- Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.
+- Vzdálené ladění by měl být vypnuté pro webovou aplikaci
 
 ## <a name="au-3-2-content-of-audit-records"></a>AU-3 (2) obsah záznamů auditu
 
@@ -101,9 +98,9 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Reakce AU-5 na selhání zpracování auditu
 
@@ -120,9 +117,9 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním 
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="au-12-audit-generation"></a>Generování auditu AU-12
 
@@ -130,9 +127,9 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování na úrovni SQL serveru
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
@@ -244,9 +241,9 @@ Tento podrobný plán vám pomůže chránit důvěrnou a integritu odesílanýc
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
 - Auditovat webové servery systému Windows, které nepoužívají protokoly zabezpečených komunikací
 - Nasaďte požadavky na auditovat webové servery Windows, které nepoužívají protokoly zabezpečené komunikace.
-- Function App by měl být přístupný jenom přes HTTPS
+- Funkce aplikace by měla být přístupná jen přes HTTPS
 - Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
-- Webová aplikace by měla být přístupná jen přes protokol HTTPS
+- Webová aplikace by měla být přístupná jen přes HTTPS
 - Zabezpečený přenos do účtů úložiště by měl být povolený.
 
 ## <a name="sc-28-1-protection-of-information-at-rest"></a>SC-28 (1) Ochrana informací v klidovém umístění
@@ -294,9 +291,9 @@ Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a v
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 - Nasazení pokročilých zabezpečení dat na SQL serverech
@@ -316,7 +313,7 @@ Zkontrolovali jste mapování ovládacího prvku pro ukázku Federal PBMM detail
 > [Kanada – federální PBMM podrobný plán – přehled](./control-mapping.md)
 > [Kanada – federální PBMM podrobný plán – postup nasazení](./deploy.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

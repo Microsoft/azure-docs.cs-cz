@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a nahrání image virtuálního počítače s OpenBSD do Azure | Microsoft Docs
+title: Vytvoření a nahrání image virtuálního počítače s OpenBSD do Azure
 description: Zjistěte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD k vytvoření virtuálního počítače Azure pomocí rozhraní příkazového řádku Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 53acab4128d01c92c54c8c01a5e611d313e617d4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee15836906eef0b9205691f9a6003cea0b9fae80
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083562"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036449"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvoření a nahrání image OpenBSD disku do Azure
 V tomto článku se dozvíte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD. Po nahrání ji můžete použít jako vlastní image k vytvoření virtuálního počítače v Azure prostřednictvím rozhraní příkazového řádku Azure CLI.
@@ -55,7 +55,7 @@ Na virtuálním počítači, na který jste nainstalovali operační systém Ope
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Ve výchozím nastavení `root` je uživatel na virtuálních počítačích v Azure zakázaný. Uživatelé můžou spouštět příkazy se zvýšenými oprávněními pomocí `doas` příkazu na virtuálním počítači s OpenBSD. DOAs je ve výchozím nastavení povolená. Další informace najdete v tématu [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
+4. Ve výchozím nastavení je uživatel `root` na virtuálních počítačích v Azure zakázaný. Uživatelé můžou spouštět příkazy se zvýšenými oprávněními pomocí příkazu `doas` na virtuálním počítači s OpenBSD. DOAs je ve výchozím nastavení povolená. Další informace najdete v tématu [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Požadavky na agenta Azure nainstalujte a nakonfigurujte následujícím způsobem:
 
@@ -148,7 +148,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Vytvoření virtuálního počítače z virtuálního pevného disku
-Virtuální počítač můžete vytvořit pomocí ukázkového [skriptu](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) nebo přímo pomocí [AZ VM Create](/cli/azure/vm). K určení nahraného virtuálního pevného disku OpenBSD použijte `--image` parametr následujícím způsobem:
+Virtuální počítač můžete vytvořit pomocí [ukázkového skriptu](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) nebo přímo pomocí [AZ VM Create](/cli/azure/vm). K určení nahraného virtuálního pevného disku OpenBSD použijte parametr `--image` následujícím způsobem:
 
 ```azurecli
 az vm create \

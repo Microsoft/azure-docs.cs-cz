@@ -1,5 +1,5 @@
 ---
-title: Kurz nasazení LEMP na virtuální počítač s Linuxem v Azure | Microsoft Docs
+title: Kurz – nasazení LEMP na virtuálním počítači se systémem Linux v Azure
 description: V tomto kurzu zjistíte, jak nainstalovat stack LEMP na virtuální počítač s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 06a009978d85f2ba0f10030aeb1344a1b84bf3c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299384"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034450"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Kurz: Instalace webového serveru LEMP na virtuální počítač s Linuxem v Azure
 
@@ -107,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-V editoru nahraďte obsah souboru `/etc/nginx/sites-available/default` následujícím kódem. Komentáře obsahují vysvětlení jednotlivých nastavení. Nahraďte veřejnou IP adresu vašeho virtuálního počítače pro *yourPublicIPAddress*, potvrďte verzi PHP v `fastcgi_pass` a nechejte zbývající nastavení. Pak soubor uložte.
+V editoru nahraďte obsah souboru `/etc/nginx/sites-available/default` následujícím kódem. Komentáře obsahují vysvětlení jednotlivých nastavení. Nahraďte veřejnou IP adresu vašeho virtuálního počítače pro *yourPublicIPAddress*, potvrďte verzi PHP v `fastcgi_pass`a nechejte zbývající nastavení. Pak soubor uložte.
 
 ```
 server {

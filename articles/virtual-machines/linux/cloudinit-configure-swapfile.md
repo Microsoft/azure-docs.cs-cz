@@ -1,5 +1,5 @@
 ---
-title: K nakonfigurování odkládacího oddílu na virtuálním počítači se systémem Linux použijte Cloud-init | Microsoft Docs
+title: Použití Cloud-init ke konfiguraci odkládacího oddílu na virtuálním počítači se systémem Linux
 description: Jak pomocí Cloud-init nakonfigurovat odkládací oddíl na virtuálním počítači Linux během vytváření pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640775"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036755"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Použití Cloud-init ke konfiguraci odkládacího oddílu na virtuálním počítači se systémem Linux
 V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat odkládací oddíl u různých distribucí systému Linux. Odkládací oddíl byl tradičně nakonfigurovaný agentem pro Linux (WALA) na základě toho, která distribuce je vyžaduje.  Tento dokument vám pomůže sestavovat proces vytváření swapového oddílu na vyžádání během doby zřízení pomocí Cloud-init.  Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .
@@ -29,7 +29,7 @@ Ve výchozím nastavení v Azure Image Galerie Ubuntu nevytváří swapové odd�
 
 ## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Vytvoření odkládacího oddílu pro image založené na Red Hat a CentOS
 
-Vytvořte v aktuálním prostředí soubor s názvem *cloud_init_swappart. txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_swappart.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
+V aktuálním prostředí vytvořte soubor s názvem *cloud_init_swappart. txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_swappart.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
 
 ```yaml
 #cloud-config
@@ -54,7 +54,7 @@ Před nasazením této image je potřeba vytvořit skupinu prostředků pomocí 
 az group create --name myResourceGroup --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor `--custom-data cloud_init_swappart.txt` Cloud-init následujícím způsobem:
+Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor Cloud-init pomocí `--custom-data cloud_init_swappart.txt` následujícím způsobem:
 
 ```azurecli-interactive 
 az vm create \
@@ -88,7 +88,7 @@ Filename                Type        Size    Used    Priority
 > [!NOTE] 
 > Máte-li existující bitovou kopii Azure s nakonfigurovaným odkládacím oddílem a chcete změnit konfiguraci odkládacího oddílu pro nové image, odeberte existující odkládací oddíl. Další podrobnosti najdete v dokumentu "přizpůsobení imagí pro zřízení pomocí Cloud-init".
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další příklady cloudových inicializací změn konfigurace najdete v následujících tématech:
  
 - [Přidání dalšího uživatele se systémem Linux k virtuálnímu počítači](cloudinit-add-user.md)

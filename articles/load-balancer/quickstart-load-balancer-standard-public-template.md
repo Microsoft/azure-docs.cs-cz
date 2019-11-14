@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření standardního nástroje pro vyrovnávání zatížení – šablona Azure Resource Manager'
-titlesuffix: Azure Load Balancer
+title: 'Rychlý Start: vytvoření standardního nástroje pro vyrovnávání zatížení – šablona Azure'
+titleSuffix: Azure Load Balancer
 description: V tomto rychlém startu se dozvíte, jak vytvořit standardní nástroj pro vyrovnávání zatížení pomocí šablony Azure Resource Manager.
 services: load-balancer
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ab55583d72297f2a1c72bac21e4414919f31b91b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 884ba1106e7b68fefaf91ee4e25cacd05bf96fc0
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161408"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048751"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Rychlý start: Vytvoření standardního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Rychlý Start: vytvoření standardního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí šablony Azure Resource Manager
 
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto rychlém startu se dozvíte, jak nasadit šablonu Azure Resource Manager, která pro vyrovnávání zatížení virtuálních počítačů vytvoří standardní nástroj pro vyrovnávání zatížení. Použití šablony Správce prostředků přijímá méně kroků v porovnání s jinými metodami nasazení.
 
@@ -88,7 +88,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 

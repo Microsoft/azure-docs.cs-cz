@@ -1,5 +1,5 @@
 ---
-title: Stažení šablony pro virtuální počítač Azure | Microsoft Docs
+title: Stažení šablony pro virtuální počítač Azure
 description: Stáhněte si templatefor virtuální počítač, který vám umožní automatizovat nasazení v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c73026515f0d7fde4e2f82838696700b1bb17c77
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898872"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033547"
 ---
 # <a name="download-the-template-for-a-vm"></a>Stažení šablony pro virtuální počítač
 Když vytvoříte virtuální počítač v Azure pomocí portálu nebo PowerShellu, automaticky se vytvoří šablona Správce prostředků. Tuto šablonu můžete použít k rychlému duplikování nasazení. Šablona obsahuje informace o všech prostředcích ve skupině prostředků. V případě virtuálního počítače to znamená, že šablona obsahuje vše, co je vytvořeno v rámci podpory virtuálního počítače v dané skupině prostředků, včetně síťových prostředků.
 
 ## <a name="download-the-template-using-the-portal"></a>Stažení šablony pomocí portálu
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 2. V nabídce vlevo vyberte **Virtual Machines**.
 3. Ze seznamu vyberte virtuální počítač.
 4. Vyberte **Exportovat šablonu**.
 5. V nabídce v horní části vyberte **Stáhnout** a uložte soubor. zip do svého místního počítače.
 6. Otevřete soubor. zip a extrahujte soubory do složky. Soubor. zip obsahuje:
    
-   * Parameters. JSON
-   * Template. JSON
+   * parameters.json
+   * template.json
 
 Soubor Template. JSON je šablona.
 

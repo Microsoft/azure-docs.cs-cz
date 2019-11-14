@@ -1,6 +1,6 @@
 ---
-title: Použití Docker Compose na virtuální počítač s Linuxem v Azure | Dokumentace Microsoftu
-description: Jak nainstalovat a používat Docker a Compose na virtuální počítače s Linuxem pomocí Azure CLI
+title: Použití Docker Compose na virtuálním počítači se systémem Linux v Azure
+description: Jak nainstalovat a používat Docker a vytvořit na virtuálních počítačích se systémem Linux pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 29b9b2b7868a39b8e14a559b27f60f9e46bad565
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 4f2f12e0124743ad31e083cf4ece83bcb608bce0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667992"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036276"
 ---
-# <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Začínáme s prostředím Docker a Compose pro definování a spouštění vícekontejnerová aplikace v Azure
-S [Compose](https://github.com/docker/compose), definovat aplikaci skládající se z několika kontejnerů Dockeru pomocí souboru prostého textu. Potom zprovoznění aplikace stačí jediný příkaz, který obsahuje všechno k nasazení prostředí definované. Jako příklad Tento článek popisuje, jak rychle nastavit blog WordPress pomocí back-endu databáze MariaDB SQL na Virtuálním počítači se systémem Ubuntu. Také vám pomůže vytvořit nastavení složitějších aplikací.
+# <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Začínáme s Docker a seznámení s definováním a spuštěním aplikace s více kontejnery v Azure
+Při [psaní](https://github.com/docker/compose)použijete jednoduchý textový soubor k definování aplikace sestávající z více kontejnerů Docker. Pak aplikaci vyvoláte v jediném příkazu, který provede všechno k nasazení definovaného prostředí. V tomto článku se dozvíte, jak rychle vytvořit blog WordPress s back-end MariaDB SQL Database na virtuálním počítači s Ubuntu. K nastavení složitějších aplikací můžete použít také možnost vytvořit.
 
-Tento článek byl testován poslední o 2/14/2019 používání [Azure Cloud Shell](https://shell.azure.com/bash) a [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) verze 2.0.58.
+Tento článek byl naposledy testován na 2/14/2019 pomocí [Azure Cloud Shell](https://shell.azure.com/bash) a [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) verze 2.0.58.
 
 ## <a name="create-docker-host-with-azure-cli"></a>Vytvoření hostitele Docker pomocí Azure CLI
-Nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index).
+Nainstalujte si nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
-Nejprve vytvořte skupinu prostředků pro vaše prostředí Docker [vytvořit skupiny az](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Nejdřív vytvořte skupinu prostředků pro prostředí Docker pomocí [AZ Group Create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus
 ```
 
-Vytvořte soubor s názvem *cloud-init.txt* a vložte do něj následující konfiguraci. Zadáním příkazu `sensible-editor cloud-init.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. 
+Vytvořte soubor s názvem *Cloud-init. txt* a vložte následující konfiguraci. Zadáním příkazu `sensible-editor cloud-init.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. 
 
 ```yaml
 #include https://get.docker.com
@@ -57,36 +57,36 @@ az vm open-port --port 80 \
     --name myDockerVM
 ```
 
-Vytvoření virtuálního počítače, instalace balíčků a spuštění aplikace trvá několik minut. Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Po vytvoření virtuálního počítače si poznamenejte hodnotu `publicIpAddress` zobrazenou v Azure CLI. 
+Vytvoření virtuálního počítače, instalace balíčků a spuštění aplikace trvá několik minut. Jakmile vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Po vytvoření virtuálního počítače si poznamenejte hodnotu `publicIpAddress` zobrazenou v Azure CLI. 
 
                  
 
-## <a name="install-compose"></a>Instalace Compose
+## <a name="install-compose"></a>Nainstalovat sestavení
 
 
-Do nového hostitele Docker virtuálního počítače připojte přes SSH. Zadejte adresu IP.
+SSH k novému virtuálnímu počítači hostitele Docker. Zadejte vlastní IP adresu.
 
 ```bash
 ssh azureuser@10.10.111.11
 ```
 
-Instalace Compose na virtuálním počítači.
+Nainstalujte na virtuální počítač.
 
 ```bash
 sudo apt install docker-compose
 ```
 
 
-## <a name="create-a-docker-composeyml-configuration-file"></a>Vytvoření konfiguračního souboru docker-compose.yml
-Vytvoření `docker-compose.yml` konfiguračního souboru k definování kontejnerů Dockeru a spouštět na virtuálním počítači. Tento soubor Určuje obraz, který běží na každý kontejner, nezbytné proměnné prostředí a závislostech, porty a odkazů mezi kontejnery. Podrobnosti o syntaxi souboru yml najdete v tématu [vytvořit odkaz na soubor](https://docs.docker.com/compose/compose-file/).
+## <a name="create-a-docker-composeyml-configuration-file"></a>Vytvoření konfiguračního souboru Docker-Compose. yml
+Vytvořte konfigurační soubor `docker-compose.yml` pro definování kontejnerů Docker pro spuštění na virtuálním počítači. Soubor určuje image, která se má spustit na každém kontejneru, potřebné proměnné prostředí a závislosti, porty a propojení mezi kontejnery. Podrobnosti o syntaxi souboru YML naleznete v tématu [Vytvoření odkazu na soubor](https://docs.docker.com/compose/compose-file/).
 
-Vytvoření *docker-compose.yml* souboru. Pomocí oblíbeného textového editoru přidáte nějaká data do souboru. Následující příklad vytvoří soubor s výzvou pro `sensible-editor` k výběru editor, který chcete použít.
+Vytvořte soubor *Docker-Compose. yml* . K přidání dat do souboru použijte oblíbený textový editor. Následující příklad vytvoří soubor s výzvou pro `sensible-editor` pro výběr editoru, který chcete použít.
 
 ```bash
 sensible-editor docker-compose.yml
 ```
 
-Následující příklad vložte do souboru Docker Compose. Tato konfigurace používá Image z [Dockerhubu registru](https://registry.hub.docker.com/_/wordpress/) instalace Wordpressu (opensourcové blogů a systém správy obsahu) a propojené back-endu MariaDB SQL database. Zadejte vlastní *MYSQL_ROOT_PASSWORD*.
+Do souboru Docker Compose vložte následující příklad. Tato konfigurace pomocí imagí z [registru dockerhubu](https://registry.hub.docker.com/_/wordpress/) nainstaluje WordPress (Open Source Blogový a systém pro správu obsahu) a propojenou back-end MARIADB databázi SQL. Zadejte vlastní *MYSQL_ROOT_PASSWORD*.
 
 ```yml
 wordpress:
@@ -102,14 +102,14 @@ db:
     MYSQL_ROOT_PASSWORD: <your password>
 ```
 
-## <a name="start-the-containers-with-compose"></a>Kontejnery začínat Compose
-Ve stejném adresáři jako vaše *docker-compose.yml* souboru, spusťte následující příkaz (v závislosti na vašem prostředí, možná budete muset spustit `docker-compose` pomocí `sudo`):
+## <a name="start-the-containers-with-compose"></a>Spuštění kontejnerů s psaním
+Ve stejném adresáři, ve kterém je soubor *Docker-Compose. yml* , spusťte následující příkaz (v závislosti na vašem prostředí možná budete muset `docker-compose` spustit pomocí `sudo`):
 
 ```bash
 sudo docker-compose up -d
 ```
 
-Tento příkaz spustí kontejnery Dockeru, zadaný v *docker-compose.yml*. Bude trvat minutu nebo dvě pro tento krok dokončit. Se zobrazí výstup podobný následujícímu:
+Tento příkaz spustí kontejnery Docker zadané v *Docker-Compose. yml*. Dokončení tohoto kroku trvá minutu nebo dvě. Zobrazí se výstup podobný následujícímu:
 
 ```
 Creating wordpress_db_1...
@@ -118,7 +118,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-Chcete-li ověřit, že kontejnery jsou nahoru, zadejte `sudo docker-compose ps`. By měl vypadat přibližně jako:
+Chcete-li ověřit, zda jsou kontejnery v seznamu, zadejte `sudo docker-compose ps`. Mělo by se zobrazit něco jako:
 
 ```
         Name                       Command               State         Ports
@@ -127,12 +127,12 @@ azureuser_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp
 azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/tcp
 ```
 
-Teď můžete připojit wordpressu přímo ve virtuálním počítači na portu 80. Otevřete webový prohlížeč a zadejte název IP adresu vašeho virtuálního počítače. Teď byste měli vidět Wordpressu úvodní obrazovku, kde můžete dokončit instalaci a začít pracovat s aplikací.
+Nyní se můžete připojit k WordPress přímo na VIRTUÁLNÍm počítači na portu 80. Otevřete webový prohlížeč a zadejte název IP adresy svého virtuálního počítače. Nyní byste měli vidět úvodní obrazovku WordPress, kde můžete dokončit instalaci a začít s aplikací.
 
-![Úvodní obrazovku aplikace WordPress](./media/docker-compose-quickstart/wordpressstart.png)
+![Úvodní obrazovka WordPress](./media/docker-compose-quickstart/wordpressstart.png)
 
-## <a name="next-steps"></a>Další postup
-* Podívejte se [vytvořit odkaz na příkazový řádek](https://docs.docker.com/compose/reference/) a [uživatelská příručka](https://docs.docker.com/compose/) Další příklady vytváření a nasazení vícekontejnerových aplikací.
-* Pomocí šablony Azure Resource Manageru, buď vaše vlastní nebo některý uživatel z [komunity](https://azure.microsoft.com/documentation/templates/), k nasazení virtuálního počítače Azure s využitím Dockeru a aplikace s Compose. Například [nasazení blog WordPress pomocí Dockeru](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) šablona používá k rychlému nasazení WordPress s MySQL back-endu na Virtuálním počítači se systémem Ubuntu Docker a Compose.
-* Zkuste integraci se službou cluster Docker Swarm Docker Compose. Zobrazit [pomocí Compose se Swarmem](https://docs.docker.com/compose/swarm/) pro scénáře.
+## <a name="next-steps"></a>Další kroky
+* Další příklady sestavování a nasazování aplikací s více kontejnery najdete v příručce k [příkazovému řádku pro psaní](https://docs.docker.com/compose/reference/) a v [uživatelské příručce](https://docs.docker.com/compose/) .
+* K nasazení virtuálního počítače Azure s využitím Docker a aplikace nastavenou v sestavách použijte šablonu Azure Resource Manager, kterou vlastníte, nebo jednu z [komunit](https://azure.microsoft.com/documentation/templates/). Například [blog pro nasazení WordPress s použitím šablony Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) používá Docker a napsat k rychlému nasazení WordPressu s back-endu MySQL na virtuálním počítači s Ubuntu.
+* Zkuste integraci Docker Compose s clusterem Docker Swarm. Scénáře najdete v tématu [použití Swarm](https://docs.docker.com/compose/swarm/) .
 

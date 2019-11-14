@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s využitím virtuálního pevného disku | Microsoft Docs
+title: Ukázkový skript Azure CLI – vytvoření virtuálního počítače s virtuálním pevným diskem
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s využitím virtuálního pevného disku
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 93a94e9a32b33ffd1f52231546d6aa6a71c78df0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 16f4e3e153cbc02f8626199d168d069add48e4b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841416"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037659"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Vytvoření virtuálního počítače s využitím virtuálního pevného disku
 
@@ -51,7 +51,7 @@ az group delete -n az-cli-vhd
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account list](https://docs.microsoft.com/cli/azure/storage/account) | Vypíše účty úložiště. |
@@ -64,7 +64,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Vytvoří virtuální počítače. |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az-vm-list-ip-addresses) | Získá IP adresu vytvořeného virtuálního počítače. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

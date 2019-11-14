@@ -1,5 +1,5 @@
 ---
-title: Rozbalíte virtuální pevné disky na virtuálním počítači se systémem Linux v Azure | Microsoft Docs
+title: Rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux v Azure
 description: Naučte se rozbalovat virtuální pevné disky na virtuálním počítači se systémem Linux pomocí Azure CLI.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3bd85048cf12760d5918544ed6aac803e9fe120a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828412"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036208"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux pomocí Azure CLI
 
@@ -88,7 +88,7 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
     sudo parted /dev/sdc
     ```
 
-    Zobrazí informace o existujícím rozložení oddílu pomocí `print`. Výstup je podobný následujícímu příkladu, který ukazuje, že základní disk je 215 GB:
+    Zobrazit informace o existujícím rozložení oddílu pomocí `print`. Výstup je podobný následujícímu příkladu, který ukazuje, že základní disk je 215 GB:
 
     ```bash
     GNU Parted 3.2
@@ -105,7 +105,7 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. Rozbalte oddíl s `resizepart`. Zadejte číslo oddílu, *1*a velikost nového oddílu:
+    c. Rozbalte oddíl pomocí `resizepart`. Zadejte číslo oddílu, *1*a velikost nového oddílu:
 
     ```bash
     (parted) resizepart
@@ -115,7 +115,7 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
 
     d. Pokud chcete skončit, zadejte `quit`.
 
-1. Při změně velikosti oddílu Ověřte konzistenci oddílu pomocí `e2fsck`:
+1. Po změně velikosti oddílu Ověřte konzistenci oddílu pomocí `e2fsck`:
 
     ```bash
     sudo e2fsck -f /dev/sdc1
@@ -133,7 +133,7 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Chcete-li ověřit velikost datového disku, použijte `df -h`. Následující příklad výstupu ukazuje, že datová jednotka */dev/sdc1* je teď 200 GB:
+1. Chcete-li ověřit, zda se změnila velikost datového disku, použijte `df -h`. Následující příklad výstupu ukazuje, že datová jednotka */dev/sdc1* je teď 200 GB:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

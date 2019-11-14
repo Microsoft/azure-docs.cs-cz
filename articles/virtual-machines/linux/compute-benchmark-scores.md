@@ -1,5 +1,5 @@
 ---
-title: Skóre srovnávacích testů pro virtuální počítače Azure Linux | Microsoft Docs
+title: Skóre srovnávacích testů pro virtuální počítače Azure Linux
 description: Porovnejte skóre CoreMark výpočetních testů pro virtuální počítače Azure se systémem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: d91535c6f0daeac58a3005d94e19cbba3e781ebf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083853"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036692"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Hodnocení srovnávacích testů pro virtuální počítače se systémem Linux
 Následující výsledky srovnávacích testů CoreMark ukazují výpočetní výkon pro vysoce výkonné virtuální počítače Azure seznamu se systémem Ubuntu. Pro [virtuální počítače s Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také hodnocení srovnávacích testů.

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231011"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037880"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -27,7 +27,7 @@ Azure Media Services vám umožní doručovat živé události zákazníkům v c
 - Fotoaparát, který se používá k zachycení živé události.<br/>V případě nápadů při instalaci se podívejte na [Nastavení jednoduchého a přenosného kormidelního videa událostí]( https://link.medium.com/KNTtiN6IeT).
 
     Pokud nemáte přístup k kameře, můžete k vygenerování živého datového kanálu z videosouboru použít nástroje, jako je [Wirecast](https://www.telestream.net/wirecast/overview.htm) .
-- Živý kodér videa, který převede signály z fotoaparátu (nebo jiného zařízení, jako je notebook) do informačního kanálu příspěvků, který je odeslán do Media Services. Informační kanál příspěvku může zahrnovat signály týkající se reklamy, jako jsou například značky SCTE-35.<br/>Seznam doporučených kodérů živého streamování najdete v tématu [kodéry živého streamování](recommended-on-premises-live-encoders.md). Podívejte se také na tento blog: [Živá streamovaná výroba pomocí OBS](https://link.medium.com/ttuwHpaJeT).
+- Živý kodér videa, který převede signály z fotoaparátu (nebo jiného zařízení, jako je notebook) do informačního kanálu příspěvků, který je odeslán do Media Services. Informační kanál příspěvku může zahrnovat signály týkající se reklamy, jako jsou například značky SCTE-35.<br/>Seznam doporučených kodérů živého streamování najdete v tématu [kodéry živého streamování](recommended-on-premises-live-encoders.md). Podívejte se také na tento blog: [živá streamovaná výroba pomocí OBS](https://link.medium.com/ttuwHpaJeT).
 - Komponenty v Media Services, které umožňují ingestovat, zobrazovat náhled, zabalit, nahrávat, šifrovat a vysílat živou událost vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
 Tento článek poskytuje přehled a pokyny pro živé streamování pomocí Media Services a odkazy na další relevantní články.
@@ -41,7 +41,7 @@ Pomocí Media Services můžete využít výhod [dynamického balení](dynamic-p
 
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
 
-Dynamické šifrování vám umožní dynamicky šifrovat živý a obsah na vyžádání pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](content-protection-overview.md).
+Dynamické šifrování vám umožní dynamicky šifrovat živý a na vyžádání obsahu pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](content-protection-overview.md).
 
 ## <a name="dynamic-manifest"></a>Dynamický manifest
 
@@ -61,7 +61,14 @@ Při použití předávací **živé události**se spoléháte na váš místní
 
 ![Kódování v reálném čase](./media/live-streaming/live-encoding.svg)
 
-Pokud používáte kódování cloudu s Media Services, nakonfigurujete svůj místní kodér Live Encoder tak, aby odesílal video s jednou přenosovou rychlostí (až do 32Mbps agregace) do živé události (pomocí RTMP nebo fragmentu vstupního protokolu-MP4). Živá událost překóduje datový proud příchozího přenosu dat s jednou přenosovou rychlostí na [více datových proudů](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) v různých rozlišeních a zvyšuje tak jejich doručování a umožňuje doručování do zařízení pro přehrávání prostřednictvím standardních protokolů, jako jsou MPEG-pomlčky, Apple HTTP Live Streaming (HLS) a Microsoft Smooth Streaming. 
+Pokud používáte kódování cloudu s Media Services, nakonfigurujete svůj místní kodér Live Encoder tak, aby odesílal video s jednou přenosovou rychlostí (až do 32Mbps agregace) do živé události (pomocí RTMP nebo fragmentu vstupního protokolu-MP4). Živá událost překóduje datový proud příchozího přenosu dat s jednou přenosovou rychlostí na [více datových proudů](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) v různých rozlišeních a zvyšuje tak jejich doručování a zpřístupňuje je pro přehrávání přes standardní protokoly, jako jsou MPEG-pomlčky, Apple HTTP Live Streaming (HLS) a Microsoft Smooth Streaming. 
+
+### <a name="live-transcription"></a>Živý přepis
+
+Živý přepis je funkce, kterou můžete použít s dynamickými událostmi, které jsou buď předávací, nebo živé kódování. Další informace najdete v tématu [živý přepis](live-transcription.md). Když je tato funkce povolená, služba použije funkci [řeči k textu](../../cognitive-services/speech-service/speech-to-text.md) Cognitive Services k přepisovat mluveného slova v příchozím zvukovém textu. Tento text je pak k dispozici pro doručování s videem a zvukem v protokolech MPEG-POMLČKy a HLS.
+
+> [!NOTE]
+> V současné době je živý přepis dostupný jako funkce ve verzi Preview v Západní USA 2.
 
 ## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
 
@@ -86,14 +93,14 @@ Abyste pochopili pracovní postup živého streamování v Media Services V3, mu
 7. Vytvořte **Lokátor streamování** s [integrovanými typy zásad streamování](streaming-policy-concept.md).
 
     Chcete-li publikovat živý výstup, je nutné vytvořit Lokátor streamování pro přidružený Asset. 
-8. Seznam cest na lokátoru **streamování** pro vrácení adres URL, které se mají použít (tyto adresy jsou deterministické).
-9. Získejte název hostitele koncového **bodu streamování** (zdroje), ze kterého chcete streamovat.
+8. Seznam cest na **lokátoru streamování** pro vrácení adres URL, které se mají použít (tyto adresy jsou deterministické).
+9. Získejte název hostitele **koncového bodu streamování** (zdroje), ze kterého chcete streamovat.
 10. Kombinací adresy URL z kroku 8 s názvem hostitele v kroku 9 získáte úplnou adresu URL.
 11. Pokud chcete přestat dělat **živý událost** , musíte zastavit streamování události a odstranit **Lokátor streamování**.
 12. Pokud jste dokončili streamování událostí a chcete dříve zřízené prostředky vyčistit, postupujte podle následujícího návodu.
 
     * Zastavte odesílání datového proudu z kodéru.
-    * Zastaví živou událost. Jakmile se živá událost zastaví, neúčtují se žádné poplatky. Když bude potřeba kanál znovu spustit, bude mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
+    * Zastaví živou událost. Jakmile se živá událost zastaví, neúčtují se žádné poplatky. Když ho budete potřebovat znovu spustit, budete mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
     * Pokud nechcete pokračovat v poskytování archivu živé události ve formě datového proudu na vyžádání, můžete koncový bod streamování zastavit. Pokud je živá událost v zastaveném stavu, neúčtují se žádné poplatky.
 
 Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení. 

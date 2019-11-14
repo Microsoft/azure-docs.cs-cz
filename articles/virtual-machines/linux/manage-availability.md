@@ -1,5 +1,5 @@
 ---
-title: Správa dostupnosti virtuálních počítačů se systémem Linux v Azure | Microsoft Docs
+title: Správa dostupnosti virtuálních počítačů se systémem Linux v Azure
 description: Naučte se používat víc virtuálních počítačů, abyste zajistili vysokou dostupnost vaší aplikace pro Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab269bcd56a5e60fdc8434a58b61163cb8769763
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5742ed346c6761dd443d6252e5c9e457fa952b87
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082912"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035888"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Správa dostupnosti virtuálních počítačů se systémem Linux
 
@@ -30,6 +30,6 @@ Pokyny k vytvoření skupiny dostupnosti pomocí rozhraní příkazového řádk
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
-## <a name="next-steps"></a>Další postup
-Další informace o vyrovnávání zatížení virtuálních počítačů najdete v tématu vyrovnávání [zatížení virtuálních počítačů](../virtual-machines-linux-load-balance.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o vyrovnávání zatížení virtuálních počítačů najdete v tématu [Vyrovnávání zatížení virtuálních počítačů](../virtual-machines-linux-load-balance.md).
 

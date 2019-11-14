@@ -1,18 +1,14 @@
 ---
 title: '& Oficiální Velká Británie – ukázky NHS podrobného plánu – postup nasazení'
 description: Nasaďte kroky pro oficiální Spojené království a ukázky pro Spojené království (NHS), včetně podrobností parametrů artefaktu podrobného plánu.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1905e5fee894575d5ee85ce1bffb536813d34287
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162931"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037754"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
 
@@ -98,18 +94,18 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |Iniciativa pro Spojené království a oficiální nebo Velká Británie NHS|Přiřazení zásad |Typy prostředků pro audit diagnostických protokolů (zásady: podrobný plán iniciativ pro Spojené království a oficiální nebo Velká Británie NHS) |Seznam typů prostředků, které se mají auditovat, pokud je v nastavení diagnostického protokolu zapnutá možnost Poznámka  Přijatelné hodnoty najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které podporují Linux OS pro přidání do oboru (Policy: \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru (zásady: \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které podporují Linux OS pro přidání do oboru (Policy: \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru (zásady: \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste si prohlédli kroky k nasazení ukázek OFICIÁLNÍch a NHS podrobných plánů na Velká Británie, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [Oficiální a NHSové plány Spojené království – přehledy](./index.md)
-> [UK oficiální a Velká Británie NHS modrotisky – mapování ovládacích prvků](./control-mapping.md)
+> [Oficiální Velká Británie a plány pro Velká Británie a NHS – přehled](./index.md)
+> [UK oficiální a UK NHS modrotisky – mapování ovládacích prvků](./control-mapping.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

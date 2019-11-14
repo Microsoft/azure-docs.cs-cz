@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače s Windows | Microsoft Docs
+title: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače s Windows
 description: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače s Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a4a3b767cfcfd73eab86e51140205cc86fe8e838
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c21c9a78e2f56cc771178043bbf1e6e397370945
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748665"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038931"
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>Vytvoření virtuálního počítače pomocí PowerShellu
 
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině zabezpečení sítě. Tento příkaz také otevře port 80 a nastaví přihlašovací údaje pro správu. |

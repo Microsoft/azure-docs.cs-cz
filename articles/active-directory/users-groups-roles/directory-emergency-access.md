@@ -1,10 +1,11 @@
 ---
-title: Správa účtů správců pro nouzový přístup – Azure Active Directory | Microsoft Docs
+title: Správa účtů pro správu pro nouzový přístup – Azure AD | Microsoft Docs
 description: Tento článek popisuje, jak používat účty pro nouzový přístup k tomu, aby se zabránilo neúmyslnému uzamčení vaší organizace Azure Active Directory (Azure AD).
 services: active-directory
 author: markwahl-msft
+manager: daveba
 ms.author: curtand
-ms.date: 09/09/2019
+ms.date: 11/08/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04016df86a9bed06f2cbb79d459b10486a9b7d67
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772428"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028129"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
 
@@ -38,7 +39,7 @@ Organizace může potřebovat účet pro nouzový přístup v následujících s
 
 ## <a name="create-emergency-access-accounts"></a>Vytvoření účtů pro nouzový přístup
 
-Vytvořte dva nebo více účtů pro nouzový přístup. Tyto účty by měly být pouze cloudové účty, které \*používají doménu. onmicrosoft.com a které nejsou federované nebo synchronizované z místního prostředí.
+Vytvořte dva nebo více účtů pro nouzový přístup. Tyto účty by měly být pouze cloudové účty, které používají doménu \*. onmicrosoft.com a které nejsou federované nebo synchronizované z místního prostředí.
 
 Při konfiguraci těchto účtů je potřeba splnit tyto požadavky:
 
@@ -51,7 +52,7 @@ Při konfiguraci těchto účtů je potřeba splnit tyto požadavky:
 
 Azure AD doporučuje pro všechny jednotlivé uživatele vyžadovat službu Multi-Factor Authentication, aby se snížilo riziko útoku vyplývajícího z napadeného hesla. Tato skupina zahrnuje správce a všechny ostatní (například finanční důstojníci), jejichž ohrožený účet by měl významný dopad.
 
-Nejméně jeden z účtů pro nouzový přístup by však neměl mít stejný mechanismus vícefaktorového ověřování jako ostatní účty, které nejsou v nouzi. To zahrnuje řešení Multi-Factor Authentication od třetích stran. Pokud máte zásady podmíněného přístupu, které vyžadují [vícefaktorové ověřování pro každého správce](../authentication/howto-mfa-userstates.md) Azure AD a jiné připojené aplikace SaaS (software jako služba), měli byste z tohoto požadavku vyloučit účty pro nouzový přístup a nakonfigurovat místo toho jiný mechanismus. Navíc byste se měli ujistit, že účty nemají zásady vícefaktorového ověřování pro jednotlivé uživatele.
+Nejméně jeden z účtů pro nouzový přístup by však neměl mít stejný mechanismus vícefaktorového ověřování jako ostatní účty, které nejsou v nouzi. To zahrnuje řešení Multi-Factor Authentication od třetích stran. Pokud máte zásady podmíněného přístupu, které vyžadují [vícefaktorové ověřování pro každého správce](../authentication/howto-mfa-userstates.md) Azure AD a jiné připojené aplikace SaaS (software jako služba), měli byste z tohoto požadavku vyloučit účty pro nouzový přístup a místo toho nakonfigurovat jiný mechanismus. Navíc byste se měli ujistit, že účty nemají zásady vícefaktorového ověřování pro jednotlivé uživatele.
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Vyloučení aspoň jednoho účtu ze zásad podmíněného přístupu
 
@@ -100,8 +101,8 @@ Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádnýc
 
     1. V části **logika výstrahy**zadejte toto:
 
-        - Založené na: Počet výsledků
-        - Podnikatel Je větší než
+        - Na základě: počet výsledků
+        - Operátor: je větší než
         - Prahová hodnota: 0
 
     1. Pod položkou **vyhodnoceno na základě**vyberte **dobu (v minutách)** , po kterou se má dotaz spouštět, a **frekvence (v minutách)** , jak často chcete dotaz spouštět. Frekvence by měla být menší než nebo stejná jako perioda.
@@ -149,7 +150,7 @@ Tyto kroky by se měly provádět v pravidelných intervalech a pro klíčové z
 - V případě nedávné změny zaměstnanců IT, jako je například změna úlohy, odchod nebo nový pronájem
 - Změny předplatných služby Azure AD v organizaci
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](directory-admin-roles-secure.md)
 - [Přidání uživatelů pomocí Azure AD](../fundamentals/add-users-azure-active-directory.md) a [přiřazení nového uživatele k roli globálního správce](../fundamentals/active-directory-users-assign-role-azure-portal.md)

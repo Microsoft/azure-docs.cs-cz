@@ -1,5 +1,5 @@
 ---
-title: Kurz – vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure | Microsoft Docs
+title: Kurz – vyrovnávání zatížení virtuálních počítačů s Linux v Azure
 description: V tomto kurzu se dozvíte, jak pomocí Azure CLI vytvořit nástroj pro vyrovnávání zatížení pro vysoce dostupnou a zabezpečenou aplikaci na třech virtuálních počítačích s Linuxem.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5bfe25499bc2c4e7dc4c07d9811fa0227d347d7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: daad74ae5f046edb1b4bf6eef547c963e52593f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300820"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034439"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure CLI
 
@@ -40,7 +40,7 @@ V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.micros
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="azure-load-balancer-overview"></a>Azure Load Balancer – přehled
+## <a name="azure-load-balancer-overview"></a>Přehled nástroje pro vyrovnávání zatížení Azure
 Nástroj pro vyrovnávání zatížení Azure je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP), který poskytuje vysokou dostupnost díky distribuci příchozího provozu mezi virtuální počítače v dobrém stavu. Sonda stavu nástroje pro vyrovnávání zatížení na všech virtuálních počítačích monitoruje daný port a distribuuje provoz pouze do virtuálních počítačů, které jsou v provozu.
 
 Nadefinujete konfiguraci front-endových IP adres, která obsahuje jednu nebo více veřejných IP adres. Tato konfigurace front-endových IP adres povoluje přístup k vašemu nástroji pro vyrovnávání zatížení a vašim aplikacím přes internet. 
@@ -60,7 +60,7 @@ az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
-Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip). Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupLoadBalancer*:
+Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip). Následující příklad vytvoří veřejnou IP adresu *myPublicIP* ve skupině prostředků *myResourceGroupLoadBalancer*:
 
 ```azurecli-interactive 
 az network public-ip create \
@@ -218,7 +218,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 Pokud chcete zlepšit vysokou dostupnost aplikace, umístěte své virtuální počítače do skupiny dostupnosti. Další informace o skupinách dostupnosti najdete v předchozím kurzu [Vytváření vysoce dostupných virtuálních počítačů](tutorial-availability-sets.md).
 
-Vytvořte skupinu dostupnosti pomocí příkazu [az vm availability-set create](/cli/azure/vm/availability-set). Následující příklad vytvoří skupinu dostupnosti s názvem *myAvailabilitySet*:
+Vytvořte skupinu dostupnosti pomocí příkazu [az vm availability-set create](/cli/azure/vm/availability-set). Následující příklad vytvoří skupinu dostupnosti *myAvailabilitySet*:
 
 ```azurecli-interactive 
 az vm availability-set create \
@@ -243,11 +243,11 @@ for i in `seq 1 3`; do
 done
 ```
 
-Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Parametr `--no-wait` znamená, že se nečeká na dokončení všech úloh. Než k aplikaci budete mít přístup, může to ještě několik minut trvat. Sonda stavu nástroje pro vyrovnávání zatížení automaticky rozpozná, jakmile bude aplikace spuštěná na všech virtuálních počítačích. Jakmile bude aplikace spuštěná, pravidlo nástroje pro vyrovnávání zatížení začne distribuovat provoz.
+Jakmile vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Parametr `--no-wait` znamená, že se nečeká na dokončení všech úloh. Může trvat dalších několik minut, než k aplikaci budete mít přístup. Sonda stavu nástroje pro vyrovnávání zatížení automaticky rozpozná, jakmile bude aplikace spuštěná na všech virtuálních počítačích. Jakmile bude aplikace spuštěná, pravidlo nástroje pro vyrovnávání zatížení začne distribuovat provoz.
 
 
 ## <a name="test-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
-Získejte veřejnou IP adresu svého nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
+Získejte veřejnou IP adresu svého nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
 
 ```azurecli-interactive 
 az network public-ip show \

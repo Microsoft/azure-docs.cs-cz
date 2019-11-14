@@ -1,6 +1,6 @@
 ---
-title: Použití Docker Machine k vytvoření hostitelé s Linuxem v Azure | Dokumentace Microsoftu
-description: Popisuje způsob použití Docker Machine k vytvoření hostitelů Docker v Azure.
+title: Použití Docker Machine k vytvoření hostitelů se systémem Linux v Azure
+description: Popisuje způsob použití Docker Machine k vytváření hostitelů Docker v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 1e946f82cf7dfcec0a6ff451012e6f5f0ac6e955
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6b7f26d4554cc5ab1450ac3a8cf927b2338f8ea2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671556"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036254"
 ---
-# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Použití Docker Machine k vytvoření hostitelů v Azure
-Tento článek podrobně popisuje, jak používat [Docker Machine](https://docs.docker.com/machine/) k vytvoření hostitelů v Azure. `docker-machine` Příkaz vytvoří virtuální počítač (VM) s Linuxem v Azure, pak nainstaluje Dockeru. Potom můžete spravovat hostitele Docker v Azure s využitím stejných nástrojů místní a pracovních postupů. Použití docker machine v systému Windows 10, je nutné použít bash v systému Linux.
+# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Jak používat Docker Machine k vytváření hostitelů v Azure
+Tento článek podrobně popisuje, jak pomocí [Docker Machine](https://docs.docker.com/machine/) vytvářet hostitele v Azure. Příkaz `docker-machine` vytvoří virtuální počítač se systémem Linux v Azure a nainstaluje Docker. Potom můžete spravovat hostitele Docker v Azure pomocí stejných místních nástrojů a pracovních postupů. Pokud chcete použít Docker-Machine ve Windows 10, musíte použít Linux bash.
 
 ## <a name="create-vms-with-docker-machine"></a>Vytvoření virtuálních počítačů pomocí Docker Machine
-Nejprve, získejte ID vašeho předplatného Azure s [zobrazit účet az](/cli/azure/account) následujícím způsobem:
+Nejdřív Získejte ID vašeho předplatného Azure pomocí příkazu [AZ Account show](/cli/azure/account) následujícím způsobem:
 
 ```azurecli
 sub=$(az account show --query "id" -o tsv)
 ```
 
-Vytvoření hostitele Docker virtuálních počítačů v Azure pomocí `docker-machine create` zadáním *azure* jako ovladač. Další informace najdete v tématu [dokumentaci ovladač Azure Docker](https://docs.docker.com/machine/drivers/azure/)
+Virtuální počítače s hostitelem Docker vytvoříte v Azure pomocí `docker-machine create` zadáním *Azure* jako ovladače. Další informace najdete v [dokumentaci k ovladači Docker Azure](https://docs.docker.com/machine/drivers/azure/) .
 
-Následující příklad vytvoří virtuální počítač s názvem *myVM*, na základě plánu "Standard D2 v2", vytvoří uživatelský účet s názvem *azureuser*a otevře port *80* na hostiteli virtuálního počítače. Postupujte podle výzev k přihlášení ke svému účtu Azure a udělení oprávnění Docker Machine k vytvoření a správě prostředků.
+Následující příklad vytvoří virtuální počítač s názvem *myVM*na základě plánu Standard D2 v2, vytvoří uživatelský účet s názvem *azureuser*a na virtuálním počítači hostitele otevře port *80* . Postupujte podle všech výzev a přihlaste se k účtu Azure a udělte oprávnění počítače Docker pro vytváření a správu prostředků.
 
 ```bash
 docker-machine create -d azure \
@@ -44,7 +44,7 @@ docker-machine create -d azure \
     myvm
 ```
 
-Výstup vypadá podobně jako v následujícím příkladu:
+Výstup bude vypadat podobně jako v následujícím příkladu:
 
 ```bash
 Creating CA: /Users/user/.docker/machine/certs/ca.pem
@@ -77,8 +77,8 @@ Docker is up and running!
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm
 ```
 
-## <a name="configure-your-docker-shell"></a>Konfigurace vašeho prostředí Dockeru
-Pro připojení k hostiteli vaše Docker v Azure, definujte nastavení pro příslušné připojení. Jak je uvedeno na konci výstupu, zobrazení informací o připojení pro hostitele Docker následujícím způsobem: 
+## <a name="configure-your-docker-shell"></a>Konfigurace prostředí Docker
+Pokud se chcete připojit k hostiteli Docker v Azure, definujte odpovídající nastavení připojení. Jak je uvedeno na konci výstupu, podívejte se na informace o připojení pro hostitele Docker následujícím způsobem: 
 
 ```bash
 docker-machine env myvm
@@ -95,10 +95,10 @@ export DOCKER_MACHINE_NAME="machine"
 # eval $(docker-machine env myvm)
 ```
 
-K definování nastavení připojení, můžete buď spustit příkaz navrhovaná konfigurace (`eval $(docker-machine env myvm)`), nebo můžete ručně nastavit proměnné prostředí. 
+Pokud chcete definovat nastavení připojení, můžete buď spustit navrhovaný příkaz konfigurace (`eval $(docker-machine env myvm)`), nebo můžete nastavit proměnné prostředí ručně. 
 
 ## <a name="run-a-container"></a>Spuštění kontejneru
-Chcete-li zobrazit kontejneru v akci, umožňuje spustit základní webový server NGINX. Vytvořte kontejner s `docker run` a zpřístupňuje porty 80 pro webový provoz následujícím způsobem:
+Pokud chcete zobrazit kontejner v akci, umožňuje spustit základní webserver NGINX. Vytvořte kontejner pomocí `docker run` a vystavte port 80 pro webový provoz následujícím způsobem:
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
@@ -117,7 +117,7 @@ Status: Downloaded newer image for nginx:latest
 675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
 ```
 
-Zobrazení spuštěné kontejnery s `docker ps`. Následující příklad výstupu ukazuje kontejner NGINX a spuštění s portem 80 vystavený:
+Zobrazit spuštěné kontejnery pomocí `docker ps`. Následující příklad výstupu ukazuje kontejner NGINX spuštěný s vystaveným portem 80:
 
 ```bash
 CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES
@@ -125,16 +125,16 @@ d5b78f27b335    nginx    "nginx -g 'daemon off"    5 minutes ago    Up 5 minutes
 ```
 
 ## <a name="test-the-container"></a>Test kontejneru
-Následujícím způsobem získejte veřejnou IP adresu hostitele Docker:
+Získejte veřejnou IP adresu hostitele Docker následujícím způsobem:
 
 
 ```bash
 docker-machine ip myvm
 ```
 
-Pokud chcete zobrazit kontejneru v akci, otevřete webový prohlížeč a zadejte veřejnou IP adresu uvedené ve výstupu předchozího příkazu:
+Chcete-li zobrazit kontejner v akci, otevřete webový prohlížeč a zadejte veřejnou IP adresu, kterou si poznamenali ve výstupu předchozího příkazu:
 
-![Spuštěný kontejner ngnix](./media/docker-machine/nginx.png)
+![Spuštění kontejneru ngnix](./media/docker-machine/nginx.png)
 
-## <a name="next-steps"></a>Další postup
-Příklady použití Docker Compose, naleznete v tématu [Začínáme s prostředím Docker a Compose v Azure](docker-compose-quickstart.md).
+## <a name="next-steps"></a>Další kroky
+Příklady použití Docker Compose najdete v tématu Začínáme [s Docker a vytváření v Azure](docker-compose-quickstart.md).

@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Azure Linux – Storage | Microsoft Docs
+title: Velikosti virtuálních počítačů Azure Linux – úložiště
 description: Obsahuje seznam různých velikostí optimalizovaných pro úložiště, které jsou dostupné pro virtuální počítače se systémem Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: 7320acc3a00702b66800af5bfd9a240f4b146670
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 26fb9b285658b9bf3d3df67849e9ccd15b8b5f61
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100838"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034847"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro úložiště
 
@@ -34,7 +34,7 @@ ms.locfileid: "70100838"
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
 

@@ -1,6 +1,6 @@
 ---
-title: Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
-description: Naučte se rozšířit podporu SQL Server 2008 a SQL Server 2008 R2 tím, že migrujete instanci služby SQL Server do Azure nebo si koupíte rozšířenou podporu, abyste zachovali instance v místním prostředí.
+title: Prodloužená podpora SQL Server 2008 & 2008 R2
+description: Podporu SQL Server 2008 a SQL Server 2008 R2 můžete rozšířit tak, že migrujete instanci služby SQL Server do Azure nebo zakoupíte rozšířenou podporu, abyste zachovali instance v místním prostředí.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 93e0032cd283eda034519ca29a0e1cf501b5cde6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1b3961b61d45718e726b31ec406445b202a0adf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100458"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034172"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
 
@@ -37,7 +38,7 @@ Zákazníci, kteří jsou v SQL Server 2008, budou muset buď provést samoobslu
 Image nasazené prostřednictvím Azure Marketplace se dodávají s předinstalovaným rozšířením SQL IaaS. Rozšíření SQL IaaS je požadavek flexibilního licencování a automatizované opravy. Zákazníci, kteří nasazují sami instalované virtuální počítače, budou muset ručně nainstalovat rozšíření SQL IaaS. Rozšíření SQL IaaS není podporováno v systému Windows Server 2008.
 
 > [!NOTE]
-> I když SQL Server **vytvořit** a **Spravovat** , budou v Azure Portal fungovat s imagí SQL Server 2008 R2, nejsou _podporovány_následující funkce: Automatické zálohování, Azure Key Vault integrace, služby R a konfigurace úložiště.
+> I když se SQL Server **vytvářet** a **Spravovat** okna, budou v Azure Portal fungovat s imagí SQL Server 2008 R2, nejsou _podporovány_následující funkce: automatické zálohování, Integrace Azure Key Vault, služby R a konfigurace úložiště.
 
 ## <a name="licensing"></a>Licencování
 Nasazení s průběžnými platbami SQL Server 2008 R2 se dá převést na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
@@ -63,9 +64,9 @@ SQL Server vyžaduje pro zajištění obnovení Azure Site Recovery snímky konz
 
 Řešení zotavení po havárii pro EOS SQL Server na virtuálním počítači Azure jsou následující:
 
-- **Zálohy SQL Server**: Použijte Azure Backup k ochraně SQL Server EOS proti ransomwarem, náhodnému odstranění a poškození. Řešení je momentálně ve verzi Preview pro EOS SQL Server a podporuje SQL Server 2008 a 2008 R2 spuštěné v systému Windows 2008 R2 SP1. Další podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
-- **Přenos protokolu**: Můžete vytvořit repliku přenosu protokolů v jiné zóně nebo oblasti Azure s průběžným obnovením, abyste snížili RTO. Je nutné ručně nakonfigurovat přesouvání protokolu.
-- **Azure Site Recovery**: Můžete replikovat virtuální počítač mezi zónami a oblastmi prostřednictvím replikace Azure Site Recovery. SQL Server vyžaduje, aby se snímky konzistentní vzhledem k aplikacím zaručily v případě havárie. Azure Site Recovery nabízí minimální 1 hodinu RPO a 2 hodinu (plus SQL Server čas obnovení) RTO pro zotavení po havárii EOS SQL Server.
+- **SQL Server zálohy**: pomocí Azure Backup můžete chránit EOS SQL Server proti ransomwarem, náhodnému odstranění a poškození. Řešení je momentálně ve verzi Preview pro EOS SQL Server a podporuje SQL Server 2008 a 2008 R2 spuštěné v systému Windows 2008 R2 SP1. Další podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
+- **Přesouvání protokolu**: můžete vytvořit repliku přenosu protokolů v jiné zóně nebo oblasti Azure s průběžným obnovením, abyste snížili RTO. Je nutné ručně nakonfigurovat přesouvání protokolu.
+- **Azure Site Recovery**: virtuální počítač můžete replikovat mezi zónami a oblastmi prostřednictvím replikace Azure Site Recovery. SQL Server vyžaduje, aby se snímky konzistentní vzhledem k aplikacím zaručily v případě havárie. Azure Site Recovery nabízí minimální 1 hodinu RPO a 2 hodinu (plus SQL Server čas obnovení) RTO pro zotavení po havárii EOS SQL Server.
 
 ## <a name="security-patching"></a>Opravy zabezpečení
 Rozšířené aktualizace zabezpečení pro SQL Server virtuálních počítačů se doručí prostřednictvím kanálů Microsoft Update po registraci SQL Server virtuálního počítače u [poskytovatele prostředků](virtual-machines-windows-sql-register-with-resource-provider.md)virtuálního počítače SQL. Opravy lze stáhnout ručně nebo automaticky.
@@ -73,7 +74,7 @@ Rozšířené aktualizace zabezpečení pro SQL Server virtuálních počítač�
 *Automatizované opravy* jsou ve výchozím nastavení povolené. Automatizované opravy umožňují na platformě Azure automaticky opravovat SQL Server a operační systém. Pokud je nainstalováno rozšíření SQL Server IaaS, můžete zadat den v týdnu, čas a dobu trvání okna údržby. V té době pak Azure nainstaluje potřebné opravy. V rámci plánování intervalu údržby se pro čas používá národní prostředí virtuálních počítačů.  Další informace najdete v tématu [automatizované opravy pro SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-automated-patching.md).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Migrace SQL Server virtuálního počítače do Azure:
 

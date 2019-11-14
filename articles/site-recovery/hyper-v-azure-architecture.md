@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1ce21ea6042bbe1191edede13f80455c8e669f3b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933549"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030194"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii z Hyper-V do Azure
 
@@ -39,9 +39,6 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 ![Architektura](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
-> [!WARNING]
-> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
-
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Komponenty architektury – technologie Hyper-V s nástrojem VMM
 
 Následující tabulka a grafika obsahují podrobný pohled na součásti používané pro replikaci Hyper-V do Azure, když jsou hostitelé Hyper-V spravováni v cloudech VMM.
@@ -52,7 +49,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 **Server VMM** | Server VMM obsahuje jeden nebo více cloudů s hostiteli Hyper-V. | Na server VMM nainstalujete poskytovatele Site Recovery, pro orchestraci replikace pomocí Site Recovery a registraci serveru v trezoru služby Recovery Services.
 **Hostitel Hyper-V** | Jeden nebo několik hostitelů/clusterů Hyper-V spravovaných nástrojem VMM. |  Agenta Recovery Services nainstalujete na každého hostitele nebo uzel clusteru Hyper-V.
 **Virtuální počítače Hyper-V** | Jeden nebo několik virtuálních počítačů spuštěných na hostitelském serveru Hyper-V. | Na virtuálních počítačích není výslovně potřeba nic instalovat.
-**Networking** | Logické sítě a sítě virtuálních počítačů nastavené na serveru VMM. Síť virtuálních počítačů by měla být propojená s logickou sítí, která je přidružená ke cloudu. | Sítě virtuálních počítačů jsou namapované na virtuální sítě Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, přidají se do sítě Azure, která je namapovaná na síť virtuálních počítačů.
+**Sítě** | Logické sítě a sítě virtuálních počítačů nastavené na serveru VMM. Síť virtuálních počítačů by měla být propojená s logickou sítí, která je přidružená ke cloudu. | Sítě virtuálních počítačů jsou namapované na virtuální sítě Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, přidají se do sítě Azure, která je namapovaná na síť virtuálních počítačů.
 
 **Architektura Hyper-V do Azure (s VMM)**
 

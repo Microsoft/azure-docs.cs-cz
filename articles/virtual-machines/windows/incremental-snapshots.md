@@ -1,5 +1,5 @@
 ---
-title: Použití přírůstkových snímků pro zálohování a obnovení nespravovaných disků virtuálních počítačů Azure s Windows | Microsoft Docs
+title: Použití přírůstkových snímků pro zálohování a obnovení nespravovaných disků virtuálních počítačů Azure s Windows
 description: Vytvořte vlastní řešení pro zálohování a obnovení disků virtuálních počítačů Azure s Windows pomocí přírůstkových snímků.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1ace5827724efc4ba5a5b2d4de94369ce63f3eb8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 052f268c43c5e64ad519c6d5f4841a5cb5fc9b13
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014532"
+ms.locfileid: "74038605"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Zálohování nespravovaných disků virtuálních počítačů Azure pomocí přírůstkových snímků
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

@@ -8,20 +8,27 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 31529155ee44b2bcfad90e8634053403dfe8fc8c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 7ae14c3606dfe6bffa8481682843f3f2e85c2131
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518509"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033727"
 ---
-# <a name="azcopy-jobs-clean"></a>vyčistit úlohy AzCopy
+# <a name="azcopy-jobs-clean"></a>azcopy jobs clean
 
 Odebrat všechny soubory protokolů a plánů pro všechny úlohy
 
 ```
 azcopy jobs clean [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Související koncepční články
+
+- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Příklady
 
@@ -41,6 +48,6 @@ azcopy jobs clean [flags]
 
 **--výstupní** formát řetězce výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je "text". (výchozí "text")
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [AzCopy úlohy](storage-ref-azcopy-jobs.md)

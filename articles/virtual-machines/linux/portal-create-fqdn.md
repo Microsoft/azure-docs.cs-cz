@@ -1,5 +1,5 @@
 ---
-title: Vytvoření plně kvalifikovaného názvu domény pro virtuální počítač se systémem Linux v Azure Portal | Microsoft Docs
+title: Vytvoření plně kvalifikovaného názvu domény pro virtuální počítač se systémem Linux v Azure Portal
 description: Naučte se vytvořit plně kvalifikovaný název domény nebo plně kvalifikovaný název domény pro virtuální počítač založený na Správce prostředků v Azure Portal.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7309f4be43c6b653f261e5de5fbe3e638e83294
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d30f5a60bf19e9185d992b973414f58942f9954
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082442"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035299"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač se systémem Linux
 
@@ -31,9 +31,9 @@ V tomto článku se předpokládá, že jste už vytvořili virtuální počíta
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Nyní se můžete vzdáleně připojit k virtuálnímu počítači pomocí tohoto názvu DNS, jako `ssh azureuser@mydns.westus.cloudapp.azure.com`je například.
+Nyní se můžete vzdáleně připojit k virtuálnímu počítači pomocí tohoto názvu DNS, například pomocí `ssh azureuser@mydns.westus.cloudapp.azure.com`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Když teď váš virtuální počítač má veřejnou IP adresu a název DNS, můžete nasadit společné aplikační architektury nebo služby, jako je Nginx, MongoDB, Docker atd.
 
 Můžete si také přečíst další informace o [použití Správce prostředků](../../azure-resource-manager/resource-group-overview.md) pro tipy k vytváření nasazení Azure.

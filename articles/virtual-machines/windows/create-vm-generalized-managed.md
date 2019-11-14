@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače ze spravované image v Azure | Microsoft Docs
+title: Vytvoření virtuálního počítače ze spravované image v Azure
 description: V modelu nasazení Správce prostředků vytvořte virtuální počítač s Windows z generalizované spravované Image pomocí Azure PowerShell nebo Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 016b53660499b86de13855cfa994c84d6d9bc702
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 17100769bac2e7af08e0bcba6ca2eb129b621013
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749497"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037531"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
@@ -29,7 +29,7 @@ Před vytvořením nového virtuálního počítače budete muset [vytvořit spr
 
 ## <a name="use-the-portal"></a>Použití portálu
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny prostředky**. Můžete řadit prostředky podle **typu** a snadno tak najít své image.
 3. Ze seznamu vyberte obrázek, který chcete použít. Otevře se stránka s **přehledem** obrázku.
 4. V nabídce vyberte **vytvořit virtuální počítač** .

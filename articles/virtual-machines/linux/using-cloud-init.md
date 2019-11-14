@@ -1,5 +1,5 @@
 ---
-title: Přehled podpory Cloud-init pro virtuální počítače se systémem Linux v Azure | Microsoft Docs
+title: Přehled podpory Cloud-init pro virtuální počítače se systémem Linux v Azure
 description: Přehled možností Cloud-init v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,43 +15,43 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: b0300dd91876b651015ae78c53dbc1e72bf8dd68
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d372b94ac0df4cef3c43fab10686e9bf20633bfe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285697"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034255"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto skripty Cloud-init se spouštějí při prvním spuštění, jakmile se prostředky zřídí v Azure.  
 
 ## <a name="cloud-init-overview"></a>Přehled Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Vzhledem k tomu, že se během procesu prvotního spuštění volá Cloud-init, neexistují žádné další kroky ani nepotřebné agenti pro použití konfigurace.  Další informace o tom, jak správně zformátovat soubory `#cloud-config`, najdete v tématu věnovaném nástroji [Cloud-init Documentation](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  soubory `#cloud-config` jsou textové soubory kódované v kódování Base64.
+[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Protože cloud-init je volána v průběhu procesu prvotního spuštění, nejsou žádné další kroky ani agenty vyžaduje použití vaší konfigurace.  Další informace o tom, jak správně vaše `#cloud-config` soubory, najdete v článku [cloud-init dokumentačním webu](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` soubory jsou textové soubory kódovaný jako base64.
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
-Aktivně spolupracujeme s našimi distribuce partnery se systémem Linux, aby byly k dispozici image s povoleným cloudovým inicializacím na webu Azure Marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů. Následující tabulka popisuje aktuální dostupnost imagí povolených pro inicializaci cloudu na platformě Azure:
+Aktivně Pracujeme s našimi partnery doporučené distribuce Linuxu aby cloud-init povolené imagí dostupných v Tržišti Azure marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů. Následující tabulka popisuje aktuální dostupnost Image povolené cloud-init na platformě Azure:
 
-| Vydavatel | Nabídka | Skladová položka | Version | Cloud-init připraven |
+| Vydavatel | Nabídka | Skladová položka | Version | Připraveno na cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |latest |ano | 
-|Canonical |UbuntuServer |16.04-LTS |latest |ano | 
-|Canonical |UbuntuServer |14.04.5-LTS |latest |ano |
-|CoreOS |CoreOS |Stable |latest |ano |
+|Canonical |UbuntuServer |18.04-LTS |nejnovější |ano | 
+|Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
+|Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
+|CoreOS |CoreOS |Stable |nejnovější |ano |
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |preview |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano |
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
     
 V současné době Azure Stack nepodporuje zřizování RHEL 7. x a CentOS 7. x pomocí Cloud-init.
 
-* V případě balíčku Cloud-init pro RHEL 7,6 je podporovaným balíčkem: *18.2 -1. el7 _ 6.2* 
+* Pro balíček RHEL 7,6 Cloud-init je podporovaný balíček: *18.2-1. el7_6.2* 
 * V případě balíčku Cloud-init pro RHEL 7,7 (Preview) je balíček verze Preview: *18.5 -3. el7* .
 * V případě balíčku Cloud-init pro CentOS 7,7 (Preview) je balíček verze Preview: *18.5 -3. el7. CentOS*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Jaký je rozdíl mezi Cloud-init a agentem pro Linux (WALA)?
 WALA je agentem specifickým pro platformu Azure, který slouží ke zřizování a konfiguraci virtuálních počítačů a zpracování rozšíření Azure. Rozšiřujeme úlohu konfigurace virtuálních počítačů tak, aby používala Cloud-init místo agenta pro Linux, aby mohli stávající zákazníci s cloudovým inicializací používat své aktuální skripty Cloud-init.  Pokud máte existující investice do skriptů Cloud-init pro konfiguraci systémů Linux, není **potřeba žádná další nastavení** , která by je musela povolit. 
 
-Pokud v době zřizování nezahrnete přepínač Azure CLI `--custom-data`, WALA použije minimální parametry zřizování virtuálního počítače, které jsou potřeba ke zřízení virtuálního počítače, a dokončení nasazení s výchozími hodnotami.  Pokud odkazujete na přepínač Cloud-init `--custom-data` bez ohledu na to, co je obsaženo ve vašich vlastních datech (jednotlivá nastavení nebo úplný skript), přepíše výchozí nastavení WALA. 
+Pokud v době zřizování nezahrnete přepínač Azure CLI `--custom-data`, převezme WALA parametry minimálního zřizování virtuálního počítače potřebné ke zřízení virtuálního počítače a dokončení nasazení s výchozími hodnotami.  Pokud odkazujete na přepínač Cloud-init `--custom-data`, cokoli, co obsahuje vaše vlastní data (jednotlivá nastavení nebo úplný skript), potlačí výchozí hodnoty WALA. 
 
 WALA konfigurace virtuálních počítačů je časově omezená, aby fungovala v maximální době zřizování virtuálního počítače.  Konfigurace Cloud-init použité u virtuálních počítačů nemají časová omezení a nezpůsobí selhání nasazení pomocí vypršení časového limitu. 
 
@@ -73,7 +73,7 @@ package_upgrade: true
 packages:
   - httpd
 ```
-Stisknutím `ctrl-X` ukončete soubor, zadáním `y` soubor uložte a stisknutím `enter` potvrďte název souboru při ukončení.
+Stisknutím `ctrl-X` ukončete soubor, zadejte `y` a uložte soubor a stisknutím `enter` potvrďte název souboru při ukončení.
 
 Posledním krokem je vytvoření virtuálního počítače pomocí příkazu [AZ VM Create](/cli/azure/vm) . 
 
@@ -88,13 +88,13 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-Po vytvoření virtuálního počítače se v Azure CLI zobrazí informace, které jsou specifické pro vaše nasazení. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.  Vytvoření virtuálního počítače bude chvíli trvat, balíčky, které se mají nainstalovat, a aplikaci, která se má spustit. Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. K virtuálnímu počítači se můžete přihlásit přes SSH a pomocí kroků popsaných v části řešení potíží zobrazit protokoly Cloud-init. 
+Po vytvoření virtuálního počítače se v Azure CLI zobrazí informace, které jsou specifické pro vaše nasazení. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.  Vytvoření virtuálního počítače bude chvíli trvat, balíčky, které se mají nainstalovat, a aplikaci, která se má spustit. Jakmile vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. K virtuálnímu počítači se můžete přihlásit přes SSH a pomocí kroků popsaných v části řešení potíží zobrazit protokoly Cloud-init. 
 
 ## <a name="troubleshooting-cloud-init"></a>Řešení potíží s cloudem a inicializací
-Po zřízení virtuálního počítače se Cloud-init spustí pomocí všech modulů a skriptu definovaného v `--custom-data`, aby se virtuální počítač nakonfiguroval.  Pokud potřebujete odstranit případné chyby nebo opomenutí z konfigurace, je třeba vyhledat název modulu (například `disk_setup` nebo `runcmd`) v protokolu Cloud-init – nachází se v **/var/log/Cloud-init.log**.
+Po zřízení virtuálního počítače se Cloud-init spustí pomocí všech modulů a skriptu definovaného v `--custom-data`, aby se virtuální počítač nakonfiguroval.  Pokud potřebujete odstranit případné chyby nebo opomenutí z konfigurace, je třeba vyhledat název modulu (například`disk_setup` nebo `runcmd`) v protokolu Cloud-init – nachází se v **/var/log/Cloud-init.log**.
 
 > [!NOTE]
-> Nejedná se o selhání každého modulu, protože by došlo k závažné chybě při inicializaci Cloud-init. Pokud například použijete modul `runcmd`, Cloud-init bude i nadále nahlásit úspěšné zřizování, protože se spustil modul runcmd.
+> Nejedná se o selhání každého modulu, protože by došlo k závažné chybě při inicializaci Cloud-init. Pokud například použijete modul `runcmd`e, Cloud-init bude i nadále nahlásit úspěšné zřizování, protože se spustil modul runcmd.
 
 Další podrobnosti o protokolování Cloud-init najdete v dokumentaci ke službě [Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) . 
 

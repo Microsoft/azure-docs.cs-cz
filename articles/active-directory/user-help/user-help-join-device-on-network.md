@@ -1,6 +1,6 @@
 ---
-title: Připojení pracovních zařízení k síti vaší organizace – Azure Active Directory | Dokumentace Microsoftu
-description: Informace o připojení pracovních zařízení k síti vaší organizace.
+title: Připojte své pracovní zařízení k síti AD vaší organizace
+description: Naučte se připojit své pracovní zařízení k síti vaší organizace.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,107 +13,107 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b122d70179f22c91028c8343b23d74cc616b1f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243276"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028532"
 ---
-# <a name="join-your-work-device-to-your-organizations-network"></a>Připojení pracovních zařízení k síti vaší organizace
-Připojte se k zařízení s Windows 10 vlastněných společností práce k síti vaší organizace, budete mít přístup k prostředkům potenciálně s omezeným přístupem.
+# <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
+Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům.
 
-## <a name="what-happens-when-you-join-your-device"></a>Co se stane, když svoje zařízení připojíte
-Když zařízení s Windows 10 se připojení k síti vaší organizace, se stane následující akce:
+## <a name="what-happens-when-you-join-your-device"></a>Co se stane, když se připojíte k zařízení
+Když připojujete zařízení s Windows 10 k síti vaší organizace, dojde k následujícím akcím:
 
-- Windows zaregistruje zařízení k síti vaší organizace umožňuje přístup k prostředkům pomocí osobního účtu. Po registraci zařízení s Windows potom připojí zařízení k síti, tak uživatelské jméno a heslo vaší organizace můžete použít k přihlášení a přístup k prostředkům s omezeným přístupem.
+- Windows zaregistruje vaše zařízení do sítě vaší organizace a umožní vám přístup k prostředkům pomocí osobního účtu. Po registraci zařízení Windows do sítě připojí vaše zařízení, takže můžete k přihlášení a přístup k prostředkům s omezeným přístupem použít uživatelské jméno a heslo vaší organizace.
 
-- Volitelně můžete na základě vaší organizace voleb, můžete být požádáni nastavit dvoustupňové ověřování pomocí kteréhokoliv [ověřování službou Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) nebo [bezpečnostní údaje](user-help-security-info-overview.md).
+- V závislosti na volbách vaší organizace se může zobrazit výzva k nastavení dvoustupňového ověřování prostřednictvím [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) nebo [bezpečnostních údajů](user-help-security-info-overview.md).
 
-- Volitelně můžete podle volby vaší organizace, vám může být automaticky zaregistroval do správy mobilních zařízení, jako je například Microsoft Intune. Další informace o registraci v Microsoft Intune najdete v tématu [registrace zařízení v Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- Volitelně můžete v závislosti na volbách vaší organizace automaticky zaregistrované v rámci správy mobilních zařízení, například Microsoft Intune. Další informace o registraci v Microsoft Intune najdete v tématu [registrace zařízení v Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
 
-- Přejdete prostřednictvím procesu přihlášení pomocí automatického přihlášení pomocí účtu organizace.
+- Provedete to pomocí automatického přihlašování pomocí účtu organizace.
 
-## <a name="to-join-a-brand-new-windows-10-device"></a>Připojit zařízení s Windows 10 zcela nový
-Pokud vaše zařízení je zcela nové a nebyla ještě nastavena, můžete projít procesem Windows z pole prostředí (OOBE) připojení zařízení k síti.
+## <a name="to-join-a-brand-new-windows-10-device"></a>Připojení ke značce – nové zařízení s Windows 10
+Pokud je vaše zařízení zcela nové a ještě není nastavené, můžete k připojení zařízení k síti použít proces počátečního prostředí (OOBE) Windows.
 
-1. Spuštění nové zařízení a zahájit proces OOBE.
+1. Spusťte nové zařízení a spusťte proces OOBE.
 
-2. Na **přihlásit se účtem Microsoft** obrazovky, zadejte svou pracovní nebo školní e-mailovou adresu.
+2. Na obrazovce **Přihlásit se účtem Microsoft** zadejte svou pracovní nebo školní e-mailovou adresu.
 
-    ![Přihlašovací obrazovka s e-mailovou adresu](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
+    ![Přihlašovací obrazovka s e-mailovou adresou](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
 
-3. Na **zadejte své heslo** zadejte své heslo.
+3. Do obrazovky **Zadejte heslo** zadejte své heslo.
 
-    ![Zadejte heslo obrazovky](./media/user-help-join-device-on-network/join-device-oobe-password.png)
+    ![Zadejte obrazovku pro heslo.](./media/user-help-join-device-on-network/join-device-oobe-password.png)
 
-4. Na vašem mobilním zařízení Schvalte vaše zařízení, můžete přístup k účtu. 
+4. Na svém mobilním zařízení schvalte své zařízení, aby mohl přistupovat k vašemu účtu. 
 
-    ![Obrazovka mobilní oznámení](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Obrazovka s mobilním oznámením](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. Dokončete proces OOBE, včetně nastavení nastavení ochrany osobních údajů a nastavení Windows Hello (v případě potřeby).
 
-    Zařízení je teď připojené k síti vaší organizace.
+    Vaše zařízení je teď připojené k síti vaší organizace.
 
-## <a name="to-make-sure-youre-joined"></a>K Ujistěte se, že je připojený
-Abyste měli jistotu, že už jste se zapojili podle nastavení.
+## <a name="to-make-sure-youre-joined"></a>Abyste se ujistili, že jste připojeni
+Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
-1. Otevřít **nastavení**a pak vyberte **účty**.
-
-    ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
-
-2. Vyberte **přístup do práce nebo do školy**a ujistěte se, že se zobrazí text, který říká něco jako, **připojené k  *\<Vaše_organizace >* Azure AD**.
-
-    ![Přístup k obrazovce pracovním nebo školním účtem připojených contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
-
-
-## <a name="to-join-an-already-configured-windows-10-device"></a>Připojit už nakonfigurované zařízení s Windows 10
-Pokud jste měli zařízení pro nějakou dobu a je již byla nastavená, můžete následujícím postupem připojení zařízení k síti.
-
-1. Otevřít **nastavení**a pak vyberte **účty**.
-
-2. Vyberte **přístup do práce nebo do školy**a pak vyberte **připojit**.
-
-    ![Přístup do práce nebo škola a připojit odkazy](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
-
-3. Na **nastavit pracovní nebo školní účet** obrazovky, vyberte **připojit toto zařízení k Azure Active Directory**.
-
-    ![Nastavit pracovní nebo školní účet obrazovky](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
-
-4. Na **Pojďme vás přihlásit** zadejte e-mailovou adresu (například alain@contoso.com) a pak vyberte **Další**.
-
-    ![Pojďme vás přihlásit obrazovky](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
-
-5. Na **zadejte heslo** obrazovky, zadejte heslo a pak vyberte **přihlášení**.
-
-    ![Zadejte heslo](./media/user-help-join-device-on-network/join-device-setup-password.png)
-
-6. Na vašem mobilním zařízení Schvalte vaše zařízení, můžete přístup k účtu. 
-
-    ![Obrazovka mobilní oznámení](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
-
-7. Na **Ujistěte se, že toto je vaše organizace** obrazovky, zkontrolujte informace a ujistěte se, že je vhodné a pak vyberte **připojit**.
-
-    ![Ujistěte se, že toto je vaše organizace obrazovka ověření](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
-
-8. Na **všechno máte nastavené** obrazovce, klikněte na tlačítko **provádí**.
-
-    ![Jste všechny sady obrazovky](./media/user-help-join-device-on-network/join-device-setup-finish.png)
-
-## <a name="to-make-sure-youre-joined"></a>K Ujistěte se, že je připojený
-Abyste měli jistotu, že už jste se zapojili podle nastavení.
-
-1. Otevřít **nastavení**a pak vyberte **účty**.
+1. Otevřete **Nastavení**a pak vyberte **účty**.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte **přístup do práce nebo do školy**a ujistěte se, že se zobrazí text, který říká něco jako, **připojené k  *\<Vaše_organizace >* Azure AD**.
+2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že se zobrazuje text, který říká, že je **připojený k *\<your_organization >* Azure AD**.
 
-    ![Přístup k obrazovce pracovním nebo školním účtem připojených contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
+    ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
-## <a name="next-steps"></a>Další postup
-Po připojení zařízení k síti vaší organizace, byste měli mít přístup k všech vašich prostředků pomocí svého pracovního nebo školního účtu.
 
-- Pokud vaše organizace hodlá registraci osobních zařízení, jako je telefon, přečtěte si téma [registraci osobních zařízení v síti vaší organizace](user-help-register-device-on-network.md).
+## <a name="to-join-an-already-configured-windows-10-device"></a>Připojení již nakonfigurovaného zařízení s Windows 10
+Pokud máte zařízení v době a a už je nastavené, můžete pomocí těchto kroků připojit zařízení k síti.
 
-- Pokud vaše organizace spravuje používání služby Microsoft Intune a máte dotazy týkající se registrace, přihlašování a jakékoli jiné související s Intune problému, najdete v článku [obsahu nápovědy pro uživatele Intune](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+1. Otevřete **Nastavení**a pak vyberte **účty**.
+
+2. Vyberte možnost **přístup do práce nebo do školy**a pak vyberte **připojit**.
+
+    ![Přístup k pracovním nebo školním odkazům a připojením](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
+
+3. Na obrazovce **nastavit pracovní nebo školní účet** vyberte **připojit k tomuto zařízení Azure Active Directory**.
+
+    ![Nastavení obrazovky pracovního nebo školního účtu](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
+
+4. Na obrazovce **přihlášení, které vám přihlásíte** , zadejte svou e-mailovou adresu (například alain@contoso.com) a pak vyberte **Další**.
+
+    ![Pojďme vám přihlášený displej](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
+
+5. Na obrazovce **Zadejte heslo** zadejte heslo a pak vyberte **Přihlásit**se.
+
+    ![Zadat heslo](./media/user-help-join-device-on-network/join-device-setup-password.png)
+
+6. Na svém mobilním zařízení schvalte své zařízení, aby mohl přistupovat k vašemu účtu. 
+
+    ![Obrazovka s mobilním oznámením](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
+
+7. Na obrazovce Ujistěte se, **že se jedná o vaši organizaci** , zkontrolujte informace a ujistěte se, že jsou správné, a pak vyberte **připojit**.
+
+    ![Ujistěte se, že se jedná o ověřovací obrazovku vaší organizace.](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
+
+8. Na obrazovce **vše nastavené** klikněte na **Hotovo**.
+
+    ![Obrazovka vše je nastaveno](./media/user-help-join-device-on-network/join-device-setup-finish.png)
+
+## <a name="to-make-sure-youre-joined"></a>Abyste se ujistili, že jste připojeni
+Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
+
+1. Otevřete **Nastavení**a pak vyberte **účty**.
+
+    ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
+
+2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že se zobrazuje text, který říká, že je **připojený k *\<your_organization >* Azure AD**.
+
+    ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
+
+## <a name="next-steps"></a>Další kroky
+Po připojení zařízení k síti vaší organizace byste měli mít přístup ke všem svým prostředkům pomocí informací o pracovním nebo školním účtu.
+
+- Pokud vaše organizace chce zaregistrovat svoje osobní zařízení, například váš telefon, přečtěte si téma [registrace osobního zařízení v síti vaší organizace](user-help-register-device-on-network.md).
+
+- Pokud je vaše organizace spravovaná pomocí Microsoft Intune a máte dotazy týkající se registrace, přihlášení nebo jakéhokoli problému souvisejícího s Intune, přečtěte si [obsah uživatelské pomoci Intune](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).

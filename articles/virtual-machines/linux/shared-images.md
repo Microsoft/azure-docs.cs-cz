@@ -1,5 +1,5 @@
 ---
-title: Vytváření galerií sdílených imagí pomocí Azure CLI | Microsoft Docs
+title: Vytváření galerií sdílených imagí pomocí Azure CLI
 description: V tomto článku se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit sdílenou bitovou kopii virtuálního počítače v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: ea884b80698fb257106ef68d293f350b2f55dc06
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: de1afa2367afcb78e8ca68e518acc93e33f61c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103557"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034965"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Vytvoření galerie sdílených imagí pomocí Azure CLI
 
@@ -33,7 +33,7 @@ Galerie je prostředek nejvyšší úrovně, který poskytuje úplné řízení 
 
 Funkce Galerie sdílených imagí má více typů prostředků. V tomto článku budeme používat nebo sestavovat tyto:
 
-| Resource | Popis|
+| Prostředek | Popis|
 |----------|------------|
 | **Spravovaná image** | Toto je základní obrázek, který se dá použít samostatně nebo použít k vytvoření **verze image** v galerii imagí. Spravované image se vytvářejí z zobecněných virtuálních počítačů. Spravovaná bitová kopie je speciální typ VHD, který se dá použít k vytvoření více virtuálních počítačů a dá se teď použít k vytváření verzí sdílených imagí. |
 | **Galerie imagí** | Podobně jako u Azure Marketplace je **Galerie imagí** úložiště pro správu a sdílení imagí, ale Vy řídíte, kdo má přístup. |
@@ -56,13 +56,13 @@ az vm create\
    --generate-ssh-keys
 ```
 
-Můžete také použít konkrétní verzi pomocí ID verze image pro `--image` parametr. Například pro použití image verze *1.0.0* typ: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`.
+Konkrétní verzi můžete použít také pomocí ID verze image pro parametr `--image`. Například pro použití image verze *1.0.0* typ: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`.
 
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Azure image Builder (Preview)](image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](image-builder-gallery-update-image-version.md). 
 
 Pomocí šablon můžete také vytvořit prostředky galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
