@@ -1,5 +1,5 @@
 ---
-title: Provedení místního upgradu edice SQL Server na virtuálním počítači Azure | Microsoft Docs
+title: Místní upgrade edice SQL Server
 description: Naučte se, jak změnit edici virtuálního počítače s SQL Server v Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eec2e588b1c2b03e9880dad0848b8213bf5fa449
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1db45097b0416b680571cb47ec1d9b52f9275c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100515"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022207"
 ---
 # <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>Provedení místního upgradu edice SQL Server na virtuálním počítači Azure
 
@@ -28,7 +29,7 @@ Edice SQL Server je určena klíčovým produktem a je určena procesem instalac
 
 Pokud jste edici SQL Server aktualizovali pomocí instalačního média po registraci u poskytovatele prostředků virtuálního počítače SQL, pak aktualizujte podle potřeby také vlastnost SQL Server Edition prostředku virtuálního počítače SQL následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). 
 1. Přejít na prostředek SQL Server prostředku virtuálního počítače. 
 1. V části **Nastavení**vyberte **Konfigurovat**. Pak v rozevíracím seznamu v části **edice**vyberte požadovanou edici SQL Server. 
 
@@ -59,7 +60,7 @@ Pokud chcete upgradovat SQL Server, Získejte instalační médium SQL Server pr
 
    ![Výběr pro upgrade edice SQL Server](media/virtual-machines-windows-sql-change-edition/edition-upgrade.png)
 
-1. Vyberte **Další** , dokud se nedostanete na stránku **připraveno k upgradu** ,a pak vyberte upgradovat. Když se změna projeví, může okno instalace přestat reagovat během několika minut. Po **dokončení** této stránky se ověří, že je upgrade edice dokončený. 
+1. Vyberte **Další** , dokud se nedostanete na stránku **připraveno k upgradu** , a pak vyberte **upgradovat**. Když se změna projeví, může okno instalace přestat reagovat během několika minut. Po **dokončení** této stránky se ověří, že je upgrade edice dokončený. 
 
 Po upgradu edice SQL Server upravte vlastnost edice SQL Server virtuálního počítače v Azure Portal, jak je uvedeno výše. Tím se aktualizují metadata a fakturace přidružená k tomuto virtuálnímu počítači.
 
@@ -89,7 +90,7 @@ Po downgradu edice SQL Server upravte vlastnost edice SQL Server virtuálního p
 - Možnost změnit edici je funkcí poskytovatele prostředků virtuálního počítače SQL. Nasazení bitové kopie Azure Marketplace pomocí Azure Portal automaticky registruje SQL Server virtuální počítač s poskytovatelem prostředků. Zákazníci, kteří si SQL Server vlastní instalaci, ale budou muset ručně [zaregistrovat svůj SQL Server virtuální počítač](virtual-machines-windows-sql-register-with-resource-provider.md).
 - Přidání virtuálního počítače SQL Server do skupiny dostupnosti vyžaduje opětovné vytvoření virtuálního počítače. Všechny virtuální počítače přidané do skupiny dostupnosti se vrátí k výchozí edici a Tato edice bude muset být upravena znovu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících článcích: 
 

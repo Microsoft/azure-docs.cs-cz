@@ -1,18 +1,18 @@
 ---
-title: Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
+title: Migrace z verze V1 na v2 – Azure Application Gateway
 description: V tomto článku se dozvíte, jak migrovat službu Azure Application Gateway a firewall webových aplikací z verze V1 na verzi v2.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: e32443e01e8b44ff5a891afc76378a53b13d7ddd
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 75d041f8ef0d6593a5ff1c696777b68c5f513bf5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833322"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047630"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
 

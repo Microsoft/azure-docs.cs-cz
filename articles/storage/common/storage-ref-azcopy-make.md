@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ebed5c8dbe5001e9beab17bdbff41610277143b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 67d685684c5227377a0f8a7e822a06e785a69d89
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514692"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034044"
 ---
 # <a name="azcopy-make"></a>azcopy make
 
@@ -26,6 +26,13 @@ Vytvořte kontejner nebo sdílenou složku reprezentované danou adresou URL pro
 ```azcopy
 azcopy make [resourceURL] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Související koncepční články
+
+- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Příklady
 
@@ -47,6 +54,6 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [AzCopy](storage-ref-azcopy.md)

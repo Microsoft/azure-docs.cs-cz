@@ -1,5 +1,5 @@
 ---
-title: Konfigurace směrování provozu v podsíti – Azure Traffic Manager
+title: 'Kurz: Konfigurace směrování provozu v podsíti – Azure Traffic Manager'
 description: Tento článek vysvětluje, jak nakonfigurovat službu Traffic Manager tak, aby směrovala provoz z podsítí uživatelů do konkrétních koncových bodů.
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: 79a8712dbe54446214f3c094a1377efea4defcce
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014574"
+ms.locfileid: "74048813"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Kurz: směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí Traffic Manager
 
 Tento článek popisuje, jak nakonfigurovat metodu směrování provozu podsítě. Metoda směrování provozu **podsítě** umožňuje namapovat sadu rozsahů IP adres na konkrétní koncové body. Když Traffic Manager přijme požadavek, prozkoumá se zdrojová IP adresa požadavku a vrátí se koncový bod, který je k ní přidružený.
 

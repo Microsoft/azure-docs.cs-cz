@@ -1,39 +1,39 @@
 ---
-title: Jak lze zjistit, pokud přihlašovací stránku Azure AD přijímá účty Microsoft | Dokumentace Microsoftu
-description: Na obrazovce pro zasílání zpráv odráží vyhledávání uživatelské jméno při přihlašování
+title: Přijměte na přihlašovací stránce Azure AD účty Microsoft | Microsoft Docs
+description: Jak zpráva na obrazovce odráží vyhledávání uživatelského jména během přihlašování
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 221ab7c50a84650f1b2adf3fdb2b284365795f42
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60468198"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024290"
 ---
-# <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Možnosti přihlášení pro účty Microsoftu v Azure Active Directory
+# <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Možnosti přihlášení pro účty Microsoft v Azure Active Directory
 
-Microsoft 365 přihlašovací stránku služby Azure Active Directory (Azure AD) podporuje pracovní nebo školní účty a účty Microsoft, ale v závislosti na situaci uživatele, může být jeden nebo druhý nebo obojí. Například na přihlašovací stránku Azure AD podporuje:
+Přihlašovací stránka Microsoft 365 pro Azure Active Directory (Azure AD) podporuje pracovní nebo školní účty a účty Microsoft, ale v závislosti na situaci uživatele to může být jedna nebo druhá. Například přihlašovací stránka Azure AD podporuje:
 
-* Aplikace, které přijímají přihlášení z obou typů účtu
-* Organizace, které akceptují hosty
+* Aplikace, které přijímají přihlášení z obou typů účtů
+* Organizace, které přijímají hosty
 
 ## <a name="identification"></a>Identifikace
-Můžete zjistit, jestli přihlašovací stránku, kterou používá vaše organizace podporuje účty Microsoft prohlédněte text nápovědy pole uživatelské jméno. Když je text nápovědy ve stavu "E-mail, telefon nebo Skype", přihlašovací stránka podporuje účty Microsoft.
+Můžete zjistit, jestli přihlašovací stránka, kterou vaše organizace používá, podporuje účty Microsoft, a to tak, že se podíváte na text nápovědy v poli uživatelské jméno. Pokud text nápovědy říká "E-mail, telefon nebo Skype", přihlašovací stránka podporuje účty Microsoft.
 
-![Rozdíl mezi účet přihlašovací stránky](./media/signin-account-support/ui-prompt.png)
+![Rozdíl mezi přihlašovacími stránkami účtu](./media/signin-account-support/ui-prompt.png)
 
-[Další možnosti přihlašování fungují pouze u osobních účtů Microsoft](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , ale nelze použít pro přihlášení k pracovním nebo školním prostředkům účtu.
+[Další možnosti přihlašování fungují jenom pro osobní účty Microsoft](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , ale nedají se použít k přihlašování k prostředkům v pracovním nebo školním účtu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Přizpůsobení přihlášení brandingu](../fundamentals/add-custom-domain.md)
+[Přizpůsobení brandingu přihlašování](../fundamentals/add-custom-domain.md)

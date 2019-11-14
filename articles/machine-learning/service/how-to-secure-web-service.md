@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 00731d3520c98c3fd770dc411f6c5c940555fbe5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932064"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048598"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Použití SSL k zabezpečení prostřednictvím Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Protokoly TLS a SSL závisí na *digitálních certifikátech*, které vám pom�
 
 Toto je obecný proces zabezpečení a:
 
-1. Získá název domény.
+1. Získáte název domény.
 
 2. Získejte digitální certifikát.
 
@@ -50,7 +50,7 @@ Toto je obecný proces zabezpečení a:
 
 Existují mírné rozdíly při zabezpečení napříč [cíli nasazení](how-to-deploy-and-where.md).
 
-## <a name="get-a-domain-name"></a>Získat název domény
+## <a name="get-a-domain-name"></a>Získání názvu domény
 
 Pokud název domény ještě nemáte, kupte si ho od *registrátora názvu domény*. Proces a cena se v rámci registrátorů liší. Registrátor poskytuje nástroje pro správu názvu domény. Tyto nástroje slouží k mapování plně kvalifikovaného názvu domény (FQDN) (například webové\.contoso.com) na IP adresu, která je hostitelem vaší služby.
 
@@ -58,8 +58,8 @@ Pokud název domény ještě nemáte, kupte si ho od *registrátora názvu domé
 
 Existuje mnoho způsobů, jak získat certifikát SSL (digitální certifikát). Nejběžnější je koupit si ho od certifikační *autority* (CA). Bez ohledu na to, kde certifikát obdržíte, potřebujete následující soubory:
 
-* **Certifikát**. Certifikát musí obsahovat úplný řetěz certifikátů a musí být "PEM-encodeded".
-* **Klíč**. Klíč musí být také zakódovaný v PEM.
+* A **certifikát**. Certifikát musí obsahovat úplný řetěz certifikátů a musí být "PEM-encodeded".
+* A **klíč**. Klíč musí být také zakódovaný v PEM.
 
 Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény pro adresu, kterou plánujete použít pro (například www\.contoso.com). Adresa, která je vyražena na certifikát a adresu, kterou používají klienti, je porovnána s cílem ověřit identitu. Pokud se tyto adresy neshodují, klient obdrží chybovou zprávu.
 
@@ -67,7 +67,7 @@ Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény
 > Pokud certifikační autorita nemůže certifikát a klíč zadat jako soubory kódované PEM, můžete změnit formát pomocí nástroje, jako je třeba [OpenSSL](https://www.openssl.org/) .
 
 > [!WARNING]
-> Certifikáty *podepsané svým držitelem* používejte jenom pro vývoj. Nepoužívejte je v produkčních prostředích. Certifikáty podepsané svým držitelem můžou způsobit problémy v klientských aplikacích. Další informace naleznete v dokumentaci pro síťové knihovny, které používá vaše klientská aplikace.
+> Certifikáty *podepsané svým držitelem* používejte jenom pro vývoj. Nepoužívejte je v produkčních prostředích. Certifikáty podepsané svým držitelem může způsobovat problémy v klientovi aplikace. Další informace naleznete v dokumentaci pro síťové knihovny, které používá vaše klientská aplikace.
 
 ## <a id="enable"></a>Povolení SSL a nasazení
 
@@ -85,7 +85,7 @@ Při nasazení na AKS můžete vytvořit nový cluster AKS nebo připojit existu
 
 Metoda **Enable_ssl** může používat certifikát, který poskytuje společnost Microsoft nebo certifikát, který si koupíte.
 
-  * Použijete-li certifikát od společnosti Microsoft, je nutné použít parametr *leaf_domain_label* . Tento parametr vygeneruje název DNS pro službu. Například hodnota "mojesluzba" vytvoří název domény "mojesluzba\<šesti náhodných znaků >.\<a >. cloudapp. Azure. com ", kde \<a > je oblast, která obsahuje službu. Volitelně můžete pomocí parametru *overwrite_existing_domain* přepsat existující *leaf_domain_label*.
+  * Použijete-li certifikát od společnosti Microsoft, je nutné použít parametr *leaf_domain_label* . Tento parametr vygeneruje název DNS pro službu. Například hodnota "contoso" vytvoří název domény "contoso\<šest-Random-Characters >.\<a >. cloudapp. Azure. com ", kde \<a > je oblast, která obsahuje službu. Volitelně můžete pomocí parametru *overwrite_existing_domain* přepsat existující *leaf_domain_label*.
 
     Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem SSL, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
 
@@ -98,11 +98,19 @@ Metoda **Enable_ssl** může používat certifikát, který poskytuje společnos
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
     provisioning_config = AksCompute.provisioning_configuration()
-    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
-    attach_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
   * Když použijete *zakoupený certifikát*, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file*a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát SSL, který jste zakoupili:
@@ -135,7 +143,7 @@ aci_config = AciWebservice.deploy_configuration(
 
 Další informace naleznete v tématu [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
 
-## <a name="update-your-dns"></a>Aktualizace DNS
+## <a name="update-your-dns"></a>Aktualizujte svoji službu DNS
 
 Dál je potřeba aktualizovat DNS tak, aby odkazoval na.
 

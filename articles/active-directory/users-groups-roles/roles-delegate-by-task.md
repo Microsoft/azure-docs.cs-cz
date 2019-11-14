@@ -1,11 +1,10 @@
 ---
-title: Delegovat nejnižší privilegované role podle úlohy správce – Azure Active Directory | Microsoft Docs
+title: Delegovat role podle úlohy správce – Azure Active Directory | Microsoft Docs
 description: Role, které se mají delegovat pro úlohy identity v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
@@ -15,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5933fdd9932bd8c13ab0f231d677ce06112662ed
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: b8ccd98553b06ef3fcd2241c8223889c0a86e331
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169775"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024655"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce podle úlohy správce v Azure Active Directory
 
@@ -73,7 +72,7 @@ Načíst veškerou konfiguraci | Čtečky adresářů | Výchozí role uživatel
 ---- | --------------------- | ----------------
 Konfigurace vlastností společnosti | Globální správce | 
 
-## <a name="connect"></a>Propojení
+## <a name="connect"></a>Připojení
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
@@ -167,7 +166,7 @@ Aktualizace členství ve skupině | Vlastník skupiny ([Viz dokumentace](https:
 Aktualizovat vlastníky skupiny | Vlastník skupiny ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce uživatele
 Aktualizovat vlastnosti skupiny | Vlastník skupiny ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce uživatele
 
-## <a name="identity-protection"></a>Ochrany identit
+## <a name="identity-protection"></a>Identity Protection
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
@@ -204,7 +203,7 @@ Vyzkoušet nebo koupit předplatné | Správce fakturace |
 ---- | --------------------- | ----------------
 Čtení protokolů přihlášení | Čtečka sestav | Čtenář zabezpečení, správce zabezpečení
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------

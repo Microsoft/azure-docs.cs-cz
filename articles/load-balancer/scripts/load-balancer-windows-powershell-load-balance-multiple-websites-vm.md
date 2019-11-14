@@ -1,5 +1,5 @@
 ---
-title: Ukázka PowerShellu – vyrovnávání zatížení několika webů pomocí Azure PowerShellu | Microsoft Docs
+title: Vyrovnávání zatížení více webů – Azure PowerShell-Azure Load Balancer
 description: Tento ukázkový skript Azure PowerShellu provádí vyrovnávání zatížení několika webů na stejném virtuálním počítači.
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 098d300efc0b151d07b087959750a209c392872f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 82bd8a82418bad44786f009c75d742fcc0fc66e7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273616"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048904"
 ---
-# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Ukázkový skript Azure Powershellu: Vyvažovat zatížení u více webů
+# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Ukázkový skript Azure PowerShellu: Vyrovnávání zatížení několika webů
 
 Tento ukázkový skript Azure PowerShellu vytvoří virtuální síť se dvěma virtuálními počítači, které jsou členy skupiny dostupnosti. Nástroj pro vyrovnávání zatížení přesměruje provoz pro dvě samostatné IP adresy na tyto dva virtuální počítače. Po spuštění skriptu můžete na tyto virtuální počítače nasadit software webového serveru a hostovat více webů, přičemž každý z nich bude mít vlastní IP adresu.
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript používá k vytvoření skupiny prostředků, virtuální sítě, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Vytvoří skupinu dostupnosti Azure pro zajištění vysoké dostupnosti. |
@@ -66,7 +66,7 @@ Tento skript používá k vytvoření skupiny prostředků, virtuální sítě, 
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Vytvoří virtuální počítač. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview).
 

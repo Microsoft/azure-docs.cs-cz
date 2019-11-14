@@ -4,12 +4,12 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: b150cad22528234286fa7939bf7055e8312ed361
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 3086d15ba541aa7f08f983dac4bc363f43248a9e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229227"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74062868"
 ---
 ## <a name="webapi-project"></a>Projekt WebAPI
 1. V aplikaci Visual Studio otevřete projekt **projekt appbackend** , který jste vytvořili v kurzu pro **upozorňování uživatelů** .
@@ -36,10 +36,11 @@ ms.locfileid: "68229227"
 
             public Notification CreateNotification(string payload)
             {
-                var notification = new Notification() {
-                Id = notifications.Count,
-                Payload = payload,
-                Read = false
+                var notification = new Notification
+                {
+                    Id = notifications.Count,
+                    Payload = payload,
+                    Read = false
                 };
 
                 notifications.Add(notification);
@@ -88,8 +89,8 @@ ms.locfileid: "68229227"
         }
 
 
-Všimněte si, `Post` že metoda teď neposílá oznámení informační zprávy. Pošle nezpracované oznámení, které obsahuje jenom ID oznámení, a ne žádný citlivý obsah. Nezapomeňte taky zadat komentář k operaci Odeslat pro platformy, pro které nemáte nakonfigurované přihlašovací údaje v centru oznámení, protože budou mít chyby.
+Všimněte si, že metoda `Post` nyní neodesílá oznámení informační zprávy. Pošle nezpracované oznámení, které obsahuje jenom ID oznámení, a ne žádný citlivý obsah. Nezapomeňte taky zadat komentář k operaci Odeslat pro platformy, pro které nemáte nakonfigurované přihlašovací údaje v centru oznámení, protože budou mít chyby.
 
 1. Tuto aplikaci teď znovu nasadíme na web Azure, aby bylo možné ji zpřístupnit ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
-2. Jako cíl publikování vyberte web Azure. Přihlaste se pomocí svého účtu Azure a vyberte existující nebo nový web a poznamenejte si vlastnost **cílová adresa URL** na kartě **připojení** . Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na tlačítko **publikovat**.
+2. Jako cíl publikování vyberte web Azure. Přihlaste se pomocí svého účtu Azure a vyberte existující nebo nový web a poznamenejte si vlastnost **cílová adresa URL** na kartě **připojení** . Na tuto adresu URL budeme odkazovat jako na *koncový bod back-end* později v tomto kurzu. Klikněte na **Publikovat**.
 

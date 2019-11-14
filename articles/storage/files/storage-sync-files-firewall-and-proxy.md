@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5d2770c3f51c05354ff331fe8de723fb6ebd5c65
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f37c54699329f43a5bbdd5c4543ae3a7b2166f5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498415"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048835"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
@@ -94,9 +94,9 @@ V následující tabulce jsou popsány požadované domény pro komunikaci:
 | **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Jakékoli uživatelské volání (například prostředí PowerShell) odkazuje na tuto adresu URL, včetně počátečního volání registrace serveru. |
 | **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | Azure Resource Manager volání musí provádět ověřený uživatel. K úspěšnému použití se tato adresa URL používá pro ověřování uživatelů. |
 | **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | V rámci nasazení Azure File Sync se vytvoří instanční objekt v Azure Active Directory předplatného. Tato adresa URL se pro tuto adresu používá. Tento objekt zabezpečení se používá k delegování minimální sady práv ke službě Azure File Sync. Uživatel, který provádí počáteční nastavení Azure File Sync, musí být ověřeným uživatelem s oprávněním vlastníka předplatného. |
-| **Azure Storage** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Když server stáhne soubor, pak server při přímé komunikaci do sdílené složky Azure v účtu úložiště provede rychlejší přesun dat. Server má klíč SAS, který umožňuje jenom cílenému přístupu ke sdíleným složkám souborů. |
-| **Synchronizace souborů Azure** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | Po počáteční registraci serveru dostane Server místní adresu URL pro instanci služby Azure File Sync Service v této oblasti. Server může adresu URL použít ke komunikaci přímo a efektivně s instancí, která zpracovává její synchronizaci. |
-| **Infrastruktura veřejných klíčů Microsoftu** | https://www.microsoft.com/pki/mscorp<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp<br><http://ocsp.msocsp.com> | Po instalaci agenta Azure File Sync se adresa URL PKI používá ke stažení zprostředkujících certifikátů potřebných ke komunikaci se službou Azure File Sync a sdílenou složkou souborů Azure. Adresa URL protokolu OCSP slouží ke kontrole stavu certifikátu. |
+| **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Když server stáhne soubor, pak server při přímé komunikaci do sdílené složky Azure v účtu úložiště provede rychlejší přesun dat. Server má klíč SAS, který umožňuje jenom cílenému přístupu ke sdíleným složkám souborů. |
+| **Synchronizace souborů Azure** | &ast;.one.microsoft.com<br>&ast;. afs.azure.net | &ast;.afs.azure.us | Po počáteční registraci serveru dostane Server místní adresu URL pro instanci služby Azure File Sync Service v této oblasti. Server může adresu URL použít ke komunikaci přímo a efektivně s instancí, která zpracovává její synchronizaci. |
+| **Infrastruktura veřejných klíčů Microsoftu** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Po instalaci agenta Azure File Sync se adresa URL PKI používá ke stažení zprostředkujících certifikátů potřebných ke komunikaci se službou Azure File Sync a sdílenou složkou souborů Azure. Adresa URL protokolu OCSP slouží ke kontrole stavu certifikátu. |
 
 > [!Important]
 > Když se povolí provoz do &ast;. one.microsoft.com, může ze serveru docházet k více než pouze synchronizační službě. V rámci subdomén je k dispozici mnoho dalších služeb Microsoftu.
@@ -105,35 +105,35 @@ Pokud je &ast;. one.microsoft.com příliš široké, můžete omezit komunikaci
 
 V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste pravděpodobně zadali sdílené složky Azure v globálním redundantním účtu úložiště (GRS). V takovém případě se sdílené složky Azure převezmou v spárované oblasti v případě trvajícího regionálního výpadku. Azure File Sync používá stejné místní párování jako úložiště. Takže pokud používáte účty úložiště GRS, je potřeba povolit další adresy URL, které umožní vašemu serveru komunikovat s spárovanými oblastmi pro Azure File Sync. Následující tabulka volá tuto "spárované oblasti". Kromě toho je k dispozici také adresa URL profilu Traffic Manageru, která musí být povolena. To zajistí plynulé přesměrování síťového provozu do spárované oblasti v případě převzetí služeb při selhání a v následující tabulce se nazývá "adresa URL zjišťování".
 
-| Cloud  | Oblast | Adresa URL primárního koncového bodu | Spárovaná oblast | Adresa URL zjišťování |
+| Cloud  | Region (Oblast) | Adresa URL primárního koncového bodu | Spárovaná oblast | Adresa URL zjišťování |
 |--------|--------|----------------------|---------------|---------------|
-| Veřejné |Austrálie – východ | https:\//kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https:\//tm-kailani-aue.one.microsoft.com |
-| Veřejné |Austrálie – jihovýchod | https:\//kailani-aus.one.microsoft.com | Austrálie – východ | https:\//tm-kailani-aus.one.microsoft.com |
-| Veřejné | Brazílie – jih | https:\//brazilsouth01.afs.azure.net | Středojižní USA | https:\//tm-brazilsouth01.afs.azure.net |
-| Veřejné | Kanada – střed | https:\//kailani-cac.one.microsoft.com | Kanada – východ | https:\//tm-kailani-cac.one.microsoft.com |
-| Veřejné | Kanada – východ | https:\//kailani-cae.one.microsoft.com | Kanada – střed | https:\//tm-kailani.cae.one.microsoft.com |
-| Veřejné | Střední Indie | https:\//kailani-cin.one.microsoft.com | Jižní Indie | https:\//tm-kailani-cin.one.microsoft.com |
-| Veřejné | Střední USA | https:\//kailani-cus.one.microsoft.com | Východ USA 2 | https:\//tm-kailani-cus.one.microsoft.com |
-| Veřejné | Východní Asie | https:\//kailani11.one.microsoft.com | Jihovýchodní Asie | https:\//tm-kailani11.one.microsoft.com |
-| Veřejné | USA – východ | https:\//kailani1.one.microsoft.com | Západní USA | https:\//tm-kailani1.one.microsoft.com |
-| Veřejné | Východ USA 2 | https:\//kailani-ess.one.microsoft.com | Střední USA | https:\//tm-kailani-ess.one.microsoft.com |
-| Veřejné | Japonsko – východ | https:\//japaneast01.afs.azure.net | Japonsko – západ | https:\//tm-japaneast01.afs.azure.net |
-| Veřejné | Japonsko – západ | https:\//japanwest01.afs.azure.net | Japonsko – východ | https:\//tm-japanwest01.afs.azure.net |
-| Veřejné | Korea – střed | https:\//koreacentral01.afs.azure.net/ | Korea – jih | https:\//tm-koreacentral01.afs.azure.net/ |
-| Veřejné | Korea – jih | https:\//koreasouth01.afs.azure.net/ | Korea – střed | https:\//tm-koreasouth01.afs.azure.net/ |
-| Veřejné | Středoseverní USA | https:\//northcentralus01.afs.azure.net | Středojižní USA | https:\//tm-northcentralus01.afs.azure.net |
-| Veřejné | Severní Evropa | https:\//kailani7.one.microsoft.com | Západní Evropa | https:\//tm-kailani7.one.microsoft.com |
-| Veřejné | Středojižní USA | https:\//southcentralus01.afs.azure.net | Středoseverní USA | https:\//tm-southcentralus01.afs.azure.net |
-| Veřejné | Jižní Indie | https:\//kailani-sin.one.microsoft.com | Střední Indie | https:\//tm-kailani-sin.one.microsoft.com |
-| Veřejné | Jihovýchodní Asie | https:\//kailani10.one.microsoft.com | Východní Asie | https:\//tm-kailani10.one.microsoft.com |
-| Veřejné | Velká Británie – jih | https:\//kailani-uks.one.microsoft.com | Velká Británie – západ | https:\//tm-kailani-uks.one.microsoft.com |
-| Veřejné | Velká Británie – západ | https:\//kailani-ukw.one.microsoft.com | Velká Británie – jih | https:\//tm-kailani-ukw.one.microsoft.com |
-| Veřejné | Středozápadní USA | https:\//westcentralus01.afs.azure.net | Západní USA 2 | https:\//tm-westcentralus01.afs.azure.net |
-| Veřejné | Západní Evropa | https:\//kailani6.one.microsoft.com | Severní Evropa | https:\//tm-kailani6.one.microsoft.com |
-| Veřejné | Západní USA | https:\//kailani.one.microsoft.com | USA – východ | https:\//tm-kailani.one.microsoft.com |
-| Veřejné | Západní USA 2 | https:\//westus201.afs.azure.net | Středozápadní USA | https:\//tm-westus201.afs.azure.net |
-| Státní správa | US Gov – Arizona | https:\//usgovarizona01.afs.azure.us | US Gov – Texas | https:\//tm-usgovarizona01.afs.azure.us |
-| Státní správa | US Gov – Texas | https:\//usgovtexas01.afs.azure.us | US Gov – Arizona | https:\//tm-usgovtexas01.afs.azure.us |
+| Public |Austrálie – východ | https:\//kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https:\//tm-kailani-aue.one.microsoft.com |
+| Public |Austrálie – jihovýchod | https:\//kailani-aus.one.microsoft.com | Austrálie – východ | https:\//tm-kailani-aus.one.microsoft.com |
+| Public | Brazílie – jih | https:\//brazilsouth01.afs.azure.net | Středojižní USA | https:\//tm-brazilsouth01.afs.azure.net |
+| Public | Kanada – střed | https:\//kailani-cac.one.microsoft.com | Východní Kanada | https:\//tm-kailani-cac.one.microsoft.com |
+| Public | Východní Kanada | https:\//kailani-cae.one.microsoft.com | Kanada – střed | https:\//tm-kailani.cae.one.microsoft.com |
+| Public | Střed Indie | https:\//kailani-cin.one.microsoft.com | Indie – jih | https:\//tm-kailani-cin.one.microsoft.com |
+| Public | Střední USA | https:\//kailani-cus.one.microsoft.com | Východní USA 2 | https:\//tm-kailani-cus.one.microsoft.com |
+| Public | Východní Asie | https:\//kailani11.one.microsoft.com | Jihovýchodní Asie | https:\//tm-kailani11.one.microsoft.com |
+| Public | Východní USA | https:\//kailani1.one.microsoft.com | Západní USA | https:\//tm-kailani1.one.microsoft.com |
+| Public | Východní USA 2 | https:\//kailani-ess.one.microsoft.com | Střední USA | https:\//tm-kailani-ess.one.microsoft.com |
+| Public | Japonsko – východ | https:\//japaneast01.afs.azure.net | Japonsko – západ | https:\//tm-japaneast01.afs.azure.net |
+| Public | Japonsko – západ | https:\//japanwest01.afs.azure.net | Japonsko – východ | https:\//tm-japanwest01.afs.azure.net |
+| Public | Jižní Korea – střed | https:\//koreacentral01.afs.azure.net/ | Jižní Korea – jih | https:\//tm-koreacentral01.afs.azure.net/ |
+| Public | Jižní Korea – jih | https:\//koreasouth01.afs.azure.net/ | Jižní Korea – střed | https:\//tm-koreasouth01.afs.azure.net/ |
+| Public | Středoseverní USA | https:\//northcentralus01.afs.azure.net | Středojižní USA | https:\//tm-northcentralus01.afs.azure.net |
+| Public | Severní Evropa | https:\//kailani7.one.microsoft.com | Západní Evropa | https:\//tm-kailani7.one.microsoft.com |
+| Public | Středojižní USA | https:\//southcentralus01.afs.azure.net | Středoseverní USA | https:\//tm-southcentralus01.afs.azure.net |
+| Public | Indie – jih | https:\//kailani-sin.one.microsoft.com | Střed Indie | https:\//tm-kailani-sin.one.microsoft.com |
+| Public | Jihovýchodní Asie | https:\//kailani10.one.microsoft.com | Východní Asie | https:\//tm-kailani10.one.microsoft.com |
+| Public | Velká Británie – jih | https:\//kailani-uks.one.microsoft.com | Spojené království – západ | https:\//tm-kailani-uks.one.microsoft.com |
+| Public | Spojené království – západ | https:\//kailani-ukw.one.microsoft.com | Velká Británie – jih | https:\//tm-kailani-ukw.one.microsoft.com |
+| Public | Středozápadní USA | https:\//westcentralus01.afs.azure.net | Západní USA 2 | https:\//tm-westcentralus01.afs.azure.net |
+| Public | Západní Evropa | https:\//kailani6.one.microsoft.com | Severní Evropa | https:\//tm-kailani6.one.microsoft.com |
+| Public | Západní USA | https:\//kailani.one.microsoft.com | Východní USA | https:\//tm-kailani.one.microsoft.com |
+| Public | Západní USA 2 | https:\//westus201.afs.azure.net | Středozápadní USA | https:\//tm-westus201.afs.azure.net |
+| Státní správa | USA (Gov) – Arizona | https:\//usgovarizona01.afs.azure.us | USA (Gov) – Texas | https:\//tm-usgovarizona01.afs.azure.us |
+| Státní správa | USA (Gov) – Texas | https:\//usgovtexas01.afs.azure.us | USA (Gov) – Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 
 - Pokud používáte místně redundantní (LRS) nebo zóny úložiště ZRS (Zone redundantní) účty úložiště, stačí povolit adresu URL uvedenou v části "adresa URL primárního koncového bodu".
 

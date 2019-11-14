@@ -1,31 +1,31 @@
 ---
-title: Příklady PowerShellu pro správu skupin a zpětný zápis skupin ve skupině Preview do místního prostředí – Azure Active Directory | Microsoft Docs
+title: Příklady prostředí PowerShell v2 pro správu skupin – Azure AD | Microsoft Docs
 description: Tato stránka poskytuje příklady prostředí PowerShell, které vám pomůžou se správou skupin v Azure Active Directory
 keywords: Azure AD, Azure Active Directory, PowerShell, skupiny, Správa skupin
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e22baabda901a34f624cf27c25037ff3ba94e90
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1aa696ccaecc24df700315962c1f01f3a298c56c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381843"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026695"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny Azure Active Directory verze 2 pro správu skupin
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> * [PowerShell](groups-settings-v2-cmdlets.md)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
@@ -60,7 +60,7 @@ Než budete moct začít spravovat skupiny pomocí rutin Azure AD PowerShellu, m
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-Rutina vás vyzve k zadání přihlašovacích údajů, které chcete použít pro přístup k adresáři. V tomto příkladu používáme karen@drumkit.onmicrosoft.com pro přístup k demonstračnímu adresáři. Rutina vrátí potvrzení pro zobrazení relace, která byla úspěšně připojena k vašemu adresáři:
+Rutina vás vyzve k zadání přihlašovacích údajů, které chcete použít pro přístup k adresáři. V tomto příkladu používáme karen@drumkit.onmicrosoft.com k přístupu k demonstračnímu adresáři. Rutina vrátí potvrzení pro zobrazení relace, která byla úspěšně připojena k vašemu adresáři:
 
 ```powershell
     Account                       Environment Tenant
@@ -270,7 +270,7 @@ Zakázání vytváření skupin pro uživatele, kteří nejsou správci:
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Pokud se vrátí `UsersPermissionToCreateGroupsEnabled : True`, pak uživatelé bez role správce můžou vytvářet skupiny. Zakázání této funkce:
+2. Pokud vrátí `UsersPermissionToCreateGroupsEnabled : True`, mohou vytvářet skupiny i uživatelé, kteří nejsou správci. Zakázání této funkce:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
@@ -312,13 +312,13 @@ Když se vytvoří skupina, některé koncové body umožní koncovému uživate
   
 * pošt
 * správ
-* správce
+* Správce
 * hostmaster
 * majordomo
 * postmaster
 * kořen
 * Zabezpečený
-* zabezpečení
+* security
 * SSL – správce
 * příslušného
 
@@ -332,7 +332,7 @@ Další podrobnosti najdete v dokumentaci ke [službě Azure AD Connect Sync](..
 
 Zpětný zápis skupin Office 365 je funkce Public Preview služby Azure Active Directory (Azure AD) a je dostupná s veškerým placeným licenčním plánem Azure AD. Nějaké právní informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active Directory rutinách](/powershell/azure/install-adv2?view=azureadps-2.0).
 

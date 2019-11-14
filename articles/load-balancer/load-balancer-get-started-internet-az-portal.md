@@ -1,11 +1,11 @@
 ---
 title: Vytvoření Load Balancer s využitím front-redundantního Azure Portal
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit veřejný Load Balancer Standard s zónově redundantní veřejné IP adresy front-endu pomocí webu Azure portal
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: allensu
-ms.openlocfilehash: a875fc3446944b8a39f43b29440ab1d7179b847d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4896030b1980defc79ff7a7ccd24ee22202ce167
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275067"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049071"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí webu Azure portal
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > [!NOTE]
 >  Podpora pro zóny dostupnosti je k dispozici pro vyberte prostředky Azure a oblasti a velikostní řady virtuálních počítačů. Další informace o tom, jak začít a které prostředky Azure, oblasti a velikostní řady virtuálních počítačů můžete vyzkoušet zóny dostupnosti s, najdete v části [přehledu zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview). Pokud budete potřebovat podporu, můžete kontaktovat [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) nebo [otevřít lístek podpory Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure 
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure. 
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -46,7 +46,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     > Veřejnou IP adresu vytvořenou v tomto kroku je standardní SKU a zónově redundantní ve výchozím nastavení. 
 8. V části **umístění**vyberte **východní USA 2**a potom klikněte na tlačítko **OK**. Nástroj pro vyrovnávání zatížení se pak začne nasazovat. Úspěšné dokončení nasazení trvá několik minut.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md).
 
 

@@ -3,16 +3,16 @@ title: Osvědčené postupy pro použití Power BI k dotazování a vizualizaci 
 description: V tomto článku se seznámíte s osvědčenými postupy pro použití Power BI k dotazování a vizualizaci dat Azure Průzkumník dat.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286750"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024038"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Osvědčené postupy pro použití Power BI k dotazování a vizualizaci dat Azure Průzkumník dat
 
@@ -46,14 +46,14 @@ V následující části najdete tipy a triky pro používání dotazovacího ja
 
 ### <a name="complex-queries-in-power-bi"></a>Složité dotazy v Power BI
 
-Složité dotazy jsou snadněji vyjádřené v Kusto než v Power Query. Měly by být implementovány jako [Kusto funkce](/azure/kusto/query/functions)a vyvolány v Power BI. Tato metoda je vyžadována při použití **DirectQuery** s příkazy `let` v dotazu Kusto. Protože Power BI spojí dva dotazy a příkazy `let` nelze použít s operátorem `join`, může dojít k chybám syntaxe. Proto každou část JOIN uložte jako funkci Kusto a umožněte Power BI připojit tyto dvě funkce dohromady.
+Složité dotazy jsou snadněji vyjádřené v Kusto než v Power Query. Měly by být implementovány jako [Kusto funkce](/azure/kusto/query/functions)a vyvolány v Power BI. Tato metoda je vyžadována při použití **DirectQuery** s příkazy `let` ve vašem dotazu Kusto. Protože Power BI spojí dva dotazy a příkazy `let` nelze použít s operátorem `join`, může dojít k chybám syntaxe. Proto každou část JOIN uložte jako funkci Kusto a umožněte Power BI připojit tyto dvě funkce dohromady.
 
 ### <a name="how-to-simulate-a-relative-date-time-operator"></a>Postup simulace relativního operátoru data a času
 
-Power BI neobsahuje *relativní* operátor data a času, například `ago()`.
-K simulaci `ago()` použijte kombinaci Power BI funkcí `DateTime.FixedLocalNow()` a `#duration`.
+Power BI neobsahuje *relativní* operátor data a času, jako je například `ago()`.
+Chcete-li simulovat `ago()`, použijte kombinaci Power BI funkcí `DateTime.FixedLocalNow()` a `#duration`.
 
-Místo tohoto dotazu použijte operátor `ago()`:
+Místo tohoto dotazu pomocí operátoru `ago()`:
 
 ```kusto
     StormEvents | where StartTime > (now()-5d)
@@ -78,9 +78,9 @@ Dotazy Kusto ve výchozím nastavení vrací až 500 000 řádků nebo 64 MB, ja
 
 Tyto možnosti nastavují [příkazy set](/azure/kusto/query/setstatement) v dotazu pro změnu výchozích omezení dotazu:
 
-  * Hodnota **omezit číslo záznamu výsledku dotazu** generuje `set truncationmaxrecords`.
-  * **Omezení velikosti dat výsledků dotazu v bajtech** generuje `set truncationmaxsize`.
-  * **Zakázat zkrácení sady výsledků** generuje `set notruncation`.
+  * Hodnota **omezit číslo záznamu výsledku dotazu** generuje `set truncationmaxrecords`
+  * **Omezení velikosti dat výsledků dotazu v bajtech** generuje `set truncationmaxsize`
+  * **Zakázat zkrácení sady výsledků** generuje `set notruncation`
 
 ### <a name="using-query-parameters"></a>Použití parametrů dotazu
 
@@ -90,7 +90,7 @@ K dynamické úpravě dotazu můžete použít [parametry dotazu](/azure/kusto/q
 
 Pomocí parametru dotazu můžete filtrovat informace v dotazu a optimalizovat výkon dotazů.
  
-V okně **Upravit dotazy** **Domů** > **Rozšířený editor**
+V okně **Upravit dotazy** Rozšířený editor **Home** > 
 
 1. Vyhledejte následující část dotazu:
 
@@ -98,7 +98,7 @@ V okně **Upravit dotazy** **Domů** > **Rozšířený editor**
     Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
    
-   Například:
+   Příklad:
 
     ```powerquery-m
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
@@ -106,7 +106,7 @@ V okně **Upravit dotazy** **Domů** > **Rozšířený editor**
 
 1. Nahraďte příslušnou část dotazu parametrem. Rozdělit dotaz na více částí a zřetězit je zpět pomocí ampersandu (&) spolu s parametrem.
 
-   Například v dotazu výše pobereme část `State == 'ALABAMA'` a rozdělíme ji na: `State == '` a `'` a do tohoto parametru zařadíme parametr `State` mezi ně:
+   Například v dotazu výše pobereme `State == 'ALABAMA'` část a rozdělíme ji na: `State == '` a `'`. do tohoto pole zařadíme parametr `State`:
    
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"
@@ -140,7 +140,7 @@ Parametr dotazu můžete použít v jakémkoli kroku dotazu, který ho podporuje
 
 Power BI obsahuje Plánovač aktualizace dat, který může pravidelně vydávat dotazy na zdroj dat. Tento mechanismus by neměl být použit k naplánování řídicích příkazů pro Kusto, protože Power BI předpokládá, že všechny dotazy jsou jen pro čtení.
 
-### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI může odesílat pouze krátké (&lt;2000) dotazy do Kusto
+### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI mohou odesílat pouze krátké (&lt;2000 znaky) dotazy do Kusto
 
 Při spuštění dotazu v Power BI dojde k následující chybě: _"DataSource. Error: Web. Contents se nepodařilo získat obsah z..."_ dotaz je pravděpodobně delší než 2000 znaků. Power BI používá **PowerQuery** k dotazování Kusto vyvoláním požadavku HTTP GET, který tento dotaz zakóduje jako součást NAČTENého identifikátoru URI. Proto jsou dotazy Kusto vydané Power BI omezeny na maximální délku identifikátoru URI požadavku (2000 znaků, mínus malý posun). Jako alternativní řešení můžete definovat [uloženou funkci](/azure/kusto/query/schema-entities/stored-functions) v Kusto a nechat ji Power BI použít v dotazu.
 

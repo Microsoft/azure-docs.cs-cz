@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Virtuální počítače nástroje pro vyrovnávání zatížení napříč zónami dostupnosti – Azure portal'
+title: 'Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti – Azure Portal'
 titlesuffix: Azure Load Balancer
 description: Tento kurz ukazuje, jak na webu Azure Portal vytvořit Load Balancer úrovně Standard se zónově redundantním front-endem, který bude vyrovnávat zatížení virtuálních počítačů napříč zónami dostupnosti.
 services: load-balancer
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2079ec95b582ed724583112f7af4865af66eef9d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273481"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048874"
 ---
-# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s Standard pro vyrovnávání zatížení pomocí webu Azure portal
+# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
 
-Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. Tento kurz vás provede vytvořením veřejného Load balanceru úrovně Standard, který se načítá vyrovnává virtuálních počítačů napříč zónami dostupnosti. Tento proces zvyšuje ochranu aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra. Díky redundanci zón zůstane cesta k datům dostupná i v případě, že dojde k selhání jedné nebo několika zón (pokud alespoň jedna zóna v oblasti zůstane v pořádku). Získáte informace o těchto tématech:
+Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. Tento kurz vás provede vytvořením veřejné Standard Load Balancer, který vyrovnává zatížení virtuálních počítačů napříč zónami dostupnosti. Tento proces zvyšuje ochranu aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra. Díky redundanci zón zůstane cesta k datům dostupná i v případě, že dojde k selhání jedné nebo několika zón (pokud alespoň jedna zóna v oblasti zůstane v pořádku). Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření Load Balanceru úrovně Standard
@@ -50,19 +50,19 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu. Když při vytváření nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, automaticky se nakonfiguruje jako standardní verze SKU a je také automaticky zónově redundantní.
 
 1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
-2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
+2. Na kartě **základy** na stránce **vytvořit službu Vyrovnávání zatížení** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Subscription               | Vyberte své předplatné.    |    
-    | Resource group         | Vyberte **vytvořit nový** a typ *MyResourceGroupLBAZ* v textovém poli.|
-    | Name                   | *myLoadBalancer*                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | type          | Vyberte **veřejné**.                                        |
-    | SKU           | Vyberte **standardní**.                          |
+    | Předplatné               | Vyberte své předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupLBAZ* .|
+    | Název                   | *myLoadBalancer*                                   |
+    | Region (Oblast)         | Vyberte **Západní Evropa**.                                        |
+    | Typ          | Vyberte možnost **veřejné**.                                        |
+    | Skladová položka           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
-    | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
-    |Zóna dostupnosti| Vyberte **Zónově redundantní**.    |
+    | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
+    |Zóna dostupnosti| Vyberte **zóna redundantní**.    |
    
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
@@ -98,24 +98,24 @@ V této části vytvoříte pravidla skupiny zabezpečení sítě, která povol�
 1. Na webu Azure Portal v levé nabídce klikněte na **Všechny prostředky** a pak vyhledejte a vyberte **myNetworkSecurityGroup** ve skupině prostředků **myResourceGroupLBAZ**.
 2. V části **Nastavení** klikněte na **Příchozí pravidla zabezpečení** a pak klikněte na **Přidat**.
 3. Zadáním následujících hodnot pro příchozí pravidlo zabezpečení *myHTTPRule* povolte příchozí připojení HTTP na portu 80:
-    - Jako **Zdroj** zadejte *Značka služby*.
-    - Jako **Značka zdrojové služby** zadejte *Internet*.
-    - Jako **Rozsahy cílových portů** zadejte *80*.
-    - Jako **Protokol** zadejte *TCP*.
-    - Jako **Akce** zadejte *Povolit*.
-    - Jako **Priorita** zadejte *100*.
+    - Jako *Zdroj* zadejte **Značka služby**.
+    - Jako *Značka zdrojové služby* zadejte **Internet**.
+    - Jako *Rozsahy cílových portů* zadejte **80**.
+    - Jako *Protokol* zadejte **TCP**.
+    - Jako *Akce* zadejte **Povolit**.
+    - Jako *Priorita* zadejte **100**.
     - Jako název pravidla nástroje pro vyrovnávání zatížení zadejte *myHTTPRule*.
     - Jako popis pravidla nástroje pro vyrovnávání zatížení zadejte *Povolení protokolu HTTP*.
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
  
    ![Vytvoření virtuální sítě](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Zopakováním kroků 2 až 4 vytvořte další pravidlo *myRDPRule*, které povolí příchozí připojení RDP na portu 3389, s použitím následujících hodnot:
-    - Jako **Zdroj** zadejte *Značka služby*.
-    - Jako **Značka zdrojové služby** zadejte *Internet*.
-    - Jako **Rozsahy cílových portů** zadejte *3389*.
-    - Jako **Protokol** zadejte *TCP*.
-    - Jako **Akce** zadejte *Povolit*.
-    - Jako **Priorita** zadejte *200*.
+    - Jako *Zdroj* zadejte **Značka služby**.
+    - Jako *Značka zdrojové služby* zadejte **Internet**.
+    - Jako *Rozsahy cílových portů* zadejte **3389**.
+    - Jako *Protokol* zadejte **TCP**.
+    - Jako *Akce* zadejte **Povolit**.
+    - Jako *Priorita* zadejte **200**.
     - Jako název zadejte *myRDPRule*.
     - Jako popis zadejte *Povolení protokolu RDP*.
 
@@ -127,7 +127,7 @@ Vytvořte v různých zónách (zóny 1, 2 a 3) pro danou oblast virtuální po�
     - *myVM1* – název virtuálního počítače.        
     - *azureuser* – uživatelské jméno správce.    
     - *myResourceGroupLBAZ* – v části **Skupina prostředků** vyberte **Použít existující** a pak vyberte *myResourceGroupLBAZ*.
-2. Klikněte na **OK**.
+2. Klikněte na tlačítko **OK**.
 3. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
 4. Zadejte následující hodnoty nastavení virtuálního počítače:
     - *zone 1* – zóna, do které umístíte virtuální počítač.
@@ -197,7 +197,7 @@ Pokud chcete nástroji pro vyrovnávání zatížení povolit monitorování sta
     - *80* – číslo portu.
     - *15* – **Interval** mezi pokusy o testování v sekundách.
     - *2* – **Prahová hodnota špatného stavu** neboli počet po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
 
    ![Přidání testu](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
 
@@ -214,7 +214,7 @@ Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způso
     - *80* – back-endový port.
     - *myBackendPool* – název backendového fondu.
     - *myHealthProbe* – název sondy stavu.
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
     
     ![Přidání pravidla vyrovnávání zatížení](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 
@@ -231,6 +231,6 @@ Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížen
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to výběrem skupiny prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a kliknutím na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).

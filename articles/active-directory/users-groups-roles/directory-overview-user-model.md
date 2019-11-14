@@ -1,12 +1,12 @@
 ---
-title: Uživatelé, skupiny, licencování a Přehled role – Azure Active Directory | Dokumentace Microsoftu
+title: Přehled uživatelů, skupin, licencí a rolí – Azure AD | Microsoft Docs
 description: Vztah mezi uživateli a přiřazenými licencemi, role správců a členství ve skupinách v Azure Active Directory
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 01/28/2019
+ms.date: 11/08/2019
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083893"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027739"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
 
@@ -52,7 +52,7 @@ Mnoho velkých organizací chce takové možnosti pro své uživatele, aby mohli
 
  Název role | Souhrn oprávnění
  --------- | -------------------
- **Správce aplikace** | Může přidávat a spravovat podnikové aplikace a registrace aplikací a může konfigurovat nastavení aplikačního proxy serveru. Správci aplikace můžete zobrazit zásady podmíněného přístupu a zařízení, ale ne je spravovat.
+ **Správce aplikace** | Může přidávat a spravovat podnikové aplikace a registrace aplikací a může konfigurovat nastavení aplikačního proxy serveru. Správci aplikací můžou zobrazovat zásady podmíněného přístupu a zařízení, ale nemůžou je spravovat.
  **Správce cloudové aplikace** | Může přidávat, spravovat a registrovat podnikové aplikace. Tato role má všechna oprávnění správce aplikace, nemůže však spravovat nastavení aplikačního proxy serveru.
 **Vývojář aplikace** | Může přidávat a aktualizovat registrace aplikací, ale nemůže spravovat podnikové aplikace ani konfigurovat nastavení aplikačního proxy serveru.
 
@@ -70,7 +70,7 @@ Azure AD nabízí také podrobné řízení dat, která proudí mezi aplikací a
 * spustit a zastavit službu zřizování Azure AD pro aplikaci, vymazat mezipaměť zřizování nebo restartovat službu,
 * zobrazit **sestavu aktivit zřizování**, která poskytuje protokol všech uživatelů a skupin vytvořených, aktualizovaných a odebraných mezi Azure AD a aplikací, a **sestavu o chybách zřizování**, která poskytuje podrobnější chybové zprávy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste začínající správce Azure AD, přečtěte si základní informací v článku [Základní dokumentace ke službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index).
 

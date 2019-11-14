@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6daf9351e48603824aa6cec30adb4a6b82349784
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796314"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049042"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -22,7 +22,7 @@ Než se budete moct [připojit k místním zdrojům dat z Azure Logic Apps](../l
 
 * [Místní brána dat Power BI Microsoftu](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [Místní brána dat Microsoft Power Apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Automatizace místní brány dat](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Automatizace místní brány dat](/power-automate/gateway-reference)
 * [Azure Analysis Services místní bránu dat](../analysis-services/analysis-services-gateway.md)
 
 Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu dat, abyste mohli přistupovat k místním zdrojům dat z Azure Logic Apps. Další informace o [tom, jak brána pro data funguje](#gateway-cloud-service) , najdete dál v tomto tématu. Další informace o bráně najdete v tématu [co je místní brána](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?

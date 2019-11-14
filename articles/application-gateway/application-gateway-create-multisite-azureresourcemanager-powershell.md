@@ -1,23 +1,19 @@
 ---
-title: Vytvoření aplikační brány s hostováním více lokalit – Azure PowerShell | Microsoft Docs
+title: Hostování více webů s využitím PowerShellu
+titleSuffix: Azure Application Gateway
 description: Naučte se, jak vytvořit Aplikační bránu, která hostuje víc lokalit pomocí Azure PowerShellu.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: e96579d52752f75b864c430ea0334a544606998c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 449095c92c30638b25836a2c7803176f7f0512e5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835581"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048070"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Vytvoření aplikační brány s hostováním více lokalit pomocí Azure PowerShell
 
@@ -27,10 +23,10 @@ V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvoření Application Gateway
+> * Vytvoření služby Application Gateway
 > * Vytvoření naslouchacího procesu a pravidel směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvořit záznam CNAME v doméně
+> * Vytvoření záznamu CNAME v doméně
 
 ![Příklad směrování na více webů](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
 
@@ -40,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz verzi modulu Azure PowerShell 1.0.0 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz verzi modulu Azure PowerShell 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -74,7 +70,7 @@ $pip = New-AzPublicIpAddress `
   -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
@@ -171,7 +167,7 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte dvě škálovací sady virtuálních počítačů, které podporují dva vytvořené back-endové fondy. Vytvořené škálovací sady se jmenují *myvmss1* a *myvmss2*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
+V tomto příkladu vytvoříte dvě škálovací sady virtuálních počítačů, které podporují dva vytvořené back-endové fondy. Vytvořené škálovací sady se jmenují *myvmss1* a *myvmss2*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS. K back-endovému fondu je přiřadíte během konfigurace nastavení IP adres.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -258,7 +254,7 @@ Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu 
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
 Do adresního řádku prohlížeče zadejte název domény. Příklad: https://www.contoso.com.
 
@@ -274,10 +270,10 @@ V tomto článku jste zjistili, jak:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvoření Application Gateway
+> * Vytvoření služby Application Gateway
 > * Vytvoření naslouchacího procesu a pravidel směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvořit záznam CNAME v doméně
+> * Vytvoření záznamu CNAME v doméně
 
 > [!div class="nextstepaction"]
 > [Další informace o možnostech aplikační brány](application-gateway-introduction.md)

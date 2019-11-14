@@ -1,26 +1,26 @@
 ---
-title: Pozvání hostů a přiřazení rolí prostředků Azure v Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Přiřazení rolí prostředků Azure hostům v PIM – Azure AD | Microsoft Docs
 description: Naučte se pozvat externí uživatele typu Host a přiřadit role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08c2ef1695d118c248abfc500025479d1186eb05
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895636"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021940"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Pozvání uživatelů typu Host a přiřazení rolí prostředků Azure v Privileged Identity Management
 

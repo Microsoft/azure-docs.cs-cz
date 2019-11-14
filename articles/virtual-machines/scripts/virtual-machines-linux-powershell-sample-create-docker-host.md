@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Docker | Microsoft Docs
+title: Ukázkový skript Azure PowerShellu – Docker
 description: Ukázkový skript Azure PowerShellu – Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ec8f578c49fbcdfe1554b7d1cf0383a84d243774
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 25c9712769c2fb9ee54a78989143625e325a9299
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748860"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040186"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Vytvoření hostitele Dockeru pomocí PowerShellu
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě. |

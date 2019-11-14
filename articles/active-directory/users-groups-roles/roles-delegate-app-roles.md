@@ -1,26 +1,25 @@
 ---
-title: Delegovat oprávnění k vytvoření a správě Správce aplikací – Azure Active Directory | Microsoft Docs
+title: Udělení oprávnění pro správu Správce aplikací – Azure AD | Microsoft Docs
 description: Udělení oprávnění pro správu přístupu k aplikacím v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025510"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024856"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegovat oprávnění k registraci aplikace v Azure Active Directory
 
@@ -61,8 +60,8 @@ V některých případech podniková aplikace vytvořená z Galerie aplikací za
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Přiřazení vlastníka k podnikové aplikaci
 
-1. Přihlaste se ke [svojí organizaci Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)@no__t – 1with účet, který má nárok na správce aplikace nebo správce cloudové aplikace pro organizaci.
-1. Na [stránce Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)@no__t – 1for na organizaci, vyberte aplikaci a otevřete stránku Přehled pro aplikaci.
+1. Přihlaste se k [vaší organizaci Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který má nárok na správce aplikace nebo správce cloudové aplikace pro organizaci.
+1. Na [stránce Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) pro organizaci vyberte aplikaci. otevře se stránka přehled pro aplikaci.
 1. Pokud chcete zobrazit seznam vlastníků aplikace, vyberte **vlastníci** .
 1. Vyberte **Přidat** a vyberte jednu nebo více vlastníků, které chcete přidat do aplikace.
 

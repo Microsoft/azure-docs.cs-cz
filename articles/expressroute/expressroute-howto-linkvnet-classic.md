@@ -1,5 +1,5 @@
 ---
-title: 'Propojení virtuální sítě s okruhem ExpressRoute: PowerShell: Classic: Azure | Microsoft Docs'
+title: 'ExpressRoute: propojení virtuální sítě s okruhem: Classic'
 description: Tento dokument poskytuje přehled, jak propojit virtuální sítě (virtuální sítě) se ExpressRoute okruhy pomocí modelu nasazení Classic a PowerShellu.
 services: expressroute
 documentationcenter: na
@@ -8,23 +8,23 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9365e36cb2beff21e795adecaef5fa41e0d7583c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e02073e777c62be00b5c25c2242294e54795a0d4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748256"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031609"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí prostředí PowerShell (Classic)
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
 >
 
-Tento článek vám pomůže propojit virtuální sítě (virtuální sítě) se ExpressRoute okruhy Azure pomocí PowerShellu. Jedna virtuální síť může být propojená s až čtyřmi okruhy ExpressRoute. Pomocí kroků v tomto článku vytvoříte nový odkaz na každý okruh ExpressRoute, ke kterému se připojujete. Okruhy ExpressRoute můžou být ve stejném předplatném, různých předplatných nebo kombinaci obou. Tento článek se týká virtuálních sítí vytvořených pomocí modelu nasazení Classic.
+Tento článek vám pomůže propojit virtuální sítě (virtuální sítě) se ExpressRoute okruhy Azure pomocí PowerShellu. Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Pomocí kroků v tomto článku vytvoříte nový odkaz na každý okruh ExpressRoute, ke kterému se připojujete. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou. Tento článek se týká virtuálních sítí vytvořených pomocí modelu nasazení Classic.
 
 K okruhu ExpressRoute můžete propojit až 10 virtuálních sítí. Všechny virtuální sítě musí být ve stejné geopolitické oblasti. Můžete propojit větší počet virtuálních sítí s okruhem ExpressRoute nebo propojit virtuální sítě, které jsou v jiných geopolitických oblastech, pokud povolíte doplněk ExpressRoute Premium. Další podrobnosti o doplňku Premium najdete v [nejčastějších dotazech](expressroute-faqs.md) .
 
@@ -37,25 +37,25 @@ K okruhu ExpressRoute můžete propojit až 10 virtuálních sítí. Všechny vi
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
 
-* Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
+* Zkontrolujte [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 * Musí mít aktivní okruh ExpressRoute.
    * Podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-classic.md) a umožněte vašemu poskytovateli připojení okruh.
-   * Ujistěte se, že máte pro váš okruh nakonfigurovaný privátní partnerský vztah Azure. Pokyny k směrování najdete v článku věnovaném [konfiguraci směrování](expressroute-howto-routing-classic.md) .
-   * Ujistěte se, že je nakonfigurovaný privátní partnerský vztah Azure a že partnerský vztah protokolu BGP mezi vaší sítí a Microsoftem je tak, aby bylo možné povolit kompletní připojení.
+   * Ujistěte se, že máte soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Zobrazit [konfigurace směrování](expressroute-howto-routing-classic.md) najdete pokyny pro směrování.
+   * Ověřte, že je nakonfigurovaný soukromého partnerského vztahu Azure a partnerského vztahu protokolu BGP mezi vaší sítí a Microsoftem nahoru tak, že povolíte připojení k začátku do konce.
    * Musíte mít virtuální síť a bránu virtuální sítě vytvořenou a plně zřízenou. Podle pokynů [nakonfigurujte virtuální síť pro ExpressRoute](expressroute-howto-vnet-portal-classic.md).
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Stáhnout nejnovější rutiny PowerShellu
 
-Nainstalujte nejnovější verze modulů Azure Service Management (SM) PowerShell a modulu ExpressRoute. Při použití následujícího příkladu si všimněte, že číslo verze (v tomto příkladu 5.1.1) se změní při vydání novějších verzí rutin.
+Nainstalujte nejnovější verze modulů Azure Service Management Powershellu a modul ExpressRoute. Při použití v následujícím příkladu, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
 
 ```powershell
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
 ```
 
-Pokud potřebujete další informace o Azure PowerShell, přečtěte si téma [Začínáme s Azure PowerShell rutinami](/powershell/azure/overview) , kde najdete podrobné pokyny ke konfiguraci počítače pro použití modulů Azure PowerShell.
+Pokud potřebujete další informace o Azure Powershellu, přečtěte si [Začínáme s rutinami Azure Powershellu](/powershell/azure/overview) podrobné pokyny o tom, jak nakonfigurovat počítač pomocí modulů Azure Powershellu.
 
-### <a name="sign-in"></a>Přihlásit se
+### <a name="sign-in"></a>Přihlášení
 
 Pokud se chcete přihlásit ke svému účtu Azure, použijte následující příklady:
 
@@ -75,13 +75,13 @@ Pokud se chcete přihlásit ke svému účtu Azure, použijte následující př
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
-4. Dále pomocí následující rutiny přidejte své předplatné Azure do PowerShellu pro model nasazení Classic.
+4. V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
 
    ```powershell
    Add-AzureAccount
    ```
 
-## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojení virtuální sítě ve stejném předplatném k okruhu
+## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojení virtuální sítě v rámci stejného předplatného k okruhu
 Virtuální síť můžete propojit s okruhem ExpressRoute pomocí následující rutiny. Ujistěte se, že je brána virtuální sítě vytvořená a je připravená k propojení před spuštěním rutiny.
 
 ```powershell
@@ -98,21 +98,21 @@ Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VN
  
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Připojení virtuální sítě jiného předplatného k okruhu
-Okruh ExpressRoute můžete sdílet mezi několika předplatnými. Následující obrázek ukazuje jednoduché schéma, jak sdílení funguje pro okruhy ExpressRoute napříč několika předplatnými.
+Okruh ExpressRoute můžete sdílet napříč několika předplatnými. Následující obrázek znázorňuje jednoduchý způsob sdílení prací pro okruhy ExpressRoute schéma napříč několika předplatnými.
 
-Každý z menších cloudů ve velkém cloudu se používá k reprezentaci předplatných, která patří do různých oddělení v rámci organizace. Každé oddělení v rámci organizace může používat vlastní předplatné pro nasazení svých služeb – ale oddělení můžou sdílet jeden okruh ExpressRoute pro připojení zpátky k místní síti. Jeden oddělení (v tomto příkladu: IT) může vlastnit okruh ExpressRoute. Další předplatná v rámci organizace můžou používat okruh ExpressRoute.
+Každá z menších cloudy v rámci velkých cloudových se používá k reprezentování odběry, které patří k různým oblastem v rámci organizace. Každé oddělení v rámci organizace může používat vlastní předplatné pro nasazení svých služeb – ale oddělení můžou sdílet jeden okruh ExpressRoute pro připojení zpátky k místní síti. Jednoho oddělení (v tomto příkladu: IT) může vlastnit okruh ExpressRoute. Okruh ExpressRoute můžete použít další předplatná v rámci organizace.
 
 > [!NOTE]
-> Pro vlastníka okruhu ExpressRoute se použijí poplatky za připojení a šířku pásma pro vyhrazený okruh. Všechny virtuální sítě mají stejnou šířku pásma.
+> Poplatky za připojení a šířku pásma pro vyhrazeného okruhu uplatní se na vlastníka okruhu ExpressRoute. Všechny virtuální sítě sdílejí stejnou šířku pásma.
 > 
 > 
 
-![Připojení mezi předplatnými](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
+![Připojením mezi předplatnými](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>Správa
 *Vlastníkem okruhu* je správce nebo spolusprávce předplatného, ve kterém se vytvoří okruh ExpressRoute. Vlastník okruhu může autorizovat správce nebo spolusprávce jiných předplatných, označovaných jako *Uživatelé okruhu*, aby mohli používat vyhrazený okruh, který vlastní. Uživatelé, kteří mají oprávnění používat okruh ExpressRoute organizace, můžou po autorizaci propojit virtuální síť ve svém předplatném s okruhem ExpressRoute.
 
-Vlastník okruhu má kdykoliv oprávnění upravovat a odvolat. Odvolání autorizace způsobí odstranění všech odkazů z předplatného, jejichž přístup byl odvolán.
+Vlastníka okruhu má schopnost upravovat dokumentů a odvolání přístupu autorizace kdykoli. Odvolání autorizace způsobí odstranění všech odkazů z předplatného, jejichž přístup byl odvolán.
 
 ### <a name="circuit-owner-operations"></a>Operace vlastníka okruhu
 
@@ -136,7 +136,7 @@ New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "************************
 
 **Kontrola autorizací**
 
-Vlastník okruhu může zkontrolovat všechna oprávnění vydaná určitým okruhem spuštěním následující rutiny:
+Vlastníka okruhu můžete zkontrolovat všechny autorizace, které jsou vydány na konkrétní okruhu spuštěním následující rutiny:
 
 ```powershell
 Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
@@ -183,13 +183,13 @@ Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "************************
 
 **Odstraňují se autorizace.**
 
-Vlastník okruhu může pro uživatele odvolat nebo odstranit autorizaci spuštěním následující rutiny:
+Vlastníka okruhu můžete odvolání nebo odstranění autorizací uživateli spuštěním následující rutiny:
 
 ```powershell
 Remove-AzureDedicatedCircuitLinkAuthorization -ServiceKey "*****************************" -AuthorizationId "###############################"
 ```
 
-### <a name="circuit-user-operations"></a>Operace uživatele obvodu
+### <a name="circuit-user-operations"></a>Operace pro uživatele okruhu
 
 **Kontrola autorizací**
 
@@ -215,7 +215,7 @@ Get-AzureAuthorizedDedicatedCircuit
 
 **Uplatnění autorizace odkazů**
 
-Uživatel okruhu může spustit následující rutinu pro uplatnění autorizace propojení:
+Uživatele okruhu spuštěním následující rutiny můžete uplatnit autorizaci odkaz:
 
 ```powershell
 New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'

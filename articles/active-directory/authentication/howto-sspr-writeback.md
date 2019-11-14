@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a16ad3c571086a73a2aae192fb2d00bce4d5f9
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808152"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021777"
 ---
 # <a name="how-to-configure-password-writeback"></a>Postupy: Konfigurace zpětného zápisu hesla
 
@@ -99,7 +99,7 @@ Chcete-li nastavit příslušná oprávnění ke zpětnému zápisu hesla, prove
     * **Zápis pwdLastSet**
 9. Výběrem **použít/ok** použijte změny a zavřete všechna otevřená dialogová okna.
 
-Vzhledem k tomu, že zdroj autority je místní, zásady složitosti hesla se použijí ze stejného připojeného zdroje dat. Ujistěte se, že jste změnili existující zásady skupiny pro minimální délku hesla. Zásady skupiny by neměly být nastavené na hodnotu 1, což znamená, že heslo musí být alespoň jeden den starý předtím, než bude možné ho aktualizovat. Musíte se ujistit, že je nastavené na 0. Tato nastavení najdete v části `gpmc.msc` v části **Konfigurace počítače zásady > > nastavení systému Windows > nastavení zabezpečení > zásady účtů**. Spusťte `gpupdate /force`, abyste zajistili, že se změna projeví. 
+Vzhledem k tomu, že zdroj autority je místní, zásady složitosti hesla se použijí ze stejného připojeného zdroje dat. Ujistěte se, že jste změnili existující zásady skupiny pro "minimální stáří hesla". Zásady skupiny by neměly být nastavené na hodnotu 1, což znamená, že heslo musí být alespoň jeden den starý předtím, než bude možné ho aktualizovat. Musíte se ujistit, že je nastavené na 0. Tato nastavení najdete v části `gpmc.msc` v části **Konfigurace počítače zásady > > nastavení systému Windows > nastavení zabezpečení > zásady účtů**. Spusťte `gpupdate /force`, abyste zajistili, že se změna projeví. 
 
 ## <a name="next-steps"></a>Další kroky
 

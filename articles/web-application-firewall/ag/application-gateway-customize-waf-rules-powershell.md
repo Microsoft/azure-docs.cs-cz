@@ -1,20 +1,21 @@
 ---
-title: Přizpůsobení pravidel firewallu webových aplikací v Azure Application Gateway – PowerShell
+title: Přizpůsobení pravidel pomocí PowerShellu
+titleSuffix: Azure Web Application Firewall
 description: Tento článek poskytuje informace o tom, jak přizpůsobit pravidla firewallu webových aplikací v Application Gateway pomocí prostředí PowerShell.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 2930204cd322f3a8ba25eb6f3455a51f1d3d2ee9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516952"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048508"
 ---
-# <a name="customize-web-application-firewall-rules-through-powershell"></a>Přizpůsobení pravidel firewallu webových aplikací prostřednictvím PowerShellu
+# <a name="customize-web-application-firewall-rules-using-powershell"></a>Přizpůsobení pravidel firewallu webových aplikací pomocí PowerShellu
 
 Firewall webových aplikací (WAF) služby Azure Application Gateway poskytuje ochranu pro webové aplikace. Tyto ochrany poskytuje základní sadu pravidel OWASP (Open Web Application Security) (počítačový systém). Některá pravidla můžou způsobit falešně pozitivní a blokují skutečný provoz. Z tohoto důvodu Application Gateway poskytuje možnost přizpůsobit skupiny pravidel a pravidla. Další informace o konkrétních skupinách pravidel a pravidlech najdete v tématu [seznam skupin pravidel a pravidel pro Firewall webových aplikací](application-gateway-crs-rulegroups-rules.md).
 

@@ -9,24 +9,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 09/24/2019
-ms.openlocfilehash: 7e67b9e1c611d14b78db53f8662fb4e1f493a8df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 1ed57e30273c9ba3feb110e0e5acbd3bcc7ffd40
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990174"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74062865"
 ---
-> [!IMPORTANT]
-> * Nové okno **Azure Active Directory** > **Registrace aplikací** nahrazuje starší **Azure Active Directory** > **Registrace aplikací (starší verze)** může 2019.
-> * V novém okně se automaticky zobrazí Registrace aplikací vytvořené nebo zobrazené v okně starší verze.
-> * Podrobné informace o migraci na nové prostředí pro registraci aplikací Azure najdete v [Průvodci školením pro azure registrace aplikací](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) a v článku [rychlý Start Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
-
 1. V [Azure Portal](https://ms.portal.azure.com/)vyberte **Azure Active Directory** > **Registrace aplikací** > **nové registrace**.
 
    [![registraci nové aplikace v Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-   > [!TIP]
-   > Nový panel registrace aplikace Azure Active Directory umožňuje filtrovat zobrazené aplikace tak, že vyberete **vlastní aplikace**.
 
     Vaše aplikace se tady zobrazí po registraci.
 
@@ -51,7 +43,7 @@ ms.locfileid: "72990174"
 
    [![vytvoření nového tajného klíče klienta](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
-   Klikněte na **Uložit**.
+   Klikněte na možnost **Uložit**.
 
 1. Vyberte **certifikáty & tajných klíčů** a **nový tajný klíč klienta** k vytvoření hesla aplikace, které klient může použít k prokázání jeho identity.
 

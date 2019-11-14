@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685477"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049120"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Pokyny pro návrh distribuovaných tabulek v Azure SQL Data Warehouse
 Doporučení pro návrh distribuovaných tabulek distribuovaných v Azure SQL Data Warehouse a kruhové dotazování ve třídě
@@ -60,7 +60,7 @@ V následujících scénářích zvažte použití distribuce kruhového dotazov
 
 - Když začnete s jednoduchým výchozím bodem, protože se jedná o výchozí
 - Pokud se žádný zjevně nepřipojuje klíč
-- Pokud neexistuje vhodný sloupec kandidátu pro rozdělení hodnoty hash do tabulky
+- Pokud neexistuje dobrý kandidátný sloupec pro rozdělení hodnoty hash do tabulky
 - Pokud tabulka nesdílí společný klíč JOIN s jinými tabulkami
 - Pokud je spojení méně významné než jiné spojení v dotazu
 - Když je tabulka dočasná pracovní tabulka

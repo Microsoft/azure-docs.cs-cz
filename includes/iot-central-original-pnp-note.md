@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 4ee3489ec9218411106fe28e6a747dffd3e007c2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7ae102e61c6241e071dccf26eb619f0ac29379d7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884494"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021071"
 ---
 > [!NOTE]
-> Aktuálně si prohlížíte dokumentaci IoT Central pro [šablony aplikací, které používají všeobecně dostupné funkce](../articles/iot-central/core/concepts-app-templates.md#preview-templates). Pokud si chcete prohlédnout dokumentaci pro [šablony aplikací, které používají funkce verze Preview,](../articles/iot-central/core/concepts-app-templates.md#preview-templates) Přečtěte si, [co je Azure IoT Central (funkce Preview)?](../articles/iot-central/preview/overview-iot-central.md).
+> Aktuálně si prohlížíte dokumentaci IoT Central pro [šablony aplikací](../articles/iot-central/core/concepts-app-templates.md#preview-templates) , které používají všeobecně dostupné funkce. Pokud chcete zobrazit dokumentaci pro [šablony aplikací](../articles/iot-central/core/concepts-app-templates.md#preview-templates) , které používají funkce verze Preview, přečtěte si část [co je Azure IoT Central (funkce verze Preview)?](../articles/iot-central/preview/overview-iot-central.md).

@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a NLB | Microsoft Docs
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a NLB
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a NLB
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2e9b536ae6c7056348ac964a2c85ccd698a80ae4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 858151a0803ba86aeca91f35e3e6f30394bf8ea8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709371"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040260"
 ---
 # <a name="create-a-highly-available-vm"></a>Vytvoření vysoce dostupného virtuálního počítače
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a podsíť. |
@@ -63,7 +63,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

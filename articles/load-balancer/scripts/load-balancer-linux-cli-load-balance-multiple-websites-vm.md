@@ -1,5 +1,5 @@
 ---
-title: Ukázka CLI – vyrovnávání zatížení několika webů pomocí Azure CLI | Microsoft Docs
+title: Vyrovnávání zatížení víc webů – Azure CLI – Azure Load Balancer
 description: Tento ukázkový skript Azure CLI provádí vyrovnávání zatížení několika webů na stejném virtuálním počítači.
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 63897da887230da74aaaddc464549e9c06ed9543
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 54258b5129e9804bfba4cc51f0d18770b8486280
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273885"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048937"
 ---
-# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Ukázkový skript Azure CLI: Vyvažovat zatížení u více webů
+# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení několika webů
 
 Tento ukázkový skript Azure CLI vytvoří virtuální síť se dvěma virtuálními počítači, které jsou členy skupiny dostupnosti. Nástroj pro vyrovnávání zatížení přesměruje provoz pro dvě samostatné IP adresy na tyto dva virtuální počítače. Po spuštění skriptu můžete na tyto virtuální počítače nasadit software webového serveru a hostovat více webů, přičemž každý z nich bude mít vlastní IP adresu.
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup --yes
 
 Tento skript používá k vytvoření skupiny prostředků, virtuální sítě, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Vytvoří virtuální síť Azure a podsíť. |
@@ -59,7 +59,7 @@ Tento skript používá k vytvoření skupiny prostředků, virtuální sítě, 
 | [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) | Vytvoří fond back-endových adres. |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az-network-nic-create) | Vytvoří virtuální síťovou kartu a připojí ji k virtuální síti a podsíti. |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | Vytvoří skupinu dostupnosti. Skupiny dostupnosti zajišťují dostupnost aplikace rozmístěním virtuálních počítačů napříč fyzickými prostředky, aby v případě selhání nebyla ovlivněná celá sada. |
-| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create) | Vytvoří konfiguraci IP. Je nutné, aby byla pro vaše předplatné povolená funkce Microsoft.Network/AllowMultipleIpConfigurationsPerNic. Jako primární konfiguraci IP adresy lze pro každý síťový adaptér určit jenom jednu konfiguraci, používá se k tomu příznak --make-primary. |
+| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create) | Vytvoří konfiguraci protokolu IP. Je nutné, aby byla pro vaše předplatné povolená funkce Microsoft.Network/AllowMultipleIpConfigurationsPerNic. Jako primární konfiguraci IP adresy lze pro každý síťový adaptér určit jenom jednu konfiguraci, používá se k tomu příznak --make-primary. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az-vm-availability-set-create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 

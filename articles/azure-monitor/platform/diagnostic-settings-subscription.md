@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 10/31/2019
-ms.openlocfilehash: 9f8783dc6d3c14b086364639b60273dbae626cee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6104a8b01cc9fca5ff8de973e7fc2af77cda8515
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587976"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048212"
 ---
 # <a name="collect-azure-activity-log-with-diagnostic-settings-preview"></a>Shromažďování protokolů aktivit Azure s nastavením diagnostiky (Preview)
 [Protokol aktivit Azure](activity-logs-overview.md) je [protokol platformy](platform-logs-overview.md) , který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Dříve jste vytvořili profil protokolu pro posílání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) a pomocí konektoru je shromáždíte do [pracovního prostoru Log Analytics](activity-log-collect.md).
@@ -22,6 +22,8 @@ Teď můžete konfigurovat shromažďování protokolů aktivit Azure pomocí st
 - Konzistentní způsob shromažďování všech protokolů platforem.
 - Shromažďování protokolů aktivit napříč několika předplatnými a klienty.
 - Vyfiltruje shromažďování, aby se shromáždily jenom protokoly pro konkrétní kategorie.
+- Shromáždí všechny kategorie protokolů aktivit. Některé kategorie nejsou shromažďovány pomocí předchozí metody.
+- Rychlejší latence pro přijímání protokolů. Předchozí metoda má latenci přibližně 15 minut, zatímco nastavení diagnostiky se přidá pouze přibližně 1 minutu.
 
 ## <a name="considerations"></a>Požadavky
 Než tuto funkci povolíte, zvažte následující podrobnosti o shromažďování protokolů aktivit pomocí nastavení diagnostiky.

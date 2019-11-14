@@ -1,6 +1,6 @@
 ---
 title: Co je Azure IoT Central | Microsoft Docs
-description: Azure IoT Central je ucelené řešení SaaS, které můžete použít k vytvoření a správě vlastního řešení IoT. Tento článek obsahuje přehled funkcí Azure IoT Central.
+description: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT. Tento článek obsahuje přehled funkcí Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/26/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0cb3ac836569c782d7b7d84917af276567e89c86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957703"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048661"
 ---
 <!---
 Purpose of an Overview article: 
@@ -70,7 +70,7 @@ Jako tvůrce můžete taky přizpůsobit uživatelské rozhraní aplikace Azure 
 - Nakonfigurovat vlastní řídicí panely, které operátorům pomůžou rychleji zjišťovat informace a řešit problémy
 - Nakonfigurovat vlastní analýzy pro zkoumání časových řad dat z připojených zařízení
 
-## <a name="connect-your-devices"></a>Připojit zařízení
+## <a name="connect-your-devices"></a>Připojení zařízení
 
 Jakmile tvůrce definuje typy zařízení, které se můžou připojovat k aplikaci, vývojář zařízení vytvoří kód, který na zařízeních poběží. Jako vývojář zařízení vytváříte kód zařízení pomocí open source [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks) od Microsoftu. Tyto sady SDK nabízejí širokou podporu jazyků, platforem a protokolů, aby vyhověly vašim požadavkům na připojení vašich zařízení k aplikaci Azure IoT Central. Sady SDK vám pomůžou implementovat následující možnosti zařízení:
 

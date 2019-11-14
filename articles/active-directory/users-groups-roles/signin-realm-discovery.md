@@ -1,24 +1,24 @@
 ---
-title: Vyhledání uživatelského jména během přihlašování ověřování – Azure Active Directory | Dokumentace Microsoftu
-description: Na obrazovce pro zasílání zpráv odráží vyhledávání uživatelské jméno při přihlašování
+title: Vyhledávání uživatelského jména během přihlašování Azure Active Directory | Microsoft Docs
+description: Jak zasílání zpráv na obrazovce odráží vyhledávání uživatelského jména během přihlašování v Azure Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418215"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024256"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Zjišťování domovské sféry pro Azure Active Directory přihlašovací stránky
 
@@ -26,35 +26,35 @@ Měníme přihlašovací chování Azure Active Directory (Azure AD), abychom zl
 
 ## <a name="home-realm-discovery-behavior"></a>Chování zjišťování domovské sféry
 
-V minulosti zjišťování domovské sféry se řídí podle domény, která je k dispozici při přihlášení nebo zásada zjišťování domovské sféry pro některé starší verze aplikace. Například v našem chování zjišťování uživatele služby Azure Active Directory může člověk nechtěně napíše špatně své uživatelské jméno, ale by stále dorazí na obrazovce kolekce přihlašovacích údajů jejich organizace. K tomu dojde, když uživatel správně poskytne název domény organizace "contoso.com". Toto chování ale neumožňuje další rozlišování a přizpůsobení prostředí pro jednotlivé uživatele.
+Historicky se zjišťování domovské sféry řídí doménou, která je poskytována při přihlášení, nebo zásadou zjišťování domovské sféry pro některé starší aplikace. Například v našem chování zjišťování mohl uživatel Azure Active Directory zadat své uživatelské jméno, ale pořád přijde na obrazovku pro shromažďování přihlašovacích údajů organizace. K tomu dojde, když uživatel správně zadá název domény organizace "contoso.com". Toto chování ale neumožňuje další rozlišování a přizpůsobení prostředí pro jednotlivé uživatele.
 
-Pro podporu většímu počtu přihlašovací údaje a zlepšit tak použitelnost, je teď aktualizovaný chování při vyhledávání uživatelského jména Azure Active Directory během procesu přihlášení. Nové chování umožňuje inteligentní rozhodování načtením tenanta a uživatelské nastavení úrovně podle zadané na stránce přihlašovací uživatelské jméno. Chcete-li to možné, Azure Active Directory zkontroluje, zda existuje v zadané doméně, která je zadána na přihlašovací stránce uživatelského jména, nebo přesměruje uživatele k zadání přihlašovacích údajů.
+Pro podporu širší škály přihlašovacích údajů a zvýšení použitelnosti se teď v průběhu procesu přihlašování aktualizuje Azure Active Directory chování vyhledávání uživatelského jména. Nové chování usnadňuje inteligentní rozhodnutí čtením nastavení na úrovni tenanta a uživatele na základě uživatelského jména zadaného na přihlašovací stránce. Aby to bylo možné, Azure Active Directory zkontroluje, jestli uživatelské jméno, které je zadáno na přihlašovací stránce, existuje v zadané doméně, nebo přesměruje uživatele na zadání přihlašovacích údajů.
 
-Další výhodou této práce je vylepšené chybové zprávy. Tady je několik příkladů vylepšení chybových zpráv při přihlašování k aplikaci, která podporuje jenom uživatele Azure Active Directory.
+Další výhodou této práce je vylepšené zasílání zpráv o chybách. Tady jsou některé příklady vylepšeného zasílání zpráv o chybách při přihlašování k aplikaci, která podporuje jenom Azure Active Directory uživatele.
 
-- Uživatelské jméno je zadáno chybně nebo uživatelské jméno nebylo dosud nebyly synchronizovány do Azure AD:
+- Uživatelské jméno není typu nebo se uživatelské jméno ještě nesynchronizoval do služby Azure AD:
   
-    ![uživatelské jméno je zadáno chybně nebo nebyl nalezen](./media/signin-realm-discovery/typo-username.png)
+    ![uživatelské jméno je netypové nebo se nenašlo.](./media/signin-realm-discovery/typo-username.png)
   
-- Název domény je chybně:
+- Název domény je netypového typu:
   
-    ![název domény je zadáno chybně nebo nebyl nalezen](./media/signin-realm-discovery/typo-domain.png)
+    ![název domény je Netypový nebo se nenašel.](./media/signin-realm-discovery/typo-domain.png)
   
-- Uživatel se pokusí přihlásit pomocí známých uživatelů domény:
+- Uživatel se pokusí přihlásit se známou doménou příjemce:
   
-    ![Přihlaste se pomocí známých uživatelů domény](./media/signin-realm-discovery/consumer-domain.png)
+    ![přihlášení se známou doménou příjemce](./media/signin-realm-discovery/consumer-domain.png)
   
-- Heslo je chybně se zadala některá, ale uživatelské jméno je správné:  
+- Heslo je nesprávně typové, ale uživatelské jméno je přesné:  
   
-    ![heslo je chybně pomocí vhodného uživatelského jména](./media/signin-realm-discovery/incorrect-password.png)
+    ![heslo je chybně typu s dobrým uživatelským jménem.](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Tato funkce může mít vliv na federované domény spoléhat na úroveň starého domény vyhledávání domovské sféry přinutit federace. Když se přidá Podpora federovaných domén aktualizace, naleznete v tématu [zjišťování domovské sféry během přihlašování pro služby Microsoft 365](https://azure.microsoft.com/updates/signin-hrd/). Některé organizace mají do té doby trénuje jejich zaměstnanci mohli přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory, ale obsahuje správného názvu domény, protože názvy domén nyní směruje uživatele na koncový bod domény organizace. Nové chování přihlášení to neumožňuje. Uživatel je upozorněn opravte uživatelské jméno a nejsou povoleny se přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory.
+> Tato funkce může mít dopad na federované domény spoléhající se na staré zjišťování domovské sféry na úrovni domény, aby vynutila federace. Aktualizace, když se přidá podpora federovaných domén, najdete v tématu [zjištění domovské sféry během přihlašování pro Microsoft 365 služby](https://azure.microsoft.com/updates/signin-hrd/). Mezitím si některé organizace vyškole své zaměstnance, aby se přihlásili pomocí uživatelského jména, které v Azure Active Directory neexistuje, ale obsahuje správný název domény, protože názvy domén směrují uživatele v současnosti do koncového bodu domény organizace. Nové chování přihlášení to nepovoluje. Uživateli se upozorní, že má uživatelské jméno opravit a že se jim nemůžou přihlásit pomocí uživatelského jména, které v Azure Active Directory neexistuje.
 >
-> Pokud vy nebo vaše organizace postupy, které jsou závislé na staré chování, je důležité pro správce organizace aktualizovat zaměstnance přihlašování a ověřování dokumentaci a školení uživatelům používat jejich uživatelské jméno Azure Active Directory pro přihlášení.
+> Pokud vy nebo vaše organizace máte postupy, které jsou závislé na starém chování, je důležité, aby správci organizace aktualizovali dokumentaci pro přihlášení a ověřování zaměstnanců a mohli se přihlašovat zaměstnancům, aby používali své Azure Active Directory uživatelské jméno.
   
-Pokud máte obavy díky novému chování, nechte vaše příspěvky v **zpětnou vazbu** části tohoto článku.  
+Pokud máte obavy s novým chováním, ponechte své poznámky v tomto článku v části **názory na zpětnou vazbu** .  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Přizpůsobení přihlášení brandingu](../fundamentals/add-custom-domain.md)
+[Přizpůsobení brandingu přihlašování](../fundamentals/add-custom-domain.md)

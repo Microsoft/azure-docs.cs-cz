@@ -1,31 +1,27 @@
 ---
-title: Vytvoření služby application gateway s protokolem HTTP na HTTPS přesměrování – Azure PowerShell | Dokumentace Microsoftu
-description: Informace o vytvoření služby application gateway s přesměrované přenosy z HTTP na HTTPS pomocí Azure Powershellu.
+title: Přesměrování HTTP na HTTPS pomocí PowerShellu – Azure Application Gateway
+description: Naučte se vytvořit Aplikační bránu s přesměrovaným provozem z HTTP na HTTPS pomocí Azure PowerShell.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 123b3991e2cfe5b41f9d75cd8902609d73e92a91
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 480ceb4e13843ebeedf155f31aedacc5439a38de
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65202831"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047421"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Vytvoření služby application gateway s protokolem HTTP na HTTPS přesměrování pomocí Azure Powershellu
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí Azure PowerShell
 
-Můžete použít Azure PowerShell k vytvoření [služba application gateway](overview.md) certifikátem pro ukončení protokolu SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS ve službě application gateway. V tomto příkladu můžete také vytvořit [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endový fond služby application gateway, která obsahuje dvě instance virtuálních počítačů. 
+Pomocí Azure PowerShell můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro ukončení protokolu SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS ve službě application gateway. V tomto příkladu můžete také vytvořit [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endový fond služby application gateway, která obsahuje dvě instance virtuálních počítačů. 
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
 > * Přidat pravidlo naslouchací proces a přesměrování
@@ -35,9 +31,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Login-AzAccount` vytvořit připojení k Azure.
+Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Login-AzAccount` vytvořit připojení k Azure.
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 Použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) pomocí rutiny [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). K exportu souboru pfx z certifikátu můžete použít rutinu [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) s vráceným kryptografickým otiskem.
 
@@ -77,7 +73,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Vytvořte Konfigurace podsítí pro *myBackendSubnet* a *myAGSubnet* pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Vytvořte virtuální síť s názvem *myVNet* pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) s konfigurací podsítě. A konečně, vytvoření veřejné IP adresy s názvem *myAGPublicIPAddress* pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
+Vytvořte konfigurace podsítě pro *myBackendSubnet* a *myAGSubnet* pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Vytvořte virtuální síť s názvem *myVNet* pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) s konfiguracemi podsítí. Nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Pomocí těchto prostředků se bude poskytovat síťové připojení k bráně Application Gateway a jejím přidruženým prostředkům.
 
 ```powershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -103,7 +99,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
-Přidružit *myAGSubnet* , který jste předtím vytvořili pro aplikační bránu pomocí [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Přiřadit *myAGPublicIPAddress* na aplikační bránu pomocí [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig). A pak můžete vytvořit pomocí portu HTTPS [New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport).
+Přidružte k aplikační bráně *myAGSubnet* , kterou jste dříve vytvořili, pomocí [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Přiřaďte *myAGPublicIPAddress* k aplikační bráně pomocí [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig). A pak můžete port HTTPS vytvořit pomocí [New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport).
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -123,7 +119,7 @@ $frontendPort = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Vytvoření back-endového fondu a nastavení
 
-Vytvoření back-endový fond s názvem *appGatewayBackendPool* pro aplikační bránu pomocí [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Konfigurace nastavení fondu back-endu s využitím [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
+Vytvořte back-end fond s názvem *appGatewayBackendPool* pro aplikační bránu pomocí [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Nakonfigurujte nastavení pro back-end fond pomocí [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```powershell
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -138,9 +134,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>Vytvoření výchozího naslouchacího procesu a pravidla
 
-Naslouchací proces je potřebný k tomu, aby aplikační brána správně směrovala provoz na back-endový fond. V tomto příkladu vytvoříte základní naslouchací proces, který naslouchá provozu HTTPS na kořenové adrese URL. 
+Naslouchací proces je potřeba k tomu, aby brána Application Gateway mohla správně směrovat provoz na back-endový fond. V tomto příkladu vytvoříte základní naslouchací proces, který naslouchá provozu HTTPS na kořenové adrese URL. 
 
-Vytvoření pomocí certifikátu objektu [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) a pak vytvořit naslouchací proces s názvem *appGatewayHttpListener* pomocí [ Nové AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) s front-endová konfigurace, front-endový port a certifikát, který jste předtím vytvořili. Pravidlo je potřeba k tomu, aby naslouchací proces poznal, který back-endový fond má použít pro příchozí provoz. Vytvořte základní pravidlo s názvem *pravidla 1* pomocí [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Vytvořte objekt certifikátu pomocí [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) a pak vytvořte naslouchací proces s názvem *appGatewayHttpListener* pomocí [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) s konfigurací front-endu, portem front-endu a certifikátem, který jste vytvořili dříve. Aby naslouchací proces věděl, který back-endový fond se má použít pro příchozí provoz, potřebuje pravidlo. Vytvořte základní pravidlo s názvem *rule1* pomocí [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -167,7 +163,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Teď, když jste vytvořili potřebné podpůrné prostředky, zadejte parametry služby application gateway s názvem *myAppGateway* pomocí [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)a vytvořte ji pomocí [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) s certifikátem.
+Teď, když jste vytvořili potřebné podpůrné prostředky, určete parametry služby Application Gateway s názvem *myAppGateway* pomocí [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)a pak ji vytvořte pomocí [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) s certifikátem.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku `
@@ -191,9 +187,9 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="add-a-listener-and-redirection-rule"></a>Přidat pravidlo naslouchací proces a přesměrování
 
-### <a name="add-the-http-port"></a>Přidejte HTTP port
+### <a name="add-the-http-port"></a>Přidat port HTTP
 
-Přidejte HTTP port pro aplikační bránu pomocí [přidat AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport).
+Přidejte port HTTP do aplikační brány pomocí [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport).
 
 ```powershell
 $appgw = Get-AzApplicationGateway `
@@ -205,9 +201,9 @@ Add-AzApplicationGatewayFrontendPort `
   -ApplicationGateway $appgw
 ```
 
-### <a name="add-the-http-listener"></a>Přidat naslouchací proces protokolu HTTP
+### <a name="add-the-http-listener"></a>Přidat naslouchací proces HTTP
 
-Přidat naslouchací proces protokolu HTTP s názvem *myListener* na aplikační bránu pomocí [přidat AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
+Přidejte naslouchací proces HTTP s názvem *MyListener* do aplikační brány pomocí [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
 
 ```powershell
 $fipconfig = Get-AzApplicationGatewayFrontendIPConfig `
@@ -226,7 +222,7 @@ Add-AzApplicationGatewayHttpListener `
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidejte do konfigurace přesměrování protokolu HTTPS pro aplikační bránu pomocí HTTP [přidat AzApplicationGatewayRedirectConfiguration](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration).
+Přidejte konfiguraci přesměrování HTTP na HTTPS do aplikační brány pomocí [Add-AzApplicationGatewayRedirectConfiguration](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration).
 
 ```powershell
 $defaultListener = Get-AzApplicationGatewayHttpListener `
@@ -242,7 +238,7 @@ Add-AzApplicationGatewayRedirectConfiguration -Name httpToHttps `
 
 ### <a name="add-the-routing-rule"></a>Přidat pravidlo směrování
 
-Přidat pravidlo směrování s konfigurací přesměrování na aplikační bránu pomocí [přidat AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
+Přidejte pravidlo směrování s konfigurací přesměrování do aplikační brány pomocí [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
 
 ```powershell
 $myListener = Get-AzApplicationGatewayHttpListener `
@@ -262,7 +258,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
-V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která v aplikační bráně poskytuje servery back-endového fondu. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
+V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která v aplikační bráně bude poskytovat servery pro back-endový fond. K back-endovému fondu je přiřadíte během konfigurace nastavení IP adres.
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -322,9 +318,9 @@ Update-AzVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-Můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) k získání veřejné IP adresy služby application gateway. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například http://52.170.203.149.
+K získání veřejné IP adresy služby Application Gateway můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například http://52.170.203.149.
 
 ```powershell
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -334,14 +330,14 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 Pokud chcete přijímat upozornění zabezpečení v případě použití certifikátu podepsaného svým držitelem (self-signed certificate), vyberte **Podrobnosti** a potom **Pokračovat na web**. Potom se zobrazí váš zabezpečený web služby IIS, jak je znázorněno v následujícím příkladu:
 
-![Otestování základní adresy URL v aplikační bráně](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
+![Testování základní adresy URL v aplikační bráně](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
 > * Přidat pravidlo naslouchací proces a přesměrování

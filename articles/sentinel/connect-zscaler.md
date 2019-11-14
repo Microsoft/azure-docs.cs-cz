@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe7ba0f6daec0b85ec73611ba4e48d72f16146e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45351cc29b2b7028863aff06ab5a511674604d6f
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515132"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048959"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Připojení Zscaler k Internetu do Azure Sentinel
 
@@ -41,19 +41,19 @@ Případně bude tato instalace existovat, pokud použijete virtuální počíta
  ![Místní CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
-## <a name="security-considerations"></a>Informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. Pomocí následujících pokynů můžete zlepšit konfiguraci zabezpečení počítače:  [zabezpečený virtuální počítač v Azure](../virtual-machines/linux/security-policy.md), [osvědčené postupy pro zabezpečení sítě](../security/fundamentals/network-best-practices.md).
 
 Pokud chcete používat komunikaci TLS mezi řešením zabezpečení a počítačem syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že počítač se systémem Linux, který používáte jako proxy, používá jeden z následujících operačních systémů:
 
 - 64 – bit
   - CentOS 6 a 7
-  - Amazon Linux 2017,09
+  - Amazon Linux 2017.09
   - Oracle Linux 6 a 7
   - Red Hat Enterprise Linux Server 6 a 7
   - Debian GNU/Linux 8 a 9
@@ -106,7 +106,7 @@ V tomto kroku musíte vybrat počítač se systémem Linux, který bude fungovat
     - Port = 514
     - Format = CEF
     - IP adresa – zajistěte odeslání zpráv CEF na IP adresu virtuálního počítače, který jste si pro tento účel vyhradi.
- Další informace najdete v tématu [Průvodce integrací Azure Sentinel v Zscaler](https://aka.ms/ZscalerCEFInstructions).
+ Další informace najdete v [Průvodci nasazením Zscaler a Azure Sentinel](https://aka.ms/ZscalerCEFInstructions).
  
    > [!NOTE]
    > Toto řešení podporuje syslog RFC 3164 nebo RFC 5424.

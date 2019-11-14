@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu Azure PowerShell – vytvoření virtuálního počítače ze snímku | Microsoft Docs
+title: Ukázka skriptu Azure PowerShell – vytvoření virtuálního počítače ze snímku
 description: Ukázka skriptu Azure PowerShell – vytvoření virtuálního počítače ze snímku
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 52862ab38eea18842025f94dc383b2944e1f69a1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dcfb2f99af46f43faec11d879edd0d1c18a3b9d6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749900"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040129"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Vytvoření virtuálního počítače ze snímku pomocí PowerShellu
 
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript pomocí následujících příkazů získá vlastnosti snímku, vytvoří z snímku spravovaný disk a vytvoří virtuální počítač. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | Načte snímek pomocí názvu snímku. |
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | Vytvoří konfiguraci disku. Tato konfigurace se používá v procesu vytváření disku. |

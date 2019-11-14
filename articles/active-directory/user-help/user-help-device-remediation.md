@@ -1,6 +1,6 @@
 ---
-title: Vyřešte chybu "Se tam nelze dostat z tohoto" – Azure Active Directory | Dokumentace Microsoftu
-description: Řešení potíží s potenciální důvody, které se vám chybová zpráva "Se tam nelze dostat z tohoto".
+title: Opravy pro "nemůžete získat z tohoto místa" – Azure AD
+description: Najděte si možné opravy, proč se vám zobrazí chybová zpráva "nemůžete získat odsud".
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,60 +14,61 @@ ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d6385343ed26e5043e1491529fd2454caff4d04
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473774"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028561"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Možné důvody chybová zpráva "Se tam nelze dostat z tohoto"
-Při přístupu k interním webu aplikacím nebo službám vaší organizace, může se zobrazit chybová zpráva s upozorněním, **se tam nelze dostat z tohoto**. Tato zpráva znamená, že vaše organizace má zavést zásady zařízení brání v přístupu k prostředkům vaší organizace. Zatímco může skončit by bylo nutné kontaktovat Helpdesk chcete tento problém vyřešit, tady je pár věcí, které můžete nejdřív vyzkoušet.
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Možné opravy pro chybovou zprávu "nemůžete se dostat sem"
 
-## <a name="make-sure-youre-using-a-supported-browser"></a>Ujistěte se, že používáte podporovaný prohlížeč
-Pokud se zobrazí **se tam nelze dostat z tohoto** zpráva s oznámením, že se pokoušíte přistupovat k serverům vaší organizace z nepodporované prohlížeče, zkontrolujte webového prohlížeče spouštíte.
+Při přístupu k interním webovým aplikacím nebo službám vaší organizace se může zobrazit chybová zpráva s informacemi o tom, že se **tam nemůžete dostat**. Tato zpráva znamená, že vaše organizace má zavedené zásady, které brání vašemu zařízení v přístupu k prostředkům vaší organizace. I když se může stát, že se budete muset obrátit na helpdesk, abyste mohli tento problém vyřešit, můžete si nejdřív vyzkoušet několik věcí.
 
-![Chybová zpráva týkající se podpora prohlížeče](media/user-help-device-remediation/browser-version.png)
+## <a name="make-sure-youre-using-a-supported-browser"></a>Ujistěte se, že používáte podporovaný prohlížeč.
+Pokud se vám zobrazí zpráva, že se **tam nedaří získat** přístup k webům vaší organizace z nepodporovaného prohlížeče, podívejte se, jestli je v něm spuštěný prohlížeč.
 
-Chcete-li tento problém vyřešit, musíte nainstalovat a spustit podporovaného prohlížeče podle vašeho operačního systému. Pokud používáte Windows 10, zahrnují podporované prohlížeče Microsoft Edge, Internet Exploreru a Google Chrome. Pokud používáte jiný operační systém, můžete zkontrolovat na úplný seznam [podporovaných prohlížečích](../conditional-access/technical-reference.md#supported-browsers).
+![Chybová zpráva týkající se podpory prohlížeče](media/user-help-device-remediation/browser-version.png)
 
-## <a name="make-sure-youre-using-a-supported-operating-system"></a>Ujistěte se, že používáte podporovaný operační systém
+Chcete-li tento problém vyřešit, je nutné nainstalovat a spustit podporovaný prohlížeč v závislosti na vašem operačním systému. Pokud používáte Windows 10, podporované prohlížeče zahrnují Microsoft Edge, Internet Explorer a Google Chrome. Pokud používáte jiný operační systém, můžete se podívat na úplný seznam [podporovaných prohlížečů](../conditional-access/technical-reference.md#supported-browsers).
+
+## <a name="make-sure-youre-using-a-supported-operating-system"></a>Ujistěte se, že používáte podporovaný operační systém.
 Ujistěte se, že používáte podporovanou verzi operačního systému, včetně:
 
-- **Klient Windows.** Windows 7 nebo novější.
+- **Klient systému Windows.** Windows 7 nebo novější.
 
 - **Windows Server.** Windows Server 2008 R2 nebo novější.
 
 - **macOS.** macOS X nebo novější
 
-- **Zařízení s androidem a iOS.** Nejnovější verzi Androidu a iOS mobilních operačních systémů
+- **Android a iOS.** Nejnovější verze mobilních operačních systémů Android a iOS
 
-Chcete-li tento problém vyřešit, musíte nainstalovat a spustit podporovaný operační systém.
+Chcete-li tento problém vyřešit, je nutné nainstalovat a spustit podporovaný operační systém.
 
-## <a name="make-sure-your-device-is-joined-to-your-network"></a>Ujistěte se, že je zařízení připojené k síti
-Pokud se zobrazí **se tam nelze dostat z tohoto** zpráva s oznámením, že vaše zařízení je mimo dodržování předpisů se zásadami vaší organizace přístup, ujistěte se, že vaše zařízení připojili k síti vaší organizace.
+## <a name="make-sure-your-device-is-joined-to-your-network"></a>Ujistěte se, že je zařízení připojené k síti.
+Pokud se vám zobrazí zpráva z tohoto seznamu **nemůžete získat** zprávu, že vaše zařízení je nekompatibilní se zásadami přístupu vaší organizace, ujistěte se, že jste zařízení připojili k síti vaší organizace.
 
-![Chybová zpráva týkající se, jestli jste v síti](media/user-help-device-remediation/network-version.png)
+![Chybová zpráva týkající se toho, jestli jste v síti](media/user-help-device-remediation/network-version.png)
 
-### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Chcete-li zkontrolovat, jestli je zařízení připojené k síti
+### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Ověření, jestli je zařízení připojené k síti
 1. Přihlaste se k Windows pomocí svého pracovního nebo školního účtu. Například, alain@contoso.com.
 
-2. Připojení k síti vaší organizace pomocí virtuální privátní sítě (VPN) nebo technologie DirectAccess.
+2. Připojte se k síti vaší organizace pomocí virtuální privátní sítě (VPN) nebo technologie DirectAccess.
 
-3. Jakmile budete hotovi, stiskněte **Windows logo klíče + L** k uzamčení zařízení.
+3. Po připojení stiskněte klávesu s **logem Windows + L** pro uzamčení zařízení.
 
-4. Odemkněte zařízení pomocí svého pracovního nebo školního účtu a zkuste přístup k problematické aplikaci nebo službu znovu.
+4. Odemkněte zařízení pomocí svého pracovního nebo školního účtu a zkuste znovu získat přístup k problematické aplikaci nebo službě.
 
-    Pokud se zobrazí **se tam nelze dostat z tohoto** chybovou zprávu znovu, vyberte **podrobnosti** propojení a obraťte se na Helpdesk s podrobnostmi.
+    Pokud se vám zobrazí chybová zpráva **z tohoto pole nemůžete získat** znovu, vyberte odkaz **Další podrobnosti** a požádejte o pomoc helpdesk.
 
 ### <a name="to-join-your-device-to-your-network"></a>Připojení zařízení k síti
-Pokud zařízení není připojené k síti vaší organizace, můžete provést jeden ze dvou kroků:
+Pokud zařízení není připojené k síti vaší organizace, můžete provést jednu z následujících akcí:
 
-- **Připojení pracovních zařízení.** Připojte se k zařízení s Windows 10 vlastněných společností práce k síti vaší organizace, budete mít přístup k prostředkům potenciálně s omezeným přístupem. Další informace a podrobné pokyny najdete v tématu [připojení pracovních zařízení k síti vaší organizace](user-help-join-device-on-network.md).
+- **Připojte se k pracovnímu zařízení.** Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům. Další informace a podrobné pokyny najdete v tématu [připojení pracovního zařízení k síti vaší organizace](user-help-join-device-on-network.md).
 
-- **Zaregistrujte své osobní zařízení pro práci.** Registrovat své osobní zařízení, obvykle telefon nebo tablet, v síti vaší organizace. Po registraci vašeho zařízení má přístup k prostředkům vaší organizace s omezeným přístupem. Další informace a podrobné pokyny najdete v tématu [registraci osobních zařízení v síti vaší organizace](user-help-register-device-on-network.md).
+- **Zaregistrujte svoje osobní zařízení pro práci.** Zaregistrujte své osobní zařízení, obvykle telefon nebo tablet, do sítě vaší organizace. Po zaregistrování zařízení bude mít přístup k prostředkům s omezeným přístupem vaší organizace. Další informace a podrobné pokyny najdete v tématu [registrace osobního zařízení v síti vaší organizace](user-help-register-device-on-network.md).
 
-## <a name="next-steps"></a>Další postup
-- [Co je na portálu MyApps?](active-directory-saas-access-panel-introduction.md)
+## <a name="next-steps"></a>Další kroky
+- [Co je to portál MyApp?](active-directory-saas-access-panel-introduction.md)
 
 - [Přihlášení pomocí telefonu, ne pomocí hesla](user-help-auth-app-sign-in.md)

@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – WordPress | Microsoft Docs
+title: Ukázkový skript Azure PowerShellu – WordPress
 description: Ukázkový skript Azure PowerShellu – WordPress
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8df34904cd67e79b70bc5f76f7ed94fe81ff1c23
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5df46b4666c41843b9c49930e596a866185191a3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748786"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040099"
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>Vytvoření virtuálního počítače WordPress pomocí PowerShellu
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě. |

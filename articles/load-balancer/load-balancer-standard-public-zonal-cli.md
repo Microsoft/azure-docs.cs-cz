@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Standard Load Balancer pomocí rozhraní příkazového řádku Azure ve front-endu
-titlesuffix: Azure Load Balancer
+title: Standard Load Balancer s oblastmi front-endu Azure CLI
+titleSuffix: Azure Load Balancer
 description: Naučte se vytvářet veřejné Standard Load Balancer s front-endy veřejné IP adresy front-endu pomocí Azure CLI.
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 5e6dd06cf43b0eb5389597dcedbc323f4c035333
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274303"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048345"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Vytvoření Standard Load Balancer pomocí rozhraní příkazového řádku Azure ve front-endu
 
@@ -95,7 +95,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení pro port 80
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *myLoadBalancerRuleWeb* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myLoadBalancerRuleWeb](/cli/azure/network/lb/rule#az-network-lb-rule-create) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEndPool* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80.
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *az network lb rule create* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myLoadBalancerRuleWeb](/cli/azure/network/lb/rule#az-network-lb-rule-create) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEndPool* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80.
 
 ```azurecli-interactive
 az network lb rule create \

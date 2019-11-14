@@ -1,5 +1,5 @@
 ---
-title: Co je Privileged Identity Management? -Azure Active Directory | Microsoft Docs
+title: Co je Privileged Identity Management? – Azure AD | Microsoft Docs
 description: Poskytuje přehled Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 04/09/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae9429920a4d3a6bac8830d6add2782276850d7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 578f45a7bc870874319a8238c7c8c50bf7a37998
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595345"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023028"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -82,17 +82,17 @@ Privileged Identity Management podporuje následující scénáře:
 
 Chcete-li lépe pochopit Privileged Identity Management a dokumentaci, měli byste si projít následující výrazy.
 
-| Termín nebo koncept | Kategorie přiřazení role | Popis |
+| Ukončení nebo koncept | Kategorie přiřazení role | Popis |
 | --- | --- | --- |
 | způsobil | Typ | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
-| Aktivně | Typ | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |
+| aktivní | Typ | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |
 | aktivovat |  | Proces provádění jedné nebo více akcí pro použití role, pro kterou má uživatel nárok. Akce můžou zahrnovat provádění kontroly vícefaktorového ověřování (MFA), poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. |
 | přiřazení | Stav | Uživatel, který má přiřazené aktivní roli. |
 | Aktivujte | Stav | Uživatel, který má oprávněné přiřazení role, provedl akce pro aktivaci role a je teď aktivní.  Po aktivaci může uživatel tuto roli použít pro předem nakonfigurovanou časovou dobu, než se bude muset znovu aktivovat. |
-| trvalé oprávněné | Délka | Přiřazení role, kde má uživatel vždy nárok na aktivaci role. |
-| trvalé aktivní | Délka | Přiřazení role, kde může uživatel vždy používat roli bez provedení jakýchkoli akcí. |
-| vypršet nárok | Délka | Přiřazení role, kde má uživatel nárok na aktivaci role během zadaného počátečního a koncového data. |
-| vyprší aktivní | Délka | Přiřazení role, kde může uživatel používat roli bez provádění všech akcí v zadaném počátečním a koncovém datu. |
+| trvalé oprávněné | Doba trvání | Přiřazení role, kde má uživatel vždy nárok na aktivaci role. |
+| trvalé aktivní | Doba trvání | Přiřazení role, kde může uživatel vždy používat roli bez provedení jakýchkoli akcí. |
+| vypršet nárok | Doba trvání | Přiřazení role, kde má uživatel nárok na aktivaci role během zadaného počátečního a koncového data. |
+| vyprší aktivní | Doba trvání | Přiřazení role, kde může uživatel používat roli bez provádění všech akcí v zadaném počátečním a koncovém datu. |
 | přístup JIT (just-in-time) |  | Model, ve kterém uživatelé obdrží dočasná oprávnění k provádění privilegovaných úloh, což zabrání škodlivým nebo neoprávněným uživatelům získat přístup po vypršení platnosti oprávnění. Přístup se udělí jenom v případě, že ho uživatelé potřebují. |
 | Princip minimálního přístupu k oprávněním |  | Doporučený postup zabezpečení, při kterém je každý uživatel k dispozici pouze s minimálními oprávněními potřebnými k provádění úloh, které mají autorizaci provádět. Tento postup minimalizuje počet globálních správců a místo toho používá konkrétní role správce pro určité scénáře. |
 

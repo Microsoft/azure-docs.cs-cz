@@ -1,10 +1,10 @@
 ---
-title: Konfigurace metody směrování priority provozu pomocí Azure Traffic Manager | Dokumentace Microsoftu
-description: Tento článek vysvětluje postup konfigurace metody prioritního směrování provozu Traffic Manageru
+title: Konfigurace směrování provozu s prioritou – Azure Traffic Manager
+description: Tento článek vysvětluje, jak nakonfigurovat metodu směrování provozu s prioritou v Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,50 +12,50 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: allensu
-ms.openlocfilehash: 259457a604727cba6e6964851ec4fcf4b13a20a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f9954c7733c30efaea4a74e04949556a3a8617fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048483"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040356"
 ---
-# <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování provozu priority v Traffic Manageru
+# <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování provozu priority v Traffic Manager
 
-Bez ohledu na režim příslušného webu již Azure Websites poskytují funkce převzetí služeb při selhání pro weby v rámci datového centra (označované také jako oblast). Traffic Manager poskytuje převzetí služeb při selhání pro weby v různých datových centrech.
+Azure websites už pro weby v rámci datového centra (označované také jako oblast) poskytují funkce převzetí služeb při selhání, a to bez ohledu na režim webu. Traffic Manager poskytuje převzetí služeb při selhání pro weby v různých datových centrech.
 
-Běžným vzorem pro převzetí služeb při selhání je k posílání provozu do primární služby a poskytují sadu identické zálohování služeb pro převzetí služeb při selhání. Následující postup vysvětluje, jak nakonfigurovat tento seřazený podle priority převzetí služeb při selhání s Azure cloud services a weby:
+Běžným vzorem pro převzetí služeb při selhání je odeslání provozu do primární služby a poskytování sady identických zálohovacích služeb pro převzetí služeb při selhání. Následující kroky vysvětlují, jak nakonfigurovat toto převzetí služeb při selhání s Azure Cloud Services a weby:
 
-## <a name="to-configure-the-priority-traffic-routing-method"></a>Konfigurace metody prioritního směrování provozu
+## <a name="to-configure-the-priority-traffic-routing-method"></a>Konfigurace metody směrování provozu s prioritou
 
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/). 
-2. Na panelu hledání na portálu vyhledejte **profily Traffic Manageru** a potom klikněte na název profilu, který chcete konfigurovat metodu směrování pro.
-3. V **profil služby Traffic Manager** okno, ověřte, zda jsou k dispozici cloudovými službami a weby, které chcete zahrnout do vaší konfigurace.
-4. V **nastavení** klikněte na tlačítko **konfigurace**a **konfigurace** okno vyplňte následujícím způsobem:
-    1. Pro **nastavení metodu směrování provozu**, ověřte, zda je metodu směrování provozu **Priority**. Pokud není, klikněte na tlačítko **Priority** z rozevíracího seznamu.
-    2. Nastavte **nastavení sledování koncových bodů** shodné pro všechny každý koncový bod v rámci tohoto profilu následujícím způsobem:
-        1. Vyberte příslušné **protokol**a zadejte **Port** číslo. 
-        2. Pro **cesta** zadejte lomítkem */* . Monitorování koncových bodů, musíte zadat cestu a název souboru. Dopředné lomítko "/" je platná položka pro relativní cestu a znamená, že se soubor nachází v kořenovém adresáři (výchozí).
-        3. V horní části stránky klikněte na tlačítko **Uložit**.
-5. V **nastavení** klikněte na tlačítko **koncové body**.
-6. V **koncové body** okno, zkontrolujte pořadí priorit pro vaše koncové body. Když vyberete **Priority** metodu směrování provozu, pořadí otázek vybraných koncových bodů. Zkontrolujte pořadí podle priority koncových bodů.  Primární koncový bod je v horní části. Zkontrolujte v pořadí, ve kterém se zobrazí. všechny požadavky budou směrovat na první koncový bod a být není v pořádku, pokud se Traffic Manager zjistí, provoz automaticky převezme služby při selhání na další koncový bod. 
-7. Chcete-li změnit pořadí podle priority koncových bodů, klikněte na koncový bod a **koncový bod** okno, které se zobrazí, klikněte na tlačítko **upravit** a změňte **Priority** hodnoty podle potřeby. 
-8. Klikněte na tlačítko **Uložit** uložit změnit nastavení koncového bodu.
-9. Po dokončení změny konfigurace, klikněte na tlačítko **Uložit** v dolní části stránky.
-10. Otestujte změny v konfiguraci následujícím způsobem:
-    1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manageru a klikněte na profil Traffic Manageru ve výsledcích, který je zobrazeno.
-    2.  V **Traffic Manageru** profilu okna, klikněte na tlačítko **přehled**.
-    3.  **Profil služby Traffic Manager** okně se zobrazí název DNS váš nově vytvořený profil Traffic Manageru. Tímto lze všechny klienty (například tak, že přejdete do ní pomocí webového prohlížeče) získat směrovat na správný koncový bod jako Určuje typ směrování. V tomto případě jsou směrovány na první koncový bod všechny požadavky a být není v pořádku, pokud se Traffic Manager zjistí, provoz automaticky převezme služby při selhání na další koncový bod.
-11. Jakmile váš profil Traffic Manageru funguje, upravte záznam DNS na autoritativního serveru DNS pro název domény vaší společnosti odkazovat na název domény Traffic Manageru.
+2. Na panelu hledání na portálu vyhledejte **Traffic Manager profily** a potom klikněte na název profilu, pro který chcete nakonfigurovat metodu směrování.
+3. V okně **profil Traffic Manager** ověřte, zda jsou k dispozici jak cloudové služby, tak i weby, které chcete zahrnout do vaší konfigurace.
+4. V části **Nastavení** klikněte na možnost **Konfigurace**a v okně **Konfigurace** proveďte následující kroky:
+    1. V části **nastavení metody směrování provozu**ověřte, že je metoda směrování provozu **Priorita**. Pokud tomu tak není, v rozevíracím seznamu klikněte na možnost **Priorita** .
+    2. **Nastavení monitorování koncového bodu** nastavte u všech koncových bodů v tomto profilu stejným způsobem:
+        1. Vyberte odpovídající **protokol**a zadejte číslo **portu** . 
+        2. Pro **cestu** zadejte */* lomítka. Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
+        3. V horní části stránky klikněte na **Uložit**.
+5. V části **Nastavení** klikněte na **koncové body**.
+6. V okně **koncové body** Zkontrolujte pořadí priority pro koncové body. Když vyberete metodu směrování přenosů **priority** , pořadí vybraných koncových bodů. Ověřte pořadí priorit koncových bodů.  Primární koncový bod je nahoře. Dvakrát ověřte pořadí, ve kterém je zobrazeno. všechny požadavky budou směrovány do prvního koncového bodu a pokud Traffic Manager zjistí, že není v pořádku, přenos dat automaticky převezme další koncový bod. 
+7. Pokud chcete změnit pořadí priority koncového bodu, klikněte na koncový bod, v zobrazeném okně **koncového bodu** klikněte na **Upravit** a podle potřeby změňte hodnotu **priority** . 
+8. Kliknutím na **Uložit** uložte změny nastavení koncového bodu.
+9. Po dokončení změn konfigurace klikněte v dolní části stránky na **Uložit** .
+10. Proveďte test změn v konfiguraci následujícím způsobem:
+    1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manager a klikněte na profil Traffic Manager v zobrazených výsledcích.
+    2.  V okně profil **Traffic Manager** klikněte na **Přehled**.
+    3.  Okno **profil Traffic Manager** zobrazuje název DNS nově vytvořeného profilu Traffic Manager. Můžete je použít u všech klientů (například tak, že na ně přejdete pomocí webového prohlížeče), abyste se dostali ke správnému koncovému bodu, který určuje typ směrování. V tomto případě jsou všechny požadavky směrovány do prvního koncového bodu a pokud Traffic Manager zjistí, že není v pořádku, přenos dat automaticky převezme další koncový bod.
+11. Jakmile profil Traffic Manager funguje, upravte záznam DNS na autoritativním serveru DNS tak, aby odkazoval na název domény vaší společnosti na název domény Traffic Manager.
 
-![Konfigurace metody směrování priority provozu pomocí Traffic Manageru][1]
+![Konfigurace metody směrování provozu s prioritou pomocí Traffic Manager][1]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 
 - Přečtěte si o [metodě váženého směrování provozu](traffic-manager-configure-weighted-routing-method.md).
-- Další informace o [metody směrování podle výkonu](traffic-manager-configure-performance-routing-method.md).
+- Seznamte se s [metodou směrování výkonu](traffic-manager-configure-performance-routing-method.md).
 - Přečtěte si o [metodě geografického směrování](traffic-manager-configure-geographic-routing-method.md).
-- Zjistěte, jak [test nastavení Traffic Manageru](traffic-manager-testing-settings.md).
+- Naučte se [Testovat nastavení Traffic Manager](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-priority-routing-method/traffic-manager-priority-routing-method.png

@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a službou IIS pomocí DSC | Microsoft Docs
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a službou IIS pomocí DSC
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a službou IIS pomocí DSC
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: a17bb1fc4f2d297742620dc39756d2f89ec8df1e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 60f4447015e43d02048afd19504be0e758a56e86
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708287"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040060"
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>Vytvoření virtuálního počítače se službou IIS pomocí DSC
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup --yes
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
@@ -55,7 +55,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 | [az vm open-port](https://docs.microsoft.com/cli/azure/vm) | Vytvoří pravidlo skupiny zabezpečení sítě, které povolí příchozí provoz. V této ukázce se otevře port 80 pro přenosy HTTP. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

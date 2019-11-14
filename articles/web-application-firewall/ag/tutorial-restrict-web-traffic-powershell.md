@@ -1,18 +1,19 @@
 ---
-title: Omezení webového provozu pomocí brány firewall webových aplikací – Azure PowerShell
+title: Omezení webového provozu pomocí prostředí PowerShell
+titleSuffix: Azure Web Application Firewall
 description: Přečtěte si, jak omezit webový provoz pomocí brány firewall webových aplikací na aplikační bránu pomocí Azure PowerShell.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: b96065b6551f604cfd817a00e6a39cec37c71377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.topic: conceptual
+ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502279"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046281"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Povolení firewallu webových aplikací pomocí Azure PowerShell
 
@@ -21,10 +22,10 @@ Můžete omezit provoz brány Application Gateway pomocí [brány firewall webov
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Nastavení sítě
+> * Nastavit síť
 > * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
 > * Vytvoření škálovací sady virtuálních počítačů
-> * Vytvořit účet úložiště a nakonfigurovat diagnostiku
+> * Vytvoření účtu úložiště a konfigurace diagnostiky
 
 ![Příklad Firewallu webových aplikací](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
@@ -36,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Login-AzAccount` a vytvořit připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzAccount` vytvořit připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -48,7 +49,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Vytvořte konfigurace podsítě s názvem *myBackendSubnet* a *myAGSubnet* pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Vytvořte virtuální síť s názvem *myVNet* pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) s konfiguracemi podsítí. Nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
+Vytvořte konfigurace podsítě s názvem *myBackendSubnet* a *myAGSubnet* pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Vytvořte virtuální síť s názvem *myVNet* pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) s konfiguracemi podsítí. Nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Pomocí těchto prostředků se bude poskytovat síťové připojení k bráně Application Gateway a jejím přidruženým prostředkům.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -74,9 +75,9 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-V této části vytvoříte prostředky, které podporují aplikační bránu, a nakonec je vytvoříte a WAF. K vytvořeným prostředkům patří:
+V této části vytvoříte prostředky, které podporují aplikační bránu, a nakonec je vytvoříte a WAF. Mezi prostředky, které vytvoříte, jsou i tyto:
 
 - *Konfigurace IP adres a front-endový port* – přidruží vytvořenou podsíť k aplikační bráně a přiřadí jí přístupový port.
 - *Výchozí fond* – všechny aplikační brány musí mít aspoň jeden back-endový fond serverů.
@@ -174,7 +175,7 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
-V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která v aplikační bráně bude poskytovat servery pro back-endový fond. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
+V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která v aplikační bráně bude poskytovat servery pro back-endový fond. K back-endovému fondu je přiřadíte během konfigurace nastavení IP adres.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -245,7 +246,7 @@ Update-AzVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvořit účet úložiště a nakonfigurovat diagnostiku
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvoření účtu úložiště a konfigurace diagnostiky
 
 V tomto článku používá Aplikační brána účet úložiště k ukládání dat pro účely detekce a prevence. K zaznamenávání dat můžete použít také protokoly Azure Monitor nebo centra událostí.
 
@@ -291,7 +292,7 @@ K získání veřejné IP adresy služby Application Gateway můžete použít [
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-![Testování základní adresy URL v bráně Application Gateway](../media/tutorial-restrict-web-traffic-powershell/application-gateway-iistest.png)
+![Testování základní adresy URL v aplikační bráně](../media/tutorial-restrict-web-traffic-powershell/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

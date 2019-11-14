@@ -1,28 +1,29 @@
 ---
-title: Zkontrolujte protokoly firewallu webových aplikací pomocí Application Gateway pomocí Azure Log Analytics
-description: Tento článek popisuje, jak vám pomůže Azure Log Analytics v protokolech Firewall webových aplikací pomocí Application Gateway
+title: Kontrola protokolů WAF pomocí Azure Log Analytics
+titleSuffix: Azure Application Gateway
+description: V tomto článku se dozvíte, jak můžete použít Azure Log Analytics k prohlédnutí Application Gateway protokolů firewallu webových aplikací.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: aa867e33ef0faa96b6a66a9075a3a5b8b0b0bca4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712173"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048097"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Zkontrolujte protokoly firewallu webových aplikací v Application Gateway pomocí Log Analytics
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Využití Log Analytics ke kontrole protokolů Firewallu webových aplikací služby Application Gateway
 
-Jakmile vaše waf služby Application Gateway je funkční, můžete povolit protokoly a zkontrolujte, co se děje s každou žádostí. Přehled poskytují protokoly brány firewall tak, aby co WAF je vaše rozhodnutí vyzkoušet, porovnávání a blokování. Pomocí služby Log Analytics můžete zkoumat data uvnitř protokoly brány firewall a poskytovat ještě více informací. Další informace o vytváření pracovního prostoru Log Analytics najdete v tématu [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../azure-monitor/learn/quick-create-workspace.md). Další informace o dotazech protokolu najdete v tématu [přehled protokolu dotazů ve službě Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Jakmile Application Gateway WAF, můžete povolit protokoly a zkontrolovat, co se děje s jednotlivými požadavky. Protokoly brány firewall poskytují přehled o tom, co WAF vyhodnocuje, odpovídá a blokuje. Pomocí Log Analytics můžete zkoumat data v protokolech brány firewall a získat ještě další přehledy. Další informace o vytváření pracovního prostoru Log Analytics najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Další informace o dotazech protokolu najdete [v tématu Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="import-waf-logs"></a>Import protokolů WAF
+## <a name="import-waf-logs"></a>Importovat protokoly WAF
 
-Importovat vaše brána firewall protokoly do Log Analytics, najdete v článku [stav Back endu, diagnostické protokoly a metriky pro službu Application Gateway](application-gateway-diagnostics.md#diagnostic-logging). Pokud máte brány firewall protokoly ve vašem pracovním prostoru Log Analytics, můžete zobrazit data, psát dotazy, vytvářet vizualizace a přidat na řídicí panel portálu.
+Pokud chcete importovat protokoly brány firewall do Log Analytics, přečtěte si téma [stav back-endu, diagnostické protokoly a metriky pro Application Gateway](application-gateway-diagnostics.md#diagnostic-logging). Když máte v pracovním prostoru Log Analytics protokoly brány firewall, můžete zobrazit data, zapisovat dotazy, vytvářet vizualizace a přidávat je na řídicí panel portálu.
 
-## <a name="explore-data-with-examples"></a>Zkoumání dat s příklady
+## <a name="explore-data-with-examples"></a>Příklady zkoumání dat
 
 Chcete-li zobrazit nezpracovaná data v protokolu brány firewall, můžete spustit následující dotaz:
 
@@ -31,13 +32,13 @@ AzureDiagnostics
 | where ResourceProvider == "MICROSOFT.NETWORK" and Category == "ApplicationGatewayFirewallLog"
 ```
 
-To bude vypadat podobně jako následující dotaz:
+Bude vypadat podobně jako následující dotaz:
 
-![Dotaz log Analytics](media/log-analytics/log-query.png)
+![Log Analytics dotaz](media/log-analytics/log-query.png)
 
-Můžete podrobná data a zobrazit grafy nebo vytvořit vizualizace odsud. Jako výchozí bod najdete v následujících dotazech:
+Můžete procházet k podrobnostem dat a kreslit grafy nebo vytvářet vizualizace z tohoto místa. Jako výchozí bod se zobrazí následující dotazy:
 
-### <a name="matchedblocked-requests-by-ip"></a>Odpovídající nebo zablokovaný požadavky podle IP
+### <a name="matchedblocked-requests-by-ip"></a>Spárované/Blokované požadavky podle IP adresy
 
 ```
 AzureDiagnostics
@@ -46,7 +47,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="matchedblocked-requests-by-uri"></a>Odpovídající nebo zablokovaný požadavky pomocí identifikátoru URI
+### <a name="matchedblocked-requests-by-uri"></a>Spárované/Blokované požadavky podle identifikátoru URI
 
 ```
 AzureDiagnostics
@@ -55,7 +56,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-matched-rules"></a>Začátek odpovídající pravidla
+### <a name="top-matched-rules"></a>Nejvyšší odpovídající pravidla
 
 ```
 AzureDiagnostics
@@ -65,7 +66,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-five-matched-rule-groups"></a>Hlavních pět skupin odpovídající pravidlo
+### <a name="top-five-matched-rule-groups"></a>Prvních pět odpovídajících skupin pravidel
 
 ```
 AzureDiagnostics
@@ -77,10 +78,10 @@ AzureDiagnostics
 
 ## <a name="add-to-your-dashboard"></a>Přidat na řídicí panel
 
-Jakmile vytvoříte dotaz, přidáte jej do řídicího panelu.  Vyberte **připnout na řídicí panel** nahoře napravo od pracovního prostoru log analytics. S předchozí čtyři dotazy připnuté na řídicí panel příklad jedná se o data, které vidíte na první pohled:
+Když vytvoříte dotaz, můžete ho přidat na řídicí panel.  V pravém horním rohu pracovního prostoru Log Analytics vyberte **Připnout na řídicí panel** . Pomocí předchozích čtyř dotazů připnuté na vzorový řídicí panel se jedná o data, která vidíte na první pohled:
 
 ![Řídicí panel](media/log-analytics/dashboard.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway](application-gateway-diagnostics.md)
+[Stav back-endu, diagnostické protokoly a metriky pro Application Gateway](application-gateway-diagnostics.md)

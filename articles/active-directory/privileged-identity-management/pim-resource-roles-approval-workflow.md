@@ -1,26 +1,26 @@
 ---
-title: Schválení nebo zamítnutí žádostí o role prostředků Azure v Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Schvalování žádostí o role prostředků Azure v PIM – Azure AD | Microsoft Docs
 description: Naučte se schvalovat nebo odmítat žádosti o role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c436a529ebaf15a3024f935c1b28327230da0ac0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e779f633efccf7b594c193e165a584d22b1d653b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895898"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021973"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>Schválení nebo zamítnutí žádostí o role prostředků Azure v Privileged Identity Management
 
@@ -32,7 +32,7 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti o role
 
 Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role prostředku Azure čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

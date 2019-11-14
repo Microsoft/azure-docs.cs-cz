@@ -1,6 +1,6 @@
 ---
-title: Konfigurace metody směrování provozu vážené kruhové dotazování pomocí služby Azure Traffic Manager | Dokumentace Microsoftu
-description: Tento článek vysvětluje, jak vyrovnávat zatížení provozu pomocí metody kruhové dotazování v Traffic Manageru
+title: Konfigurace váženého směrování provozu s kruhovým dotazováním – Azure Traffic Manager
+description: Tento článek vysvětluje, jak vyrovnávat zatížení provozu pomocí metody kruhového dotazování v Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -12,45 +12,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: allensu
-ms.openlocfilehash: 4ca43bf958606a71911bf5d35f31e4fe0b342601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0bfed558ec8db0ef715dad044c3965c1b1d8052b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071285"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040331"
 ---
-# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování provozu vážený v Traffic Manageru
+# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování váženého provozu v Traffic Manager
 
-Běžným vzorem metodu směrování provozu je sada identické koncové body, jako je například cloud services a weby, a odesílat provoz do jednotlivých stejně. Následující kroky popisují, jak konfigurovat metodu směrování provozu tohoto typu.
+Běžným způsobem směrování provozu je poskytnutí sady stejných koncových bodů, mezi které patří cloudové služby a weby a posílání provozu do obou. Následující kroky popisují, jak nakonfigurovat tento typ metody směrování provozu.
 
 > [!NOTE]
-> Služba Azure Web Apps již poskytuje funkce pro weby v rámci oblasti Azure (což se může skládat z několika datových centrech) pro vyrovnávání zatížení s kruhovým. Traffic Manager umožňuje distribuování síťového provozu mezi weby v různých datových centrech.
+> Webová aplikace Azure už poskytuje funkce Vyrovnávání zatížení kruhového dotazování pro weby v oblasti Azure (která může zahrnovat několik datových Center). Traffic Manager umožňuje distribuci provozu mezi weby v různých datových centrech.
 
-## <a name="to-configure-the-weighted-traffic-routing-method"></a>Konfigurace metody směrování provozu vážený
+## <a name="to-configure-the-weighted-traffic-routing-method"></a>Konfigurace metody směrování váženého provozu
 
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/). 
-2. Na panelu hledání na portálu vyhledejte **profily Traffic Manageru** a potom klikněte na název profilu, který chcete konfigurovat metodu směrování pro.
-3. V **profil služby Traffic Manager** okno, ověřte, zda jsou k dispozici cloudovými službami a weby, které chcete zahrnout do vaší konfigurace.
-4. V **nastavení** klikněte na tlačítko **konfigurace**a **konfigurace** okno vyplňte následujícím způsobem:
-    1. Pro **nastavení metodu směrování provozu**, ověřte, zda je metodu směrování provozu **vážená**. Pokud není, klikněte na tlačítko **vážená** z rozevíracího seznamu.
-    2. Nastavte **nastavení sledování koncových bodů** shodné pro všechny každý koncový bod v rámci tohoto profilu následujícím způsobem:
-        1. Vyberte příslušné **protokol**a zadejte **Port** číslo. 
-        2. Pro **cesta** zadejte lomítkem */* . Monitorování koncových bodů, musíte zadat cestu a název souboru. Dopředné lomítko "/" je platná položka pro relativní cestu a znamená, že se soubor nachází v kořenovém adresáři (výchozí).
-        3. V horní části stránky klikněte na tlačítko **Uložit**.
-5. Otestujte změny v konfiguraci následujícím způsobem:
-    1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manageru a klikněte na profil Traffic Manageru ve výsledcích, který je zobrazeno.
-    2.  V **Traffic Manageru** profilu okna, klikněte na tlačítko **přehled**.
-    3.  **Profil služby Traffic Manager** okně se zobrazí název DNS váš nově vytvořený profil Traffic Manageru. Tímto lze všechny klienty (například tak, že přejdete do ní pomocí webového prohlížeče) získat směrovat na správný koncový bod jako Určuje typ směrování. V tomto případě jsou všechny požadavky směrovány každý koncový bod v vždy střídat dokola.
-6. Jakmile váš profil Traffic Manageru funguje, upravte záznam DNS na autoritativního serveru DNS pro název domény vaší společnosti odkazovat na název domény Traffic Manageru.
+2. Na panelu hledání na portálu vyhledejte **Traffic Manager profily** a potom klikněte na název profilu, pro který chcete nakonfigurovat metodu směrování.
+3. V okně **profil Traffic Manager** ověřte, zda jsou k dispozici jak cloudové služby, tak i weby, které chcete zahrnout do vaší konfigurace.
+4. V části **Nastavení** klikněte na možnost **Konfigurace**a v okně **Konfigurace** proveďte následující kroky:
+    1. V části **nastavení metody směrování provozu**ověřte, zda je metoda směrování provozu **váže**. Pokud není, klikněte v rozevíracím seznamu na **váže** .
+    2. **Nastavení monitorování koncového bodu** nastavte u všech koncových bodů v tomto profilu stejným způsobem:
+        1. Vyberte odpovídající **protokol**a zadejte číslo **portu** . 
+        2. Pro **cestu** zadejte */* lomítka. Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
+        3. V horní části stránky klikněte na **Uložit**.
+5. Proveďte test změn v konfiguraci následujícím způsobem:
+    1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manager a klikněte na profil Traffic Manager v zobrazených výsledcích.
+    2.  V okně profil **Traffic Manager** klikněte na **Přehled**.
+    3.  Okno **profil Traffic Manager** zobrazuje název DNS nově vytvořeného profilu Traffic Manager. Můžete je použít u všech klientů (například tak, že na ně přejdete pomocí webového prohlížeče), abyste se dostali ke správnému koncovému bodu, který určuje typ směrování. V tomto případě všechny požadavky jsou směrovány do každého koncového bodu kruhové dotazování.
+6. Jakmile profil Traffic Manager funguje, upravte záznam DNS na autoritativním serveru DNS tak, aby odkazoval na název domény vaší společnosti na název domény Traffic Manager.
 
-![Konfigurace metody směrování provozu vážený pomocí Traffic Manageru][1]
+![Konfigurace metody směrování váženého provozu pomocí Traffic Manager][1]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [metodu směrování provozu priority](traffic-manager-configure-priority-routing-method.md).
-- Další informace o [metodu směrování provozu výkonu](traffic-manager-configure-performance-routing-method.md).
+- Seznamte se s [metodou směrování provozu s prioritou](traffic-manager-configure-priority-routing-method.md).
+- Seznamte se s [metodou směrování provozu výkonu](traffic-manager-configure-performance-routing-method.md).
 - Přečtěte si o [metodě geografického směrování](traffic-manager-configure-geographic-routing-method.md).
-- Zjistěte, jak [test nastavení Traffic Manageru](traffic-manager-testing-settings.md).
+- Naučte se [Testovat nastavení Traffic Manager](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png

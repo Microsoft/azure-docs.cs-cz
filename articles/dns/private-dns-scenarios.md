@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 747fe891bf4d6bd042e689107cd87680795eb82b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3ac4db3a2d98e761183360c268d23efcc313cf09
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959332"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048489"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Scénáře Azure DNS privátních zón
 
@@ -31,7 +31,7 @@ Tento scénář je nejběžnějším případem, kdy potřebujete přidružit pr
 
 Následující diagram znázorňuje jednoduchou verzi tohoto scénáře, kdy jsou k dispozici pouze dvě virtuální sítě – a a B. Je určený jako registrační virtuální síť a B je určený jako virtuální síť pro překlad. Účelem je, aby obě virtuální sítě sdílely společné zóny contoso.com. Když se zóna vytvoří a virtuální sítě pro překlad a registraci jsou propojené s zónou, Azure bude automaticky registrovat záznamy DNS pro virtuální počítače (PARTNERSKÉM-VM1 a PARTNERSKÉM-VM2) z virtuální sítě A. Do zóny můžete také ručně přidat záznamy DNS pro virtuální počítače ve virtuální síti řešení B. V této instalaci se zobrazí následující chování pro předávací a reverzní dotazy DNS:
 * Dotaz DNS z VNETB-VM1 ve virtuální síti překladu B pro VNETA-VM1.contoso.com obdrží odpověď DNS obsahující soukromou IP adresu PARTNERSKÉM-VM1.
-* Dotaz reverzního DNS (PTR) z VNETB-VM2 ve virtuální síti překladu B pro 10.1.0.1 dostane odpověď DNS obsahující plně kvalifikovaný název domény VNETB-VM1.contoso.com. Důvodem je, že reverzní dotazy DNS jsou vymezeny na stejnou virtuální síť. 
+* Dotaz reverzního DNS (PTR) z VNETB-VM2 ve virtuální síti překladu B pro 10.1.0.1 dostane odpověď DNS obsahující plně kvalifikovaný název domény VNETB-VM1.contoso.com.  
 * Dotaz na reverzní DNS (PTR) z VNETB-VM3 ve virtuální síti překladu B, který bude pro 10.0.0.1, obdrží NXDOMAIN. Důvodem je, že reverzní dotazy DNS jsou v oboru pouze stejné virtuální síti. 
 
 
@@ -48,11 +48,11 @@ Když teď internetový klient vydá dotaz DNS, aby vyhledal VNETA-VM1.contoso.c
 ![Rozdělit Brian rozlišení](./media/private-dns-scenarios/split-brain-resolution.png)
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o privátních zónách DNS najdete v tématu [použití Azure DNS u privátních domén](private-dns-overview.md).
+Další informace o privátních zónách DNS najdete v tématu [Použití DNS Azure pro privátní domény](private-dns-overview.md).
 
 Naučte se [vytvořit privátní ZÓNU DNS](./private-dns-getstarted-powershell.md) v Azure DNS.
 
 Další informace o zónách a záznamech DNS najdete v tématu [Přehled zón a záznamů DNS](dns-zones-records.md).
 
-Přečtěte si o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
+Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
 

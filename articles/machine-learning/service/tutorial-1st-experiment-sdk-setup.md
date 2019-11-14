@@ -10,19 +10,19 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582484"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049145"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter. Tento kurz je **první částí série kurzů se dvěma částmi**a popisuje nastavení a konfiguraci prostředí Python a také vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení. [**Druhá část**](tutorial-1st-experiment-sdk-train.md) sestavení na této stránce umožňuje výuku více modelů strojového učení a zavedení procesu správy modelů pomocí Azure Machine Learning studia i sady SDK.
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 > [!div class="checklist"]
 > * Vytvořte [pracovní prostor Azure Machine Learning](concept-workspace.md) pro použití v dalším kurzu.
@@ -81,7 +81,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
 1. Na horním panelu vyberte virtuální počítač poznámkového bloku, který chcete použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se všemi potřebnými ke spuštění Azure Machine Learning. Můžete vybrat virtuální počítač vytvořený libovolným uživatelem pracovního prostoru. 
 
-1. Pokud se nenašly žádné virtuální počítače, vyberte **+ Přidat výpočetní** prostředky a vytvořte virtuální počítač.
+1. Pokud se nenašly žádné virtuální počítače, vyberte **+ Přidat virtuální počítač** a vytvořte virtuální počítač. 
 
     1. Když vytváříte virtuální počítač, zadejte název.  Název musí mít 2 až 16 znaků. Platné znaky jsou písmena, číslice a znak a musí být také jedinečné v rámci předplatného Azure.
 

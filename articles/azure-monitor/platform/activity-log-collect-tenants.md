@@ -7,18 +7,21 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 02/06/2019
-ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b11671f20a7e3e6053f90a884777b31196232a38
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932900"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048309"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Shromažďování protokolů aktivit Azure do Azure Monitor napříč klienty Azure Active Directory
 
+> [!NOTE]
+> Nyní můžete protokol aktivit shromažďovat do Log Analytics pracovního prostoru pomocí nastavení diagnostiky podobného způsobu, jakým shromažďujete protokoly prostředků. Přečtěte si téma [shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure monitor](activity-log-collect.md).
+
 Tento článek vás provede metodou shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics v Azure Monitor pomocí konektoru služby Azure Log Analytics data Collector pro Logic Apps. Postup v tomto článku použijte v případě, že potřebujete odeslat protokoly do pracovního prostoru v jiném Azure Active Directory tenantovi. Například pokud jste poskytovatel spravované služby, můžete chtít shromažďovat protokoly aktivit z předplatného zákazníka a ukládat je do pracovního prostoru služby Log Analytics ve vlastním předplatném.
 
-Pokud je pracovní prostor Log Analytics ve stejném předplatném Azure nebo v jiném předplatném, ale ve stejném Azure Active Directory, použijte postup v části [shromáždění a analýza protokolů aktivit Azure v části Log Analytics v pracovním prostoru v Azure monitor](activity-log-collect.md) ke shromáždění Azure. Protokoly aktivit.
+Pokud je pracovní prostor Log Analytics v rámci stejného předplatného Azure nebo v jiném předplatném, ale ve stejném Azure Active Directory, použijte ke shromáždění protokolů aktivit Azure v části [Log Analytics pracovní prostor služby Azure v Azure monitor](activity-log-collect.md) .
 
 ## <a name="overview"></a>Přehled
 
@@ -123,14 +126,14 @@ Pokud chcete získat název a připojovací řetězec centra událostí, postupu
 
    |Nastavení | Popis  |
    |:---|:---|
-   | Name (Název)           | Jedinečný název aplikace logiky. |
+   | Název           | Jedinečný název aplikace logiky. |
    | Předplatné   | Vyberte předplatné Azure, které bude obsahovat aplikaci logiky. |
    | Skupina prostředků | Vyberte některou z existujících skupin prostředků Azure nebo pro aplikaci logiky vytvořte novou. |
    | Umístění       | Vyberte oblast datového centra pro nasazení aplikace logiky. |
    | Log Analytics  | Tuto možnost vyberte, pokud chcete protokolovat stav každého spuštění aplikace logiky v pracovním prostoru Log Analytics.  |
 
     
-3. Vyberte **Create** (Vytvořit). Po zobrazení oznámení **Nasazení bylo úspěšné** klikněte na **Přejít k prostředku** a otevřete svůj prostředek.
+3. Vyberte **Vytvořit**. Po zobrazení oznámení **Nasazení bylo úspěšné** klikněte na **Přejít k prostředku** a otevřete svůj prostředek.
 
 4. V části **Šablony** zvolte **Prázdná aplikace logiky**. 
 
@@ -144,7 +147,7 @@ V Návrháři pro Logic Apps se teď zobrazí dostupné konektory a jejich trigg
 
    ![obrázek přidání triggeru centra událostí ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
-2. Po zobrazení výzvy k zadání přihlašovacích údajů se připojte ke svému oboru názvů služby Event Hubs. Zadejte název připojení a pak připojovací řetězec, který jste si zkopírovali.  Vyberte **Create** (Vytvořit).
+2. Po zobrazení výzvy k zadání přihlašovacích údajů se připojte ke svému oboru názvů služby Event Hubs. Zadejte název připojení a pak připojovací řetězec, který jste si zkopírovali.  Vyberte **Vytvořit**.
 
    ![obrázek přidání připojení k centru událostí ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-connection.png)
 

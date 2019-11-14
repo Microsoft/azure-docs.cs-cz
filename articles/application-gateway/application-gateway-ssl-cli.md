@@ -1,30 +1,27 @@
 ---
-title: Vytvoření služby application gateway s ukončení protokolu SSL – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+title: Ukončení SSL pomocí CLI – Azure Application Gateway
 description: Přečtěte si, jak vytvořit aplikační bránu a přidat certifikát pro ukončení protokolu SSL pomocí Azure CLI.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 188c252064028ccecc0fd4fe231cda190d2b4c08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d1decdda096fb902ff605205d7193e1264e5170
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135154"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047998"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Vytvoření služby application gateway s ukončení protokolu SSL pomocí Azure CLI
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením SSL pomocí Azure CLI
 
 Pomocí Azure CLI můžete vytvořit [aplikační bránu](application-gateway-introduction.md) s certifikátem pro [ukončení protokolu SSL](application-gateway-backend-ssl.md), která pro back-endové servery používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
@@ -35,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) a soubor pfx pomocí příkazu openssl.
 
@@ -63,7 +60,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem [myAGSubnet](/cli/azure/network/vnet). Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu *az network public-ip create* vytvořte veřejnou IP adresu s názvem [myAGPublicIPAddress](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -149,7 +146,7 @@ az vmss extension set \
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
 K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
@@ -165,16 +162,16 @@ az network public-ip show \
 
 Pokud chcete přijímat upozornění zabezpečení v případě použití certifikátu podepsaného svým držitelem (self-signed certificate), vyberte **Podrobnosti** a potom **Pokračovat na web**. Následně se zobrazí váš zabezpečený web NGINX, jak je znázorněno v následujícím příkladu:
 
-![Otestování základní adresy URL v aplikační bráně](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
+![Testování základní adresy URL v aplikační bráně](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Další informace o aplikačních bran a jejich souvisejících prostředcích najdete i nadále články s postupy.
+Další informace o aplikačních branách a jejich souvisejících prostředcích najdete v článcích s postupy.

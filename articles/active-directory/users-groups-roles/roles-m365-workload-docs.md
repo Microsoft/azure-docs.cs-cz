@@ -1,26 +1,25 @@
 ---
-title: Obsah role správce pro služby Microsoft 365 Services – Azure AD | Microsoft Docs
+title: Dokumentace k rolím Správce v rámci služby Microsoft 365 Services – Azure AD | Microsoft Docs
 description: Hledání obsahu a odkazů rozhraní API pro role správců pro Microsoft 365 služby v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12ffa1d4f3e802b3419b31844ddd8133ceab5086
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 430b65217da33185cd3b5c235fb148f3350e1bfe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304394"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024463"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Role správce pro služby Microsoft 365 Services
 
@@ -46,7 +45,7 @@ Privileged Identity Management | [Role správce Azure AD](directory-assign-admin
 Intune | [Řízení přístupu na základě role v Intune](https://docs.microsoft.com/intune/role-based-access-control) | [Graph API](https://docs.microsoft.com/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta)<br>[Načíst přiřazení rolí](https://docs.microsoft.com/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta)
 Spravovaná plocha | [Role správce Azure AD](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Jak přiřadit nebo odebrat role správce Azure AD](directory-manage-roles-portal.md)
 * [Reference k rolím správce Azure AD](directory-assign-admin-roles.md)

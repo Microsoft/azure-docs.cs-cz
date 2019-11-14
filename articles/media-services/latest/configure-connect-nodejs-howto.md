@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 2ab620ec456610029d699952bb9625abfe4c21dc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 5361a820da0caa336ccc95ae657407889443268c
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307883"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048419"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Připojení k Media Services V3 API – Node. js
 
@@ -123,12 +123,12 @@ npm install
 node index.js
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Media Services koncepty](concepts-overview.md)
 - [Instalace azure-arm-mediaservices v NPM](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte referenční dokumentaci Media Services [Node. js](https://aka.ms/ams-v3-nodejs-ref) a podívejte se na [ukázky](https://github.com/Azure-Samples/media-services-v3-node-tutorials) , které ukazují, jak používat rozhraní API pro Media Services s Node. js.
+Prozkoumejte referenční dokumentaci Media Services [Node. js](/javascript/api/overview/azure/mediaservices/management) a podívejte se na [ukázky](https://github.com/Azure-Samples/media-services-v3-node-tutorials) , které ukazují, jak používat rozhraní API pro Media Services s Node. js.
 

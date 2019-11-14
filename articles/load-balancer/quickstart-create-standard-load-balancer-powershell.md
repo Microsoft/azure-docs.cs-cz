@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vytvoření Standard Load Balancer-Azure PowerShell'
-titlesuffix: Azure Load Balancer
-description: Tento rychlý start ukazuje, jak pomocí PowerShellu vytvořit Load Balancer úrovně Standard.
+title: 'Rychlý Start: vytvoření Standard Load Balancer-Azure PowerShell'
+titleSuffix: Azure Load Balancer
+description: V tomto rychlém startu se dozvíte, jak vytvořit Standard Load Balancer pomocí Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 0e00728e091a7d7d96cb624135519b17524d2227
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b387df5049fff2cb17e8d0758f1cf5fd8f0d0853
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274114"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049105"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Rychlý start: Vytvoření Standard Load Balancer pomocí Azure PowerShell
+# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Rychlý Start: vytvoření Standard Load Balancer pomocí Azure PowerShell
 
 Tento rychlý start ukazuje, jak pomocí Azure PowerShellu vytvořit Load Balancer úrovně Standard. K otestování nástroje pro vyrovnávání zatížení nasadíte tři virtuální počítače s Windows serverem a vyrovnáváte zatížení webové aplikace mezi virtuálními počítači. Další informace o Load Balanceru úrovně Standard najdete v tématu [Co je Load Balancer úrovně Standard](load-balancer-standard-overview.md).
 
@@ -91,7 +91,7 @@ $probe = New-AzLoadBalancerProbeConfig `
 ```
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
-Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Abyste zajistili, že provoz budou přijímat pouze virtuální počítače, které jsou v pořádku, nadefinujte také sondu stavu, která se má použít.
+Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Abyste zajistili, že provoz budou přijímat pouze virtuální počítače, které jsou v pořádku, nadefinujete také sondu stavu, která se má použít.
 
 Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Následující příklad vytvoří pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRule* a nastaví vyrovnávání provozu na portu *TCP* *80*:
 
@@ -332,7 +332,7 @@ Nainstalujte službu IIS s vlastní webovou stránkou na back-endové virtuáln�
 
 
 ## <a name="test-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
-Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
+Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
 
 ```azurepowershell
 Get-AzPublicIPAddress `
@@ -344,7 +344,7 @@ Veřejnou IP adresu pak můžete zadat do webového prohlížeče. Zobrazí se w
 
 ![Test nástroje pro vyrovnávání zatížení](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny tři virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče. 
+Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -354,9 +354,9 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 Remove-AzResourceGroup -Name myResourceGroupSLB
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V rámci tohoto rychlého startu jste vytvořili službu Load Balancer úrovně Standard, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Další informace o službě Azure Load Balancer najdete v kurzech týkajících se služby Azure Load Balancer.
+V rámci tohoto rychlého startu jste vytvořili službu Load Balancer úrovně Standard, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)

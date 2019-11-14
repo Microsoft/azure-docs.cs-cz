@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurovat režim přenosu protokolu IPsec pro partnerský vztah privátní hostitele Windows: ExpressRoute: Azure | Dokumentace Microsoftu'
+title: 'Soukromý partnerský vztah Azure ExpressRoute: konfigurace režimu přenosu IPsec – hostitelé Windows'
 description: Jak povolit režim přenosu protokolu IPsec mezi virtuálními počítači Windows Azure a místní hostitele Windows prostřednictvím ExpressRoute soukromého partnerského vztahu pomocí objektů zásad skupiny a organizační jednotky.
 services: expressroute
 author: fabferri
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: d728980517988e2dc39be4e4b64d20157a1aef54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366926"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022009"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurovat režim přenosu protokolu IPsec pro soukromý partnerský vztah ExpressRoute
 
@@ -43,17 +43,17 @@ Tento diagram znázorňuje tunelových propojení IPsec na cestě v privátního
 ### <a name="working-with-ipsec-policy"></a>Práce s zásad systému IPsec
 
 Ve Windows je šifrování přidružené k zásadám protokolu IPsec. Zásady protokolu IPsec Určuje, jaký provoz IP je zabezpečená a mechanismus zabezpečení, který se použije IP paketech.
-**Zásady protokolu IPSec** se skládá z následujících položek: **Filtrovat seznamy**, **akce filtru**, a **pravidla zabezpečení**.
+**Zásady protokolu IPSec** se skládá z následujících položek: **seznamy filtrů**, **filtr akce**, a **pravidla zabezpečení**.
 
 Při konfiguraci zásad protokolu IPsec, je důležité, abyste rozuměli technologiím následující zásady IPsec:
 
-* **Zásady protokolu IPsec:** Kolekce pravidel. Pouze jedna zásada může být aktivní ("přiřazeno") v určitém čase. Každá zásada může mít jedno nebo více pravidel, které může být aktivní současně. Počítač je možné přiřadit pouze jeden aktivní zásady protokolu IPsec v zadaný čas. V rámci zásad protokolu IPsec, ale můžete definovat více akcí, které mohou být přijata v různých situacích. Každá sada pravidel IPsec je přidružený seznam filtrů, které má vliv na typ síťového provozu, na které se pravidlo vztahuje.
+* **Zásady protokolu IPsec:** kolekce pravidel. Pouze jedna zásada může být aktivní ("přiřazeno") v určitém čase. Každá zásada může mít jedno nebo více pravidel, které může být aktivní současně. Počítač je možné přiřadit pouze jeden aktivní zásady protokolu IPsec v zadaný čas. V rámci zásad protokolu IPsec, ale můžete definovat více akcí, které mohou být přijata v různých situacích. Každá sada pravidel IPsec je přidružený seznam filtrů, které má vliv na typ síťového provozu, na které se pravidlo vztahuje.
 
-* **Filtrovat seznamy:** Seznamy filtrů jsou sady jeden nebo více filtrů. Jeden seznam může obsahovat více filtrů. Filtr definuje, jestli komunikace je povolený, zabezpečené nebo blokovaný, podle toho, rozsahy adres IP, protokoly nebo dokonce určitý protokol portů. Každý filtr hledá shodu ve určitou sadu podmínek. například pakety odeslané z konkrétní podsítě pro konkrétní počítač, na konkrétní cílový port. Když stav sítě odpovídají nejméně jeden z těchto filtrů, se aktivuje filtr seznamu. Každý filtr je definována uvnitř konkrétní filtr seznamu. Filtry se nedají sdílet mezi seznamy filtrů. Daná filtrovací seznamu však lze začlenit do několik zásad protokolu IPsec. 
+* **Filtrovat seznamy:** seznamy filtrů jsou sady jeden nebo více filtrů. Jeden seznam může obsahovat více filtrů. Filtr definuje, jestli komunikace je povolený, zabezpečené nebo blokovaný, podle toho, rozsahy adres IP, protokoly nebo dokonce určitý protokol portů. Každý filtr hledá shodu ve určitou sadu podmínek. například pakety odeslané z konkrétní podsítě pro konkrétní počítač, na konkrétní cílový port. Když stav sítě odpovídají nejméně jeden z těchto filtrů, se aktivuje filtr seznamu. Každý filtr je definována uvnitř konkrétní filtr seznamu. Filtry se nedají sdílet mezi seznamy filtrů. Daná filtrovací seznamu však lze začlenit do několik zásad protokolu IPsec. 
 
-* **Akce filtru:** Metoda zabezpečení definuje sadu algoritmů zabezpečení, protokoly, a klíče počítače nabízí během vyjednávání protokolu IKE. Filtr akce jsou seznamy metody zabezpečení, seřazeny v pořadí podle priority.  Když počítač vyjedná relaci protokolu IPsec, přijímá nebo odesílá návrhy na základě nastavení zabezpečení, uložená v seznamu filtrů akce.
+* **Akce filtru:** metodu zabezpečení definuje sadu algoritmů zabezpečení, protokoly, a klíče počítače nabízí během vyjednávání protokolu IKE. Filtr akce jsou seznamy metody zabezpečení, seřazeny v pořadí podle priority.  Když počítač vyjedná relaci protokolu IPsec, přijímá nebo odesílá návrhy na základě nastavení zabezpečení, uložená v seznamu filtrů akce.
 
-* **Pravidla zabezpečení:** Pravidla určují, jak a kdy zásady protokolu IPsec, chrání komunikaci. Používá **seznam filtrů** a **akce filtru** vytvoří pravidlo IPsec k vytvoření připojení IPsec. Každá zásada může mít jedno nebo více pravidel, které může být aktivní současně. Jednotlivá pravidla obsahují seznam filtrů IP adres a kolekce zabezpečení akcí, které provedou po shodu s seznamu filtru:
+* **Pravidla zabezpečení:** pravidla určují, jak a kdy zásady protokolu IPsec, chrání komunikaci. Používá **seznam filtrů** a **akce filtru** vytvoří pravidlo IPsec k vytvoření připojení IPsec. Každá zásada může mít jedno nebo více pravidel, které může být aktivní současně. Jednotlivá pravidla obsahují seznam filtrů IP adres a kolekce zabezpečení akcí, které provedou po shodu s seznamu filtru:
   * Akce filtru IP
   * Metody ověřování
   * Nastavení IP adresy tunelového propojení
@@ -61,7 +61,7 @@ Při konfiguraci zásad protokolu IPsec, je důležité, abyste rozuměli techno
 
 [![5]][5]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ujistěte se, že splňujete následující požadavky:
 
@@ -93,13 +93,13 @@ Ujistěte se, že splňujete následující požadavky:
 
 * **Název domény:** ipsectest.com
 
-* **ORGANIZAČNÍ JEDNOTKY:** IPSecOU
+* **Organizační jednotky:** IPSecOU
 
 * **V místním počítači Windows:** host1
 
 * **Virtuální počítače s Windows Azure:** vm1, vm2
 
-## <a name="creategpo"></a>1. Vytvořit objekt zásad skupiny
+## <a name="creategpo"></a>1. vytvoření objektu zásad skupiny
 
 1. Pokud chcete vytvořit nový objekt zásad skupiny propojené s organizační Jednotkou, otevřete modul snap-in Správa zásad skupiny a vyhledejte organizační jednotku, na který se propojí se objekt zásad skupiny. V tomto příkladu má název organizační jednotky **IPSecOU**. 
 
@@ -111,7 +111,7 @@ Ujistěte se, že splňujete následující požadavky:
 
    [![11]][11]
 
-## <a name="enablelink"></a>2. Povolí odkaz na objekt zásad skupiny
+## <a name="enablelink"></a>2. povolení odkazu na objekt zásad skupiny
 
 Chcete-li použít objekt zásad skupiny pro organizační jednotku, nesmí být objekt zásad skupiny propojené jenom s organizační jednotku, ale odkaz musí být také povolena.
 
@@ -120,7 +120,7 @@ Chcete-li použít objekt zásad skupiny pro organizační jednotku, nesmí být
 
    [![12]][12]
 
-## <a name="filteraction"></a>3. Definovat akce filtru IP
+## <a name="filteraction"></a>3. Definujte akci filtru IP.
 
 1. Z rozevíracího seznamu, klikněte pravým tlačítkem na **zásady zabezpečení protokolu IP v Active Directory**a potom klikněte na tlačítko **Správa IP seznamy filtrů a filtrů akce...** .
 
@@ -151,7 +151,7 @@ Chcete-li použít objekt zásad skupiny pro organizační jednotku, nesmí být
 
    [![23]][23]
 
-## <a name="filterlist1"></a>4. Definování seznamu filtru IP
+## <a name="filterlist1"></a>4. definování seznamu filtrů IP adres
 
 Vytvoření seznamu filtru, který určuje šifrovaný provoz protokolu HTTP s cílový port 8080.
 
@@ -161,7 +161,7 @@ Vytvoření seznamu filtru, který určuje šifrovaný provoz protokolu HTTP s c
 2. V **název:** pole, zadejte název pro váš seznam filtrů IP. Například **azure. místní HTTP8080**. Potom klikněte na **přidat**.
 
    [![25]][25]
-3. Na **vlastnost Popis filtru IP a zrcadlený** stránce **zrcadlený**. Zrcadlené nastavení odpovídá paketů do toho pustit v obou směrech, které umožňuje obousměrnou komunikaci. Pak klikněte na tlačítko **Další**.
+3. Na **vlastnost Popis filtru IP a zrcadlený** stránce **zrcadlený**. Zrcadlené nastavení odpovídá paketů do toho pustit v obou směrech, které umožňuje obousměrnou komunikaci. Potom klikněte na tlačítko **Další**.
 
    [![26]][26]
 4. Na **zdroje přenosů IP** stránky, od **zdrojová adresa:** rozevíracím seznamu zvolte **konkrétní IP adresu nebo podsíť**. 
@@ -170,7 +170,7 @@ Vytvoření seznamu filtru, který určuje šifrovaný provoz protokolu HTTP s c
 5. Zadejte zdrojovou adresu **IP adresy nebo podsítě:** IP provozu a pak klikněte na tlačítko **Další**.
 
    [![28]][28]
-6. Zadejte **cílové adresy:** IP adresy nebo podsítě. Pak klikněte na **Další**.
+6. Zadejte **cílovou adresu:** IP adresy nebo podsítě. Pak klikněte na **Další**.
 
    [![29]][29]
 7. Na **typ protokolu IP** stránce **TCP**. Pak klikněte na **Další**.
@@ -188,7 +188,7 @@ Vytvoření seznamu filtru, který určuje šifrovaný provoz protokolu HTTP s c
 
    [![32]][32]
 
-## <a name="filterlist2"></a>5. Upravit seznam filtru IP
+## <a name="filterlist2"></a>5. Upravte seznam filtru IP adres.
 
 K šifrování stejný typ provozu v opačném směru (z místního hostitele pro virtuální počítač Azure), budete potřebovat druhý filtr IP. Proces zřízení nového filtru je stejný proces, který jste použili k nastavení prvního filtru IP. Pouze rozdíly jsou podsítě zdrojové a cílové podsíti.
 
@@ -207,7 +207,7 @@ K šifrování stejný typ provozu v opačném směru (z místního hostitele pr
 
 Pokud se vyžaduje mezi místním umístěním a Azure podsíť k ochraně aplikace, místo úprava existující seznam filtrů IP šifrování je můžete přidat nový seznam filtrů IP. Přidružení 2 IP seznamy filtrů do stejných zásad IPsec poskytuje dá větší flexibilitu protože konkrétního seznamu filtru IP můžete změnit ani odebrat kdykoli, aniž by to ovlivnilo ostatní seznamy filtrů IP.
 
-## <a name="ipsecpolicy"></a>6. Vytvoření zásady zabezpečení protokolu IPsec 
+## <a name="ipsecpolicy"></a>6. vytvoření zásady zabezpečení protokolu IPsec 
 
 Vytvoření zásad IPsec s pravidla zabezpečení.
 
@@ -224,7 +224,7 @@ Vytvoření zásad IPsec s pravidla zabezpečení.
 
    [![40]][40]
 
-## <a name="editipsec"></a>7. Upravit zásady zabezpečení protokolu IPsec
+## <a name="editipsec"></a>7. upravte zásady zabezpečení IPsec.
 
 Přidat do zásad IPsec **seznam filtrů IP** a **filtr akce** , který jste dříve nakonfigurovali.
 
@@ -252,16 +252,16 @@ Přidat do zásad IPsec **seznam filtrů IP** a **filtr akce** , který jste dř
 6. Vyberte existující akci filtru **myEncryption** , kterou jste vytvořili dříve.
 
    [![46]][46]
-7. Windows podporuje čtyři různé typy ověřování: Protokol Kerberos, certifikáty, NTLMv2 a předsdílený klíč. Protože Pracujeme s hostiteli připojených k doméně, vyberte **výchozí služby Active Directory (protokol Kerberos v. 5)** a potom klikněte na tlačítko **Další**.
+7. Windows podporuje čtyři různé typy ověřování: protokolu Kerberos, certifikáty, NTLMv2 a předsdílený klíč. Protože Pracujeme s hostiteli připojených k doméně, vyberte **výchozí služby Active Directory (protokol Kerberos v. 5)** a potom klikněte na tlačítko **Další**.
 
    [![47]][47]
-8. Nová zásada se vytvoří pravidlo zabezpečení: **azure. místní HTTP8080**. Klikněte na **OK**.
+8. Nová zásada se vytvoří pravidlo zabezpečení: **azure. místní HTTP8080**. Klikněte na tlačítko **OK**.
 
    [![48]][48]
 
 Zásady protokolu IPsec vyžaduje všechna připojení protokolu HTTP na cílový port 8080 použít režim přenosu protokolu IPsec. Protože HTTP je protokol prostý text, zásady zabezpečení povolené zajistí, že data se šifrují, když se přenáší prostřednictvím ExpressRoute privátní partnerský vztah. Zásady zabezpečení protokolu IP pro službu Active Directory je složitější konfigurace než Windows Firewall s pokročilým zabezpečením, ale umožní pro větší míru přizpůsobení připojení IPsec.
 
-## <a name="assigngpo"></a>8. Přiřadit organizační jednotky IPsec objektu zásad skupiny
+## <a name="assigngpo"></a>8. Přiřaďte objekt zásad skupiny IPsec k organizační jednotce.
 
 1. Zobrazte zásady. Zásady skupiny zabezpečení je definována, ale ještě nebyly přiřazeny.
 
@@ -312,7 +312,7 @@ Následující snímek sítě ukazuje, že se že zobrazí výsledky pro místn�
 
 Při spuštění prostředí powershell skriptu na premisies (klienta HTTP), v zachytávání sítě na virtuálním počítači Azure zobrazí podobné trasování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 

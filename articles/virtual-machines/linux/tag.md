@@ -1,5 +1,5 @@
 ---
-title: Jak označit virtuální počítač se systémem Azure Linux | Microsoft Docs
+title: Jak označit virtuální počítač Azure Linux
 description: Přečtěte si informace o označení virtuálního počítače Azure Linux vytvořeného v Azure pomocí modelu nasazení Správce prostředků.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: c232fc80ea63cd2e1d37bc380fb09c512bb7a517
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cabebee7b10ef86486fb8296df44845429d7ebbe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081918"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034731"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Označení virtuálního počítače se systémem Linux v Azure
 Tento článek popisuje různé způsoby, jak označit virtuální počítač Linux v Azure pomocí modelu nasazení Správce prostředků. Značky jsou páry klíč/hodnota definované uživatelem, které lze umístit přímo do prostředku nebo skupiny prostředků. Azure v současné době podporuje až 15 značek na jeden prostředek a skupinu prostředků. Značky lze umístit na prostředek v době vytvoření nebo přidání do existujícího prostředku. Upozorňujeme, že značky se podporují jenom u prostředků vytvořených pomocí modelu nasazení Správce prostředků.
@@ -36,7 +36,7 @@ Všechny vlastnosti pro daný virtuální počítač, včetně značek, můžete
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Pokud chcete přidat novou značku virtuálního počítače přes rozhraní příkazového řádku Azure, můžete `azure vm update` použít příkaz spolu s parametrem značky **--set**:
+Pokud chcete přidat novou značku virtuálního počítače přes rozhraní příkazového řádku Azure, můžete použít příkaz `azure vm update` spolu s parametrem značky **--set**:
 
 ```azurecli
 az vm update \
@@ -45,7 +45,7 @@ az vm update \
     --set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 ```
 
-Chcete-li odebrat značky, můžete použít parametr **--Remove** v `azure vm update` příkazu.
+Chcete-li odebrat značky, můžete použít parametr **--Remove** v příkazu `azure vm update`.
 
 ```azurecli
 az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNewTagName1

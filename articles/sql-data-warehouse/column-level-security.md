@@ -11,23 +11,23 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34172e313b537d59287a424683ea1555cbba9b99
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693082"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049165"
 ---
 # <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
 Zabezpečení na úrovni sloupce (CLS) umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo jejich členství ve skupinách.
-
+Aktualizace na video dole – protože toto video bylo na [úrovni řádků zabezpečení](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) je dostupné i v SQL Data Warehouse. 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 Specifikace CLS zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. Specifikace CLS umožňuje implementovat omezení přístupu k sloupci pro ochranu citlivých dat. Například zajistěte, aby konkrétní uživatelé měli přístup pouze k určitým sloupcům tabulky, které se vztahují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z libovolné úrovně. Toto omezení zajišťuje spolehlivější a robustní systém zabezpečení tím, že snižuje plochu celého systému zabezpečení. Kromě toho CLS také eliminuje nutnost zavedení zobrazení pro odfiltrování sloupců pro ukládání omezení přístupu pro uživatele.
 
 Specifikaci CLS můžete implementovat pomocí příkazu [grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (AAD).
 
-![specifikaci](./media/column-level-security/cls.png)
+![specifikace CLS](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntaxe
 

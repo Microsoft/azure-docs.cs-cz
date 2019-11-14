@@ -1,24 +1,24 @@
 ---
-title: Udělení individuálního oprávnění pro překročení omezení při registracích aplikací – Azure Active Directory | Microsoft Docs
-description: Přiřaďte vlastní roli pro udělení neomezených registrací aplikací v Azure AD Active Directory.
+title: Odebrání omezení při vytváření registrací aplikací – Azure AD | Microsoft Docs
+description: Přiřazení vlastní role pro udělení neomezených registrací aplikací v Azure AD Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c91de3de743d168bea207f27fb162486ea625a63
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026278"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024408"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Rychlý Start: udělení oprávnění k vytvoření neomezených registrací aplikací
 
@@ -32,7 +32,7 @@ Nejnižší privilegovaná role požadovaná k vytvoření a přiřazení vlastn
 
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Vytvoření nové vlastní role pomocí portálu Azure AD
 
-1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)@no__t – 1with oprávnění správce privilegované role nebo globálního správce v organizaci Azure AD.
+1. Přihlaste se k [centru pro správu Azure ad](https://aad.portal.azure.com) s oprávněním správce privilegované role nebo globálním správcem v organizaci Azure AD.
 1. Vyberte **Azure Active Directory**, vyberte **role a správci**a pak vyberte **Nová vlastní role**.
 
     ![Vytvoření nebo úprava rolí na stránce role a správci](./media/roles-create-custom/new-custom-role.png)
@@ -49,7 +49,7 @@ Nejnižší privilegovaná role požadovaná k vytvoření a přiřazení vlastn
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>Přiřazení role uživateli pomocí portálu Azure AD
 
-1. Přihlaste se do [centra pro správu Azure ad](https://aad.portal.azure.com)@no__t – 1with oprávnění správce privilegované role nebo globálního správce ve vaší organizaci Azure AD.
+1. Přihlaste se k [centru pro správu Azure ad](https://aad.portal.azure.com) s oprávněním správce privilegované role nebo globálním správcem ve vaší organizaci Azure AD.
 1. Vyberte **Azure Active Directory** a pak vyberte **role a správci**.
 1. Vyberte roli tvůrce registrace aplikace a vyberte **Přidat přiřazení**.
 1. Vyberte požadovaného uživatele a kliknutím na tlačítko **Vybrat** přidejte uživatele do role.
@@ -64,7 +64,7 @@ Hotovo! V tomto rychlém startu jste úspěšně vytvořili vlastní roli s opr�
 Existují dvě oprávnění, která jsou k dispozici pro udělení možnosti vytvářet registrace aplikací, z nichž každá má jiné chování.
 
 - Microsoft. Directory/Applications/createAsOwner: přiřadíte-li toto oprávnění, bude autor přičtený jako první vlastník vytvořené registrace aplikace a tato vytvořená registrace aplikace se bude počítat s kvótou vytvořených objektů autora 250.
-- Microsoft. Directory/applicationPolicies/Create: přiřadíte-li toto oprávnění, nepřidá se autor jako první vlastník vytvořené registrace aplikace a registrace vytvořené aplikace se nebude počítat s 250 vytvořenými objekty tvůrce. přidělení. Toto oprávnění používejte opatrně, protože nebrání žádnému neoprávněnému nabyvateli v vytváření registrací aplikací, dokud se nedosáhne kvóty na úrovni adresáře. Pokud jsou přiřazena obě oprávnění, má tato oprávnění přednost.
+- Microsoft. Directory/applicationPolicies/Create: přiřadíte-li toto oprávnění, nepřidá se autor jako první vlastník vytvořené registrace aplikace a registrace vytvořené aplikace se nebude počítat s kvótou vytvořených objektů autora 250. Toto oprávnění používejte opatrně, protože nebrání žádnému neoprávněnému nabyvateli v vytváření registrací aplikací, dokud se nedosáhne kvóty na úrovni adresáře. Pokud jsou přiřazena obě oprávnění, má tato oprávnění přednost.
 
 ## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Vytvoření vlastní role pomocí Azure AD PowerShellu
 
@@ -135,7 +135,7 @@ $customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Displ
 
 Požadavek HTTP na vytvoření vlastní role
 
-SPUŠTĚNÍ
+POST
 
 ``` HTTP
 https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
@@ -172,7 +172,7 @@ Přiřazení role kombinuje ID objektu zabezpečení (může to být uživatel n
 
 Požadavek HTTP na přiřazení vlastní role
 
-SPUŠTĚNÍ
+POST
 
 ``` HTTP
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments

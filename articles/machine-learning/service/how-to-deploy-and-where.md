@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4a0736267ca00b67f35abc7cf263e7cf19543d81
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6ab01cf42dac280e64470355f7ea5804cad669d7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932130"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048807"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -194,7 +194,7 @@ Skript obsahuje dvě funkce, které načítají a spouštějí model:
 
 * `init()`: Tato funkce obvykle načte model do globálního objektu. Tato funkce se spustí jenom jednou, když se spustí kontejner Docker pro vaši webovou službu.
 
-* `run(input_data)`: Tato funkce používá model k předpovědi hodnoty založené na vstupních datech. Vstupy a výstupy běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data je možné transformovat před jejich odesláním do modelu nebo před vrácením do klienta.
+* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data je možné transformovat před jejich odesláním do modelu nebo před vrácením do klienta.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Vyhledání souborů modelu ve vstupním skriptu
 
@@ -233,7 +233,7 @@ Při registraci modelu zadáte název modelu, který se používá pro správu m
 Když zaregistrujete model, přiřadíte mu název. Název odpovídá umístění modelu, a to buď místně, nebo během nasazování služby.
 
 > [!IMPORTANT]
-> Pokud jste pomocí automatizovaného strojového učení využívali model, použije se jako název modelu `model_id` hodnota. Příklad registrace a nasazení modelu vyškolený pomocí automatizovaného strojového učení najdete v tématu [Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) na GitHubu.
+> Pokud jste pomocí automatizovaného strojového učení využívali model, použije se jako název modelu `model_id` hodnota. Příklad registrace a nasazení modelu vyškolený pomocí automatizovaného strojového učení najdete v tématu [Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features) na GitHubu.
 
 Následující příklad vrátí cestu k jednomu souboru s názvem `sklearn_mnist_model.pkl` (který byl registrován s názvem `sklearn_mnist`):
 
@@ -375,8 +375,8 @@ def run(data):
 
 Další příklady najdete v následujících skriptech:
 
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
@@ -572,7 +572,7 @@ Informace o používání profilování z rozhraní příkazového řádku najde
 Další informace najdete v těchto dokumentech:
 
 * [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [Profil ()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
+* [Profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 * [Odvození schématu konfiguračního souboru](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Nasadit do cíle
@@ -584,7 +584,7 @@ Nasazení používá k nasazení modelů konfiguraci nasazení nasazení konfigu
 Pokud chcete model nasadit lokálně, musíte na svém místním počítači nainstalovat Docker.
 
 #### <a name="using-the-sdk"></a>Použití sady SDK
-
+zzs
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
 
@@ -1138,7 +1138,7 @@ Poznámka: tyto závislosti jsou zahrnuté v předem sestaveném kontejneru odvo
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
-K odstranění registrovaného modelu použijte `model.delete()`.
+Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1146,7 +1146,7 @@ Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs
 
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Zabezpečené Azure Machine Learning webové služby pomocí protokolu SSL](how-to-secure-web-service.md)
+* [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Využití modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-ms.date: 12/19/2018
-ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/12/2019
+ms.openlocfilehash: a113ea3fd4828a498d1f53ea7604df7bc8588eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811388"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048414"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Doporučení k výkonu pro SQL Database
 
@@ -25,6 +25,17 @@ Azure SQL Database se učí a přizpůsobí vaší aplikaci. Nabízí přizpůso
 > [!TIP]
 > [Automatické ladění](sql-database-automatic-tuning.md) je doporučovanou metodou pro automatické ladění některých nejběžnějších problémů s výkonem databáze. [Query Performance Insights](sql-database-query-performance.md) je doporučená metoda pro základní Azure SQL Database sledování výkonu. [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) je doporučená metoda pro pokročilé sledování výkonu databáze ve velkém měřítku s integrovanými inteligentními funkcemi pro řešení potíží s automatickým výkonem.
 >
+
+## <a name="performance-recommendations-options"></a>Možnosti doporučení pro výkon
+
+Dostupné možnosti pro doporučení výkonu Azure SQL Database jsou:
+
+| Doporučení pro výkon | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
+| :----------------------------- | ----- | ----- |
+| **Vytvoření doporučení indexu** – doporučuje vytváření indexů, které můžou zlepšit výkon vašich úloh. | Ano | Ne | 
+| **Vyřazení doporučení indexu** – doporučuje, abyste každý den odebrali redundantní a duplicitní indexy, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (> 90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Ano | Ne |
+| **Parametrizovat dotazy doporučení (Preview)** – doporučuje vynucení Vynutit pro případy, kdy máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. | Ano | Ne |
+| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když služba SQL Database zaznamená anomálii v počtu chyb SQL souvisejících se schématem, které se vyskytují ve vaší databázi SQL. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Ano | Ne |
 
 ## <a name="create-index-recommendations"></a>Vytvořit doporučení indexu
 SQL Database nepřetržitě monitoruje spuštěné dotazy a identifikuje indexy, které by mohly zvýšit výkon. Po dostatečné jistotě, že chybí určitý index, se vytvoří nové doporučení **Create index** .
@@ -50,8 +61,7 @@ Kromě detekce chybějících indexů SQL Database průběžně analyzují výko
 
 Vyřadit doporučení indexu také po implementaci projít ověřením. Pokud se výkon zlepší, je sestava dopadu k dispozici. Pokud dojde ke snížení výkonu, doporučení se vrátí.
 
-
-## <a name="parameterize-queries-recommendations"></a>Parametrizovat dotazy na doporučení
+## <a name="parameterize-queries-recommendations-preview"></a>Parametrizovat dotazy na doporučení (Preview)
 *Parametrizovat dotazy* doporučení se zobrazí, když máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. Tato podmínka vytvoří příležitost k použití vynuceného Parametrizace. Vynucené Parametrizace umožňuje, aby se plány dotazů ukládaly do mezipaměti a znovu v budoucnu používaly, což zvyšuje výkon a snižuje využití prostředků. 
 
 Každý dotaz, který je vydaný pro SQL Server počáteční, musí být zkompilován pro generování plánu spuštění. Každý vygenerovaný plán se přidá do mezipaměti plánu. Následná spuštění stejného dotazu může tento plán znovu použít z mezipaměti, což eliminuje nutnost další kompilace. 

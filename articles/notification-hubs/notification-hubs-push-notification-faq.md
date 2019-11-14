@@ -1,5 +1,5 @@
 ---
-title: 'Notification Hubs Azure: Nejčastější dotazy (FAQ) | Microsoft Docs'
+title: 'Azure Notification Hubs: nejčastější dotazy (FAQ) | Microsoft Docs'
 description: Nejčastější dotazy týkající se návrhu a implementace řešení na Notification Hubs
 services: notification-hubs
 documentationcenter: mobile
@@ -13,18 +13,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 5de8c9523e05411a4751766c836b8e99ebb977c1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/13/2019
+ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213149"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048788"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: Nejčastější dotazy
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
 ## <a name="general"></a>Obecné
 
@@ -38,16 +38,16 @@ Doporučené mapování odpovídá jednomu oboru názvů s jednou aplikací. V r
 
 Nejnovější informace o cenách najdete na stránce s [Ceny Notification Hubs] . Notification Hubs se účtuje na úrovni oboru názvů. (Pro definici oboru názvů, přečtěte si téma "Co je struktura prostředků Notification Hubs?") Notification Hubs nabízí tři úrovně:
 
-* **Zdarma**: Tato vrstva je dobrým výchozím bodem pro zkoumání nabízených funkcí. Nedoporučuje se pro produkční aplikace. Získáte 500 zařízení a 1 000 000 nabízených oznámení na obor názvů za měsíc bez záruky smlouvy o úrovni služeb (SLA).
-* **Základní**: Tato vrstva (nebo úroveň Standard) se doporučuje pro menší produkční aplikace. Dostanete 200 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty.
-* **Standardní**: Tato úroveň se doporučuje pro střední až velké produkční aplikace. Dostanete 10 000 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty. Obsahuje bohatou telemetrii (další údaje o nabízeném stavu push).
+* **Zdarma**: Tato úroveň je dobrým výchozím bodem pro zkoumání nabízených funkcí. Nedoporučuje se pro produkční aplikace. Získáte 500 zařízení a 1 000 000 nabízených oznámení na obor názvů za měsíc bez záruky smlouvy o úrovni služeb (SLA).
+* **Basic**: Tato vrstva (nebo úroveň Standard) se doporučuje pro menší produkční aplikace. Dostanete 200 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty.
+* **Standard**: Tato úroveň se doporučuje pro střední až velké produkční aplikace. Dostanete 10 000 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty. Obsahuje bohatou telemetrii (další údaje o nabízeném stavu push).
 
 Funkce úrovně Standard:
 
-* **Bohatá telemetrie**: Pro sledování všech žádostí o nabízených oznámení a systém oznámení platformy zpětnou vazbu k ladění můžete použít Notification Hubs na telemetrii zpráv.
-* **Víceklientská**architektura: Můžete pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
-* **Naplánovaná nabízená oznámení**: Můžete naplánovat, aby se oznámení odesílala kdykoli.
-* **Hromadné operace**: Umožňuje registraci funkcí exportu/importu, jak je popsáno v tématu [Registrace – export/import] dokumentu.
+* **Bohatá telemetrie**: pomocí Notification Hubs telemetrie zpráv můžete sledovat všechny žádosti o nabízené oznámení a systém oznámení platformy zpětnou vazbu pro ladění.
+* **Víceklientská**architektura: můžete pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
+* **Naplánovaná nabízená**oznámení: můžete naplánovat, aby se oznámení odesílala kdykoli.
+* **Hromadné operace**: umožňuje registraci funkcí exportu/importu, jak je popsáno v dokumentu [Registrace – export/import] .
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Jaká je smlouva SLA pro Notification Hubs?
 
@@ -58,7 +58,7 @@ U úrovní Basic a Standard Notification Hubs mohou správně nakonfigurované a
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Návody upgradovat nebo downgradovat můj rozbočovač nebo obor názvů na jinou úroveň?
 
-Přejít na **[Azure Portal]**  > **obory názvů Notification Hubs** nebo **Notification Hubs**. Vyberte prostředek, který chcete aktualizovat, a pak přejít na **cenovou úroveň**. Vezměte na vědomí následující požadavky:
+Přejít na **[Azure Portal]**  > **Notification Hubs obory názvů** nebo **Notification Hubs**. Vyberte prostředek, který chcete aktualizovat, a pak přejít na **cenovou úroveň**. Vezměte na vědomí následující požadavky:
 
 * Aktualizovaná cenová úroveň se vztahuje na *všechna* centra v oboru názvů, se kterým pracujete.
 * Pokud počet zařízení překročí limit vrstvy, na kterou se chystáte přejít, budete muset před přechodem do downgradu odstranit zařízení.
@@ -144,7 +144,7 @@ Pokud máte aplikaci, která se používá globálně, můžete vytvořit centra
 
 ### <a name="should-i-do-registrations-from-the-app-backend-or-directly-through-client-devices"></a>Mám provést registraci z back-endu aplikace nebo přímo na klientských zařízeních?
 
-Registrace z back-endu aplikace jsou užitečné v případě, že je nutné ověřit klienty před vytvořením registrace. Jsou také užitečné, pokud máte značky, které musí vytvořit nebo upravit pomocí back-endu aplikace na základě logiky aplikace. Další informace najdete v pokynech k [Pokyny k registraci back-endu] a na stránkách 2 – pokyny k registraci [Pokyny k registraci back-endu 2] .
+Registrace z back-endu aplikace jsou užitečné v případě, že je nutné ověřit klienty před vytvořením registrace. Jsou také užitečné, pokud máte značky, které musí vytvořit nebo upravit pomocí back-endu aplikace na základě logiky aplikace. Další informace najdete v [Pokyny k registraci back-endu] a na stránkách 2 – pokyny k registraci [Pokyny k registraci back-endu 2] .
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>Co je model zabezpečení doručení nabízených oznámení?
 
@@ -165,7 +165,7 @@ K posílání citlivých datových částí doporučujeme použít zabezpečený
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Jaká podpora je k dispozici pro zotavení po havárii?
 
-Poskytujeme na našem konci pokrytí metadat pro zotavení po havárii (Notification Hubs název, připojovací řetězec a další důležité informace). Když se spustí scénář zotavení po havárii, je registrační data *jediným segmentem* Notification Hubs infrastruktury, která se ztratí. K opětovnému naplnění těchto dat do nového centra po obnovení bude nutné implementovat řešení:
+Poskytujeme na našem konci pokrytí metadat pro zotavení po havárii (Notification Hubs název, připojovací řetězec a další důležité informace). Když se spustí scénář zotavení po havárii, je registrační data *jediným segmentem* Notification Hubs infrastruktury, která se ztratí. K opětovnému naplnění těchto dat do nového centra po obnovení musíte implementovat řešení:
 
 1. Vytvořte sekundární centrum oznámení v jiném datovém centru. Doporučujeme vytvořit jeden od začátku, abyste si ho převedli na událost zotavení po havárii, která může mít vliv na možnosti správy. Můžete ho také vytvořit v době události zotavení po havárii.
 
@@ -182,6 +182,10 @@ Pro back-endy aplikací máme dvě doporučení:
 Pokud nemáte back-end, aplikace při spuštění na cílových zařízeních provede novou registraci v sekundárním centru oznámení. Sekundární centrum oznámení bude mít zaregistrovaná všechna aktivní zařízení.
 
 V případě, že zařízení s neotevřenými aplikacemi nebudou dostávat oznámení, bude toto časové období.
+
+### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>Jsou všechna moje data uložena v šifrované podobě?
+
+Azure Notification Hubs šifruje všechna neaktivní zákaznická data s výjimkou registračních značek. Z tohoto důvodu byste neměli ukládat osobní nebo důvěrné údaje pomocí značek.
 
 ### <a name="is-there-audit-log-capability"></a>Je k dispozici možnost protokolu auditu?
 

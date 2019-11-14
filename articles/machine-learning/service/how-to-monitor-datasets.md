@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647148"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049179"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -117,7 +117,7 @@ V následujícím příkladu jsou pořízena všechna data v podsložce *NoaaIsd
 
 V nastavení **schématu** zadejte sloupec časového razítka z virtuálního nebo reálného sloupce v zadané datové sadě:
 
-![Časové razítko](media/how-to-monitor-datasets/timestamp.png)
+![Timestamp](media/how-to-monitor-datasets/timestamp.png)
 
 ## <a name="dataset-monitor-settings"></a>Nastavení monitorování datových sad
 
@@ -131,7 +131,7 @@ Tato tabulka obsahuje základní nastavení použitá pro monitorování datový
 
 | Nastavení | Popis | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- | 
-| Name (Název) | Název monitorování datové sady | | Ne |
+| Název | Název monitorování datové sady | | Ne |
 | Základní datová sada | Tabulková datová sada, která bude použita jako základ pro porovnání cílové datové sady v průběhu času. | Základní datová sada musí mít funkce společné s cílovou datovou sadou. Obecně platí, že by měl být standardní hodnota nastavena na školicí datovou sadu modelu nebo na řez cílové datové sady. | Ne |
 | Cílová datová sada | Sada tabulkových dat se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat | Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datovou sadu, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data. | Ne | 
 | Frequency | Toto je frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
@@ -147,7 +147,7 @@ Tato nastavení jsou pro vytvářený kanál monitorování datových sad, kter�
 | Povolení | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Tuto možnost zakažte, pokud chcete analyzovat historická data s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
 | Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než se data dorazí do zapouzdřených datových sad SQL DB, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
 | E-mailové adresy | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Ano | 
-| Mezí | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano | 
+| Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano | 
 
 ### <a name="backfill-settings"></a>Nastavení zpětných výplní
 
@@ -173,13 +173,13 @@ Po potvrzení funkčnosti pracovního prostoru přejděte na domovskou stránku 
 
 Klikněte na tlačítko **+ vytvořit monitorování** a pokračujte v průvodci kliknutím na tlačítko **Další**.
 
-![Tip](media/how-to-monitor-datasets/wizard.png)
+![Průvodce](media/how-to-monitor-datasets/wizard.png)
 
 Výsledný monitor DataSet se zobrazí v seznamu. Vyberte ji a přejdete na stránku podrobností tohoto monitorování.
 
 ### <a name="from-python-sdk"></a>Z Python SDK
 
-Úplné podrobnosti najdete v [referenční dokumentaci k Python SDK na posunu dat](https://aka.ms/datadriftapi) . 
+Úplné podrobnosti najdete v [referenční dokumentaci k Python SDK na posunu dat](/python/api/azureml-datadrift/azureml.datadrift) . 
 
 Následuje příklad vytvoření monitorování datové sady pomocí sady Python SDK.
 

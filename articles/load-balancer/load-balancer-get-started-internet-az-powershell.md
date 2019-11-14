@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Load Balancer s využitím front-redundantního Azure PowerShell
-titlesuffix: Azure Load Balancer
+title: Vytvoření nástroje pro vyrovnávání zatížení pomocí zóny redundantního front-endu Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Naučte se vytvářet veřejné Standard Load Balancer s front-redundantní veřejnou IP adresou front-endu s využitím PowerShellu.
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3ce14a0d9d5b9d5ef7ca7be34faad3fa60795ab9
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4f7cf5c7600a057a913be28ff4b2a44b241e6be5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275088"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049188"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí Azure Powershellu
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
@@ -97,5 +97,5 @@ $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalance
   -Probe $probe -LoadBalancingRule $rule -Sku Standard
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md).

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ab0d3aac6944e331223d91eb98b50b3308be12c3
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797631"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048277"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
@@ -84,7 +84,7 @@ V této části jsou uvedené běžné chybové scénáře při odstraňování 
 
 ## <a name="accelerator-troubleshooting"></a>Řešení potíží s akcelerátory
 
-### <a name="access-control"></a>Access Control
+### <a name="access-control"></a>Řízení přístupu
 
 **Při přidávání přiřazení role došlo k chybě.**
 
@@ -251,7 +251,7 @@ Na řídicím panelu skupiny prostředků vyhledejte účet úložiště (datahu
 
 **Význam**: Konfigurace registrace aplikace Azure AD neproběhla správně.  
 
-**Nápravná opatření**: požádejte správce IT (s oprávněním pro čtení tenanta), aby používal náš [skript](https://aka.ms/PPCreateAADappregistration) k vygenerování registrace aplikace služby Azure AD. Tento skript se automaticky postará o kroky konfigurace i. formátu  
+**Nápravná opatření**: požádejte správce IT (s oprávněním pro čtení tenanta), aby používal náš [skript](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) k vygenerování registrace aplikace služby Azure AD. Tento skript se automaticky postará o kroky konfigurace i.
 
 **Chyba**: v tomto tenantovi nelze vytvořit novou aplikaci služby Active Directory "fiktivní": jiný objekt se stejnou hodnotou identifikátorů URI identifikátorů vlastností již existuje.
 

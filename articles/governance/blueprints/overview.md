@@ -3,12 +3,12 @@ title: Přehled služby Azure Blueprint
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
 ms.date: 08/26/2019
 ms.topic: overview
-ms.openlocfilehash: 3005bf171c5297048978d090d0f253a8690242cd
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dadb7568a720d23f58d23896e84b3155ed2f12f4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960326"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048290"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure modrotisky
 
@@ -51,7 +51,7 @@ Podrobný plán se skládá z _artefaktů_. Podrobné plány aktuálně jako art
 |Prostředek  | Možnosti hierarchie| Popis  |
 |---------|---------|---------|
 |Skupiny prostředků | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků vám umožní uspořádat prostředky přesně tak, jak je chcete mít strukturované, a poskytují omezovač oboru pro zahrnuté artefakty zásad a přiřazení rolí a šablony Azure Resource Manageru. |
-|Šablona Azure Resource Manageru | Předplatné, skupina prostředků | Šablony slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor služby Log Analytics. |
+|Šablona Azure Resource Manageru | Předplatné, skupina prostředků | Šablony, včetně vnořených a propojených šablon, slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor služby Log Analytics. |
 |Přiřazení zásad | Předplatné, skupina prostředků | Umožňuje přiřazení zásady nebo iniciativy k předplatnému, ke kterému je podrobný plán přiřazený. Zásada nebo iniciativa musí být v rozsahu umístění definice podrobného plánu. Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu. |
 |Přiřazení role | Předplatné, skupina prostředků | Přidejte existujícího uživatele nebo skupinu k předdefinované roli, aby se zajistilo, že k vašim prostředkům budou mít vždy správný přístup správní lidé. Přiřazení rolí se dá definovat pro celé předplatné nebo vnořit do konkrétní skupiny prostředků, která je součástí podrobného plánu. |
 
@@ -114,7 +114,7 @@ K dispozici jsou následující předdefinované role:
 Pokud tyto předdefinované role nevyhovují vašim požadavkům na zabezpečení, zvažte vytvoření [vlastní role](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Pokud používáte spravovanou identitu přiřazenou systémem, musí instanční objekt pro plány Azure pro povolení nasazení vyžadovat roli **vlastníka** v přiřazeném předplatném. Pokud používáte portál, tato role se pro nasazení uděluje a ruší automaticky. Pokud používáte rozhraní REST API, tato role se musí udělit ručně, ale po dokončení nasazení se zruší automaticky. Pokud používáte spravovanou identitu přiřazenou uživatelem, musí oprávnění **vlastníka** vytvořit jenom uživatel vytvářející přiřazení podrobného plánu.
+> Pokud používáte spravovanou identitu přiřazenou systémem, musí instanční objekt pro plány Azure pro povolení nasazení vyžadovat roli **vlastníka** v přiřazeném předplatném. Pokud používáte portál, tato role se pro nasazení uděluje a ruší automaticky. Pokud používáte rozhraní REST API, tato role se musí udělit ručně, ale po dokončení nasazení se zruší automaticky. Při použití spravované identity přiřazené uživatelem `Microsoft.Blueprint/blueprintAssignments/write` potřebuje pouze uživatel vytvářející přiřazení podrobného plánu, který je zahrnutý jak v předdefinovaných rolích **Owner** a **detailed** .
 
 ## <a name="naming-limits"></a>Omezení pojmenování
 

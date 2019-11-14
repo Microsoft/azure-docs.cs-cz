@@ -1,18 +1,18 @@
 ---
-title: Přizpůsobení pravidel firewallu webových aplikací v Azure Application Gateway – Azure CLI
+title: Přizpůsobení pravidel pomocí rozhraní příkazového řádku CLI – Azure Web Application firewall
 description: Tento článek poskytuje informace o tom, jak přizpůsobit pravidla firewallu webových aplikací v Application Gateway pomocí Azure CLI.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 58cc339e8f849a71fb01973e99dba936f6b53a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516939"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048535"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Přizpůsobení pravidel firewallu webových aplikací pomocí rozhraní příkazového řádku Azure
 

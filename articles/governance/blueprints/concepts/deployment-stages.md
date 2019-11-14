@@ -1,14 +1,14 @@
 ---
 title: Fáze nasazení podrobného plánu
 description: Seznamte se s kroky, pomocí kterých Azure Blueprint služby procházejí během nasazování.
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: d0d97ed01c4ae2ef96da151e1ab4ddc13a4b1d3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960526"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048614"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Fáze nasazení podrobného plánu
 
@@ -25,7 +25,7 @@ Nasazení podrobného plánu se aktivuje přiřazením podrobného plánu k pře
 
 ## <a name="blueprints-granted-owner-rights"></a>Plány s udělenými oprávněními vlastníka
 
-Instančnímu objektu služby Azure modrotisky se uděluje oprávnění vlastníka přiřazeného předplatného nebo předplatného. Přidělená role umožňuje vytvořit a později odvolat [spravovanou identitu přiřazenou systémem](../../../active-directory/managed-identities-azure-resources/overview.md).
+Instančnímu objektu služby Azure modrotisky se uděluje oprávnění vlastníka přiřazeného předplatného nebo předplatného, když se používá spravovaná identita [přiřazená systémem](../../../active-directory/managed-identities-azure-resources/overview.md) . Přidělená role umožňuje vytvořit a později odvolat spravovanou identitu **přiřazenou systémem** . Pokud používáte spravovanou identitu **přiřazenou uživatelem** , instanční objekt služby Azure modrotiskys nezíská a nepotřebuje oprávnění vlastníka k tomuto předplatnému.
 
 Práva se udělují automaticky v případě, že se přiřazení provádí prostřednictvím portálu. Pokud je však přiřazení provedeno prostřednictvím REST API, udělení práv musí být provedeno pomocí samostatného volání rozhraní API. Azure Blueprint AppId je `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ale instanční objekt se liší podle tenanta. K získání instančního objektu použijte [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) a [servicePrincipals](/graph/api/resources/serviceprincipal) koncového bodu REST. Pak udělte Azure modrotisky roli _vlastníka_ prostřednictvím [portálu](../../../role-based-access-control/role-assignments-portal.md), rozhraní příkazového [řádku azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)nebo [šablony Správce prostředků](../../../role-based-access-control/role-assignments-template.md).
 
@@ -35,7 +35,7 @@ Služba modrotisky neimplementuje přímo prostředky.
 
 Uživatel, skupina nebo instanční objekt přiřadí k předplatnému plán. Objekt přiřazení existuje na úrovni předplatného, ve které byl plán plánu přiřazen. Prostředky vytvořené nasazením se neprovádí v kontextu nasazování entity.
 
-Při vytváření přiřazení podrobného plánu se zvolí typ [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md) . Výchozím nastavením je spravovaná identita **přiřazená systémem** . Může být zvolena spravovaná identita **přiřazená uživatelem** . Při použití spravované identity **přiřazené uživatelem** musí být definováno a uděleno oprávnění před vytvořením přiřazení podrobného plánu.
+Při vytváření přiřazení podrobného plánu se zvolí typ [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md) . Výchozím nastavením je spravovaná identita **přiřazená systémem** . Může být zvolena spravovaná identita **přiřazená uživatelem** . Při použití spravované identity **přiřazené uživatelem** musí být definováno a uděleno oprávnění před vytvořením přiřazení podrobného plánu. K vytvoření přiřazení, které používá **uživatelem přiřazenou** identitu, mají `blueprintAssignment/write` předdefinované role jak v rámci předdefinovaných rolí, tak i na základě uživatelsky definovaného [operátoru](../../../role-based-access-control/built-in-roles.md#blueprint-operator) [Owner](../../../role-based-access-control/built-in-roles.md#owner) .
 
 ## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Volitelné – modrotisky vytvoří spravovanou identitu přiřazenou systémem.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099491"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049010"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přesun z Media Services V2 na V3
 
@@ -38,7 +38,7 @@ Pokud máte k dispozici službu video Service na [starší verzi rozhraní api M
 *  V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i provoz založené na Azure Resource Manageru. Šablony Azure Resource Manager lze použít k vytváření a nasazování transformací, koncových bodů streamování, živých událostí a dalších.
 * [Openapi specifikace (dříve označované jako Swagger)](https://aka.ms/ams-v3-rest-sdk) dokument.
     Zpřístupňuje schéma pro všechny součásti služby, včetně kódování založeného na souborech.
-* Sady SDK dostupné pro [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core [, Node. js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Přejít](https://aka.ms/ams-v3-go-ref)a Ruby.
+* Sady SDK dostupné pro [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core [, Node. js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Přejít](https://aka.ms/ams-v3-go-ref)a Ruby.
 * Integrace [Azure CLI](https://aka.ms/ams-v3-cli-ref) pro jednoduchou podporu skriptování
 
 ### <a name="new-features"></a>Nové funkce
@@ -87,7 +87,7 @@ Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uz
 * Mnohé z [pokročilých funkcí Media Encoder standard v](../previous/media-services-advanced-encoding-with-mes.md) rozhraních API v2 v současnosti nejsou v systému V3 k dispozici, například:
   
     * Sešity prostředků
-    * Překryvy
+    * Překrytí
     * Jej
     * Sprite miniatur
     * Vložení tiché zvukové stopy, když vstup nemá žádný zvuk
@@ -101,7 +101,7 @@ Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uz
 
 V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné scénáře.
 
-|Scénář|V2 API|ROZHRANÍ V3 API|
+|Scénář|V2 API|V3 API|
 |---|---|---|
 |Vytvoření assetu a nahrání souboru |[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Odeslat úlohu|[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Ukazuje, jak nejdřív vytvořit transformaci a pak odeslat úlohu.|

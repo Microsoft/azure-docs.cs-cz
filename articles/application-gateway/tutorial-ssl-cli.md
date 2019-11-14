@@ -1,19 +1,19 @@
 ---
-title: Vytvoření aplikační brány s ukončením protokolu SSL – Azure CLI
+title: Ukončení SSL pomocí CLI – Azure Application Gateway
 description: Přečtěte si, jak vytvořit aplikační bránu a přidat certifikát pro ukončení protokolu SSL pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d6df504d46a829298d0fff8d69b05019c26baa75
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3f98aabb9459e4895243eec7f3d759d5a2ee88c6
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688131"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047327"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením SSL pomocí Azure CLI
 
@@ -22,7 +22,7 @@ Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační b
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. V tomto článku vytvoříte certifikát podepsaný svým držitelem a soubor PFX pomocí příkazu OpenSSL.
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem [myAGSubnet](/cli/azure/network/vnet). Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu *az network public-ip create* vytvořte veřejnou IP adresu s názvem [myAGPublicIPAddress](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -153,7 +153,7 @@ az vmss extension set \
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
 K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip).
 
@@ -171,7 +171,7 @@ Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého pr
 
 Pokud chcete přijímat upozornění zabezpečení v případě použití certifikátu podepsaného svým držitelem (self-signed certificate), vyberte **Podrobnosti** a potom **Pokračovat na web**. Následně se zobrazí váš zabezpečený web NGINX, jak je znázorněno v následujícím příkladu:
 
-![Otestování základní adresy URL v aplikační bráně](./media/tutorial-ssl-cli/application-gateway-nginx.png)
+![Testování základní adresy URL v aplikační bráně](./media/tutorial-ssl-cli/application-gateway-nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -181,6 +181,6 @@ Až nebudete skupinu prostředků, aplikační bránu a další související pr
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření aplikační brány, která hostuje více webů](./tutorial-multiple-sites-cli.md)

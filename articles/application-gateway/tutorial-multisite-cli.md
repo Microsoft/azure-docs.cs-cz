@@ -1,23 +1,18 @@
 ---
-title: Vytvoření aplikační brány s hostováním více lokalit – Azure CLI | Microsoft Docs
+title: Hostování více webů pomocí CLI – Azure Application Gateway
 description: Naučte se, jak vytvořit Aplikační bránu, která hostuje víc lokalit pomocí Azure CLI.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ce5701d4125123798c6b6a654e4fa4a4887778a3
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5edc2e5228146aee913027a83e495d94c003e237
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717267"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047338"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Vytvoření aplikační brány s hostováním několika webů pomocí Azure CLI
 
@@ -30,7 +25,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvoření služby Application Gateway
 > * Vytvoření naslouchacího procesu a pravidel směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvořit v doméně záznam CNAME
+> * Vytvoření záznamu CNAME v doméně
 
 ![Příklad směrování na více webů](./media/tutorial-multisite-cli/scenario.png)
 
@@ -52,7 +47,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem [myAGSubnet](/cli/azure/network/vnet). Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu *az network public-ip create* vytvořte veřejnou IP adresu s názvem [myAGPublicIPAddress](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -74,7 +69,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. 
+K vytvoření aplikační brány s názvem [myAppGateway](/cli/azure/network/application-gateway) použijte příkaz *az network application-gateway create*. Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -117,7 +112,7 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>Přidání naslouchacích procesů
 
-Naslouchací proces je potřebný k tomu, aby aplikační brána správně směrovala provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu vytvoříte naslouchací procesy pro domény *www.contoso.com* a *www.fabrikam.com*. 
+Naslouchací proces je potřeba k tomu, aby brána Application Gateway mohla správně směrovat provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu vytvoříte naslouchací procesy pro domény *www.contoso.com* a *www.fabrikam.com*. 
 
 Přidejte naslouchací procesy s názvem *contosoListener* a *fabrikamListener* , které jsou potřeba ke směrování provozu pomocí [AZ Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway).
 
@@ -167,7 +162,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři back-endové fondy v aplikační bráně. Vytvořené škálovací sady se budou jmenovat *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
+V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři back-endové fondy v aplikační bráně. Škálovací sady, které vytvoříte, se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -211,7 +206,7 @@ for i in `seq 1 2`; do
 done
 ```
 
-## <a name="create-a-cname-record-in-your-domain"></a>Vytvořit záznam CNAME v doméně
+## <a name="create-a-cname-record-in-your-domain"></a>Vytvoření záznamu CNAME v doméně
 
 Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. 
 
@@ -225,7 +220,7 @@ az network public-ip show \
 
 Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se při restartování aplikační brány může změnit.
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
 Do adresního řádku prohlížeče zadejte název domény. Například http\://www.contoso.com.
 
@@ -244,7 +239,7 @@ V tomto kurzu jste se naučili:
 > * Vytvoření služby Application Gateway
 > * Vytvoření naslouchacího procesu a pravidel směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvořit záznam CNAME v doméně
+> * Vytvoření záznamu CNAME v doméně
 
 > [!div class="nextstepaction"]
 > [Další informace o možnostech aplikační brány](application-gateway-introduction.md)

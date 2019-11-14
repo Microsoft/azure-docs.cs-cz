@@ -1,26 +1,26 @@
 ---
-title: Dokončení kontroly přístupu pro role prostředků Azure v Privileged Identity Management-Azure Active Directory | Microsoft Docs
-description: Naučte se, jak dokončit kontrolu přístupu k rolím prostředků Azure v Azure AD Privileged Identity Management (PIM).
+title: Dokončení kontroly přístupu pro role prostředků Azure v PIM – Azure AD | Microsoft Docs
+description: Naučte se, jak dokončit kontrolu přístupu k rolím prostředků Azure Privileged Identity Management v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6761d1d6aea796e0cca708676f69c47328642cc2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895818"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021986"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Dokončení kontroly přístupu pro role prostředků Azure v Privileged Identity Management
 
@@ -50,7 +50,7 @@ Všechny recenze přístupů mají datum ukončení. Vyberte **zastavit** , aby 
 
 ### <a name="reset"></a>Resetovat
 
-Chcete-li odebrat všechna rozhodnutí, která jsou v něm provedena, můžete obnovit kontrolu přístupu. Po obnovení kontroly přístupu budou všichni uživatelé označení jako nerevidováni.
+Chcete-li odebrat všechna rozhodnutí, která jsou v něm provedena, můžete obnovit kontrolu přístupu. Po obnovení kontroly přístupu budou všichni uživatelé označeni jako nekontrolované.
 
 ### <a name="apply"></a>Použít
 

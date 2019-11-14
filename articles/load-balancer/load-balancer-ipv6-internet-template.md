@@ -1,11 +1,11 @@
 ---
 title: Nasazení internetového nástroje pro vyrovnávání zatížení pomocí šablony IPv6 – Azure
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Nasazení podpory protokolu IPv6 pro Azure Load Balancer a virtuálních počítačů s vyrovnáváním zatížení.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, nativní IPv6, mobilní zařízení, IoT
+keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: bfecb2a57cf5f086b6c9f99c50b857c8c1183e3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: e5cfc980387b63701fb3ff36e7fa8ac43800ecce
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025594"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048445"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení internetového vyrovnávání zatížení s protokolem IPv6 pomocí šablony
 
@@ -29,12 +29,12 @@ ms.locfileid: "73025594"
 > * [Šablona](load-balancer-ipv6-internet-template.md)
 
 
->[! Poznámka: Změna v osvědčených postupech pro protokol IPv6] Tento článek popisuje úvodní funkci IPv6, která umožňuje základním nástrojům pro vyrovnávání zatížení poskytovat připojení protokolem IPv4 i IPv6.  K dispozici jsou teď komplexnější možnosti připojení pomocí protokolu IPv6 [pro Azure virtuální sítě](../virtual-network/ipv6-overview.md) , které integrují připojení IPv6 k vašim virtuálním sítím a obsahuje klíčové funkce, jako jsou pravidla skupiny zabezpečení sítě IPv6, uživatelem definované směrování IPv6, IPv6 Basic a Vyrovnávání zatížení úrovně Standard a další.  Protokol IPv6 pro Azure virtuální sítě je doporučeným osvědčeným postupem pro aplikace IPv6 v Azure. 
+>[! Poznámka: Změna v osvědčených postupech pro protokol IPv6] Tento článek popisuje úvodní funkci IPv6, která umožňuje základním nástrojům pro vyrovnávání zatížení poskytovat připojení protokolem IPv4 i IPv6.  K dispozici jsou teď komplexnější možnosti připojení pomocí protokolu IPv6 [pro Azure virtuální sítě](../virtual-network/ipv6-overview.md) , které integrují připojení IPv6 k vašim virtuálním sítím a obsahuje klíčové funkce, jako jsou pravidla skupiny zabezpečení sítě IPv6, uživatelem definované směrování IPv6, protokol IPv6 Basic a standardní vyrovnávání zatížení a další.  Protokol IPv6 pro Azure virtuální sítě je doporučeným osvědčeným postupem pro aplikace IPv6 v Azure. 
 >Viz [protokol IPv6 pro nasazení šablony virtuální sítě Azure](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md) .
 
 Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroj pro vyrovnávání zatížení poskytuje vysokou dostupnost díky distribuci příchozích přenosů mezi instance služeb, které jsou v pořádku, v cloudových službách nebo virtuálních počítačích v sadě nástroje pro vyrovnávání zatížení. Azure Load Balancer můžete také tyto služby prezentovat na více portech, více IP adresách nebo obojím.
 
-## <a name="example-deployment-scenario"></a>Ukázkový scénář nasazení
+## <a name="example-deployment-scenario"></a>Příklad scénáře nasazení
 
 Následující diagram znázorňuje nasazení řešení vyrovnávání zatížení pomocí ukázkové šablony popsané v tomto článku.
 
@@ -59,7 +59,7 @@ Tento článek odkazuje na šablonu, která je publikovaná v galerii [šablon A
 
 3. V okně vše klikněte na Template deployment.
 
-    ![9,1 – IPv6-portál – step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Klikněte na vytvořit.
 
@@ -70,7 +70,7 @@ Tento článek odkazuje na šablonu, která je publikovaná v galerii [šablon A
     > [!NOTE]
     > Pokud používáte aplikaci Microsoft Internet Explorer, při vložení se zobrazí dialogové okno s výzvou k povolení přístupu ke schránce systému Windows. Klikněte na možnost "udělit přístup".
 
-    ![9,1 – IPv6-portál – Step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Klikněte na upravit parametry. V okně Parametry zadejte hodnoty podle pokynů v části parametry šablony a potom kliknutím na Uložit zavřete okno parametry. V okně vlastní nasazení vyberte vaše předplatné, existující skupinu prostředků nebo vytvořte jednu z nich. Pokud vytváříte skupinu prostředků, vyberte umístění pro skupinu prostředků. V dalším kroku klikněte na **právní předpisy**a pak na **koupit** pro zákonné smlouvy. Azure začíná nasazovat prostředky. Nasazení všech prostředků trvá několik minut.
 
@@ -80,11 +80,11 @@ Tento článek odkazuje na šablonu, která je publikovaná v galerii [šablon A
 
 7. Chcete-li zobrazit prostředky vytvořené šablonou, klikněte na tlačítko Procházet, přejděte v seznamu dolů, dokud neuvidíte "skupiny prostředků" a klikněte na něj.
 
-    ![9,1 – IPv6-portál – STEP7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. V okně skupiny prostředků klikněte na název skupiny prostředků, kterou jste zadali v kroku 6. Zobrazí se seznam všech nasazených prostředků. Pokud vše bylo úspěšné, mělo by se v části poslední nasazení jednat o úspěch. Pokud ne, ujistěte se, že účet, který používáte, má oprávnění k vytváření potřebných prostředků.
 
-    ![9,1 – IPv6-portál – step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Pokud prohlížíte skupiny prostředků hned po dokončení kroku 6, "poslední nasazení" zobrazí při nasazení prostředků stav "nasazování".
@@ -111,7 +111,7 @@ Po úspěšném nasazení šablony můžete ověřit připojení provedením ná
 
 Ukázková šablona použitá v tomto článku obsahuje následující proměnné a parametry:
 
-| Parametr/proměnná | Poznámky |
+| Parametr/proměnná | Poznámky: |
 | --- | --- |
 | adminUsername |Zadejte název účtu správce, který se používá pro přihlášení k virtuálním počítačům. |
 | adminPassword |Zadejte heslo pro účet správce, který se používá pro přihlášení k virtuálním počítačům. |

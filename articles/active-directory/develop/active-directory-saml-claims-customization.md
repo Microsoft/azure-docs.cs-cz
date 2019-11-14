@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4307c9036db45145a7c0e95cb5e55a667c6851eb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1490a25e69ff22fde1f5c870868f20ea6f9a1cf7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893400"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046975"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -31,7 +31,7 @@ V současné době Azure Active Directory (Azure AD) podporuje jednotné přihla
 
 *Deklarace* identity představuje informace o tom, že poskytovatel identity uvádí informace o uživateli v tokenu, který tento uživatel vystavuje. V [tokenu SAML](https://en.wikipedia.org/wiki/SAML_2.0)jsou tato data obvykle obsažena v příkazu atributu SAML. Jedinečné ID uživatele je obvykle reprezentované v předmětu SAML označovaném také jako identifikátor názvu.
 
-Ve výchozím nastavení služba Azure AD vydá token SAML do vaší aplikace, která obsahuje deklaraci `NameIdentifier` s hodnotou uživatelského jména uživatele (také označovanou jako hlavní název uživatele) ve službě Azure AD, která může uživatele jednoznačně identifikovat. Token SAML obsahuje taky další deklarace identity, které obsahují e-mailovou adresu uživatele, jméno a příjmení.
+Ve výchozím nastavení služba Azure AD vydá token SAML do vaší aplikace, který obsahuje `NameIdentifier` deklaraci identity s hodnotou uživatelského jména uživatele (označovanou také jako hlavní název uživatele) ve službě Azure AD, která může uživatele jednoznačně identifikovat. Token SAML obsahuje taky další deklarace identity, které obsahují e-mailovou adresu uživatele, jméno a příjmení.
 
 Pokud chcete zobrazit nebo upravit deklarace identity vystavené v tokenu SAML pro aplikaci, otevřete aplikaci v Azure Portal. Pak otevřete oddíl **atributy uživatele & deklarace identity** .
 
@@ -39,7 +39,7 @@ Pokud chcete zobrazit nebo upravit deklarace identity vystavené v tokenu SAML p
 
 Existují dva možné důvody, proč možná budete muset upravit deklarace identity vystavené v tokenu SAML:
 
-* Aplikace vyžaduje, aby byla deklarace `NameIdentifier` nebo NameID na jinou hodnotu než uživatelské jméno (nebo hlavní název uživatele) uložené ve službě Azure AD.
+* Aplikace vyžaduje, aby deklarace `NameIdentifier` nebo NameID byla jiná než uživatelské jméno (nebo hlavní název uživatele) uložené ve službě Azure AD.
 * Aplikace byla napsána tak, aby vyžadovala jinou sadu identifikátorů URI deklarace identity nebo hodnot deklarace identity.
 
 ## <a name="editing-nameid"></a>Úpravy nameID
@@ -65,20 +65,21 @@ V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybra
 | **Perzistentní** | Služba Azure AD bude používat jako formát NameID jako trvalá. |
 | **EmailAddress** | Azure AD bude používat EmailAddress jako formát NameID. |
 | **Neurčené** | Azure AD použije nespecifikovaný formát NameID. |
+| **Kvalifikovaný název domény systému Windows** | Azure AD bude používat WindowsDomainQualifiedName jako formát NameID. |
 
 Dočasná NameID je také podporována, ale v rozevíracím seznamu není k dispozici a nelze ji nakonfigurovat na straně Azure. Další informace o atributu NameIDPolicy najdete v tématu [protokol SAML jednotného přihlašování](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Atributy
 
-Vyberte požadovaný zdroj pro deklaraci identity `NameIdentifier` (nebo NameID). Můžete vybrat z následujících možností.
+Vyberte požadovaný zdroj pro deklaraci `NameIdentifier` (nebo NameID). Můžete vybrat z následujících možností.
 
-| Name (Název) | Popis |
+| Název | Popis |
 |------|-------------|
-| E-mail | E-mailová adresa uživatele |
-| Třídy | Hlavní název uživatele (UPN) uživatele |
+| Email | E-mailová adresa uživatele |
+| userprincipalName | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, který byl synchronizovaný z místní služby Azure AD |
-| objektu | objectID uživatele v Azure AD |
-| zaměstnance | ID zaměstnance uživatele |
+| objektu | ObjectID uživatele v Azure AD |
+| EmployeeID | ID zaměstnance uživatele |
 | Rozšíření adresáře | Rozšíření adresáře [synchronizovaná z místní služby Active Directory pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Atributy rozšíření 1-15 | Atributy místních rozšíření používaných k rozšíření schématu Azure AD |
 
@@ -106,7 +107,7 @@ Můžete také použít funkce transformace deklarací identity.
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
 | **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například jako hodnotu identifikátoru uživatele vyberete e-mail (joe_smith@contoso.com) a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com. |
-| **ToLower ()** | Převede znaky vybraného atributu na malá písmena. |
+| **ToLower()** | Převede znaky vybraného atributu na malá písmena. |
 | **ToUpper ()** | Převede znaky vybraného atributu na velká písmena. |
 
 ## <a name="adding-application-specific-claims"></a>Přidání deklarací specifických pro aplikaci
@@ -133,18 +134,18 @@ K transformaci deklarací lze použít následující funkce.
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
 | **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například jako hodnotu identifikátoru uživatele vyberete e-mail (joe_smith@contoso.com) a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com. |
-| **ToLower ()** | Převede znaky vybraného atributu na malá písmena. |
+| **ToLower()** | Převede znaky vybraného atributu na malá písmena. |
 | **ToUpper ()** | Převede znaky vybraného atributu na velká písmena. |
 | **Obsahuje ()** | Vytvoří výstup atributu nebo konstanty, pokud vstup odpovídá zadané hodnotě. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota e-mailová adresa uživatele, pokud obsahuje doménu "@contoso.com", jinak chcete vytvořit výstup hlavního názvu uživatele. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)* : User. email<br/>*Hodnota*: "@contoso.com"<br/>Parametr 2 (výstup): User. email<br/>Parametr 3 (výstup, pokud se neshoduje): User. userPrincipalName |
 | **EndWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota končí zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud ID zaměstnance končí na "000", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)* : User. ČísloZaměstnance<br/>*Hodnota*: "000"<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
 | **StartWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstup začíná zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud země nebo oblast začíná řetězcem "US", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)* : User. Country<br/>*Hodnota*: US<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
-| **Extract () – po porovnání** | Vrátí podřetězec poté, co odpovídá zadané hodnotě.<br/>Pokud má například hodnota vstupu hodnotu "Finance_BSimon", odpovídá hodnota "Finance_", takže výstup deklarace identity je "BSimon". |
-| **Extract () – Před spárováním** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud má například hodnota vstupu hodnotu "BSimon_US", odpovídá hodnota "_US", takže výstup deklarace identity je "BSimon". |
-| **Extract ()-Between – shoda** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud je hodnota vstupu například "Finance_BSimon_US", první vyhovující hodnota je "Finance_", druhá hodnota pro porovnání je "_US", pak je výstup deklarace identity "BSimon". |
-| **ExtractAlpha () – předpona** | Vrátí prefixovou část řetězce v abecedním pořadí.<br/>Pokud je například hodnota vstupu "BSimon_123", pak vrátí "BSimon". |
-| **ExtractAlpha () – Přípona** | Vrátí příponu v abecedním pořadí řetězce.<br/>Pokud je například hodnota vstupu "123_Simon", pak vrátí "Simon". |
-| **ExtractNumeric () – předpona** | Vrátí číselnou část řetězce předpony.<br/>Pokud je například hodnota vstupu "123_BSimon", pak vrátí "123". |
-| **ExtractNumeric () – Přípona** | Vrátí číselnou část řetězce přípony.<br/>Pokud je například hodnota vstupu "BSimon_123", pak vrátí "123". |
+| **Extract () – po porovnání** | Vrátí podřetězec poté, co odpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "Finance_BSimon", odpovídá hodnota "Finance_", takže výstup deklarace identity je "BSimon". |
+| **Extract () – Před spárováním** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "BSimon_US", odpovídá hodnota "_US", takže výstup deklarace identity je "BSimon". |
+| **Extract ()-Between – shoda** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "Finance_BSimon_US", první vyhovující hodnota je "Finance_", druhá hodnota pro porovnání je "_US", pak výstup deklarace identity je "BSimon". |
+| **ExtractAlpha() - Prefix** | Vrátí prefixovou část řetězce v abecedním pořadí.<br/>Pokud je například hodnota vstupu "BSimon_123", pak vrátí "BSimon". |
+| **ExtractAlpha() - Suffix** | Vrátí příponu v abecedním pořadí řetězce.<br/>Pokud je například hodnota vstupu "123_Simon", pak vrátí "Simon". |
+| **ExtractNumeric() - Prefix** | Vrátí číselnou část řetězce předpony.<br/>Pokud je například hodnota vstupu "123_BSimon", pak vrátí "123". |
+| **ExtractNumeric() - Suffix** | Vrátí číselnou část řetězce přípony.<br/>Pokud je například hodnota vstupu "BSimon_123", pak vrátí "123". |
 | **IfEmpty()** | Vytvoří výstup atributu nebo konstanty, pokud má vstup hodnotu null nebo je prázdný.<br/>Například pokud chcete výstupovat atribut uložený v ExtensionAttribute, pokud je ID zaměstnance pro daného uživatele prázdné. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>Parametr 1 (vstup): User. ČísloZaměstnance<br/>Parametr 2 (výstup): User. extensionAttribute1<br/>Parametr 3 (výstup, pokud se neshoduje): User. ČísloZaměstnance |
 | **IfNotEmpty()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota není null nebo prázdná.<br/>Například pokud chcete výstupovat atribut uložený v ExtensionAttribute, pokud ID zaměstnance pro daného uživatele není prázdné. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>Parametr 1 (vstup): User. ČísloZaměstnance<br/>Parametr 2 (výstup): User. extensionAttribute1 |
 

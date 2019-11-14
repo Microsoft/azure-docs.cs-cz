@@ -1,6 +1,6 @@
 ---
-title: Ověření nastavení Azure Traffic Manageru
-description: Tento článek vám pomůže ověřit nastavení Traffic Manageru.
+title: Ověření nastavení Azure Traffic Manager
+description: V tomto článku se dozvíte, jak ověřit nastavení Traffic Manager a testovat metodu směrování provozu.
 services: traffic-manager
 author: asudbring
 ms.service: traffic-manager
@@ -10,64 +10,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: allensu
-ms.openlocfilehash: 19ef08a40d0a84aecb070e71bbb8c9b6a88ae059
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ad74e5c51d5939218ebb546993d416b3df1cd04b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070927"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023513"
 ---
 # <a name="verify-traffic-manager-settings"></a>Ověření nastavení Traffic Manageru
 
-Pro testování nastavení Traffic Manageru, musíte mít více klientů v různých umístěních, ze kterých můžete spustit testy. Přepněte koncových bodů ve vašem profilu Traffic Manageru jeden po druhém.
+Chcete-li otestovat nastavení Traffic Manager, je nutné mít více klientů, v různých umístěních, z nichž lze spustit testy. Pak postupně přeneste koncové body v profilu Traffic Manager.
 
-* Nastavte hodnotu hodnotu TTL pro DNS s nízkou tak, aby se změny rozšíří rychle (například 30 sekund).
-* Znáte IP adresy služby Azure cloud services a weby v profilu, který testujete.
-* Pomocí nástrojů, které vám umožní přeložit název DNS na IP adresu a zobrazit tuto adresu.
+* Nastavte hodnotu TTL služby DNS na nízká, aby se změny rozšířily rychle (například 30 sekund).
+* Zjistěte, jaké IP adresy Azure Cloud Services a websites jsou v profilu, který testujete.
+* Použijte nástroje, které vám umožní přeložit název DNS na IP adresu a zobrazit tuto adresu.
 
-Jsou kontroluje se, že přeložit názvy DNS na IP adresami koncových bodů ve vašem profilu. Musí se překládat názvy v souladu s metodu směrování provozu, který je definován v profilu služby Traffic Manager. Můžete použít nástroje jako **nslookup** nebo **dig** k překladu názvů DNS.
+Kontrolujete, že názvy DNS se překládají na IP adresy koncových bodů ve vašem profilu. Názvy by se měly vyřešit způsobem konzistentním s metodou směrování provozu definovanou v profilu Traffic Manager. K překladu názvů DNS můžete použít nástroje, jako je například **nslookup** nebo **dig** .
 
-Následující příklady můžete otestovat svůj profil Traffic Manageru.
+Následující příklady vám pomůžou otestovat profil Traffic Manager.
 
-### <a name="check-traffic-manager-profile-using-nslookup-and-ipconfig-in-windows"></a>Zkontrolujte profil služby Traffic Manager pomocí nslookup a konfiguraci protokolu IP ve Windows
+### <a name="check-traffic-manager-profile-using-nslookup-and-ipconfig-in-windows"></a>Kontrolovat profil Traffic Manager pomocí příkazu nslookup a ipconfig ve Windows
 
-1. Spusťte příkaz nebo příkazový řádek Windows Powershellu jako správce.
-2. Typ `ipconfig /flushdns` vyprázdnit mezipaměť DNS překladač.
-3. Zadejte `nslookup <your Traffic Manager domain name>`. Například následující příkaz ověří název domény s předponou *myapp.contoso*
+1. Otevřete příkaz nebo spusťte příkazový řádek Windows PowerShellu jako správce.
+2. Zadejte `ipconfig /flushdns` pro vyprázdnění mezipaměti překladače DNS.
+3. Zadejte `nslookup <your Traffic Manager domain name>`. Například následující příkaz zkontroluje název domény s předponou *MyApp. contoso.*
 
         nslookup myapp.contoso.trafficmanager.net
 
-    Typické výsledek zobrazí následující informace:
+    Typický výsledek zobrazuje následující informace:
 
-    + Název DNS a IP adresu serveru DNS používané, chcete-li vyřešit tento název domény Traffic Manageru.
-    + Název domény Traffic Manageru, jste zadali na příkazovém řádku po "nástroje nslookup" a IP adresy, ke které se přeloží doménu Traffic Manageru. Druhá IP adresa je důležité zkontrolovat. Měl by odpovídat veřejnou virtuální IP (VIP) Adresa pro jedno cloudových služeb nebo webových stránek v profilu služby Traffic Manager, kterou testujete.
+    + Název DNS a IP adresa serveru DNS, ke kterému se přistupovalo, aby se tento Traffic Manager název domény vyřešil.
+    + Název domény Traffic Manager, který jste zadali na příkazovém řádku za "nslookup" a IP adresu, na kterou se Traffic Manager doména řeší. Druhá IP adresa je důležité, abyste ji zkontrolovali. Měl by odpovídat veřejné virtuální IP (VIP) adrese pro jednu z cloudových služeb nebo webů v profilu Traffic Manager, který testujete.
 
-## <a name="how-to-test-the-failover-traffic-routing-method"></a>Otestování převzetí služeb při selhání metodu směrování provozu
+## <a name="how-to-test-the-failover-traffic-routing-method"></a>Postup testování metody směrování provozu převzetí služeb při selhání
 
-1. Nechte si všechny koncové body.
-2. Pomocí jednoho klienta, požádat o překlad názvů DNS pro název domény vaší společnosti použití příkazu nslookup nebo podobného nástroje.
-3. Zajistěte, aby odpovídal přeložit IP adresu primárního koncového bodu.
-4. Snížilo primárního koncového bodu nebo odebrat soubor monitorování tak, že Traffic Manager domnívá, že aplikace je mimo provoz.
-5. Počkejte DNS Time-to-Live (TTL) profil Traffic Manageru a další dvě minuty. Například pokud váš DNS hodnotě TTL je 300 sekund (5 minut), je musí počkat sedm minut.
-6. Vyprázdnění DNS klienta mezipaměti a žádosti o překlad názvů DNS pomocí nástroje nslookup. Ve Windows můžete vyprázdnit mezipaměť DNS pomocí příkazu ipconfig/flushdns.
-7. Zajistěte, aby odpovídal přeložit IP adresu sekundárního koncového bodu.
-8. Opakujte proces pak Probíhá ukončování každý koncový bod. Ověřte, že server DNS vrátí IP adresu další koncový bod v seznamu. Když všechny koncové body jsou vypnuté, by měl znovu získat IP adresu primárního koncového bodu.
+1. Ponechte všechny koncové body nahoru.
+2. Pomocí jednoho klienta si vyžádejte překlad DNS pro název domény vaší společnosti pomocí příkazu nslookup nebo podobného nástroje.
+3. Ujistěte se, že přeložená IP adresa odpovídá primárnímu koncovému bodu.
+4. Odpojte primární koncový bod nebo odeberte soubor monitorování, aby Traffic Manager pomohlo, že aplikace nefunguje.
+5. Počkejte, až bude hodnota TTL (Time-to-Live) služby DNS profilu Traffic Manager a dalších dvou minut. Pokud je například vaše hodnota TTL pro DNS 300 sekund (5 minut), musíte počkat na sedm minut.
+6. Vyprázdněte mezipaměť klienta DNS a vyžádejte si překlad DNS pomocí nástroje Nslookup. V systému Windows můžete mezipaměť DNS vyprázdnit pomocí příkazu ipconfig/flushdns.
+7. Zajistěte, aby přeložená IP adresa odpovídala vašemu sekundárnímu koncovému bodu.
+8. Opakujte tento postup a postupně přepněte jednotlivé koncové body. Ověřte, že DNS vrátí IP adresu dalšího koncového bodu v seznamu. Až budou všechny koncové body vypnuté, měli byste znovu získat IP adresu primárního koncového bodu.
 
-## <a name="how-to-test-the-weighted-traffic-routing-method"></a>Jak otestovat metodu směrování provozu vážený
+## <a name="how-to-test-the-weighted-traffic-routing-method"></a>Postup testování metody směrování váženého provozu
 
-1. Nechte si všechny koncové body.
-2. Pomocí jednoho klienta, požádat o překlad názvů DNS pro název domény vaší společnosti použití příkazu nslookup nebo podobného nástroje.
-3. Ujistěte se, že přeložit IP adresa odpovídá jednomu z vašich koncových bodů.
-4. Vyprázdnění mezipaměti klienta DNS a opakujte kroky 2 a 3 pro každý koncový bod. Měli byste vidět různé IP adresy, které vrátí pro každou z vašich koncových bodů.
+1. Ponechte všechny koncové body nahoru.
+2. Pomocí jednoho klienta si vyžádejte překlad DNS pro název domény vaší společnosti pomocí příkazu nslookup nebo podobného nástroje.
+3. Ujistěte se, že přeložená IP adresa odpovídá jednomu z vašich koncových bodů.
+4. Vyprázdněte mezipaměť klienta DNS a opakujte kroky 2 a 3 pro každý koncový bod. Pro každý z vašich koncových bodů byste měli vidět různé IP adresy.
 
-## <a name="how-to-test-the-performance-traffic-routing-method"></a>Jak otestovat metodu směrování provozu výkonu
+## <a name="how-to-test-the-performance-traffic-routing-method"></a>Postup testování metody směrování provozu výkonu
 
-Efektivní testování metodu směrování provozu výkonu, musí mít klienti umístění v různých částech světa. Vytvoření klientů v různých oblastech Azure, které můžete použít k testování vašich služeb. Pokud máte globální síť, můžete vzdáleně Přihlaste se ke klientům v ostatních částech světa a spuštění testů z něj.
+Aby bylo možné efektivně otestovat metodu směrování provozu výkonu, je nutné mít klienty nacházející se v různých částech světa. Můžete vytvářet klienty v různých oblastech Azure, které je možné použít k otestování služeb. Pokud máte globální síť, můžete se vzdáleně přihlásit ke klientům v jiných částech světa a spustit testy z těchto počítačů.
 
-Alternativně existují webové vyhledávání DNS u bezplatných služeb a ponořte se služeb, které jsou k dispozici. Některé z těchto nástrojů vám tak umožnili ke kontrole překlad názvů DNS z různých míst po celém světě. Proveďte na hledání "Vyhledávání DNS" příklady. Služby třetích stran, jako je Gomez nebo hlavní vystoupení slouží k potvrzení, že jsou vaše profily podle očekávání distribuci provozu.
+Alternativně jsou k dispozici bezplatné webové vyhledávání služby DNS a dig služby. Některé z těchto nástrojů umožňují kontrolu překladu názvů DNS z různých míst po celém světě. Příklady najdete v tématu vyhledávání DNS. Služby třetích stran, jako je Gomez nebo vystoupení, se dají použít k potvrzení, že vaše profily distribuují provoz podle očekávání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [O metodách směrování provozu Traffic Manageru](traffic-manager-routing-methods.md)
+* [Informace o metodách směrování provozu Traffic Manager](traffic-manager-routing-methods.md)
 * [Důležité informace o výkonu nástroje Traffic Manager](traffic-manager-performance-considerations.md)
 * [Řešení potíží při sníženém výkonu Traffic Manageru](traffic-manager-troubleshooting-degraded.md)

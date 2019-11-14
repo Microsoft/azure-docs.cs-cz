@@ -3,16 +3,16 @@ title: Vizualizace dat pomocí konektoru služby Azure Průzkumník dat pro Powe
 description: 'V tomto článku se dozvíte, jak použít jednu ze tří možností pro vizualizaci dat v Power BI: konektor Power BI pro Azure Průzkumník dat.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349139"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024217"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Vizualizace dat pomocí konektoru služby Azure Průzkumník dat pro Power BI
 
@@ -24,7 +24,7 @@ K dokončení tohoto článku potřebujete následující:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * E-mailový účet organizace, který je členem Azure Active Directory, abyste se mohli připojit ke [clusteru azure Průzkumník dat Help](https://dataexplorer.azure.com/clusters/help/databases/samples).
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (vyberte **Stáhnout zdarma**.)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (vyberte **Stáhnout zdarma**)
 
 ## <a name="get-data-from-azure-data-explorer"></a>Získat data z Azure Průzkumník dat
 
@@ -44,10 +44,10 @@ Nejprve se připojíte ke clusteru Azure Průzkumník dat Help a pak přenesete 
 
     **Nastavení** | **Hodnota** | **Popis pole**
     |---|---|---|
-    | Cluster | *https://help.kusto.windows.net* | Adresa URL pro cluster s nápovědu Pro jiné clustery je adresa URL ve tvaru *\<https://název_clusteru.\< \> Region\>. kusto.Windows.NET*. |
+    | Cluster | *https://help.kusto.windows.net* | Adresa URL pro cluster s nápovědu Pro jiné clustery je adresa URL ve tvaru *https://\<\>název_clusteru.\<oblasti\>. kusto.Windows.NET*. |
     | Databáze | Ponechte prázdné | Databáze, která je hostována v clusteru, ke kterému se připojujete. Tuto možnost vybereme v pozdějším kroku. |
     | Název tabulky | Ponechte prázdné | Jedna z tabulek v databázi nebo dotaz, jako je například <code>StormEvents \| take 1000</code>. Tuto možnost vybereme v pozdějším kroku. |
-    | Upřesnit možnosti | Ponechte prázdné | Možnosti pro vaše dotazy, jako je například velikost sady výsledků. |
+    | Rozšířené možnosti | Ponechte prázdné | Možnosti pro vaše dotazy, jako je například velikost sady výsledků. |
     | Režim připojení dat | *DirectQuery* | Určuje, zda Power BI importuje data nebo se připojí přímo ke zdroji dat. V této spojnici můžete použít jednu z možností. |
     | | | |
     
@@ -67,9 +67,9 @@ Nejprve se připojíte ke clusteru Azure Průzkumník dat Help a pak přenesete 
 
     ![Přihlášení](media/power-bi-connector/sign-in.png)
 
-1. Na obrazovce **navigátor** rozbalte databázi Samples , vyberte **StormEvents** a pak **Upravit**.
+1. Na obrazovce **navigátor** rozbalte databázi **Samples** , vyberte **StormEvents** a pak **Upravit**.
 
-    ![Vyberte tabulku](media/power-bi-connector/select-table.png)
+    ![vybrat tabulku](media/power-bi-connector/select-table.png)
 
     Tabulka se otevře v editoru Power Query, kde můžete před importem dat upravit řádky a sloupce.
 

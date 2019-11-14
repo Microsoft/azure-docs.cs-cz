@@ -1,18 +1,18 @@
 ---
-title: Řešení potíží s firewallem webových aplikací pro Azure Application Gateway
+title: Řešení potíží – Firewall webových aplikací Azure
 description: Tento článek poskytuje informace o řešení potíží pro Firewall webových aplikací (WAF) pro Azure Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/22/2019
+ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: fff50417bd7944e125ce1d7c1e1ae52ec22f806f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516562"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046197"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Řešení potíží s firewallem webových aplikací (WAF) pro Azure Application Gateway
 
@@ -287,7 +287,7 @@ V tomto příkladu vidíte, že máte čtyři pravidla se stejným TransactionID
 -   }
 ```
 
-S vaším vědomím, jak pravidlo pro dodržování předpisů funguje a že počítačový RuleSet 3,0 funguje se systémem bodování anomálií (viz téma [Firewall webových aplikací pro Azure Application Gateway](ag-overview.md)) víte, že dole dvě pravidla mají vlastnost **Action: Blocked** se blokují na základě celkového skóre anomálií. Mezi pravidla, která je potřeba zaměřit, patří horních dvou.
+S vaším vědomím, jak pravidlo pro dodržování předpisů funguje a že počítačový RuleSet 3,0 funguje se systémem bodování anomálií (viz téma [Brána Firewall webových aplikací pro Azure Application Gateway](ag-overview.md)) víte, že dolní dvě pravidla s **akcí: blokovaná** vlastnost je blokována na základě celkového skóre anomálií. Mezi pravidla, která je potřeba zaměřit, patří horních dvou.
 
 První položka je zaznamenána, protože uživatel použil číselnou IP adresu k přechodu na Application Gateway, která může být v tomto případě ignorována.
 

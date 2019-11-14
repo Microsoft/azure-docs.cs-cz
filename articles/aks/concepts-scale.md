@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 26cd2ffc12dfb93f07c2e1755a0dc41cc90da252
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961639"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048190"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -51,7 +51,7 @@ V současné době nemůžete tyto hodnoty cooldown z výchozího nastavení lad
 
 ## <a name="cluster-autoscaler"></a>Automatické škálování clusteru
 
-Aby bylo možné reagovat na měnící se požadavky pod, má Kubernetes k disAKS modul pro škálování clusteru, který je aktuálně ve verzi Preview v, který upravuje počet uzlů na základě požadovaných výpočetních prostředků ve fondu uzlů. Ve výchozím nastavení provádí automatické škálování clusteru metriky serveru rozhraní API metrik každých 10 sekund pro všechny požadované změny v počtu uzlů. Pokud automatické škálování clusteru určí, že se vyžaduje změna, počet uzlů v clusteru AKS se odpovídajícím způsobem zvýší nebo sníží. Automatické škálování clusteru funguje s clustery AKS s podporou RBAC, které používají Kubernetes 1,10. x nebo vyšší.
+Pro reakci na změnu požadavků pod Kubernetes má modul automatického škálování clusteru, který přizpůsobí počet uzlů na základě požadovaných výpočetních prostředků ve fondu uzlů. Ve výchozím nastavení provádí automatické škálování clusteru metriky serveru rozhraní API metrik každých 10 sekund pro všechny požadované změny v počtu uzlů. Pokud automatické škálování clusteru určí, že se vyžaduje změna, počet uzlů v clusteru AKS se odpovídajícím způsobem zvýší nebo sníží. Automatické škálování clusteru funguje s clustery AKS s podporou RBAC, které používají Kubernetes 1,10. x nebo vyšší.
 
 ![Automatické škálování clusteru Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 

@@ -1,24 +1,24 @@
 ---
-title: Zobrazení oprávnění role správce v centru pro správu – Azure Active Directory | Microsoft Docs
+title: Zobrazení přiřazení vlastních rolí na portálu Azure AD | Microsoft Docs
 description: V centru pro správu Azure AD teď můžete zobrazit a spravovat členy role správce Azure AD.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbe3b0218b73649d40f27d17ee2c7de2853c6b7c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d989a515a1a3c1dc12ca357a3ab2126e78800ffa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025552"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024417"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Zobrazení přiřazení vlastních rolí v Azure Active Directory
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak zobrazit vlastní role, které jste přiřadili v A
 
 Tento postup popisuje zobrazení přiřazení role s rozsahem v rámci organizace.
 
-1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)@no__t – 1with oprávnění správce privilegované role nebo globálního správce v organizaci Azure AD.
+1. Přihlaste se k [centru pro správu Azure ad](https://aad.portal.azure.com) s oprávněním správce privilegované role nebo globálním správcem v organizaci Azure AD.
 1. Vyberte **Azure Active Directory**, vyberte **role a správci**a pak vyberte roli, kterou chcete otevřít, a zobrazte její vlastnosti.
 1. Vyberte **přiřazení** a zobrazte přiřazení pro danou roli.
 
@@ -104,7 +104,7 @@ HTTP/1.1 200 OK
 
 Tato část popisuje zobrazení přiřazení role s oborem jedné aplikace. Tato funkce je aktuálně ve verzi Public Preview.
 
-1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)@no__t – 1with oprávnění správce privilegované role nebo globálního správce v organizaci Azure AD.
+1. Přihlaste se k [centru pro správu Azure ad](https://aad.portal.azure.com) s oprávněním správce privilegované role nebo globálním správcem v organizaci Azure AD.
 1. Vyberte **Registrace aplikací**a pak vyberte registraci aplikace a zobrazte její vlastnosti. Možná budete muset vybrat **všechny aplikace** , abyste viděli úplný seznam registrací aplikací ve vaší organizaci Azure AD.
 
     ![Vytvoření nebo úprava registrací aplikací ze stránky Registrace aplikací](./media/roles-create-custom/appreg-all-apps.png)

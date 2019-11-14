@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 99768afa9de22767d73576143a5c747be6a3bef9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 183599fccfad1806faae3cb90de225d388b77da8
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013374"
+ms.locfileid: "74049234"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>Směrování provozu pro vysokou dostupnost aplikací
+# <a name="route-traffic-for-high-availability-of-applications---azure-powershell"></a>Směrování provozu pro vysokou dostupnost aplikací – Azure PowerShell
 
 Tento skript vytvoří skupinu prostředků, dva plány služby App Service, dvě webové aplikace, profil služby Traffic Manager a dva koncové body Traffic Manageru. Traffic Manager směruje provoz do aplikace v jedné oblasti jako primární oblast a do sekundární oblasti, když aplikace v primární oblasti není k dispozici. Před spuštěním skriptu musíte změnit hodnoty MyWebApp, MyWebAppL1 a MyWebAppL2 na jedinečné hodnoty v rámci Azure. Po spuštění skriptu máte přístup k aplikaci v primární oblasti s adresou URL mywebapp.trafficmanager.net.
 

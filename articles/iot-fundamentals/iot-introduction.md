@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f46ebcabd98c7a8c3376157c72da9ec5ed424a4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce82a2cc4cc936d2e0a7a8b82cbc0ed7e5c6eb52
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935233"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048655"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co je Azure Internet věcí (IoT)?
 
@@ -20,7 +20,7 @@ Internet věcí (IoT) Azure je kolekce cloudových služeb spravovaných Microso
 
 Tento článek popisuje základy IoT, rozhovory o případech použití a stručně vysvětluje osm různých dostupných služeb. Když pochopíte, co je k dispozici, můžete zjistit, co chcete podrobněji najít, abyste mohli lépe navrhovat svůj scénář.
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Hlavní části řešení IoT jsou tyto: zařízení, back-endové služby a komunikace mezi nimi. 
 
@@ -105,7 +105,7 @@ Implementace tohoto řešení IoT umožňuje společnosti rychle kontrolovat a z
 
 V Azure je několik služeb souvisejících s IoT a může být matoucí zjistit, který z nich chcete použít. Některé, například IoT Central a akcelerátory řešení IoT, poskytují šablony, které vám pomohou vytvořit vlastní řešení a rychle začít. Pomocí dalších služeb, které jsou k dispozici, můžete také plně vyvíjet vlastní řešení – to vše závisí na tom, kolik potřebujete, a kolik ovládacích prvků. Tady je seznam dostupných služeb a také informace o tom, jak je můžete použít pro.
 
-1. [**IoT Central**](../iot-central/core/overview-iot-central.md): Jedná se o řešení SaaS, které vám pomůže připojit, monitorovat a spravovat vaše zařízení IoT. Začněte tím, že vyberete šablonu pro typ zařízení a vytvoříte a otestujete základní IoT Central aplikaci, kterou budou používat operátoři zařízení. Aplikace IoT Central vám také umožní monitorovat zařízení a zřizovat nová zařízení. Tato služba je určená pro přímočarý řešení, která nevyžadují přizpůsobení hloubkové služby. 
+1. [**IoT Central**](../iot-central/core/overview-iot-central.md): Jedná se o aplikační platformu IoT, která zjednodušuje vytváření řešení IoT a pomáhá snižovat zatížení a náklady na operace správy IoT a vývoj. Začněte tím, že vyberete šablonu pro typ zařízení a vytvoříte a otestujete základní IoT Central aplikaci, kterou budou používat operátoři zařízení. Aplikace IoT Central vám také umožní monitorovat zařízení a zřizovat nová zařízení. Tato služba je určená pro přímočarý řešení, která nevyžadují přizpůsobení hloubkové služby.
 
 2. [**Akcelerátory řešení IoT**](/azure/iot-suite): Jedná se o kolekci řešení PaaS, která můžete použít k urychlení vývoje řešení IoT. Začnete s dodaným řešením IoT a pak toto řešení plně upravíte podle svých požadavků. Dovednosti Java nebo .NET potřebujete k přizpůsobení prostředí back-endu a dovedností JavaScriptu pro přizpůsobení vizualizace. 
 

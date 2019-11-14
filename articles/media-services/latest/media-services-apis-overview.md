@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 79f1bd95451709485f92050a882c790f9e281eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820639"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049013"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
 
@@ -122,7 +122,7 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[Referenční informace k .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Referenční informace k Javě](https://aka.ms/ams-v3-java-ref)|
 |[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Referenční informace k Pythonu](https://aka.ms/ams-v3-python-ref)|
-|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Referenční informace k Node.js](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Referenční informace k Node.js](/javascript/api/overview/azure/mediaservices/management)| 
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Referenční informace k jazyku Go](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 

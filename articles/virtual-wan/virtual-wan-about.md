@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 10/14/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 76a82696986f4957e7a5a96a3b93497ed461f0c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491674"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048480"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 
@@ -21,7 +21,7 @@ Azure Virtual WAN je síťová služba, která poskytuje optimalizované a autom
 
 Azure Virtual WAN přináší dohromady spoustu služeb cloudového připojení Azure, jako je například síť VPN typu Site-to-site, síť VPN uživatele (Point-to-site) a ExpressRoute do jediného provozního rozhraní. Připojení ke službě Azure virtuální sítě se vytváří pomocí připojení k virtuální síti. Umožňuje [globální přenosovou architekturu sítě](virtual-wan-global-transit-network-architecture.md) založenou na klasickém modelu připojení hub, kde cloudová hostovaná síť "centrum" umožňuje přenosné připojení mezi koncovými body, které mohou být distribuovány napříč různými typy "paprsků".
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan1.png)
+![Diagram služby Virtual WAN](./media/virtual-wan-about/virtualwan1.png)
 
 Tento článek poskytuje rychlý přehled o připojení k síti v Azure Virtual WAN. Virtual WAN nabízí následující výhody:
 
@@ -63,7 +63,7 @@ Virtuální síť WAN umožňuje následující typy připojení: Site-to-Site V
 
 ### <a name="s2s"></a>Připojení VPN typu Site-to-site
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan.png)
+![Diagram služby Virtual WAN](./media/virtual-wan-about/virtualwan.png)
 
 Když vytváříte virtuální připojení WAN typu Site-to-site, můžete pracovat s dostupným partnerem. Pokud nechcete použít partnera, můžete nakonfigurovat připojení ručně. Další informace najdete v tématu [vytvoření připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md).
 
@@ -81,7 +81,7 @@ Seznam dostupných partnerů a umístění najdete v článku věnovaném [virtu
 
 ### <a name="uservpn"></a>Připojení uživatele VPN (Point-to-site)
 
-K prostředkům v Azure se můžete připojit přes připojení IPsec/IKE (IKEv2) nebo OpenVPN. Tento typ připojení vyžaduje, aby byl na klientském počítači nakonfigurovaný klient VPN. Další informace najdete v tématu [vytvoření připojení typu Point-to-site](virtual-wan-site-to-site-portal.md).
+K prostředkům v Azure se můžete připojit přes připojení IPsec/IKE (IKEv2) nebo OpenVPN. Tento typ připojení vyžaduje, aby byl na klientském počítači nakonfigurovaný klient VPN. Další informace najdete v tématu [vytvoření připojení typu Point-to-site](virtual-wan-point-to-site-portal.md).
 
 ### <a name="er"></a>Připojení ExpressRoute
 ExpressRoute umožňuje připojit místní síť k Azure prostřednictvím privátního připojení. Pokud chcete vytvořit připojení, přečtěte si téma [vytvoření připojení ExpressRoute pomocí virtuální sítě WAN](virtual-wan-expressroute-portal.md).

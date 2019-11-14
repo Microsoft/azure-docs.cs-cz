@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1ddb947e9bcbdde655b5c83cffb67e8fc13d9d0e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930236"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048680"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení Obecné klientské aplikace k aplikaci Azure IoT Central (Node. js)
 
@@ -30,7 +30,9 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 ## <a name="create-a-device-template"></a>Vytvoření šablony zařízení
 
-V aplikaci Azure IoT Central budete potřebovat šablonu zařízení s následujícími měřeními, vlastnostmi zařízení, nastaveními a příkazy:
+V aplikaci Azure IoT Central budete potřebovat šablonu zařízení s následujícími měřeními, vlastnostmi zařízení, nastaveními a příkazy.
+
+Další informace o platných názvech vlastností naleznete v tématu [Formát značek a vlastností](../../iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format).
 
 ### <a name="telemetry-measurements"></a>Měření telemetrie
 
@@ -53,7 +55,7 @@ Na stránce **měření** přidejte následující stav:
 
 | Zobrazovaný název | Název pole  | Hodnota 1 | Zobrazovaný název | Hodnota 2 | Zobrazovaný název |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Režim ventilátoru     | fanmode     | 1       | Spuštěno      | 0       | Zastaveno      |
+| Režim ventilátoru     | fanmode     | 1       | Běží      | 0       | Zastaveno      |
 
 > [!NOTE]
 > Datový typ měření stavu je řetězec.

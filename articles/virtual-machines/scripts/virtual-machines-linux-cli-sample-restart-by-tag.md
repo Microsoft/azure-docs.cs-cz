@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Restartování virtuálních počítačů | Microsoft Docs
+title: Ukázkový skript Azure CLI – restartování virtuálních počítačů
 description: Ukázkový skript Azure CLI – Restartování virtuálních počítačů podle značky a podle ID
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 78e646887a0e595589b9d0cc794029dcd4be91ca
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841395"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040253"
 ---
 # <a name="restart-vms"></a>Restartování virtuálních počítačů
 
@@ -61,7 +61,7 @@ Dva z nich jsou označené.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "Provision the VMs")]
 
-### <a name="wait"></a>Čekání
+### <a name="wait"></a>Wait
 
 Tento skript každých 20 sekund kontroluje stav zřizování, dokud se nezřídí všechny tři virtuální počítače nebo zřízení některého z nich neselže.
 
@@ -85,7 +85,7 @@ az group delete -n myResourceGroup --no-wait --yes
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Vytvoří virtuální počítače.  |
@@ -94,7 +94,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Restartuje virtuální počítače. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

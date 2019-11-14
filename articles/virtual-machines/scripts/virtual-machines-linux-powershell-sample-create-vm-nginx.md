@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – NGINX | Microsoft Docs
+title: Ukázkový skript Azure PowerShellu – NGINX
 description: Ukázkový skript Azure PowerShellu – NGINX
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b3a32c03ecc78ab0b350d6d0b0d4a1df5419dcfe
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0c142c87c317c9a19f6e1d25b8e911eaea3b9d94
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748803"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040112"
 ---
 # <a name="create-an-nginx-vm-with-powershell"></a>Vytvoření virtuálního počítače NGINX pomocí PowerShellu
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě. |

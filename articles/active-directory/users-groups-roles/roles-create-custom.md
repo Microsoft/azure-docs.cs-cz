@@ -1,24 +1,24 @@
 ---
-title: Vytvoření a přiřazení vlastní role v řízení přístupu na základě role Azure AD – Azure Active Directory | Microsoft Docs
+title: Vytváření vlastních rolí v řízení přístupu na základě role Azure AD | Microsoft Docs
 description: Vytvořte a přiřaďte vlastní role Azure AD s oborem prostředků u prostředků Azure Active Directory.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026401"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025271"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Vytvoření a přiřazení vlastní role v Azure Active Directory
 
@@ -30,8 +30,8 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Vytvoření nové vlastní role pro udělení přístupu pro správu registrací aplikací
 
-1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)@no__t – 1with oprávnění správce privilegované role nebo globálního správce v organizaci Azure AD.
-1. Vyberte **Azure Active Directory** **rolí a správců** >   > **novou vlastní roli**.
+1. Přihlaste se k [centru pro správu Azure ad](https://aad.portal.azure.com) s oprávněním správce privilegované role nebo globálním správcem v organizaci Azure AD.
+1. Vyberte **Azure Active Directory** > **rolí a správců** > **novou vlastní roli**.
 
    ![Vytvoření nebo úprava rolí na stránce role a správci](./media/roles-create-custom/new-custom-role.png)
 
@@ -40,7 +40,7 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
    ![zadání názvu a popisu vlastní role na kartě základy](./media/roles-create-custom/basics-tab.png)
 
 1. Na kartě **oprávnění** vyberte oprávnění nutná ke správě základních vlastností a vlastností přihlašovacích údajů pro registrace aplikací. Podrobný popis jednotlivých oprávnění naleznete [v tématu typy registrace aplikace a oprávnění v Azure Active Directory](./roles-custom-available-permissions.md).
-   1. Nejdřív na panelu hledání zadejte "přihlašovací údaje" a vyberte oprávnění `microsoft.directory/applications/credentials/update`.
+   1. Nejdřív na panelu hledání zadejte "přihlašovací údaje" a vyberte `microsoft.directory/applications/credentials/update` oprávnění.
 
       ![Na kartě oprávnění vyberte oprávnění pro vlastní roli.](./media/roles-create-custom/permissions-tab.png)
 
@@ -116,7 +116,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Požadavek HTTP na vytvoření vlastní definice role.
 
-    SPUŠTĚNÍ
+    POST
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
@@ -145,7 +145,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Požadavek HTTP na vytvoření vlastní definice role.
 
-    SPUŠTĚNÍ
+    POST
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments

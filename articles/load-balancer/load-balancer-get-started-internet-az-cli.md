@@ -1,11 +1,11 @@
 ---
-title: Vytvoření Load Balancer s využitím redundantního front-endu Azure CLI
-titlesuffix: Azure Load Balancer
+title: Vytvoření nástroje pro vyrovnávání zatížení s využitím zóny redundantního front-endu Azure CLI
+titleSuffix: Azure Load Balancer
 description: Naučte se vytvářet veřejné Standard Load Balancer s front-redundantní veřejnou IP adresou front-endu pomocí Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: allensu
-ms.openlocfilehash: 2dcd7d2cffa567307e1d6eb4326a379bc2d409be
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d5dd2dc04f4307c810fdc673286505f6001491ec
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275172"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048359"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí Azure CLI
 
@@ -78,7 +78,7 @@ az network lb rule create --resource-group myResourceGroup --lb-name myLoadBalan
   --backend-pool-name myBackEndPool --probe-name myHealthProbe
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md).
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Ukázkový skript Azure PowerShellu: Vytvoření spravovaného disku ze snímku | Microsoft Docs'
+title: 'Ukázkový skript Azure PowerShellu: Vytvoření spravovaného disku ze snímku'
 description: 'Ukázkový skript Azure PowerShellu: Vytvoření spravovaného disku ze snímku'
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: be763f2df9352cafaedcd5c80a60c48e919d3f1c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93f2e24a2a32af1fb4bfa6560b27ce6c113ad7a1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749937"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040144"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Vytvoření spravovaného disku ze snímku pomocí PowerShellu
 
@@ -37,7 +37,7 @@ Tento skript vytvoří spravovaný disk ze snímku. Použijte ho k obnovení vir
 
 Tento skript k vytvoření spravovaného disku ze snímku používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | Načte vlastnosti snímku.  |
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Vytvoří konfiguraci disku, která se použije při vytvoření disku. Bude obsahovat ID prostředku nadřazeného snímku, stejné umístění, jako má nadřazený snímek, a typ úložiště.  |

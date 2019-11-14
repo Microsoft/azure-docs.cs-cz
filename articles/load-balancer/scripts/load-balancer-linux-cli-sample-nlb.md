@@ -1,28 +1,24 @@
 ---
-title: Ukázka CLI – vyrovnávání zatížení provozu na virtuálních počítačích pro zajištění vysoké dostupnosti – Azure | Microsoft Docs
+title: Vyrovnávání zatížení provozu do virtuálních počítačů pro HA – Azure CLI – Azure Load Balancer
 description: Tento ukázkový skript Azure CLI provádí vyrovnávání zatížení provozu na virtuálních počítačích pro zajištění vysoké dostupnosti.
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed3f0899d6a378285c9799b57e2aad76348c45d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c0bfb5705989c99d3626d6e728b764e94f83fffe
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273817"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048912"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu na virtuálních počítačích pro zajištění vysoké dostupnosti
 
 Tento ukázkový skript Azure CLI vytvoří vše potřebné pro spuštění několika virtuálních počítačů s Ubuntu v konfiguraci s vysokou dostupností a vyrovnáváním zatížení. Po spuštění skriptu budete mít tři virtuální počítače připojené ke skupině dostupnosti Azure a přístupné přes službu Azure Load Balancer. 
 
@@ -46,7 +42,7 @@ az group delete --name myResourceGroup
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Vytvoří virtuální síť Azure a podsíť. |
@@ -62,7 +58,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](/cli/azure/vm#az-vm-create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

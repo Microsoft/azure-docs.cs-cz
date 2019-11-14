@@ -1,25 +1,25 @@
 ---
-title: Dokončení kontroly přístupu rolí Azure AD v PIM-Azure Active Directory | Microsoft Docs
+title: Dokončení kontroly přístupu rolí Azure AD v PIM – Azure AD | Microsoft Docs
 description: Naučte se, jak dokončit kontrolu přístupu pro role Azure AD v Azure AD Privileged Identity Management (PIM) a zobrazit výsledky.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 197abc0642d6abf1278a75c2101c195cafeb53b2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809143"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022281"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Dokončení kontroly přístupu rolí Azure AD v Privileged Identity Management
 
@@ -49,7 +49,7 @@ Všechny kontroly přístupu mají koncové datum, ale k jeho dokončení může
 
 Po dokončení kontroly přístupu buď protože jste dosáhli koncového data nebo ho zastavili ručně, tlačítko **použít** provede implementaci výsledku revize. Pokud se k přístupu uživatele v recenzi zamítl přístup, jedná se o krok, který odebere přiřazení role.  
 
-### <a name="export"></a>Exportovat
+### <a name="export"></a>Export
 
 Pokud chcete výsledky kontroly přístupu použít ručně, můžete tuto kontrolu exportovat. Tlačítko **exportovat** spustí stahování souboru CSV. Výsledky můžete spravovat v Excelu nebo v jiných programech, které otevřou soubory CSV.
 

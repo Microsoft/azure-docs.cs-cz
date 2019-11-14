@@ -8,14 +8,18 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 68bf455bbdfb6d2d45c5eccc60c3ad8ce40d3247
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 33302d7252c56badfed1dc7adea6a4f7cbf961b6
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515782"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048258"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs
+
+> [!NOTE]
+> Nyní můžete protokol aktivit shromažďovat do Log Analytics pracovního prostoru pomocí nastavení diagnostiky podobného způsobu, jakým shromažďujete protokoly prostředků. Přečtěte si téma [shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure monitor](activity-log-collect.md).
+
 [Protokol aktivit Azure](activity-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Kromě zobrazení protokolu aktivit v Azure Portal nebo jeho zkopírování do pracovního prostoru Log Analytics, kde se dá analyzovat s ostatními daty shromažďovanými Azure Monitor můžete vytvořit profil protokolu pro archivaci protokolu aktivit do účtu služby Azure Storage nebo jeho streamování do  Centrum událostí.
 
 ## <a name="archive-activity-log"></a>Protokol aktivit archivu
@@ -26,7 +30,7 @@ Archivace protokolu aktivit do účtu úložiště je užitečná v případě, 
 * **Streamování do systémů protokolování a telemetrie třetích stran**: v průběhu času se streamování služby Azure Event Hubs stane mechanismem pro přesměrování vaší aktivity do řešení systémů Siem a Log Analytics třetích stran.
 * **Sestavení vlastní telemetrie a**rozhraní pro protokolování: Pokud už máte vlastní platformu telemetrie nebo uvažujete o jejím sestavování, je vysoce škálovatelná verze Event Hubs pro publikování a odběr, která umožňuje flexibilní ingestování protokolu aktivit. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="storage-account"></a>Účet úložiště
 Pokud budete protokol aktivit archivovat, musíte si [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md) , pokud ho ještě nemáte. Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům monitorování. Pokud i přesto archivujte diagnostické protokoly a metriky do účtu úložiště, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
@@ -55,9 +59,9 @@ Profil protokolu definuje následující.
 
 **Které oblasti (umístění) by měly být exportovány.** Měli byste zahrnout všechna umístění, protože mnoho událostí v protokolu aktivit je globální události.
 
-**Jak dlouho má být protokol aktivit uchováván v účtu úložiště.** Doba uchování 0 dnů znamená, že se protokoly uchovávají trvale. V opačném případě může být hodnota libovolný počet dní mezi 1 a 365.
+**Jak dlouho má být protokol aktivit uchováván v účtu úložiště.** Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě může být hodnota libovolný počet dní mezi 1 a 365.
 
-Pokud jsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázané, pak zásady uchovávání nemají žádný vliv. Zásady uchovávání informací se aplikují za den, takže na konci dne (UTC) se odhlásí od dne, který je teď mimo zásadu uchovávání informací. Například pokud jste měli zásady uchovávání informací jeden den, na začátku dne v dnešní době budou odstraněny protokoly od dne před včera. Proces odstranění začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin, než se protokoly odstraní z vašeho účtu úložiště.
+Pokud jsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázané, pak zásady uchovávání nemají žádný vliv. Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště.
 
 
 > [!IMPORTANT]
@@ -109,7 +113,7 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
-    | Name (Název) |Ano |Název vašeho profilu protokolu. |
+    | Název |Ano |Název vašeho profilu protokolu. |
     | StorageAccountId |Ne |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
     | serviceBusRuleId |Ne |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Umístění |Ano |Čárkami oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. |
@@ -153,10 +157,10 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
     | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
     | jméno |Ano |Název vašeho profilu protokolu. |
-    | úložiště – ID účtu |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
-    | Polohy |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name`. |
-    | denní |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
-    |umožněn | Ano |True nebo false.  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
+    | storage-account-id |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
+    | locations |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name`. |
+    | days |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
+    |enabled | Ano |True nebo False.  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
     | categories |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
 
 
@@ -235,9 +239,9 @@ Prvky v tomto formátu JSON jsou popsány v následující tabulce.
 | durationMs |Doba trvání operace v milisekundách |
 | callerIpAddress |IP adresa uživatele, který provedl operaci, deklaraci hlavního názvu uživatele (UPN) nebo deklaraci identity hlavního názvu služby (SPN) podle dostupnosti. |
 | correlationId |Obvykle identifikátor GUID ve formátu řetězce. Události, které sdílejí ID korelace, patří ke stejné akci Uber. |
-| identita |Objekt BLOB JSON popisující autorizaci a deklarace identity. |
-| Udělován |Objekt BLOB vlastností RBAC události Obvykle zahrnuje vlastnosti "Action", "role" a "Scope". |
-| Obsah |Úroveň události Jedna z následujících hodnot: _kritická_, _Chyba_, _Upozornění_, _informativní_a _podrobné_ |
+| identity |Objekt BLOB JSON popisující autorizaci a deklarace identity. |
+| authorization |Objekt BLOB vlastností RBAC události Obvykle zahrnuje vlastnosti "Action", "role" a "Scope". |
+| úroveň |Úroveň události Jedna z následujících hodnot: _kritická_, _Chyba_, _Upozornění_, _informativní_a _podrobné_ |
 | location |Oblast, ve které došlo k umístění (nebo globálnímu). |
 | properties |Sada dvojic `<Key, Value>` (tj. slovník), které popisují podrobnosti události. |
 
