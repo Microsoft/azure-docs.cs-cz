@@ -1,5 +1,5 @@
 ---
-title: 'Přesun okruhů z classic do Resource Manageru – ExpressRoute: Azure | Dokumentace Microsoftu'
+title: 'ExpressRoute: přesunutí okruhů z klasického na Azure Resource Manager'
 description: Přehled přemostění Datacenter klasické modely nasazení a modely nasazení Resource Manager.
 services: expressroute
 author: ganesr
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: dfa2bbc735a79555da0421f64ca644adbd7a1701
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60363820"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076647"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager
 Tento článek obsahuje přehled toho, co znamená přesun okruhu Azure ExpressRoute z modelu nasazení Classic do Azure Resource Manager.
@@ -91,7 +90,7 @@ Tato část popisuje, co není podporováno pro okruhy ExpressRoute:
 ## <a name="configuration"></a>Konfigurace
 Postupujte podle pokynů uvedených v tématu [Přesun okruhu ExpressRoute z modelu nasazení Classic do Resource Manager](expressroute-howto-move-arm.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Migrace virtuálních sítí propojených s okruhem ExpressRoute z modelu Classic na model Azure Resource Manager](expressroute-migration-classic-resource-manager.md)
 * Informace o pracovním postupu najdete v tématu [Pracovní postupy zřizování okruhů ExpressRoute a stavy okruhu](expressroute-workflows.md).
 * Konfigurace připojení ExpressRoute:

@@ -1,5 +1,5 @@
 ---
-title: 'Propojení virtuální sítě k okruhu ExpressRoute: CLI: Azure | Dokumentace Microsoftu'
+title: 'Azure ExpressRoute: propojení virtuální sítě k okruhu: CLI'
 description: Tento článek ukazuje, jak propojit virtuální sítě (Vnet) pro okruhy ExpressRoute pomocí modelu nasazení Resource Manager a rozhraní příkazového řádku.
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.custom: seodec18
-ms.openlocfilehash: d858c83fb6669e5348b4256931e080656be0ebad
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621064"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076542"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -155,10 +153,10 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 Rozsah *RoutingWeight* je od 0 do 32 000. Výchozí hodnota je 0.
 
 ## <a name="configure-expressroute-fastpath"></a>Konfigurace ExpressRoute FastPath 
-Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Pokud váš okruh ExpressRoute není v [ExpressRoute přímo](expressroute-erdirect-about.md) a bránu virtuálního newtork je Ultra výkon nebo ErGw3AZ. FastPath zlepšuje preformance cesty dat jako jsou pakety za sekundu a připojení za sekundu mezi místní sítí a virtuální sítí. 
+Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , pokud je váš okruh ExpressRoute na [ExpressRoute Direct](expressroute-erdirect-about.md) a vaše virtuální síť. Brána je Ultra Performance nebo ErGw3AZ. FastPath vylepšuje cestu dat preformance, jako jsou pakety za sekundu a připojení za sekundu mezi vaší místní sítí a virtuální sítí. 
 
 > [!NOTE] 
-> Pokud již máte připojení k virtuální síti, ale ještě nepovolili FastPath musíte odstranit připojení virtuální sítě a vytvořte novou. 
+> Pokud už máte připojení k virtuální síti, ale nepovolili FastPath, musíte odstranit připojení k virtuální síti a vytvořit nový. 
 > 
 >  
 
@@ -167,6 +165,6 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
