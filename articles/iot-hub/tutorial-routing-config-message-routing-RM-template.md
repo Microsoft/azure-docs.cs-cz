@@ -1,5 +1,5 @@
 ---
-title: Konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager | Microsoft Docs
+title: Konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
 description: Konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ef73aed577645af5af82c439abb57022b389d040
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809719"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084394"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Kurz: použití šablony Azure Resource Manager ke konfiguraci směrování zpráv IoT Hub
 
@@ -44,21 +44,21 @@ V následující části jsou vysvětleny použité parametry.
 
 ### <a name="parameters"></a>Parametry
 
-Většina těchto parametrů má výchozí hodnoty. Ty končící na **_in** jsou zřetězené s *randomValue* , aby byly globálně jedinečné. 
+Většina těchto parametrů má výchozí hodnoty. Ty, které končí **_in** jsou zřetězené s *randomValue* , aby byly globálně jedinečné. 
 
 **randomValue**: Tato hodnota je vygenerována z aktuálního data a času při nasazení šablony. Toto pole není v souboru parametrů, protože je vygenerováno v samotné šabloně.
 
 **SubscriptionId**: Toto pole je nastaveno pro vás na předplatné, do kterého nasazujete šablonu. Toto pole není v souboru parametrů, protože je nastaveno za vás.
 
-**IoTHubName_in**: Toto pole je základní název IoT Hub, který je zřetězený s randomValue tak, aby byl globálně jedinečný.
+**IoTHubName_in**: Toto pole je základní IoT Hub název, který je zřetězený s randomValue, aby byl globálně jedinečný.
 
 **umístění**: Toto pole je oblast Azure, do které nasazujete, například "westus".
 
-**consumer_group**: Toto pole je nastavené jako skupina uživatelů pro zprávy přicházející prostřednictvím koncového bodu směrování. Slouží k filtrování výsledků v Azure Stream Analytics. Například je k dispozici celý datový proud, ve kterém získáte vše, nebo pokud máte data přicházející prostřednictvím consumer_group sady na **Contoso**, můžete nastavit datový proud služby Azure Stream Analytics (a Power BI sestavu), aby se zobrazily jenom tyto položky. Toto pole se používá v části 2 tohoto kurzu.
+**consumer_group**: Toto pole je nastavená skupina uživatelů pro zprávy přicházející prostřednictvím koncového bodu směrování. Slouží k filtrování výsledků v Azure Stream Analytics. Například je k dispozici celý datový proud, ve kterém získáte vše, nebo pokud máte data přicházející pomocí consumer_group nastavenou na **Contoso**, můžete nastavit datový proud Azure Stream Analytics (a Power BI sestavu), aby se zobrazily jenom tyto položky. Toto pole se používá v části 2 tohoto kurzu.
 
-**sku_name**: Toto pole je škálováním pro IoT Hub. Tato hodnota musí být S1 nebo vyšší. Bezplatná úroveň pro tento kurz nefunguje, protože nepovoluje více koncových bodů.
+**sku_name**: Toto pole je měřítko pro IoT Hub. Tato hodnota musí být S1 nebo vyšší. Bezplatná úroveň pro tento kurz nefunguje, protože nepovoluje více koncových bodů.
 
-**sku_units**: Toto pole se zakládá s **sku_name**a je to počet IoT Hub jednotek, které se dají použít.
+**sku_units**: Toto pole se používá **sku_name**a je počet IoT Hub jednotek, které se dají použít.
 
 **d2c_partitions**: Toto pole je počet oddílů používaných pro datový proud událostí.
 
@@ -70,7 +70,7 @@ Většina těchto parametrů má výchozí hodnoty. Ty končící na **_in** jso
 
 **service_bus_namespace_in**: Toto pole je název oboru názvů Service Bus, který se má vytvořit. Tato hodnota je zřetězena s randomValue, aby byla globálně jedinečná.
 
-**service_bus_queue_in**: Toto pole je název fronty Service Bus používané pro směrování zpráv. Tato hodnota je zřetězena s randomValue, aby byla globálně jedinečná.
+**service_bus_queue_in**: Toto pole je název Service Bus fronty používané pro směrování zpráv. Tato hodnota je zřetězena s randomValue, aby byla globálně jedinečná.
 
 **AuthRules_sb_queue**: Toto pole je autorizační pravidla pro frontu Service Bus, která slouží k načtení připojovacího řetězce pro frontu.
 
@@ -84,9 +84,9 @@ Tyto hodnoty se používají v šabloně a jsou převážně odvozené z paramet
 
 **storageAccountName**: Toto pole je název účtu úložiště po jeho zřetězení randomValue. 
 
-**service_bus_namespace**: Toto pole je obor názvů po zřetězení randomValue.
+**service_bus_namespace**: Toto pole je obor názvů po randomValue zřetězení.
 
-**service_bus_queue**: Toto pole je název fronty Service Bus po tom, co se randomValue zřetězí.
+**service_bus_queue**: Toto pole je název fronty Service Bus po randomValue zřetězení.
 
 **sbVersion**: verze rozhraní API pro Service Bus, která se má použít. V tomto případě je to "2017-04-01".
 

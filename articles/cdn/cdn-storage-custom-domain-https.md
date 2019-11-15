@@ -1,6 +1,5 @@
 ---
-title: Kurz – Přístup k objektům blob úložiště pomocí vlastní domény Azure CDN přes HTTPS | Microsoft Docs
-description: ''
+title: Přístup k objektům blob úložiště pomocí Azure CDN vlastní domény přes HTTPS
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,26 +14,26 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e3b10760b95662570c8a6e802a57e1073e2faa0a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593372"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083023"
 ---
-# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Kurz: Přístup k objektům BLOB storage pomocí vlastní doménu Azure CDN prostřednictvím protokolu HTTPS
+# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Kurz: Přístup k objektům blob úložiště pomocí vlastní domény Azure CDN přes HTTPS
 
 Po integraci účtu úložiště Azure se službou Azure CDN (Content Delivery Network) můžete přidat vlastní doménu a povolit u ní protokol HTTPS pro vlastní koncový bod úložiště objektů blob. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete moct dokončit postup uvedený v tomto kurzu, musíte nejprve integrovat účet úložiště Azure se službou Azure CDN. Další informace najdete v tématu [rychlý start: Integrace účtu služby Azure storage s Azure CDN](cdn-create-a-storage-account-with-cdn.md).
+Než budete moct dokončit postup uvedený v tomto kurzu, musíte nejprve integrovat účet úložiště Azure se službou Azure CDN. Další informace najdete v článku [Rychlý start: Integrace účtu úložiště Azure s Azure CDN](cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="add-a-custom-domain"></a>Přidání vlastní domény
-Ve výchozím nastavení se při vytváření koncového bodu CDN ve vašem profilu vloží název koncového bodu, což je subdoména domény azureedge.net, do adresy URL pro doručování obsahu CDN. Máte také možnost přidružit ke koncovému bodu CDN vlastní doménu. Díky této možnosti můžete doručovat obsah na adrese URL s vlastní doménou místo názvu koncového bodu. Přidat vlastní doménu do koncového bodu, postupujte podle pokynů v tomto kurzu: [Přidat vlastní doménu do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md).
+Ve výchozím nastavení se při vytváření koncového bodu CDN ve vašem profilu vloží název koncového bodu, což je subdoména domény azureedge.net, do adresy URL pro doručování obsahu CDN. Máte také možnost přidružit ke koncovému bodu CDN vlastní doménu. Díky této možnosti můžete doručovat obsah na adrese URL s vlastní doménou místo názvu koncového bodu. Pokud chcete do svého koncového bodu přidat vlastní doménu, postupujte podle pokynů v kurzu týkajícím se [přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md).
 
 ## <a name="configure-https"></a>Konfigurace HTTPS
-Když u vlastní domény použijete protokol HTTPS, zajistíte tak, že se vaše data budou na internetu doručovat zabezpečeně prostřednictvím šifrování TLS/SSL. Když se webový prohlížeč připojí k webu přes HTTPS, ověří certifikát zabezpečení webu a to, že je vydán legitimní certifikační autoritou. Konfigurace HTTPS pro vlastní doménu, postupujte podle pokynů v tomto kurzu: [Konfigurace HTTPS pro vlastní doménu Azure CDN](cdn-custom-ssl.md).
+Když u vlastní domény použijete protokol HTTPS, zajistíte tak, že se vaše data budou na internetu doručovat zabezpečeně prostřednictvím šifrování TLS/SSL. Když se webový prohlížeč připojí k webu přes HTTPS, ověří certifikát zabezpečení webu a to, že je vydán legitimní certifikační autoritou. Pokud chcete nakonfigurovat protokol HTTPS pro vlastní doménu, postupujte podle pokynů uvedených v kurzu: [Konfigurace HTTPS pro vlastní doménu Azure CDN](cdn-custom-ssl.md).
 
 ## <a name="shared-access-signatures"></a>Sdílené přístupové podpisy
 Pokud je koncový bod úložiště objektů blob nakonfigurovaný tak, aby zakazoval anonymní přístup pro čtení, měli byste poskytnout token [sdíleného přístupového podpisu (SAS)](cdn-sas-storage-support.md) v každé žádosti, kterou ve vlastní doméně provedete. Koncové body úložiště objektů blob ve výchozím nastavení anonymní přístup pro čtení zakazují. Další informace o sdíleném přístupovém podpisu najdete v tématu o [správě anonymního přístupu pro čtení ke kontejnerům a objektům blob](../storage/blobs/storage-manage-access-to-resources.md).
@@ -55,8 +54,8 @@ Při přístupu k objektům blob prostřednictvím služby Azure CDN platíte [c
 
 Pokud třeba máte v USA účet úložiště, ke kterému přistupujete pomocí služby Azure CDN, a uživatel v Evropě se k jednomu z objektů blob v tomto účtu úložiště pokusí přistoupit prostřednictvím služby Azure CDN, služba Azure CDN pro tento objekt blob nejprve ověří server POP, který je nejblíže Evropě. Pokud ho najde, Azure CDN přistoupí k této kopii objektu blob a použije ceny CDN, protože se k němu přistupuje ve službě Azure CDN. Pokud ho nenajde, Azure CDN zkopíruje objekt blob na server POP. V důsledku toho dojde k výchozímu přenosu a transakčním poplatkům, které jsou specifikované cenami za úložiště objektů blob. Potom se k souboru přistoupí na serveru POP, což je zpoplatněno cenami za Azure CDN.
 
-## <a name="next-steps"></a>Další postup
-[Kurz: Nastavte pravidla ukládání do mezipaměti Azure CDN](cdn-caching-rules-tutorial.md)
+## <a name="next-steps"></a>Další kroky
+[Kurz: Nastavení pravidel ukládání do mezipaměti Azure CDN](cdn-caching-rules-tutorial.md)
 
 
 

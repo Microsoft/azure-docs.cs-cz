@@ -1,6 +1,6 @@
 ---
-title: Použít veřejné IP adresy po převzetí služeb při selhání pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Popisuje, jak nastavit veřejné IP adresy s Azure Site Recovery a Azure Traffic Manager pro zotavení po havárii a migrace
+title: Přiřazení veřejných IP adres po převzetí služeb při selhání pomocí Azure Site Recovery
+description: Popisuje, jak nastavit veřejné IP adresy pomocí Azure Site Recovery a Azure Traffic Manager pro zotavení po havárii a migraci.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,52 +8,52 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 1f20818f0b899eede9fff05d71e98c8bffb94b0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101935"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084248"
 ---
-# <a name="set-up-public-ip-addresses-after-failover"></a>Nastavení veřejné IP adresy po převzetí služeb při selhání
+# <a name="set-up-public-ip-addresses-after-failover"></a>Nastavení veřejných IP adres po převzetí služeb při selhání
 
 Veřejné IP adresy umožňují internetovým prostředkům příchozí komunikaci s prostředky Azure. Veřejné IP adresy taky umožňují prostředkům Azure odchozí komunikaci s internetovými službami a veřejně přístupnými službami Azure prostřednictvím IP adresy přiřazené prostředku.
-- Příchozí komunikace ze sítě Internet k prostředku, jako jsou Azure Virtual Machines (VM), služby Azure Application Gateway, nástroje pro vyrovnávání zatížení Azure, Azure VPN Gateway a dalších. Můžete dál komunikovat s některými prostředky, jako jsou virtuální počítače z Internetu, pokud virtuální počítač nemá veřejnou IP adresu přiřazenou jako virtuální počítač je součástí fondu back-end nástroje pro vyrovnávání zatížení a nástroje pro vyrovnávání zatížení je přiřazena veřejná IP adresa.
-- Odchozí připojení k Internetu pomocí předvídatelné IP adresy. Virtuální počítač může například komunikovat odchozí k Internetu bez veřejné IP adresy přiřazené k ní, ale její adresa je adresa sítě přeložit pomocí Azure na veřejnou adresu nepředvídatelné ve výchozím nastavení. Veřejnou IP adresu přiřadit prostředku umožňuje vědět, které IP adresa se používá pro odchozí připojení. I když je předvídatelné, můžete změnit na adresu, v závislosti na zvolené metodě přiřazení. Další informace najdete v tématu [vytvoření veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address). Další informace o odchozích připojení z prostředků Azure najdete v tématu [Principy odchozích připojení](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Příchozí komunikace z Internetu k prostředku, jako je například Azure Virtual Machines (VM), služby Azure Application Gateway, služby Azure Load Balancer, brány Azure VPN a další. I nadále můžete komunikovat s některými prostředky, jako jsou virtuální počítače, z Internetu, pokud k virtuálnímu počítači není přiřazená veřejná IP adresa, pokud je tento virtuální počítač součástí fondu back-end nástroje pro vyrovnávání zatížení a nástroj pro vyrovnávání zatížení má přiřazenou veřejnou IP adresu.
+- Odchozí připojení k Internetu pomocí předvídatelné IP adresy. Virtuální počítač může například komunikovat odchozí na Internet bez přiřazené veřejné IP adresy, ale jeho adresa je síťová adresa přeložená službou Azure na nepředvídatelné veřejné adresy, ve výchozím nastavení. Přiřazení veřejné IP adresy prostředku vám umožní zjistit, která IP adresa se používá pro odchozí připojení. I když je předvídatelné, adresa se může změnit v závislosti na zvolené metodě přiřazení. Další informace najdete v tématu [Vytvoření veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address). Další informace o odchozích připojeních z prostředků Azure najdete v tématu [Principy odchozích připojení](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-V Azure Resource Manageru, veřejná IP adresa je prostředek, který má své vlastní vlastnosti. Mezi prostředky, ke kterým můžete přiřadit prostředek s veřejnou IP adresou, patří:
+V Azure Resource Manager je veřejná IP adresa prostředkem, který má své vlastní vlastnosti. Mezi prostředky, ke kterým můžete přiřadit prostředek s veřejnou IP adresou, patří:
 
 * Síťová rozhraní virtuálního počítače
 * Internetové nástroje pro vyrovnávání zatížení
 * VPN Gateway
 * Application Gateway
 
-Tento článek popisuje, jak můžete pomocí veřejné IP adresy pomocí Site Recovery.
+Tento článek popisuje, jak můžete použít veřejné IP adresy s Site Recovery.
 
-## <a name="public-ip-address-assignment-using-recovery-plan"></a>Veřejné přiřazení IP adresy pomocí plán obnovení
+## <a name="public-ip-address-assignment-using-recovery-plan"></a>Přiřazení veřejné IP adresy pomocí plánu obnovení
 
-Veřejnou IP adresu produkční aplikace **nelze uchovávat v převzetí služeb při selhání**. Úlohy, které aktivují jako součást procesu převzetí služeb při selhání musí být přiřazena veřejná IP adresa Azure prostředek k dispozici v cílové oblasti. Tento krok lze provést buď ručně, nebo je automatické s plány obnovení. Plán obnovení shromažďuje počítače do skupin pro obnovení. Pomůže vám k definování procesu systematické obnovení. Můžete použít plán obnovení a stanovit pořadí a automatizaci akcí, třeba v každém kroku pomocí runbooků Azure Automation pro převzetí služeb při selhání do Azure nebo skriptů.
+Veřejnou IP adresu produkční aplikace **nejde zachovat při převzetí služeb při selhání**. Úlohy, které se zadají jako součást procesu převzetí služeb při selhání, musí mít přiřazený prostředek veřejné IP adresy Azure dostupný v cílové oblasti. Tento krok lze provést buď ručně, nebo automaticky pomocí plánů obnovení. Plán obnovení shromažďuje počítače do skupin pro obnovení. Pomáhá definovat proces systematického obnovení. Plán obnovení můžete použít k vytvoření objednávky a automatizaci akcí potřebných v každém kroku, a to pomocí Azure Automation Runbooky pro převzetí služeb při selhání do Azure nebo skriptů.
 
-Instalační program je následujícím způsobem:
-- Vytvoření [plánu obnovení](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) a seskupte úlohy podle potřeby do plánu.
-- Upravit plán tak, že přidáte krok připojit a veřejné IP adresy s použitím [runbooků Azure Automation](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) skripty pro převzetí virtuálního počítače.
+Nastavení je následující:
+- Vytvořte [plán obnovení](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) a podle potřeby seskupte své úlohy do plánu.
+- Přizpůsobte si plán přidáním kroku a připojením veřejné IP adresy pomocí [Azure Automationch runbooků](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) skripty k virtuálnímu počítači, u kterého došlo k převzetí služeb při selhání.
 
  
-## <a name="public-endpoint-switching-with-dns-level-routing"></a>Veřejný koncový bod přímé přepnutí s směrování na úrovni DNS
+## <a name="public-endpoint-switching-with-dns-level-routing"></a>Přepínání veřejného koncového bodu s směrováním na úrovni DNS
 
-Azure Traffic Manager umožňuje DNS na úrovni směrování mezi koncovými body a vám můžou pomoct s [poklesne vaše RTO](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) pro scénář zotavení po Havárii. 
+Azure Traffic Manager umožňuje směrování na úrovni DNS mezi koncovými body a může pomoct s tím, že se [RTO](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) pro případ zotavení po havárii. 
 
-Další informace o scénáře převzetí služeb při selhání s využitím Traffic Manageru:
-1. [Místní převzetí služeb při selhání Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) pomocí Traffic Manageru 
-2. [Převzetí služeb při selhání Azure do Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) pomocí Traffic Manageru 
+Přečtěte si víc o scénářích převzetí služeb při selhání pomocí Traffic Manager:
+1. [Převzetí služeb při selhání z místního prostředí do Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) pomocí Traffic Manager 
+2. [Převzetí služeb při selhání Azure do Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) pomocí Traffic Manager 
 
-Instalační program je následujícím způsobem:
-- Vytvoření [profil služby Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
-- Využívají **Priority** směrování metodu, vytvořte dva koncové body – **primární** pro zdroj a **převzetí služeb při selhání** pro Azure. **Primární** je přiřazené Priority 1 a **převzetí služeb při selhání** je přiřazené Priority 2.
-- **Primární** koncový bod může být [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) nebo [externí](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) v závislosti na tom, jestli je vaše zdrojové prostředí uvnitř nebo mimo Azure.
-- **Převzetí služeb při selhání** jako je vytvořen koncový bod **Azure** koncového bodu. Použití **statickou veřejnou IP adresu** jak to bude externí směřující pro Traffic Manager koncový bod v události po havárii.
+Nastavení je následující:
+- Vytvořte [profil Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- S využitím metody směrování **priority** vytvořte dva koncové body – **primární** pro zdroj a **převzetí služeb při selhání** pro Azure. K **primární** je přiřazena priorita 1 a pro **převzetí služeb při selhání** je přiřazena Priorita 2.
+- **Primární** koncový bod může být [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) nebo [externě](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) v závislosti na tom, jestli je vaše zdrojové prostředí v Azure nebo mimo něj.
+- Koncový bod **převzetí služeb při selhání** se vytvoří jako koncový bod **Azure** . Použijte **statickou veřejnou IP adresu** , protože se jedná o vnější koncový bod pro Traffic Manager v události po havárii.
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [Traffic Manager se službou Azure Site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
-- Další informace o Traffic Manageru [metod směrování](../traffic-manager/traffic-manager-routing-methods.md).
-- Další informace o [plány obnovení](site-recovery-create-recovery-plans.md) automatizovat převzetí služeb při selhání aplikace.
+## <a name="next-steps"></a>Další kroky
+- Další informace o [Traffic Manager s Azure Site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
+- Přečtěte si další informace o Traffic Manager [metod směrování](../traffic-manager/traffic-manager-routing-methods.md).
+- Další informace o [plánech obnovení](site-recovery-create-recovery-plans.md) pro automatizaci převzetí služeb při selhání aplikace.

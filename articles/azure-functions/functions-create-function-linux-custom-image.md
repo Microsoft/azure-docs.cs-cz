@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8d82868788d831d4db68a35c032d3f81b545417
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329570"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082835"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Vytvoření funkce na platformě Linux pomocí vlastní image
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 
 Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před spuštěním této ukázky musíte mít následující:
 
@@ -57,7 +57,7 @@ Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
 ## <a name="create-the-local-project"></a>Vytvořit místní projekt
 
-Spuštěním následujícího příkazu z příkazového řádku vytvoříte projekt aplikace funkcí ve složce `MyFunctionProj` aktuálního místního adresáře. V případě projektu v Pythonu [musíte běžet ve virtuálním prostředí](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
+Spuštěním následujícího příkazu z příkazového řádku vytvoříte projekt aplikace funkcí ve složce `MyFunctionProj` aktuálního místního adresáře. V případě projektu v Pythonu [musíte běžet ve virtuálním prostředí](functions-create-first-function-python.md#create-and-activate-a-virtual-environment).
 
 ```bash
 func init MyFunctionProj --docker
@@ -202,11 +202,11 @@ Vytvořená funkce spuštěná protokolem HTTP vyžaduje při volání koncovéh
 
 Vyhledejte novou aplikaci Function App v [Azure Portal] tak, že do pole **Hledat** v horní části stránky zadáte název aplikace functions a vyberete prostředek **App Service** .
 
-Vyberte funkci **MyHttpTrigger** , vyberte **</> získat adresu URL funkce** > **výchozí (klíč funkce)** **kopírování** > .
+Vyberte funkci **MyHttpTrigger** , vyberte **</> získat adresu URL funkce** > **výchozí (klíč funkce)**  > **copy**.
 
 ![Kopírování adresy URL funkce z webu Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
 
-V této adrese URL je klíčovou funkcí parametr dotazu `code`. 
+V této adrese URL je klíčovou funkcí parametrem `code` dotazu. 
 
 > [!NOTE]  
 > Vzhledem k tomu, že je vaše aplikace Function App nasazena jako kontejner, nemůžete na portálu provádět změny kódu funkce. Místo toho je nutné projekt aktualizovat v místním kontejneru a znovu ho publikovat do Azure.
@@ -231,7 +231,7 @@ az functionapp deployment container config --enable-cd \
 
 Tento příkaz vrátí adresu URL Webhooku nasazení po povolení průběžného nasazování. K vrácení této adresy URL můžete použít také příkaz [AZ functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) . 
 
-Zkopírujte adresu URL nasazení a vyhledejte úložiště Dockerhubu, zvolte kartu **Webhooky** , zadejte **název Webhooku** Webhooku, vložte adresu URL do **Webhooku**a pak zvolte znaménko plus ( **+** ).
+Zkopírujte adresu URL nasazení a vyhledejte úložiště Dockerhubu, klikněte na kartu **Webhooky** , zadejte **název** Webhooku Webhooku, vložte adresu URL do pole **Webhook URL**a pak zvolte symbol plus ( **+** ).
 
 ![Přidání Webhooku do úložiště Dockerhubu](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -243,7 +243,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Když je po
 
 ### <a name="change-the-base-image"></a>Změna základní image
 
-V souboru Dockerfile přidejte řetězec `-appservice` k základní imagi v instrukci `FROM`, který pro JavaScriptový projekt vypadá jako na následujícím obrázku.
+V souboru Dockerfile přidejte řetězec `-appservice` k základní imagi ve vaší `FROM` instrukci, která pro JavaScriptový projekt vypadá podobně jako následující.
 
 ```docker
 FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
@@ -253,7 +253,7 @@ Rozdíly ve dvou základních bitových kopiích umožňují připojení SSH ke 
 
 ### <a name="rebuild-and-redeploy-the-image"></a>Opětovné sestavení a opětovné nasazení image
 
-V kořenové složce spusťte příkaz [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) znovu, stejně jako dřív, nahraďte `<docker-id>` číslem svého účtu Docker Hub. 
+V kořenové složce spusťte znovu příkaz [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) , stejně jako předtím nahraďte `<docker-id>` číslem účtu Docker Hub. 
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -269,7 +269,7 @@ Aktualizovaný obrázek se znovu nasadí do vaší aplikace Function App.
 
 ### <a name="connect-to-your-container-in-azure"></a>Připojení ke kontejneru v Azure
 
-V prohlížeči přejděte na následující pokročilé nástroje (Kudu) `scm.` koncový bod pro kontejner aplikace Function App a nahraďte `<app_name>` názvem vaší aplikace Function App.
+V prohlížeči přejděte na následující rozšířené nástroje (Kudu) `scm.` koncový bod pro kontejner Function App, nahraďte `<app_name>` názvem vaší aplikace Function App.
 
 ```
 https://<app_name>.scm.azurewebsites.net/
@@ -317,7 +317,7 @@ Nyní můžete přidat výstupní vazbu úložiště do projektu.
 
 ### <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-V případě funkcí vyžaduje každý typ vazby `direction`, `type` a jedinečné `name`, které budou definovány v souboru Function. JSON. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
+V rámci funkcí vyžaduje každý typ vazby `direction`, `type`a jedinečné `name`, které mají být definovány v souboru Function. JSON. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
 
 # <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
 
@@ -349,7 +349,7 @@ Po definování vazby můžete použít `name` vazby k přístupu jako atributu 
 
 ### <a name="update-the-hosted-container"></a>Aktualizace hostovaného kontejneru
 
-V kořenové složce spusťte znovu příkaz [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) a tentokrát aktualizujte verzi ve značce na `v1.0.2`. Stejně jako dřív nahraďte `<docker-id>` číslem ID vašeho účtu Docker Hub. 
+V kořenové složce spusťte znovu příkaz [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) a tentokrát aktualizujte verzi ve značce na `v1.0.2`. Stejně jako dřív nahraďte `<docker-id>` číslem účtu Docker Hub. 
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .

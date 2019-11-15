@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s ePlatform | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s ePlatform | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ePlatform.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a822f1f5d781576102d874f33b31b698f4907a7d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b9dd7781263887a21597f32c74bd51854cc0dcfc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121553"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081915"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s ePlatform
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ePlatform
 
 V tomto kurzu se dozvíte, jak integrovat ePlatform s Azure Active Directory (Azure AD). Když integrujete ePlatform s Azure AD, můžete:
 
@@ -67,10 +67,10 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ePlatform
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ePlatform, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte EPLATFORM SSO](#configure-eplatform-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte ePlatform Test User](#create-eplatform-test-user)** -to, abyste měli protějšek B. Simon v ePlatform, která je propojená s reprezentací uživatele v Azure AD.
+    * **[Vytvořte ePlatform Test User](#create-eplatform-test-user)** -to, abyste měli protějšek B. Simon v ePlatform, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
@@ -84,6 +84,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
+
+1. ePlatform aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+
+    ![image](common/default-attributes.png)
+
+1. Kromě toho očekává aplikace ePlatform několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+
+    | Název | Zdrojový atribut |
+    | ---------------| --------------- |
+    | názvu | user.userprincipalname |
 
 1. V části **podpisový certifikát SAML** kliknutím na tlačítko **Upravit** otevřete dialogové okno **podpisový certifikát SAML** .
 
@@ -107,7 +117,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -135,7 +145,7 @@ Ke konfiguraci jednotného přihlašování na straně **ePlatform** je potřeba
 
 V této části vytvoříte uživatele s názvem B. Simon v ePlatform. Pokud chcete přidat uživatele na platformě ePlatform, pracujte s [týmem podpory ePlatform](https://help.eplatform.co/hc/en-us) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

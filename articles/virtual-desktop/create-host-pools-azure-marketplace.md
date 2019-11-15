@@ -1,5 +1,5 @@
 ---
-title: Vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Marketplace – Azure
+title: Azure Marketplace fondu hostitelů virtuálních počítačů s Windows – Azure
 description: Postup vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 76cb2e0378cc7a005232304174c1de887adfe387
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482221"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605586"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů
 
@@ -52,7 +52,7 @@ Tady je přehled toho, co je pro okno **základy** :
 
 1. Zadejte název fondu hostitelů, který je jedinečný v rámci tenanta virtuálních klientů Windows.
 2. Vyberte vhodnou možnost pro osobní plochu. Pokud vyberete **Ano**, každý uživatel, který se připojí k tomuto fondu hostitelů, se trvale přiřadí k virtuálnímu počítači.
-3. Zadejte čárkami oddělený seznam uživatelů, kteří se můžou přihlásit k klientům virtuální plochy Windows a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete přiřadit user1@contoso.com a přístup k user2@contoso.com, zadejte "user1@contoso.com, user2@contoso.com."
+3. Zadejte čárkami oddělený seznam uživatelů, kteří se můžou přihlásit k klientům virtuální plochy Windows a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete přiřadit user1@contoso.com a přístup k user2@contoso.com, zadejte "user1@contoso.com,user2@contoso.com."
 4. Vyberte **vytvořit nový** a zadejte název nové skupiny prostředků.
 5. V poli **umístění**vyberte stejné umístění jako virtuální síť, která má připojení k serveru služby Active Directory.
 6. Vyberte **OK**.
@@ -73,7 +73,9 @@ Pro okno **Konfigurace virtuálních počítačů** :
 Pro okno **nastavení virtuálního počítače** :
 
 >[!NOTE]
-> Pokud se připojujete k virtuálním počítačům do prostředí Azure Active Directory Domain Services (Azure služba AD DS), ujistěte se, že je uživatel připojení k doméně také členem [skupiny správců AAD řadiče domény](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
+> Pokud se připojujete k virtuálním počítačům do prostředí Azure Active Directory Domain Services (Azure služba AD DS), ujistěte se, že je váš uživatel připojení k doméně členem [skupiny správců AAD řadiče](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)domény.
+>
+> Účet musí být taky součástí spravované domény Azure služba AD DS nebo tenanta Azure AD. účty z externích adresářů přidružených k vašemu tenantovi Azure AD se během procesu připojení k doméně nemůžou správně ověřit. 
 
 1. V části **zdroj obrázku**vyberte zdroj a zadejte příslušné informace, jak ho najít a jak ho uložit. Pokud se rozhodnete nepoužívat spravované disky, vyberte účet úložiště, který obsahuje soubor. VHD.
 2. Zadejte hlavní uživatelské jméno a heslo pro účet domény, který se připojí k virtuálním počítačům k doméně služby Active Directory. Stejné uživatelské jméno a heslo se vytvoří na virtuálních počítačích jako místní účet. Tyto místní účty můžete později obnovit.

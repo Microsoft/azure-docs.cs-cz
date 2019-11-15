@@ -1,22 +1,22 @@
 ---
-title: Spuštění postupu zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure pomocí služby Azure Site Recovery
-description: Zjistěte, jak spustit postup zotavení po havárii pro virtuální počítače Azure IaaS do sekundární oblasti Azure pomocí služby Azure Site Recovery.
+title: Spuštění postupu zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
+description: Přečtěte si, jak spustit postup zotavení po havárii do sekundární oblasti pro virtuální počítače Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cb234f9fa2fc5df68fb2bf4dde3a377ea15532eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 817a220e36ac250b1d5a5aa90d0bddbfb155cc26
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053386"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091334"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
+# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Spuštění postupu zotavení po havárii do sekundární oblasti pro virtuální počítače Azure 
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 
@@ -29,11 +29,11 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 > [!NOTE]
 > Tento kurz vám pomůže udělat postup zotavení po havárii s minimálními kroky. v případě, že se chcete dozvědět víc o různých aspektech spojených s prováděním postupu zotavení po havárii, včetně informací o sítích, automatizaci nebo řešení potíží, přečtěte si dokumenty v části How to for Azure pro virtuální počítače Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Před spuštěním testovacího převzetí služeb při selhání doporučujeme ověřit vlastnosti virtuálního počítače, abyste se ujistili, že je vše tak, jak má být.  Přejděte k vlastnostem virtuálního počítače v části **Replikované položky**. V okně **Základy** se zobrazí informace o nastavení a stavu počítačů.
 - **Pro testovací převzetí služeb při selhání doporučujeme použít samostatnou síť virtuálních počítačů Azure**, a ne výchozí síť, kterou jste nastavili při povolování replikace.
-- V závislosti na vašich zdrojových síťových konfiguracích pro každou síťovou kartu můžete volitelně zadat **podsíť, IP adresu, veřejnou IP adresu, skupinu zabezpečení sítě nebo interní Load Balancer** , které se mají připojit k jednotlivým síťovým adaptérům v části Nastavení testovacího převzetí služeb při selhání ve službě COMPUTE & před k provedení postupu zotavení po havárii.
+- V závislosti na vašich zdrojových síťových konfiguracích pro každou síťovou kartu můžete volitelně zadat **podsíť, IP adresu, veřejnou IP adresu, skupinu zabezpečení sítě nebo interní Load Balancer** pro připojení k jednotlivým síťovým kartám ve službě COMPUTE & před provedením zotavení po havárii.
 
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání

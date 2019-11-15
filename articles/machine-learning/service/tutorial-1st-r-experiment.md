@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888617"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092265"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Kurz: výuka a nasazení prvního modelu v jazyce R s Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -108,7 +108,7 @@ experiment_name <- "accident-logreg"
 exp <- experiment(ws, experiment_name)
 ```
 
-### <a name="create-a-compute-target"></a>Vytvořit cíl výpočtů
+### <a name="create-a-compute-target"></a>Vytvořte cílové výpočetní prostředí
 Pomocí Azure Machine Learning COMPUTE (AmlCompute) spravovaná služba mohou vědečtí data v clusterech virtuálních počítačů Azure naučit modely strojového učení. Mezi příklady patří virtuální počítače s podporou GPU. V tomto kurzu vytvoříte cluster AmlCompute s jedním uzlem jako školicí prostředí. Následující kód vytvoří výpočetní cluster pro vás, pokud ještě neexistuje v pracovním prostoru.
 
 Možná budete muset několik minut počkat, než se výpočetní cluster zřídí, pokud ještě neexistuje.
@@ -271,7 +271,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 Pomocí modelu můžete předpovědět nebezpečí smrti proti kolizi. Použijte Azure ML k nasazení modelu jako předpovědi služby. V tomto kurzu nasadíte webovou službu v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI).
 
-### <a name="register-the-model"></a>Registrace modelu
+### <a name="register-the-model"></a>Zaregistrujte model
 
 Nejprve zaregistrujte model, který jste stáhli do pracovního prostoru, pomocí [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html). Registrovaný model může být libovolná kolekce souborů, ale v tomto případě je objekt modelu R dostačující. Azure ML použije registrovaný model pro nasazení.
 
@@ -353,17 +353,17 @@ aci_service$scoring_uri
 Odstraňte prostředky, jakmile je už nebudete potřebovat. Neodstraňujte žádný prostředek, který plánujete dál používat. 
 
 Odstraňte webovou službu:
-```{r delete_service, eval=FALSE}
+```R
 delete_webservice(aci_service)
 ```
 
 Odstraňte registrovaný model:
-```{r delete_model, eval=FALSE}
+```R
 delete_model(model)
 ```
 
 Odstraňte výpočetní cluster:
-```{r delete_compute, eval=FALSE}
+```R
 delete_compute(compute)
 ```
 

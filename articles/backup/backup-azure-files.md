@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747479"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091097"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Zálohování a obnovení sdílených složek Azure
 
@@ -201,7 +201,7 @@ Zálohu sdílené složky můžete odstranit během úlohy zastavení zálohová
 
 Následující postup předpokládá, že se úloha zálohování virtuálního počítače zastavila. Po zastavení úlohy zálohování budou na řídicím panelu Zálohovaná položka dostupné možnosti Obnovit zálohování a Odstranit zálohovaná data. Klikněte na Odstranit zálohovaná data a zadáním názvu sdílené složky potvrďte odstranění. Volitelně zadejte Důvod odstranění nebo Komentář.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 Další informace o sdílených složkách Azure najdete v tématu.
 

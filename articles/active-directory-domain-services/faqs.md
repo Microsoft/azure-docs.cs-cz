@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: e8e6eb9be65b038780fa6e21cf20f4c5dda27a31
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 61c9d887f1b193258161cd96ccfa3618e8371890
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991457"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081008"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
@@ -62,7 +62,7 @@ Samotná služba přímo nepodporuje tento scénář. Vaše spravovaná doména 
 Ano. Další informace najdete v tématu [povolení Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Můžu Azure AD Domain Services povolit použití šablony Správce prostředků?
-Ne, v současné době není možné povolit Azure AD Domain Services pomocí šablony. Postup s použitím skriptu najdete v tématu [povolení Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md).
+Ano, Azure AD Domain Services spravovanou doménu můžete vytvořit pomocí Správce prostředků šablony. Před nasazením šablony musí být vytvořený instanční objekt a skupina služby Azure AD pro správu pomocí Azure Portal nebo Azure PowerShell. Při vytváření Azure AD Domain Services spravované domény v Azure Portal existuje možnost Exportovat šablonu pro použití s dalšími nasazeními. [V úložišti ukázek šablon GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-AAD-DomainServices)je k dispozici také příklad šablony.
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Můžu přidat řadiče domény do spravované domény Azure AD Domain Services?
 Ne. Doména, kterou poskytuje Azure AD Domain Services, je spravovaná doména. Pro tuto doménu nemusíte zřizovat, konfigurovat ani jinak spravovat řadiče domény. Tyto aktivity správy jsou poskytovány jako služba společnosti Microsoft. Proto pro spravovanou doménu nemůžete přidat další řadiče domény (pro čtení i zápis nebo jen pro čtení).

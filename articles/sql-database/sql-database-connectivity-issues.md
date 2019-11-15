@@ -12,13 +12,13 @@ author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/14/2019
-ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826798"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082490"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Práce s SQL Database problémy s připojením a přechodnými chybami
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak zabránit, řešit a řešit chyby připojení a p�
 
 Přechodná chyba, známá také jako přechodná chyba, má základní příčinu, která se brzy vyřeší. Příležitostné příčiny přechodných chyb je, když systém Azure rychle posune hardwarové prostředky, aby lépe vyrovnal různé zatížení. Většina těchto událostí překonfigurace se dokončí za méně než 60 sekund. Během této doby rekonfigurace je možné, že budete mít problémy s připojením SQL Database. Aplikace, které se připojují k SQL Database by měly být sestavené tak, aby byly tyto přechodné chyby očekávané. Aby je bylo možné zpracovat, implementujte logiku opakování ve svém kódu namísto jejich zpřístupnění uživatelům jako chyby aplikace.
 
-Pokud klientský program používá ADO.NET, váš program je o přechodné chybě vynásobený voláním **SqlException**. Porovnejte vlastnost **Number** se seznamem přechodných chyb, které jsou k dispozici v horní části [kódů chyb SQL pro SQL Database klientských aplikacích](sql-database-develop-error-messages.md).
+Pokud klientský program používá ADO.NET, váš program je o přechodné chybě vynásobený voláním **SqlException**. 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -90,7 +90,7 @@ Chcete-li otestovat logiku opakování, je nutné simulovat nebo způsobit chybu
 
 Jedním ze způsobů, jak otestovat logiku opakování, je odpojit klientský počítač od sítě v době, kdy je program spuštěný. Tato chyba je:
 
-- **SqlException. Number** = 11001
+- **SqlException.Number** = 11001
 - Zpráva: "žádný takový hostitel není známý"
 
 V rámci prvního pokusu je možné znovu připojit klientský počítač k síti a pak se pokusit připojit.
@@ -108,7 +108,7 @@ Aby byl tento test praktický, odpojte počítač od sítě před spuštěním p
 
 V programu může být uživatelské jméno před prvním pokusem o připojení záměrně napředné. Tato chyba je:
 
-- **SqlException. Number** = 18456
+- **SqlException.Number** = 18456
 - Zpráva: přihlášení uživatele WRONG_MyUserName se nezdařilo.
 
 V rámci prvního pokusu může program opravit chybu a potom se pokusit o připojení.
@@ -343,7 +343,7 @@ V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandlin
 - **RetryPolicy** – třída
   - Metoda **ExecuteAction**
 - **ExponentialBackoff** – třída
-- **SqlDatabaseTransientErrorDetectionStrategy** – třída
+- **SqlDatabaseTransientErrorDetectionStrategy** class
 - **ReliableSqlConnection** – třída
   - Metoda **ExecuteCommand**
 

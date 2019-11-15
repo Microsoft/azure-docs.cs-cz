@@ -1,5 +1,5 @@
 ---
-title: Informace o ExpressRoute přímo – Azure | Dokumentace Microsoftu
+title: Informace o Azure ExpressRoute Direct
 description: Tato stránka poskytuje přehled ExpressRoute Direct
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123403"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083605"
 ---
 # <a name="about-expressroute-direct"></a>O službě ExpressRoute Direct
 
@@ -22,7 +21,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 Klíčové funkce, které poskytuje ExpressRoute Direct patří, ale nejsou omezené na:
 
 * Masivní příjem dat do služeb jako Storage a Cosmos DB
-* Fyzická izolace pro obory, které jsou regulované a vyžadují vyhrazené a izolované připojení, jako je: Banka, státní správa a maloobchod
+* Fyzické izolace pro obory, které upraví a vyžadují vyhrazená a izolované připojení jako: bankovnictví, Government a maloobchodního prodeje
 * Podrobné řízení distribuce okruhů podle organizační jednotky
 
 ## <a name="onboard-to-expressroute-direct"></a>Připojit k ExpressRoute Direct
@@ -31,7 +30,7 @@ Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat sv
 
 * Scénáře, které pokud chcete provést s **přímo ExpressRoute**
 * Naleznete v tématu předvolby umístění - [partnery a umístění partnerského vztahu](expressroute-locations-providers.md) úplný seznam všech umístění
-* Časová osa pro implementaci
+* Časová osa implementace
 * Další otázky
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>ExpressRoute přes poskytovatele služeb a přímé ExpressRoute
@@ -57,7 +56,7 @@ Přímé ExpressRoute podporuje scénáře ingestování velké objemy dat do sl
 
 | **100 GB/s ExpressRoute Direct** | **10 GB/s ExpressRoute Direct** | 
 | --- | --- |
-| **Přihlášená šířka pásma**: 200 GB/s | **Přihlášená šířka pásma**: 20 GB/s |
+| **Předplacená šířka pásma**: 200 GB/s | **Přihlášená šířka pásma**: 20 GB/s |
 | <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 GB/s</li><li>100 GB/s</li></ul> | <ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
 
 ## <a name="technical-requirements"></a>Technické požadavky
@@ -74,7 +73,7 @@ Přímé ExpressRoute podporuje scénáře ingestování velké objemy dat do sl
     * Je nutné přidat vnější značku VLAN (STAG) založenou na ID sítě VLAN, které je určeno pro Microsoft, *pouze v QinQ* .
     * Musí podporovat víc relací protokolu BGP (VLAN) na port a zařízení.
     * Připojení IPv4 a IPv6. *Pro protokol IPv6 se nevytvoří žádné další dílčí rozhraní. Adresa IPv6 bude přidána do stávajícího podřízeného rozhraní*. 
-    * Volitelné: Podpora [detekce obousměrného předávání (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) , která je ve výchozím nastavení nakonfigurována u všech privátních partnerských vztahů v Okruhech ExpressRoute
+    * Volitelné: podpora [detekce obousměrného předávání (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) , která je nakonfigurovaná ve výchozím nastavení u všech privátních partnerských vztahů v okruhech ExpressRoute.
 
 ## <a name="vlan-tagging"></a>Označování příznaky VLAN
 
@@ -86,9 +85,9 @@ Přímé ExpressRoute podporuje QinQ a Dot1Q označování příznaky VLAN.
 
 ## <a name="workflow"></a>Pracovní postup
 
-[![pracovního postupu](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[pracovní postup ![](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>Smlouva SLA
 
 Přímé ExpressRoute poskytuje stejnou smlouvu SLA na podnikové úrovni s aktivní/aktivní redundantní připojení globální síti Microsoftu. Infrastruktura ExpressRoute je redundantní a je redundantní a rozmanitým připojení globální síti Microsoftu a odpovídajícím způsobem se škáluje s požadavky zákazníků. 
 

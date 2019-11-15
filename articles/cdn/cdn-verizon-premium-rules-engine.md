@@ -1,103 +1,103 @@
 ---
-title: Potlačení chování HTTP pomocí Azure CDN od Verizonu Premium stroj pravidel | Dokumentace Microsoftu
-description: Stroj pravidel umožňuje přizpůsobit zpracování požadavků HTTP pomocí Azure CDN od Verizonu Premium, třeba blokování doručování určitého typu obsahu, definovat zásady ukládání do mezipaměti a změnit hlavičky protokolu HTTP.
+title: Přepsání chování HTTP pomocí stroje Azure CDN-Verizon Premium Rules
+description: Modul pravidel umožňuje přizpůsobit, jak jsou požadavky HTTP zpracovávány Azure CDN od Verizon Premium, jako je blokování doručování určitých typů obsahu, definování zásad ukládání do mezipaměti a úprava hlaviček protokolu HTTP.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593187"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082958"
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Potlačení chování HTTP pomocí Azure CDN od Verizonu Premium stroje pravidel
+# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Přepsat chování HTTP pomocí Azure CDN z modulu pravidel Verizon Premium
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Přehled
 
-Stroj pravidel Azure CDN umožňuje přizpůsobit zpracování požadavků HTTP. Třeba blokování doručování určité typy obsahu, definice zásady ukládání do mezipaměti nebo úpravy hlavičky protokolu HTTP. Tento kurz ukazuje, jak vytvořit pravidlo, které mění chování ukládání do mezipaměti CDN prostředků. Další informace o syntaxi stroj pravidel najdete v tématu [referenční informace ke stroji pravidel Azure CDN](cdn-verizon-premium-rules-engine-reference.md).
+Modul pravidel Azure CDN umožňuje přizpůsobit zpracování požadavků HTTP. Například blokování doručování určitých typů obsahu, definování zásad ukládání do mezipaměti nebo změna hlavičky protokolu HTTP. V tomto kurzu se dozvíte, jak vytvořit pravidlo, které mění chování ukládání prostředků CDN do mezipaměti. Další informace o syntaxi modulu pravidla najdete v tématu [Referenční dokumentace modulu Azure CDN Rules](cdn-verizon-premium-rules-engine-reference.md).
 
 ## <a name="access"></a>Access
 
-Pro přístup k stroj pravidel, musíte nejprve vybrat **spravovat** od horního okraje **profil CDN** stránku a přístup ke stránce pro správu Azure CDN. V závislosti na tom, jestli váš koncový bod je optimalizovaná pro akcelerace dynamického webu (DSA) pak přistupujete stroj pravidel sadu pravidel, které jsou vhodné pro váš typ koncového bodu:
+Chcete-li získat přístup k modulu pravidel, je nutné nejprve vybrat možnost **Spravovat** v horní části stránky **profilu CDN** a získat přístup ke stránce pro správu Azure CDN. V závislosti na tom, jestli je váš koncový bod optimalizovaný pro akceleraci dynamického webu (DSA), získáte přístup ke stroji pravidel se sadou pravidel, která jsou vhodná pro váš typ koncového bodu:
 
-- Koncové body optimalizovaný pro obecné doručování webu nebo jiná optimalizace agenta DSA:
+- Koncové body optimalizované pro obecné doručování webu nebo jiné optimalizace bez DSA:
     
-    Vyberte **HTTP velké** kartu a potom vyberte **stroj pravidel**.
+    Vyberte možnost **Velká karta http** a pak vyberte **modul pravidel**.
 
-    ![Stroj pravidel pro protokol HTTP](./media/cdn-rules-engine/cdn-http-rules-engine.png)
+    ![Modul pravidel pro HTTP](./media/cdn-rules-engine/cdn-http-rules-engine.png)
 
-- Koncové body optimalizovaná pro DSA:
+- Koncové body optimalizované pro DSA:
     
-    Vyberte **ADN** kartu a potom vyberte **stroj pravidel**.
+    Vyberte kartu **a** a pak vyberte **modul pravidel**.
     
-    ADN je termín používaný v Verizon k určení obsahu DSA. Všechna pravidla, které zde vytvoříte jsou ignorovány všechny koncové body ve vašem profilu, které nejsou optimalizovány pro DSA.
+    A je termín používaný Verizon k určení obsahu DSA. Všechna pravidla, která tady vytvoříte, budou ignorována všemi koncovými body v profilu, které nejsou optimalizované pro DSA.
 
-    ![Stroj pravidel pro DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![Modul pravidel pro DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
 ## <a name="tutorial"></a>Kurz
 
-1. Z **profil CDN** stránce **spravovat**.
+1. Na stránce **profil CDN** vyberte **Spravovat**.
    
     ![Tlačítko Spravovat profil CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
    
-    Otevře se na portálu pro správu CDN.
+    Otevře se portál pro správu CDN.
 
-2. Vyberte **HTTP velké** kartu a potom vyberte **stroj pravidel**.
+2. Vyberte možnost **Velká karta http** a pak vyberte **modul pravidel**.
    
     Zobrazí se možnosti pro nové pravidlo.
    
-    ![Nové možnosti pravidlo CDN](./media/cdn-rules-engine/cdn-new-rule.png)
+    ![Možnosti nového pravidla CDN](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > Pořadí, ve kterém jsou uvedeny více pravidel ovlivňuje, jak se zpracovává. Akce zadané předchozí pravidlo může přepsat následující pravidlo.
+   > Pořadí, ve kterém jsou uvedeny více pravidel, má vliv na způsob zpracování. Následné pravidlo může přepsat akce zadané předchozím pravidlem.
    >
 
-3. Zadejte název do pole **název / popis** textového pole.
+3. Do textového pole **název/popis** zadejte název.
 
-4. Identifikujte typy požadavků, které se pravidlo vztahuje. Použít výchozí podmínku shody, **vždy**.
+4. Identifikujte typ požadavků, na které se pravidlo vztahuje. Použijte výchozí podmínku shody, **vždy**.
    
    ![Podmínka shody pravidla CDN](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!NOTE]
-   > Více podmínky shody jsou k dispozici v rozevíracím seznamu. Informace o podmínce aktuálně vybraného shody vyberte na modrou informační ikonu na levé straně.
+   > V rozevíracím seznamu jsou k dispozici různé podmínky shody. Pokud chcete získat informace o aktuálně vybrané podmínce shody, vyberte modrou informační ikonu vlevo.
    >
-   >  Podrobný seznam podmíněné výrazy, naleznete v tématu [podmíněné výrazy stroje pravidel](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   >  Podrobný seznam podmíněných výrazů najdete v tématu [podmíněné výrazy stroje pravidel](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
    >  
-   > Podrobný seznam podmínky shody, naleznete v tématu [podmínky shody stroje pravidel](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   > Podrobný seznam podmínek shody najdete v tématu [podmínky shody stroje pravidel](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
    >
    >
 
-5. Chcete-li přidat novou funkci, **+** vedle **funkce**.  V rozevírací nabídce na levé straně vyberte **platnost vnitřní Max-Age**.  Do textového pole, která se zobrazí, zadejte **300**. Neměňte zbývající výchozí hodnoty.
+5. Chcete-li přidat novou funkci, vyberte tlačítko **+** vedle **položky funkce**.  V rozevíracím seznamu na levé straně vyberte **Vynutit interní maximum – stáří**.  Do textového pole, které se zobrazí, zadejte **300**. Neměňte zbývající výchozí hodnoty.
    
-   ![Funkce pravidlo CDN](./media/cdn-rules-engine/cdn-new-feature.png)
+   ![Funkce pravidla CDN](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
-   > Několik funkcí jsou k dispozici v rozevíracím seznamu. Informace o aktuálně vybrané funkce vyberte na modrou informační ikonu na levé straně.
+   > V rozevíracím seznamu je k dispozici více funkcí. Pokud chcete získat informace o aktuálně vybrané funkci, vyberte modrou informační ikonu vlevo.
    >
-   > Pro **platnost vnitřní Max-Age**, prostředku `Cache-Control` a `Expires` hlavičky jsou přepsány řídit, kdy na hraničním uzlu CDN aktualizuje prostředek ze zdroje. V tomto příkladu na hraničním uzlu CDN ukládá do mezipaměti asset 300 sekund, neboli 5 minut, než aktualizuje prostředek z původu.
+   > Pro **vynucení interního maximálního stáří**se hlavičky `Cache-Control` a `Expires`í přepsaly na kontrolu, když hraniční uzel CDN aktualizuje Asset ze zdroje. V tomto příkladu hraniční uzel CDN uloží Asset do mezipaměti po dobu 300 sekund nebo 5 minut, než se aktivuje ze svého původu.
    >
    > Podrobný seznam funkcí najdete v tématu [funkce stroje pravidel](cdn-verizon-premium-rules-engine-reference-features.md).
    >
    >
 
-6. Vyberte **přidat** uložit nové pravidlo.  Nové pravidlo je nyní čeká na schválení. Poté, co byla schválena, stav se změní z **čekající XML** k **aktivní XML**.
+6. Vyberte **Přidat** a uložte nové pravidlo.  Nové pravidlo nyní čeká na schválení. Po schválení se stav změní z **PENDING XML** na **aktivní XML**.
    
    > [!IMPORTANT]
-   > Změny pravidel může trvat až 10 minut na dokončení propagace přes Azure CDN.
+   > Provedení změn pravidel může trvat až 10 minut, než se Azure CDN rozšíří.
    >
    >
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [Přehled služby Azure CDN](cdn-overview.md)
+- [Přehled Azure CDN](cdn-overview.md)
 - [Referenční informace ke stroji pravidel](cdn-verizon-premium-rules-engine-reference.md)
 - [Podmínky shody stroje pravidel](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Podmíněné výrazy stroje pravidel](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Funkce stroje pravidel](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Azure Fridays: Azure CDN výkonné nové funkce verze premium](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video)
+- [Azure pátek: výkonné nové funkce Premium](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video) Azure CDN

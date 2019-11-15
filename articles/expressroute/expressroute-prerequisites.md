@@ -1,5 +1,5 @@
 ---
-title: 'Požadavky – ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: požadavky'
 description: Tato stránka obsahuje seznam požadavků, které musí být splněné, než můžete objednat okruh Azure ExpressRoute. Zahrnuje kontrolní seznam.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 4ef1a768356078c160b798c1a96412adda0330f6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123296"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083356"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Požadavky ExpressRoute a kontrolní seznam
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, musíte ověřit, že jsou splněné požadavky uvedené v následujících oddílech.
@@ -30,11 +29,11 @@ Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby Exp
 * Pokud váš poskytovatel není partnerem připojení ExpressRoute, můžete se pořád připojit ke cloudu Microsoftu prostřednictvím [poskytovatele cloudové výměny](expressroute-locations.md#connectivity-through-exchange-providers).
 
 ## <a name="network-requirements"></a>Síťové požadavky
-* **Redundance v každém umístění partnerského vztahu**: Společnost Microsoft vyžaduje, aby byly nastaveny redundantní relace protokolu BGP mezi směrovači společnosti Microsoft a směrovači partnerského vztahu na každém okruhu ExpressRoute (i když máte pouze [jedno fyzické připojení ke cloudové výměně](expressroute-faqs.md#onep2plink)).
-* **Redundance při zotavení po havárii**: Společnost Microsoft důrazně doporučuje nastavit alespoň dva okruhy ExpressRoute v různých umístěních partnerských vztahů, aby nedocházelo k jednomu bodu selhání.
+* **Redundance v každém umístění partnerského vztahu**: Microsoft vyžaduje, aby byly v každém okruhu ExpressRoute nastaveny redundantní relace protokolu BGP mezi směrovači Microsoftu a směrovači partnerského vztahu na každém okruhu (i když máte jenom [jedno fyzické připojení ke cloudu Exchange](expressroute-faqs.md#onep2plink)).
+* **Redundance při zotavení po havárii**: Microsoft důrazně doporučuje nastavit alespoň dva okruhy ExpressRoute v různých umístěních partnerských vztahů, aby nedocházelo k jedinému bodu selhání.
 * **Směrování**: v závislosti na tom, jak připojit ke cloudu Microsoftu, vy nebo váš poskytovatel je potřeba nastavit a spravovat relace protokolu BGP pro [domény směrování](expressroute-circuit-peerings.md). Některé poskytovatelé připojení Ethernet nebo cloudu poskytovatelé exchange můžou nabízet správu protokolu BGP jako službu s přidanou hodnotou.
-* **NAT**: Microsoft přijímá jenom veřejné IP adresy prostřednictvím partnerského vztahu Microsoftu. Pokud ve vaší místní síti používáte soukromé IP adresy, vy nebo váš poskytovatel musí přeložit privátní IP adresy na veřejné IP adresy [pomocí překladu síťových adres](expressroute-nat.md).
-* **QoS**: Skype pro firmy má různé služby (například hlas, video, text), které vyžadují odlišnou úpravu QoS. Vy a váš poskytovatel byste měli postupovat podle [požadavků QoS](expressroute-qos.md).
+* **NAT:** Microsoft prostřednictvím partnerského vztahu Microsoftu přijímá jenom veřejné IP adresy. Pokud ve vaší místní síti používáte soukromé IP adresy, vy nebo váš poskytovatel musí přeložit privátní IP adresy na veřejné IP adresy [pomocí překladu síťových adres](expressroute-nat.md).
+* **QoS:** Skype pro firmy má různé služby (třeba hlasové, textové nebo videoslužby), které vyžadují diferencovaný přístup. Vy a váš poskytovatel byste měli postupovat podle [požadavků QoS](expressroute-qos.md).
 * **Zabezpečení sítě:** Při připojení ke cloudu Microsoftu pomocí ExpressRoute byste měli zvážit [zabezpečení sítě](../best-practices-network-security.md).
 
 ## <a name="office-365"></a>Office 365

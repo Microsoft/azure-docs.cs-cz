@@ -1,6 +1,6 @@
 ---
-title: Instalovat aplikací rozšíření prohlížeče přístupového panelu – Azure | Dokumentace Microsoftu
-description: Oprava běžných chyb při instalaci rozšíření prohlížeče přístupového panelu.
+title: Instalace rozšíření prohlížeče přístupového panelu aplikace – Azure | Microsoft Docs
+description: Oprava běžných chyb zjištěných při instalaci rozšíření prohlížeče přístupového panelu.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,116 +16,116 @@ ms.date: 05/04/2018
 ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598a69593046354e83fe35b7b2ecfb0745e8b637
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 580207bb10680e84cfda7d4b1874f2b460602973
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388333"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082167"
 ---
-# <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření prohlížeče přístupového panelu
+# <a name="install-the-access-panel-browser-extension"></a>Nainstalovat rozšíření prohlížeče přístupového panelu
 
-Přístupový panel je webový portál. Pokud máte pracovní nebo školní účet v Azure Active Directory (Azure AD), můžete k zobrazení a spuštění cloudových aplikací, které správce Azure AD udělil přístup k přístupovému panelu. 
+Přístupový panel je webový portál. Pokud máte pracovní nebo školní účet v Azure Active Directory (Azure AD), můžete pomocí přístupového panelu zobrazit a spustit cloudové aplikace, ke kterým vám správce Azure AD udělil přístup. 
 
-Pokud při použití edice Azure AD, můžete také použít samoobslužné skupiny a možnosti správy aplikací přes přístupový panel. 
+Pokud používáte edice Azure AD, můžete pomocí přístupového panelu použít taky samoobslužnou skupinu a možnosti správy aplikací. 
 
-Přístupový panel je nezávisle na webu Azure portal. Nevyžaduje, abyste měli předplatné Azure.
+Přístupový panel je oddělený od Azure Portal. Nevyžaduje, abyste měli předplatné Azure.
 
 ## <a name="web-browser-requirements"></a>Požadavky na webový prohlížeč
 
-Minimálně na přístupovém panelu vyžaduje prohlížeč, který podporuje JavaScript a má povolený šablon stylů CSS. Být přihlášení k aplikacím přes jednotné přihlašování založené na heslo na přístupovém panelu, musíte mít rozšíření přístupového panelu nainstalovaný ve vašem prohlížeči. Rozšíření se automaticky stáhne při výběru, který je nakonfigurovaný pro jednotné přihlašování pomocí hesla aplikace.
+Přístupový panel vyžaduje minimálně prohlížeč, který podporuje jazyk JavaScript a je povolený pomocí šablon stylů CSS. Chcete-li být přihlášeni k aplikacím pomocí jednotného přihlašování založeného na heslech na přístupovém panelu, musíte mít v prohlížeči nainstalovanou příponu přístupového panelu. Rozšíření se automaticky stáhne při výběru aplikace, která je nakonfigurovaná pro jednotné přihlašování založené na heslech.
 
-Pro jednotné přihlašování pomocí hesla můžete použít některý z následujících prohlížečů:
+Pro jednotné přihlašování založené na heslech můžete použít některý z následujících prohlížečů:
 
-- **Microsoft Edge**: Windows 10 Anniversary Edition nebo novější. 
-- **Chrome**: ve Windows 7 nebo novější a v systému MacOS X nebo novější.
-- **Firefox 26.0 nebo novější**: ve Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
+- **Microsoft Edge**: ve Windows 10 výročí Edition nebo novějších verzích. 
+- **Chrome**: ve Windows 7 nebo novějším a na MacOS X nebo novějším.
+- **Firefox 26,0 nebo novější**: v systému Windows XP SP2 nebo novějším a v Mac OS X 10,6 nebo novějším.
 
-## <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření prohlížeče přístupového panelu
+## <a name="install-the-access-panel-browser-extension"></a>Nainstalovat rozšíření prohlížeče přístupového panelu
 
-Pokud chcete nainstalovat rozšíření prohlížeče přístupového panelu, postupujte takto:
+Chcete-li nainstalovat rozšíření prohlížeče přístupového panelu, postupujte následovně:
 
-1.  V jednom z podporovaných prohlížečů, otevřete [přístupového panelu](https://myapps.microsoft.com)a pak se přihlaste jako uživatel ve vašem účtu Azure AD.
+1.  V jednom z podporovaných prohlížečů otevřete [přístupový panel](https://myapps.microsoft.com)a pak se přihlaste jako uživatel ve svém účtu Azure AD.
 
-2.  Vyberte aplikaci, jednotné přihlašování pomocí hesla.
+2.  Vyberte aplikaci jednotného přihlašování založené na heslech.
 
-3.  Po zobrazení výzvy vyberte **nainstalovat**.  
-    Budete přesměrováni na odkaz ke stažení pro vybraný prohlížeč. 
+3.  Po zobrazení výzvy vyberte **nainstalovat hned**.  
+    Jste přesměrováni na odkaz ke stažení pro vybraný prohlížeč. 
     
 4.  Vyberte **Přidat**.
 
-5.  Pokud se zobrazí výzva, buď **povolit** nebo **povolit** rozšíření.
+5.  Pokud se zobrazí výzva, buď **Povolte** nebo **Povolte** rozšíření.
 
 6.  Po dokončení instalace restartujte prohlížeč.
 
-7.  Přihlaste se na přístupovém panelu a kontrola budete moct zobrazit, zda lze spustit jednotného přihlašování aplikace založené na heslech.
+7.  Přihlaste se k přístupovému panelu a zkontrolujte, zda můžete spustit aplikace jednotného přihlašování založené na heslech.
 
-Můžete také stáhnout rozšíření pro Chrome a Microsoft Edgem přímo z následujících webů:
+Rozšíření pro Chrome a Microsoft Edge si také můžete stáhnout přímo z následujících webů:
 
 - [Rozšíření Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Rozšíření Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Rozšíření Microsoft Edge](https://www.microsoft.com/en-us/p/my-apps-secure-sign-in-extension/9pc9sckkzk84)
 - [Rozšíření Firefox](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
-## <a name="use-the-my-apps-secure-sign-in-extension"></a>Použití Moje aplikace zabezpečené přihlašování rozšíření
-* Pokud používáte Moje adresy URL aplikací jiných než `https://myapps.microsoft.com`, nakonfigurujte adresu URL svého výchozí následujícím způsobem:
-   1. Když jste *není* přihlášení k rozšíření, klikněte pravým tlačítkem na ikonu rozšíření.
-   2. V nabídce vyberte **Moje aplikace URL**.
+## <a name="use-the-my-apps-secure-sign-in-extension"></a>Použijte rozšíření pro zabezpečené přihlášení k aplikacím
+* Pokud používáte jinou adresu URL moje aplikace než `https://myapps.microsoft.com`, nakonfigurujte výchozí adresu URL tak, že provedete následující kroky:
+   1. Když *k rozšíření nejste přihlášení,* klikněte pravým tlačítkem myši na ikonu rozšíření.
+   2. V nabídce vyberte **Moje aplikace adresa URL**.
    3. Vyberte výchozí adresu URL.
    4. Vyberte ikonu rozšíření.
-   5. Přihlaste se k rozšíření, vyberte **Přihlaste se k Začínáme**.
+   5. Pokud se chcete přihlásit k rozšíření, vyberte **Přihlásit se a**začněte.
 
-* Přihlásit se přímo k aplikaci v prohlížeči, postupujte takto:
-   1. Po instalaci rozšíření, přihlaste se k němu tak, že vyberete **Přihlaste se k Začínáme**.
-   2. Přihlaste se k aplikaci pomocí adresy URL přihlašování.  
-       Adresa URL přihlašování je obvykle adresa URL aplikace, která se zobrazí přihlašovací formulář.
-      Rozšíření by měl změny stavu a zjistíte, že heslo je k dispozici.
-   3. Pro přihlášení, vyberte ikonu rozšíření.
+* Pokud se chcete k aplikaci přihlásit přímo z prohlížeče, udělejte toto:
+   1. Po instalaci rozšíření se k němu přihlaste výběrem možnosti **Přihlásit se a začněte**.
+   2. Přihlaste se k aplikaci pomocí přihlašovací adresy URL.  
+       Přihlašovací adresa URL je obvykle adresa URL aplikace, která zobrazuje přihlašovací formulář.
+      Rozšíření by mělo změnit stav a dát vám jistotu, že je k dispozici heslo.
+   3. Pokud se chcete přihlásit, vyberte ikonu rozšíření.
 
-* Chcete-li spustit aplikaci z rozšíření, postupujte takto:
-   1. Po instalaci rozšíření, přihlaste se k němu tak, že vyberete **Přihlaste se k Začínáme**.
-   2. Vyberte ikonu rozšíření a otevřete nabídku.
-   3. Vyhledejte aplikaci, která je dostupná na portálu Moje aplikace.
+* Pokud chcete spustit aplikaci z rozšíření, udělejte toto:
+   1. Po instalaci rozšíření se k němu přihlaste výběrem možnosti **Přihlásit se a začněte**.
+   2. Vyberte ikonu rozšíření a otevřete její nabídku.
+   3. Vyhledejte aplikaci, která je k dispozici na portálu moje aplikace.
    4. V seznamu výsledků hledání vyberte aplikaci.  
-       Poslední tři aplikace využili jste se zobrazují v **naposledy použité** zástupce seznamu.
+       Poslední tři aplikace, které jste použili, se zobrazí v seznamu **naposledy použitých** zástupců.
        
-* Použití interní firemní adresy URL při vzdálené, postupujte takto:
-    1. [Konfigurace Proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) ve svém tenantovi
-    2. [Publikování aplikace](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) a adresa URL, přes Proxy aplikací
-    3. Instalace rozšíření a přihlaste se k němu tak, že vyberete přihlášení začít
-    4. Teď můžete přejít na adresu URL interní společnosti i v průběhu vzdálené
+* Pokud chcete používat interní adresy URL společnosti při vzdálené službě, udělejte toto:
+    1. [Konfigurace proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) ve vašem tenantovi
+    2. [Publikování aplikace](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) a adresy URL prostřednictvím proxy aplikací
+    3. Nainstalujte rozšíření a přihlaste se k němu výběrem možnosti přihlásit se a začněte.
+    4. Teď můžete přejít na interní adresu URL společnosti, i když je vzdálená.
 
 > [!NOTE]
-> Předchozí možnosti jsou dostupné jenom pro Microsoft Edge, Chrome a Firefox.
+> Předchozí možnosti jsou k dispozici pouze pro Microsoft Edge, Chrome a Firefox.
 
-## <a name="set-up-a-group-policy-for-internet-explorer"></a>Nastavení zásad skupiny pro aplikaci Internet Explorer
+## <a name="set-up-a-group-policy-for-internet-explorer"></a>Nastavení zásad skupiny pro Internet Explorer
 
-Můžete nastavit zásady skupiny, který umožňuje vzdálenou instalaci rozšíření přístupového panelu pro aplikaci Internet Explorer v počítačích uživatelů.
+Můžete nastavit zásady skupiny, které vám umožní vzdáleně nainstalovat rozšíření přístupového panelu pro Internet Explorer na počítačích uživatelů.
 
-Před nastavením zásad skupiny, zajistěte následující:
+Před nastavením zásad skupiny se ujistěte, že:
 
--   Nastavíte [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), a vaši uživatelé počítačů se připojili k vaší doméně.
+-   Nastavili jste [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)a připojili jste počítače uživatelů k vaší doméně.
 
--   Chcete-li upravit objekt zásad skupiny (GPO), musíte mít *upravit nastavení* oprávnění. Ve výchozím nastavení, je tato oprávnění udělena členům následující skupiny zabezpečení: Správci domény, enterprise administrators a skupiny policy creator owners.
+-   Chcete-li upravit objekt Zásady skupiny (GPO), musíte mít oprávnění *Upravit nastavení* . Ve výchozím nastavení je toto oprávnění uděleno členům těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Group Policy Creator Owners.
 
-Podrobné pokyny týkající se konfigurace zásad skupiny a jeho nasazení pro uživatele najdete v tématu [nasadit rozšíření přístupového panelu s využitím zásad skupiny pro aplikaci Internet Explorer](deploy-access-panel-browser-extension.md).
+Podrobné pokyny týkající se konfigurace zásad skupiny a jejich nasazení pro uživatele najdete v tématu [nasazení rozšíření přístupového panelu pro Internet Explorer pomocí zásad skupiny](deploy-access-panel-browser-extension.md).
 
-## <a name="troubleshoot-the-access-panel-extension-in-internet-explorer"></a>Řešení potíží s rozšíření přístupového panelu v aplikaci Internet Explorer
+## <a name="troubleshoot-the-access-panel-extension-in-internet-explorer"></a>Řešení potíží s rozšířením přístupového panelu v aplikaci Internet Explorer
 
-Přístup k nástroje pro diagnostiku a informace o konfiguraci rozšíření pro aplikaci Internet Explorer, naleznete v tématu [řešení potíží s rozšířením panel přístupu pro aplikaci Internet Explorer](manage-access-panel-browser-extension.md).
+Přístup k nástroji pro diagnostiku a informace o konfiguraci rozšíření pro Internet Explorer najdete v tématu [Poradce při potížích s rozšířením přístupového panelu pro Internet Explorer](manage-access-panel-browser-extension.md).
 
 > [!NOTE]
-> Internet Explorer je na omezenou podporu a už nebude dostávat nové aktualizace softwaru. Microsoft Edge je doporučené prohlížeče.
+> Internet Explorer má omezené podpory a už nepřijímá nové aktualizace softwaru. Microsoft Edge je doporučený prohlížeč.
 
-## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>Pokud problém nelze vyřešit pomocí předchozích kroků
+## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>Pokud předchozí kroky problém nevyřeší
 
-Pokud je k dispozici, otevřete lístek podpory s následujícími informacemi:
+Otevřete lístek podpory s následujícími informacemi, pokud je k dispozici:
 
--   Chyba ID korelace
--   Hlavní název uživatele (uživatel e-mailová adresa)
--   ID Tenanta
+-   ID chyby korelace
+-   UPN (uživatelská e-mailová adresa)
+-   TenantID
 -   Typ prohlížeče
 -   Časové pásmo a čas nebo časový rámec, kdy došlo k chybě
--   Trasování Fiddler
+-   Fiddler trasování
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](what-is-single-sign-on.md)

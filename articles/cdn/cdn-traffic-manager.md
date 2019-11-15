@@ -1,6 +1,6 @@
 ---
-title: Nastavit převzetí služeb při selhání mezi několika koncových bodů Azure CDN pomocí Azure Traffic Manageru | Dokumentace Microsoftu
-description: Další informace o tom, jak nastavit si Azure Traffic Manageru s koncovými body Azure CDN.
+title: Převzetí služeb při selhání napříč několika koncovými body Azure CDN pomocí Traffic Manager
+description: Přečtěte si, jak nastavit Traffic Manager Azure pomocí koncových bodů Azure CDN.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,88 +15,88 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 276fe9352d0c4ca7ec525b88d65689b56c0ba027
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593336"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083001"
 ---
-# <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Nastavit převzetí služeb při selhání mezi několika koncových bodů Azure CDN pomocí Azure Traffic Manageru
+# <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Nastavení převzetí služeb při selhání napříč několika koncovými body Azure CDN pomocí Azure Traffic Manager
 
-Při konfiguraci Azure Content Delivery Network (CDN), můžete vybrat optimální zprostředkovatele a cenovou úroveň pro vaše potřeby. Azure CDN, jeho globálně distribuovanou infrastrukturou ve výchozím nastavení vytvoří místní a geografické redundanci a globální zlepšit výkon a dostupnost služeb pro vyrovnávání zatížení. Pokud umístění není k dispozici pro poskytování obsahu, požadavky se automaticky směrují do jiného umístění a optimální POP (založené na faktorech, například zátěž tvořenou umístění a server) se používá pro obsluhu každého požadavku klienta. 
+Při konfiguraci služby Azure Content Delivery Network (CDN) můžete vybrat optimálního poskytovatele a cenovou úroveň podle svých potřeb. Azure CDN s jeho globální distribuovanou infrastrukturou ve výchozím nastavení vytvoří místní a geografickou redundanci a globální vyrovnávání zatížení, aby se zlepšila dostupnost a výkon služby. Pokud není k dispozici umístění pro poskytování obsahu, požadavky jsou automaticky směrovány do jiného umístění a optimální POP (na základě takových faktorů, jako je umístění požadavku a zatížení serveru), slouží k obsluze jednotlivých požadavků klienta. 
  
-Pokud máte víc profilů CDN, můžete ještě vylepšit dostupnost a výkon pomocí Azure Traffic Manageru. Azure Traffic Manageru s Azure CDN slouží k načtení rovnováhu mezi několik koncových bodů CDN pro převzetí služeb při selhání geo zatížení vyrovnávání a další scénáře. Ve scénáři typické převzetí služeb při selhání všechny požadavky klientů nejprve přesměrováni na primární profil CDN; Pokud profil, který není k dispozici, žádosti se potom předávají do sekundární profil CDN, dokud nebude primární profil CDN je zpátky do online režimu. Použití Azure Traffic Manager tímto způsobem zajišťuje, že vaše webová aplikace je vždy k dispozici. 
+Pokud máte více profilů CDN, můžete dál vylepšit dostupnost a výkon pomocí Azure Traffic Manager. Azure Traffic Manager s Azure CDN můžete použít k vyrovnávání zatížení mezi několika koncovými body CDN pro převzetí služeb při selhání, geografického vyrovnávání zatížení a dalších scénářů. V typickém scénáři převzetí služeb při selhání jsou všechny požadavky klientů nejprve směrovány do primárního profilu CDN; Pokud profil není dostupný, požadavky se pak předají do sekundárního profilu CDN, dokud se váš primární profil CDN nevrátí do online režimu. Používání Azure Traffic Manager tímto způsobem zajišťuje, že vaše webová aplikace bude vždycky k dispozici. 
 
-Tento článek obsahuje pokyny a příklad toho, jak nastavit převzetí služeb při selhání s **Azure CDN Standard od Verizonu** a **Azure CDN Standard od Akamai** profily.
+V tomto článku najdete pokyny a příklad nastavení převzetí služeb při selhání pomocí **Azure CDN Standard z Verizon** a **Azure CDN Standard z profilů Akamai** .
 
-## <a name="set-up-azure-cdn"></a>Nastavení Azure CDN 
-Vytvoření dvou nebo více koncových bodů a profilů CDN s jiným poskytovatelům.
+## <a name="set-up-azure-cdn"></a>Nastavit Azure CDN 
+Vytvořte dva nebo více Azure CDN profilů a koncových bodů s různými poskytovateli.
 
-1. Vytvoření **Azure CDN Standard od Verizonu** a **Azure CDN Standard od Akamai** profilu pomocí následujících kroků v [vytvoření nového profilu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
+1. Pomocí postupu v části [Vytvoření nového profilu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-profile)vytvořte z profilu Akamai standard **Azure CDN Verizon** a **Azure CDN Standard** .
  
-   ![CDN více profilů](./media/cdn-traffic-manager/cdn-multiple-profiles.png)
+   ![CDN – Vícenásobné profily](./media/cdn-traffic-manager/cdn-multiple-profiles.png)
 
-2. V každé nové profily, vytvořte aspoň jeden koncový bod pomocí následujících kroků v [vytvořit nový koncový bod CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint).
+2. V každém z nových profilů vytvořte alespoň jeden koncový bod podle kroků v části [Vytvoření nového koncového bodu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint).
 
-## <a name="set-up-azure-traffic-manager"></a>Nastavte Azure Traffic Manager
-Vytvoření profilu Azure Traffic Manageru a nastavit vyrovnávání zatížení napříč koncových bodů CDN. 
+## <a name="set-up-azure-traffic-manager"></a>Nastavení Traffic Manager Azure
+Vytvořte profil Azure Traffic Manager a nastavte vyrovnávání zatížení napříč koncovými body CDN. 
 
-1. Vytvoření profilu Azure Traffic Manager pomocí kroků v [vytvořit profil služby Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile). 
+1. Pomocí postupu v části [Vytvoření profilu Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)vytvořte profil Azure Traffic Manager. 
 
-    Pro **metodu směrování**vyberte **Priority**.
+    V případě **metody směrování**vyberte **Priorita**.
 
-2. Přidat koncové body CDN ve vašem profilu Traffic Manageru pomocí následujících kroků v [koncové body přidat Traffic Manageru](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)
+2. Pomocí postupu v části [přidání Traffic Manager koncových bodů](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints) přidejte koncové body CDN do profilu Traffic Manager.
 
-    Pro **typ**vyberte **externí koncové body**. Pro **Priority**, zadejte číslo.
+    Jako **typ**vyberte **externí koncové body**. Jako **Priorita**zadejte číslo.
 
-    Například vytvořit *cdndemo101akamai.azureedge.net* s prioritou *1* a *cdndemo101verizon.azureedge.net* s prioritou *2*.
+    Můžete například vytvořit *cdndemo101akamai.azureedge.NET* s prioritou *1* a *cdndemo101verizon.azureedge.NET* s prioritou *2*.
 
-   ![Koncové body CDN traffic Manageru](./media/cdn-traffic-manager/cdn-traffic-manager-endpoints.png)
+   ![Koncové body Traffic Manageru CDN](./media/cdn-traffic-manager/cdn-traffic-manager-endpoints.png)
 
 
-## <a name="set-up-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Nastavení vlastní domény na Azure CDN a Azure Traffic Manageru
-Po nastavení profily CDN a Traffic Manager postupujte podle těchto kroků přidejte mapování DNS a zaregistrujte vlastní domény do koncových bodů CDN. V tomto příkladu je název vlastní domény *cdndemo101.dustydogpetcare.online*.
+## <a name="set-up-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Nastavení vlastní domény v Azure CDN a Azure Traffic Manager
+Po nastavení profilů pro CDN a Traffic Manager postupujte podle těchto kroků a přidejte mapování DNS a zaregistrujte vlastní doménu do koncových bodů CDN. V tomto příkladu je název vlastní domény *cdndemo101. dustydogpetcare. online*.
 
-1. Přejděte na web poskytovatele domény vlastní domény, jako je například GoDaddy a vytvořte dvě položky DNS CNAME. 
+1. Přejít na web pro poskytovatele domény vlastní domény, například GoDaddy, a vytvořit dvě položky CNAME DNS. 
 
-    a. Pro první záznam CNAME namapujte vlastní doménu, se subdoménou cdnverify na váš koncový bod CDN. Tato položka je povinný krok registrace vlastní domény do koncového bodu CDN, který jste přidali v kroku 2 do Traffic Manageru.
+    a. Pro první záznam CNAME namapujte vlastní doménu s poddoménou cdnverify na koncový bod CDN. Tato položka je povinný krok k registraci vlastní domény do koncového bodu CDN, který jste přidali do Traffic Manager v kroku 2.
 
       Příklad: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
-    b. Pro druhý záznam CNAME namapujte vlastní doménu, bez subdomény cdnverify na váš koncový bod CDN. Tato položka mapování vlastní domény na Traffic Manager. 
+    b. Pro druhý záznam CNAME namapujte vlastní doménu bez subdomény cdnverify na koncový bod CDN. Tato položka namapuje vlastní doménu na Traffic Manager. 
 
       Příklad: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
     > [!NOTE]
-    > Pokud se vaše doména je v současné době provozu a nelze ji přerušit, proveďte tento krok poslední. Ověřte, že koncové body CDN a provoz správce domény živé před aktualizací vaší vlastní domény DNS do Traffic Manageru.
+    > Pokud je vaše doména momentálně v provozu a nedá se přerušit, udělejte tento krok jako poslední. Před aktualizací vlastní domény DNS na Traffic Manager ověřte, jestli jsou koncové body CDN a domény Traffic Manageru aktivní.
     >
 
 
-2.  Váš profil Azure CDN vyberte první koncový bod CDN (Akamai). Vyberte **přidat vlastní doménu** a vstupní *cdndemo101.dustydogpetcare.online*. Ověřte, zda je zelenou značku zaškrtnutí k ověření vlastní domény. 
+2.  V profilu Azure CDN vyberte první koncový bod CDN (Akamai). Vyberte **Přidat vlastní doménu** a vstup *cdndemo101. dustydogpetcare. online*. Ověřte, že se značka zaškrtnutí pro ověření vlastní domény zeleně. 
 
-    Azure CDN pomocí *cdnverify* subdoménu ověřit mapování DNS k dokončení tohoto procesu registrace. Další informace najdete v tématu [vytvořit záznam CNAME DNS](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Tento krok povoluje tak, aby můžou reagovat na požadavky na jeho rozpoznání vlastní doménu Azure CDN.
+    Azure CDN používá subdoménu *cdnverify* k ověření mapování DNS k dokončení tohoto procesu registrace. Další informace najdete v tématu [Vytvoření záznamu DNS CNAME](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Tento krok umožňuje Azure CDN rozpoznat vlastní doménu, aby mohla reagovat na své žádosti.
     
     > [!NOTE]
-    > Povolit protokol SSL na **Azure CDN od Akamai** profily, musíte přímo cname vlastní doménu do koncového bodu. cdnverify pro povolení protokolu SSL se ještě nepodporuje. 
+    > Pokud chcete povolit SSL na **Azure CDN z profilů Akamai** , musíte přímo CNAME vlastní doménu do svého koncového bodu. cdnverify pro povolení protokolu SSL zatím není podporováno. 
     >
 
-3.  Vraťte se do webové stránky pro poskytovatele vaší vlastní domény a aktualizujte první mapování DNS, kterou jste vytvořili v tak, aby se vlastní doména se mapuje na druhý koncového bodu CDN.
+3.  Vraťte se na web pro poskytovatele domény vlastní domény a aktualizujte první mapování DNS, které jste vytvořili v nástroji, aby se vlastní doména namapovala na druhý koncový bod CDN.
                              
     Příklad: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. V profilu Azure CDN vyberte druhý koncový bod CDN (Verizon) a opakujte krok 2. Vyberte **přidat vlastní doménu**a vstupní *cdndemo101.dustydogpetcare.online*.
+4. V profilu Azure CDN vyberte druhý koncový bod CDN (Verizon) a opakujte krok 2. Vyberte **Přidat vlastní doménu**a zadejte *cdndemo101. dustydogpetcare. online*.
  
-Po dokončení těchto kroků služby s více než CDN s funkcí převzetí služeb při selhání se nastavuje pomocí Azure Traffic Manageru. Budete mít přístup k testu adresy URL z vaší vlastní domény. Chcete-li otestovat funkci, zakažte primární koncový bod CDN a ověřte, že žádost je správně přesouvá sekundárního koncového bodu CDN. 
+Po dokončení tohoto postupu se služba multi-CDN s možnostmi převzetí služeb při selhání nastaví s využitím Azure Traffic Manager. Budete mít přístup k testovacím adresám URL z vaší vlastní domény. Chcete-li otestovat funkci, zakažte primární koncový bod CDN a ověřte, zda je požadavek správně přesunut do sekundárního koncového bodu CDN. 
 
-## <a name="next-steps"></a>Další postup
-Můžete také nastavit jiných metod směrování, jako například zeměpisné k vyrovnávání zatížení mezi různé koncové body CDN. Další informace najdete v tématu [nakonfigurovat geografickou metodu směrování provozu pomocí služby Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
+## <a name="next-steps"></a>Další kroky
+Pro vyrovnávání zatížení mezi různými koncovými body CDN můžete také nastavit jiné metody směrování, například geografické. Další informace najdete v tématu [Konfigurace metody směrování geografického provozu pomocí Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
 
 
 

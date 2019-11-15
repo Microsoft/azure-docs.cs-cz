@@ -1,19 +1,19 @@
 ---
-title: Převzetí služeb při selhání a obnovení virtuálních počítačů Hyper-V replikovaných do sekundárního datového centra během zotavení po havárii pomocí Azure Site Recovery | Microsoft Docs
+title: Nastavení převzetí služeb při selhání/navrácení služeb po obnovení na sekundární lokalitu Hyper-V pomocí Azure Site Recovery
 description: Přečtěte si, jak převzít služby při selhání virtuálních počítačů Hyper-V do sekundární místní lokality a navrácení služeb po havárii do primární lokality během zotavení po havárii s Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f93c9bd679272f76665a6c8e4a0c611327699839
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813705"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082604"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Převzetí služeb při selhání a obnovení záložních virtuálních počítačů Hyper-V replikovaných do sekundární místní lokality
 
@@ -30,8 +30,8 @@ Tento článek popisuje, jak převzít služby při selhání virtuálního poč
 
 Převzetí služeb při selhání a obnovení má tři fáze:
 
-1. **Převzetí služeb při selhání sekundární lokalitou**: Převezme selhání počítačů z primární lokality do sekundární.
-2. Navrácení **služeb po obnovení ze sekundární lokality**: Replikace virtuálních počítačů ze sekundárního na primární a spuštění plánovaného převzetí služeb při selhání pro navrácení služeb po obnovení.
+1. **Převzetí služeb při selhání sekundární lokalitou**: převzetí služeb při selhání z primární lokality do sekundárního počítače.
+2. Navrácení **služeb po obnovení ze sekundární lokality**: replikace virtuálních počítačů ze sekundárního na primární a spuštění plánovaného převzetí služeb při selhání.
 3. Po plánovaném převzetí služeb při selhání můžete znovu spustit replikaci z primární lokality do sekundárního.
 
 
@@ -58,7 +58,7 @@ Pro virtuální počítače Hyper-V můžete spustit běžné nebo plánované p
 3. Po ověření virtuálního počítače **potvrďte** převzetí služeb při selhání. Tím se odstraní všechny dostupné body obnovení.
 
 > [!WARNING]
-> **Nerušit probíhající převzetí služeb při selhání**: Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  
+> **Nepřerušujte v průběhu proces převzetí služeb při selhání**: před zahájením procesu převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>Zpětná replikace a převzetí služeb při selhání
@@ -72,5 +72,5 @@ Zahájení replikace ze sekundární lokality na primární a navrácení služe
 5. V primárním cloudu VMM ověřte, že je virtuální počítač dostupný.
 6. Pokud chcete znovu spustit replikaci primárního virtuálního počítače zpět do sekundární lokality, klikněte na **Zpětná replikace**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Přečtěte si krok](hyper-v-vmm-disaster-recovery.md) pro replikaci virtuálních počítačů Hyper-V do sekundární lokality.

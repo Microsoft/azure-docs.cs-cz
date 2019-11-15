@@ -1,40 +1,40 @@
 ---
 title: Kurz – vytvoření virtuální sítě rozbočovače v Azure pomocí Terraformu
-description: Kurz ilustrující, jak vytvořit virtuální síť centra v Azure, která funguje jako společný spojovací bod mezi ostatními sítěmi
+description: Kurz, který ukazuje, jak vytvořit virtuální síť rozbočovače v Azure, která funguje jako společný spojovací bod mezi ostatními sítěmi
 ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 231f8c6b98db785f3ef155af271be7e354998d54
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 25c4d6fa881f7ec6c96dd5ea7c935544374bc57d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969421"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077706"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-in-azure-using-terraform"></a>Kurz: vytvoření virtuální sítě rozbočovače v Azure pomocí Terraformu
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Kurz: vytvoření virtuální sítě rozbočovače v Azure pomocí Terraformu
 
-Rozbočovačová virtuální síť (VNet) funguje jako centrální bod připojení k místní síti. Virtuální síť hostuje sdílené služby spotřebované úlohami hostovanými na paprskovém virtuální sítě. Pro účely ukázky nejsou v tomto kurzu implementovány žádné sdílené služby.
+Virtuální síť rozbočovače funguje jako centrální bod připojení k místní síti. Virtuální síť hostuje sdílené služby spotřebované úlohami hostovanými ve virtuálních sítích paprsků. Pro účely ukázky nejsou v tomto kurzu implementovány žádné sdílené služby.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Použití HCL (HashiCorp Language) k implementaci virtuální sítě rozbočovače v topologii centra s paprsky
-> * Použití Terraformu k vytvoření virtuálního počítače s odkazem na seznam hub
-> * Vytvoření brány virtuální privátní sítě centra pomocí Terraformu
-> * Vytvoření centra a místních připojení brány pomocí Terraformu
+> * K implementaci virtuální sítě rozbočovače v topologii hvězdicové topologie použijte konfigurační jazyk HashiCorp (HCL).
+> * Pomocí Terraformu vytvořte virtuální počítač JumpBox hub.
+> * Pomocí Terraformu vytvořte bránu virtuální privátní sítě pro rozbočovače.
+> * Pomocí Terraformu můžete vytvářet centra a místní připojení brány.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
+1. [Pomocí terraformu v Azure vytvoříte topologii hybridní sítě s rozbočovačem a paprsky](./terraform-hub-spoke-introduction.md).
 1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
 Síť rozbočovače se skládá z následujících součástí:
 
-- Virtuální síť centra
+- Virtuální síť rozbočovače
 - Brána virtuální sítě rozbočovače
 - Připojení brány centra 
 
@@ -52,17 +52,17 @@ Následující konfigurační soubor Terraformu definuje prostředky:
     cd clouddrive
     ```
 
-1. Přejděte do nového adresáře:
+1. Změňte adresáře do nového adresáře.
 
     ```bash
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-vnet"></a>Deklarovat virtuální síť centra
+## <a name="declare-the-hub-virtual-network"></a>Deklarovat virtuální síť centra
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje virtuální síť centrální sítě.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `hub-vnet.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `hub-vnet.tf`.
 
     ```bash
     code hub-vnet.tf
@@ -226,9 +226,9 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje virtuální síť c
     }
     ```
     
-1. Uložte soubor a ukončete Editor.
+3. Uložte soubor a ukončete Editor.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Vytvoření zařízení virtuální sítě rozbočovače pomocí terraformu v Azure](./terraform-hub-spoke-hub-nva.md)
+> [Vytvoření zařízení virtuální sítě rozbočovače pomocí Terraformu v Azure](./terraform-hub-spoke-hub-nva.md)

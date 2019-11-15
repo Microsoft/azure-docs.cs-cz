@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: robinsh
-ms.openlocfilehash: 8d071d4cd6ae3f9a52433104075e396d70d5bc57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828692"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083273"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak klonovat službu Azure IoT Hub do jiné oblasti
 
@@ -391,7 +391,7 @@ Portál teď ověří vaši šablonu a nasadí naklonované centrum. Pokud máte
 
 Teď, když máte naklonování a používání, musíte zkopírovat všechna zařízení z původního rozbočovače do klonu. 
 
-To lze provést několika způsoby. Buď jste původně použili [službu Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps.md)k zřízení zařízení, nebo jste to neudělali. Pokud jste to provedli, není to obtížné. Pokud jste to nepoužili, může to být velmi složité. 
+To lze provést několika způsoby. Buď jste původně použili [službu Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps)k zřízení zařízení, nebo jste to neudělali. Pokud jste to provedli, není to obtížné. Pokud jste to nepoužili, může to být velmi složité. 
 
 Pokud jste nepoužívali DPS ke zřízení zařízení, můžete přeskočit další část a začít [příkazem import/export přesunout zařízení do nového centra](#using-import-export-to-move-the-devices-to-the-new-hub).
 

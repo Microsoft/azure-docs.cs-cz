@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 06ce2e51f72b9b4f709bf26ce6d92ad3861d36db
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102885"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081646"
 ---
-# <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Kurz: Integrace Shmoop pro školy s Azure Active Directory
+# <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Kurz: integrace Shmoop pro školy s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat Shmoop pro školy s Azure Active Directory (Azure AD). Když integrujete Shmoop pro školy s Azure AD, můžete:
 
@@ -58,7 +58,6 @@ Pokud chcete nakonfigurovat integraci Shmoop pro školy do služby Azure AD, mus
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Shmoop pro školy** .
 1. Na panelu výsledků vyberte **Shmoop for školy** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-shmoop-for-schools"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Shmoop pro školy
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Shmoop pro školy pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Shmoop pro školy.
@@ -66,10 +65,10 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Shmoop pr
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Shmoop pro školy, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 2. **[Nakonfigurujte Shmoop pro jednotné přihlašování pro školy](#configure-shmoop-for-schools-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte Shmoop pro školní testy pro uživatele](#create-shmoop-for-schools-test-user)** – můžete mít protějšek B. Simon v Shmoop pro školy, který je propojený s reprezentací uživatele v Azure AD.
+    * **[Vytvořte Shmoop pro školní testy pro uživatele](#create-shmoop-for-schools-test-user)** – můžete mít protějšek B. Simon v Shmoop pro školy, který je propojený s reprezentací uživatele v Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
@@ -84,45 +83,27 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://schools.shmoop.com/<uniqueid>`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, kontaktujte [Shmoop pro pracovníky podpory pro školní klienty](mailto:support@shmoop.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Aplikace Shmoop for školy očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno **atributy uživatele** .
+1. Aplikace Shmoop for školy očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
     > [!NOTE]
-    > Shmoop pro školy podporuje pro uživatele dvě role: **Učitel** a **student**. Nastavte tyto role ve službě Azure AD tak, aby se uživatelům mohly přiřadit příslušné role. Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+    > Shmoop for School podporuje dvě role pro uživatele: **učitel** a **student**. Nastavte tyto role ve službě Azure AD tak, aby se uživatelům mohly přiřadit příslušné role. Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
-6. Kromě výše uvedeného očekává aplikace Shmoop for školy několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce: 
+1. Kromě výše uvedeného očekává aplikace Shmoop for školy několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | --------- | --------------- |
     | roles      | user.assignedroles |
 
-    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
-
-    c. Ponechte **obor názvů** prázdný.
-
-    d. Jako **atribut**vyberte zdroj.
-
-    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
-
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
@@ -136,7 +117,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -167,7 +148,7 @@ V této části se v Shmoop pro školy vytvoří uživatel s názvem B. Simon. S
 > [!NOTE]
 > Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory Shmoop pro školy](mailto:support@shmoop.com).
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -181,3 +162,4 @@ Když kliknete na dlaždici Shmoop for školy na přístupovém panelu, měli by
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Vyzkoušejte si Shmoop pro školy s Azure AD](https://aad.portal.azure.com/)

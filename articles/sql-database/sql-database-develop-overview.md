@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-ms.date: 02/07/2019
-ms.openlocfilehash: af657d28bc3052ebefe25ea54891b8d3555692c9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825837"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082439"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database – přehled vývoje aplikací
 
@@ -32,7 +32,7 @@ K připojení a dotazování Azure SQL Database můžete použít různé [progr
 
 Můžete využít Open Source nástroje, jako je [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Můžete také využít Azure Portal, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Přístup k Azure SQL Database je chráněný pomocí přihlašovacích údajů a bran firewall. Azure SQL Database podporuje i uživatele ověřování SQL Server a [Azure Active Directory (AAD)](sql-database-aad-authentication.md) a přihlašovací údaje. Přihlášení AAD jsou k dispozici pouze ve spravované instanci. 
 
@@ -48,7 +48,7 @@ Nepoužívejte dlouhotrvající transakce, protože jakákoli infrastruktura neb
 
 ## <a name="resiliency"></a>Odolnost
 
-Azure SQL Database je cloudová služba, ve které byste mohli očekávat přechodné chyby, ke kterým dochází v základní infrastruktuře nebo v komunikaci mezi entitami cloudu. I když je Azure SQL Database odolná proti chybám přenosných infrastruktur, může to mít vliv na vaše připojení. Pokud při připojování k SQL Database dojde k přechodné chybě, váš kód by měl [zavolat znovu](sql-database-connectivity-issues.md). Doporučujeme, aby logika dalších pokusů používala logiku opakování, aby služba SQL Database nebyla zaplavená opakovanými pokusy několika klientů současně. Logika opakování závisí na [chybových zprávách pro SQL Database klientských programů](sql-database-develop-error-messages.md).
+Azure SQL Database je cloudová služba, ve které byste mohli očekávat přechodné chyby, ke kterým dochází v základní infrastruktuře nebo v komunikaci mezi entitami cloudu. I když je Azure SQL Database odolná proti chybám přenosných infrastruktur, může to mít vliv na vaše připojení. Pokud při připojování k SQL Database dojde k přechodné chybě, váš kód by měl [zavolat znovu](sql-database-connectivity-issues.md). Doporučujeme, aby logika dalších pokusů používala logiku opakování, aby služba SQL Database nebyla zaplavená opakovanými pokusy několika klientů současně. Logika opakování závisí na [chybových zprávách pro SQL Database klientských programů](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md).
 
 Další informace o přípravě na plánované události údržby ve službě Azure SQL Database najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](sql-database-planned-maintenance.md).
 

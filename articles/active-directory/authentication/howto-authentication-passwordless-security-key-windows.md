@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603479"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081563"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Povolit pro zařízení s Windows 10 přihlášení ke klíčům zabezpečení s nezabezpečenými hesly (Preview)
 
@@ -29,7 +29,7 @@ Tento dokument se zaměřuje na povolení ověřování bez hesla založeného n
 
 ## <a name="requirements"></a>Požadavky
 
-- [Multi-Factor Authentication Azure](howto-mfa-getstarted.md)
+- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md)
 - Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
 - Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší.
@@ -60,7 +60,7 @@ Organizace se můžou rozhodnout použít jednu nebo více následujících meto
 
 ### <a name="enable-with-intune"></a>Povolit s Intune
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune** > **registrace zařízení** > **vlastnosti** **registrace** zařízení > **Windows Hello pro firmy** > .
 1. V části **Nastavení** nastavení **použít klíče zabezpečení pro přihlášení** na **povoleno**.
 
@@ -70,7 +70,7 @@ Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci 
 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune** > **Konfigurace zařízení** > **profily** > **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením.
    1. Název: bezpečnostní klíče pro přihlášení k Windows
@@ -88,7 +88,7 @@ Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele p
 
 ### <a name="enable-with-a-provisioning-package"></a>Povolit pomocí zřizovacího balíčku
 
-Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřizovací balíček, který tuto funkci povolí. Aplikaci Windows Configuration Designer můžete nainstalovat z [Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22).
+Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřizovací balíček, který tuto funkci povolí. Aplikaci Windows Configuration Designer můžete nainstalovat z [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22).
 
 1. Spusťte Windows Configuration Designer.
 1. Vyberte **soubor** > **Nový projekt**.

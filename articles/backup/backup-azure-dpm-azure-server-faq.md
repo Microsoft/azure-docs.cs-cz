@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 48339addf6020a7a95e1c0b650bfcb43e1898483
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 940ac4d94bf39583fad828545a45cbb033908f15
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747493"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091661"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
 
-## <a name="general-questions"></a>Obecné dotazy
+## <a name="general-questions"></a>Obecné otázky
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Backup Server a aplikace DPM.
 

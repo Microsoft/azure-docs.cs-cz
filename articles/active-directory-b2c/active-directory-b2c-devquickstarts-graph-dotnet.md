@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4c8f123eb8c32362219f21dc70d137f2cc9b4b1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802058"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078822"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: použití Graph API Azure AD
 
@@ -28,12 +28,12 @@ Pro klienty B2C existují dva primární režimy komunikace s Graph API:
 * Pro **interaktivní**úlohy spouštěné v jednom okamžiku byste při provádění úkolů měli v tenantovi B2C fungovat jako účet správce. Tento režim vyžaduje, aby se správce přihlásil s přihlašovacími údaji předtím, než může správce provést jakákoli volání Graph API.
 * Pro **automatizované**nepřetržité úkoly byste měli použít nějaký typ účtu služby, který zadáte s potřebnými oprávněními k provádění úloh správy. V Azure AD to můžete udělat tak, že zaregistrujete aplikaci a ověřujete ji ve službě Azure AD. To se provádí pomocí *ID aplikace* , které používá [udělení přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/service-to-service.md). V tomto případě aplikace funguje stejně jako uživatel, nikoli jako uživatel, pro volání Graph API.
 
-V tomto článku se dozvíte, jak provést automatizovaný případ použití. Sestavíte rozhraní .NET 4,5 `B2CGraphClient`, které provádí operace vytvoření, čtení, aktualizace a odstranění (CRUD) uživatelem. Klient bude mít rozhraní příkazového řádku (CLI) systému Windows, které umožňuje vyvolání různých metod. Kód je však napsán tak, aby se choval v neinteraktivním, automatizovaném způsobem.
+V tomto článku se dozvíte, jak provést automatizovaný případ použití. Vytvoříte `B2CGraphClient` .NET 4,5, která provede operace vytvoření, čtení, aktualizace a odstranění (CRUD) uživatelem. Klient bude mít rozhraní příkazového řádku (CLI) systému Windows, které umožňuje vyvolání různých metod. Kód je však napsán tak, aby se choval v neinteraktivním, automatizovaném způsobem.
 
 >[!IMPORTANT]
 > Ke správě uživatelů v adresáři Azure AD B2C je **nutné** použít [Graph API Azure AD](../active-directory/develop/active-directory-graph-api-quickstart.md) . Graph API Azure AD se liší od rozhraní Microsoft Graph API. Další informace najdete v tomto příspěvku na blogu MSDN: [Microsoft Graph nebo Azure AD Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než budete moci vytvořit aplikace nebo uživatele, potřebujete klienta Azure AD B2C. Pokud ho ještě nemáte, [Vytvořte klienta Azure Active Directory B2C](tutorial-create-tenant.md).
 
@@ -77,7 +77,7 @@ Vaše aplikace Azure AD B2C má teď další oprávnění, která jsou nutná k 
 
 Ukázka kódu je Konzolová aplikace .NET, která používá [Active Directory Authentication Library (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) k interakci s Graph API Azure AD. Jeho kód ukazuje, jak volat rozhraní API pro programovou správu uživatelů v klientovi Azure AD B2C.
 
-Můžete [si stáhnout ukázkový archiv](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (@no__t -1. zip) nebo klonovat úložiště GitHub:
+Můžete [si stáhnout ukázkový archiv](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) nebo klonovat úložiště GitHub:
 
 ```cmd
 git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
@@ -87,7 +87,7 @@ Po získání ukázky kódu ji nakonfigurujte pro vaše prostředí a pak Sestav
 
 1. Otevřete řešení `B2CGraphClient\B2CGraphClient.sln` v sadě Visual Studio.
 1. V projektu **B2CGraphClient** otevřete soubor *App. config* .
-1. Nahraďte část `<appSettings>` následujícím kódem XML. Potom nahraďte `{your-b2c-tenant}` názvem vašeho tenanta a `{Application ID}` a `{Client secret}` hodnotami, které jste si poznamenali dříve.
+1. Oddíl `<appSettings>` nahraďte následujícím kódem XML. Potom nahraďte `{your-b2c-tenant}` názvem vašeho tenanta a `{Application ID}` a `{Client secret}` hodnoty, které jste si poznamenali dříve.
 
     ```xml
     <appSettings>
@@ -99,9 +99,9 @@ Po získání ukázky kódu ji nakonfigurujte pro vaše prostředí a pak Sestav
 
 1. Sestavte řešení. V Průzkumník řešení klikněte pravým tlačítkem na řešení **B2CGraphClient** a pak vyberte znovu **Sestavit řešení**.
 
-Pokud je sestavení úspěšné, konzolovou aplikaci `B2C.exe` lze najít v `B2CGraphClient\bin\Debug`.
+Pokud je sestavení úspěšné, `B2C.exe` konzolovou aplikaci najdete v `B2CGraphClient\bin\Debug`.
 
-## <a name="review-the-sample-code"></a>Kontrola ukázkového kódu
+## <a name="review-the-sample-code"></a>Revize ukázkového kódu
 
 Chcete-li použít B2CGraphClient, otevřete příkazový řádek (`cmd.exe`) a přejděte do adresáře `Debug` projektu. Pak spusťte příkaz `B2C Help`.
 
@@ -110,18 +110,18 @@ cd B2CGraphClient\bin\Debug
 B2C Help
 ```
 
-Příkaz `B2C Help` zobrazí stručný popis dostupných dílčích příkazů. Pokaždé, když vyvoláte jeden z jeho dílčích příkazů, `B2CGraphClient` pošle požadavek do Graph API Azure AD.
+Příkaz `B2C Help` zobrazí stručný popis dostupných dílčích příkazů. Pokaždé, když vyvoláte jeden z jeho dílčích příkazů, `B2CGraphClient` odešle požadavek do Graph API Azure AD.
 
 Následující části popisují, jak kód aplikace volá Graph API služby Azure AD.
 
 ### <a name="get-an-access-token"></a>Získání přístupového tokenu
 
-Jakýkoli požadavek na Graph API Azure AD vyžaduje přístupový token pro ověřování. @no__t – 0 používá open source Active Directory Authentication Library (ADAL), který pomáhá získat přístupové tokeny. ADAL usnadňuje získání tokenu tím, že poskytuje pomocné rozhraní API a postará se o několik důležitých podrobností, jako jsou přístupové tokeny pro ukládání do mezipaměti. K získání tokenů ale nemusíte používat ADAL. Místo toho můžete získat tokeny ručním vytvářením požadavků HTTP.
+Jakýkoli požadavek na Graph API Azure AD vyžaduje přístupový token pro ověřování. `B2CGraphClient` používá open source Active Directory Authentication Library (ADAL), který pomáhá získat přístupové tokeny. ADAL usnadňuje získání tokenu tím, že poskytuje pomocné rozhraní API a postará se o několik důležitých podrobností, jako jsou přístupové tokeny pro ukládání do mezipaměti. K získání tokenů ale nemusíte používat ADAL. Místo toho můžete získat tokeny ručním vytvářením požadavků HTTP.
 
 > [!NOTE]
 > K získání přístupových tokenů, které lze použít s Graph API Azure AD, je nutné použít ADAL v2 nebo vyšší. Nelze použít ADAL v1.
 
-Když se spustí `B2CGraphClient`, vytvoří instanci třídy `B2CGraphClient`. Konstruktor této třídy nastavuje generování uživatelského rozhraní ADAL pro ověřování:
+Když se `B2CGraphClient` spustí, vytvoří instanci `B2CGraphClient` třídy. Konstruktor této třídy nastavuje generování uživatelského rozhraní ADAL pro ověřování:
 
 ```csharp
 public B2CGraphClient(string clientId, string clientSecret, string tenant)
@@ -140,9 +140,9 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 }
 ```
 
-Použijte jako příklad příkaz `B2C Get-User`.
+Pojďme použít příkaz `B2C Get-User` jako příklad.
 
-Když je vyvoláno `B2C Get-User` bez dalších argumentů, aplikace zavolá metodu `B2CGraphClient.GetAllUsers()`. `GetAllUsers()` pak zavolá `B2CGraphClient.SendGraphGetRequest()`, která odešle požadavek HTTP GET do Graph API služby Azure AD. Než `B2CGraphClient.SendGraphGetRequest()` odešle požadavek GET, nejprve získá přístupový token pomocí knihovny ADAL:
+Když je vyvolána `B2C Get-User` bez dalších argumentů, aplikace volá metodu `B2CGraphClient.GetAllUsers()`. `GetAllUsers()` pak zavolá `B2CGraphClient.SendGraphGetRequest()`, která odešle požadavek HTTP GET do Graph API služby Azure AD. Předtím, než `B2CGraphClient.SendGraphGetRequest()` odešle požadavek GET, nejprve získá přístupový token pomocí knihovny ADAL:
 
 ```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -153,11 +153,11 @@ public async Task<string> SendGraphGetRequest(string api, string query)
     ...
 ```
 
-Přístupový token pro Graph API můžete získat voláním metody ADAL `AuthenticationContext.AcquireToken()`. ADAL pak vrátí `access_token`, která představuje identitu aplikace.
+Přístupový token pro Graph API můžete získat voláním metody `AuthenticationContext.AcquireToken()` ADAL. ADAL pak vrátí `access_token` reprezentující identitu aplikace.
 
 ### <a name="read-users"></a>Čtení uživatelů
 
-Pokud chcete získat seznam uživatelů nebo získat konkrétního uživatele ze Graph API služby Azure AD, můžete odeslat požadavek HTTP `GET` do koncového bodu `/users`. Požadavek na všechny uživatele v tenantovi vypadá takto:
+Pokud chcete získat seznam uživatelů nebo získat konkrétního uživatele ze Graph API služby Azure AD, můžete odeslat požadavek HTTP `GET` na koncový bod `/users`. Požadavek na všechny uživatele v tenantovi vypadá takto:
 
 ```HTTP
 GET https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
@@ -200,9 +200,9 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 
 ### <a name="create-consumer-user-accounts"></a>Vytváření uživatelských účtů uživatelů
 
-Při vytváření uživatelských účtů v tenantovi B2C můžete odeslat požadavek HTTP `POST` do koncového bodu `/users`. Následující požadavek HTTP `POST` ukazuje ukázkového uživatele, který se má vytvořit v tenantovi.
+Při vytváření uživatelských účtů v tenantovi B2C můžete odeslat požadavek HTTP `POST` do koncového bodu `/users`. Následující požadavek HTTP `POST` zobrazuje ukázkového uživatele, který se má vytvořit v tenantovi.
 
-K vytvoření uživatelů spotřebitelů se vyžaduje většina vlastností v následující žádosti. Pro ilustraci byly zahrnuty komentáře `//` – nezahrne je do skutečné žádosti.
+K vytvoření uživatelů spotřebitelů se vyžaduje většina vlastností v následující žádosti. Komentáře `//` byly zahrnuty pro ilustraci – nezahrne je do skutečné žádosti.
 
 ```HTTP
 POST https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
@@ -244,16 +244,16 @@ Další informace o požadovaných a volitelných polích naleznete v tématu [e
 
 Můžete vidět, jak je požadavek POST vytvořen v `B2CGraphClient.SendGraphPostRequest()`:
 
-* Připojí přístupový token k hlavičce `Authorization` žádosti.
+* Připojí přístupový token k `Authorization` hlavičce požadavku.
 * Nastaví `api-version=1.6`.
 * Obsahuje objekt uživatele JSON v těle žádosti.
 
 > [!NOTE]
-> Pokud mají účty, které chcete migrovat z existujícího úložiště uživatele, nižší sílu hesla, než je [bezpečná síla hesla vynutila Azure AD B2C](active-directory-b2c-reference-password-complexity.md), můžete požadavek na silný heslo zakázat pomocí hodnoty `DisableStrongPassword` v `passwordPolicies`. majetek. Můžete například upravit předchozí požadavek na vytvoření uživatele následujícím způsobem: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
+> Pokud mají účty, které chcete migrovat z existujícího úložiště uživatele, nižší sílu hesla, než je [bezpečná síla hesla vynutila Azure AD B2C](active-directory-b2c-reference-password-complexity.md), můžete zakázat požadavek na silný heslo pomocí hodnoty `DisableStrongPassword` ve vlastnosti `passwordPolicies`. Můžete například upravit předchozí požadavek na vytvoření uživatele následujícím způsobem: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
 
 ### <a name="update-consumer-user-accounts"></a>Aktualizace uživatelských účtů spotřebitelů
 
-Když aktualizujete uživatelské objekty, bude tento proces podobný jako ten, který používáte k vytvoření objektů uživatele, ale používá metodu HTTP `PATCH`:
+Když aktualizujete uživatelské objekty, bude tento proces podobný jako ten, který používáte k vytvoření objektů uživatele, ale používá metodu `PATCH` HTTP:
 
 ```HTTP
 PATCH https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
@@ -273,14 +273,15 @@ B2C Update-User <user-object-id> ..\..\..\usertemplate-email.json
 B2C Update-User <user-object-id> ..\..\..\usertemplate-username.json
 ```
 
-Podrobnosti o tom, jak odeslat tuto žádost, najdete v metodě @no__t 0.
+Podrobnosti o tom, jak poslat tuto žádost, najdete v `B2CGraphClient.SendGraphPatchRequest()` metodě.
 
 ### <a name="search-users"></a>Vyhledávat uživatele
 
-Uživatele v tenantovi B2C můžete vyhledat dvěma způsoby:
+Uživatele v tenantovi B2C můžete vyhledat následujícími způsoby:
 
 * Odkaz na **ID objektu**uživatele
-* Odkazujte na jejich přihlašovací identifikátorem, vlastnost `signInNames`.
+* Odkaz na jejich přihlašování identifikátorem, vlastnost `signInNames`.
+* Odkázat na libovolný platný parametr OData, např. prodané jméno, příjmení, DisplayName atd.
 
 Spusťte jeden z následujících příkazů, který vyhledá uživatele:
 
@@ -289,11 +290,14 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Například:
+Příklad:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
 B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27consumer@fabrikam.com%27)
+B2C get-user $filter=givenName%20eq%20%27John%27
+B2C get-user $filter=surname%20eq%20%27Doe%27
+B2C get-user $filter=displayName%20eq%20%27John%20Doe%27
 ```
 
 ### <a name="delete-users"></a>Odstraňování uživatelů
@@ -311,7 +315,7 @@ Chcete-li zobrazit příklad, zadejte tento příkaz a zobrazte žádost o odstr
 B2C Delete-User <object-id-of-user>
 ```
 
-Podrobnosti o tom, jak odeslat tuto žádost, najdete v metodě @no__t 0.
+Podrobnosti o tom, jak poslat tuto žádost, najdete v `B2CGraphClient.SendGraphDeleteRequest()` metodě.
 
 Kromě správy uživatelů můžete provádět i mnoho dalších akcí s Graph API Azure AD. [Odkaz na Graph API Azure AD](/previous-versions/azure/ad/graph/api/api-catalog) poskytuje podrobné informace o každé akci společně s ukázkovými požadavky.
 
@@ -321,14 +325,14 @@ Většina aplikací pro spotřebitele potřebuje Uložit nějaký typ vlastních
 
 Chcete-li definovat vlastní atribut v tenantovi B2C, přečtěte si [odkaz na vlastní atribut B2C](active-directory-b2c-reference-custom-attr.md).
 
-Vlastní atributy definované v tenantovi B2C můžete zobrazit pomocí @no__t následujících příkazů-0:
+Vlastní atributy definované v tenantovi B2C můžete zobrazit pomocí následujících příkazů `B2CGraphClient`:
 
 ```cmd
 B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-Výstup odhalí podrobnosti každého vlastního atributu. Například:
+Výstup odhalí podrobnosti každého vlastního atributu. Příklad:
 
 ```json
 {
@@ -354,7 +358,7 @@ B2C Update-User <object-id-of-user> <path-to-json-file>
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí `B2CGraphClient` máte aplikaci služby, která může spravovat uživatele klienta B2C programově. @no__t – 0 používá vlastní identitu aplikace k ověření v Graph API Azure AD. Získává taky tokeny pomocí tajného klíče klienta.
+Pomocí `B2CGraphClient`máte aplikaci služby, která může spravovat uživatele klienta B2C programově. `B2CGraphClient` používá vlastní identitu aplikace k ověření v Graph API Azure AD. Získává taky tokeny pomocí tajného klíče klienta.
 
 Při začleňování této funkce do vlastní aplikace si pamatujte několik klíčových bodů pro aplikace B2C:
 

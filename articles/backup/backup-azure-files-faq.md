@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb5d3ae02cb0d4a6e293207a736dced56ed8538
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: be6eb6f13d7abf80537d155472a4072f7d08c06c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747456"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091602"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
@@ -72,7 +72,7 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 - Středozápadní USA (WCUS)
 - Západní USA 2 (WUS 2)
 - US Gov – Arizona (UGA)
-- US Gov – Texas (UGT)
+- US Gov Texas (UGT)
 - US Gov – Virginie (UGV)
 
 Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
@@ -85,7 +85,7 @@ Během období Preview můžete v jednom trezoru chránit sdílené složky Azur
 
 Ne. Všechny sdílené složky v účtu úložiště je možné chránit pouze ve stejném trezoru.
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 
 ### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Kolik naplánovaných záloh můžu nakonfigurovat na sdílení souborů?
 
@@ -119,7 +119,7 @@ Ano. Informace [najdete v podrobné dokumentaci.](backup-azure-afs-automation.md
 
 Přístup ke všem snímkům pořízeným službou Azure Backup je možný přes zobrazení snímků na portálu, v PowerShellu nebo v rozhraní příkazového řádku. Další informace o snímcích sdílených složek Azure najdete v tématu [Přehled snímků sdílených složek u souborů Azure (Preview)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Jakou maximální dobu uchovávání záloh můžu nakonfigurovat?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Jaká je maximální doba uchování, kterou je možné nakonfigurovat pro zálohování?
 
 Zálohování sdílených složek Azure nabízí možnost konfigurovat zásady s uchováním až 180 dní. Pomocí [Možnosti zálohování na vyžádání v PowerShellu](backup-azure-afs-automation.md#trigger-an-on-demand-backup)ale můžete zachovat bod obnovení i po dobu 10 let.
 
@@ -127,9 +127,9 @@ Zálohování sdílených složek Azure nabízí možnost konfigurovat zásady s
 
 Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se budou řídit touto novou zásadou. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a budou odstraněny.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
-Tyto informace se týkají pouze zálohování Souborů Azure. Další informace o dalších oblastech služby Azure Backup najdete v některém z těchto témat s nejčastějšími dotazy ke službě Backup:
+Další informace o dalších oblastech Azure Backup najdete v některých dalších nejčastějších dotazech k zálohování:
 
 - [Nejčastější dotazy k trezoru služby Recovery Services](backup-azure-backup-faq.md)
 - [Nejčastější dotazy k zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.md)

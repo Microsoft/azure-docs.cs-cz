@@ -1,5 +1,5 @@
 ---
-title: Azure okruhy ExpressRoute a partnerský vztah | Dokumentace Microsoftu
+title: 'Azure ExpressRoute: okruhy a partnerské vztahy'
 description: Tato stránka poskytuje přehled okruhy ExpressRoute a směrování domén/vytvoření partnerského vztahu.
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 864b834fcc6810b52f067d8e67b4a48febd0f787
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f6673e114c249cb86c648155b889e925554e9458
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123481"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083637"
 ---
 # <a name="expressroute-circuits-and-peering"></a>Okruhy ExpressRoute a partnerský vztah
 
@@ -31,7 +30,7 @@ Okruh ExpressRoute představuje logické propojení mezi vaši infrastrukturou v
 
 Okruhy ExpressRoute nejsou namapovány na všech fyzických entit. Okruh se jednoznačně identifikují pomocí standardního GUID volá jako klíče služby (s-key). Klíč služby je jediná výměně informací mezi Microsoft, poskytovatel připojení a. Klíč s není tajným kódem z bezpečnostních důvodů. Existuje mapování 1:1 mezi okruhu ExpressRoute a s-key.
 
-Nové okruhy ExpressRoute můžou zahrnovat dva nezávislé partnerské vztahy: Privátní partnerské vztahy a partnerské vztahy Microsoftu. Zatímco stávající okruhy ExpressRoute můžou obsahovat tři partnerské vztahy: Veřejné Azure, privátní a Microsoft Azure. Každý partnerský vztah je pár nezávislé relace protokolu BGP, každý z nich redundantně nakonfigurovaný pro vysokou dostupnost. Není 1: n (1 < = N < = 3) mapování mezi okruhu ExpressRoute a domény směrování. Okruh ExpressRoute může mít libovolný, dvě nebo všechny tři partnerské vztahy, které jsou povolené jeden okruh ExpressRoute.
+Okruhy ExpressRoute může obsahovat dva nezávislé partnerských vztahů: soukromého partnerského vztahu a partnerského vztahu Microsoftu. Zatímco existující okruhy ExpressRoute může obsahovat tři partnerské vztahy: Azure veřejné, privátní Azure a Microsoft. Každý partnerský vztah je pár nezávislé relace protokolu BGP, každý z nich redundantně nakonfigurovaný pro vysokou dostupnost. Není 1: n (1 < = N < = 3) mapování mezi okruhu ExpressRoute a domény směrování. Okruh ExpressRoute může mít libovolný, dvě nebo všechny tři partnerské vztahy, které jsou povolené jeden okruh ExpressRoute.
 
 Každý okruh má pevnou šířku pásma (50 MB/s, 100 MB/s, 200 MB/s, 500 MB/s, 1 GB/s, 10 GB/s) a je namapována na poskytovatele připojení a umístění partnerského vztahu. Šířku pásma, kterou jste vybrali, je sdílen mezi všechny partnerské vztahy okruhu
 
@@ -41,7 +40,7 @@ Výchozí kvóty a omezení platí pro každý okruh ExpressRoute. Odkazovat [p�
 
 ## <a name="routingdomains"></a>Partnerský vztah ExpressRoute
 
-Okruh ExpressRoute má k sobě přidruženou více domén směrování/partnerských vztahů: Veřejné Azure, Private Azure a Microsoft. Každý partnerský vztah je nakonfigurované stejně jako na pár směrovače (ve sdílení zatížení nebo aktivní aktivní konfigurace) pro zajištění vysoké dostupnosti. Služby Azure jsou klasifikovány jako *Azure veřejného* a *Azure privátní* představující IP adresování schémata.
+Okruh ExpressRoute má několik směrování domén/partnerské vztahy s ním spojená: Azure privátní veřejné, Azure a Microsoft. Každý partnerský vztah je nakonfigurované stejně jako na pár směrovače (ve sdílení zatížení nebo aktivní aktivní konfigurace) pro zajištění vysoké dostupnosti. Služby Azure jsou klasifikovány jako *Azure veřejného* a *Azure privátní* představující IP adresování schémata.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
@@ -96,7 +95,7 @@ Okruhy ExpressRoute může monitorovat dostupnost, připojení k virtuálním s�
 
 NPM monitoruje stav soukromý partnerský vztah Azure a partnerský vztah Microsoftu. Podívejte se na naše [příspěvku](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) Další informace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vyhledejte poskytovatele služeb. Zobrazit [poskytovatelé a umístění služby ExpressRoute](expressroute-locations.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).

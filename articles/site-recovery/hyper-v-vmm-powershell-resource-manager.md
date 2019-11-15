@@ -1,6 +1,6 @@
 ---
-title: Nastavení zotavení po havárii virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality pomocí Azure Site Recovery a Powershellu | Dokumentace Microsoftu
-description: Popisuje, jak nastavit zotavení po havárii virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality VMM s využitím Azure Site Recovery a prostředí PowerShell.
+title: Nastavení technologie Hyper-V (s nástrojem VMM) zotavení po havárii do sekundární lokality pomocí Azure Site Recovery/PowerShellu
+description: Popisuje, jak nastavit zotavení po havárii virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality VMM pomocí Azure Site Recovery a PowerShellu.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 78bd077b5491b093510b9c55bf7b5a42ee9cb578
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362352"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084907"
 ---
-# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Resource Manager)
+# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Správce prostředků)
 
-Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager cloud Virtual Machine Manager v sekundární místní lokality pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních počítačů Hyper-V v cloudu System Center Virtual Machine Manager do cloudu Virtual Machine Manager v sekundární místní lokalitě pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -25,44 +25,44 @@ Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních po�
 
 - Prostudujte si [architekturu a komponenty scénáře](hyper-v-vmm-architecture.md).
 - Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md) pro všechny komponenty.
-- Ujistěte se, že servery Virtual Machine Manager a hostitelů Hyper-V souladu s [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md).
-- Zkontrolujte, jestli virtuální počítače, které chcete replikovat v souladu s [počítač podporu replikovaných](site-recovery-support-matrix-to-sec-site.md).
+- Ujistěte se, že servery Virtual Machine Manager a hostitelé Hyper-V splňují [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md).
+- Ověřte, že virtuální počítače, které chcete replikovat, vyhovují [podpoře replikovaných počítačů](site-recovery-support-matrix-to-sec-site.md).
 
 
-## <a name="prepare-for-network-mapping"></a>Příprava mapování sítě
+## <a name="prepare-for-network-mapping"></a>Příprava na mapování sítě
 
-[Mapování sítě](hyper-v-vmm-network-mapping.md) mapování mezi místní sítí virtuálních počítačů Virtual Machine Manager v zdrojovým a cílovým cloudem. Mapování provádí následující:
+[Mapování sítě](hyper-v-vmm-network-mapping.md) mezi místními Virtual Machine Manager sítěmi virtuálních počítačů ve zdrojovém a cílovém cloudu. Mapování provádí následující:
 
 - Po převzetí služeb při selhání připojí virtuální počítače k odpovídajícím cílovým sítím virtuálních počítačů. 
 - Optimálně umístí repliky virtuálních počítačů na cílové hostitelské servery Hyper-V. 
-- Pokud nenakonfigurujete mapování sítě, virtuální počítače replik nebude připojen k síti virtuálních počítačů po převzetí služeb při selhání.
+- Pokud mapování sítě nenakonfigurujete, nebudou virtuální počítače repliky po převzetí služeb při selhání připojené k síti virtuálních počítačů.
 
-Příprava Virtual Machine Manager následujícím způsobem:
+Připravte Virtual Machine Manager následujícím způsobem:
 
-* Ujistěte se, že máte [logických sítí Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/network-logical) ve zdrojové i cílové servery Virtual Machine Manager:
+* Ujistěte se, že na zdrojovém a cílovém Virtual Machine Managerm serveru máte [Virtual Machine Manager logické sítě](https://docs.microsoft.com/system-center/vmm/network-logical) :
 
     - Logická síť na zdrojovém serveru musí být přidružená ke zdrojovému cloudu, ve kterém se nacházejí hostitelé Hyper-V.
     - Logická síť na cílovém serveru musí být přidružená k cílovému cloudu.
-* Ujistěte se, že máte [sítě virtuálních počítačů](https://docs.microsoft.com/system-center/vmm/network-virtual) ve zdrojové i cílové servery Virtual Machine Manager. Sítě virtuálních počítačů musí být v obou umístěních propojené s logickou sítí.
+* Ujistěte se, že máte [sítě virtuálních počítačů](https://docs.microsoft.com/system-center/vmm/network-virtual) na zdrojovém a cílovém Virtual Machine Managerch serverech. Sítě virtuálních počítačů musí být v obou umístěních propojené s logickou sítí.
 * Připojte virtuální počítače na zdrojových hostitelích Hyper-V ke zdrojové síti virtuálních počítačů. 
 
-## <a name="prepare-for-powershell"></a>Příprava pro prostředí PowerShell
+## <a name="prepare-for-powershell"></a>Příprava pro PowerShell
 
-Ujistěte se, že máte Azure PowerShell, jste připravení začít:
+Ujistěte se, že jste Azure PowerShell připraveni k tomu:
 
-- Pokud už používáte PowerShell, upgradujte na verzi 0.8.10 nebo novější. [Další informace](/powershell/azureps-cmdlets-docs) o tom, jak nastavit prostředí PowerShell.
-- Po nastavení a konfigurace prostředí PowerShell, zkontrolujte [služby rutiny](/powershell/azure/overview).
-- Další informace o tom, jak používat hodnoty parametrů, vstupy a výstupy v prostředí PowerShell najdete v článku [Začínáme](/powershell/azure/get-started-azureps) průvodce.
+- Pokud už používáte PowerShell, upgradujte na verzi 0.8.10 nebo novější. [Přečtěte si další informace](/powershell/azureps-cmdlets-docs) o tom, jak nastavit PowerShell.
+- Po nastavení a konfiguraci PowerShellu si Projděte [rutiny služby](/powershell/azure/overview).
+- Další informace o tom, jak používat hodnoty parametrů, vstupy a výstupy v prostředí PowerShell, najdete [v příručce Začínáme](/powershell/azure/get-started-azureps) .
 
 ## <a name="set-up-a-subscription"></a>Nastavení předplatného
-1. Z prostředí PowerShell Přihlaste se ke svému účtu Azure.
+1. Z PowerShellu se přihlaste ke svému účtu Azure.
 
         $UserName = "<user@live.com>"
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
         Connect-AzAccount #-Credential $Cred
-2. Načte seznam vašich předplatných, s ID předplatného. Poznamenejte si ID předplatného, ve kterém chcete vytvořit trezor služby Recovery Services. 
+2. Načtěte seznam vašich předplatných s ID předplatného. Poznamenejte si ID předplatného, ve kterém chcete vytvořit trezor Recovery Services. 
 
         Get-AzSubscription
 3. Nastavte předplatné pro trezor.
@@ -70,32 +70,32 @@ Ujistěte se, že máte Azure PowerShell, jste připravení začít:
         Set-AzContext –SubscriptionID <subscriptionId>
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
-1. Pokud ho nemáte, vytvořte skupinu prostředků Azure Resource Manageru.
+1. Vytvořte Azure Resource Manager skupinu prostředků, pokud ji nemáte.
 
         New-AzResourceGroup -Name #ResourceGroupName -Location #location
-2. Vytvořte nový trezor služby Recovery Services. Uložte objekt trezoru v proměnné pro pozdější použití. 
+2. Vytvoří nový trezor Recovery Services. Uložte objekt trezoru do proměnné pro pozdější použití. 
 
         $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
-    Po vytvoření pomocí rutiny Get-AzRecoveryServicesVault můžete pak získat objekt trezoru.
+    Objekt trezoru můžete načíst po jeho vytvoření pomocí rutiny Get-AzRecoveryServicesVault.
 
-## <a name="set-the-vault-context"></a>Nastavte kontext trezoru
-1. Načte existující trezor.
+## <a name="set-the-vault-context"></a>Nastavte kontext trezoru.
+1. Načtěte existující trezor.
 
        $vault = Get-AzRecoveryServicesVault -Name #vaultname
 2. Nastavte kontext trezoru.
 
        Set-AzSiteRecoveryVaultSettings -ARSVault $vault
 
-## <a name="install-the-site-recovery-provider"></a>Instalace zprostředkovatele služby Site Recovery
-1. Na počítači Virtual Machine Manager vytvořte adresář spuštěním následujícího příkazu:
+## <a name="install-the-site-recovery-provider"></a>Instalace poskytovatele Site Recovery
+1. Na Virtual Machine Managerm počítači vytvořte adresář spuštěním následujícího příkazu:
 
        New-Item c:\ASR -type directory
-2. Extrahujte soubory s použitím instalační soubor stažený zprostředkovatele.
+2. Extrahujte soubory pomocí staženého instalačního souboru zprostředkovatele.
 
        pushd C:\ASR\
        .\AzureSiteRecoveryProvider.exe /x:. /q
-3. Nainstalujte zprostředkovatele a počkejte na dokončení instalace.
+3. Nainstalujte poskytovatele a počkejte na dokončení instalace.
 
        .\SetupDr.exe /i
        $installationRegPath = "hklm:\software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
@@ -114,8 +114,8 @@ Ujistěte se, že máte Azure PowerShell, jste připravení začít:
        pushd $BinPath
        $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
 
-## <a name="create-and-associate-a-replication-policy"></a>Vytvořit a přidružit zásady replikace
-1. Vytvoření zásady replikace, v tomto případě pro Hyper-V 2012 R2, následujícím způsobem:
+## <a name="create-and-associate-a-replication-policy"></a>Vytvoření a přidružení zásady replikace
+1. Vytvořte zásadu replikace v tomto případě pro Hyper-V 2012 R2 následujícím způsobem:
 
         $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
         $PolicyName = “replicapolicy”
@@ -129,22 +129,22 @@ Ujistěte se, že máte Azure PowerShell, jste připravení začít:
         $policyresult = New-AzSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
 
     > [!NOTE]
-    > Virtual Machine Manager cloud obsahovat hostitele Hyper-V s různými verzemi Windows serveru, ale je zásada replikace pro konkrétní verze operačního systému. Pokud máte na různých hostitelích, které běží na různých operačních systémů, vytvořte zásady samostatné replikace u každého systému. Například pokud máte pět hostitelů, které běží na Windows Server 2012 a tři hostitele se systémem Windows Server 2012 R2 vytvoříte dvě zásady replikace. Můžete vytvořit pro každý typ operačního systému.
+    > Virtual Machine Manager Cloud může obsahovat hostitele Hyper-V s různými verzemi Windows serveru, ale zásady replikace jsou určené pro konkrétní verzi operačního systému. Pokud máte různé hostitele spuštěné v různých operačních systémech, vytvořte pro každý systém samostatné zásady replikace. Pokud máte například pět hostitelů spuštěných v systému Windows Server 2012 a tři hostitele spuštěné v systému Windows Server 2012 R2, vytvořte dvě zásady replikace. Pro každý typ operačního systému ho vytvoříte.
 
-2. Načíst primární ochranu kontejneru (primární Virtual Machine Manager cloud) a obnovení kontejneru ochrany (obnovení Virtual Machine Manager cloud).
+2. Načte primární kontejner ochrany (primární Virtual Machine Manager Cloud) a kontejner ochrany pro obnovení (Cloud Virtual Machine Manager Recovery).
 
        $PrimaryCloud = "testprimarycloud"
        $primaryprotectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $PrimaryCloud;  
 
        $RecoveryCloud = "testrecoverycloud"
        $recoveryprotectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $RecoveryCloud;  
-3. Načtěte zásadu replikace, kterou jste vytvořili pomocí popisný název.
+3. Načtěte zásadu replikace, kterou jste vytvořili pomocí popisného názvu.
 
        $policy = Get-AzSiteRecoveryPolicy -FriendlyName $policyname
-4. Začněte přidružení kontejneru ochrany (Virtual Machine Manager cloud) k zásadě replikace.
+4. Spusťte přidružení kontejneru ochrany (Virtual Machine Manager Cloud) se zásadami replikace.
 
        $associationJob  = Start-AzSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
-5. Počkejte na dokončení úlohy přidružení zásad. Pokud chcete zkontrolovat, pokud je úloha dokončena, použijte následující fragment kódu Powershellu:
+5. Počkejte, než se dokončí úloha přidružení zásad. Chcete-li zjistit, zda byla úloha dokončena, použijte následující fragment kódu prostředí PowerShell:
 
        $job = Get-AzSiteRecoveryJob -Job $associationJob
 
@@ -153,7 +153,7 @@ Ujistěte se, že máte Azure PowerShell, jste připravení začít:
          $isJobLeftForProcessing = $true;
        }
 
-6. Jakmile se úlohy dokončí zpracování, spusťte následující příkaz:
+6. Po dokončení zpracování úlohy spusťte následující příkaz:
 
        if($isJobLeftForProcessing)
        {
@@ -161,50 +161,50 @@ Ujistěte se, že máte Azure PowerShell, jste připravení začít:
        }
        }While($isJobLeftForProcessing)
 
-Pokud chcete zkontrolovat dokončení operace, postupujte podle kroků v [sledovat činnost](#monitor-activity).
+Chcete-li ověřit dokončení operace, postupujte podle kroků v části [monitorování aktivity](#monitor-activity).
 
 ##  <a name="configure-network-mapping"></a>Konfigurace mapování sítě
-1. Tento příkaz k načtení serverů pro aktuální úložiště. Tento příkaz uloží do proměnné pole $Servers servery Site Recovery.
+1. Tento příkaz slouží k načtení serverů pro aktuální trezor. Příkaz uloží Site Recovery servery do proměnné pole $Servers.
 
         $Servers = Get-AzSiteRecoveryServer
-2. Spusťte tento příkaz k načtení sítě pro Virtual Machine Manager na zdrojovém a cílovém serveru Virtual Machine Manager.
+2. Spusťte tento příkaz, který načte sítě pro zdrojový Virtual Machine Manager Server a cílový Virtual Machine Manager Server.
 
         $PrimaryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[0]        
 
         $RecoveryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[1]
 
     > [!NOTE]
-    > Na zdrojovém serveru Virtual Machine Manager může být ta první nebo druhé pole serveru. Zkontrolovat názvy serveru Virtual Machine Manager a načíst sítě odpovídajícím způsobem.
+    > Zdrojový Virtual Machine Manager Server může být první nebo druhý v poli serveru. Ověřte Virtual Machine Manager názvy serverů a odpovídajícím způsobem načtěte sítě.
 
 
-3. Tato rutina vytvoří mapování mezi primární síť a síť pro obnovení. Určuje primární síť jako prvního prvku $PrimaryNetworks. Jako první prvek $RecoveryNetworks určuje síť pro obnovení.
+3. Tato rutina vytvoří mapování mezi primární sítí a sítí pro obnovení. Určuje primární síť jako první prvek $PrimaryNetworks. Určuje síť pro obnovení jako první prvek $RecoveryNetworks.
 
         New-AzSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
 
 
-## <a name="enable-protection-for-vms"></a>Povolit ochranu pro virtuální počítače
-Po serverů, cloudů a sítí jsou nakonfigurovány správně, povolte ochranu pro virtuální počítače v cloudu.
+## <a name="enable-protection-for-vms"></a>Povolení ochrany pro virtuální počítače
+Až budou servery, cloudy a sítě správně nakonfigurované, povolte ochranu pro virtuální počítače v cloudu.
 
-1. Pokud chcete povolit ochranu, spusťte následující příkaz, který načte kontejner ochrany:
+1. Chcete-li povolit ochranu, spusťte následující příkaz, který načte kontejner ochrany:
 
           $PrimaryProtectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $PrimaryCloudName
-2. Entita ochrany (VM), získáte takto:
+2. Získejte entitu ochrany (VM) následujícím způsobem:
 
            $protectionEntity = Get-AzSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
-3. Povolení replikace pro virtuální počítač.
+3. Povolte replikaci pro virtuální počítač.
 
           $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 
-K otestování nasazení, spuštění testovací převzetí služeb při selhání pro jeden virtuální počítač. Také můžete vytvořit plán obnovení, který obsahuje několik virtuálních počítačů a testovací převzetí služeb při selhání pro plán. Testovací převzetí služeb při selhání simuluje váš mechanismus převzetí služeb při selhání a zotavení v izolované síti.
+Chcete-li otestovat nasazení, spusťte testovací převzetí služeb při selhání pro jeden virtuální počítač. Můžete také vytvořit plán obnovení, který obsahuje více virtuálních počítačů a spustit testovací převzetí služeb při selhání pro daný plán. Testovací převzetí služeb při selhání simuluje váš mechanismus převzetí služeb při selhání a zotavení v izolované síti.
 
-1. Načte virtuální počítač, do kterého virtuální počítače se převzetí služeb při selhání.
+1. Načtěte virtuální počítač, do kterého se virtuální počítače převezmou.
 
        $Servers = Get-AzSiteRecoveryServer
        $RecoveryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[1]
 
-2. Proveďte testovací převzetí služeb.
+2. Proveďte test převzetí služeb při selhání.
 
    Pro jeden virtuální počítač:
 
@@ -220,9 +220,9 @@ K otestování nasazení, spuštění testovací převzetí služeb při selhán
 
         $jobIDResult =  Start-AzSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan -VMNetwork $RecoveryNetworks[1]
 
-Pokud chcete zkontrolovat dokončení operace, postupujte podle kroků v [sledovat činnost](#monitor-activity).
+Chcete-li ověřit dokončení operace, postupujte podle kroků v části [monitorování aktivity](#monitor-activity).
 
-## <a name="run-planned-and-unplanned-failovers"></a>Spusťte plánované a neplánované převzetí služeb při selhání
+## <a name="run-planned-and-unplanned-failovers"></a>Spuštění plánovaných a neplánovaných převzetí služeb při selhání
 
 1. Proveďte plánované převzetí služeb při selhání.
 
@@ -240,7 +240,7 @@ Pokud chcete zkontrolovat dokončení operace, postupujte podle kroků v [sledov
 
         $jobIDResult =  Start-AzSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan
 
-2. Provedení neplánovaného převzetí služeb při selhání.
+2. Proveďte neplánované převzetí služeb při selhání.
 
    Pro jeden virtuální počítač:
         
@@ -256,8 +256,8 @@ Pokud chcete zkontrolovat dokončení operace, postupujte podle kroků v [sledov
 
         $jobIDResult =  Start-AzSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
-## <a name="monitor-activity"></a>Monitorování aktivity
-Monitorovat aktivitu převzetí služeb při selhání, použijte následující příkazy. Počkejte na dokončení mezi úloh zpracování.
+## <a name="monitor-activity"></a>Aktivita monitorování
+Pomocí následujících příkazů můžete monitorovat činnost převzetí služeb při selhání. Počkejte na dokončení zpracování mezi úlohami.
 
     Do
     {
@@ -276,6 +276,6 @@ Monitorovat aktivitu převzetí služeb při selhání, použijte následující
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Další informace](/powershell/module/az.recoveryservices) o službě Site Recovery pomocí rutin Powershellu pro Resource Manager.
+[Přečtěte si další informace](/powershell/module/az.recoveryservices) o Site Recovery s rutinami prostředí PowerShell pro správce prostředků.

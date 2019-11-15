@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 09/04/2019
-ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 0b8bfff03414dd02360cab1957ea2205e392235d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826660"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082484"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopírování reakční konzistentní kopie databáze SQL Azure
 
@@ -62,7 +62,7 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 
 Kompletní vzorový skript najdete v tématu [kopírování databáze na nový server](scripts/sql-database-copy-database-to-new-server-powershell.md).
 
-Kopie databáze je asynchronní operace, ale cílová databáze je vytvořena ihned po přijetí žádosti. Pokud potřebujete operaci kopírování zrušit, když stále probíhá, odstraňte cílovou databázi pomocí rutiny [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) .  
+Kopie databáze je asynchronní operace, ale cílová databáze je vytvořena ihned po přijetí žádosti. Pokud potřebujete operaci kopírování zrušit, když stále probíhá, vyřaďte cílovou databázi pomocí rutiny [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) .  
 
 ## <a name="rbac-roles-to-manage-database-copy"></a>Role RBAC pro správu kopie databáze
 
@@ -72,8 +72,8 @@ Chcete-li vytvořit kopii databáze, budete muset být v následujících rolíc
 - SQL Server role přispěvatele nebo
 - Vlastní role ve zdrojové a cílové databázi s následujícím oprávněním:
 
-   Microsoft. SQL/servery/databáze/číst   
-   Microsoft. SQL/servery/databáze/zápis   
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
 
 Pokud chcete kopii databáze zrušit, budete muset být v následujících rolích.
 
@@ -81,8 +81,8 @@ Pokud chcete kopii databáze zrušit, budete muset být v následujících rolí
 - SQL Server role přispěvatele nebo
 - Vlastní role ve zdrojové a cílové databázi s následujícím oprávněním:
 
-   Microsoft. SQL/servery/databáze/číst   
-   Microsoft. SQL/servery/databáze/zápis   
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
    
 Pokud chcete spravovat kopii databáze pomocí Azure Portal, budete potřebovat taky následující oprávnění:
 
@@ -156,6 +156,26 @@ Jakmile je nová databáze na cílovém serveru online, pomocí příkazu [ALTER
 Všichni uživatelé v nové databázi si uchovávají oprávnění, která měla ve zdrojové databázi. Uživatel, který inicioval kopii databáze, se stal vlastníkem databáze nové databáze a je mu přiřazen nový identifikátor zabezpečení (SID). Po úspěšném dokončení kopírování a před přemapováním dalších uživatelů se může k nové databázi přihlásit pouze přihlášení, které iniciovalo kopírování, vlastníkem databáze.
 
 Další informace o správě uživatelů a přihlášení po zkopírování databáze na jiný SQL Database Server najdete v tématu [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
+
+## <a name="database-copy-errors"></a>Chyby kopírování databáze
+
+Při kopírování databáze v Azure SQL Database může dojít k následujícím chybám. Další informace najdete v tématu [Kopírování databáze služby Azure SQL Database](sql-database-copy.md).
+
+| Kód chyby | Severity | Popis |
+| ---:| ---:|:--- |
+| 40635 |16 |Klient s IP adresou '%.&#x2a;ls' je dočasně zakázána. |
+| 40637 |16 |Vytvoření kopie databáze je aktuálně zakázané. |
+| 40561 |16 |Kopírování databáze se nezdařilo. Buď zdrojová, nebo cílová databáze neexistuje. |
+| 40562 |16 |Kopírování databáze se nezdařilo. Zdrojová databáze byla vyřazena. |
+| 40563 |16 |Kopírování databáze se nezdařilo. Cílová databáze byla vyřazena. |
+| 40564 |16 |Kopírování databáze se nezdařilo z důvodu vnitřní chyby. Vyřaďte prosím cílovou databázi a zkuste to znovu. |
+| 40565 |16 |Kopírování databáze se nezdařilo. Nepovoluje se více než jedna souběžná kopie databáze ze stejného zdroje. Vyřaďte prosím cílovou databázi a zkuste to znovu později. |
+| 40566 |16 |Kopírování databáze se nezdařilo z důvodu vnitřní chyby. Vyřaďte prosím cílovou databázi a zkuste to znovu. |
+| 40567 |16 |Kopírování databáze se nezdařilo z důvodu vnitřní chyby. Vyřaďte prosím cílovou databázi a zkuste to znovu. |
+| 40568 |16 |Kopírování databáze se nezdařilo. Zdrojová databáze se stala nedostupnou. Vyřaďte prosím cílovou databázi a zkuste to znovu. |
+| 40569 |16 |Kopírování databáze se nezdařilo. Cílová databáze již není k dispozici. Vyřaďte prosím cílovou databázi a zkuste to znovu. |
+| 40570 |16 |Kopírování databáze se nezdařilo z důvodu vnitřní chyby. Vyřaďte prosím cílovou databázi a zkuste to znovu později. |
+| 40571 |16 |Kopírování databáze se nezdařilo z důvodu vnitřní chyby. Vyřaďte prosím cílovou databázi a zkuste to znovu později. |
 
 ## <a name="next-steps"></a>Další kroky
 

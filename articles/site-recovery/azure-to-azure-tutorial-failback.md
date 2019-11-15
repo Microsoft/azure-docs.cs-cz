@@ -1,19 +1,19 @@
 ---
-title: Navrácení služeb po obnovení virtuálních počítačů Azure replikovaných do sekundární oblasti Azure za účelem zotavení po havárii pomocí služby Azure Site Recovery.
-description: Přečtěte si, jak po obnovení virtuálních počítačů Azure pomocí služby Azure Site Recovery navracet služby po obnovení.
+title: Navrácení služeb po obnovení virtuálních počítačů Azure do primární oblasti pomocí služby Azure Site Recovery.
+description: V této části najdete popis postupu při navrácení služeb virtuálních počítačů Azure do primární oblasti pomocí služby Azure Site Recovery Service.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242963"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091350"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Navrácení služeb po obnovení virtuálního počítače Azure mezi oblastmi Azure
 

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791899"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082398"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections #
 
@@ -63,7 +63,7 @@ Mezi věci, které nemůžete Hybrid Connections, patří:
 - Podporuje protokol LDAP, protože může vyžadovat protokol UDP.
 - Podporuje službu Active Directory, protože se nemůžete připojit k doméně App Service pracovního procesu.
 
-### <a name="prerequisites"></a>Předpoklady ###
+### <a name="prerequisites"></a>Požadavky ###
  - Služba Windows App Service je povinná. Je k dispozici pouze v systému Windows.  
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Přidání a vytvoření Hybrid Connections v aplikaci ##
@@ -106,8 +106,8 @@ App Service Hybrid Connections jsou k dispozici pouze v jednotkách Basic, Stand
 
 | Cenový tarif | Počet Hybrid Connections použitelný v plánu |
 |----|----|
-| Úroveň Basic | 5 |
-| Úroveň Standard | 25 |
+| Basic | 5 |
+| Standard | 25 |
 | Premium | 200 |
 | Isolated | 200 |
 
@@ -146,7 +146,7 @@ Přidání jednoho nebo více Hybrid Connections do HCM:
 1. Vyberte Hybrid Connections, který má HCM Relay.
 ![snímku Hybrid Connections][9]
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 Teď můžete zobrazit Hybrid Connections, které jste přidali. Můžete také vybrat nakonfigurované hybridní připojení a zobrazit podrobnosti.
 
@@ -172,7 +172,7 @@ Pokud chcete někomu mimo předplatné povolit hostování instance HCM pro dan�
 
 ![Ruční přidání hybridního připojení][11]
 
-### <a name="upgrade"></a>Aktualizace ###
+### <a name="upgrade"></a>Upgrade ###
 
 Existují pravidelné aktualizace Správce hybridního připojení, které řeší problémy nebo poskytují vylepšení. Po vydání upgradů se v uživatelském rozhraní HCM zobrazí místní nabídka. Při použití upgradu se změny projeví a restartuje HCM. 
 
@@ -220,6 +220,12 @@ Pokud chcete používat toto rozhraní API, potřebujete poslat klíč a ID pros
 
     armclient login
     armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
+
+## <a name="secure-your-hybrid-connections"></a>Zabezpečení Hybrid Connections ##
+
+Existující hybridní připojení můžete přidat k ostatním App Service Web Apps všem uživatelům, kteří mají dostatečná oprávnění pro základní Azure Service Bus Relay. To znamená, že pokud musíte zabránit ostatním v používání stejného hybridního připojení (například pokud je cílový prostředek služba, která nemá k dispozici žádné další bezpečnostní opatření, aby se zabránilo neoprávněnému přístupu), musíte uzamknout přístup k Azure. Service Bus Relay.
+
+Kdokoli, kdo má `Reader` přístup k předávání _, uvidí hybridní_ připojení při pokusu o jeho přidání do webové aplikace na webu Azure Portal, ale nebude ho moct _Přidat_ , protože nemá oprávnění k načtení připojovacího řetězce, který se použije k navázání připojení přenosu. Aby bylo možné úspěšně přidat hybridní připojení, musí mít oprávnění `listKeys` (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`). Role `Contributor` nebo jakákoli jiná role, která zahrnuje toto oprávnění pro předávání, umožní uživatelům používat hybridní připojení a přidat ho k vlastním Web Apps.
 
 ## <a name="troubleshooting"></a>Řešení potíží ##
 

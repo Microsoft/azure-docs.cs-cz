@@ -1,18 +1,18 @@
 ---
-title: Architektura pro zotavení po havárii fyzického serveru do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Architektura zotavení po havárii fyzického serveru v Azure Site Recovery
 description: Tento článek poskytuje přehled komponent a architektury používaných při zotavení po havárii místních fyzických serverů do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a5d3dfe6457c4b70f0b23c2d8aa7ac5e58e68dc7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 23e8e4f9a092e871e62da27c8bf0c58a3bb8eb5b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814463"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084682"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektura fyzického serveru do Azure pro zotavení po havárii
 
@@ -64,20 +64,20 @@ Po nastavení replikace a spuštění postupu pro zotavení po havárii (testova
 - Až bude vaše místní lokalita opět dostupná, můžete službu navrátit.
 - Musíte nastavit infrastrukturu navrácení služeb po obnovení, včetně:
     - **Dočasný procesový Server v Azure**: Pokud chcete navrátit služby po obnovení z Azure, nastavte virtuální počítač Azure, který bude fungovat jako procesový Server, a zpracujte replikaci z Azure. Tento virtuální počítač je možné po navrácení služeb po obnovení odstranit.
-    - **Připojení VPN**: K navrácení služeb po obnovení potřebujete připojení VPN (nebo Azure ExpressRoute) ze sítě Azure do místní lokality.
-    - **Samostatný hlavní cílový server**: Ve výchozím nastavení se hlavní cílový server, který byl nainstalovaný s konfiguračním serverem, na místním virtuálním počítači VMware zpracovává navrácení služeb po obnovení. Pokud ale potřebujete navrátit navrácení velkých objemů dat, měli byste pro tento účel nastavit samostatný místní hlavní cílový server.
-    - **Zásada navrácení služeb po obnovení**: Pokud chcete provést replikaci zpátky na místní lokalitu, budete potřebovat zásadu navrácení služeb po obnovení. Tato služba se automaticky vytvořila při vytváření zásad replikace z místního prostředí do Azure.
-    - **Infrastruktura VMware**: Pro navrácení služeb po obnovení potřebujete infrastrukturu VMware. Nelze navrátit služby po obnovení v případě fyzického serveru.
+    - **Připojení VPN**: pro navrácení služeb po obnovení potřebujete připojení k síti VPN (nebo Azure ExpressRoute) ze sítě Azure do místní lokality.
+    - **Samostatný hlavní cílový server**: ve výchozím nastavení se hlavní cílový server, který byl nainstalovaný s konfiguračním serverem, na místním virtuálním počítači VMware zpracovává navrácení služeb po obnovení. Pokud ale potřebujete navrátit navrácení velkých objemů dat, měli byste pro tento účel nastavit samostatný místní hlavní cílový server.
+    - **Zásady navrácení služeb po obnovení:** Pro zpětnou replikaci do vaší místní lokality budete potřebovat zásady navrácení služeb. Tato služba se automaticky vytvořila při vytváření zásad replikace z místního prostředí do Azure.
+    - **Infrastruktura VMware**: pro navrácení služeb po obnovení potřebujete infrastrukturu VMware. Nelze navrátit služby po obnovení v případě fyzického serveru.
 - Po uvedení součástí dojde k navrácení služeb po obnovení ve třech fázích:
-    - Fáze 1: Znovu nastavte ochranu virtuálních počítačů Azure tak, aby se replikují z Azure zpátky na místní virtuální počítače VMware.
-    - Fáze 2: Spusťte převzetí služeb při selhání na místní lokalitu.
-    - Fáze 3: Po úspěšném dokončení úloh se replikace znovu povolí.
+    - Fáze 1: znovu nastavte ochranu virtuálních počítačů Azure tak, aby se replikoval z Azure zpátky na místní virtuální počítače VMware.
+    - Fáze 2: spuštění převzetí služeb při selhání v místní lokalitě.
+    - Fáze 3: po navrácení služby po selhání se znovu povolí replikace.
 
 **VMware navrácení služeb po obnovení z Azure**
 
 ![Navrácení služeb po obnovení](./media/physical-azure-architecture/enhanced-failback.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podle [tohoto kurzu](physical-azure-disaster-recovery.md) Povolte replikaci fyzického serveru do Azure.

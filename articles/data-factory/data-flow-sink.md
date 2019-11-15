@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519318"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082936"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Transformace jímky pro tok dat
 
@@ -28,7 +28,7 @@ Chcete-li zpracovat všechna příchozí pole, zapněte **automatickou mapu**. C
 ## <a name="output"></a>Výstup 
 Pro úložiště objektů BLOB v Azure nebo Data Lake Storage typy jímky výstup transformovaná data do složky. Spark generuje výstupní datové soubory rozdělené do oddílů na základě schématu dělení, které používá transformace jímky. 
 
-Schéma dělení můžete nastavit na kartě **optimalizace** . Pokud chcete, Data Factory sloučit výstup do jednoho souboru, vyberte **jeden oddíl**.
+Schéma dělení můžete nastavit na kartě **optimalizace** . Pokud chcete, Data Factory sloučit výstup do jednoho souboru, vyberte **jeden oddíl**. Pokud chcete zachovat nebo vytvořit dělené složky, použijte **klíčové dělení** a nastavte klíče, které chcete použít pro segmentované struktury složek.
 
 ![Možnosti na kartě optimalizace](media/data-flow/opt001.png "možnosti jímky")
 

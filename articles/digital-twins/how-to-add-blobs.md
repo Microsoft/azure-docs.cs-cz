@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 11/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a6629db50d0cec13d866d28a0823ccd3ed43f42
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014201"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082335"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidávání objektů blob do objektů v digitálních proobjektech Azure
 
@@ -181,8 +181,6 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 Od [sebe mohou vzdálení uživatelé provádět](https://curl.haxx.se/) stejným způsobem jako požadavky na formulář v několika částech:
 
-[Příklad ![kudrlinkou](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
-
 ```bash
 curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
  -H "Authorization: Bearer YOUR_TOKEN" \
@@ -198,7 +196,9 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | ID prostoru, ke kterému se má objekt BLOB přidružit |
 | PATH_TO_FILE | Cesta k textovému souboru |
 
-Úspěšný příspěvek vrátí ID nového objektu BLOB (zvýrazněný červenou barvou).
+[Příklad ![kudrlinkou](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+
+Úspěšný příspěvek vrátí ID nového objektu BLOB.
 
 ## <a name="api-endpoints"></a>Koncové body rozhraní API
 

@@ -1,5 +1,5 @@
 ---
-title: Vytváření, aktualizace statistiky – Azure SQL Data Warehouse | Microsoft Docs
+title: Vytváření, aktualizace statistik
 description: Doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů v tabulkách v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c995358fc0135a1f9b504b57b23ecb3f6b41d6da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479172"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692409"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statistika tabulky v Azure SQL Data Warehouse
 
@@ -61,7 +61,7 @@ Automatické vytváření statistik je prováděno synchronně, takže pokud ve 
 > [!NOTE]
 > Vytváření statistik se bude protokolovat v [Sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) pod jiným uživatelským kontextem.
 
-Při vytváření automatických statistik budou mít podobu: ID sloupce _WA_Sys_< 8 číslic ve formátu hex > _ < 8 číslic tabulky v šestnáctkovém >. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním příkazu [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) :
+Při vytváření automatických statistik budou mít podobu: _WA_Sys_< 8 ID sloupce s číslicemi v šestnáctkovém > _ < desítkové tabulce s ID v šestnáctkovém >. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním příkazu [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) :
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -77,7 +77,7 @@ V následující části jsou doporučení aktualizující statistiky:
 
 |||
 |-|-|
-| **Frekvence aktualizací statistiky**  | Dostatečná Denně </br> Po načtení nebo transformaci dat |
+| **Frekvence aktualizací statistiky**  | Konzervativní: denně </br> Po načtení nebo transformaci dat |
 | **Vzorkování** |  Méně než 1 000 000 000 řádků, použijte výchozí vzorkování (20 procent). </br> S více než 1 000 000 000 řádky použijte vzorkování ze dvou procent. |
 
 Jedna z prvních otázek, které je třeba položit při řešení potíží s dotazem, **jsou statistiky aktuální? "**
@@ -130,11 +130,11 @@ Následující principy GUID jsou k dispozici pro aktualizaci statistik během p
 * Zaměřte se na sloupce účastnící se klauzulí JOIN, GROUP BY, ORDER BY a DISTINCT.
 * Zvažte možnost aktualizovat sloupce vzestupného klíče, například data transakcí častěji, protože tyto hodnoty nebudou zahrnuty v histogramu statistiky.
 * Zvažte možnost aktualizace statických distribučních sloupců méně často.
-* Nezapomeňte, že každý objekt statistiky se aktualizuje v sekvenci. Pouhá `UPDATE STATISTICS <TABLE_NAME>` implementace není vždy ideální, zejména pro nejrůznější tabulky s velkým množstvím objektů statistiky.
+* Nezapomeňte, že každý objekt statistiky se aktualizuje v sekvenci. Pouhá implementace `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro nejrůznější tabulky s velkým množstvím objektů statistiky.
 
 Další informace najdete v tématu [odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
-## <a name="examples-create-statistics"></a>Příklady: Vytvoření statistiky
+## <a name="examples-create-statistics"></a>Příklady: vytváření statistik
 
 Tyto příklady ukazují, jak používat různé možnosti vytváření statistik. Možnosti, které pro jednotlivé sloupce použijete, závisí na charakteristikách vašich dat a způsobu, jakým bude sloupec použit v dotazech.
 
@@ -191,7 +191,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 ```
 
 > [!NOTE]
-> Aby Optimalizátor dotazů při volbě plánu distribuovaného dotazu bral v úvahu vyfiltrované statistiky, dotaz se musí vejít do definice objektu statistiky. V předchozím příkladu je nutné, aby klauzule WHERE dotazu určovala hodnoty Sloupec1 mezi 2000101 a 20001231.
+> Aby Optimalizátor dotazů při volbě plánu distribuovaného dotazu bral v úvahu vyfiltrované statistiky, dotaz se musí vejít do definice objektu statistiky. V předchozím příkladu je nutné, aby klauzule WHERE dotazu určovala hodnoty Sloupe mezi 2000101 a 20001231.
 
 ### <a name="create-single-column-statistics-with-all-the-options"></a>Vytváření statistik s jedním sloupcem s využitím všech možností
 
@@ -210,13 +210,13 @@ Chcete-li vytvořit objekt statistiky s více sloupci, jednoduše použijte pře
 > [!NOTE]
 > Histogram, který se používá k odhadu počtu řádků ve výsledku dotazu, je k dispozici pouze pro první sloupec uvedený v definici objektu statistice.
 
-V tomto příkladu je histogram v *kategorii produktu\_* . Statistiky mezi sloupci se počítají na základě *kategorií\_produktů* a *sub_category\_produktu*:
+V tomto příkladu se histogram nachází v *kategorii produkt\_* . Statistiky mezi sloupci se počítají na základě *kategorií produktů\_* a *produktového\_sub_category*:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Vzhledem k tomu, že existuje korelace mezi *kategorií\_produktů* a *\_\_podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
+Vzhledem k tomu, že existuje korelace mezi *produkty\_kategorie* a *\_\_kategorie*produktů, může být objekt statistiky s více sloupci užitečný, pokud k těmto sloupcům dojde ve stejnou dobu.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Vytvořit statistiku pro všechny sloupce v tabulce
 
@@ -352,7 +352,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 Vytvoření ukázkových statistik pro všechny sloupce
 
-## <a name="examples-update-statistics"></a>Příklady: Aktualizovat statistiku
+## <a name="examples-update-statistics"></a>Příklady: aktualizace statistiky
 
 Chcete-li aktualizovat statistiku, můžete:
 
@@ -394,7 +394,7 @@ Příkaz Aktualizovat STATISTIKu je snadno použitelný. Stačí si pamatovat, �
 > [!NOTE]
 > Při aktualizaci všech statistik v tabulce SQL Data Warehouse provádí kontrolu pro vzorkování tabulky pro každý objekt statistiky. Pokud je tabulka velká a má mnoho sloupců a mnoho statistik, může být efektivnější aktualizovat jednotlivé statistiky podle potřeby.
 
-Implementaci `UPDATE STATISTICS` procedury najdete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md). Metoda implementace je mírně odlišná od předchozího `CREATE STATISTICS` postupu, ale výsledek je stejný.
+Implementaci `UPDATE STATISTICS`ho postupu najdete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md). Metoda implementace je mírně odlišná od předchozí procedury `CREATE STATISTICS`, ale výsledek je stejný.
 
 Úplnou syntaxi naleznete v tématu [UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql).
 
@@ -406,15 +406,15 @@ K dispozici je několik systémových zobrazení a funkcí, které můžete pou�
 
 Tato systémová zobrazení obsahují informace o statistice:
 
-| Zobrazení katalogu | Popis |
+| zobrazení katalogu | Popis |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden řádek pro každý sloupec. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každý objekt v databázi. |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každé schéma v databázi. |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden řádek pro každý objekt statistiky. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden řádek pro každý sloupec v objektu statistiky. Vrátí odkazy zpět na sys. Columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden řádek pro každou tabulku (zahrnuje externí tabulky). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden řádek pro každý datový typ. |
+| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden řádek pro každý sloupec. |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každý objekt v databázi. |
+| [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každé schéma v databázi. |
+| [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden řádek pro každý objekt statistiky. |
+| [sys. stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden řádek pro každý sloupec v objektu statistiky. Vrátí odkazy zpět na sys. Columns. |
+| [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden řádek pro každou tabulku (zahrnuje externí tabulky). |
+| [sys. table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden řádek pro každý datový typ. |
 
 ### <a name="system-functions-for-statistics"></a>Systémové funkce pro statistiku
 
@@ -465,11 +465,11 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>Příklady příkazu DBCC SHOW_STATISTICS ()
+## <a name="dbcc-show_statistics-examples"></a>Příklady příkazu DBCC SHOW_STATISTICS ()
 
 Příkaz DBCC SHOW_STATISTICS () zobrazuje data uchovávaná v rámci objektu statistiky. Tato data jsou dodávána se třemi částmi:
 
-- Záhlaví
+- Hlavička
 - Vektor hustoty
 - Histogram
 
@@ -489,9 +489,9 @@ Příklad:
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>Zobrazit jednu nebo více částí příkazu DBCC SHOW_STATISTICS ()
+### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>Zobrazit jednu nebo více částí příkazu DBCC SHOW_STATISTICS ()
 
-Pokud vás zajímá jenom zobrazení konkrétních částí, použijte `WITH` klauzuli a určete, které části chcete zobrazit:
+Pokud vás zajímá jenom zobrazení konkrétních částí, použijte klauzuli `WITH` a určete, které části chcete zobrazit:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
@@ -503,7 +503,7 @@ Příklad:
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>Rozdíly DBCC SHOW_STATISTICS ()
+## <a name="dbcc-show_statistics-differences"></a>Rozdíly DBCC SHOW_STATISTICS ()
 
 Příkaz DBCC SHOW_STATISTICS () je SQL Data Warehouse v porovnání s SQL Server striktně implementován:
 

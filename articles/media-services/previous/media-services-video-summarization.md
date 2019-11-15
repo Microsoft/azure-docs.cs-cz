@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a546df73f316b4eb6c215a6f52d68f87ad09c1a2
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881694"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084799"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Vytvoření Shrnutí videa pomocí Azure Media Video Thumbnails  
-
-> [!IMPORTANT]
-> Prohlédněte si [plány vyřazení](media-services-analytics-overview.md#retirement-plans) některých multimediálních procesorů.
-
+ 
 ## <a name="overview"></a>Přehled
+
 Procesor **Azure Media Video Thumbnails** Media (MP) umožňuje vytvořit souhrn videa, který je užitečný pro zákazníky, kteří chtějí jenom zobrazit náhled na souhrnné informace o dlouhém videu. Zákazníci například můžou chtít při najetí myší na miniaturu zobrazit krátké "Souhrnné video". Díky vylepšení parametrů **Azure Media Video Thumbnails** pomocí přednastavení konfigurace můžete k algorithmically generování popisného dílčího klipu použít výkonnou detekci a zřetězení technologie MP.  
 
 Sada MP **miniatury multimédií Azure** je aktuálně ve verzi Preview.
@@ -58,7 +56,7 @@ Při vytváření úlohy miniatury videa pomocí **Azure Media Video Thumbnails*
 
 V současné době můžete změnit následující parametry:
 
-| Bajty | Popis |
+| Param | Popis |
 | --- | --- |
 | outputAudio |Určuje, zda výsledné video obsahuje libovolný zvuk. <br/>Povolené hodnoty jsou: true nebo false. Výchozí hodnota je true. |
 | fadeInFadeOut |Určuje, zda jsou použity přechody mezi jednotlivými miniaturami pohybu.  <br/>Povolené hodnoty jsou: true nebo false.  Výchozí hodnota je true. |
@@ -108,7 +106,7 @@ Následující program ukazuje, jak:
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```csharp
     using System;
@@ -286,7 +284,7 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy

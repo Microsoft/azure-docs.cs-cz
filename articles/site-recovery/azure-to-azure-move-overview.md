@@ -1,33 +1,23 @@
 ---
-title: Přesunout Azure MS do jiné oblasti pomocí Azure Site Recovery
-description: Pomocí Azure Site Recovery můžete přesunout virtuální počítače Azure IaaS z jedné oblasti Azure do jiné.
+title: Přesun virtuálních počítačů Azure do jiné oblasti pomocí Azure Site Recovery
+description: Použití Azure Site Recovery k přesunu virtuálních počítačů Azure z jedné oblasti Azure do jiné.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: e3a3db66b4833a8ba21dc9d3c1938f645919221c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954167"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091943"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
+# <a name="moving-azure-vms-to-another-azure-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti Azure
 
-Azure se rozrůstá spolu se zákaznickou základnou a přidává podporu pro nové oblasti, která vám umožní udržet tempo s rostoucími nároky. Nové možnosti se také přidávají měsíčně napříč službami. Virtuální počítače můžete chtít přesunout do jiné oblasti nebo do Zóny dostupnosti, abyste zvýšili dostupnost.
+Tento článek poskytuje přehled důvodů a kroků, které se podílejí na přesunu virtuálních počítačů Azure do jiné oblasti Azure pomocí [Azure Site Recovery](site-recovery-overview.md). 
 
-V tomto kurzu se dozvíte o různých scénářích, ve kterých byste chtěli přesunout virtuální počítače. Také popisuje, jak nakonfigurovat architekturu v cílové oblasti, abyste dosáhli vyšší dostupnosti. 
-
-V tomto kurzu získáte informace o těchto tématech:
-
-> [!div class="checklist"]
-> 
-> * Důvody pro přesun virtuálních počítačů
-> * Typické architektury
-> * Přesun virtuálních počítačů do cílové oblasti
-> * Přesun virtuálních počítačů za účelem zvýšení dostupnosti
 
 ## <a name="reasons-to-move-azure-vms"></a>Důvody pro přesun virtuálních počítačů Azure
 

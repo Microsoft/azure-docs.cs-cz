@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: dapine
-ms.openlocfilehash: fc4b9469d8634cbb46eccb842c9795a155384eb7
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2b6118930626ce753060addcf64c568c7c086efb
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961919"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091229"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -38,10 +38,12 @@ Cognitive Services prostředky jsou k dispozici v [Microsoft Azure](https://azur
 
 ## <a name="features-and-benefits"></a>Funkce a výhody
 
+- **Neměnná infrastruktura**: umožňuje týmům DevOps využívat konzistentní a spolehlivé sady známých systémových parametrů a může se tak přizpůsobit. Kontejnery poskytují flexibilitu pro Pivot v předvídatelném ekosystému a nepoužívejte přitom posun konfigurace.
 - **Kontrola nad daty**: umožňuje zákazníkům zvolit, kam svá data zpracovává tyto služby Cognitive Services. To je nezbytné pro zákazníky, které nelze odesílat data do cloudu, ale přístup k technologie služeb Cognitive Services. Podpora konzistence v hybridních prostředích – napříč daty, správou, identitou a zabezpečením.
 - **Ovládací prvek průběhu aktualizace modelu**: poskytují zákazníkům flexibilitu při vytváření verzí a aktualizace modelů nasazení v rámci svých řešení.
 - **Přenosné architektura**: Povolte vytvoření přenosné aplikace architektury, který je možné nasadit v Azure, místní a hraniční. Kontejnery, které je možné nasadit přímo do [Azure Kubernetes Service](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Zásobník](/azure-stack/operator). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Vysoká propustnost / nízká latence**: poskytují zákazníkům možnost škálování tím, že služby Cognitive Services a spusťte fyzicky blízko jejich aplikační logiku a data pro vysokou propustností a nízkou latenci. Kontejnery není limit transakcí za sekundu (TPS) a můžete provést škálování současně i horizontální navyšování kapacity pro zpracování poptávky, pokud zadáte nezbytné hardwarové prostředky. 
+- **Vysoká propustnost / nízká latence**: poskytují zákazníkům možnost škálování tím, že služby Cognitive Services a spusťte fyzicky blízko jejich aplikační logiku a data pro vysokou propustností a nízkou latenci. Kontejnery není limit transakcí za sekundu (TPS) a můžete provést škálování současně i horizontální navyšování kapacity pro zpracování poptávky, pokud zadáte nezbytné hardwarové prostředky.
+- **Škálovatelnost**: s neustále rostoucím oblíbenkou pro kontejnery a software orchestrace kontejnerů, jako je Kubernetes; škálovatelnost je k dispozici na Forefrontu technologických předběžných. Sestavování s škálovatelnou Clusterovou nadací aplikace pro vývoj aplikací pro vysokou dostupnost.
 
 ## <a name="containers-in-azure-cognitive-services"></a>Kontejnery v Azure Cognitive Services
 

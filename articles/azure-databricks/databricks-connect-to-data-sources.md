@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: f40edec088172bf7460d99b611e6be80f818ff9c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 932031f545ccc75cb12f368f5c7894c1b5e454cd
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601894"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091691"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Připojení ke zdrojům dat z Azure Databricks
 
@@ -26,34 +26,34 @@ Tento článek obsahuje odkazy na všechny různé zdroje dat v Azure, které se
 
 ## <a name="data-sources-for-azure-databricks"></a>Zdroje dat pro Azure Databricks
 
-Následující seznam poskytuje zdroje dat v Azure, které můžete použít s Azure Databricks. Úplný seznam zdrojů dat, které lze použít s Azure Databricks, najdete v tématu [zdroje dat pro Azure Databricks](/azure/databricks/data/data-sources/index.html).
+Následující seznam poskytuje zdroje dat v Azure, které můžete použít s Azure Databricks. Úplný seznam zdrojů dat, které lze použít s Azure Databricks, najdete v tématu [zdroje dat pro Azure Databricks](/azure/databricks/data/data-sources/index).
 
-- [Databáze SQL Azure](/azure/databricks/data/data-sources/sql-databases.html)
+- [Databáze SQL Azure](/azure/databricks/data/data-sources/sql-databases)
 
     Tento odkaz poskytuje rozhraní API dataframe pro připojení k databázím SQL pomocí JDBC a způsob řízení paralelismu pro čtení prostřednictvím rozhraní JDBC. V tomto tématu najdete podrobné příklady použití rozhraní Scala API se zkrácenými příklady Pythonu a Spark SQL na konci.
-- [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html)
+- [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
     Tento odkaz poskytuje příklady použití Azure Active Directory instančního objektu k ověřování pomocí Azure Data Lake Storage. Poskytuje také pokyny pro přístup k datům v Azure Data Lake Storage z Azure Databricks.
 
-- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html)
+- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage)
 
     Tento odkaz poskytuje příklady, jak přímo získat přístup k Azure Blob Storage z Azure Databricks pomocí přístupového klíče nebo SAS pro daný kontejner. Odkaz taky poskytuje informace o tom, jak získat přístup k Azure Blob Storage z Azure Databricks pomocí rozhraní RDD API.
 
-- [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector.html)
+- [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector)
 
     Tento odkaz poskytuje pokyny, jak použít [Azure Cosmos DB konektor Spark](https://github.com/Azure/azure-cosmosdb-spark) z Azure Databricks pro přístup k datům v Azure Cosmos DB.
 
-- [Azure Event Hubs](/azure/databricks/data/data-sources/azure/eventhubs-connector.html)
+- [Azure Event Hubs](/azure/databricks/data/data-sources/azure/eventhubs-connector)
 
     Tento odkaz poskytuje pokyny, jak použít [konektor Azure Event Hubs Spark](https://github.com/Azure/azure-event-hubs-spark) z Azure Databricks pro přístup k datům v Azure Event Hubs.
 
-- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse.html)
+- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
 
     Tento odkaz poskytuje pokyny, jak pomocí konektoru Azure SQL Data Warehouse připojit z Azure Databricks.
     
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zdrojích, ze kterých můžete importovat data do Azure Databricks, najdete v tématu [zdroje dat pro Azure Databricks](/azure/databricks/data/data-sources/index.html#).
+Další informace o zdrojích, ze kterých můžete importovat data do Azure Databricks, najdete v tématu [zdroje dat pro Azure Databricks](/azure/databricks/data/data-sources/index).
 
 

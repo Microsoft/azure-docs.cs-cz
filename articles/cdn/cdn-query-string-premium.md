@@ -1,6 +1,6 @@
 ---
-title: Řízení ukládání do mezipaměti s řetězci dotazu – úroveň premium chování Azure CDN | Dokumentace Microsoftu
-description: Azure CDN řetězec dotazu do mezipaměti ovládací prvky, jak soubory jsou uložené v mezipaměti, když na webový požadavek obsahuje řetězec dotazu Tento článek popisuje řetězec dotazu do mezipaměti v Azure CDN Premium od Verizonu produktu.
+title: Řízení chování při ukládání Azure CDN do mezipaměti pomocí řetězců dotazů – úroveň Premium
+description: Azure CDN ukládání řetězců dotazů do mezipaměti řídí, jak jsou soubory ukládány do mezipaměti, když webová žádost obsahuje řetězec dotazu. Tento článek popisuje ukládání řetězců dotazů do mezipaměti Azure CDN Premium z produktu Verizon.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
-ms.openlocfilehash: 2bea8aa06daef5d119b4cbfc4853a2d6ab07ddb7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 365c52840d281c0f48d17aacc358e4cce513e3b4
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593504"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083092"
 ---
-# <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Ovládací prvek Azure CDN pomocí řetězců dotazu – úroveň premium chování ukládání do mezipaměti
+# <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Řízení chování při ukládání Azure CDN do mezipaměti pomocí řetězců dotazů – úroveň Premium
 > [!div class="op_single_selector"]
 > * [Úroveň Standard](cdn-query-string.md)
 > * [Úroveň Premium](cdn-query-string-premium.md)
 > 
 
 ## <a name="overview"></a>Přehled
-S Azure Content Delivery Network (CDN), můžete řídit, jak jsou soubory uložené v mezipaměti pro webový požadavek, který obsahuje řetězec dotazu. Řetězec dotazu v webový požadavek s řetězcem dotazu, je část žádosti, které je pozdější otazník (?). Řetězec dotazu může obsahovat jeden nebo více párů klíč hodnota, ve kterých název pole a jeho hodnota jsou odděleny znaménkem rovná se (=). Každý pár klíč hodnota je oddělených ampersandem (&). Například http:\//www.contoso.com/content.mov?field1=value1 & pole2 = value2. Pokud existuje více než jeden pár klíč hodnota v řetězci dotazu požadavku, jejich pořadí není důležitá. 
+Pomocí služby Azure Content Delivery Network (CDN) můžete řídit ukládání souborů do mezipaměti pro webový požadavek, který obsahuje řetězec dotazu. V rámci webové žádosti s řetězcem dotazu je řetězec dotazu ta část požadavku, která se vyskytuje po otazníku (?). Řetězec dotazu může obsahovat jednu nebo více párů klíč-hodnota, ve kterých je název pole a jeho hodnota oddělená symbolem rovná se (=). Jednotlivé páry klíč-hodnota jsou oddělené znakem ampersand (&). Například http:\//www.contoso.com/content.mov?field1=value1&field2=value2. Pokud je v řetězci dotazu požadavku více než jedna dvojice klíč-hodnota, nezáleží na jejich pořadí. 
 
 > [!IMPORTANT]
-> Produkty CDN úrovně standard a premium poskytují stejné funkce ukládání řetězců dotazů, ale uživatelské rozhraní se liší. Tento článek popisuje rozhraní **Azure CDN Premium od Verizonu**. Řetězec dotazu do mezipaměti pomocí standardní produkty Azure CDN, najdete v části [řízení Azure CDN pomocí řetězců dotazu – úroveň standard chování ukládání do mezipaměti](cdn-query-string.md).
+> Produkty CDN Standard a Premium poskytují stejné funkce ukládání řetězců dotazů, ale uživatelské rozhraní se liší. Tento článek popisuje rozhraní **Azure CDN Premium z Verizon**. Pro ukládání řetězců dotazů do mezipaměti s Azure CDN standardními produkty najdete informace v tématu [řízení Azure CDN ukládání do mezipaměti pomocí řetězců dotazů – standardní vrstva](cdn-query-string.md).
 >
 
 
-K dispozici jsou tři režimy řetězec dotazu:
+K dispozici jsou tři režimy řetězce dotazu:
 
-- **standard-cache**: Výchozí režim. V tomto režimu se uzel CDN point of presence (POP) předá řetězce dotazu z žadatel na zdrojový server na první požadavek a ukládá do mezipaměti assetu. Všechny následné požadavky assetu, které se obsluhují ze serveru POP ignorovat řetězce dotazu do vypršení platnosti mezipaměti asset.
+- **standardní – mezipaměť**: výchozí režim. V tomto režimu uzel protokolu CDN (Point-of-Presence) předá řetězce dotazů od žadatele k původnímu serveru při první žádosti a uloží Asset do mezipaměti. Všechny následné požadavky na Asset, které jsou obsluhovány ze serveru POP, ignorují řetězce dotazu do vypršení platnosti prostředku v mezipaměti.
 
     >[!IMPORTANT] 
-    > Pokud token autorizace je povolená pro libovolnou cestu pro tento účet, režimu mezipaměti standard je jediný režim, který lze použít. 
+    > Pokud je u jakékoli cesty k tomuto účtu povolená autorizace tokenu, je režim standardní mezipaměti jediným režimem, který se dá použít. 
 
-- **no-cache**: V tomto režimu žádostí s řetězci dotazu neukládají do mezipaměti v CDN POP uzlu. Uzel POP načte asset přímo ze zdrojového serveru a předává je žadateli spolu s každou žádostí.
+- **no-cache**: v tomto režimu nejsou požadavky na řetězce dotazů ukládány do mezipaměti v uzlu pop CDN. Uzel POP načte prostředek přímo ze zdrojového serveru a předá ho žadateli s každým požadavkem.
 
-- **unique-cache**: V tomto režimu se každý požadavek s jedinečnou adresu URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipaměti. Například je odpověď ze zdrojového serveru pro žádost o example.ashx?q=test1 ukládají do mezipaměti na uzlu POP a vrátil pro následné mezipaměti s stejný řetězec dotazu. Žádost o example.ashx?q=test2 je uložené v mezipaměti jako samostatný prostředek s vlastní nastavení time to live.
+- **jedinečná – mezipaměť**: v tomto režimu se každý požadavek s jedinečnou adresou URL, včetně řetězce dotazu, považuje za jedinečný prostředek s vlastní mezipamětí. Například odpověď ze zdrojového serveru pro požadavek například. ashx? q = test1 se uloží do mezipaměti v uzlu POP a vrátí se pro následné mezipaměti se stejným řetězcem dotazu. Požadavek na příklad. ashx? q = test2 se uloží do mezipaměti jako samostatný prostředek s vlastním nastavením Time to Live.
    
     >[!IMPORTANT] 
-    > Tento režim nepoužívejte, pokud řetězec dotazu obsahuje parametry, které se změní při každé žádosti, jako je například ID relace nebo uživatelské jméno, protože výsledkem bude nízký poměr přístupů do mezipaměti.
+    > Tento režim nepoužívejte, pokud řetězec dotazu obsahuje parametry, které se změní u všech požadavků, jako je ID relace nebo uživatelské jméno, protože výsledkem bude nízký poměr přístupů do mezipaměti.
 
-## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Změna nastavení pro profily CDN premium ukládání řetězců dotazů
-1. Otevřete profil CDN a pak klikněte na tlačítko **spravovat**.
+## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Změna nastavení ukládání řetězců dotazů do mezipaměti pro profily Premium CDN
+1. Otevřete profil CDN a pak klikněte na **Spravovat**.
    
     ![Tlačítko Spravovat profil CDN](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
-    Otevře se na portálu pro správu CDN.
-2. Najeďte myší **HTTP velké** kartu a pak najeďte myší **nastavení mezipaměti** kontextovou nabídku. Klikněte na tlačítko **ukládání do mezipaměti řetězce dotazu**.
+    Otevře se portál pro správu CDN.
+2. Najeďte myší na **velkou kartu http** a pak najeďte myší na místní nabídku **nastavení mezipaměti** . Klikněte na **dotaz – ukládání řetězců do mezipaměti**.
    
-    Se zobrazují možnosti ukládání do mezipaměti řetězce dotazu.
+    Zobrazují se možnosti ukládání řetězců dotazů do mezipaměti.
    
-    ![Řetězec dotazu CDN možnosti ukládání do mezipaměti](./media/cdn-query-string-premium/cdn-query-string.png)
-3. Vyberte režim řetězec dotazu a pak klikněte na tlačítko **aktualizace**.
+    ![Možnosti ukládání řetězců dotazu CDN](./media/cdn-query-string-premium/cdn-query-string.png)
+3. Vyberte režim řetězce dotazu a pak klikněte na **aktualizovat**.
 
 > [!IMPORTANT]
-> Vzhledem k tomu, že se registrace rozšíří v rámci CDN chvíli trvá, nemusí být okamžitě viditelné změny nastavení mezipaměti řetězců. Šíření obvykle hotové během 10 minut.
+> Vzhledem k tomu, že se registrace do sítě CDN zabere v čase, nemusí být změny nastavení řetězce mezipaměti hned viditelné. Šíření obvykle skončí za 10 minut.
  
 

@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Integrace účtu služby Azure Storage s Azure CDN | Microsoft Docs
+title: Rychlý Start – integrace účtu úložiště Azure s Azure CDN
 description: Zjistěte, jak používat Azure Content Delivery Network (CDN) k doručování širokopásmového obsahu díky ukládání objektů blob ze služby Azure Storage do mezipaměti.
 services: cdn
 documentationcenter: ''
@@ -15,23 +15,23 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: d8e1c3f845af6edf274aa95797523ace07cf820c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594013"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083077"
 ---
-# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rychlý start: Integrace účtu služby Azure storage s Azure CDN
+# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rychlý start: Integrace účtu služby Azure Storage s Azure CDN
 V tomto rychlém startu povolíte službě [Azure Content Delivery Network (CDN)](cdn-overview.md), aby obsah ze služby Azure Storage ukládala do mezipaměti. Azure CDN nabízí vývojářům globální řešení pro doručování širokopásmového obsahu. Do mezipaměti může ukládat objekty blob a statický obsah výpočetních instancí ve fyzických uzlech v USA, Evropě, Asii, Austrálii a Jižní Americe.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
-Následující postup použijte k vytvoření nového účtu úložiště pro předplatné Azure. Účet úložiště poskytuje přístup ke službám Azure Storage. Účet úložiště představuje nejvyšší úroveň oboru názvů pro přístup k všechny komponenty služby Azure Storage: Azure Blob, Queue a Table storage. Další informace najdete v tématu [Seznámení se službou Microsoft Azure Storage](../storage/common/storage-introduction.md).
+Následující postup použijte k vytvoření nového účtu úložiště pro předplatné Azure. Účet úložiště poskytuje přístup ke službám Azure Storage. Účet úložiště představuje nejvyšší úroveň oboru názvů pro přístup k jednotlivým součástem služby Azure Storage: Azure Blob Storage, Azure Queue Storage a Azure Table Storage. Další informace najdete v tématu [Seznámení se službou Microsoft Azure Storage](../storage/common/storage-introduction.md).
 
 Pokud chcete vytvořit účet úložiště, musíte být buď správcem služby, nebo spolusprávcem přidruženého předplatného.
 
@@ -55,7 +55,7 @@ K vytvoření účtu úložiště můžete použít několik metod, včetně web
    
     Tato hodnota se stane názvem hostitele v rámci identifikátoru URI, který se používá k adresování prostředků objektů blob, dotazů nebo tabulek daného předplatného. Pokud chcete adresovat prostředek kontejneru v úložišti Blob Storage, použijte identifikátor URI v následujícím formátu:
    
-    http:// *&lt;popisek_účtu_úložiště&gt;* .blob.core.windows.net/ *&lt;kontejner&gt;*
+    http:// *&lt;StorageAcountLabel&gt;* .blob.core.windows.net/ *&lt;mycontainer&gt;*
 
     kde *&lt;popisek_účtu_úložiště&gt;* odkazuje na hodnotu, kterou jste zadali do pole **Název**.
    
@@ -70,7 +70,7 @@ K vytvoření účtu úložiště můžete použít několik metod, včetně web
     | -------- | ----- |
     | **Model nasazení** | Použijte výchozí hodnotu. |
     | **Druh účtu** | Použijte výchozí hodnotu. |
-    | **Location**    | V rozevíracím seznamu vyberte **Střední USA**. |
+    | **Umístění**    | V rozevíracím seznamu vyberte **Střední USA**. |
     | **Replikace** | Použijte výchozí hodnotu. |
     | **Výkon** | Použijte výchozí hodnotu. |
     | **Vyžádání bezpečného přenosu** | Použijte výchozí hodnotu. |
@@ -94,11 +94,11 @@ Azure CDN můžete pro účet úložiště povolit přímo z vašeho účtu úlo
     
 2. Nový koncový bod vytvořte zadáním požadovaných informací uvedených v následující tabulce:
 
-    | Nastavení  | Value |
+    | Nastavení  | Hodnota |
     | -------- | ----- |
-    | **Profil CDN** | Vyberte **vytvořit nový** a zadejte název profilu, například *my-cdn-profile-123*. Tento název musí být globálně jedinečný.  |
+    | **Profil CDN** | Vyberte **vytvořit nový** a zadejte název svého profilu, například *My-CDN-profile-123*. Tento název musí být globálně jedinečný.  |
     | **Cenová úroveň** | V rozevíracím seznamu vyberte **Verizon úrovně Standard**. |
-    | **Název koncového bodu CDN** | Zadejte název hostitele koncového bodu, tj *my-endpoint-123*. Tento název musí být globálně jedinečný. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt;název_koncového_bodu&gt;_ .azureedge.net. |
+    | **Název koncového bodu CDN** | Zadejte název hostitele koncového bodu, tj. *můj koncový bod-123*. Tento název musí být globálně jedinečný. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt;název_koncového_bodu&gt;_ .azureedge.net. |
     | **Název počátečního hostitele** | Nový koncový bod CDN používá ve výchozím nastavení název hostitele vašeho účtu úložiště jako server původu. |
 
 3. Vyberte **Vytvořit**. Koncový bod se po vytvoření zobrazí v seznamu koncových bodů.
@@ -117,7 +117,7 @@ Pokud chcete udělit omezený přístup k privátním kontejnerům úložiště,
 ## <a name="access-cdn-content"></a>Přístup k obsahu CDN
 Pokud chcete získat přístup k obsahu v mezipaměti ve službě CDN, použijte adresu URL CDN uvedenou na portálu. Adresa objektu blob uloženého v mezipaměti má následující formát:
 
-http://<*název_koncového_bodu*\>.azureedge.net/<*veřejný_kontejner*\>/<*název_objektu_blob*\>
+http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 > [!NOTE]
 > Jakmile Azure CDN povolíte přístup k účtu úložiště, budou všechny veřejně dostupné objekty vhodné pro ukládání CDN POP do mezipaměti. Pokud upravíte objekt, který je momentálně uložený v mezipaměti v CDN, nebude nový obsah dostupný přes Azure CDN, dokud Azure CDN po uplynutí období TTL (time-to-live) pro obsah v mezipaměti neaktualizuje svůj obsah.
@@ -142,9 +142,9 @@ V předchozích krocích jste ve skupině prostředků vytvořili profil a konco
 
 3. Pokud chcete účet úložiště odstranit, vyberte ho na řídicím panelu a pak v horní nabídce vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud chcete zjistit, jak do koncového bodu CDN přidat vlastní doménu a povolit HTTPS, projděte si tento kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: Přístup k objektům BLOB storage pomocí vlastní doménu Azure CDN prostřednictvím protokolu HTTPS](cdn-storage-custom-domain-https.md)
+> [Kurz: Přístup k objektům blob úložiště pomocí vlastní domény Azure CDN prostřednictvím protokolu HTTPS](cdn-storage-custom-domain-https.md)
 

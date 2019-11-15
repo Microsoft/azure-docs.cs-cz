@@ -1,18 +1,18 @@
 ---
-title: Informace o mapování sítě pro virtuální počítač Hyper-V (s VMM) pro zotavení po havárii do Azure pomocí Site Recovery
+title: Mapování sítě Hyper-V (s VMM) s Site Recovery
 description: Popisuje, jak nastavit mapování sítě pro zotavení po havárii virtuálních počítačů Hyper-V (spravovaných v cloudech VMM) do Azure s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813669"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082559"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Příprava mapování sítě pro zotavení po havárii virtuálního počítače Hyper-V do Azure
 
@@ -53,7 +53,7 @@ Mapování sítě funguje takto:
 
 Zde je příklad pro ilustraci tohoto mechanismu. Pojďme pořizovat organizaci se dvěma umístěními v New Yorku a v Chicagu.
 
-**Location** | **Server VMM** | **Sítě virtuálních počítačů** | **Namapováno na**
+**Umístění** | **Server VMM** | **Sítě virtuálních počítačů** | **Namapováno na**
 ---|---|---|---
 New York | VMM – NewYork| VMNetwork1-NewYork | Namapováno na VMNetwork1 – Chicago
  |  | VMNetwork2-NewYork | Nemapováno
@@ -78,7 +78,7 @@ SilverCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1-NewYork</p><
 
 ### <a name="logical-and-vm-network-settings"></a>Nastavení logické sítě a sítě virtuálních počítačů
 
-**Location** | **Logická síť** | **Přidružená síť virtuálních počítačů**
+**Umístění** | **Logická síť** | **Přidružená síť virtuálních počítačů**
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
@@ -90,10 +90,10 @@ Když v závislosti na těchto nastaveních vyberete cílovou síť virtuálníc
 
 **Výběr** | **Chráněný Cloud** | **Ochrana cloudu** | **Cílová síť k dispozici**
 ---|---|---|---
-VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | K dispozici
- | GoldCloud1 | GoldCloud2 | K dispozici
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Není dostupné
- | GoldCloud1 | GoldCloud2 | K dispozici
+VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | K dispozici.
+ | GoldCloud1 | GoldCloud2 | K dispozici.
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Není k dispozici.
+ | GoldCloud1 | GoldCloud2 | K dispozici.
 
 
 Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, ve které je umístěný zdrojový virtuální počítač, pak se virtuální počítač repliky po převzetí služeb při selhání připojí k této cílové podsíti. Pokud neexistuje žádná cílová podsíť s odpovídajícím názvem, připojí se virtuální počítač k první podsíti v síti.
@@ -120,7 +120,7 @@ Mapování sítě VMNetwork1-Chicago se změnilo. | Virtuální počítač – 1
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Další informace](hyper-v-vmm-networking.md) IP adresování po převzetí služeb při selhání do sekundární lokality VMM.
 - [Další informace](concepts-on-premises-to-azure-networking.md) IP adresování po převzetí služeb při selhání do Azure

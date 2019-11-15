@@ -5,26 +5,26 @@ author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.author: zarhoads
-ms.date: 03/22/2019
+ms.date: 11/13/2019
 ms.topic: quickstart
-description: Rychlý vývoj Kubernetes díky kontejnerům a mikroslužbám v Azure
+description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 41dea16f7938d391f8cdf03e1a731e8082f74b26
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5a7ab993c58730594a0c4e10572939d3dccbdf02
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695476"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091835"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Rychlý Start: ladění a iterování pomocí sady Visual Studio a .NET Core v Kubernetes s využitím Azure Dev Spaces
 
-V této příručce se dozvíte, jak:
+V tomto průvodci se naučíte:
 
-- Nastavte Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure.
-- Iterativní vývoj kódu v kontejnerech pomocí sady Visual Studio.
+- Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
+- Iterativně vyvíjet kód v kontejnerech pomocí sady Visual Studio
 - Ladění kódu spuštěného v clusteru pomocí sady Visual Studio.
 
 Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
@@ -34,37 +34,37 @@ Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ho nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
+- Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - Visual Studio 2019 ve Windows s nainstalovanou úlohou vývoj pro Azure Můžete také použít Visual Studio 2017 ve Windows s úlohou vývoje webu a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) nainstalovanou. Pokud nemáte nainstalované Visual Studio, Stáhněte si ho [tady](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
 
 Cluster AKS musíte vytvořit v [podporované oblasti][supported-regions]. Vytvoření clusteru:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 1. Vyberte *+ vytvořit prostředek > Kubernetes službu*. 
 1. Zadejte _předplatné_, _skupinu prostředků_, _název clusteru Kubernetes_, _oblast_, _verzi Kubernetes_a _předponu názvu DNS_.
 
     ![Vytvoření AKS v Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
-1. Klikněte na tlačítko *zkontrolovat + vytvořit*.
-1. Klikněte na *vytvořit*.
+1. Klikněte na *Zkontrolovat a vytvořit*.
+1. Klikněte na možnost *Vytvořit*.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
 
-V Azure Portal přejděte na svůj cluster AKS a klikněte na *vývojové prostory*. Změňte *Povolit vývojové prostory* na *Ano* a klikněte na *Uložit*.
+V Azure Portal přejděte na svůj cluster AKS a klikněte na *vývojové prostory*. Změňte možnost *použít prostory pro vývoj* na *Ano* a klikněte na *Uložit*.
 
 ![Povolit vývojové prostory v Azure Portal](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
 ## <a name="create-a-new-aspnet-web-app"></a>Vytvoření nové webové aplikace v ASP.NET
 
-1. Otevřete Visual Studio.
-1. Vytvořte nový projekt.
-1. Vyberte *ASP.NET Core webové aplikace* a pojmenujte svůj projekt *webendu*.
-1. Klikněte na tlačítko *OK*.
+1. Otevřít Visual Studio.
+1. Vytvoření nového projektu
+1. Vyberte možnost *ASP.NET Core webová aplikace* a klikněte na tlačítko *Další*.
+1. Pojmenujte svůj projekt *webendu* a klikněte na *vytvořit*.
 1. Po zobrazení výzvy vyberte možnost *Webová aplikace (model-zobrazení-kontroler)* pro šablonu.
-1. V horní části vyberte *.NET Core* a *ASP.NET Core 2,0* .
-1. Klikněte na tlačítko *OK*.
+1. V horní části vyberte *.NET Core* a *ASP.NET Core 2,1* .
+1. Klikněte na možnost *Vytvořit*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Připojte svůj projekt k prostoru pro vývoj
 
@@ -76,7 +76,7 @@ V dialogovém okně Azure Dev Spaces vyberte své *předplatné* a *cluster Azur
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Tento proces nasadí vaši službu do *výchozího* vývojového prostoru s veřejně přístupným URL. Pokud zvolíte cluster, který není nakonfigurovaný pro práci se Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat. Klikněte na tlačítko *OK*.
+Tento proces nasadí vaši službu do *výchozího* vývojového prostoru s veřejně přístupným URL. Pokud zvolíte cluster, který není nakonfigurovaný pro práci s Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat. Klikněte na tlačítko *OK*.
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
@@ -93,16 +93,16 @@ Built container image in 39s
 Waiting for container...
 36s
 
-Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 'http' is available at http://default.webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-Ve výše uvedeném příkladu je veřejná adresa URL http://webfrontend.1234567890abcdef1234.eus.azds.io/. Přejděte na veřejnou adresu URL vaší služby a pracujte se službou spuštěnou ve vývojovém prostoru.
+Ve výše uvedeném příkladu je veřejná adresa URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Přejděte na veřejnou adresu URL vaší služby a pracujte se službou spuštěnou ve vývojovém prostoru.
 
 Tento proces mohl mít zakázaný veřejný přístup k vaší službě. Pokud chcete povolit veřejný přístup, můžete aktualizovat [vstupní hodnotu v *Values. yaml*][ingress-update].
 
-## <a name="update-code"></a>Aktualizovat kód
+## <a name="update-code"></a>Aktualizace kódu
 
 Pokud je Visual Studio stále připojené k vašemu vývojovému prostoru, klikněte na tlačítko Zastavit. Změňte řádek 20 v `Controllers/HomeController.cs` na:
     
@@ -135,7 +135,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a vývoj týmu](multi-service-netcore-visualstudio.md)
+> [Práce s více kontejnery a týmový vývoj](multi-service-netcore-visualstudio.md)
 
 [ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
 [supported-regions]: about.md#supported-regions-and-configurations

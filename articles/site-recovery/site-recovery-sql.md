@@ -1,5 +1,5 @@
 ---
-title: Nastavení zotavení po havárii pro SQL Server s SQL Server a Azure Site Recovery | Microsoft Docs
+title: Nastavení zotavení po havárii pro SQL Server s využitím Azure Site Recovery
 description: Tento článek popisuje, jak nastavit zotavení po havárii pro SQL Server pomocí SQL Server a Azure Site Recovery.
 services: site-recovery
 author: sujayt
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934837"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084735"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server
 
@@ -54,18 +54,18 @@ Site Recovery slouží k orchestraci testovacího převzetí služeb při selhá
 
 Existují některé předpoklady pro zajištění, že váš plán obnovení je plně přizpůsoben podle vašich potřeb. Jakékoli nasazení SQL Server obvykle vyžaduje nasazení služby Active Directory. Vyžaduje také připojení pro vaši aplikační vrstvu.
 
-### <a name="step-1-set-up-active-directory"></a>Krok 1: Nastavení služby Active Directory
+### <a name="step-1-set-up-active-directory"></a>Krok 1: nastavení služby Active Directory
 
 Nastavte službu Active Directory v sekundární lokalitě pro obnovení, aby SQL Server běžela správně.
 
-* **Malý podnik**: Máte k dispozici malý počet aplikací a jeden řadič domény pro místní lokalitu. Pokud chcete převzít služby při selhání celé lokality, použijte Site Recovery replikaci. Tato služba replikuje řadič domény do sekundárního datového centra nebo do Azure.
-* **Střední až velká společnost**: Možná budete muset nastavit další řadiče domény.
+* **Small Enterprise**: máte k dispozici malý počet aplikací a jeden řadič domény pro místní lokalitu. Pokud chcete převzít služby při selhání celé lokality, použijte Site Recovery replikaci. Tato služba replikuje řadič domény do sekundárního datového centra nebo do Azure.
+* **Střední až velká společnost**: možná budete muset nastavit další řadiče domény.
   - Pokud máte velký počet aplikací, máte doménovou strukturu služby Active Directory a chcete převzít služby při selhání aplikací nebo úloh, nastavte další řadič domény v sekundárním datovém centru nebo v Azure.
   -  Pokud používáte skupiny dostupnosti Always On k obnovení do vzdálené lokality, nastavte další řadič domény v sekundární lokalitě nebo v Azure. Tento řadič domény se používá pro obnovenou instanci SQL Server.
 
 V pokynech v tomto článku se předpokládá, že je řadič domény dostupný v sekundárním umístění. Další informace najdete v tématu Postupy, [které vám pomohou chránit službu Active Directory pomocí Site Recovery](site-recovery-active-directory.md).
 
-### <a name="step-2-ensure-connectivity-with-other-tiers"></a>Krok 2: Zajištění připojení k ostatním vrstvám
+### <a name="step-2-ensure-connectivity-with-other-tiers"></a>Krok 2: zajištění připojení k ostatním vrstvám
 
 Jakmile je databázová vrstva spuštěná v cílové oblasti Azure, ujistěte se, že máte připojení s aplikačními a webovými vrstvami. Abyste mohli ověřit připojení pomocí testovacího převzetí služeb při selhání, proveďte předem potřebné kroky.
 
@@ -74,7 +74,7 @@ Pokud chcete pochopit, jak můžete navrhovat aplikace s ohledem na možnosti p�
 * [Návrh aplikace pro zotavení po havárii v cloudu](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 * [Strategie zotavení po havárii elastického fondu](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
-### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>Krok 3: Spolupracuje se skupinami Always On, Active Geo-Replication a s automatickým převzetím služeb při selhání
+### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>Krok 3: spolupracuje se skupinami Always On, Active Geo-Replication a s automatickým převzetím služeb při selhání
 
 BCDR technologie vždy aktivní geografické replikace a skupiny automatického převzetí služeb při selhání mají sekundární repliky SQL Server spuštěné v cílové oblasti Azure. Prvním krokem při převzetí služeb při selhání aplikace je zadání této repliky jako primárního. Tento krok předpokládá, že už máte řadič domény v sekundárním zařízení. Pokud se rozhodnete provést automatické převzetí služeb při selhání, nemusí být krok nezbytný. Převzetí služeb při selhání webové a aplikační vrstvy až po dokončení převzetí služeb při selhání databáze.
 
@@ -83,15 +83,15 @@ BCDR technologie vždy aktivní geografické replikace a skupiny automatického 
 
 [Vytvořte plán obnovení](site-recovery-create-recovery-plans.md) s virtuálními počítači aplikační a webové vrstvy. Následující kroky ukazují, jak přidat převzetí služeb při selhání databázové vrstvy:
 
-1. Naimportujte skripty pro převzetí služeb při selhání skupinou dostupnosti SQL na [správce prostředkům virtuálním počítači](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) i v klasickém [virtuálním počítači](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1). Naimportujte skripty do svého účtu Azure Automation.
+1. Naimportujte skripty pro převzetí služeb při selhání skupinou dostupnosti SQL na [správce prostředkům virtuálním počítači](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) i v [klasickém virtuálním počítači](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1). Naimportujte skripty do svého účtu Azure Automation.
 
-    [![Obrázek loga "nasadit do Azure"](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![obrázek loga "nasadit do Azure"](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Přidejte skript ASR-SQL-FailoverAG jako předběžnou akci první skupiny plánu obnovení.
 
 1. Podle pokynů, které jsou k dispozici ve skriptu, vytvořte proměnnou automatizace. Tato proměnná poskytuje název skupin dostupnosti.
 
-### <a name="step-4-conduct-a-test-failover"></a>Krok 4: Provedení testovacího převzetí služeb při selhání
+### <a name="step-4-conduct-a-test-failover"></a>Krok 4: provedení testovacího převzetí služeb při selhání
 
 Některé technologie BCDR, například SQL Always On, nativně nepodporují testovací převzetí služeb při selhání. Následující přístup doporučujeme *jenom při použití takových technologií*.
 
@@ -109,7 +109,7 @@ Některé technologie BCDR, například SQL Always On, nativně nepodporují tes
 
 1. Přepněte naslouchací proces do režimu online.
 
-    ![Snímek obrazovky s označeným Content_AGm okna se zobrazenými názvy a stavy serveru](./media/site-recovery-sql/bring-listener-online.png)
+    ![Snímek obrazovky s popisem okna Content_AG zobrazení názvů a stavů serveru](./media/site-recovery-sql/bring-listener-online.png)
 
 1. Ujistěte se, že nástroj pro vyrovnávání zatížení v síti s podporou převzetí služeb při selhání má jednu IP adresu z fondu front-end IP adres, která odpovídá všem naslouchací proces skupiny dostupnosti, a s SQL Server virtuálním počítačem ve fondu back-endu.
 

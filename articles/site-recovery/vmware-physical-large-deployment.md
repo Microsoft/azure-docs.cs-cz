@@ -1,18 +1,18 @@
 ---
-title: Nastavení zotavení po havárii do Azure pro velký počet virtuálních počítačů VMware nebo fyzických serverů s Azure Site Recovery | Microsoft Docs
+title: Škálování VMware/fyzického zotavení po havárii pomocí Azure Site Recovery
 description: Naučte se, jak nastavit zotavení po havárii do Azure pro velké počty místních virtuálních počítačů VMware nebo fyzických serverů s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782657"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082227"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware nebo fyzické servery
 
@@ -30,12 +30,12 @@ Jako součást strategie pro provozní kontinuitu a zotavení po havárii (BCDR)
 
 Některé obecné osvědčené postupy pro zotavení po havárii ve velkém měřítku. Tyto osvědčené postupy jsou podrobněji popsány v dalších částech dokumentu.
 
-- **Identifikujte požadavky cíle**: Před nastavením zotavení po havárii můžete odhadnout nároky na kapacitu a prostředky v Azure.
-- **Plánování komponent Site Recovery**: Zjistěte, jaké Site Recovery komponenty (konfigurační server, procesové servery) potřebujete ke splnění odhadované kapacity.
-- **Nastavte jeden nebo víc procesových serverů se škálováním na více**instancí: Nepoužívejte procesový Server, který je ve výchozím nastavení spuštěn na konfiguračním serveru. 
-- **Spusťte nejnovější aktualizace**: Tým Site Recovery v pravidelných intervalech vydává nové verze Site Recovery komponent a měli byste se ujistit, že používáte nejnovější verze. Abychom vám to usnadnili, sledujte, [co je nového](site-recovery-whats-new.md) pro aktualizace, a [Povolte a nainstalujte aktualizace](service-updates-how-to.md) podle jejich vydání.
-- **Monitor**proaktivně: Při obnovení a zprovoznění zotavení po havárii byste měli aktivně monitorovat stav a stav replikovaných počítačů a prostředků infrastruktury.
-- **Podrobné analýzy zotavení po havárii**: V pravidelných intervalech byste měli spouštět analýzy zotavení po havárii. To nemá vliv na vaše produkční prostředí, ale zajistěte, aby převzetí služeb při selhání do Azure podle potřeby fungovalo podle očekávání.
+- **Identifikujte požadavky na cíle**: odhadované nároky na kapacitu a prostředky v Azure před nastavením zotavení po havárii.
+- **Plán pro Site Recovery komponenty**: Zjistěte, jaké Site Recovery komponenty (konfigurační server, procesové servery) potřebujete ke splnění odhadované kapacity.
+- **Nastavte jeden nebo víc procesových serverů se škálováním na více**instancí: Nepoužívejte procesový Server, který je ve výchozím nastavení spuštěný na konfiguračním serveru. 
+- **Spusťte nejnovější aktualizace**: Site Recovery tým pravidelně vydává nové verze Site Recovery komponent a měli byste se ujistit, že používáte nejnovější verze. Abychom vám to usnadnili, sledujte, [co je nového](site-recovery-whats-new.md) pro aktualizace, a [Povolte a nainstalujte aktualizace](service-updates-how-to.md) podle jejich vydání.
+- **Proaktivně monitorovat**: při obnovení a zprovoznění zotavení po havárii byste měli aktivně monitorovat stav a stav replikovaných počítačů a prostředků infrastruktury.
+- Postup **zotavení po havárii**: v pravidelných intervalech byste měli provozovat zotavení po havárii. To nemá vliv na vaše produkční prostředí, ale zajistěte, aby převzetí služeb při selhání do Azure podle potřeby fungovalo podle očekávání.
 
 
 
@@ -61,21 +61,21 @@ Pak spusťte Plánovač následujícím způsobem:
 2. Zkontrolujte [požadavky](site-recovery-deployment-planner.md#prerequisites) a [nejnovější aktualizace](site-recovery-deployment-planner-history.md) pro Plánovač nasazení a [Stáhněte a extrahujte](site-recovery-deployment-planner.md#download-and-extract-the-deployment-planner-tool) nástroj.
 3. [Spusťte Plánovač nasazení](site-recovery-vmware-deployment-planner-run.md) na konfiguračním serveru.
 4. [Vygenerujte sestavu](site-recovery-vmware-deployment-planner-run.md#generate-report) pro Shrnutí odhadů a doporučení.
-5. Analyzujte [doporučení](site-recovery-vmware-deployment-planner-analyze-report.md) k sestavám a [odhad nákladů](site-recovery-vmware-deployment-planner-cost-estimation.md).
+5. Analyzujte [doporučení k sestavám](site-recovery-vmware-deployment-planner-analyze-report.md) a [odhad nákladů](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 >[!NOTE]
 > Ve výchozím nastavení je tento nástroj nakonfigurovaný tak, aby profiloval a vygeneroval sestavu pro až 1000 virtuálních počítačů. Tento limit můžete změnit zvýšením hodnoty klíče MaxVMsSupported v souboru ASRDeploymentPlanner. exe. config.
 
 ## <a name="plan-target-azure-requirements-and-capacity"></a>Plánování požadavků a kapacity cílů (Azure)
 
-Pomocí shromážděných odhadů a doporučení můžete naplánovat cílové prostředky a kapacitu. Pokud jste spustili Plánovač nasazení pro virtuální počítače VMware, můžete použít řadu [doporučení](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) k sestavám, které vám pomůžou.
+Pomocí shromážděných odhadů a doporučení můžete naplánovat cílové prostředky a kapacitu. Pokud jste spustili Plánovač nasazení pro virtuální počítače VMware, můžete použít řadu [doporučení k sestavám](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) , které vám pomůžou.
 
 - **Kompatibilní virtuální počítače**: Toto číslo použijte k určení počtu virtuálních počítačů, které jsou připravené na zotavení po havárii do Azure. Doporučení týkající se šířky pásma sítě a jader Azure jsou založena na tomto počtu.
 - **Požadovaná šířka pásma sítě**: Poznamenejte si šířku pásma, kterou potřebujete pro rozdílovou replikaci kompatibilních virtuálních počítačů. 
     - Při spuštění plánovače zadáte požadovaný cíl bodu obnovení v minutách. Doporučení ukazují šířku pásma potřebnou ke splnění tohoto bodu RPO 100% a 90% času. 
     - Doporučení šířky pásma sítě se berou v úvahu šířky pásma potřebné pro celkový počet konfiguračních serverů a procesových serverů doporučených v plánovači.
-- **Požadované jádro Azure**: V závislosti na počtu kompatibilních virtuálních počítačů si poznamenejte počet jader, které potřebujete v cílové oblasti Azure. Pokud nemáte dostatek jader, při převzetí služeb při selhání Site Recovery nepůjde vytvořit požadované virtuální počítače Azure.
-- **Doporučená velikost dávky virtuálních počítačů**: Doporučená velikost dávky je založena na možnosti dokončení počáteční replikace pro dávku během 72 hodin ve výchozím nastavení při splnění bodu RPO o 100%. Hodnotu hodiny lze upravit.
+- **Požadované jádro Azure**: Poznamenejte si počet jader, které v cílové oblasti Azure potřebujete, na základě počtu kompatibilních virtuálních počítačů. Pokud nemáte dostatek jader, při převzetí služeb při selhání Site Recovery nepůjde vytvořit požadované virtuální počítače Azure.
+- **Doporučená velikost dávky virtuálních počítačů**: Doporučená velikost dávky je založena na možnosti dokončení počáteční replikace pro dávku během 72 hodin ve výchozím nastavení při splnění cíle bodu obnovení 100%. Hodnotu hodiny lze upravit.
 
 Tato doporučení můžete použít k plánování prostředků Azure, šířky pásma sítě a dávkování virtuálních počítačů.
 
@@ -85,7 +85,7 @@ Chceme zajistit, aby dostupné kvóty v cílovém předplatném byly dostatečn�
 
 **Úloha** | **Podrobnosti** | **Akce**
 --- | --- | ---
-**Kontrolovat jádra** | Pokud se jádra v dostupné kvótě nerovnají nebo překračují celkový počet cílů v době převzetí služeb při selhání, převzetí služeb při selhání se nezdaří. | V případě virtuálních počítačů VMware ověřte, že je v cílovém předplatném dostatek jader, aby splňovaly doporučení Plánovač nasazení Core.<br/><br/> U fyzických serverů ověřte, že Azure Core vyhovují vašim ručním odhadům.<br/><br/> Pokud chcete kontrolovat kvóty, klikněte v předplatném Azure Portal > na **využití + kvóty**.<br/><br/> [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) o zvýšení kvót.
+**Kontrolovat jádra** | Pokud se jádra v dostupné kvótě nerovnají nebo překračují celkový počet cílů v době převzetí služeb při selhání, převzetí služeb při selhání se nezdaří. | V případě virtuálních počítačů VMware ověřte, že je v cílovém předplatném dostatek jader, aby splňovaly doporučení Plánovač nasazení Core.<br/><br/> U fyzických serverů ověřte, že Azure Core vyhovují vašim ručním odhadům.<br/><br/> Pokud chcete kontrolovat kvóty, klikněte v **Předplatném**Azure Portal > na **využití + kvóty**.<br/><br/> [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) o zvýšení kvót.
 **Kontrolovat omezení převzetí služeb při selhání** | Počet převzetí služeb při selhání nesmí překračuje Site Recovery limity převzetí služeb při selhání. |  Pokud převzetí služeb při selhání překročilo limity, můžete přidat odběry, převzít služby při selhání na více předplatných nebo zvýšit kvótu pro předplatné. 
 
 
@@ -95,7 +95,7 @@ Omezení označují počet převzetí služeb při selhání, které Site Recove
 
 Co to znamená? Aby bylo možné spustit virtuální počítač Azure, Azure vyžaduje, aby byly některé ovladače v počátečním stavu spouštění, a služby jako DHCP mají být nastavené tak, aby se spouštěly automaticky.
 - Počítače, které vyhovují, již mají tato nastavení zavedena.
-- V případě počítačů s Windows můžete proaktivní kontrolu dodržování předpisů a v případě potřeby je v případě potřeby nastavit jako vyhovující. [Další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
+- V případě počítačů s Windows můžete proaktivní kontrolu dodržování předpisů a v případě potřeby je v případě potřeby nastavit jako vyhovující. [Další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)
 - Počítače se systémem Linux se v době převzetí služeb při selhání zanesou do dodržování předpisů.
 
 **Počítač vyhovuje Azure?** | **Omezení virtuálních počítačů Azure (převzetí služeb při selhání spravovaného disku)**
@@ -173,7 +173,7 @@ Po naplánování kapacity a nasazení požadovaných komponent a infrastruktury
 
 1. Seřadí počítače do dávek. Povolíte replikaci pro virtuální počítače v rámci dávky a pak přejdete k další dávce.
 
-    - U virtuálních počítačů VMware můžete použít doporučenou [velikost dávky virtuálního počítače](site-recovery-vmware-deployment-planner-analyze-report.md#recommended-vm-batch-size-for-initial-replication) v sestavě Plánovač nasazení.
+    - U virtuálních počítačů VMware můžete použít [doporučenou velikost dávky virtuálního počítače](site-recovery-vmware-deployment-planner-analyze-report.md#recommended-vm-batch-size-for-initial-replication) v sestavě Plánovač nasazení.
     - U fyzických počítačů doporučujeme identifikovat dávky založené na počítačích, které mají podobnou velikost a množství dat, a na dostupné propustnosti sítě. Cílem je dávkování počítačů, které mohou během stejné doby dokončit počáteční replikaci.
     
 2. Pokud je velikost disku v počítači vysoká nebo překročí omezení v thePlanner nasazení, můžete nepostradatelné soubory přesunout (například výpisy protokolů nebo dočasné soubory) mimo počítač. Pro virtuální počítače VMware můžete tyto soubory přesunout na samostatný disk a pak [Tento disk vyloučit](vmware-azure-exclude-disk.md) z replikace.
@@ -212,13 +212,13 @@ Pro spuštění rozsáhlého převzetí služeb při selhání doporučujeme ná
 1. Vytvořte plány obnovení pro převzetí služeb při selhání pro úlohu.
     - Každý plán obnovení může aktivovat převzetí služeb při selhání až 50 počítačů.
     - [Přečtěte si další informace](recovery-plan-overview.md) o plánech obnovení.
-2. Přidejte Azure Automation skripty Runbook do plánů obnovení, abyste mohli automatizovat ruční úlohy v Azure. Mezi obvyklé úlohy patří konfigurace nástrojů pro vyrovnávání zatížení, aktualizace DNS atd. [Víc se uč](site-recovery-runbook-automation.md)
+2. Přidejte Azure Automation skripty Runbook do plánů obnovení, abyste mohli automatizovat ruční úlohy v Azure. Mezi obvyklé úlohy patří konfigurace nástrojů pro vyrovnávání zatížení, aktualizace DNS atd. [Další informace](site-recovery-runbook-automation.md)
 2. Před převzetím služeb při selhání připravte počítače s Windows tak, aby splňovaly prostředí Azure. [Limity převzetí služeb při selhání](#plan-azure-subscriptions-and-quotas) jsou pro počítače, které vyhovují, vyšší. [Přečtěte si další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) o sadách Runbook.
 4.  Aktivujte převzetí služeb při selhání pomocí rutiny [Start-AzRecoveryServicesAsrPlannedFailoverJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) prostředí PowerShell společně s plánem obnovení.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Site Recovery monitorování](site-recovery-monitor-and-troubleshoot.md)

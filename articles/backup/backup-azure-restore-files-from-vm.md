@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961582"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091632"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -66,17 +66,13 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
     Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že je k dispozici:
 
     - download.microsoft.com
-    - Adresy URL služby obnovení (geografické názvy) odkazují na oblast, ve které se nachází trezor služby Recovery Services.
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (pro Azure Public zeměpisných oblastech)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (pro Azure Čína 21Vianet)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (pro státní správu USA Azure)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (pro Německo Azure)
+    - Adresy URL služby Recovery Services (geografické jméno odkazuje na oblast, ve které se nachází trezor služby Recovery Services) - <https://pod01-rec2.geo-name.backup.windowsazure.com> (pro Azure Public zeměpisných oblastech) - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (pro Azure Čína 21Vianet) - <https://pod01-rec2.geo-name.backup.windowsazure.us> (pro vládu Azure USA) - <https://pod01-rec2.geo-name.backup.windowsazure.de> (pro Azure Německo)
     - odchozí port 3260
 
 > [!Note]
 >
-> - Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Například: název staženého skriptu začíná na \'VMname\'\_\'jméno\'_\'GUID\', jako ContosoVM_wcus_12345678.....<br><br>
-> - Adresa URL by byla "https:\//pod01-rec2.wcus.backup.windowsazure.com"
+> - Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Například: název staženého skriptu začíná na \'VMname\'\_\'jméno\'_\'GUID\', jako ContosoVM_wcus_12345678
+> - Adresa URL by byla <https://pod01-rec2.wcus.backup.windowsazure.com>"
 
    Pro Linux skript vyžaduje pro připojení k bodu obnovení komponenty "Open-iSCSI" a "lshw". Pokud komponenty v počítači, ve kterém je spuštěn skript, neexistují, skript si vyžádá oprávnění k instalaci součástí. Poskytněte souhlas pro instalaci nezbytných součástí.
 
@@ -141,21 +137,21 @@ K vypsání názvů skupin svazků v rámci fyzického svazku.
 
 ```bash
 #!/bin/bash
-$ pvs <volume name as shown above in the script output>
+pvs <volume name as shown above in the script output>
 ```
 
 Zobrazí seznam všech logických svazků, názvů a jejich cest ve skupině svazků.
 
 ```bash
 #!/bin/bash
-$ lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 K připojení logických svazků k vybrané cestě.
 
 ```bash
 #!/bin/bash
-$ mount <LV path> </mountpath>
+mount <LV path> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>Pro pole RAID
@@ -164,7 +160,7 @@ Následující příkaz zobrazí podrobnosti o všech discích RAID.
 
 ```bash
 #!/bin/bash
-$ mdadm –detail –scan
+mdadm –detail –scan
 ```
 
  Příslušný disk RAID se zobrazí jako `/dev/mdm/<RAID array name in the protected VM>`
@@ -173,7 +169,7 @@ Použijte příkaz Mount, pokud má disk RAID fyzické svazky.
 
 ```bash
 #!/bin/bash
-$ mount [RAID Disk Path] [/mountpath]
+mount [RAID Disk Path] [/mountpath]
 ```
 
 Pokud je v něm nakonfigurovaný jiný LVM disk RAID, použijte předchozí postup pro oddíly LVM, ale místo názvu disku RAID použijte název svazku.

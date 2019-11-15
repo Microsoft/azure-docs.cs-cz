@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991435"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083214"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Microsoft Azure Media Services (AMS) umožňuje bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
 
 AMS funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do v geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vaší aplikace. [Seznam oblastí a jejich umístění](https://azure.microsoft.com/regions/) si můžete prohlédnout. 
 
-Toto téma představuje běžné scénáře doručování obsahu [live](#live_scenarios) nebo na vyžádání. V tématu najdete také podrobnosti o dostupnosti funkcí a služeb pro média v datových centrech.
+V tomto tématu najdete běžné scénáře pro doručování obsahu v [reálném čase](#live_scenarios) nebo na vyžádání. V tématu najdete také podrobnosti o dostupnosti funkcí a služeb pro média v datových centrech.
 
 ## <a name="overview"></a>Přehled
 
@@ -37,7 +37,7 @@ Toto téma představuje běžné scénáře doručování obsahu [live](#live_sc
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 
-* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
+* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
 * Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
 
@@ -151,7 +151,7 @@ Zákazníci AMS můžou ve svých účtech AMS škálovat koncové body streamov
 
     Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium**, ve výchozím nastavení získají jednu jednotku streamování (SU). Koncový bod streamování je možné škálovat přidáním jednotek streamování. Každá jednotka streamování poskytuje aplikaci další kapacitu šířky pásma. Další informace o škálování koncových bodů streamování **Premium** najdete v tématu [Škálování koncových bodů streamování](media-services-portal-scale-streaming-endpoints.md).
 
-* Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2**, nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
+* Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
 
     Kromě určení typu rezervované jednotky můžete určit, že chcete účet zřídit s **rezervovanými jednotkami** (RU). Počet zřízených RU určuje počet úloh médií, které je možné v daném účtu zpracovávat současně.
 
@@ -186,7 +186,7 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 #### <a name="availability"></a>Dostupnost
 
-Chcete-li k dispozici ve všech datových center s výjimkou: Německo, Brazílie – Jih, Indie – Západ, Indie – jih a Indie – střed. 
+K dispozici ve všech datových centrech kromě oblastí: Německo, Brazílie – jih, Indie – západ, Indie – jih a Indie – střed. 
 
 ### <a name="encoding-media-processors"></a>Kódovací procesory médií
 
@@ -207,14 +207,13 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 
 |Název procesoru médií|Status|Datová centra
 |---|---|---|
-|Azure Media Face Detector|Náhled|Vše|
+|Azure Media Face Detector|Preview|Vše|
 |Azure Media Indexer|GA|Vše|
-|Azure Media Motion Detector|Náhled|Vše|
-|Azure Media OCR|Náhled|Vše|
-|Azure Media Redactor|Náhled|Vše|
-|Azure Media Stabilizer|Náhled|Vše|
-|Azure Media Video Thumbnails|Náhled|Vše|
-|Azure Media Indexer 2|Náhled|Všechny s výjimkou Číny a oblasti federální vlády|
+|Azure Media Motion Detector|Preview|Vše|
+|Azure Media OCR|Preview|Vše|
+|Azure Media Redactor|Preview|Vše|
+|Azure Media Video Thumbnails|Preview|Vše|
+|Azure Media Indexer 2|Preview|Všechny s výjimkou Číny a oblasti federální vlády|
 
 ### <a name="protection"></a>Ochrana
 
@@ -224,7 +223,7 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 |Šifrování|Status|Datová centra|
 |---|---|---| 
-|Úložiště|GA|Vše|
+|Storage|GA|Vše|
 |Klíče AES-128|GA|Vše|
 |FairPlay|GA|Vše|
 |PlayReady|GA|Vše|
@@ -254,7 +253,7 @@ Další informace najdete v části popisující [škálování](#scaling).
 |S2|GA|Všechna kromě oblastí Brazílie – jih a Indie – západ|
 |S3|GA|Všechna kromě oblasti Indie – západ|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prohlédněte si mapy kurzů k Media Services.
 

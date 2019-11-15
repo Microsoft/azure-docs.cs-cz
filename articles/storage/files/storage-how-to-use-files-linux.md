@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70673dc7d42a0c7d9b60f3c3f877c1985dac3c98
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 238afdf9e50eaccba51d996ce6e9cfd06ea36899
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097799"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092001"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí příkazu `mount` a spuštění po vytvoření položky v `/etc/fstab`.
@@ -22,11 +22,11 @@ Doporučený způsob, jak připojit sdílenou složku Azure v systému Linux, je
 | | SMB 2.1 <br>(Připojení k virtuálním počítačům ve stejné oblasti Azure) | SMB 3.0 <br>(Připojení z místního prostředí a mezi oblastmi) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
-| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
-| Debian | 8 + | 10 + |
-| openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 + | 12 SP3 + |
+| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5+ |
+| CentOS | 7 + |  7.5+ |
+| Debian | 8+ | 10+ |
+| openSUSE | 13.2 + | 42.3+ |
+| SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
 Pokud používáte distribuci systému Linux, která není uvedená v předchozí tabulce, můžete zjistit, jestli vaše distribuce systému Linux podporuje protokol SMB 3,0 se šifrováním, a to kontrolou verze jádra systému Linux. SMB 3,0 se šifrováním bylo přidáno do jádra Linux verze 4,11. Příkaz `uname` vrátí verzi operačního systému Linux, která se používá:
 
@@ -34,7 +34,7 @@ Pokud používáte distribuci systému Linux, která není uvedená v předchoz�
 uname -r
 ```
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**Ujistěte se, že je nainstalovaný balíček CIFS-util.**  
@@ -53,7 +53,7 @@ uname -r
     sudo dnf install cifs-utils
     ```
 
-    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte Správce balíčků `dnf`:
+    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte Správce balíčků `yum`:
 
     ```bash
     sudo yum install cifs-utils 
@@ -173,7 +173,7 @@ Po dokončení používání sdílené složky Azure můžete k odpojení sdíle
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **Pomocí následujícího příkazu přidejte do `/etc/fstab`následující řádek** : v následujícím příkladu je místní soubor operačního systému Linux a složka oprávnění default 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a Spustí se pro uživatele ve skupině vlastník a přečte se a spustí se pro ostatní systémy. K nastavení ID uživatele a ID skupiny pro připojení můžete použít možnosti připojení `uid` a `gid`. Pomocí `dir_mode` a `file_mode` můžete také nastavit vlastní oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii.
+1. **Pomocí následujícího příkazu přidejte do `/etc/fstab`následující řádek** : v následujícím příkladu má místní soubor operačního systému Linux výchozí oprávnění 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a čtení a spouštění pro ostatní systémy. K nastavení ID uživatele a ID skupiny pro připojení můžete použít možnosti připojení `uid` a `gid`. Pomocí `dir_mode` a `file_mode` můžete také nastavit vlastní oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii.
 
     ```bash
     httpEndpoint=$(az storage account show \

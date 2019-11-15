@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s jasný vzor Omnichannel kontakt Center | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jasný vzor Omnichannel kontakt Center.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s jasným vzorem kontaktního centra Omnichannel | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jasným vzorem Omnichannel kontaktní centrum.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,167 +13,162 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 205b1746bac30a015d4efe4bde573be44563e2f1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 27cda1f1a797ca0cb8e1b9d1c4cd7498c22ddde5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450258"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081941"
 ---
-# <a name="tutorial-integrate-bright-pattern-omnichannel-contact-center-with-azure-active-directory"></a>Kurz: Integrace jasný vzor Omnichannel kontakt Center se službou Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s jasným vzorem Omnichannel kontaktního centra
 
-V tomto kurzu se dozvíte, jak integrovat jasný vzor Omnichannel kontakt Center se službou Azure Active Directory (Azure AD). Při integraci jasný vzor Omnichannel kontakt Center s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak pomocí Azure Active Directory (Azure AD) integrovat "jasného vzoru Omnichannel Contact Center. Při integraci jasného vzoru Omnichannel kontakt Center s Azure AD můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup do centra pro jasný vzor Omnichannel kontaktu.
-* Aby uživatelé mohli být automaticky přihlášeni jasný vzor Omnichannel kontakt Center pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k jasnému vzoru Omnichannel kontaktní centrum.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k jasnému vzoru Omnichannel kontaktního centra pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
-* Jasný vzor Omnichannel kontakt Center jednotné přihlašování (SSO) povolené předplatné.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Jasný vzor Omnichannel kontaktního centra pro jednotné přihlašování (SSO) s povoleným předplatným.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Jasný vzor Omnichannel kontakt Center podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
-* Jasný vzor Omnichannel kontakt Center podporuje **JIT** zřizování uživatelů
 
-## <a name="adding-bright-pattern-omnichannel-contact-center-from-the-gallery"></a>Přidání jasný vzor Omnichannel kontakt Center z Galerie
 
-Pokud chcete nakonfigurovat integraci jasný vzor Omnichannel kontakt Center do služby Azure AD, budete muset přidat jasný vzor Omnichannel kontakt Center z Galerie na váš seznam spravovaných aplikací SaaS.
+* Jasný vzor Omnichannel kontakt Center podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
+* Jasný vzor Omnichannel kontakt Center podporuje **jenom při** zřizování uživatelů
+
+
+## <a name="adding-bright-pattern-omnichannel-contact-center-from-the-gallery"></a>Přidání jasného vzoru Omnichannel kontakt Center z Galerie
+
+Pokud chcete nakonfigurovat integraci jasného vzoru Omnichannel kontaktního centra do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Omnichannel centrum kontaktů z galerie.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **jasný vzor Omnichannel kontakt Center** do vyhledávacího pole.
-1. Vyberte **jasný vzor Omnichannel kontakt Center** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **jasný vzor Omnichannel kontakt Center** .
+1. Z panelu výsledků vyberte **jasný vzorek Omnichannel kontakt Center** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Konfigurace a otestování Azure AD jednotného přihlašování s jasný vzor Omnichannel kontakt Center pomocí testovacího uživatele volá **B.Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelem v centru kontakt Omnichannel vzor jasný.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-bright-pattern-omnichannel-contact-center"></a>Konfigurace a testování jednotného přihlašování Azure AD pro jasné vzory Omnichannel kontaktního centra
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s jasný vzor Omnichannel kontakt Center, proveďte následující stavebních bloků:
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s jasným vzorem Omnichannel kontaktů centra pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Omnichannel kontaktní centrum v jasném vzoru.
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace jednotného přihlašování k jasný vzor Omnichannel kontakt Center](#configure-bright-pattern-omnichannel-contact-center-sso)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s B.Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit B.Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele jasný vzor Omnichannel kontakt Center](#create-bright-pattern-omnichannel-contact-center-test-user)**  – Pokud chcete mít protějšek B.Simon uprostřed jasný vzor Omnichannel kontaktu, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s jasným vzorem Omnichannel Contact Center, dokončete následující stavební bloky:
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Konfigurace jasného vzoru Omnichannel kontakt Center SSO](#configure-bright-pattern-omnichannel-contact-center-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Vytvořit jasný vzor Omnichannel kontaktního centra kontaktů](#create-bright-pattern-omnichannel-contact-center-test-user)** – Chcete-li mít protějšek B. Simon v jasném vzorci Omnichannel kontaktní centrum, které je propojeno s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-1. V [webu Azure portal](https://portal.azure.com/)na **jasný vzor Omnichannel kontakt Center** stránky integrace aplikací, najdete **spravovat** a vyberte **jeden přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+1. V [Azure Portal](https://portal.azure.com/)na stránce Omnichannel ( **světlého vzoru) centra kontaktů** pro aplikace centra, najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-1. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `<SUBDOMAIN>_sso`
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.brightpattern.com/agentdesktop/sso/redirect`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `<SUBDOMAIN>_sso`
 
-1. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.brightpattern.com/agentdesktop/sso/redirect`
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<SUBDOMAIN>.brightpattern.com/`
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.brightpattern.com/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory klient System Center jasný vzor Omnichannel kontaktů](mailto:support@brightpattern.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, kontaktuje [tým technické podpory Omnichannel o kontaktech na jasné vzory](mailto:support@brightpattern.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Jasný vzor Omnichannel kontakt Center aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+1. Aplikace Omnichannel Contact Center pro jasné vzory očekává kontrolní výrazy SAML v určitém formátu, který vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![image](common/edit-attribute.png)
 
-1. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
+1. Kromě toho očekává aplikace Omnichannel Contact Center v jasném vzoru, že se v odpovědi SAML vrátí několik atributů, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
     | Název | Obor názvů  |
     | ---------------| --------------- |
     | firstName | user.givenname |
     | lastName | user.surname |
-    | email | user.mail |
+    | e-mail | user.mail |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-    c. Nechte **Namespace** prázdné.
+1. V části **nastavit jasný vzor Omnichannel kontaktů centra** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-    d. Vyberte zdroj jako **atribut**.
-
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
-
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Base64)** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
-
-   ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
-
-1. Na **nastavení jasný vzor Omnichannel kontakt Center** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
-
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
-### <a name="configure-bright-pattern-omnichannel-contact-center-sso"></a>Konfigurace jednotného přihlašování jasný vzor Omnichannel kontakt Center
-
-Ke konfiguraci jednotného přihlašování na **jasný vzor Omnichannel kontakt Center** straně, je nutné odeslat na stažený **certifikát (Base64)** a odpovídající zkopírován adresy URL z webu Azure portal [ Tým podpory jasný vzor Omnichannel kontakt Center](mailto:support@brightpattern.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte B.Simon používat jednotné přihlašování Azure díky udělení přístupu k jasný vzor Omnichannel kontakt Center.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k jasnému vzoru Omnichannel kontaktnímu centru.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **jasný vzor Omnichannel kontakt Center**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **jasný vzor Omnichannel kontakt Center**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B.Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-bright-pattern-omnichannel-contact-center-test-user"></a>Vytvoření jasný vzor Omnichannel kontakt Centrum testovacího uživatele
+## <a name="configure-bright-pattern-omnichannel-contact-center-sso"></a>Konfigurace jasného vzoru Omnichannel kontaktního centra SSO
 
-V této části se vytvoří uživateli B.Simon uprostřed kontakt Omnichannel vzor jasný. Jasný vzor Omnichannel kontakt Center podporuje zřizování uživatelů v čase, je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi jasný vzor Omnichannel kontakt Center, vytvoří se nový po ověření.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **Omnichannel kontaktů na jasném vzoru** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal na [tým technické podpory Omnichannel na střed](mailto:support@brightpattern.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="create-bright-pattern-omnichannel-contact-center-test-user"></a>Vytvořit jasný vzor Omnichannel kontakt Center Test User
 
-Když vyberete dlaždici jasný vzor Omnichannel kontakt Center na přístupovém panelu, by měly být automaticky přihlásíte do centra pro Omnichannel kontakt jasný vzor u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+V této části se vytvoří uživatel s názvem B. Simon ve světle světlého vzoru Omnichannel Contact Center. Jasný vzor Omnichannel kontakt Center podporuje zřizování uživatelů za běhu, které je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Omnichannel kontaktu v jasném vzorci neexistuje, vytvoří se po ověření nový.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="test-sso"></a>Test SSO 
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Po kliknutí na dlaždici Omnichannel (světlého vzoru) kontaktu na přístupovém panelu byste měli být automaticky přihlášeni k jasnému vzoru Omnichannel kontaktnímu softwaru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Další zdroje
+
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte jasný vzor Omnichannel kontakt Center s Azure AD](https://aad.portal.azure.com/)
+

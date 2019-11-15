@@ -1,5 +1,5 @@
 ---
-title: Sledování, metriky a upozorněními – Azure ExpressRoute | Dokumentace Microsoftu
+title: 'Azure ExpressRoute: monitorování, metriky a výstrahy'
 description: Tato stránka obsahuje informace o monitorování ExpressRoute
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672040"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083433"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorování, metriky a výstrahy služby ExpressRoute
 
@@ -34,14 +33,14 @@ Po výběru metriky se použije výchozí agregace. Volitelně můžete použít
 | --- | --- | --- | --- |
 |Dostupnost protokolu ARP|Dostupnost|<ui><li>Partner (primární/sekundární ExpressRoute směrovač)</ui></li><ui><li> Typ partnerského vztahu (Private/Public/Microsoft)</ui></li>|ExpressRoute|
 |Dostupnost protokolu BGP|Dostupnost|<ui><li> Partner (primární/sekundární ExpressRoute směrovač)</ui></li><ui><li> Typ partnerského vztahu</ui></li>|ExpressRoute|
-|BitsInPerSecond|Přenos|<ui><li> Typ partnerského vztahu (ExpressRoute)</ui></li><ui><li>Odkaz (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|Přenos| <ui><li>Typ partnerského vztahu (ExpressRoute)</ui></li><ui><li> Odkaz (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
-|GlobalReachBitsInPerSecond|Přenos|<ui><li>Skey okruhu s partnerským vztahem (klíč služby)</ui></li>|Globální dosah|
-|GlobalReachBitsOutPerSecond|Přenos|<ui><li>Skey okruhu s partnerským vztahem (klíč služby)</ui></li>|Globální dosah|
+|BitsInPerSecond|Provoz|<ui><li> Typ partnerského vztahu (ExpressRoute)</ui></li><ui><li>Odkaz (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|Provoz| <ui><li>Typ partnerského vztahu (ExpressRoute)</ui></li><ui><li> Odkaz (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|GlobalReachBitsInPerSecond|Provoz|<ui><li>Partnerský okruh skey (klíč služby)</ui></li>|Globální dosah|
+|GlobalReachBitsOutPerSecond|Provoz|<ui><li>Partnerský okruh skey (klíč služby)</ui></li>|Globální dosah|
 |AdminState|Fyzické připojení|Odkaz|ExpressRoute Direct|
 |LineProtocol|Fyzické připojení|Odkaz|ExpressRoute Direct|
-|RxLightLevel|Fyzické připojení|<ui><li>Propojit</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fyzické připojení|<ui><li>Propojit</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fyzické připojení|<ui><li></ui> propojení</li><ui><li></ui> dráhy</li>|ExpressRoute Direct|
+|TxLightLevel|Fyzické připojení|<ui><li></ui> propojení</li><ui><li></ui> dráhy</li>|ExpressRoute Direct|
 >[!NOTE]
 >Použití *GlobalGlobalReachBitsInPerSecond* a *GlobalGlobalReachBitsOutPerSecond* se zobrazí jenom v případě, že se naváže aspoň jedno připojení Global REACH.
 >
@@ -116,7 +115,7 @@ Můžete zobrazit úroveň indikátoru příjmu (úroveň světla, kterou port p
 
 2. Klikněte na tlačítko **+ vyberte cíl** a vyberte prostředek brány připojení ExpressRoute.
 
-   ![cíl]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Definujte podrobnosti o upozornění.
 
    ![Skupina akcí](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
@@ -135,7 +134,7 @@ V **kritérií výstrah**, můžete vybrat **protokolu aktivit** pro typ signál
 
   ![jiné](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nakonfigurujte připojení ExpressRoute.
   

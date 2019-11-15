@@ -1,18 +1,18 @@
 ---
 title: Monitorování Azure Analysis Services metriky serveru | Microsoft Docs
-description: Naučte se monitorovat metriky Analysis Services serveru v Azure Portal.
+description: Přečtěte si, jak Analysis Services použít Azure Průzkumník metrik, bezplatný nástroj na portálu, který vám umožní monitorovat výkon a stav serverů.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 57bcffad2634ea556cc0dd53763011f921acc5e0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146800"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572733"
 ---
 # <a name="monitor-server-metrics"></a>Monitorování metrik serveru
 
@@ -44,7 +44,7 @@ Pomocí této tabulky můžete určit, které metriky jsou pro váš scénář m
 |CurrentUserSessions|Aktuální uživatelské relace|Počet|Průměr|Aktuální počet navázaných uživatelských relací.|
 |mashup_engine_memory_metric|Paměť motoru M|Psaný|Průměr|Využití paměti procesy modulu hybridní webové aplikace|
 |mashup_engine_qpu_metric|QPU modulu M|Počet|Průměr|QPU využití hybridních procesů v hybridních modulech|
-|memory_metric|Paměť|Psaný|Průměr|Rezident. Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|
+|memory_metric|Memory (Paměť)|Psaný|Průměr|Rezident. Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|
 |memory_thrashing_metric|Thrashing paměti|Procento|Průměr|Průměrná velikost thrashing paměti|
 |CleanerCurrentPrice|Paměť: aktuální cena čisticího modulu|Počet|Průměr|Aktuální cena paměti $ USD, normalizovaná na 1000.|
 |CleanerMemoryNonshrinkable|Paměť: nezmenšovaná paměť čisticí paměti|Psaný|Průměr|Množství paměti (v bajtech), které není předmětem mazání čisticím pozadím.|

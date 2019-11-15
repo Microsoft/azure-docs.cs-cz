@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1c8717614ec59ef210c7340f70ddedd7f7f86f88
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821213"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091984"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Obnovení databáze SQL Azure pomocí automatických záloh databáze
 
@@ -108,11 +108,13 @@ Odstraněné databáze se obnovují z Azure Portal prostředku serveru a instanc
 
 Chcete-li obnovit jednu nebo sdruženou odstraněnou databázi pomocí Azure Portal, otevřete stránku Přehled serveru a vyberte **odstraněné databáze**. Vyberte odstraněnou databázi, kterou chcete obnovit, a zadejte název nové databáze, která bude vytvořena s daty obnovenými ze zálohy.
 
-  ![Snímek obrazovky s možnostmi odstraněných databází](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![Snímek obrazovky obnovení odstraněné databáze SQL Azure](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="managed-instance-database"></a>Databáze spravované instance
 
-Nemůžete použít Azure Portal k obnovení odstraněné databáze ve spravované instanci. K tomuto účelu můžete použít PowerShell. 
+Chcete-li obnovit spravovanou databázi pomocí Azure Portal, otevřete stránku Přehled spravované instance a vyberte **odstraněné databáze**. Vyberte odstraněnou databázi, kterou chcete obnovit, a zadejte název nové databáze, která bude vytvořena s daty obnovenými ze zálohy.
+
+  ![Snímek obrazovky obnovení odstraněné databáze Azure SQL instance](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="deleted-database-restore-by-using-powershell"></a>Odstranění obnovení databáze pomocí PowerShellu
 
@@ -198,12 +200,12 @@ Pro obnovení můžete použít také Azure PowerShell nebo REST API. V následu
 
 Informace o obnovení samostatné databáze nebo databáze ve fondu najdete v tématu [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
-  | Rutina | Popis |
+  | Rutiny | Popis |
   | --- | --- |
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Získá jednu nebo více databází. |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Získá odstraněnou databázi, kterou můžete obnovit. |
   | [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) |Získá geograficky redundantní zálohu databáze. |
-  | [Obnovit – AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |Obnoví databázi SQL. |
+  | [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |Obnoví databázi SQL. |
 
   > [!TIP]
   > Vzorový skript PowerShellu, který ukazuje, jak provést obnovení databáze k určitému bodu v čase, najdete v tématu [obnovení databáze SQL pomocí PowerShellu](scripts/sql-database-restore-database-powershell.md).
@@ -212,11 +214,11 @@ Informace o obnovení samostatné databáze nebo databáze ve fondu najdete v t�
 
 Chcete-li obnovit databázi spravované instance, přečtěte si téma [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
-  | Rutina | Popis |
+  | Rutiny | Popis |
   | --- | --- |
   | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Získá jednu nebo víc spravovaných instancí. |
   | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Načte databázi instance. |
-  | [Obnovit – AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Obnoví databázi instance. |
+  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Obnoví databázi instance. |
 
 ### <a name="rest-api"></a>REST API
 

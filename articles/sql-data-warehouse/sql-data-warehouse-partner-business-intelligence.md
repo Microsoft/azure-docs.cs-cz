@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse Business Intelligence partneři | Dokumentace Microsoftu
-description: Seznamy třetích stran business intelligence partnerů s řešeními, které podporují SQL Data Warehouse.
+title: Partneři Business Intelligence
+description: Seznam partnerů business intelligence třetích stran s řešeními, která podporují Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: mabasile-MSFT
 manager: craigg
@@ -10,38 +10,39 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 87379631cc7f7b9e31def157ba38336e41b693d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873813"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685631"
 ---
-# <a name="sql-data-warehouse-business-intelligence-partners"></a>Partneři business intelligence SQL Data Warehouse
-K vytvoření vašeho řešení začátku do konce datového skladu, vyberte z široké škály špičkové nástroje.  Tento článek se soustředí partnerských společností Microsoft s Azure SQL Data Warehouse podporuje řešení oficiální business intelligence (BI).
+# <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse business intelligence partneři
+Pokud chcete vytvořit komplexní řešení datového skladu, vyberte si z nejrůznějších špičkových nástrojů.  Tento článek popisuje partnerské společnosti Microsoftu s využitím oficiálních řešení business intelligence (BI), která podporují Azure SQL Data Warehouse.
 
-## <a name="our-business-intelligence-partners"></a>Naši partneři business intelligence
-| Partner | Popis | Odkaz na web nebo produkt |
+## <a name="our-business-intelligence-partners"></a>Naši business intelligence partneři
+| Partner | Popis | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
-| ![Birst][1] |**Birst**<br>Birst připojí na celou organizaci prostřednictvím sítě vetkané virtualizované BI instancí na horní sdílených běžné analytické prostředků infrastruktury|[Stránka produktu][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
-| ![ClearStory dat][2] |**Data clearStory (průběžné obchodní přehledy)**<br>ClearStory dat umožňuje rychle cyklu analýzy napříč různorodých data uložená v SQL Data Warehouse. Společnosti clearStory integrované založené na Sparku platforma a analýzy aplikací rychlosti přístupu k datům a sladění různorodých datových sad. Umožňují rychlý a spolupráci průzkumu, který umožňuje podnikovým uživatelům umožňuje se běžných a získávat poznatky. |[Stránka produktu][clearstory_website]<br> |
-| ![Dundas][4] |**Dundas BI**<br>Vizualizace dat Dundas je přední globální poskytovatel Business Intelligence a vizualizace dat softwaru.  Dundas, vytváření sestav, analýzy a řídicí panely vizuálních dat poskytuje bezproblémovou integraci do obchodních aplikací a umožňuje lepší rozhodnutí a rychlejší přehledy.|[Stránka produktu][dundas_bi_website]<br>[Azure Marketplace][dundas_bi_marketplace]<br> |
-| ![IBM Cognos][3] |**IBM Cognos Analytics**<br>Cognos Analytics zahrnuje inteligentní samoobslužné funkce, které bylo jednoduché, srozumitelné a snadno se používá, jestli se zkušeného obchodní analytička zkoumání kinks rozsáhlé dodavatelský řetězec nebo obchodník optimalizaci jedné kampaně. Cognos Analytics použije k provedení rutinní zkoumání dat, a usnadnit tak uživatelům odpovědi, které potřebují AI a další inteligentní funkce|[Stránka produktu][cognosanalytics_website]<br>|
-| ![Informace o tvůrci][13] |**Informace o tvůrci (WebFOCUS)**<br>WebFOCUS business intelligence pomáhá podnikům používat data další strategicky napříč a nad rámec podniku. Umožňuje uživatelům a správcům umožňuje rychle vytvářet řídicí panely, které kombinace obsah z více zdrojů a formátů a poskytuje špičkové zabezpečení a komplexní zásad správného řízení, které umožňuje bezproblémové, zabezpečte diverly a sdílení jakékoli analýz a BI obsah|[Stránka produktu][informationbuilders_website]<br> |
-![Jinfonet][5] |**Jinfonet JReport**<br>JReport je Vložitelný řešení BI pro firmy. Toto řešení umožňuje uživatelům vytvářet sestavy, řídicí panely a analýzy dat v cloudu, velké objemy dat a transakční data zdroje. Díky vizualizaci dat, můžete provést vlastní sestavy a data zjišťování pro agilní a v chodu rozhodování. |[Stránka produktu][jinfonet_website]<br> |
-| ![LogiAnalytics][6] |**Logi Analytics**<br>Společně Logi Analytics a Azure SQL Data Warehouse umožňuje vaší organizaci shromažďovat, analyzovat a okamžitě reagovat na největší a nejvíce různých datových sad v celém světě. |[Stránka produktu][logianalytics_website]<br>|
-| ![Looker][7] |**Looker BI**<br>Looker umožňuje všem uživatelům ve vaší společnosti můžete zkoumat a pochopit data, která vaši firmu. Analytik údajů looker také poskytuje flexibilní a opakovaně použitelné modelovací vrstva pro řízení a také tato data.  Společnosti mají zásadně transformují jeho jazykovou verzi pomocí Looker jako zprostředkující.|[Stránka produktu][looker_website]<br> [Azure Marketplace][looker_marketplace]<br> |
-| ![Microstrategy][14] |**MicroStrategy**<br>Platforma MicroStrategy nabízí kompletní sadu business intelligence a analytické funkce, které organizacím umožnil vytěžit ze svých dat obchodní hodnotu. Výkonné analytickém jádru MicroStrategy společnosti, komplexní sady nástrojů, různé datové konektory a škálovatelné open architektuře Ujistěte se, že máte všechno, co potřebujete k rozšíření přístupu ke službě analytics přes každých týmu a obchodní funkce |[Stránka produktu][microstrategy_website]<br> [Azure Marketplace][microstrategy_marketplace]<br> |
-| ![Qlik][8] |**Qlik Sense Enterprise**<br>Získejte přehled o zjišťování k aplikaci vizualizace dat, kdo, můžete použít. S Qlik Sense všichni uživatelé v organizaci můžete snadno vytvářet flexibilní, interaktivní vizualizace a mohli smysluplně rozhodovat. |[Stránka produktu][qlik_website]<br> |
-| ![SiSense][9] |**SiSense**<br>SiSense je software kompletní Business Intelligence, která se dodává s nástroji, které firma potřebuje analýza a vizualizace dat: vysoce výkonné analytické databáze, schopnost připojit k více zdrojů, jednoduchá extrakce (ETL) a na základě webových dat vizualizace. Začněte analyzovat a vizualizovat velké datové sady s SiSense BI a analytických ještě dnes. |[Stránka produktu][sisense_website]<br> |
-| ![Tableau][10] |**Tableau**<br>Tableau pro samoobslužné analýzy pomoct kdokoli viděl a pochopil svá data v mnoha různých dat z plochých souborů do databáze. Tableau s konektorem nativního, optimalizovaného do Microsoft Azure SQL Data Warehouse, která podporuje živých dat a analýzu v paměti. |[Stránka produktu][tableau_website]<br> [Azure Marketplace][tableau_marketplace]<br>|
-| ![Targit][11] |**Targit (rozhodnutí Suite)**<br>Poskytuje sada rozhodnutí Targit BI a analytických platformu, která poskytuje řídicí panely v reálném čase, samoobslužné analýzy, uživatelsky přívětivé vytváření sestav, poutavé mobilní funkce a technologie jednoduché zjišťování dat v jedné a získá na ucelenosti řešení. Targit nabízí společnostem odvahu tak, aby fungoval. |[Stránka produktu][targit_website]<br> [Azure Marketplace][targit_marketplace]<br> |
-| ![Yellowfin][12] |**Yellowfin**<br>Yellowfin je nejvyšší hodnocení dodavatele cloudu BI pro ad hoc sestavy a řídicí panely podle barc vyhodnocena jako ŠPIČKOVÁ; BI průzkumu. Připojení k Azure SQL Data Warehouse a pak vytvořit a sdílet působivé sestavy a řídicí panely s Oceňovaný spolupráci BI a umístění informačních funkcí. |[Stránka produktu][yellowfin_website]<br> [Azure Marketplace][yellowfin_marketplace] |
+| ![Birst][1] |**Birst**<br>Birst připojuje celou organizaci prostřednictvím sítě nedostanou virtualizovaných instancí BI na nejvyšší úrovni sdílených běžných analytických prostředků.|[Stránka produktu][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
+| ![ClearStory data][2] |**Data ClearStory (průběžné obchodní přehledy)**<br>ClearStory data umožňují rychlou analýzu napříč různými daty uloženými v SQL Data Warehouse. Integrovaná platforma založená na Sparku a analytické aplikace v ClearStory, přístup k datům a jejich sladění pro různorodé datové sady. Umožňují rychlý průzkum v rámci spolupráce, který umožňuje obchodním uživatelům, aby získali přehledy. |[Stránka produktu][clearstory_website]<br> |
+| ![Dundas][4] |**Dundas BI**<br>Dundas data vizualizace je přední globální poskytovatel softwaru Business Intelligence a vizualizace dat.  Dundas řídicí panely, generování sestav a vizuální analýzy dat poskytují bezproblémovou integraci do obchodních aplikací a umožňují lepší rozhodování a rychlejší přehledy.|[Stránka produktu][dundas_bi_website]<br>[Azure Marketplace][dundas_bi_marketplace]<br> |
+| ![IBM Cognos][3] |**Analýza IBM Cognos**<br>Cognos Analytics zahrnuje inteligentní funkce samoobslužných služeb, které zjednodušují a neumožňují snadné použití, ať už jste zkušeným obchodním analytikem, který prověří Kinks v případě velkého dodavatelského řetězce nebo na trhu, který optimalizuje jednotlivou kampaň. Cognos Analytics používá AI a další inteligentní funkce k provádění těžkého zvedání dat a usnadňuje uživatelům získat odpovědi, které potřebují.|[Stránka produktu][cognosanalytics_website]<br>|
+| ![Tvůrci informací][13] |**Tvůrci informací (WebFOCUS)**<br>WebFOCUS business intelligence pomáhá společnostem efektivněji používat data napříč i mimo podnik. Umožňuje uživatelům a správcům rychle vytvářet řídicí panely, které kombinují obsah z různých zdrojů a formátů dat a poskytuje robustní zabezpečení a komplexní zásady správného řízení, které umožňují bezproblémové, zabezpečené diverly a sdílení všech BI a analýz. sušin|[Stránka produktu][informationbuilders_website]<br> |
+![Společnosti][5] |**JReport Jinfonet**<br>JReport je vložené řešení BI pro podniky. Řešení umožňuje uživatelům vytvářet sestavy, řídicí panely a analýzu dat v cloudu, velkých objemech dat a transakčních zdrojích dat. Vizualizací dat vám umožní vytvářet vlastní generování sestav a zjišťování dat pro agilní a průběžné rozhodování. |[Stránka produktu][jinfonet_website]<br> |
+| ![LogiAnalytics][6] |**Logi Analytics**<br>Logi Analytics a Azure SQL Data Warehouse umožňuje organizaci shromažďovat, analyzovat a okamžitě reagovat na největších a nejvíce různých datových sadách na světě. |[Stránka produktu][logianalytics_website]<br>|
+| ![Looker][7] |**Looker BI**<br>Looker poskytuje všem ve vaší společnosti možnost prozkoumat a pochopit data, která jsou na vašem podniku. Looker také poskytuje analytikovi dat flexibilní a opakovaně použitelnou vrstvu modelování pro řízení a správu těchto dat.  Společnosti mají zásadní transformaci své kultury pomocí Looker jako katalyzátoru.|[Stránka produktu][looker_website]<br> [Azure Marketplace][looker_marketplace]<br> |
+| ![Mikrostrategie][14] |**Mikrostrategie**<br>Mikrostrategie platformy nabízí kompletní sadu business intelligence a analytických možností, které organizacím umožňují získat hodnotu z jejich obchodních dat. Výkonný analytický modul pro mikrostrategie, komplexní sady nástrojů, nejrůznější datové konektory a škálovatelná, otevřená architektura zajišťuje, že máte všechno, co potřebujete k rozšíření přístupu ke analýzám napříč každým týmem a obchodní funkcí. |[Stránka produktu][microstrategy_website]<br> [Azure Marketplace][microstrategy_marketplace]<br> |
+| ![Qlik][8] |**Qlik Sense Enterprise**<br>Pomocí aplikace pro vizualizaci dat, kterou může kdokoli použít, můžete vyřídit funkci Insight Discovery. Díky Qlik smyslu můžou všichni ve vaší organizaci snadno vytvářet flexibilní a interaktivní vizualizace a dělat smysluplná rozhodnutí. |[Stránka produktu][qlik_website]<br> |
+| ![SiSense][9] |**SiSense**<br>SiSense je plnohodnotný software Business Intelligence, který je součástí nástrojů, které podnik potřebuje k analýze a vizualizaci dat: vysoce výkonné analytické databáze, možnost spojit více zdrojů, ETL (Simple data extrakce) a webová data. vizualizac. Začněte s analýzou a vizualizací velkých datových sad pomocí SiSense BI a analýz ještě dnes. |[Stránka produktu][sisense_website]<br> |
+| ![Tableau][10] |**Tableau**<br>Samoobslužná analýza Tableau umožňuje komukoli zobrazit a pochopit svá data napříč mnoha druhy dat z plochých souborů až po databáze. Tableau má nativní optimalizovaný konektor na Microsoft Azure SQL Data Warehouse, který podporuje živá data i analýzu v paměti. |[Stránka produktu][tableau_website]<br> [Azure Marketplace][tableau_marketplace]<br>|
+| ![Targit][11] |**Targit (rozhodovací sada)**<br>Targit Decision Suite poskytuje platformu BI a analýzy, která poskytuje řídicí panely v reálném čase, samoobslužnou analýzu, uživatelsky přívětivou tvorbu sestav, poutavé mobilní funkce a jednoduchou technologii zjišťování dat v jediném soudržném řešení. Targit poskytuje společnostem, které doporučuje jednat. |[Stránka produktu][targit_website]<br> [Azure Marketplace][targit_marketplace]<br> |
+| ![Yellowfin][12] |**Yellowfin**<br>Yellowfin je nejvyšší hodnocený dodavatel cloudu BI pro ad hoc generování sestav a řídicích panelů pomocí BARC; Průzkum BI. Připojovat se k Azure SQL Data Warehouse a pak vytvářet a sdílet působivé sestavy a řídicí panely s oceněnými funkcemi pro spolupráci BI a umístění. |[Stránka produktu][yellowfin_website]<br> [Azure Marketplace][yellowfin_marketplace] |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o některých z našich partnerů, naleznete v tématu [partneři pro integraci dat] [ di_partners] a [partnerů pro správu dat][dm_partners].
+Další informace o některých našich partnerech najdete v tématu [partneři pro integraci dat][di_partners] a [Správa dat partneři][dm_partners].
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png

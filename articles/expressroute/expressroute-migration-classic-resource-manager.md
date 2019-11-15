@@ -1,5 +1,5 @@
 ---
-title: 'Migrace virtuální sítě z classic na Resource Manager – ExpressRoute: Azure: Prostředí PowerShell | Dokumentace Microsoftu'
+title: 'Azure ExpressRoute: migrace klasického virtuální sítěu do Správce prostředků'
 description: Tato stránka popisuje, jak migrovat ExpressRoute přidružené k virtuálním sítím na Resource Manager po přesunu okruh.
 services: expressroute
 author: cherylmc
@@ -7,23 +7,22 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: f73ab7b68e56f5303e84d86a2711b53ffc894276
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 2b74523f42a1f57805388aa8c60cf1ad5b1d1331
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718172"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080084"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrace virtuální sítě přidružené k ExpressRoute z modelu nasazení classic do Resource Manageru
 
 Tento článek vysvětluje, jak migrovat virtuální sítě přidružené k ExpressRoute z modelu nasazení classic do modelu nasazení Azure Resource Manageru po přesunu okruh ExpressRoute. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Ověřte, že máte nejnovější verze modulů Azure Powershellu. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Chcete-li nainstalovat modul prostředí PowerShell služby správy (který je nutný pro model nasazení classic), najdete v článku [instalace modulu Azure PowerShell služby správy](/powershell/azure/servicemanagement/install-azure-ps).
+* Ověřte, že máte nejnovější verze Azure PowerShell modulů. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud chcete nainstalovat modul PowerShell Service Management (který je potřebný pro model nasazení Classic), přečtěte si téma [Instalace modulu správy služby Azure PowerShell](/powershell/azure/servicemanagement/install-azure-ps).
 * Ujistěte se, že jste si prohlédli [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 * Projděte si informace, které není k dispozici [přesunu okruh ExpressRoute z modelu nasazení classic do Resource Manageru](expressroute-move.md). Ujistěte se, že plně chápete limity a omezení.
 * Ověřte, že je okruh v modelu nasazení classic plně funkční.
@@ -41,7 +40,7 @@ Tento článek vysvětluje, jak migrovat virtuální sítě přidružené k Expr
 * Virtuální sítě, bran a navazující nasazení v rámci virtuální sítě, které jsou připojeny k okruhu ExpressRoute v rámci stejného předplatného, můžete migrovat do Resource Manageru prostředí bez jakýchkoli prostojů. Provedením kroků popsaných dále migrovat prostředky, jako jsou virtuální sítě, bran a virtuálních počítačů nasazených v rámci virtuální sítě. Musíte zajistit, že virtuální sítě mají správnou konfiguraci před migrací. 
 * Virtuální sítě, bran a navazující nasazení v rámci virtuální sítě, které nejsou ve stejném předplatném jako okruh ExpressRoute vyžadují určitý výpadek k dokončení migrace. Poslední část dokumentu popisuje kroky, kterými se můžete řídit migrace prostředků.
 * Není možné migrovat virtuální síť s bránu ExpressRoute i bránu VPN.
-* Migrace mezi předplatnými okruhu ExpressRoute není podporována. Další informace najdete v tématu [Microsoft.Network přesunout podporu](../azure-resource-manager/move-support-resources.md#microsoftnetwork).
+* Migrace mezi předplatnými okruhů ExpressRoute se nepodporuje. Další informace najdete v tématu [Podpora přesunutí Microsoft. Network](../azure-resource-manager/move-support-resources.md#microsoftnetwork).
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>Přesun okruhu ExpressRoute z modelu nasazení classic do Resource Manageru
 Okruh ExpressRoute musí přesunout z classic do Resource Manageru prostředí před pokusem o migraci prostředků, které jsou připojeny k okruhu ExpressRoute. Tento úkol provést, najdete v následujících článcích:
@@ -82,7 +81,7 @@ Tato část popisuje postup platí pro migraci virtuální sítě, brána a při
    Move-AzureVirtualNetwork -Abort $vnetName
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Platformou podporované migraci prostředků IaaS z modelu classic na Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 * [Nejčastější dotazy: Platformou podporované migraci prostředků IaaS z modelu classic na Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)

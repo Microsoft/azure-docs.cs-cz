@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: fb1f8a1d1f8e1ebbaf3e0e9fe96e3c1bf0ba9ba6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176162"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078754"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Použití privátních koncových bodů pro Azure Storage (Preview)
 
@@ -22,7 +22,7 @@ Pro účty Azure Storage můžete použít [soukromé koncové body](../../priva
 
 Použití privátních koncových bodů pro váš účet úložiště vám umožní:
 - Zabezpečte svůj účet úložiště tak, že nakonfigurujete bránu firewall úložiště tak, aby blokovala všechna připojení na veřejném koncovém bodu služby úložiště.
-- Zvyšuje zabezpečení virtuální sítě, protože umožňuje blokovat exfiltrace dat z virtuální sítě.
+- Zvyšte zabezpečení virtuální sítě tak, že povolíte blokování exfiltrace dat z virtuální sítě.
 - Připojte se bezpečně k účtům úložiště z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
 
 ## <a name="conceptual-overview"></a>Koncepční přehled
@@ -30,11 +30,11 @@ Použití privátních koncových bodů pro váš účet úložiště vám umož
 
 Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší [Virtual Network](../../virtual-network/virtual-networks-overview.md) (virtuální síť). Když vytvoříte privátní koncový bod pro svůj účet úložiště, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším úložištěm. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou úložiště používá zabezpečený privátní odkaz.
 
-Aplikace ve virtuální síti se můžou bez problémů připojit k službě úložiště přes soukromý koncový bod pomocí stejných připojovacích řetězců a mechanismů autorizace, které by jinak používaly. Soukromé koncové body lze použít se všemi protokoly podporovanými účtem úložiště, včetně REST a protokolu SMB.
+Aplikace ve virtuální síti se můžou bez problémů připojit k službě úložiště přes soukromý koncový bod **pomocí stejných připojovacích řetězců a mechanismů autorizace, které by jinak používaly**. Soukromé koncové body lze použít se všemi protokoly podporovanými účtem úložiště, včetně REST a protokolu SMB.
 
 Když vytvoříte privátní koncový bod pro službu úložiště ve vaší virtuální síti, pošle se žádost o souhlas ke schválení vlastníkem účtu úložiště. Pokud je uživatel žádající o vytvoření privátního koncového bodu také vlastníkem účtu úložiště, bude tato žádost o přijetí souhlasu automaticky schválena.
 
-Vlastníci účtu úložiště můžou spravovat žádosti o souhlas a soukromé koncové body přes kartu privátní koncové body pro účet úložiště v [Azure Portal](https://portal.azure.com).
+Vlastníci účtu úložiště můžou spravovat žádosti o souhlas a soukromé koncové body přes kartu*privátní koncové body*pro účet úložiště v [Azure Portal](https://portal.azure.com).
 
 > [!TIP]
 > Pokud chcete omezit přístup k účtu úložiště jenom prostřednictvím privátního koncového bodu, nakonfigurujte bránu firewall úložiště tak, aby odepřela veškerý přístup prostřednictvím veřejného koncového bodu.
@@ -48,9 +48,9 @@ Při vytváření privátního koncového bodu musíte zadat účet úložiště
 > [!TIP]
 > Vytvořte samostatný privátní koncový bod pro sekundární instanci služby úložiště pro lepší výkon při čtení účtů RA-GRS.
 
-Pro čtení v [účtu geograficky redundantního úložiště s přístupem pro čtení](storage-redundancy-grs.md#read-access-geo-redundant-storage)budete potřebovat samostatné koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání**. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci. Git 
+Pro čtení v [účtu geograficky redundantního úložiště s přístupem pro čtení](storage-redundancy-grs.md#read-access-geo-redundant-storage)budete potřebovat samostatné koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání**. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci.
 
-#### <a name="resources"></a>Materiály
+#### <a name="resources"></a>Prostředky
 
 Podrobnější informace o vytvoření privátního koncového bodu pro účet úložiště najdete v následujících článcích:
 
@@ -61,7 +61,7 @@ Podrobnější informace o vytvoření privátního koncového bodu pro účet �
 
 ### <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
 
-Klienti ve virtuální síti můžou použít stejný připojovací řetězec pro účet úložiště i v případě, že se používá privátní koncový bod.
+Klienti ve virtuální síti by měli používat stejný připojovací řetězec pro účet úložiště, a to i v případě, že se používá privátní koncový bod.
 
 Při vytváření privátního koncového bodu aktualizujeme záznam prostředku CNAME DNS pro tento koncový bod úložiště na alias v subdoméně s předponou '*privatelink*'. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](../../dns/private-dns-overview.md) připojenou k virtuální síti. Tato soukromá zóna DNS odpovídá subdoménám s předponou '*privatelink*' a obsahuje záznamy prostředků DNS pro privátní koncové body.
 
@@ -69,7 +69,7 @@ Při překladu adresy URL koncového bodu úložiště mimo virtuální síť s 
 
 V zobrazeném příkladu se v záznamech o prostředcích DNS pro účet úložiště "StorageAccountA" po vyřešení mimo virtuální síť hostující soukromý koncový bod:
 
-| Name (Název)                                                  | Typ  | Hodnota                                                 |
+| Název                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | veřejný koncový bod služby \<Storage\>                   |
@@ -79,21 +79,24 @@ Jak už jsme uvedli, můžete všem přístupům odepřít přes Veřejný konco
 
 Záznamy prostředků DNS pro StorageAccountA, když je klient ve virtuální síti hostující soukromý koncový bod, budou:
 
-| Name (Název)                                                  | Typ  | Hodnota                                                 |
+| Název                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | zákazníka 10.1.1.5                                              |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-Tento přístup umožňuje přístup k účtu úložiště pomocí stejného připojovacího řetězce z virtuální sítě, která je hostitelem privátních koncových bodů, i klientů mimo virtuální síť. Bránu firewall úložiště můžete použít k odepření přístupu všem klientům mimo virtuální síť.
+Tento přístup umožňuje přístup k účtu úložiště **pomocí stejného připojovacího řetězce** z virtuální sítě, která je hostitelem privátních koncových bodů, i klientů mimo virtuální síť. Bránu firewall úložiště můžete použít k odepření přístupu všem klientům mimo virtuální síť.
+
+> [!IMPORTANT]
+> Použijte stejný připojovací řetězec pro připojení k účtu úložiště prostřednictvím soukromých koncových bodů, protože byste mohli jinak použít. Nepřipojujte se prosím k účtu úložiště pomocí adresy URL subdomény*privatelink*.
 
 > [!TIP]
-> Pokud používáte vlastní nebo místní server DNS, měli byste použít subdoménu privatelink služby úložiště ke konfiguraci záznamů o prostředcích DNS pro privátní koncové body.
+> Pokud používáte vlastní nebo místní server DNS, měli byste nakonfigurovat záznamy prostředků DNS pro privátní koncové body v zóně DNS, která odpovídá subdoméně privatelink služby úložiště.
 
 Doporučené názvy zón DNS pro privátní koncové body služby Storage jsou:
 
 | Služba úložiště        | Název zóny                            |
 | :--------------------- | :----------------------------------- |
-| Blob Service           | `privatelink.blob.core.windows.net`  |
+| Blob service           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
 | Souborová služba           | `privatelink.file.core.windows.net`  |
 | Služba front          | `privatelink.queue.core.windows.net` |
@@ -106,12 +109,12 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](ht
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="copy-blob-failures"></a>Selhání kopírování objektů BLOB
+### <a name="copy-blob-support"></a>Podpora kopírování objektů BLOB
 
-Příkazy [objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) vydané pro účty úložiště, které jsou dostupné prostřednictvím privátních koncových bodů, se v současné době nezdaří, když je zdrojový účet úložiště chráněný bránou firewall.
+Ve verzi Preview nepodporujeme [kopírování příkazů objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) vydaných na účty úložiště, ke kterým jste získali prostřednictvím privátních koncových bodů, když je zdrojový účet úložiště chráněný bránou firewall.
 
 ### <a name="subnets-with-service-endpoints"></a>Podsítě s koncovými body služby
-V rámci verze Preview nemůžete vytvořit privátní koncový bod v podsíti, která má koncové body služby. U koncových bodů služby a soukromých koncových bodů můžete vytvořit samostatné podsítě ve stejné virtuální síti.
+V současné době nemůžete vytvořit privátní koncový bod v podsíti, která má koncové body služby. Jako alternativní řešení můžete vytvořit samostatné podsítě ve stejné virtuální síti pro koncové body služby a privátní koncové body.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Omezení přístupu k úložišti pro klienty v virtuální sítě s privátními koncovými body
 

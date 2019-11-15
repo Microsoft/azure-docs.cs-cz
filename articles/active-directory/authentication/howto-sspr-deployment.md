@@ -11,14 +11,17 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b648d6f914b5e3004ea3b62019bbec33e5a4871d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743246"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081518"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Nasazení samoobslužného resetování hesla Azure AD
+
+> [!NOTE]
+> Tato příručka vysvětluje Samoobslužné resetování hesla a způsob jejich nasazení. Pokud hledáte Nástroj pro Samoobslužné resetování hesla, který se vrátí k vašemu účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr). 
 
 Samoobslužné resetování hesla (SSPR) je funkce Azure Active Directory, která zaměstnancům umožňuje resetovat hesla bez nutnosti kontaktovat pracovníky oddělení IT. Před použitím služby se zaměstnanci musí zaregistrovat pro Samoobslužné resetování hesla nebo je zaregistrovat. Během registrace zvolí zaměstnanec jednu nebo více metod ověřování povolených organizací.
 
@@ -53,7 +56,7 @@ V kombinovaném prostředí pro registraci není nutné, aby organizace povolily
 
 K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nastavení.
 
-| Oblast | Nastavení | Value |
+| Oblast | Nastavení | Hodnota |
 | --- | --- | --- |
 | **Vlastnosti SSPR** | Samoobslužné resetování hesla povoleno | **Vybraná** skupina pro pilotní/ **vše** pro produkci |
 | **Metody ověřování** | Metody ověřování vyžadované k registraci | Vždy 1, než je vyžadováno pro resetování |
@@ -62,7 +65,7 @@ K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nas
 |   | Počet dní, než se uživatelům zobrazí výzva k opětovnému potvrzení ověřovacích informací | 90 – 180 dnů |
 | **Oznámení** | Upozornit uživatele na resetování hesla | Ano |
 |   | Upozornit všechny správce na resetování hesla jiného správce | Ano |
-| **Uživatelských** | Přizpůsobit odkaz na helpdesk | Ano |
+| **Uživatelských** | Přizpůsobení odkazu na helpdesk | Ano |
 |   | E-mail nebo adresa URL vlastního helpdesku | Web podpory nebo e-mailová adresa |
 | **Místní integrace** | Zápis hesel zpátky do místní služby AD | Ano |
 |   | Povolí uživatelům odemknout účet bez resetování hesla. | Ano |
@@ -206,7 +209,7 @@ Zařízení s Windows 10, která používají verzi 1803 nebo vyšší, která j
 
 ### <a name="configure-password-writeback"></a>Konfigurace zpětného zápisu hesla
 
-Postup konfigurace zpětného zápisu hesla pro vaši organizaci najdete v článku [postupy: Nakonfigurujte zpětný zápis](howto-sspr-writeback.md)hesla.
+Postup konfigurace zpětného zápisu hesla pro vaši organizaci najdete v článku [Postupy: Konfigurace zpětného zápisu hesla](howto-sspr-writeback.md).
 
 ## <a name="manage-sspr"></a>Správa SSPR
 
@@ -215,7 +218,7 @@ Požadované role pro správu funkcí přidružených k samoobslužnému resetov
 | Obchodní role/osoby | Role Azure AD (v případě potřeby) |
 | :---: | :---: |
 | HelpDesk úrovně 1 | Správce hesel |
-| HelpDesk úrovně 2 | Správce uživatelů |
+| HelpDesk úrovně 2 | Správce uživatele |
 | Správce SSPR | Globální správce |
 
 ### <a name="support-scenarios"></a>Scénáře podpory
@@ -239,7 +242,7 @@ Pro další řešení potíží můžete také zahrnout další informace, jako 
 
 V online dokumentaci můžete také informace o řešení potíží samoobslužného resetování hesla, abyste porozuměli obecným krokům při řešení potíží s nejběžnějšími scénáři SSPR.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zvažte implementaci ochrany heslem Azure AD.](concept-password-ban-bad.md)
 

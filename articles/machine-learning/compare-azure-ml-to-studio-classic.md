@@ -8,23 +8,23 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 00a2268442f94822064f86d95b14160d67e1516c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716692"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084764"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Způsob, jakým se Azure Machine Learning liší od ML Studio (klasické)
 
 Tento článek porovnává funkce, možnosti a rozhraní Azure Machine Learning ML Studio (Classic). 
 
 ## <a name="about-ml-studio-classic"></a>O ML Studio (Classic)
-[Ml Studio (Classic)](/studio/what-is-ml-studio.md) je prostředí pro spolupráci, přetahování myší, kde můžete vytvářet, testovat a nasazovat řešení strojového učení, aniž byste museli psát kód. Používá předem sestavené a předem nakonfigurované algoritmy strojového učení a moduly pro zpracování dat a také speciální výpočetní platformu.
+[Ml Studio (Classic)](studio/what-is-ml-studio.md) je prostředí pro spolupráci, přetahování myší, kde můžete vytvářet, testovat a nasazovat řešení strojového učení, aniž byste museli psát kód. Používá předem sestavené a předem nakonfigurované algoritmy strojového učení a moduly pro zpracování dat a také speciální výpočetní platformu.
 
 ## <a name="about-azure-machine-learning"></a>Informace o službě Azure Machine Learning
 
-Mezitím [Azure Machine Learning](/service/overview-what-is-azure-ml.md) poskytuje jak webové rozhraní s názvem Návrhář (Preview) **,** tak několik sad SDK a CLI pro rychlé přípravu dat, výuku a nasazení modelů strojového učení. Díky Azure Machine Learning získáte škálování, podporu více platforem, pokročilé možnosti ML, jako je automatické strojové učení a podpora kanálů.
+Mezitím [Azure Machine Learning](service/overview-what-is-azure-ml.md) poskytuje jak webové rozhraní s názvem Návrhář (Preview) **,** tak několik sad SDK a CLI pro rychlé přípravu dat, výuku a nasazení modelů strojového učení. Díky Azure Machine Learning získáte škálování, podporu více platforem, pokročilé možnosti ML, jako je automatické strojové učení a podpora kanálů.
 
 Azure Machine Learning Designer nabízí podobné prostředí pro přetahování do studia (Classic). Na rozdíl od proprietární výpočetní platformy studia (Classic) ale Návrhář používá vaše vlastní výpočetní prostředky, je škálovatelný a plně integrovaný do Azure Machine Learning.  
 
@@ -39,7 +39,7 @@ Tady je rychlé porovnání.
 |---| --- | --- |
 ||Návrhář je ve verzi Preview, Azure Machine Learning je GA.|Všeobecně dostupná (GA) | 
 |Rozhraní přetažení| Ano | Ano|
-|Začátku| Škálování s cílem výpočetního prostředí|Škálování (limit pro školicí data pro 10GB) | 
+|Experiment| Škálování s cílem výpočetního prostředí|Škálování (limit pro školicí data pro 10GB) | 
 |Moduly pro rozhraní| [Mnoho oblíbených modulů](algorithm-module-reference/module-reference.md) | Počtu |
 |Školení výpočetních cílů| AML COMPUTE (GPU/CPU)|Proprietární výpočetní cíl, jenom procesor|
 |Inferencing výpočetní cíle| Služba Azure Kubernetes pro odvození v reálném čase <br/>AML COMPUTE pro odvození dávky|Speciální formát webové služby, není přizpůsobitelný | 

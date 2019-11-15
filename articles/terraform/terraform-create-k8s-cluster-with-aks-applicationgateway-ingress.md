@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 853175665ce16c9ec972b184f9e07838b407b628
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/13/2019
+ms.openlocfilehash: 31faedf247f8dd0799a4ee52cabc8386f0363ff6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969581"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082574"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Kurz: vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
 
@@ -28,11 +28,13 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * K vytvoření clusteru Kubernetes použijte Terraformu a AKS.
 > * K otestování dostupnosti clusteru Kubernetes použijte nástroj kubectl.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
 - **Nakonfigurovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure).
+
+- **Skupina prostředků Azure**: Pokud ještě nemáte skupinu prostředků Azure, která se má použít pro ukázku, [vytvořte skupinu prostředků Azure](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Poznamenejte si název a umístění skupiny prostředků, protože tyto hodnoty jsou použity v ukázce.
 
 - **Instanční objekt Azure:** Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty pro parametr appId, DisplayName a Password.
 
@@ -68,7 +70,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `main.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -86,13 +88,13 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="define-input-variables"></a>Definování vstupních proměnných
 
 Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech proměnných potřebných pro toto nasazení.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -102,7 +104,7 @@ Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech promě
     
     ```hcl
     variable "resource_group_name" {
-      description = "Name of the resource group already created."
+      description = "Name of the resource group."
     }
 
     variable "location" {
@@ -229,12 +231,12 @@ Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech promě
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="define-the-resources"></a>Definování prostředků 
 Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředky. 
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `resources.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `resources.tf`.
 
     ```bash
     code resources.tf
@@ -312,7 +314,7 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
       name                         = "publicIp1"
       location                     = data.azurerm_resource_group.rg.location
       resource_group_name          = data.azurerm_resource_group.rg.name
-      public_ip_address_allocation = "static"
+      allocation_method            = "Static"
       sku                          = "Standard"
 
       tags = var.tags
@@ -470,7 +472,7 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
 
     ```
 
-1. Uložte soubor a ukončete Editor.
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 Kód uvedený v této části nastaví název clusteru, umístění a resource_group_name. Hodnota `dns_prefix` – ta tvoří část plně kvalifikovaného názvu domény (FQDN), která se používá pro přístup ke clusteru – je nastavena.
 
@@ -482,7 +484,7 @@ Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` n
 
 [Terraformuové výstupy](https://www.terraform.io/docs/configuration/outputs.html) umožňují definovat hodnoty, které jsou zvýrazněné uživateli, když terraformu použije plán, a dá se dotázat pomocí příkazu `terraform output`. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `output.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `output.tf`.
 
     ```bash
     code output.tf
@@ -528,21 +530,19 @@ Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` n
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="configure-azure-storage-to-store-terraform-state"></a>Konfigurace úložiště Azure pro ukládání stavu Terraformu
 
 Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. Tento model funguje dobře v prostředí s jednou osobou. Ve více praktických prostředích pro více uživatelů je ale potřeba sledovat stav na serveru pomocí služby [Azure Storage](/azure/storage/). V této části se dozvíte, jak načíst potřebné informace o účtu úložiště a vytvořit kontejner úložiště. Informace o stavu Terraformu jsou následně uloženy v tomto kontejneru.
 
-1. Na webu Azure Portal vyberte v levé nabídce **Všechny služby**.
+1. V Azure Portal v části **služby Azure**vyberte **účty úložiště**. (Pokud se možnost **účty úložiště** na hlavní stránce nezobrazuje, vyberte **Další služby** a pak ji vyhledejte a vyberte.)
 
-1. Vyberte **Účty úložiště**.
-
-1. Na kartě **Účty úložiště** vyberte název účtu úložiště, do kterého má Terraform ukládat stav. Můžete například použít účet úložiště, který se vytvoří při prvním otevření služby Cloud Shell.  Název účtu úložiště vytvořeného službou Cloud Shell obvykle začíná na `cs` a následuje ho řetězec náhodných čísel a písmen. 
+1. Na stránce **účty úložiště** vyberte název účtu úložiště, do kterého má terraformu ukládat stav. Můžete například použít účet úložiště, který se vytvoří při prvním otevření služby Cloud Shell.  Název účtu úložiště vytvořeného službou Cloud Shell obvykle začíná na `cs` a následuje ho řetězec náhodných čísel a písmen. 
 
     Poznamenejte si vybraný účet úložiště, jak ho budete potřebovat později.
 
-1. Na kartě účtu úložiště vyberte **Přístupové klíče**.
+1. Na stránce účtu úložiště vyberte **Přístupové klíče**.
 
     ![Nabídka účtu úložiště](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
@@ -550,7 +550,7 @@ Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. T
 
     ![Přístupové klíče účtu úložiště](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 
-1. V Cloud Shell vytvořte v účtu úložiště Azure kontejner (nahraďte &lt;YourAzureStorageAccountName > a &lt;zástupné symboly YourAzureStorageAccountAccessKey > s příslušnými hodnotami pro váš účet úložiště Azure).
+1. V Cloud Shell vytvořte kontejner v účtu úložiště Azure. Zástupné symboly nahraďte odpovídajícími hodnotami pro svůj účet úložiště Azure.
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
@@ -559,7 +559,7 @@ Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. T
 ## <a name="create-the-kubernetes-cluster"></a>Vytvoření clusteru Kubernetes
 V této části zjistíte, jak použít příkaz `terraform init` k vytvoření prostředků definovaných konfiguračními soubory, které jste vytvořili v předchozích částech.
 
-1. V Cloud Shell inicializujte Terraformu (nahraďte &lt;YourAzureStorageAccountName > a &lt;> YourAzureStorageAccountAccessKeyy zástupné symboly odpovídajícími hodnotami pro váš účet služby Azure Storage).
+1. V Cloud Shell inicializujte Terraformu. Zástupné symboly nahraďte odpovídajícími hodnotami pro svůj účet úložiště Azure.
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
@@ -569,28 +569,28 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform init“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
-1. V Cloud Shell vytvořte soubor s názvem `main.tf`:
+1. V Cloud Shell vytvořte soubor s názvem `terraform.tfvars`:
 
     ```bash
     code terraform.tfvars
     ```
 
-1. Do editoru vložte následující proměnné, které jste vytvořili dříve:
+1. Do editoru vložte následující proměnné, které jste vytvořili dříve. Pro získání hodnoty umístění pro vaše prostředí použijte `az account list-locations`.
 
     ```hcl
-    resource_group_name = <Name of the Resource Group already created>
+    resource_group_name = "<Name of the Resource Group already created>"
 
-    location = <Location of the Resource Group>
+    location = "<Location of the Resource Group>"
       
-    aks_service_principal_app_id = <Service Principal AppId>
+    aks_service_principal_app_id = "<Service Principal AppId>"
       
-    aks_service_principal_client_secret = <Service Principal Client Secret>
+    aks_service_principal_client_secret = "<Service Principal Client Secret>"
       
-    aks_service_principal_object_id = <Service Principal Object Id>
+    aks_service_principal_object_id = "<Service Principal Object Id>"
         
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 1. Spuštěním příkazu `terraform plan` vytvořte plán Terraformu, který definuje prvky infrastruktury. 
 
@@ -598,7 +598,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
     terraform plan -out out.plan
     ```
 
-    Příkaz `terraform plan` zobrazuje prostředky, které se vytvoří při spuštění příkazu `terraform apply`:
+    Příkaz `terraform plan` zobrazuje prostředky, které jsou vytvořeny při spuštění příkazu `terraform apply`:
 
     ![Příklad výsledků příkazu „terraform plan“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
@@ -665,21 +665,21 @@ Azure Active Directory pod identitou poskytuje přístup založený na tokenech 
 
 [Služba Azure AD pod identitou](https://github.com/Azure/aad-pod-identity) přidá do clusteru Kubernetes následující součásti:
 
-  - Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`, `AzureIdentityBinding`
+  - Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity``AzureIdentityBinding`
   - Komponenta [spravovaného řadiče identity (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
   - Komponenta [spravované identity (NMI) uzlů](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
 
 Pokud je **povolená**funkce RBAC, spusťte následující příkaz, který do svého clusteru nainstaluje IDENTITU Azure AD pod:
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
-    ```
+```bash
+kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
+```
 
 Pokud je funkce RBAC **zakázaná**, spusťte následující příkaz, který do vašeho clusteru nainstaluje IDENTITU Azure AD pod:
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
-    ```
+```bash
+kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
+```
 
 ## <a name="install-helm"></a>Nainstalovat Helm
 
@@ -717,28 +717,28 @@ Kód v této části používá správce balíčků [Helm](/azure/aks/kubernetes
 1. Upravte `helm-config.yaml` a zadejte příslušné hodnoty pro oddíly `appgw` a `armAuth`.
 
     ```bash
-    nano helm-config.yaml
+    code helm-config.yaml
     ```
 
     Hodnoty jsou popsány takto:
 
-    - `verbosityLevel`: nastavuje úroveň podrobností infrastruktury protokolování AGIC. Možné hodnoty najdete v tématu [úrovně protokolování](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) .
+    - `verbosityLevel`: nastaví úroveň podrobností infrastruktury protokolování AGIC. Možné hodnoty najdete v tématu [úrovně protokolování](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) .
     - `appgw.subscriptionId`: ID předplatného Azure pro službu App Gateway. Příklad: `a123b234-a3b4-557d-b2df-a0bc12de1234`
     - `appgw.resourceGroup`: název skupiny prostředků Azure, ve které se aplikace App Gateway vytvořila. 
     - `appgw.name`: název Application Gateway. Příklad: `applicationgateway1`.
-    - `appgw.shared`: Tento logický příznak by měl být nastaven na výchozí hodnotu `false`. Nastavte na `true`, pokud potřebujete [sdílenou bránu aplikace](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway).
-    - `kubernetes.watchNamespace`: zadejte obor názvů, který má AGIC sledovat. Obor názvů může být jediná řetězcová hodnota nebo seznam oborů názvů oddělených čárkami.
-    - `armAuth.type`: hodnota buď `aadPodIdentity`, nebo `servicePrincipal`.
+    - `appgw.shared`: Tento logický příznak by měl být nastaven na výchozí hodnotu `false`. Pokud potřebujete [sdílenou bránu aplikace](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway), nastavte na `true`.
+    - `kubernetes.watchNamespace`: zadejte obor názvů, který má AGIC sledovat. Obor názvů může být jediná řetězcová hodnota nebo seznam oborů názvů oddělených čárkami. Tato proměnná se odvolá nebo ji nastaví na prázdnou nebo prázdný řetězec. Výsledkem je, že kontroler příchozího přístupu se všemi dostupnými obory názvů ponechává.
+    - `armAuth.type`: hodnota buď `aadPodIdentity` nebo `servicePrincipal`.
     - `armAuth.identityResourceID`: ID prostředku spravované identity.
     - `armAuth.identityClientId`: ID klienta identity.
-    - `armAuth.secretJSON`: vyžaduje se jenom v případě, že je zvolený tajný typ objektu služby (Pokud `armAuth.type` byl nastaven na `servicePrincipal`).
+    - `armAuth.secretJSON`: je potřeba jenom v případě, že je zvolený tajný typ objektu služby (Pokud `armAuth.type` nastavená na `servicePrincipal`).
 
     Klíčové poznámky:
     - Hodnota `identityResourceID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_client_id)"`.
     - Hodnota `identityClientID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_resource_id)"`.
     - Hodnota `<resource-group>` je skupina prostředků vaší aplikační brány.
     - Hodnota `<identity-name>` je název vytvořené identity.
-    - Všechny identity pro dané předplatné můžete uvést pomocí: `az identity list`.
+    - Všechny identity pro dané předplatné můžou být uvedené pomocí: `az identity list`.
 
 1. Nainstalujte balíček Application Gateway příchozího řadiče pro příchozí přenosy:
 
@@ -759,8 +759,18 @@ Jakmile máte nainstalovanou bránu App Gateway, AKS a AGIC, můžete pomocí [A
 2. Použít soubor YAML:
 
     ```bash
-    kubectl apply -f apsnetapp.yaml
+    kubectl apply -f aspnetapp.yaml
     ```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku.  
+
+Zástupný text nahraďte příslušnou hodnotou. Odstraní se všechny prostředky v zadané skupině prostředků.
+
+```bash
+az group delete -n <resource-group>
+```
 
 ## <a name="next-steps"></a>Další kroky
 

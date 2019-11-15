@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 70da426f1dff843f1e2515052431f54f8ea83780
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074098"
+ms.locfileid: "74091572"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací ve službě Azure Stack
 
@@ -134,7 +134,7 @@ Chcete-li zobrazit Azure Backup Server entit v Azure Portal, můžete postupovat
 2. Klikněte na infrastruktura zálohování.
 3. Zobrazit servery pro správu zálohování.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 Informace o použití Azure Backup Server k ochraně dalších úloh naleznete v jednom z následujících článků:
 

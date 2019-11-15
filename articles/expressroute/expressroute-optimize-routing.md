@@ -1,5 +1,5 @@
 ---
-title: 'Optimalizace směrování – ExpressRoute okruhy: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: optimalizace směrování'
 description: Tato stránka obsahuje podrobné informace o tom, jak optimalizovat směrování, pokud máte více než jeden okruh ExpressRoute, který poskytuje připojení mezi Microsoftem a vaší podnikovou sítí.
 services: expressroute
 author: charwen
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141855"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080138"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.
@@ -55,7 +54,7 @@ Podívejme se zblízka na problém směrování na příkladu. Představte si, �
 ![Případ 1 ExpressRoute – Problém: Neoptimální směrování od zákazníka do Microsoftu](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>Řešení: Použití komunit protokolu BGP
-Abyste optimalizovali směrování pro uživatele obou poboček, musíte vědět, která předpona je z oblasti Azure USA – západ a která z Azure USA – východ. Tyto informace kódujeme pomocí [hodnot komunity protokolu BGP](expressroute-routing.md). Přiřadili jsme každé oblasti Azure jedinečnou hodnotu komunity protokolu BGP, např. 12076:51004 pro USA – východ, 12076:51006 pro USA – západ. Teď, když už víte, které předpona je z které oblasti Azure, můžete nakonfigurovat, který okruh ExpressRoute se bude upřednostňovat. Vzhledem k tomu, že k výměně informací o směrování používáme protokol BGP, můžete použít k ovlivnění směrování hodnotu Local Preference protokolu BGP. V našem příkladu můžete přiřadit vyšší hodnotu Local Preference pro 13.100.0.0/16 v oblasti USA – západ než v oblasti USA – východ a obdobně vyšší hodnotu Local Preference pro 23.100.0.0/16 v oblasti USA – východ než USA – západ. Tato konfigurace zajistí, že když jsou k dispozici obě cesty do Microsoftu, uživatelé v Los Angeles použijí pro připojení k Azure USA – západ okruh ExpressRoute v oblasti USA – západ, zatímco uživatelé v New Yorku použijí pro připojení k Azure USA – východ okruh ExpressRoute v oblasti USA – východ. Směrování je optimalizované na obou stranách. 
+Abyste optimalizovali směrování pro uživatele obou poboček, musíte vědět, která předpona je z oblasti Azure USA – západ a která z Azure USA – východ. Tyto informace kódujeme pomocí [hodnot komunity protokolu BGP](expressroute-routing.md). K každé oblasti Azure jsme přiřadili jedinečnou hodnotu komunity protokolu BGP, třeba "12076:51004" pro USA – východ, "12076:51006" pro USA – západ. Teď, když už víte, které předpona je z které oblasti Azure, můžete nakonfigurovat, který okruh ExpressRoute se bude upřednostňovat. Vzhledem k tomu, že k výměně informací o směrování používáme protokol BGP, můžete použít k ovlivnění směrování hodnotu Local Preference protokolu BGP. V našem příkladu můžete přiřadit vyšší hodnotu Local Preference pro 13.100.0.0/16 v oblasti USA – západ než v oblasti USA – východ a obdobně vyšší hodnotu Local Preference pro 23.100.0.0/16 v oblasti USA – východ než USA – západ. Tato konfigurace zajistí, že když jsou k dispozici obě cesty do Microsoftu, uživatelé v Los Angeles použijí pro připojení k Azure USA – západ okruh ExpressRoute v oblasti USA – západ, zatímco uživatelé v New Yorku použijí pro připojení k Azure USA – východ okruh ExpressRoute v oblasti USA – východ. Směrování je optimalizované na obou stranách. 
 
 ![Případ 1 ExpressRoute – Řešení: Použití komunit protokolu BGP](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 

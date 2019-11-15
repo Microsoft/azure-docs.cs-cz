@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9e5103fad517e695198602a182574de964a9c504
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747438"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091128"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -77,7 +77,7 @@ Sestava výstrahy zálohování obsahuje výstrahy pro trezor.
 
 ![Výstrahy zálohování](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 V seznamu výstrahy zálohování se zobrazí vybrané informace pro filtrovaná upozornění. V nabídce výstrahy zálohování můžete vyfiltrovat kritické výstrahy nebo upozornění.
 
@@ -101,7 +101,7 @@ Ve výchozím nastavení se v sestavě zobrazí všechny podrobnosti, s výjimko
 * Severity
 * Doba trvání
 * Čas vytvoření
-* Stav
+* Status
 * Čas posledního výskytu
 
 ### <a name="change-the-details-in-alerts-report"></a>Změna podrobností v sestavě výstrahy
@@ -221,19 +221,19 @@ Můžete zobrazit jednu operaci nebo všechny operace. Nemůžete vybrat dvě ne
 * Všechny operace
 * Registrace
 * Konfigurace zálohování
-* Zálohování
+* Backup
 * Obnovení
 * Zakázat zálohování
 * Odstranění zálohovaných dat
 
-#### <a name="status"></a>Stav
+#### <a name="status"></a>Status
 
 Můžete zobrazit všechny stavy nebo jeden. Nemůžete vybrat dva nebo tři stavy. Dostupné stavy jsou:
 
 * Všechny stavy
-* Dokončeno
+* Dokončení
 * Probíhá
-* Selhalo
+* Neúspěch
 * Zrušeno
 * Dokončeno s upozorněními
 

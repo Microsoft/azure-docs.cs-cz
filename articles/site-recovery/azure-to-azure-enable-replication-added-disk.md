@@ -1,5 +1,5 @@
 ---
-title: Povolení replikace pro disk přidaný do virtuálního počítače Azure replikovaný Azure Site Recovery | Microsoft Docs
+title: Povolení replikace pro přidaný disk Azure VM v Azure Site Recovery
 description: Tento článek popisuje, jak povolit replikaci pro disk přidaný do virtuálního počítače Azure, který je povolený pro zotavení po havárii pomocí Azure Site Recovery
 services: site-recovery
 author: asgang
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cbe71d67417ce817d317b65f27d0e6ceabec983
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934544"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084991"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Povolení replikace pro disk přidaný do virtuálního počítače Azure
 
@@ -41,7 +41,7 @@ V tomto článku se předpokládá, že jste už nastavili zotavení po havárii
 Pokud chcete povolit replikaci pro přidaný disk, udělejte toto:
 
 1. V trezoru > **replikované položky**klikněte na virtuální počítač, ke kterému jste přidali disk.
-2. Klikněte na **disky**a potom vyberte datový disk, pro který chcete povolit replikaci (tyto disky mají stav Nechráněno).
+2. Klikněte na **disky**a potom vyberte datový disk, pro který chcete povolit replikaci (tyto disky mají stav **Nechráněno** ).
 3.  V **podrobnostech o disku**klikněte na **Povolit replikaci**.
 
     ![Povolit replikaci pro přidaný disk](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
@@ -50,6 +50,6 @@ Po spuštění úlohy povolit replikaci a dokončení počáteční replikace do
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přečtěte si další informace](site-recovery-test-failover-to-azure.md) o spuštění testovacího převzetí služeb při selhání.

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 42a97646a6881ead61ceeaff3fe8c0c8d73d6057
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a1d2fa083c0083423767484b20e296a3080e4ebe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929398"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092116"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Rychlý Start: Vytvoření aplikace pro iOS pomocí prostorových kotev Azure v SWIFT nebo objektivní-C
 
@@ -28,11 +28,11 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- MacOS počítač s podporou vývojářů s nainstalovaným <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10 +</a> a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> .
+- Vývojář s povoleným macOS počítačem s nainstalovanou nejnovější verzí <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> .
 - Git se nainstaloval přes HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Pak spusťte `brew install git`.
 - Vývojářem podporujícím zařízení s iOS <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">kompatibilní s ARKit</a> .
 
@@ -91,7 +91,7 @@ Dalším krokem je konfigurace aplikace tak, aby používala identifikátor úč
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Otevřete `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
+Otevřít `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
 Vyhledejte pole `spatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 
@@ -99,7 +99,7 @@ Vyhledejte pole `spatialAnchorsAccountId` a nahraďte `Set me` identifikátorem 
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Otevřete `iOS/Objective-C/SampleObjC/BaseViewController.m`.
+Otevřít `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
 Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 

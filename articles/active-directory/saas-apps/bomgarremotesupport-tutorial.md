@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace se vzdálenou podporou Bomgar | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Bomgar vzdálenou podporou.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s využitím vzdálené podpory BeyondTrust | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BeyondTrust vzdálenou podporou.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,193 +13,193 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 10/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ea2fb15c426da1198c655efb38c9a298a998d0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8ff21c3ee7721c82232e668ddb9645895080cf79
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158798"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082078"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bomgar-remote-support"></a>Kurz: Integrace Azure Active Directory se vzdálenou podporou Bomgar
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím vzdálené podpory BeyondTrust
 
-V tomto kurzu se dozvíte, jak integrovat vzdálenou podporu Bomgar s Azure Active Directory (Azure AD).
-Integrace vzdálené podpory Bomgar se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat vzdálenou podporu BeyondTrust s Azure Active Directory (Azure AD). Když integrujete vzdálenou podporu BeyondTrust s Azure AD, můžete:
 
-* Můžete řídit v Azure AD, kteří mají přístup k Bomgar vzdálené podpoře.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Bomgar vzdálené podpoře (jednotné přihlašování) se svými účty Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Řízení ve službě Azure AD, která má přístup k BeyondTrust vzdálené podpoře.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k BeyondTrust vzdálené podpory pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD pomocí vzdálené podpory Bomgar potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné Bomgar Remote support pro jednotné přihlašování s povoleným přihlášením
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* BeyondTrust vzdálená podpora jednotného přihlašování (SSO) s povoleným předplatným.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Vzdálená podpora Bomgar podporuje jednotné přihlašování se spuštěnou **aktualizací SP**
-* Vzdálená podpora Bomgar podporuje zřizování uživatelů **jenom v čase**
+* Vzdálená podpora BeyondTrust podporuje jednotné přihlašování se spuštěnou **aktualizací SP**
+* Vzdálená podpora BeyondTrust podporuje zřizování uživatelů **jenom v čase**
 
-## <a name="adding-bomgar-remote-support-from-the-gallery"></a>Přidání vzdálené podpory Bomgar z Galerie
+## <a name="adding-beyondtrust-remote-support-from-the-gallery"></a>Přidání vzdálené podpory BeyondTrust z Galerie
 
-Pokud chcete nakonfigurovat integraci Bomgar Remote support do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Bomgar vzdálenou podporu z galerie.
+Pokud chcete nakonfigurovat integraci BeyondTrust Remote support do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat BeyondTrust vzdálenou podporu z galerie.
 
-**Pokud chcete přidat vzdálenou podporu Bomgar z Galerie, proveďte následující kroky:**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **BeyondTrust vzdálená podpora** .
+1. Na panelu výsledků vyberte **Vzdálená podpora BeyondTrust** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>Konfigurace a testování jednotného přihlašování Azure AD pro BeyondTrust vzdálenou podporu
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s BeyondTrust vzdálenou podporou pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v BeyondTrust vzdálené podpoře.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí vzdálené podpory BeyondTrust, dokončete následující stavební bloky:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurovat jednotné přihlašování pro vzdálenou podporu BeyondTrust](#configure-beyondtrust-remote-support-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    * **[Vytvořte testovacího uživatele BeyondTrust Remote support](#create-beyondtrust-remote-support-test-user)** , abyste měli protějšek B. Simon ve vzdálené podpoře BeyondTrust, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Bomgar vzdálená podpora**, vyberte **Bomgar vzdálená podpora** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **BeyondTrust Remote support** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![Bomgar vzdálená podpora v seznamu výsledků](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Bomgar Remote support na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je potřeba zřídit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Bomgar Remote support.
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<HOSTNAME>.bomgar.com/saml`
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí vzdálené podpory Bomgar, musíte dokončit tyto stavební bloky:
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<HOSTNAME>.bomgar.com`
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte Bomgar vzdálenou podporu pro jednotné přihlašování](#configure-bomgar-remote-support-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte testovacího uživatele Bomgar Remote support](#create-bomgar-remote-support-test-user)** , abyste měli protějšek Britta Simon ve vzdálené podpoře Bomgar, která je propojená s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí vzdálené podpory Bomgar, proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací pro **vzdálenou podporu Bomgar** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
-
-4. V části **základní konfigurace SAML** proveďte následující kroky:
-
-    ![Bomgar vzdálené podpory – informace o jednotném přihlašování v doméně a adresách URL](common/sp-identifier.png)
-
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.trafficmanager.net/saml`
-
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.trafficmanager.net`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta podpory Bomgar Remote support](https://www.bomgar.com/docs/index.htm#support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Tyto hodnoty se zobrazí později v tomto kurzu.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Aplikace BeyondTrust Remote support očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![Odkaz na stažení certifikátu](common/metadataxml.png)
+    ![image](common/default-attributes.png)
 
-6. V části **Nastavení vzdálené podpory Bomgar** zkopírujte příslušné adresy URL podle vašich požadavků.
+1. Aplikace BeyondTrust Remote support kromě výše očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+
+    | Název |  Zdrojový atribut|
+    | ---------------| ----------|
+    | givenName | user.givenname |
+    | EmailAddress | user.mail |
+    | Název | user.userprincipalname |
+    | Uživatelské jméno | user.userprincipalname |
+    | Skupiny | user.groups |
+    | Jedinečný identifikátor uživatele | user.userprincipalname |
+
+    > [!NOTE]
+    > Při přiřazování skupin Azure AD pro aplikaci BeyondTrust Remote support se skupiny vrácené v deklaraci identity musí změnit z možnosti žádné na skupinu zabezpečení. Skupiny se do aplikace naimportují jako ID jejich objektů. ID objektu skupiny Azure AD se dá najít tak, že zkontrolujete vlastnosti v rozhraní Azure Active Directory. Tato akce bude nutná pro odkazování a přiřazení skupin Azure AD ke správným zásadám skupiny.
+
+1. Při nastavování jedinečného identifikátoru uživatele musí být tato hodnota nastavená na NameID-Format: **persistent**. Aby bylo možné správně identifikovat a přidružit uživatele ke správným zásadám skupiny pro oprávnění, je nutné, aby byl tento trvalý identifikátor. Kliknutím na ikonu Upravit otevřete dialogové okno **atributy uživatele & deklarací** pro úpravu hodnoty jedinečného identifikátoru uživatele.
+
+1. V části **Spravovat deklaraci identity** klikněte na možnost **zvolit formát identifikátoru názvu** a nastavte hodnotu **trvalá** a klikněte na **Uložit**.
+
+    ![Atributy a deklarace uživatele](./media/bomgarremotesupport-tutorial/attribute-unique-user-identifier.png)
+
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+
+1. V části **Nastavení vzdálené podpory BeyondTrust** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-    b. Identifikátor Azure AD
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Odhlašovací adresa URL
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="configure-bomgar-remote-support-single-sign-on"></a>Nakonfigurovat jednotné přihlašování pro vzdálenou podporu Bomgar
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **vzdálené podpory Bomgar** , je třeba odeslat stažený **kód XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [Bomgar týmu podpory pro vzdálenou podporu](https://www.bomgar.com/docs/index.htm#support). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup ke vzdálené podpoře BeyondTrust.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **BeyondTrust vzdálená podpora**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+## <a name="configure-beyondtrust-remote-support-sso"></a>Nakonfigurovat jednotné přihlašování BeyondTrust vzdálené podpory
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+1. V jiném okně webového prohlížeče se přihlaste k BeyondTrust vzdálené podpory jako správce.
 
-    ![Uživatelský dialog](common/user-properties.png)
+1. Klikněte na nabídku **stav** a zkopírujte **identifikátor**, **adresu URL odpovědi** a **adresu URL pro přihlášení** a použijte tyto hodnoty v části **základní konfigurace SAML** v Azure Portal.
 
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
+    ![Konfigurace vzdálené podpory BeyondTrust](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+1. Přejděte na rozhraní BeyondTrust Remote support/login na adrese `https://support.example.com/login`, kde **support.example.com** je primárním názvem hostitele vašeho zařízení a ověřte ho pomocí přihlašovacích údajů pro správu.
 
-    d. Klikněte na **Vytvořit**.
+1. Přejděte na **uživatele & security** > Security **providers**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+1. V rozevírací nabídce vyberte **SAML** a klikněte na tlačítko **vytvořit poskytovatele** .
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Bomgar vzdálené podpoře.
+1. V části nastavení zprostředkovatele identity je k dispozici možnost nahrát metadata zprostředkovatele identity. Vyhledejte soubor XML s metadaty, který jste stáhli z Azure Portal, a klikněte na tlačítko **nahrát** . **ID entity**, **Adresa URL a certifikát služby jednotného přihlašování** se automaticky nahrají a **vazba protokolu** bude muset být změněna na **http post**. Viz snímek obrazovky níže:
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Vzdálená podpora Bomgar**.
+    ![Konfigurace vzdálené podpory BeyondTrust](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+### <a name="create-beyondtrust-remote-support-test-user"></a>Vytvořit testovacího uživatele pro vzdálenou podporu BeyondTrust
 
-2. V seznamu aplikace vyberte **Bomgar vzdálená podpora**.
+Tady budeme konfigurovat nastavení zřizování uživatelů. Hodnoty použité v tomto oddílu budou odkazovány z **atributů uživatele & deklarace identity** v Azure Portal. Nakonfigurovali jsme toto, aby byly výchozí hodnoty, které už jsou naimportované v době vytváření, ale v případě potřeby můžete tuto hodnotu přizpůsobit.
 
-    ![Odkaz na vzdálenou podporu Bomgar v seznamu aplikací](common/all-applications.png)
+![Vytváření uživatele](./media/bomgarremotesupport-tutorial/config-user1.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+> [!NOTE]
+> Atribut Groups and e-mail není pro tuto implementaci nezbytný. Pokud používáte skupiny Azure AD a přiřadíte je k BeyondTrust vzdálených zásad skupiny pro oprávnění, bude nutné, aby ID objektu skupiny bylo odkazováno prostřednictvím svých vlastností Azure Portal a umístěných v části "available Groups". Po dokončení této akce bude nyní k dispozici ID objektu/skupina AD pro přiřazení k zásadám skupiny pro oprávnění.
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+![Vytváření uživatele](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+![Vytváření uživatele](./media/bomgarremotesupport-tutorial/config-user3.png)
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+> [!NOTE]
+> Případně můžete nastavit výchozí zásady skupiny u poskytovatele zabezpečení typu Saml2. Definováním této možnosti přiřadíte všem uživatelům, kteří se ověřují prostřednictvím SAML, oprávnění zadaná v rámci zásad skupiny. Obecné zásady členů jsou součástí BeyondTrust Remote support/Privileged Remote Access s omezenými oprávněními, která se dají použít k otestování ověřování a přiřazení uživatelů ke správným zásadám. Uživatelé neplní seznam typu Saml2 Users prostřednictvím/Login > Uživatelé & zabezpečení až do prvního úspěšného pokusu o ověření. Další informace o zásadách skupiny najdete na následujícím odkazu: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+## <a name="test-sso"></a>Test SSO
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+Když kliknete na dlaždici vzdálená podpora BeyondTrust na přístupovém panelu, měli byste se automaticky přihlásit ke vzdálené podpoře BeyondTrust, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-### <a name="create-bomgar-remote-support-test-user"></a>Vytvořit testovacího uživatele pro vzdálenou podporu Bomgar
-
-V této části se v Bomgar vzdálené podpoře vytvoří uživatel s názvem Britta Simon. Vzdálená podpora Bomgar podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Bomgar vzdálené podpoře neexistuje, vytvoří se po ověření nový.
-
-> [!Note]
-> Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory Bomgar Remote support](https://www.bomgar.com/docs/index.htm#support).
-
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
-
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
-
-Když kliknete na dlaždici vzdálená podpora Bomgar na přístupovém panelu, měli byste se automaticky přihlásit ke vzdálené podpoře Bomgar, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si vzdálenou podporu BeyondTrust s Azure AD](https://aad.portal.azure.com/)

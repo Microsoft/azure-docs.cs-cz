@@ -1,5 +1,5 @@
 ---
-title: Nastavení procesového serveru v Azure pro virtuální počítač VMware a navrácení služeb po obnovení fyzického serveru s Azure Site Recovery | Microsoft Docs
+title: Nastavení procesového serveru VMware/fyzické navrácení služeb po obnovení v Azure Site Recovery
 description: Tento článek popisuje, jak nastavit procesový Server v Azure pro navrácení služeb po obnovení virtuálních počítačů Azure do VMware.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
-ms.openlocfilehash: 080edfc86848bb6c6579c177c72d3fbd3214a06a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968838"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083958"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavení procesového serveru v Azure pro navrácení služeb po obnovení
 
@@ -37,7 +37,7 @@ Přečtěte [si další](vmware-azure-reprotect.md) informace o procesu [překlo
 
 4. Do pole **název serveru**, **uživatelské jméno**a **heslo**zadejte název procesového serveru a přihlašovací údaje, které budou přiřazeny oprávnění správce na serveru.
 5. Zadejte účet úložiště, který se má použít pro disky virtuálních počítačů serveru, podsíť, ve které se virtuální počítač procesového serveru nachází, a IP adresu serveru, která se přiřadí při spuštění virtuálního počítače.
-6. Kliknutím na tlačítko **OK** začněte NASAZOVAT virtuální počítač procesového serveru. Procesový Server se nasadí na SKU Standard_A8_v2. Ujistěte se, že je tato skladová položka virtuálního počítače k dispozici pro vaše předplatné.
+6. Kliknutím na tlačítko **OK** začněte NASAZOVAT virtuální počítač procesového serveru. Procesový Server se nasadí na Standard_A8_v2 SKU. Ujistěte se, že je tato skladová položka virtuálního počítače k dispozici pro vaše předplatné.
 
 >
 

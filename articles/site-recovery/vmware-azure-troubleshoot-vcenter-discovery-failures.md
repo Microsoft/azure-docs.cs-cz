@@ -1,20 +1,20 @@
 ---
-title: Řešení potíží s navrácením služeb po havárii v místním prostředí během zotavení virtuálního počítače VMware do Azure pomocí Azure Site Recovery
-description: V tomto článku se dozvíte, jak řešit problémy navrácení služeb po obnovení a zotavení po havárii virtuálního počítače VMware do Azure pomocí Azure Site Recovery.
+title: Řešení chyb zjišťování VMware vCenter v Azure Site Recovery
+description: Tento článek popisuje, jak řešit chyby zjišťování VMware vCenter v Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053851"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091239"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter Server
 
 Tento článek vám pomůže při řešení problémů, ke kterým dochází kvůli selháním zjišťování VMware vCenter.
 
@@ -34,7 +34,7 @@ Problém vyřešíte takto:
 
 - Identifikujte virtuální počítač a nastavte hodnotu na číselnou hodnotu (upravit nastavení virtuálního počítače v vCenter).
 
-nebo
+Nebo
 
 - Upgradujte konfigurační server na verzi 9,20 nebo novější.
 

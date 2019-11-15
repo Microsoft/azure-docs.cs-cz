@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8decf4622c4043cbac0f2e2f6e2ad59f1b5baaae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074014"
+ms.locfileid: "74091384"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -24,9 +24,9 @@ Pracovní postup je definovaný souborem YAML (. yml) v cestě `/.github/workflo
 
 V případě pracovního postupu Azure Functions má soubor tři části: 
 
-| Section | Úlohy |
+| Sekce | Úlohy |
 | ------- | ----- |
-| **Autentizace** | <ol><li>Definujte instanční objekt.</li><li>Stáhnout profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
+| **Ověřování** | <ol><li>Definujte instanční objekt.</li><li>Stáhnout profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
 | **Sestavení** | <ol><li>Nastavte prostředí.</li><li>Sestavte aplikaci Function App.</li></ol> |
 | **Nasazení** | <ol><li>Nasaďte aplikaci Function App.</li></ol>|
 
@@ -215,7 +215,7 @@ V následujícím příkladu je použita verze 1 `functions-action`:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zobrazit kompletní pracovní postup. yaml, podívejte se na jeden ze souborů na webu [Azure Actions Workflow Samples](https://github.com/Azure/actions-workflow-samples) , který má v názvu `functionapp`. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
+Pokud chcete zobrazit kompletní pracovní postup. yaml, podívejte se na jeden ze souborů na webu [Azure Actions Workflow Samples](https://aka.ms/functions-actions-samples) , který má v názvu `functionapp`. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
 
 > [!div class="nextstepaction"]
 > [Další informace o akcích GitHubu](https://help.github.com/en/articles/about-github-actions)

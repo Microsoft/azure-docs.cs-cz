@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162113"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090555"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -45,11 +45,11 @@ Instalace na záložní server | Když nastavíte DPM nebo MABS pro zálohován�
 
 Když použijete agenta MARS k zálohování dat, agent pořizuje snímek dat a uloží ho do složky místní mezipaměti předtím, než odešle data do Azure. Složka cache (Scratch) má několik požadavků:
 
-**Uchovávat** | **Podrobnosti**
+**Mezipaměť** | **Podrobnosti**
 --- | ---
 Velikost |  Volné místo ve složce mezipaměti by mělo být alespoň 5 až 10 procent celkové velikosti zálohovaných dat.
 Umístění | Složka mezipaměti musí být uložená místně na počítači, který se zálohuje, a musí být online. Složka mezipaměti by neměla být ve sdílené síťové složce, na vyměnitelném médiu nebo na svazku offline.
-Složka | Složka mezipaměti by měla být zašifrovaná na svazku s odstraněnými duplicitními daty nebo v komprimované složce, která je zhuštěná, nebo má bod rozboru.
+Folder | Složka mezipaměti by měla být zašifrovaná na svazku s odstraněnými duplicitními daty nebo v komprimované složce, která je zhuštěná, nebo má bod rozboru.
 Změny umístění | Umístění mezipaměti můžete změnit zastavením zálohovacího stroje (`net stop bengine`) a zkopírováním složky mezipaměti do nové jednotky. (Zajistěte, aby na nové jednotce bylo dost místa.) Pak aktualizujte dvě položky registru v části **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** a **config/CloudBackupProvider/ScratchLocation**) na nové místo a restartujte modul.
 
 ## <a name="networking-and-access-support"></a>Podpora sítí a přístupu
@@ -58,11 +58,11 @@ Změny umístění | Umístění mezipaměti můžete změnit zastavením záloh
 
 Agent MARS potřebuje přístup k těmto adresám URL:
 
-- http://www.msftncsi.com/ncsi.txt
+- <http://www.msftncsi.com/ncsi.txt>
 - *.Microsoft.com
 - *.WindowsAzure.com
-- *. MicrosoftOnline.com
-- *. Windows.net
+- *.MicrosoftOnline.com
+- *.Windows.net
 
 ### <a name="throttling-support"></a>Podpora omezování
 
@@ -73,20 +73,23 @@ Omezení sítě | Není k dispozici pro zálohované počítače se systémem Wi
 
 ## <a name="support-for-direct-backups"></a>Podpora přímých záloh
 
+>[!NOTE]
+> Agent MARS nepodporuje SKU jádra systému Windows Server.
+
 Agenta MARS můžete použít k zálohování přímo do Azure v některých operačních systémech, které běží na místních počítačích a virtuálních počítačích Azure. Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější aktualizace a aktualizace Service Pack. Následující tabulka shrnuje tyto operační systémy:
 
 **Operační systém** | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**
 --- | --- | --- | ---
 Windows 10 (Enterprise, pro, Home) | Ano | Ne |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows 8.1 (Enterprise, pro)| Ano |Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows 8 (Enterprise, pro) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8 (Enterprise, Pro) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe)
 Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano | Ano | – .NET 3,5, .NET 4,5 <br> – Windows PowerShell <br> -Kompatibilní Microsoft VC + + Redistributable <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe)
-Windows Server 2008 SP2 (Standard, Datacenter, základ) | Ano | Ne | – .NET 3,5, .NET 4,5 <br> – Windows PowerShell <br> -Kompatibilní Microsoft VC + + Redistributable <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
-Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Ano | Ne | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ano | Ne | – .NET 3,5, .NET 4,5 <br> – Windows PowerShell <br> -Kompatibilní Microsoft VC + + Redistributable <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ano | Ne | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
 Další informace najdete v tématu [podporované MABS a operační systémy DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
@@ -128,7 +131,7 @@ Sdílená síťová složka| Nepodporováno |Svazek musí být na serveru místn
 Svazky chráněné nástrojem BitLocker| Nepodporováno |Svazek musí být před zahájením zálohování odemčen.
 Identifikace systému souborů| Nepodporováno |Podporován je pouze systém souborů NTFS.
 Vyměnitelná média| Nepodporováno |Všechny zdroje záložních položek musí mít *pevný* stav.
-Jednotky s odstraněnými duplicitními daty | Podporováno | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.
+Jednotky s odstraněnými duplicitními daty | Podporuje se | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.
 
 ## <a name="support-for-initial-offline-backup"></a>Podpora počátečního zálohování offline
 

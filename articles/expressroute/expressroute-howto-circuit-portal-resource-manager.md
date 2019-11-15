@@ -1,5 +1,5 @@
 ---
-title: 'Vytvoření a úprava okruhu ExpressRoute – portál: Azure | Microsoft Docs'
+title: 'ExpressRoute: vytvoření a úprava okruhu: Azure Portal'
 description: Vytvoření, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.reviewer: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 42fe0a91261453251d56f1c556083e93f5c76bec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846591"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083572"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Vytvoření a úprava okruhu ExpressRoute
 
@@ -22,14 +20,14 @@ ms.locfileid: "67846591"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
 Tento článek vám pomůže vytvořit okruh ExpressRoute pomocí modelu nasazení Azure Resource Manageru a webu Azure portal. Můžete také zkontrolovat stav, aktualizovat, odstranit nebo zrušit zřízení okruhu.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Zkontrolujte [požadavky](expressroute-prerequisites.md) a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 * Ujistěte se, že máte přístup k [webu Azure portal](https://portal.azure.com).
@@ -38,11 +36,11 @@ Tento článek vám pomůže vytvořit okruh ExpressRoute pomocí modelu nasazen
 
 ## <a name="create"></a>Vytvoření a zřízení okruhu ExpressRoute
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1. Přihlášení k webu Azure Portal
+### <a name="1-sign-in-to-the-azure-portal"></a>1. Přihlaste se k Azure Portal
 
 V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 
-### <a name="2-create-a-new-expressroute-circuit"></a>2. Vytvoření nového okruhu ExpressRoute
+### <a name="2-create-a-new-expressroute-circuit"></a>2. Vytvořte nový okruh ExpressRoute.
 
 > [!IMPORTANT]
 > Váš okruh ExpressRoute se účtují od okamžiku, kdy vydáním klíče služby. Ujistěte se provést tuto operaci, pokud poskytovatel připojení je připraveno ke zřízení okruhu.
@@ -55,7 +53,7 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
    ![Nakonfigurujte úroveň skladové položky a měření dat.](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
    * **Úroveň** Určuje, zda je povolen ExpressRoute standard nebo doplněk ExpressRoute premium. Můžete zadat **standardní** získat standardní SKU nebo **Premium** pořídit si doplněk premium.
-   * **Data monitorování míry využívání** Určuje typ fakturace. Můžete zadat **Metered** pro tarif podle objemu dat a **Unlimited** pro tarif s neomezenými daty. Všimněte si, že můžete změnit typ fakturace z **měření** na neomezeno.
+   * **Data monitorování míry využívání** Určuje typ fakturace. Můžete zadat **Metered** pro tarif podle objemu dat a **Unlimited** pro tarif s neomezenými daty. Všimněte si, že můžete změnit typ fakturace z **měření** na **neomezeno**.
 
      > [!IMPORTANT]
      > Nemůžete změnit typ z **neomezené** na **měřený**.
@@ -65,7 +63,7 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
      > [!IMPORTANT]
      > Určuje umístění partnerského vztahu [fyzické umístění](expressroute-locations.md) kde jste partnerského vztahu se společností Microsoft. Toto je **není** propojené s "Umístění" vlastnost, která odkazuje na zeměpisné oblasti, kde se nachází poskytovatel síťových prostředků Azure. Zatímco nesouvisí, je vhodné zvolit poskytovatel síťových prostředků geograficky v blízkosti umístění partnerského vztahu okruhu.
 
-### <a name="3-view-the-circuits-and-properties"></a>3. Zobrazit okruhů a vlastnosti
+### <a name="3-view-the-circuits-and-properties"></a>3. zobrazení okruhů a vlastností
 
 **Zobrazit všechny okruhy**
 
@@ -79,41 +77,41 @@ Vlastnosti okruhu můžete zobrazit tak, že ho vyberete. Na **přehled** strán
 
 ![Zobrazení vlastností](./media/expressroute-howto-circuit-portal-resource-manager/servicekey1.png)
 
-### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Poslat klíči služby svého poskytovatele připojení pro zřizování
+### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. zaslat klíč služby poskytovateli připojení pro zřizování
 
 Na této stránce **stav poskytovatele** poskytuje informace o aktuálním stavu zřizování na straně poskytovatele služeb. **Stav okruhu** poskytuje stav na straně Microsoftu. Další informace o zřizování stavy okruhu, najdete v článku [pracovních postupů](expressroute-workflows.md#expressroute-circuit-provisioning-states) článku.
 
 Při vytváření nového okruhu ExpressRoute, je okruh v následujícím stavu:
 
-Stav poskytovatele: Není zřízené<BR>
-Stav okruhu: Enabled
+Stav poskytovatele: není zajišťováno<BR>
+Stav okruhu: povoleno
 
 ![Zahájení procesu zřizování](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Když probíhá proces jeho povolení pro vás poskytovatel připojení okruhu změní na následující stav:
 
-Stav poskytovatele: Zřizování<BR>
-Stav okruhu: Enabled
+Stav poskytovatele: zřizování<BR>
+Stav okruhu: povoleno
 
 Abyste mohli použít okruhu ExpressRoute musí být v následujícím stavu:
 
-Stav poskytovatele: Zřízené<BR>
-Stav okruhu: Enabled
+Stav poskytovatele: zřízené<BR>
+Stav okruhu: povoleno
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Pravidelně kontrolovat stav a stav okruhu klávesy
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. pravidelně kontroluje stav a stav klíče okruhu.
 
 Můžete zobrazit vlastnosti okruhu, který vás zajímá, vyberte ho. Zkontrolujte **stav poskytovatele** a ujistěte se, že ji přesunula do **zřízená** předtím, než budete pokračovat.
 
 ![Stav okruhu a zprostředkovatele](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
 
-### <a name="6-create-your-routing-configuration"></a>6. Vytvořte vlastní konfiguraci směrování
+### <a name="6-create-your-routing-configuration"></a>6. Vytvořte konfiguraci směrování.
 
 Podrobné pokyny najdete [konfigurace směrování pro okruh ExpressRoute](expressroute-howto-routing-portal-resource-manager.md) článek k vytvoření a úprava okruhu partnerských vztahů.
 
 > [!IMPORTANT]
 > Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, které nabízejí vrstvy 2 připojení služby. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IP sítě VPN, např. MPLS), svého poskytovatele připojení, konfiguruje a spravuje směrování za vás.
 
-### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. Propojení virtuální sítě k okruhu ExpressRoute
+### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. propojení virtuální sítě k okruhu ExpressRoute
 
 V dalším kroku propojení virtuální sítě pro váš okruh ExpressRoute. Použití [propojení virtuálních sítí s okruhy ExpressRoute](expressroute-howto-linkvnet-arm.md) článek při práci s modelem nasazení Resource Manager.
 
@@ -158,7 +156,7 @@ Váš okruh ExpressRoute můžete odstranit tak, že vyberete **odstranit** ikon
 * Pokud je stav zřizování poskytovatele služeb okruh ExpressRoute **zřizování** nebo **zřízená** , musíte pracovat se svým poskytovatelem služeb zrušit zřízení okruhu na své straně. Pokračujeme v rezervovat prostředky a účtovat až do dokončení zrušení zřízení okruhu a informuje nás poskytovatelem služeb.
 * Pokud poskytovatel služeb okruh zruší (poskytovatel služeb Stav zřizování je nastavena na **nezřízeno**), můžete odstranit okruh. Tím se zastaví účtování okruhu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po vytvoření váš okruh, pokračujte následující další kroky:
 

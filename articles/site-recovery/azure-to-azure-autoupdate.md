@@ -1,5 +1,5 @@
 ---
-title: Automatické aktualizace služby mobility v Azure do Azure – zotavení po havárii | Microsoft Docs
+title: Automatická aktualizace služby mobility v Azure Site Recovery
 description: Přehled automatické aktualizace služby mobility při replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 0a8f47e0eea8908fcf6aa11c694e09efef14bbf1
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 9479ccce534f9c9d48a0aa08d4ea887bc4f30acb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053534"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078864"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatické aktualizace služby mobility v Azure do Azure – replikace
 
@@ -55,7 +55,7 @@ Pokud povolíte replikaci pro virtuální počítač buď [od zobrazení virtuá
 
 1. V trezoru můžete přejít na **správu** > **Site Recovery infrastruktury**.
 2. V části pro **Nastavení aktualizace rozšíření** **služby Azure Virtual Machines** > zapněte přepínač **Povolit Site Recovery pro správu** . Pokud ho chcete spravovat ručně, vypněte ho. 
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
 ![Nastavení aktualizace rozšíření](./media/azure-to-azure-autoupdate/vault-toggle.png)
 

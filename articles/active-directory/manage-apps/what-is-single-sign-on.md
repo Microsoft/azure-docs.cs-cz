@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 8f8d1c9f53d08d017c6c07abf8e00ab77e6879e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477180"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091396"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 
@@ -40,7 +40,7 @@ Tato vývojový diagram pomáhá při rozhodování, jakou metodu jednotné při
 
 Následující tabulka shrnuje metody přihlašování a odkazy na další podrobnosti.
 
-| Metoda jednotného přihlašování | Typy aplikací | Kdy je použít |
+| Metoda jednotného přihlašování | Typy aplikací | When to use |
 | :------ | :------- | :----- |
 | [OpenID Connect a OAuth](#openid-connect-and-oauth) | pouze Cloud | Při vývoji nové aplikace použijte OpenID Connect a OAuth. Tento protokol zjednodušuje konfiguraci aplikace, nabízí snadno použitelné sady SDK a umožňuje vaší aplikaci používat MS Graph.
 | [SAML](#saml-sso) | cloudové a místní | Pokud je to možné, vyberte pro existující aplikace, které nepoužívají OpenID Connect nebo OAuth, možnost SAML. SAML funguje pro aplikace, které se ověřují pomocí některého z protokolů SAML.|
@@ -60,7 +60,7 @@ Další informace naleznete v tématu:
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Příručka pro vývojáře Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-## <a name="saml-sso"></a>JEDNOTNÉ PŘIHLAŠOVÁNÍ SAML
+## <a name="saml-sso"></a>SAML SSO
 
 S **SAML jednotného přihlašování**, Azure AD ověří k aplikaci pomocí účtu uživatele Azure AD. Azure AD komunikuje informace přihlašování k aplikaci pomocí připojení protokolu. Pomocí jednotného přihlašování založené na SAML můžete mapovat uživatele na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML.
 
@@ -73,7 +73,7 @@ Založené na SAML jednotného přihlašování se podporuje pro aplikace, kter�
 
 Konfigurace aplikace SaaS pro jednotné přihlašování založené na SAML najdete v tématu [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-non-gallery-applications.md). Mnoho aplikací SaaS (software jako služba) navíc obsahuje [kurz specifický pro aplikaci](../saas-apps/tutorial-list.md) , který vás provede konfigurací jednotného přihlašování založeného na SAML.
 
-Pokud chcete nakonfigurovat aplikaci pro WS-Federation, řiďte se stejnými pokyny pro konfiguraci aplikace pro jednotné přihlašování založené na SAML, viz téma [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-non-gallery-applications.md). V kroku konfigurace aplikace tak, aby používala Azure AD, budete muset nahradit přihlašovací adresu URL Azure AD pro koncový bod `https://login.microsoftonline.com/<tenant-ID>/wsfed`WS-Federation.
+Pokud chcete nakonfigurovat aplikaci pro WS-Federation, řiďte se stejnými pokyny pro konfiguraci aplikace pro jednotné přihlašování založené na SAML, viz téma [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-non-gallery-applications.md). V kroku konfigurace aplikace tak, aby používala Azure AD, budete muset nahradit přihlašovací adresu URL Azure AD pro `https://login.microsoftonline.com/<tenant-ID>/wsfed`koncového bodu WS-Federation.
 
 Pokud chcete nakonfigurovat místní aplikaci pro jednotné přihlašování založené na SAML, přečtěte si téma [jednotné přihlašování SAML pro místní aplikace s proxy aplikací](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -97,6 +97,8 @@ Založené na heslech jednotného přihlašování se podporuje pro každou apli
    > Internet Explorer má omezené podpory a už nepřijímá nové aktualizace softwaru. Microsoft Edge je doporučený prohlížeč.
 
 - Microsoft Edge ve Windows 10 výročí Edition nebo novějších verzích
+- Microsoft Edge pro iOS a Android
+- Intune Managed Browser
 - Chrome ve Windows 7 nebo novější a v systému MacOS X nebo novější
 - Firefox 26.0 nebo novější, Windows XP SP2 nebo novější a na Mac OS X 10.6 nebo novější
 
@@ -193,4 +195,4 @@ Další informace najdete v článku [Edice služby Azure Active Directory](../f
 * [Konfigurace jednotného přihlašování založeného na heslech](configure-password-single-sign-on-non-gallery-applications.md)
 * [Konfigurace propojených přihlášení](configure-linked-sign-on.md)
 * [Úvod do správy přístupu k aplikacím](what-is-access-management.md)
-* Odkaz ke stažení: [Plán nasazení jednotného přihlašování](https://aka.ms/SSODeploymentPlan).
+* Odkaz ke stažení: [plánu nasazení přihlašování](https://aka.ms/SSODeploymentPlan).

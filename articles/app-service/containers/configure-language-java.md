@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886048"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081472"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -239,9 +239,9 @@ Nejdřív postupujte podle pokynů pro [udělení přístupu aplikace Key Vault]
 
 Pro vložení těchto tajných kódů do konfiguračního souboru jarní nebo Tomcat použijte syntaxi vkládání proměnné prostředí (`${MY_ENV_VAR}`). V případě konfiguračních souborů pružiny se podívejte na tuto dokumentaci k [externě nakonfigurovaným konfiguracím](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
-## <a name="using-the-java-key-store"></a>Používání úložiště klíčů Java
+### <a name="using-the-java-key-store"></a>Používání úložiště klíčů Java
 
-Ve výchozím nastavení se všechny veřejné nebo privátní certifikáty [nahrané do App Service Linux](../configure-ssl-certificate.md) načtou do úložiště klíčů Java, protože se spustí kontejner. To znamená, že nahrané certifikáty budou k dispozici v kontextu připojení při vytváření odchozích připojení TLS.
+Ve výchozím nastavení se všechny veřejné nebo privátní certifikáty [nahrané do App Service Linux](../configure-ssl-certificate.md) načtou do úložiště klíčů Java, protože se spustí kontejner. To znamená, že nahrané certifikáty budou k dispozici v kontextu připojení při vytváření odchozích připojení TLS. Po nahrání certifikátu bude potřeba restartovat App Service, aby se načetla do úložiště klíčů Java.
 
 Nástroj Java Key můžete interagovat nebo ladit tak, že [otevřete připojení SSH](app-service-linux-ssh-support.md) k vašemu App Service a spustíte `keytool`příkazu. Seznam příkazů najdete v [dokumentaci k nástroji Key](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Certifikáty jsou uložené ve výchozím umístění souborů úložiště klíčů v jazyce Java `$JAVA_HOME/jre/lib/security/cacerts`.
 
@@ -251,7 +251,7 @@ Pro šifrování připojení JDBC může být nutná další konfigurace. Dalš�
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 
-### <a name="manually-initialize-and-load-the-key-store"></a>Ruční inicializace a načtení úložiště klíčů
+#### <a name="manually-initialize-and-load-the-key-store"></a>Ruční inicializace a načtení úložiště klíčů
 
 Můžete inicializovat úložiště klíčů a přidat certifikáty ručně. Vytvořte nastavení aplikace `SKIP_JAVA_KEYSTORE_LOAD`s hodnotou `1`, která zakáže App Service načtení certifikátů do úložiště klíčů automaticky. Všechny veřejné certifikáty nahrané do App Service prostřednictvím webu Azure Portal jsou uložené v části `/var/ssl/certs/`. Privátní certifikáty jsou uložené v `/var/ssl/private/`.
 
@@ -293,7 +293,7 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 Ve výchozím nastavení App Service očekává, že vaše aplikace JAR bude pojmenována *App. jar*. Pokud tento název obsahuje, bude automaticky spuštěn. Pro uživatele Maven můžete název JAR nastavit tak, že zahrnete `<finalName>app</finalName>` do části `<build>` souboru *pom. XML*. To [samé můžete provést v Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) nastavením vlastnosti `archiveFileName`.
 
-Pokud chcete pro svůj JAR použít jiný název, musíte zadat také [spouštěcí příkaz](app-service-linux-faq.md#built-in-images) , který SPUSTÍ soubor JAR. například `java -jar my-jar-app.jar`. Hodnotu pro spouštěcí příkaz můžete nastavit na portálu v části Konfigurace > Obecné nastavení nebo pomocí nastavení aplikace s názvem `STARTUP_COMMAND`.
+Pokud chcete pro svůj JAR použít jiný název, musíte zadat také [spouštěcí příkaz](app-service-linux-faq.md#built-in-images) , který SPUSTÍ soubor JAR. Například, `java -jar my-jar-app.jar`. Hodnotu pro spouštěcí příkaz můžete nastavit na portálu v části Konfigurace > Obecné nastavení nebo pomocí nastavení aplikace s názvem `STARTUP_COMMAND`.
 
 ### <a name="server-port"></a>Port serveru
 
@@ -579,7 +579,7 @@ Následující kroky vysvětlují požadavky na připojení stávajících App S
 
 6. Pomocí rozhraní příkazového řádku Azure můžete přidat nastavení do App Service, která obsahují informace o připojení k databázi. Hodnoty `<resource group>` a `<webapp name>` nahraďte hodnotami, které vaše App Service používá. V informacích o připojení databáze nahraďte `<database server name>`, `<database name>`, `<admin name>`a `<admin password>`. Z Azure Portal můžete získat informace o App Service a databázi.
 
-    **PostgreSQL**
+    **PostgreSQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -591,7 +591,7 @@ Následující kroky vysvětlují požadavky na připojení stávajících App S
             DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
     ```
 
-    **MySQL**
+    **MySQL:**
 
     ```bash
     az webapp config appsettings set \

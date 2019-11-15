@@ -9,29 +9,28 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: f7e5f698a822cd68d8319102e1b8bddbbfa8ad70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c710e2b7c4376fc1725032c86cd02d9a6c8cafac
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821323"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090356"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorování a zlepšení výkonu
 
 Azure SQL Database identifikuje možné problémy v databázi a doporučuje akce, které můžou zlepšit výkon svého pracovního vytížení díky inteligentním akcím ladění a doporučením.
 
-Chcete-li zkontrolovat výkon databáze, použijte dlaždici **výkon** na stránce Přehled nebo přejděte dolů k části Podpora a řešení potíží:
+## <a name="performance-tuning-options"></a>Možnosti ladění výkonu
 
-   ![Zobrazit výkon](./media/sql-database-performance/entries.png)
+Dostupné možnosti ladění výkonu Azure SQL Database jsou k dispozici v navigační nabídce databáze v části Inteligentní výkon:
 
-V části Podpora a řešení potíží můžete použít následující stránky:
-
-
-1. [Přehled výkonu](#performance-overview) pro monitorování výkonu vaší databáze. 
-2. [Doporučení týkající se výkonu](#performance-recommendations) pro hledání doporučení výkonu, která můžou zlepšit výkon vašich úloh.
-3. [Query Performance Insight](#query-performance-insight) najít Nejčastější dotazy, které jsou náročné na prostředky.
-4. [Automatické ladění](#automatic-tuning) , které umožní Azure SQL Database automaticky optimalizovat vaši databázi.
+| Možnost optimalizace výkonu | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
+| :----------------------------- | ----- | ----- |
+| **[Přehled výkonu](#performance-overview)** – monitorujte všechny aktivity výkonu pro vaši databázi. | Ano | Ne | 
+| **[Doporučení pro výkon](#performance-recommendations)** – zobrazuje doporučení pro výkon, která můžou zlepšit výkon svých úloh. | Ano | Ne | 
+| **[Query Performance Insight](#query-performance-insight)** – zobrazuje výkon vysoce náročných dotazů na databázi. | Ano | Ne | 
+| **[Automatické ladění](#automatic-tuning)** – použijte Azure SQL Database k automatickému optimalizaci výkonu databáze. | Ano | Ne | 
 
 ## <a name="performance-overview"></a>Přehled výkonu
 
@@ -58,10 +57,6 @@ Můžete také najít úplnou historii akcí optimalizace, které byly v minulos
 
 Naučte se, jak najít doporučení pro použití výkonu v článku [hledání a použití doporučení](sql-database-advisor-portal.md) výkonu.
 
-## <a name="automatic-tuning"></a>Automatické ladění
-
-Databáze SQL Azure můžou automaticky ladit výkon databáze pomocí [doporučení pro výkon](sql-database-advisor.md). Pokud se chcete dozvědět víc, přečtěte si [článek věnované automatickému ladění](sql-database-automatic-tuning.md). Pokud ho chcete povolit, přečtěte si, [Jak povolit automatické ladění](sql-database-automatic-tuning-enable.md).
-
 ## <a name="query-performance-insight"></a>Query Performance Insight
 
 [Query Performance Insight](sql-database-query-performance.md) vám umožní věnovat méně času řešení potíží s výkonem databáze tím, že poskytuje:
@@ -74,8 +69,11 @@ Databáze SQL Azure můžou automaticky ladit výkon databáze pomocí [doporuč
 
 Další informace o této stránce najdete v článku **[Jak používat Query Performance Insight](sql-database-query-performance.md)** .
 
+## <a name="automatic-tuning"></a>Automatické ladění
+
+Databáze SQL Azure můžou automaticky ladit výkon databáze pomocí [doporučení pro výkon](sql-database-advisor.md). Pokud se chcete dozvědět víc, přečtěte si [článek věnované automatickému ladění](sql-database-automatic-tuning.md). Pokud ho chcete povolit, přečtěte si, [Jak povolit automatické ladění](sql-database-automatic-tuning-enable.md).
+
 ## <a name="additional-resources"></a>Další zdroje
 
 * [Pokyny k výkonu Azure SQL Database pro izolované databáze](sql-database-performance-guidance.md)
 * [Kdy má být použit elastický fond?](sql-database-elastic-pool-guidance.md)
-

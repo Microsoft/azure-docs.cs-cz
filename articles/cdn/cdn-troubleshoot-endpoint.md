@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s koncovými body Azure CDN, které vrátí stavový kód 404 | Dokumentace Microsoftu
-description: Řešení potíží s 404 kódy odpovědí s koncovými body Azure CDN.
+title: Řešení potíží s Azure CDNmi koncovými body-404 stavového kódu
+description: Řešení potíží s kódem odpovědi 404 Azure CDN koncovými body.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,93 +14,93 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b665c2f72f50b2d72fd625b49c4212785ab3301d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c332c6712cdf057491e3039854aa1a29bd54196f
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593275"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083116"
 ---
-# <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Řešení potíží s koncovými body Azure CDN, které vrátí stavový kód 404
-V tomto článku můžete řešení problémů s koncovými body Azure Content Delivery Network (CDN), které vracejí 404 kódy stavu odpovědi HTTP.
+# <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Řešení potíží s Azure CDNmi koncovými body, které vracejí stavový kód 404
+Tento článek vám umožní řešit problémy s koncovými body služby Azure Content Delivery Network (CDN), které vrací stavové kódy odpovědi HTTP 404.
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete také soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a ve Stack Overflowch fórech](https://azure.microsoft.com/support/forums/). Případně můžete také použít incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
 ## <a name="symptom"></a>Příznak
-Vytvoření profilu CDN a koncový bod, ale zřejmě není váš obsah bude dostupný v síti CDN. Uživatelé, kteří se pokusí o přístup k vašemu obsahu přes adresu URL CDN obdrží stavový kód HTTP 404. 
+Vytvořili jste profil CDN a koncový bod, ale váš obsah asi není dostupný na CDN. Uživatelům, kteří se pokoušejí o přístup k obsahu prostřednictvím adresy URL CDN, se zobrazí stavový kód HTTP 404. 
 
 ## <a name="cause"></a>Příčina
-Existuje několik možných příčin, včetně:
+Existuje několik možných příčin, mezi které patří:
 
-* Původ souboru není viditelné pro CDN.
-* Koncový bod není správně nakonfigurované, způsobí CDN vás pod rouškou ve špatné místo.
-* Hostitel zamítá hlavičku hostitele z CDN.
-* Koncový bod neměl čas potřebný k šíření v rámci CDN.
+* Počátek souboru není viditelný pro CDN.
+* Koncový bod je nesprávně nakonfigurovaný, což umožňuje, aby CDN vypadalo na špatném místě.
+* Hostitel odmítá hlavičku hostitele ze sítě CDN.
+* Koncový bod nemá čas na rozšíření v rámci CDN.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 > [!IMPORTANT]
-> Po vytvoření koncového bodu CDN, ho nebude hned dostupný pro použití, jak může zabrat určitý čas pro se registrace rozšíří v rámci CDN:
+> Po vytvoření koncového bodu CDN ho nebude hned dostupný k použití, protože se registrace dokončí přes CDN:
 > - V případě profilů **Azure CDN Standard od Microsoftu** je šíření obvykle hotové během deseti minut. 
 > - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
 > - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 90 minut. 
 > 
-> Pokud se vám přesto obdržíte kód odpovědi 404, proveďte kroky v tomto dokumentu zvažte, zda nevyčkat pár hodin zkontrolovat znovu před otevřením lístku podpory.
+> Pokud jste dokončili kroky v tomto dokumentu a pořád jste dostali odpovědi 404, zvažte, jestli před otevřením lístku podpory ještě pár hodin ověřit.
 > 
 > 
 
-### <a name="check-the-origin-file"></a>Zkontrolujte zdrojový soubor
-Nejprve ověřte, že soubor do mezipaměti je k dispozici na původním serveru a je veřejně přístupný na Internetu. Nejrychlejší způsob, jak to udělat, je otevřít prohlížeč v privátním nebo anonymní relaci a přejděte přímo do souboru. Zadejte nebo vložte adresu URL do pole adresy a ověřte, že výsledky v souboru, který očekáváte. Předpokládejme například, když máte soubor v účtu služby Azure Storage, přístupná na adrese https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt. Pokud se dají úspěšně načíst obsah tohoto souboru, projde testem.
+### <a name="check-the-origin-file"></a>Zkontroluje zdrojový soubor.
+Nejprve ověřte, zda je soubor pro ukládání do mezipaměti k dispozici na zdrojovém serveru a je veřejně přístupný na internetu. Nejrychlejší způsob, jak to provést, je otevřít prohlížeč v privátní nebo anonymním relaci a přejít přímo k souboru. Zadejte nebo vložte adresu URL do pole Adresa a ověřte, jestli má za následek očekávaný soubor. Předpokládejme například, že máte soubor v účtu Azure Storage, který je přístupný v protokolu https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt. Pokud tento obsah souboru můžete úspěšně načíst, test se předá.
 
 ![Výborně!](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
 
 > [!WARNING]
-> I když je to nejrychlejší a nejjednodušší způsob, jak ověřit váš soubor je veřejně dostupný, některé konfigurace sítě ve vaší organizaci může usnadnit, který se zobrazí soubor je veřejně dostupný, když je ve skutečnosti jenom viditelné pro uživatele sítě (i v případě, že je hostován v Azure). Aby bylo zajištěno, že to není tento případ, testovací soubor s externím prohlížeči, jako jsou mobilní zařízení, které není připojené k síti vaší organizace, nebo virtuální počítač v Azure.
+> I když je toto nejrychlejší a nejjednodušší způsob, jak ověřit, že je soubor veřejně dostupný, některé síťové konfigurace ve vaší organizaci by mohly zobrazit, že je soubor veřejně dostupný, když je ve skutečnosti viditelný jenom uživatelům vaší sítě (i když je hostovaný v Azure). Abyste se ujistili, že se nejedná o tento případ, otestujte soubor pomocí externího prohlížeče, jako je například mobilní zařízení, které není připojené k síti vaší organizace, nebo virtuální počítač v Azure.
 > 
 > 
 
-### <a name="check-the-origin-settings"></a>Zkontrolujte nastavení počátku
-Po ověření, že soubor je veřejně dostupný na Internetu, ověřte nastavení původu. V [webu Azure Portal](https://portal.azure.com), přejděte na svůj profil CDN a vyberte koncový bod řešíte potíže. Z výsledné **koncový bod** vyberte původu.  
+### <a name="check-the-origin-settings"></a>Ověřit nastavení zdroje
+Po ověření, že je soubor veřejně dostupný na internetu, ověřte nastavení zdroje. Na webu [Azure Portal](https://portal.azure.com)přejděte do svého profilu CDN a vyberte koncový bod, který chcete řešit. Na stránce výsledný **koncový bod** vyberte počátek.  
 
-![Koncový bod stránku původu zvýrazněnou](./media/cdn-troubleshoot-endpoint/cdn-endpoint.png)
+![Stránka koncového bodu s zvýrazněným počátekem](./media/cdn-troubleshoot-endpoint/cdn-endpoint.png)
 
-**Původu** se zobrazí stránka. 
+Zobrazí se stránka **původ** . 
 
-![Stránku původu](./media/cdn-troubleshoot-endpoint/cdn-origin-settings.png)
+![Stránka zdroje](./media/cdn-troubleshoot-endpoint/cdn-origin-settings.png)
 
-#### <a name="origin-type-and-hostname"></a>Typ zdroje a název hostitele
-Ověřte, že hodnoty **typ počátku** a **název počátečního hostitele** jsou správné. V tomto příkladu https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, část hostname adresy URL je *cdndocdemo.blob.core.windows.net*, která je správná. Protože zdroje služby Azure Storage, webové aplikace a cloudové služby použijte hodnotu rozevíracího seznamu **název počátečního hostitele** pole, nesprávná slova nejsou chyby. Ale pokud používáte vlastní původ, ujistěte se, že není správně napsaný název hostitele vašeho.
+#### <a name="origin-type-and-hostname"></a>Typ původu a název hostitele
+Ověřte správnost hodnot **typu původu** a **názvu hostitele původu** . V tomto příkladu https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, část názvu hostitele adresy URL je *cdndocdemo.blob.Core.Windows.NET*, což je správné. Vzhledem k tomu, že Azure Storage, Webová aplikace a zdroje cloudových služeb používají pro pole **původní název hostitele** hodnotu rozevíracího seznamu, nesprávná kontrola pravopisu není problém. Pokud ale použijete vlastní zdroj, ujistěte se, že název hostitele je napsaný správně.
 
 #### <a name="http-and-https-ports"></a>Porty HTTP a HTTPS
-Zkontrolujte vaše **HTTP** a **portů HTTPS**. Ve většině případů 80 a 443 jsou správné a se nevyžadují žádné změny.  Ale pokud zdrojový server naslouchá na jiném portu, který muset uváděny zde. Pokud si nejste jistí, podívejte se na adresu URL pro zdrojový soubor. Specifikace protokolu HTTP a HTTPS použijte jako výchozí porty 80 a 443. V příkladu adresu URL https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, port není zadaný, předpokládá se výchozí hodnota 443 a správné nastavení.  
+Ověřte porty **http** a **https**. Ve většině případů jsou 80 a 443 správné a nebudete muset nic měnit.  Pokud se ale na zdrojovém serveru naslouchá jiný port, bude potřeba, aby se tady reprezentuje. Pokud si nejste jistí, podívejte se na adresu URL vašeho zdrojového souboru. Specifikace HTTP a HTTPS používají jako výchozí hodnoty porty 80 a 443. V ukázkové adrese URL se nezadá port https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, takže se předpokládá výchozí hodnota 443 a nastavení je správné.  
 
-Nicméně, Předpokládejme, že adresa URL pro zdrojový soubor, který jste dříve, je http:\//www.contoso.com:8080/file.txt. Poznámka: *: 8080* část na konci segmentu názvu hostitele. Že číslo dostane pokyn, aby port 8080 slouží k připojení na webový server www\.contoso.com, proto je potřeba zadat *8080* v **HTTP port** pole. Je důležité si uvědomit, že tato nastavení portu ovlivňují jenom jaké port použitý koncovým bodem k načtení informací ze zdroje.
+Předpokládejme však, že adresa URL původního souboru, který jste otestovali dříve, je http:\//www.contoso.com:8080/file.txt. Všimněte si, že část *: 8080* na konci segmentu názvu hostitele. Toto číslo instruuje prohlížeč, aby používal port 8080 pro připojení k webovému serveru na stránce www\.contoso.com, proto v poli **port http** musíte zadat *8080* . Je důležité si uvědomit, že tato nastavení portů mají vliv pouze na port, který koncový bod používá k načtení informací ze zdroje.
 
 > [!NOTE]
-> **Azure CDN Standard od Akamai** koncových bodů nejsou povoleny plný rozsah portů TCP pro zdroje.  Seznam nepovolených portů původu najdete v tématu [Povolené porty původu Azure CDN společnosti Akamai](/previous-versions/azure/mt757337(v=azure.100)).  
+> **Azure CDN Standard z** koncových bodů Akamai nepovoluje pro zdroje plný rozsah portů TCP.  Seznam nepovolených portů původu najdete v tématu [Povolené porty původu Azure CDN společnosti Akamai](/previous-versions/azure/mt757337(v=azure.100)).  
 > 
 > 
 
-### <a name="check-the-endpoint-settings"></a>Zkontrolujte nastavení koncového bodu
-Na **koncový bod** stránky, vyberte **konfigurovat** tlačítko.
+### <a name="check-the-endpoint-settings"></a>Kontrolovat nastavení koncového bodu
+Na stránce **koncový bod** vyberte tlačítko **Konfigurovat** .
 
-![Stránka koncový bod se zvýrazněným tlačítkem konfigurace](./media/cdn-troubleshoot-endpoint/cdn-endpoint-configure-button.png)
+![Stránka koncového bodu s zvýrazněným tlačítkem konfigurovat](./media/cdn-troubleshoot-endpoint/cdn-endpoint-configure-button.png)
 
-Koncový bod CDN **konfigurovat** se zobrazí stránka.
+Zobrazí se stránka pro **konfiguraci** koncového bodu CDN.
 
 ![Konfigurace stránky](./media/cdn-troubleshoot-endpoint/cdn-configure.png)
 
 #### <a name="protocols"></a>Protokoly
-Pro **protokoly**, ověřte, že je vybrán protokol používá klienti důvěřují. Vzhledem k tomu, že klient používá stejný protokol se bude používat pro přístup k počátku, je důležité mít počáteční porty správně nakonfigurovaná v předchozí části. Koncový bod CDN naslouchá jenom výchozích portech HTTP a HTTPS (80 a 443), bez ohledu na porty původu.
+V případě **protokolů**ověřte, zda je vybrán protokol používaný klienty. Vzhledem k tomu, že stejný protokol, který používá klient, je ten, který se používá pro přístup ke zdroji, je důležité mít v předchozí části správně nakonfigurované zdrojové porty. Koncový bod CDN naslouchá jenom na výchozích portech HTTP a HTTPS (80 a 443) bez ohledu na počáteční porty.
 
-Vraťme naše hypotetické příkladu pomocí protokolu http:\//www.contoso.com:8080/file.txt.  Jak budete pamatovat, Contoso zadaný *8080* jako jejich protokol HTTP port, ale také Předpokládejme, že jsou zadané *44300* jako jejich port HTTPS.  Pokud se vytvořil koncový bod s názvem *contoso*, jejich název hostitele koncového bodu CDN bude *contoso.azureedge.net*.  Požadavek protokolu http:\//contoso.azureedge.net/file.txt je požadavek HTTP, takže koncový bod by prostřednictvím protokolu HTTP na portu 8080 načítat z původního zdroje.  Zabezpečení požadavku prostřednictvím protokolu HTTPS, https: \/ /contoso.azureedge.net/file.txt, by způsobilo koncový bod pro použití protokolu HTTPS na portu 44300 při načítání souboru z původního zdroje.
+Pojďme se z našeho hypotetického příkladu vrátit http:\//www.contoso.com:8080/file.txt.  Jak budete si pamatovat, společnost Contoso zadala *8080* jako svůj port http, ale můžeme také předpokládat, že jako port HTTPS zadali *44300* .  Pokud vytvořili koncový bod s názvem *Contoso*, bude jeho název hostitele koncového bodu CDN *contoso.azureedge.NET*.  Požadavek na http:\//contoso.azureedge.net/file.txt je požadavek HTTP, takže koncový bod by použil protokol HTTP na portu 8080 k jeho načtení od počátku.  Zabezpečená žádost přes HTTPS, https:\//contoso.azureedge.net/file.txt by způsobila, že koncový bod při načítání souboru z počátku použije HTTPS na portu 44300.
 
 #### <a name="origin-host-header"></a>Hlavička počátečního hostitele
-**Hlavička počátečního hostitele** je hodnota hlavičky hostitele posílaná zdroji s každou žádostí.  Ve většině případů to by měl být stejný jako **název počátečního hostitele** jsme ověřit dříve.  Nesprávná hodnota v tomto poli nezpůsobí obecně vracejí stav 404, ale by mohla způsobit, že ostatní stavy 4xx, v závislosti na tom, co se očekává původu.
+**Počáteční hlavičkou hostitele** je hodnota hlavičky hostitele, kterou každý požadavek odeslal na počátek.  Ve většině případů by to měl být stejný jako **Zdrojový název hostitele** , který jsme předtím ověřili.  Nesprávná hodnota v tomto poli obvykle nezpůsobí 404 stavů, ale v závislosti na tom, co počátek očekává, může způsobit i další 4xx stavy.
 
-#### <a name="origin-path"></a>Cesta k počátku
-Nakonec jsme měli ověřit naše **cesta k počátku**.  Ve výchozím nastavení je toto pole prázdné.  Toto pole byste měli používat, jenom Pokud chcete-li zúžit rozsah původu hostované prostředky, které chcete zpřístupnit v síti CDN.  
+#### <a name="origin-path"></a>Cesta ke zdroji
+Nakonec byste měli ověřit naši cestu k **původnímu zdroji**.  Ve výchozím nastavení je to prázdné.  Toto pole byste měli použít pouze v případě, že chcete zúžit rozsah prostředků hostovaných počátkem, které mají být k dispozici v CDN.  
 
-V příkladu koncový bod, chceme, aby všechny prostředky v účtu úložiště k dispozici, takže **cesta ke zdroji** je ponecháno prázdné.  To znamená, že žádost o https:\//cdndocdemo.azureedge.net/publicblob/lorem.txt vede z koncového bodu připojení k cdndocdemo.core.windows.net, který požaduje */publicblob/lorem.txt*.  Podobně, žádost o https:\//cdndocdemo.azureedge.net/donotcache/status.png výsledkem požadavku koncového bodu */donotcache/status.png* z původního zdroje.
+V ukázkovém koncovém bodu jsme chtěli mít k dispozici všechny prostředky v účtu úložiště, takže **původní cesta** byla ponechána prázdná.  To znamená, že požadavek na https:\//cdndocdemo.azureedge.net/publicblob/lorem.txt má za následek připojení z koncového bodu k cdndocdemo.core.windows.net, které požaduje */publicblob/Lorem.txt*.  Podobně požadavek na protokol https:\//cdndocdemo.azureedge.net/donotcache/status.png má za následek, že koncový bod požaduje */donotcache/status.png* od počátku.
 
-Ale co když nechcete používat síť CDN pro každou cestu na váš původní název?  Řekněme, že chcete vystavit *publicblob* cestu.  Pokud jsme zadejte */publicblob* v **cesta k počátku** pole, která způsobí, že koncový bod pro vložení */publicblob* před každým požadavkem k počátku.  To znamená, že požadavku pro protokol https:\//cdndocdemo.azureedge.net/publicblob/lorem.txt bude nyní ve skutečnosti trvat požadavek část adresy URL, */publicblob/lorem.txt*a připojit */publicblob* na začátek. Výsledkem je žádost o */publicblob/publicblob/lorem.txt* z původního zdroje.  Pokud tato cesta se nepřekládá na skutečný soubor, vrátí počátek stavem 404.  Správnou adresu URL pro načtení lorem.txt v tomto příkladu by ve skutečnosti https:\//cdndocdemo.azureedge.net/lorem.txt.  Všimněte si, že jsme nezahrnují */publicblob* cesta vůbec, protože je požadavek část adresy URL */lorem.txt* a přidá koncový bod */publicblob*výsledkem */publicblob/lorem.txt* žádost předávaný ke zdroji.
+Ale co když nechcete používat CDN pro každou cestu k vašemu zdroji?  Řekněme, že jste chtěli zveřejnit cestu *publicblob* .  Pokud zadáte */publicblob* do pole **cesta zdroje** , bude koncový bod vložit */publicblob* před každou vydanou žádost do původního umístění.  To znamená, že požadavek na protokol https:\//cdndocdemo.azureedge.net/publicblob/lorem.txt nyní bude ve skutečnosti brát v úvahu část adresy URL, */publicblob/Lorem.txt*a připojit */publicblob* k začátku. Výsledkem je požadavek na */publicblob/publicblob/Lorem.txt* od počátku.  Pokud tato cesta nebude přeložená na skutečný soubor, vrátí původní stav 404.  Správná adresa URL pro načtení Lorem. txt v tomto příkladu by byla ve skutečnosti https:\//cdndocdemo.azureedge.net/lorem.txt.  Všimněte si, že nezahrnujeme cestu */publicblob* vůbec, protože část žádosti adresy URL je */Lorem.txt* a koncový bod přidává */publicblob*. Výsledkem je */publicblob/Lorem.txt* požadavek předaný zdroji.
 

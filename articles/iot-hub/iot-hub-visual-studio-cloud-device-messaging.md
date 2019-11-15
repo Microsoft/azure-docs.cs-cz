@@ -1,5 +1,5 @@
 ---
-title: Správa zasílání zpráv ze zařízení Azure IoT Hub cloudu pomocí Cloud Exploreru pro Visual Studio | Microsoft Docs
+title: Použití Průzkumníka cloudu VS ke správě zasílání zpráv o zařízeních Azure IoT Hub
 description: Naučte se používat Cloud Explorer pro Visual Studio k monitorování zpráv ze zařízení do cloudu a posílání cloudu na zprávy zařízení v Azure IoT Hub.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: b8ea705b55c1485cab2e1478d2d455f1d4a427d3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050268"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079481"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití Průzkumníka cloudu pro Visual Studio k posílání a přijímání zpráv mezi zařízením a IoT Hub
 
@@ -54,7 +54,7 @@ Součást Průzkumníka cloudu z Instalační program pro Visual Studio pro Visu
 
 Chcete-li získat přístup k centru, postupujte podle následujících kroků:
 
-1. V aplikaci Visual Studio vyberte **Zobrazit** > **Průzkumníka cloudu** a otevřete Průzkumníka cloudu.
+1. V aplikaci Visual Studio vyberte **zobrazit** > **Průzkumník cloudu** a otevřete Průzkumníka cloudu.
 
 1. Vyberte ikonu Správa účtů a zobrazte si Vaše předplatná.
 
@@ -96,7 +96,7 @@ Pokud chcete poslat zprávu z IoT Hub do zařízení, postupujte podle těchto k
 
     ![Odeslat výsledek zprávy C2D](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result-vs2019.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zjistili jste, jak monitorovat zprávy ze zařízení do cloudu a jak odesílat zprávy z cloudu na zařízení mezi zařízením IoT a službou Azure IoT Hub.
 

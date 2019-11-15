@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 92717e704fb3f9e79b364fcf47bbcc096c5dd1d0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074830"
+ms.locfileid: "74090746"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
@@ -22,6 +22,8 @@ Azure Backup Server v2 a novější podporuje Moderní úložiště zálohován�
 > [!NOTE]
 > Chcete-li použít Moderní úložiště zálohování, je nutné spustit záložní server v2 nebo V3 v systému Windows Server 2016 nebo V3 v systému Windows Server 2019.
 > Pokud spustíte záložní server V2 v dřívější verzi Windows serveru, Azure Backup Server nemůže využít Moderní úložiště zálohování. Místo toho chrání úlohy stejně jako u záložního serveru v1. Další informace najdete v tématu [matice ochrany](backup-mabs-protection-matrix.md)verzí záložního serveru.
+>
+> Aby se dosáhlo lepších výkonů služby Backup, doporučujeme nasadit MABS V3 se vrstveným úložištěm v systému Windows Server 2019. Postup konfigurace vrstveného úložiště najdete v článku aplikace DPM "[Nastavení MB pomocí Tiered Storage](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)".
 
 ## <a name="volumes-in-backup-server"></a>Svazky na záložním serveru
 
@@ -64,6 +66,11 @@ Používání služby Backup Server v2 nebo novější se svazky jako diskové �
     ![Vybrat server a disk](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
 ## <a name="add-volumes-to-backup-server-disk-storage"></a>Přidání svazků do úložiště disku záložního serveru
+
+> [!NOTE]
+>
+> - Přidejte do fondu jenom jeden disk, abyste zachovali počet sloupců na 1. Pak můžete podle potřeby přidat disky.
+> - Pokud do fondu úložiště přidáte více disků na cestách, bude počet disků uložen jako počet sloupců. Když přidáte více disků, může to být pouze násobek počtu sloupců.
 
 Pokud chcete přidat svazek na záložní server, v podokně **Správa** znovu prověřte úložiště a pak vyberte **Přidat**. Zobrazí se seznam všech svazků, které mají být přidány pro úložiště záložního serveru. Až budou dostupné svazky přidány do seznamu vybraných svazků, můžete jim poskytnout popisný název, který vám bude pomáhat s jejich správou. Pokud chcete tyto svazky naformátovat na ReFS, může záložní server využívat výhod Moderní úložiště zálohování, vyberte **OK**.
 

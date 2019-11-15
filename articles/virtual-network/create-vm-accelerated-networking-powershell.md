@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače Azure s akcelerovanými síťovými službami | Microsoft Docs
+title: Vytvoření virtuálního počítače Azure s akcelerovanými síťovými službami – Azure PowerShell
 description: Naučte se, jak vytvořit virtuální počítač se systémem Linux s akcelerovanými síťovými službami.
 services: virtual-network
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: f8f4f55f2c2aa4a0f9cce08e10c9f12f81a54dba
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677995"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083698"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Windows pomocí akcelerovaných síťových služeb
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Vytvoření virtuálního počítače s Windows pomocí akcelerovaných síťových služeb pomocí Azure PowerShell
 
 V tomto kurzu se dozvíte, jak vytvořit virtuální počítač s Windows s akcelerovanými síťovými službami. Informace o vytvoření virtuálního počítače se systémem Linux s akcelerovanými sítěmi najdete v tématu [Vytvoření virtuálního počítače se systémem Linux s akcelerovanými síťovými](create-vm-accelerated-networking-cli.md)službami. Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což výrazně zlepšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z DataPath, snižuje latenci, kolísání a využití CPU a používá se u nejnáročnějších síťových úloh na podporovaných typech virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dvěma virtuálními počítači s a bez urychlení sítě:
 
-![Srovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
+![Porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
 Bez urychlení sítě musí všechny síťové přenosy na virtuálním počítači a z něj projít hostitelem a virtuálním přepínačem. Virtuální přepínač poskytuje všechna vynucení zásad, například skupiny zabezpečení sítě, seznamy řízení přístupu, izolaci a další síťové virtualizované služby pro síťový provoz. Další informace o virtuálních přepínačích najdete v tématu [virtualizace sítě Hyper-V a virtuální přepínač](https://technet.microsoft.com/library/jj945275.aspx).
 
@@ -53,7 +53,7 @@ Na instancích, které podporují multithreading, se zrychluje síť pro instanc
 
 Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="regions"></a>Regionu
+### <a name="regions"></a>Regions
 K dispozici ve všech veřejných oblastech Azure a v cloudu Azure Government.
 
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Povolení akcelerovaných síťových služeb na běžícím virtuálním počítači
@@ -163,9 +163,9 @@ $nic = New-AzNetworkInterface `
     -EnableAcceleratedNetworking
 ```
 
-## <a name="create-the-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Nastavte přihlašovací údaje pro virtuální počítač na proměnnou `$cred` pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
+Nastavte přihlašovací údaje k VIRTUÁLNÍmu počítači na `$cred`ovou proměnnou pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
 
 ```powershell
 $cred = Get-Credential
@@ -216,7 +216,7 @@ Po vytvoření virtuálního počítače v Azure se připojte k virtuálnímu po
 3. Zadejte uživatelské jméno a heslo, které jste zadali při [vytváření virtuálního počítače](#create-the-virtual-machine). Pokud jste se nikdy nepřipojili k VIRTUÁLNÍmu počítači s Windows v Azure, přečtěte si téma [připojení k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 4. Klikněte pravým tlačítkem myši na tlačítko Start v systému Windows a klikněte na příkaz **Device Manager**. Rozbalte uzel **síťové adaptéry** . Potvrďte, že se zobrazuje **adaptér Ethernet virtuální funkce Mellanox ConnectX-3** , jak je znázorněno na následujícím obrázku:
 
-    ![Správce zařízení](./media/create-vm-accelerated-networking/device-manager.png)
+    ![Device Manager](./media/create-vm-accelerated-networking/device-manager.png)
 
 Pro váš virtuální počítač je teď povolená akcelerovaná síť.
 

@@ -1,32 +1,31 @@
 ---
-title: Azure Site Recovery – často kladené otázky
-description: Tento článek popisuje oblíbené otázky týkající se Azure Site Recovery.
-services: site-recovery
+title: Obecné otázky ke službě Azure Site Recovery
+description: Tento článek popisuje oblíbené obecné otázky týkající se Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 9ab2466a201662cfde4655aedd12f9fd1b21c964
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053713"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078536"
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: nejčastější dotazy (FAQ)
-Tento článek shrnuje Nejčastější dotazy týkající se Azure Site Recovery.</br>
-Konkrétní dotazy na různé scénáře ASR najdete v nejčastějších dotazech k jednotlivým scénářům.<br>
+# <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
 
-- [Zotavení po havárii virtuálního počítače Azure do Azure](azure-to-azure-common-questions.md)
-- [Zotavení po havárii virtuálního počítače VMware do Azure](vmware-azure-common-questions.md)
-- [Zotavení po havárii virtuálního počítače Hyper-V do Azure](hyper-v-azure-common-questions.md)
+Tento článek shrnuje Nejčastější dotazy týkající se Azure Site Recovery. V případě konkrétních scénářů si Projděte tyto články
+
+- [Dotazy týkající se zotavení po havárii virtuálního počítače Azure do Azure](azure-to-azure-common-questions.md)
+- [Dotazy týkající se zotavení po havárii virtuálních počítačů VMware do Azure](vmware-azure-common-questions.md)
+- [Dotazy týkající se zotavení po havárii virtuálního počítače Hyper-V do Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Obecné
 
 ### <a name="what-does-site-recovery-do"></a>K čemu Site Recovery slouží?
-Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundární datové centrum. [Další informace](site-recovery-overview.md).
+Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundární datové centrum. [Další informace](site-recovery-overview.md)
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Můžu chránit virtuální počítač, který má disk Docker?
 
@@ -198,7 +197,7 @@ Ano. Další informace o omezování šířky pásma najdete v těchto článcí
 ## <a name="failover"></a>Převzetí služeb při selhání
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Pokud převezmem služby při selhání do Azure, jak mám přístup k virtuálním počítačům Azure po převzetí služeb při selhání?
 
-K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Při převzetí služeb při selhání do Azure, jak Azure zajišťuje, aby moje data byla odolná?
