@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 325de36f3aa480847bc647827260f7f65765b5d7
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: beef37b0ece9cf57c86927b9f57d85ad4a25dbd1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103749"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746316"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -202,6 +202,10 @@ Váš účet zodpovídá za platbu za jakékoliv využití, které je hlášené
 ### <a name="can-i-use-a-different-payment-method"></a>Můžu použít jiný způsob platby?
 
 Ano. Při přijímání žádosti o převod můžete vybrat stávající způsob platby, který je propojený s vaším účtem, nebo přidat nový způsob platby.
+
+### <a name="how-can-i-transfer-ownership-of-my-enterprise-agreement-ea-subscription-account-ownership-if-the-original-account-owner-is-no-longer-with-the-organization"></a>Jak můžu převést vlastnictví účtu předplatného se smlouvou Enterprise (EA) v případě, že původní vlastník účtu v organizaci již nepracuje?
+
+Podnikový správce může aktualizovat vlastnictví jakéhokoli účtu i po odchodu původního vlastníka účtu z organizace. Může to provést podle pokynů pro [Převod vlastnictví účtu pro všechna předplatná](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) na portálu EA.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

@@ -5,18 +5,18 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499240"
+ms.locfileid: "73580097"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
-Rezervace Azure umožňují šetřit peníze tím, že potvrzují závazek využívání virtuálních počítačů, výpočetní kapacity služby SQL Database, propustnosti služby Azure Cosmos DB nebo jiných prostředků Azure na jeden nebo tři roky. Díky potvrzení závazku můžete získat slevu na prostředky, které využíváte. Rezervace můžou výrazně snížit náklady na virtuální počítače, výpočetní výkon databází SQL, službu Azure Cosmos DB a další prostředky, a to až o 72 % oproti průběžným platbám. Rezervace poskytují slevu z faktury a neovlivňují běhový stav prostředků.
+Rezervace Azure umožňují šetřit peníze tím, že potvrzují závazek využívání virtuálních počítačů, služeb Azure Blob Storage nebo Azure Data Lake Storage Gen2, výpočetní kapacity služby SQL Database, propustnosti služby Azure Cosmos DB nebo jiných prostředků Azure v rámci plánů na jeden nebo tři roky. Díky potvrzení závazku můžete získat slevu na prostředky, které využíváte. Rezervace můžou výrazně snížit náklady na prostředky, a to až o 72 % oproti průběžným platbám. Rezervace poskytují slevu z faktury a neovlivňují běhový stav prostředků.
 
 Za rezervaci můžete zaplatit předem nebo prostřednictvím měsíčních plateb. Celkové náklady na rezervaci placenou předem a rezervaci s měsíčními platbami jsou stejné. Pokud tedy zvolíte měsíční platby, neplatíte žádné další poplatky. Měsíční platba je k dispozici pro rezervace Azure, ne pro produkty třetích stran.
 
@@ -24,13 +24,14 @@ Rezervaci můžete zakoupit na webu [Azure Portal](https://ms.portal.azure.com/?
 
 ## <a name="why-buy-a-reservation"></a>Proč zakoupit rezervaci?
 
-U virtuálních počítačů, služby Azure Cosmos DB nebo databází SQL, které běží po dlouhé časové úseky, představuje zakoupení rezervace nákladově nejvýhodnější možnost. Pokud například nepřetržitě provozujete čtyři instance služby bez rezervace, účtují se vám sazby pro průběžné platby. Když pro tyto prostředky zakoupíte rezervaci, získáte ihned slevu za rezervaci. Za tyto prostředky se už nebudou účtovat sazby pro průběžné platby.
+U virtuálních počítačů, dat ve službě Blob Storage, služby Azure Cosmos DB nebo databází SQL, které využívají rozsáhlou kapacitu nebo vysokou propustnost nebo které běží po dlouhé časové úseky, představuje zakoupení rezervace nákladově nejvýhodnější možnost. Pokud například nepřetržitě provozujete čtyři instance služby bez rezervace, účtují se vám sazby pro průběžné platby. Když pro tyto prostředky zakoupíte rezervaci, získáte ihned slevu za rezervaci. Za tyto prostředky se už nebudou účtovat sazby pro průběžné platby.
 
 ## <a name="charges-covered-by-reservation"></a>Poplatky, na které se rezervace vztahuje
 
 Plány služby:
 
 - **Rezervovaná instance virtuálního počítače** – Rezervace se vztahuje jenom na náklady na výpočetní funkce virtuálních počítačů. Nevztahuje se na další poplatky za software, sítě nebo úložiště.
+- **Rezervovaná kapacita služby Azure Storage** – Rezervace pokrývá kapacitu úložiště pro účty úložiště úrovně Standard ve službách Blob Storage nebo Azure Data Lake Storage Gen2. Rezervace nepokrývá šířku pásma ani rychlost transakcí.
 - **Rezervovaná kapacita služby Azure Cosmos DB** – Rezervace se vztahuje na propustnost zřízenou pro vaše prostředky. Nevztahuje se na poplatky za úložiště a sítě.
 - **Rezervované virtuální jádro služby SQL Database** – Rezervace se vztahuje jenom na náklady na výpočetní funkce. Licence se fakturuje samostatně.
 - **SQL Data Warehouse** – Rezervace se vztahuje na využití cDWU. Nevztahuje se na poplatky za úložiště nebo sítě související s využitím služby SQL Data Warehouse.
@@ -134,6 +135,7 @@ Když zakoupíte rezervaci, může se sleva uplatnit na jiné instance s atribut
 Plány služby:
 
 - Rezervované instance virtuálních počítačů: Pokud zakoupíte rezervaci a vyberete možnost **optimalizace pro flexibilní velikost instance**, bude pokrytí slevou záviset na tom, jakou velikost virtuálního počítače zvolíte. Rezervace se může vztahovat na velikosti virtuálních počítačů ve stejné skupině velikostí. Další informace najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Rezervovaná kapacita služby Azure Storage: Rezervovanou kapacitu pro účty služby Azure Storage úrovně Standard si můžete zakoupit v jednotkách 100 TiB nebo 1 PiB za měsíc. Rezervovaná kapacita služby Azure Storage je dostupná ve všech oblastech pro všechny úrovně přístupu (horkou, studenou i archivní) a pro jakoukoli možnost replikace (LRS, GRS nebo ZRS).
 - Rezervovaná kapacita služby SQL Database: Pokrytí slevou závisí na úrovni výkonu, kterou zvolíte. Další informace najdete ve [vysvětlení způsobu uplatnění slevy za rezervaci Azure](billing-understand-reservation-charges.md).
 - Rezervovaná kapacita služby Azure Cosmos DB: Pokrytí slevou závisí na zřízené propustnosti. Další informace najdete ve [vysvětlení způsobu uplatnění slevy za rezervaci služby Azure Cosmos DB](billing-understand-cosmosdb-reservation-charges.md).
 

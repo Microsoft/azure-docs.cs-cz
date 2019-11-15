@@ -4,16 +4,16 @@ description: Tento článek shrnuje, jak vám rezervace Azure umožní ušetřit
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 42640e56806cd808114f98991039e81a2486babd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1ab6a3c0a4497ce49534f2708e13d7479130ba15
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900824"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887167"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Rezervované instance virtuálních počítačů Azure EA
 
@@ -21,16 +21,16 @@ Tento článek shrnuje, jak vám rezervace Azure umožní ušetřit peníze za r
 
 ## <a name="reservation-exchanges-and-refunds"></a>Výměny rezervací a vrácení peněz
 
-Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Za rezervaci si také můžete nechat vrátit peníze, pokud už ji nepotřebujete, a to až do 50 000 USD za rok. Výměnu rezervace provedete přes Azure Portal a na tomto webu můžete také zadat požadavek na vrácení peněz. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Rezervaci je také možné refundovat, pokud už ji nepotřebujete, a to až do 50 000 USD za rok. Výměnu nebo refundaci rezervace je možné provést na webu Azure Portal. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="reservation-costs-and-usage"></a>Náklady na rezervace a jejich využití
 
 Zákazníci se smlouvou Enterprise si mohou data o nákladech a využití zobrazit přes Azure Portal a rozhraní REST API. V souvislosti s daty o nákladech na rezervace a jejich využití můžete:
 
-- Získat data o nákupech rezervací
+- Získat údaje o nákupech rezervací
 - Zjistit, které předplatné, skupina prostředků nebo prostředek rezervaci využil
-- Provádět vratky peněz za využití rezervací
-- Počítat úspory u rezervací
+- Udělat vratku za využití rezervace
+- Vypočítat úspory vyplývající z rezervace
 - Získat údaje o nedostatečném využití rezervací
 - Amortizovat náklady na rezervace
 
@@ -41,6 +41,45 @@ Informace o cenách najdete v tématu [Ceny služby Virtual Machines s Linuxem](
 ## <a name="reserved-instances-api-support"></a>Podpora rozhraní API pro rezervované instance
 
 Pomocí rozhraní API pro Azure můžete informace o rezervacích služeb nebo softwaru Azure ve vaší organizaci získávat prostřednictvím programu. Další informace najdete v tématu [Rozhraní API pro automatizaci rezervací Azure](billing-reservation-apis.md).
+
+## <a name="azure-reserved-virtual-machine-instances"></a>Rezervované instance virtuálních počítačů Azure
+
+Rezervované instance můžou snížit náklady na všechny virtuální počítače až o 72 % oproti průběžným platbám. V kombinaci se Zvýhodněným hybridním využitím Azure můžou úspory dosáhnout až 82 %. Platba předem na jeden nebo tři roky usnadňuje určování priority úloh, plánování rozpočtu a prognózování. Rezervace můžete také vyměnit nebo zrušit podle toho, jak se budou měnit obchodní potřeby.
+
+### <a name="how-to-buy-reserved-virtual-machine-instances"></a>Možnosti nákupu rezervovaných instancí virtuálních počítačů
+
+Pokud si chcete zakoupit rezervovanou instanci virtuálního počítače Azure, podnikový správce registrace v Azure musí na [portálu Azure EA](https://ea.azure.com/) na kartě _Registrace_ v části _Podrobnosti registrace_ povolit možnost nákupu _Rezervované instance_.
+
+Po povolení přidávání rezervovaných instancí v registraci EA může jakýkoli vlastník účtu s aktivním předplatným přidruženým k dané registraci EA zakoupit rezervované instance virtuálních počítačů na webu [Azure Portal](https://aka.ms/reservations). Další informace najdete v tématu [Předplacení virtuálních počítačů a úspory s využitím rezervovaných instancí virtuálních počítačů](https://go.microsoft.com/fwlink/?linkid=861721).
+
+### <a name="how-to-view-reserved-instance-purchase-details"></a>Zobrazení podrobností o nákupu rezervovaných instancí
+
+Podrobnosti o nákupu rezervovaných instancí můžete zobrazit prostřednictvím nabídky _Rezervace_ na levé straně webu [Azure Portal](https://aka.ms/reservations) nebo na [portálu Azure EA](https://ea.azure.com/). V nabídce vlevo vyberte **Sestavy** a na kartě _Souhrn využití_ se posuňte dolů do části _Poplatky podle služeb_. Posuňte se na konec této části, kde se zobrazí výpis zakoupených rezervovaných instancí a jejich využití – vedle názvu služby mají označení „1 rok“ nebo „3 roky“, například: Standard_DS1_v2 eastus (1 rok) nebo Standard_D2s_v3 eastus2 (3 roky).
+
+### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Jak můžu změnit předplatné přidružené k rezervované instanci nebo převést výhody rezervovaných instancí na jiné předplatné v rámci stejného účtu?
+
+Výhody rezervovaných instancí může v jednu chvíli využívat pouze jedno předplatné. Předplatné, které získá výhody rezervovaných instancí, můžete změnit následujícím způsobem:
+
+- Přihlaste se k webu [Azure Portal](https://aka.ms/reservations).
+- Aktualizujte použitý rozsah předplatného tím, že přidružíte jiné předplatné v rámci stejného účtu.
+
+### <a name="how-to-view-reserved-instance-usage-details"></a>Zobrazení podrobností o využití rezervovaných instancí
+
+Podrobnosti o využití rezervovaných instancí můžete zobrazit na webu [Azure Portal](https://aka.ms/reservations) nebo na [portálu Azure EA](https://ea.azure.com/) (v případě zákazníků se smlouvou Enterprise, kteří mají přístup k zobrazení fakturačních údajů) v části _Sestavy_ > _Souhrn využití_ > _Poplatky podle služeb_. Rezervované instance poznáte podle toho, že název služby obsahuje slovo „Rezervované“, například: Rezervované základní virtuální počítače nebo Rezervované virtuální počítače s Windows Serverem (1jádrové).
+
+Další informace o využití rezervovaných instancí najdete v souboru CSV s podrobnostmi o využití a rozšířenou sestavou ke stažení. Pole _Další informace_ vám pomůže zjistit využití rezervovaných instancí.
+
+Pokud jste k nákupu rezervovaných instancí virtuálních počítačů Azure nepoužili Zvýhodněné hybridní využití Azure, rezervované instance budou generovat údaje pro dva měřiče (hardwarový a softwarový). Pokud jste k nákupu rezervované instance použili Zvýhodněné hybridní využití Azure, v podrobnostech o využití rezervovaných instancí se nezobrazí softwarový měřič.
+
+### <a name="reserved-instance-billing"></a>Fakturace rezervovaných instancí
+
+U podnikových zákazníků se k nákupu rezervovaných instancí virtuálních počítačů Azure používá peněžní závazek. Pokud je u vaší registrace dostatečný zůstatek peněžního závazku na pokrytí nákupu rezervované instance, příslušná částka se odečte od zůstatku peněžního závazku a za nákup neobdržíte fakturu.
+
+Pokud zákazníci se smlouvou Azure Enterprise využijí celý svůj peněžní závazek, stále si můžou koupit rezervované instance, ale tyto nákupy se budou fakturovat na další faktuře za nadlimitní využití. Případné nadlimitní využití rezervovaných instancí bude součástí normální faktury za nadlimitní využití.
+
+### <a name="reserved-instance-expiration"></a>Vypršení platnosti rezervované instance
+
+30 dnů před vypršením platnosti rezervace a při vypršení její platnosti obdržíte e-mailová oznámení. Po vypršení platnosti rezervace zůstanou nasazené virtuální počítače spuštěné a budou se účtovat podle tarifů průběžných plateb. Další informace najdete v [nabídce rezervovaných instancí virtuálních počítačů](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o rezervacích Azure najdete v tématu [Co jsou rezervace Azure?](billing-save-compute-costs-reservations.md).
