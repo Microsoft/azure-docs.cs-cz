@@ -5,7 +5,7 @@ metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
   title: 'Dokumentace k rozhraní API pro Vizuální vyhledávání Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
   titleSuffix: Azure Cognitive Services
-  description: Naučte se používat rozhraní API pro vizuální vyhledávání Bingu k získání podrobných informací o obrázku.
+  description: 'Pokud odešlete obrázek nebo zadáte jeho URL, toto rozhraní API o něm dokáže zjistit celou řadu informací, včetně vizuálně podobných obrázků, možností nákupu a webových stránek.'
   services: cognitive-services
   author: swhite-msft
   manager: nitinme

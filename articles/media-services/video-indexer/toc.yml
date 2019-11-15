@@ -15,6 +15,10 @@
   items:
     - name: Použití rozhraní API Video Indexeru
       href: video-indexer-use-apis.md
+- name: Ukázky
+  items:
+    - name: Analýzy živých streamů
+      href: live-stream-analysis.md
 - name: Koncepty
   items:
     - name: Přehled

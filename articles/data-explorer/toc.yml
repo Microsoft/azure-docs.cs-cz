@@ -180,6 +180,8 @@
       items:
         - name: Azure Data Factory
           items:
+            - name: Integrace s Data Factory
+              href: data-factory-integration.md
             - name: Hromadné kopírování dat s využitím šablony Azure Data Factory
               href: data-factory-template.md
             - name: Spouštění řídicích příkazů s využitím Azure Data Factory

@@ -140,6 +140,8 @@
                   href: learn/quick-create-workspace-posh.md
             - name: Odstranění a obnovení pracovního prostoru
               href: platform/delete-workspace.md
+            - name: Přesunutí pracovního prostoru
+              href: platform/move-workspace.md
             - name: Návrh pro poskytovatele služeb
               href: platform/service-providers.md
             - name: Správa přístupu
