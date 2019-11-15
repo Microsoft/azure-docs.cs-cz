@@ -1,19 +1,19 @@
 ---
-title: Přizpůsobení zobrazení operátora v Azure IoT Central | Microsoft Docs
-description: Jako tvůrce můžete přizpůsobit zobrazení operátora ve vaší aplikaci Azure IoT Central.
+title: 'Kurz: přizpůsobení zobrazení operátorů v Azure IoT Central'
+description: 'Kurz: jako tvůrce Přizpůsobte zobrazení operátora v aplikaci Azure IoT Central.'
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 07/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 60e76a1a1d48aaafa8b9aa6b581e8634b1e47836
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d835ce5a1cbdcbd9741c775c4e9bd2eea7c803d7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956954"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112338"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central pro operátora
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace výchozího řídicího panelu aplikace
 > * Náhled výchozího řídicího panelu aplikace jako operátoru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, měli byste dokončit dva předchozí kurzy:
 
@@ -58,16 +58,16 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     | Nastavení     | Hodnota |
     | ----------- | ----- |
-    | Name (Název)        | Maximální teplota |
+    | Název        | Maximální teplota |
     | Časové rozmezí  | Poslední 1 týden |
-    | Typ měření | Telemetrie |
-    | Měření | teplota |
+    | Typ měření | Telemetrická data |
+    | Měření | Teplota |
     | Agregace | Maximum |
     | Viditelnost  | Povoleno |
 
     ![Přidání KPI](media/tutorial-customize-operator/addkpi.png)
 
-5. Vyberte **Save** (Uložit). Teď na řídicím panelu vidíte dlaždici KPI:
+5. Vyberte **Uložit**. Teď na řídicím panelu vidíte dlaždici KPI:
 
     ![Dlaždice KPI](media/tutorial-customize-operator/temperaturekpi.png)
 

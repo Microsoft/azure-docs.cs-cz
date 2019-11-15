@@ -1,5 +1,5 @@
 ---
-title: Exportujte data a vizualizujte přehledy v Azure IoT Central | Microsoft Docs
+title: 'Kurz: Export dat a vizualizace přehledů v Azure IoT Central'
 description: V tomto kurzu se naučíte exportovat data z IoT Central a vizualizovat přehledy na řídicím panelu Power BI.
 services: iot-central
 ms.service: iot-central
@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: dobett
 author: dominicbetts
-ms.date: 10/22/2019
-ms.openlocfilehash: 0cf1c6e926b2406d960762a9d597b28a17f6c316
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.date: 11/12/2019
+ms.openlocfilehash: ce775f207eaa5df05900ea2e5b6d9fbeab4dc878
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615283"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112876"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Kurz: Export dat z Azure IoT Central a vizualizace Insights v Power BI
 
@@ -42,7 +42,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Před vytvořením centra událostí a aplikace logiky je potřeba vytvořit skupinu prostředků pro jejich správu. Skupina prostředků by měla být ve stejném umístění jako vaše aplikace IoT Central pro **analýzu v rámci služby Store** . Vytvoření skupiny prostředků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V levém navigačním panelu vyberte **skupiny prostředků**. Pak vyberte **Přidat**.
 1. V poli **předplatné**vyberte název předplatného Azure, které jste použili k vytvoření aplikace IoT Central.
 1. Jako název **skupiny prostředků** zadejte _Retail-Store-Analysis_*.
@@ -58,7 +58,7 @@ Předtím, než budete moci nakonfigurovat aplikaci maloobchodního monitorován
 
 1. V Azure Portal v levém horním rohu obrazovky vyberte **vytvořit prostředek** .
 1. V **části Hledat na Marketplace**zadejte _Event Hubs_a potom stiskněte klávesu **ENTER**.
-1. Na stránce **Event Hubs** vyberte **vytvořit**.
+1. Na **Event Hubs** stránce **vytvořit**.
 1. Na stránce **vytvořit obor názvů** proveďte následující kroky:
     * Zadejte jedinečný název oboru názvů, jako je například _Your-Retail-Store-Analysis_. Systém zkontroluje, zda je tento název k dispozici.
     * Vyberte cenovou úroveň **Basic** .
@@ -110,7 +110,7 @@ Export dat může trvat několik minut, než se zahájí odesílání telemetrie
 
     | Název hodnoty  | Typ hodnoty |
     | ----------- | ---------- |
-    | Časové razítko   | DateTime   |
+    | Timestamp   | Datum a čas   |
     | Vlhkost    | Číslo     |
     | Teplota | Číslo     |
 
@@ -133,7 +133,7 @@ Také potřebujete datovou sadu streamování pro telemetrii obsazení:
 
     | Název hodnoty     | Typ hodnoty |
     | -------------- | ---------- |
-    | Časové razítko      | DateTime   |
+    | Timestamp      | Datum a čas   |
     | Délka fronty 1 | Číslo     |
     | Délka fronty 2 | Číslo     |
     | Doba bydlení 1   | Číslo     |
@@ -384,7 +384,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **vlhkost** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte **vlhkost**.
     * Vyberte pole **teplota** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte možnost **teplota**.
-    * Kliknutím na **Uložit** uložte změny. Akce **zóna 1 prostředí** vypadá jako na následujícím snímku obrazovky: ![Zóna 1 prostředí](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
+    * Vyberte **Uložit** uložte provedené změny. Akce **zóna 1 prostředí** vypadá jako na následujícím snímku obrazovky: ![Zóna 1 prostředí](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
 1. Vyberte akci **zóna 2 prostředí** a vyberte **přidat akci**.
 1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
@@ -396,7 +396,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **vlhkost** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte **vlhkost**.
     * Vyberte pole **teplota** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte možnost **teplota**.
-    Kliknutím na **Uložit** uložte změny.  Akce **zóna 2 prostředí** vypadá jako na následujícím snímku obrazovky: ![Zóna 2 prostředí](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
+    Vyberte **Uložit** uložte provedené změny.  Akce **zóna 2 prostředí** vypadá jako na následujícím snímku obrazovky: ![Zóna 2 prostředí](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
 1. Vyberte akci **obsazení** a pak vyberte akci **Přepnout podle ID rozhraní** .
 1. Vyberte akci **rozhraní pro dobu bydlení** a vyberte **přidat akci**.
 1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
@@ -409,7 +409,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **Doba obydlí 1** a potom pro **analýzu telemetrie**vyberte **Zobrazit další** . Pak vyberte **DwellTime1**.
     * Vyberte pole **Doba obydlí 2** a potom pro **analýzu telemetrie**vyberte **Zobrazit další** . Pak vyberte **DwellTime2**.
-    * Kliknutím na **Uložit** uložte změny. Akce **rozhraní s časem bydlení** vypadá jako na následujícím snímku obrazovky: ![akci obsazení](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
+    * Vyberte **Uložit** uložte provedené změny. Akce **rozhraní s časem bydlení** vypadá jako na následujícím snímku obrazovky: ![akci obsazení](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
 1. Vyberte akci **rozhraní počtu osob** a pak vyberte **přidat akci**.
 1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
@@ -421,7 +421,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **Délka fronty 1** a pak vyberte **Zobrazit více** vedle možnosti **analyzovat telemetrii**. Pak vyberte **count1**.
     * Vyberte pole **Délka fronty 2** a potom vyberte **Zobrazit více** vedle možnosti **analyzovat telemetrii**. Pak vyberte **count2**.
-    * Kliknutím na **Uložit** uložte změny. Akce **rozhraní počtu osob** vypadá jako na následujícím snímku obrazovky: ![obsazená akce](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
+    * Vyberte **Uložit** uložte provedené změny. Akce **rozhraní počtu osob** vypadá jako na následujícím snímku obrazovky: ![obsazená akce](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
 
 Aplikace logiky se spustí automaticky. Pokud chcete zobrazit stav každého spuštění, přejděte na stránku **Přehled** aplikace logiky v Azure Portal:
 
@@ -442,7 +442,7 @@ Přidejte čtyři dlaždice spojnicového grafu pro zobrazení teploty a vlhkost
 | ------- | -------- | -------- | -------- | -------- |
 | Datová sada | Senzor Zóna 1 | Senzor Zóna 1 | Senzor Zóna 2 | Senzor Zóna 2 |
 | Typ vizualizace | Spojnicový graf | Spojnicový graf | Spojnicový graf | Spojnicový graf |
-| Osách | Časové razítko | Časové razítko | Časové razítko | Časové razítko |
+| Osách | Timestamp | Timestamp | Timestamp | Timestamp |
 | Hodnoty | Teplota | Vlhkost | Teplota | Vlhkost |
 | Časové okno | 60 minut | 60 minut | 60 minut | 60 minut |
 | Název | Teplota (1 hodina) | Vlhkost (1 hodina) | Teplota (1 hodina) | Vlhkost (1 hodina) |
@@ -475,10 +475,10 @@ Přidejte čtyři dlaždice karet, abyste zobrazili délku fronty a dobu trván�
 | Nastavení | #1 karty | #2 karty | #3 karty | #4 karty |
 | ------- | ------- | ------- | ------- | ------- |
 | Datová sada | Senzor obsazení | Senzor obsazení | Senzor obsazení | Senzor obsazení |
-| Typ vizualizace | Skupinový sloupcový graf | Skupinový sloupcový graf | Měřená | Měřená |
-| Osách    | Časové razítko | Časové razítko | Není dostupné. | Není dostupné. |
+| Typ vizualizace | Skupinový sloupcový graf | Skupinový sloupcový graf | Měřidla | Měřidla |
+| Osách    | Timestamp | Timestamp | neuvedeno | neuvedeno |
 | Hodnota | Doba bydlení 1 | Doba bydlení 2 | Délka fronty 1 | Délka fronty 2 |
-| Časové okno | 60 minut | 60 minut |  Není dostupné. | Není dostupné. |
+| Časové okno | 60 minut | 60 minut |  neuvedeno | neuvedeno |
 | Název | Doba obydlí | Doba obydlí | Délka fronty | Délka fronty |
 | Podnadpis | Rezervace 1 | Rezervace 2 | Rezervace 1 | Rezervace 2 |
 

@@ -337,8 +337,6 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
         - name: Rozhraní REST API pro předpovědi V2
           href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
-        - name: Rozhraní REST API pro koncové body V3
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: Kódy HTTP
           displayName: '400, 401, 403, 409, 410, 414, 429'
           href: luis-reference-response-codes.md

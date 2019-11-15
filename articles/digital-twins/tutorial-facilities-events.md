@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: zachycení událostí z prostoru – digitální vlákna Azure Microsoft Docs'
+title: 'Kurz: zachycení událostí z digitálního vlákna Azure'
 description: Zjistěte, jak pomocí kroků v tomto kurzu dostávat oznámení z prostorů díky integraci služby Azure Digital Twins s Logic Apps.
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: 00efae0b87de90d2abb1d488afa6b51b1b188b30
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/12/2019
+ms.openlocfilehash: 3cb5d8a6cb605d2150be1e34a9f4b0ac7955aed6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009282"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107690"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Kurz: příjem oznámení z digitálních vláken Azure pomocí Logic Apps
 

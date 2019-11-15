@@ -1,22 +1,22 @@
 ---
-title: Vyvinout modul pro zařízení se systémem Linux – Azure IoT Edge | Microsoft Docs
+title: 'Kurz: vývoj modulů pro zařízení se systémem Linux – Azure IoT Edge'
 description: Tento kurz vás provede nastavením vývojového počítače a cloudových prostředků pro vývoj IoT Edge modulů pomocí kontejnerů Linux pro zařízení se systémem Linux.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a523028fb312f030bc453692daceb0f254f844b6
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 01ca118348b3a084c97182338bf656da83d52cb4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240948"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114054"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Linuxem
+# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: vývoj IoT Edgech modulů pro zařízení se systémem Linux
 
 Pomocí Visual Studio Code můžete vyvíjet a nasazovat kód pro zařízení se systémem Linux s IoT Edge. 
 
@@ -98,19 +98,19 @@ K vývoji IoT Edgech modulů použijte rozšíření IoT pro Visual Studio Code.
 
 1. Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) na svém vývojovém počítači. 
 
-2. Po dokončení instalace vyberte **Zobrazit** > **rozšíření**. 
+2. Po dokončení instalace vyberte **zobrazit** > **rozšíření**. 
 
 3. Vyhledejte **nástroje Azure IoT Tools**, což je ve skutečnosti kolekce rozšíření, která vám pomůžou pracovat s IoT Hub a zařízeními IoT, a také vyvíjet IoT Edge moduly. 
 
 4. Vyberte **Install** (Nainstalovat). Každé zahrnuté rozšíření se nainstaluje jednotlivě. 
 
-5. Po dokončení instalace rozšíření otevřete paletu příkazů výběrem možnosti **Zobrazit** > **paletu příkazů**. 
+5. Po dokončení instalace rozšíření otevřete paletu příkazů výběrem možnosti **zobrazit** > **paleta příkazů**. 
 
-6. V paletě příkazů vyhledejte a vyberte **Azure: Přihlaste se**. Podle pokynů se přihlaste ke svému účtu Azure. 
+6. V paletě příkazů vyhledejte a vyberte **Azure: přihlásit**se. Podle pokynů se přihlaste ke svému účtu Azure. 
 
-7. V paletě příkazů znovu vyhledejte a vyberte **Azure IoT Hub: Vyberte IoT Hub**. Podle pokynů vyberte předplatné Azure a centrum IoT. 
+7. V paletě příkazů znovu vyhledejte a vyberte **Azure IoT Hub: vyberte IoT Hub**. Podle pokynů vyberte předplatné Azure a centrum IoT. 
 
-7. Kliknutím na ikonu na panelu nástrojů na levé straně nebo výběrem **Zobrazit** > **Průzkumníka**otevřete část Visual Studio Code Explorer. 
+7. Kliknutím na ikonu na panelu nástrojů na levé straně nebo výběrem možnosti **zobrazit** > **průzkumník**otevřete část Visual Studio Code Explorer. 
 
 8. V dolní části okna Průzkumníka rozbalte nabídku sbalená **zařízení Azure IoT Hub** . Měli byste vidět zařízení a zařízení IoT Edge přidružená ke službě IoT Hub, kterou jste vybrali prostřednictvím palety příkazů. 
 
@@ -126,7 +126,7 @@ Pro tento kurz používáme šablonu C# modulu, protože se jedná o nejčastěj
 
 ### <a name="create-a-project-template"></a>Vytvoření šablony projektu
 
-V paletě příkazu Visual Studio Code vyhledejte a vyberte **Azure IoT Edge: Nové řešení**IoT Edge. Postupujte podle zobrazených výzev a pomocí následujících hodnot vytvořte řešení: 
+V paletě příkazu Visual Studio Code vyhledejte a vyberte **Azure IoT Edge: nové IoT Edge řešení**. Postupujte podle zobrazených výzev a pomocí následujících hodnot vytvořte řešení: 
 
    | Pole | Hodnota |
    | ----- | ----- |
@@ -134,7 +134,7 @@ V paletě příkazu Visual Studio Code vyhledejte a vyberte **Azure IoT Edge: No
    | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
    | Vyberte šablonu modulu | Zvolte  **C# modulu**. |
    | Zadejte název modulu | Přijměte výchozí **SampleModule**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Finální úložiště imagí vypadá jako \<název\>registru. azurecr.IO/SampleModule. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Konečné úložiště imagí vypadá jako \<název registru\>. azurecr.io/samplemodule. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-develop-for-linux/image-repository.png)
 
@@ -162,7 +162,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 
 V současné době Visual Studio Code může C# vyvíjet moduly pro zařízení se systémem Linux AMD64 a ARM32v7. Musíte vybrat architekturu, na kterou cílíte, vzhledem k tomu, že to ovlivňuje způsob sestavení a spuštění kontejneru. Výchozí hodnota je Linux AMD64. 
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení**Edge nebo na bočním panelu v dolní části okna vyberte ikonu zástupce. 
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna. 
 
    ![Vybrat ikonu architektury na bočním panelu](./media/tutorial-develop-for-linux/select-architecture.png)
 
@@ -210,7 +210,7 @@ Zkontrolovali jste kód modulu a šablonu nasazení, abyste pochopili některé 
 
 Poskytněte přihlašovací údaje registru kontejneru do Docker, aby mohli ukládat image kontejneru do registru. 
 
-1. Otevřete Visual Studio Code Integrated Terminal výběrem možnosti **Zobrazit** > **terminál**.
+1. Otevřete Visual Studio Code Integrated Terminal výběrem možnosti **zobrazit** > **terminálu**.
 
 2. Přihlaste se k Docker pomocí přihlašovacích údajů služby Azure Container Registry, které jste uložili po vytvoření registru. 
 
@@ -218,7 +218,7 @@ Poskytněte přihlašovací údaje registru kontejneru do Docker, aby mohli ukl�
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Může se zobrazit upozornění zabezpečení, které doporučuje použití `--password-stdin`nástroje. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu [přihlašovací](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) Reference k Docker.
+   Může se zobrazit upozornění zabezpečení, které doporučuje použití `--password-stdin`. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 ### <a name="build-and-push"></a>Sestavení a vložení 
 
@@ -228,7 +228,7 @@ Visual Studio Code má teď přístup k vašemu registru kontejneru, takže je �
 
    ![Sestavování a nabízených IoT Edgech modulů](./media/tutorial-develop-for-linux/build-and-push-modules.png)
 
-   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé se spustí `docker build` sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí a `docker push` nahraje úložiště imagí do registru kontejneru. 
+   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé spustí `docker build` k sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí `docker push` a nahrajte úložiště imagí do svého registru kontejneru. 
 
    Tento proces může trvat několik minut poprvé, ale při příštím spuštění příkazů je rychlejší. 
 
@@ -261,8 +261,8 @@ Visual Studio Code má teď přístup k vašemu registru kontejneru, takže je �
 
 Pokud narazíte na chyby při sestavování a vkládání image modulu, často je třeba provést konfiguraci Docker na vašem vývojovém počítači. Ke kontrole konfigurace použijte následující kontroly: 
 
-* Spustili `docker login` jste příkaz s použitím přihlašovacích údajů, které jste zkopírovali z registru kontejneru? Tyto přihlašovací údaje se liší od těch, které používáte k přihlášení do Azure. 
-* Je vaše úložiště kontejnerů správné? Má váš správný název registru kontejneru a správný název modulu? Otevřete soubor **Module. JSON** ve složce SampleModule, abyste zkontrolovali. Hodnota úložiště by měla vypadat jako  **\<název\>registru. azurecr.IO/SampleModule**. 
+* Spustili jste příkaz `docker login` s použitím přihlašovacích údajů, které jste zkopírovali z registru kontejneru? Tyto přihlašovací údaje se liší od těch, které používáte k přihlášení do Azure. 
+* Je vaše úložiště kontejnerů správné? Má váš správný název registru kontejneru a správný název modulu? Otevřete soubor **Module. JSON** ve složce SampleModule, abyste zkontrolovali. Hodnota úložiště by měla vypadat jako **\<název registru\>. azurecr.IO/SampleModule**. 
 * Pokud jste pro modul použili jiný název než **SampleModule** , znamená to, že se tento název v rámci řešení konzistentně používá?
 * Je váš počítač se spuštěným stejným typem kontejnerů, které vytváříte? Tento kurz je určen pro zařízení se systémem Linux IoT Edge, takže Visual Studio Code by měl být na bočním panelu **amd64** nebo **arm32v7** a Docker Desktop by měl spouštět kontejnery Linux.  
 

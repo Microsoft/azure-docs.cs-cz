@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: e1534a562c81fc92fdf0c21452458c51b10f0bc9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074227"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108098"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Import rozhraní API protokolu SOAP a převod na REST
 
@@ -32,14 +32,14 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončete následující rychlý Start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
+Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-api"> </a>Import a publikování back-endového rozhraní API
 
 1. V části **API MANAGEMENT** vyberte **rozhraní API**.
-2. Vyberte **WSDL** ze seznamu **Přidat nové rozhraní API**.
+2. V seznamu **Přidat nové rozhraní API** vyberte **WSDL**.
 
     ![Rozhraní API protokolu SOAP](./media/restify-soap-api/wsdl-api.png)
 3. Do pole **Specifikace WSDL** zadejte adresu URL s vaším rozhraním API protokolu SOAP.
@@ -47,9 +47,9 @@ Dokončete následující rychlý Start: [Vytvoření instance Azure API Managem
 
     ![Ze SOAP do REST](./media/restify-soap-api/soap-to-rest.png)
 
-5. Stiskněte klávesu Tab.
+5. Stiskněte tabulátor.
 
-    Následující pole se vyplní informacemi z rozhraní SOAP API: Zobrazované jméno, název, popis.
+    Následující pole se vyplní informacemi z rozhraní API SOAP: Zobrazovaný název, Název, Popis.
 6. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.
 9. Publikujte rozhraní API jeho přidružením k produktu. V tomto případě se použije produkt *Unlimited*.  Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.
 
@@ -61,7 +61,7 @@ Dokončete následující rychlý Start: [Vytvoření instance Azure API Managem
     * **Unlimited**   
 10. Vyberte **Vytvořit**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testování nového rozhraní API služby APIM na portálu Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
 
 Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.  
 
@@ -74,26 +74,11 @@ Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodln�
 
     Back-end předá odpověď **200 OK** a nějaká data.
 
-## <a name="call-operation"></a>Volání operace z portálu pro vývojáře
-
-Pokud chcete otestovat rozhraní API, můžete operace volat také z **Portálu pro vývojáře**. 
-
-1. Vyberte rozhraní API, které jste vytvořili v kroku Import a publikování back-endového rozhraní API.
-2. Stiskněte **Portál pro vývojáře**.
-
-    Otevře se web Portál pro vývojáře.
-3. Vyberte **rozhraní API**, které jste vytvořili.
-4. Klikněte na operaci, kterou chcete testovat.
-5. Stiskněte **Vyzkoušet**.
-6. Stiskněte **Odeslat**.
-    
-    Po vyvolání operace portál pro vývojáře zobrazí **Stav odpovědi**, **Hlavičky odpovědi** a jakýkoli **Obsah odpovědi**.
-
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

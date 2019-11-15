@@ -1,5 +1,5 @@
 ---
-title: 'Kurz REST: vytvoření kanálu rozšíření AI pro extrakci textu a struktury z objektů BLOB JSON'
+title: 'Kurz: extrakce textu a struktury z objektů BLOB JSON'
 titleSuffix: Azure Cognitive Search
 description: Projděte si příklad extrakce textu a zpracování přirozeného jazyka nad obsahem objektů BLOB JSON pomocí post a rozhraní REST API služby Azure Kognitivní hledání.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790196"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113658"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>Kurz: Přidání struktury do "nestrukturovaného obsahu" s obohacením AI
+# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Kurz: extrakce textu a struktury z objektů BLOB JSON v Azure pomocí rozhraní REST API (Azure Kognitivní hledání)
 
-Pokud máte nestrukturovaný text nebo obsah obrázku, [kanál rozšíření AI](cognitive-search-concept-intro.md) vám může pomoci extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat soubory obrázků (JPG, PNG, TIFF), tento kurz se zaměřuje na obsah založený na slovech, použití detekce jazyka a analýzy textu k vytváření nových polí a informací, které můžete využít v dotazech, omezujících aspektech a filtrech.
+Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo Image, kanál pro [rozšíření AI](cognitive-search-concept-intro.md) vám může pomoci extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat soubory obrázků (JPG, PNG, TIFF), tento kurz se zaměřuje na obsah založený na slovech, použití detekce jazyka a analýzy textu k vytváření nových polí a informací, které můžete využít v dotazech, omezujících aspektech a filtrech.
 
 > [!div class="checklist"]
 > * Začněte s celými dokumenty (nestrukturovaný text), například PDF, MD, DOCX a PPTX v úložišti objektů BLOB v Azure.
@@ -90,7 +90,7 @@ Obohacení AI je zajištěno Cognitive Services, včetně Analýza textu a Poč�
 
 Pro toto cvičení ale můžete přeskočit zřizování prostředků, protože Azure Kognitivní hledání se může připojit k Cognitive Services na pozadí a poskytnout vám 20 bezplatných transakcí na indexer. Vzhledem k tomu, že tento kurz používá 7 transakcí, je bezplatné přidělení dostatečné. Pro větší projekty Naplánujte zřizování Cognitive Services na úrovni průběžných plateb. Další informace najdete v tématu věnovaném [připojení Cognitive Services](cognitive-search-attach-cognitive-services.md).
 
-### <a name="azure-cognitive-search"></a>Kognitivní hledání Azure
+### <a name="azure-cognitive-search"></a>Kognitivní hledání v Azure
 
 Třetí součástí je Azure Kognitivní hledání, kterou můžete vytvořit na [portálu](search-create-service-portal.md). K dokončení tohoto Názorného postupu můžete použít bezplatnou úroveň. 
 
@@ -100,7 +100,7 @@ Stejně jako u služby Azure Blob Storage si pro získání přístupového klí
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud se `https://mydemo.search.windows.net`adresa URL koncového bodu, bude název služby `mydemo`.
 
-2. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
     Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
@@ -150,7 +150,7 @@ Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování
     ```
 1. Odešlete požadavek. Měl by se zobrazit stavový kód 201 potvrzující úspěch. 
 
-Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2019-05-06`, v hlavičce za `Content-Type` by mělo být `api-key` a jeho hodnota musí být pro vyhledávací službu platná. Dokument JSON můžete chtít spustit pomocí online validátoru JSON, abyste se ujistili, že je syntaxe správná. 
+Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2019-05-06`, v hlavičce za `api-key` by mělo být `Content-Type` a jeho hodnota musí být pro vyhledávací službu platná. Dokument JSON můžete chtít spustit pomocí online validátoru JSON, abyste se ujistili, že je syntaxe správná. 
 
 ### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 

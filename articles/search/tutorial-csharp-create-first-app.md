@@ -1,19 +1,19 @@
 ---
 title: C#kurz vytvoření první aplikace
 titleSuffix: Azure Cognitive Search
-description: Naučte se, jak vytvořit první vyhledávací aplikaci krok za krokem. Kurz poskytuje odkaz na funkční aplikaci na GitHubu a kompletní proces sestavení zcela nové aplikace. Přečtěte si o základních součástech Azure Kognitivní hledání.
+description: Naučte se, jak vytvořit C# svou první aplikaci pro hledání krok za krokem. Kurz poskytuje odkaz na funkční aplikaci na GitHubu a kompletní proces sestavení zcela nové aplikace. Přečtěte si o základních součástech Azure Kognitivní hledání.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794137"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112235"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#kurz: Vytvoření první aplikace – Azure Kognitivní hledání
 
@@ -44,7 +44,7 @@ Toto jedno volání iniciuje hledání dat Azure a vrátí výsledky.
 ![Hledání "fondu"](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -502,7 +502,7 @@ Volání služby Azure Kognitivní hledání je zapouzdřeno v naší metodě **
 
     V této metodě Nejdřív zajistěte zahájení naší konfigurace Azure a pak nastavíme některé parametry hledání. Názvy polí v parametru **Select** odpovídají přesně názvům vlastností v třídě **hotelu** . Je možné ponechat parametr **Select** a v takovém případě jsou vráceny všechny vlastnosti. Nastavení žádného parametru **Select** je neefektivní, pokud se zajímá pouze podmnožina dat. Když zadáte vlastnosti, které vás zajímají, vrátí se jenom tyto vlastnosti.
 
-    Asynchronní volání vyhledávání (**model. resultList = await _indexClient. Documents. SearchAsync&lt;hotelů&gt;(model. prohledávanýtext, Parameters);** ) je tento kurz a aplikace, které se týkají. Třída **DocumentSearchResult** je zajímavá a dobrý nápad (Pokud je aplikace spuštěná), je nastavit zarážku a použít ladicí program k prohlédnutí obsahu **model. resultList**. Měli byste zjistit, že je intuitivní a poskytuje vám data, která jste si vyžádali, a ne mnohem jinak.
+    Asynchronní volání vyhledávání (**model. resultList = await _indexClient. Documents. SearchAsync&lt;hotelu&gt;(model. prohledávanýtext, Parameters);** ) je to, co se týká tohoto kurzu a aplikace. Třída **DocumentSearchResult** je zajímavá a dobrý nápad (Pokud je aplikace spuštěná), je nastavit zarážku a použít ladicí program k prohlédnutí obsahu **model. resultList**. Měli byste zjistit, že je intuitivní a poskytuje vám data, která jste si vyžádali, a ne mnohem jinak.
 
 Nyní pro Moment pravdy.
 

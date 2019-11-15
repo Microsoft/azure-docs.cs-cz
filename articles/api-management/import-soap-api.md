@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 22b7b79426829b57f15263f7792dca6596c6641f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073246"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107655"
 ---
 # <a name="import-soap-api"></a>Importování rozhraní API SOAP
 
@@ -32,23 +32,23 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončete následující rychlý Start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
+Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-api"> </a>Import a publikování back-endového rozhraní API
 
 1. V části **API MANAGEMENT** vyberte **rozhraní API**.
-2. Vyberte **WSDL** ze seznamu **Přidat nové rozhraní API**.
+2. V seznamu **Přidat nové rozhraní API** vyberte **WSDL**.
 
     ![API SOAP](./media/import-soap-api/wsdl-api.png)
-3. Do **Specifikace WSDL** zadejte adresu URL, kde se nachází rozhraní API SOAP.
+3. Do pole **Specifikace WSDL** zadejte adresu URL s vaším rozhraním API protokolu SOAP.
 4. Ve výchozím nastavení je vybraný přepínač **Průchod SOAP**. S tímto výběrem bude rozhraní API prezentované jako SOAP. Příjemce musí používat pravidla SOAP. Pokud chcete rozhraní API převést na REST, postupujte podle kroků v tématu o [importování rozhraní API SOAP a jeho převedení na REST](restify-soap-api.md).
 
     ![Průchod](./media/import-soap-api/pass-through.png)
-5. Stiskněte klávesu Tab.
+5. Stiskněte tabulátor.
 
-    Následující pole se vyplní informacemi z rozhraní SOAP API: Zobrazované jméno, název, popis.
+    Následující pole se vyplní informacemi z rozhraní API SOAP: Zobrazovaný název, Název, Popis.
 6. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.
 9. Publikujte rozhraní API jeho přidružením k produktu. V tomto případě se použije produkt *Unlimited*.  Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.
 
@@ -60,7 +60,7 @@ Dokončete následující rychlý Start: [Vytvoření instance Azure API Managem
     * **Unlimited**   
 10. Vyberte **Vytvořit**.
 
-### <a name="test-the-new-apim-api-in-the-administrative-portal"></a>Otestování nového rozhraní API APIM na portálu pro správu
+### <a name="test-the-new-api-in-the-administrative-portal"></a>Testování nového rozhraní API na portálu pro správu
 
 Operaci můžete volat přímo z portálu pro správu, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.  
 
@@ -73,26 +73,11 @@ Operaci můžete volat přímo z portálu pro správu, který nabízí pohodlný
 
     Back-end předá odpověď **200 OK** a nějaká data.
 
-### <a name="call-operation"></a>Volání operace z portálu pro vývojáře
-
-Pokud chcete otestovat rozhraní API, můžete operace volat také z **Portálu pro vývojáře**. 
-
-1. Vyberte rozhraní API, které jste vytvořili v kroku Import a publikování back-endového rozhraní API.
-2. Stiskněte **Portál pro vývojáře**.
-
-    Otevře se web Portál pro vývojáře.
-3. Vyberte **rozhraní API**, které jste vytvořili.
-4. Klikněte na operaci, kterou chcete testovat.
-5. Stiskněte **Vyzkoušet**.
-6. Stiskněte **Odeslat**.
-    
-    Po vyvolání operace portál pro vývojáře zobrazí **Stav odpovědi**, **Hlavičky odpovědi** a jakýkoli **Obsah odpovědi**.
-
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

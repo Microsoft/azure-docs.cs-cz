@@ -1,19 +1,19 @@
 ---
-title: Vytvoření a nasazení vlastních modulů – Machine Learning v Azure IoT Edge | Microsoft Docs
-description: Vytvářejte a nasaďte IoT Edge moduly, které zpracovávají data z listových zařízení prostřednictvím modelu strojového učení, a odešlete přehledy do IoT Hub.
+title: 'Kurz: vytvoření a nasazení vlastních modulů – Machine Learning v Azure IoT Edge'
+description: 'Kurz: vytváření a nasazování IoT Edge modulů, které zpracovávají data ze seznamu zařízení prostřednictvím modelu strojového učení, a pak tyto přehledy odesílají IoT Hub.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493995"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106560"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
 
@@ -22,7 +22,7 @@ ms.locfileid: "73493995"
 
 V tomto článku vytvoříme tři IoT Edge moduly, které přijímají zprávy ze zařízení ze seznamu, spustíte data prostřednictvím modelu strojového učení a pak dodáte přehledy k IoT Hub.
 
-Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako zprostředkovatele zpráv uchovává moduly nezávislé na sobě. Moduly stačí pouze zadat vstupy, na kterých přijímá zprávy, a výstupy, na které zapisují zprávy.
+Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako zprostředkovatele zpráv uchovává moduly nezávislé na sobě. Moduly stačí zadat vstupy, na kterých přijetí zprávy a výstupy, ke kterým se zápis zpráv.
 
 Chceme, aby zařízení IoT Edge pro nás dosáhlo čtyř věcí:
 
@@ -639,7 +639,7 @@ Když je směrovač a klasifikátor zavedený, očekáváme, že budete dostáva
 
 13. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
 
-14. Klikněte na **Uložit**.
+14. Klikněte na možnost **Uložit**.
 
 #### <a name="update-turbofandevicetostorage-route"></a>Aktualizovat turbofanDeviceToStorage trasu
 
@@ -691,7 +691,7 @@ Nechceme směrovat nová data předpovědi do našeho starého umístění úlo�
 
 5. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 ### <a name="configure-file-upload"></a>Konfigurace odesílání souborů
 
@@ -705,7 +705,7 @@ Nakonfigurujte funkci nahrávání souborů IoT Hub, aby modul zapisovače soubo
 
 4. Vyberte kontejner **uploadturbofanfiles** a klikněte na **Vybrat**.
 
-5. Vyberte **Save** (Uložit). Portál vás upozorní, až se uložení dokončí.
+5. Vyberte **Uložit**. Portál vás upozorní, až se uložení dokončí.
 
 > [!Note]
 > Pro tento kurz nezapneme oznámení o nahrání, ale další informace o tom, jak zpracovávat oznámení o nahrávání souborů, najdete v tématu [přijetí oznámení o nahrání souboru](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification) .

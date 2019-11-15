@@ -1,22 +1,22 @@
 ---
-title: Vytvořte geografickou ochranou pomocí Azure Maps | Microsoft Docs
-description: Nastavte geografickou ochranou pomocí Azure Maps.
+title: 'Kurz: vytvoření geografického plotu pomocí Azure Maps'
+description: 'Kurz: nastavení geografického ohraničení pomocí Azure Maps.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694930"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107094"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>Nastavení geografické zóny pomocí Azure Maps
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: nastavení geografického plotu pomocí Azure Maps
 
 V tomto kurzu se seznámíte se základními kroky pro nastavení geografického plotu pomocí Azure Maps. Scénář, který vyřešíme v tomto kurzu, je pomáhat při vytváření správců webů, které sledují potenciální nebezpečné vybavení přesahující vymezené oblasti stavby. Staveniště zahrnuje nákladná zařízení a předpisy. Obvykle vyžaduje, aby zařízení zůstalo uvnitř stavebního pracoviště a nezůstalo bez oprávnění.
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > *   Pomocí Azure Maps rozhraní API pro monitorování geografických zón můžete sledovat, jestli se stavební prostředek nachází v rámci staveniště.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps 
 
@@ -154,13 +154,13 @@ Otevřete aplikaci pro vyúčtování a podle následujících pokynů nahrajte 
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Zkopírujte identifikátor URI stavu a k němu přidejte parametr `subscription-key` s hodnotou, kterou váš klíč předplatného účtu Azure Maps. Formát identifikátoru URI stavu by měl vypadat takto:
+6. Zkopírujte identifikátor URI stavu a přidejte do něj parametr `subscription-key` s jeho hodnotou jako klíč předplatného pro Azure Maps účet. Formát identifikátoru URI stavu by měl vypadat takto:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. Pokud chcete, `udId` otevřít novou kartu v aplikaci post a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId pro pozdější použití.
+7. Chcete-li získat `udId` otevřete novou kartu v aplikaci post a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId pro pozdější použití.
 
    ```JSON
    {
@@ -257,7 +257,7 @@ Následuje pět požadavků na rozhraní API pro monitorování geografických z
   
    ![Dotaz na geografickou plot 4](./media/tutorial-geofence/geofence-query4.png)
 
-   Díky pečlivému pozorování odpovídající odpovědi si můžete všimnout, že se tady nezveřejňuje žádná událost, i když zařízení ukončilo geografickou lokalitu. Pokud se v žádosti o získání zobrazí zadaný čas uživatele, vidíte, že časový limit geografického umístění vypršel relativně k této době a že zařízení je stále v hlavní geografické úrovni. V těle odpovědi se také můžete podívat na ID geometrie geografického rozmístění v části `expiredGeofenceGeometryId`.
+   Díky pečlivému pozorování odpovídající odpovědi si můžete všimnout, že se tady nezveřejňuje žádná událost, i když zařízení ukončilo geografickou lokalitu. Pokud se v žádosti o získání zobrazí zadaný čas uživatele, vidíte, že časový limit geografického umístění vypršel relativně k této době a že zařízení je stále v hlavní geografické úrovni. Můžete také zobrazit ID geometrie geografické lokality v části `expiredGeofenceGeometryId` v těle odpovědi.
 
 
 5. Umístění 5:

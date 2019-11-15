@@ -1,19 +1,19 @@
 ---
-title: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
-description: Naučte se vytvářet aplikace pro monitorování kvality vody pomocí šablon aplikací Azure IoT Central.
+title: 'Kurz: Vytvoření aplikace pro monitorování kvality vody pomocí Azure IoT Central'
+description: 'Kurz: Naučte se vytvářet aplikace monitorování kvality vody pomocí šablon aplikací Azure IoT Central.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: bfa5234d17db32c459b5ff1d0252a65a5ba99a72
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7014882e7da9eb7ab7df65cd20403982a46018a3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039519"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112600"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
 

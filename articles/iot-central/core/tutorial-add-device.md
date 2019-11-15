@@ -1,20 +1,20 @@
 ---
-title: Přidání skutečného zařízení do aplikace Azure IoT Central | Microsoft Docs
-description: Naučte se, jak přidat a nakonfigurovat reálné zařízení v aplikaci Azure IoT Central. Můžete si také přečíst kód na skutečném zařízení.
+title: 'Kurz: Přidání reálného zařízení do aplikace Azure IoT Central'
+description: 'Kurz: Naučte se, jak přidat a nakonfigurovat reálné zařízení v aplikaci Azure IoT Central. Můžete si také přečíst kód na skutečném zařízení.'
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 08/23/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5234c371cc4a7238148915f4dcca1faac564f608
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824610"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108967"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Nakonfigurovat skutečné zařízení
 > * Získat připojovací řetězec pro skutečné zařízení z aplikace
 > * Jak se klientský kód mapuje k aplikaci
-> * Konfigurace klientského kódu pro skutečné zařízení
+> * Nakonfigurovat klientský kód pro skutečné zařízení
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -351,7 +351,7 @@ V tomto kurzu jste se naučili:
 > * Nakonfigurovat nové zařízení
 > * Získat připojovací řetězec pro skutečné zařízení z aplikace
 > * Jak se klientský kód mapuje k aplikaci
-> * Konfigurace klientského kódu pro skutečné zařízení
+> * Nakonfigurovat klientský kód pro skutečné zařízení
 
 Teď, když jste připojili reálné zařízení k aplikaci Azure IoT Central, tady je několik navrhovaných dalších kroků.
 

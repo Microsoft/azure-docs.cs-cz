@@ -1,19 +1,19 @@
 ---
 title: C#kurz pro stránkování výsledků hledání
 titleSuffix: Azure Cognitive Search
-description: Tento kurz sestaví projekt "Vytvoření první aplikace – Azure Kognitivní hledání" s volbou dvou typů stránkování. První používá rozsah tlačítek čísel stránek a také tlačítka první, další, předchozí a poslední stránka. Druhý stránkovací systém používá nekonečné posouvání, aktivované přesunutím svislého posuvníku na jeho dolní limit.
+description: Tento kurz znázorňuje stránkování výsledků hledání. Sestaví se v existujícím projektu hotelů s tlačítky pro stránkování pomocí prvního, následujícího, předchozího, posledního a číslovaného tlačítka. Druhý stránkovací systém používá nekonečné posouvání, aktivované přesunutím svislého posuvníku na jeho dolní limit.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794004"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113765"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#kurz: stránkování výsledků hledání – Azure Kognitivní hledání
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Rozšiřování aplikace pomocí číslovaného stránkování
 > * Rozšiřování aplikace pomocí nekonečné posouvání
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -471,7 +471,7 @@ Chcete-li implementovat nekonečné posouvání, začněte s projektem před př
 
 ### <a name="handle-the-next-action"></a>Zpracování další akce
 
-K řadiči je potřeba odeslat jenom tři akce: první spuštění aplikace, která volá **index ()** , první hledání uživatele, který volá **index (model)** , a následné volání dalších výsledků prostřednictvím **Next (model)** .
+Existují pouze tři akce, které je třeba odeslat do kontroleru: první spuštění aplikace, která volá **index ()** , první hledání uživatelem, který volá **index (model)** , a následné volání pro další výsledky prostřednictvím **Next (model)** .
 
 1. Otevřete soubor domovského kontroleru a odstraňte metodu **RunQueryAsync** z původního kurzu.
 

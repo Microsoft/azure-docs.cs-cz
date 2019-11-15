@@ -1,19 +1,19 @@
 ---
-title: Vytvoření aplikace pro analýzu inteligentních dat pomocí IoT Central | Microsoft Docs
-description: Naučte se vytvořit aplikaci monitorování inteligentního měření pomocí šablon aplikací Azure IoT Central.
+title: 'Kurz: Vytvoření aplikace pro analýzu inteligentních dat pomocí IoT Central'
+description: 'Kurz: Naučte se vytvářet aplikace pro monitorování inteligentních měřičů pomocí šablon aplikací Azure IoT Central.'
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581245"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112541"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Kurz: vytvoření a procházení šablony aplikace pro monitorování inteligentního měření 
 

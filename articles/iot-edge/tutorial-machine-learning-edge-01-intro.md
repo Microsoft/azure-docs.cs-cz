@@ -1,109 +1,109 @@
 ---
-title: Podrobný průvodce pro Machine Learning v Azure IoT Edge | Dokumentace Microsoftu
-description: Podrobný kurz vás provedou různými úkoly, které jsou potřebné k vytvoření end-to-end, strojové učení ve scénáři edge.
+title: 'Kurz: podrobný návod Machine Learning v Azure IoT Edge'
+description: Kurz vysoké úrovně, který projde různými úkoly potřebnými k vytvoření komplexního strojového učení ve scénáři Edge.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 916e48752431be41ff150c2ac84e66eb1e98e81f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057747"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106508"
 ---
-# <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Kurz: Vaše začátku do konce řešení s využitím Azure Machine Learning a IoT Edge
+# <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Kurz: ucelené řešení využívající Azure Machine Learning a IoT Edge
 
-Aplikace IoT často chtějí využít nabídky inteligentní cloud a inteligentních hraničních zařízení. V tomto kurzu provedeme jednotlivými školení model strojového učení s data shromážděná ze zařízení IoT v cloudu, nasazení modelu na hraničních zařízeních IoT a údržbu a pravidelně upřesnění modelu.
+Aplikace IoT často chtějí využívat inteligentní Cloud a inteligentní hraniční zařízení. V tomto kurzu Vás provedeme školením modelu strojového učení s daty shromážděnými ze zařízení IoT v cloudu, nasazením tohoto modelu IoT Edge a pravidelným udržováním a úpravami modelu.
 
-Hlavním cílem tohoto kurzu je zavést zpracování dat IoT s strojového učení, konkrétně na hraničních zařízeních. Když jsme touch mnoho aspektů obecné služby machine learning pracovního postupu, v tomto kurzu není určen jako důkladný Úvod do strojového učení. Jako bod v případě jsme Nepokoušejte se vytvoření modelu vysoce optimalizovaných pro případy použití – stačí na ukazují proces vytvoření a použití modelu přijatelné pro zpracování dat IoT právě uděláme.
+Hlavním cílem tohoto kurzu je zavést zpracování dat IoT pomocí strojového učení, konkrétně na hraničních zařízeních. I když jsme se dotkli mnoha aspektů obecného pracovního postupu strojového učení, tento kurz není určený jako podrobný Úvod do strojového učení. V takovém případě se nepokoušíme vytvořit vysoce optimalizovaný model pro případ použití – stačí, abyste ilustraci procesu vytváření a používání životaschopného modelu pro zpracování dat IoT.
 
-## <a name="target-audience-and-roles"></a>Cílové skupiny a role
+## <a name="target-audience-and-roles"></a>Cílová skupina a role
 
-Tato sada článků je určená pro vývojáře bez předchozích zkušeností ve službě IoT vývoj nebo machine learning. Nasazení machine learningu na hraničních zařízeních vyžaduje znalosti o tom, jak připojit širokou škálu technologií. Proto tento kurz se zaměřuje na celém scénáři začátku do konce k předvedení jedním ze způsobů připojení těchto technologií pro řešení IoT. V reálné prostředí může tyto úlohy distribuovat mezi několik lidí s jinou specializace. Například vývojáři by zaměřte se na zařízení nebo cloudové kód, zatímco odborníci přes data určená analytických modelů. Povolit jednotlivý vývojář pro úspěšné dokončení tohoto kurzu, nabízíme další doprovodné materiály s přehledy a odkazy na další informace, které Věříme, že stačí pochopit, co se provádí, a také proč.
+Tato sada článků je určená pro vývojáře bez předchozího prostředí ve vývoji IoT nebo strojovém učení. Nasazení strojového učení na hraničních zařízeních vyžaduje znalost způsobu připojení široké škály technologií. V tomto kurzu se proto zabývá celým kompletním scénářem, který předvádí jeden způsob, jak tyto technologie spojit do řešení IoT. V reálných prostředích můžou být tyto úlohy rozdělené mezi několik lidí s různými specializacemi. Vývojáři se například zaměřují na zařízení nebo na kód v cloudu, zatímco odborníci na data navrhli analytické modely. Pokud chcete, aby jednotliví vývojáři úspěšně dokončili tento kurz, poskytli jsme doplňkové pokyny k přehledům a odkazům na Další informace, které doufáme, že je k dispozici dostatek informací, abychom zjistili, co se děje, a také proč.
 
-Alternativně může týmové s kolegy z různých rolí a společně, postupujte podle kurzu přináší svou odbornost úplné nést a jako tým, zjistěte, jak věci navzájem propojené.
+Alternativně se můžete spojit s spolupracovníky různých rolí, které vám pomůžou postupovat podle tohoto kurzu a dodržet si plné znalosti a Naučte se, jak se vejdou do sebe.
 
-V obou případech usnadňují orientaci čtecího zařízení, každý článek v tomto kurzu Určuje roli uživatele. Tyto role patří:
+V obou případech, které vám pomůžou s orientací čtenářů, každý článek v tomto kurzu označuje roli uživatele. Mezi tyto role patří:
 
-* Vývoj pro cloudové prostředí (včetně cloud vývojář pracující v kapacitě DevOps)
+* Vývoj pro Cloud (včetně cloudového vývojáře pracujícího v kapacitě DevOps)
 * Analýzy dat
 
-## <a name="use-case-predictive-maintenance"></a>Případ použití: Prediktivní údržba
+## <a name="use-case-predictive-maintenance"></a>Případ použití: prediktivní údržba
 
-Tento scénář jsme založené na uvedené na konferenci o Prognostics a správa stavu (PHM08) 2008 případu použití. Cílem je předpovídat zbývající dobu životnosti (RUL) sadu turbofan letadle moduly. Tato data se vygeneroval pomocí jazyka C-MAPSS, komerční verzi softwaru MAPSS (modulární Aero Propulsion systému simulace). Tento software poskytuje prostředí flexibilní turbofan engine simulace pohodlně simulace stavu, řízení a parametry modulu.
+Tento scénář vychází z případu použití prezentovaného na konferenci Prognostics and Health Management (PHM08) v 2008. Cílem je předpovědět zbývající dobu života (RUL) sady turbofanch motorů pro letadlo. Tato data byla vygenerována pomocí map jazyka C, komerční verze map (modulární simulace systému pro propohon prostředí). Tento software poskytuje flexibilní prostředí pro simulaci turbofan Engine pro pohodlné simulaci parametrů stavu, řízení a stroje.
 
-Data použitá v tomto kurzu je převzata z [Turbofan engine snížení simulace datovou sadu](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
+Data použitá v tomto kurzu jsou pořízena ze [sady dat simulace degradace modulu Turbofan](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
-Ze souboru readme:
+Ze souboru Readme:
 
 ***Experimentální scénář***
 
-*Datové sady se skládají z více s množstvím proměnných časové řady. Každou sadu dat je dále rozdělen do podmnožiny trénování a testování. Každá Časová řada se jiný modul – to znamená, data lze považovat za z park modulů stejného typu. Každý motor začíná u různých stupňů počáteční wear a vývoje a výrobního změna, kterou Neznámý pro uživatele. Tento wear a variace se považuje za normální, to znamená, není to považováno za selhání podmínku. Existují tři provozní nastavení, které mají podstatný dopad na výkon modulu. Tato nastavení jsou také zahrnuté v datech. Data je znečištěné. senzor šumu.*
+*Sady dat se skládají z několika lineární časových řad. Každá sada dat je dále rozdělena na školicí a testovací podmnožiny. Každá časová řada pochází z jiného modulu, tj. je možné, že se data považují za z loďstva motorů stejného typu. Každý stroj začíná různými stupni počátečního opotřebení a výrobní variací, které uživatel nezná. Tento opotřebení a variace se považují za normální, tj. není považována za stav selhání. Existují tři provozní nastavení, která mají podstatný vliv na výkon motoru. Tato nastavení jsou také obsažena v datech. Data jsou kontaminována pomocí snímače hluku.*
 
-*Modul normálně na začátku každé časové řady a rozvíjet chybu v určitém okamžiku během této série. V sadě školení roste chyby v rozsahu do selhání systému. V testovací sadě skončí časové řady nějakou dobu před selháním systému. Cílem soutěž je předpovědět počet zbývajících provozní cykly před selháním v sadě testů, například počet cyklů provozní po poslední cyklus, který modul bude i nadále fungovat. Vektor hodnot true zbývající dobu životnosti (RUL) k dispozici také pro testovací data.*
+*Modul pracuje normálně na začátku každé časové řady a v určitém okamžiku během řady vyvíjí chybu. V sadě školení se chyba zvětšuje až do selhání systému. V sadě testů časová řada ukončí určitou dobu před selháním systému. Cílem konkurence je předpovědět počet zbývajících provozních cyklů před selháním v sadě testů, tj. počet provozních cyklů po posledním cyklu, kdy bude modul fungovat i nadále. K dispozici je také vektor hodnot true zbylé životnosti (RUL) pro testovací data.*
 
-Vzhledem k tomu, že data byla publikována do soutěže, několik přístupů k odvození modelů strojového učení jsou publikovaná nezávisle na sobě. Zjistili jsme, že je užitečné vysvětlující Princip fungování procesu a důvody účastnící se vytváření modelem konkrétní machine learning studiu příklady. Viz například:
+Vzhledem k tomu, že data byla publikována pro konkurenci, je několik přístupů k odvozeným modelům strojového učení Publikováno nezávisle. Zjistili jsme, že příklady studijních příkladů jsou užitečné pro porozumění procesu a důvodům při vytváření konkrétního modelu strojového učení. Podívejte se například na:
 
-[Leteckého motoru selhání prediktivního modelu](https://github.com/jancervenka/turbofan_failure) podle uživatele jancervenka Githubu.
+[Model předpovědi selhání leteckého motoru](https://github.com/jancervenka/turbofan_failure) podle Jancervenka uživatele GitHubu.
 
-[Snížení turbofan engine](https://github.com/hankroark/Turbofan-Engine-Degradation) podle uživatele hankroark Githubu.
+[Snížení výkonu stroje Turbofan](https://github.com/hankroark/Turbofan-Engine-Degradation) uživatelem Hankroark na GitHubu.
 
 ## <a name="process"></a>Proces
 
-Následující obrázek znázorňuje hrubý kroky, které v tomto kurzu budeme postupovat podle:
+Následující obrázek znázorňuje přibližné kroky, které sledujeme v tomto kurzu:
 
-![Diagram architektury pokyny procesu](media/tutorial-machine-learning-edge-01-intro/tutorial-steps-overview.png)
+![Diagram architektury pro kroky procesu](media/tutorial-machine-learning-edge-01-intro/tutorial-steps-overview.png)
 
-1. **Shromažďování výukových dat**: Proces začíná shromažďováním trénovací data. V některých případech se data se už shromážděná a je k dispozici v databázi nebo v podobě datových souborů. V ostatních případech, zejména pro scénáře IoT je třeba data ze senzorů a zařízení IoT shromažďují a ukládají do cloudu.
+1. **Shromažďování školicích dat**: proces začíná shromažďováním školicích dat. V některých případech již byla data shromážděna a k dispozici v databázi nebo ve formě datových souborů. V jiných případech, zejména u scénářů IoT, se data musí shromažďovat ze zařízení IoT a senzorů a ukládají se do cloudu.
 
-   Předpokládáme, že není nutné kolekci modulů turbofan, tak soubory projektu zahrnují simulátor jednoduché zařízení, která odesílá data NASA zařízení do cloudu.
+   Předpokládáme, že nemáte kolekci turbofan modulů, takže soubory projektu zahrnují jednoduchý simulátor zařízení, který odesílá data zařízení NASA do cloudu.
 
-1. **Příprava dat**. Ve většině případů se nezpracovaná data jako shromážděných ze zařízení a senzorů bude vyžadovat Příprava pro službu machine learning. Tento krok může zahrnovat data vyčistit, přeformátování dat nebo předzpracování se vložit další informace o machine learning můžete klíč vypnout.
+1. **Připravte data**. Ve většině případů nezpracovaná data shromážděná ze zařízení a senzorů vyžadují přípravu na strojové učení. Tento krok může zahrnovat vyčištění dat, přeformátování dat nebo předzpracování pro vkládání dalších informací strojového učení.
 
-   Pro naše data počítače motoru letadla přípravu dat zahrnuje výpočet explicitní čas selhání časy pro každý datový bod v ukázce podle skutečné připomínky na data. Tyto informace umožňují strojového učení algoritmů a hledání korelací mezi vzorky dat skutečných senzorů a očekávaný zbývající dobu životnosti motoru. Tento krok je velmi specifický pro doménu.
+   Pro naše data strojového stroje v letadle zahrnuje Příprava dat výpočet explicitních časů pro všechny datové body v ukázce na základě skutečných pozorování dat. Tyto informace umožňují algoritmu strojového učení vyhledat korelace mezi skutečnými vzorci dat senzorů a očekávaným zbývajícím životním časem motoru. Tento krok je vysoce specifický pro doménu.
 
-1. **Sestavit model strojového učení**. Na základě dat připravené jsme můžete nyní experimentovat s algoritmů různých strojového učení a parameterizations k trénování modelů a porovnejte výsledky mezi sebou.
+1. **Sestavte model strojového učení**. Na základě připravených dat teď můžeme experimentovat s různými algoritmy strojového učení a parameterizations se naučit modely a porovnat výsledky.
 
-   V takovém případě pro testování porovnáme predikované výsledky počítají tak, že model se skutečný výsledek pozorovaný na sadu modulů. Ve službě Azure Machine Learning spravujeme různých iterací modelů, kterou jsme vytvořili v registru modelu.
+   V tomto případě pro účely testování porovnáváme předpokládaný výsledek vypočítaný modelem se skutečným výsledkem zjištěným u sady motorů. V Azure Machine Learning můžeme spravovat různé iterace modelů, které vytvoříme v registru modelu.
 
-1. **Nasazení modelu**. Jakmile model, který splňuje požadavky našich kritéria úspěchu, můžeme přesunout k nasazení. Budete muset obtékání modelu do webové aplikace služby, který lze vkládat s daty pomocí volání REST a vrátí výsledky analýzy. Webové aplikace služby se následně zabalené do kontejneru dockeru, které lze následně nasadit v cloudu nebo jako modul IoT Edge. V tomto příkladu se zaměříme na nasazení do hraničních zařízení IoT.
+1. **Nasaďte model**. Jakmile budeme mít model, který splňuje naše kritéria úspěchu, můžeme přejít na nasazení. To zahrnuje zabalení modelu do aplikace webové služby, kterou lze doplňovat s daty pomocí volání REST a výsledků analýz. Aplikace webové služby se pak zabalí do kontejneru Docker, který pak můžete nasadit buď v cloudu, nebo jako modul IoT Edge. V tomto příkladu se zaměříme na nasazení na IoT Edge.
 
-1. **Udržovat a zpřesnit modelu**. Naše práce se provádí po nasazení modelu. V mnoha případech chcete pokračovat, shromažďování dat a pravidelně nahrávání dat do cloudu. Tato data jsme pak můžete použít k přetrénujete a vylepšit náš model, který jsme pak můžete znovu nasadit na hraničních zařízeních IoT.
+1. **Udržujte a upřesněte model**. Naše práce se neprovádí po nasazení modelu. V mnoha případech chceme pokračovat ve shromažďování dat a pravidelné nahrávání těchto dat do cloudu. Tato data pak můžeme použít k reučení a upřesnění našeho modelu, který potom můžeme znovu nasadit do IoT Edge.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K absolvování tohoto kurzu potřebujete přístup k předplatnému Azure, ve kterém máte oprávnění k vytváření prostředků. Některé služby využité v tomto kurzu vám budou účtovány poplatky za Azure. Pokud ještě nemáte předplatné Azure, možná vám umožní začít [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
+K dokončení tohoto kurzu potřebujete přístup k předplatnému Azure, ve kterém máte práva k vytváření prostředků. Některé ze služeb používaných v tomto kurzu se účtují za Azure. Pokud ještě nemáte předplatné Azure, možná budete moct začít s [bezplatným účtem Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
 
-Také musíte na počítači s prostředím PowerShell nainstalovaný, kde můžete spouštět skripty pro nastavení se virtuální počítač Azure jako vývojovém počítači.
+Budete také potřebovat počítač s nainstalovaným prostředím PowerShell, kde můžete spouštět skripty pro nastavení virtuálního počítače Azure jako vývojového počítače.
 
-V tomto dokumentu můžeme použít následující sady nástrojů:
+V tomto dokumentu používáme následující sadu nástrojů:
 
-* Služby Azure IoT hub pro sběr dat
+* Azure IoT Hub pro zachycení dat
 
-* Azure poznámkových bloků jako naší hlavní front-endu pro přípravu dat a strojové učení, experimentování. Spustit jazyk python kódu v poznámkovém bloku na podmnožinu ukázkových dat je skvělý způsob, jak získat rychlý iterativní a interaktivní vyřízení při přípravě dat. Poznámkové bloky Jupyter lze také přípravné skripty, které chcete spouštět ve velkém měřítku v back-end výpočetní prostředky.
+* Azure Notebooks jako náš hlavní front-end pro přípravu dat a experimentování ve strojovém učení. Spuštění kódu Pythonu v poznámkovém bloku u podmnožiny ukázkových dat představuje skvělý způsob, jak rychle a interaktivní vyřízení při přípravě dat. Pomocí poznámkových bloků Jupyter můžete také připravovat skripty pro spouštění ve velkém měřítku v back-endu.
 
-* Služba Azure Machine Learning jako back-endu pro strojové učení ve velkém měřítku a za machine learning generování bitových kopií. Můžeme vám zajistí pomocí skriptů připravit a otestovat v poznámkových blocích Jupyter back-endu Azure Machine Learning.
+* Azure Machine Learning jako back-end pro strojové učení ve velkém měřítku a pro generování imagí machine learningu. Azure Machine Learning back-end pomocí skriptů připravených a testovaných v poznámkových blocích Jupyter.
 
-* Azure IoT Edge pro vypnutí cloudovou aplikaci machine learning bitové kopie
+* Azure IoT Edge pro necloudovou aplikaci image strojového učení
 
-Samozřejmě nejsou k dispozici další možnosti. V některých scénářích například IoT Central umožňuje jako bez kódu alternativní zachycení počáteční trénovacích dat ze zařízení IoT.
+V některých případech jsou k dispozici další možnosti. V některých scénářích můžete například IoT Central použít jako alternativu bez kódu k zachycení počátečních dat školení ze zařízení IoT.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu je rozdělen do následujících částí:
+Tento kurz je rozdělen do následujících částí:
 
-1. Nastavení vývojového počítače a služby Azure.
-2. Vygenerujte trénovací data pro počítač modulu learning module.
-3. Trénování a nasazení modulu machine learning.
-4. Nakonfigurujte zařízení tak, aby fungoval jako transparentní brána IoT Edge.
-5. Vytvořit a nasadit moduly IoT Edge.
-6. Odesílání dat do zařízení IoT Edge.
+1. Nastavte svůj vývojový počítač a služby Azure.
+2. Vygenerujte školicí data pro modul Machine Learning.
+3. Proveďte výuku a nasaďte modul Machine Learning.
+4. Nakonfigurujte zařízení IoT Edge tak, aby fungovalo jako transparentní brána.
+5. Vytvořte a nasaďte IoT Edge moduly.
+6. Odešlete data do zařízení IoT Edge.
 
-Pokračujte v dalším článku se nastavení vývojového počítače a zřízení prostředků Azure.
+Pokračujte dalším článkem a nastavte vývojový počítač a zřiďte prostředky Azure.
 
 > [!div class="nextstepaction"]
-> [Nastavení prostředí pro machine learningu na hraničních zařízeních IoT](tutorial-machine-learning-edge-02-prepare-environment.md)
+> [Nastavení prostředí pro strojové učení na IoT Edge](tutorial-machine-learning-edge-02-prepare-environment.md)

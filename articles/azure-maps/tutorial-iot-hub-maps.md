@@ -1,22 +1,22 @@
 ---
-title: Implementace prostorové analýzy IoT pomocí Azure Maps | Microsoft Docs
-description: Integrujte IoT Hub s rozhraními API služby Azure Maps.
+title: 'Kurz: implementace prostorových analýz IoT pomocí Azure Maps'
+description: 'Kurz: integrace IoT Hub s rozhraními API služby Azure Maps.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933201"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107053"
 ---
-# <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementace prostorové analýzy IoT pomocí Azure Maps
+# <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
 Sledování a zachytávání relevantních událostí, ke kterým dochází v prostoru a čase, je běžným scénářem IoT. Například při správě loďstva, sledování prostředků, mobilitě a aplikacích inteligentního měst. Tento kurz vás provede vzorem řešení pro použití Azure Maps rozhraní API proti relevantním událostem zachyceným pomocí IoT Hub pomocí modelu odběru událostí, který poskytuje Event Grid.
 
@@ -70,7 +70,7 @@ Následující diagram obsahuje podrobný přehled systému.
  
   <center>
 
-  ![Přehled systému](./media/tutorial-iot-hub-maps/system-diagram.png)</center>
+  Přehled systému ![](./media/tutorial-iot-hub-maps/system-diagram.png)</center>
 
 Následující obrázek představuje oblast geografické oblasti, která se zvýrazní v trase modrého a prostředku pronájmu, jako zelenou čáru.
 
@@ -83,7 +83,7 @@ Následující obrázek představuje oblast geografické oblasti, která se zvý
 
 Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu prostředků v Azure Portal. Pokud chcete vytvořit skupinu prostředků, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
 2. Vyberte **skupiny prostředků**.
     
@@ -94,9 +94,9 @@ Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu 
    ![Přidat skupinu prostředků](./media/tutorial-iot-hub-maps/add-resource-group.png) 
 
 4. Zadejte následující hodnoty vlastností:
-    * **Formě** Vyberte předplatné Azure.
+    * **Předplatné:** Vyberte předplatné Azure.
     * **Skupina prostředků:** Jako název skupiny prostředků zadejte "ContosoRental".
-    * **Věřitel** Vyberte oblast pro skupinu prostředků.  
+    * **Oblast:** Vyberte oblast pro skupinu prostředků.  
 
     ![Podrobnosti skupiny prostředků](./media/tutorial-iot-hub-maps/resource-details.png)
 
@@ -113,7 +113,7 @@ Aby bylo možné protokolovat data události, vytvoříme účet pro obecné ú�
 
 1. V účtu úložiště přejděte na objekty blob.
 
-    ![Struktur](./media/tutorial-iot-hub-maps/blobs.png)
+    ![struktur](./media/tutorial-iot-hub-maps/blobs.png)
 
 2. Klikněte na tlačítko kontejner v levém horním rohu a pojmenujte kontejner "contoso-pronájem-logs" a klikněte na OK.
 
@@ -165,7 +165,7 @@ Otevřete aplikaci pro vystavování a podle následujících pokynů nahrajte g
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
     
-    Hodnota "\ JSON" na `dataFormat` parametru v cestě URL představuje formát dat, která se nahrávají.
+    Hodnota "\ JSON" na parametru `dataFormat` v cestě URL představuje formát dat, která se nahrávají.
 
 3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí pro adresu URL požadavku POST. Nahraďte hodnotu klíč předplatného klíčem Azure Maps primární klíč předplatného.
    
@@ -181,13 +181,13 @@ Otevřete aplikaci pro vystavování a podle následujících pokynů nahrajte g
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Zkopírujte identifikátor URI stavu a k němu `subscription-key` přidejte parametr s jeho hodnotou, kterou používá klíč předplatného Azure Maps účtu. Formát identifikátoru URI stavu by měl vypadat takto:
+6. Zkopírujte identifikátor URI stavu a přidejte do něj parametr `subscription-key` s jeho hodnotou jako klíč předplatného pro Azure Maps účet. Formát identifikátoru URI stavu by měl vypadat takto:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. Pokud chcete, `udId` otevřete v aplikaci pro vystavení novou kartu a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId pro pozdější použití.
+7. Chcete-li získat `udId` otevřete novou kartu v aplikaci post a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId pro pozdější použití.
 
    ```JSON
    {
@@ -224,9 +224,9 @@ Azure Functions je výpočetní služba bez serveru, která nám umožňuje spus
 6. Zkopírujte [kód jazyka c#](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) do funkce a klikněte na **Uložit**.
  
 7. V skriptu jazyka c# nahraďte následující parametry:
-    * Nahraďte **SUBSCRIPTION_KEY** klíčem primárního předplatného vašeho účtu Azure Maps.
+    * Nahraďte **SUBSCRIPTION_KEY** klíčem primárního předplatného účtu Azure Maps.
     * Nahraďte **udId** UDIDou geograficky, kterou jste nahráli. 
-    * Funkce **CreateBlobAsync** ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. **ACCESS_KEY**, **ACCOUNT_NAME** a **STORAGE_CONTAINER_NAME** nahraďte přístupovým klíčem účtu úložiště a názvem účtu a kontejnerem úložiště dat.
+    * Funkce **CreateBlobAsync** ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. Nahraďte **ACCESS_KEY**, **ACCOUNT_NAME** a **STORAGE_CONTAINER_NAME** pomocí přístupového klíče účtu úložiště a názvu účtu a kontejneru úložiště dat.
 
 10. Klikněte na **přidat Event Grid předplatné**.
     
@@ -243,7 +243,7 @@ Po přidání předplatného Event Grid do funkce Azure se teď můžete podíva
 
 ![rozbočovač – např. trasa](./media/tutorial-iot-hub-maps/hub-route.png)
 
-V našem ukázkovém scénáři chceme vyfiltrovat všechny zprávy, u kterých se vozidlo za pronájem pohybuje. Aby se tyto události telemetrie zařízení publikovaly Event Grid, použijeme dotaz směrování k filtrování událostí, ve kterých `Engine` je vlastnost **"on"** . Existují různé způsoby, jak dotazovat zprávy ze zařízení do cloudu, a získat další informace o syntaxi směrování zpráv, najdete v tématu [IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Dotaz na směrování vytvoříte tak, že kliknete na trasu **RouteToEventGrid** a nahradíte **dotaz směrování** pomocí **"Engine =" v** "a kliknete na **Uložit**. Centrum IoT teď bude publikovat jenom telemetrii zařízení, ve které je modul ZAPNUTý.
+V našem ukázkovém scénáři chceme vyfiltrovat všechny zprávy, u kterých se vozidlo za pronájem pohybuje. Aby se tyto události telemetrie zařízení publikovaly Event Grid, použijeme dotaz směrování k filtrování událostí, kde je vlastnost `Engine` **"on"** . Existují různé způsoby, jak dotazovat zprávy ze zařízení do cloudu, a získat další informace o syntaxi směrování zpráv, najdete v tématu [IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Dotaz na směrování vytvoříte tak, že kliknete na trasu **RouteToEventGrid** a nahradíte **dotaz směrování** pomocí **"Engine =" v** "a kliknete na **Uložit**. Centrum IoT teď bude publikovat jenom telemetrii zařízení, ve které je modul ZAPNUTý.
 
 ![rozbočovač – např. filtr](./media/tutorial-iot-hub-maps/hub-filter.png)
 
@@ -254,7 +254,7 @@ Jakmile je naše funkce Azure v provozu, pošleme do IoT Hub data telemetrie, kt
 
 1. Stáhněte projekt [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) c#. 
 
-2. V libovolném textovém editoru otevřete soubor simulatedCar.cs a nahraďte hodnotu hodnotou `connectionString` , kterou jste uložili při registraci zařízení, a uložte změny do souboru.
+2. Otevřete soubor simulatedCar.cs v textovém editoru podle vašeho výběru a nahraďte hodnotu `connectionString` hodnotou, kterou jste uložili při registraci zařízení, a uložte změny do souboru.
  
 3. V místním okně terminálu přejděte do kořenové složky C# projektu a spuštěním následujícího příkazu nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
     
@@ -280,7 +280,7 @@ Níže uvedená mapa znázorňuje čtyři body, ve kterých bylo vozidlo mimo ge
 
 ![Mapa porušení](./media/tutorial-iot-hub-maps/violation-map.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete prozkoumat rozhraní API Azure Maps použitá v tomto kurzu, přečtěte si:
 

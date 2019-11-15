@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 57965b0326171f37d33aeae02080c8887c3acf23
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072076"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108392"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Import aplikace logiky jako rozhraní API
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
--   Dokončete následující rychlý Start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
+-   Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 -   Ujistěte se, že ve vašem předplatném je aplikace logiky, která zveřejňuje koncový bod HTTP. Další informace najdete v [pracovních postupech s koncovými body http](../logic-apps/logic-apps-http-endpoint.md) .
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
@@ -59,7 +59,7 @@ V tomto článku získáte informace o těchto tématech:
 
 7. Vyberte **Vytvořit**.
 
-## <a name="test-the-imported-api-in-the-azure-portal"></a>Test importovaného rozhraní API v Azure Portal
+## <a name="test-the-api-in-the-azure-portal"></a>Testovat rozhraní API na portálu Azure Portal
 
 Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.
 
@@ -72,22 +72,6 @@ Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodln�
 4. Stiskněte **Odeslat**.
 
     Back-end předá odpověď **200 OK** a nějaká data.
-
-## <a name="call-operation"></a>Volání operace z portálu pro vývojáře
-
-Pokud chcete otestovat rozhraní API, můžete operace volat také z **Portálu pro vývojáře**.
-
-1. Vyberte rozhraní API, které jste vytvořili v kroku Import a publikování back-endového rozhraní API.
-2. Stiskněte **Portál pro vývojáře**.
-
-    Otevře se web Portál pro vývojáře.
-
-3. Vyberte **rozhraní API**, které jste vytvořili.
-4. Klikněte na operaci, kterou chcete testovat.
-5. Stiskněte **Vyzkoušet**.
-6. Stiskněte **Odeslat**.
-
-    Po vyvolání operace portál pro vývojáře zobrazí **Stav odpovědi**, **Hlavičky odpovědi** a jakýkoli **Obsah odpovědi**.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

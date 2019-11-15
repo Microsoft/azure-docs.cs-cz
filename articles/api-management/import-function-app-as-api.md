@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 7e9215d7250628ed9177e097d127a1554a1f0ea0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073352"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107844"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management
 
@@ -106,7 +106,7 @@ Podle následujícího postupu připojíte aplikaci Azure Function App k existuj
 
     ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-05.png)
 
-8. Klikněte na **Import**.
+8. Klikněte na tlačítko **Import**.
 
     ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-04.png)
 
@@ -117,7 +117,7 @@ Při importu aplikace Azure Function App se automaticky vygeneruje:
 * Klíč hostitele v rámci Function App s názvem APIM-{*název instance služby Azure API Management*}
 * Pojmenovaná hodnota v rámci instance služby Azure API Management s názvem {*název instance azure Function App*} – klíč, který obsahuje vytvořený klíč hostitele.
 
-Pro rozhraní API vytvořená po 4. dubnu 2019 se hostitelský klíč předává v požadavcích HTTP od API Management do Function App v hlavičce. Starší rozhraní API předejte klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). Toto chování může být změněno pomocí `PATCH Backend` [REST API volání](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) na entitu *back-end* , která je přidružená k Function App.
+Pro rozhraní API vytvořená po 4. dubnu 2019 se hostitelský klíč předává v požadavcích HTTP od API Management do Function App v hlavičce. Starší rozhraní API předejte klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). Toto chování může být změněno pomocí `PATCH Backend` [REST API voláním](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) *back-end* entity přidružené k Function App.
 
 > [!WARNING]
 > Odebráním nebo změnou hodnoty klíče hostitele aplikace Azure Function App nebo pojmenované hodnoty ve službě Azure API Management se přeruší komunikace mezi službami. Tyto hodnoty se nesynchronizují automaticky.
@@ -142,7 +142,7 @@ Přejděte k vaší instanci služby Azure API Management a v nabídce na levé 
 
 ![Přidání z aplikace Function App](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a>Test nového rozhraní API služby API Management na webu Azure Portal
+## <a name="test-in-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
 
 Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí pohodlný způsob zobrazení a testování operací v rozhraní API.  
 
@@ -158,29 +158,9 @@ Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí po
 
     Back-end předá odpověď **200 OK** a nějaká data.
 
-## <a name="test-in-developer-portal"></a>Volání operace z portálu pro vývojáře
-
-Operace pro testování rozhraní API můžete volat taky z portálu pro vývojáře. 
-
-1. Vyberte rozhraní API, které jste vytvořili v části Import a publikování back-endu rozhraní API.
-
-2. Vyberte **Portál pro vývojáře**.
-
-    Otevře se web Portál pro vývojáře.
-
-3. Vyberte **rozhraní API**, které jste vytvořili.
-
-4. Vyberte operaci, kterou chcete otestovat.
-
-5. Vyberte **Vyzkoušet**.
-
-6. Vyberte **Poslat**.
-    
-    Po vyvolání operace portál pro vývojáře zobrazí **Stav odpovědi**, **Hlavičky odpovědi** a jakýkoli **Obsah odpovědi**.
-
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

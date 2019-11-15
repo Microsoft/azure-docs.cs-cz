@@ -1,20 +1,20 @@
 ---
-title: Nasazení Azure Machine Learning do zařízení-Azure IoT Edge | Microsoft Docs
+title: 'Kurz: nasazení Azure Machine Learning do zařízení – Azure IoT Edge'
 description: V tomto kurzu vytvoříte model Azure Machine Learning a pak ho nasadíte jako modul do hraničního zařízení.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/16/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 28e5e09ea64f7ac1272e8ed126d5b4153b952c1d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2d56d434fbdaf8c05c4d4db75bffb65468a5bc42
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494040"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114031"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Zařízení Azure IoT Edge:
 
@@ -70,7 +70,7 @@ V této části převedete školicí soubory modelu Machine Learning a do kontej
 
    ![Spustit na bezplatné výpočetní prostředky](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
-6. Otevřete soubor **aml_config/config. JSON** .
+6. Otevřete soubor **aml_config/config.JSON** .
 
 7. Upravte konfigurační soubor tak, aby zahrnoval hodnoty pro ID předplatného Azure, skupinu prostředků ve vašem předplatném a název pracovního prostoru Azure Machine Learning. Všechny tyto hodnoty můžete získat z části **Přehled** pracovního prostoru v Azure. 
 
@@ -117,7 +117,7 @@ Můžete zobrazit zprávy generované každým modulem IoT Edge a také zprávy,
 
 Na zařízení IoT Edge můžete zobrazit zprávy odesílané z každého jednotlivého modulu.
 
-Pro spuštění příkazů `iotedge` možná budete muset použít `sudo` pro zvýšená oprávnění. Odhlášení a opětovné přihlášení do zařízení automaticky aktualizuje vaše oprávnění.
+Pro zvýšení oprávnění ke spouštění příkazů `iotedge` možná budete muset použít `sudo`. Odhlášení a opětovné přihlášení do zařízení automaticky aktualizuje vaše oprávnění.
 
 1. Takto zobrazíte všechny moduly na zařízení IoT Edge.
 
@@ -141,7 +141,7 @@ Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování 
 
 2. Vyberte **...** a potom v nabídce vyberte **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu).
 
-   ![Nastavit připojovací řetězec IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![Nastavit připojovací řetězec služby IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. Do textového pole, které se otevře nahoře na stránce, zadejte připojovací řetězec iothubowner svého IoT Hubu. Vaše zařízení IoT Edge by se mělo zobrazit v seznamu zařízení IoT Hubu.
 

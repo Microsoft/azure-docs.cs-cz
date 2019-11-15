@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: apimpm
-ms.openlocfilehash: 6a1ae2966e8d5535a5fd9aeffb5ddc3a788f85ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bae762b4603b2f5f80447a16671fed4e37e62b95
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072109"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108537"
 ---
 # <a name="import-and-publish-your-first-api"></a>Import a publikování vašeho prvního rozhraní API 
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
++ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -51,7 +51,7 @@ Tato část ukazuje, jak importovat a publikovat back-endové rozhraní API spec
 
     ![Vytvoření rozhraní API](./media/api-management-get-started/create-api.png)
 
-    Hodnoty rozhraní API můžete nastavit při vytváření nebo později na kartě **Nastavení**. Červená hvězdička vedle pole značí, že dané pole musíte vyplnit.
+    Hodnoty rozhraní API můžete nastavit během vytváření nebo později tak, že na kartu **Nastavení** kliknete. Červená hvězdička vedle pole indikuje, že pole je povinné.
 
     K vytvoření prvního rozhraní API použijte hodnoty z tabulky níže.
 
@@ -63,7 +63,7 @@ Tato část ukazuje, jak importovat a publikovat back-endové rozhraní API spec
     | **Popis**           | Volitelný popis pro rozhraní API.        | Pokud po zadání adresy URL služby stisknete tabulátor, služba APIM toto pole vyplní podle informací ze souboru JSON.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
     | **Schéma URL**            | *HTTPS*                                            | Určuje, které protokoly je možné použít pro přístup k rozhraní API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | **Přípona adresy URL rozhraní API**        | *conference*                                       | Přípona se připojí k základní adrese URL služby API Management. Služba API Management rozlišuje rozhraní API podle jejich přípony, proto musí být přípona jedinečná pro každé rozhraní API daného vydavatele.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Produkty**              | *Unlimited*                                        | Produkty jsou sdruženími jednoho nebo více rozhraní API. Mezi produkty můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/>Rozhraní API publikujete tak, že ho přidružíte k produktu (v tomto případě *Unlimited*). Pokud chcete toto nové rozhraní API přidružit k produktu, zadejte název tohoto produktu (můžete to také udělat později na stránce **Nastavení**). Pokud chcete rozhraní API přiřadit k více produktům, můžete tento krok opakovat několikrát.<br/>Přístup k rozhraní API získají vývojáři až po přihlášení k odběru produktu. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. <br/> Pokud jste vytvořili instanci služby APIM, jste už správcem a jste tedy přihlášení k odběru všech produktů.<br/> Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty: **Starter** a bez **omezení** |
+    | **Produkty**              | *Unlimited*                                        | Produkty jsou sdruženími jednoho nebo více rozhraní API. Mezi produkty můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/>Rozhraní API publikujete tak, že ho přidružíte k produktu (v tomto případě *Unlimited*). Pokud chcete toto nové rozhraní API přidružit k produktu, zadejte název tohoto produktu (můžete to také udělat později na stránce **Nastavení**). Pokud chcete rozhraní API přiřadit k více produktům, můžete tento krok opakovat několikrát.<br/>Přístup k rozhraní API získají vývojáři až po přihlášení k odběru produktu. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. <br/> Pokud jste vytvořili instanci služby APIM, jste už správcem a jste tedy přihlášení k odběru všech produktů.<br/> Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty: **Starter** a **Unlimited**. |
     | **Značky**                  |                                                    | Značky pro uspořádání rozhraní API Značky lze použít pro hledání, seskupení nebo filtrování.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
     | **Chcete toto rozhraní API verze?**     |                                                    | Více informací o správě verzí najdete v tématu [Publikování několika verzí vašeho rozhraní API](api-management-get-started-publish-versions.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
@@ -75,7 +75,7 @@ Tato část ukazuje, jak importovat a publikovat back-endové rozhraní API spec
 > [!TIP]
 > Pokud u vás dochází k problémům s importem vlastní definice rozhraní API, [podívejte se na seznam známých problémů a omezení](api-management-api-import-restrictions.md).
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testování nového rozhraní API služby APIM na portálu Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
 
 ![Mapa testu rozhraní API](./media/api-management-get-started/01-import-first-api-01.png)
 
@@ -88,23 +88,6 @@ Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodln�
 
     Back-end předá odpověď **200 OK** a nějaká data.
 
-## <a name="call-operation"></a>Volání operace z portálu pro vývojáře
-
-Pokud chcete otestovat rozhraní API, je možné operace také vyvolat z **Portálu pro vývojáře**.
-
-1. Přejděte na **portál pro vývojáře**.
-
-    ![Vývojářský portál](./media/api-management-get-started/developer-portal.png)
-
-2. Vyberte **Rozhraní API**, klikněte na **Demo Conference API** a pak na **GetSpeakers**.
-
-    Stránka zobrazí pole pro parametry dotazu (v tomto případě žádné neexistují) a hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky.
-
-3. Stiskněte **Vyzkoušet**.
-4. Stiskněte **Odeslat**.
-
-    Po vyvolání operace zobrazí portál pro vývojáře odpovědi.  
-
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
@@ -112,7 +95,6 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Importovat vaše první rozhraní API
 > * Testovat rozhraní API na portálu Azure Portal
-> * Testovat rozhraní API na portálu pro vývojáře
 
 Přejděte k dalšímu kurzu:
 

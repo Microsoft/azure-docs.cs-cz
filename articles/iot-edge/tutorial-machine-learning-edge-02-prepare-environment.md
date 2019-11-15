@@ -1,21 +1,21 @@
 ---
-title: Nastavení prostředí – Machine Learning v Azure IoT Edge | Microsoft Docs
-description: Připravte prostředí pro vývoj a nasazení modulů pro strojové učení na hraničních zařízeních.
+title: 'Kurz: nastavení prostředí – Machine Learning v Azure IoT Edge'
+description: 'Kurz: Příprava prostředí pro vývoj a nasazení modulů pro strojové učení na hraničních zařízeních.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1db94e683a0dfb3b60b12bc5ac205c766d405d0a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2ea4248ebaedd318e4112e41169f72bc80b1120f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299827"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114070"
 ---
-# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: Nastavení prostředí pro strojové učení na IoT Edge
+# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
 
 > [!NOTE]
 > Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
@@ -58,7 +58,7 @@ Naklonujte nebo Stáhněte PowerShellový skript z ukázkového úložiště [Ma
 
 Adresář DevVM obsahuje soubory potřebné k vytvoření virtuálního počítače Azure, který je vhodný pro dokončení tohoto kurzu.
 
-1. Otevřete PowerShell jako správce a přejděte do adresáře, kam jste stáhli kód. V kořenovém adresáři pro váš zdroj budeme odkazovat jako `<srcdir>`na.
+1. Otevřete PowerShell jako správce a přejděte do adresáře, kam jste stáhli kód. V kořenovém adresáři pro váš zdroj budeme odkazovat jako na `<srcdir>`.
 
     ```powershell
     cd <srcdir>\IoTEdgeAndMlSample\DevVM
@@ -78,16 +78,16 @@ Adresář DevVM obsahuje soubory potřebné k vytvoření virtuálního počíta
 
     * Po zobrazení výzvy zadejte následující informace:
       * **ID předplatného Azure**: ID vašeho předplatného, které najdete v Azure Portal
-      * **Název skupiny prostředků**: Název nové nebo existující skupiny prostředků v Azure
-      * **Umístění**: Vyberte umístění Azure, ve kterém se virtuální počítač vytvoří. Například westus2 nebo northeurope. Další informace najdete v tématu věnovaném [umístěním Azure](https://azure.microsoft.com/global-infrastructure/locations/).
-      * **AdminUsername**: Zadejte zapamatovatelné jméno účtu správce, který chcete vytvořit a použít na virtuálním počítači.
-      * **AdminPassword**: Nastavte heslo pro účet správce na virtuálním počítači.
+      * **Název skupiny prostředků**: název nové nebo existující skupiny prostředků v Azure
+      * **Umístění**: vyberte umístění Azure, ve kterém se virtuální počítač vytvoří. Například westus2 nebo northeurope. Další informace najdete v tématu věnovaném [umístěním Azure](https://azure.microsoft.com/global-infrastructure/locations/).
+      * **AdminUsername**: zadejte zapamatovatelné jméno účtu správce, který chcete vytvořit a použít na virtuálním počítači.
+      * **AdminPassword**: nastavte heslo pro účet správce ve virtuálním počítači.
 
     * Pokud nemáte nainstalované Azure PowerShell, skript se nainstaluje [Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 
     * Budete vyzváni k přihlášení do Azure.
 
-    * Skript potvrdí informace pro vytvoření virtuálního počítače. Pokračujte `y` stisknutím `Enter` klávesy nebo.
+    * Skript potvrdí informace pro vytvoření virtuálního počítače. Pokračujte stisknutím `y` nebo `Enter`.
 
 Skript se spustí několik minut, protože provede následující kroky:
 
@@ -102,7 +102,7 @@ Skript se spustí několik minut, protože provede následující kroky:
 
 Aby vám pomohla snížit náklady, vytvořil se virtuální počítač s plánem automatického vypnutí, který je nastavený na 1900 PST. Možná budete muset tento čas aktualizovat v závislosti na vašem umístění a plánu. Aktualizace plánu vypnutí:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 2. Přejděte na virtuální počítač ve skupině prostředků, kterou jste zadali v předchozí části.
 
@@ -118,7 +118,7 @@ Teď, když jsme vytvořili virtuální počítač, potřebujeme dokončit insta
 
 1. Skript pro vytvoření virtuálního počítače vytvořil soubor RDP na vašem počítači.
 
-2. Dvakrát klikněte na soubor s názvem  **\<virtuálního počítače\>Azure. RDP**.
+2. Dvakrát klikněte na soubor s názvem **\<název virtuálního počítače Azure\>. RDP**.
 
 3. Zobrazí se dialogové okno oznamující, že vydavatel vzdáleného připojení není znám. Zaškrtněte políčko příště nezobrazovat **výzvu pro připojení k tomuto počítači** a pak vyberte **připojit**.
 
@@ -130,7 +130,7 @@ Teď, když jsme vytvořili virtuální počítač, potřebujeme dokončit insta
 
 Teď, když jste se připojili k vývojovému počítači, přidejte k Visual Studio Code několik užitečných rozšíření, která usnadňují vývojové prostředí.
 
-1. V okně PowerShellu přejděte do **C:\\\\source IoTEdgeAndMlSample\\DevVM**.
+1. V okně PowerShellu přejděte do **C:\\source\\IoTEdgeAndMlSample\\DevVM**.
 
 2. Povolte spouštění skriptů na virtuálním počítači zadáním příkazu.
 
@@ -182,7 +182,7 @@ V této části použijete skript k vytvoření služby Azure IoT Hub a účtu A
     ```
 
     * Budete vyzváni k přihlášení do Azure.
-    * Skript potvrdí informace pro vytvoření vašeho centra a účtu úložiště. Pokračujte `y` stisknutím `Enter` klávesy nebo.
+    * Skript potvrdí informace pro vytvoření vašeho centra a účtu úložiště. Pokračujte stisknutím `y` nebo `Enter`.
 
 Spuštění skriptu trvá přibližně dvě minuty. Po dokončení skript vypíše název centra a účtu úložiště.
 
@@ -202,7 +202,7 @@ V rámci vytváření služby IoT Hub vytvořil skript, který jsme spustili v p
 
 1. V části **BLOB Storage**vyberte **turbofanDeviceStorage**.
 
-1. Všimněte si, že tento koncový bod odkazuje na kontejner objektů BLOB s názvem **devicedata** v účtu úložiště vytvořeném v posledním kroku, který má název **iotedgeandml\<\>Unique přípona**.
+1. Všimněte si, že tento koncový bod odkazuje na kontejner objektů BLOB s názvem **devicedata** v účtu úložiště vytvořeném v posledním kroku, který má název **iotedgeandml\<jedinečných přípon\>** .
 
 1. Všimněte si také, že **Formát názvu souboru objektu BLOB** byl změněn z výchozího formátu na místo toho umístit oddíl jako poslední prvek v názvu. Pro operace se soubory, které provedeme v Azure Notebooks později v tomto kurzu, zjistíme, že tento formát je pohodlnější.
 

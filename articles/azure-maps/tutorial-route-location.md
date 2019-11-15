@@ -1,29 +1,29 @@
 ---
-title: Vyhledání trasy s využitím Azure Maps | Microsoft Docs
-description: Trasa k bodu zájmu s využitím Azure Maps
+title: 'Kurz: Vyhledání trasy pomocí Azure Maps'
+description: 'Kurz: směrování do bodu zájmu pomocí Azure Maps'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52355a8896f4891e99d07e2b4106cede77a1f8df
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c9e407b271fd77397723ee49f530339847096749
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916207"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106616"
 ---
-# <a name="route-to-a-point-of-interest-using-azure-maps"></a>Trasa k bodu zájmu s využitím Azure Maps
+# <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Kurz: směrování do bodu zájmu pomocí Azure Maps
 
 V tomto kurzu se dozvíte, jak pomocí účtu Azure Maps a sady SDK Route Service vyhledat trasu k bodu zájmu. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
 > * Nastavit souřadnice pro adresu
-> * Zadat dotaz na rozhraní API Route Service ohledně trasy k bodu zájmu
+> * Zadání dotazu na rozhraní API Route Service ohledně trasy k bodu zájmu
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,7 +36,7 @@ Než budete pokračovat, postupujte podle pokynů v části [Správa účtu](htt
 Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
 
 1. Na místním počítači vytvořte nový soubor s názvem **MapRoute.html**.
-2. Přidejte do souboru následující komponenty HTML:
+2. Přidejte do souboru následující součásti HTML:
 
     ```HTML
     <!DOCTYPE html>
@@ -189,9 +189,9 @@ V této části se dozvíte, jak pomocí rozhraní API služby Azure Maps Route 
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` VytvoříaověřípožadavkyHTTP,kterésemajíAzureMapspomocí`SubscriptionKeyCredentialPolicy` klíče předplatného. Zásada převezme a vytvoří instanci kanálu. [](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` Představuje adresu URL pro Azure Maps operací [směrování.](https://docs.microsoft.com/rest/api/maps/route) `routeURL`
+   `SubscriptionKeyCredential` vytvoří `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP na Azure Maps pomocí klíče předplatného. `atlas.service.MapsURL.newPipeline()` přebírá v zásadách `SubscriptionKeyCredential` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `routeURL` představuje adresu URL pro Azure Maps operace [Směrování](https://docs.microsoft.com/rest/api/maps/route) .
 
-2. Po nastavení přihlašovacích údajů a adresy URL přidejte následující kód JavaScriptu, který vytvoří trasu od začátku do koncového bodu. `routeURL` Vyžádá službu trasy Azure Maps, aby vypočítala trasy tras. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí `geojson.getFeatures()` metody a přidána do zdroje dat.
+2. Po nastavení přihlašovacích údajů a adresy URL přidejte následující kód JavaScriptu, který vytvoří trasu od začátku do koncového bodu. `routeURL` žádá službu Směrování Azure Maps, aby vypočítala trasy směrování. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí metody `geojson.getFeatures()` a přidána do zdroje dat.
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -209,12 +209,12 @@ V této části se dozvíte, jak pomocí rozhraní API služby Azure Maps Route 
 
     ![Ovládací prvek Mapa a Route Service v Azure](./media/tutorial-route-location/map-route.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
 

@@ -1,20 +1,20 @@
 ---
-title: Konfigurace pravidel a akcí v Azure IoT Central | Microsoft Docs
+title: 'Kurz: Konfigurace pravidel a akcí v Azure IoT Central'
 description: Tento kurz ukazuje, jak vy jako tvůrce nakonfigurujete v aplikaci Azure IoT Central pravidla a akce založené na telemetrii.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 06/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5358563de9f35d2cef74a32cb1794de418066810
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955792"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106593"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidel a akcí pro vaše zařízení v Azure IoT Central
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření pravidla založeného na telemetrii
 > * Přidání akce
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte dokončit kurz [definování nového typu zařízení ve vaší aplikaci](tutorial-define-device-type.md) a vytvořit šablonu zařízení **Connected Air Conditioner** (Připojená klimatizace), se kterou budete pracovat.
 
@@ -52,10 +52,10 @@ Než začnete, musíte dokončit kurz [definování nového typu zařízení ve 
 
     | Nastavení                                      | Hodnota                             |
     | -------------------------------------------- | ------------------------------    |
-    | Name (Název)                                         | Upozornění klimatizace na teplotu |
+    | Název                                         | Upozornění klimatizace na teplotu |
     | Enable rule for all devices of this template (Povolit pravidlo pro všechna zařízení této šablony) | Zapnuto                                |
     | Podmínka                                    | Teplota je větší než 90    |
-    | Agregace                                  | Žádné                              |
+    | Agregace                                  | Žádný                              |
 
     ![Podmínka pravidla teploty](media/tutorial-configure-rules/temperaturerule.png)
 
@@ -73,15 +73,15 @@ Když definujete pravidlo, také definujete akci, kterou chcete spustit, když j
 
     | Nastavení   | Hodnota                          |
     | --------- | ------------------------------ |
-    | až        | Vaše e-mailová adresa             |
-    | Poznámky     | Teplota klimatizace překročila prahovou hodnotu. |
+    | Akce        | Vaše e-mailová adresa             |
+    | Poznámky:     | Teplota klimatizace překročila prahovou hodnotu. |
 
     > [!NOTE]
     > Pokud chcete dostávat e-mailové oznámení, e-mailová adresa musí být [ID uživatele v aplikaci](howto-administer.md) a tento uživatel se musel k aplikaci alespoň jednou přihlásit.
 
     ![Teplotní akce](media/tutorial-configure-rules/temperatureaction.png)
 
-3. Vyberte **Save** (Uložit). Vaše pravidlo je uvedené na stránce **pravidla** .
+3. Vyberte **Uložit**. Vaše pravidlo je uvedené na stránce **pravidla** .
 
 ## <a name="test-the-rule"></a>Testování pravidla
 

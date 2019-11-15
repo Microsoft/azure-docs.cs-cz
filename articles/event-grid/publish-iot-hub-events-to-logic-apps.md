@@ -1,6 +1,6 @@
 ---
-title: Používání událostí služby IoT Hub k aktivaci Azure Logic Apps | Microsoft Docs
-description: Pomocí služby směrování událostí služby Azure Event Grid vytvoříte automatizované procesy k provádění akcí Azure Logic Apps na základě událostí služby IoT Hub.
+title: 'Kurz: použití událostí IoT Hub k aktivaci Azure Logic Apps'
+description: 'Kurz: použití služby Směrování událostí Azure Event Grid, vytváření automatizovaných procesů k provádění Azure Logic Apps akcí na základě IoT Hubch událostí.'
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -10,16 +10,16 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e003cb650b0589ab43c984850838c56cbbf1ff2f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60823702"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106772"
 ---
-# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Kurz: Odesílání e-mailové oznámení o událostech služby Azure IoT Hub pomocí Logic Apps
 
 Azure Event Grid vám umožňuje reagovat na události ve službě IoT Hub aktivováním akcí v podnikových aplikacích ve směru server-klient.
 
@@ -37,16 +37,16 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
 
 ### <a name="create-a-logic-app-resource"></a>Vytvořte prostředek aplikace logiky
 
-1. V [webu Azure portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **integrace** > **aplikace logiky**.
+1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Integrace** > **Aplikace logiky**.
 
    ![Vytvoření aplikace logiky](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
 2. Pojmenujte svoji aplikaci logiky jedinečným názvem v rámci vašeho předplatného a potom vyberte stejné předplatné, skupinu prostředků a umístění, jako má vaše centrum IoT. 
 3. Vyberte **Vytvořit**.
 
-4. Jakmile je prostředek vytvořený, přejděte do aplikace logiky. 
+4. Po vytvoření prostředku přejděte do aplikace logiky. 
 
-5. Návrhář pro Logic Apps ukazuje šablon pro běžné vzory, můžete začít rychleji. V návrháři aplikace logiky v části **Šablony** zvolte **Prázdná aplikace logiky**, abyste mohli sestavit zcela novou aplikaci logiky.
+5. V Návrháři Logic Apps se zobrazují šablony pro běžné vzory, abyste mohli začít rychleji. V návrháři aplikace logiky v části **Šablony** zvolte **Prázdná aplikace logiky**, abyste mohli sestavit zcela novou aplikaci logiky.
 
 ### <a name="select-a-trigger"></a>Výběr triggeru
 
@@ -128,8 +128,8 @@ Akce jsou všechny kroky, které se provádějí potom, co trigger spustí praco
 5. Pokud budete vyzváni, přihlaste se k e-mailovému účtu. 
 
 6. Vytvořte šablonu e-mailu. 
-   * **K**: Zadejte e-mailovou adresu pro příjem oznámení e-mailů. V tomto kurzu použijte e-mailový účet, který máte dostupný pro testování. 
-   * **Předmět** a **tělo**: Zápis textu e-mailu. Vyberte vlastnosti JSON z nástroje pro výběr, aby se zahrnul dynamický obsah na základě dat událostí.  
+   * **Komu**: Zadejte e-mailovou adresu, která bude dostávat e-maily s oznámeními. V tomto kurzu použijte e-mailový účet, který máte dostupný pro testování. 
+   * **Předmět** a **Text**: Napište text e-mailu. Vyberte vlastnosti JSON z nástroje pro výběr, aby se zahrnul dynamický obsah na základě dat událostí.  
 
    Vaše e-mailová šablona může vypadat podobně jako tento příklad:
 
@@ -162,23 +162,23 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
    ![Vytvoření nového odběru události](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Vytvořte odběr události s následujícími hodnotami: 
-   * **Typ události**: Zrušte zaškrtnutí políčka přihlásit k odběru pro všechny typy událostí a vyberte **zařízení vytvořit** z nabídky.
-   * **Podrobnosti o koncovém bodu**: Vyberte typ koncového bodu jako **Webhook** a klikněte na Vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky a potvrďte výběr.
+   * **Typ události:** Zrušte zaškrtnutí možnosti Přihlásit se k odběru všech typů událostí a v nabídce vyberte **Vytvoření zařízení**.
+   * **Podrobnosti o koncovém bodu:** Jako Typ koncového bodu vyberte **Webhook**, klikněte na vybraný koncový bod, vložte adresu URL, kterou jste zkopírovali ze své aplikace logiky, a potvrďte výběr.
 
      ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-   * **Podrobnosti o předplatném události**: Zadejte popisný název a vyberte **schématu Event Grid**
+   * **Podrobnosti o odběru událostí:** Zadejte popisný název a vyberte **Schéma služby Event Grid**.
 
    Až to budete mít hotové, měl by formulář vypadat asi jako v následujícím příkladu: 
 
     ![Ukázkový formulář odběru události](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-5. Tady byste si mohli uložit odběr události a přijímat oznámení pro každé zařízení, které se vytvoří ve vašem centru IoT. V tomto kurzu ale použijeme volitelná pole k filtrování pro konkrétní zařízení. Vyberte **další funkce** v horní části formuláře. 
+5. Tady byste si mohli uložit odběr události a přijímat oznámení pro každé zařízení, které se vytvoří ve vašem centru IoT. Pro tento kurz ale použijte volitelná pole k filtrování pro konkrétní zařízení. V horní části formuláře vyberte **Další funkce** . 
 
 6. Vytvořte následující filtry:
 
-   * **Předmět začíná**: Zadejte `devices/Building1_` Chcete-li filtrovat události zařízení v budově 1.
-   * **Předmět končí**: Zadejte `_Temperature` pro filtrování zařízení události související s teploty.
+   * **Předmět začíná na:** Zadejte `devices/Building1_` k filtrování událostí zařízení v budově 1.
+   * **Předmět končí na:** Zadejte `_Temperature` k filtrování událostí zařízení souvisejících s teplotou.
 
 5. Výběrem možnosti **Vytvořit** uložte odběr události.
 
@@ -222,7 +222,7 @@ I když si centrum IoT necháte, bude vhodné odstranit odběr události, který
 2. Vyberte odběr události, který chcete odebrat. 
 3. Vyberte **Odstranit**. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Reagování na události služby IoT Hub pomocí aktivace akcí mřížkou událostí](../iot-hub/iot-hub-event-grid.md)
 * [Informace o uspořádání událostí připojení a odpojení zařízení](../iot-hub/iot-hub-how-to-order-connection-state-events.md)

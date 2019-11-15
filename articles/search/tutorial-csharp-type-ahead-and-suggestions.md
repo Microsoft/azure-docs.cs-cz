@@ -1,19 +1,19 @@
 ---
 title: C#kurz pro automatického dokončování a návrhy
 titleSuffix: Azure Cognitive Search
-description: Tento kurz sestaví projekt "stránkování výsledků hledání – Azure Kognitivní hledání" pro přidání automatického dokončování a návrhů. Cílem je bohatší uživatelské prostředí. Naučte se kombinovat rozevírací seznam návrhů s vloženým autodokončováním.
+description: V tomto kurzu se dozvíte, jak na základě rozevíracího seznamu shromažďovat výrazy pro hledání z uživatelů a jejich návrhů. Vytvoří se v existujícím projektu hotelů.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 959ae749f9ab8a025ec9c78d75640e2108868372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786505"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114558"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C#kurz: přidání automatického dokončování a návrhů – Azure Kognitivní hledání
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Přidat automatického dokončování
 > * Kombinování automatického dokončování a návrhů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -311,7 +311,7 @@ K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje
 
     Jedna možnost automatického dokončování se vrátí v horní části seznamu **výsledků** , po kterém následují všechny návrhy.
 
-2. V zobrazení nejprve implementujeme štych, aby se v oblasti tučného textu, který uživatel zadal, vykresluje slovo světle šedého automatického dokončování. HTML obsahuje relativní umístění pro tento účel. Změňte příkaz **TextBoxFor** (a jeho okolní &lt;div&gt; příkazy) na následující, což znamená, že druhé vyhledávací pole identifikované jako **pod** polem normální hledání je napravo, a to tak, že se toto vyhledávací pole 39 pixelů od výchozí umístění!
+2. V zobrazení nejprve implementujeme štych, aby se v oblasti tučného textu, který uživatel zadal, vykresluje slovo světle šedého automatického dokončování. HTML obsahuje relativní umístění pro tento účel. Změňte příkaz **TextBoxFor** (a jeho okolní &lt;div&gt; příkazy) na následující, což znamená, že druhé vyhledávací pole identifikované jako **pod** polem normální hledání je napravo, a to tak, že se toto vyhledávací pole 39 pixelů od výchozího umístění.
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -433,7 +433,7 @@ K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje
     </script>
     ```
 
-    Všimněte si, že chytřejší použití funkce **interval** pro vymazání základního textu, když se už neshoduje s tím, co uživatel zapisuje, a také pro nastavení stejného případu (horní nebo dolní), jak uživatel píšete (jako "PA" odpovídá "PA", "PA", "PA" při hledání) , aby byl text v překrytí úhledný.
+    Všimněte si, že chytřejší použití funkce **interval** pro vymazání základního textu, když se už neshoduje s tím, co uživatel zapisuje, a také nastavování stejného případu (horní nebo dolní), jak zapisuje uživatel (jako "PA" odpovídá "PA", "PA", "PA" při hledání "), aby byl text v překrytí úhledný.
 
     Přečtěte si komentáře ve skriptu, abyste získali úplný princip.
 

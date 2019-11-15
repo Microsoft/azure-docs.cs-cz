@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: nastavení prostředí verze Preview – Azure Time Series Insights | Microsoft Docs'
-description: Přečtěte si, jak nastavit prostředí pro Azure Time Series Insights ve verzi Preview.
+title: 'Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview'
+description: 'Kurz: Naučte se nastavit prostředí v Azure Time Series Insights Preview.'
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 11/06/2019
+ms.date: 11/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd08af518be9b3fec84e756edf9532ef669f22f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49960ae91688b97a9d38a65e1b17fd277508b996
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012663"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114586"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview
 

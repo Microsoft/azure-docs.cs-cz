@@ -27,9 +27,9 @@
         - name: Pomocí PHP
           href: quickstarts/php.md
         - name: Pomocí Go
-          href: quickstarts/php.md
+          href: quickstarts/go.md
         - name: Pomocí Ruby
-          href: quickstarts/php.md
+          href: quickstarts/ruby.md
 - name: Kurzy
   items:
     - name: Integrace Power BI pro analýzu zpětné vazby od zákazníků

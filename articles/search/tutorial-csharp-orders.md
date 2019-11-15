@@ -1,19 +1,19 @@
 ---
 title: C#kurz pro řazení výsledků
 titleSuffix: Azure Cognitive Search
-description: Tento kurz sestaví projekt "stránkování výsledků hledání – Azure Kognitivní hledání" pro přidání řazení výsledků hledání. Naučte se, jak seřadit výsledky u primární vlastnosti a pro výsledky, které mají stejnou primární vlastnost, jak seřadit výsledky u sekundární vlastnosti. Nakonec se dozvíte, jak seřadit výsledky na základě profilu vyhodnocování.
+description: Tento kurz ukazuje, jak objednat výsledky hledání. Sestavuje se na předchozím projektu hotelů, objednává primární vlastnost, sekundární vlastnost a zahrnuje profil vyhodnocování pro přidání kritérií zvyšování.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794053"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112680"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#kurz: seřazení výsledků – Azure Kognitivní hledání
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Filtrovat výsledky podle vzdálenosti od zeměpisného bodu
 > * Seřazení výsledků na základě profilu vyhodnocování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -114,7 +114,7 @@ Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Zobra
     ```
 
     >[!Tip]
-    >Prohlížeče obvykle ukládají soubory CSS do mezipaměti a to může vést k použití starého souboru CSS a vaše úpravy se ignorují. Dobrým způsobem, jak to zaokrouhlit, je přidat řetězec dotazu s parametrem verze na odkaz. Například:
+    >Prohlížeče obvykle ukládají soubory CSS do mezipaměti a to může vést k použití starého souboru CSS a vaše úpravy se ignorují. Dobrým způsobem, jak to zaokrouhlit, je přidat řetězec dotazu s parametrem verze na odkaz. Příklad:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -956,7 +956,7 @@ Pojďme se podívat na tři příklady profilů vyhodnocování a vzít v úvahu
 
 4. Vyzkoušejte si profil "podle renovated data/hodnocení", abyste viděli, jestli se vám neočekáváte. Pouze nedávno renovated hotely by měli zvýšit zvýšení _aktuálnosti_ .
 
-### <a name="resources"></a>Materiály
+### <a name="resources"></a>Prostředky
 
 Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu služby Azure kognitivní hledání](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 

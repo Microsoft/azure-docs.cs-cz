@@ -1,22 +1,22 @@
 ---
-title: Směrování elektrických vozidel pomocí Azure Notebooks (Python) | Microsoft Docs
-description: Elektrické prostředky trasujte pomocí rozhraní API směrování Azure Maps a Azure Notebooks.
+title: 'Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)'
+description: 'Kurz: směrování elektrických vozidel pomocí rozhraní API směrování Azure Maps a Azure Notebooks.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/01/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010935"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109604"
 ---
-# <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Směrování elektrických vozidel pomocí Azure Notebooks (Python)
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
 Azure Maps je portfolio rozhraní API pro geoprostorové služby, která jsou nativně integrovaná do Azure. Pomocí těchto rozhraní API můžou vývojáři, podniky a prodejci softwaru vytvářet aplikace pracující s polohou a řešení IoT, mobility, logistiky a sledování prostředků. 
 
@@ -24,7 +24,7 @@ Rozhraní REST API pro Azure Maps se dají volat z jazyků, jako je Python a R, 
 
 V tomto kurzu se seznámíte se scénářem, který vám může pomoci strojvedoucímu, který má za následek nízké zatížení baterie elektrického vozidla, na základě času jednotky z umístění vozidla.
 
-V tomto kurzu provedete následující:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořte a spusťte Poznámkový blok Jupyter v [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) v cloudu.

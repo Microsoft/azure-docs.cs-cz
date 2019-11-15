@@ -1,23 +1,23 @@
 ---
-title: Zřízení zařízení pomocí služby Azure IoT Hub Device Provisioning (.NET) | Microsoft Docs
-description: Zřízení zařízení pro jedno centrum IoT pomocí služby Azure IoT Hub Device Provisioning (.NET)
+title: 'Kurz: zřízení zařízení pomocí Azure IoT Hub Device Provisioning Service (.NET)'
+description: 'Kurz: zřízení zařízení pro jedno centrum IoT pomocí IoT Hub Device Provisioning Service Azure (.NET)'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 4a6a074c3f677023928fefa5c09eb305b5441dfe
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 02995549590f6f53feff92fe45bfb6cc3d543334
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303977"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112815"
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrace zařízení do centra IoT pomocí klienta služby Azure IoT Hub Device Provisioning (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Kurz: registrace zařízení do služby IoT Hub pomocí klienta služby Azure IoT Hub Provisioning Service (.NET)
 
 V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke službě Device Provisioning. V tomto kurzu zjistíte, jak pomocí této služby zřídit zařízení pro jedno centrum IoT s využitím **_jednotlivé registrace_** i **_skupin registrací_** . V tomto kurzu získáte informace o následujících postupech:
 
@@ -64,7 +64,7 @@ Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsob
 
 1. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **microsoft.azure.devices.provisioning.service**. Vyberte příslušnou položku, kliknutím na **Nainstalovat** nainstalujte balíček **Microsoft.Azure.Devices.Provisioning.Service** a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT Device Provisioning](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) a jeho závislosti a přidá se na něj odkaz.
 
-1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -130,7 +130,7 @@ Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsob
     Console.ReadLine();
     ```
         
-1. V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem na své řešení a pak klikněte na **Nastavit projekty po spuštění...** . Vyberte **Jeden spouštěný projekt** a pak v rozevírací nabídce vyberte projekt **DeviceProvisioning**.  
+1. V sadě Visual Studio Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak klikněte na **nastavit projekty po spuštění...** . Vyberte **jeden spouštěný projekt**a pak v rozevírací nabídce vyberte projekt **DeviceProvisioning** .  
 
 1. Spusťte aplikaci .NET pro zařízení **DeviceProvisiong**. Pro zařízení by se mělo nastavit zřizování: 
 
@@ -147,7 +147,7 @@ Po úspěšné registraci by se zařízení mělo zobrazit na portálu, jak je z
 
 1. V Průzkumníku řešení sady Visual Studio otevřete projekt **DeviceProvisioning** vytvořený výše. 
 
-1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;
@@ -240,7 +240,7 @@ Po spuštění zařízení by se měly provést následující akce. Další pod
 
     ![Úspěšné připojení k centru na portálu](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]

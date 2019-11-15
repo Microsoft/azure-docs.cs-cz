@@ -1,6 +1,6 @@
 ---
-title: Spuštění PlayBook ve službě Azure Sentinel | Microsoft Docs
-description: Tento článek popisuje, jak spustit PlayBook ve službě Azure Sentinel.
+title: 'Kurz: spuštění PlayBook ve službě Azure Sentinel'
+description: 'Kurz: Tento článek popisuje, jak spustit PlayBook ve službě Azure Sentinel.'
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7ab4c4ba4553e7e5f15e563c67c845758a53766f
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7e26e901fdee8cac79cfb55aa0999487e87b8a78
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229513"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113920"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Kurz: Nastavení automatických odpovědí na hrozby v Azure Sentinel
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Kurz: nastavení automatických odpovědí na hrozby v Azure Sentinel
 
 
 
@@ -117,6 +117,6 @@ Automatizace odpovědí:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak spustit PlayBook ve službě Azure Sentinel. Pokračujte na to, [jak](hunting.md) proaktivně procházet s hrozbami pomocí Azure Sentinel.
+V tomto kurzu jste zjistili, jak spustit PlayBook ve službě Azure Sentinel. Pokračujte na to, [jak proaktivně](hunting.md) procházet s hrozbami pomocí Azure Sentinel.
 
 
