@@ -1,5 +1,5 @@
 ---
-title: Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí PowerShellu a Azure Resource Manager | Microsoft Docs
+title: Zotavení po havárii virtuálního počítače Hyper-V pomocí Azure Site Recovery a PowerShellu
 description: Automatizujte zotavení virtuálních počítačů Hyper-V po havárii do Azure pomocí služby Azure Site Recovery pomocí PowerShellu a Azure Resource Manager.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200533"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082681"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí PowerShellu a Azure Resource Manager
 
@@ -42,10 +42,10 @@ Ujistěte se, že máte zavedené tyto požadavky:
 
 Kromě toho konkrétní příklad, který je popsaný v tomto článku, má následující požadavky:
 
-* Hostitel Hyper-V se spuštěným systémem Windows Server 2012 R2 nebo Microsoft Hyper-V Server 2012 R2 obsahující jeden nebo více virtuálních počítačů. Servery Hyper-V by měly být připojené k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
+* Hostitel Hyper-V se systémem Windows Server 2012 R2 nebo Microsoft Hyper-V Server 2012 R2 obsahující jeden nebo více virtuálních počítačů. Servery Hyper-V by měly být připojené k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
 * Virtuální počítače, které chcete replikovat, by měly splňovat [tyto požadavky](hyper-v-azure-support-matrix.md#replicated-vms).
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Přihlášení k účtu Azure
+## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: přihlášení k účtu Azure
 
 1. Otevřete konzolu PowerShellu a spusťte tento příkaz, abyste se přihlásili ke svému účtu Azure. V rutině se zobrazí webová stránka s výzvou k zadání přihlašovacích údajů k účtu: **Connect-AzAccount**.
     - Alternativně můžete do rutiny **Connect-AzAccount** zahrnout přihlašovací údaje účtu a použít parametr **-Credential** .
@@ -58,7 +58,7 @@ Kromě toho konkrétní příklad, který je popsaný v tomto článku, má nás
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-4. Ověřte, že je ve výstupu příkazu nastavená možnost **RegistrationState** nazaregistrované, můžete přejít ke kroku 2. Pokud ne, měli byste ve svém předplatném zaregistrovat chybějícího poskytovatele spuštěním těchto příkazů:
+4. Ověřte, že je ve výstupu příkazu nastavená možnost **RegistrationState** na **zaregistrované**, můžete přejít ke kroku 2. Pokud ne, měli byste ve svém předplatném zaregistrovat chybějícího poskytovatele spuštěním těchto příkazů:
 
     `Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
@@ -66,7 +66,7 @@ Kromě toho konkrétní příklad, který je popsaný v tomto článku, má nás
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-## <a name="step-2-set-up-the-vault"></a>Krok 2: Nastavení trezoru
+## <a name="step-2-set-up-the-vault"></a>Krok 2: nastavení trezoru
 
 1. Vytvořte Azure Resource Manager skupinu prostředků, ve které chcete vytvořit trezor, nebo použijte existující skupinu prostředků. Následujícím způsobem vytvořte novou skupinu prostředků. Proměnná $ResourceGroupName obsahuje název skupiny prostředků, kterou chcete vytvořit, a proměnná $Geo obsahuje oblast Azure, ve které chcete vytvořit skupinu prostředků (například "Brazílie – jih").
 
@@ -80,13 +80,13 @@ Kromě toho konkrétní příklad, který je popsaný v tomto článku, má nás
     Seznam existujících trezorů můžete načíst pomocí rutiny **Get-AzRecoveryServicesVault** .
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3: Nastavte kontext trezoru Recovery Services.
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3: nastavte kontext trezoru Recovery Services.
 
 Nastavte kontext trezoru následujícím způsobem:
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: Vytvoření webu Hyper-V
+## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: vytvoření lokality Hyper-V
 
 1. Vytvořte novou lokalitu Hyper-V následujícím způsobem:
 
@@ -104,7 +104,7 @@ Nastavte kontext trezoru následujícím způsobem:
 
 5. Zkopírujte stažený klíč na hostitele Hyper-V. K registraci hostitele Hyper-V do lokality budete potřebovat klíč.
 
-## <a name="step-5-install-the-provider-and-agent"></a>Krok 5: Instalace zprostředkovatele a agenta
+## <a name="step-5-install-the-provider-and-agent"></a>Krok 5: instalace poskytovatele a agenta
 
 1. Stáhněte instalační program pro nejnovější verzi zprostředkovatele od [společnosti Microsoft](https://aka.ms/downloaddra).
 2. Spusťte instalační program na hostiteli Hyper-V.
@@ -115,15 +115,15 @@ Nastavte kontext trezoru následujícím způsobem:
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 Pokud používáte server základní technologie Hyper-V, Stáhněte instalační soubor a proveďte následující kroky:
-1. Extrahujte soubory z AzureSiteRecoveryProvider. exe do místního adresáře spuštěním tohoto příkazu:```AzureSiteRecoveryProvider.exe /x:. /q```
-2. Výsledky ```.\setupdr.exe /i``` spuštění jsou protokolovány do%ProgramData%\ASRLogs\DRASetupWizard.log.
+1. Extrahujte soubory z AzureSiteRecoveryProvider. exe do místního adresáře spuštěním tohoto příkazu: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Výsledky spuštění ```.\setupdr.exe /i``` jsou protokolovány do%Programdata%\ASRLogs\DRASetupWizard.log.
 
 3. Zaregistrujte server spuštěním tohoto příkazu:
 
     ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
 
 
-## <a name="step-6-create-a-replication-policy"></a>Krok 6: Vytvoření zásady replikace
+## <a name="step-6-create-a-replication-policy"></a>Krok 6: vytvoření zásady replikace
 
 Než začnete, mějte na paměti, že zadaný účet úložiště by měl být ve stejné oblasti Azure jako trezor a měla by mít povolenou geografickou replikaci.
 
@@ -151,7 +151,7 @@ Než začnete, mějte na paměti, že zadaný účet úložiště by měl být v
 
         $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $protectionContainer
 
-## <a name="step-7-enable-vm-protection"></a>Krok 7: Povolit ochranu virtuálního počítače
+## <a name="step-7-enable-vm-protection"></a>Krok 7: povolení ochrany virtuálních počítačů
 
 1. Načtěte chráněnou položku, která odpovídá virtuálnímu počítači, který chcete chránit, následovně:
 
@@ -190,7 +190,7 @@ Než začnete, mějte na paměti, že zadaný účet úložiště by měl být v
 
 
 
-## <a name="step-8-run-a-test-failover"></a>Krok 8: Spuštění testovacího převzetí služeb při selhání
+## <a name="step-8-run-a-test-failover"></a>Krok 8: spuštění testovacího převzetí služeb při selhání
 1. Spusťte testovací převzetí služeb při selhání následujícím způsobem:
 
         $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group

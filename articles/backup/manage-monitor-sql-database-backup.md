@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: b9a292d06ce68d211b5c758e287f2935411c6f12
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1aba8777a5b0f5851922e292004a74d74065eabf
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074783"
+ms.locfileid: "74090529"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a sledování zálohovaných SQL Server databází
 
@@ -42,7 +42,7 @@ Vzhledem k tomu, že se zálohy protokolů vyskytují každých 15 minut, může
 
 Monitorování výstrah zálohování databáze:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 2. Na řídicím panelu trezoru vyberte **výstrahy a události**.
 

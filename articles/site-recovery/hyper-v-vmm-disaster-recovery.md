@@ -1,19 +1,19 @@
 ---
-title: Nastavení zotavení po havárii pro virtuální počítače Hyper-V mezi místními lokalitami pomocí Azure Site Recovery
+title: Nastavení zotavení po havárii technologie Hyper-V do sekundární lokality s Azure Site Recovery
 description: Zjistěte, jak nastavit zotavení po havárii mezi místními lokalitami pro místní virtuální počítače Hyper-V pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d3fe578444b99cc7f8c762ae9e96766ca10aa305
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 559f29624ef0946374c3e87a26f0983f202a20d7
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039673"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082635"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -118,7 +118,7 @@ Vyberte cílový server VMM a cloud:
 1. Klikněte na **Připravit infrastrukturu** > **Cíl** a vyberte cílový server VMM.
 2. Zobrazí se cloudy VMM synchronizované se Site Recovery. Vyberte cílový cloud.
 
-   ![Cíl](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Výběr cílového umístění](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace

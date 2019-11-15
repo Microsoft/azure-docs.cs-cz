@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s bránou Reward | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a potřebu brány.
+title: 'Kurz: Azure Active Directory integrace s bránou pro odměnu | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a odměna brány.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cdc4420758b67dc3a578b9530fb7039ed53ee66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092804"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081942"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Kurz: Integrace Azure Active Directory s bránou Rewards
+# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Kurz: Azure Active Directory integrace s bránou pro odměnu
 
-V tomto kurzu se dozvíte, jak integrovat Reward brány se službou Azure Active Directory (Azure AD).
-Integrace Reward brány s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat bránu bez použití Azure Active Directory (Azure AD).
+Integrování brány pro odměnu do Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k bráně potřebu.
-* Uživatelům se automaticky přihlášeni k bráně Reward (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Ve službě Azure AD můžete řídit, kdo má přístup k bráně pro odměnu.
+* Můžete uživatelům povolit, aby se automaticky přihlásili k záměna brány (jednotné přihlašování) se svými účty Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s bránou odměnu, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s bránou pro odměnu potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Potřebu brány jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Odměna povoleného jednotného přihlašování pro bránu
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Odměna v rámci brány podporuje **IDP** jednotné přihlašování zahájené pomocí
+* Brána pro odměnu podporuje **IDP** , které bylo inicializováno.
 
-## <a name="adding-reward-gateway-from-the-gallery"></a>Přidání brány Reward z Galerie
+## <a name="adding-reward-gateway-from-the-gallery"></a>Přidání brány pro odměnu z Galerie
 
-Ke konfiguraci integrace Reward brány do služby Azure AD, budete muset přidat bránu Reward z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci brány pro odměnu do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat bránu pro odměnu z galerie.
 
-**Přidání brány Reward z galerie, postupujte následovně:**
+**K přidání brány pro odměnu z Galerie proveďte následující kroky:**
 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
@@ -65,47 +65,47 @@ Ke konfiguraci integrace Reward brány do služby Azure AD, budete muset přidat
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Reward brány**vyberte **Reward brány** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **odměny Gateway**, vyberte možnost odznačit **bránu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Potřebu brány v seznamu výsledků](common/search-new-app.png)
+     ![Odměna brány v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfigurace a testování služby Azure AD jednotné přihlašování s bránou Reward podle testu uživateli **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v bráně potřebu.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s bránou pro odměnu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být navázán vztah odkazu mezi uživatelem služby Azure AD a souvisejícím uživatelem v měně brány.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Reward brány, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s bránou pro odměnu, musíte dokončit tyto stavební bloky:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Reward brány Single Sign-On](#configure-reward-gateway-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurovat jednotné přihlašování pro bránu brány](#configure-reward-gateway-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření brány Reward testovacího uživatele](#create-reward-gateway-test-user)**  – Pokud chcete mít protějšek Britta Simon Reward brány, který je propojený s Azure AD reprezentace uživatele.
+5. **[Vytvořte si testovacího uživatele brány](#create-reward-gateway-test-user)** pro Britta, abyste měli protějšek Simon v bráně, která je propojená s reprezentací uživatele v Azure AD.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s bránou odměnu, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s bránou pro odměnu, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Reward brány** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **brány pro bránu** vyberte **jednotné přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránce, proveďte následující kroky:
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
 
-    ![Potřebu brány domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Odměňování informací o jednotném přihlašování domény brány a adres URL](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
     | |
     |--|
@@ -114,7 +114,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s bránou odměnu, proveďte 
     | `https://<companyname>.rewardgateway.co.nz/`|
     | `https://<companyname>.rewardgateway.com.au/`|
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
     | |
     |--|
@@ -124,25 +124,25 @@ Ke konfiguraci Azure AD jednotné přihlašování s bránou odměnu, proveďte 
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Chcete-li získat tyto hodnoty začít nastavovat integraci na portálu pro účet správce. Podrobnosti najdete na https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Chcete-li získat tyto hodnoty, začněte nastavovat integraci na portálu správce odměna. Podrobnosti najdete na https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavení brány Reward** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **nastavit bránu pro odměnu** si zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
-### <a name="configure-reward-gateway-single-sign-on"></a>Konfigurace Reward brány jednotného přihlašování
+### <a name="configure-reward-gateway-single-sign-on"></a>Konfigurace jednotného přihlašování brány pro odměnu brány
 
-Ke konfiguraci jednotného přihlašování na **Reward brány** straně, začít nastavovat integraci na portálu pro účet správce. Použijte stažené metadata získat certifikát pro podpis a nahrát, která během konfigurace. Podrobnosti najdete na https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
+Pokud chcete nakonfigurovat jednotné přihlašování na straně samoobslužné **brány** , začněte nastavovat integraci na portálu správce odměna. Pro získání podpisového certifikátu použijte stažená metadata a nahrajte je během konfigurace. Podrobnosti najdete na https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -154,56 +154,56 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`  
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k bráně potřebu.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k bráně pro odměnu.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Reward brány**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost odznačit **bránu**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Reward brány**.
+2. V seznamu aplikace vyberte možnost odznačit **bránu**.
 
-    ![Odkaz Reward brány v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na bránu pro odměnu v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
 5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-reward-gateway-test-user"></a>Vytvoření brány Reward testovacího uživatele
+### <a name="create-reward-gateway-test-user"></a>Vytvořit testovacího uživatele brány pro žádné odměnu
 
-V této části vytvořte uživatele Britta Simon v bráně potřebu. Práce s [tým podpory brány Reward](mailto:clientsupport@rewardgateway.com) přidat uživatele na platformě Reward brány. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v Záměna brány. Pokud chcete přidat uživatele na pracovní platformu pro odměnu, pracujte s [týmem podpory brány](mailto:clientsupport@rewardgateway.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Reward brány na přístupovém panelu, můžete by měl být automaticky přihlášeni k bráně potřebu, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici brána za bránu, měli byste se automaticky přihlásit k bráně pro odměnu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

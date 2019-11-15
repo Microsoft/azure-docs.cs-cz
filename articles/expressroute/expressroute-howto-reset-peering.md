@@ -1,37 +1,36 @@
 ---
-title: 'Resetování partnerského vztahu okruhu – ExpressRoute: Azure | Microsoft Docs'
-description: Jak zakázat a povolit partnerské vztahy okruhu ExpressRoute
+title: 'Azure ExpressRoute: resetování partnerského vztahu okruhů'
+description: Postup zakázání a povolení partnerské vztahy okruhu ExpressRoute.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 2258bfbf2a1bf6a8dccf9d274e6e89e4c53a978a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2810dfc4cb41dcf11eb59ce3c87e6f7d6b2d5f65
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748230"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083502"
 ---
-# <a name="reset-expressroute-circuit-peerings"></a>Resetování partnerských vztahů okruhu ExpressRoute
+# <a name="reset-expressroute-circuit-peerings"></a>Resetovat partnerské vztahy okruhu ExpressRoute
 
-Tento článek popisuje, jak zakázat a povolit partnerské vztahy okruhu ExpressRoute pomocí prostředí PowerShell. Když zakážete partnerský vztah, vypne se relace protokolu BGP v primárním připojení i sekundární připojení okruhu ExpressRoute. Přes tento partnerský vztah k Microsoftu ztratíte připojení. Když povolíte partnerský vztah, provede se relace protokolu BGP v primárním připojení i sekundární připojení okruhu ExpressRoute. Prostřednictvím tohoto partnerského vztahu k Microsoftu budete moct znovu připojit. V okruhu ExpressRoute můžete nezávisle povolit a zakázat partnerský partnerský vztah Microsoftu a privátní partnerské vztahy Azure. Při první konfiguraci partnerských vztahů v okruhu ExpressRoute jsou partnerské vztahy ve výchozím nastavení povolené.
+Tento článek popisuje, jak zakázat a povolit partnerské vztahy okruhu ExpressRoute pomocí prostředí PowerShell. Pokud zakážete partnerský vztah, se ukončí relace protokolu BGP na připojení k primární a sekundární připojení váš okruh ExpressRoute. Dojde ke ztrátě připojení prostřednictvím tohoto partnerského vztahu Microsoftu. Když povolíte partnerský vztah, se aktivují relace protokolu BGP na připojení k primární a sekundární připojení váš okruh ExpressRoute. Se obnoví připojení prostřednictvím tohoto partnerského vztahu Microsoftu. Můžete povolit nebo zakázat Microsoft Peering a privátní partnerské vztahy Azure na okruh ExpressRoute nezávisle na sobě. Při první konfiguraci partnerských vztahů na váš okruh ExpressRoute, jsou ve výchozím nastavení povolené partnerské vztahy.
 
-Existuje několik scénářů, ve kterých může být užitečné resetovat partnerské vztahy ExpressRoute.
-* Otestujte návrh a implementaci zotavení po havárii. Například máte dva okruhy ExpressRoute. Můžete zakázat partnerské vztahy jednoho okruhu a vynutit převzetí služeb při selhání provozu v síti jiným okruhem.
-* Povolte rozpoznávání obousměrného předávání (BFD) na privátním partnerském vztahu Azure nebo partnerském vztahu Microsoftu vašeho okruhu ExpressRoute. BFD je ve výchozím nastavení povolená u privátního partnerského vztahu Azure, pokud se váš okruh ExpressRoute vytvoří po 1 2018. srpna a v partnerském vztahu Microsoftu, pokud se váš okruh ExpressRoute vytvoří po 1 2019. října. Pokud byl okruh vytvořen dříve, BFD nebyl povolen. BFD můžete povolit zakázáním partnerského vztahu a jeho povolením. 
+Existuje několik scénářů, kde vám může být užitečné resetování vašeho partnerské vztahy ExpressRoute.
+* Testování návrhu zotavení po havárii a implementaci. Například máte dva okruhy ExpressRoute. Můžete zakázat partnerských vztahů jednoho okruhu a vynutit provozu vaší sítě do dalších okruhů převzít služby při selhání.
+* Povolte rozpoznávání obousměrného předávání (BFD) na privátním partnerském vztahu Azure nebo partnerském vztahu Microsoftu vašeho okruhu ExpressRoute. BFD je ve výchozím nastavení povolená u privátního partnerského vztahu Azure, pokud se váš okruh ExpressRoute vytvoří po 1 2018. srpna a v partnerském vztahu Microsoftu, pokud se váš okruh ExpressRoute vytvoří po 1 2019. října. Pokud před, který byl vytvořen váš okruh, BFD nebyl povolen. Můžete povolit BFD zakázáním partnerský vztah a opětovné povolení ho. 
 
-### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShell
+### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="reset-a-peering"></a>Resetování partnerského vztahu
+## <a name="reset-a-peering"></a>Obnovení nastavení partnerského vztahu
 
-1. Pokud používáte PowerShell místně, otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
+1. Pokud používáte PowerShell místně, otevřete konzolu Powershellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
    ```azurepowershell
    Connect-AzAccount
@@ -46,12 +45,12 @@ Existuje několik scénářů, ve kterých může být užitečné resetovat par
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-4. Spusťte následující příkazy, abyste načetli okruh ExpressRoute.
+4. Spusťte následující příkazy pro načtení váš okruh ExpressRoute.
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. Identifikujte partnerský vztah, který chcete zakázat nebo povolit. *Partnerské vztahy* je pole. V následujícím příkladu partnerské vztahy [0] jsou privátní partnerské vztahy Azure a partnerské vztahy [1] partnerské vztahy Microsoftu.
+5. Identifikace, partnerský vztah, který chcete povolit nebo zakázat. *Partnerské vztahy* je pole. V následujícím příkladu je partnerské vztahy [0] privátní partnerské vztahy Azure a Microsoft Peering partnerské vztahy [1].
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit
@@ -134,15 +133,15 @@ Existuje několik scénářů, ve kterých může být užitečné resetovat par
    AllowClassicOperations           : False
    GatewayManagerEtag               :
    ```
-6. Spusťte následující příkazy, abyste změnili stav partnerského vztahu.
+6. Spusťte následující příkazy, které mění stav partnerského vztahu.
 
    ```azurepowershell-interactive
    $ckt.Peerings[0].State = "Disabled"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
-   Partnerský vztah by měl být ve stavu, který jste nastavili. 
+   Partnerský vztah musí být ve stavu, které jste nastavili. 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud potřebujete pomoct s řešením problému s ExpressRoute, přečtěte si následující články:
+Pokud potřebujete pomoc při řešení potíží s ExpressRoute, přečtěte si následující články:
 * [Ověření připojení ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
 * [Řešení potíží s výkonem sítě](expressroute-troubleshooting-network-performance.md)

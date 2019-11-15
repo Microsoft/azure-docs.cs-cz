@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start Node. js pro SSH a RDP (Preview) v Azure IoT Hub zařízení streamuje | Microsoft Docs
+title: Rychlý Start Node. js pro protokol SSH a RDP v Azure IoT Hub zařízení
 description: V tomto rychlém startu spustíte ukázkovou aplikaci Node. js, která funguje jako proxy a povoluje scénáře SSH a RDP nad IoT Hubmi datovými proudy zařízení.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 676b05b94fad506fba7c5bd2bd00061ae8a0426b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7f2b98f196a0889406e7821c60db7066a21b9178
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900766"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084272"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí proxy aplikace Node. js (Preview)
 
@@ -37,7 +37,7 @@ Tento článek popisuje nastavení pro SSH (pomocí portu 22) a pak popisuje, ja
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
@@ -63,7 +63,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Pokud jste to ještě neudělali, [Stáhněte si ukázkový projekt Node. js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip) a Extrahujte archiv zip.
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 

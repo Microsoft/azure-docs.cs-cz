@@ -1,21 +1,21 @@
 ---
-title: Správa přístupu Azure Site Recovery pomocí řízení přístupu na základě role (RBAC) | Microsoft Docs
+title: Správa řízení přístupu na základě role v Azure v Azure Site Recovery
 description: Tento článek popisuje, jak pro správu přístupu k Azure Site Recovery použít řízení přístupu na základě role (RBAC).
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 51c0d832a6d6d9b1cd148f765e68cb77c4679819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929223"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083766"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu Site Recovery pomocí řízení přístupu na základě role (RBAC)
 
-Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí RBAC můžete oddělit zodpovědnosti v rámci svého týmu a k provádění konkrétních úloh udělit uživatelům pouze konkrétní přístupová oprávnění.
+Řízení přístupu na základě role (RBAC) v Azure umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete oddělit zodpovědnosti v rámci svého týmu a k provádění konkrétních úloh udělit uživatelům pouze konkrétní přístupová oprávnění.
 
 Azure Site Recovery poskytuje 3 předdefinované role pro řízení operací správy Site Recovery. Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md)
 
@@ -43,30 +43,30 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 
 | **Typ prostředku** | **Model nasazení** | **Udělen** |
 | --- | --- | --- |
-| Služby Compute | Správce prostředků | Microsoft. COMPUTE/availabilitySets/Read |
+| Compute | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Write |
 |  |  | Microsoft. COMPUTE/virtualMachines/DELETE |
-|  | Klasické | Microsoft. ClassicCompute/domainNames/Read |
-|  |  | Microsoft. ClassicCompute/domainNames/Write |
-|  |  | Microsoft. ClassicCompute/domainNames/DELETE |
+|  | Classic | Microsoft.ClassicCompute/domainNames/read |
+|  |  | Microsoft.ClassicCompute/domainNames/write |
+|  |  | Microsoft.ClassicCompute/domainNames/delete |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Read |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Write |
 |  |  | Microsoft. ClassicCompute/virtualMachines/DELETE |
-| Síť | Správce prostředků | Microsoft. Network/networkInterfaces/Read |
-|  |  | Microsoft. Network/networkInterfaces/Write |
-|  |  | Microsoft. Network/networkInterfaces/DELETE |
-|  |  | Microsoft. Network/networkInterfaces/JOIN/Action |
-|  |  | Microsoft. Network/virtualNetworks/Read |
-|  |  | Microsoft. Network/virtualNetworks/podsítí/čtení |
-|  |  | Microsoft. Network/virtualNetworks/subnets/JOIN/Action |
-|  | Klasické | Microsoft. ClassicNetwork/virtualNetworks/Read |
-|  |  | Microsoft. ClassicNetwork/virtualNetworks/JOIN/Action |
-| Úložiště | Správce prostředků | Microsoft. Storage/storageAccounts/Read |
+| Síť | Resource Manager | Microsoft.Network/networkInterfaces/read |
+|  |  | Microsoft.Network/networkInterfaces/write |
+|  |  | Microsoft.Network/networkInterfaces/delete |
+|  |  | Microsoft.Network/networkInterfaces/join/action |
+|  |  | Microsoft.Network/virtualNetworks/read |
+|  |  | Microsoft.Network/virtualNetworks/subnets/read |
+|  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
+|  | Classic | Microsoft.ClassicNetwork/virtualNetworks/read |
+|  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
+| Storage | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft. Storage/storageAccounts/klíče listkey/Action |
-|  | Klasické | Microsoft. ClassicStorage/storageAccounts/Read |
-|  |  | Microsoft. ClassicStorage/storageAccounts/klíče listkey/Action |
-| Skupina prostředků | Správce prostředků | Microsoft. Resources/nasazení/* |
+|  | Classic | Microsoft.ClassicStorage/storageAccounts/read |
+|  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
+| Skupina prostředků | Resource Manager | Microsoft. Resources/nasazení/* |
 |  |  | Microsoft. Resources/Subscriptions/resourceGroups/Read |
 
 Zvažte použití [předdefinovaných rolí](../role-based-access-control/built-in-roles.md) Přispěvatel virtuálních počítačů a klasického přispěvatele virtuálních počítačů pro modely nasazení Správce prostředků a Classic.

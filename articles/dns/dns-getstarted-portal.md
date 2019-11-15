@@ -1,27 +1,28 @@
 ---
-title: Rychlý start – vytvoření zóny DNS a záznamu pomocí webu Azure portal
-description: Použijte tuto příručku podrobné rychlém startu se naučíte vytvářet zóny DNS a záznamu pomocí webu Azure portal.
+title: 'Rychlý Start: vytvoření zóny a záznamu DNS – Azure Portal'
+titleSuffix: Azure DNS
+description: Pomocí tohoto podrobného průvodce rychlým startem se dozvíte, jak vytvořit zónu Azure DNS a záznam pomocí Azure Portal.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: feb46114b3cf1b04e6a181f84bcdc41c17f1c0ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563264"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082927"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Rychlý start: Vytvoření Azure zóny a záznamu DNS pomocí webu Azure portal
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Rychlý Start: vytvoření zóny Azure DNS a záznamu pomocí Azure Portal
 
-Azure DNS můžete nakonfigurovat k překladu názvů hostitelů ve veřejné doméně. Například, pokud jste zakoupili *contoso.xyz* název domény registrátora názvu domény, můžete nakonfigurovat Azure DNS na hostitele *contoso.xyz* domény a vyřešení *www.contoso.xyz* IP adresu vašeho webového serveru nebo webové aplikace.
+Azure DNS můžete nakonfigurovat k překladu názvů hostitelů ve veřejné doméně. Pokud jste například koupili název domény *contoso. xyz* z registrátora názvu domény, můžete nakonfigurovat Azure DNS pro hostování domény *contoso. xyz* a přeložit web *. contoso. xyz* na IP adresu vašeho webového serveru nebo webové aplikace.
 
-V tomto rychlém startu vytvoříte testovací doménu a pak vytvořte záznam adres k vyřešení *www* na IP adresu *10.10.10.10*.
+V tomto rychlém startu vytvoříte testovací doménu a pak vytvoříte záznam adresy pro překlad *webové* služby na IP adresu *10.10.10.10*.
 
 >[!IMPORTANT]
->Všechny názvy a IP adresy v rámci tohoto rychlého startu jsou příklady, které nepředstavují reálné situace.
+>Všechny názvy a IP adresy v tomto rychlém startu jsou příklady, které nepředstavují scénáře reálného světa.
 
 <!---
 You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
@@ -29,20 +30,20 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-U všech postupů portálu přihlásit [webu Azure portal](https://portal.azure.com).
+Pro všechny kroky portálu se přihlaste k [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
-Zóna DNS obsahuje záznamy DNS pro doménu. Pokud chcete začít hostovat svou doménu v Azure DNS, můžete vytvořit zónu DNS pro daný název domény. 
+Zóna DNS obsahuje záznamy DNS pro doménu. Pokud chcete začít hostovat vaši doménu v Azure DNS, vytvořte pro tento název domény zónu DNS. 
 
-**Vytvoření zóny DNS:**
+**Postup vytvoření zóny DNS:**
 
-1. Vlevo nahoře vyberte **vytvořit prostředek**, pak **sítě**a potom **zónu DNS**.
+1. V levém horním rohu vyberte **vytvořit prostředek**, pak **sítě**a **zónu DNS**.
 
-1. Na **vytvořit zónu DNS** stránky zadejte nebo vyberte následující hodnoty:
+1. Na stránce **vytvořit ZÓNU DNS** zadejte nebo vyberte následující hodnoty:
 
-   - **Název**: Typ *contoso.xyz* pro účely tohoto příkladu rychlého startu. Název zóny DNS může být libovolná hodnota, která již není nakonfigurovaná na servery Azure DNS. Ve skutečné situaci byste použili doménu zakoupenou od registrátora názvu domény.
-   - **Skupina prostředků**: Vyberte **vytvořit nový**, zadejte *MyResourceGroup*a vyberte **OK**. Název skupiny prostředků musí být jedinečný v rámci předplatného Azure. 
+   - **Název**: zadejte *contoso. xyz* pro tento příklad rychlého startu. Název zóny DNS může být libovolná hodnota, která ještě není nakonfigurovaná na Azure DNSch serverech. Ve skutečné situaci byste použili doménu zakoupenou od registrátora názvu domény.
+   - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte *MyResourceGroup*a vyberte **OK**. Název skupiny prostředků musí být v rámci předplatného Azure jedinečný. 
 
 1. Vyberte **Vytvořit**.
 
@@ -52,33 +53,33 @@ Vytvoření zóny může trvat několik minut.
 
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 
-Vytvoření položky DNS nebo záznamy pro vaši doménu v zóně DNS. Vytvořte nový záznam adresy nebo "A" záznam přeložit název hostitele na adresu IPv4.
+Položky DNS nebo záznamy pro vaši doménu vytvoříte v zóně DNS. Vytvořte nový záznam adresy nebo záznam A k překladu názvu hostitele na adresu IPv4.
 
-**Chcete-li vytvořit záznam "A":**
+**Vytvoření záznamu A:**
 
-1. Na webu Azure Portal v části **všechny prostředky**, otevřete **contoso.xyz** zónu DNS **MyResourceGroup** skupinu prostředků. Můžete zadat *contoso.xyz* v **filtrovat podle názvu** pole našli snadněji.
+1. V Azure Portal v části **všechny prostředky**ve skupině prostředků **MyResourceGroup** otevřete zónu DNS **contoso. xyz** . V poli **filtrovat podle názvu** můžete zadat *contoso. xyz* , aby bylo snazší ho najít.
 
-1. V horní části **zónu DNS** stránce **+ sada záznamů**.
+1. V horní části stránky **zóny DNS** vyberte **+ Sada záznamů**.
 
-1. Na **přidat sadu záznamů** stránky zadejte nebo vyberte následující hodnoty:
+1. Na stránce **Přidat sadu záznamů** zadejte nebo vyberte následující hodnoty:
 
-   - **Název**: Typ *www*. Název záznamu je název hostitele, který chcete přeložit na zadaná IP adresa.
-   - **Typ**: Vyberte **A**. "A" záznamy jsou nejčastěji používané, ale existují další typy záznamů pro servery e-mailu ("MX"), IP adresy IPv6 (AAAA) a tak dále. 
-   - **TTL**: Typ *1*. *Time-to-live* DNS požadavku Určuje servery DNS a klienty jak dlouho může ukládat do mezipaměti odpovědi.
-   - **Jednotka hodnoty TTL**: Vyberte **hodin**. Toto je jednotka času **TTL** hodnotu. 
-   - **IP adresa**: V tomto příkladu rychlého startu zadejte *10.10.10.10*. Tato hodnota je, že překládá název záznamu IP adresu. Ve skutečném scénáři by zadejte veřejnou IP adresu pro váš webový server.
+   - **Název**: zadejte text *www*. Název záznamu je název hostitele, který chcete přeložit na zadanou IP adresu.
+   - **Typ** **: vyberte.** Záznamy a jsou nejběžnější, ale existují i jiné typy záznamů pro poštovní servery (MX), adresy IP V6 ("AAAA") atd. 
+   - **TTL**: typ *1*. *Doba do živého* požadavku DNS určuje, jak dlouhé servery a klienti DNS můžou odpověď ukládat do mezipaměti.
+   - **Jednotka TTL**: vyberte **hodiny**. Toto je časová jednotka pro hodnotu **TTL** . 
+   - **IP adresa**: pro tento příklad rychlého startu zadejte *10.10.10.10*. Tato hodnota je IP adresa, na kterou se název záznamu překládá. Ve scénáři reálného světa byste zadali veřejnou IP adresu svého webového serveru.
 
-V tomto rychlém startu je jen pro rychlé testování, není nutné nakonfigurovat názvové servery Azure DNS u registrátora názvu domény. Skutečné produkční doménu měli byste kdokoli na Internetu, abychom mohli přeložit název hostitele pro připojení k webu nebo aplikaci. Budete navštivte web registrátora názvu domény nahraďte názvové servery Azure DNS záznamy názvového serveru. Další informace najdete v tématu [kurzu: Hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
+Vzhledem k tomu, že je tento rychlý Start jenom pro účely rychlého testování, není potřeba konfigurovat Azure DNS názvové servery v registrátoru názvů domén. S skutečnou produkční doménou budete chtít, aby kdokoli na internetu přeložil název hostitele pro připojení k webovému serveru nebo aplikaci. V rámci svého registrátora názvu domény budete moct nahradit záznamy názvového serveru Azure DNS názvové servery. Další informace najdete v tématu [kurz: Hostování vaší domény v Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="test-the-name-resolution"></a>Testování překladu IP adres
 
-Teď, když máte testovací zóna DNS se záznam testu "A", můžete otestovat překlad názvů s nástroj zvaný *nslookup*. 
+Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete otestovat překlad IP adres pomocí nástroje s názvem *nslookup*. 
 
-**K otestování překlad názvů DNS:**
+**Testování překladu názvů DNS:**
 
-1. Na webu Azure Portal v části **všechny prostředky**, otevřete **contoso.xyz** zónu DNS **MyResourceGroup** skupinu prostředků. Můžete zadat *contoso.xyz* v **filtrovat podle názvu** pole našli snadněji.
+1. V Azure Portal v části **všechny prostředky**ve skupině prostředků **MyResourceGroup** otevřete zónu DNS **contoso. xyz** . V poli **filtrovat podle názvu** můžete zadat *contoso. xyz* , aby bylo snazší ho najít.
 
-1. Zkopírujte jeden z názvů názvových serverů ze seznamu na název serveru na **přehled** stránky. 
+1. Zkopírujte název názvového serveru ze seznamu názvového serveru na stránce **Přehled** . 
 
    ![zóna](./media/dns-getstarted-portal/viewzonens500.png)
 
@@ -94,17 +95,17 @@ Teď, když máte testovací zóna DNS se záznam testu "A", můžete otestovat 
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
    ```
 
-   By měl vypadat přibližně jako na následujícím obrázku:
+   Mělo by se zobrazit něco podobného jako na následující obrazovce:
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Název hostitele **www\.contoso.xyz** přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně. 
+Název hostitele **www\.contoso. xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky vytvořené v rámci tohoto rychlého startu, odeberte je tak, že odstraníte **MyResourceGroup** skupinu prostředků. Otevřít **MyResourceGroup** prostředku, skupiny a vyberte **odstranit skupinu prostředků**.
+Když už nepotřebujete prostředky, které jste vytvořili v tomto rychlém startu, odstraňte je odstraněním skupiny prostředků **MyResourceGroup** . Otevřete skupinu prostředků **MyResourceGroup** a vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření záznamů DNS pro webovou aplikaci ve vlastní doméně](./dns-web-sites-custom-domain.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s NEOGOV | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a NEOGOV.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s NEOGOV | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a NEOGOV.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,163 +13,156 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/27/2019
+ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8e208c8e5f1136ef5029e03b59a2f09e113dc3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20b0954cac84a791367c5f9af18d3e760a27db11
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096347"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081694"
 ---
-# <a name="tutorial-integrate-neogov-with-azure-active-directory"></a>Kurz: NEOGOV integrovat s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-neogov"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s NEOGOV
 
 V tomto kurzu se dozvíte, jak integrovat NEOGOV s Azure Active Directory (Azure AD). Když integrujete NEOGOV s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k NEOGOV.
-* Aby uživatelé mohli být automaticky přihlášeni k NEOGOV pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k NEOGOV.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k NEOGOV svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
-* NEOGOV jednotné přihlašování (SSO) povolené předplatné.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* NEOGOV odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje NEOGOV **IDP** jednotné přihlašování zahájené.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* NEOGOV podporuje jednotné přihlašování **IDP** .
 
 ## <a name="adding-neogov-from-the-gallery"></a>Přidání NEOGOV z Galerie
 
-Konfigurace integrace NEOGOV do služby Azure AD, budete muset přidat NEOGOV z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci NEOGOV do služby Azure AD, musíte přidat NEOGOV z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **NEOGOV** do vyhledávacího pole.
-1. Vyberte **NEOGOV** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **NEOGOV** .
+1. Na panelu výsledků vyberte **NEOGOV** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s NEOGOV pomocí testovacího uživatele volá **B. Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v NEOGOV.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-neogov"></a>Konfigurace a testování jednotného přihlašování Azure AD pro NEOGOV
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s NEOGOV, proveďte následující stavebních bloků:
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí NEOGOV pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v NEOGOV.
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace jednotného přihlašování NEOGOV](#configure-neogov-sso)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s B. Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit B. Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele NEOGOV](#create-neogov-test-user)**  – Pokud chcete mít protějšek B. Simon NEOGOV, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí NEOGOV, dokončete následující stavební bloky:
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[NAKONFIGURUJTE NEOGOV SSO](#configure-neogov-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    * **[Vytvořte NEOGOV Test User](#create-neogov-test-user)** -to, abyste měli protějšek B. Simon v NEOGOV, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-1. V [webu Azure portal](https://portal.azure.com/)na **NEOGOV** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **NEOGOV** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-1. Na **základní konfiguraci SAML** stránky, zadejte hodnoty pro následující pole:
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
-    
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
+
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
+
     | Prostředí | Vzor adresy URL |
     | -- | -- |
     | Výroba | `https://www.neogov.com/` |
-    | Sandbox | `https://www.uat.neogov.net/` |
+    | Úložišti | `https://www.uat.neogov.net/` |
     | | |
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
     | Prostředí | Vzor adresy URL |
     | -- | -- |
     | Výroba | `https://login.neogov.com/authentication/saml/consumer` |
-    | Sandbox | `https://login.uat.neogov.net/authentication/saml/consumer` |
+    | Úložišti | `https://login.uat.neogov.net/authentication/saml/consumer` |
     | | |
 
-1. NEOGOV aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že aplikace NEOGOV **nameidentifier** namapovat s **user.objectid**, takže budete muset upravit mapování atributů po kliknutí na **upravit** ikonu a změňte mapování atributů.
+1. NEOGOV aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace NEOGOV očekává, že **NameIdentifier** má být namapován pomocí **User. objectID**, takže je nutné upravit mapování atributu kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
-1. Kromě toho výše NEOGOV aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele, proveďte následující kroky přidat atribut tokenu SAML, jak je znázorněno následující tabulka:
+1. Kromě toho očekává aplikace NEOGOV několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | -------|--------- |
-    | mail | user.mail |
+    | e-mailu | user.mail |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
-
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
-
-    c. Nechte **Namespace** prázdné.
-
-    d. Vyberte zdroj jako **atribut**.
-
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
-
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-neogov-sso"></a>Konfigurace jednotného přihlašování NEOGOV
-
-Ke konfiguraci jednotného přihlašování na **NEOGOV** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory NEOGOV](mailto:itops@neogov.net). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B. Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
-   1. Do pole **Název** zadejte `B. Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte B. Simon k udělení přístupu k NEOGOV použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k NEOGOV.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **NEOGOV**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **NEOGOV**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B. Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-neogov-test-user"></a>Vytvoření NEOGOV testovacího uživatele
+## <a name="configure-neogov-sso"></a>Konfigurace jednotného přihlašování NEOGOV
 
-V této části vytvořte uživatele B. Simon v NEOGOV. Práce s [tým podpory NEOGOV](mailto:itops@neogov.net) přidat uživatele na platformě NEOGOV. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **NEOGOV** , musíte odeslat **adresu URL federačních metadat aplikace** [týmu podpory NEOGOV](mailto:itops@neogov.net). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="create-neogov-test-user"></a>Vytvořit testovacího uživatele NEOGOV
 
-Při výběru dlaždice NEOGOV na přístupovém panelu, můžete by měl být automaticky přihlášeni k NEOGOV, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+V této části vytvoříte uživatele s názvem B. Simon v NEOGOV. Pokud chcete přidat uživatele na platformě NEOGOV, pracujte s [týmem podpory NEOGOV](mailto:itops@neogov.net) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="test-sso"></a>Test SSO 
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Když na přístupovém panelu kliknete na dlaždici NEOGOV, měli byste se automaticky přihlásit k NEOGOV, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Další zdroje
+
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si NEOGOV s Azure AD](https://aad.portal.azure.com/)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9dbc24aa93b1f2c89b23120abb018c920835d8d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 612da322e0d248f9b0000c8f0006893b87b74e44
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896977"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084648"
 ---
 # <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
@@ -29,10 +29,10 @@ Azure Storage je řešení cloudového úložiště Microsoftu pro scénáře mo
 
 Azure Storage zahrnuje tyto datové služby:
 
-- [Objekty blob Azure](../blobs/storage-blobs-introduction.md): Široce škálovatelné úložiště objektů pro textová a binární data.
-- [Soubory Azure](../files/storage-files-introduction.md): Spravované sdílené složky pro cloudová nebo místní nasazení.
-- [Fronty Azure](../queues/storage-queues-introduction.md): Úložiště pro zasílání zpráv pro spolehlivé zasílání zpráv mezi součástmi aplikace. 
-- [Tabulky Azure](../tables/table-storage-overview.md): Úložiště NoSQL pro úložiště strukturovaných dat bez schémat.
+- [Objekty blob Azure](../blobs/storage-blobs-introduction.md): široce škálovatelné úložiště objektů pro textová a binární data
+- [Soubory Azure](../files/storage-files-introduction.md): spravované sdílené složky pro nasazení v cloudu nebo místní nasazení.
+- [Fronty Azure](../queues/storage-queues-introduction.md): spolehlivé úložiště pro přenos zpráv mezi součástmi aplikace. 
+- [Tabulky Azure](../tables/table-storage-overview.md): úložiště NoSQL pro úložiště strukturovaných dat bez schématu.
 
 Ke každé službě získáte přístup z účtu uložiště. Než začnete, přečtěte si článek [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
@@ -78,7 +78,7 @@ Služba front Azure se využívá k ukládání a načítání zpráv. Fronty zp
 
 Další informace o službě Fronty Azure najdete v tématu o [seznámení s Frontami](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Úložiště tabulek
+## <a name="table-storage"></a>Úložiště Table
 
 Azure Table Storage je teď součástí služby Azure Cosmos DB. Dokumentaci ke službě Azure Table Storage najdete v tématu [Přehled služby Azure Table Storage](../tables/table-storage-overview.md). Kromě existující služby Azure Table Storage je k dispozici také nabídka nového rozhraní API tabulky Azure Cosmos DB, které poskytuje tabulky s optimalizovanou propustností, globální distribuci a automatické sekundární indexy. Další informace a možnost vyzkoušet si nové prostředí úrovně Premium najdete na stránce [Rozhraní API tabulky Azure Cosmos DB](https://aka.ms/premiumtables).
 
@@ -143,7 +143,7 @@ Prostředky Azure Storage jsou dostupné přes jakýkoli jazyk, který umí vytv
 - [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [Klientská knihovna Azure Storage pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Klientská knihovna Azure Storage pro Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage klientskou knihovnu pro Node. js](https://docs.microsoft.com/javascript/api/azure-storage)
+- [Azure Storage klientskou knihovnu pro Node. js](https://docs.microsoft.com/javascript/api/overview/azure/storage)
 - [Klientská knihovna Azure Storage pro Python](https://github.com/Azure/azure-storage-python)
 - [Klientská knihovna Azure Storage pro PHP](https://github.com/Azure/azure-storage-php)
 - [Klientská knihovna Azure Storage pro Ruby](https://github.com/Azure/azure-storage-ruby)
@@ -169,6 +169,6 @@ Prostředky Azure Storage jsou dostupné přes jakýkoli jazyk, který umí vytv
 - [Klientské nástroje pro Azure Storage](../storage-explorers.md)
 - [Azure Developer Tools](https://azure.microsoft.com/tools/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o zprovoznění s využitím Azure Storage najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).

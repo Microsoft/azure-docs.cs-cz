@@ -14,17 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 48b5136505c3d0cb5e2e2027f832655e4b3445bf
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881744"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084829"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Použití Azure Media Analytics k převodu textového obsahu v videosouborech na digitální text  
-
-> [!IMPORTANT]
-> Prohlédněte si [plány vyřazení](media-services-analytics-overview.md#retirement-plans) některých multimediálních procesorů.
 
 ## <a name="overview"></a>Přehled
 Pokud potřebujete extrahovat textový obsah z vašich videosouborů a vygenerovat upravitelný, prohledávatelný digitální text, měli byste použít Azure Media Analytics optické rozpoznávání znaků (OCR). Tento procesor Azure Media detekuje textový obsah ve vašich videosouborech a generuje textové soubory pro použití. Optické rozpoznávání znaků umožňuje automatizovat extrakci smysluplných metadat z obrazového signálu vašeho média.
@@ -48,7 +45,7 @@ Konfigurace úlohy (přednastavení). Při vytváření úlohy pomocí **Azure M
 ### <a name="attribute-descriptions"></a>Popisy atributů
 | Název atributu | Popis |
 | --- | --- |
-|AdvancedOutput| Pokud nastavíte AdvancedOutput na hodnotu true, bude výstup JSON obsahovat pozice pro každé jedno slovo (kromě frází a oblastí). Pokud nechcete zobrazit tyto podrobnosti, nastavte příznak na false. Výchozí hodnota je false (NEPRAVDA). Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
+|AdvancedOutput| Pokud nastavíte AdvancedOutput na hodnotu true, bude výstup JSON obsahovat pozice pro každé jedno slovo (kromě frází a oblastí). Pokud nechcete zobrazit tyto podrobnosti, nastavte příznak na false. Výchozí hodnota je false. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
 | Jazyk |(volitelné) popisuje jazyk textu, který má být hledán. Jedna z následujících možností: automaticky rozpoznat (výchozí), arabština, ChineseSimplified, ChineseTraditional, Čeština Dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, polština, italština, japonština, korejština, norština, ruština, portugalština, rumunština, ruština SerbianCyrillic, SerbianLatin, slovenština, španělština, švédština, turečtina. |
 | TextOrientation |(volitelné) popisuje orientaci textu, který chcete vyhledat.  "Left" znamená, že horní část všech písmen je odkazována směrem doleva.  Výchozí text (jako ten, který se dá najít v knize), se dá volat nahoru.  Jedna z následujících možností: automaticky rozpoznat (výchozí), nahoru, doprava, dolů, doleva. |
 | TimeInterval |(volitelné) popisuje vzorkovací frekvenci.  Výchozí hodnota je každých 1/2 sekund.<br/>Formát JSON – HH: mm: ss. Zabezpečené úložiště (výchozí hodnota je 00:00:00.500)<br/>Formát XML – primitivum doby trvání W3C XSD (výchozí PT 0.5) |
@@ -107,7 +104,7 @@ Výstup optického rozpoznávání videa poskytuje data rozdělená na znaky nal
 
 Výstup obsahuje následující atributy:
 
-| Element | Popis |
+| Prvek | Popis |
 | --- | --- |
 | Timescale |"takty" za sekundu videa |
 | Posun |časový posun pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. |
@@ -115,12 +112,12 @@ Výstup obsahuje následující atributy:
 | Délk |Šířka videa v pixelech |
 | Výška |Výška videa v pixelech |
 | Fragments |pole časových bloků videa, na které jsou metadata v bloku |
-| zahájení |počáteční čas fragmentu v taktech |
-| úkolu |Délka fragmentu v "taktech" |
+| start |počáteční čas fragmentu v taktech |
+| duration |Délka fragmentu v "taktech" |
 | interval |interval každé události v rámci daného fragmentu |
 | stránka events |pole obsahující oblasti |
 | . |objekt představující zjištěná slova nebo fráze |
-| language |jazyk textu zjištěného v rámci oblasti |
+| jazyk |jazyk textu zjištěného v rámci oblasti |
 | změny |orientace textu zjištěného v rámci oblasti |
 | přím |pole řádků textu zjištěných v rámci oblasti |
 | text |skutečný text |
@@ -195,7 +192,7 @@ Následující program ukazuje, jak:
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```csharp
 using System;
@@ -369,7 +366,7 @@ namespace OCR
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy

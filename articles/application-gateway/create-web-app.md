@@ -1,22 +1,23 @@
 ---
-title: Ochrana webových aplikací pomocí Azure Application Gateway – PowerShell
+title: Konfigurace App Service pomocí prostředí PowerShell
+titleSuffix: Azure Application Gateway
 description: Tento článek obsahuje pokyny ke konfiguraci webových aplikací jako hostitelů back-end ve stávající nebo nové službě Application Gateway.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122213"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089515"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>Konfigurace služby App Service pomocí služby Application Gateway
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>Konfigurace App Service s využitím Application Gateway pomocí PowerShellu
 
-Služba Application gateway umožňuje mít aplikaci služby App Service nebo jinou víceklientskou službu jako členem fondu back-end. V tomto článku zjistíte, jak nakonfigurovat aplikaci služby App Service pomocí služby Application Gateway. V prvním příkladu se dozvíte, jak nakonfigurovat stávající službu Application Gateway pro použití webové aplikace jako člena fondu back-end. V druhém příkladu se dozvíte, jak vytvořit novou službu Application Gateway s webovou aplikací jako členem fondu back-end.
+Application Gateway umožňuje mít jako člena fondu back-end App Service aplikaci nebo jinou službu pro více tenantů. V tomto článku se naučíte konfigurovat aplikaci App Service pomocí Application Gateway. V prvním příkladu se dozvíte, jak nakonfigurovat stávající službu Application Gateway pro použití webové aplikace jako člena fondu back-end. V druhém příkladu se dozvíte, jak vytvořit novou službu Application Gateway s webovou aplikací jako členem fondu back-end.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -159,10 +160,10 @@ DnsSettings              : {
 
 ## <a name="restrict-access"></a>Omezení přístupu
 
-Webové aplikace nasazené v těchto příkladech použít veřejné IP adresy, které lze přistupovat přímo z Internetu. To pomáhá při řešení potíží, když se budete učit o nové funkce a zkusit nové věci. Ale pokud máte v úmyslu nasadit funkci do produkčního prostředí, budete chtít přidat další omezení.
+Webové aplikace nasazené v těchto příkladech používají veřejné IP adresy, ke kterým lze získat přímý pøístup z Internetu. Pomůže vám to při řešení potíží, když se naučíte o nové funkci a zkoušíme nové věci. Pokud ale máte v úmyslu nasadit funkci do produkčního prostředí, budete chtít přidat další omezení.
 
-Jedním ze způsobů, můžete omezit přístup k webovým aplikacím je použití [omezení statických IP adres služby Azure App Service](../app-service/app-service-ip-restrictions.md). Například můžete omezit webové aplikace tak, aby pouze přijímá provoz z aplikační brány. Pomocí funkce app service IP omezení seznamu application gateway virtuální IP adresy jako adresu pouze s přístupem.
+Jedním ze způsobů, jak omezit přístup k webovým aplikacím, je použít [Azure App Service omezení statických IP adres](../app-service/app-service-ip-restrictions.md). Můžete například omezit webovou aplikaci tak, aby přijímala pouze provoz z aplikační brány. Pomocí funkce omezení IP adres služby App Service můžete zobrazit seznam VIP adres Application Gateway jako jedinou adresu s přístupem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o konfiguraci přesměrování návštěvou: [Konfigurace přesměrování ve službě Application Gateway pomocí Powershellu](redirect-overview.md).
+Zjistěte, jak nakonfigurovat přesměrování, v tématu [Konfigurace přesměrování ve službě Application Gateway pomocí PowerShellu](redirect-overview.md).

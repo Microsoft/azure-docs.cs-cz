@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474272"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081534"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -61,7 +61,7 @@ V Kanadě Microsoft používá následující krátké kódy SMS:
 
 Společnost Microsoft nezaručuje konzistentní doručování zpráv SMS nebo hlasové Multi-Factor Authentication s využitím stejného čísla. V zájmu našich uživatelů může společnost Microsoft kdykoli přidat nebo odebrat krátké kódy, protože provádíme úpravy postupů pro zlepšení poskytování služby SMS. Společnost Microsoft nepodporuje krátké kódy pro země a oblasti kromě USA a Kanady.
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
 Na většinu otázek fakturace se dá odpovědět tak, že odkazujete na [stránku s cenami Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) nebo v dokumentaci, [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
@@ -219,7 +219,7 @@ Alternativním řešením této chyby je, aby byly samostatné uživatelské ú�
 
 Pokud tady na váš dotaz neodpovíte, ponechte ho prosím v komentářích v dolní části stránky. Nebo tady jsou některé další možnosti, jak získat nápovědu:
 
-* Vyhledejte v [Podpora Microsoftu znalostní bázi](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) řešení běžných technických problémů.
+* Vyhledejte v [Podpora Microsoftu znalostní bázi](https://support.microsoft.com) řešení běžných technických problémů.
 * Vyhledejte a procházejte technické dotazy a odpovědi z komunity nebo položte svoji vlastní otázku ve [fórech Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 * Pokud jste PhoneFactor starší verze zákazníka a máte nějaké dotazy nebo potřebujete pomoc s obnovením hesla, použijte odkaz pro [resetování hesla](mailto:phonefactorsupport@microsoft.com) a otevřete případ podpory.
 * Obraťte se na podporu odborníka na podporu [Azure Multi-Factor Authentication Server (PhoneFactor)](https://support.microsoft.com/oas/default.aspx?prid=14947). Při kontaktování nás je užitečné, pokud můžete zahrnout co nejvíce informací o vašem problému. Informace, které můžete dodat, zahrnují stránku, kde jste viděli chybu, konkrétní kód chyby, konkrétní ID relace a ID uživatele, který chybu viděl.

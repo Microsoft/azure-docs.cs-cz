@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW) | Microsoft Docs
+title: Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 description: V tomto článku najdete seznam nejčastějších dotazů ke službě Azure synapse Analytics (dříve SQL DW) od zákazníků a vývojářů.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4db84ed69979713d613679e94d50cdb73475e2be
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520855"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645595"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
@@ -47,7 +47,7 @@ A. Navštivte stránku [dodržování předpisů Microsoftu] , kde najdete různ
 
 Otázka: Můžu se Power BI připojit?
 
-A. Ano! I když Power BI podporuje přímý dotaz s Azure synapse, není určený pro velké množství uživatelů nebo dat v reálném čase. Pro využívání Power BI v produkčním prostředí doporučujeme používat Power BI nad Azure Analysis Services nebo Analysis Service IaaS. 
+A. Ano! I když Power BI podporuje přímý dotaz s Azure synapse, není určený pro velký počet uživatelů nebo dat v reálném čase. Pokud chcete optimalizovat Power BI výkon, zvažte použití Power BI nad Azure Analysis Services nebo Analysis Service IaaS.
 
 Otázka: Co jsou limity kapacity SQL Analytics?
 

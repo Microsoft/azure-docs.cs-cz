@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 18c85995c545e1b603333fd6788b70cd863865ce
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905015"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085230"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -94,14 +94,14 @@ Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné obl
 | Zdrojové oblasti        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
 | Austrálie – střed     | Čína – východ        | Indie – jih        | Západní Evropa        |
-| Austrálie – střed 2   | Čína – východ 2      | Jihovýchodní Asie     | Spojené království – jih           |
+| Austrálie – střed 2   | Čína – východ 2      | Jihovýchodní Asie     | Velká Británie – jih           |
 | Austrálie – východ        | Čína – sever       | Japonsko – východ         | Spojené království – západ            |
 | Austrálie – jihovýchod   | Čína – sever 2     | Japonsko – západ         | US DoD – střed     |
 | Brazílie – jih          | Východní Asie         | Jižní Korea – střed      | US DoD – východ        |
-| Střední Kanada        | Východní USA           | Korea – jih        | USA (Gov) – Arizona     |
-| Východní Kanada           | Východ USA 2         | Středoseverní USA   | USA (Gov) – Texas       |
+| Kanada – střed        | Východní USA           | Jižní Korea – jih        | USA (Gov) – Arizona     |
+| Východní Kanada           | Východní USA 2         | Středoseverní USA   | USA (Gov) – Texas       |
 | Střed Indie         | Východní USA 2 EUAP    | Severní Evropa       | USA (Gov) – Virginia    |
-| Střední USA            | Francie – střed    | Středojižní USA   | Indie – západ         |
+| Střed USA            | Francie – střed    | Středojižní USA   | Indie – západ         |
 | Střed USA EUAP       | Francie – jih      | Středozápadní USA    | Západní USA            |
 |                       |                   |                    | Západní USA 2          |
 
@@ -186,7 +186,7 @@ Následující sady SDK podporují vytváření galerií sdílených imagí:
 
 - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
 - [Go](https://docs.microsoft.com/azure/go/)
 
@@ -221,7 +221,7 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte přístup v Azure Portal, postupujte podle následujících kroků:
 
-1. Otevřete [portál Azure](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Přejít na **všechny prostředky**.
 1. Vyberte všechna předplatná, pod kterými chcete zobrazit seznam všech prostředků.
 1. Vyhledejte prostředky typu **privátní Galerie**.

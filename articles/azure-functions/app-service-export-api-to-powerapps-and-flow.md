@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b12d1fec9b7852835d3d5b5346d64868d2ee8c46
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087697"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082848"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportování rozhraní API hostovaného v Azure do PowerApps a Microsoft Flow
 
@@ -30,7 +30,7 @@ Podobně vývojáři, kteří chtějí své rozhraní API lépe vystavit v rámc
 Před exportem rozhraní API musíte popsat rozhraní API pomocí definice OpenAPI (dříve označované jako soubor [Swagger](https://swagger.io/) ). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API. PowerApps a Microsoft Flow můžou vytvářet vlastní konektory pro všechny definice OpenAPI 2,0. Azure Functions a Azure App Service mají integrovanou podporu pro vytváření, hostování a správu definic OpenAPI. Další informace najdete v tématu [hostování rozhraní RESTful API s CORS v Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
-> Vlastní konektory můžete vytvářet také v uživatelském rozhraní PowerApps a Microsoft Flow bez použití definice OpenAPI. Další informace najdete v tématu [registrace a použití vlastního konektoru (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) a [registrace a použití vlastního konektoru (Microsoft flow)](https://flow.microsoft.com/documentation/register-custom-api/).
+> Vlastní konektory můžete vytvářet také v uživatelském rozhraní PowerApps a Microsoft Flow bez použití definice OpenAPI. Další informace najdete v tématu [registrace a použití vlastního konektoru (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) a [registrace a použití vlastního konektoru (Microsoft flow)](/power-automate/developer/register-custom-api).
 
 Pokud chcete exportovat definici rozhraní API, postupujte podle těchto kroků:
 
@@ -76,7 +76,7 @@ K dokončení exportu v **expresním** režimu použijte následující postup:
  
     ![Expresní export do PowerApps a Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. Klikněte na **OK**. Vlastní konektor je teď sestavený a přidaný do zadaného prostředí.
+3. Klikněte na tlačítko **OK**. Vlastní konektor je teď sestavený a přidaný do zadaného prostředí.
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>Použití ručního exportu
@@ -123,11 +123,11 @@ Pokud chcete naimportovat definici rozhraní API do PowerApps a Microsoft Flow, 
 
     ![Karta definice](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 
-    Tento příklad obsahuje jednu operaci s názvem `CalculateCosts`. Metadata, jako je **Popis**, pocházejí ze souboru openapi.
+    Tento příklad má jednu operaci s názvem `CalculateCosts`. Metadata, jako je **Popis**, pocházejí ze souboru openapi.
 
 7. V horní části stránky klikněte na **vytvořit konektor** .
 
-Nyní se můžete připojit k vlastnímu konektoru v PowerApps a Microsoft Flow. Další informace o vytváření konektorů na portálech PowerApps a Microsoft Flow najdete v tématu [registrace vlastního konektoru (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) a [registrace vlastního konektoru (Microsoft flow)](https://flow.microsoft.com/documentation/register-custom-api/#register-your-custom-connector).
+Nyní se můžete připojit k vlastnímu konektoru v PowerApps a Microsoft Flow. Další informace o vytváření konektorů na portálech PowerApps a Microsoft Flow najdete v tématu [registrace vlastního konektoru (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) a [registrace vlastního konektoru (Microsoft flow)](/power-automate/get-started-flow-dev#create-a-custom-connector).
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>Zadání typu ověřování
@@ -146,24 +146,24 @@ PowerApps a Microsoft Flow podporují kolekci zprostředkovatelů identity, kter
 ``` 
 Během exportu zadáte konfigurační hodnoty, které umožní PowerApps a Microsoft Flow ověřovat uživatele.
 
-Tato část se zabývá typy ověřování, které jsou podporované v expresním režimu: Klíč rozhraní API, Azure Active Directory a obecný OAuth 2,0. PowerApps a Microsoft Flow také podporují základní ověřování a OAuth 2,0 pro konkrétní služby, jako jsou Dropbox, Facebook nebo SalesForce.
+Tato část se zabývá typy ověřování, které jsou podporované v **expresním** režimu: klíč rozhraní API, Azure Active Directory a obecné OAuth 2,0. PowerApps a Microsoft Flow také podporují základní ověřování a OAuth 2,0 pro konkrétní služby, jako jsou Dropbox, Facebook nebo SalesForce.
 
 ### <a name="api-key"></a>Klíč rozhraní API
-Při použití klíče rozhraní API se uživatelům konektoru zobrazí výzva k zadání klíče při vytváření připojení. Zadejte název klíče rozhraní API, který jim pomůže pochopit, který klíč je potřeba. V předchozím příkladu používáme název `API Key (contact meganb@contoso.com)` , aby lidé věděli, kde získat informace o klíči rozhraní API. Pro Azure Functions je klíč obvykle jedním z klíčů hostitele, který pokryje několik funkcí v rámci aplikace Function App.
+Při použití klíče rozhraní API se uživatelům konektoru zobrazí výzva k zadání klíče při vytváření připojení. Zadejte název klíče rozhraní API, který jim pomůže pochopit, který klíč je potřeba. V předchozím příkladu používáme název `API Key (contact meganb@contoso.com)` tak, aby uživatelé věděli, kde získat informace o klíči rozhraní API. Pro Azure Functions je klíč obvykle jedním z klíčů hostitele, který pokryje několik funkcí v rámci aplikace Function App.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Při použití Azure AD potřebujete dva registrace aplikací Azure AD: jedno pro samotné rozhraní API a jeden pro vlastní konektor:
 
 - Ke konfiguraci registrace pro rozhraní API použijte funkci [App Service ověřování/autorizace](../app-service/configure-authentication-provider-aad.md) .
 
-- Pokud chcete nakonfigurovat registraci konektoru, postupujte podle kroků v části [Přidání aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Registrace musí mít delegovaný přístup k vašemu rozhraní API a adresu URL `https://msmanaged-na.consent.azure-apim.net/redirect`odpovědi. 
+- Pokud chcete nakonfigurovat registraci konektoru, postupujte podle kroků v části [Přidání aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Registrace musí mít delegovaný přístup k vašemu rozhraní API a adresu URL odpovědi `https://msmanaged-na.consent.azure-apim.net/redirect`. 
 
-Další informace najdete v tématu Příklady registrace Azure AD pro [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) a [Microsoft Flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/). Tyto příklady používají jako rozhraní API Azure Resource Manager; Pokud budete postupovat podle pokynů, nahraďte své rozhraní API.
+Další informace najdete v tématu Příklady registrace Azure AD pro [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) a [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Tyto příklady používají jako rozhraní API Azure Resource Manager; Pokud budete postupovat podle pokynů, nahraďte své rozhraní API.
 
 Jsou vyžadovány následující hodnoty konfigurace:
 - **ID klienta** – ID klienta vašeho konektoru registrace Azure AD
 - **Tajný klíč klienta** – tajný klíč klienta registrace Azure AD vašeho konektoru
-- **Adresa URL pro přihlášení** – základní adresa URL služby Azure AD. V Azure to obvykle `https://login.windows.net`bývá.
+- **Adresa URL pro přihlášení** – základní adresa URL služby Azure AD. V Azure se to obvykle `https://login.windows.net`.
 - **ID tenanta** – ID tenanta, který se má použít pro přihlášení. Mělo by se jednat o "Common" nebo ID tenanta, ve kterém se konektor vytvoří.
 - **Adresa URL prostředku** – adresa URL prostředku registrace Azure AD pro vaše rozhraní API
 

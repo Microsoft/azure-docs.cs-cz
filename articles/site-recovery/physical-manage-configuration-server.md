@@ -1,5 +1,5 @@
 ---
-title: Správa konfiguračního serveru pro zotavení po havárii místních fyzických serverů do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Správa konfiguračního serveru pro fyzické servery v Azure Site Recovery
 description: Tento článek popisuje, jak spravovat Azure Site Recovery konfigurační server pro zotavení po havárii fyzického serveru do Azure.
 services: site-recovery
 author: mayurigupta13
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242991"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084603"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -20,7 +20,7 @@ Místní konfigurační server nastavíte při použití služby [Azure Site Rec
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tabulka shrnuje předpoklady pro nasazení místního počítače konfiguračního serveru.
 
@@ -38,8 +38,8 @@ Tabulka shrnuje předpoklady pro nasazení místního počítače konfigurační
 | Zásady skupiny| Nepovolujte tyto zásady skupiny: <br> -Zakázat přístup k příkazovému řádku <br> – Zakázat přístup k nástrojům pro úpravu registru <br> – Logika vztahu důvěryhodnosti pro přílohy souborů <br> -Zapnout provádění skriptu <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | -Žádný předdefinovaný výchozí web <br> -Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443.<br>|
 | Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware) |
-| Typ IP adresy | Statický |
-| Přístup k internetu | Server potřebuje přístup k těmto adresám URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> – *. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (není vyžadováno pro procesové servery se škálováním na více instancí) <br> - time.nist.gov <br> - time.windows.com |
+| Typ IP adresy | Static |
+| Přístup k internetu | Server potřebuje přístup k těmto adresám URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (není vyžadováno pro procesové servery se škálováním na více instancí) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)|
 
 ## <a name="download-the-latest-installation-file"></a>Stažení nejnovějšího instalačního souboru
@@ -71,7 +71,7 @@ Nejnovější verzi instalačního souboru konfiguračního serveru najdete na p
      ![Brána firewall](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. Na stránce **Kontrola předpokladů** instalační program provede kontrolu a ověří, že lze spustit instalaci. Pokud se zobrazí varování u položky **Kontrola synchronizace globálního času**, ověřte, že čas na systémových hodinách (nastavení **Datum a čas**) je stejný jako časové pásmo.
 
-    ![Předpoklady](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![Požadavky](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. Na stránce **Konfigurace MySQL** vytvořte přihlašovací údaje pro přihlašování k nainstalované instanci serveru MySQL.
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
@@ -118,12 +118,12 @@ Spusťte instalační soubor následujícím způsobem:
 |/PSIP|Požaduje se|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
 |/CSIP|Požaduje se|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
 |/PassphraseFilePath|Požaduje se|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
-|/BypassProxy|Volitelné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
-|/ProxySettingsFilePath|Volitelné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
-|DataTransferSecurePort|Volitelné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
-|/SkipSpaceCheck|Volitelné|Přeskočí kontrolu místa na disku mezipaměti.| |
+|/BypassProxy|Nepovinné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
+|/ProxySettingsFilePath|Nepovinné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
+|DataTransferSecurePort|Nepovinné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
+|/SkipSpaceCheck|Nepovinné|Přeskočí kontrolu místa na disku mezipaměti.| |
 |/AcceptThirdpartyEULA|Požaduje se|Příznak značí přijetí smlouvy EULA třetích stran| |
-|/ShowThirdpartyEULA|Volitelné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
+|/ShowThirdpartyEULA|Nepovinné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
 
 
 
@@ -155,7 +155,7 @@ Nastavení proxy serveru pro počítač konfiguračního serveru můžete upravi
 3. Klikněte na kartu **registrace trezoru** .
 4. Stáhněte si nový registrační soubor trezoru z portálu a poskytněte ho jako vstup do nástroje.
 
-   ![Registrace – konfigurace-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Zadejte podrobnosti o novém proxy serveru a klikněte na tlačítko **Registrovat** .
 6. Otevřete okno příkazového řádku PowerShellu pro správu.
 7. Spusťte následující příkaz:
@@ -175,7 +175,7 @@ Nastavení proxy serveru pro počítač konfiguračního serveru můžete upravi
 2. Spusťte cspsconfigtool. exe pomocí zástupce na ploše.
 3. Klikněte na kartu **registrace trezoru** .
 4. Stáhněte si nový registrační soubor z portálu a poskytněte ho jako vstup do nástroje.
-      ![registrace – konfigurace-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Zadejte podrobnosti proxy serveru a klikněte na tlačítko **Registrovat** .  
 6. Otevřete okno příkazového řádku PowerShellu pro správu.
 7. Spusťte následující příkaz
@@ -217,7 +217,7 @@ Nastavení proxy serveru pro počítač konfiguračního serveru můžete upravi
 
 ## <a name="upgrade-a-configuration-server"></a>Upgrade konfiguračního serveru
 
-Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Například:
+Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Příklad:
 
 - Pokud používáte 9,7, 9,8, 9,9 nebo 9,10, můžete upgradovat přímo na 9,11.
 - Pokud používáte 9,6 nebo starší verzi a chcete upgradovat na 9,11, musíte nejdřív upgradovat na verzi 9,7. před 9,11.
@@ -259,7 +259,7 @@ Proveďte upgrade serveru následujícím způsobem:
    * Poskytovatel Microsoft Azure Site Recovery
    * Microsoft Azure Site Recovery konfigurační server/procesový Server
    * Závislosti konfiguračního serveru Microsoft Azure Site Recovery
-   * MySQL Server 5,5
+   * MySQL Server 5.5
 4. Spusťte následující příkaz z příkazového řádku a na příkazovém řádku správce.
    ```
    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration

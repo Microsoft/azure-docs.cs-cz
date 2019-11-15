@@ -7,12 +7,12 @@ ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da3fb604bfb65f67e50d56a4520620cabc292b93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329736"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082821"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Přidání vazby fronty Azure Storage k funkci Pythonu
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [p
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu v Pythonu](functions-create-first-function-python.md).
 
@@ -40,7 +40,7 @@ Nyní můžete přidat výstupní vazbu úložiště do projektu.
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-V případě funkcí vyžaduje každý typ vazby `direction`, `type` a jedinečné `name`, které budou definovány v souboru Function. JSON. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
+V rámci funkcí vyžaduje každý typ vazby `direction`, `type`a jedinečné `name`, které mají být definovány v souboru Function. JSON. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -73,7 +73,7 @@ Dále pomocí Azure CLI zobrazíte novou frontu a ověříte, že se přidala zp
 
 ### <a name="redeploy-the-project"></a>Znovu nasadit projekt 
 
-K aktualizaci publikované aplikace použijte příkaz [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools k nasazení kódu projektu do Azure. V tomto příkladu nahraďte `<APP_NAME>` názvem vaší aplikace.
+Pokud chcete aktualizovat publikovanou aplikaci, pomocí příkazu [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools nasaďte kód projektu do Azure. V tomto příkladu nahraďte `<APP_NAME>` názvem vaší aplikace.
 
 ```command
 func azure functionapp publish <APP_NAME> --build remote
@@ -91,7 +91,7 @@ Opětovným [zkontrolováním zprávy fronty úložiště](#query-the-storage-qu
 
 ## <a name="next-steps"></a>Další kroky
 
-Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Další informace o vývoji Azure Functions pomocí Pythonu najdete v [příručce pro vývojáře Azure Functions Pythonu](functions-reference-python.md) a v [Azure Functions triggerech a vazbách](functions-triggers-bindings.md). Příklady kompletních projektů funkcí v Pythonu najdete v tématu [ukázky funkcí Pythonu](/samples/browse/?products=azure-functions&languages=python). 
+Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Další informace o vývoji Azure Functions pomocí Pythonu najdete v [příručce pro vývojáře Azure Functions Pythonu](functions-reference-python.md) a v [Azure Functions triggerech a vazbách](functions-triggers-bindings.md). Příklady kompletních projektů funkcí v Pythonu najdete v tématu [ukázky funkcí Pythonu](/samples/browse/?products=azure-functions&languages=python). Další informace o cenách najdete na stránce s [cenami funkcí](https://azure.microsoft.com/pricing/details/functions/) a v článku [odhad nákladů na plán spotřeby](functions-consumption-costs.md) .
 
 Dále byste měli povolit Application Insights monitorování aplikace Function App:
 

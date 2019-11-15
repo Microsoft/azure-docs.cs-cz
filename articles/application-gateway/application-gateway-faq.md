@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2cf69b456aeccd6da5ac393b88171fb3bb03cf2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470071"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082547"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -290,10 +290,6 @@ Ne, v heslech souboru. pfx použijte pouze alfanumerické znaky.
 
 Ano. WAF podporuje všechny funkce v SKU Standard.
 
-### <a name="which-crs-versions-does-application-gateway-support"></a>Které verze počítačových systémů Application Gateway podporují?
-
-Application Gateway podporuje počítačový [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) a počítačový rezervační [3,0](application-gateway-crs-rulegroups-rules.md#owasp30).
-
 ### <a name="how-do-i-monitor-waf"></a>Návody monitorování WAF?
 
 Monitorujte WAF prostřednictvím diagnostického protokolování. Další informace najdete v tématu [protokolování diagnostiky a metriky pro Application Gateway](application-gateway-diagnostics.md).
@@ -308,7 +304,7 @@ Ano. Další informace najdete v tématu [přizpůsobení skupin pravidel a prav
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>Jaká pravidla jsou aktuálně k dispozici pro WAF?
 
-WAF v současné době podporuje počítačový [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) a [3,0](application-gateway-crs-rulegroups-rules.md#owasp30). Tato pravidla poskytují základní zabezpečení proti většině nejčastějších chyb zabezpečení, které otevřou projekt zabezpečení webových aplikací (OWASP): 
+WAF v současné době podporuje počítačový [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)a [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31). Tato pravidla poskytují základní zabezpečení proti většině nejčastějších chyb zabezpečení, které otevřou projekt zabezpečení webových aplikací (OWASP): 
 
 * Ochrana před útoky prostřednictvím injektáže SQL.
 * Ochrana skriptování mezi weby

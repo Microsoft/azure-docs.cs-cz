@@ -1,5 +1,5 @@
 ---
-title: 'Rozšiřování místní sítě do Azure prostřednictvím privátního připojení – přehled ExpressRoute: Azure | Microsoft Docs'
+title: 'Přehled Azure ExpressRoute: připojení přes privátní připojení'
 description: Technický přehled ExpressRoute vysvětluje, jak funguje připojení ExpressRoute a jak můžete svoji místní síť rozšířit do Azure pomocí soukromého připojení.
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: a068912857c16d2257d09e221477afc5d4a8d603
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: db728de120a50461257d8e85e708aa4c7f4d6190
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123321"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083413"
 ---
 # <a name="expressroute-overview"></a>Přehled ExpressRoute
 ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Office 365.
@@ -80,7 +79,7 @@ ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke glo
 Ke klíčovým funkcím, které ExpressRoute Direct poskytuje, patří mimo jiné:
 
 * Masivní příjem dat do služeb jako Storage a Cosmos DB
-* Fyzickou izolaci pro obory, které jsou regulováné a vyžadují vyhrazené a izolované připojení, například: Banka, státní správa a maloobchod
+* Fyzická izolace pro odvětví, která jsou regulovaná a vyžadují vyhrazené a izolované připojení, například: bankovnictví, státní správa a maloobchodní prodej
 * Podrobné řízení distribuce okruhů podle organizační jednotky
 
 Další informace najdete v článku o [ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973).

@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace partnerského vztahu pro okruh – ExpressRoute: Azure: Classic | Microsoft Docs'
+title: 'Azure ExpressRoute: konfigurace partnerského vztahu: klasický'
 description: Tento článek vás provede kroky pro vytváření a zřizování soukromého a veřejného partnerského vztahu a partnerského vztahu Microsoftu okruhu ExpressRoute. Tento článek také ukazuje, jak kontrolovat stav partnerských vztahů pro váš okruh, aktualizovat je nebo je odstranit.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 01ec721fb7e7dea0e4e31e0c3052cc4246cf14b0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748193"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083448"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute (Classic)
 > [!div class="op_single_selector"]
@@ -21,14 +20,14 @@ ms.locfileid: "73748193"
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Video – privátní partnerské vztahy](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video – veřejný partnerský vztah](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video – veřejné partnerské vztahy](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Video – partnerský vztah Microsoftu](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
 > 
 
-Tento článek vás provede kroky k vytvoření a správě konfigurace partnerského a směrování pro okruh ExpressRoute pomocí PowerShellu a modelu nasazení Classic. Dál uvedené kroky také ukazují, jak kontrolovat stav partnerských vztahů pro okruh ExpressRoute, aktualizovat je nebo je odstranit a zrušit jejich zřízení. Pro okruh ExpressRoute můžete nakonfigurovat jednu, dvě nebo všechny tři partnerské vztahy (privátní Azure, veřejný Azure a Microsoft). Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. 
+Tento článek vás provede kroky k vytvoření a správě konfigurace partnerského a směrování pro okruh ExpressRoute pomocí PowerShellu a modelu nasazení Classic. Dál uvedené kroky také ukazují, jak kontrolovat stav partnerských vztahů pro okruh ExpressRoute, aktualizovat je nebo je odstranit a zrušit jejich zřízení. Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (Azure privátní, veřejný Azure a Microsoft) pro okruh ExpressRoute. Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. 
 
-Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, kteří nabízejí služby pro připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované služby vrstvy 3 (obvykle IPVPN, jako je MPLS), poskytovatel připojení bude konfigurovat a spravovat směrování za vás.
+Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, kteří nabízejí služby pro připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IPVPN, např. MPLS), se svého poskytovatele připojení, konfiguraci a správu směrování za vás.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -43,7 +42,7 @@ Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, kteří
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Stáhnout nejnovější rutiny PowerShellu
 
-Nainstalujte nejnovější verze modulů Azure Service Management (SM) PowerShell a modulu ExpressRoute. Při použití následujícího příkladu si všimněte, že číslo verze (v tomto příkladu 5.1.1) se změní při vydání novějších verzí rutin.
+Nainstalujte nejnovější verze modulů Azure Service Management Powershellu a modul ExpressRoute. Při použití v následujícím příkladu, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
 
 ```powershell
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
@@ -52,7 +51,7 @@ Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRou
 
 Další informace najdete v tématu [Začínáme s rutinami Azure PowerShell](/powershell/azure/overview) pro podrobné pokyny ke konfiguraci počítače pro použití Azure PowerShell modulů.
 
-### <a name="sign-in"></a>Přihlásit se
+### <a name="sign-in"></a>Přihlášení
 
 Pokud se chcete přihlásit ke svému účtu Azure, použijte následující příklady:
 
@@ -72,7 +71,7 @@ Pokud se chcete přihlásit ke svému účtu Azure, použijte následující př
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
-4. Dále pomocí následující rutiny přidejte své předplatné Azure do PowerShellu pro model nasazení Classic.
+4. V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
 
    ```powershell
    Add-AzureAccount
@@ -274,7 +273,7 @@ VlanId                         : 200
 
 ### <a name="to-update-azure-public-peering-configuration"></a>Aktualizace konfigurace veřejného partnerského vztahu Azure
 
-Libovolnou část konfigurace můžete aktualizovat pomocí následující rutiny. V tomto příkladu je ID sítě VLAN okruhu Aktualizováno z 200 na 600.
+Libovolnou část konfigurace můžete aktualizovat pomocí následující rutiny. V tomto příkladu je ID sítě VLAN okruhu aktualizované z hodnoty 200 na hodnotu 600.
 
 ```powershell
 Set-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 600 -SharedKey "A1B2C3D4"

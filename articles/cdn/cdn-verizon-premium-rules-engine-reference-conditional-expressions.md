@@ -1,41 +1,41 @@
 ---
-title: Podmíněné výrazy stroje pravidel Azure CDN od Verizonu Premium | Dokumentace Microsoftu
-description: Referenční dokumentace pro Azure CDN od Verizonu Premium pravidla podmínky shody stroje a funkce.
+title: Podmíněné výrazy pro modul pravidel Azure CDN Verizon Premium
+description: Referenční dokumentace pro Azure CDN z podmínek a funkcí Verizoní pravidel Premium Engine.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: f790e37ae876c0640d55ebfb51abb43c6a705f04
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: d28bda28894477845c2a050666b3b4dd332b7d50
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593225"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082977"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN od podmíněné výrazy stroje pravidel Verizon Premium
+# <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN z podmíněných výrazů modulu Verizon Premium Rules
 
-Tento článek obsahuje podrobný popis podmíněné výrazy pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-verizon-premium-rules-engine.md).
+V tomto článku jsou uvedeny podrobné popisy podmíněných výrazů pro [modul pravidel](cdn-verizon-premium-rules-engine.md)služby Azure Content DELIVERY Network (CDN).
 
 První část pravidla je podmíněný výraz.
 
 Podmíněný výraz | Popis
 -----------------------|-------------
-IF | Pokud výraz je vždy součástí prvním příkazem v pravidle. Stejně jako všechny ostatní podmíněné výrazy tento příkaz IF musí být přidružen shoda. Pokud žádné další podmíněné výrazy jsou definovány, určuje tuto shodu kritérium, které musí být splněny, než sada funkcí se můžou vztahovat na požadavek.
-A POKUD | Výraz a v případě se dá přidat jenom po následující typy podmíněné výrazy: IF, a v případě. To znamená, že existuje jiná podmínka, která musí být splněny pro počáteční příkaz IF.
-ELSE IF| Výraz ELSE IF Určuje alternativní podmínku, která musí být splněny, než sadu funkcí, které jsou specifické pro tento příkaz ELSE IF. Přítomnost příkaz ELSE IF označuje konec předchozího příkazu. Pouze podmíněný výraz, který se může použít jiný příkaz ELSE IF po příkazu ELSE IF. To znamená, že příkaz ELSE IF pouze slouží k určení jeden další podmínku, která musí být splněny.
+IF | Výraz IF je vždy součástí prvního příkazu v pravidle. Stejně jako všechny ostatní podmíněné výrazy musí být tento příkaz IF přidružen k shodě. Pokud nejsou definovány žádné další podmíněné výrazy, tato shoda určuje kritérium, které je nutné splnit, než bude možné použít sadu funkcí pro požadavek.
+A POKUD | Výraz AND IF lze přidat pouze za následující typy podmíněných výrazů: IF a IF. Označuje, že existuje další podmínka, která musí být splněna pro počáteční příkaz IF.
+JINAK IF| Výraz ELSE IF Určuje alternativní podmínku, která musí být splněna před sadou funkcí specifických pro tento ELSE IF. Přítomnost jiného příkazu IF indikuje konec předchozího příkazu. Jediný podmíněný výraz, který může být umístěn po příkazu ELSE IF, je jiný příkaz if IF. To znamená, že příkaz ELSE IF lze použít pouze k zadání jedné další podmínky, která musí být splněna.
 
-**Příklad**: ![Podmínka shody CDN](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
+**Příklad**: ![podmínka shody CDN](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
-   > Akce zadané předchozí pravidlo může přepsat následující pravidlo.
-   > Příklad: Pravidlo pokrývající vše zabezpečuje všechny požadavky ověřování založeného na tokenech. Přímo pod ho tak, aby výjimku pro určité typy požadavků může vytvořit jiné pravidlo.
+   > Následné pravidlo může přepsat akce zadané předchozím pravidlem.
+   > Příklad: pravidlo catch-All zabezpečuje všechny požadavky prostřednictvím ověřování založeného na tokenech. Jiné pravidlo lze vytvořit přímo pod ním, aby bylo možné vytvořit výjimku pro určité typy požadavků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Přehled služby Azure CDN](cdn-overview.md)
+- [Přehled Azure CDN](cdn-overview.md)
 - [Referenční informace ke stroji pravidel](cdn-verizon-premium-rules-engine-reference.md)
 - [Podmínky shody stroje pravidel](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Funkce stroje pravidel](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Přepisování výchozího chování HTTP pomocí stroje pravidel](cdn-verizon-premium-rules-engine.md)
+- [Přepsání výchozího chování HTTP pomocí modulu pravidel](cdn-verizon-premium-rules-engine.md)

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: helohr
-ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c482291e665656bf16f28cd114a9cb8141ae77c3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931706"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084007"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -133,6 +133,16 @@ Nerdio rozšiřuje hodnotu virtuálního klienta Windows tím, že usnadňuje z�
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Přejít na web partnera](https://getnerdio.com/windows-virtual-desktop/).
 
+## <a name="numecent"></a>Numecent
+
+![Logo Numecent](./media/partners/numecent.png)
+
+Numecent je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který významně snižuje celkové provozní náklady díky rychlé registraci a migraci složitých nebo nekompatibilních aplikací pro Windows v prostředích virtuálních počítačů s Windows. Numecent také minimalizuje množství konfigurace, které uživatelé potřebují, zmenšuje aktualizace aplikací a zjednodušuje složité procesy. Vzhledem k tomu, že Numecent Cloudpaging podporuje více aplikací bez problémů s jakýmkoli jiným nástrojem pro doručování aplikací, zkracuje čas a pracovní zatížení v prostředích s různou sadou aplikací. 
+
+Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje náklady tím, že v nasazení dokončí životní cyklus softwarového assetu pro upgrade, měření a odebírání aplikací. Cloudpaging zjednodušuje správu imagí tím, že se v reálném čase dynamicky zřídí aplikace podle potřeby pro nasazení virtuálních ploch Windows. Cloudpaging pomáhá aplikacím běžet bez nutnosti správy nebo zásahu prostřednictvím pravidelných aktualizací Windows 10. Cloudpaging také snižuje náklady na náklad na nákladné aplikace tím, že umožňuje efektivnější nasazení a používání těchto aplikací. 
+
+- [Přejít na web partnera](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+
 ## <a name="policypak"></a>PolicyPak
 
 ![Logo PolicyPak](./media/partners/policypak.png)
@@ -147,21 +157,22 @@ Hlavní případy použití pro PolicyPak jsou odebrání oprávnění místníh
 
 ![Logo PrinterLogic](./media/partners/printerlogic.png)
 
-PrinterLogic je platforma pro poskytovatele služeb s přidanou hodnotou pro virtuální počítače s Windows, která pomáhá odborníkům v oblasti IT eliminovat všechny tiskové servery a doručovat vysoce dostupnou tiskovou infrastrukturu bez serveru. PrinterLogic rozšiřuje hodnotu virtuálních počítačů s Windows a Azure tím, že usnadňuje správu centrálně a nasazují objekty tiskárny na všechny tiskárny nebo operační systémy koncových bodů.   
+PrinterLogic je platforma pro poskytovatele služeb s přidanou hodnotou pro virtuální počítače s Windows, která pomáhá odborníkům v oblasti IT eliminovat všechny tiskové servery a doručovat vysoce dostupnou tiskovou infrastrukturu bez serveru. PrinterLogic rozšiřuje hodnotu virtuálních počítačů s Windows a Azure tím, že usnadňuje správu centrálně a nasazují objekty tiskárny na všechny tiskárny nebo operační systémy koncových bodů. 
 
-PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásobník ve vlastním privátním cloudu, zajišťuje, aby uživatelé měli vždy správné tiskárny, které potřebují ve svých virtuálních relacích na základě ID uživatele, názvu zařízení nebo umístění. Tato funkce je doplněná celou sadou funkcí správy tiskáren Enterprise, jako je sledování tisku, vytváření sestav, mobilní tisk a tisk přes bezpečnostní vydání. 
+PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásobník ve vlastním privátním cloudu, zajišťuje, aby uživatelé měli vždy správné tiskárny, které potřebují ve svých virtuálních relacích na základě ID uživatele, názvu zařízení nebo umístění. Tato funkce je doplněná celou sadou funkcí správy tiskáren Enterprise, jako je sledování tisku, vytváření sestav, mobilní tisk a tisk přes bezpečnostní vydání. 
 
 - [Přejít na web partnera](https://www.printerlogic.com).
 
-## <a name="numecent"></a>Numecent
+## <a name="printix"></a>Printix
 
-![Logo Numecent](./media/partners/numecent.png)
+![Logo Printix](./media/partners/printix.png)
 
-Numecent je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který významně snižuje celkové provozní náklady díky rychlé registraci a migraci složitých nebo nekompatibilních aplikací pro Windows v prostředích virtuálních počítačů s Windows. Numecent také minimalizuje množství konfigurace, které uživatelé potřebují, zmenšuje aktualizace aplikací a zjednodušuje složité procesy. Vzhledem k tomu, že Numecent Cloudpaging podporuje více aplikací bez problémů s jakýmkoli jiným nástrojem pro doručování aplikací, zkracuje čas a pracovní zatížení v prostředích s různou sadou aplikací. 
+Printix je poskytovatel služeb s hodnotou přidaný do virtuálního počítače s Windows, který automatizuje připojení uživatelů k prostředkům pro tisk Office. Jako chybějící část migrace Azure pro zákazníky je Printix nejúčinnější službou dostupnou k odebrání infrastruktury a úkolů IT, které jsou přidružené k podpoře a optimalizaci tiskového pracovního postupu pro každého uživatele bez ohledu na jeho umístění.
 
-Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje náklady tím, že v nasazení dokončí životní cyklus softwarového assetu pro upgrade, měření a odebírání aplikací. Cloudpaging zjednodušuje správu imagí tím, že se v reálném čase dynamicky zřídí aplikace podle potřeby pro nasazení virtuálních ploch Windows. Cloudpaging pomáhá aplikacím běžet bez nutnosti správy nebo zásahu prostřednictvím pravidelných aktualizací Windows 10. Cloudpaging také snižuje náklady na náklad na nákladné aplikace tím, že umožňuje efektivnější nasazení a používání těchto aplikací. 
+Tisk je základní úlohou v rámci každého kancelářského a malého podnikového prostředí. Abyste mohli plně využít výhod virtuálních klientů Windows a zajistit skvělou činnost koncového uživatele, je nutné zajistit, aby se uživatelé mohli připojit k tiskárnám s minimálním úsilím a maximální spolehlivostí. Pomocí Printix můžete využít virtuální plochu Windows na maximum prostřednictvím jednotného přihlašování (SSO), bezobslužné konfigurace, pravidelných aktualizací a nepřetržitého monitorování tiskového prostředí.
 
-- [Přejít na web partnera](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+- [Stručně si přečtěte společné řešení.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [Přejít na web partnera](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 

@@ -1,21 +1,21 @@
 ---
-title: Příprava prostředků Azure na zotavení po havárii místních počítačů
+title: Příprava Azure na zotavení po havárii technologie Hyper-V pomocí Azure Site Recovery
 description: Přečtěte si, jak připravit Azure na zotavení po havárii místních virtuálních počítačů Hyper-V pomocí Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6064c32e14ffba7edd51c2dae7787067d14e33c9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814356"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084175"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
+# <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Příprava prostředků Azure pro zotavení po havárii technologie Hyper-V
 
  [Azure Site Recovery](site-recovery-overview.md) pomáhá provozní kontinuitu a zotavení po havárii (BCDR) tím, že udržuje podnikové aplikace spuštěné během plánovaných a neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in"></a>Přihlášení
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="verify-account-permissions"></a>Ověření oprávnění k účtu
 
@@ -48,11 +48,11 @@ Pokud jste právě vytvořili bezplatný účet Azure, jste správcem tohoto př
 
 K dokončení těchto úloh by měl být vašemu účtu přiřazená předdefinovaná role Přispěvatel virtuálních počítačů. Pokud chcete spravovat operace Site Recovery v trezoru, měl by mít váš účet přiřazenou předdefinovanou roli Site Recovery Přispěvatel.
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Virtuální počítače Azure se vytvoří z úložiště, když převezmete služby při selhání z místní lokality do Azure. Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
 
-1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit** > prostředek úložiště účet úložiště **– objekt blob, soubor, tabulka, fronta.**  > 
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek** > **úložiště** > **účet úložiště – objekt blob, soubor, tabulka, fronta**.
 2. V části **Vytvořit účet úložiště** zadejte název účtu.  Název, který zvolíte, musí být v rámci Azure jedinečný, musí být dlouhý 3 až 24 znaků a obsahovat pouze malá písmena a číslice. Pro tento kurz použijte **contosovmsacct1910171607**.
 3. V části **Model nasazení** vyberte **Resource Manager**.
 4. V rozevíracím rámečku **druh účtu**vyberte **úložiště (pro obecné účely V1)** . Nevybírejte úložiště objektů blob.
@@ -63,7 +63,7 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 9. V části **umístění**vyberte geografické umístění účtu úložiště. Pro tento kurz použijte **západní Evropa**.
 10. Vyberte **Vytvořit** a vytvořte účet úložiště.
 
-   ![vytvořit účet úložiště](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Vytvoření účtu úložiště](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 
@@ -103,7 +103,7 @@ Další informace:
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Příprava místní infrastruktury technologie Hyper-V pro zotavení po havárii do Azure](hyper-v-prepare-on-premises-tutorial.md)

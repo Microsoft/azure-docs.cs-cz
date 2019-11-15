@@ -1,17 +1,17 @@
 ---
-title: Správa serverů VMware vCenter pro zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Správa serverů VMware vCenter Server v Azure Site Recovery
 description: Tento článek popisuje, jak přidat a spravovat VMware vCenter pro zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 59088d8351bf89c859312774e3e9e396be8dd532
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8f339103f67f37d10999ef43fa57a6eb27b60f37
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904256"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083976"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Správa serveru VMware vCenter Server
 
@@ -35,14 +35,14 @@ Synchronizace informací o účtu ve službě Site Recovery trvá přibližně 1
 
 |**Úloha** | **Účet** | **Oprávnění** | **Podrobnosti**|
 |--- | --- | --- | ---|
-|**Automatické zjišťování/migrace (bez navrácení služeb po obnovení)** | Potřebujete alespoň uživatele, který je jen pro čtení. | Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s podřízeným objektem **rozšířit do podřízeného** objektu.|
-|**Replikace/převzetí služeb při selhání** | Potřebujete alespoň uživatele, který je jen pro čtení.| Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte k podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s podřízeným objektem **rozšířit k podřízenému** objektu.<br/><br/> Užitečné pro účely migrace, ale ne pro úplnou replikaci, převzetí služeb při selhání a navrácení služeb po obnovení|
-|**Replikace/převzetí služeb při selhání** | Doporučujeme vytvořit roli (AzureSiteRecoveryRole) s požadovanými oprávněními a pak přiřadit roli uživateli nebo skupině VMware. | Objekt datového centra – > rozšířit na podřízený objekt, role = AzureSiteRecoveryRole<br/><br/> Úložiště dat –> Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť –> Přiřazení sítě<br/><br/> Prostředek –> Přiřadit virtuální počítač k fondu prostředků, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač<br/><br/> Úlohy –> Vytvořit úlohu, aktualizovat úlohu<br/><br/> Virtuální počítač –> Konfigurace<br/><br/> Virtuální počítač –> Interakce –> zodpovědět dotazy, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware<br/><br/> Virtuální počítač –> Inventář –> Vytvořit, zaregistrovat, zrušit registraci<br/><br/> Virtuální počítač –> Zřizování –> Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače<br/><br/> Virtuální počítač –> Snímky –> Odebrat snímky | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s podřízeným objektem **rozšířit do podřízeného** objektu.|
+|**Automatické zjišťování/migrace (bez navrácení služeb po obnovení)** | Potřebujete alespoň uživatele, který je jen pro čtení. | Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit do podřízeného** objektu.|
+|**Replikace/převzetí služeb při selhání** | Potřebujete alespoň uživatele, který je jen pro čtení.| Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte k podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit k podřízenému** objektu.<br/><br/> Užitečné pro účely migrace, ale ne pro úplnou replikaci, převzetí služeb při selhání a navrácení služeb po obnovení|
+|**Replikace/převzetí služeb při selhání** | Doporučujeme vytvořit roli (AzureSiteRecoveryRole) s požadovanými oprávněními a pak přiřadit roli uživateli nebo skupině VMware. | Objekt datového centra – > rozšířit na podřízený objekt, role = AzureSiteRecoveryRole<br/><br/> Úložiště dat –> Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť –> Přiřazení sítě<br/><br/> Prostředek –> Přiřadit virtuální počítač k fondu prostředků, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač<br/><br/> Úlohy –> Vytvořit úlohu, aktualizovat úlohu<br/><br/> Virtuální počítač –> Konfigurace<br/><br/> Virtuální počítač –> Interakce –> zodpovědět dotazy, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware<br/><br/> Virtuální počítač –> Inventář –> Vytvořit, zaregistrovat, zrušit registraci<br/><br/> Virtuální počítač –> Zřizování –> Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače<br/><br/> Virtuální počítač –> Snímky –> Odebrat snímky | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit do podřízeného** objektu.|
 
 
 ## <a name="add-vmware-server-to-the-vault"></a>Přidání serveru VMware do trezoru
 
-1. V Azure Portal otevřete trezor > **Site Recovery** > **severy konfigurace**infrastruktury a otevřete konfigurační server.
+1. V Azure Portal otevřete trezor > **Site Recovery infrastruktury** > **konfigurační**servery a otevřete konfigurační server.
 2. Na stránce **Podrobnosti** klikněte na **+ vCenter**.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
@@ -56,16 +56,16 @@ Upravte přihlašovací údaje použité pro připojení k serveru vCenter nebo 
 
    ![Přidat účet](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. Zadejte podrobnosti nového účtu a kliknutím na tlačítko **OK** ho přidejte. Účet by měl mít oprávnění uvedená [výše](#account-permissions).
-4. Na Azure Portal otevřete > trezoru **Site Recovery** > **severy konfigurace**infrastruktury a otevřete konfigurační server.
+4. V Azure Portal otevřete trezor > **Site Recovery infrastruktura** > **konfigurační**servery a otevřete konfigurační server.
 5. Na stránce **Podrobnosti** klikněte na možnost **obnovit server**.
-6. Po dokončení úlohy aktualizovat server vyberte vCenter Server, abyste otevřeli stránku se souhrnem vCenter.
+6. Po dokončení úlohy aktualizovat server vyberte vCenter Server, abyste otevřeli stránku se **souhrnem** vCenter.
 7. Vyberte nově přidaný účet v poli **účet hostitele vCenter Server/vSphere** a klikněte na **Uložit**.
 
    ![Upravit – účet](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-server"></a>Odstranění serveru vCenter
 
-1. V Azure Portal otevřete trezor > **Site Recovery** > **severy konfigurace**infrastruktury a otevřete konfigurační server.
+1. V Azure Portal otevřete trezor > **Site Recovery infrastruktury** > **konfigurační**servery a otevřete konfigurační server.
 2. Na stránce **Podrobnosti** vyberte Server vCenter.
 3. Klikněte na tlačítko **Odstranit** .
 

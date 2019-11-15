@@ -1,5 +1,5 @@
 ---
-title: Nasazení konfiguračního serveru pro zotavení po havárii VMware pomocí Azure Site Recovery | Microsoft Docs
+title: Nasazení konfiguračního serveru v Azure Site Recovery
 description: Tento článek popisuje, jak nasadit konfigurační server pro zotavení po havárii VMware pomocí Azure Site Recovery
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 92b51b3955833bac6f87457a19e4d6359600a25a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747868"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084143"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -185,7 +185,7 @@ Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po regis
 
 Další Nejčastější dotazy týkající se konfiguračních serverů najdete v tématu [Nejčastější dotazy ke konfiguračnímu serveru](vmware-azure-common-questions.md#configuration-server).
 
-## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
+## <a name="troubleshoot-deployment-issues"></a>Řešení problémů s nasazením
 
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 

@@ -1,19 +1,19 @@
 ---
-title: Matice podpory pro zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů na sekundární lokalitu VMware s Azure Site Recovery | Microsoft Docs
+title: Podpora pro VMware/fyzické zotavení po havárii do sekundární lokality s Azure Site Recovery
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255199"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082194"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
 
@@ -79,14 +79,14 @@ Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
 Virtuální počítač hosta – více síťových karet | Ano
 
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
 **Úložiště (hostitel)** | **Podporuje se** 
 --- | --- 
 NFS | Ano 
-SMB 3.0 | Nevztahuje se 
+SMB 3.0 | neuvedeno 
 SÍŤ SAN (ISCSI) | Ano 
 Multipath (multi-Path) | Ano 
 
@@ -94,9 +94,9 @@ Multipath (multi-Path) | Ano
 
 **Konfigurace** | **Podporuje se** 
 --- | --- 
-FORMÁTU | Ano 
-VHD/VHDX | Nevztahuje se 
-Virtuální počítač 2. generace | Nevztahuje se 
+VMDK | Ano 
+VHD/VHDX | neuvedeno 
+Virtuální počítač 2. generace | neuvedeno 
 Disk sdíleného clusteru | Ano 
 Zašifrovaný disk | Ne 
 UEFI| Ano 
@@ -108,7 +108,7 @@ Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
 Prostory úložiště | Ne 
 Hot Add/Remove disk | Ano 
 Vyloučení disku | Ano 
-Multipath (multi-Path) | Nevztahuje se 
+Multipath (multi-Path) | neuvedeno 
 
 ## <a name="vaults"></a>Trezory
 
@@ -124,7 +124,7 @@ Služba mobility koordinuje replikaci mezi místními servery VMware nebo fyzick
 | **Aktualizace** | **Podrobnosti** |
 | --- | --- |
 |Aktualizace Scout | Aktualizace Scout jsou kumulativní. <br/><br/> [Seznamte se s](vmware-physical-secondary-disaster-recovery.md#updates) nejnovějšími aktualizacemi Scout a Stáhněte si je |
-|Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
+|Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)|
 
 
 ## <a name="next-steps"></a>Další kroky

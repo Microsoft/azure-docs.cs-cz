@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232357"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089458"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Horizontální navýšení kapacity aplikace v Azure App Service
 
 V tomto článku se dozvíte, jak škálovat aplikaci v Azure App Service. Existují dva pracovní postupy pro škálování, horizontální navýšení kapacity a horizontální navýšení kapacity a tento článek vysvětluje pracovní postup horizontálního navýšení kapacity.
 
-* [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Získejte více CPU, paměť, místo na disku a další funkce, jako jsou vyhrazené virtuální počítače (VM), vlastní domény a certifikáty, pracovní sloty, automatické škálování a další. Horizontální navýšení kapacity můžete škálovat změnou cenové úrovně App Service plánu, ke kterému vaše aplikace patří.
-* [Horizontální](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)navýšení kapacity: Zvyšte počet instancí virtuálních počítačů, ve kterých běží vaše aplikace.
-  V závislosti na cenové úrovni můžete horizontální navýšení kapacity na až 20 instancí. [App Service prostředí](environment/intro.md) v **izolované** úrovni dále zvyšují počet škálování na více instancí 100. Další informace o horizontálním navýšení kapacity najdete v tématu [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md). Zde zjistíte, jak používat automatické škálování, což znamená automatické škálování počtu instancí na základě předdefinovaných pravidel a plánů.
+* [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Získejte více procesorů, paměti, místa na disku a navíc funkce, jako jsou vyhrazené virtuální počítače (VM), vlastní domény a certifikáty, pracovní sloty, automatické škálování a další. Horizontální navýšení kapacity můžete škálovat změnou cenové úrovně App Service plánu, ke kterému vaše aplikace patří.
+* [Horizontální](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)navýšení kapacity: zvyšte počet instancí virtuálních počítačů, ve kterých běží vaše aplikace.
+  V závislosti na cenové úrovni můžete škálovat na až 30 instancí. [App Service prostředí](environment/intro.md) v **izolované** úrovni dále zvyšují počet škálování na více instancí 100. Další informace o horizontálním navýšení kapacity najdete v tématu [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md). Zde zjistíte, jak používat automatické škálování, což znamená automatické škálování počtu instancí na základě předdefinovaných pravidel a plánů.
 
 Nastavení škálování trvá jenom pár sekund, které se mají použít, a ovlivňuje všechny aplikace v [plánu App Service](../app-service/overview-hosting-plans.md).
 Nevyžadují změnu kódu nebo opětovného nasazení aplikace.

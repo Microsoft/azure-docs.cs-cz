@@ -1,5 +1,5 @@
 ---
-title: Tabulka podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure s Azure Site Recovery | Microsoft Docs
+title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Recovery
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9125c69f9d2f4d7289120f86059ffab3b7f9228a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b16b6bb8ad39f7f0a5f19a2e2d4280bb73def60a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961301"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082201"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -57,7 +57,7 @@ Role Windows Serveru | Nepovolujte Active Directory Domain Services; Internetov�
 Zásady skupiny| – Zabraňte přístupu k příkazovému řádku. <br/> – Zabraňte přístup k nástrojům pro úpravu registru. <br/> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br/> -Zapnout provádění skriptu. <br/> - další [informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Ujistěte se, že:<br/><br/> – Nemáte existující výchozí web. <br/> -Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br/> – Už nemusíte na portu 443 naslouchat předem existující web nebo aplikaci.<br/>
 Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware)
-Typ IP adresy | Statická
+Typ IP adresy | Static
 Porty | 443 použito pro orchestraci řídicích kanálů<br/>9443 pro přenos dat
 
 ## <a name="replicated-machines"></a>Replikované počítače
@@ -150,7 +150,7 @@ BTRFS | BTRFS se podporuje z [kumulativní aktualizace 34](https://support.micro
 Změna velikosti disku na replikovaném virtuálním počítači | Podporuje se.
 Přidat disk na replikovaný virtuální počítač | Nepodporuje se.<br/> Zakažte replikaci pro virtuální počítač, přidejte disk a pak znovu povolte replikaci.
 
-## <a name="network"></a>Network (Síť)
+## <a name="network"></a>Síť
 
 **Komponenta** | **Podporuje se**
 --- | ---

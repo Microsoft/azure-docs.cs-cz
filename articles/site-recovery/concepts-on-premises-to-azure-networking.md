@@ -1,5 +1,5 @@
 ---
-title: Připojení k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí do Azure pomocí Azure Site Recovery
+title: Připojení k místnímu virtuálnímu počítači Azure s převzetím služeb při selhání pomocí Azure Site Recovery
 description: Popisuje, jak se připojit k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí do Azure pomocí Azure Site Recovery
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333049"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084270"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Připojení k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí 
 

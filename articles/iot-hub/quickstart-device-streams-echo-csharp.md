@@ -1,5 +1,5 @@
 ---
-title: Komunikace s aplikací zařízení přes streamování zařízení v C# Azure IoT Hub (Preview) | Microsoft Docs
+title: Komunikace s aplikacemi pro zařízení C# pomocí datových proudů zařízení v Azure IoT Hub
 description: V tomto rychlém startu spustíte dvě ukázkové C# aplikace, které komunikují prostřednictvím datového proudu zařízení vytvořeného prostřednictvím IoT Hub.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 14139d56a9a733a284d0ec49cabcb3ff7ce67fce
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900933"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084299"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C# přes IoT Hub streamy zařízení (Preview)
 
@@ -28,7 +28,7 @@ Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Pre
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
   * Střední USA
@@ -52,7 +52,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * [Stáhněte si ukázkový C# projekt](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a Extrahujte archiv zip. Budete ho potřebovat na straně zařízení i na straně služby.
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 

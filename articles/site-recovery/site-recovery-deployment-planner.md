@@ -1,5 +1,5 @@
 ---
-title: O Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware do Azure | Microsoft Docs
+title: Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware
 description: Přečtěte si o Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware do Azure.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 50a236154a0340bd49e84a8ca02f656e3cd9994a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620054"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084532"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery pro VMware do Azure
 Tento článek představuje uživatelskou příručku k Plánovači nasazení služby Azure Site Recovery pro produkční nasazení VMware do Azure.
@@ -76,7 +76,7 @@ Nástroj má dvě hlavní fáze: profilace a generování sestav. Existuje také
 
 | Požadavek na server | Popis|
 |---|---|
-|Profilace a měření propustnosti| <ul><li>Operační systém: Windows Server 2016 nebo Windows Server 2012 R2<br>(Ideálně alespoň stejná velikost jako [doporučená velikost pro konfigurační server](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfigurace počítače: 8 vCPU, 16 GB paměti RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1,000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Nastavení úrovně statistiky VMware vCenter může mít 1 nebo vyšší úroveň.</li><li>Povolený port vCenter (standardně 443): Site Recovery Plánovač nasazení používá tento port pro připojení k serveru vCenter nebo hostiteli ESXi.</ul></ul>|
+|Profilace a měření propustnosti| <ul><li>Operační systém: Windows Server 2016 nebo Windows Server 2012 R2<br>(Ideálně alespoň stejná velikost jako [doporučená velikost pro konfigurační server](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1,000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Nastavení úrovně statistiky VMware vCenter může mít 1 nebo vyšší úroveň.</li><li>Povolený port vCenter (standardně 443): Site Recovery Plánovač nasazení používá tento port pro připojení k serveru vCenter nebo hostiteli ESXi.</ul></ul>|
 | Generování sestav | POČÍTAČ se systémem Windows nebo Windows Server s aplikací Excel 2013 nebo novější.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) se vyžaduje jenom v případě, že jste v příkazu pro generování sestav načetli nejnovější informace o konfiguraci virtuálních počítačů z virtuálního počítače. Plánovač nasazení se připojuje k serveru vCenter. Povolte port vCenter port (standardně 443) pro připojení k serveru vCenter.</li>|
 | Uživatelská oprávnění | Oprávnění jen ke čtení pro uživatelský účet používaný pro přístup k serveru VMware vCenter nebo k hostiteli VMware vSphere ESXi během profilace |
 
@@ -98,7 +98,7 @@ Nástroj můžete spustit z Windows Serveru 2012 R2, pokud má server přístup 
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
     Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej.
-    Nasazení E:\ASR Planner_v 2.3. zip
+    Nasazení E:\ASR Planner_v2.3. zip
 
     E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 

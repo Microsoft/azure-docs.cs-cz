@@ -1,6 +1,7 @@
 ---
-title: Rychlý start – vytvoření Azure Content Delivery Network profilu a koncového bodu pomocí šablon Resource Manageru | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit síť Azure Content Delivery Network profilu a koncového bodu pomocí šablon Resource Manageru
+title: Rychlý Start – vytvoření profilu a koncového bodu pomocí šablon Správce prostředků
+titleSuffix: Azure Content Delivery Network
+description: Naučte se vytvářet profil sítě a koncový bod pro Azure Content Delivery pomocí šablon Správce prostředků.
 services: cdn
 documentationcenter: ''
 author: senthuransivananthan
@@ -15,31 +16,31 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: cbde4c7fd568e6d9ff9a0d90332da96926e08077
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b711a12161bc134bdcbb8c1f3e74f2e5ae06e701
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593137"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083146"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Rychlý start: Vytvoření profilu Azure CDN a koncový bod pomocí šablony Resource Manageru
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Rychlý Start: vytvoření profilu Azure CDN a koncového bodu pomocí šablony Správce prostředků
 
-V tomto rychlém startu nasadíte šablonu Azure Resource Manageru pomocí rozhraní příkazového řádku. Šablona, kterou vytvoříte nasadí profil CDN a koncový bod CDN pro front-webové aplikace.
-Proveďte následující kroky má trvat asi každých deset minut.
+V tomto rychlém startu nasadíte šablonu Azure Resource Manager pomocí rozhraní příkazového řádku. Šablona, kterou vytvoříte, nasadí profil CDN a koncový bod CDN pro frontu vaší webové aplikace.
+Dokončení těchto kroků by mělo trvat přibližně deset minut.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prequisites"></a>Požadavky
+## <a name="prequisites"></a>Informace
 
-Pro účely tohoto rychlého startu musí mít webovou aplikaci pro použití jako váš původní název. V příkladu použita webové aplikace v tomto rychlém startu je nasazená do https://cdndemo.azurewebsites.net
+Pro účely tohoto rychlého startu musíte mít webovou aplikaci, kterou chcete použít jako zdroj. Ukázková webová aplikace použitá v tomto rychlém startu byla nasazena do https://cdndemo.azurewebsites.net
 
-Další informace najdete v tématu [vytvoření statické webové aplikace HTML v Azure](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html).
+Další informace najdete v tématu [Vytvoření webové aplikace ve statickém HTML v Azure](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Všechny prostředky musí být ve stejné skupině prostředků nasazeny.
+Všechny prostředky musí být nasazeny ve stejné skupině prostředků.
 
-Vytvořte skupinu prostředků v umístění, které jste vybrali. Tento příklad ukazuje vytvoření skupiny prostředků s názvem cdn v umístění východní USA.
+Vytvořte skupinu prostředků v umístění, které vyberete. Tento příklad ukazuje vytvoření skupiny prostředků s názvem CDN v umístění Východní USA.
 
 ```bash
 az group create --name cdn --location eastus
@@ -49,13 +50,13 @@ az group create --name cdn --location eastus
 
 ## <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
 
-V tomto kroku vytvoříte soubor šablony, který se nasazuje prostředky.
+V tomto kroku vytvoříte soubor šablony, který nasadí prostředky.
 
-Přestože tento příklad vás provede scénáři obecné akcelerace webu, existují mnoho dalších nastavení, které lze nakonfigurovat. Tato nastavení jsou dostupná v odkazu na šablony Azure Resource Manageru. Podrobnosti najdete odkazy pro [profil CDN](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) a [koncového bodu CDN profilu](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
+I když tento příklad projde obecným scénářem akcelerace webu, existuje mnoho dalších nastavení, která je možné nakonfigurovat. Tato nastavení jsou k dispozici v referenčních informacích k šabloně Azure Resource Manager. Podívejte se prosím na odkazy na [profil CDN](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) a [koncový bod profilu CDN](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
 
-Všimněte si, že Microsoft CDN nepodporuje úpravy seznamu typ obsahu.
+Upozorňujeme, že Microsoft CDN nepodporuje úpravu seznamu typu obsahu.
 
-Uložit šablonu jako **resource-manager-cdn.json**.
+Uložte šablonu jako **Resource-Manager-CDN. JSON**.
 
 ```json
 {
@@ -177,22 +178,22 @@ Uložit šablonu jako **resource-manager-cdn.json**.
 
 ## <a name="create-the-resources"></a>Vytvoření prostředků
 
-Nasazení šablony pomocí rozhraní příkazového řádku Azure. Zobrazí se výzva k zadání 2 vstupy:
+Nasaďte šablonu pomocí Azure CLI. Zobrazí se výzva k zadání dvou vstupů:
 
-**cdnProfileSku** – poskytovatel CDN, kterou chcete použít. Dostupné možnosti:
+**cdnProfileSku** – poskytovatel CDN, který chcete použít. Dostupné možnosti:
 
 * Standard_Microsoft
 * Standard_Akamai
 * Standard_Verizon
 * Premium_Verizon.
 
-**endpointOriginHostName** -koncového bodu, který bude obsluhovat prostřednictvím CDN, například cdndemo.azurewebsites.net.
+**endpointOriginHostName** – koncový bod, který bude OBSLUHOVÁN prostřednictvím CDN, například cdndemo.azurewebsites.NET.
 
 ```bash
 az group deployment create --resource-group cdn --template-file arm-cdn.json
 ```
 
-![Nasazení šablony Resource Manageru](./media/create-profile-resource-manager-template/cdn-deploy-resource-manager.png)
+![Nasazení šablony Správce prostředků](./media/create-profile-resource-manager-template/cdn-deploy-resource-manager.png)
 
 ## <a name="view-the-cdn-profile"></a>Zobrazit profil CDN
 
@@ -202,19 +203,19 @@ az cdn profile list --resource-group cdn -o table
 
 ![Zobrazit profil CDN](./media/create-profile-resource-manager-template/cdn-view-profile.png)
 
-## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>Zobrazit koncového bodu CDN pro profil standard – microsoft
+## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>Zobrazit koncový bod CDN pro profil standard – Microsoft
 
 ```bash
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
 ```
 
-![Koncový bod CDN zobrazení](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
+![Zobrazit koncový bod CDN](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
 
-Chcete-li zobrazit obsah pomocí názvu hostitele. Například k https://cdndemo-azurewebsites-net.azureedge.net pomocí prohlížeče.
+K zobrazení obsahu použijte název hostitele. Můžete například získat přístup k https://cdndemo-azurewebsites-net.azureedge.net pomocí prohlížeče.
 
 ## <a name="clean-up"></a>Vyčištění
 
-Odstraněním skupiny prostředků se automaticky odeberou všechny prostředky, které se nasadily do něj.
+Odstraněním skupiny prostředků se automaticky odeberou všechny prostředky, které jsou v něm nasazené.
 
 ```bash
 az group delete --name cdn
@@ -224,10 +225,10 @@ az group delete --name cdn
 
 ## <a name="references"></a>Odkazy
 
-* Profil CDN – [odkaz na šablonu Azure Resource Manageru](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* Koncový bod CDN - [dokumentaci odkaz na šablonu Azure Resource Manageru](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* Profil CDN – [odkaz na šablonu Azure Resource Manager](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* [Referenční dokumentace k šabloně](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints) koncového bodu CDN – Azure Resource Manager
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete zjistit, jak do koncového bodu CDN přidat vlastní doménu, projděte si následující kurz:
 

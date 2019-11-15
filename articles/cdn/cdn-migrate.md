@@ -1,6 +1,6 @@
 ---
-title: Migrovat profil Azure CDN od společnosti Verizon Standard na úroveň Verizon Premium | Dokumentace Microsoftu
-description: Další informace o podrobnosti migrace profilu z Verizon úrovně Standard na úroveň Verizon úrovně Premium.
+title: Migrace profilu Azure CDN z Verizon úrovně Standard na Verizon Premium
+description: Přečtěte si o podrobnostech migrace profilu z Verizon Standard na Verizon Premium.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: c11155223220c075c28769a19875691783cce3bd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8ab66117be4f05550b00defafc883108646be283
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593630"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083060"
 ---
-# <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrace profil Azure CDN od společnosti Verizon Standard do Premium Verizon
+# <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrace profilu Azure CDN ze standardu Verizon na Premium Verizon
 
-Když vytvoříte profil Azure Content Delivery Network (CDN) ke správě vašich koncových bodů, nabízí Azure CDN můžete zvolit ze čtyř různých produktů. Informace o různých produktů a jejich funkce. k dispozici, najdete v tématu [funkce produktu Azure CDN porovnání](cdn-features.md).
+Když vytvoříte profil Azure Content Delivery Network (CDN) pro správu koncových bodů, Azure CDN nabízí čtyři různé produkty, ze kterých si můžete vybrat. Informace o různých produktech a jejich dostupných funkcích najdete v tématu [porovnání Azure CDNch funkcí produktu](cdn-features.md).
 
-Pokud jste vytvořili **Azure CDN Standard od Verizonu** profilu a používáte ke správě koncových bodů CDN, budete mít možnost upgradovat na **Azure CDN Premium od Verizonu** profilu. Když upgradujete, koncové body CDN a všechna vaše data se zachovají. 
+Pokud jste vytvořili **Azure CDN Standard z profilu Verizon** a používáte ho ke správě koncových bodů CDN, máte možnost upgradovat ho na **Azure CDN Premium z profilu Verizon** . Při upgradu se zachovají koncové body CDN a všechna vaše data. 
 
 > [!IMPORTANT]
-> Jakmile jste upgradovali na **Azure CDN Premium od Verizonu** profilu, můžete později ji nemůže převést zpět do **Azure CDN Standard od Verizonu** profilu.
+> Jakmile provedete upgrade na **Azure CDN Premium z profilu Verizon** , nemůžete ho později převést zpět na **Azure CDN Standard z profilu Verizon** .
 > 
 
-Upgrade **Azure CDN Standard od Verizonu** profilu, kontaktujte [Microsoft Support](https://azure.microsoft.com/support/options/).
+Pokud chcete upgradovat **Azure CDN Standard z profilu Verizon** , obraťte se na [Podpora Microsoftu](https://azure.microsoft.com/support/options/).
 
-## <a name="profile-comparison"></a>Porovnání profilu
-**Azure CDN Premium od Verizonu** profily mají následující klíčové rozdíly proti **Azure CDN Standard od Verizonu** profily:
-- Pro některé funkce Azure CDN, jako [komprese](cdn-improve-performance.md), [pravidla ukládání do mezipaměti](cdn-caching-rules.md), a [geografického filtrování](cdn-restrict-access-by-country.md), nemůžete použít rozhraní Azure CDN, je nutné použít portál společnosti Verizon prostřednictvím **Spravovat** tlačítko.
-- API: Na rozdíl od s Verizon úrovně Standard, nelze použít rozhraní API k řízení těchto funkcí, které jsou přístupné z portálu společnosti Verizon úrovně Premium. Můžete však použít rozhraní API provádět další běžné funkce, jako je například vytvoření nebo odstranění koncového bodu, odstraňování/načítání prostředků z mezipaměti a povolení nebo zákaz vlastní doménu.
-- Ceny: Premium Verizon má jinou cenovou strukturu pro přenosy dat než Verizon úrovně Standard. Další informace najdete v tématu [ceny Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
+## <a name="profile-comparison"></a>Porovnání profilů
+**Azure CDN Premium z profilů Verizon** mají následující klíčové rozdíly od **Azure CDN Standard od profilů Verizon** :
+- Pro určité Azure CDN funkce, jako je [Komprese](cdn-improve-performance.md), [pravidla ukládání do mezipaměti](cdn-caching-rules.md)a [geografické filtrování](cdn-restrict-access-by-country.md), nemůžete použít rozhraní Azure CDN, musíte použít portál Verizon prostřednictvím tlačítka **Spravovat** .
+- Rozhraní API: na rozdíl od standardních Verizon nemůžete použít rozhraní API k řízení těchto funkcí, ke kterým se dostanete z portálu Premium Verizon. Rozhraní API ale můžete použít k řízení dalších běžných funkcí, jako je například vytvoření nebo odstranění koncového bodu, vyprazdňování a načtení prostředků uložených v mezipaměti a povolení nebo zakázání vlastní domény.
+- Ceny: Premium Verizon má odlišnou cenovou strukturu pro přenosy dat než standardní Verizon. Další informace najdete v tématu [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
 
-**Azure CDN Premium od Verizonu** profily mají následující funkce:
-- [Ověřování pomocí tokenu](cdn-token-auth.md): Umožňuje uživatelům získat a použít token k načtení zabezpečeným prostředkům.
-- [Stroj pravidel](cdn-rules-engine.md): Umožňuje přizpůsobit zpracování požadavků HTTP.
-- Pokročilé analytické nástroje:
-   - [Podrobné analýzy protokolu HTTP](cdn-advanced-http-reports.md)
-   - [Analýza výkonu hranice](cdn-edge-performance.md)
+**Azure CDN Premium z profilů Verizon** mají tyto další funkce:
+- [Ověřování tokenu](cdn-token-auth.md): umožňuje uživatelům získat a použít token k načtení zabezpečených prostředků.
+- [Modul pravidel](cdn-rules-engine.md): umožňuje přizpůsobit způsob zpracování požadavků HTTP.
+- Nástroje pro pokročilou analýzu:
+   - [Podrobné analýzy HTTP](cdn-advanced-http-reports.md)
+   - [Analýza výkonu Edge](cdn-edge-performance.md)
    - [Analýzy v reálném čase](cdn-real-time-alerts.md)
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o stroj pravidel najdete v tématu [referenční informace ke stroji pravidel Azure CDN](cdn-rules-engine-reference.md).
+Další informace o modulu pravidel najdete v tématu [Referenční dokumentace modulu Azure CDN Rules](cdn-rules-engine-reference.md).
 

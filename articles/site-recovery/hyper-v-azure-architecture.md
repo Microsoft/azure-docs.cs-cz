@@ -1,18 +1,18 @@
 ---
-title: Architektura zotavení po havárii z Hyper-V do Azure v Azure Site Recovery
+title: Architektura zotavení po havárii technologie Hyper-V v Azure Site Recovery
 description: Tento článek poskytuje přehled komponent a architektury používaných při nasazení zotavení po havárii pro místní virtuální počítače Hyper-V (bez VMM) do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce21ea6042bbe1191edede13f80455c8e669f3b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030194"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082669"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii z Hyper-V do Azure
 

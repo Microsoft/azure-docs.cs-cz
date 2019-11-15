@@ -1,5 +1,5 @@
 ---
-title: Konfigurace směrování zpráv pro Azure IoT Hub pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+title: Konfigurace směrování zpráv pro Azure IoT Hub pomocí Azure CLI
 description: Konfigurace směrování zpráv pro Azure IoT Hub pomocí Azure CLI. V závislosti na vlastnostech ve zprávě můžete směrovat na účet úložiště nebo Service Bus frontu.
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 844ed44a588bfd789e7e2dcf2b9fecda3d51329b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 340ea35bc3ed0c889a1a851da47f7e955116e103
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890381"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084469"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Kurz: použití rozhraní příkazového řádku Azure ke konfiguraci směrování zpráv IoT Hub
 

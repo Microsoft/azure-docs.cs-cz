@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 629ba904d055977fe70f749a46fbbec71be71b79
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645667"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083654"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
 Tento článek popisuje, jak pomocí zobrazení dynamické správy (zobrazení dynamické správy) monitorovat vaše úlohy. To zahrnuje šetření provádění dotazů v Azure SQL Data Warehouse.
@@ -28,7 +28,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Monitorování připojení
-Všechna přihlášení k SQL Data Warehouse se protokolují do [Sys. DM _pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Tento DMV obsahuje poslední 10 000 přihlášení.  Session_id je primární klíč a pro každé nové přihlášení se přiřadí sekvenčně.
+Všechna přihlášení k SQL Data Warehouse jsou protokolována do [Sys. dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Tento DMV obsahuje poslední 10 000 přihlášení.  Session_id je primární klíč a pro každé nové přihlášení se přiřadí sekvenčně.
 
 ```sql
 -- Other Active Connections
@@ -36,7 +36,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Monitorovat provádění dotazů
-Všechny dotazy spouštěné v SQL Data Warehouse jsou protokolovány do [Sys. DM _pdw_exec_requests][sys.dm_pdw_exec_requests].  Tento DMV obsahuje poslední spuštěné dotazy 10 000.  Request_id jedinečně identifikuje každý dotaz a je primárním klíčem pro tento DMV.  Request_id se přiřazuje postupně pro každý nový dotaz a je předponou QID, která představuje ID dotazu.  Dotaz na tento DMV pro daný session_id zobrazuje všechny dotazy pro dané přihlášení.
+Všechny dotazy spouštěné v SQL Data Warehouse jsou protokolovány do [Sys. dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Tento DMV obsahuje poslední spuštěné dotazy 10 000.  Request_id jedinečně identifikuje každý dotaz a je primárním klíčem pro tento DMV.  Request_id se každému novému dotazu přiřadí sekvenčně a je předponou QID, která představuje ID dotazu.  Dotaz na tento DMV pro daný session_id zobrazuje všechny dotazy pro dané přihlášení.
 
 > [!NOTE]
 > Uložené procedury používají více ID žádostí.  ID žádostí se přiřazují v sekvenčním pořadí. 
@@ -63,9 +63,9 @@ ORDER BY total_elapsed_time DESC;
 
 Z předchozích výsledků dotazu **si poznamenejte ID žádosti** o dotaz, který chcete prozkoumat.
 
-Dotazy v **pozastaveném** stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) , který čeká na dotaz typu UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématech [úrovně výkonu](performance-tiers.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky][Investigating queries waiting for resources] .
+Dotazy v **pozastaveném** stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) čeká na dotaz s typem UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématech [úrovně výkonu](/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu#performance-tiers-and-data-warehouse-units) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky][Investigating queries waiting for resources] .
 
-Chcete-li zjednodušit vyhledávání dotazů v tabulce [Sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , použijte [popisek][LABEL] k přiřazení komentáře k dotazu, který lze vyhledat v zobrazení sys. DM _pdw_exec_requests.
+Chcete-li zjednodušit vyhledávání dotazů v tabulce [Sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , použijte [popisek][LABEL] k přiřazení komentáře k dotazu, který lze vyhledat v zobrazení sys. dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -82,7 +82,7 @@ WHERE   [label] = 'My Query';
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>Krok 2: prozkoumání plánu dotazů
-Pomocí ID žádosti načtěte plán SQL (DSQL) pro dotaz z [Sys. DM _pdw_request_steps][sys.dm_pdw_request_steps].
+Pomocí ID žádosti načtěte plán SQL (DSQL) pro dotaz z [Sys. dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -101,7 +101,7 @@ Chcete-li prozkoumat další podrobnosti o jednom kroku, sloupec *operation_type
 * Pokračujte krokem 3B pro **operace přesunu dat**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Krok 3a: Prozkoumejte SQL pro distribuované databáze
-Použijte ID žádosti a krok index k načtení podrobností z [Sys. DM _pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o spuštění kroku dotazu ve všech distribuovaných databázích.
+K načtení podrobností z [Sys. dm_pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o spuštění kroku dotazu ve všech distribuovaných databázích, použijte ID žádosti a krokový index.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -111,7 +111,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Když je spuštěný krok dotazu, můžete použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] k načtení SQL Server odhadovaného plánu z mezipaměti SQL Server plánu pro krok spuštěný v konkrétní distribuci.
+Když je spuštěný krok dotazu, můžete použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro krok spuštěný v konkrétní distribuci.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -121,7 +121,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
 ### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3B: prozkoumání přesunu dat v distribuovaných databázích
-K načtení informací o kroku přesunu dat běžícímu na každé distribuci z [Sys. DM _pdw_dms_workers][sys.dm_pdw_dms_workers]použijte ID žádosti a krokový index.
+K načtení informací o kroku přesunu dat běžícímu na každé distribuci z [Sys. dm_pdw_dms_workers][sys.dm_pdw_dms_workers]použijte ID žádosti a krokový index.
 
 ```sql
 -- Find the information about all the workers completing a Data Movement Step.
@@ -131,10 +131,10 @@ SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Podívejte se na sloupec *total_elapsed_time* , kde zjistíte, jestli konkrétní distribuce trvá podstatně déle než jiné pro pohyb dat.
-* Pro dlouhotrvající distribuci zkontrolujte sloupec *rows_processed* a zjistěte, jestli je počet přesouvaných řádků z této distribuce významně větší než ostatní. Pokud ano, může toto hledání znamenat zkosení vašich podkladových dat.
+* Zkontrolujte sloupec *total_elapsed_time* , abyste viděli, jestli konkrétní distribuce trvá podstatně déle než jiné pro pohyb dat.
+* V případě dlouhotrvající distribuce zkontrolujte sloupec *rows_processed* a zjistěte, zda je počet přesouvaných řádků z této distribuce významně větší než ostatní. Pokud ano, může toto hledání znamenat zkosení vašich podkladových dat.
 
-Pokud je dotaz spuštěn, lze pomocí [příkazu DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] získat SQL Server odhadovaného plánu z mezipaměti SQL Server plánu pro aktuálně běžící krok SQL v rámci určité distribuce.
+Pokud je dotaz spuštěn, lze použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro aktuálně běžící krok SQL v rámci určité distribuce.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -174,7 +174,7 @@ Pokud dotaz aktivně čeká na prostředky z jiného dotazu, bude stav **Acquire
 Databáze tempdb slouží k uchovávání průběžných výsledků během provádění dotazu. Vysoké využití databáze tempdb může vést k zpomalení výkonu dotazů. Každý uzel v Azure SQL Data Warehouse má přibližně 1 TB nezpracovaného prostoru pro databázi tempdb. Níže jsou uvedené tipy pro monitorování využití databáze tempdb a snížení využití databáze tempdb ve vašich dotazech. 
 
 ### <a name="monitoring-tempdb-with-views"></a>Monitorování databáze tempdb pomocí zobrazení
-Chcete-li monitorovat využití databáze tempdb, nejprve nainstalujte zobrazení [Microsoft. vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) z nástroje [microsoft Toolkit pro SQL Data Warehouse](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Pak můžete spustit následující dotaz a zobrazit využití databáze tempdb na uzel pro všechny spuštěné dotazy:
+Chcete-li monitorovat využití databáze tempdb, nainstalujte nejprve zobrazení [Microsoft. vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) z nástroje [microsoft Toolkit pro SQL Data Warehouse](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Pak můžete spustit následující dotaz a zobrazit využití databáze tempdb na uzel pro všechny spuštěné dotazy:
 
 ```sql
 -- Monitor tempdb
@@ -206,7 +206,7 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Pokud máte dotaz, který spotřebovává velké množství paměti nebo obdržel chybovou zprávu týkající se přidělení databáze tempdb, může to být způsobeno velmi velkým [Create Table jako Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo příkazem [INSERT Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , který je spuštěný, který selhává v poslední operace přesunu dat To může být obvykle identifikováno jako operace ShuffleMove v plánu distribuovaného dotazu přímo před konečným výběrem vložení.  Pomocí [Sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) můžete monitorovat operace ShuffleMove. 
+Pokud máte dotaz, který spotřebovává velké množství paměti nebo obdržel chybovou zprávu týkající se přidělení databáze tempdb, může to být způsobeno velmi velkým [Create Table jako Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo příkazem [INSERT Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , který je spuštěný, který selhává v poslední operace přesunu dat To může být obvykle identifikováno jako operace ShuffleMove v plánu distribuovaného dotazu přímo před konečným výběrem vložení.  Pomocí [Sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) můžete monitorovat operace ShuffleMove. 
 
 Nejběžnějším rizikem je přerušení CTAS nebo vložení příkazu SELECT do více příkazů Load, aby datový svazek nepřesáhl počet 1 TB na uzel tempdb. Cluster můžete také škálovat na větší velikost, která bude rozšiřovat velikost databáze tempdb na více uzlech, čímž se zmenší databáze tempdb na každém jednotlivém uzlu.
 

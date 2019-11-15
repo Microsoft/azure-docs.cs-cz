@@ -1,5 +1,5 @@
 ---
-title: Spuštění navrácení služeb po havárii během havárie virtuálních počítačů Hyper-v z Azure do místního prostředí | Microsoft Docs
+title: Navrácení služeb po obnovení virtuálních počítačů Hyper-v z Azure pomocí Azure Site Recovery
 description: Naučte se při zotavení po havárii do Azure pomocí služby Azure Site Recovery navrátit virtuální počítače Hyper-V do místní lokality.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
-ms.openlocfilehash: 07ecc8547ab155600bccfd1ad8f1ecbb58a18fa3
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b924c1424a309fb61f690c21e5665a70356c7a62
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931851"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084225"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Spuštění navrácení služeb po obnovení pro virtuální počítače Hyper-V
 
@@ -28,12 +28,12 @@ Tento článek popisuje, jak navrácení služeb po obnovení virtuálních poč
 
 ## <a name="perform-failback"></a>Provést navrácení služeb po obnovení
 Po převzetí služeb při selhání z primárního do sekundárního umístění se replikované virtuální počítače nechrání pomocí Site Recovery a sekundární umístění teď funguje jako aktivní umístění. K navrácení služeb po obnovení virtuálních počítačů v plánu obnovení spusťte plánované převzetí služeb při selhání ze sekundární lokality na primární, a to následujícím způsobem. 
-1. Vyberte **plány** > obnovení*recoveryplan_name*. Klikněte na **převzetí služeb při selhání** > **naplánované**.
+1. Vyberte **plány obnovení** > *recoveryplan_name*. Klikněte > **plánované převzetí služeb** **při selhání.**
 2. Na stránce **potvrdit plánované převzetí služeb při selhání** vyberte zdrojové a cílové umístění. Poznamenejte si směr převzetí služeb při selhání. Pokud se převzetí služeb při selhání od primární aplikace vypracovalo jako očekávané a všechny virtuální počítače jsou v sekundárním umístění, je to jenom pro informace.
 3. Pokud nakonfigurujete obnovení z Azure, vyberte nastavení v **synchronizaci dat**:
     - **Synchronizovat data před převzetím služeb při selhání (synchronizovat jenom rozdílové změny)** – Tato možnost minimalizuje výpadky virtuálních počítačů při synchronizaci bez jejich vypnutí. Provede následující kroky:
-        - Fáze 1: Pořídí snímek virtuálního počítače v Azure a zkopíruje ho na místního hostitele Hyper-V. Počítač pokračuje v běhu v Azure.
-        - Fáze 2: Vypne virtuální počítač v Azure, aby tam nedocházelo k žádným novým změnám. Poslední sada rozdílových změn se přenese na místní server a spustí se místní virtuální počítač.
+        - Fáze 1: pořizuje snímek virtuálního počítače v Azure a zkopíruje ho na místního hostitele Hyper-V. Počítač pokračuje v běhu v Azure.
+        - Fáze 2: vypne virtuální počítač v Azure, aby tam nedocházelo k žádným novým změnám. Poslední sada rozdílových změn se přenese na místní server a spustí se místní virtuální počítač.
 
     - **Synchronizovat data jenom během převzetí služeb při selhání (úplné stažení)** – Tato možnost je rychlejší.
         - Tato možnost je rychlejší, protože očekáváme, že se většina disku změnila a nechcete ztrácet čas při výpočtu kontrolního součtu. Provede stažení disku. Je to také užitečné, když se odstraní virtuální počítač Prem.
@@ -56,16 +56,16 @@ Pokud jste nasadili ochranu mezi [lokalitou Hyper-V a Azure](site-recovery-hyper
 
 1. Pokud nastavujete nový hardware, nainstalujte na server Windows Server 2012 R2 a roli Hyper-V.
 2. Vytvořte přepínač virtuální sítě se stejným názvem, který jste měli na původním serveru.
-3. Vyberte **chráněné položky** ->  \<**Skupina** -> ochrany\<ProtectionGroupName >-> VirtualMachineName > chcete provést navrácení služeb po obnovení a vybrat **plánované převzetí služeb při selhání**.
+3. Vyberte **chráněné položky** -> **skupiny ochrany** -> \<ProtectionGroupName >-> \<VirtualMachineName > chcete provést navrácení služeb po obnovení a vybrat **plánované převzetí služeb při selhání**.
 4. V **potvrzení plánovaného převzetí služeb při selhání** vyberte **vytvořit místní virtuální počítač, pokud**neexistuje.
 5. V části název hostitele * * vyberte nový hostitelský server Hyper-V, na který chcete virtuální počítač umístit.
 6. V synchronizaci dat doporučujeme vybrat možnost synchronizace dat před převzetím služeb při selhání. Tím se minimalizují výpadky virtuálních počítačů při synchronizaci bez jejich vypnutí. Provádí následující akce:
 
-    - Fáze 1: Pořídí snímek virtuálního počítače v Azure a zkopíruje ho na místního hostitele Hyper-V. Počítač pokračuje v běhu v Azure.
-    - Fáze 2: Vypne virtuální počítač v Azure, aby tam nedocházelo k žádným novým změnám. Poslední sada změn se přenese na místní server a spustí se místní virtuální počítač.
+    - Fáze 1: pořizuje snímek virtuálního počítače v Azure a zkopíruje ho na místního hostitele Hyper-V. Počítač pokračuje v běhu v Azure.
+    - Fáze 2: vypne virtuální počítač v Azure, aby tam nedocházelo k žádným novým změnám. Poslední sada změn se přenese na místní server a spustí se místní virtuální počítač.
     
 7. Kliknutím na značku zaškrtnutí spustíte převzetí služeb při selhání (navrácení služeb po obnovení).
-8. Po dokončení počáteční synchronizace a připravení vypnout virtuální počítač v Azure klikněte na **úlohy** > \<plánovaného převzetí služeb při selhání > > **Dokončit převzetí služeb při selhání**. Tím se vypne počítač Azure, přenese nejnovější změny do místního virtuálního počítače a spustí se.
+8. Po dokončení počáteční synchronizace a připravení vypnout virtuální počítač v Azure klikněte na **úlohy** > \<plánované úlohy převzetí služeb při selhání > > **dokončení převzetí služeb**při selhání. Tím se vypne počítač Azure, přenese nejnovější změny do místního virtuálního počítače a spustí se.
 9. Můžete se přihlásit k místnímu virtuálnímu počítači a ověřit, zda vše funguje podle očekávání. Pak kliknutím na **Potvrdit** dokončete převzetí služeb při selhání. Potvrzení odstraní virtuální počítač Azure a jeho disky a připraví virtuální počítač tak, aby se znovu chránil.
 10. Kliknutím na **Zpětná replikace** zahajte ochranu místního virtuálního počítače.
 

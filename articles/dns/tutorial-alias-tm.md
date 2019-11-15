@@ -1,20 +1,21 @@
 ---
-title: Kurz – Vytvoření záznamu aliasu Azure DNS pro podporu vrcholů názvů domén ve službě Traffic Manager
+title: 'Kurz: vytvoření záznamu aliasu pro podporu názvů vrcholů domény – Traffic Manager'
+titleSuffix: Azure DNS
 description: V tomto kurzu se dozvíte, jak nakonfigurovat záznam aliasu Azure DNS pro podporu používání vrcholu názvu domény ve službě Traffic Manager.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921406"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082258"
 ---
-# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Kurz: Konfigurace záznamu o aliasu pro podporu vrcholu názvy domén s Traffic Managerem 
+# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Kurz: Konfigurace záznamu aliasu pro podporu vrcholů názvů domén ve službě Traffic Manager 
 
 Pro vrchol názvu svojí domény můžete vytvořit záznam aliasu, který bude odkazovat na profil služby Azure Traffic Manager. Příklad: contoso.com. Místo použití služby přesměrování nakonfigurujete službu Azure DNS tak, aby přímo z vaší zóny odkazovala na profil služby Traffic Manager. 
 
@@ -33,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
-Pokyny k hostování domény v Azure DNS najdete v tématu [kurzu: Hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
+Pokyny k hostování domény v Azure DNS najdete v [kurzu hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastní název domény.
 
@@ -70,7 +71,7 @@ Na virtuální počítač **Web-01** i **Web-02** nainstalujte službu IIS.
 
 1. Připojte se k virtuálnímu počítači **Web-01** a přihlaste se.
 2. Na řídicím panelu **Správce serveru** vyberte **Přidat role a funkce**.
-3. Třikrát vyberte **Další**. Na stránce **Role serveru** vyberte **Webový server (IIS)**.
+3. Třikrát vyberte **Další**. Na stránce **Role serveru** vyberte **Webový server (IIS)** .
 4. Vyberte **Přidat funkce** a pak **Další**.
 5. Čtyřikrát vyberte **Další**. Pak vyberte **Nainstalovat**. Dokončení tohoto postupu trvá několik minut.
 6. Po dokončení instalace vyberte **Zavřít**.
@@ -116,7 +117,7 @@ Vytvořte záznam aliasu, který odkazuje na profil služby Traffic Manager.
 
 Pokud už prostředky vytvořené pro účely tohoto kurzu nepotřebujete, odstraňte skupinu prostředků **RG-DNS-Alias-TM**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili záznam aliasu umožňující použít vrchol názvu vaší domény k odkazování na profil služby Traffic Manager. Další informace o Azure DNS a webových aplikacích získáte v kurzu o webových aplikacích.
 

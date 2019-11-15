@@ -1,19 +1,18 @@
 ---
-title: Běžné dotazy týkající se zotavení po havárii VMware do Azure pomocí Azure Site Recovery
+title: Běžné dotazy týkající se zotavení po havárii VMware pomocí Azure Site Recovery
 description: Získejte odpovědi na běžné dotazy týkající se zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
-ms.date: 10/29/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053681"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084158"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné dotazy týkající se replikace z VMware do Azure
 
@@ -189,7 +188,7 @@ Ne, Site Recovery nepodporuje replikaci do Azure Storage ve virtuálních sítí
 
 ## <a name="component-upgrade"></a>Upgrade součásti
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám dělat?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám udělat?
 
 Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace](https://aka.ms/asr_support_statement) o tom, jak upgradovat z velmi starých verzí.
 
@@ -203,7 +202,7 @@ Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace]
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Musím pro každý upgrade restartovat zdrojové počítače?
 
-Pro každý upgrade se doporučuje restart, ale není povinný. [Další informace](https://aka.ms/asr_vmware_upgrades).
+Pro každý upgrade se doporučuje restart, ale není povinný. [Další informace](https://aka.ms/asr_vmware_upgrades)
 
 ## <a name="configuration-server"></a>Konfigurační server
 
@@ -327,7 +326,7 @@ V případě VMware do Azure je nejstarším bodem obnovení, který můžete po
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Návody přístup k virtuálním počítačům Azure po převzetí služeb při selhání
 
-Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure přes zabezpečené připojení k Internetu, přes síť VPN typu Site-to-site nebo přes Azure ExpressRoute. Chcete-li se připojit, je nutné připravit několik věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure přes zabezpečené připojení k Internetu, přes síť VPN typu Site-to-site nebo přes Azure ExpressRoute. Chcete-li se připojit, je nutné připravit několik věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 ### <a name="is-failed-over-data-resilient"></a>Nedošlo k převzetí služeb při selhání proti datům?
 
@@ -339,7 +338,7 @@ Služba Azure je pro odolnost navržena. Site Recovery je navržena pro převzet
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Můžu navrátit služby po obnovení do jiného umístění?
 
-Ano. Pokud převezmete služby při selhání do Azure, můžete navrátit služby po obnovení do jiného umístění, pokud není k dispozici původní. [Další informace](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Ano. Pokud převezmete služby při selhání do Azure, můžete navrátit služby po obnovení do jiného umístění, pokud není k dispozici původní. [Další informace](concepts-types-of-failback.md#alternate-location-recovery-alr)
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>Proč potřebuji připojení VPN nebo ExpressRoute se soukromým partnerským vztahem k navrácení služeb po obnovení?
 
@@ -353,13 +352,13 @@ Ne, velikost nebo typ cílového virtuálního počítače po převzetí služeb
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>Je možné nastavit replikaci pomocí skriptování?
 
-Ano. Site Recovery pracovní postupy můžete automatizovat pomocí rozhraní REST API, PowerShellu nebo sady Azure SDK. [Další informace](vmware-azure-disaster-recovery-powershell.md).
+Ano. Site Recovery pracovní postupy můžete automatizovat pomocí rozhraní REST API, PowerShellu nebo sady Azure SDK. [Další informace](vmware-azure-disaster-recovery-powershell.md)
 
 ## <a name="performance-and-capacity"></a>Výkon a kapacita
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>Je možné šířku pásma replikace omezit?
 
-Ano. [Další informace](site-recovery-plan-capacity-vmware.md).
+Ano. [Další informace](site-recovery-plan-capacity-vmware.md)
 
 ## <a name="next-steps"></a>Další kroky
 

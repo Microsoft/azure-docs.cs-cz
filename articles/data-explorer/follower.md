@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828562"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083194"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>K připojení databází v Azure Průzkumník dat použít databázi sledování
 
@@ -160,7 +160,7 @@ V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Man
 
 Šablonu Azure Resource Manager můžete nasadit [pomocí Azure Portal](https://portal.azure.com) nebo pomocí PowerShellu.
 
-   ![Template deployment](media/follower/template-deployment.png)
+   ![nasazení šablony](media/follower/template-deployment.png)
 
 
 |**Nastavení**  |**Popis**  |
@@ -181,7 +181,7 @@ Chcete-li ověřit, zda byla databáze úspěšně připojena, vyhledejte v [Azu
 
     ![Databáze následného sledování jen pro čtení](media/follower/read-only-follower-database.png)
 
-Jinou
+Další možností:
 
 1. Přejděte do clusteru vedoucího a vyberte **databáze** .
 2. Ověřte, že jsou příslušné databáze označené jako **sdílené s ostatními** > **Ano** .
@@ -242,15 +242,15 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="manage-principals"></a>Spravovat objekty zabezpečení
 
-Při připojování databáze zadejte **výchozí druh úprav objektu zabezpečení**. Ve výchozím nastavení je zachovává kolekce databáze vedoucích [autorizovaných objektů zabezpečení](/azure/kusto/management/access-control/index.md#authorization) .
+Při připojování databáze zadejte **výchozí druh úprav objektu zabezpečení**. Ve výchozím nastavení je zachovává kolekce databáze vedoucích [autorizovaných objektů zabezpečení](/azure/kusto/management/access-control/index#authorization) .
 
 |**Plnění** |**Popis**  |
 |---------|---------|
 |**Sjednocovací**     |   Připojené objekty databáze budou vždycky zahrnovat původní objekty zabezpečení databáze a další nové objekty zabezpečení přidané do databáze následného objektu.      |
-|**Náhrady**   |    Žádná dědičnost objektů zabezpečení z původní databáze. Pro připojenou databázi je nutné vytvořit nové objekty zabezpečení. K dědění objektu blokování je nutné přidat alespoň jeden objekt zabezpečení.     |
-|**NTato**   |   Připojené objekty zabezpečení databáze obsahují pouze objekty zabezpečení původní databáze bez dalších objektů zabezpečení.      |
+|**nahradit**   |    Žádná dědičnost objektů zabezpečení z původní databáze. Pro připojenou databázi je nutné vytvořit nové objekty zabezpečení. K dědění objektu blokování je nutné přidat alespoň jeden objekt zabezpečení.     |
+|**Žádné**   |   Připojené objekty zabezpečení databáze obsahují pouze objekty zabezpečení původní databáze bez dalších objektů zabezpečení.      |
 
-Další informace o použití příkazů pro řízení ke konfiguraci autorizovaných objektů zabezpečení najdete v tématu [Řídicí příkazy pro správu clusteru následného](/azure/kusto/management/cluster-follower.md)řízení.
+Další informace o použití příkazů pro řízení ke konfiguraci autorizovaných objektů zabezpečení najdete v tématu [Řídicí příkazy pro správu clusteru následného](/azure/kusto/management/cluster-follower)řízení.
 
 ### <a name="manage-permissions"></a>Spravovat oprávnění
 
@@ -258,7 +258,7 @@ Správa oprávnění databáze jen pro čtení je stejná jako u všech typů da
 
 ### <a name="configure-caching-policy"></a>Konfigurace zásad ukládání do mezipaměti
 
-Správce databáze následného řízení může upravit [zásady ukládání do mezipaměti](/azure/kusto/management/cache-policy) připojené databáze nebo jakékoli její tabulky v hostitelském clusteru. Ve výchozím nastavení je zachovává kolekce databází vedoucí databáze a zásad ukládání do mezipaměti na úrovni tabulky. Můžete mít například 30denní zásadu pro ukládání do mezipaměti v databázi vedoucího pro spouštění měsíčních sestav a tři dny pro ukládání do mezipaměti v databázi sledování a dotazovat se pouze na poslední data pro řešení potíží. Další informace o použití příkazů pro řízení pro konfiguraci zásad ukládání do mezipaměti v databázi a tabulce následného řízení najdete v tématu [Řídicí příkazy pro správu clusteru následných](/azure/kusto/management/cluster-follower.md).
+Správce databáze následného řízení může upravit [zásady ukládání do mezipaměti](/azure/kusto/management/cache-policy) připojené databáze nebo jakékoli její tabulky v hostitelském clusteru. Ve výchozím nastavení je zachovává kolekce databází vedoucí databáze a zásad ukládání do mezipaměti na úrovni tabulky. Můžete mít například 30denní zásadu pro ukládání do mezipaměti v databázi vedoucího pro spouštění měsíčních sestav a tři dny pro ukládání do mezipaměti v databázi sledování a dotazovat se pouze na poslední data pro řešení potíží. Další informace o použití příkazů pro řízení pro konfiguraci zásad ukládání do mezipaměti v databázi a tabulce následného řízení najdete v tématu [Řídicí příkazy pro správu clusteru následných](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Omezení
 
@@ -270,4 +270,4 @@ Správce databáze následného řízení může upravit [zásady ukládání do
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o konfiguraci následného clusteru najdete v tématu [Řídicí příkazy pro správu clusteru následného](/azure/kusto/management/cluster-follower.md).
+* Informace o konfiguraci následného clusteru najdete v tématu [Řídicí příkazy pro správu clusteru následného](/azure/kusto/management/cluster-follower).
