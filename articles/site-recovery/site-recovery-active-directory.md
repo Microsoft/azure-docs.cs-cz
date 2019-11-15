@@ -1,205 +1,203 @@
 ---
-title: Nastavení zotavení po havárii pro Active Directory a DNS pomocí Azure Site Recovery | Dokumentace Microsoftu
+title: Nastavení služby Active Directory/zotavení po havárii DNS pomocí Azure Site Recovery
 description: Tento článek popisuje, jak implementovat řešení zotavení po havárii pro Active Directory a DNS pomocí Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c1f85217db12b60cdcd8ea0bdb65792b8d02648
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038715"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084589"
 ---
-# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro Active Directory a DNS
+# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro služby Active Directory a DNS
 
-Podnikové aplikace, jako je SharePoint, Dynamics AX a SAP závisí na Active Directory a infrastruktury služby DNS správně fungovat. Při nastavování zotavení po havárii pro aplikace, často potřebujete k obnovení služby Active Directory a DNS před obnovením další součásti aplikace, abyste zajistili funkčnost správné aplikace.
+Podnikové aplikace, jako je SharePoint, Dynamics AX a SAP, závisí na službě Active Directory a na infrastruktuře DNS, aby fungovaly správně. Při nastavování zotavení po havárii pro aplikace je často potřeba obnovit službu Active Directory a DNS předtím, než obnovíte jiné součásti aplikace, abyste zajistili správnou funkčnost aplikace.
 
-Můžete použít [Site Recovery](site-recovery-overview.md) vytvořit plán obnovení po havárii pro službu Active Directory. Pokud dojde k přerušení, můžete zahájit převzetí služeb při selhání. Můžete mít služby Active Directory si zprovoznit během pár minut. Pokud jste nasadili služby Active Directory pro několik aplikací v primární lokalitě, například pro Sharepointu a SAP, můžete převzít služby při selhání lokality dokončeno. Nejprve můžete převzít služby Active Directory pomocí služby Site Recovery. Potom převzetí služeb při selhání jiných aplikací, pomocí plánů obnovení specifické pro aplikaci.
+Pomocí [Site Recovery](site-recovery-overview.md) můžete vytvořit plán zotavení po havárii pro službu Active Directory. Když dojde k narušení, můžete iniciovat převzetí služeb při selhání. Službu Active Directory můžete mít v průběhu několika minut. Pokud jste nasadili službu Active Directory pro více aplikací v primární lokalitě, například pro SharePoint a SAP, můžete převzít služby při selhání celého webu. Službu Active Directory můžete nejprve převzít pomocí Site Recovery. Pak můžete převzít služby při selhání dalších aplikací pomocí plánů obnovení specifických pro jednotlivé aplikace.
 
-Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro službu Active Directory. Zahrnují požadavky a pokyny k převzetí služeb při selhání. Byste měli vědět, jak služby Active Directory a Site Recovery, než začnete.
+Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro službu Active Directory. Zahrnuje požadavky a pokyny pro převzetí služeb při selhání. Než začnete, měli byste být obeznámeni se službou Active Directory a Site Recovery.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud replikujete do Azure, [Příprava prostředků Azure](tutorial-prepare-azure.md), včetně předplatného, virtuální síť Azure, účet úložiště a trezor služby Recovery Services.
+* Pokud provádíte replikaci do Azure, [připravíte prostředky Azure](tutorial-prepare-azure.md), včetně předplatného, Virtual Network Azure, účtu úložiště a trezoru Recovery Services.
 * Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-azure.md) pro všechny komponenty.
 
 ## <a name="replicate-the-domain-controller"></a>Replikace řadiče domény
 
-- Musíte nastavit replikace Site Recovery na alespoň jeden virtuální počítač, který je hostitelem řadiče domény nebo DNS.
-- Pokud máte víc řadičů domény ve vašem prostředí, také musíte vytvořit další řadič domény v cílové lokalitě. Další řadič domény může být v Azure, nebo sekundárního místního datového centra.
-- Pokud máte pouze několik aplikací a jeden řadič domény, můžete převzetí služeb při selhání celé lokality společně. V takovém případě vám doporučujeme používat Site Recovery pro replikaci řadiče domény do cílového webu (buď v Azure nebo sekundárního místního datového centra). Můžete použít stejné řadič domény replikovaný nebo DNS virtuálního počítače pro [testovací převzetí služeb při selhání](#test-failover-considerations).
-- - Pokud máte mnoho aplikací a více než jeden řadič domény ve vašem prostředí, nebo pokud máte v plánu převzetí služeb při selhání několik aplikací najednou, navíc k replikaci virtuálního počítače řadiče domény s využitím Site Recovery, doporučujeme, abyste nastavili Další řadič domény v cílové lokalitě (buď v Azure nebo sekundárního místního datového centra). Pro [testovací převzetí služeb při selhání](#test-failover-considerations), můžete použít řadič domény, který se replikuje pomocí Site Recovery. Pro převzetí služeb při selhání můžete použít další řadič domény v cílové lokalitě.
+- Musíte nastavit Site Recovery replikaci aspoň na jednom virtuálním počítači, který je hostitelem řadiče domény nebo DNS.
+- Pokud máte ve svém prostředí více řadičů domény, musíte také nastavit další řadič domény v cílové lokalitě. Další řadič domény může být v Azure nebo v sekundárním místním datacentru.
+- Pokud máte jen několik aplikací a jeden řadič domény, můžete chtít převzít služby při selhání celé lokality dohromady. V takovém případě doporučujeme použít Site Recovery k replikaci řadiče domény do cílové lokality (buď v Azure, nebo v sekundárním místním datacentru). Pro [testovací převzetí služeb při selhání](#test-failover-considerations)můžete použít stejný replikovaný řadič domény nebo virtuální počítač DNS.
+- - Pokud máte ve svém prostředí spoustu aplikací a více než jeden řadič domény, nebo pokud plánujete převzít služby při selhání několika aplikacemi najednou Site Recovery, doporučujeme, abyste nastavili Další řadič domény v cílové lokalitě (buď v Azure, nebo v sekundárním místním datacentru). Pro [testovací převzetí služeb při selhání](#test-failover-considerations)můžete použít řadič domény, který je replikovaný pomocí Site Recovery. Pro převzetí služeb při selhání můžete použít další řadič domény v cílové lokalitě.
 
-## <a name="enable-protection-with-site-recovery"></a>Povolit ochranu pomocí služby Site Recovery
+## <a name="enable-protection-with-site-recovery"></a>Povolení ochrany pomocí Site Recovery
 
-Site Recovery můžete použít k ochraně virtuálního počítače, který je hostitelem řadiče domény nebo DNS.
+Pomocí Site Recovery můžete chránit virtuální počítač, který je hostitelem řadiče domény nebo DNS.
 
-### <a name="protect-the-vm"></a>Ochranu virtuálního počítače
-Řadič domény, který se replikuje s využitím Site Recovery se používá pro [testovací převzetí služeb při selhání](#test-failover-considerations). Ujistěte se, že splňuje následující požadavky:
+### <a name="protect-the-vm"></a>Ochrana virtuálního počítače
+Řadič domény, který se replikuje pomocí Site Recovery slouží k [testovacímu převzetí služeb při selhání](#test-failover-considerations). Zajistěte, aby splňovaly následující požadavky:
 
-1. Je řadič domény serverem globálního katalogu.
-2. Řadič domény musí být vlastníkem této role FSMO pro role, které jsou potřeba při selhání testu. V opačném případě tyto role bude potřeba [převzaty](https://aka.ms/ad_seize_fsmo) po převzetí služeb při selhání.
+1. Řadič domény je server globálního katalogu.
+2. Řadič domény by měl být vlastníkem role FSMO pro role, které jsou potřeba během testovacího převzetí služeb při selhání. V opačném případě bude nutné po převzetí služeb při selhání [převzít](https://aka.ms/ad_seize_fsmo) tyto role.
 
-### <a name="configure-vm-network-settings"></a>Konfigurace nastavení sítě virtuálního počítače
-Pro virtuální počítač, který je hostitelem řadiče domény nebo DNS ve službě Site Recovery, konfigurace nastavení sítě v části **výpočty a síť** nastavení replikovaného virtuálního počítače. Tím se zajistí, že virtuální počítač je připojený ke správné síti po převzetí služeb při selhání.
+### <a name="configure-vm-network-settings"></a>Konfigurovat nastavení sítě virtuálních počítačů
+U virtuálního počítače, který je hostitelem řadiče domény nebo DNS, v části Site Recovery nakonfigurujte nastavení sítě v nastavení **výpočty a síť** replikovaného virtuálního počítače. Tím se zajistí, že se virtuální počítač připojí ke správné síti po převzetí služeb při selhání.
 
 ## <a name="protect-active-directory"></a>Ochrana služby Active Directory
 
-### <a name="site-to-site-protection"></a>Ochrana Site-to-site
-Vytvoření řadiče domény v sekundární lokalitě. Když zvýšíte úroveň serveru role řadiče domény, zadejte název stejné domény, který používáte v primární lokalitě. Můžete použít **serverů služby Active Directory a služby** modul snap-in a zadejte nastavení v objektu lokality odkaz, ke kterému jsou přidány lokality. Tím, že nakonfigurujete nastavení na propojení lokalit, můžete určit, kdy dojde k replikaci mezi dva nebo víc lokalit, a jak často k dochází. Další informace najdete v tématu [plánování replikace mezi lokalitami](https://technet.microsoft.com/library/cc731862.aspx).
+### <a name="site-to-site-protection"></a>Ochrana mezi lokalitami
+Vytvořte řadič domény v sekundární lokalitě. Při zvýšení úrovně serveru na roli řadiče domény zadejte název stejné domény, která se používá v primární lokalitě. Modul snap-in **lokality a služby Active Directory** můžete použít ke konfiguraci nastavení na objektu propojení lokalit, ke kterému se lokality přidávají. Konfigurací nastavení na propojení lokalit můžete řídit, kdy probíhá replikace mezi dvěma nebo více lokalitami a jak často k ní dochází. Další informace najdete v tématu [Plánování replikace mezi lokalitami](https://technet.microsoft.com/library/cc731862.aspx).
 
-### <a name="site-to-azure-protection"></a>Ochrana serveru do Azure
-Nejprve vytvořte řadič domény ve službě Azure virtual network. Když zvýšíte úroveň serveru role řadiče domény, zadejte se stejným názvem domény, který se používá v primární lokalitě.
+### <a name="site-to-azure-protection"></a>Ochrana mezi weby a Azure
+Nejdřív vytvořte řadič domény ve službě Azure Virtual Network. Při povýšení serveru na roli řadiče domény zadejte stejný název domény, který se používá v primární lokalitě.
 
-Překonfigurujte server DNS pro virtuální síť použít DNS server v Azure.
+Potom překonfigurujte server DNS pro virtuální síť tak, aby používala server DNS v Azure.
 
 ![Síť Azure](./media/site-recovery-active-directory/azure-network.png)
 
-### <a name="azure-to-azure-protection"></a>Ochrana Azure do Azure
-Nejprve vytvořte řadič domény ve službě Azure virtual network. Když zvýšíte úroveň serveru role řadiče domény, zadejte se stejným názvem domény, který se používá v primární lokalitě.
+### <a name="azure-to-azure-protection"></a>Ochrana z Azure do Azure
+Nejdřív vytvořte řadič domény ve službě Azure Virtual Network. Při povýšení serveru na roli řadiče domény zadejte stejný název domény, který se používá v primární lokalitě.
 
-Překonfigurujte server DNS pro virtuální síť použít DNS server v Azure.
+Potom překonfigurujte server DNS pro virtuální síť tak, aby používala server DNS v Azure.
 
-## <a name="test-failover-considerations"></a>Důležité informace o převzetí služeb při selhání testu
-Aby se zabránilo dopadu na produkční úlohy, testovací převzetí služeb při selhání v síti, která bude izolovaná od produkční sítě.
+## <a name="test-failover-considerations"></a>Požadavky testovacího převzetí služeb při selhání
+Aby se zabránilo dopadu na produkční úlohy, dojde k testovacímu převzetí služeb při selhání v síti, která je izolovaná od produkční sítě.
 
-Většina aplikací vyžaduje přítomnost řadiče domény nebo serveru DNS. Proto se před aplikace převezme služby při selhání, musíte vytvořit řadič domény v izolované síti má být použit pro testovací převzetí služeb při selhání. Nejjednodušší způsob je pomocí Site Recovery můžete replikovat virtuální počítač, který je hostitelem řadiče domény nebo DNS. Pak spusťte testovací převzetí služeb virtuálního počítače řadiče domény před spuštěním testovací převzetí služeb při selhání plánu obnovení pro aplikaci. Tady je postup:
+Většina aplikací vyžaduje přítomnost řadiče domény nebo serveru DNS. Proto je před převzetím služeb při selhání nutné v izolované síti vytvořit řadič domény, který se použije pro testovací převzetí služeb při selhání. Nejjednodušší způsob, jak to provést, je použít Site Recovery k replikaci virtuálního počítače, který je hostitelem řadiče domény nebo DNS. Potom spusťte testovací převzetí služeb při selhání virtuálního počítače řadiče domény před spuštěním testovacího převzetí služeb při selhání v plánu obnovení pro aplikaci. Tady je postup:
 
-1. Pomocí Site Recovery můžete [replikovat](vmware-azure-tutorial.md) virtuální počítač, který je hostitelem řadiče domény nebo DNS.
-2. Vytvoření izolované sítě. Virtuální sítě, který vytvoříte v Azure je izolovaná od jiných sítí ve výchozím nastavení. Doporučujeme použít stejný rozsah IP adres pro tuto síť, který používáte v produkční sítě. Nepovolí připojení site-to-site v této síti.
-3. Zadejte adresu IP serveru DNS v izolované síti. Použijte IP adresu, která očekáváte, že virtuální počítač DNS se. Pokud replikujete do Azure, zadejte IP adresu pro virtuální počítač, který se používá na převzetí služeb při selhání. Zadejte IP adresu v replikované virtuální počítače, v **výpočty a síť** nastavení, vyberte **cílová IP adresa** nastavení.
+1. K [replikaci](vmware-azure-tutorial.md) virtuálního počítače, který je hostitelem řadiče domény nebo DNS, použijte Site Recovery.
+2. Vytvořte izolovanou síť. Každá virtuální síť, kterou vytvoříte v Azure, je ve výchozím nastavení izolovaná od ostatních sítí. Doporučujeme použít pro tuto síť stejný rozsah IP adres, který používáte ve své produkční síti. V této síti nepovolujte připojení Site-to-site.
+3. Zadejte IP adresu DNS v izolované síti. Použijte IP adresu, kterou očekáváte, že se virtuální počítač DNS dostane. Pokud provádíte replikaci do Azure, zadejte IP adresu pro virtuální počítač, který se používá při převzetí služeb při selhání. Pokud chcete zadat IP adresu, v replikovaném virtuálním počítači v nastavení **výpočty a síť** vyberte nastavení **cílové IP adresy** .
 
-    ![Síť testování v Azure](./media/site-recovery-active-directory/azure-test-network.png)
+    ![Testovací síť Azure](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
-    > Site Recovery se pokusí vytvořit testovací virtuální počítače v podsíti se stejným názvem a pomocí stejné IP adresy, která je součástí **výpočty a síť** nastavení virtuálního počítače. Pokud podsíť se stejným názvem není k dispozici v Azure virtual network, která je k dispozici pro testovací převzetí služeb při selhání, vytvoří se v abecedním pořadí první podsíť testovacího virtuálního počítače.
+    > Site Recovery se pokusí vytvořit testovací virtuální počítače v podsíti se stejným názvem a pomocí stejné IP adresy, která je k dispozici v nastavení **výpočty a síť** virtuálního počítače. Pokud ve službě Azure Virtual Network, která je pro testovací převzetí služeb při selhání, není dostupná podsíť se stejným názvem, testovací virtuální počítač se vytvoří v abecedně první podsíti.
     >
-    > Pokud cílová IP adresa je součástí vybrané podsíti, Site Recovery se pokusí vytvořit testovacího převzetí služeb při selhání virtuálního počítače pomocí cílová IP adresa. Pokud cílová IP adresa není součástí vybrané podsíti, testovacího převzetí služeb při selhání virtuálního počítače se vytvoří s použitím další dostupné IP adresy ve vybrané podsíti.
+    > Pokud je cílová IP adresa součástí vybrané podsítě, Site Recovery se pokusí vytvořit virtuální počítač testovacího převzetí služeb při selhání pomocí cílové IP adresy. Pokud cílová IP adresa není součástí vybrané podsítě, vytvoří se virtuální počítač testovacího převzetí služeb při selhání pomocí další dostupné IP adresy ve vybrané podsíti.
     >
     >
 
-### <a name="test-failover-to-a-secondary-site"></a>Testovací převzetí služeb při selhání do sekundární lokality
+### <a name="test-failover-to-a-secondary-site"></a>Test převzetí služeb při selhání na sekundární lokalitu
 
-1. Pokud replikujete do jiné místní lokality a používáte DHCP, [nastavení DNS a DHCP pro testovací převzetí služeb při selhání](hyper-v-vmm-test-failover.md#prepare-dhcp).
-2. Proveďte testovací převzetí služeb virtuálního počítače řadiče domény, na kterém běží v izolované síti. Použijte nejnovější dostupné *konzistentní s aplikací* bod obnovení virtuálního počítače řadiče domény provést testovací převzetí služeb.
-3. Spuštění testovací převzetí služeb při selhání pro plán obnovení, který obsahuje virtuální počítače, které aplikace bude spuštěna na.
-4. Po dokončení testování *vyčistit testovací převzetí služeb* na virtuálního počítače řadiče domény. Tento krok odstraní řadiče domény, který byl vytvořen pro testovací převzetí služeb při selhání.
-
-
-### <a name="remove-references-to-other-domain-controllers"></a>Odebrat odkazy na ostatní řadiče domény
-Když spustíte testovací převzetí služeb, jsou všechny řadiče domény v testovací síti. Chcete-li odebrat odkazy na ostatní řadiče domény, které existují v produkčním prostředí, možná budete muset [převzetí rolí FSMO Active Directory](https://aka.ms/ad_seize_fsmo) a proveďte [Vyčištění metadat](https://technet.microsoft.com/library/cc816907.aspx) chybějících řadiče domény .
+1. Pokud provádíte replikaci do jiné místní lokality a používáte protokol DHCP, [nastavte pro testovací převzetí služeb při selhání službu DNS a DHCP](hyper-v-vmm-test-failover.md#prepare-dhcp).
+2. Proveďte test převzetí služeb při selhání virtuálního počítače řadiče domény, který běží v izolované síti. K provedení testovacího převzetí služeb při selhání použijte nejnovější bod obnovení *konzistentní vzhledem k aplikacím* virtuálního počítače řadiče domény.
+3. Spusťte testovací převzetí služeb při selhání pro plán obnovení, který obsahuje virtuální počítače, na kterých je aplikace spuštěná.
+4. Po dokončení testování *vyčistěte testovací převzetí služeb při selhání* na virtuálním počítači řadiče domény. Tento krok odstraní řadič domény, který byl vytvořen pro testovací převzetí služeb při selhání.
 
 
-### <a name="issues-caused-by-virtualization-safeguards"></a>Potíže způsobené službou ochrana virtualizace
+### <a name="remove-references-to-other-domain-controllers"></a>Odebrat odkazy na jiné řadiče domény
+Když zahájíte testovací převzetí služeb při selhání, nezahrnujte všechny řadiče domény do testovací sítě. Pokud chcete odebrat odkazy na jiné řadiče domény, které existují ve vašem produkčním prostředí, možná budete muset [převzít role FSMO Active Directory](https://aka.ms/ad_seize_fsmo) a [vyčistit metadata](https://technet.microsoft.com/library/cc816907.aspx) pro chybějící řadiče domény.
+
+
+### <a name="issues-caused-by-virtualization-safeguards"></a>Problémy způsobené ochranou virtualizace
 
 > [!IMPORTANT]
-> Některé konfigurace popsané v této části nejsou standard nebo výchozí konfigurace řadiče domény. Pokud nechcete tyto změny provést na řadič domény v produkčním prostředí, můžete vytvořit řadič domény, který je vyhrazen pro Site Recovery pro testovací převzetí služeb při selhání. Tyto změny proveďte pouze na tento řadič domény.  
+> Některé z konfigurací popsaných v této části nejsou standardní nebo výchozí konfigurace řadiče domény. Pokud nechcete provádět tyto změny v produkčním řadiči domény, můžete vytvořit řadič domény vyhrazený pro Site Recovery, který se má použít pro testovací převzetí služeb při selhání. Tyto změny proveďte pouze pro tento řadič domény.  
 >
 >
 
-Od verze Windows serveru 2012 [další bezpečnostní opatření jsou integrované do Active Directory Domain Services (AD DS)](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Tato bezpečnostní opatření pomáhá chránit virtualizované řadiče domény před vrácení hodnoty USN zpět, pokud podporuje základní platformu hypervisoru **VM-GenerationID**. Azure podporuje **VM-GenerationID**. Z tohoto důvodu mají řadiče domény, na kterých běží Windows Server 2012 nebo novější na Azure virtual machines tyto další bezpečnostní opatření.
+Počínaje systémem Windows Server 2012 [jsou do Active Directory Domain Services (služba AD DS) integrována další bezpečnostní opatření](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Tato ochrana chrání virtualizované řadiče domény proti vrácení hodnot USN, pokud základní platforma hypervisoru podporuje **VM-GenerationID**. Azure podporuje **VM-GenerationID**. Z tohoto důvodu mají řadiče domény, na kterých běží Windows Server 2012 nebo novější, na virtuálních počítačích Azure tyto další bezpečnostní opatření.
 
 
-Při **VM-GenerationID** se resetuje **InvocationID** hodnota z databáze služby AD DS je také resetovat. Kromě toho se zahodí fond RID a složku sysvol je označen jako neautoritativní. Další informace najdete v tématu [Úvod do virtualizace služby Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) a [bezpečně virtualizace DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
+Když se resetuje **VM-GenerationID** , obnoví se taky hodnota **InvocationID** databáze služba AD DS. Kromě toho se zahodí fond identifikátorů RID a složka SYSVOL je označena jako neautoritativní. Další informace najdete v tématu [Úvod do Active Directory Domain Services virtualizace](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) a [bezpečné virtualizace DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
-Přebírání služeb při selhání do Azure může způsobit, že **VM-GenerationID** resetovat. Resetuje se **VM-GenerationID** další bezpečnostní opatření se aktivuje při spuštění virtuálního počítače řadiče domény v Azure. To může vést *poměrně dlouhodobému výpadku* v nebudou moct přihlásit k virtuálnímu počítači řadiče domény.
+Převzetí služeb při selhání do Azure může způsobit resetování **virtuálního počítače – GenerationID** . Resetování **virtuálního počítače – GenerationID** aktivuje dodatečnou ochranu, když se virtuální počítač řadiče domény spustí v Azure. To může mít za následek *výrazné zpoždění* při přihlášení k virtuálnímu počítači řadiče domény.
 
-Protože tento řadič domény se používá jenom v testovací převzetí služeb při selhání, ochrana virtualizace nejsou potřebné. Zajistit, aby **VM-GenerationID** nedojde ke změně hodnoty pro virtuální počítač řadiče domény, můžete změnit hodnotu DWORD následující **4** v místní řadič domény:
+Vzhledem k tomu, že tento řadič domény se používá jenom v testovacím převzetí služeb při selhání, není ochrana virtualizace nutná. Pokud se chcete ujistit, že se hodnota **GenerationID** virtuálního počítače pro virtuální počítač řadiče domény nemění, můžete v místním řadiči domény změnit hodnotu následujícího typu DWORD na **4** :
 
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
 
-#### <a name="symptoms-of-virtualization-safeguards"></a>Mezi příznaky bezpečnostní opatření virtualizace
+#### <a name="symptoms-of-virtualization-safeguards"></a>Příznaky ochrany virtualizace
 
-Pokud se ochrana virtualizace se aktivuje po testovací převzetí služeb, může se zobrazit jedna nebo více z následujících příznaků:  
+Pokud se po testovacím převzetí služeb při selhání aktivují bezpečnostní opatření virtualizace, může se zobrazit jeden nebo několik následujících příznaků:  
 
-* **GenerationID** hodnota se mění.
+* Změní se hodnota **GenerationID** .
 
     ![Změna ID generování](./media/site-recovery-active-directory/Event2170.png)
 
-* **InvocationID** hodnota se mění.
+* Změní se hodnota **InvocationID** .
 
     ![Změna ID vyvolání](./media/site-recovery-active-directory/Event1109.png)
 
-* Složka SYSVOL a NETLOGON sdílené složky nejsou k dispozici.
+* Složka SYSVOL a sdílené složky NETLOGON nejsou k dispozici.
 
-    ![Sdílené složky SYSVOL](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Sdílená složka SYSVOL](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![Složka sysvol NtFrs](./media/site-recovery-active-directory/Event13565.png)
+    ![Složka NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
 
 * Databáze DFSR se odstraní.
 
     ![Databáze DFSR se odstraní.](./media/site-recovery-active-directory/Event2208.png)
 
 
-### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Řešení potíží řadič domény během testovacího převzetí služeb při selhání
+### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Řešení potíží s řadičem domény během testovacího převzetí služeb
 
 > [!IMPORTANT]
-> Některé konfigurace popsané v této části ještě nejsou standard nebo výchozí konfigurace řadiče domény. Pokud nechcete tyto změny provést na řadič domény v produkčním prostředí, můžete vytvořit řadič domény, který je vyhrazen pro Site Recovery testovací převzetí služeb při selhání. Proveďte změny pouze na tento řadič domény vyhrazené.  
+> Některé z konfigurací popsaných v této části nejsou standardní nebo výchozí konfigurace řadiče domény. Pokud nechcete provádět tyto změny v produkčním řadiči domény, můžete vytvořit řadič domény, který je vyhrazený pro Site Recovery testovací převzetí služeb při selhání. Změny proveďte pouze pro vyhrazený řadič domény.  
 >
 >
 
-1. Na příkazovém řádku spusťte následující příkaz a zkontrolujte, zda jsou sdílené složky sysvol a NETLOGON:
+1. Na příkazovém řádku spusťte následující příkaz, který zkontroluje, jestli je sdílená složka SYSVOL a složka NETLOGON:
 
     `NET SHARE`
 
-2. Na příkazovém řádku spusťte následující příkaz a ověřte, že řadič domény správně funguje:
+2. Na příkazovém řádku spusťte následující příkaz, abyste zajistili, že řadič domény správně funguje:
 
     `dcdiag /v > dcdiag.txt`
 
-3. Ve výstupu protokolu vyhledejte následující text. Text potvrdí, že řadič domény správně funguje.
+3. Ve výstupním protokolu vyhledejte následující text. Text potvrdí, že řadič domény funguje správně.
 
-    * "úspěšných testů připojení"
-    * "inzerování úspěšných testů"
-    * "úspěšných testů MachineAccount"
+    * "úspěšné připojení testu"
+    * "úspěšná zkušební inzerce"
+    * "Pass test MachineAccount"
 
-Pokud předchozí podmínky splněny, je pravděpodobné, že řadič domény správně funguje. Pokud není, proveďte následující kroky:
+Pokud jsou předchozí podmínky splněné, je pravděpodobnější, že řadič domény funguje správně. Pokud není, proveďte následující kroky:
 
-1. Proveďte autoritativním obnovením řadiče domény. Mějte tyto informace:
-    * Ale nedoporučujeme [FRS replikace](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), pokud používáte služby FRS replikaci, postupujte podle kroků pro autoritativním obnovením. Proces je popsán v [pomocí klíče registru BurFlags k inicializaci služby replikace souborů](https://support.microsoft.com/kb/290762).
+1. Proveďte autoritativní obnovení řadiče domény. Mějte na paměti následující informace:
+    * I [když replikace FRS nedoporučujeme](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), pokud používáte replikaci FRS, postupujte podle kroků pro autoritativní obnovení. Tento proces je popsán v tématu [použití klíče registru Burflags k opětovné inicializaci služby replikace souborů](https://support.microsoft.com/kb/290762).
 
-        Další informace o BurFlags, naleznete v příspěvku blogu [D2 a D4: Co je to pro? ](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Pokud používáte replikace DFSR, proveďte kroky pro autoritativním obnovením. Proces je popsán v [vynutit autoritativní a neautoritativní synchronizaci adresáře sysvol replikovaného DFSR složky (například "D4/D2 u služby FRS)](https://support.microsoft.com/kb/2218556).
+        Další informace o BurFlags najdete v příspěvku na blogu [D2 a D4: co je pro?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+    * Pokud používáte replikaci DFSR, proveďte kroky pro autoritativní obnovení. Tento postup je popsaný v tématu [Vynutit autoritativní a neautoritativní synchronizaci složky SYSVOL replikované službou DFSR (jako D4/D2 pro službu FRS)](https://support.microsoft.com/kb/2218556).
 
-        Můžete také použít funkce Powershellu. Další informace najdete v tématu [funkce Powershellu autoritativní a neautoritativní obnovení DFSR SYSVOL](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
+        Můžete také použít funkce PowerShellu. Další informace najdete v tématu [funkce prostředí PowerShell pro autoritativní nebo neautoritativní obnovení systému DFSR-SYSVOL](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 
-2. Obejít požadavek na počáteční synchronizace nastavením následujícího klíče registru na **0** v místní řadič domény. Pokud DWORD neexistuje, můžete ho v části vytvořit **parametry** uzlu.
+2. Vynechejte požadavek na počáteční synchronizaci nastavením následujícího klíče registru na **hodnotu 0** v místním řadiči domény. Pokud hodnota DWORD neexistuje, můžete ji vytvořit pod uzlem **parametry** .
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    Další informace najdete v tématu [Poradce při potížích s 4013 ID události DNS: DNS server se nepodařilo načíst AD integrované zóny DNS](https://support.microsoft.com/kb/2001093).
+    Další informace najdete v tématu [řešení potíží s ID události dns 4013: Server DNS nemohl načíst zóny DNS integrované se službou Active Directory](https://support.microsoft.com/kb/2001093).
 
-3. Zakažte požadavek na server globálního katalogu se ověření přihlášení uživatele k dispozici. K tomu, v místní řadič domény, nastavte následující klíč registru na **1**. Pokud DWORD neexistuje, můžete ho v části vytvořit **Lsa** uzlu.
+3. Zakažte požadavek, aby byl server globálního katalogu dostupný pro ověření přihlášení uživatele. Uděláte to tak, že v místním řadiči domény nastavíte následující klíč registru na hodnotu **1**. Pokud hodnota DWORD neexistuje, můžete ji vytvořit pod uzlem **LSA** .
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    Další informace najdete v tématu [zakažte požadavek na server globálního katalogu se ověření přihlášení uživatele k dispozici](https://support.microsoft.com/kb/241789).
+    Další informace najdete v tématu [zakázání požadavku na zpřístupnění serveru globálního katalogu pro ověřování přihlášení uživatelů](https://support.microsoft.com/kb/241789).
 
-### <a name="dns-and-domain-controller-on-different-machines"></a>DNS a řadič domény na různých počítačích
+### <a name="dns-and-domain-controller-on-different-machines"></a>DNS a řadič domény v různých počítačích
 
-Pokud používáte řadiče domény a DNs na stejný virtuální počítač, můžete tento postup přeskočit.
+Pokud používáte řadič domény a DNs na stejném virtuálním počítači, můžete tento postup přeskočit.
 
 
-Pokud DNS není na stejný virtuální počítač jako řadič domény, musíte vytvořit virtuální počítač DNS pro testovací převzetí služeb. Můžete použít nový server DNS a vytvořit všechny požadované zóny. Například pokud je vaší doménou služby Active Directory contoso.com, můžete vytvořit zónu DNS s názvem contoso.com. Položky, které odpovídají služby Active Directory musí aktualizovat ve službě DNS následujícím způsobem:
+Pokud DNS není na stejném virtuálním počítači jako řadič domény, musíte pro testovací převzetí služeb při selhání vytvořit virtuální počítač DNS. Můžete použít nový server DNS a vytvořit všechny požadované zóny. Pokud je například doména služby Active Directory contoso.com, můžete vytvořit zónu DNS s názvem contoso.com. Položky, které odpovídají službě Active Directory, je třeba aktualizovat v DNS následujícím způsobem:
 
-1. Ujistěte se, že tato nastavení jsou na místě před zahájením ostatních virtuálních počítačů v plánu obnovení:
-   * Za názvem kořenového doménové struktury musí mít název zóny.
-   * Zóna musí být záložních souborů.
-   * Zóna musí být povolena pro aktualizace zabezpečení a nezabezpečené.
-   * Překladač virtuální počítač, který je hostitelem řadiče domény by měl odkazovat na IP adresu virtuálního počítače DNS.
+1. Zajistěte, aby byla tato nastavení zavedena před tím, než se spustí kterýkoli jiný virtuální počítač v plánu obnovení:
+   * Zóna musí být pojmenována za kořenovým názvem doménové struktury.
+   * Zóna musí být zálohovaná souborem.
+   * V zóně musí být povolená zabezpečená a nezabezpečená aktualizace.
+   * Překladač virtuálního počítače, který je hostitelem řadiče domény, by měl odkazovat na IP adresu virtuálního počítače DNS.
 
-2. Spuštěním následujícího příkazu na virtuálním počítači, který je hostitelem řadiče domény:
+2. Na virtuálním počítači, který je hostitelem řadiče domény, spusťte následující příkaz:
 
     `nltest /dsregdns`
 
-3. Spuštěním následujících příkazů přidejte na serveru DNS pro zónu, Povolit nezabezpečené aktualizace a přidat záznam pro zónu DNS:
+3. Spuštěním následujících příkazů přidejte zónu na server DNS, povolte nezabezpečené aktualizace a přidejte položku pro zónu do DNS:
 
     `dnscmd /zoneadd contoso.com  /Primary`
 
@@ -209,5 +207,5 @@ Pokud DNS není na stejný virtuální počítač jako řadič domény, musíte 
 
     `dnscmd /config contoso.com /allowupdate 1`
 
-## <a name="next-steps"></a>Další postup
-Další informace o [Ochrana firemních procesů pomocí Azure Site Recovery](site-recovery-workload.md).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [ochraně podnikových úloh pomocí Azure Site Recovery](site-recovery-workload.md).

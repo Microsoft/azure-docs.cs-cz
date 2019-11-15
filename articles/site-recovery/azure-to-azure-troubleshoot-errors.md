@@ -1,19 +1,18 @@
 ---
-title: Řešení potíží s chybami replikace Azure na Azure v Azure Site Recovery | Microsoft Docs
+title: Řešení potíží s replikací virtuálních počítačů Azure v Azure Site Recovery
 description: Řešení chyb při replikaci virtuálních počítačů Azure na zotavení po havárii.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: asgang
-ms.openlocfilehash: baf7a21d04e8f9bcf86c67abde302a558dfba01c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910382"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084927"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
 
@@ -81,7 +80,7 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Pokud se certifikát kořenové certifikační autority Symantec nenajde, spusťte následující příkaz a Stáhněte soubor. Vyhledejte případné chyby a proveďte doporučené akce při selhání sítě.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Ověřte, jestli je přítomný certifikát kořenové certifikační autority Baltimore:
 
@@ -89,9 +88,9 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Pokud se nenalezne certifikát kořenové certifikační autority Baltimore, spusťte tento příkaz a Stáhněte certifikát:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
 
-1. Ověřte, jestli je k dispozici certifikát DigiCert_Global_Root_CA:
+1. Ověřte, zda je k dispozici DigiCert_Global_Root_CA certifikát:
 
     **# LS DigiCert_Global_Root_CA. pem**
 
@@ -167,7 +166,7 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
 Aby mohla replikace Site Recovery fungovat, vyžaduje se odchozí připojení z virtuálního počítače na konkrétní adresy URL nebo rozsahy IP adres. Pokud se váš virtuální počítač nachází za bránou firewall nebo používá síť pravidla skupiny zabezpečení (NSG) k řízení odchozího připojení, může setkat jednu z těchto problémů.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problém 1: Nepovedlo se zaregistrovat virtuální počítač Azure s Site Recovery (kód chyby 151195).
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problém 1: Nepodařilo se zaregistrovat virtuální počítač Azure s Site Recovery (kód chyby 151195).
 
 #### <a name="possible-cause"></a>Možná příčina 
 
@@ -177,13 +176,13 @@ K tomuto problému dochází nejčastěji během opětovné ochrany, Pokud přev
 
 #### <a name="fix-the-problem"></a>Tento problém vyřešit
 
-Pokud používáte vlastní server DNS, ujistěte se, že je server DNS přístupný z oblasti zotavení po havárii. Pokud chcete zjistit, jestli máte vlastní DNS, klikněte na virtuálním počítači na sítě > **DNS servery** *pro zotavení po havárii*.
+Pokud používáte vlastní server DNS, ujistěte se, že je server DNS přístupný z oblasti zotavení po havárii. Pokud chcete zjistit, jestli máte vlastní DNS, na virtuálním počítači přejdete do části *zotavení po havárii sítě* **servery DNS** > .
 
 ![Seznam vlastních serverů DNS](./media/azure-to-azure-troubleshoot-errors/custom_dns.PNG)
 
-Zkuste se na serveru DNS z virtuálního počítače. Pokud server není dostupný, zpřístupněte ho buď při selhání prostřednictvím serveru DNS, nebo vytvořením řádku lokality mezi sítí DR a DNS.
+Zkuste získat přístup k serveru DNS z virtuálního počítače. Pokud server není dostupný, zpřístupněte ho buď při selhání prostřednictvím serveru DNS, nebo vytvořením řádku lokality mezi sítí DR a DNS.
 
-### <a name="issue-2-site-recovery-configuration-failed-error-code-151196"></a>Problém 2: Konfigurace Site Recovery selhala (kód chyby 151196).
+### <a name="issue-2-site-recovery-configuration-failed-error-code-151196"></a>Problém 2: Konfigurace Site Recovery se nezdařila (kód chyby 151196)
 
 #### <a name="possible-cause"></a>Možná příčina
 
@@ -197,7 +196,7 @@ Pokud k řízení odchozího připojení k síti na virtuálním počítači pou
 > [!NOTE]
 > Pokud jsou virtuální počítače za *standardním* interním nástrojem pro vyrovnávání zatížení, nemá nástroj pro vyrovnávání zatížení ve výchozím nastavení přístup k ROZSAHŮM IP adres Office 365 (tj. Login.microsoftonline.com). Buď změňte typ interního nástroje pro vyrovnávání zatížení na *Basic* , nebo vytvořte odchozí přístup, jak je popsáno v článku [konfigurace vyrovnávání zatížení a odchozích pravidel](https://aka.ms/lboutboundrulescli).
 
-### <a name="issue-3-site-recovery-configuration-failed-error-code-151197"></a>Problém 3: Konfigurace Site Recovery selhala (kód chyby 151197).
+### <a name="issue-3-site-recovery-configuration-failed-error-code-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (kód chyby 151197)
 
 #### <a name="possible-cause"></a>Možná příčina
 
@@ -207,7 +206,7 @@ Nepovedlo se navázat připojení k Site Recovery koncovým bodům služby.
 
 Site Recovery vyžaduje přístup k [rozsahům IP adres Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)v závislosti na oblasti. Ujistěte se, že virtuální počítač má přístup k požadovaným rozsahům IP adres.
 
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-an-on-premises-proxy-server-error-code-151072"></a>Problém 4: Replikace z Azure do Azure selhala, když síťový provoz projde místními proxy server (kód chyby 151072).
+### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-an-on-premises-proxy-server-error-code-151072"></a>Problém 4: replikace z Azure do Azure selhala, když síťový provoz projde místními proxy server (kód chyby 151072).
 
 #### <a name="possible-cause"></a>Možná příčina
 
@@ -220,7 +219,7 @@ Agent služby mobility detekuje nastavení proxy serveru z Internet Exploreru ve
 Pokud dáváte přednost nastavení proxy serveru jenom pro službu mobility, můžete zadat podrobnosti o proxy serveru v souboru ProxyInfo. conf v těchto umístěních:
 
 - **Linux**:/usr/local/InMage/config/
-- **Windows:** C:\ProgramData\Microsoft Azure Site Recovery\Config
+- **Windows**: C:\ProgramData\Microsoft Azure Site Recovery\Config
 
 V ProxyInfo. conf zadejte nastavení proxy serveru v následujícím formátu inicializačního souboru:
 
@@ -253,9 +252,9 @@ Nový disk připojen k virtuálnímu počítači musí být inicializován. Poku
 
 Zajistěte, aby byly datové disky inicializovány, a potom operaci opakujte.
 
-- **Windows:** [Připojit a inicializovat nový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
+- **Windows**: [připojte a inicializujte nový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
 
-- **Linux:** [Inicializujte nový datový disk v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
+- **Linux**: [inicializujte nový datový disk v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 Pokud se problém nevyřeší, obraťte se na podporu.
 
@@ -272,14 +271,14 @@ Chcete-li znovu nastavit stav replikace virtuálního počítače, můžete zvol
 
 #### <a name="to-protect-the-disks"></a>Ochrana disků
 
-1. Přejít na**disky**s názvem **replikované položky** >  > *název virtuálního počítače*.
+1. Přejít na **replikované položky** > *název virtuálního počítače* > **disky**.
 1. Vyberte nechráněný disk a pak vyberte **Povolit replikaci**:
 
     ![Povolení replikace na discích virtuálních počítačů](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 
 #### <a name="to-dismiss-the-warning"></a>Zavření upozornění
 
-1. Přejít na*název virtuálního počítače* **replikovaných položek** > .
+1. Přejít na **replikované položky** > *název virtuálního počítače*.
 1. V části **Přehled** vyberte upozornění a pak vyberte **OK**.
 
     ![Zavřít upozornění na nový disk](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
@@ -294,7 +293,7 @@ Toto upozornění můžete ignorovat, pokud už nemáte v úmyslu chránit tento
 > Pokud toto čištění neprovedete:
 >
 > - Pokud povolíte replikaci pomocí trezoru Recovery Services, virtuální počítač se nebude zobrazovat v seznamu.
-> - Pokud se pokusíte chránit**virtuální počítač pomocí** > funkce**zotavení po havárii pro** **virtuální počítače** > , operace se nezdaří a zobrazí se zpráva "replikaci nelze povolit z důvodu existujících propojení zastaralých prostředků na virtuální počítač. "
+> - Pokud se pokusíte chránit virtuální počítač pomocí > **Nastavení** **virtuálního počítače** > **zotavení po havárii**, operace se nezdaří a zobrazí se zpráva "replikaci nelze povolit z důvodu existujících propojení zastaralých prostředků na virtuálním počítači".
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 
@@ -336,17 +335,17 @@ Pokud jste povolili replikaci pro virtuální počítač Azure pomocí Site Reco
 
 ## <a name="unable-to-see-the-azure-vm-or-resource-group-for-the-selection-in-the-enable-replication-job"></a>Nepovedlo se zobrazit virtuální počítač nebo skupinu prostředků Azure pro výběr v úloze povolit replikaci.
 
-### <a name="cause-1-the-resource-group-and-source-virtual-machine-are-in-different-locations"></a>Příčina 1: Skupina prostředků a zdrojový virtuální počítač jsou v různých umístěních.
+### <a name="cause-1-the-resource-group-and-source-virtual-machine-are-in-different-locations"></a>Příčina 1: Skupina prostředků a zdrojový virtuální počítač jsou v různých umístěních
 
 Site Recovery aktuálně vyžaduje, aby byla skupina prostředků zdrojové oblasti a virtuální počítače ve stejném umístění. Pokud ne, nebudete při pokusu o použití ochrany moci najít virtuální počítač nebo skupinu prostředků.
 
-Jako alternativní řešení můžete místo Recovery Services trezoru povolit replikaci z virtuálního počítače. Přejít na > **vlastnosti**zdrojovéhovirtuálníhopočítačezotavenípohaváriiapovolení > replikace.
+Jako alternativní řešení můžete místo Recovery Services trezoru povolit replikaci z virtuálního počítače. Přejít na **zdrojový virtuální počítač** > **vlastnosti** > **zotavení po havárii** a povolení replikace.
 
 ### <a name="cause-2-the-resource-group-is-not-part-of-the-selected-subscription"></a>Příčina 2: Skupina prostředků není součástí vybraného předplatného.
 
 Pokud skupina prostředků není součástí vybraného předplatného, možná nebudete schopni najít skupinu prostředků v době ochrany. Ujistěte se, že skupina prostředků patří k předplatnému, které používáte.
 
-### <a name="cause-3-stale-configuration"></a>Příčina 3: Stará konfigurace
+### <a name="cause-3-stale-configuration"></a>Příčina 3: zastaralá konfigurace
 
 Pokud na virtuálním počítači Azure zůstala zastaralá konfigurace Site Recovery, nemusíte mít virtuální počítač, který chcete povolit pro replikaci. K tomuto stavu může dojít, pokud jste povolili replikaci pro virtuální počítač Azure pomocí Site Recovery a pak:
 
@@ -369,11 +368,11 @@ Pokud na virtuálním počítači Azure zůstala zastaralá konfigurace Site Rec
 
 ## <a name="unable-to-select-a-virtual-machine-for-protection"></a>Nepovedlo se vybrat virtuální počítač pro ochranu.
 
-### <a name="cause-1-the-virtual-machine-has-an-extension-installed-in-a-failed-or-unresponsive-state"></a>Příčina 1: Virtuální počítač má rozšíření nainstalované v neúspěšném nebo nereagující stavu.
+### <a name="cause-1-the-virtual-machine-has-an-extension-installed-in-a-failed-or-unresponsive-state"></a>Příčina 1: virtuální počítač má rozšíření nainstalované v neúspěšném nebo nereagující stavu.
 
-Přejít na > **rozšíření** **Nastavení** >  **virtuálních počítačů**a vyhledat všechna rozšíření ve stavu selhání. Odinstalujte všechna neúspěšná rozšíření a pak to zkuste znovu, abyste virtuální počítač chránili.
+Přejít na **virtuální počítače** > **Nastavení** > **rozšíření** a vyhledat jakákoli rozšíření ve stavu selhání. Odinstalujte všechna neúspěšná rozšíření a pak to zkuste znovu, abyste virtuální počítač chránili.
 
-### <a name="cause-2-the-vms-provisioning-state-is-not-valid"></a>Příčina 2: Stav zřizování virtuálního počítače není platný.
+### <a name="cause-2-the-vms-provisioning-state-is-not-valid"></a>Příčina 2: stav zřizování virtuálního počítače není platný.
 
 Postup řešení potíží ve [stavu zřizování virtuálního počítače není platný](#the-vms-provisioning-state-is-not-valid-error-code-150019)dále v tomto článku.
 
@@ -394,17 +393,17 @@ Aby bylo možné povolit replikaci na virtuálním počítači, musí být jeho 
 
 ## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Nejde vybrat cílový virtuální počítač (karta výběr sítě není k dispozici).
 
-### <a name="cause-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Příčina 1: Váš virtuální počítač je připojený k síti, která už je namapovaná na cílovou síť.
+### <a name="cause-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Příčina 1: váš virtuální počítač je připojený k síti, která už je namapovaná na cílovou síť.
 
 Pokud je zdrojový virtuální počítač součástí virtuální sítě a v cílové skupině prostředků už je namapovaný jiný virtuální počítač ze stejné virtuální sítě, rozevírací seznam pro výběr sítě není ve výchozím nastavení k dispozici (zobrazuje se šedě).
 
 ![Seznam výběru sítě není dostupný.](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
 
-### <a name="cause-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>Příčina 2: Virtuální počítač jste dříve chránili pomocí Site Recovery a pak jste zakázali replikaci.
+### <a name="cause-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>Příčina 2: předtím jste virtuální počítač chránili pomocí Site Recovery a pak jste zakázali replikaci.
 
-Vypnutím replikace virtuálního počítače se neodstraní mapování sítě. Mapování je nutné odstranit z Recovery Services trezoru, ve kterém byl virtuální počítač chráněn. Přejít na *Recovery Services trezor* > **Site Recovery** > **mapování sítě**infrastruktury.
+Vypnutím replikace virtuálního počítače se neodstraní mapování sítě. Mapování je nutné odstranit z Recovery Services trezoru, ve kterém byl virtuální počítač chráněn. Přejít na *Recovery Services trezor* > **Site Recovery infrastruktura** > **mapování sítě**.
 
-![Odstranění mapování sítě](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
+![Odstranit mapování sítě](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
 
 Cílová síť, která byla nakonfigurovaná během instalace pro zotavení po havárii, se dá po počáteční instalaci změnit, jakmile je virtuální počítač chráněný:
 
@@ -476,7 +475,7 @@ Nahraďte názvy každého zařízení odpovídajícím identifikátorem UUID:
     /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Nahraďte název zařízení jeho UUID, ve formátech **root =** =*UUID UUID a* **Resume =** =*UUID UUID.* Například po nahrazení by čára z/boot/grub/menu.lst (popsaná výše) vypadala takto:
+1. Název zařízení nahraďte identifikátorem UUID, ve formátech **root = uuid**=*UUID* a **Resume = UUID**=*UUID*. Například po nahrazení by čára z/boot/grub/menu.lst (popsaná výše) vypadala takto:
 
     > jádro/Boot/vmlinuz-3.0.101-63-default **root = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **Resume = UUID = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** úvodní = tichá crashkernel = 256M-: 128M showopts VGA = 0x314
 
@@ -490,15 +489,15 @@ Konfigurační soubory GRUB (/boot/grub/menu.lst,/boot/grub/grub.cfg,/Boot/grub2
 
 - Soubor:/Boot/grub2/grub.cfg na RHEL7:
 
-    > linux16/vmlinuz-3.10.0-957.el7.x86_64 root =/dev/Mapper/rhel_mup--rhel7u6-root ro crashkernel = 128M\@64M **Rd. LVM. Lotyšsko = rootvg/root Rd. LVM. lv = rootvg/swap** rhgb quiet lang = en_US. UTF-8
+    > linux16/vmlinuz-3.10.0-957.el7. x86_64 root =/dev/Mapper/rhel_mup--rhel7u6-root ro crashkernel = 128M\@64M **Rd. LVM. lv = rootvg/root Rd. LVM. lv = rootvg/swap** RHGB quiet LANG = en_US. UTF-8
 
 - Soubor:/etc/default/grub na RHEL7:
 
-    > GRUB_CMDLINE_LINUX = "crashkernel = auto **Rd. LVM. Lotyšsko = rootvg/root Rd. LVM. lv = rootvg/swap** rhgb quiet"
+    > GRUB_CMDLINE_LINUX = "crashkernel = auto **Rd. LVM. Lotyšsko = rootvg/root Rd. LVM. Lotyšsko = rootvg/swap** rhgb quiet"
 
 - Soubor:/boot/grub/menu.lst na počítače RHEL6:
 
-    > /vmlinuz-2.6.32-754.el6.x86_64 jádra ro = UUID = 36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG = en_US. UTF-8 rd_NO_MD SYSFONT = latarcyrheb-sun16 crashkernel = auto **rd_LVM_LV = rootvg/lv_root** KEYBOARDTYPE = PC Table = US **rd_LVM_LV = rootvg/** lv_swap rd_NO_DM rhgb quiet
+    > jádro/vmlinuz-2.6.32-754.el6. x86_64 ro root = UUID = 36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG = en_US. UTF-8 rd_NO_MD SYSFONT = latarcyrheb-sun16 crashkernel = auto **rd_LVM_LV = rootvg/lv_root** KEYBOARDTYPE = PC = US **rd_LVM_LV = rootvg/lv_swap** rd_NO_DM rhgb quiet
 
 V každém příkladu ukazuje část tučného písma, že GRUB musí detekovat dvě zařízení LVM s názvy "root" a "swap" ze skupiny svazků "rootvg".
 
@@ -525,6 +524,6 @@ K tomuto problému může dojít, pokud byl virtuální počítač dříve chrá
 
 Odstraňte disk repliky identifikovaný v chybové zprávě a opakujte úlohu ochrany, která se nezdařila.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Replikace virtuálních počítačů Azure](site-recovery-replicate-azure-to-azure.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469105"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082711"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -54,7 +54,7 @@ Verze 2. x nástroje používá modul runtime Azure Functions 2. x, který je po
 > [!IMPORTANT]
 > Požadavek na instalaci sady .NET Core 2. x SDK můžete obejít pomocí [sad rozšíření].
 
-#### <a name="windows-npm"></a>Systému
+#### <a name="windows-npm"></a>Windows
 
 Následující kroky používají npm k instalaci základních nástrojů v systému Windows. Můžete také použít [čokolády](https://chocolatey.org/). Další informace najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
@@ -113,12 +113,12 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. V souboru `/etc/apt/sources.list.d/dotnetdev.list` vyhledejte jeden z odpovídajících řetězců verze Linux uvedených níže:
 
-    | Distribuce systému Linux | Version |
+    | Linuxové distribuce | Version |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
-    | Ubuntu 18,10    | `cosmic`    |
+    | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
     | Ubuntu 16.04/Linux mentolová 18    | `xenial`  |
@@ -137,7 +137,7 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. Pokud neplánujete použít [sad rozšíření], nainstalujte [sadu .NET Core 2. x SDK pro Linux](https://www.microsoft.com/net/download/linux).
 
-## <a name="create-a-local-functions-project"></a>Vytvoření projektu místní funkce
+## <a name="create-a-local-functions-project"></a>Vytvořte projekt místní funkce
 
 Adresář projektu Functions obsahuje soubory [Host. JSON](functions-host-json.md) a [Local. Settings. JSON](#local-settings-file)spolu s podsložkami, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikace Function App v Azure. Další informace o struktuře složek Functions najdete v příručce pro [vývojáře Azure Functions](functions-reference.md#folder-structure).
 
@@ -177,12 +177,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--csx`** | Inicializuje projekt C# skriptu (. csx). V následujících příkazech je nutné zadat `--csx`. |
+| **`--csharp`**<br/> **`--dotnet`** | Inicializuje [ C# projekt knihovny tříd (. cs)](functions-dotnet-class-library.md). |
+| **`--csx`** | Inicializuje [ C# projekt skriptu (. csx)](functions-reference-csharp.md). V následujících příkazech je nutné zadat `--csx`. |
 | **`--docker`** | Vytvořte souboru Dockerfile pro kontejner pomocí základní image, která je založená na zvolené `--worker-runtime`. Tuto možnost použijte, když plánujete publikování do vlastního kontejneru Linux. |
+| **`--docker-only`** |  Přidá souboru Dockerfile do existujícího projektu. Vyzve se k zadání pracovního procesu – modul runtime, pokud není zadaný, nebo nastavený v souboru Local. Settings. JSON. Tuto možnost použijte, pokud plánujete publikovat existující projekt do vlastního kontejneru Linux. |
 | **`--force`** | Inicializujte projekt i v případě, že v projektu existují existující soubory. Toto nastavení přepíše existující soubory se stejným názvem. Ostatní soubory ve složce projektu nejsou ovlivněny. |
-| **`--no-source-control -n`** | Zabrání výchozímu vytvoření úložiště Git ve verzi 1. x. Ve výchozím nastavení ve verzi 2. x není úložiště Git vytvořeno. |
-| **`--source-control`** | Určuje, zda je vytvořeno úložiště Git. Ve výchozím nastavení není úložiště vytvořeno. Při `true` se vytvoří úložiště. |
-| **`--worker-runtime`** | Nastaví jazykový modul runtime pro projekt. Podporované hodnoty jsou `dotnet`, `node` (JavaScript), `java` a `python`. Pokud není nastavena, zobrazí se výzva k výběru modulu runtime během inicializace. |
+| **`--java`**  | Inicializuje [projekt Java](functions-reference-java.md). |
+| **`--javascript`**<br/>**`--node`**  | Inicializuje [projekt JavaScriptu](functions-reference-node.md). |
+| **`--no-source-control`**<br/>**`-n`** | Zabrání výchozímu vytvoření úložiště Git ve verzi 1. x. Ve výchozím nastavení ve verzi 2. x není úložiště Git vytvořeno. |
+| **`--powershell`**  | Inicializuje [projekt prostředí PowerShell](functions-reference-powershell.md). |
+| **`--python`**  | Inicializuje projekt v jazyce [Python](functions-reference-python.md). |
+| **`--source-control`** | Určuje, zda je vytvořeno úložiště Git. Ve výchozím nastavení není úložiště vytvořeno. Při `true`se vytvoří úložiště. |
+| **`--typescript`**  | Inicializuje [projekt TypeScript](functions-reference-node.md#typescript). |
+| **`--worker-runtime`** | Nastaví jazykový modul runtime pro projekt. Podporovány jsou následující hodnoty: `csharp`, `dotnet`, `java`, `javascript`,`node` (JavaScript), `powershell`, `python`a `typescript`. Pokud není nastavena, zobrazí se výzva k výběru modulu runtime během inicializace. |
 
 > [!IMPORTANT]
 > Ve výchozím nastavení verze 2. x základních nástrojů vytváří projekty aplikací funkcí pro modul runtime .NET jako [ C# třídy projektů](functions-dotnet-class-library.md) (. csproj). Tyto C# projekty, které lze použít se sadou Visual Studio nebo Visual Studio Code, jsou kompilovány během testování a při publikování do Azure. Pokud místo toho chcete vytvořit a pracovat se stejnými C# soubory skriptu (. csx), které byly vytvořeny ve verzi 1. x a na portálu, je při vytváření a nasazování funkcí nutné zahrnout parametr `--csx`.
@@ -196,13 +203,13 @@ Ve výchozím nastavení se tato nastavení nemigrují automaticky, když je pro
 Hodnoty nastavení aplikace Function App lze ve vašem kódu přečíst také jako proměnné prostředí. Další informace naleznete v části proměnné prostředí v těchto referenčních tématech specifických pro konkrétní jazyk:
 
 * [C#předkompilované](functions-dotnet-class-library.md#environment-variables)
-* [C#skript (. csx)](functions-reference-csharp.md#environment-variables)
+* [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
 Pokud není nastaven žádný platný připojovací řetězec úložiště pro [`AzureWebJobsStorage`] a emulátor se nepoužívá, zobrazí se následující chybová zpráva:
 
-> Chybějící hodnota pro AzureWebJobsStorage v Local. Settings. JSON. To je vyžadováno pro všechny triggery kromě HTTP. Můžete spustit funkce Func Azure functionapp Fetch-App-Settings \<functionAppName \> nebo zadat připojovací řetězec v souboru Local. Settings. JSON.
+> Chybějící hodnota pro AzureWebJobsStorage v Local. Settings. JSON. To je vyžadováno pro všechny triggery kromě HTTP. Můžete spustit funkce Func Azure functionapp Fetch-App-Settings \<functionAppName\>nebo zadat připojovací řetězec v souboru Local. Settings. JSON.
 
 ### <a name="get-your-storage-connection-strings"></a>Získání připojovacích řetězců úložiště
 
@@ -235,7 +242,7 @@ I když používáte emulátor úložiště pro vývoj, budete možná chtít te
 
 ## <a name="create-func"></a>Vytvoření funkce
 
-Chcete-li vytvořit funkci, spusťte následující příkaz:
+Vytvořit funkci, spusťte následující příkaz:
 
 ```bash
 func new
@@ -465,11 +472,11 @@ Následující možnosti publikování jsou podporovány pouze ve verzi 2. x:
 | **`--list-included-files`** | Zobrazí seznam souborů, které jsou publikovány, které jsou založeny na souboru. funcignore. |
 | **`--nozip`** | Zapne výchozí režim `Run-From-Package`. |
 | **`--build-native-deps`** | Při publikování aplikací funkcí Pythonu přeskočí vygenerování složky. kolaes. |
-| **`--build [-b]`** | Provede akci sestavení při nasazení do aplikace Functions pro Linux. (akceptuje: Remote, Local) |
-| **`--additional-packages`** | Seznam balíčků, které se mají nainstalovat při vytváření nativních závislostí Například: `python3-dev libevent-dev`. |
+| **`--build`**<br/>**`-b`** | Provede akci sestavení při nasazení do aplikace Functions pro Linux. Akceptuje: `remote` a `local`. |
+| **`--additional-packages`** | Seznam balíčků, které se mají nainstalovat při vytváření nativních závislostí Příklad: `python3-dev libevent-dev`. |
 | **`--force`** | Ignorovat ověření před publikováním v některých scénářích. |
 | **`--csx`** | Publikujte C# projekt skriptu (. csx). |
-| **`--no-build`** | Přeskočte vytváření funkcí dotnet. |
+| **`--no-build`** | Nevytvářejte funkce knihovny tříd .NET. |
 | **`--dotnet-cli-params`** | Při publikování kompilovaných C# funkcí (. csproj) volají základní nástroje "dotnet Build--Output bin/Publish". Všechny předané parametry budou připojeny k příkazovému řádku. |
 
 ### <a name="deployment-custom-container"></a>Nasazení (vlastní kontejner)
@@ -523,5 +530,5 @@ Pokud chcete zaslat žádost o chybu nebo funkci, [otevřete problém GitHubu](h
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
 [sad rozšíření]: functions-bindings-register.md#extension-bundles

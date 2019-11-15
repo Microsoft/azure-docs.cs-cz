@@ -1,56 +1,56 @@
 ---
-title: Nastavení zotavení po havárii pro vícevrstvou Citrix XenDesktop XenApp nasazení a používání služby Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nastavit zotavení po havárii fo Citrix XenDesktop a XenApp nasazení s využitím Azure Site Recovery.
+title: Nastavení zotavení po havárii Citrix XenDesktop/XenApp pomocí Azure Site Recovery
+description: Tento článek popisuje, jak nastavit zotavení po havárii pro nasazení Citrix XenDesktop a XenApp pomocí Azure Site Recovery.
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038191"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084542"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>nastavení zotavení po havárii pro vícevrstvou nasazení Citrix XenApp a XenDesktop
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>nastavení zotavení po havárii pro multi-vrstvou Citrix XenApp a XenDesktop Deployment
 
 
 
-Citrix XenDesktop je virtualizace plochy u řešení, která poskytuje plochy a aplikace jako služby ondemand s žádným uživatelem, kdekoli. S technologií doručování FlexCast XenDesktop můžete rychle a bezpečně doručovat aplikacím a plochám uživatelům.
-V současné době Citrix XenApp neposkytuje každé havárie funkcím pro obnovení.
+Citrix XenDesktop je virtualizační řešení pro stolní počítače, které doručuje desktopy a aplikace jako službu OnDemand pro každého uživatele, a to kdekoli. Díky technologii doručování FlexCast může XenDesktop rychle a bezpečně doručovat aplikace a stolní počítače uživatelům.
+V současné době Citrix XenApp neposkytuje žádné možnosti zotavení po havárii.
 
-Řešení pro zotavení po havárii dobré, by měl Povolit modelování plány zotavení po výše uvedené komplexních aplikačních architektur a také mít možnost přidávat vlastní postup zpracování aplikace mapování mezi různými úrovněmi proto poskytuje jedním kliknutím Zkontrolujte snímek řešení v případě havárie, což vede k nižší RTO.
+Dobrým řešením zotavení po havárii by mělo být umožněno modelování plánů obnovení kolem výše uvedených komplexních architektur aplikace a také mít možnost přidat přizpůsobené kroky pro zpracování mapování aplikací mezi různými úrovněmi, čímž se vytvoří jedním kliknutím. Zajistěte, aby se v případě havárie rozvedlo řešení, které vede k menšímu RTO.
 
-Tento dokument obsahuje podrobné pokyny k vytváření řešení pro zotavení po havárii pro místní nasazení Citrix XenApp v Hyper-V a VMware vSphere platformy. Tento dokument taky popisuje, jak provést testovací převzetí služeb při selhání (zotavení po havárii) a neplánované převzetí služeb při selhání do Azure pomocí plánů obnovení, podporované konfigurace a požadavky.
+Tento dokument poskytuje podrobné pokyny pro vytvoření řešení zotavení po havárii pro místní nasazení Citrix XenApp na platformách Hyper-V a VMware vSphere. Tento dokument také popisuje, jak provést testovací převzetí služeb při selhání (postup zotavení po havárii) a neplánované převzetí služeb při selhání do Azure pomocí plánů obnovení, podporovaných konfigurací a požadavků.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že rozumíte následující:
+Než začnete, ujistěte se, že rozumíte následujícímu:
 
 1. [Replikace virtuálního počítače do Azure](site-recovery-vmware-to-azure.md)
-1. Jak [návrh sítě pro zotavení](site-recovery-network-design.md)
-1. [Provádění testovací převzetí služeb při selhání do Azure](site-recovery-test-failover-to-azure.md)
-1. [Provádění převzetí služeb při selhání do Azure](site-recovery-failover.md)
-1. Jak [replikace řadiče domény](site-recovery-active-directory.md)
-1. Jak [replikace SQL serveru](site-recovery-sql.md)
+1. [Návrh sítě pro obnovení](site-recovery-network-design.md)
+1. [Test převzetí služeb při selhání do Azure](site-recovery-test-failover-to-azure.md)
+1. [Převzetí služeb při selhání do Azure](site-recovery-failover.md)
+1. Postup [replikace řadiče domény](site-recovery-active-directory.md)
+1. Postup [replikace SQL Server](site-recovery-sql.md)
 
-## <a name="deployment-patterns"></a>Modely nasazení
+## <a name="deployment-patterns"></a>Vzory nasazení
 
-Citrix XenApp a XenDesktop farmy mají obvykle vzor následující nasazení:
+Farma Citrix XenApp a XenDesktop má obvykle následující vzor nasazení:
 
-**Nasazení modelu**
+**Vzor nasazení**
 
-Nasazení Citrix XenApp a XenDesktop serveru AD DNS, SQL serveru, Citrix Delivery Controlleru, prodejních míst serveru, XenApp Masteru (VDA), Citrix XenApp License serveru databáze
+Nasazení Citrix XenApp a XenDesktop se serverem DNS služby AD, serverem SQL Database, řadičem pro doručování Citrix, serverem prezentace, XenApp Master (VDA), serverem licencí Citrix XenApp
 
-![Model nasazení 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
+![Vzor nasazení 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
 
 
 ## <a name="site-recovery-support"></a>Podpora Site Recovery
 
-Pro účely tohoto článku Spravovat nasazení Citrix na virtuálních počítačích VMware vSphere 6.0 / System Center VMM 2012 R2 jste použili k nastavení zotavení po Havárii.
+Pro účely tohoto článku se k nastavení zotavení po havárii použila nasazení Citrix na virtuálních počítačích VMware spravovaných přes vSphere 6,0 nebo System Center VMM 2012 R2.
 
 ### <a name="source-and-target"></a>Zdroj a cíl
 
@@ -61,135 +61,135 @@ Pro účely tohoto článku Spravovat nasazení Citrix na virtuálních počíta
 **Fyzický server** | Není v oboru | Ano
 
 ### <a name="versions"></a>Verze
-Zákazníci mohou nasadit komponenty XenApp jako virtuální počítače spuštěné na Hyper-V nebo VMware nebo fyzických serverů. Azure Site Recovery může chránit fyzických i virtuálních nasazení do Azure.
-Protože XenApp 7,7 nebo vyšší je podporovaná v Azure, nasazení jenom s těmito verzemi mohou být přebrány do Azure pro zotavení po havárii nebo migrace.
+Zákazníci můžou nasazovat komponenty XenApp jako Virtual Machines spuštěné v Hyper-V nebo VMware nebo jako fyzické servery. Azure Site Recovery může chránit jak fyzické, tak i virtuální nasazení v Azure.
+Vzhledem k tomu, že v Azure je XenApp 7,7 nebo novější, je možné, že Azure při zotavení po havárii a při zotavení po havárii podporuje jenom nasazení s těmito verzemi.
 
 ### <a name="things-to-keep-in-mind"></a>Co je potřeba mít na paměti
 
-1. Ochrana a obnovení místních nasazení operačního systému serveru pomocí počítačů k zajištění XenApp publikované aplikace a XenApp publikované stolní počítače podporována.
+1. Ochrana a obnovení místních nasazení pomocí počítačů s operačním systémem serveru pro doručování publikovaných aplikací XenApp a XenApp publikovaných ploch je podporováno.
 
-2. Ochrana a obnovení místních nasazení doručování infrastruktury virtuálních klientských počítačů Desktop pro klienta virtuálních klientů, včetně Windows 10 s využitím stolní počítače s operačním systémem se nepodporuje. Je to proto Site Recovery nepodporuje obnovení počítačů v desktopu OS'es.  Navíc některé virtuální plochy operační systémy (např.) Windows 7) se zatím nepodporují pro licencování v Azure. [Další informace](https://azure.microsoft.com/pricing/licensing-faq/) týkající se licencování pro plochy klienta nebo serveru v Azure
+2. Ochrana a obnovení místních nasazení pomocí počítačů s desktopovým operačním systémem k dodávání plochy VDI pro klientské virtuální plochy, včetně Windows 10, se nepodporuje. Důvodem je to, že Site Recovery nepodporuje obnovení počítačů s desktopovým OS'es.  Také některé operační systémy klientů s virtuálními počítači (např. Systém Windows 7) zatím není podporován pro licencování v Azure. [Další informace](https://azure.microsoft.com/pricing/licensing-faq/) týkající se licencování pro plochy klienta nebo serveru v Azure
 
-3.  Azure Site Recovery nejde replikovat a chránit existující místní relace s více Připojeními nebo systémy současné hodnoty duplicity.
-Budete muset znovu vytvořit tyto klony pomocí Azure RM zřizování z kontroler doručování.
+3.  Azure Site Recovery nemůže replikovat a chránit existující místní MCS nebo PVS klony.
+Tyto klony je potřeba znovu vytvořit pomocí zřizování Azure RM z kontroleru doručení.
 
-4. NetScaler nejde chránit pomocí Azure Site Recovery NetScaler vychází FreeBSD a Azure Site Recovery nepodporuje ochranu FreeBSD operačního systému. Je třeba k nasazení a konfiguraci nových zařízení NetScaler v Azure Marketplace po převzetí služeb při selhání do Azure.
+4. NetScaler nelze chránit pomocí Azure Site Recovery, protože NetScaler je založen na FreeBSD a Azure Site Recovery nepodporuje ochranu operačního systému FreeBSD. Po převzetí služeb při selhání do Azure budete muset na svém trhu Azure nasadit a nakonfigurovat nové zařízení NetScaler.
 
 
 ## <a name="replicating-virtual-machines"></a>Replikace virtuálních počítačů
 
-Následující součásti nasazení Citrix XenApp mají být chráněny povolit replikaci a obnovení.
+Aby bylo možné povolit replikaci a obnovení, je třeba chránit následující komponenty nasazení Citrix XenApp.
 
-* Ochrana serveru AD DNS
-* Ochrana serveru SQL database
-* Ochrana Citrix Delivery Controlleru
-* Ochrana serveru StoreFront.
-* Ochrana hlavní XenApp (VDA)
-* Ochrana Citrix XenApp License serveru
+* Ochrana serveru DNS služby AD
+* Ochrana serveru SQL Database
+* Ochrana řadiče pro doručení Citrix
+* Ochrana serveru prezentace
+* Ochrana hlavního serveru XenApp (VDA)
+* Ochrana serveru Citrix XenApp License Server
 
 
-**Replikace na serveru AD DNS**
+**Replikace serveru DNS služby AD**
 
-Najdete [ochrana služby Active Directory a DNS pomocí Azure Site Recovery](site-recovery-active-directory.md) na pokyny, které se replikují a konfiguraci řadiče domény v Azure.
+Pokyny pro replikaci a konfiguraci řadiče domény v Azure najdete v tématu věnovaném [ochraně služby Active Directory a DNS pomocí Azure Site Recovery](site-recovery-active-directory.md) .
 
-**Replikace databáze serveru SQL**
+**Replikace serveru služby SQL Database**
 
-Najdete [Ochrana systému SQL Server pomocí zotavení po havárii pro SQL Server a Azure Site Recovery](site-recovery-sql.md) podrobné technické informace o doporučené možnosti pro ochranu serverů SQL.
+Podrobné technické pokyny týkající se doporučených možností pro ochranu SQL serveru najdete v tématu [ochrana SQL Server v SQL Server zotavení po havárii a Azure Site Recovery](site-recovery-sql.md) .
 
-Postupujte podle [návod](site-recovery-vmware-to-azure.md) ke spuštění replikace jiných součástí virtuálních počítačů do Azure.
+Postupujte podle [těchto pokynů](site-recovery-vmware-to-azure.md) a začněte replikovat ostatní virtuální počítače součástí do Azure.
 
-![Ochrana XenApp komponent](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
+![Ochrana součástí XenApp](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 
-**Výpočetní prostředky a nastavení sítě**
+**Nastavení výpočtů a sítě**
 
-Jakmile počítače chráněné (zobrazí stav "Protected" v části replikované položky), je potřeba nakonfigurovat nastavení výpočty a síť.
-V výpočty a síť > výpočetní vlastnosti, můžete zadat název a cílovou velikost virtuálního počítače Azure.
-Název pro dosažení souladu s požadavky služby Azure, pokud je potřeba upravte. Můžete také zobrazit a přidat informace o cílové síti, podsíti a IP adresu, která bude přiřazena virtuálnímu počítači Azure.
+Po ochraně počítačů (stav je "chráněno" v části replikované položky), je nutné nakonfigurovat nastavení výpočtů a sítě.
+V výpočetních a síťových > výpočetních vlastnostech můžete zadat název a cílovou velikost virtuálního počítače Azure.
+V případě potřeby upravte název tak, aby splňoval požadavky Azure. Můžete také zobrazit a přidat informace o cílové síti, podsíti a IP adrese, která bude přiřazena k virtuálnímu počítači Azure.
 
 Je třeba počítat s následujícím:
 
-* Můžete nastavit cílovou IP adresu. Pokud adresu nezadáte, bude počítač, který převezme služby při selhání, používat DHCP. Pokud nastavíte adresu, která není k dispozici na převzetí služeb při selhání, převzetí služeb při selhání nebude fungovat. Stejnou cílovou IP adresu je možné použít pro testovací převzetí služeb při selhání, pokud je adresa k dispozici v testovací síti převzetí služeb při selhání.
+* Můžete nastavit cílovou IP adresu. Pokud adresu nezadáte, bude počítač, který převezme služby při selhání, používat DHCP. Pokud nastavíte adresu, která není dostupná při převzetí služeb při selhání, převzetí služeb při selhání nebude fungovat. Stejnou cílovou IP adresu je možné použít pro testovací převzetí služeb při selhání, pokud je adresa k dispozici v testovací síti převzetí služeb při selhání.
 
-* Pro server AD/DNS zachování adresy místní umožňuje zadejte stejnou adresu jako server DNS pro Azure Virtual network.
+* Pro server AD nebo DNS si ponechá místní adresa a umožní vám zadat stejnou adresu jako server DNS pro virtuální síť Azure.
 
 Počet síťových adaptérů závisí na velikosti, kterou zadáte pro cílový virtuální počítač, a to následujícím způsobem:
 
 *   Pokud je počet síťových adaptérů na zdrojovém počítači menší nebo roven počtu adaptérů, které jsou povolené pro velikost cílového počítače, pak bude mít cíl stejný počet adaptérů jako zdroj.
 *   Pokud počet adaptérů pro zdrojový virtuální počítač překračuje počet povolený pro cílovou velikost, použije se maximální velikost cíle.
 * Pokud má například zdrojový počítač dva síťové adaptéry a velikost cílového počítače podporuje čtyři, bude mít cílový počítač dva adaptéry. Pokud má zdrojový počítač dva adaptéry, ale podporovaná velikost cíle podporuje pouze jeden, bude mít cílový počítač pouze jeden adaptér.
-*   Pokud má virtuální počítač více síťových adaptérů, připojí se všechny ke stejné síti.
-*   Pokud má virtuální počítač více síťových adaptérů, v seznamu zobrazí první z nich stane výchozí síťový adaptér ve virtuálním počítači Azure.
+*   Pokud má virtuální počítač několik síťových adaptérů, připojí se ke stejné síti.
+*   Pokud má virtuální počítač několik síťových adaptérů, první z nich, který je zobrazený v seznamu, se bude nacházet jako výchozí síťový adaptér na virtuálním počítači Azure.
 
 
-## <a name="creating-a-recovery-plan"></a>Vytváří se plán obnovení
+## <a name="creating-a-recovery-plan"></a>Vytvoření plánu obnovení
 
-Po povolení replikace pro virtuální počítače součástí XenApp, dalším krokem je vytvoření plánu obnovení.
-Obnovení plánování skupin společně virtuálních počítačů podobné požadavkům pro převzetí služeb při selhání a obnovení.  
+Po povolení replikace pro virtuální počítače součásti XenApp je dalším krokem vytvoření plánu obnovení.
+Plán obnovení seskupuje virtuální počítače s podobnými požadavky pro převzetí služeb při selhání a obnovení.  
 
 **Postup vytvoření plánu obnovení**
 
-1. Přidejte virtuální počítače součástí XenApp v plánu obnovení.
-2. Klikněte na možnost plány obnovení -> + plánu obnovení. Zadejte název intuitivní pro plán obnovení.
-3. U virtuálních počítačů VMware: Vyberte zdroj jako procesový server VMware, cíl jako Microsoft Azure a modelu nasazení Resource Manager a klikněte na možnost vybrat položky.
-4. Pro virtuální počítače Hyper-V: Vyberte jako server VMM, cíl jako Microsoft Azure a modelu nasazení Resource Manager jako zdroj a klikněte na možnost vybrat položky a potom vyberte XenApp nasazení virtuálních počítačů.
+1. Přidejte virtuální počítače součásti XenApp do plánu obnovení.
+2. Klikněte na plány obnovení – > a plán obnovení. Zadejte pro plán obnovení intuitivní název.
+3. Pro virtuální počítače VMware: Vyberte zdroj jako procesový Server VMware, cíl jako Microsoft Azure a model nasazení jako Správce prostředků a klikněte na vybrat položky.
+4. Pro virtuální počítače Hyper-V: Vyberte zdroj jako server VMM, cíl jako Microsoft Azure a model nasazení jako Správce prostředků a klikněte na vybrat položky a pak vyberte virtuální počítače pro nasazení XenApp.
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Přidávání virtuálních počítačů do skupiny převzetí služeb při selhání
+### <a name="adding-virtual-machines-to-failover-groups"></a>Přidávání virtuálních počítačů do skupin s podporou převzetí služeb při selhání
 
-Plány obnovení je možné přizpůsobit a přidejte skupiny převzetí služeb při selhání pro konkrétní spuštění pořadí, skripty a ručně prováděné akce. Tyto skupiny je potřeba přidat do plánu obnovení.
+Plány obnovení je možné přizpůsobit a přidat skupiny převzetí služeb při selhání pro konkrétní pořadí spouštění, skripty nebo ruční akce. Do plánu obnovení je třeba přidat následující skupiny.
 
-1. Group1 převzetí služeb při selhání: AD DNS
-2. Skupina2 převzetí služeb při selhání: Virtuální počítače s SQL Serverem
-2. Skupina3 převzetí služeb při selhání: VDA hlavního Image virtuálního počítače
-3. Skupina převzetí služeb při selhání 4: Kontroler doručování a virtuální počítače z prodejních míst serveru
+1. Převzetí služeb při selhání Group1: AD DNS
+2. Převzetí služeb při selhání skupina2: SQL Server virtuálních počítačů
+2. Převzetí služeb při selhání Skupina3: virtuální počítač s hlavní imagí VDA
+3. Převzetí služeb při selhání Group4: řadič pro doručování a virtuální počítače prezentace serveru
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Přidávání skriptů do plánu obnovení
 
-Skripty můžete spustit před nebo po konkrétní skupinu v plánu obnovení. Ručně prováděné akce můžete také zahrnout a prováděné během převzetí služeb při selhání.
+Skripty můžete spustit před nebo po určité skupině v plánu obnovení. Při převzetí služeb při selhání je také možné zahrnout a provést ruční akce.
 
-Plán vlastní obnovení bude vypadat jako následující:
+Přizpůsobený plán obnovení vypadá následovně:
 
-1. Group1 převzetí služeb při selhání: AD DNS
-2. Skupina2 převzetí služeb při selhání: Virtuální počítače s SQL Serverem
-3. Skupina3 převzetí služeb při selhání: VDA hlavního Image virtuálního počítače
+1. Převzetí služeb při selhání Group1: AD DNS
+2. Převzetí služeb při selhání skupina2: SQL Server virtuálních počítačů
+3. Převzetí služeb při selhání Skupina3: virtuální počítač s hlavní imagí VDA
 
    >[!NOTE]     
-   >Kroky 4, 6 a 7 obsahující ruční nebo skript akce se vztahují na pouze XenApp v místním > prostředí s MCS nebo systémy současné hodnoty katalogů.
+   >Kroky 4, 6 a 7, které obsahují ruční nebo skriptovací akce, se vztahují jenom na místní XenApp > prostředí s katalogy MCS/PVS.
 
-4. Ruční nebo skript akce skupiny 3: Vypnutí hlavní VDA virtuálního počítače.
-Virtuální počítač k VDA hlavní při převzetí služeb při selhání do Azure budou ve spuštěném stavu. K vytvoření nové relace s více Připojeními katalogy používající hostování Azure, je hlavním virtuálním počítači VDA musí být v zastaveném (de přidělené) stavu. Vypnutí virtuálního počítače z webu Azure portal.
+4. Skupina 3 akce ručního nebo skriptu: vypněte hlavní virtuální počítač VDA.
+Hlavní virtuální počítač VDA při převzetí služeb při selhání do Azure bude v běžícím stavu. Pokud chcete vytvořit nové katalogy MCS pomocí hostování Azure, je nutné, aby byl hlavní virtuální počítač VDA ve stavu Zastaveno (přidělení zrušeno). Vypněte virtuální počítač z Azure Portal.
 
-5. Skupina převzetí služeb při selhání 4: Kontroler doručování a virtuální počítače z prodejních míst serveru
-6. Skupina3 ruční nebo skript akce 1:
+5. Převzetí služeb při selhání Group4: řadič pro doručování a virtuální počítače prezentace serveru
+6. Ruční skupina3 nebo akce skriptu 1:
 
     ***Přidat připojení hostitele Azure RM***
 
-    V počítači Kontroleru doručování zřídit nové relace s více Připojeními katalogy v Azure vytvořte připojení hostitele Azure. Postupujte podle pokynů, jak je popsáno v tomto [článku](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
+    Vytvořte připojení k hostiteli Azure v počítači se službou Delivery Controller a zřiďte nové katalogy MCS v Azure. Postupujte podle kroků popsaných v tomto [článku](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
 
-7. Skupina3 ruční nebo skript akce 2:
+7. Ruční skupina3 nebo akce skriptu 2:
 
-    ***Znovu vytvořit relace s více Připojeními katalogy v Azure***
+    ***Opětovné vytvoření katalogů MCS v Azure***
 
-    Existující relace s více Připojeními nebo systémy současné hodnoty duplicity v primární lokalitě, nebude možné replikovat do Azure. Budete muset znovu vytvořit tyto klony pomocí replikovaná hlavní VDA a zřizování z kontroler doručování Azure. Postupujte podle pokynů, jak je popsáno v tomto [článku](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) k vytvoření relace s více Připojeními katalogy v Azure.
+    Existující klony MCS nebo PVS v primární lokalitě nebudou replikovány do Azure. Tyto klony je potřeba znovu vytvořit pomocí replikovaného hlavního VDA a zřizování Azure z kontroleru doručení. Pokud chcete vytvořit katalogy MCS v Azure, postupujte podle kroků popsaných v tomto [článku](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) .
 
 ![Plán obnovení pro součásti XenApp](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 
 
    >[!NOTE]
-   >Můžete použít skripty na [umístění](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) aktualizace DNS pomocí nové IP adresy tohoto přes > virtuální počítače nebo se připojit nástroj pro vyrovnávání zatížení se přes virtuální počítač, v případě potřeby.
+   >V případě potřeby můžete pomocí skriptů v [umístění](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) aktualizovat DNS nové IP adresy virtuálních počítačů, u kterých došlo k pře> vzetí služeb při selhání, nebo pro připojení nástroje pro vyrovnávání zatížení na virtuálním počítači s převzetím služeb při selhání.
 
 
-## <a name="doing-a-test-failover"></a>Provádění testovací převzetí služeb při selhání
+## <a name="doing-a-test-failover"></a>Test převzetí služeb při selhání
 
-Postupujte podle [návod](site-recovery-test-failover-to-azure.md) provést testovací převzetí služeb.
+Při provádění testovacího převzetí služeb při selhání postupujte podle [těchto pokynů](site-recovery-test-failover-to-azure.md) .
 
 ![Plán obnovení](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-tfo.png)
 
 
-## <a name="doing-a-failover"></a>Převzetím služeb
+## <a name="doing-a-failover"></a>Provedení převzetí služeb při selhání
 
-Postupujte podle [návod](site-recovery-failover.md) při provádění převzetí služeb při selhání.
+Když provádíte převzetí služeb při selhání, postupujte podle [těchto pokynů](site-recovery-failover.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Je možné [Další](https://aka.ms/citrix-xenapp-xendesktop-with-asr) o replikaci nasazení Citrix XenApp a XenDesktop v tomto dokumentu white paper. Podívejte se na pokyny k [replikovat jiné aplikace](site-recovery-workload.md) pomocí služby Site Recovery.
+[Další informace](https://aka.ms/citrix-xenapp-xendesktop-with-asr) o replikaci nasazení Citrix XenApp a XenDesktop najdete v tomto dokumentu White Paper. Přečtěte si pokyny pro [replikaci dalších aplikací](site-recovery-workload.md) pomocí Site Recovery.

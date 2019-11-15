@@ -1,5 +1,5 @@
 ---
-title: 'Pracovní postupy konfigurace okruhu – ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: pracovní postupy konfigurace okruhů'
 description: Tato stránka zobrazuje pracovní postupy pro konfiguraci okruh ExpressRoute a partnerské vztahy
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ae6c2b7257ee6a8184f3a5bb002f24cb75a86d67
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123381"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083328"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Pracovní postupy ExpressRoute pro zřizování a stavy okruhů
 Tato stránka vás provede službu zřizování a pracovní postupy konfigurace směrování na vysoké úrovni.
@@ -104,7 +103,7 @@ Pokud státu inzerované veřejné předpony je nastavená na *vyžaduje se ově
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Nakonfigurujte připojení ExpressRoute.
   
   * [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md)

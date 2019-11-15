@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Směrování provozu přes síťové virtuální zařízení | Microsoft Docs
+title: Směrování provozu přes síťové virtuální zařízení – ukázkový skript Azure CLI
 description: Ukázkový skript Azure CLI – Směrování provozu přes síťové virtuální zařízení brány firewall
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 2e5ec39e2d8fe1636018ac59dba372bd0faf31f4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d8704c34d59a8f735d060a7c7ca6463034883714
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716063"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083818"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Ukázkový skript pro směrování provozu přes síťové virtuální zařízení
 
@@ -62,7 +62,7 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 | [az vm create](/cli/azure/vm) | Vytvoří virtuální počítač a připojí k němu síťovou kartu. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu. |
 | [az group delete](/cli/azure/group) | Odstraní skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

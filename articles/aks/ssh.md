@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932318"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089541"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Připojení k uzlům clusteru SSH a Azure Kubernetes Service (AKS) pro účely údržby nebo řešení potíží
 
@@ -20,7 +20,7 @@ V průběhu životního cyklu clusteru Azure Kubernetes Service (AKS) budete mo�
 
 V tomto článku se dozvíte, jak vytvořit připojení SSH s uzlem AKS pomocí svých privátních IP adres.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -28,7 +28,7 @@ Ve výchozím nastavení se klíče SSH získávají nebo generují a pak se do 
 
 Tento článek také předpokládá, že máte klíč SSH. Můžete vytvořit klíč SSH pomocí [MacOS nebo Linux][ssh-nix] nebo [Windows][ssh-windows]. Použijete-li pro vytvoření páru klíčů gen, uložte dvojici klíčů ve formátu OpenSSH, nikoli jako výchozí formát privátního klíče pro výstup pro výstup (soubor. ppk).
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Konfigurace clusterů AKS založených na škálování virtuálních počítačů pro přístup přes SSH
 
@@ -37,14 +37,16 @@ Pokud chcete nakonfigurovat přístup SSH na základě sady škálování virtu�
 Pomocí příkazu [AZ AKS show][az-aks-show] Získejte název skupiny prostředků vašeho clusteru AKS a pak použijte příkaz [AZ VMSS list][az-vmss-list] , který získá název vaší sady škálování.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* k *CLUSTER_RESOURCE_GROUP*. Příklad pak pomocí *CLUSTER_RESOURCE_GROUP* vypíše název sady škálování a přiřadí ho k *SCALE_SET_NAME*.  
+Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* pro *CLUSTER_RESOURCE_GROUP*. Příklad následně používá *CLUSTER_RESOURCE_GROUP* k vypsání názvu sady škálování a přiřadí ho do *SCALE_SET_NAME*.  
 
-> [!NOTE]
-> Klíče SSH se momentálně dají do uzlů Linux Přidat jenom pomocí Azure CLI. Pokud se chcete připojit k uzlu Windows serveru pomocí SSH, použijte klíče SSH, které jste zadali při vytváření clusteru AKS, a přeskočte další sadu příkazů pro přidání veřejného klíče SSH. Pořád budete potřebovat IP adresu uzlu, který chcete řešit, který je zobrazený v posledním příkazu této části. Alternativně se můžete [k uzlům Windows serveru připojit pomocí připojení protokolu RDP (Remote Desktop Protocol)][aks-windows-rdp] místo použití SSH.
+> [!IMPORTANT]
+> V tuto chvíli byste měli aktualizovat jenom klíče SSH pro clustery AKS založené na škálování virtuálních počítačů pomocí rozhraní příkazového řádku Azure CLI.
+> 
+> V případě uzlů se systémem Linux je možné klíče SSH aktuálně přidat jenom pomocí Azure CLI. Pokud se chcete připojit k uzlu Windows serveru pomocí SSH, použijte klíče SSH, které jste zadali při vytváření clusteru AKS, a přeskočte další sadu příkazů pro přidání veřejného klíče SSH. Pořád budete potřebovat IP adresu uzlu, který chcete řešit, který je zobrazený v posledním příkazu této části. Alternativně se můžete [k uzlům Windows serveru připojit pomocí připojení protokolu RDP (Remote Desktop Protocol)][aks-windows-rdp] místo použití SSH.
 
 Pokud chcete přidat klíče SSH do uzlů v sadě škálování virtuálního počítače, použijte příkaz [AZ VMSS Extension set][az-vmss-extension-set] a [AZ VMSS Update-Instances][az-vmss-update-instances] .
 
@@ -62,7 +64,7 @@ az vmss update-instances --instance-ids '*' \
     --name $SCALE_SET_NAME
 ```
 
-Výše uvedený příklad používá proměnné *CLUSTER_RESOURCE_GROUP* a *SCALE_SET_NAME* z předchozích příkazů. Výše uvedený příklad také používá *~/.ssh/id_rsa.pub* jako umístění pro veřejný klíč SSH.
+Výše uvedený příklad používá proměnné *CLUSTER_RESOURCE_GROUP* a *SCALE_SET_NAME* z předchozích příkazů. Výše uvedený příklad také používá *~/.ssh/id_rsa. pub* jako umístění pro veřejný klíč SSH.
 
 > [!NOTE]
 > Ve výchozím nastavení je uživatelské jméno pro uzly AKS *azureuser*.
@@ -94,11 +96,11 @@ Chcete-li nakonfigurovat cluster AKS založený na sadě dostupnosti virtuální
 Pomocí příkazu [AZ AKS show][az-aks-show] Získejte název skupiny prostředků vašeho clusteru AKS a pak použijte příkaz [AZ VM list][az-vm-list] , který vypíše název virtuálního počítače pro uzel Linux vašeho clusteru.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* k *CLUSTER_RESOURCE_GROUP*. Příklad pak pomocí *CLUSTER_RESOURCE_GROUP* vypíše název virtuálního počítače. Ukázkový výstup zobrazuje název virtuálního počítače: 
+Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* pro *CLUSTER_RESOURCE_GROUP*. Příklad následně používá *CLUSTER_RESOURCE_GROUP* k vypsání názvu virtuálního počítače. Ukázkový výstup zobrazuje název virtuálního počítače: 
 
 ```
 Name                      ResourceGroup                                  Location
@@ -116,7 +118,7 @@ az vm user update \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-Výše uvedený příklad používá proměnnou *CLUSTER_RESOURCE_GROUP* a název virtuálního počítače uzlu z předchozích příkazů. Výše uvedený příklad také používá *~/.ssh/id_rsa.pub* jako umístění pro veřejný klíč SSH. Místo zadání cesty můžete také použít obsah svého veřejného klíče SSH.
+Výše uvedený příklad používá proměnnou *CLUSTER_RESOURCE_GROUP* a název virtuálního počítače uzlu z předchozích příkazů. Výše uvedený příklad také používá *~/.ssh/id_rsa. pub* jako umístění pro veřejný klíč SSH. Místo zadání cesty můžete také použít obsah svého veřejného klíče SSH.
 
 > [!NOTE]
 > Ve výchozím nastavení je uživatelské jméno pro uzly AKS *azureuser*.
@@ -127,7 +129,7 @@ Po přidání veřejného klíče SSH do virtuálního počítače uzlu můžete
 az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Výše uvedený příklad používá proměnnou *CLUSTER_RESOURCE_GROUP* sadu v předchozích příkazech. Následující příklad výstupu ukazuje privátní IP adresy uzlů AKS:
+Výše uvedený příklad používá sadu proměnných *CLUSTER_RESOURCE_GROUP* v předchozích příkazech. Následující příklad výstupu ukazuje privátní IP adresy uzlů AKS:
 
 ```
 VirtualMachine            PrivateIPAddresses
@@ -139,7 +141,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 
 Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clusterem AKS. Tato pomocná Nápověda je k dispozici s přístupem SSH do clusteru a dalším přístupem k uzlu SSH. Pokud chcete vytvořit a použít pomocníka pod, proveďte následující kroky:
 
-1. Spusťte image `debian` kontejneru a připojte k ní relaci terminálu. Tento kontejner se dá použít k vytvoření relace SSH s jakýmkoli uzlem v clusteru AKS:
+1. Spusťte image kontejneru `debian` a připojte k ní relaci terminálu. Tento kontejner se dá použít k vytvoření relace SSH s jakýmkoli uzlem v clusteru AKS:
 
     ```console
     kubectl run -it --rm aks-ssh --image=debian
@@ -150,7 +152,7 @@ Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clust
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Jakmile je relace Terminálové služby připojena ke kontejneru, nainstalujte klienta SSH pomocí nástroje `apt-get`:
+1. Jakmile je relace Terminálové služby připojena ke kontejneru, nainstalujte klienta SSH pomocí `apt-get`:
 
     ```console
     apt-get update && apt-get install openssh-client -y
@@ -204,7 +206,7 @@ Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clust
 
 ## <a name="remove-ssh-access"></a>Odebrat přístup přes SSH
 
-Po dokončení `exit` relace SSH a pak `exit` interaktivní relaci kontejneru. Po zavření této relace kontejneru se odstraní pole pod použitým pro přístup SSH z clusteru AKS.
+Po dokončení `exit` relaci SSH a pak `exit` interaktivní relaci kontejneru. Po zavření této relace kontejneru se odstraní pole pod použitým pro přístup SSH z clusteru AKS.
 
 ## <a name="next-steps"></a>Další kroky
 

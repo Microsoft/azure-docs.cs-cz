@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: b1f23ffac26cb48493f013290654189162861a27
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e59cfaa1260cd33c8912437d56bbbb2ace2f43ed
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468738"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090447"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Rychlý Start: spuštění ukázkové aplikace sady Speech Devices SDK ve Windows
 
-V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Windows vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](conversation-transcription-service.md) . V současné době je podporována pouze služba [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) .
+V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Windows vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](conversation-transcription-service.md) . Pro konverzaci s přepisem se podporuje jenom [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) . Pro jiný hlas použijte lineární pole Mic, která poskytují geometrii pole mikrofonu.
 
 Aplikace je sestavená pomocí balíčku sady Speech SDK a Java IDE v 64 (v4) na Windows. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
 Tato příručka vyžaduje účet [Azure Cognitive Services](get-started.md) s prostředkem služeb Speech Services. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
-Zdrojový kód [ukázkové aplikace](https://aka.ms/sdsdk-download-JRE) je součástí sady Speech Devices SDK. Je také [k dispozici na GitHubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Zdrojový kód [ukázkové aplikace](https://aka.ms/sdsdk-download-JRE) je součástí sady Speech Devices SDK. Je také [k dispozici na Githubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K tomuto rychlému startu potřebujete:
 
 * Operační systém: 64 – 64bitová verze Windows
-* [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
+* Pole pro mikrofon, jako je [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Java IDE zatmění](https://www.eclipse.org/downloads/)
 * Jenom [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
 * [Microsoft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
@@ -65,11 +65,34 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
    ![Snímek obrazovky s průzkumníkem balíčků](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. Otevřete soubor pom. XML a upravte ho.
+
+    Na konci souboru, než uzavírací značka `</project>`, vytvořte prvky `repositories` a `dependencies`, jak je znázorněno zde, a ujistěte se, že `version` odpovídá vaší aktuální verzi:
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
+1. Zkopírujte obsah **systému Windows-x64** do umístění projektu Java, např. **C:\SDSDK\JRE-Sample-Release**
+
 1. Kopírovat `kws.table`, `participants.properties` a `Microsoft.CognitiveServices.Speech.extension.pma.dll` do složky projektu **target\classes**
 
 ## <a name="configure-the-sample-application"></a>Konfigurace ukázkové aplikace
 
-1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete vyzkoušet rozpoznávání záměru, přidejte také klíč předplatného [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) a ID aplikace.
+1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete vyzkoušet rozpoznání záměru, přidejte také vaše [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klíč předplatného a aplikace.
 
    V případě řeči a LUIS se vaše informace přenášejí do `FunctionsList.java`:
 
@@ -94,15 +117,14 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
    > [!TIP]
    > Můžete také [vytvořit vlastní klíčové slovo](speech-devices-sdk-create-kws.md).
 
-    Chcete-li použít nové klíčové slovo, aktualizujte následující dva řádky v `FunctionsList.java`a zkopírujte balíček klíčových slov do aplikace. Například pro použití klíčového slova ' Machine ' z `kws-machine.zip`balíčku klíčového slova:
+    Chcete-li použít nové klíčové slovo, aktualizujte následující řádek v `FunctionsList.java`a zkopírujte klíčové slovo do aplikace. Například pro použití klíčového slova ' Machine ' z `machine.zip`balíčku klíčového slova:
 
-   * Zkopírujte balíček s klíčovým slovem do složky **cíl/třídy**projektu.
+   * Zkopírujte soubor `kws.table` z balíčku zip do složky Project **target/Classes**.
 
-   * Aktualizujte `FunctionsList.java` klíčovým slovem a názvem balíčku:
+   * Aktualizujte `FunctionsList.java` s názvem klíčového slova:
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Spuštění ukázkové aplikace z zatmění
@@ -111,9 +133,9 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
    ![Snímek obrazovky s vybranou aplikací Java](media/speech-devices-sdk/eclipse-run-sample.png)
 
-1. Spustí se ukázka aplikace Speech Devices SDK a zobrazí následující možnosti:
+1. Ukázková aplikace sadou SDK pro řeč zařízení spustí a zobrazí následující možnosti:
 
-   ![Ukázková sada Speech Devices SDK – ukázková aplikace a možnosti](media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Ukázková aplikace příklad sadou SDK pro řeč zařízení a možnosti](media/speech-devices-sdk/java-sample-app-windows.png)
 
 1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s **relací** > **Spustit**. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být vloženy do souboru `participants.properties` v **cílové složce nebo třídách**projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](how-to-use-conversation-transcription-service.md).
 
@@ -121,7 +143,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 ## <a name="create-and-run-a-standalone-application"></a>Vytvoření a spuštění samostatné aplikace
 
-1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. Vyberte **exportovat**. 
+1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. Zvolte **exportovat**. 
 
 1. Zobrazí se okno **exportovat** . Rozbalte **Java** a vyberte **soubor JAR spustitelný** a pak vyberte **Další**.
 
@@ -142,4 +164,4 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přečtěte si poznámky k verzi.](devices-sdk-release-notes.md)
+> [Přečtěte si poznámky k verzi](devices-sdk-release-notes.md)
