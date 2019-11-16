@@ -103,7 +103,7 @@
             - name: Správa uživatelů a skupin
               href: how-to-assign-roles.md
             - name: Použití virtuálních sítí
-              displayName: vnet
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: Zabezpečení webových služeb pomocí SSL
               href: how-to-secure-web-service.md
