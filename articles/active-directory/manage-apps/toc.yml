@@ -70,10 +70,10 @@
               href: end-user-experiences.md
     - name: Zřizování aplikací (SCIM)
       items:
-        - name: Automatizace zřizování pro aplikace s podporou SCIM
-          href: use-scim-to-provision-users-and-groups.md
         - name: Naplánování nasazení automatického zřizování uživatelů
           href: plan-auto-user-provisioning.md
+        - name: Ruční vs. automatické zřizování
+          href: application-provisioning-config-how-to.md
     - name: Proxy aplikací pro místní aplikace
       items:
         - name: Proxy aplikací
@@ -227,28 +227,40 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Zřizování aplikací (SCIM)
       items:
-        - name: Konfigurace zřizování uživatelů
+        - name: Konfigurace zřizování aplikací
           items:
-            - name: Ruční vs. automatické zřizování
-              href: application-provisioning-config-how-to.md
             - name: Konfigurace automatického zřizování uživatelů
               href: configure-automatic-user-provisioning-portal.md
+            - name: Použití SCIM pro automatické zřizování
+              href: use-scim-to-provision-users-and-groups.md
             - name: Přizpůsobení mapování atributů
               href: Customize-application-attributes.md
+            - name: Zápis výrazů pro mapování atributů
+              href: functions-for-customizing-application-data.md
             - name: Vymezení uživatelů nebo skupin pro zřízení
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Přeskočení odstranění pro uživatele mimo rozsah
               href: skip-out-of-scope-deletions.md
             - name: Monitorování stavu zřizování a výkonu
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Sestavy pro automatické zřizování uživatelů
+            - name: Sestava zřizování aplikací
               href: check-status-user-account-provisioning.md
             - name: Export a import vaší konfigurace
               href: export-import-provisioning-configuration.md
+            - name: Automatizace konfigurace s využitím MS Graphu
+              href: application-provisioning-configure-api.md
         - name: Řešení potíží se zřizováním uživatelů
           items:
-            - name: Řešení potíží se zřizováním uživatelů
+            - name: Řešení potíží se zřizováním aplikací
               href: application-provisioning-config-problem.md
+            - name: Stav karantény
+              href: application-provisioning-quarantine-status.md
+            - name: Protokoly zřizování
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: Synchronizace atributu pro mapování – aplikace v galerii
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: Hodiny – aplikace v galerii
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Problém s autorizací (nepovedlo se uložit přihlašovací údaje správce)
               href: application-provisioning-config-problem-storage-limit.md
             - name: Uživatelé nejsou zřízení

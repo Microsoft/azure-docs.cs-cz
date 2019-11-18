@@ -806,10 +806,10 @@
                   href: insights/container-insights-hybrid-setup.md
                 - name: Mapování oblastí
                   href: insights/container-insights-region-mapping.md
-            - name: Analýza
+            - name: Monitorování výkonu
               href: insights/container-insights-analyze.md
-            - name: Zákaz monitorování
-              href: insights/container-insights-optout.md
+            - name: Monitorování stavu
+              href: insights/container-insights-health.md
             - name: Zobrazení živých dat
               items:
                 - name: Přehled živých dat (Preview)
@@ -832,6 +832,10 @@
               href: insights/container-insights-agent-config.md
             - name: Aktualizace pro zapnutí metrik
               href: insights/container-insights-update-metrics.md
+            - name: Konfigurace sledování pro cluster
+              href: insights/container-insights-health-monitors-config.md
+            - name: Zákaz monitorování
+              href: insights/container-insights-optout.md
             - name: Řešení potíží
               href: insights/container-insights-troubleshoot.md
         - name: Monitorování Dockeru a kontejnerů s Windows
@@ -1167,7 +1171,7 @@
               href: platform/autoscale-overview.md
             - name: Názorný postup
               href: platform/autoscale-get-started.md
-            - name: Nastavení
+            - name: Nastavení konfigurace
               href: platform/autoscale-understanding-settings.md
             - name: Osvědčené postupy
               href: platform/autoscale-best-practices.md
@@ -1183,6 +1187,10 @@
               href: platform/autoscale-virtual-machine-scale-sets.md
             - name: Použití webhooků a e-mailových oznámení
               href: platform/autoscale-webhook-email.md
+            - name: Řešení potíží
+              href: platform/autoscale-troubleshoot.md
+            - name: Schémata protokolu prostředků
+              href: platform/autoscale-resource-log-schema.md
         - name: PowerShell
           items:
             - name: Správa s využitím PowerShellu

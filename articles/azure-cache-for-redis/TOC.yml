@@ -7,17 +7,17 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vytvoření aplikace v ASP.NET
+    - name: Aplikace v ASP.NET
       href: cache-web-app-howto.md
-    - name: Vytvoření aplikace v .NET
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Vytvoření aplikace v .NET Core
+    - name: Aplikace v .NET Core
       href: cache-dotnet-core-quickstart.md
-    - name: Vytvoření aplikace v Node.js
-      href: cache-nodejs-get-started.md
-    - name: Vytvoření aplikace v Javě
+    - name: Aplikace v .NET
+      href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Aplikace v Javě
       href: cache-java-get-started.md
-    - name: Vytvoření aplikace v Pythonu
+    - name: Aplikace v Node.js
+      href: cache-nodejs-get-started.md
+    - name: Aplikace v Pythonu
       href: cache-python-get-started.md
 - name: Kurzy
   items:
@@ -33,10 +33,10 @@
       href: cli-samples.md
 - name: Koncepty
   items:
-    - name: Osvědčené postupy
-      href: cache-best-practices.md
     - name: Převzetí služeb při selhání a opravy
       href: cache-failover.md
+    - name: Osvědčené postupy
+      href: cache-best-practices.md
     - name: Osvědčené postupy architektury pro ukládání do mezipaměti
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Návody
@@ -45,12 +45,14 @@
       items:
         - name: Volba úrovně mezipaměti
           href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+        - name: Distribuovaná mezipaměť pomocí clusterování
+          href: cache-how-to-premium-clustering.md
         - name: Zachování mezipaměti pomocí trvalosti dat Redis
           href: cache-how-to-premium-persistence.md
         - name: Zabezpečení mezipaměti pomocí virtuální sítě
           href: cache-how-to-premium-vnet.md
-        - name: Distribuovaná mezipaměť pomocí clusterování
-          href: cache-how-to-premium-clustering.md
+        - name: Nastavení geografické replikace
+          href: cache-how-to-geo-replication.md
         - name: Migrace ze služby Managed Cache Service
           href: cache-migrate-to-redis.md
     - name: Automatizace
@@ -79,8 +81,6 @@
       items:
         - name: Konfigurace na webu Azure Portal
           href: cache-configure.md
-        - name: Konfigurace geografické replikace
-          href: cache-how-to-geo-replication.md
         - name: Import/export dat
           href: cache-how-to-import-export-data.md
         - name: Restartování

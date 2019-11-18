@@ -241,7 +241,9 @@
                   href: migrate-android-adal-msal.md
                 - name: Migrace na MSAL.iOS a MacOS
                   href: migrate-objc-adal-msal.md
-                - name: Migrace na MSAL v Javě
+                - name: Migrace na MSAL pro Python
+                  href: migrate-python-adal-msal.md
+                - name: Migrace na MSAL pro Javu
                   href: migrate-adal-msal-java.md
                 - name: Migrace aplikací pro Xamarin pomocí zprostředkovatelů z ADAL.NET do MSAL.NET
                   href: msal-net-migration-ios-broker.md
@@ -452,7 +454,11 @@
                   href: request-custom-claims.md
                 - name: Konfigurace URI přesměrování
                   href: redirect-uris-ios.md
-            - name: MSAL v Javě
+            - name: MSAL pro Python
+              items:
+                - name: Serializace mezipaměti tokenů
+                  href: msal-python-token-cache-serialization.md
+            - name: MSAL pro Javu
               items:
                 - name: Serializace mezipaměti tokenů
                   href: msal-java-token-cache-serialization.md

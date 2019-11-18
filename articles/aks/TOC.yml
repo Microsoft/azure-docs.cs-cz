@@ -216,6 +216,8 @@
         - name: Použití Kubernetes RBAC s integrací Azure AD
           href: azure-ad-rbac.md
           maintainContext: true
+        - name: Rotace certifikátů
+          href: certificate-rotation.md
     - name: Monitorování a protokolování
       items:
         - name: Azure Monitor pro kontejnery

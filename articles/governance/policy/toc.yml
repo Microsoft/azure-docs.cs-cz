@@ -300,9 +300,19 @@
     - name: 'Oprava prostředků, které nevyhovují předpisům'
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
-    - name: Povolení Azure Monitoru pro virtuální počítače (Preview)
-      displayName: 'insights, log analytics, builtin'
-      href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json
+    - name: Integrace služby Azure Lighthouse
+      items:
+        - name: Nasazení zásad ve velkém
+          displayName: 'lighthouse, scale, deploy'
+          href: ../../lighthouse/how-to/policy-at-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+        - name: 'Nasazení zásady, která se dá napravit'
+          displayName: 'lighthouse, scale, remediate'
+          href: ../../lighthouse/how-to/deploy-policy-remediation.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Integrace služby Azure Monitor
+      items:
+        - name: Povolení Azure Monitoru pro virtuální počítače (Preview)
+          displayName: 'monitor, insights, log analytics, builtin'
+          href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: Referenční informace
   items:
     - name: Azure CLI

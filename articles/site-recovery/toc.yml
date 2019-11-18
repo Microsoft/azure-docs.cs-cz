@@ -361,8 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: Spravovat
           items:
-            - name: Vyřazení DR mezi weby vlastněnými zákazníky
-              href: site-to-site-deprecation.md
+            - name: Vyřazení šifrování dat Site Recovery z provozu
+              href: encryption-feature-deprecation.md
             - name: Upgrade Windows Serverů nakonfigurovaných s využitím Site Recovery
               href: upgrade-2012R2-to-2016.md
             - name: Odebrání serverů a zakázání ochrany

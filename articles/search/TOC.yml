@@ -223,8 +223,6 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Monitorování indexerů
           href: search-howto-monitor-indexers.md
-        - name: Řešení běžných potíží
-          href: search-indexer-troubleshooting.md
     - name: Rozšíření s využitím AI
       items:
         - name: Připojení prostředku služeb Cognitive Services
@@ -249,7 +247,7 @@
               href: cognitive-search-create-custom-skill-example.md
             - name: Příklad – kontejnery
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
-        - name: Rady pro řešení potíží
+        - name: Tipy k návrhům
           href: cognitive-search-concept-troubleshooting.md
         - name: Odkazy na dokumentaci
           href: cognitive-search-resources-documentation.md
@@ -261,8 +259,6 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Propojení s Power BI
               href: knowledge-store-connect-power-bi.md
-        - name: Řešení potíží s rozšiřováním
-          href: cognitive-search-common-errors-warnings.md
     - name: Dotazování dokumentů
       items:
         - name: Sestavení a typy dotazů
@@ -307,6 +303,12 @@
           href: search-manage-powershell.md
         - name: Protokolování a monitorování aktivit
           href: search-monitor-usage.md
+    - name: Řešení potíží
+      items:
+        - name: Problémy s indexerem
+          href: search-indexer-troubleshooting.md
+        - name: Chyby a upozornění indexeru
+          href: cognitive-search-common-errors-warnings.md
 - name: Referenční informace
   items:
     - name: Azure CLI
