@@ -1,5 +1,5 @@
 ---
-title: Horizontální navýšení kapacity oddílů a replik pro přidání kapacity pro úlohy dotazů a indexů
+title: Škálování kapacity pro úlohy dotazů a indexů
 titleSuffix: Azure Cognitive Search
 description: V Azure Kognitivní hledání upravovat prostředky oddílů a počítačů repliky, kde se jednotlivé prostředky účtují jako Fakturovatelné jednotky hledání.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8613ddc668df338c4f96a9d37f32120718513925
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792509"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112128"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Nahorizontální navýšení kapacity pro úlohy dotazů a indexů v Azure Kognitivní hledání
 
@@ -86,13 +86,13 @@ Všechny služby a služby optimalizované pro úložiště Standard a Storage m
 
 |   | **1 oddíl** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddílů** | **12 oddílů** |
 | --- | --- | --- | --- | --- | --- | --- |
-| **1 replika** |1\. SU |2\. SU |3\. SU |4\. SU |6\. SU |12. SU |
+| **1 replika** |1\. SU |2\. SU |3 SU |4\. SU |6\. SU |12. SU |
 | **2 repliky** |2\. SU |4\. SU |6\. SU |8\. SU |12. SU |24 SU |
-| **3 repliky** |3\. SU |6\. SU |9\. SU |12. SU |18 SU |36 SU |
-| **4 repliky** |4\. SU |8\. SU |12. SU |16. SU |24 SU |Nevztahuje se |
-| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |Nevztahuje se |
-| **6 replik** |6\. SU |12. SU |18 SU |24 SU |36 SU |Nevztahuje se |
-| **12 replik** |12. SU |24 SU |36 SU |Nevztahuje se |Nevztahuje se |Nevztahuje se |
+| **3 repliky** |3 SU |6\. SU |9\. SU |12. SU |18 SU |36 SU |
+| **4 repliky** |4\. SU |8\. SU |12. SU |16. SU |24 SU |neuvedeno |
+| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |neuvedeno |
+| **6 replik** |6\. SU |12. SU |18 SU |24 SU |36 SU |neuvedeno |
+| **12 replik** |12. SU |24 SU |36 SU |neuvedeno |neuvedeno |neuvedeno |
 
 Služba SUs, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/search/).
 

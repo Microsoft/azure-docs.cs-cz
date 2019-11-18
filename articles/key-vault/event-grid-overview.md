@@ -1,21 +1,21 @@
 ---
-title: Monitorování Key Vault s využitím Azure Event Grid
-description: Použití Azure Event Grid k přihlášení k odběru Key Vaultch událostí
+title: 'Kurz: monitorování Key Vault s využitím Azure Event Grid'
+description: 'Kurz: použití Azure Event Grid k přihlášení k odběru Key Vaultch událostí'
 services: media-services
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: article
-ms.date: 10/25/2019
+ms.topic: tutorial
+ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1fa554e03188c4d8d6227a6d2c0a560c3080b0fe
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033495"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133343"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Monitorování Key Vault s využitím Azure Event Grid (Preview)
+# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Kurz: monitorování Key Vault s využitím Azure Event Grid (Preview)
 
 Key Vault integrace s Event Grid je momentálně ve verzi Preview. Umožňuje uživatelům upozornit, když se změní stav tajného kódu uloženého v trezoru klíčů. Změna stavu se definuje jako tajný kód, jehož platnost brzy vyprší (do 30 dnů od vypršení platnosti), tajného kódu, jehož platnost vypršela, nebo tajného klíče, který má k dispozici novou verzi. Jsou podporovány oznámení pro všechny tři tajné typy (klíč, certifikát a tajný kód).
 
@@ -45,6 +45,7 @@ Aplikace, které zpracovávají Key Vault události, by měly dodržovat několi
 
 - [Přehled Azure Key Vault](key-vault-overview.md)
 - [Přehled Azure Event Grid](../event-grid/overview.md)
-- [Postupy: směrování událostí Key Vault do sady Automation Runbook (Preview)](event-grid-tutorial.md).
+- Postupy: [Směrování událostí Key Vault do sady Automation Runbook (Preview)](event-grid-tutorial.md).
+- Postupy: [příjem e-mailu, když se změní tajný kód trezoru klíčů](event-grid-logicapps.md)
 - [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../event-grid/event-schema-key-vault.md)
 - [Přehled Azure Automation](../automation/index.yml)

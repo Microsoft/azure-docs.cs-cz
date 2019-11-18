@@ -1,18 +1,18 @@
 ---
 title: Monitorování výkonu clusteru Kubernetes s využitím Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje, jak můžete zobrazit a analyzovat data o výkonu a protokolu pomocí Azure Monitor pro kontejnery.
+description: Tento článek popisuje, jak můžete zobrazit a analyzovat data výkonu a protokolů pomocí Azure monitoru pro kontejnery.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: f1a5d0d98a442fab80744636eea05d4c2d26f919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8bb3ac1905167989e27d47304ae539e49a1412e8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478914"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132355"
 ---
 # <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Pochopení výkonu clusteru Kubernetes s Azure Monitor pro kontejnery
 
@@ -34,13 +34,13 @@ Hlavní rozdíly v monitorování clusteru Windows serveru s Azure Monitor pro k
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+Přihlásit se na [Azure Portal](https://portal.azure.com). 
 
-## <a name="multi-cluster-view-from-azure-monitor"></a>Zobrazení více clusterů z Azure Monitor
+## <a name="multi-cluster-view-from-azure-monitor"></a>Zobrazení více clusteru ze služby Azure Monitor
 
-Pokud chcete zobrazit stav všech nasazených Kubernetes clusterů, vyberte **monitor** v levém podokně Azure Portal. V části **přehledy** vyberte **kontejnery**. 
+Pokud chcete zobrazit stav všech nasazených Kubernetes clusterů, vyberte **monitor** v levém podokně Azure Portal. V části **Insights** vyberte **kontejnery**. 
 
-![Příklad řídicího panelu pro více clusterů Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview.png)
+![Ukázkový řídicí panel clusteru více služby Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview.png)
 
 Můžete určit rozsah výsledků prezentovaných v mřížce a zobrazit tak clustery, které jsou:
 
@@ -60,7 +60,7 @@ Na kartě **monitorované clustery** se dozvíte následující:
 - Kolik uzlů a systémových prostředí je nasazeno na cluster.
 - Kolik místa na disku je k dispozici a pokud dojde k potížím s kapacitou.
 
-K dispozici jsou tyto stavy: 
+Zahrnuté stavy stavu jsou: 
 
 * **V pořádku**: pro virtuální počítač se nezjistily žádné problémy a funguje podle potřeby. 
 * **Kritické**: zjistili jsme jeden nebo několik kritických problémů, které je potřeba vyřešit tak, aby se normální provozní stav obnovil podle očekávání.
@@ -76,23 +76,23 @@ Služba Health (stav) počítá celkový stav clusteru jako *nejhorší ze* tř�
 
 Následující tabulka uvádí rozpis výpočtu, který řídí stav pro monitorovaný cluster v zobrazení více clusterů.
 
-| |Stav |Dostupnost |  
+| |Status |Dostupnost |  
 |-------|-------|-----------------|  
 |**Uživatel pod**| | |  
 | |V pořádku |100 % |  
-| |Upozornění |90 – 99% |  
-| |Kritické |< o 90% |  
-| |Není známo |Pokud není uvedeno za posledních 30 minut |  
+| |Upozornění |90 - 99 % |  
+| |Kritická |< 90 % |  
+| |Není známo |Pokud není uvedená v posledních 30 minut |  
 |**Systém pod**| | |  
 | |V pořádku |100 % |
-| |Upozornění |Nevztahuje se |
-| |Kritické |< 100% |
-| |Není známo |Pokud není uvedeno za posledních 30 minut |
+| |Upozornění |neuvedeno |
+| |Kritická |< 100 % |
+| |Není známo |Pokud není uvedená v posledních 30 minut |
 |**Node** | | |
-| |V pořádku |> 85% |
-| |Upozornění |60 – 84% |
-| |Kritické |< 60% |
-| |Není známo |Pokud není uvedeno za posledních 30 minut |
+| |V pořádku |> 85 % |
+| |Upozornění |60 - 84 % |
+| |Kritická |< 60 % |
+| |Není známo |Pokud není uvedená v posledních 30 minut |
 
 V seznamu clusterů můžete přejít na stránku **clusteru** tak, že vyberete název clusteru. Pak přejdete na stránku výkon **uzlů** , a to tak, že vyberete souhrn uzlů ve sloupci **uzly** tohoto konkrétního clusteru. Případně můžete přejít k podrobnostem na stránce s výkonem **řadičů** , a to výběrem souhrnu sloupce **uživatelské lusky** nebo **Systémová lusky** .
 
@@ -102,21 +102,21 @@ Přístup k Azure Monitor pro kontejnery je k dispozici přímo z clusteru AKS, 
 
 - Cluster
 - Uzly 
-- Kontrolou 
-- Containers
+- Kontrolery 
+- Kontejnery
 
 >[!NOTE]
 >Prostředí popsané ve zbývající části tohoto článku platí i pro zobrazení výkonu a stavu clusterů Kubernetes hostovaných v Azure Stack nebo jiném prostředí, když je vybraný ze zobrazení více clusterů. 
 
 Otevře se výchozí stránka a zobrazí se čtyři grafy výkonu řádků, které zobrazují klíčové metriky výkonu vašeho clusteru. 
 
-![Příklady grafů výkonu na kartě cluster](./media/container-insights-analyze/containers-cluster-perfview.png)
+![Příklad grafy výkonu na kartě clusteru](./media/container-insights-analyze/containers-cluster-perfview.png)
 
 Grafy výkonu zobrazují čtyři metriky výkonu:
 
 - **Využití CPU uzlů&nbsp;%** : agregovaná perspektiva využití procesoru pro celý cluster. Pokud chcete filtrovat výsledky pro časový rozsah, vyberte v selektoru percentilu nad grafem hodnotu **AVG**, **min**, **50**, **devadesát**, **95.** nebo **Max** . Filtry lze použít buď jednotlivě, nebo v kombinaci. 
-- **Využití paměti uzlů&nbsp;%** : agregovaná perspektiva využití paměti pro celý cluster. Pokud chcete filtrovat výsledky pro časový rozsah, vyberte v selektoru percentilu nad grafem hodnotu **AVG**, **min**, **50**, **devadesát**, **95.** nebo **Max** . Filtry lze použít buď jednotlivě, nebo v kombinaci. 
-- **Počet uzlů**: počet uzlů a stav z Kubernetes. Stavy clusterů, které jsou reprezentovány, jsou celkem, připravené a nejsou připravené. Je možné je filtrovat individuálně nebo kombinovat v selektoru nad grafem. 
+- **Využití paměti v aplikaci node&nbsp;%** : agregovaná perspektivy využití paměti pro celý cluster. Pokud chcete filtrovat výsledky pro časový rozsah, vyberte v selektoru percentilu nad grafem hodnotu **AVG**, **min**, **50**, **devadesát**, **95.** nebo **Max** . Filtry lze použít buď jednotlivě, nebo v kombinaci. 
+- **Počet uzlů**: počet uzlů a stav ze Kubernetes. Stavy clusterů, které jsou reprezentovány, jsou celkem, připravené a nejsou připravené. Je možné je filtrovat individuálně nebo kombinovat v selektoru nad grafem. 
 - **Počet aktivních pod**: počet pod a stav z Kubernetes. Stavy, které jsou reprezentovány, jsou celkem, čeká, spuštěno, neznámý, úspěch nebo selhání. Je možné je filtrovat individuálně nebo kombinovat v selektoru nad grafem. 
 
 Pomocí šipek vlevo a vpravo můžete cyklicky přepínat mezi jednotlivými datovými body v grafu. Pomocí šipek nahoru a dolů můžete cyklicky procházet řádky percentilu. Vyberte ikonu připnutí v pravém horním rohu libovolného grafu, abyste mohli vybraný graf připnout na poslední prohlížený řídicí panel Azure. Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na Azure Monitor pro kontejnery a načte správný rozsah a zobrazení.
@@ -127,9 +127,9 @@ Azure Monitor for Containers také podporuje [Průzkumníka metrik](../platform/
 
 V Průzkumníku metrik můžete zobrazit agregované metriky využití uzlů a pod Azure Monitor pro kontejnery. Následující tabulka shrnuje podrobnosti, které vám pomůžou pochopit, jak používat grafy metrik k vizualizaci metrik kontejnerů.
 
-|hosting | Metrika | Popis | 
+|Obor názvů | Metrika | Popis | 
 |----------|--------|-------------|
-| Insights. Container/Nodes | |
+| insights.container/nodes | |
 | | cpuUsageMillicores | Agregované měření využití procesoru napříč clusterem. Jedná se o jádro procesoru rozdělené na 1000 jednotek (lisovny = 1000). Slouží k určení použití jader v kontejneru, kde mnoho aplikací může používat jeden Core.| 
 | | cpuUsagePercentage | Celkové průměrné využití procesoru měřené v procentech v rámci clusteru.|
 | | memoryRssBytes | Využitá paměť RSS kontejneru v bajtech| 
@@ -137,23 +137,23 @@ V Průzkumníku metrik můžete zobrazit agregované metriky využití uzlů a p
 | | memoryWorkingSetBytes | Využité paměti pracovní sady kontejneru.| 
 | | memoryWorkingSetPercentage | Paměť pracovní sady kontejneru využitá v procentech | 
 | | nodesCount | Počet uzlů z Kubernetes.|
-| přehledy. kontejner/lusky | |
+| insights.container/pods | |
 | | podCount | Počet pod z Kubernetes.|
 
 Můžete [rozdělit](../platform/metrics-charts.md#apply-splitting-to-a-chart) metriku tak, aby se zobrazila podle dimenze, a vizualizovat, jak vzájemně porovnávají různé segmenty. Pro uzel můžete graf rozdělit podle dimenze *hostitele* . Z pod pod můžete segmentovat podle následujících dimenzí:
 
 * Kontrolér
 * Obor názvů Kubernetes
-* Uzel
+* Node
 * Fáze
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Analýza stavů uzlů, řadičů a kontejnerů
 
 Po přepnutí na karty **uzly**, **řadiče**a **kontejnery** se automaticky zobrazí podokno vlastností na pravé straně stránky. Zobrazuje vlastnosti vybrané položky, včetně popisků, které jste definovali pro uspořádání objektů Kubernetes. Když je vybrán uzel Linux, v části **kapacita místního disku** se zobrazí také dostupné místo na disku a procento využité pro každý disk prezentovaný uzlu. Kliknutím na odkaz **>>** v podokně zobrazíte nebo skryjete podokno.
 
-Při rozbalení objektů v hierarchii se podokno Vlastnosti aktualizuje podle vybraného objektu. Z podokna můžete také zobrazit protokoly kontejnerů Kubernetes (stdout/stderr), události a pod metrikou výběrem odkazu **Zobrazit živá data (Preview)** v horní části podokna. Další informace o konfiguraci potřebné k udělení a řízení přístupu pro zobrazení těchto dat najdete v tématu [Nastavení živých dat (Preview)](container-insights-livedata-setup.md). Při kontrole prostředků clusteru můžete tato data zobrazit z kontejneru v reálném čase. Další informace o této funkci najdete v tématu [jak zobrazit Kubernetes protokoly, události a metriky pod v reálném čase](container-insights-livedata-overview.md). Pokud chcete zobrazit data protokolu Kubernetes uložená ve vašem pracovním prostoru na základě předdefinovaných prohledávání protokolu, vyberte v rozevíracím seznamu **Zobrazit v analýze** možnost **Zobrazit protokoly kontejnerů** . Další informace o tomto tématu najdete v tématu [Analýza dat v protokolech hledání](container-insights-log-search.md#search-logs-to-analyze-data).
+Při rozbalení objekty v hierarchii, aktualizace podokna vlastností založené na vybraný objekt. Z podokna můžete také zobrazit protokoly kontejnerů Kubernetes (stdout/stderr), události a pod metrikou výběrem odkazu **Zobrazit živá data (Preview)** v horní části podokna. Další informace o konfiguraci potřebné k udělení a řízení přístupu pro zobrazení těchto dat najdete v tématu [Nastavení živých dat (Preview)](container-insights-livedata-setup.md). Při kontrole prostředků clusteru můžete tato data zobrazit z kontejneru v reálném čase. Další informace o této funkci najdete v tématu [jak zobrazit Kubernetes protokoly, události a metriky pod v reálném čase](container-insights-livedata-overview.md). Pokud chcete zobrazit data protokolu Kubernetes uložená ve vašem pracovním prostoru na základě předdefinovaných prohledávání protokolu, vyberte v rozevíracím seznamu **Zobrazit v analýze** možnost **Zobrazit protokoly kontejnerů** . Další informace o tomto tématu najdete v tématu [Analýza dat v protokolech hledání](container-insights-log-search.md#search-logs-to-analyze-data).
 
-Pomocí možnosti **+ Přidat filtr** v horní části stránky můžete filtrovat výsledky pro zobrazení podle **služby**, **uzlu**, **oboru názvů**nebo **fondu uzlů**. Po výběru rozsahu filtru vyberte jednu z hodnot zobrazených v poli **Vybrat hodnoty** . Po nakonfigurování filtru se použije globálně při prohlížení jakékoli perspektivy clusteru AKS. Vzorec podporuje pouze rovnítko. K dalšímu zúžení výsledků můžete přidat další filtry nad první z nich. Pokud například zadáte Filter by **Node**, můžete pro druhý filtr vybrat pouze **službu** nebo **obor názvů** .
+Pomocí možnosti **+ Přidat filtr** v horní části stránky můžete filtrovat výsledky pro zobrazení podle **služby**, **uzlu**, **oboru názvů**nebo **fondu uzlů**. Po výběru rozsahu filtru vyberte jednu z hodnot zobrazených v poli **Vybrat hodnoty** . Po nakonfigurování filtru se použije globálně při prohlížení jakékoli perspektivy clusteru AKS. Vzorec podporuje pouze znaménko rovná se. Můžete přidat další filtry na první z nich můžete dále zúžit výsledky. Pokud například zadáte Filter by **Node**, můžete pro druhý filtr vybrat pouze **službu** nebo **obor názvů** .
 
 Zadání filtru na jedné kartě bude nadále použito, pokud vyberete jiný. Po výběru symbolu **x** vedle zadaného filtru se odstraní. 
 
@@ -167,15 +167,15 @@ Kontejnery Windows serveru, na kterých běží operační systém Windows Serve
 
 Azure Container Instances virtuálních uzlů, které spouštějí operační systém Linux, se zobrazí za posledním uzlem clusteru AKS v seznamu. Když rozbalíte Container Instances virtuální uzel, můžete zobrazit jednu nebo více Container Instancesch lusků a kontejnerů, které jsou spuštěny na uzlu. Metriky nejsou shromažďovány a hlášeny pro uzly, pouze pro lusky.
 
-![Ukázková hierarchie uzlů se Container Instances uvedenými](./media/container-insights-analyze/nodes-view-aci.png)
+![Příklad uzlu hierarchie se službou Container Instances uvedené](./media/container-insights-analyze/nodes-view-aci.png)
 
 Z rozbaleného uzlu můžete procházet hierarchii pod nebo kontejnerem, který běží na uzlu, k zobrazení dat výkonu filtrovaných pro daný kontroler. Vyberte hodnotu pod sloupcem **kontroléru** pro konkrétní uzel.
  
 ![Příklad přechodu k podrobnostem z uzlu na kontroler v zobrazení výkonu](./media/container-insights-analyze/drill-down-node-controller.png)
 
-V horní části stránky vyberte řadiče nebo kontejnery, abyste si mohli prohlédnout stav a využití prostředků u těchto objektů. Pokud chcete zkontrolovat využití paměti, vyberte v rozevíracím seznamu **metrika** možnost **paměť RSS** nebo **pracovní sada paměti**. **Technologie RSS paměti** je podporována pouze pro Kubernetes verze 1,8 a novější. V opačném případě zobrazíte hodnoty pro **minimum&nbsp;%** jako *NaN&nbsp;%* , což je hodnota číselného datového typu, která představuje nedefinovanou nebo nereprezentovanou hodnotu.
+V horní části stránky vyberte řadiče nebo kontejnery, abyste si mohli prohlédnout stav a využití prostředků u těchto objektů. Pokud chcete zkontrolovat využití paměti, vyberte v rozevíracím seznamu **metrika** možnost **paměť RSS** nebo **pracovní sada paměti**. **Paměť RSS** se podporuje jenom pro Kubernetes verze 1.8 a novější. V opačném případě zobrazení hodnot pro **Min&nbsp; %**  jako *NaN&nbsp;%* , má hodnotu číselný datový typ, který představuje Nedefinovaná nebo přičtení hodnotu.
 
-![Zobrazení výkonu uzlů kontejnerů](./media/container-insights-analyze/containers-node-metric-dropdown.png)
+![Zobrazení výkonu uzly kontejneru](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
 **Pracovní sada paměti** zobrazuje jak rezidentní paměť, tak virtuální paměť (mezipaměť) a je celkový počet aplikací, které aplikace používá. **RSS paměti** zobrazuje pouze hlavní paměť (což není nic, ale rezidentní paměť jinými slovy). Tato metrika zobrazuje skutečnou kapacitu dostupné paměti. Jaký je rozdíl mezi rezidentní pamětí a virtuální pamětí?
 
@@ -185,7 +185,7 @@ V horní části stránky vyberte řadiče nebo kontejnery, abyste si mohli proh
 
 Ve výchozím nastavení jsou data o výkonu založena na posledních šesti hodinách, ale můžete změnit okno pomocí možnosti **TimeRange** vlevo nahoře. Výsledky můžete filtrovat také v časovém rozsahu tak, že v selektoru percentilu vyberete **min**, **AVG**, **50**, **devadesát**, **95.** a **Max** . 
 
-![Percentil – výběr pro filtrování dat](./media/container-insights-analyze/containers-metric-percentile-filter.png)
+![Výběr percentilu pro filtrování dat](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
 Když najedete myší na pruhový graf ve sloupci **trend** , na každém řádku se zobrazí využití CPU nebo paměti v závislosti na tom, která metrika se vybrala, a to během vzorkovacího období 15 minut. Když vyberete graf trendu pomocí klávesnice, použijte klávesu ALT + PAGE UP nebo klávesu Alt + Page Down a procházejte jednotlivé panely samostatně. Budou se vám zobrazovat stejné podrobnosti, jako kdybyste najeďte na panel.
 
@@ -199,28 +199,28 @@ Tyto informace vám pomůžou rychle zjistit, jestli máte v clusteru správnou 
 
 Informace, které se zobrazí po zobrazení karty **uzly** , jsou popsány v následující tabulce.
 
-| Column | Popis | 
+| Sloupec | Popis | 
 |--------|-------------|
-| Name (Název) | Název hostitele. |
-| Stav | Kubernetes zobrazení stavu uzlu. |
-| Minimální&nbsp;%, prům.&nbsp;%, 50.&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;%  | Průměrné procento uzlů na základě percentilu během vybrané doby trvání. |
+| Název | Název hostitele. |
+| Status | Kubernetes pohled na stav uzlu. |
+| Minimální&nbsp;%, prům.&nbsp;%, 50.&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;%  | Průměrné procento uzlů podle percentilu během vybrané doby trvání. |
 | Min, AVG, 50, 90, 95., Max | Průměrná hodnota uzlů na základě hodnoty percentilu v době zvolené doby trvání. Průměrná hodnota se měří od nastaveného limitu CPU/paměti pro uzel. V případě lusků a kontejnerů je to průměrná hodnota uvedená v hostiteli. |
-| Containers | Počet kontejnerů. |
-| Doba provozu | Představuje čas, kdy byl uzel spuštěn nebo byl restartován. |
-| Kontrolér | Pouze pro kontejnery a lusky. Zobrazuje, ve kterém řadiči se nachází. Ne všechny lusky jsou v kontroleru, takže se může zobrazit **N/a**. | 
-| Minimální hodnota trendu&nbsp;%, prům&nbsp;%, 50 – 50&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;% | Trend pruhového grafu představuje procento metriky průměrného percentilu řadiče. |
+| Kontejnery | Počet kontejnerů. |
+| Doba provozu | Představuje čas, protože uzel spuštěn nebo byl restartován. |
+| Kontrolér | Pouze pro kontejnery a tyto pody. Zobrazuje, ve kterém řadiči se nachází. Ne všechny podů jsou v kontroleru, takže některé se může zobrazit **není k dispozici**. | 
+| Minimální hodnota trendu&nbsp;%, prům&nbsp;%, 50 – 50&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;% | Pruhový graf trendu představuje průměrný percentilu metrik procento kontroleru. |
 
-V selektoru vyberte možnost **řadiče**.
+V modulu pro výběr, vyberte **řadiče**.
 
 ![Vybrat zobrazení řadičů](./media/container-insights-analyze/containers-controllers-tab.png)
 
 Tady můžete zobrazit stav výkonu pro řadiče a Container Instances řadiče virtuálních uzlů nebo nepřipojené k řadiči virtuální uzel.
 
-![zobrazení výkonu řadičů \<Name >](./media/container-insights-analyze/containers-controllers-view.png)
+![zobrazení výkonu \<názvů > řadičů](./media/container-insights-analyze/containers-controllers-view.png)
 
 Hierarchie řádků začíná na řadiči. Když rozbalíte kontroler, zobrazíte jednu nebo více lusků. Rozbalte uzel pod a poslední řádek zobrazí kontejner seskupený do pole pod. Z rozbaleného kontroleru můžete přejít k podrobnostem uzlu, na kterém je spuštěný, aby se zobrazila data výkonu filtrovaná pro tento uzel. Container Instances lusky nepřipojené k řadiči se v seznamu zobrazí jako poslední.
 
-![Příklad hierarchie řadičů s uvedením Container Instances lusky](./media/container-insights-analyze/controllers-view-aci.png)
+![Příklad hierarchie řadiče s uvedené podů Container Instances](./media/container-insights-analyze/controllers-view-aci.png)
 
 Vyberte hodnotu ve sloupci **uzel** pro konkrétní kontroler.
 
@@ -228,64 +228,64 @@ Vyberte hodnotu ve sloupci **uzel** pro konkrétní kontroler.
 
 Informace, které se zobrazí při zobrazení řadičů, jsou popsány v následující tabulce.
 
-| Column | Popis | 
+| Sloupec | Popis | 
 |--------|-------------|
-| Name (Název) | Název kontroleru.|
-| Stav | Stav souhrnu kontejnerů po dokončení jeho spuštění se stavem, jako je například *OK*, *ukončeno*, *Chyba*, *Zastaveno*nebo *pozastaveno*. Pokud je kontejner spuštěný, ale stav buď nebyl správně zobrazen nebo nebyl vyzvednut agentem a nereagoval na více než 30 minut, je stav *Neznámý*. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
-| Minimální&nbsp;%, prům.&nbsp;%, 50.&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;%| Souhrnný průměr průměrného procenta každé entity pro vybranou metriku a percentil |
-| Min, AVG, 50, 90, 95., Max  | Souhrn průměrného výkonu procesoru v millicore nebo paměti v kontejneru pro vybraný percentil. Průměrná hodnota se měří od limitu CPU nebo paměti nastaveného pro objekt pod. |
-| Containers | Celkový počet kontejnerů pro řadič nebo pod. |
-| Opětovné | Souhrn počtu restartování z kontejnerů. |
+| Název | Název kontroleru.|
+| Status | Stav souhrnu kontejnerů po dokončení jeho spuštění se stavem, jako je například *OK*, *ukončeno*, *Chyba*, *Zastaveno*nebo *pozastaveno*. Pokud je kontejner spuštěný, ale stav buď nebyl správně zobrazen nebo nebyl vyzvednut agentem a nereagoval na více než 30 minut, je stav *Neznámý*. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
+| Minimální&nbsp;%, prům.&nbsp;%, 50.&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;%| Souhrn průměrem průměrnou procentuální hodnotu Každá entita pro vybranou metriku a percentil. |
+| Min, AVG, 50, 90, 95., Max  | Souhrn průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
+| Kontejnery | Celkový počet kontejnerů pro kontroler nebo pod. |
+| Restartování | Souhrn počtu restartování z kontejnerů. |
 | Doba provozu | Představuje čas od spuštění kontejneru. |
-| Uzel | Pouze pro kontejnery a lusky. Zobrazuje, ve kterém řadiči se nachází. | 
-| Minimální hodnota trendu&nbsp;%, prům&nbsp;%, 50 – 50&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;% | Trend pruhového grafu představuje metriku průměrné percentilu řadiče. |
+| Node | Pouze pro kontejnery a tyto pody. Zobrazuje, ve kterém řadiči se nachází. | 
+| Minimální hodnota trendu&nbsp;%, prům&nbsp;%, 50 – 50&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;% | Pruhový graf trendu představuje metrika průměrné percentilu kontroleru. |
 
 Ikony v poli Stav označují online stav kontejnerů.
  
-| Ikona | Stav | 
+| Ikona | Status | 
 |--------|-------------|
-| ![Ikona stavu spuštění připraveno](./media/container-insights-analyze/containers-ready-icon.png) | Spuštěno (připraveno)|
-| ![Ikona stavu čekání nebo pozastavení](./media/container-insights-analyze/containers-waiting-icon.png) | Čekání nebo pozastavení|
-| ![Ikona posledního hlášeného běžícího stavu](./media/container-insights-analyze/containers-grey-icon.png) | Poslední zpráva byla spuštěna, ale nereagovala po dobu delší než 30 minut.|
-| ![Ikona úspěšného stavu](./media/container-insights-analyze/containers-green-icon.png) | Stav se úspěšně zastavil nebo se nepovedlo zastavit.|
+| ![Připraveno spuštěné ikona stavu](./media/container-insights-analyze/containers-ready-icon.png) | Systémem (připravená)|
+| ![Ikona stavu čekání nebo pozastavení](./media/container-insights-analyze/containers-waiting-icon.png) | Čeká se na nebo pozastavena|
+| ![Naposledy hlásila systémem ikona stavu](./media/container-insights-analyze/containers-grey-icon.png) | Poslední zpráva byla spuštěna, ale nereagovala po dobu delší než 30 minut.|
+| ![Ikona úspěšný stav](./media/container-insights-analyze/containers-green-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|
 
-Ikona stavu zobrazuje počet na základě toho, co poskytuje. Zobrazuje nejhorší dva stavy a při najetí myší na stav zobrazuje souhrnný stav ze všech lusků v kontejneru. Pokud není připravený stav, zobrazí se hodnota stav **(0)** .
+Ikona stavu zobrazuje počet založené na co chcete pod poskytuje. Zobrazuje nejhorší dvou stavů, a když najedete myší stav, zobrazuje souhrn stavu ze všech podů v kontejneru. Pokud není k dispozici stavu Připraveno, hodnota stavu zobrazí **(0)** .
 
-V selektoru vyberte **kontejnery**.
+V modulu pro výběr, vyberte **kontejnery**.
 
 ![Vybrat zobrazení kontejnerů](./media/container-insights-analyze/containers-containers-tab.png)
 
-Tady si můžete prohlédnout stav výkonu pro Azure Kubernetes a kontejnery Azure Container Instances. 
+Zde můžete zobrazit stav výkonu kontejnerů Kubernetes v Azure a Azure Container Instances. 
 
-![zobrazení výkonu \<Name >ch kontejnerů](./media/container-insights-analyze/containers-containers-view.png)
+![zobrazení výkonu \<názvů > kontejnerů](./media/container-insights-analyze/containers-containers-view.png)
 
-Z kontejneru můžete přejít k podrobnostem nebo uzlu, abyste zobrazili data o výkonu filtrovaná pro daný objekt. Vyberte hodnotu pod sloupcem **pod** nebo **uzlu** pro konkrétní kontejner.
+Z kontejneru procházením hierarchie můžete pod nebo uzel k zobrazení dat výkonu filtrování pro daný objekt. Vyberte hodnotu pod sloupcem **pod** nebo **uzlu** pro konkrétní kontejner.
 
 ![Příklad přechodu k podrobnostem z uzlu na kontejnery v zobrazení výkonu](./media/container-insights-analyze/drill-down-controller-node.png)
 
 Informace, které se zobrazí při zobrazení kontejnerů, jsou popsány v následující tabulce.
 
-| Column | Popis | 
+| Sloupec | Popis | 
 |--------|-------------|
-| Name (Název) | Název kontroleru.|
-| Stav | Stav kontejnerů, pokud existují. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
-| Minimální&nbsp;%, prům.&nbsp;%, 50.&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;% | Souhrn průměrného procenta jednotlivých entit pro vybranou metriku a percentil. |
-| Min, AVG, 50, 90, 95., Max | Souhrn průměrného výkonu procesoru v millicore nebo paměti v kontejneru pro vybraný percentil. Průměrná hodnota se měří od limitu CPU nebo paměti nastaveného pro objekt pod. |
-| Nulu | Kontejner, ve kterém se nachází pod.| 
-| Uzel |  Uzel, ve kterém se nachází kontejner. | 
-| Opětovné | Představuje čas od spuštění kontejneru. |
-| Doba provozu | Představuje čas, kdy byl kontejner spuštěn nebo restartován. |
-| Minimální hodnota trendu&nbsp;%, prům&nbsp;%, 50 – 50&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;% | Trend pruhového grafu představuje procento metriky průměrného percentilu v kontejneru. |
+| Název | Název kontroleru.|
+| Status | Stav kontejnerů, pokud existuje. V další tabulce jsou uvedeny další podrobnosti o ikona stavu.|
+| Minimální&nbsp;%, prům.&nbsp;%, 50.&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;% | Souhrn průměrnou procentuální hodnotu Každá entita pro vybranou metriku a percentil. |
+| Min, AVG, 50, 90, 95., Max | Souhrn průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
+| Pod | Kontejner, ve které se nachází pod.| 
+| Node |  Uzel, ve které se nachází kontejneru. | 
+| Restartování | Představuje čas od spuštění kontejneru. |
+| Doba provozu | Představuje čas, protože kontejneru se spustit nebo restartovat. |
+| Minimální hodnota trendu&nbsp;%, prům&nbsp;%, 50 – 50&nbsp;%, devadesát&nbsp;%, 95.&nbsp;%, Max&nbsp;% | Pruhový graf trendu představuje průměrný percentilu metrik procento kontejneru. |
 
 Ikony v poli Stav označují stav online lusků, jak je popsáno v následující tabulce.
  
-| Ikona | Stav |  
+| Ikona | Status |  
 |--------|-------------|  
-| ![Ikona stavu spuštění připraveno](./media/container-insights-analyze/containers-ready-icon.png) | Spuštěno (připraveno)|  
-| ![Ikona stavu čekání nebo pozastavení](./media/container-insights-analyze/containers-waiting-icon.png) | Čekání nebo pozastavení|  
-| ![Ikona posledního hlášeného běžícího stavu](./media/container-insights-analyze/containers-grey-icon.png) | Poslední hlášení běželo, ale nereagovalo víc než 30 minut.|  
-| ![Ikona stavu ukončení](./media/container-insights-analyze/containers-terminated-icon.png) | Stav se úspěšně zastavil nebo se nepovedlo zastavit.|  
-| ![Ikona stavu selhání](./media/container-insights-analyze/containers-failed-icon.png) | Stav selhání |  
+| ![Připraveno spuštěné ikona stavu](./media/container-insights-analyze/containers-ready-icon.png) | Systémem (připravená)|  
+| ![Ikona stavu čekání nebo pozastavení](./media/container-insights-analyze/containers-waiting-icon.png) | Čeká se na nebo pozastavena|  
+| ![Naposledy hlásila systémem ikona stavu](./media/container-insights-analyze/containers-grey-icon.png) | Poslední ohlásil spuštěná, ale neodpovídá za více než 30 minut|  
+| ![Ikona stavu ukončení](./media/container-insights-analyze/containers-terminated-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|  
+| ![Ikona stavu se nezdařilo](./media/container-insights-analyze/containers-failed-icon.png) | Chybovém stavu |  
 
 ## <a name="workbooks"></a>Workbooks
 
@@ -320,3 +320,5 @@ Přístup k těmto sešitům získáte tak, že v rozevíracím seznamu **Zobraz
 - Přečtěte si téma [vytvoření výstrah výkonu pomocí Azure monitor pro kontejnery](container-insights-alerts.md) , kde se dozvíte, jak vytvořit výstrahy s vysokým využitím procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
 
 - V [příkladech dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) si můžete prohlédnout předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizaci nebo analýze clusterů.
+
+- Seznamte se s [monitorováním stavu clusteru](container-insights-health.md) , abyste se seznámili se zobrazením stavu clusteru Kubernetes.

@@ -1,5 +1,5 @@
 ---
-title: Práce s dovednosti
+title: Dovednosti koncepty a pracovní postup
 titleSuffix: Azure Cognitive Search
 description: Dovednosti je místo, kde vytvoříte kanál pro rozšíření AI v Azure Kognitivní hledání. Seznamte se s důležitými koncepty a podrobnostmi o dovednosti složení.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890149"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113640"
 ---
-# <a name="working-with-skillsets-in-azure-cognitive-search"></a>Práce s dovednosti v Azure Kognitivní hledání
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Dovednosti koncepty a kompozice v Azure Kognitivní hledání
 
 Tento článek je určen pro vývojáře, kteří potřebují hlubší porozumění tomu, jak kanál pro rozšíření funguje a předpokládá, že máte koncepční znalosti procesu rozšíření AI. Pokud tento koncept začínáte, začněte na:
 + [Obohacení AI v Azure Kognitivní hledání](cognitive-search-concept-intro.md)
@@ -43,9 +43,9 @@ Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a 
 
 |Režim Source\Parsing dat|Výchozí|JSON, řádky JSON & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|Není dostupné. |
-|Databáze Cosmos|/document/{key1}<br>/document/{key2}<br>...|Není dostupné.|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|neuvedeno |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|neuvedeno|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. Můžete selektivně zachovat jenom podmnožinu obohacení na index nebo úložiště znalostní báze.
 

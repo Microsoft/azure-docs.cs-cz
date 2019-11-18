@@ -1,25 +1,22 @@
 ---
-title: Kurz – Export šablony Azure Resource Manager z Azure Portal
+title: Kurz – Export šablony z Azure Portal
 description: Naučte se používat exportovanou šablonu k dokončení vývoje šablon.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6dae5d494ac71ace41586e89de5aab745962cc90
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243212"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147918"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: použití exportované šablony z Azure Portal
 
 V této sérii kurzů jste vytvořili šablonu pro nasazení účtu úložiště Azure. V následujících dvou kurzech můžete přidat *plán App Service* a *Web*. Místo vytváření šablon od začátku se naučíte exportovat šablony z Azure Portal a jak používat ukázkové šablony ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/). Tyto šablony můžete přizpůsobit pro použití. Tento kurz se zaměřuje na export šablon a přizpůsobení výsledku pro šablonu. Dokončení trvá přibližně **14 minut** .
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Doporučujeme, abyste dokončili [kurz týkající se výstupů](template-tutorial-add-outputs.md), ale není to nutné.
 
@@ -33,19 +30,19 @@ Na konci předchozího kurzu má vaše šablona následující JSON:
 
 Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete chtít přidat další prostředky. Můžete exportovat šablonu z existujícího prostředku, abyste mohli rychle získat kód JSON pro daný prostředek.
 
-## <a name="create-app-service-plan"></a>Vytvořit plán App Service
+## <a name="create-app-service-plan"></a>Vytvoření plánu služby App Service
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 1. Vyberte **vytvořit prostředek**.
 1. V **části Hledat na Marketplace**zadejte **App Service plán**a potom vyberte **App Service plán**.  Nevybírat **plán App Service (klasický)**
 1. Vyberte **Vytvořit**.
 1. Napište
 
-    - **Předplatné**: vyberte své předplatné Azure.
+    - **Předplatné:** Vyberte své předplatné Azure.
     - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte název. Zadejte jiný název skupiny prostředků než ten, který jste používali v této sérii kurzů.
     - **Název**: zadejte název plánu služby App Service.
     - **Operační systém**: vyberte **Linux**.
-    - **Oblast**: vyberte umístění Azure. Například **střed USA**.
+    - **Oblast**: vyberte umístění Azure. Například **USA (střed)** .
     - **Cenová úroveň**: Pokud chcete ušetřit náklady, změňte SKU na **Basic B1** (vývoj/test).
 
     ![Portál šablony Správce prostředků Exportovat šablonu](./media/template-tutorial-export-template/resource-manager-template-export.png)
@@ -87,7 +84,7 @@ K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure
 
 Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -98,7 +95,7 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -110,11 +107,11 @@ az group deployment create \
 
 ---
 
-## <a name="verify-deployment"></a>Ověřit nasazení
+## <a name="verify-deployment"></a>Ověření nasazení
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Skupina prostředků obsahuje účet úložiště a plán App Service.
@@ -125,10 +122,10 @@ Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu pr
 
 Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
-1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
-2. Do pole **filtrovat podle názvu** zadejte název skupiny prostředků.
+1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
+2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
+4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 

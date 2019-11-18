@@ -1,7 +1,7 @@
 ---
 title: Odkaz na operátor kolekce OData
 titleSuffix: Azure Cognitive Search
-description: V Azure Kognitivní hledání dotazy jsou operátory kolekce OData, všechny a všechny a výrazy lambda.
+description: Při vytváření výrazů filtru v Azure Kognitivní hledáních dotazech použijte operátory "any" a "All" ve výrazech lambda, pokud je filtr na kolekci nebo komplexní pole kolekce.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fdb250a844b70cef4f6941debbb1fa7450874932
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793402"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113234"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Operátory kolekce OData v Azure Kognitivní hledání-`any` a `all`
 

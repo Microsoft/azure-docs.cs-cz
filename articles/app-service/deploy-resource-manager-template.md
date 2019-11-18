@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2af3ec61537dc28ab652b669ff46500db19ab307
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070461"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130602"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manager
 
@@ -46,7 +46,7 @@ Prostředky se nasazují v následujícím pořadí:
 **Vrstva 3**
 * Správa zdrojového kódu – závisí na webové aplikaci.
 * MSDeploy – rozšíření webu – závisí na webové aplikaci.
-* Application Insights instance, která cílí na serverovou farmu – závisí na webové aplikaci.
+* Instance Azure Application Insights, která cílí na webovou aplikaci – závisí na webové aplikaci.
 
 **Vrstva 4**
 * App Service certifikát – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
@@ -87,7 +87,7 @@ Následující příklad ukazuje část šablony. Hodnota konfigurace připojova
 }
 ```
 
-Ukázku připravený na spuštění, který používá kód výše, najdete v tématu [Šablona: Vytvoření jednoduché webové aplikace](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)v Umbraco
+Ukázku připraveného kódu, který používá výše uvedený kód, najdete v tématu [Šablona: sestavení jednoduché webové aplikace v Umbraco](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Najít informace o chybách MSDeploy
 
@@ -128,7 +128,7 @@ Set-AzKeyVaultAccessPolicy `
 
 V Azure Government má App Service instančního objektu ID **6a02c803-dafd-4136-b4c3-5a6f318b4714**. Použijte toto ID v předchozím příkladu.
 
-V Key Vault vyberte **certifikáty** a vygenerujte **/importujte** pro nahrání certifikátu.
+V Key Vault vyberte **certifikáty** a **vygenerujte/importujte** pro nahrání certifikátu.
 
 ![Importovat certifikát](media/web-sites-rm-template-guidance/import-certificate.png)
 

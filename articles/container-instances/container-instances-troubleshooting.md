@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s Azure Container Instances
-description: Naučte se řešit potíže s Azure Container Instances
+description: Naučte se řešit běžné problémy při nasazení, spuštění nebo správě Azure Container Instances
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 14745f79955a98727d6f55da4189212f2f18d9c0
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 8b102f31fe25b9c45d85a2dae269fce64be10a5d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904400"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147834"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných problémů v Azure Container Instances
 
@@ -33,7 +33,7 @@ Při definování specifikace kontejneru vyžadují některé parametry dodržov
 | Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Porty kontejneru | Mezi 1 a 65535 |Integer |Celé číslo od 1 do 65535 |`<port-number>` |`443` |
 | Popisek názvu DNS | 5-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`frontend-site1` |
-| Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a podtržítka (_) kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
+| Proměnná prostředí | 1-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a podtržítka (_) kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
 | Název svazku | 5-63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a pomlčky kdekoli kromě prvního nebo posledního znaku. Nemůže obsahovat dvě po sobě jdoucí spojovníky. |`<name>` |`batch-output-volume` |
 
 ### <a name="os-version-of-image-not-supported"></a>Verze operačního systému image není podporovaná.
@@ -232,7 +232,7 @@ Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu,
 Naučte se, jak [načíst protokoly a události kontejneru](container-instances-get-logs.md) , které vám pomůžou s laděním vašich kontejnerů.
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming
+[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore

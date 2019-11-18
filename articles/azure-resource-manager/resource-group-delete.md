@@ -1,18 +1,15 @@
 ---
-title: Odstranit skupinu prostředků a prostředky – Azure Resource Manageru
+title: Odstranit skupinu prostředků a prostředky
 description: Popisuje, jak odstranit skupiny prostředků a prostředky. Popisuje, jak Azure Resource Manager při odstraňování skupiny prostředků vyřadí odstranění prostředků. Popisuje kódy odpovědí a jak je určit, pokud bylo odstranění úspěšné zpracovává Resource Manageru.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 30a394fd33ed5d928175fc27e003661c2b53de9a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c84dcf64555f40f45dbdaeedb05d4cc461f2cbb7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275077"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150816"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager skupiny prostředků a odstraňování prostředků
 
@@ -57,7 +54,7 @@ Pokud operace GET vrátí chybu, Resource Manager opakuje GET pro následující
 
 Pro další kódy chyb nezdaří správce prostředků odstranění prostředku.
 
-## <a name="delete-resource-group"></a>Odstranit skupinu prostředků
+## <a name="delete-resource-group"></a>Odstranění skupiny prostředků
 
 Chcete-li odstranit skupinu prostředků, použijte jednu z následujících metod.
 
@@ -79,7 +76,7 @@ az group delete --name ExampleResourceGroup
 
 1. Vyberte **Odstranit skupinu prostředků**.
 
-   ![Odstranit skupinu prostředků](./media/resource-group-delete/delete-group.png)
+   ![Odstranění skupiny prostředků](./media/resource-group-delete/delete-group.png)
 
 1. Odstranění potvrďte tak, že zadáte název skupiny prostředků.
 

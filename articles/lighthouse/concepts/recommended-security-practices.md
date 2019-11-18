@@ -1,18 +1,14 @@
 ---
 title: Doporučené postupy zabezpečení
 description: Při použití správy delegovaných prostředků Azure je důležité vzít v úvahu zabezpečení a řízení přístupu.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e0f0a9d4cdd56ff1bca9b9faf493d3e0d68e558c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286197"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132467"
 ---
 # <a name="recommended-security-practices"></a>Doporučené postupy zabezpečení
 
@@ -34,10 +30,10 @@ Například můžete chtít použít strukturu, jako je tato:
 
 |Název skupiny  |Typ  |principalId  |Definice role  |ID definice role  |
 |---------|---------|---------|---------|---------|
-|Architekty     |Uživatelská skupina         |@no__t – 0principalId @ no__t-1         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Posouzení     |Uživatelská skupina         |@no__t – 0principalId @ no__t-1         |Čtenář         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|Specialisty virtuálních počítačů     |Uživatelská skupina         |@no__t – 0principalId @ no__t-1         |Přispěvatel virtuálních počítačů         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automation     |Hlavní název služby (SPN)         |@no__t – 0principalId @ no__t-1         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Architekty     |Uživatelská skupina         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Posouzení     |Uživatelská skupina         |\<principalId\>         |Čtenář         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|Specialisty virtuálních počítačů     |Uživatelská skupina         |\<principalId\>         |Přispěvatel virtuálních počítačů         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Automation     |Hlavní název služby (SPN)         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Po vytvoření těchto skupin můžete uživatele podle potřeby přiřadit. Přidejte pouze uživatele, kteří skutečně potřebují mít přístup. Nezapomeňte pravidelně kontrolovat členství ve skupinách a odebrat všechny uživatele, kteří už nejsou vhodné nebo které je potřeba zahrnout.
 

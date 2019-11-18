@@ -1,32 +1,22 @@
 ---
-title: Chyby název účtu úložiště Azure | Dokumentace Microsoftu
-description: Popisuje chyby, které můžete narazit při zadávání názvu účtu úložiště.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Chyby názvu účtu úložiště
+description: Popisuje chyby, se kterými se můžete setkat při zadávání názvu účtu úložiště.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.author: tomfitz
-ms.openlocfilehash: c3d4d764b1076c8705cfa64d6c0b38e3b8c1a801
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6af75470ebab61a1eaf7afd0bf946564c5300611
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716384"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149427"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>Řešení chyb pro názvy účtů úložiště
 
-Tento článek popisuje pojmenování chyby, na které můžete narazit při nasazení účtu úložiště.
+Tento článek popisuje chyby pojmenování, ke kterým může dojít při nasazování účtu úložiště.
 
 ## <a name="symptom"></a>Příznak
 
-Pokud název svého účtu úložiště obsahuje zakázané znaky, obdržíte chybu, jako jsou:
+Pokud název vašeho účtu úložiště obsahuje zakázané znaky, zobrazí se chyba, například:
 
 ```
 Code=AccountNameInvalid
@@ -34,29 +24,29 @@ Message=S!torageckrexph7isnoc is not a valid storage account name. Storage accou
 between 3 and 24 characters in length and use numbers and lower-case letters only.
 ```
 
-Pro účty úložiště je nutné zadat název pro prostředek, který je jedinečný v rámci Azure. Pokud nezadáte jedinečný název, zobrazí chyba typu:
+Pro účty úložiště musíte zadat název prostředku, který je v Azure jedinečný. Pokud nezadáte jedinečný zámek, zobrazí se chyba typu:
 
 ```
 Code=StorageAccountAlreadyTaken
 Message=The storage account named mystorage is already taken.
 ```
 
-Pokud nasazení účtu úložiště se stejným názvem jako stávající účet úložiště ve vašem předplatném, ale zadejte jiné umístění, zobrazí se chybová zpráva oznamující, že účet úložiště už existuje v jiném umístění. Odstraňte existující účet úložiště, nebo zadejte stejné umístění jako existující účet úložiště.
+Pokud nasadíte účet úložiště se stejným názvem jako existující účet úložiště v předplatném, ale zadáte jiné umístění, zobrazí se chyba oznamující, že účet úložiště již existuje v jiném umístění. Buď odstraňte existující účet úložiště, nebo zadejte stejné umístění jako stávající účet úložiště.
 
 ## <a name="cause"></a>Příčina
 
-Názvy účtů úložiště musí být dlouhý 3 až 24 znaků a použít pouze číslice a malá písmena. Název musí být jedinečný.
+Názvy účtů úložiště musí mít délku 3 až 24 znaků a musí obsahovat jenom číslice a malá písmena. Název musí být jedinečný.
 
 ## <a name="solution"></a>Řešení
 
-Ujistěte se, že název účtu úložiště není jedinečný. Můžete vytvořit jedinečný název zřetězením svých zásad vytváření názvů výsledkem [uniqueString](resource-group-template-functions-string.md#uniquestring) funkce.
+Ujistěte se, že je název účtu úložiště jedinečný. Jedinečný název můžete vytvořit zřetězením konvence pojmenování s výsledkem funkce [uniqueString](resource-group-template-functions-string.md#uniquestring) .
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
 
-Ujistěte se, že váš název účtu úložiště není delší než 24 znaků. [UniqueString](resource-group-template-functions-string.md#uniquestring) funkce vrací 13 znaků. Pokud zřetězit předpony nebo přípony k **uniqueString** výsledek, zadejte hodnotu, která je 11 znaků nebo méně.
+Ujistěte se, že název účtu úložiště není delší než 24 znaků. Funkce [uniqueString](resource-group-template-functions-string.md#uniquestring) vrátí 13 znaků. Pokud zřetězete předponu nebo příponu do výsledku **uniqueString** , zadejte hodnotu, která je 11 znaků nebo méně.
 
 ```json
 "parameters": {
@@ -71,4 +61,4 @@ Ujistěte se, že váš název účtu úložiště není delší než 24 znaků.
 }
 ```
 
-Ujistěte se, že váš název účtu úložiště neobsahuje žádné znaky velké písmeno nebo speciální znaky.
+Ujistěte se, že název účtu úložiště neobsahuje žádná velká písmena ani speciální znaky.

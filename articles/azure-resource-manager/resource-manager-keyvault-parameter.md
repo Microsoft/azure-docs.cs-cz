@@ -1,17 +1,14 @@
 ---
-title: Key Vault tajný klíč se šablonou Azure Resource Manager | Microsoft Docs
+title: Key Vault tajný klíč se šablonou
 description: Ukazuje, jak předat tajný klíč z trezoru klíčů jako parametr během nasazování.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 489b09d2523393ae67668ed13c651c9b7b0217b4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 37d21e295eca2b40e91f92d65d6e927ee6857d0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998892"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149489"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazení
 
@@ -19,7 +16,7 @@ Namísto vložení zabezpečené hodnoty (například hesla) přímo do šablony
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Nasazení trezorů klíčů a tajných kódů
 
-Pro přístup k trezoru klíčů během nasazování šablony `enabledForTemplateDeployment` nastavte v trezoru klíčů `true`na.
+Pro přístup k trezoru klíčů během nasazování šablony nastavte `enabledForTemplateDeployment` v trezoru klíčů na `true`.
 
 Následující ukázky Azure CLI a Azure PowerShell ukazují, jak vytvořit Trezor klíčů a jak přidat tajný klíč.
 
@@ -72,7 +69,7 @@ Další informace o vytváření trezorů klíčů a přidávání tajných klí
 
 ## <a name="grant-access-to-the-secrets"></a>Udělení přístupu k tajným klíčům
 
-Uživatel, který šablonu nasadí, musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro rozsah skupiny prostředků a trezoru klíčů. Tento přístup udělují i role [vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) . Pokud jste vytvořili Trezor klíčů, jste vlastníkem, abyste měli oprávnění.
+Uživatel, který šablonu nasadí, musí mít oprávnění `Microsoft.KeyVault/vaults/deploy/action` pro rozsah skupiny prostředků a trezoru klíčů. Tento přístup udělují i role [vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) . Pokud jste vytvořili Trezor klíčů, jste vlastníkem, abyste měli oprávnění.
 
 Následující postup ukazuje, jak vytvořit roli s minimálním oprávněním a jak přiřadit uživatele.
 
@@ -124,7 +121,7 @@ S tímto přístupem odkazujete na Trezor klíčů v souboru parametrů, nikoli 
 
 ![Správce prostředků diagramu statického ID integrace trezoru klíčů](./media/resource-manager-keyvault-parameter/statickeyvault.png)
 
-[Kurz: Integruje Azure Key Vault v Správce prostředků](./resource-manager-tutorial-use-key-vault.md) Template Deployment používá tuto metodu.
+[Kurz: integrování Azure Key Vault v Správce prostředků Template Deployment](./resource-manager-tutorial-use-key-vault.md) používá tuto metodu.
 
 Následující šablona nasadí SQL Server, který obsahuje heslo správce. Parametr password je nastaven na zabezpečený řetězec. Ale šablona neurčuje, ze které hodnoty pochází.
 
@@ -189,7 +186,7 @@ V následujícím souboru parametrů již musí existovat tajný klíč trezoru 
 }
 ```
 
-Pokud potřebujete použít jinou verzi tajného klíče, než je aktuální verze, použijte `secretVersion` vlastnost.
+Pokud potřebujete použít jinou verzi tajného klíče, než je aktuální verze, použijte vlastnost `secretVersion`.
 
 ```json
 "secretName": "ExamplePassword",
@@ -343,7 +340,7 @@ New-AzResourceGroupDeployment `
   -vaultName $keyVaultName -vaultResourceGroupName $keyVaultResourceGroupName -secretName $secretName
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Obecné informace o trezorech klíčů najdete v tématu [co je Azure Key Vault?](../key-vault/key-vault-overview.md).
 - Kompletní Příklady referenčních tajných klíčů najdete v tématu [Key Vault příklady](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

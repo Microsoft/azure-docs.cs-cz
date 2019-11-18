@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/06/2019
-ms.openlocfilehash: 31b2322bdf7b7c03ae8974d57ee1b44c2f6137b9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: cce7562c74577f6fd545bcaed3ee3e0968fd40b4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607514"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132912"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Kurz: škálování aplikace ve jarním cloudu Azure
 
@@ -27,15 +27,17 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Přejít na stránku škálování v Azure Portal
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
 1. Přejděte na stránku s **přehledem** jarního cloudu Azure.
+
+1. Vyberte skupinu prostředků, která obsahuje vaši službu.
 
 1. Přejděte na kartu **aplikace** v záhlaví **Nastavení** v nabídce na levé straně.
 
 1. Vyberte aplikaci, kterou chcete škálovat. V tomto příkladu přizpůsobíme škálování aplikace s názvem "Account-Service". To by mělo přebrat na stránku **Přehled** aplikace.
 
-1. Přejděte na kartu **škálování** pod záhlavím **Nastavení** v nabídce na levé straně. Měl by se zobrazit formulář s řádky pro každý z atributů škálování, které jsme předtím uvedli.
+1. Přejděte na kartu **škálování** pod záhlavím **Nastavení** v nabídce na levé straně. Měli byste vidět možnosti pro atributy škálování zobrazené v následující části.
 
 ## <a name="scale-your-application"></a>Škálování aplikace
 
@@ -45,9 +47,11 @@ Můžete upravit atributy škálování. Mějte na paměti následující pozná
 
 * **Paměť/GB**: maximální povolené množství paměti je 8 GB na jednu instanci aplikace.  Celková velikost paměti pro aplikaci bude nastavená jako hodnota vynásobená počtem instancí aplikace.
 
-* **Počet instancí**: na úrovni Standard můžete škálovat až 20 instancí. Tato hodnota mění počet samostatných spuštěných instancí aplikace mikroslužeb.
+* **Počet instancí aplikace**: na úrovni Standard můžete škálovat až 20 instancí. Tato hodnota mění počet samostatných spuštěných instancí aplikace mikroslužeb.
 
-Nezapomeňte kliknout na tlačítko **Uložit** a použít nastavení škálování.
+Nezapomeňte použít nastavení škálování tak, že kliknete na tlačítko **Uložit** .
+
+![Škálování služby v Azure Portal](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 Po několika sekundách se provedené změny zobrazí na stránce **Přehled** s dalšími podrobnostmi, které jsou k dispozici na kartě **instance aplikace** . škálování nevyžaduje žádné změny kódu ani nové nasazení.
 

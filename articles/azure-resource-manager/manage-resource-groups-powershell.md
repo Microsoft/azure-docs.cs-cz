@@ -1,19 +1,16 @@
 ---
 title: Správa skupin prostředků – Azure PowerShell
 description: Pomocí Azure PowerShell můžete spravovat skupiny prostředků přes Azure Resource Manager. Ukazuje, jak vytvořit, vypsat a odstranit skupiny prostředků.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 5a9768a3c4f398b3c3f88e2321f6df1a1b6fc8b7
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 5d0d7394de2763c785640b0981de9017cf0a7ae7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532177"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149787"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure PowerShell
 
@@ -184,7 +181,7 @@ V prostředku je parametr použit pro název.
 ]
 ```
 
-Použijete-li při exportování šablony parametr `-IncludeParameterDefaultValue`, parametr šablony obsahuje výchozí hodnotu, která je nastavena na aktuální hodnotu. Můžete buď použít tuto výchozí hodnotu, nebo přepsat výchozí hodnotu tak, že předáte jinou hodnotu.
+Použijete-li parametr `-IncludeParameterDefaultValue` při exportování šablony, parametr šablony obsahuje výchozí hodnotu, která je nastavena na aktuální hodnotu. Můžete buď použít tuto výchozí hodnotu, nebo přepsat výchozí hodnotu tak, že předáte jinou hodnotu.
 
 ```json
 "parameters": {
@@ -199,7 +196,7 @@ Použijete-li při exportování šablony parametr `-IncludeParameterDefaultValu
 }
 ```
 
-Použijete-li při exportování šablony parametr `-SkipResourceNameParameterization`, parametry pro názvy prostředků nejsou zahrnuty do šablony. Místo toho je název prostředku nastaven přímo na prostředek na jeho aktuální hodnotu. Během nasazování nemůžete přizpůsobit název.
+Použijete-li parametr `-SkipResourceNameParameterization` při exportování šablony, parametry pro názvy prostředků nejsou zahrnuty do šablony. Místo toho je název prostředku nastaven přímo na prostředek na jeho aktuální hodnotu. Během nasazování nemůžete přizpůsobit název.
 
 ```json
 "resources": [

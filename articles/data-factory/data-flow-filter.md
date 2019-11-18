@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1daff431fc217c08f3bc3c5aeb3b4711691909c0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676175"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132533"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Filtrovat transformaci v toku dat mapování
 
@@ -37,7 +37,7 @@ Pomocí Tvůrce výrazů toku dat zadejte výraz pro podmínku filtru. Chcete-li
 
 ### <a name="example"></a>Příklad
 
-V následujícím příkladu je podmíněná transformace rozdělení s názvem `FilterBefore1960`, která přebírá příchozí Stream `CleanData`. Podmínka filtru je `year <= 1960`výrazu.
+Níže uvedený příklad je transformace filtru s názvem `FilterBefore1960`, která přebírá příchozí datový proud `CleanData`. Podmínka filtru je `year <= 1960`výrazu.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

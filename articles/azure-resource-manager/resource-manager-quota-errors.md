@@ -1,24 +1,14 @@
 ---
-title: Chyby kvóty Azure | Microsoft Docs
+title: Chyby kvóty
 description: Popisuje, jak vyřešit chyby kvót prostředků při nasazování prostředků pomocí Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.author: tomfitz
-ms.openlocfilehash: 201ddf69f9c28b5b3a4197f91768f749152094de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8760b027d815dfc70000db5aea534bf10f60b759
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390310"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149429"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Řešení chyb pro kvóty prostředků
 
@@ -54,7 +44,7 @@ Kvóty se uplatňují u jednotlivých skupin prostředků, předplatných, účt
 
 ### <a name="azure-cli"></a>Azure CLI
 
-V případě Azure CLI pomocí příkazu `az vm list-usage` Najděte kvóty virtuálních počítačů.
+V případě Azure CLI použijte k nalezení kvót virtuálních počítačů příkaz `az vm list-usage`.
 
 ```azurecli
 az vm list-usage --location "South Central US"

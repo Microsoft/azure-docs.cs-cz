@@ -1,32 +1,25 @@
 ---
-title: Rychlý Start, kde se dozvíte, jak používat Azure cache pro Redis s aplikacemi .NET Core | Microsoft Docs
+title: Rychlý Start, kde se dozvíte, jak používat Azure cache pro Redis s aplikacemi .NET Core
 description: V tomto rychlém startu se dozvíte, jak získat přístup k Azure cache pro Redis ve vašich aplikacích .NET Core.
-services: cache,app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: deef63c07dedbff0ae914b09558a2771adba19ff
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ce50ecac9a7b676386ce893a19391a63ffeed108
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755480"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122451"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Core
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Core, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Konkrétně použijete klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) s C# kódem v konzolové aplikaci .NET Core.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -91,7 +84,7 @@ Po nahrazení zástupných znaků (včetně ostrých závorek) názvu mezipamět
 dotnet user-secrets set CacheConnection "<cache name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<primary-access-key>"
 ```
 
-K souboru *Program.cs* přidejte následující příkaz `using`:
+K souboru `using`Program.cs*přidejte následující příkaz*:
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -127,7 +120,7 @@ Po dokončení instalace budete moct se svým projektem používat klienta mezip
 
 ## <a name="connect-to-the-cache"></a>Připojení k mezipaměti
 
-K souboru *Program.cs* přidejte následující příkaz `using`:
+K souboru `using`Program.cs*přidejte následující příkaz*:
 
 ```csharp
 using StackExchange.Redis;
@@ -159,7 +152,7 @@ Hodnota tajného kódu *CacheConnection* se používá jako parametr hesla a je 
 
 ## <a name="executing-cache-commands"></a>Provádění příkazů mezipaměti
 
-V souboru *Program.cs* přidejte pro proceduru `Program` třídy konzolové aplikace `Main` následující kód:
+V souboru *Program.cs* přidejte pro proceduru `Main` třídy konzolové aplikace `Program` následující kód:
 
 ```csharp
         static void Main(string[] args)
@@ -237,13 +230,13 @@ Spuštěním následujícího příkazu přidejte do aplikace balíček *Newtons
 dotnet add package Newtonsoft.json
 ```
 
-Na začátek souboru *Program.cs* přidejte následující příkaz `using`:
+Na začátek souboru `using`Program.cs*přidejte následující příkaz*:
 
 ```csharp
 using Newtonsoft.Json;
 ```
 
-Do souboru *Program.cs* přidejte následující definici třídy `Employee`:
+Do souboru `Employee`Program.cs*přidejte následující definici třídy*:
 
 ```csharp
         class Employee
@@ -261,7 +254,7 @@ Do souboru *Program.cs* přidejte následující definici třídy `Employee`:
         }
 ```
 
-Na konec procedury `Main()` a před volání metody `Dispose()` v souboru *Program.cs* přidejte do mezipaměti následující řádky kódu a získejte serializovaný objekt .NET:
+Na konec procedury `Main()` a před volání metody *v souboru*Program.cs`Dispose()` přidejte do mezipaměti následující řádky kódu a získejte serializovaný objekt .NET:
 
 ```csharp
             // Store .NET object to cache
@@ -302,7 +295,7 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 Do textového pole **Filtrovat podle názvu...** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 

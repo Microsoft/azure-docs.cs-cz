@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3036e5882e236dbbb9cf4f9aae17617822422a82
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c1b4791f2ec80eba25a00e22cb4298b4c97da4de
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742112"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151079"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. Compute. CredentialsCombo – element uživatelského rozhraní
+
 Skupina ovládacích prvků s integrovaným ověřováním pro hesla systémů Windows a Linux a veřejných klíčů SSH.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
@@ -38,6 +39,7 @@ Pro Linux s vybraným veřejným klíčem SSH uvidí uživatelé tyto informace:
 ![Microsoft. Compute. CredentialsCombo – klíč Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schéma
+
 Pro Windows použijte následující schéma:
 
 ```json
@@ -95,15 +97,9 @@ Pro **Linux**použijte následující schéma:
 }
 ```
 
-## <a name="remarks"></a>Poznámky
-- `osPlatform`musí být zadáno a může být buď **Windows** , nebo **Linux**.
-- Pokud `constraints.required` je nastavená na **hodnotu true**, musí být v textových polích heslo nebo veřejný klíč SSH hodnoty k úspěšnému ověření. Výchozí hodnota je **true (pravda**).
-- Pokud `options.hideConfirmation` je nastaveno na **hodnotu true**, pak je skryté druhé textové pole pro potvrzení hesla uživatele. Výchozí hodnota je **false**.
-- Pokud `options.hidePassword` je parametr nastaven na **hodnotu true**, možnost použití ověřování heslem je skrytá. Dá se použít jenom v případě `osPlatform` , že je **Linux**. Výchozí hodnota je **false**.
-- Další omezení povolených hesel lze implementovat pomocí `customPasswordRegex` vlastnosti. Řetězec v `customValidationMessage` se zobrazí, když se heslo nezdařilo vlastní ověření. Výchozí hodnota pro obě vlastnosti je **null**.
-
 ## <a name="sample-output"></a>Ukázkový výstup
-Pokud `osPlatform` je **systém Windows**nebo `osPlatform` se systémem **Linux** a uživatel zadal heslo místo veřejného klíče SSH, vrátí tento ovládací prvek následující výstup:
+
+Pokud je `osPlatform` **Windows**, nebo `osPlatform` se systémem **Linux** a uživatel zadal heslo místo veřejného klíče SSH, vrátí tento ovládací prvek následující výstup:
 
 ```json
 {
@@ -112,7 +108,7 @@ Pokud `osPlatform` je **systém Windows**nebo `osPlatform` se systémem **Linux*
 }
 ```
 
-Pokud `osPlatform` je systém **Linux** a uživatel zadal veřejný klíč SSH, vrátí ovládací prvek následující výstup:
+Pokud je `osPlatform` **Linux** a uživatel zadal veřejný klíč SSH, vrátí ovládací prvek následující výstup:
 
 ```json
 {
@@ -121,6 +117,15 @@ Pokud `osPlatform` je systém **Linux** a uživatel zadal veřejný klíč SSH, 
 }
 ```
 
+## <a name="remarks"></a>Poznámky
+
+- je nutné zadat `osPlatform` a může být buď **Windows** , nebo **Linux**.
+- Pokud je `constraints.required` nastavené na **hodnotu true**, musí být v textových polích heslo nebo veřejný klíč SSH hodnoty k úspěšnému ověření. Výchozí hodnota je **true (pravda**).
+- Pokud je `options.hideConfirmation` nastaveno na **hodnotu true**, pak je skryté druhé textové pole pro potvrzení hesla uživatele. Výchozí hodnota je **false**.
+- Pokud je `options.hidePassword` nastavené na **hodnotu true**, pak je možnost použít ověřování heslem skrytá. Dá se použít jenom v případě, že je `osPlatform` **Linux**. Výchozí hodnota je **false**.
+- Další omezení povolených hesel lze implementovat pomocí vlastnosti `customPasswordRegex`. Řetězec v `customValidationMessage` se zobrazí, když se heslo nezdařilo vlastní ověření. Výchozí hodnota pro obě vlastnosti je **null**.
+
 ## <a name="next-steps"></a>Další kroky
+
 * Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
 * Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

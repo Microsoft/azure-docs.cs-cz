@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Node.js'
+title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Node.js'
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace Node.js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 96848e30c13d226978a6be1a1786e9ed2b4ab7c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 79f0630c65aa438ac5d831b03842cc74b609cd3b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498912"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132740"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Node.js
+# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Node.js
 
 Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace Node.js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
@@ -59,7 +59,7 @@ Nejprve si pro svůj projekt Node.js nastavíme vývojové prostředí.
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Vytvoření projektu a deklarace požadovaných modulů
 
-V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte ve stejném adresáři, jako je soubor `package.json`, nový projekt Node.js. Například: `sample.js`.
+V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte ve stejném adresáři, jako je soubor `package.json`, nový projekt Node.js. Příklad: `sample.js`.
 
 Teď zkopírujte tento kód do svého projektu. Načte moduly nainstalované v předchozí části.
 
@@ -104,11 +104,11 @@ Posledním krokem je spuštění programu.
 
 Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatného.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-* [Referenční informace k sadě Azure Node SDK](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch/)
+* [Referenční informace k sadě Azure Node SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)

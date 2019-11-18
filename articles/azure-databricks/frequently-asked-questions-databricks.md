@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601809"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129320"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Nejčastější dotazy týkající se platformy Azure Databricks
 
@@ -34,7 +34,7 @@ Postupujte následovně:
 1. Přiřaďte potřebná oprávnění k instančnímu objektu v Data Lake Storage.
 1. Pokud chcete získat přístup k souboru v Data Lake Storage, použijte přihlašovací údaje instančního objektu ve službě Poznámkový blok.
 
-Další informace najdete v tématu [použití Azure Data Lake Storage s Azure Databricks](/azure/databricks/data/data-sources/azure/azure-datalake.html).
+Další informace najdete v tématu [použití Azure Data Lake Storage s Azure Databricks](/azure/databricks/data/data-sources/azure/azure-datalake).
 
 ## <a name="fix-common-problems"></a>Řešení běžných problémů
 

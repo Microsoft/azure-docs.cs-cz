@@ -1,17 +1,14 @@
 ---
 title: Přesun virtuálních počítačů Azure do nového předplatného nebo skupiny prostředků
 description: K přesunutí virtuálních počítačů do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: tomfitz
-ms.openlocfilehash: faeba1c0d7342a4c00f19d4cee8d67b8dbde8e6a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: b03e9618e621216f74cb02828183df7ee6b502ea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528424"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150934"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Pokyny pro přesunutí virtuálních počítačů
 
@@ -23,7 +20,7 @@ Následující scénáře se zatím nepodporují:
 
 * Managed Disks v Zóny dostupnosti nejde přesunout do jiného předplatného.
 * Virtual Machine Scale Sets se standardní SKU Load Balancer nebo veřejnou IP adresou standardní SKU nejde přesunout.
-* Virtuální počítače vytvořené z prostředků z Marketplace s připojenými plány se nedají přesouvat mezi skupinami prostředků nebo předplatnými. Zrušte zřízení virtuálního počítače v aktuálním předplatném a znovu ho nasaďte do nového předplatného.
+* Virtuální počítače vytvořené z Marketplace prostředky s plány připojené se nedají přesouvat mezi skupinami prostředků nebo předplatných. Zrušte zřízení virtuálního počítače v aktuálním předplatném a znovu ho nasaďte do nového předplatného.
 * Virtuální počítače ve stávající virtuální síti nejde přesunout do nového předplatného, když nepřesouváte všechny prostředky ve virtuální síti.
 * Virtuální počítače s nízkou prioritou a virtuální počítače s nízkou prioritou se nedají přesouvat mezi skupinami prostředků nebo předplatnými.
 * Virtuální počítače ve skupině dostupnosti se nedají přesunout jednotlivě.
@@ -34,8 +31,8 @@ Pokud chcete přesunout virtuální počítače nakonfigurované s Azure Backup,
 
 * Najděte umístění virtuálního počítače.
 * Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1` například AzureBackupRG_westus2_1
-* Pokud v Azure Portal, zaškrtněte "Zobrazit skryté typy"
-* Pokud používáte prostředí PowerShell, použijte rutinu `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`.
+* Pokud na webu Azure portal, pak zaškrtněte "Zobrazit skryté typy"
+* Pokud v prostředí PowerShell, použijte `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` rutiny
 * Pokud v rozhraní příkazového řádku, použijte `az resource list -g AzureBackupRG_<location of your VM>_1`
 * Vyhledejte prostředek typu `Microsoft.Compute/restorePointCollections` se vzorem pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.

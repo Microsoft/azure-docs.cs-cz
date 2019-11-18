@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 04dcdbe6854a386f7edaa04aa9c2912789122a31
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827444"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144481"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -30,17 +30,11 @@ Správce protokolů logiky výstrah shromažďuje protokoly platforem virtuáln�
 
 ## <a name="appdynamics"></a>AppDynamics
 
-![Logo AppDynamics](./media/partners/appdynamics.png)
+![AppDynamics Logo](./media/partners/appdynamics.png)
 
 AppDynamics Application Performance Management (APM) umožňuje vlastníkům aplikací rychle řešit problémy s výkonem a optimalizovat výkon aplikací běžících v prostředí Azure. Může monitorovat Azure Cloud Services (PaaS), webové & role pracovních procesů, Virtual Machines (IaaS), vzdálené zjišťování služeb (Microsoft Azure Service Bus), Microsoft Azure frontu, Microsoft Azure vzdálených služeb (Azure BLOB), frontu Azure (Microsoft Service Bus), data Blob Storage úložiště a Microsoft Azure. AppDynamics APM je k dispozici v Azure Marketplace.
 
 [Přejít na dokumentaci.][appdynamics-doc]
-
-## <a name="microfocus-arcsight"></a>ArcSighti mikrofokusu
-
-ArcSight má inteligentní konektor pro Azure Monitor centra událostí.
-
-[Další informace][arcsight-doc]
 
 ## <a name="atlassian-jira"></a>Atlassian JIRA
 
@@ -79,7 +73,7 @@ CloudMonix nabízí služby pro monitorování, automatizaci a samočinné oprav
 
 [Přejít na dokumentaci.][cloudmonix-doc]
 
-## <a name="datadog"></a>Služby Datadog
+## <a name="datadog"></a>Datadog
 
 ![Logo služby Datadog](./media/partners/datadog.png)
 
@@ -128,6 +122,31 @@ LogicMonitor® je špičková platforma pro monitorování výkonu založená na
 
 [Přejít na dokumentaci.][logicmonitor-doc]
 
+## <a name="logrhythm"></a>LogRhythm
+
+![Logo LogRhythm](./media/partners/logrhythm.png)
+
+LogRhythm, vedoucí v NextGen SIEM, umožňuje organizacím na šesti kontinentech snižovat riziko tím, že rychle detekuje, reaguje na a neutralizuje týká kybernetických hrozeb. Pracovní postup správy životního cyklu LogRhythm (TLM) je základem pro provozní centra zabezpečení a pomáhá zákazníkům zabezpečit své cloudové, fyzické a virtuální infrastruktury pro IT a prostředí. Pokud jste zákazníkem LogRhythm a jste připraveni zahájit svou cestu k Azure, budete muset nainstalovat a nakonfigurovat integraci LogRhythm Open a EventHub. Další podrobnosti, včetně dokumentace ke konfiguraci Azure Monitor a otevřeného sběrače, najdete [tady](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
+
+
+
+## <a name="microfocus"></a>Mikrofokus
+
+![Logo mikrofokusu](./media/partners/microfocus.png)     
+
+**ArcSight** pro mikrofokus má inteligentní konektor pro Azure monitor centra událostí.
+
+[Další informace](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Dokumentaci k ArcSight.")
+
+Operace mikrofokusu: **most** automaticky monitoruje všechny hybridní IT prostředky – jakékoli zařízení, operační systém, databázi, aplikaci nebo službu bez ohledu na to, kde běží, a AIOps se na všechny datové typy – události, metriky, protokoly a závislosti. Poskytuje jedinečnou kombinaci monitorování kvality služeb, společně s hloubkovou analýzou stavu aplikací, a zahrnuje komplexní monitorování výkonu a dostupnosti služeb Microsoft Azure. Díky mostu pro provoz můžou zákazníci v jakémkoli zařízení s prohlížečem poskytnout jediné podokno ze skla, a to jak pro firmy, tak i zúčastněné strany IT.
+
+Víc se uč
+- [Přehled sady OB](https://www.microfocus.com/products/operations-bridge-suite/overview)
+- [Stáhnout](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
+- [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope je součást sady operací mostu.
+
+
+
 ## <a name="moogsoft"></a>Moogsoft
 
 ![Moogsoft](./media/partners/moogsoft.png)
@@ -153,7 +172,7 @@ Moogsoft se spouští v Azure Realu a integruje se s nástroji pro monitorován�
 
 ## <a name="opsgenie"></a>OpsGenie
 
-![Logo OpsGenie](./media/partners/opsgenie.png)
+![OpsGenie Logo](./media/partners/opsgenie.png)
 
 OpsGenie slouží jako dispečer pro výstrahy vygenerované Azure. OpsGenie určuje správné osoby, které budou upozorňovány na závislosti na plánech a eskalacích volání. Může je informovat pomocí e-mailu, textových zpráv (SMS), telefonních hovorů nebo nabízených oznámení. Azure vygeneruje výstrahy zjištěné problémy. OpsGenie zajistí, že na tomto problému pracují správné osoby.
 
@@ -243,7 +262,6 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 <!--Partner Documentation-->
 [alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "Dokumentaci k AlertLogic."
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "Dokumentaci k AppDynamics."
-[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Dokumentaci k ArcSight."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Úvod do Botmetric"
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 

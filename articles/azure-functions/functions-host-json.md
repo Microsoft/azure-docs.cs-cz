@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 584fb7b97b8342289d7ca2f23b0479eb1169867a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 222ca8781ae9532f10ed7d113b93eac78c6a3bba
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575895"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129068"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Reference Host. JSON pro Azure Functions 2. x  
 
@@ -23,7 +23,7 @@ ms.locfileid: "73575895"
 Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici pro modul runtime v2.  
 
 > [!NOTE]
-> Tento článek je určen pro Azure Functions 2. x.  Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
+> Tento článek je určen pro Azure Functions 2. x.  Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
 
 Další možnosti konfigurace aplikace Function App jsou spravované v [nastavení aplikace](functions-app-settings.md).
 
@@ -48,6 +48,10 @@ Následující ukázkové soubory *Host. JSON* mají uvedené všechny možné m
         "queues": {},
         "sendGrid": {},
         "serviceBus": {}
+    },
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
@@ -91,7 +95,7 @@ Následující části tohoto článku vysvětlují jednotlivé vlastnosti nejvy
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
-## <a name="applicationinsights"></a>ApplicationInsights
+## <a name="applicationinsights"></a>applicationInsights
 
 Toto nastavení je podřízenou položkou [protokolování](#logging).
 
@@ -113,11 +117,11 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|true|Povolí nebo zakáže vzorkování.| 
+|isEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
 |maxTelemetryItemsPerSecond|20|Prahová hodnota, při které začíná vzorkování.| 
-|EnableLiveMetrics |true|Povoluje shromažďování živých metrik.|
-|EnableDependencyTracking|true|Povolí sledování závislostí.|
-|EnablePerformanceCountersCollection|true|Povolí shromažďování čítačů výkonu Kudu.|
+|EnableLiveMetrics |true (pravda)|Povoluje shromažďování živých metrik.|
+|EnableDependencyTracking|true (pravda)|Povolí sledování závislostí.|
+|EnablePerformanceCountersCollection|true (pravda)|Povolí shromažďování čítačů výkonu Kudu.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -127,7 +131,7 @@ Nastavení konfigurace najdete v [Cosmos DB triggerech a vazbách](functions-bin
 
 Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durable-functions-bindings.md#host-json).
 
-## <a name="eventhub"></a>eventHub
+## <a name="eventhub"></a>centra událostí
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
@@ -135,7 +139,13 @@ Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra ud
 
 Vlastnost, která vrací objekt, který obsahuje všechna nastavení specifická pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
-## <a name="functions"></a>functions
+## <a name="extensionbundle"></a>extensionBundle 
+
+Sady rozšíření umožňují přidat do aplikace Function App kompatibilní sadu funkcí pro vazby. Další informace najdete v tématu [rozšiřující sady pro místní vývoj](functions-bindings-register.md#extension-bundles).
+
+[!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
+
+## <a name="functions"></a>– funkce
 
 Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spuštění všech funkcí. Určeno pro použití pouze při [místním spuštění](functions-run-local.md). V aplikacích Function App v Azure byste měli místo použití tohoto nastavení zakázat konkrétní funkce pomocí postupu v [Azure Functions](disable-function.md) .
 
@@ -174,7 +184,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|umožněn|true|Určuje, jestli je funkce povolená. | 
+|enabled|true (pravda)|Určuje, jestli je funkce povolená. | 
 |healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
 |healthCheckWindow|2 minuty|Posuvné časové okno používané ve spojení s nastavením `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
@@ -184,7 +194,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>Protokolu
+## <a name="logging"></a>protokolu
 
 Řídí chování protokolování aplikace Function App, včetně Application Insights.
 
@@ -208,8 +218,8 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always``debugOnly`. |
 |logLevel|neuvedeno|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|konzola|neuvedeno| Nastavení protokolování [konzoly](#console) . |
-|ApplicationInsights|neuvedeno| Nastavení [applicationInsights](#applicationinsights) |
+|konzola|neuvedeno| [console](#console) nastavení protokolování. |
+|applicationInsights|neuvedeno| Nastavení [applicationInsights](#applicationinsights) |
 
 ## <a name="console"></a>konzola
 
@@ -229,7 +239,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí p
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
+|isEnabled|false|Povolí nebo zakáže protokolování konzoly.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
@@ -255,7 +265,7 @@ Nastavení konfigurace najdete v [SendGrid triggerech a vazbách](functions-bind
 
 Nastavení konfigurace najdete v [Service Bus triggerech a vazbách](functions-bindings-service-bus.md#host-json).
 
-## <a name="singleton"></a>singleton
+## <a name="singleton"></a>Singleton
 
 Nastavení konfigurace pro chování zámku typu singleton. Další informace najdete v tématu [problém GitHubu o podpoře typu Singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 

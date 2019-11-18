@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005831"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144860"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub
 
@@ -54,11 +54,21 @@ Zprávy mohou pocházet z libovolného zdroje dat podporovaného [IoT Hub směro
 
 Ke zprávám, které se předávají do předdefinovaného koncového bodu IoT Hub, můžete přidat rozšíření nebo zprávy směrované do vlastních koncových bodů, jako je například úložiště objektů BLOB v Azure, fronta Service Bus nebo Service Bus téma.
 
-Do zpráv, které se publikují do Event Grid, můžete přidat také rozšíření tak, že jako Event Grid vyberete koncový bod. Další informace najdete v tématu [IoT Hub a Event Grid](iot-hub-event-grid.md).
+Můžete přidat rozšíření do zpráv, které jsou publikovány do Event Grid tím, že vyberete koncový bod jako Event Grid. Vytvoříme výchozí trasu v IoT Hub k telemetrie zařízení na základě vašeho předplatného Event Grid. Tato jediná trasa dokáže zvládnout všechna Vaše předplatná Event Grid. V případě, že jste vytvořili odběr služby Event Grid do telemetrie zařízení, můžete nakonfigurovat rozšíření pro událost Event gridu s přístavou [Point. Další informace najdete v tématu [IoT Hub a Event Grid](iot-hub-event-grid.md).
 
 Pro každý koncový bod se aplikují obohacení. Pokud zadáte pro určitý koncový bod pět obohacení, budou se všechny zprávy, které se na tento koncový bod natištěny, natištěny se stejnými pěti rozšířeními.
 
-Informace o tom, jak vyzkoušet rozšiřování zpráv, najdete v [kurzu rozšíření zpráv](tutorial-message-enrichments.md) .
+Rozšíření lze konfigurovat pomocí následujících metod:
+
+| **Metoda** | **Příkaz** |
+| ----- | -----| 
+| Portál | [Azure Portal](https://portal.azure.com) | Viz [kurz pro rozšíření zpráv](tutorial-message-enrichments.md) . | 
+| Azure CLI   | [AZ IoT Hub Message-obohacení](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
+
+Přidání rozšíření zprávy nepřidá latenci do směrování zpráv.
+
+Informace o tom, jak vyzkoušet rozšíření zpráv, najdete v [kurzu rozšíření zpráv](tutorial-message-enrichments.md) .
 
 ## <a name="limitations"></a>Omezení
 

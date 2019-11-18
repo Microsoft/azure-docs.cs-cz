@@ -1,29 +1,28 @@
 ---
-title: Nastavení pořadí nasazení pro prostředky Azure | Dokumentace Microsoftu
-description: Popisuje, jak nastavit jeden prostředek jako závislé na jiný prostředek během nasazování k zajištění, že se prostředky nasadí ve správném pořadí.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Nastavení pořadí nasazení pro prostředky
+description: V této části najdete popis postupu při nastavování jednoho prostředku v závislosti na jiném prostředku během nasazování, aby bylo zajištěno nasazení prostředků ve správném pořadí.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: tomfitz
-ms.openlocfilehash: 32b2b41e47fe089da70d82e6049d0139795df88a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 6b608111f2fe24a0b426e5697ceb07349f2d4693
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204217"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149727"
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definovat pořadí pro nasazení prostředků do šablon Azure Resource Manageru
-Pro daný prostředek může být další prostředky, které musí existovat předtím, než se prostředek nasazuje. Například SQL server, musí existovat před pokusem o nasazení databáze SQL. Můžete definovat tuto relaci označením jeden prostředek jako závislé na jiný prostředek. Definování závislostí s **dependsOn** element, nebo pomocí **odkaz** funkce. 
+# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definování pořadí nasazení prostředků v šablonách Azure Resource Manager
 
-Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Stačí k definování závislostí pro prostředky, které jsou nasazené do stejné šablony. 
+Pro daný prostředek mohou existovat další prostředky, které musí existovat před nasazením prostředku. Například SQL Server musí existovat před pokusem o nasazení databáze SQL. Tuto relaci definujete tak, že označíte jeden prostředek jako závislý na jiném prostředku. Můžete definovat závislost pomocí elementu **dependsOn** nebo pomocí **referenční** funkce. 
 
-Podívejte se kurz [kurz: vytváření šablon Azure Resource Manageru s závislé prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Stačí definovat závislosti pro prostředky, které jsou nasazeny ve stejné šabloně. 
+
+Kurz najdete v tématu [kurz: vytváření Azure Resource Manager šablon se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
 
 ## <a name="dependson"></a>dependsOn
-Ve vaší šabloně dependsOn prvek umožňuje definovat jeden prostředek jako závislé na jeden nebo více prostředků. Jeho hodnota může být čárkami oddělený seznam názvů prostředků. 
 
-Následující příklad ukazuje škálovací sadu virtuálních počítačů, která závisí na nástroj pro vyrovnávání zatížení, virtuální sítě a smyčku, která vytvoří více účtů úložiště. Tyto prostředky nejsou uvedené v následujícím příkladu, ale bude muset existovat někde jinde v šabloně.
+V rámci šablony umožňuje element dependsOn definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Jeho hodnota může být čárkami oddělený seznam názvů prostředků. 
+
+Následující příklad ukazuje sadu škálování virtuálního počítače, která závisí na nástroji pro vyrovnávání zatížení, na virtuální síti a na smyčce, která vytváří více účtů úložiště. Tyto další prostředky nejsou uvedené v následujícím příkladu, ale musí existovat jinde v šabloně.
 
 ```json
 {
@@ -43,9 +42,9 @@ Následující příklad ukazuje škálovací sadu virtuálních počítačů, k
 }
 ```
 
-V předchozím příkladu je zahrnuta závislost na prostředky, které jsou vytvořené prostřednictvím kopií smyčky s názvem **storageLoop**. Příklad najdete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).
+V předchozím příkladu je závislost obsažena v prostředcích, které jsou vytvořeny pomocí smyčky kopírování s názvem **storageLoop**. Příklad najdete [v tématu Vytvoření více instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md).
 
-Při definování závislostí, můžete použít obor názvů zprostředkovatele prostředků a typ prostředku, aby se zabránilo nejednoznačnosti. Například aby se vyjasnilo, nástroje pro vyrovnávání zatížení a virtuální síť, která může mít stejné názvy jako ostatní prostředky, použijte následující formát:
+Při definování závislostí můžete zahrnout obor názvů poskytovatele prostředků a typ prostředku, aby nedocházelo k nejednoznačnosti. Například pro objasnění nástroje pro vyrovnávání zatížení a virtuální sítě, které mohou mít stejné názvy jako jiné prostředky, použijte následující formát:
 
 ```json
 "dependsOn": [
@@ -54,14 +53,14 @@ Při definování závislostí, můžete použít obor názvů zprostředkovatel
 ]
 ``` 
 
-Když jste sklon nesmí být použití dependsOn mapovat vztahy mezi prostředky, je důležité pochopit, proč to děláte. Dokumentování způsob propojených prostředků, například dependsOn není správný přístup. Nemůže zadat dotaz, které prostředky byly definovány v elementu dependsOn po nasazení. Pomocí dependsOn vás to ovlivnit dobu nasazení protože Resource Manager nenasadí v paralelní dva prostředky, které jsou závislé. 
+I když může být pro mapování vztahů mezi prostředky použit dependsOn, je důležité pochopit, proč to děláte. Například pro dokumentaci, jak jsou prostředky propojeny, dependsOn není správným přístupem. Po nasazení nemůžete zadat dotaz na prostředky, které byly definovány v elementu dependsOn. Pomocí dependsOn potenciálně ovlivní dobu nasazení, protože Správce prostředků neprovádí nasazení v paralelních dvou prostředcích, které mají závislost. 
 
 ## <a name="child-resources"></a>Podřízené prostředky
-Vlastnost prostředky můžete zadat podřízené prostředky, které se vztahují k prostředku je definována. Podřízené prostředky lze pouze definované pěti úrovněmi. Je důležité si uvědomit, že není vytvořena implicitní nasazení závislost mezi prostředkem podřízený a nadřazený prostředek. Pokud potřebujete podřízený prostředek k nasazení po nadřazeném prostředku, musí explicitně stavu dané závislosti s vlastností dependsOn. 
+Vlastnost Resources umožňuje určit podřízené prostředky, které se vztahují k definovanému prostředku. Podřízené prostředky lze definovat pouze pěti úrovněmi. Je důležité si uvědomit, že implicitní závislost nasazení není vytvořená mezi podřízeným prostředkem a nadřazeným prostředkem. Pokud potřebujete, aby byl podřízený prostředek nasazen po nadřazeném prostředku, musíte tuto závislost explicitně uvést pomocí vlastnosti dependsOn. 
 
-Každý nadřazený prostředek přijímá pouze určité typy prostředků jako podřízené prostředky. Typy přijaté prostředků jsou určené v [schéma šablony](https://github.com/Azure/azure-resource-manager-schemas) nadřazeného prostředku. Název typu podřízeného prostředku obsahuje název nadřazeného typu prostředku, jako například **Microsoft.Web/sites/config** a **Microsoft.Web/sites/extensions** jsou i podřízené prostředky **Microsoft.Web/sites**.
+Každý nadřazený prostředek přijímá pouze určité typy prostředků jako podřízené prostředky. Přijaté typy prostředků jsou zadány ve [schématu šablony](https://github.com/Azure/azure-resource-manager-schemas) nadřazeného prostředku. Název podřízeného prostředku obsahuje název nadřazeného typu prostředku, jako je například **Microsoft. Web/Sites/config** a **Microsoft. Web/Sites/Extensions** , jak podřízené prostředky **Microsoft. Web/Sites**.
 
-Následující příklad ukazuje systému SQL server a SQL database. Všimněte si, že je definován explicitní závislosti mezi SQL database a SQL server, i v případě, že databáze je podřízený server.
+Následující příklad ukazuje SQL Server a SQL Database. Všimněte si, že explicitní závislost je definovaná mezi databází SQL a SQL serverem, i když je databáze podřízená serveru.
 
 ```json
 "resources": [
@@ -101,22 +100,22 @@ Následující příklad ukazuje systému SQL server a SQL database. Všimněte 
 ]
 ```
 
-## <a name="reference-and-list-functions"></a>referenční dokumentace a seznam funkcí
-[Odkazu funkci](resource-group-template-functions-resource.md#reference) umožní výrazu odvodit svoji hodnotu z jiných párů názvu a hodnoty JSON nebo prostředky modulu runtime. [Seznamu * funkce](resource-group-template-functions-resource.md#list) návratové hodnoty pro prostředek z operace seznamu.  Referenční dokumentace a seznam výrazů implicitně deklarovat, že jeden prostředek závisí na jiné, když oba odkazované prostředky se nasadí do stejné šablony a podle jeho název (není ID prostředku). Pokud předáte ID prostředku do odkaz nebo seznam funkcí, se nevytvoří implicitní odkaz.
+## <a name="reference-and-list-functions"></a>funkce odkazu a seznamu
+[Odkazovaná funkce](resource-group-template-functions-resource.md#reference) umožňuje výrazu odvodit svoji hodnotu z jiných párů názvu a hodnoty JSON nebo prostředků modulu runtime. [Seznam *](resource-group-template-functions-resource.md#list) vrátí hodnoty pro prostředek ze seznamu operace.  Výrazy odkazu a seznamu implicitně deklaruje, že jeden prostředek závisí na jiném, pokud je odkazovaný prostředek nasazený ve stejné šabloně a odkazuje na jeho název (nikoli ID prostředku). Pokud předáte ID prostředku do funkce reference nebo list, implicitní odkaz se nevytvoří.
 
-Je obecný formát odkazu funkce:
+Obecný formát referenční funkce je:
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-Je obecný formát klíče Listkey funkce:
+Obecný formát funkce klíče listkey je:
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
-V následujícím příkladu koncový bod CDN explicitně závisí na profil CDN a implicitně závisí na webovou aplikaci.
+V následujícím příkladu je koncový bod CDN explicitně závislý na profilu CDN a implicitně závisí na webové aplikaci.
 
 ```json
 {
@@ -133,26 +132,26 @@ V následujícím příkladu koncový bod CDN explicitně závisí na profil CDN
     }
 ```
 
-Tento element nebo dependsOn element můžete použít k určení závislostí, ale nemusíte používat pro stejného závislého prostředku. Kdykoli je to možné, pomocí implicitní odkaz se vyhnout přidávání zbytečné závislostí.
+K určení závislostí můžete použít buď tento prvek, nebo element dependsOn, ale nemusíte ho používat pro stejný závislý prostředek. Kdykoli je to možné, použijte implicitní odkaz, abyste se vyhnuli přidání zbytečné závislosti.
 
-Další informace najdete v tématu [odkazu funkci](resource-group-template-functions-resource.md#reference).
+Další informace najdete v tématu [referenční funkce](resource-group-template-functions-resource.md#reference).
 
 ## <a name="circular-dependencies"></a>Cyklické závislosti
 
-Během ověřování šablony Resource Manageru určí cyklické závislosti. Pokud obdržíte chybu s informacemi o tom, že existuje cyklická závislost, vyhodnoťte šablony nejsou potřeba žádné závislosti a je možné odebrat. Pokud odebrání závislostí nefunguje, můžete předejít cyklické závislosti přesunutím některých operací nasazení do podřízené prostředky, které jsou nasazeny za prostředky, které mají cyklickou závislost. Předpokládejme například, že nasazujete dva virtuální počítače, ale musíte zadat vlastnosti na každé z nich odkazovat na druhý. Můžete je nasadit v následujícím pořadí:
+Správce prostředků identifikuje cyklické závislosti během ověřování šablony. Pokud se zobrazí chyba s oznámením, že existuje cyklická závislost, vyhodnoťte šablonu, abyste viděli, jestli nepotřebujete nějaké závislosti, a můžete je odebrat. Pokud nefungují žádné závislosti, můžete se vyhnout cyklické závislosti přesunutím některých operací nasazení do podřízených prostředků, které jsou nasazeny po prostředcích, které mají cyklické závislosti. Předpokládejme například, že nasazujete dva virtuální počítače, ale musíte nastavit vlastnosti pro každý z nich, který odkazuje na druhý. Můžete je nasadit v tomto pořadí:
 
 1. vm1
 2. vm2
-3. Rozšíření na vm1 závisí na vm1 a vm2. Rozšíření nastaví hodnoty pro vm1, který získá z vm2.
-4. Rozšíření na vm2 závisí na vm1 a vm2. Rozšíření nastaví hodnoty pro vm2, který získá z vm1.
+3. Přípona v VM1 závisí na VM1 a VM2. Rozšíření nastaví hodnoty na VM1, které získá z VM2.
+4. Přípona v VM2 závisí na VM1 a VM2. Rozšíření nastaví hodnoty na VM2, které získá z VM1.
 
-Informace o vyhodnocení pořadí nasazení a řešení chyb závislostí, naleznete v tématu [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
+Informace o vyhodnocení pořadí nasazení a řešení chyb závislostí najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Absolvovat kurz, naleznete v tématu [kurz: vytváření šablon Azure Resource Manageru s závislé prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
-* Doporučení pro nastavení závislostí, naleznete v tématu [osvědčené postupy pro šablony Azure Resource Manageru](template-best-practices.md).
-* Další informace o řešení potíží s závislostí při nasazení najdete v tématu [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
-* Další informace o vytváření šablon Azure Resource Manageru, najdete v článku [vytváření šablon](resource-group-authoring-templates.md). 
-* Seznam dostupných funkcí v šabloně najdete v tématu [šablony funkce](resource-group-template-functions.md).
+* Kurz najdete v tématu [kurz: vytváření Azure Resource Manager šablon se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+* Doporučení pro nastavení závislostí najdete v tématu [osvědčené postupy pro šablonu Azure Resource Manager](template-best-practices.md).
+* Další informace o závislostech při řešení potíží při nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](resource-group-authoring-templates.md). 
+* Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](resource-group-template-functions.md).
 

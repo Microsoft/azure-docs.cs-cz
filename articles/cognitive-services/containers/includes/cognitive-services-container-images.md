@@ -6,22 +6,22 @@ manager: nitinme
 description: Dvě tabulky reprezentující Registry kontejnerů, úložiště a názvy imagí pro všechny nabídky služby pro rozpoznávání.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: ae11fe785237a02652af1f16aaba1f1bac5ecd62
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2058dd6e52ddb417e24368b27384df9a222c378e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961925"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74142189"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
-Níže uvedené tabulky jsou vyčerpávajícím seznamem dostupných imagí kontejneru nabízených službou Azure Cognitive Services.
+Následující tabulky obsahují seznam dostupných imagí kontejneru nabízených službou Azure Cognitive Services. Úplný seznam všech dostupných názvů imagí kontejneru a jejich dostupných značek najdete v tématu [Cognitive Services značek imagí kontejneru](../container-image-tags.md).
 
 #### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "inhradloed" (Registry kontejneru: `mcr.microsoft.com`)
 
-Microsoft Container Registry hostuje všechny veřejně dostupné "nebránované" kontejnery pro Cognitive Services.
+Microsoft Container Registry (MCR) zpřístupňuje všechny veřejně dostupné "nebránované" kontejnery pro Cognitive Services. Jsou k dispozici také přímo z [dokovacího centra](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|

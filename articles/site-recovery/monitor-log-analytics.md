@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936089"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133413"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
@@ -28,7 +28,7 @@ V případě Site Recovery můžete Azure Monitor protokoly, které vám pomohou
 Použití protokolů Azure Monitor s Site Recovery podporuje replikaci z **Azure do Azure** a **virtuální počítač VMware nebo fyzický server do replikace Azure** .
 
 > [!NOTE]
-> Protokoly dat o četnosti a protokoly nahrávání jsou dostupné jenom pro virtuální počítače Azure, které se replikují do sekundární oblasti Azure.
+> Chcete-li získat protokoly dat o četnosti a protokoly pro VMware a fyzické počítače, je nutné na procesový server nainstalovat agenta Microsoft Monitoring Agent. Tento Agent odesílá do pracovního prostoru protokoly replikačních počítačů. Tato funkce je k dispozici pouze pro 9,30 verze agenta mobility a vyšší.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -54,6 +54,24 @@ Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkajíc�
     ![Výběr pracovního prostoru](./media/monitoring-log-analytics/select-workspace.png)
 
 Protokoly Site Recovery začnou předávat do tabulky (**AzureDiagnostics**) ve vybraném pracovním prostoru.
+
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Konfigurace služby Microsoft Monitoring Agent na procesovém serveru pro odesílání četností a nahrávání protokolů
+
+V místním prostředí můžete zachytit informace o míře četnosti změn dat a rychlost odesílání zdrojových dat pro vaše VMware/fyzické počítače. Chcete-li tuto možnost povolit, musí být na procesovém serveru nainstalována aplikace Microsoft Monitoring Agent.
+
+1. Přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**.
+2. Klikněte na stránku **připojené zdroje** a dále vyberte **Windows servery**.
+3. Na procesovém serveru Stáhněte agenta pro Windows (64 bitů). 
+4. [Získání ID a klíče pracovního prostoru](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Nakonfigurovat agenta na používání protokolu TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Dokončete instalaci agenta](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) poskytnutím získaného ID a klíče pracovního prostoru.
+7. Po dokončení instalace přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**. Přejděte na **datovou** stránku a dále klikněte na **čítače výkonu systému Windows**. 
+8. Kliknutím na **+** přidejte následující dva čítače s intervalem vzorkování 300 sekund:
+
+        ASRAnalytics(*)\SourceVmChurnRate 
+        ASRAnalytics(*)\SourceVmThrpRate 
+
+Data míry změn a nahrávání začnou dodávat do pracovního prostoru.
 
 
 ## <a name="query-the-logs---examples"></a>Dotazování protokolů – příklady
@@ -174,12 +192,9 @@ AzureDiagnostics  
 ```
 ![Dotaz RPO počítače](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-for-a-vm"></a>Frekvence změny dat dotazů pro virtuální počítač
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Četnost změn dat dotazů a rychlost nahrávání pro virtuální počítač Azure
 
-> [!NOTE] 
-> Informace o změnách jsou dostupné jenom pro virtuální počítače Azure, které se replikují do sekundární oblasti Azure.
-
-Tento dotaz vykreslí graf trendu pro konkrétní virtuální počítač Azure (ContosoVM123), který sleduje rychlost změny dat (bajty zápisu za sekundu) a rychlost odesílání dat. 
+Tento dotaz vykreslí graf trendu pro konkrétní virtuální počítač Azure (ContosoVM123), který představuje rychlost změny dat (bajty zápisu za sekundu) a rychlost nahrávání dat. 
 
 ```
 AzureDiagnostics   
@@ -193,6 +208,23 @@ Category contains "Upload", "UploadRate", "none") 
 | render timechart  
 ```
 ![Změna dat dotazu](./media/monitoring-log-analytics/example3.png)
+
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Četnost změn dat dotazů a rychlost nahrávání pro VMware nebo fyzický počítač
+
+> [!Note]
+> Ujistěte se, že jste na procesovém serveru nastavili agenta monitorování, abyste tyto protokoly načetli. [Postup konfigurace agenta monitorování](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)najdete v tématu.
+
+Tento dotaz vykreslí graf trendu pro určitý disk **Disk0** replikované položky **Win-9r7sfh9qlru**, která představuje rychlost změny dat (bajty zápisu za sekundu) a rychlost nahrávání dat. V okně s názvem disku v replikované položce v trezoru služby Recovery Services **najdete okno název** disku. Název instance, který se má použít v dotazu, je název DNS počítače následovaný znakem _ a názvem disku, jako v tomto příkladu.
+
+```
+Perf
+| where ObjectName == "ASRAnalytics"
+| where InstanceName contains "win-9r7sfh9qlru_disk0"
+| where TimeGenerated >= ago(4h) 
+| project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
+| render timechart
+```
+Procesový Server doručí tato data každých 5 minut do pracovního prostoru Log Analytics. Tyto datové body udávají průměr vypočítaný po dobu 5 minut.
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Dotaz na souhrn zotavení po havárii (Azure do Azure)
 

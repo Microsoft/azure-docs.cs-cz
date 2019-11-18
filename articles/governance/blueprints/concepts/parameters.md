@@ -1,14 +1,14 @@
 ---
 title: Použití parametrů k vytváření dynamických modrotisky
-description: Přečtěte si o statických a dynamických parametrech a o tom, jak je použijete k vytváření dynamických modrotisky
+description: Přečtěte si o statických a dynamických parametrech a jejich použití k vytváření zabezpečených a dynamických modrotisky.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: da0670bdc880c47c3b715dc8344896a6c695924c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960514"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128932"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 

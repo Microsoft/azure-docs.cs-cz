@@ -1,5 +1,5 @@
 ---
-title: Filtry pro rozsah výsledků hledání v indexu
+title: Filtrovat podle výsledků hledání
 titleSuffix: Azure Cognitive Search
 description: Filtr podle identity zabezpečení uživatele, jazyka, geografického umístění nebo číselných hodnot pro omezení výsledků hledání dotazů v Azure Kognitivní hledání, hostované cloudové vyhledávací služby v Microsoft Azure.
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792860"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132925"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filtry v Azure Kognitivní hledání 
 
 *Filtr* poskytuje kritéria pro výběr dokumentů používaných v dotazu Azure kognitivní hledání. Nefiltrované hledání zahrnuje všechny dokumenty v indexu. Filtr je oborem dotazu hledání na podmnožinu dokumentů. Filtr může například omezit fulltextové vyhledávání jenom na ty produkty, které mají konkrétní značku nebo barvu, za ceny nad určitou prahovou hodnotou.
 
-Některé možnosti vyhledávání ukládají požadavky na filtrování v rámci implementace, ale filtry můžete použít kdykoli, když chcete omezit hledání pomocí kritérií *založených na hodnotách* (vyhledávání oborů na typ produktu knihy) pro kategorii nefiktivní vydavatelé. Simon & Schuster ").
+Některé možnosti vyhledávání ukládají požadavky na filtrování jako součást implementace, ale filtry můžete použít kdykoli, když chcete omezit hledání pomocí kritérií *založených na hodnotách* (vyhledávání oborů na typ produktu "knihy" pro kategorii "non-fiktivní" publikované v "Simon & Schuster").
 
 Pokud místo toho cílíte na cílení na konkrétní datové *struktury* (vyhledávání oborů na pole Customers-recenze), existují alternativní metody popsané níže.
 
@@ -157,7 +157,7 @@ V textových řetězcích se rozlišují velká a malá písmena. Nejsou k dispo
 
 ### <a name="approaches-for-filtering-on-text"></a>Přístupy k filtrování textu
 
-| Přístup | Popis | When to use |
+| Přístup | Popis | Kdy je použít |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Funkce, která odpovídá poli s odděleným seznamem řetězců. | Doporučuje se pro [filtry zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry, u kterých je potřeba spárovat mnoho nezpracovaných textových hodnot pomocí pole řetězce. Funkce **Search.in** je navržena pro rychlost a je mnohem rychlejší než explicitní porovnání pole s každým řetězcem pomocí `eq` a `or`. | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Funkce, která umožňuje kombinovat operace fulltextového vyhledávání s přísnými logickými operacemi filtru ve stejném výrazu filtru. | Pokud chcete více kombinací vyhledávacího filtru v jednom požadavku, použijte **Search** . ismatchscoring (nebo jeho ekvivalent pro vyhodnocování, **Search.** ). Můžete ji také použít pro filtr *obsahuje* pro filtrování částečného řetězce v rámci většího řetězce. |
@@ -196,7 +196,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 Chcete-li pracovat s dalšími příklady, viz [Příklady syntaxe výrazů filtru OData > příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Jak funguje úplné hledání textu v Azure Kognitivní hledání](search-lucene-query-architecture.md)
 + [Hledat dokumenty REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

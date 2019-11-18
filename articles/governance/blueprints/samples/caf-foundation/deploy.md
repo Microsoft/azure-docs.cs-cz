@@ -1,14 +1,14 @@
 ---
 title: Ukázkový plán CAF Foundation – postup nasazení
-description: Nasaďte kroky ukázky podrobného plánu CAF Foundation.
+description: Nasaďte kroky pro ukázka podrobného plánu CAF Foundation, včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: ad5d7ce2fb895032f9ae5d19ee6d2978830ccc89
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afb7b19a2e5ad1f1b115526ac85d63a724101f9b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038483"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128705"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Nasazení rozhraní Microsoft Cloud pro přijetí v ukázce pro Azure Foundation podrobný plán
 

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 1322b8eb14205ff29e109fae82466270f7507781
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc47b18dd51bbaa48d950515cccfe618d9e58426
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094026"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132751"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Odeslání velkého počtu úkolů do dávkové úlohy
 
@@ -37,7 +37,7 @@ Maximální velikost kolekce úloh, kterou můžete přidat do jednoho volání,
 
     * [REST API](/rest/api/batchservice/task/addcollection)
     * [Rozhraní API pro Python](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Rozhraní API Node.js](/javascript/api/azure-batch/task?view=azure-node-latest)
+    * [Rozhraní API Node.js](/javascript/api/@azure/batch/task?view=azure-node-latest)
 
   Při použití těchto rozhraní API je potřeba poskytnout logiku pro rozdělení počtu úkolů pro splnění limitu kolekce a zpracování chyb a opakování v případě neúspěchu přidávání úloh. Pokud je kolekce úkolů příliš velká pro přidání, požadavek vygeneruje chybu a měl by být znovu opakován s méně úlohami.
 
@@ -54,7 +54,7 @@ Přidání velké kolekce úloh do úlohy může nějakou dobu trvat – napří
 
 * **Velikost úlohy** – přidávání velkých úloh trvá déle než přidávání menších. Chcete-li zmenšit velikost každého úkolu v kolekci, můžete zjednodušit příkazový řádek úlohy, snížit počet proměnných prostředí nebo zvládnout požadavky na provádění úloh efektivněji. Například namísto použití velkého počtu souborů prostředků nainstalujte závislosti úloh pomocí [spouštěcího úkolu](batch-api-basics.md#start-task) ve fondu nebo použijte [balíček aplikace](batch-application-packages.md) nebo [kontejner Docker](batch-docker-container-workloads.md).
 
-* **Počet paralelních operací** – v závislosti na rozhraní API dávky zvyšte propustnost zvýšením maximálního počtu souběžných operací klientem Batch. Nakonfigurujte toto nastavení pomocí vlastnosti [BatchClientParallelOptions. z MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) v rozhraní .NET API nebo `threads` parametru metod, jako je [TaskOperations. Add _Collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) v sadě Batch Python SDK Extension. (Tato vlastnost není v nativní sadě SDK pro sadu Batch k dispozici.) Ve výchozím nastavení je tato vlastnost nastavena na hodnotu 1, ale je nastavena vyšší pro zlepšení propustnosti operací. Zvýšení propustnosti se zvyšuje využitím šířky pásma sítě a určitého výkonu procesoru. Propustnost úlohy roste až 100 časů `MaxDegreeOfParallelism` nebo. `threads` V praxi byste měli nastavit počet souběžných operací pod 100. 
+* **Počet paralelních operací** – v závislosti na rozhraní API dávky zvyšte propustnost zvýšením maximálního počtu souběžných operací klientem Batch. Nakonfigurujte toto nastavení pomocí vlastnosti [BatchClientParallelOptions. z MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) v rozhraní .NET API nebo parametr `threads` metod, jako je například [TaskOperations. Add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) v rozšíření Batch Python SDK. (Tato vlastnost není v nativní sadě SDK pro sadu Batch k dispozici.) Ve výchozím nastavení je tato vlastnost nastavena na hodnotu 1, ale je nastavena vyšší pro zlepšení propustnosti operací. Zvýšení propustnosti se zvyšuje využitím šířky pásma sítě a určitého výkonu procesoru. Propustnost úlohy se zvyšuje o až 100 časů `MaxDegreeOfParallelism` nebo `threads`. V praxi byste měli nastavit počet souběžných operací pod 100. 
  
   Rozšíření Azure Batch CLI pomocí šablon Batch zvyšuje počet souběžných operací automaticky na základě počtu dostupných jader, ale tato vlastnost se v rozhraní příkazového řádku nedá nakonfigurovat. 
 
@@ -84,11 +84,11 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 ```
 
 
-## <a name="example-batch-cli-extension"></a>Příklad: Rozšíření Batch CLI
+## <a name="example-batch-cli-extension"></a>Příklad: rozšíření Batch CLI
 
 Pomocí rozšíření Azure Batch CLI s [šablonami Batch CLI](batch-cli-templates.md)vytvořte soubor JSON šablony úlohy, který obsahuje objekt pro [vytváření úloh](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md). Objekt pro vytváření úloh konfiguruje kolekci souvisejících úloh pro úlohu z definice jedné úlohy.  
 
-Následuje ukázka šablony úlohy pro jednorozměrné úlohy čištění parametrů s velkým počtem úkolů – v tomto případě 250 000. Příkazový řádek úlohy je jednoduchý `echo` příkaz.
+Následuje ukázka šablony úlohy pro jednorozměrné úlohy čištění parametrů s velkým počtem úkolů – v tomto případě 250 000. Příkazový řádek úlohy je jednoduchý příkaz `echo`.
 
 ```json
 {
@@ -127,7 +127,7 @@ Následuje ukázka šablony úlohy pro jednorozměrné úlohy čištění parame
 ```
 Pokud chcete úlohu spustit se šablonou, přečtěte si téma [použití Azure Batch šablon CLI a přenosu souborů](batch-cli-templates.md).
 
-## <a name="example-batch-python-sdk-extension"></a>Příklad: Rozšíření sady Batch Python SDK
+## <a name="example-batch-python-sdk-extension"></a>Příklad: rozšíření sady Batch Python SDK
 
 Chcete-li použít rozšíření Azure Batch Python SDK, nejprve nainstalujte sadu Python SDK a rozšíření:
 
@@ -136,7 +136,7 @@ pip install azure-batch
 pip install azure-batch-extensions
 ```
 
-`BatchExtensionsClient` Nastavení, které používá rozšíření sady SDK:
+Nastavte `BatchExtensionsClient`, která používá rozšíření sady SDK:
 
 ```python
 
@@ -154,7 +154,7 @@ tasks = list()
 ...
 ```
 
-Přidejte kolekci úkolů pomocí [Task. Add _Collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python). `threads` Nastavte parametr pro zvýšení počtu souběžných operací:
+Přidejte kolekci úkolů pomocí [Task. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python). Nastavte parametr `threads` pro zvýšení počtu souběžných operací:
 
 ```python
 try:
@@ -200,7 +200,7 @@ job_json = client.job.expand_template(parameter_sweep)
 job_parameter = client.job.jobparameter_from_json(job_json)
 ```
 
-Přidejte parametry úlohy do úlohy. `threads` Nastavte parametr pro zvýšení počtu souběžných operací:
+Přidejte parametry úlohy do úlohy. Nastavte parametr `threads` pro zvýšení počtu souběžných operací:
 
 ```python
 try:

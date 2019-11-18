@@ -1,24 +1,16 @@
 ---
-title: Kontinuální integrace s Azure Pipelines | Microsoft Docs
+title: Průběžná integrace s využitím Azure Pipelines
 description: Naučte se průběžně sestavovat, testovat a nasazovat šablony Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 73ab01b5e4ea923b990932986a938f8c1fb25629
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052208"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149302"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines
 
@@ -43,12 +35,12 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
 * **Účet GitHubu**, kde ho použijete k vytvoření úložiště pro šablony. Pokud ho ještě nemáte, můžete si [ho vytvořit zdarma](https://github.com). Další informace o použití úložišť GitHub najdete v tématu [sestavení úložišť GitHubu](/azure/devops/pipelines/repos/github).
-* **Nainstalovat Git**. Tato instrukce kurzu používá *Git bash* nebo *git shell*. Pokyny najdete v tématu [instalace Gitu]( https://www.atlassian.com/git/tutorials/install-git).
+* **Nainstalovat Git** Tato instrukce kurzu používá *Git bash* nebo *git shell*. Pokyny najdete v tématu [instalace Gitu]( https://www.atlassian.com/git/tutorials/install-git).
 * **Organizace Azure DevOps**. Pokud ho ještě nemáte, můžete si ho vytvořit zdarma. Viz [vytvoření organizace nebo kolekce projektů]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 * **[Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. Přečtěte si, [jak toto rozšíření nainstalovat](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 
@@ -126,7 +118,7 @@ Azuredeploy. JSON se přidal do místního úložiště. V dalším kroku nahraj
     ```
 
     Může se zobrazit upozornění na LF. Upozornění můžete ignorovat. **Hlavní** větev je hlavní.  Pro každou aktualizaci obvykle vytvoříte větev. Pro zjednodušení tohoto kurzu budete používat hlavní větev přímo.
-1. Přejděte do úložiště GitHub z prohlížeče.  Adresa URL je **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . V rámci složky se zobrazí složka **CreateAzureStorage** a **Azuredeploy. JSON** .
+1. Přejděte do úložiště GitHub z prohlížeče.  Adresa URL je **https://github.com/[YourAccountName]/[YourGitHubRepository]** . V rámci složky se zobrazí složka **CreateAzureStorage** a **Azuredeploy. JSON** .
 
 Zatím jste vytvořili úložiště GitHub a nahráli šablonu do úložiště.
 
@@ -220,7 +212,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Název je to, co jste zadali v souboru YAML kanálu.  Uvidíte, že se vytvořil jeden účet úložiště.  Název účtu úložiště začíná na **Storu**.
 1. Vyberte název účtu úložiště, který chcete otevřít.
 1. Vyberte **Vlastnosti**. Všimněte si, že **replikace** je **místně redundantní úložiště (LRS)** .
@@ -232,7 +224,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 Když aktualizujete šablonu a nahrajete změny do vzdáleného úložiště, kanál v tomto případě automaticky aktualizuje prostředky a účet úložiště.
 
 1. Otevřete **azuredeploy. JSON** z místního úložiště v Visual Studio Code.
-1. Aktualizujte hodnotu **DefaultValue** ovládacího **storageAccountType** na **Standard_GRS**. Viz následující snímek obrazovky:
+1. Aktualizujte hodnotu DefaultValue **storageAccountType** na **Standard_GRS**. Viz následující snímek obrazovky:
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines Update YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 

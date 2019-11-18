@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: f01758c70e52f96fcd22a94e9b83f910cbf200c9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b5a037eaf310aa28c76d831dc9fe56eefaddbe56
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035872"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123464"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autorizace přístupu ke službě Azure Event Hubs
 Pokaždé, když publikujete nebo spotřebujete události a data z centra událostí, se klient snaží získat přístup k prostředkům Event Hubs. Každý požadavek na zabezpečený prostředek musí být autorizovaný, aby služba mohla zajistit, aby měl klient potřebná oprávnění k publikování/využívání dat. 
@@ -28,7 +28,7 @@ Další informace o ověřování ve službě Azure AD najdete v následujícíc
 - [Ověřování požadavků do Azure Event Hubs pomocí Azure Active Directory](authenticate-application.md)
 - [Autorizujte přístup k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md).
 
-## <a name="share-access-signatures"></a>Sdílení přístupových podpisů 
+## <a name="shared-access-signatures"></a>Sdílené přístupové podpisy 
 Sdílené přístupové podpisy (SAS) pro prostředky Event Hubs poskytují omezený delegovaný přístup k prostředkům Event Hubs. Přidávání omezení v časovém intervalu, pro který je podpis platný, nebo na oprávnění, která uděluje, poskytují flexibilitu při správě prostředků. Další informace najdete v tématu [ověřování pomocí sdílených přístupových podpisů (SAS)](authenticate-shared-access-signature.md). 
 
 Autorizaci uživatelů nebo aplikací pomocí tokenu OAuth 2,0 vráceného službou Azure AD poskytuje prvotřídní zabezpečení a usnadňuje použití přes sdílené přístupové podpisy (SAS). S Azure AD není nutné ukládat přístupové tokeny s vaším kódem a rizikovým potenciálním ohrožením zabezpečení. I když můžete nadále používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k Event Hubs prostředkům, Azure AD nabízí podobné možnosti, aniž by bylo nutné spravovat tokeny SAS nebo se starat o odvolání ohroženého SAS. 
@@ -37,7 +37,7 @@ Ve výchozím nastavení jsou všechny prostředky Event Hubs zabezpečené a js
 
 Další informace o autorizaci pomocí SAS najdete v tématu [autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Podívejte se na [ukázky RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) publikované v našem úložišti GitHubu. 
 - Viz následující články:
     - [Ověřování požadavků do Azure Event Hubs z aplikace pomocí Azure Active Directory](authenticate-application.md)

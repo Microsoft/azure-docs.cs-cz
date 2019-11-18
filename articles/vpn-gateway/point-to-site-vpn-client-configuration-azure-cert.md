@@ -1,5 +1,6 @@
 ---
-title: 'Vytvoření a instalace konfiguračních souborů klienta VPN P2S pro ověřování certifikátů Azure: Azure'
+title: 'Vytvoření & instalace konfiguračních souborů klienta VPN P2S: ověření certifikátu'
+titleSuffix: Azure VPN Gateway
 description: Vytvořte a nainstalujte konfigurační soubory klienta VPN pro Windows, Linux, Linux (klient strongswan) a Mac OS X pro ověřování certifikátů P2S.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: fb6c484e234b4641a521bd876acdfeb4df562260
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063119"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143798"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace nativního ověřování certifikátů Azure P2S
 
@@ -27,7 +28,7 @@ Konfigurační soubory klienta jsou specifické pro konfiguraci sítě VPN pro v
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="generate"></a>Generování konfiguračních souborů klienta VPN
+## <a name="generate"></a>Generování souborů konfigurace klienta VPN
 
 Než začnete, ujistěte se, že všichni připojující se uživatelé mají na zařízení uživatele nainstalovaný platný certifikát. Další informace o instalaci klientského certifikátu najdete v tématu [instalace klientského certifikátu](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
@@ -56,7 +57,7 @@ Konfigurační soubory klienta můžete vygenerovat pomocí PowerShellu nebo pom
    ```
 2. Zkopírujte adresu URL do prohlížeče a Stáhněte soubor zip a potom rozbalte soubor, abyste viděli složky.
 
-## <a name="installwin"></a>Systému
+## <a name="installwin"></a>Windows
 
 Stejný konfigurační balíček klienta VPN můžete použít na každém klientském počítači s Windows, pokud verze odpovídá architektuře pro klienta. Seznam podporovaných klientských operačních systémů najdete v části [Nejčastější dotazy k VPN Gateway](vpn-gateway-vpn-faq.md#P2S)v části Point-to-site.
 
@@ -106,7 +107,7 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
    ![certifikát](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Volba identity** zobrazí seznam certifikátů, ze kterých si můžete vybrat. Vyberte vhodný certifikát a potom klikněte na **pokračovat**.
 
-   ![identita](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Do pole **místní ID** zadejte název certifikátu (z kroku 6). V tomto příkladu je to "ikev2Client.com". Potom kliknutím na tlačítko **použít** uložte změny.
 
    ![vyrovnat](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -146,7 +147,7 @@ V Ubuntu 18.0.4 byly vytvořeny následující pokyny. Ubuntu 16.0.10 nepodporuj
 
    ![Kopírovat název](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
 6. Tento název vložte do pole **adresa** nového připojení k síti VPN v části **Brána** . V dalším kroku vyberte ikonu složky na konci pole **certifikát** , přejděte do složky **Obecné** a vyberte soubor **VpnServerRoot** .
-7. V části **klient** tohoto připojení vyberte pro **ověřování** **certifikát/privátní klíč**. V části **certifikát** a **privátní klíč**vyberte certifikát a privátní klíč, který jste vytvořili dříve. V **Možnosti**vyberte možnost **požádat o vnitřní IP adresu**. Pak klikněte na tlačítko **Přidat**.
+7. V části **klient** tohoto připojení vyberte pro **ověřování** **certifikát/privátní klíč**. V části **certifikát** a **privátní klíč**vyberte certifikát a privátní klíč, který jste vytvořili dříve. V **Možnosti**vyberte možnost **požádat o vnitřní IP adresu**. Potom klikněte na **přidat**.
 
    ![požádat o vnitřní IP adresu](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
 8. Zapněte připojení **.**

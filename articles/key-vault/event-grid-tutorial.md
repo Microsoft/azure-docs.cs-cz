@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 480c4c65f1bc0abe81114a2b898696e6d6b153fe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039628"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133337"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (Preview)
 
@@ -194,8 +194,10 @@ Pokud jste k hledání změn stavu tajných kódů v trezorech klíčů použív
 
 Další informace:
 
+
+- Přehled: [Key Vault monitorování pomocí Azure Event Grid (Preview)](event-grid-overview.md)
+- Postupy: [příjem e-mailu, když se změní tajný kód trezoru klíčů](event-grid-logicapps.md)
+- [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../event-grid/event-schema-key-vault.md)
 - [Přehled Azure Key Vault](key-vault-overview.md)
 - [Přehled Azure Event Grid](../event-grid/overview.md)
-- [Monitorování Key Vault s využitím Azure Event Grid (Preview)](event-grid-overview.md)
-- [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../event-grid/event-schema-key-vault.md)
 - [Přehled Azure Automation](../automation/index.yml)

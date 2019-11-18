@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a správa nárokovatelných virtuálních počítačů v testovacím prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak přidat nárokovatelný virtuální počítač do testovacího prostředí ve službě Azure DevTest Labs
+title: Vytváření a správa virtuálních počítačů s deklarací identity v testovacím prostředí v Azure DevTest Labs | Microsoft Docs
+description: Přečtěte si, jak přidat vynucený virtuální počítač do testovacího prostředí v Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: fdffa3862f45b99c2c3f2ed41934e09247808ca7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ad10a1763b4882aa3bb6aec7447f57ebaf07369
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311784"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123711"
 ---
-# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytvoření a správa nárokovatelných virtuálních počítačů ve službě Azure DevTest Labs
-Podobným způsobem, jak přidat nárokovatelných virtuálních počítačů do testovacího prostředí můžete [přidat virtuální počítače standard](devtest-lab-add-vm.md) – od *základní* , který je buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md) , nebo [image z Marketplace](devtest-lab-configure-marketplace-images.md). Tento kurz vás provede přidání nárokovatelných virtuálních počítačů pro testovací prostředí v DevTest Labs pomocí webu Azure portal a procesy, které ukazuje, že uživatel sleduje deklarace identity a jejich převzetí zruší virtuálního počítače.
+# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytváření a správa virtuálních počítačů s deklarací identity v Azure DevTest Labs
+Do testovacího prostředí můžete přidat vynucené virtuální počítače podobným způsobem jako při [přidávání standardního virtuálního počítače](devtest-lab-add-vm.md) – od *základu* , který je buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md)nebo Image na [webu Marketplace](devtest-lab-configure-marketplace-images.md). Tento kurz vás provede použitím Azure Portal k přidání s nárokem na virtuální počítač do testovacího prostředí v DevTest Labs a ukazuje procesy, které uživatel sleduje, aby mohl uplatnit deklaraci virtuálního počítače a uvolnit ho.
 
-## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání nárokovatelných virtuálních počítačů do testovacího prostředí ve službě Azure DevTest Labs
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** v **DEVOPS** oddílu. Pokud vyberete * (hvězdičkami) vedle položky **DevTest Labs** v **DEVOPS** oddílu. Tato akce přidá **DevTest Labs** do levé navigační nabídce tak, aby k němu máte přístup snadno dalším. Pak můžete vybrat **DevTest Labs** v navigační nabídce vlevo.
+## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání vynuceného virtuálního počítače do testovacího prostředí v Azure DevTest Labs
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Vyberte **všechny služby**a potom v části **DEVOPS** vyberte **DevTest Labs** . Pokud vyberete * (hvězdička) vedle **DevTest Labs** v části **DEVOPS** . Tato akce přidá **DevTest Labs** do levé navigační nabídky, abyste k ní mohli snadno získat přístup později. Pak můžete v levé navigační nabídce vybrat **DevTest Labs** .
 
-    ![Vyberte všechny služby – DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
-1. V seznamu testovacích prostředí vyberte prostředí, ve kterém chcete vytvořit virtuální počítač.
-2. Cvičení **přehled** stránce **+ přidat**.
+    ![Všechny služby – výběr DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
+1. V seznamu cvičení vyberte testovací prostředí, ve kterém chcete virtuální počítač vytvořit.
+2. Na stránce **Přehled** testovacího prostředí vyberte **+ Přidat**.
 
-    ![Přidání tlačítka virtuálního počítače](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
-1. Na **vyberte bázi** vyberte marketplace image pro virtuální počítač.
-1. Na **základní nastavení** karty **virtuálního počítače** stránce, proveďte následující akce:
-    1. Zadejte název pro virtuální počítač v **název virtuálního počítače** textového pole. Do textového pole je pro vás předem vyplněný s jedinečným názvem automaticky generované. Název odpovídá uživatelské jméno v e-mailovou adresu, za nímž následuje jedinečný 3 číslice. Tato funkce vám ušetří čas přemýšlení o název počítače a zadávat pokaždé, když vytváříte počítač. Pokud budete chtít, můžete přepsat toto pole automaticky vyplněný s názvem podle vašeho výběru. Pokud chcete přepsat automaticky vyplněný název pro virtuální počítač, zadejte název do **název virtuálního počítače** textového pole.
-    2. Zadejte **uživatelské jméno** , která jsou udělena oprávnění správce na virtuálním počítači. **Uživatelské jméno** pro počítač je předem vyplněná jedinečný automaticky generovaný název. Název odpovídá uživatelské jméno v e-mailovou adresu. Tato funkce vám ušetří čas při rozhodování o uživatelského jména pokaždé, když vytvoříte nový počítač. Pokud chcete znovu, můžete přepsat toto pole automaticky vyplněný s uživatelským jménem podle svého výběru. Chcete-li přepsat automaticky vyplněné hodnoty pro uživatelské jméno, zadejte hodnotu v **uživatelské jméno** textového pole. Tomuto uživateli je udělen **správce** oprávnění na virtuálním počítači.
-    3. Pokud vytváříte první virtuální počítač v testovacím prostředí, zadejte **heslo** pro daného uživatele. Chcete-li uložit toto heslo jako výchozí heslo ve službě Azure key vault související s testovacím prostředí, vyberte **uložit jako výchozí heslo**. Výchozí heslo se uloží ve službě key vault s názvem: **VmPassword**. Při pokusu o vytvoření dalších virtuálních počítačů v testovacím prostředí, **VmPassword** je automaticky vybrána pro **heslo**. Chcete-li přepsat hodnotu, zrušte **použít uložený tajný kód** zaškrtněte políčko a zadejte heslo.
+    ![Tlačítko pro přidání virtuálního počítače](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
+1. Na stránce **Zvolte základní** stránku vyberte Image Marketplace pro virtuální počítač.
+1. Na kartě **základní nastavení** na stránce **virtuální počítač** proveďte následující akce:
+    1. Do textového pole **název virtuálního počítače** zadejte název virtuálního počítače. Textové pole je předem vyplněno jedinečným automaticky generovaným názvem. Název odpovídá uživatelskému jménu v e-mailové adrese a následuje jedinečné číslo 3 číslice. Tato funkce šetří čas, po který si myslíte název počítače a zadejte ho pokaždé, když vytvoříte počítač. Pokud chcete, můžete toto automaticky vyplněné pole přepsat názvem dle vašeho výběru. Pokud chcete pro virtuální počítač přepsat automaticky vyplněný název, zadejte název do textového pole **název virtuálního počítače** .
+    2. Zadejte **uživatelské jméno** , kterému je uděleno oprávnění správce na virtuálním počítači. **Uživatelské jméno** pro tento počítač je předem vyplněno jedinečným automaticky generovaným názvem. Název odpovídá uživatelskému jménu v rámci své e-mailové adresy. Tato funkce šetří čas pro rozhodování o uživatelském jménu pokaždé, když vytvoříte nový počítač. V případě potřeby můžete toto automaticky vyplněné pole přepsat vlastním uživatelským jménem dle vašeho výběru. Pokud chcete pro uživatelské jméno přepsat automaticky vyplněnou hodnotu, zadejte do textového pole **uživatelské jméno** hodnotu. Tento uživatel má na virtuálním počítači udělená oprávnění **správce** .
+    3. Pokud vytváříte první virtuální počítač v testovacím prostředí, zadejte **heslo** pro tohoto uživatele. Pokud chcete toto heslo uložit jako výchozí heslo do trezoru klíčů Azure přidruženého k testovacímu prostředí, vyberte **Uložit jako výchozí heslo**. Výchozí heslo je uloženo v trezoru klíčů s názvem: **VmPassword**. Při pokusu o vytvoření dalších virtuálních počítačů v testovacím prostředí se pro **heslo**automaticky vybere **VmPassword** . Pokud chcete hodnotu přepsat, zrušte zaškrtnutí políčka **použít uložený tajný kód** a zadejte heslo.
 
-        Můžete také tajné kódy ve službě key vault nejdříve uložte a pak použít při vytváření virtuálního počítače v testovacím prostředí. Další informace najdete v tématu [Store tajné kódy ve službě key vault](devtest-lab-store-secrets-in-key-vault.md). Chcete-li použít heslo uložené ve službě key vault, vyberte **použít uložený tajný kód**a zadat hodnotu klíče, který odpovídá váš tajný klíč (heslo).
-    4. V **další možnosti** vyberte **změnit velikost**. Vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření.
-    5. Vyberte **přidat nebo odebrat artefakty**. Vyberte a nakonfigurujte artefakty, které chcete přidat do základní image.
-    **Poznámka:** Pokud začínáte s DevTest Labs začínáte nebo konfigurace artefakty, vyhledejte [k virtuálnímu počítači přidat existující artefakt](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) části a pak se sem vraťte po dokončení.
-2. Přepněte **Upřesnit nastavení** kartě v horní části a proveďte následující akce:
-    1. Chcete-li změnit virtuální síť, virtuální počítač, vyberte **změnit virtuální síť**.
-    2. Pokud chcete změnit podsíť, vyberte **změnit podsíť**.
-    3. Určete, jestli je IP adresa virtuálního počítače **veřejné, privátní nebo sdílené**.
-    4. Pokud chcete automaticky odstranit virtuální počítač, zadejte **datum a čas vypršení**.
-    5. Chcete-li virtuální počítač nárokovatelných uživatelem testovacího prostředí, vyberte **Ano** pro **nastavit tento počítač nárokovatelných** možnost.
-    6. Zadejte počet **instancí virtuálních počítačů** chcete zpřístupnit uživatelům testovacího prostředí.
-3. Vyberte **vytvořit** zadaný virtuální počítač přidat do testovacího prostředí.
+        V trezoru klíčů můžete nejdřív také ukládat tajné klíče a pak je použít při vytváření virtuálního počítače v testovacím prostředí. Další informace najdete v tématu [uložení tajných klíčů v trezoru klíčů](devtest-lab-store-secrets-in-key-vault.md). Pokud chcete použít heslo uložené v trezoru klíčů, vyberte **použít uložený tajný kód**a zadejte hodnotu klíče, která odpovídá vašemu tajnému klíči (heslo).
+    4. V části **Další možnosti** vyberte **změnit velikost**. Vyberte jednu z předdefinovaných položek, které určují jádra procesoru, velikost paměti RAM a velikost pevného disku virtuálního počítače, který se má vytvořit.
+    5. Vyberte **Přidat nebo odebrat artefakty**. Vyberte a nakonfigurujte artefakty, které chcete přidat do základní image.
+    **Poznámka:** Pokud s DevTest Labs začínáte a konfigurujete artefakty, přečtěte si část [Přidání existujícího artefaktu do virtuálního počítače](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) a po dokončení se vraťte sem.
+2. V horní části přepněte na kartu **Upřesnit nastavení** a proveďte následující akce:
+    1. Pokud chcete změnit virtuální síť, ve které je virtuální počítač, vyberte **změnit virtuální**síť.
+    2. Chcete-li změnit podsíť, vyberte možnost **změnit podsíť**.
+    3. Určete, jestli je IP adresa virtuálního počítače **veřejná, soukromá nebo sdílená**.
+    4. Pokud chcete virtuální počítač automaticky odstranit, zadejte **Datum a čas vypršení platnosti**.
+    5. Pokud chcete virtuální počítač vyžádat od uživatele testovacího prostředí, vyberte **Ano** , **aby se tato možnost vymáhat z tohoto počítače** mohla vydávat.
+    6. Zadejte počet **instancí virtuálního počítače** , které mají být k dispozici pro uživatele testovacího prostředí.
+3. Výběrem **vytvořit** přidejte zadaný virtuální počítač do testovacího prostředí.
 
-   Na stránce testovacího prostředí se zobrazuje stav vytvoření Virtuálního počítače – nejprve jako **vytváření**, pak jako **systémem** po spuštění virtuálního počítače.
+   Stránka testovací prostředí zobrazuje stav vytvoření virtuálního počítače, který se nejdřív **vytvoří**, a pak se **spustí** po spuštění virtuálního počítače.
 
 > [!NOTE]
-> Pokud nasadíte virtuální počítače testovacího prostředí prostřednictvím [šablon Azure Resource Manageru](devtest-lab-create-environment-from-arm.md), nárokovatelných virtuálních počítačů můžete vytvořit tak, že nastavíte **allowClaim** vlastnost na hodnotu true v oddílu Vlastnosti.
+> Pokud nasadíte virtuální počítače testovacího prostředí prostřednictvím [šablon Azure Resource Manager](devtest-lab-create-environment-from-arm.md), můžete vytvořit virtuální počítače s deklarací identity nastavením vlastnosti **allowClaim** na hodnotu true v oddílu Properties (vlastnosti).
 
 
-## <a name="using-a-claimable-vm"></a>Pomocí nárokovatelných virtuálních počítačů
+## <a name="using-a-claimable-vm"></a>Použití vynuceného virtuálního počítače
 
-Uživatel si může nárokovat libovolný virtuální počítač ze seznamu "Nárokovatelné virtuální počítače" jedním z těchto kroků:
+Uživatel může uplatnit jakýkoli virtuální počítač ze seznamu "s nárokem na virtuální počítače" pomocí jednoho z následujících kroků:
 
-* Ze seznamu "Nárokovatelných virtuálních počítačů" v dolní části podokna "Přehled" testovací prostředí, klikněte pravým tlačítkem na jeden z virtuálních počítačů v seznamu a zvolte **nárokovat počítač**.
+* V seznamu "vynucené virtuální počítače" v dolní části podokna "Přehled" testovacího prostředí klikněte pravým tlačítkem na jeden z virtuálních počítačů v seznamu a vyberte možnost **počítač s nárokem**.
 
-  ![Požádat o konkrétní nárokovatelných virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
-
-
-* V horní části podokna "Přehled", zvolte **nárokovat libovolný**. Ze seznamu nárokovatelných virtuálních počítačů je náhodný virtuální počítač přiřazený.
-
-  ![Požádat o žádné nárokovatelných virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+  ![Vyžádá konkrétní virtuální počítač s deklarací identity.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
-Jakmile uživatel deklarací identity virtuálního počítače, přesunuty do svého seznamu "Moje virtual machines" a není už nárokovatelných žádný uživatel.
+* V horní části podokna Přehled vyberte **deklarace identity any**. Náhodný virtuální počítač je přiřazený ze seznamu vynucených virtuálních počítačů.
 
-## <a name="unclaim-a-vm"></a>Vzdát se virtuálního počítače
-
-Když uživatel přestane používat nárokován. virtuální počítač a chce, aby byla k dispozici někomu jinému, se vrátí nárokován. virtuální počítač do seznam nárokovatelných virtuálních počítačů pomocí jedné z těchto kroků:
-
-- Ze seznamu "Moje virtuální počítače", klikněte pravým tlačítkem na jeden z virtuálních počítačů v seznamu – nebo vyberte jeho ikonu tří teček (...) – a zvolte **Unclaim**.
-
-  ![Vzdát se virtuálního počítače na seznam virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
-
-- V seznamu "Moje virtuální počítače", vyberte virtuální počítač otevřete jeho panel pro správu a pak vyberte **Unclaim** v horní nabídce.
-
-  ![Vrátit. virtuální počítač v podokně Správa Virtuálního počítače.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
-
-Když uživatel unclaims virtuálního počítače, že už nebude mít žádná oprávnění pro tento konkrétní testovací virtuální počítač.
-
-### <a name="transferring-the-data-disk"></a>Převod datového disku
-Pokud nárokovatelných virtuálních počítačů má datový disk připojený a uživatel ho unclaims, datový disk zůstává s virtuálním Počítačem. Když jiný uživatel potom deklarací identity, že virtuální počítač, tento nový uživatel deklarací datový disk, stejně jako virtuální počítač.
-
-To se označuje jako "převod datový disk". Datový disk pak bude k dispozici v seznamu nového uživatele **Moje datové disky** spravuje.
-
-![Vzdát datové disky.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
+  ![Vyžádejte si jakýkoli virtuální počítač s nárokem.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
+Jakmile uživatel uplatní virtuální počítač, DevTest Labs spustí počítač a přesune ho do seznamu "moje virtuální počítače" v testovacím prostředí. To znamená, že uživatel testovacího prostředí teď bude mít k tomuto mahcine vlastníka privilegdes. Čas potřebný pro tento krok se může lišit v závislosti na časech spuštění a všech dalších vlastních akcích, které se v události deklarace identity provádějí. Po jeho uplatnění už nebude počítač dostupný ve fondu s nárokem.  
 
-## <a name="next-steps"></a>Další postup
-* Jakmile se vytvoří, můžete připojit k virtuálnímu počítači tak, že vyberete **připojit** v podokně pro správu.
-* Prozkoumejte [Galerie šablon rychlý start DevTest Labs Azure Resource Manageru](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+## <a name="unclaim-a-vm"></a>Uvolnění virtuálního počítače
+
+Když je uživatel dokončený pomocí deklarovaného virtuálního počítače a chce ho zpřístupnit někomu jinému, může vrátit deklarovaný virtuální počítač do seznamu deklarací, které mají nárok na virtuální počítače, pomocí jednoho z následujících kroků:
+
+- V seznamu "moje virtuální počítače" klikněte pravým tlačítkem na jeden z virtuálních počítačů v seznamu – nebo vyberte tři tečky (...) – a zvolte **nedeklaraci**.
+
+  ![Uvolní virtuální počítač v seznamu virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
+
+- V seznamu Moje virtuální počítače vyberte virtuální počítač, pro který chcete otevřít podokno správy, a pak v horním řádku nabídek vyberte zrušit **deklaraci** .
+
+  ![Oddeklarujte virtuální počítač v podokně Správa virtuálního počítače.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
+
+Když uživatel nezíská nárok na virtuální počítač, už k tomuto konkrétnímu testovacímu virtuálnímu počítači nemá oprávnění vlastníka a je dostupný pro všechny ostatní uživatele testovacího prostředí ve stavu, kdy se retured do fondu. 
+
+### <a name="transferring-the-data-disk"></a>Přenos datového disku
+Pokud má virtuální počítač s deklarací identity připojený datový disk a uživatel je netvrdí, bude tento datový disk stále s virtuálním počítačem. Když tento virtuální počítač vypíše jiný uživatel, bude tento nový uživatel přizpůsobovat datový disk i virtuálnímu počítači.
+
+To se označuje jako "přenos datového disku". Datový disk pak bude k dispozici v seznamu pro **Moje datové disky** nového uživatele, aby je bylo možné spravovat.
+
+![Nedeklarujte datové disky.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
+
+
+
+## <a name="next-steps"></a>Další kroky
+* Po vytvoření se můžete připojit k virtuálnímu počítači výběrem možnosti **připojit** v podokně Správa.
+* Prozkoumejte [galerii šablon rychlého startu Azure Resource Manager DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

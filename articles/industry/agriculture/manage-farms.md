@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c83ac8a42a91c9db06726e917ed142e20995b987
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 929672dceabc7d9b591f05ef3f4f716f2117e09c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797969"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128678"
 ---
-# <a name="manage-farms"></a>Spravovat farmy
+# <a name="manage-farms"></a>Správa farem
 
 Své farmy můžete spravovat ve službě Azure FarmBeats. Tento článek poskytuje informace o tom, jak vytvářet farmy, instalovat zařízení, senzory a DRONY zachraňují životy, které vám pomůžou spravovat vaše farmy.
 
@@ -58,7 +58,7 @@ Na stránce seznam farmy se zobrazí seznam vytvořených farem. Vyberte farmu, 
 Stránka **farmy** zobrazuje seznam vytvořených farem.
 
 1.  Vyberte farmu, pro kterou chcete farmu zobrazit a upravit.
-2.  Vyberte **Upravit farmu** a upravte informace o farmě. V okně **Podrobnosti o farmě** můžete upravit pole **název**, **plodiny**, **adresa**a **hranice farmy** .
+2.  Vyberte **Upravit farmu** a upravte informace o farmě. V okně **Podrobnosti o farmě** můžete upravit pole **název**, **plodiny**, **adresa**a definovat **hranice farmy** .
 
     ![Beats farmy projektu](./media/create-farms/edit-farm-1.png)
 

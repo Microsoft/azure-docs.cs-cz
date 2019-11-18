@@ -1,25 +1,22 @@
 ---
-title: Přesunutí prostředků Azure do nového předplatného nebo skupiny prostředků | Microsoft Docs
+title: Přesunutí prostředků do nového předplatného nebo skupiny prostředků
 description: Použití Azure Resource Manageru k přesunutí prostředků do nové skupiny prostředků nebo předplatného.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: tomfitz
-ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 11/08/2019
+ms.openlocfilehash: f106de7fd35bdbe91033af173b1f338dd251f4e8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035550"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149691"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
-V tomto článku se dozvíte, jak přesunout prostředky Azure do jiného předplatného Azure nebo do jiné skupiny prostředků v rámci stejného předplatného. K přesunu prostředků můžete použít Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API.
+V tomto článku se dozvíte, jak přesunout prostředky Azure do jiného předplatného Azure nebo do jiné skupiny prostředků v rámci stejného předplatného. K přesunu prostředků můžete použít Azure Portal, Azure PowerShell, Azure CLI nebo rozhraní REST API.
 
-Během operace přesunutí dojde ke zamčení zdrojové skupiny i cílové skupiny. Zápis a odstranění operace jsou blokovány o skupinách prostředků, až do dokončení přechodu. Tento Zámek znamená, že nelze přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků, ale neznamená, že prostředky jsou zmražená. Například při přesunutí serveru SQL Server a jeho databázi do nové skupiny prostředků, aplikace, která používá databázi prostředí bez výpadků. Můžete nadále číst a zapisovat do databáze.
+Během operace přesunutí dojde ke zamčení zdrojové skupiny i cílové skupiny. Zápis a odstranění operace jsou blokovány o skupinách prostředků, až do dokončení přechodu. Tento zámek znamená, že nemůžete přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků. Neznamená to, že se prostředky zmrazují. Například při přesunutí serveru SQL Server a jeho databázi do nové skupiny prostředků, aplikace, která používá databázi prostředí bez výpadků. Můžete nadále číst a zapisovat do databáze. Zámek může být poslední po dobu maximálně čtyř hodin, ale většina přesunů se dokončí za mnohem kratší dobu.
 
-Přesunutí prostředku přesune ho jenom do nové skupiny prostředků nebo předplatného. Nemění umístění prostředku.
+Přesunutím prostředku dojde pouze k jeho přesunu do nové skupiny prostředků nebo do nového předplatného. Umístění prostředku se nezmění.
 
 ## <a name="checklist-before-moving-resources"></a>Kontrolní seznam před přesunutím prostředků
 
@@ -98,7 +95,7 @@ Před přesunutím prostředku je třeba provést několik důležitých kroků.
 
    Pokud přesouváte prostředek do nového předplatného, zkontrolujte, zda prostředek obsahuje nějaké závislé prostředky a zda se nachází ve stejné skupině prostředků. Pokud prostředky nejsou ve stejné skupině prostředků, zkontrolujte, jestli se prostředky dají konsolidovat do stejné skupiny prostředků. Pokud ano, převeďte všechny tyto prostředky do stejné skupiny prostředků pomocí operace přesunutí napříč skupinami prostředků.
 
-   Další informace najdete v tématu [scénář pro přesun mezi](#scenario-for-move-across-subscriptions)předplatnými.
+   Další informace najdete v tématu [scénář pro přesun mezi předplatnými](#scenario-for-move-across-subscriptions).
 
 ## <a name="scenario-for-move-across-subscriptions"></a>Scénář pro přesun mezi předplatnými
 
@@ -108,8 +105,8 @@ Přesunutí prostředků z jednoho předplatného na jiný je proces se třemi k
 
 Pro ilustraci máme jenom jeden závislý prostředek.
 
-* Krok 1: Pokud jsou závislé prostředky distribuovány napříč různými skupinami prostředků, přesuňte je nejprve do jedné skupiny prostředků.
-* Krok 2: Přesunutí prostředku a závislých prostředků ze zdrojového předplatného do cílového předplatného.
+* Krok 1: Pokud jsou závislé prostředky distribuované napříč různými skupinami prostředků, přesuňte je nejdřív do jedné skupiny prostředků.
+* Krok 2: přesunutí prostředku a závislých prostředků ze zdrojového předplatného do cílového předplatného.
 * Krok 3: Volitelně můžete závislé prostředky znovu distribuovat do různých skupin prostředků v rámci cílového předplatného. 
 
 ## <a name="validate-move"></a>Ověří přesun
@@ -185,7 +182,7 @@ Po jeho dokončení budete informováni o výsledek.
 
 ![Zobrazit výsledek přesunutí](./media/resource-group-move-resources/show-result.png)
 
-Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo](troubleshoot-move.md)předplatného.
+Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
@@ -199,7 +196,7 @@ Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Resource
 
 Chcete-li přesunout do nového předplatného, zahrnout hodnotu pro `DestinationSubscriptionId` parametru.
 
-Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo](troubleshoot-move.md)předplatného.
+Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
 
@@ -213,7 +210,7 @@ az resource move --destination-group newgroup --ids $webapp $plan
 
 Pokud chcete přesunout do nového předplatného, zadejte `--destination-subscription-id` parametru.
 
-Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo](troubleshoot-move.md)předplatného.
+Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
 ## <a name="use-rest-api"></a>Použití rozhraní REST API
 
@@ -232,8 +229,53 @@ V textu požadavku zadejte cílovou skupinu prostředků a prostředky, které c
 }
 ```
 
-Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo](troubleshoot-move.md)předplatného.
+Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+**Otázka: moje operace přesunutí prostředků, která obvykle trvá několik minut, je spuštěná skoro po celou hodinu. Je něco špatné?**
+
+Přesunutí prostředku je složitá operace, která má různé fáze. Může zahrnovat víc než jenom poskytovatele prostředků u prostředku, který se pokoušíte přesunout. Vzhledem k závislostem mezi poskytovateli prostředků Azure Resource Manager umožňuje dokončení operace 4 hodiny. Toto časové období dává poskytovatelům prostředků možnost obnovení z přechodných problémů. Pokud je vaše žádost o přesun v průběhu 4 hodiny, operace se bude pokoušet dokončit a může být stále úspěšná. Zdrojové a cílové skupiny prostředků jsou během této doby uzamčeny, aby nedocházelo k problémům s konzistencí.
+
+**Otázka: Proč se skupina prostředků uzamkl po dobu 4 hodin během přesunu prostředků?**
+
+Okno o velikosti 4 hodiny je maximální doba, po kterou je možné přesunout prostředek. Aby se zabránilo změnám přesouvaných prostředků, jsou zdrojové i cílové skupiny prostředků zamčené po dobu trvání přesunutí prostředku.
+
+V žádosti o přesunutí jsou dvě fáze. V první fázi se prostředek přesune. Ve druhé fázi se oznámení odesílají jiným poskytovatelům prostředků závislým na přemístění prostředku. Skupina prostředků může být uzamčena pro celé 4 hodiny, když poskytovatel prostředků dojde v obou fázích k chybě. Během povoleného času se Správce prostředků opakuje neúspěšný krok.
+
+Pokud prostředek nejde přesunout v rámci 4 hodinového okna, Správce prostředků odemkne obě skupiny prostředků. Prostředky, které se úspěšně přesunuly, se nacházejí v cílové skupině prostředků. Prostředky, které se nepodařilo přesunout, jsou ponechány ve zdrojové skupině prostředků.
+
+**Otázka: Jaké jsou důsledky uzamčení zdrojových a cílových skupin prostředků během přesunu prostředku?**
+
+Zámek vám znemožní odstranit buď skupinu prostředků, vytvoření nového prostředku v obou skupinách prostředků, nebo odstranit některý z prostředků, které jsou součástí přesunutí.
+
+Následující obrázek ukazuje chybovou zprávu z Azure Portal, když se uživatel pokusí odstranit skupinu prostředků, která je součástí probíhajícího přesunu.
+
+![Přesunout chybovou zprávu pokus o odstranění](./media/resource-group-move-resources/move-error-delete.png)
+
+**Otázka: co znamená kód chyby "MissingMoveDependentResources"?**
+
+Při přesunu prostředku musí být závislé prostředky buď v cílové skupině prostředků nebo předplatném, nebo být součástí žádosti o přesun. Kód chyby MissingMoveDependentResources se zobrazí, když závislý prostředek nesplňuje tento požadavek. Chybová zpráva obsahuje podrobnosti o závislém prostředku, který musí být zahrnut v žádosti o přesunutí.
+
+Například přesun virtuálního počítače může vyžadovat přesun sedmi typů prostředků se třemi různými poskytovateli prostředků. Poskytovatelé prostředků a typy jsou:
+
+* Microsoft.Compute
+   * virtualMachines
+   * disks
+* Microsoft.Network
+  * networkInterfaces
+  * publicIPAddresses
+  * networkSecurityGroups
+  * virtualNetworks
+* Microsoft.Storage
+  * storageAccounts
+
+Další běžný příklad zahrnuje přesun virtuální sítě. Možná budete muset přesunout několik dalších prostředků přidružených k této virtuální síti. Žádost o přesun by mohla vyžadovat přesunutí veřejných IP adres, směrovacích tabulek, bran virtuální sítě, skupin zabezpečení sítě a dalších.
+
+**Otázka: Proč nemůžu přesunout některé prostředky v Azure?**
+
+V současné době se nepodporují přesun všech prostředků v Azure. Seznam prostředků, které podporují přesun, najdete v tématu [o podpoře operací přesunutí pro prostředky](move-support-resources.md).
+
+## <a name="next-steps"></a>Další kroky
 
 Seznam prostředků, které podporují přesun, najdete v tématu [Podpora operací přesunutí pro prostředky](move-support-resources.md).

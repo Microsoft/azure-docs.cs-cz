@@ -1,5 +1,5 @@
 ---
-title: Připojení a indexování Azure SQL Database obsahu pomocí indexerů
+title: Hledání ve službě Azure SQL data
 titleSuffix: Azure Cognitive Search
 description: Import dat z Azure SQL Database pomocí indexerů pro fulltextové vyhledávání ve službě Azure Kognitivní hledání. Tento článek se zabývá připojeními, konfigurací indexeru a přijímáním dat.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792193"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113300"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Připojení a indexování Azure SQL Database obsahu pomocí indexerů Azure Kognitivní hledání
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování Azure SQL Database obsahu pomocí indexeru Azure Kognitivní hledání
 
 Než budete moct zadat dotaz na [index služby Azure kognitivní hledání](search-what-is-an-index.md), musíte ho naplnit Vašimi daty. Pokud data nacházející se v databázi SQL Azure, může **indexovací člen služby azure kognitivní hledání pro Azure SQL Database** (nebo **Azure SQL indexer** pro krátký) automatizovat proces indexování, což znamená méně kódu pro zápis a méně infrastruktury pro péči o.
 
@@ -269,26 +269,26 @@ Při použití techniky obnovitelného odstranění můžete při vytváření n
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Mapování mezi datovými typy SQL a Azure Kognitivní hledání
-| Datový typ SQL | Povolené typy polí indexu cíle | Poznámky |
+| Datový typ SQL | Povolené typy polí indexu cíle | Poznámky: |
 | --- | --- | --- |
-| 40bitového |EDM. Boolean, Edm. String | |
-| int, smallint, tinyint |EDM. Int32, Edm. Int64, Edm. String | |
-| bigint |EDM. Int64, Edm. String | |
-| Real, float |EDM. Double, Edm. String | |
+| bit |EDM. Boolean, Edm. String | |
+| int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
+| bigint |Edm.Int64, Edm.String | |
+| Real, float |Edm.Double, Edm.String | |
 | smallmoney, desetinné číslo v penězích |Edm.String |Azure Kognitivní hledání nepodporuje převod desetinných typů na EDM. Double, protože by došlo ke ztrátě přesnosti. |
 | char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Řetězec SQL lze použít k naplnění pole Collection (EDM. String), pokud řetězec představuje pole JSON řetězců: `["red", "white", "blue"]` |
-| smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, Edm. String | |
+| smalldatetime, DateTime, datetime2, Date, DateTimeOffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | Geografické |Edm.GeographyPoint |Podporují se jenom geografické instance typu POINT s SRID 4326 (což je výchozí nastavení). |
-| rowversion |Nevztahuje se |Sloupce verze řádku nelze uložit do indexu hledání, ale lze je použít ke sledování změn. |
-| čas, TimeSpan, binární, varbinary, image, XML, geometrie, typy CLR |Nevztahuje se |Nepodporováno |
+| rowversion |neuvedeno |Sloupce verze řádku nelze uložit do indexu hledání, ale lze je použít ke sledování změn. |
+| čas, TimeSpan, binární, varbinary, image, XML, geometrie, typy CLR |neuvedeno |Nepodporováno |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 SQL indexer zpřístupňuje několik nastavení konfigurace:
 
 | Nastavení | Data type | Účel | Výchozí hodnota |
 | --- | --- | --- | --- |
-| queryTimeout |string |Nastaví časový limit pro spuštění dotazu SQL. |5 minut ("00:05:00") |
+| queryTimeout |řetězec |Nastaví časový limit pro spuštění dotazu SQL. |5 minut ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |bool |Způsobí, že dotaz SQL, který používá zásada vysoké značky, k vynechání klauzule ORDER BY. Zobrazit [zásady vysoké značky](#HighWaterMarkPolicy) |false |
 
 Tato nastavení se používají v objektu `parameters.configuration` v definici indexeru. Chcete-li například nastavit časový limit dotazu na 10 minut, vytvořte nebo aktualizujte indexer s následující konfigurací:
@@ -299,7 +299,7 @@ Tato nastavení se používají v objektu `parameters.configuration` v definici 
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka: můžu použít službu Azure SQL indexer s databázemi SQL běžícími na virtuálních počítačích s IaaS v Azure?**
 

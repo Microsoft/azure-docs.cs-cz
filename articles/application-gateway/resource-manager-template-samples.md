@@ -1,19 +1,19 @@
 ---
 title: Šablony Azure Resource Manageru
 titleSuffix: Azure Application Gateway
-description: Šablony Azure Resource Manager pro Azure Application Gateway
+description: Tento článek obsahuje odkazy na příklady šablon Azure Resource Manager, abyste mohli rychle nasadit službu Azure Application Gateway nakonfigurovanou různými způsoby.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
-ms.date: 11/14/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 7353601ac6b624b2adf216d17638fe7b6198eec4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f2ab25b8514032f134e8c901066dc8f5fcffd13b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074509"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129826"
 ---
 # <a name="azure-resource-manager-templates-for-azure-application-gateway"></a>Šablony Azure Resource Manager pro Azure Application Gateway
 

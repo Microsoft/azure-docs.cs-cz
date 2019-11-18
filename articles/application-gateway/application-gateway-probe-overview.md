@@ -1,48 +1,47 @@
 ---
-title: Přehled služby Azure Application Gateway monitorování stavu
-description: Další informace o možnostech monitorování ve službě Azure Application Gateway
+title: Přehled monitorování stavu pro Azure Application Gateway
+description: Azure Application Gateway monitoruje stav všech prostředků v rámci fondu back-end a automaticky z fondu považuje prostředek, který je v pořádku.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135190"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130683"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
-Ve výchozím nastavení služba Azure Application Gateway monitoruje stav všech prostředků v jeho back endovém fondu a automaticky odstraní všechny prostředky z fondu považoval za poškozený. Služba Application Gateway pokračuje v monitorování instance v nedobrém stavu a přidá je zpět do fondu back-end v pořádku, jakmile budou k dispozici a reagují na sondy stavu. Služba Application gateway odesílá že sondy stavu se stejný port, který je definován v nastavení HTTP back-end. Tato konfigurace zajistí, že test je testování stejný port, který by se zákazníky, kteří využívají pro připojení k back-endu.
+Služba Azure Application Gateway ve výchozím nastavení monitoruje stav všech prostředků v rámci fondu back-endu a automaticky odebere z fondu prostředky považované za chybné. Application Gateway nadále monitorovat poškozené instance a přidává je zpátky do správného fondu back-end, jakmile budou k dispozici a reagují na sondy stavu. Application Gateway odesílá sondy stavu se stejným portem, který je definovaný v nastavení back-endu HTTP. Tato konfigurace zajišťuje, že sonda testuje stejný port, který zákazníci používají pro připojení k back-endu.
 
-![Příkladem testu Application gateway][1]
+![Příklad testu služby Application Gateway][1]
 
-Kromě používání výchozího stavu testu monitorování, můžete také přizpůsobit sondu stavu, aby odpovídala požadavkům vaší aplikace. V tomto článku se vztahují výchozích a vlastních testů stavu paměti.
+Kromě používání výchozího monitorování sondy stavu můžete také přizpůsobit sondu stavu tak, aby vyhovovala požadavkům vaší aplikace. V tomto článku jsou pokryté výchozí i vlastní sondy stavu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="default-health-probe"></a>Výchozí kontroly stavu
+## <a name="default-health-probe"></a>Výchozí sonda stavu
 
-Službu application gateway automaticky nakonfiguruje výchozí kontroly stavu, pokud nenastavíte žádnou konfiguraci vlastní test paměti. Monitorování chování funguje tak, že požadavek HTTP na IP adresy nakonfigurované pro back endový fond. Pro výchozí sondy Pokud nastavení http back-end jsou nakonfigurovány pro protokol HTTPS, sondy používá protokol HTTPS a testování stavu back-EndY.
+Application Gateway automaticky nakonfiguruje výchozí sondu stavu, když nenastavíte žádnou vlastní konfiguraci sondy. Chování monitorování funguje tak, že provedete požadavek HTTP na IP adresy nakonfigurované pro fond back-end. Pokud jsou pro protokol HTTPS nakonfigurovaná nastavení http back-endu, sonda používá protokol HTTPS a také stav testu back-endy.
 
-Příklad: Nakonfigurujete vaše brána application gateway pomocí back-end serverů A, B a C přijímat síťový provoz protokolu HTTP na portu 80. Monitorování stavu výchozí testuje tři servery každých 30 sekund pro v dobrém stavu odpovědi HTTP. Je v dobrém stavu odpovědi HTTP [stavový kód](https://msdn.microsoft.com/library/aa287675.aspx) mezi 200 a 399.
+Například: nakonfigurujete Aplikační bránu tak, aby používala back-end servery A, B a C pro příjem síťového provozu HTTP na portu 80. Výchozí monitorování stavu testuje tři servery každých 30 sekund pro fungující odpověď HTTP. V pořádku HTTP odpověď má [stavový kód](https://msdn.microsoft.com/library/aa287675.aspx) mezi 200 a 399.
 
-Pokud selže server A kontrola testu výchozí, application gateway, odebere ho z jeho back endového fondu a síťový provoz přestanou přicházet do tohoto serveru. Výchozí kontroly i nadále pokračuje v kontrole pro server každých 30 sekund. Když serveru A odpoví na žádost o jeden z výchozí kontroly stavu úspěšně, je přidána zpět jako v pořádku do back endového fondu a začne provoz směřující do serveru znovu.
+Pokud se u serveru A nezdařila výchozí kontrola sondy, brána Application Gateway ji odebere z fondu back-end a síťový provoz přestane přecházet do tohoto serveru. Výchozí sonda stále nadále kontroluje server A každých 30 sekund. Když server A odpoví úspěšně na jednu žádost z výchozího testu stavu, přidá se zpátky jako v pořádku do fondu back-end a provoz se znovu začne přesměrovat na server.
 
-### <a name="probe-matching"></a>Porovnávání pro zjišťování
+### <a name="probe-matching"></a>Porovnání sondy
 
-Ve výchozím nastavení považuje odpověď HTTP (S) se stavovým kódem 200 až 399 v pořádku. Vlastních testů stavu také podporují dvě kritéria přiřazování. Volitelně můžete změnit výchozí výklad o tom, co v dobrém stavu odpovědi lze použít odpovídající kritériím.
+Ve výchozím nastavení je odpověď HTTP (S) se stavovým kódem mezi 200 a 399 považována za v pořádku. Vlastní sondy stavu navíc podporují dvě kritéria pro porovnání. Kritéria porovnání lze použít k volitelné změně výchozího výkladu toho, co představuje reakci v pořádku.
 
-Následující jsou odpovídající kritériím: 
+Následující kritéria odpovídají kritériím: 
 
-- **Shoda kód stavu odpovědi HTTP** - test kritéria pro příjem přiřazování zadané uživatelem, které http odpovědi kódu nebo odpovědi kódu rozsahů. Stavové kódy odezvy jednotlivých čárkami nebo rozsah stavový kód je podporován.
-- **Porovnání textu odpovědi HTTP** – test paměti, že vyhledá v textu odpovědi HTTP a shody s uživatelem zadaný řetězec kritéria přiřazování. Pouze vyhledá shodu přítomnost uživatele zadaného řetězce v textu odpovědi a není úplné regulárního výrazu.
+- **Shoda se stavovým kódem odpovědi HTTP** – kritérium porovnávání sondy pro přijetí kódu odpovědi HTTP nebo rozsahů kódu odpovědi na uživatele. Jsou podporovány jednotlivé stavové kódy odpovědi oddělené čárkami nebo rozsah stavového kódu.
+- **Shoda těla zprávy odpovědi HTTP** – kritérium porovnávání sondy, které hledá text odpovědi HTTP a odpovídá řetězci zadaného uživatelem. Shoda vyhledá pouze přítomnost zadaného řetězce uživatelem v těle odpovědi a není úplným shodným regulárním výrazem.
 
-Kritéria shody se dá nastavit pomocí `New-AzApplicationGatewayProbeHealthResponseMatch` rutiny.
+Kritéria shody lze zadat pomocí rutiny `New-AzApplicationGatewayProbeHealthResponseMatch`.
 
 Příklad:
 
@@ -50,57 +49,57 @@ Příklad:
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
-Jakmile je zadaná kritéria shody, může být připojen testovat pomocí konfigurace `-Match` parametr v prostředí PowerShell.
+Po zadání kritérií shody je možné je připojit ke konfiguraci sondy pomocí parametru `-Match` v prostředí PowerShell.
 
 ### <a name="default-health-probe-settings"></a>Výchozí nastavení sondy stavu
 
-| Vlastnosti testu | Hodnota | Popis |
+| Vlastnost sondy | Hodnota | Popis |
 | --- | --- | --- |
-| Adresa URL testu paměti |http://127.0.0.1:\<port\>/ |Cesta adresy URL |
-| Interval |30 |Množství času během několika sekund se má čekat před dalším sondu stavu se odesílají.|
-| Časový limit |30 |Množství času v sekundách application gateway čeká na odpověď testu před označením testu jako není v pořádku. Pokud test vrátí jako v pořádku, odpovídající back-endu okamžitě označen jako v pořádku.|
-| Prahová hodnota špatného stavu |3 |Určuje, kolik testy k odeslání v případě, že dojde k selhání sondy stavu regulárních. Tyto testy další stavu se odesílají rychle po sobě do rychle určit stav back-endu a nečekat na interval testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Adresa URL testu paměti |http://127.0.0.1:\<port\>/ |Cesta URL |
+| Interval |30 |Doba v sekundách, po kterou se má čekat, než se pošle další sonda stavu.|
+| Časový limit |30 |Doba v sekundách, po kterou Aplikační brána čeká na odezvu testu před označením sondy jako není v pořádku. Pokud se sonda vrátí jako v pořádku, odpovídající back-end se hned označí jako v pořádku.|
+| Prahová hodnota špatného stavu |3 |Určuje, kolik sond se má odeslat v případě, že dojde k selhání normální sondy stavu. Tyto dodatečné sondy stavu se odesílají v rychlém úspěchu, aby bylo možné rychle zjistit stav back-endu a nečekat na interval sondy. Back-end Server je označený po po sobě jdoucí počet po sobě jdoucích selhání testu dosáhne prahové hodnoty, která není v pořádku. |
 
 > [!NOTE]
-> Port, který je stejný port jako nastavení HTTP back-end.
+> Port je stejný port jako nastavení back-endu protokolu HTTP.
 
-Výchozí kontroly zjistí pouze protokolu http:\//127.0.0.1:\<port\> k určení stavu. Pokud je potřeba nakonfigurovat sondu stavu přejděte na vlastní adresu URL nebo upravovat ostatní nastavení, musíte použít vlastní sondy.
+Výchozí sonda se vyhledává jenom v http:\//127.0.0.1:\<portu\> k určení stavu. Pokud potřebujete nakonfigurovat sondu stavu tak, aby přešel na vlastní adresu URL nebo upravili jakékoli jiné nastavení, musíte použít vlastní testy.
 
-### <a name="probe-intervals"></a>Intervaly testu
+### <a name="probe-intervals"></a>Intervaly sondy
 
-Všechny instance služby Application Gateway probe back-endu nezávisle na sobě navzájem. Ke každé instanci Application Gateway se vztahuje stejnou konfiguraci sondy. Například pokud je konfigurace testu k odeslání sond stavu každých 30 sekund a application gateway má dvě instance, pak obě instance odeslat sondu stavu každých 30 sekund.
+Všechny instance Application Gateway sondují back-end nezávisle na sobě. Stejná konfigurace sondy se vztahuje na každou instanci Application Gateway. Pokud například konfigurace sondy odesílá sondy stavu každých 30 sekund a Aplikační brána má dvě instance, pak obě instance odesílají sondu stavu každých 30 sekund.
 
-Také pokud existuje víc naslouchacích procesů, pak každý naslouchací proces sondy back-endu nezávisle na sobě navzájem. Například pokud existují dva naslouchací procesy odkazující na stejném back-endový fond na dva různé porty (nakonfiguroval dvě nastavení http back-end) pak každý naslouchací proces sondy stejný back-end nezávisle na sobě. V tomto případě existují dva testy z každé instance služby application gateway pro dva naslouchací procesy. Pokud existují dvě instance služby application gateway v tomto scénáři, back-endový virtuální počítač zobrazí čtyři sond za interval nakonfigurované testu.
+Pokud existuje více posluchačů, pak každý naslouchací proces prohledá back-end nezávisle na sobě. Například pokud existují dva naslouchací procesy ukazující na stejný back-end fond na dvou různých portech (nakonfigurovaných pomocí dvou nastavení http back-endu), pak každý naslouchací proces prohledá stejný back-end. V tomto případě existují dvě sondy z každé instance aplikační brány pro dva naslouchací procesy. V případě, že v tomto scénáři existují dvě instance aplikační brány, back-end virtuální počítač by se mohl podívat na čtyři sondy podle nakonfigurovaného intervalu sondy.
 
-## <a name="custom-health-probe"></a>Sonda stavu vlastní
+## <a name="custom-health-probe"></a>Vlastní sonda stavu
 
-Vlastní sondy vám umožní mít podrobnější kontrolu nad monitorování stavu. Pokud používáte vlastní sondy, můžete nakonfigurovat interval testu, adresu URL a cesty k testování a počet neúspěšných odpovědí tak, aby přijímal před označením instance back endovém fondu jako není v pořádku.
+Vlastní testy vám umožní podrobnější kontrolu nad monitorováním stavu. Pokud používáte vlastní testy, můžete nakonfigurovat interval sondy, adresu URL a cestu k otestování a počet neúspěšných odpovědí, které se mají přijmout před označením instance back-end fondu jako chybné.
 
-### <a name="custom-health-probe-settings"></a>Nastavení testu pro vlastní stavu
+### <a name="custom-health-probe-settings"></a>Vlastní nastavení sondy stavu
 
-Následující tabulka obsahuje definice pro vlastnosti sondu stavu vlastní.
+Následující tabulka poskytuje definice vlastností pro vlastní sondu stavu.
 
-| Vlastnosti testu | Popis |
+| Vlastnost sondy | Popis |
 | --- | --- |
-| Name |Název testu. Tento název se používá k odkazování na test v nastavení HTTP back-end. |
-| Protocol |Protokol používaný k posílání sondy. Test paměti používá protokol definované v nastavení HTTP back-end |
-| Host |Název hostitele k odeslání testu. Použít pouze v případě více webů je nakonfigurovaná ve službě Application Gateway, v opačném případě použijte "127.0.0.1". Tato hodnota se liší od názvu hostitele virtuálního počítače. |
-| `Path` |Relativní cesta testu. Platná cesta začíná od "/". |
-| Interval |Interval testu paměti v sekundách. Tato hodnota je časový interval mezi dvěma po sobě jdoucích sondy. |
-| Časový limit |Časový limit testu v sekundách. Pokud není přijetí platné odpovědi během tohoto období časového limitu testu označen jako neúspěšný.  |
-| Prahová hodnota špatného stavu |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Název |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
+| Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
+| Hostitel |Název hostitele, který má odeslat test. Dá se použít jenom v případě, že je na Application Gateway nakonfigurovaný vícenásobný web, jinak použijte 127.0.0.1. Tato hodnota se liší od názvu hostitele virtuálního počítače. |
+| Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. |
+| Interval |Interval testu paměti v sekundách. Tato hodnota představuje časový interval mezi dvěma po sobě jdoucími sondami. |
+| Časový limit |Časový limit testu v sekundách. Pokud v tomto časovém limitu neobdrží platná odpověď, sonda je označena jako neúspěšná.  |
+| Prahová hodnota špatného stavu |Počet opakování testu Back-end Server je označený po po sobě jdoucí počet po sobě jdoucích selhání testu dosáhne prahové hodnoty, která není v pořádku. |
 
 > [!IMPORTANT]
-> Pokud služba Application Gateway je nakonfigurována pro jednu lokalitu, ve výchozím nastavení hostitele název musí být zadán jako "127.0.0.1", pokud nebudou jinak nakonfigurovaná v vlastní test paměti.
-> Pro srovnání je odesílat vlastní test paměti \<protokol\>://\<hostitele\>:\<port\>\<cesta\>. Port používaný bude stejný port, jak jsou definovány v nastavení HTTP back-end.
+> Pokud je pro jednu lokalitu nakonfigurované Application Gateway, ve výchozím nastavení by měl být název hostitele zadaný jako 127.0.0.1, pokud není v vlastní sondě nakonfigurovaný.
+> Pro referenci na vlastní test se pošle \<protokolu\>://\<hostitel\>:\<port\>\<cesta\>. Použitý port bude stejný jako port definovaný v nastavení back-endu protokolu HTTP.
 
-## <a name="nsg-considerations"></a>Důležité informace o NSG
+## <a name="nsg-considerations"></a>NSG požadavky
 
-Pokud se podsítě služby application gateway je skupina zabezpečení sítě (NSG), rozsahy portů 65503 65534 musí být otevřen na podsítě služby application gateway pro příchozí provoz. Tyto porty jsou povinné pro stav back-endu rozhraní API pro práci.
+Pokud je v podsíti aplikační brány skupina zabezpečení sítě (NSG), musí se rozsahy portů 65503-65534 otevřít v podsíti aplikační brány pro příchozí provoz. Tyto porty jsou vyžadovány pro fungování rozhraní API stavu back-endu.
 
-Kromě toho nelze blokovat odchozí připojení k Internetu a musí být povolené příchozí provoz přicházející z značka AzureLoadBalancer.
+Kromě toho se nedají zablokovat odchozí připojení k Internetu a příchozí provoz, který přichází ze značky AzureLoadBalancer, musí být povolený.
 
-## <a name="next-steps"></a>Další postup
-Po získání informací o monitorování stavu Application Gateway, můžete nakonfigurovat [sondu stavu vlastní](application-gateway-create-probe-portal.md) na webu Azure Portal nebo [sondu stavu vlastní](application-gateway-create-probe-ps.md) pomocí Powershellu a Azure Resource Manageru model nasazení.
+## <a name="next-steps"></a>Další kroky
+Po získání informací o Application Gateway sledování stavu můžete nakonfigurovat [vlastní sondu stavu](application-gateway-create-probe-portal.md) v Azure Portal nebo ve [vlastním testu stavu](application-gateway-create-probe-ps.md) pomocí PowerShellu a modelu nasazení Azure Resource Manager.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
