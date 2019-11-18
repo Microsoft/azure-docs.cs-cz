@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: 04e7f582920c4b328de39bda3d37e886e26f8bae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6d2955a77c06f371975a7a14675eedceab7c98ae
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499620"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125449"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -166,4 +166,4 @@ Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému soubo
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidat projevy a vlak](../luis-get-started-go-add-utterance.md)
+> [Přidat projevy a vlak](../get-started-get-model-rest-apis.md)

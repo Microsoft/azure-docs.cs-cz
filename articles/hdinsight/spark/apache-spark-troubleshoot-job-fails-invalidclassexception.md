@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: ad9ec8e97827fb6158476165a610c9d69b12a528
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 124d5586180258589c5db17454b8fbf1e465fc24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241170"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106487"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Úloha Apache Spark se nezdařila s InvalidClassException, neshoda verzí třídy v Azure HDInsight
 
@@ -34,9 +34,12 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Příčina
 
-Tato chyba může být způsobena přidáním dalšího jar do `spark.yarn.jars` config, což je "stínovaný" jar, který obsahuje jinou verzi balíčku `commons-lang3` a zavádí neshodu třídy. Ve výchozím nastavení používá Spark 2.1/2/3 `commons-lang3`verze 3,5.
+Tato chyba může být způsobena přidáním dalšího jar do `spark.yarn.jars` config, konkrétně do šedivého jar, který obsahuje jinou verzi balíčku `commons-lang3` a zavádí neshodu třídy. Ve výchozím nastavení používá Spark 2.1/2/3 `commons-lang3`verze 3,5.
 
-## <a name="resolution"></a>Rozlišení
+> [!TIP]
+> K vystínování knihovny je umístění svého obsahu do vlastního jar, změna jeho balíčku. To se liší od balení knihovny, což znamená vložení knihovny do vlastního jar bez nutnosti opětovného balení.
+
+## <a name="resolution"></a>Řešení
 
 Buď odeberte jar, nebo znovu zkompilujte přizpůsobený jar (AzureLogAppender) a pomocí [Maven-destínového modulu plug-in](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html) přemístěte třídy.
 
@@ -48,4 +51,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Součástí předplatného Microsoft Azure je přístup ke správě předplatného a podpora fakturace. Technická podpora se poskytuje prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

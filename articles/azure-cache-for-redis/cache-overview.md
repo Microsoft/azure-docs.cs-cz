@@ -1,24 +1,18 @@
 ---
-title: Co je Azure cache pro Redis? | Dokumenty Microsoft
+title: Co je Azure cache pro Redis?
 description: Přečtěte si, co je Azure cache pro Redis a jak se běžně používá.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: martinekuan
-editor: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 1f0c943bed473178dadb09cfb9d355821e5236e8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066850"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122653"
 ---
 # <a name="azure-cache-for-redis-description"></a>Popis služby Azure cache pro Redis
 
@@ -35,7 +29,7 @@ Existuje mnoho běžných vzorů, ve kterých se mezipaměť Azure pro Redis pou
 | Vzor      | Popis                                        |
 | ------------ | -------------------------------------------------- |
 | [Cache-Aside](cache-web-app-cache-aside-leaderboard.md) | Vzhledem k tomu, že databáze může být rozsáhlá, nedoporučuje se načítat celou databázi do mezipaměti. Běžně se využívá princip [s doplňováním mezipaměti aplikací](https://docs.microsoft.com/azure/architecture/patterns/cache-aside), při kterém se datové položky načítají do mezipaměti pouze v případě potřeby. Když systém provede změny v back-endových datech, může také současně aktualizovat mezipaměť, která se rozdistribuuje do ostatních klientů. Dále systém může nastavit dobu platnosti datových položek nebo použít zásady vyřazení, aby se aktualizace dat opakovaně načítaly do mezipaměti.|
-| [Ukládání obsahu do mezipaměti](cache-aspnet-output-cache-provider.md) | Většina webových stránek se generuje ze šablon, které obsahují záhlaví, zápatí, panely nástrojů, nabídky a další prvky. Webové stránky se aktualizují zřídka a neměly by se generovat dynamicky. Použití mezipaměti v paměti, jako je například Azure cache pro Redis, poskytne webovým serverům rychlý přístup k tomuto typu statického obsahu v porovnání s úložištěm dat back-endu. Tento vzor zkracuje dobu zpracování a načítání serveru, která je potřeba k dynamickému generování obsahu. Umožňuje webovým serverům rychleji reagovat a snižuje počet serverů, které jsou nutné pro zpracování zátěže. Azure cache pro Redis poskytuje poskytovateli výstupní mezipaměti Redis, aby pomohlo tento model podporovat s ASP.NET.|
+| [Ukládání obsahu do mezipaměti](cache-aspnet-output-cache-provider.md) | Většina webových stránek se generuje z šablon s hlavičkami, zápatími, panely nástrojů, nabídkami atd. Nemění se ve skutečnosti často a neměly by se generovat dynamicky. Použití mezipaměti v paměti, jako je například Azure cache pro Redis, poskytne webovým serverům rychlý přístup k tomuto typu statického obsahu v porovnání s úložištěm dat back-endu. Tento vzor zkracuje dobu zpracování a načítání serveru, která je potřeba k dynamickému generování obsahu. Umožňuje webovým serverům rychleji reagovat a snižuje počet serverů, které jsou nutné pro zpracování zátěže. Azure cache pro Redis poskytuje poskytovateli výstupní mezipaměti Redis, aby pomohlo tento model podporovat s ASP.NET.|
 | [Ukládání uživatelských relací do mezipaměti](cache-aspnet-session-state-provider.md) | Tento vzor se běžně používá u nákupních košíků a dalších informací o historii uživatele, které webová aplikace může chtít přidružit k souborům cookie uživatele. Ukládání příliš velkého objemu dat v souboru cookie může mít negativní dopad na výkon, protože velikost souboru cookie roste a předává se a ověřuje s každou žádostí. Typickým řešením je použití souboru cookie jako klíče pro dotazování dat v back-endové databázi. Použití mezipaměti v paměti, jako je například Azure cache pro Redis, k přidružení informací k uživateli je mnohem rychlejší než interakce s úplnou relační databází. |
 | Zařazování úloh a zpráv do fronty | Když aplikace obdrží žádost, provedení operací spojených se žádostí často vyžaduje další čas. Běžně se dlouhotrvající operace odkládají do fronty, která se zpracuje později a případně jiným serverem. Tato metoda odkládání práce se označuje jako řazení úloh do fronty. K podpoře front úloh existuje celá řada softwarových komponent. Mezipaměť Azure pro Redis také slouží k tomuto účelu i k distribuované frontě.|
 | Distribuované transakce | Běžně se po aplikacích vyžaduje, aby byly schopné provádět sérii příkazů oproti back-endovému úložišti dat jako jedinou operaci (atomická operace). Všechny příkazy musí být úspěšné nebo se musí vrátit zpět do počátečního stavu. Azure cache pro Redis podporuje spuštění dávky příkazů jako jediné operace ve formě [transakcí](https://redis.io/topics/transactions). |
@@ -73,7 +67,7 @@ Stránka s [cenami Azure cache for Redis](https://azure.microsoft.com/pricing/de
 | [Geografická replikace](cache-how-to-geo-replication.md) |✔|-|-|
 | [Restartování](cache-administration.md#reboot) |✔|✔|✔|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Rychlý Start webové aplikace v ASP.NET](cache-web-app-howto.md) Vytvořte jednoduchou webovou aplikaci v ASP.NET, která používá Azure cache pro Redis.
 * [Rychlý Start .NET](cache-dotnet-how-to-use-azure-redis-cache.md) Vytvořte aplikaci .NET, která používá službu Azure cache pro Redis.

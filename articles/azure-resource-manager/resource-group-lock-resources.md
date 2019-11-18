@@ -1,63 +1,60 @@
 ---
-title: Zamknout prostředky Azure, které zabraňují změně | Dokumentace Microsoftu
-description: Zabraňte uživatelům v aktualizaci nebo odstranění důležitých prostředků Azure s použitím zámek pro všechny uživatele a role.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Uzamknout prostředky, aby nedocházelo ke změnám
+description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité prostředky Azure tím, že použije zámek pro všechny uživatele a role.
 ms.topic: conceptual
 ms.date: 05/14/2019
-ms.author: tomfitz
-ms.openlocfilehash: 31d77b4ea6e7594cd3ed4dba264f9ea6db4ca290
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 5dd5d5f58e13039842dca85ca65d6a26ce54c7e5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155209"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150774"
 ---
-# <a name="lock-resources-to-prevent-unexpected-changes"></a>Uzamčení prostředků, aby se zabránilo neočekávaným změnám 
+# <a name="lock-resources-to-prevent-unexpected-changes"></a>Uzamknout prostředky, aby nedocházelo k neočekávaným změnám
 
-Jako správce budete muset zamknout předplatné, skupinu prostředků nebo prostředek Neumožnit dalším uživatelům ve vaší organizaci omylem odstranit nebo upravit důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu, se nazývají zámků **odstranit** a **jen pro čtení** v uvedeném pořadí.
+Jako správce možná budete muset uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu se zámky nazývají **Delete** a **jen pro čtení** .
 
-* **CanNotDelete** znamená, že oprávnění uživatelé stále může číst a upravit prostředek, ale jejich nelze odstranit prostředek. 
-* **Jen pro čtení** znamená, že oprávnění uživatelé mohou číst prostředek, ale nemůže odstranit nebo aktualizovat prostředek. Použití tohoto uzamknout je podobná omezení všem oprávněným uživatelům oprávnění udělená **čtečky** role. 
+* **CanNotDelete** znamená, že autorizovaní uživatelé můžou pořád číst a upravovat prostředek, ale nemůžou prostředek odstranit. 
+* **ReadOnly** znamená, že autorizovaní uživatelé můžou číst prostředek, ale nemůžou prostředek odstranit ani aktualizovat. Použití tohoto zámku je podobné jako omezení všech autorizovaných uživatelů na oprávnění udělené rolí **Čtenář** . 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="how-locks-are-applied"></a>Použití zámků
+## <a name="how-locks-are-applied"></a>Jak se používají zámky
 
-Při použití zámku v nadřazeném oboru dědí všechny prostředky v daném oboru stejný zámku. I prostředky, které přidáte později dědit Zámek z nadřazeného objektu. Nejvíc omezující zámku v dědičnosti má přednost.
+Když použijete zámek v nadřazeném oboru, všechny prostředky v tomto oboru zdědí stejný zámek. I prostředky, které později přidáte, zdědí zámek nadřazeného objektu. Nejvíce omezující zámek v dědičnosti má přednost.
 
-Na rozdíl od řízení přístupu podle role pomocí zámky pro správu platí omezení na všech uživatelů a rolí. Další informace o nastavení oprávnění uživatelů a rolí, najdete v článku [řízení přístupu na základě Role v Azure](../role-based-access-control/role-assignments-portal.md).
+Na rozdíl od řízení přístupu na základě rolí použijete zámky pro správu k použití omezení napříč všemi uživateli a rolemi. Další informace o nastavení oprávnění pro uživatele a role najdete v tématu [Access Control na základě rolí v Azure](../role-based-access-control/role-assignments-portal.md).
 
-Zámky Resource Manageru platí pouze pro operace, ke kterým dochází v rovině správy, který se skládá z operací odesílat `https://management.azure.com`. Zámky Neomezovat, jak prostředky provádět vlastní funkce. Změn prostředků jsou omezené, ale nejsou operace prostředků s omezeným přístupem. Například brání zámek ReadOnly u SQL Database můžete odstranit nebo upravit databázi. Nebude bránit vytváření, aktualizaci nebo odstranění dat v databázi. Data transakce se nepovoluje, protože tyto operace se neodesílají na `https://management.azure.com`.
+Správce prostředků zámky se vztahují pouze na operace, ke kterým dochází v rovině správy, která se skládá z operací odeslaných do `https://management.azure.com`. Zámky neomezují způsob, jakým prostředky vykonává své vlastní funkce. Změny prostředků jsou omezené, ale operace prostředků nejsou omezené. Například zámek jen pro čtení na SQL Database zabrání v odstranění nebo změně databáze. Nebrání v vytváření, aktualizaci nebo odstraňování dat v databázi. Datové transakce jsou povoleny, protože tyto operace nejsou odesílány do `https://management.azure.com`.
 
-Použití **jen pro čtení** může vést k neočekávaným výsledkům, protože některé operace, které nevypadají úpravy prostředku ve skutečnosti vyžadují akce, které jsou blokovány zámek. **Jen pro čtení** uzamčení lze použít na prostředek nebo skupinu prostředků obsahující prostředku. Mezi běžné příklady operace, které jsou blokovány **jen pro čtení** zámku jsou:
+Použití **ReadOnly** může vést k neočekávaným výsledkům, protože některé operace, které se nejeví pro úpravu prostředku, skutečně vyžadují akce, které jsou blokovány zámkem. Zámek **ReadOnly** lze použít u prostředku nebo skupiny prostředků obsahující prostředek. Mezi běžné příklady operací, které jsou blokovány zámkem **jen pro čtení** , patří:
 
-* A **jen pro čtení** výpis klíčů všem uživatelům zabrání zámek účtu úložiště. Seznam, který klíče operace probíhá prostřednictvím funkce požadavek POST, protože vrácený klíče jsou k dispozici pro operace zápisu.
+* Zámek **jen pro čtení** v účtu úložiště znemožní všem uživatelům zobrazovat seznam klíčů. Operace se seznamem klíčů je zpracována prostřednictvím požadavku POST, protože vrácené klíče jsou k dispozici pro operace zápisu.
 
-* A **jen pro čtení** zámek na prostředek služby App Service brání Průzkumníka serveru Visual Studia v zobrazení souborů pro prostředek, protože danou interakci vyžaduje oprávnění k zápisu.
+* Zámek **jen pro čtení** u prostředku App Service zabraňuje tomu, aby aplikace Visual Studio Průzkumník serveru zobrazování souborů pro daný prostředek, protože tato interakce vyžaduje přístup pro zápis.
 
-* A **jen pro čtení** zámek na skupinu prostředků, která obsahuje virtuální počítač všechny uživatelům zabrání spuštění nebo restartování virtuálního počítače. Tyto operace vyžadují požadavek POST.
+* Zámek **jen pro čtení** u skupiny prostředků, která obsahuje virtuální počítač, zabrání všem uživatelům v spuštění nebo restartování virtuálního počítače. Tyto operace vyžadují požadavek POST.
 
-## <a name="who-can-create-or-delete-locks"></a>Kdo může vytvářet nebo odstranit zámky
-Pokud chcete vytvořit nebo odstranit zámky pro správu, musí mít přístup k `Microsoft.Authorization/*` nebo `Microsoft.Authorization/locks/*` akce. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
+## <a name="who-can-create-or-delete-locks"></a>Kdo může vytvářet nebo odstraňovat zámky
+Chcete-li vytvořit nebo odstranit zámky pro správu, je nutné mít přístup k akcím `Microsoft.Authorization/*` nebo `Microsoft.Authorization/locks/*`. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
 
 ## <a name="managed-applications-and-locks"></a>Spravované aplikace a zámky
 
-Využívají některé služby Azure, jako je Azure Databricks [spravované aplikace](../managed-applications/overview.md) pro implementaci této služby. V takovém případě služba vytvoří dvě skupiny prostředků. Jedna skupina prostředků obsahuje přehled služby a není zamknutá. Jiné skupiny prostředků obsahuje infrastrukturu pro službu a je uzamčen.
+Některé služby Azure, například Azure Databricks, využívají [spravované aplikace](../managed-applications/overview.md) k implementaci služby. V takovém případě služba vytvoří dvě skupiny prostředků. Jedna skupina prostředků obsahuje přehled služby a není uzamčena. Další skupina prostředků obsahuje infrastrukturu pro službu a je uzamčená.
 
-Pokud se pokusíte odstranit skupinu prostředků infrastruktury, obdržíte chybu s informacemi o tom, že skupina prostředků je pevně nastavená. Pokud se pokusíte odstranit zámek pro skupinu prostředků infrastruktury, obdržíte chybu s informacemi o tom, že zámek nejde odstranit, protože je vlastněná systémová aplikace.
+Pokud se pokusíte odstranit skupinu prostředků infrastruktury, zobrazí se chyba s oznámením, že skupina prostředků je uzamčená. Pokud se pokusíte odstranit zámek pro skupinu prostředků infrastruktury, zobrazí se chyba oznamující, že zámek nelze odstranit, protože je vlastněn systémovou aplikací.
 
-Místo toho odstraňte službu, která se také odstraní skupinu prostředků infrastruktury.
+Místo toho odstraňte službu, která také odstraní skupinu prostředků infrastruktury.
 
-Pro spravované aplikace vyberte službu, kterou jste nasadili.
+U spravovaných aplikací vyberte službu, kterou jste nasadili.
 
-![Vyberte službu](./media/resource-group-lock-resources/select-service.png)
+![Vybrat službu](./media/resource-group-lock-resources/select-service.png)
 
-Všimněte si, že služba obsahuje odkaz **spravované skupiny prostředků**. Příslušné skupině prostředků obsahuje infrastrukturou a zašifrovaná. Nedá se odstranit napřímo.
+Všimněte si, že služba obsahuje odkaz na **spravovanou skupinu prostředků**. Tato skupina prostředků obsahuje infrastrukturu a je uzamčená. Nedá se odstranit přímo.
 
-![Skupina spravovaná show](./media/resource-group-lock-resources/show-managed-group.png)
+![Zobrazit spravovanou skupinu](./media/resource-group-lock-resources/show-managed-group.png)
 
-Chcete-li odstranit vše pro služby, včetně uzamčené infrastruktury skupiny prostředků, vyberte **odstranit** pro službu.
+Chcete-li odstranit vše pro službu včetně uzamčené skupiny prostředků infrastruktury, vyberte možnost **Odstranit** pro službu.
 
 ![Odstranit službu](./media/resource-group-lock-resources/delete-service.png)
 
@@ -66,19 +63,19 @@ Chcete-li odstranit vše pro služby, včetně uzamčené infrastruktury skupiny
 
 ## <a name="template"></a>Šablona
 
-Při použití šablony Resource Manageru k nasazení zámek, použijte jiné hodnoty pro název a typ v závislosti na rozsahu zámku.
+Při použití šablony Správce prostředků k nasazení zámku použijte v závislosti na rozsahu zámku jiné hodnoty pro název a typ.
 
-Při použití zámkem, který **prostředků**, použijte následující formáty:
+Při použití zámku na **prostředek**použijte následující formáty:
 
-* Název – `{resourceName}/Microsoft.Authorization/{lockName}`
-* Typ – `{resourceProviderNamespace}/{resourceType}/providers/locks`
+* název – `{resourceName}/Microsoft.Authorization/{lockName}`
+* typ – `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-Při použití zámkem, který **skupiny prostředků** nebo **předplatné**, použijte následující formáty:
+Při použití zámku u **skupiny prostředků** nebo **předplatného**použijte následující formáty:
 
-* Název – `{lockName}`
-* Typ – `Microsoft.Authorization/locks`
+* název – `{lockName}`
+* typ – `Microsoft.Authorization/locks`
 
-Následující příklad ukazuje šablonu, která vytvoří plán služby app service, webu a zámek na webové stránce. Typ prostředku zámku je prostředků typu prostředku, který chcete zamknout a **/providers/ zámky**. Název zámku se vytváří zřetězením názvu prostředku s **/Microsoft.Authorization/** a název zámku.
+Následující příklad ukazuje šablonu, která vytvoří plán služby App Service, web a na webu zámek. Typ prostředku zámku je typ prostředku, který se má uzamknout a **/providers/Locks**. Název zámku se vytvoří zřetězením názvu prostředku s **/Microsoft.Authorization/** a názvem zámku.
 
 ```json
 {
@@ -135,42 +132,42 @@ Následující příklad ukazuje šablonu, která vytvoří plán služby app se
 }
 ```
 
-Příklad nastavení zámku na skupinu prostředků, najdete v části [vytvořte skupinu prostředků a uzamkne ji](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+Příklad nastavení zámku pro skupinu prostředků najdete v tématu [Vytvoření skupiny prostředků a její uzamčení](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
 
 ## <a name="powershell"></a>PowerShell
-Zámek je nasazené prostředky v prostředí Azure PowerShell s použitím [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) příkazu.
+Nasazené prostředky můžete uzamknout pomocí Azure PowerShell pomocí příkazu [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) .
 
-Uzamknout prostředek, zadejte název prostředku, jeho typ prostředku a jeho název skupiny prostředků.
+Chcete-li uzamknout prostředek, zadejte název prostředku, jeho typ prostředku a název skupiny prostředků.
 
 ```azurepowershell-interactive
 New-AzResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 ```
 
-Zamknout skupinu prostředků, zadejte název skupiny prostředků.
+Chcete-li uzamknout skupinu prostředků, zadejte název skupiny prostředků.
 
 ```azurepowershell-interactive
 New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
-Chcete-li získat informace o zámku, použijte [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock). K získání všech zámků ve vašem předplatném, použijte:
+K získání informací o zámku použijte [příkaz Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock). Pokud chcete získat všechny zámky ve vašem předplatném, použijte:
 
 ```azurepowershell-interactive
 Get-AzResourceLock
 ```
 
-K získání všech zámků pro určitý prostředek, použijte:
+Pro získání všech zámků pro určitý prostředek použijte:
 
 ```azurepowershell-interactive
 Get-AzResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 ```
 
-K získání všech zámků pro skupinu prostředků, použijte:
+Pokud chcete získat všechny zámky pro skupinu prostředků, použijte:
 
 ```azurepowershell-interactive
 Get-AzResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
-Pokud chcete odstranit zámek, použijte:
+K odstranění zámku použijte:
 
 ```azurepowershell-interactive
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
@@ -179,39 +176,39 @@ Remove-AzResourceLock -LockId $lockId
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Zámek je nasazení prostředků pomocí Azure CLI pomocí [az lock vytvořit](/cli/azure/lock#az-lock-create) příkazu.
+Nasazené prostředky pomocí Azure CLI zamknete pomocí příkazu [AZ Lock Create](/cli/azure/lock#az-lock-create) .
 
-Uzamknout prostředek, zadejte název prostředku, jeho typ prostředku a jeho název skupiny prostředků.
+Chcete-li uzamknout prostředek, zadejte název prostředku, jeho typ prostředku a název skupiny prostředků.
 
 ```azurecli
 az lock create --name LockSite --lock-type CanNotDelete --resource-group exampleresourcegroup --resource-name examplesite --resource-type Microsoft.Web/sites
 ```
 
-Zamknout skupinu prostředků, zadejte název skupiny prostředků.
+Chcete-li uzamknout skupinu prostředků, zadejte název skupiny prostředků.
 
 ```azurecli
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-Chcete-li získat informace o zámku, použijte [az lock list](/cli/azure/lock#az-lock-list). K získání všech zámků ve vašem předplatném, použijte:
+Pokud chcete získat informace o zámku, použijte příkaz [AZ Lock list](/cli/azure/lock#az-lock-list). Pokud chcete získat všechny zámky ve vašem předplatném, použijte:
 
 ```azurecli
 az lock list
 ```
 
-K získání všech zámků pro určitý prostředek, použijte:
+Pro získání všech zámků pro určitý prostředek použijte:
 
 ```azurecli
 az lock list --resource-group exampleresourcegroup --resource-name examplesite --namespace Microsoft.Web --resource-type sites --parent ""
 ```
 
-K získání všech zámků pro skupinu prostředků, použijte:
+Pokud chcete získat všechny zámky pro skupinu prostředků, použijte:
 
 ```azurecli
 az lock list --resource-group exampleresourcegroup
 ```
 
-Pokud chcete odstranit zámek, použijte:
+K odstranění zámku použijte:
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --resource-type Microsoft.Web/sites --resource-name examplesite --output tsv --query id)
@@ -219,15 +216,15 @@ az lock delete --ids $lockid
 ```
 
 ## <a name="rest-api"></a>REST API
-Můžeš nasazených prostředků s [rozhraní REST API pro zámky pro správu](https://docs.microsoft.com/rest/api/resources/managementlocks). Rozhraní REST API umožňuje vytvářet a odstraňovat zámky a načtení informací o existující zámky.
+Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](https://docs.microsoft.com/rest/api/resources/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
 
-Pokud chcete vytvořit zámek, spusťte:
+Chcete-li vytvořit zámek, spusťte příkaz:
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-Rozsah může být předplatné, skupinu prostředků nebo prostředek. Název zámku je, cokoli, co chcete volat zámek. Pro verzi api-version, použijte **2016-09-01**.
+Rozsahem může být předplatné, skupina prostředků nebo prostředek. Název zámku je bez ohledu na to, kam chcete volat zámek. V případě verze API-Version použijte **2016-09-01**.
 
-V požadavku obsahovat objekt JSON, který určuje vlastnosti pro zámek.
+V žádosti zahrňte objekt JSON, který určuje vlastnosti zámku.
 
     {
       "properties": {
@@ -236,8 +233,8 @@ V požadavku obsahovat objekt JSON, který určuje vlastnosti pro zámek.
       }
     } 
 
-## <a name="next-steps"></a>Další postup
-* Další informace o logické uspořádání vašich prostředků najdete v tématu [použití značek k uspořádání prostředků](resource-group-using-tags.md)
-* Můžete použít omezení a pravidla týkající se předplatného pomocí vlastních zásad. Další informace najdete v tématu [Co je Azure Policy?](../governance/policy/overview.md).
+## <a name="next-steps"></a>Další kroky
+* Další informace o logické organizaci prostředků najdete v tématu [použití značek k uspořádání prostředků](resource-group-using-tags.md) .
+* Můžete použít omezení a konvence v rámci předplatného pomocí přizpůsobených zásad. Další informace najdete v tématu [Co je Azure Policy?](../governance/policy/overview.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

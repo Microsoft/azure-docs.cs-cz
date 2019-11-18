@@ -1,6 +1,6 @@
 ---
 title: Použití Azure Container Instances jako agenta sestavení Jenkinse
-description: Naučte se používat Azure Container Instances jako agenta sestavení Jenkinse.
+description: Naučte se konfigurovat server Jenkinse pro spouštění úloh sestavení na vyžádání v Azure Container Instances
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: ed000779940d9af7b1384873bf9fddd1cde79c71
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7e93457a182598a2e8d739f4d626b49ff57b30fb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326020"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150213"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Použití Azure Container Instances jako agenta sestavení Jenkinse
 
@@ -27,24 +27,24 @@ Další informace o Azure Container Instances najdete v tématu [o Azure Contain
 
 2. Do formuláře **základy** zadejte následující informace a pak vyberte **OK**.
 
-   - **Název**: Zadejte název pro nasazení Jenkinse.
-   - **Uživatelské jméno**: Zadejte jméno uživatele pro správu virtuálního počítače Jenkinse.
-   - **Typ ověřování**: Pro ověřování doporučujeme veřejný klíč SSH. Pokud vyberete tuto možnost, vložte ji do veřejného klíče SSH, který se použije k přihlášení k virtuálnímu počítači Jenkinse.
-   - **Předplatné**: Vyberte předplatné služby Azure.
-   - **Skupina prostředků**: Vytvořte skupinu prostředků nebo vyberte existující.
-   - **Umístění**: Vyberte umístění pro server Jenkinse.
+   - **Název**: zadejte název pro nasazení Jenkinse.
+   - **Uživatelské jméno**: Zadejte jméno uživatele Správce virtuálního počítače Jenkinse.
+   - **Typ ověřování**: pro ověřování doporučujeme použít veřejný klíč SSH. Pokud vyberete tuto možnost, vložte ji do veřejného klíče SSH, který se použije k přihlášení k virtuálnímu počítači Jenkinse.
+   - **Předplatné:** Vyberte předplatné Azure.
+   - **Skupina prostředků:** Vytvořte skupinu prostředků nebo vyberte stávající.
+   - **Umístění**: vyberte umístění pro server Jenkinse.
 
    ![Základní nastavení pro nasazení portálu Jenkinse](./media/container-instances-jenkins/jenkins-portal-01.png)
 
 3. Ve formuláři **Další nastavení** proveďte následující položky:
 
-   - **Velikost**: Vyberte vhodnou možnost změny velikosti pro virtuální počítač s Jenkinse.
-   - **Typ disku virtuálního počítače**: Zadejte pro  Server Jenkinse buď pevný disk (jednotku pevného disku), nebo **SSD** (Solid-State Drive).
-   - **Virtuální síť**: Vyberte šipku, pokud chcete upravit výchozí nastavení.
-   - **Podsítě**: Vyberte šipku, zkontrolujte informace a vyberte **OK**.
-   - **Veřejná IP adresa**: Výběrem šipky udělte veřejné IP adrese vlastnímu názvu, konfiguraci SKU a nastavte metodu přiřazení.
-   - **Popisek názvu domény**: Zadejte hodnotu pro vytvoření plně kvalifikované adresy URL virtuálního počítače Jenkinse.
-   - **Typ verze Jenkinse**: Z možností vyberte požadovaný typ verze: **LTS**, **týdenní Build**nebo **Azure ověřený**.
+   - **Velikost**: vyberte vhodnou možnost změny velikosti pro virtuální počítač s Jenkinse.
+   - **Typ disku virtuálního počítače**: zadejte na server **Jenkinse buď pevný** disk (jednotku pevného disku), nebo **SSD** (Solid-State Drive).
+   - **Virtuální síť**: tuto šipku vyberte, pokud chcete změnit výchozí nastavení.
+   - **Podsítě**: vyberte šipku, zkontrolujte informace a vyberte **OK**.
+   - **Veřejná IP adresa**: výběrem šipky udělte veřejné IP adrese vlastní název, nakonfigurujte SKU a nastavte metodu přiřazení.
+   - **Popisek názvu domény**: zadejte hodnotu, která vytvoří plně KVALIFIKOVANOU adresu URL virtuálního počítače Jenkinse.
+   - **Typ verze Jenkinse**: vyberte požadovaný typ vydání z možností: **LTS**, **týdenní Build**nebo **Azure ověřený**.
 
    ![Další nastavení pro nasazení portálu Jenkinse](./media/container-instances-jenkins/jenkins-portal-02.png)
 
@@ -66,7 +66,7 @@ Další informace o Azure Container Instances najdete v tématu [o Azure Contain
 
    ![Jenkinse přihlašovací pokyny k řetězci SSH](./media/container-instances-jenkins/jenkins-portal-04.png)
 
-3. Ve vývojovém systému otevřete relaci Terminálové služby a vložte ji do řetězce SSH z posledního kroku. Aktualizujte `username` uživatelské jméno, které jste zadali při nasazení serveru Jenkinse.
+3. Ve vývojovém systému otevřete relaci Terminálové služby a vložte ji do řetězce SSH z posledního kroku. Aktualizujte `username` na uživatelské jméno, které jste zadali při nasazení serveru Jenkinse.
 
 4. Po připojení relace spusťte následující příkaz, který načte počáteční heslo správce:
 
@@ -74,7 +74,7 @@ Další informace o Azure Container Instances najdete v tématu [o Azure Contain
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. Ponechte relaci SSH a tunelové propojení spuštěné a v `http://localhost:8080` prohlížeči přejít na. Vložte do pole počáteční heslo správce a pak vyberte **pokračovat**.
+5. Ponechte relaci SSH a tunelové propojení spuštěné a v prohlížeči přejít na `http://localhost:8080`. Vložte do pole počáteční heslo správce a pak vyberte **pokračovat**.
 
    ![Obrazovka "odemknout Jenkinse" s polem pro heslo správce](./media/container-instances-jenkins/jenkins-portal-05.png)
 
@@ -102,7 +102,7 @@ Nyní je vytvořena úloha sestavení Jenkinse, která předvádí Jenkinse sest
 
    ![Karta Obecné s podrobnostmi konfigurace](./media/container-instances-jenkins/jenkins-job-01.png)
 
-3. V části **sestavení**vyberte **Přidat krok sestavení** a vyberte **spustit prostředí**. Jako `echo "aci-demo"` příkaz zadejte.
+3. V části **sestavení**vyberte **Přidat krok sestavení** a vyberte **spustit prostředí**. Jako příkaz zadejte `echo "aci-demo"`.
 
    ![Karta sestavení s výběry pro krok sestavení](./media/container-instances-jenkins/jenkins-job-02.png)
 
@@ -132,7 +132,7 @@ Chcete-li otestovat úlohu sestavení a sledovat Azure Container Instances jako 
 
 Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Jenkinse v Azure najdete v tématu [Azure a Jenkinse][jenkins-azure].
 

@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d1b3961b61d45718e726b31ec406445b202a0adf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034172"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132770"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
 
@@ -64,7 +64,7 @@ SQL Server vyžaduje pro zajištění obnovení Azure Site Recovery snímky konz
 
 Řešení zotavení po havárii pro EOS SQL Server na virtuálním počítači Azure jsou následující:
 
-- **SQL Server zálohy**: pomocí Azure Backup můžete chránit EOS SQL Server proti ransomwarem, náhodnému odstranění a poškození. Řešení je momentálně ve verzi Preview pro EOS SQL Server a podporuje SQL Server 2008 a 2008 R2 spuštěné v systému Windows 2008 R2 SP1. Další podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
+- **SQL Server zálohy**: pomocí Azure Backup můžete chránit EOS SQL Server proti ransomwarem, náhodnému odstranění a poškození. Řešení je momentálně ve verzi Preview pro EOS SQL Server a podporuje SQL Server 2008 a 2008 R2 spuštěné v systému Windows 2008 R2 SP1. Další podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support).
 - **Přesouvání protokolu**: můžete vytvořit repliku přenosu protokolů v jiné zóně nebo oblasti Azure s průběžným obnovením, abyste snížili RTO. Je nutné ručně nakonfigurovat přesouvání protokolu.
 - **Azure Site Recovery**: virtuální počítač můžete replikovat mezi zónami a oblastmi prostřednictvím replikace Azure Site Recovery. SQL Server vyžaduje, aby se snímky konzistentní vzhledem k aplikacím zaručily v případě havárie. Azure Site Recovery nabízí minimální 1 hodinu RPO a 2 hodinu (plus SQL Server čas obnovení) RTO pro zotavení po havárii EOS SQL Server.
 

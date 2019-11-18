@@ -1,28 +1,21 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci v Pythonu, která používá Azure cache pro Redis.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1ac1767d1ac3f6333d73a1e1c66ff7250942d266
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720331"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122661"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis
 
@@ -61,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> V případě Azure cache pro Redis verze 3,0 nebo vyšší se vynutila ověření certifikátu SSL. ssl_ca_certs se musí explicitně nastavit při připojování k Azure cache pro Redis. V případě systému RedHat Linux jsou ssl_ca_certs v modulu certifikátů */etc/pki/tls/certs/ca-bundle.CRT* .
+> V případě Azure cache pro Redis verze 3,0 nebo vyšší se vynutila ověření certifikátu SSL. ssl_ca_certs musí být explicitně nastavené při připojování k Azure cache pro Redis. V případě systému RedHat Linux jsou ssl_ca_certs v modulu certifikátu */etc/pki/tls/certs/ca-bundle.CRT* .
 
 ## <a name="create-a-python-sample-app"></a>Vytvoření ukázkové aplikace v Pythonu
 

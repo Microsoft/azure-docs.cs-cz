@@ -1,19 +1,16 @@
 ---
 title: Správa skupin prostředků – Azure Portal
 description: Pomocí Azure Portal můžete spravovat skupiny prostředků přes Azure Resource Manager. Ukazuje, jak vytvořit, vypsat a odstranit skupiny prostředků.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: b0fac4f618f742a13633473f00dbd24ff8411c44
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: e3402f496371fe89c832dc22c8288a1b94378c82
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528539"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147153"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure Portal
 
@@ -36,7 +33,7 @@ Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístěn
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Výběr **skupin prostředků**
 
     ![Přidat skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -47,16 +44,16 @@ Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístěn
    - **Skupina prostředků**: zadejte nový název skupiny prostředků. 
    - **Oblast**: vyberte umístění Azure, například **střed USA**.
 
-     ![Vytvořit skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![vytvořit skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Vybrat **kontrolu + vytvořit**
-6. Vyberte **Create** (Vytvořit). Vytvoření skupiny prostředků trvá několik sekund.
+6. Vyberte **Vytvořit**. Vytvoření skupiny prostředků trvá několik sekund.
 7. V horní nabídce vyberte **aktualizovat** , aby se aktualizoval seznam skupin prostředků, a pak vyberte nově vytvořenou skupinu prostředků a otevřete ji. Nebo vyberte v horní části **oznámení**(ikona zvonku) a pak vyberte **Přejít do skupiny prostředků** a otevřete nově vytvořenou skupinu prostředků.
 
     ![Přejít na skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Pokud chcete zobrazit seznam skupin prostředků, vyberte **skupiny prostředků** .
 
     ![Procházet skupiny prostředků](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -65,7 +62,7 @@ Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístěn
 
 ## <a name="open-resource-groups"></a>Otevření skupin prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Vyberte **Skupiny prostředků**.
 3. Vyberte skupinu prostředků, kterou chcete otevřít.
 

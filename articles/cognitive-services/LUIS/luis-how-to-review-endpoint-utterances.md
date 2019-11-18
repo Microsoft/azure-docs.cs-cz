@@ -9,89 +9,49 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 4a77ac26076fc1b1e4e94ee24dafb28a0e88c858
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 67953f552b5b2bcdd7d13253548227e57dab8548
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669366"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132670"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Postup kontroly služby Endpoint projevy na portálu LUIS pro aktivní učení
+# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Postup zlepšení aplikace LUIS kontrolou Endpoint projevy
 
-[Active Learning](luis-concept-review-endpoint-utterances.md) zachycuje dotazy koncových bodů a vybere koncové body uživatele projevy, že si nejste jistí. Projděte si tyto projevy a vyberte záměr a označte entity pro tyto projevyy na úrovni Read-World. Přijměte tyto změny do svého ukázkového projevyu a potom proveďte výuku a publikování. LUIS pak identifikuje projevy přesněji.
+Proces kontroly projevy koncového bodu pro správný předpovědi se nazývá [Active Learning](luis-concept-review-endpoint-utterances.md). Active Learning zachycuje dotazy koncových bodů a vybere koncové body uživatele projevy, že si nejste jistí. Projděte si tyto projevy a vyberte záměr a označte entity pro tyto projevyy na úrovni Read-World. Přijměte tyto změny do svého ukázkového projevyu a potom proveďte výuku a publikování. LUIS pak identifikuje projevy přesněji.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+Pokud máte mnoho lidí přispívajících do aplikace LUIS, 
+
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="enable-active-learning"></a>Povolit aktivní učení
 
-Pokud chcete povolit aktivní učení, Zaprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) s parametrem `log=true` QueryString a hodnotou.
+Chcete-li povolit aktivní učení, je nutné protokolovat uživatelské dotazy. Toho je možné dosáhnout voláním [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) s parametrem `log=true` QueryString a hodnotou.
 
-## <a name="disable-active-learning"></a>Zakázat aktivní učení
+## <a name="correct-intent-predictions-to-align-utterances"></a>Správný předpovědi záměru pro zarovnání projevy
 
-Pokud chcete zakázat aktivní učení, Neprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) s parametrem `log=false` QueryString a hodnotou.
+Každý utterance má navrhované záměr zobrazí v **zarovnané záměr** sloupce. 
 
-## <a name="filter-utterances"></a>Filtrovat projevy
+> [!div class="mx-imgBorder"]
+> [![projevy Endpoint na kontrolu, že LUIS si nejste jisti](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-1. Otevřete aplikaci (například TravelAgent) tak, že na stránce **Moje aplikace** vyberete její název a pak v horním panelu vyberete **sestavit** .
+Pokud s tímto záměrem souhlasíte, zaškrtněte políčko. Pokud jste Nesouhlasím s návrhem, vyberte správné záměr zarovnané záměru rozevíracího seznamu a potom vyberte na značku zaškrtnutí vpravo zarovnaný záměr. Po zaškrtnutí políčka na zaškrtnutí bude utterance přesunut do záměru a odebrán ze seznamu **projevyového koncového bodu** . 
 
-1. V části **zlepšit výkon aplikace**vyberte **zkontrolovat koncový bod projevy**.
-
-1. Na stránce **zkontrolovat koncový bod projevy** vyberte v textovém poli **filtrovat seznam podle záměru nebo entity** . Tento rozevírací seznam obsahuje všechny záměry v rámci **záměrů** a všech entit v **entitách**.
-
-    ![Filtr projevy](./media/label-suggested-utterances/filter.png)
-
-1. V rozevíracím seznamu vyberte kategorii (záměry nebo entity) a Prohlédněte si projevy.
-
-    ![Projevy záměru](./media/label-suggested-utterances/intent-utterances.png)
-
-## <a name="label-entities"></a>Označení entit
-LUIS nahrazuje tokeny entit (slova) názvy entit, které byly zvýrazněny modře. Pokud má utterance entity bez popisku, označte je v utterance. 
-
-1. V utterance vyberte slovo (y). 
-
-1. Vyberte entitu ze seznamu.
-
-    ![Označit entitu](./media/label-suggested-utterances/label-entity.png)
-
-## <a name="align-single-utterance"></a>Zarovnat jeden utterance
-
-Každý utterance má navrhovaný záměr zobrazený ve sloupci **zarovnaný záměr** . 
-
-1. Pokud s tímto návrhem souhlasíte, zaškrtněte políčko na zaškrtnutí.
-
-    ![Zachovat zarovnaný záměr](./media/label-suggested-utterances/align-intent-check.png)
-
-1. Pokud nesouhlasím s návrhem, vyberte v rozevíracím seznamu zarovnaný záměr správný záměr a potom zaškrtněte políčko vpravo od zarovnanáho záměru. 
-
-    ![Zarovnat záměr](./media/label-suggested-utterances/align-intent.png)
-
-1. Po zaškrtnutí políčka se utterance odebere ze seznamu. 
-
-## <a name="align-several-utterances"></a>Zarovnat několik projevy
-
-Pokud chcete zarovnat několik projevy, zaškrtněte políčko nalevo od projevy a pak vyberte na tlačítku **Přidat vybrané** . 
-
-![Zarovnat několik](./media/label-suggested-utterances/add-selected.png)
-
-## <a name="verify-aligned-intent"></a>Ověřit zarovnaný záměr
-
-Na stránce **záměry** můžete ověřit, že utterance byl zarovnán se správným záměrem, vybrat název záměru a zkontrolovat projevy. Utterance z **kontroly koncového bodu projevy** je v seznamu.
+> [!TIP]
+> Je důležité přejít na stránku s podrobnostmi záměru a zkontrolovat a opravit entitu předpovědi ze všech ukázkových projevy ze seznamu **revizí koncového bodu projevy** .
 
 ## <a name="delete-utterance"></a>Odstranit utterance
 
-Jednotlivé utterancey je možné odstranit ze seznamu revizí. Po odstranění se v seznamu znovu nezobrazí. To platí i v případě, že uživatel zadá stejný utterance z koncového bodu. 
+Každý utterance lze odstranit ze seznamu revize. Po odstranění, nebude se zobrazovat v seznamu znovu. To platí i v případě, že uživatel zadá stejný utterance z koncového bodu. 
 
-Pokud si nejste jistí, jestli byste měli utterance odstranit, přesuňte ho buď na záměr None, nebo vytvořte nový záměr, jako je "různé", a přesuňte utterance k tomuto záměru. 
+Pokud si nejste jistí, jestli byste měli utterance odstranit, přesuňte ho buď na záměr None, nebo vytvořte nový záměr, jako je například `miscellaneous` a přesuňte utterance k tomuto záměru. 
 
-## <a name="delete-several-utterances"></a>Odstranit několik projevy
+## <a name="disable-active-learning"></a>Zakázat aktivní učení
 
-Pokud chcete odstranit několik projevy, vyberte každou položku a v koši napravo od tlačítka **Přidat vybrané** vyberte.
-
-![Odstranit několik](./media/label-suggested-utterances/delete-several.png)
-
+Pokud chcete zakázat aktivní učení, Neprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) s parametrem `log=false` QueryString a hodnotou nebo nepoužitím hodnoty řetězce dotazu, protože výchozí hodnota je false.
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li otestovat, jak se zvyšuje výkon po označení navrhovaných projevy, můžete získat přístup ke konzole test výběrem možnosti **test** na horním panelu. Pokyny k otestování aplikace pomocí testovací konzoly najdete v tématu [výuka a testování vaší aplikace](luis-interactive-test.md).
+Pokud chcete otestovat, jak vylepšuje výkon po popisek navrhované projevy, dostanete testovací konzole tak, že vyberete **testování** v horním panelu. Pokyny o tom, jak testovat svou aplikaci pomocí testovací konzole najdete v tématu [trénování a testování vaší aplikace](luis-interactive-test.md).

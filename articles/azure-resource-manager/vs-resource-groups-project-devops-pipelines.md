@@ -1,17 +1,14 @@
 ---
-title: CI/CD s šablonami Azure Pipelines a Správce prostředků
+title: CI/CD s Azure Pipelines a šablonami
 description: Popisuje, jak nastavit průběžnou integraci v Azure Pipelines pomocí projektů nasazení skupiny prostředků Azure v sadě Visual Studio k nasazení Správce prostředků šablon.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.author: tomfitz
-ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 51122e314ebd0a97647fc4026b1f49619950c351
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597516"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143764"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integrace šablon Správce prostředků s Azure Pipelines
 
@@ -82,14 +79,14 @@ steps:
 - task: AzurePowerShell@4
 ```
 
-Pro `azureSubscription` zadejte název připojení služby, které jste vytvořili.
+Pro `azureSubscription`zadejte název připojení služby, které jste vytvořili.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-Pro `scriptPath` zadejte relativní cestu ze souboru kanálu ke skriptu. Můžete si prohlédnout své úložiště a zobrazit cestu.
+Pro `scriptPath`zadejte relativní cestu ze souboru kanálu ke skriptu. Můžete si prohlédnout své úložiště a zobrazit cestu.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -125,7 +122,7 @@ Teď, když jste se seznámili s vytvářením úlohy, provedeme kroky pro úpra
        azurePowerShellVersion: LatestVersion
    ```
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
    ![Uložení kanálu](./media/vs-resource-groups-project-devops-pipelines/save-pipeline.png)
 
@@ -157,13 +154,13 @@ Následující YAML ukazuje [úlohu kopírování souborů Azure](/azure/devops/
     sasTokenTimeOutInMinutes: '240'
 ```
 
-K revizi vašeho prostředí se používá několik částí této úlohy. @No__t_0 označuje umístění artefaktů relativně k souboru kanálu. V tomto příkladu soubory existují ve složce s názvem `AzureResourceGroup1`, což byl název projektu.
+K revizi vašeho prostředí se používá několik částí této úlohy. `SourcePath` označuje umístění artefaktů relativně k souboru kanálu. V tomto příkladu soubory existují ve složce s názvem `AzureResourceGroup1`, což byl název projektu.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-Pro `azureSubscription` zadejte název připojení služby, které jste vytvořili.
+Pro `azureSubscription`zadejte název připojení služby, které jste vytvořili.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -252,7 +249,7 @@ Teď, když jste se seznámili s vytvářením úloh, Projděte si postup pro ú
         deploymentMode: 'Incremental'
    ```
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 1. Zadejte zprávu pro potvrzení a proveďte zápis přímo do **Hlavní**větve.
 

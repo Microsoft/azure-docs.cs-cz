@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0a28292ac95dca7b46d9f82c32b9881c18d74b87
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582891"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123540"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorování
 
@@ -38,7 +38,7 @@ Pokud chcete pochopit náklady spojené s Azure Monitor, přečtěte si téma [v
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Monitorování dat z Azure Machine Learning
 
-Azure Machine Learning shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources). Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Machine Learning najdete v tématu [referenční informace k datům monitorování Azure Machine Learning](monitor-resource-reference.md) .
+Azure Machine Learning shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Machine Learning najdete v tématu [referenční informace k datům monitorování Azure Machine Learning](monitor-resource-reference.md) .
 
 ## <a name="analyzing-metric-data"></a>Analýza dat metriky
 
@@ -56,13 +56,13 @@ Metriku můžete také rozdělit podle dimenzí, abyste vizualizují, jak různ�
 
 Další informace o filtrování a rozdělování najdete v tématu [Pokročilé funkce Azure monitor](/azure/azure-monitor/platform/metrics-charts).
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 
 Výstrahy pro Azure Machine Learning můžete zpřístupnit otevřením **výstrahy** z nabídky **Azure monitor** . Podrobnosti o vytváření výstrah najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](/azure/azure-monitor/platform/alerts-metric) .
 
 V následující tabulce jsou uvedeny běžné a doporučené pravidla upozorňujících na metriky pro Azure Machine Learning:
 
-| Typ výstrahy | Podmínka | Popis |
+| Typ upozornění | Podmínka | Popis |
 |:---|:---|:---|
 | Nasazení modelu se nezdařilo | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | V případě neúspěchu jednoho nebo více nasazení modelů |
 | Procento využití kvóty | Typ agregace: průměr, operátor: větší než, prahová hodnota: 90| Pokud je procento využití kvóty větší než 90% |
@@ -100,7 +100,7 @@ Použití Azure Monitor Log Analytics vyžaduje, abyste vytvořili konfiguraci d
 
 Data v Azure Monitor protokoly se ukládají v tabulkách, přičemž každá tabulka má vlastní sadu jedinečných vlastností. Azure Machine Learning ukládá data v následujících tabulkách:
 
-| Tabulka | Popis |
+| Table | Popis |
 |:---|:---|
 | AmlComputeClusterEvent | Události z Azure Machine Learning výpočetních clusterů. |
 | AmlComputeClusterNodeEvent | Události z uzlů v rámci Azure Machine Learning výpočetního clusteru. |
@@ -131,7 +131,7 @@ Níže jsou uvedené dotazy, které vám pomůžou monitorovat prostředky Azure
     | project  TimeGenerated , ClusterId , EventType , ExecutionState , ToolType
     ```
 
-+ Získejte události clusteru za posledních pět dní pro clustery, ve kterých je velikost virtuálního počítače Standard_D1_V2:
++ Získejte události clusteru za posledních pět dní pro clustery, na kterých je velikost virtuálního počítače Standard_D1_V2:
 
     ```Kusto
     AmlComputeClusterEvent

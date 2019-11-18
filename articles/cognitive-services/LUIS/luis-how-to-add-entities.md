@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: ed100c27d482065e244bb3dc2cca3b66dfc11986
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013467"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132689"
 ---
 # <a name="add-entities-to-extract-data"></a>Přidat entity pro extrakci dat 
 
@@ -26,15 +26,26 @@ Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrah
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="creating-an-entity-is-different-from-labeling-an-entity"></a>Vytvoření entity se liší od označení entity.
+## <a name="plan-entities-then-create-and-label"></a>Plánování entit a pak vytvoření a označení
 
-Nejdřív je potřeba vytvořit entitu, abyste mohli označit entitu v příkladu utterance. 
+Entity, které se naučily počítačem, se dají vytvořit z příkladu projevy nebo vytvořit ze stránky **entity** . 
+
+Obecně platí, že je potřeba věnovat čas plánování entit předtím, než na portálu vytvoříte entitu získanou počítačem. Pak vytvořte entitu získanou počítačem z příkladu utterance s toliki podrobnostmi dílčích komponent a popisovačů a omezení v době, kdy víte v čase. Tento [kurz](tutorial-machine-learned-entity.md) ukazuje, jak použít tuto metodu. 
+
+V rámci plánování entit můžete znát, že budete potřebovat entity vyhovující textu (například předem připravené entity, entity regulárních výrazů nebo seznam entit). Můžete je vytvořit ze stránky **entity** předtím, než jsou označeny jako projevy. 
+
+Při označování můžete jednotlivé entity označit popiskem a pak sestavit až na nadřazenou entitu počítačového učení. Nebo můžete začít s entitou získanou nadřazeným počítačem a rozložit ji na podřízené entity. 
+
+> [!TIP] 
+>Označte všechna slova, která mohou označovat entitu, a to i v případě, že se slova při extrakci v klientské aplikaci nepoužívají. 
+
+## <a name="creating-an-entity-before-or-with-labeling"></a>Vytvoření entity před nebo s popisky
 
 Následující tabulka vám pomůže pochopit, které entity chcete do aplikace vytvořit nebo přidat jednotlivé entity. 
 
 |Typ entity|Kde vytvořit entitu na portálu LUIS|
 |--|--|
-|Entita získaná počítačem|Podrobnosti o entitách nebo záměrech|
+|Strojově naučená entita|Podrobnosti o entitách nebo záměrech|
 |Entita seznamu|Podrobnosti o entitách nebo záměrech|
 |Entiay regulárního výrazu|Entity|
 |Entita Pattern.any|Entity|

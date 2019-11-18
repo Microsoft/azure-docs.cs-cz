@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 25846bb7a19d29a3a72146d4046b5205183a247e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720861"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132564"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Kurz: Vytvoření aplikace konzoly .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
 
@@ -32,7 +32,7 @@ Tento kurz zahrnuje:
 
 > [!div class="checklist"]
 >
-> * Vytvoření účtu Azure Cosmos a připojení k němu
+> * Vytvoření a připojení k účtu Azure Cosmos
 > * Konfigurace projektu v aplikaci Visual Studio
 > * Vytvoření databáze a kontejneru
 > * Přidání položek do kontejneru
@@ -118,7 +118,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
    > [!NOTE]
    > Pokud jste obeznámeni s předchozí verzí sady .NET SDK, můžete být obeznámeni se *shromažďováním* a *dokumentem*s podmínkami. Vzhledem k tomu, že Azure Cosmos DB podporuje více modelů rozhraní API, verze 3,0 sady .NET SDK používá obecný pojem *kontejner* a *položka*. *Kontejner* může být kolekce, graf nebo tabulka. *Položka* může být dokument, okraj, vrchol nebo řádek a je obsahem uvnitř kontejneru. Další informace najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](databases-containers-items.md).
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). Vyhledejte účet Azure Cosmos DB a pak vyberte **klíče**.
+1. Otevřete [portál Azure](https://portal.azure.com). Vyhledejte účet Azure Cosmos DB a pak vyberte **klíče**.
 
    ![Získat Azure Cosmos DB klíče z Azure Portal](./media/sql-api-get-started/cosmos-getting-started-portal-keys.png)
 
@@ -257,6 +257,16 @@ Databáze je logický kontejner položek rozdělených napříč kontejnery. Dat
     ```
 
 1. Zvolte F5 pro spuštění aplikace.
+
+   > [!NOTE]
+   > Pokud obdržíte výjimku "503 služba nedostupná", je možné, že jsou požadované [porty](performance-tips.md#networking) pro přímý režim blokované bránou firewall. Chcete-li tento problém vyřešit, otevřete požadované [porty](performance-tips.md#networking) nebo se pokuste použít režim brány, jak je uvedeno níže.
+   ```csharp
+     // Create a new instance of the Cosmos Client in Gateway mode
+     this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
+            {
+                ConnectionMode = ConnectionMode.Gateway
+            });
+   ```
 
 Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos.  
 

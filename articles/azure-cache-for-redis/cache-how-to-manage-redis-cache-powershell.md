@@ -1,25 +1,17 @@
 ---
-title: Správa mezipaměti Azure pro Redis s využitím Azure PowerShell | Microsoft Docs
+title: Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
 description: Naučte se provádět úlohy správy pro Azure cache pro Redis pomocí Azure PowerShell.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 0286bd7ae20fc1398dbfffad6484164c9d66c7e1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758075"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122137"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
 > [!div class="op_single_selector"]
@@ -36,7 +28,7 @@ V tomto tématu se dozvíte, jak provádět běžné úlohy, jako je vytvářen�
 
 Další informace o modelu nasazení Classic najdete v tématu [Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků](../azure-resource-manager/resource-manager-deployment-model.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud jste již nainstalovali Azure PowerShell, je nutné, abyste měli Azure PowerShell verze 1.0.0 nebo novější. Verzi Azure PowerShell, kterou jste nainstalovali s tímto příkazem, můžete zjistit na příkazovém řádku Azure PowerShell.
 
     Get-Module Az | format-table version
@@ -58,7 +50,7 @@ Chcete-li zadat odběr, spusťte následující příkaz. V následujícím př�
 
 Předtím, než budete moci použít prostředí Windows PowerShell s Azure Resource Manager, potřebujete následující:
 
-* Prostředí Windows PowerShell verze 3,0 nebo 4,0. Pokud chcete najít verzi Windows PowerShellu, zadejte: `$PSVersionTable` a ověřte hodnotu `PSVersion` je 3,0 nebo 4,0. Informace o instalaci kompatibilní verze naleznete v tématu [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) nebo [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
+* Prostředí Windows PowerShell verze 3,0 nebo 4,0. Pokud chcete najít verzi Windows PowerShellu, zadejte:`$PSVersionTable` a ověřte hodnotu `PSVersion` je 3,0 nebo 4,0. Informace o instalaci kompatibilní verze naleznete v tématu [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) nebo [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
 
 Podrobnou nápovědu k jakékoli rutině, kterou vidíte v tomto kurzu, získáte pomocí rutiny Get-Help.
 
@@ -69,7 +61,7 @@ Chcete-li například získat nápovědu pro rutinu `New-AzRedisCache`, zadejte:
     Get-Help New-AzRedisCache -Detailed
 
 ### <a name="how-to-connect-to-other-clouds"></a>Jak se připojit k jiným cloudům
-Ve výchozím nastavení je prostředí Azure `AzureCloud`, které představuje globální cloudovou instanci Azure. Pokud se chcete připojit k jiné instanci, použijte příkaz `Connect-AzAccount` s přepínačem příkazového řádku `-Environment` nebo `EnvironmentName` a s požadovaným názvem prostředí nebo prostředí.
+Ve výchozím nastavení je prostředí Azure `AzureCloud`, které představuje globální cloudovou instanci Azure. Pokud se chcete připojit k jiné instanci, použijte příkaz `Connect-AzAccount` s přepínačem příkazového řádku `-Environment` nebo`EnvironmentName` a s požadovaným názvem prostředí nebo prostředí.
 
 Pokud chcete zobrazit seznam dostupných prostředí, spusťte rutinu `Get-AzEnvironment`.
 
@@ -127,35 +119,35 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 
 | Parametr | Popis | Výchozí |
 | --- | --- | --- |
-| Name (Název) |Název mezipaměti | |
+| Název |Název mezipaměti | |
 | Umístění |Umístění mezipaměti | |
 | ResourceGroupName |Název skupiny prostředků, ve které se má mezipaměť vytvořit | |
 | Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB. |1GB |
 | ShardCount |Počet horizontálních oddílů, které se mají vytvořit při vytváření mezipaměti Premium s povoleným clusteringem Platné hodnoty jsou: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. | |
-| Skladová položka |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Úroveň Standard |
+| Skladová položka |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Standard |
 | RedisConfiguration |Určuje nastavení konfigurace Redis. Podrobnosti o jednotlivých nastaveních najdete v následujících tabulkách [vlastností RedisConfiguration](#redisconfiguration-properties) . | |
-| EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |False |
+| EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |Nepravda |
 | MaxMemoryPolicy |Tento parametr je zastaralý – místo toho použijte RedisConfiguration. | |
 | StaticIP |Při hostování mezipaměti ve virtuální síti určuje jedinečná IP adresa v podsíti pro mezipaměť. Pokud tato možnost není k dispozici, je pro vás z podsítě zvolena jedna. | |
 | Podsíť |Při hostování mezipaměti ve virtuální síti Určuje název podsítě, do které se má mezipaměť nasadit. | |
 | VirtualNetwork |Při hostování mezipaměti ve virtuální síti Určuje ID prostředku virtuální sítě, do které se má mezipaměť nasadit. | |
-| keyType |Určuje, který přístupový klíč se má znovu vygenerovat při obnovování přístupových klíčů. Platné hodnoty jsou: primární, sekundární | |
+| KeyType |Určuje, který přístupový klíč se má znovu vygenerovat při obnovování přístupových klíčů. Platné hodnoty jsou: primární, sekundární | |
 
 ### <a name="redisconfiguration-properties"></a>Vlastnosti RedisConfiguration
 | Vlastnost | Popis | Cenové úrovně |
 | --- | --- | --- |
-| RDB – povoleno zálohování |Zda je povoleno [Trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom Premium |
-| RDB – Storage-Connection-String |Připojovací řetězec k účtu úložiště pro [Trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom Premium |
-| RDB – frekvence zálohování |Četnost záloh pro [Trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom Premium |
-| maxmemory – rezervováno |Nakonfiguruje [paměť rezervovanou](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro procesy, které nejsou v mezipaměti. |Standard a Premium |
-| maxmemory – zásada |Nakonfiguruje [zásadu vyřazení](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro mezipaměť. |Všechny cenové úrovně |
+| rdb-backup-enabled |Zda je povoleno [Trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom Premium |
+| rdb-storage-connection-string |Připojovací řetězec k účtu úložiště pro [Trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom Premium |
+| rdb-backup-frequency |Četnost záloh pro [Trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom Premium |
+| maxmemory-reserved |Nakonfiguruje [paměť rezervovanou](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro procesy, které nejsou v mezipaměti. |Standard a Premium |
+| maxmemory-policy |Nakonfiguruje [zásadu vyřazení](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro mezipaměť. |Všechny cenové úrovně |
 | oznamovat – události |Konfiguruje [oznámení o prostorech](cache-configure.md#keyspace-notifications-advanced-settings) . |Standard a Premium |
 | hash – Max – ZipList – položky |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
 | hodnota hash-Max-ZipList-Value |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
-| set-max-intset-Entries |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
+| set-max-intset-entries |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
 | zset-Max-ZipList-Entries |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
-| zset-Max-ZipList-Value |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
-| databases |Konfiguruje počet databází. Tato vlastnost se dá nakonfigurovat jenom při vytváření mezipaměti. |Standard a Premium |
+| zset-max-ziplist-value |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
+| databáze |Konfiguruje počet databází. Tato vlastnost se dá nakonfigurovat jenom při vytváření mezipaměti. |Standard a Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Vytvoření mezipaměti Azure pro Redis
 Nová mezipaměť Azure pro instance Redis se vytvoří pomocí rutiny [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) .
@@ -245,7 +237,7 @@ Pokud chcete vytvořit mezipaměť s výchozími parametry, spusťte následují
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
 
-`ResourceGroupName`, `Name` a `Location` jsou vyžadovány parametry, ale zbývající jsou volitelné a mají výchozí hodnoty. Když spustíte předchozí příkaz, vytvoří se standardní skladová položka SKU Azure cache pro instanci Redis se zadaným názvem, umístěním a skupinou prostředků, která má nepovolený port SSL o velikosti 1 GB.
+`ResourceGroupName`, `Name`a `Location` jsou vyžadovány parametry, ale zbývající jsou volitelné a mají výchozí hodnoty. Když spustíte předchozí příkaz, vytvoří se standardní skladová položka SKU Azure cache pro instanci Redis se zadaným názvem, umístěním a skupinou prostředků, která má nepovolený port SSL o velikosti 1 GB.
 
 Pokud chcete vytvořit mezipaměť Premium, zadejte velikost P1 (6 GB až 60 GB), P2 (13 GB-130 GB), P3 (26 GB-260 GB) nebo P4 (53 GB-530 GB). Pokud chcete povolit clusteringu, zadejte počet horizontálních oddílů pomocí parametru `ShardCount`. Následující příklad vytvoří mezipaměť Premium P1 se 3 horizontálních oddílů. Mezipaměť P1 Premium má velikost 6 GB. vzhledem k tomu, že jsme určili tři horizontálních oddílů, celková velikost je 18 GB (3 × 6 GB).
 
@@ -321,7 +313,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `Set-AzR
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-Rutina `Set-AzRedisCache` se dá použít k aktualizaci vlastností, jako jsou `Size`, `Sku`, `EnableNonSslPort` a `RedisConfiguration` hodnoty. 
+Rutina `Set-AzRedisCache` se dá použít k aktualizaci vlastností, jako jsou `Size`, `Sku`, `EnableNonSslPort`a `RedisConfiguration` hodnoty. 
 
 Následující příkaz aktualizuje zásady maxmemory pro Azure cache pro Redis s názvem myCache.
 
@@ -330,7 +322,7 @@ Následující příkaz aktualizuje zásady maxmemory pro Azure cache pro Redis 
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Škálování mezipaměti Azure pro Redis
-`Set-AzRedisCache` lze použít k škálování mezipaměti Azure pro instanci Redis při změně vlastností `Size`, `Sku` nebo `ShardCount`. 
+`Set-AzRedisCache` lze použít k škálování mezipaměti Azure pro instanci Redis při změně vlastností `Size`, `Sku`nebo `ShardCount`. 
 
 > [!NOTE]
 > Škálování mezipaměti pomocí prostředí PowerShell podléhá stejným omezením a pokynům pro škálování mezipaměti z Azure Portal. Pomocí následujících omezení můžete škálovat na jinou cenovou úroveň.

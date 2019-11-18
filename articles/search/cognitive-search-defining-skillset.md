@@ -1,5 +1,5 @@
 ---
-title: Vytvoření dovednosti v kanálu pro rozšíření
+title: Vytvoření sady dovedností
 titleSuffix: Azure Cognitive Search
 description: Definování extrakce dat, zpracování přirozeného jazyka nebo kroků analýzy obrázků za účelem obohacení a extrakce strukturovaných informací z vašich dat pro použití v Azure Kognitivní hledání.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787473"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114549"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Postup vytvoření dovednosti v kanálu rozšíření AI v Azure Kognitivní hledání 
 
@@ -36,9 +36,9 @@ Doporučený počáteční krok je rozhodování o tom, která data se mají ext
 
 Předpokládejme, že máte zájem o zpracování sady svých komentářů finančního analytika. Pro každý soubor budete chtít extrahovat názvy společností a obecné míněníy komentářů. Můžete také vytvořit vlastní nástroj pro obohacení, který používá službu Vyhledávání entit Bingu k vyhledání dalších informací o společnosti, například o tom, jaký druh firmy je ve společnosti zapojen. V podstatě budete chtít extrahovat informace, jako jsou následující, indexované pro každý dokument:
 
-| záznam – text | Firma | Mínění | popisy společnosti |
+| record-text | Firma | Mínění | popisy společnosti |
 |--------|-----|-----|-----|
-|Ukázka-záznam| ["Microsoft", "LinkedIn"] | 0,99 | ["Microsoft Corporation je americká Vícevrstvá technologie...", "LinkedIn je síť, která je zaměřená na obchodní a výdělečnou práci..."]
+|sample-record| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation je americká Vícevrstvá technologie...", "LinkedIn je síť, která je zaměřená na obchodní a výdělečnou práci..."]
 
 Následující diagram znázorňuje hypotetický kanál pro obohacení:
 
@@ -163,7 +163,7 @@ Pojďme se podívat na první dovednost, což je integrovaná [dovednost pro roz
     }
 ```
 
-* Každá integrovaná dovednost má vlastnosti `odata.type`, `input` a `output`. Vlastnosti specifické pro dovednost poskytují další informace, které se vztahují na tuto dovednost. Pro rozpoznávání entit je `categories` jedna entita mezi pevnou sadou typů entit, kterou může předvlakový model rozpoznat.
+* Každá integrovaná dovednost má vlastnosti `odata.type`, `input`a `output`. Vlastnosti specifické pro dovednost poskytují další informace, které se vztahují na tuto dovednost. Pro rozpoznávání entit je `categories` jedna entita mezi pevnou sadou typů entit, kterou může předvlakový model rozpoznat.
 
 * Každá dovednost by měla mít ```"context"```. Kontext představuje úroveň, na které operace probíhají. V dovednostech výše je kontext celý dokument, což znamená, že dovednost rozpoznávání entit se volá jednou pro každý dokument. Výstupy jsou také vytvářeny na této úrovni. Konkrétně se ```"organizations"``` generují jako člen ```"/document"```. V případě dovedností pro příjem dat můžete na tyto nově vytvořené informace odkazovat jako na ```"/document/organizations"```.  Pokud není pole ```"context"``` explicitně nastaveno, je výchozím kontextem dokument.
 
@@ -171,7 +171,7 @@ Pojďme se podívat na první dovednost, což je integrovaná [dovednost pro roz
 
 * Dovednost má jeden výstup s názvem ```"organizations"```. Výstupy existují pouze během zpracování. Pokud chcete tento výstup zřetězit do vstupu pro příjem dat, odkazujte na výstup jako ```"/document/organizations"```.
 
-* V případě konkrétního dokumentu je hodnota ```"/document/organizations"``` pole organizací extrahovaných z textu. Například:
+* V případě konkrétního dokumentu je hodnota ```"/document/organizations"``` pole organizací extrahovaných z textu. Příklad:
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -235,7 +235,7 @@ Výstup, v tomto případě se pro každou identifikovanou organizaci vygeneruje
 
 ## <a name="add-structure"></a>Přidat strukturu
 
-Dovednosti generuje strukturované informace mimo nestrukturovaná data. Vezměte v úvahu následující příklad:
+Dovednosti generuje strukturované informace mimo nestrukturovaná data. Vezměte v úvahu v následujícím příkladu:
 
 *"Ve čtvrtém čtvrtletí se společnost Microsoft zaznamenala $1 100 000 000 ve tržbách z LinkedInu, což je společnost sociální sítě, kterou koupili minulý rok. Akvizice umožňuje Microsoftu kombinovat možnosti LinkedInu s funkcemi CRM a Office. V tomto případě se drží v tomto stavu. "*
 

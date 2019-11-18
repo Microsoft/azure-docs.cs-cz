@@ -11,28 +11,28 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825785"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132300"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s ukázkami lístků Wingtip SaaS Apps
 
-Tento článek obsahuje obecné pokyny pro spouštění ukázkových lístků Wingtip SaaS, které používají Azure SQL Database. 
+Tento článek obsahuje obecné pokyny pro spouštění ukázkových lístků Wingtip SaaS, které používají Azure SQL Database.
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Stažení a odblokování skriptů SaaS lístků Wingtip
 
 Obsah spustitelného souboru (skripty, knihovny DLL) může systém Windows zablokovat, pokud jsou soubory zip staženy z externího zdroje a extrahovány. Při extrakci skriptů ze souboru ZIP **postupujte podle následujících kroků, abyste před extrahováním odblokoval soubor. zip**. Tím se zajistí, že se skripty můžou spouštět.
 
-1. Pro model architektury databáze, který chcete prozkoumat, přejděte na úložiště GitHub lístky Wingtip SaaSs. 
+1. Pro model architektury databáze, který chcete prozkoumat, přejděte na úložiště GitHub lístky Wingtip SaaSs.
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Klikněte na **klonovat nebo stáhnout**.
 3. Klikněte na **Stáhnout ZIP** a uložte soubor.
-4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-Master. zip_)
+4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. Na kartě **Obecné** vyberte **odblokovat**.
 6. Klikněte na tlačítko **OK**.
 7. Extrahujte soubory.
@@ -42,13 +42,13 @@ Skripty jsou umístěné ve složce *..\\Learning modules* .
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Práce se skripty PowerShellu pro lístky Wingtip
 
-Pokud chcete získat z ukázky co nejvíc, musíte se podrobně do zadaných skriptů. Použití zarážek a krokování skriptů při jejich spouštění a kontrola, jak jsou implementovány různé vzory SaaS. K snadnému porozumění zadaným skriptům a modulům doporučujeme použít [prostředí POWERSHELL ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
+Pokud chcete získat z ukázky co nejvíc, musíte se podrobně do zadaných skriptů. Použití zarážek a krokování skriptů při jejich spouštění a kontrola, jak jsou implementovány různé vzory SaaS. K snadnému porozumění zadaným skriptům a modulům doporučujeme použít [prostředí POWERSHELL ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise).
 
 ### <a name="update-the-configuration-file-for-your-deployment"></a>Aktualizace konfiguračního souboru pro nasazení
 
 Upravte soubor **userconfig. psm1** o skupinu prostředků a hodnotu uživatele, kterou jste nastavili během nasazování:
 
-1. Otevřete *POWERSHELL ISE* a Load...\\výukové moduly\\*userconfig. psm1* 
+1. Otevřete *POWERSHELL ISE* a Load...\\výukové moduly\\*userconfig. psm1*
 2. Aktualizujte *ResourceGroupName* a *název* o konkrétní hodnoty pro vaše nasazení (jenom na řádcích 10 a 11).
 3. Uložte změny.
 
@@ -76,7 +76,7 @@ Tipy pro zkoumání a krokování prostřednictvím skriptů PowerShellu:
 
 K připojení a procházení aplikačních serverů a databází použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) .
 
-Nasazení má zpočátku klienty a katalog SQL Database servery, ke kterým se připojuje. Pojmenování serverů závisí na vzoru architektury databáze (podrobnosti najdete níže). 
+Nasazení má zpočátku klienty a katalog SQL Database servery, ke kterým se připojuje. Pojmenování serverů závisí na vzoru architektury databáze (podrobnosti najdete níže).
 
    - **Samostatná aplikace:** servery pro každého tenanta (např. *contosoconcerthall-&lt;user&gt;* Server) a *Catalog-SA-&lt;User&gt;*
    - **Databáze na tenanta:** *tenants1-DPT-&lt;User&gt;* and *Catalog-DPT&lt;-User&gt;* Servers
@@ -86,19 +86,19 @@ Aby bylo zajištěno úspěšné ukázkové připojení, všechny servery mají 
 
 
 1. Otevřete *SSMS* a připojte se k tenantovi. Název serveru závisí na vzoru architektury databáze, který jste vybrali (podrobnosti najdete níže):
-    - **Samostatná aplikace:** servery jednotlivých tenantů (např. *contosoconcerthall&lt;User&gt;. Database.Windows.NET*) 
+    - **Samostatná aplikace:** servery jednotlivých tenantů (např. *contosoconcerthall-&lt;User&gt;.database.windows.net*)
     - **Databáze na tenanta:** *tenants1-DPT-&lt;User&gt;. Database.Windows.NET*
-    - **Víceklientské databáze:** *tenants1-MT-&lt;User&gt;. Database.Windows.NET* 
+    - **Víceklientské databáze:** *tenants1-MT-&lt;User&gt;. Database.Windows.NET*
 2. Klikněte na **Připojit** > **Databázový stroj...** :
 
    ![katalogový server](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
 3. Ukázková pověření: login = *Developer*, Password = *P\@ssword1*
 
-    Následující obrázek ukazuje přihlášení k *databázi pro každý model klienta* . 
-    ](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png) připojení ![
-    
-   
+    Následující obrázek ukazuje přihlášení k *databázi pro každý model klienta* .
+    ![připojení](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+
+
 
 4. Opakujte kroky 2-3 a připojte se k serveru katalogu (dole najdete konkrétní názvy serverů na základě vybraného vzoru databáze).
     - **Samostatná aplikace:** *Catalog-SA-&lt;User&gt;. Database.Windows.NET*

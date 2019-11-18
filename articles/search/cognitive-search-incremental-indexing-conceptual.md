@@ -1,5 +1,5 @@
 ---
-title: Úvod do přírůstkového indexování (Preview)
+title: Přírůstkové indexování (Náhled)
 titleSuffix: Azure Cognitive Search
 description: Nakonfigurujte svůj kanál pro obohacení AI tak, aby bylo možné zajistit, aby se vaše data zpracovávala na jakékoli aktualizace dovedností, dovednosti, indexerů nebo zdrojů dat. Tato funkce je aktuálně ve verzi Public Preview.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715430"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113597"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Co je přírůstkové indexování v Azure Kognitivní hledání?
 
@@ -138,7 +138,7 @@ Některé indexery (prostřednictvím [zdrojů dat](https://docs.microsoft.com/r
 
 Dovednosti nebude podporovat žádné nové operace, ale bude podporovat nový parametr QueryString: `disableCacheReprocessingChangeDetection` by měl být nastaven na `true`, pokud chcete, aby na základě aktuální akce nebyly žádné aktualizace stávajících dokumentů.
 
-### <a name="datasources"></a>zdroje dat
+### <a name="datasources"></a>Zdroje dat
 
 Zdroje dat nebudou podporovat žádné nové operace, ale budou podporovat nový parametr QueryString: `ignoreResetRequirement` by měl být nastaven na hodnotu `true`, pokud by vaše akce aktualizace neměla zrušit platnost mezipaměti.
 

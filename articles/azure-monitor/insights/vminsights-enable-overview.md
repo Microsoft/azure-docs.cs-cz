@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/29/2019
-ms.openlocfilehash: 7e3dad5405289ee2d1f4ec8f7a586da70db9d56f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/14/2019
+ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162253"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109175"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -22,12 +22,12 @@ Nastavení Azure Monitor pro virtuální počítače:
 
 * Výběrem možnosti **Insights (Preview)** přímo z virtuálního počítače nebo sady škálování virtuálního počítače povolte jeden virtuální počítač Azure nebo sadu škálování virtuálního počítače.
 * Pomocí Azure Policy povolte dva nebo víc virtuálních počítačů Azure a sady škálování virtuálních počítačů. Tato metoda zajišťuje, že u stávajících a nových virtuálních počítačů a sad škálování jsou požadované závislosti nainstalovány a správně nakonfigurovány. Nahlásí se nekompatibilní virtuální počítače a sady škálování, takže se můžete rozhodnout, jestli je chcete povolit, a opravit je.
-* V rámci zadaného předplatného nebo skupiny prostředků v prostředí PowerShell povolte dva nebo víc virtuálních počítačů Azure nebo služby Virtual Machine Scale Sets.
+* Povolit dvě nebo více virtuálních počítačů Azure nebo virtuální počítač škálovací sady v zadané předplatné nebo skupinu prostředků pomocí prostředí PowerShell.
 * Povolte Azure Monitor pro virtuální počítače k monitorování virtuálních počítačů nebo fyzických počítačů hostovaných ve vaší podnikové síti nebo jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že rozumíte informacím v následujících částech. 
+Než začnete, ujistěte se, že rozumíte informace v následujících částech. 
 
 >[!NOTE]
 >Následující informace popsané v této části se vztahují také na [řešení Service map](service-map.md).  
@@ -37,32 +37,30 @@ Než začnete, ujistěte se, že rozumíte informacím v následujících část
 Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v následujících oblastech:
 
 - Středozápadní USA
-- Západní USA<sup>1</sup>
-- Západní USA 2<sup>1</sup>
-- Střed USA – jih<sup>1</sup>
-- USA – východ
-- Východ USA 2<sup>1</sup>
-- Střed USA<sup>1</sup>
-- Střed USA – sever<sup>1</sup>
+- Západní USA
+- Západní USA 2
+- Středojižní USA
+- Východní USA
+- USA – východ 2
+- Střední USA
+- Středoseverní USA
 - Kanada – střed
 - Velká Británie – jih
-- Severní Evropa<sup>1</sup>
+- Severní Evropa
 - Západní Evropa
-- Východní Asie<sup>1</sup>
+- Východní Asie
 - Jihovýchodní Asie
-- Střed Indie<sup>1</sup>
-- Japonsko – východ<sup>1</sup>
-- Austrálie – východ<sup>1</sup>
-- Austrálie – jihovýchod<sup>1</sup>
-
-<sup>1</sup> tato oblast v současné době nepodporuje funkci stavu Azure monitor pro virtuální počítače.
+- Střed Indie
+- Japonsko – východ
+- Austrálie – východ
+- Austrálie – jihovýchod
 
 >[!NOTE]
 >Virtuální počítače Azure můžete nasadit z libovolné oblasti. Tyto virtuální počítače nejsou omezené na oblasti podporované Log Analytics pracovním prostorem.
 >
 
 Pokud nemáte pracovní prostor, můžete ho vytvořit pomocí jednoho z těchto prostředků:
-* [Rozhraní příkazového řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
@@ -72,7 +70,7 @@ Pracovní prostor můžete také vytvořit, když povolíte monitorování pro j
 Pokud chcete nastavit scénář ve velkém měřítku, který používá Azure Policy, Azure PowerShell nebo šablony Azure Resource Manager, v pracovním prostoru Log Analytics:
 
 * Nainstalujte řešení ServiceMap a InfrastructureInsights. Tuto instalaci můžete dokončit pomocí zadané Azure Resource Manager šablony. Nebo **na kartě Začínáme** vyberte **Konfigurovat pracovní prostor**.
-* Nakonfigurujte pracovní prostor Log Analytics pro shromažďování čítačů výkonu.
+* Konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu.
 
 Pokud chcete nakonfigurovat pracovní prostor pro scénář ve velkém měřítku, použijte jednu z následujících metod:
 
@@ -83,34 +81,30 @@ Pokud chcete nakonfigurovat pracovní prostor pro scénář ve velkém měřítk
 
 Následující tabulka uvádí operační systémy Windows a Linux, které Azure Monitor pro virtuální počítače podporuje. Později v této části najdete úplný seznam, který podrobně popisuje hlavní a podverze operačního systému Linux a podporované verze jádra.
 
-|Verze operačního systému |Výkon |Mapy |Stav akce |
-|-----------|------------|-----|-------|
-|Windows Server 2019 | × | × | × |
-|Windows Server 2016 1803 | × | × | × |
-|Windows Server 2016 | × | × | × |
-|Windows Server 2012 R2 | × | × | × |
-|Windows Server 2012 | × | × | |
-|Windows Server 2008 R2 | × | ×|  |
-|Systém Windows 10 1803 | × | × | |
-|Windows 8.1 | × | × | |
-|Windows 8 | × | × | |
-|Windows 7 SP1 | × | × | |
-|Red Hat Enterprise Linux (RHEL) 6, 7| × | ×| × |
-|Ubuntu 18,04, 16,04 | × | × | × |
-|CentOS Linux 7, 6 | × | × | × |
-|SUSE Linux Enterprise Server (SLES) 12 | × | × | × |
-|Debian 9,4, 8 | ×<sup>1</sup> | | × |
+|Verze operačního systému |Výkon |Maps |
+|-----------|------------|-----|
+|Windows Server 2019 | × | × |
+|Windows Server 2016 1803 | × | × |
+|Windows Server 2016 | × | × |
+|Windows Server 2012 R2 | × | × |
+|Windows Server 2012 | × | × |
+|Windows Server 2008 R2 | × | ×|
+|Windows 10 1803 | × | × |
+|Windows 8.1 | × | × |
+|Windows 8 | × | × |
+|Windows 7 SP1 | × | × |
+|Red Hat Enterprise Linux (RHEL) 6, 7| × | ×| 
+|Ubuntu 18,04, 16,04 | × | × |
+|Linux centOS 7, 6 | × | × |
+|SUSE Linux Enterprise Server (SLES) 12 | × | × |
+|Debian 9.4, 8 | X<sup>1</sup> | |
 
-<sup>1</sup> funkce výkonu Azure monitor pro virtuální počítače je k dispozici pouze Azure monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
-
->[!NOTE]
->Funkce stavu Azure Monitor pro virtuální počítače nepodporuje [vnořenou virtualizaci](../../virtual-machines/windows/nested-virtualization.md) na virtuálním počítači Azure.
->
+<sup>1</sup> the výkonu funkce služby Azure Monitor pro virtuální počítače je k dispozici pouze ze služby Azure Monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
 
 >[!NOTE]
 >V operačním systému Linux:
 > - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
-> - Nestandardní verze jádra, jako třeba rozšíření fyzické adresy (PAE) a Xen, nejsou podporované pro žádnou distribuci systému Linux. Například systém s řetězcem vydání *2.6.16.21-0,8-Xen* není podporován.
+> - Používá se nestandardní jádra vyjde nová verze, jako například rozšíření fyzické adresy (PAE) a Xen, nejsou podporovány pro libovolnou distribuci Linuxu. Například systém s řetězec verze *2.6.16.21-0.8-xen* se nepodporuje.
 > - Vlastní jádra, včetně překompilování standardních jader, nejsou podporovaná.
 > - Jádro CentOSPlus je podporováno.
 > - Pro chybu zabezpečení Spectre je nutné opravit jádro systému Linux. Další podrobnosti najdete u dodavatele distribuce systému Linux.
@@ -120,38 +114,38 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 | Verze operačního systému | Verze jádra |
 |:--|:--|
 | 7,6 | 3.10.0-957 |
-| 7,5 | 3.10.0-862 |
-| 7,4 | 3.10.0-693 |
+| 7.5 | 3.10.0-862 |
+| 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 6,10 | 2.6.32 – 754 |
-| 6,9 | 2.6.32 – 696 |
+| 6.10 | 2.6.32-754 |
+| 6.9 | 2.6.32-696 |
 
 #### <a name="centosplus"></a>CentOSPlus
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 6,10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6,9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
+| 6.10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
+| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 18,04 | 5,0 (zahrnuje jádro Azure vyladěné)<br>4,18 *<br>4.15* |
+| 18,04 | 5,0 (zahrnuje jádro Azure vyladěné)<br>4,18 *<br>4,15* |
 | 16.04.3 | 4,15. * |
-| 16,04 | 4,13. \*<br>4,11. \*<br>4,10. \*<br>4,8. \*<br>4,4. \* |
+| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
 |12 SP4 | 4,12. * (zahrnuje jádro Azure s vyladěnými jádry) |
-|12 SP3 | 4,4. * |
-|12 SP2 | 4,4. * |
+|12 SP3 | 4.4. * |
+|12 SP2 | 4.4. * |
 
 #### <a name="debian"></a>Debian 
 
@@ -159,9 +153,9 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 |:--|:--|
 | 9 | 4,9 | 
 
-### <a name="the-microsoft-dependency-agent"></a>Microsoft Dependency Agent
+### <a name="the-microsoft-dependency-agent"></a>Agent Microsoft Dependency
 
-Funkce map v Azure Monitor pro virtuální počítače získá svá data od agenta závislostí společnosti Microsoft. Agent závislostí spoléhá na Log Analytics agenta pro připojení k Log Analytics. Takže váš systém musí mít nainstalovaný agent Log Analytics a nakonfigurovaný s agentem závislostí.
+Funkce map v Azure Monitor pro virtuální počítače získá svá data od agenta závislostí společnosti Microsoft. Agent závislostí závisí na agenta Log Analytics pro připojení k Log Analytics. Takže váš systém musí mít nainstalovaný agent Log Analytics a nakonfigurovaný s agentem závislostí.
 
 Bez ohledu na to, jestli povolíte Azure Monitor pro virtuální počítače pro jeden virtuální počítač Azure nebo použijete metodu nasazení na úrovni služby, použijte rozšíření agenta závislostí virtuálních počítačů Azure pro [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) nebo [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) a nainstalujte agenta jako součást prostředí.
 
@@ -170,9 +164,9 @@ Bez ohledu na to, jestli povolíte Azure Monitor pro virtuální počítače pro
 
 V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat ručně nebo pomocí automatizované metody.
 
-Následující tabulka popisuje připojené zdroje, které funkce mapy podporuje v hybridním prostředí.
+Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy v hybridním prostředí.
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporuje se | Popis |
 |:--|:--|:--|
 | Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
@@ -180,16 +174,16 @@ Následující tabulka popisuje připojené zdroje, které funkce mapy podporuje
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
-| Soubor | OS | Version | SHA-256 |
+| Soubor | Operační systém | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
-## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
+## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-K povolení a přístupu k funkcím v Azure Monitor pro virtuální počítače musíte mít roli *přispěvatel Log Analytics* . Chcete-li zobrazit data o výkonu, stavu a mapování, musíte mít roli *Čtenář monitorování* pro virtuální počítač Azure. Pracovní prostor Log Analytics musí být nakonfigurován pro Azure Monitor pro virtuální počítače.
+K povolení a přístupu k funkcím v Azure Monitor pro virtuální počítače musíte mít roli *přispěvatel Log Analytics* . Chcete-li zobrazit data o výkonu, stavu a mapování, musíte mít roli *Čtenář monitorování* pro virtuální počítač Azure. Pracovní prostor Log Analytics musí být nakonfigurovaný pro monitorování Azure pro virtuální počítače.
 
-Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
+Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
 
 ## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>Postup povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -202,7 +196,7 @@ Povolte Azure Monitor pro virtuální počítače pomocí jedné z metod popsan�
 | Několik virtuálních počítačů Azure nebo sady škálování virtuálních počítačů | [Povolit prostřednictvím šablon Azure PowerShell nebo Azure Resource Manager](vminsights-enable-at-scale-powershell.md) | V rámci zadaného předplatného nebo skupiny prostředků můžete povolit víc virtuálních počítačů Azure nebo virtuálních počítačů pomocí šablon Azure PowerShell nebo Azure Resource Manager. |
 | Hybridní cloud | [Povolit pro hybridní prostředí](vminsights-enable-hybrid-cloud.md) | Můžete ho nasadit do virtuálních počítačů nebo fyzických počítačů hostovaných ve vašem datovém centru nebo v jiných cloudových prostředích. |
 
-## <a name="performance-counters-enabled"></a>Čítače výkonu povoleny 
+## <a name="performance-counters-enabled"></a>Čítače výkonu povolena 
 
 Azure Monitor pro virtuální počítače nakonfiguruje pracovní prostor Log Analytics pro shromažďování čítačů výkonu, které používá. V následujících tabulkách jsou uvedeny objekty a čítače, které se shromažďují každých 60 sekund.
 
@@ -219,31 +213,31 @@ Azure Monitor pro virtuální počítače nakonfiguruje pracovní prostor Log An
 |Logický disk |Střední doba disku/zápis |
 |Logický disk |Bajty disku/s |
 |Logický disk |Bajty čtení z disku/s |
-|Logický disk |Čtení z disku/s |
+|Logický disk |Čtení disku/s |
 |Logický disk |Přenosy disku/s |
-|Logický disk |Bajty zápisu na disk/s |
-|Logický disk |Zápisy na disk/s |
+|Logický disk |Bajty zapisování na disk/s |
+|Logický disk |Zápis disku/s |
 |Logický disk |Volné megabajty |
-|Paměť |Dostupné MB |
+|Memory (Paměť) |Počet MB k dispozici |
 |Síťový adaptér |Přijaté bajty/s |
 |Síťový adaptér |Odeslané bajty/s |
 |Procesor |% Času procesoru |
 
-### <a name="linux-performance-counters"></a>Čítače výkonu pro Linux
+### <a name="linux-performance-counters"></a>Čítače výkonu Linuxu
 
 |Název objektu |Název čítače |
 |------------|-------------|
-|Logický disk |% Využitého místa |
-|Logický disk |Bajty čtení z disku/s |
-|Logický disk |Čtení z disku/s |
-|Logický disk |Přenosy disku/s |
-|Logický disk |Bajty zápisu na disk/s |
-|Logický disk |Zápisy na disk/s |
-|Logický disk |Volné megabajty |
-|Logický disk |Bajty logického disku/s |
-|Paměť |Dostupná paměť v MB |
-|Síť |Celkový počet přijatých bajtů |
-|Síť |Celkový počet odeslaných bajtů |
+|Logický Disk |% Využitého místa |
+|Logický Disk |Bajty čtení z disku/s |
+|Logický Disk |Čtení disku/s |
+|Logický Disk |Přenosy disku/s |
+|Logický Disk |Bajty zapisování na disk/s |
+|Logický Disk |Zápis disku/s |
+|Logický Disk |Volné megabajty |
+|Logický Disk |Bajtů logického disku/s |
+|Memory (Paměť) |Dostupná paměť v MB |
+|Network (Síť) |Celkový počet přijatých bajtů |
+|Network (Síť) |Celkový počet bajtů přenesených |
 |Procesor |% Času procesoru |
 
 ## <a name="management-packs"></a>Sady Management Pack
@@ -252,13 +246,13 @@ Pokud je Azure Monitor pro virtuální počítače povolená a nakonfigurovaná 
 
 Management Pack má název *Microsoft. IntelligencePacks. ApplicationDependencyMonitor*. Zapsáno do složky `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\`. Zdroj dat, který používá Management Pack, je `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll`.
 
-## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data o využití
+## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
 
-Společnost Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím služby Azure Monitor. Společnost Microsoft používá tato data ke zlepšení kvality, zabezpečení a integrity služby. 
+Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím používání služby Azure Monitor. Společnost Microsoft používá tato data ke zlepšení kvality, zabezpečení a integrity služby. 
 
-Aby funkce map poskytovala přesné a efektivní možnosti odstraňování potíží, zahrnuje data týkající se konfigurace softwaru. Data obsahují informace, jako je operační systém a verze, IP adresa, název DNS a název pracovní stanice. Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
+Aby funkce map poskytovala přesné a efektivní možnosti odstraňování potíží, zahrnuje data týkající se konfigurace softwaru. Data obsahují informace, jako je operační systém a verze, IP adresa, název DNS a název pracovní stanice. Společnost Microsoft nebude shromažďovat jména, adresy ani jiné kontaktní údaje.
 
-Další informace o shromažďování a používání dat naleznete v tématu [prohlášení o zásadách ochrany osobních údajů služby Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -266,4 +260,4 @@ Nyní, když jste povolili monitorování pro váš virtuální počítač, jsou
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak používat funkci Health, najdete v tématu [zobrazení stavu Azure monitor pro virtuální počítače](vminsights-health.md). Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md).
+Informace o tom, jak používat funkci monitorování výkonu, najdete v tématu [zobrazení výkonu Azure monitor pro virtuální počítače](vminsights-performance.md). Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).

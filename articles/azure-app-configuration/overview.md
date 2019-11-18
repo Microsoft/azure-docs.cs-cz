@@ -1,5 +1,5 @@
 ---
-title: Co je konfigurace aplikací Azure? | Microsoft Docs
+title: Co je konfigurace aplikací Azure? | Dokumenty Microsoft
 description: Přehled služby Azure App Configuration Service.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687047"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129703"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co je konfigurace aplikací Azure?
 
@@ -30,7 +30,7 @@ Konfigurace aplikace je aktuálně ve verzi Public Preview. Během období Previ
 
 Cloudové aplikace se často spouštějí na několika virtuálních počítačích nebo kontejnerech ve více oblastech a využívají několik externích služeb. Vytváření takových distribuovaných aplikací, které jsou robustní a škálovatelné, je výzvou.
 
-Různé programovací metodologie můžou vývojářům zabývat se rostoucí složitosti při sestavování aplikací. Například aplikace 12 Factor popisuje mnoho dobře testovaných architektonických vzorů a osvědčené postupy pro použití s cloudových aplikací. Jedním z klíčových doporučení tohoto průvodce je oddělit konfiguraci od kódu. V takovém případě by se nastavení konfigurace aplikace měla uchovávat externě pro spustitelný soubor a číst z jeho běhového prostředí nebo z externího zdroje.
+Různé programovací metodologie můžou vývojářům zabývat se rostoucí složitosti při sestavování aplikací. Například [aplikace v dvanácti faktorech](https://12factor.net/) popisuje mnoho dobře testovaných architektonických vzorů a osvědčené postupy pro použití s cloudových aplikací. Jedním z klíčových doporučení tohoto průvodce je oddělit konfiguraci od kódu. V takovém případě by se nastavení konfigurace aplikace měla uchovávat externě pro spustitelný soubor a číst z jeho běhového prostředí nebo z externího zdroje.
 
 I když kterákoli z aplikací může používat konfiguraci aplikace, jsou v následujících příkladech typy aplikací, které využívají jejich používání:
 
@@ -60,12 +60,12 @@ Doplňková konfigurace aplikace [Azure Key Vault](https://azure.microsoft.com/s
 
 Nejjednodušší způsob, jak přidat úložiště konfigurace aplikace do vaší aplikace, je prostřednictvím klientské knihovny, kterou poskytuje společnost Microsoft. Na základě programovacího jazyka a architektury jsou pro vás k dispozici následující nejlepší metody.
 
-| Programovací jazyk a architektura | Jak připojit |
+| Programovací jazyk a architektura | Jak se připojit |
 |---|---|
 | .NET Core a ASP.NET Core | Poskytovatel konfigurace aplikace pro .NET Core |
 | .NET a ASP.NET | Tvůrce konfigurace aplikací pro .NET |
 | Java Spring | Klient konfigurace aplikace pro jarní Cloud |
-| Další | REST API konfigurace aplikace |
+| Ostatní | REST API konfigurace aplikace |
 
 ## <a name="next-steps"></a>Další kroky
 

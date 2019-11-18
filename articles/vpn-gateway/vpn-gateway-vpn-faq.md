@@ -1,5 +1,5 @@
 ---
-title: Azure VPN Gateway – nejčastější dotazy | Dokumentace Microsoftu
+title: Nejčastější dotazy k Azure VPN Gateway
 description: Nejčastější dotazy k branám VPN. Nejčastější dotazy týkající se propojení Microsoft Azure Virtual Network mezi různými místy, připojení s hybridní konfigurací a bran VPN
 services: vpn-gateway
 author: yushwang
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: yushwang
-ms.openlocfilehash: dd012ab94ba47f700230ac761f2dc803988cefd4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: fa4e403733c418a4ceff417dd0cf7b54f9409a49
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075430"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151659"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – nejčastější dotazy
 

@@ -1,19 +1,16 @@
 ---
-title: Použití Azure Deployment Manageru s šablonami Resource Manageru | Microsoft Docs
+title: Použití Azure Deployment Manager se šablonami
 description: Nasazujte prostředky Azure s využitím šablon Resource Manageru a Azure Deployment Manageru.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285687"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149898"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: použití kontroly stavu v Azure Deployment Manager (Public Preview)
 
@@ -43,7 +40,7 @@ Další materiály:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
@@ -65,7 +62,7 @@ V produkčním prostředí obvykle používáte jednoho nebo více poskytovatel�
 
 Následující dva soubory se používají k nasazení funkce Azure Functions. Tyto soubory nemusíte stahovat, abyste procházeli v tomto kurzu.
 
-* Správce prostředků šablona umístěná na [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). Tuto šablonu nasadíte, chcete-li vytvořit funkci Azure Functions.
+* Správce prostředků šablonu, která se nachází na [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). Tuto šablonu nasadíte, chcete-li vytvořit funkci Azure Functions.
 * Soubor zip zdrojového kódu funkce Azure, [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Tato metoda ZIP je volána šablonou Správce prostředků.
 
 Pokud chcete službu Azure Functions nasadit, vyberte **zkusit** , aby se otevřelo prostředí Azure Cloud Shell, a pak do okna prostředí vložte následující skript.  Kód vložíte tak, že kliknete pravým tlačítkem myši na okno prostředí a pak vyberete **Vložit**.
@@ -76,7 +73,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 Ověření a otestování funkce Azure Functions:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 1. Otevřete skupinu prostředků.  Výchozí název je název projektu s připojeným **RG** .
 1. Vyberte službu App Service ze skupiny prostředků.  Výchozím názvem služby App Service je název projektu s připojenou **WebApp** .
 1. Rozbalte položku **funkce**a pak vyberte **HttpTrigger1**.
@@ -351,7 +348,7 @@ Zopakováním této části znovu nasaďte zavedení do stavové adresy URL stav
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 2. Přejděte k nově vytvořeným webovým aplikacím v nových skupinách prostředků vytvořených nasazením uvedení.
 3. Otevřete webovou aplikaci ve webovém prohlížeči. Zkontrolujte umístění a verzi souboru index.html.
 
@@ -363,8 +360,8 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 2. Pomocí pole **Filtrovat podle názvu** můžete vyfiltrovat skupiny prostředků vytvořené v tomto kurzu. Měly by být 3 až 4:
 
     * **&lt;projectName > RG**: obsahuje prostředky Deployment Manager.
-    * **&lt;projectName > ServiceWUSrg**: obsahuje prostředky definované ServiceWUS.
-    * **&lt;projectName > ServiceEUSrg**: obsahuje prostředky definované ServiceEUS.
+    * **&lt;projectName > ServiceWUSrg**: obsahuje prostředky definované pomocí ServiceWUS.
+    * **&lt;projectName > ServiceEUSrg**: obsahuje prostředky definované pomocí ServiceEUS.
     * Skupina prostředků pro spravovanou identitu přiřazenou uživatelem.
 3. Vyberte název skupiny prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.

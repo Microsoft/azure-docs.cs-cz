@@ -1,5 +1,6 @@
 ---
-title: Konfigurace tunelového připojení VPN Always On pro VPN Gateway
+title: Konfigurace tunelového připojení typu Always-On
+titleSuffix: Azure VPN Gateway
 description: Postup konfigurace tunelu Always On VPN pro VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841142"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146401"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurace tunelu zařízení VPN AlwaysOn
 
@@ -142,7 +143,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![Prostředí](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
+   ![prostředí](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. V PowerShellu přejděte do složky, kde se nachází **devicecert. ps1** a **VPNProfile. XML** , a spusťte následující příkaz:
 
    ```powershell
@@ -155,14 +156,14 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    ![Firma](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. Vyhledejte položku **MachineCertTest** a klikněte na **připojit**.
 
-   ![Propojení](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Připojení](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Pokud je připojení úspěšné, restartujte počítač. Tunel se automaticky připojí.
 
-## <a name="cleanup"></a>Vyčištění
+## <a name="cleanup"></a>Čištění
 
 Chcete-li odebrat profil, spusťte následující příkaz:
 
-![Vyčištění](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![Čištění](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
 

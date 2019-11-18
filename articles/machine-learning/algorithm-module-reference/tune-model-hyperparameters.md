@@ -1,5 +1,5 @@
 ---
-title: Ladit parametry modelu
+title: Ladění hyperparametrů modelů
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul předparametrů ladění modelu ve službě Azure Machine Learning k provedení parametru pro mazání parametrů v modelu, aby bylo možné určit optimální nastavení parametrů.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: fd796297bafeb437b55eca7f38cbd7ae55e19b93
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716713"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131221"
 ---
-# <a name="tune-model-hyperparameters"></a>Ladit parametry modelu
+# <a name="tune-model-hyperparameters"></a>Ladění hyperparametrů modelů
 
 Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul předparametrů ladit model (Preview). Cílem je určit optimální parametry pro model strojového učení. Modul vytváří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky pro všechny modely a získá kombinace nastavení. 
 
@@ -69,7 +69,7 @@ Tato část popisuje, jak provést základní úklid parametrů, který navlakuj
 
 8.  Pro **hodnocení**vyberte jednu metriku, která se má použít pro řazení modelů.
 
-    Když spustíte parametr Sweep, modul vypočítá všechny použitelné metriky pro daný typ modelu a vrátí je do sestavy výsledků pro **Shrnutí** . Modul používá pro regresní a klasifikační modely samostatné metriky.
+    Když spustíte parametr Sweep, modul vypočítá všechny použitelné metriky pro typ modelu a vrátí je do sestavy **výsledků pro Shrnutí** . Modul používá pro regresní a klasifikační modely samostatné metriky.
 
     Metrika, kterou zvolíte, však Určuje, jak jsou modely seřazeny. Pouze model nejvyšší úrovně, jak je zvolená metrika, je výstupem jako trained model, který se má použít pro bodování.
 

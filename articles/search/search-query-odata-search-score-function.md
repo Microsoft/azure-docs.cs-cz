@@ -1,7 +1,7 @@
 ---
 title: Odkaz na funkci hledání OData. skore
 titleSuffix: Azure Cognitive Search
-description: Funkce hledání OData ve službě Azure Kognitivní hledání dotazy
+description: Syntaxe a referenční dokumentace pro použití funkce Search. skore v Azure Kognitivní hledání dotazů.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 500ac4f3a44d54e367ddc4ee5efc9514d603cab6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793274"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113133"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Funkce `search.score` OData v Azure Kognitivní hledání
 
@@ -34,7 +34,7 @@ Když odešlete dotaz do Azure Kognitivní hledání bez [parametru **$OrderBy**
 
 Syntaxe pro `search.score` v **$OrderBy** je `search.score()`. Funkce `search.score` nepřijímá žádné parametry. Dá se použít s specifikátorem pořadí řazení `asc` nebo `desc` stejným způsobem jako jakákoli jiná klauzule v parametru **$OrderBy** . Může se objevit kdekoli v seznamu kritérií řazení.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Seřaďte hotely v sestupném pořadí podle `search.score` a `rating`a pak ve vzestupném pořadí podle vzdálenosti od daných souřadnic, takže mezi dvěma hotely a identickým hodnocením je nejbližší uveden jako první:
 

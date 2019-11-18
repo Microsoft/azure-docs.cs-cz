@@ -1,5 +1,5 @@
 ---
-title: Jak vybrat vstupní zvukové zařízení pomocí sady Speech SDK – Speech Service
+title: Jak vybrat vstupní zvukové zařízení pomocí sady Speech SDK
 titleSuffix: Azure Cognitive Services
 description: Seznamte se s výběrem zařízení pro vstup zvuku v saděC++Speech C#SDK (,, Python, objektiv-C, Java, JavaScript) získáním ID zvukových zařízení připojených k systému.
 services: cognitive-services
@@ -10,18 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 967e4fbc5484c152867fe5558040631d21e6c0b3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072437"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109977"
 ---
-# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Výběr zvukového vstupního zařízení pomocí sady Speech SDK
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Postupy: Výběr zvukového vstupního zařízení pomocí sady Speech SDK
 
-1\.3.0 verze sady Speech SDK zavádí rozhraní API pro výběr zvukového vstupu.
-Tento článek popisuje, jak získat ID zvukových zařízení připojených k systému.
-Ty pak můžete použít v sadě Speech SDK nakonfigurováním zvukového zařízení prostřednictvím objektu `AudioConfig`:
+1\.3.0 verze sady Speech SDK zavádí rozhraní API pro výběr zvukového vstupu. Tento článek popisuje, jak získat ID zvukových zařízení připojených k systému. Ty pak můžete použít v sadě Speech SDK nakonfigurováním zvukového zařízení prostřednictvím objektu `AudioConfig`:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -53,6 +51,7 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>ID zvukových zařízení ve Windows pro aplikace klasické pracovní plochy
 
 [Řetězce ID koncového bodu](/windows/desktop/CoreAudio/endpoint-id-strings) zvukového zařízení lze načíst z objektu [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) v systému Windows pro aplikace klasické pracovní plochy.
+
 Následující ukázka kódu ukazuje, jak ho použít k zobrazení výčtu zvukových zařízení v C++nástroji:
 
 ```cpp
@@ -177,6 +176,7 @@ Ukázkové ID zařízení je `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013
 ## <a name="audio-device-ids-on-uwp"></a>ID zvukových zařízení na UWP
 
 Na Univerzální platforma Windows (UWP) lze pomocí vlastnosti `Id()` odpovídajícího objektu [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) získat zvuková vstupní zařízení.
+
 Následující ukázky kódu ukazují, jak to provést v C++ a: C#
 
 ```cpp
@@ -227,13 +227,16 @@ Ukázkové ID zařízení je `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-618
 ## <a name="audio-device-ids-on-linux"></a>ID zvukových zařízení v systému Linux
 
 ID zařízení se vyberou pomocí standardních ID zařízení ALSA.
+
 ID vstupů připojených k systému jsou obsažena ve výstupu příkazu `arecord -L`.
 Alternativně je lze získat pomocí [knihovny jazyka C ALSA](https://www.alsa-project.org/alsa-doc/alsa-lib/).
+
 ID vzorků jsou `hw:1,0` a `hw:CARD=CC,DEV=0`.
 
 ## <a name="audio-device-ids-on-macos"></a>ID zvukových zařízení v macOS
 
 Následující funkce implementovaná v cíli – C vytvoří seznam názvů a ID zvukových zařízení připojených k počítači Mac.
+
 Řetězec `deviceUID` slouží k identifikaci zařízení v sadě Speech SDK pro macOS.
 
 ```objc
@@ -362,8 +365,8 @@ Například UID vestavěného mikrofonu je `BuiltInMicrophoneDevice`.
 
 ## <a name="audio-device-ids-on-ios"></a>ID zvukových zařízení v iOS
 
-Výběr zvukového zařízení pomocí sady Speech SDK není v iOS podporován.
-Aplikace používající sadu SDK ale můžou ovlivnit zvukové směrování prostřednictvím [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Frameworku.
+Výběr zvukového zařízení pomocí sady Speech SDK není v iOS podporován. Aplikace používající sadu SDK ale můžou ovlivnit zvukové směrování prostřednictvím [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Frameworku.
+
 Například instrukce
 
 ```objc

@@ -1,7 +1,7 @@
 ---
-title: Seznamy frází – LUIS
+title: Popisovače – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pomocí Language Understanding (LUIS) můžete přidat funkce aplikace, které můžou zlepšit detekci nebo předpovědi záměrů a entit, které kategorie a vzory.
+description: Pomocí Language Understanding (LUIS) přidejte funkce aplikací, které můžete zlepšit zjišťování nebo předpověď záměry a entity, které kategorie a vzory
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,56 +9,51 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 11/14/2019
 ms.author: diberry
-ms.openlocfilehash: 0e3e4226eaaa0505eea96d8b3aca820f2327349e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2b5046bb61dcafbba0b0540935e08777fbd747a5
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467612"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123153"
 ---
-# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Použití seznamů frází ke zvýšení signálu v seznamu slov
+# <a name="use-descriptors-to-boost-signal-of-word-list"></a>Použití popisovačů k posílení signálu v seznamu slov
 
-Do aplikace LUIS můžete přidat funkce, aby se zlepšila její přesnost. Funkce nápovědy LUIS poskytují nápovědu, že určitá slova a fráze jsou součástí slovníku domény aplikace. 
+Přidání funkcí do své aplikace LUIS a zvýšit jeho přesnost. Funkce pomáhají LUIS tím, že poskytuje pomocné parametry tohoto slova a frází jsou součástí slovníku domény aplikaci. 
 
-[Seznam frází](luis-concept-feature.md) obsahuje skupinu hodnot (slova nebo fráze), které patří do stejné třídy a musí se nacházet podobně (například názvy měst nebo produktů). K čemu se LUIS informace o jednom z nich automaticky aplikuje i na ostatní. Tento seznam není stejný jako [entita seznamu](reference-entity-list.md) (shoda přes text) odpovídajících slov.
+[Popisovač](luis-concept-feature.md) (seznam frází) obsahuje skupinu hodnot (slova nebo fráze), které patří do stejné třídy a musí se nacházet podobně (například názvy měst nebo produktů). Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Tento seznam není stejný jako [entita seznamu](reference-entity-list.md) (shoda přes text) odpovídajících slov.
 
-Seznam frází se do slovníku domény aplikace přidá jako druhý signál, který LUIS o těchto slovech.
+Popisovač přidá do slovníku domény aplikace jako druhý signál k LUIS o těchto slovech.
 
-Seznamte se s [Koncepty funkcí](luis-concept-feature.md) a zjistěte, kdy a proč použít seznam frází. 
+Seznamte se s [Koncepty funkcí](luis-concept-feature.md) a zjistěte, kdy a proč použít popisovač. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="add-phrase-list"></a>Přidat seznam frází
+## <a name="add-descriptor"></a>Přidat popisovač
 
-LUIS umožňuje až 10 seznamů frází na aplikaci. 
+1. Otevřete aplikaci kliknutím na její název na stránce **Moje aplikace** a pak klikněte na **sestavit**a pak na **popisovače** v levém panelu vaší aplikace. 
 
-1. Otevřete aplikaci kliknutím na její název na stránce **Moje aplikace** a pak klikněte na **sestavit**a pak na na levém panelu vaší aplikace klikněte na **seznamy frází** . 
-
-1. Na stránce **seznam frází** klikněte na **vytvořit nový seznam frází**. 
+1. Na stránce **popisovače** klikněte na **+ Přidat popisovač**. 
  
-1. Do dialogového okna **Přidat seznam frází** zadejte `Cities` jako název seznamu frází. Do pole **hodnota** zadejte hodnoty seznamu frází. Najednou můžete zadat jednu hodnotu nebo sadu hodnot oddělených čárkami. potom stiskněte **ENTER**.
+1. V dialogovém okně **vytvořit nový popisovač seznamu frází** zadejte název pro popisovač, například `Cities`. Do pole **hodnota** zadejte hodnoty popisovačů, například `Seattle`. Zadejte jednu hodnotu, nebo sadu hodnot oddělených čárkami a potom stiskněte klávesu **Enter**.
 
-    ![Přidat města seznamu frází](./media/luis-add-features/add-phrase-list-cities.png)
+    > [!div class="mx-imgBorder"]
+    > ![přidat města deskriptoru](./media/luis-add-features/add-phrase-list-cities.png)
 
-1. LUIS může navrhovat související hodnoty pro přidání do seznamu frází. Kliknutím na tlačítko **doporučit** získáte skupinu navrhovaných hodnot, které jsou sémanticky spojeny s přidanými hodnotami. Můžete kliknout na libovolnou z navrhovaných hodnot nebo přidat všechny kliknutím na **Přidat vše** .
+    Až zadáte dostatek hodnot pro LUIS, zobrazí se návrhy. Můžete **+ Přidat všechny** navrhované hodnoty nebo vybrat jednotlivé výrazy.
 
-    ![Seznam frází navrhovaných hodnot – přidat vše](./media/luis-add-features/related-values.png)
+1. Zachovat **tyto hodnoty jsou zaměnitelné** , pokud jsou přidané hodnoty popisovače alternativami, které lze použít zaměnitelné.
 
-1. Klikněte na **tyto hodnoty jsou zaměnitelné** , pokud jsou přidané fráze hodnoty alternativy, které je možné použít zaměnitelné.
-
-    ![Seznam frází navrhovaných hodnot – výběr proměnitelné pole](./media/luis-add-features/interchangeable.png)
-
-1. Klikněte na **Done** (Hotovo). Seznam frází města je přidán na stránku **seznamy frází** .
+1. Vyberte **Done** (Hotovo). Nový popisovač se přidá na stránku **popisovače** .
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Seznam frází můžete odstranit nebo deaktivovat z kontextového panelu nástrojů na stránce **seznam frází** .
+> Popisovač můžete odstranit nebo deaktivovat z kontextového panelu nástrojů na stránce **popisovače** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Po přidání, úpravě, odstranění nebo deaktivaci seznamu frází znovu spusťte [výuku a otestujte aplikaci](luis-interactive-test.md) , abyste viděli, jestli se výkon zlepšuje.
+Po přidání, úpravě, odstranění nebo deaktivaci deskriptoru, [školení a otestování aplikace](luis-interactive-test.md) znovu, abyste viděli, jestli se zvyšuje výkon.

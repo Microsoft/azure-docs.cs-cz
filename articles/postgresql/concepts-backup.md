@@ -6,24 +6,24 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a4d8cd9f8198002b0b9ade8fe5058de1fcacc68f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 695c2da9313f768b3d176176ed677c63b5ad858e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937357"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143727"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
-Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru k určitému bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
+Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
 
-## <a name="backups"></a>Vytvářet
+## <a name="backups"></a>Zálohování
 
-Azure Database for PostgreSQL zabírají úplné a rozdílové zálohy a zálohy protokolu transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
+Azure Database for PostgreSQL přebírá zálohy datových souborů a transakčního protokolu. V závislosti na podporované maximální velikosti úložiště vezmeme úplné a rozdílové zálohy (4 TB max. servery úložiště) nebo zálohy snímků (až 16 TB maximálních úložných serverů). Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
-### <a name="backup-frequency"></a>Četnost zálohování
+### <a name="backup-frequency"></a>Frekvence zálohování
 
-Obecně platí, že k úplnému zálohování dochází týdně, rozdílové zálohování probíhá dvakrát denně a k zálohování protokolu transakcí dochází každých pět minut. První úplné zálohování je naplánováno ihned po vytvoření serveru. Prvotní zálohování může trvat déle na velkém obnoveném serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování.
+Obecně platí, že k úplným zálohováním dochází týdně, rozdílové zálohování probíhá dvakrát denně pro servery s maximálním podporovaným úložištěm 4 TB. Zálohování snímků probíhá alespoň jednou denně pro servery, které podporují až 16 TB úložiště. V obou případech se k zálohování protokolu transakcí vyskytuje každých pět minut. První snímek úplného zálohování je naplánován ihned po vytvoření serveru. Počáteční úplná záloha může trvat delší dobu jako u velkého obnoveného serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování. Jelikož jsou snímky instantanious, servery s podporou až 16 TB úložiště je možné obnovit až do doby vytvoření.
 
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
@@ -38,7 +38,7 @@ Azure Database for PostgreSQL poskytuje úložiště zřízeného serveru jako �
 
 Pokud jste například zřídili Server s 250 GB, máte k dispozici až 250 GB úložiště zálohování bez dalších poplatků. Účtují se za úložiště převyšující 250 GB.
 
-## <a name="restore"></a>Obnovil
+## <a name="restore"></a>Obnovení
 
 Při obnovení se v Azure Database for PostgreSQL vytvoří nový server ze zálohy původního serveru.
 
@@ -52,7 +52,7 @@ Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí 
 > [!IMPORTANT]
 > Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Obnovení k bodu v čase
+### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
 Nezávisle na možnosti redundance záloh můžete provést obnovení do libovolného bodu v čase v rámci doby uchovávání záloh. Nový server se vytvoří ve stejné oblasti Azure jako původní server. Vytvoří se s konfigurací původního serveru pro cenovou úroveň, generování výpočtů, počet virtuální jádra, velikost úložiště, dobu uchování zálohy a možnost redundance zálohy.
 
@@ -62,7 +62,9 @@ Možná budete muset počkat, než bude provedena další záloha protokolu tran
 
 ### <a name="geo-restore"></a>Geografické obnovení
 
-Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, pokud jste server nakonfigurovali pro geograficky redundantní zálohy. Pokud má velký incident v oblasti nedostupnost vaší databázové aplikace, můžete obnovit server z geograficky redundantní zálohy na server v jakékoli jiné oblasti. Doba mezi vytvořením zálohy a při replikaci do jiné oblasti trvá zpoždění. Tato prodleva může trvat až jednu hodinu, takže pokud dojde k havárii, může dojít ke ztrátě dat o hodinu.
+Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, pokud jste server nakonfigurovali pro geograficky redundantní zálohy. Pro servery, které podporují až 16 TB úložiště, se geografické zálohy dají obnovit jenom v oblastech, které podporují i 16 TB serverů. Seznam podporovaných oblastí najdete v [Azure Database for MySQL cenové úrovně](concepts-pricing-tiers.md) .
+
+Geografické obnovení je výchozí možností obnovení v případě, že server není k dispozici z důvodu incidentu v oblasti, kde je server hostován. Pokud má velký incident v oblasti nedostupnost vaší databázové aplikace, můžete obnovit server z geograficky redundantní zálohy na server v jakékoli jiné oblasti. Doba mezi vytvořením zálohy a při replikaci do jiné oblasti trvá zpoždění. Tato prodleva může trvat až jednu hodinu, takže pokud dojde k havárii, může dojít ke ztrátě dat o hodinu.
 
 Během geografického obnovení můžou konfigurace serveru, které je možné změnit, zahrnovat výpočetní generování, vCore, dobu uchování záloh a možnosti redundance zálohování. Změna cenové úrovně (Basic, Pro obecné účely nebo paměťově optimalizovaná) nebo velikosti úložiště se nepodporuje.
 
@@ -73,7 +75,7 @@ Po obnovení z některého mechanismu obnovení byste měli provést následují
 - Pokud má nový server nahradit původní server, přesměrujte klienty a klientské aplikace na nový server.
 - Zajistěte, aby se pro uživatele připojovala odpovídající pravidla brány firewall na úrovni serveru.
 - Zajistěte, aby byla zajištěna příslušná přihlášení a oprávnění na úrovni databáze.
-- Podle potřeby nakonfigurujte výstrahy
+- Podle potřeby nakonfigurujte výstrahy.
 
 ## <a name="next-steps"></a>Další kroky
 

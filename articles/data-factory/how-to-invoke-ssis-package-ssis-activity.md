@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/14/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673732"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122956"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s aktivitou spustit balíček SSIS v Azure Data Factory
 Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) v kanálu Azure Data Factory pomocí aktivity spustit balíček SSIS. 
@@ -39,7 +39,7 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
 
    ![Data Factory domovskou stránku](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
-   Na stránce **Pusťme se do toho** vyberte **Vytvořit kanál**. 
+   Na stránce **Začínáme** vyberte **Vytvořit kanál**. 
 
    ![Stránka Začínáme](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 
@@ -57,7 +57,7 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
 
     Když vytváříte nebo upravujete propojenou službu trezoru klíčů, můžete vybrat nebo upravit existující Trezor klíčů nebo vytvořit nový. Pokud jste to ještě neudělali, ujistěte se, že jste vašemu trezoru klíčů udělili Data Factory spravovaný přístup k identitám. Tajná klíčová okna můžete zadat také přímo v následujícím formátu: `<Key vault linked service name>/<secret name>/<secret version>`. Pokud váš balíček potřebuje 32 spuštění runtime, zaškrtněte políčko **32 modul runtime** .
 
-   Jako **umístění balíčku**vyberte **SSISDB**, **systém souborů (balíček)** nebo **systém souborů (projekt)** . Pokud jako umístění balíčku vyberete **SSISDB** , která se automaticky vybere v případě, že jste Azure-SSIS IR zřídili pomocí katalogu SSIS (SSISDB), který je hostovaný Azure SQL Database serverem nebo spravovanou instancí, určete, který balíček se má spustit, který byl nasazený. do SSISDB. 
+   V případě **umístění balíčku**vyberte **SSISDB**, **systém souborů (balíček)** , **systém souborů (projekt**) nebo **vložený balíček**. Pokud jako umístění balíčku vyberete **SSISDB** , která se automaticky vybere v případě, že jste Azure-SSIS IR zřídili pomocí katalogu SSIS (SSISDB), který je hostovaný Azure SQL Database serverem nebo spravovanou instancí, určete, který balíček se má spustit, který byl nasazený. do SSISDB. 
 
     Pokud je spuštěný Azure-SSIS IR a políčko **Ruční Ruční zadání** není zaškrtnuto, vyhledejte a vyberte existující složky, projekty, balíčky nebo prostředí z SSISDB. Vyberte **aktualizovat** a načtěte vaše nově přidané složky, projekty, balíčky nebo prostředí z SSISDB, aby byly dostupné pro procházení a výběr. Chcete-li procházet nebo vybrat prostředí pro spuštění balíčku, je nutné nakonfigurovat vaše projekty předem, aby byla tato prostředí přidána jako odkazy ze stejných složek v SSISDB. Další informace najdete v tématu [Vytvoření a mapování SSIS prostředí](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
 
@@ -82,6 +82,10 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
    Pak zadejte přihlašovací údaje pro přístup k vašemu projektu, balíčku nebo konfiguračnímu souboru. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro spuštění balíčku (viz předchozí), můžete je znovu použít zaškrtnutím políčka **stejné jako přihlašovací údaje pro spuštění balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů k balíčku do polí **doména**, **uživatelské jméno**a **heslo** . Pokud například uložíte projekt, balíček nebo konfiguraci do služby soubory Azure, doména je `Azure`, uživatelské jméno je `<storage account name>`a heslo je `<storage account key>`. 
 
    Alternativně můžete použít tajné klíče uložené ve vašem trezoru klíčů jako jejich hodnoty (viz předchozí). Tyto přihlašovací údaje se používají pro přístup k balíčku a podřízeným balíčkům v úloze spustit balíček, vše z vlastní cesty nebo stejného projektu a také konfigurací, které zahrnují ty, které jsou uvedené v balíčcích. 
+
+   Pokud jako umístění balíčku vyberete **vložený balíček** , můžete balíček spustit nebo ho **nahrát** ze složky souboru do zadaného pole. Balíček se automaticky komprimuje a vloží do datové části aktivity. Po vložení si můžete balíček později **Stáhnout** a upravit. Vložený balíček můžete také **parametrizovat** tak, že ho přiřadíte k parametru kanálu, který se dá použít ve více aktivitách, takže se optimalizuje velikost datové části kanálu. Pokud vložený balíček není zašifrovaný a zjistili jsme, že se v něm používá úloha spustit balíček, automaticky se vybere **úloha spustit balíček** a příslušné podřízené balíčky s jejich odkazy na systém souborů se automaticky přidají, abyste je mohli vložit. Pokud nemůžete detekovat úlohu použití balíčku Execute, budete muset ručně zaškrtnout políčko **spustit balíček** a přidat relevantní podřízené balíčky s jejich systémem souborů na jeden po jednom, aby je bylo možné vložit. Pokud podřízené balíčky používají SQL Server odkazy, ujistěte se prosím, že je SQL Server přístupná pro vaše Azure-SSIS IR.  Použití odkazů projektu pro podřízené balíčky není aktuálně podporováno.
+   
+   ![Nastavení vlastností na kartě Nastavení – ruční](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
    Pokud jste při vytváření balíčku pomocí nástroje SQL Server Data Tools použili úroveň ochrany **EncryptAllWithPassword** nebo **EncryptSensitiveWithPassword** , zadejte v poli **Šifrovací heslo** hodnotu pro heslo. Alternativně můžete jako svou hodnotu použít tajný kód uložený v trezoru klíčů (viz předchozí). Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte své citlivé hodnoty do konfiguračních souborů nebo na karty **SSIS**, **Správce připojení**nebo **přepsání vlastností** (viz později). 
 
@@ -281,7 +285,7 @@ V tomto kroku vytvoříte kanál s aktivitou spustit SSIS s balíčkem. Aktivita
    }
    ```
 
-   Pokud chcete spouštět balíčky uložené v souborové systémy, sdílené složky nebo soubory Azure, zadejte následující hodnoty vlastností balíčku nebo umístění protokolu:
+   Pokud chcete spouštět balíčky uložené v souborové systémy, sdílené složky nebo soubory Azure, zadejte následující hodnoty vlastností balíčku a umístění protokolu:
 
    ```json
    {
@@ -353,6 +357,31 @@ V tomto kroku vytvoříte kanál s aktivitou spustit SSIS s balíčkem. Aktivita
                                    "value": "MyAccountKey"
                                }
                            }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Chcete-li spustit vložené balíčky, zadejte hodnoty pro vlastnost umístění balíčku následujícím způsobem:
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "InlinePackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "packageName": "MyPackage.dtsx",
+                           "packageContent":"My compressed/uncompressed package content",
+                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
                        }
                    }
                }

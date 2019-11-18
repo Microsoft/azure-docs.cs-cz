@@ -1,34 +1,24 @@
 ---
-title: Chyby registrace poskytovatele prostředků Azure | Microsoft Docs
+title: Chyby registrace poskytovatele prostředků
 description: Popisuje, jak vyřešit chyby registrace poskytovatele prostředků Azure při nasazování prostředků pomocí Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 02/15/2019
-ms.author: tomfitz
-ms.openlocfilehash: fcdcfdfe736f29f18ea2dc240a66fd7fa6bc404b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 96595bab9d0db189911cac4fc1b42c722c2c1515
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390264"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150515"
 ---
-# <a name="resolve-errors-for-resource-provider-registration"></a>Řešení chyb pro registraci poskytovatele prostředků
+# <a name="resolve-errors-for-resource-provider-registration"></a>Vyřešit chyby registrace poskytovatele prostředků
 
-Tento článek popisuje chyby, se kterými se můžete setkat při používání poskytovatele prostředků, kterého jste předtím ve svém předplatném použili.
+Tento článek popisuje, chyby, které může dojít při používání poskytovatele prostředků, který jste dříve nepoužili ve vašem předplatném.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Příznak
 
-Při nasazování prostředku se může zobrazit následující kód chyby a zpráva:
+Při nasazování prostředků, může se zobrazit následující kód chyby a zprávy:
 
 ```
 Code: NoRegisteredProviderFound
@@ -36,14 +26,14 @@ Message: No registered resource provider found for location {location}
 and API version {api-version} for type {resource-type}.
 ```
 
-Nebo se může zobrazit podobná zpráva, která uvádí:
+Nebo můžete obdržet podobná zpráva s oznámením:
 
 ```
 Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
-Chybová zpráva by vám měla poskytnout návrhy na podporovaná umístění a verze rozhraní API. Šablonu můžete změnit na jednu z navrhovaných hodnot. Většina poskytovatelů je zaregistrována automaticky Azure Portal nebo rozhraní příkazového řádku, které používáte, ale ne všechny. Pokud jste konkrétního poskytovatele prostředků nepoužili dřív, možná budete muset tohoto poskytovatele zaregistrovat.
+Chybová zpráva by vám měl dát návrhy pro podporované umístění a verze rozhraní API. Šablony můžete změnit na jednu z navrhovaných hodnot. Většina poskytovatelů jsou registrované automaticky pomocí webu Azure portal nebo rozhraní příkazového řádku, které používáte, ale ne všechny. Pokud jste ještě nepoužívali poskytovatele určitého prostředku před, budete muset zaregistrovat tohoto poskytovatele.
 
 Nebo pokud zakážete automatické vypnutí virtuálních počítačů, může se zobrazit chybová zpráva podobná této:
 
@@ -57,8 +47,8 @@ Message: The client '<identifier>' with object id '<identifier>' does not have a
 Tyto chyby se zobrazí v jednom z následujících důvodů:
 
 * Požadovaný poskytovatel prostředků nebyl zaregistrován pro vaše předplatné.
-* Verze rozhraní API není pro typ prostředku podporovaná.
-* Umístění není pro daný typ prostředku podporované.
+* Verze rozhraní API není podporována pro typ prostředku
+* Umístění není podporována pro typ prostředku
 * Pro automatické vypnutí virtuálních počítačů musí být zaregistrovaný poskytovatel prostředků Microsoft. DevTestLab.
 
 ## <a name="solution-1---powershell"></a>Řešení 1 – PowerShell
@@ -75,7 +65,7 @@ Chcete-li zaregistrovat poskytovatele, použijte **Register-AzResourceProvider**
 Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
-Pokud chcete získat podporovaná umístění pro určitý typ prostředku, použijte:
+Podporovaná umístění pro konkrétní typ prostředku, použijte:
 
 ```powershell
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
@@ -87,46 +77,46 @@ Pokud chcete získat podporované verze rozhraní API pro konkrétní typ prost�
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
-## <a name="solution-2---azure-cli"></a>Řešení 2 – Azure CLI
+## <a name="solution-2---azure-cli"></a>Řešení 2 – rozhraní příkazového řádku Azure
 
-Chcete-li zjistit, zda je zprostředkovatel zaregistrován, použijte příkaz `az provider list`.
+Pokud chcete zobrazit, zda poskytovatel je zaregistrovaný, použijte `az provider list` příkazu.
 
 ```azurecli-interactive
 az provider list
 ```
 
-Chcete-li zaregistrovat poskytovatele prostředků, použijte příkaz `az provider register` a zadejte *obor názvů* , který chcete zaregistrovat.
+Zaregistrovat poskytovatele prostředků, použijte `az provider register` příkaz a zadejte *obor názvů* k registraci.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
 ```
 
-Pokud chcete zobrazit podporovaná umístění a verze rozhraní API pro typ prostředku, použijte:
+Pokud chcete zobrazit podporovaná místa a verze rozhraní API pro typ prostředku, použijte:
 
 ```azurecli-interactive
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-## <a name="solution-3---azure-portal"></a>Řešení 3 – Azure Portal
+## <a name="solution-3---azure-portal"></a>Řešení 3 – Azure portal
 
-Pomocí portálu můžete zobrazit stav registrace a zaregistrovat obor názvů poskytovatele prostředků.
+Můžete zobrazit stav registrace a obor názvů zprostředkovatele prostředků prostřednictvím portálu pro registraci.
 
-1. Na portálu vyberte **všechny služby**.
+1. Z portálu, vyberte **všechny služby**.
 
-   ![Vybrat všechny služby](./media/resource-manager-register-provider-errors/select-all-services.png)
+   ![Vyberte všechny služby](./media/resource-manager-register-provider-errors/select-all-services.png)
 
 1. Vyberte **Předplatná**.
 
-   ![Vybrat odběry](./media/resource-manager-register-provider-errors/select-subscriptions.png)
+   ![Vybrat předplatná](./media/resource-manager-register-provider-errors/select-subscriptions.png)
 
-1. V seznamu odběrů vyberte předplatné, které chcete použít k registraci poskytovatele prostředků.
+1. Seznam předplatných vyberte předplatné, které chcete použít pro registrace poskytovatele prostředků.
 
-   ![Vyberte předplatné pro registraci poskytovatele prostředků.](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
+   ![Vyberte předplatné, zaregistrujte poskytovatele prostředků](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
 
-1. U svého předplatného vyberte **poskytovatelé prostředků**.
+1. Pro vaše předplatné, vyberte **poskytovatelů prostředků**.
 
-   ![Vybrat poskytovatele prostředků](./media/resource-manager-register-provider-errors/select-resource-provider.png)
+   ![Vyberte poskytovatele prostředků](./media/resource-manager-register-provider-errors/select-resource-provider.png)
 
-1. Podívejte se na seznam poskytovatelů prostředků a v případě potřeby vyberte odkaz **zaregistrovat** a zaregistrujte poskytovatele prostředků typu, který se pokoušíte nasadit.
+1. Podívejte se na seznam poskytovatelů prostředků a v případě potřeby vyberte **zaregistrovat** odkaz se zaregistrovat poskytovatele prostředků typu, který zkoušíte nasadit.
 
-   ![Vypsat poskytovatele prostředků](./media/resource-manager-register-provider-errors/list-resource-providers.png)
+   ![Seznam poskytovatelů prostředků](./media/resource-manager-register-provider-errors/list-resource-providers.png)

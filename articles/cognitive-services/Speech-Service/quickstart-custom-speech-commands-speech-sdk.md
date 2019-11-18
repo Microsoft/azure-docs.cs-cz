@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: připojení k aplikaci Custom Commands pomocí sady Speech SDK (Preview)'
+title: 'Rychlý Start: připojení k vlastnímu příkazu aplikace pomocí sady Speech SDK – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: V tomto článku vytvoříte klientskou aplikaci sady Speech SDK s vlastními příkazy.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5f395d37e0133a081a6fcb2e03821a97e4012316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507492"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111155"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Rychlý Start: připojení k aplikaci Custom Commands pomocí sady Speech SDK (Preview)
 
@@ -26,7 +26,7 @@ V tomto článku:
 - Publikování vlastní aplikace příkazů a získání identifikátoru aplikace (ID aplikace)
 - Vytvoření klientské aplikace pomocí sady Speech SDK, která vám umožní komunikovat s aplikacemi pro vlastní příkazy
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste ještě nevytvořili aplikaci Custom Commands, můžete to udělat v těchto předchozích rychlých startech:
 
@@ -46,7 +46,7 @@ Tento rychlý Start popisuje, krok za krokem, jak vytvořit klientskou aplikaci 
 
 1. Otevřete [dříve vytvořenou aplikaci Custom Commands](./quickstart-custom-speech-commands-create-new.md) a vyberte **publikovat** .
 
-   > [!div class="mx-imgBorder"]
+   > [!div class="mx-imgBorder"] 
    > ![publikování aplikace](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Zkopírujte ID aplikace z oznámení o publikování pro pozdější použití.
@@ -320,7 +320,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 
    ```csharp
    //
-   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities, 
+   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities,
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
@@ -377,7 +377,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 1. Do těla metody `ListenButton_ButtonClicked` ve třídě `MainPage` přidejte následující fragment kódu.
 
    ```csharp
-   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and 
+   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
    // registered the event handlers.
    if (connector == null)
    {
@@ -402,9 +402,9 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
-1. V řádku nabídek vyberte **sestavení** **řešení**  >  pro sestavení aplikace. Kód by se měl zkompilovat bez chyb.
+1. V řádku nabídek výběrem možnosti **sestavit** > **Sestavit řešení** sestavte aplikaci. Kód by se měl zkompilovat bez chyb.
 
-1. Zvolte možnost **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci. Zobrazí se okno **HelloWorld** .
+1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci. Zobrazí se okno **HelloWorld** .
 
    ![Ukázková aplikace virtuálního pomocníka C# UWP v – rychlý Start](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
@@ -415,7 +415,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 1. Vyberte **hovořit**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší na kanál s přímým přístupem a přepisu na text, který se zobrazí v okně.
 
 ## <a name="next-steps"></a>Další kroky
+
 > [!div class="nextstepaction"]
 > [Postupy: plnění příkazů v klientovi pomocí sady Speech SDK (Preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [Postupy: Přidání ověření do vlastních parametrů příkazu (Preview)](./how-to-custom-speech-commands-validations.md)
-

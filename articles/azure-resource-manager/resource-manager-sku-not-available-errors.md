@@ -1,24 +1,14 @@
 ---
-title: Chyby SKU Azure nejsou k dispozici | Microsoft Docs
+title: Chyby SKU nejsou k dispozici
 description: Popisuje, jak vyřešit chybu SKU, která není k dispozici při nasazování prostředků pomocí Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: fca028412052a9a1520e1178f5d182a9987a9a85
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 56afca6b6a59ca08f3fd59c4d9b3ebf12bda415a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390221"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150489"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb pro SKU není k dispozici
 
@@ -58,9 +48,9 @@ virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      M
 virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-## <a name="solution-2---azure-cli"></a>Řešení 2 – Azure CLI
+## <a name="solution-2---azure-cli"></a>Řešení 2 – rozhraní příkazového řádku Azure
 
-K určení, které SKU jsou k dispozici v oblasti, použijte příkaz `az vm list-skus`. K filtrování výstupu do umístění, které používáte, použijte parametr `--location`. Pomocí parametru `--size` můžete hledat podle názvu částečné velikosti.
+K určení, které SKU jsou k dispozici v oblasti, použijte příkaz `az vm list-skus`. Použijte parametr `--location` k filtrování výstupu do umístění, které používáte. Pomocí parametru `--size` můžete hledat podle názvu částečné velikosti.
 
 ```azurecli-interactive
 az vm list-skus --location southcentralus --size Standard_F --output table
@@ -78,7 +68,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>Řešení 3 – Azure Portal
+## <a name="solution-3---azure-portal"></a>Řešení 3 – Azure portal
 
 K určení, které SKU jsou k dispozici v určité oblasti, použijte [portál](https://portal.azure.com). Přihlaste se k portálu a přidejte prostředek přes rozhraní. Při nastavování hodnot se zobrazí dostupné SKU pro daný prostředek. Nemusíte dokončit nasazení.
 

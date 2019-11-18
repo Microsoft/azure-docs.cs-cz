@@ -1,7 +1,7 @@
 ---
 title: Řazení OData podle odkazu
 titleSuffix: Azure Cognitive Search
-description: Referenční dokumentace jazyka OData pro syntaxi ORDER by v Azure Kognitivní hledání dotazy.
+description: Referenční dokumentace ke syntaxem a jazykům pro použití pořadí na základě dotazů v Azure Kognitivní hledání.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793306"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113145"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Syntaxe $orderby OData v Azure Kognitivní hledání
 

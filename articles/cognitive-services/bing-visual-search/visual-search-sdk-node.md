@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu SDK pro Node. js'
+title: 'Rychlý Start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu SDK pro Node. js'
 titleSuffix: Azure Cognitive Services
-description: Nahrajte Image pomocí sady Vizuální vyhledávání Bingu SDK a Získejte přehled o ní.
+description: Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí sady Node. js SDK.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: f0dd0bb82f899146956b5671497d298c7ce076ef
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fd69179c98e999323936daf7e83b165126c20381
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360516"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111586"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Rychlý start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu SDK pro Node. js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Rychlý Start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu SDK pro Node. js
 
-Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí sady Node. js SDK. I když Vizuální vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 
+Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí sady Node. js SDK. I když Vizuální vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 
 
 ## <a name="prerequisites"></a>Požadavky
 * [Node.js](https://www.nodejs.org/)
@@ -57,7 +57,7 @@ Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z V
 
 ## <a name="search-for-images"></a>Hledání imagí
 
-1. Použijte `fs.createReadStream()` ke čtení v souboru obrázku a k vytvoření proměnných pro svůj požadavek a výsledky hledání. Pak použijte klienta k hledání imagí.
+1. Pomocí `fs.createReadStream()` si můžete přečíst v souboru obrázku a vytvořit proměnné pro svůj požadavek a výsledky hledání. Pak použijte klienta k hledání imagí.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);
@@ -107,7 +107,7 @@ Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z V
     
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Sestavení webové aplikace s jednou stránkou](tutorial-bing-visual-search-single-page-app.md)

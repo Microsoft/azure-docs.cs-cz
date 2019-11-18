@@ -1,5 +1,5 @@
 ---
-title: Připojit prostředek Cognitive Services k dovednosti
+title: Připojit Cognitive Services k dovednosti
 titleSuffix: Azure Cognitive Search
 description: Pokyny pro připojení Cognitive Servicesho předplatného ke kanálu rozšíření AI ve službě Azure Kognitivní hledání.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 11ca5f71cb0d08a4bebf72407035a9557c794f9f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788031"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113929"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Kognitivní hledání 
 
-Algoritmy AI: jednotky [rozšíření](cognitive-search-concept-intro.md) používané pro transformaci obsahu v Azure kognitivní hledání. Tyto algoritmy jsou založené na prostředcích Azure Cognitive Services, včetně [počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/) pro analýzu obrázků a optické rozpoznávání znaků (OCR) a [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pro rozpoznávání entit, extrakci klíčových frází a jiné obohacení. . Jak se používá v Azure Kognitivní hledání pro účely rozšíření dokumentů, jsou algoritmy zabaleny uvnitř *dovednosti*, jsou umístěné v *dovednosti*a na ně odkazuje *indexer* během indexování.
+Algoritmy AI: jednotky [rozšíření](cognitive-search-concept-intro.md) používané pro transformaci obsahu v Azure kognitivní hledání. Tyto algoritmy jsou založené na prostředcích Azure Cognitive Services, včetně [počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/) pro analýzu obrázků a optického rozpoznávání znaků (OCR) a [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pro rozpoznávání entit, extrakci klíčových frází a další obohacení. Jak se používá v Azure Kognitivní hledání pro účely rozšíření dokumentů, jsou algoritmy zabaleny uvnitř *dovednosti*, jsou umístěné v *dovednosti*a na ně odkazuje *indexer* během indexování.
 
 Omezený počet dokumentů můžete rozšířit zdarma. Případně můžete k *dovednosti* připojit fakturovatelný prostředek Cognitive Services pro větší a častější zatížení. V tomto článku se dozvíte, jak připojit fakturovatelný Cognitive Services prostředek k rozšíření dokumentů během [indexování](search-what-is-an-index.md)Azure kognitivní hledání.
 
@@ -99,7 +99,7 @@ Pokud máte existující dovednosti, můžete ho připojit k novému nebo jiném
 
 ## <a name="attach-cognitive-services-programmatically"></a>Připojit Cognitive Services programově
 
-Pokud dovednosti definujete programově, přidejte do dovednosti oddíl `cognitiveServices`. V této části zahrňte klíč Cognitive Services prostředku, který chcete přidružit k dovednosti. Pamatujte, že prostředek musí být ve stejné oblasti jako prostředek služby Azure Kognitivní hledání. Také zahrňte `@odata.type` a nastavte ji na `#Microsoft.Azure.Search.CognitiveServicesByKey`.
+Pokud dovednosti definujete programově, přidejte do dovednosti oddíl `cognitiveServices`. V této části zahrňte klíč Cognitive Services prostředku, který chcete přidružit k dovednosti. Pamatujte, že prostředek musí být ve stejné oblasti jako prostředek služby Azure Kognitivní hledání. Také zahrňte `@odata.type`a nastavte ji na `#Microsoft.Azure.Search.CognitiveServicesByKey`.
 
 Následující příklad ukazuje tento model. Všimněte si `cognitiveServices` části na konci definice.
 

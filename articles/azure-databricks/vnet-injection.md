@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3894904575d545aed0dbfce470247afb145b7590
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605672"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129303"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Nasazení Azure Databricks ve vaší virtuální síti
 
@@ -119,14 +119,14 @@ Pokud tuto šablonu použijete bez použití šablony skupiny zabezpečení sít
 
 ## <a name="whitelisting-subnet-traffic"></a>Seznam povolených přenosů podsítí
 
-Pokud při vytváření skupin zabezpečení sítě nepoužíváte šablony [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) nebo [Azure Resource Manager](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) , musíte do svých podsítí ručně zařadit do seznamu povolených následujících přenosů.
+Pokud při vytváření skupin zabezpečení sítě nepoužíváte šablony [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) nebo [Azure Resource Manager](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-advanced) , musíte do svých podsítí ručně zařadit do seznamu povolených následujících přenosů.
 
 |Směr|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|
 |---------|--------|------|-----------|-----------|----------------|
 |Příchozí|\*|VirtualNetwork|\*|\*|\*|
 |Příchozí|\*|Řídicí rovina IP adresy NAT|\*|\*|22|
 |Příchozí|\*|Řídicí rovina IP adresy NAT|\*|\*|5557|
-|Odchozí|\*|\*|\*|WebApp IP adresa|\*|
+|Odchozí|\*|\*|\*|Webapp IP|\*|
 |Odchozí|\*|\*|\*|SQL (značka služby)|\*|
 |Odchozí|\*|\*|\*|Storage (značka služby)|\*|
 |Odchozí|\*|\*|\*|VirtualNetwork|\*|
@@ -135,30 +135,30 @@ Povolený provoz v podsíti pomocí následujících IP adres. Pro SQL (metastor
 
 |Oblast Azure Databricks|Služba|Veřejná IP adresa|
 |-----------------------|-------|---------|
-|Východ USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Východ USA 2|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Středoseverní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Střední USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Středojižní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
-|Západní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
-|Západní USA 2|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
-|Střední Kanada|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Kanada – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Spojené království – západ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
-|Spojené království – jih|Řízení překladu roviny ovládacího prvku </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
-|Západní Evropa|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
-|Severní Evropa|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
-|Střed Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Indie – jih|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Indie – západ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Jihovýchodní Asie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Východní Asie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Austrálie – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Austrálie – jihovýchod|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Austrálie – střed|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Austrálie – střed 2|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Japonsko – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.78.19.235/32 </br></br>52.246.160.72/32|
-|Japonsko – západ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Východní USA|Řízení překladu roviny ovládacího prvku </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Východ USA 2|Řízení překladu roviny ovládacího prvku </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Středoseverní USA|Řízení překladu roviny ovládacího prvku </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Střední USA|Řízení překladu roviny ovládacího prvku </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Středojižní USA|Řízení překladu roviny ovládacího prvku </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|Západní USA|Řízení překladu roviny ovládacího prvku </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|Západní USA 2|Řízení překladu roviny ovládacího prvku </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|Kanada – střed|Řízení překladu roviny ovládacího prvku </br></br>Webapp|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Východní Kanada|Řízení překladu roviny ovládacího prvku </br></br>Webapp|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Spojené království – západ|Řízení překladu roviny ovládacího prvku </br></br>Webapp|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Velká Británie – jih|Řízení překladu roviny ovládacího prvku </br></br>Webapp|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Západní Evropa|Řízení překladu roviny ovládacího prvku </br></br>Webapp|23.100.0.135/32 </br></br>52.232.19.246/32|
+|Severní Evropa|Řízení překladu roviny ovládacího prvku </br></br>Webapp|23.100.0.135/32 </br></br>52.232.19.246/32|
+|Střed Indie|Řízení překladu roviny ovládacího prvku </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Indie – jih|Řízení překladu roviny ovládacího prvku </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Indie – západ|Řízení překladu roviny ovládacího prvku </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Jihovýchodní Asie|Řízení překladu roviny ovládacího prvku </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
+|Východní Asie|Řízení překladu roviny ovládacího prvku </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
+|Austrálie – východ|Řízení překladu roviny ovládacího prvku </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Austrálie – jihovýchod|Řízení překladu roviny ovládacího prvku </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Austrálie – střed|Řízení překladu roviny ovládacího prvku </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Austrálie – střed 2|Řízení překladu roviny ovládacího prvku </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Japonsko – východ|Řízení překladu roviny ovládacího prvku </br></br>Webapp|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Japonsko – západ|Řízení překladu roviny ovládacího prvku </br></br>Webapp|13.78.19.235/32 </br></br>52.246.160.72/32|
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

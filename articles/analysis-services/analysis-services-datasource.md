@@ -4,15 +4,15 @@ description: Popisuje zdroje dat a konektory podporované tabulkami 1200 a vyš�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572966"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120019"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -24,7 +24,7 @@ Zdroje dat a konektory zobrazené v průvodci získat data nebo importovat v apl
 |---------|---------|---------|
 |Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Ano      |    Ano      |
 |Azure SQL Data Warehouse     |   Ano      |   Ano       |
-|Blob Storage Azure<sup>[1](#tab1400a)</sup>     |   Ano       |    Ne      |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Ano       |    Ne      |
 |Table Storage Azure<sup>[1](#tab1400a)</sup>    |   Ano       |    Ne      |
 |Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Ano        |  Ne        |
 |Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>; <sup>[4](#gen2)</sup>      |   Ano       |    Ne      |
@@ -35,7 +35,7 @@ Zdroje dat a konektory zobrazené v průvodci získat data nebo importovat v apl
 <a name="tab1400a">1</a> -tabelární 1400 a vyšší modely.   
 <a name="azsqlmanaged">2</a> Azure SQL Database spravovaná instance je podporovaná. Vzhledem k tomu, že se spravovaná instance spouští v rámci virtuální sítě Azure s privátní IP adresou, musí být v instanci povolený veřejný koncový bod. Pokud není povolená, vyžaduje se místní brána dat.    
 <a name="databricks">3</a> – Azure Databricks používání konektoru Sparku se v tuto chvíli nepodporuje.   
-<a name="gen2">4</a> adls Gen2 v tuto chvíli není podporovaná.
+<a name="gen2">4</a> adls Gen2 konektor se momentálně nepodporuje, ale konektor BLOB Storage lze použít se zdrojem dat adls Gen2.
 
 
   **zprostředkovatele**  
@@ -43,14 +43,14 @@ Modely v paměti a DirectQuery, které se připojují ke zdrojům dat Azure, pou
 
 ## <a name="other-data-sources"></a>Další zdroje dat
 
-Připojení k místním zdrojům dat z a Azure jako server vyžaduje místní bránu. Při použití brány se vyžadují 64 zprostředkovatelé.
+Připojení k místním zdrojům dat z Azure Analysis Services serveru vyžaduje místní bránu. Při použití brány se vyžadují 64 zprostředkovatelé.
 
 ### <a name="in-memory-and-directquery"></a>V paměti a DirectQuery
 
 |Zdroj dat | Zprostředkovatel v paměti | Zprostředkovatel DirectQuery |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11,0, Microsoft OLE DB Provider for SQL Server .NET Framework Zprostředkovatel dat pro SQL Server | .NET Framework Zprostředkovatel dat SQL Server |
-| SQL Server datový sklad |SQL Server Native Client 11,0, Microsoft OLE DB Provider for SQL Server .NET Framework Zprostředkovatel dat pro SQL Server | .NET Framework Zprostředkovatel dat SQL Server |
+| SQL Server |Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (doporučeno), SQL Server Native Client 11,0 .NET Framework Zprostředkovatel dat pro SQL Server | .NET Framework Zprostředkovatel dat SQL Server |
+| SQL Server Data Warehouse |Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (doporučeno), SQL Server Native Client 11,0 .NET Framework Zprostředkovatel dat pro SQL Server | .NET Framework Zprostředkovatel dat SQL Server |
 | Oracle | Poskytovatel OLE DB pro Oracle, Oracle Zprostředkovatel dat pro .NET |Oracle Zprostředkovatel dat pro .NET |
 | Teradata |Zprostředkovatel OLE DB pro Teradata, Teradata Zprostředkovatel dat pro .NET |Zprostředkovatel dat Teradata pro .NET |
 | | | |

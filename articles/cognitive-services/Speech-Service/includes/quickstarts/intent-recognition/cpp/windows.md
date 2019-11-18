@@ -11,24 +11,25 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b26b5edeaac1f6305ed2db920c711f906eb10384
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76b7c9436b8d1d466a69df7e5427991df0a9c63e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503903"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125446"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
+>
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Vytvoření aplikace LUIS a získání klíče koncového bodu](../../../../quickstarts/create-luis.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v sadě Visual Studio
 
 Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
@@ -42,16 +43,16 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné vytvořit konfiguraci, která používá Endpoing klíč a oblast LUIS. Vložte tento kód do metody `recognizeIntent()`.
+Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné vytvořit konfiguraci, která používá klíč a oblast koncového bodu LUIS. Vložte tento kód do metody `recognizeIntent()`.
 
 Tato ukázka používá metodu `FromSubscription()` k sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig).
 
 > [!NOTE]
-> Je důležité použít klíč koncového bodu LUIS a ne počáteční nebo Authroing klíče, protože pro rozpoznávání řeči je platný jenom klíč koncového bodu. Pokyny, jak získat správný klíč, najdete v tématu [Vytvoření aplikace v Luis a získání klíče koncového bodu](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
+> Je důležité použít klíč koncového bodu LUIS a ne počáteční nebo zdrojové klíče, protože pro rozpoznávání řeči je platný jenom klíč koncového bodu. Pokyny, jak získat správný klíč, najdete v tématu [Vytvoření aplikace v Luis a získání klíče koncového bodu](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=25)]
 
-## <a name="initialize-a-intentrecognizer"></a>Inicializovat IntentRecognizer
+## <a name="initialize-an-intentrecognizer"></a>Inicializovat IntentRecognizer
 
 Nyní vytvoříme `IntentRecognizer`. Vložte tento kód do metody `recognizeIntent()` hned pod konfigurací řeči.
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=28)]
@@ -63,8 +64,8 @@ Teď je potřeba přidružit `LanguageUnderstandingModel` k nástroji pro rozpoz
 
 ## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
-Z objektu `IntentRecognizer` zavoláte metodu `RecognizeOnceAsync()`. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že jakmile je fráze identifikována pro zastavení reconizing řeči.
-Pro similicity budeme čekat na dokončení budoucího navrácení.
+Z objektu `IntentRecognizer` zavoláte metodu `RecognizeOnceAsync()`. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že po identifikaci fráze zastavit rozpoznávání řeči.
+Pro zjednodušení budeme čekat na dokončení budoucího navrácení.
 
 V příkazu Using přidejte tento kód: [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=44)]
 
@@ -76,13 +77,14 @@ V příkazu Using níže `RecognizeOnceAsync()`přidejte tento kód: [!code-cpp[
 
 ## <a name="check-your-code"></a>Kontrolovat kód
 
-V tomto okamžiku by váš kód měl vypadat takto: (do této verze jsme přidali nějaké komentáře) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
+V tomto okamžiku váš kód by měl vypadat takto:  
+(Do této verze jsme přidali nějaké komentáře) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
 Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
-1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** **řešení**sestavení > .
+1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** **řešení**Build > .
 2. **Spusťte aplikaci** – z panelu nabídek zvolte možnost **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
 3. **Spustit rozpoznávání** – zobrazí výzvu k vymluvenému vynechání fráze v angličtině. Váš hlas se odešle službě Speech, přepisu jako text a vykreslí se v konzole nástroje.
 

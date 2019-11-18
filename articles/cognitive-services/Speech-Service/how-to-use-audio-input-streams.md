@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: e00feed416eb3e06b703a2ef4fe040f0c815716e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464301"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109936"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>O rozhraní API pro audio input Stream v sadě Speech SDK
 
-Rozhraní API pro **Audio Input Stream** v sadě Speech SDK poskytuje způsob, jak streamovat zvukové streamy do rozpoznávání, místo abyste použili buď mikrofon, nebo vstupní soubor rozhraní API.
+Rozhraní API pro **Audio Input Stream** v sadě Speech SDK poskytuje způsob, jak streamovat zvuk do rozpoznávání, místo abyste použili buď mikrofon, nebo vstupní soubor rozhraní API.
 
 Při použití vstupních datových proudů je potřeba použít následující postup:
 
@@ -29,7 +29,7 @@ Při použití vstupních datových proudů je potřeba použít následující 
 
   Odpovídající kód v sadě SDK pro vytvoření formátu zvuku vypadá takto:
 
-  ```
+  ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
   int samplesPerSecond = 16000;
@@ -40,7 +40,7 @@ Při použití vstupních datových proudů je potřeba použít následující 
 
 - Vytvořte si vlastní třídu vstupního streamu zvuku odvozenou z `PullAudioInputStreamCallback`. Implementujte členy `Read()` a `Close()`. Přesný podpis funkce je závislý na jazyku, ale kód bude vypadat podobně jako tento ukázka kódu:
 
-  ```
+  ```csharp
    public class ContosoAudioStream : PullAudioInputStreamCallback {
       ContosoConfig config;
 
@@ -59,9 +59,9 @@ Při použití vstupních datových proudů je potřeba použít následující 
    };
   ```
 
-- Vytvořte zvukovou konfiguraci na základě zvukového formátu a vstupního streamu. Při vytváření nástroje pro rozpoznávání můžete předávat standardní konfiguraci řeči i konfiguraci zvukového vstupu. Například:
+- Vytvořte zvukovou konfiguraci na základě zvukového formátu a vstupního streamu. Při vytváření nástroje pro rozpoznávání můžete předávat standardní konfiguraci řeči i konfiguraci zvukového vstupu. Příklad:
 
-  ```
+  ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
 
   var speechConfig = SpeechConfig.FromSubscription(...);
@@ -75,5 +75,5 @@ Při použití vstupních datových proudů je potřeba použít následující 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Podívejte se, jak rozpoznávat řeč vC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Zjistěte, jak rozpoznávat řeč v jazyce C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

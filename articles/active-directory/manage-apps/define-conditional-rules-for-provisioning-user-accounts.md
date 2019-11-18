@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "70812682"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120117"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -110,6 +110,14 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 >[!IMPORTANT] 
 > Uložení nového filtru oboru aktivuje novou úplnou synchronizaci pro aplikaci, kde všichni uživatelé ve zdrojovém systému jsou znovu vyhodnocováni proti novému filtru oborů. Pokud byl uživatel v aplikaci dříve v oboru pro zřizování, ale nespadají do oboru, je jeho účet v aplikaci zakázán nebo zrušen. Pokud chcete toto výchozí chování přepsat, přečtěte si téma [přeskočení odstranění u uživatelských účtů, které se nacházejí mimo rozsah](skip-out-of-scope-deletions.md).
 
+
+## <a name="common-scoping-filters"></a>Běžné filtry oboru
+| Cílový atribut| Operátor | Hodnota | Popis|
+|----|----|----|----|
+|userPrincipalName (Hlavní název uživatele)|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|.\*@domain.com |Všichni uživatelé, kteří mají userPrincipal @domain.com domény, budou v oboru pro zřizování.|
+|userPrincipalName (Hlavní název uživatele)|NESHODA S REGULÁRNÍM VÝRAZEM|.\*@domain.com|Pro všechny uživatele, kteří mají userPrincipal @domain.com domény, budou mimo rozsah zřizování.|
+|Oddělení|ROVNÁ|SalesTable|Všichni uživatelé z prodejního oddělení jsou v oboru pro zřizování.|
+|workerID|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Všichni zaměstnanci s workerIDs mezi 1000000 a 2000000 jsou v oboru pro zřizování.|
 
 ## <a name="related-articles"></a>Související články
 * [Automatizace zřizování a rušení uživatelů pro aplikace SaaS](user-provisioning.md)

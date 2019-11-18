@@ -1,5 +1,5 @@
 ---
-title: Kodek Stream komprimovaný zvuk se sadou Speech SDK v Androidu – Speech Service
+title: Kodek Stream komprimovaný zvuk se sadou Speech SDK v Androidu
 titleSuffix: Azure Cognitive Services
 description: Naučte se streamovat komprimovaný zvuk do služby Azure Speech Services pomocí sady Speech SDK v Androidu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464369"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109900"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v Androidu
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Postupy: použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v Androidu
 
 Rozhraní API pro **komprimovaný zvuk vstupního streamu** sady Speech SDK poskytuje způsob, jak streamovat komprimovaný zvuk do služby pro rozpoznávání řeči pomocí PullStream nebo PushStream.
 
@@ -25,7 +25,7 @@ Rozhraní API pro **komprimovaný zvuk vstupního streamu** sady Speech SDK posk
 > V současné době se pro [ C++jazyky, C#a Java v systému Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md)aktuálně podporují streamování komprimovaných zvuků. Podporuje se taky pro Java v Androidu a [v cíli C na platformě iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
 > Je vyžadována sada Speech SDK verze 1.7.0 nebo vyšší.
 
-Informace o WAV/PCM najdete v dokumentaci k hlavní Speech.  Mimo zvuk WAV/PCM jsou podporovány následující formáty komprimované vstupní hodnoty kodeku:
+Informace o WAV/PCM najdete v dokumentaci k hlavní Speech. Mimo zvuk WAV/PCM jsou podporovány následující formáty komprimované vstupní hodnoty kodeku:
 
 - MP3
 - OPUS/OGG
@@ -35,7 +35,7 @@ Informace o WAV/PCM najdete v dokumentaci k hlavní Speech.  Mimo zvuk WAV/PCM j
 
 ## <a name="prerequisites-to-using-codec-compressed-audio-input-on-android"></a>Předpoklady použití komprimovaného zvukového vstupu kodeku v Androidu
 
-Komprimovaný zvuk kodeku je implementován pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány se sadou SDK. Budete muset použít předem připravené binární soubory pro Android. Pokud si chcete stáhnout předem připravené knihovny, přečtěte si téma [instalace pro vývoj pro Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c). 
+Komprimovaný zvuk kodeku je implementován pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány se sadou SDK. Budete muset použít předem připravené binární soubory pro Android. Pokud si chcete stáhnout předem připravené knihovny, přečtěte si téma [instalace pro vývoj pro Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
 `libgstreamer_android.so` se vyžaduje. Ujistěte se, že jsou moduly plug-in GStreamer propojené v `libgstreamer_android.so`.
 
@@ -129,7 +129,7 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-Po sestavení sdíleného objektu (libgstreamer_android. so) musí vývojář aplikace umístit sdílený objekt do aplikace pro Android, aby jej bylo možné načíst pomocí sady Speech SDK.
+Po sestavení sdíleného objektu (libgstreamer_android. so) musí vývojář aplikace umístit sdílený objekt do aplikace pro Android, aby se mohl načíst pomocí sady Speech SDK.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
 
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>Další kroky
 
 - [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Viz rozpoznávání řeči v jazyce Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [Viz rozpoznávání řeči v jazyce Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: Správa, nasazení & monitorování modelů ML'
+title: 'MLOps: Správa modelů na ML'
 titleSuffix: Azure Machine Learning
-description: 'Naučte se používat Azure Machine Learning pro MLOps: nasazení, správu a monitorování vašich modelů pro jejich nepřetržité zlepšení. Můžete nasadit modely, které jste vyškolení pomocí Azure Machine Learning, na vašem místním počítači nebo z jiných zdrojů.'
+description: 'Přečtěte si o správě modelů pomocí Azure Machine Learning (MLOps). Nasaďte, spravujte a Monitorujte své modely, abyste je mohli průběžně vylepšit. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716597"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123606"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Správa, nasazení a monitorování modelů pomocí Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
 V tomto článku se dozvíte, jak pomocí Azure Machine Learning spravovat životní cyklus vašich modelů. Azure Machine Learning využívá přístup k operacím s Machine Learning (MLOps), což zlepšuje kvalitu a konzistenci vašich řešení pro strojové učení. 
 
@@ -47,7 +47,7 @@ Registrace modelu umožňuje ukládat a modelovat modely v cloudu Azure ve vaše
 > [!TIP]
 > Registrovaný model je logický kontejner pro jeden nebo více souborů, které tvoří model. Například pokud máte model, který je uložený v několika souborech, můžete je zaregistrovat jako jeden model v pracovním prostoru Azure Machine Learning. Po registraci můžete zaregistrovaný model stáhnout nebo nasadit a získat všechny soubory, které byly zaregistrovány.
  
-Registrované modely se identifikují podle názvu a verze. Pokaždé, když zaregistrujete model se stejným názvem, jako má existující, registr zvýší verzi. Během registrace můžete také poskytnout další značky metadat, které lze použít při hledání modelů. Azure Machine Learning podporuje libovolný model, který lze načíst pomocí Pythonu 3.5.2 nebo vyššího.
+Registrované modely se identifikují podle názvu a verze. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky. Azure Machine Learning podporuje libovolný model, který lze načíst pomocí Pythonu 3.5.2 nebo vyššího.
 
 > [!TIP]
 > Můžete také registrovat modely školení mimo Azure Machine Learning.

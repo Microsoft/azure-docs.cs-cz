@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b0c3487bb77f32483d6d65cd0a4b1f637267eabf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012960"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144349"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory v Azure API Management
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorizace vývojářských účtů pomocí Azure AD
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). 
 2. Vyberte ![šipka](./media/api-management-howto-aad/arrow.png).
 3. Do vyhledávacího pole zadejte **API** .
 4. Vyberte **API Management Services**.
@@ -81,12 +81,16 @@ Po uložení změn se uživatelé ze zadané instance služby Azure AD mohou př
 
 ## <a name="add-an-external-azure-ad-group"></a>Přidat externí skupinu Azure AD
 
-Po povolení přístupu pro uživatele v instanci Azure AD můžete přidat skupiny služby Azure AD v API Management. Pak můžete snadněji spravovat přidružení vývojářů ve skupině k požadovaným produktům.
+Po povolení přístupu pro uživatele v tenantovi Azure AD můžete přidat skupiny Azure AD do API Management. V důsledku toho můžete ovládat viditelnost produktu pomocí skupin Azure AD.
 
- > [!IMPORTANT]
- > Pokud chcete přidat externí skupinu Azure AD, musíte nejdřív na kartě **identity** nakonfigurovat instanci Azure AD podle postupu v předchozí části. Kromě toho musí být aplikaci udělen přístup k Graph API Azure AD s oprávněním `Directory.Read.All`. 
+Pokud chcete do APIM přidat externí skupinu Azure AD, musíte nejdřív dokončit předchozí oddíl. Kromě toho musí být zaregistrovaná aplikace udělena přístup k Azure Active Directory Graph API s oprávněním `Directory.ReadAll` pomocí následujících kroků: 
 
-Externí skupiny služby Azure AD přidáte na kartě **skupiny** vaší instance API Management.
+1. Vraťte se k registraci vaší aplikace, která se vytvořila v předchozí části.
+2. Klikněte na kartu **oprávnění rozhraní API** a potom klikněte na tlačítko **+ Přidat oprávnění** . 
+3. V podokně **oprávnění API pro vyžádání** vyberte kartu **rozhraní Microsoft API** a posuňte se dolů, abyste našli dlaždici **Azure Active Directory Graph** v části podporovaná starší rozhraní API a klikněte na ni. Pak klikněte na tlačítko **oprávnění aplikace** a vyberte oprávnění **Directory. ReadAll** a pak přidejte toto oprávnění pomocí tlačítka v dolní části. 
+4. Klikněte na tlačítko **udělení souhlasu správce pro {tenant}** , abyste udělili přístup všem uživatelům v tomto adresáři. 
+
+Nyní můžete přidat externí skupiny služby Azure AD z karty **skupiny** vaší instance API Management.
 
 1. Vyberte kartu **Skupiny**.
 2. Vyberte tlačítko **Přidat skupinu AAD** .

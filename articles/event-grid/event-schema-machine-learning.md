@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 6c2a8fa57bf6e3a552da57588bdbe752ef0d22e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609564"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132873"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid schéma událostí pro Azure Machine Learning
 
@@ -155,13 +155,13 @@ Událost má následující data nejvyšší úrovně:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| Závislosti | řetězec | Cesta definovaná vydavatelem k předmětu události |
-| Typ | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
-| Čas události | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| subject | řetězec | Cesta definovaná vydavatelem k předmětu události |
+| eventType | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
 | data | objekt | Data události služby Blob Storage. |
-| dataverze | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
-| Verze metadataversion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
+| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má pro každý typ události následující vlastnosti:
 
@@ -180,7 +180,7 @@ Datový objekt má pro každý typ události následující vlastnosti:
 | -------- | ---- | ----------- |
 | ServiceName | řetězec | Název nasazené služby. |
 | ServiceComputeType | řetězec | Výpočetní typ (např. ACI, AKS) nasazené služby. |
-| ModelIds | řetězec | Společný oddělený seznam ID modelů. ID modelů nasazených ve službě. |
+  | ModelIds | řetězec | Čárkami oddělený seznam ID modelů. ID modelů nasazených ve službě. |
 | ServiceTags | objekt | Značky nasazené služby. |
 | ServiceProperties | objekt | Vlastnosti nasazené služby. |
 
@@ -189,7 +189,7 @@ Datový objekt má pro každý typ události následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | ExperimentId | řetězec | ID experimentu, do kterého daný běh patří. |
-| experiment | řetězec | Název experimentu, do kterého daný běh patří. |
+| Experiment | řetězec | Název experimentu, do kterého daný běh patří. |
 | RunId | řetězec | ID běhu, které bylo dokončeno. |
 | RunType | řetězec | Typ spuštění dokončeného běhu. |
 | RunTags | objekt | Značky dokončeného spuštění. |
@@ -214,4 +214,4 @@ Datový objekt má pro každý typ události následující vlastnosti:
 * Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
 * Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md) .
 * Úvod k použití Azure Event Grid s Azure Machine Learning najdete v tématu věnovaném zpracování [Azure Machine Learningch událostí](/azure/machine-learning/service/concept-event-grid-integration) .
-* Příklad použití Azure Event Grid s Azure Machine Learning najdete v tématu [vytváření pracovních postupů pro Machine Learning řízených událostmi](/azure/machine-learning/service/event-schema-machine-learning) .
+* Příklad použití Azure Event Grid s Azure Machine Learning najdete v tématu [vytváření pracovních postupů pro Machine Learning řízených událostmi](/azure/machine-learning/service/how-to-use-event-grid) .

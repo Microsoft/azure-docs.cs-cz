@@ -1,5 +1,5 @@
 ---
-title: Indexování dokumentů v Azure Data Lake Storage Gen2 (Náhled)
+title: Hledat přes Azure Data Lake Storage Gen2 (Náhled)
 titleSuffix: Azure Cognitive Search
 description: Naučte se indexovat obsah a metadata v Azure Data Lake Storage Gen2. Tato funkce je aktuálně ve verzi Public Preview.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 390f45ce874e4e64d3a7b9a6c3944983e0ba9028
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719917"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112281"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indexování dokumentů v Azure Data Lake Storage Gen2
 

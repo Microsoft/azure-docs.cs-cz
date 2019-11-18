@@ -1,5 +1,5 @@
 ---
-title: 'Postupy: použití automatického rozpoznávání jazyka pro rozpoznávání řeči u služby text-Speech'
+title: Jak používat automatické zjišování jazyka pro rozpoznávání řeči na text
 titleSuffix: Azure Cognitive Services
 description: Sada Speech SDK podporuje automatické rozpoznávání jazyka pro rozpoznávání řeči na text. Při použití této funkce se zadaný zvuk porovná se zadaným seznamem jazyků a je určena nejpravděpodobnější shoda. Vrácená hodnota se pak může použít k výběru jazykového modelu použitého pro převod řeči na text.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
-ms.openlocfilehash: e156704d3ad54c3437f921fae536a497e1d94868
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506964"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110174"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatické zjišování jazyka pro rozpoznávání řeči na text
 
@@ -30,7 +30,7 @@ V tomto článku se naučíte, jak pomocí `AutoDetectSourceLanguageConfig` vytv
 
 Automatické rozpoznání jazyka aktuálně má limit na straně služeb pro každé zjištění. Pamatujte na toto omezení při vytváření objektu `AudoDetectSourceLanguageConfig`. V níže uvedených ukázkách vytvoříte `AutoDetectSourceLanguageConfig`a pak ho použijete k vytvoření `SpeechRecognizer`.
 
->[!TIP]
+> [!TIP]
 > Můžete také zadat vlastní model, který se použije při provádění řeči na text. Další informace najdete v tématu [použití vlastního modelu pro automatické rozpoznávání jazyka](#use-a-custom-model-for-automatic-language-detection).
 
 Následující fragmenty kódu ukazují, jak používat automatické rozpoznávání jazyka ve vašich aplikacích:
@@ -80,4 +80,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSource
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Referenční dokumentace sady Speech SDK](speech-sdk.md)
+- [Referenční dokumentace sady Speech SDK](speech-sdk.md)

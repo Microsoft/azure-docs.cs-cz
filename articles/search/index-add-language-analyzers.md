@@ -1,5 +1,5 @@
 ---
-title: Přidání analyzátorů jazyka do polí řetězců v indexu
+title: Přidat analyzátory jazyka do polí řetězců
 titleSuffix: Azure Cognitive Search
 description: Vícejazyčná analýza textu pro jiné než anglické dotazy a indexy v Azure Kognitivní hledání.
 manager: nitinme
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790140"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111804"
 ---
-# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do indexu služby Azure Kognitivní hledání
+# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
 *Analyzátor jazyka* je konkrétní typ [analyzátoru textu](search-analyzers.md) , který provádí lexikální analýzu pomocí jazykových pravidel cílového jazyka. Každé prohledávatelné pole má vlastnost **Analyzer** . Pokud váš index obsahuje přeložené řetězce, jako jsou například samostatná pole pro angličtinu a čínský text, mohli byste zadat jazykové analyzátory pro každé pole, abyste měli přístup k bohatě lingvistických funkcím těchto analyzátorů.  
 
@@ -61,66 +61,66 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 
 |Jazyk|Název programu Microsoft Analyzer|Název analyzátoru Lucene|  
 |--------------|-----------------------------|--------------------------|  
-|arabština|ar. Microsoft|ar. Lucene|  
+|arabština|ar.microsoft|ar. Lucene|  
 |Arménština||HY. Lucene|  
-|Bengálština|BN. Microsoft||  
+|Bengálština|bn.microsoft||  
 |Baskičtina||EU. Lucene|  
-|Bulharština|BG. Microsoft|BG. Lucene|  
-|Katalánština|CA. Microsoft|CA. Lucene|  
-|Zjednodušená čínština|zh-Hans. Microsoft|zh-Hans. Lucene|  
+|Bulharština|bg.microsoft|BG. Lucene|  
+|Katalánština|ca.microsoft|CA. Lucene|  
+|Zjednodušená čínština|zh-Hans.microsoft|zh-Hans. Lucene|  
 |Tradiční čínština|zh-Hant. Microsoft|zh-Hant. Lucene|  
-|Chorvatština|HR. Microsoft||  
-|Čeština|cs. Microsoft|cs. Lucene|  
-|dánština|da. Microsoft|da. Lucene|  
-|Holandština|NL – Microsoft|NL – Lucene|  
-|Angličtina|EN. Microsoft|EN. Lucene|  
-|Estonština|et. Microsoft||  
-|Finština|Fi. Microsoft|Fi. Lucene|  
-|Francouzština|fr. Microsoft|fr. Lucene|  
+|Chorvatština|hr.microsoft||  
+|Čeština|cs.microsoft|cs. Lucene|  
+|dánština|da.microsoft|da. Lucene|  
+|Holandština|nl.microsoft|NL – Lucene|  
+|Angličtina|en.microsoft|EN. Lucene|  
+|Estonština|et.microsoft||  
+|Finština|fi.microsoft|Fi. Lucene|  
+|Francouzština|fr.microsoft|fr. Lucene|  
 |Galicijština||HK. Lucene|  
-|Němčina|de. Microsoft|de. Lucene|  
-|Řečtina|El. Microsoft|El. Lucene|  
-|Gudžarátština|Gu. Microsoft||  
-|Hebrejština|IT. Microsoft||  
-|Hindština|Dobrý den. Microsoft|Dobrý den. Lucene|  
-|Maďarština|hu. Microsoft|hu. Lucene|  
-|Islandština|je. Microsoft||  
-|Indonéština (Bahasa)|ID. Microsoft|ID. Lucene|  
+|Němčina|de.microsoft|de. Lucene|  
+|Řečtina|el.microsoft|El. Lucene|  
+|Gudžarátština|gu.microsoft||  
+|Hebrejština|he.microsoft||  
+|Hindština|hi.microsoft|Dobrý den. Lucene|  
+|Maďarština|hu.microsoft|hu. Lucene|  
+|Islandština|is.microsoft||  
+|Indonéština (Bahasa)|id.microsoft|ID. Lucene|  
 |Irština||GA. Lucene|  
-|italština|IT. Microsoft|IT. Lucene|  
-|Japonština|Ja. Microsoft|Ja. Lucene|  
-|Kannadština|KN. Microsoft||  
-|Korejština|Ko. Microsoft|Ko. Lucene|  
-|Lotyština|Lotyšsko. Microsoft|Lotyšsko. Lucene|  
-|Litevština|lt. Microsoft||  
-|Malajalámština|ml. Microsoft||  
-|Malajština (latinka)|MS. Microsoft||  
-|Maráthština|Mr. Microsoft||  
-|norština|NB. Microsoft|Ne. Lucene|  
+|italština|it.microsoft|IT. Lucene|  
+|Japonština|ja.microsoft|Ja. Lucene|  
+|Kannada|kn.microsoft||  
+|Korejština|ko.microsoft|Ko. Lucene|  
+|Lotyština|lv.microsoft|Lotyšsko. Lucene|  
+|Litevština|lt.microsoft||  
+|Malajálamština|ml.microsoft||  
+|Malajština (latinka)|ms.microsoft||  
+|Maráthština|mr.microsoft||  
+|norština|nb.microsoft|Ne. Lucene|  
 |Perština||FA. Lucene|  
-|polština|pl. Microsoft|pl. Lucene|  
-|Portugalština (Brazílie)|pt-br. Microsoft|pt-br. Lucene|  
-|Portugalština (Portugalsko)|pt-PT. Microsoft|pt-PT. Lucene|  
-|Paňdžábština|PA. Microsoft||  
-|Rumunština|ro. Microsoft|ro. Lucene|  
-|ruština|ru. Microsoft|ru. Lucene|  
-|Srbština (cyrilice)|SR-cyrilice. Microsoft||  
-|Srbština (latinka)|SR-Latin. Microsoft||  
-|Slovenština|sk. Microsoft||  
-|Slovinština|SL. Microsoft||  
-|Španělština|ES. Microsoft|ES. Lucene|  
-|švédština|sv. Microsoft|sv. Lucene|  
-|Tamilština|Ta. Microsoft||  
-|Telugština|te. Microsoft||  
-|Thajština|th. Microsoft|th. Lucene|  
-|turečtina|TR. Microsoft|TR. Lucene|  
-|Ukrajinština|Spojené království. Microsoft||  
-|Urdština|vaše společnost. Microsoft||  
-|Vietnamština|VI. Microsoft||  
+|polština|pl.microsoft|pl. Lucene|  
+|Portugalština (Brazílie)|pt-Br.microsoft|pt-br. Lucene|  
+|Portugalština (Portugalsko)|pt-Pt.microsoft|pt-PT. Lucene|  
+|Paňdžábština|pa.microsoft||  
+|Rumunština|ro.microsoft|ro. Lucene|  
+|ruština|ru.microsoft|ru. Lucene|  
+|Srbština (cyrilice)|sr-cyrillic.microsoft||  
+|Srbština (latinka)|sr-latin.microsoft||  
+|Slovenština|sk.microsoft||  
+|Slovinština|sl.microsoft||  
+|Španělština|es.microsoft|ES. Lucene|  
+|švédština|sv.microsoft|sv. Lucene|  
+|Tamilština|ta.microsoft||  
+|Telugština|te.microsoft||  
+|Thajština|th.microsoft|th. Lucene|  
+|turečtina|tr.microsoft|TR. Lucene|  
+|Ukrajinština|uk.microsoft||  
+|Urdština|ur.microsoft||  
+|Vietnamština|vi.microsoft||  
 
  Všechny analyzátory s názvy popsanými pomocí **Lucene** jsou napájené z [analyzátorů jazyka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
-## <a name="see-also"></a>Další informace najdete v tématech  
+## <a name="see-also"></a>Viz také  
 
 + [Vytvoření indexu &#40;služby Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

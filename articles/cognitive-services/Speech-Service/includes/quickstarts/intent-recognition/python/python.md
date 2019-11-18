@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9a226c17dd72d0dcd6403277054cf264f0094e65
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 4efa535118d075addf78b2e9be6a645c458d6bb4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850318"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125445"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
+>
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Vytvoření aplikace LUIS a získání klíče koncového bodu](../../../../quickstarts/create-luis.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md)
@@ -39,7 +40,7 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné vytvořit konfiguraci, která používá Endpoing klíč a oblast LUIS. Vložte tento kód dál.
+Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné vytvořit konfiguraci, která používá klíč a oblast koncového bodu LUIS. Vložte tento kód dál.
 
 Tato ukázka vytvoří objekt `SpeechConfig` pomocí klíče a oblasti LUIS. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
 
@@ -48,7 +49,7 @@ Tato ukázka vytvoří objekt `SpeechConfig` pomocí klíče a oblasti LUIS. Úp
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-## <a name="initialize-a-intentrecognizer"></a>Inicializovat IntentRecognizer
+## <a name="initialize-an-intentrecognizer"></a>Inicializovat IntentRecognizer
 
 Nyní vytvoříme `IntentRecognizer`. Vložte tento kód přímo pod konfiguraci řeči.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
@@ -60,7 +61,7 @@ Teď je potřeba přidružit `LanguageUnderstandingModel` k nástroji pro rozpoz
 
 ## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
-Z objektu `IntentRecognizer` zavoláte metodu `recognize_once()`. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že jakmile je fráze identifikována pro zastavení reconizing řeči.
+Z objektu `IntentRecognizer` zavoláte metodu `recognize_once()`. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že po identifikaci fráze zastavit rozpoznávání řeči.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>Zobrazit výsledky rozpoznávání (nebo chyby)
@@ -71,7 +72,8 @@ V příkazu Using pod vaším voláním `recognize_once()`přidejte tento kód: 
 
 ## <a name="check-your-code"></a>Kontrolovat kód
 
-V tomto okamžiku by váš kód měl vypadat takto: (do této verze jsme přidali nějaké komentáře) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
+V tomto okamžiku váš kód by měl vypadat takto:  
+(Do této verze jsme přidali nějaké komentáře) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 

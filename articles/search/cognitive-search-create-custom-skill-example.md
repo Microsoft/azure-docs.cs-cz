@@ -1,5 +1,5 @@
 ---
-title: 'Příklad: Vytvoření vlastní dovednosti pro rozpoznávání pomocí rozhraní API Bingu pro vyhledávání entit'
+title: Příklad vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 titleSuffix: Azure Cognitive Search
 description: Ukazuje použití služby Vyhledávání entit Bingu ve vlastní dovednosti mapované na kanál pro indexování s obohaceným AI ve službě Azure Kognitivní hledání.
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466815"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113813"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
 V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhraní API. Tato dovednost bude přijímat umístění, veřejné údaje a organizace a vrátí popisy pro ně. Tento příklad používá [funkci Azure](https://azure.microsoft.com/services/functions/) k zabalení [rozhraní API Bingu pro vyhledávání entit](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementovala vlastní rozhraní dovedností.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si o vlastním článku o [dovednostech rozhraní](cognitive-search-custom-skill-interface.md) , pokud neznáte vstupní/výstupní rozhraní, které by měla vlastní dovednost implementovat.
 
@@ -33,9 +33,9 @@ I když tento příklad používá funkci Azure k hostování webového rozhran�
 
 ### <a name="create-a-function-app"></a>Vytvoření Function App
 
-1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **nový**  > **projekt** .
+1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **nový** > **projekt** .
 
-1. V dialogovém okně Nový projekt vyberte možnost **nainstalováno**, rozbalte položku **Visual C#**   > **Cloud**, vyberte možnost **Azure Functions**, zadejte název projektu a vyberte možnost **OK**. Název aplikace funkcí musí být platný jako C# obor názvů, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné jiné než alfanumerické znaky.
+1. V dialogovém okně Nový projekt vyberte možnost **nainstalováno**, rozbalte položku **Visual C#**  > **Cloud**, vyberte možnost **Azure Functions**, zadejte název projektu a vyberte možnost **OK**. Název aplikace funkcí musí být platný jako C# obor názvů, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné jiné než alfanumerické znaky.
 
 1. Vyberte **Azure Functions v2 (.NET Core)** . Můžete to také provést s verzí 1, ale kód napsaný níže je založen na šabloně v2.
 
@@ -375,11 +375,11 @@ Měla by se zobrazit odpověď podobná následujícímu příkladu:
 
 Až budete s chováním funkce spokojeni, můžete ho publikovat.
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. Vyberte **vytvořit novou**  > **publikovat**.
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. Vyberte **vytvořit novou** > **publikovat**.
 
 1. Pokud jste ještě nepřipojili Visual Studio k účtu Azure, vyberte **Přidat účet....**
 
-1. Postupujte podle pokynů na obrazovce. Budete požádáni o zadání jedinečného názvu pro službu App Service, předplatné Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Můžete vytvořit novou skupinu prostředků, nový plán hostování a účet úložiště, pokud je ještě nemáte. Po dokončení vyberte **vytvořit** .
+1. Postupujte podle výzev na obrazovce. Budete požádáni o zadání jedinečného názvu pro službu App Service, předplatné Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Můžete vytvořit novou skupinu prostředků, nový plán hostování a účet úložiště, pokud je ještě nemáte. Po dokončení vyberte **vytvořit** .
 
 1. Po dokončení nasazení si všimněte adresy URL webu. Je to adresa vaší aplikace Function App v Azure. 
 

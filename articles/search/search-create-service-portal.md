@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření služby Azure Kognitivní hledání na portálu'
+title: 'Rychlý Start: Vytvoření vyhledávací služby na portálu'
 titleSuffix: Azure Cognitive Search
 description: Zřízení prostředku vyhledávání AzureCognitive v Azure Portal. Vyberte skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5acfb60395f39d17e640e389ae2a28e220ccfae6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 75a7cce55627a981d0d0b0f23a119fac6de920ef
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884361"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112112"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání na portálu
 
@@ -33,7 +33,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 2. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
 3. Pomocí panelu hledání vyhledejte "Azure Kognitivní hledání" nebo přejděte k prostředku přes **Web** > **Azure kognitivní hledání**.
 
@@ -49,7 +49,7 @@ Skupina prostředků je povinná a je užitečná pro správu všech prostředk�
 
 Pokud nekombinujete prostředky do jedné skupiny, nebo pokud jsou stávající skupiny prostředků vyplněné prostředky používanými v nesouvisejících řešeních, vytvořte novou skupinu prostředků jenom pro svůj prostředek Azure Kognitivní hledání. 
 
-![Vytvořit novou skupinu prostředků](./media/search-create-service-portal/new-resource-group.png "Vytvoření nové skupiny prostředků")
+![Vytvořit novou skupinu prostředků](./media/search-create-service-portal/new-resource-group.png "Vytvořte novou skupinu prostředků")
 
 V průběhu času můžete sledovat aktuální a předpokládané náklady (jak je znázorněno na snímku obrazovky) nebo přejít dolů a zobrazit poplatky za jednotlivé prostředky. Následující snímek obrazovky znázorňuje druh informací o nákladech, které můžete očekávat, když zkombinujete více prostředků do jedné skupiny.
 

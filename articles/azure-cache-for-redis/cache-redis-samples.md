@@ -1,72 +1,65 @@
 ---
-title: Mezipaměť Redis ukázek Azure | Dokumentace Microsoftu
+title: Ukázky služby Azure Cache for Redis
 description: Další informace o použití služby Azure Cache for Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 73c771ab18d1cc2944298818c1cab90eb2f277ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9097a25c0223faebd91fe3c01ff3edea6c4e6f9f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829799"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122600"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Ukázky služby Azure Cache for Redis
-Toto téma obsahuje seznam mezipaměti Azure Redis ukázek, pokrývající scénářů, jako je připojení k mezipaměti, čtení a zápis dat do a z mezipaměti a pomocí ukládání do mezipaměti Azure technologie ASP.NET pro poskytovatele Redis. Některé z ukázek jsou ke stažení projekty a některé poskytují podrobné pokyny a zahrnovat fragmenty kódu, ale není odkaz na projekt ke stažení.
+Toto téma poskytuje seznam mezipaměti Azure pro ukázky Redis, které se týkají scénářů, jako je připojení k mezipaměti, čtení a zápis dat do a z mezipaměti, a použití ASP.NET mezipaměti Azure pro poskytovatele Redis. Některé ukázky jsou projekty ke stažení a některé poskytují podrobné pokyny a obsahují fragmenty kódu, ale neodkazování na projekt ke stažení.
 
-## <a name="hello-world-samples"></a>Ukázky Hello world
-Příklady v tomto oddíle ukazují základní informace o připojení k Azure pro instanci Redis Cache a čtení a zápis dat do mezipaměti pomocí různých jazycích a klienti Redis.
+## <a name="hello-world-samples"></a>Ukázky Hello World
+Ukázky v této části ukazují základy připojení ke službě Azure cache pro instanci Redis a čtení a zápis dat do mezipaměti pomocí různých jazyků a klientů Redis.
 
-[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) příklad ukazuje, jak provádět různé operace mezipaměti pomocí [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) .NET klienta.
+Ukázka [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) ukazuje, jak provádět různé operace s mezipamětí pomocí klienta .NET [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) .
 
-Tato ukázka předvádí, jak:
+V této ukázce se dozvíte, jak:
 
-* Používat různé možnosti připojení
-* Čtení a zápis objektů do a z mezipaměti pomocí synchronní a asynchronní operace
-* Příkazy Redis MGET a MSET vracet hodnotu zadaného klíče
-* Provedení transakčního operací Redis
-* Práce s využitím Redisu seznamy a seřazené sady
-* Store pomocí JsonConvert serializátory objektů .NET
-* Implementace označování pomocí sad Redis
+* Použít různé možnosti připojení
+* Čtení a zápis objektů do a z mezipaměti pomocí synchronních a asynchronních operací
+* Pro návrat hodnot zadaných klíčů použít příkazy Redis MGET/MSET
+* Provádění transakčních operací Redis
+* Práce se seznamy Redis a seřazenými sadami
+* Ukládání objektů .NET pomocí serializátorů JsonConvert
+* Použití Redis sad k implementaci tagování
 * Práce s clusterem Redis
 
-Další informace najdete v tématu [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) najdete v dokumentaci na Githubu a další scénáře využití [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) testování částí.
+Další informace najdete v dokumentaci k [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) na GitHubu a pro další scénáře použití najdete v testech jednotky [stackexchange. Redis. Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) .
 
-[Použití mezipaměti Azure pro Redis s Pythonem](cache-python-get-started.md) ukazuje, jak začít pracovat s mezipamětí Azure pro Redis pomocí Pythonu a [redis-py](https://github.com/andymccurdy/redis-py) klienta.
+[Jak používat Azure cache pro Redis s Pythonem](cache-python-get-started.md) ukazuje, jak začít s Azure cache pro Redis pomocí Pythonu a klienta [Redis-py](https://github.com/andymccurdy/redis-py) .
 
-[Práce s objekty .NET v mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache) ukazuje jeden způsob, jak k serializaci objektů .NET vám umožní jejich k zápisu a čtení z Azure pro instanci Redis Cache. 
+[Práce s objekty .NET v mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache) ukazuje jeden ze způsobů serializace objektů .NET, abyste je mohli napsat a číst z mezipaměti Azure pro instanci Redis. 
 
-## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Použití Azure Cache pro Redis jako propojovací rozhraní škálování pro funkci SignalR technologie ASP.NET
-[Použití mezipaměti Azure Redis jako propojovací rozhraní škálování pro funkce SignalR technologie ASP.NET](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) ukázka demonstruje, jak používat Azure Cache pro Redis jako propojovací rozhraní systému SignalR. Další informace o propojovací rozhraní systému najdete v tématu [škálování aplikace SignalR službou Redis](https://www.asp.net/signalr/overview/performance/scaleout-with-redis).
+## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Použití mezipaměti Azure pro Redis jako plán pro horizontální navýšení kapacity pro ASP.NET signál
+Možnost [použít mezipaměť Azure pro Redis jako plán pro horizontální navýšení kapacity pro ASP.NET signalizaci](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) ukazuje, jak můžete použít mezipaměť Azure pro Redis jako plán pro vyzkoušení signálu. Další informace o replánování najdete v tématu [škálování signálu pomocí Redis](https://www.asp.net/signalr/overview/performance/scaleout-with-redis).
 
-## <a name="azure-cache-for-redis-customer-query-sample"></a>Mezipaměť Azure Redis zákazníka dotazu ukázku
-Tato ukázka předvádí, porovná výkon mezi přístup k datům z mezipaměti a přístup k datům z trvalého úložiště. Tato ukázka má dva projekty.
+## <a name="azure-cache-for-redis-customer-query-sample"></a>Ukázka dotazů zákazníků Azure cache pro Redis
+Tato ukázka ukazuje, jak porovnává výkon při přístupu k datům z mezipaměti a přístup k datům z úložiště trvalosti. Tato ukázka má dva projekty.
 
-* [Ukázka, jak lze mezipaměti Azure Redis vylepšit výkon ukládání dat do mezipaměti](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
-* [Počáteční hodnota databáze a mezipaměti pro tuto ukázku](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
+* [Ukázka způsobu, jakým Azure mezipaměť pro Redis může zlepšit výkon ukládáním dat do mezipaměti](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
+* [Dosazení databáze a mezipaměti pro ukázku](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
 
-## <a name="aspnet-session-state-and-output-caching"></a>Stavu relace ASP.NET a ukládání výstupu do mezipaměti
-[Použití mezipaměti Azure Redis k uložení SessionState technologie ASP.NET a OutputCache](https://github.com/rustd/RedisSamples/tree/master/SessionState_OutputCaching) Ukázka předvádí, jak můžete používat k ukládání relaci ASP.NET a výstupní mezipaměti pro Redis pomocí zprostředkovatele SessionState a OutputCache mezipaměti Azure Redis .
+## <a name="aspnet-session-state-and-output-caching"></a>Stav relace ASP.NET a ukládání výstupu do mezipaměti
+Ukázka [použití mezipaměti Azure pro Redis k ukládání ASP.NET sessionState a OutputCache](https://github.com/rustd/RedisSamples/tree/master/SessionState_OutputCaching) demonstruje, jak můžete pomocí Azure cache pro Redis ukládat relaci ASP.NET a výstupní mezipaměť pomocí zprostředkovatelů sessionState a OutputCache pro Redis.
 
-## <a name="manage-azure-cache-for-redis-with-maml"></a>Správa mezipaměti Azure pro Redis s MAML
-[Správa mezipaměti Azure Redis pomocí knihoven správy Azure](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) ukázka demonstruje, jak můžete pomocí knihovny správy Azure spravovat - (Vytvořit / aktualizovat / odstranit) vaší mezipaměti. 
+## <a name="manage-azure-cache-for-redis-with-maml"></a>Správa Azure cache pro Redis pomocí MAML
+Ukázka [Správa Azure cache pro Redis pomocí knihoven správy Azure](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) ukazuje, jak můžete pomocí knihoven správy Azure spravovat – (vytvořit, aktualizovat nebo odstranit) mezipaměť. 
 
-## <a name="custom-monitoring-sample"></a>Vlastní sledování vzorku
-[Přístup k mezipaměti Azure Redis monitorování dat](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) ukázka demonstruje, jak lze použít monitorování dat pro Azure Cache pro Redis mimo web Azure Portal.
+## <a name="custom-monitoring-sample"></a>Ukázka vlastního monitorování
+Ukázka [přístup k Azure cache pro Redis monitoring data](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) ukazuje, jak můžete získat přístup k datům monitorování mezipaměti Azure pro Redis mimo portál Azure.
 
-## <a name="a-twitter-style-clone-written-using-php-and-redis"></a>Klon Twitteru – vizuální styl napsané s využitím PHP a Redis
-[Retwis](https://github.com/SyntaxC4-MSFT/retwis) ukázka je Redis Hello World. Je minimální klon Twitteru – vizuální styl sociálních sítí napsané s využitím Redisu a PHP pomocí [Predis](https://github.com/nrk/predis) klienta. Zdrojový kód je určen velmi jednoduché a současně k zobrazení různých Redis datové struktury.
+## <a name="a-twitter-style-clone-written-using-php-and-redis"></a>Klon ve stylu Twitteru napsaný pomocí PHP a Redis
+Ukázka [ReTWis](https://github.com/SyntaxC4-MSFT/retwis) je Redis Hello World. Jedná se o minimální klon ze sociální sítě ve stylu Twitteru napsaný pomocí Redis a PHP pomocí klienta [Predis](https://github.com/nrk/predis) . Zdrojový kód je navržený tak, aby byl velmi jednoduchý a současně pro zobrazení různých Redis datových struktur.
 
 ## <a name="bandwidth-monitor"></a>Monitorování šířky pásma
-[Šířky pásma monitorování](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) ukázky vám umožní monitorovat šířku pásma použít na straně klienta. K měření šířky pásma, spusťte ukázku v mezipaměti klientského počítače, provádět volání do mezipaměti a sledujte šířky pásma nahlášený ukázky monitorování šířky pásma.
+Ukázka [monitorování šířky pásma](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) umožňuje monitorovat šířku pásma použitou v klientovi. Chcete-li změřit šířku pásma, spusťte ukázku v klientském počítači mezipaměti, proveďte volání do mezipaměti a sledujte šířku pásma nahlášenou ukázkou monitorování šířky pásma.
 

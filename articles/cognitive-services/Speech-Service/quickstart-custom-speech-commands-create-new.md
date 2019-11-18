@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření vlastního příkazu (Preview)'
+title: 'Rychlý Start: Vytvoření vlastního příkazu (Preview) – služba Speech'
 titleSuffix: Azure Cognitive Services
 description: V tomto článku vytvoříte a otestujete hostovanou aplikaci s vlastními příkazy.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: bfe871ce6f7cd2fbd6ada4b825e41ebdf5ac3f12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507558"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111362"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Rychlý Start: Vytvoření vlastního příkazu (Preview)
 
 V tomto článku se dozvíte, jak vytvořit a otestovat hostované vlastní aplikace s příkazy.
 Aplikace rozpozná utterance jako "zapnout televizní program" a odpoví jednoduchou zprávou "OK, zapnutí televizního vysílání".
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné pro rozpoznávání řeči. [Vyzkoušejte službu Speech Service zdarma](~/articles/cognitive-services/speech-service/get-started.md).
 
@@ -105,7 +105,7 @@ Nyní přidejte pravidlo dokončení pro reakci na uživatele s oznámením, že
 | Nastavení    | Navrhovaná hodnota                        | Popis                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Název pravidla  | "ConfirmationResponse"                 | Název popisující účel pravidla          |
-| Podmínky | Žádné                                   | Podmínky, které určují, kdy se pravidlo dá spustit    |
+| Podmínky | Žádný                                   | Podmínky, které určují, kdy se pravidlo dá spustit    |
 | Akce    | SpeechResponse "OK, zapnutí televizního vysílání" | Akce, která se má provést, když je podmínka pravidla pravdivá |
 
 ## <a name="try-it-out"></a>Vyzkoušet

@@ -1,5 +1,5 @@
 ---
-title: Kodek Stream komprimovaný zvuk pomocí sady Speech SDK on iOS – Speech Service
+title: Kodek Stream komprimovaný zvuk se sadou Speech SDK v iOS
 titleSuffix: Azure Cognitive Services
 description: Naučte se streamovat komprimovaný zvuk do služby Azure Speech Services pomocí sady Speech SDK v iOS.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 45b45c6c9afd43b711fc548f470ce0f0acd04a0a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1d78c690fd07eb974418f0ea17d71d1f394d863d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464281"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109585"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v iOS
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Postupy: použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v iOS
 
 Rozhraní API pro **komprimovaný zvuk vstupního streamu** sady Speech SDK poskytuje způsob, jak streamovat komprimovaný zvuk do služby pro rozpoznávání řeči pomocí datového proudu Pull nebo push.
 
 > [!IMPORTANT]
 > Pro streamování komprimovaného zvuku v iOS se vyžaduje sada Speech SDK verze 1.7.0 nebo novější. Podporuje se také pro [ C++systémy, C#a Java v systémech Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md) a [Java v Androidu.](how-to-use-codec-compressed-audio-input-streams-android.md)
 
-Informace o WAV/PCM najdete v dokumentaci k hlavní Speech.  Mimo zvuk WAV/PCM jsou podporovány následující formáty komprimované vstupní hodnoty kodeku:
+Informace o WAV/PCM najdete v dokumentaci k hlavní Speech. Mimo zvuk WAV/PCM jsou podporovány následující formáty komprimované vstupní hodnoty kodeku:
 
 - MP3
 - OPUS/OGG
@@ -32,27 +32,30 @@ Informace o WAV/PCM najdete v dokumentaci k hlavní Speech.  Mimo zvuk WAV/PCM j
 - ALAW v kontejneru WAV
 - MULAW v kontejneru WAV
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https://gstreamer.freedesktop.org).
-Z důvodů licencování nelze tyto funkce dodávat se sadou SDK, ale Obálková knihovna obsahující tyto funkce musí být sestavena vývojáři aplikací a dodávána s aplikacemi, které používají sadu SDK.
-Pro sestavení této knihovny obálek si nejdřív Stáhněte a nainstalujte [sadu GStreamer SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg).
-Pak stáhněte projekt Xcode pro [knihovnu obálek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper).
+Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nelze tyto funkce dodávat se sadou SDK, ale Obálková knihovna obsahující tyto funkce musí být sestavena vývojáři aplikací a dodávána s aplikacemi, které používají sadu SDK.
+
+Pro sestavení této knihovny obálek si nejdřív Stáhněte a nainstalujte [sadu GStreamer SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg). Pak stáhněte projekt Xcode pro [knihovnu obálek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper).
+
 Otevřete projekt v Xcode a sestavte ho pro **obecný cíl zařízení iOS** – nebude tak fungovat, aby se vytvořil pro konkrétní cíl.
+
 Krok sestavení vygeneruje sadu dynamického rozhraní s dynamickou knihovnou pro všechny nezbytné architektury s názvem `GStreamerWrapper.framework`.
+
 Tato architektura musí být zahrnutá ve všech aplikacích, které používají komprimované zvukové streamy se sadou Speech Services SDK.
 
 Použijte následující nastavení v projektu Xcode k tomuto účelu:
 
 1. Zkopírujte jak vámi sestavené `GStreamerWrapper.framework`, tak i architekturu sady Cognitive Services Speech SDK, kterou si můžete stáhnout z [tohoto místa](https://aka.ms/csspeech/iosbinary), do adresáře, který obsahuje ukázkový projekt.
-1. Upravte cesty k architekturám v *nastavení projektu*.
-    1. Na kartě **Obecné** pod hlavičkou **vložená binární soubory** přidejte knihovnu SDK jako rozhraní: **přidejte vložené binární soubory** > **Přidat další...** > přejděte do adresáře, který jste zvolili, a vyberte obě architektury.
-    1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
-1. Do části *Framework Search Paths* (Cesty pro hledání rozhraní) pod nadpisem **Search Paths** (Cesty pro hledání) přidejte adresář `$(SRCROOT)/..`.
+1. Upravte cesty k architekturám v _nastavení projektu_.
+   1. Na kartě **Obecné** pod hlavičkou **vložená binární soubory** přidejte knihovnu SDK jako rozhraní: **přidejte vložené binární soubory** > **Přidat další...** > přejděte do adresáře, který jste zvolili, a vyberte obě architektury.
+   1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
+1. Do části `$(SRCROOT)/..`Framework Search Paths _(Cesty pro hledání rozhraní) pod nadpisem_Search Paths **(Cesty pro hledání) přidejte adresář**.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
 
 Pokud chcete streamovat v komprimovaném zvukovém formátu ke službám Speech, vytvořte `SPXPullAudioInputStream` nebo `SPXPushAudioInputStream`.
+
 Následující fragment kódu ukazuje, jak vytvořit `SPXAudioConfiguration` z instance `SPXPushAudioInputStream`a určením MP3 jako kompresního formátu datového proudu.
 
 [!code-objectivec[Set up the input stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=66-77&highlight=2-11)]
@@ -64,4 +67,4 @@ Další fragment kódu ukazuje, jak je možné číst komprimovaná zvuková dat
 ## <a name="next-steps"></a>Další kroky
 
 - [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Viz rozpoznávání řeči v jazyce Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [Viz rozpoznávání řeči v jazyce Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

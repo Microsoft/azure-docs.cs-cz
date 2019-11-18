@@ -1,20 +1,17 @@
 ---
-title: Omezení požadavků a omezení – Azure Resource Manager
-description: Popisuje, jak používat omezování s požadavky na Azure Resource Manager, když se dosáhlo limitu předplatného.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Omezení požadavků a omezení
+description: Popisuje způsob použití omezení požadavků Azure Resource Manageru a pokud bylo dosaženo omezení předplatného.
 ms.topic: conceptual
 ms.date: 10/26/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 7d53e5749385499113d0dc5261398561d82347a0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b47943d69d209f5a0406c293b5a24c6ac0ad0c10
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965566"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150468"
 ---
-# <a name="throttling-resource-manager-requests"></a>Omezování požadavků Správce prostředků
+# <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
 Tento článek popisuje, jak Azure Resource Manager omezuje požadavky. Ukazuje, jak sledovat počet požadavků, které zůstanou před dosažením limitu, a jak reagovat na to, kdy jste dosáhli limitu.
 
@@ -24,11 +21,11 @@ K omezování dochází na dvou úrovních. Azure Resource Manager omezuje poža
 
 ## <a name="subscription-and-tenant-limits"></a>Předplatné a omezení tenanta
 
-Každá operace na úrovni předplatného a tenanta na úrovni klienta podléhá omezením omezení. Žádosti o předplatné jsou ty, které zahrnují předávání ID předplatného, jako je například načtení skupin prostředků ve vašem předplatném. Žádosti klientů neobsahují vaše ID předplatného, například načtení platných umístění Azure.
+Každá operace na úrovni předplatného a tenanta na úrovni klienta podléhá omezením omezení. Žádosti o předplatné jsou ty, které zahrnují předávání ID předplatného, jako je například načtení skupin prostředků ve vašem předplatném. Požadavky klientů jsou ID vašeho předplatného, třeba načítání platných umístění Azure.
 
 V následující tabulce jsou uvedeny výchozí limity omezení za hodinu.
 
-| Rozsah | Operations | škálování |
+| Rozsah | Operace | Omezení |
 | ----- | ---------- | ------- |
 | Předplatné | operace | 12000 |
 | Předplatné | odstraníte | 15 000 |
@@ -38,7 +35,7 @@ V následující tabulce jsou uvedeny výchozí limity omezení za hodinu.
 
 Tyto limity se vztahují na objekt zabezpečení (uživatele nebo aplikaci), který zadává požadavky, a na ID předplatného nebo ID tenanta. Pokud vaše požadavky pocházejí z více objektů zabezpečení, bude váš limit v rámci daného předplatného nebo tenanta větší než 12 000 a 1 200 za hodinu.
 
-Tato omezení platí pro jednotlivé instance Azure Resource Manager. Každá oblast Azure obsahuje několik instancí a Azure Resource Manager je nasazená do všech oblastí Azure.  V praxi proto omezení jsou vyšší než tato omezení. Žádosti od uživatele jsou obvykle zpracovávány různými instancemi Azure Resource Manager.
+Tato omezení platí pro každou instanci Azure Resource Manageru. Existuje více instancí ve všech oblastech Azure a Azure Resource Manageru je nasazený do všech oblastí Azure.  V praxi proto omezení jsou vyšší než tato omezení. Žádosti od uživatele jsou obvykle zpracovávány různými instancemi Azure Resource Manager.
 
 ## <a name="resource-provider-limits"></a>Omezení poskytovatele prostředků
 
@@ -54,7 +51,7 @@ Tato část popisuje omezení omezení některých široce používaných poskyt
 
 Poskytovatel prostředků Microsoft. Network používá následující omezení omezení:
 
-| Operace | škálování |
+| Operace | Omezení |
 | --------- | ----- |
 | zapsat/odstranit (PUT) | 1000 za 5 minut |
 | čtení (GET) | 10000 za 5 minut |
@@ -75,7 +72,7 @@ V některých případech je možné zvýšit omezení omezení. Pokud chcete zj
 
 ## <a name="error-code"></a>Kód chyby
 
-Pokud dosáhnete limitu, obdržíte stavový kód HTTP **429 příliš mnoho požadavků**. Odpověď obsahuje hodnotu opakovat, která určuje počet sekund, **po** jejichž uplynutí má aplikace čekat (nebo přejít do režimu spánku) před odesláním dalšího požadavku. Pokud odešlete žádost před uplynutím hodnoty opakování, vaše žádost se nezpracuje a vrátí se nová hodnota opakování.
+Pokud limit překročíte, obdržíte kód stavu HTTP **429 příliš mnoho požadavků**. Odpověď obsahuje hodnotu opakovat, která určuje počet sekund, **po** jejichž uplynutí má aplikace čekat (nebo přejít do režimu spánku) před odesláním dalšího požadavku. Pokud odešlete žádost o před uplynutí hodnota pro opakovaný pokus, váš požadavek není zpracován a vrátí se nová hodnota pro opakovaný pokus.
 
 Po uplynutí určité doby můžete také zavřít a znovu otevřít připojení k Azure. Resetováním tohoto připojení se můžete připojit k jiné instanci Azure Resource Manager.
 
@@ -83,49 +80,49 @@ Pokud používáte sadu Azure SDK, sada SDK může mít konfiguraci automatické
 
 Někteří poskytovatelé prostředků vrátí 429, aby nahlásily dočasný problém. Problémem může být podmínka přetížení, která není přímo způsobena vaší žádostí. Nebo může představovat dočasnou chybu týkající se stavu cílového prostředku nebo závislého prostředku. Například poskytovatel síťových prostředků vrátí 429 s kódem chyby **RetryableErrorDueToAnotherOperation** , když je cílový prostředek uzamčen jinou operací. Pokud chcete zjistit, jestli chyba pochází z omezení nebo dočasné podmínky, Prohlédněte si podrobnosti o chybě v odpovědi.
 
-## <a name="remaining-requests"></a>Zbývající požadavky
+## <a name="remaining-requests"></a>Zbývajících požadavků
 
-Počet zbývajících požadavků můžete určit vyzkoumáním hlaviček odpovědi. Žádosti o čtení vrátí hodnotu v hlavičce pro počet zbývajících požadavků na čtení. Požadavky na zápis obsahují hodnotu pro počet zbývajících požadavků na zápis. Následující tabulka popisuje hlavičky odpovědí, které můžete u těchto hodnot ověřit:
+Počet zbývajících požadavků, které můžete určit tím, že kontroluje hlavičky odpovědi. Žádosti o čtení vrátí hodnotu v hlavičce pro počet zbývajících požadavků na čtení. Požadavky na zápis obsahují hodnotu pro počet zbývajících požadavků na zápis. Následující tabulka popisuje hlavičky odpovědi, které můžete zkontrolovat pro tyto hodnoty:
 
 | Hlavička odpovědi | Popis |
 | --- | --- |
-| x-MS-ratelimit-zbývající předplatné – čtení |Zbývající čtení v oboru předplatného. Tato hodnota je vrácena při operacích čtení. |
-| x-MS-ratelimit-zbývající předplatné-zápisy |Zbývající zápisy v oboru předplatného Tato hodnota je vrácena při operacích zápisu. |
-| x-MS-ratelimit-zbývající – čtení z tenanta |Zbývající čtení v oboru klienta |
-| x-MS-ratelimit-zbývající – zápisy klientů |Zbývající zápisy v oboru klienta |
-| x-MS-ratelimit-zbývá-předplatné-požadavky na prostředek |Zbývající požadavky na typ prostředku v oboru předplatného<br /><br />Tato hodnota hlavičky se vrátí jenom v případě, že služba přepsala výchozí limit. Správce prostředků přidá tuto hodnotu namísto čtení nebo zápisu daného předplatného. |
-| x-MS-ratelimit-zbývá-předplatné-prostředek-entity – číst |Zbývá zbývajících požadavků shromažďování typů prostředků v oboru předplatného.<br /><br />Tato hodnota hlavičky se vrátí jenom v případě, že služba přepsala výchozí limit. Tato hodnota udává počet zbývajících požadavků kolekce (seznam prostředků). |
-| x-MS-ratelimit-zbývající – tenant-Resource-požadavky |Zbývá požadavků na typ prostředku v oboru klienta.<br /><br />Tato hlavička se přidávají jenom pro požadavky na úrovni tenanta a jenom v případě, že služba přepsala výchozí limit. Správce prostředků přidá tuto hodnotu namísto čtení nebo zápisu klienta. |
-| x-MS-ratelimit-zbývá-tenant-Resource-Entities – čtení |Zbývá zbývajících požadavků shromažďování typů prostředků v oboru klienta.<br /><br />Tato hlavička se přidávají jenom pro požadavky na úrovni tenanta a jenom v případě, že služba přepsala výchozí limit. |
+| x-ms-ratelimit-remaining-subscription-reads |Předplatné s rozsahem načte zbývající. Tato hodnota se vrátí na operace čtení. |
+| x-ms-ratelimit-remaining-subscription-writes |Předplatné s rozsahem zapíše zbývající. Tato hodnota se vrátí na operace zápisu. |
+| x-ms-ratelimit-remaining-tenant-reads |Tenant s rozsahem načte zbývající |
+| x-ms-ratelimit-remaining-tenant-writes |Zapíše tenanta s rozsahem zbývající |
+| x-ms-ratelimit-remaining-subscription-resource-requests |Zbývající žádosti typu prostředku v oboru předplatného.<br /><br />Hodnotu této hlavičky je vrácena pouze v případě, že služba má přepsat výchozí omezení. Resource Manager přidá tuto hodnotu místo předplatné čtení nebo zápisu. |
+| x-ms-ratelimit-remaining-subscription-resource-entities-read |Zbývající požadavky kolekce typu prostředku v oboru předplatného.<br /><br />Hodnotu této hlavičky je vrácena pouze v případě, že služba má přepsat výchozí omezení. Tato hodnota představuje počet zbývajících požadavků kolekce (výpis prostředků). |
+| x-MS-ratelimit-Remaining-tenant-Resource-Requests |Zbývající žádosti typu prostředku v oboru tenanta.<br /><br />Tato hlavička se přidá pouze pro požadavky na úrovni tenanta a pouze v případě služby má přepsat výchozí omezení. Resource Manager přidá tuto hodnotu místo tenanta čtení nebo zápisu. |
+| x-ms-ratelimit-remaining-tenant-resource-entities-read |Zbývající požadavky kolekce typu prostředku v oboru tenanta.<br /><br />Tato hlavička se přidá pouze pro požadavky na úrovni tenanta a pouze v případě služby má přepsat výchozí omezení. |
 
 Poskytovatel prostředků může také vracet hlavičky odpovědí s informacemi o zbývajících požadavcích. Informace o hlavičkách odpovědí vrácených zprostředkovatelem výpočetních prostředků najdete v tématu přehledové [odezvy – hlavičky informativních odpovědí](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
 
-## <a name="retrieving-the-header-values"></a>Načítání hodnot hlaviček
+## <a name="retrieving-the-header-values"></a>Načítání hodnoty hlavičky
 
-Načítání těchto hodnot hlaviček ve vašem kódu nebo skriptu se neliší od načtení jakékoli hodnoty záhlaví. 
+Načítají se tyto hodnoty hlavičky v kódu nebo skriptu se nijak neliší od načítání libovolnou hodnotu hlavičky. 
 
-Například v aplikaci **C#** načtete hodnotu hlavičky z objektu **HttpWebResponse** s názvem **Response** s následujícím kódem:
+Například v **jazyka C#** , načíst hodnota hlavičky ze **HttpWebResponse** objekt s názvem **odpovědi** následujícím kódem:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-V **PowerShellu**načtete hodnotu hlavičky z operace Invoke-WebRequest.
+V **Powershellu**, načíst hodnotu hlavičky z operace Invoke-WebRequest.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Úplný příklad prostředí PowerShell najdete v tématu [Check správce prostředků Limits pro předplatné](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+Kompletní příklad Powershellu najdete v části [zkontrolujte omezení Resource Manageru a předplatné](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
 
-Pokud chcete zobrazit zbývající požadavky na ladění, můžete zadat parametr **-Debug** v rutině **prostředí PowerShell** .
+Pokud chcete zobrazit zbývající požadavky pro ladění, můžete zadat **– ladění** parametr na vaši **Powershellu** rutiny.
 
 ```powershell
 Get-AzResourceGroup -Debug
 ```
 
-Který vrací mnoho hodnot včetně následující hodnoty odpovědi:
+Který vrátí více hodnot, včetně následujících hodnota odpovědi:
 
 ```powershell
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -138,13 +135,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-reads: 11999
 ```
 
-Chcete-li získat omezení pro zápis, použijte operaci zápisu: 
+Zápis omezení získáte pomocí operace zápisu: 
 
 ```powershell
 New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
-Což vrátí mnoho hodnot, včetně následujících hodnot:
+Který vrátí více hodnot, včetně následujících hodnot:
 
 ```powershell
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -157,13 +154,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-V rozhraní příkazového **řádku Azure CLI**načtěte hodnotu hlavičky pomocí možnosti Podrobnější informace.
+V **rozhraní příkazového řádku Azure**, načtete pomocí možnosti podrobnější hodnotu hlavičky.
 
 ```azurecli
 az group list --verbose --debug
 ```
 
-Což vrátí mnoho hodnot, včetně následujících hodnot:
+Který vrátí více hodnot, včetně následujících hodnot:
 
 ```azurecli
 msrest.http_logger : Response status: 200
@@ -177,13 +174,13 @@ msrest.http_logger :     'Vary': 'Accept-Encoding'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '11998'
 ```
 
-Chcete-li získat omezení pro zápis, použijte operaci zápisu: 
+Zápis omezení získáte pomocí operace zápisu: 
 
 ```azurecli
 az group create -n myresourcegroup --location westus --verbose --debug
 ```
 
-Což vrátí mnoho hodnot, včetně následujících hodnot:
+Který vrátí více hodnot, včetně následujících hodnot:
 
 ```azurecli
 msrest.http_logger : Response status: 201
@@ -198,6 +195,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný příklad prostředí PowerShell najdete v tématu [Check správce prostředků Limits pro předplatné](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
-* Další informace o omezeních a kvótách najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md).
-* Další informace o zpracování asynchronních žádostí REST najdete v tématu [sledování asynchronních operací Azure](resource-manager-async-operations.md).
+* Kompletní příklad Powershellu najdete v části [zkontrolujte omezení Resource Manageru a předplatné](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+* Další informace o omezení a kvóty najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).
+* Další informace o zpracování asynchronního požadavky REST, naleznete v tématu [sledování asynchronních operací Azure](resource-manager-async-operations.md).

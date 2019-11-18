@@ -1,6 +1,6 @@
 ---
-title: Azure prvek uživatelského rozhraní PublicIpAddressCombo | Dokumentace Microsoftu
-description: Popisuje element Microsoft.Network.PublicIpAddressCombo uživatelského rozhraní pro Azure portal.
+title: Element uživatelského rozhraní Azure PublicIpAddressCombo | Microsoft Docs
+description: Popisuje prvek uživatelského rozhraní Microsoft. Network. PublicIpAddressCombo pro Azure Portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,24 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: c3e8c99f6648f0f4927140f3215978566afb9eb8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 069a8ee1f019d1b21be996084e4902f94076fbf7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60251101"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151499"
 ---
-# <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
-Skupina ovládacích prvků pro výběr nového nebo existujícího veřejnou IP adresu.
+# <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. PublicIpAddressCombo – element uživatelského rozhraní
+
+Skupina ovládacích prvků pro výběr nové nebo existující veřejné IP adresy.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
 
-- Pokud si uživatel vybere "Žádný" pro veřejnou IP adresu, do textového pole popisku název domény je skrytá.
-- Pokud uživatel vybere stávající veřejnou IP adresu, do textového pole popisku název domény je zakázaný. Jeho hodnota je Popisek názvu domény pro vybranou IP adresu.
-- Aktualizace pro přípony (například westus.cloudapp.azure.com) název se domény, automaticky podle vybraného umístění.
+- Pokud uživatel vybere možnost None pro veřejnou IP adresu, bude textové pole Popisek názvu domény skryté.
+- Pokud uživatel vybere existující veřejnou IP adresu, bude textové pole Popisek názvu domény zakázané. Jeho hodnota je popisek názvu domény vybrané IP adresy.
+- Přípona názvu domény (například westus.cloudapp.azure.com) se automaticky aktualizuje na základě vybraného umístění.
 
 ## <a name="schema"></a>Schéma
+
 ```json
 {
   "name": "element1",
@@ -62,15 +65,9 @@ Skupina ovládacích prvků pro výběr nového nebo existujícího veřejnou IP
 }
 ```
 
-## <a name="remarks"></a>Poznámky
-- Pokud `constraints.required.domainNameLabel` je nastavena na **true**, uživatel musí zadat popisek názvu domény, při vytváření novou veřejnou IP adresu. Existující veřejné IP adresy bez popisku nejsou k dispozici pro výběr.
-- Pokud `options.hideNone` je nastavena na **true**, klikněte možnost vybrat si **žádný** pro veřejnou IP adresu skryté. Výchozí hodnota je **false**.
-- Pokud `options.hideDomainNameLabel` je nastavena na **true**, textové pole pro popisek názvu domény je skrytý. Výchozí hodnota je **false**.
-- Pokud `options.hideExisting` má hodnotu true, pak uživatel nemůže vybrat stávající veřejnou IP adresu. Výchozí hodnota je **false**.
-- Pro `zone`, pouze veřejné IP adresy pro zadané zóny nebo zóny odolné veřejné IP adresy jsou k dispozici.
-
 ## <a name="sample-output"></a>Ukázkový výstup
-Pokud si uživatel vybere žádná veřejná IP adresa, ovládací prvek vrátí následující výstup:
+
+Pokud uživatel nevybere žádnou veřejnou IP adresu, ovládací prvek vrátí následující výstup:
 
 ```json
 {
@@ -78,7 +75,7 @@ Pokud si uživatel vybere žádná veřejná IP adresa, ovládací prvek vrátí
 }
 ```
 
-Pokud si uživatel vybere nový nebo existující IP adresu, ovládací prvek vrátí následující výstup:
+Pokud uživatel vybere novou nebo existující IP adresu, vrátí ovládací prvek následující výstup:
 
 ```json
 {
@@ -91,9 +88,18 @@ Pokud si uživatel vybere nový nebo existující IP adresu, ovládací prvek vr
 }
 ```
 
-- Když `options.hideNone` je zadán jako **true**, `newOrExistingOrNone` budou mít pouze hodnotu **nové** nebo **existující**.
-- Když `options.hideDomainNameLabel` je zadán jako **true**, `domainNameLabel` nedeklarovaný.
+- Pokud je parametr `options.hideNone` zadán jako **true**, `newOrExistingOrNone` bude mít pouze hodnotu **New** nebo **existed**.
+- Pokud je parametr `options.hideDomainNameLabel` zadán jako **true**, `domainNameLabel` je nedeklarovaný.
 
-## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).
+## <a name="remarks"></a>Poznámky
+
+- Pokud je `constraints.required.domainNameLabel` nastaveno na **hodnotu true**, při vytváření nové veřejné IP adresy musí uživatel zadat popisek názvu domény. Stávající veřejné IP adresy bez popisku nejsou k dispozici pro výběr.
+- Pokud je parametr `options.hideNone` nastaven na **hodnotu true**, možnost pro volbu **žádná** pro veřejnou IP adresu nebude skrytá. Výchozí hodnota je **false**.
+- Pokud je `options.hideDomainNameLabel` nastaveno na **hodnotu true**, pak je textové pole pro popisek názvu domény skryté. Výchozí hodnota je **false**.
+- Pokud má `options.hideExisting` hodnotu true, uživatel nebude moci zvolit stávající veřejnou IP adresu. Výchozí hodnota je **false**.
+- Pro `zone`jsou k dispozici pouze veřejné IP adresy pro zadanou zónu nebo odolné veřejné IP adresy.
+
+## <a name="next-steps"></a>Další kroky
+
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

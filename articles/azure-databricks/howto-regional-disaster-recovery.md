@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601766"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129340"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
@@ -90,7 +90,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
    > [!NOTE]
    > Knihovny se v tomto kroku nekopírují, protože příslušné rozhraní API je nepodporuje.
 
-   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. například `python scriptname.py`.
+   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. Například, `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -133,7 +133,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
 
    Následující skript poskytuje tisk mapování ze starých na nová ID clusteru, která se dají použít k migraci úlohy později (pro úlohy, které jsou nakonfigurované pro použití existujících clusterů).
 
-   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. například `python scriptname.py`.
+   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. Například, `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -286,7 +286,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
 
 8. **Migrace služby Azure Blob Storage a Azure Data Lake Storage připojení**
 
-   Ručně znovu připojte všechny přípojné body služby [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html) a [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) pomocí řešení založeného na poznámkovém bloku. Prostředky úložiště by byly připojené k primárnímu pracovnímu prostoru a musí se opakovat v sekundárním pracovním prostoru. Pro připojení není k dispozici žádné externí rozhraní API.
+   Ručně znovu připojte všechny přípojné body služby [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage) a [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) pomocí řešení založeného na poznámkovém bloku. Prostředky úložiště by byly připojené k primárnímu pracovnímu prostoru a musí se opakovat v sekundárním pracovním prostoru. Pro připojení není k dispozici žádné externí rozhraní API.
 
 9. **Migrace inicializačních skriptů clusteru**
 

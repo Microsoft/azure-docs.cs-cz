@@ -1,5 +1,5 @@
 ---
-title: 'Postupy: plnění vlastních příkazů na klientovi pomocí sady Speech SDK (Preview)'
+title: Postup plnění vlastních příkazů na klientovi pomocí sady Speech SDK
 titleSuffix: Azure Cognitive Services
 description: V tomto článku se zpracovávají vlastní příkazy v klientovi pomocí sady Speech SDK
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: a986da74a668075457e28a9a37b6a11fd04a84e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507019"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110070"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Postupy: plnění příkazů v klientovi pomocí sady Speech SDK (Preview)
 
@@ -26,15 +26,15 @@ V tomto článku:
 - Definování a odeslání vlastní datové části JSON z aplikace Custom Commands
 - Přijímání a vizualizace vlastního obsahu datové části JSON z klientské C# aplikace sady Speech pro rozpoznávání řeči
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Klíč předplatného Azure pro služby pro rozpoznávání řeči
-   - [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
+  - [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
 - Dříve vytvořená aplikace vlastních příkazů
-   - [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
+  - [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
 - Klientská aplikace podporující sadu Speech SDK
-   - [Rychlý Start: připojení k vlastnímu příkazu aplikace pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [Rychlý Start: připojení k vlastnímu příkazu aplikace pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>Volitelné: rychlý začátek
 
@@ -45,14 +45,15 @@ Tento článek popisuje, jak vytvořit klientskou aplikaci, aby provedla komunik
 1. Otevřete dříve vytvořenou aplikaci Custom Commands z nástroje [Speech Studio](https://speech.microsoft.com/)
 1. Podívejte se na část **pravidla dokončování** a ujistěte se, že máte dříve vytvořené pravidlo, které reaguje zpátky na uživatele.
 1. Pokud chcete poslat datovou část přímo klientovi, vytvořte nové pravidlo s akcí odeslat aktivitu.
+
    > [!div class="mx-imgBorder"]
    > ![odeslání pravidla dokončení aktivity](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Nastavení    | Navrhovaná hodnota                                  | Popis                                        |
-   | ---------- | ------------------------------------------------ | -------------------------------------------------- |
-   | Název pravidla  | UpdateDeviceState                                | Název popisující účel pravidla          |
-   | Podmínky | Povinný parametr-`OnOff` a `SubjectDevice` | Podmínky, které určují, kdy se pravidlo dá spustit    |
-   | Akce    | `SendActivity` (viz níže)                        | Akce, která se má provést, když je podmínka pravidla pravdivá |
+   | Nastavení | Navrhovaná hodnota | Popis |
+   | ------- | --------------- | ----------- |
+   | Název pravidla | UpdateDeviceState | Název popisující účel pravidla |
+   | Podmínky | Povinný parametr-`OnOff` a `SubjectDevice` | Podmínky, které určují, kdy se pravidlo dá spustit |
+   | Akce | `SendActivity` (viz níže) | Akce, která se má provést, když je podmínka pravidla pravdivá |
 
    > [!div class="mx-imgBorder"]
    > ![Odeslat datovou část aktivity](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -139,6 +140,6 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. Vizuální stav televizoru by se měl změnit na zapnuto
 
 ## <a name="next-steps"></a>Další kroky
+
 > [!div class="nextstepaction"]
 > [Postupy: Přidání ověření do vlastních parametrů příkazu (Preview)](./how-to-custom-speech-commands-validations.md)
-

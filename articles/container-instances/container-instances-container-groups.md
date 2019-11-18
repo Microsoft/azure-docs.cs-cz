@@ -1,6 +1,6 @@
 ---
 title: Azure Container Instances skupiny kontejnerů
-description: Princip fungování skupin více kontejnerů v Azure Container Instances
+description: Seznamte se se skupinami kontejnerů v Azure Container Instances, kolekci instancí, které sdílejí životní cyklus a prostředky, jako je například úložiště a síť.
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ef6745e18a0df3ee0a572f106d1507d0fca32ac2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904454"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150206"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
 
 Prostředek nejvyšší úrovně v Azure Container Instances je *Skupina kontejnerů*. Tento článek popisuje, co jsou skupiny kontejnerů a typy scénářů, které povolují.
 
-## <a name="how-a-container-group-works"></a>Jak funguje skupina kontejnerů
+## <a name="what-is-a-container-group"></a>Co je skupina kontejnerů?
 
 Skupina kontejnerů je kolekce kontejnerů, které se naplánovaly na stejném hostitelském počítači. Kontejnery ve skupině kontejnerů sdílejí životní cyklus, prostředky, místní síť a svazky úložiště. V [Kubernetes][kubernetes-pod]je to v konceptu podobné jako *pod* .
 
@@ -77,7 +77,7 @@ Skupiny kontejnerů sdílejí IP adresu a obor názvů portu na této IP adrese.
 
 Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtual-network] (Preview), abyste kontejnerům umožnili zabezpečenou komunikaci s ostatními prostředky ve virtuální síti.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů. Tyto svazky můžete namapovat na konkrétní cesty v rámci jednotlivých kontejnerů ve skupině.
 

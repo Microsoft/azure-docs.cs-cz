@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: cd5b45093be6d7cc8745013f18c897251f89f454
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6ec8f8835e925663fc6ac21a6eb1df09d6927109
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822190"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132107"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Naučte se zřizovat nové klienty a registrovat je v katalogu.
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte zřídit a zařadit vzory SaaS do katalogu. Naučíte
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> 
+>
 > * Zřídit jednoho nového tenanta.
 > * Zřídit dávku dalších tenantů.
 
@@ -39,17 +39,17 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 V aplikaci SaaS s více klienty je důležité znát, kde jsou uložené informace pro každého tenanta. Ve vzorovém katalogu SaaS se databáze katalogu používá k uchování mapování mezi jednotlivými klienty a databází, ve které jsou data uložená. Tento model se vztahuje vždy, když jsou data tenanta distribuována napříč více databázemi.
 
-Každý tenant je identifikovaný klíčem v katalogu, který je namapován na umístění své databáze. V aplikaci Wingtip Tickets se klíč vytvoří z hodnoty hash názvu tenanta. Toto schéma umožňuje aplikaci vytvořit klíč z názvu tenanta, který je součástí adresy URL aplikace. Můžete použít další schémata klíčů tenanta.  
+Každý tenant je identifikovaný klíčem v katalogu, který je namapován na umístění své databáze. V aplikaci Wingtip Tickets se klíč vytvoří z hodnoty hash názvu tenanta. Toto schéma umožňuje aplikaci vytvořit klíč z názvu tenanta, který je součástí adresy URL aplikace. Můžete použít další schémata klíčů tenanta.
 
 Katalog umožňuje změnit název nebo umístění databáze s minimálním dopadem na aplikaci. Ve víceklientském databázovém modelu se tato možnost taky vejde na přesun klienta mezi databázemi. Katalog je také možné použít k označení toho, zda je klient nebo databáze v režimu offline kvůli údržbě nebo jiným akcím. Tato funkce se prozkoumá v [kurzu obnovení jednoho tenanta](saas-dbpertenant-restore-single-tenant.md).
 
-Katalog taky může ukládat další metadata tenanta nebo databáze, jako je například verze schématu, plán služby nebo SLA nabízená klientům. Katalog může obsahovat další informace, které umožňují správu aplikací, zákaznickou podporu nebo DevOps. 
+Katalog taky může ukládat další metadata tenanta nebo databáze, jako je například verze schématu, plán služby nebo SLA nabízená klientům. Katalog může obsahovat další informace, které umožňují správu aplikací, zákaznickou podporu nebo DevOps.
 
-Kromě aplikace SaaS může katalog povolit databázové nástroje. V ukázce SaaS datatickets pro každý tenant se v katalogu používá k povolení dotazu pro více tenantů, který se zkoumá v [kurzu generování sestav ad hoc](saas-tenancy-cross-tenant-reporting.md). Správa úloh mezi databázemi je prozkoumání v kurzech [pro správu schématu](saas-tenancy-schema-management.md) a [tenanta Analytics](saas-tenancy-tenant-analytics.md) . 
+Kromě aplikace SaaS může katalog povolit databázové nástroje. V ukázce SaaS datatickets pro každý tenant se v katalogu používá k povolení dotazu pro více tenantů, který se zkoumá v [kurzu generování sestav ad hoc](saas-tenancy-cross-tenant-reporting.md). Správa úloh mezi databázemi je prozkoumání v kurzech [pro správu schématu](saas-tenancy-schema-management.md) a [tenanta Analytics](saas-tenancy-tenant-analytics.md) .
 
-V ukázkách Wingtip Tickets SaaS se katalog implementuje pomocí funkcí správy horizontálních oddílů v [klientské knihovně nástroje elastic Database (EDCL)](sql-database-elastic-database-client-library.md). EDCL je k dispozici v jazyce Java a .NET Framework. EDCL umožňuje aplikaci vytvářet, spravovat a používat mapu horizontálních oddílů zálohovanou databází. 
+V ukázkách Wingtip Tickets SaaS se katalog implementuje pomocí funkcí správy horizontálních oddílů v [klientské knihovně nástroje elastic Database (EDCL)](sql-database-elastic-database-client-library.md). EDCL je k dispozici v jazyce Java a .NET Framework. EDCL umožňuje aplikaci vytvářet, spravovat a používat mapu horizontálních oddílů zálohovanou databází.
 
-Mapa horizontálních oddílů obsahuje seznam horizontálních oddílů (databází) a mapování mezi klíči (klienty) a horizontálních oddílů. Funkce EDCL se používají během zřizování tenanta k vytvoření položek v mapě horizontálních oddílů. Používají se v době běhu v aplikacích pro připojení ke správné databázi. EDCL ukládá informace o připojení do mezipaměti pro minimalizaci provozu do databáze katalogu a urychlení aplikace. 
+Mapa horizontálních oddílů obsahuje seznam horizontálních oddílů (databází) a mapování mezi klíči (klienty) a horizontálních oddílů. Funkce EDCL se používají během zřizování tenanta k vytvoření položek v mapě horizontálních oddílů. Používají se v době běhu v aplikacích pro připojení ke správné databázi. EDCL ukládá informace o připojení do mezipaměti pro minimalizaci provozu do databáze katalogu a urychlení aplikace.
 
 > [!IMPORTANT]
 > Data mapování jsou přístupná v databázi katalogu, ale *neupravujete je*. Upraví data mapování jenom pomocí Elastic Database klientské knihovny API. Přímá manipulace s riziky mapování dat, která poškozují katalog a nejsou podporovaná.
@@ -57,15 +57,15 @@ Mapa horizontálních oddílů obsahuje seznam horizontálních oddílů (datab�
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>Úvod do vzoru zřizování SaaS
 
-Když přidáte nového tenanta do aplikace SaaS, která používá databázový model s jedním klientem, musíte zřídit novou databázi tenanta. Databáze musí být vytvořena v příslušném umístění a vrstvě služby. Musí se taky inicializovat pomocí příslušného schématu a referenčních dat. A musí být zaregistrované v katalogu pod příslušným klíčem tenanta. 
+Když přidáte nového tenanta do aplikace SaaS, která používá databázový model s jedním klientem, musíte zřídit novou databázi tenanta. Databáze musí být vytvořena v příslušném umístění a vrstvě služby. Musí se taky inicializovat pomocí příslušného schématu a referenčních dat. A musí být zaregistrované v katalogu pod příslušným klíčem tenanta.
 
-Můžete použít různé přístupy k zřizování databáze. Můžete spouštět skripty SQL, nasazovat BacPac nebo kopírovat šablonu databáze. 
+Můžete použít různé přístupy k zřizování databáze. Můžete spouštět skripty SQL, nasazovat BacPac nebo kopírovat šablonu databáze.
 
-Zřizování databáze musí být součástí strategie správy schématu. Je potřeba zajistit, aby se nové databáze zřídily s nejnovějším schématem. Tento požadavek se prozkoumá v [kurzu správy schématu](saas-tenancy-schema-management.md). 
+Zřizování databáze musí být součástí strategie správy schématu. Je potřeba zajistit, aby se nové databáze zřídily s nejnovějším schématem. Tento požadavek se prozkoumá v [kurzu správy schématu](saas-tenancy-schema-management.md).
 
-Aplikace Wingtip Tickets Database – pro každého tenanta zřídí nové klienty zkopírováním databáze šablony s názvem _basetenantdb_, která je nasazena na serveru katalogu. Zřizování se dá do aplikace integrovat jako součást prostředí pro registraci. Můžete ho taky podporovat offline pomocí skriptů. V tomto kurzu se seznámíte s zřizováním pomocí prostředí PowerShell. 
+Aplikace Wingtip Tickets Database – pro každého tenanta zřídí nové klienty zkopírováním databáze šablony s názvem _basetenantdb_, která je nasazena na serveru katalogu. Zřizování se dá do aplikace integrovat jako součást prostředí pro registraci. Můžete ho taky podporovat offline pomocí skriptů. V tomto kurzu se seznámíte s zřizováním pomocí prostředí PowerShell.
 
-Skripty pro zřizování kopírují databázi _basetenantdb_ , aby se vytvořila nová databáze tenanta v elastickém fondu. Databáze tenanta se vytvoří na serveru tenanta namapovaném na alias DNS _newtenant_ . Tento alias udržuje odkaz na server, který se používá ke zřízení nových tenantů a aktualizuje se tak, aby odkazoval na server tenanta pro obnovení v kurzech pro zotavení po havárii ([Dr pomocí Restore](saas-dbpertenant-dr-geo-restore.md), [Dr pomocí inreplikace](saas-dbpertenant-dr-geo-replication.md)). Skripty pak inicializují databázi s informacemi, které jsou specifické pro tenanta, a zaregistrují je v mapě horizontálních oddílů katalogu. K databázím tenanta se přidávají názvy na základě názvu tenanta. Toto schéma pojmenovávání není důležitou součástí vzoru. Katalog mapuje klíč tenanta na název databáze, takže je možné použít jakékoli zásady vytváření názvů. 
+Skripty pro zřizování kopírují databázi _basetenantdb_ , aby se vytvořila nová databáze tenanta v elastickém fondu. Databáze tenanta se vytvoří na serveru tenanta namapovaném na alias DNS _newtenant_ . Tento alias udržuje odkaz na server, který se používá ke zřízení nových tenantů a aktualizuje se tak, aby odkazoval na server tenanta pro obnovení v kurzech pro zotavení po havárii ([Dr pomocí Restore](saas-dbpertenant-dr-geo-restore.md), [Dr pomocí inreplikace](saas-dbpertenant-dr-geo-replication.md)). Skripty pak inicializují databázi s informacemi, které jsou specifické pro tenanta, a zaregistrují je v mapě horizontálních oddílů katalogu. K databázím tenanta se přidávají názvy na základě názvu tenanta. Toto schéma pojmenovávání není důležitou součástí vzoru. Katalog mapuje klíč tenanta na název databáze, takže je možné použít jakékoli zásady vytváření názvů.
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace Wingtip Tickets SaaS Database – pro klienty
@@ -95,7 +95,7 @@ Aby bylo možné pochopit, jak aplikace Wingtip Tickets implementuje nové zřiz
 
 
 
-Trasovat provádění skriptu pomocí možností nabídky **ladění** . Stisknutím klávesy F10 a F11 přejděte mezi nebo do volaných funkcí. Další informace o ladění skriptů PowerShellu najdete v tématu [o práci se skripty PowerShellu a jejich ladění](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+Trasovat provádění skriptu pomocí možností nabídky **ladění** . Stisknutím klávesy F10 a F11 přejděte mezi nebo do volaných funkcí. Další informace o ladění skriptů PowerShellu najdete v tématu [o práci se skripty PowerShellu a jejich ladění](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 
 Tento pracovní postup nemusíte explicitně sledovat. Vysvětluje, jak skript ladit.
@@ -156,7 +156,7 @@ Další vzory zřizování nezahrnuté v tomto kurzu:
 
 **Předběžné zřizování databází**: vzor předběžného zřizování zneužije skutečnost, že databáze v elastickém fondu nezahrnují dodatečné náklady. Fakturuje se pro elastický fond, ne pro databáze. Nečinné databáze nevyužívají žádné prostředky. Po předběžném zřizování databází ve fondu a jejich přidělování v případě potřeby můžete zkrátit dobu přidávání klientů. Počet databází, které jsou předem zřízené, se dá upravit podle potřeby, aby se zajistila vyrovnávací paměť vhodná pro předpokládanou rychlost zřizování.
 
-**Automatické zřizování**: ve vzorech automatického zřizování zřídí služba automaticky servery, fondy a databáze podle potřeby. Pokud chcete, můžete zahrnout předběžné zřizování databází v elastických fondech. Pokud jsou databáze vyřazeny z provozu a odstraněny, může služba zřizování vyplňovat mezery v elastických fondech. Taková služba může být jednoduchá nebo složitá, jako je například manipulace s zřizováním napříč několika geografickými oblastmi a nastavení geografické replikace pro zotavení po havárii. 
+**Automatické zřizování**: ve vzorech automatického zřizování zřídí služba automaticky servery, fondy a databáze podle potřeby. Pokud chcete, můžete zahrnout předběžné zřizování databází v elastických fondech. Pokud jsou databáze vyřazeny z provozu a odstraněny, může služba zřizování vyplňovat mezery v elastických fondech. Taková služba může být jednoduchá nebo složitá, jako je například manipulace s zřizováním napříč několika geografickými oblastmi a nastavení geografické replikace pro zotavení po havárii.
 
 Pomocí vzoru automatického zřizování odešle klientská aplikace nebo skript požadavek na zřízení do fronty, kterou má zpracovat služba zřizování. Pak se dotáže služby na určení dokončení. Je-li použito předběžné zřizování, požadavky jsou zpracovávány rychle. Služba zřídí náhradní databázi na pozadí.
 
@@ -166,7 +166,7 @@ Pomocí vzoru automatického zřizování odešle klientská aplikace nebo skrip
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> 
+>
 > * Zřídit jednoho nového tenanta.
 > * Zřídit dávku dalších tenantů.
 > * Projděte si podrobnosti o zřizování klientů a jejich registraci do katalogu.
@@ -177,4 +177,4 @@ Vyzkoušejte si [kurz k monitorování výkonu](saas-dbpertenant-performance-mon
 
 * Další [kurzy, které se vytvářejí na základě aplikace Wingtip Tickets SaaS Database-per-tenant](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md)
-* [Ladit skripty v Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+* [Ladit skripty v Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Matic záznam dění na monitoru-O | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Matic záznam dění na monitoru-O.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s použitím záznamového připojení (SSO) – matic | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a záznamem dění na matic.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,209 +13,169 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 11/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73a29e106424fe87596bf196c16e9ea190da2d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc887e95b6fa6f8b17fbbb3dbaae5105385a07fa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091393"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132138"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>Kurz: Integrace Azure Active Directory s Matic záznam dění na monitoru – O
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu záznamového připojení (SSO) k matic
 
-V tomto kurzu se dozvíte, jak můžete integrovat s Azure Active Directory (Azure AD) Matic záznam dění na monitoru-O.
-Záznam dění na monitoru-O-Matic a integrace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat záznam dění na více matic s Azure Active Directory (Azure AD). Při integraci záznamového připojení (dění)-O-Matic s Azure AD můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k vstupně-Matic pro záznam dění na monitoru.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k záznam dění na monitoru-O-Matic (Single Sign-On) pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k záznamům dění na základě matic.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili do záznamového pracovníka-O-Matic s účty Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Matic záznam dění na monitoru-O, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Záznam dění na monitoru-O Matic jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Záznam dění na více záznamech (matic) – odběr povolený jednotného přihlašování (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Záznam dění na monitoru-O Matic podporuje **SP** jednotné přihlašování zahájené pomocí
-* Záznam dění na monitoru-O Matic podporuje **JIT** zřizování uživatelů
+* Záznam dění na webu – matic podporuje jednotné přihlašování spouštěné v **SP**
+* Záznam dění na záznamovém čase – matic podporuje zřizování uživatelů **jenom včas**
 
-## <a name="adding-screencast-o-matic-from-the-gallery"></a>Přidání Matic záznam dění na monitoru-O z Galerie
+## <a name="adding-screencast-o-matic-from-the-gallery"></a>Přidání dění na záznam dění a výstup-matic z Galerie
 
-Konfigurovat integraci Matic záznam dění na monitoru-O do služby Azure AD, budete muset přidat záznam dění na monitoru-O Matic z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci záznamového připojení (matic) do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat záznam dění na pracovní postup-O-Matic z galerie.
 
-**Pokud chcete přidat záznam dění na monitoru-O Matic z galerie, postupujte následovně:**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **záznam dění a výstup-matic** .
+1. Vyberte položku **záznam dění na matic** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-screencast-o-matic"></a>Konfigurace a testování jednotného přihlašování Azure AD pro záznam dění na záznamovém zařízení-O-Matic
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí záznamového připojení (matic) s použitím testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v záznamovém prostředí (dění v pracovním stupni)-O-matic.
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí záznamového připojení (matic), dokončete následující stavební bloky:
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Konfigurace záznamového připojení (dění)-o-matic SSO](#configure-screencast-o-matic-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    * **[Vytvořte záznam dění na záznamovém zařízení (matic](#create-screencast-o-matic-test-user)** ). Pokud chcete, aby byl protějšek B. Simon v dění na záznamovém zařízení, které je propojeno s reprezentací uživatele Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Matic záznam dění na monitoru-O**vyberte **Matic záznam dění na monitoru-O** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikací pro **záznam dění** v/v matic najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Záznam dění na monitoru-O-Matic v seznamu výsledků](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-V této části, konfigurace a testování služby Azure AD jednotné přihlašování s záznam dění na monitoru-O-Matic na základě testovací uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Matic záznam dění na monitoru-O.
-
-Nakonfigurovat a otestovat Azure AD jednotného přihlašování se O-Matic pro záznam dění na monitoru, které potřebujete k dokončení následujících stavebních bloků:
-
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Nakonfigurujte záznam dění na monitoru-O Matic Single Sign-On](#configure-screencast-o-matic-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit záznam dění na monitoru-O Matic testovacího uživatele](#create-screencast-o-matic-test-user)**  – Pokud chcete mít protějšek Britta Simon záznam dění na monitoru-O-Matic, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
-
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
-
-Ke konfiguraci Azure AD jednotné přihlašování s Matic záznam dění na monitoru-O, proveďte následující kroky:
-
-1. V [webu Azure portal](https://portal.azure.com/)na **Matic záznam dění na monitoru-O** integrace stránce aplikace vyberte **jednotného přihlašování**.
-
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
-
-    ![Záznam dění na monitoru-O Matic domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
-
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://screencast-o-matic.com/<InstanceName>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://screencast-o-matic.com/<InstanceName>`
 
     > [!NOTE]
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory O-Matic pro záznam dění na monitoru klienta](mailto:support@screencast-o-matic.com) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Chcete-li získat hodnotu, obraťte se na [tým podpory záznamem dění na straně klienta (matic](mailto:support@screencast-o-matic.com) ). Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **soubor XML s metadaty**z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavit Matic záznam dění na monitoru-O** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+1. V části **nastavit záznam dění v/v-matic** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-    b. Identifikátor Azure AD
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Adresa URL – odhlášení
-
-### <a name="configure-screencast-o-matic-single-sign-on"></a>Konfigurace Matic záznam dění na monitoru O jednotné přihlašování
-
-1. V okně jiné webové prohlížeče Přihlaste se k Matic záznam dění na monitoru-O jako správce.
-
-2. Klikněte na **předplatné**.
-
-    ![Předplatné](./media/screencast-tutorial/tutorial_screencast_sub.png)
-
-3. V části **stránku** části, klikněte na tlačítko **nastavení**.
-
-    ![Přístup](./media/screencast-tutorial/tutorial_screencast_setup.png)
-
-4. Na **stránky nastavení přístupu**, proveďte následující kroky:
-
-   * V části **adresa URL přístupového** oddíl, do zadaného textového pole zadejte vaše instancename.
-
-    ![Přístup](./media/screencast-tutorial/tutorial_screencast_access.png)
-
-   * Vyberte **vyžadují uživatele domény** pod **omezení uživatele SAML (volitelné)** oddílu.
-
-   * V části **nahrát soubor XML metadat zprostředkovatele identity**, klikněte na tlačítko **zvolit soubor** nahrát metadat, který jste si stáhli z webu Azure portal.
-
-   * Klikněte na **OK**.
-
-    ![Přístup](./media/screencast-tutorial/tutorial_screencast_save.png)
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
-
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
-
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k vstupně-Matic pro záznam dění na monitoru.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k záznamům dění na záznam dění na záznamovém počítači-O-matic.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Matic záznam dění na monitoru-O**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte položku záznam dění na úrovni myši **-O-Matic**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-2. V seznamu aplikací vyberte **Matic záznam dění na monitoru-O**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Záznam dění na monitoru-O Matic odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+## <a name="configure-screencast-o-matic-sso"></a>Konfigurace záznamového připojení (dění)-O-Matic SSO
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Pokud chcete automatizovat konfiguraci v rámci záznamového prostředí (matic), je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit záznam dění na záznamovém připojení (matic** ), které vás přesměruje do aplikace záznamového připojení Odtud zadejte přihlašovací údaje správce, které se přihlaste k režimu dění na záznamového připojení-O-matic. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-11.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+    ![Konfigurace instalace](common/setup-sso.png)
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+1. Pokud chcete nastavit záznam dění na matic ručně, otevřete nové okno webového prohlížeče a přihlaste se ke svému webu společnosti na záznamovém připojení (dění v matic) jako správce a proveďte následující kroky:
 
-### <a name="create-screencast-o-matic-test-user"></a>Vytvořit záznam dění na monitoru-O Matic testovacího uživatele
+1. Klikněte na **předplatné**.
 
-V této části se vytvoří uživateli Britta Simon v Matic záznam dění na monitoru-O. Záznam dění na monitoru-O Matic podporuje zřizování uživatelů v čase, je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Matic záznam dění na monitoru-O, vytvoří se nový po ověření. Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory O-Matic pro záznam dění na monitoru klienta](mailto:support@screencast-o-matic.com).
+    ![Předplatné](./media/screencast-tutorial/tutorial_screencast_sub.png)
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+1. V části **přístupová stránka** klikněte na **Nastavení**.
+
+    ![Přístup](./media/screencast-tutorial/tutorial_screencast_setup.png)
+
+1. Na **stránce přístup pro instalaci**proveďte následující kroky.
+
+1. V části **Adresa URL pro přístup** do zadaného textového pole zadejte jeho instanci.
+
+    ![Přístup](./media/screencast-tutorial/tutorial_screencast_access.png)
+
+1. V části **omezení uživatele v SAML (volitelné)** vyberte **vyžadovat uživatele domény** .
+
+1. V části **nahrát soubor XML s metadaty IDP**klikněte na **zvolit soubor** a nahrajte metadata, která jste stáhli z Azure Portal.
+
+1. Klikněte na tlačítko **OK**.
+
+    ![Přístup](./media/screencast-tutorial/tutorial_screencast_save.png)
+
+### <a name="create-screencast-o-matic-test-user"></a>Vytvořit záznam dění na záznamovém zařízení-O-Matic testovací uživatel
+
+V této části se uživatel s názvem Britta Simon vytvoří v dění na záznamovém dění-O-matic. Záznam dění na matic podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel už v záznamovém prostředí (dění v/v-matic neexistuje), vytvoří se po ověření nový. Pokud potřebujete ručně vytvořit uživatele, obraťte se na pracovní postup na [záznam dění na straně klienta (matic](mailto:support@screencast-o-matic.com)).
+
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na záznam dění na monitoru-O Matic dlaždici na přístupovém panelu, vám by měl být automaticky přihlášeni ke záznam dění na monitoru-O-Matic a u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici záznam dění na Maticu na přístupovém panelu byste měli být automaticky přihlášeni k pracovním postupům pro záznam dění na matic, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si záznam dění v matic s Azure AD](https://aad.portal.azure.com/)

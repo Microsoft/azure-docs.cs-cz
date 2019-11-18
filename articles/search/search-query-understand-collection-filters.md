@@ -1,7 +1,7 @@
 ---
 title: Principy filtrů kolekce OData
 titleSuffix: Azure Cognitive Search
-description: Porozumění způsobu, jakým filtry kolekce OData fungují v Azure Kognitivní hledání dotazy
+description: Naučte se, jak filtry kolekce OData pracují v Azure Kognitivní hledání dotazy, včetně omezení a chování jedinečných pro kolekce.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a57e1d16b13d822b6f5b541a7f838b0dd3a69ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794396"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113067"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Porozumění filtrům kolekce OData v Azure Kognitivní hledání
 
@@ -86,22 +86,22 @@ Jak je uloženo `Rooms/Type` pro fulltextové vyhledávání:
 
 | Termín `Rooms/Type` | ID dokumentů |
 | --- | --- |
-| Deluxe | 1, 2 |
-| standard | 1\. místo |
+| deluxe | 1, 2 |
+| standard | 1 |
 
 Jak je uloženo `Rooms/Description` pro fulltextové vyhledávání:
 
 | Termín `Rooms/Description` | ID dokumentů |
 | --- | --- |
 | courtyard | 2 |
-| city | 1\. místo |
-| zahrada | 1\. místo |
-| Celou | 1\. místo |
+| city | 1 |
+| zahrada | 1 |
+| celou | 1 |
 | Motel | 2 |
 | konverzační | 1, 2 |
-| standard | 1\. místo |
-| sad | 1\. místo |
-| zobrazit | 1\. místo |
+| standard | 1 |
+| sad | 1 |
+| zobrazit | 1 |
 
 Proto na rozdíl od výše uvedeného filtru, který v podstatě říká "odpovídání na dokumenty", kde má místnost `Type` rovna "Deluxe Room" a **stejná místnost** má `BaseRate` menší než 100 ", vyhledávací dotaz znamená" shoda dokumentů, kde `Rooms/Type` má výraz "Deluxe" a `Rooms/Description` má frázi "zobrazení měst". Neexistuje žádný koncept jednotlivých místností, jejichž pole je možné v druhém případě sladit.
 
@@ -138,10 +138,10 @@ Představte si například pole pro shromažďování řetězců, jako je např�
 
 Hodnoty pole `seasons` jsou uloženy ve struktuře s názvem **obrácený index**, který vypadá přibližně takto:
 
-| Doba účinnosti | ID dokumentů |
+| Označení | ID dokumentů |
 | --- | --- |
 | návratu | 1, 2 |
-| letní | 1\. místo |
+| letní | 1 |
 | narozeniny | 1, 2 |
 | Zimní | 2, 3 |
 
@@ -151,7 +151,7 @@ Při vytváření z rovnosti se teď podíváme na to, jak je možné zkombinova
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
-je ekvivalentem:
+je ekvivalentní:
 
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
 
@@ -159,7 +159,7 @@ a každý ze dvou `any` dílčích výrazů lze efektivně provádět pomocí ob
 
     seasons/all(s: s ne 'winter' and s ne 'fall')
 
-je ekvivalentem:
+je ekvivalentní:
 
     not seasons/any(s: s eq 'winter' or s eq 'fall')
 

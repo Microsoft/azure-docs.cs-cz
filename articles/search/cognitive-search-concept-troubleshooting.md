@@ -1,5 +1,5 @@
 ---
-title: Tipy pro řešení potíží pro obohacení AI
+title: Tipy pro návrh rozšíření AI
 titleSuffix: Azure Cognitive Search
 description: Tipy a řešení potíží při nastavování kanálů obohacení AI v Azure Kognitivní hledání.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 485dd47e035f03a8e20ded4c8a424f1658f5246a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787705"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113825"
 ---
-# <a name="troubleshooting-tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tipy pro řešení potíží pro obohacení AI v Azure Kognitivní hledání
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tipy pro rozšíření AI v Azure Kognitivní hledání
 
 Tento článek obsahuje seznam tipů a triky, které vám pomohou při přesunu při zahájení práce s funkcemi obohacení AI v Azure Kognitivní hledání. 
 
@@ -103,7 +103,7 @@ V případě indexování na základě portálu (jak je popsáno v rychlém star
 V případě [paralelního indexování](search-howto-large-index.md)umístěte data do více kontejnerů nebo více virtuálních složek uvnitř stejného kontejneru. Pak vytvořte více datových zdrojů a párů indexerů. Všechny indexery můžou používat stejný dovednosti a zapisovat do stejného cílového vyhledávacího indexu, takže si vaše vyhledávací aplikace nemusí být vědomá tohoto dělení.
 Další informace najdete v tématu [indexování velkých datových sad](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 + [Rychlý Start: vytvoření kanálu pro rozšíření AI na portálu](cognitive-search-quickstart-blob.md)
 + [Kurz: Seznámení s rozhraními REST API pro obohacení AI](cognitive-search-tutorial-blob.md)
 + [Zadání přihlašovacích údajů ke zdroji dat](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

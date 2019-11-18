@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 559f29624ef0946374c3e87a26f0983f202a20d7
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082635"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132985"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -29,8 +29,6 @@ V tomto článku se dozvíte, jak nastavit zotavení po havárii do sekundární
 > * Vytvoření zásady replikace
 > * Povolit replikaci virtuálního počítače
 
-> [!WARNING]
-> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](site-to-site-deprecation.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +39,7 @@ Požadavky pro dokončení tohoto scénáře:
 - Zkontrolujte, že virtuální počítače, které chcete replikovat, odpovídají [podporovaným replikovaným počítačům](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support).
 - Připravte servery VMM na mapování sítě.
 
-### <a name="prepare-for-network-mapping"></a>Příprava na mapování sítě
+### <a name="prepare-for-network-mapping"></a>Příprava mapování sítě
 
 [Mapování sítě](hyper-v-vmm-network-mapping.md) provádí mapování mezi místními sítěmi virtuálních počítačů VMM ve zdrojových a cílových cloudech. Mapování provádí následující:
 
@@ -118,7 +116,7 @@ Vyberte cílový server VMM a cloud:
 1. Klikněte na **Připravit infrastrukturu** > **Cíl** a vyberte cílový server VMM.
 2. Zobrazí se cloudy VMM synchronizované se Site Recovery. Vyberte cílový cloud.
 
-   ![Výběr cílového umístění](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Cíl](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace

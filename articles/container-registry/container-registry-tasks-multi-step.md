@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 27321dbcdeae3a830b6ddf5ea70cbaa098d7e4e3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 06bdcc1cd4f9bfcb1a77140d70435545fbe01079
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931499"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148766"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Spouštění úloh s více kroky sestavení, testování a oprav v úlohách ACR
 
@@ -84,7 +84,7 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
 
-V tématu [Příklady úloh][task-examples] najdete kompletní YAML soubory úloh a fázemi pro více kroků.
+V tématu [Příklady úloh](container-registry-tasks-samples.md) pro více kroků YAML soubory úloh a fázemi pro několik scénářů.
 
 ## <a name="run-a-sample-task"></a>Spuštění ukázkového úkolu
 
@@ -155,7 +155,7 @@ Další informace o automatizovaných sestavách na potvrzení Git nebo aktualiz
 Odkazy na úlohy a příklady pro více kroků najdete tady:
 
 * [Odkaz na úkol](container-registry-tasks-reference-yaml.md) – typy kroků úlohy, jejich vlastnosti a využití.
-* [Příklady úloh][task-examples] – příklad `task.yaml` souborů pro několik scénářů, které jsou jednoduché a složité.
+* [Příklady úloh](container-registry-tasks-samples.md) – příklad `task.yaml` a Docker souborů pro několik scénářů, které jsou jednoduché a složité.
 * [Úložiště cmd](https://github.com/AzureCR/cmd) – kolekce kontejnerů jako příkazy pro úlohy ACR
 
 <!-- IMAGES -->

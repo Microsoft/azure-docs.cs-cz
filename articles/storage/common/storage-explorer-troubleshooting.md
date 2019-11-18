@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: ca9b4b337eed54f02f42cad53d22387eace6b76c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 4aa9e93831b902ff9f0a0659c650cd2ca123b1a3
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694696"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74124010"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumník služby Azure Storage
 
@@ -58,7 +58,7 @@ Pokud nemáte roli, která uděluje žádná oprávnění vrstvy správy, Průzk
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co když mi nejde získat oprávnění pro vrstvu správy, které potřebuji od správce?
 
-Pro tento problém momentálně nepoužíváme řešení související s RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
+Pro tento problém momentálně nepoužíváme řešení související s RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Chyba: certifikát podepsaný svým držitelem v řetězu certifikátů (a podobné chyby)
 
@@ -70,7 +70,7 @@ K chybám certifikátu obvykle dochází v jedné z následujících situací:
 Když Průzkumník služby Storage uvidí certifikát podepsaný svým držitelem nebo nedůvěryhodný, už nebude vědět, jestli se přijatá zpráva HTTPS změnila. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete mu dát Průzkumník služby Storage, aby mu důvěřovali pomocí následujících kroků:
 
 1. Získejte kopii certifikátu X. 509 (. cer) s kódováním Base-64.
-2. Přejít na **upravit**@no__t**certifikát SSL** > **Import certifikátů**a potom pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor. cer.
+2. Pokračujte v **úpravách** > **certifikáty SSL** > **Import certifikátů**a potom pomocí nástroje pro výběr souborů Najděte, vyberte a otevřete soubor. cer.
 
 K tomuto problému může dojít také v případě, že existuje více certifikátů (root a zprostředkující). Chcete-li tuto chybu opravit, je nutné přidat oba certifikáty.
 
@@ -81,11 +81,11 @@ Pokud si nejste jistí, odkud certifikát pochází, postupujte podle těchto kr
     * Mac a Linux: měla by být součástí vašeho operačního systému.
 2. Spusťte OpenSSL.
     * Windows: otevřete instalační adresář, vyberte **/bin/** a dvakrát klikněte na **OpenSSL. exe**.
-    * Mac a Linux: v terminálu spusťte `openssl`.
+    * Mac a Linux: Spusťte `openssl` z terminálu.
 3. Spusťte `s_client -showcerts -connect microsoft.com:443`.
-4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, poznamenejte si část `("s:")` a Vystavitel `("i:")` jsou stejné.
-5. Když najdete certifikáty podepsané svým držitelem, můžete pro každý z nich zkopírovat a vložit všechno z (a včetně) `-----BEGIN CERTIFICATE-----` do nového souboru. cer pomocí `-----END CERTIFICATE-----`.
-6. Otevřete Průzkumník služby Storage a přejít na **upravit** > **certifikáty SSL** > **Import certifikátů**. Pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
+4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, poznamenejte si `("s:")` a `("i:")` vystavitele.
+5. Když najdete certifikáty podepsané svým držitelem, můžete pro každý z nich zkopírovat a vložit všechno z (a včetně) `-----BEGIN CERTIFICATE-----` pomocí `-----END CERTIFICATE-----` do nového souboru. cer.
+6. Otevřete Průzkumník služby Storage a pokračujte v **úpravách** > **certifikáty SSL** > **importování certifikátů**. Pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
 
 Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomocí následujících kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu. Průzkumník služby Storage můžete také otevřít z příkazového řádku pomocí příznaku `--ignore-certificate-errors`. Po otevření s tímto příznakem Průzkumník služby Storage ignoruje chyby certifikátu.
 
@@ -93,9 +93,9 @@ Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomoc�
 
 ### <a name="blank-sign-in-dialog-box"></a>Dialogové okno prázdné přihlášení
 
-Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. Uděláte to takto:
+Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. Chcete-li to provést, postupujte takto:
 
-1. V nabídce přejděte na **verze Preview** > **použít přihlášení ke kódu zařízení**.
+1. V nabídce přejděte na **náhled** > **použít přihlášení ke kódu zařízení**.
 2. Otevřete dialogové okno **připojit** (buď prostřednictvím ikony plug-in na levé straně, nebo vyberte **Přidat účet** na panelu účet).
 3. Vyberte prostředí, ke kterému se chcete přihlásit.
 4. Vyberte **Přihlásit se**.
@@ -165,7 +165,7 @@ Pokud nemůžete odebrat připojený účet nebo prostředek úložiště prost�
 > Před odstraněním těchto složek zavřete Průzkumník služby Storage.
 
 > [!NOTE]
-> Pokud jste někdy importovali nějaké certifikáty SSL, zálohujte obsah adresáře `certs`. Později můžete pomocí zálohy znovu naimportovat své certifikáty SSL.
+> Pokud jste někdy naimportovali nějaké certifikáty SSL, zálohujte obsah adresáře `certs`. Později můžete pomocí zálohy znovu naimportovat své certifikáty SSL.
 
 ## <a name="proxy-issues"></a>Problémy s proxy serverem
 
@@ -220,7 +220,7 @@ Pokud vidíte klíče účtu, založte problém do GitHubu, abychom vám mohli p
 
 Pokud se zobrazí tato chybová zpráva, když se pokusíte přidat vlastní připojení, může dojít k poškození dat připojení uložených v místním Správci přihlašovacích údajů. Pokud chcete tento problém obejít, zkuste odstranit vaše poškozená místní připojení a pak je znovu přidat:
 
-1. Spusťte Průzkumník služby Storage. V nabídce přejděte na příkaz **Help** > **vývojářské nástroje přepínač**.
+1. Spusťte Průzkumník služby Storage. V nabídce přejděte na **Help** > **přepínat vývojářské nástroje**.
 2. V otevřeném okně na kartě **aplikace** přejdete do **místního úložiště** (levé straně) > **File://** .
 3. V závislosti na typu připojení, se kterým máte potíže, vyhledejte jeho klíč a zkopírujte jeho hodnotu do textového editoru. Hodnota je pole vlastních názvů připojení, například následující:
     * Účty úložiště
@@ -309,7 +309,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
 > [!NOTE]
 > Průzkumník služby Storage verze 1.7.0 a starší vyžadují .NET Core 2,0. Pokud máte nainstalovanou novější verzi .NET Core, budete muset [opravit Průzkumník služby Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Pokud používáte Průzkumník služby Storage 1.8.0 nebo novější, měli byste být schopni použít až .NET Core 2,2. Verze nad rámec 2,2 se neověřily, aby v tuto chvíli fungovaly.
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19,04](#tab/1904)
+# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
@@ -327,7 +327,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16,04](#tab/1604)
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
@@ -336,7 +336,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14,04](#tab/1404)
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
@@ -353,7 +353,7 @@ Pro Průzkumník služby Storage 1.7.0 nebo starší možná budete muset opravi
 1. Stáhněte si 1.5.43 verze StreamJsonRpc [z NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Vyhledejte odkaz Stáhnout balíček na pravé straně stránky.
 2. Po stažení balíčku změňte jeho příponu z `.nupkg` na `.zip`.
 3. Rozbalíte balíček.
-4. Otevřete složku `streamjsonrpc.1.5.43/lib/netstandard1.1/`.
+4. Otevřít `streamjsonrpc.1.5.43/lib/netstandard1.1/` složky.
 5. Zkopírujte `StreamJsonRpc.dll` do následujících umístění ve složce Průzkumník služby Storage:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
@@ -364,7 +364,7 @@ Pokud tlačítko **otevřít v Průzkumníkovi** na Azure Portal nefunguje, ujis
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
-* Aplikace Microsoft Internet Explorer
+* Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,7 +1,7 @@
 ---
-title: Indexování jednoho objektu blob do mnoha dokumentů indexu hledání z Azure Blob indexeru pro fulltextové vyhledávání
+title: Indexování objektů BLOB obsahujících více dokumentů
 titleSuffix: Azure Cognitive Search
-description: Procházení objektů blob Azure pro obsah textu pomocí indexeru objektů BLOB služby Azure Cognitive Search. Každý objekt BLOB může poskytovat jeden nebo více dokumentů indexu hledání.
+description: Procházejte objekty blob Azure pro textový obsah pomocí indexeru objektů BLOB služby Azure Cognitive Search, kde každý objekt BLOB může mít jeden nebo více dokumentů indexu vyhledávání.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818545"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112261"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indexování objektů BLOB pro vytváření více dokumentů hledání
 Ve výchozím nastavení bude indexer objektů BLOB zacházet s obsahem objektu BLOB jako s jedním vyhledávacím dokumentem. Některé hodnoty **parsingMode** podporují scénáře, kdy jednotlivý objekt BLOB může mít za následek více dokumentů pro hledání. Různé typy **parsingMode** , které umožňují indexeru extrahovat více než jeden dokument hledání z objektu BLOB:
@@ -40,12 +40,12 @@ Předpokládejme, že máte definici indexu s následujícími poli:
 
 A váš kontejner objektů BLOB obsahuje objekty BLOB s následující strukturou:
 
-_Blob1. JSON_
+_Blob1.json_
 
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
 
-_Blob2. JSON_
+_Blob2.json_
 
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
@@ -60,7 +60,7 @@ Když vytvoříte indexer a nastavíte **parsingMode** na `jsonLines` – bez za
 
 Výsledkem tohoto nastavení je index služby Azure Kognitivní hledání obsahující následující informace (pro zkrácení se zkrátilo ID kódované v kódování Base64).
 
-| id | Teplota | tlak | časové razítko |
+| id | Teplota | pressure | časové razítko |
 |----|-------------|----------|-----------|
 | aHR0 ... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0 ... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
@@ -71,13 +71,13 @@ Výsledkem tohoto nastavení je index služby Azure Kognitivní hledání obsahu
 
 Za předpokladu, že v předchozím příkladu je stejná definice indexu, řekněme, že váš kontejner objektů BLOB obsahuje objekty BLOB s následující strukturou:
 
-_Blob1. JSON_
+_Blob1.json_
 
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
 
-_Blob2. JSON_
+_Blob2.json_
 
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 

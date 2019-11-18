@@ -1,5 +1,6 @@
 ---
-title: 'Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet: Azure Resource Manager: PowerShell | Microsoft Docs'
+title: Zásady IPsec/IKE pro S2S VPN & připojení VNet-to-VNet
+titleSuffix: Azure VPN Gateway
 description: Nakonfigurujte zásady IPsec/IKE pro připojení S2S nebo VNet-to-VNet se službami Azure VPN Gateway pomocí Azure Resource Manager a PowerShellu.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: a4a0431a8d40f7905805e0a7d902988b7eb26208
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0dabf0ee3370abab3d0f9d6f1bf26dd622862cf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035042"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151779"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet
 
@@ -43,8 +44,8 @@ Tento článek poskytuje pokyny k vytvoření a konfiguraci zásad IPsec/IKE a p
 > 1. Zásady IPsec/IKE fungují jenom na následujících SKU brány:
 >    * ***VpnGw1, VpnGw2, VpnGw3*** (směrování založené na trasách)
 >    * ***Standard*** a ***HighPerformance*** (směrování založené na trasách)
-> 2. Pro dané připojení můžete zadat jenom ***jednu*** kombinaci zásad.
-> 3. Je nutné zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i pro protokol IPsec (rychlý režim). Částečná specifikace zásad není povolená.
+> 2. Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
+> 3. Je nutné zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i pro protokol IPsec (rychlý režim). Zadání částečných zásad není povoleno.
 > 4. Pokud chcete zajistit, aby se zásady na místních zařízeních VPN podporovaly, kontaktujte specifikace dodavatele zařízení VPN. Připojení S2S nebo VNet-to-VNet nelze nastavit, pokud jsou zásady nekompatibilní.
 
 ## <a name ="workflow"></a>Část 1 – pracovní postup vytvoření a nastavení zásad IPsec/IKE
@@ -63,16 +64,16 @@ Pokyny v tomto článku vám pomůžou nastavit a nakonfigurovat zásady IPsec/I
 
 Následující tabulka uvádí podporované kryptografické algoritmy a síly klíče, které můžou zákazníci konfigurovat:
 
-| **Protokol IPsec/IKEv2**  | **Možnosti**    |
+| **IPsec/IKEv2**  | **Možnosti**    |
 | ---  | --- 
-| Šifrování IKEv2 | AES256, AES192, AES128, DES3, DES  
-| Integrita IKEv2  | SHA384, SHA256, SHA1, MD5  |
+| Šifrování protokolem IKEv2 | AES256, AES192, AES128, DES3, DES  
+| Integrita protokolu IKEv2  | SHA384, SHA256, SHA1, MD5  |
 | Skupina DH         | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, None |
-| Šifrování IPsec | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, None    |
+| Šifrování protokolem IPsec | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Žádné    |
 | Integrita protokolu IPsec  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
-| Skupina PFS        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, None 
-| Životnost SA QM   | (**Volitelné**: použijí se výchozí hodnoty, pokud není zadaný)<br>Sekundy (celé číslo; **min. 300**/default 27000 s)<br>Kilobajty (celé číslo; **min. 1024**/default 102400000 KB)   |
-| Výběr provozu | UsePolicyBasedTrafficSelectors * * ($True/$False; **Volitelné**, výchozí $false, pokud není zadané)    |
+| Skupina PFS        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Žádná 
+| Doba života přidružení zabezpečení v rychlém režimu   | (**Volitelné**: použijí se výchozí hodnoty, pokud není zadaný)<br>Sekundy (integer; **min. 300** / výchozí hodnota 27 000 sekund)<br>Kilobajty (integer; **min. 1024** / výchozí hodnota 102 400 000 kilobajtů)   |
+| Selektor provozu | UsePolicyBasedTrafficSelectors * * ($True/$False; **Volitelné**, výchozí $false, pokud není zadané)    |
 |  |  |
 
 > [!IMPORTANT]
@@ -84,7 +85,7 @@ Následující tabulka uvádí podporované kryptografické algoritmy a síly kl
 >    * Algoritmus integrity protokolu IPsec (rychlý režim/fáze 2)
 >    * Skupina PFS (rychlý režim/fáze 2)
 >    * Výběr provozu (Pokud se používá UsePolicyBasedTrafficSelectors)
->    * Životnosti přidružení zabezpečení jsou pouze místní specifikace, nemusíte se shodovat.
+>    * Doby životnosti přidružení zabezpečení jsou pouze místní specifikace, nemusí se shodovat.
 >
 > 2. **Pokud se pro šifrovací algoritmus IPsec používá GCMAES, musíte vybrat stejný algoritmus GCMAES a délku klíče pro integritu protokolu IPsec. například použití GCMAES128 pro obojí**
 > 3. V tabulce výše:
@@ -92,12 +93,12 @@ Následující tabulka uvádí podporované kryptografické algoritmy a síly kl
 >    * Protokol IPsec odpovídá rychlému režimu nebo fázi 2.
 >    * Skupina DH určuje skupinu Diffie-Hellmen použitou v hlavním režimu nebo fázi 1.
 >    * Skupina PFS zadala skupinu Diffie-Hellmen použitou v rychlém režimu nebo ve fázi 2.
-> 4. Životnost SA hlavního režimu IKEv2 je opravena na 28 800 sekund ve službě Azure VPN Gateway.
-> 5. Nastavení "UsePolicyBasedTrafficSelectors" na $True v připojení nakonfiguruje bránu Azure VPN Gateway, aby se připojovala k místní bráně firewall sítě VPN na základě zásad. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, aby vaše zařízení VPN odpovídalo selektorům přenosu definovaných pomocí všech kombinací místní sítě (brány místní sítě) k/z prefixů virtuální sítě Azure místo libovolný. Pokud například předpony místních sítí jsou 10.1.0.0/16 a 10.2.0.0/16 a předpony virtuální sítě jsou 192.168.0.0/16 a 172.16.0.0/16, je nutné zadat následující selektory provozu:
->    * 10.1.0.0/16 < = = = = > 192.168.0.0/16
->    * 10.1.0.0/16 < = = = = > 172.16.0.0/16
->    * 10.2.0.0/16 < = = = = > 192.168.0.0/16
->    * 10.2.0.0/16 < = = = = > 172.16.0.0/16
+> 4. V branách Azure VPN Gateway je doba života přidružení zabezpečení protokolu IKEv2 v hlavním režimu pevně nastavena na 28 800 sekund.
+> 5. Nastavení "UsePolicyBasedTrafficSelectors" na $True v připojení nakonfiguruje bránu Azure VPN Gateway, aby se připojovala k místní bráně firewall sítě VPN na základě zásad. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, aby vaše zařízení VPN odpovídalo selektorům přenosu, které jsou definované se všemi kombinacemi předpon vaší místní sítě (místní síťová brána), a to místo any-to-Any. Například pokud jsou předpony vaší místní sítě 10.1.0.0/16 a 10.2.0.0/16 a předpony vaší virtuální sítě jsou 192.168.0.0/16 a 172.16.0.0/16, je potřeba zadat následující selektory provozu:
+>    * 10.1.0.0/16 <====> 192.168.0.0/16
+>    * 10.1.0.0/16 <====> 172.16.0.0/16
+>    * 10.2.0.0/16 <====> 192.168.0.0/16
+>    * 10.2.0.0/16 <====> 172.16.0.0/16
 
 Další informace o selektorech provozu na základě zásad najdete v tématu [připojení několika místních zařízení VPN založených na zásadách](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
@@ -105,14 +106,14 @@ V následující tabulce jsou uvedeny odpovídající skupiny Diffie-Hellman pod
 
 | **Skupina Diffie-Hellman**  | **DHGroup**              | **PFSGroup** | **Délka klíče** |
 | --- | --- | --- | --- |
-| první                         | DHGroup1                 | PFS1         | 768 – bit MODP   |
-| odst                         | DHGroup2                 | PFS2         | 1024 – bit MODP  |
-| čtrnáct                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 – bit MODP  |
-| čl                        | ECP256                   | ECP256       | 256 – bit ECP    |
-| 20o                        | ECP384                   | ECP384       | 384 – bit ECP    |
-| 24                        | DHGroup24                | PFS24        | 2048 – bit MODP  |
+| 1                         | DHGroup1                 | PFS1         | 768bitová skupina MODP   |
+| 2                         | DHGroup2                 | PFS2         | 1024bitová skupina MODP  |
+| 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048bitová skupina MODP  |
+| 19                        | ECP256                   | ECP256       | 256bitová skupina ECP    |
+| 20                        | ECP384                   | ECP384       | 384bitová skupina ECP    |
+| 24                        | DHGroup24                | PFS24        | 2048bitová skupina MODP  |
 
-Další podrobnosti najdete v tématu [RFC3526](https://tools.ietf.org/html/rfc3526) a [RFC5114](https://tools.ietf.org/html/rfc5114) .
+Další podrobnosti najdete v článcích týkajících se [RFC3526](https://tools.ietf.org/html/rfc3526) a [RFC5114](https://tools.ietf.org/html/rfc5114).
 
 ## <a name ="crossprem"></a>Část 3 – vytvoření nového připojení S2S VPN pomocí zásad IPsec/IKE
 
@@ -131,7 +132,7 @@ Podrobnější pokyny k vytvoření připojení S2S VPN najdete v tématu [vytvo
 
 #### <a name="1-declare-your-variables"></a>1. deklarace proměnných
 
-Pro toto cvičení začneme deklarací proměnných. Nezapomeňte nahradit hodnoty vlastními při konfiguraci pro produkční prostředí.
+Pro toto cvičení začneme deklarací proměnných. Při konfiguraci pro ostrý provoz nezapomeňte nahradit hodnoty vlastními.
 
 ```powershell
 $Sub1          = "<YourSubscriptionName>"
@@ -160,9 +161,9 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Připojte se k předplatnému a vytvořte novou skupinu prostředků.
 
-Ujistěte se, že jste přešli do režimu PowerShellu, abyste mohli používat rutiny Správce prostředků. Další informace najdete v tématu [použití prostředí Windows PowerShell s správce prostředků](../powershell-azure-resource-manager.md).
+Ujistěte se, že jste přešli do režimu prostředí PowerShell, aby bylo možné používat rutiny Resource Manageru. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
 
-Otevřete konzolu PowerShellu a připojte se ke svému účtu. Pomocí následující ukázky můžete připojit:
+Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
 ```powershell
 Connect-AzAccount
@@ -172,7 +173,7 @@ New-AzResourceGroup -Name $RG1 -Location $Location1
 
 #### <a name="3-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>3. Vytvořte virtuální síť, bránu VPN a bránu místní sítě.
 
-Následující ukázka vytvoří virtuální síť, virtuální sítě testvnet1 se třemi podsítěmi a bránu VPN. Při nahrazování hodnot je důležité vždycky pojmenovat podsíť brány specificky GatewaySubnet. Pokud ho pojmenovat něco jiného, vytvoření brány se nepovede.
+Následující ukázka vytvoří virtuální síť, virtuální sítě testvnet1 se třemi podsítěmi a bránu VPN. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
 
 ```powershell
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -235,7 +236,7 @@ Podrobnější kroky pro vytvoření připojení typu VNet-to-VNet najdete v té
 
 #### <a name="1-declare-your-variables"></a>1. deklarace proměnných
 
-Nezapomeňte nahradit hodnoty těmi, které chcete použít pro vaši konfiguraci.
+Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
 
 ```powershell
 $RG2          = "TestPolicyRG2"
@@ -282,7 +283,7 @@ Podobně jako u připojení VPN S2S Vytvořte zásady IPsec/IKE a pak použijte 
 
 #### <a name="1-create-an-ipsecike-policy"></a>1. vytvoření zásady IPsec/IKE
 
-Následující vzorový skript vytvoří jinou zásadu IPsec/IKE s následujícími algoritmy a parametry:
+Následující ukázkový skript vytvoří jinou zásadu IPsec/IKE s následujícími algoritmy a parametry:
 * IKEv2: AES128, SHA1, DHGroup14
 * IPsec: GCMAES128, GCMAES128, PFS14, životnost SA 14400 sekund & 102400000KB
 
@@ -411,4 +412,4 @@ Stejný skript můžete použít ke kontrole, zda byla zásada odebrána z přip
 
 Další podrobnosti týkající se selektorů provozu na základě zásad najdete v tématu [připojení několika místních zařízení VPN založených na zásadách](vpn-gateway-connect-multiple-policybased-rm-ps.md) .
 
-Po dokončení připojení můžete virtuální počítače přidat do svých virtuálních sítí. Postup najdete v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
+Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

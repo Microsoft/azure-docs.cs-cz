@@ -1,25 +1,17 @@
 ---
-title: Jak nakonfigurovat Azure cache pro Redis | Microsoft Docs
+title: Jak nakonfigurovat Azure cache pro Redis
 description: Principy výchozí konfigurace Redis pro Azure cache pro Redis a informace o tom, jak nakonfigurovat mezipaměť Azure pro instance Redis
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 6bc4b69122df7d29a611571a750229f47337015c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756803"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122878"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -45,7 +37,7 @@ Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následujíc
 * [Diagnóza a řešení problémů](#diagnose-and-solve-problems)
 * [Nastavení](#settings)
     * [Přístupové klíče](#access-keys)
-    * [Rozšířená nastavení](#advanced-settings)
+    * [Upřesňující nastavení](#advanced-settings)
     * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
     * [Škálování](#scale)
     * [Velikost clusteru Redis](#cluster-size)
@@ -97,7 +89,7 @@ Klikněte na **Diagnostika a řešení problémů** , které se budou poskytovat
 Část **Nastavení** vám umožní získat přístup k následujícím nastavením pro mezipaměť a nakonfigurovat je.
 
 * [Přístupové klíče](#access-keys)
-* [Rozšířená nastavení](#advanced-settings)
+* [Upřesňující nastavení](#advanced-settings)
 * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
 * [Škálování](#scale)
 * [Velikost clusteru Redis](#cluster-size)
@@ -117,7 +109,7 @@ Kliknutím na **přístupové klíče** zobrazíte nebo znovu vygenerujete pří
 
 ![Mezipaměť Azure pro přístupové klíče Redis](./media/cache-configure/redis-cache-manage-keys.png)
 
-### <a name="advanced-settings"></a>Upřesnit nastavení
+### <a name="advanced-settings"></a>Pokročilá nastavení
 V okně **Upřesnit nastavení** jsou nakonfigurovaná následující nastavení.
 
 * [Přístupové porty](#access-ports)
@@ -201,7 +193,7 @@ Každá cenová úroveň má odlišná omezení pro připojení klientů, pamě�
 Pokud chcete upgradovat mezipaměť, klikněte na **upgradovat** , aby se změnila cenová úroveň a [škálovat](#scale) mezipaměť. Další informace o volbě cenové úrovně najdete v tématu [co mám použít Azure cache pro nabídku Redis a velikost mám použít?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Limit
+### <a name="scale"></a>Měřítko
 Kliknutím na tlačítko **škálovat** můžete zobrazit nebo změnit cenovou úroveň pro vaši mezipaměť. Další informace o škálování najdete v tématu [Jak škálovat Azure cache pro Redis](cache-how-to-scale.md).
 
 ![Cenová úroveň mezipaměti Azure pro Redis](./media/cache-configure/pricing-tier.png)
@@ -237,7 +229,7 @@ Další informace najdete v tématu [Konfigurace trvalosti pro službu Azure cac
 > 
 > 
 
-### <a name="schedule-updates"></a>Aktualizace plánu
+### <a name="schedule-updates"></a>Plán aktualizací
 V okně **naplánovat aktualizace** můžete určit časové období údržby pro aktualizace serveru Redis pro mezipaměť. 
 
 > [!IMPORTANT]
@@ -245,7 +237,7 @@ V okně **naplánovat aktualizace** můžete určit časové období údržby pr
 > 
 > 
 
-![Aktualizace plánu](./media/cache-configure/redis-schedule-updates.png)
+![Plán aktualizací](./media/cache-configure/redis-schedule-updates.png)
 
 Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadované dny a zadejte časový interval pro správu a údržbu pro každý den a klikněte na tlačítko **OK**. Čas časového období údržby je UTC.
 
@@ -263,7 +255,7 @@ Okno **geografické replikace** poskytuje mechanismus pro propojení dvě mezipa
 > 
 > 
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Virtuální sítě
 Část **Virtual Network** vám umožní nakonfigurovat nastavení virtuální sítě pro mezipaměť. Informace o vytvoření mezipaměti Premium s podporou virtuální sítě a aktualizaci nastavení najdete v článku [jak nakonfigurovat Virtual Network podporu pro službu Azure cache Premium pro Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -337,7 +329,7 @@ Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované u
 > 
 
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Část **monitorování** vám umožní nakonfigurovat diagnostiku a monitorování pro mezipaměť Azure pro Redis. Další informace o službě Azure cache pro monitorování a diagnostiku Redis najdete v tématu [monitorování mezipaměti Azure pro Redis](cache-how-to-monitor.md).
 
@@ -371,7 +363,7 @@ Nastavení v části **Podpora a řešení potíží** poskytují možnosti pro 
 * [Stav prostředku](#resource-health)
 * [Nová žádost o podporu](#new-support-request)
 
-### <a name="resource-health"></a>Stav prostředku
+### <a name="resource-health"></a>Stav prostředků
 **Stav prostředku** sleduje váš prostředek a oznamuje, zda je spuštěný podle očekávání. Další informace o službě Azure Resource Health najdete v článku [Přehled Azure Resource Health](../resource-health/resource-health-overview.md).
 
 > [!NOTE]
@@ -400,7 +392,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 
 | Nastavení | Výchozí hodnota | Popis |
 | --- | --- | --- |
-| `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, a to pomocí `connection.GetDatabase(dbid)`, kde `dbid` mezi `0` a `databases - 1` je číslo. |
+| `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, a to pomocí `connection.GetDatabase(dbid)`, kde `dbid` mezi `0` a `databases - 1`je číslo. |
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |
 | `maxmemory-policy` |`volatile-lru` |Zásada Maxmemory je nastavení, jak Redis vybere, co se má odebrat, když se dosáhne `maxmemory` (velikost nabídky mezipaměti, kterou jste vybrali při vytváření mezipaměti). S Azure cache for Redis je výchozí nastavení `volatile-lru`, což odstraní klíče s nastavenou hodnotou vypršení platnosti pomocí LRU algoritmu. Toto nastavení lze nakonfigurovat v Azure Portal. Další informace najdete v tématu [zásady paměti](#memory-policies). |
 | `maxmemory-samples` |3 |Aby se ušetřila paměť, LRU a minimální algoritmy TTL jsou přibližné algoritmy místo přes přesné algoritmy. Ve výchozím nastavení Redis zkontroluje tři klíče a vybere ten, který byl naposledy použit méně. |
@@ -434,7 +426,7 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 > 
 
 <a name="maxclients"></a>
-<sup>2</sup> `maxclients` se liší pro každou cenovou úroveň Azure cache pro Redis.
+<sup>2</sup>`maxclients` se liší pro každou cenovou úroveň Azure cache pro Redis.
 
 * Mezipaměti úrovně Basic a Standard
   * C0 (250 MB) mezipaměť až 256 připojení
@@ -506,7 +498,7 @@ shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-V předchozím příkladu je horizontálních oddílů 1 vybraným horizontálních oddílů, ale `myKey` se nachází v horizontálních oddílů 0, jak je uvedeno v `(shard 0)` části chybové zprávy. V tomto příkladu pro přístup k `myKey` vyberte horizontálních oddílů 0 pomocí nástroje pro výběr horizontálních oddílů a pak vydejte požadovaný příkaz.
+V předchozím příkladu je horizontálních oddílů 1 vybraným horizontálních oddílů, ale `myKey` se nachází v horizontálních oddílů 0, jak je uvedeno v `(shard 0)` části chybové zprávy. V tomto příkladu pro přístup k `myKey`vyberte horizontálních oddílů 0 pomocí nástroje pro výběr horizontálních oddílů a pak vydejte požadovaný příkaz.
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Přesunout mezipaměť do nového předplatného

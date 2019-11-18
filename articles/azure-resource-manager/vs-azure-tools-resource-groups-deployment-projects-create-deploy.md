@@ -1,17 +1,14 @@
 ---
-title: Vytvoření & nasazení projektů skupiny prostředků Azure v jazyce Visual Studio
+title: Vytvoření projektů skupiny prostředků sady Visual Studio pro & nasazení
 description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků Azure a nasaďte prostředky do Azure.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 10/16/2019
-ms.author: tomfitz
-ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 39ee16ac81ee1b163a4ed4c80152a063f7ee619c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597669"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149243"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
@@ -23,7 +20,7 @@ Tento článek ukazuje, jak používat [Visual Studio 2019 nebo novější s nai
 
 V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony **webové aplikace** .
 
-1. V aplikaci Visual Studio vyberte **soubor** >**Nový** >**projekt**.
+1. V sadě Visual Studio, zvolte **souboru**>**nový**>**projektu**.
 1. Vyberte šablonu projektu **skupiny prostředků Azure** a **Další**.
 
     ![Vytvoření projektu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
@@ -47,8 +44,8 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
    | Název souboru | Popis |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který spustí příkazy PowerShellu pro nasazení Azure Resource Manageru. Visual Studio pomocí tohoto skriptu PowerShellu nasadí vaši šablonu. |
-   | Web. JSON |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
-   | Web. Parameters. JSON |Soubor parametrů, který má hodnoty požadované šablonou. Předáním hodnot těchto parametrů přizpůsobujete jednotlivá nasazení. |
+   | WebSite.json |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
+   | WebSite.parameters.json |Soubor parametrů, který má hodnoty požadované šablonou. Předáním hodnot těchto parametrů přizpůsobujete jednotlivá nasazení. |
 
     Tyto základní soubory mají všechny projekty nasazení skupiny prostředků. Ostatní projekty můžou mít i další soubory, které podporují jiné funkce.
 
@@ -72,7 +69,7 @@ Projekt nasazení můžete přizpůsobit úpravou šablony Správce prostředků
 
 1. Vyberte **účet úložiště** a pojmenujte ho. Zadejte název, který nebude delší než 11 znaků. Obsahovat smí jenom čísla a malá písmena.
 
-   ![Přidat úložiště](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
+   ![Přidání úložiště](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
 
 1. Všimněte si, že se přidal nejenom tento prostředek, ale také parametr pro typ účtu úložiště a proměnná pro název účtu úložiště.
 

@@ -1,22 +1,16 @@
 ---
-title: Nasazení rozšíření virtuálních počítačů – Azure Resource Manager šablon
+title: Nasazení rozšíření virtuálních počítačů pomocí šablony
 description: Zjistěte, jak nasazovat rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5eb7a8d82f7f61e18afc49c61444354dcde77b5e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 84e49190c9e6b0c464e58a32fc7c29cb21ddc53a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533425"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149260"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Kurz: Nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru
 
@@ -33,7 +27,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
@@ -54,7 +48,7 @@ Z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/mast
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Pokud se rozhodnete publikovat soubor ve svém vlastním umístění, musíte v šabloně později v tomto kurzu aktualizovat prvek `fileUri`.
+Pokud se rozhodnete publikovat soubor ve svém vlastním umístění, musíte aktualizovat element `fileUri` v šabloně později v tomto kurzu.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony rychlého startu
 

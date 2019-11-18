@@ -1,5 +1,6 @@
 ---
-title: 'Generování a export certifikátů pro Point-to-site: PowerShell: Azure | Microsoft Docs'
+title: 'Generování a export certifikátů pro P2S: PowerShell'
+titleSuffix: Azure VPN Gateway
 description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pomocí prostředí PowerShell ve Windows 10 nebo Windows serveru 2016.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f7d4f71853e1640146a38fb39384c20ca9553eb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285734"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151375"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro Point-to-site pomocí PowerShellu
 
@@ -24,7 +25,7 @@ Pokud nemáte přístup k počítači s Windows 10 nebo Windows Server 2016, mů
 
 [!INCLUDE [generate and export certificates](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
-## <a name="install"></a>Instalace exportovaného klientského certifikátu
+## <a name="install"></a>Nainstalovat certifikát exportovaného klienta
 
 Každý klient, který se připojuje k virtuální síti přes připojení P2S, vyžaduje místní instalaci klientského certifikátu.
 

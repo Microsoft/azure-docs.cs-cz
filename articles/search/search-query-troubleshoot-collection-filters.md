@@ -1,7 +1,7 @@
 ---
 title: Řešení potíží s filtry kolekce OData
 titleSuffix: Azure Cognitive Search
-description: Řešení chyb filtru kolekce OData v dotazech Azure Kognitivní hledání.
+description: Seznamte se s postupy pro řešení chyb filtru kolekce OData v dotazech Azure Kognitivní hledání.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0af2525a15618c6bfd9022b4388c547209ee957b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793175"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113090"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Řešení potíží s filtry kolekce OData v Azure Kognitivní hledání
 
@@ -171,10 +171,10 @@ Existují však omezení, jak mohou být takové výrazy porovnání kombinován
 
     i když je tento výraz povolený, není užitečný, protože se podmínky překrývají:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - Jednoduché výrazy porovnání zahrnující `eq`, `lt`, `le`, `gt`nebo `ge` lze kombinovat s `and`/`or`. Například:
+  - Jednoduché výrazy porovnání zahrnující `eq`, `lt`, `le`, `gt`nebo `ge` lze kombinovat s `and`/`or`. Příklad:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - Výrazy porovnání kombinované s `and` (spojení) lze dále kombinovat pomocí `or`. Tento formulář je známý v logické logice jako "[Disjunctive Normal Form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF). Například:
+  - Výrazy porovnání kombinované s `and` (spojení) lze dále kombinovat pomocí `or`. Tento formulář je známý v logické logice jako "[Disjunctive Normal Form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF). Příklad:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - Pravidla pro `all`:
   - Jednoduché výrazy rovnosti nelze využít v kombinaci s jinými výrazy. Například tento výraz je povolen:
@@ -185,10 +185,10 @@ Existují však omezení, jak mohou být takové výrazy porovnání kombinován
 
     i když je tento výraz povolený, není užitečný, protože se podmínky překrývají:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - Jednoduché výrazy porovnání zahrnující `ne`, `lt`, `le`, `gt`nebo `ge` lze kombinovat s `and`/`or`. Například:
+  - Jednoduché výrazy porovnání zahrnující `ne`, `lt`, `le`, `gt`nebo `ge` lze kombinovat s `and`/`or`. Příklad:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - Výrazy porovnání kombinované s `or`em (disjunkes) se dají dál kombinovat pomocí `and`. Tento formulář je známý v logické logice jako "[conjunctive Normal Form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF). Například:
+  - Výrazy porovnání kombinované s `or`em (disjunkes) se dají dál kombinovat pomocí `and`. Tento formulář je známý v logické logice jako "[conjunctive Normal Form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF). Příklad:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: dfbf416c93c78e6ba5e23819084d69e57c47edc8
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fbd595c7de0bde4e8ba8b7aaa9a65aa5880c1165
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273659"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151915"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
 
@@ -19,11 +19,11 @@ Azure Database for MySQL automaticky vytvoří zálohy serveru a uloží je v u�
 
 ## <a name="backups"></a>Zálohování
 
-Azure Database for MySQL zabírají úplné a rozdílové zálohy a zálohy protokolu transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete [nakonfigurovat](howto-restore-server-portal.md#set-backup-configuration) až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
+Azure Database for MySQL přebírá zálohy datových souborů a transakčního protokolu. V závislosti na podporované maximální velikosti úložiště vezmeme úplné a rozdílové zálohy (4 TB max. servery úložiště) nebo zálohy snímků (až 16 TB maximálních úložných serverů). Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete [nakonfigurovat](howto-restore-server-portal.md#set-backup-configuration) až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
 ### <a name="backup-frequency"></a>Frekvence zálohování
 
-Obecně platí, že k úplnému zálohování dochází týdně, rozdílové zálohování probíhá dvakrát denně a k zálohování protokolu transakcí dochází každých pět minut. První úplné zálohování je naplánováno ihned po vytvoření serveru. Prvotní zálohování může trvat déle na velkém obnoveném serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování.
+Obecně platí, že k úplným zálohováním dochází týdně, rozdílové zálohování probíhá dvakrát denně pro servery s maximálním podporovaným úložištěm 4 TB. Zálohování snímků probíhá alespoň jednou denně pro servery, které podporují až 16 TB úložiště. V obou případech se k zálohování protokolu transakcí vyskytuje každých pět minut. První snímek úplného zálohování je naplánován ihned po vytvoření serveru. Počáteční úplná záloha může trvat delší dobu jako u velkého obnoveného serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování. Jelikož jsou snímky instantanious, servery s podporou až 16 TB úložiště je možné obnovit až do doby vytvoření.
 
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
@@ -38,7 +38,7 @@ Azure Database for MySQL poskytuje úložiště zřízeného serveru jako úlož
 
 Pokud jste například zřídili Server s 250 GB, máte k dispozici až 250 GB úložiště zálohování bez dalších poplatků. Účtují se za úložiště převyšující 250 GB.
 
-## <a name="restore"></a>Obnovit
+## <a name="restore"></a>Obnovení
 
 Při obnovení se v Azure Database for MySQL vytvoří nový server ze zálohy původního serveru.
 
@@ -62,7 +62,9 @@ Možná budete muset počkat, než bude provedena další záloha protokolu tran
 
 ### <a name="geo-restore"></a>Geografické obnovení
 
-Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, pokud jste server nakonfigurovali pro geograficky redundantní zálohy. Geografické obnovení je výchozí možností obnovení v případě, že server není k dispozici z důvodu incidentu v oblasti, kde je server hostován. Pokud má velký incident v oblasti nedostupnost vaší databázové aplikace, můžete obnovit server z geograficky redundantní zálohy na server v jakékoli jiné oblasti. Doba mezi vytvořením zálohy a při replikaci do jiné oblasti trvá zpoždění. Tato prodleva může trvat až jednu hodinu, takže pokud dojde k havárii, může dojít ke ztrátě dat o hodinu.
+Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, pokud jste server nakonfigurovali pro geograficky redundantní zálohy. Pro servery, které podporují až 16 TB úložiště, se geografické zálohy dají obnovit jenom v oblastech, které podporují i 16 TB serverů. Seznam podporovaných oblastí najdete v [Azure Database for MySQL cenové úrovně](concepts-pricing-tiers.md) . 
+
+Geografické obnovení je výchozí možností obnovení v případě, že server není k dispozici z důvodu incidentu v oblasti, kde je server hostován. Pokud má velký incident v oblasti nedostupnost vaší databázové aplikace, můžete obnovit server z geograficky redundantní zálohy na server v jakékoli jiné oblasti. Doba mezi vytvořením zálohy a při replikaci do jiné oblasti trvá zpoždění. Tato prodleva může trvat až jednu hodinu, takže pokud dojde k havárii, může dojít ke ztrátě dat o hodinu.
 
 Během geografického obnovení můžou konfigurace serveru, které je možné změnit, zahrnovat výpočetní generování, vCore, dobu uchování záloh a možnosti redundance zálohování. Změna cenové úrovně (Basic, Pro obecné účely nebo paměťově optimalizovaná) nebo velikosti úložiště během geografického obnovení není podporovaná.
 

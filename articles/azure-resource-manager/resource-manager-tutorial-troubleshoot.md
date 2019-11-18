@@ -1,24 +1,16 @@
 ---
-title: Řešení potíží s nasazením Správce prostředků | Microsoft Docs
+title: Řešení potíží s nasazeními
 description: Naučte se monitorovat a řešit potíže s nasazeními šablon Azure Resource Manager. Zobrazuje protokoly aktivit a historii nasazení.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: be390b35a69f44aae38bec100deb2d3c07ad6355
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390211"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149326"
 ---
 # <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Kurz: řešení potíží s nasazením Správce prostředků šablon
 
@@ -43,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
@@ -101,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Otevřete skupinu prostředků tak, že vyberete **skupiny prostředků** a potom název skupiny prostředků. V rámci **nasazení**se zobrazí **1 chyba** .
 
     ![Řešení potíží s Správce prostředků kurzu](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -115,8 +107,8 @@ Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
 Chybu můžete najít také v protokolech aktivit:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Vyberte **monitorovat** **Protokol aktivit** > .
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+2. Vyberte **monitorování** > **protokolu aktivit**.
 3. K vyhledání protokolu použijte filtry.
 
     ![Řešení potíží s Správce prostředků kurzu](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)

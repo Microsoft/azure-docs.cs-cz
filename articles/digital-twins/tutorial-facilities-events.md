@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3cb5d8a6cb605d2150be1e34a9f4b0ac7955aed6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107690"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129257"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Kurz: příjem oznámení z digitálních vláken Azure pomocí Logic Apps
 
@@ -38,7 +38,7 @@ V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-
 - Spuštěná instance služby Digital Twins.
 - Pracovní počítač se staženými a extrahovanými [ukázkami služby Digital Twins v jazyce C#](https://github.com/Azure-Samples/digital-twins-samples-csharp).
 - [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) ve vývojovém počítači pro spuštění ukázky. Spusťte `dotnet --version` a ověřte, zda je nainstalovaná správná verze.
-- Účet Office 365 pro odesílání e-mailových oznámení.
+- Účet [Office 365](https://products.office.com/home) pro odesílání e-mailů s oznámením
 
 > [!TIP]
 > Pokud zřizujete novou instanci, použijte jedinečný název instance digitálního vlákna.
@@ -51,7 +51,7 @@ V této části nastavíte [Event Grid](../event-grid/overview.md) pro shromaž�
 
 [Téma Event Grid](../event-grid/concepts.md#topics) poskytuje rozhraní pro směrování událostí generovaných uživatelsky definovanou funkcí. 
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **Vytvořit prostředek**. 
 
@@ -63,7 +63,7 @@ V této části nastavíte [Event Grid](../event-grid/overview.md) pro shromaž�
 
 1. Přejděte do tématu Event Grid z vaší skupiny prostředků, vyberte **Přehled**a zkopírujte hodnotu pro **koncový bod tématu** do dočasného souboru. Tuto adresu URL budete potřebovat v další části. 
 
-1. Vyberte **přístupové klíče**a zkopírujte **YOUR_KEY_1** a **YOUR_KEY_2** do dočasného souboru. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu v další části.
+1. Vyberte **přístupové klíče**a zkopírujte **klíč 1** a **2** do dočasného souboru. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu v další části.
 
     [![Event Grid klíče](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
@@ -85,9 +85,9 @@ V této části nastavíte [Event Grid](../event-grid/overview.md) pro shromaž�
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Zástupný symbol `<Primary connection string for your Event Grid>` nahraďte hodnotou **YOUR_KEY_1**.
+1. Zástupný symbol `<Primary connection string for your Event Grid>` nahraďte hodnotou **klíče 1**.
 
-1. Zástupný symbol `<Secondary connection string for your Event Grid>` nahraďte hodnotou **YOUR_KEY_2**.
+1. Zástupný symbol `<Secondary connection string for your Event Grid>` nahraďte hodnotou **klíče 2**.
 
 1. Zástupný symbol pro **cestu** nahraďte cestou k tématu Event Grid. Získat tuto cestu odebráním **https://** a koncových cest prostředků z adresy URL **koncového bodu tématu** . Cesta by měla mít přibližně tento formát: *yourEventGridName.yourLocation.eventgrid.azure.net*.
 
@@ -178,7 +178,7 @@ Službu [Azure Logic Apps](../logic-apps/logic-apps-overview.md) můžete použ�
 
    a. Vyberte **přidat akci**a vyberte **Office 365 Outlook**.
 
-   b. V seznamu **Akce** vyberte **Odeslat e-mail**. Vyberte **Přihlásit** se a použijte přihlašovací údaje k e-mailovým účtům. Pokud se zobrazí výzva, vyberte možnost **Povolení přístupu** .
+   b. V seznamu **Akce** vyberte **Odeslat e-mail (v2)** . Vyberte **Přihlásit** se a použijte přihlašovací údaje k e-mailovým účtům. Pokud se zobrazí výzva, vyberte možnost **Povolení přístupu** .
 
    c. Do pole **Příjemce** zadejte ID svého e-mailu, abyste dostávali oznámení. V části **Předmět**zadejte text **digitální zdvojení oznámení pro špatnou kvalitu ovzduší v prostoru**. Pak vyberte **TopologyObjectId** ze seznamu **dynamického obsahu** pro **analyze JSON**.
 

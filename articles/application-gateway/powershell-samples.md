@@ -1,18 +1,18 @@
 ---
 title: Příklady Azure PowerShell pro Azure Application Gateway
-description: Příklady Azure PowerShell pro Azure Application Gateway
+description: Tento článek obsahuje odkazy na příklady Azure PowerShell, abyste mohli rychle nasadit službu Azure Application Gateway nakonfigurovanou různými způsoby.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
-ms.date: 08/07/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 2fb809026e8b604ddf25a8160774972eae99411a
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: d45fd7bf88e6988b83a621eda2689c10356441a4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824341"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129750"
 ---
 # <a name="azure-powershell-examples-for-azure-application-gateway"></a>Příklady Azure PowerShell pro Azure Application Gateway
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240308"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129850"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -54,7 +54,7 @@ Minimální požadavky pro Hybrid Runbook Worker pro Linux jsou:
 |Python – ctypes | Python 2. x je povinný. |
 |MODULU | Moduly připojitelné k ověřování|
 | **Volitelný balíček** | **Popis** | **Minimální verze**|
-| PowerShell Core | Pokud chcete spustit PowerShellové Runbooky, je potřeba nainstalovat PowerShell, viz [instalace PowerShellu Core v systému Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) , kde se dozvíte, jak ho nainstalovat.  | 6.0.0 |
+| PowerShell Core | Pokud chcete spustit PowerShellové Runbooky, je potřeba nainstalovat PowerShell, viz [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) , kde se dozvíte, jak ho nainstalovat.  | 6.0.0 |
 
 ### <a name="installation"></a>Instalace
 
@@ -69,7 +69,7 @@ Než budete pokračovat, poznamenejte si Log Analytics pracovní prostor, se kte
          Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. Pomocí následujícího příkazu nainstalujte agenta Log Analytics pro systém Linux. Hodnoty \<ID pracovního prostoru\> a \<WorkspaceKeynahraďteodpovídajícímihodnotamizvašehopracovníhoprostoru.\>
+1. Pomocí následujícího příkazu nainstalujte agenta Log Analytics pro systém Linux. Nahraďte \<ID pracovního prostoru\> a \<WorkspaceKey\> odpovídajícími hodnotami z vašeho pracovního prostoru.
 
    [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
@@ -86,7 +86,7 @@ Než budete pokračovat, poznamenejte si Log Analytics pracovní prostor, se kte
 1. Po dokončení příkazu se na stránce **Hybrid Worker skupiny** v Azure Portal zobrazí nová skupina a počet členů. Pokud se jedná o existující skupinu, zvýší se počet členů. Skupinu můžete vybrat ze seznamu na stránce **Hybrid Worker skupiny** a vybrat dlaždici **hybridní pracovní procesy** . Na stránce **hybridní procesy** se zobrazí všichni členové skupiny v seznamu.
 
 > [!NOTE]
-> Pokud pro virtuální počítač Azure používáte rozšíření Azure monitor virtuálních počítačů pro Linux, doporučujeme nastavit `autoUpgradeMinorVersion` na hodnotu NEPRAVDA, protože verze automatického upgradu můžou způsobit problémy Hybrid Runbook Worker. Informace o tom, jak rozšíření upgradovat ručně, najdete v tématu nasazení rozhraní příkazového [řádku Azure CLI ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
+> Pokud pro virtuální počítač Azure používáte rozšíření Azure Monitor virtuálních počítačů pro Linux, doporučujeme nastavit `autoUpgradeMinorVersion` na hodnotu false, protože verze automatického upgradu můžou způsobit problémy Hybrid Runbook Worker. Informace o tom, jak rozšíření upgradovat ručně, najdete v tématu nasazení rozhraní příkazového [řádku Azure CLI ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
 ## <a name="turning-off-signature-validation"></a>Vypnutí ověřování podpisů
 
@@ -106,7 +106,7 @@ Následující typy runbooků fungují v Hybrid Worker pro Linux:
 * PowerShell
 
   > [!NOTE]
-  > Runbooky PowerShellu vyžadují, aby byl na počítači se systémem Linux nainstalovaný PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) .
+  > Runbooky PowerShellu vyžadují, aby byl na počítači se systémem Linux nainstalovaný PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
 Následující typy runbooků nefungují na Hybrid Worker pro Linux:
 

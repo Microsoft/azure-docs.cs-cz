@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 2590b9851b654990795f111e76f6cc5ea6c96723
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2518de3ad5d0f583cd4962796e4adda5751351df
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491942"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151043"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Windows pomocí Azure Portal
 
@@ -21,43 +21,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlásit se na [Azure Portal](https://portal.azure.com).
 
-## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
-
-1. Vyberte možnost **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
-1. Do vyhledávacího pole zadejte **Key Vault**.
-1. V seznamu výsledků vyberte možnost **Key Vault**.
-1. V části Key Vault vyberte **vytvořit**.
-1. Na obrazovce **Vytvoření trezoru klíčů** vyberte jedinečný název pro nový trezor klíčů.
-
-    > [!Important]
-    > Každý Key Vault musí mít jedinečný název. Následující příklad vytvoří Key Vault s názvem *myADEKV*, ale je nutné, abyste si pojmenovali něco jiného.
-
-1. Vyberte **předplatné**.
-1.  V části **Skupina prostředků**vyberte **vytvořit novou**. V automaticky otevíraném okně zadejte jako název skupiny prostředků *myResourceGroup* a potom zvolte **OK**. 
-
-    ![Obrazovka pro vytvoření skupiny prostředků](../media/disk-encryption/portal-qs-keyvaultcreation.png)
-
-1. V rozevírací nabídce **umístění** vyberte možnost **východní USA**.
-1. U ostatních možností ponechte jejich výchozí hodnoty.
-1. Vyberte možnost přístup k zásadám, která vás převezme na novou obrazovku.
-1. Zaškrtněte políčko u možnosti Povolit přístup k Azure Disk Encryption šifrování svazku.
-
-    ![Obrazovka pro vytvoření zdroje dat](../media/disk-encryption/portal-qs-keyvault-enable-encryption.png)
-
-1. V dolní části obrazovky zásady přístupu klikněte na zkontrolovat + vytvořit.
-1. Po kontrole klikněte na vytvořit.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
-
 1. Na nové stránce v části Oblíbené vyberte **Windows Server 2016 Datacenter**.
-1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné.
-1. V poli **Skupina prostředků**vyberte skupinu prostředků, kterou jste vytvořili při výše uvedené trezoru klíčů (např. **myResourceGroup**).
+1. Na kartě základy v části Project Details (podrobnosti projektu) Zkontrolujte, zda je vybráno správné předplatné a pak zvolte možnost **vytvořit novou skupinu prostředků**. Jako název zadejte *myResourceGroup* .
 1. Jako **název virtuálního počítače**zadejte *MyVM*.
-1. V poli **oblast**vyberte stejnou oblast, kterou jste použili při vytváření trezoru klíčů (například **východní USA**).
+1. V poli **oblast**vyberte stejnou oblast, kterou jste použili při vytváření trezoru klíčů (například *východní USA*).
 1. Ujistěte se, že je **Velikost** *standardní D2s V3*.
 1. V části **účet správce**vyberte **heslo**. Zadejte uživatelské jméno a heslo.
     obrazovka pro vytvoření zdroje ![](../media/disk-encryption/portal-qs-windows-vm-creation.png)
@@ -76,11 +49,21 @@ Nasazení virtuálního počítače bude několik minut trvat. Po dokončení na
     ![Výběr disků a šifrování](../media/disk-encryption/portal-qs-disks-to-encryption.png)
 
 1. Na obrazovce šifrování v části **disky k šifrování**vyberte **operační systém a datové disky**.
-1. V části **nastavení šifrování**klikněte na vybrat Trezor klíčů a klíč pro šifrování.
-1. V pravém bočním panelu vyberte název trezoru klíčů, který jste vytvořili dříve, jako hodnotu pro **Trezor klíčů**, a klikněte na **Vybrat**.
+1. V části **nastavení šifrování**zvolte **Vybrat Trezor klíčů a klíč pro šifrování**.
+1. Na obrazovce **Vybrat klíč z Azure Key Vault** vyberte **vytvořit novou**.
 
-    ![Výběr disků a šifrování](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
-1. V horní části obrazovky šifrování klikněte na Uložit. Automaticky otevírané okno vás upozorní, že se virtuální počítač restartuje. Klikněte na **Ano**.
+    ![Výběr disků a šifrování](../media/disk-encryption/portal-qs-keyvault-create.png)
+
+1. Na obrazovce **Vytvoření trezoru klíčů** se ujistěte, že skupina prostředků je stejná jako ta, kterou jste použili k vytvoření virtuálního počítače.
+1. Zadejte název trezoru klíčů.  Každý Trezor klíčů v Azure musí mít jedinečný název.
+1. Na kartě **zásady přístupu** zaškrtněte políčko **Azure Disk Encryption pro šifrování svazku** .
+
+    ![Výběr disků a šifrování](../media/disk-encryption/portal-qs-keyvault-enable.png)
+
+1. Vyberte **Zkontrolovat a vytvořit**.  
+1. Po úspěšném ověření trezoru klíčů vyberte **vytvořit**. Tím se vrátíte na Azure Key Vault obrazovce na **klíč pro výběr** .
+1. Pole **klíče** nechejte prázdné a zvolte **Vybrat**.
+1. V horní části obrazovky šifrování klikněte na **Uložit**. Automaticky otevírané okno vás upozorní, že se virtuální počítač restartuje. Klikněte na tlačítko **Ano**.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

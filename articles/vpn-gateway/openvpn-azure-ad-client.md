@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace klienta VPN pro připojení P2S protokolu OpenVPN: ověřování Azure AD | Microsoft Docs'
+title: 'VPN Gateway: klient VPN pro připojení P2S protokolu OpenVPN: ověřování Azure AD'
 description: P2S VPN můžete použít pro připojení k virtuální síti pomocí ověřování Azure AD.
 services: vpn-gateway
 author: anzaman
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: alzam
-ms.openlocfilehash: 714cabc204c9ec9a0c3bbc93be287957c91d1936
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2836a89f491d731a11e6bc6fc56e0d049f01ac9a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932339"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151404"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN: ověřování Azure AD (Preview)
 
@@ -112,19 +112,19 @@ Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojen�
 
 1. Na domovské stránce klienta VPN vyberte **nastavení sítě VPN**.
 
-    ![Automaticky](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![automaticky](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. V dialogovém okně přepnout aplikace vyberte **Ano** .
 
-    ![Automaticky](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![automaticky](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Ujistěte se, že připojení, které chcete nastavit, ještě není připojené, zvýrazněte profil a zaškrtněte políčko **Připojit automaticky** .
 
-    ![Automaticky](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![automaticky](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. Kliknutím na **připojit** zahajte připojení k síti VPN.
 
-    ![Automaticky](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![automaticky](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose"></a>Diagnostika problémů s připojením
 

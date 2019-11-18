@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy týkající se hlasových asistentů
+title: Nejčastější dotazy k hlasovým pomocníkům
 titleSuffix: Azure Cognitive Services
 description: Získejte odpovědi na nejoblíbenější otázky týkající se hlasových asistentů pomocí vlastních příkazů (Preview) nebo přímého kanálu pro hlasový vstup.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579672"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110343"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>Hlasová asistenti: nejčastější dotazy
+# <a name="voice-assistants-frequently-asked-questions"></a>Nejčastější dotazy k hlasovým pomocníkům
 
 Pokud nemůžete najít odpovědi na vaše otázky v tomto dokumentu, podívejte se na [Další možnosti podpory](support.md).
 
@@ -35,9 +35,9 @@ Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce s
 
 **A:** Nejlepším způsobem, jak začít vytvářet vlastní příkazy (Preview) nebo základní roboty bot Framework.
 
-* [Vytvoření vlastní aplikace (Preview)](quickstart-custom-speech-commands-create-new.md)
-* [Vytvoření úrovně Basic bot Framework bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Připojení robota k kanálu s přímým přístupem k lince Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Vytvoření vlastní aplikace (Preview)](quickstart-custom-speech-commands-create-new.md)
+- [Vytvoření úrovně Basic bot Framework bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Připojení robota k kanálu s přímým přístupem k lince Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Ladění
 
@@ -47,14 +47,13 @@ Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce s
 
 Nejnovější verze funkce Direct line Speech zjednodušuje proces kontaktování robota ze zařízení. Na stránce registrace kanálu rozevírací seznam v horní části přidruží k registraci kanálu rozpoznávání řeči pomocí prostředku řeči. Sada Speech SDK v 1.8 po přidružení zahrnuje metodu `BotFrameworkConfig::FromSubscription` Factory, která nakonfiguruje `DialogServiceConnector`, aby kontaktovala robota, kterou jste přidružili k vašemu předplatnému.
 
-Pokud stále migrujete klientskou aplikaci z verze 1.7 na verzi 1.8, `DialogServiceConfig::FromBotSecret` může i nadále fungovat s neprázdnou hodnotou, která není null, pro svůj parametr tajného klíče kanálu, např. předchozí tajný klíč, který jste použili. Bude jednoduše ignorováno při použití předplatného pro rozpoznávání řeči přidruženého k novější registraci kanálu. Počítejte s tím, že hodnota *nesmí* být null a neprázdná, protože je na zařízení zaškrtnutá před relevantním přidružení na straně služby.
-
+Pokud stále migrujete klientskou aplikaci z verze 1.7 na verzi 1.8, `DialogServiceConfig::FromBotSecret` může i nadále fungovat s neprázdnou hodnotou, která není null, pro svůj parametr tajného klíče kanálu, např. předchozí tajný klíč, který jste použili. Bude jednoduše ignorováno při použití předplatného pro rozpoznávání řeči přidruženého k novější registraci kanálu. Počítejte s tím, že hodnota _nesmí_ být null a neprázdná, protože je na zařízení zaškrtnutá před relevantním přidružení na straně služby.
 
 Podrobnější příručku najdete v [části kurzu](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) , která vás provede registrací kanálu.
 
 **Otázka: zobrazí se chyba 401 při připojování a nic nefunguje. Vím, že klíč předplatného pro rozpoznávání řeči je platný. Co se děje?**
 
-**A:** Když spravujete předplatné na Azure Portal, ujistěte se prosím, že používáte prostředek **řeči** (Microsoft. CognitiveServicesSpeechServices, "Speech"), a *ne* prostředek **Cognitive Services** ( Microsoft. CognitiveServicesAllInOne, "All Cognitive Services"). Podívejte se také na [podporu pro hlasové asistenty v oblasti služby Speech](regions.md#voice-assistants).
+**A:** Když spravujete předplatné na Azure Portal, ujistěte se prosím, že používáte prostředek **řeči** (Microsoft. CognitiveServicesSpeechServices, "Speech"), a _ne_ prostředek **Cognitive Services** ( Microsoft. CognitiveServicesAllInOne, "All Cognitive Services"). Podívejte se také na [podporu pro hlasové asistenty v oblasti služby Speech](regions.md#voice-assistants).
 
 ![správné předplatné pro přímý line Speech](media/voice-assistants/faq-supported-subscription.png "Příklad kompatibilního předplatného pro rozpoznávání řeči")
 
@@ -62,8 +61,8 @@ Podrobnější příručku najdete v [části kurzu](tutorial-voice-enable-your-
 
 **A:** Tato chyba označuje problém s komunikací mezi vaším asistentem a službou hlasového asistenta.
 
-* Pro vlastní příkazy (Preview) se ujistěte, že je publikovaná vaše aplikace Custom Commands (Preview).
-* V případě přímého vstupu na řeč se ujistěte, že jste [připojili robota k přímému line kanálu s přímým přístupem](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [Přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) do robota (s příslušnou podporou webového soketu) a pak zkontrolovali, že váš robot reaguje na příchozí žádosti. z kanálu.
+- Pro vlastní příkazy (Preview) se ujistěte, že je publikovaná vaše aplikace Custom Commands (Preview).
+- V případě přímého vstupu na řeč se ujistěte, že jste [připojili robota k přímému line kanálu s přímým přístupem](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [Přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) do robota (s příslušnou podporou webového soketu) a pak zkontrolovali, že váš robot reaguje na příchozí žádosti. z kanálu.
 
 **Otázka: Tento kód stále nefunguje nebo při použití `DialogServiceConnector`došlo k jiné chybě. Co mám dělat?**
 
@@ -71,5 +70,5 @@ Podrobnější příručku najdete v [části kurzu](tutorial-voice-enable-your-
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řešení potíží](troubleshooting.md)
-* [Poznámky k verzi](releasenotes.md)
+- [Řešení potíží](troubleshooting.md)
+- [Poznámky k verzi](releasenotes.md)

@@ -1,31 +1,23 @@
 ---
-title: Migrace aplikací Managed Cache Service do Redis – Azure | Microsoft Docs
-description: Naučte se migrovat aplikace mezipaměti Managed Cache Service a v roli do mezipaměti Azure pro Redis.
-services: cache
-documentationcenter: na
+title: Migrace aplikací Managed Cache Service do Redis – Azure
+description: Naučte se migrovat aplikace Managed Cache Service a Mezipaměť hostovaná v instanci role do Azure cache pro Redis.
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 05638e17c2f41806a5c8aa3e0c3020eae82bdb60
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315955"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122686"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrace z Managed Cache Service do Azure cache pro Redis
 Migrace aplikací používajících Azure Managed Cache Service do mezipaměti Azure pro Redis se dá udělat s minimálními změnami vaší aplikace, a to v závislosti na funkcích Managed Cache Service používaných vaší aplikací pro ukládání do mezipaměti. I když rozhraní API nejsou přesně stejná, jsou podobná a většina vašeho stávajícího kódu, který používá Managed Cache Service pro přístup do mezipaměti, může být použita s minimálními změnami. V tomto článku se dozvíte, jak provést potřebné změny konfigurace a aplikace pro migraci Managed Cache Servicech aplikací na používání Azure cache pro Redis a ukazuje, jak se některé funkce mezipaměti Azure pro Redis dají použít k implementaci funkcí mezipaměť Managed Cache Service.
 
 >[!NOTE]
->Managed Cache Service a mezipaměť in-role byly [vyřazení](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) 30. listopadu 2016. Pokud máte nějaká nasazení v mezipaměti v roli, která chcete migrovat do mezipaměti Azure pro Redis, můžete postupovat podle kroků v tomto článku.
+>Managed Cache Service a Mezipaměť hostovaná v instanci role byly [vyřazení](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) 30. listopadu 2016. Pokud máte nasazení Mezipaměť hostovaná v instanci role, která chcete migrovat do mezipaměti Azure pro Redis, můžete postupovat podle kroků v tomto článku.
 
 ## <a name="migration-steps"></a>Kroky migrace
 K migraci Managed Cache Service aplikace pro použití mezipaměti Azure pro Redis se vyžadují následující kroky.
@@ -49,9 +41,9 @@ Azure Managed Cache Service a Azure cache pro Redis jsou podobné, ale implement
 | --- | --- | --- |
 | Pojmenované mezipaměti |V případě potřeby je nakonfigurovaná výchozí mezipaměť a v nabídkách mezipaměti Standard a Premium můžete nakonfigurovat až devět dalších pojmenovaných mezipamětí. |Mezipaměť Azure pro Redis má konfigurovatelný počet databází (výchozí hodnota je 16), které lze použít k implementaci podobných funkcí do pojmenovaných mezipamětí. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
 | Vysoká dostupnost |Poskytuje vysokou dostupnost pro položky v mezipaměti v nabídkách mezipaměti Standard a Premium. Pokud dojde ke ztrátě položek z důvodu chyby, jsou záložní kopie položek v mezipaměti stále k dispozici. Zápisy do sekundární mezipaměti jsou prováděny synchronně. |Vysoká dostupnost je dostupná v nabídkách mezipaměti Standard a Premium, které mají konfiguraci se dvěma primárními a replikami uzlů (každý horizontálních oddílů v mezipaměti Premium má dvojici primárního/repliky). Zápisy do repliky se provádějí asynchronně. Další informace najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/). |
-| Oznámení |Umožňuje klientům přijímat asynchronní oznámení v případě, že dojde k různým operacím mezipaměti v pojmenované mezipaměti. |Klientské aplikace mohou používat [oznámení](cache-configure.md#keyspace-notifications-advanced-settings) Redis k publikování a podprostorům a k dosažení podobných funkcí oznámení. |
+| Oznámení |Umožňuje klientům přijímat asynchronní oznámení v případě, že dojde k různým operacím mezipaměti v pojmenované mezipaměti. |Klientské aplikace mohou používat oznámení Redis k publikování a [podprostorům](cache-configure.md#keyspace-notifications-advanced-settings) a k dosažení podobných funkcí oznámení. |
 | Místní mezipaměť |Ukládá kopii objektů uložených v mezipaměti lokálně na klientovi, aby bylo velmi rychlém přístupu. |Klientské aplikace by musely tuto funkci implementovat pomocí slovníku nebo podobné struktury dat. |
-| Zásady vyřazení |Žádné nebo LRU. Výchozí zásada je LRU. |Azure cache pro Redis podporuje následující zásady vyřazení: volatile-LRU, AllKeys-LRU, volatile náhodné, AllKeys-Random, volatile-TTL, vyřazení. Výchozí zásada je nestálá – LRU. Další informace najdete v tématu [výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
+| Zásada vyřazení |Žádné nebo LRU. Výchozí zásada je LRU. |Azure cache pro Redis podporuje následující zásady vyřazení: volatile-LRU, AllKeys-LRU, volatile náhodné, AllKeys-Random, volatile-TTL, vyřazení. Výchozí zásada je nestálá – LRU. Další informace najdete v tématu [výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
 | Zásady vypršení platnosti |Výchozí zásady vypršení platnosti jsou absolutní a výchozí interval vypršení platnosti je 10 minut. K dispozici jsou také pozvolna a nikdy žádné zásady. |Ve výchozím nastavení se položky v mezipaměti nevypršení platnosti, ale vypršení platnosti je možné nakonfigurovat na základě zápisu pomocí přetížení sady mezipaměti. |
 | Oblasti a označování |Oblasti jsou podskupiny pro položky v mezipaměti. Oblasti také podporují poznámky k položkám uloženým v mezipaměti s dalšími popisnými řetězci s názvem Tags. Oblasti podporují možnost provádět operace hledání u všech označených položek v této oblasti. Všechny položky v rámci oblasti jsou umístěny v jednom uzlu clusteru mezipaměti. |Mezipaměť Azure pro Redis se skládá z jednoho uzlu (Pokud není povolený cluster Redis), takže koncept Managed Cache Service oblasti neplatí. Redis podporuje vyhledávání a zástupné operace při načítání klíčů, takže popisné značky mohou být vloženy do názvů klíčů a použity pro pozdější načtení položek. Příklad implementace označení řešení pomocí Redis naleznete v tématu [implementace označování mezipaměti pomocí Redis](https://stackify.com/implementing-cache-tagging-redis/). |
 | Serializace |Spravovaná mezipaměť podporuje NetDataContractSerializer, BinaryFormatter a použití vlastních serializátorů. Výchozí hodnota je NetDataContractSerializer. |Je zodpovědností klientské aplikace o serializaci objektů .NET před jejich vložením do mezipaměti s možností volby serializátoru až po vývojáře klientské aplikace. Další informace a ukázkový kód naleznete v tématu [práce s objekty .NET v mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
@@ -86,7 +78,7 @@ Pokud chcete odinstalovat Managed Cache Service balíček NuGet, klikněte prav�
 
 Odinstalace balíčku Managed Cache Service NuGet odebere Managed Cache Service sestavení a položky Managed Cache Service v souboru App. config nebo Web. config klientské aplikace. Vzhledem k tomu, že některá přizpůsobená nastavení nemusí být odebrána při odinstalaci balíčku NuGet, otevřete soubor Web. config nebo App. config a ujistěte se, že jsou odebrány následující prvky.
 
-Ujistěte se, `dataCacheClients` že je položka odebrána `configSections` z prvku. Neodstraňujte celý `configSections` element. Pokud je přítomen, `dataCacheClients` stačí položku odebrat.
+Zajistěte, aby byla položka `dataCacheClients` z `configSections` elementu odebrána. Neodstraňujte celý `configSections` element; pouze odebrat položku `dataCacheClients`, pokud je k dispozici.
 
 ```xml
 <configSections>
@@ -95,7 +87,7 @@ Ujistěte se, `dataCacheClients` že je položka odebrána `configSections` z pr
 </configSections>
 ```
 
-Ujistěte se, `dataCacheClients` že je oddíl odebraný. `dataCacheClients` Oddíl bude podobný následujícímu příkladu.
+Zajistěte, aby byl oddíl `dataCacheClients` odebraný. Oddíl `dataCacheClients` bude podobný následujícímu příkladu.
 
 ```xml
 <dataCacheClients>
@@ -122,7 +114,7 @@ Po odebrání konfigurace Managed Cache Service můžete nakonfigurovat klienta 
 Rozhraní API pro StackExchange. Azure cache pro klienta Redis je podobné Managed Cache Service. V této části najdete Přehled rozdílů.
 
 ### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Připojení k mezipaměti pomocí třídy ConnectionMultiplexer
-V Managed Cache Service byly připojení k mezipaměti zpracována `DataCacheFactory` třídami a. `DataCache` V mezipaměti Azure pro Redis jsou tato připojení spravovaná `ConnectionMultiplexer` třídou.
+V Managed Cache Service se připojení k mezipaměti zpracovaly pomocí tříd `DataCacheFactory` a `DataCache`. V mezipaměti Azure pro Redis jsou tato připojení spravovaná třídou `ConnectionMultiplexer`.
 
 Do horní části libovolného souboru, ze kterého chcete získat přístup k mezipaměti, přidejte následující příkaz using.
 
@@ -130,14 +122,14 @@ Do horní části libovolného souboru, ze kterého chcete získat přístup k m
 using StackExchange.Redis
 ```
 
-Pokud tento obor názvů nepůjde vyřešit, ujistěte se, že jste přidali balíček NuGet stackexchange. Redis, jak [je popsáno v rychlém startu: Použijte Azure cache pro Redis s aplikací](cache-dotnet-how-to-use-azure-redis-cache.md).NET.
+Pokud tento obor názvů nepůjde vyřešit, ujistěte se, že jste přidali balíček NuGet StackExchange. Redis, jak je popsáno v tématu [rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 > [!NOTE]
 > Všimněte si, že klient StackExchange. Redis vyžaduje .NET Framework 4 nebo vyšší.
 > 
 > 
 
-Pokud se chcete připojit k mezipaměti Azure pro instanci Redis, zavolejte statickou `ConnectionMultiplexer.Connect` metodu a předejte do něj koncový bod a klíč. Jeden ze způsobů sdílení instance `ConnectionMultiplexer` v aplikaci je pomocí statické vlastnosti, která vrací připojenou instanci, podobně jako v následujícím příkladu. Tento přístup poskytuje způsob inicializace jedné připojené `ConnectionMultiplexer` instance způsobem bezpečným pro přístup z více vláken. V tomto příkladu `abortConnect` je nastavena hodnota false, což znamená, že volání bude úspěšné i v případě, že není navázáno připojení k mezipaměti. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
+Pokud se chcete připojit k mezipaměti Azure pro instanci Redis, zavolejte statickou metodu `ConnectionMultiplexer.Connect` a předejte do něj koncový bod a klíč. Jeden ze způsobů sdílení instance `ConnectionMultiplexer` v aplikaci je pomocí statické vlastnosti, která vrací připojenou instanci, podobně jako v následujícím příkladu. Tento přístup poskytuje způsob inicializace jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. V tomto příkladu je `abortConnect` nastavena na hodnotu false, což znamená, že volání bude úspěšné i v případě, že není navázáno připojení k mezipaměti. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
 
 ```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -156,7 +148,7 @@ public static ConnectionMultiplexer Connection
 
 Koncový bod mezipaměti, klíče a porty lze získat z okna **Azure cache pro Redis** pro vaši instanci mezipaměti. Další informace najdete v tématu [vlastnosti Azure cache pro Redis](cache-configure.md#properties).
 
-Po navázání spojení vraťte odkaz na databázi Azure cache pro Redis voláním `ConnectionMultiplexer.GetDatabase` metody. Objekt vrácený metodou `GetDatabase` je prostý průchozí objekt a není nutné jej ukládat.
+Po navázání spojení vraťte odkaz na databázi Azure cache pro Redis voláním metody `ConnectionMultiplexer.GetDatabase`. Objekt vrácený metodou `GetDatabase` je prostý průchozí objekt a není nutné jej ukládat.
 
 ```csharp
 IDatabase cache = Connection.GetDatabase();
@@ -171,11 +163,11 @@ string key1 = cache.StringGet("key1");
 int key2 = (int)cache.StringGet("key2");
 ```
 
-Klient stackexchange. Redis používá typy a `RedisKey` `RedisValue` pro přístup k položkám v mezipaměti a jejich ukládání. Tyto typy jsou mapovány na většinu primitivních typů jazyků, včetně řetězce a často nejsou použity přímo. Řetězce Redis jsou nejzákladnější typ Redis hodnoty a mohou obsahovat mnoho typů dat, včetně serializovaných binárních proudů a i když nemůžete typ použít přímo, budete používat metody, které v názvu `String` obsahují. Pro většinu primitivních datových typů ukládáte a načítáte položky z mezipaměti pomocí `StringSet` metod a `StringGet` , pokud do mezipaměti neukládáte kolekce nebo jiné Redis datové typy. 
+Klient StackExchange. Redis používá typy `RedisKey` a `RedisValue` pro přístup k položkám v mezipaměti a jejich ukládání. Tyto typy jsou mapovány na většinu primitivních typů jazyků, včetně řetězce a často nejsou použity přímo. Řetězce Redis jsou nejzákladnější typ Redis hodnoty a mohou obsahovat mnoho typů dat, včetně serializovaných binárních proudů, a i když nemůžete typ použít přímo, budete používat metody, které v názvu obsahují `String`. Pro většinu primitivních datových typů ukládáte a načítáte položky z mezipaměti pomocí metod `StringSet` a `StringGet`, pokud do mezipaměti neukládáte kolekce nebo jiné datové typy Redis. 
 
-`StringSet`a `StringGet` jsou podobné Managed Cache Service `Put` a `Get` metodám, s jedním velkým rozdílem, že před nastavením a získáním objektu .NET do mezipaměti je nutné nejprve serializovat. 
+`StringSet` a `StringGet` jsou podobné Managed Cache Serviceým `Put` a `Get`m metodám, přičemž jeden hlavní rozdíl spočívá v tom, že před nastavením a získáním objektu .NET do mezipaměti je nutné nejprve serializovat. 
 
-Při volání `StringGet`, pokud objekt existuje, je vráceno a pokud není, je vrácena hodnota null. V takovém případě můžete načíst hodnotu z požadovaného zdroje dat a uložit ji do mezipaměti pro pozdější použití. Tento model je známý jako model doplňování mezipaměti.
+Při volání `StringGet`, pokud objekt existuje, je vrácen a pokud ne, je vrácena hodnota null. V takovém případě můžete načíst hodnotu z požadovaného zdroje dat a uložit ji do mezipaměti pro pozdější použití. Tento model je známý jako model doplňování mezipaměti.
 
 Chcete-li zadat vypršení platnosti položky v mezipaměti, použijte parametr `TimeSpan` metody `StringSet`.
 

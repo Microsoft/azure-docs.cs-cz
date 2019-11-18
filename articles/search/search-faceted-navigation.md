@@ -1,19 +1,19 @@
 ---
-title: Postup implementace omezující navigace v hierarchii kategorií
+title: Přidat hierarchii kategorií navigace s omezujícími vlastnostmi
 titleSuffix: Azure Cognitive Search
-description: Přidejte do aplikací, které se integrují s Azure kognitivní hledání, cloudovou vyhledávací službu, která je v Microsoft Azure, k navigaci.
+description: Do vyhledávacích aplikací, které se integrují s Azure Kognitivní hledání, přidejte v aplikacích pro hledání omezující navigaci zaměřené na samy sebe.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496518"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112079"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementace omezující navigace v Azure Kognitivní hledání
 
@@ -38,7 +38,7 @@ Tento článek používá jako příklad portál pro hledání úloh. Příklad 
 
 -   Stáhněte si kód z [úložiště ukázek Azure na GitHubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 Pokud začínáte s vývojem pro hledání, nejlepším způsobem, jak si představit možnost navigace, je, že se zobrazí možnosti samoobslužného vyhledávání. Je to typ možností vyhledávání v podrobnostech na základě předdefinovaných filtrů, které se používají pro rychlé zúžení výsledků hledání prostřednictvím akcí typu Point-to-Click. 
 
 ### <a name="interaction-model"></a>Model interakce
@@ -67,7 +67,7 @@ V Azure Kognitivní hledání je požadavek zadaný prostřednictvím jednoho ne
 
 Přesnost, která se považuje za schopnost vyfiltrovat nepodstatné přístupy, se dosahuje prostřednictvím jednoho nebo obou těchto výrazů:
 
--   **Hledat =**  
+-   **search=**  
     Hodnota tohoto parametru představuje hledaný výraz. Může se jednat o jednotlivý text nebo složitý vyhledávací výraz, který obsahuje více podmínek a operátorů. Na serveru se vyhledávací výraz používá pro fulltextové vyhledávání, dotazování na hledaná pole v indexu pro vyhovující výrazy a vrácení výsledků v pořadí řazení. Nastavíte-li `search` na hodnotu null, provádění dotazu bude po celém indexu (tj. `search=*`). V tomto případě jsou další prvky dotazu, jako je `$filter` nebo profil vyhodnocování, primární faktory, které mají vliv na to, které dokumenty se vrátí `($filter`) a v jakém pořadí (`scoringProfile` nebo `$orderby`).
 
 -   **$filter =**  
@@ -91,7 +91,7 @@ V aplikacích, které zahrnují nahodnocenou navigaci, se ujistěte, že každá
 ## <a name="build-a-faceted-navigation-app"></a>Vytvoření omezující navigační aplikace
 V kódu aplikace, který sestaví požadavek hledání, implementujete v rámci služby Azure Kognitivní hledání omezující navigaci. Omezující navigace se spoléhá na prvky ve schématu, které jste definovali dříve.
 
-Předdefinovaný v indexu vyhledávání je atribut `Facetable [true|false]` index, který je nastaven u vybraných polí na povolení nebo zakázání jejich použití v omezující navigační struktuře. Bez `"Facetable" = true` nemůže být pole použito v navigaci omezující vlastnosti.
+Předdefinovaný v indexu vyhledávání je atribut `Facetable [true|false]` index, který je nastaven u vybraných polí na povolení nebo zakázání jejich použití v omezující navigační struktuře. Bez `"Facetable" = true`nemůže být pole použito v navigaci omezující vlastnosti.
 
 Prezentační vrstva v kódu poskytuje uživatelské prostředí. Měl by zobrazovat seznam částí naomezujících navigačních prvků, jako je popisek, hodnoty, zaškrtávací políčka a počet. Azure Kognitivní hledání REST API je platforma nezávislá, takže použijte libovolný jazyk a platformu, kterou požadujete. Důležité je, abyste zahrnuli prvky uživatelského rozhraní, které podporují přírůstkovou aktualizaci s aktualizovaným stavem uživatelského rozhraní, když je vybraná každá další omezující vlastnost. 
 
@@ -107,7 +107,7 @@ V následujících částech se podrobněji podíváme na to, jak sestavovat jed
 
 ## <a name="build-the-index"></a>Sestavení indexu
 Omezující vlastnost je povolena pro pole podle pole v indexu prostřednictvím tohoto atributu index: `"Facetable": true`.  
-Ve výchozím nastavení jsou `Facetable` všechny typy polí, které by mohly být použity v omezující navigaci. Mezi takové typy polí patří `Edm.String`, `Edm.DateTimeOffset` a všechny typy číselného pole (v podstatě všechny typy polí jsou plošky kromě `Edm.GeographyPoint`, které se nedají použít v omezující navigaci). 
+Ve výchozím nastavení jsou `Facetable` všechny typy polí, které by mohly být použity v omezující navigaci. Mezi takové typy polí patří `Edm.String`, `Edm.DateTimeOffset`a všechny typy číselného pole (v podstatě všechny typy polí jsou plošky kromě `Edm.GeographyPoint`, které se nedají použít v omezující navigaci). 
 
 Při sestavování indexu je osvědčeným postupem pro navázání navigace explicitně zapnout omezující vlastnost pro pole, která by nikdy neměla být použita jako omezující vlastnost.  Konkrétně pole řetězců pro hodnoty singleton, jako je ID nebo název produktu, by měla být nastavená na `"Facetable": false`, aby se předešlo jejich nechtěnému (a neúčinnému) použití v omezující navigaci. Vypnutí omezujících vlastností tam, kde je nepotřebujete, pomáhá udržet velikost indexu malou a obvykle zvyšuje výkon.
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Parametr dotazu omezující vlastnosti je nastaven na pole a v závislosti na datovém typu může být dále parametrizovaný seznamem odděleným čárkami, který obsahuje `count:<integer>`, `sort:<>`, `interval:<integer>` a `values:<list>`. Seznam hodnot se při nastavování rozsahů podporuje pro číselná data. Podrobnosti o využití najdete v tématu [Prohledání dokumentů (Azure kognitivní hledání API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
+Parametr dotazu omezující vlastnosti je nastaven na pole a v závislosti na datovém typu může být dále parametrizovaný seznamem odděleným čárkami, který obsahuje `count:<integer>`, `sort:<>`, `interval:<integer>`a `values:<list>`. Seznam hodnot se při nastavování rozsahů podporuje pro číselná data. Podrobnosti o využití najdete v tématu [Prohledání dokumentů (Azure kognitivní hledání API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
 
 Společně s omezujícími vlastnostmi by požadavek, který aplikace formuluje, měl také vytvořit filtry pro zúžení sady kandidátských dokumentů na základě výběru hodnoty omezující vlastnosti. V případě úložiště kol napodobná navigace nabízí otázky *, jako jsou jaké barvy, výrobci a typy kol k dispozici?* . Dotazy na odpovědi *, jako je například přesná kola, jsou v tomto cenovém rozsahu červené, horská kola?* Když kliknete na tlačítko "červená" a označíte, že by se měly zobrazit jenom červené produkty, další dotaz, který aplikace odešle, zahrnuje `$filter=Color eq ‘Red’`.
 
@@ -321,7 +321,7 @@ Za určitých okolností možná zjistíte, že počty omezujících vlastností
 
 Počty omezujících podmínek můžou být kvůli architektuře horizontálního dělení nepřesné. Každý index hledání má několik horizontálních oddílů a každá horizontálních oddílů oznamuje hlavní N omezující vlastnosti podle počtu dokumentů, který se pak sloučí do jednoho výsledku. Pokud některé horizontálních oddílů obsahují mnoho hodnot, zatímco jiné mají méně, může se stát, že některé hodnoty omezující vlastnosti ve výsledcích chybí nebo jsou ve výsledku zjištěny.
 
-I když se toto chování může kdykoli změnit, pokud k tomuto chování dojde v dnešní době, můžete ho obejít uměle tím, že vyřadíte počet: \<number > na velké číslo, abyste vynutili úplné generování sestav každého horizontálních oddílů. Pokud hodnota Count: je větší nebo rovna počtu jedinečných hodnot v poli, jsou zaručeny přesné výsledky. Pokud jsou ale počty dokumentů vysoké, dochází ke snížení výkonu, takže tuto možnost používejte uvážlivě.
+I když se toto chování může kdykoli změnit, pokud k tomuto chování dojde v dnešní době, můžete ho obejít uměle tím, že vyřadíte počet\<číslo > na velké číslo, abyste vynutili úplné generování sestav každého horizontálních oddílů. Pokud hodnota Count: je větší nebo rovna počtu jedinečných hodnot v poli, jsou zaručeny přesné výsledky. Pokud jsou ale počty dokumentů vysoké, dochází ke snížení výkonu, takže tuto možnost používejte uvážlivě.
 
 ### <a name="user-interface-tips"></a>Tipy pro uživatelské rozhraní
 **Přidat popisky pro každé pole v navigaci omezujícími vlastnostmi**
@@ -395,7 +395,7 @@ Při práci s výsledky hledání Sledujte adresu URL pro změny v vytváření 
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 Podívejte se na [Azure kognitivní hledání podrobně s hloubkou](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). V 45:25 je k dispozici ukázka implementace omezujících vlastností.
 
 Další informace o principech návrhu pro návrhovou navigaci vám doporučujeme tyto odkazy:

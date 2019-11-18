@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f9d1198a0faca8eed2ca5d3f3ee89ac9019d657
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 777fe1a62002a765460617cd69f3d518d78ed331
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073912"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150880"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -120,6 +120,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 
 ## <a name="change-log"></a>Protokol změn
+- 11/15/2019: drobné změny [vysoké dostupnosti pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](high-availability-guide-suse-netapp-files.md) a [vysokou dostupnost pro sap NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace](high-availability-guide-rhel-netapp-files.md) SAP pro vysvětlení omezení velikosti fondu kapacity a příkazu Remove, který podporuje jenom NFSv3 verze.
 - 11/12/2019: vydání [vysoké dostupnosti pro SAP NetWeaver v systému Windows s použitím protokolu SMB (Azure NetApp Files)](high-availability-guide-windows-netapp-files-smb.md)
 - 11/08/2019: změny [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SUSE Linux Enterprise Server](sap-hana-high-availability.md), [nastavení SAP HANA systémové replikace na virtuálních počítačích azure](sap-hana-high-availability-rhel.md), [Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace](high-availability-guide-suse.md) [SAP, Azure Virtual Machines vysoká](high-availability-guide-suse-netapp-files.md)dostupnost pro SAP [NetWeaver v SUSE Linux Enterprise Server ](high-availability-guide-rhel.md), [Azure Virtual Machines vysoké dostupnosti pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files](high-availability-guide-rhel-netapp-files.md), [vysokou dostupností pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](high-availability-guide-suse-nfs.md), [GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver](high-availability-guide-rhel-glusterfs.md) , které doporučují Azure Standard Load Balancer.  
 - 11/08/2019: změny v [kontrolním seznamu plánování úloh SAP a nasazení](sap-deployment-checklist.md) k objasnění doporučení pro šifrování  

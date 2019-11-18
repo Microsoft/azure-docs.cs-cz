@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ff46ec437de671d5804eeb31a5d1fb0284a8946
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639986"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123515"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů Hyper-V pomocí Azure Migrate posouzení serveru
 
-V tomto článku se dozvíte, jak vyhodnotit místní virtuální počítače Hyper-V pomocí Azure Migrate: Nástroj pro vyhodnocení serveru.
+V tomto článku se dozvíte, jak vyhodnotit místní virtuální počítače Hyper-V pomocí nástroje Azure Migrate: Server Assessment Tool.
 
 [Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců.
 
@@ -47,13 +47,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="set-up-an-azure-migrate-project"></a>Nastavení Azure Migrateho projektu
 
-1. V Azure Portal > **všechny služby**vyhledejte **Azure Migrate**.
+1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. Ve výsledcích hledání vyberte **Azure Migrate**.
-3. V části **Přehled**v části **zjišťování, vyhodnocení a migrace serverů**klikněte na možnost **zhodnotit a migrovat servery**.
+3. Na stránce **Přehled** v části **Zjistit, posoudit a migrovat servery** klikněte na **Posoudit a migrovat servery**.
 
     ![Zjišťování a vyhodnocení serverů](./media/tutorial-assess-hyper-v/assess-migrate.png)
 
-4. V části **Začínáme**klikněte na **Přidat nástroje**.
+4. V části **Začínáme** klikněte na **Přidat nástroje**.
 5. Na kartě **migrovat projekt** vyberte předplatné Azure a vytvořte skupinu prostředků, pokud ji nemáte.
 6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a oblast, ve které chcete vytvořit projekt.
 
@@ -73,13 +73,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     - Při migraci virtuálních počítačů můžete vybrat jinou cílovou oblast Azure. Všechny oblasti Azure jsou podporovány pro cíl migrace.
 
 7. Klikněte na **Další**.
-8. V **nástroji vybrat nástroj**pro posouzení **vyberte Azure Migrate: Server Assessment** > **Další**.
+8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: posouzení serveru** > **Další**.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
-9. V **nástroji vybrat nástroj pro migraci**vyberte možnost **Přeskočit přidat nástroj pro migraci pro nyní** > **Next**.
-10. V části **Revize + přidat nástroje**zkontrolujte nastavení a klikněte na **Přidat nástroje**.
-11. Počkejte několik minut, než se projekt Azure Migrate nasadí. Přejdete na stránku projektu. Pokud projekt nevidíte, můžete k němu přistupovat ze **serverů** na řídicím panelu Azure Migrate.
+9. V části **Vybrat nástroj pro migraci** vyberte **V tuto chvíli přeskočit přidání nástroje pro migraci** > **Další**.
+10. V části **Kontrola a přidání nástrojů** zkontrolujte nastavení a klikněte na **Přidat nástroje**.
+11. Počkejte několik minut, než se projekt Azure Migrate nasadí. Budete přesměrováni na stránku projektu. Pokud se projekt nezobrazí, můžete k němu přejít z části **Servery** na řídicím panelu služby Azure Migrate.
 
 
 
@@ -88,7 +88,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Vyhodnocování serveru Azure Migrate spouští odlehčené zařízení virtuálního počítače Hyper-V.
 
-- Toto zařízení provádí zjišťování virtuálních počítačů a odesílá data o výkonu a údaje o výkonu do Azure Migrate: Hodnocení serverů.
+- Toto zařízení provádí zjišťování virtuálních počítačů a odesílá data a metadata virtuálních počítačů do Azure Migrate: posouzení serveru.
 - Nastavení zařízení:
     - Z Azure Portal Stáhněte komprimovaný VHD Hyper-V.
     - Vytvořte zařízení a ověřte, že se může připojit k Azure Migrate posouzení serveru.
@@ -98,8 +98,8 @@ Vyhodnocování serveru Azure Migrate spouští odlehčené zařízení virtuál
 
 Stáhněte pro zařízení šablonu VHD s příponou.
 
-1. V Azure Migrate **cíle** > migrace na**servery** > : **Vyhodnocování**serveru klikněte na tlačítko **zjistit**.
-2. V rozevíracích **seznamech počítačů** > , ve**kterých jsou počítače virtualizované?** klikněte na **Ano, s technologií Hyper-V**.
+1. V ** > ** **cíli migrace** > **Azure Migrate: posouzení serveru**, klikněte na **zjistit**.
+2. V rozevíracích **seznamech počítačů** > **jsou vaše počítače virtualizované?** klikněte na **Ano, s technologií Hyper-V**.
 3. Kliknutím na **Stáhnout** Stáhněte soubor VHD.
 
     ![Stáhnout virtuální počítač](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
@@ -138,9 +138,9 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
     ![Nasazení VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. V Průvodci importem virtuálního počítače > **než začnete**, klikněte na **Další**.
-3. V části **najít složku**vyberte složku **Virtual Machines** . Pak klikněte na tlačítko **Další**.
+3. V části **najít složku**vyberte složku **Virtual Machines** . Potom klikněte na tlačítko **Další**.
 1. V nabídce **Vybrat virtuální počítač**klikněte na **Další**.
-2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Pak klikněte na tlačítko **Další**.
+2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Potom klikněte na tlačítko **Další**.
 3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
 4. V části **složky úložiště**ponechte výchozí nastavení. Klikněte na **Další**.
 5. V části **zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure.
@@ -158,17 +158,17 @@ Nastavte zařízení poprvé.
 
 1. Ve Správci technologie Hyper-V > **Virtual Machines**klikněte pravým tlačítkem na virtuální počítač > **připojit**.
 2. Zadejte jazyk, časové pásmo a heslo pro zařízení.
-3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k virtuálnímu počítači, a otevřete adresu URL webové aplikace zařízení: **název zařízení *https://nebo IP adresa*: 44368**.
+3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k VIRTUÁLNÍmu počítači, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
 
    Alternativně můžete aplikaci otevřít z plochy zařízení kliknutím na zástupce aplikace.
 1. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
-    - **Licence**: Přijměte licenční podmínky a přečtěte si informace třetích stran.
-    - **Připojení**: Aplikace zkontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
+    - **Licence**: přijměte licenční podmínky a přečtěte si informace třetích stran.
+    - **Připojení**: aplikace kontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
       - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN.
       - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
       - Podporuje se jen proxy protokolu HTTP.
-    - **Čas synchronizace**: Čas je ověřen. Čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování virtuálních počítačů fungovalo správně.
-    - **Nainstalovat aktualizace**: Vyhodnocování Azure Migrate serveru kontroluje, jestli má zařízení nainstalované nejnovější aktualizace.
+    - **Časová synchronizace**: čas je ověřený. Čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování virtuálních počítačů fungovalo správně.
+    - **Instalovat aktualizace**: posouzení Azure Migrate serveru kontroluje, jestli má zařízení nainstalované nejnovější aktualizace.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
@@ -205,7 +205,7 @@ Příklad: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.cont
 
 Případně to udělejte v Editor místních zásad skupiny na zařízení:
 
-1. V > **konfiguraci počítače** **Zásady místního počítače**klikněte na **šablony pro správu** > **delegování přihlašovacích údajů** **systému** > .
+1. V **zásadách místního počítače** > **Konfigurace počítače**klikněte na **šablony pro správu** > **delegování přihlašovacích údajů** **systému** > .
 2. Dvakrát klikněte na **Povolit delegování nových přihlašovacích údajů**a vyberte **povoleno**.
 3. V nabídce **Možnosti**klikněte na **Zobrazit**a do seznamu přidejte každého hostitele Hyper-V, který chcete zjistit, a použijte příkaz **WSMan/** jako předponu.
 4. Pak v **delegování přihlašovacích údajů**dvakrát klikněte na možnost **umožňuje delegovat nové přihlašovací údaje pomocí ověřování serveru jenom s protokolem NTLM**. Znovu přidejte všechny hostitele Hyper-V, které chcete vyhledat, do seznamu s použitím nástroje **WSMan/** jako předpony.
@@ -223,14 +223,14 @@ Připojte se ze zařízení k hostitelům nebo clusterům Hyper-V a spusťte zji
     - Cluster můžete přidat i v případě, že v clusteru dojde k problémům s konkrétními hostiteli.
 4. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.
 
-Spustí se zjišťování. Zobrazení metadat zjištěných virtuálních počítačů v Azure Portal trvá přibližně 15 minut.
+Spustí se zjišťování. Metadata zjištěných serverů, které se mají zobrazit v Azure Portal, trvá přibližně 1,5 minut na hostitele. 
 
 ### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu
 
 Po dokončení zjišťování můžete ověřit, že se virtuální počítače zobrazují na portálu.
 
 1. Otevřete řídicí panel Azure Migrate.
-2. V **Azure Migrate-servery** > **Azure Migrate: Na stránce** posouzení serveru klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
+2. V **Azure Migrate-servery** > **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 ## <a name="set-up-an-assessment"></a>Nastavení posouzení
 
@@ -238,8 +238,8 @@ Existují dva typy posouzení, které můžete spustit pomocí Azure Migrate pos
 
 **Posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
-**Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: Na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)** : Na základě vstupně-výstupních operací a propustnosti místních disků.
-**Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: V závislosti na velikosti místního virtuálního počítače<br/><br> **Doporučený typ disku**: Na základě nastavení typu úložiště, které jste vybrali pro posouzení.
+**Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)** : na základě vstupně-výstupních operací a propustnosti místních disků.
+**Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: na základě velikosti místního virtuálního počítače<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.
 
 
 
@@ -248,11 +248,11 @@ Existují dva typy posouzení, které můžete spustit pomocí Azure Migrate pos
 Proveďte posouzení následujícím způsobem:
 
 1. Projděte si [osvědčené postupy](best-practices-assessment.md) pro vytváření hodnocení.
-2. Na **serverech** > AzureMigrate: **Vyhodnocování**serveru kliknětena vyhodnotit.
+2. Na **serverech** > **Azure Migrate: posouzení serveru**, klikněte na **vyhodnotit**.
 
-    ![Posoudit](./media/tutorial-assess-hyper-v/assess.png)
+    ![Posouzení](./media/tutorial-assess-hyper-v/assess.png)
 
-3. V poli vyhodnotit **servery**zadejte název posouzení.
+3. V poli **vyhodnotit servery**zadejte název posouzení.
 4. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
 
     ![Vlastnosti posouzení](./media/tutorial-assess-hyper-v/assessment-properties.png)
@@ -263,7 +263,7 @@ Proveďte posouzení následujícím způsobem:
 
     ![Vytvoření posouzení](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. Po vytvoření posouzení ho zobrazte na **serverech** > **Azure Migrate: Posouzení**serveru.
+6. Po vytvoření posouzení ho zobrazte na stránce **servery** > **Azure Migrate: posouzení serveru**.
 7. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
 
 
@@ -271,14 +271,14 @@ Proveďte posouzení následujícím způsobem:
 
 Posouzení popisuje:
 
-- **Připravenost na Azure**: Zda jsou virtuální počítače vhodné pro migraci do Azure.
+- **Připravenost na Azure**: jestli jsou virtuální počítače vhodné pro migraci do Azure.
 - **Odhad měsíčních nákladů**: Odhadované měsíční náklady na výpočetní prostředky a úložiště pro provoz virtuálních počítačů v Azure.
-- **Odhad měsíčních nákladů na úložiště**: Odhadované náklady na diskové úložiště po migraci
+- **Odhad měsíčních nákladů na úložiště**: Odhadované náklady na diskové úložiště po migraci.
 
 
 ### <a name="view-an-assessment"></a>Zobrazit posouzení
 
-1. V Azure Migrate **cíle** >  migrace na**servery** > : **Vyhodnocování**serveru klikněte na **posouzení**.
+1. V >  **cíle migrace** **servery** > **Azure Migrate: posouzení serveru**, klikněte na **posouzení**.
 2. V **posouzení**klikněte na posouzení a otevřete ho.
 
     ![Souhrn posouzení](./media/tutorial-assess-hyper-v/assessment-summary.png)
@@ -288,10 +288,10 @@ Posouzení popisuje:
 
 1. V **Azure Readiness**ověřte, jestli jsou virtuální počítače připravené k migraci do Azure.
 2. Zkontrolujte stav virtuálního počítače:
-    - **Připraveno pro Azure**: Azure Migrate doporučuje velikost virtuálního počítače a odhad nákladů na virtuální počítače v rámci posouzení.
-    - **Připraveno s podmínkami**: Zobrazuje problémy a navrhovanou nápravu.
-    - **Nepřipraveno pro Azure**: Zobrazuje problémy a navrhovanou nápravu.
-    - **Připravenost**není známa: Používá se, když Azure Migrate nedokáže vyhodnotit připravenost kvůli problémům s dostupností dat.
+    - **Připraveno pro Azure**: Azure Migrate doporučuje velikost virtuálního počítače a odhad nákladů pro virtuální počítače ve vyhodnocování.
+    - **Připraveno s podmínkami**: zobrazuje problémy a navrhovanou nápravu.
+    - **Nepřipraveno pro Azure**: zobrazuje problémy a navrhovanou nápravu.
+    - **Připravenost neznámá**: používá se, když Azure Migrate nedokáže vyhodnotit připravenost kvůli problémům s dostupností dat.
 
 2. Klikněte na stav **připravenosti na Azure** . Můžete si prohlédnout podrobnosti připravenosti na virtuální počítač a přejít k podrobnostem, kde najdete podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
 
@@ -313,7 +313,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 
 Když spustíte posouzení na základě výkonu, bude posouzení k posouzení přiřazeno hodnocení spolehlivosti.
 
-![Míra spolehlivosti](./media/tutorial-assess-hyper-v/confidence-rating.png)
+![Hodnocení spolehlivosti](./media/tutorial-assess-hyper-v/confidence-rating.png)
 
 - Je uděleno hodnocení od 1 hvězdičky (nejnižší) do 5 hvězdiček (nejvyšší).
 - Hodnocení spolehlivosti vám pomůže odhadnout spolehlivost doporučení týkajících se velikosti, která poskytuje posouzení.
@@ -326,7 +326,7 @@ Hodnocení spolehlivosti pro posouzení je následující.
 0 až 20 % | 1 hvězdička
 21 až 40 % | 2 hvězdičky
 41 až 60 % | 3 hvězdičky
-61 až 80 % | 4 Star
+61 až 80 % | 4 hvězdičky
 81 až 100 % | 5 hvězdiček
 
 [Přečtěte si další](best-practices-assessment.md#best-practices-for-confidence-ratings) informace o osvědčených postupech pro hodnocení spolehlivosti.
@@ -337,7 +337,7 @@ Hodnocení spolehlivosti pro posouzení je následující.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 > [!div class="checklist"]
 > * Nastavení zařízení Azure Migrate

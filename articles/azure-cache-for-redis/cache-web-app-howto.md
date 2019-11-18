@@ -1,28 +1,20 @@
 ---
-title: Vytvoření webové aplikace v ASP.NET s mezipamětí Azure pro Redis | Microsoft Docs
+title: Vytvoření webové aplikace v ASP.NET s mezipamětí Azure pro Redis
 description: V tomto rychlém startu se dozvíte, jak vytvořit webovou aplikaci v ASP.NET s mezipamětí Azure pro Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326503"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122577"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Rychlý start: Použití Azure cache pro Redis s webovou aplikací ASP.NET 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s webovou aplikací ASP.NET 
 
 V tomto rychlém startu použijete Visual Studio 2019 k vytvoření webové aplikace v ASP.NET, která se připojí ke službě Azure cache pro Redis, aby ukládala a načetla data z mezipaměti. Pak nasadíte aplikaci do Azure App Service.
 
@@ -67,7 +59,7 @@ V dalším kroku vytvoříte pro aplikaci mezipaměť.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>Úprava souboru *CacheSecrets.config*
 
-1. Na počítači vytvořte soubor s názvem *CacheSecrets.config*. Uložte ho v umístění, ve kterém se nebude vracet se změnami zdrojového kódu ukázkové aplikace. V tomto rychlém startu je soubor *CacheSecrets.config* umístěný zde: *C:\AppSecrets\CacheSecrets.config*.
+1. Vytvořte soubor na počítači s názvem *CacheSecrets. config*. Umístěte ho do umístění, kde se nevrátí se změnami zdrojový kód ukázkové aplikace. V tomto rychlém startu je soubor *CacheSecrets.config* umístěný zde: *C:\AppSecrets\CacheSecrets.config*.
 
 1. Upravte soubor *CacheSecrets.config*. Pak přidejte následující obsah:
 
@@ -104,12 +96,12 @@ Protože soubor *CacheSecrets.config* není nasazený v Azure společně s aplik
 #### <a name="to-update-the-webconfig-file"></a>Aktualizace souboru *web.config*
 1. V **Průzkumníku řešení** otevřete poklikáním soubor *web.config*.
 
-    ![Web.config](./media/cache-web-app-howto/cache-web-config.png)
+    ![Soubor web.config](./media/cache-web-app-howto/cache-web-config.png)
 
 2. V souboru *web.config* vyhledejte element `<appSetting>`. Potom přidejte tento atribut `file`. Pokud jste použili jiný název souboru nebo umístění, nahraďte těmito hodnotami hodnoty uvedené v příkladu.
 
 * Před: `<appSettings>`
-* Konci`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Po: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu `<appSettings>`. Pokud zadaný soubor nelze nalézt, modul runtime atribut souboru ignoruje. Vaše tajné kódy (připojovací řetězce k mezipaměti) nejsou součástí zdrojového kódu aplikace. Když nasadíte webovou aplikaci do Azure, soubor *CacheSecrets. config* není nasazený.
 
@@ -247,7 +239,7 @@ Projekt je standardně nakonfigurovaný tak, aby pro účely testování a ladě
 
 2. V prohlížeči na navigačním panelu vyberte **Azure cache for Redis test** .
 
-3. V následujícím příkladu `Message` měl klíč dříve hodnotu uloženou v mezipaměti, která byla nastavena pomocí konzoly Azure cache for Redis na portálu. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
+3. V následujícím příkladu obsahovala `Message` klíč dříve hodnotu uloženou v mezipaměti, která se nastavila pomocí konzoly Azure cache for Redis na portálu. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
 
     ![Jednoduchý test dokončený místně](./media/cache-web-app-howto/cache-simple-test-complete-local.png)
 
@@ -319,13 +311,13 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 
 2. Do pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. U skupiny prostředků ve výsledcích hledání vyberte **...** a pak vyberte **Odstranit skupinu prostředků**.
 
-    ![Odstranění](./media/cache-web-app-howto/cache-delete-resource-group.png)
+    ![Odstranit](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a vyberte **Odstranit**.
 
 Po chvíli se skupina prostředků včetně všech prostředků, které obsahuje, odstraní.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V dalším kurzu použijete mezipaměť Azure pro Redis ve realističtějším scénáři k vylepšení výkonu aplikace. Tuto aplikaci aktualizujete tak, aby do mezipaměti ukládala tabulku výsledků s využitím principu s doplňováním mezipaměti aplikací pomocí ASP.NET a databáze.
 

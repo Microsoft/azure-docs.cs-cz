@@ -1,22 +1,18 @@
 ---
 title: Azure Lighthouse v podnikových scénářích
 description: Funkce Azure Lighthouse se dají použít ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: fbd87cc801824729025feb7aefa411ac38048949
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266724"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132498"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse v podnikových scénářích
 
-Nejběžnější scénář pro Azure Lighthouse je poskytovatel služeb, který spravuje prostředky ve svých klientech Azure Active Directory (Azure AD). Funkce Azure Lighthouse se ale dají použít i ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
+Nejběžnější scénář pro [Azure Lighthouse](../overview.md) je poskytovatel služeb, který spravuje prostředky ve svých klientech Azure Active Directory (Azure AD). Funkce Azure Lighthouse se ale dají použít i ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
 
 ## <a name="single-vs-multiple-tenants"></a>Jeden vs. více tenantů
 

@@ -1,24 +1,16 @@
 ---
-title: Vytvoření šablony Azure Resource Manager – Visual Studio Code
+title: Vytvořit šablonu – Visual Studio Code
 description: Při práci na šablonách Resource Manageru můžete použít Visual Studio Code a rozšíření Nástroje Azure Resource Manageru.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 3e4707e6c0d2a45c02933a5b6022f5604ca7dbed
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: d768d0e1d430a5c6b9be35b486cd0f200c492d7b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533633"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149521"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření šablon Azure Resource Manageru pomocí nástroje Visual Studio Code
 
@@ -30,7 +22,7 @@ V tomto rychlém startu nasadíte účet úložiště:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
@@ -60,7 +52,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-Chcete-li se naučit, jak šablonu upravit pomocí Visual Studio Code, přidejte do části `outputs` další prvek, abyste zobrazili identifikátor URI úložiště.
+Chcete-li se setkat s tím, jak šablonu upravit pomocí Visual Studio Code, přidejte do části `outputs` další prvek, abyste zobrazili identifikátor URI úložiště.
 
 1. Přidejte do exportované šablony jeden další výstup:
 

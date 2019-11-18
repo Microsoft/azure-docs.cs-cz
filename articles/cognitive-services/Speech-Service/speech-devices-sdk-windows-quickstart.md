@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: spuštění sady Speech Devices SDK ve Windows-Speech Service'
+title: 'Rychlý Start: spuštění sady Speech Devices SDK ve Windows'
 titleSuffix: Azure Cognitive Services
 description: Požadavky a pokyny pro zahájení práce se sadou Windows Speech zařízení SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e59cfaa1260cd33c8912437d56bbbb2ace2f43ed
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090447"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111665"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Rychlý Start: spuštění ukázkové aplikace sady Speech Devices SDK ve Windows
 
@@ -105,22 +105,21 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Pokud používáte přepis konverzace, informace o klíči a oblastech řeči jsou také potřeba v `Cts.java`:
+   Pokud používáte přepis konverzace, informace o klíči a oblastech řeči jsou také potřeba v `Cts.java`:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. Výchozí klíčové slovo (klíčové slovo) je "Computer". Můžete také vyzkoušet jedno z dalších poskytnutých klíčových slov, například "počítač" nebo "asistent". Soubory prostředků pro tato alternativní klíčová slova jsou v sadě Speech Devices SDK ve složce klíčová slova. Například `C:\SDSDK\JRE-Sample-Release\keyword\Computer` obsahuje soubory používané pro klíčové slovo "Computer".
 
-   > [!TIP]
-   > Můžete také [vytvořit vlastní klíčové slovo](speech-devices-sdk-create-kws.md).
+    > [!TIP]
+    > Můžete také [vytvořit vlastní klíčové slovo](speech-devices-sdk-create-kws.md).
 
     Chcete-li použít nové klíčové slovo, aktualizujte následující řádek v `FunctionsList.java`a zkopírujte klíčové slovo do aplikace. Například pro použití klíčového slova ' Machine ' z `machine.zip`balíčku klíčového slova:
 
    * Zkopírujte soubor `kws.table` z balíčku zip do složky Project **target/Classes**.
-
    * Aktualizujte `FunctionsList.java` s názvem klíčového slova:
 
      ```java
@@ -143,23 +142,23 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 ## <a name="create-and-run-a-standalone-application"></a>Vytvoření a spuštění samostatné aplikace
 
-1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. Zvolte **exportovat**. 
+1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. Zvolte **exportovat**.
 
 1. Zobrazí se okno **exportovat** . Rozbalte **Java** a vyberte **soubor JAR spustitelný** a pak vyberte **Další**.
 
-   ![Snímek obrazovky okna exportu](media/speech-devices-sdk/eclipse-export-windows.png) 
+   ![Snímek obrazovky okna exportu](media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. Zobrazí se okno pro **Export souboru jar spustitelný** . Zvolte **cíl exportu** pro aplikaci a pak vyberte **Dokončit**.
- 
+
    ![Snímek obrazovky spustitelný pro export souborů JAR](media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. Vložte prosím `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` a `Microsoft.CognitiveServices.Speech.extension.pma.dll` do cílové složky zvolené výše, protože aplikace potřebuje tyto soubory.
 
 1. Spuštění samostatné aplikace
 
-     ```powershell
-     java -jar SpeechDemo.jar
-     ```
+   ```powershell
+   java -jar SpeechDemo.jar
+   ```
 
 ## <a name="next-steps"></a>Další kroky
 

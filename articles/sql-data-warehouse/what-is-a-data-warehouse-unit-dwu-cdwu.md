@@ -11,12 +11,12 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685338"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133158"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (DWU) a jednotky datového skladu COMPUTE (cDWUs)
 
@@ -128,7 +128,7 @@ Změna DWU nebo cDWUs:
 
 2. V části **škálovat**přesuňte posuvník doleva nebo doprava, abyste změnili nastavení DWU.
 
-3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na **Ano** ji potvrďte nebo ji kliknutím na **Ne** zrušte.
+3. Klikněte na možnost **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na **Ano** ji potvrďte nebo ji kliknutím na **Ne** zrušte.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -204,7 +204,7 @@ Postup kontroly stavu DWU změn:
     ;
     ```
     
-Tento DMV vrací informace o různých operacích správy ve vašem fondu SQL, jako je například operace a stav operace, což je buď IN_PROGRESS nebo COMPLETED.
+Tento DMV vrací informace o různých operacích správy ve vašem fondu SQL, jako je například operace a stav operace, který je buď IN_PROGRESS nebo dokončeno.
 
 ## <a name="the-scaling-workflow"></a>Pracovní postup škálování
 
@@ -215,4 +215,4 @@ Když zahájíte operaci škálování, systém nejdřív odchode všechny otev�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě výkonu najdete v tématech [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md) a [limity paměti a souběžnosti] paměť-concurrency-Limits.MD).
+Další informace o správě výkonu najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md) a [omezení pro využití paměti a souběžnosti](memory-concurrency-limits.md).

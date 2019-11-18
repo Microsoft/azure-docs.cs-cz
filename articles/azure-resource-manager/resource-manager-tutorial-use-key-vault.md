@@ -1,25 +1,17 @@
 ---
-title: Použití Azure Key Vault v šabloně Správce prostředků
+title: Použití Azure Key Vault v šablonách
 description: Zjistěte, jak pomocí služby Azure Key Vault předávat hodnoty zabezpečených parametrů během nasazení šablony Resource Manageru.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 5dfc186e5d047de76e16ec145f5f0afe94b8d2f4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 86625132e4ac4aa3ed2c42f1e94babcfbbf63a51
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533611"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149281"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Kurz: Integrace Azure Key Vault v nasazení šablon Správce prostředků
 
@@ -43,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
@@ -126,7 +118,7 @@ Teď jste připravili Trezor klíčů a tajný klíč. V následujících část
 
    Před přizpůsobením šablony je užitečné, abyste měli základní znalosti šablony.
 
-1. Vyberte **soubor**  > **Uložit jako**a pak uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON*.
+1. Vyberte **soubor** > **Uložit jako**a pak uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON*.
 
 1. Opakujte kroky 1-3 pro otevření následující adresy URL a pak soubor uložte jako *azuredeploy. Parameters. JSON*.
 
@@ -157,7 +149,7 @@ V souboru šablony není nutné provádět žádné změny.
 
     ![Integrace trezoru klíčů a Správce prostředků šablonou souborů parametrů nasazení virtuálního počítače](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
-1. Aktualizujte následující hodnoty:
+1. Aktualizací následujících hodnot:
 
     * **adminUsername**: název účtu správce virtuálního počítače.
     * **dnsLabelPrefix**: pojmenujte hodnotu dnsLabelPrefix.
@@ -187,9 +179,9 @@ Když šablonu nasadíte, použijte stejnou skupinu prostředků, kterou jste po
 
 Po úspěšném nasazení virtuálního počítače testujte přihlašovací údaje pomocí hesla uloženého v trezoru klíčů.
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 
-1. Vyberte **skupiny prostředků**  >  **\<*YourResourceGroupName* >**  > **simpleWinVM**.
+1. Vyberte **skupiny prostředků** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
 1. V horní části vyberte **připojit** .
 1. Vyberte **Stáhnout soubor RDP**a pak podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla uloženého v trezoru klíčů.
 

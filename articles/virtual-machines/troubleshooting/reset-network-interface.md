@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 1c49c6221e9b310a1b14a4e06a296befc7f6da4d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058468"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111719"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Postup resetování síťového rozhraní pro virtuální počítač Azure s Windows 
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak resetovat síťové rozhraní pro virtuální poč�
 
 ### <a name="for-vms-deployed-in-resource-group-model"></a>Pro virtuální počítače nasazené v modelu skupiny prostředků
 
-1.  Přejděte na [Azure Portal](https://ms.portal.azure.com).
+1.  Přejděte na [portál Azure](https://ms.portal.azure.com).
 2.  Vyberte ovlivněný virtuální počítač.
 3.  Vyberte **sítě** a pak vyberte síťové rozhraní virtuálního počítače.
 
@@ -68,7 +68,7 @@ Tento článek popisuje, jak resetovat síťové rozhraní pro virtuální poč�
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
 3. Zkuste k počítači protokol RDP.  Pokud chcete, můžete privátní IP adresu v případě úspěchu změnit zpátky na původní. V opačném případě ji můžete zachovat.
 
@@ -78,7 +78,7 @@ K resetování síťového rozhraní použijte tento postup:
 
 #### <a name="use-azure-portal"></a>Použití webu Azure Portal
 
-1.  Přejděte na [Azure Portal]( https://ms.portal.azure.com).
+1.  Přejděte na [portál Azure]( https://ms.portal.azure.com).
 2.  Vyberte **Virtual Machines (Classic)** .
 3.  Vyberte ovlivněný virtuální počítač.
 4.  Vyberte **IP adresy**.
@@ -109,7 +109,7 @@ K resetování síťového rozhraní použijte tento postup:
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
     
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
 3. Zkuste k počítači protokol RDP. Pokud chcete, můžete privátní IP adresu v případě úspěchu změnit zpátky na původní. V opačném případě ji můžete zachovat. 
 
@@ -117,10 +117,10 @@ K resetování síťového rozhraní použijte tento postup:
 Po provedení vzdálené plochy k počítači je nutné odstranit staré síťové karty, aby nedocházelo k potenciálním potížím:
 
 1.  Otevřete Device Manager.
-2.  Vyberte **Zobrazit** > **Zobrazit skrytá zařízení**.
+2.  Vyberte **zobrazit** > **Zobrazit skrytá zařízení**.
 3.  Vyberte **síťové adaptéry**. 
 4.  Vyhledejte adaptéry s názvem Microsoft Hyper-V síťový adaptér.
-5.  Možná se šedě zobrazí nedostupný adaptér. Klikněte pravým tlačítkem na adaptér a pak vyberte odinstalovat.
+5.  Může se zobrazit nedostupný adaptér, který je šedý. Klikněte pravým tlačítkem na adaptér a pak vyberte odinstalovat.
 
     ![bitová kopie síťového rozhraní](media/reset-network-interface/nicpage.png)
 

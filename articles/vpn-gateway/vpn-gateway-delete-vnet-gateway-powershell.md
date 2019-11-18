@@ -1,20 +1,20 @@
 ---
-title: 'Odstraňte bránu virtuální sítě: PowerShell: Azure Resource Manageru | Dokumentace Microsoftu'
-description: Odstraňte bránu virtuální sítě pomocí prostředí PowerShell v modelu nasazení Resource Manager.
+title: 'Azure VPN Gateway: odstranění brány: PowerShell'
+description: Odstraňte bránu virtuální sítě pomocí prostředí PowerShell v modelu nasazení Správce prostředků.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
-ms.openlocfilehash: 7b9503b2db14d4de6c4c8cf983c42bccd6f9f8fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c02b656f8d7879115d25516bf49f49d9921a290
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157433"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146324"
 ---
-# <a name="delete-a-virtual-network-gateway-using-powershell"></a>Odstranit bránu virtuální sítě pomocí Powershellu
+# <a name="delete-a-virtual-network-gateway-using-powershell"></a>Odstranění brány virtuální sítě pomocí PowerShellu
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
@@ -22,21 +22,21 @@ ms.locfileid: "66157433"
 >
 >
 
-Existuje několik různých přístupů, které můžete provést, pokud chcete odstranit bránu virtuální sítě pro konfiguraci brány VPN.
+Existuje několik různých přístupů, které můžete provést, pokud chcete odstranit bránu virtuální sítě pro konfiguraci služby VPN Gateway.
 
-- Pokud chcete vymazat úplně všechno a začít znovu, jde například o testovacím prostředí, můžete odstranit skupinu prostředků. Při odstranění skupiny prostředků odstraní všechny prostředky v rámci skupiny. Toto je metoda se doporučuje jen pokud nechcete zachovat prostředky ve skupině prostředků. Nelze odstranit selektivně pouze několik prostředků, pomocí tohoto přístupu.
+- Pokud chcete odstranit vše a začít znovu, jako v případě testovacího prostředí můžete odstranit skupinu prostředků. Když odstraníte skupinu prostředků, odstraní se všechny prostředky v rámci této skupiny. Tato metoda se doporučuje jenom v případě, že nechcete uchovávat žádné prostředky ve skupině prostředků. Pomocí tohoto přístupu nemůžete selektivně odstranit jenom pár prostředků.
 
-- Pokud chcete zachovat některé z prostředků ve vaší skupině prostředků, odstraňuje se Brána virtuální sítě se stane něco složitější. Než budete moct odstranit bránu virtuální sítě, musíte nejprve odstranit všechny prostředky, které jsou závislé na bráně. Kroky, které sledujete závisí na typu připojení, které jste vytvořili a všechny závislé prostředky pro každé připojení.
+- Pokud chcete zachovat některé prostředky ve vaší skupině prostředků, bude odstranění brány virtuální sítě poněkud složitější. Než budete moct odstranit bránu virtuální sítě, musíte nejdřív odstranit všechny prostředky, které jsou na bráně závislé. Postup závisí na typu připojení, která jste vytvořili, a závislých prostředcích pro každé připojení.
 
 ## <a name="before-beginning"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Stáhněte si nejnovější rutiny Powershellu pro Azure Resource Manager.
+### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Stáhněte nejnovější rutiny prostředí PowerShell pro Azure Resource Manager.
 
-Stáhněte a nainstalujte nejnovější verzi rutin Powershellu pro Azure Resource Manager. Další informace o stažení a instalaci rutin Powershellu najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
+Stáhněte si a nainstalujte nejnovější verzi rutin Azure Resource Manager PowerShellu. Další informace o stažení a instalaci rutin PowerShellu najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview).
 
-### <a name="2-connect-to-your-azure-account"></a>2. Připojte se ke svému účtu Azure.
+### <a name="2-connect-to-your-azure-account"></a>2. Připojte se k účtu Azure.
 
 Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
@@ -50,21 +50,21 @@ Zkontrolujte předplatná pro příslušný účet.
 Get-AzSubscription
 ```
 
-Pokud máte více než jedno předplatné, zadejte předplatné, pro kterou chcete použít.
+Pokud máte více než jedno předplatné, zadejte předplatné, které chcete použít.
 
 ```powershell
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="S2S"></a>Odstranění brány VPN typu Site-to-Site
+## <a name="S2S"></a>Odstranění brány VPN typu Site-to-site
 
-Pokud chcete odstranit bránu virtuální sítě pro konfiguraci S2S, musíte nejprve odstranit jednotlivé prostředky, které se vztahují k bráně virtuální sítě. Musí se odstranit prostředky v určitém pořadí z důvodu závislosti. Při práci se v příkladech níže, některé hodnoty musí být zadána, zatímco jiné hodnoty nejsou výstup výsledku. V příkladech používáme následující konkrétní hodnoty pro demonstrační účely:
+Pokud chcete odstranit bránu virtuální sítě pro konfiguraci S2S, musíte nejdřív odstranit všechny prostředky, které se vztahují k bráně virtuální sítě. Prostředky je nutné z důvodu závislostí odstranit v určitém pořadí. Při práci s příklady níže je nutné zadat některé hodnoty, zatímco jiné hodnoty jsou výsledkem výstupu. V příkladech pro demonstrační účely používáme následující konkrétní hodnoty:
 
 Název virtuální sítě: VNet1<br>
 Název skupiny prostředků: RG1<br>
 Název brány virtuální sítě: GW1<br>
 
-Následující postup se vztahuje k modelu nasazení Resource Manager.
+Následující postup se vztahuje na model nasazení Správce prostředků.
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Získejte bránu virtuální sítě, kterou chcete odstranit.
 
@@ -72,7 +72,7 @@ Následující postup se vztahuje k modelu nasazení Resource Manager.
 $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Zkontrolujte, jestli Brána virtuální sítě má všechna připojení.
+### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Zkontrolujte, jestli má brána virtuální sítě nějaká připojení.
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
@@ -81,7 +81,7 @@ $Conns=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-ob
 
 ### <a name="3-delete-all-connections"></a>3. Odstraňte všechna připojení.
 
-Může se zobrazit výzva k potvrzení odstranění všech připojení.
+Může se zobrazit výzva k potvrzení odstranění každého připojení.
 
 ```powershell
 $Conns | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
@@ -89,24 +89,24 @@ $Conns | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name 
 
 ### <a name="4-delete-the-virtual-network-gateway"></a>4. Odstraňte bránu virtuální sítě.
 
-Může se zobrazit výzva k potvrzení odstranění brány. Pokud máte konfigurace P2S k této virtuální síti kromě konfiguraci S2S, odstraňuje se Brána virtuální sítě automaticky odpojit všechny klienty P2S bez předchozího upozornění.
+Může se zobrazit výzva k potvrzení odstranění brány. Pokud k této virtuální síti kromě konfigurace S2S máte P2S konfiguraci, při odstranění brány virtuální sítě se automaticky odpojí všichni klienti P2S bez upozornění.
 
 
 ```powershell
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-V tomto okamžiku brány virtuální sítě se odstranil. Další kroky můžete odstranit všechny prostředky, které jsou již nejsou déle používány.
+V tuto chvíli se vaše brána virtuální sítě odstranila. Další kroky můžete použít k odstranění všech prostředků, které se už nepoužívají.
 
-### <a name="5-delete-the-local-network-gateways"></a>5 odstranění brány místní sítě.
+### <a name="5-delete-the-local-network-gateways"></a>5 Odstraňte brány místní sítě.
 
-Získá seznam odpovídající brány místní sítě.
+Získejte seznam odpovídajících bran místní sítě.
 
 ```powershell
 $LNG=Get-AzLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
 ```
 
-Odstranění brány místní sítě. Může se zobrazit výzva k potvrzení odstranění každé bráně místní sítě.
+Odstraňte brány místní sítě. Může se zobrazit výzva k potvrzení odstranění každé brány místní sítě.
 
 ```powershell
 $LNG | ForEach-Object {Remove-AzLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
@@ -114,13 +114,13 @@ $LNG | ForEach-Object {Remove-AzLocalNetworkGateway -Name $_.Name -ResourceGroup
 
 ### <a name="6-delete-the-public-ip-address-resources"></a>6. Odstraňte prostředky veřejné IP adresy.
 
-Získání konfigurace protokolu IP brány virtuální sítě.
+Získejte konfigurace IP adresy brány virtuální sítě.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-Získá seznam veřejných IP adres prostředky používané pro tuto bránu virtuální sítě. Pokud bránu virtuální sítě byla aktivní aktivní, zobrazí se dvě veřejné IP adresy.
+Získejte seznam prostředků veřejné IP adresy, které se používají pro tuto bránu virtuální sítě. Pokud byla brána virtuální sítě aktivní – aktivní, zobrazí se dvě veřejné IP adresy.
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
@@ -132,7 +132,7 @@ Odstraňte prostředky veřejné IP adresy.
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 ```
 
-### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Odstraňte podsíť brány a nastavení konfigurace.
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Odstraňte podsíť brány a nastavte konfiguraci.
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -141,13 +141,13 @@ Set-AzVirtualNetwork -VirtualNetwork $GWSub
 
 ## <a name="v2v"></a>Odstranění brány VPN typu VNet-to-VNet
 
-Pokud chcete odstranit bránu virtuální sítě pro konfiguraci V2V, musíte nejprve odstranit jednotlivé prostředky, které se vztahují k bráně virtuální sítě. Musí se odstranit prostředky v určitém pořadí z důvodu závislosti. Při práci se v příkladech níže, některé hodnoty musí být zadána, zatímco jiné hodnoty nejsou výstup výsledku. V příkladech používáme následující konkrétní hodnoty pro demonstrační účely:
+Pokud chcete odstranit bránu virtuální sítě pro konfiguraci V2V, musíte nejdřív odstranit všechny prostředky, které se vztahují k bráně virtuální sítě. Prostředky je nutné z důvodu závislostí odstranit v určitém pořadí. Při práci s příklady níže je nutné zadat některé hodnoty, zatímco jiné hodnoty jsou výsledkem výstupu. V příkladech pro demonstrační účely používáme následující konkrétní hodnoty:
 
 Název virtuální sítě: VNet1<br>
 Název skupiny prostředků: RG1<br>
 Název brány virtuální sítě: GW1<br>
 
-Následující postup se vztahuje k modelu nasazení Resource Manager.
+Následující postup se vztahuje na model nasazení Správce prostředků.
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Získejte bránu virtuální sítě, kterou chcete odstranit.
 
@@ -155,27 +155,27 @@ Následující postup se vztahuje k modelu nasazení Resource Manager.
 $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Zkontrolujte, jestli Brána virtuální sítě má všechna připojení.
+### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Zkontrolujte, jestli má brána virtuální sítě nějaká připojení.
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
-Můžou existovat další připojení k bráně virtuální sítě, které jsou součástí jiné skupiny prostředků. Zkontrolujte další připojení v každé skupině dalších prostředků. V tomto příkladu kontrolujeme pro připojení z RG2. Spustit pro každou skupinu prostředků, abyste měli, který může mít připojení k bráně virtuální sítě.
+K bráně virtuální sítě můžou existovat další připojení, která jsou součástí jiné skupiny prostředků. Podívejte se na další připojení v každé další skupině prostředků. V tomto příkladu kontrolujeme připojení z RG2. Tuto rutinu spusťte pro každou skupinu prostředků, kterou máte s připojením k bráně virtuální sítě.
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
 ```
 
-### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. Získá seznam připojení v obou směrech.
+### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. Získejte seznam připojení v obou směrech.
 
-Protože toto je konfigurace připojení typu VNet-to-VNet, je třeba seznam připojení v obou směrech.
+Vzhledem k tomu, že se jedná o konfiguraci VNet-to-VNet, budete potřebovat seznam připojení v obou směrech.
 
 ```powershell
 $ConnsL=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
-V tomto příkladu kontrolujeme pro připojení z RG2. Spustit pro každou skupinu prostředků, abyste měli, který může mít připojení k bráně virtuální sítě.
+V tomto příkladu kontrolujeme připojení z RG2. Tuto rutinu spusťte pro každou skupinu prostředků, kterou máte s připojením k bráně virtuální sítě.
 
 ```powershell
  $ConnsR=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "<NameOfResourceGroup2>" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
@@ -183,7 +183,7 @@ V tomto příkladu kontrolujeme pro připojení z RG2. Spustit pro každou skupi
 
 ### <a name="4-delete-all-connections"></a>4. Odstraňte všechna připojení.
 
-Může se zobrazit výzva k potvrzení odstranění všech připojení.
+Může se zobrazit výzva k potvrzení odstranění každého připojení.
 
 ```powershell
 $ConnsL | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
@@ -192,23 +192,23 @@ $ConnsR | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name
 
 ### <a name="5-delete-the-virtual-network-gateway"></a>5. Odstraňte bránu virtuální sítě.
 
-Může se zobrazit výzva k potvrzení odstranění brány virtuální sítě. Pokud máte konfigurace P2S do vašich virtuálních sítí kromě V2V konfigurace, odstranění brány virtuální sítě automaticky odpojit všechny klienty P2S bez předchozího upozornění.
+Může se zobrazit výzva k potvrzení odstranění brány virtuální sítě. Pokud máte kromě konfigurace V2V P2S konfigurace virtuální sítě, odstranění bran virtuální sítě automaticky odpojí všechny klienty P2S bez upozornění.
 
 ```powershell
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-V tomto okamžiku brány virtuální sítě se odstranil. Další kroky můžete odstranit všechny prostředky, které jsou již nejsou déle používány.
+V tuto chvíli se vaše brána virtuální sítě odstranila. Další kroky můžete použít k odstranění všech prostředků, které se už nepoužívají.
 
-### <a name="6-delete-the-public-ip-address-resources"></a>6. Odstranit prostředky veřejné IP adresy
+### <a name="6-delete-the-public-ip-address-resources"></a>6. Odstraňte prostředky veřejné IP adresy.
 
-Získání konfigurace protokolu IP brány virtuální sítě.
+Získejte konfigurace IP adresy brány virtuální sítě.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-Získá seznam veřejných IP adres prostředky používané pro tuto bránu virtuální sítě. Pokud bránu virtuální sítě byla aktivní aktivní, zobrazí se dvě veřejné IP adresy.
+Získejte seznam prostředků veřejné IP adresy, které se používají pro tuto bránu virtuální sítě. Pokud byla brána virtuální sítě aktivní – aktivní, zobrazí se dvě veřejné IP adresy.
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
@@ -220,26 +220,26 @@ Odstraňte prostředky veřejné IP adresy. Může se zobrazit výzva k potvrzen
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Odstraňte podsíť brány a nastavení konfigurace.
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Odstraňte podsíť brány a nastavte konfiguraci.
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="deletep2s"></a>Odstranění brány VPN typu Point-to-Site
+## <a name="deletep2s"></a>Odstranění brány VPN typu Point-to-site
 
-Pokud chcete odstranit bránu virtuální sítě pro konfigurace P2S, musíte nejprve odstranit jednotlivé prostředky, které se vztahují k bráně virtuální sítě. Musí se odstranit prostředky v určitém pořadí z důvodu závislosti. Při práci se v příkladech níže, některé hodnoty musí být zadána, zatímco jiné hodnoty nejsou výstup výsledku. V příkladech používáme následující konkrétní hodnoty pro demonstrační účely:
+Pokud chcete odstranit bránu virtuální sítě pro konfiguraci P2S, musíte nejdřív odstranit všechny prostředky, které se vztahují k bráně virtuální sítě. Prostředky je nutné z důvodu závislostí odstranit v určitém pořadí. Při práci s příklady níže je nutné zadat některé hodnoty, zatímco jiné hodnoty jsou výsledkem výstupu. V příkladech pro demonstrační účely používáme následující konkrétní hodnoty:
 
 Název virtuální sítě: VNet1<br>
 Název skupiny prostředků: RG1<br>
 Název brány virtuální sítě: GW1<br>
 
-Následující postup se vztahuje k modelu nasazení Resource Manager.
+Následující postup se vztahuje na model nasazení Správce prostředků.
 
 
 >[!NOTE]
-> Když bránu VPN odstraníte, všechny připojené klienty se odpojí z virtuální sítě bez předchozího upozornění.
+> Když bránu VPN odstraníte, všichni připojení klienti se z virtuální sítě odpojí bez upozornění.
 >
 >
 
@@ -257,17 +257,17 @@ Může se zobrazit výzva k potvrzení odstranění brány virtuální sítě.
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-V tomto okamžiku brány virtuální sítě se odstranil. Další kroky můžete odstranit všechny prostředky, které jsou již nejsou déle používány.
+V tuto chvíli se vaše brána virtuální sítě odstranila. Další kroky můžete použít k odstranění všech prostředků, které se už nepoužívají.
 
-### <a name="3-delete-the-public-ip-address-resources"></a>3. Odstranit prostředky veřejné IP adresy
+### <a name="3-delete-the-public-ip-address-resources"></a>3. Odstraňte prostředky veřejné IP adresy.
 
-Získání konfigurace protokolu IP brány virtuální sítě.
+Získejte konfigurace IP adresy brány virtuální sítě.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-Získá seznam veřejné IP adresy používané pro tuto bránu virtuální sítě. Pokud bránu virtuální sítě byla aktivní aktivní, zobrazí se dvě veřejné IP adresy.
+Získejte seznam veřejných IP adres, které se používají pro tuto bránu virtuální sítě. Pokud byla brána virtuální sítě aktivní – aktivní, zobrazí se dvě veřejné IP adresy.
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
@@ -279,52 +279,52 @@ Odstraňte veřejné IP adresy. Může se zobrazit výzva k potvrzení odstraně
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. Odstraňte podsíť brány a nastavení konfigurace.
+### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. Odstraňte podsíť brány a nastavte konfiguraci.
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete"></a>Odstranění brány VPN tak, že odstraníte skupinu prostředků
+## <a name="delete"></a>Odstranění brány VPN odstraněním skupiny prostředků
 
-Pokud nejste obavy o zachování všech vašich prostředků ve skupině prostředků a chcete začít, můžete odstranit celou skupinu prostředků. Toto je rychlý způsob, jak odebrat všechno, co. Následující postup se vztahuje pouze na modelu nasazení Resource Manager.
+Pokud si nejste jisti tím, že si z vašich prostředků ve skupině prostředků zachováte nějaké prostředky a chcete ji jenom začít znovu, můžete odstranit celou skupinu prostředků. To je rychlý způsob, jak odebrat vše. Následující postup se vztahuje pouze na model nasazení Správce prostředků.
 
-### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. Získání seznamu všech skupin prostředků ve vašem předplatném.
+### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. Získejte seznam všech skupin prostředků v rámci vašeho předplatného.
 
 ```powershell
 Get-AzResourceGroup
 ```
 
-### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. Vyhledejte skupinu prostředků, který chcete odstranit.
+### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. Vyhledejte skupinu prostředků, kterou chcete odstranit.
 
-Vyhledejte skupinu prostředků, kterou chcete odstranit a zobrazit seznam prostředků v příslušné skupině prostředků. V tomto příkladu je název skupiny prostředků RG1. Upravte příklad tak načíst seznam všech prostředků.
+Vyhledejte skupinu prostředků, kterou chcete odstranit, a zobrazte seznam prostředků v této skupině prostředků. V tomto příkladu je název skupiny prostředků RG1. Upravte příklad tak, aby se načetl seznam všech prostředků.
 
 ```powershell
 Find-AzResource -ResourceGroupNameContains RG1
 ```
 
-### <a name="3-verify-the-resources-in-the-list"></a>3. Zkontrolujte prostředky v seznamu.
+### <a name="3-verify-the-resources-in-the-list"></a>3. Ověřte prostředky v seznamu.
 
-Pokud je vrácen seznam, projděte si ověřit, že chcete odstranit všechny prostředky ve skupině prostředků, jakož i samotnou skupinu prostředků. Pokud chcete zachovat některé z prostředků ve skupině prostředků, postupujte podle kroků v předchozí části tohoto článku se odstranit bránu.
+Až se seznam vrátí, zkontrolujte ho a ověřte, jestli chcete odstranit všechny prostředky ve skupině prostředků, a také vlastní skupinu prostředků. Pokud chcete zachovat některé z prostředků ve skupině prostředků, odstraňte bránu pomocí kroků v předchozích částech tohoto článku.
 
 ### <a name="4-delete-the-resource-group-and-resources"></a>4. Odstraňte skupinu prostředků a prostředky.
 
-Pokud chcete odstranit skupinu prostředků a všech prostředků obsažených ve skupině prostředků, upravit a spustit.
+Pokud chcete odstranit skupinu prostředků a všechny prostředky obsažené ve skupině prostředků, upravte příklad a spusťte příkaz.
 
 ```powershell
 Remove-AzResourceGroup -Name RG1
 ```
 
-### <a name="5-check-the-status"></a>5. Zkontrolujte stav.
+### <a name="5-check-the-status"></a>5. Ověřte stav.
 
-Odstraňte všechny prostředky Azure nějakou dobu trvá. Pomocí této rutiny můžete zkontrolovat stav vaší skupiny prostředků.
+V případě, že Azure potřebuje k odstranění všech prostředků nějakou dobu. Pomocí této rutiny můžete zjistit stav skupiny prostředků.
 
 ```powershell
 Get-AzResourceGroup -ResourceGroupName RG1
 ```
 
-Výsledek, který je vrácen ukazuje "Úspěšně dokončeno".
+Vrácený výsledek zobrazuje ' úspěch '.
 
 ```
 ResourceGroupName : RG1

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048277"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131971"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
@@ -196,7 +196,7 @@ Na řídicím panelu skupiny prostředků vyhledejte účet úložiště (datahu
     > [!NOTE]
     > Vyberte skupinu prostředků akcelerátoru, která se zadala v době nasazení FarmBeats.
 
-3.  Na řídicím panelu skupiny prostředků vyhledejte úložiště.... Účet úložiště. Například storagedop4k
+3.  Na řídicím panelu skupiny prostředků vyhledejte úložiště.... účet úložiště. Například storagedop4k
 4.  Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu účtu úložiště.
 5.  Na stránce (úložiště....) vyberte **otevřít v Průzkumníkovi** a zobrazte otevřené aplikace Průzkumník služby Azure Storage.
 6.  Na levém panelu < úložiště....), **kontejnery objektů BLOB**, vyberte **protokoly úloh**.
@@ -251,7 +251,7 @@ Na řídicím panelu skupiny prostředků vyhledejte účet úložiště (datahu
 
 **Význam**: Konfigurace registrace aplikace Azure AD neproběhla správně.  
 
-**Nápravná opatření**: požádejte správce IT (s oprávněním pro čtení tenanta), aby používal náš [skript](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) k vygenerování registrace aplikace služby Azure AD. Tento skript se automaticky postará o kroky konfigurace i.
+**Nápravná opatření**: požádejte správce IT (s oprávněním pro čtení tenanta), aby používal náš [skript](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) pro vytvoření registrace aplikace Azure AD. Tento skript se automaticky postará o kroky konfigurace i.
 
 **Chyba**: v tomto tenantovi nelze vytvořit novou aplikaci služby Active Directory "fiktivní": jiný objekt se stejnou hodnotou identifikátorů URI identifikátorů vlastností již existuje.
 

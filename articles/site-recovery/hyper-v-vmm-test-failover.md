@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039739"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132940"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Hyper-V do sekundární lokality
 
@@ -20,10 +20,6 @@ ms.locfileid: "74039739"
 Tento článek popisuje, jak provést zotavení po havárii (DR) pro virtuální počítače Hyper-V, které jsou spravované v cloudech System Center Virtual Machine Manager V (MM), do sekundární místní lokality pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 Spuštěním testovacího převzetí služeb při selhání ověříte strategii replikace a provedete postup zotavení po havárii, aniž by došlo ke ztrátě dat nebo výpadkům. Testovací převzetí služeb při selhání nemá žádný vliv na probíhající replikaci nebo na produkční prostředí. 
-
-> [!WARNING]
-> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](site-to-site-deprecation.md) .
-
 
 ## <a name="how-do-test-failovers-work"></a>Jak testovací převzetí služeb při selhání funguje?
 

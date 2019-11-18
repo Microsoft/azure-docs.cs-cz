@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802197"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120317"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -35,7 +35,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v G Suite a A
 - Aktualizované názvy atributů cíle G Suite tak, aby odpovídaly, co se [tady](/azure/active-directory/manage-apps/customize-application-attributes)definuje.
 - Mapování výchozích atributů se aktualizovala.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s využitím G Suite potřebujete následující položky:
 
@@ -112,11 +112,11 @@ Pokud chcete nakonfigurovat G Suite pro Automatické zřizování uživatelů po
 
 2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **g Suite**, v panelu výsledků vyberte **g Suite** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
@@ -131,7 +131,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro G Suite ve službě Azure AD:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -161,7 +161,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-8. Klikněte na **Uložit**.
+8. Klikněte na možnost **Uložit**.
 
 9. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů do G Suite**.
 
@@ -195,12 +195,18 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít k monitorování průběhu a následnému sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v G Suite.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 > [!NOTE]
 > Další možností životaschopnosti pro automatizaci zřizování uživatelů ke G Suite je použití [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en). Tato možnost zřídí vaše místní identity služby Active Directory pro sadu G Suite.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="common-issues"></a>Běžné problémy
+* G Suite vyžaduje, aby všichni zřízené uživatelé byli z ověřených domén. Ujistěte se, že každý uživatel, který chcete zřídit, má hlavní název uživatele (UPN) z ověřené domény v G Suite. Pokud je uživatel z neověřené domény v oboru pro zřizování, zobrazí se v [protokolech zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) chyba, jako je například "GoogleAppsInvalidDomain". Těmto chybám můžete zabránit a zajistit, aby uživatelé z neověřených domén byly mimo rozsah pomocí [filtru oborů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+    * Cílový atribut: userPrincipalName
+    * Operátor: regulární výraz odpovídá nebo není SHODNÝ s regulárním výrazem
+    * Hodnota:. *@domain.com
+
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

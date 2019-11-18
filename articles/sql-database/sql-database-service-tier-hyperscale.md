@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 3a448147390ff2dd6a8049e8338a4cbf2bd94ce3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c71fb8a7e18439817023874146e22c29a5af3b12
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821102"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123682"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -86,7 +86,7 @@ Následující diagram znázorňuje různé typy uzlů v databázi s škálovate
 
 Databáze v rámci škálování obsahuje následující různé typy komponent:
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Služba Compute
 
 Výpočetní uzel je místo, kde se nachází relační modul, takže se objeví všechny jazykové prvky, zpracování dotazů a tak dále. Všechny interakce uživatelů s databází škálování na úrovni služeb probíhají prostřednictvím těchto výpočetních uzlů. Výpočetní uzly mají mezipaměti založené na SSD (s RBPEXm rozšířením fondu vyrovnávací paměti v předchozím diagramu) k minimalizaci počtu síťových přenosů, které jsou nutné k načtení stránky dat. Je k dispozici jeden primární výpočetní uzel, ve kterém jsou zpracovávány všechny úlohy a zápisy čtení a transakcí. K dispozici je jeden nebo více sekundárních výpočetních uzlů, které fungují jako aktivní pohotovostní uzly pro účely převzetí služeb při selhání, a také fungovat jako výpočetní uzly jen pro čtení pro přesměrování zpracování úloh čtení (Pokud je tato funkce požadovaná).
 
@@ -114,7 +114,7 @@ Díky možnosti rychlého zprovoznění dalších výpočetních uzlů jen pro �
 
 Databázi škálování na více systému je možné vytvořit pomocí [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) nebo rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Databáze s škálovatelným škálováním jsou dostupné jenom pomocí [nákupního modelu založeného na Vcore](sql-database-service-tiers-vcore.md).
 
-Následující příkaz T-SQL vytvoří databázi s měřítkem. V příkazu `CREATE DATABASE` musíte zadat jak edici, tak i cíl služby. Seznam platných cílů služeb najdete v tématu [omezení prostředků](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) .
+Následující příkaz T-SQL vytvoří databázi s měřítkem. V příkazu `CREATE DATABASE` musíte zadat jak edici, tak i cíl služby. Seznam platných cílů služeb najdete v tématu [omezení prostředků](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5) .
 
 ```sql
 -- Create a HyperScale Database
@@ -169,12 +169,12 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Austrálie – východ
 - Austrálie – jihovýchod
 - Brazílie – jih
-- Střední Kanada
+- Kanada – střed
 - Střední USA
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
-- Východ USA
+- Východní USA
 - Východní USA 2
 - Francie – střed
 - Japonsko – východ
@@ -186,7 +186,7 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Jižní Afrika – sever
 - Středojižní USA
 - Jihovýchodní Asie
-- Spojené království – jih
+- Velká Británie – jih
 - Spojené království – západ
 - Západní Evropa
 - Západní USA

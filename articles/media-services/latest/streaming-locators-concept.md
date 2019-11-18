@@ -1,6 +1,6 @@
 ---
-title: Streamování lokátory ve službě Azure Media Services | Dokumentace Microsoftu
-description: Tento článek obsahuje vysvětlení, co jsou lokátory streamování a jak se používají Azure Media Services.
+title: Lokátory streamování v Azure Media Services | Microsoft Docs
+description: Tento článek obsahuje vysvětlení toho, co jsou Lokátory streamování a jak se používají Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,38 +11,38 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/26/2019
 ms.author: juliako
-ms.openlocfilehash: 5897b7df2460257784c40eb974c473573ec4003d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d13ca5b3657f1deac9e6b4218decf8fe57eb1d9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299173"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113755"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
-Pokud chcete, aby videa ve výstupním prostředku byla k dispozici klientům pro přehrávání, musíte vytvořit [lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) a adresy URL pro streamování. Sestavit adresu URL, budete muset řetězit název hostitele koncového bodu streamování a cestu Lokátor streamování. Ukázku v .NET najdete v tématu věnovaném [získání lokátoru streamování](stream-files-tutorial-with-api.md#get-a-streaming-locator).
+Pokud chcete, aby videa ve výstupním prostředku byla k dispozici klientům pro přehrávání, musíte vytvořit [lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) a adresy URL pro streamování. Pokud chcete vytvořit adresu URL, musíte zřetězit název hostitele koncového bodu streamování a cestu k lokátoru streamování. Ukázku v .NET najdete v tématu věnovaném [získání lokátoru streamování](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
-Proces vytváření **Lokátor streamování** nazývá publikování. Ve výchozím nastavení **Lokátor streamování** platnost okamžitě po provedení volání rozhraní API a trvá, dokud je odstraníme, pokud nenakonfigurujete volitelné počáteční a koncový čas. 
+Proces vytvoření **lokátoru streamování** se nazývá publikování. Ve výchozím nastavení je **Lokátor streamování** platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
 
-Při vytváření **Lokátor streamování**, je nutné zadat **Asset** název a **streamování zásad** název. Další informace naleznete v následujících tématech:
+Při vytváření **lokátoru streamování**musíte zadat název **assetu** a název **zásady streamování** . Další informace najdete v následujících tématech:
 
-* [Prostředky](assets-concept.md)
+* [Aktiva](assets-concept.md)
 * [Zásady streamování](streaming-policy-concept.md)
 * [Zásady symetrických klíčů](content-key-policy-concept.md)
 
-Můžete také zadat počáteční a koncový čas na vašich Lokátor streamování, které vám umožní pouze uživateli přehrávání obsahu mezi tyto časy (například mezi 5/1/2019 na 5/5/2019).  
+Můžete také zadat čas zahájení a ukončení na lokátoru streamování, který umožní uživateli přehrávat obsah mezi těmito časy (například mezi 5/1/2019 a 5/5/2019).  
 
 ## <a name="considerations"></a>Požadavky
 
-* **Lokátory streamování** nelze aktualizovat. 
-* Vlastnosti **lokátory streamování** jsou DateTime typu jsou vždy ve formátu UTC.
-* Navrhněte omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
+* **Lokátory streamování** nejde aktualizovat. 
+* Vlastnosti **lokátorů streamování** , které jsou typu DateTime, jsou vždycky ve formátu UTC.
+* Měli byste navrhnout omezené sady zásad pro svůj účet Media Service a znovu je použít pro Lokátory streamování, pokud jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
 
-## <a name="create-streaming-locators"></a>Vytvoření lokátory streamování  
+## <a name="create-streaming-locators"></a>Vytvoření lokátorů streamování  
 
 ### <a name="not-encrypted"></a>Není šifrováno
 
-Pokud chcete ke streamování vašeho souboru v the vymazat (nešifrované), nastavte předdefinované jasné zásady streamování: na "Predefined_ClearStreamingOnly" (v .NET, můžete použít PredefinedStreamingPolicy.ClearStreamingOnly enum).
+Pokud chcete soubor streamovat v nejasném (nešifrovaném případě), nastavte předdefinované zásady pro zrušení streamování: na ' Predefined_ClearStreamingOnly ' (v .NET můžete použít výčet PredefinedStreamingPolicy. ClearStreamingOnly).
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -58,7 +58,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>Šifrované 
 
-Pokud potřebujete k šifrování obsahu pomocí šifrování CENC, nastavte zásadu "Predefined_MultiDrmCencStreaming". Šifrování Widevine uplatní na datový proud DASH a PlayReady hladký. Klíč doručen klientovi přehrávání podle nakonfigurovaného licence DRM.
+Pokud potřebujete šifrovat svůj obsah pomocí šifrování CENC, nastavte zásady na ' Predefined_MultiDrmCencStreaming '. Šifrování Widevine se použije na PŘERUŠOVANé streamy a PlayReady pro hladké. Klíč se doručí klientovi pro přehrávání na základě konfigurovaných licencí DRM.
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -73,34 +73,34 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-Pokud chcete zašifrovat HLS datový proud s CBCS (FairPlay), použijte "Predefined_MultiDrmStreaming".
+Pokud chcete datový proud HLS šifrovat také pomocí CBCS (FairPlay), použijte Predefined_MultiDrmStreaming.
 
-## <a name="associate-filters-with-streaming-locators"></a>Lokátory streamování přidružit filtry
+## <a name="associate-filters-with-streaming-locators"></a>Přidružit filtry ke Lokátorům streamování
 
-Zobrazit [filtry: přidružili lokátory streamování](filters-concept.md#associating-filters-with-streaming-locator).
+Viz [filtry: přidružení ke lokátorům streamování](filters-concept.md#associating-filters-with-streaming-locator).
 
-## <a name="filter-order-page-streaming-locator-entities"></a>Filtr, pořadí, stránka Lokátor streamování entity
+## <a name="filter-order-page-streaming-locator-entities"></a>Filter, Order, entity lokátoru pro streamování stránek
 
-Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
+Viz téma [filtrování, řazení, stránkování Media Services entit](entities-overview.md).
 
-## <a name="list-streaming-locators-by-asset-name"></a>Lokátory streamování seznam podle názvu prostředku
+## <a name="list-streaming-locators-by-asset-name"></a>Vypsat Lokátory streamování podle názvu Assetu
 
-Lokátory streamování podle přidružený název Assetu, použijte následující operace:
+Chcete-li získat Lokátory streamování na základě přidruženého názvu Assetu, použijte následující operace:
 
 |Jazyk|Rozhraní API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|Rozhraní příkazového řádku|[AZ ams asset seznam streaming lokátory](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|Rozhraní příkazového řádku|[AZ AMS Asset list-streaming-Lokátory](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/java/api/com.microsoft.azure.management.mediaservices.v2018_07_01.assetstreaminglocator?view=azure-java-stable)|
-|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/assets?view=azure-node-latest#liststreaminglocators-string--string--string--object-)|
+|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
 ## <a name="also-see"></a>Viz také
 
-* [Prostředky](assets-concept.md)
+* [Aktiva](assets-concept.md)
 * [Zásady streamování](streaming-policy-concept.md)
 * [Zásady symetrických klíčů](content-key-policy-concept.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
+[Kurz: nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b9b58c9b5f32d6ca714ac3ac940b91643fa8020c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73957845"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123548"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Použití prostředí pro školení & nasazení pomocí Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -333,7 +333,7 @@ run = experiment.submit(sk_est)
 
 Prostředí můžete použít při nasazování modelu jako webové služby. To umožňuje reprodukovatelně připojenému pracovnímu postupu, ve kterém můžete model prosazovat, testovat a nasadit pomocí přesně stejných knihoven v rámci vašich školicích a odvozených výpočtů.
 
-Chcete-li nasadit webovou službu, kombinování prostředí, výpočetního skriptu, vyhodnocování a zaregistrovaného modelu do objektu nasazení, [Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). Přečtěte si další informace o [nasazení webových služeb](how-to-deploy-and-where.md).
+Chcete-li nasadit webovou službu, kombinování prostředí, výpočetního skriptu, vyhodnocování a zaregistrovaného modelu do objektu nasazení, [Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-). Přečtěte si další informace o [nasazení webových služeb](how-to-deploy-and-where.md).
 
 V tomto příkladu Předpokládejme, že jste dokončili školicí běh a chcete tento model nasadit do služby Azure Container instance (ACI). Při sestavování webové služby jsou soubory modelů a bodování připojené k imagi a do image se přidá zásobník odvození Azure Machine Learning.
 

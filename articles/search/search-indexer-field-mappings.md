@@ -1,5 +1,5 @@
 ---
-title: Mapování polí pro automatizované indexování pomocí indexerů
+title: Mapování polí v indexerech
 titleSuffix: Azure Cognitive Search
 description: Nakonfigurujte mapování polí v indexeru na účet pro rozdíly v názvech polí a reprezentace dat.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cc863ee3dc7f2dc8049fcd22189acac94a855352
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786975"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123992"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
 
@@ -175,20 +175,23 @@ Azure Kognitivní hledání podporuje dvě různá kódování Base64. Při kód
 
 #### <a name="base64-encoding-options"></a>možnosti kódování Base64
 
-Azure Kognitivní hledání podporuje dvě různá kódování Base64: **tokeny zabezpečení HttpServerUtility**a **kódování Base64 zabezpečené URL bez odsazení**. Řetězec, který má při indexování kódování Base64, by měl být později dekódovaný se stejnými možnostmi kódování, jinak výsledek nebude odpovídat původnímu.
+Azure Kognitivní hledání podporuje kódování Base64 s bezpečným URL a normální kódování Base64. Řetězec, který má kódování Base64 během indexování, by měl být později dekódovaný se stejnými možnostmi kódování nebo jinak výsledek nebude odpovídat původnímu.
 
 Pokud parametry `useHttpServerUtilityUrlTokenEncode` nebo `useHttpServerUtilityUrlTokenDecode` pro kódování a dekódování jsou nastaveny na `true`, `base64Encode` se chovají jako [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) a `base64Decode` se chovají jako [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
-Pokud nepoužíváte úplný .NET Framework (to znamená, že používáte .NET Core nebo jiné rozhraní) k vytvoření klíčových hodnot pro emulaci chování Azure Kognitivní hledání, měli byste nastavit `useHttpServerUtilityUrlTokenEncode` a `useHttpServerUtilityUrlTokenDecode` na `false`. V závislosti na knihovně, kterou použijete, se funkce kódování a dekódování Base64 můžou lišit od těch, které používá Azure Kognitivní hledání.
+> [!WARNING]
+> Pokud se k vytvoření hodnot klíčů používá `base64Encode`, `useHttpServerUtilityUrlTokenEncode` musí být nastavené na true. Pro klíčové hodnoty lze použít pouze kódování Base64 v bezpečí adrese URL. Úplnou sadu omezení pro znaky v hodnotách klíčů najdete v tématu [pravidla &#40;pojmenování Azure kognitivní hledání&#41; ](https://docs.microsoft.com/rest/api/searchservice/naming-rules) .
+
+Knihovny .NET v Azure Kognitivní hledání předpokládají úplný .NET Framework, který poskytuje integrované kódování. Možnosti `useHttpServerUtilityUrlTokenEncode` a `useHttpServerUtilityUrlTokenDecode` využívají tuto vestavěnou functionaity. Pokud používáte .NET Core nebo jiné rozhraní, doporučujeme nastavit tyto možnosti na `false` a přímé volání funkcí kódování a dekódování vašeho rozhraní.
 
 Následující tabulka porovnává různá kódování Base64 `00>00?00`řetězců. Chcete-li určit požadované dodatečné zpracování (pokud existuje) pro funkce Base64, použijte funkci kódování knihovny na řetězec `00>00?00` a porovnejte výstup s očekávaným výstupem `MDA-MDA_MDA`.
 
-| Encoding | Výstup kódování Base64 | Další zpracování po kódování knihovny | Další zpracování před dekódováním knihovny |
+| Kódování | Výstup kódování Base64 | Další zpracování po kódování knihovny | Další zpracování před dekódováním knihovny |
 | --- | --- | --- | --- |
 | Base64 s odsazením | `MDA+MDA/MDA=` | Používejte znaky bezpečné pro URL a odstraňte odsazení. | Použití standardních znaků Base64 a přidání odsazení |
 | Base64 bez odsazení | `MDA+MDA/MDA` | Použít znaky bezpečné pro URL | Použití standardních znaků base64 |
 | Zabezpečená adresa URL – Base64 s odsazením | `MDA-MDA_MDA=` | Odebrat odsazení | Přidat odsazení |
-| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádné | Žádné |
+| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádný | Žádný |
 
 <a name="extractTokenAtPositionFunction"></a>
 
@@ -224,7 +227,7 @@ Zdroj dat obsahuje pole `PersonName` a chcete ho indexovat jako dvě samostatná
 
 <a name="jsonArrayToStringCollectionFunction"></a>
 
-### <a name="jsonarraytostringcollection-function"></a>jsonArrayToStringCollection – funkce
+### <a name="jsonarraytostringcollection-function"></a>jsonArrayToStringCollection function
 
 Transformuje řetězec formátovaný jako pole JSON řetězců na pole řetězců, které lze použít k naplnění `Collection(Edm.String)`ho pole v indexu.
 

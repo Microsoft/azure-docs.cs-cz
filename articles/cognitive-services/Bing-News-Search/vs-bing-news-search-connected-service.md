@@ -1,7 +1,7 @@
 ---
-title: Připojení k Bingu pro vyhledávání zpráv rozhraní API pomocí připojené služby v sadě Visual Studio aC#
+title: Připojení k rozhraní API Bingu pro vyhledávání zpráv s připojenými službami v aplikaci Visual Studio aC#
 titleSuffix: Azure Cognitive Services
-description: Připojte se k rozhraní API Bingu pro vyhledávání zpráv z webové aplikace ASP.NET Core.
+description: S využitím rozhraní API Bingu pro vyhledávání zpráv můžete aplikacím a službám umožnit využívat výkon vyhledávacího webu, který je bez reklam a omezený na web.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: ghogen
-ms.openlocfilehash: 85afae087b1b1e572759943142412743744ee806
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203426"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111511"
 ---
-# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Kurz: Připojení k Bingu pro vyhledávání zpráv rozhraní API pomocí připojené služby v sadě Visual Studio aC#
+# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Kurz: připojení k rozhraní API Bingu pro vyhledávání zpráv s připojenými službami v aplikaci Visual Studio aC#
 
 S využitím rozhraní API Bingu pro vyhledávání zpráv můžete aplikacím a službám umožnit využívat výkon vyhledávacího webu, který je bez reklam a omezený na web. Rozhraní API Bingu pro vyhledávání zpráv je jednou z vyhledávacích služeb dostupných v rámci služeb Cognitive Services.
 
@@ -26,7 +26,7 @@ Tento článek obsahuje podrobnosti o používání funkce připojené služby s
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- Visual Studio. 2019, s nainstalovaná úloha vývoj pro Web. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
+- Visual Studio 2019 s nainstalovanou úlohou vývoje webu. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -266,6 +266,6 @@ Pokud už skupinu prostředků nepotřebujete, můžete ji odstranit. Tím se od
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **Zadejte název skupiny prostředků** zadejte název skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o rozhraní API Bingu pro vyhledávání zpráv najdete v tématu [Co je Vyhledávání zpráv Bingu?](index.yml).

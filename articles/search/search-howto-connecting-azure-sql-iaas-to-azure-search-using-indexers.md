@@ -1,5 +1,5 @@
 ---
-title: Připojení k virtuálnímu počítači Azure SQL virtuálního počítače pro indexování vyhledávání
+title: Připojení k virtuálnímu počítači SQL Azure pro indexování vyhledávání
 titleSuffix: Azure Cognitive Search
 description: Povolte šifrovaná připojení a nakonfigurujte bránu firewall tak, aby povolovala připojení SQL Server na virtuálním počítači Azure z indexeru v Azure Kognitivní hledání.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 57bea41d95b8859af55be777b17189861a445a12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792151"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111888"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure
 
-Jak je uvedeno v [připojení Azure SQL Database k Azure kognitivní hledání pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexerů proti **SQL Server na virtuálních počítačích azure** (nebo **SQL Azure virtuálních počítačů** pro krátké) podporuje Azure kognitivní hledání, ale existuje několik požadavky související se zabezpečením, které je potřeba nejdřív zajímat. 
+Jak je uvedeno v části [připojení Azure SQL Database k azure kognitivní hledání pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexerů proti **SQL Server na virtuálních počítačích azure** (nebo **SQL Azure virtuálních počítačů** pro krátké) je podporované službou Azure kognitivní hledání, ale je potřeba provést několik nezbytných požadavků týkajících se zabezpečení jako první. 
 
 Připojení z Azure Kognitivní hledání k SQL Server na virtuálním počítači je veřejné připojení k Internetu. Tady se vztahují všechny bezpečnostní míry, které byste normálně použili pro tato připojení:
 

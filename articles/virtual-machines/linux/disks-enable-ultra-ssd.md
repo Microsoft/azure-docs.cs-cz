@@ -4,15 +4,15 @@ description: Další informace o virtuálních počítačích s Ultra pro virtu�
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 11/14/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c09d2c42b2ceeac288f8d6538cdb42df7880cdde
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6cba3c6680e957f7ff251457dee2c44ca63ca85a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036317"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74124242"
 ---
 # <a name="using-azure-ultra-disks"></a>Použití disků Azure Ultra
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

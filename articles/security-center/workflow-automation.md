@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 74a33edb358f9b9bf9322c652c0696ef87182725
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521576"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151689"
 ---
 # <a name="workflow-automation-preview"></a>Automatizace pracovního postupu (Preview)
 
@@ -74,9 +74,9 @@ Tento článek popisuje funkci automatizace pracovního postupu (Preview) Azure 
 
 1. Po definování aplikace logiky se vraťte do podokna definice automatizace pracovního postupu (přidat automatizaci pracovního postupu). Kliknutím na **aktualizovat** zajistěte, aby byla nová aplikace logiky dostupná pro výběr.
 
-    ![Obnovit](media/workflow-automation/refresh-the-list-of-logic-apps.png)
+    ![Obnovení](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. Vyberte svou aplikaci logiky a uložte automatizaci.
+1. Vyberte svou aplikaci logiky a uložte automatizaci. Všimněte si, že v rozevírací nabídce aplikace logiky se zobrazí pouze Logic Apps s podpůrnými Security Center konektory uvedenými výše.
 
 
 ## <a name="manually-trigger-a-logic-app"></a>Ruční aktivace aplikace logiky

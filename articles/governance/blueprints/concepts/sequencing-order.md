@@ -1,14 +1,14 @@
 ---
 title: Pochopení pořadí sekvence nasazení
-description: Seznamte se s životním cyklem, na který odkazuje definice podrobného plánu, a podrobnosti o jednotlivých fázích.
+description: Přečtěte si o výchozím pořadí, během kterého jsou v průběhu přiřazení podrobného plánu nasazeny artefakty podrobného plánu a jak přizpůsobit pořadí nasazení.
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 87eff48f977f0308fea563090a44ff0b301909a9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960435"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128814"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Porozumění sekvenci nasazení v Azure modrotisky
 

@@ -3,17 +3,17 @@ title: Snížení nákladů na službu pomocí Azure Advisor | Microsoft Docs
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: saket-ms
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.author: sagupt
+ms.openlocfilehash: cae16430ce933b8d071696377b22f10c15b5eae5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703036"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145386"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -21,7 +21,7 @@ Poradce vám pomůže optimalizovat a snížit celkové výdaje na Azure tím, �
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizace útraty virtuálních počítačů změnou velikosti nebo vypnutí nevyužitých instancí 
 
-I když některé scénáře aplikací můžou mít za následek nízké využití podle návrhu, můžete často ušetřit peníze tím, že spravujete velikost a počet virtuálních počítačů. Modely pro pokročilé hodnocení služby Advisor považují virtuální počítače za vypnuté, pokud P95th maximální hodnoty využití procesoru je menší než 3% a využití sítě je méně než 2% po dobu 7 dnů. Virtuální počítače se považují za správnou velikost, pokud je možné přizpůsobit aktuální zatížení menší SKU (ve stejné rodině SKU) nebo menšímu počtu instancí, aby aktuální zatížení nepřesahoval 80% využití v případě neuživatelových úloh, které nepoužívají uživatele. nad rámec 40% při uživatelském zatížení. Tady je typ úlohy určený analýzou vlastností využití procesoru úloh.
+I když některé scénáře aplikací můžou mít za následek nízké využití podle návrhu, můžete často ušetřit peníze tím, že spravujete velikost a počet virtuálních počítačů. Modely pro pokročilé hodnocení služby Advisor považují virtuální počítače za vypnuté, pokud P95th maximální hodnoty využití procesoru je menší než 3% a využití sítě je méně než 2% po dobu 7 dnů. Virtuální počítače se považují za správnou velikost, pokud je možné přizpůsobit aktuální zatížení menší SKU (v rámci stejné rodiny SKU) nebo menšímu počtu instancí, aby aktuální zatížení nepřesahoval 80% využití, když úlohy, které nepoužívají uživatele, a nepřesahují 40% při uživatelském zatížení. Tady je typ úlohy určený analýzou vlastností využití procesoru úloh.
 
 Doporučené akce mají stav Vypnuto nebo změnit velikost, které jsou specifické pro prostředek doporučený pro. Advisor vám ukáže Odhadované úspory nákladů pro doporučené akce – Změna velikosti nebo vypnutí. Pro doporučené změny velikosti doporučuje poradce poskytovat informace o aktuálním a cílovém SKU. 
 
@@ -66,3 +66,4 @@ Další informace o doporučení Advisoru najdete tady:
 * [Doporučení pro výkon Advisoru](advisor-cost-recommendations.md)
 * [Doporučení pro vysokou dostupnost poradce](advisor-cost-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-cost-recommendations.md)
+* [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)

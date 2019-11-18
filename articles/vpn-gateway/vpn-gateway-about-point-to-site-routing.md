@@ -1,5 +1,5 @@
 ---
-title: O směrování Azure Point-to-site | Microsoft Docs
+title: 'Azure VPN Gateway: informace o směrování P2S'
 description: Tento článek vám pomůže pochopit, jak se chová směrování typu Point-to-Site VPN.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: ced1bc647f93beec73b8101a952944f31e497658
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7205b5f3049773545d78c3a3e3423450779b78c5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693227"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150960"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Směrování VPN typu Point-to-Site
 
@@ -44,7 +44,7 @@ Připojení brány VPN typu Point-to-site v tomto příkladu je pro virtuální 
 
 * Trasy přidané na klienty jiného typu než Windows: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Přístup
+### <a name="access"></a>Access
 
 * Klienti systému Windows mají přístup k VNet1
 
@@ -74,7 +74,7 @@ Klienti, kteří používají systém Windows, mají přístup přímo k virtuá
 
 * Trasy přidané do klientů jiných výrobců než Windows: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Přístup
+### <a name="access"></a>Access
 
 * Klienti systému Windows mají přístup k VNet1, VNet2 a VNet4, ale je nutné znovu stáhnout klienta VPN, aby se projevily změny topologie.
 
@@ -102,7 +102,7 @@ Klienti, kteří používají systém Windows nebo jiný podporovaný operační
 
 * Trasy přidané na klienty jiného typu než Windows: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Přístup
+### <a name="access"></a>Access
 
 * Klienti Windows mají přístup jenom k VNet1
 
@@ -130,7 +130,7 @@ Klienti s Windows nebo jiným podporovaným operačním systémem mají přístu
 
 * Trasy přidané do klientů jiných výrobců než Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Přístup
+### <a name="access"></a>Access
 
 * Klienti systému Windows mají přístup k VNet1, VNet2 a síti vnet3, ale trasy do VNet2 a síti vnet3 bude nutné přidat ručně.
 
@@ -156,7 +156,7 @@ Klienti s Windows a jiným systémem než Windows mají přístup jenom k VNet1.
 
 * Trasy přidané na klienty jiného typu než Windows: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Přístup
+### <a name="access"></a>Access
 
 * Klienti systému Windows mají přístup pouze k VNet1
 
@@ -182,7 +182,7 @@ Klienti Windows mají přístup k virtuální síti a pobočce (Site1), ale tras
 
 * Trasy přidané na klienty jiného typu než Windows: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Přístup
+### <a name="access"></a>Access
 
 * Klienti systému Windows mohou přistupovat k VNet1 a Site1, ale trasy do Site1 bude nutné přidat ručně.
 
@@ -213,7 +213,7 @@ Všichni klienti mají přístup jenom k VNet1.
 
 * Trasy přidané do klientů jiných výrobců než Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Přístup
+### <a name="access"></a>Access
 
 * Klienti systému Windows mají přístup pouze k VNet1
 
@@ -243,7 +243,7 @@ Klienti, kteří používají systém Windows, mají přístup k virtuální sí
 
 * Trasy přidané do klientů jiných výrobců než Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Přístup
+### <a name="access"></a>Access
 
 * Klienti systému Windows mohou přistupovat k VNet1, VNet2, síti vnet3 a Site1, ale trasy do VNet2, síti vnet3 a Site1 je nutné ručně přidat do klienta.
 

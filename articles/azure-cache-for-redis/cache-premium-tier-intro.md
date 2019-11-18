@@ -1,105 +1,97 @@
 ---
-title: Úvod do mezipaměti Azure Redis na úrovni Premium | Dokumentace Microsoftu
-description: Zjistěte, jak vytvářet a spravovat Redis trvalost, Redis, clustering a podpora virtuální sítě pro svou úroveň Premium mezipaměti Azure pro instance Redis
-services: cache
-documentationcenter: ''
+title: Seznámení s mezipamětí Azure pro Redis úrovně Premium
+description: Naučte se vytvářet a spravovat trvalost Redis, Redis Clustering a podporu virtuálních sítí pro Azure úrovně Premium pro instance Redis.
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786082"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121667"
 ---
-# <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Úvod do mezipaměti Azure Redis na úrovni Premium
-Mezipaměť Azure pro Redis je distribuovaná spravovaná mezipaměť, která pomáhá díky mimořádně rychlému přístupu k datům vytvářet vysoce škálovatelné a rychle reagující aplikace. 
+# <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Seznámení s mezipamětí Azure pro Redis úrovně Premium
+Azure cache pro Redis je distribuovaná spravovaná mezipaměť, která pomáhá vytvářet vysoce škálovatelné a reagující aplikace tím, že poskytuje velmi rychlý přístup k vašim datům. 
 
-Nová úroveň Premium je úroveň připravená pro podnikové, které obsahuje všechny funkce úrovně Standard a další, jako třeba vyšší výkon, větší úlohy, zotavení po havárii, importu/exportu a zvýšené zabezpečení. Pokračujte ve čtení získat další informace o další funkce úrovně Premium mezipaměti.
+Nová úroveň Premium je úroveň pro podnik, která zahrnuje všechny funkce úrovně Standard a další, jako je lepší výkon, větší zatížení, zotavení po havárii, import/export a rozšířené zabezpečení. Pokud chcete získat další informace o dalších funkcích úrovně mezipaměti Premium, pokračujte ve čtení.
 
-## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Lepší výkon ve srovnání s úrovní Standard nebo Basic
-**Vyšší výkon přes standardní nebo základní úroveň.** Mezipaměť na úrovni Premium jsou nasazené na hardwaru, který má rychlejšími procesory a poskytuje lepší výkon ve srovnání na základní nebo standardní úroveň. Mezipaměti úrovně Premium má vyšší propustnost a nižší latenci. 
+## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Lepší výkon v porovnání s úrovní Standard nebo Basic
+**Lepší výkon než úroveň Standard nebo Basic.** Mezipaměti v úrovni Premium se nasazují na hardware, který má rychlejší procesory a poskytuje vyšší výkon v porovnání s úrovní Basic nebo Standard. Mezipaměti úrovně Premium mají vyšší propustnost a nižší latenci. 
 
-**Propustnost pro stejné velikosti mezipaměti je na úrovni Premium vyšší než úroveň Standard.** Například propustnost 53 GB P4 (Premium) mezipaměť je 250 tisíc požadavků za sekundu v porovnání s 150 kontrolovat C6 (Standard).
+**Propustnost pro stejnou velikost mezipaměti je vyšší v úrovni Premium, a to ve srovnání s úrovní Standard.** Například propustnost mezipaměti 53 GB P4 (Premium) je 250 tisíc požadavky za sekundu v porovnání s 150K pro C6 (Standard).
 
-Další informace o velikosti, propustnosti a šířky pásma u prémiových mezipamětí najdete v tématu [mezipaměti Azure redis Cache – nejčastější dotazy](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Další informace o velikosti, propustnosti a šířce pásma pomocí prémiových mezipamětí najdete v tématu [Nejčastější dotazy k Azure cache pro Redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) .
 
 ## <a name="redis-data-persistence"></a>Trvalost dat Redis
-Úroveň Premium umožňuje zachovat data v mezipaměti v účtu služby Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. V případě základní infrastruktury existuje problémy můžou být potenciální ztráty dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat. Mezipaměti Redis Azure nabízí RDB a AOF (už brzo) možnosti v [trvalost Redis](https://redis.io/topics/persistence). 
+Úroveň Premium vám umožňuje uchovávat data z mezipaměti v účtu Azure Storage. V mezipaměti Basic a Standard jsou všechna data uložena pouze v paměti. V případě základních problémů infrastruktury může dojít ke ztrátě dat. Pro zvýšení odolnosti proti ztrátě dat doporučujeme používat funkci trvalosti dat Redis na úrovni Premium. Azure cache for Redis nabízí v [Redis Persistence](https://redis.io/topics/persistence)možnosti RDB a AOF (už brzy). 
 
-Pokyny týkající se konfigurace trvalosti najdete v tématu [konfigurace trvalosti pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-persistence.md).
+Pokyny ke konfiguraci trvalosti najdete v tématu [Konfigurace trvalosti pro službu Azure cache Premium pro Redis](cache-how-to-premium-persistence.md).
 
 ## <a name="redis-cluster"></a>Cluster Redis
-Pokud chcete vytvořit větší než 53 GB mezipaměti nebo chcete sdílení dat mezi více uzlů Redis, můžete použít clustering, která je dostupná na úrovni Premium Redis. Každý uzel se skládá z dvojice primární/replika cache spravuje Azure pro zajištění vysoké dostupnosti. 
+Pokud chcete vytvořit mezipaměti větší než 53 GB nebo chcete data horizontálních oddílů napříč více uzly Redis, můžete použít clustering Redis, který je k dispozici na úrovni Premium. Každý uzel se skládá z dvojice mezipaměti primárního/repliky spravované službou Azure pro zajištění vysoké dostupnosti. 
 
-**Redis clustering poskytuje maximální škálování a vyšší propustnost.** Propustnost se lineárně zvyšuje, zvýšit počet horizontálních oddílů (uzlů) v clusteru. Např. Pokud vytvoříte cluster P4 10 horizontálními oddíly, je k dispozici propustnost 250 tisíc * 10 = 2,5 milionu požadavků za sekundu. Podrobnosti najdete [mezipaměti Azure redis Cache – nejčastější dotazy](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) podrobné informace o velikosti, propustnosti a šířky pásma u prémiových mezipamětí.
+**Clustering Redis poskytuje maximální škálování a propustnost.** Propustnost se zvyšuje lineárně při zvýšení počtu horizontálních oddílů (uzlů) v clusteru. Např. Pokud vytvoříte cluster P4 s 10 horizontálních oddílů, je dostupná propustnost 250 tisíc * 10 = 2 500 000 požadavků za sekundu. Další podrobnosti o velikosti, propustnosti a šířce pásma pomocí prémiových mezipamětí najdete v tématu [Nejčastější dotazy k Azure cache pro Redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) .
 
-Abyste mohli začít s clusteringem, naleznete v tématu [postup konfigurace clusterů pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-clustering.md).
+Pokud chcete začít s clustering, přečtěte si téma [Postup konfigurace clusteringu pro službu Azure cache Premium pro Redis](cache-how-to-premium-clustering.md).
 
 ## <a name="enhanced-security-and-isolation"></a>Vyšší míra zabezpečení a izolace
-Mezipaměť vytvořena na úrovni Basic nebo Standard jsou dostupné na veřejném Internetu. Přístup k mezipaměti je omezen na základě klíče přístup. S úrovní Premium můžete dále zajistit pouze klienty v zadané síti přístup do mezipaměti. Mezipaměť Azure můžete nasadit pro Redis v [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/). K dalšímu omezení přístupu k Redisu můžete použít všechny funkce sítě VNet, například podsítě, zásady řízení přístupu a další funkce.
+Mezipaměti vytvořené v úrovni Basic nebo Standard jsou přístupné na veřejném Internetu. Přístup k mezipaměti je omezený na základě přístupového klíče. Úroveň Premium vám umožní zajistit, aby k této mezipaměti měli přístup jenom klienti v rámci zadané sítě. Mezipaměť Azure pro Redis můžete nasadit v [azure Virtual Network (VNET)](https://azure.microsoft.com/services/virtual-network/). K dalšímu omezení přístupu k Redisu můžete použít všechny funkce sítě VNet, například podsítě, zásady řízení přístupu a další funkce.
 
-Další informace najdete v tématu [konfigurace podpory služby Virtual Network pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-vnet.md).
+Další informace najdete v tématu [jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis](cache-how-to-premium-vnet.md).
 
 ## <a name="importexport"></a>Import/export
-Import/Export je Azure Cache pro operace správy dat Redis, který umožňuje importovat data do mezipaměti Azure Redis a export dat z mezipaměti Azure Redis import a export pro snímek Redis databáze (RDB) z mezipaměti úrovně premium pro Azure Cache Objekt blob stránky v účtu služby Azure Storage. To umožňuje migraci mezi různé mezipaměti Azure pro instance Redis nebo naplňte mezipaměť daty před použitím.
+Import/Export je mezipaměť Azure pro Redis správu dat, která umožňuje importovat data do mezipaměti Azure pro Redis nebo exportovat data z mezipaměti Azure pro Redis tím, že importuje a exportuje snímek Azure cache for Redis Database (RDB) z mezipaměti Premium do objektu blob stránky v účtu Azure Storage. To vám umožní migrovat mezi různými mezipamětí Azure pro instance Redis nebo naplnit mezipaměť daty před použitím.
 
-Import je možné uvést kompatibilní soubory RDB Redis z jakéhokoli serveru Redis spuštěná v jakémkoli cloudu nebo prostředí, včetně Redis běžící na Linuxu, Windows nebo libovolného poskytovatele cloudových služeb, jako je například Amazon Web Services a další. Import dat je snadný způsob, jak vytvořit mezipaměť s předem naplněných daty. Během procesu importu mezipaměti Redis Azure načte soubory RDB ze služby Azure storage do paměti a pak vloží klíčů do mezipaměti.
+Pomocí importu můžete přenést soubory RDB kompatibilní s Redis z libovolného serveru Redis běžícího v jakémkoli cloudu nebo prostředí, včetně Redis spuštěného v systému Linux, Windows nebo libovolného poskytovatele cloudu, jako je například Amazon Web Services a další. Import dat představuje snadný způsob, jak vytvořit mezipaměť s předem vyplněnými daty. Během procesu importu načte služba Azure cache pro Redis soubory RDB z Azure Storage do paměti a pak tyto klíče vloží do mezipaměti.
 
-Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis k Redis kompatibilní soubory RDB. Tato funkce slouží k přesunu dat z jedné mezipaměti Azure pro instanci Redis do jiné nebo na jiný server Redis. Během procesu exportu dočasný soubor vytvořen na virtuálním počítači, který je hostitelem ukládání do mezipaměti Azure pro instanci serveru Redis a se soubor nahraje do účtu úložiště určený. Po dokončení operace exportu se stavem úspěch nebo neúspěch dočasný soubor bude odstraněn.
+Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis do souborů RDB kompatibilních s Redis. Tuto funkci můžete použít k přesunu dat z jedné instance Azure cache pro instanci Redis do jiného nebo na jiný server Redis. Během procesu exportu se na virtuálním počítači, který hostuje instanci serveru Azure cache pro Redis, vytvoří dočasný soubor a soubor se nahraje do určeného účtu úložiště. Když se operace exportu dokončí buď se stavem úspěch, nebo neúspěchem, dočasný soubor se odstraní.
 
-Další informace najdete v tématu [jak data importovat a exportovat data z mezipaměti Azure Redis](cache-how-to-import-export-data.md).
+Další informace najdete v tématu [Jak importovat data do a exportovat data z Azure cache pro Redis](cache-how-to-import-export-data.md).
 
 ## <a name="reboot"></a>Restartování
-Úroveň premium umožňuje restartovat jeden nebo více uzlů z mezipaměti na vyžádání. To umožňuje testovat aplikaci pro odolnost proti chybám v případě selhání. Tyto uzly můžete restartovat.
+Úroveň Premium vám umožní restartovat jeden nebo více uzlů vaší mezipaměti na vyžádání. To vám umožní testovat v aplikaci odolnost proti chybám v případě selhání. Můžete restartovat následující uzly.
 
-* Hlavní uzel mezipaměti
-* Sekundární uzel mezipaměti
-* Primární a sekundární uzly mezipaměti
-* Při použití s clusteringem mezipaměť premium, abyste restartovali primární, sekundární nebo oba uzly pro jednotlivých horizontálních oddílů v mezipaměti
+* Hlavní uzel vaší mezipaměti
+* Sekundární uzel vaší mezipaměti
+* Primární i sekundární uzel vaší mezipaměti
+* Pokud používáte mezipaměť Premium s clusteringem, můžete restartovat primární, sekundární nebo oba uzly pro jednotlivé horizontálních oddílůy v mezipaměti.
 
-Další informace najdete v tématu [restartovat](cache-administration.md#reboot) a [nejčastější dotazy k restartování](cache-administration.md#reboot-faq).
+Další informace najdete v tématu Nejčastější dotazy k [restartování](cache-administration.md#reboot) a [restartu](cache-administration.md#reboot-faq).
 
 >[!NOTE]
->Restartování funkce je teď zapnutá pro všechny mezipaměti Azure Redis úrovní.
+>Pro veškerou mezipaměť Azure pro vrstvy Redis je teď povolená funkce restartování.
 >
 >
 
 ## <a name="schedule-updates"></a>Plán aktualizací
-Funkci naplánované aktualizace umožňuje určit časové období údržby pro mezipaměť. Pokud je zadána časové období údržby, všechny aktualizace serveru Redis probíhají během tohoto časového období. Určete časové období údržby, vyberte požadovanou dny a zadejte údržby spusťte okno hodinu za každý den. Všimněte si, že časového období údržby se ve standardu UTC. 
+Funkce naplánované aktualizace umožňuje určit časové období údržby pro mezipaměť. Po zadání časového období údržby se v průběhu tohoto okna provedou všechny aktualizace Redis serveru. Chcete-li určit časový interval pro správu a údržbu, vyberte požadované dny a zadejte časový interval pro správu a údržbu pro každý den. Všimněte si, že čas časového období údržby je UTC. 
 
-Další informace najdete v tématu [naplánovat aktualizace](cache-administration.md#schedule-updates) a [naplánovat aktualizace nejčastější dotazy k](cache-administration.md#schedule-updates-faq).
+Další informace najdete v tématu [Plánování aktualizací](cache-administration.md#schedule-updates) a [Plánování aktualizací v nejčastějších dotazech](cache-administration.md#schedule-updates-faq).
 
 > [!NOTE]
-> Pouze Redis server provedeny aktualizace během plánované časové období údržby. Časové období údržby se nevztahuje na Azure aktualizace nebo aktualizace operačního systému virtuálního počítače.
+> Během naplánovaných časových období údržby se provádí jenom aktualizace serveru Redis. Časové období údržby se nevztahuje na aktualizace nebo aktualizace Azure v operačním systému virtuálního počítače.
 > 
 > 
 
 ## <a name="geo-replication"></a>Geografická replikace
 
-**Geografická replikace** poskytuje mechanismus pro propojení dvou úroveň Premium mezipaměti Azure pro instance Redis. Jeden mezipaměti je určený jako primární propojené mezipaměti a druhý jako sekundární propojené mezipaměti. Propojené sekundární mezipaměť bude jen pro čtení a data zapsaná do primární mezipaměti se replikuje do sekundární propojené mezipaměti. Tuto funkci je možné replikovat do mezipaměti v různých oblastech Azure.
+**Geografická replikace** poskytuje mechanismus pro propojení dvě mezipaměti Azure úrovně Premium pro instance Redis. Jedna mezipaměť je určena jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Sekundární propojená mezipaměť se bude jen pro čtení a data zapsaná do primární mezipaměti se replikují do sekundární propojené mezipaměti. Tato funkce se dá použít k replikaci mezipaměti napříč oblastmi Azure.
 
-Další informace najdete v tématu [konfigurace geografické replikace pro Azure Cache pro Redis](cache-how-to-geo-replication.md).
+Další informace najdete v tématu [Konfigurace geografické replikace pro Azure cache pro Redis](cache-how-to-geo-replication.md).
 
 
-## <a name="to-scale-to-the-premium-tier"></a>Škálování na úrovni premium
-Pokud chcete škálovat na úrovni premium, jednoduše zvolte jednu z úrovně premium ve **změnit cenovou úroveň** okno. Také můžete škálovat mezipaměť na úrovni premium pomocí prostředí PowerShell a rozhraní příkazového řádku. Podrobné pokyny najdete v tématu [postup škálování Azure mezipaměti Redis](cache-how-to-scale.md) a [jak automatizovat operaci škálování](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
+## <a name="to-scale-to-the-premium-tier"></a>Postup škálování na úroveň Premium
+Pokud chcete škálovat na úroveň Premium, jednoduše v okně **změnit cenovou úroveň** vyberte jednu z úrovní Premium. Mezipaměť můžete také škálovat na úroveň Premium pomocí PowerShellu a rozhraní příkazového řádku. Podrobné pokyny najdete v tématu [Jak škálovat Azure cache pro Redis](cache-how-to-scale.md) a [Jak automatizovat operaci škálování](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-## <a name="next-steps"></a>Další postup
-Vytvoření mezipaměti a prozkoumání nových funkcí úrovně premium.
+## <a name="next-steps"></a>Další kroky
+Vytvořte mezipaměť a prozkoumejte nové funkce úrovně Premium.
 
-* [Konfigurace trvalosti pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-persistence.md)
-* [Postup konfigurace podpory služby Virtual Network pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-vnet.md)
-* [Konfigurace clusteringu pro Azure Cache úrovně Premium pro Redis](cache-how-to-premium-clustering.md)
-* [Postup importu dat do a export dat z mezipaměti Azure Redis](cache-how-to-import-export-data.md)
-* [Správa mezipaměti Azure pro Redis](cache-administration.md)
+* [Jak nakonfigurovat trvalost pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-persistence.md)
+* [Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis](cache-how-to-premium-vnet.md)
+* [Postup konfigurace clusteringu pro službu Azure cache v úrovni Premium pro Redis](cache-how-to-premium-clustering.md)
+* [Import a export dat z Azure cache pro Redis](cache-how-to-import-export-data.md)
+* [Jak spravovat službu Azure cache pro Redis](cache-administration.md)
 

@@ -1,17 +1,14 @@
 ---
-title: Funkce šablon Azure Resource Manager – porovnání | Microsoft Docs
+title: Funkce šablon – porovnání
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k porovnání hodnot.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.author: tomfitz
-ms.openlocfilehash: 05e51af62be974f925fefc46ad63c489f27fd163
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c6d58332c9f4a4b811b395999130e56666452851
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194829"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150725"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Funkce porovnání pro šablony Azure Resource Manager
 
@@ -43,7 +40,7 @@ Vrátí **hodnotu true** , pokud jsou hodnoty stejné; v opačném případě **
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce Equals se často používá s `condition` prvkem k otestování, jestli je prostředek nasazený.
+Funkce Equals se často používá s prvkem `condition` k otestování, jestli je prostředek nasazený.
 
 ```json
 {
@@ -127,7 +124,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | Pravda |
 | checkStrings | Bool | Pravda |
@@ -165,7 +162,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | Pravda |
 
@@ -240,9 +237,9 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | Nepravda |
 | checkStrings | Bool | Pravda |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -316,9 +313,9 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | Nepravda |
 | checkStrings | Bool | Pravda |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -333,7 +330,7 @@ Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, po
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
-## <a name="less"></a>méně
+## <a name="less"></a>tolik
 `less(arg1, arg2)`
 
 Kontroluje, zda je první hodnota menší než druhá hodnota.
@@ -392,10 +389,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | Pravda |
-| checkStrings | Bool | False |
+| checkStrings | Bool | Nepravda |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -468,10 +465,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | Pravda |
-| checkStrings | Bool | False |
+| checkStrings | Bool | Nepravda |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -485,7 +482,7 @@ Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, po
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 * K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).

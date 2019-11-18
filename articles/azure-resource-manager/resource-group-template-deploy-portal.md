@@ -1,17 +1,14 @@
 ---
-title: Použití Azure Portal k nasazení prostředků Azure | Microsoft Docs
+title: Nasazení prostředků pomocí Azure Portal
 description: K nasazení prostředků do skupiny prostředků ve vašem předplatném použijte Azure Portal a správu prostředků Azure.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 197bd14c425d80a814f370a2050c085b1eef143d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6a8842a9fbda11bf48d45152c167d7b072f38119
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579021"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150765"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Nasazení prostředků pomocí šablon Resource Manageru a portálu Azure Portal
 

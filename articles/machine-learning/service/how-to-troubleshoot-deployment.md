@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076893"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123210"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
@@ -56,7 +56,7 @@ Další informace o tomto procesu v [Správa modelů ve službě](concept-model-
 
 Pokud narazíte na jakékoli potíže, je prvním krokem je rozdělit úlohu nasazení (viz předchozí) do jednotlivých kroků a izolovat daný problém.
 
-Přerušení nasazení na úlohy je užitečné, pokud používáte rozhraní API [WebService. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) nebo [WebService. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) , protože obě tyto funkce provádějí výše uvedené kroky jako jednu akci. Tato rozhraní API jsou obvykle užitečná, ale pomáhají při odstraňování potíží, když je nahradíte pomocí níže uvedených volání rozhraní API.
+Přerušení nasazení na úlohy je užitečné, pokud používáte rozhraní API [WebService. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) nebo [WebService. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) , protože obě tyto funkce provádějí výše uvedené kroky jako jednu akci. Tato rozhraní API jsou obvykle užitečná, ale pomáhají při odstraňování potíží, když je nahradíte pomocí níže uvedených volání rozhraní API.
 
 1. Zaregistrujte model. Tady je ukázkový kód:
 

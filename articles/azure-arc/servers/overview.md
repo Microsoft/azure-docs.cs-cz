@@ -10,12 +10,12 @@ keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu,
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606090"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122836"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Co je Azure ARC pro servery
 
@@ -49,7 +49,7 @@ Během instalace a modulu runtime vyžaduje agent připojení ke **koncovým bod
 
 Značky služby:
 
-* Azureactivedirectory selhala
+* AzureActiveDirectory
 * AzureTrafficManager
 
 Seznam IP adres pro jednotlivé značky nebo oblasti služby najdete v souboru JSON – [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publikuje týdenní aktualizace obsahující každou službu Azure a rozsahy IP adres, které používá. Další podrobnosti najdete v tématu [značky služby](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
@@ -99,7 +99,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
 Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Rozhraní příkazového řádku Azure:
+Azure CLI:
 
 ```azurecli-interactive
 az account set --subscription "{Your Subscription Name}"
@@ -132,7 +132,7 @@ Data protokolu shromažďovaná [Microsoft Monitoring Agent (MMA)](https://docs.
 
 - V počítačích, které už mají nainstalovaného agenta MMA, bude mít funkce **ARC Azure** povolené prostřednictvím aktualizovaných sad Management Pack.
 - Pro integraci Azure ARC pro servery se vyžaduje [Agent MMA verze 10.20.18011 nebo vyšší](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version) .
-- Při dotazování na data protokolu v [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#log-queries)bude vracené schéma dat obsahovat Hybrid **ResourceId** ve formuláři `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`.
+- Při dotazování na data protokolu v [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)bude vracené schéma dat obsahovat Hybrid **ResourceId** ve formuláři `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`.
 
 Další informace najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
 

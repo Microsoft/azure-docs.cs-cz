@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy týkající se služby Převod textu na řeč v Azure
+title: Převod textu na řeč nejčastějších dotazech
 titleSuffix: Azure Cognitive Services
 description: Získejte odpovědi na nejčastější dotazy týkající se služby Převod textu na řeč.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 0ec9b9729ea93a0685179559bf58392944f37ba6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075834"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110505"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Převod textu na řeč nejčastějších dotazech
 

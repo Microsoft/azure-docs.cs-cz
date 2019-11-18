@@ -1,5 +1,6 @@
 ---
-title: Příručka k migraci ADAL na MSAL pro platformu Java-Microsoft Identity Platform | Azure
+title: Příručka k migraci ADAL do MSAL pro Java | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se Azure Active Directory migrovat aplikaci MSAL Authentication Library (ADAL) Java do knihovny Microsoft Authentication Library ().
 services: active-directory
 author: sangonzal
@@ -16,12 +17,12 @@ ms.author: sagonzal
 ms.reviewer: navyari.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bddf787ce2c654da99b16387ae347f51600c8dd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 158cbe4f2598722abe3b2ed3a0dd179a21dc1e1c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905521"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145272"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Příručka k migraci ADAL do MSAL pro Java
 
@@ -67,7 +68,7 @@ Následující tabulka ukazuje, jak se funkce ADAL4J mapují na nové funkce MSA
 
 ADAL4J manipulovat s uživateli. I když uživatel představuje jednoho lidského nebo softwarového agenta, může mít jeden nebo více účtů v systému Microsoft identity. Uživatel může například mít několik osobních účtů Azure AD, Azure AD B2C nebo Microsoft.
 
-MSAL4J definuje koncept účtu prostřednictvím rozhraní `IAccount`. Jedná se o zásadní změnu z ADAL4J, ale je to dobrý důvod, protože zachycuje skutečnost, že stejný uživatel může mít několik účtů, a případně i v různých adresářích služby Azure AD. MSAL4J poskytuje lepší informace v hostujících scénářích, protože jsou k dispozici informace o domácím účtu.
+MSAL4J definuje koncept účtu prostřednictvím rozhraní `IAccount`. Jedná se o zásadní změnu z ADAL4J, ale je to dobrý důvod, protože zachycuje skutečnost, že stejný uživatel může mít několik účtů, a případně i v různých adresářích Azure AD. MSAL4J poskytuje lepší informace v hostujících scénářích, protože jsou k dispozici informace o domácím účtu.
 
 ## <a name="cache-persistence"></a>Trvalost mezipaměti
 

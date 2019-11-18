@@ -1,5 +1,5 @@
 ---
-title: Zpracování a extrakce textu z obrázků v kanálu obohacení
+title: Extrakce textu z obrázků
 titleSuffix: Azure Cognitive Search
 description: Zpracování a extrakce textu a dalších informací z imagí v Azure Kognitivní hledání kanály.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787743"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113855"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích obohacení AI
 
@@ -58,11 +58,11 @@ ImageAction v [definici indexeru](https://docs.microsoft.com/rest/api/searchserv
 }
 ```
 
-Pokud je *imageAction* nastaveno na jinou hodnotu než "none", nové pole *normalized_images* bude obsahovat pole obrázků. Každý obrázek je komplexní typ, který má následující členy:
+Pokud je *imageAction* nastaveno na jinou hodnotu než "none", pole New *normalized_images* bude obsahovat pole obrázků. Každý obrázek je komplexní typ, který má následující členy:
 
 | Člen obrázku       | Popis                             |
 |--------------------|-----------------------------------------|
-| Údajů               | Řetězec s kódováním BASE64 normalizovaného obrázku ve formátu JPEG.   |
+| data               | Řetězec s kódováním BASE64 normalizovaného obrázku ve formátu JPEG.   |
 | Délk              | Šířka normalizované image v pixelech |
 | Výška             | Výška normalizované image v pixelech |
 | originalWidth      | Původní šířka obrázku před normalizací |
@@ -162,7 +162,7 @@ Následující příklad dovednosti vytvoří pole *merged_text* obsahující te
 }
 ```
 
-Teď, když máte pole merged_text, můžete ho namapovat jako vyhledávací pole v definici indexeru. Veškerý obsah souborů, včetně textu obrázků, bude možné prohledávat.
+Teď, když máte merged_text pole, můžete ho v definici indexeru namapovat jako vyhledávací pole. Veškerý obsah souborů, včetně textu obrázků, bude možné prohledávat.
 
 ## <a name="visualize-bounding-boxes-of-extracted-text"></a>Vizualizace ohraničujících polí extrahovaných textů
 
@@ -213,7 +213,7 @@ Pokud potřebujete transformovat normalizované souřadnice na původní souřad
         }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 + [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [Analyzovat dovednost obrazu](cognitive-search-skill-image-analysis.md)
 + [Dovednost OCR](cognitive-search-skill-ocr.md)

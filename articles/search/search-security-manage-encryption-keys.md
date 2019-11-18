@@ -1,5 +1,5 @@
 ---
-title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem v Azure Key Vault (Preview)
+title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem (Preview)
 titleSuffix: Azure Cognitive Search
 description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Kognitivní hledání prostřednictvím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tato funkce je aktuálně ve verzi Public Preview.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721747"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112934"
 ---
-# <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování obsahu Azure Kognitivní hledání pomocí klíčů spravovaných zákazníkem v Azure Key Vault
+# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování v klidovém formátu obsahu v Azure Kognitivní hledání používání klíčů spravovaných zákazníkem v Azure Key Vault
 
 > [!IMPORTANT] 
 > Podpora šifrování v klidovém umístění je momentálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) . V tuto chvíli není dostupná žádná podpora portálu.

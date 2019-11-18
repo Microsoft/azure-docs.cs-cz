@@ -1,5 +1,5 @@
 ---
-title: Víceklientská víceklientské modelování pro izolaci obsahu v jedné službě
+title: Víceklientská architektura a izolace obsahu
 titleSuffix: Azure Cognitive Search
 description: Seznamte se s běžnými návrhovými vzory pro víceklientské aplikace SaaS při používání Azure Kognitivní hledání.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0332443997fbc58781f99e3b4e6d9776dd23926b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793518"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113268"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Vzory návrhu pro víceklientské aplikace SaaS a Azure Kognitivní hledání
 Víceklientské aplikace nabízí stejné služby a možnosti pro libovolný počet klientů, kteří nemůžou zobrazit nebo sdílet data žádného jiného tenanta. Tento dokument popisuje strategie izolace klientů pro víceklientské aplikace sestavené s Azure Kognitivní hledání.
@@ -37,10 +37,10 @@ Přidávání a odebírání oddílů a replik v nástroji umožní, aby služba
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Omezení služby a indexu v Azure Kognitivní hledání
 V Azure Kognitivní hledání existuje několik různých [cenových úrovní](https://azure.microsoft.com/pricing/details/search/) , každá z vrstev má různá [omezení a kvóty](search-limits-quotas-capacity.md). Některá z těchto omezení jsou na úrovni služby, některé jsou na úrovni indexu a některé jsou na úrovni oddílu.
 
-|  | Úroveň Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximální počet replik na službu |3 |12 |12 |12 |12 |
-| Maximální počet oddílů na službu |1\. místo |12 |12 |12 |3 |
+| Maximální počet oddílů na službu |1 |12 |12 |12 |3 |
 | Maximální počet jednotek hledání (repliky * oddíly) na službu |3 |36 |36 |36 |36 (max. 3 oddíly) |
 | Maximální velikost úložiště na službu |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
 | Maximální velikost úložiště na oddíl |2 GB |25 GB |100 GB |200 GB |200 GB |
@@ -125,7 +125,7 @@ Tato metoda se dá použít k dosažení funkcí samostatných uživatelských �
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Azure Kognitivní hledání je přesvědčivou volbou pro mnoho aplikací. Při vyhodnocování různých vzorů návrhu pro víceklientské aplikace Vezměte v úvahu [různé cenové úrovně](https://azure.microsoft.com/pricing/details/search/) a příslušná [omezení služby](search-limits-quotas-capacity.md) , aby bylo možné Azure kognitivní hledání přizpůsobit pro úlohy aplikací a architektury všech velikostí. .
+Azure Kognitivní hledání je přesvědčivou volbou pro mnoho aplikací. Při vyhodnocování různých vzorů návrhu pro víceklientské aplikace Vezměte v úvahu [různé cenové úrovně](https://azure.microsoft.com/pricing/details/search/) a příslušné [omezení služby](search-limits-quotas-capacity.md) , aby služba Azure kognitivní hledání nejlépe vyhovovala úlohám a architekturám aplikací všech velikostí.
 
 Jakékoli dotazy týkající se scénářů Azure Kognitivní hledání a víceklientské architektury lze směrovat na azuresearch_contact@microsoft.com.
 

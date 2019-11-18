@@ -1,37 +1,42 @@
 ---
-title: Připojování v Azure Sentinel | Microsoft Docs
-description: Naučte se shromažďovat data v Azure Sentinel.
+title: 'Rychlý Start: zprovoznění v Azure Sentinel'
+description: Pomocí tohoto dokumentu pro rychlý Start se dozvíte, jak shromažďovat data v Azure Sentinel.
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: quickstart
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316816"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133103"
 ---
-# <a name="on-board-azure-sentinel"></a>On-Board – Azure Sentinel
+# <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
-
-
-V tomto rychlém startu se dozvíte, jak se připojit ke službě Azure Sentinel. 
+V tomto rychlém startu se dozvíte, jak připojit k Azure Sentinel. 
 
 Aby bylo možné připojit se k Azure Sentinel, musíte nejdřív povolit službu Azure Sentinel a pak připojit zdroje dat. Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, která je dostupná předem a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky, Microsoft 365ch zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. K propojení zdrojů dat s funkcí Sentinel Azure můžete použít také běžné formáty událostí, syslog nebo REST API.  
 
 Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených sešitů, které jsou na základě vašich dat Surface Insights. Tyto sešity je možné snadno přizpůsobit podle svých potřeb.
 
+>[!NOTE] 
+> [Ceny služby Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) jsou založené na množství dat přijatých v přidruženém pracovním prostoru služby Azure monitor Log Analytics. Některé z následujících datových konektorů se za účelem ingestování neúčtují, ale při generování libovolného typu výstrahy s využitím ingestních dat uložených v Log Analytics pracovním prostoru, který se bude účtovat podle [Azure monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/), se vám budou účtovat poplatky. 
+  > - Aktivita Azure (protokoly aktivit pro operace Azure)
+  > - Azure Active Directory Identity Protection (pro klienty s licencemi AAD P2)
+  > - Azure Information Protection
+  > - Rozšířená ochrana před internetovými útoky Azure (výstrahy)
+  > - Azure Security Center (výstrahy)
+  > - Microsoft Cloud App Security (jenom upozornění)
+  > - Microsoft Defender Advanced Threat Protection (výstrahy agenta monitorování)
+  > - Office 365 (protokoly Exchange a SharePoint)
+>
+> Protokoly auditu Azure AD/Office 365 nejsou bezplatné a nabízejí se jako úroveň Premium, takže příjem těchto dat se účtuje na základě počtu GB. 
+  
 
 ## <a name="global-prerequisites"></a>Globální požadavky
 

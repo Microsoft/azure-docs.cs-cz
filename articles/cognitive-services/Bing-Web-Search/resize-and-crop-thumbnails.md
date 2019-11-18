@@ -1,7 +1,7 @@
 ---
 title: Změnit velikost a oříznout miniatury obrázků – rozhraní API Bingu pro vyhledávání na webu
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak změnit velikost a oříznout miniatury poskytované rozhraní API pro vyhledávání Bingu.
+description: Mezi odpovědi z rozhraní API pro vyhledávání Bingu patří adresy URL k obrázkům miniatur poskytovaných bingem, které můžete měnit velikosti a oříznutí a můžou obsahovat parametry dotazu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: ecc6eb86e7115143fa63b44f9191b1fe8d3703b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 630b86f55a537d109c851cb585cfccc34d229f83
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881797"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110635"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>Změna velikosti a oříznutí obrázků miniatur
 
@@ -31,13 +31,13 @@ Pokud zobrazíte podmnožinu těchto miniatur, zadejte možnost zobrazení zbýv
 
 ## <a name="resize-a-thumbnail"></a>Změna velikosti miniatury 
 
-Pokud chcete změnit velikost miniatury, Bing doporučuje, abyste zadali jenom `w` jeden parametr dotazu ( `h` Width) nebo (Height) na adrese URL miniatury. Když zadáte jenom výšku nebo šířku, umožníte službě Bing zachovat původní aspekt obrázku. Zadejte šířku a výšku v pixelech. 
+Pokud chcete změnit velikost miniatury, Bing doporučuje zadat v adrese URL miniatury jenom jednu z `w` (Width) nebo `h` (Height) parametrů dotazu. Když zadáte jenom výšku nebo šířku, umožníte službě Bing zachovat původní aspekt obrázku. Zadejte šířku a výšku v pixelech. 
 
 Například pokud je původní Miniatura 480x620:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=480&h=620`
 
-A chcete zmenšit jeho velikost, nastavit `w` parametr na novou hodnotu (například `336` `h` ) a odebrat parametr:
+A chcete zmenšit jeho velikost, nastavte parametr `w` na novou hodnotu (například `336`) a odeberte parametr `h`:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=336`
 
@@ -57,30 +57,30 @@ Pokud zadáte rozměry, které jsou větší než původní šířka a výška o
 
 ## <a name="request-different-thumbnail-sizes"></a>Žádosti o jiné velikosti miniatur
 
-Chcete-li požádat o jinou velikost obrázku miniatur, odeberte všechny parametry dotazu z adresy URL miniatury s `id` výjimkou parametrů a `pid` . Pak přidejte `&w` parametr dotazu (Width) nebo `&h` (Height) s požadovanou velikostí obrázku v pixelech, ale ne obojí. Bing bude udržovat původní poměr stran obrázku. 
+Chcete-li požádat o jinou velikost obrázku miniatur, odeberte všechny parametry dotazu z adresy URL miniatury s výjimkou parametrů `id` a `pid`. Pak přidejte parametr dotazu `&w` (Width) nebo `&h` (Height) s požadovanou velikostí obrázku v pixelech, ale ne obojí. Bing bude udržovat původní poměr stran obrázku. 
 
 Chcete-li zvětšit šířku obrázku určeného výše uvedenou adresou URL na 165 pixelů, použijte následující adresu URL:
 
 `https://<host>/th?id=AMMS_92772df988...&w=165&pid=16.1`
 
-Pokud si vyžádáte obrázek, který je větší než původní velikost obrázku, Bing podle potřeby přidá bílé odsazení kolem obrázku. Pokud je například původní velikost obrázku 474x316 a nastavíte `&w` 500, Bing vrátí image 500x333. Tento obrázek bude mít 8,5 pixelů bílého odsazení podél horního a dolního okraje a 13 pixelů odsazení na levém a pravém okraji.
+Pokud si vyžádáte obrázek, který je větší než původní velikost obrázku, Bing podle potřeby přidá bílé odsazení kolem obrázku. Pokud je například původní velikost obrázku 474x316 a nastavíte `&w` na 500, Bing vrátí image 500x333. Tento obrázek bude mít 8,5 pixelů bílého odsazení podél horního a dolního okraje a 13 pixelů odsazení na levém a pravém okraji.
 
-Pokud chcete zabránit tomu, aby se v Bingu přidalo bílé odsazení, pokud je požadovaná velikost větší než původní `&p` velikost obrázku, nastavte parametr dotazu na 0. Například pokud zahrnete `&p=0` parametr do výše uvedené adresy URL, Bing vrátí obrázek 474x316 místo image 500x333:
+Pokud chcete zabránit tomu, aby se v Bingu přidalo bílé odsazení, pokud je požadovaná velikost větší než původní velikost obrázku, nastavte parametr dotazu `&p` na hodnotu 0. Například pokud zahrnete parametr `&p=0` do výše uvedené adresy URL, Bing vrátí obrázek 474x316 místo image 500x333:
 
 `https://<host>/th?id=AMMS_92772df988...&w=500&p=0&pid=16.1`
 
-Pokud zadáte parametry `&w` dotazu `&h` i a, Bing bude udržovat poměr stran obrázku a podle potřeby přidá bílé odsazení. Pokud je například původní velikost obrázku 474x316 a nastavíte parametry Width a Height na 200x200 (`&w=200&h=200`), Bing vrátí obrázek, který obsahuje 33 pixelů bílého odsazení v horní a dolní části. Pokud zahrnete `&p` parametr dotazu, Bing vrátí 200x134 image.
+Pokud zadáte parametry dotazu `&w` i `&h`, Bing bude udržovat poměr stran obrázku a podle potřeby přidá bílé odsazení. Pokud je například původní velikost obrázku 474x316 a nastavíte parametry Width a Height na 200x200 (`&w=200&h=200`), Bing vrátí obrázek, který obsahuje 33 pixelů bílého odsazení v horní a dolní části. Pokud zahrnete parametr dotazu `&p`, Bing vrátí obrázek 200x134.
 
 ## <a name="crop-a-thumbnail"></a>Oříznutí miniatury 
 
-Chcete-li oříznout obrázek, zahrňte `c` parametr dotazu (ořízne). Můžete použít následující hodnoty:
+Chcete-li oříznout obrázek, zahrňte parametr dotazu `c` (oříznout). Můžete použít následující hodnoty:
   
-- `4`&mdash; Neslepý poměr  
-- `7`&mdash; Inteligentní poměr  
+- Poměr `4` &mdash;  
+- Inteligentní poměr `7` &mdash;  
 
 ### <a name="smart-ratio-cropping"></a>Oříznutí inteligentního poměru
 
-Pokud si vyžádáte oříznutí inteligentního poměru ( `7`nastavením `c` parametru na), Bing ořízne obrázek od středu své oblasti zájmu směrem ven a přitom zachovává poměr stran obrázku. Oblast zájmu je oblast obrázku, kterou Bing určí, obsahuje nejvíce importovaných částí. Níže vidíte ukázkovou oblast zájmu.  
+Pokud si vyžádáte oříznutí inteligentního poměru (nastavením parametru `c` na `7`), Bing ořízne obrázek od středu oblasti zájmu, při zachování poměru stran obrázku. Oblast zájmu je oblast obrázku, kterou Bing určí, obsahuje nejvíce importovaných částí. Níže vidíte ukázkovou oblast zájmu.  
   
 ![Oblast zájmu](./media/resize-crop/bing-resize-crop-regionofinterest.png)
 
@@ -103,10 +103,10 @@ Pokud Bing nemůže určit oblast obrázku, která je zajímavá, bude tato slu�
 
 ### <a name="blind-ratio-cropping"></a>Oříznutí poměru rolety
 
-Pokud si vyžádáte oříznutí poměru sleposti ( `4`nastavením `c` parametru na hodnotu), Bing pomocí následujících pravidel ořízne obrázek.  
+Pokud si vyžádáte oříznutí poměru po sleposti (nastavením parametru `c` na `4`), Bing pomocí následujících pravidel ořízne bitovou kopii.  
   
-- Pokud `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`se obrázek měří z levého horního rohu a v dolní části se ořízne.  
-- Pokud `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`je obrázek měřen od středu a oříznutý vlevo a vpravo.  
+- Pokud `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`, obrázek se měří z levého horního rohu a ořízne se v dolní části.  
+- Pokud `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`, obraz se měří od středu a ořízne se vlevo a vpravo.  
 
 Níže vidíte obrázek na výšku, který je 225x300.  
   
@@ -124,7 +124,7 @@ Následující obrázek ukazuje obraz zmenšený na 100x200 pomocí oříznutí 
   
 ![Slunečnicová image oříznutá na 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Co je rozhraní API pro vyhledávání Bingu?](bing-api-comparison.md)
 * [Vyhledávání Bingu požadavky na použití rozhraní API a zobrazení](use-display-requirements.md)

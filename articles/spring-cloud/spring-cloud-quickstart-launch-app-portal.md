@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: bc8b834e0dd128457910c46cc1a62382bbc28ee1
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39a249fb75249505189e2af4872c3a3f61ebe2af
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721567"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133256"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
 
@@ -56,14 +56,16 @@ az extension add --name spring-cloud
 
 1. Ve webovém prohlížeči otevřete [Tento odkaz na jarní cloud Azure v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
 
-1. Pokud chcete přejít na stránku Přehled, vyberte **Azure jaře Cloud** . Začněte tím, že vyberete tlačítko **vytvořit** .
-
-1. Vyplňte formulář a zvažte následující pokyny:
+1. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
     - Název služby: zadejte název instance služby.  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
     - Předplatné: vyberte předplatné, které chcete pro tento prostředek fakturovat.  Zajistěte, aby bylo toto předplatné přidané do našeho seznamu povolených pro Azure jaře Cloud.
     - Skupina prostředků: vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem.
     - Umístění: vyberte umístění pro instanci služby. Aktuálně podporovaná umístění zahrnují Východní USA, Západní USA 2, Západní Evropa a jihovýchodní Asie.
-    
+
+1. Klikněte na tlačítko **zkontrolovat a vytvořit**.
+
+1. Ověřte vaše specifikace a klikněte na **vytvořit**.
+
 Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **přehledem** instance služby.
 
 ## <a name="set-up-your-configuration-server"></a>Nastavení konfiguračního serveru
@@ -72,7 +74,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. V části **výchozí úložiště** nastavte možnost **URI** na https\://GitHub.com/Azure-Samples/piggymetrics, nastavte **popisek** na "config" a pak změny uložte kliknutím na **použít** .
 
-    ![Snímek obrazovky s portálem ASC](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Sestavování a nasazování aplikací mikroslužeb
 

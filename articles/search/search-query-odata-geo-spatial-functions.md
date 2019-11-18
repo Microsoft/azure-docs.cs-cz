@@ -1,7 +1,7 @@
 ---
 title: Referenční dokumentace funkce OData geografického prostoru
 titleSuffix: Azure Cognitive Search
-description: V Azure Kognitivní hledání dotazy jsou geografické funkce OData geograficky. Distance a geo. intersects.
+description: Syntaxe a referenční dokumentace pro použití geograficky funkčních funkcí OData geograficky. Distance a geo-intersects v Azure Kognitivní hledáních dotazech.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 09034423e16c652cf6994b38f8d92574abc0ce55
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793341"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113177"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Kognitivní hledání-`geo.distance` a `geo.intersects`
 
@@ -80,7 +80,7 @@ Konstanta geografického bodu má `geography'POINT(<longitude> <latitude>)'`form
 > [!NOTE]
 > Při použití `geo.distance` ve filtru je nutné porovnat vzdálenost vrácenou funkcí s konstantou pomocí `lt`, `le`, `gt`nebo `ge`. Operátory `eq` a `ne` nejsou podporovány při porovnávání vzdálenosti. Jedná se například o správné použití `geo.distance`: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.
 
-### <a name="geointersects"></a>geografické. průniky
+### <a name="geointersects"></a>geo.intersects
 
 Funkce `geo.intersects` přebírá proměnnou typu `Edm.GeographyPoint` a konstantní `Edm.GeographyPolygon` a vrací `Edm.Boolean` -- `true`, pokud je bod uvnitř hranice mnohoúhelníku, `false` jinak.
 

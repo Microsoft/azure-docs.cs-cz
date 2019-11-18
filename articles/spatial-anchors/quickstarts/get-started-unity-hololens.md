@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56f9901a1468207a295f8223e990f7a926b2d76e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e8196c9561465930fc9723c9b8f8a0d02668ef5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561416"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114095"
 ---
-# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro HoloLens v Unity, která používá prostorové kotvy Azure
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro HoloLens v Unity, která používá prostorové kotvy Azure
 
 V tomto rychlém startu vytvoříte aplikaci Unity HoloLens, která používá [prostorové kotvy Azure](../overview.md). Prostorové ukotvení je služba pro vývojáře napříč platformami, která umožňuje vytvářet hybridní prostředí realit s objekty, které v průběhu času trvale uchovávají jejich umístění v rámci zařízení. Až budete hotovi, budete mít aplikaci HoloLens vytvořenou v Unity, která může uložit a odvolat prostorovou kotvu.
 
@@ -34,9 +34,9 @@ Dozvíte se, jak provést tyto akce:
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 - Potřebujete počítač s Windows, na kterém je nainstalovaná <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> nebo novější a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nebo novější. Vaše instalace sady Visual Studio musí zahrnovat úlohu **vývoje Univerzální platforma Windows** a komponentu **Windows 10 SDK (10.0.18362.0 nebo novější)** . Musíte taky nainstalovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
-- Potřebujete zařízení HoloLens, na kterém je povolený [vývojářský režim](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . [Windows 10 říjen 2018 – aktualizace](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (také označované jako RS5) musí být na zařízení nainstalované. Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení**a pak vyberte **Vyhledat aktualizace**.
-- V aplikaci musíte povolit funkci **SpatialPerception** . Toto nastavení je v **Nastavení** > sestavení**Možnosti**nastavení**publikování** > **přehrávače** > nastavení.
-- V aplikaci musíte povolit **virtuální realitu podporovanou** sadou **Windows Mixed reality SDK**. Toto nastavení se nachází v nastavení **sestavení** > **přehrávače** > nastavení**XR**.
+- Potřebujete zařízení HoloLens, na kterém je povolený [vývojářský režim](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . V zařízení musí být nainstalovaná [aktualizace Windows 10 říjen 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (známá také jako RS5). Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení**a pak vyberte **Vyhledat aktualizace**.
+- V aplikaci musíte povolit funkci **SpatialPerception** . Toto nastavení se nachází v **nastavení sestavení** > **přehrávač** > nastavení **publikování** > **Možnosti**.
+- V aplikaci musíte povolit **virtuální realitu podporovanou** sadou **Windows Mixed reality SDK**. Toto nastavení je v **nastavení sestavení** > **nastavení přehrávače** > **Nastavení XR**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -46,7 +46,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
-Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
+Otevřete **nastavení sestavení** tak, že vyberete **soubor** > **nastavení sestavení**.
 
 V části **platforma** vyberte **Univerzální platforma Windows**. Změňte **cílové zařízení** na **HoloLens**.
 
@@ -58,11 +58,11 @@ Zavřete okno **nastavení sestavení** .
 
 ## <a name="configure-the-account-identifier-and-key"></a>Konfigurace identifikátoru a klíče účtu
 
-V podokně **projekt** přejdete na `Assets/AzureSpatialAnchors.Examples/Scenes` a otevřete `AzureSpatialAnchorsBasicDemo.unity` soubor scény.
+V podokně **projekt** , přejít na `Assets/AzureSpatialAnchors.Examples/Scenes` a otevřete `AzureSpatialAnchorsBasicDemo.unity` soubor scény.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Scénu uložte výběrem**Uložit** **soubor** > .
+Scénu uložte tak, že vyberete **soubor** > **Uložit**.
 
 ## <a name="export-the-hololens-visual-studio-project"></a>Exportujte projekt HoloLens sady Visual Studio
 
@@ -78,13 +78,13 @@ Ve složce poklikejte na **HELLOAR U3D. sln** a otevřete projekt v aplikaci Vis
 
 Změňte **konfiguraci řešení** na **release**, změňte **platformu řešení** na **x86**a vyberte **zařízení** z možností cíle nasazení.
 
-Pokud používáte HoloLens 2, používejte **ARM** jako **platformu řešení**místo **x86**.
+Pokud používáte HoloLens 2, používejte jako platformu pro **řešení** **ARM64** místo **x86**.
 
    ![Konfigurace sady Visual Studio](./media/get-started-unity-hololens/visual-studio-configuration.png)
 
 Zapněte zařízení HoloLens, přihlaste se a připojte zařízení k počítači pomocí kabelu USB.
 
-Vyberte **ladit** > **Spustit ladění** pro nasazení aplikace a spuštění ladění.
+Vyberte **ladit** > **Spustit ladění** a nasaďte svoji aplikaci a spusťte ladění.
 
 Podle pokynů v aplikaci založte a odvoláte kotvu.
 
@@ -95,4 +95,4 @@ V aplikaci Visual Studio zastavte aplikaci tak, že vyberete buď **Zastavit lad
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Kurz: Sdílet prostorové kotvy napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Kurz: sdílení prostorových ukotvení napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)

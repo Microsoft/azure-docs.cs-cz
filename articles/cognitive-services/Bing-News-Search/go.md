@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Dostávat informace o použití rozhraní API REST vyhledávání zpráv Bingu a Go'
+title: 'Rychlý Start: získání zpráv pomocí Vyhledávání zpráv Bingu REST API a přejít'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak získat výsledky zpráv z rozhraní API pro vyhledávání zpráv Bingu.
+description: V tomto rychlém startu se k volání rozhraní API Bingu pro vyhledávání zpráv používá jazyk přejít. Výsledky zahrnují názvy a adresy URL zdrojů zpráv identifikovaných řetězcem dotazu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 2/21/2019
 ms.author: aahi
-ms.openlocfilehash: 79e93e3ba0bbf9ac71a01bad0502b84dfee85297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c3d18852086e202d9f818f2cac2c90fa4f464211
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798509"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110807"
 ---
-# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Rychlý start: Získat výsledky zpráv pomocí rozhraní API REST vyhledávání zpráv Bingu a Go
+# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Rychlý Start: získání výsledků zpráv pomocí Vyhledávání zpráv Bingu REST API a přejít
 
-V tomto rychlém startu pomocí jazyka Go zavolá rozhraní API pro vyhledávání zpráv Bingu. Výsledky zahrnují názvy a adresy URL zprávy zdrojů identifikované pomocí řetězce dotazu.
+V tomto rychlém startu se k volání rozhraní API Bingu pro vyhledávání zpráv používá jazyk přejít. Výsledky zahrnují názvy a adresy URL zdrojů zpráv identifikovaných řetězcem dotazu.
 
 ## <a name="prerequisites"></a>Požadavky
-* Nainstalujte [přejít binárních souborů](https://golang.org/dl/)
-* Nainstalujte knihovnu go výstupu pro něj přehlednou tiskárny pro zobrazení výsledků
-    * Nainstalujte tento libarary: `$ go get -u https://github.com/davecgh/go-spew`
+* Instalace [binárních souborů přejít](https://golang.org/dl/)
+* Pokud chcete zobrazit výsledky, nainstalujte knihovnu Spew pro IT, která je v podstatě.
+    * Nainstalujte tuto libarary: `$ go get -u https://github.com/davecgh/go-spew`
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="create-a-project-and-import-libraries"></a>Vytvoření projektu a importovat knihovny
+## <a name="create-a-project-and-import-libraries"></a>Vytvoření projektu a import knihoven
 
-Vytvoření nového projektu přejít v prostředí IDE nebo editoru. Importujte `net/http` požadavkům, `ioutil` přečíst odpověď, a `encoding/json` pro zpracování textu JSON výsledků. Knihovna go výstupu je potřeba k parsování formátu JSON. 
+Vytvořte nový projekt přejít v integrovaném vývojovém prostředí nebo editoru. Pak importujte `net/http` pro žádosti, `ioutil` pro čtení odpovědi a `encoding/json`, že se má vycházet text JSON výsledků. Knihovna Spew je nutná k analýze formátu JSON. 
 
 ```
 package main
@@ -45,9 +45,9 @@ import (
 
 ```
 
-## <a name="create-a-struct-to-format-the-news-search-results"></a>Vytvoření struktury formátovat výsledky hledání zpráv
+## <a name="create-a-struct-to-format-the-news-search-results"></a>Vytvoření struktury pro formátování výsledků hledání zpráv
 
-Struktura `NewsAnswer` naformátuje data poskytnutá v odpovědi. Odpověď JSON je poměrně složité a více změn.  Následující implementaci pokrývá základy.
+Struktura `NewsAnswer` naformátuje data poskytnutá v odpovědi. Odpověď JSON je víceúrovňové a poměrně složitá.  Následující implementace pokrývá základy.
 
 ```
 // This struct formats the answer provided by the Bing News Search API.
@@ -106,9 +106,9 @@ func main() {
 }
 ```
 
-## <a name="query-and-header"></a>Query a header
+## <a name="query-and-header"></a>Dotaz a záhlaví
 
-Přidat dotaz řetězec a přístup klíče záhlaví
+Přidat řetězec dotazu a přístup k záhlaví klíče
 
 ```
 // Add the query to the request.  
@@ -121,9 +121,9 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Žádost o získání
+## <a name="get-request"></a>Získat žádost
 
-Vytvoření klienta a odešlete požadavek Get. 
+Vytvořte klienta a odešlete žádost o získání. 
 
 ```
 // Instantiate a client.  
@@ -137,9 +137,9 @@ if err != nil {
 
 ```
 
-## <a name="send-the-request"></a>Odeslání požadavku
+## <a name="send-the-request"></a>Odeslat žádost
 
-Odeslat požadavek a čtení výsledků za použití `ioutil`.
+Odešlete žádost a čtěte výsledky pomocí `ioutil`.
 
 ```
 resp, err := client.Do(req)
@@ -160,7 +160,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-`Unmarshall` Funkce extrahuje informace z textu JSON vrácené rozhraní API pro vyhledávání zpráv.  Pak můžete zobrazit uzly ve výsledcích pomocí `go-spew` přehlednou tiskárny.
+Funkce `Unmarshall` extrahuje informace z textu JSON vráceného rozhraním API Vyhledávání zpráv.  Pak můžete zobrazit uzly z výsledků pomocí tiskárny `go-spew` s velmi poměrně.
 
 ```
 // Create a new answer object 
@@ -203,7 +203,7 @@ Výsledky obsahují název a adresu URL každého výsledku.
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Co je pro vyhledávání zpráv Bingu](search-the-web.md)
+> [Co je Vyhledávání zpráv Bingu](search-the-web.md)

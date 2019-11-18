@@ -1,25 +1,17 @@
 ---
-title: Jak nakonfigurovat cluster Redis pro mezipaměť Azure úrovně Premium pro Redis | Microsoft Docs
+title: Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
 description: Naučte se vytvářet a spravovat clustery Redis pro mezipaměť Azure úrovně Premium pro instance Redis.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 1f0c97d6c0854254026e194ffd5030976fc506b2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596912"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122154"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat clustering v mezipaměti Azure Premium pro instanci Redis.
@@ -111,7 +103,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy týkající s
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Jak jsou klíče distribuované v clusteru?
 V dokumentaci k [modelu distribuce klíčů](https://redis.io/topics/cluster-spec#keys-distribution-model) Redis: klíčový prostor je rozdělen na 16384 slotů. Každý klíč se vyhodnotí jako hash a přiřadí se k jednomu z těchto slotů, které se distribuují napříč uzly clusteru. Můžete nakonfigurovat, která část klíče má hodnotu hash, aby bylo zajištěno, že se ve stejném horizontálních oddílů pomocí značek hash nachází více klíčů.
 
-* Klíče s příznakem hash – Pokud je libovolná část klíče uzavřená v `{` a `}`, je pro účely určení slotu hodnoty hash klíče určena pouze tato část klíče s hodnotou hash. Například následující 3 klíče by se nacházely ve stejném horizontálních oddílů: `{key}1`, `{key}2` a `{key}3`, protože se hodnota hash vyhodnotí jenom `key` část názvu. Úplný seznam klíčových specifikací hash klíčů najdete v tématu [klíče hash klíčů](https://redis.io/topics/cluster-spec#keys-hash-tags).
+* Klíče s příznakem hash – Pokud je libovolná část klíče uzavřená v `{` a `}`, je pro účely určení slotu hodnoty hash klíče určena pouze tato část klíče s hodnotou hash. Například následující 3 klíče by se nacházely ve stejném horizontálních oddílů: `{key}1`, `{key}2`a `{key}3`, protože se hodnota hash vyhodnotí jenom `key` část názvu. Úplný seznam klíčových specifikací hash klíčů najdete v tématu [klíče hash klíčů](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Klíče bez značky hash – pro použití algoritmu hash se používá celý název klíče. Výsledkem je statistická i distribuce napříč horizontálních oddílů mezipaměti.
 
 Pro dosažení nejlepšího výkonu a propustnosti doporučujeme, aby byly klíče rovnoměrně distribuovány. Pokud používáte klíče s tagem hash, jedná se o zodpovědnost aplikace za účelem zajištění rovnoměrné distribuce klíčů.

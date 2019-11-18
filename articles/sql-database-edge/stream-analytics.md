@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 1b6b3f4e4be9d056bc53fac2eb2f1f3fcd768085
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514989"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108742"
 ---
 # <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>Použití SQL Databaseho balíčku DAC a Stream Analytics úlohy s SQL Database Edge
 
@@ -37,7 +37,7 @@ Azure SQL Database Edge zpřístupňuje dva volitelné parametry prostřednictv�
 |Pole | Popis |
 |------|-------------|
 | SQLPackage | Identifikátor URI služby Azure Blob Storage pro soubor *. zip obsahující SQL Database DAC Package.
-| ASAJobInfo | Identifikátor URI služby Azure Blob Storage pro hraniční úlohu ASA Další informace o publikování hraničních úloh ASA najdete v tématu [publikování hraničních úloh ASA pro SQL Database Edge]().
+| ASAJobInfo | Identifikátor URI služby Azure Blob Storage pro hraniční úlohu ASA Další informace o publikování hraničních úloh ASA najdete v tématu [publikování hraničních úloh ASA pro SQL Database Edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
 
 ## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>Použití SQL Databasech balíčků DAC s SQL Database Edge
 
@@ -75,7 +75,7 @@ Pokud chcete použít SQL Database balíček DAC (*. DACPAC) s SQL Database Edge
             }
         ```
 
-    7. Klikněte na **Uložit**.
+    7. Klikněte na možnost **Uložit**.
 
     8. Na stránce **nastavit moduly** klikněte na *Další*.
 
@@ -104,7 +104,7 @@ Azure SQL Database Edge má nativní implementaci Stream Analytics runtime. To u
     |Název serveru | Název (nebo IP adresa) a podrobnosti o číslech portů pro instanci SQL. Pro nasazení SQL Database Edge můžete jako název serveru použít **protokol TCP:., 1433** .|
     |Uživatelské jméno | Přihlašovací účet SQL s přístupem pro čtení dat a zapisovač dat k databázi uvedené výše.|
     |Heslo | Heslo pro přihlašovací účet SQL zmíněné výše.|
-    |Tabulka | Název tabulky, která bude výstupem pro úlohu streamování.|
+    |Table | Název tabulky, která bude výstupem pro úlohu streamování.|
     |Zdědit dělení| Tato možnost Konfigurace výstupu SQL umožňuje dědění schématu dělení předchozího kroku dotazu nebo vstupu. Když je tato možnost povolená, zapisuje se do tabulky založené na disku a má plně paralelní topologie pro vaši práci. očekává se, že se zobrazí lepší propustnost.|
     |Velikost dávky| Velikost dávky je maximální počet záznamů, které se odesílají při každé transakci hromadného vložení.|
 
@@ -166,7 +166,7 @@ Pokud chcete nasadit úlohu streamování do modulu SQL Database Edge, aktualizu
         }
     ```
 
-7. Klikněte na **Uložit**.
+7. Klikněte na možnost **Uložit**.
 
 8. Na stránce **nastavit moduly** klikněte na *Další*.
 

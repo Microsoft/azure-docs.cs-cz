@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f73dcfe3e0e2827083feba906e2efcd0265305
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 03eff6afb22ea3306bf7f8191f4eca3ccad39938
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331701"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151559"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. upload – element uživatelského rozhraní
+
 Ovládací prvek, který umožňuje uživateli určit jeden nebo více souborů k nahrání.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
-![Microsoft. Common. upload – nahrání](./media/managed-application-elements/microsoft.common.fileupload.png)
+
+![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
 
 ## <a name="schema"></a>Schéma
+
 ```json
 {
   "name": "element1",
@@ -47,16 +50,8 @@ Ovládací prvek, který umožňuje uživateli určit jeden nebo více souborů 
 }
 ```
 
-## <a name="remarks"></a>Poznámky
-- `constraints.accept` určuje typy souborů, které se zobrazí v dialogovém okně souboru prohlížeče. Povolené hodnoty najdete v tématu [specifikace HTML5](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) . Výchozí hodnota je **null**.
-- Je-li hodnota `options.multiple` nastavená na **hodnotu true**, může uživatel v dialogovém okně souboru prohlížeče vybrat více než jeden soubor. Výchozí hodnota je **false (NEPRAVDA**).
-- Tento prvek podporuje nahrávání souborů ve dvou režimech na základě hodnoty `options.uploadMode`. Je-li zadán **soubor** , výstup obsahuje obsah souboru jako objekt BLOB. Pokud zadáte **adresu URL** , soubor se nahraje do dočasného umístění a výstup má adresu URL objektu BLOB. Dočasné objekty blob budou vymazány po 24 hodinách. Výchozí hodnota je **File (soubor**).
-- Nahraný soubor je chráněný. Výstupní adresa URL obsahuje [token SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) pro přístup k souboru během nasazování.
-- Hodnota `options.openMode` určuje, jak je soubor čten. Pokud by měl být soubor prostým textem, zadejte **text**; v opačném případě zadejte **Binary**. Výchozí hodnota je **text**.
-- Pokud je `options.uploadMode` nastavená na **soubor** a `options.openMode` je nastavená na **binární**, výstup je kódovaný v kódování Base64.
-- `options.encoding` určuje kódování, které se má použít při čtení souboru. Výchozí hodnota je **UTF-8**a používá se jenom v případě, že je `options.openMode` nastavená na **text**.
-
 ## <a name="sample-output"></a>Ukázkový výstup
+
 Pokud options. Multiple je false a Options. uploadMode je soubor, pak výstup obsahuje obsah souboru jako řetězec JSON:
 
 ```json
@@ -91,7 +86,17 @@ Pokud options. Multiple je true a Options. uploadMode je adresa URL, pak výstup
 
 Při testování CreateUiDefinition některé prohlížeče (jako Google Chrome) zkrátí adresy URL generované elementem Microsoft. Common. upload v konzole prohlížeče. Je možné, že budete muset kliknout pravým tlačítkem na jednotlivé odkazy a zkopírovat tak úplné adresy URL.
 
+## <a name="remarks"></a>Poznámky
+
+- `constraints.accept` určuje typy souborů, které se zobrazí v dialogovém okně souboru prohlížeče. Povolené hodnoty najdete v tématu [specifikace HTML5](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) . Výchozí hodnota je **null**.
+- Pokud je `options.multiple` nastavené na **hodnotu true**, může uživatel v dialogovém okně souboru prohlížeče vybrat více než jeden soubor. Výchozí hodnota je **false**.
+- Tento prvek podporuje nahrávání souborů ve dvou režimech na základě hodnoty `options.uploadMode`. Je-li zadán **soubor** , výstup obsahuje obsah souboru jako objekt BLOB. Pokud zadáte **adresu URL** , soubor se nahraje do dočasného umístění a výstup má adresu URL objektu BLOB. Dočasné objekty blob budou vymazány po 24 hodinách. Výchozí hodnota je **File (soubor**).
+- Nahraný soubor je chráněný. Výstupní adresa URL obsahuje [token SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) pro přístup k souboru během nasazování.
+- Hodnota `options.openMode` určuje, jak je soubor čten. Pokud by měl být soubor prostým textem, zadejte **text**; v opačném případě zadejte **Binary**. Výchozí hodnota je **text**.
+- Pokud je `options.uploadMode` nastaveno na **soubor** a `options.openMode` je nastavená na **binární**, výstup je kódovaný v kódování Base64.
+- `options.encoding` určuje kódování, které se má použít při čtení souboru. Výchozí hodnota je **UTF-8**a používá se pouze v případě, že je `options.openMode` nastaveno na **text**.
 
 ## <a name="next-steps"></a>Další kroky
+
 * Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
 * Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

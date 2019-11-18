@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Získávání výsledků Kontrola pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu'
+title: 'Kurz: Získání výsledků kontroly pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu'
 titleSuffix: Azure Cognitive Services
-description: Ukazuje postup používání rozhraní API pro kontrolu pravopisu Bingu.
+description: V tomto kurzu vytvoříme webovou stránku, která uživatelům umožní dotazovat se na rozhraní API Bingu pro kontrolu pravopisu a zobrazit výsledky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 73466b80915d5eb7228eef397d5aad68d27faa15
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996836"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111446"
 ---
-# <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení webové stránky Kontrola pravopisu klientovi
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
 
 V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
@@ -37,7 +37,7 @@ Otevřete textový editor. Vytvořte nový soubor s názvem například spellche
 
 ## <a name="add-html-header"></a>Přidání hlavičky HTML
 
-Přidejte informace hlavičky HTML a začněte část se skriptem tak, jak vidíte na následujícím obrázku.
+Přidejte informace hlavičky HTML a začněte oddíl script tak, jak vidíte na následujícím obrázku.
 
 ```html
 <!DOCTYPE html>
@@ -319,7 +319,7 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Požadavky na použití a zobrazení](../UseAndDisplayRequirements.md)

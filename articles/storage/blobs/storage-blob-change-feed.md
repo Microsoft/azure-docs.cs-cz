@@ -8,31 +8,28 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c4669809f1efa1f69081da17bf5ccbeddc39a716
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f48c8712a2f4fbd69db7de5247e3293ad57ae1e6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077135"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112836"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Změna podpory kanálu v Azure Blob Storage (Preview)
 
 Účelem kanálu změn je poskytnout transakční protokoly všech změn, ke kterým dojde u objektů BLOB a metadat objektů BLOB ve vašem účtu úložiště. Kanál změny poskytuje **seřazené**, **zaručené**, **odolné**, **neměnné**, protokol jen **pro čtení** těchto změn. Klientské aplikace mohou tyto protokoly kdykoli číst, a to buď ve streamování, nebo v režimu dávky. Kanál změn umožňuje vytvářet efektivní a škálovatelná řešení, která zpracovávají události změny, ke kterým dochází v účtu Blob Storage za nízké náklady.
 
-> [!NOTE]
-> Kanál změn je ve verzi Public Preview a je dostupný v oblastech **westcentralus** a **westus2** . Viz část [podmínky](#conditions) tohoto článku. Pokud se chcete zaregistrovat ve verzi Preview, přečtěte si část [registrace předplatného](#register) v tomto článku.
-
 Kanál změn se ukládá jako [objekty blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) ve speciálním kontejneru v účtu úložiště za ceny standardního [objektu BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/) . Dobu uchování těchto souborů můžete řídit podle vašich požadavků (viz [podmínky](#conditions) aktuální verze). Události změny se připojují ke kanálu změn jako záznamy ve specifikaci formátu [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) : kompaktní, rychlý a binární formát, který poskytuje bohatou datovou strukturu s vloženým schématem. Tento formát je široce používat v ekosystému Hadoop, Stream Analytics a Azure Data Factory.
 
-Tyto protokoly můžete zpracovat asynchronně, přírůstkově nebo v plném rozsahu. Libovolný počet klientských aplikací může nezávisle číst kanál změn, paralelně a vlastním tempem. Analytické aplikace, jako je například [Apache](https://drill.apache.org/docs/querying-avro-files/) analytics nebo [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) , můžou využívat protokoly přímo jako soubory Avro, které vám umožní jejich zpracování s nízkými náklady, s vysokou šířkou pásma a bez nutnosti psát vlastní aplikaci.
+Tyto protokoly můžete zpracovat asynchronně, přírůstkově nebo v plném rozsahu. Libovolný počet klientských aplikací může nezávisle číst kanál změn, paralelně a vlastním tempem. Analytické aplikace, jako je například [Apache](https://drill.apache.org/docs/querying-avro-files/) analytics nebo [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) , můžou využívat protokoly přímo jako soubory Avro, které vám umožní je zpracovat s vysokou propustností a bez nutnosti psát vlastní aplikaci.
 
 Podpora změny kanálu je vhodná pro scénáře, které zpracovávají data na základě objektů, které se změnily. Například aplikace mohou:
 
-  - Aktualizujte sekundární index, proveďte synchronizaci s mezipamětí, vyhledávacím modulem nebo jinými scénáři správy obsahu.
+  - Aktualizujte sekundární index, proveďte synchronizaci s mezipamětí, vyhledávacím modulem nebo jakýmkoli jiným scénářem správy obsahu.
   
   - Extrahujte přehledy obchodních analýz a metriky na základě změn, ke kterým dojde u vašich objektů, a to buď v datových proudech, nebo v režimu dávky.
   
-  - Pro zabezpečení, dodržování předpisů nebo informace pro správu podnikových dat můžete ukládat, auditovat a analyzovat změny vašich objektů za jakékoli časové období.
+  - Umožňuje ukládat, auditovat a analyzovat změny vašich objektů, a to za jakékoli časové období, kvůli zabezpečení, dodržování předpisů nebo inteligentní správě podnikových dat.
 
   - Sestavujte řešení pro zálohování, zrcadlení nebo replikaci stavu objektů ve vašem účtu pro správu havárií nebo dodržování předpisů.
 
@@ -54,6 +51,9 @@ Při povolování kanálu změn je potřeba mít na paměti několik věcí.
 - Kanál změn zachycuje *všechny* změny pro všechny dostupné události, ke kterým došlo na účtu. Klientské aplikace mohou podle potřeby vyfiltrovat typy událostí. (Podívejte se na [podmínky](#conditions) aktuální verze).
 
 - Kanál změn můžou povolit jenom účty úložiště GPv2 a BLOB Storage. Účty úložiště GPv1, účty Premium BlockBlobStorage a hierarchické účty s povoleným oborem názvů se momentálně nepodporují.
+
+> [!IMPORTANT]
+> Kanál změn je ve verzi Public Preview a je dostupný v oblastech **westcentralus** a **westus2** . Viz část [podmínky](#conditions) tohoto článku. Pokud se chcete zaregistrovat ve verzi Preview, přečtěte si část [registrace předplatného](#register) v tomto článku. Předtím, než budete moci povolit kanál změn v účtech úložiště, je nutné zaregistrovat své předplatné.
 
 ### <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -244,9 +244,9 @@ Viz [protokol kanálu změny procesu v Azure Blob Storage](storage-blob-change-f
 
 - Hodnoty v kontejneru vlastností `storageDiagnonstics` jsou pouze pro interní použití a nejsou určeny pro použití vaší aplikací. Vaše aplikace by neměly mít na těchto datech smluvní závislost. Tyto vlastnosti můžete bezpečně ignorovat.
 
-- Čas reprezentovaný segmentem je **přibližný** s mezemi po dobu 15 minut. Aby se zajistila spotřeba všech záznamů v zadaném čase, využijte po sobě jdoucí a další hodinový segment.
+- Čas reprezentovaný segmentem je **přibližný** s mezemi po dobu 15 minut. Aby se zajistila spotřeba všech záznamů v určitou dobu, využijte po sobě jdoucí a další hodinový segment.
 
-- Každý segment může mít jiný počet `chunkFilePaths`. Důvodem je interní dělení datového proudu protokolu pro správu propustnosti publikování. Soubory protokolů v každé `chunkFilePath` jsou zaručené, aby obsahovaly vzájemně se vylučující objekty blob, a je možné je používat a zpracovávat paralelně, aniž by došlo k porušení pořadí úprav na objekt BLOB během iterace.
+- Každý segment může mít jiný počet `chunkFilePaths`. Důvodem je interní dělení datového proudu protokolu pro správu propustnosti publikování. Protokolové soubory v každé `chunkFilePath` mají zaručit vzájemně se vylučující objekty BLOB a dají se používat a zpracovávat paralelně, aniž by došlo k porušení pořadí úprav na objekt BLOB během iterace.
 
 - Segmenty jsou spouštěny ve stavu `Publishing`. Po dokončení připojení záznamů do segmentu bude `Finalized`. Soubory protokolu v jakémkoli segmentu, který je datován po datu vlastnosti `LastConsumable` v souboru `$blobchangefeed/meta/Segments.json`, by neměly být aplikací spotřebovány. Tady je příklad vlastnosti `LastConsumable`v souboru `$blobchangefeed/meta/Segments.json`:
 
@@ -302,7 +302,16 @@ Tato část popisuje známé problémy a podmínky v současnosti ve verzi Publi
 - Vlastnost `url` souboru protokolu je vždy prázdná.
 - Vlastnost `LastConsumable` souboru segmentes. JSON neobsahuje seznam velmi prvního segmentu, který dokončí kanál změn. K tomuto problému dochází až po finalizaci prvního segmentu. Všechny následné segmenty po první hodiny jsou přesně zachyceny ve vlastnosti `LastConsumable`.
 
+## <a name="faq"></a>Nejčastější dotazy
+
+### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Jaký je rozdíl mezi kanálem změny a protokolováním Analýza úložiště?
+Kanál změn je optimalizován pro vývoj aplikací, protože v protokolu změn kanálu jsou zaznamenány pouze úspěšné události vytvoření, změny a odstranění objektu BLOB. Protokolování analýz zaznamenává všechny úspěšné a neúspěšné požadavky napříč všemi operacemi, včetně operací čtení a výpisu. Když použijete kanál změn, nemusíte se starat o filtrování šumu v protokolu u velkého účtu transakce a soustředit se jenom na události změny objektu BLOB.
+
+### <a name="should-i-use-change-feed-or-storage-events"></a>Mám použít události změny kanálu nebo úložiště?
+Obě funkce můžete využívat jako kanál změn a [události služby Blob Storage](storage-blob-event-overview.md) jsou podobné jako v podstatě a hlavním rozdílem je latence, řazení a ukládání záznamů událostí. Změna kanálu zapisuje záznamy do protokolu změn, které jsou hromadně zapisovány, a přitom zaručuje pořadí operací změny objektů BLOB. Události úložiště jsou vloženy v reálném čase a nemusí být seřazeny. Události změny kanálu jsou trvale uložené v rámci vašeho účtu úložiště, zatímco události úložiště jsou přechodné a spotřebované obslužnou rutinou události, pokud je neuložíte explicitně.
+
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na příklad, jak číst kanál změn pomocí klientské aplikace .NET. Viz [protokol kanálu změny procesu v Azure Blob Storage](storage-blob-change-feed-how-to.md).
 - Přečtěte si, jak reagovat na události v reálném čase. Viz [reakce na události BLOB Storage](storage-blob-event-overview.md) .
+- Přečtěte si další informace o podrobném protokolování pro úspěšné i neúspěšné operace pro všechny požadavky. Viz [protokolování analýzy Azure Storage](../common/storage-analytics-logging.md) .

@@ -1,17 +1,14 @@
 ---
-title: Funkce šablon Azure Resource Manager – numerický | Microsoft Docs
+title: Funkce šablon – numerický
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s čísly.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.author: tomfitz
-ms.openlocfilehash: 3ec5477ca6ea1731f18b09d6393bdde6261e0c32
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b663f27d48e3ee4e7ee2a96794015555417b3608
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194332"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149616"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Číselné funkce pro šablony Azure Resource Manager
 
@@ -32,7 +29,7 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>Přidat
+## <a name="add"></a>add
 `add(operand1, operand2)`
 
 Vrátí součet dvou poskytnutých celých čísel.
@@ -85,7 +82,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
@@ -202,7 +199,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
@@ -296,7 +293,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
@@ -314,7 +311,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>max
+## <a name="max"></a>Počet
 `max (arg1)`
 
 Vrátí maximální hodnotu z pole celých čísel nebo seznam celých čísel oddělených čárkami.
@@ -359,7 +356,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -423,7 +420,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -494,7 +491,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
@@ -565,7 +562,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
@@ -635,7 +632,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | podvýsledek | Int | 4 |
 
@@ -651,7 +648,7 @@ Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, po
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 * K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).

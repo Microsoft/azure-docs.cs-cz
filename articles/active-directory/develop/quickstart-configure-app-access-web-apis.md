@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473698"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106606"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
@@ -43,7 +43,7 @@ V tomto rychlém startu si ukážeme, jak nakonfigurovat aplikaci následující
 * [Přidání přihlašovacích údajů do webové aplikace](#add-credentials-to-your-web-application)
 * [Přidání oprávnění pro přístup k webovým rozhraním API](#add-permissions-to-access-web-apis)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte splnit následující požadavky:
 
@@ -133,7 +133,7 @@ Při konfiguraci nastavení aplikace na základě platformy nebo zařízení cí
    | **Webové aplikace**    | **Web**              | Zadejte **identifikátor URI pro přesměrování** vaší aplikace. |
    | **Mobilní aplikace** | **iOS**              | Zadejte **ID sady prostředků**aplikace, které najdete v Xcode v souboru info. plist nebo nastavení sestavení. Přidání ID sady prostředků automaticky vytvoří identifikátor URI přesměrování pro aplikaci. |
    |                         | **Android**          | * Zadejte **název balíčku**aplikace, který můžete najít v souboru souboru AndroidManifest. XML.<br/>* Vygenerujte a zadejte **hodnotu hash podpisu**. Přidání hodnoty hash signatury automaticky vytvoří identifikátor URI přesměrování pro aplikaci.  |
-   | **Plocha a zařízení**   | **Plocha a zařízení** | Volitelné. Pokud vytváříte aplikace pro stolní počítače a zařízení, vyberte jeden z doporučených **identifikátorů URI pro přesměrování** .<br/>Volitelné. Zadejte **vlastní identifikátor URI pro přesměrování**, který se používá jako umístění, kde Azure AD bude uživatele přesměrovat v reakci na žádosti o ověření. Například pro aplikace .NET Core, kde chcete použít interakci, použijte `https://localhost`. |
+   | **Plocha a zařízení**   | **Plocha a zařízení** | Volitelné. Pokud vytváříte aplikace pro stolní počítače a zařízení, vyberte jeden z doporučených **identifikátorů URI pro přesměrování** .<br/>Volitelné. Zadejte **vlastní identifikátor URI pro přesměrování**, který se používá jako umístění, kde Azure AD bude uživatele přesměrovat v reakci na žádosti o ověření. Například pro aplikace .NET Core, kde chcete interakce, použijte `https://localhost`. |
 
    > [!IMPORTANT]
    > Pro mobilní aplikace, které nepoužívají nejnovější knihovnu MSAL nebo nepoužívají zprostředkovatele, je nutné nakonfigurovat identifikátory URI přesměrování pro tyto aplikace v **desktopových a mobilních zařízeních**.
@@ -171,13 +171,40 @@ Přidání přihlašovacích údajů do webové aplikace:
 Přidání oprávnění pro přístup k rozhraní API prostředků z klienta:
 
 1. Na stránce **Přehled** aplikace vyberte **Oprávnění rozhraní API**.
-1. Vyberte tlačítko **Přidat oprávnění**.
+1. V části **konfigurovaná oprávnění** vyberte tlačítko **Přidat oprávnění** .
 1. Ve výchozím nastavení si v tomto zobrazení můžete vybrat z **rozhraní API Microsoftu**. Vyberte sekci rozhraní API, která vás zajímají:
     * **Rozhraní API Microsoftu** – Umožňuje vybrat oprávnění pro rozhraní API Microsoftu, jako je Microsoft Graph.
     * **Rozhraní API, která používá moje organizace** – Umožňuje vybrat oprávnění pro rozhraní API zveřejněná vaší organizací nebo rozhraní API, která vaše organizace integrovala.
     * **Moje rozhraní API** – Umožňuje vybrat oprávnění pro rozhraní API, která jste zveřejnili.
 1. Jakmile vyberete rozhraní API, zobrazí se stránka **Požádat o oprávnění rozhraní API**. Pokud rozhraní API zveřejňuje delegovaná oprávnění i oprávnění aplikace, vyberte, který typ oprávnění vaše aplikace potřebuje.
 1. Až budete hotovi, vyberte **Přidat oprávnění**. Vrátíte se na stránku **Oprávnění rozhraní API**, kde se v tabulce zobrazí uložená a přidaná oprávnění.
+
+## <a name="understanding-api-permissions-and-admin-consent-ui"></a>Principy oprávnění k rozhraní API a uživatelského rozhraní pro vyjádření souhlasu správce
+
+### <a name="configured-permissions"></a>Nakonfigurovaná oprávnění
+
+V této části se zobrazují oprávnění, která jsou explicitně nakonfigurovaná u objektu aplikace (\the oprávnění, která jsou součástí seznamu požadavků na přístup k požadovaným prostředkům v aplikaci). V této tabulce můžete přidat nebo odebrat oprávnění. Jako správce můžete taky udělit nebo odvolat souhlas správce pro sadu oprávnění rozhraní API nebo individuálních oprávnění v této části.
+
+### <a name="other-permissions-granted"></a>Další udělená oprávnění
+
+Pokud je vaše aplikace registrovaná v tenantovi, může se zobrazit další oddíl s názvem **Další oprávnění udělená pro tenanta**. V této části se zobrazují oprávnění udělená pro tenanta, ale nebyla explicitně nakonfigurovaná u objektu aplikace (např. oprávnění, která byla dynamicky vyžádána a poslána). Tato část se zobrazí jenom v případě, že existuje aspoň jedno oprávnění, které platí.
+
+Do oddílu **konfigurovaná oprávnění** můžete přidat sadu oprávnění rozhraní API nebo jednotlivá oprávnění, která se zobrazí v této části. Jako správce můžete také odvolat souhlas správce pro jednotlivá rozhraní API nebo oprávnění v této části.
+
+### <a name="admin-consent-button"></a>Tlačítko pro souhlas správce
+
+Pokud je vaše aplikace registrovaná v tenantovi, zobrazí se tlačítko **udělení souhlasu správce pro tenanta** . Pokud nejste správcem, nebo pokud pro aplikaci nejsou nakonfigurovaná žádná oprávnění, bude zakázaná.
+Toto tlačítko umožňuje správci snadno udělit souhlas správce k oprávněním nakonfigurovaným pro aplikaci. Kliknutím na tlačítko souhlasu správce se otevře nové okno s výzvou, kde se zobrazí všechna nakonfigurovaná oprávnění.
+
+> [!NOTE]
+> Mezi oprávněními nakonfigurovanými pro aplikaci a jejich zobrazením na výzvu k vyjádření souhlasu dochází ke zpoždění. Pokud nevidíte všechna nakonfigurovaná oprávnění v příkazovém řádku, zavřete ji a znovu ji spusťte.
+
+Pokud máte oprávnění, která byla udělena, ale nejsou nakonfigurovaná, po kliknutí na tlačítko souhlasu správce se zobrazí výzva k rozhodnutí, jak tato oprávnění zpracovat. Můžete je přidat do konfigurovaných oprávnění nebo je můžete odebrat.
+
+Výzva k vyjádření souhlasu nabízí možnost **přijmout** nebo **Zrušit**. Pokud vyberete **přijmout**, udělí se souhlas správce. Pokud vyberete **Zrušit**, není uděleno oprávnění správce a zobrazí se chyba s oznámením, že souhlas byl odmítnut.
+
+> [!NOTE]
+> Existuje zpoždění mezi udělením souhlasu správce (vyberte **přijmout** na výzvu k vyjádření souhlasu) a stav souhlasu správce se odrazí v uživatelském rozhraní.
 
 ## <a name="next-steps"></a>Další kroky
 

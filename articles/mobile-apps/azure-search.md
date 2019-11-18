@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 1e3e198c38215ceacbe43961bf93ab906e5ccc09
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 335df16e6a6436485521611aee0f0a62edca8a3b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846265"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123449"
 ---
 # <a name="ai-powered-cloud-service-with-azure-cognitive-search"></a>Cloudová služba s podporou AI s využitím Azure Kognitivní hledání
 [Azure kognitivní hledání](https://azure.microsoft.com/services/search/) je cloudové řešení hledání jako služby, které vývojářům poskytuje rozhraní API a nástroje pro přidávání bohatých možností vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. Váš vlastní kód vyvolá ingestování dat (indexování) pro vytvoření a načtení indexu. Na druhé straně kód aplikace vystavuje požadavky na dotazy a zpracovává odpovědi. Možnosti vyhledávání jsou ve vašem klientovi definované pomocí funkcí z Azure Kognitivní hledání. provádění dotazů se provádí prostřednictvím trvalého indexu, který vytvoříte, vlastníte a ukládáte do své služby.
@@ -33,7 +33,7 @@ Vyhledání podrobného popisu [funkcí](/azure/search/search-what-is-azure-sear
 - [Azure Portal](https://portal.azure.com) 
 - [ Dokumentace](/azure/search/)
 - [Příručka pro vývojáře](https://azure.microsoft.com/resources/iot-developers-guide/)
-- [Jak používat Azure Kognitivní hledání](/azure/search/search-what-is-azure-search#how-to-use-azure-search)
+- [Jak používat Azure Kognitivní hledání](/azure/search/search-what-is-azure-search#how-to-use-azure-cognitive-search)
 - [Rychlé starty](/azure/search/search-create-service-portal)
 
   

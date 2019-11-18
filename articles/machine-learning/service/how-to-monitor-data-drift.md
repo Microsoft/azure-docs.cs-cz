@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824260"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111877"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Pomocí Azure Machine Learning můžete sledovat vstupy modelu nasazeného na AK
 + Posílat výstrahy na posun dat e-mailem
 
 > [!Note]
-> Tato služba je v (Preview) a omezená z možností konfigurace. Podrobnosti a aktualizace najdete v naší [dokumentaci k rozhraní API](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) a v [poznámkách k verzi](azure-machine-learning-release-notes.md) . 
+> Tato služba je v (Preview) a omezená z možností konfigurace. Podrobnosti a aktualizace najdete v naší [dokumentaci k rozhraní API](https://docs.microsoft.com/python/api/azureml-datadrift/) a v [poznámkách k verzi](azure-machine-learning-release-notes.md) . 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Jak se monitoruje posun dat v Azure Machine Learning
 
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Odeslání DataDriftDetector spuštění
 
-S nakonfigurovaným objektem `DataDriftDetector` můžete odeslat [Posun dat spuštěný](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) v daném datu pro daný model. V rámci spuštění povolte výstrahy DataDriftDetector nastavením parametru `drift_threshold`. Pokud je [datadrift_coefficient](#metrics) nad daným `drift_threshold`, pošle se e-mail.
+S nakonfigurovaným objektem `DataDriftDetector` můžete odeslat [Posun dat spuštěný](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-) v daném datu pro daný model. V rámci spuštění povolte výstrahy DataDriftDetector nastavením parametru `drift_threshold`. Pokud je [datadrift_coefficient](#visualize-drift-metrics) nad daným `drift_threshold`, pošle se e-mail.
 
 ```python
 # adhoc run today

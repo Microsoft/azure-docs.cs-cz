@@ -1,25 +1,17 @@
 ---
-title: Nejčastější dotazy k Azure cache pro Redis | Microsoft Docs
+title: Nejčastější dotazy ke službě Azure Cache for Redis
 description: Přečtěte si odpovědi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785844"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122796"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
@@ -136,19 +128,19 @@ Z této tabulky můžeme vykreslit následující závěry:
 | Cenová úroveň | Velikost | Procesorová jádra | Dostupná šířka pásma | velikost hodnoty 1 – KB | velikost hodnoty 1 – KB |
 | --- | --- | --- | --- | --- | --- |
 | **Standardní velikosti mezipaměti** | | |**Megabitů za sekundu (MB/s)/megabajtů za sekundu (MB/s)** |**Počet požadavků za sekundu (RPS) bez SSL** |**SSL požadavků za sekundu (RPS)** |
-| C0 | 250 MB | Shared | 100/12,5  |  15 000 |   7 500 |
-| C1 |   1 GB | 1\. místo      | 500/62,5  |  38 000 |  20 720 |
-| C2 | 2,5 GB | 2      | 500/62,5  |  41 000 |  37 000 |
-| C3 |   6 GB | 4      | 1000/125  | 100 000 |  90 000 |
-| C4 |  13 GB | 2      | 500/62,5  |  60 000 |  55 000 |
-| C5 |  26 GB | 4      | 1 000/125 | 102 000 |  93 000 |
-| C6 |  53 GB | 8      | 2 000/250 | 126 000 | 120 000 |
+| C0 | 250 MB | Sdílené | 100 / 12.5  |  15,000 |   7,500 |
+| C1 |   1 GB | 1      | 500 / 62.5  |  38 000 |  20 720 |
+| C2 | 2,5 GB | 2      | 500 / 62.5  |  41 000 |  37 000 |
+| C3 |   6 GB | 4      | 1000/125  | 100 000 |  90,000 |
+| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55 000 |
+| C5 |  26 GB | 4      | 1,000 / 125 | 102 000 |  93 000 |
+| C6 |  53 GB | 8      | 2,000 / 250 | 126 000 | 120,000 |
 | **Velikosti mezipaměti úrovně Premium** | |**PROCESORová jádra na horizontálních oddílů** | **Megabitů za sekundu (MB/s)/megabajtů za sekundu (MB/s)** |**Počet požadavků za sekundu (RPS) jiný než SSL na horizontálních oddílů** |**Počet požadavků SSL za sekundu (RPS), za horizontálních oddílů** |
-| P1 |   6 GB |  2 | 1 500/187,5 | 180 000 | 172 000 |
-| P2 |  13 GB |  4 | 3 000/375   | 350 000 | 341 000 |
-| P3 |  26 GB |  4 | 3 000/375   | 350 000 | 341 000 |
-| P4 |  53 GB |  8 | 6 000/750   | 400 000 | 373 000 |
-| P5 | 120 GB | 20 | 6 000/750   | 400 000 | 373 000 |
+| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172 000 |
+| P2 |  13 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
+| P3 |  26 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
+| P4 |  53 GB |  8 | 6,000 / 750   | 400 000 | 373 000 |
+| P5 | 120 GB | 20 | 6,000 / 750   | 400 000 | 373 000 |
 
 Pokyny k nastavení stunnelu nebo stažení nástrojů Redis, jako jsou `redis-benchmark.exe`, najdete v části [Jak můžu spustit příkazy Redis?](#cache-commands) .
 
@@ -167,10 +159,10 @@ Ano, mezipaměť Azure pro Redis je dostupná v cloudu Azure Government, Azure �
 
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
-| Veřejné  | *. redis.cache.windows.net       |
-| Vláda USA  | *. redis.cache.usgovcloudapi.net |
-| Německo | *. redis.cache.cloudapi.de       |
-| Čína   | *. redis.cache.chinacloudapi.cn  |
+| Public  | *.redis.cache.windows.net       |
+| Vláda USA  | *.redis.cache.usgovcloudapi.net |
+| Německo | *.redis.cache.cloudapi.de       |
+| Čína   | *.redis.cache.chinacloudapi.cn  |
 
 Další informace o tom, co je třeba zvážit při použití mezipaměti Azure pro Redis s jinými cloudy, najdete na následujících odkazech.
 
@@ -204,7 +196,7 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
   * Pro aplikaci použijte jednu instanci ConnectionMultiplexer. Pomocí LazyConnection můžete vytvořit jednu instanci, která je vrácena vlastností připojení, jak je znázorněno v [části připojení k mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * Pro účely diagnostiky nastavte vlastnost `ConnectionMultiplexer.ClientName` na jedinečný název instance aplikace.
   * Pro vlastní úlohy použijte více instancí `ConnectionMultiplexer`.
-      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Například:
+      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Příklad:
       * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
       * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
       * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
@@ -219,7 +211,7 @@ Jednou z skvělých věcí o Redis je to, že mnoho klientů podporuje mnoho rů
 <a name="cache-emulator"></a>
 
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Existuje místní emulátor pro Azure cache pro Redis?
-Pro službu Azure cache pro Redis není k dispozici žádný místní emulátor, ale z [nástrojů příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/) na místním počítači můžete spustit MSOpenTech verzi Redis-Server. exe a připojit se k němu a získat tak podobné prostředí emulátoru místní mezipaměti, jak je znázorněno na Následující příklad:
+Pro službu Azure cache pro Redis není k dispozici žádný místní emulátor, ale z [nástrojů příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/) na místním počítači můžete spustit MSOpenTech verzi Redis-Server. exe a připojit se k němu a získat tak podobné prostředí emulátoru místní mezipaměti, jak je znázorněno v následujícím příkladu:
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
@@ -297,7 +289,7 @@ Server Redis neumožňuje nativně podporovat protokol SSL, ale mezipaměť Azur
 >
 >
 
-Redis nástroje, jako je například `redis-cli`, nefungují s portem SSL, ale můžete použít nástroj, jako je například `stunnel` k bezpečnému připojení nástrojů k portu SSL, a to podle pokynů v blogu [oznámení poskytovatele stavu relace ASP.NET pro Redis ve verzi Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) . spuštění.
+Redis nástroje, jako je například `redis-cli`, nefungují s portem SSL, ale můžete použít nástroj, jako je například `stunnel` k bezpečnému připojení nástrojů k portu SSL, a to podle pokynů v tomto příspěvku na blogovém příspěvku s [oznámením ASP.NET pro vydání Redis verze Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) .
 
 Pokyny ke stažení nástrojů Redis naleznete v části How to [Run Redis Commands?](#cache-commands)
 
@@ -333,7 +325,7 @@ Pokyny ke stažení nástrojů Redis naleznete v části How to [Run Redis Comma
 
 * Vyhněte se použití určitých příkazů Redis, jejichž dokončení trvá dlouhou dobu, pokud plně nerozumíte dopadu těchto příkazů. Nespouštějte například příkaz [Keys](https://redis.io/commands/keys) v produkčním prostředí. V závislosti na počtu klíčů může vrácení zpět trvat dlouhou dobu. Redis je jeden podproces serveru a zpracovává příkazy po jednom. Pokud máte další příkazy vydané po KLÍČích, nebudou zpracovány, dokud Redis nezpracuje příkaz KEYS. [Web Redis.IO](https://redis.io/commands/) obsahuje podrobnosti o časové složitosti každé podporované operace. Pro zobrazení složitosti jednotlivých operací klikněte na jednotlivé příkazy.
 * Velikosti klíčů – mám použít malé hodnoty a hodnoty nebo velký klíč/hodnoty? Závisí na scénáři. Pokud váš scénář vyžaduje větší klíče, můžete upravit ConnectionTimeout a pak opakovat hodnoty a upravit logiku opakování. V perspektivě serveru Redis menší hodnoty poskytují lepší výkon.
-* Tato doporučení neznamenají, že v Redis nemůžete ukládat větší hodnoty; je nutné vzít v úvahu následující skutečnosti. Latence budou vyšší. Pokud máte jednu sadu dat, která je větší a menší, můžete použít několik instancí ConnectionMultiplexer, z nichž každá je nakonfigurovaná s jinou sadou časových limitů a opakovanými hodnotami, jak je popsáno v předchozí části [co je konfigurace stackexchange. Redis. oddíl Options](#cache-configuration) .
+* Tato doporučení neznamenají, že v Redis nemůžete ukládat větší hodnoty; je nutné vzít v úvahu následující skutečnosti. Latence budou vyšší. Pokud máte jednu sadu dat, která je větší a menší, můžete použít několik instancí ConnectionMultiplexer, z nichž každá je nakonfigurovaná s jinou sadou časových limitů a opakováním, jak je popsáno v předchozím oddílu věnovaném [možnostem konfigurace stackexchange. Redis](#cache-configuration) .
 
 <a name="cache-benchmarking"></a>
 
@@ -389,7 +381,7 @@ S těmito informacemi doporučujeme, aby zákazníci nastavili minimální hodno
 
 Jak nakonfigurovat toto nastavení:
 
-* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs`. Například:
+* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs`. Příklad:
 
 ```cs
 private readonly int minThreads = 200;
@@ -418,7 +410,7 @@ void Application_Start(object sender, EventArgs e)
 Povolením GC serveru můžete optimalizovat klienta a zajistit lepší výkon a propustnost při používání StackExchange. Redis. Další informace o nástroji GC serveru a jeho povolení najdete v následujících článcích:
 
 * [Povolení serveru GC](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
-* [Základní informace o uvolňování paměti](/dotnet/standard/garbage-collection/fundamentals)
+* [Základy kolekce paměti](/dotnet/standard/garbage-collection/fundamentals)
 * [Uvolňování paměti a výkon](/dotnet/standard/garbage-collection/performance)
 
 

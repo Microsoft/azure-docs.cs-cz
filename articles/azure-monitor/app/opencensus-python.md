@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575570"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132206"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Nastavení Azure Monitor pro aplikaci v Pythonu (Preview)
 
@@ -26,7 +26,7 @@ Azure Monitor podporuje distribuované trasování, shromažďování metrik a p
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Vytvoření prostředku Application Insights v Azure Monitor
 
@@ -42,7 +42,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
-   | **Umístění** | Východ USA | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
+   | **Umístění** | Východní USA | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
 
 1. Vyberte **Vytvořit**.
 
@@ -109,7 +109,6 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
     tracer = Tracer(
         exporter=AzureExporter(
             connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
-        ),
         sampler=ProbabilitySampler(1.0),
     )
 
@@ -215,7 +214,7 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
     # TODO: replace the all-zero GUID with your instrumentation key.
     exporter = metrics_exporter.new_metrics_exporter(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+
     view_manager.register_exporter(exporter)
 
     def prompt():
@@ -298,30 +297,6 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
 
 5. Podrobnosti o tom, jak rozšířit protokoly pomocí dat kontextu trasování, najdete v tématu OpenCensus Python [logs Integration](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Zahájení monitorování na webu Azure Portal
-
-1. Nyní můžete znovu otevřít podokno **přehledu** Application Insights v Azure Portal, chcete-li zobrazit podrobnosti o aktuálně spuštěné aplikaci. Vyberte **Live Metrics Stream**.
-
-   ![Snímek obrazovky s podoknem přehled s názvem Live Metrics Stream vybraný v červeném poli](./media/opencensus-python/0005-overview-live-metrics-stream.png)
-
-2. Vraťte se zpět do podokna **Přehled** . Vyberte **Mapa aplikace** pro vizuální rozložení vztahů závislosti a časování volání mezi komponentami vaší aplikace.
-
-   ![Snímek obrazovky se základní mapou aplikace](./media/opencensus-python/0007-application-map.png)
-
-   Vzhledem k tomu, že jsme provedli trasování pouze jednoho volání metody, není naše mapa aplikace zajímavá. Mapa aplikace se ale může škálovat a vizualizovat mnohem více distribuovaných aplikací:
-
-   ![Mapa aplikace](media/opencensus-python/application-map.png)
-
-3. Chcete-li podrobně analyzovat výkon a určit hlavní příčinu pomalého výkonu, vyberte možnost **prozkoumat výkon** .
-
-   ![Snímek obrazovky s podrobnostmi o výkonu](./media/opencensus-python/0008-performance.png)
-
-4. Chcete-li otevřít koncové prostředí pro podrobnosti transakce, vyberte možnost **ukázky**a potom vyberte některou z ukázek, které se zobrazí v pravém podokně. 
-
-   I když naše ukázková aplikace zobrazuje jenom jednu událost, složitější aplikace vám umožní prozkoumat koncovou transakci dolů na úroveň zásobníku volání jednotlivých událostí.
-
-   ![Snímek obrazovky s koncovým rozhraním transakce](./media/opencensus-python/0009-end-to-end-transaction.png)
-
 ## <a name="view-your-data-with-queries"></a>Zobrazení dat pomocí dotazů
 
 Data telemetrie, která byla odeslána z vaší aplikace, můžete zobrazit prostřednictvím karty **protokoly (Analytics)** .
@@ -350,7 +325,7 @@ Podrobnější informace o používání dotazů a protokolů najdete [v tématu
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
 * [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 * [Testy dostupnosti:](../../azure-monitor/app/monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
 * [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.

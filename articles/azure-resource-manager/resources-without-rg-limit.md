@@ -1,17 +1,14 @@
 ---
-title: Prostředky Azure bez omezení počtu 800
+title: Prostředky bez omezení počtu 800
 description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.author: tomfitz
-ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ad0a3d83738a5bd51d9c2833a71d09038bd97116
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795653"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150356"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -20,83 +17,83 @@ Ve výchozím nastavení můžete do každé skupiny prostředků nasadit až 80
 U některých typů prostředků musíte kontaktovat podporu, aby byl limit instance 800 odebraný. Tyto typy prostředků jsou uvedeny v tomto článku.
 
 
-## <a name="microsoftautomation"></a>Microsoft. Automation
+## <a name="microsoftautomation"></a>Microsoft.Automation
 
 * automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft. AzureStack
+## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
-* rozpoznávání
+* registrations
 * registrace/customerSubscriptions
 * registrace/produkty
 
-## <a name="microsoftbotservice"></a>Microsoft. BotService
+## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 * botServices – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* disků
+* disks
 * images
 * snímky
-* VirtualMachines
+* virtualMachines
 
-## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 * containerGroups
 
-## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 * Registry/buildTasks
 * Registry/buildTasks/listSourceRepositoryProperties
 * Registry/buildTasks/kroky
 * Registry/buildTasks/Steps/listBuildArguments
-* Registry/eventGridFilters
-* Registry/replikace
-* Registry/úlohy
-* Registry a Webhooky
+* registries/eventGridFilters
+* registries/replications
+* registries/tasks
+* registries/webhooks
 
-## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
-
-* servery
-
-## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 * servery
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
+## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+
+* servery
+
+## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 * serverGroups
 * servery
 * serversv2
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 * services
 
-## <a name="microsofteventhub"></a>Microsoft. EventHub
+## <a name="microsofteventhub"></a>Microsoft.EventHub
 
-* existující
-* Obsažené
+* clusters
+* namespaces
 
 ## <a name="microsoftexperimentation"></a>Microsoft. experimentování
 
 * experimentWorkspaces
 
-## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 * configurationProfileAssignments
 * guestConfigurationAssignments
-* Vybavení
+* software
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftlogic"></a>Microsoft. Logic
+## <a name="microsoftlogic"></a>Microsoft.Logic
 
 * integrationAccounts
-* Zpracovávaný
+* workflows
 
-## <a name="microsoftnetapp"></a>Microsoft. NetApp
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 * netAppAccounts
 * netAppAccounts/capacityPools
@@ -143,32 +140,32 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * trafficmanagerprofiles
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 * workspaceCollections – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
-## <a name="microsoftrelay"></a>Microsoft. Relay
+## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* Obsažené
+* namespaces
 
-## <a name="microsoftscheduler"></a>Microsoft. Scheduler
+## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * jobcollections
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* Obsažené
+* namespaces
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* aplikací
+* aplikace
 * containerGroups
 * brány
-* sítí
+* networks
 * záleží
 * volumes
 
@@ -176,10 +173,10 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * storageAccounts
 
-## <a name="microsoftweb"></a>Microsoft. Web
+## <a name="microsoftweb"></a>Microsoft.Web
 
 * apiManagementAccounts/rozhraní API
-* místa
+* sites
 
 ## <a name="next-steps"></a>Další kroky
 

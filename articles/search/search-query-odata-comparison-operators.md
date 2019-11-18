@@ -1,7 +1,7 @@
 ---
 title: Odkaz na relační operátor OData
 titleSuffix: Azure Cognitive Search
-description: Relační operátory OData, EQ, ne, gt, lt, GE a Le v Azure Kognitivní hledání dotazy.
+description: Syntaxe a referenční dokumentace pro použití relačních operátorů OData (EQ, ne, gt, lt, GE a Le) v Azure Kognitivní hledáních dotazech.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 068e2ec822f0a292ac83b3e48049830eb77b49f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793388"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113218"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Operátory porovnání OData v Azure Kognitivní hledání-`eq`, `ne`, `gt`, `lt`, `ge`a `le`
 
@@ -32,15 +32,15 @@ Nejzákladnější operace ve [výrazu filtru OData](query-odata-filter-orderby-
 
 Operátory rovnosti:
 
-- `eq`: test, zda je pole **rovno** konstantní hodnotě
-- `ne`: test, zda pole není **rovno** konstantní hodnotě
+- `eq`: Otestujte, jestli je pole **rovno** konstantní hodnotě.
+- `ne`: Otestujte, jestli se pole **nerovná** konstantní hodnotě.
 
 Operátory rozsahu:
 
-- `gt`: test, zda je pole **větší než** konstantní hodnota
-- `lt`: test, zda je pole **menší než** hodnota konstanty
-- `ge`: test, zda je pole **větší nebo rovno** konstantní hodnotě
-- `le`: test, zda je pole **menší nebo rovno** konstantní hodnotě
+- `gt`: Otestujte, jestli je pole **větší než** hodnota konstanty.
+- `lt`: Otestujte, jestli je pole **menší než** hodnota konstanty.
+- `ge`: Otestujte, jestli je pole **větší nebo rovno** konstantní hodnotě.
+- `le`: Otestujte, jestli je pole **menší nebo rovno** konstantní hodnotě.
 
 Operátory rozsahu v kombinaci s [logickými operátory](search-query-odata-logical-operators.md) můžete použít k otestování, zda je pole v určitém rozsahu hodnot. Podívejte se na [Příklady](#examples) dále v tomto článku.
 
@@ -81,13 +81,13 @@ Datové typy na obou stranách relačního operátoru musí být kompatibilní. 
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | Pro porovnání se vztahují [zvláštní pravidla `NaN`](#special-case-nan) |
 | `Edm.Double` | `Edm.Int64` | Konstanta se převede na `Edm.Double`, což vede ke ztrátě přesnosti pro hodnoty velké velikosti. |
-| `Edm.Double` | `Edm.Int32` | – |
+| `Edm.Double` | `Edm.Int32` | neuvedeno |
 | `Edm.Int64` | `Edm.Double` | Porovnávání `NaN`, `-INF`nebo `INF` nejsou povolena. |
-| `Edm.Int64` | `Edm.Int64` | – |
+| `Edm.Int64` | `Edm.Int64` | neuvedeno |
 | `Edm.Int64` | `Edm.Int32` | Konstanta se převede na `Edm.Int64` před porovnáním. |
 | `Edm.Int32` | `Edm.Double` | Porovnávání `NaN`, `-INF`nebo `INF` nejsou povolena. |
-| `Edm.Int32` | `Edm.Int64` | – |
-| `Edm.Int32` | `Edm.Int32` | – |
+| `Edm.Int32` | `Edm.Int64` | neuvedeno |
+| `Edm.Int32` | `Edm.Int32` | neuvedeno |
 
 Pro porovnávání, které nejsou povolené, jako je například porovnání pole typu `Edm.Int64` s `NaN`, REST API Azure Kognitivní hledání vrátí chybu HTTP 400: Bad Request.
 

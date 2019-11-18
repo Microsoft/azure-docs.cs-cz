@@ -1,5 +1,5 @@
 ---
-title: Jak používat Azure Kognitivní hledání z aplikace .NET
+title: Použití Azure Kognitivní hledání v .NET
 titleSuffix: Azure Cognitive Search
 description: Naučte se, jak používat Azure Kognitivní hledání v aplikaci .NET C# pomocí a .NET SDK. Úkoly založené na kódu zahrnují připojení ke službě, indexování obsahu a dotazování indexu.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e1903b3b33e1dde5178fadbc37feee191a2eaacd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792126"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112594"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Jak používat Azure Kognitivní hledání z aplikace .NET
 
@@ -33,8 +33,8 @@ Ostatní balíčky NuGet v sadě SDK jsou:
 
 Různé klientské knihovny definují třídy jako `Index`, `Field`a `Document`a také operace jako `Indexes.Create` a `Documents.Search` na `SearchServiceClient` a `SearchIndexClient`ch třídách. Tyto třídy jsou uspořádány do následujících oborů názvů:
 
-* [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft. Azure. Search. Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
+* [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Pokud chcete poskytnout zpětnou vazbu k budoucí aktualizaci sady SDK, přečtěte si naši [zpětnou vazbu](https://feedback.azure.com/forums/263029-azure-search/) nebo vytvořte problém na [GitHubu](https://github.com/azure/azure-sdk-for-net/issues) a uveďte "Azure kognitivní hledání" v názvu problému.
 

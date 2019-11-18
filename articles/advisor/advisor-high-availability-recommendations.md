@@ -1,114 +1,114 @@
 ---
-title: Zlepšení dostupnosti vaší aplikace s využitím Azure Advisoru | Dokumentace Microsoftu
-description: Použití Azure Advisoru ke zlepšení vysoké dostupnosti všech vašich nasazení Azure.
+title: Zlepšení dostupnosti aplikace pomocí Azure Advisor | Microsoft Docs
+description: Pomocí Azure Advisor můžete zlepšit vysokou dostupnost nasazení Azure.
 services: advisor
 documentationcenter: NA
-author: kasparks
-ms.author: kasparks
+author: saket-ms
+ms.author: sagupt
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd1b898adf4c4cdff45e05427757d90d5f80bf25
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446777"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145342"
 ---
-# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Zlepšení dostupnosti vaší aplikace s využitím Azure Advisoru
+# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Zlepšení dostupnosti aplikace pomocí Azure Advisor
 
-Azure Advisor pomáhá zajistit a zlepšování kontinuity důležité podnikové aplikace. Doporučení k vysoké dostupnosti v Advisoru z tak můžete získat **vysoké dostupnosti** karty řídicí panel služby Advisor.
+Azure Advisor vám pomůže zajistit a zlepšit kontinuitu důležitých podnikových aplikací. Doporučení pro vysokou dostupnost na kartě **Vysoká dostupnost** na řídicím panelu služby Advisor můžete získat pomocí Advisoru.
 
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Zajištění odolnosti proti chybám virtuálních počítačů
+## <a name="ensure-virtual-machine-fault-tolerance"></a>Zajištění odolnosti proti chybám virtuálního počítače
 
-Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Advisor identifikuje virtuální počítače, které nejsou součástí skupiny dostupnosti a doporučuje jejich přesunutí do skupiny dostupnosti. Tato konfigurace zajistí, že během buď plánované i neplánované údržby, alespoň jeden virtuální počítač je k dispozici a splňuje SLA pro Azure virtual Machines. Můžete vytvořit skupinu dostupnosti pro virtuální počítač nebo virtuální počítač přidat do stávající sady dostupnosti.
+Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Poradce identifikuje virtuální počítače, které nejsou součástí skupiny dostupnosti, a doporučuje je přesunout do skupiny dostupnosti. Tato konfigurace zajišťuje, že během plánované nebo neplánované události údržby je k dispozici aspoň jeden virtuální počítač a splňuje smlouvu SLA pro virtuální počítače Azure. Můžete zvolit vytvoření skupiny dostupnosti pro virtuální počítač nebo přidání virtuálního počítače do existující skupiny dostupnosti.
 
 > [!NOTE]
-> Pokud budete chtít vytvořit skupinu dostupnosti, je nutné přidat alespoň jeden další virtuální počítač do něj. Doporučujeme, abyste během výpadku je k dispozici, které sami seskupíte dvě nebo více virtuálních počítačů ve skupině dostupnosti nastavena zajistit, že aspoň jeden počítač.
+> Pokud se rozhodnete vytvořit skupinu dostupnosti, musíte do ní přidat aspoň jeden virtuální počítač. Doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti, aby bylo zajištěno, že během výpadku bude k dispozici alespoň jeden počítač.
 
-## <a name="ensure-availability-set-fault-tolerance"></a>Ujistěte se, že skupina dostupnosti, odolnosti proti chybám
+## <a name="ensure-availability-set-fault-tolerance"></a>Zajištění odolnosti proti chybám u sady dostupnosti
 
-Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Advisor určí skupiny dostupnosti, které obsahují jeden virtuální počítač a doporučuje přidání jednoho nebo více virtuálních počítačů k němu. Tato konfigurace zajistí, že během buď plánované i neplánované údržby, alespoň jeden virtuální počítač je k dispozici a splňuje SLA pro Azure virtual Machines. Můžete k vytvoření virtuálního počítače nebo přidat existující virtuální počítač do skupiny dostupnosti.  
+Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Poradce identifikuje skupiny dostupnosti, které obsahují jeden virtuální počítač a doporučuje do něj přidat jeden nebo více virtuálních počítačů. Tato konfigurace zajišťuje, že během plánované nebo neplánované události údržby je k dispozici aspoň jeden virtuální počítač a splňuje smlouvu SLA pro virtuální počítače Azure. Můžete se rozhodnout vytvořit virtuální počítač nebo přidat existující virtuální počítač do skupiny dostupnosti.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Zvýšení spolehlivosti dat s využitím spravovaných disků
 
-Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sdílejí účty úložiště nebo jednotky škálování úložiště nejsou během výpadků odolné vůči selhání jednotky škálování jednoho úložiště. Advisor vyhledá tyto skupiny dostupnosti a doporučí migrace na Azure Managed Disks. Tím se zajistí, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované, aby se zabránilo jediný bod selhání. 
+Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sdílejí buď účty úložiště nebo jednotky škálování úložiště, nejsou odolné vůči selhání jednotek škálování s jedním úložištěm během výpadků. Poradce tyto skupiny dostupnosti rozpozná a doporučí migraci do Azure Managed Disks. Tím se zajistí, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované, aby se předešlo jednomu bodu selhání. 
 
-## <a name="ensure-application-gateway-fault-tolerance"></a>Zajištění odolnosti proti chybám application gateway
+## <a name="ensure-application-gateway-fault-tolerance"></a>Zajištění odolnosti proti chybám služby Application Gateway
 
-Toto doporučení zajistí provozní kontinuitu klíčových aplikací, které využívají služby application Gateway. Advisor identifikuje instance brány aplikací, které nejsou konfigurovány pro odolnost proti chybám a navrhne nápravné akce, které můžete provést. Advisor určuje střední a velké aplikace s jedinou instancí brány a doporučí přidávání nejméně jedna další instance. Také určuje instance jednoho nebo více malých aplikačních bran a doporučuje migrace na střední nebo velké skladové položky. Advisor doporučuje tyto akce, které vaše aplikace instance brány jsou nakonfigurujte tak, aby splňovat požadavky na aktuální smlouvy SLA pro tyto prostředky.
+Toto doporučení zajišťuje kontinuitu podnikových aplikací pro klíčové aplikace, které využívají aplikační brány. Advisor identifikuje instance služby Application Gateway, které nejsou nakonfigurované pro odolnost proti chybám, a navrhuje akce oprav, které můžete provést. Advisor identifikuje střední nebo velké aplikační brány s jednou instancí a doporučuje přidat aspoň jednu další instanci. Také identifikuje malé aplikační brány s jedním nebo více instancemi a doporučuje migraci na střední nebo velké SKU. Poradce doporučuje tyto akce, aby bylo zajištěno, že instance služby Application Gateway jsou nakonfigurovány tak, aby splňovaly aktuální požadavky smlouvy SLA pro tyto prostředky.
 
-## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Ochrana před náhodným odstraněním dat virtuálního počítače
+## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Ochrana dat virtuálního počítače před náhodným odstraněním
 
-Nastavení zálohování virtuálních počítačů zajistí dostupnost důležitých podnikových dat a poskytuje ochranu proti náhodnému odstranění nebo poškození. Advisor identifikuje virtuální počítače, kde není povolené zálohování, a doporučí povolení zálohování. 
+Nastavení zálohování virtuálních počítačů zajišťuje dostupnost důležitých podnikových dat a nabízí ochranu před náhodným odstraněním nebo poškozením. Poradce identifikuje virtuální počítače, u kterých není zapnuté zálohování, a doporučuje povolení zálohování. 
 
-## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Zajistěte, že abyste měli přístup k odborníkům cloudu Azure, kdykoli ji potřebujete
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ujistěte se, že máte přístup k odborníkům na cloud Azure, když ho potřebujete.
 
-Při spuštění nejzásadnější úlohy, je důležité mít přístup k technické podpoře v případě potřeby. Advisor identifikuje potenciální nejzásadnější odběry, které nemají v jejich plán podpory součástí je technická podpora a doporučuje upgrade na možnost, která obsahuje technickou podporu.
+Při používání důležitých podnikových úloh je důležité mít v případě potřeby přístup k technické podpoře. Advisor identifikuje potenciální podniková předplatná, která neobsahují technickou podporu zahrnutou do plánu podpory a doporučuje upgradovat na možnost, která zahrnuje technickou podporu.
 
-## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Vytvoření služby Azure Service Health výstrahy, která vás upozorní, kdy vás ovlivňují problémy Azure
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Vytváření upozornění na Azure Service Health, která se mají upozornit, když se na vás bude týkat problémy Azure
 
-Doporučujeme nastavit upozornění služby Azure Service Health, která vás upozorní, kdy vás ovlivňují problémy se službami Azure. [Azure Service Health](https://azure.microsoft.com/features/service-health/) je bezplatná služba, která poskytuje individuální pokyny a podporu, když jsou ovlivněny problém se službou Azure. Advisor určí odběry, které nemají v nakonfigurovaná upozornění a doporučuje vytvoření nového.
+Doporučujeme, abyste nastavili výstrahy Azure Service Health, aby byly oznamovány, když se vás týkají problémy se službou Azure. [Azure Service Health](https://azure.microsoft.com/features/service-health/) je bezplatná služba, která poskytuje individuální pokyny a podporu v případě, že máte vliv na problém se službou Azure. Advisor identifikuje odběry, u kterých nejsou nakonfigurované výstrahy, a doporučuje je vytvořit.
 
-## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Konfigurace koncových bodů Traffic Manageru pro odolnost proti chybám
+## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Konfigurace koncových bodů Traffic Manager pro odolnost
 
-Profily Traffic Manageru s více než jeden koncový bod prostředí vyšší dostupnost, pokud se nezdaří libovolný daný koncový bod. Umístění koncových bodů v různých oblastech dále zvyšuje spolehlivost služby. Advisor identifikuje profily Traffic Manageru níž se nachází pouze jeden koncový bod a doporučuje přidávání aspoň jeden další koncový bod v jiné oblasti.
+Traffic Manager profily s více než jedním koncovým bodem se vyšší dostupností, pokud některý z těchto koncových bodů selhává. Umístění koncových bodů v různých oblastech dál vylepšuje spolehlivost služby. Poradce identifikuje profily Traffic Manageru, kde je pouze jeden koncový bod a doporučuje přidat alespoň jeden další koncový bod do jiné oblasti.
 
-Pokud všechny koncové body v profilu služby Traffic Manager, který je nakonfigurovaný pro směrování blízkých výrazů jsou ve stejné oblasti, uživatelé z jiných oblastí zaznamenat zpoždění připojení. Přidání nebo přesunutí koncový bod do jiné oblasti bude celkový výkon a zajištění lepší dostupnosti, pokud selžou i všechny koncové body v jedné oblasti. Advisor identifikuje profily Traffic Manageru, které jsou nakonfigurované pro bezkontaktní směrování, kde jsou všechny koncové body ve stejné oblasti. Doporučuje, přidání nebo přesunutí koncový bod do jiné oblasti Azure.
+Pokud jsou všechny koncové body v profilu Traffic Manager, který je nakonfigurovaný pro směrování blízkosti, ve stejné oblasti, můžou uživatelé z jiných oblastí zaznamenat zpoždění připojení. Přidáním nebo přesunutím koncového bodu do jiné oblasti dojde ke zvýšení celkového výkonu a zajištění lepší dostupnosti v případě selhání všech koncových bodů v jedné oblasti. Poradce identifikuje Traffic Manager profily nakonfigurované pro směrování blízkosti, kde jsou všechny koncové body ve stejné oblasti. Doporučuje přidat nebo přesunout koncový bod do jiné oblasti Azure.
 
-Pokud se profil služby Traffic Manager je nakonfigurovaný pro geografické směrování, provoz se směruje do koncových bodů podle definovaných oblastí. Pokud se nezdaří oblasti, neexistuje žádné předdefinované převzetí služeb při selhání. Máte koncový bod, ve které oblastní seskupení je konfigurována pro "Všechny (celý svět)" vyhnout provoz probíhá vyřazování a vylepšit dostupnost služeb. Identifikuje profily Traffic Manageru, které jsou nakonfigurované pro geografické směrování služby Advisor tam, kde neexistuje žádný koncový bod nakonfigurovaný tak, aby mít oblastní seskupení jako "Všechny (celý svět)". Doporučuje změny v konfiguraci koncového bodu "všechny (celý svět).
+Pokud je pro geografické směrování nakonfigurovaný profil Traffic Manager, provoz se směruje do koncových bodů v závislosti na definovaných oblastech. V případě selhání oblasti není k dispozici žádné předdefinované převzetí služeb při selhání. Pokud máte koncový bod, ve kterém je místní seskupení nakonfigurované na "vše (World)", zabrání se tím zahození provozu a vylepšuje dostupnost služby. Poradce identifikuje Traffic Manager profily nakonfigurované pro geografické směrování, u kterých není žádný koncový bod nakonfigurovaný tak, aby měl regionální seskupení jako "vše (svět)". Doporučuje se změnit konfiguraci tak, aby byl koncový bod "All (World).
 
-## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Použití obnovitelného odstranění na vašem účtu úložiště Azure k uložení a obnovení dat po náhodnému přepsání nebo odstranění
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Použití obnovitelného odstranění na účtu Azure Storage k uložení a obnovení dat po náhodném přepsání nebo odstranění
 
-Povolit [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na vašem účtu úložiště tak, aby odstranit objekty BLOB přechod do stavu obnovitelného odstranění namísto trvale odstraní. Při přepsání dat se vygeneruje obnovitelně odstraněný snímek, do kterého se uloží stav přepsaných dat. Použití obnovitelného odstranění umožňuje obnovení v případě, že jsou před náhodným odstraněním nebo přepíše. Advisor určí účtů služby Azure Storage, které nemají povolené obnovitelné odstranění a naznačuje, že ho povolíte.
+Povolte [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na svém účtu úložiště, aby se odstraněné objekty blob přešly do neodstraněného stavu místo trvalého odstranění. Při přepsání dat se vygeneruje obnovitelně odstraněný snímek, do kterého se uloží stav přepsaných dat. Použití obnovitelného odstranění umožňuje obnovení, pokud dojde k náhodnému odstranění nebo přepsání. Advisor identifikuje účty Azure Storage, které nemají povolené obnovitelné odstranění, a navrhuje je povolit.
 
-## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Nakonfigurovat bránu VPN typu aktivní aktivní pro odolnost připojení
+## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurace brány VPN na aktivní – aktivní pro odolnost připojení
 
-V konfiguraci aktivní aktivní navážou obě instance brány sítě VPN tunely S2S VPN na vaše místní zařízení VPN. Pokud k události plánované údržbě nebo neplánované události dojde k jedné, provoz se měl přepnout na druhý aktivní tunel IPsec automaticky. Azure Advisor vyhledá bran VPN, které nejsou nakonfigurované jako aktivní aktivní a navrhnout, můžete nakonfigurovat pro zajištění vysoké dostupnosti.
+V konfiguraci aktivní-aktivní vytvoří obě instance brány VPN tunely S2S VPN na vaše místní zařízení VPN. Když dojde k události plánované údržby nebo neplánované události na jednu instanci brány, provoz se přepne na ostatní aktivní tunelové propojení IPsec automaticky. Azure Advisor označí brány VPN, které nejsou nakonfigurované jako aktivní – aktivní, a navrhne, abyste je nakonfigurovali pro zajištění vysoké dostupnosti.
 
-## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Brány VPN produkční použít ke spuštění vaší úlohy v produkčním prostředí
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Použití provozních bran sítě VPN ke spouštění produkčních úloh
 
-Azure Advisor zkontroluje pro všechny brány VPN, které jsou základní SKU a doporučujeme používat místo produkčního SKU. Základní SKU je určená pro účely vývoje a testování. Produkční skladové položky nabízejí větší počet tunelových propojení, podporu protokolu BGP, možnosti konfigurace aktivní – aktivní, vlastní zásady Ipsec/IKE a vyšší stabilitu a dostupnost.
+Azure Advisor zkontroluje všechny brány VPN, které jsou základní jednotkou SKU, a doporučí místo toho použití produkční skladové položky (SKU). Základní skladová položka je navržena pro účely vývoje a testování. Produkční skladové položky nabízejí větší počet tunelových propojení, podporu protokolu BGP, možnosti konfigurace aktivní – aktivní, vlastní zásady IPSec/IKE a vyšší stabilitu a dostupnost.
 
-## <a name="repair-invalid-log-alert-rules"></a>Oprava pravidla upozornění protokolu je neplatná
+## <a name="repair-invalid-log-alert-rules"></a>Opravit neplatná pravidla upozornění protokolu
 
-Azure Advisor zjistí pravidel upozornění, které mají neplatné dotazy podle jejich stavu bodu. Pravidla upozornění protokolu se vytváří ve službě Azure Monitor a slouží ke spouštění analytických dotazů v určených intervalech. Výsledky dotazu určují, jestli je potřeba aktivovat upozornění. Analytické dotazy se v průběhu času můžou stát neplatnými kvůli změnám v odkazovaných prostředcích, tabulkách nebo příkazech. Advisor vám doporučí, opravte dotaz v pravidle výstrahy zabránit v získání automaticky zakázáno a zajištění monitorování rozsahu vašich prostředků v Azure. [Další informace o řešení potíží s pravidla upozornění](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor zjistí pravidla upozornění, která mají v oddílu podmínky zadány neplatné dotazy. Pravidla upozornění protokolu se vytváří ve službě Azure Monitor a slouží ke spouštění analytických dotazů v určených intervalech. Výsledky dotazu určují, jestli je potřeba aktivovat upozornění. Analytické dotazy se v průběhu času můžou stát neplatnými kvůli změnám v odkazovaných prostředcích, tabulkách nebo příkazech. Poradce doporučujeme, abyste v pravidle výstrahy opravili dotaz, abyste zabránili jeho automatickému zakázání a zajistili sledování pokrytí vašich prostředků v Azure. [Další informace o řešení potíží s pravidly upozornění](https://aka.ms/aa_logalerts_queryrepair)
 
-## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konfigurace režimu konzistentní indexování do kolekce Cosmos DB
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konfigurace konzistentního režimu indexování v kolekci Cosmos DB
 
-Kontejnery služby Azure Cosmos DB nakonfigurována s režimem Opožděné indexování může mít vliv na aktuálnosti výsledky dotazu. Poradce zjistí, že kontejnery nakonfigurována tímto způsobem a doporučujeme přepnutí do režimu konzistentní vzhledem k aplikacím. [Další informace o indexování zásady ve službě Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+Kontejnery Azure Cosmos DB nakonfigurované s opožděným indexováním můžou mít dopad na aktuálnost výsledků dotazů. Advisor vyhledá kontejnery nakonfigurované tímto způsobem a doporučí přepnutí do konzistentního režimu. [Další informace o indexování zásad v Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Konfigurace klíče oddílu pro kontejnery Azure Cosmos DB
 
-Azure Advisor bude identifikovat bez oddílů kolekce Azure Cosmos DB, které se blíží svou kvótu zřízeného úložiště. Vám doporučí, migrace těchto kolekcí do nové kolekce s definicí klíče oddílu, tak, aby se může automaticky škálovat podle služby. [Další informace o výběru klíče oddílu](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor určí Azure Cosmos DB nedělené kolekce, které se blíží své zřízené kvótě úložiště. Doporučuje se migrovat tyto kolekce do nových kolekcí s definicí klíče oddílu tak, aby je bylo možné automaticky škálovat službou. [Další informace o volbě klíče oddílu](https://aka.ms/cosmosdb/choose-partitionkey)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Upgrade sady Azure Cosmos DB .NET SDK na nejnovější verzi z NuGetu
 
-Azure Advisor bude identifikovat účtům Azure Cosmos DB, které používají starší verze sady .NET SDK a doporučujeme upgradovat na nejnovější verzi z Nugetu pro nejnovější opravy, vylepšení výkonu a novými funkcemi. [Další informace o Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor určí Azure Cosmos DB účty, které používají starší verze sady .NET SDK, a doporučuje upgradovat na nejnovější verzi z NuGet, kde najdete nejnovější opravy, vylepšení výkonu a nové funkce funkcí. [Další informace o sadě Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Upgrade sady Azure Cosmos DB Java SDK na nejnovější verzi z Mavenu
 
-Azure Advisor bude identifikovat účtům Azure Cosmos DB, které používají starší verze sady Java SDK a doporučujeme upgradovat na nejnovější verzi z Mavenu pro nejnovější opravy, vylepšení výkonu a novými funkcemi. [Další informace o Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor určí Azure Cosmos DB účty, které používají starší verze sady Java SDK, a doporučuje upgradovat na nejnovější verzi z Maven, kde najdete nejnovější opravy, vylepšení výkonu a nové funkce funkcí. [Další informace o Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgrade konektoru Azure Cosmos DB Spark na nejnovější verzi z Mavenu
 
-Azure Advisor bude identifikovat účtům Azure Cosmos DB, které používají staré verze konektoru Cosmos DB Spark a doporučujeme upgradovat na nejnovější verzi z Mavenu pro nejnovější opravy, vylepšení výkonu a novými funkcemi. [Další informace o konektoru Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor určí Azure Cosmos DB účty, které používají starší verze konektoru pro Cosmos DB Spark, a doporučí upgrade na nejnovější verzi z Maven na nejnovější opravy, vylepšení výkonu a nové funkce funkcí. [Další informace o konektoru Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
 
 ## <a name="enable-virtual-machine-replication"></a>Povolení replikace virtuálních počítačů
-Virtuální počítače, které nemají povolenou do jiné oblasti replikaci nejsou odolné vůči regionální výpadky. Jakékoli negativní obchodní dopad replikaci virtuálních počítačů snižuje dobu výpadku oblasti Azure. Poradce zjistí virtuálních počítačů, které nemají replikace povolená a doporučuje povolení replikace, aby v případě výpadku, můžete rychle přinesete si virtuální počítače ve vzdálené oblasti Azure. [Další informace o replikaci virtuálního počítače](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Virtuální počítače, které nemají povolenou replikaci do jiné oblasti, nejsou odolné vůči nemožnostem regionálních výpadků. Replikace virtuálních počítačů zkracuje dopad na nepříznivý dopad na firmu v době výpadku oblasti Azure. Poradce zjistí virtuální počítače, u kterých není povolená replikace, a doporučí povolení replikace, aby v případě výpadku mohli své virtuální počítače rychle zprovoznit ve vzdálené oblasti Azure. [Další informace o replikaci virtuálních počítačů](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučení k vysoké dostupnosti v Advisoru
+## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučením vysoké dostupnosti v Advisoru
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a pak otevřete [Advisor](https://aka.ms/azureadvisordashboard).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
 
-2.  Na řídicím panelu služby Advisor, klikněte na tlačítko **vysoké dostupnosti** kartu.
+2.  Na řídicím panelu Advisor klikněte na kartu **Vysoká dostupnost** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučení Advisoru naleznete v tématu:
-* [Úvod do Azure Advisoru](advisor-overview.md)
+Další informace o doporučeních služby Advisor najdete v těchto tématech:
+* [Úvod do Azure Advisor](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
-* [Náklady na doporučení advisoru](advisor-cost-recommendations.md)
-* [Poradce doporučení k výkonu](advisor-performance-recommendations.md)
-* [Bezpečnostní doporučení advisoru](advisor-security-recommendations.md)
-
+* [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
+* [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
+* [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
+* [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)

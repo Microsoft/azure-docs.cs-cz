@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047235"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120548"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
 
@@ -55,7 +55,7 @@ Než nakonfigurujete a povolíte službu zřizování, musíte určit, kteří u
 
 ## <a name="enable-automated-user-provisioning"></a>Povolit automatizované zřizování uživatelů
 
-Tato část vás provede připojením k rozhraní API pro zřizování uživatelských účtů ve službě Salesforce a konfigurací zřizovací služby k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v Salesforce na základě přiřazení uživatelů a skupin ve službě Azure AD.
+V této části se seznámíte s připojením k [rozhraní API pro zřizování uživatelského účtu](https://developer.salesforce.com/docs/atlas.en-us.208.0.api.meta/api/implementation_considerations.htm)ve službě Salesforce a konfigurací služby zřizování pro vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v Salesforce na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!Tip]
 > Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML pro Salesforce, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
@@ -120,7 +120,16 @@ Tím se spustí počáteční synchronizace všech uživatelů nebo skupin při�
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="common-issues"></a>Běžné problémy
-* Výchozí mapování atributů pro zřizování na Salesforce zahrnuje výraz SingleAppRoleAssignments pro zřízení rolí uživatele v Salesforce. Zajistěte, aby k nim uživatelé pro aplikaci nepřiřadili více rolí, protože mapování atributů podporuje pouze zřizování jedné role. 
+* Pokud máte problémy s autorizací přístupu k Salesforce, zajistěte následující:
+    * Přihlašovací údaje, které se používají, mají přístup správce k Salesforce.
+    * Verze Salesforce, kterou používáte, podporuje Web Access (například Developer, Enterprise, Sandbox a neomezenou edici Salesforce).
+    * Přístup k webovému rozhraní API je pro uživatele povolený.
+* Služba zřizování Azure AD podporuje zřizování jazyka, národního prostředí a časového pásma pro uživatele. Tyto atributy jsou v mapování výchozích atributů, ale nemají výchozí zdrojový atribut. Ujistěte se, že jste vybrali výchozí zdrojový atribut a že zdrojový atribut je ve formátu očekávaném službou SalesForce. Například localeSidKey pro angličtinu (USA) je en_US. Pro určení správného formátu localeSidKey si Projděte [zde](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) uvedené pokyny. Formáty languageLocaleKey najdete [tady](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5). Kromě toho, že je správný formát, možná budete muset zajistit, aby byl jazyk povolený pro vaše uživatele, jak je popsáno [zde](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5). 
+* **SalesforceLicenseLimitExceeded:** V cílové aplikaci nelze vytvořit uživatele, protože pro tohoto uživatele nejsou k dispozici žádné licence. Buď si zajistěte další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste se ujistili, že správným uživatelům jsou přiřazeny správné atributy.
+* **SalesforceDuplicateUserName:** Uživatele nelze zřídit, protože má Salesforce.com "username", které je duplikováno v jiném tenantovi Salesforce.com.  V Salesforce.com musí být hodnoty pro atribut UserName jedinečné ve všech klientech Salesforce.com.  Ve výchozím nastavení se hodnota userPrincipalName uživatele v Azure Active Directory v Salesforce.com stala "username".   Máte dvě možnosti.  Jednou z možností je vyhledat a přejmenovat uživatele s duplicitním názvem username v jiném tenantovi Salesforce.com, pokud spravujete i tohoto jiného tenanta.  Druhou možností je odebrat přístup z Azure Active Directoryho uživatele do tenanta Salesforce.com, se kterým je adresář integrovaný. Tato operace se při dalším pokusu o synchronizaci zopakuje. 
+* **SalesforceRequiredFieldMissing:** Salesforce vyžaduje, aby uživatel mohl v případě úspěšného vytvoření nebo aktualizace uživatele zobrazit určité atributy. Tomuto uživateli chybí jeden z požadovaných atributů. Zajistěte, aby se atributy jako e-mail a alias naplnily všemi uživateli, které chcete zřídit v Salesforce. Můžete nastavit obor pro uživatele, kteří nemají tyto atributy, pomocí [filtrů oborů založeného na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Výchozí mapování atributů pro zřizování na Salesforce zahrnuje výraz SingleAppRoleAssignments pro mapování appRoleAssignments ve službě Azure AD na profilaci v Salesforce. Ujistěte se, že uživatelé nemají ve službě Azure AD přiřazení více rolí aplikace, protože mapování atributů podporuje zřizování pouze jedné role. 
+
 
 ## <a name="additional-resources"></a>Další zdroje
 

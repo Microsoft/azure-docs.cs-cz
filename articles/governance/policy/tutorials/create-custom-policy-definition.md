@@ -1,14 +1,14 @@
 ---
 title: Vytvoření vlastní definice zásad
-description: Vytvořte vlastní definici zásad pro Azure Policy pro zajištění vlastních obchodních pravidel.
+description: Vytvořte vlastní definici zásad pro Azure Policy, která vynutila vlastní obchodní pravidla pro vaše prostředky Azure.
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.openlocfilehash: 1a5be5a3e81dec6f4369e6b01dcda3d5de5f6dac
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 97a85eb28cd0dbb2586623fda442d87a5790db2a
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959266"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128802"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 

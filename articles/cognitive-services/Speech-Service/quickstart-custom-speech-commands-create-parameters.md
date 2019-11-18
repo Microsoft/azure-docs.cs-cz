@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)'
+title: 'Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview) – služba Speech'
 titleSuffix: Azure Cognitive Services
 description: V tomto článku přidáte parametry do aplikace Custom Commands.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 010a9331bb4533bc84957261f312993c4cc7ffe8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507514"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111253"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)
 
@@ -36,7 +36,7 @@ V tomto článku tuto aplikaci rozšíříme pomocí parametrů tak, aby bylo mo
 
    | Nastavení            | Navrhovaná hodnota | Popis                                                                                               |
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name (Název)               | (OnOff)           | Popisný název pro parametr                                                                     |
+   | Název               | (OnOff)           | Popisný název pro parametr                                                                     |
    | Je globální          | Není zaškrtnuto       | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
    | Požaduje se           | Kontrolovaný         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
    | Šablona odpovědi  | Zapnuto nebo vypnuto?      | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
@@ -48,7 +48,7 @@ V tomto článku tuto aplikaci rozšíříme pomocí parametrů tak, aby bylo mo
 
    | Nastavení            | Navrhovaná hodnota   | Popis                                                                                               |
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name (Název)               | SubjectDevice     | Popisný název pro parametr                                                                     |
+   | Název               | SubjectDevice     | Popisný název pro parametr                                                                     |
    | Je globální          | Není zaškrtnuto         | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
    | Požaduje se           | Kontrolovaný           | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
    | Šablona odpovědi  | Které zařízení?     | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
@@ -59,7 +59,7 @@ V tomto článku tuto aplikaci rozšíříme pomocí parametrů tak, aby bylo mo
 
 ## <a name="add-sample-sentences"></a>Přidat ukázkové věty
 
-S parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
+S parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Příklad:
 
 1. Úplné informace o parametrech – `"turn {OnOff} the {SubjectDevice}"`
 1. Informace o částečném parametru – `"turn it {OnOff}"`

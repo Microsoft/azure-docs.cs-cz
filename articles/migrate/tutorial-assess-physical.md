@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7574e80101784961448ff3c3b5a49d9e2c2f9807
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720232"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123511"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 - [Dokončete](tutorial-prepare-physical.md) první kurz v této sérii. Pokud to neuděláte, pokyny v tomto kurzu nebudou fungovat.
 - Tady je seznam toho, co byste měli udělat v prvním kurzu:
     - [Nastavte oprávnění Azure](tutorial-prepare-physical.md#prepare-azure) pro Azure Migrate.
-    - [Připravte fyzické servery](tutorial-prepare-physical.md#prepare-azure) na posouzení. Je třeba ověřit požadavky na zařízení. Měli byste mít také nastavený účet pro zjišťování fyzického serveru. Požadované porty by měly být k dispozici a měli byste si uvědomit o adresách URL potřebných pro přístup k Azure.
+    - [Připravte fyzické servery](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) na posouzení. Je třeba ověřit požadavky na zařízení. Měli byste mít také nastavený účet pro zjišťování fyzického serveru. Požadované porty by měly být k dispozici a měli byste si uvědomit o adresách URL potřebných pro přístup k Azure.
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Nastavení Azure Migrateho projektu
@@ -104,9 +104,10 @@ Stáhněte si soubor zip pro zařízení.
 Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
-2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro virtuální pevný disk.
+2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Příklady použití: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
+
 3.  U zařízení verze 1.19.05.10 by se měla vygenerovaná hodnota hash shodovat s tímto nastavením.
 
   **Algoritmus** | **Hodnota hash**
@@ -114,7 +115,8 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
   SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
-= Skript instalačního programu provede následující akce:
+
+Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
 - Nainstalujte role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
@@ -129,12 +131,16 @@ Spusťte skript následujícím způsobem:
 1. Extrahujte soubor zip do složky na serveru, který bude hostitelem zařízení.
 2. Na výše uvedeném serveru s oprávněním správce (zvýšené) spusťte PowerShell.
 3. Změňte adresář PowerShellu na složku, do které byl obsah extrahován ze staženého souboru ZIP.
-4. Spusťte skript spuštěním následujícího příkazu:
+4. Spusťte skript s názvem **AzureMigrateInstaller. ps1** spuštěním následujícího příkazu:
     ```
-    PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Skript spustí webovou aplikaci zařízení po úspěšném dokončení.
+Skript spustí webovou aplikaci zařízení po úspěšném dokončení. 
 
+V případě jakýchkoli problémů získáte přístup k protokolům skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log pro řešení potíží.
+
+> [!NOTE]
+> Nespouštějte prosím skript Azure Migrate Installer v existujícím zařízení Azure Migrate.
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
@@ -182,7 +188,7 @@ Každé pro servery se systémem Windows a Linux můžete přidat jednu sadu př
     - Pokud chcete odebrat server, vyberte > **Odstranit**.
 4. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.
 
-Spustí se zjišťování. Zobrazení metadat zjištěných serverů v Azure Portal trvá přibližně 15 minut. 
+Spustí se zjišťování. Vybere se přibližně 1,5 minut na server, aby se metadata zjištěného serveru zobrazovala v Azure Portal. 
 
 ### <a name="verify-servers-in-the-portal"></a>Ověřit servery na portálu
 
@@ -293,7 +299,7 @@ Hodnocení spolehlivosti pro posouzení je následující.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 > [!div class="checklist"]
 > * Nastavení zařízení Azure Migrate

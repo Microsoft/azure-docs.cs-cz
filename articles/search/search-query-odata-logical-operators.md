@@ -1,7 +1,7 @@
 ---
 title: Odkaz na logický operátor OData
 titleSuffix: Azure Cognitive Search
-description: Logické operátory OData, nebo, a ne, v Azure Kognitivní hledání dotazy.
+description: Syntaxe a referenční dokumentace k používání logických operátorů OData,, a, a ne, v Azure Kognitivní hledáních dotazech.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4e016047d66e49f17c08d4b92a1c865f4b63e39b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793326"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113181"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logické operátory OData v Azure Kognitivní hledání-`and`, `or``not`
 

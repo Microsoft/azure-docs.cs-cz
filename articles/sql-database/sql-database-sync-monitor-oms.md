@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 031482fc0b87e095fcb19046564e15642050f261
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820801"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114622"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor 
 
@@ -137,7 +137,7 @@ Chcete-li vytvořit výstrahu, která používá protokoly Azure Monitor, prove�
 
 2.  Vytvořte dotaz pro výběr chyb a upozornění podle skupin synchronizace v intervalu, který jste vybrali. Příklad:
 
-    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
+    `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 
 3.  Po spuštění dotazu vyberte zvonek, který říká **výstrahu**.
 
@@ -149,7 +149,7 @@ Chcete-li vytvořit výstrahu, která používá protokoly Azure Monitor, prove�
 
 5.  V části **Akce**nastavte **e-mailové oznámení** na Ano. Zadejte požadované příjemce e-mailu.
 
-6.  Klikněte na **Uložit**. Zadaní příjemci teď při výskytu chyby dostanou e-mailová oznámení.
+6.  Klikněte na možnost **Uložit**. Zadaní příjemci teď při výskytu chyby dostanou e-mailová oznámení.
 
 ## <a name="create-an-azure-monitor-view-for-monitoring"></a>Vytvoření zobrazení Azure Monitor pro monitorování
 
@@ -206,7 +206,7 @@ Další informace o Synchronizaci dat SQL:
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-database-data-sync-agent.md)
+-   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
 -   Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](sql-database-best-practices-data-sync.md)
 -   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](sql-database-troubleshoot-data-sync.md)
 -   Aktualizace schématu synchronizace

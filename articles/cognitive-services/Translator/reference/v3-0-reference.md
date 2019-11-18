@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 11/14/2019
 ms.author: swmachan
-ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888079"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123067"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
@@ -56,7 +56,7 @@ K ověření předplatného můžete použít tři hlavičky. Tato tabulka popis
 
 |Hlavičky|Popis|
 |:----|:----|
-|OCP-APIM-Subscription-Key|Pokud předáváte *tajný klíč, použijte u předplatného Cognitive Services*.<br/>Hodnota je tajný klíč Azure pro vaše předplatné Translator Text API.|
+|OCP-Apim-Subscription-Key|Pokud předáváte *tajný klíč, použijte u předplatného Cognitive Services*.<br/>Hodnota je tajný klíč Azure pro vaše předplatné Translator Text API.|
 |Autorizace|*Pokud předáváte ověřovací token, použijte u předplatného Cognitive Services.*<br/>Hodnota je nosný token: `Bearer <token>`.|
 |OCP – APIM – předplatné – oblast|*Pokud předáváte tajný klíč s více službami, použijte u služby Cognitive Services předplatné s více službami.*<br/>Hodnota je oblast pro předplatné s více službami. Tato hodnota je volitelná, pokud nepoužíváte předplatné s více službami.|
 
@@ -165,3 +165,21 @@ Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP
 | 500000| Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí data a času chyby, identifikátor požadavku z hlavičky odpovědi X-RequestId a identifikátor klienta z hlavičky požadavku X-ClientTraceId.|
 | 503000| Služba je dočasně nedostupná. Zkuste to prosím znovu. Pokud chyba přetrvává, ohlaste ji pomocí data a času chyby, identifikátor požadavku z hlavičky odpovědi X-RequestId a identifikátor klienta z hlavičky požadavku X-ClientTraceId.|
 
+## <a name="metrics"></a>Metriky 
+Metriky umožňují zobrazit informace o využití a dostupnosti překladatele v Azure Portal v části metriky, jak je znázorněno na následujícím snímku obrazovky. Další informace najdete v tématu [metriky dat a platforem](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+
+![Metriky translatoru](../media/translatormetrics.png)
+
+Tato tabulka uvádí dostupné metriky s popisem způsobu jejich použití pro monitorování volání rozhraní API pro překlad.
+
+| Metriky | Popis |
+|:----|:-----|
+| TotalCalls| Celkový počet volání rozhraní API.|
+| TotalTokenCalls| Celkový počet volání rozhraní API prostřednictvím služby tokenu pomocí ověřovacího tokenu|
+| SuccessfulCalls| Počet úspěšných volání.|
+| TotalErrors| Počet volání s chybovou odezvou.|
+| BlockedCalls| Počet volání, která překročily limit nebo kvótu.|
+| ServerErrors| Počet volání s interní chybou serveru (5XX).|
+| ClientErrors| Počet volání s chybou na straně klienta (4XX).|
+| Latence| Doba k dokončení žádosti v milisekundách|
+| CharactersTranslated| Celkový počet znaků v příchozím textovém požadavku.|

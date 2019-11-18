@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825688"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108589"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Zmenšení privátního cloudu CloudSimple
 
@@ -24,7 +24,8 @@ CloudSimple poskytuje flexibilitu pro dynamické zmenšování privátního clou
 Pro zmenšení privátního cloudu musí být splněné následující podmínky.  Cluster pro správu (první cluster) vytvořený při vytvoření privátního cloudu nelze odstranit.
 
 * Cluster vSphere musí mít tři uzly.  Cluster se třemi uzly nelze zmenšit.
-* Celkové spotřebované úložiště by nemělo po zmenšení clusteru překročit celkovou kapacitu. 
+* Celkové spotřebované úložiště by nemělo po zmenšení clusteru překročit celkovou kapacitu.
+* Ověřte, jestli některá pravidla plánovače distribuovaných zdrojů (DRS) brání vMotion virtuálního počítače.  Pokud jsou pravidla k dispozici, zakažte nebo odstraňte pravidla.  Pravidla DRS zahrnují pravidla vztahů mezi virtuálními počítači a hostiteli.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -55,7 +56,8 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 Spustí se zmenšení privátního cloudu.  Průběh můžete sledovat v úlohách.  Proces zmenšení může trvat několik hodin v závislosti na datech, která se musí znovu synchronizovat v síti vSAN.
 
 > [!NOTE]
-> Pokud zmenšíte privátní cloud odstraněním posledního nebo jediného clusteru v datacentru, datacentrum se neodstraní.  
+> 1. Pokud zmenšíte privátní cloud odstraněním posledního nebo jediného clusteru v datacentru, datacentrum se neodstraní.
+> 2. Pokud dojde k nějakému porušení pravidla DRS, uzel nebude odebrán z clusteru a popis úlohy zobrazí, že při odebrání uzlu dojde k porušení pravidel DRS v clusteru.    
 
 
 ## <a name="next-steps"></a>Další kroky

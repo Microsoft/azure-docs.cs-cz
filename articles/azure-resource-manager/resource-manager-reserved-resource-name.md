@@ -1,32 +1,22 @@
 ---
-title: Vyhrazené chyby názvů prostředků Azure | Dokumentace Microsoftu
-description: Popisuje, jak řešit chyby při poskytnutí názvu prostředku, který obsahuje vyhrazené slovo.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Chyby rezervovaného názvu prostředku
+description: Popisuje, jak vyřešit chyby při poskytování názvu prostředku, který obsahuje rezervované slovo.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
-ms.author: tomfitz
-ms.openlocfilehash: 922389b7c6c1bb7ad1d9b8f6ec35ccc1c5656723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683937"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150460"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Řešení chyb název vyhrazený prostředek
+# <a name="resolve-reserved-resource-name-errors"></a>Vyřešit chyby názvů rezervovaných prostředků
 
-Tento článek popisuje, chyby, které zaznamenáte při nasazování prostředek, který obsahuje rezervovaná slova v názvu.
+Tento článek popisuje chybu, se kterou se setkáte při nasazování prostředku, který obsahuje rezervované slovo v názvu.
 
 ## <a name="symptom"></a>Příznak
 
-Při nasazování prostředek, který je dostupný prostřednictvím veřejného koncového bodu, zobrazí se následující chybová zpráva:
+Při nasazování prostředku, který je k dispozici prostřednictvím veřejného koncového bodu, se může zobrazit následující chyba:
 
 ```
 Code=ReservedResourceName;
@@ -35,13 +25,13 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Příčina
 
-Prostředky, které mají veřejný koncový bod nemůže používat vyhrazená slova nebo ochranné známky v názvu.
+Prostředky, které mají veřejný koncový bod, nemůžou v názvu používat vyhrazená slova nebo ochranné známky.
 
-Tato slova jsou vyhrazené:
+Jsou vyhrazena následující slova:
 
-* PŘÍSTUP
+* STOUPIT
 * AZURE
-* BING
+* ZJIŠŤUJE
 * BIZSPARK
 * BIZTALK
 * CORTANA
@@ -49,32 +39,32 @@ Tato slova jsou vyhrazené:
 * DOTNET
 * DYNAMICS
 * EXCEL
-* EXCHANGE
-* FOREFRONT
+* VÝMĚN
+* Díky
 * GROOVE
 * HOLOLENS
 * HYPERV
-* SADA KINECT
+* KINECT
 * LYNC
 * MSDN
 * O365
-* OFFICE
+* PODNIKOVÉ
 * OFFICE365
-* ONEDRIVE
-* APLIKACE ONENOTE
-* APLIKACE OUTLOOK
-* APLIKACE POWERPOINT
-* SHAREPOINT
-* SKYPE
-* VISIO
-* VISUAL STUDIO
+* ONEDRIVEM
+* APLIKACÍ
+* APL
+* APLIKACÍCH
+* SERVEREM
+* SI
+* VISIU
+* VISUALSTUDIO
 
-Tato slova nelze použít jako celá slova nebo podřetězec v názvu:
+Následující slova nelze použít buď jako celé slovo, nebo jako podřetězec v názvu:
 
-* PŘIHLÁŠENÍ
+* HLAS
 * MICROSOFT
-* SYSTÉM WINDOWS
-* XBOX
+* SYSTÉMU
+* OVLÁDÁNÍ
 
 ## <a name="solution"></a>Řešení
 

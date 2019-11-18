@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961838"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122920"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Příklad vzájemného spojení
 
-Níže uvedený příklad je transformační transformace s názvem `CartesianProduct`, která přebírá levý Stream `TripData` a `TripFare`pravého streamu. Tato transformace přebírá dva proudy a vrací kartézském produkt jejich řádků. Podmínka spojení je `true()`, protože výstupem je plný kartézském produkt. `joinType` v `cross`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'`hodnoty.
+Níže uvedený příklad je transformační transformace s názvem `CartesianProduct`, která přebírá levý Stream `TripData` a `TripFare`pravého streamu. Tato transformace přebírá dva proudy a vrací kartézském produkt jejich řádků. Podmínka spojení je `true()`, protože výstupem je plný kartézském produkt. `joinType` je `cross`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'`hodnoty.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

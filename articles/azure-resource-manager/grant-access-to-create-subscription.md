@@ -1,43 +1,41 @@
 ---
-title: Udělení přístupu k vytvoření předplatného Azure Enterprise | Dokumentace Microsoftu
-description: Zjistěte, jak umožnit uživatel nebo instanční objekt můžete programově vytvořit odběry Azure Enterprise.
-services: azure-resource-manager
+title: Udělení přístupu k vytváření předplatných Azure Enterprise
+description: Naučte se, jak dát uživateli nebo instančnímu objektu možnost programově vytvářet předplatná Azure Enterprise.
 author: jureid
 manager: jureid
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: a7ed7dffd27b51c1314c4293820dc33be4d7e8e0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8f1f7837b6243f1af49d3b5eb0f3632c5e144f6c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206641"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149841"
 ---
-# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu k vytvoření předplatného Azure Enterprise (preview)
+# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu k vytvoření předplatných Azure Enterprise (Preview)
 
-Jako zákazník Azure na [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), můžete udělit jiný uživatel nebo objekt instančního objektu oprávnění k vytvoření předplatného účtuje na příslušný účet. V tomto článku se dozvíte, jak používat [řízení přístupu na základě Role (RBAC)](../active-directory/role-based-access-control-configure.md) sdílet možnost vytvářet předplatná a jak auditovat vytvoření předplatného. Musíte mít roli vlastníka účtu, který chcete sdílet.
+Jako zákazník Azure on [smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)můžete jinému uživateli nebo instančnímu objektu udělit oprávnění k vytváření předplatných, která se fakturují k vašemu účtu. V tomto článku se dozvíte, jak pomocí [Access Control na základě rolí (RBAC)](../active-directory/role-based-access-control-configure.md) sdílet možnost vytvářet předplatná a jak auditovat vytváření předplatných. Na účtu, který chcete sdílet, musíte mít roli vlastníka.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-K [vytvářet předplatná v rámci registrace účtu](programmatically-create-subscription.md), uživatelé musí mít [role RBAC vlastníka](../role-based-access-control/built-in-roles.md#owner) na tento účet. Můžete udělit uživateli nebo skupině uživatelů role RBAC vlastníka účtu registrace pomocí následujících kroků:
+Aby bylo možné [v rámci účtu pro registraci vytvořit předplatná](programmatically-create-subscription.md), musí mít uživatelé na daném účtu [roli vlastníka RBAC](../role-based-access-control/built-in-roles.md#owner) . Můžete uživateli nebo skupině uživatelů udělit roli vlastníka RBAC na účtu pro zápis pomocí následujících kroků:
 
-1. Získání ID objektu, který chcete udělit přístup k registračnímu účtu
+1. Získat ID objektu účtu pro registraci, kterému chcete udělit přístup
 
-    K udělení ostatní role RBAC vlastníka na účet pro zápis, musí být buď vlastník účtu nebo RBAC vlastníka účtu.
+    Chcete-li udělit ostatním rolím vlastníka RBAC na účtu pro zápis, musíte být buď vlastníkem účtu, nebo vlastníkem role RBAC účtu.
 
     # <a name="resttabrest"></a>[REST](#tab/rest)
 
-    Požadavek na výpis všech registračních účtů, ke kterým máte přístup k:
+    Požadavek na výpis všech účtů pro zápis, ke kterým máte přístup:
 
     ```json
     GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
     ```
 
-    Azure jako odpověď vrátí seznam všech registračních účtů, ke kterým máte přístup k:
+    Azure odpoví seznamem všech účtů zápisu, ke kterým máte přístup:
 
     ```json
     {
@@ -62,17 +60,17 @@ K [vytvářet předplatná v rámci registrace účtu](programmatically-create-s
     }
     ```
 
-    Použití `principalName` identifikovat účet, který chcete udělit přístup RBAC vlastníka pro vlastnost. Kopírovat `name` tohoto účtu. Například, pokud chcete udělit přístup RBAC vlastníka SignUpEngineering@contoso.com účet pro zápis, budou zkopírovány ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. To je ID objektu registrace účtu. Vložte tuto hodnotu někde, takže ho můžete použít v dalším kroku jako `enrollmentAccountObjectId`.
+    Pomocí vlastnosti `principalName` Identifikujte účet, ke kterému chcete udělit přístup vlastníka RBAC. Zkopírujte `name` tohoto účtu. Pokud byste například chtěli udělit účtu pro zápis k SignUpEngineering@contoso.com přístup vlastníka RBAC, měli byste zkopírovat ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Toto je ID objektu registračního účtu. Vložte tuto hodnotu někam, abyste ji mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
 
     # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    Použití [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) rutiny pro zobrazení seznamu všechny registračních účtů, kterým máte přístup. Vyberte **vyzkoušet** otevřete [Azure Cloud Shell](https://shell.azure.com/). Vložte kód, kliknete pravým tlačítkem na prostředí windows a vyberte položku **vložte**.
+    Pomocí rutiny [Get-AzEnrollmentAccount Zobrazte](/powershell/module/az.billing/get-azenrollmentaccount) seznam všech registračních účtů, ke kterým máte přístup. Vyberte **zkusit** pro otevření [Azure Cloud Shell](https://shell.azure.com/). Kód vložíte tak, že kliknete pravým tlačítkem myši na okna prostředí a vyberete **Vložit**.
 
     ```azurepowershell-interactive
     Get-AzEnrollmentAccount
     ```
 
-    Azure jako odpověď vrátí seznam registračních účtů, ke kterým máte přístup k:
+    Azure odpoví seznamem účtů pro zápis, ke kterým máte přístup:
 
     ```azurepowershell
     ObjectId                               | PrincipalName
@@ -80,17 +78,17 @@ K [vytvářet předplatná v rámci registrace účtu](programmatically-create-s
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    Použití `principalName` identifikovat účet, kterým chcete udělit přístup RBAC vlastníka pro vlastnost. Kopírovat `ObjectId` tohoto účtu. Například, pokud chcete udělit přístup RBAC vlastníka SignUpEngineering@contoso.com účet pro zápis, budou zkopírovány ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Vložte toto ID objektu někde, takže ho můžete použít v dalším kroku jako `enrollmentAccountObjectId`.
+    Pomocí vlastnosti `principalName` Identifikujte účet, ke kterému chcete udělit přístup vlastníka RBAC. Zkopírujte `ObjectId` tohoto účtu. Pokud byste například chtěli udělit účtu pro zápis k SignUpEngineering@contoso.com přístup vlastníka RBAC, měli byste zkopírovat ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Vložte toto ID objektu někam, abyste ho mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
 
     # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-    Použití [az fakturační účet registrace seznamu](https://aka.ms/EASubCreationPublicPreviewCLI) seznam všech registračních účtů, máte přístup k příkazu. Vyberte **vyzkoušet** otevřete [Azure Cloud Shell](https://shell.azure.com/). Vložte kód, kliknete pravým tlačítkem na prostředí windows a vyberte položku **vložte**.
+    K vypsání všech registračních účtů, ke kterým máte přístup, použijte příkaz [AZ disenrollment-Account list](https://aka.ms/EASubCreationPublicPreviewCLI) . Vyberte **zkusit** pro otevření [Azure Cloud Shell](https://shell.azure.com/). Kód vložíte tak, že kliknete pravým tlačítkem myši na okna prostředí a vyberete **Vložit**.
 
     ```azurecli-interactive
     az billing enrollment-account list
     ```
 
-    Azure jako odpověď vrátí seznam registračních účtů, ke kterým máte přístup k:
+    Azure odpoví seznamem účtů pro zápis, ke kterým máte přístup:
 
     ```json
     [
@@ -111,22 +109,22 @@ K [vytvářet předplatná v rámci registrace účtu](programmatically-create-s
 
     ---
 
-    Použití `principalName` identifikovat účet, který chcete udělit přístup RBAC vlastníka pro vlastnost. Kopírovat `name` tohoto účtu. Například, pokud chcete udělit přístup RBAC vlastníka SignUpEngineering@contoso.com účet pro zápis, budou zkopírovány ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. To je ID objektu registrace účtu. Vložte tuto hodnotu někde, takže ho můžete použít v dalším kroku jako `enrollmentAccountObjectId`.
+    Pomocí vlastnosti `principalName` Identifikujte účet, ke kterému chcete udělit přístup vlastníka RBAC. Zkopírujte `name` tohoto účtu. Pokud byste například chtěli udělit účtu pro zápis k SignUpEngineering@contoso.com přístup vlastníka RBAC, měli byste zkopírovat ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Toto je ID objektu registračního účtu. Vložte tuto hodnotu někam, abyste ji mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
 
-1. <a id="userObjectId"></a>Získání ID objektu uživatele nebo skupiny, kterou chcete přidělit roli RBAC vlastníka
+1. <a id="userObjectId"></a>Získat ID objektu uživatele nebo skupiny, kterým chcete přidělit roli vlastníka RBAC
 
-    1. Na webu Azure Portal, hledání **Azure Active Directory**.
-    1. Pokud chcete udělit přístup uživatelům, klikněte na **uživatelé** v nabídce na levé straně. Pokud chcete udělit přístup do skupiny, klikněte na tlačítko **skupiny**.
-    1. Vyberte uživatele nebo skupinu, kterou chcete přidělit roli RBAC vlastníka.
-    1. Pokud jste vybrali uživatele, najdete na stránce profil ID objektu. Pokud vyberete skupinu, ID objektu bude na stránce Přehled. Kopírovat **ObjectID** kliknutím na ikonu vedle textového pole. Vložte tento někam tak, aby ho můžete použít v dalším kroku jako `userObjectId`.
+    1. V Azure Portal vyhledejte **Azure Active Directory**.
+    1. Pokud chcete udělit přístup pro uživatele, klikněte na tlačítko **Uživatelé** v nabídce na levé straně. Pokud chcete udělit přístup ke skupině, klikněte na **skupiny**.
+    1. Vyberte uživatele nebo skupinu, kterým chcete přidělit roli vlastníka RBAC.
+    1. Pokud jste vybrali uživatele, najdete ID objektu na stránce profilu. Pokud jste vybrali skupinu, ID objektu se zobrazí na stránce Přehled. Zkopírujte **identifikátor objectID** kliknutím na ikonu napravo od textového pole. Vložte to někam, abyste ho mohli použít v dalším kroku jako `userObjectId`.
 
-1. Udělit uživateli nebo skupině role RBAC vlastníka na účet pro zápis
+1. Udělit uživateli nebo skupině roli vlastníka RBAC v účtu pro zápis
 
-    Pomocí hodnoty, které jste shromáždili v první dva kroky, udělit uživateli nebo skupině role RBAC vlastníka na účet pro zápis.
+    Pomocí hodnot, které jste shromáždili v prvním dvou krocích, udělte uživateli nebo skupině roli vlastníka RBAC v účtu pro zápis.
 
     # <a name="resttabrest-2"></a>[REST](#tab/rest-2)
 
-    Spusťte následující příkaz, nahrazení ```<enrollmentAccountObjectId>``` s `name` jste zkopírovali v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Nahraďte ```<userObjectId>``` s ID objektu, který jste zkopírovali v druhém kroku.
+    Spusťte následující příkaz a nahraďte ```<enrollmentAccountObjectId>``` `name` jste si zkopírovali v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Nahraďte ```<userObjectId>``` číslem ID objektu, který jste zkopírovali z druhého kroku.
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -139,7 +137,7 @@ K [vytvářet předplatná v rámci registrace účtu](programmatically-create-s
     }
     ```
 
-    Když v rozsahu účtu registrace úspěšně přiřazení role vlastníka, Azure jako odpověď vrátí informace o přiřazení role:
+    Když se role vlastníka úspěšně přiřadí v oboru účtu registrace, Azure odpoví informacemi o přiřazení role:
 
     ```json
     {
@@ -160,7 +158,7 @@ K [vytvářet předplatná v rámci registrace účtu](programmatically-create-s
 
     # <a name="powershelltabazure-powershell-2"></a>[PowerShell](#tab/azure-powershell-2)
 
-    Spusťte následující příkaz [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) příkaz a nahraďte ```<enrollmentAccountObjectId>``` s `ObjectId` shromážděných v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Nahraďte ```<userObjectId>``` s objektem ID shromážděných v druhém kroku.
+    Spusťte následující příkaz [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) , který nahradí ```<enrollmentAccountObjectId>``` `ObjectId` shromážděnými v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Nahraďte ```<userObjectId>``` číslem ID objektu shromážděným v druhém kroku.
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -168,22 +166,22 @@ K [vytvářet předplatná v rámci registrace účtu](programmatically-create-s
 
     # <a name="azure-clitabazure-cli-2"></a>[Azure CLI](#tab/azure-cli-2)
 
-    Spusťte následující příkaz [vytvořit přiřazení role az](../active-directory/role-based-access-control-manage-access-azure-cli.md) příkaz a nahraďte ```<enrollmentAccountObjectId>``` s `name` jste zkopírovali v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Nahraďte ```<userObjectId>``` s objektem ID shromážděných v druhém kroku.
+    Spusťte následující příkaz [AZ role Assignment Create](../active-directory/role-based-access-control-manage-access-azure-cli.md) a nahraďte ```<enrollmentAccountObjectId>``` `name` jste si zkopírovali v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Nahraďte ```<userObjectId>``` číslem ID objektu shromážděným v druhém kroku.
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Jakmile uživatel se stane vlastníkem RBAC pro váš účet pro zápis, mohou [programově vytvořit odběry](programmatically-create-subscription.md) pod ním. Předplatné vytvořené delegovaný uživatel má stále původního vlastníka účtu jako správce služby, ale má také delegovaný uživatel jako vlastníka RBAC ve výchozím nastavení.
+    Jakmile se uživatel pro váš registrační účet stal vlastníkem RBAC, může [programově vytvořit předplatná](programmatically-create-subscription.md) . Předplatné vytvořené delegovaným uživatelem má nadále původní vlastníka účtu jako správce služeb, ale ve výchozím nastavení má delegovaného uživatele jako vlastníka RBAC.
 
     ---
 
-## <a name="audit-who-created-subscriptions-using-activity-logs"></a>Audit, který vytvořil předplatných, pomocí protokolů aktivit
+## <a name="audit-who-created-subscriptions-using-activity-logs"></a>Audit, který vytvořil odběry pomocí protokolů aktivit
 
-Chcete-li sledovat předplatná vytvořená přes toto rozhraní API, použijte [rozhraní API pro klienty aktivitu protokolu](/rest/api/monitor/tenantactivitylogs). Aktuálně není možné pomocí Powershellu, rozhraní příkazového řádku nebo portálu Azure portal ke sledování vytváření odběru.
+Pokud chcete sledovat odběry vytvořené přes toto rozhraní API, použijte [rozhraní API protokolu aktivit klienta](/rest/api/monitor/tenantactivitylogs). V současné době není možné pomocí PowerShellu, CLI ani Azure Portal sledovat vytváření předplatného.
 
 1. Jako správce tenanta Azure AD [zvyšte úroveň přístupu](../active-directory/role-based-access-control-tenant-admin-access.md) uživateli provádějícímu audit a pak mu přiřaďte roli Čtenář v oboru `/providers/microsoft.insights/eventtypes/management`.
-1. Jako uživatel, auditování, zavolejte [rozhraní API pro klienty aktivitu protokolu](/rest/api/monitor/tenantactivitylogs) zobrazíte předplatné Vytvoření aktivity. Příklad:
+1. Jako uživatel s auditem zavolejte [rozhraní API protokolu aktivit tenanta](/rest/api/monitor/tenantactivitylogs) , abyste viděli aktivity vytváření předplatných. Příklad:
 
     ```
     GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Subscription'"
@@ -191,10 +189,10 @@ Chcete-li sledovat předplatná vytvořená přes toto rozhraní API, použijte 
 
 Pokud chcete toto rozhraní API pohodlně volat z příkazového řádku, vyzkoušejte [ARMClient](https://github.com/projectkudu/ARMClient).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Teď, když uživatel nebo instanční objekt služby má oprávnění k vytvoření předplatného, můžete použít tuto identitu do [programově vytvářet předplatná Azure Enterprise](programmatically-create-subscription.md).
-* Příklad vytvoření předplatného pomocí rozhraní .NET, naleznete v tématu [ukázkový kód na Githubu](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
-* Další informace o Azure Resource Manageru a jeho rozhraní API najdete v tématu [přehled Azure Resource Manageru](resource-group-overview.md).
-* Další informace o správě velkého počtu předplatných pomocí skupin pro správu najdete v tématu [uspořádání prostředků se skupinami pro správu Azure](management-groups-overview.md)
-* Komplexní osvědčených postupů pokyny pro velké organizace na předplatné zásady správného řízení najdete v tématu [Základní kostra Azure enterprise – zásady správného řízení předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance)
+* Když má uživatel nebo instanční objekt oprávnění k vytvoření předplatného, můžete tuto identitu použít k [programovému vytváření předplatných Azure Enterprise](programmatically-create-subscription.md).
+* Příklad vytváření předplatných pomocí .NET najdete v tématu [vzorový kód na GitHubu](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
+* Další informace o Azure Resource Manager a jeho rozhraních API najdete v tématu [Azure Resource Manager Overview](resource-group-overview.md).
+* Další informace o správě velkého počtu předplatných pomocí skupin pro správu najdete v tématu [uspořádání prostředků pomocí skupin pro správu Azure](management-groups-overview.md) .
+* Podrobné pokyny k osvědčeným postupům pro velké organizace týkající se zásad správného řízení předplatného najdete v tématu zásady [správného řízení předplatného Azure Enterprise](/azure/architecture/cloud-adoption-guide/subscription-governance) .

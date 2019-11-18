@@ -1,5 +1,5 @@
 ---
-title: Nastavení rolí RBAC pro přístup pro správu Azure na portálu
+title: Nastavení rolí RBAC pro přístup pro správu Azure
 titleSuffix: Azure Cognitive Search
 description: Administrativní řízení na základě rolí (RBAC) v Azure Portal pro řízení a delegování úloh správy služby Azure Kognitivní hledání Management.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 321aabb26d5929f7587dd61e7d4059701f7ad526
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794330"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112554"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Nastavení rolí RBAC pro přístup pro správu k Azure Kognitivní hledání
 
@@ -35,7 +35,7 @@ Pro Azure Kognitivní hledání role jsou přidružené k úrovním oprávnění
 
 Role neudělují přístupová práva ke koncovému bodu služby. Operace hledání služby, jako je například Správa indexů, naplnění indexu a dotazy na data hledání, se řídí prostřednictvím klíčů rozhraní API, nikoli rolí. Další informace najdete v tématu [Správa klíčů rozhraní API](search-security-api-keys.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Správa s využitím PowerShellu](search-manage-powershell.md) 
 + [Výkon a optimalizace v Azure Kognitivní hledání](search-performance-optimization.md)

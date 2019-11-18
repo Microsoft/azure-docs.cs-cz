@@ -1,17 +1,14 @@
 ---
-title: Návrat k chybě v případě úspěšného nasazení Azure
+title: Vrátit zpět chybu pro úspěšné nasazení
 description: Určete, že nasazení, které selhalo, by se mělo vrátit zpátky k úspěšnému nasazení.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 035b684bb9f5fbc10eb13e642c3fd5945b85c561
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0978d2547e23a9ac6f920c76be3e877ec236d9ed
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975443"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150340"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Vrácení chyby zpět při úspěšném nasazení
 
@@ -69,7 +66,7 @@ az group deployment create \
   --rollback-on-error ExampleDeployment01
 ```
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
 Pokud chcete znovu nasadit poslední úspěšné nasazení, pokud aktuální nasazení neproběhne úspěšně, použijte:
 

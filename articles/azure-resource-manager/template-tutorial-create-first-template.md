@@ -1,18 +1,16 @@
 ---
-title: Kurz – vytvoření & nasazení Azure Resource Manager šabloně
+title: Kurz – vytvoření šablony & nasazení
 description: Vytvořte svou první šablonu Azure Resource Manager. V tomto kurzu se dozvíte o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 961c68ca6d5e0bf6dda95a26a684c3fff60b1d1b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074373"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148007"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Kurz: vytvoření a nasazení první šablony Azure Resource Manager
 
@@ -158,7 +156,7 @@ Příkaz pro nasazení vrátí výsledky. Vyhledejte `ProvisioningState` a zjist
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 

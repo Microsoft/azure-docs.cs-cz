@@ -1,35 +1,32 @@
 ---
 title: Bezpečné nasazení napříč oblastmi – Azure Deployment Manager
-description: Popisuje, jak nasadit službu ve více oblastech pomocí Azure Deployment Manager. Zobrazuje bezpečné postupy nasazení, které před zavedením do všech oblastí ověřují stabilitu nasazení.
-author: tfitzmac
-ms.service: azure-resource-manager
+description: Popisuje postup nasazení služby v mnoha oblastech Azure Deployment Manager. Zobrazuje postupy bezpečného nasazení, aby se ověřilo nasazení před zavedením do všech oblastí.
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 6cbbd2aef1911bdfe64e781a7cad64a64722192d
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 0a0d13150086b393e10bc16c5c2cef173ab0abab
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532309"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147189"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolení postupů bezpečného nasazení pomocí Azure Deployment Manager (Public Preview)
 
-Pokud chcete službu nasadit napříč mnoha oblastmi a zajistit, aby v každé oblasti běžela podle očekávání, můžete k koordinaci fáze zavedení služby využít Azure Deployment Manager. Stejně jako u jakéhokoli nasazení Azure definujete prostředky pro vaši službu v [Správce prostředků šablonách](resource-group-authoring-templates.md). Po vytvoření šablon použijete Deployment Manager k popisu topologie vaší služby a způsobu, jakým má být zavedena.
+K nasazení vaší služby napříč mnoha oblastmi a ujistěte se, že funguje podle očekávání v každé oblasti, můžete použít Azure Deployment Manager pro koordinaci postupné zavedení služby. Stejně jako pro nasazení v Azure, můžete definovat prostředky pro vaši službu v [šablon Resource Manageru](resource-group-authoring-templates.md). Po vytvoření šablony, pomocí Správce nasazení popisující topologii pro vaši službu a jak mají být zahrnuty navýšení kapacity.
 
-Deployment Manager je funkce Správce prostředků. Rozšiřuje vaše schopnosti během nasazování. Použijte Deployment Manager, pokud máte složitou službu, která musí být nasazena do několika oblastí. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud nepotřebujete další opatření pro dvoufázové zavedení, použijte pro Správce prostředků standardní [Možnosti nasazení](resource-group-template-deploy-portal.md) . Deployment Manager bez problémů integruje se všemi existujícími nástroji třetích stran, které podporují nasazení Správce prostředků, jako jsou nabídky průběžné integrace a průběžného doručování (CI/CD).
+Deployment Manager je funkce Resource Manageru. Vaše možnosti rozšiřuje během nasazení. Pomocí Správce nasazení v případě, že máte komplexní služby, který musí být nasazený do několika oblastí. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud není nutné další bezpečnostní opatření postupné zavádění, použijte standardní [možnosti nasazení](resource-group-template-deploy-portal.md) pro Resource Manager. Deployment Manager se hladce integrují s všechny stávající nástroje třetích stran, které podporují nasazení Resource Manageru, jako jsou například průběžná integrace a průběžné doručování (CI/CD) nabídky.
 
 Azure Deployment Manager je ve verzi Preview. Pomůžeme nám vylepšit funkci poskytnutím [zpětné vazby](https://aka.ms/admfeedback).
 
-Chcete-li použít Deployment Manager, je nutné vytvořit čtyři soubory:
+Pokud chcete použít nástroj Deployment Manager, budete muset vytvořit čtyři soubory:
 
-* Šablona topologie
-* Šablona zavedení
+* Topologie šablony
+* Nasazení šablony
 * Soubor parametrů pro topologii
 * Soubor parametrů pro zavedení
 
-Šablonu topologie nasadíte před nasazením šablony zavedení.
+Nasazení šablony topologie před nasazením šablony nasazení.
 
 Další materiály:
 
@@ -40,30 +37,30 @@ Další materiály:
 
 ## <a name="identity-and-access"></a>Identita a přístup
 
-Při Deployment Manager provede [uživatelem přiřazenou spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) akce nasazení. Tuto identitu vytvoříte před zahájením nasazení. Musí mít přístup k předplatnému, ke kterému službu nasazujete, a dostatečné oprávnění k dokončení nasazení. Informace o akcích udělených prostřednictvím rolí najdete v tématu [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
+Pomocí nástroje Deployment Manager [uživatelsky přiřazené identity spravované](../active-directory/managed-identities-azure-resources/overview.md) provede akce nasazení. Tuto identitu můžete vytvořit před spuštěním nasazení. Musí mít přístup k předplatnému, které nasazujete službu do a dostatečná oprávnění k dokončení nasazení. Informace o akcích udělit prostřednictvím rolí najdete v tématu [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
 
 Identita se musí nacházet ve stejném umístění jako zavedení.
 
-## <a name="topology-template"></a>Šablona topologie
+## <a name="topology-template"></a>Topologie šablony
 
-Šablona topologie popisuje prostředky Azure, které tvoří vaši službu a kam je nasazovat. Následující obrázek znázorňuje topologii ukázkové služby:
+Šablona topologie popisuje prostředky Azure, které tvoří vaši službu a, jak je nasadíte. Topologie služby příklad na následujícím obrázku:
 
-![Hierarchie z topologie služby až po jednotky služeb](./media/deployment-manager-overview/service-topology.png)
+![Hierarchii z topologie služby a služby pro službu jednotky](./media/deployment-manager-overview/service-topology.png)
 
-Šablona topologie obsahuje následující zdroje:
+Šablona topologie obsahuje následující prostředky:
 
-* Zdroj artefaktu – kde se ukládají šablony Správce prostředků a parametry
-* Topologie služby – odkazuje na zdroj artefaktů
-  * Služby – určuje umístění a ID předplatného Azure.
-    * Jednotky služeb – určuje skupinu prostředků, režim nasazení a cestu k šabloně a souboru parametrů.
+* Zdroje artefaktů – kde jsou uloženy šablon Resource Manageru a parametry
+* Topologie služby – odkazuje na zdroj artefaktu
+  * Služby – určuje umístění a ID předplatného Azure
+    * Service jednotky – určuje skupinu prostředků, režim nasazení a cesta k souboru šablony a parametrů
 
-Chcete-li zjistit, co se stane na každé úrovni, je užitečné zjistit, které hodnoty jsou k dispozici.
+Vysvětlení, co se stane, že na všech úrovních, je užitečné, chcete-li zobrazit hodnoty, které zadáte.
 
 ![Hodnoty pro každou úroveň](./media/deployment-manager-overview/topology-values.png)
 
-### <a name="artifact-source-for-templates"></a>Zdroj artefaktů pro šablony
+### <a name="artifact-source-for-templates"></a>Zdroje artefaktů pro šablony
 
-V šabloně topologie vytvoříte zdroj artefaktů, který obsahuje soubory šablon a parametrů. Zdroj artefaktu je způsob, jak načíst soubory pro nasazení. Později v tomto článku uvidíte jiný zdroj artefaktů pro binární soubory.
+V šabloně topologie vytvoříte zdroj artefaktu, který obsahuje soubory šablony a parametrů. Zdroje artefaktů je způsob, jak o přijetí změn soubory pro nasazení. Zobrazí se vám jiného zdroje artefaktů pro binární soubory dále v tomto článku.
 
 Následující příklad ukazuje obecný formát zdroje artefaktu.
 
@@ -86,11 +83,11 @@ Následující příklad ukazuje obecný formát zdroje artefaktu.
 }
 ```
 
-Další informace najdete v tématu [Referenční dokumentace k šablonám artifactSources](/azure/templates/Microsoft.DeploymentManager/artifactSources).
+Další informace najdete v tématu [referenčními informacemi k šablonám artifactSources](/azure/templates/Microsoft.DeploymentManager/artifactSources).
 
 ### <a name="service-topology"></a>Topologie služby
 
-Následující příklad ukazuje obecný formát prostředku topologie služby. Zadejte ID prostředku pro zdroj artefaktu, který obsahuje šablony a soubory parametrů. Topologie služby zahrnuje všechny prostředky služby. Aby bylo zajištěno, že je zdroj artefaktů k dispozici, závisí na ní topologie služby.
+Následující příklad ukazuje obecný formát prostředek topologie služby. Můžete zadat ID prostředku zdroje artefaktu, který obsahuje šablony a soubory parametrů. Topologie služby zahrnuje všechny prostředky služby. Pokud chcete mít jistotu, že je k dispozici zdroj artefaktu, na ní závisí služba topologie.
 
 ```json
 {
@@ -113,11 +110,11 @@ Následující příklad ukazuje obecný formát prostředku topologie služby. 
 }
 ```
 
-Další informace najdete v tématu [Referenční dokumentace k šablonám serviceTopologies](/azure/templates/Microsoft.DeploymentManager/serviceTopologies).
+Další informace najdete v tématu [referenčními informacemi k šablonám serviceTopologies](/azure/templates/Microsoft.DeploymentManager/serviceTopologies).
 
 ### <a name="services"></a>Služby
 
-Následující příklad ukazuje obecný formát prostředku služeb. V každé službě zadáte umístění a ID předplatného Azure, které se použije k nasazení vaší služby. Pro nasazení do několika oblastí definujete službu pro každou oblast. Služba závisí na topologii služby.
+Následující příklad ukazuje obecný formát prostředku služby. V každé služby je zadat ID předplatného umístěním a Azure pro nasazení vaší služby. K nasazení do několika oblastí, můžete definovat služby pro každou oblast. Služba závisí na topologii služby.
 
 ```json
 {
@@ -141,11 +138,11 @@ Následující příklad ukazuje obecný formát prostředku služeb. V každé 
 }
 ```
 
-Další informace najdete v tématu [Referenční dokumentace k šablonám služeb](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services).
+Další informace najdete v tématu [služby referenčními informacemi k šablonám](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services).
 
 ### <a name="service-units"></a>Jednotky služeb
 
-Následující příklad ukazuje obecný formát prostředku jednotek služby. V každé jednotce služby určíte skupinu prostředků, [režim nasazení](deployment-modes.md) , který se má použít pro nasazení, a cestu k šabloně a souboru parametrů. Pokud zadáte relativní cestu pro šablonu a parametry, úplná cesta je vytvořena z kořenové složky ve zdroji artefaktů. Můžete zadat absolutní cestu pro šablonu a parametry, ale ztratíte možnost snadné verze vašich vydání. Jednotka služby závisí na službě.
+Následující příklad ukazuje obecný formát prostředek jednotky služby. V každé jednotce služby zadejte skupinu prostředků, [režim nasazení](deployment-modes.md) pro nasazení a cesta k souboru šablony a parametrů. Pokud chcete zadat relativní cestu pro šablonu a parametry, úplná cesta je vytvořen z kořenové složky ve zdroji artefaktů. Můžete zadat absolutní cestu pro šablonu a parametry, ale můžete ztratit možnost snadno verzi vydávání verzí. Jednotky služby závisí na službě.
 
 ```json
 {
@@ -170,35 +167,35 @@ Následující příklad ukazuje obecný formát prostředku jednotek služby. V
 }
 ```
 
-Každá šablona by měla obsahovat související prostředky, které chcete nasadit v jednom kroku. Například jednotka služby by mohla mít šablonu, která nasadí všechny prostředky pro front-end služby.
+Každá šablona by měla obsahovat související prostředky, které chcete nasadit v jednom kroku. Jednotky služby může mít například šablonu, která nasadí všechny prostředky pro vaši službu front-endu.
 
-Další informace najdete v tématu [Referenční dokumentace k šablonám serviceUnits](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits).
+Další informace najdete v tématu [referenčními informacemi k šablonám serviceUnits](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits).
 
-## <a name="rollout-template"></a>Šablona zavedení
+## <a name="rollout-template"></a>Nasazení šablony
 
-Šablona zavedení popisuje kroky, které je potřeba provést při nasazování služby. Zadáte topologii služby, která se má použít, a definujte pořadí pro nasazování jednotek služby. Obsahuje zdroj artefaktů pro ukládání binárních souborů pro nasazení. V šabloně zavedení definujte tuto hierarchii:
+Šablona uvedení popisuje postup při nasazování služby. Zadáte topologie služby a definovat pořadí pro nasazení služby jednotky. Obsahuje zdroj artefaktu pro ukládání binárních souborů pro nasazení. V šabloně zavedení definovat následující hierarchie:
 
-* Zdroj artefaktů
+* Zdroj artefaktu
 * Krok
 * Zavedení
-  * Skupiny kroků
+  * Skupiny kroku
     * Operace nasazení
 
-Následující obrázek ukazuje hierarchii šablony zavedení:
+Hierarchie šablona uvedení na následujícím obrázku:
 
-![Hierarchie z zavedení do kroků](./media/deployment-manager-overview/Rollout.png)
+![Hierarchie od uvedení kroky](./media/deployment-manager-overview/Rollout.png)
 
-Každé zavedení může mít mnoho skupin kroků. Každá skupina kroků má jednu operaci nasazení, která odkazuje na jednotku služby v topologii služby.
+Každý zavedení může mít mnoho skupin kroků. Jedna operace nasazení, který odkazuje na službu jednotku v topologii služby má každá skupina kroku.
 
-### <a name="artifact-source-for-binaries"></a>Zdroj artefaktů pro binární soubory
+### <a name="artifact-source-for-binaries"></a>Zdroje artefaktů pro binární soubory
 
-V šabloně zavedení vytvoříte zdroj artefaktů pro binární soubory, které potřebujete nasadit do služby. Tento zdroj artefaktu je podobný [zdroji artefaktů pro šablony](#artifact-source-for-templates), s výjimkou, že obsahuje skripty, webové stránky, zkompilovaný kód nebo jiné soubory, které vaše služba vyžaduje.
+V šabloně zavedení vytvoříte zdroj artefaktu pro binární soubory, které potřebujete k nasazení do služby. Je podobný tomuto zdroji artefaktů [zdroje artefaktu pro šablony](#artifact-source-for-templates), s tím rozdílem, že obsahuje skripty, webové stránky, zkompilovaného kódu nebo jiné soubory potřebné pro vaši službu.
 
 ### <a name="steps"></a>Kroky
 
-Můžete definovat krok, který se provede buď před, nebo po operaci nasazení. V současné době je k dispozici pouze krok `wait` a krok "healthCheck".
+Můžete definovat krok provést před nebo po operaci nasazení. V současné době je k dispozici pouze krok `wait` a krok "healthCheck".
 
-Krok čekání před pokračováním pozastaví nasazení. Umožňuje ověřit, jestli je služba spuštěná podle očekávání, ještě než začnete nasazovat další jednotku služby. Následující příklad ukazuje obecný formát kroku čekání.
+Krok čekání pozastaví nasazení, než budete pokračovat. Umožňuje ověřit, že vaše služba je spuštěná podle očekávání před nasazením další jednotku služby. Následující příklad ukazuje obecný formát krok čekání.
 
 ```json
 {
@@ -215,19 +212,19 @@ Krok čekání před pokračováním pozastaví nasazení. Umožňuje ověřit, 
 },
 ```
 
-Vlastnost Duration používá [Standard ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). Předchozí příklad určuje čekání na jednu minutu.
+Vlastnost duration používá [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). Předchozí příklad určuje minutu trvající čekání.
 
 Další informace o kroku kontroly stavu najdete v tématu [zavedení integrace stavu do azure Deployment Manager](./deployment-manager-health-check.md) a [kurzu: použití kontroly stavu ve službě Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 
-Další informace najdete v tématu [Referenční dokumentace k šablonám](/azure/templates/Microsoft.DeploymentManager/steps).
+Další informace najdete v tématu [kroky referenčními informacemi k šablonám](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Uvedení
 
-Pro zajištění, že je zdroj artefaktů k dispozici, závisí zavedení na něm. Zavedení definuje skupiny kroků pro každou nasazenou jednotku služby. Můžete definovat akce, které se mají provést před nebo po nasazení. Můžete například určit, že nasazení čeká po nasazení jednotky služby. Můžete definovat pořadí skupin kroků.
+Pokud chcete mít jistotu, že je k dispozici zdroj artefaktu, uvedení závisí na něm. Uvedení definuje skupiny kroků pro každou službu jednotku, která je nasazena. Můžete definovat akce prováděné před nebo po nasazení. Například můžete určit, že nasazení počkejte po nasazení služby jednotky. Můžete definovat pořadí skupin kroků.
 
-Objekt identity Určuje [spravovanou identitu přiřazenou uživatelem](#identity-and-access) , která provádí akce nasazení.
+Určuje objekt identita [uživatelsky přiřazené identity spravované](#identity-and-access) , který provede akce související s nasazením.
 
-Následující příklad ukazuje obecný formát zavedení.
+Následující příklad ukazuje obecný formát uvedení.
 
 ```json
 {
@@ -263,19 +260,19 @@ Následující příklad ukazuje obecný formát zavedení.
 }
 ```
 
-Další informace najdete v tématu [Referenční dokumentace k šablonám uvádění](/azure/templates/Microsoft.DeploymentManager/rollouts).
+Další informace najdete v tématu [referenčními informacemi k šablonám uvedení](/azure/templates/Microsoft.DeploymentManager/rollouts).
 
-## <a name="parameter-file"></a>Soubor parametrů
+## <a name="parameter-file"></a>Soubor s parametry
 
-Vytvoříte dva soubory parametrů. Jeden soubor parametrů se používá při nasazování topologie služby a druhá se používá pro nasazení zavedení. Existují některé hodnoty, které potřebujete, abyste se ujistili, že jsou stejné v obou souborech parametrů.
+Můžete vytvořit dva soubory parametrů. Jeden soubor parametr se používá při nasazování topologie služby a druhé se používá pro nasazení zavedení. Existují některé hodnoty, třeba Ujistěte se, že jsou stejné v obou souborech parametru.
 
-## <a name="containerroot-variable"></a>containerRoot – proměnná
+## <a name="containerroot-variable"></a>containerRoot proměnné
 
-U nasazení s použitím verzí se cesta k artefaktům mění s každou novou verzí. Při prvním spuštění nasazení může být cesta `https://<base-uri-blob-container>/binaries/1.0.0.0`. Druhý čas může být `https://<base-uri-blob-container>/binaries/1.0.0.1`. Deployment Manager zjednodušuje získávání správné kořenové cesty pro aktuální nasazení pomocí proměnné `$containerRoot`. Tato hodnota se změní v každé verzi a před nasazením není známa.
+Se systémovou správou verzí nasazení se změní cesta k artefaktům s každou novou verzí. Při prvním spuštění nasazení cesta může být `https://<base-uri-blob-container>/binaries/1.0.0.0`. Při druhém volání může být `https://<base-uri-blob-container>/binaries/1.0.0.1`. Deployment Manager usnadňuje získávání správnou kořenovou cestu pro aktuální nasazení s použitím `$containerRoot` proměnné. Tato hodnota změní s jednotlivými verzemi a není známý před nasazením.
 
-Použijte proměnnou `$containerRoot` v souboru parametrů pro šablonu k nasazení prostředků Azure. V době nasazení je tato proměnná nahrazena skutečnými hodnotami z zavedení.
+Použití `$containerRoot` proměnné v souboru parametrů pro šablonu nasazení prostředků Azure. V době nasazení je tato proměnná nahradit skutečnými hodnotami od uvedení.
 
-Například při zavádění vytvoříte zdroj artefaktů pro binární artefakty.
+Třeba při uvedení vytvořit zdroj artefaktu binární artefaktů.
 
 ```json
 {
@@ -297,9 +294,9 @@ Například při zavádění vytvoříte zdroj artefaktů pro binární artefakt
 },
 ```
 
-Všimněte si vlastností `artifactRoot` a `sasUri`. Kořen artefaktu může být nastaven na hodnotu, například `binaries/1.0.0.0`. Identifikátor URI SAS je identifikátor URI kontejneru úložiště s tokenem SAS pro přístup. Deployment Manager automaticky vytvoří hodnotu `$containerRoot` proměnné. Kombinuje tyto hodnoty ve formátu `<container>/<artifactRoot>`.
+Všimněte si, že `artifactRoot` a `sasUri` vlastnosti. Kořenový adresář artefaktů může být nastaveno na hodnotu jako `binaries/1.0.0.0`. Identifikátor URI SAS je identifikátor URI pro kontejner úložiště pomocí tokenu SAS pro přístup. Deployment Manager automaticky vytvoří hodnotu `$containerRoot` proměnné. Kombinuje tyto hodnoty ve formátu `<container>/<artifactRoot>`.
 
-Šablona a soubor parametrů potřebují znát správnou cestu pro získání binárních souborů s verzí. Pokud například chcete nasadit soubory pro webovou aplikaci, vytvořte následující soubor parametrů s proměnnou $containerRoot. Pro cestu je nutné použít dvě zpětná lomítka (`\\`), protože první je řídicí znak.
+Soubor šablony a parametrů znát správnou cestu k zařazení verze binárních souborů. Například nasazení souborů pro webovou aplikaci, vytvořte následující soubor s parametry s proměnnou $containerRoot. Je nutné použít dvě zpětná lomítka (`\\`) pro cestu vzhledem k tomu, že je první znak escape.
 
 ```json
 {
@@ -313,7 +310,7 @@ Všimněte si vlastností `artifactRoot` a `sasUri`. Kořen artefaktu může bý
 }
 ```
 
-Pak použijte tento parametr v šabloně:
+Potom použijte tento parametr v šabloně:
 
 ```json
 {
@@ -333,11 +330,11 @@ Pak použijte tento parametr v šabloně:
 }
 ```
 
-Nasazení ve verzi můžete spravovat vytvořením nových složek a předáním do tohoto kořene během zavádění. Cesta pokračuje do šablony, která nasazuje prostředky.
+Správa verzí nasazení vytvořením nové složky a předáním tohoto kořenového během uvedení. Cesta prochází do šablony, který se nasazuje prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o Deployment Manager. Přejděte k dalšímu článku a Naučte se, jak nasadit pomocí Deployment Manager.
+V tomto článku jste se dozvěděli o Deployment Manager. Přejděte k dalším článku se dozvíte, jak nasadit pomocí nástroje Deployment Manager.
 
 > [!div class="nextstepaction"]
-> [Kurz: použití Deployment Manager Azure se šablonami Správce prostředků](./deployment-manager-tutorial.md)
+> [Kurz: Použití Azure Deployment Manager pomocí šablon Resource Manageru](./deployment-manager-tutorial.md)

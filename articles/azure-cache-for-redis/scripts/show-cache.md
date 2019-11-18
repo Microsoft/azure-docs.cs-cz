@@ -1,26 +1,19 @@
 ---
-title: Ukázkový skript Azure CLI – načtení podrobností Azure pro Redis Cache | Dokumentace Microsoftu
+title: Ukázkový skript Azure CLI – načtení podrobností mezipaměti Azure Redis
 description: Ukázkový skript Azure CLI – načtení podrobností mezipaměti Azure Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
 tags: azure-service-management
-ms.assetid: 155924e6-00d5-4a8c-ba99-5189f300464a
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: 8b4c0311f935fa141170206f51e01b90eb4b98ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f3e6c6dab95722eebdc4a175379444ef5840cad1
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240301"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122481"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>Získat podrobnosti mezipaměti Azure pro Redis
 
@@ -36,12 +29,12 @@ V tomto scénáři se dozvíte, jak k načtení podrobností mezipaměti Azure p
 
 Tento skript používá následující příkazy k načtení podrobností mezipaměti Azure pro Redis instance. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [AZ redis show](https://docs.microsoft.com/cli/azure/redis) | Načtěte Podrobnosti mezipaměti Azure pro Redis instance. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

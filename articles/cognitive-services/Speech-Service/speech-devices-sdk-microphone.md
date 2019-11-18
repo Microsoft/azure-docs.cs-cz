@@ -1,5 +1,5 @@
 ---
-title: Speech Devices SDK mikrofony pole doporučení – služba Speech
+title: Doporučení pro pole mikrofonu v sadě Speech Devices SDK
 titleSuffix: Azure Cognitive Services
 description: Speech Devices SDK doporučení pole mikrofonu. Tato pole geometrií se doporučují pro použití s Microsoft audio stackem.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 0a0bbbb59d09d35d0153f56f65b2ee1d9438e49d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072402"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111655"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pro pole mikrofonu v sadě Speech Devices SDK
 
@@ -41,16 +41,16 @@ Pro přesný reprodukování signálu bez rušivého hluku a narušení by měly
 
 Doporučené vlastnosti při výběru mikrofonu jsou:
 
-| Parametr                     | Doporučené                                         |
-| ----------------------------- | --------------------------------------------------- |
-| SNR                           | \>= 65 dB (1 kHz signálu 94 dBSPL, s váženým hlukem) |
-| Porovnání amplitudy            | ± 1 dB @ 1 kHz                                      |
-| Porovnání fáze                | ± 2 ° @ 1 kHz                                        |
-| Akustický bod přetížení (AOP) | \>= 120 dBSPL (THD = 10%)                           |
-| Přenosová rychlost                      | Minimální verze 24 bitů                                      |
-| Vzorkovací frekvence                 | Minimálně 16 kHz\*                                    |
-| Frekvence – odezva            | ± 3 dB, 200-8000 Hz plovoucí maska\*                 |
-| Spolehlivost                   | Rozsah teploty úložiště – 40 °C až 70 oC<br />Rozsah provozních teplot – 20 oC až 55 °C |
+| Parametr | Doporučené |
+| --------- | ----------- |
+| SNR | \>= 65 dB (1 kHz signálu 94 dBSPL, s váženým hlukem) |
+| Porovnání amplitudy | ± 1 dB @ 1 kHz |
+| Porovnání fáze | ± 2 ° @ 1 kHz |
+| Akustický bod přetížení (AOP) | \>= 120 dBSPL (THD = 10%) |
+| Přenosová rychlost | Minimální verze 24 bitů |
+| Vzorkovací frekvence | Minimálně 16 kHz\* |
+| Frekvence – odezva | ± 3 dB, 200-8000 Hz plovoucí maska\* |
+| Spolehlivost | Rozsah teploty úložiště – 40 °C až 70 oC<br />Rozsah provozních teplot – 20 oC až 55 °C |
 
 _pro aplikace VoIP (High-Quality Communication) můžou být potřeba \*vyšší vzorkovací frekvence nebo širší rozsah frekvencí_ .
 
@@ -68,7 +68,7 @@ Výkon pole mikrofonu, když se integruje do zařízení, se liší od specifika
 | THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5.5. obj.             |
 | Frekvence – odezva | ± 6 dB, 200-8000 Hz plovoucí maska\*\*              |
 
-_pro měření THD se vyžaduje \*reproduktory s malým zkreslením (např. Neumann KH120)_ .
+_pro měření THD se vyžaduje \*\*reproduktory s malým zkreslením (např. Neumann KH120)_ .
 
 _pro aplikace VoIP (High-Quality Communication) můžou být potřebné frekvenční rozsahy_ \*\*širší.
 

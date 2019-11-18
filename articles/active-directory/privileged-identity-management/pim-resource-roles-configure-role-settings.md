@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a302e723aa898a62bc43ecb38343bcf026dc769e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022939"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144296"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role prostředků Azure v Privileged Identity Management
 
@@ -48,11 +48,19 @@ Pomocí těchto kroků otevřete nastavení pro roli prostředku Azure.
 
     ![Stránka s podrobnostmi nastavení role – seznam několika přiřazení a nastavení aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Výběrem možnosti **Upravit** otevřete podokno nastavení role.
+1. Výběrem možnosti **Upravit** otevřete podokno **Nastavení role** . První karta vám umožní aktualizovat konfiguraci pro aktivaci rolí v Privileged Identity Management.
 
-    ![Stránka upravit nastavení role s možnostmi aktualizace nastavení přiřazení a aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Stránka upravit nastavení role s otevřenou kartou aktivace](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-    V podokně nastavení role pro každou roli existuje několik nastavení, která můžete konfigurovat.
+1. Vyberte kartu **přiřazení** nebo tlačítko **Další: přiřazení** v dolní části stránky a otevřete tak kartu Nastavení přiřazení. Tato nastavení řídí přiřazení rolí v rozhraní Privileged Identity Management.
+
+    ![Karta přiřazení role na stránce nastavení role](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+
+1. Použijte kartu **oznámení** nebo tlačítko **Další: Aktivace** v dolní části stránky, abyste se dostali na kartu nastavení oznámení pro tuto roli. Tato nastavení řídí všechna e-mailová oznámení týkající se této role.
+
+    ![Karta oznámení role na stránce nastavení role](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+1. Pokud chcete aktualizovat nastavení role, vyberte tlačítko **aktualizovat** .
 
 ## <a name="assignment-duration"></a>Doba trvání přiřazení
 

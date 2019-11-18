@@ -1,64 +1,61 @@
 ---
-title: Historie nasazení pomocí Azure Resource Manageru | Dokumentace Microsoftu
-description: Popisuje postup zobrazení operací nasazení Azure Resource Manageru pomocí portálu, Powershellu, rozhraní příkazového řádku Azure a rozhraní REST API.
+title: Historie nasazení
+description: Popisuje postup zobrazení Azure Resource Manager operací nasazení pomocí portálu, PowerShellu, rozhraní příkazového řádku Azure a REST API.
 tags: top-support-issue
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 58d22e3fcae5c30e5d7dcc39b317afeef4a693ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8daf7191bb22f7c7057f6ef6b220a18868872cc
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606024"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149568"
 ---
-# <a name="view-deployment-history-with-azure-resource-manager"></a>Zobrazit historii nasazení pomocí Azure Resource Manageru
+# <a name="view-deployment-history-with-azure-resource-manager"></a>Zobrazit historii nasazení pomocí Azure Resource Manager
 
-Azure Resource Manager vám umožňuje zobrazit historii nasazení a zkontrolovat konkrétní operace v posledních nasazení. Můžete zobrazit prostředky, které se nasadily a získat informace o případných chybách.
+Azure Resource Manager vám umožní zobrazit historii nasazení a prozkoumávat konkrétní operace v předchozích nasazeních. Můžete zobrazit nasazené prostředky a získat informace o případných chybách.
 
-Nápovědu k řešení chyb konkrétní nasazení, najdete v článku [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
+Nápovědu k řešení konkrétních chyb nasazení najdete v tématu [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portál
 
-Chcete-li získat podrobné informace o nasazení z historie nasazení.
+Pro získání podrobností o nasazení z historie nasazení.
 
-1. Vyberte skupinu prostředků, které chcete prověřit.
+1. Vyberte skupinu prostředků, kterou chcete prošetřit.
 
-1. Vyberte odkaz pod **nasazení**.
+1. Vyberte odkaz v části **nasazení**.
 
-   ![Vyberte historie nasazení](./media/resource-manager-deployment-operations/select-deployment-history.png)
+   ![Vybrat historii nasazení](./media/resource-manager-deployment-operations/select-deployment-history.png)
 
-1. Vyberte jedno z nasazení z historie nasazení.
+1. V historii nasazení vyberte jedno z nasazení.
 
-   ![Výběr možnosti nasazení](./media/resource-manager-deployment-operations/select-details.png)
+   ![Vybrat nasazení](./media/resource-manager-deployment-operations/select-details.png)
 
-1. Zobrazí se souhrn nasazení, včetně seznamu prostředků, které se nasadily.
+1. Zobrazí se souhrn nasazení, včetně seznamu nasazených prostředků.
 
-    ![Shrnutí nasazení](./media/resource-manager-deployment-operations/view-deployment-summary.png)
+    ![Souhrn nasazení](./media/resource-manager-deployment-operations/view-deployment-summary.png)
 
-1. Chcete-li zobrazit Šablona použitá pro nasazení, vyberte **šablony**. Můžete stáhnout šablonu, kterou chcete znovu použít.
+1. Pokud chcete zobrazit šablonu, která se používá pro nasazení, vyberte **šablonu**. Šablonu si můžete stáhnout a znovu použít.
 
     ![Zobrazit šablonu](./media/resource-manager-deployment-operations/show-template-from-history.png)
 
-1. Pokud vaše nasazení se nezdařilo, zobrazí chybová zpráva. Výběr chybové zprávy pro další podrobnosti.
+1. Pokud se nasazení nepovedlo, zobrazí se chybová zpráva. Pro další podrobnosti vyberte chybovou zprávu.
 
     ![Zobrazit neúspěšné nasazení](./media/resource-manager-deployment-operations/show-error.png)
 
-1. Podrobná chybová zpráva.
+1. Zobrazí se podrobná chybová zpráva.
 
     ![Zobrazit podrobnosti o chybě](./media/resource-manager-deployment-operations/show-details.png)
 
-1. ID korelace se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporu k řešení potíží s nasazení.
+1. ID korelace se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporou pro řešení potíží s nasazením.
 
-    ![Získejte ID korelace](./media/resource-manager-deployment-operations/get-correlation-id.png)
+    ![Získat ID korelace](./media/resource-manager-deployment-operations/get-correlation-id.png)
 
-1. Další informace o kroku, který selhal, vyberte **podrobnosti o operaci**.
+1. Pokud se chcete dozvědět víc o kroku, který selhal, vyberte **Podrobnosti operace**.
 
-    ![Vyberte operace nasazení](./media/resource-manager-deployment-operations/select-deployment-operations.png)
+    ![Vybrat operace nasazení](./media/resource-manager-deployment-operations/select-deployment-operations.png)
 
-1. Zobrazí podrobnosti pro daný krok nasazení.
+1. Zobrazí se podrobnosti o tomto kroku nasazení.
 
     ![Zobrazit podrobnosti o operaci](./media/resource-manager-deployment-operations/show-operation-details.png)
 
@@ -66,31 +63,31 @@ Chcete-li získat podrobné informace o nasazení z historie nasazení.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Chcete-li získat celkový stav nasazení, použijte **Get-AzResourceGroupDeployment** příkazu.
+Celkový stav nasazení získáte pomocí příkazu **Get-AzResourceGroupDeployment** .
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-Nebo můžete filtrovat výsledky pro pouze nasazení, které selhaly.
+Nebo můžete filtrovat výsledky jenom pro nasazení, která se nezdařila.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
 ```
 
-ID korelace se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporu k řešení potíží s nasazení. Pokud chcete získat ID korelace, použijte:
+ID korelace se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporou pro řešení potíží s nasazením. ID korelace získáte pomocí:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
 ```
 
-Každé nasazení obsahuje více operací. Každá operace představuje krok v procesu nasazení. Pokud chcete zjistit, co se nepovedlo s nasazením, obvykle musíte zobrazíte podrobnosti o operací nasazení. Zobrazí se stav operací s **Get-AzResourceGroupDeploymentOperation**.
+Každé nasazení zahrnuje více operací. Každá operace představuje krok v procesu nasazení. Chcete-li zjistit, co se stalo s nasazením, je obvykle nutné zobrazit podrobnosti o operacích nasazení. Stav operací můžete zobrazit pomocí **Get-AzResourceGroupDeploymentOperation**.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName azuredeploy
 ```
 
-Který vrátí více operací s každé z nich v následujícím formátu:
+Který vrací více operací s každým z nich v následujícím formátu:
 
 ```powershell
 Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -102,13 +99,13 @@ PropertiesText : {duration:PT23.0227078S, provisioningOperation:Create, provisio
                 serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
 ```
 
-Pokud chcete získat další podrobnosti o neúspěšných operacích, načíst vlastnosti pro operace s **neúspěšné** stavu.
+Chcete-li získat další podrobnosti o neúspěšných operacích, načtěte vlastnosti pro operace se stavem **selhání** .
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
 ```
 
-Který vrátí všechny neúspěšné operace se každé z nich v následujícím formátu:
+Vrátí všechny neúspěšné operace s každým z nich v následujícím formátu:
 
 ```powershell
 provisioningOperation : Create
@@ -124,9 +121,9 @@ targetResource        : @{id=/subscriptions/{guid}/resourceGroups/ExampleGroup/p
                        resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
 ```
 
-Mějte na paměti, serviceRequestId a trackingId pro operaci. ServiceRequestId může být užitečné při práci s technickou podporu k řešení potíží s nasazení. Použijete v dalším kroku trackingId zaměřit na konkrétní operace.
+Poznamenejte si serviceRequestId a trackingId pro operaci. ServiceRequestId může být užitečné při práci s technickou podporou pro řešení potíží s nasazením. V dalším kroku použijete trackingId, abyste se mohli zaměřit na konkrétní operaci.
 
-Chcete-li získat stavové zprávy konkrétní neúspěšnou operaci, použijte následující příkaz:
+Chcete-li získat stavovou zprávu určité operace, která selhala, použijte následující příkaz:
 
 ```azurepowershell-interactive
 ((Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -140,9 +137,9 @@ code           message                                                          
 DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
 ```
 
-Každé operaci nasazení v Azure zahrnuje obsah požadavku a odpovědi. Během nasazení, můžete použít **DeploymentDebugLogLevel** parametr k určení, že se protokolují požadavků a odpovědí.
+Každá operace nasazení v Azure zahrnuje obsah požadavků a odpovědí. Během nasazování můžete použít parametr **DeploymentDebugLogLevel** a určit tak, že žádost a odpověď jsou protokolovány.
 
-Získání těchto informací z protokolu a uložte ho místně pomocí následujících příkazů Powershellu:
+Tyto informace získáte z protokolu a uložíte je místně pomocí následujících příkazů PowerShellu:
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
@@ -152,19 +149,19 @@ Získání těchto informací z protokolu a uložte ho místně pomocí následu
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Chcete-li získat celkový stav nasazení, použijte **azure skupiny nasazení zobrazit** příkazu.
+Pokud chcete získat celkový stav nasazení, použijte příkaz pro **zobrazení skupiny Azure Group Deployment** .
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment
 ```
   
-ID korelace se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporu k řešení potíží s nasazení.
+ID korelace se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporou pro řešení potíží s nasazením.
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
 ```
 
-Pokud chcete zobrazit operace pro nasazení, použijte:
+Pokud chcete zobrazit operace nasazení, použijte:
 
 ```azurecli-interactive
 az group deployment operation list -g ExampleGroup -n ExampleDeployment
@@ -172,13 +169,13 @@ az group deployment operation list -g ExampleGroup -n ExampleDeployment
 
 ## <a name="rest"></a>REST
 
-Chcete-li získat informace o nasazení, použijte [získat informace o nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments) operace.
+Chcete-li získat informace o nasazení, použijte příkaz [získat informace o operaci nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments) .
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
 ```
 
-V odpovědi, Všimněte si zejména **provisioningState**, **correlationId**, a **chyba** elementy. **CorrelationId** se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporu k řešení potíží s nasazení.
+V odpovědi si všimněte zejména prvků **provisioningState**, **ID korelace**a **Error** . **ID korelace** se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporou pro řešení potíží s nasazením.
 
 ```json
 { 
@@ -195,13 +192,13 @@ V odpovědi, Všimněte si zejména **provisioningState**, **correlationId**, a 
 }
 ```
 
-Chcete-li získat informace o nasazení, použijte [výpisu všech operací nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments). 
+Chcete-li získat informace o nasazeních, použijte [seznam všech operací nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments). 
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
 ```
    
-Odpověď obsahuje požadavek nebo odpověď informace v závislosti na zadané v **debugSetting** vlastnost během nasazení.
+Odpověď zahrnuje informace o požadavku a/nebo odpovědi na základě toho, co jste zadali ve vlastnosti **debugSetting** během nasazování.
 
 ```json
 {
@@ -228,8 +225,8 @@ Odpověď obsahuje požadavek nebo odpověď informace v závislosti na zadané 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-* Nápovědu k řešení chyb konkrétní nasazení, najdete v článku [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
-* Další informace o použití protokolů aktivit pro ostatní typy akcí monitorování, najdete v článku [protokolů aktivit při správě prostředků Azure](resource-group-audit.md).
-* Ověření nasazení před spuštěním ho, naleznete v tématu [nasazení skupiny prostředků pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+## <a name="next-steps"></a>Další kroky
+* Nápovědu k řešení konkrétních chyb nasazení najdete v tématu [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Další informace o používání protokolů aktivit k monitorování jiných typů akcí najdete v tématu [zobrazení protokolů aktivit pro správu prostředků Azure](resource-group-audit.md).
+* Chcete-li před spuštěním ověřit nasazení, přečtěte si téma [nasazení skupiny prostředků pomocí šablony Azure Resource Manager](resource-group-template-deploy.md).
 

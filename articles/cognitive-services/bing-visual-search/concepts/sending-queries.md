@@ -1,7 +1,7 @@
 ---
 title: Odesílání vyhledávacích dotazů na rozhraní API pro vizuální vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si o parametrech REST API používaných v rozhraní API pro vizuální vyhledávání Bingu.
+description: Tento článek popisuje parametry a atributy požadavků odeslaných do rozhraní API pro vizuální vyhledávání Bingu a také objekt Response.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 1c5c9b3af42dfa655c61af5a3aadbb47e0774b01
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2a87bee4769111e01dc49e8fce14569233dfaef3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835683"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111627"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Odesílání vyhledávacích dotazů na rozhraní API pro vizuální vyhledávání Bingu
 
@@ -104,7 +104,7 @@ Následují hlavičky dotazu, které váš požadavek musí obsahovat. Záhlaví
 
 ### <a name="content-form-types"></a>Typy formulářů obsahu
 
-Každý požadavek musí zahrnovat hlavičku `Content-Type`. Záhlaví musí být nastavené na: `multipart/form-data; boundary=\<boundary string\>`, kde \<řetězec hranice\> je jedinečný, neprůhledný řetězec, který určuje hranici dat formuláře. například `boundary=boundary_1234-abcd`.
+Každý požadavek musí zahrnovat hlavičku `Content-Type`. Záhlaví musí být nastavené na: `multipart/form-data; boundary=\<boundary string\>`, kde \<řetězec hranice\> je jedinečný, neprůhledný řetězec, který určuje hranici dat formuláře. Například, `boundary=boundary_1234-abcd`.
 
 Pokud odešlete Vizuální vyhledávání tokenu obrázku nebo adresu URL, následující fragment kódu zobrazí data formuláře, která musíte zahrnout do těla příspěvku. Data formuláře musí zahrnovat hlavičku `Content-Disposition` a musíte nastavit její parametr `name` na "knowledgeRequest". Podrobnosti o objektu `imageInfo` najdete v žádosti.
 

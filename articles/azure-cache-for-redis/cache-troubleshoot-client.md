@@ -1,25 +1,17 @@
 ---
-title: Řešení potíží s Azure cache pro Redis problémy na straně klienta | Microsoft Docs
+title: Řešení potíží s Azure cache pro Redis problémy na straně klienta
 description: Naučte se řešit běžné problémy na straně klienta s mezipamětí Azure pro Redis.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 18fb2f7c5a411ff2026437b647be56812b4d2521
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819627"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122618"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Řešení potíží s Azure cache pro Redis problémy na straně klienta
 

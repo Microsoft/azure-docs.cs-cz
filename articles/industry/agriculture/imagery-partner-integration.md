@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927794"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132020"
 ---
 # <a name="imagery-partner-integration"></a>Integrace partnerských řešení pro snímky
 
@@ -42,7 +42,7 @@ Rozhraní API obsahují technickou dokumentaci k Swagger. Přečtěte si [Swagge
 
 ## <a name="authentication"></a>Ověřování
 
-FarmBeats využívá [službu Active Directory]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization))Microsoft Azure. Ověřování Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
+FarmBeats využívá [službu Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)Microsoft Azure. Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
 
 Další informace o najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
 
@@ -86,7 +86,7 @@ Tady jsou nejčastější hlavičky požadavků, které je potřeba zadat při v
 --- | ---
 Typ obsahu  | Formát požadavku (Content-Type: Application/<format>) pro formát rozhraní API datového centra FarmBeats je JSON. Content-Type: Application/JSON
 Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný < přístup-token >
-vyjádřit  | Formát odpovědi. Pro rozhraní API centra dat FarmBeats je formátem přijetí JSON: Application/JSON.
+Vyjádřit  | Formát odpovědi. Pro rozhraní API centra dat FarmBeats je formátem přijetí JSON: Application/JSON.
 
 
 ## <a name="api-requests"></a>Požadavky rozhraní API

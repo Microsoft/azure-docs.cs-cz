@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: nastavení zřizování zařízení pomocí šablony Azure Resource Manager'
-description: Rychlý start Azure – Nastavení služby Azure IoT Hub Device Provisioning pomocí šablony
+description: Rychlý Start Azure – nastavení IoT Hub Device Provisioning Service Azure pomocí šablony
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,22 +9,22 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f74260b5a2d088a6019653dcbcc6709e438916c4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903363"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151643"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service pomocí šablony Azure Resource Manager
 
-Pomocí [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) můžete prostřednictvím kódu programu nastavit cloudové prostředky Azure potřebné ke zřizování zařízení. Tyto kroky ukazují, jak vytvořit centrum IoT, novou službu IoT Hub Device Provisioning a vzájemně tyto dvě služby propojit pomocí šablony Azure Resource Manageru. V tomto rychlém startu se k provedení kroků potřebných k vytvoření skupiny prostředků a nasazení šablony používá [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli), ale můžete k tomu snadno použít i [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby nebo jiné programovací jazyky. 
+Pomocí [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) můžete prostřednictvím kódu programu nastavit cloudové prostředky Azure potřebné ke zřizování zařízení. Tyto kroky ukazují, jak vytvořit centrum IoT a nový IoT Hub Device Provisioning Service a propojit tyto dvě služby pomocí šablony Azure Resource Manager. V tomto rychlém startu se pomocí [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) provádí programové kroky potřebné k vytvoření skupiny prostředků a nasazení šablony, ale můžete snadno použít [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby nebo jiné programovací jazyky k provedení těchto kroků a nasazení šablony. 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-- Tento rychlý start vyžaduje, abyste používali Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku (CLI), přečtěte si článek [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- Tento rychlý Start vyžaduje, abyste spouštěli Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku (CLI), přečtěte si článek [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Přihlášení k Azure a vytvoření skupiny prostředků
@@ -114,7 +114,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
 
    ```
 
-4. Centrum IoT vytvoříte přidáním následujících řádků do kolekce **resources** (prostředky). Kód JSON určuje minimum vlastností potřebných k vytvoření centra IoT. Vlastnosti **name** (název) a **location** (umístění) se předávají jako parametry. Další informace o vlastnostech, které můžete pro centrum IoT v šabloně zadat, najdete v [referenčních informacích k šabloně Microsoft.Devices/IotHubs](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs).
+4. Centrum IoT vytvoříte přidáním následujících řádků do kolekce **resources** (prostředky). JSON určuje minimální vlastnosti vyžadované k vytvoření centra IoT. Vlastnosti **name** (název) a **location** (umístění) se předávají jako parametry. Další informace o vlastnostech, které můžete zadat pro Centrum IoT v šabloně, najdete v referenčních informacích k [šabloně Microsoft. Devices/IotHubs](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs).
 
    ```json
         {
@@ -235,7 +235,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
 
 ## <a name="create-a-resource-manager-parameter-file"></a>Vytvoření souboru parametrů Resource Manageru
 
-Šablona, kterou jste definovali v posledním kroku, využívá parametry k určení názvu centra IoT, názvu služby zřizování a umístění (oblast Azure), ve kterém se mají vytvořit. Tyto parametry předáváte v samostatném souboru. Tímto způsobem můžete stejnou šablonu znovu použít pro více nasazení. Soubor parametrů vytvoříte podle následujícího postupu:
+Šablona, kterou jste definovali v posledním kroku, používá parametry k zadání názvu služby IoT Hub, názvu služby zřizování a umístění (oblast Azure) pro jejich vytvoření. Tyto parametry předáváte v samostatném souboru. Tímto způsobem můžete stejnou šablonu znovu použít pro více nasazení. Soubor parametrů vytvoříte podle následujícího postupu:
 
 1. Pomocí textového editoru vytvořte soubor parametrů Azure Resource Manageru **parameters.json** s následující kostrou obsahu: 
 
@@ -248,7 +248,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
    }
    ```
 
-2. Do části s parametry přidejte hodnotu **iotHubName** (název centra IoT). Pokud název změníte, ujistěte se, že splňuje příslušné zásady vytváření názvů pro centrum IoT. Musí být dlouhý 3 až 50 znaků a může obsahovat pouze velké a malé alfanumerické znaky nebo spojovníky (-). 
+2. Do části s parametry přidejte hodnotu **iotHubName** (název centra IoT).  Název služby IoT Hub musí být globálně jedinečný v Azure, takže můžete chtít přidat jedinečnou předponu nebo příponu k názvu příkladu nebo úplně zvolit nový název. Ujistěte se, že název splňuje správné konvence pojmenování pro IoT Hub: musí mít 3-50 znaků a může obsahovat jenom horní nebo malé alfanumerické znaky nebo spojovníky (-). 
 
    ```json
     "parameters": {
@@ -259,7 +259,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
    
    ```
 
-3. Do části s parametry přidejte hodnotu **provisioningServiceName** (název služby zřizování). Pokud název změníte, ujistěte se, že splňuje příslušné zásady vytváření názvů pro službu IoT Hub Device Provisioning. Musí být dlouhý 3 až 64 znaků a může obsahovat pouze velké a malé alfanumerické znaky nebo spojovníky (-).
+3. Do části s parametry přidejte hodnotu **provisioningServiceName** (název služby zřizování). Budete také muset zvolit globálně jedinečný název pro vaši službu zřizování. Ujistěte se, že splňuje správné konvence pojmenování pro IoT Hub Device Provisioning Service: mělo by být 3-64 znaků a může obsahovat pouze velké nebo malé alfanumerické znaky nebo spojovníky (-).
 
    ```json
     "parameters": {
@@ -344,10 +344,10 @@ Skupiny prostředků i jednotlivé prostředky můžete odstranit také pomocí 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili centrum IoT a instanci služby Device Provisioning a propojili jste tyto dva prostředky. Pokud chcete zjistit, jak pomocí tohoto nastavení zřídit simulované zařízení, pokračujte k rychlému startu pro vytvoření simulovaného zařízení.
+V tomto rychlém startu jste nasadili službu IoT Hub a instanci služby Device Provisioning a propojili jste tyto dva prostředky. Informace o tom, jak pomocí tohoto nastavení zřídit simulované zařízení, najdete v rychlém startu pro vytvoření simulovaného zařízení.
 
 > [!div class="nextstepaction"]
-> [Rychlý start k vytvoření simulovaného zařízení](./quick-create-simulated-device.md)
+> [Rychlý Start k vytvoření simulovaného zařízení](./quick-create-simulated-device.md)
 
 
 <!-- Links -->

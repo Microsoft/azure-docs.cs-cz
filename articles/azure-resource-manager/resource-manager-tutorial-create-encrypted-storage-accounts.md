@@ -1,25 +1,17 @@
 ---
-title: Využít odkaz na šablonu Azure Resource Manageru | Dokumentace Microsoftu
+title: Využití referenčních informací k šablonám
 description: Využijte odkaz na šablonu Azure Resource Manageru k vytvoření šablony pro nasazení zašifrovaném účtu úložiště.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 81c02c5e39e23b49291561821b0732227feb5c05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 8957f661665811679c088de7ac4a4b026e9d28c7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103626"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149366"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Kurz: Využít odkaz na šablonu Azure Resource Manageru
 
@@ -27,7 +19,7 @@ Zjistěte, jak vyhledat informace o schématu šablony a jak pomocí těchto inf
 
 V tomto kurzu použijete základní šablonu Azure pro rychlý start. Pomocí referenční dokumentace k šablonám tuto šablonu přizpůsobíte tak, abyste s její pomocí vytvořili šifrovaný účet služby Storage.
 
-![Referenční informace k šablonám Resource Manageru nasadit zašifrovaném účtu úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
+![Odkaz na šablonu Správce prostředků nasazení šifrovaného účtu úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -78,9 +70,9 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="find-the-template-reference"></a>Vyhledání referenčních informací k šablonám
 
-1. Přejděte do [referenčními informacemi k šablonám Azure](https://docs.microsoft.com/azure/templates/).
-2. V **filtrovat podle názvu** zadejte **účty úložiště**.
-3. Vyberte **odkaz/šablony odkaz/úložiště/&lt;verze > / pro účty úložiště** jak je znázorněno na následujícím snímku obrazovky:
+1. Přejděte na [odkaz šablony Azure](https://docs.microsoft.com/azure/templates/).
+2. Do pole **filtrovat podle názvu** zadejte **účty úložiště**.
+3. Vyberte odkaz **/šablonu Referenční dokumentace/úložiště/&lt;verze > účty/Storage** , jak je znázorněno na následujícím snímku obrazovky:
 
     ![Odkaz šablony Azure Resource Manageru na účet úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
@@ -154,7 +146,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli, jak přizpůsobit existující šablonu pomocí odkazu na šablonu. Naučte se, jak vytvořit několik instancí účtu úložiště, viz:
 

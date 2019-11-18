@@ -1,19 +1,16 @@
 ---
 title: Použití Azure Deployment Manageru s šablonami Resource Manageru | Microsoft Docs
 description: Nasazujte prostředky Azure s využitím šablon Resource Manageru a Azure Deployment Manageru.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 6a05e45c5dc60cf26b2fb4f50cb4699c0fde142a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285903"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147412"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Public Preview)
 
@@ -50,12 +47,12 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
 * Určité zkušenosti s vývojem [šablon Azure Resource Manageru](./resource-group-overview.md).
-* Azure Powershell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Azure PowerShell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete nové okno prostředí PowerShell se zvýšenými oprávněními a použijte tento příkaz:
 
     ```powershell
@@ -192,7 +189,7 @@ Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigur
 > [!IMPORTANT]
 > Spravovaná identita přiřazená uživatelem musí být ve stejném umístění jako [uvedení](#create-the-rollout-template). V současné době je možné prostředky Deployment Manageru, včetně uvedení, vytvářet pouze v oblastech Střední USA nebo Východní USA 2. Platí to ale jenom pro prostředky Deployment Manager (například topologie služby, služby, jednotky služeb, zavedení a postup). Vaše cílové prostředky se dají nasadit do jakékoli podporované oblasti Azure. V tomto kurzu jsou například Deployment Manager prostředky nasazeny do Střed USA, ale služby jsou nasazeny do Východní USA a Západní USA. Toto omezení bude v budoucnu zrušeno.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. V levé nabídce portálu vyberte **Předplatná** a pak vyberte své předplatné.
 4. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
@@ -203,7 +200,7 @@ Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigur
     * **Role:** Udělte dostatečná oprávnění k dokončení nasazení artefaktů (webové aplikace a účty úložiště). Pro účely tohoto kurzu vyberte roli **Přispěvatel**. V praxi byste měli oprávnění omezit na minimum.
     * **Přiřazený přístup:** Vyberte **Spravovaná identita přiřazená uživatelem**.
     * Vyberte spravovanou identitu přiřazenou uživatelem, kterou jste vytvořili v dřívější části kurzu.
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 ## <a name="create-the-service-topology-template"></a>Vytvoření šablony topologie služby
 
@@ -314,7 +311,7 @@ Vytvoříte soubor parametrů, který se použije pro šablonu uvedení.
     * **azureResourceLocation:** V současné době je možné prostředky Azure Deployment Manageru vytvářet pouze v oblastech **Střední USA** nebo **Východní USA 2**.
     * **artifactSourceSASLocation:** Zadejte identifikátor URI SAS kořenového adresáře (kontejner objektů blob), ve kterém jsou uložené soubory šablon a parametrů jednotek služeb pro účely nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
     * **binaryArtifactRoot:** Pokud nezměníte strukturu složek artefaktů, použijte pro účely tohoto kurzu **binaries/1.0.0.0**.
-    * **managedIdentityID:** Zadejte ID spravované identity přiřazené uživatelem. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je:
+    * **managedIdentityID:** Zadejte ID spravované identity přiřazené uživatelem. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je následující:
 
         ```
         "/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userassignedidentities/<ManagedIdentityName>"
@@ -433,7 +430,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 2. Přejděte k nově vytvořeným webovým aplikacím v nových skupinách prostředků vytvořených nasazením uvedení.
 3. Otevřete webovou aplikaci ve webovém prohlížeči. Zkontrolujte umístění a verzi souboru index.html.
 
@@ -454,8 +451,8 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 2. Pomocí pole **Filtrovat podle názvu** můžete vyfiltrovat skupiny prostředků vytvořené v tomto kurzu. Měly by být 3 až 4:
 
     * **&lt;projectName > RG**: obsahuje prostředky Deployment Manager.
-    * **&lt;projectName > ServiceWUSrg**: obsahuje prostředky definované ServiceWUS.
-    * **&lt;projectName > ServiceEUSrg**: obsahuje prostředky definované ServiceEUS.
+    * **&lt;projectName > ServiceWUSrg**: obsahuje prostředky definované pomocí ServiceWUS.
+    * **&lt;projectName > ServiceEUSrg**: obsahuje prostředky definované pomocí ServiceEUS.
     * Skupina prostředků pro spravovanou identitu přiřazenou uživatelem.
 3. Vyberte název skupiny prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.

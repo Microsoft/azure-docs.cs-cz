@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 05/21/2019
-ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/15/2019
+ms.openlocfilehash: ab3667d79827e9548338b5beda00c9992f100deb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821777"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132423"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metriky a protokolování diagnostiky
 
@@ -64,6 +64,7 @@ Můžete nastavit databáze Azure SQL a databáze instancí pro shromažďován�
 | Monitorování telemetrie pro databáze | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
 | :------------------- | ----- | ----- |
 | [Základní metriky](#basic-metrics): obsahuje hodnoty DTU/CPU, DTU/CPU, procenta fyzického načtení dat, procento zápisu protokolu, úspěšné/neúspěšné/blokované připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procenta úložiště a XTP. procento úložiště | Ano | Ne |
+| [Rozšířená instance a aplikace](#advanced-metrics): obsahuje data systémové databáze tempdb a velikost souboru protokolu a soubor protokolu tempdb%. | Ano | Ne |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): obsahuje informace o statistice za běhu dotazu, jako je například využití procesoru a statistika doby trvání dotazu. | Ano | Ano |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): obsahuje informace o statistice čekání na dotaz (co vaše dotazy čekaly), jako je například CPU, protokol a uzamykání. | Ano | Ano |
 | [Chyby](#errors-dataset): obsahuje informace o chybách SQL v databázi. | Ano | Ano |
@@ -214,7 +215,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro databáze instan
 
 Metriky a protokolování diagnostiky můžete povolit pomocí prostředí PowerShell.
 
-- Pokud chcete povolit úložiště diagnostických protokolů v účtu úložiště, použijte tento příkaz:
+- Pokud chcete povolit úložiště pro diagnostické protokoly v účtu úložiště, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -222,19 +223,19 @@ Metriky a protokolování diagnostiky můžete povolit pomocí prostředí Power
 
    ID účtu úložiště je ID prostředku cílového účtu úložiště.
 
-- Pokud chcete povolit streamování diagnostických protokolů do centra událostí, použijte tento příkaz:
+- Pokud chcete povolit streamování protokolů diagnostiky do centra událostí, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   ID pravidla Azure Service Bus je řetězec s tímto formátem:
+   ID pravidla služby Azure Service Bus je řetězec v tomto formátu:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- Pokud chcete povolit odesílání diagnostických protokolů do Log Analytics pracovního prostoru, použijte tento příkaz:
+- Povolení odesílání protokolů diagnostiky k pracovnímu prostoru Log Analytics, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
@@ -246,7 +247,7 @@ Metriky a protokolování diagnostiky můžete povolit pomocí prostředí Power
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-Tyto parametry můžete kombinovat, chcete-li povolit více možností výstupu.
+Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Konfigurace více prostředků Azure
 
@@ -296,7 +297,7 @@ Metriky a protokolování diagnostiky můžete povolit pomocí rozhraní příka
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-Tyto parametry můžete kombinovat, chcete-li povolit více možností výstupu.
+Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
 ### <a name="rest-api"></a>REST API
 
@@ -310,7 +311,7 @@ Přečtěte si informace o tom, jak [Povolit nastavení diagnostiky při vytvá�
 
 Azure SQL Analytics je cloudové řešení, které monitoruje výkon databází SQL Azure, elastických fondů a spravovaných instancí ve velkém rozsahu a mezi několika předplatnými. Může vám to usnadnit shromažďování a vizualizace Azure SQL Database metriky výkonu a obsahuje integrované inteligentní funkce pro řešení potíží s výkonem.
 
-![Přehled Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
+![Přehled služby Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 SQL Database metriky a diagnostické protokoly je možné streamovat do Azure SQL Analytics pomocí možnosti zabudované **Odeslat do Log Analytics** na kartě nastavení diagnostiky na portálu. Službu Log Analytics můžete taky povolit pomocí nastavení diagnostiky prostřednictvím rutin PowerShellu, rozhraní příkazového řádku Azure nebo Azure Monitor REST API.
 
@@ -428,6 +429,16 @@ Podrobnosti o základních metrikách podle prostředků najdete v následujíc�
 |**Prostředek**|**Metriky**|
 |---|---|
 |Databáze Azure SQL|Procento DTU, využité DTU, limit DTU, procento využití procesoru, procento přečtených fyzických dat, procentuální hodnota zápisu protokolu, úspěšná/neúspěšná/zablokovaná připojeními brány firewall, procento relací, procento pracovních podílů, úložiště, procentuální hodnota úložiště, procento XTP úložiště a zablokování |
+
+## <a name="advanced-metrics"></a>Pokročilé metriky
+
+Podrobnosti o rozšířených metrikách najdete v následující tabulce.
+
+|**Metrika**|**Zobrazovaný název metriky**|**Popis**|
+|---|---|---|
+|tempdb_data_size| Velikost datového souboru tempdb v kilobajtech |Velikost datového souboru tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
+|tempdb_log_size| Velikost souboru protokolu tempdb v kilobajtech |Velikost souboru protokolu tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
+|tempdb_log_used_percent| Použit protokol tempdb v procentech |Byl použit protokol tempdb Percent. Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
 
 ## <a name="basic-logs"></a>Základní protokoly
 

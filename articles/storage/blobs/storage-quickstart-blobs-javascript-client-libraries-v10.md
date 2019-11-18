@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686682"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132014"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -83,7 +83,7 @@ Několik hodnot uvedených za jednotlivými parametry je možná trochu nesrozum
 
 | Parametr        | Hodnota   | Popis  |
 |------------------|---------|---------|
-| *permissions*    | racwdl  | Tento SAS povoluje funkce *read* (čtení), *append* (připojení), *create* (vytvoření), *write* (zápis), *delete* (odstranění) a *list* (výpis). |
+| *oprávnění*    | racwdl  | Tento SAS povoluje funkce *read* (čtení), *append* (připojení), *create* (vytvoření), *write* (zápis), *delete* (odstranění) a *list* (výpis). |
 | *resource-types* | sco     | Tento SAS ovlivňuje prostředky *service* (služba), *container* (kontejner) a *object* (objekt). |
 | *services*       | b       | Tento SAS ovlivňuje službu *Blob* Service. |
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Tento kód volá funkce ContainerURL [Create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) a [Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) bez použití instance [Abort](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) . Tento kód předpokládá, že váš účet úložiště je vytvořený a je povolený, aby pro tento rychlý Start byly jednoduché věci. V produkčním kódu použijte k přidání funkce časového limitu instanci přerušit.
+Tento kód volá funkce ContainerURL [Create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) a [Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) bez použití instance [Abort](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) . Tento kód předpokládá, že váš účet úložiště je vytvořený a je povolený, aby pro tento rychlý Start byly jednoduché věci. V produkčním kódu použijte k přidání funkce časového limitu instanci přerušit.
 
 ### <a name="list-blobs"></a>Výpis objektů blob
 
@@ -290,7 +290,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-Tento kód zavolá funkci [ContainerURL. listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL?view=azure-node-preview#listblobflatsegment-aborter--undefined---string--icontainerlistblobssegmentoptions-) ve smyčce, aby se zajistilo, že se načtou všechny segmenty. U každého segmentu se přeskočí přes seznam položek objektů blob, které obsahuje, a aktualizuje seznam **soubory** .
+Tento kód zavolá funkci [ContainerURL. listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) ve smyčce, aby se zajistilo, že se načtou všechny segmenty. U každého segmentu se přeskočí přes seznam položek objektů blob, které obsahuje, a aktualizuje seznam **soubory** .
 
 ### <a name="upload-blobs"></a>Nahrát objekty blob
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` elementu. Tímto způsobem tlačítko `click` událost spustí vstup souboru `click` událost a zobrazí výběr souboru. Po výběru souborů a zavření dialogového okna dojde k události `input` a zavolá se funkce `uploadFiles`. Tato funkce volá funkci [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí příslib, který je přidán do seznamu tak, aby bylo možné všechny očekávat najednou, což způsobí, že se soubory budou nahrávat paralelně.
+Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` elementu. Tímto způsobem tlačítko `click` událost spustí vstup souboru `click` událost a zobrazí výběr souboru. Po výběru souborů a zavření dialogového okna dojde k události `input` a zavolá se funkce `uploadFiles`. Tato funkce volá funkci [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí příslib, který je přidán do seznamu tak, aby bylo možné všechny očekávat najednou, což způsobí, že se soubory budou nahrávat paralelně.
 
 ### <a name="delete-blobs"></a>Odstranění objektů blob
 

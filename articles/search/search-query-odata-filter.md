@@ -1,7 +1,7 @@
 ---
 title: Odkaz na filtr OData
 titleSuffix: Azure Cognitive Search
-description: Referenční dokumentace jazyka OData pro syntaxi filtru v Azure Kognitivní hledání dotazy.
+description: Referenční dokumentace jazyka OData a úplná syntaxe používaná k vytváření výrazů filtru v Azure Kognitivní hledáních dotazech.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793375"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113197"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Syntaxe $filter OData v Azure Kognitivní hledání
 
@@ -78,7 +78,7 @@ Pokud napíšete výraz filtru bez závorek kolem jeho dílčích výrazů, Azur
 | Skupina | Operátor (y) |
 | --- | --- |
 | Logické operátory | `not` |
-| Operátory porovnání | `eq`, `ne`, `gt`, `lt`, `ge``le` |
+| Operátory porovnání | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
 | Logické operátory | `and` |
 | Logické operátory | `or` |
 
