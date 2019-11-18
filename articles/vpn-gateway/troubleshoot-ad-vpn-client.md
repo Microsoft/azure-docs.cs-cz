@@ -1,5 +1,5 @@
 ---
-title: 'Řešení potíží s klientem sítě VPN pro ověřování Azure AD: Azure VPN Gateway | Microsoft Docs'
+title: 'VPN Gateway: řešení potíží s klientem VPN – ověřování Azure AD'
 description: Řešení potíží s VPN Gateway P2S klienty ověřování Azure AD
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: e239f283d5065e032e98e87a72a4bfe9fbafbdb1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8871e92f0911c4d3cbcc1772bef1daeb5c70b5d7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517277"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151968"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Řešení potíží s klientem sítě VPN pro ověřování Azure AD
 
@@ -22,7 +22,7 @@ Tento článek vám pomůže při řešení potíží s klientem VPN pro připoj
 
 Zobrazení chybových zpráv v protokolu stavu.
 
-![Protokoly](./media/troubleshoot-ad-vpn-client/1.png)
+![logs](./media/troubleshoot-ad-vpn-client/1.png)
 
 1. Kliknutím na ikonu se šipkami v pravém dolním rohu okna klienta zobrazíte **protokoly stavu**.
 2. V protokolech vyhledejte chyby, které mohou problém indikovat.
@@ -35,7 +35,7 @@ Vymažte přihlašovací údaje.
 ![přihlášení](./media/troubleshoot-ad-vpn-client/2.png)
 
 1. Vyberte... vedle profilu, který chcete řešit. Vyberte **Konfigurovat-> vymazat uložený účet**.
-2. Vyberte **Save** (Uložit).
+2. Vyberte **Uložit**.
 3. Pokuste se připojit.
 4. Pokud se připojení stále nedaří, pokračujte k další části.
 

@@ -1,21 +1,21 @@
 ---
-title: Protokolování instance kontejneru s protokoly Azure Monitor
-description: Naučte se, jak odesílat protokoly z Azure Container Instances, abyste Azure Monitor protokoly.
+title: Protokoly prostředků pro skupiny kontejnerů – Azure Container Instances
+description: Přečtěte si, jak odesílat protokoly prostředků a data událostí ze skupin kontejnerů v Azure Container Instances do protokolů Azure Monitor
 services: container-instances
 author: dlepow
 manager: gwallace
 ms.service: container-instances
-ms.topic: overview
+ms.topic: article
 ms.date: 09/02/2019
 ms.author: danlep
-ms.openlocfilehash: 1c4846414036e86d460d9abe0bd93e785e710395
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: c9b986376884bf1536567d7b5211d93191ec7cc0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258483"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150174"
 ---
-# <a name="container-instance-logging-with-azure-monitor-logs"></a>Protokolování instance kontejneru s protokoly Azure Monitor
+# <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor
 
 Pracovní prostory Log Analytics poskytují centralizované umístění pro ukládání a dotazování dat protokolu z nejenom prostředků Azure, ale i místních prostředků a prostředků v jiných cloudech. Azure Container Instances obsahují integrovanou podporu pro posílání protokolů a dat událostí do protokolů Azure Monitor.
 
@@ -50,11 +50,11 @@ Získání ID a primárního klíče pracovního prostoru Log Analytics:
 
 Teď, když máte ID pracovního prostoru Log Analytics a primární klíč, jste připraveni vytvořit skupinu kontejnerů s podporou protokolování.
 
-Následující příklady znázorňují dva způsoby, jak vytvořit skupinu kontejnerů [s jedním][fluentd] mikrokontejnerem: Rozhraní příkazového řádku Azure a Azure CLI se šablonou YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
+Následující příklady znázorňují dva způsoby, jak vytvořit skupinu kontejnerů [s jedním][fluentd] mikrokontejnerem: Azure CLI a Azure CLI se šablonou YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
 
 ### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
-Pokud ho chcete nasadit pomocí Azure CLI, zadejte `--log-analytics-workspace` parametry `--log-analytics-workspace-key` a v příkazu [AZ Container Create][az-container-create] . Tyto dvě hodnoty pracovního prostoru nahraďte hodnotami, které jste získali v předchozím kroku (a aktualizujte název skupiny prostředků). Teprve potom spusťte následující příkaz.
+Pokud chcete nasadit pomocí Azure CLI, zadejte parametry `--log-analytics-workspace` a `--log-analytics-workspace-key` v příkazu [AZ Container Create][az-container-create] . Tyto dvě hodnoty pracovního prostoru nahraďte hodnotami, které jste získali v předchozím kroku (a aktualizujte název skupiny prostředků). Teprve potom spusťte následující příkaz.
 
 ```azurecli-interactive
 az container create \
@@ -108,7 +108,7 @@ Po nasazení skupiny kontejnerů může trvat několik minut (až 10), než se p
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
 1. V části **Obecné**vyberte **protokoly** .  
-1. Zadejte následující dotaz:`ContainerInstanceLog_CL | limit 50`
+1. Zadejte následující dotaz: `ContainerInstanceLog_CL | limit 50`
 1. Vyberte **Spustit** .
 
 Měl by se zobrazit několik výsledků zobrazených dotazem. Pokud nevidíte žádné výsledky, počkejte pár minut a pak znovu spusťte dotaz kliknutím na tlačítko **Spustit** . Ve výchozím nastavení se položky protokolu zobrazují ve formátu **tabulky** . Pak můžete rozbalením řádku zobrazit obsah příslušné položky protokolu.
@@ -121,7 +121,7 @@ Události pro instance kontejnerů můžete zobrazit také v Azure Portal. Udál
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
 1. V části **Obecné**vyberte **protokoly** .  
-1. Zadejte následující dotaz:`ContainerEvent_CL | limit 50`
+1. Zadejte následující dotaz: `ContainerEvent_CL | limit 50`
 1. Vyberte **Spustit** .
 
 Měl by se zobrazit několik výsledků zobrazených dotazem. Pokud nevidíte žádné výsledky, počkejte pár minut a pak znovu spusťte dotaz kliknutím na tlačítko **Spustit** . Ve výchozím nastavení se položky zobrazují ve formátu **tabulky** . Potom můžete rozbalit řádek a zobrazit obsah jednotlivé položky.
@@ -132,7 +132,7 @@ Měl by se zobrazit několik výsledků zobrazených dotazem. Pokud nevidíte ž
 
 Protokoly Azure Monitor obsahují obsáhlý [dotazovací jazyk][query_lang] pro přijímání informací z potenciálně tisíců výstupů protokolu.
 
-Základní strukturou dotazu je zdrojová tabulka (v tomto článku `ContainerInstanceLog_CL` `ContainerEvent_CL`), po které následuje řada operátorů oddělených znakem svislé čáry (`|`). Zřetězením více operátorů můžete zúžit výsledky a provádět pokročilé funkce.
+Základní strukturou dotazu je zdrojová tabulka (v tomto článku `ContainerInstanceLog_CL` nebo `ContainerEvent_CL`) následovaná řadou operátorů oddělených znakem svislé čáry (`|`). Zřetězením více operátorů můžete zúžit výsledky a provádět pokročilé funkce.
 
 Chcete-li zobrazit příklady výsledků dotazu, vložte následující dotaz do textového pole dotazu a vyberte tlačítko **Spustit** pro spuštění dotazu. Tento dotaz zobrazí všechny položky protokolu, jejichž pole Message (Zpráva) obsahuje slovo warn (upozornění):
 
@@ -149,7 +149,7 @@ ContainerInstanceLog_CL
 | where (TimeGenerated > ago(1h))
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 ### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 

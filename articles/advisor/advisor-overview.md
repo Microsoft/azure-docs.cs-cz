@@ -1,80 +1,81 @@
 ---
-title: Úvod do Azure Advisor | Dokumentace Microsoftu
-description: Použití Azure Advisoru a optimalizovat nasazení Azure.
+title: Seznámení s Azure Advisor | Microsoft Docs
+description: K optimalizaci nasazení Azure použijte Azure Advisor.
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: sagupt
 ms.service: advisor
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sagupt
+ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069691"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145366"
 ---
-# <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisoru
+# <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
 
-Seznamte se s klíčovými funkcemi Azure Advisoru a získejte odpovědi na nejčastější dotazy.
+Přečtěte si o klíčových funkcích Azure Advisor a Získejte odpovědi na nejčastější dotazy.
 
 ## <a name="what-is-advisor"></a>Co je Advisor?
-Advisor je individuální cloudový konzultant, který pomáhá dodržovat osvědčené postupy a optimalizovat nasazení Azure. Analyzuje konfiguraci vašich prostředků a telemetrii jejich využívání a následně doporučí řešení, která zlepší finanční úspornost, výkon, dostupnost a zabezpečení vašich prostředků Azure.
+Advisor je přizpůsobený cloudový konzultant, který pomáhá dodržovat osvědčené postupy pro optimalizaci nasazení Azure. Analyzuje konfiguraci vašich prostředků a telemetrii jejich využívání a následně doporučí řešení, která zlepší finanční úspornost, výkon, dostupnost a zabezpečení vašich prostředků Azure.
 
-Advisor vám umožní:
-* Získejte přehledy, aktivní a individuálních doporučení osvědčených postupů. 
-* Zlepšení výkonu, zabezpečení a vysokou dostupnost vašich prostředků, jak identifikovat příležitosti ke snížení celkové Azure výdajů.
-* Získejte doporučení pomocí vložených navrhované akce.
+Pomocí Poradce můžete:
+* Získejte proaktivní, napadnutelná a přizpůsobená doporučení osvědčených postupů. 
+* Zvyšte výkon, zabezpečení a vysokou dostupnost svých prostředků, jak identifikujete příležitosti pro snížení celkové útraty Azure.
+* Získejte doporučení s vloženými navrhovanými akcemi.
 
-Můžete přistupovat prostřednictvím Advisor [webu Azure portal](https://aka.ms/azureadvisordashboard). Přihlaste se k [portál](https://portal.azure.com), vyhledejte **Advisor** v navigační nabídce, nebo vyhledejte ho v **všechny služby** nabídky.
+Ke službě Advisor můžete přistupovat prostřednictvím [Azure Portal](https://aka.ms/azureadvisordashboard). Přihlaste se k [portálu](https://portal.azure.com), vyhledejte **Poradce** v navigační nabídce nebo ho vyhledejte v nabídce **všechny služby** .
 
-Řídicí panel služby Advisor zobrazí individuální doporučení pro vaše předplatná.  Můžete použít filtry pro zobrazení doporučení pro konkrétní předplatné a typy prostředků.  Doporučení se dělí do čtyř kategorií: 
+Řídicí panel poradce zobrazuje individuální doporučení pro všechna Vaše předplatná.  Filtry můžete použít k zobrazení doporučení pro konkrétní předplatná a typy prostředků.  Doporučení se dělí do čtyř kategorií: 
 
-* **Vysoká dostupnost**: K zajištění a zlepšování kontinuity důležité podnikové aplikace. Další informace najdete v tématu [doporučení k vysoké dostupnosti služby Advisor](advisor-high-availability-recommendations.md).
-* **Zabezpečení:** Jsou určená k detekci hrozeb a ohrožení zabezpečení, která můžou vést k porušením zabezpečení. Další informace najdete v tématu [doporučení Advisoru zabezpečení](advisor-security-recommendations.md).
-* **Výkon:** Jsou určená ke zrychlení vašich aplikací. Další informace najdete v tématu [doporučení k výkonu služby Advisor](advisor-performance-recommendations.md).
-* **Náklady:** Jsou určená k optimalizaci a snížení celkové útraty za Azure. Další informace najdete v tématu [doporučení Advisoru náklady](advisor-cost-recommendations.md).
+* **Vysoká dostupnost**: zajištění a zlepšení kontinuity důležitých podnikových aplikací. Další informace najdete v tématu [doporučení pro vysokou dostupnost služby Advisor](advisor-high-availability-recommendations.md).
+* **Zabezpečení**: detekuje hrozby a ohrožení zabezpečení, které by mohly vést k porušení zabezpečení. Další informace najdete v tématu [doporučení pro zabezpečení služby Advisor](advisor-security-recommendations.md).
+* **Výkon**: pro zlepšení rychlosti aplikací. Další informace najdete v tématu [doporučení k výkonu služby Advisor](advisor-performance-recommendations.md).
+* **Náklady**: pro optimalizaci a snížení celkové útraty Azure. Další informace najdete v tématu [doporučení pro náklady na poradce](advisor-cost-recommendations.md).
+* **Vynikající provozní**prostředí: vám umožní dosáhnout efektivity procesu a pracovního postupu, osvědčených postupů pro správu prostředků a nasazení. . Další informace najdete v tématu [doporučení pro provozní výkon služby Advisor](advisor-operational-excellence-recommendations.md).
 
-  ![Typy doporučení advisoru](./media/advisor-overview/advisor-dashboard.png)
+  ![Typy doporučení Advisoru](./media/advisor-overview/advisor-dashboard.png)
 
-Můžete kliknutím na kategorii zobrazíte seznam doporučení v rámci této kategorie a vybrat na doporučení získáte další informace.  Můžete také informace o akcích, které můžete provádět, abyste mohli využít příležitosti nebo řešení problému.
+Kliknutím na kategorii můžete zobrazit seznam doporučení v rámci této kategorie a vybrat doporučení pro další informace o této kategorii.  Můžete si také přečíst informace o akcích, které můžete provést, abyste mohli využít příležitost nebo vyřešit problém.
 
-![Kategorie doporučení advisoru](./media/advisor-overview/advisor-ha-category-example.png) 
+![Kategorie doporučení Poradce pro](./media/advisor-overview/advisor-ha-category-example.png) 
 
-Vyberte doporučenou akci pro doporučení pro implementaci doporučení.  Jednoduché rozhraní se otevře, která umožňuje implementovat doporučení nebo s odkazem na dokumentaci, která vám pomůže s implementací.  Jakmile implementujete doporučení, to může trvat až jeden den, Poradce pro rozpoznávání, který.
+Vyberte doporučenou akci pro doporučení k implementaci doporučení.  Otevře se jednoduché rozhraní, které vám umožní implementovat doporučení, nebo se můžete podívat na dokumentaci, která vám pomůže s implementací.  Po implementaci doporučení může poradce trvat až jeden den, než to rozpozná.
 
-Pokud je nemáte v úmyslu provést okamžitou akci na základě doporučení, můžete odložit za zadané časové období nebo zavřít.  Pokud nechcete dostávat doporučení pro konkrétní předplatné nebo skupinu prostředků, můžete nakonfigurovat Advisor pouze generování doporučení pro zadaná předplatná a skupiny prostředků.
+Pokud nechcete, aby se doporučení projevila okamžitě, můžete ho po zadaném časovém období odložit nebo zavřít.  Pokud nechcete dostávat doporučení pro konkrétní předplatné nebo skupinu prostředků, můžete službu Advisor nakonfigurovat tak, aby vygenerovala jenom doporučení pro zadaná předplatná a skupiny prostředků.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="how-do-i-access-advisor"></a>Jak získám přístup do služby Advisor?
-Můžete přistupovat prostřednictvím Advisor [webu Azure portal](https://aka.ms/azureadvisordashboard). Přihlaste se k [portál](https://portal.azure.com), vyhledejte **Advisor** v navigační nabídce, nebo vyhledejte ho v **všechny služby** nabídky.
+### <a name="how-do-i-access-advisor"></a>Jak získám přístup k Advisoru?
+Ke službě Advisor můžete přistupovat prostřednictvím [Azure Portal](https://aka.ms/azureadvisordashboard). Přihlaste se k [portálu](https://portal.azure.com), vyhledejte **Poradce** v navigační nabídce nebo ho vyhledejte v nabídce **všechny služby** .
 
-Můžete také zobrazit doporučení Advisoru prostřednictvím rozhraní prostředků virtuálního počítače. Vyberte virtuální počítač a poté přejděte k doporučení Advisoru v nabídce. 
+Doporučení Poradce můžete zobrazit také prostřednictvím rozhraní prostředku virtuálního počítače. Zvolte virtuální počítač a pak přejděte na doporučení poradce v nabídce. 
 
-### <a name="what-permissions-do-i-need-to-access-advisor"></a>Jaká oprávnění potřebuji pro přístup k Advisoru?
+### <a name="what-permissions-do-i-need-to-access-advisor"></a>Jaká oprávnění jsou nutná pro přístup k Advisoru?
  
-Můžete přistupovat doporučení Advisoru jako *vlastníka*, *Přispěvatel*, nebo *čtečky* předplatného.
+K doporučením Advisoru se dostanete jako *vlastník*, *Přispěvatel*nebo *Čtenář* předplatného.
 
-### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Jaké prostředky služby Advisor poskytuje doporučení pro?
+### <a name="what-resources-does-advisor-provide-recommendations-for"></a>K jakým prostředkům poradce poskytuje doporučení?
 
-Advisor poskytuje doporučení pro službu Application Gateway, aplikační služby, sady dostupnosti, mezipaměti Azure, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database pro MariaDB, Azure ExpressRoute, službu Azure Cosmos DB, Azure public IP adresy, SQL Data Warehouse, SQL servery, účty úložiště, profily Traffic Manageru a virtuální počítače.
+Advisor poskytuje doporučení pro Application Gateway, App Services, skupiny dostupnosti, mezipaměť Azure, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, Azure Public. IP adresy, SQL Data Warehouse, servery SQL, účty úložiště, profily Traffic Manager a virtuální počítače.
 
-Azure Advisor také obsahuje doporučení z [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) zahrnující doporučení pro další typy prostředků.
+Azure Advisor také obsahuje doporučení z [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) , která mohou obsahovat doporučení pro další typy prostředků.
 
-### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Můžete posunout nebo zavřít doporučení?
+### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Můžu odložit nebo zrušit doporučení?
 
-Posunout nebo zavřít doporučení, klikněte **odložit** odkaz. Můžete zadat odložit období nebo vyberte **nikdy** zavřete doporučení.
+Chcete-li odložit nebo zrušit doporučení, klikněte na odkaz **odložit** . Můžete zadat období odložení nebo vybrat možnost **nikdy** nezrušit doporučení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučení Advisoru, naleznete v tématu:
+Další informace o doporučení Advisoru najdete tady:
 
 * [Začínáme se službou Advisor](advisor-get-started.md)
-* [Poradce doporučení k vysoké dostupnosti](advisor-high-availability-recommendations.md)
-* [Bezpečnostní doporučení advisoru](advisor-security-recommendations.md)
-* [Poradce doporučení k výkonu](advisor-performance-recommendations.md)
-* [Náklady na doporučení advisoru](advisor-cost-recommendations.md)
+* [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)
+* [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
+* [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
+* [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)

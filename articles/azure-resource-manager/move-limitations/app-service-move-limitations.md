@@ -1,17 +1,14 @@
 ---
 title: Přesunout Azure App Service prostředky
 description: K přesunutí prostředků App Service do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 04ddf644c58434531dde708ee3b6432b1fce8f91
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: dca9b3a8f328192683cfde586f0ccdb01e84dc16
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533588"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150893"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Pokyny pro přesun App Servicech prostředků
 
@@ -21,23 +18,23 @@ Postup přesunutí prostředků App Service se liší v závislosti na tom, jest
 
 Při přesunu webové aplikace _v rámci stejného předplatného_nemůžete PŘESOUVAT certifikáty SSL třetích stran. Webovou aplikaci ale můžete přesunout do nové skupiny prostředků bez přesunu jejího certifikátu třetí strany a funkce SSL vaší aplikace pořád funguje.
 
-Pokud chcete přesunout certifikát SSL s webovou aplikací, postupujte takto:
+Pokud chcete přesunout certifikát SSL s webovou aplikací, postupujte podle těchto kroků:
 
 1. Odstraňte certifikát třetí strany z webové aplikace, ale uchovejte kopii certifikátu.
-2. Přesuňte webovou aplikaci.
+2. Přesun webové aplikace.
 3. Nahrajte do přesunuté webové aplikace certifikát třetí strany.
 
 ## <a name="move-across-subscriptions"></a>Pohyb mezi předplatnými
 
-Při přesunu webové aplikace _mezi předplatnými_platí následující omezení:
+Při přesunu webovou aplikaci _napříč předplatnými_, platí následující omezení:
 
-- Cílová skupina prostředků nesmí mít žádné existující prostředky App Service. Mezi App Service prostředky patří:
+- Cílová skupina prostředků nesmí mít nějaké stávající prostředky App Service. Prostředky App Service patří:
     - Web Apps
-    - Plány App Service
+    - Plány služby App Service
     - Nahrané nebo importované certifikáty SSL
     - Prostředí App Service
-- Všechny prostředky App Service ve skupině prostředků je potřeba přesunout společně.
-- Prostředky App Service lze přesunout pouze ze skupiny prostředků, ve které byly původně vytvořeny. Pokud prostředek App Service už není v původní skupině prostředků, přesuňte ho zpátky do původní skupiny prostředků. Pak přemístěte prostředek napříč předplatnými.
+- Všechny prostředky App Service ve skupině prostředků daly přesunout najednou.
+- Prostředky App Service lze pouze přesunout ze skupiny prostředků, ve kterém byly původně vytvořeny. Pokud prostředek App Service už není v původní skupině prostředků, přesuňte ho zpátky do původní skupiny prostředků. Pak přemístěte prostředek napříč předplatnými.
 
 Pokud si původní skupinu prostředků nepamatujete, můžete ji najít prostřednictvím diagnostiky. Pro webovou aplikaci vyberte možnost **diagnostikovat a vyřešit problémy**. Pak vyberte **Konfigurace a Správa**.
 
@@ -63,10 +60,10 @@ App Service Certificate můžete přesunout do nové skupiny prostředků nebo p
 
 Chcete-li zjistit, které prostředky App Service lze přesunout, přečtěte si téma Přesunutí stavu podpory pro:
 
-- [Microsoft. AppService](../move-support-resources.md#microsoftappservice)
-- [Microsoft. CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
-- [Microsoft. DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
-- [Microsoft. Web](../move-support-resources.md#microsoftweb)
+- [Microsoft.AppService](../move-support-resources.md#microsoftappservice)
+- [Microsoft.CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
+- [Microsoft.DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
+- [Microsoft.Web](../move-support-resources.md#microsoftweb)
 
 ## <a name="next-steps"></a>Další kroky
 

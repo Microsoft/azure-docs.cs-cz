@@ -1,17 +1,14 @@
 ---
-title: Typy prostředků rozšíření Azure
+title: Typy prostředků rozšíření
 description: Obsahuje seznam typů prostředků Azure, pomocí kterých se rozšiřuje schopnost dalších typů prostředků.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 00e8efaaa81ec0ce189d8cfe8a78285ded445c68
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 16dcd4cccea4445b6839ac639094d18e29ed49a9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901921"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147036"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Typy prostředků, které rozšiřuje možnosti jiných prostředků
 
@@ -75,8 +72,8 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. CostManagement/zobrazení
 - Microsoft. CostManagement/showbackRules
 - Microsoft. CustomProviders/Associations
-- Microsoft. EventGrid/eventSubscriptions
-- Microsoft. EventGrid/extensionTopics
+- Microsoft.EventGrid/eventSubscriptions
+- Microsoft.EventGrid/extensionTopics
 - Microsoft. GuestConfiguration/configurationProfileAssignments
 - Microsoft. GuestConfiguration/guestConfigurationAssignments
 - Microsoft. GuestConfiguration/software
@@ -110,7 +107,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. PolicyInsights/policyEvents
 - Microsoft. PolicyInsights/policyStates
 - Microsoft. PolicyInsights/policyTrackedResources
-- Microsoft. PolicyInsights/nápravy
+- Microsoft.PolicyInsights/remediations
 - Microsoft. RecoveryServices/backupProtectedItems
 - Microsoft. ResourceHealth/availabilityStatuses
 - Microsoft. ResourceHealth/childAvailabilityStatuses

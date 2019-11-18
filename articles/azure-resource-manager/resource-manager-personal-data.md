@@ -1,21 +1,18 @@
 ---
-title: Osobní údaje v Azure Resource Manageru | Dokumentace Microsoftu
-description: Další informace o správě osobních údajů operace Azure Resource Manageru.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Osobní údaje
+description: Naučte se spravovat osobní data přidružená k Azure Resource Manager operací.
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: tomfitz
-ms.openlocfilehash: cc8400a3b6d51bacd55d3c711700a1d07266f528
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 2b1f97fa4f831235fe04c18b1ed33e729ed2326b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206282"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149504"
 ---
-# <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Správa osobních údajů pomocí Azure Resource Manageru
+# <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Správa osobních údajů spojených s Azure Resource Manager
 
-Aby se zabránilo úniku citlivých informací, odstraňte všechny osobní údaje, které jste poskytli v nasazení, skupiny prostředků nebo značky. Azure Resource Manager poskytuje operace, které vám umožní spravovat osobní údaje, které jste poskytli v nasazení, skupiny prostředků nebo značky.
+Aby nedocházelo k odhalení citlivých informací, odstraňte všechny osobní údaje, které jste mohli poskytnout v nasazeních, skupinách prostředků nebo značkách. Azure Resource Manager poskytuje operace, které vám umožní spravovat osobní údaje, které jste mohli poskytnout v nasazeních, skupinách prostředků nebo značkách.
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
@@ -23,51 +20,51 @@ Aby se zabránilo úniku citlivých informací, odstraňte všechny osobní úda
 
 ## <a name="delete-personal-data-in-deployment-history"></a>Odstranění osobních údajů v historii nasazení
 
-V případě nasazení Resource Manageru uchovává hodnoty parametrů a stavové zprávy v historii nasazení. Tyto hodnoty budou zachovány, dokud je odstranit z historie nasazení. Pokud chcete zjistit, jestli jste zadali osobních údajů v těchto hodnot, uveďte nasazení. Pokud je vyhledání osobních údajů, odstraňte z historie nasazení.
+V případě nasazení Správce prostředků zachovává hodnoty parametrů a stavové zprávy v historii nasazení. Tyto hodnoty jsou trvalé, dokud neodstraníte nasazení z historie. Pokud chcete zjistit, jestli jste v těchto hodnotách zadali osobní údaje, Seznamte se s nasazeními. Pokud najdete osobní údaje, odstraňte nasazení z historie.
 
-Do seznamu **nasazení** v historii, použijte:
+K vypsání **nasazení** v historii použijte:
 
-* [Seznam podle skupin prostředků](/rest/api/resources/deployments/listbyresourcegroup)
+* [Seznam podle skupiny prostředků](/rest/api/resources/deployments/listbyresourcegroup)
 * [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
-* [seznam az skupiny nasazení](/cli/azure/group/deployment#az-group-deployment-list)
+* [AZ Group Deployment list](/cli/azure/group/deployment#az-group-deployment-list)
 
-Chcete-li odstranit **nasazení** z historie, použijte:
+Pokud chcete z historie odstranit **nasazení** , použijte:
 
 * [Odstranění](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
-* [Odstranit az skupiny nasazení](/cli/azure/group/deployment#az-group-deployment-delete)
+* [AZ Group Deployment DELETE](/cli/azure/group/deployment#az-group-deployment-delete)
 
-## <a name="delete-personal-data-in-resource-group-names"></a>Odstranění osobních údajů v názvy skupin prostředků
+## <a name="delete-personal-data-in-resource-group-names"></a>Odstranění osobních údajů v názvech skupin prostředků
 
-Název skupiny prostředků opakuje, dokud je neodstraníte skupinu prostředků. Pokud budete mít k dispozici osobních údajů v názvech najdete seznam skupin prostředků. Pokud je vyhledání osobních údajů, [přesunout prostředky](resource-group-move-resources.md) do nové skupiny prostředků a odstranit skupinu prostředků s osobními údaji v názvu.
+Název skupiny prostředků přetrvává, dokud skupinu prostředků neodstraníte. Pokud chcete zjistit, jestli jste v názvech zadali osobní údaje, Seznamte se se skupinami prostředků. Pokud najdete osobní údaje, [přesuňte prostředky](resource-group-move-resources.md) do nové skupiny prostředků a odstraňte skupinu prostředků s osobními údaji v názvu.
 
-Do seznamu **skupiny prostředků**, použijte:
+K vypsání **skupin prostředků**použijte:
 
 * [Seznam](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
-* [seznam skupin az](/cli/azure/group#az-group-list)
+* [AZ Group list](/cli/azure/group#az-group-list)
 
-Chcete-li odstranit **skupiny prostředků**, použijte:
+Pokud chcete odstranit **skupiny prostředků**, použijte:
 
 * [Odstranění](/rest/api/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
-## <a name="delete-personal-data-in-tags"></a>Odstranění osobních údajů v značky
+## <a name="delete-personal-data-in-tags"></a>Odstranění osobních údajů ve značkách
 
-Názvy značek a hodnoty budou zachovány, dokud odstranit nebo upravit značky. Pokud jste zadali osobních údajů ve značkách najdete seznam značek. Pokud je vyhledání osobních údajů, odstraňte značky.
+Názvy značek a hodnoty jsou trvalé, dokud neodstraníte nebo nezměníte značku. Pokud chcete zjistit, jestli jste ve značkách zadali osobní údaje, Seznamte se se značkami. Pokud najdete osobní údaje, odstraňte tyto značky.
 
-Do seznamu **značky**, použijte:
+Chcete-li zobrazit seznam **značek**, použijte:
 
 * [Seznam](/rest/api/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
-* [seznam značek az](/cli/azure/tag#az-tag-list)
+* [AZ tag list](/cli/azure/tag#az-tag-list)
 
 Chcete-li odstranit **značky**, použijte:
 
 * [Odstranění](/rest/api/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
-* [AZ tag delete](/cli/azure/tag#az-tag-delete)
+* [AZ tag DELETE](/cli/azure/tag#az-tag-delete)
 
-## <a name="next-steps"></a>Další postup
-* Přehled Azure Resource Manageru, najdete v článku [co je Resource Manager?](resource-group-overview.md)
+## <a name="next-steps"></a>Další kroky
+* Přehled Azure Resource Manager najdete v tématu [co je správce prostředků?](resource-group-overview.md)

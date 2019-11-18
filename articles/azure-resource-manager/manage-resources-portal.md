@@ -1,19 +1,16 @@
 ---
-title: Správa prostředků Azure pomocí Azure Portal | Microsoft Docs
+title: Správa prostředků – Azure Portal
 description: Ke správě prostředků použijte Azure Portal a Azure Resource Manager. Ukazuje, jak nasadit a odstranit prostředky.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c52d54ca02436f7224346a65048244a5ec8d104c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 5c0e09930ee53733b36e987356cef2963416006f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390398"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149819"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Správa prostředků Azure pomocí Azure Portal
 
@@ -36,7 +33,7 @@ Prostředky Azure se uspořádávají podle služeb Azure a skupin prostředků.
 
 Postup otevření prostředku podle typu služby:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. V levém podokně vyberte službu Azure. V tomto případě **účty úložiště**.  Pokud uvedenou službu nevidíte, vyberte **všechny služby**a potom vyberte typ služby.
 
     ![otevřít prostředek Azure na portálu](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -51,7 +48,7 @@ Postup otevření prostředku podle typu služby:
 
 Postup otevření prostředku podle skupiny prostředků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. V levém podokně vyberte **skupiny prostředků** a seznam prostředků v rámci skupiny.
 3. Vyberte prostředek, který chcete otevřít. 
 

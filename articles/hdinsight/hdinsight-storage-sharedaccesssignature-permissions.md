@@ -2,18 +2,18 @@
 title: Omezení přístupu pomocí sdílených přístupových podpisů – Azure HDInsight
 description: Naučte se používat signatury Shared Access k omezení přístupu HDInsight k datům uloženým v objektech blob služby Azure Storage.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 031498119eb4f9feb92046d7d7a86cfd77f8f368
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/13/2019
+ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498117"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148235"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Omezení přístupu k datům v HDInsight pomocí Azure Storage sdílených přístupových podpisů
 
@@ -25,7 +25,7 @@ Služba HDInsight má úplný přístup k datům v účtech Azure Storage přidr
 > [!WARNING]  
 > HDInsight musí mít úplný přístup k výchozímu úložišti pro cluster.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure.
 
@@ -88,7 +88,7 @@ Uložte token SAS vytvořený na konci každé metody. Token bude vypadat podobn
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
 ```
 
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 Hodnoty `RESOURCEGROUP`, `STORAGEACCOUNT`a `STORAGECONTAINER` nahraďte odpovídajícími hodnotami pro existující kontejner úložiště. Změňte adresář na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` nebo upravte parametr `-File` tak, aby obsahoval absolutní cestu pro `Set-AzStorageblobcontent`. Zadejte následující příkaz prostředí PowerShell:
 
@@ -205,9 +205,9 @@ Otevřete soubor `SASToken.py` a `storage_account_name`, `storage_account_key`a 
 
 Pokud se zobrazí chybová zpráva `ImportError: No module named azure.storage`, možná budete muset provést `pip install --upgrade azure-storage`.
 
-### <a name="using-c"></a>Použití C#
+### <a name="using-c"></a>Pomocí C#
 
-1. Otevřete řešení v aplikaci Visual Studio.
+1. Otevřete řešení v sadě Visual Studio.
 
 2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SASExample** a vyberte **vlastnosti**.
 
@@ -234,7 +234,6 @@ Pokud chcete použít sdílený přístupový podpis k omezení přístupu ke ko
 Položky `CLUSTERNAME`, `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`a `TOKEN` nahraďte odpovídajícími hodnotami. Zadejte příkazy prostředí PowerShell:
 
 ```powershell
-
 $clusterName = 'CLUSTERNAME'
 $resourceGroupName = 'RESOURCEGROUP'
 
@@ -285,11 +284,10 @@ $defaultStorageContext = New-AzStorageContext `
                                 -StorageAccountName $defaultStorageAccountName `
                                 -StorageAccountKey $defaultStorageAccountKey
 
-
 # Create a blob container. This holds the default data store for the cluster.
 New-AzStorageContainer `
     -Name $clusterName `
-    -Context $defaultStorageContext 
+    -Context $defaultStorageContext
 
 # Cluster login is used to secure HTTPS services hosted on the cluster
 $httpCredential = Get-Credential `
@@ -302,9 +300,9 @@ $sshCredential = Get-Credential `
     -UserName "sshuser"
 
 # Create the configuration for the cluster
-$config = New-AzHDInsightClusterConfig 
+$config = New-AzHDInsightClusterConfig
 
-$config = $config | Add-AzHDInsightConfigValues `
+$config = $config | Add-AzHDInsightConfigValue `
     -Spark2Defaults @{} `
     -Core @{"fs.azure.sas.$SASContainerName.$SASStorageAccountName.blob.core.windows.net"=$SASToken}
 
@@ -358,29 +356,29 @@ Pokud máte existující cluster, můžete přidat SAS do konfigurace **základn
 
 1. Otevřete webové uživatelské rozhraní Ambari pro váš cluster. Adresa této stránky je `https://YOURCLUSTERNAME.azurehdinsight.net`. Po zobrazení výzvy proveďte ověření v clusteru pomocí jména správce (správce) a hesla, které jste použili při vytváření clusteru.
 
-2. Na levé straně webového uživatelského rozhraní Ambari vyberte **HDFS** a pak vyberte kartu **Konfigurace** uprostřed stránky.
+1. Přejděte na stránku **HDFS** > **Configurations** > **Advanced** > **Custom Core-site**.
 
-3. Vyberte kartu **Upřesnit** a potom se posuňte, dokud nenajdete **vlastní část základní-lokalita** .
+1. Rozbalte část **vlastní základ pro základní lokalitu** , přejděte na konec a a pak vyberte **Přidat vlastnost...** . Pro **klíč** a **hodnotu**použijte následující hodnoty:
 
-4. Rozbalte část **vlastní základní-lokalita** , přejděte na konec a vyberte odkaz **Přidat vlastnost...** . Pro pole **klíč** a **hodnota** použijte následující hodnoty:
+    * **Klíč**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Hodnota**: SAS vrácená jednou z výše provedených metod.
 
-   * **Klíč**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-   * **Hodnota**: SAS vrácená jednou z výše provedených metod.
+    Nahraďte `CONTAINERNAME` názvem kontejneru, který jste použili v C# aplikaci nebo SAS. Nahraďte `STORAGEACCOUNTNAME` názvem účtu úložiště, který jste použili.
 
-     Nahraďte `CONTAINERNAME` názvem kontejneru, který jste použili v C# aplikaci nebo SAS. Nahraďte `STORAGEACCOUNTNAME` názvem účtu úložiště, který jste použili.
+    Vyberte **Přidat** a uložte tento klíč a hodnotu.
 
-5. Kliknutím na tlačítko **Přidat** uložte tento klíč a hodnotu a potom kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak klikněte na **Uložit**.
+1. Kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak vyberte **Uložit**.
 
-    Po dokončení změn klikněte na **OK** .
+    Po dokončení změn vyberte **OK** .
 
    > [!IMPORTANT]  
    > Změny se projeví až po restartování několika služeb.
 
-6. Ve webovém uživatelském rozhraní Ambari vyberte ze seznamu na levé straně **HDFS** a pak vyberte **restartovat všechny ovlivněné** v rozevíracím seznamu **Akce služby** na pravé straně. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
+1. Zobrazí se rozevírací seznam pro **restartování** . V rozevíracím seznamu vyberte **restartovat vše** a pak __potvrďte restart vše__.
 
-    Tento postup opakujte pro MapReduce2 a PŘÍZe.
+    Tento postup opakujte pro **MapReduce2** a **příze**.
 
-7. Po restartování služby vyberte jednotlivé položky a v rozevíracím seznamu **Akce služby** zakažte režim údržby.
+1. Po restartování služby vyberte jednotlivé položky a v rozevíracím seznamu **Akce služby** zakažte režim údržby.
 
 ## <a name="test-restricted-access"></a>Test omezeného přístupu
 
@@ -405,7 +403,7 @@ Pomocí následujících kroků ověříte, že můžete číst a vypisovat polo
 3. Pomocí následujícího příkazu ověřte, zda můžete číst obsah souboru. Nahraďte `SASCONTAINER` a `SASACCOUNTNAME` jako v předchozím kroku. Nahraďte `sample.log` názvem souboru zobrazeného v předchozím příkazu:
 
     ```bash
-    hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
+    hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
     ```
 
     Tento příkaz vypíše obsah souboru.
@@ -441,6 +439,4 @@ Pomocí následujících kroků ověříte, že můžete číst a vypisovat polo
 Teď, když jste se naučili, jak do clusteru HDInsight přidat úložiště s omezeným přístupem, se naučíte, jak pracovat s daty ve vašem clusteru:
 
 * [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití Apache prasete se službou HDInsight](hadoop/hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
-

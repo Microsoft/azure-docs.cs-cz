@@ -1,17 +1,14 @@
 ---
-title: Nasazení prostředků Azure mezi předplatnými & skupiny prostředků
+title: Nasazení prostředků mezi předplatnými & skupiny prostředků
 description: Ukazuje, jak během nasazení cílit více než jedno předplatné Azure a skupinu prostředků.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: c90096043f54eb8db5834fbe83ed1d6ae710d371
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 99c534e1c51dcdf32c2b3a3b779c01d71b8d0c24
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528329"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149552"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků
 
@@ -24,7 +21,7 @@ Obvykle se všechny prostředky v šabloně nasazují do jedné [skupiny prostř
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Zadejte předplatné a skupinu prostředků.
 
-Chcete-li cílit na jiný prostředek, použijte vnořenou nebo propojenou šablonu. @No__t_0 typ prostředku poskytuje parametry pro `subscriptionId` a `resourceGroup`. Tyto vlastnosti umožňují zadat jiné předplatné a skupinu prostředků pro vnořené nasazení. Před spuštěním nasazení musí existovat všechny skupiny prostředků. Pokud nezadáte buď ID předplatného, nebo skupinu prostředků, použije se předplatné a skupina prostředků z nadřazené šablony.
+Chcete-li cílit na jiný prostředek, použijte vnořenou nebo propojenou šablonu. `Microsoft.Resources/deployments` typ prostředku poskytuje parametry pro `subscriptionId` a `resourceGroup`. Tyto vlastnosti umožňují zadat jiné předplatné a skupinu prostředků pro vnořené nasazení. Před spuštěním nasazení musí existovat všechny skupiny prostředků. Pokud nezadáte buď ID předplatného, nebo skupinu prostředků, použije se předplatné a skupina prostředků z nadřazené šablony.
 
 Účet, který použijete k nasazení šablony, musí mít oprávnění k nasazení na zadané ID předplatného. Pokud zadané předplatné existuje v jiném tenantovi Azure Active Directory, musíte [Přidat uživatele typu host z jiného adresáře](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
@@ -158,7 +155,7 @@ Pokud odkazujete na samostatnou šablonu, funkce v propojené šabloně se vyře
 }
 ```
 
-## <a name="example-templates"></a>Příklady šablon
+## <a name="example-templates"></a>Příklad šablony
 
 Následující šablony ukazují nasazení více skupin prostředků. Skripty pro nasazení šablon se zobrazí za tabulkou.
 

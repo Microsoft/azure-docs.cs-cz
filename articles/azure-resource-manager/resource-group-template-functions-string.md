@@ -1,47 +1,44 @@
 ---
-title: Funkce šablon Azure Resource Manager – String | Microsoft Docs
+title: Template Functions – String
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s řetězci.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: tomfitz
-ms.openlocfilehash: d5c95e964740978af0db8db233c65adb7eb074f0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: af972bac39890402cf75e83d10806e9a830c1d4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834344"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149605"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězcové funkce pro šablony Azure Resource Manager
 
 Správce prostředků poskytuje následující funkce pro práci s řetězci:
 
-* [Base](#base64)
+* [base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [spojuje](#concat)
-* [zobrazí](#contains)
+* [concat](#concat)
+* [contains](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
-* [obsahovat](#empty)
+* [empty](#empty)
 * [endsWith](#endswith)
-* [první](#first)
-* [formátovat](#format)
-* [hlavních](#guid)
+* [first](#first)
+* [format](#format)
+* [guid](#guid)
 * [indexOf](#indexof)
 * [posledního](#last)
 * [lastIndexOf](#lastindexof)
-* [časový](#length)
+* [length](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
-* [náhrady](#replace)
-* [přímo](#skip)
+* [replace](#replace)
+* [skip](#skip)
 * [split](#split)
 * [startsWith](#startswith)
-* [řetezce](#string)
-* [podřetězec](#substring)
-* [nezbytná](#take)
+* [řetězec](#string)
+* [substring](#substring)
+* [take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [trim](#trim)
@@ -333,7 +330,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | Vrátit | Pole | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>Zobrazí
+## <a name="contains"></a>Obsahuje
 
 `contains (container, itemToFind)`
 
@@ -407,12 +404,12 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringTrue | Logick | True |
-| stringFalse | Logick | False |
-| objectTrue | Logick | True |
-| objectFalse | Logick | False |
-| arrayTrue | Logick | True |
-| arrayFalse | Logick | False |
+| stringTrue | Bool | Pravda |
+| stringFalse | Bool | Nepravda |
+| objectTrue | Bool | Pravda |
+| objectFalse | Bool | Nepravda |
+| arrayTrue | Bool | Pravda |
+| arrayFalse | Bool | Nepravda |
 
 ## <a name="datauri"></a>dataUri
 
@@ -466,7 +463,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| dataUriOutput | Řetězec | data: text/prostý; charset = UTF8; Base64, SGVsbG8 = |
+| dataUriOutput | Řetězec | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | Řetězec | Hello World! |
 
 ## <a name="datauritostring"></a>dataUriToString
@@ -521,10 +518,10 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| dataUriOutput | Řetězec | data: text/prostý; charset = UTF8; Base64, SGVsbG8 = |
+| dataUriOutput | Řetězec | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | Řetězec | Hello World! |
 
-## <a name="empty"></a>Obsahovat
+## <a name="empty"></a>Prázdná
 
 `empty(itemToTest)`
 
@@ -585,11 +582,11 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayEmpty | Logick | True |
-| objectEmpty | Logick | True |
-| stringEmpty | Logick | True |
+| arrayEmpty | Bool | Pravda |
+| objectEmpty | Bool | Pravda |
+| stringEmpty | Bool | Pravda |
 
-## <a name="endswith"></a>EndsWith
+## <a name="endswith"></a>endsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -648,12 +645,12 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| startsTrue | Logick | True |
-| startsCapTrue | Logick | True |
-| startsFalse | Logick | False |
-| endsTrue | Logick | True |
-| endsCapTrue | Logick | True |
-| endsFalse | Logick | False |
+| startsTrue | Bool | Pravda |
+| startsCapTrue | Bool | Pravda |
+| startsFalse | Bool | Nepravda |
+| endsTrue | Bool | Pravda |
+| endsCapTrue | Bool | Pravda |
+| endsFalse | Bool | Nepravda |
 
 ## <a name="first"></a>první
 
@@ -705,9 +702,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Řetězec | jeden |
-| stringOutput | Řetězec | Zápis |
+| stringOutput | Řetězec | O |
 
-## <a name="format"></a>formátovat
+## <a name="format"></a>format
 
 `format(formatString, arg1, arg2, ...)`
 
@@ -764,7 +761,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | formatTest | Řetězec | Hello, User. Naformátované číslo: 8 175 133 |
 
-## <a name="guid"></a>hlavních
+## <a name="guid"></a>guid
 
 `guid(baseString, ...)`
 
@@ -890,11 +887,11 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| první | Hmot | 0 |
-| Poslední | Hmot | 3 |
-| firstString | Hmot | 2 |
-| lastString | Hmot | 0 |
-| notFound | Hmot | – 1 |
+| první | Int | 0 |
+| Poslední | Int | 3 |
+| firstString | Int | 2 |
+| lastString | Int | 0 |
+| notFound | Int | -1 |
 
 ## <a name="last"></a>Posledního
 
@@ -1003,13 +1000,13 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| první | Hmot | 0 |
-| Poslední | Hmot | 3 |
-| firstString | Hmot | 2 |
-| lastString | Hmot | 0 |
-| notFound | Hmot | – 1 |
+| první | Int | 0 |
+| Poslední | Int | 3 |
+| firstString | Int | 2 |
+| lastString | Int | 0 |
+| notFound | Int | -1 |
 
-## <a name="length"></a>časový
+## <a name="length"></a>length
 
 `length(string)`
 
@@ -1081,9 +1078,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayLength | Hmot | 3 |
-| stringLength | Hmot | 13 |
-| objectLength | Hmot | 4 |
+| arrayLength | Int | 3 |
+| stringLength | Int | 13 |
+| objectLength | Int | 4 |
 
 ## <a name="newguid"></a>newGuid
 
@@ -1283,7 +1280,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | firstOutput | Řetězec | 1231231234 |
-| secondOutput | Řetězec | 123-123 – xxxx |
+| secondOutput | Řetězec | 123-123-xxxx |
 
 ## <a name="skip"></a>přímo
 
@@ -1471,12 +1468,12 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| startsTrue | Logick | True |
-| startsCapTrue | Logick | True |
-| startsFalse | Logick | False |
-| endsTrue | Logick | True |
-| endsCapTrue | Logick | True |
-| endsFalse | Logick | False |
+| startsTrue | Bool | Pravda |
+| startsCapTrue | Bool | Pravda |
+| startsFalse | Bool | Nepravda |
+| endsTrue | Bool | Pravda |
+| endsCapTrue | Bool | Pravda |
+| endsFalse | Bool | Nepravda |
 
 ## <a name="string"></a>řetězec
 
@@ -1546,10 +1543,10 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | objectOutput | Řetězec | {"valuet": 10, "Hodnotab": "example text"} |
-| arrayOutput | Řetězec | ["a", "b", "c"] |
+| arrayOutput | Řetězec | ["a","b","c"] |
 | intOutput | Řetězec | 5 |
 
-## <a name="substring"></a>podřetězec
+## <a name="substring"></a>substring
 
 `substring(stringToParse, startIndex, length)`
 
@@ -1560,8 +1557,8 @@ Vrátí podřetězec, který začíná na zadané pozici znaku a obsahuje zadan�
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | stringToParse |Ano |řetězec |Původní řetězec, ze kterého je dílčí řetězec extrahován. |
-| Indexu |Ne |int |Počáteční pozice znaku na základě nuly pro podřetězec. |
-| časový |Ne |int |Počet znaků podřetězce. Musí odkazovat na umístění v rámci řetězce. Musí být nula nebo větší. |
+| Počáteční index |Ne |int |Počáteční pozice znaku na základě nuly pro podřetězec. |
+| length |Ne |int |Počet znaků podřetězce. Musí odkazovat na umístění v rámci řetězce. Musí být nula nebo větší. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1610,7 +1607,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | substringOutput | Řetězec | dva |
 
-## <a name="take"></a>Nezbytná
+## <a name="take"></a>nezbytná
 
 `take(originalValue, numberToTake)`
 
@@ -1676,7 +1673,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Pole | ["One"; "Two"] |
-| stringOutput | Řetězec | pnete |
+| stringOutput | Řetězec | zapnuté |
 
 ## <a name="tolower"></a>toLower
 
@@ -1904,7 +1901,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 }
 ```
 
-## <a name="uri"></a>identifikátor URI
+## <a name="uri"></a>uri
 
 `uri (baseUri, relativeUri)`
 
@@ -1914,7 +1911,7 @@ Vytvoří absolutní identifikátor URI kombinováním řetězce baseUri a relat
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Identifikátor |Ano |řetězec |Základní řetězec identifikátoru URI. Pečlivě Sledujte chování týkající se zpracování koncového lomítka ('/'), jak je popsáno v následující tabulce.  |
+| baseUri |Ano |řetězec |Základní řetězec identifikátoru URI. Pečlivě Sledujte chování týkající se zpracování koncového lomítka ('/'), jak je popsáno v následující tabulce.  |
 | relativeUri |Ano |řetězec |Relativní řetězec identifikátoru URI, který se má přidat do základního řetězce identifikátoru URI. |
 
 * Pokud **BaseUri** končí na koncovém lomítku, výsledek je jednoduše **BaseUri** následovaný **relativeUri**.
@@ -1925,7 +1922,7 @@ Vytvoří absolutní identifikátor URI kombinováním řetězce baseUri a relat
 
    * Pokud má **BaseUri** lomítka, ale nemá na konci lomítka, vše od posledního lomítka kromě je odebráno z **BaseUri** a výsledek je **BaseUri** , za nímž následuje **relativeUri**.
      
-Zde je několik příkladů:
+Následuje několik příkladů:
 
 ```
 uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
@@ -2104,7 +2101,7 @@ Vrátí aktuální hodnotu DateTime (UTC) v zadaném formátu. Pokud není zadá
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| formátovat |Ne |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| format |Ne |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -2204,8 +2201,8 @@ Další příklad ukazuje, jak použít hodnotu z funkce při nastavení hodnoty
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).
-* Chcete-li sloučit více šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md).
-* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablony Azure Resource Manager](resource-group-template-deploy.md).
+* Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
+* Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
+* K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).
+* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

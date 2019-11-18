@@ -1,17 +1,14 @@
 ---
-title: Režimy nasazení Azure Resource Manager | Microsoft Docs
+title: Režimy nasazení
 description: Popisuje, jak určit, jestli se má použít kompletní nebo přírůstkový režim nasazení s Azure Resource Manager.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: 762b0e74e8da20d1b48703385853765d5cc643af
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 44111787736d4b80cbdd68263b137d67de2218ba
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953233"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149870"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
 

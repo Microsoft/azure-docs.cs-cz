@@ -1,18 +1,14 @@
 ---
-title: Bezpečné nasazení Azure Resource Manager šablony s tokenem SAS
+title: Bezpečné nasazení šablony s tokenem SAS
 description: K nasazení prostředků do Azure můžete použít šablonu Azure Resource Manager chráněnou tokenem SAS. Zobrazuje Azure PowerShell a Azure CLI.
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.author: tomfitz
-ms.openlocfilehash: f396618350e4f4a9be09db421d073aec6ba52b65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 8138563211cae12cc38f0e737be49b32204dc243
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036953"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150317"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token"></a>Nasazení privátní šablony Resource Manageru s tokenem SAS
 
@@ -143,7 +139,7 @@ az group deployment create \
 Příklad použití tokenu SAS s propojenými šablonami najdete v tématu [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Úvod k nasazení šablon najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](resource-group-template-deploy.md).
 * Úplný ukázkový skript, který nasadí šablonu, najdete v tématu [nasazení Správce prostředků skriptu šablony](resource-manager-samples-powershell-deploy.md) .
 * Informace o definování parametrů v šabloně najdete v tématu [vytváření šablon](resource-group-authoring-templates.md#parameters).

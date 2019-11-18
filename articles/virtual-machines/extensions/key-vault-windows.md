@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 4a2323212d2112e17dc613040434d54516aad9d3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 03351e964fc7247f87d0b823fae06fc03ff18de7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073697"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152098"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -40,7 +40,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
+            "publisher": "Microsoft.Azure.KeyVault",
             "type": "KeyVaultForWindows",
             "typeHandlerVersion": "1.0",
             "autoUpgradeMinorVersion": true,
@@ -68,14 +68,14 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft. Azure. webtrezor. EDP | řetězec |
+| publisher | Microsoft.Azure.KeyVault| řetězec |
 | type | KeyVaultForWindows | řetězec |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | MY | řetězec |
-| linkOnRenewal | false (nepravda) | Boolean |
+| linkOnRenewal | false | Boolean |
 | certificateStoreLocation  | LocalMachine | řetězec |
-| requiredInitialSync | true | Boolean |
+| requiredInitialSync | true (pravda) | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 
 
@@ -95,7 +95,7 @@ Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořen�
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
+            "publisher": "Microsoft.Azure.KeyVault",
             "type": "KeyVaultForWindows",
             "typeHandlerVersion": "1.0",
             "autoUpgradeMinorVersion": true,
@@ -125,7 +125,7 @@ Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního 
             '", "certificateStoreLocation": "' + <certStoreLoc> + 
             '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName =  "KeyVaultForWindows"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
        
     
@@ -145,7 +145,7 @@ Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního 
             '", "certificateStoreLocation": "' + <certStoreLoc> + 
             '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName = "KeyVaultForWindows"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
         
         # Add Extension to VMSS

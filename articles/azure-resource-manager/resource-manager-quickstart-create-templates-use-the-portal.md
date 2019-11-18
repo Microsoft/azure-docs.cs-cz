@@ -1,24 +1,16 @@
 ---
-title: Nasazení šablony Správce prostředků – Azure Portal
+title: Nasadit šablonu – Azure Portal
 description: Přečtěte si, jak si můžete na portálu Azure Portal vytvořit první šablonu Azure Resource Manageru a jak ji nasadit.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 299e1f3bc5915d547c4b463e770427d480836179
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9a747dbdda4b822c70edaa5a08c30db80328c321
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834295"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150533"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal
 
@@ -46,7 +38,7 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
     ![Vytvoření účtu úložiště Azure](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Zadejte následující informace:
 
-    |Name (Název)|Hodnota|
+    |Název|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte **vytvořit novou**a zadejte název skupiny prostředků podle svého výběru. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*. Skupina prostředků je kontejner pro prostředky Azure. Skupina prostředků usnadňuje správu prostředků Azure. |
     |**Název**|Dejte účtu úložiště jedinečný název. Název účtu úložiště musí být jedinečný v rámci všech Azure a může obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva oznamující, že název účtu úložiště mystorage1016 se už používá, zkuste použít **&lt;vaše jméno > úložiště&lt;dnešní datum v > MMDD**, například **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
@@ -160,10 +152,10 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení m
 8. Vyberte **Uložit**.
 9. Zadejte následující hodnoty:
 
-    |Name (Název)|Hodnota|
+    |Název|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte název skupiny prostředků, který jste vytvořili v poslední části. |
-    |**Umístění**|Vyberte umístění pro účet úložiště. Například **střed USA**. |
+    |**Umístění**|Vyberte umístění pro účet úložiště. Například **USA (střed)** . |
     |**Typ účtu**|Zadejte **Standard_LRS** pro tento rychlý Start. |
     |**Plnění**|Pro tento rychlý Start zadejte **StorageV2** . |
     |**Úroveň přístupu**|Pro tento rychlý Start zadejte **Hot** . |

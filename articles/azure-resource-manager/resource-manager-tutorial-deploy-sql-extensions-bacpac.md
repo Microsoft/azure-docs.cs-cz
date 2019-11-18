@@ -1,28 +1,20 @@
 ---
-title: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru | Microsoft Docs
+title: Import souborů SQL BACPAC pomocí šablon
 description: Naučte se používat rozšíření SQL Database k importu souborů SQL BACPAC pomocí šablon Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 04/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 239bb77d486e8cb845ec439d84def5e34cf64348
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a1454c1b551ee16303f8fda7297910ce8642b523
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170233"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150411"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru
 
-Naučte se používat rozšíření Azure SQL Database k importu souboru BACPAC pomocí šablon Azure Resource Manager. Artefakty nasazení jsou kromě hlavního souboru šablony, který je potřeba k dokončení nasazení, všechny soubory. Soubor BACPAC je artefaktem. V tomto kurzu vytvoříte šablonu pro nasazení SQL Server Azure, SQL Database a importu souboru BACPAC. Informace o nasazování rozšíření virtuálních počítačů Azure pomocí šablon Azure Resource Manageru najdete v [kurzu nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-vm-extensions.md).
+Naučte se používat rozšíření Azure SQL Database k importu souboru BACPAC pomocí šablon Azure Resource Manager. Artefakty nasazení jsou kromě hlavního souboru šablony, který je potřeba k dokončení nasazení, všechny soubory. Soubor BACPAC je artefakt. V tomto kurzu vytvoříte šablonu pro nasazení SQL Server Azure, SQL Database a importu souboru BACPAC. Informace o nasazování rozšíření virtuálních počítačů Azure pomocí šablon Azure Resource Manageru najdete v [kurzu nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-vm-extensions.md).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -35,7 +27,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 

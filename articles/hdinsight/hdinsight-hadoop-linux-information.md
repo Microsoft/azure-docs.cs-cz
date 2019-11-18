@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: daaf5763bde560250ddf70e70466fc9f4ed3e1c2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 11/14/2019
+ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834094"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150056"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -88,14 +88,14 @@ Další informace najdete v tématu [porty používané službou Apache Hadoop S
 
 Soubory související se systémem Hadoop najdete na uzlech clusteru na `/usr/hdp`. Tento adresář obsahuje následující podadresáře:
 
-* **2.6.5.3006-29**: název adresáře je verze platformy Hadoop, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
-* **Current**: Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3006-29** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
+* **2.6.5.3009-43**: název adresáře je verze platformy Hadoop, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
+* **Current**: Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3009-43** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
 
 Příklady dat a souborů JAR najdete na systém souborů DFS (Distributed File System) Hadoop v `/example` a `/HdiSamples`.
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage a Data Lake Storage
 
-Ve většině distribucí Hadoop jsou data uložená v HDFS, která se na počítačích v clusteru zálohuje na základě místního úložiště. Použití místního úložiště může být nákladné pro cloudové řešení, které se účtují po hodinách a za minutu pro výpočetní prostředky.
+Ve většině distribucí Hadoop jsou data uložená v HDFS, která se na počítačích v clusteru zálohuje na základě místního úložiště. Použití místního úložiště může být nákladné pro cloudové řešení, ve kterém se za výpočetní prostředky účtují každou hodinu nebo za minutu.
 
 Při použití HDInsight se datové soubory ukládají v cloudu v cloudu s využitím Azure Blob Storage a případně Azure Data Lake Storage. Tyto služby poskytují následující výhody:
 
@@ -203,7 +203,7 @@ Pokud používáte __Azure Data Lake Storage__, přečtěte si následující od
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Azure CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
-* [Data Lake nástroje pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
+* [Data Lake Tools pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
@@ -284,5 +284,4 @@ Pokud chcete použít jinou verzi komponenty, nahrajte potřebnou verzi a použi
 
 * [Správa clusterů HDInsight pomocí REST API Apache Ambari](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití Apache prasete se službou HDInsight](hadoop/hdinsight-use-pig.md)
 * [Použití úloh MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)

@@ -1,17 +1,14 @@
 ---
-title: Ověřování napříč klienty – Azure Resource Manager
+title: Ověřování mezi tenanty
 description: Popisuje, jak Azure Resource Manager zpracovává žádosti o ověření napříč klienty.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1dccfc522179cd88e69bc5a58307b343aaef8f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300351"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149972"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Ověřování žádostí napříč klienty
 
@@ -23,8 +20,8 @@ Požadavek má následující hodnoty hlaviček ověřování:
 
 | Název hlavičky | Popis | Příklad hodnoty |
 | ----------- | ----------- | ------------ |
-| Autorizace | Primární token | Nosič &lt;primary-token @ no__t-1 |
-| x-MS-Authorization – pomocná | Pomocné tokeny | Nosič &lt;auxiliary-token1 @ no__t-1, EncryptedBearer &lt;auxiliary-token2 @ no__t-3, nosič &lt;auxiliary-token3 @ no__t-5 |
+| Autorizace | Primární token | &gt; nosič &lt;Primary-token |
+| x-MS-Authorization – pomocná | Pomocné tokeny | Nosič &lt;AUX-token1&gt;, EncryptedBearer &lt;pomocné-token2&gt;, nosič &lt;pomocná-token3&gt; |
 
 Pomocné záhlaví může obsahovat až tři pomocné tokeny. 
 

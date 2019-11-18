@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330673"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133180"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Nastavení testovacího prostředí pro výuku etických tříd hackerů 
 V tomto článku se dozvíte, jak nastavit třídu, která se zaměřuje na forenzníou stranu etických útoků. Testování průniku, praxe používané etickým komunitou pro hackery, nastává, když se někdo pokusí získat přístup k systému nebo síti a Ukázat tak ohrožení zabezpečení, která by škodlivý útočník mohl zneužít. 
 
-V etických třídách útoku Students se můžou seznámit s moderními technikami, které chrání před ohrožením zabezpečení. Každý Student získá virtuální počítač hostitele Windows serveru, který má dva vnořené virtuální počítače – jeden virtuální počítač s imagí **Metaspoiltable** a další počítač s imagí [Kali Linux](https://www.kali.org/) . Virtuální počítač Metasploitable se používá pro zneužití účely a virtuální počítač Kali poskytuje přístup k nástrojům potřebným ke spouštění úloh forenzní.
+V etických třídách útoku Students se můžou seznámit s moderními technikami, které chrání před ohrožením zabezpečení. Každý Student získá virtuální počítač hostitele Windows serveru, který má dva vnořené virtuální počítače – jeden virtuální počítač s imagí [Metasploitable3](https://github.com/rapid7/metasploitable3) a další počítač s imagí [Kali Linux](https://www.kali.org/) . Virtuální počítač Metasploitable se používá pro zneužití účely a virtuální počítač Kali poskytuje přístup k nástrojům potřebným ke spouštění úloh forenzní.
 
 Tento článek obsahuje dvě hlavní části. První část obsahuje informace o tom, jak vytvořit prostředí učebny. Druhá část obsahuje informace o tom, jak vytvořit počítač šablony s povolenou vnořenou virtualizací a s potřebnými nástroji a bitovými kopiemi. V tomto případě bitová kopie Metasploitable a image Kali Linux na počítači, který má povolenou technologii Hyper-V pro hostování imagí.
 
@@ -43,6 +43,8 @@ Po vytvoření počítače s šablonou spusťte počítač a připojte se k něm
 1. Nastavte počítač pro vnořenou virtualizaci. Povoluje všechny příslušné funkce systému Windows, jako je například technologie Hyper-V, a nastavuje síť pro Image Hyper-V, aby bylo možné komunikovat mezi sebou a internetem.
 2. Nastavte Image [Kali](https://www.kali.org/) Linux. Kali je distribuce systému Linux, která obsahuje nástroje pro testování průniku a audit zabezpečení.
 3. Nastavte bitovou kopii Metasploitable. V tomto příkladu se použije obrázek [Metasploitable3](https://github.com/rapid7/metasploitable3) . Tato bitová kopie se vytvoří pro účely ohrožení zabezpečení.
+
+Skript, který automatizuje úkoly popsané výše, je k dispozici v části [laboratorní služby – skripty pro hackery](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking).
 
 ### <a name="prepare-template-machine-for-nested-virtualization"></a>Připravit počítač šablony pro vnořenou virtualizaci
 Postupujte podle pokynů v [tomto článku](how-to-enable-nested-virtualization-template-vm.md) a připravte svůj virtuální počítač šablony pro vnořenou virtualizaci. 
@@ -69,7 +71,7 @@ Kali je distribuce systému Linux, která obsahuje nástroje pro testování pr�
 
     ![Stránka připojit síť](../media/class-type-ethical-hacking/connect-network.png)
 1. Na stránce **Souhrn** vyberte **Dokončit** . Počkejte, dokud nebudou dokončeny operace kopírování a importu. Virtuální počítač se systémem Kali Linux bude nyní k dispozici v Hyper-V.
-1. Ve **Správci technologie Hyper-V**zvolte **Akce** -> **Start**a pak zvolte **akci** -> **připojit** , abyste se připojili k virtuálnímu počítači.  
+1. Ve **Správci technologie Hyper-V**zvolte **Akce** -> **Start**a pak zvolte **Akce** -> **připojit** , abyste se připojili k virtuálnímu počítači.  
 12. Výchozí uživatelské jméno je `root` a heslo je `toor`. 
 
     > [!NOTE]
@@ -83,7 +85,7 @@ Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s ch
 1. Po stažení souboru ZIP rozbalte soubor zip a zapamatujte si umístění.
 1. Převeďte extrahovaný soubor VMDK na soubor VHDX, abyste mohli používat technologii Hyper-V. Provedete to tak, že otevřete PowerShell s oprávněními správce a přejdete do složky, kde se nachází soubor VMDK, a pak postupujte podle těchto pokynů:
     1. Stáhněte si [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497)a po zobrazení výzvy spusťte soubor mvmc_setup. msi.
-    1. Importujte modul prostředí PowerShell.  Výchozí umístění, ve kterém je modul nainstalovaný, je C:\Program Files\Microsoft Virtual Machine Converter.
+    1. Naimportujte modul PowerShellu.  Výchozí umístění, ve kterém je modul nainstalovaný, je C:\Program Files\Microsoft Virtual Machine Converter.
 
         ```powershell
         Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
@@ -96,7 +98,7 @@ Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s ch
     1. Zkopírujte nově vytvořený soubor metasploitable. vhdx do C:\Users\Public\Documents\Hyper-V\Virtual pevného Disks\. 
 1. Vytvořte nový virtuální počítač s technologií Hyper-V.
     1. Otevřete **Správce technologie Hyper-V**.
-    1. Vyberte **akci** -> **nový** **virtuální počítač** -> .
+    1. Vyberte **akce** -> **nové** -> **virtuální počítač**.
     1. Na stránce **než začnete** v **Průvodci novým virtuálním počítačem**klikněte na **Další**.
     1. Na stránce **zadat název a umístění** zadejte **Metasploitable** pro **název**a vyberte **Další**.
 
@@ -111,7 +113,7 @@ Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s ch
         ![Stránka připojit virtuální síťový disk](../media/class-type-ethical-hacking/connect-virtual-network-disk.png)
     1. Na stránce **dokončení Průvodce novým virtuálním počítačem** vyberte **Dokončit**.
     1. Po vytvoření virtuálního počítače ho vyberte ve Správci technologie Hyper-V. Tento počítač ještě nezapínejte.  
-    1. Vyberte **akce**@no__t**Nastavení**-1.
+    1. Vyberte **akce** -> **Nastavení**.
     1. V dialogovém okně **nastavení pro Metasploitable** pro vyberte možnost **Přidat hardware**. 
     1. Vyberte možnost **starší síťový adaptér**a vyberte **Přidat**.
 
@@ -119,7 +121,7 @@ Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s ch
     1. Na stránce **starší síťový adaptér** vyberte pro nastavení **virtuálního přepínače** **LabServicesSwitch** a vyberte **OK**. LabServicesSwitch byl vytvořen při přípravě počítače šablony pro technologii Hyper-V v části **připravit šablonu pro vnořenou virtualizaci** .
 
         ![Stránka staršího síťového adaptéru](../media/class-type-ethical-hacking/legacy-network-adapter-page.png)
-    1. Image Metasploitable je teď připravená k použití. Ve **Správci technologie Hyper-V**zvolte **Akce** -> **Start**a pak zvolte **akci** -> **připojit** , abyste se připojili k virtuálnímu počítači.  Výchozí uživatelské jméno je **msfadmin** a heslo je **msfadmin**. 
+    1. Image Metasploitable je teď připravená k použití. Ve **Správci technologie Hyper-V**zvolte **Akce** -> **Start**a pak zvolte **Akce** -> **připojit** , abyste se připojili k virtuálnímu počítači.  Výchozí uživatelské jméno je **msfadmin** a heslo je **msfadmin**. 
 
 
 Šablona se teď aktualizovala a obsahuje image pro etický testovací třídu průniku hackerů, image s nástroji pro testování průniku a další image s chybami zabezpečení ke zjišťování. Image šablony se teď dají publikovat do třídy. Vyberte tlačítko **publikovat** na stránce šablony a publikujte šablonu do testovacího prostředí.

@@ -1,19 +1,16 @@
 ---
-title: Kurz – přidání parametrů do šablony Azure Resource Manager
+title: Kurz – přidání parametrů do šablony
 description: Přidejte parametry do šablony Azure Resource Manager, abyste je mohli opakovaně používat.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7a4d8db57167bc82d13b4d46be1abc3518c340e4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001496"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150233"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Kurz: Přidání parametrů do šablony Správce prostředků
 
@@ -47,7 +44,7 @@ Pojďme šablonu nasadit. Následující příklad nasadí šablonu pomocí Azur
 
 Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -57,7 +54,7 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -79,9 +76,9 @@ Tato možnost manipulace s aktualizacemi znamená, že vaše šablona může zah
 
 ## <a name="customize-by-environment"></a>Přizpůsobit podle prostředí
 
-Parametry umožňují přizpůsobit nasazení poskytnutím hodnot, které jsou upraveny pro konkrétní prostředí. Můžete například předat různé hodnoty na základě toho, jestli nasazujete do prostředí pro vývoj, testování a produkci.
+Parametry umožňují přizpůsobit nasazení tím, že zadáte hodnoty vhodné pro konkrétní prostředí. Můžete například předat různé hodnoty na základě toho, jestli nasazujete do prostředí pro vývoj, testování a produkci.
 
-Předchozí šablona vždycky nasadila účet úložiště Standard_LRS. Možná budete chtít, aby flexibilita nasadila různé SKU v závislosti na prostředí. Následující příklad ukazuje změny pro přidání parametru pro SKLADOVOU položku. Zkopírujte celý soubor a vložte ho do šablony.
+Předchozí šablona vždycky nasadila Standard_LRS účet úložiště. Možná budete chtít, aby flexibilita nasadila různé SKU v závislosti na prostředí. Následující příklad ukazuje změny pro přidání parametru pro SKLADOVOU položku. Zkopírujte celý soubor a vložte ho do šablony.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
 
@@ -91,7 +88,7 @@ Parametr **storageSKU** má výchozí hodnotu. Tato hodnota se používá v př�
 
 Jste připraveni znovu nasadit. Vzhledem k tomu, že výchozí SKU je nastavená na **Standard_LRS**, nemusíte zadávat hodnotu pro tento parametr.
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -101,7 +98,7 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -115,7 +112,7 @@ az group deployment create \
 
 Chcete-li zobrazit flexibilitu šablony, nasaďte se znovu. Tentokrát nastavte parametr SKU na **Standard_GRS**. Můžete buď předat nový název a vytvořit jiný účet úložiště, nebo použít stejný název k aktualizaci stávajícího účtu úložiště. Obě možnosti fungují.
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -126,7 +123,7 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_GRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -140,7 +137,7 @@ az group deployment create \
 
 Nakonec spustíme ještě jeden test a zjistíte, co se stane, když předáte SKU, které není jednou z povolených hodnot. V tomto případě testujeme scénář, ve kterém bude uživatel vaší šablony považovat za **základ** jednu z SKU.
 
-# <a name="powershelltabazure-powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -151,7 +148,7 @@ New-AzResourceGroupDeployment `
   -storageSKU basic
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -171,10 +168,10 @@ Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu pr
 
 Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
-1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
-2. Do pole **filtrovat podle názvu** zadejte název skupiny prostředků.
+1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
+2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
+4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 

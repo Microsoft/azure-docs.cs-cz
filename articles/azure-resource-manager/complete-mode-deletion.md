@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager dokončení odstranění režimu
+title: Úplné odstranění režimu
 description: Ukazuje, jak typy prostředků zpracovávají úplné odstraňování režimu v Azure Resource Manager šablonách.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 34e6ee348a6e15e1178f5e7cb65edfb946c1280c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e8e473ba697dd64d2562a2e1efc03f1ba5b384e6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953270"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149926"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Odstranění prostředků Azure pro nasazení v úplném režimu
 
@@ -671,7 +668,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Poplatky | Ne |
 > | CostTags | Ne |
 > | dobropis | Ne |
-> | events | Ne |
+> | stránka events | Ne |
 > | Prognózy | Ne |
 > | ŠARŽ | Ne |
 > | Tržišť | Ne |
@@ -746,7 +743,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Výstrahy | Ne |
+> | Upozornění | Ne |
 > | billingAccounts | Ne |
 > | Rozpočty | Ne |
 > | CloudConnectors | Ne |
@@ -981,7 +978,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Kontrolou | Ano |
+> | kontrolou | Ano |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1510,7 +1507,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | managementassociations | Ne |
 > | managementconfigurations | Ano |
-> | solutions | Ano |
+> | Řešení | Ano |
 > | views | Ano |
 
 ## <a name="microsoftpeering"></a>Microsoft.Peering
@@ -1609,7 +1606,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | availabilityStatuses | Ne |
 > | childAvailabilityStatuses | Ne |
 > | childResources | Ne |
-> | events | Ne |
+> | stránka events | Ne |
 > | impactedResources | Ne |
 > | zprostředkovatele identity | Ne |
 > | připomenutí | Ne |
@@ -1619,7 +1616,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Nasazení | Ne |
+> | nasazení | Ne |
 > | nasazení/operace | Ne |
 > | deploymentScripts | Ano |
 > | deploymentScripts/protokoly | Ne |
@@ -1642,7 +1639,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | applications | Ano |
+> | aplikace | Ano |
 > | saasresources | Ne |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
@@ -1751,7 +1748,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | applications | Ano |
+> | aplikace | Ano |
 > | clusters | Ano |
 > | clustery/aplikace | Ne |
 > | containerGroups | Ano |
@@ -1769,7 +1766,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | applications | Ano |
+> | aplikace | Ano |
 > | containerGroups | Ano |
 > | brány | Ano |
 > | networks | Ano |
@@ -1813,7 +1810,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | applicationDefinitions | Ano |
-> | applications | Ano |
+> | aplikace | Ano |
 > | jitRequests | Ano |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL

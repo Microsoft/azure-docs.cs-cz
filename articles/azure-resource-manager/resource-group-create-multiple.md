@@ -1,18 +1,14 @@
 ---
-title: Nasazení více instancí prostředků Azure | Microsoft Docs
+title: Nasazení více instancí prostředků
 description: Použijte operaci kopírování a pole v šabloně Azure Resource Manager k iterování několikrát při nasazování prostředků.
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3ee4b47dd6cb9043a4100d114c483d1feadbde38
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675091"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150799"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iterace prostředku, vlastnosti nebo proměnné v šablonách Azure Resource Manager
 
@@ -57,7 +53,7 @@ Omezení pro počet jsou stejná, ať už se používá u prostředku, proměnn�
 
 ## <a name="resource-iteration"></a>Iterace prostředku
 
-Pokud chcete vytvořit více než jednu instanci prostředku v nasazení, přidejte do typu prostředku prvek `copy`. V elementu Copy zadejte počet iterací a název pro tuto smyčku.
+Pokud chcete vytvořit více než jednu instanci prostředku v nasazení, přidejte `copy` element do typu prostředku. V elementu Copy zadejte počet iterací a název pro tuto smyčku.
 
 Prostředek, který se má vytvořit několikrát, má následující formát:
 
@@ -98,7 +94,7 @@ Vytvoří tyto názvy:
 * storage1
 * storage2.
 
-Chcete-li posunout hodnotu indexu, můžete předat hodnotu ve funkci copyIndex (). Počet iterací je stále specifikován v elementu Copy, ale hodnota copyIndex je posunuta podle zadané hodnoty. V následujícím příkladu:
+Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Počet iterací je stále specifikován v elementu Copy, ale hodnota copyIndex je posunuta podle zadané hodnoty. V následujícím příkladu:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -110,7 +106,7 @@ Vytvoří tyto názvy:
 * storage2
 * storage3
 
-Operace kopírování je užitečná při práci s poli, protože můžete iterovat přes každý prvek v poli. Pomocí funkce `length` v poli určete počet iterací a `copyIndex` pro načtení aktuálního indexu v poli. V následujícím příkladu:
+Operace kopírování je užitečná při práci s poli, protože můžete iterovat přes každý prvek v poli. Použijte funkci `length` v poli k určení počtu iterací a `copyIndex` k načtení aktuálního indexu v poli. V následujícím příkladu:
 
 ```json
 "parameters": {
@@ -143,7 +139,7 @@ Vytvoří tyto názvy:
 
 Ve výchozím nastavení Správce prostředků vytvoří paralelní prostředky. Neplatí pro počet paralelně nasazených prostředků, s výjimkou celkového limitu 800 prostředků v šabloně. Pořadí, ve kterém jsou vytvořeny, není zaručeno.
 
-Můžete ale chtít určit, že se prostředky nasazují v pořadí. Například při aktualizaci produkčního prostředí můžete aktualizace rozložit, aby se v jednom okamžiku aktualizovalo jenom určité číslo. Pro sériové nasazení více než jedné instance prostředku nastavte `mode` na **sériové** a `batchSize` na počet instancí, které se mají nasadit v jednom okamžiku. V případě sériového režimu Správce prostředků ve smyčce vytvoří závislost na dřívějších instancích, takže nespustí jednu dávku, dokud se předchozí dávka nedokončí.
+Můžete ale chtít určit, že se prostředky nasazují v pořadí. Například při aktualizaci produkčního prostředí můžete aktualizace rozložit, aby se v jednom okamžiku aktualizovalo jenom určité číslo. Pro sériové nasazení více než jedné instance prostředku nastavte `mode` na **sériové** a `batchSize` na počet instancí, které se nasadí v jednom okamžiku. V případě sériového režimu Správce prostředků ve smyčce vytvoří závislost na dřívějších instancích, takže nespustí jednu dávku, dokud se předchozí dávka nedokončí.
 
 Pokud například chcete sériové nasazení účtů úložiště vytvořit dvakrát, použijte:
 
@@ -207,9 +203,9 @@ Následující příklad ukazuje, jak použít `copy` na vlastnost datadisks na 
       ...
 ```
 
-Všimněte si, že při použití `copyIndex` uvnitř iterace vlastnosti je nutné zadat název iterace. Při použití s iterací prostředků není nutné zadávat název.
+Všimněte si, že při použití `copyIndex` v rámci iterace vlastnosti je nutné zadat název iterace. Při použití s iterací prostředků není nutné zadávat název.
 
-Správce prostředků rozbalí pole `copy` během nasazování. Název pole se zobrazí jako název vlastnosti. Vstupní hodnoty se stanou vlastnostmi objektu. Nasazená šablona bude:
+Správce prostředků rozbalí `copy` pole během nasazování. Název pole se zobrazí jako název vlastnosti. Vstupní hodnoty se stanou vlastnostmi objektu. Nasazená šablona bude:
 
 ```json
 {
@@ -513,17 +509,17 @@ Následující příklad ukazuje implementaci:
 }]
 ```
 
-## <a name="example-templates"></a>Příklady šablon
+## <a name="example-templates"></a>Příklad šablony
 
 Následující příklady znázorňují běžné scénáře pro vytvoření více než jedné instance prostředku nebo vlastnosti.
 
-|vzhledu  |Popis  |
+|Šablona  |Popis  |
 |---------|---------|
 |[Kopírovat úložiště](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Nasadí více než jeden účet úložiště s číslem indexu v názvu. |
 |[Úložiště sériového kopírování](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Nasadí několik účtů úložiště v jednom okamžiku. Název zahrnuje číslo indexu. |
 |[Kopírování úložiště pomocí pole](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Nasadí několik účtů úložiště. Název obsahuje hodnotu z pole. |
 |[Nasazení virtuálního počítače s proměnným počtem datových disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Nasadí několik datových disků s virtuálním počítačem. |
-|[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby, jak iterace proměnných vymezit. |
+|[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby, jak iterace proměnných vymezit. |
 |[Více pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Pro parametr viz [více souborů parametrů NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Další kroky

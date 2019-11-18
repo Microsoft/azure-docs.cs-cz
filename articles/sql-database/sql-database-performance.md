@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: c710e2b7c4376fc1725032c86cd02d9a6c8cafac
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 474c2f4f00374ce785b81fe048e11cb353b3078a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090356"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151205"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorování a zlepšení výkonu
 
@@ -27,16 +27,16 @@ Dostupné možnosti ladění výkonu Azure SQL Database jsou k dispozici v navig
 
 | Možnost optimalizace výkonu | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
 | :----------------------------- | ----- | ----- |
-| **[Přehled výkonu](#performance-overview)** – monitorujte všechny aktivity výkonu pro vaši databázi. | Ano | Ne | 
-| **[Doporučení pro výkon](#performance-recommendations)** – zobrazuje doporučení pro výkon, která můžou zlepšit výkon svých úloh. | Ano | Ne | 
-| **[Query Performance Insight](#query-performance-insight)** – zobrazuje výkon vysoce náročných dotazů na databázi. | Ano | Ne | 
-| **[Automatické ladění](#automatic-tuning)** – použijte Azure SQL Database k automatickému optimalizaci výkonu databáze. | Ano | Ne | 
+| **Přehled výkonu** – monitorujte všechny aktivity výkonu pro vaši databázi. | Ano | Ne | 
+| **Doporučení pro výkon** – zobrazuje doporučení pro výkon, která můžou zlepšit výkon svých úloh. | Ano | Ne | 
+| **Query Performance Insight** – zobrazuje výkon vysoce náročných dotazů na databázi. | Ano | Ne | 
+| **Automatické ladění** – použijte Azure SQL Database k automatickému optimalizaci výkonu databáze. | Ano | Ne | 
 
 ## <a name="performance-overview"></a>Přehled výkonu
 
 Toto zobrazení poskytuje souhrn výkonu vaší databáze a pomáhá s optimalizací výkonu a řešením potíží. 
 
-![Výkon](./media/sql-database-performance/performance.png)
+![Přehled výkonu pro Azure SQL Database](./media/sql-database-performance/performance-overview-annotated.png)
 
 * Dlaždice **doporučení** obsahuje rozpis doporučení pro ladění pro vaši databázi (pokud existuje více), zobrazí se v nich více hlavních tří doporučení. Kliknutím na tuto dlaždici přejdete na **[doporučení týkající se výkonu](#performance-recommendations)** . 
 * Dlaždice **aktivity ladění** poskytuje shrnutí probíhajících a dokončených akcí optimalizace pro vaši databázi, takže získáte rychlý přehled o historii aktivity ladění. Kliknutím na tuto dlaždici přejdete k úplnému zobrazení Historie ladění pro vaši databázi.
@@ -51,7 +51,7 @@ Tato stránka poskytuje inteligentní [doporučení pro ladění](sql-database-a
 * Doporučení při identifikaci problémů schématu v databázi.
 * Doporučení v případě, kdy dotazy můžou těžit z parametrizovaných dotazů
 
-![Výkon](./media/sql-database-performance/recommendations.png)
+![Doporučení k výkonu pro Azure SQL Database](./media/sql-database-performance/performance-recommendations-annotated.png)
 
 Můžete také najít úplnou historii akcí optimalizace, které byly v minulosti aplikovány.
 
@@ -65,13 +65,17 @@ Naučte se, jak najít doporučení pro použití výkonu v článku [hledání 
 * Nejčastější dotazy náročné na procesor, které je možné optimalizovat pro zlepšení výkonu. 
 * Možnost přejít k podrobnostem dotazu. 
 
-  ![řídicí panel výkonu](./media/sql-database-query-performance/performance.png)
+  ![Dotazování na výkon – přehled pro Azure SQL Database](./media/sql-database-performance/query-performance-insights-annotated.png)
 
 Další informace o této stránce najdete v článku **[Jak používat Query Performance Insight](sql-database-query-performance.md)** .
 
 ## <a name="automatic-tuning"></a>Automatické ladění
 
-Databáze SQL Azure můžou automaticky ladit výkon databáze pomocí [doporučení pro výkon](sql-database-advisor.md). Pokud se chcete dozvědět víc, přečtěte si [článek věnované automatickému ladění](sql-database-automatic-tuning.md). Pokud ho chcete povolit, přečtěte si, [Jak povolit automatické ladění](sql-database-automatic-tuning-enable.md).
+Databáze SQL Azure můžou automaticky ladit výkon databáze pomocí [doporučení pro výkon](sql-database-advisor.md). Pokud ho chcete povolit, přečtěte si, [Jak povolit automatické ladění](sql-database-automatic-tuning-enable.md).
+
+  ![Automatické ladění pro Azure SQL Database](./media/sql-database-performance/automatic-tuning-annotated.png)
+
+Pokud se chcete dozvědět víc, přečtěte si [článek věnované automatickému ladění](sql-database-automatic-tuning.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 

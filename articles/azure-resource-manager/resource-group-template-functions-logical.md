@@ -1,17 +1,14 @@
 ---
-title: Funkce šablon Azure Resource Manager – logická | Microsoft Docs
+title: Funkce šablon – logická
 description: Popisuje funkce, které lze použít v šabloně Azure Resource Manager k určení logických hodnot.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: tomfitz
-ms.openlocfilehash: ea91798a1c0ca0aad729128ce4694a85165f3c3b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: df8433d167a166fe94d965f81e42cd0b3e8f0e54
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194783"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150689"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manager
 
@@ -33,9 +30,9 @@ Kontroluje, zda jsou všechny hodnoty parametrů pravdivé.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Ano |Boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -69,11 +66,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | Nepravda |
 | orExampleOutput | Bool | Pravda |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | Nepravda |
 
 ## <a name="bool"></a>bool
 
@@ -122,12 +119,12 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | trueString | Bool | Pravda |
-| falseString | Bool | False |
+| falseString | Bool | Nepravda |
 | trueInt | Bool | Pravda |
-| falseInt | Bool | False |
+| falseInt | Bool | Nepravda |
 
 ## <a name="if"></a>if
 
@@ -139,7 +136,7 @@ Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| condition |Ano |boolean |Hodnota, která ověří, zda je true nebo false. |
+| condition |Ano |Boolean |Hodnota, která ověří, zda je true nebo false. |
 | trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
 | falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
@@ -153,7 +150,7 @@ Pokud je podmínka **pravdivá**, vyhodnotí se jenom skutečná hodnota. Pokud 
 
 ### <a name="examples"></a>Příklady
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ukazuje, jak používat `if` funkci.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ukazuje, jak používat funkci `if`.
 
 ```json
 {
@@ -180,11 +177,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | yesOutput | Řetězec | ano |
 | Výstup | Řetězec | ne |
-| objectOutput | Object | {"test": "hodnota1"} |
+| objectOutput | Objekt | {"test": "hodnota1"} |
 
 Následující [příklad šablony](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) ukazuje, jak použít tuto funkci s výrazy, které jsou pouze podmíněně platné.
 
@@ -234,7 +231,7 @@ Následující [příklad šablony](https://github.com/krnese/AzureDeploy/blob/m
 }
 ```
 
-## <a name="not"></a>ne
+## <a name="not"></a>mění
 
 `not(arg1)`
 
@@ -244,7 +241,7 @@ Převede logickou hodnotu na její opačnou hodnotu.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |Hodnota, která má být převedena. |
+| arg1 |Ano |Boolean |Hodnota, která má být převedena. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -278,11 +275,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | Nepravda |
 | orExampleOutput | Bool | Pravda |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | Nepravda |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá znaménko **Not** a [Equals](resource-group-template-functions-comparison.md#equals).
 
@@ -302,11 +299,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | Pravda |
 
-## <a name="or"></a>or
+## <a name="or"></a>nebo
 
 `or(arg1, arg2, ...)`
 
@@ -316,9 +313,9 @@ Kontroluje, zda je hodnota parametru pravdivá.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Ano |Boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -352,13 +349,13 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | Nepravda |
 | orExampleOutput | Bool | Pravda |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | Nepravda |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).

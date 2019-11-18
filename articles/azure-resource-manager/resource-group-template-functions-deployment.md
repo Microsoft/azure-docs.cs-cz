@@ -1,17 +1,14 @@
 ---
-title: Funkce šablon Azure Resource Manager – nasazení | Microsoft Docs
+title: Funkce šablon – nasazení
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 17caf78fb77e330685bb45ab03aaeed611900ba0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983996"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149636"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkce nasazení pro šablony Azure Resource Manager 
 
@@ -78,7 +75,7 @@ Pokud je objekt předán jako odkaz, například při použití parametru **-Tem
 }
 ```
 
-Když nasadíte [do předplatného Azure](deploy-to-subscription.md)namísto skupiny prostředků, návratový objekt obsahuje `location` vlastnost. Vlastnost Location je obsažena při nasazení místní šablony nebo externí šablony.
+Když [nasadíte do předplatného Azure](deploy-to-subscription.md)místo skupiny prostředků, návratový objekt zahrnuje vlastnost `location`. Vlastnost Location je obsažena při nasazení místní šablony nebo externí šablony.
 
 ### <a name="remarks"></a>Poznámky
 
@@ -90,7 +87,7 @@ Nasazení () můžete použít k propojení na jinou šablonu na základě ident
 }
 ```  
 
-Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. `templateLink` Vlastnost není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá `templateLink` na vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
+Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. Vlastnost `templateLink` není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá na `templateLink` vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
 
 ### <a name="example"></a>Příklad
 
@@ -134,7 +131,7 @@ Předchozí příklad vrátí následující objekt:
 }
 ```
 
-Šablonu na úrovni předplatného, která používá funkci nasazení, najdete v tématu [funkce nasazení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)předplatného. Je nasazen s `az deployment create` příkazy nebo `New-AzDeployment` .
+Šablonu na úrovni předplatného, která používá funkci nasazení, najdete v tématu [funkce nasazení předplatného](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Je nasazena buď pomocí příkazů `az deployment create`, nebo `New-AzDeployment`.
 
 <a id="parameters" />
 
@@ -232,19 +229,19 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringOutput | Řetězec | možnost 1 |
+| stringOutput | Řetězec | Možnost 1 |
 | intOutput | Int | 1 |
-| objectOutput | Object | {"One": "a", "Two": "b"} |
-| arrayOutput | Array | [1, 2, 3] |
-| crossOutput | Řetězec | možnost 1 |
+| objectOutput | Objekt | {"One": "a", "Two": "b"} |
+| arrayOutput | Pole | [1, 2, 3] |
+| crossOutput | Řetězec | Možnost 1 |
 
 Další informace o použití parametrů naleznete v tématu [Parameters in Azure Resource Manager Template](template-parameters.md).
 
 <a id="variables" />
 
-## <a name="variables"></a>Proměnné
+## <a name="variables"></a>proměnné
 `variables(variableName)`
 
 Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v oddílu Variables šablony.
@@ -325,16 +322,16 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | exampleOutput1 | Řetězec | MojePromenna |
-| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput2 | Pole | [1, 2, 3, 4] |
 | exampleOutput3 | Řetězec | MojePromenna |
-| exampleOutput4 |  Object | {"vlastnost1": "hodnota1"; "Vlastnost2": "hodnota2"} |
+| exampleOutput4 |  Objekt | {"vlastnost1": "hodnota1"; "Vlastnost2": "hodnota2"} |
 
 Další informace o použití proměnných naleznete v tématu [proměnné v šabloně Azure Resource Manager](template-variables.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
 * K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).

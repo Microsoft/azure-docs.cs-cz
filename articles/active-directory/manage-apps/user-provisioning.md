@@ -11,46 +11,69 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/12/2019
+ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1f661aa67f04de23c7b4871e78d3628c639e7567
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641449"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144536"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a rušení uživatelů pro aplikace SaaS pomocí Azure Active Directory
+# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatizace zřizování uživatelů a jejich rušení s aplikacemi pomocí Azure Active Directory
 
-Azure Active Directory (Azure AD) umožňuje automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových SaaS aplikacích, jako jsou [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)a další. To se označuje jako automatizované zřizování uživatelů pro aplikace SaaS.
+V Azure Active Directory (Azure AD) pojem **zřizování aplikací** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)a další.
 
-> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+![Diagram přehledu zřizování](media/user-provisioning/provisioning-overview.png)
 
 Tato funkce vám umožní:
 
-- Automatické vytváření nových účtů v pravém systému pro nové uživatele, když se připojí k vašemu týmu nebo organizaci.
-- Automaticky deaktivovat účty ve správných systémech, když lidé odejdou z týmu nebo organizace.
-- Ujistěte se, že identity ve vašich aplikacích a systémech jsou aktuální na základě změn v adresáři nebo v systému lidských zdrojů.
-- Pro aplikace, které je podporují, zřídí objekty nepatřící uživatelům, jako jsou skupiny.
+- **Automatizace zřizování**: automatické vytváření nových účtů v pravém systému pro nové lidi při připojení k vašemu týmu nebo organizaci.
+- **Automatické zrušení zřízení:** Automaticky deaktivovat účty ve správných systémech, když lidé odejdou z týmu nebo organizace.
+- **Synchronizovat data mezi systémy:** Zajistěte, aby se identity ve vašich aplikacích a systémech aktualizovaly na základě změn v adresáři nebo v systému lidských zdrojů.
+- **Zřídit skupiny:** Zřizování skupin pro aplikace, které je podporují.
+- **Řídit přístup:** Monitorování a audit, který byl zřízen do vašich aplikací.
+- **Bezproblémové nasazení ve scénářích hnědého pole:** Porovnává stávající identity mezi systémy a umožní snadnou integraci, i když uživatelé již existují v cílovém systému.
+- **Použít bohatou úpravu:** Využijte přizpůsobitelných mapování atributů, která definují, jaká uživatelská data by se měla přesměrovat ze zdrojového systému do cílového systému.
+- **Získat výstrahy pro kritické události:** Služba zřizování poskytuje výstrahy pro kritické události a umožňuje Log Analytics integraci, kde můžete definovat vlastní výstrahy pro potřeby vašich obchodních potřeb.
 
-Automatické zřizování uživatelů také zahrnuje tuto funkci:
+## <a name="benefits-of-automatic-provisioning"></a>Výhody automatického zřizování
 
-- Schopnost párovat stávající identity mezi zdrojovým a cílovým systémem.
-- Přizpůsobitelné mapování atributů, které definuje, jaká uživatelská data by měla tok ze zdrojového systému do cílového systému.
-- Volitelná e-mailová upozornění pro chyby zřizování
-- Vytváření sestav a protokolů aktivit, které vám pomůžou s monitorováním a řešením problémů.
+Vzhledem k tomu, že počet aplikací používaných v moderních organizacích stále roste, správci IT mají na dosahu řízení přístupu ve velkém měřítku. Standardy, jako je například SAML (Security Assert Markup Language) nebo Open ID Connect (OIDC), umožňují správcům rychle nastavit jednotné přihlašování (SSO), ale přístup také vyžaduje, aby se do aplikace zřídili uživatelé. U mnoha správců zajišťuje zřizování ruční vytváření všech uživatelských účtů nebo nahrávání souborů CSV každý týden, ale tyto procesy jsou časově náročné, nákladné a náchylné k chybám. Byla přijata řešení, jako je JIT (just-in-time) SAML pro automatizaci zřizování, ale podniky také potřebují řešení pro zrušení zřízení uživatelů při opuštění organizace nebo už nevyžadují přístup k určitým aplikacím na základě změny role.
 
-## <a name="why-use-automated-provisioning"></a>Proč používat automatizované zřizování?
+Mezi běžné motivace pro použití automatického zřizování patří:
 
-Mezi běžné motivace pro použití této funkce patří:
-
-- Předcházení nákladům, neefektivitám a lidským chybám přidruženým k ručním procesům zřizování.
-- Vyloučí se náklady spojené s hostováním a údržbou vlastních řešení a skriptů pro zřizování.
+- Maximalizace efektivity a přesnosti zřizování procesů.
+- Úspora nákladů spojených s hostováním a udržováním vlastních řešení a skriptů pro zřizování s vlastním vývojem
 - Zabezpečení organizace tím, že se okamžitě odeberou identity uživatelů z aplikací služby Key SaaS, když odejdou z organizace.
 - Snadné importování velkého počtu uživatelů do konkrétní SaaS aplikace nebo systému.
 - Pomocí jedné sady zásad určíte, kdo je zřízený a kdo se může přihlásit k aplikaci.
+
+Zřizování uživatelů Azure AD může tyto výzvy vyřešit. Pokud chcete získat další informace o tom, jak zákazníci používají zřizování uživatelů Azure AD, můžete si přečíst [případovou studii Asos](https://aka.ms/asoscasestudy). Následující video poskytuje přehled zřizování uživatelů v Azure AD:
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jaké aplikace a systémy je možné používat s automatickým zřizováním uživatelů Azure AD?
+
+Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikací SaaS a systémů lidských zdrojů a obecnou podporu pro aplikace, které implementují určité části [standardu SCIM 2,0](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010).
+
+* **Předem integrované aplikace (Galerie aplikací SaaS)** . Všechny aplikace, pro které Azure AD podporuje předem integrovaný zřizovací konektor, najdete v [seznamu kurzů aplikací pro zřizování uživatelů](../saas-apps/tutorial-list.md). Předem integrované aplikace uvedené v galerii obecně používají rozhraní API pro správu uživatelů na bázi SCIM 2,0 ke zřízení. 
+
+   ![Logo Salesforce](media/user-provisioning/gallery-app-logos.png)
+
+   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
+
+* **Aplikace, které podporují SCIM 2,0**. Informace o tom, jak obecně připojit aplikace, které implementují rozhraní API pro správu uživatelů na bázi SCIM 2,0, najdete v tématu [použití SCIM k automatickému zřizování uživatelů a skupin od Azure Active Directory k aplikacím](use-scim-to-provision-users-and-groups.md).
+
+## <a name="what-is-scim"></a>Co je SCIM?
+
+Aby se usnadnilo automatizace zřizování a rušení, aplikace zveřejňují proprietární rozhraní API pro uživatele a skupiny. Kdokoli, kdo se snaží spravovat uživatele ve více než jedné aplikaci, vám ale oznámí, že se každá aplikace pokusí provést stejné jednoduché akce, třeba při vytváření nebo aktualizaci uživatelů, přidávání uživatelů do skupin nebo rušení zřizování uživatelů. Nicméně všechny tyto jednoduché akce jsou implementovány pouze trochu odlišně, s použitím různých cest koncových bodů, různých metod pro zadání informací o uživateli a jiného schématu, které představují jednotlivé prvky informací.
+
+Specifikace SCIM poskytuje společné uživatelské schéma, které uživatelům umožňuje přesunout se do aplikací, mimo jiné a kolem nich. SCIM se stává jako de facto standard pro zřizování a při použití ve spojení s federačními standardy, jako je SAML nebo OpenID Connect, poskytuje správcům ucelené řešení založené na standardech pro správu přístupu.
+
+Podrobné pokyny k používání SCIM k automatizaci zřizování a rušení zřizování uživatelů a skupin do aplikace najdete v tématu [SCIM zřizování uživatelů pomocí Azure Active Directory](use-scim-to-provision-users-and-groups.md).
 
 ## <a name="how-does-automatic-provisioning-work"></a>Jak Automatické zřizování funguje?
 
@@ -65,54 +88,13 @@ Mezi běžné motivace pro použití této funkce patří:
 pracovní postup ![příchozího zřizování uživatelů](./media/user-provisioning/provisioning2.PNG)
 *Obrázek 3: "příchozí" pracovní postup zřizování uživatelů z oblíbených aplikací HCM pro správu lidského kapitálu do Azure Active Directory a Windows Server Active Directory*
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jaké aplikace a systémy je možné používat s automatickým zřizováním uživatelů Azure AD?
-
-Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikací SaaS a systémů lidských zdrojů a obecnou podporu pro aplikace, které implementují určité části [standardu SCIM 2,0](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010).
-
-### <a name="pre-integrated-applications"></a>Předem integrované aplikace
-
-Seznam všech aplikací, pro které Azure AD podporuje předem integrovaný zřizovací konektor, najdete v [seznamu kurzů aplikací pro zřizování uživatelů](../saas-apps/tutorial-list.md).
-
-Pokud chcete kontaktovat tým technické podpory Azure AD a požádat o podporu zřizování pro další aplikace, odešlete zprávu prostřednictvím [fóra Azure Active Directory Feedback](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
-
-> [!NOTE]
-> Aby aplikace podporovala automatizované zřizování uživatelů, musí nejdřív poskytnout potřebná rozhraní API pro správu uživatelů, která umožní externím programům automatizovat vytváření, údržbu a odebírání uživatelů. Proto nejsou všechny aplikace SaaS kompatibilní s touto funkcí. Pro aplikace, které podporují rozhraní API pro správu uživatelů, může tým technické podpory Azure AD potom pro tyto aplikace vytvořit konektor pro zřizování a tato práce má prioritu podle potřeb současných a potenciálních zákazníků.
-
-### <a name="connecting-applications-that-support-scim-20"></a>Propojení aplikací, které podporují SCIM 2,0
-
-Informace o tom, jak obecně připojit aplikace, které implementují rozhraní API pro správu uživatelů na bázi SCIM 2,0, najdete v tématu [použití SCIM k automatickému zřizování uživatelů a skupin od Azure Active Directory k aplikacím](use-scim-to-provision-users-and-groups.md).
-
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Návody nastavit Automatické zřizování pro aplikaci?
+
+V případě předem integrovaných aplikací uvedených v galerii jsou podrobné pokyny k dispozici pro nastavení automatického zřizování. Podívejte se na [Seznam kurzů pro integrované aplikace Galerie](https://docs.microsoft.com/azure/active-directory/saas-apps/). Následující video ukazuje, jak nastavit Automatické zřizování uživatelů pro SalesForce.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-Pomocí portálu Azure Active Directory můžete nakonfigurovat službu zřizování Azure AD pro vybranou aplikaci.
-
-1. Otevřete **[portál Azure Active Directory](https://aad.portal.azure.com)** .
-1. V levém podokně vyberte **podnikové aplikace** . Zobrazí se seznam všech nakonfigurovaných aplikací.
-1. Pro přidání aplikace vyberte **+ Nová aplikace** . 
-1. Zadejte všechny podrobnosti a vyberte **Přidat**. Nová aplikace se přidá do seznamu podnikových aplikací a otevře se na obrazovce správy aplikací.
-1. Vyberte **zřizování** pro správu nastavení zřizování uživatelských účtů pro aplikaci.
-
-   ![Zobrazuje obrazovku nastavení zřizování.](./media/user-provisioning/provisioning_settings0.PNG)
-
-1. Vyberte možnost automatické volby pro **režim zřizování** a určete tak nastavení pro přihlašovací údaje správce, mapování, spuštění a zastavení a synchronizaci.
-
-   - Rozbalte **přihlašovací údaje správce** a zadejte přihlašovací údaje požadované pro Azure AD pro připojení k rozhraní API pro správu uživatelů aplikace. Tato část také umožňuje povolit e-mailová oznámení v případě, že přihlašovací údaje selžou nebo pokud úloha zřizování přejde do [karantény](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
-   - Rozbalením **mapování** můžete zobrazit a upravit atributy uživatele, které se při zřizování nebo aktualizaci uživatelských účtů flowují mezi službou Azure AD a cílovou aplikací. Pokud cílová aplikace tuto aplikaci podporuje, Tato část vám umožní volitelně nakonfigurovat zřizování skupin a uživatelských účtů. Vyberte mapování v tabulce, chcete-li otevřít Editor mapování vpravo, kde můžete zobrazit a přizpůsobit atributy uživatele.
-
-     **Filtry oborů** oznamují službě zřizování, které uživatele a skupiny ve zdrojovém systému mají být zřízené nebo zrušené pro cílový systém. V podokně **mapování atributů** vyberte **obor zdrojového objektu** , chcete-li filtrovat konkrétní hodnoty atributu. Můžete například určit, že v oboru pro zřízení mají být pouze uživatelé s atributem Department (Oddělení) s hodnotou Sales (Prodej). Další informace najdete v tématu [Používání filtrů oborů](define-conditional-rules-for-provisioning-user-accounts.md).
-
-     Další informace najdete v tématu [Přizpůsobení mapování atributů](customize-application-attributes.md).
-
-   - **Nastavení** řídí operaci služby zřizování pro aplikaci, včetně toho, jestli je aktuálně spuštěná. Nabídka **obor** vám umožní určit, jestli se má v oboru pro zřizování zadat jenom přiřazení uživatelé a skupiny, nebo jestli se má zřídit všichni uživatelé v adresáři Azure AD. Informace o přiřazování uživatelů a skupin najdete v tématu [Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](assign-user-or-group-access-portal.md).
-
-Na obrazovce Správa aplikací vyberte **zřizovací protokoly (Preview)** a zobrazte záznamy všech operací spuštěných službou zřizování Azure AD. Další informace najdete v [průvodci zřizováním sestav](check-status-user-account-provisioning.md).
-
-![Ukázka – obrazovka pro protokoly zřizování aplikace](./media/user-provisioning/audit_logs.PNG)
-
-> [!NOTE]
-> Službu zřizování uživatelů Azure AD je taky možné nakonfigurovat a spravovat pomocí [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
+Pro jiné aplikace, které podporují SCIM 2,0, postupujte podle kroků v článku [SCIM zřizování uživatelů pomocí Azure Active Directory](use-scim-to-provision-users-and-groups.md).
 
 ## <a name="what-happens-during-provisioning"></a>Co se stane při zřizování?
 

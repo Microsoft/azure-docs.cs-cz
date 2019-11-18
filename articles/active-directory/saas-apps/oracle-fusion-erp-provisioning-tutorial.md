@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 4ecb0189736ca2787f0725fb471ef8a22252185c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.author: Zhchia
+ms.openlocfilehash: 73991efa2e98ff033987f1ce172d24fe3ecddb96
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642043"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144574"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Kurz: Konfigurace Oracle Fusion ERP pro Automatické zřizování uživatelů
 
@@ -52,7 +52,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 * Při přiřazování uživatele do Oracle Fusion ERP musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s výchozí rolí přístupu se z zřizování vylučují.
 
-## <a name="setup-oracle-fusion-erp-for-provisioning"></a>Nastavení pro zřizování Oracle Fusion ERP
+## <a name="set-up-oracle-fusion-erp-for-provisioning"></a>Nastavení pro zřizování pro Oracle Fusion ERP
 
 Před konfigurací Oracle Fusion ERP pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit zřizování SCIM pro Oracle Fusion ERP.
 
@@ -95,11 +95,14 @@ Pokud chcete nakonfigurovat Azure Fusion ERP pro Automatické zřizování uživ
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů a/nebo skupin v Oracle Fusion ERP na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Oracle Fusion ERP podle pokynů uvedených v [kurzu Oracle Fusion ERP jednotného přihlašování](oracle-fusion-erp-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Oracle Fusion ERP podle pokynů uvedených v [kurzu Oracle Fusion ERP jednotného přihlašování](oracle-fusion-erp-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
+
+> [!NOTE]
+> Další informace o koncovém bodu služby Oracle Fusion pro SCIM najdete [v tématu REST API pro běžné funkce v cloudu pro aplikace Oracle](https://docs.oracle.com/en/cloud/saas/applications-common/18b/farca/index.html).
 
 ### <a name="to-configure-automatic-user-provisioning-for-fuze-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Fuze ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -115,47 +118,61 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` **adresu URL tenanta**. Zadejte uživatelské jméno a heslo správce dříve načtené do polí **uživatelské jméno** a **heslo** správce. Klikněte na **Testovat připojení** mezi Azure AD a Oracle Fusion ERP. 
+5. V části **přihlašovací údaje správce** zadejte `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` na **adrese URL tenanta**. Zadejte uživatelské jméno a heslo správce dříve načtené do polí **uživatelské jméno** a **heslo** správce. Klikněte na **Testovat připojení** mezi Azure AD a Oracle Fusion ERP. 
 
     ![Oracle Fusion ERP přidání SCIM](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
 
-6. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![Oznamovací e-mail](common/provisioning-notification-email.png)
+    ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-7. Klikněte na **Uložit**.
+7. Klikněte na možnost **Uložit**.
 
 8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele do Oracle Fusion ERP**.
 
     ![Oracle Fusion ERP přidání SCIM](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
-    
+
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Oracle Fusion ERP v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Oracle Fusion ERP pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
     ![Oracle Fusion ERP přidání SCIM](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
 
-10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do Oracle Fusion ERP**.
 
-11. Pokud chcete povolit službu Azure AD Provisioning pro Oracle Fusion ERP, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+    ![Mapování skupin ERP pro Oracle Fusion](media/oracle-fusion-erp-provisioning-tutorial/groupmappings.png)
+
+11. Zkontrolujte atributy skupiny synchronizované z Azure AD do Oracle Fusion ERP v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v databázi Oracle Fusion ERP pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+
+    ![Atributy skupiny ERP pro Oracle Fusion](media/oracle-fusion-erp-provisioning-tutorial/groupattributes.png)
+
+12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Pokud chcete povolit službu Azure AD Provisioning pro Oracle Fusion ERP, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
     ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele nebo skupiny, které chcete zřídit pro Oracle Fusion ERP, a to tak, že v části **Nastavení** vyberete požadované hodnoty v poli **Rozsah** .
+14. Definujte uživatele nebo skupiny, které chcete zřídit pro Oracle Fusion ERP, a to tak, že v části **Nastavení** vyberete požadované hodnoty v poli **Rozsah** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Až budete připraveni zřídit, klikněte na **Uložit**.
+15. Až budete připraveni zřídit, klikněte na **Uložit**.
 
     ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-    Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část s podrobnostmi **o synchronizaci** můžete použít ke sledování průběhu a následného odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Oracle Fusion ERP.
+    Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část s **podrobnostmi o synchronizaci** můžete použít ke sledování průběhu a následného odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Oracle Fusion ERP.
 
-    Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md) .
+    Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Omezení konektoru
+
+* Řešení Oracle Fusion ERP podporuje pro svůj koncový bod SCIM jenom základní ověřování.
+* Oracle Fusion ERP nepodporuje zřizování skupin.
+* Role v Oracle Fusion ERP se mapují na skupiny v Azure AD. Pokud chcete přiřadit role uživatelům ve službě Oracle Fusion ERP ze služby Azure AD, budete muset přiřadit uživatele k požadovaným skupinám Azure AD, které se pojmenují po rolích v Oracle Fusion ERP.
 
 ## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)

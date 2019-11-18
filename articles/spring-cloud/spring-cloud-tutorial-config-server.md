@@ -1,31 +1,31 @@
 ---
-title: Nastavení konfiguračního serveru v Azure jaře cloudu | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak nastavit jarní cloudový konfigurační server pro váš jarní cloud Azure na Azure Portal
+title: Nastavení instance konfiguračního serveru v Azure jaře cloudu | Microsoft Docs
+description: V tomto kurzu se naučíte, jak nastavit instanci jarního cloudového konfiguračního serveru pro váš jarní cloud Azure na Azure Portal
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 6cf7b4a52ba3a7dbda5fa3fa558c4b68d09f4eb2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 7589a3a750e2fe04736bb3c8fc072c7a2c0a7358
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646711"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147551"
 ---
-# <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Kurz: nastavení jarního cloudového konfiguračního serveru pro vaši službu
+# <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Kurz: nastavení instance jarního cloudového konfiguračního serveru pro vaši službu
 
-V tomto kurzu se dozvíte, jak připojit jaře cloudový konfigurační server k vaší jarní cloudové službě Azure.
+V tomto článku se dozvíte, jak připojit instanci jarního cloudového konfiguračního serveru k vaší jarní cloudové službě Azure.
 
-Jarní cloudová konfigurace poskytuje podporu pro externou konfiguraci v distribuovaném systému na straně serveru a na straně klienta. Pomocí konfiguračního serveru máte centrální místo pro správu externích vlastností pro aplikace napříč všemi prostředími. Další informace najdete v referenčních informacích k [serveru pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config).
+Jarní cloudová konfigurace poskytuje podporu na straně serveru a klienta pro externou konfiguraci v distribuovaném systému. V případě instance konfiguračního serveru máte centrální místo pro správu externích vlastností pro aplikace ve všech prostředích. Další informace najdete v tématu [Reference k serveru pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config).
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
-* Již zřízené a běžící cloudová služba Azure.  Po dokončení [tohoto rychlého](spring-cloud-quickstart-launch-app-cli.md) startu můžete zřídit a spustit cloudovou službu Azure na jaře.
+* Již zřízené a běžící cloudová služba Azure. Pokud chcete nastavit a spustit službu jarních cloudů Azure, přečtěte si [rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure](spring-cloud-quickstart-launch-app-cli.md).
 
 ## <a name="restriction"></a>Omezení
 
-K dispozici jsou určitá omezení, pokud použijete __konfigurační server__ s back-end serverem Git. Některé vlastnosti budou automaticky vloženy do prostředí aplikace pro přístup ke __konfiguračnímu serveru__ a __zjišťování služby__. Pokud tyto vlastnosti nakonfigurujete i ze souborů **konfiguračního serveru** , může docházet ke konfliktům a neočekávanému chování. Mezi vlastnosti patří: 
+K dispozici jsou určitá omezení, pokud používáte konfigurační server s back-end Git. Některé vlastnosti jsou automaticky vloženy do prostředí aplikace pro přístup ke konfiguračnímu serveru a zjišťování služby. Pokud tyto vlastnosti nakonfigurujete i ze souborů konfiguračního serveru, může docházet ke konfliktům a neočekávanému chování. Mezi vlastnosti patří: 
 
 ```yaml
 eureka.client.service-url.defaultZone
@@ -34,48 +34,49 @@ server.port
 spring.cloud.config.tls.keystore
 spring.application.name
 ```
+
 > [!CAUTION]
-> Důrazně __doporučujeme, abyste výše__ uvedené vlastnosti neumístili do souborů aplikace __konfiguračního serveru__ .
+> Důrazně doporučujeme, abyste výše uvedené vlastnosti _neumístili_ do souborů aplikace konfiguračního serveru.
 
 ## <a name="create-your-config-server-files"></a>Vytvoření souborů konfiguračního serveru
 
-Azure jaře Cloud podporuje Azure DevOps, GitHub, GitLab a Bitbucket pro ukládání souborů konfiguračního serveru. Po přípravě úložiště proveďte konfigurační soubory podle níže uvedených pokynů a uložte je tam.
+Azure jaře Cloud podporuje Azure DevOps, GitHub, GitLab a Bitbucket pro ukládání souborů konfiguračního serveru. Po přípravě úložiště vytvořte konfigurační soubory podle následujících pokynů a uložte je tam.
 
-Kromě toho jsou některé konfigurovatelné vlastnosti dostupné jenom pro některé typy. Následující pododdíly uvádějí vlastnosti pro každý typ úložiště.
+Kromě toho jsou některé konfigurovatelné vlastnosti k dispozici pouze pro určité typy. Následující pododdíly uvádějí vlastnosti pro každý typ úložiště.
 
 ### <a name="public-repository"></a>Veřejné úložiště
 
-Při použití veřejného úložiště budou konfigurovatelné vlastnosti omezené.
+Když použijete veřejné úložiště, vaše konfigurovatelné vlastnosti jsou omezené.
 
-Všechny konfigurovatelné vlastnosti používané k nastavení úložiště veřejného `Git` jsou uvedeny níže.
+Všechny konfigurovatelné vlastnosti, které se používají k nastavení veřejného úložiště Git, jsou uvedené v následující tabulce:
 
 > [!NOTE]
-> Použití spojovníku ("-") k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Můžete například použít `default-label`, ale ne `defaultLabel`.
+> Použití spojovníku (-) k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Můžete například použít *Default-Label*, ale ne *defaultLabel*.
 
 | Vlastnost        | Požaduje se | Funkce                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | `yes`    | `uri` úložiště `Git` používaného jako back-endu konfiguračního serveru by se mělo spustit s `http://`, `https://`, `git@`nebo `ssh://`. |
-| `default-label` | `no`     | Výchozí popisek úložiště `Git` by měl být `branch name`, `tag name`nebo `commit-id` úložiště. |
-| `search-paths`  | `no`     | Pole řetězců sloužících k prohledání podadresářů úložiště `Git`. |
+| `uri`           | Ano    | Identifikátor URI úložiště Git, který se používá jako back-end konfiguračního serveru, začíná na *http://* , *https://* , *Git@* nebo *SSH://* . |
+| `default-label` | Ne     | Výchozí popisek úložiště Git by měl být *název větve*, *název značky*nebo *potvrzení-ID* úložiště. |
+| `search-paths`  | Ne     | Pole řetězců, které se používá k prohledání podadresářů úložiště Git. |
 
 ------
 
 ### <a name="private-repository-with-ssh-authentication"></a>Soukromé úložiště s ověřováním SSH
 
-Všechny konfigurovatelné vlastnosti používané k nastavení úložiště privátního `Git` pomocí `Ssh` jsou uvedeny níže.
+Všechny konfigurovatelné vlastnosti používané k nastavení privátního úložiště Git pomocí SSH jsou uvedené v následující tabulce:
 
 > [!NOTE]
-> Použití spojovníku ("-") k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Můžete například použít `default-label`, ale ne `defaultLabel`.
+> Použití spojovníku (-) k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Můžete například použít *Default-Label*, ale ne *defaultLabel*.
 
 | Vlastnost                   | Požaduje se | Funkce                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | `yes`    | `uri` úložiště `Git` používaného jako back-endu konfiguračního serveru by se mělo spustit s `http://`, `https://`, `git@`nebo `ssh://`. |
-| `default-label`            | `no`     | Výchozí popisek úložiště `Git` by měl být `branch name`, `tag name`nebo `commit-id` úložiště. |
-| `search-paths`             | `no`     | Pole řetězců sloužících k prohledání podadresářů úložiště `Git`. |
-| `private-key`              | `no`     | `Ssh` privátní klíč pro přístup k úložišti `Git` __vyžadováno__ , když `uri` začíná `git@` nebo `ssh://`. |
-| `host-key`                 | `no`     | Klíč hostitele serveru úložiště Git by neměl obsahovat předponu algoritmu, která je pokrytá `host-key-algorithm`. |
-| `host-key-algorithm`       | `no`     | Algoritmus klíče hostitele by měl být `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`nebo `ecdsa-sha2-nistp521`. Vyžaduje se jenom v případě, že `host-key` existuje. |
-| `strict-host-key-checking` | `no`     | Určuje, zda se má při využití privátního `host-key`spustit konfigurační server. Měla by být `true` (výchozí hodnota) nebo `false`. |
+| `uri`                      | Ano    | Identifikátor URI úložiště Git použitého jako back-end konfiguračního serveru by měl být spuštěný s *http://* , *https://* , *Git@* nebo *SSH://* . |
+| `default-label`            | Ne     | Výchozí popisek úložiště Git by měl být *název větve*, *název značky*nebo *potvrzení-ID* úložiště. |
+| `search-paths`             | Ne     | Pole řetězců, které slouží k prohledání podadresářů úložiště Git. |
+| `private-key`              | Ne     | Privátní klíč SSH pro přístup k úložišti Git, který je _vyžadován_ v případě, že identifikátor URI začíná na *Git@* nebo *SSH://* . |
+| `host-key`                 | Ne     | Klíč hostitele serveru úložiště Git by neměl obsahovat předponu algoritmu, která je pokrytá `host-key-algorithm`. |
+| `host-key-algorithm`       | Ne     | Algoritmus klíče hostitele by měl být *SSH-DSS*, *SSH-RSA*, *ECDSA-SHA2-nistp256*, *ECDSA-SHA2-nistp384*nebo *ECDSA-SHA2-nistp521*. *Požadováno* pouze v případě, že `host-key` existuje. |
+| `strict-host-key-checking` | Ne     | Označuje, zda se instance konfiguračního serveru při využití privátního `host-key`nespustí. Hodnota by měla být *true* (výchozí hodnota) nebo *false*. |
 
 -----
 
@@ -84,71 +85,73 @@ Všechny konfigurovatelné vlastnosti používané k nastavení úložiště pri
 Všechny konfigurovatelné vlastnosti používané k nastavení privátního úložiště Git se základním ověřováním jsou uvedené níže.
 
 > [!NOTE]
-> Použití spojovníku ("-") k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Použijte například `default-label` not `defaultLabel`.
+> Použití spojovníku (-) k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Například použijte *výchozí-Label*, nikoli *defaultLabel*.
 
 | Vlastnost        | Požaduje se | Funkce                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | `yes`    | `uri` úložiště `Git` používaného jako back-endu konfiguračního serveru by se mělo spustit s `http://`, `https://`, `git@`nebo `ssh://`. |
-| `default-label` | `no`     | Výchozí popisek úložiště `Git` by měl být `branch name`, `tag name`nebo `commit-id` úložiště. |
-| `search-paths`  | `no`     | Pole řetězců sloužících k prohledání podadresářů úložiště `Git`. |
-| `username`      | `no`     | `username`, která se používá pro přístup k serveru úložiště `Git`, se __vyžaduje__ v případě, že server úložiště `Git` podporuje `Http Basic Authentication`. |
-| `password`      | `no`     | Heslo použité pro přístup k serveru úložiště `Git`, který je __vyžadován__ , pokud server úložiště `Git` podporuje `Http Basic Authentication`. |
+| `uri`           | Ano    | Identifikátor URI úložiště Git, který se používá jako back-end konfiguračního serveru, by měl být spuštěný pomocí *http://* , *https://* , *Git@* nebo *SSH://* . |
+| `default-label` | Ne     | Výchozí popisek úložiště Git by měl být *název větve*, *název značky*nebo *potvrzení-ID* úložiště. |
+| `search-paths`  | Ne     | Pole řetězců, které slouží k prohledání podadresářů úložiště Git. |
+| `username`      | Ne     | Uživatelské jméno, které se používá pro přístup k serveru úložiště Git, se _vyžaduje_ v případě, že server úložiště git podporuje `Http Basic Authentication`. |
+| `password`      | Ne     | Heslo, které se používá pro přístup k serveru úložiště Git, se _vyžaduje_ v případě, že server úložiště git podporuje `Http Basic Authentication`. |
 
 > [!NOTE]
-> Některé `Git` servery úložiště, jako je GitHub, podporují jako heslo pro `HTTP Basic Authentication`"osobní token" nebo "Access-token". Tento typ tokenu můžete použít také jako heslo a na token "Personal-token" nebo "Access-token" nebude vypršet. U serverů úložiště Git, jako je BitBucket a Azure DevOps, vyprší platnost tokenu za jednu nebo dvě hodiny, takže tato možnost nebude životaschopná pro použití se službou Azure Pramenitého cloudu.
+> Mnoho `Git` úložišť úložiště podporuje použití tokenů místo hesel pro základní ověřování HTTP. Některá úložiště, jako je GitHub, umožňují, aby se tokeny zachovaly po neomezenou dobu. Nicméně některé servery úložiště Git, včetně Azure DevOps, vynutí vypršení platnosti tokenů za několik hodin. Úložiště, která způsobila vypršení platnosti tokenů, by neměla používat ověřování na základě tokenu u jarního cloudu Azure.
 
 ### <a name="git-repositories-with-pattern"></a>Úložiště Git se vzorem
 
 Všechny konfigurovatelné vlastnosti používané k nastavení úložišť Git se vzorem jsou uvedené níže.
 
 > [!NOTE]
-> Použití spojovníku ("-") k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Použijte například `default-label` not `defaultLabel`.
+> Použití spojovníku (-) k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Například použijte *výchozí-Label*, nikoli *defaultLabel*.
 
 | Vlastnost                           | Požaduje se         | Funkce                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
-| `repos`                            | `no`             | Mapa skládající se z nastavení úložiště `Git` se zadaným názvem. |
-| `repos."uri"`                      | `yes` v `repos` | `uri` úložiště `Git` používaného jako back-endu konfiguračního serveru by se mělo spustit s `http://`, `https://`, `git@`nebo `ssh://`. |
-| `repos."name"`                     | `yes` v `repos` | Název pro identifikaci jednoho úložiště `Git` __požadovaný__ pouze v případě, že `repos` existuje. Například z výše uvedeného `team-A``team-B`. |
-| `repos."pattern"`                  | `no`             | Pole řetězců používané pro shodu názvu aplikace. Pro každý vzor použijte `{application}/{profile}` formátu se zástupnými znaky. |
-| `repos."default-label"`            | `no`             | Výchozí popisek úložiště `Git` by měl být `branch name`, `tag name`nebo `commit-id` úložiště. |
-| `repos."search-paths`"             | `no`             | Pole řetězců sloužících k prohledání podadresářů úložiště `Git`. |
-| `repos."username"`                 | `no`             | `username`, která se používá pro přístup k serveru úložiště `Git`, se __vyžaduje__ v případě, že server úložiště `Git` podporuje `Http Basic Authentication`. |
-| `repos."password"`                 | `no`             | Heslo použité pro přístup k serveru úložiště `Git`, který je __vyžadován__ , pokud server úložiště `Git` podporuje `Http Basic Authentication`. |
-| `repos."private-key"`              | `no`             | `Ssh` privátní klíč pro přístup k úložišti `Git` se __vyžaduje__ , když `uri` začíná `git@` nebo `ssh://`. |
-| `repos."host-key"`                 | `no`             | Klíč hostitele serveru úložiště Git by neměl obsahovat předponu algoritmu, která je pokrytá `host-key-algorithm`. |
-| `repos."host-key-algorithm"`       | `no`             | Algoritmus klíče hostitele by měl být `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`nebo `ecdsa-sha2-nistp521`. __Vyžaduje__ se jenom v případě, že `host-key` existuje. |
-| `repos."strict-host-key-checking"` | `no`             | Určuje, zda se má při využití privátního `host-key`spustit konfigurační server. Měla by být `true` (výchozí hodnota) nebo `false`. |
+| `repos`                            | Ne             | Mapa skládající se z nastavení úložiště Git se zadaným názvem. |
+| `repos."uri"`                      | Ano v `repos` | Identifikátor URI úložiště Git, který se používá jako back-end konfiguračního serveru, by měl být spuštěný pomocí *http://* , *https://* , *Git@* nebo *SSH://* . |
+| `repos."name"`                     | Ano v `repos` | Název, který se má identifikovat v úložišti Git, se _vyžaduje_ jenom v případě, že `repos` existuje. Například *tým-a*, *tým-B*. |
+| `repos."pattern"`                  | Ne             | Pole řetězců používané pro shodu názvu aplikace. Pro každý vzor použijte `{application}/{profile}` formátu se zástupnými znaky. |
+| `repos."default-label"`            | Ne             | Výchozí popisek úložiště Git by měl být *název větve*, *název značky*nebo *potvrzení-ID* úložiště. |
+| `repos."search-paths`"             | Ne             | Pole řetězců, které slouží k prohledání podadresářů úložiště Git. |
+| `repos."username"`                 | Ne             | Uživatelské jméno, které se používá pro přístup k serveru úložiště Git, se _vyžaduje_ v případě, že server úložiště git podporuje `Http Basic Authentication`. |
+| `repos."password"`                 | Ne             | Heslo, které se používá pro přístup k serveru úložiště Git, se _vyžaduje_ v případě, že server úložiště git podporuje `Http Basic Authentication`. |
+| `repos."private-key"`              | Ne             | Privátní klíč SSH pro přístup k úložišti Git, který je _vyžadován_ v případě, že identifikátor URI začíná na *Git@* nebo *SSH://* . |
+| `repos."host-key"`                 | Ne             | Klíč hostitele serveru úložiště Git by neměl obsahovat předponu algoritmu, která je pokrytá `host-key-algorithm`. |
+| `repos."host-key-algorithm"`       | Ne             | Algoritmus klíče hostitele by měl být *SSH-DSS*, *SSH-RSA*, *ECDSA-SHA2-nistp256*, *ECDSA-SHA2-nistp384*nebo *ECDSA-SHA2-nistp521*. *Požadováno* pouze v případě, že `host-key` existuje. |
+| `repos."strict-host-key-checking"` | Ne             | Označuje, zda se instance konfiguračního serveru při využití privátního `host-key`nespustí. Hodnota by měla být *true* (výchozí hodnota) nebo *false*. |
 
-## <a name="attaching-your-config-server-repository-to-azure-spring-cloud"></a>Připojení úložiště konfiguračního serveru k Azure jaře cloudu
+## <a name="attach-your-config-server-repository-to-azure-spring-cloud"></a>Připojení úložiště konfiguračního serveru k Azure jaře cloudu
 
-Teď, když máte konfigurační soubory uložené v úložišti, musíte k ní připojit jarní cloud Azure.
+Teď, když jsou konfigurační soubory uložené v úložišti, musíte k ní připojit jarní cloud Azure.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 
-1. Přejděte na stránku s **přehledem** jarního cloudu Azure.
+1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 
-1. Přejděte na kartu **konfigurační server** v záhlaví **Nastavení** v nabídce na levé straně.
+1. Vyberte službu, kterou chcete nakonfigurovat.
 
-![snímek obrazovky okna](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+1. V levém podokně stránky služby v části **Nastavení**vyberte kartu **konfigurační server** .
 
-### <a name="input-repository-information-directly-to-the-azure-portal"></a>Informace o vstupním úložišti přímo do Azure Portal
+![Okno konfigurační server](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+
+### <a name="enter-repository-information-directly-to-the-azure-portal"></a>Zadejte informace o úložišti přímo do Azure Portal
 
 #### <a name="default-repository"></a>Výchozí úložiště
 
-* Veřejné úložiště: v části **výchozí úložiště** vložte identifikátor URI úložiště do oddílu **URI** .  Nastavte **popisek** na `config`. Zajistěte, aby bylo nastavení **ověřování** **veřejné**, a pak vyberte **použít** k dokončení. 
+* **Veřejné úložiště**: v části **výchozí úložiště** v poli **URI** vložte identifikátor URI úložiště.  Nastavte **popisek** na **config**. Zajistěte, aby bylo nastavení **ověřování** **veřejné**, a pak vyberte **použít** k dokončení. 
 
-* Soukromé úložiště: Azure jaře Cloud podporuje základní ověřování pomocí hesla nebo tokenu a SSH.
+* **Soukromé úložiště**: Azure jaře Cloud podporuje základní ověřování pomocí hesla nebo tokenu a SSH.
 
-    * Základní ověřování: v části **výchozí úložiště** vložte identifikátor URI úložiště do oddílu **URI** a pak klikněte na **ověřování**. Jako **typ ověřování** vyberte **základní** a zadejte své uživatelské jméno a heslo nebo token pro udělení přístupu k jarnímu cloudu Azure. Klikněte na **OK** a **použijte** k dokončení nastavení konfiguračního serveru.
+    * **Základní ověřování**: v části **výchozí úložiště** v poli **URI** vložte identifikátor URI úložiště a pak klikněte na tlačítko **ověřování** (ikona tužky). V podokně **Upravit ověřování** vyberte v rozevíracím seznamu **typ ověřování** možnost **http Basic**a potom zadejte své uživatelské jméno a heslo nebo token pro udělení přístupu k jarnímu cloudu Azure. Vyberte **OK**a pak vyberte **použít** k dokončení nastavování instance konfiguračního serveru.
 
-    ![snímek obrazovky okna](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    ![Podokno upravit ověřování](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
-    > Některé servery úložiště Git, jako je GitHub, používají `personal-token` nebo `access-token` jako heslo pro **základní ověřování**. Tento typ tokenu můžete použít jako heslo v Azure jaře cloudu, protože nikdy nevyprší platnost. U jiných serverů úložiště Git, jako je BitBucket a Azure DevOps, vyprší platnost `access-token` za jednu nebo dvě hodiny. To znamená, že při použití těchto serverů úložiště se službou Azure Pramenitého cloudu není možnost životaschopná.]
+    > Některé servery úložiště Git, jako je GitHub, pro **základní ověřování**používají *osobní tokeny* nebo *přístupový token*, jako je třeba heslo. Tento typ tokenu můžete použít jako heslo v Azure jaře cloudu, protože nikdy nevyprší platnost. Ale pro ostatní servery úložiště Git, jako je BitBucket a Azure DevOps, vyprší platnost *přístupového tokenu* v jedné nebo dvou hodinách. To znamená, že možnost nebude při použití těchto serverů úložiště u jarního cloudu Azure životaschopná.
 
-    * SSH: v části **výchozí úložiště** vložte identifikátor URI úložiště do oddílu **URI** a pak klikněte na **ověřování**. Jako **typ ověřování** vyberte **SSH** a zadejte svůj **privátní klíč**. Volitelně můžete zadat **klíč hostitele** a **algoritmus hostitelského klíče**. Nezapomeňte do svého úložiště konfiguračního serveru zahrnout svůj veřejný klíč. Klikněte na **OK** a **použijte** k dokončení nastavení konfiguračního serveru.
+    * **SSH**: v části **výchozí úložiště** v poli **URI** vložte identifikátor URI úložiště a pak klikněte na tlačítko **ověřování** (ikona tužky). V podokně **Upravit ověřování** vyberte v rozevíracím seznamu **typ ověřování** možnost **SSH**a potom zadejte svůj **privátní klíč**. Volitelně můžete zadat **klíč hostitele** a **algoritmus hostitelského klíče**. Nezapomeňte do svého úložiště konfiguračního serveru zahrnout svůj veřejný klíč. Vyberte **OK**a pak vyberte **použít** k dokončení nastavování instance konfiguračního serveru.
 
-    ![snímek obrazovky okna](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+    ![Podokno upravit ověřování](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
 #### <a name="pattern-repository"></a>Úložiště vzorků
 
@@ -156,7 +159,7 @@ Pokud chcete použít volitelné **úložiště vzorků** ke konfiguraci služby
 
 ### <a name="enter-repository-information-into-a-yaml-file"></a>Zadejte informace o úložišti do souboru YAML.
 
-Pokud jste napsali soubor YAML s nastavením úložiště, můžete importovat soubor YAML přímo z místního počítače do jarního cloudu Azure. Jednoduchý soubor YAML pro privátní úložiště se základním ověřováním by vypadal takto:
+Pokud jste napsali soubor YAML s nastavením úložiště, můžete ho naimportovat přímo z místního počítače do jarního cloudu Azure. Jednoduchý soubor YAML pro privátní úložiště se základním ověřováním by vypadal takto:
 
 ```yml
 spring:
@@ -170,24 +173,23 @@ spring:
 
 ```
 
-Klikněte na tlačítko **importovat nastavení** a potom vyberte soubor `.yml` z adresáře projektu. Klikněte na **importovat**, potom se v oznámení zobrazí `async` operace z vašich **oznámení** . Po 1-2 minutách by se mělo ohlásit úspěch.
+Vyberte tlačítko **importovat nastavení** a potom vyberte soubor YAML z adresáře projektu. Vyberte **importovat**a potom se v **oznámeních** zobrazí operace `async`. Po 1-2 minutách by se mělo ohlásit úspěch.
 
-![snímek obrazovky okna](media/spring-cloud-tutorial-config-server/local-yml-success.png)
+![Podokno oznámení konfiguračního serveru](media/spring-cloud-tutorial-config-server/local-yml-success.png)
 
 
-Měli byste vidět informace ze souboru YAML, který se zobrazuje v Azure Portal. Klikněte na tlačítko **použít** k dokončení. 
+Informace ze souboru YAML by měly být zobrazeny v Azure Portal. Vyberte **použít** k dokončení. 
 
 
 ## <a name="delete-your-app-configuration"></a>Odstranění konfigurace aplikace
 
-Po uložení konfiguračního souboru se na kartě **Konfigurace** zobrazí tlačítko **Odstranit konfiguraci aplikace** . Tím se úplně smaže stávající nastavení. To byste měli udělat, pokud chcete připojit konfigurační server k jinému zdroji, například přesun z GitHubu do Azure DevOps.
+Po uložení konfiguračního souboru se na kartě **Konfigurace** zobrazí tlačítko **Odstranit konfiguraci aplikace** . Výběrem tohoto tlačítka smažete stávající nastavení úplně. Pokud chcete instanci konfiguračního serveru připojit k jinému zdroji, jako je třeba přesun z GitHubu do Azure DevOps, měli byste ho vybrat.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak povolit a nakonfigurovat konfigurační server. Další informace o správě aplikace najdete v kurzu ručního škálování aplikace.
+V tomto kurzu jste zjistili, jak povolit a nakonfigurovat instanci jarního konfiguračního serveru v cloudu. Další informace o správě vaší aplikace najdete v kurzu ručního škálování aplikace.
 
 > [!div class="nextstepaction"]
-> [Naučte se, jak ručně škálovat cloudovou aplikaci Azure na jaře](spring-cloud-tutorial-scale-manual.md).
-
+> [Kurz: škálování aplikace ve jarním cloudu Azure](spring-cloud-tutorial-scale-manual.md)

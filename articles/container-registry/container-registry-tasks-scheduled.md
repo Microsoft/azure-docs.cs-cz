@@ -1,6 +1,6 @@
 ---
 title: Plánování úloh Azure Container Registry
-description: Přečtěte si, jak spustit úlohu Azure Container Registry podle definovaného plánu tím, že nastavíte jednu nebo víc triggerů časovače.
+description: V tomto kurzu se dozvíte, jak spustit úlohu Azure Container Registry podle definovaného plánu nastavením jedné nebo více triggerů časovače.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,16 +8,22 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ae36b8d67d02f8cae0007b7b06485932db851af5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931470"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148636"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Spuštění úlohy ACR podle definovaného plánu
 
-V tomto článku se dozvíte, jak spustit [úlohu ACR](container-registry-tasks-overview.md) podle plánu. Naplánování úlohy nastavením jedné nebo více *aktivačních událostí časovače*.
+V tomto kurzu se dozvíte, jak spustit [úlohu ACR](container-registry-tasks-overview.md) podle plánu. Naplánování úlohy nastavením jedné nebo více *aktivačních událostí časovače*. Triggery časovače lze použít samostatně nebo v kombinaci s jinými triggery úloh.
+
+V tomto kurzu se naučíte plánovat úlohy a:
+
+> [!div class="checklist"]
+> * Vytvoření úlohy pomocí triggeru časovače
+> * Správa aktivačních událostí časovače
 
 Plánování úlohy je užitečné pro následující scénáře:
 
@@ -199,9 +205,11 @@ Každé pole může mít jeden z následujících typů hodnot:
 
 ## <a name="next-steps"></a>Další kroky
 
+V tomto kurzu jste zjistili, jak vytvořit Azure Container Registry úlohy, které se automaticky aktivují pomocí časovače. 
+
 Příklad použití naplánované úlohy k vyčištění úložišť v registru najdete v tématu [Automatické vymazání imagí z služby Azure Container Registry](container-registry-auto-purge.md).
 
-Příklady úloh aktivovaných potvrzením zdrojového kódu nebo základními aktualizacemi imagí najdete v [řadě kurzů pro úlohy ACR](container-registry-tutorial-quick-task.md).
+Příklady úloh aktivovaných potvrzeními zdrojového kódu nebo základními aktualizacemi imagí najdete v dalších článcích v [řadě kurzů ACR Tasks](container-registry-tutorial-quick-task.md).
 
 
 
