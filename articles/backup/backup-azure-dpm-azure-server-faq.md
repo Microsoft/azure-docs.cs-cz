@@ -1,19 +1,15 @@
 ---
-title: Nejčastější dotazy k Azure Backup Server a DPM (Data Protection Manager)
-description: V tomto článku najdete odpovědi na nejčastější dotazy týkající se Microsoft Azure Backupho serveru (MABS) a aplikace DPM.
+title: Nejčastější dotazy k Azure Backup Server a DPM
+description: V tomto článku najdete odpovědi na běžné otázky týkající se Microsoft Azure Backupho serveru (MABS) a aplikace DPM (Data Protection Manager).
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: dacurwin
-ms.openlocfilehash: 940ac4d94bf39583fad828545a45cbb033908f15
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091661"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173163"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
 

@@ -3,17 +3,13 @@ title: Kurz – konfigurace účtů Azure Cosmos DB pomocí Ansible
 description: Naučte se používat Ansible k vytvoření a konfiguraci Azure Cosmos DB
 keywords: Ansible, Azure, DevOps, bash, PlayBook, Cosmo DB, databáze
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242074"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156484"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Kurz: Konfigurace účtů Azure Cosmos DB pomocí Ansible
 
@@ -29,7 +25,7 @@ ms.locfileid: "72242074"
 > * Načtení klíčů účtu
 > * Odstranit účet
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -235,7 +231,7 @@ V této části spustíte PlayBook k otestování různých funkcí, které jsou
 
 Před spuštěním PlayBook proveďte následující změny:
 - V části `vars` nahraďte zástupný text `{{ resource_group_name }}` názvem vaší skupiny prostředků.
-- Ujistěte se, že ' cosmosdbaccount_name obsahuje jenom malá písmena a je globálně jedinečný.
+- Ujistěte se, že ' cosmosdbaccount_name obsahuje pouze malá písmena a je globálně jedinečný.
 
 Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 

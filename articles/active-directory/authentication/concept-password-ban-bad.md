@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 27530b143e46acad4152e8333836cbe9c79fab17
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032880"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168090"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminujte chybná hesla ve vaší organizaci.
 
@@ -57,7 +57,7 @@ Po přidání podmínek do vlastního seznamu zakázaných hesel budou v kombina
 Příklad: Uvažujme zákazníka s názvem "contoso", který je založený na Londýně a který vytvoří produkt s názvem "widget". U takového zákazníka by byl wasteful i méně bezpečný a snaží se zablokovat konkrétní variace těchto podmínek, například:
 
 - Contoso! 1
-- "Contoso@London"
+- Contoso@London
 - "ContosoWidget"
 - "! Contoso
 - "LondonHQ"
@@ -98,7 +98,7 @@ Pokaždé, když uživatel změní nebo obnoví heslo, bude nové heslo kontrolo
 
 I v případě, že heslo uživatele obsahuje zakázané heslo, může být heslo stále přijatelné v případě, že je celé heslo dostatečně silné. Nově nakonfigurované heslo provede následující kroky, abyste zjistili jeho celkovou sílu, abyste zjistili, jestli by se měl přijmout nebo odmítnout.
 
-### <a name="step-1-normalization"></a>Krok 1: Normalizace
+### <a name="step-1-normalization"></a>Krok 1: normalizace
 
 Nové heslo se nejprve prochází procesem normalizace. Tato technika umožňuje mapovat malou sadu zakázaných hesel na mnohem větší sadu potenciálně slabých hesel.
 
@@ -111,9 +111,9 @@ Normalizace má dvě části.  Nejprve se všechna velká písmena změní na ma
 | '$'  | jeho |
 | '\@'  | určitého |
 
-Příklad: Předpokládejme, že heslo "prázdné" je zakázáno a uživatel se pokusí změnit heslo naBl@nK"". I kdyžBl@nknení výslovně zakázaná, proces normalizace toto heslo převede na "prázdné", což je zakázané heslo.
+Příklad: Předpokládejme, že heslo "prázdné" je zakázáno a uživatel se pokusí změnit heslo na "Bl@nK". I když neníBl@nkvýslovně zakázaná, proces normalizace toto heslo převede na "prázdné", což je zakázané heslo.
 
-### <a name="step-2-check-if-password-is-considered-banned"></a>Krok 2: Ověřit, jestli se heslo považuje za zakázané
+### <a name="step-2-check-if-password-is-considered-banned"></a>Krok 2: ověření, jestli se heslo považuje za zakázané
 
 #### <a name="fuzzy-matching-behavior"></a>Chování při přibližném porovnání
 
@@ -133,7 +133,7 @@ Příklad: Předpokládejme, že máme uživatele, Pol, který chce resetovat he
 
 #### <a name="score-calculation"></a>Výpočet skóre
 
-Dalším krokem je identifikace všech instancí zakázaných hesel v normalizovaném novém heslu uživatele. Stisknutím
+Dalším krokem je identifikace všech instancí zakázaných hesel v normalizovaném novém heslu uživatele. Potom:
 
 1. Každé zakázané heslo, které se nachází v uživatelském hesle, je přiděleno na jeden bod.
 2. Každý zbývající jedinečný znak je dán jedním bodem.
@@ -147,7 +147,7 @@ Po normalizaci se toto heslo bude "contosoblank12". Odpovídající proces zjist
 
 [contoso] + [prázdné] + [1] + [2] = 4 body vzhledem k tomu, že toto heslo je pod pěti (5) body, bude odmítnuto.
 
-Příklad: uživatel změní heslo na "ContoS0Bl@nkf9!".
+Příklad: uživatel změní heslo naContoS0Bl@nkf9!.
 
 Po normalizaci se toto heslo bude "contosoblankf9!". Odpovídající proces zjistí, že toto heslo obsahuje dvě zakázaná hesla: contoso a prázdné. Toto heslo pak předané skóre:
 
@@ -164,7 +164,7 @@ Po normalizaci se toto heslo bude "contosoblankf9!". Odpovídající proces zjis
 | Uživatelé synchronizovaný z místní služby Windows Server Active Directory | Azure AD Premium P1 nebo P2 | Azure AD Premium P1 nebo P2 |
 
 > [!NOTE]
-> Místní uživatelé služby Windows Server Active Directory, kteří nejsou synchronizováni s Azure Active Directory, také využívají výhody ochrany heslem Azure AD na základě stávajícího licencování pro synchronizované uživatele.
+> Místní uživatelé služby Windows Server Active Directory, kteří nejsou synchronizováni, Azure Active Directory také výhody ochrany heslem Azure AD na základě stávajícího licencování pro synchronizované uživatele.
 
 Další informace o licencování, včetně nákladů, najdete na [webu Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -174,7 +174,7 @@ Když se uživatel pokusí resetovat heslo na něco, co by bylo zakázané, zobr
 
 Vaše heslo bohužel obsahuje slovo, frázi nebo vzor, který umožňuje snadnou možnost uhodnout heslo. Zkuste to prosím znovu s jiným heslem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Konfigurovat vlastní seznam zakázaných hesel](howto-password-ban-bad.md)
 - [Povolení agentů ochrany hesel služby Azure AD v místním prostředí](howto-password-ban-bad-on-premises-deploy.md)

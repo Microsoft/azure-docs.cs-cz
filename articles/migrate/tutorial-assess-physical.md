@@ -5,20 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7f840a99ab76548c16389955cf49791036cc63a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123511"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158366"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
-
-> [!NOTE]
-> Pokud tuto funkci na portále Azure Migrate ještě nevidíte, počkejte prosím. Zobrazí se za příští týden.
- 
 
 V tomto článku se dozvíte, jak pomocí nástroje Azure Migrate: Server Assessment Tool zhodnotit místní fyzické servery.
 
@@ -112,7 +108,8 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
   **Algoritmus** | **Hodnota hash**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 5b98cf68dad495696c789bdad8f0d91b
+  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
 
@@ -135,7 +132,7 @@ Spusťte skript následujícím způsobem:
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Skript spustí webovou aplikaci zařízení po úspěšném dokončení. 
+Skript spustí webovou aplikaci zařízení po úspěšném dokončení.
 
 V případě jakýchkoli problémů získáte přístup k protokolům skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log pro řešení potíží.
 
@@ -166,7 +163,7 @@ Nastavte zařízení poprvé.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
 1. Klikněte na **Přihlásit se**. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných oken.
-2. Na nové kartě se přihlaste pomocí svých přihlašovacích údajů Azure. 
+2. Na nové kartě se přihlaste pomocí svých přihlašovacích údajů Azure.
     - Přihlaste se pomocí svého uživatelského jména a hesla.
     - Přihlášení pomocí PIN kódu se nepodporuje.
 3. Po úspěšném přihlášení se vraťte k webové aplikaci.
@@ -188,7 +185,7 @@ Každé pro servery se systémem Windows a Linux můžete přidat jednu sadu př
     - Pokud chcete odebrat server, vyberte > **Odstranit**.
 4. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.
 
-Spustí se zjišťování. Vybere se přibližně 1,5 minut na server, aby se metadata zjištěného serveru zobrazovala v Azure Portal. 
+Spustí se zjišťování. Vybere se přibližně 1,5 minut na server, aby se metadata zjištěného serveru zobrazovala v Azure Portal.
 
 ### <a name="verify-servers-in-the-portal"></a>Ověřit servery na portálu
 

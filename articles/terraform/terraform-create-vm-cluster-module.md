@@ -1,31 +1,28 @@
 ---
 title: Kurz – vytvoření clusteru virtuálních počítačů Azure s Terraformu pomocí registru modulu
 description: Zjistěte, jak použít moduly Terraformu k vytvoření clusteru virtuálních počítačů s Windows v Azure.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba99f9cdc20448398b339041aeab41fb75495e5d
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
-ms.translationtype: MT
+ms.openlocfilehash: 939c34eae63b89108102ed8f766a4260ce2f24bd
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969483"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159065"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraformu pomocí registru modulu
 
 Tento článek vás provede vytvořením malého clusteru virtuálních počítačů pomocí [výpočetního modulu Terraform Azure](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Co se v tomto kurzu naučíte: 
 
 > [!div class="checklist"]
-> * Nastavení ověřování pomocí Azure
+> * Nastavit ověřování pomocí Azure
 > * Vytvořit šablonu Terraformu
-> * Vizualizace změn pomocí plánu
+> * Vizualizovat změny pomocí plánu
 > * Použít konfiguraci k vytvoření clusteru virtuálních počítačů
 
 Další informace o Terraformu najdete v [dokumentaci Terraformu](https://www.terraform.io/docs/index.html).
 
-## <a name="set-up-authentication-with-azure"></a>Nastavení ověřování pomocí Azure
+## <a name="set-up-authentication-with-azure"></a>Nastavit ověřování pomocí Azure
 
 > [!TIP]
 > Pokud [používáte proměnné prostředí nástroje Terraform](/azure/virtual-machines/linux/terraform-install-configure) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](/azure/cloud-shell/overview), tento krok přeskočte.
@@ -86,7 +83,7 @@ V adresáři konfigurace spusťte `terraform init`. Pokud používáte Terraform
 
 ![Příkaz terraform init](media/terraformInitWithModules.png)
 
-## <a name="visualize-the-changes-with-plan"></a>Vizualizace změn pomocí plánu
+## <a name="visualize-the-changes-with-plan"></a>Vizualizovat změny pomocí plánu
 
 Spusťte `terraform plan`, abyste si zobrazili náhled infrastruktury virtuálního počítače, kterou vytvořila šablona.
 

@@ -1,19 +1,15 @@
 ---
-title: Počáteční zálohování offline pomocí služby Azure Backup import/export
+title: Počáteční zálohování offline pomocí služby Import/export
 description: Přečtěte si, jak Azure Backup umožňuje odesílat data mimo síť pomocí služby Azure import/export. V tomto článku se dozvíte, jak v režimu offline importu počátečních dat zálohování použít službu Azure import export.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: dacurwin
-ms.openlocfilehash: 15a5a67209552134969c01220e8412d0c9dace15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968519"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173287"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 
@@ -40,13 +36,13 @@ Následující Azure Backup funkce nebo úlohy podporují použití offline zál
 > * Zálohování souborů a složek pomocí agenta Microsoft Azure Recovery Services (MARS), označovaného také jako agent Azure Backup.
 > * Zálohování všech úloh a souborů pomocí nástroje System Center Data Protection Manager (SC DPM)
 > * Zálohování všech úloh a souborů pomocí serveru Microsoft Azure Backup
-
+ 
    > [!NOTE]
    > Zálohování v režimu offline není podporováno pro zálohování stavu systému pomocí agenta Azure Backup.
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
   > [!NOTE]
   > Následující předpoklady a pracovní postup platí jenom pro offline zálohování souborů a složek pomocí [nejnovějšího agenta Mars](https://aka.ms/azurebackup_agent). Pokud chcete provádět offline zálohování pro úlohy pomocí nástroje System Center DPM nebo Azure Backup Server, přečtěte si [Tento článek](backup-azure-backup-server-import-export-.md).
@@ -69,7 +65,7 @@ Než začnete pracovní postup offline zálohování iniciovat, proveďte násle
 * Při posílání disků do Azure používejte jenom 2,5 palce SSD, nebo 2,5-palce nebo 3,5 – na interních pevných discích SATA II/III. Můžete použít pevné disky až do 10 TB. Nejnovější sadu jednotek, které služba podporuje, najdete v [dokumentaci ke službě Import/export v Azure](../storage/common/storage-import-export-requirements.md#supported-hardware) .
 * Jednotky SATA musí být připojené k počítači (označovanému jako *počítač pro kopírování*), ze kterého se provádí Kopírování zálohovaných dat z *pracovního umístění* na jednotky SATA. Ujistěte se, že je na *počítači pro kopírování*povolený nástroj BitLocker.
 
-## <a name="workflow"></a>Pracovní postupy
+## <a name="workflow"></a>Pracovní postup
 
 Tato část popisuje pracovní postup offline zálohování, aby bylo možné doručovat data do datacentra Azure a odeslat je do Azure Storage. Pokud máte dotazy týkající se služby pro import nebo jakéhokoli aspektu procesu, přečtěte si [dokumentaci Přehled importu služby](../storage/common/storage-import-export-service.md).
 
@@ -109,7 +105,7 @@ Tato část popisuje pracovní postup offline zálohování, aby bylo možné do
 
 Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesílají do nejbližšího datacentra Azure. Tento nástroj je k dispozici v instalačním adresáři agenta Azure Backup (v následující cestě):
 
-   *\Microsoft Azure Recovery Services Agent\Utils\\*
+    *\Microsoft Azure Recovery Services Agent\Utils\\*
 
 1. Přejít do adresáře a zkopírovat adresář **AzureOfflineBackupDiskPrep** do jiného počítače, kde jsou připojeny jednotky SATA. V počítači s připojenými jednotkami SATA zajistěte:
 

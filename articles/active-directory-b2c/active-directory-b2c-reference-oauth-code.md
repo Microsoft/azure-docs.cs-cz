@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1ae3f739d5104ea9a98889f7fbce938b835e84aa
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d738bfb8bcd11c8da4c39d873c7f298b8c49af98
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385946"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167199"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Tok autorizačního kódu OAuth 2,0 v Azure Active Directory B2C
 
@@ -33,12 +33,12 @@ Azure AD B2C rozšiřuje standardní toky protokolu OAuth 2,0, aby bylo možné 
 
 Postup vyzkoušení požadavků HTTP v tomto článku:
 
-1. Nahraďte `{tenant}` názvem vašeho tenanta Azure AD B2C.
-1. Nahraďte `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` ID aplikace aplikace, kterou jste předtím zaregistrovali ve vašem tenantovi Azure AD B2C.
+1. Nahraďte `{tenant}` s názvem vašeho tenanta Azure AD B2C.
+1. Nahraďte `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` ID aplikace, kterou jste předtím zaregistrovali ve vašem tenantovi Azure AD B2C.
 1. Nahraďte `{policy}` názvem zásady, kterou jste vytvořili ve vašem tenantovi, například `b2c_1_sign_in`.
 
 ## <a name="1-get-an-authorization-code"></a>1. získání autorizačního kódu
-Tok autorizačního kódu začíná klientem, který přesměruje uživatele na koncový bod `/authorize`. Jedná se o interaktivní část toku, kde uživatel provede akci. V této žádosti klient indikuje v parametrech `scope` oprávnění, která musí uživatel získat od uživatele. Následující tři příklady (s oddělovači řádků pro čitelnost) každý využívají jiný tok uživatele.
+Tok autorizačního kódu začíná klientem, který přesměruje uživatele do koncového bodu `/authorize`. Jedná se o interaktivní část toku, kde uživatel provede akci. V této žádosti klient indikuje v parametru `scope` oprávnění, která musí získat od uživatele. Následující tři příklady (s oddělovači řádků pro čitelnost) každý využívají jiný tok uživatele.
 
 
 ```HTTP
@@ -55,18 +55,18 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Parametr | Povinné? | Popis |
 | --- | --- | --- |
 |tenant| Požaduje se | Název vašeho tenanta Azure AD B2C|
-| politických | Požaduje se | Tok uživatele, který má být spuštěn. Zadejte název uživatelského toku, který jste vytvořili ve vašem tenantovi Azure AD B2C. Například: `b2c_1_sign_in`, `b2c_1_sign_up` nebo `b2c_1_edit_profile`. |
+| politických | Požaduje se | Tok uživatele, který má být spuštěn. Zadejte název uživatelského toku, který jste vytvořili ve vašem tenantovi Azure AD B2C. Například: `b2c_1_sign_in`, `b2c_1_sign_up`nebo `b2c_1_edit_profile`. |
 | client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [Azure Portal](https://portal.azure.com). |
 | response_type |Požaduje se |Typ odpovědi, který musí zahrnovat `code` pro tok autorizačního kódu. |
-| identifikátor |Požaduje se |Identifikátor URI pro přesměrování vaší aplikace, ve kterém se vaše aplikace odesílá a přijímá ověřovací odpovědi. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s tím rozdílem, že musí být zakódovaný na adrese URL. |
-| scope |Požaduje se |Mezerou oddělený seznam oborů. Jedna hodnota oboru označuje Azure Active Directory (Azure AD) obě oprávnění, která jsou požadována. Použití ID klienta jako oboru znamená, že vaše aplikace potřebuje přístupový token, který se dá použít pro vlastní službu nebo webové rozhraní API reprezentované stejným ID klienta.  Rozsah `offline_access` indikuje, že vaše aplikace potřebuje aktualizační token pro dlouhodobé přístupy k prostředkům. K vyžádání tokenu ID z Azure AD B2C můžete použít také obor `openid`. |
-| response_mode |Doporučené |Metoda, kterou použijete k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může to být `query`, `form_post` nebo `fragment`. |
+| redirect_uri |Požaduje se |Identifikátor URI pro přesměrování vaší aplikace, ve kterém se vaše aplikace odesílá a přijímá ověřovací odpovědi. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s tím rozdílem, že musí být zakódovaný na adrese URL. |
+| scope |Požaduje se |Mezerou oddělený seznam oborů. Jedna hodnota oboru označuje Azure Active Directory (Azure AD) obě oprávnění, která jsou požadována. Použití ID klienta jako oboru znamená, že vaše aplikace potřebuje přístupový token, který se dá použít pro vlastní službu nebo webové rozhraní API reprezentované stejným ID klienta.  Obor `offline_access` označuje, že vaše aplikace potřebuje aktualizační token pro dlouhodobě přístup k prostředkům. K vyžádání tokenu ID z Azure AD B2C můžete použít také obor `openid`. |
+| response_mode |Doporučené |Metoda, kterou použijete k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může být `query`, `form_post`nebo `fragment`. |
 | state |Doporučené |Hodnota obsažená v požadavku může být řetězec libovolného obsahu, který chcete použít. Obvykle se používá náhodně vygenerovaná jedinečná hodnota, která zabraňuje útokům proti padělání požadavků mezi lokalitami. Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než k žádosti o ověření dojde. Například stránka, na které uživatel byl, nebo uživatelský tok, který se spustil. |
-| výzv |Volitelné |Typ interakce uživatele, která je povinná. V současné době je jediná platná hodnota `login`, což uživateli přinutí zadat přihlašovací údaje k této žádosti. Jednotné přihlašování se neprojeví. |
+| výzv |Nepovinné |Typ interakce uživatele, která je povinná. V současné době je jediná platná hodnota `login`, což uživateli přinutí zadat přihlašovací údaje k této žádosti. Jednotné přihlašování se neprojeví. |
 
 V tomto okamžiku se uživateli zobrazí výzva k dokončení pracovního postupu toku uživatele. Může to znamenat, že uživatel zadá své uživatelské jméno a heslo, přihlásí se přes sociální identitu, zaregistruje se do adresáře nebo jakýkoli jiný počet kroků. Akce uživatele závisí na způsobu definování toku uživatele.
 
-Jakmile uživatel dokončí tok uživatele, služba Azure AD vrátí odpověď vaší aplikace na hodnotu, kterou jste použili pro `redirect_uri`. Používá metodu určenou v parametru `response_mode`. Odpověď je přesně stejná pro každý scénář akce uživatele, nezávisle na spuštěném toku uživatele.
+Až uživatel tok uživatele dokončí, Azure AD vrátí odpověď vaší aplikaci na hodnotu, kterou jste použili pro `redirect_uri`. Používá metodu určenou v parametru `response_mode`. Odpověď je přesně stejná pro každý scénář akce uživatele, nezávisle na spuštěném toku uživatele.
 
 Úspěšná odpověď, která používá `response_mode=query`, vypadá takto:
 
@@ -78,7 +78,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 
 | Parametr | Popis |
 | --- | --- |
-| Znakovou |Autorizační kód, který požadovaná aplikace požaduje. Aplikace může použít autorizační kód k vyžádání přístupového tokenu pro cílový prostředek. Autorizační kódy jsou velmi krátkodobé. Obvykle vyprší po asi 10 minutách. |
+| code |Autorizační kód, který požadovaná aplikace požaduje. Aplikace může použít autorizační kód k vyžádání přístupového tokenu pro cílový prostředek. Autorizační kódy jsou velmi krátkodobé. Obvykle vyprší po asi 10 minutách. |
 | state |Úplný popis najdete v tabulce v předchozí části. Pokud je v požadavku zahrnut parametr `state`, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, že hodnoty `state` v žádosti a odpovědi jsou identické. |
 
 Odpovědi na chyby se také odesílají do identifikátoru URI přesměrování, aby je aplikace mohla vhodně zpracovat:
@@ -115,10 +115,11 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 |tenant| Požaduje se | Název vašeho tenanta Azure AD B2C|
 |politických| Požaduje se| Tok uživatele, který se použil k získání autorizačního kódu. V této žádosti nemůžete použít jiný tok uživatele. |
 | client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [Azure Portal](https://portal.azure.com).|
-| parametr grant_type |Požaduje se |Typ udělení. Pro tok autorizačního kódu musí být typ udělení `authorization_code`. |
-| scope |Doporučené |Mezerou oddělený seznam oborů. Jedna hodnota oboru indikuje pro Azure AD obě oprávnění, která jsou požadována. Použití ID klienta jako oboru znamená, že vaše aplikace potřebuje přístupový token, který se dá použít pro vlastní službu nebo webové rozhraní API reprezentované stejným ID klienta.  Rozsah `offline_access` indikuje, že vaše aplikace potřebuje aktualizační token pro dlouhodobé přístupy k prostředkům.  K vyžádání tokenu ID z Azure AD B2C můžete použít také obor `openid`. |
-| Znakovou |Požaduje se |Autorizační kód, který jste získali v první nožkě toku. |
-| identifikátor |Požaduje se |Identifikátor URI přesměrování aplikace, kde jste dostali autorizační kód. |
+| client_secret | Ano, v Web Apps | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tajné klíče klienta se v tomto toku používají pro scénáře webové aplikace, kde může klient bezpečně uložit tajný klíč klienta. V případě scénářů nativních aplikací (veřejného klienta) nelze tajné klíče klienta bezpečně uložit, a proto nejsou použity v tomto volání. Pokud použijete tajný klíč klienta, pravidelně ho prosím změňte. |
+| grant_type |Požaduje se |Typ udělení. Pro tok autorizačního kódu musí být typ udělení `authorization_code`. |
+| scope |Doporučené |Mezerou oddělený seznam oborů. Jedna hodnota oboru indikuje pro Azure AD obě oprávnění, která jsou požadována. Použití ID klienta jako oboru znamená, že vaše aplikace potřebuje přístupový token, který se dá použít pro vlastní službu nebo webové rozhraní API reprezentované stejným ID klienta.  Obor `offline_access` označuje, že vaše aplikace potřebuje aktualizační token pro dlouhodobě přístup k prostředkům.  K vyžádání tokenu ID z Azure AD B2C můžete použít také obor `openid`. |
+| code |Požaduje se |Autorizační kód, který jste získali v první nožkě toku. |
+| redirect_uri |Požaduje se |Identifikátor URI přesměrování aplikace, kde jste dostali autorizační kód. |
 
 Úspěšná odpověď tokenu vypadá nějak takto:
 
@@ -165,7 +166,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ## <a name="4-refresh-the-token"></a>4. aktualizace tokenu
-Přístupové tokeny a tokeny ID jsou krátkodobé. Po vypršení platnosti je musíte aktualizovat, abyste mohli dál přistupovat k prostředkům. Provedete to tak, že odešlete další požadavek POST na koncový bod `/token`. Tentokrát místo `code` zadejte `refresh_token`:
+Přístupové tokeny a tokeny ID jsou krátkodobé. Po vypršení platnosti je musíte aktualizovat, abyste mohli dál přistupovat k prostředkům. Provedete to tak, že odešlete další požadavek POST na koncový bod `/token`. Tentokrát místo `code`zadejte `refresh_token`:
 
 ```HTTP
 POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
@@ -180,10 +181,10 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 |tenant| Požaduje se | Název vašeho tenanta Azure AD B2C|
 |politických |Požaduje se |Tok uživatele, který se použil k získání původního obnovovacího tokenu. V této žádosti nemůžete použít jiný tok uživatele. |
 | client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [Azure Portal](https://portal.azure.com). |
-| client_secret |Požaduje se |Client_secret přidružený k vašemu client_id v [Azure Portal](https://portal.azure.com). |
-| parametr grant_type |Požaduje se |Typ udělení. Pro tuto nožku toku autorizačního kódu musí být typ udělení `refresh_token`. |
-| scope |Doporučené |Mezerou oddělený seznam oborů. Jedna hodnota oboru indikuje pro Azure AD obě oprávnění, která jsou požadována. Použití ID klienta jako oboru znamená, že vaše aplikace potřebuje přístupový token, který se dá použít pro vlastní službu nebo webové rozhraní API reprezentované stejným ID klienta.  Rozsah `offline_access` označuje, že vaše aplikace bude potřebovat obnovovací token pro dlouhodobě přístup k prostředkům.  K vyžádání tokenu ID z Azure AD B2C můžete použít také obor `openid`. |
-| identifikátor |Volitelné |Identifikátor URI přesměrování aplikace, kde jste dostali autorizační kód. |
+| client_secret | Ano, v Web Apps | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tajné klíče klienta se v tomto toku používají pro scénáře webové aplikace, kde může klient bezpečně uložit tajný klíč klienta. V případě scénářů nativních aplikací (veřejného klienta) nelze tajné klíče klienta bezpečně uložit, a proto nejsou použity v tomto volání. Pokud použijete tajný klíč klienta, pravidelně ho prosím změňte. |
+| grant_type |Požaduje se |Typ udělení. Pro tuto nožku toku autorizačního kódu musí být typ udělení `refresh_token`. |
+| scope |Doporučené |Mezerou oddělený seznam oborů. Jedna hodnota oboru indikuje pro Azure AD obě oprávnění, která jsou požadována. Použití ID klienta jako oboru znamená, že vaše aplikace potřebuje přístupový token, který se dá použít pro vlastní službu nebo webové rozhraní API reprezentované stejným ID klienta.  Obor `offline_access` označuje, že vaše aplikace bude potřebovat aktualizační token pro dlouhodobě přístup k prostředkům.  K vyžádání tokenu ID z Azure AD B2C můžete použít také obor `openid`. |
+| redirect_uri |Nepovinné |Identifikátor URI přesměrování aplikace, kde jste dostali autorizační kód. |
 | refresh_token |Požaduje se |Původní obnovovací token, který jste získali v druhé nožkě toku. |
 
 Úspěšná odpověď tokenu vypadá nějak takto:

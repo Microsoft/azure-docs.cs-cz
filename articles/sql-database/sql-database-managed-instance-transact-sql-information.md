@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823325"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158290"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -48,7 +48,7 @@ Tato stránka také vysvětluje [dočasné známé problémy](#Issues) , které 
 - [ODPOJIT SKUPINU DOSTUPNOSTI](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Klauzule [set hadr](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) příkazu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Zálohování
+### <a name="backup"></a>Backup
 
 Spravované instance mají automatické zálohování, takže uživatelé můžou vytvářet úplné zálohy databáze `COPY_ONLY`. Zálohy rozdílů, protokolů a snímků souborů se nepodporují.
 
@@ -191,7 +191,7 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 - [Rozšíření fondu vyrovnávací paměti](/sql/database-engine/configure-windows/buffer-pool-extension) se nepodporuje.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` se nepodporuje. Viz [ALTER Server Configuration](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Velké
+### <a name="collation"></a>Kolace
 
 Výchozí kolace instance je `SQL_Latin1_General_CP1_CI_AS` a lze ji zadat jako parametr vytvoření. Viz [kolace](/sql/t-sql/statements/collations).
 
@@ -299,7 +299,7 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
 
 Následující funkce agenta SQL momentálně nejsou podporované:
 
-- Proxy
+- Proxy servery
 - Plánování úloh na nečinném procesoru
 - Povolení nebo zakázání agenta
 - Výstrahy
@@ -339,7 +339,7 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
  - `sp_send_dbmail` nemůže odeslat přílohy pomocí parametru @file_attachments. Tento postup nemá přístup k místnímu systému souborů a externím sdíleným složkám nebo k Azure Blob Storage.
  - Podívejte se na známé problémy související s `@query` parametrem a ověřováním.
  
-### <a name="dbcc"></a>NÁSTROJI
+### <a name="dbcc"></a>DBCC
 
 Neuvedené příkazy DBCC, které jsou povolené v SQL Server nejsou ve spravovaných instancích podporované.
 
@@ -389,10 +389,10 @@ Propojené servery ve spravovaných instancích podporují omezený počet cíl�
 - Propojené servery nepodporují distribuované transakce s možností zápisu (MS DTC).
 - Nepodporované cíle jsou soubory, Analysis Services a další RDBMS. Zkuste použít nativní Import CSV z Azure Blob Storage jako alternativu pro import souborů pomocí `BULK INSERT` nebo `OPENROWSET`.
 
-Provoz
+Operace
 
 - Transakce zápisu mezi instancemi nejsou podporované.
-- `sp_dropserver` se podporuje pro vyřazování propojeného serveru. Viz [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
+- `sp_dropserver` se podporuje pro vyřazování propojeného serveru. See [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Funkci `OPENROWSET` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Viz [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
 - Funkci `OPENDATASOURCE` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Jako poskytovatel se podporují jenom hodnoty `SQLNCLI`, `SQLNCLI11`a `SQLOLEDB`. Příklad: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](/sql/t-sql/functions/opendatasource-transact-sql).
 - Propojené servery nelze použít ke čtení souborů (Excel, CSV) ze sdílených síťových složek. Zkuste použít [Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) nebo [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) , které čtou soubory CSV z Azure Blob Storage. Sledujte tyto žádosti o [položku zpětné vazby spravované instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
@@ -526,7 +526,7 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 - Počet virtuální jádra a typů instancí, které můžete nasadit v oblasti, mají některá [omezení a omezení](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
 - Existují některá [pravidla zabezpečení, která je nutné použít v podsíti](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
-### <a name="vnet"></a>SÍTĚ
+### <a name="vnet"></a>VNET
 - Virtuální síť se dá nasadit pomocí modelu prostředků – model klasický pro virtuální síť se nepodporuje.
 - Po vytvoření spravované instance se nepodporují přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
 - Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance (používané pro geografickou replikaci, transakční replikaci nebo prostřednictvím odkazovaných serverů), nemají přístup ke spravovaným instancím v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globální. partnerský vztah](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
@@ -564,16 +564,6 @@ SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soub
 Probíhající příkaz `RESTORE`, proces migrace dat a integrované obnovení k časovému okamžiku zablokuje aktualizaci úrovně služby nebo změny velikosti existující instance a vytváření nových instancí až do dokončení procesu obnovení. Proces obnovení zablokuje tyto operace ve spravovaných instancích a fondech instancí ve stejné podsíti, kde je spuštěn proces obnovení. Instance v fondech instancí nejsou ovlivněny. Operace vytvoření nebo změny vrstvy služeb nebudou úspěšné ani po vypršení časového limitu – budou pokračovat až po dokončení nebo zrušení procesu obnovení.
 
 **Alternativní řešení**: Počkejte, než se dokončí proces obnovení, nebo zrušte proces obnovení, pokud má operace vytvoření nebo aktualizace vrstvy služby vyšší prioritu.
-
-### <a name="missing-validations-in-restore-process"></a>Chybějící ověřování v procesu obnovení
-
-**Datum:** SEP 2019
-
-příkaz `RESTORE` a integrované obnovení k určitému bodu v čase neprovádí některé kontroly nessecary obnovené databáze:
-- Příkaz **DBCC CHECKDB** - `RESTORE` v obnovené databázi neprovede `DBCC CHECKDB`. Pokud je původní databáze poškozená nebo dojde k poškození záložního souboru při jeho kopírování do úložiště objektů BLOB v Azure, automatické zálohování se nespustí a podpora Azure se obrátí na zákazníka. 
-- Nekontroluje se integrovaný proces obnovení k bodu v čase, protože instance automatizovaného zálohování z Pro důležité obchodní informace obsahuje [objekty OLTP v paměti](sql-database-in-memory.md#in-memory-oltp). 
-
-**Alternativní řešení**: před provedením zálohování se ujistěte, že ve zdrojové databázi spouštíte `DBCC CHECKDB` a použijete `WITH CHECKSUM` možnost zálohování, aby se předešlo potenciálním poškozením, která by se mohla na spravované instanci obnovit. Ujistěte se, že zdrojová databáze neobsahuje [objekty OLTP v paměti](sql-database-in-memory.md#in-memory-oltp) , pokud ji obnovujete na pro obecné účelyovou vrstvu.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Po převzetí služeb při selhání může být potřeba změnit správce prostředků u Pro důležité obchodní informace úrovně služeb
 

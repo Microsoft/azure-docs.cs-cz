@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 0f34aad4a8590c71f926d12d201f9a614afaa127
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
+ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114926"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74153557"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Analýza živého datového proudu pomocí Video Indexer
 
-Azure Media Services Video Indexer je služba Azure, která je určená k extrakci podrobného přehledu z video a zvukových souborů v režimu offline. Toto je analýza daného mediálního souboru již vytvořeného předem. Nicméně v některých případech je důležité získat z živého informačního kanálu mediální přehledy, abyste mohli rychle uvolnit provozní a jiné případy použití v čase. Například taková rozsáhlá metadata živého streamu můžou použít výrobci obsahu k automatizaci produkčního prostředí. Například [Skupina Endemol](https://customers.microsoft.com/story/esg-media-telecommunications-azure), kde novináři redakce prohledali aktivní informační kanály a sestavují služby oznámení založené na obsahu.
+Azure Media Services Video Indexer je služba Azure, která je určená k extrakci podrobného přehledu z video a zvukových souborů v režimu offline. Toto je analýza daného mediálního souboru již vytvořeného předem. Nicméně v některých případech je důležité získat z živého informačního kanálu mediální přehledy, abyste mohli rychle uvolnit provozní a jiné případy použití v čase. Například taková rozsáhlá metadata živého streamu můžou použít výrobci obsahu k automatizaci produkčního prostředí.
 
 Řešení popsané v tomto článku umožňuje zákazníkům používat Video Indexer řešení téměř v reálném čase pro živé kanály. Zpoždění při indexování může být pomocí tohoto řešení menší než čtyři minuty, v závislosti na datových blocích indexovaných dat, rozlišení vstupu, typu obsahu a výpočetním prostředí, které se používá pro tento proces.
 

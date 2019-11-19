@@ -1,25 +1,21 @@
 ---
 title: Nasazení do Azure Functions pomocí modulu plug-in pro Azure Functions Jenkinse
 description: Naučte se, jak nasadit Azure Functions pomocí modulu plug-in Azure Functions Jenkinse
-ms.service: jenkins
 keywords: Jenkinse, Azure, DevOps, Java, Azure Functions
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882038"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158768"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Nasazení do Azure Functions pomocí modulu plug-in pro Azure Functions Jenkinse
 
 [Azure Functions](/azure/azure-functions/) je služba COMPUTE bez serveru. Pomocí Azure Functions můžete spustit kód na vyžádání bez zřízení nebo správy infrastruktury. V tomto kurzu se dozvíte, jak nasadit funkci Java, která Azure Functions pomocí modulu plug-in Azure Functions.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 - **Server Jenkinse**: Pokud nemáte nainstalovaný server Jenkinse, přečtěte si článek [vytvoření serveru Jenkinse v Azure](./install-jenkins-solution-template.md).
@@ -33,7 +29,7 @@ Chcete-li vytvořit funkci Java pomocí zásobníku Java Runtime, použijte buď
 
 Následující kroky ukazují, jak vytvořit funkci Java pomocí rozhraní příkazového řádku Azure:
 
-1. Vytvořte skupinu prostředků a nahraďte zástupný text **&lt;resource_group >** názvem vaší skupiny prostředků.
+1. Vytvořte skupinu prostředků a nahraďte > zástupný text názvem skupiny prostředků **resource_group&lt;** .
 
     ```cli
     az group create --name <resource_group> --location eastus

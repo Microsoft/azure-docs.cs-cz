@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7187cb41fa7ea499035c57e83e04038b1269b418
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521238"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158670"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů VMware pomocí Azure Migrate: posouzení serveru
 
@@ -38,7 +38,7 @@ Tento kurz je druhý v řadě, který ukazuje, jak vyhodnotit a migrovat virtuá
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Dokončete](tutorial-prepare-vmware.md) první kurz v této sérii. Pokud to neuděláte, pokyny v tomto kurzu nebudou fungovat.
 - Tady je seznam toho, co byste měli udělat v prvním kurzu:
@@ -108,8 +108,8 @@ Před nasazením ověřte, zda je soubor sady vajíček zabezpečený.
 
   **Algoritmus** | **Hodnota hash**
   --- | ---
-  MD5 | 27230f3b012187860281b912ee661709
-  SHA256 | c0a5b5998b7f38ac6e57ea9a808ecc4295795e18f9ca99c367585068883f06e7
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ### <a name="create-the-appliance-vm"></a>Vytvoření virtuálního počítače zařízení
@@ -185,7 +185,7 @@ Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtu�
 2. Vyberte **operační systém**.
 3. Zadejte popisný název přihlašovacích údajů.
 4. V části **uživatelské jméno** a **heslo**zadejte účet, který má alespoň přístup k hostům na virtuálních počítačích.
-5. Klikněte na tlačítko **Přidat**.
+5. Klikněte na **Přidat**.
 
 Po zadání vCenter Server a přihlašovacích údajů k virtuálnímu počítači (volitelné) klikněte na **Uložit a spusťte zjišťování** a spusťte zjišťování místního prostředí.
 
@@ -213,14 +213,14 @@ Chcete-li nastavit obor, je nutné provést následující kroky:
 4.  Klikněte na akce **vytvořit roli** .
 5.  Zadejte název nové role. (například <em>Azure_Migrate</em>).
 6.  Přiřaďte tato [oprávnění](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) k nově definované roli.
-7.  Klikněte na **OK**.
+7.  Klikněte na tlačítko **OK**.
 
 **Přiřazení oprávnění pro objekty vCenter**
 
 Existují dva přístupy k přiřazení oprávnění k objektům inventáře v vCenter k uživatelskému účtu vCenter s přiřazenou rolí.
 - Pro vyhodnocování serveru je třeba použít roli jen **pro čtení** pro uživatelský účet vCenter pro všechny nadřazené objekty, které jsou hostovány virtuálními počítači, které mají být zjištěny. Do datového centra se mají zahrnout všechny nadřazené objekty – hostitel, složka hostitelů, cluster, složka clusterů v hierarchii. Tato oprávnění mají být šířena do podřízených objektů v hierarchii.
 
-    Podobně jako u migrace serveru může být uživatelsky definovaná role (s názvem <em>Azure _Migrate</em>), která má přiřazená tato [oprávnění](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) , použita u všech nadřazených objektů, u kterých jsou virtuální počítače, které mají být migrovány, hostovány na uživatelském účtu vCenter.
+    Podobně jako u migrace serveru může být uživatelsky definovaná role (s názvem <em>Azure _Migrate</em>), které mají přiřazená tato [oprávnění](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) , použita u všech nadřazených objektů, u kterých jsou virtuální počítače, které mají být migrovány, hostovány na uživatelském účtu vCenter.
 
 ![Přiřazení oprávnění](./media/tutorial-assess-vmware/assign-perms.png)
 
@@ -344,7 +344,7 @@ Hodnocení spolehlivosti pro posouzení je následující.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 > [!div class="checklist"]
 > * Nastavení zařízení Azure Migrate

@@ -1,121 +1,116 @@
 ---
-title: Azure CDN z akcí modulu Microsoft Standard Rules | Microsoft Docs
-description: Referenční dokumentace pro Azure CDN z akcí modulu Microsoft Standard Rules.
+title: Akce v modulu Standard rules pro Azure CDN | Microsoft Docs
+description: Referenční dokumentace pro akce v modulu Standard rules pro Azure Content Delivery Network (Azure CDN).
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: dbde93cc7ffd21e341653407e6e4f910e4620974
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615985"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171635"
 ---
-# <a name="azure-cdn-from-microsoft-standard-rules-engine-actions"></a>Azure CDN z akcí modulu Microsoft Standard Rules
+# <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akce v modulu Standard rules pro Azure CDN
 
-V tomto článku jsou uvedené podrobné popisy dostupných akcí pro Azure Content Delivery Network (CDN) od [stroje Microsoft Standard Rules](cdn-standard-rules-engine.md).
+V [modulu Standard Rules](cdn-standard-rules-engine.md) pro Azure Content Delivery Network (Azure CDN) se pravidlo skládá z jedné nebo více podmínek shody a akci. Tento článek poskytuje podrobné popisy akcí, které můžete použít v modulu Standard rules pro Azure CDN.
 
-Druhá část pravidla je akce. Akce definuje chování, které se použije na typ požadavku, který je identifikovaný sadou podmínek shody.
+Druhá část pravidla je akce. Akce definuje chování, které se použije na typ požadavku, který určuje podmínku shody nebo sada podmínek shody.
 
 ## <a name="actions"></a>Akce
 
-K dispozici jsou tyto akce, které je možné použít. 
+Následující akce jsou k dispozici pro použití v modulu Standard rules pro Azure CDN. 
 
-## <a name="cache-expiration"></a>Vypršení platnosti mezipaměti
+### <a name="cache-expiration"></a>Vypršení platnosti mezipaměti
 
-Tato akce vám umožní přepsat hodnotu TTL koncového bodu pro požadavky zadané v podmínkách shody pravidel.
+Pomocí této akce můžete přepsat hodnotu TTL (Time to Live) koncového bodu pro požadavky, které určují podmínky shody pravidel.
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
-Chování mezipaměti |                
+Chování mezipaměti |  Popis              
 ---------------|----------------
-Vynechat mezipaměť | Pokud je vybrána tato možnost a pravidlo odpovídá, nebude obsah uložen do mezipaměti.
-Prioritu | Pokud je vybrána tato možnost a pravidlo odpovídá, hodnota TTL vrácená ze zdroje bude přepsána hodnotou zadanou v akci.
-Nastavit, pokud chybí | Pokud je vybrána tato možnost a pravidlo se shoduje s tím, že se hodnota TTL nevrátila ze zdroje, nastaví pravidlo hodnotu TTL na hodnotu zadanou v akci.
+Vynechat mezipaměť | Pokud je vybrána tato možnost a pravidlo odpovídá, není obsah uložen do mezipaměti.
+Prioritu | Pokud je vybrána tato možnost a pravidlo odpovídá, hodnota TTL vrácená z vašeho zdroje je přepsána hodnotou zadanou v akci.
+Nastavit, pokud chybí | Pokud je vybrána tato možnost a pravidlo se shoduje s tím, že se od počátku nevrátí žádná hodnota TTL, nastaví pravidlo hodnotu TTL na hodnotu zadanou v akci.
 
-**Další pole**
+#### <a name="additional-fields"></a>Další pole
 
-Dny | Hodiny | Minuty | Sekund
+Dny | Hodiny | Minut | Sekundy
 -----|-------|---------|--------
-Hmot | Hmot | Hmot | Hmot 
+Int | Int | Int | Int 
 
-## <a name="cache-key-query-string"></a>Řetězec dotazu na klíč mezipaměti
+### <a name="cache-key-query-string"></a>Řetězec dotazu na klíč mezipaměti
 
-Tato akce umožňuje upravit klíč mezipaměti v závislosti na řetězcích dotazů.
+Tuto akci použijte k úpravě klíče mezipaměti založeného na řetězcích dotazů.
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
 Chování | Popis
 ---------|------------
-připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, budou řetězce dotazů zadané v parametrech zahrnuty při generování klíče mezipaměti. 
-Ukládat do mezipaměti každou jedinečnou adresu URL | Pokud je vybrána tato možnost a pravidlo odpovídá, bude mít každá jedinečná adresa URL vlastní klíč mezipaměti. 
-Exclude | Pokud je vybrána tato možnost a pravidlo odpovídá, budou při generování klíče mezipaměti vyloučeny řetězce dotazů zadané v parametrech.
-Ignorovat řetězce dotazu | Pokud je vybrána tato možnost a pravidlo odpovídá, řetězce dotazů nebudou zváženy při generování klíče mezipaměti. 
+připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, budou řetězce dotazů zadané v parametrech zahrnuty při vygenerování klíče mezipaměti. 
+Ukládat do mezipaměti každou jedinečnou adresu URL | Pokud je vybrána tato možnost a pravidlo odpovídá, každá jedinečná adresa URL má svůj vlastní klíč mezipaměti. 
+Exclude | Pokud je vybrána tato možnost a pravidlo odpovídá, jsou při vygenerování klíče mezipaměti vyloučeny řetězce dotazů zadané v parametrech.
+Ignorovat řetězce dotazu | Když se vybere tato možnost a pravidlo se shoduje, řetězce dotazů se při vygenerování klíče mezipaměti neberou v úvahu. 
 
-## <a name="modify-request-header"></a>Upravit hlavičku požadavku
+### <a name="modify-request-header"></a>Upravit hlavičku požadavku
 
-Tato akce umožňuje změnit hlavičky obsažené v žádostech odeslaných na váš původ.
+Tuto akci použijte, pokud chcete upravit hlavičky, které se nacházejí v žádostech odeslaných na váš původ.
 
-**Povinná pole**
-
-Akce | Název hlavičky protokolu HTTP | Hodnota
--------|------------------|------
-Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v názvu záhlaví přidána do žádosti se zadanou hodnotou. Pokud hlavička již existuje, bude hodnota připojena k existující hodnotě. | Řetězec
-Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v názvu záhlaví přidána do žádosti se zadanou hodnotou. Pokud hlavička již existuje, hodnota přepíše existující hodnotu. | Řetězec
-Odstranit | Pokud je vybrána tato možnost a pravidlo odpovídá a hlavička zadaná v pravidle je uvedena, bude odstraněna z požadavku. | Řetězec
-
-## <a name="modify-response-header"></a>Upravit hlavičku odpovědi
-
-Tato akce umožňuje měnit hlavičky přítomné v odpovědích vrácených koncovým klientům.
-
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
 Akce | Název hlavičky protokolu HTTP | Hodnota
 -------|------------------|------
-Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v názvu záhlaví přidána do odpovědi se zadanou hodnotou. Pokud hlavička již existuje, bude hodnota připojena k existující hodnotě. | Řetězec
-Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v názvu záhlaví přidána do odpovědi se zadanou hodnotou. Pokud hlavička již existuje, hodnota přepíše existující hodnotu. | Řetězec
-Odstranit | Pokud je vybrána tato možnost a pravidlo odpovídá a hlavička zadaná v pravidle je uvedena, bude odstraněna z odpovědi. | Řetězec
+Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude do žádosti se zadanou hodnotou přidána hlavička zadaná v **názvu záhlaví** . Pokud hlavička již existuje, hodnota se připojí k existující hodnotě. | Řetězec
+Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude do žádosti se zadanou hodnotou přidána hlavička zadaná v **názvu záhlaví** . Pokud hlavička již existuje, zadaná hodnota přepíše existující hodnotu. | Řetězec
+Odstranit | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z požadavku odstraní. | Řetězec
 
-## <a name="url-redirect"></a>Přesměrování adresy URL
+### <a name="modify-response-header"></a>Upravit hlavičku odpovědi
 
-Tato akce vám umožní přesměrovat koncové klienty na novou adresu URL. 
+Tuto akci použijte k úpravě hlaviček, které jsou k dispozici v odpovědích vrácených klientům.
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
+
+Akce | Název hlavičky protokolu HTTP | Hodnota
+-------|------------------|------
+Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud hlavička již existuje, **hodnota** se připojí k existující hodnotě. | Řetězec
+Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud je již hlavička přítomna, **hodnota** přepíše existující hodnotu. | Řetězec
+Odstranit | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z odpovědi odstraní. | Řetězec
+
+### <a name="url-redirect"></a>Přesměrování adresy URL
+
+Tuto akci použijte k přesměrování klientů na novou adresu URL. 
+
+#### <a name="required-fields"></a>Povinná pole
 
 Pole | Popis 
 ------|------------
-Typ | Vyberte typ odpovědi, který se vrátí žadateli. Možnosti jsou-302 nalezeno, 301 přesunuto, 307 dočasné přesměrování a 308 trvalé přesměrování
-Protocol (Protokol) | Požadavek shody, HTTP nebo HTTPS
-Název hostitele | Vyberte název hostitele, na který bude požadavek přesměrován. Nechejte prázdné, pokud chcete zachovat příchozího hostitele.
+Typ | Vyberte typ odpovědi, který se má vrátit žadateli: Nalezeno (302), přesunuto (301), dočasné přesměrování (307) a trvalé přesměrování (308).
+Protocol (Protokol) | Požadavek shody, HTTP, HTTPS.
+Název hostitele | Vyberte název hostitele, na který chcete požadavek přesměrovat. Ponechte prázdné, pokud chcete zachovat příchozího hostitele.
 Cesta | Zadejte cestu, která se má použít v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí cestu.  
-Řetězec dotazu | Zadejte řetězec dotazu použitý v přesměrování. Nechejte prázdné, pokud chcete zachovat příchozí řetězec dotazu. 
-Zpomalen | Definujte fragment, který se má použít v přesměrování. Nechejte prázdné, pokud chcete zachovat příchozí fragment. 
+Řetězec dotazu | Zadejte řetězec dotazu použitý v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí řetězec dotazu. 
+Fragment | Definujte fragment, který se použije v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí fragment. 
 
-Důrazně doporučujeme použít absolutní adresu URL. Použití relativní adresy URL může přesměrovat adresy URL CDN na neplatnou cestu. 
+Důrazně doporučujeme, abyste použili absolutní adresu URL. Použití relativní adresy URL může přesměrovat Azure CDN adresy URL na neplatnou cestu. 
 
-## <a name="url-rewrite"></a>Přepsání adresy URL
+### <a name="url-rewrite"></a>Přepsání adresy URL
 
-Tato akce vám umožní přepsat cestu k žádosti en route na váš původ.
+Pomocí této akce přepište cestu k žádosti, která je v cestě k původnímu zdroji.
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
 Pole | Popis 
 ------|------------
-Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte jako hodnotu zdrojového vzoru znak "/".
-Cíl | Definujte cílovou cestu, která se má použít při přepisování. Tato akce přepíše zdrojový vzor.
-Zachovat neshodnou cestu | Pokud ano, zbývající cesta po zdrojovém vzoru se připojí k nové cílové cestě. 
-
-
-[Zpět na začátek](#actions)
-
-</br>
+Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte lomítko ( **/** ) jako hodnotu zdrojového vzoru.
+Cíl | Zadejte cílovou cestu, která se má použít při přepisování. Cílová cesta přepíše zdrojový vzor.
+Zachovat neshodnou cestu | Pokud je nastaveno na **Ano**, zbývající cesta po zdrojovém vzoru se připojí k nové cílové cestě. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled služby Azure Content Delivery Network](cdn-overview.md)
-- [Referenční informace ke stroji pravidel](cdn-standard-rules-engine-reference.md)
-- [Podmínky shody stroje pravidel](cdn-standard-rules-engine-match-conditions.md)
+- [Přehled Azure CDN](cdn-overview.md)
+- [Referenční příručka stroje standardních pravidel](cdn-standard-rules-engine-reference.md)
+- [Podmínky shody v modulu Standard Rules](cdn-standard-rules-engine-match-conditions.md)
 - [Vynutilit HTTPS pomocí modulu Standard Rules](cdn-standard-rules-engine.md)

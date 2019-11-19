@@ -4,14 +4,14 @@ description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/18/2019
 ms.author: rohogue
-ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621469"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166679"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -41,7 +41,7 @@ Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 
 * **Název cíle úložiště** – nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
 * **Cílový typ** – vyberte **objekt BLOB**.
-* **Účet úložiště** – vyberte účet s kontejnerem, na který se má odkazovat.
+* **Účet úložiště** – vyberte účet s kontejnerem, který chcete použít.
 
   Pro přístup k účtu úložiště bude nutné autorizovat instanci mezipaměti, jak je popsáno v tématu [Přidání rolí přístupu](#add-the-access-control-roles-to-your-account).
 
@@ -53,13 +53,16 @@ Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 
 Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
+> [!NOTE]
+> Pokud je brána firewall účtu úložiště nastavená tak, aby omezila přístup jenom na vybrané sítě, použijte dočasné řešení popsané v tématu [práce s nastavením brány firewall účtu úložiště BLOB](hpc-cache-blob-firewall-fix.md).
+
 ### <a name="add-the-access-control-roles-to-your-account"></a>Přidání rolí řízení přístupu ke svému účtu
 
-Mezipaměť HPC Azure používá [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci aplikace mezipaměti pro přístup k vašemu účtu úložiště pro cíle služby Azure Blob Storage.
+Mezipaměť HPC Azure používá [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci služby cache Service pro přístup k vašemu účtu úložiště pro cíle Azure Blob Storage.
 
 Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) pro uživatele "poskytovatel prostředků mezipaměti HPC".
 
-Můžete to provést předem nebo kliknutím na odkaz na stránce, kam přidáte cíl úložiště objektů BLOB.
+Můžete to provést předem nebo kliknutím na odkaz na stránce, kam přidáte cíl úložiště objektů BLOB. Mějte na paměti, že může trvat až pět minut, než se nastavení role rozšíří přes prostředí Azure, takže byste před vytvořením cíle úložiště měli počkat několik minut od přidání rolí.
 
 Postup přidání rolí RBAC:
 
@@ -76,7 +79,7 @@ Postup přidání rolí RBAC:
    > [!NOTE]
    > Pokud hledání "HPC" nefunguje, zkuste místo toho použít řetězec "storagecache". Uživatelé, kteří se připojili k verzi Preview (před GA), můžou potřebovat použít starší název instančního objektu.
 
-1. Kliknutím na tlačítko **Uložit** přidejte přiřazení role do účtu úložiště.
+1. V dolní části klikněte na tlačítko **Uložit** .
 
 1. Tento postup opakujte, pokud chcete přiřadit roli "Přispěvatel dat objektů BLOB úložiště".  
 
@@ -84,7 +87,7 @@ Postup přidání rolí RBAC:
 
 ## <a name="add-a-new-nfs-storage-target"></a>Přidání nového cíle úložiště systému souborů NFS
 
-Cíl úložiště NFS obsahuje některá další pole, která určují, jak se dostat k exportu úložiště a jak efektivně ukládat data do mezipaměti. Můžete také vytvořit více cest oboru názvů z jednoho hostitele systému souborů NFS, pokud má k dispozici více než jeden export.
+Cíl úložiště NFS obsahuje více polí, než je cílem úložiště objektů BLOB. Tato pole určují, jak se dostat k exportu úložiště a jak efektivně ukládat data do mezipaměti. Cíl úložiště NFS také umožňuje vytvořit více cest oboru názvů, pokud má hostitel systému souborů NFS více než jeden export.
 
 ![Snímek obrazovky s definovaným cílovou stránkou pro přidání úložiště s cílovým systémem souborů NFS](media/hpc-cache-add-nfs-target.png)
 
@@ -96,14 +99,15 @@ Zadejte tyto informace pro cíl úložiště zálohovaného systémem souborů N
 
 * **Název hostitele** – zadejte IP adresu nebo plně kvalifikovaný název domény pro systém úložiště NFS. (Použijte název domény jenom v případě, že vaše mezipaměť má přístup k serveru DNS, který dokáže tento název přeložit.)
 
-* **Model využití** – vyberte jeden z profilů ukládání dat do mezipaměti na základě pracovního postupu, který je popsaný v [části Výběr modelu použití níže](#choose-a-usage-model).
+* **Model využití** – vyberte jeden z profilů ukládání dat do mezipaměti na základě pracovního postupu, který je popsaný v části [Výběr modelu použití](#choose-a-usage-model)níže.
 
 ### <a name="nfs-namespace-paths"></a>Cesty oboru názvů NFS
 
 Cíl úložiště NFS může mít několik virtuálních cest, pokud každá cesta představuje jiný export nebo podadresář ve stejném systému úložiště.
 
 Vytvoření všech cest z jednoho cíle úložiště.
-<!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
+
+[Cesty oboru názvů můžete kdykoli přidat a upravit](hpc-cache-edit-storage.md) v cíli úložiště.
 
 Zadejte tyto hodnoty pro každou cestu oboru názvů:
 
@@ -122,11 +126,29 @@ Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
 Při vytváření cíle úložiště, který odkazuje na systém úložiště NFS, je nutné zvolit *model využití* pro tento cíl. Tento model určuje, jak jsou data ukládána do mezipaměti.
 
-* Číst silná – Pokud většinou používáte mezipaměť ke zrychlení přístupu pro čtení dat, vyberte tuto možnost.
+Existují tři možnosti:
 
-* Čtení a zápis – Pokud klienti používají mezipaměť ke čtení a zápisu, vyberte tuto možnost.
+* **Čtení těžkých, zřídka používaných zápisů** – tuto možnost použijte, pokud chcete zrychlit přístup pro čtení souborů, které jsou statické nebo zřídka změněné.
 
-* Klienti obcházejí mezipaměť – tuto možnost vyberte, pokud budou vaši klienti zapisovat data přímo do systému úložiště bez předchozího zápisu do mezipaměti.
+  Tato možnost ukládá do mezipaměti soubory, které klienti čtou, ale předává zápis do úložiště back-endu okamžitě. Soubory uložené v mezipaměti se nikdy nerovnají souborům na svazku úložiště NFS.
+
+  Tuto možnost nepoužívejte, pokud existuje riziko, že soubor může být upraven přímo v systému úložiště, aniž byste ho nejdřív napsali do mezipaměti. Pokud k tomu dojde, verze souboru v mezipaměti nebude nikdy aktualizována změnami z back-endu a datová sada může být nekonzistentní.
+
+* Více **než 15% zápisů** – Tato možnost zrychluje výkon čtení i zápisu. Při použití této možnosti musí mít všichni klienti přístup k souborům přes mezipaměť prostředí Azure HPC místo přímého připojení k úložišti back-endu. Soubory v mezipaměti budou mít poslední změny, které nejsou uložené na back-endu.
+
+  V tomto modelu použití nejsou soubory v mezipaměti u souborů v úložišti back-endu kontrolovány. Předpokládá se, že verze souboru v mezipaměti je aktuálnější. Upravený soubor v mezipaměti se zapisuje do back-endového systému úložiště, a to až do mezipaměti, a to za hodinu bez dalších změn.
+
+* **Klienti zapisují do cíle NFS, vynechá mezipaměť** – tuto možnost vyberte, pokud klienti v pracovním postupu zapisují data přímo do systému úložiště, aniž by museli nejdřív zapisovat do mezipaměti. Soubory, které klienti požadují, jsou ukládány do mezipaměti, ale všechny změny těchto souborů z klienta jsou okamžitě předány zpět do back-endového systému úložiště.
+
+  V tomto modelu použití jsou soubory v mezipaměti často kontrolovány proti verzím back-endu pro aktualizace. Toto ověření umožňuje změnu souborů mimo mezipaměť při zachování konzistence dat.
+
+Tato tabulka shrnuje rozdíly v modelu použití:
+
+| Model využití | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
+| ---- | ---- | ---- | ---- |
+| Čtení těžkých, nečastých zápisů | Pro čtení | Nikdy | Žádný |
+| Více než 15% zápisů | Čtení a zápis | Nikdy | 1 hodina |
+| Klienti obcházejí mezipaměť | Pro čtení | 30 sekund | Žádný |
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -135,4 +157,4 @@ Po vytvoření cílů úložiště Vezměte v úvahu jednu z těchto úloh:
 * [Připojení mezipaměti HPC Azure](hpc-cache-mount.md)
 * [Přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md)
 
-Pokud potřebujete změnit cíl úložiště, přečtěte si článek [úpravy cílů úložiště](hpc-cache-edit-storage.md) , kde se dozvíte, jak.
+Pokud potřebujete aktualizovat nastavení, můžete [cíl úložiště upravit](hpc-cache-edit-storage.md).

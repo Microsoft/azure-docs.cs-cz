@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 7747d1b5e2b18ddf02403ad21fe875c498e43820
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02ab7cdcbf0f150157eb44ef5e28e8284621b813
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036054"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173958"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -81,7 +81,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 | Funkce | Generace 1 | Generace 2 |
 |---------|--------------|--------------|
 | Spouštění             | PCAT         | UEFI |
-| Řadiče disku | IDE – integrované vývojové prostředí          | SCSI |
+| Řadiče disku | IDE          | SCSI |
 | Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 vs. generace 2 – možnosti
@@ -91,7 +91,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 | Disk s operačním systémem > 2 TB                    | znak                | :heavy_check_mark: |
 | Vlastní disk/image/prohození operačního systému         | :heavy_check_mark: | :heavy_check_mark: |
 | Podpora sady škálování virtuálních počítačů | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Site Recovery               | :heavy_check_mark: | znak                |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Zálohování a obnovení                    | :heavy_check_mark: | :heavy_check_mark: |
 | Galerie sdílených imagí              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | znak                |

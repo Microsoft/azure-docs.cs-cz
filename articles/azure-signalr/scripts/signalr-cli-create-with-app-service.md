@@ -1,19 +1,19 @@
 ---
-title: Ukázkový skript Azure CLI – vytvoření služby Signal pomocí App Service
-description: Ukázkový skript Azure CLI – Vytvoření služby SignalR s využitím služby App Service
+title: Vytvoření služby signalizace pomocí služby App Service pomocí rozhraní příkazového řádku Azure
+description: Pomocí Azure CLI vytvořte službu signalizace s App Service. Seznamte se s příkazy rozhraní příkazového řádku pro službu Azure Signal.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 04/20/2018
+ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 09855c45f0a621ef1f51ba7c87443c40b02e00bd
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578849"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158022"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>Vytvoření služby SignalR s využitím služby App Service
 
@@ -78,7 +78,7 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Zobrazí se
 
 Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento skript používá následující příkazy:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az signalr create](/cli/azure/signalr#az-signalr-create) | Vytvoří prostředek služby Azure SignalR. |

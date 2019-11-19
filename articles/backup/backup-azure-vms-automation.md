@@ -1,18 +1,14 @@
 ---
-title: Zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell
+title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7afa791c4a98ca5e40c0ee3983ba8650268c00ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969063"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172551"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -21,6 +17,7 @@ Tento článek vysvětluje, jak zálohovat a obnovit virtuální počítač Azur
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
+>
 > * Vytvořte Trezor Recovery Services a nastavte kontext trezoru.
 > * Definice zásady zálohování
 > * Použití zásady zálohování k ochraně několika virtuálních počítačů
@@ -29,7 +26,7 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="before-you-start"></a>Než začnete
 
 * [Přečtěte si další informace](backup-azure-recovery-services-vault-overview.md) o úložištích Recovery Services.
-* [Projděte si](backup-architecture.md#architecture-direct-backup-of-azure-vms) architekturu zálohování virtuálních počítačů Azure, [Zjistěte informace o](backup-azure-vms-introduction.md) procesu zálohování a [Projděte si](backup-support-matrix-iaas.md) podporu, omezení a požadavky.
+* [Projděte si](backup-architecture.md#architecture-built-in-azure-vm-backup) architekturu zálohování virtuálních počítačů Azure, [Zjistěte informace o](backup-azure-vms-introduction.md) procesu zálohování a [Projděte si](backup-support-matrix-iaas.md) podporu, omezení a požadavky.
 * Zkontrolujte hierarchii objektů PowerShell pro Recovery Services.
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services hierarchie objektů
@@ -38,13 +35,13 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k [rutině](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) **AZ. RecoveryServices** v knihovně Azure.
+Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) v knihovně Azure.
 
 ## <a name="set-up-and-register"></a>Nastavení a registrace
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zahajte:
+Začněte následovně:
 
 1. [Stáhnout nejnovější verzi PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
@@ -152,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-nebo
+Nebo
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -605,7 +602,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
      }
       ```
 
-   * **Nespravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v [ Obnoví nešifrovaný virtuální počítač z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl lze načíst z obnoveného trezoru klíčů.<br>
+   * **Nespravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backupho bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl lze načíst z obnoveného trezoru klíčů.<br>
 
    Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.
 
@@ -632,7 +629,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
       }
       ```
 
-   * **Nespravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový trezor** klíčů, klíč a tajné klíče pro Trezor klíčů pomocí nástroje Postup [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
+   * **Nespravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový trezor** klíčů, klíč a tajné klíče, a to pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
 
    Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
 
@@ -666,7 +663,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
 
    * **Spravované a šifrované virtuální počítače s Azure AD (klíče bek a KEK)** – pro spravované šifrované virtuální počítače s Azure AD (ŠIFROVANÉ pomocí klíče bek a KEK) připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Spravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (šifrované jenom pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaný virtuální počítač z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl lze načíst z obnoveného trezoru klíčů.
+   * **Spravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (šifrované jenom pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl lze načíst z obnoveného trezoru klíčů.
 
      Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.  
 
@@ -680,7 +677,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
 
      Po dostupnosti tajných kódů a zadání podrobností o šifrování na disku s operačním systémem, které se mají připojit k obnoveným spravovaným diskům, najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Spravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový trezor** klíčů, klíč a tajné klíče pro Trezor klíčů pomocí postupu v [Obnoví nešifrovaný virtuální počítač z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
+   * **Spravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový Trezor klíčů/tajný** klíč, obnovte klíč a tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
 
    Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
 

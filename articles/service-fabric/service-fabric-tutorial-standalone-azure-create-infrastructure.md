@@ -3,7 +3,7 @@ title: Kurz vytvoření infrastruktury pro Service Fabric cluster na virtuální
 description: V tomto kurzu se naučíte nastavit infrastrukturu virtuálních počítačů Azure pro spuštění clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: v-vasuke
+author: jpconnock
 manager: jpconnock
 editor: ''
 ms.assetid: ''
@@ -13,22 +13,22 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: v-vasuke
+ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177728"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166273"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: vytvoření infrastruktury virtuálních počítačů Azure pro hostování Service Fabricho clusteru
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „jakýkoli operační systém a cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na virtuálních počítačích Azure a nainstalujete do něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na virtuálních počítačích Azure a nainstalujete do něj aplikaci.
 
 Tento kurz je první částí série. V tomto článku vygenerujete prostředky virtuálních počítačů Azure, které jsou potřeba pro hostování samostatného clusteru Service Fabric. V dalších článcích bude třeba nainstalovat samostatnou sadu Service Fabric, nainstalovat do clusteru ukázkovou aplikaci a nakonec cluster vyčistit.
 
-V první části této série se naučíte:
+V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření sady instancí AzureVM
@@ -36,7 +36,7 @@ V první části této série se naučíte:
 > * Přihlášení k jedné z instancí
 > * Příprava instance pro Service Fabric
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ještě nemáte, můžete ho vytvořit tak, že přejdete na [Azure Portal](https://portal.azure.com) .
 
@@ -90,12 +90,18 @@ Spusťte ještě dva **Virtual Machines**. Ujistěte se, že jste zachovali stej
  
 4. Otevřete soubor RDP a po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste zadali v nastavení virtuálního počítače.
 
-5. Jakmile budete připojeni k instanci, je třeba ověřit, zda byl spuštěn vzdálený registr, a otevřít požadované porty.
+5. Jakmile budete připojeni k instanci, je nutné ověřit, zda byl spuštěn vzdálený registr, povolit protokol SMB a otevřít požadované porty pro protokol SMB a vzdálený registr.
+
+   Pokud chcete povolit protokol SMB, jedná se o příkaz prostředí PowerShell:
+
+   ```powershell
+   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+   ```
 
 6. Pro otevření portů v bráně firewall zase slouží tento příkaz PowerShellu:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
 7. Tento postup opakujte pro své jiné instance a znovu se zaznamenáte o privátních IP adresách.
@@ -111,6 +117,15 @@ Spusťte ještě dva **Virtual Machines**. Ujistěte se, že jste zachovali stej
    ```
 
    Pokud jeho výstup vypadá takto `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` a opakuje se čtyřikrát, pak spojení mezi instancemi funguje.
+
+3. Nyní následujícím příkazem ověřte, jestli funguje sdílení SMB:
+
+   ```
+   net use * \\172.31.20.163\c$
+   ```
+
+   Výstupem by mělo být `Drive Z: is now connected to \\172.31.20.163\c$.`.
+
 
    Teď jsou vaše instance správně připravené pro Service Fabric.
 

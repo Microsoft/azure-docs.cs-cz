@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a66b7389df64a776cdecb45c41de56d7d258e4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606361"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169306"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí v Azure Event Grid
 
@@ -36,6 +36,7 @@ Pokud jako obslužnou rutinu používáte Azure Functions, použijte místo gene
 
 |Název  |Popis  |
 |---------|---------|
+| [Rychlý Start: zpracování událostí pomocí funkce](custom-event-to-function.md) | Odesílá vlastní událost do funkce pro zpracování. |
 | [Aktivační událost Event Grid pro Azure Functions](../azure-functions/functions-bindings-event-grid.md) | Přehled použití triggeru Event Grid v Functions. |
 | [Kurz: automatizace změny velikosti nahraných imagí pomocí Event Grid](resize-images-on-storage-blob-upload-event.md) | Uživatelé nahrávají obrázky prostřednictvím webové aplikace do účtu úložiště. Když se vytvoří objekt BLOB úložiště, Event Grid pošle událost do aplikace Function App, která změní velikost nahraného obrázku. |
 | [Kurz: streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md) | Když Event Hubs vytvoří zachytávací soubor, Event Grid pošle událost do aplikace Function App. Aplikace načte zachytávací soubor a migruje data do datového skladu. |
@@ -72,10 +73,15 @@ Použijte Logic Apps k automatizaci obchodních procesů pro reagování na udá
 | [Kurz: odesílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky pošle e-mailové oznámení pokaždé, když se do služby IoT Hub přidá zařízení. |
 | [Kurz: Azure Service Bus pro Azure Event Grid příklady integrace](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid posílá zprávy z Service Bus tématu do aplikace Function App a Logic Apps. |
 
-## <a name="service-bus-queue"></a>Fronta služby Service Bus 
+## <a name="service-bus"></a>Service Bus
+
+### <a name="service-bus-queues"></a>Fronty služby Service Bus
+
 Události v Event Grid můžete směrovat přímo na Service Bus fronty pro použití v ukládání do vyrovnávací paměti nebo v rámci scénářů řízení & příkazů v podnikových aplikacích.
 
-### <a name="using-cli-to-add-a-service-bus-handler"></a>Přidání obslužné rutiny Service Bus pomocí rozhraní příkazového řádku
+V Azure Portal při vytváření odběru událostí vyberte Service Bus Queue jako typ koncového bodu a pak klikněte na vybrat a koncový bod, aby se vybrala Service Bus fronta.
+
+#### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>Přidání obslužné rutiny fronty Service Bus pomocí rozhraní příkazového řádku
 
 V případě Azure CLI následující příklad přihlašuje a připojí téma Event gridu k frontě Service Bus:
 
@@ -89,6 +95,28 @@ az eventgrid event-subscription create \
     --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
     --endpoint-type servicebusqueue \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
+```
+
+### <a name="service-bus-topics"></a>Service Bus Topics
+
+Události v Event Grid můžete směrovat přímo do Service Bus témat, abyste mohli zpracovávat události systému Azure pomocí Service Busch témat, nebo pro scénáře řízení zasílání zpráv z příkazového &.
+
+V Azure Portal při vytváření odběru událostí vyberte Service Bus téma jako typ koncového bodu a pak klikněte na vybrat a koncový bod, aby se daly vybrat Service Bus téma.
+
+#### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>Přidání obslužné rutiny tématu Service Bus pomocí rozhraní příkazového řádku
+
+V případě Azure CLI následující příklad přihlašuje a připojí téma Event gridu k frontě Service Bus:
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid event-subscription create \
+    --name <my-event-subscription> \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
+    --endpoint-type servicebustopic \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
 ## <a name="queue-storage"></a>Queue Storage
@@ -113,4 +141,4 @@ Webhooky použijte k přizpůsobitelným koncovým bodům, které reagují na ud
 ## <a name="next-steps"></a>Další kroky
 
 * Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
-* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).
+* Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).

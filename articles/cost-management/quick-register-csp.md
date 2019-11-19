@@ -1,21 +1,21 @@
 ---
-title: Registrace u Cloudyn v Azure s použitím informací o partnerovi CSP | Microsoft Docs
+title: Registrace pomocí informací o partnerovi CSP v Cloudyn v Azure
 description: Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 11/18/2019
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 17f4069e38b4e4f0ee7a4ef4acc4535198b62b02
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 28bce759d6bfe3faa08581bc2bc3ee5441b19974
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969194"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173875"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrace do partnerského programu CSP a zobrazení informací o nákladech
 
@@ -30,6 +30,8 @@ Jako partner CSP se můžete zaregistrovat u Cloudyn. Registrací získáte př�
 > Další informace najdete v tématu [Připojení k rozhraní API partnerského centra](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx).
 >
 > Nepřímým prodejcům CSP je možné Cloudyn zpřístupnit poté, co se jejich nepřímý poskytovatel CSP zaregistruje u Cloudyn. Nepřímí prodejci CSP pak můžou poskytovat přístup do Cloudyn předplatným a zákazníkům Azure.
+>
+>Cloudová aplikace je stížnost pomocí modelu Microsoft Secure Application. Další informace najdete v tématu [povolení rozhraní zabezpečeného aplikačního modelu](/partner-center/develop/enable-secure-app-model).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -59,7 +61,7 @@ Jako partner CSP se můžete zaregistrovat u Cloudyn. Registrací získáte př�
 
 Rozhraní API partnerského centra je ve výchozím nastavení přístupné pouze pro přímé poskytovatele CSP. Přímý poskytovatel CSP však může nakonfigurovat přístup pro své nepřímé zákazníky nebo partnery CSP pomocí skupin entit v Cloudyn.
 
-Pokud chcete povolit přístup pro nepřímé zákazníky nebo partnery CSP, postupujte podle kroků v [zaregistrovat u Cloudyn](#register-with-cloudyn) nastavení registrace zkušební verze. Dále provedením následujících kroků segmentujte data nepřímých poskytovatelů CSP pomocí skupin entit Cloudyn. Potom skupinám entit přiřaďte odpovídající uživatelská oprávnění.
+Pokud chcete povolit přístup nepřímým zákazníkům nebo partnerům CSP, postupujte podle kroků v části [registrace v Cloudyn](#register-with-cloudyn) a nastavte registraci zkušební verze. Dále provedením následujících kroků segmentujte data nepřímých poskytovatelů CSP pomocí skupin entit Cloudyn. Potom skupinám entit přiřaďte odpovídající uživatelská oprávnění.
 
 1. Vytvořte skupinu entit s použitím informací v části [Vytvoření entit](tutorial-user-access.md#create-and-manage-entities).
 2. Postupujte podle kroků v článku [Assigning subscriptions to Cost Entities](https://www.youtube.com/watch?v=d9uTWSdoQYo) (Přiřazování předplatných k entitám nákladů). Přidružte účet nepřímého zákazníka CSP a příslušná předplatná Azure k entitě, kterou jste vytvořili dříve.
@@ -70,7 +72,7 @@ Nepřímí partneři CSP se k portálu Cloudyn přihlašují pomocí účtů, kt
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste použili své informace o CSP k registraci u Cloudyn. Také jste se přihlásili k portálu Cloudyn a začali jste zobrazovat informace o nákladech. Další informace o Cloudyn najdete v kurzu pro Cloudyn.
 

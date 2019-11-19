@@ -1,17 +1,14 @@
 ---
 title: Kurz – testování modulů Terraformu v Azure pomocí Terratest
 description: Zjistěte, jak pomocí Terratestu testovat moduly Terraformu.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969216"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158958"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Kurz: testování modulů Terraformu v Azure pomocí Terratest
 
@@ -29,7 +26,7 @@ Prohledali jsme všechny nejoblíbenější testovací infrastruktury a zvolili 
 - **Všechny testovací případy jsou zapsané v cestách**. Většina vývojářů, kteří používají Terraformu, patří vývojářům. Pokud jste vývojář, nemusíte se učit s jiným programovacím jazykem, abyste mohli používat Terratest. Také jediné závislosti, které jsou požadovány pro spuštění testovacích případů v Terratest, jsou Terraformu.
 - **Infrastruktura je vysoce rozšiřitelná**. Další funkce můžete roztáhnout nad Terratest, včetně funkcí specifických pro Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento praktický článek je nezávislý na platformě. Příklady kódu, které používáme v tomto článku, můžete spustit v systému Windows, Linux nebo MacOS. 
 
@@ -326,7 +323,7 @@ V `./test/hello_world_example_test.go`souboru integračního testu používáme 
 
 Na rozdíl od jednotkových testů vytváří integrační testy v Azure skutečné prostředky. To je důvod, proč musíte být opatrní, abyste se vyhnuli konfliktům při pojmenovávání. (Věnujte zvláštní pozornost některým globálně jedinečným názvům, jako jsou názvy účtů úložiště.) Proto první krok testovací logiky je generování náhodného `websiteName` pomocí funkce `UniqueId()`, kterou poskytuje Terratest. Tato funkce generuje náhodný název, který obsahuje malá písmena, Velká písmena nebo číslice. `tfOptions` provede všechny příkazy Terraformu cílené na složku `./examples/hello-world/`. Také se ujistěte, že je `website_name` nastaveno na náhodný `websiteName`.
 
-Následně se postupně spustí příkazy `terraform init`, `terraform apply` a `terraform output`. Používáme další pomocnou funkci, `HttpGetWithCustomValidation()`, která je poskytována Terratest. Pomocná funkce se používá k zajištění, že se do výstupního `homepage` URL, který vrací `terraform output`, nahraje kód HTML. Porovnáváme stavový kód HTTP s `200` a hledáme některá klíčová slova v obsahu HTML. Nakonec se s využitím funkce `defer` jazyka Go zajistí spuštění příkazu `terraform destroy`.
+Následně se postupně spustí příkazy `terraform init`, `terraform apply` a `terraform output`. Používáme další pomocnou funkci, `HttpGetWithCustomValidation()`, která je poskytována Terratest. Pomocná funkce se používá k zajištění, že se do výstupního `homepage` URL, který vrací `terraform output`, nahraje kód HTML. Porovnáváme stavový kód HTTP s `200` a hledáme některá klíčová slova v obsahu HTML. Nakonec se s využitím funkce `terraform destroy` jazyka Go zajistí spuštění příkazu `defer`.
 
 ```go
 package test

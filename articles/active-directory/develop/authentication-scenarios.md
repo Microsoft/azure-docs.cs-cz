@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927114"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167788"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -148,7 +148,7 @@ Tento atribut způsobí, že ASP.NET zkontroluje přítomnost souboru cookie rel
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Způsob, jakým webová aplikace přihlašuje přihlášení ke službě Azure AD a získá token
 
 K ověřování uživatelů dochází prostřednictvím prohlížeče. Protokol OpenID používá standardní zprávy protokolu HTTP.
-- Webová aplikace pošle do prohlížeče protokol HTTP 202 (přesměrování), aby mohl používat službu Azure AD.
+- Webová aplikace pošle do prohlížeče protokol HTTP 302 (přesměrování), aby mohl používat službu Azure AD.
 - Po ověření uživatele služba Azure AD pošle token do webové aplikace pomocí přesměrování přes prohlížeč.
 - Přesměrování je poskytováno webovou aplikací ve formě identifikátoru URI přesměrování. Tento identifikátor URI přesměrování je zaregistrován u objektu aplikace služby Azure AD. Může existovat několik identifikátorů URI pro přesměrování, protože aplikaci je možné nasadit na několik adres URL. Proto bude webová aplikace také muset určit identifikátor URi pro přesměrování, který se má použít.
 - Azure AD ověří, že identifikátor URI přesměrování odesílaný webovou aplikací je jedním z registrovaných identifikátorů URI pro přesměrování pro aplikaci.
@@ -159,7 +159,7 @@ Výše popsaný postup se týká mírně rozdílů pro stolní a mobilní aplika
 
 Desktopové a mobilní aplikace můžou k ověřování používat vložený webový ovládací prvek nebo systémový prohlížeč. Následující diagram znázorňuje, jak desktopová nebo mobilní aplikace používá knihovnu Microsoft Authentication Library (MSAL) k získání přístupových tokenů a volání webových rozhraní API.
 
-![Desktopová aplikace, jak vypadá](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![Desktopová aplikace, jak vypadá](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
 MSAL používá prohlížeč k získání tokenů a stejně jako u webových aplikací, deleguje ověřování do služby Azure AD.
 

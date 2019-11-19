@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: raynew
-ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
-ms.translationtype: MT
+ms.openlocfilehash: 1e67c36753239940b15e3cb47b5b75820ea43689
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907160"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158340"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Nastavení zařízení pro fyzické servery
 
@@ -55,14 +55,15 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro virtuální pevný disk.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  U zařízení verze 1.19.05.10 by se měla vygenerovaná hodnota hash shodovat s tímto nastavením.
+3.  Pro nejnovější verzi zařízení by se vygenerovaná hodnota hash měla shodovat s tímto nastavením.
 
   **Algoritmus** | **Hodnota hash**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 5b98cf68dad495696c789bdad8f0d91b
+  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
 
 
-  
+
 ## <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
 = Skript instalačního programu provede následující akce:
 
@@ -110,7 +111,7 @@ Nastavte zařízení poprvé.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
 1. Klikněte na **Přihlásit se**. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných oken.
-2. Na nové kartě se přihlaste pomocí svých přihlašovacích údajů Azure. 
+2. Na nové kartě se přihlaste pomocí svých přihlašovacích údajů Azure.
     - Přihlaste se pomocí svého uživatelského jména a hesla.
     - Přihlášení pomocí PIN kódu se nepodporuje.
 3. Po úspěšném přihlášení se vraťte k webové aplikaci.
@@ -132,14 +133,14 @@ Každé pro servery se systémem Windows a Linux můžete přidat jednu sadu př
     - Pokud chcete odebrat server, vyberte > **Odstranit**.
 4. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.
 
-Spustí se zjišťování. Zobrazení metadat zjištěných virtuálních počítačů v Azure Portal trvá přibližně 15 minut. 
+Spustí se zjišťování. Zobrazení metadat zjištěných virtuálních počítačů v Azure Portal trvá přibližně 15 minut.
 
 ## <a name="verify-servers-in-the-portal"></a>Ověřit servery na portálu
 
 Po dokončení zjišťování můžete ověřit, že se servery zobrazují na portálu.
 
 1. Otevřete řídicí panel Azure Migrate.
-2. V **Azure Migrate-servery** > **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**. 
+2. V **Azure Migrate-servery** > **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 
 ## <a name="next-steps"></a>Další kroky

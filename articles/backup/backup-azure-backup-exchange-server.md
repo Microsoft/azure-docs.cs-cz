@@ -1,19 +1,15 @@
 ---
-title: Zálohování serveru Exchange Server pro Azure Backup přes System Center DPM
+title: Zálohování Exchange serveru přes System Center DPM
 description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí softwaru System Center 2012 R2 DPM.
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: dacurwin
-ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b2231fcadc3e0cb591302ba47572627ae3a17e58
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968505"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173282"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
 
@@ -28,7 +24,7 @@ Chcete-li úspěšně zaregistrovat server aplikace DPM pomocí Azure Backup, je
 >
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](backup-azure-dpm-introduction.md#prerequisites-and-limitations) pro použití Microsoft Azure Backup k ochraně úloh. Mezi tyto požadavky patří následující:
 
@@ -87,10 +83,10 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 11. Zkontrolujte dostupné místo na disku a potom klikněte na tlačítko **Další**.
 12. Vyberte čas, kdy bude server DPM vytvořit počáteční replikaci, a poté klikněte na tlačítko **Další**.
 13. Vyberte možnosti kontroly konzistence a potom klikněte na tlačítko **Další**.
-14. Zvolte databázi, kterou chcete zálohovat do Azure, a potom klikněte na **Další**. Například:
+14. Zvolte databázi, kterou chcete zálohovat do Azure, a potom klikněte na **Další**. Příklad:
 
     ![Zadat data online ochrany](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Zadejte plán pro **Azure Backup**a potom klikněte na tlačítko **Další**. Například:
+15. Zadejte plán pro **Azure Backup**a potom klikněte na tlačítko **Další**. Příklad:
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

@@ -10,20 +10,26 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/14/2019
+ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: e369067a3ff61ffefe1758f6fa8b4acdce4bb2e2
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134434"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173638"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Pochopení stavu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
 
 U Azure Monitor pro kontejnery monitoruje a hlásí stav komponent spravované infrastruktury a všechny uzly spuštěné v jakémkoli clusteru Kubernetes podporovaném Azure Monitor for Containers. Toto prostředí překračuje stav clusteru vypočtený a nahlášený v [zobrazení více clusterů](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), kde teď můžete pochopit, jestli je jeden nebo více uzlů v clusteru omezené nebo že uzel nebo uzel je nedostupný, což by mohlo mít vliv na spuštěnou aplikaci v clusteru na základě spravovaných metrik. 
 
 Informace o tom, jak povolit Azure Monitor pro kontejnery, najdete v tématu připojení [Azure monitor kontejnerů](container-insights-onboard.md).
+
+>[!NOTE]
+>Pro podporu clusterů modulu AKS ověřte, že splňuje tyto požadavky:
+>- Používá nejnovější verzi [klienta Helm](https://helm.sh/docs/using_helm/).
+>- Verze agenta s kontejnerem je *Microsoft/OMS: ciprod11012019*. Chcete-li upgradovat agenta, přečtěte si téma [Upgrade agenta v clusteru Kubernetes](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>
 
 ## <a name="overview"></a>Přehled
 

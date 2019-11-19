@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 96238da73a0bf6816635a71d13ea2ae6762d1955
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107675"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170473"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Kurz: vizualizace a analýza událostí z digitálních vláken Azure pomocí Time Series Insights
 
@@ -48,11 +48,13 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 ### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **Vytvořit prostředek**.
 
 1. Vyhledejte a vyberte **Event Hubs**. Vyberte **Vytvořit**.
+
+    [![vytvořit obor názvů Event Hubs](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
 1. Zadejte **název** oboru názvů Event Hubs. Pro **cenovou úroveň**, vaše **předplatné**, **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a **umístění**, vyberte **Standard** . Vyberte **Vytvořit**.
 
@@ -77,7 +79,10 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
     [![připojovací řetězce centra událostí](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
-1. Otevřete zásadu ManageSend, kterou jste vytvořili, a zkopírujte hodnoty **připojovacího řetězce – primární klíč** a **připojovací řetězec – sekundární klíč** do dočasného souboru. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu centra událostí v další části.
+    > [!TIP]
+    > Ověřte, že vytváříte zásady SAS pro instanci centra událostí a nikoli obor názvů.
+
+1. Otevřete zásadu **ManageSend**, kterou jste vytvořili, a zkopírujte do dočasného souboru hodnoty **Připojovací řetězec – primární klíč** a **Připojovací řetězec – sekundární klíč**. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu centra událostí v další části.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Vytvoření koncového bodu centra událostí
 
@@ -105,13 +110,13 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. Zástupné symboly nahraďte `Primary_connection_string_for_your_event_hub` hodnotou **připojovacího řetězce – primární klíč** pro centrum událostí. Ujistěte se, že formát tohoto připojovacího řetězce je následující:
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. Zástupné symboly nahraďte `Secondary_connection_string_for_your_event_hub` hodnotou **připojovacího řetězce – sekundární klíč** pro centrum událostí. Ujistěte se, že formát tohoto připojovacího řetězce je následující: 
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 

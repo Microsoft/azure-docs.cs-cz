@@ -1,17 +1,14 @@
 ---
 title: Kurz – vytvoření základní šablony Terraformu v Azure pomocí Yeoman
 description: Naučte se vytvořit základní šablonu Terraformu v Azure pomocí Yeoman.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 2f8cbc495a4b46255e7eb31bc1ff8b04fffcad15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969270"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159162"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Kurz: Vytvoření základní šablony Terraformu v Azure pomocí Yeoman
 
@@ -24,7 +21,7 @@ V tomto článku se dozvíte, jak provádět následující úlohy:
 > * Spusťte modul Terraformu pomocí souboru Docker.
 > * Spusťte v Azure Cloud Shell nativně modul Terraformu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - **Visual Studio Code**: [Stáhněte si Visual Studio Code](https://code.visualstudio.com/download) pro vaši platformu.
@@ -37,7 +34,7 @@ V tomto článku se dozvíte, jak provádět následující úlohy:
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
-### <a name="install-nodejs"></a>Instalovat Node.js
+### <a name="install-nodejs"></a>Instalace Node.js
 
 Abyste mohli Terraform používat ve službě Cloud Shell, musíte si [nainstalovat Node.js](https://nodejs.org/en/download/) ve verzi 6.0 nebo novější.
 

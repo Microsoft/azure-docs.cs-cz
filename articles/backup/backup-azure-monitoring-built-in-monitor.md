@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: monitorování Azure Backup chráněných úloh'
+title: Monitorování Azure Backup chráněných úloh
 description: V tomto článku se seznámíte s možnostmi monitorování a oznamování pro Azure Backup úlohy pomocí Azure Portal.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; Generoval
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: cd9e4e14771744b6275bb1dfe0a96bbef475a123
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090960"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172865"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -63,7 +57,7 @@ Existuje několik výjimek, pokud není při selhání vyvolána výstraha, jedn
 
 Výše uvedené výjimky jsou navržené z porozumění, že výsledek těchto operací (primárně aktivovaný uživatelem) se okamžitě zobrazuje na klientech portálu, PS/CLI. Proto je uživatel okamžitě informován a nepotřebuje oznámení.
 
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Tady jsou uvedené výstrahy z následujících řešení Azure Backup:
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Tady jsou uvedené výstrahy z následujících řešení Azure Backup.
 
 - Zálohování virtuálních počítačů Azure
 - Zálohování souborů Azure

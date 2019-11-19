@@ -3,17 +3,13 @@ title: Kurz – konfigurace partnerského vztahu virtuálních sítí Azure pomo
 description: Naučte se používat Ansible k propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí.
 keywords: Ansible, Azure, DevOps, bash, PlayBook, sítě, partnerský vztah
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241242"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155726"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Kurz: konfigurace partnerského vztahu virtuálních sítí Azure pomocí Ansible
 
@@ -31,7 +27,7 @@ Provoz se směruje mezi virtuálními počítači ve stejné virtuální síti p
 > * Navázat partnerský vztah mezi dvěma virtuálními sítěmi
 > * Odstranění partnerského vztahu mezi dvěma sítěmi
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -298,7 +294,7 @@ Vzorový kód PlayBook v této části se používá pro:
 
 - Odstranit dvě skupiny prostředků vytvořené dříve
 
-Následující PlayBook uložte jako `cleanup.yml`:
+Uložte následující ukázkový playbook jako `cleanup.yml`:
 
 ```bash
 - hosts: localhost
@@ -322,7 +318,7 @@ Následující PlayBook uložte jako `cleanup.yml`:
 Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
 - Zástupný text `{{ resource_group_name-1 }}` nahraďte názvem první vytvořené skupiny prostředků.
-- Nahraďte zástupný text `{{ resource_group_name-2 }}` názvem druhé skupiny prostředků, kterou jste vytvořili.
+- Zástupný text `{{ resource_group_name-2 }}` nahraďte názvem druhé skupiny prostředků vytvořenou.
 - Všechny prostředky v rámci dvou zadaných skupin prostředků se odstraní.
 
 Spusťte PlayBook pomocí příkazu Ansible-PlayBook:

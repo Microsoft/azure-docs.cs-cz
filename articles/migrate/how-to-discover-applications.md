@@ -4,25 +4,22 @@ description: Popisuje, jak zjišťovat aplikace, role a funkce na místních ser
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/18/2019
 ms.author: snehaa
-ms.openlocfilehash: 40cb73848bab97ef9030cb0c4f3f17c984a1e0ec
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 14ecc6454c3d0f167c671532dd8e659e767cda66
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715782"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158634"
 ---
-# <a name="discover-machine-apps-roles-and-features"></a>Objevte aplikace pro počítače, role a funkce 
-
-> [!NOTE]
-> Pokud tuto funkci na portále Azure Migrate ještě nevidíte, počkejte prosím. Zobrazí se za příští týden.
+# <a name="discover-machine-apps-roles-and-features"></a>Objevte aplikace pro počítače, role a funkce
 
 Tento článek popisuje, jak zjišťovat aplikace, role a funkce na místních serverech pomocí Azure Migrate: posouzení serveru.
 
-Zjišťování inventáře aplikací a rolí a funkcí spuštěných v místních počítačích vám pomůže identifikovat a naplánovat migraci do Azure, která je přizpůsobená pro vaše úlohy. 
+Zjišťování inventáře aplikací a rolí a funkcí spuštěných v místních počítačích vám pomůže identifikovat a naplánovat migraci do Azure, která je přizpůsobená pro vaše úlohy.
 
-Zjišťování aplikací pomocí Azure Migrate: posouzení serveru není bez agenta. Na počítačích a virtuálních počítačích není potřeba nic instalovat. Posouzení serveru používá zařízení Azure Migrate k provádění zjišťování společně s přihlašovacími údaji hosta počítače. Zařízení vzdáleně přistupuje k počítačům pomocí volání WMI a SSH. 
+Zjišťování aplikací pomocí Azure Migrate: posouzení serveru není bez agenta. Na počítačích a virtuálních počítačích není potřeba nic instalovat. Posouzení serveru používá zařízení Azure Migrate k provádění zjišťování společně s přihlašovacími údaji hosta počítače. Zařízení vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
 
 > [!NOTE]
 > Zjišťování aplikací se momentálně podporuje jenom pro virtuální počítače VMware a je omezené jenom na zjišťování. Ještě nenabízíme vyhodnocení na základě aplikace.  Nyní posouzení serveru aktuálně vyhodnocuje místní virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery na úrovni počítače, a to pro migrace přenesených a Shift.
@@ -50,7 +47,7 @@ Po nasazení zařízení a zadání přihlašovacích údajů zařízení spust�
 
 ## <a name="review-and-export-the-inventory"></a>Kontrola a export inventáře
 
-Pokud jste po dokončení zjišťování zadali přihlašovací údaje pro zjišťování aplikací, můžete zkontrolovat a vyexportovat inventář aplikací v Azure Portal. 
+Pokud jste po dokončení zjišťování zadali přihlašovací údaje pro zjišťování aplikací, můžete zkontrolovat a vyexportovat inventář aplikací v Azure Portal.
 
 1. V **Azure Migrate-servery** > **Azure Migrate: posouzení serveru**, kliknutím na zobrazený počet otevřete stránku **zjištěné servery** .
 

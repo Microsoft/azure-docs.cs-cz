@@ -3,17 +3,13 @@ title: Kurz – vytvoření virtuálního počítače nebo sady škálování vi
 description: Naučte se používat Ansible k vytvoření virtuálního počítače nebo sady škálování virtuálních počítačů na základě generalizované image v galerii sdílených imagí.
 keywords: Ansible, Azure, DevOps, bash, PlayBook, virtuální počítač, sada škálování virtuálních počítačů, Galerie sdílených imagí
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 4b4190ddabe90af135ea64a8ba3d5905f23c457e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808946"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155840"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Kurz: Vytvoření virtuálního počítače nebo sady škálování virtuálních počítačů z Galerie sdílených imagí Azure pomocí Ansible
 
@@ -32,7 +28,7 @@ ms.locfileid: "72808946"
 > * Vytvoření sady škálování virtuálních počítačů pomocí generalizované image
 > * Získat informace o galerii sdílených imagí, image a verzi
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -44,9 +40,9 @@ Existují dva způsoby, jak získat úplnou sadu vzorových playbooky:
 - [Stáhněte si SLOŽKU SIG](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) a uložte ji do místního počítače.
 - Vytvořte nový soubor pro každý oddíl a zkopírujte do něj ukázkovou PlayBook.
 
-Soubor `vars.yml` obsahuje proměnné používané všemi vzorovými playbooky pro tento kurz. Soubor můžete upravit tak, aby poskytoval jedinečné názvy a hodnoty.
+`vars.yml` soubor obsahuje proměnné používané všemi vzorovými playbooky pro tento kurz. Soubor můžete upravit tak, aby poskytoval jedinečné názvy a hodnoty.
 
-První vzorový PlayBook `00-prerequisites.yml` vytvoří, co je potřeba k dokončení tohoto kurzu:
+První ukázka PlayBook `00-prerequisites.yml` vytvoří, co je potřeba k dokončení tohoto kurzu:
 - Skupina prostředků, což je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 - Virtuální síť; podsíť Veřejná IP adresa a síťová karta pro virtuální počítač.
 - Zdrojový virtuální počítač, který se používá k vytvoření generalizované image.
@@ -114,7 +110,7 @@ V [Azure Portal](https://portal.azure.com)zkontrolujte skupinu prostředků, kte
 
 ## <a name="generalize-the-vm-and-create-a-custom-image"></a>Generalizace virtuálního počítače a vytvoření vlastní image
 
-Další PlayBook `01a-create-generalized-image.yml` generalizuje zdrojový virtuální počítač vytvořený v předchozím kroku a pak na něj vytvoří vlastní image.
+Následující PlayBook `01a-create-generalized-image.yml`generalizuje zdrojový virtuální počítač vytvořený v předchozím kroku a pak na něm vytvoří vlastní image.
 
 ```yml
 - hosts: localhost
@@ -142,7 +138,7 @@ Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 ansible-playbook 01a-create-generalized-image.yml
 ```
 
-Zkontrolujte skupinu prostředků a ujistěte se, že se zobrazují `testimagea`.
+Zkontrolujte skupinu prostředků a ujistěte se, že se `testimagea` zobrazí.
 
 ## <a name="create-the-shared-image-gallery"></a>Vytvoření galerie sdílených imagí
 
@@ -173,7 +169,7 @@ Ve vaší skupině prostředků teď uvidíte novou galerii, `myGallery`.
 
 ## <a name="create-a-shared-image-and-image-version"></a>Vytvořit sdílenou image a verzi image
 
-Další PlayBook, `03a-create-shared-image-generalized.yml`, vytvoří definici obrázku a verzi image.
+Další PlayBook `03a-create-shared-image-generalized.yml` vytvoří definici obrázku a verzi image.
 
 Definice obrázků zahrnují typ obrázku (Windows nebo Linux), poznámky k verzi a minimální a maximální požadavky na paměť. Verze Image je verze image. Galerie, definice obrázků a verze image usnadňují uspořádání imagí v logických skupinách. 
 
@@ -297,7 +293,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
 
 ## <a name="get-information-about-the-gallery"></a>Získání informací o galerii
 
-Můžete získat informace o galerii, definici bitové kopie a verzi spuštěním `06-get-info.yml`.
+Spuštěním `06-get-info.yml`můžete získat informace o galerii, definici bitové kopie a verzi.
 
 ```yml
 - hosts: localhost

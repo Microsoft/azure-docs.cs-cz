@@ -1,21 +1,17 @@
 ---
-title: Zálohování několika virtuálních počítačů Azure pomocí PowerShellu
+title: 'Kurz: více zálohování virtuálních počítačů Azure pomocí PowerShellu'
 description: Tento kurz podrobně popisuje zálohování několika virtuálních počítačů Azure do trezoru Recovery Services pomocí Azure PowerShell.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: c290e44d8bfecfbf57be8f8e1c596a294f077229
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074709"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171781"
 ---
-# <a name="back-up-azure-vms-with-powershell"></a>Zálohování virtuálních počítačů Azure pomocí PowerShellu
+# <a name="back-up-azure-vms-with-powershell"></a>Zálohování virtuálních počítačů Azure s využitím PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -101,7 +97,7 @@ $item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadTyp
 $job = Backup-AzRecoveryServicesBackupItem -Item $item
 ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud narazíte na problémy při zálohování virtuálního počítače, přečtěte si tento [článek o řešení potíží](backup-azure-vms-troubleshoot.md).
 

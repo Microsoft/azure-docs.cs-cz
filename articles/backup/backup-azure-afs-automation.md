@@ -1,25 +1,20 @@
 ---
-title: Zálohování a obnovení souborů Azure pomocí Azure Backup a PowerShellu
+title: Zálohování a obnovení souborů Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak zálohovat a obnovovat soubory Azure pomocí služby Azure Backup a PowerShellu.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.author: dacurwin
-ms.reviewer: pullabhk
-ms.openlocfilehash: 4642549dcdd455c97ea3e8fd8a8b5440779b923c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 18c7340d1cb782ba41c472156259170f37139a74
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903617"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173478"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Zálohování a obnovení souborů Azure pomocí PowerShellu
 
 Tento článek popisuje, jak pomocí Azure PowerShell zálohovat a obnovovat sdílenou složku souborů Azure pomocí trezoru služby [Azure Backup](backup-overview.md) Recovery Services.
 
-Tento kurz vysvětluje následující postupy:
+V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
 >

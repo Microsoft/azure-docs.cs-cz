@@ -3,17 +3,13 @@ title: Kurz – konfigurace databází v Azure Database for MySQL pomocí Ansibl
 description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat server Azure Database for MySQL.
 keywords: ansible, azure, devops, bash, playbook, mysql, database
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1b6c9a9aa3abbda7ffd72db0ecb137b3c9da1a6c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241826"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156526"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Kurz: Konfigurace databází v Azure Database for MySQL pomocí Ansible
 
@@ -32,7 +28,7 @@ ms.locfileid: "72241826"
 > * Dotaz na dostupné servery MySQL
 > * Vypíše všechny databáze na připojených serverech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -117,7 +113,7 @@ ansible-playbook mysql_create.yml
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurace pravidla brány firewall
 
-Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci připojit se k vašemu serveru prostřednictvím brány firewall služby Azure MySQL. Příklady externích aplikací jsou nástroje příkazového řádku `mysql` a aplikace MySQL Workbench.
+Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci připojit se k vašemu serveru prostřednictvím brány firewall služby Azure MySQL. Příklady externích aplikací jsou `mysql` nástroje příkazového řádku a MySQL Workbench.
 
 Kód PlayBook v této části vytvoří pravidlo brány firewall s názvem `extenalaccess`, které umožňuje připojení z jakékoli externí IP adresy. 
 

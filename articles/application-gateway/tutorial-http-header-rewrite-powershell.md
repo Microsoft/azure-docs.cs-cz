@@ -1,22 +1,22 @@
 ---
-title: Přepsání hlavičky protokolu HTTP ve službě Azure Application Gateway
-description: Tento článek obsahuje informace o tom, jak vytvořit služby Azure Application Gateway a přepište hlavičky protokolu HTTP pomocí Azure Powershellu
+title: Vytvoření Application Gateway Azure & přepište hlavičky HTTP
+description: Tento článek poskytuje informace o tom, jak vytvořit Application Gateway Azure a jak přepsat hlavičky HTTP pomocí Azure PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64947096"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173721"
 ---
-# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Vytvoření služby application gateway a přepište hlavičky protokolu HTTP
+# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Vytvořit Aplikační bránu a přepsat hlavičky HTTP
 
-Prostředí Azure PowerShell můžete použít ke konfiguraci [pravidla pro přepsání hlavičky požadavku a odpovědi HTTP](rewrite-http-headers.md) při vytváření nového [automatické škálování a zónově redundantní služba application gateway SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+Pomocí Azure PowerShell můžete nakonfigurovat [pravidla pro přepis hlaviček požadavků a odpovědí HTTP](rewrite-http-headers.md) při vytváření nového automatického [ŠKÁLOVÁNÍ a redundantní SKU aplikační brány Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) .
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -24,19 +24,19 @@ V tomto článku získáte informace o těchto tématech:
 >
 > * Vytvoření virtuální sítě automatického škálování
 > * Vytvoření vyhrazené veřejné IP adresy
-> * Nastavení infrastruktury application gateway
-> * Zadat záhlaví http přepsat konfiguraci pravidel
+> * Nastavení infrastruktury služby Application Gateway
+> * Zadejte konfiguraci pravidla přepisu hlaviček protokolu HTTP.
 > * Určení automatického škálování
 > * Vytvoření služby Application Gateway
-> * Otestování aplikační brány
+> * Testování brány Application Gateway
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek vyžaduje místní spuštění prostředí Azure PowerShell. Musí mít Az modulu verze 1.0.0 nebo novější. Spustit `Import-Module Az` a potom`Get-Module Az` k vyhledání verze. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+Tento článek vyžaduje, abyste spustili Azure PowerShell místně. Musíte mít nainstalovanou verzi AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak`Get-Module Az` vyhledejte verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 ```azurepowershell
 Connect-AzAccount
@@ -56,7 +56,7 @@ New-AzResourceGroup -Name $rg -Location $location
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvoření virtuální sítě s jednou podsítí vyhrazenou pro službu application gateway automatického škálování. Aktuálně je možné v každé vyhrazené podsíti nasadit jenom jednu automaticky škálovanou Application Gateway.
+Vytvořte virtuální síť s jednou vyhrazenou podsítí pro automatické škálování aplikační brány. Aktuálně je možné v každé vyhrazené podsíti nasadit jenom jednu automaticky škálovanou Application Gateway.
 
 ```azurepowershell
 #Create VNet with two subnets
@@ -68,7 +68,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>Vytvoření vyhrazené veřejné IP adresy
 
-Zadejte metodu přidělování PublicIPAddress jako **statické**. Virtuální IP adresa automaticky škálované Application Gateway může být jenom statická. Dynamické IP adresy nejsou podporované. Podporovaná je jenom standardní skladová položka PublicIpAddress.
+Zadejte metodu alokace PublicIPAddress as **static**. Virtuální IP adresa automaticky škálované Application Gateway může být jenom statická. Dynamické IP adresy nejsou podporované. Podporovaná je jenom standardní skladová položka PublicIpAddress.
 
 ```azurepowershell
 #Create static public IP
@@ -78,7 +78,7 @@ $pip = New-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 
 ## <a name="retrieve-details"></a>Načtení podrobností
 
-Načtěte podrobnosti o skupině prostředků, podsíti a IP v místní objekt k vytvoření podrobnosti konfigurace IP adresy pro službu application gateway.
+Načte podrobnosti o skupině prostředků, podsíti a IP adrese v místním objektu, aby se vytvořily podrobnosti konfigurace protokolu IP pro aplikační bránu.
 
 ```azurepowershell
 $resourceGroup = Get-AzResourceGroup -Name $rg
@@ -89,7 +89,7 @@ $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork
 
 ## <a name="configure-the-infrastructure"></a>Konfigurace infrastruktury
 
-Nakonfigurujte IP konfigurace, front-endové konfigurace protokolu IP, back endového fondu, HTTP nastavení, certifikát, port a naslouchací proces ve formátu identické ke stávající standardní application gateway. Nová skladová položka se řídí stejným modelem objektu jako standardní skladová položka.
+Nakonfigurujte konfiguraci protokolu IP, front-endové konfiguraci IP adres, back-end fond, nastavení HTTP, certifikát, port a naslouchací proces ve stejném formátu na stávající standardní Aplikační bránu. Nová skladová položka se řídí stejným modelem objektu jako standardní skladová položka.
 
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -105,15 +105,15 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
           -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-## <a name="specify-your-http-header-rewrite-rule-configuration"></a>Zadat záhlaví HTTP přepsat konfiguraci pravidel
+## <a name="specify-your-http-header-rewrite-rule-configuration"></a>Zadejte konfiguraci pravidla přepisu hlaviček protokolu HTTP.
 
-Konfigurace nové objekty požadované pro přepsání hlavičky protokolu http:
+Nakonfigurujte nové objekty vyžadované pro přepsání hlaviček protokolu http:
 
-- **RequestHeaderConfiguration**: Tento objekt se používá k určení, které chcete přepsat pole hlavičky požadavku a nové hodnoty, které musí být přepsány, aby původní záhlaví.
-- **ResponseHeaderConfiguration**: Tento objekt se používá k určení, které chcete přepsat pole hlavičky odpovědi a nové hodnoty, které musí být přepsány, aby původní záhlaví.
-- **ActionSet**: Tento objekt obsahuje konfigurace z výše uvedených hlaviček žádostí a odpovědí. 
-- **RewriteRule**: Tento objekt obsahuje všechny *actionSets* uvedeno výše. 
-- **RewriteRuleSet**– tento objekt obsahuje všechny *rewriteRules* a musí být připojené k pravidlo směrování požadavku – basic nebo na základě cest.
+- **RequestHeaderConfiguration**: Tento objekt slouží k zadání polí hlavičky požadavku, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
+- **ResponseHeaderConfiguration**: Tento objekt slouží k zadání polí hlavičky odpovědi, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
+- **ActionSet**: Tento objekt obsahuje konfigurace výše uvedených hlaviček požadavků a odpovědí. 
+- **RewriteRule**: Tento objekt obsahuje všechny *actionSets* uvedené výše. 
+- **RewriteRuleSet**– tento objekt obsahuje všechny *rewriteRules* a bude nutné ho připojit k pravidlu směrování požadavku – Basic nebo na základě cesty.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -123,9 +123,9 @@ Konfigurace nové objekty požadované pro přepsání hlavičky protokolu http:
    $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name rewriteRuleSet1 -RewriteRule $rewriteRule
    ```
 
-## <a name="specify-the-routing-rule"></a>Zadejte pravidlo směrování
+## <a name="specify-the-routing-rule"></a>Zadat pravidlo směrování
 
-Vytvořte pravidlo směrování požadavku. Po vytvoření této revize konfigurace je připojen k zdroj naslouchací proces prostřednictvím pravidla směrování. Při použití základních pravidel směrování, konfigurace přepsání hlavičky je přidružený zdroj naslouchací proces a je globální záhlaví revize. Při použití pravidel směrování na základě cest, přepište Konfigurace hlavičky je definován na mapě cestu adresy URL. Ano platí jen pro konkrétní cesty oblasti lokality. Níže vytvořili základní pravidlo směrování a přepište sada pravidel je připojen.
+Vytvořte pravidlo směrování požadavků. Po vytvoření se tato konfigurace přepsání připojí ke zdrojovému naslouchacího procesu prostřednictvím pravidla směrování. Při použití pravidla základního směrování je konfigurace přepsání hlaviček přidružená ke zdrojovému naslouchacího procesu a je to globální přepisování hlaviček. Při použití pravidla směrování na základě cesty je konfigurace opětovného zápisu hlaviček definovaná na mapě cesty URL. Platí to proto pouze pro konkrétní oblast cesty lokality. Níže je vytvořeno pravidlo základního směrování a je připojená sada pravidel přepsání.
 
 ```azurepowershell
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType basic `
@@ -134,7 +134,7 @@ $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType bas
 
 ## <a name="specify-autoscale"></a>Určení automatického škálování
 
-Nyní můžete zadat konfiguraci automatického škálování pro službu application gateway. Podporují se dva typy konfigurace automatického škálování:
+Nyní můžete zadat konfiguraci automatického škálování pro aplikační bránu. Podporují se dva typy konfigurace automatického škálování:
 
 * **Režim pevné kapacity**. V tomto režimu Application Gateway neprovádí automatické škálování a funguje s pevnou kapacitou jednotky škálování.
 
@@ -151,15 +151,15 @@ Nyní můžete zadat konfiguraci automatického škálování pro službu applic
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Vytvoření služby application gateway a zahrnují konfiguraci automatického škálování a redundanci zón.
+Vytvořte Aplikační bránu a zahrňte do ní záložní zóny a konfiguraci automatického škálování.
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 -ResourceGroupName $rg -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $setting -GatewayIpConfigurations $ipconfig -FrontendIpConfigurations $fip -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -RewriteRuleSet $rewriteRuleSet
 ```
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-Get-AzPublicIPAddress použijte k získání veřejné IP adresy služby application gateway. Zkopírujte veřejnou IP adresu nebo název DNS a pak vložte do adresního řádku prohlížeče.
+K získání veřejné IP adresy služby Application Gateway použijte příkaz Get-AzPublicIPAddress. Zkopírujte veřejnou IP adresu nebo název DNS a pak vložte do adresního řádku prohlížeče.
 
 ```azurepowershell
 Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
@@ -169,10 +169,10 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejprve si projděte prostředky, které byly vytvořeny ve službě application gateway. Pokud jste už nepotřebujete, můžete použít `Remove-AzResourceGroup` příkazu k odebrání skupiny prostředků, služba application gateway a všechny související prostředky.
+Nejprve Prozkoumejte prostředky, které byly vytvořeny pomocí aplikační brány. Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, služby Application Gateway a všech souvisejících prostředků použít příkaz `Remove-AzResourceGroup`.
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření aplikační brány s pravidly směrování založenými na cestě URL](./tutorial-url-route-powershell.md)

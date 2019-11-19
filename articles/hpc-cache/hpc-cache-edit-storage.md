@@ -6,14 +6,14 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: rohogue
-ms.openlocfilehash: 757fbc166687110b9061ab95e96b0182e0ad3774
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622765"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168514"
 ---
-# <a name="edit-storage-targets"></a>Upravit cíle úložiště
+# <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
 Změnou cílů úložiště můžete upravit některé z jejich vlastností. Různé vlastnosti lze upravovat pro různé typy úložišť:
 
@@ -47,7 +47,7 @@ Po provedení změn aktualizujte cíl úložiště kliknutím na tlačítko **OK
 
 ## <a name="update-an-azure-blob-storage-target"></a>Aktualizace cíle Azure Blob Storage
 
-Stránka s podrobnostmi pro cíl úložiště objektů BLOB umožňuje upravit cestu k virtuálnímu oboru názvů. 
+Stránka s podrobnostmi pro cíl úložiště objektů BLOB umožňuje upravit cestu k virtuálnímu oboru názvů.
 
 ![snímek obrazovky se stránkou pro úpravy pro cíl úložiště objektů BLOB](media/hpc-cache-edit-storage-blob.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Monitorování doručování zpráv služby Azure Event Grid
-description: Popisuje, jak sledovat doručování zpráv služby Azure Event Grid.
+title: Sledování Azure Event Grid doručování zpráv
+description: Popisuje, jak monitorovat doručování Azure Event Gridch zpráv.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -8,76 +8,82 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: spelluru
-ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824094"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170009"
 ---
-# <a name="monitor-event-grid-message-delivery"></a>Monitorování doručování zpráv služby Event Grid 
+# <a name="monitor-event-grid-message-delivery"></a>Sledování Event Grid doručování zpráv 
 
-Tento článek popisuje, jak pomocí portálu pro stav doručení událostí.
+Tento článek popisuje, jak pomocí portálu zobrazit stav doručení událostí.
 
-Event gridu poskytuje odolné doručování. Poskytuje každou zprávu alespoň jednou pro každé předplatné. Události se posílají okamžitě registrované webhooku každé předplatné. Pokud webhooku není obdržel událost během 60 sekund první pokusy o doručení, služby Event Grid zopakuje pokus o doručení události.
+Event Grid poskytuje trvalé doručování. Každou zprávu pro každé předplatné zajišťuje aspoň jednou. Události se odesílají do registrovaného Webhooku každého předplatného hned. Pokud Webhook nepotvrdí přijetí události během 60 sekund od prvního pokusu o doručení, Event Grid pokusy o doručení události.
 
 Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
 
-## <a name="delivery-metrics"></a>Doručování metrik
+## <a name="delivery-metrics"></a>Metriky doručení
 
-Na portálu se zobrazí metriky pro stav doručování zpráv událostí.
+Portál zobrazuje metriky pro stav doručování zpráv událostí.
 
-Metriky pro témata, jsou:
+Pro témata jsou metriky:
 
-* **Publikování bylo úspěšné**: Událost úspěšně odeslaný do tématu a zpracovat odpovědí 2xx.
-* **Publikování selhalo**: Události odeslané do tématu, ale odmítl s kódem chyby.
-* **Bezkonkurenční**: Událost byla úspěšně publikována do tématu, ale není spárováno k odběru událostí. Událost byla zrušena.
+* **Publikování bylo úspěšné**: událost se úspěšně odeslala do tématu a zpracovala se s odpovědí 2xx.
+* **Publikování se nezdařilo**: událost byla odeslána do tématu, ale odmítnuta s kódem chyby.
+* **Nespárovaná**: událost byla úspěšně publikována do tématu, ale není shodná s odběrem události. Událost byla vyřazena.
 
-Pro předplatná jsou metriky:
+U předplatných jsou metriky:
 
-* **Doručení bylo úspěšné.** : Událost úspěšně doručit do koncového bodu předplatného a 2xx odpověď.
-* **Doručení nebylo úspěšné.** : Události odeslané do koncového bodu předplatného, ale odpověď 4xx a 5xx.
-* **Vypršela platnost události**: Nebylo doručeno události a všechny opakované pokusy byly odeslány. Událost byla zrušena.
-* **Odpovídající události**: Odběr události se odpovídající událost v tomto tématu.
+* **Doručení bylo úspěšné**: událost byla úspěšně doručena koncovému bodu předplatného a obdržela odpověď 2xx.
+* **Doručení se nezdařilo**: událost byla odeslána do koncového bodu předplatného, ale byla přijata odpověď 4xx nebo 5xx.
+* **Události, jejichž platnost vypršela**: událost nebyla doručena a byly odeslány všechny pokusy o opakování. Událost byla vyřazena.
+* **Spárované události**: událost v tématu se shodovala s odběrem události.
 
-## <a name="event-subscription-status"></a>Stav odběru událostí
+## <a name="event-subscription-status"></a>Stav odběru události
 
-Pokud chcete zobrazit metriky pro odběr událostí, můžete buď hledat podle typu předplatného nebo předplatného pro určitý prostředek.
+Chcete-li zobrazit metriky pro odběr události, můžete hledat buď podle typu předplatného, nebo podle předplatných pro konkrétní prostředek.
 
-Chcete-li hledat podle typu události předplatné, vyberte **všechny služby**.
+Pokud chcete hledat podle typu odběru události, vyberte **všechny služby**.
 
 ![Vyberte všechny služby](./media/monitor-event-delivery/all-services.png)
 
-Vyhledejte **služby event grid** a vyberte **předplatná Event gridu** z dostupných možností.
+Vyhledejte **Event Grid** a vyberte **Event Grid odběry** z dostupných možností.
 
 ![Hledat odběry událostí](./media/monitor-event-delivery/search-and-select.png)
 
-Filtrovat podle typu události, předplatné a umístění. Vyberte **metriky** pro předplatné, které chcete zobrazit.
+Filtrovat podle typu události, předplatného a umístění. Vyberte **metriky** pro zobrazení předplatného.
 
 ![Filtrovat odběry událostí](./media/monitor-event-delivery/filter-events.png)
 
-Zobrazte metriky pro události téma a odběr.
+Zobrazte metriky pro téma a předplatné události.
 
-![Zobrazit události metriky](./media/monitor-event-delivery/subscription-metrics.png)
+![Zobrazit metriky událostí](./media/monitor-event-delivery/subscription-metrics.png)
 
-Najít metriky pro určitý prostředek, vyberte daný prostředek. Vyberte **události**.
+Chcete-li vyhledat metriky pro konkrétní prostředek, vyberte tento prostředek. Pak vyberte možnost **události**.
 
-![Vyberte události pro určitý prostředek](./media/monitor-event-delivery/select-events.png)
+![Výběr událostí pro prostředek](./media/monitor-event-delivery/select-events.png)
 
-Můžete zobrazit metriky pro předplatná pro daný prostředek.
+Zobrazí se metriky pro odběry daného prostředku.
 
-## <a name="custom-event-status"></a>Stav vlastní události
+## <a name="custom-event-status"></a>Vlastní stav události
 
-Pokud jste publikovali vlastní téma, můžete zobrazit metriky pro něj. Vyberte skupinu prostředků pro téma a vyberte téma.
+Pokud jste publikovali vlastní téma, můžete si Zobrazit metriky pro ni. Vyberte skupinu prostředků pro téma a vyberte téma.
 
 ![Výběr vlastního tématu](./media/monitor-event-delivery/select-custom-topic.png)
 
-Zobrazte metriky pro vlastní události tématu.
+Zobrazit metriky pro vlastní událost tématu.
 
-![Zobrazit události metriky](./media/monitor-event-delivery/custom-topic-metrics.png)
+![Zobrazit metriky událostí](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="set-alerts"></a>Nastavení upozornění
+
+Můžete nastavit výstrahy týkající se metrik a úrovně domény pro vlastní témata a domény událostí. V okně Přehled pro vyberte možnost **výstrahy** z nabídky prostředků vlevo, aby bylo možné zobrazit, spravovat a vytvářet pravidla výstrah. [Další informace o výstrahách Azure Monitor](../azure-monitor/platform/alerts-overview.md)
+
+![Zobrazit metriky událostí](./media/monitor-event-delivery/select-alerts.png)
+
+## <a name="next-steps"></a>Další kroky
 
 * Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
-* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
+* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
 * Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).

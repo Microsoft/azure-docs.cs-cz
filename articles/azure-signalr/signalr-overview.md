@@ -1,17 +1,17 @@
 ---
 title: Co je služba signalizace Azure?
-description: Přehled služby Azure Signal
+description: Lépe pochopíte typické scénáře použití pro používání služby Azure Signal a Naučte se klíčové výhody služby Azure Signal.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
-ms.date: 06/20/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: e7bdc62f7fa46bbacce7f264d8f331ea64b05430
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 31cb4570dd0952f60fbff2fa1131b3af36c278cb
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273699"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157588"
 ---
 # <a name="what-is-azure-signalr-service"></a>Co je služba signalizace Azure?
 

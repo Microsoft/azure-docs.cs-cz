@@ -1,17 +1,17 @@
 ---
-title: Sestavování aplikací v reálném čase pomocí Azure Functions a služby Azure Signal
-description: Přehled používání služby signalizace Azure v aplikacích bez serveru
+title: Sestavování aplikací v reálném čase Azure Functions & službě Azure Signal
+description: V tomto příkladu se naučíte vyvíjet webovou aplikaci bez serveru v reálném čase pomocí služby Azure Signal.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 6a71647d452597c84e0df1beb6e9c6c3932d171b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639923"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157621"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Sestavování aplikací v reálném čase pomocí Azure Functions a služby Azure Signal
 
@@ -62,7 +62,7 @@ Příklad, jak vazby služby SignalR používají Azure Functions k integraci se
 
 Služba SignalR vám umožňuje vysílat zprávy do všech klientů nebo jenom do podmnožiny klientů, jako například těch, které patří jedinému uživateli. Vazby služby SignalR pro Azure Functions je možné kombinovat s ověřováním služby App Service, aby ověřovala uživatele s poskytovateli, jako je Azure Active Directory, Facebook nebo Twitter. Těmto ověřeným uživatelům můžete zasílat zprávy přímo.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste získali přehled o použití Azure Functions se službou SignalR, abyste mohli povolit širokou škálu scénářů týkajících se bezserverového zasílání zpráv v reálném čase.
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/17/2019
+ms.openlocfilehash: 66864870f29729e54ad06aef1208641f673c0612
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970387"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158311"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -36,7 +36,7 @@ Z hlavního serveru můžete vytvořit repliku pro čtení v jiné oblasti. Repl
 
 Hlavní server můžete mít v libovolné [Azure Database for MySQL oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=mysql).  Hlavní server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky. Následující obrázek ukazuje, které oblasti repliky jsou k dispozici v závislosti na vaší hlavní oblasti.
 
-[@no__t – oblasti repliky 1Read](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![čtení oblastí repliky](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
 Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Mezi podporované oblasti univerzální repliky patří:
@@ -69,7 +69,7 @@ Naučte se [vytvořit repliku pro čtení v Azure Portal](howto-read-replicas-po
 
 ## <a name="connect-to-a-replica"></a>Připojení k replice
 
-Když vytváříte repliku, nedědí pravidla firewallu ani koncový bod služby VNet hlavního serveru. Tato pravidla musí být pro repliku nastavena nezávisle.
+Při vytváření repliky zdědí pravidla brány firewall nebo koncový bod služby virtuální sítě hlavního serveru. Následně jsou tato pravidla nezávislá na hlavním serveru.
 
 Replika dědí účet správce z hlavního serveru. Všechny uživatelské účty na hlavním serveru se replikují do replik pro čtení. K replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na hlavním serveru.
 
@@ -85,7 +85,7 @@ Na příkazovém řádku zadejte heslo pro uživatelský účet.
 
 Azure Database for MySQL poskytuje metriku **prodlevy replikace v sekundách** v Azure monitor. Tato metrika je k dispozici pouze pro repliky.
 
-Tato metrika se počítá pomocí metriky `seconds_behind_master` dostupné v příkazu `SHOW SLAVE STATUS` MySQL.
+Tato metrika se počítá pomocí `seconds_behind_master` metriky dostupné v příkazu `SHOW SLAVE STATUS` MySQL.
 
 Nastavte výstrahu, která vás informuje, když prodleva replikace dosáhne hodnoty, která není pro vaše zatížení přijatelná.
 
@@ -122,6 +122,8 @@ Replika je vytvořena pomocí stejné konfigurace serveru jako hlavní. Po vytvo
 > [!IMPORTANT]
 > Před aktualizací konfigurace hlavního serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
 
+Pravidla brány firewall, pravidla virtuální sítě a nastavení parametrů jsou při vytvoření repliky děděna z hlavního serveru do repliky. Pak jsou pravidla repliky nezávislá.
+
 ### <a name="stopped-replicas"></a>Zastavené repliky
 
 Pokud zastavíte replikaci mezi hlavním serverem a replikou pro čtení, zastavená replika se stane samostatným serverem, který přijímá čtení i zápis. Samostatný server se nedá znovu vytvořit do repliky.
@@ -144,7 +146,7 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 
 Parametr [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) je na serverech repliky uzamčen. 
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 
 - Identifikátory globálních transakcí (GTID) se nepodporují.
 - Vytvoření repliky repliky není podporováno.

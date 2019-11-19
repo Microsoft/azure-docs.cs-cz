@@ -3,17 +3,13 @@ title: Kurz – konfigurace sítě Azure CNI ve službě Azure Kubernetes Servic
 description: Naučte se používat Ansible ke konfiguraci sítě kubenet v clusteru Azure Kubernetes Service (AKS).
 keywords: Ansible, Azure, DevOps, bash, cloudshellu, PlayBook, AKS, Container, AKS, Kubernetes
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 04da0e8fb06d0a32c8e8bdc39d7722fc1c3fcdba
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e3667ad7a561f56d5fddaacad705c53d1de9ac36
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242034"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156901"
 ---
 # <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS) pomocí Ansible
 
@@ -35,7 +31,7 @@ Další informace o sítích pro aplikace v AKS najdete v tématu [Koncepty sít
 > * Vytvoření clusteru AKS
 > * Konfigurace sítí Azure CNI
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -108,8 +104,8 @@ Uložte následující ukázkový playbook jako `aks.yml`:
 
 Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
-- K nalezení podporované verze použijte modul `azure_rm_aks_version`.
-- @No__t-0 je podsíť vytvořená v předchozí části.
+- Pro vyhledání podporované verze použijte modul `azure_rm_aks_version`.
+- `vnet_subnet_id` je podsíť vytvořená v předchozí části.
 - PlayBook načítá `ssh_key` z `~/.ssh/id_rsa.pub`. Pokud ho upravíte, použijte jednořádkový formát začínající na "SSH-RSA" (bez uvozovek).
 - Hodnoty `client_id` a `client_secret` jsou načteny z `~/.azure/credentials`, což je výchozí soubor přihlašovacích údajů. Tyto hodnoty můžete nastavit na instanční objekt nebo načíst tyto hodnoty z proměnných prostředí:
 
@@ -252,7 +248,7 @@ Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku
 
 Vzorový kód PlayBook v této části se používá pro:
 
-- Odstraňte skupinu prostředků, na kterou odkazuje část `vars`.
+- Odstraňte skupinu prostředků, na kterou se odkazuje v části `vars`.
 
 Uložte následující ukázkový playbook jako `cleanup.yml`:
 
@@ -271,7 +267,7 @@ Uložte následující ukázkový playbook jako `cleanup.yml`:
 
 Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
-- Zástupný text `{{ resource_group_name }}` nahraďte názvem vaší skupiny prostředků.
+- Zástupný symbol `{{ resource_group_name }}` nahraďte názvem vaší skupiny prostředků.
 - Odstraní se všechny prostředky v zadané skupině prostředků.
 
 Spusťte PlayBook pomocí příkazu Ansible-PlayBook:

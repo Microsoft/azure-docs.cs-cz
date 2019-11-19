@@ -3,17 +3,13 @@ title: Kurz – škálování aplikací v Azure App Service pomocí Ansible
 description: Naučte se navýšení kapacity aplikace v Azure App Service
 keywords: Ansible, Azure, DevOps, bash, PlayBook, Azure App Service, Webová aplikace, škálování, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 0adcddb8afa4f0e3d0b9288f351dae7d77922612
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241496"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155909"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Kurz: škálování aplikací v Azure App Service pomocí Ansible
 
@@ -28,7 +24,7 @@ ms.locfileid: "72241496"
 > * Získání faktů stávajícího plánu App Service
 > * Horizontální navýšení kapacity App Service plánu na S2 a tři pracovní procesy
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -46,7 +42,7 @@ Kód PlayBook v této části definuje následující operaci:
 * Získání faktů stávajícího plánu App Service
 * Aktualizace plánu služby App Service na S2 se třemi pracovními procesy
 
-Následující PlayBook uložte jako `webapp_scaleup.yml`:
+Uložte následující ukázkový playbook jako `webapp_scaleup.yml`:
 
 ```yml
 - hosts: localhost

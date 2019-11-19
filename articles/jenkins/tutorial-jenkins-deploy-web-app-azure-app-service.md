@@ -1,20 +1,15 @@
 ---
 title: 'Kurz: nasazení z GitHubu do Azure App Service pomocí Jenkinse'
 description: Nastavení Jenkinse pro průběžnou integraci (CI) z GitHubu a průběžného nasazování (CD) pro Azure App Service pro webové aplikace v jazyce Java
-services: jenkins
-ms.service: jenkins
-author: tomarchermsft
-ms.author: tarcher
-manager: jeconnoc
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 24dbe67052d185de0eb308c4c869e63dbc825d9e
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 9fcf178b71ac1f07bfb58cd2502701ae5392b472
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882016"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158405"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: nasazení z GitHubu do Azure App Service s průběžnou integrací a nasazením Jenkinse
 
@@ -38,7 +33,7 @@ V tomto kurzu dokončíte tyto úlohy:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu budete potřebovat tyto položky:
 

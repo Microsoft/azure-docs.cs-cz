@@ -1,31 +1,28 @@
 ---
-title: Ukázky Azure bránu Firewall
-description: Ukázky Powershellu pro Azure bránu Firewall
+title: Ukázky Azure Firewall
+description: Tento článek obsahuje odkazy na ukázkové skripty Azure PowerShell, které vytvářejí brány firewall Azure.
 services: firewall
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: firewall
 ms.topic: article
-ms.date: 7/11/2018
+ms.date: 11/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3dd751c5dd4edbc2c132859f142ef927e63298bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e4fab3d632bca6eb62f1233f681a3611d7ccddf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691900"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168723"
 ---
-# <a name="azure-firewall-powershell-samples"></a>Ukázky Azure Powershellu brány Firewall
+# <a name="azure-firewall-powershell-samples"></a>Ukázky Azure Firewall PowerShellu
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Azure Powershellu, které vytvoření brány firewall:
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShell, které vytvářejí brány firewall:
 
 
 | | |
 |----|----|
-|[Vytvoření infrastruktury Brána Firewall služby Azure a testování](scripts/sample-create-firewall-test.md)|Vytvoří bránu Firewall Azure a testovací infrastrukturu sítě.|
+|[Vytvoření Azure Firewall a testovací infrastruktury](scripts/sample-create-firewall-test.md)|Vytvoří Azure Firewall a testovací síťovou infrastrukturu.|
 
 
 

@@ -3,17 +3,13 @@ title: Modul Ansible a matice verzí pro Azure | Microsoft Docs
 description: Modul Ansible a matice verzí pro Azure
 keywords: Ansible, role, matice, verze, Azure, DevOps
 ms.topic: reference
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 275dca40ab20c222da2b9115f9a5dc141228c766
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385471"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155988"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Modul Ansible a matice verzí
 
@@ -26,7 +22,7 @@ Následující moduly lze spustit přímo na vzdálených hostitelích nebo pros
 Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících rolí Microsoft PlayBook.
 
 > [!NOTE]
-> Od Ansible 2,9 a dalších jsme přejmenovali všechny * moduly _facts na * _info, aby byly dodrženy zásady vytváření názvů v Ansible. Staré a přejmenované moduly jsou propojené, takže nezávisle na zobrazení upozornění na zastaralost budou všechny moduly fungovat stejně jako dřív.
+> Od Ansible 2,9 a dalších jsme přejmenovali všechny * _facts moduly na * _info, aby odpovídaly konvenci pojmenování Ansible. Staré a přejmenované moduly jsou propojené, takže nezávisle na zobrazení upozornění na zastaralost budou všechny moduly fungovat stejně jako dřív.
 
 | Modul Ansible pro Azure                   |  Ansible 2,4 |  Ansible 2,5 |  Ansible 2,6 | Ansible 2,7 | Ansible 2,8 | Ansible 2,9 | Role Ansible | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------|--------------|  
@@ -62,7 +58,7 @@ Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících r
 | azure_rm_virtualmachinescalesetextension_info | -            | -                        | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_virtualmachinescalesetinstance     | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_virtualmachinescalesetinstance_info | -            | -                         | -            | -            | Ano          | Ano          | Ano          |
-| **Networking**                              |              |                             |              |              |              |              |              |
+| **Sítě**                              |              |                             |              |              |              |              |              |
 | azure_rm_appgateway                         | -            | -                           | -            | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_applicationsecuritygroup           | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_applicationsecuritygroup_info     | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
@@ -110,7 +106,7 @@ Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících r
 | azure_rm_webapp                             | -            | -                         | -          | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_webapp_info                       | -            | -                         | -          | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_webappslot                         | -            | -                         | -          | -            | Ano          | Ano          | Ano          |
-| **Containers**                    |           |                          |                          |                            |           |           |          |
+| **Kontejnery**                    |           |                          |                          |                            |           |           |          |
 | azure_rm_acs                                | Ano          | Ano                         | Ano          | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_aks                                | -            | -                           | Ano          | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_aks_info                          | -            | -                           | Ano          | Ano          | Ano          | Ano          | Ano          |
@@ -221,9 +217,9 @@ Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících r
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Seznámení s rolí PlayBook pro Azure
 
-[Role azure_preview_module PlayBook](https://galaxy.ansible.com/Azure/azure_preview_modules/) zahrnuje všechny nejnovější moduly Azure. Aktualizace a opravy chyb jsou prováděny efektivněji než oficiální verze Ansible. Pokud pro účely zřizování prostředků Azure používáte Ansible, doporučujeme @no__t nainstalovat roli PlayBook-0.
+[Role azure_preview_module PlayBook](https://galaxy.ansible.com/Azure/azure_preview_modules/) zahrnuje všechny nejnovější moduly Azure. Aktualizace a opravy chyb jsou prováděny efektivněji než oficiální verze Ansible. Pokud pro účely zřizování prostředků Azure používáte Ansible, doporučujeme nainstalovat roli `azure_preview_module` PlayBook.
 
-Role PlayBook-0 je vydaná každé tři týdny. @no__t
+Role `azure_preview_module` PlayBook je vydaná každé tři týdny.
 
 ## <a name="next-steps"></a>Další kroky
 

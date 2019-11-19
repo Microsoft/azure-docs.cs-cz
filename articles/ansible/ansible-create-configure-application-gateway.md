@@ -3,23 +3,19 @@ title: Kurz – Správa webového provozu pomocí Azure Application Gateway pomo
 description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat službu Azure Application Gateway pro správu webového provozu.
 keywords: Ansible, Azure, DevOps, bash, PlayBook, Application Gateway, nástroj pro vyrovnávání zatížení, webový provoz
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1dd547fb59a41a90de18d595a392b64ef518023a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 07f75e39b8c6f592ecd4c48697527493b1109bb9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241888"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156607"
 ---
 # <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Kurz: Správa webového provozu pomocí Azure Application Gateway pomocí Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-[Azure Application Gateway](/azure/application-gateway/overview) je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací. Na základě zdrojové IP adresy a portu budou tradiční nástroje pro vyrovnávání zatížení směrovat provoz na cílovou IP adresu a port. Application Gateway poskytuje přesnější úroveň řízení, kde je možné směrovat provoz na základě adresy URL. Například můžete definovat, že pokud je `images` cesta adresy URL, provoz se směruje na konkrétní sadu serverů (označované jako fond) nakonfigurovaný pro obrázky.
+[Azure Application Gateway](/azure/application-gateway/overview) je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací. Na základě zdrojové IP adresy a portu budou tradiční nástroje pro vyrovnávání zatížení směrovat provoz na cílovou IP adresu a port. Application Gateway poskytuje přesnější úroveň řízení, kde je možné směrovat provoz na základě adresy URL. Můžete třeba definovat, že pokud je `images` cesta adresy URL, provoz se směruje na konkrétní sadu serverů (označované jako fond) nakonfigurovaný pro image.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -29,7 +25,7 @@ ms.locfileid: "72241888"
 > * Vytvoření dvou instancí kontejnerů Azure s imagemi HTTPD
 > * Vytvoření aplikační brány, která funguje s instancemi kontejnerů Azure ve fondu serverů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -107,7 +103,7 @@ Uložte následující ukázkový playbook jako `vnet_create.yml`:
 
 Před spuštěním PlayBook se podívejte na následující poznámky:
 
-* Část `vars` obsahuje hodnoty, které se používají k vytvoření síťových prostředků. 
+* Oddíl `vars` obsahuje hodnoty, které slouží k vytvoření síťových prostředků. 
 * Tyto hodnoty budete muset změnit pro konkrétní prostředí.
 
 Spusťte PlayBook pomocí příkazu `ansible-playbook`:
@@ -259,12 +255,12 @@ Uložte následující ukázkový playbook jako `appgw_create.yml`:
 
 Před spuštěním PlayBook se podívejte na následující poznámky:
 
-* v bloku `gateway_ip_configurations` je definována hodnota `appGatewayIP`. Pro konfiguraci IP adresy brány se vyžaduje odkaz na podsíť.
-* v bloku `backend_address_pools` je definována hodnota `appGatewayBackendPool`. Aplikační brána musí mít alespoň jeden back-endový fond adres.
-* v bloku `backend_http_settings_collection` je definována hodnota `appGatewayBackendHttpSettings`. Určuje, že pro komunikaci se používá port 80 a protokol HTTP.
-* v bloku `backend_http_settings_collection` je definována hodnota `appGatewayHttpListener`. Jedná se o výchozí naslouchací proces přidružený k fondu appGatewayBackendPool.
-* v bloku `frontend_ip_configurations` je definována hodnota `appGatewayFrontendIP`. Přiřadí adresu myAGPublicIPAddress k naslouchacímu procesu appGatewayHttpListener.
-* v bloku `request_routing_rules` je definována hodnota `rule1`. Jedná se o výchozí pravidlo směrování přidružené k naslouchacímu procesu appGatewayHttpListener.
+* `appGatewayIP` je definována v bloku `gateway_ip_configurations`. Pro konfiguraci IP adresy brány se vyžaduje odkaz na podsíť.
+* `appGatewayBackendPool` je definována v bloku `backend_address_pools`. Aplikační brána musí mít alespoň jeden back-endový fond adres.
+* `appGatewayBackendHttpSettings` je definována v bloku `backend_http_settings_collection`. Určuje, že pro komunikaci se používá port 80 a protokol HTTP.
+* `appGatewayHttpListener` je definována v bloku `backend_http_settings_collection`. Jedná se o výchozí naslouchací proces přidružený k fondu appGatewayBackendPool.
+* `appGatewayFrontendIP` je definována v bloku `frontend_ip_configurations`. Přiřadí adresu myAGPublicIPAddress k naslouchacímu procesu appGatewayHttpListener.
+* `rule1` je definována v bloku `request_routing_rules`. Jedná se o výchozí pravidlo směrování přidružené k naslouchacímu procesu appGatewayHttpListener.
 
 Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
@@ -280,7 +276,7 @@ Vytvoření aplikační brány může trvat několik minut.
 
 1. V části [vytvoření síťových prostředků](#create-network-resources) zadáte doménu. Poznamenejte si jeho hodnotu.
 
-1. Pro testovací adresu URL nahraďte následujícím vzorem umístění a doména: `http://<domain>.<location>.cloudapp.azure.com`.
+1. Pro adresu URL testu nahraďte následující vzor umístěním a doménou: `http://<domain>.<location>.cloudapp.azure.com`.
 
 1. Přejděte na adresu URL testu.
 

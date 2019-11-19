@@ -1,19 +1,15 @@
 ---
 title: Spuštění Azure CLI s využitím Jenkinse
 description: Zjistěte, jak pomocí Azure CLI v kanálu Jenkinse nasadit webovou aplikaci v Javě do Azure.
-ms.service: jenkins
 keywords: jenkins, azure, devops, app service, cli
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 3da18bf50c82a32a9cec70555ac0d051e7660184
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882122"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158822"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Nasazení do Azure App Service pomocí Jenkinse a Azure CLI
 K nasazení webové aplikace v Javě do Azure můžete použít Azure CLI v [kanálu Jenkinse](https://jenkins.io/doc/book/pipeline/). V tomto kurzu vytvoříte kanál CI/CD na virtuálním počítači Azure a také se naučíte:
@@ -56,7 +52,7 @@ Ke spuštění Azure CLI jsou potřeba přihlašovací údaje Azure.
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Vytvoření služby Azure App Service pro nasazení webové aplikace v Javě
 
-Pomocí příkazu [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) rozhraní příkazového řádku vytvořte plán služby App Service s cenovou úrovní **FREE**. Plán služby App Service definuje fyzické prostředky používané k hostování vašich aplikací. Všechny aplikace přiřazené k plánu služby App Service sdílí tyto prostředky, a tím umožňují snížení nákladů při hostování více aplikací. 
+Pomocí příkazu **az appservice plan create** rozhraní příkazového řádku vytvořte plán služby App Service s cenovou úrovní [FREE](/cli/azure/appservice/plan#az-appservice-plan-create). Plán služby App Service definuje fyzické prostředky používané k hostování vašich aplikací. Všechny aplikace přiřazené k plánu služby App Service sdílí tyto prostředky, a tím umožňují snížení nákladů při hostování více aplikací. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -147,7 +143,7 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ## <a name="create-jenkins-pipeline"></a>Vytvoření kanálu Jenkinse
 Otevřete Jenkinse ve webovém prohlížeči a klikněte na **New Item** (Nová položka). 
 
-* Zadejte název úlohy a vyberte **Pipeline** (Kanál). Klikněte na **OK**.
+* Zadejte název úlohy a vyberte **Pipeline** (Kanál). Klikněte na tlačítko **OK**.
 * Potom klikněte na kartu **Pipeline** (Kanál). 
 * V části **Definition** (Definice) vyberte **Pipeline script from SCM** (Skript kanálu z SCM).
 * V části **SCM** vyberte **Git**.

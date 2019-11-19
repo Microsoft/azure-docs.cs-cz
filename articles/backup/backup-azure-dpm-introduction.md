@@ -1,19 +1,14 @@
 ---
-title: Příprava serveru DPM pro zálohování úloh do Azure
+title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 5c89dc8b5c8ee420c94d61763770cd37e763f2df
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c7b662c07caecb7871ec9f8be89ffc76b8f7f5fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747514"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173134"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -110,7 +105,7 @@ Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítač
 
 4. V **vlastnosti** > **přihlašovací údaje zálohování**klikněte na **Stáhnout**. Portál vygeneruje soubor s přihlašovacími údaji trezoru pomocí kombinace názvu trezoru a aktuálního data a zpřístupní ho ke stažení.
 
-    ![Stáhnout](./media/backup-azure-dpm-introduction/vault-credentials.png)
+    ![Ke stažení](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
 5. Kliknutím na **Uložit** Stáhněte přihlašovací údaje trezoru do složky, nebo je **uložte jako** a zadejte umístění. Vygenerování souboru bude trvat až minutu.
 
@@ -124,7 +119,7 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
     ![Otevření nabídky trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. Na stránce **vlastnosti** stáhněte agenta Azure Backup.
 
-    ![Stáhnout](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
+    ![Ke stažení](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
 4. Po stažení spusťte soubor marsagentinstaller. exe. Instalace agenta do počítače aplikace DPM.
 5. Vyberte instalační složku a složku mezipaměti pro agenta. Volné místo na umístění mezipaměti musí být alespoň 5% dat zálohy.

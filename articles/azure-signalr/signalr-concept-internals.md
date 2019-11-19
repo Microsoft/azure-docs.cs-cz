@@ -1,71 +1,71 @@
 ---
 title: Interní informace služby Azure SignalR Service
-description: Přehled interní informace služby Azure SignalR.
+description: Přečtěte si o interních datech služby signalizace Azure, architektuře, připojení a způsobu přenosu dat.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cbcdfccfdca1dbed3b766b3f50295b1d355b3478
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401745"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157592"
 ---
 # <a name="azure-signalr-service-internals"></a>Interní informace služby Azure SignalR Service
 
-Službě Azure SignalR je nástavbou funkce SignalR technologie ASP.NET Core framework. Funkce SignalR technologie ASP.NET podporuje také jako funkce ve verzi preview.
+Služba signalizace Azure je postavená na rozhraní ASP.NET Core Signale. Podporuje také signalizaci ASP.NET jako funkci ve verzi Preview.
 
-> K podpoře funkce SignalR technologie ASP.NET, služby Azure SignalR reimplements protokol funkce SignalR technologie ASP.NET jako nadstavby rozhraní framework ASP.NET Core
+> Pro podporu signalizace ASP.NET služba Azure Signal Service znovu implementuje datový protokol signalizace ASP.NET na začátku ASP.NET Core Frameworku
 
-Můžete snadno migrovat místní aplikace SignalR technologie ASP.NET Core pro práci s knihovnou SignalR službou po zadání několika řádků kódu změny.
+Můžete snadno migrovat místní aplikaci ASP.NET Coreového signálu, aby fungovala se službou Signal, a to s několika řádky změny kódu.
 
-Následující diagram popisuje typickou architekturu při použití s aplikačního serveru služby SignalR.
+Diagram níže popisuje typickou architekturu při použití služby signalizace spolu s aplikačním serverem.
 
-Rozdíly v místním prostředí aplikací SignalR technologie ASP.NET Core jsou také popsány.
+Pojednává také o rozdílech od aplikace Signal-Hosted ASP.NET Core.
 
 ![Architektura](./media/signalr-concept-internals/arch.png)
 
 ## <a name="server-connections"></a>Připojení k serveru
 
-V místním prostředí aplikačního serveru funkce SignalR technologie ASP.NET Core naslouchají a klienti se připojí přímo.
+Aplikační server ASP.NET Coreového signálu v místním prostředí naslouchá a připojuje klienty přímo.
 
-Pomocí služby SignalR aplikační server je už nepřijímáme trvalé klientská připojení, místo toho:
+Pomocí služby signalizace už aplikační server nepřijímá trvalá připojení klientů, místo toho:
 
-1. A `negotiate` koncový bod je zveřejněný prostřednictvím sady SDK služby Azure SignalR pro každý rozbočovač.
-1. Tento koncový bod bude reagovat na požadavky klientů, vyjednávání a přesměrovat klienty pro služby SignalR.
-1. Nakonec klienti se připojí pro služby SignalR.
+1. Služba Azure Signal Service SDK pro každé centrum zveřejňuje `negotiate` koncový bod.
+1. Tento koncový bod bude odpovídat na požadavky na vyjednávání klienta a přesměrování klientů na službu Signal.
+1. Nakonec budou klienti připojení ke službě signalizace.
 
 Další informace najdete v tématu [připojení klientů](#client-connections).
 
-Po zahájení aplikačního serveru 
-- Sada SDK služby Azure SignalR pro funkci SignalR technologie ASP.NET Core, otevře se 5 připojení pomocí protokolu WebSocket na Centrum pro služby SignalR. 
-- Pro funkci SignalR technologie ASP.NET sady SDK služby Azure SignalR otevře 5 připojení pomocí protokolu WebSocket na Centrum pro služby SignalR a jedna na připojení soketu WebSocket aplikace.
+Po spuštění aplikačního serveru, 
+- V případě nástroje ASP.NET Core Signal služba Azure Signal Service SDK otevírá 5 připojení protokolu WebSocket na rozbočovač ke službě signalizace. 
+- Pro signál ASP.NET se v sadě SDK služby Azure Signal Service otevírá 5 připojení protokolu WebSocket podle rozbočovače do služby signalizace a jedno pro každé připojení k webovému soketu aplikace.
 
-5 připojení pomocí protokolu WebSocket je výchozí hodnota, která lze změnit v [konfigurace](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount).
+5 připojení WebSocket je výchozí hodnota, kterou je možné změnit v [konfiguraci](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount).
 
-Zprávy od klientů bude multiplexní do těchto připojení.
+Zprávy klientům a z nich budou do těchto připojení zamultiplexované.
 
-Tato připojení zůstanou připojené ke službě SignalR celou dobu. Připojení k serveru po odpojení sítě problému
-- Všichni klienti, kteří obsluhuje tento odpojení připojení serveru (Další informace o tom najdete v tématu [přenášet Data mezi klientem a serverem](#data-transmit-between-client-and-server));
-- připojení k serveru spustí, opětovné připojení automaticky.
+Tato připojení budou zůstat připojená ke službě signalizace po celou dobu. Pokud je připojení serveru odpojené kvůli problému v síti,
+- Všichni klienti obsluhující toto připojení k serveru (Další informace najdete v tématu [přenos dat mezi klientem a serverem](#data-transmit-between-client-and-server));
+- připojení k serveru se znovu spustí automaticky.
 
 ## <a name="client-connections"></a>Připojení klientů
 
-Při použití služby SignalR klienti připojovat k službě SignalR místo aplikačního serveru.
-Existují dva kroky k vytvoření trvalého připojení mezi klientem a služby SignalR.
+Při použití služby signalizace se klienti připojují ke službě signalizace namísto aplikačního serveru.
+Existují dva kroky k navázání trvalých připojení mezi klientem a službou Signal.
 
-1. Klient odešle požadavek negotiate k aplikačnímu serveru. Pomocí sady SDK služby Azure SignalR aplikační server vrátí odpověď přesměrování se adresa URL služby SignalR a přístupový token.
+1. Klient odešle aplikačnímu serveru požadavek Negotiate. Pomocí sady SDK služby Azure Signaler vrátí aplikační server odpověď přesměrování pomocí adresy URL a přístupového tokenu služby signalizace.
 
-- Pro funkci SignalR technologie ASP.NET Core typické přesměrování odpověď vypadá takto:
+- V případě ASP.NET Coreového signalizace vypadá typická reakce na přesměrování:
     ```
     {
         "url":"https://test.service.signalr.net/client/?hub=chat&...",
         "accessToken":"<a typical JWT token>"
     }
     ```
-- Pro funkci SignalR technologie ASP.NET typické přesměrování odpověď vypadá takto:
+- V případě ASP.NET signalizace vypadá typická reakce na přesměrování:
     ```
     {
         "ProtocolVersion":"2.0",
@@ -74,19 +74,19 @@ Existují dva kroky k vytvoření trvalého připojení mezi klientem a služby 
     }
     ```
 
-1. Po přijetí odpovědi na přesměrování, používá klient novou adresu URL a tokenu přístupu ke spuštění normální proces pro připojení k službě SignalR.
+1. Po přijetí odpovědi přesměrování použije klient novou adresu URL a přístupový token ke spuštění normálního procesu pro připojení ke službě signalizace.
 
-Další informace o ASP.NET Core SignalR [přenosu protokolů](https://github.com/aspnet/SignalR/blob/release/2.2/specs/TransportProtocols.md).
+Přečtěte si další informace o [přenosových protokolech](https://github.com/aspnet/SignalR/blob/release/2.2/specs/TransportProtocols.md)ASP.NET Coreového signálu.
 
 ## <a name="data-transmit-between-client-and-server"></a>Přenos dat mezi klientem a serverem
 
-Klient je připojen ke službě SignalR, modulu runtime service najdete sloužit tento klient připojení k serveru
-- V tomto kroku dojde jenom jednou a je mapování 1: 1 mezi klientem a serverem připojení.
-- Mapování je udržována v služby SignalR až klient nebo server odpojí.
+Když je klient připojen ke službě signalizace, modul runtime služby zjistí připojení serveru, které bude obsluhovat tohoto klienta.
+- Tento krok probíhá pouze jednou a jedná se o mapování 1:1 mezi klientem a serverem.
+- Mapování se udržuje ve službě signalizace, dokud se klient nebo server odpojí.
 
-V tomto okamžiku aplikační server přijímá události s informacemi z nového klienta. Logické připojení ke klientovi se vytvoří v aplikačním serveru. Datový kanál se naváže od klienta k serveru aplikace prostřednictvím služby SignalR.
+V tomto okamžiku aplikační server obdrží událost s informacemi z nového klienta. Logické připojení ke klientovi je vytvořeno na aplikačním serveru. Datový kanál se naváže z klienta na aplikační server prostřednictvím služby signalizace.
 
-Služby SignalR odesílá data z klienta na párovací aplikačního serveru. A odešlou se data z aplikačního serveru pro mapovanou klienty.
+Služba signalizace přenáší data z klienta na server spárované aplikace. A data z aplikačního serveru budou odeslána mapovaným klientům.
 
-Jak je vidět, služby Azure SignalR je v podstatě logické přenosové vrstvy mezi aplikační server a klienty. Všechny trvalé připojení přebírá služby SignalR.
-Aplikační server potřebuje pouze pro zpracování obchodní logiku v třídě centra, ale nemusíme se starat o připojení klienta.
+Jak vidíte, služba signalizace Azure je v podstatě logickou přenosovou vrstvou mezi aplikačním serverem a klienty. Všechna trvalá připojení se přesměrují na službu Signal.
+Aplikační server potřebuje zpracovat obchodní logiku jenom ve třídě centra, aniž by se museli starat o připojení klientů.

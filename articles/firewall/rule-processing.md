@@ -1,30 +1,30 @@
 ---
-title: Logika zpracování Azure pravidlo brány Firewall
-description: Další informace o zpracování logiky pravidla Brána Firewall služby Azure
+title: Logika zpracování pravidel Azure Firewall
+description: Azure Firewall obsahuje pravidla překladu adres (NAT), pravidla sítě a aplikace. Pravidla se zpracovávají podle typu pravidla.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/27/2018
+ms.date: 11/19/2018
 ms.author: victorh
-ms.openlocfilehash: 12d86793c0d75413559aad77c558c4adb7ac91af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fc11221e0ff79d6e17b93282403792fc135c2a4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681591"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166791"
 ---
-# <a name="azure-firewall-rule-processing-logic"></a>Logika zpracování Azure pravidlo brány Firewall
-Brány Firewall Azure má pravidla NAT, pravidel sítě a pravidla aplikací. Pravidla se zpracovávají podle typ pravidla.
+# <a name="azure-firewall-rule-processing-logic"></a>Logika zpracování pravidel Azure Firewall
+Azure Firewall obsahuje pravidla překladu adres (NAT), pravidla sítě a aplikace. Pravidla se zpracovávají podle typu pravidla.
 
 
-## <a name="network-rules-and-applications-rules"></a>Sítě a pravidel aplikace 
-Pravidla sítě jsou použitá pravidla první a aplikace. Pravidla se ukončuje. Takže pokud se najde shoda v pravidlech sítě, nebudou zpracovány pravidla aplikací.  Pokud se nenajde shoda s žádným pravidlem sítě a protokol paketu je HTTP nebo HTTPS, paket se vyhodnotí podle pravidel aplikace. Je-li stále nalezena žádná shoda nenajde, paket vyhodnocení proti kolekci pravidel infrastruktury. Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
+## <a name="network-rules-and-applications-rules"></a>Pravidla sítě a pravidla pro aplikace 
+Nejdřív se aplikují Síťová pravidla a pak pravidla aplikace. Pravidla se ukončí. Takže pokud se v síťových pravidlech najde shoda, pravidla aplikací se nezpracují.  Pokud se nenajde shoda s žádným pravidlem sítě a protokol paketu je HTTP nebo HTTPS, paket se vyhodnotí podle pravidel aplikace. Pokud se pořád nenajde žádná shoda, vyhodnotí se paket na základě kolekce pravidel infrastruktury. Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
 
 ## <a name="nat-rules"></a>Pravidla NAT
-Příchozí připojení se dá nastavit pomocí konfigurace cílové síťové adresy překladu (DNAT), jak je popsáno v [kurzu: Filtrovat příchozí provoz s DNAT brány Firewall Azure pomocí webu Azure portal](tutorial-firewall-dnat.md). Nejdříve jsou použita pravidla DNAT. Pokud se najde shoda, je přidáno implicitní odpovídající pravidlo sítě přeložené provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Žádná pravidla aplikací se použijí pro tato připojení.
+Příchozí připojení je možné povolit konfigurací překladu cílové sítě (DNAT), jak je popsáno v [kurzu: filtrování příchozího provozu pomocí Azure firewall DNAT pomocí Azure Portal](tutorial-firewall-dnat.md). Jako první se aplikují DNAT pravidla. Pokud se najde shoda, přidá se implicitní odpovídající síťové pravidlo, které povolí přeložený provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Pro tato připojení nejsou použita žádná pravidla použití aplikace.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [nasazení a konfiguraci brány Firewall Azure](tutorial-firewall-deploy-portal.md).
+- Přečtěte si, jak [nasadit a nakonfigurovat Azure firewall](tutorial-firewall-deploy-portal.md).

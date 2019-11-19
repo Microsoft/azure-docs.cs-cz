@@ -3,17 +3,13 @@ title: Rychlý Start – nasazení šablony řešení Ansible pro Azure do CentO
 description: V tomto rychlém startu se dozvíte, jak nasadit šablonu řešení Ansible na virtuálním počítači s CentOS hostovaným v Azure spolu s nástroji nakonfigurovanými pro práci s Azure.
 keywords: Ansible, Azure, DevOps, šablona řešení, virtuální počítač, spravované identity pro prostředky Azure, CentOS, Red Hat
 ms.topic: quickstart
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833173"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156327"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Rychlý Start: nasazení šablony řešení Ansible pro Azure do CentOS
 

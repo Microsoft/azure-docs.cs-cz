@@ -1,17 +1,14 @@
 ---
 title: Kurz – vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service (AKS) pomocí Terraformu
 description: Kurz vysvětlující, jak vytvořit cluster Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 1bfeef729bdb3f07fe2cc64cee4fd4f27c49ef67
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 792c075cfb40eb4904a30b63e9902a59ceda9bc1
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833613"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159301"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Kurz: Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Terraformu
 
@@ -64,7 +61,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `main.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -88,7 +85,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro cluster Kubernetes.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `k8s.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `k8s.tf`.
 
     ```bash
     code k8s.tf
@@ -177,7 +174,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
 
 ## <a name="declare-the-variables"></a>Deklarování proměnných
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -234,7 +231,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
 
 [Výstupy Terraformu](https://www.terraform.io/docs/configuration/outputs.html) vám umožňují definovat hodnoty, které se uživateli zvýrazní, když Terraform použije plán a bude možné se na něj dotázat příkazem `terraform output`. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `output.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `output.tf`.
 
     ```bash
     code output.tf

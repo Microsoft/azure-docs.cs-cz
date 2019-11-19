@@ -1,18 +1,14 @@
 ---
 title: Zálohování a obnovení sdílených složek Azure
 description: Tento článek podrobně popisuje, jak zálohovat a obnovovat sdílené složky Azure, a vysvětluje úlohy správy.
-author: dcurwin
-ms.author: dacurwin
 ms.date: 07/29/2019
-ms.topic: tutorial
-ms.service: backup
-manager: carmonm
-ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.topic: conceptual
+ms.openlocfilehash: 59dd46c42cdf94f06709d95f68cfb8d8693b9cce
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091097"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173097"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Zálohování a obnovení sdílených složek Azure
 
@@ -47,7 +43,7 @@ Zálohování sdílených složek Azure je ve verzi Preview. Podporují se sdíl
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurace zálohování sdílené složky Azure
 
-Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Zálohování sdílené složky Azure:
+V tomto článku se předpokládá, že jste už vytvořili sdílenou složku Azure. Zálohování sdílené složky Azure:
 
 1. Vytvořte trezor služby Recovery Services ve stejné oblasti, ve které je vaše sdílená složka. Pokud už trezor máte, otevřete stránku Přehled vašeho trezoru a klikněte na **Zálohování**.
 

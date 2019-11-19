@@ -1,18 +1,18 @@
 ---
 title: Plně kvalifikovaný název domény infrastruktury pro Azure Firewall
-description: Další informace o plně kvalifikovaném názvu domény infrastruktury v Azure Firewall
+description: Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 5b134058e1924bae030338411226a9a6aff46557
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: d4de81bad1ddda2f5b54f47c1be78925ad4cdbf3
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130202"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168981"
 ---
 # <a name="infrastructure-fqdns"></a>Plně kvalifikované názvy domén infrastruktury
 

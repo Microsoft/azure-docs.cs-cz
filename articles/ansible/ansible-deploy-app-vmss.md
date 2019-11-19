@@ -3,17 +3,13 @@ title: Kurz – nasazení aplikací do služby Virtual Machine Scale Sets v Azur
 description: Naučte se používat Ansible ke konfiguraci služby Azure Virtual Machine Scale Sets a nasazení aplikace v sadě škálování.
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7c54790a3d988341caa65bdf0ce33c240f0580fb
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241754"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156386"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Kurz: nasazení aplikací do služby Virtual Machine Scale Sets v Azure pomocí Ansible
 
@@ -30,7 +26,7 @@ ms.locfileid: "72241754"
 > * Instalace JRE (Java Runtime Environment) do sady škálování
 > * Nasazení aplikace Java do sady škálování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
@@ -120,8 +116,8 @@ Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
 
 PlayBook kód v této části se používá pro:
 
-* Nainstalujte JRE do skupiny hostitelů s názvem `saclesethosts`.
-* Nasazení aplikace Java do skupiny hostitelů s názvem `saclesethosts`
+* Nainstalujte JRE do skupiny hostitelů s názvem `saclesethosts`
+* Nasaďte aplikaci Java do skupiny hostitelů s názvem `saclesethosts`
 
 Existují dva způsoby, jak získat ukázkovou PlayBook:
 
@@ -170,7 +166,7 @@ Před spuštěním PlayBook se podívejte na následující poznámky:
 * V části `vars` nahraďte zástupný text `{{ admin_password }}` vlastním heslem.
 * Chcete-li použít typ připojení SSH s hesly, nainstalujte program sshpass:
 
-    Ubuntu
+    Ubuntu:
 
     ```bash
     apt-get install sshpass

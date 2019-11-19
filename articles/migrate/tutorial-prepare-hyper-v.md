@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 09/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2f45f70f1c131e1690997cda18a8d612d3af9dee
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 2a70472518b72052f8338d6f14ea64fed6c6d4f1
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010305"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158335"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
 Tento článek popisuje, jak připravit na posouzení a migraci místních virtuálních počítačů Hyper-V do Azure s [Azure Migrate](migrate-services-overview.md).
 
-[Azure Migrate](migrate-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. 
+[Azure Migrate](migrate-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců.
 
 Tento kurz je první v řadě, kde se dozvíte, jak vyhodnotit a migrovat virtuální počítače Hyper-V do Azure. V tomto kurzu se naučíte:
 
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Je nutné nastavit oprávnění pro nasazení Azure Migrate.
 
-- Oprávnění pro účet Azure k vytvoření projektu Azure Migrate. 
+- Oprávnění pro účet Azure k vytvoření projektu Azure Migrate.
 - Oprávnění pro váš účet k registraci zařízení Azure Migrate. Zařízení se používá pro zjišťování a migraci technologie Hyper-V. Při registraci zařízení Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují:
     - První aplikace komunikuje s koncovými body služby Azure Migrate.
     - Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace, aby se ukládaly informace o aplikaci Azure AD a nastavení konfigurace zařízení.
@@ -70,26 +70,26 @@ Pomocí jedné z následujících metod můžete přiřadit oprávnění pro Azu
 Je potřeba poznamenat, že:
 
 - Aplikace nemají žádná jiná přístupová oprávnění k předplatnému, kromě výše popsaných výše.
-- Tato oprávnění budete potřebovat, jenom když zaregistrujete nové zařízení. Po nastavení zařízení můžete oprávnění odebrat. 
+- Tato oprávnění budete potřebovat, jenom když zaregistrujete nové zařízení. Po nastavení zařízení můžete oprávnění odebrat.
 
 
 #### <a name="grant-account-permissions"></a>Udělení oprávnění účtu
 
 Tenant nebo globální správce může udělit oprávnění následujícím způsobem:
 
-1. V Azure AD by měl tenant nebo globální správce přejít na **Azure Active Directory** > **uživatelských nastavení** **uživatelů** > .
+1. V Azure AD by měl tenant/globální správce přejít na **Azure Active Directory** > **Uživatelé** > **uživatelských nastavení**.
 2. Správce by měl nastavit **Registrace aplikací** **Ano**.
 
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)
 
 
 
-#### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace 
+#### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
 
 
 ## <a name="prepare-for-hyper-v-assessment"></a>Příprava na posouzení technologie Hyper-V
@@ -98,7 +98,7 @@ Při přípravě na posouzení technologie Hyper-V postupujte následovně:
 
 1. Ověřte nastavení hostitele Hyper-V.
 2. Nastavte pro každého hostitele vzdálenou komunikaci PowerShellu, aby zařízení Azure Migrate mohlo na hostiteli spouštět příkazy PowerShellu přes připojení WinRM.
-3. Pokud se disky virtuálních počítačů nacházejí ve vzdálených úložištích SMB, je nutné delegování přihlašovacích údajů. 
+3. Pokud se disky virtuálních počítačů nacházejí ve vzdálených úložištích SMB, je nutné delegování přihlašovacích údajů.
     - Povolte delegování CredSSP, aby zařízení Azure Migrate mohlo fungovat jako klient a delegování přihlašovacích údajů na hostitele.
     - Povolíte každému hostiteli, aby fungoval jako delegát pro zařízení, jak je popsáno níže.
     - Později při nastavení zařízení budete na zařízení umožňovat delegování.
@@ -122,7 +122,7 @@ Tento skript ověří hostitele Hyper-V a nakonfiguruje nastavení, která potř
 - Kontroluje, zda je na hostiteli spuštěná podporovaná verze technologie Hyper-V a role Hyper-V.
 - Povolí službu WinRM a na hostiteli otevře porty 5985 (HTTP) a 5986 (HTTPS) (potřebné pro kolekci metadat).
 - Povolí vzdálenou komunikaci PowerShellu na hostiteli.
-- Kontroluje, zda je na všech virtuálních počítačích spravovaných hostitelem povolena integrační služba technologie Hyper-V. 
+- Kontroluje, zda je na všech virtuálních počítačích spravovaných hostitelem povolena integrační služba technologie Hyper-V.
 - V případě potřeby povolí CredSSP v hostiteli.
 
 Spusťte skript následujícím způsobem:
@@ -133,7 +133,7 @@ Spusťte skript následujícím způsobem:
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
-    Příklad použití: 
+    Příklad použití:
     ```
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
     SHA256
@@ -215,7 +215,7 @@ Azure Migrate potřebuje oprávnění ke zjišťování místních virtuálních
 
 V každém virtuálním počítači by měly být povolené integrační služby, aby Azure Migrate mohl zachytit informace o operačním systému na VIRTUÁLNÍm počítači.
 
-Na virtuálních počítačích, které chcete zjišťovat a hodnotit, povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) . 
+Na virtuálních počítačích, které chcete zjišťovat a hodnotit, povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .
 
 ## <a name="prepare-for-hyper-v-migration"></a>Příprava na migraci technologie Hyper-V
 
@@ -223,15 +223,15 @@ Na virtuálních počítačích, které chcete zjišťovat a hodnotit, povolte n
 2. [Projděte si](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) požadavky na virtuální počítače Hyper-V, které chcete migrovat do Azure.
 3. [Poznamenejte](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) si adresy URL Azure, ke kterým hostitelé a clustery Hyper-V potřebují přístup pro migraci virtuálních počítačů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
- 
-> [!div class="checklist"] 
+V tomto kurzu jste:
+
+> [!div class="checklist"]
 > * Nastavte oprávnění účtu Azure.
 > * Připraví hostitelé a virtuální počítače Hyper-V pro posouzení a migraci.
 
 Přejděte k dalšímu kurzu a vytvořte projekt Azure Migrate a vyhodnoťte virtuální počítače Hyper-V pro migraci do Azure.
 
-> [!div class="nextstepaction"] 
-> [Posouzení virtuálních počítačů Hyper-V](./tutorial-assess-hyper-v.md) 
+> [!div class="nextstepaction"]
+> [Posouzení virtuálních počítačů Hyper-V](./tutorial-assess-hyper-v.md)

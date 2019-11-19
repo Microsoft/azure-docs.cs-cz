@@ -1,25 +1,21 @@
 ---
-title: Nejčastější dotazy k zálohování virtuálních počítačů Azure pomocí Azure Backup
+title: Nejčastější dotazy k zálohování virtuálních počítačů Azure
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: ad5e715de2f3467d4530759cbb2acec0358e5597
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747280"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172560"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohování virtuálních počítačů Azure pomocí služby [Azure Backup](backup-introduction-to-azure-backup.md) .
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Které image virtuálních počítačů se můžou při vytváření záloh povolit?
 
@@ -33,15 +29,15 @@ Ne. Náklady na zálohování jsou oddělené od nákladů na virtuální počí
 
 Pokud jste přispěvatelem virtuálních počítačů, můžete na virtuálním počítači povolit zálohování. Pokud používáte vlastní roli, budete potřebovat následující oprávnění, abyste mohli na virtuálním počítači povolit zálohování:
 
-- Microsoft. RecoveryServices/trezory/Write
-- Microsoft. RecoveryServices/trezory/číst
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
 - Microsoft. RecoveryServices/umístění/*
 - Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/*/Read
 - Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Read
-- Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Write
-- Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
 - Microsoft. RecoveryServices/trezory/backupPolicies/Read
-- Microsoft. RecoveryServices/trezory/backupPolicies/Write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
 
 Pokud má váš Recovery Services trezor a virtuální počítač jiné skupiny prostředků, ujistěte se, že máte oprávnění k zápisu do skupiny prostředků pro trezor Recovery Services.  
 

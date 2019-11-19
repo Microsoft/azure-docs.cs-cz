@@ -1,18 +1,14 @@
 ---
-title: Zálohování databáze SAP HANA do Azure pomocí Azure Backup | Microsoft Docs
+title: Zálohování databáze SAP HANA do Azure
 description: V tomto kurzu se dozvíte, jak zálohovat databázi SAP HANA do Azure pomocí služby Azure Backup.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: dacurwin
-ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 519e47c6b6793c638e64c4e4bcc4fafdb678c9fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931804"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172730"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Zálohování databáze SAP HANA do Azure
 
@@ -40,10 +36,10 @@ ms.locfileid: "72931804"
 - Protokoly databáze můžete zálohovat každých 15 minut. Zálohování protokolů začíná proudem až po úspěšném úplném zálohování databáze.
 - Můžete přijímat úplné a rozdílové zálohy. Přírůstkové zálohování není aktuálně podporováno.
 - Zásady zálohování nemůžete po použití pro SAP HANA zálohy upravovat. Pokud chcete zálohovat s jiným nastavením, vytvořte novou zásadu nebo přiřaďte jinou zásadu.
-  - Pokud chcete vytvořit novou zásadu, klikněte v trezoru na **zásady** > **zásady zálohování** >  **+ Přidat**SAP HANA  > **na virtuálním počítači Azure**a určete nastavení zásad.
+  - Pokud chcete vytvořit novou zásadu, klikněte v trezoru na **zásady** > **zásady zálohování** >  **+ Přidat** > **SAP HANA na virtuálním počítači Azure**a určete nastavení zásad.
   - Pokud chcete přiřadit jinou zásadu, ve vlastnostech virtuálního počítače, na kterém je spuštěná databáze, klikněte na název aktuální zásady. Pak na stránce **zásady zálohování** můžete vybrat jinou zásadu, která se má použít pro zálohování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující:
 
@@ -104,7 +100,7 @@ Nyní povolte zálohování.
 
 1. V kroku 2 klikněte na **Konfigurovat zálohu**.
 2. V části **Vyberte položky, které chcete zálohovat**vyberte všechny databáze, které chcete chránit > **OK**.
-3. V části **zásada zálohování** > **vyberte zásady zálohování**, vytvořte nové zásady zálohování pro databáze, a to v souladu s pokyny uvedenými níže.
+3. V části **zásady zálohování** > **vyberte zásady zálohování**, vytvořte nové zásady zálohování pro databáze v souladu s pokyny uvedenými níže.
 4. Po vytvoření zásady klikněte v nabídce **zálohování** na **Povolit zálohování**.
 5. Sledujte průběh konfigurace zálohování v oblasti **oznámení** na portálu.
 
@@ -170,14 +166,14 @@ Pokud chcete použít místní zálohu (pomocí HANA studia) databáze, která s
 
 1. Počkejte na dokončení všech úplných záloh nebo zálohování protokolů databáze. Podívejte se na stav v SAP HANA studiu.
 2. Zakažte zálohování protokolů a nastavte Katalog zálohování na systém souborů pro příslušnou databázi.
-3. Provedete to tak, že dvakrát kliknete na **SystemDB** **Konfigurace** >   > **Vyberte databáze** > **filtr (protokol)** .
+3. Provedete to tak, že dvakrát kliknete na **systemdb** > **Konfigurace** > **Vybrat databázi** > **filtr (protokol)** .
 4. Nastavte **enable_auto_log_backup** na **ne**.
 5. Nastavte **log_backup_using_backint** na **false**.
 6. Proveďte úplnou zálohu databáze ad hoc.
 7. Počkejte na dokončení úplného zálohování a zálohování katalogu.
 8. Vrátí předchozí nastavení zpátky do těch pro Azure:
     - Nastavte **enable_auto_log_backup** na **Ano**.
-    - Nastavte **log_backup_using_backint** na **true**.
+    - Nastavte **log_backup_using_backint** na **hodnotu true**.
 
 
 ## <a name="upgrading-protected-10-dbs-to-20"></a>Upgrade chráněného 1,0 databáze na 2,0

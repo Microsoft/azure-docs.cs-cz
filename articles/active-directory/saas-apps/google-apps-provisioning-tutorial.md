@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120317"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167859"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -32,7 +32,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v G Suite a A
 > [!NOTE]
 > Konektor G Suite se nedávno aktualizoval v říjnu 2019. Mezi změny provedené v konektoru G Suite patří:
 - Byla přidána podpora dalších atributů uživatelů a skupin G Suite. 
-- Aktualizované názvy atributů cíle G Suite tak, aby odpovídaly, co se [tady](/azure/active-directory/manage-apps/customize-application-attributes)definuje.
+- Aktualizované názvy atributů cíle G Suite tak, aby odpovídaly, co se [tady](https://developers.google.com/admin-sdk/directory)definuje.
 - Mapování výchozích atributů se aktualizovala.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -129,6 +129,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > [!TIP]
 > Můžete se také rozhodnout povolit pro G Suite jednotné přihlašování založené na SAML, a to podle pokynů uvedených v [kurzu jednotného přihlašování G Suite](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
+> [!NOTE]
+> Další informace o koncovém bodu rozhraní API adresářových sad G Suite najdete v tématu věnovaném [rozhraní Directory API](https://developers.google.com/admin-sdk/directory).
+
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro G Suite ve službě Azure AD:
 
 1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
@@ -196,15 +199,6 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít k monitorování průběhu a následnému sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v G Suite.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
-
-> [!NOTE]
-> Další možností životaschopnosti pro automatizaci zřizování uživatelů ke G Suite je použití [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en). Tato možnost zřídí vaše místní identity služby Active Directory pro sadu G Suite.
-
-## <a name="common-issues"></a>Běžné problémy
-* G Suite vyžaduje, aby všichni zřízené uživatelé byli z ověřených domén. Ujistěte se, že každý uživatel, který chcete zřídit, má hlavní název uživatele (UPN) z ověřené domény v G Suite. Pokud je uživatel z neověřené domény v oboru pro zřizování, zobrazí se v [protokolech zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) chyba, jako je například "GoogleAppsInvalidDomain". Těmto chybám můžete zabránit a zajistit, aby uživatelé z neověřených domén byly mimo rozsah pomocí [filtru oborů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-    * Cílový atribut: userPrincipalName
-    * Operátor: regulární výraz odpovídá nebo není SHODNÝ s regulárním výrazem
-    * Hodnota:. *@domain.com
 
 ## <a name="additional-resources"></a>Další zdroje
 

@@ -7,19 +7,16 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715513"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158650"
 ---
 # <a name="assess-servers-using-imported-data"></a>Vyhodnocování serverů pomocí importovaných dat
 
-> [!NOTE]
-> Pokud tuto funkci na portále Azure Migrate ještě nevidíte, počkejte prosím. Zobrazí se za příští týden.
-
-Tento článek vysvětluje, jak vyhodnotit místní servery s [Azure Migrate: posouzení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool)pomocí importu metadat serveru pomocí CSV. Pomocí této metody vyhodnocení není nutné nastavovat zařízení Azure Migrate, abyste mohli vytvořit posouzení. To je užitečné v případě, že: 
+Tento článek vysvětluje, jak vyhodnotit místní servery s [Azure Migrate: posouzení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool)pomocí importu metadat serveru pomocí CSV. Pomocí této metody vyhodnocení není nutné nastavovat zařízení Azure Migrate, abyste mohli vytvořit posouzení. To je užitečné v případě, že:
 
 - Před nasazením zařízení chcete vytvořit rychlé počáteční posouzení.
 - Zařízení Azure Migrate ve vaší organizaci nemůžete nasadit.
@@ -29,7 +26,7 @@ Tento článek vysvětluje, jak vyhodnotit místní servery s [Azure Migrate: po
 
 ## <a name="before-you-start"></a>Než začnete
 
-Poznámky:
+Všimněte si, že:
 
 - V jednom souboru CSV můžete přidat maximálně 20000 serverů.
 - Do Azure Migrate projektu můžete přidat až 20000 serverů pomocí CSV.
@@ -49,7 +46,7 @@ V tomto kurzu se naučíte:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Nastavení oprávnění Azure pro Azure Migrate 
+## <a name="set-azure-permissions-for-azure-migrate"></a>Nastavení oprávnění Azure pro Azure Migrate
 
 Váš účet Azure potřebuje oprávnění k vytvoření projektu Azure Migrate.
 
@@ -116,10 +113,10 @@ Následující tabulka shrnuje pole souborů k vyplnění.
 
 **Název pole** | **Závaznou** | **Podrobnosti**
 --- | --- | ---
-**Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény. 
+**Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény.
 **IP adresa** | Ne | Adresa serveru.
 **Počet jader** | Ano | Počet jader procesoru přidělených serveru.
-**Rezident** | Ano | Celková velikost paměti RAM (MB) přidělená serveru.
+**Paměť** | Ano | Celková velikost paměti RAM (MB) přidělená serveru.
 **Název operačního systému** | Ano | Serverový operační systém.
 **Verze operačního systému** | Ne | Verze operačního systému serveru.
 **Počet disků** | Ne | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
@@ -144,7 +141,7 @@ Následující tabulka shrnuje pole souborů k vyplnění.
 **ID nástroje Virtual Machine Manager** | Ne | Toto je **InstanceUUid** pro VMware vCenter. Nepotřebujete pro Hyper-V.
 **Adresa MAC**| Ne | Adresa MAC serveru.
 **ID SYSTÉMU BIOS** | Ne | ID systému BIOS serveru.
-**ID vlastního serveru**| Ne | Místní jedinečná ID serveru v místním prostředí. <br/> Užitečné pro sledování importovaného serveru podle místního ID. 
+**ID vlastního serveru**| Ne | Místní jedinečná ID serveru v místním prostředí. <br/> Užitečné pro sledování importovaného serveru podle místního ID.
 **Název aplikace 1** | Ne | Názvy úloh, které běží na serveru.<br/> [Přidáním sloupců](#add-multiple-applications) do šablony můžete přidat podrobnosti pro další aplikace. Můžete přidat až pět aplikací.
 **Typ aplikace 1** | Ne | Typ úloh spuštěných na serveru
 **Verze aplikace 1** | Ne | Verze úloh spuštěných na serveru.
@@ -162,7 +159,7 @@ Posouzení rozpoznává konkrétní názvy operačních systémů. Libovolný n�
 
 ### <a name="add-multiple-disks"></a>Přidat více disků
 
-Šablona poskytuje výchozí pole pro první disk.  Podobné sloupce můžete přidat až pro 8 disků. 
+Šablona poskytuje výchozí pole pro první disk.  Podobné sloupce můžete přidat až pro 8 disků.
 
 Pokud například chcete zadat všechna pole pro druhý disk, přidejte sloupce:
 
@@ -192,10 +189,10 @@ Po přidání informací do šablony sdíleného svazku clusteru importujte serv
 
 1. V Azure Migrate > Vyhledat **počítače**, přejděte k vyplněné šabloně.
 2. Klikněte na **Importovat**.
-3. Zobrazí se stav importu. 
+3. Zobrazí se stav importu.
     - Pokud se ve stavu zobrazí upozornění, můžete je buď opravit, nebo pokračovat bez jejich adresování.
     - Vylepšení informací o serveru, jak je navrženo v upozorněních, vylepšuje přesnost posouzení.
-    - Chcete-li zobrazit a opravit upozornění, pokud se zobrazí, klikněte na tlačítko **Stáhnout podrobnosti upozornění. Sdílený svazek clusteru**. Tím se stáhne sdílený svazek clusteru s přidanými upozorněními. Můžete zkontrolovat upozornění a opravit problémy podle potřeby. 
+    - Chcete-li zobrazit a opravit upozornění, pokud se zobrazí, klikněte na tlačítko **Stáhnout podrobnosti upozornění. Sdílený svazek clusteru**. Tím se stáhne sdílený svazek clusteru s přidanými upozorněními. Můžete zkontrolovat upozornění a opravit problémy podle potřeby.
     Pokud se ve stavu objeví chyby (stav importu se **nezdařil**), je nutné je opravit, aby bylo možné pokračovat v importu. Provedete to tak, že si stáhnete sdílený svazek clusteru, který má teď přidané podrobnosti o chybě. Zkontrolujte a podle potřeby vyřešte chyby. Pak znovu nahrajte změněný soubor.
 4. Po **dokončení**importu se informace o serveru importují.
 
@@ -205,7 +202,7 @@ Po přidání informací do šablony sdíleného svazku clusteru importujte serv
 
 ## <a name="updating-server-information"></a>Aktualizace informací o serveru
 
-Informace o serveru můžete aktualizovat tak, že znovu nahrajete data pro server se stejným **názvem serveru**. Pole **název serveru** nemůžete změnit. 
+Informace o serveru můžete aktualizovat tak, že znovu nahrajete data pro server se stejným **názvem serveru**. Pole **název serveru** nemůžete změnit.
 
 Odstraňování serverů se v tuto chvíli nepodporuje.
 
@@ -300,25 +297,25 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 
 Název | Název
 --- | ---
-**A-H** | 
+**A-H** |
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5
-CentOS<br/>CentOS 4/5 | CoreOS Linux 
-Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD 
-**I-R** | 
+CentOS<br/>CentOS 4/5 | CoreOS Linux
+Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD
+**I-R** |
 IBM OS/2 | systémem |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11 
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | 
-**S-T** | 
+Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
+Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
+**S-T** |
 SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenity systémy eComStation 1<br/>Serenity systémy eComStation 2
 Systém Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
-**U-Z** | 
+**U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
-Windows 10<br/>Systém Windows 2000<br/>Systém Windows 3<br/>Windows 7<br/>Windows 8<br/>Systém Windows 95<br/>Systém Windows 98<br/>Systém Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Prahová hodnota pro Windows Server<br/>Windows Vista<br/>Webový server Windows 2008 R2<br/>Systém Windows XP Professional
-    
+Windows 10<br/>Windows 2000<br/>Systém Windows 3<br/>Windows 7<br/>Windows 8<br/>Systém Windows 95<br/>Systém Windows 98<br/>Systém Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Prahová hodnota pro Windows Server<br/>Windows Vista<br/>Webový server Windows 2008 R2<br/>Windows XP Professional
+
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 > [!div class="checklist"]
 > * Importované servery do Azure Migrate: posouzení serveru pomocí sdíleného svazku clusteru.

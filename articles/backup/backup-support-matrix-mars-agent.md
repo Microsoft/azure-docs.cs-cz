@@ -1,18 +1,14 @@
 ---
-title: Matice podpory pro agenta Microsoft Azure Recovery Services
+title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
-author: dcurwin
-ms.service: backup
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090555"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172062"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -54,7 +50,7 @@ Změny umístění | Umístění mezipaměti můžete změnit zastavením záloh
 
 ## <a name="networking-and-access-support"></a>Podpora sítí a přístupu
 
-### <a name="url-access"></a>Přístup URL
+### <a name="url-and-ip-access"></a>Adresa URL a přístup k IP adrese
 
 Agent MARS potřebuje přístup k těmto adresám URL:
 
@@ -63,6 +59,11 @@ Agent MARS potřebuje přístup k těmto adresám URL:
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+
+A na tyto IP adresy:
+
+- 20.190.128.0/18
+- 40.126.0.0/18
 
 ### <a name="throttling-support"></a>Podpora omezování
 
@@ -76,7 +77,12 @@ Omezení sítě | Není k dispozici pro zálohované počítače se systémem Wi
 >[!NOTE]
 > Agent MARS nepodporuje SKU jádra systému Windows Server.
 
-Agenta MARS můžete použít k zálohování přímo do Azure v některých operačních systémech, které běží na místních počítačích a virtuálních počítačích Azure. Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější aktualizace a aktualizace Service Pack. Následující tabulka shrnuje tyto operační systémy:
+Můžete použít agenta MARS k zálohování přímo do Azure v operačních systémech uvedených níže:
+
+1. Místní Windows servery
+2. Virtuální počítače Azure s Windows
+
+Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější aktualizace a aktualizace Service Pack. Následující tabulka shrnuje tyto operační systémy:
 
 **Operační systém** | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**
 --- | --- | --- | ---
@@ -128,7 +134,7 @@ OneDrive (synchronizované soubory jsou zhuštěné streamy)| Nepodporuje se.
 Svazky jen pro čtení| Nepodporováno | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
 Offline svazky| Nepodporováno |Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.
 Sdílená síťová složka| Nepodporováno |Svazek musí být na serveru místní.
-Svazky chráněné nástrojem BitLocker| Nepodporováno |Svazek musí být před zahájením zálohování odemčen.
+Svazky zamčené nástrojem BitLocker| Nepodporováno |Svazek musí být před zahájením zálohování odemčen.
 Identifikace systému souborů| Nepodporováno |Podporován je pouze systém souborů NTFS.
 Vyměnitelná média| Nepodporováno |Všechny zdroje záložních položek musí mít *pevný* stav.
 Jednotky s odstraněnými duplicitními daty | Podporuje se | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.

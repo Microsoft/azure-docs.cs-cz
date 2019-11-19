@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c789d48656173721432779aeaba0530950527fa1
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b91554269ab7ddf15458545715e7a3a40cc1ceb6
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646924"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158702"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Rychlý Start: Klientská knihovna Azure Key Vault pro .NET (SDK v4)
 
@@ -25,7 +25,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Zjednodušte a automatizujte úlohy pro certifikáty SSL/TLS.
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
-[Referenční dokumentace k rozhraní API](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) |  | balíček [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) [(NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[Referenční dokumentace k rozhraní API](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) |  | balíček [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) [(NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,10 +39,7 @@ V tomto rychlém startu se předpokládá, že používáte příkazy `dotnet`, 
 
 ### <a name="create-new-net-console-app"></a>Vytvořit novou konzolovou aplikaci .NET
 
-Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE).
-
-V okně konzoly pomocí příkazu `dotnet new` vytvořte novou konzolovou aplikaci s názvem `akv-dotnet`.
-
+V okně konzoly pomocí příkazu `dotnet new` vytvořte novou konzolovou aplikaci .NET s názvem `akv-dotnet`.
 
 ```console
 dotnet new console -n key-vault-console-app

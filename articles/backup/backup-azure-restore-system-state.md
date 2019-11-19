@@ -1,19 +1,15 @@
 ---
-title: 'Azure Backup: obnovení stavu systému na Windows Server'
+title: Obnovení stavu systému na Windows Server
 description: Podrobný popis postupu obnovení stavu systému Windows Server ze zálohy v Azure.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.author: dacurwin
-ms.openlocfilehash: 5fc9eb5a85b5ce834060f3f35e89ebc2acea2244
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074207"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172811"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -93,7 +89,7 @@ Terminologie použitá v těchto krocích zahrnuje:
 6. V podokně vybrat záložní server vyberte *zdrojový počítač* ze seznamu zobrazených počítačů.
 7. V podokně vybrat režim obnovení zvolte možnost **stav systému** a klikněte na tlačítko **Další**.
 
-    ![Hledat](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. V kalendáři v podokně **Vybrat svazek a datum** vyberte bod obnovení. Můžete obnovit z libovolného bodu obnovení v čase. Kalendářní data **tučně** označují dostupnost alespoň jednoho bodu obnovení. Jakmile vyberete datum, pokud je k dispozici více bodů obnovení, zvolte konkrétní bod obnovení z rozevírací nabídky **čas** .
 

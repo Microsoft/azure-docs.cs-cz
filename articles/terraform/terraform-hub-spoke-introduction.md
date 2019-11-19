@@ -1,17 +1,14 @@
 ---
 title: Kurz – vytvoření hybridní síťové topologie centra a paprsků v Azure pomocí Terraformu
 description: Kurz ilustrující postup vytvoření celé hybridní síťové referenční architektury v Azure pomocí Terraformu
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969398"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159035"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Kurz: Vytvoření hybridní síťové topologie centra a paprsků v Azure pomocí Terraformu
 
@@ -29,7 +26,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Použití Terraformu k navázání bran a připojení mezi místním prostředím a sítěmi Azure
 > * Použití Terraformu k vytváření partnerských vztahů virtuálních sítí pro sítě paprsků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 

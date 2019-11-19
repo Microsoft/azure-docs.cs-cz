@@ -3,17 +3,13 @@ title: Kurz – konfigurace témat v Azure Service Bus pomocí Ansible
 description: Naučte se používat Ansible k vytvoření tématu Azure Service Bus
 keywords: Ansible, Azure, DevOps, bash, PlayBook, Service Bus, témata, předplatná
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 952779db582f9437f10608bf86b0b80560ded2c0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241222"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155790"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Kurz: Konfigurace témat v Azure Service Bus pomocí Ansible
 
@@ -26,13 +22,13 @@ ms.locfileid: "72241222"
 > [!div class="checklist"]
 >
 > * Vytvoření tématu
-> * Vytvoření předplatného
+> * Vytvoření odběru
 > * Vytvoření zásady SAS
 > * Načíst informace oboru názvů
 > * Načtení informací o tématu a předplatném
 > * Odvolání zásad SAS
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -44,7 +40,7 @@ Vzorový PlayBook kód vytvoří následující prostředky:
 - Obor názvů Service Bus v rámci skupiny prostředků
 - Service Bus téma s oborem názvů
 
-Následující PlayBook uložte jako `servicebus_topic.yml`:
+Uložte následující ukázkový playbook jako `servicebus_topic.yml`:
 
 ```yml
 ---
@@ -104,7 +100,7 @@ Vzorový kód PlayBook vytvoří odběr v rámci Service Bus tématu. Témata Az
           var: subs
 ```
 
-Následující PlayBook uložte jako `servicebus_subscription.yml`:
+Uložte následující ukázkový playbook jako `servicebus_subscription.yml`:
 
 Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
@@ -118,7 +114,7 @@ ansible-playbook servicebus_subscription.yml
 
 Vzorový kód PlayBook vytvoří dvě zásady SAS pro Service Bus frontu s různými oprávněními.
 
-Následující PlayBook uložte jako `servicebus_topic_policy.yml`:
+Uložte následující ukázkový playbook jako `servicebus_topic_policy.yml`:
 
 ```yml
 ---
@@ -153,7 +149,7 @@ ansible-playbook servicebus_topic_policy.yml
 
 Vzorový kód PlayBook se dotazuje na informace oboru názvů.
 
-Následující PlayBook uložte jako `servicebus_namespace_info.yml`:
+Uložte následující ukázkový playbook jako `servicebus_namespace_info.yml`:
 
 ```yml
 ---
@@ -174,7 +170,7 @@ Následující PlayBook uložte jako `servicebus_namespace_info.yml`:
 ```
 
 Před spuštěním PlayBook se podívejte na následující poznámky:
-- Hodnota `show_sas_policies` označuje, zda se mají v rámci zadaného oboru názvů zobrazovat zásady SAS. Ve výchozím nastavení je hodnota `False`, aby se předešlo dalšímu síťovému zatížení.
+- Hodnota `show_sas_policies` označuje, jestli se mají v rámci zadaného oboru názvů zobrazovat zásady SAS. Ve výchozím nastavení je hodnota `False`, aby nedošlo k další režii sítě.
 
 Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
@@ -188,7 +184,7 @@ Vzorový kód PlayBook se dotazuje na následující informace:
 - Informace o Service Busm tématu
 - Seznam podrobností o předplatném pro téma
  
-Následující PlayBook uložte jako `servicebus_list.yml`:
+Uložte následující ukázkový playbook jako `servicebus_list.yml`:
 
 ```yml
 ---
@@ -221,7 +217,7 @@ Následující PlayBook uložte jako `servicebus_list.yml`:
 ```
 
 Před spuštěním PlayBook se podívejte na následující poznámky:
-- Hodnota `show_sas_policies` označuje, zda se mají v zadané frontě zobrazovat zásady SAS. Ve výchozím nastavení je tato hodnota nastavená na `False`, aby se předešlo dalšímu síťovému zatížení.
+- Hodnota `show_sas_policies` označuje, jestli se mají v zadané frontě zobrazovat zásady SAS. Ve výchozím nastavení je tato hodnota nastavená na `False`, aby se předešlo dalšímu síťovému zatížení.
 
 Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
@@ -233,7 +229,7 @@ ansible-playbook servicebus_list.yml
 
 Vzorový kód PlayBook odstraní zásady SAS pro frontu.
 
-Následující PlayBook uložte jako `servicebus_queue_policy_delete.yml`:
+Uložte následující ukázkový playbook jako `servicebus_queue_policy_delete.yml`:
 
 ```yml
 ---

@@ -3,17 +3,13 @@ title: Kurz – konfigurace rolí řízení přístupu na základě role (RBAC) 
 description: Naučte se používat Ansible ke konfiguraci RBAC v clusteru Azure Kubernetes Service (AKS).
 keywords: Ansible, Azure, DevOps, bash, cloudshellu, PlayBook, AKS, Container, AKS, Kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 36a6f5ade7a60a989d2e80f2405aaa2d1d50b756
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242333"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156867"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: Konfigurace rolí řízení přístupu na základě role (RBAC) ve službě Azure Kubernetes Service (AKS) pomocí Ansible
 
@@ -30,12 +26,12 @@ AKS je možné nakonfigurovat tak, aby pro ověřování uživatelů používala
 > * Vytvoření clusteru AKS s povolenou službou Azure AD
 > * Konfigurace role RBAC v clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Instalace knihovny RedHat OpenShift** -  @ no__t-2
+- **Instalace knihovny RedHat OpenShift library** - `pip install openshift`
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>Konfigurace Azure AD pro ověřování AKS
 
@@ -123,7 +119,7 @@ Uložte následující ukázkový playbook jako `aks-create.yml`:
 
 Pokud chcete vytvořit vazbu RBAC, musíte nejdřív získat ID objektu Azure AD. 
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Do vyhledávacího pole v horní části stránky zadejte `Azure Active Directory`. 
 
@@ -160,9 +156,9 @@ subjects:
   name: <your-aad-account>
 ```
 
-Zástupné znaky `&lt;your-aad-account>` nahraďte vaším [ID objektu](#get-the-azure-ad-object-id)TENANTA Azure AD.
+Zástupný text `&lt;your-aad-account>` nahraďte svým [ID objektu](#get-the-azure-ad-object-id)TENANTA Azure AD.
 
-Uložte následující PlayBook – nasazení nové role do AKS-as `aks-kube-deploy.yml`:
+Uložte následující PlayBook – nasazení nové role do AKS – jako `aks-kube-deploy.yml`:
 
 ```yml
 - name: Apply role to AKS

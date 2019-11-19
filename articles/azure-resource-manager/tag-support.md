@@ -2,13 +2,13 @@
 title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: c0f36568bbbf824285cfaa3385d2225e0a989639
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/18/2019
+ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149207"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173551"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů.
@@ -673,7 +673,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ReservationRecommendations | Ne | Ne |
 > | ReservationSummaries | Ne | Ne |
 > | ReservationTransactions | Ne | Ne |
-> | Značky | Ne | Ne |
+> | Tags | Ne | Ne |
 > | Tenantů | Ne | Ne |
 > | Výrazy | Ne | Ne |
 > | UsageDetails | Ne | Ne |
@@ -738,7 +738,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Upozornění | Ne | Ne |
+> | Výstrahy | Ne | Ne |
 > | billingAccounts | Ne | Ne |
 > | Rozpočty | Ne | Ne |
 > | CloudConnectors | Ne | Ne |
@@ -1364,14 +1364,12 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | Ano | Ano |
-> | netAppAccounts/backupPolicies | Ano | Ano |
-> | netAppAccounts/capacityPools | Ano | Ano |
-> | netAppAccounts/capacityPools/svazky | Ano | Ano |
-> | netAppAccounts/capacityPools/svazky/zálohy | Ne | Ne |
-> | netAppAccounts/capacityPools/svazky/mountTargets | Ano | Ano |
-> | netAppAccounts/capacityPools/svazky/snímky | Ano | Ano |
-> | netAppAccounts nebo trezory | Ne | Ne |
+> | netAppAccounts | Ano | Ne |
+> | netAppAccounts/capacityPools | Ano | Ne |
+> | netAppAccounts/capacityPools/svazky | Ano | Ne |
+> | netAppAccounts/capacityPools/svazky/mountTargets | Ano | Ne |
+> | netAppAccounts/capacityPools/svazky/snímky | Ano | Ne |
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]

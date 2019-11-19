@@ -1,17 +1,14 @@
 ---
 title: Rychlý Start – vytvoření konfigurace Terraformu pro Azure
 description: Začněte s Terraformu v Azure nasazením Azure Cosmos DB a Azure Container Instances.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 07c1839afcc29c7089540c587a3a32eae14944ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969858"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159312"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Rychlý Start: Vytvoření konfigurace Terraformu pro Azure
 
@@ -26,7 +23,7 @@ V tomto rychlém startu vytvoříte prostředky Azure pomocí Terraformu. Postup
 
 V této části vytvoříte konfiguraci pro instanci Azure Cosmos DB.
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete Azure Cloud Shell.
 
@@ -69,7 +66,7 @@ V této části vytvoříte konfiguraci pro instanci Azure Cosmos DB.
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="run-the-configuration"></a>Spuštění konfigurace
 
@@ -141,7 +138,7 @@ V této části se dozvíte, jak aktualizovat konfiguraci tak, aby zahrnovala in
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 1. Jak jste pracovali v předchozí části, spusťte následující příkaz, který provede vizuální změny, které se mají provést:
 

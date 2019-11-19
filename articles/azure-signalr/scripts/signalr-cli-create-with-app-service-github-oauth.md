@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření webové aplikace využívající službu SignalR a ověřování GitHubu
+title: Vytvoření webové aplikace pomocí služby signalizace a ověřování GitHubu
 description: Ukázkový skript Azure CLI – Vytvoření webové aplikace využívající službu SignalR a ověřování GitHubu
 author: sffamily
 ms.service: signalr
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: b5d05e37d9abb5b38fa5b5722c7f60d5f508a755
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579379"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158041"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Vytvoření webové aplikace využívající službu SignalR a ověřování GitHubu
 
@@ -105,7 +105,7 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Zobrazí se
 
 Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento skript používá následující příkazy:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az signalr create](/cli/azure/signalr#az-signalr-create) | Vytvoří prostředek služby Azure SignalR. |

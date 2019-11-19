@@ -1,18 +1,14 @@
 ---
-title: Architektura Azure Backup
+title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: dacurwin
-ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074348"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173520"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -96,7 +92,7 @@ Spotřeba úložiště, plánovaná doba obnovení (RTO) a spotřeba sítě se u
 
 Následující tabulka shrnuje podporované funkce pro různé typy zálohování:
 
-**Funkce** | **Místní počítače se systémem Windows Server (přímé)** | **Virtuální počítače Azure** | **Počítače nebo aplikace s DPM/MABS**
+**Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
 Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
 Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
@@ -106,7 +102,7 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 
 ![Klíč tabulky](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architektura: přímé zálohování virtuálních počítačů Azure
+## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Integrovaná záloha virtuálního počítače Azure
 
 1. Když povolíte zálohování pro virtuální počítač Azure, zálohování se spustí podle plánu, který zadáte.
 1. Při prvním zálohování se na virtuálním počítači nainstaluje rozšíření zálohování, pokud je virtuální počítač spuštěný.

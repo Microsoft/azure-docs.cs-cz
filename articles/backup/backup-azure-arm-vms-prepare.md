@@ -1,19 +1,14 @@
 ---
-title: Zálohování virtuálních počítačů Azure v Recovery Servicesovém trezoru s Azure Backup
+title: Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
-service: backup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 2ef8e7e77481c0df6e85545d16c3859949184d2f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968544"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173345"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -34,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="before-you-start"></a>Než začnete
 
-* [Zkontrolujte](backup-architecture.md#architecture-direct-backup-of-azure-vms) architekturu zálohování virtuálních počítačů Azure.
+* [Zkontrolujte](backup-architecture.md#architecture-built-in-azure-vm-backup) architekturu zálohování virtuálních počítačů Azure.
 * [Další informace](backup-azure-vms-introduction.md) Zálohování virtuálních počítačů Azure a záložní rozšíření.
 * Před konfigurací zálohování [si přečtěte tabulku podpory](backup-support-matrix-iaas.md) .
 
@@ -47,7 +42,7 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
 
  Trezor ukládá zálohy a body obnovení vytvořené v průběhu času a ukládá zásady zálohování přidružené k zálohovaným počítačům. Vytvořte Trezor následujícím způsobem:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 2. Do Hledat zadejte **Recovery Services**. V části **služby**klikněte na **Recovery Services trezory**.
 
      ![Hledat trezory Recovery Services](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -177,8 +172,8 @@ Stav úlohy se může lišit v závislosti na následujících scénářích:
 Dokončeno | Probíhá | Probíhá
 Dokončeno | Přeskočeno | Dokončeno
 Dokončeno | Dokončeno | Dokončeno
-Dokončeno | Selhalo | Dokončeno s upozorněním
-Selhalo | Selhalo | Selhalo
+Dokončeno | Neúspěch | Dokončeno s upozorněním
+Neúspěch | Neúspěch | Neúspěch
 
 Díky této funkci se můžou dvě zálohy spustit paralelně, ale v obou fázích (snímky, přenos dat do trezoru) může běžet jenom jedna dílčí úloha. Takže v rámci scénářů skončila úloha zálohování v průběhu příštího dne neúspěšného zálohování v této funkci odpojuje se. V dalších dnech můžou být snímky dokončené **, zatímco přenos dat do trezoru** se přeskočil, pokud probíhá úloha zálohování staršího dne.
 Přírůstkový bod obnovení vytvořený v trezoru bude zachytit všechny změny z posledního bodu obnovení vytvořeného v trezoru. Na uživatele není žádný vliv na náklady.
@@ -189,7 +184,7 @@ Přírůstkový bod obnovení vytvořený v trezoru bude zachytit všechny změn
 
 Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozšíření na agenta virtuálního počítače Azure, který běží na počítači. Pokud byl váš virtuální počítač vytvořen z bitové kopie Azure Marketplace, je agent nainstalovaný a spuštěný. Pokud vytvoříte vlastní virtuální počítač nebo migrujete místní počítač, možná budete muset agenta nainstalovat ručně, jak je shrnuto v tabulce.
 
-**SÍŤ** | **Podrobnosti**
+**VM** | **Podrobnosti**
 --- | ---
 **Windows** | 1. [Stáhněte a nainstalujte](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) soubor MSI agenta.<br/><br/> 2. Nainstalujte na počítači oprávnění správce.<br/><br/> 3. Ověřte instalaci. V *C:\WindowsAzure\Packages* na virtuálním počítači klikněte pravým tlačítkem na **WaAppAgent. exe** > **vlastnosti**. Na kartě **Podrobnosti** by **verze produktu** měla být 2.6.1198.718 nebo vyšší.<br/><br/> Pokud aktualizujete agenta, zajistěte, aby neběžely žádné operace zálohování, a [přeinstalujte agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Nainstalujte pomocí balíčku ot./min. nebo balíčku DEB z úložiště balíčků distribuce. Toto je upřednostňovaná metoda pro instalaci a upgrade agenta Azure Linux. Všichni [poskytovatelé schválené distribuce](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrují balíček agenta Azure Linux do svých imagí a úložišť. Agent je k dispozici na [GitHubu](https://github.com/Azure/WALinuxAgent), ale nedoporučujeme ho instalovat.<br/><br/> Pokud aktualizujete agenta, zajistěte, aby neběžely žádné operace zálohování, a aktualizujte binární soubory.
@@ -199,7 +194,7 @@ Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozš
 Rozšíření zálohování spuštěné na virtuálním počítači potřebuje odchozí přístup k veřejným IP adresám Azure.
 
 * Obecně není nutné explicitně povolit odchozí síťový přístup k virtuálnímu počítači Azure, aby mohl komunikovat s Azure Backup.
-* Pokud narazíte na problémy s připojením virtuálních počítačů, nebo pokud se při pokusu o připojení zobrazí chyba **ExtensionSnapshotFailedNoNetwork** , měli byste explicitně povolit přístup, aby záložní rozšíření mohlo komunikovat s veřejnou IP adresou Azure pro zálohování. prostřednictvím. Metody přístupu jsou shrnuty v následující tabulce.
+* Pokud narazíte na problémy s připojením k virtuálním počítačům, nebo pokud se při pokusu o připojení zobrazí chyba **ExtensionSnapshotFailedNoNetwork** , měli byste explicitně povolit přístup, aby záložní rozšíření mohlo komunikovat s veřejnými IP adresami Azure pro přenos dat zálohy. Metody přístupu jsou shrnuty v následující tabulce.
 
 **Možnost** | **Akce** | **Podrobnosti**
 --- | --- | ---

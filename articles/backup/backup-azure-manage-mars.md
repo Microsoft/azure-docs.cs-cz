@@ -1,21 +1,17 @@
 ---
-title: Správa & monitorování Microsoft Azure Recovery Services zálohování agenta
-description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure Recovery Services pomocí služby Azure Backup.
+title: Správa a sledování záloh agenta MARS
+description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup.
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: edb672f97f467378176bf6cdf04fe8e22cc5e51b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074998"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173071"
 ---
-# <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services pomocí služby Azure Backup
+# <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
 Tento článek popisuje, jak spravovat soubory a složky, které se zálohují pomocí agenta Microsoft Azure Recovery Services.
 

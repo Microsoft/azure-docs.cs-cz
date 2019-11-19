@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3f5e01a0ceebac092084e339994161763a11c49b
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240425"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158864"
 ---
-# <a name="tutorial-monitor-your-data"></a>Kurz: Sledujte svoje
+# <a name="tutorial-monitor-your-data"></a>Kurz: monitorování vašich dat
 
 
 
-Po [připojení zdrojů](quickstart-onboard.md) dat ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby Azure Sentinel s Azure monitor sešity, které poskytují univerzálnost při vytváření vlastních řídicích panelů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/app/usage-workbooks.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
+Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby Azure Sentinel se sešity Azure monitor, která poskytuje univerzálnost při vytváření vlastních řídicích panelů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/app/usage-workbooks.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
 
 
 Tento kurz vám pomůže monitorovat data v rámci Azure Sentinel.
@@ -43,7 +43,7 @@ Tento kurz vám pomůže monitorovat data v rámci Azure Sentinel.
 ## <a name="use-built-in-workbooks"></a>Použití vestavěných sešitů
 
 1. Přejděte na **sešity** a pak vyberte **šablony** . zobrazí se úplný seznam integrovaných sešitů Sentinel Azure. Chcete-li zjistit, které z nich jsou relevantní pro datové typy, které jste připojili, pole s **požadovanými datovými typy** v jednotlivých sešitích zobrazí datový typ vedle zelené značky zaškrtnutí, pokud už máte ke streamování relevantních dat do Azure Sentinel.
-  ![Přejít na sešity](./media/tutorial-monitor-data/access-workbooks.png)
+  ![přejít na sešity](./media/tutorial-monitor-data/access-workbooks.png)
 1. Kliknutím na **Zobrazit sešit** zobrazíte šablonu vyplněnou daty.
   
 1. Chcete-li upravit sešit, vyberte možnost **Uložit**a poté vyberte umístění, kam chcete uložit soubor JSON pro šablonu. 
@@ -53,16 +53,16 @@ Tento kurz vám pomůže monitorovat data v rámci Azure Sentinel.
 
 
 1. Vyberte **Zobrazit sešit**. Pak klikněte na tlačítko **Upravit** v horní části. Teď můžete sešit upravit a přizpůsobit ho podle svých potřeb. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/app/usage-workbooks.md).
-![Zobrazit sešity](./media/tutorial-monitor-data/workbook-graph.png)
+![zobrazit sešity](./media/tutorial-monitor-data/workbook-graph.png)
 1. Až změny provedete, můžete sešit uložit. 
 
-1. Můžete také naklonovat sešit: Vyberte **Upravit** a pak **Uložit jako**a nezapomeňte ho uložit s jiným názvem v rámci stejného předplatného a skupiny prostředků. Tyto sešity se zobrazí na kartě **Moje sešity** .
+1. Sešit můžete také klonovat: vyberte **Upravit** a pak ho **uložte jako**a nezapomeňte ho uložit s jiným názvem, a to v rámci stejného předplatného a skupiny prostředků. Tyto sešity se zobrazí na kartě **Moje sešity** .
 
 
 ## <a name="create-new-workbook"></a>Vytvořit nový sešit
 
 1. Chcete-li vytvořit nový sešit od začátku, klikněte na **sešity** a pak vyberte **Přidat sešit** .
-  ![Přejít na sešity](./media/tutorial-monitor-data/create-workbook.png)
+  ![přejít na sešity](./media/tutorial-monitor-data/create-workbook.png)
 
 1. Chcete-li upravit sešit, vyberte možnost **Upravit**a pak podle potřeby přidejte text, dotazy a parametry. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/app/usage-workbooks.md). 
 
@@ -72,7 +72,7 @@ Tento kurz vám pomůže monitorovat data v rámci Azure Sentinel.
 
 1. Pokud chcete ostatním uživatelům ve vaší organizaci umožnit používání sešitu, v části **Uložit na** výběr **sdílených sestav**. Pokud chcete, aby byl tento sešit dostupný jenom pro vás, vyberte **Moje sestavy**.
 
-1. Chcete-li přepínat mezi sešity v pracovním prostoru, můžete v](./media/tutorial-monitor-data/switch.png)horním podokně libovolného sešitu vybrat možnost **otevřít** ![sešity Switch. V okně, které se otevře vpravo, přepínejte mezi sešity.
+1. Chcete-li přepínat mezi sešity v pracovním prostoru, můžete v horním podokně libovolného sešitu vybrat možnost ![**otevřít**](./media/tutorial-monitor-data/switch.png)sešity. V okně, které se otevře vpravo, přepínejte mezi sešity.
 
    ![Přepnout sešity](./media/tutorial-monitor-data/switch-workbooks.png)
 
@@ -81,10 +81,7 @@ Tento kurz vám pomůže monitorovat data v rámci Azure Sentinel.
 
 Můžete odstranit sešity vytvořené ze šablony Sentinel Azure. 
 
-Postup odstranění přizpůsobeného sešitu:
-1.  Vyberte **Zobrazit sešit**.
-2.  V horní části vyberte **otevřít** .
-3.  V tabulce se seznamem sešitů na řádku sešitu, který chcete odstranit, vyberte tři tečky na konci řádku... Chcete-li otevřít nabídku, vyberte možnost **Odstranit**. Tím se odstraní uložený sešit.
+Pokud chcete odstranit přizpůsobený sešit, vyberte na stránce sešity uložený sešit, který chcete odstranit, a vyberte **Odstranit**. Tím se odstraní uložený sešit.
 
 > [!NOTE]
 > Tím se odstraní prostředek i všechny změny, které jste v šabloně udělali. Původní šablona zůstane dostupná.

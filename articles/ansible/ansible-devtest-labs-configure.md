@@ -1,19 +1,15 @@
 ---
 title: Kurz – konfigurace cvičení v Azure DevTest Labs pomocí Ansible
 description: Naučte se konfigurovat testovací prostředí v Azure DevTest Labs pomocí Ansible.
-ms.service: ansible
 keywords: Ansible, Azure, DevOps, bash, PlayBook, DevTest Labs
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d035c76a811df45af5ed8183b86e14a2ee6218b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b6981ee94c4d82997c574db037befb9782465d08
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241662"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156273"
 ---
 # <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Kurz: Konfigurace cvičení v Azure DevTest Labs pomocí Ansible
 
@@ -37,13 +33,13 @@ ms.locfileid: "72241662"
 > * Vytvořit bitovou kopii testovacího prostředí
 > * Odstranění testovacího prostředí
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
 Vzorový fragment PlayBook vytvoří skupinu prostředků Azure. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
@@ -77,7 +73,7 @@ Nastavení zásad testovacího prostředí můžete nastavit. Lze nastavit násl
 - `user_owned_lab_premium_vm_count` je počet virtuálních počítačů úrovně Premium, které může uživatel vlastnit.
 - `lab_vm_count` je maximální počet virtuálních počítačů v testovacím prostředí.
 - `lab_premium_vm_count` je maximální počet virtuálních počítačů testovacího prostředí úrovně Premium
-- @no__t – 0 je povolená velikost virtuálních počítačů testovacího prostředí (s).
+- `lab_vm_size` je povolená velikost virtuálních počítačů testovacího prostředí:
 - `gallery_image` jsou povolené image galerie.
 - `user_owned_lab_vm_count_in_subnet` je maximální počet virtuálních počítačů uživatele v podsíti.
 - `lab_target_cost` jsou cílové náklady testovacího prostředí.
@@ -97,7 +93,7 @@ Nastavení zásad testovacího prostředí můžete nastavit. Lze nastavit násl
 
 Ukázkový úkol v této části nakonfiguruje plán testovacího prostředí. 
 
-V následujícím fragmentu kódu se hodnota `lab_vms_startup` používá k určení času spuštění virtuálního počítače. Podobně nastavení hodnoty `lab_vms_shutdown` vytvoří čas vypnutí testovacího prostředí.
+V následujícím fragmentu kódu se hodnota `lab_vms_startup` používá k určení času spuštění virtuálního počítače. Podobně nastavením hodnoty `lab_vms_shutdown` se vytvoří čas vypnutí testovacího prostředí virtuálního počítače.
 
 ```yml
 - name: Set the lab schedule

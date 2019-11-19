@@ -1,17 +1,14 @@
 ---
 title: Kurz – vytvoření zařízení virtuální sítě rozbočovače v Azure pomocí Terraformu
 description: Kurz implementuje vytvoření virtuální sítě rozbočovače, která funguje jako společný bod připojení mezi všemi ostatními sítěmi.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 5696ee20f6f306d45c5d7ba04552b9206f2a5429
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 28ccb89d237cbe21dd0433da5f7fbb32883f6550
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969375"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159242"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Kurz: vytvoření zařízení virtuální sítě rozbočovače v Azure pomocí Terraformu
 
@@ -27,7 +24,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Použití Terraformu k povolení tras pomocí rozšíření CustomScript
 > * Použití Terraformu k vytvoření směrovacích tabulek brány hub a paprsků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
 1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).

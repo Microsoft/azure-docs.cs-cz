@@ -1,18 +1,14 @@
 ---
-title: Odpovědi na běžné dotazy týkající se funkcí Azure Backup
+title: Odpovědi na časté otázky
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: efd2959547e13872bfa73a0a8e4b9fda62ea5728
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074322"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173228"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – často kladené otázky
 
@@ -96,6 +92,8 @@ Windows Storage Server 2012 R2 64 bit | Standard, Workgroup, Essential | S nejno
 Windows Storage Server 2012 64 – bit | Standard, Workgroup | S nejnovějšími aktualizacemi nebo aktualizacemi Service Pack.
 Windows Server 2008 R2 SP1 64 bit | Standard, Enterprise, Datacenter, Foundation | S nejnovějšími aktualizacemi.
 Windows Server 2008 64 – bit | Standard, Enterprise, Datacenter | S nejnovějšími aktualizacemi.
+
+Azure Backup nepodporuje 32 operačních systémů.
 
 Pro zálohování virtuálních počítačů Azure se Azure Backup podporuje [seznam distribucí, které Azure schválil](../virtual-machines/linux/endorsed-distros.md), s výjimkou základního operačního systému Linux a 32. Další vlastní distribuce systému Linux mohou fungovat, pokud je na virtuálním počítači k dispozici agent virtuálního počítače a podpora Pythonu existuje.
 

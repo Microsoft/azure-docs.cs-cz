@@ -1,37 +1,33 @@
 ---
-title: Nasazení aplikace do Azure pomocí Habitat
-description: Zjistěte, jak konzistentně nasadit vaše aplikace na Azure virtual machines a kontejnerů
-keywords: Azure, chef, devops, virtuální počítače, přehled, automatizovat, habitat
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Nasazení aplikace do Azure pomocí stanoviště
+description: Postup, jak konzistentně nasadit vaši aplikaci do virtuálních počítačů a kontejnerů Azure
+keywords: Azure, DevOps, virtuální počítače, přehled, automatizace, stanoviště
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 2bdcd4c504822a2e60156b0ac565465e0cf23a85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de444836c04d1d37a19a006ce4eafdcae867ca5a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388807"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158054"
 ---
-# <a name="use-habitat-to-deploy-your-application-to-azure"></a>Nasazení aplikace do Azure pomocí Habitat
-[Habitat](https://www.habitat.sh/) je systém aplikace balení a modulu runtime, který obsahuje ureitou aplikace a její automatizace společně jako jednotky nasazení. Tím se vytvoří ultimate přenositelnost pro aplikace, což umožňuje nasadit kontejnery, virtuálních počítačích, holých počítačů nebo PaaS, bez přepisování nebo opakovanému balení.
+# <a name="use-habitat-to-deploy-your-application-to-azure"></a>Nasazení aplikace do Azure pomocí stanoviště
+[Stanoviště](https://www.habitat.sh/) je balíčky aplikací a běhový systém, který tvoří aplikaci a její automatizaci společně jako jednotku nasazení. Tím se vytvoří maximální přenositelnost aplikace, která umožňuje její nasazení do kontejnerů, virtuálních počítačů, holého nebo PaaS bez nutnosti přepisování nebo opětovného balení.
 
-Tento článek popisuje hlavní výhody použití Habitat.
+Tento článek popisuje hlavní výhody používání stanovišť.
 
-## <a name="modernize-and-move-legacy-applications"></a>Modernizace a přesuňte starší verze aplikace
-Bezplatné starší aplikace ze starší operační systémy a middleware, ve kterém pomocí Habitatu. Výsledný artefakt je přenosný a snadno replatforms na novější infrastrukturu, jako jsou virtuální počítače a kontejnery v cloudu.
+## <a name="modernize-and-move-legacy-applications"></a>Modernizovat a přesunutí starších verzí aplikací
+Bezplatné starší verze aplikací ze starších operačních systémů a middlewaru jejich přebalením pomocí stanovišť. Výsledný artefakt je přenosný a snadno se replatformuje do novější infrastruktury, jako jsou virtuální počítače nebo kontejnery běžící v cloudu.
 
-## <a name="accelerate-container-adoption"></a>Rychlejší přijetí kontejneru
-Průběžné nasazování složitých aplikací zaměřených na mikroslužby habitat řeší tím, přesně závislosti modulu runtime. Přesunout nad rámec jednoduché modrozelené nasazení jednotlivých součástí a navrhovat chování sofistikované nasazení bez generování událostí komplexní Orchestrace toky.
+## <a name="accelerate-container-adoption"></a>Zrychlení přijetí kontejneru
+Stanoviště řeší průběžné nasazování komplexních aplikací orientovaných na mikroslužby, které přesně představují závislosti modulu runtime. Přechází mezi jednoduchým modrým/zeleným nasazením jednotlivých komponent a návrhem sofistikovaného chování při nasazování bez generování složitých toků orchestrace.
 
 ## <a name="run-any-application-anywhere"></a>Spuštění libovolné aplikace kdekoli
-Pomocí Habitatu aplikace se můžou spouštět v jakémkoli prostředí modulu runtime bez úprav. To zahrnuje všechno od holých počítačů a virtuálních počítačů na kontejnery (jako je Docker), systémů pro správu clusteru (třeba Mesosphere nebo Kubernetes) a PaaS systémy (například Pivotal Cloud Foundry).
+S použitím stanovišť můžou být aplikace v jakémkoli běhovém prostředí spuštěné beze změny. To zahrnuje vše z holého počítače a virtuálních počítačů do kontejnerů (jako jsou Docker), systémy pro správu clusteru (například Mesosphere nebo Kubernetes) a systémy PaaS (například Pivoting Cloud Foundry).
 
-## <a name="integrate-into-the-chef-devops-workflow"></a>Integrace do pracovních postupů Chef DevOps
-Projekt Habitat je jeden projekt open source softwaru, Chef se soustředí silná komunita podpory. Habitat využívá Chefu zkušeností s automatizace infrastruktury pro zajištění možnosti bezprecedentní automatizace pro aplikace. Chef nabízí komerční podporu pro Habitat a bezproblémovou integraci Habitat a Chef Automate plně automatizovat cyklu vydávání verzí aplikace, od vývoje k nasazení sestavení.
+## <a name="integrate-into-the-chef-devops-workflow"></a>Integrace do pracovního postupu DevOps
+Projekt stanovišť je jedním z open source projektu od softwaru pro začínajícího systému, který má silnou komunitu podpory. Stanoviště využívá důkladné prostředí pro používání a automatizaci infrastruktury a přináší tak aplikacím nestejné možnosti automatizace. Jan nabízí komerční podporu pro stanoviště a sestavuje bezproblémovou integraci mezi lokalitami a aplikacemi pro úplné automatizaci cyklu vydávání aplikací od vývoje po nasazení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zkuste Habitat](https://www.habitat.sh/learn/)
+* [Vyzkoušejte si stanoviště](https://www.habitat.sh/learn/)

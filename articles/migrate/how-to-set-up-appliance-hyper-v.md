@@ -1,157 +1,158 @@
 ---
-title: Nastavení zařízení pro Azure Migrate posouzení/migrace serveru pro virtuální počítače Hyper-V | Dokumentace Microsoftu
-description: Popisuje, jak nastavit zařízení pro zjišťování, vyhodnocení a migrace bez agentů virtuálních počítačů Hyper-V pomocí Azure Migrate posouzení/migrace serveru.
+title: Nastavení zařízení pro vyhodnocování/migraci Azure Migrate serveru pro virtuální počítače Hyper-V | Microsoft Docs
+description: V této části najdete popis postupu nastavení zařízení pro účely zjišťování, hodnocení a migrace virtuálních počítačů Hyper-V bez agenta pomocí Azure Migrateho vyhodnocení/migrace serveru.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: c531fe49ebff6c021547c2d1c2f382bcd6c9caef
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: MT
+ms.openlocfilehash: 00473519ad324d34d1fd595b2fb08408ad991f4c
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811762"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158628"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
 
-Tento článek popisuje, jak nastavit službu Azure Migrate zařízení, pokud posouzení virtuálních počítačů Hyper-V pomocí Azure Migrate Server Assessment tool, nebo migraci virtuálních počítačů VMware do Azure pomocí nástroje Azure Migrate migrace serveru.
+Tento článek popisuje, jak nastavit zařízení Azure Migrate, pokud vyhodnotili virtuální počítače Hyper-V pomocí nástroje pro vyhodnocení Azure Migrate serveru nebo migrujete virtuální počítače VMware do Azure pomocí nástroje pro migraci Azure Migrate serveru.
 
-Zařízení virtuálního počítače Hyper-V je zjednodušené zařízení pro pomocí Azure Migrate posouzení/migrace serveru postupujte takto:
+Zařízení virtuálního počítače Hyper-V je jednoduché zařízení, které používá Azure Migrate posouzení/migrace serveru k následujícím akcím:
 
-- Zjištění místních virtuálních počítačů Hyper-V.
-- Odeslání dat metadata a výkonu pro zjištěné virtuální počítače do Azure migrovat posouzení/migrace serveru.
+- Objevte místní virtuální počítače Hyper-V.
+- Odesílat metadata a data o výkonu pro zjištěné virtuální počítače, aby bylo možné Azure Migrate posouzení/migrace serveru.
 
-[Další informace](migrate-appliance.md) o zařízení Azure Migrate.
+[Přečtěte si další informace](migrate-appliance.md) o zařízení Azure Migrate.
 
 
 ## <a name="appliance-deployment-steps"></a>Postup nasazení zařízení
 
-Nastavení zařízení můžete:
-- Stáhněte si komprimovaný virtuálního pevného disku Hyper-V na webu Azure Portal.
-- Toto zařízení vytvoříte tak a zkontrolujte, že se může připojit k Azure Migrate Server Assessment. 
-- Konfigurace zařízení poprvé a zaregistrujte je v projektu Azure Migrate.
+Nastavení zařízení:
+- Z Azure Portal Stáhněte komprimovaný VHD Hyper-V.
+- Vytvořte zařízení a ověřte, že se může připojit k Azure Migrate posouzení serveru.
+- Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu Azure Migrate.
 
 ## <a name="download-the-vhd"></a>Stažení virtuálního pevného disku
 
-Stáhněte si komprimovaný šablonu virtuálního pevného disku pro zařízení.
+Stáhněte pro zařízení šablonu VHD s příponou.
 
-1. V **cílů migrace** > **servery** > **Azure Migrate: Server Assessment**, klikněte na tlačítko **Discover**.
-2. V **zjistit počítače** > **jsou vaše počítače virtualizované?** , klikněte na tlačítko **Ano, s technologií Hyper-V**.
-3. Klikněte na tlačítko **Stáhnout** ke stažení souboru virtuálního pevného disku.
+1. V ** > ** **cíli migrace** > **Azure Migrate: posouzení serveru**, klikněte na **zjistit**.
+2. V rozevíracích **seznamech počítačů** > **jsou vaše počítače virtualizované?** klikněte na **Ano, s technologií Hyper-V**.
+3. Kliknutím na **Stáhnout** Stáhněte soubor VHD.
 
-    ![Stažení virtuálního počítače](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![Stáhnout virtuální počítač](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
 
 
-### <a name="verify-security"></a>Ověření zabezpečení
+### <a name="verify-security"></a>Ověřit zabezpečení
 
-Zkontrolujte, že soubor s příponou ZIP zabezpečené, před jejím nasazením.
+Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
-2. Spusťte následující příkaz, kterým vygenerujete hodnotu hash pro virtuální pevný disk
+2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro virtuální pevný disk.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  Pro verzi zařízení 1.19.05.10 vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení.
+3.  U zařízení verze 2.19.11.12 by se měla vygenerovaná hodnota hash shodovat s tímto nastavením.
 
   **Algoritmus** | **Hodnota hash**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
+  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 
-  
-## <a name="create-the-appliance-vm"></a>Toto zařízení vytvoříte virtuální počítač
 
-Importujte stažený soubor a vytvoření virtuálního počítače.
+## <a name="create-the-appliance-vm"></a>Vytvoření virtuálního počítače zařízení
 
-1. Extrahujte komprimovaný soubor virtuálního pevného disku do složky na hostiteli Hyper-V, který bude hostitelem zařízení virtuálního počítače. Tři složky jsou extrahovány.
-2. Otevřete Správce technologie Hyper-V. V **akce**, klikněte na tlačítko **importovat virtuální počítač**.
+Naimportujte stažený soubor a vytvořte virtuální počítač.
 
-    ![Nasazení virtuálního pevného disku](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
+1. Extrahujte soubor VHD s příponou ZIP do složky na hostiteli Hyper-V, která bude hostovat virtuální počítač zařízení. Jsou extrahovány tři složky.
+2. Otevřete Správce technologie Hyper-V. V nabídce **Akce**klikněte na **importovat virtuální počítač**.
 
-2. V Průvodci importem virtuálního počítače > **před zahájením**, klikněte na tlačítko **Další**.
-3. V **vyhledání složky**, zadejte složku, která obsahuje extrahovaný virtuálního pevného disku. Pak klikněte na tlačítko **Další**.
-1. V **vybrat virtuální počítač**, klikněte na tlačítko **Další**.
-2. V **vybrat typ importu**, klikněte na tlačítko **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Pak klikněte na tlačítko **Další**.
-3. V **zvolit cíl**, ponechte výchozí nastavení. Klikněte na **Další**.
-4. V **složky úložiště**, ponechte výchozí nastavení. Klikněte na **Další**.
-5. V **výběr sítě**, zadejte virtuální přepínač, který bude používat virtuální počítač. Přepínač vyžaduje připojení k Internetu k odesílání dat do Azure.
-6. V **Souhrn**, zkontrolujte nastavení. Pak klikněte na tlačítko **Dokončit**.
-7. Ve Správci technologie Hyper-V > **virtuálních počítačů**, spusťte virtuální počítač.
+    ![Nasazení VHD](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
+
+2. V Průvodci importem virtuálního počítače > **než začnete**, klikněte na **Další**.
+3. V části **Vyhledat složku**zadejte složku obsahující extrahovaný virtuální pevný disk. Potom klikněte na tlačítko **Další**.
+1. V nabídce **Vybrat virtuální počítač**klikněte na **Další**.
+2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Potom klikněte na tlačítko **Další**.
+3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
+4. V části **složky úložiště**ponechte výchozí nastavení. Klikněte na **Další**.
+5. V části **zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure.
+6. V části **Souhrn**zkontrolujte nastavení. Pak klikněte na **Dokončit**.
+7. Ve Správci technologie Hyper-V > **Virtual Machines**spusťte virtuální počítač.
 
 
-### <a name="verify-appliance-access-to-azure"></a>Ověřit přístup zařízení k Azure
+### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že zařízení virtuálního počítače může připojit k [adresám URL služby Azure](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access).
+Ujistěte se, že se virtuální počítač zařízení může připojit k [adresám URL Azure](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access).
 
 ## <a name="configure-the-appliance"></a>Konfigurace zařízení
 
-Nastavení zařízení poprvé.
+Nastavte zařízení poprvé.
 
-1. Ve Správci technologie Hyper-V > **virtuálních počítačů**, klikněte pravým tlačítkem na virtuální počítač > **připojit**.
+1. Ve Správci technologie Hyper-V > **Virtual Machines**klikněte pravým tlačítkem na virtuální počítač > **připojit**.
 2. Zadejte jazyk, časové pásmo a heslo pro zařízení.
-3. Otevřete prohlížeč na jakémkoli počítači můžete připojit k virtuálnímu počítači a otevřít adresu URL webové aplikace pro zařízení: **https://*zařízení název nebo IP adresu*: 44368**.
+3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k VIRTUÁLNÍmu počítači, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
 
-   Alternativně můžete otevřít aplikaci z plochy zařízení kliknutím na zástupce aplikace.
-1. Ve webové aplikaci > **nastavit požadavky**, postupujte takto:
-    - **Licence**: Přijměte licenční podmínky a přečtěte si informace třetích stran.
-    - **Připojení**: Je aplikace zkontroluje, že virtuální počítač má přístup k Internetu. Pokud virtuální počítač používá proxy server:
-        - Klikněte na tlačítko **nastavení proxy serveru**a zadejte adresu proxy serveru a nastavte naslouchající port ve tvaru http://ProxyIPAddress nebo http://ProxyFQDN.
+   Alternativně můžete aplikaci otevřít z plochy zařízení kliknutím na zástupce aplikace.
+1. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
+    - **Licence**: přijměte licenční podmínky a přečtěte si informace třetích stran.
+    - **Připojení**: aplikace kontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
+        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN.
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
-    - **Čas synchronizace**: Čas je ověřený. Čas na zařízení by měl být synchronizovaný s internetovým časem pro zjišťování virtuálních počítačů fungovalo správně.
-    - **Instalace aktualizací**: Azure Migrate Server Assessment kontroluje, zda je zařízení nainstalované nejnovější aktualizace.
+    - **Časová synchronizace**: čas je ověřený. Čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování virtuálních počítačů fungovalo správně.
+    - **Instalovat aktualizace**: posouzení Azure Migrate serveru kontroluje, jestli má zařízení nainstalované nejnovější aktualizace.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Registrace zařízení pomocí služby Azure Migrate
+### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
-1. Klikněte na tlačítko **přihlášení**. Pokud se nezobrazí, ujistěte se, že jsme deaktivovali blokování automaticky otevíraných oken v prohlížeči.
-2. Na nové kartě Přihlaste se pomocí přihlašovacích údajů Azure. 
-    - Přihlaste se pomocí uživatelského jména a hesla.
-    - Přihlaste se pomocí kódu PIN není podporován.
-3. Po úspěšném přihlášení přejděte zpět do webové aplikace.
-4. Vyberte předplatné, ve kterém byl vytvořen projekt Azure Migrate. Vyberte projekt.
-5. Zadejte název pro zařízení. Název musí být alfanumerické znaky se 14 znaků nebo méně.
-6. Klikněte na tlačítko **zaregistrovat**.
+1. Klikněte na **Přihlásit se**. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných oken.
+2. Na nové kartě se přihlaste pomocí svých přihlašovacích údajů Azure.
+    - Přihlaste se pomocí svého uživatelského jména a hesla.
+    - Přihlášení pomocí PIN kódu se nepodporuje.
+3. Po úspěšném přihlášení se vraťte k webové aplikaci.
+4. Vyberte předplatné, ve kterém byl vytvořen Azure Migrate projekt. Pak vyberte projekt.
+5. Zadejte název zařízení. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
+6. Klikněte na **zaregistrovat**.
 
 
-### <a name="delegate-credentials-for-smb-vhds"></a>Delegování přihlašovacích údajů pro virtuální pevné disky protokolu SMB
+### <a name="delegate-credentials-for-smb-vhds"></a>Pověření delegáta pro virtuální pevné disky SMB
 
-Pokud používáte virtuální pevné disky na SMB, je nutné povolit delegování přihlašovacích údajů ze zařízení na hostitele Hyper-V. Chcete-li to provést ze zařízení:
+Pokud používáte na SMB virtuální pevné disky, musíte povolit delegování přihlašovacích údajů ze zařízení na hostitele Hyper-V. Provedete to pomocí zařízení:
 
-1. U zařízení, virtuální počítač spusťte tento příkaz. HyperVHost1/HyperVHost2 jsou ukázkové názvy hostitelů.
+1. Na virtuálním počítači zařízení spusťte tento příkaz. HyperVHost1/HyperVHost2 jsou příklady názvů hostitelů.
 
     ```
     Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
     ```
 
-2. Můžete také proveďte ve skupině Editoru místních zásad na zařízení:
-    - V **zásady místního počítače** > **konfigurace počítače**, klikněte na tlačítko **šablony pro správu** > **systému**  >  **Delegování pověření**.
-    - Dvakrát klikněte na panel **povolit delegování nové přihlašovací údaje**a vyberte **povoleno**.
-    - V **možnosti**, klikněte na tlačítko **zobrazit**, a přidejte každého hostitele Hyper-V chcete zjišťovat do seznamu, s **wsman /** jako předponu.
-    - V **delegování pověření**, dvakrát klikněte na panel **povolit delegování nové přihlašovací údaje s ověřováním NTLM server**. Znovu, přidejte každý hostitel Hyper-V chcete zjišťovat do seznamu, s **wsman /** jako předponu.
+2. Případně to udělejte v Editor místních zásad skupiny na zařízení:
+    - V **zásadách místního počítače** > **Konfigurace počítače**klikněte na **šablony pro správu** > **delegování přihlašovacích údajů** **systému** > .
+    - Dvakrát klikněte na **Povolit delegování nových přihlašovacích údajů**a vyberte **povoleno**.
+    - V nabídce **Možnosti**klikněte na **Zobrazit**a do seznamu přidejte každého hostitele Hyper-V, který chcete zjistit, a použijte příkaz **WSMan/** jako předponu.
+    - V **delegování přihlašovacích údajů**poklikejte na možnost **umožňuje delegovat nové přihlašovací údaje pomocí ověřování serveru jenom s protokolem NTLM**. Znovu přidejte všechny hostitele Hyper-V, které chcete vyhledat, do seznamu s použitím nástroje **WSMan/** jako předpony.
 
-## <a name="start-continuous-discovery"></a>Spustit průběžné vyhledávání
+## <a name="start-continuous-discovery"></a>Spustit průběžné zjišťování
 
-Připojení ze zařízení na hostitelích Hyper-V nebo clusterů a spusťte zjišťování virtuálních počítačů.
+Připojte se ze zařízení k hostitelům nebo clusterům Hyper-V a spusťte zjišťování virtuálních počítačů.
 
-1. V **uživatelské jméno** a **heslo**, zadejte přihlašovací údaje účtu, které zařízení použije ke zjištění virtuálních počítačů. Zadejte popisný název pro přihlašovací údaje a klikněte na tlačítko **uložit podrobnosti**.
-2. Klikněte na tlačítko **přidat hostitele**a zadejte podrobnosti o hostiteli/clusteru Hyper-V.
-3. Klikněte na tlačítko **ověření**. Po ověření se zobrazí počet virtuálních počítačů, které můžete zjistit na každém hostiteli/clusteru.
-    - Pokud se ověření nezdaří pro hostitele, vyhodnoťte chybu ukázáním myší na ikonu **stav** sloupce. Vyřešte problémy a znovu ověřit.
-    - Odebrat hostitele nebo clustery, vyberte > **odstranit**.
-    - Pouze určitého hostitele nelze odebrat z clusteru. Můžete pouze odebrat celý cluster.
-    - Cluster, můžete přidat i v případě, že dojde k problémům s konkrétní hostitele v clusteru.
-4. Po ověření klikněte na tlačítko **uložit a spustit zjišťování** zahájíte proces zjišťování.
+1. Do pole **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu, které zařízení použije ke zjištění virtuálních počítačů. Zadejte popisný název přihlašovacích údajů a klikněte na **Uložit podrobnosti**.
+2. Klikněte na **Přidat hostitele**a zadejte podrobnosti o hostiteli nebo clusteru Hyper-V.
+3. Klikněte na tlačítko **ověřit**. Po ověření se zobrazí počet virtuálních počítačů, které se dají zjistit u každého hostitele nebo clusteru.
+    - Pokud se ověření pro hostitele nepovede, přečtěte si chybu, když najedete myší na ikonu ve sloupci **stav** . Opravte problémy a znovu ověřte.
+    - Chcete-li odebrat hostitele nebo clustery, vyberte možnost > **Odstranit**.
+    - Z clusteru nelze odebrat konkrétního hostitele. Můžete odebrat jenom celý cluster.
+    - Cluster můžete přidat i v případě, že v clusteru dojde k problémům s konkrétními hostiteli.
+4. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.
 
-Tím se spustí zjišťování. Trvá přibližně 15 minut metadat zjištěných virtuálních počítačů se zobrazí na webu Azure Portal. 
+Spustí se zjišťování. Zobrazení metadat zjištěných virtuálních počítačů v Azure Portal trvá přibližně 15 minut.
 
 ## <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu
 
-Po dokončení zjišťování, můžete ověřit, že se virtuální počítače na portálu.
+Po dokončení zjišťování můžete ověřit, že se virtuální počítače zobrazují na portálu.
 
 1. Otevřete řídicí panel Azure Migrate.
-2. V **Azure Migrate – servery** > **Azure Migrate: Server Assessment** klikněte na ikonu, která se zobrazí počet **zjištěných serverů**. 
+2. V **Azure Migrate-servery** > **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si [posouzení Hyper-V](tutorial-assess-hyper-v.md) s Azure Migrate Server Assessment.
+Vyzkoušejte si [vyhodnocení technologie Hyper-V](tutorial-assess-hyper-v.md) s Azure Migrate posouzení serveru.

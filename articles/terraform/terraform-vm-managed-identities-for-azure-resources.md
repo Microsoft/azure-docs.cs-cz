@@ -1,17 +1,14 @@
 ---
 title: Kurz – vytvoření virtuálního počítače se systémem Linux se spravovanou identitou z Azure Marketplace Image pomocí Terraformu
 description: Vytvoření virtuálního počítače s Terraformu Linux se spravovanou identitou a správou vzdáleného stavu pomocí Azure Marketplace image
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 233012d6caf1280914a6d2439ae856d69570fff7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6bc6bec2a13dcd5747823de739d1dd11c6027091
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838038"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158973"
 ---
 # <a name="tutorial-create-a-linux-vm-with-a-managed-identity-from-the-azure-marketplace-image-using-terraform"></a>Kurz: Vytvoření virtuálního počítače se systémem Linux se spravovanou identitou z Azure Marketplace Image pomocí Terraformu
 

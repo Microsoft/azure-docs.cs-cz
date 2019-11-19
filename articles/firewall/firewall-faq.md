@@ -1,18 +1,18 @@
 ---
 title: Nejčastější dotazy k Azure Firewall
-description: Nejčastější dotazy k Azure Firewall
+description: Nejčastější dotazy týkající se Azure Firewall. Spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/19/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 418fafdec9bd44fa3682e33cc53bbca9c716dcf2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596785"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167030"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -88,7 +88,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Například:
+Příklad:
 
 ```azurepowershell
 # Stop an existing firewall

@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 7d0fec56791c0d3e7ae60d78da83cf286532b9ab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124003"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173797"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Monitorování operací ingestování v Azure Průzkumník dat pomocí diagnostických protokolů (Preview)
 
@@ -25,13 +25,13 @@ Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro anal�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Nastavení diagnostických protokolů pro cluster Azure Průzkumník dat
 
 Diagnostické protokoly lze použít ke konfiguraci shromažďování následujících dat protokolu:
-* Úspěšné operace ingestování: Tyto protokoly obsahují informace o úspěšně dokončených operacích ingestování.
-* Nezdařené operace ingestování: Tyto protokoly obsahují podrobné informace o neúspěšných operacích ingestování včetně podrobností o chybě. 
+* Úspěšné operace ingestování: tyto protokoly obsahují informace o úspěšně dokončených operacích ingestování.
+* Nezdařené operace ingestování: tyto protokoly obsahují podrobné informace o neúspěšných operacích ingestování včetně podrobností o chybě. 
 
 Data se pak archivují do účtu úložiště, streamování do centra událostí nebo se odešlou do Log Analytics podle vašich požadavků.
 
@@ -51,7 +51,7 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Chcete-li povo
 
     1. Pro nastavení diagnostiky vyberte **název** .
     1. Vyberte jeden nebo více cílů: účet úložiště, centrum událostí nebo Log Analytics.
-    1. Vyberte protokoly, které se mají `SucceededIngestion` shromáždit `FailedIngestion`: nebo.
+    1. Vyberte protokoly, které se mají shromažďovat: `SucceededIngestion` nebo `FailedIngestion`.
     1. Vyberte [metriky](using-metrics.md) , které se mají shromáždit (volitelné).   
     1. Výběrem možnosti **Uložit** uložte nové nastavení a metriky diagnostických protokolů.
     1. Vytvořte **novou žádost o podporu** v Azure Portal pro žádost o aktivaci diagnostických protokolů.
@@ -66,13 +66,13 @@ Všechny [diagnostické protokoly Azure monitor sdílejí společné schéma nej
 
 Řetězce JSON protokolu obsahují prvky uvedené v následující tabulce:
 
-|Name               |Popis
+|Název               |Popis
 |---                |---
 |time               |Čas sestavy
 |resourceId         |ID prostředku Azure Resource Manager
 |operationName      |Název operace: MICROSOFT. KUSTO/CLUSTERY/INGESTOVÁNÍ/AKCE
 |operationVersion   |Verze schématu: ' 1,0 ' 
-|category           |Kategorie operace. `SucceededIngestion`nebo `FailedIngestion`. Vlastnosti se u [úspěšné operace](#successful-ingestion-operation-log) nebo [nezdařené operace](#failed-ingestion-operation-log)liší.
+|category           |Kategorie operace. `SucceededIngestion` nebo `FailedIngestion`. Vlastnosti se u [úspěšné operace](#successful-ingestion-operation-log) nebo [nezdařené operace](#failed-ingestion-operation-log)liší.
 |properties         |Podrobné informace o operaci.
 
 #### <a name="successful-ingestion-operation-log"></a>Úspěšný protokol operace ingestování
@@ -100,7 +100,7 @@ Všechny [diagnostické protokoly Azure monitor sdílejí společné schéma nej
 ```
 **Vlastnosti diagnostického protokolu úspěšné operace**
 
-|Name               |Popis
+|Název               |Popis
 |---                |---
 |succeededOn        |Čas dokončení přijímání příjmu
 |operationId        |ID operace ingestování Azure Průzkumník dat
@@ -141,7 +141,7 @@ Všechny [diagnostické protokoly Azure monitor sdílejí společné schéma nej
 
 **Vlastnosti diagnostického protokolu nezdařené operace**
 
-|Name               |Popis
+|Název               |Popis
 |---                |---
 |failedOn           |Čas dokončení přijímání příjmu
 |operationId        |ID operace ingestování Azure Průzkumník dat
@@ -152,10 +152,12 @@ Všechny [diagnostické protokoly Azure monitor sdílejí společné schéma nej
 |rootActivityId     |ID aktivity
 |details            |Podrobný popis chyby a chybové zprávy
 |errorCode          |Kód chyby 
-|failureStatus      |`Permanent`nebo `Transient`. Opakování přechodného selhání může být úspěšné.
+|failureStatus      |`Permanent` nebo `Transient`. Opakování přechodného selhání může být úspěšné.
 |originatesFromUpdatePolicy|True, pokud selhání pochází ze zásady aktualizace
 |shouldRetry        |True, pokud opakování může být úspěšné
 
 ## <a name="next-steps"></a>Další kroky
 
-[Monitorování stavu clusteru pomocí metrik](using-metrics.md)
+* [Kurz: ingestování a dotazování dat monitorování v Azure Průzkumník dat](ingest-data-no-code.md)
+* [Monitorování stavu clusteru pomocí metrik](using-metrics.md)
+

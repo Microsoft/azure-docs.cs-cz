@@ -1,19 +1,14 @@
 ---
-title: Datový model pro Azure Backup
+title: Power BI datový model
 description: Tento článek pojednává o Power BI podrobností o datových modelech pro sestavy Azure Backup.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: dacurwin
-ms.openlocfilehash: f3db0e6a78eada52f2b5936f5194138d97ebcca6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a2f06da16280070448d7b42dc5e1dcfc46354cfa
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074893"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172805"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datový model pro sestavy Azure Backup
 
@@ -36,7 +31,7 @@ Tato tabulka poskytuje základní pole a agregace v různých polích souvisejí
 | #AlertsCreatedInPeriod |Celé číslo |Počet výstrah vytvořených ve vybraném časovém období |
 | %ActiveAlertsCreatedInPeriod |Procento |Procento aktivních výstrah ve vybraném časovém období |
 | %CriticalAlertsCreatedInPeriod |Procento |Procento kritických výstrah ve vybraném časovém období |
-| AlertOccurrenceDate |Date |Datum vytvoření výstrahy |
+| AlertOccurrenceDate |Datum |Datum vytvoření výstrahy |
 | AlertSeverity |Text |Závažnost výstrahy Například kritický |
 | AlertStatus |Text |Stav výstrahy Například aktivní |
 | AlertType |Text |Typ generované výstrahy. Například zálohování |
@@ -70,17 +65,17 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s kalendářem.
 
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
-| Date |Date |Datum vybrané pro filtrování dat |
+| Datum |Datum |Datum vybrané pro filtrování dat |
 | DateKey |Text |Jedinečný klíč pro každou položku data |
 | DayDiff |Desetinné číslo |Rozdíl v den filtrování dat Například 0 označuje data aktuálního dne, hodnota-1 označuje předchozí data dne, 0 a-1, označují data pro aktuální a předchozí den.  |
 | Month |Text |Měsíc roku vybraného pro filtrování dat, měsíc začíná prvním dnem a končí dnem 31. |
-| MonthDate | Date |Datum v měsíci, kdy měsíc končí, vybrané pro filtrování dat |
+| MonthDate | Datum |Datum v měsíci, kdy měsíc končí, vybrané pro filtrování dat |
 | MonthDiff |Desetinné číslo |Rozdíl v měsíci pro filtrování dat. Například 0 označuje data aktuálního měsíce, hodnota-1 označuje data předchozího měsíce, 0 a-1, označují data pro aktuální a předchozí měsíc. |
 | Týden |Text |Týden vybraný pro filtrování dat, týden začíná v neděli a končí v sobotu. |
-| WeekDate |Date |Datum v týdnu, kdy týden končí výběr pro filtrování dat |
+| WeekDate |Datum |Datum v týdnu, kdy týden končí výběr pro filtrování dat |
 | WeekDiff |Desetinné číslo |Rozdíl v týdnu pro filtrování dat Například 0 označuje data aktuálního týdne, hodnota-1 označuje data z předchozího týdne, 0 a-1, označují data pro aktuální a předchozí týden. |
 | Year |Text |Kalendářní rok vybraný pro filtrování dat |
-| YearDate |Date |Datum v roce, kdy končí rok, vybrané pro filtrování dat |
+| YearDate |Datum |Datum v roce, kdy končí rok, vybrané pro filtrování dat |
 
 ### <a name="job"></a>Úloha
 
@@ -98,7 +93,7 @@ Tato tabulka poskytuje základní pole a agregace v různých polích souvisejí
 | EntityState |Text |Aktuální stav objektu úlohy. Například aktivní, odstraněno |
 | JobFailureCode |Text |Řetězec kódu chyby, protože došlo k selhání úlohy |
 | JobOperation |Text |Operace, pro kterou je úloha spuštěna. Například zálohování, obnovení, konfigurace zálohování |
-| JobStartDate |Date |Datum spuštění úlohy |
+| JobStartDate |Datum |Datum spuštění úlohy |
 | JobStartTime |Čas |Čas spuštění úlohy |
 | JobStatus |Text |Stav dokončené úlohy. Například dokončeno, selhalo |
 | JobUniqueId |Text |Jedinečné ID pro identifikaci úlohy |
@@ -168,7 +163,7 @@ Tato tabulka poskytuje základní pole a agregace v různých polích souvisejí
 | AsOnDateTime |Datum a čas |Čas poslední aktualizace pro vybraný řádek |
 | CloudStorageInMB |Desetinné číslo |Cloudové úložiště záloh používané v zálohách vypočítané na základě nejnovější hodnoty ve vybraném čase |
 | EntityState |Text |Aktuální stav objektu. Například aktivní, odstraněno |
-| LastUpdatedDate |Date |Datum poslední aktualizace vybraného řádku |
+| LastUpdatedDate |Datum |Datum poslední aktualizace vybraného řádku |
 
 ### <a name="time"></a>Čas
 

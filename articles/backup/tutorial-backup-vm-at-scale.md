@@ -1,20 +1,15 @@
 ---
-title: Zálohování virtuálních počítačů Azure ve velkém měřítku
+title: Kurz – zálohování virtuálních počítačů Azure ve velkém měřítku
 description: V tomto kurzu se naučíte, jak vytvořit trezor Recovery Services, definovat zásady zálohování a současně zálohovat víc virtuálních počítačů.
-keywords: virtual machine backup; virtual machine back up; back up vm; backup vm; backup Azure vm; backup and disaster recovery
-author: dcurwin
-manager: carmonm
-ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
-ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747015"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171855"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -29,7 +24,7 @@ Když zálohujete data v Azure, ukládáte tato data do prostředku Azure označ
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -37,7 +32,7 @@ Trezor služby Recovery Services obsahuje zálohovaná data a zásadu zálohová
 
 1. V nabídce vlevo vyberte **Všechny služby** a v seznamu služeb zadejte *Recovery Services*. Při psaní se seznam prostředků bude filtrovat. Až se v seznamu zobrazí položka Trezory služby Recovery Services, vyberte ji a otevřete nabídku Trezory služby Recovery Services.
 
-    ![Otevření nabídky trezoru služby Recovery Services](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
+    ![Otevření nabídky trezoru služby Recovery Services](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
 
 2. V nabídce **Trezory služby Recovery Services** kliknutím na **Přidat** otevřete nabídku Trezor služby Recovery Services.
 

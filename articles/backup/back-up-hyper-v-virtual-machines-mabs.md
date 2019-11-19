@@ -1,18 +1,14 @@
 ---
-title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
-description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup.
-author: dcurwin
-manager: carmonm
-ms.service: backup
+title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí MABS
+description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: f15606c83c221e4591a2a1f6a71fc7141bdf3daf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3bca1b46a867c2967dfcebe4bc8477d5f9c9447d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074971"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173539"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 

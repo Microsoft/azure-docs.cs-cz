@@ -1,19 +1,15 @@
 ---
 title: Kurz – aktualizace vlastní image služby Azure Virtual Machine Scale Sets pomocí Ansible
 description: Naučte se používat Ansible k aktualizaci služby Virtual Machine Scale Sets v Azure s využitím vlastní image.
-keywords: Ansible, Azure, DevOps, bash, PlayBook, virtuální počítač, sada škálování virtuálních počítačů, VMSS
+keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 3b7baffe6ce0fadbac2dd56b9c8296c80546fa72
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b7d3053c09d2dcb667a4fc407035f4814f786932
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241333"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155847"
 ---
 # <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Kurz: aktualizace vlastní image služby Azure Virtual Machine Scale Sets pomocí Ansible
 
@@ -32,7 +28,7 @@ Po nasazení virtuálního počítače nakonfigurujete virtuální počítač na
 > * Vytvoření sady škálování z obrázku
 > * Aktualizace vlastní image
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -43,8 +39,8 @@ Kód PlayBook v této části vytvoří dva virtuální počítače s nainstalov
 
 Stránka `index.html` pro každý virtuální počítač zobrazuje testovací řetězec:
 
-* První virtuální počítač zobrazí hodnotu `Image A`.
-* Druhý virtuální počítač zobrazí hodnotu `Image B`.
+* První virtuální počítač zobrazí hodnotu `Image A`
+* Druhý virtuální počítač zobrazí hodnotu `Image B`
 
 Tento řetězec má napodobovat konfiguraci každého virtuálního počítače pomocí jiného softwaru.
 
@@ -173,13 +169,13 @@ Spusťte PlayBook pomocí příkazu `ansible-playbook` a nahraďte `myrg` názve
 ansible-playbook create-vms.yml --extra-vars "resource_group=myrg"
 ```
 
-Z důvodu `debug` v PlayBook se v příkazu `ansible-playbook` vytiskne IP adresa každého virtuálního počítače. Zkopírujte tyto IP adresy pro pozdější použití.
+Z důvodu `debug`ch částí PlayBook `ansible-playbook` příkaz vytiskne IP adresu každého virtuálního počítače. Zkopírujte tyto IP adresy pro pozdější použití.
 
 ![IP adresy virtuálních počítačů](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
 
 ## <a name="connect-to-the-two-vms"></a>Připojení ke dvěma virtuálním počítačům
 
-V této části se připojíte ke každému virtuálnímu počítači. Jak je uvedeno v předchozí části, řetězce `Image A` a `Image B` napodobují dva odlišné virtuální počítače s různými konfiguracemi.
+V této části se připojíte ke každému virtuálnímu počítači. Jak je uvedeno v předchozí části, řetězce `Image A` a `Image B` napodobují dvěma jedinečným virtuálním počítačům s různými konfiguracemi.
 
 Pomocí IP adres z předchozí části se připojte k oběma virtuálním počítačům:
 
@@ -189,12 +185,12 @@ Pomocí IP adres z předchozí části se připojte k oběma virtuálním počí
 
 ## <a name="create-images-from-each-vm"></a>Vytváření imagí z každého virtuálního počítače
 
-V tomto okamžiku máte dva virtuální počítače s mírně odlišnými konfiguracemi (soubory `index.html`).
+V tomto okamžiku máte dva virtuální počítače s mírně odlišnou konfigurací (jejich `index.html` soubory).
 
 Kód PlayBook v této části vytvoří vlastní image pro každý virtuální počítač:
 
-* `image_vmforimageA` – vlastní image vytvořená pro virtuální počítač, která na domovské stránce zobrazuje `Image A`.
-* `image_vmforimageB` – vlastní image vytvořená pro virtuální počítač, která na domovské stránce zobrazuje `Image B`.
+* `image_vmforimageA` – vlastní image vytvořená pro virtuální počítač, která zobrazuje `Image A` na domovské stránce.
+* `image_vmforimageB` – vlastní image vytvořená pro virtuální počítač, která zobrazuje `Image B` na domovské stránce.
 
 Existují dva způsoby, jak získat ukázkovou PlayBook:
 
@@ -239,7 +235,7 @@ ansible-playbook capture-images.yml --extra-vars "resource_group=myrg"
 V této části se ke konfiguraci následujících prostředků Azure používá PlayBook:
 
 * Veřejná IP adresa
-* Load Balancer
+* Nástroj pro vyrovnávání zatížení
 * Sada škálování, která odkazuje na `image_vmforimageA`
 
 Existují dva způsoby, jak získat ukázkovou PlayBook:
@@ -317,7 +313,7 @@ Spusťte PlayBook pomocí příkazu `ansible-playbook` a nahraďte `myrg` názve
 ansible-playbook create-vmss.yml --extra-vars "resource_group=myrg"
 ```
 
-Vzhledem k tomu, že část `debug` v PlayBook, příkaz `ansible-playbook` vytiskne IP adresu sady škálování. Tuto IP adresu zkopírujte pro pozdější použití.
+Z důvodu `debug` části PlayBook bude příkaz `ansible-playbook` vytisknout IP adresu sady škálování. Tuto IP adresu zkopírujte pro pozdější použití.
 
 ![Veřejná IP adresa](media/ansible-vmss-update-image/vmss-update-vmss-public-ip.png)
 
@@ -327,9 +323,9 @@ V této části se připojíte k sadě škálování.
 
 Pomocí IP adresy z předchozí části se připojte k sadě škálování.
 
-Jak je uvedeno v předchozí části, řetězce `Image A` a `Image B` napodobují dva odlišné virtuální počítače s různými konfiguracemi.
+Jak je uvedeno v předchozí části, řetězce `Image A` a `Image B` napodobují dvěma jedinečným virtuálním počítačům s různými konfiguracemi.
 
-Sada škálování odkazuje na vlastní image s názvem `image_vmforimageA`. Vlastní image `image_vmforimageA` se vytvořila z virtuálního počítače, na kterém se na domovské stránce zobrazuje `Image A`.
+Sada škálování odkazuje na vlastní image s názvem `image_vmforimageA`. Vlastní image `image_vmforimageA` se vytvořila z virtuálního počítače, na kterém se zobrazuje `Image A`na domovské stránce.
 
 V důsledku toho se zobrazí domovská stránka zobrazující `Image A`:
 
@@ -339,7 +335,7 @@ Nechte okno prohlížeče otevřené, když budete pokračovat k další části
 
 ## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Změna vlastní image v sadě škálování a instancích upgradu
 
-PlayBook kód v této části změní obrázek sady škálování z `image_vmforimageA` na `image_vmforimageB`. Všechny aktuální virtuální počítače nasazené pomocí sady škálování jsou taky aktualizované.
+Kód PlayBook v této části mění obrázek sady škálování z `image_vmforimageA` na `image_vmforimageB`. Všechny aktuální virtuální počítače nasazené pomocí sady škálování jsou taky aktualizované.
 
 Existují dva způsoby, jak získat ukázkovou PlayBook:
 

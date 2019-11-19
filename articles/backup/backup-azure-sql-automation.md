@@ -1,27 +1,21 @@
 ---
-title: SQL DB v zálohování virtuálních počítačů Azure & obnovení přes PowerShell – Azure Backup
+title: DATABÁZE SQL ve službě Azure VM Backup & obnovení prostřednictvím PowerShellu
 description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích Azure pomocí Azure Backup a PowerShellu.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; SQL
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 2622fc9b7b7bc5caedc560af64a5d6b2971b814f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 115eef3619f76f83f63c5e69e86393c032e0844e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090933"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172627"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
 Tento článek popisuje, jak použít Azure PowerShell k zálohování a obnovení databáze SQL ve virtuálním počítači Azure pomocí služby [Azure Backup](backup-overview.md) Recovery Services trezoru.
 
-Tento kurz vysvětluje následující postupy:
+V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
 >

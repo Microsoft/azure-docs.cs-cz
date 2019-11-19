@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall ukázek Log Analytics
-description: Azure Firewall ukázek Log Analytics
+description: K analýze Azure Firewall lze použít protokoly Azure Monitor. Vzorový soubor je sestavený v Návrháři zobrazení v Azure Monitor.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033980"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168887"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ukázek Log Analytics
 
@@ -26,11 +26,11 @@ Tady je postup, jak můžete nakonfigurovat příklad vizualizace protokolů Azu
 
 Provedením následujících kroků přidejte zobrazení do svého pracovního prostoru Log Analytics:
 
-1. Otevřete pracovní prostor Log Analytics na webu Azure Portal.
+1. Otevřete pracovní prostor Log Analytics v Azure Portal.
 2. Otevřete **návrháře zobrazení** v části **Obecné**.
-3. Klikněte na **Import**.
+3. Klikněte na **Importovat**.
 4. Vyhledejte a vyberte soubor **AzureFirewall. omsview** , který jste si stáhli dřív.
-5. Klikněte na **Uložit**.
+5. Klikněte na možnost **Uložit**.
 
 Tady je způsob, jak zobrazení vyhledává data protokolu pravidel aplikace:
 
@@ -168,4 +168,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure firewall monitorování a diagnostiku najdete [v tématu Kurz: Monitorujte protokoly Azure Firewall a metriky](tutorial-diagnostics.md).
+Další informace o Azure Firewall monitorování a diagnostiku najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](tutorial-diagnostics.md).

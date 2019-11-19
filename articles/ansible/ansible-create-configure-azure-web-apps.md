@@ -3,17 +3,13 @@ title: Kurz – konfigurace aplikací v Azure App Service pomocí Ansible
 description: Naučte se, jak vytvořit aplikaci v Azure App Service pomocí Java 8 a modulu runtime kontejneru Tomcat
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5104db6bd7fa57600c7212e041263971ca4c91d4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242053"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156571"
 ---
 # <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Kurz: Konfigurace aplikací v Azure App Service pomocí Ansible
 
@@ -29,7 +25,7 @@ ms.locfileid: "72242053"
 > * Vytvoření profilu Azure Traffic Manager
 > * Definování koncového bodu Traffic Manager pomocí vytvořené aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

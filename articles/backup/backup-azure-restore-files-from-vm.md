@@ -1,20 +1,14 @@
 ---
-title: 'Azure Backup: obnovení souborů a složek ze zálohy virtuálního počítače Azure'
+title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: obnovení na úrovni položek; obnovení souborů ze zálohy virtuálního počítače Azure; obnovení souborů z virtuálního počítače Azure
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: dacurwin
-ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091632"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172845"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 

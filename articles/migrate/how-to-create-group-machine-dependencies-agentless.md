@@ -4,27 +4,25 @@ description: Popisuje, jak vytvořit skupiny pomocí závislostí počítačů b
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720269"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158435"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí bez agentů pro posouzení
-
-> [!NOTE]
-> Pokud tuto funkci na portále Azure Migrate ještě nevidíte, počkejte prosím. Zobrazí se za příští týden.
 
 Tento článek popisuje, jak nastavit mapování závislostí bez agentů v Azure Migrate: posouzení serveru. Tato funkce je v současnosti k dispozici ve verzi Preview pro počítače VMware zjištěné pomocí zařízení Azure Migrate. 
 
 > [!IMPORTANT]
 > Vizualizace závislostí bez agentů je momentálně ve verzi Preview pro virtuální počítače Azure VMware zjištěné pomocí zařízení Azure Migrate.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="about-dependency-mapping"></a>O mapování závislostí 
+## <a name="about-dependency-mapping"></a>O mapování závislostí
 
 Mapování závislostí pomáhá vizualizovat závislosti mezi počítači, které chcete vyhodnotit a migrovat. Mapování závislostí se obvykle používá, pokud chcete vyhodnotit počítače s vyšší úrovní spolehlivosti.
 
@@ -46,7 +44,7 @@ Vizualizace závislostí bez agentů nevyžaduje, abyste nainstalovali žádné 
 ## <a name="current-limitations"></a>Aktuální omezení
 
 - Vizualizace závislostí bez agentů je aktuálně dostupná jenom pro virtuální počítače VMware.
-- Teď nemůžete přidat nebo odebrat server ze skupiny v zobrazení analýzy závislostí. 
+- Teď nemůžete přidat nebo odebrat server ze skupiny v zobrazení analýzy závislostí.
 - Mapování závislostí pro skupinu serverů není aktuálně k dispozici.
 - V současné době nelze data závislostí stáhnout v tabulkovém formátu.
 
@@ -60,12 +58,12 @@ Vizualizace závislostí bez agentů nevyžaduje, abyste nainstalovali žádné 
 
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
- 
+
 Podporované operační systémy pro vizualizaci závislostí bez agentů jsou následující.
 
 **Typ** | **Podporované operační systémy**
---- | --- 
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 bitů) 
+--- | ---
+**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 bitů)
 **Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14,04, 16,04 <br/> Debian 7, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
@@ -74,7 +72,7 @@ Podporované operační systémy pro vizualizaci závislostí bez agentů jsou n
 Nastavte uživatelský účet, který má požadovaná oprávnění, aby vyhodnocování serveru mělo přístup k virtuálnímu počítači pro zjišťování. Můžete zadat jeden uživatelský účet.
 
 - **Požadovaná oprávnění na virtuálních počítačích s Windows**: uživatelský účet vyžaduje přístup hosta.
-- **Požadovaná oprávnění pro virtuální počítače se systémem Linux**: pro účet je vyžadováno oprávnění root. Tento uživatelský účet také vyžaduje tyto dvě funkce na/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
+- **Požadovaná oprávnění pro virtuální počítače se systémem Linux**: pro účet je vyžadováno oprávnění root. Tento uživatelský účet také vyžaduje tyto dvě funkce na/bin/netstat a/bin/LS soubory: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Přidat uživatelský účet do zařízení
 
@@ -84,10 +82,10 @@ Přidejte účet následujícím způsobem:
 
 1. Otevřete aplikaci pro správu zařízení. Přejděte na panel **poskytnout podrobnosti vCenter** .
 2. V části **Vyhledat aplikaci a závislosti na virtuálních počítačích** klikněte na **Přidat přihlašovací údaje** .
-3. Vyberte **operační systém**. 
+3. Vyberte **operační systém**.
 4. Zadejte popisný název účtu.
 5. Zadejte **uživatelské jméno** a **heslo** .
-6. Klikněte na **Uložit**.
+6. Klikněte na možnost **Uložit**.
 7. Klikněte na **Uložit a spusťte zjišťování**.
 
     ![Přidat uživatelský účet VM](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -113,8 +111,8 @@ Po spuštění zjišťování závislostí budete moci vizualizovat závislosti 
 2. Vyhledejte počítač, pro který chcete zobrazit mapu závislostí.
 3. Klikněte na **Zobrazit závislosti** ve sloupci **závislosti** .
 4. Změňte časové období, pro které chcete zobrazit mapu pomocí rozevíracího seznamu doba **Trvání** .
-5. Rozbalte skupinu **klientů** , aby vybrala seznam počítačů, které mají závislost na vybraném počítači. 
-6. Rozbalte skupinu **portů** a seznam počítačů, které mají závislost z vybraného počítače. 
+5. Rozbalte skupinu **klientů** , aby vybrala seznam počítačů, které mají závislost na vybraném počítači.
+6. Rozbalte skupinu **portů** a seznam počítačů, které mají závislost z vybraného počítače.
 7. Chcete-li přejít k zobrazení mapy libovolného závislého počítače, klikněte na název počítače a potom klikněte na možnost **Načíst mapu serveru** .
 
     ![Rozbalte položku Skupina portů serveru a mapa zátěžového serveru.](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)

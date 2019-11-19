@@ -1,22 +1,17 @@
 ---
-title: Rychlý start Azure – Zálohování virtuálního počítače pomocí webu Azure Portal
+title: Rychlý Start – zálohování virtuálního počítače pomocí Azure Portal
 description: V tomto rychlém startu se dozvíte, jak vytvořit trezor Recovery Services, povolit ochranu na VIRTUÁLNÍm počítači Azure a zálohovat virtuální počítač s Azure Portal.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 2d740c8d078770267669a0be749ca8d5d210bb72
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 430a560f3ae8e9abc6c5e7a34c24d9d2f262fd79
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083167"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172002"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Zálohování virtuálního počítače v Azure
 
@@ -26,7 +21,7 @@ V tomto rychlém startu se povolí zálohování na existujícím virtuálním p
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="select-a-vm-to-back-up"></a>Výběr virtuálního počítače k zálohování
 

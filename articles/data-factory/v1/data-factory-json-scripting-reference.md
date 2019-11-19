@@ -3326,8 +3326,8 @@ Místní systém souborů můžete propojit s objektem pro vytváření dat Azur
 
 | Scénář | Hostitel v definici propojené služby | folderPath v definici datové sady |
 | --- | --- | --- |
-| Místní složka na počítači Správa dat brány: <br/><br/>Příklady: D:\\\* nebo D:\folder\subfolder\\* |D:\\\\ (pro Správa dat bránu 2,0 a novější verze) <br/><br/> localhost (pro starší verze než Správa dat brána 2,0) |.\\\\ nebo složky\\\\podsložce (pro Správa dat brány 2,0 a novější verze) <br/><br/>D:\\\\ nebo D:\\složka \\\\podsložky (pro verzi brány nižší 2,0)\\ |
-| Vzdálená sdílená složka: <br/><br/>Příklady: \\\\MyServer\\sdílení\\\* nebo \\\\MyServer\\sdílení\\složky\\podsložek\\* |\\\\\\\\MyServer\\\\sdílení |.\\\\ nebo složky\\\\podsložce |
+| Místní složka na počítači Správa dat brány: <br/><br/>Příklady: D:\\\* nebo D:\folder\subfolder\\\* |D:\\\\ (pro Správa dat bránu 2,0 a novější verze) <br/><br/> localhost (pro starší verze než Správa dat brána 2,0) |.\\\\ nebo složky\\\\podsložce (pro Správa dat brány 2,0 a novější verze) <br/><br/>D:\\\\ nebo D:\\složka \\\\podsložky (pro verzi brány nižší 2,0)\\ |
+| Vzdálená sdílená složka: <br/><br/>Příklady: \\\\MyServer\\sdílení\\\* nebo \\\\MyServer\\sdílení\\složky\\podsložek\\\* |\\\\\\\\MyServer\\\\sdílení |.\\\\ nebo složky\\\\podsložce |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>Příklad: použití uživatelského jména a hesla v prostém textu

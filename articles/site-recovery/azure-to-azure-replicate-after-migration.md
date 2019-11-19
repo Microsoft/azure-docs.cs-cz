@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cd15b562c3707a28b54bc59166d54871120909e2
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084937"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159108"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
 
@@ -30,7 +30,7 @@ Před nastavením zotavení po havárii se ujistěte, že se migrace dokončila 
 
 Každý virtuální počítač Azure musí mít nainstalovaný [Agent virtuálního počítače Azure](../virtual-machines/extensions/agent-windows.md) . Pokud chcete replikovat virtuální počítače Azure, Site Recovery do agenta nainstaluje rozšíření.
 
-- Pokud na počítači běží verze 9.7.0.0 nebo novější služby Site Recovery mobility, agent virtuálního počítače Azure se automaticky nainstaluje ve službě mobility na virtuální počítače s Windows. V dřívějších verzích služby mobility je potřeba agenta nainstalovat ručně.
+- Pokud na počítači běží verze 9.7.0.0 nebo novější služby Site Recovery mobility, agent virtuálního počítače Azure se automaticky nainstaluje ve službě mobility na virtuální počítače s Windows. V dřívějších verzích služby mobility nainstalujete agenta ručně.
 - Pro virtuální počítače se systémem Linux je nutné ručně nainstalovat agenta virtuálního počítače Azure. Agenta virtuálního počítače Azure je potřeba nainstalovat jenom v případě, že je služba mobility nainstalovaná na migrovaném počítači v 9.6 nebo starší verzi.
 
 

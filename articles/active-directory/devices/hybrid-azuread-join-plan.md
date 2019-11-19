@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a188349e15c5e4c486d37daed9f8b611a325dcf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882816"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167328"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -43,11 +43,11 @@ K naplánování vaší hybridní implementace služby Azure AD byste se měli s
 
 |   |   |
 | --- | --- |
-| ![Zaškrtnout][1] | Zkontrolovat podporovaná zařízení |
-| ![Zaškrtnout][1] | Projděte si věci, které byste měli znát. |
-| ![Zaškrtnout][1] | Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD |
-| ![Zaškrtnout][1] | Vyberte svůj scénář na základě vaší infrastruktury identity |
-| ![Zaškrtnout][1] | Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD |
+| ![Kontrola][1] | Zkontrolovat podporovaná zařízení |
+| ![Kontrola][1] | Projděte si věci, které byste měli znát. |
+| ![Kontrola][1] | Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD |
+| ![Kontrola][1] | Vyberte svůj scénář na základě vaší infrastruktury identity |
+| ![Kontrola][1] | Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD |
 
 ## <a name="review-supported-devices"></a>Zkontrolovat podporovaná zařízení
 
@@ -64,7 +64,7 @@ V případě zařízení s desktopovým operačním systémem Windows je podporo
 ### <a name="windows-down-level-devices"></a>Zařízení se škálováním na nižší úrovni Windows
 
 - Windows 8.1
-- Systém Windows 7. Informace o podpoře ve Windows 7 najdete v článku [Podpora pro Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
+- Windows 7. Informace o podpoře ve Windows 7 najdete v článku [Podpora pro Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2. Informace o podpoře na Windows serveru 2008 a 2008 R2 najdete v článku [Příprava na Windows server 2008 na konci podpory](https://www.microsoft.com/cloud-platform/windows-server-2008).
@@ -93,7 +93,8 @@ Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](o
 - Zařízení připojenému k doméně můžete zabránit v registraci Azure AD přidáním tohoto klíče registru – HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = DWORD: 00000001.
 - Pokud máte v systému Windows 10 1803 nakonfigurovanou možnost Windows Hello pro firmy, uživatel musí po vyčištění duálního stavu znovu nastavit Windows Hello pro firmy. Tento problém se vyřešil pomocí KB4512509.
 
-
+> [!NOTE]
+> Zařízení zaregistrované v Azure AD se neodebere automaticky, pokud ho spravuje Intune.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD
 
@@ -147,10 +148,10 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 
 | Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Popis |
 | ----- | ----- | ----- | ----- |
-| Balíček | Federované | Z verze 1703 | Všeobecně dostupné |
-| Bez směrování | Federované | Z verze 1803 | Všeobecně dostupné |
-| Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
-| Bez směrování | Spravované | Nepodporuje se | |
+| Balíček | Federované | Z verze 1703 | Obecně dostupná |
+| Bez směrování | Federované | Z verze 1803 | Obecně dostupná |
+| Balíček | Spravovaní | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
+| Bez směrování | Spravovaní | Nepodporováno | |
 
 ## <a name="next-steps"></a>Další kroky
 

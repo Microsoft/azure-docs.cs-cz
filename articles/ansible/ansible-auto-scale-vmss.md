@@ -3,17 +3,13 @@ title: Kurz – automatické škálování virtuálních počítačů v Azure po
 description: Naučte se používat Ansible ke škálování služby Virtual Machine Scale Sets pomocí automatického škálování v Azure.
 keywords: Ansible, Azure, DevOps, bash, PlayBook, škálování, automatické škálování, virtuální počítač, sada škálování virtuálních počítačů, VMSS
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 784cb532c11b16c820336ceeaf8d38f0225c832f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242098"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156812"
 ---
 # <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Kurz: automatické škálování virtuálních počítačů ve službě Virtual Machine Scale Sets v Azure pomocí Ansible
 
@@ -33,7 +29,7 @@ Funkce automatického přizpůsobení počtu instancí virtuálních počítač�
 > * Načíst informace o nastavení automatického škálování 
 > * Zakázat nastavení automatického škálování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
@@ -211,7 +207,7 @@ ansible-playbook vmss-auto-scale-get-settings.yml
 
 ## <a name="disable-autoscale-settings"></a>Zakázat nastavení automatického škálování
 
-Existují dva způsoby, jak zakázat nastavení automatického škálování. Jedním ze způsobů, jak změnit klíč `enabled` z `true` na `false`. Druhým způsobem je odstranit nastavení.
+Existují dva způsoby, jak zakázat nastavení automatického škálování. Jedním ze způsobů, jak `enabled` klíč změnit z `true` na `false`. Druhým způsobem je odstranit nastavení.
 
 Kód PlayBook v tomto oddílu odstraní nastavení automatického škálování. 
 

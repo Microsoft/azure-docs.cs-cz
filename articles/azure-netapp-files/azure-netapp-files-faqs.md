@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 815ac261a29f710914347443f7882b9fe682229f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298482"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173596"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -105,14 +105,7 @@ Azure NetApp Files poskytuje metriky výkonu svazku. K monitorování metrik vyu
 
 Pokud se pro svazek NFS automaticky připojí při spuštění nebo restartování virtuálního počítače, přidejte položku do souboru `/etc/fstab` na hostiteli. 
 
-Příklad: `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
-
-- $ANFIP  
-    V okně vlastností svazku se našla IP adresa Azure NetApp Filesho svazku.
-- $FILEPATH  
-    Cesta exportu Azure NetApp Filesho svazku
-- $MOUNTPOINT  
-    Adresář vytvořený na hostiteli systému Linux, který slouží k připojení exportu NFS
+Podrobnosti najdete v tématu [připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) .  
 
 ### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>Proč příkaz DF na klientovi NFS nezobrazuje zřízený velikost svazku?
 
@@ -123,7 +116,7 @@ Velikost svazku nahlášená v DF je maximální velikost, na kterou může Azur
 Azure NetApp Files podporuje NFSv3 a NFSv 4.1. Svazek můžete vytvořit pomocí buď verze systému souborů NFS. 
 
 > [!IMPORTANT] 
-> Přístup k funkci NFSv 4.1 vyžaduje přidávání do seznamu povolených.  Pokud chcete požádat o přidávání do seznamu povolených žádostí, odešlete žádost o <anffeedback@microsoft.com>. 
+> Přístup k funkci NFSv 4.1 vyžaduje přidávání do seznamu povolených.  Pokud chcete požádat o přidávání na seznam povolených, odešlete žádost, která se <anffeedback@microsoft.com>. 
 
 
 ### <a name="how-do-i-enable-root-squashing"></a>Návody povolit root vtěsnání?

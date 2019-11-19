@@ -1,21 +1,16 @@
 ---
-title: Rychlý Start Azure – zálohování virtuálního počítače pomocí Azure CLI
+title: Rychlý Start – zálohování virtuálního počítače pomocí Azure CLI
 description: V tomto rychlém startu se dozvíte, jak vytvořit trezor Recovery Services, povolit ochranu na virtuálním počítači a vytvořit počáteční bod obnovení pomocí Azure CLI.
-author: dcurwin
-manager: carmonm
-tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 0d16237e0d5dc0e2176a2a9f600ca0be96328717
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a359e47a70f6a1a9e0957b4e1c3965c8db12339a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747141"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171993"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku
 

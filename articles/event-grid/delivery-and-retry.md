@@ -1,30 +1,41 @@
 ---
-title: Azure Event Grid doručování a opakované pokusy
-description: Popisuje, jak Azure Event Grid zajišťují událostí a jak zpracovává nedoručených zpráv.
+title: Azure Event Grid doručování a opakování
+description: Popisuje, jak Azure Event Grid doručuje události a jak zpracovává nedoručené zprávy.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 0945b06f78ac34500f0b16a4a419cff12d1a4734
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812910"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170055"
 ---
-# <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a zkuste to znovu
+# <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
-Tento článek popisuje, jak služby Azure Event Grid zpracovává události při doručení není potvrzeny.
+Tento článek popisuje, jak Azure Event Grid zpracovává události v případě, že doručení není potvrzené.
 
-Event gridu poskytuje odolné doručování. Poskytuje každou zprávu alespoň jednou pro každé předplatné. Události se posílají okamžitě registrované koncový bod každé předplatné. Pokud koncový bod nebude obdržel událost, služby Event Grid zopakuje pokus o doručení událostí.
+Event Grid poskytuje trvalé doručování. Každou zprávu pro každé předplatné zajišťuje aspoň jednou. Události se odesílají do registrovaného koncového bodu každého předplatného hned. Pokud koncový bod nepotvrdí příjem události, Event Grid pokusy o doručení události.
 
-V současné době služby Event Grid odesílá každé události jednotlivě odběratelům. Odběratel přijímá pole obsahující jednu událost.
+## <a name="batched-event-delivery"></a>Doručování událostí v dávce
 
-## <a name="retry-schedule-and-duration"></a>Plán opakování a dobu trvání
+Event Grid ve výchozím nastavení odesílá každou událost jednotlivě předplatitelům. Předplatitel obdrží pole s jednou událostí. Můžete nakonfigurovat Event Grid pro dávkové zpracování událostí pro doručování za účelem zvýšení výkonu protokolu HTTP ve scénářích s vysokou propustností.
 
-Event Grid počká 30 sekund pro odpověď po doručení zprávy. Po 30 sekund Pokud ještě koncový bod odpověděl, zprávy do fronty pro opakování. Event Grid používá zásady opakování exponenciálního omezení rychlosti pro doručování událostí. Event Grid opakování doručování na jak kapacita systému dovolí podle následujícího plánu:
+Dávkové doručování má dvě nastavení:
+
+* Maximální počet **událostí na dávku** je maximální počet událostí, které Event Grid budou poskytovat za dávku. Toto číslo nebude nikdy překročeno, ale pokud v době publikování nejsou k dispozici žádné další události, mohou být doručeny méně událostí. Event Grid nezpozdí události, aby se vytvořila dávka, pokud je k dispozici méně událostí. Musí být v rozmezí od 1 do 5 000.
+* **Upřednostňovaná velikost dávky v kilobajtech** je cílový strop pro velikost dávky v kilobajtech. Podobně jako u maximálního počtu událostí může být velikost dávky menší, pokud v době publikování nejsou k dispozici další události. Je možné, že je dávka větší než upřednostňovaná velikost dávky, *Pokud* je jedna událost větší než upřednostňovaná velikost. Pokud je například upřednostňovaná velikost 4 KB a událost o velikosti 10 KB je vložená do Event Grid, bude se událost o velikosti 10 KB stále doručovat do vlastní dávky místo toho, aby se vynechala.
+
+Dávkové doručování je nakonfigurované na základě předplatného pro jednotlivé události prostřednictvím portálu, rozhraní příkazového řádku, PowerShellu nebo sad SDK.
+
+![Nastavení dávkového doručování](./media/delivery-and-retry/batch-settings.png)
+
+## <a name="retry-schedule-and-duration"></a>Plán opakování a doba trvání
+
+Po doručení zprávy vyčká Event Grid 30 sekund na odpověď. Pokud koncový bod nereagoval po 30 sekundách, zpráva se zařadí do fronty pro opakování. Event Grid používá pro doručování událostí exponenciální zásady opakování omezení rychlosti. Event Grid se pokusy o doručení podle následujícího plánu doručovat na nejlepší úsilí:
 
 - 10 sekund
 - 30 sekund
@@ -33,67 +44,67 @@ Event Grid počká 30 sekund pro odpověď po doručení zprávy. Po 30 sekund P
 - 10 minut
 - 30 minut
 - 1 hodina
-- Každou hodinu po dobu až 24 hodin
+- Po hodinách po dobu až 24 hodin
 
-Pokud koncový bod odpoví během 3 minut, služby Event Grid se pokusí o odebrání události z fronty opakování na jak kapacita systému dovolí, ale duplicitní hodnoty může i nadále přijímat.
+Pokud koncový bod během 3 minut odpoví, Event Grid se pokusí odebrat událost z fronty opakovaných pokusů, ale stále se můžou přijmout duplicity.
 
-Služby Event Grid přidá všechny kroky opakovat malé náhodné a může tj přeskočte určité opakovaných pokusů, pokud koncový bod je konzistentně není v pořádku, mimo provoz delší dobu, nebo se zdá být předešla zahlcení.
+Event Grid přidá ke všem opakovaným krokům malou náhodnost a může oportunisticky přeskočit některé opakované pokusy, pokud je koncový bod konzistentně nezdravý, v dlouhou dobu nebo se může převažovat za přetížený.
 
-Deterministické chování, nastavte události time to live a maximální počet doručení pokusů [zásady opakování předplatné](manage-event-delivery.md).
+V případě deterministického chování nastavte čas události na živý a maximální počet pokusů o doručení v [zásadách opakování předplatného](manage-event-delivery.md).
 
-Ve výchozím nastavení služby Event Grid vyprší platnost všech událostí, které nejsou doručeny do 24 hodin. Je možné [přizpůsobit zásady opakování](manage-event-delivery.md) při vytváření odběru událostí. Zadejte maximální počet pokusů o doručení (výchozí hodnota je 30) a události time to live (výchozí hodnota je 1440 minut).
+Ve výchozím nastavení Event Grid vyprší platnost všech událostí, které nejsou dodány do 24 hodin. [Zásady opakování můžete přizpůsobit](manage-event-delivery.md) při vytváření odběru události. Zadáváte maximální počet pokusů o doručení (výchozí hodnota je 30) a čas do provozu události (výchozí hodnota je 1440 minut).
 
-## <a name="delayed-delivery"></a>Opožděné dodání
+## <a name="delayed-delivery"></a>Zpožděné doručení
 
-Jako koncový bod dojde k selhání doručování, začne zpoždění doručování a opakované pokusy událostí do tohoto koncového bodu služby Event Grid. Například pokud selže prvních deseti událostí, které publikuje do koncového bodu služby Event Grid bude předpokládají, že koncový bod se setkává s problémy a bude zpozdit všechny následné pokusy *a nové* doručení nechystáte nějakou dobu – v některých případech až několik hodin .
+V případě selhání doručení koncovým bodem se Event Grid začne zpozdit doručení a opakovat události do tohoto koncového bodu. Pokud například selže prvních 10 událostí publikovaných do koncového bodu, Event Grid bude předpokládat, že u koncového bodu dochází k problémům, budou všechny následné pokusy *a nové* doručení v některých případech trvat až několik hodin.
 
-Opožděné dodání slouží funkční pro ochranu koncových bodů není v pořádku, jakož i systém Event Grid. Bez regresní a zpoždění doručování do koncových bodů není v pořádku zásady opakování služby Event Grid a možnosti svazku může snadno zaplnit celou systému.
+Funkčním účelem opožděného doručení je chránit nestavové koncové body i Event Grid systém. Bez zálohování a zpoždění doručování do špatných koncových bodů se můžou zásady opakování Event Grid a možnosti svazku snadno přesazovat systémem.
 
-## <a name="dead-letter-events"></a>Události onta nedoručených zpráv
+## <a name="dead-letter-events"></a>Nedoručené události
 
-Když Event Grid doručit událost, kterou může odesílat nedoručené událostí do účtu úložiště. Tento proces se označuje jako dead-lettering. Ve výchozím nastavení služby Event Grid nebude zapnout dead-lettering. Ho Pokud chcete povolit, musíte zadat účet úložiště pro uložení nedoručené události při vytváření odběru událostí. O přijetí změn události z tohoto účtu úložiště, chcete-li vyřešit doručení.
+Když Event Grid nemůže doručovat událost, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako nedoručené. Ve výchozím nastavení Event Grid nezapne nedoručené písmeno. Pokud ho chcete povolit, musíte zadat účet úložiště pro ukládání nedoručených událostí při vytváření odběru události. Vyžádáte si události z tohoto účtu úložiště, abyste mohli vyřešit dodávky.
 
-Když se všechny jeho opakované pokusy služby Event Grid odešle událost do umístění onta nedoručených zpráv. Pokud služby Event Grid přijme 400 (Chybný požadavek) nebo 413 (příliš velký požadavek Entity) kód odpovědi, okamžitě se událost odešle do koncového bodu onta nedoručených zpráv. Tyto kódy odpovědí znamenat, že nikdy úspěšné dodání události.
+Event Grid pošle událost do umístění nedoručených zpráv, když se pokusí všechny jeho pokusy opakovat. Pokud Event Grid obdrží kód odpovědi 400 (špatný požadavek) nebo 413 (příliš velký požadavek na entitu požadavku), okamžitě ho pošle do koncového bodu se nedoručenými písmeny. Tyto kódy odpovědí ukazují, že doručení události nebude nikdy úspěšné.
 
-Existuje pět minut, než mezi poslední pokus o události a kdy se doručí do umístění onta nedoručených zpráv. Toto zpoždění má snížit počet operací úložiště objektů Blob. Pokud umístění onta nedoručených zpráv není k dispozici čtyři hodiny, události se zahodí.
+Poslední pokus o doručení události a při jejím doručování do umístění nedoručených zpráv je prodleva pět minut. Toto zpoždění má za cíl snížit počet operací BLOB Storage. Pokud umístění nedoručených zpráv není k dispozici po dobu čtyř hodin, událost se zahozena.
 
-Před nastavením umístění onta nedoručených zpráv, musíte mít účet úložiště s kontejnerem. Zadejte koncový bod pro tento kontejner, při vytváření odběru událostí. Koncový bod je ve formátu: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Koncový bod pro tento kontejner zadáte při vytváření odběru události. Koncový bod má formát: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Můžete být upozorněni na události odeslala do umístění nedoručených zpráv. Použití služby Event Grid pro reakci na nedoručené události [vytvoření odběru událostí](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) pro úložiště objektů blob onta nedoručených zpráv. Pokaždé, když vaše úložiště objektů blob onta nedoručených zpráv přijme nedoručené událost, Event Grid oznámí obslužnou rutinu. Obslužné rutiny jsou reaguje s akcemi, které chcete provést pro vyřešení nedoručené události.
+Po odeslání události do umístění nedoručených zpráv můžete chtít být upozorněni. Pokud chcete použít Event Grid k reakci na nedoručené události, [Vytvořte odběr událostí](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) pro úložiště objektů BLOB s nedoručenými písmeny. Pokaždé, když úložiště BLOB nedoručených zpráv obdrží nedoručenou událost, Event Grid upozorní vaši obslužnou rutinu. Obslužná rutina reaguje na akce, které chcete provést pro sjednocení nedoručených událostí.
 
-Příklad nastavení umístění nedoručených zpráv, najdete v části [Dead písmeno a zásady opakování](manage-event-delivery.md).
+Příklad nastavení umístění nedoručených zpráv najdete v tématu [zásady nedoručených zpráv a opakování](manage-event-delivery.md).
 
-## <a name="message-delivery-status"></a>Stav doručování zpráv
+## <a name="message-delivery-status"></a>Stav doručení zprávy
 
-Event Grid používá kódy odpovědí protokolu HTTP na vědomí přijetí události. 
+Event Grid používá k potvrzení přijetí událostí kódy odpovědí HTTP. 
 
-### <a name="success-codes"></a>Úspěch kódy
+### <a name="success-codes"></a>Kódy úspěchu
 
-Event Grid bude považovat za **pouze** následující kódy odpovědi HTTP jako úspěšných doručení. Všechny ostatní stavové kódy se považují za neúspěšné doručení a bude opakovat nebo deadlettered podle potřeby. Při přijetí kódu úspěšný stav služby Event Grid považovat za doručování dokončený.
+Event Grid považuje za úspěšné doručení **pouze** následující kódy odpovědí HTTP. Všechny ostatní stavové kódy se považují za neúspěšné doručení a v případě potřeby se budou opakovat nebo deadlettered. Po přijetí úspěšného stavového kódu Event Grid považuje doručení za dokončenou.
 
 - 200 OK
-- 201 – vytvořeno
+- 201 vytvořeno
 - 202 přijato
-- 203 Bez určujících informací
-- 204 žádný obsah.
+- 203 neautoritativní informace
+- 204 bez obsahu
 
-### <a name="failure-codes"></a>Kód selhání
+### <a name="failure-codes"></a>Kódy chyb
 
-Všechny ostatní kódy nejsou v sadě výše (200 – 204) se považují za selhání a bude opakovat. Některé mají zásady konkrétní opakování spojený s je uvedeno níže, všechny ostatní použijte standardní exponenciální regresní model. Je důležité si pamatovat, že z důvodu vysoce paralelizované povaha služby Event Grid architektura chování opakování je Nedeterministický. 
+Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), jsou považovány za selhání a budou opakovány. Některé mají konkrétní zásady opakování, které jsou pro ně vázané níže. všechny ostatní se řídí standardním exponenciálním modelem. Je důležité mít na paměti, že kvůli vysoce paralelismuější povaze architektury Event Grid není chování při opakování deterministické. 
 
 | Kód stavu | Chování opakování |
 | ------------|----------------|
-| 400 – Chybný požadavek | Zkuste to znovu za 5 minut nebo déle (nedoručených zpráv okamžitě, pokud instalační program nedoručené zprávy) |
-| 401 Neautorizováno | Zkuste to znovu za 5 minut nebo déle |
-| 403 Zakázáno | Zkuste to znovu za 5 minut nebo déle |
-| 404 – Nenalezeno | Zkuste to znovu za 5 minut nebo déle |
-| 408 – Časový limit žádosti | Zkuste zopakovat, až 2 minut nebo déle |
-| Entita 413 požadavku je moc velká | Zkuste to znovu za 10 sekund nebo více (nedoručených zpráv okamžitě, pokud instalační program nedoručené zprávy) |
-| 503 – Nedostupná služba | Zkuste to znovu za 30 sekund nebo více |
-| Všechny ostatní | Zkuste to znovu za 10 sekund nebo více |
+| 400 Chybný požadavek | Zkuste to znovu po 5 minutách a dalších (nedoručených zpráv hned po nastavení nedoručených zpráv) |
+| 401 Neautorizováno | Zkusit znovu za 5 minut nebo déle |
+| 403 zakázané | Zkusit znovu za 5 minut nebo déle |
+| 404 – Nenalezeno | Zkusit znovu za 5 minut nebo déle |
+| 408 – Časový limit žádosti | Opakovat po 2 nebo více minutách |
+| Entita požadavku 413 je moc velká. | Opakovat po 10 sekundách nebo dalších (nedoručené zprávy hned po nastavení nedoručených zpráv) |
+| 503 – Nedostupná služba | Opakovat po 30 sekundách nebo více |
+| Všichni ostatní | Opakovat po 10 sekundách nebo více |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Chcete-li zobrazit stav doručení událostí, naleznete v tématu [doručování zpráv služby Event Grid monitorování](monitor-event-delivery.md).
-* Přizpůsobit možnosti doručování událostí, přečtěte si článek [Dead písmeno a zásady opakování](manage-event-delivery.md).
+* Pokud chcete zobrazit stav doručení událostí, přečtěte si téma [monitorování Event Grid doručování zpráv](monitor-event-delivery.md).
+* Pokud chcete přizpůsobit možnosti doručení událostí, přečtěte si téma [zásady nedoručených zpráv a opakování](manage-event-delivery.md).

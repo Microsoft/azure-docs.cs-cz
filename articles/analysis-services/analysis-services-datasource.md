@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120019"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170661"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -91,7 +91,7 @@ Připojení k místním zdrojům dat z Azure Analysis Services serveru vyžaduje
 
 ## <a name="specifying-a-different-provider"></a>Určení jiného zprostředkovatele
 
-Datové modely v Azure Analysis Services mohou vyžadovat různé zprostředkovatele dat při připojování k určitým zdrojům dat. V některých případech mohou být v tabulkových modelech připojujících se ke zdrojům dat pomocí nativních zprostředkovatelů, jako je například SQL Server Native Client (SQLNCLI11), vrácena chyba. Pokud používáte nativní zprostředkovatele jiné než SQLOLEDB, může se zobrazit chybová zpráva: **poskytovatel ' sqlncli 11.1 ' není zaregistrován**. Nebo, pokud máte model DirectQuery připojující se k místním zdrojům dat a používáte nativní zprostředkovatele, může se zobrazit chybová zpráva: **Chyba při vytváření OLE DB sady řádků. Nesprávná syntaxe u LIMITu**
+Datové modely v Azure Analysis Services mohou vyžadovat různé zprostředkovatele dat při připojování k určitým zdrojům dat. V některých případech mohou být v tabulkových modelech připojujících se ke zdrojům dat pomocí nativních zprostředkovatelů, jako je například SQL Server Native Client (SQLNCLI11), vrácena chyba. Pokud používáte nativní poskytovatele jiné než MSOLEDBSQL, může se zobrazit chybová zpráva: **poskytovatel SQLNCLI 11.1 není zaregistrován**. Nebo, pokud máte model DirectQuery připojující se k místním zdrojům dat a používáte nativní zprostředkovatele, může se zobrazit chybová zpráva: **Chyba při vytváření OLE DB sady řádků. Nesprávná syntaxe u LIMITu**
 
 Při migraci místního SQL Server Analysis Services tabulkového modelu do Azure Analysis Services může být nutné změnit poskytovatele.
 

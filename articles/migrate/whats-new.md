@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/06/2019
+ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: af9305aafc3a77df9d7c4cffa65f6c61c53ad8a4
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
-ms.translationtype: MT
+ms.openlocfilehash: 9eb70d74752b3db5fcbc185f596d518100992672
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715388"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158567"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
@@ -22,12 +22,7 @@ ms.locfileid: "73715388"
 
 ## <a name="update-november-2019"></a>Aktualizace (listopad 2019)
 
-
-
 Do Azure Migrate bylo přidáno několik nových funkcí:
-
-> [!NOTE]
-> Pokud se tyto funkce na portálu Azure Migrate Portal ještě nezobrazují, počkejte. Budou zobrazeny v průběhu příštího týdne.
 
 - **Posouzení fyzického serveru**. Kromě migrace fyzického serveru, která je už podporovaná, se teď podporuje hodnocení místních fyzických serverů.
 - **Posouzení na základě importu**. Nyní je podporováno posouzení počítačů využívajících metadata a data o výkonu, které jsou k dispozici v souboru CSV.
@@ -45,9 +40,9 @@ Do Azure Migrate byly přidány nové nástroje pro posouzení a migraci:
 
 ## <a name="release-version-july-2019"></a>Verze vydaných verzí (červenec 2019)
 
-Aktuální verze Azure Migrate byla vydaná v červenci 2019. 
+Aktuální verze Azure Migrate byla vydaná v červenci 2019.
 
-- **Aktuální verze**: Tato verze slouží k vytváření Azure Migrate projektů, zjišťování místních počítačů a orchestraci posouzení a migrace. 
+- **Aktuální verze**: Tato verze slouží k vytváření Azure Migrate projektů, zjišťování místních počítačů a orchestraci posouzení a migrace.
 - **Předchozí verze**: pro zákazníky používající předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V předchozí verzi už nemůžete vytvářet nové Azure Migrate projekty ani provádět nové zjišťování. Ke stávajícím projektům můžete pořád přistupovat. Pokud to chcete provést v Azure Portal > **všechny služby**, vyhledejte **Azure Migrate**. V oznámeních Azure Migrate existuje odkaz pro přístup k původním Azure Migratem projektům.
 
 
@@ -65,7 +60,7 @@ Aktuální verze Azure Migrate poskytuje řadu nových funkcí:
     - Zařízení nepřetržitě zjišťuje metadata serveru a data o výkonu pro účely posouzení a migrace.  
 - **Migrace virtuálních počítačů VMware**: migrace Azure Migrate serveru poskytuje několik způsobů migrace místních virtuálních počítačů VMware do Azure.  Migrace bez agentů pomocí zařízení Azure Migrate a migrace na základě agenta, která používá zařízení replikace, nasadí agenta na každý virtuální počítač, který chcete migrovat. [Další informace](server-migrate-overview.md)
  - **Vyhodnocení a migrace databáze**: z Azure Migrate můžete vyhodnotit místní databáze pro migraci do Azure pomocí Pomocník s migrací databáze Azure. Databáze můžete migrovat pomocí Azure Database Migration Service.
-- **Migrace webové aplikace**: můžete vyhodnotit webové aplikace pomocí adresy URL veřejného koncového bodu s Azure App Service. Pro migraci interních aplikací .NET můžete stáhnout a spustit Pomocník s migrací App Service. 
+- **Migrace webové aplikace**: můžete vyhodnotit webové aplikace pomocí adresy URL veřejného koncového bodu s Azure App Service. Pro migraci interních aplikací .NET můžete stáhnout a spustit Pomocník s migrací App Service.
 - **Data box**: Import velkých objemů dat do Azure pomocí Azure Data Box v Azure Migrate.
 
 

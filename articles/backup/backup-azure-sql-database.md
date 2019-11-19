@@ -1,18 +1,14 @@
 ---
 title: Zálohování SQL Server databází do Azure
-description: V tomto kurzu se dozvíte, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
-author: dcurwin
-manager: carmonm
-ms.service: backup
-ms.topic: tutorial
+description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
+ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 811f04edb4d5f0326d0af629146b7cee10424df8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162198"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172653"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -22,9 +18,9 @@ SQL Server databáze jsou kritické úlohy, které vyžadují nízký cíl bodu 
 
 Toto řešení využívá rozhraní API systému SQL Native k převzetí záloh vašich databází SQL.
 
-* Jakmile zadáte SQL Server virtuální počítač, který chcete chránit, a dotaz na databáze v něm, služba Azure Backup Service nainstaluje na virtuálním počítači rozšíření zálohování úloh pomocí názvu `AzureBackupWindowsWorkload`.
+* Jakmile zadáte SQL Server virtuální počítač, který chcete chránit, a dotaz na databáze v něm, služba Azure Backup Service nainstaluje na virtuálním počítači rozšíření zálohování pomocí názvu `AzureBackupWindowsWorkload` příponu.
 * Toto rozšíření se skládá z koordinátora a modulu plug-in SQL. I když je koordinátor zodpovědný za aktivaci pracovních postupů pro různé operace, jako je konfigurace zálohování, zálohování a obnovení, je za skutečný tok dat zodpovědný modul plug-in.
-* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup vytvoří účet `NT SERVICE\AzureWLBackupPluginSvc`. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. Účet `NT SERVICE\AzureWLBackupPluginSvc` je [účet virtuální služby](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje žádnou správu hesel. Azure Backup využívá účet `NT AUTHORITY\SYSTEM` pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
+* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup vytvoří účet `NT SERVICE\AzureWLBackupPluginSvc`. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. Účet `NT SERVICE\AzureWLBackupPluginSvc` je [účet virtuální služby](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje správu hesel. Azure Backup využívá účet `NT AUTHORITY\SYSTEM` pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
 * Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači.
 * V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat z SQL serveru pomocí infrastruktury virtuálních klientských počítačů (VDI).  
 * Modul plug-in odesílá data přímo do trezoru služby Recovery Services. tím eliminuje nutnost pracovní umístění. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.
@@ -64,7 +60,7 @@ Než začnete, ověřte následující:
 * V trezoru můžete zálohovat až **~ 2000** SQL Server databází. Pro případ, že máte větší počet databází, můžete vytvořit více trezorů.
 * Zálohu můžete nakonfigurovat až na **50** databází v jednom přechodu; Toto omezení pomáhá optimalizovat zatížení zálohování.
 * Podporujeme databáze o velikosti až **2 TB** . v případě větší velikosti se mohou vycházet problémy s výkonem.
-* Abychom měli smysl o tom, kolik databází je možné chránit na jeden server, musíme vzít v úvahu faktory, jako je šířka pásma, velikost virtuálních počítačů, četnost zálohování, velikost databáze atd. [Stáhněte](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) si Plánovač prostředků, který poskytuje přibližný počet databází, které můžete mít na Server na základě prostředků virtuálních počítačů a zásad zálohování.
+* Abychom měli smysl o tom, kolik databází je možné chránit na jeden server, musíme vzít v úvahu faktory, jako je šířka pásma, velikost virtuálních počítačů, četnost zálohování, velikost databáze atd. [Stáhněte](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) si Plánovač prostředků, který poskytuje přibližný počet databází, které můžete mít na server, na základě prostředků virtuálních počítačů a zásad zálohování.
 * V případě skupin dostupnosti jsou zálohy odebírány z různých uzlů na základě několika faktorů. Chování zálohování skupiny dostupnosti je shrnuto níže.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Chování při zálohování v případě skupin dostupnosti Always On
@@ -137,11 +133,11 @@ U všech ostatních verzí opravte oprávnění pomocí následujících kroků:
 
       ![V dialogovém okně přihlášení – nové vyberte Hledat.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Účet virtuální služby Windows **NT SERVICE\AzureWLBackupPluginSvc** se vytvořil během registrace virtuálního počítače a fáze zjišťování SQL. Zadejte název účtu, jak je uvedeno v **poli zadejte název objektu, který chcete vybrat**. Chcete-li název vyřešit, vyberte možnost **kontrolovat názvy** . Klikněte na **OK**.
+  4. Účet virtuální služby Windows **NT SERVICE\AzureWLBackupPluginSvc** se vytvořil během registrace virtuálního počítače a fáze zjišťování SQL. Zadejte název účtu, jak je uvedeno v **poli zadejte název objektu, který chcete vybrat**. Chcete-li název vyřešit, vyberte možnost **kontrolovat názvy** . Klikněte na tlačítko **OK**.
 
       ![Pokud chcete přeložit neznámý název služby, vyberte možnost kontrolovat názvy.](./media/backup-azure-sql-database/check-name.png)
 
-  5. V části **role serveru**se ujistěte, že je vybraná role **sysadmin** . Klikněte na **OK**. Nyní by měla existovat požadovaná oprávnění.
+  5. V části **role serveru**se ujistěte, že je vybraná role **sysadmin** . Klikněte na tlačítko **OK**. Nyní by měla existovat požadovaná oprávnění.
 
       ![Ujistěte se, že je vybraná role serveru sysadmin.](./media/backup-azure-sql-database/sysadmin-server-role.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f1b2bdcecac0aade21c6c770b2495a1e15ba9bc5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882564"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74174001"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure Storage
 
@@ -30,6 +30,7 @@ Informace o tom, jak vytvořit účet úložiště Azure, najdete v tématu [Vyt
 Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů. Účty úložiště pro obecné účely v2 podporují tyto služby Azure Storage:
 
 - Objekty BLOB (všechny typy: blokovat, připojit, stránka)
+- Data Lake Gen2
 - Soubory
 - Disky
 - Fronty
@@ -79,7 +80,7 @@ V porovnání s účty pro obecné účely v2 a BlobStorage účty BlockBlobStor
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
 - Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
-- Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
+- Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemohou mít stejný název.
 
 ## <a name="performance-tiers"></a>Úrovně výkonu
 

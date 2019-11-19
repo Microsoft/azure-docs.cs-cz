@@ -1,19 +1,14 @@
 ---
-title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí Azure Backup
+title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
-ms.reviewer: geg
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004f15a1af11e3ed27f792e245888671b94fbb1a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074935"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172526"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaného virtuálního počítače Azure
 
@@ -21,7 +16,7 @@ Tento článek popisuje, jak zálohovat a obnovovat virtuální počítače Azur
 
 Pokud chcete získat další informace o tom, jak Azure Backup interaktivně pracovat s virtuálními počítači Azure, než začnete, Projděte si tyto materiály:
 
-- [Zkontrolujte](backup-architecture.md#architecture-direct-backup-of-azure-vms) architekturu zálohování virtuálních počítačů Azure.
+- [Zkontrolujte](backup-architecture.md#architecture-built-in-azure-vm-backup) architekturu zálohování virtuálních počítačů Azure.
 - [Další informace](backup-azure-vms-introduction.md) Zálohování virtuálního počítače Azure a rozšíření Azure Backup.
 
 ## <a name="encryption-support"></a>Podpora šifrování

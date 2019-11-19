@@ -1,18 +1,14 @@
 ---
 title: Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálohovat virtuální počítače VMware běžící na serveru VMware vCenter/ESXi.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: dacurwin
-ms.openlocfilehash: df41907ee10b54ab3bfaeb548e085617f7d79084
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903227"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173356"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -132,25 +128,25 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 
 ### <a name="role-permissions"></a>Oprávnění role
 
-**verze 6.5/6.0** | **5,5**
+**verze 6.5/6.0** | **5.5**
 --- | ---
 Úložiště dat. AllocateSpace | Úložiště dat. AllocateSpace
-Global. ManageCustomFields | Global. ManageCustomFields
-Global. SetCustomField |
-Host. Local. CreateVM | Síť. přiřadit
+Global.ManageCustomFields | Global.ManageCustomFields
+Global.SetCustomField |
+Host.Local.CreateVM | Síť. přiřadit
 Síť. přiřadit |
-Resource. AssignVMToPool |
-VirtualMachine. config. AddNewDisk  | VirtualMachine. config. AddNewDisk
+Resource.AssignVMToPool |
+VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
 VirtualMachine. config. AdvancedConfig| VirtualMachine. config. AdvancedConfig
-VirtualMachine. config. sledování změn ve| VirtualMachine. config. sledování změn ve
+VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
 VirtualMachine. config. HostUSBDevice |
-VirtualMachine. config. QueryUnownedFiles |
-VirtualMachine. config. SwapPlacement| VirtualMachine. config. SwapPlacement
-VirtualMachine. interaktivně. stavu poweroff| VirtualMachine. interaktivně. stavu poweroff
-VirtualMachine. Inventory. Create| VirtualMachine. Inventory. Create
-VirtualMachine. Provisioning. DiskRandomAccess |
-VirtualMachine. Provisioning. DiskRandomRead | VirtualMachine. Provisioning. DiskRandomRead
-VirtualMachine. State. CreateSnapshot | VirtualMachine. State. CreateSnapshot
+VirtualMachine.Config.QueryUnownedFiles |
+VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
+VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
+VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
+VirtualMachine.Provisioning.DiskRandomAccess |
+VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
+VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
 VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
 
 ## <a name="create-a-vmware-account"></a>Vytvoření účtu VMware
@@ -231,7 +227,7 @@ Přidejte vCenter Server do Azure Backup Server.
 
     ![Zadat přihlašovací údaje](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. Kliknutím na **Přidat** přidejte server VMware do seznamu servery. Pak klikněte na tlačítko **Další**.
+6. Kliknutím na **Přidat** přidejte server VMware do seznamu servery. Potom klikněte na tlačítko **Další**.
 
     ![Přidat server VMWare a přihlašovací údaje](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -259,14 +255,14 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
 1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery** a potom klikněte na **Další**. Zobrazí se stránka **Vybrat členy skupiny** .
 
-1. V části **Vybrat členy skupiny**vyberte virtuální počítače (nebo složky VM), které chcete zálohovat. Pak klikněte na tlačítko **Další**.
+1. V části **Vybrat členy skupiny**vyberte virtuální počítače (nebo složky VM), které chcete zálohovat. Potom klikněte na tlačítko **Další**.
 
     - Když vyberete složku nebo virtuální počítače nebo složky v této složce jsou také vybrány pro zálohování. Můžete zrušit kontrolu složek nebo virtuálních počítačů, které nechcete zálohovat.
 1. Pokud je už virtuální počítač nebo složka zálohovaný, nemůžete ho vybrat. Tím je zajištěno, že pro virtuální počítač nejsou vytvořeny duplicitní body obnovení.
 
     ![Vybrat členy skupiny](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. Na stránce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany a nastavení ochrany. Pokud chcete zálohovat do Azure, nastavte krátkodobou ochranu na **disk** a povolte online ochranu. Pak klikněte na tlačítko **Další**.
+1. Na stránce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany a nastavení ochrany. Pokud chcete zálohovat do Azure, nastavte krátkodobou ochranu na **disk** a povolte online ochranu. Potom klikněte na tlačítko **Další**.
 
     ![Vyberte způsob ochrany dat](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -297,17 +293,17 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
     ![Výběr metody vytvoření repliky](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. V **Možnosti kontroly konzistence**vyberte, jak a kdy se mají automatizovat kontroly konzistence. Pak klikněte na tlačítko **Další**.
+1. V **Možnosti kontroly konzistence**vyberte, jak a kdy se mají automatizovat kontroly konzistence. Potom klikněte na tlačítko **Další**.
       - Můžete spouštět kontroly konzistence, když se data repliky neshodují, nebo podle nastaveného plánu.
       - Pokud nechcete konfigurovat automatické kontroly konzistence, můžete spustit ruční kontrolu. Provedete to tak, že kliknete pravým tlačítkem na skupinu ochrany > **provést kontrolu konzistence**.
 
-1. Na stránce **zadat data online ochrany** vyberte virtuální počítače nebo složky virtuálních počítačů, které chcete zálohovat. Můžete vybrat členy jednotlivě nebo kliknout na **Vybrat vše** pro výběr všech členů. Pak klikněte na tlačítko **Další**.
+1. Na stránce **zadat data online ochrany** vyberte virtuální počítače nebo složky virtuálních počítačů, které chcete zálohovat. Můžete vybrat členy jednotlivě nebo kliknout na **Vybrat vše** pro výběr všech členů. Potom klikněte na tlačítko **Další**.
 
     ![Zadat data online ochrany](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Na stránce **zadat plán online zálohování** určete, jak často chcete zálohovat data z místního úložiště do Azure.
 
-    - Body obnovení cloudu pro data budou vygenerovány podle plánu. Pak klikněte na tlačítko **Další**.
+    - Body obnovení cloudu pro data budou vygenerovány podle plánu. Potom klikněte na tlačítko **Další**.
     - Po vygenerování bodu obnovení se přenese do trezoru Recovery Services v Azure.
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)

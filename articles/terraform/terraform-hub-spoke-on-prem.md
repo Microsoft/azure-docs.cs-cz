@@ -1,17 +1,14 @@
 ---
 title: Kurz – vytvoření místní virtuální sítě v Azure pomocí Terraformu
 description: Kurz ilustrující implementaci místní virtuální sítě v Azure, která je založená na místních prostředcích
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: df96b9340e9961387fd727eba898fe4db6a18821
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 361f9919fdd406a1fef6bbf2b7512dbc20266a54
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969390"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159220"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>Kurz: Vytvoření místní virtuální sítě v Azure pomocí Terraformu
 
@@ -25,7 +22,7 @@ Jsou vysvětleny následující úkoly:
 > * Vytvoření místního virtuálního počítače pomocí Terraformu
 > * Vytvoření místní brány virtuální privátní sítě pomocí Terraformu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
 

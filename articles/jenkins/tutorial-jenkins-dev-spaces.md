@@ -1,18 +1,14 @@
 ---
 title: Použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubernetes
 description: Naučte se používat modul plug-in Azure Dev Spaces v kanálu průběžné integrace.
-author: tomarchermsft
-ms.author: tarcher
-ms.service: jenkins
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 10/23/2019
-ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 42d732cda26f0c34f0a54fffc0b1b9c54def94ad
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881883"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158746"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Kurz: použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubernetes 
 
@@ -30,7 +26,7 @@ V tomto kurzu dokončíte tyto úlohy:
 
 Tento kurz předpokládá průběžné znalosti základních služeb Azure, AKS, ACR, Azure Dev Spaces, [kanálů](https://jenkins.io/doc/book/pipeline/) Jenkinse a modulů plug-in a GitHubu. Základní znalost s podpůrnými nástroji, jako je kubectl a Helm, je užitečná.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -153,13 +149,13 @@ Další informace o používání Azure Dev Spaces a vývoje více služeb pomoc
 
     1. Změňte adresář na `dev-spaces/samples/java/getting-started/mywebapi`
 
-    2. Spuštění
+    2. Spusťte
 
         ```bash
         azds prep
         ```
 
-    3. Spuštění
+    3. Spusťte
 
         ```bash
         azds up -d
@@ -337,7 +333,7 @@ K dokončení kroku 3 v této části budete muset komentovat část Jenkinsfile
     }
 ```
 
-1. Proveďte změnu `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`a pak vytvořte žádost o přijetí změn. Například:
+1. Proveďte změnu `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`a pak vytvořte žádost o přijetí změn. Příklad:
 
     ```java
     public String index() {
@@ -376,7 +372,7 @@ stage('create dev space') {
 
 `test_endpoint` je adresa URL aplikace webendu, kterou jste předtím nasadili pomocí `azds up`v [části nasazení ukázkových aplikací do clusteru AKS, krok 7](#test_endpoint). V konfiguraci kanálu je nastavená hodnota `$env.TEST_ENDPOINT`. 
 
-Následující fragment kódu ukazuje, jak se adresa URL podřízeného prostoru pro vývoj používá ve fázi `smoketest`. Kód zkontroluje, zda je k dispozici podřízený vývojové místo TEST_ENDPOINT, a pokud ano, stáhne text pozdravu do stdout:
+Následující fragment kódu ukazuje, jak se adresa URL podřízeného prostoru pro vývoj používá ve fázi `smoketest`. Kód zkontroluje, zda je k dispozici podřízený prostor pro vývoj TEST_ENDPOINT a v takovém případě stáhne text s pozdravem do stdout:
 
 ```Groovy
 stage('smoketest') {

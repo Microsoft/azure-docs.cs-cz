@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332839"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167434"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -25,7 +25,7 @@ Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Window
 - Odeslat zprávu aktivním uživatelům na konkrétním hostiteli relace.
 - Odhlaste uživatele z hostitele relace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj, je nutné vytvořit registraci aplikace Azure Active Directory a pracovní prostor Log Analytics. Vy nebo správce k tomu potřebují tato oprávnění:
 
@@ -106,13 +106,13 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
 1. Otevřete internetový prohlížeč a přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce.
 2. V dalším kroku přejdete do části **Log Analytics pracovní prostory** , ve kterých si prohlédnete nakonfigurované čítače výkonu systému Windows.
 3. V části **Nastavení** vyberte **Upřesnit nastavení**.
-4. Potom přejděte do části **Data** > **čítače výkonu Windows** a přidejte následující čítače:
+4. Potom přejděte na **Data** > **čítače výkonu Windows** a přidejte následující čítače:
 
-    -   Logický disk (\*) \%Free prostor
-    -   Logický disk (C:) \\Avg. délka fronty disku
-    -   Paměť (\*) @no__t – 1Available MB
-    -   Informace o procesoru (\*) \\Processor čas
-    -   Zpoždění vstupu uživatele na relaci (\*) @no__t – zpoždění vstupu 1Max
+    -   Logický disk (\*)\\% volného místa
+    -   Logický disk (C:)\\Průměrná délka fronty disku
+    -   Paměť (\*)\\dostupné MB
+    -   Informace o procesoru (\*)\\procesorový čas
+    -   Zpoždění vstupu uživatele na relaci (\*)\\maximální prodleva vstupu
 
 Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -142,11 +142,11 @@ Abyste se ujistili, že váš pracovní prostor Log Analytics má předkonfiguro
 3. Pak přejdete na **Data** > **čítače výkonu systému Windows**.
 4. Ujistěte se, že jsou předem nakonfigurované následující čítače:
 
-   - Logický disk (\*) \%Free mezera: zobrazuje množství volného místa celkového použitelného místa na disku v procentech.
-   - Logický disk (C:) \\Avg. délka fronty disku: délka požadavku na přenos disku pro jednotku jazyka C. Hodnota by neměla být větší než 2 pro více než krátkou dobu.
-   - Paměť (\*) \\Available MB: dostupná paměť systému v megabajtech.
-   - Informace o procesoru (\*) \\Processor Time: procentuální hodnota uplynulého času, který procesor stráví spuštěním nečinného vlákna.
-   - Zpoždění vstupu uživatele na relaci (\*) @no__t – zpoždění vstupu 1Max
+   - Logický disk (\*)\\% volného místa: zobrazuje množství volného místa celkového použitelného místa na disku jako procenta.
+   - Logický disk (C:)\\střední délka fronty disku: délka požadavku na přenos disku pro jednotku jazyka C. Hodnota by neměla být větší než 2 pro více než krátkou dobu.
+   - Paměť (\*)\\dostupné MB: dostupná paměť systému v megabajtech.
+   - Informace o procesoru (\*)\\čas procesoru: procentuální hodnota uplynulého času, po který procesor stráví spouštěním nečinného vlákna.
+   - Zpoždění vstupu uživatele na relaci (\*)\\maximální prodleva vstupu
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Připojení k virtuálním počítačům v pracovním prostoru Log Analytics
 
@@ -185,11 +185,11 @@ Nastavení identifikátoru URI přesměrování:
 4.  Na levém panelu v části spravovat oddíl vyberte **ověřování**.
 5.  Do textového pole **identifikátor URI pro přesměrování** zadejte požadovaný identifikátor URI pro přesměrování a pak v levém horním rohu nabídky vyberte **Save (Uložit** ).
 6. V rozevírací nabídce Typ vyberte **Web** .
-7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Například: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Příklad: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    ![Stránka s identifikátorem URI pro přesměrování](media/redirect-uri-page.png)
 
-8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud například název aplikace, který jste použili v šabloně, byl `contosoapp45`, je vaše přidružená adresa URL <https://contosoapp45.azurewebsites.net>).
+8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Například pokud byl název aplikace, který jste použili v šabloně, `contosoapp45`, je vaše přidružená adresa URL <https://contosoapp45.azurewebsites.net>).
 9. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
 10.   Vyberte **Přijmout**.
 
@@ -234,25 +234,25 @@ Můžete také interagovat s uživateli na hostiteli relace:
 
 ### <a name="windows-performance-counter-thresholds"></a>Prahové hodnoty čítače výkonu systému Windows
 
-- Logický disk (\*) \|% volného místa:
+- Logický disk (\*)\\% volného místa:
 
     - Zobrazí procentuální hodnotu celkového použitelného místa na logickém disku, který je zdarma.
     - Prahová hodnota: méně než 20% je označeno jako není v pořádku.
 
-- Logický disk (C:) \\Avg. délka fronty disku:
+- Logický disk (C:)\\Průměrná délka fronty disku:
 
     - Představuje systémové podmínky úložiště.
     - Prahová hodnota: vyšší než 5 je označeno jako není v pořádku.
 
-- Paměť (\*) \\Available MB:
+- Paměť (\*)\\dostupné MB:
 
     - Paměť, která je k dispozici pro systém.
     - Prahová hodnota: méně než 500 MB označeno jako chybné.
 
-- Informace o procesoru (\*) \\Processor čas:
+- Informace o procesoru (\*)\\čas procesoru:
 
     - Prahová hodnota: vyšší než 80% je označena jako stav není v pořádku.
 
-- [Zpoždění vstupu uživatele na relaci (\*) @no__t – zpoždění vstupu 2Max](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Zpoždění vstupu uživatele na relaci (\*)\\maximálního zpoždění vstupu](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Prahová hodnota: vyšší než 2000 MS je označeno jako není v pořádku.

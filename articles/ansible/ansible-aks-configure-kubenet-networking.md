@@ -3,17 +3,13 @@ title: Kurz – konfigurace sítě kubenet ve službě Azure Kubernetes Service 
 description: Naučte se používat Ansible ke konfiguraci sítě kubenet v clusteru Azure Kubernetes Service (AKS).
 keywords: Ansible, Azure, DevOps, bash, cloudshellu, PlayBook, AKS, Container, AKS, Kubernetes
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881527"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156892"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: konfigurace sítě kubenet ve službě Azure Kubernetes Service (AKS) pomocí Ansible
 
@@ -35,7 +31,7 @@ Další informace o sítích pro aplikace v AKS najdete v tématu [Koncepty sít
 > * Vytvoření clusteru AKS
 > * Konfigurace sítě Azure kubenet
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -213,8 +209,8 @@ Uložte následující ukázkový playbook jako `aks-kubenet.yml`:
 V části `vars` proveďte následující změny:
 
 - Pro `resource_group` klíč změňte hodnotu `aksansibletest` na název skupiny prostředků.
-- U klíče `name` změňte hodnotu `aksansibletest` na název AKS.
-- U klíče `Location` změňte hodnotu `eastus` na umístění skupiny prostředků.
+- Pro `name` klíč změňte hodnotu `aksansibletest` na název vaší AKS.
+- Pro `Location` klíč změňte hodnotu `eastus` na umístění skupiny prostředků.
 
 Spusťte úplnou PlayBook pomocí příkazu `ansible-playbook`:
 

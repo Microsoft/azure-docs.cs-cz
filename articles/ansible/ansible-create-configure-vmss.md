@@ -1,19 +1,15 @@
 ---
 title: Kurz – konfigurace služby Virtual Machine Scale Sets v Azure pomocí Ansible
 description: Naučte se používat Ansible k vytváření a konfiguraci služby Virtual Machine Scale Sets v Azure.
-keywords: Ansible, Azure, DevOps, bash, PlayBook, virtuální počítač, sada škálování virtuálních počítačů, VMSS
+keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1d9b8cd207596aefa01af852627f11cb9b4ce5dc
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241731"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156552"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Kurz: Konfigurace služby Virtual Machine Scale Sets v Azure pomocí Ansible
 
@@ -29,7 +25,7 @@ ms.locfileid: "72241731"
 > * Konfigurace sady škálování
 > * Škálujte škálu nastavenou zvýšením instancí virtuálních počítačů. 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -39,12 +35,12 @@ ms.locfileid: "72241731"
 PlayBook kód v této části definuje následující zdroje:
 
 * **Skupina prostředků** , do které budou nasazeny všechny prostředky.
-* **Virtuální síť** v adresním prostoru 10.0.0.0/16
-* **Podsíť** v rámci virtuální sítě
-* **Veřejná IP adresa** , která umožňuje přístup k prostředkům přes Internet
+* **Virtuální síť** v adresním prostoru 10.0.0.0/16.
+* **Podsíť** v této virtuální síti.
+* **Veřejná IP adresa**, která vám umožní přistupovat k prostředkům přes internet.
 * **Skupina zabezpečení sítě** , která řídí tok síťového provozu v rámci sady škálování a mimo ni
-* **Nástroj pro vyrovnávání zatížení** , který distribuuje provoz napříč sadou definovaných virtuálních počítačů pomocí pravidel nástroje pro vyrovnávání zatížení
-* **Sada škálování virtuálních počítačů** , která používá všechny vytvořené prostředky
+* **Nástroj pro vyrovnávání zatížení**, který s využitím pravidel nástroje pro vyrovnávání zatížení distribuuje provoz mezi sadu definovaných virtuálních počítačů.
+* **Škálovací sada virtuálních počítačů**, která všechny vytvořené prostředky využívá.
 
 Existují dva způsoby, jak získat ukázkovou PlayBook:
 
@@ -193,7 +189,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 [Nakonfigurovaná sada škálování](#configure-a-scale-set) má v současné době dvě instance. K potvrzení této hodnoty slouží následující postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Přejděte do nastavené škály, kterou jste nakonfigurovali.
 
@@ -293,13 +289,13 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0
 
 Pomocí Azure Portal Ověřte výsledky své práce:
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Přejděte do nastavené škály, kterou jste nakonfigurovali.
 
 1. V závorkách se zobrazí název sady škálování s počtem instancí: `Standard_DS1_v2 (3 instances)` 
 
-1. Změnu pomocí [Azure Cloud Shell](https://shell.azure.com/) můžete také ověřit spuštěním následujícího příkazu:
+1. Změnu můžete ověřit také pomocí služby [Azure Cloud Shell](https://shell.azure.com/), a to spuštěním následujícího příkazu:
 
     ```azurecli-interactive
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 

@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Event Grid?
-description: Odešle data události ze zdroje do obslužných rutin pomocí Azure Event Grid. Sestavujte aplikace založené na událostech a integrujte je se službami Azure.
+description: Odešlete data události ze zdroje do obslužné rutiny pomocí služby Azure Event Grid. Vytvářet aplikace založené na událostech a integrace se službami Azure.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -9,16 +9,16 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 03cf8eb2036a9670dbc75e3efb55e52a70de5c54
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c79a6ba1a6b7b5582c6430c6de7a4a309bf4920
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607269"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169847"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
-Azure Event Grid umožňuje snadno sestavovat aplikace pomocí architektur založených na událostech. Nejdřív vyberte prostředek Azure, ke kterému se chcete přihlásit, a pak udělte obslužné rutině události nebo koncovému bodu Webhooku událost, která se má odeslat. Event Grid má integrovanou podporu událostí pocházejících ze služeb Azure, jako jsou služby Storage Blob a skupiny prostředků. Event Grid podporuje také vlastní události s využitím vlastních témat. 
+Azure Event Grid umožňuje snadno sestavovat aplikace pomocí architektur založených na událostech. Nejprve vyberte prostředek Azure, které chcete k přihlášení k odběru a dejte obslužná rutina události nebo koncový bod Webhooku pro odeslání události. Event Grid má integrovanou podporu událostí pocházejících ze služeb Azure, jako jsou služby Storage Blob a skupiny prostředků. Event Grid podporuje také vlastní události s využitím vlastních témat. 
 
 Pomocí filtrů můžete směrovat konkrétní události do různých koncových bodů, zahájit vícesměrové vysílání do více koncových bodů a ujistit se o spolehlivém doručení událostí.
 
@@ -26,9 +26,9 @@ Azure Event Grid je nasazená, aby se maximalizovala dostupnost nativně rozpros
 
 Tento článek obsahuje přehled Azure Event Gridu. Pokud chcete začít pracovat s Event Gridem, přečtěte si článek [Vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md). 
 
-![Event Grid model zdrojů a obslužných rutin](./media/overview/functional-model.png)
+![Model mřížka událostí zdrojů a obslužné rutiny](./media/overview/functional-model.png)
 
-Tento obrázek ukazuje, jak Event Grid propojuje zdroje a obslužné rutiny a není vyčerpávajícím seznamem podporovaných integrací.
+Tento obrázek ukazuje, jak služby Event Grid propojuje zdroje a obslužné rutiny a není úplný seznam podporovaných integrace.
 
 ## <a name="event-sources"></a>Zdroje událostí
 
@@ -54,10 +54,10 @@ Tento obrázek ukazuje, jak Event Grid propojuje zdroje a obslužné rutiny a ne
 * [Event Hubs](event-handlers.md#event-hubs)
 * [Hybridní připojení](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
-* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [Automatizace (dříve označované jako Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
-* [Service Bus](event-handlers.md#service-bus-queue)
-* [Webhooky](event-handlers.md#webhooks)
+* [Service Bus](event-handlers.md#service-bus)
+* [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Koncepty
 
@@ -76,9 +76,9 @@ Další informace o těchto konceptech najdete v článku [Koncepty ve službě 
 Toto jsou některé klíčové vlastnosti služby Azure Event Grid:
 
 * **Jednoduchost** – kliknutím můžete nasměrovat události prostředku Azure do kterékoli obslužné rutiny události nebo koncového bodu.
-* **Rozšířené filtrování** – filtrovat podle typu události nebo cesty publikování události, aby obslužné rutiny událostí přijímaly pouze relevantní události.
-* **Ventilátor** – Přihlaste se k odběru několika koncových bodů na stejnou událost, která odešle kopie události na tolik míst podle potřeby.
-* **Spolehlivost** – 24 hodin opakování pomocí exponenciálního omezení rychlostiu, aby se zajistilo doručení událostí.
+* **Rozšířené filtrování** -filtru na události typu nebo události publikování cestu k Ujistěte se, že obslužné rutiny událostí zobrazí pouze relevantní události.
+* **Větveného** -odběru několik koncových bodů pro stejnou událost posílat kopie události na tolik místa podle potřeby.
+* **Spolehlivost** – 24 hodin opakování pomocí exponenciálního omezení rychlosti, abyste měli jistotu, události se doručují.
 * **Platby za události** – plaťte jenom za to, do jaké míry Event Grid využíváte.
 * **Vysoká propustnost** – sestavujte ve službě Event Grid úlohy s vysokým objemem díky podpoře milionů událostí za sekundu.
 * **Integrované události** – integrované události s definovanými prostředky umožňují rychle zahájit práci.
@@ -92,21 +92,21 @@ Azure Event Grid poskytuje několik funkcí, které výrazně zlepšují práci 
 
 ### <a name="serverless-application-architectures"></a>Architektury aplikací bez serveru
 
-![Architektura aplikace bez serveru](./media/overview/serverless_web_app.png)
+![Architektury aplikací bez serveru](./media/overview/serverless_web_app.png)
 
-Event Grid propojuje zdroje dat a obslužné rutiny událostí. Pomocí Event Grid můžete například aktivovat funkci bez serveru, která analyzuje obrázky při přidání do kontejneru úložiště objektů BLOB. 
+Event Grid propojuje zdroje dat a obslužné rutiny událostí. Například pomocí Event gridu aktivovat funkci bez serveru, která analyzuje obrázky, když se přidá do kontejneru úložiště objektů blob. 
 
 ### <a name="ops-automation"></a>Automatizace operací
 
 ![Automatizace operací](./media/overview/Ops_automation.png)
 
-Event Grid umožňuje urychlit automatizaci a zjednodušit vynucování zásad. Můžete například použít Event Grid k upozorňování Azure Automation při vytvoření virtuálního počítače nebo databáze SQL. Pomocí událostí můžete automaticky ověřit, jestli konfigurace služby splňují předpisy, vkládat metadata do operací Operations Tools, označit virtuální počítače nebo pracovní položky souboru.
+Event Grid umožňuje urychlit automatizaci a zjednodušit vynucování zásad. Například do Azure Automation při vytvoření virtuálního počítače nebo databáze SQL pomocí služby Event Grid. Pomocí události automaticky zkontrolujte, zda jsou kompatibilní, konfigurací služeb, vkládání metadat do provozních nástrojů, označování virtuálních počítačů nebo zakládání pracovních položek.
 
 ### <a name="application-integration"></a>Integrace aplikací
 
 ![Integrace aplikací s Azure](./media/overview/app_integration.png)
 
-Event Grid propojuje vaši aplikaci s dalšími službami. Můžete třeba vytvořit vlastní téma pro odesílání dat událostí aplikace do služby Event Grid a využít tak její spolehlivé doručování, pokročilé směrování a přímou integraci s Azure. Nebo můžete použít Event Grid s Logic Apps ke zpracování dat kdekoli bez psaní kódu. 
+Event Grid propojuje vaši aplikaci s dalšími službami. Můžete třeba vytvořit vlastní téma pro odesílání dat událostí aplikace do služby Event Grid a využít tak její spolehlivé doručování, pokročilé směrování a přímou integraci s Azure. Nebo můžete použít Event Grid a Logic Apps zpracovávat data kdekoli, bez nutnosti psaní kódu. 
 
 ## <a name="how-much-does-event-grid-cost"></a>Kolik stojí Event Grid?
 
@@ -123,4 +123,4 @@ Azure Event Grid využívá model plateb za události, takže platíte jenom za 
 * [Streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md)  
   Kurz, ve kterém se služba Azure Functions používá ke streamování dat ze služby Event Hubs do SQL Data Warehouse.
 * [Referenční informace k rozhraní REST API služby Event Grid](/rest/api/eventgrid)  
-  Poskytuje referenční obsah pro správu odběrů, směrování a filtrování událostí.
+  Obsahuje referenční obsah pro správu odběry událostí, směrování a filtrování.

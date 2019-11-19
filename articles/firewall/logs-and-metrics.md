@@ -1,20 +1,20 @@
 ---
 title: Přehled protokolů Azure Firewall a metriky
-description: Tento článek představuje přehled diagnostických protokolů a metrik Azure Firewall.
+description: Bránu Azure Firewall můžete monitorovat pomocí protokolů brány firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876562"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167002"
 ---
-# <a name="azure-firewall-logs-and-metrics"></a>Protokoly Azure Firewall a metriky
+# <a name="azure-firewall-logs-and-metrics"></a>Metriky a protokoly Azure Firewallu
 
 Bránu Azure Firewall můžete monitorovat pomocí protokolů brány firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit.
 
@@ -75,9 +75,9 @@ Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném č
 
 Protokoly můžete ukládat třemi způsoby:
 
-* **Účet úložiště**: Účty úložiště se nejlépe používají pro protokoly, když jsou protokoly uložené po delší dobu a v případě potřeby se přezkoumávají.
-* **Centra událostí**: Centra událostí jsou skvělou možností pro integraci s dalšími nástroji SEIM (Security Information and Event Management), které vám umožní získat upozornění na vaše prostředky.
-* **Protokoly Azure monitor**: Protokoly Azure Monitor se nejlépe používají pro obecné monitorování vaší aplikace v reálném čase nebo při prohlížení trendů.
+* **Učet úložiště**: Účty úložiště jsou nejvhodnější pro ukládání protokolů na delší dobu, které budete kontrolovat pouze v případě potřeby.
+* **Centra událostí**: Centra událostí jsou skvělou volbou pro integrování protokolů s jinými nástroji správy akcí a informací o zabezpečení (SEIM), abyste o svých prostředcích získávali upozornění.
+* **Protokoly Azure monitor**: Azure monitor protokoly se nejlépe používají pro obecné monitorování vaší aplikace v reálném čase nebo při prohlížení trendů.
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 
@@ -108,8 +108,8 @@ Pro Azure Firewall jsou k dispozici následující metriky:
     Jednotka: procenta
 
    Tato metrika má dvě dimenze:
-  - **Stav**: Možné hodnoty jsou *v pořádku*, jsou *degradovány*, nejsou v pořádku.
-  - **Důvod**: Určuje důvod pro odpovídající stav brány firewall. Například může označovat *porty SNAT* , pokud je stav brány firewall degradován nebo není v pořádku.
+  - **Stav**: možné hodnoty jsou *v pořádku*, *snížené*, *není v pořádku.*
+  - **Důvod**: označuje důvod pro odpovídající stav brány firewall. Například může označovat *porty SNAT* , pokud je stav brány firewall degradován nebo není v pořádku.
 
 
 
@@ -124,6 +124,6 @@ Pro Azure Firewall jsou k dispozici následující metriky:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak monitorovat protokoly Azure firewall a metriky [, najdete v tématu Kurz: Monitorujte protokoly](tutorial-diagnostics.md)Azure firewall.
+- Informace o tom, jak monitorovat protokoly Azure Firewall a metriky, najdete v tématu [kurz: monitorování protokolů Azure firewall](tutorial-diagnostics.md).
 
 - Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md).

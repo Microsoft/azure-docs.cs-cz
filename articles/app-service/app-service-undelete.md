@@ -6,16 +6,23 @@ ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: 7dc3934f486b205febd5be3c0b484dfd2c97bb8f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 6a3a62053a488f95e22cae13ef9d0714a7b5dd05
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755549"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173745"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Obnovení odstraněných App Service aplikace pomocí PowerShellu
 
 Pokud jste nastali omylem odstranit aplikaci v Azure App Service, můžete ji obnovit pomocí příkazů z [modulu AZ PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0).
+
+## <a name="re-register-app-service-resource-provider"></a>Znovu zaregistrovat App Service poskytovatel prostředků
+Někteří zákazníci můžou narazit na problém, při kterém se nepovede načíst seznam odstraněných aplikací. Chcete-li tento problém vyřešit, spusťte následující příkaz:
+
+```powershell
+ Register-AzResourceProvider -ProviderNamespace "Microsoft.Web"
+```
 
 ## <a name="list-deleted-apps"></a>Výpis odstraněných aplikací
 
@@ -24,7 +31,7 @@ Pokud chcete získat kolekci odstraněných aplikací, můžete použít `Get-Az
 Podrobnosti o konkrétní odstraněné aplikaci můžete použít:
 
 ```powershell
-Get-AzDeletedWebApp -Name <your_deleted_app>
+Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_location> 
 ```
 
 Podrobné informace zahrnují:

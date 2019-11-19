@@ -1,19 +1,15 @@
 ---
-title: Azure Backup – offline zálohování pro DPM a Azure Backup Server
+title: Offline zálohování pro DPM a Azure Backup Server
 description: Azure Backup umožňuje odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server (MABS).
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.author: dacurwin
-ms.openlocfilehash: 0763cbd4345dca39f37b77a0f3d991a7d77e30c4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074294"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173247"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server
 
@@ -108,7 +104,7 @@ Informace v této části vám pomůžou dokončit pracovní postup offline zál
 
 Nástroj *AzureOfflineBackupDiskPrep* se používá k přípravě jednotek SATA, které se odesílají do nejbližšího datacentra Azure. Tento nástroj je k dispozici v instalačním adresáři agenta Recovery Services v následující cestě:
 
-*\\Microsoft Azure Recovery Services agenta\\\\*
+    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
 
 1. Do adresáře přejdete a zkopírujte adresář **AzureOfflineBackupDiskPrep** do kopírovacího počítače, do kterého se mají připojit jednotky SATA, které mají být připraveny. V souvislosti s kopírováním počítače zajistěte následující:
 

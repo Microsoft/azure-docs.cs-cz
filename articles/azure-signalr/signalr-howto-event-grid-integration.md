@@ -5,14 +5,14 @@ services: signalr
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f89fcdd50d958269b5c79c41ebabd69331c905aa
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839300"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158211"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Jak odesílat události ze služby signalizace Azure do Event Grid
 
@@ -75,7 +75,7 @@ Po vytvoření služby signalizace Azure CLI vrátí výstup podobný následuj�
 
 V této části použijete šablonu Správce prostředků umístěnou v úložišti GitHub k nasazení předem připravené ukázkové webové aplikace do Azure App Service. Později se přihlásíte k odběru událostí Event Grid registru a tuto aplikaci určíte jako koncový bod, do kterého se události odesílají.
 
-Pokud chcete ukázkovou aplikaci nasadit, `SITE_NAME` nastavte na jedinečný název vaší webové aplikace a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože tvoří součást plně kvalifikovaného názvu domény (FQDN) webové aplikace. V pozdější části přejdete do plně kvalifikovaného názvu domény aplikace ve webovém prohlížeči a zobrazíte události v registru.
+Pokud chcete ukázkovou aplikaci nasadit, nastavte `SITE_NAME` na jedinečný název vaší webové aplikace a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože tvoří součást plně kvalifikovaného názvu domény (FQDN) webové aplikace. V pozdější části přejdete do plně kvalifikovaného názvu domény aplikace ve webovém prohlížeči a zobrazíte události v registru.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -141,7 +141,7 @@ Po dokončení odběru by se měl zobrazit výstup podobný následujícímu:
 
 ## <a name="trigger-registry-events"></a>Aktivovat události registru
 
-Přepněte do režimu `Serverless Mode` služby a nastavte připojení klienta ke službě Signal. Jako referenci můžete mít [ukázku bez serveru](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) .
+Přepněte do režimu služby a `Serverless Mode` a nastavte připojení klienta ke službě signalizace. Jako referenci můžete mít [ukázku bez serveru](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) .
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +162,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>Zobrazení událostí registru
 
-Nyní jste připojili klienta ke službě signalizace. Přejděte do webové aplikace v prohlížeči Event Grid a měla by se zobrazit `ClientConnectionConnected` událost. Pokud ukončíte klienta nástroje, zobrazí se také `ClientConnectionDisconnected` událost.
+Nyní jste připojili klienta ke službě signalizace. Přejděte do webové aplikace v prohlížeči Event Grid a měla by se zobrazit událost `ClientConnectionConnected`. Pokud ukončíte klienta nástroje, zobrazí se také událost `ClientConnectionDisconnected`.
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

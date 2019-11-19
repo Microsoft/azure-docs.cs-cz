@@ -8,20 +8,16 @@ ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 075c60aed458be8a4bf45fafb2d06757862ff5ba
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091906"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158579"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Příprava na posouzení a migraci fyzických serverů do Azure
 
 Tento článek popisuje, jak připravit na posouzení místních fyzických serverů s [Azure Migrate](migrate-services-overview.md).
-
-
-> [!NOTE]
-> Pokud se tyto funkce na portálu Azure Migrate Portal ještě nezobrazují, počkejte. Budou zobrazeny v průběhu příštího týdne.
 
 [Azure Migrate](migrate-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. 
 
@@ -45,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Je nutné nastavit oprávnění pro nasazení Azure Migrate.
 
-- Oprávnění pro účet Azure k vytvoření projektu Azure Migrate. 
+- Oprávnění pro účet Azure k vytvoření projektu Azure Migrate.
 - Oprávnění pro váš účet k registraci zařízení Azure Migrate. Zařízení se používá pro zjišťování a migraci technologie Hyper-V. Při registraci zařízení Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují:
     - První aplikace komunikuje s koncovými body služby Azure Migrate.
     - Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace, aby se ukládaly informace o aplikaci Azure AD a nastavení konfigurace zařízení.
@@ -73,7 +69,7 @@ Pomocí jedné z následujících metod můžete přiřadit oprávnění pro Azu
 Je potřeba poznamenat, že:
 
 - Aplikace nemají žádná jiná přístupová oprávnění k předplatnému, kromě výše popsaných výše.
-- Tato oprávnění budete potřebovat, jenom když zaregistrujete nové zařízení. Po nastavení zařízení můžete oprávnění odebrat. 
+- Tato oprávnění budete potřebovat, jenom když zaregistrujete nové zařízení. Po nastavení zařízení můžete oprávnění odebrat.
 
 
 #### <a name="grant-account-permissions"></a>Udělení oprávnění účtu
@@ -88,7 +84,7 @@ Tenant nebo globální správce může udělit oprávnění následujícím způ
 > [!NOTE]
 > Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)
 
-#### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace 
+#### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
 Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
 
@@ -124,12 +120,12 @@ Azure Migrate potřebuje oprávnění ke zjišťování místních serverů.
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste:
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * Nastavte oprávnění účtu Azure.
 > * Připravte fyzické servery na posouzení.
 
 Přejděte k dalšímu kurzu a vytvořte projekt Azure Migrate a vyhodnoťte fyzické servery pro migraci do Azure.
 
-> [!div class="nextstepaction"] 
-> [Vyhodnotit fyzické servery](./tutorial-assess-physical.md) 
+> [!div class="nextstepaction"]
+> [Vyhodnotit fyzické servery](./tutorial-assess-physical.md)

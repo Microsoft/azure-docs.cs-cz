@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: fc808fee66dee573aecd423e375d30bf3f5b696a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305276"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170717"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace aplikací pomocí Helm ve službě Azure Kubernetes (AKS)
 
@@ -20,7 +20,7 @@ ms.locfileid: "70305276"
 
 V tomto článku se dozvíte, jak nakonfigurovat a používat Helm v clusteru Kubernetes v AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -33,7 +33,7 @@ Je také potřeba nainstalovat rozhraní příkazového řádku Helm, což je kl
 
 Než budete moct nasadit Helm v clusteru AKS s povoleným RBAC, budete potřebovat účet služby a vazbu role pro službu do služby. Další informace o zabezpečení Helm/v případě, že je v clusteru s povoleným RBAC, najdete v tématech předané [, obory názvů a RBAC][tiller-rbac]. Pokud váš cluster AKS není RBAC povolený, přeskočte tento krok.
 
-Vytvořte soubor s názvem `helm-rbac.yaml` a zkopírujte ho do následujícího YAML:
+Vytvořte soubor s názvem `helm-rbac.yaml` a zkopírujte následující YAML:
 
 ```yaml
 apiVersion: v1
@@ -56,7 +56,7 @@ subjects:
     namespace: kube-system
 ```
 
-Vytvořte účet služby a vazbu role pomocí `kubectl apply` příkazu:
+Pomocí příkazu `kubectl apply` vytvořte vazbu role a účtu služby:
 
 ```console
 kubectl apply -f helm-rbac.yaml
@@ -70,15 +70,15 @@ S clusterem Kubernetes s povolenou RBAC můžete řídit úroveň přístupu, kt
 
 ## <a name="configure-helm"></a>Konfigurace Helm
 
-K nasazení základní pokladny do clusteru AKS použijte příkaz [Helm init][helm-init] . Pokud váš cluster nemá povolené RBAC, odeberte `--service-account` argument a hodnotu. V následujících příkladech je také možné nastavit [historii-Max][helm-history-max] na 200.
+K nasazení základní pokladny do clusteru AKS použijte příkaz [Helm init][helm-init] . Pokud váš cluster není povolený RBAC, odeberte `--service-account` argument a hodnotu. V následujících příkladech je také možné nastavit [historii-Max][helm-history-max] na 200.
 
-Pokud jste nakonfigurovali protokol TLS/SSL pro předané a Helm, přeskočte tento krok základní inicializace a místo `--tiller-tls-` toho zadejte požadované, jak je znázorněno v následujícím příkladu.
+Pokud jste nakonfigurovali protokol TLS/SSL pro předané a Helm, přeskočte tento krok základní inicializace a místo toho zadejte požadované `--tiller-tls-`, jak je znázorněno v následujícím příkladu.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-Pokud jste nakonfigurovali protokol TLS/SSL mezi Helm a do `--tiller-tls-*` pokladny, zadejte parametry a názvy vašich vlastních certifikátů, jak je znázorněno v následujícím příkladu:
+Pokud jste nakonfigurovali protokol TLS/SSL mezi Helm a do pokladny, zadejte `--tiller-tls-*` parametry a názvy vašich vlastních certifikátů, jak je znázorněno v následujícím příkladu:
 
 ```console
 helm init \
@@ -148,7 +148,7 @@ Update Complete.
 
 ## <a name="run-helm-charts"></a>Spuštění Helm grafů
 
-Pokud chcete grafy nainstalovat pomocí Helm, použijte příkaz pro [instalaci Helm][helm-install] a zadejte název grafu, který chcete nainstalovat. Pokud chcete vidět, jak se v akci nainstaluje graf Helm, nainstalujte základní nasazení Nginx pomocí grafu Helm. Pokud jste nakonfigurovali protokol TLS/SSL, `--tls` přidejte parametr pro použití certifikátu klienta Helm.
+Pokud chcete grafy nainstalovat pomocí Helm, použijte příkaz pro [instalaci Helm][helm-install] a zadejte název grafu, který chcete nainstalovat. Pokud chcete vidět, jak se v akci nainstaluje graf Helm, nainstalujte základní nasazení Nginx pomocí grafu Helm. Pokud jste nakonfigurovali protokol TLS/SSL, přidejte parametr `--tls` pro použití certifikátu klienta Helm.
 
 ```console
 helm install stable/nginx-ingress \
@@ -187,7 +187,7 @@ Vyplní jednu minutu nebo dvě adresu *externí IP* adresy služby Nginx-The-Con
 
 ## <a name="list-helm-releases"></a>Výpis verzí Helm
 
-Pokud chcete zobrazit seznam verzí nainstalovaných v clusteru, použijte příkaz [Helm list][helm-list] . Následující příklad ukazuje Nginx verzi nasazenou v předchozím kroku. Pokud jste nakonfigurovali protokol TLS/SSL, `--tls` přidejte parametr pro použití certifikátu klienta Helm.
+Pokud chcete zobrazit seznam verzí nainstalovaných v clusteru, použijte příkaz [Helm list][helm-list] . Následující příklad ukazuje Nginx verzi nasazenou v předchozím kroku. Pokud jste nakonfigurovali protokol TLS/SSL, přidejte parametr `--tls` pro použití certifikátu klienta Helm.
 
 ```console
 $ helm list
@@ -198,7 +198,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když nasadíte graf Helm, vytvoří se několik prostředků Kubernetes. Mezi tyto prostředky patří lusky, nasazení a služby. K vyčištění těchto prostředků použijte `helm delete` příkaz a zadejte název vydané verze, jak je uvedeno v předchozím `helm list` příkazu. Následující příklad odstraní verzi s názvem *flailing-Alpaca*:
+Když nasadíte graf Helm, vytvoří se několik prostředků Kubernetes. Mezi tyto prostředky patří lusky, nasazení a služby. K vyčištění těchto prostředků použijte příkaz `helm delete` a zadejte název vydané verze, jak je uvedeno v předchozím příkazu `helm list`. Následující příklad odstraní verzi s názvem *flailing-Alpaca*:
 
 ```console
 $ helm delete flailing-alpaca
@@ -206,7 +206,7 @@ $ helm delete flailing-alpaca
 release "flailing-alpaca" deleted
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o správě nasazení aplikací Kubernetes pomocí Helm najdete v dokumentaci k Helm.
 
@@ -215,18 +215,18 @@ Další informace o správě nasazení aplikací Kubernetes pomocí Helm najdete
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/
-[helm-documentation]: https://docs.helm.sh/
-[helm-init]: https://docs.helm.sh/helm/#helm-init
-[helm-install]: https://docs.helm.sh/using_helm/#installing-helm
+[helm-documentation]: https://v2.helm.sh/docs/
+[helm-init]: https://v2.helm.sh/docs/helm/#helm-init
+[helm-install]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
-[helm-list]: https://docs.helm.sh/helm/#helm-list
-[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
-[helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
-[helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
-[helm-search]: https://docs.helm.sh/helm/#helm-search
-[tiller-rbac]: https://docs.helm.sh/using_helm/#tiller-namespaces-and-rbac
-[helm-ssl]: https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller
-
+[helm-list]: https://v2.helm.sh/docs/helm/#helm-list
+[helm-history-max]: https://v2.helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
+[helm-rbac]: https://v2.helm.sh/docs/using_helm/#role-based-access-control
+[helm-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
+[helm-search]: https://v2.helm.sh/docs/helm/#helm-search
+[tiller-rbac]: https://v2.helm.sh/docs/using_helm/#tiller-namespaces-and-rbac
+[helm-ssl]: https://v2.helm.sh/docs/using_helm/#using-ssl-between-helm-and-tiller
+            
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md

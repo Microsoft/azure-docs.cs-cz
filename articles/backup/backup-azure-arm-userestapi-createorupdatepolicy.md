@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: vytváření zásad zálohování pomocí REST API'
+title: Vytvoření zásad zálohování pomocí REST API
 description: V tomto článku se naučíte, jak vytvářet a spravovat zásady zálohování (plánování a uchovávání) pomocí REST API.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Zálohování virtuálních počítačů Azure; Obnovení virtuálního počítače Azure;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b6e665b5c71dc5f2e8ebc22e00e1a71237f48bfc
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747591"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173424"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
 
@@ -50,9 +44,9 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Pokud například chcete vytvořit zásadu pro zálohování virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Name (Název)  |Požaduje se  |Typ  |Popis  |
+|Název  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
+|properties     |   Pravda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
 |značek     |         | Objekt        |  Značky prostředků       |
 
 Úplný seznam definic v těle žádosti najdete v [dokumentu zásady zálohování REST API](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
@@ -158,7 +152,7 @@ Vytvoření nebo aktualizace zásad zálohování je [asynchronní operace](http
 
 Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace pak 200 (OK).
 
-|Name (Název)  |Typ  |Popis  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |    [PolicyResource ochrany](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
 |202 přijato     |         |     Přijata    |

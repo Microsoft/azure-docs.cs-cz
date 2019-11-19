@@ -225,9 +225,9 @@
           items:
             - name: Novinky ve službě HDInsight 4.0
               href: ./hdinsight-version-release.md
-            - name: Úplné poznámky k verzi HDInsight 4.0
+            - name: "Poznámky k\_verzi"
               href: ./hdinsight-release-notes.md
-            - name: Úplné poznámky k verzi HDInsight 3.6
+            - name: Archivované poznámky k verzi pro Azure HDInsight
               href: ./hdinsight-release-notes-archive.md
         - name: Nejčastější dotazy
           href: ./hdinsight-faq.md
@@ -837,6 +837,8 @@
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: Požadované IP adresy pro skupiny zabezpečení sítě a UDR
           href: ./hdinsight-management-ip-addresses.md
+        - name: Značky služby pro bránu Azure Firewall
+          href: ./hdinsight-service-tags.md
     - name: Postup
       items:
         - name: Vytváření clusterů ESP a synchronizace s místním prostředím

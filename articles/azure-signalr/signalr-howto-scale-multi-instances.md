@@ -1,17 +1,17 @@
 ---
-title: Jak škálovat více instancí služby Azure Signal
+title: Škálování s víc instancemi – služba signálu Azure
 description: V mnoha scénářích škálování zákazník často potřebuje zřídit víc instancí a nakonfigurovat ho tak, aby je používal dohromady, aby se vytvořilo nasazení ve velkém měřítku. Například horizontálního dělení vyžaduje podporu více instancí.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672335"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158156"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Jak škálovat službu signálu pomocí více instancí?
 Nejnovější sada SDK služby signalizace podporuje více koncových bodů pro instance služby Signal. Pomocí této funkce můžete škálovat souběžná připojení nebo je použít pro zasílání zpráv mezi oblastmi.
@@ -64,7 +64,7 @@ Ve výchozím nastavení sada SDK používá [DefaultEndpointRouter](https://git
 
 2. Směrování zpráv serveru
 
-    Když se * posílá zpráva na konkrétní * * připojení * * * a cílové připojení se směruje na aktuální server, pošle se tato zpráva přímo do tohoto připojeného koncového bodu. V opačném případě se zprávy všesměrově vysílají do každého koncového bodu služby Azure Signal.
+    Když *odeslání zprávy na konkrétní **připojení*** a cílové připojení se směruje na aktuálním serveru, dostane zprávu přímo do tohoto koncového bodu připojení. V opačném případě se zprávy všesměrově vysílají do každého koncového bodu služby Azure Signal.
 
 #### <a name="customize-routing-algorithm"></a>Přizpůsobení algoritmu směrování
 Můžete vytvořit vlastní směrovač, pokud máte zvláštní znalosti, abyste určili, na které koncové body by měly zprávy jít.

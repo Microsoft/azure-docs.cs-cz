@@ -3,17 +3,13 @@ title: Kurz – konfigurace mezipamětí v mezipaměti Azure pro Redis pomocí A
 description: Naučte se používat Ansible k vytváření, škálování, restartování a přidání pravidla brány firewall do Azure cache pro Redis.
 keywords: Ansible, Azure, DevOps, bash, PlayBook, cache, Redis
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614368"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156506"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Kurz: Konfigurace mezipamětí v mezipaměti Azure pro Redis pomocí Ansible
 

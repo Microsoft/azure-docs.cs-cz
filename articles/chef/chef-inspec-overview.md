@@ -1,45 +1,41 @@
 ---
-title: Použití InSpec pro dodržování předpisů automatizace infrastruktury Azure
-description: Další informace o použití InSpec a detekujte problémy ve vašich nasazeních Azure
-keywords: Azure, chef, devops, virtuální počítače, přehled, automatizovat, inspec
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Použití INSPEC pro automatizaci dodržování předpisů vaší infrastruktury Azure
+description: Naučte se používat INSPEC k detekci problémů v nasazeních Azure.
+keywords: Azure, DevOps, virtuální počítače, přehled, automatizace, INSPEC
 ms.date: 03/19/2019
 ms.topic: article
-ms.openlocfilehash: bdfa30b48c79a8910d503bb9e54a42c30e5adba6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2531277eb1aa6048c93240031652e09582409e56
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629794"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158224"
 ---
-# <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Použití InSpec pro dodržování předpisů automatizace infrastruktury Azure
+# <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Použití INSPEC pro automatizaci dodržování předpisů vaší infrastruktury Azure
 
-[InSpec](https://www.chef.io/inspec/) je Chefu open-source jazyk pro popis security and compliance pravidla, která lze sdílet mezi softwarové inženýry, operace a zabezpečení technikům. InSpec funguje tak, že porovnání skutečného stavu infrastruktury s požadovaným stavem, které uvedete ve snadné čtení a snadno zápis InSpec kódu. InSpec rozpozná porušení a zobrazí výsledky ve formě sestavy, ale vám dává kontrolu nad nápravu.
+[INSPEC](https://www.chef.io/inspec/) je open source jazyk od výrobce, který popisuje pravidla dodržování předpisů & zabezpečení, která je možné sdílet mezi softwarovými inženýry, operacemi a bezpečnostními technici. Inspecs funguje porovnáním skutečného stavu vaší infrastruktury s požadovaným stavem, který zadáváte snadno čitelným a snadno čitelným kódem INSPEC. INSPEC detekuje porušení a zobrazuje nálezy ve formě sestavy, ale přináší kontrolu nad nápravou.
 
-InSpec můžete použít k ověření stavu prostředků a skupin prostředků v předplatném, včetně virtuálních počítačů, síťových konfigurací, nastavení služby Azure Active Directory a další.
+Pomocí INSPEC můžete ověřit stav prostředků a skupin prostředků v rámci předplatného, včetně virtuálních počítačů, konfigurací sítě, Azure Active Directory nastavení a dalších.
 
-Tento článek popisuje výhody použití InSpec pro usnadnění zabezpečení a dodržování předpisů v Azure.
+V tomto článku se dozvíte o výhodách používání INSPEC, které usnadňují zajištění zabezpečení a dodržování předpisů v Azure.
 
-## <a name="make-compliance-easy-to-understand-and-assess"></a>Bylo možné snadno pochopit a vyhodnotit dodržování předpisů
+## <a name="make-compliance-easy-to-understand-and-assess"></a>Usnadnění pochopení a vyhodnocení dodržování předpisů
 
-Dokumentace k dodržování předpisů zapisují do tabulek nebo dokumentů aplikace Word nechává požadavky otevřené pro interpretaci. S InSpec transformovat vaše požadavky do kódu označené verzí, spustitelný soubor, čitelné. Kód nahradí konverzací o co by měl být použit k vyhodnocení a místo toho použití hmatatelnými testy s jasný smysl.
+Dokumentace k dodržování předpisů napsaná v tabulkách nebo dokumentech aplikace Word nechává požadavky otevřené ke výkladu. S použitím INSPEC můžete své požadavky transformovat do spustitelného souboru, spustitelného kódu, čitelného pro člověka. Kód nahrazuje konverzace o tom, co by mělo být hodnoceno s využitím hmotného testu s jasným záměrem.
 
-## <a name="detect-fleet-wide-issues-and-prioritize-their-remediation"></a>Zjištění problémů s portfoliem celou a stanovení priorit jejich nápravu
+## <a name="detect-fleet-wide-issues-and-prioritize-their-remediation"></a>Zjištění problémů v rámci loďstva a stanovení priorit při jejich nápravě
 
-InSpec uživatele bez agentů zjišťování režim vám umožní rychle - ve velkém měřítku – vyhodnotit úroveň ohrožení. Integrovaná metadata pro vyhodnocení dopadu/závažnost pomáhá určit, jaké oblasti se soustředit na na odstranění problému. Můžete také rychle psát pravidla v reakci na nová ohrožení zabezpečení a nařízení a je okamžitě zavést.
+Režim rozpoznávání bez agentů nespecifikuje vám možnost rychle vyhodnotit škálování na úrovni expozice. Vestavěná metadata pro bodování dopadu a závažnosti pomáhají určit, které oblasti se mají soustředit na nápravu. Můžete také rychle napsat pravidla v reakci na nové chyby zabezpečení nebo předpisy a okamžitě je vystavit.
 
-## <a name="audit-azure-virtual-machines-with-policy-guest-configuration"></a>Auditovat virtuální počítače Azure s konfigurací zásad hosta
+## <a name="audit-azure-virtual-machines-with-policy-guest-configuration"></a>Auditovat virtuální počítače Azure s konfigurací hostů zásad
 
-Azure podporuje přímo použijte audit virtuálních počítačů Azure pomocí Chefu InSpec definice [konfigurace hostovaného zásad Azure](/azure/governance/policy/concepts/guest-configuration). Konfigurace hostovaného vyhodnotí jako virtuální počítač s Linuxem a zadané definici Chef InSpec a sestavy dodržování předpisů zpět prostřednictvím Azure Policy. Výsledky z těchto auditů jsou rovněž uvedeny přes protokoly Azure monitoru. Povoluje se upozornění a další scénáře automatizace.
+Azure přímo podporuje použití definic INSPEC pro hosty k auditování virtuálních počítačů Azure prostřednictvím [Konfigurace hosta Azure Policy](/azure/governance/policy/concepts/guest-configuration). Konfigurace hosta vyhodnocuje virtuální počítač se systémem Linux na poskytnutou definici INSPEC pro hosty a oznamuje dodržování předpisů zpětně Azure Policy. Výsledky těchto auditů jsou také hlášeny prostřednictvím protokolů Azure Monitor; povolení výstrah a dalších scénářů automatizace.
 
-## <a name="satisfy-audits"></a>Splňují auditů
+## <a name="satisfy-audits"></a>Vyhovět auditům
 
-S InSpec můžete reagovat auditovat otázek v každém okamžiku – nejen v předurčeném intervalech, například čtvrtletně nebo ročně. Běží nepřetržitě InSpec testy, zadejte cyklu auditů znalost přesné shody stav a historie, místo právě sledován auditor zjištění.
+S neurčenými možnostmi můžete reagovat na otázky týkající se auditu kdykoli, a to nejen v předem určených intervalech, jako je čtvrtletní nebo roční. Průběžným spouštěním nesledovaných testů zadáte cyklus auditu, který bude znát přesnou stav a historii dodržování předpisů, ale nebudete překvapeni zjištění auditora.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Zkuste InSpec ve službě Azure Cloud Shell](https://shell.azure.com)
+> [Vyzkoušejte INSPEC v Azure Cloud Shell](https://shell.azure.com)

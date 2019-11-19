@@ -1,17 +1,17 @@
 ---
 title: Průvodce výkonem služby Azure Signal
-description: Přehled výkonu služby Azure Signal.
+description: Přehled výkonu a srovnávacích testů služby Azure Signal Service. Klíčové metriky, které je potřeba vzít v úvahu při plánování kapacity.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232529"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157666"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Průvodce výkonem služby Azure Signal
 
@@ -21,15 +21,15 @@ V této příručce zavedeme faktory, které ovlivňují výkon aplikace Signal.
 
 ## <a name="term-definitions"></a>Definice termínů
 
-*Příchozí*: Příchozí zpráva do služby Azure Signal Service.
+*Příchozí*: příchozí zpráva do služby Azure Signal Service.
 
-*Odchozí*: Odchozí zpráva ze služby signalizace Azure.
+*Odchozí*: odchozí zpráva ze služby signalizace Azure.
 
 *Šířka pásma*: Celková velikost všech zpráv v 1 sekundách.
 
-*Výchozí režim*: Výchozí pracovní režim po vytvoření instance služby Azure Signaler. Služba signalizace Azure očekává, že aplikační server naváže spojení s ním, než přijme všechna připojení klientů.
+*Výchozí režim*: výchozí pracovní režim po vytvoření instance služby Azure signaler. Služba signalizace Azure očekává, že aplikační server naváže spojení s ním, než přijme všechna připojení klientů.
 
-*Režim bez serveru*: Režim, ve kterém služba přijímače Azure přijímá jenom připojení klientů. Není povoleno žádné připojení k serveru.
+*Režim bez serveru*: režim, ve kterém služba přijímače Azure přijímá jenom připojení klientů. Není povoleno žádné připojení k serveru.
 
 ## <a name="overview"></a>Přehled
 
@@ -43,7 +43,7 @@ Služba signalizace Azure definuje sedm standardních úrovní pro různé kapac
 
 -   Jaký druh aplikačního serveru (velikost virtuálního počítače) je vhodný pro mě? Kolik z nich mám nasadit?
 
-Pro zodpovězení těchto otázek obsahuje tato příručka nejdůležitější vysvětlení faktorů, které mají vliv na výkon. Pak ukazuje maximální příchozí a odchozí zprávy pro každou vrstvu pro typické případy použití: **echo**, všesměrové, **odesílací ke skupině**a **odeslání do připojení** (konverzace peer-to-peer).
+Pro zodpovězení těchto otázek obsahuje tato příručka nejdůležitější vysvětlení faktorů, které mají vliv na výkon. Pak ukazuje maximální příchozí a odchozí zprávy pro každou vrstvu pro typické případy použití: **echo**, **všesměrové**, **odesílací ke skupině**a **odeslání do připojení** (konverzace peer-to-peer).
 
 Tato příručka se nezabývá všemi scénáři (a různými případy použití, velikostmi zpráv, schématy odesílání zpráv atd.). Nabízí vám ale několik metod, které vám pomůžou:
 
@@ -58,7 +58,7 @@ Tato část popisuje metodologie hodnocení výkonu a pak uvádí všechny fakto
 
 *Propustnost* a *latence* jsou dva typické aspekty kontroly výkonu. U služby signalizace Azure má každá úroveň SKU vlastní zásady omezování propustnosti. Tato zásada definuje *maximální povolenou propustnost (příchozí a odchozí šířka pásma)* jako maximální dosaženou propustnosti, když 99 procento zpráv má latenci menší než 1 sekunda.
 
-Latence je časové období z připojení, které odesílá zprávu pro příjem zprávy s odpovědí ze služby Azure Signal. Pojďme si jako příklad vykonat ozvěnu. Každé připojení klienta přidá do zprávy časové razítko. Centrum aplikačního serveru pošle původní zprávu zpátky do klienta. Proto je zpoždění šíření snadno vypočítáno při každém připojení klienta. Časové razítko je připojeno ke každé zprávě ve **vysílání**, **Odeslat do skupiny**a **poslat připojení**.
+Latence je časové období z připojení, které odesílá zprávu pro příjem zprávy s odpovědí ze služby Azure Signal. Pojďme si jako příklad vykonat **ozvěnu** . Každé připojení klienta přidá do zprávy časové razítko. Centrum aplikačního serveru pošle původní zprávu zpátky do klienta. Proto je zpoždění šíření snadno vypočítáno při každém připojení klienta. Časové razítko je připojeno ke každé zprávě ve **vysílání**, **Odeslat do skupiny**a **poslat připojení**.
 
 K simulaci tisíců souběžných připojení klientů se ve virtuální privátní síti v Azure vytvoří víc virtuálních počítačů. Všechny tyto virtuální počítače se připojují ke stejné instanci služby signalizace Azure.
 
@@ -66,7 +66,7 @@ Ve výchozím režimu služby signalizace Azure jsou virtuální počítače apl
 
 ### <a name="performance-factors"></a>Faktory výkonu
 
-Teoretická kapacita služby signálů Azure je omezená výpočetními prostředky: PROCESOR, paměť a síť. Například další připojení ke službě Azure Signal Service způsobí, že služba bude používat více paměti. U větších přenosů zpráv (například každá zpráva je větší než 2 048 bajtů) potřebuje služba Azure Signal Service více cyklů procesoru pro zpracování provozu. Mezitím šířka pásma Azure taky omezuje maximální provoz.
+Teoretická kapacita služby signálů Azure je omezená výpočetními prostředky: procesor, paměť a síť. Například další připojení ke službě Azure Signal Service způsobí, že služba bude používat více paměti. U větších přenosů zpráv (například každá zpráva je větší než 2 048 bajtů) potřebuje služba Azure Signal Service více cyklů procesoru pro zpracování provozu. Mezitím šířka pásma Azure taky omezuje maximální provoz.
 
 Typ přenosu má jiný faktor, který má vliv na výkon. Tři typy jsou [WebSocket](https://en.wikipedia.org/wiki/WebSocket), [Server-Event-Event](https://en.wikipedia.org/wiki/Server-sent_events)a [Long-cyklické dotazování](https://en.wikipedia.org/wiki/Push_technology). 
 
@@ -122,14 +122,14 @@ Nepřekračuje zvýrazněné hodnoty v následujících dvou tabulkách.
 
 |       Zvuk                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení                       | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení                       | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | **Příchozí šířka pásma** | **2 MB/s**    | **4 MB/s**    | **10 MB/s**   | **20 MB/s**    | **40 MB/s**    | **100 MB/s**   | **200 MB/s**    |
 | Odchozí šířka pásma | 2 Mb/s   | 4 Mb/s   | 10 Mb/s  | 20 MB/s   | 40 MB/s   | 100 MB/s  | 200 MB/s   |
 
 
-|     Vysílat             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|     Vysílání             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5,000  | 10,000 | 20,000 | 50,000  | 100,000 |
+| Připojení               | 1 000 | 2,000 | 5,000  | 10 000 | 20,000 | 50 000  | 100,000 |
 | Příchozí šířka pásma  | 4 KB/s   | 4 KB/s   | 4 KB/s    | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s    |
 | **Odchozí šířka pásma** | **4 MB/s**    | **8 MB/s**    | **20 MB/s**    | **40 MB/s**    | **80 MB/s**    | **200 MB/s**    | **400 MB/s**   |
 
@@ -139,15 +139,15 @@ Nepřekračuje zvýrazněné hodnoty v následujících dvou tabulkách.
   outboundBandwidth = outboundConnections * messageSize / sendInterval
 ```
 
-- *inboundConnections*: Počet připojení, která odesílají zprávu
+- *inboundConnections*: počet připojení, která odesílají zprávu.
 
-- *outboundConnections*: Počet připojení, která přijímají zprávu
+- *outboundConnections*: počet připojení, která přijímají zprávu.
 
-- *messageSize*: Velikost jedné zprávy (průměrná hodnota). Malá zpráva, která je menší než 1 024 bajtů, má dopad na výkon, který je podobný zprávě 1 024-Byte.
+- *messageSize*: velikost jedné zprávy (průměrná hodnota). Malá zpráva, která je menší než 1 024 bajtů, má dopad na výkon, který je podobný zprávě 1 024-Byte.
 
-- *sendInterval*: Čas odeslání jedné zprávy. Obvykle je 1 sekunda na zprávu, což znamená odeslání jedné zprávy každou sekundu. Menší interval znamená odeslání více zpráv za časové období. Například 0,5 sekund na zprávu znamená, že každá sekunda posílá dvě zprávy.
+- *sendInterval*: čas odeslání jedné zprávy. Obvykle je 1 sekunda na zprávu, což znamená odeslání jedné zprávy každou sekundu. Menší interval znamená odeslání více zpráv za časové období. Například 0,5 sekund na zprávu znamená, že každá sekunda posílá dvě zprávy.
 
-- *Připojení*: Potvrzená maximální prahová hodnota pro službu Azure Signal Service pro každou úroveň. Pokud je číslo připojení vyšší, ztratí se omezení připojení.
+- *Připojení*: potvrzená maximální prahová hodnota pro službu Azure Signal Service pro každou úroveň. Pokud je číslo připojení vyšší, ztratí se omezení připojení.
 
 #### <a name="evaluation-for-complex-use-cases"></a>Vyhodnocování pro složité případy použití
 
@@ -157,7 +157,7 @@ Skutečný případ použití je složitější. Může poslat zprávu větší 
 
 V následující tabulce jsou uvedeny reálné případy použití **všesměrového vysílání**. Velikost zprávy, počet připojení a rychlost odesílání zpráv se ale liší od toho, co jsme předpokládali v předchozí části. Otázka je způsob, jak můžeme odvodit libovolnou z těchto položek (velikost zprávy, počet připojení nebo rychlost odeslání zprávy), pokud ví jenom dva z nich.
 
-| Vysílat  | Velikost zpráv | Příchozí zprávy za sekundu | Připojení | Intervaly odesílání |
+| Vysílání  | Velikost zpráv | Příchozí zprávy za sekundu | Připojení | Intervaly odesílání |
 |---|---------------------|--------------------------|-------------|-------------------------|
 | 1 | 20 KB                | 1                        | 100,000     | 5 sekund                      |
 | 2 | 256 kB               | 1                        | 8 000       | 5 sekund                      |
@@ -168,7 +168,7 @@ Následující vzorec se dá snadno odvodit v závislosti na předchozím vzorci
 outboundConnections = outboundBandwidth * sendInterval / messageSize
 ```
 
-V případě Unit100 je maximální odchozí šířka pásma 400 MB z předchozí tabulky. Pro velikost zprávy o velikosti 20 KB by měla být maximální počet odchozích připojení 400 \* MB 5/20 KB = 100 000, což odpovídá skutečné hodnotě.
+V případě Unit100 je maximální odchozí šířka pásma 400 MB z předchozí tabulky. Pro velikost zprávy o velikosti 20 KB by měla být maximální počet odchozích připojení 400 MB \* 5/20 KB = 100 000, která odpovídá skutečné hodnotě.
 
 ##### <a name="mixed-use-cases"></a>Smíšené případy použití
 
@@ -183,7 +183,7 @@ Pak z maximálního počtu příchozích a odchozích tabulek šířky pásma vy
 > [!NOTE]
 > Pro odeslání zprávy na stovky nebo tisíce malých skupin nebo pro tisíce klientů, kteří odesílají zprávy navzájem, se náklady na směrování stanou dominantní. Vzít tento dopad na účet.
 
-Pro případ použití odeslání zprávy klientům se ujistěte, že aplikační server není kritickým bodem. Následující část "Případová studie" obsahuje pokyny k tomu, kolik aplikačních serverů potřebujete a kolik připojení k serveru byste měli nakonfigurovat.
+Pro případ použití odeslání zprávy *klientům se ujistěte* , že aplikační server není kritickým bodem. Následující část "Případová studie" obsahuje pokyny k tomu, kolik aplikačních serverů potřebujete a kolik připojení k serveru byste měli nakonfigurovat.
 
 ## <a name="case-study"></a>Případová studie
 
@@ -213,8 +213,8 @@ Chování funkce **echo** určuje, zda je maximální příchozí šířka pásm
 
 |       Zvuk                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení                       | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
-| Příchozí/odchozí zprávy za sekundu | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení                       | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
+| Příchozí/odchozí zprávy za sekundu | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Příchozí/odchozí šířka pásma | 2 Mb/s   | 4 Mb/s   | 10 Mb/s  | 20 MB/s   | 40 MB/s   | 100 MB/s  | 200 MB/s   |
 
 V tomto případu použití každý klient vyvolá rozbočovač definovaný na aplikačním serveru. Centrum pouze volá metodu definovanou v původní straně klienta. Toto centrum je nejjednodušším centrem pro **echo**.
@@ -231,13 +231,13 @@ I u tohoto jednoduchého centra je přenos dat na aplikačním serveru výrazný
 
 |    Zvuk          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení      | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Počet aplikačních serverů | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Celkový výkon ozvěny má vliv na číslo klientského připojení, velikost zprávy, rychlost odesílání zpráv, úroveň SKU a procesor/paměť aplikačního serveru.
+> Celkový výkon **ozvěny**má vliv na číslo klientského připojení, velikost zprávy, rychlost odesílání zpráv, úroveň SKU a procesor/paměť aplikačního serveru.
 
-#### <a name="broadcast"></a>Vysílat
+#### <a name="broadcast"></a>Vysílání
 
 V případě **všesměrového vysílání**, když webová aplikace obdrží zprávu, vysílá všem klientům. Víc klientů, které se mají vysílat, je další přenos zpráv, ke kterým mají všichni klienti. Podívejte se na následující diagram.
 
@@ -247,19 +247,19 @@ Vysílá se malý počet klientů. Šířka pásma příchozí zprávy je malá,
 
 Následující tabulka shrnuje maximální počet připojení klientů, počet příchozích a odchozích zpráv a šířku pásma.
 
-|     Vysílat             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|     Vysílání             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5,000  | 10,000 | 20,000 | 50,000  | 100,000 |
+| Připojení               | 1 000 | 2,000 | 5,000  | 10 000 | 20,000 | 50 000  | 100,000 |
 | Příchozí zprávy za sekundu  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10,000 | 20,000 | 40,000 | 100,000 | 200 000 |
+| Odchozí zprávy za sekundu | 2,000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200 000 |
 | Příchozí šířka pásma  | 4 KB/s   | 4 KB/s   | 4 KB/s    | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s     |
 | Odchozí šířka pásma | 4 Mb/s   | 8 Mb/s   | 20 MB/s   | 40 MB/s   | 80 MB/s   | 200 MB/s   | 400 MB/s   |
 
-Vysílající klienti, kteří odesílají zprávy, nejsou delší než čtyři. Budou potřebovat méně aplikačních serverů v porovnání s odezvou, protože velikost příchozí zprávy je malá. Dva aplikační servery jsou dostatečné pro požadavky smlouvy SLA i na výkon. Měli byste ale zvýšit výchozí připojení k serveru, aby nedocházelo k nerovnováze, zejména pro Unit50 a Unit100.
+Vysílající klienti, kteří odesílají zprávy, nejsou delší než čtyři. Budou potřebovat méně aplikačních serverů v porovnání s **odezvou** , protože velikost příchozí zprávy je malá. Dva aplikační servery jsou dostatečné pro požadavky smlouvy SLA i na výkon. Měli byste ale zvýšit výchozí připojení k serveru, aby nedocházelo k nerovnováze, zejména pro Unit50 a Unit100.
 
-|   Vysílat      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|   Vysílání      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení      | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Počet aplikačních serverů | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -269,15 +269,15 @@ Vysílající klienti, kteří odesílají zprávy, nejsou delší než čtyři.
 
 #### <a name="send-to-group"></a>Odeslat do skupiny
 
-Případ použití **skupiny Odeslat do skupiny** má podobný vzor provozu, kterýse má vysílat. Rozdílem je to, že jakmile klienti navážou připojení pomocí protokolu WebSocket ke službě Azure Signal, musí se před odesláním zprávy do určité skupiny spojit se skupinami. Tok přenosů znázorňuje následující diagram.
+Případ použití **skupiny Odeslat do skupiny** má podobný vzor provozu, který se má **vysílat**. Rozdílem je to, že jakmile klienti navážou připojení pomocí protokolu WebSocket ke službě Azure Signal, musí se před odesláním zprávy do určité skupiny spojit se skupinami. Tok přenosů znázorňuje následující diagram.
 
 ![Provoz pro případ použití odeslání na skupinu](./media/signalr-concept-performance/sendtogroup.png)
 
 Počet členů skupiny a skupin je dva faktory, které mají vliv na výkon. Pro zjednodušení analýzy definujeme dva druhy skupin:
 
-- **Malá skupina**: Každá skupina má 10 připojení. Číslo skupiny je rovno (maximální počet připojení)/10. Například pro Unit1, pokud existuje 1 000 počtu připojení, pak máme 1000/10 = 100 skupin.
+- **Malá skupina**: každá skupina má 10 připojení. Číslo skupiny je rovno (maximální počet připojení)/10. Například pro Unit1, pokud existuje 1 000 počtu připojení, pak máme 1000/10 = 100 skupin.
 
-- **Velká skupina**: Číslo skupiny je vždycky 10. Počet členů skupiny se rovná (maximální počet připojení)/10. Například pro Unit1, pokud existuje 1 000 počtu připojení, pak každá skupina obsahuje 1000/10 = 100 členů.
+- **Velká skupina**: číslo skupiny je vždycky 10. Počet členů skupiny se rovná (maximální počet připojení)/10. Například pro Unit1, pokud existuje 1 000 počtu připojení, pak každá skupina obsahuje 1000/10 = 100 členů.
 
 **Odeslání do skupiny** přináší náklady na směrování do služby Azure Signal, protože musí najít cílová připojení prostřednictvím distribuované struktury dat. Při zvýšení počtu odesílání se náklady zvyšují.
 
@@ -287,19 +287,19 @@ Náklady na směrování jsou významné pro posílání zpráv do mnoha malých
 
 |   Odeslat do malé skupiny     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Připojení               | 1 000 | 2 000 | 5,000  | 10,000 | 20,000 | 50,000 | 100,000
+| Připojení               | 1 000 | 2,000 | 5,000  | 10 000 | 20,000 | 50 000 | 100,000
 | Počet členů skupiny        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
-| Počet skupin               | 100   | 200   | 500    | 1 000  | 2 000  | 5,000  | 10,000 
+| Počet skupin               | 100   | 200   | 500    | 1 000  | 2,000  | 5,000  | 10 000 
 | Příchozí zprávy za sekundu  | 200   | 400   | 1 000  | 2,500  | 4,000  | 7,000  | 7,000   |
 | Příchozí šířka pásma  | 400 KB/s  | 800 KBps  | 2 Mb/s     | 5 Mb/s     | 8 Mb/s     | 14 MB/s    | 14 MB/s     |
-| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10,000 | 25,000 | 40,000 | 70 000 | 70 000  |
+| Odchozí zprávy za sekundu | 2,000 | 4,000 | 10 000 | 25,000 | 40,000 | 70 000 | 70 000  |
 | Odchozí šířka pásma | 4 Mb/s    | 8 Mb/s    | 20 MB/s    | 50 MB/s     | 80 MB/s    | 140 MB/s   | 140 MB/s    |
 
 Mnoho připojení klientů volá centrum, takže je pro výkon také důležité toto číslo aplikačního serveru. V následující tabulce jsou uvedené doporučené počty aplikačních serverů.
 
 |  Odeslat do malé skupiny   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení      | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Počet aplikačních serverů | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -311,19 +311,19 @@ U pole **Odeslat do velké skupiny**se odchozí šířka pásma bude kritickým 
 
 |    Odeslat do velké skupiny      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5,000  | 10,000 | 20,000 | 50,000  | 100,000
-| Počet členů skupiny        | 100   | 200   | 500    | 1 000  | 2 000  | 5,000   | 10,000 
+| Připojení               | 1 000 | 2,000 | 5,000  | 10 000 | 20,000 | 50 000  | 100,000
+| Počet členů skupiny        | 100   | 200   | 500    | 1 000  | 2,000  | 5,000   | 10 000 
 | Počet skupin               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Příchozí zprávy za sekundu  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Příchozí šířka pásma  | 80 KBps   | 40 kB/s   | 40 kB/s    | 20 kB/s    | 40 kB/s    | 40 kB/s     | 40 kB/s     |
-| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10,000 | 20,000 | 40,000 | 100,000 | 200 000 |
+| Odchozí zprávy za sekundu | 2,000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200 000 |
 | Odchozí šířka pásma | 8 Mb/s    | 8 Mb/s    | 20 MB/s    | 40 MB/s    | 80 MB/s    | 200 MB/s    | 400 MB/s    |
 
 Počet odesílajících připojení není vyšší než 40. Zatížení aplikačního serveru je malé, takže navrhovaný počet webových aplikací je malý.
 
 |  Odeslat do velké skupiny  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení      | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Počet aplikačních serverů | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -345,15 +345,15 @@ Následující tabulka představuje statistické Shrnutí po mnoha směrech spu�
 
 |   Odeslat do připojení   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Připojení                        | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000          | 100,000         |
-| Příchozí/odchozí zprávy za sekundu | 1 000 | 2 000 | 5,000 | 8 000  | 9 000  | 20,000 | 20,000 |
+| Připojení                        | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000          | 100,000         |
+| Příchozí/odchozí zprávy za sekundu | 1 000 | 2,000 | 5,000 | 8 000  | 9 000  | 20,000 | 20,000 |
 | Příchozí/odchozí šířka pásma | 2 Mb/s    | 4 Mb/s    | 10 Mb/s   | 16 MB/s    | 18 MB/s    | 40 MB/s       | 40 MB/s       |
 
 Tento případ použití vyžaduje vysoké zatížení na straně aplikačního serveru. Podívejte se na téma navrhovaný počet aplikačních serverů v následující tabulce.
 
 |  Odeslat do připojení  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení      | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Počet aplikačních serverů | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -365,25 +365,25 @@ Služba signalizace Azure poskytuje stejnou kapacitu výkonu pro ASP.NET signál
 
 Test výkonu používá Azure Web Apps ze [služby Standard Service Plan S3](https://azure.microsoft.com/pricing/details/app-service/windows/) pro nástroj ASP.NET Signal.
 
-Následující tabulka obsahuje navrhovaný počet webových aplikací pro ASP.NET signalizace.
+Následující tabulka obsahuje navrhovaný počet webových aplikací pro ASP.NET signalizace **.**
 
 |   Zvuk           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení      | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Počet aplikačních serverů | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 Následující tabulka poskytuje navrhovaný počet webových aplikací pro **vysílání**signálem ASP.NET.
 
-|  Vysílat       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|  Vysílání       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení      | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Počet aplikačních serverů | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 V následující tabulce je uveden navrhovaný počet navrhovaných webových aplikací pro ASP.NET signalizace **odeslání do malé skupiny**.
 
 |  Odeslat do malé skupiny     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5,000 | 10,000 | 20,000 | 50,000 | 100,000 |
+| Připojení      | 1 000 | 2,000 | 5,000 | 10 000 | 20,000 | 50 000 | 100,000 |
 | Počet aplikačních serverů | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Režim bez serveru
@@ -397,9 +397,9 @@ Všichni klienti navážou připojení pomocí protokolu WebSocket ke službě A
 
 |   Všesměrové vysílání prostřednictvím REST API     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5,000  | 10,000 | 20,000 | 50,000  | 100,000 |
+| Připojení               | 1 000 | 2,000 | 5,000  | 10 000 | 20,000 | 50 000  | 100,000 |
 | Příchozí zprávy za sekundu  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10,000 | 20,000 | 40,000 | 100,000 | 200 000 |
+| Odchozí zprávy za sekundu | 2,000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200 000 |
 | Příchozí šířka pásma  | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s     | 4 KB/s     | 4 KB/s      | 4 KB/s      |
 | Odchozí šířka pásma | 4 Mb/s    | 8 Mb/s    | 20 MB/s    | 40 MB/s    | 80 MB/s    | 200 MB/s    | 400 MB/s    |
 
@@ -408,9 +408,9 @@ Srovnávací test přiřazuje uživatelská jména všem klientům předtím, ne
 
 |   Odeslat uživateli prostřednictvím REST API | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5,000  | 10,000 | 20,000 | 50,000  | 100,000 |
-| Příchozí zprávy za sekundu  | 300   | 600   | 900    | 1 300  | 2 000  | 10,000  | 18 000  |
-| Odchozí zprávy za sekundu | 300   | 600   | 900    | 1 300  | 2 000  | 10,000  | 18 000 |
+| Připojení               | 1 000 | 2,000 | 5,000  | 10 000 | 20,000 | 50 000  | 100,000 |
+| Příchozí zprávy za sekundu  | 300   | 600   | 900    | 1 300  | 2,000  | 10 000  | 18 000  |
+| Odchozí zprávy za sekundu | 300   | 600   | 900    | 1 300  | 2,000  | 10 000  | 18 000 |
 | Příchozí šířka pásma  | 600 KB/s  | 1,2 MB/s  | 1,8 MB/s   | 2,6 MB/s   | 4 Mb/s     | 10 Mb/s     | 36 MB/s    |
 | Odchozí šířka pásma | 600 KB/s  | 1,2 MB/s  | 1,8 MB/s   | 2,6 MB/s   | 4 Mb/s     | 10 Mb/s     | 36 MB/s    |
 
@@ -428,7 +428,7 @@ Pro všechny případy použití uvedené výše jsme provedli testy výkonu v p
 
 Nástroje pro sledování výkonu pro službu Azure Signal Service najdete na [GitHubu](https://github.com/Azure/azure-signalr-bench/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku získáte přehled výkonu služby signalizace Azure v typických scénářích použití.
 

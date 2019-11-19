@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 09/23/2019
-ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/15/2019
+ms.openlocfilehash: 7bccc75b4a70e98f069d1ffb86909368105b9a32
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006423"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167627"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Rychlý start: Prozkoumání služby Azure Time Series Insights
 
@@ -38,45 +38,47 @@ Tento rychlý Start Time Series Insights Exploreru nabízí Průvodce funkcemi, 
 
 1. Zobrazí se stránka Time Series Insights Rychlá prohlídka. Kliknutím na tlačítko **Další** zahájíte rychlou prohlídku.
 
-   [![vybrat další](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [Úvodní rychlý Start ![– výběr další](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>Prozkoumat ukázkové prostředí
 
 1. Zobrazí se **panel pro výběr času** . Pomocí tohoto panelu vyberte časový rámec, který chcete vizualizovat.
 
-   [panel pro výběr ![ho času](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [panel pro výběr ![ho času](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
 1. Vyberte časový rámec a přetáhněte ho do oblasti. Pak vyberte **Hledat**.
 
-   [![výběr časového rámce](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [![výběr časového rámce](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
    Time Series Insights zobrazí vizualizaci grafu pro zadaný časový rámec. V rámci spojnicového grafu můžete provádět různé akce. Můžete například filtrovat, připnout, řadit a Stack.
 
    Chcete-li se vrátit na **panel pro výběr času**, vyberte šipku dolů, jak je znázorněno níže:
 
-   [![graf](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [![graf](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
 1. Vyberte **Přidat** na **panelu podmínky** a přidejte nový hledaný výraz.
 
-   [![přidat položku](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [panel ![přidat vyhledávací výrazy](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
 
 1. V grafu můžete vybrat oblast, kliknout na ni pravým tlačítkem a vybrat **Prozkoumat události**.
 
-   [![prozkoumat události](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [![prozkoumat události](media/quickstart/quickstart-explore-events.png)](media/quickstart/quickstart-explore-events.png#lightbox)
 
    Z oblasti, kterou zkoumáte, se zobrazí mřížka nezpracovaných dat.
 
-   [zobrazení mřížky ![](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [![prozkoumání událostí – zobrazení dat mřížky](media/quickstart/quickstart-explore-events-grid-data.png)](media/quickstart/quickstart-explore-events-grid-data.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Výběr a filtrování dat
 
 1. Upravte své výrazy a změňte hodnoty v grafu. Přidejte další termín pro křížovou korelaci různých typů hodnot.
 
-   [![přidat termín](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![přidat termín](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. Do pole **filtrovat řady** pro filtrování řady Improvised Zadejte termín filtru. Pro účely tohoto rychlého startu zadejte **Station5**, aby se provedla vzájemná korelace teploty a tlaku pro příslušnou stanici.
+1. Pole pro **Výběr** sady vyberte prázdné, pokud chcete zobrazit všechny vybrané hledané termíny nebo zadat termín filtru v poli **filtrovat řady** pro filtrování řady Improvised.
 
-   [řady ![filtru](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [řady ![filtru](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
+
+   Pro účely tohoto rychlého startu zadejte **Station5**, aby se provedla vzájemná korelace teploty a tlaku pro příslušnou stanici.
 
 Po dokončení tohoto rychlého startu můžete experimentovat s ukázkovou sadou dat a vytvářet různé vizualizace.
 

@@ -4,19 +4,19 @@ description: Nejčastější dotazy a odpovědi související s Azure Multi-Fact
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: troubleshooting
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081534"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167762"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -142,13 +142,11 @@ Pokud vaše organizace nemá starší verze klientů, neměli byste uživatelům
 >
 > Hesla aplikací jsou nutná jenom pro aplikace, které nepodporují moderní ověřování. Klienti Office 2013 podporují moderní ověřovací protokoly, ale je potřeba je nakonfigurovat. Teď je k dispozici moderní ověřování pro všechny zákazníky s aktualizací 2015 nebo novější pro Office 2013. Další informace najdete v blogovém příspěvku [aktualizovaného moderního ověřování Office 365](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/).
 
-**Otázka: moji uživatelé říkají, že v některých případech neobdrží textovou zprávu nebo odpoví na obousměrné textové zprávy, ale vyprší časový limit ověřování.**
+**Otázka: moji uživatelé říkají, že v některých případech neobdrží textovou zprávu nebo vyprší časový limit ověření.**
 
-Doručování textových zpráv a příjem odpovědí v obousměrném SMS nejsou zaručeny, protože existují neovladatelné faktory, které by mohly ovlivnit spolehlivost služby. Mezi tyto faktory patří cílová země/oblast, mobilní telefonní hovor a síla signálu.
+Doručování zpráv SMS není zaručeno, protože existují neovladatelné faktory, které by mohly ovlivnit spolehlivost služby. Mezi tyto faktory patří cílová země/oblast, mobilní telefonní hovor a síla signálu.
 
 Pokud mají vaši uživatelé často problémy s spolehlivým příjmem textových zpráv, řekněte jim, aby místo toho používali metodu mobilní aplikace nebo telefonní hovor. Mobilní aplikace může dostávat oznámení přes mobilní připojení i připojení Wi-Fi. Kromě toho může mobilní aplikace generovat ověřovací kódy i v případě, že zařízení nemá žádný signál. Aplikace Microsoft Authenticator je dostupná pro [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)a [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
-
-Pokud je nutné použít textové zprávy, doporučujeme, abyste pomocí jednosměrového SMS nepoužívali službu SMS, pokud je to možné. Jednosměrná služba SMS je spolehlivější a zabraňuje uživatelům v navracení globálních poplatků za SMS z odpovědi na textovou zprávu, která byla odeslána z jiné země nebo oblasti.
 
 **Otázka: mohu změnit dobu, po kterou mají uživatelé zadat ověřovací kód z textové zprávy před vypršením časového limitu?**
 
@@ -162,7 +160,7 @@ Pro jednosměrné služby SMS s Azure MFA serverem v 7.0 nebo vyšší můžete 
 >[!TIP] 
 >Pokud máte více serverů MFA, pouze ta, která zpracovala původní požadavek na ověření, zná ověřovací kód, který byl odeslán uživateli. Když uživatel zadá kód, žádost o ověření, která se má ověřit, musí být odeslána na stejný server. Pokud je ověřování kódu odesláno na jiný server, ověřování je odepřeno. 
 
-Pro oboustranný SMS s Azure MFA serverem můžete nakonfigurovat nastavení časový limit v Portál pro správu MFA. Pokud uživatelé nereagují na zprávu SMS v rámci definovaného časového limitu, je jejich ověření zamítnuto. 
+Pokud uživatelé nereagují na zprávu SMS v rámci definovaného časového limitu, je jejich ověření zamítnuto. 
 
 V případě jednosměrného SMS s Azure MFA v cloudu (včetně adaptéru AD FS nebo rozšíření serveru síťových zásad) nemůžete konfigurovat nastavení časového limitu. Azure AD ukládá ověřovací kód po dobu 180 sekund. 
 

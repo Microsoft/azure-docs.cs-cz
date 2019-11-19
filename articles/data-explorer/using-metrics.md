@@ -1,36 +1,36 @@
 ---
-title: Sledování výkonu, stavu a využití s metrikami Průzkumník dat Azure
-description: Další informace o použití Průzkumníka služby Azure Data metriky pro monitorování výkonu, stavu a využití clusteru.
+title: Monitorování výkonu, stavu a využití Azure Průzkumník dat s metrikami
+description: Naučte se používat metriky Azure Průzkumník dat k monitorování výkonu, stavu a využití clusteru.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.openlocfilehash: f5b47a5ae9d13711233d0e4852ec487af7344622
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569284"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173795"
 ---
-# <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Sledování výkonu, stavu a využití s metrikami Průzkumník dat Azure
+# <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Monitorování výkonu, stavu a využití Azure Průzkumník dat s metrikami
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. Metriky Azure Průzkumník dat poskytují klíčové indikátory stavu a výkonu prostředků clusteru. Použijte metriky, které jsou podrobně popsané v tomto článku k monitorování stavu clusteru Průzkumník dat Azure a výkonu v váš konkrétní scénář jako samostatné metriky. Metriky můžete také použít jako základ pro provozní [řídicích panelů Azure](/azure/azure-portal/azure-portal-dashboards) a [Azure Alerts](/azure/azure-monitor/platform/alerts-metric-overview).
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. Metriky Azure Průzkumník dat poskytují klíčové indikátory pro stav a výkon prostředků clusteru. Pomocí metrik, které jsou podrobně popsané v tomto článku, můžete monitorovat stav a výkon služby Azure Průzkumník dat clusteru v konkrétním scénáři jako samostatné metriky. Metriky můžete použít také jako základ pro operační [řídicí panely Azure](/azure/azure-portal/azure-portal-dashboards) a [výstrahy Azure](/azure/azure-monitor/platform/alerts-metric-overview).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Vytvoření [clusteru a databáze](create-cluster-database-portal.md).
+* Vytvořte [cluster a databázi](create-cluster-database-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
-## <a name="using-metrics"></a>Pomocí metrik
+## <a name="using-metrics"></a>Použití metrik
 
-V Průzkumníku dat Azure clusteru, vyberte **metriky** otevřete podokno metriky a zahájení analýzy ve vašem clusteru.
+V clusteru Azure Průzkumník dat vyberte **metriky** a otevřete podokno metriky a začněte analyzovat v clusteru.
 
 ![Vybrat metriky](media/using-metrics/select-metrics.png)
 
@@ -38,34 +38,35 @@ V podokně metriky:
 
 ![Podokno metriky](media/using-metrics/metrics-pane.png)
 
-1. Chcete-li vytvořit grafu metrik, vyberte **metrika** názvu a relevantní **agregace** na metriku, jak je uvedeno níže. **Prostředků** a **metrika Namespace** výběr jsou předem vybraná ke svému clusteru Průzkumník dat Azure.
+1. Chcete-li vytvořit graf metriky, vyberte možnost název **metriky** a relevantní **agregace** na jednu metriku, jak je popsáno níže. Výběry oboru názvů **prostředku** a **metriky** jsou předem vybrané do vašeho clusteru Azure Průzkumník dat.
 
-    **Metrika** | **Jednotka** | **Agregace** | **Popis metriky**
+    **Metrika** | **Jednotce** | **Agregace** | **Popis metriky**
     |---|---|---|---|
-    | Využití mezipaměti | Percent | Avg, Max, Min | Procento prostředky přidělené mezipaměti aktuálně používané clusterem. Mezipaměť odkazuje na velikost přidělené aktivity uživatelů podle zásad definovaných mezipaměti na SSD. Mezipaměti průměrné využití 80 % nebo méně se do udržitelné stavu pro cluster. Pokud mezipaměti průměrné využití přes 80 %, měl by být clusteru [vertikálně navýšit](manage-cluster-vertical-scaling.md) do úložiště optimalizované cenové úrovně nebo [škálované](manage-cluster-horizontal-scaling.md) na více instancí. Můžete také přizpůsobit zásady ukládání do mezipaměti (v mezipaměti menší počet dnů). Pokud je využití mezipaměti více než 100 %, velikost dat do mezipaměti podle zásady ukládání do mezipaměti, je větší, celková velikost mezipaměti v clusteru. |
-    | Procesor | Percent | Avg, Max, Min | Procento přidělených výpočetních prostředků aktuálně používán počítače v clusteru. Průměrné využití procesoru 80 % nebo méně je udržitelné pro cluster. Maximální hodnota využití procesoru je 100 %, což znamená, že neexistují žádné další výpočetní prostředky, které zpracovávají data. Pokud cluster není dobře, zkontrolujte maximální hodnota CPU a určí, jestli je konkrétní procesory, které jsou blokovány. |
-    | Události byly zpracovány (pro službu Event Hubs) | Count | Max, Min, součet | Celkový počet událostí čtení ze služby event hubs a zpracovány v clusteru. Události jsou rozděleny do odmítl a události přijal modul clusteru. |
-    | Latence příjmu dat | Sekundy | Avg, Max, Min | Latence dat přijatých od okamžiku, kdy data byla přijata v clusteru, dokud nebude připravené pro dotaz. Doby latence příjmu závisí na scénáři příjmu. |
-    | Příjem výsledků | Count | Count | Celkový počet operací příjmu, které se nezdařilo a byla úspěšná. Použití **použít rozdělení** vytvoření bloků úspěšné a neúspěšné výsledky a analýza dimenze (**hodnotu** > **stav**).|
-    | Ingestování využití | Percent | Avg, Max, Min | Procento skutečné prostředky používané k ingestování dat z celkové množství prostředků přidělených v zásadách kapacitu, provádět ingestování. Výchozí zásada kapacity je delší než 512 souběžných přijímání operations Console nebo 75 % investovali do ingestování prostředky clusteru. Průměrný příjem využití 80 % nebo méně, je udržitelné stavu pro cluster. Maximální hodnota ingestování využití je 100 %, což znamená, že se používá možnost příjmu všech clusteru a může vést ingestování fronty. |
-    | Ingestování svazek (v MB) | Count | Max, Min, součet | Celková velikost dat přijatých do clusteru (v MB) před kompresí. |
-    | Zachování | Count | Průměr | Sleduje schopnost reagovat na clusteru. Vrací hodnotu 1, plně interaktivní clusteru a cluster blokované nebo odpojených vrátí hodnotu 0. |
-    | Doba trvání dotazu | Sekundy | Počet, Avg, Min, Max, součet | Celkový čas, dokud se výsledky dotazu jsou přijímány (nezahrnuje latenci sítě). |
+    | Využití mezipaměti | Procento | Střední, Max, min | Procento přidělených prostředků mezipaměti, které tento cluster aktuálně používá. Mezipaměť odkazuje na velikost jednotky SSD přidělené aktivitě uživatele podle definovaných zásad mezipaměti. Průměrné využití mezipaměti 80% nebo méně je udržitelný stav pro cluster. Pokud je průměrné využití mezipaměti nad 80%, cluster by se měl [škálovat až](manage-cluster-vertical-scaling.md) na cenovou úroveň optimalizované pro úložiště nebo [škálovat](manage-cluster-horizontal-scaling.md) na více instancí. Případně můžete zásadu mezipaměti upravit (méně dní v mezipaměti). Pokud je využití mezipaměti větší než 100%, velikost dat, která se mají ukládat do mezipaměti, podle zásad ukládání do mezipaměti, je větší než celková velikost mezipaměti v clusteru. |
+    | Procesor | Procento | Střední, Max, min | Procento přidělených výpočetních prostředků, které jsou aktuálně používány počítači v clusteru. Průměrný procesor o 80% nebo méně je udržitelný pro cluster. Maximální hodnota CPU je 100%, což znamená, že pro zpracování dat nejsou k dispozici žádné další výpočetní prostředky. Pokud cluster nefunguje dobře, zkontrolujte maximální hodnotu CPU, abyste zjistili, jestli jsou blokované konkrétní procesory. |
+    | Zpracované události (pro Event Hubs) | Počet | Max, min, Sum | Celkový počet událostí načtených z Center událostí a zpracovávaných clusterem. Události jsou rozdělené na odmítnuté události a události akceptované modulem clusteru. |
+    | Latence přijímání | Sekundy | Střední, Max, min | Latence přijímaných dat od okamžiku, kdy byla data v clusteru přijata, dokud nebudou připravené pro dotaz. Doba latence příjmu závisí na scénáři přijímání. |
+    | Výsledek ingestování | Počet | Počet | Celkový počet neúspěšných a úspěšných operací příjmu. Pomocí **použít rozdělení** můžete vytvořit intervaly úspěchu a výsledky selhání a analyzovat dimenze (**hodnota** > **stav**).|
+    | Využití příjmu | Procento | Střední, Max, min | Procento skutečných prostředků používaných k ingestování dat z celkových přidělených prostředků v zásadě kapacity k provádění ingestování. Výchozí zásady kapacity neobsahují více než 512 souběžných operací příjmu nebo 75% prostředků clusteru, které jsou investovaly do ingestování. Průměrné využití příjmu 80% nebo méně je udržitelný stav pro cluster. Maximální hodnota využití příjmu je 100%, což znamená, že se používá veškerá schopnost ingestování clusteru a výsledkem může být fronta přijímání. |
+    | Objem příjmu (v MB) | Počet | Max, min, Sum | Celková velikost dat, která se ingestují do clusteru (v MB) před kompresí |
+    | Zachovat naživu | Počet | Volání | Sleduje rychlost odezvy clusteru. Plně reagující cluster vrátí hodnotu 1 a blokovaný nebo odpojený cluster vrátí hodnotu 0. |
+    | Doba trvání dotazu | Sekundy | Count, AVG, min, Max, suma | Celková doba do přijetí výsledků dotazu (nezahrnuje latenci sítě). |
     | | | |
 
-    Další informace týkající se [podporované metriky clusteru Průzkumník dat Azure](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
+    Další informace týkající se [podporovaných metrik clusteru Azure Průzkumník dat](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
 
-2. Vyberte **přidat metriku** tlačítko zobrazit několik metrik zobrazených ve stejném grafu.
-3. Vyberte **+ nový graf** tlačítko zobrazit několik grafů v jednom zobrazení.
-4. Pomocí nástroje pro výběr času změnit časový rozsah (výchozí: za posledních 24 hodin).
-5. Použití [ **přidat filtr** a **použít rozdělení** ](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) pro metriky, které mají dimenze.
-6. Vyberte **připnout na řídicí panel** Přidat konfiguraci graf na řídicí panely tak, aby ji mohly znovu zobrazit.
-7. Nastavte **nové pravidlo upozornění** vizualizovat metriky na základě sadu kritérií. Nové pravidlo výstrah bude obsahovat váš cílový prostředek, metriky, rozdělení a filtr dimenzí z grafu. Změna tohoto nastavení [podokně vytvoření pravidla upozornění](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
+2. Výběrem tlačítka **Přidat metriku** zobrazíte více metrik vykreslených ve stejném grafu.
+3. Kliknutím na tlačítko **+ Nový graf** zobrazíte více grafů v jednom zobrazení.
+4. Pomocí nástroje pro výběr času můžete změnit časový rozsah (výchozí: posledních 24 hodin).
+5. Použijte [ **přidejte filtr** a **použijte rozdělení** ](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) pro metriky, které mají rozměry.
+6. Vyberte **Připnout na řídicí panel** , abyste mohli přidat konfiguraci grafu do řídicích panelů, abyste ho mohli znovu zobrazit.
+7. Nastavte **nové pravidlo výstrahy** pro vizualizaci metrik pomocí zadaných kritérií. Nové pravidlo upozorňování bude obsahovat cílový prostředek, metriku, rozdělení a filtrování dimenzí v grafu. Tato nastavení upravte v [podokně vytvoření pravidla výstrahy](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
 
-Další informace o používání [Průzkumníka metrik](/azure/azure-monitor/platform/metrics-getting-started).
+Další informace o použití [Průzkumník metrik](/azure/azure-monitor/platform/metrics-getting-started).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+* [Kurz: ingestování a dotazování dat monitorování v Azure Průzkumník dat](/azure/data-explorer/ingest-data-no-code)
+* [Monitorování operací ingestování v Azure Průzkumník dat pomocí diagnostických protokolů](/azure/data-explorer/using-diagnostic-logs)
+* [Rychlý start: Dotazování na data v Azure Data Exploreru](web-query-data.md)

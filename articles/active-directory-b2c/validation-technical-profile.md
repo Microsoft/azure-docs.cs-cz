@@ -1,6 +1,6 @@
 ---
-title: Technický profil ověření definování ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Technický profil Azure Active Directory definování ve vlastních zásadách v Azure Active Directory B2C.
+title: Definujte technický profil ověřování ve vlastních zásadách v Azure Active Directory B2C | Microsoft Docs
+description: Definujte Azure Active Directory technický profil ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f20c3c6d6821b5a8bbdb74101095431f6f7f18f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511908"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167572"
 ---
-# <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil ověření definování ve vlastních zásadách pro Azure Active Directory B2C
+# <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu ověření ve Azure Active Directory B2C vlastní zásady
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Technický profil ověření, jako je běžný technický profil z libovolného protokolu [Azure Active Directory](active-directory-technical-profile.md) nebo [rozhraní REST API](restful-technical-profile.md). Technický profil ověření vrátí výstupní deklarace identit nebo vrátí chybovou zprávu protokolu HTTP 409 (konflikt stavový kód odpovědi), s následujícími údaji:
+Technický profil ověření je běžný technický profil z libovolného protokolu, například [Azure Active Directory](active-directory-technical-profile.md) nebo [REST API](restful-technical-profile.md). Technický profil ověřování vrátí deklarace výstupů nebo vrátí chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt) s následujícími daty:
 
 ```JSON
 {
@@ -31,57 +31,60 @@ Technický profil ověření, jako je běžný technický profil z libovolného 
 }
 ```
 
-Deklarace identity, které jsou vráceny z technického profilu ověření jsou přidána zpět do kontejneru deklarací identity. V další ověření technické profily můžete použít tyto deklarace identit.
+Deklarace identity, které se vrátí z technického profilu ověření, se přidají zpět do kontejneru deklarací identity. Tyto deklarace identity můžete použít v následujících technických profilech ověření.
 
-Ověření technické profily jsou provedeny v pořadí uvedeném v **ValidationTechnicalProfiles** elementu. Můžete nakonfigurovat v technickém profilu ověření, jestli spuštění jakékoli následné ověření technické profily by měly pokračovat, pokud technický profil ověření vyvolá chybu nebo je úspěšné.
+Technické profily ověření jsou spouštěny v pořadí, v jakém jsou uvedeny v prvku **ValidationTechnicalProfiles** . V technickém profilu ověření můžete nakonfigurovat, jestli se má v případě, že technický profil ověření vyvolá chybu, nebo jestli je úspěšný, provést všechny následné ověřovací technické profily.
 
-Technický profil může podmíněně spustit ověřování založené na předběžné podmínky definované v **ValidationTechnicalProfile** elementu. Můžete například zkontrolovat, jestli konkrétní deklarace identity existuje, nebo pokud se deklarace identity rovná nebo není na zadanou hodnotu.
+Technický profil ověření může být podmíněně proveden na základě předběžných podmínek definovaných v prvku **ValidationTechnicalProfile** . Můžete třeba ověřit, jestli konkrétní deklarace existují, nebo jestli je deklarace identity rovna zadané hodnotě.
 
-S vlastním potvrzením technický profil může definovat profil technické ověření pro některé nebo všechny jeho výstupní deklarace identit. Všechny mezi vstupními deklaracemi identity odkazovaného technického profilu musí být uvedena v výstupní deklarace identit odkazující technického profilu ověření.
+Technický profil s vlastním uplatněním může definovat technický profil ověření, který se použije k ověření některých nebo všech jeho výstupních deklarací. Všechny vstupní deklarace odkazovaného technického profilu se musí objevit ve výstupních deklaracích technického profilu odkazujícího ověřování.
+
+> [!NOTE]
+> Ověřovací technické profily můžou používat jenom technické profily s vlastním uplatněním. Pokud potřebujete ověřit výstupní deklarace identity z technických profilů bez vlastního vyhodnocení, zvažte použití dalšího kroku orchestrace v cestě uživatele, aby vyhovoval technickému profilu, který se účtuje za ověření.    
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
-**ValidationTechnicalProfiles** prvek obsahuje následující prvky:
+Element **ValidationTechnicalProfiles** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| ValidationTechnicalProfile | 1: n | Technický profil má být použit pro ověřování, některé nebo všechny výstupní deklarace identit odkazující technického profilu. |
+| ValidationTechnicalProfile | 1: n | Technický profil, který se má použít k ověření některých nebo všech výstupních deklarací odkazujícího technického profilu. |
 
-**ValidationTechnicalProfile** prvek obsahuje následující atribut:
+Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Ano | Identifikátor technického profilu již definována v zásadách nebo nadřazené zásady. |
-|ContinueOnError –|Ne| Označující, zda ověření žádné další ověření technické profily by měly pokračovat, pokud tento profil technické ověření vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, se zastaví zpracování další ověření profilů a vrátí chyba). |
-|ContinueOnSuccess | Ne | Označující, zda ověření jakékoli následné ověření profilů by měly pokračovat, pokud tento profil technické ověření proběhne úspěšně. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `true`, což znamená, že zpracování další ověření profily bude pokračovat. |
+| ReferenceId | Ano | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
+|ContinueOnError –|Ne| Označuje, zda má ověřování všech následných technických profilů ověřování pokračovat, pokud tento technický profil ověření vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
+|ContinueOnSuccess | Ne | Označuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `true`, což znamená, že zpracování dalších profilů ověření bude pokračovat. |
 
-**ValidationTechnicalProfile** prvek obsahuje následující element:
+Element **ValidationTechnicalProfile** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Předběžné podmínky | 0:1 | Seznam předběžné požadavky, které musí být splněny pro technický profil ověření ke spuštění. |
+| Předběžné podmínky | 0:1 | Seznam předpokladů, které musí být splněny, aby byl technický profil ověření proveden. |
 
-**Předběžné podmínky** prvek obsahuje následující atribut:
+Prvek **předběžné podmínky** obsahuje následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| `Type` | Ano | Typ kontroly nebo dotaz k provedení pro předpoklad. Buď `ClaimsExist` je zadali, a ověřte, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo `ClaimEquals` je zadán, že by měl provést akce, pokud existuje zadaný deklarace identity a jeho hodnota se rovná Zadaná hodnota. |
-| `ExecuteActionsIf` | Ano | Určuje, zda má být provedena akce v předpoklad je-li test true nebo false. |
+| `Type` | Ano | Typ kontroly nebo dotazu, který má být proveden pro předběžnou podmínku. `ClaimsExist` je zadáno, aby se zajistilo, že akce by se měly provádět v případě, že zadané deklarace v aktuální sadě deklarací identity existují, nebo `ClaimEquals` je určeno, že akce by se měly provést, pokud existuje zadaná deklarace identity a její hodnota je rovna zadané hodnotě. |
+| `ExecuteActionsIf` | Ano | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
 
-**Předběžné podmínky** prvek obsahuje následující prvky:
+Prvek **podmínky** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Hodnota | 1: n | Data, která se používá kontrolu. Pokud je typ této kontroly `ClaimsExist`, toto pole určuje ClaimTypeReferenceId dotazu. Pokud je typ kontroly `ClaimEquals`, toto pole určuje ClaimTypeReferenceId dotazu. Zatímco jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.|
-| Akce | 1:1 | Akce, která se má vzít při splnění předběžná kontrola v rámci na krok Orchestrace. Hodnota **akce** je nastavena na `SkipThisValidationTechnicalProfile`. Určuje, že by neměl být spouštěn technický profil přidruženého ověřování. |
+| Hodnota | 1: n | Data, která se používají při kontrole. Pokud je typ této kontroly `ClaimsExist`, toto pole určuje ClaimTypeReferenceId k dotazování na. Pokud je typ kontroly `ClaimEquals`, toto pole určuje ClaimTypeReferenceId pro dotaz na. Zatímco jiný element Value obsahuje hodnotu, která má být kontrolována.|
+| Akce | 1:1 | Akce, která má být provedena, pokud je splněna podmínka kontroly předběžných podmínek v rámci kroku orchestrace. Hodnota **Akce** je nastavena na `SkipThisValidationTechnicalProfile`. Určuje, že by se neměl spustit přidružený technický profil ověření. |
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Následující příklad používá tyto technické profily ověření:
+Následující příklad používá tyto technické profily ověřování:
 
-1. První technický profil ověření ověří přihlašovací údaje uživatele a nebude dále, pokud dojde k chybě, jako je například neplatné uživatelské jméno nebo špatné heslo.
-2. Další ověření technický profil, neprovede, pokud deklarace identity userType neexistuje, nebo pokud je hodnota userType `Partner`. Technický profil ověření se pokusí čtení profilu uživatele z databáze interní zákazníky a pokračovat v případě, že dojde k chybě, jako je REST API služby není k dispozici, nebo všechny vnitřní chyby.
-3. Poslední ověření technický profil, neprovede, pokud userType deklarace identity, nebo pokud je hodnota userType `Customer`. Technický profil ověření se pokusí načíst profil uživatele z interní partnerská databáze a bude pokračovat, pokud dojde k chybě, jako je REST API služby není k dispozici, nebo všechny vnitřní chyby.
+1. První technický profil ověření kontroluje přihlašovací údaje uživatele a nepokračuje, pokud dojde k chybě, například neplatné uživatelské jméno nebo špatné heslo.
+2. Další technický profil ověření se neprovede, pokud deklarace userType neexistuje nebo pokud je hodnota userType `Partner`. Technický profil ověření se pokusí přečíst profil uživatele z interní databáze zákazníka a pokračovat, pokud dojde k chybě, například služba REST API není k dispozici nebo došlo k vnitřní chybě.
+3. Poslední technický profil ověření se neprovede, pokud deklarace userType neexistovala nebo pokud je hodnota userType `Customer`. Technický profil ověření se pokusí přečíst profil uživatele z interní databáze partnerů a pokračuje v případě výskytu chyby, například REST API služba není k dispozici nebo došlo k vnitřní chybě.
 
 ```XML
 <ValidationTechnicalProfiles>

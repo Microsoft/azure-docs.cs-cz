@@ -1,78 +1,79 @@
 ---
-title: Azure CDN z podmínek shody stroje Microsoft Standard Rules | Microsoft Docs
-description: Referenční dokumentace pro Azure Content Delivery Network od podmínek shody stroje Microsoft Standard Rules.
+title: Podmínky shody v modulu Standard rules pro Azure CDN | Microsoft Docs
+description: Referenční dokumentace pro podmínky shody v modulu Standard rules pro Azure Content Delivery Network (Azure CDN).
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: a72452d37b152a9463a5aee0e199fd42ea852236
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615959"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171606"
 ---
-# <a name="azure-cdn-from-microsoft-standard-rules-engine-match-conditions"></a>Azure CDN z podmínek shody stroje Microsoft Standard Rules
+# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Podmínky shody v modulu Standard rules pro Azure CDN
 
-V tomto článku jsou uvedené podrobné popisy dostupných podmínek shody pro Azure Content Delivery Network (CDN) od stroje Microsoft [Standard Rules](cdn-standard-rules-engine.md).
+V [modulu Standard Rules](cdn-standard-rules-engine.md) pro Azure Content Delivery Network (Azure CDN) se pravidlo skládá z jedné nebo více podmínek shody a akci. Tento článek poskytuje podrobné popisy podmínek shody, které můžete použít v modulu Standard rules pro Azure CDN.
 
-První část pravidla je množina podmínek shody. Každé pravidlo může mít až 4 podmínky shody. Podmínka shody identifikuje konkrétní typy požadavků, pro které budou provedeny akce definované v pravidle. Pokud použijete více podmínek shody, budou seskupeny pomocí logiky a.
+První část pravidla je podmínka shody nebo sada podmínek shody. V modulu Standard rules pro Azure CDN může mít každé pravidlo až čtyři podmínky shody. Podmínka shody identifikuje konkrétní typy požadavků, pro které jsou provedeny definované akce. Pokud použijete více podmínek shody, podmínky shody jsou seskupeny pomocí logiky a.
 
 Podmínku shody můžete například použít k těmto akcím:
 
-- Vyfiltruje požadavky vygenerované z konkrétní IP adresy nebo země nebo oblasti.
+- Vyfiltruje požadavky na základě konkrétní IP adresy, země nebo oblasti.
 - Vyfiltruje požadavky podle informací v záhlaví.
-- Vyfiltruje požadavky z mobilních nebo stolních zařízení.
+- Vyfiltruje požadavky z mobilních zařízení nebo stolních zařízení.
 
 ## <a name="match-conditions"></a>Podmínky shody
 
-Pro použití jsou k dispozici následující podmínky shody. 
+Následující podmínky shody jsou k dispozici pro použití v modulu Standard rules pro Azure CDN. 
 
 ### <a name="device-type"></a>Typ zařízení 
 
-Podmínka shody typů zařízení identifikuje požadavky vytvořené z mobilního nebo stolního zařízení na základě jeho vlastností.  
+Identifikuje požadavky vytvořené z mobilního zařízení nebo stolního zařízení.  
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
-Operátor | Podporovaná hodnota
+Operátor | Podporované hodnoty
 ---------|----------------
 Rovná se, není rovno | Mobilní zařízení, Desktop
 
-
 ### <a name="http-version"></a>Verze protokolu HTTP
 
-Podmínka shody verze HTTP identifikuje požadavky na základě verze protokolu HTTP, se kterou požadavek dorazí.
+Identifikuje požadavky na základě verze HTTP žádosti.
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
-Operátor | Podporovaná hodnota
+Operátor | Podporované hodnoty
 ---------|----------------
 Rovná se, není rovno | 2,0, 1,1, 1,0, 0,9, vše
 
-
 ### <a name="request-cookies"></a>Soubory cookie požadavků
 
-Podmínka shody souborů cookie žádosti identifikuje požadavky na základě informací o souborech cookie v příchozím požadavku.
+Identifikuje požadavky na základě informací o souborech cookie v příchozím požadavku.
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
 Název souboru cookie | Operátor | Hodnota souboru cookie | Transformace případu
 ------------|----------|--------------|---------------
 Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-Informace o klíči
-- Zástupné hodnoty, včetně hvězdičky (*), nejsou při zadávání názvu souboru cookie podporované, pro porovnání jsou způsobilé jenom přesné názvy souborů cookie.
-- Pro každou instanci této podmínky shody lze zadat pouze jeden název souboru cookie.
+#### <a name="key-information"></a>Informace o klíči
+
+- Pokud zadáte název souboru cookie, nemůžete použít zástupné znaky (včetně hvězdiček (\*)). můžete Muse použít přesný název souboru cookie.
+- Pro každou instanci této podmínky shody můžete zadat jenom jeden název souboru cookie.
 - Porovnávání názvů souborů cookie rozlišuje velká a malá písmena.
-- Určete více hodnot souborů cookie tak, že každý z nich omezíte na jednu mezeru. 
+- Chcete-li zadat více hodnot souborů cookie, použijte jednu mezeru mezi každou hodnotou souboru cookie. 
 - Hodnoty souboru cookie můžou využívat zástupné hodnoty.
-- Pokud není zadaná zástupná hodnota, bude tato podmínka shody vyhovovat jenom přesná shoda. Například zadání hodnoty "hodnota" bude odpovídat hodnotě "value", ale ne "hodnota1". 
+- Pokud není zadaná zástupná hodnota, splňuje tato podmínka shody jenom přesnou shodu. Například hodnota "value" bude odpovídat hodnotě "value", ale ne "hodnota1". 
 
 ### <a name="post-argument"></a>Post – argument
 
-**Povinná pole**
+Identifikuje požadavky založené na argumentech definovaných pro metodu POST Request, která se používá v žádosti. 
+
+#### <a name="required-fields"></a>Povinná pole
 
 Název argumentu | Operátor | Hodnota argumentu | Transformace případu
 --------------|----------|----------------|---------------
@@ -80,9 +81,9 @@ Název argumentu | Operátor | Hodnota argumentu | Transformace případu
 
 ### <a name="query-string"></a>Řetězec dotazu
 
-Podmínky shody řetězce dotazu označují požadavky obsahující zadaný parametr řetězce dotazu. Tento parametr je nastaven na hodnotu, která odpovídá zadanému vzoru. Parametry řetězce dotazu (například parametr = hodnota) v adrese URL požadavku určují, zda je tato podmínka splněna. Tato podmínka shody identifikuje parametr řetězce dotazu podle názvu a přijímá jednu nebo více hodnot pro hodnotu parametru.
+Identifikuje požadavky, které obsahují konkrétní parametr řetězce dotazu. Tento parametr je nastaven na hodnotu, která odpovídá konkrétnímu vzoru. Parametry řetězce dotazu (například **parametr = hodnota**) v adrese URL požadavku určují, zda je tato podmínka splněna. Tato podmínka shody identifikuje parametr řetězce dotazu podle názvu a přijímá jednu nebo více hodnot pro hodnotu parametru.
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
 Operátor | Řetězec dotazu | Transformace případu
 ---------|--------------|---------------
@@ -90,109 +91,126 @@ Operátor | Řetězec dotazu | Transformace případu
 
 ### <a name="remote-address"></a>Vzdálená adresa
 
-Podmínka shody vzdálených adres identifikuje požadavky na základě umístění žadatele nebo IP adresy.
+Identifikuje požadavky na základě umístění nebo IP adresy žadatele.
 
-**Povinná pole**
+#### <a name="required-fields"></a>Povinná pole
 
 Operátor | Podporované hodnoty
 ---------|-----------------
-Všechny | Není dostupné.
-Geografická shoda | Kódy zemí
-Shoda IP adres | IP adresy (oddělené místo)
-Ne žádné | Není dostupné.
-Neshoda geografického umístění | Kódy zemí
-Neshoda IP adres | IP adresy (oddělené místo)
+Jakýkoli | neuvedeno
+Geografická shoda | Kód země
+Shoda IP adres | IP adresa (oddělená mezerami)
+Ne žádné | neuvedeno
+Neshoda geografického umístění | Kód země
+Neshoda IP adres | IP adresa (oddělená mezerami)
 
-Informace o klíči:
+#### <a name="key-information"></a>Informace o klíči
 
 - Použijte notaci CIDR.
-- Určete více IP adres nebo bloků IP adres tak, že každý z nich oddělujete jedním mezerou. Příklad:
-  - **Příklad protokolu IPv4**: 1.2.3.4 10.20.30.40 odpovídá všem žádostem, které dorazí buď na adresu 1.2.3.4 nebo 10.20.30.40.
-  - **Příklad IPv6**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 odpovídá všem žádostem, které přicházejí buď z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
+- Pokud chcete zadat víc IP adres a bloků IP adres, použijte jednu mezeru mezi hodnotami:
+  - **Příklad protokolu IPv4**: *1.2.3.4 10.20.30.40* odpovídá všem žádostem, které dorazí buď na adresu 1.2.3.4 nebo 10.20.30.40.
+  - **Příklad IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 odpovídá všem žádostem, které přicházejí buď z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
 - Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Příklad:
-  - **Příklad IPv4**: 5.5.5.64/26 odpovídá všem žádostem, které přicházejí z adres 5.5.5.64 prostřednictvím 5.5.5.127.
-  - **Příklad IPv6**: 1:2:3:/48 odpovídá všem žádostem, které přicházejí z adres 1:2:3:0:0:0:0:0 až 1:2: ffff: ffff: ffff: ffff: ffff: FFFF.
+  - **Příklad IPv4**: *5.5.5.64/26* odpovídá všem žádostem, které přicházejí z adres 5.5.5.64 prostřednictvím 5.5.5.127.
+  - **Příklad IPv6**: *1:2:3:/48* odpovídá všem žádostem, které přicházejí z adres 1:2:3:0:0:0:0:0 až 1:2: ffff: ffff: ffff: ffff: ffff: FFFF.
 
-### <a name="request-body"></a>Text žádosti
+### <a name="request-body"></a>Text požadavku
 
-**Povinná pole**
+Identifikuje požadavky na základě konkrétního textu, který se zobrazí v těle žádosti.
 
-Operátor | Text žádosti | Transformace případu
+#### <a name="required-fields"></a>Povinná pole
+
+Operátor | Text požadavku | Transformace případu
 ---------|--------------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-### <a name="request-header"></a>Hlavička žádosti
+### <a name="request-header"></a>Hlavička požadavku
 
-**Povinná pole**
-Název záhlaví | Operátor | Hodnota hlavičky | Transformace případu
+Identifikuje požadavky, které v žádosti používají konkrétní hlavičku.
+
+#### <a name="required-fields"></a>Povinná pole
+
+Název hlavičky | Operátor | Hodnota hlavičky | Transformace případu
 ------------|----------|--------------|---------------
 Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
 ### <a name="request-method"></a>Request – metoda
 
-**Povinná pole**
+Identifikuje požadavky, které používají zadanou metodu žádosti.
 
-Operátor | Podporovaná hodnota
+#### <a name="required-fields"></a>Povinná pole
+
+Operátor | Podporované hodnoty
 ---------|----------------
 Rovná se, není rovno | ZÍSKÁNÍ, VYSTAVENÍ, VLOŽENÍ, ODSTRANĚNÍ, HLAVNÍ, MOŽNOSTI, TRASOVÁNÍ
 
-Informace o klíči:
+#### <a name="key-information"></a>Informace o klíči
 
-- Obsah uložený v mezipaměti v CDN může generovat jenom metoda GET Request. Všechny ostatní metody žádosti jsou proxy prostřednictvím sítě. 
+- Obsah uložený v mezipaměti v Azure CDN může generovat jenom metoda GET Request. Všechny ostatní metody žádosti jsou proxy prostřednictvím sítě. 
 
 ### <a name="request-protocol"></a>Protokol žádosti
 
-**Povinná pole**
+Určuje požadavky, které používají zadaný protokol.
 
-Operátor | Podporovaná hodnota
+#### <a name="required-fields"></a>Povinná pole
+
+Operátor | Podporované hodnoty
 ---------|----------------
 Rovná se, není rovno | HTTP, HTTPS
 
 ### <a name="request-url"></a>Adresa URL požadavku
 
-**Povinná pole**
+Identifikuje požadavky, které odpovídají zadané adrese URL.
+
+#### <a name="required-fields"></a>Povinná pole
 
 Operátor | Adresa URL požadavku | Transformace případu
 ---------|-------------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-Informace o klíči:
+#### <a name="key-information"></a>Informace o klíči
 
-- Při zadávání adresy URL žádosti se ujistěte, že jste zahrnuli informace o protokolu. Například "https://www. [yourdomain]. com "
+- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: *https://www.\<yourdomain\>.com* .
 
 ### <a name="url-file-extension"></a>Přípona souboru adresy URL
 
-**Povinná pole**
+Identifikuje požadavky, které zahrnují zadanou příponu souboru v názvu souboru v adrese URL pro vyžádání.
+
+#### <a name="required-fields"></a>Povinná pole
 
 Operátor | Linka | Transformace případu
 ---------|-----------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-Informace o klíči:
+#### <a name="key-information"></a>Informace o klíči
 
-- V případě rozšíření Nezahrnovat úvodní období; použijte například HTML namísto. html.
+- V případě rozšíření Nezahrnovat úvodní období; použijte například *HTML* namísto *. html*.
 
 ### <a name="url-file-name"></a>Název souboru URL
 
-**Povinná pole**
+Identifikuje požadavky, které obsahují zadaný název souboru v adrese URL pro vyžádání.
+
+#### <a name="required-fields"></a>Povinná pole
 
 Operátor | Název souboru | Transformace případu
 ---------|-----------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-Informace o klíči:
+#### <a name="key-information"></a>Informace o klíči
 
 - Chcete-li zadat více názvů souborů, oddělte každý název souboru jediným mezerou. 
 
-### <a name="url-path"></a>Cesta adresy URL
+### <a name="url-path"></a>Cesta URL
 
-**Povinná pole**
+Určuje požadavky, které zahrnují zadanou cestu v adrese URL pro vyžádání.
+
+#### <a name="required-fields"></a>Povinná pole
 
 Operátor | Hodnota | Transformace případu
 ---------|-------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-Informace o klíči:
+#### <a name="key-information"></a>Informace o klíči
 
 - Hodnota názvu souboru může využít zástupné hodnoty. Například každý vzor názvu souboru může obsahovat jednu nebo více hvězdiček (*), kde každá hvězdička odpovídá sekvenci jednoho nebo více znaků.
 
@@ -200,14 +218,14 @@ Informace o klíči:
 
 ### <a name="standard-operator-list"></a>Seznam standardních operátorů
 
-Pro pravidla, která obsahují seznam standardních operátorů, platí následující operátory:
+Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, platí následující operátory:
 
-- Všechny
+- Jakýkoli
 - Rovná se 
 - Contains 
 - Začíná na 
-- Končí na 
-- Méně než
+- končí 
+- Je menší než
 - Je menší než nebo rovno
 - Větší než
 - Je větší než nebo rovno
@@ -220,17 +238,11 @@ Pro pravidla, která obsahují seznam standardních operátorů, platí následu
 - Není větší než
 - Není větší než nebo rovno
 
-Pro číselné operátory, jako je "menší než" nebo "větší než nebo rovno", bude porovnání použito na základě délky. V takovém případě by hodnota v podmínce shody měla být celé číslo, které se rovná délce, kterou byste chtěli porovnat. 
-
----
-
-[Zpět na začátek](#match-conditions)
-
-</br>
+Pro číselné operátory, které jsou *menší než* a *větší než nebo rovno*, je použití porovnání založeno na délce. V tomto případě by hodnota v podmínce shody měla být celé číslo, které se rovná délce, kterou chcete porovnat. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled služby Azure Content Delivery Network](cdn-overview.md)
-- [Referenční informace ke stroji pravidel](cdn-standard-rules-engine-reference.md)
-- [Akce modulu pravidel](cdn-standard-rules-engine-actions.md)
+- [Přehled Azure CDN](cdn-overview.md)
+- [Referenční příručka stroje standardních pravidel](cdn-standard-rules-engine-reference.md)
+- [Akce v modulu Standard Rules](cdn-standard-rules-engine-actions.md)
 - [Vynutilit HTTPS pomocí modulu Standard Rules](cdn-standard-rules-engine.md)

@@ -3,17 +3,13 @@ title: Kurz – konfigurace dynamického inventáře vašich prostředků Azure 
 description: Naučte se používat Ansible ke správě dynamických inventářů Azure.
 keywords: Ansible, Azure, DevOps, bash, cloudshellu, dynamický soupis
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 6d520518e7180f69ee7293523dd40c8158dcfb99
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990677"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156170"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Kurz: Konfigurace dynamického inventáře vašich prostředků Azure pomocí Ansible
 
@@ -28,7 +24,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 > * Instalace Nginx na označené virtuální počítače
 > * Konfigurace dynamického inventáře, který obsahuje nakonfigurované prostředky Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -36,7 +32,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 
 ## <a name="create-the-test-vms"></a>Vytvoření testovacích virtuálních počítačů
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -72,7 +68,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 Pomocí [značek můžete uspořádat prostředky Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) podle uživatelem definovaných kategorií. 
 
 ### <a name="using-ansible-version--28"></a>Použití Ansible verze < 2,8
-Zadáním následujícího příkazu [AZ Resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) označíte virtuální počítač `ansible-inventory-test-vm1` s klíčem `nginx`:
+Zadejte následující příkaz [AZ Resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) – k označení `ansible-inventory-test-vm1` virtuálního počítače pomocí klíčového `nginx`:
 
 ```azurecli-interactive
 az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
@@ -215,7 +211,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
 
 ## <a name="set-up-nginx-on-the-tagged-vm"></a>Nastavení Nginx na označeném virtuálním počítači
 
-Účelem značek je umožnit možnost rychle a snadno pracovat s podskupinami virtuálních počítačů. Řekněme například, že chcete nainstalovat Nginx jenom na virtuálních počítačích, ke kterým jste přiřadili značku `nginx`. Následující kroky ukazují, jak snadné je dosáhnout:
+Účelem značek je umožnit možnost rychle a snadno pracovat s podskupinami virtuálních počítačů. Řekněme například, že chcete nainstalovat Nginx jenom na virtuální počítače, ke kterým jste přiřadili značku `nginx`. Následující kroky ukazují, jak snadné je dosáhnout:
 
 1. Vytvořte soubor s názvem `nginx.yml`:
 
@@ -279,7 +275,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
 
 Tato část ukazuje jednu z postupů testování, že Nginx je na vašem virtuálním počítači nainstalovaný.
 
-1. Pomocí příkazu [AZ VM list-IP-addresses](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) načtěte IP adresu virtuálního počítače `ansible-inventory-test-vm1`. Vrácená hodnota (IP adresa virtuálního počítače) se pak použije jako parametr příkazu SSH pro připojení k virtuálnímu počítači.
+1. Pomocí příkazu [AZ VM list-IP-addresses](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) načtěte ip adresu `ansible-inventory-test-vm1`ho virtuálního počítače. Vrácená hodnota (IP adresa virtuálního počítače) se pak použije jako parametr příkazu SSH pro připojení k virtuálnímu počítači.
 
     ```azurecli-interactive
     ssh `az vm list-ip-addresses \
@@ -287,7 +283,7 @@ Tato část ukazuje jednu z postupů testování, že Nginx je na vašem virtuá
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. Když jste připojeni k virtuálnímu počítači `ansible-inventory-test-vm1`, spusťte příkaz [Nginx-v](https://nginx.org/en/docs/switches.html) , abyste zjistili, jestli je nainstalovaná Nginx.
+1. Když jste připojení k virtuálnímu počítači `ansible-inventory-test-vm1`, spusťte příkaz [Nginx-v](https://nginx.org/en/docs/switches.html) , abyste zjistili, jestli je nainstalovaná Nginx.
 
     ```azurecli-interactive
     nginx -v
@@ -303,9 +299,9 @@ Tato část ukazuje jednu z postupů testování, že Nginx je na vašem virtuá
     tom@ansible-inventory-test-vm1:~$
     ```
 
-1. Kliknutím na kombinaci kláves `<Ctrl>D` odpojte relaci SSH.
+1. Kliknutím na kombinaci kláves `<Ctrl>D` odpojíte relaci SSH.
 
-1. Provedením předchozích kroků pro virtuální počítač s `ansible-inventory-test-vm2` se zobrazí informační zpráva s informacemi o tom, kde můžete získat Nginx (což znamená, že v tomto okamžiku není nainstalován):
+1. Provedením předchozích kroků pro `ansible-inventory-test-vm2` virtuální počítač se zobrazí informační zpráva s oznámením, kde můžete získat Nginx (což znamená, že v tomto okamžiku není nainstalován):
 
     ```Output
     tom@ansible-inventory-test-vm2:~$ nginx -v

@@ -1,19 +1,15 @@
 ---
-title: Funkce zabezpečení, které chrání hybridní zálohy pomocí Azure Backup
+title: Funkce zabezpečení, které chrání hybridní zálohy
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.reviewer: utraghuv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: dacurwin
-ms.openlocfilehash: a72e43d068f9fc6cf06a4786d511bbc6c25e85d4
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: c3c62f8ea7813c14fa6e19d825a5253de18f6639
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968439"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172683"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
 
@@ -114,7 +110,7 @@ Funkce zabezpečení, které jsou uvedené v tomto článku, poskytují mechanis
 
 ## <a name="troubleshooting-errors"></a>Řešení chyb
 
-| Operace | Podrobnosti o chybě | Rozlišení |
+| Operace | Podrobnosti o chybě | Řešení |
 | --- | --- | --- |
 | Změna zásad |Zásady zálohování nešlo změnit. Chyba: aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Po nějaké době zkuste operaci zopakovat. Pokud se problém opakuje, obraťte se prosím na podporu Microsoftu. |**Způsobit**<br/>K této chybě dochází, pokud jsou povolena nastavení zabezpečení, pokoušíte se zmenšit rozsah uchování pod minimálními výše uvedenými minimálními hodnotami a nepodporovanou verzí (podporované verze jsou uvedeny v prvním poznámce tohoto článku). <br/>**Doporučená akce:**<br/> V takovém případě byste měli nastavit dobu uchovávání nad uvedenou minimální dobu uchování (sedm dní pro každý den, čtyři týdny pro každý týden, tři týdny pro každý měsíc nebo jeden rok), aby bylo možné pokračovat s aktualizacemi souvisejícími s zásadami. Volitelně upřednostňovaný přístup by měl aktualizovat agenta zálohování, Azure Backup Server a/nebo adresu UR aplikace DPM, aby bylo možné využívat všechny aktualizace zabezpečení. |
 | Změnit heslo |Zadaný bezpečnostní kód PIN je nesprávný. (ID: 100130) Pro dokončení této operace zadejte správný bezpečnostní kód PIN. |**Způsobit**<br/> K této chybě dojde v případě, že při provádění kritické operace (například heslo pro změnu) zadáte neplatný nebo vypršelý bezpečnostní kód PIN. <br/>**Doporučená akce:**<br/> K dokončení této operace je nutné zadat platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejděte do Recovery Services trezoru > Nastavení > Vlastnosti > vygenerovat bezpečnostní kód PIN. Pomocí tohoto kódu PIN můžete změnit heslo. |

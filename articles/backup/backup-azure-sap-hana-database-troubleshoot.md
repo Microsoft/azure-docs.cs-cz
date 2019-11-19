@@ -1,25 +1,20 @@
 ---
-title: Řešení potíží s chybami zálohování SAP HANAch databází – Azure Backup
+title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cbffa7415f315fd396e57afa355d2415c4612eb5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968456"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172753"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
 Tento článek poskytuje informace o řešení potíží při zálohování SAP HANA databází na virtuálních počítačích Azure. V následující části jsou popsána důležitá koncepční data potřebná pro diagnostiku běžné chyby v SAP HANA zálohování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V rámci [požadavků](backup-azure-sap-hana-database.md#prerequisites)se ujistěte, že je na virtuálním počítači, kde je nainstalovaný Hana, spuštěný skript pro předregistraci.
 
@@ -52,7 +47,7 @@ Po výběru databáze pro zálohování nakonfiguruje služba Azure Backup param
 - [enable_accumulated_catalog_backup: false]
 - [parallel_data_backup_backint_channels: 1]
 - [log_backup_timeout_s: 900)]
-- [backint_response_timeout: 7200]
+- [backint_response_timeout:7200]
 
 > [!NOTE]
 > Ujistěte se, že tyto *parametry nejsou k dispozici na* úrovni hostitele. Parametry na úrovni hostitele přepíšou tyto parametry a můžou způsobit neočekávané chování.
@@ -82,7 +77,7 @@ Ve více databázích kontejnerů pro HANA je standardní konfigurace SYSTEMDB +
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-Údajů| Chybová zpráva | Možné příčiny | Doporučená akce |
+data| Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
 | Nepovedlo se připojit k systému HANA. Ověřte, že je váš systém v provozu.| Služba Azure Backup se nemůže připojit k HANA, protože databáze HANA je mimo provoz. Nebo HANA je spuštěný, ale neumožňuje službě Azure Backup připojit. | Ověřte, zda nefunguje databáze HANA nebo služba. Pokud je databáze nebo služba HANA v provozu, ověřte, jestli [jsou nastavená všechna oprávnění](#setting-up-permissions). Pokud klíč chybí, spusťte znovu registrační skript a vytvořte nový klíč. |
 
