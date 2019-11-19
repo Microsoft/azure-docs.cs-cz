@@ -173,6 +173,9 @@
           href: howto-add-prebuilt-models.md
         - name: Označení entity ve výroku
           href: label-entity-example-utterance.md
+        - name: Přidání popisovače
+          displayName: 'synonym, interchange, phrase list, descriptor'
+          href: luis-how-to-add-features.md
         - name: S využitím REST API
           items:
             - name: Programové sestavení aplikace s využitím Node.js
@@ -190,9 +193,6 @@
         - name: S využitím řídicího panelu
           displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
           href: luis-how-to-use-dashboard.md
-        - name: Přidání popisovače
-          displayName: 'synonym, interchange, phrase list, descriptor'
-          href: luis-how-to-add-features.md
         - name: Kontrola promluv koncového bodu
           displayName: active learning
           href: luis-how-to-review-endpoint-utterances.md
