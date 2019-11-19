@@ -573,10 +573,10 @@
             - name: Načtení dat
               href: /azure/databricks/spark/latest/spark-sql/language-manual/load-data
               maintainContext: true
-            - name: Merge Into (Delta Lake v Azure Databricks)
+            - name: Merge Into (Delta Lake v Azure Databricks
               href: /azure/databricks/spark/latest/spark-sql/language-manual/merge-into
               maintainContext: true
-            - name: Optimize (Delta Lake v Azure Databricks)
+            - name: Optimize (Delta Lake v Azure Databricks
               href: /azure/databricks/spark/latest/spark-sql/language-manual/optimize
               maintainContext: true
             - name: Refresh Table
@@ -714,9 +714,9 @@
             - name: Příklad MLlib pro pokročilé
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: Automatizované strojové učení
+        - name: AutoML
           items:
-            - name: Přehled automatizovaného strojového učení
+            - name: Přehled AutoML
               href: /azure/databricks/applications/machine-learning/automl/index
               maintainContext: true
             - name: Hyperopt
@@ -1392,7 +1392,7 @@
             - name: Po instalaci Bokehu příkaz selže
               href: /azure/databricks/kb/python/python-cmd-fails-tornado-version
               maintainContext: true
-            - name: Zrušení příkazu kvůli konfliktu knihoven
+            - name: Zrušení příkazu kvůli konfliktu knihovny
               href: /azure/databricks/kb/python/python-command-cancelled
               maintainContext: true
             - name: Selhání příkazu s chybou AttributeError
@@ -1609,6 +1609,12 @@
               items:
                 - name: Podporované verze modulu runtime
                   href: /azure/databricks/release-notes/runtime/supported
+                  maintainContext: true
+                - name: Databricks Runtime 6.2
+                  href: /azure/databricks/release-notes/runtime/6.2
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 ML
+                  href: /azure/databricks/release-notes/runtime/6.2ml
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

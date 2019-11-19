@@ -1,8 +1,8 @@
-- name: Dokumentace ke službě CDN
+- name: Dokumentace ke službě Content Delivery Network
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Azure CDN?
+    - name: Co je Azure Content Delivery Network (Azure CDN)?
       href: cdn-overview.md
     - name: Porovnání funkcí produktů
       href: cdn-features.md
@@ -63,13 +63,13 @@
           href: cdn-create-endpoint-how-to.md
         - name: Správa pomocí Azure PowerShellu
           href: cdn-manage-powershell.md
-        - name: Omezení přístupu podle země/oblasti
+        - name: Omezení přístupu podle země nebo oblasti
           href: cdn-restrict-access-by-country.md
         - name: Vylepšení výkonu prostřednictvím komprimace souborů
           href: cdn-improve-performance.md
         - name: Řízení chování při ukládání do mezipaměti
           items:
-            - name: Řízení chování při ukládání do mezipaměti s využitím pravidel ukládání do mezipaměti
+            - name: Řízení chování při ukládání do mezipaměti pomocí pravidel ukládání do mezipaměti
               href: cdn-caching-rules.md
             - name: Ukládání obsahu do mezipaměti podle řetězců dotazu
               items:
@@ -81,7 +81,7 @@
               href: cdn-purge-endpoint.md
             - name: Předběžné načtení prostředků do mezipaměti
               href: cdn-preload-endpoint.md
-        - name: Konfigurace hodnoty TTL (time-to-live)
+        - name: Konfigurace hodnoty TTL (Time to Live)
           items:
             - name: Webový obsah Azure
               href: cdn-manage-expiration-of-cloud-service-content.md
@@ -89,13 +89,13 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: Ověření tokenu
           href: cdn-token-auth.md
-        - name: Podpora úložiště SAS
+        - name: Podpora úložiště se sdíleným přístupovým podpisem
           href: cdn-sas-storage-support.md
         - name: Sdílení prostředků různého původu
           href: cdn-cors.md
         - name: Sledování prostředků
           href: cdn-resource-health.md
-        - name: Potlačení chování pomocí pravidel
+        - name: Použití pravidel k potlačení chování
           href: cdn-verizon-premium-rules-engine.md
         - name: Použití Traffic Manageru
           href: cdn-traffic-manager.md
@@ -136,7 +136,7 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Referenční informace
   items:
-    - name: Reference ke stroji pravidel Standard od Microsoftu
+    - name: Reference ke stroji pravidel Standard
       href: cdn-standard-rules-engine-reference.md
       items:
         - name: Podmínky shody stroje pravidel Standard
@@ -177,7 +177,7 @@
           href: cdn-pop-locations.md
         - name: Lokality POP podle zkratek
           href: cdn-pop-abbreviations.md
-    - name: Principy fakturace Azure CDN
+    - name: Fakturace služby Azure Content Delivery Network
       href: cdn-billing.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'

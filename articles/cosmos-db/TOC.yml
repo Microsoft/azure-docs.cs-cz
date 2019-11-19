@@ -672,6 +672,8 @@
               href: mongodb-readpreference.md
             - name: Hodnota TTL – MongoDB
               href: mongodb-time-to-live.md
+            - name: Změna datových proudů
+              href: mongodb-change-streams.md
             - name: Správa indexování dat
               href: mongodb-indexing.md
             - name: Ukládání a správa služby Spring Data

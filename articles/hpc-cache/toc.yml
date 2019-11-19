@@ -40,6 +40,8 @@
   items:
     - name: Otevření lístku podpory
       href: hpc-cache-support-ticket.md
+    - name: Jak obejít nastavení brány firewall účtu úložiště objektů blob
+      href: hpc-cache-blob-firewall-fix.md
     - name: Zotavení z oblastního výpadku
       href: hpc-region-recovery.md
     - name: Použití Azure NetApp Files se službou Azure HPC Cache

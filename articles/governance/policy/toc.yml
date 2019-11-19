@@ -331,6 +331,14 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Definice zásad
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Azure SDK pro Python
+      items:
+        - name: Zásada
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+        - name: Klient zásad
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+        - name: Policy Insights
+          href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
         - name: Události

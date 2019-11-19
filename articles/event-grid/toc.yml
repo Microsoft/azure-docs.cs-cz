@@ -27,6 +27,8 @@
           href: custom-event-quickstart-powershell.md
         - name: Portál
           href: custom-event-quickstart-portal.md
+    - name: Azure Functions jako obslužná rutina události
+      href: custom-event-to-function.md
     - name: Úložiště fronty jako obslužná rutina události
       href: custom-event-to-queue-storage.md
     - name: Event Hubs jako obslužná rutina události
@@ -111,6 +113,8 @@
       href: post-to-custom-topic.md
     - name: Příjem událostí v koncovém bodu HTTP
       href: receive-events.md
+    - name: Zabezpečený webhook s AAD
+      href: secure-webhook-delivery.md
     - name: Nedoručené zprávy a opakovaný pokus
       href: manage-event-delivery.md
     - name: Události filtru
