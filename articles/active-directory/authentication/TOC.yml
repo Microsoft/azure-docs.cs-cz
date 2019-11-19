@@ -100,7 +100,7 @@
             - name: Pokročilá konfigurace pro rozšíření serveru NPS
               href: howto-mfa-nps-extension-advanced.md
             - name: Azure VPN a Azure MFA
-              href: ../../vpn-gateway/vpn-gateway-radiuis-mfa-nsp.md
+              href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: Brána vzdálené plochy
               href: howto-mfa-nps-extension-rdg.md
             - name: Síť VPN
