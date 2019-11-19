@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9e3c999de1804684e77a6224330b2d7077046964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69543018"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052176"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -44,7 +44,7 @@ Nejprve Microsoft zruší stávající rezervaci a vrátí za ni přepočítanou
 
 ### <a name="enterprise-agreement-customers"></a>Zákazníci se smlouvou Enterprise
 
-Částka se přidá do peněžního závazku pro výměny a refundace, a to v případě, že původní nákup byl takto proveden. Nadlimitní faktury vytvořené po původním nákupu se znovu otevřou a přepočítají, aby se zajistilo, že se peněžní závazek použije. Pokud už není období peněžního závazku využívajícího zakoupenou rezervaci aktivní, kredit se přidá do vašeho aktuálního období peněžního závazku při smlouvě Enterprise.
+Částka se přidá do peněžního závazku pro výměny a refundace, a to v případě, že původní nákup byl takto proveden. Nadlimitní faktury vytvořené po původním nákupu se znovu otevřou a přepočítají, aby se zajistilo, že se peněžní závazek použije. Pokud už není období peněžního závazku využívajícího zakoupenou rezervaci aktivní, kredit se přidá do vašeho aktuálního období peněžního závazku při smlouvě Enterprise. Kredit je platný po dobu 90 dnů od data refundace. Po uplynutí 90 dnů platnost nevyužitého kreditu končí.
 
 Pokud byl původní nákup nadlimitní, Microsoft vydá prodejní dobropis.
 
@@ -96,5 +96,5 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
     - [Vysvětlení způsobu uplatnění slevy za rezervaci](billing-understand-vm-reservation-charges.md)
     - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](billing-understand-reserved-instance-usage.md)
     - [Vysvětlení využití rezervací u smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
-    - [Rezervace nezahrnují náklady na software Windows](billing-reserved-instance-windows-software-costs.md)
+    - [Náklady na software pro Windows nezahrnuté v rezervacích](billing-reserved-instance-windows-software-costs.md)
     - [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](/partner-center/azure-reservations)

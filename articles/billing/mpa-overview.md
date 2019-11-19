@@ -8,20 +8,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 9c6c28ef296f3b1346fd82641d8c557a500273d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 6bb0f3ea1b4e3bf17ed3bf26b838da8f2a694673
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376684"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898547"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Začínáme s fakturačním účtem pro smlouvu s partnerem Microsoftu
 
 Když se zaregistrujete do Azure, vytvoří se vám fakturační účet. Slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Může to být třeba v situaci, kdy se zaregistrujete do Azure, abyste mohli pracovat na svých osobních projektech, ale současně máte k Azure přístup i prostřednictvím smlouvy Enterprise vaší organizace, smlouvy se zákazníkem Microsoftu nebo smlouvy s partnerem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
 
-Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsoftu. Tyto účty se vytváří pro poskytovatele CSP (Cloud Solution Provider), aby mohli spravovat fakturaci za své zákazníky v novém komerčním prostředí. Nové prostředí je k dispozici pouze pro partnery s alespoň jedním zákazníkem, který přijal smlouvu se zákazníkem Microsoftu (MCA) a má plán Azure. [Ověřte si, jestli máte přístup ke smlouvě s partnerem Microsoftu](#check-access-to-a-microsoft-partner-agreement).
+Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsoftu. Tyto účty se vytváří pro poskytovatele CSP (Cloud Solution Provider), aby mohli spravovat fakturaci za své zákazníky v novém komerčním prostředí. Nové prostředí je k dispozici pouze pro partnery s alespoň jedním zákazníkem, který přijal smlouvu se zákazníkem Microsoftu a má plán Azure. [Ověřte si, jestli máte přístup ke smlouvě s partnerem Microsoftu](#check-access-to-a-microsoft-partner-agreement). [Plán Azure](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) v rámci smlouvy se zákazníkem Microsoftu poskytuje zákazníkům přístup ke službám Azure za tarify průběžných plateb.
 
 ## <a name="your-billing-account"></a>Váš fakturační účet
 
@@ -35,7 +35,7 @@ Fakturační účty, fakturační profily a zákazníky můžou spravovat uživa
 
 ## <a name="billing-profiles"></a>Fakturační profily
 
-Fakturační profil slouží ke správě faktur v určité měně. Na začátku kalendářního měsíce se pro každý fakturační profil na vašem účtu vygeneruje měsíční faktura. Ta obsahuje poplatky za všechna předplatná Azure a další nákupy z předchozího měsíce v měně fakturačního profilu. 
+Fakturační profil slouží ke správě faktur v určité měně. Na začátku kalendářního měsíce se pro každý fakturační profil na vašem účtu vygeneruje měsíční faktura. Ta obsahuje poplatky za všechna předplatná Azure a další nákupy z předchozího měsíce v měně fakturačního profilu.
 
 Na webu Azure Portal si můžete fakturu prohlédnout a stáhnout související dokumenty, jako je soubor s informacemi o využití nebo ceník. Další informace najdete v tématu [Stahování faktur pro smlouvu s partnerem Microsoftu](billing-download-azure-invoice.md).
 
@@ -45,11 +45,11 @@ Na webu Azure Portal si můžete fakturu prohlédnout a stáhnout související 
 
 ## <a name="customers"></a>Zákazníci
 
-Na webu Azure Portal můžete zobrazit a spravovat zákazníky, kteří přijali smlouvu se zákazníkem Microsoftu a mají plán Azure. U těchto zákazníků můžete zobrazit poplatky a transakce a také pro ně vytvářet a spravovat předplatná Azure. 
+Na webu Azure Portal můžete zobrazit a spravovat zákazníky, kteří přijali smlouvu se zákazníkem Microsoftu a mají plán Azure. U těchto zákazníků můžete zobrazit poplatky a transakce a také pro ně vytvářet a spravovat předplatná Azure.
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Získání přehledu o nákladech povolením zásad
 
-Pomocí zásad můžete řídit, jestli uživatelé v organizacích zákazníků můžou zobrazit a analyzovat náklady na využití Azure podle tarifů průběžných plateb. Ve výchozím nastavení jsou zásady vypnuté a uživatelé nemůžou zobrazit náklady. Po jejich povolení můžou uživatelé s odpovídající úrovní přístupu [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) k předplatnému zobrazit a analyzovat náklady na předplatné. 
+Pomocí zásad můžete řídit, jestli uživatelé v organizacích zákazníků můžou zobrazit a analyzovat náklady na využití Azure podle tarifů průběžných plateb. Ve výchozím nastavení jsou zásady vypnuté a uživatelé nemůžou zobrazit náklady. Po jejich povolení můžou uživatelé s odpovídající úrovní přístupu [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) k předplatnému zobrazit a analyzovat náklady na předplatné.
 
 Postup zapnutí zásad:
 
@@ -60,7 +60,7 @@ Postup zapnutí zásad:
    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/mpa-overview/search-cmb.png)
 
 1. Na levé straně vyberte **Zákazníci** a pak v seznamu vyberte zákazníka.
-   
+
    ![Snímek obrazovky znázorňující výběr zákazníka](./media/mpa-overview/mpa-customers.png)
 
 1. Na levé straně vyberte **Zásady**.

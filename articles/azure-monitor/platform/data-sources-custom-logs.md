@@ -1,24 +1,18 @@
 ---
 title: Shromažďovat vlastní protokoly v Azure Monitor | Microsoft Docs
 description: Azure Monitor může shromažďovat události z textových souborů na počítačích s Windows i Linux.  Tento článek popisuje, jak definovat nový vlastní protokol a podrobnosti o záznamech, které vytvoří v Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/26/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/26/2019
+ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177624"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932499"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly v Azure Monitor
 
@@ -69,24 +63,24 @@ Začnete tím, že nahrajete ukázku vlastního protokolu.  Průvodce bude analy
 Pokud se použije oddělovač časového razítka, pak vlastnost TimeGenerated každého záznamu uloženého v Azure Monitor bude naplněna s datem a časem zadanými pro tuto položku v souboru protokolu.  Pokud se použije nový oddělovač řádků, TimeGenerated se naplní datem a časem, které položka Azure Monitor shromáždila.
 
 1. Klikněte na **Procházet** a přejděte k ukázkovému souboru.  Všimněte si, že toto tlačítko může být označeno jako označit v některých prohlížečích **možnost soubor** .
-2. Klikněte na tlačítko **Další**.
+2. Klikněte na **Další**.
 3. Průvodce vlastním protokolem nahraje soubor a zobrazí seznam záznamů, které identifikuje.
 4. Změňte oddělovač, který se používá k identifikaci nového záznamu a vyberte oddělovač, který nejlépe identifikuje záznamy v souboru protokolu.
-5. Klikněte na tlačítko **Další**.
+5. Klikněte na **Další**.
 
 ### <a name="step-3-add-log-collection-paths"></a>Krok 3. Přidat cesty ke kolekcím protokolů
 Musíte definovat jednu nebo více cest v agentovi, kde může najít vlastní protokol.  Můžete buď zadat konkrétní cestu a název souboru protokolu, nebo můžete zadat cestu se zástupným znakem pro název. Tato podpora podporuje aplikace, které každý den vytvoří nový soubor, nebo když jeden soubor dosáhne určité velikosti. Můžete také zadat více cest pro jeden soubor protokolu.
 
-Aplikace může například vytvořit soubor protokolu každý den s datem zahrnutým do názvu jako v souboru log20100316. txt. Vzor takového protokolu může být *log\*.txt* , který by se měl vztahovat na libovolný soubor protokolu, který následuje po schématu pojmenování aplikace.
+Aplikace může například vytvořit soubor protokolu každý den s datem zahrnutým do názvu jako v souboru log20100316. txt. Vzor takového protokolu může být *log\*. txt* , který by se měl vztahovat na libovolný soubor protokolu, který následuje po schématu pojmenování aplikace.
 
 Následující tabulka uvádí příklady platných vzorů k určení různých souborů protokolu.
 
 | Popis | Cesta |
 |:--- |:--- |
-| Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs. @ no__t-0\*.txt |
-| Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\ log\*.txt |
+| Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs.\\\*. txt |
+| Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log\*. txt |
 | Všechny soubory v */var/log/audit* s příponou. txt v agentovi Linux |/var/log/audit/*. txt |
-| Všechny soubory v */var/log/audit* s názvem začínajícím protokolem a příponou. txt v agentovi Linux |/var/log/audit/log\*.txt |
+| Všechny soubory v */var/log/audit* s názvem začínajícím protokolem a příponou. txt v agentovi Linux |/var/log/audit/log\*. txt |
 
 1. Vyberte Windows nebo Linux a určete, který formát cesty přidáváte.
 2. Zadejte cestu a klikněte na tlačítko **+** .
@@ -95,7 +89,7 @@ Následující tabulka uvádí příklady platných vzorů k určení různých 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Zadejte název a popis protokolu.
 Název, který zadáte, bude použit pro typ protokolu, jak je popsáno výše.  Bude vždycky končit _CL a odlišit ho jako vlastní protokol.
 
-1. Zadejte název protokolu.  Přípona **\_CL** se automaticky poskytne.
+1. Zadejte název protokolu.  Přípona **\_CL** se poskytuje automaticky.
 2. Přidejte volitelný **Popis**.
 3. Kliknutím na tlačítko **Další** uložte definici vlastního protokolu.
 
@@ -129,7 +123,7 @@ Vlastní záznamy protokolu mají typ s názvem protokolu, který zadáte, a vla
 | TimeGenerated |Datum a čas, kdy byl záznam shromážděn nástrojem Azure Monitor.  Pokud protokol používá oddělovač založený na čase, pak se jedná o čas získaný z položky. |
 | SourceSystem |Typ agenta, ze kterého byl záznam shromážděn <br> OpsManager – Agent pro Windows, buď Direct Connect, nebo System Center Operations Manager <br> Linux – všichni agenti se systémem Linux |
 | RawData |Celý text shromážděné položky Tato data pravděpodobně budete chtít [analyzovat do jednotlivých vlastností](../log-query/parse-text.md). |
-| ManagementGroupName |Název skupiny pro správu pro agenty služby System Center Operations Management Agents.  Pro jiné agenty se jedná o AOI-\<workspace ID @ no__t-1. |
+| ManagementGroupName |Název skupiny pro správu pro agenty služby System Center Operations Management Agents.  Pro jiné agenty se jedná o AOI\<ID pracovního prostoru\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Ukázkový návod k přidání vlastního protokolu
@@ -147,7 +141,7 @@ Poskytujeme jeden ze souborů protokolu a uvidí události, které bude shromaž
 ![Nahrát a analyzovat ukázkový protokol](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Přidat cesty ke kolekcím protokolů
-Soubory protokolu se budou nacházet v *C:\MyApp\Logs*.  Každý den se vytvoří nový soubor s názvem, který bude obsahovat datum ve vzoru *appYYYYMMDD. log*.  Dostatečným vzorem pro tento protokol by byl *C:\MyApp\Logs @ no__t-1\*.log*.
+Soubory protokolu se budou nacházet v *C:\MyApp\Logs*.  Každý den se vytvoří nový soubor s názvem, který bude obsahovat datum ve vzoru *appYYYYMMDD. log*.  Dostatečným vzorem pro tento protokol by byl *C:\MyApp\Logs\\\*. log*.
 
 ![Cesta ke kolekci protokolů](media/data-sources-custom-logs/collection-path.png)
 
