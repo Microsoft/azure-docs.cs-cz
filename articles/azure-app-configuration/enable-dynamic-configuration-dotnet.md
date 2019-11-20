@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7e28cdacce8eac4774683013ae1c30ca34ebfaad
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821708"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185238"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Framework
 
@@ -31,10 +31,9 @@ V tomto kurzu se dozvíte, jak můžete implementovat aktualizace dynamické kon
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavte svoji aplikaci tak, aby aktualizovala konfiguraci pomocí úložiště konfigurace aplikace na vyžádání.
-> * Vloží nejnovější konfiguraci do řadičů vaší aplikace.
-
-## <a name="prerequisites"></a>Předpoklady
+> * Nastavte si aplikaci .NET Framework pro aktualizaci konfigurace v reakci na změny v úložišti konfigurace aplikace.
+> * Vloží do aplikace nejnovější konfiguraci.
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -52,9 +51,9 @@ V tomto kurzu se naučíte:
 
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
-## <a name="create-a-net-console-app"></a>Vytvoření konzolové aplikace .NET
+## <a name="create-a-net-framework-console-app"></a>Vytvoření konzolové aplikace .NET Framework
 
-1. Spusťte Visual Studio a vyberte **soubor** > **Nový** **projekt** > .
+1. Spusťte Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)** . Klikněte na **Další**.
 
@@ -135,7 +134,7 @@ V tomto kurzu se naučíte:
 
     ![Místní spuštění aplikace](./media/dotnet-app-run.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 
@@ -148,7 +147,7 @@ V tomto kurzu se naučíte:
     ![Místní aktualizace aplikace](./media/dotnet-app-run-refresh.png)
     
     > [!NOTE]
-    > Vzhledem k tomu, že doba vypršení platnosti mezipaměti byla nastavena na 10 sekund pomocí metody `SetCacheExpiration` při určování konfigurace pro operaci aktualizace, bude hodnota nastavení konfigurace aktualizována pouze v případě, že od poslední aktualizace pro byl uplynul alespoň 10 sekund. Toto nastavení.
+    > Vzhledem k tomu, že doba vypršení platnosti mezipaměti byla nastavena na 10 sekund pomocí metody `SetCacheExpiration` při určování konfigurace pro operaci aktualizace, bude hodnota nastavení konfigurace aktualizována pouze v případě, že od poslední aktualizace tohoto nastavení uplynula alespoň 10 sekund.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -156,7 +155,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali identitu spravované služby Azure, abyste zjednodušili přístup ke konfiguraci aplikací a vylepšili správu přihlašovacích údajů pro vaši aplikaci. Pokud chcete zjistit, jak přidat identitu služby spravovanou v Azure, která zjednodušuje přístup ke konfiguraci aplikací, pokračujte k dalšímu kurzu.
+V tomto kurzu jste povolili aplikaci .NET Framework k dynamické aktualizaci nastavení konfigurace z konfigurace aplikace. Další informace o tom, jak používat spravovanou identitu Azure ke zjednodušení přístupu ke konfiguraci aplikace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
 > [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)

@@ -1,5 +1,5 @@
 ---
-title: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k rozhraní Azure AD Graph API
+title: Kurz`:` použití spravované identity virtuálního počítače se systémem Linux pro přístup k Azure AD Graph API
 description: Tento kurz vás provede použitím spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k rozhraní Azure AD Graph API.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68d560e7d326cc2ddc47ed9f689dc8e31f8ab9ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307504"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183649"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k rozhraní Azure AD Graph API
 
@@ -67,7 +67,7 @@ V tomto kurzu udělíte identitě virtuálního počítače schopnost dotazován
 Azure AD Graph:
 - ID aplikace instančního objektu (používá se při udělování oprávnění aplikace): 00000002-0000-0000-c000-000000000000
 - ID prostředku (používá se při žádosti o přístupový token ze spravovaných identit prostředků Azure): https://graph.windows.net
-- Odkaz na obor oprávnění: [Referenční dokumentace k Azure AD Graph oprávněním](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- Odkaz na obor oprávnění: [Odkaz na oprávnění Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-curl"></a>Udělení oprávnění aplikace přes CURL
 
@@ -136,7 +136,7 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
 
 1. Na portálu přejděte ke svému linuxovému virtuálnímu počítači a v části **Přehled** klikněte na **Připojit**.  
 2. **Připojte** se vybraným klientem SSH k virtuálnímu počítači. 
-3. V okně terminálu pomocí příkazu CURL, ujistěte se, požadavek na místní spravovaných identit pro koncový bod prostředků Azure k získání přístupového tokenu Azure AD Graph.  
+3. V okně terminálu pomocí technologie KUDRLINKOU vytvořte požadavek na koncový bod prostředků místní spravované identity pro prostředky Azure, abyste získali přístupový token pro Azure AD Graph.  
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://graph.windows.net' -H Metadata:true
@@ -156,7 +156,7 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
    }
    ```
 
-4. Pomocí ID objektu instančního objektu virtuálního počítače (hodnota, kterou jste získali v předchozích krocích) se můžete dotazovat rozhraní Azure AD Graph API a načíst jeho členství ve skupinách. Nahraďte `<OBJECT-ID>` s ID objektu z objektu virtuálního počítače a služby a `<ACCESS-TOKEN>` pomocí dříve obdrženého přístupového tokenu:
+4. Pomocí ID objektu instančního objektu virtuálního počítače (hodnota, kterou jste získali v předchozích krocích) se můžete dotazovat rozhraní Azure AD Graph API a načíst jeho členství ve skupinách. Nahraďte `<OBJECT-ID>` ID objektu instančního objektu vašeho virtuálního počítače a `<ACCESS-TOKEN>` s dřív získaným přístupovým tokenem:
 
    ```bash
    curl 'https://graph.windows.net/myorganization/servicePrincipals/<OBJECT-ID>/getMemberGroups?api-version=1.6' -X POST -d "{\"securityEnabledOnly\": false}" -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS-TOKEN>"
@@ -168,7 +168,7 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
    Content : {"odata.metadata":"https://graph.windows.net/myorganization/$metadata#Collection(Edm.String)","value":["<ObjectID of VM's group membership>"]}
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak využít spravovanou identitu přiřazenou systémem na virtuálním počítači s Linuxem pro přístup k Azure AD Graphu.  Další informace o Azure AD Graphu najdete zde:
 
