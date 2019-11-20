@@ -10,12 +10,12 @@ ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128686"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092080"
 ---
 ::: zone target="chromeless"
 
@@ -137,11 +137,25 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
     - Přejděte na **Přehled > Stáhnout expediční štítek** a získejte zpáteční expediční štítek.
     - Připevněte štítek na zařízení. Ujistěte se, že je štítek vidět.
 
-2. Vyžádání si vyzvednutí:
-    - Zavolejte zákaznickou linku společnosti **SingPost** na čísle **6845 6485** během pracovní doby (od 9:00 do 17:00, od pondělí do pátku).  
-    - Při žádosti o vyzvednutí uveďte, že se jedná o *vyzvednutí pro Microsoft Azure*, a číslo žádosti o službu (sledovací číslo ze zpátečního expedičního štítku). 
-    - Obdržíte ústní potvrzení naplánovaného vyzvednutí. 
-    - Pokud se kurýr k vyzvednutí nedostaví, zavolejte zákaznickou linku společnosti **SingPost** na čísle **6845 6485** a domluvte se na náhradním řešení. 
+2. Pokud si chcete vyžádat vyzvednutí, pomocí následující šablony napište na oddělení péče o zákazníky společnosti SingPost e-mail, ve kterém na řádku předmětu uvedete sledovací číslo (sledovací číslo najdete na zpátečním štítku, který je součástí doručeného balíčku).
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - XZ00001234567 
+    Body: 
+     a. Requestor name
+     b. Requestor contact number
+     c. Requestor collection address
+     d. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > Žádosti o rezervaci přijaté v pracovní den:
+   > - Před 15. hodinou: Vyzvednutí proběhne následující pracovní den od 9:00 do 13:00.
+   > - Po 15. hodině: Vyzvednutí proběhne následující den mezi 14:00 a 18:00.
+
+   V případě jakýchkoli potíží se laskavě obraťte na Data Box Operations Asia na adrese adbo@microsoft.com. V hlavičce uveďte název úlohy a problém, ke kterému došlo.
+
 3. Předejte zásilku kurýrovi. 
 
 

@@ -974,21 +974,19 @@
       items:
         - name: Obnovení dat ze zálohy
           href: how-to-backup-and-restore.md
-    - name: Protokolování
+    - name: Monitorování
       items:
-        - name: Protokolování diagnostiky
-          href: logging.md
+        - name: Monitorování Cosmos DB
+          href: monitor-cosmos-db.md
+        - name: Azure Monitor pro Cosmos (Preview)
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+        - name: Zobrazení metrik z účtu Cosmos DB
+          href: use-metrics.md
         - name: Protokolování aplikací pomocí funkce Logic Apps
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Monitorování s využitím metrik
-      items:
-        - name: Zobrazení metrik z účtu Cosmos DB
-          href: use-metrics.md
-        - name: Zobrazení metrik z Azure Monitoru
-          href: cosmos-db-azure-monitor-metrics.md
-        - name: Monitorování smluv SLA
-          href: monitor-accounts.md
+        - name: Referenční informace k monitorování dat
+          href: monitor-cosmos-db-reference.md
     - name: Vývoj v místním prostředí
       items:
         - name: Použití emulátoru

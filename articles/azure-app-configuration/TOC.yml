@@ -18,7 +18,7 @@
         - name: .NET Framework
           href: quickstart-dotnet-app.md
         - name: Azure Functions v .NET Core
-          href: quickstart-azure-function-csharp.md
+          href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
     - name: Správa funkcí
@@ -37,6 +37,8 @@
       href: enable-dynamic-configuration-dotnet-core.md
     - name: Povolení dynamické konfigurace v .NET Framework
       href: enable-dynamic-configuration-dotnet.md
+    - name: Povolení dynamické konfigurace v Azure Functions
+      href: enable-dynamic-configuration-azure-functions-csharp.md
     - name: Použití příznaků funkcí v aplikaci .NET Core
       href: use-feature-flags-dotnet-core.md
     - name: Použití příznaků funkcí v aplikaci Spring Boot
@@ -67,7 +69,7 @@
           href: concept-disaster-recovery.md
 - name: Návody
   items:
-    - name: Integrace s identitou spravované služby Azure
+    - name: Integrace se spravovanou identitou Azure
       href: howto-integrate-azure-managed-service-identity.md
     - name: Import nebo export konfiguračních dat
       href: howto-import-export-data.md

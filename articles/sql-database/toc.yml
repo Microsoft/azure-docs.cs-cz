@@ -278,6 +278,8 @@
                   href: sql-database-xevent-code-ring-buffer.md
         - name: Diagnostika výkonu hyperškálování
           href: sql-database-hyperscale-performance-diagnostics.md
+        - name: Správa prostředků v hustých elastických fondech
+          href: sql-database-elastic-pool-resource-management.md
     - name: Škálovatelnost
       items:
         - name: Dokumentace ke škálovatelnosti

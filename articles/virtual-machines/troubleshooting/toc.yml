@@ -125,6 +125,8 @@
       href: serial-console-power-options.md
     - name: Běžné chyby sériové konzoly
       href: serial-console-errors.md
+    - name: Aktivní konfigurace grubu sériové konzoly
+      href: serial-console-grub-proactive-configuration.md
 - name: Chyby při odstraňování prostředků úložiště
   href: storage-resource-deletion-errors.md
 - name: Chyby při odstraňování klasických prostředků úložiště

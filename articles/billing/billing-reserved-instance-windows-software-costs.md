@@ -1,25 +1,22 @@
 ---
-title: Náklady na rezervace softwaru pro Azure | Microsoft Docs
+title: Náklady na rezervace softwaru pro Azure
 description: Zjistěte, které softwarové měřiče nejsou zahrnuté do nákladů služby Azure Reserved VM Instances.
-services: billing
-documentationcenter: ''
 author: yashar
 manager: yashar
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2019
+ms.date: 11/14/2019
 ms.author: banders
-ms.openlocfilehash: e74765ec09fb9cd2d219ceb3d784b4030c83e028
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 82a3dfa9534d58d425b15a433a69a224235e027f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719639"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111532"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Softwarové náklady nezahrnuté ve službě Azure Reserved VM Instances
 
@@ -64,7 +61,7 @@ Slevy na rezervované instance virtuálního počítače a rezervované kapacity
 |dc72ee45-2ab7-4698-b435-e2cf10d1f9f6|Cloud Services – licence pro 64 vCPU|
 |7a803026-244c-4659-834c-11e6b2d6b76f|Cloud Services – licence pro 80 vCPU|
 
-## <a name="rates-for-azure-meters"></a>Sazby za měřiče Azure
+## <a name="get-rates-for-azure-meters"></a>Získat sazby za měřiče Azure
 
 Náklady na každý z těchto měřičů můžete získat prostřednictvím rozhraní Azure RateCard API. Informace o tom, jak získat sazby za měřiče Azure, najdete v popisu [získání informací o cenách a metadatech pro prostředky používané v rámci předplatného Azure](/previous-versions/azure/reference/mt219004(v=azure.100)).
 

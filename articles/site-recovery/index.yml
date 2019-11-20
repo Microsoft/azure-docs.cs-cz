@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Site Recovery
-summary: Azure Site Recovery můžete použít k zotavení místních počítačů a úloh po havárii do Azure a virtuálních počítačů Azure do sekundární oblasti Azure. Díky replikaci do Azure můžete orchestrovat převzetí služeb při selhání, pokud dojde k výpadku, a pokračovat v přístupu k úlohám a aplikacím v Azure. Jakmile je primární lokalita znovu dostupná, můžete provést navrácení služeb po obnovení.
+summary: Azure Site Recovery můžete využít k zotavení po havárii místních úloh a virtuálních počítačů Azure.
 metadata:
   title: Dokumentace ke službě Azure Site Recovery
-  description: Azure Site Recovery můžete použít k zotavení místních počítačů a úloh po havárii do Azure a virtuálních počítačů Azure do sekundární oblasti Azure. Díky replikaci do Azure můžete orchestrovat převzetí služeb při selhání, pokud dojde k výpadku, a pokračovat v přístupu k úlohám a aplikacím v Azure. Jakmile je primární lokalita znovu dostupná, můžete provést navrácení služeb po obnovení.
+  description: Nastavení zotavení po havárii do Azure pro místní úlohy a virtuální počítače Azure
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: ccbc4c92a6d0db9d5baf8a226ba79405a2b824ff
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001089"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74186589"
 landingContent:
 - title: O službě Azure Site Recovery
   linkLists:

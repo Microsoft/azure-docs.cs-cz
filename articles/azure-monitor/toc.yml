@@ -798,12 +798,14 @@
               items:
                 - name: Povolení přehledu monitorování
                   href: insights/container-insights-onboard.md
-                - name: Povolení pro nový cluster
+                - name: Povolení pro nový cluster AKS
                   href: insights/container-insights-enable-new-cluster.md
-                - name: Povolení pro stávající cluster
+                - name: Povolení pro stávající cluster AKS
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Povolení pro hybridní cluster
                   href: insights/container-insights-hybrid-setup.md
+                - name: Povolení pro Azure Red Hat OpenShift
+                  href: insights/container-insights-azure-redhat-setup.md
                 - name: Mapování oblastí
                   href: insights/container-insights-region-mapping.md
             - name: Monitorování výkonu

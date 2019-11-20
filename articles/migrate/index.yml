@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Dokumentace k Azure Migrate
-summary: Azure Migrate můžete využít k migraci do cloudu Azure. Azure Migrate je centrem pro zjišťování, hodnocení a migraci místních úloh do Azure. Toto centrum poskytuje nástroje Azure Migrate a také integrované nástroje od nezávislých výrobců softwaru (ISV).
+summary: Azure Migrate je centrem nástrojů pro zjišťování, hodnocení a migraci místních úloh do Azure.
 metadata:
   title: Dokumentace k Azure Migrate
-  description: Azure Migrate můžete využít k migraci do cloudu Azure. Azure Migrate je centrem pro zjišťování, hodnocení a migraci místních úloh do Azure. Toto centrum poskytuje nástroje Azure Migrate a také integrované nástroje od nezávislých výrobců softwaru (ISV).
+  description: Azure Migrate můžete využít k migraci místních úloh do Azure.
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: e49bfdefe08b3a8f4598e809fd44b57f3f93de67
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001136"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74185840"
 landingContent:
 - title: Informace o službě Azure Migrate
   linkLists:
@@ -35,6 +35,10 @@ landingContent:
       url: ./tutorial-prepare-vmware.md
     - text: Vyhodnocení virtuálních počítačů Hyper-V (vyhodnocení serveru)
       url: ./tutorial-prepare-hyper-v.md
+    - text: Vyhodnocení fyzických serverů s využitím funkce Hodnocení serverů
+      url: ./tutorial-prepare-physical.md
+    - text: Vyhodnocení fyzických serverů s využitím importovaných dat
+      url: tutorial-assess-import.md
     - text: Migrace virtuálních počítačů VMware (migrace serveru)
       url: ./server-migrate-overview.md
     - text: Migrace virtuálních počítačů Hyper-V (migrace serveru)
@@ -52,13 +56,19 @@ landingContent:
     - text: Přehled matice podpory pro Azure Migrate
       url: migrate-support-matrix.md
     - text: Přehled matice podpory pro VMware
-      url: migrate-support-matrix-vmware.md
+      url: ./migrate-support-matrix-vmware.md
     - text: Přehled matice podpory pro Hyper-V
-      url: migrate-support-matrix-hyper-v.md
+      url: ./migrate-support-matrix-hyper-v.md
+    - text: Přehled matice podpory pro fyzické servery
+      url: ./migrate-support-matrix-physical.md
 - title: Spravovat
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Přidání nástrojů pro vyhodnocení
+      url: ./how-to-assess.md
+    - text: Zjišťování inventáře aplikací
+      url: ./how-to-discover-applications.md
     - text: Přidání nástrojů pro migraci
       url: ./how-to-migrate.md
     - text: Škálování vyhodnocení pro VMware
@@ -71,9 +81,9 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: Architektura migrace založené na agentech pro VMware
+    - text: Další informace o migraci s využitím VMware / fyzických agentů
       url: ./agent-based-migration-architecture.md
-    - text: Architektura migrace Hyper-V
+    - text: Další informace o migraci technologie Hyper-V
       url: ./hyper-v-migration-architecture.md
     - text: Další informace o vyhodnocení
       url: ./concepts-assessment-calculation.md
