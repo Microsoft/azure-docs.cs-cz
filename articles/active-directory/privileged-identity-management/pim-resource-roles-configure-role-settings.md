@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144296"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74182719"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role prostředků Azure v Privileged Identity Management
 
@@ -57,6 +57,9 @@ Pomocí těchto kroků otevřete nastavení pro roli prostředku Azure.
     ![Karta přiřazení role na stránce nastavení role](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
 
 1. Použijte kartu **oznámení** nebo tlačítko **Další: Aktivace** v dolní části stránky, abyste se dostali na kartu nastavení oznámení pro tuto roli. Tato nastavení řídí všechna e-mailová oznámení týkající se této role.
+
+    > [!NOTE]
+    > Toto uživatelské rozhraní oznámení se v tuto chvíli provádí v rámci oblastí a předplatných Azure. Pokud tato podrobná oznámení nemůžete nakonfigurovat, vraťte se prosím za jeden nebo dva dny.
 
     ![Karta oznámení role na stránce nastavení role](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
 

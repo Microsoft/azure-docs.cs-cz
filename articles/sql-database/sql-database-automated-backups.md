@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1cdd8fdac03c25bf28db94867891fef4c2846fcd
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821950"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196570"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -46,7 +46,7 @@ Některé z těchto operací můžete vyzkoušet v následujících příkladech
 
 | | Azure Portal | Azure PowerShell |
 |---|---|---|
-| Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md#managed-instance-database) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Spravovaná instance – není k dispozici  |
 | Obnovit databázi z bodu v čase | [Samostatná databáze](sql-database-recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | Obnovení odstraněné databáze | [Samostatná databáze](sql-database-recovery-using-backups.md) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
@@ -84,6 +84,15 @@ Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-datab
 ## <a name="storage-costs"></a>Cena za uložení
 U izolovaných databází a spravovaných instancí se minimální velikost záložního úložiště rovná 100% velikosti databáze poskytuje bez dalších poplatků. V případě elastických fondů se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond, a to bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
 
+Pomocí analýzy nákladů na předplatné Azure můžete zjistit aktuální výdaje na úložiště záloh.
+
+![Analýza nákladů na úložiště zálohování](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+Pokud přejdete do okna předplatné a otevřete okno Analýza nákladů, můžete vybrat podkategorii měřičů **Pitr Backup** , abyste viděli aktuální náklady na zálohování a prognózu nákladů. Můžete také zahrnout další podkategorie měřičů, jako je například **spravovaná instance pro obecné účely – úložiště** nebo **spravovaná instance pro obecné účely** , které vám pomůžou porovnat náklady na úložiště zálohování s jinými kategoriemi nákladů.
+
+> [!Note]
+> [Dobu uchování můžete změnit na 7 dní](#change-pitr-backup-retention-period-using-azure-portal) , abyste snížili náklady na úložiště zálohování.
+
 Další informace o cenách za úložiště najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/sql-database/single/) . 
 
 ## <a name="are-backups-encrypted"></a>Jsou zálohy zašifrované
@@ -118,17 +127,19 @@ Výchozí dobu uchovávání záloh PITR můžete změnit pomocí Azure Portal, 
 
 Pokud chcete změnit dobu uchovávání záloh PITR pomocí Azure Portal, přejděte na objekt serveru, jehož doba uchovávání dat chcete změnit na portálu, a pak vyberte vhodnou možnost podle toho, který objekt serveru upravujete.
 
-#### <a name="single-azure-sql-database"></a>Jeden Azure SQL Database
+#### <a name="single-database--elastic-poolstabsingle-database"></a>[Elastické fondy & jedné databáze](#tab/single-database)
 
 Změna uchovávání PITR zálohování pro jednu databázi Azure SQL se provádí na úrovni serveru. Změny provedené na úrovni serveru se vztahují na databáze na tomto serveru. Chcete-li změnit PITR pro Azure SQL Database Server z Azure Portal, přejděte na okno Přehled serveru, klikněte na možnost spravovat zálohy v navigační nabídce a pak na navigačním panelu klikněte na možnost konfigurace uchovávání.
 
 ![Změnit Azure Portal PITR](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instance-database"></a>Databáze spravované instance
+#### <a name="managed-instancetabmanaged-instance"></a>[Spravovaná instance](#tab/managed-instance)
 
 Změna uchovávání záloh PITR pro SQL Database spravovanou instanci se provádí na úrovni jednotlivých databází. Chcete-li změnit uchovávání záloh PITR pro databázi instance z Azure Portal, přejděte do okna Přehled individuální databáze a pak klikněte na možnost konfigurace uchovávání záloh na navigačním panelu.
 
 ![Změnit Azure Portal PITR](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
+
+---
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Změna doby uchovávání záloh PITR pomocí PowerShellu
 

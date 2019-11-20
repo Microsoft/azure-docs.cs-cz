@@ -1,81 +1,81 @@
 ---
-title: Připojení z kořenové nebo vrcholu domény do existující branou pomocí webu Azure portal
-description: Zjistěte, jak chcete připojit z kořenové nebo vrcholu domény do existující branou pomocí webu Azure portal.
+title: Připojit kořenovou nebo vrcholovou doménu k existujícímu frontě Azure Portal
+description: Naučte se, jak připojit kořenovou nebo vrcholovou doménu k existujícím předním dveřím pomocí Azure Portal.
 services: front-door
 author: sharad4u
 ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 8fe8da95a61d2f2bb35095236131670cb6ef0e70
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605781"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184618"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Připojení z kořenové nebo vrcholu domény na přední dveře
-Záznamy CNAME branou Azure používá k ověření vlastnictví domény pro připojení vlastních domén. Také branou nezveřejňuje IP adresu front-endu, který je přidružený k profilu branou, a proto nelze mapovat vaši doménu vrcholu na IP adresu, pokud je cílem připojit se k Azure branou.
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Připojit kořenovou nebo vrcholovou doménu na vaše přední dveře
+Přední dveře Azure pomocí záznamů CNAME ověří vlastnictví domény pro připojování vlastních domén. Přední dveře také nezveřejňují front-end IP adresu přidruženou k profilu front-endu, takže nemůžete mapovat svou doménu vrcholu na IP adresu, pokud je cílem připojit se do front-endu Azure.
 
-Protokol DNS brání přiřazení CNAME záznamů ve vrcholu zóny. Například, pokud je vaše doména `contoso.com`; můžete vytvořte záznamy CNAME pro `somelabel.contoso.com`; ale nemůžete vytvořit záznam CNAME pro `contoso.com` samotný. Toto omezení představuje problém pro počet vlastníků aplikace, kteří mají s vyrovnáváním zatížení aplikací za branou Azure. Protože pomocí profilu branou vyžaduje vytvoření záznamu CNAME, není možné tak, aby odkazoval na profil branou z vrcholu zóny.
+Protokol DNS brání přiřazení záznamů CNAME ve vrcholu zóny. Například pokud vaše doména je `contoso.com`; pro `somelabel.contoso.com`můžete vytvořit záznamy CNAME. Nemůžete ale vytvořit záznam CNAME pro `contoso.com` sám sebe. Toto omezení představuje problém pro vlastníky aplikace, kteří mají aplikace s vyrovnáváním zatížení za předními dveřmi Azure. Vzhledem k tomu, že použití profilu front-dveří vyžaduje vytvoření záznamu CNAME, není možné nasměrovat na přední profil od vrcholu zóny.
 
-Tento problém je vyřešen pomocí záznamů aliasů v Azure DNS. Na rozdíl od záznamů CNAME alias záznamy jsou vytvářeny na vrcholu zóny a vlastníci aplikace můžete použít tak, aby odkazoval jejich záznamu vrcholu zóny branou profil, který má veřejné koncové body. Počet vlastníků aplikace odkazovat na stejný profil branou, který se používá u všech ostatních domén v rámci jejich zóny DNS. Například `contoso.com` a `www.contoso.com` může odkazovat na stejný profil branou. 
+Tento problém je vyřešen pomocí záznamů aliasů v Azure DNS. Na rozdíl od záznamů CNAME se záznamy aliasů vytvoří ve vrcholu zóny a vlastníci aplikace je můžou použít k tomu, aby odkazovaly na svůj záznam vrcholu zóny na profil front dveří, který má veřejné koncové body. Vlastníci aplikace odkazují na stejný profil front-dveří, který se používá pro všechny ostatní domény v rámci zóny DNS. Například `contoso.com` a `www.contoso.com` mohou ukazovat na stejný profil front-dveří. 
 
-V podstatě mapování vrcholu nebo kořenové domény na váš profil branou vyžaduje sloučení CNAME nebo DNS dohledávání, což je mechanismus, kde v DNS poskytovatele rekurzivně řeší záznam CNAME dokud nedosáhne IP adresu. Tato funkce je podporována službou Azure DNS pro koncové body branou. 
+Mapování vrcholu nebo kořenové domény na profil předních dveří v podstatě vyžaduje sloučení záznamů CNAME nebo dohledávání DNS, což je mechanismus, ve kterém zprostředkovatel DNS rekurzivně překládá záznam CNAME, dokud nezíská IP adresu. Tato funkce je podporovaná Azure DNS pro koncové body front-dveří. 
 
 > [!NOTE]
-> Existují dalších poskytovatelů DNS a, které podporují CNAME sloučení nebo následné dotazy DNS, ale Azure branou doporučuje používat Azure DNS pro její zákazníky pro hostování své domény.
+> K dispozici jsou i další poskytovatelé DNS, kteří podporují sloučení záznamů CNAME nebo DNS dohledávání, ale u svých zákazníků doporučujeme používat Azure DNS pro své zákazníky k hostování svých domén.
 
-Můžete použít na webu Azure portal k začlenění doménu vrcholu na přední dveře a povolení HTTPS pro jeho přidružením s certifikátem pro ukončení protokolu SSL. Vrcholu domény jsou také označovány jako kořenový adresář nebo naked domén.
+Můžete použít Azure Portal k připojení vrcholu domény na přední dveře a povolení protokolu HTTPS tím, že ho přidružíte k certifikátu pro ukončení protokolu SSL. Domény vrcholu se také označují jako kořenové nebo holé domény.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření záznamu o aliasu, který odkazuje na svůj profil branou
-> * Přidat kořenovou doménu branou
-> * Nastavení protokolu HTTPS v kořenové doméně
+> * Vytvoření záznamu aliasu, který odkazuje na profil front-dveří
+> * Přidání kořenové domény do front-dveří
+> * Nastavení HTTPS v kořenové doméně
 
 > [!NOTE]
-> Tento kurz vyžaduje, že již máte profil branou vytvořili. Přečtěte si další kurzy jako [rychlý start: Vytvoření branou](./quickstart-create-front-door.md) nebo [vytvořit přední dveře k přesměrování protokolu HTTPS s protokolem HTTP](./front-door-how-to-redirect-https.md) začít.
+> Tento kurz vyžaduje, abyste už vytvořili profil front-dveří. Projděte si další kurzy, jako je [rychlý Start: vytvořením přední dveře](./quickstart-create-front-door.md) nebo [vytvořením front-bran a pomocí přesměrování HTTP na https](./front-door-how-to-redirect-https.md) můžete začít.
 
-## <a name="create-an-alias-record-for-zone-apex"></a>Vytvoření záznamu o aliasu pro vrcholu zóny
+## <a name="create-an-alias-record-for-zone-apex"></a>Vytvoří záznam aliasu pro vrchol zóny.
 
-1. Otevřít **Azure DNS** konfigurace domény, který se má připojit.
-2. Vytvořte nebo upravte záznam pro vrcholu zóny.
-3. Vyberte záznam **typ** jako _A_ zaznamenávat a pak vyberte _Ano_ pro **sadu záznamů Alias**. **Typ aliasu** by mělo být nastavené _prostředků Azure_.
-4. Zvolte předplatné Azure, kde se hostuje váš profil branou a pak vyberte prostředek branou z **prostředků Azure** rozevíracího seznamu.
-5. Klikněte na tlačítko **OK** změny potvrďte.
+1. Otevřete konfiguraci **Azure DNS** pro doménu, která se má připojit.
+2. Vytvoří nebo upraví záznam pro vrchol zóny.
+3. Vyberte **typ** _záznamu jako záznam_ a pak pro **sadu záznamů aliasů**vyberte _Ano_ . **Typ aliasu** by měl být nastaven na _prostředek Azure_.
+4. Zvolte předplatné Azure, ve kterém je profil front-dveří hostovaný, a pak vyberte prostředek front-dveří z rozevíracího seznamu **prostředků Azure** .
+5. Změny odešlete kliknutím na tlačítko **OK** .
 
-    ![Alias record for zone apex](./media/front-door-apex-domain/front-door-apex-alias-record.png)
+    ![Záznam aliasu pro vrchol zóny](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. Výše uvedený krok vytvoří záznam vrcholu zóny odkazující na váš prostředek branou a také mapování záznamu CNAME "afdverify" (příklad – `afdverify.contosonews.com`) k `afdverify.<name>.azurefd.net` která bude použita pro registraci domény ve vašem profilu branou.
+6. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME "afdverify" (příklad-`afdverify.contosonews.com`) na `afdverify.<name>.azurefd.net`, které se budou používat k připojování domény do profilu front-dveří.
 
-## <a name="onboard-the-custom-domain-on-your-front-door"></a>Připojit vlastní domény na přední dveře
+## <a name="onboard-the-custom-domain-on-your-front-door"></a>Zprovoznění vlastní domény na předních dveřích
 
-1. Na kartě branou návrháře klikněte na '+' ikonu na hostitelích front-endu části přidáte novou vlastní doménu.
-2. Zadejte název domény z kořenové nebo vrcholu v poli Název vlastního hostitele příklad `contosonews.com`.
-3. Jakmile ověříte mapování CNAME z domény do vašeho branou, klikněte na **přidat** přidat vlastní doménu.
-4. Klikněte na tlačítko **Uložit** odeslat provedené změny.
+1. Na kartě přední Návrhář dvířek klikněte na ikonu ' + ' v části hostitelé front-endu a přidejte novou vlastní doménu.
+2. Do pole název vlastního hostitele zadejte název kořenové nebo vrcholové domény, například `contosonews.com`.
+3. Po ověření mapování CNAME z domény na vaše přední dvířka klikněte na **Přidat** a přidejte vlastní doménu.
+4. Změny odešlete kliknutím na **Uložit** .
 
 ![Nabídka Vlastní domény](./media/front-door-apex-domain/front-door-onboard-apex-domain.png)
 
 ## <a name="enable-https-on-your-custom-domain"></a>Povolení HTTPS pro vlastní doménu
 
-1. Klikněte na tlačítko pro vlastní doménu, která byla přidána a v části **HTTPS vlastní domény**, změňte stav na **povoleno**.
-2. Vyberte **typ správy certifikátu** k _"Použít vlastní certifikát"_ .
+1. Klikněte na vlastní doménu, kterou jste přidali, a v části **vlastní doména https**změňte stav na **povoleno**.
+2. Vyberte **typ správy certifikátů** použít vlastní _certifikát_.
 
 > [!WARNING]
-> Typ správy certifikátu přední dveře spravované aktuálně nepodporuje pro vrchol nebo kořenové domény. Jedinou možností, které jsou k dispozici pro povolení HTTPS pro doménu vrcholu nebo kořenového adresáře pro branou používá vlastní vlastního certifikátu SSL, které jsou hostované v Azure Key Vault.
+> Typ správy certifikátů na předních dveřích se v současné době pro vrcholy nebo kořenové domény nepodporuje. Jediná možnost, která je k dispozici pro povolení protokolu HTTPS ve vrcholu nebo kořenové doméně pro přední dveře, používá vlastní certifikát SSL hostovaný na Azure Key Vault.
 
-3. Ujistěte se, že máte nastavení správná oprávnění pro vstupní brána k klíč trezoru, jak je uvedeno v uživatelském rozhraní, než budete pokračovat k dalšímu kroku.
-4. Zvolte **účtu Key Vault** z aktuálního předplatného a pak vyberte příslušné **tajný kód** a **verzi tajného klíče** mapovat na správný certifikát.
-5. Klikněte na **aktualizace** uložte výběr a potom klikněte na **Uložit**.
-6. Klikněte na tlačítko **aktualizovat** za pár minut a pak klikněte na vlastní doménu znovu, abyste viděli průběh zřizování certifikátů. 
+3. Než přejdete k dalšímu kroku, ujistěte se, že jste nastavili správná oprávnění pro přední dveře pro přístup k trezoru klíčů, jak je uvedeno v uživatelském rozhraní.
+4. Zvolte **účet Key Vault** z aktuálního předplatného a pak vyberte příslušnou **tajnou** a **tajnou verzi** , která se namapuje na správný certifikát.
+5. Kliknutím na **aktualizovat** uložte výběr a pak klikněte na **Uložit**.
+6. Po několika minutách klikněte na **aktualizovat** a pak znovu klikněte na vlastní doménu. zobrazí se průběh zřizování certifikátu. 
 
 > [!WARNING]
-> Ujistěte se, že máte vytvoří příslušná pravidla směrování pro vaši doménu vrcholu nebo přidat doménu do existující pravidla směrování.
+> Ujistěte se, že jste vytvořili odpovídající pravidla směrování pro vaši doménu vrcholů nebo jste přidali doménu do stávajících pravidel směrování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
 - Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

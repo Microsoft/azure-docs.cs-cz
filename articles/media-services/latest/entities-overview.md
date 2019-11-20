@@ -1,6 +1,7 @@
 ---
-title: Filtrování, řazení a stránkování entit Media Services – Azure | Microsoft Docs
-description: Tento článek popisuje filtrování, řazení, stránkování Azure Media Services entit.
+title: Filtrování, řazení a stránkování Media Services entit
+titleSuffix: Azure Media Services
+description: Seznamte se s filtrováním, řazením a stránkováním Azure Media Services entit.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,12 +13,12 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693314"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186248"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování Media Services entit
 
@@ -41,10 +42,10 @@ Operátory rozsahu:
 
 - `gt`: Otestujte, jestli je pole *větší než* konstantní hodnota.
 - `lt`: Otestujte, jestli je pole *menší než* hodnota konstanty.
-- `ge`: Otestujte, jestli je pole *větší nebo rovno* konstantě. hodnota
+- `ge`: Otestujte, jestli je pole *větší než nebo rovno* konstantní hodnotě.
 - `le`: Otestujte, jestli je pole *menší nebo rovno* konstantní hodnotě.
 
-## <a name="filter"></a>Filtrovat
+## <a name="filter"></a>Filtr
 
 Pomocí `$filter` můžete zadat parametr filtru OData a vyhledat jenom objekty, které vás zajímají.
 
@@ -59,17 +60,17 @@ Následující C# příklad filtruje datum vytvoření prostředku:
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```    
+```
 
 ## <a name="order-by"></a>Řadit podle
 
-Použijte `$orderby` k řazení vrácených objektů zadaným parametrem. Například:    
+Použijte `$orderby` k řazení vrácených objektů zadaným parametrem. Příklad:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Chcete-li výsledky seřadit ve vzestupném nebo sestupném pořadí, přidejte buď `asc`, nebo `desc` k názvu pole oddělené mezerou. Například: `$orderby properties/created desc`.
+Pokud chcete výsledky seřadit ve vzestupném nebo sestupném pořadí, přidejte do názvu pole buď `asc`, nebo `desc` a oddělte je mezerou. Příklad: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Přeskočit token
 
@@ -77,7 +78,7 @@ Pokud odpověď dotazu obsahuje mnoho položek, vrátí služba hodnotu `$skipto
 
 V Media Services V3 nemůžete konfigurovat velikost stránky. Velikost stránky se liší podle typu entity. Přečtěte si jednotlivé části, které následují za podrobnosti.
 
-Pokud jsou entity vytvářeny nebo smazány při stránkování prostřednictvím kolekce, změny se projeví ve vrácených výsledcích (pokud jsou tyto změny součástí kolekce, která nebyla stažena). 
+Pokud jsou entity vytvářeny nebo smazány při stránkování prostřednictvím kolekce, změny se projeví ve vrácených výsledcích (pokud jsou tyto změny součástí kolekce, která nebyla stažena).
 
 > [!TIP]
 > Vždy byste měli použít `nextLink` k zobrazení výčtu kolekce a nezáleží na konkrétní velikosti stránky.
@@ -155,29 +156,29 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení u různých entit:
 
-|Název entity|Název vlastnosti|Filtrovat|Objednávka|
+|Název entity|Název vlastnosti|Filtr|Objednávka|
 |---|---|---|---|
 |[Aktiva](https://docs.microsoft.com/rest/api/media/assets/)|jméno|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
-||Properties. alternateId |`eq`||
-||Properties. assetId |`eq`||
-||vlastnosti. vytvořeno| `eq`, `gt`, `lt`| `asc` a `desc`|
+||properties.alternateId |`eq`||
+||properties.assetId |`eq`||
+||Properties.Created| `eq`, `gt`, `lt`| `asc` a `desc`|
 |[Zásady pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||vlastnosti. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||Properties. policyId|`eq`, `ne`||
+||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||Properties.Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||properties.policyId|`eq`, `ne`||
 |[Úlohy](https://docs.microsoft.com/rest/api/media/jobs)| jméno  | `eq`            | `asc` a `desc`|
 ||vlastnosti. State        | `eq`, `ne`        |                         |
-||vlastnosti. vytvořeno      | `gt`, `ge` `lt`, `le`| `asc` a `desc`|
-||Properties. lastModified | `gt`, `ge` `lt`, `le` | `asc` a `desc`| 
+||Properties.Created      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
+||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` a `desc`| 
 |[Lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||vlastnosti. čas_ukončení    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 |[Zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 |[Transformuje](https://docs.microsoft.com/rest/api/media/transforms)| jméno | `eq`            | `asc` a `desc`|
-|| vlastnosti. vytvořeno      | `gt`, `ge` `lt`, `le`| `asc` a `desc`|
-|| Properties. lastModified | `gt`, `ge` `lt`, `le`| `asc` a `desc`|
+|| Properties.Created      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
 
 ## <a name="next-steps"></a>Další kroky
 

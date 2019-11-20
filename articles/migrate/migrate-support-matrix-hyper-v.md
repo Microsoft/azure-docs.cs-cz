@@ -1,18 +1,18 @@
 ---
-title: Tabulka podpory Azure Migrate pro vyhodnocení a migraci technologie Hyper-V
-description: Shrnuje nastavení a omezení pro vyhodnocení a migraci technologie Hyper-V pomocí služby Azure Migrate.
+title: Podpora pro vyhodnocení/migraci technologie Hyper-V v Azure Migrate
+description: Přečtěte si o podpoře vyhodnocení/migrace technologie Hyper-V pomocí Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6562d3f15d080a3bbc54a9985c12eae5908a9980
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498697"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186658"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci Hyper-V
 
@@ -86,7 +86,7 @@ K vyhodnocení virtuálních počítačů Azure Migrate zařízení potřebuje p
 --- | ---
 *.portal.azure.com | Navigace na Azure Portal
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Přihlaste se ke svému předplatnému Azure.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
 management.azure.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
 dc.services.visualstudio.com | Protokolování a monitorování
 *.vault.azure.net | Správa tajných kódů v Azure Key Vault při komunikaci mezi zařízením a službou.
@@ -99,7 +99,7 @@ https://download.microsoft.com/download/* | Povoluje soubory ke stažení z webu
 
 Následující tabulka shrnuje požadavky na porty pro posouzení.
 
-**Zařízení** | **Vázán**
+**zařízení** | **připojení**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Odchozí připojení na portech 443, 5671 a 5672 pro posílání metadat zjišťování a výkonu Azure Migrate.
 **Hostitel nebo cluster Hyper-V** | Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu virtuálních počítačů Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
@@ -159,7 +159,7 @@ time.windows.com | Ověřuje časovou synchronizaci mezi systémovým a globáln
 
 Následující tabulka shrnuje požadavky portů na hostitele Hyper-V a virtuální počítače pro migraci virtuálních počítačů.
 
-**Zařízení** | **Vázán**
+**zařízení** | **připojení**
 --- | ---
 Hostitelé nebo virtuální počítače Hyper-V | Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů do Azure Migrate.
 

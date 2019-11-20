@@ -14,18 +14,18 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299935"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185087"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte do ASP.NET Core aplikace konfiguraci aplikací Azure, která vám umožní centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu. ASP.NET Core vytvoří objekt konfigurace s jedním klíčem na základě hodnoty pomocí nastavení z jednoho nebo více zdrojů dat, které jsou určeny aplikací. Tyto zdroje dat jsou známé jako *poskytovatelé konfigurace*. Vzhledem k tomu, že klient .NET Core konfigurace aplikace je implementován jako poskytovatel, služba se zobrazí jako jiný zdroj dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -38,9 +38,9 @@ V tomto rychlém startu zařadíte do ASP.NET Core aplikace konfiguraci aplikac�
 
     | Klíč | Hodnota |
     |---|---|
-    | TestApp: nastavení: BackgroundColor | Bílá |
+    | TestApp:Settings:BackgroundColor | White |
     | TestApp: nastavení: FontSize | 24 |
-    | TestApp: nastavení: FontColor | Černá |
+    | TestApp:Settings:FontColor | Black |
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
@@ -59,9 +59,9 @@ K vytvoření nového projektu webové aplikace ASP.NET Core MVC použijete [roz
 
 ## <a name="add-secret-manager"></a>Přidat správce tajných klíčů
 
-Chcete-li použít Správce tajných klíčů, přidejte do souboru *. csproj* prvek `UserSecretsId`.
+Chcete-li použít Správce tajných klíčů, přidejte `UserSecretsId` element do souboru *. csproj* .
 
-- Otevřete soubor *. csproj* . Přidejte prvek `UserSecretsId`, jak je znázorněno zde. Můžete použít stejný identifikátor GUID, nebo můžete tuto hodnotu nahradit vlastními. Uložte soubor.
+- Otevřete soubor *. csproj* . Přidejte `UserSecretsId` element, jak je znázorněno zde. Můžete použít stejný identifikátor GUID, nebo můžete tuto hodnotu nahradit vlastními. Uložte soubor.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -83,7 +83,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na balíček NuGet `Microsoft.Azure.AppConfiguration.AspNetCore` spuštěním následujícího příkazu:
+1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
     ```CLI
         dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
@@ -116,7 +116,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. Aktualizujte metodu `CreateWebHostBuilder` pro použití konfigurace aplikace voláním metody `config.AddAzureAppConfiguration()`.
+5. Aktualizujte metodu `CreateWebHostBuilder`, aby používala konfiguraci aplikace, voláním metody `config.AddAzureAppConfiguration()`.
     
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
@@ -208,7 +208,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
         dotnet run
     ```
 
-3. Otevřete okno prohlížeče a vyberte `http://localhost:5000`, což je výchozí adresa URL pro webovou aplikaci hostovanou místně.
+3. Otevřete okno prohlížeče a pro webovou aplikaci hostovanou místně použijte `http://localhost:5000`, což je výchozí adresa URL.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -216,7 +216,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s ASP.NET Core webovou aplikací prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, najdete v dalším kurzu, který ukazuje, jak nakonfigurovat webovou aplikaci tak, aby dynamicky aktualizovala nastavení konfigurace.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s ASP.NET Core webovou aplikací prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak nakonfigurovat aplikaci ASP.NET Core, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Použití dynamické konfigurace v aplikaci ASP.NET Core](./enable-dynamic-configuration-aspnet-core.md)
+> [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-aspnet-core.md)

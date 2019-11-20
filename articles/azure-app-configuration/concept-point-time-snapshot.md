@@ -1,6 +1,6 @@
 ---
-title: Azure v okamžiku snímek konfigurace aplikací | Dokumentace Microsoftu
-description: Přehled o tom, jak v daném okamžiku snímku funguje v konfiguraci aplikací Azure
+title: Snímek konfigurace aplikace Azure – snímek v čase | Microsoft Docs
+description: Přehled toho, jak snímek v čase funguje v konfiguraci aplikací Azure
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,27 +12,27 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 83770e8c5f415670855b5cf2502d02c4d6919440
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdbe4846700c690261dbc734063f4420478666a8
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741134"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185205"
 ---
 # <a name="point-in-time-snapshot"></a>Snímek k určitému časovému okamžiku
 
-Konfigurace aplikace Azure uchovává záznamy přesné případů, kdy je nový pár klíč hodnota vytvořit a pak upravit. Tyto záznamy tvoří úplnou časová osa změnami klíč hodnota. Konfigurace app storu můžete rekonstrukci historie všechny klíčové hodnoty a přehrát jeho poslední hodnotu v kterémkoli daném okamžiku až po současnost. Pomocí této funkce můžete "čas cesty" zpět a načtení původní hodnoty klíče. Například můžete získat Včerejší nastavení konfigurace, těsně před poslední nasazení, aby bylo možné obnovit předchozí konfiguraci a vrátit zpět aplikace.
+Konfigurace aplikace Azure udržuje záznamy přesně po vytvoření nové páry klíč-hodnota a pak se upraví. Tyto záznamy tvoří úplnou časovou osu ve změnách hodnot typu klíč-hodnota. Úložiště konfigurace aplikace může rekonstruovat historii jakékoli hodnoty klíče a kdykoli v daném okamžiku přehraje poslední hodnotu, a to až do současného. Pomocí této funkce můžete "čas-cestování" zpět a načíst starou hodnotu klíče. Můžete například získat nejstarší nastavení konfigurace těsně před nejnovějším nasazením, aby bylo možné obnovit předchozí konfiguraci a vrátit aplikaci zpět.
 
-## <a name="key-value-retrieval"></a>Načítání klíč hodnota
+## <a name="key-value-retrieval"></a>Načtení hodnoty klíče
 
-K načtení poslední hodnoty klíče, určují dobu, po který jsou hodnoty klíče snímek v hlavičce protokolu HTTP volání rozhraní REST API. Příklad:
+Chcete-li načíst dřívější hodnoty klíče, zadejte čas, kdy jsou klíčové hodnoty snímky v hlavičce HTTP REST API volání. Příklad:
 
         GET /kv HTTP/1.1
         Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
 
-Konfigurace aplikací v současné době udržuje sedm dní historie změn.
+V současné době konfigurace aplikace udržuje sedm dní v historii změn.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)  
+> [Vytvoření webové aplikace v ASP.NET Core](./quickstart-aspnet-core-app.md)  

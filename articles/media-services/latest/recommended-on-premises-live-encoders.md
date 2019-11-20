@@ -6,15 +6,15 @@ keywords: kódování; kodéry; média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300941"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186022"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené kodéry živého streamování
 
@@ -49,6 +49,9 @@ Služba Media Services doporučuje používat jeden z následujících kodérů 
 - Tricaster Mini HD-4
 - VMIX
 - xStream
+- [FFmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 a Hero 8
+- [Restream.io](https://restream.io/)
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Živé kodéry, jejichž výstupem je fragment MP4
 
@@ -60,9 +63,11 @@ Media Services doporučuje použít jeden z následujících živých kodérů, 
 - Envivio 4Caster C4 Gen III
 - Představte si Communications Selenio MCP3
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
+- [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Pokud vytváříte streamování živých událostí v několika jazycích (například jedna anglická zvuková stopa a jedna Španělská zvuková stopa), můžete toho dosáhnout pomocí Media Encoder Live kodéru nakonfigurovaného tak, aby odesílal živý kanál do předávací živé události.
+
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace nastavení místního kodéru pro Live Encoder
 
@@ -74,9 +79,9 @@ Aby bylo možné přehrávat obsah, musí být k dispozici zvukový a obrazový 
 
 ### <a name="configuration-tips"></a>Tipy pro konfiguraci
 
-- Pokud je to možné, použijte Hardwired připojení k Internetu.
+- Kdykoli je to možné, použijte standardní kabelové internetové připojení.
 - Při určování požadavků na šířku pásma Zdvojnásobte přenosové rychlosti streamování. I když není povinné, toto jednoduché pravidlo pomáhá zmírnit dopad zahlcení sítě.
-- Při používání softwarových kodérů zavřete všechny nepotřebné programy.
+- Při použití softwarových kodérů uzavřete všechny nepotřebné programy.
 - Změna konfigurace kodéru po zahájení práce má na událost negativní vliv. Změny konfigurace můžou způsobit, že dojde k nestabilitě události. 
 - Ujistěte se, že máte k nastavení události dostatek času. Pro vysoce škálovatelné události doporučujeme spustit nastavení hodinu před událostí.
 
@@ -128,7 +133,7 @@ Použijte stejný postup jako v rámci [předávacího ověřování pro živé 
 
 ### <a name="email-your-recorded-settings"></a>Poslat zaznamenaná nastavení e-mailem
 
-Nakonec odešlete e-mailem zaznamenaná nastavení a parametry živého archivu do Azure Media Services na amshelp@microsoft.com jako oznámení, že prošly všechny kontroly pro vlastní ověření. Také zahrňte kontaktní informace pro jakékoliv následné zprávy. Můžete se obrátit na tým Azure Media Services s případnými dotazy týkajícími se tohoto procesu.
+Nakonec odešlete e-mailem zaznamenaná nastavení a parametry živého archivu do Azure Media Services v amshelp@microsoft.com jako oznámení, že prošly všechny kontroly pro vlastní ověření. Také zahrňte kontaktní informace pro jakékoliv následné zprávy. Můžete se obrátit na tým Azure Media Services s případnými dotazy týkajícími se tohoto procesu.
 
 ## <a name="next-steps"></a>Další kroky
 

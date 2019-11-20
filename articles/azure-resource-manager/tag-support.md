@@ -3,12 +3,12 @@ title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: MT
+ms.openlocfilehash: 2799784ad449304a7790ad5f83d8ed1c94dd3547
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173551"
+ms.locfileid: "74194984"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů.
@@ -188,7 +188,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | aadsupportcases | Ne | Ne |
 > | addsservices | Ne | Ne |
-> | Technici | Ne | Ne |
+> | technici | Ne | Ne |
 > | anonymousapiusers | Ne | Ne |
 > | konfigurace | Ne | Ne |
 > | logs | Ne | Ne |
@@ -738,7 +738,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Výstrahy | Ne | Ne |
+> | Upozornění | Ne | Ne |
 > | billingAccounts | Ne | Ne |
 > | Rozpočty | Ne | Ne |
 > | CloudConnectors | Ne | Ne |
@@ -1818,7 +1818,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Ano | Ano |
-> | managedInstances/databáze | Ano (viz [Poznámka níže](#sqlnote)) | Ano |
+> | managedInstances/databáze | Ne | Ne |
 > | managedInstances/databases/backupShortTermRetentionPolicies | Ne | Ne |
 > | managedInstances/databases/schemas/tables/columns/sensitivityLabels | Ne | Ne |
 > | managedInstances/databáze/vulnerabilityAssessments | Ne | Ne |

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a24ebd8aca3cebab7898689b00e590298a8d1e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d8bb9b507763c935ab244c42584120a279063954
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144763"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195457"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>Zřizování uživatelů SCIM pomocí Azure Active Directory (Azure AD)
 
@@ -68,7 +68,7 @@ Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže
 | pracovní funkce |Název |
 | e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
-| Správce |Správce |
+| manažer |manažer |
 | Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
 | ID objektu |ID |
 | PSČ |.postalCode adresy [typ eq "pracovní"] |
@@ -433,7 +433,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-#### <a name="delete-user"></a>Odstranění uživatele
+#### <a name="delete-user"></a>Odstranit uživatele
 
 ##### <a name="request-6"></a>Request
 
@@ -602,7 +602,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *HTTP/1.1 204 bez obsahu*
 
-#### <a name="delete-group"></a>Odstranění skupiny
+#### <a name="delete-group"></a>Odstranit skupinu
 
 ##### <a name="request-13"></a>Request
 
@@ -1306,6 +1306,24 @@ Po zahájení počátečního cyklu můžete na levém panelu vybrat **protokoly
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Krok 5: publikování aplikace v galerii aplikací Azure AD
 
 Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, můžete je zpřístupnit v galerii aplikací Azure AD. Díky tomu budou moci organizace snadno vyhledat aplikaci a nakonfigurovat zřizování. Publikování aplikace v galerii Azure AD a zpřístupnění pro ostatní je snadné. Podívejte se na tento [postup.](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) Microsoft bude s vámi spolupracovat na integraci vaší aplikace do naší galerie, testování koncového bodu a [dokumentaci](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) k registraci pro zákazníky, kteří budou používat. 
+
+
+### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorizace pro zřizovací konektory v galerii aplikací
+Specifikace SCIM nedefinuje schéma specifické pro SCIM pro ověřování a autorizaci. Spoléhá se na použití stávajících oborových standardů. Klient zřizování Azure AD podporuje dvě autorizační metody pro aplikace v galerii. 
+
+**Tok udělení autorizačního kódu OAuth:** Služba zřizování podporuje [udělení autorizačního kódu](https://tools.ietf.org/html/rfc6749#page-24). Po odeslání žádosti o publikování vaší aplikace v galerii bude náš tým spolupracovat s vámi a shromažďovat následující informace:
+*  Autorizační adresa URL: adresa URL klienta, který získá autorizaci od vlastníka prostředku prostřednictvím přesměrování uživatelského agenta. Uživatel se přesměruje na tuto adresu URL a autorizuje přístup. 
+*  Adresa URL pro výměnu tokenu: adresa URL, kterou klient vyměňuje udělení autorizace přístupového tokenu, obvykle s ověřením klienta.
+*  ID klienta: autorizační server vydá registrovanému klientovi identifikátor klienta, což je jedinečný řetězec, který představuje registrační informace poskytované klientem.  Identifikátor klienta není tajný. je vystavena vlastníkovi prostředku a **nesmí** se používat samostatně pro ověřování klientů.  
+*  Tajný kód klienta: tajný klíč klienta je tajný kód vygenerovaný autorizačním serverem. Mělo by se jednat o jedinečnou hodnotu známou jenom pro autorizační Server. 
+
+Osvědčené postupy (doporučeno, ale není nutné):
+* Podporuje více adres URL pro přesměrování. Správci mohou nakonfigurovat zřizování z obou "portal.azure.com" i "aad.portal.azure.com". Podpora více adres URL pro přesměrování zajistí, že uživatelé budou moct autorizovat přístup z obou portálu.
+* Podpora více tajných kódů, aby bylo zajištěno hladké obnovení tajných kódů bez výpadků. 
+
+**Dlouhodobé tokeny nosiče OAuth:** Pokud vaše aplikace nepodporuje tok udělení autorizačního kódu OAuth, můžete také vygenerovat dlouhodobé tokeny Bearer OAuth, než může správce použít k nastavení integrace zřizování. Token by měl být trvalý nebo jinak bude úloha zřizování v [karanténě](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) , až vyprší platnost tokenu. Hodnota tohoto tokenu musí být nižší než 1 KB.  
+
+V případě dalších metod ověřování a autorizace dejte nám na [UserVoice](https://aka.ms/appprovisioningfeaturerequest)informace.
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Povolte IP adresy, které používá služba zřizování Azure AD k provádění požadavků SCIM.
 

@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53441f5fedb4fa5e68cd1d8230ffe3ee6122e55b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013197"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186676"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zóna – redundantní úložiště (ZRS) pro vytváření vysoce dostupných Azure Storagech aplikací
 
@@ -29,8 +29,8 @@ ZRS je k dispozici pro objekty blob bloku, objekty blob stránky mimo disk, stan
 Pro účty pro obecné účely v2 je ZRS všeobecně dostupná v následujících oblastech:
 
 - Jihovýchodní Asie
-- Evropa – západ
 - Evropa – sever
+- Evropa – západ
 - Francie – střed
 - Japonsko – východ
 - Velká Británie – jih

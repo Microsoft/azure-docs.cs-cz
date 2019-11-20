@@ -1,7 +1,7 @@
 ---
-title: 'Návrhář: klasifikace, předpověď výnosů'
+title: 'Návrhář: klasifikace, předpověď výnosů – příklad'
 titleSuffix: Azure Machine Learning
-description: Naučte se vytvářet třídění strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview).
+description: Podle tohoto příkladu Sestavte klasifikátor bez kódu pro předpověď příjmů pomocí návrháře Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647967"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196054"
 ---
-# <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Vytvoření klasifikátoru & použití výběru funkcí k předpovídání příjmů pomocí návrháře Azure Machine Learning
+
+**Návrhář (Preview) – ukázka 3**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Naučte se vytvářet třídění strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview). Tato ukázka navýšení **rozhodovacího stromu se dvěma třídami** umožňuje odhadnout příjem v rámci sčítání v dospělém (> = 50 tis nebo < = 50 tis).

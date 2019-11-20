@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: 08af119e7f9e72de4a8ae4a1842289a4fd5d925e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 82c77568a2c62a0e02bf00c164f4600e221376da
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144149"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183123"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -122,7 +122,7 @@ Další informace o doporučení Advisoru najdete tady:
 
 * [Úvod do Advisoru](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
-* [Doporučení pro náklady na poradce](advisor-performance-recommendations.md)
+* [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
 * [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 * [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)

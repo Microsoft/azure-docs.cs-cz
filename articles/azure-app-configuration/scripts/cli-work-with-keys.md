@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: d89fa4c067e511e6210e8c1473bf1856297fc1de
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 51697aa426a638ad536390c4114df5faa18a41ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904082"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184875"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure
 
@@ -88,12 +88,12 @@ Tento skript používá následující příkazy pro práci s klíčovými hodno
 
 | Příkaz | Poznámky: |
 |---|---|
-| [AZ appconfig KV set](/cli/azure/ext/appconfig/appconfig) | Vytvoří nebo aktualizuje klíčovou hodnotu. |
-| [AZ appconfig KV list](/cli/azure/ext/appconfig/appconfig) | Uvádí klíčové hodnoty v úložišti konfigurace aplikace. |
-| [AZ appconfig KV DELETE](/cli/azure/ext/appconfig/appconfig) | Odstraní klíčovou hodnotu. |
+| [AZ appconfig KV set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Vytvoří nebo aktualizuje klíčovou hodnotu. |
+| [AZ appconfig KV list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Uvádí klíčové hodnoty v úložišti konfigurace aplikace. |
+| [AZ appconfig KV DELETE](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | Odstraní klíčovou hodnotu. |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku pro konfiguraci aplikace najdete v [dokumentaci ke konfiguraci aplikace Azure](../cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro konfiguraci aplikace najdete v ukázkách rozhraní příkazového [řádku konfigurace Azure](../cli-samples.md).

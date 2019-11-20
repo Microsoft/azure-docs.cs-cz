@@ -1,7 +1,7 @@
 ---
-title: Návrhář&#58; klasifikuje recenze knih
+title: 'Návrhář: příklad klasifikace knihy klasifikace'
 titleSuffix: Azure Machine Learning
-description: Sestavte model strojového učení klasifikovat recenze knih do různých kategorií.
+description: Sestavte si klasifikátor pro více tříd logistické regrese pro předpověď kategorie společnosti s datovou sadou Wikipedii SP 500 pomocí návrháře Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,24 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 43545c2d3bb3afe4e1c458f14c1ba30e41eea721
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647130"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196005"
 ---
-# <a name="sample-7---text-classification-predict-company-category"></a>Ukázka 7 – klasifikace textu: předpověď kategorie společnosti 
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Sestavte klasifikátor pro předpověď kategorie společnost pomocí návrháře Azure Machine Learning.
+
+**Návrhář (Preview) – ukázka 7**
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Tato ukázka předvádí, jak použít moduly Text Analytics k sestavení kanálu klasifikace textu v Návrháři Azure Machine Learning (Preview).
 
 Cílem klasifikace textu je přiřazení části textu k jedné nebo více předdefinovaným třídám nebo kategoriím. Část textu může být dokument, novinka, vyhledávací dotaz, e-mail, seznam vstupenek, lístky podpory, názory zákazníků, Uživatelská recenze produktu atd. Mezi aplikace pro klasifikaci textu patří kategorizace článků o novinkách a obsahu novinek do témat, organizování webových stránek do hierarchických kategorií, filtrování nevyžádané pošty, analýzy mínění, předpověď záměru uživatele z vyhledávacích dotazů, směrování Podpora lístků a analýza zpětné vazby od zákazníků. 
 
-Tento kanál navlacích **klasifikátoru logistické regrese** pro předpověď kategorie společnosti s datovou sadou wikipedii SP 500 odvozenou od Wikipedii.  
+Tento kanál navlacích **klasifikátoru logistické regrese** pro předpověď kategorie společnosti s **datovou sadou Wikipedii SP 500 odvozenou od Wikipedii**.  
 
 Základní kroky pro školicí model strojového učení s textovými daty jsou:
 

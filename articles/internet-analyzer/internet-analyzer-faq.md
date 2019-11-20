@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 61cb6003549530f381b9cbbed74c1cb62c91431c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512896"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184254"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Nejčastější dotazy k Azure Internet Analyzer (Preview)
 
@@ -22,7 +22,7 @@ Toto jsou nejčastější dotazy ke službě Azure Internet Analyzer – Pokud m
 
 Verze Preview je k dispozici pro vybrané zákazníky. Pokud vás zajímá připojení k verzi Preview, udělejte prosím toto:
 
-1. Přihlaste se na web [Azure Portal](https://ms.portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://ms.portal.azure.com).
 2. Přejděte na stránku **předplatná** .
 3. Klikněte na předplatné Azure, u kterého plánujete používat Internet Analyzer.
 4. Přejít na nastavení **poskytovatelé prostředků** pro předplatné.
@@ -66,16 +66,16 @@ Každý test, který vytvoříte v nástroji Internet Analyzer, se skládá ze d
 Během verze Preview jsou k dispozici následující předem nakonfigurované koncové body:
 * **Oblasti Azure**
     * Brazílie – jih
-    * Střední Indie
+    * Střed Indie
     * Střední USA
     * Východní Asie
-    * USA – východ
+    * Východní USA
     * Japonsko – západ
     * Severní Evropa
     * Jižní Afrika – sever
     * Jihovýchodní Asie
     * Spojené arabské emiráty – sever
-    * Velká Británie – západ  
+    * Spojené království – západ  
     * Západní Evropa
     * Západní USA
     * Západní USA 2
@@ -98,6 +98,10 @@ Během verze Preview jsou k dispozici následující předem nakonfigurované ko
 ## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Jak se Internet Analyzer liší od jiných monitorovacích služeb poskytovaných Azure?
 
 Internet Analyzer vám pomůže pochopit výkon koncových uživatelů a pomáhat při rozhodování o vylepšení výkonu. I když další nástroje pro monitorování Azure poskytují přehled o vašich službách Azure, Internet Analyzer se zaměřuje na měření kompletního internetového výkonu pro vaše uživatele.
+
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Jak nástroj Internet Analyzer zpracovává data měření?
+
+Azure má [silné procesy zabezpečení a splňuje širokou škálu standardů dodržování předpisů](https://azure.microsoft.com/support/trust-center/). Pouze vy a váš určený tým mají přístup k vašim datům. Zaměstnanci Microsoftu můžou mít omezený přístup jenom za konkrétní omezené okolnosti se svým vědomím. Šifrované při přenosu a v klidovém stavu.
 
 ## <a name="next-steps"></a>Další kroky
 

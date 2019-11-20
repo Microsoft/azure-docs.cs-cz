@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s F5 | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5 | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a F5.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4167f5a8f4e29641a999c72f57b368190a34e0
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 5eb5cedf14af9a013a5b6a1eba5df40d665cbad5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166090"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181699"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s F5
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
 V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). Při integraci F5 se službou Azure AD můžete:
 
@@ -38,7 +38,55 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+
 * Předplatné s povoleným jednotným přihlašováním (SSO).
+
+* Nasazení společného řešení vyžaduje následující licenci:
+
+    * ® Nejlepší sada pro BIG-IP 
+
+    * F5 – samostatná licence pro správce zásad pro BIG-IP Access™ (APM) 
+
+    * F5 licence na™ (APM) pro správce zásad pro Big-IP Access v existující® místní Traffic Manager™ (LTM).
+
+    * Kromě výše uvedených licencí může být systém F5 také licencován: 
+
+        * Adresa URL pro filtrování předplatného pro použití databáze kategorií URL
+
+        * Předplatné funkce F5 IP Intelligence pro detekci a blokování známých útočníci a škodlivých přenosů
+     
+        * Modul hardwarového zabezpečení (HSM), který chrání a spravuje digitální klíče pro silné ověřování
+
+* Systém F5 BIG-IP System je zřízený s moduly APM (LTM je volitelné).
+
+* I když je volitelná, důrazně doporučujeme nasadit systémy F5 do [skupiny zařízení Sync/převzetí služeb při selhání](https://techdocs.f5.com/content/techdocs/en-us/bigip-14-1-0/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), která zahrnuje aktivní pohotovostní režim s plovoucí IP adresou pro vysokou dostupnost (ha). Další redundanci rozhraní je možné dosáhnout pomocí LACP (Link Aggregator Control Protocol). LACP spravuje připojená fyzická rozhraní jako jedno virtuální rozhraní (agregovanou skupinu) a detekuje selhání rozhraní v rámci skupiny.
+
+* Pro aplikace Kerberos je místní účet služby AD pro omezené delegování.  Informace o vytvoření účtu delegování AD najdete v dokumentaci k nástroji [F5](https://support.f5.com/csp/article/K43063049) .
+
+## <a name="access-guided-configuration"></a>Konfigurace s asistencí pro přístup
+
+* Přístup s asistencí konfigurace se podporuje na F5 TMOS verze 13.1.0.8 a vyšší. Pokud je v systému BIG-IP spuštěná verze nižší než 13.1.0.8, přečtěte si část **Pokročilá konfigurace** .
+
+* Přístup s asistencí konfigurace prezentuje zcela nové a zjednodušené uživatelské prostředí. Tato architektura založená na pracovním postupu poskytuje intuitivní a znovu zabrané konfigurační kroky přizpůsobené vybraným topologií.
+
+* Než začnete s konfigurací, upgradujte konfiguraci s asistencí stažením nejnovější sady případů použití z [downloads.F5.com](https://login.f5.com/resource/login.jsp?ctx=719748). K upgradu použijte následující postup.
+
+    >[!NOTE]
+    >Níže uvedené snímky obrazovky jsou pro nejnovější vydanou verzi (BIG-IP 15,0 s AGC verze 5,0). Níže uvedené konfigurační kroky jsou platné pro tento případ použití v rámci služby 13.1.0.8 na nejnovější verzi s velkou IP adresou.
+
+1. Ve webovém uživatelském rozhraní F5 BIG-IP klikněte na **přístup > > konfiguraci Průvodce**.
+
+1. Na stránce **s asistencí** klikněte v levém horním rohu na možnost **upgradovat konfiguraci s asistencí** .
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure14.png) 
+
+1. Na zobrazené obrazovce konfigurace příručky pro upgrade vyberte **možnost zvolit soubor** . načte se stažený balíček pro použití a klikněte na tlačítko **nahrát a nainstalovat** .
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure15.png) 
+
+1. Po dokončení upgradu klikněte na tlačítko **pokračovat** .
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -51,6 +99,20 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 - [Konfigurace jednotného přihlašování F5 pro aplikaci Kerberos](kerbf5-tutorial.md)
 
 - [Konfigurace jednotného přihlašování F5 pro pokročilou aplikaci Kerberos](advance-kerbf5-tutorial.md)
+
+### <a name="key-authentication-scenarios"></a>Scénáře ověřování klíčů
+
+* Kromě Azure Active Directory podpora nativní integrace pro moderní ověřovací protokoly, jako je Open ID Connect, SAML a WS-dodáváme, F5 rozšiřuje zabezpečený přístup pro aplikace založené na starších verzích pro interní i externí přístup s Azure AD, což umožňuje moderní scénáře (například přístup bez hesla) k těmto aplikacím. Patří mezi ně:
+
+* Ověřovací aplikace založené na hlavičkách
+
+* Aplikace pro ověřování pomocí protokolu Kerberos
+
+* Anonymní ověřování nebo žádné sestavené ověřovací aplikace
+
+* Aplikace ověřování NTLM (ochrana se dvěma výzvami pro uživatele)
+
+* Aplikace založené na formulářích (ochrana se dvěma výzvami pro uživatele)
 
 ## <a name="adding-f5-from-the-gallery"></a>Přidávání F5 z Galerie
 
@@ -80,7 +142,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikací **F5** najděte část **Správa** a vyberte jednotné přihlašování.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikací **F5** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
@@ -88,18 +150,18 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<YourCustomFQDN>.f5.com/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<YourCustomFQDN>.f5.com/`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory F5 pro klienty](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte metadata a certifikát **federačních metadat** **(Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
@@ -117,7 +179,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -136,6 +198,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. Klikněte na **podmíněný přístup** .
+1. Klikněte na **nové zásady**.
+1. Teď můžete aplikaci F5 zobrazit jako prostředek pro zásady certifikační autority a použít jakýkoliv podmíněný přístup, včetně vícefaktorového ověřování, řízení přístupu na základě zařízení nebo zásad ochrany identit.
 
 ## <a name="configure-f5-sso"></a>Konfigurace F5 SSO
 
@@ -145,56 +210,244 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="configure-f5-single-sign-on-for-header-based-application"></a>Konfigurace jednotného přihlašování F5 pro aplikaci založenou na hlavičkách
 
+### <a name="guided-configuration"></a>Konfigurace s asistencí
+
 1. Otevřete nové okno webového prohlížeče a přihlaste se k webu společnosti F5 (na základě záhlaví) jako správce a proveďte následující kroky:
 
-1. Certifikát metadat musíte importovat do F5 (na základě záhlaví), které se použije později v procesu instalace. Do **> seznamu certifikátů protokolu SSL vyberte System > Certificate management > Traffic Certificate management >** . Klikněte na **Import** pravého rohu.
+1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . Zadejte **název certifikátu** (bude odkazován později v konfiguraci). Ve **zdroji certifikátu**vyberte Odeslat soubor a při konfiguraci jednotného přihlašování SAML zadejte certifikát stažený z Azure. Klikněte na tlačítko **Import**.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure12.png)
  
-1. Navíc také potřebujete **certifikát SSL** pro název hostitele (`headerapp.superdemo.live`), v tomto příkladu jsme použili certifikát se zástupnými znaky.
+1. Kromě toho budete vyžadovat **certifikát SSL pro název hostitele aplikace. Přejděte do seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)** . Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na tlačítko **Import**.
+
+    >[!NOTE]
+    >V příkladu našeho názvu aplikace je `Headerapp.superdemo.live`, používáme certifikát se zástupnými kartami. náš KeyName je `WildCard-SuperDemo.live`.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure13.png)
 
-1. Přejít na – **F5 (na základě záhlaví) Big-IP klikněte na přístup > s asistencí konfigurace > federaci > poskytovateli služeb SAML**.
+1. K nastavení federace služby Azure AD a přístupu k aplikacím použijeme prostředí s asistencí. Přejděte na – F5 BIG-IP **Main** a vyberte **přístup > s asistencí konfigurace > federaci > poskytovatele služeb SAML**. Klikněte na **Další** a potom na **Další** . tím spustíte konfiguraci.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure01.png)
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure02.png)
  
-1. Zadejte **ID entity** (stejné jako to, co jste nakonfigurovali v konfiguraci aplikace Azure AD).
+1. Zadejte **název konfigurace**. Zadejte **ID entity** (stejné jako to, co jste nakonfigurovali v konfiguraci aplikace Azure AD). Zadejte **název hostitele**. Přidejte **Popis** pro referenci. Přijměte zbývající výchozí položky a vyberte a pak klikněte na **uložit & další**.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure03.png) 
 
-1. Vytvořit nový virtuální server, zadat **cílovou adresu**, **port přesměrování** je nepovinný. Vyberte **certifikát Nezástupných karet** (nebo **certifikát** , který jste nahráli pro aplikaci), který jsme nahráli dříve a **přidružený privátní klíč**.
+1. V tomto příkladu vytváříme nový virtuální server jako 192.168.30.20 s portem 443. Zadejte IP adresu virtuálního serveru v **cílové adrese**. Vyberte **profil SSL**klienta, vyberte vytvořit novou. Zadejte dříve nahraný certifikát aplikace (v tomto příkladu certifikát zástupné karty) a související klíč a potom klikněte na **uložit & další**.
+
+    >[!NOTE]
+    >v tomto příkladu náš interní webserver běží na portu 888 a chceme ho publikovat v 443.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure04.png) 
 
-1. Nahrajte konfigurační **metadata** a zadejte nový **název pro konektor SAML IDP** a budete taky muset zadat federační certifikát, který jste nahráli dříve.
+1. V části **Vybrat metodu Nakonfigurujte konektor IDP**, zadejte metadata, klikněte na vybrat soubor a nahrajte soubor XML s metadaty staženými dříve ze služby Azure AD. Zadejte jedinečný **název** pro IDP konektor SAML. Vyberte **certifikát pro podpis metadat** , který se nahrál dříve. Klikněte na **uložit & další**.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure05.png)
  
-1. **Vytvořit nový** Fond aplikací back-end, zadejte **IP adresy** back-end aplikačních serverů.
+1. V části **Vybrat fond**zadejte **vytvořit novou** (případně vyberte fond, který už existuje). Nechte výchozí hodnotu. V části servery fondů zadejte IP adresu do pole **IP adresa/název uzlu**. Zadejte **port**. Klikněte na **uložit & další**.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure06.png)
 
-1. V části jednotné přihlašování vyberte **záhlaví HTTP**. Na základě vaší aplikace můžete přidat další záhlaví. Seznam proměnných relace SAML najdete v příloze.
+1. Na obrazovce nastavení jednotného přihlašování vyberte **Povolit jednotné přihlašování**. V části vybraný typ jednotného přihlašování vyberte možnost **na základě hlaviček protokolu HTTP**. Nahraďte **Session. SAML. Last. identity** pomocí **Session. SAML. Last. attr. Name. identity** v rámci zdroje uživatelského jména (Tato proměnná se nastaví pomocí mapování deklarací v Azure AD). V části hlavičky jednotného přihlašování.
+
+    * **Záhlaví: MyAuthorization**
+
+    * **Hodnota hlavičky:% {Session. SAML. Last. attr. Name. identity}**
+
+    * Klikněte na **uložit & další** .
+
+    Úplný seznam proměnných a hodnot najdete v příloze. V případě potřeby můžete přidat další záhlaví.
+
+    >[!NOTE]
+    >Název účtu je vytvořený účet pro delegování F5 (podívejte se na dokumentaci F5).
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure07.png) 
 
-1. Kontaktujte [F5 (na základě záhlaví) tým podpory](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) pro **kontrolu nastavení koncových bodů** v dokumentaci k podrobnostem.
+1. Pro účely tohoto návodu provedeme přeskočení kontrol koncových bodů.  Podrobnosti najdete v dokumentaci k F5. Vyberte **uložit & další**.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure08.png)
 
-1. Kontaktujte [F5 (na základě záhlaví) tým technické podpory](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) pro **Vlastnosti správy relací** podrobnosti dokumentace.
+1. Přijměte výchozí hodnoty a klikněte na **uložit & další**. Podrobnosti o nastavení správy relace SAML najdete v dokumentaci k nástroji F5.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure09.png)
 
-1. **Zkontrolujte souhrn** a klikněte na **nasadit**.
+1. Zkontrolujte obrazovku souhrnu a vyberte **nasadit** a NAKONFIGURUJTE tak Big-IP. klikněte na **Dokončit**.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure10.png)
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure11.png)
 
+## <a name="advanced-configuration"></a>Pokročilá konfigurace
+
+Tato část je určena k použití, pokud nemůžete použít konfiguraci s asistencí nebo chcete přidat nebo změnit další parametry. Pro název hostitele aplikace budete potřebovat certifikát SSL.
+
+1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)** . Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na tlačítko **Import**.
+
+    >[!NOTE]
+    >V příkladu našeho názvu aplikace je `Headerapp.superdemo.live`, používáme certifikát se zástupnými kartami. náš KeyName je `WildCard-SuperDemo.live`.
+  
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure17.png)
+
+### <a name="adding-a-new-web-server-to-bigip-f5"></a>Přidání nového webového serveru do Big-IP – F5
+
+1. Klikněte na **hlavní > IApps > Aplikační služby > aplikace > vytvořit**.
+
+1. Zadejte **název** a v části **Šablona** vyberte **F5. http**.
+ 
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure18.png)
+
+1. V tomto případě budeme publikovat náš HeaderApp2 externě jako HTTPS, **jak by měl systém Big-IP zpracovávat přenosy SSL**? určujeme **ukončení protokolu SSL od klienta, prostého textu na servery (přesměrování zpracování SSL)** . Zadejte svůj certifikát a klíč, pod kterým certifikát SSL chcete použít? a **který privátní klíč SSL chcete použít?** Zadejte IP adresu virtuálního serveru v části **jakou IP adresu chcete použít pro virtuální server**. 
+
+    * **Zadat další podrobnosti**
+
+        * PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY  
+
+        * Určete, že se má fond aplikací ukončit, nebo vytvořte nový.
+
+        * Pokud vytváříte nový aplikační server, zadejte **interní IP adresu** a **číslo portu**.
+
+        ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure19.png) 
+
+1. Klikněte na **Hotovo**.
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure20.png) 
+
+1. Ujistěte se, že vlastnosti aplikace lze upravovat. Klikněte na **hlavní > IApps > aplikační služby: aplikace > > HeaderApp2**. Zrušte kontrolu **striktních aktualizací** (některé nastavení upraví mimo grafické uživatelské rozhraní). Klikněte na tlačítko **aktualizovat** .
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure21.png) 
+
+1. V tuto chvíli byste měli být schopni procházet virtuální server.
+
+### <a name="configuring-f5-as-sp-and-azure-as-idp"></a>Konfigurace F5 jako SP a Azure jako IDP
+
+1.  Klikněte na **přístup > federaci > poskytovatele služby SAML > místní služba SP > klikněte na vytvořit nebo + podepsat**.
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure22.png)
+
+1. Zadejte podrobnosti pro službu poskytovatele služeb. Zadejte **název** představující konfiguraci F5 SP. Zadejte **ID entity** (obvykle stejné jako adresa URL aplikace).
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure23.png)
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure24.png)
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure25.png)
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure26.png)
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure27.png)
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure28.png)
+
+### <a name="create-idp-connector"></a>Vytvoření konektoru IDP
+
+1. Klikněte na tlačítko **vazba/zrušit vazbu konektoru IDP** , vyberte **vytvořit nový konektor IDP** a zvolte možnost z **metadat** . potom proveďte následující kroky:
+ 
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure29.png)
+
+    a. Vyhledejte soubor metadata. XML stažený z Azure AD a zadejte **název zprostředkovatele identity**.
+
+    b. Klikněte na tlačítko **OK**.
+
+    c. Konektor se vytvoří a certifikát je připravený automaticky ze souboru XML s metadaty.
+    
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure30.png)
+
+    d. Nakonfigurujte F5BIG-IP pro odeslání všech požadavků do Azure AD.
+
+    e. Klikněte na tlačítko **Přidat nový řádek**, zvolte možnost **AzureIDP** (jak bylo vytvořeno v předchozích krocích) zadejte 
+
+    f. **Shodný zdroj =% {Session. Server. landinguri}** 
+
+    g. **Shoda hodnoty =/** *
+
+    h. Kliknout na **aktualizovat**
+
+    i. Klikněte na tlačítko **OK**.
+
+    j. **Instalace SAML IDP je dokončená.**
+    
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure31.png)
+
+### <a name="configure-f5-policy-to-redirect-users-to-azure-saml-idp"></a>Konfigurace zásad F5 pro přesměrování uživatelů na Azure SAML IDP
+
+1. Pokud chcete nakonfigurovat zásadu F5 pro přesměrování uživatelů na Azure SAML IDP, proveďte následující kroky:
+
+    a. Klikněte na **hlavní > Access > Profile/zásady > profily přístupu**.
+
+    b. Klikněte na tlačítko **vytvořit** .
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure32.png)
+ 
+    c. V příkladu zadejte **název** (HeaderAppAzureSAMLPolicy).
+
+    d. Můžete si přizpůsobit další nastavení. Další informace najdete v dokumentaci k F5.
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure33.png)
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure34.png) 
+
+    e. Klikněte na **Hotovo**.
+
+    f. Až se vytváření zásad dokončí, klikněte na zásadu a přejděte na kartu **zásady přístupu** .
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure35.png)
+ 
+    g. Klikněte na **Editor vizuálních zásad**, upravte **zásady přístupu pro** odkaz na profil.
+
+    h. V editoru vizuálních zásad klikněte na symbol + a vyberte **ověřování SAML**.
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure36.png)
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure37.png)
+ 
+    i. Klikněte na tlačítko **Přidat položku**.
+
+    j. V části **vlastnosti** zadejte **název** a v části **AAA Server** vyberte dříve nakonfigurovanou aktualizaci SP, klikněte na **Uložit**.
+ 
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure38.png)
+
+    k. Základní zásady jsou připravené. můžete je přizpůsobit tak, aby zahrnovaly další úložiště zdrojů nebo atributů.
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure39.png)
+ 
+    l. Ujistěte se, že kliknete na odkaz **použít zásady přístupu** v horní části.
+
+### <a name="apply-access-profile-to-the-virtual-server"></a>Použít profil přístupu k virtuálnímu serveru
+
+1. Přiřaďte profil přístupu k virtuálnímu serveru, aby funkce F5 BIG IP APM používala nastavení profilu pro příchozí provoz a spouštěla dříve definovaná zásada přístupu.
+
+    a. Klikněte na **hlavní** > **místní provoz** > **virtuálních serverech**.
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure40.png)
+ 
+    b. Klikněte na virtuální server, přejděte k části **zásady přístupu** , v rozevíracím seznamu **profil přístupu** a vyberte zásadu SAML vytvořenou (v příkladu HeaderAppAzureSAMLPolicy).
+
+    c. Kliknout na **aktualizovat**
+ 
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure41.png)
+
+    d. Vytvořte® F5 BIG-IP iRule k extrakci vlastních atributů SAML z příchozího kontrolního výrazu a jejich předání jako hlaviček protokolu HTTP do aplikace back-end test. Klikněte na **hlavní > místní provoz > iRules > IRule seznamu > klikněte na vytvořit** .
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure42.png)
+ 
+    e. Do okna definice vložte text F5 BIG-IP iRule.
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure43.png)
+ 
+    Když RULE_INIT {set static::d ebug 0}, pokud ACCESS_ACL_ALLOWED {
+
+    Nastavte AZUREAD_USERNAME [přístup:: Session data Get "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] if {$static::d ebug} {log local0. "AZUREAD_USERNAME = $AZUREAD _USERNAME"} Pokud {! ( [HTTP:: header existuje "AZUREAD_USERNAME"]) } {HTTP:: header INSERT AZUREAD_USERNAME $AZUREAD _USERNAME}
+
+    Nastavte AZUREAD_DISPLAYNAME [přístup:: Session data Get "session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/displayname"] if {$static::d ebug} {log local0. "AZUREAD_DISPLAYNAME = $AZUREAD _DISPLAYNAME"} Pokud {! ( [HTTP:: header existuje "AZUREAD_DISPLAYNAME"]) } {HTTP:: header INSERT AZUREAD_DISPLAYNAME $AZUREAD _DISPLAYNAME}
+
+    Nastavte AZUREAD_EMAILADDRESS [přístup:: Session data Get "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"] if {$static::d ebug} {log local0. "AZUREAD_EMAILADDRESS = $AZUREAD _EMAILADDRESS"} Pokud {! ( [HTTP:: header existuje "AZUREAD_EMAILADDRESS"]) } {HTTP:: header Insert "AZUREAD_EMAILADDRESS" $AZUREAD _EMAILADDRESS}}
+
+    **Ukázkový výstup níže**
+
+    ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure44.png)
+ 
 ### <a name="create-f5-test-user"></a>Vytvořit testovacího uživatele F5
 
 V této části vytvoříte na F5 uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě F5, pracujte s nástrojem [F5 Client Support Team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 

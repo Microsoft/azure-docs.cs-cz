@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/03/2019
+ms.date: 11/18/2019
 ms.author: atsenthi
-ms.openlocfilehash: cc77995e12d756c5878ee62ef6dd0f0229506d4c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1eb8e5893d93ef0261d68df4629b072876096711
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333077"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185679"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "72333077"
 
 Pokud chcete vytvářet a spouštět [aplikace Service Fabric Azure][1] na vývojovém počítači s Windows, nainstalujte Service Fabric runtime, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
 Pro vývoj jsou podporovány tyto verze operačních systémů:
 
@@ -39,7 +39,7 @@ Pro vývoj jsou podporovány tyto verze operačních systémů:
 * Windows 8 / Windows 8.1
 * Windows Server 2012 R2
 * Windows Server 2016
-* Windows 10
+* Windows 10
 
 > [!NOTE]
 > Podpora Windows 7:
@@ -69,11 +69,8 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 * [Nainstalovat sadu Microsoft Azure Service Fabric SDK][core-sdk].
 
 Aktuální verze jsou:
-* 3\.4.676 SDK a nástroje pro Service Fabric
-* Service Fabric modulu runtime 6.5.676
-* Nástroje Service Fabric pro Visual Studio 2015 2.5.20615.1
-* Visual Studio 2017 15,9 zahrnuje Nástroje Service Fabric pro Visual Studio 2.4.11024.1 
-* Visual Studio 2019 16,1 zahrnuje Nástroje Service Fabric pro Visual Studio 2.5.20423.3
+* 4\.0.457 SDK a nástroje pro Service Fabric
+* Service Fabric modulu runtime 7.0.457
 
 Seznam podporovaných verzí najdete v tématu [Service Fabric verze](service-fabric-versions.md) .
 

@@ -1,17 +1,17 @@
 ---
-title: Osvědčené postupy pro vytváření hodnocení pomocí Azure Migrate posouzení serveru
-description: Poskytuje tipy pro vytváření hodnocení pomocí Azure Migrate posouzení serveru.
+title: Osvědčené postupy hodnocení v Azure Migrate posouzení serveru
+description: Tipy pro vytváření hodnocení pomocí Azure Migrate posouzení serveru.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: e235116ab77159a0e2e9c66ad09cdb86ce6da1e9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466942"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185984"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Osvědčené postupy pro vytváření hodnocení
 
@@ -28,7 +28,7 @@ Posouzení, které vytvoříte pomocí Azure Migrate posouzení serveru, jsou sn
 **Na základě výkonu** | Posouzení, která vytvářejí doporučení na základě shromážděných údajů o výkonu | Doporučení na velikost virtuálního počítače vychází z dat využití procesoru a paměti.<br/><br/> Doporučení pro typ disku (standardní disková jednotka/SSD nebo Premium – spravované disky) vychází z IOPS a propustnosti místních disků.
 **V místním prostředí** | Posouzení, které nepoužívají údaje o výkonu k vytváření doporučení. | Doporučení velikosti virtuálního počítače je založené na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku je založený na tom, co jste vybrali v nastavení typ úložiště pro posouzení.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 Pokud máte například místní virtuální počítač se čtyřmi jádry na 20% využití a paměť 8 GB s 10% využitím, posouzení bude následující:
 
 - **Posouzení na základě výkonu**:

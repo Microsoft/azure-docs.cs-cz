@@ -14,18 +14,18 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329798"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185055"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Framework s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace založené na .NET Framework pro centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -45,7 +45,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 ## <a name="create-a-net-console-app"></a>Vytvoření konzolové aplikace .NET
 
-1. Spusťte Visual Studio a vyberte **soubor** > **Nový** **projekt** > .
+1. Spusťte Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)** . Klikněte na **Další**.
 
@@ -81,9 +81,9 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
     </appSettings>
     ```
 
-   Připojovací řetězec úložiště konfigurace aplikace je načtený z proměnné prostředí `ConnectionString`. Přidejte `Environment` Configuration Builder před `MyConfigStore` ve vlastnosti `configBuilders` části `appSettings`.
+   Připojovací řetězec úložiště konfigurace aplikace je čten z proměnné prostředí `ConnectionString`. Přidejte `Environment` Configuration Builder před `MyConfigStore` do vlastnosti `configBuilders` oddílu `appSettings`.
 
-1. Otevřete *program.cs*a aktualizujte metodu `Main` pro použití konfigurace aplikace voláním `ConfigurationManager`.
+1. Otevřete *program.cs*a aktualizujte metodu `Main` tak, aby používala konfiguraci aplikace, voláním `ConfigurationManager`.
 
     ```csharp
     static void Main(string[] args)
@@ -112,7 +112,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci .NET Framework konzolu. Další informace o tom, jak používat konfiguraci aplikací, najdete v dalším kurzu, který předvádí ověřování.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci .NET Framework konzolu. Hodnota `AppSettings` `ConfiguratoinManager` se po spuštění aplikace nezmění. Knihovna zprostředkovatele konfigurace .NET Standard konfigurace aplikace se ale dá použít i v aplikaci .NET Framework. Další informace o tom, jak aplikaci .NET Framework povolit, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)
+> [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-dotnet.md)

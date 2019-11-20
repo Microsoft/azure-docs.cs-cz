@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129703"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185066"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co je konfigurace aplikací Azure?
 
@@ -63,7 +63,7 @@ Nejjednodušší způsob, jak přidat úložiště konfigurace aplikace do vaš�
 | Programovací jazyk a architektura | Jak se připojit |
 |---|---|
 | .NET Core a ASP.NET Core | Poskytovatel konfigurace aplikace pro .NET Core |
-| .NET a ASP.NET | Tvůrce konfigurace aplikací pro .NET |
+| .NET Framework a ASP.NET | Tvůrce konfigurace aplikací pro .NET |
 | Java Spring | Klient konfigurace aplikace pro jarní Cloud |
 | Ostatní | REST API konfigurace aplikace |
 
@@ -72,7 +72,7 @@ Nejjednodušší způsob, jak přidat úložiště konfigurace aplikace do vaš�
 * [Rychlý Start ASP.NET Core](./quickstart-aspnet-core-app.md)
 * [Rychlý Start .NET Core](./quickstart-dotnet-core-app.md)
 * [Rychlý Start .NET Framework](./quickstart-dotnet-app.md)
-* [Rychlý Start Azure Functions](./quickstart-azure-function-csharp.md)
+* [Rychlý Start Azure Functions](./quickstart-azure-functions-csharp.md)
 * [Rychlý Start pružiny Java](./quickstart-java-spring-app.md)
 * [Rychlý Start – příznak funkce ASP.NET Core](./quickstart-feature-flag-aspnet-core.md)
 * [Rychlý Start příznaku funkce pro spuštění pružiny](./quickstart-feature-flag-spring-boot.md)

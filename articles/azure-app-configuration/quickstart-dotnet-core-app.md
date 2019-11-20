@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 149542965737b2703bc18e985bfaf4d90c8dab29
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 986bda4ab95985820e61c93bbe82431fb50c983b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709416"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185019"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Core s konfigurací aplikace
 
@@ -28,7 +28,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
@@ -36,7 +36,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 6. Vyberte **Průzkumníka konfigurace** >  **+ vytvořit** a přidejte následující páry klíč-hodnota:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
@@ -46,7 +46,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) . Výhodou použití .NET Core CLI přes Visual Studio je to, že je k dispozici na platformách Windows, macOS a Linux.
 
-1. Vytvořte pro svůj projekt novou složku.
+1. Vytvořte novou složku pro váš projekt.
 
 2. V nové složce spusťte následující příkaz, který vytvoří nový projekt ASP.NET Core konzolové aplikace:
 
@@ -54,7 +54,7 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na balíček NuGet `Microsoft.Extensions.Configuration.AzureAppConfiguration` spuštěním následujícího příkazu:
+1. Přidejte odkaz na `Microsoft.Extensions.Configuration.AzureAppConfiguration` balíček NuGet spuštěním následujícího příkazu:
 
         dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 2.0.0-preview-009470001-1371
 
@@ -69,7 +69,7 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-4. Aktualizujte metodu `Main` pro použití konfigurace aplikace voláním metody `builder.AddAzureAppConfiguration()`.
+4. Aktualizujte metodu `Main`, aby používala konfiguraci aplikace, voláním metody `builder.AddAzureAppConfiguration()`.
 
     ```csharp
     static void Main(string[] args)
@@ -110,7 +110,7 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s konzolovou aplikací .NET Core přes [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, najdete v dalším kurzu, který předvádí ověřování.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s konzolovou aplikací .NET Core přes [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Pokud se chcete dozvědět, jak nakonfigurovat aplikaci .NET Core tak, aby dynamicky aktualizovala nastavení konfigurace, přejděte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)
+> [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-dotnet-core.md)

@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 11/18/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 866f2e5e1ba9df9e8e63b77250d6c94635bbc009
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094284"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74194970"
 ---
 > [!NOTE] 
 > Uživatelské účty popsané v tomto článku se liší od uživatelských účtů používaných pro protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) z bezpečnostních důvodů. 
@@ -59,7 +59,7 @@ Další informace o přístupu k souborům a adresářům z úlohy najdete v té
 
 Úroveň zvýšení úrovně uživatelského účtu indikuje, jestli se úloha spouští s vyšším přístupem. Se zvýšeným přístupem může běžet účet automatického uživatele i pojmenovaný uživatelský účet. Úroveň zvýšení úrovně oprávnění jsou tyto dvě možnosti:
 
-- **NonAdmin** Úloha se spouští jako standardní uživatel bez zvýšeného přístupu. Výchozí úroveň zvýšení oprávnění pro uživatelský účet Batch je vždy nesprávce.
+- **Nesprávce:** Úloha se spouští jako standardní uživatel bez zvýšeného přístupu. Výchozí úroveň zvýšení oprávnění pro uživatelský účet Batch je vždy **nesprávce**.
 - **Správce:** Úloha se spouští jako uživatel se zvýšeným přístupem a funguje s úplnými oprávněními správce. 
 
 ## <a name="auto-user-accounts"></a>Účty automatických uživatelů
@@ -94,7 +94,7 @@ Pokud potřebujete spustit úlohu s vyšším přístupem, můžete nakonfigurov
 >
 >
 
-Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automatického uživatele. Příklady nastaví úroveň zvýšení úrovně na `Admin` a rozsah na. `Task` Výchozím nastavením je obor úkolu, který je zde uveden v tomto příkladu.
+Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automatického uživatele. Příklady nastaví úroveň zvýšení úrovně na `Admin` a rozsah, který `Task`. Výchozím nastavením je obor úkolu, který je zde uveden v tomto příkladu.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -159,7 +159,7 @@ Pojmenovaný uživatelský účet je užitečný v případě, že chcete spouš
 
 Pomocí pojmenovaného uživatelského účtu můžete taky spustit úlohu, která nastaví oprávnění u externích prostředků, jako jsou sdílené složky. Pomocí pojmenovaného uživatelského účtu můžete řídit identitu uživatele a pomocí této identity uživatele nastavit oprávnění.  
 
-Pojmenované uživatelské účty umožňují SSH bez hesla mezi uzly Linux. U uzlů se systémem Linux, které potřebují spouštět úlohy s více instancemi, můžete použít pojmenovaný uživatelský účet. Každý uzel ve fondu může spouštět úlohy pod uživatelským účtem definovaným v celém fondu. Další informace o úlohách s více instancemi najdete v tématu [použití úloh s více\-instancemi ke spouštění aplikací MPI](batch-mpi.md).
+Pojmenované uživatelské účty umožňují SSH bez hesla mezi uzly Linux. U uzlů se systémem Linux, které potřebují spouštět úlohy s více instancemi, můžete použít pojmenovaný uživatelský účet. Každý uzel ve fondu může spouštět úlohy pod uživatelským účtem definovaným v celém fondu. Další informace o úlohách s více instancemi najdete v tématu [použití úloh s více\-mi instance ke spouštění aplikací MPI](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Vytvoření pojmenovaných uživatelských účtů
 
@@ -280,7 +280,7 @@ users = [
     batchmodels.UserAccount(
         name='pool-nonadmin',
         password='******',
-        elevation_level=batchmodels.ElevationLevel.nonadmin)
+        elevation_level=batchmodels.ElevationLevel.non_admin)
 ]
 pool = batchmodels.PoolAddParameter(
     id=pool_id,
@@ -295,7 +295,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Spuštění úlohy pod názvem uživatelského účtu se zvýšeným přístupem
 
-Chcete-li spustit úlohu jako uživatel se zvýšenými oprávněními, nastavte vlastnost **UserIdentity** úlohy na pojmenovaný uživatelský účet, který byl vytvořen s vlastností **ElevationLevel** nastavenou `Admin`na.
+Chcete-li spustit úlohu jako uživatel se zvýšenými oprávněními, nastavte vlastnost **UserIdentity** úlohy na pojmenovaný uživatelský účet, který byl vytvořen s vlastností **ElevationLevel** nastavenou na hodnotu `Admin`.
 
 Tento fragment kódu určuje, že úloha by měla běžet pod jménem uživatelského účtu. Tento pojmenovaný uživatelský účet byl ve fondu definován při vytvoření fondu. V tomto případě byl vytvořen pojmenovaný uživatelský účet s oprávněními správce:
 
@@ -314,7 +314,7 @@ Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu a nahrazuje vlastn
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`Neurčeno | Není nutná žádná aktualizace.                                                                                               |
+| `CloudTask.RunElevated` není zadáno. | Není nutná žádná aktualizace.                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -322,15 +322,15 @@ Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu a nahrazuje vlastn
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`Neurčeno | Není nutná žádná aktualizace.                                                                                                                     |
+| `CloudTask.withRunElevated` není zadáno. | Není nutná žádná aktualizace.                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
 | Pokud váš kód používá...                      | Aktualizovat na....                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
-| `run_elevated`Neurčeno | Není nutná žádná aktualizace.                                                                                                                                  |
+| `run_elevated=False`                      | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
+| `run_elevated` není zadáno. | Není nutná žádná aktualizace.                                                                                                                                  |
 
 
 ## <a name="next-steps"></a>Další kroky

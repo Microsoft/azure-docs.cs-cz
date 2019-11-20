@@ -1,6 +1,6 @@
 ---
-title: Azure párů klíč hodnota konfigurace aplikací | Dokumentace Microsoftu
-description: Přehled způsob uložení dat konfigurace v konfiguraci aplikací Azure
+title: Konfigurační klíč aplikace Azure – úložiště hodnot | Microsoft Docs
+description: Přehled způsobu, jakým jsou konfigurační data uložena v konfiguraci aplikace Azure
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,54 +12,54 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: c7a7e7994ef5e16640f59efdc672f6793bc4f18d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 054de294c9edb0fe5b75da4ac7fd54ce987123de
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706473"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185222"
 ---
 # <a name="keys-and-values"></a>Klíče a hodnoty
 
-Konfigurace aplikace pro Azure jsou uložena konfigurační data jako páry klíč hodnota. Páry klíč hodnota jsou jednoduché a přitom flexibilní způsob, jak reprezentují různé typy nastavení aplikace, která vývojářům znají.
+Konfigurace aplikací Azure ukládá konfigurační data jako páry klíč-hodnota. Páry klíč-hodnota představují jednoduchý, ale flexibilní způsob reprezentace různých typů nastavení aplikace, se kterými je vývojář obeznámen.
 
 ## <a name="keys"></a>Klíče
 
-Klíče jako název pro páry klíč hodnota a umožňují ukládat a načítat hodnoty, které odpovídají. Běžnou praxí uspořádat klíče do hierarchického oboru názvů pomocí znaku oddělovače, jako je `/` nebo `:`. Použijte konvenci, která je nejvhodnější pro vaši aplikaci. Konfigurace aplikace zpracovává klíče jako celek. Ho nebude analyzovat klíče zjistit, jak jejich názvy jsou strukturované nebo vynucování libovolného pravidla na ně.
+Klíče slouží jako název párů klíč-hodnota a slouží k ukládání a načítání odpovídajících hodnot. Je běžným postupem uspořádání klíčů do hierarchického oboru názvů pomocí oddělovače znaků, jako je například `/` nebo `:`. Použijte konvenci, která je pro vaši aplikaci nejvhodnější. Konfigurace aplikace považuje klíče za celek. Neanalyzuje klíče, abyste zjistili, jak jsou jejich názvy strukturované nebo vynutily jakékoli pravidlo.
 
-Použití konfiguračních dat v rámci aplikační architektury může diktovat konkrétní pojmenování schémata pro hodnoty klíče. Jako příklad definuje jazyka Java Spring cloudem framework `Environment` prostředky, které určují nastavení aplikace Spring k být parametrizován proměnné, které zahrnují *název_aplikace* a *profilu*. Klíče pro Spring cloudem související konfigurační data obvykle začínat tyto dva prvky, které jsou oddělené oddělovačem.
+Použití konfiguračních dat v rámci aplikačních architektur může určovat konkrétní schémata názvů pro klíčové hodnoty. Příklad: jarní cloudové rozhraní Java definuje `Environment` prostředky, které dodávají nastavení do aplikace pružiny, aby byly parametrizované proměnnými, které zahrnují název a *profil* *aplikace* . Klíče pro pružinová konfigurační data související s cloudem obvykle začínají těmito dvěma prvky oddělenými oddělovačem.
 
-Klíče uložené v konfiguraci aplikací jsou malá a velká písmena, na základě kódování unicode řetězce. Klíče *app1* a *App1* se liší v obchodě s aplikacemi konfigurace. Mějte to při použití nastavení konfigurace v rámci aplikace, protože některé architektury zpracovat konfigurační klíče ohled. Například systém konfigurace ASP.NET Core považuje za klíče nerozlišuje velikost písmen řetězců. Aby se zabránilo nepředvídatelné chování při dotazování konfigurace aplikací v rámci aplikace ASP.NET Core, nepoužívejte klíče, které se liší pouze malá a velká písmena.
+Klíče uložené v konfiguraci aplikace rozlišují velká a malá písmena, která jsou založená na kódování Unicode. Klíče *app1* a *app1* se liší v úložišti konfigurace aplikace. Mějte na paměti, že pokud použijete nastavení konfigurace v rámci aplikace, protože některé architektury zpracovávají konfigurační klíče bez rozlišování velkých a malých písmen. Například systém konfigurace ASP.NET Core zpracovává klíče jako řetězce nerozlišující malá a velká písmena. Aby nedocházelo k nepředvídatelnému chování při dotazování na konfiguraci aplikace v rámci aplikace ASP.NET Core, nepoužívejte klíče, které se liší pouze velikostí písmen.
 
-Můžete použít libovolný znak unicode v názvech klíčů do konfigurace aplikace s výjimkou `*`, `,`, a `\`. Tyto znaky jsou rezervované. Pokud je potřeba zahrnout rezervovaným znakem, musíte před něj s použitím `\{Reserved Character}`. Je celková velikost maximálně 10 000 znaků v páru klíč hodnota. Toto omezení zahrnuje všechny znaky v klíči a jeho hodnotu, a všechny přidružené volitelné atributy. V rámci tohoto limitu může mít mnoho hierarchické úrovní pro klíče.
+V názvech klíčů zadaných do konfigurace aplikace můžete použít libovolný znak Unicode s výjimkou `*`, `,`a `\`. Tyto znaky jsou vyhrazené. Pokud potřebujete zahrnout vyhrazený znak, musíte ho pomocí `\{Reserved Character}`vytvořit. V páru klíč-hodnota je povolená celková velikost 10 000 znaků. Tento limit zahrnuje všechny znaky v klíči, jeho hodnotu a všechny přidružené volitelné atributy. V rámci tohoto limitu můžete pro klíče mít mnoho úrovní hierarchie.
 
-### <a name="design-key-namespaces"></a>Obory názvů klíčů návrhu
+### <a name="design-key-namespaces"></a>Klíčové obory názvů pro návrh
 
-Existují dvě obecné přístupy k pojmenování klíče používané pro konfigurační data: ploché nebo hierarchické. Tyto metody jsou podobné z hlediska využití aplikace, ale hierarchické pojmenování nabízí celou řadu výhod:
+Existují dva obecné přístupy k pojmenovávání klíčů používaných pro konfigurační data: plochý nebo hierarchický. Tyto metody jsou podobné jako v pohledu použití aplikace, ale hierarchické pojmenování nabízí řadu výhod:
 
-* Snadněji čtou. Místo jeden dlouhý sekvence znaků oddělovače ve hierarchického oboru názvů klíčů fungovat jako mezery ve větě. Obsahují taky přirozeným zalomení mezi slovy.
-* Snazší správa. Název klíče hierarchie představuje logické skupiny konfigurační data.
-* Usnadňuje používání. Je jednodušší napsat dotaz, který vzorů klíče v hierarchické struktuře a načte jenom část konfigurační data. Navíc mnoho novější programovací rozhraní mají nativní podpory pro hierarchické konfigurační data, které takové, které vaše aplikace může provádět pomocí konkrétní sady configuration.
+* Jednodušší čtení. Místo jednoho dlouhého pořadí znaků oddělovače ve funkci názvu hierarchického klíče jako mezery ve větě. Poskytují také přirozené přestávky mezi slovy.
+* Jednodušší Správa. Hierarchie názvů klíčů představuje logické skupiny konfiguračních dat.
+* Jednodušší používání. Je jednodušší napsat dotaz, který vzor odpovídá klíčům v hierarchické struktuře a načítá pouze část konfiguračních dat. Mnoho novějších programovacích rozhraní navíc má nativní podporu pro hierarchická konfigurační data, takže vaše aplikace může používat konkrétní sady konfigurací.
 
-Můžete uspořádat klíče v konfiguraci aplikace hierarchicky mnoha způsoby. Představte si, že tyto klíče jako [identifikátory URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). Každý klíč hierarchické je prostředek *cesta* skládá z jedné nebo více součástí, které jsou propojeny pomocí oddělovače. Zvolte počátečního znaku, který se použije jako oddělovač, podle které vaše aplikace, programovací jazyk, nebo je nutné rozhraní framework. Použití více oddělovačů pro různé klíče v konfiguraci aplikací.
+Klíče můžete v konfiguraci aplikací hierarchicky uspořádat mnoha způsoby. Tyto klíče si můžete představit jako [identifikátory URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). Každý hierarchický klíč je *cesta* prostředku skládající se z jedné nebo více součástí, které jsou spojeny pomocí oddělovačů. Vyberte znak, který se použije jako oddělovač na základě toho, co vaše aplikace, programovací jazyk nebo rozhraní potřebuje. Použijte více oddělovačů pro různé klíče v konfiguraci aplikace.
 
-Tady je několik příkladů můžete jak strukturovat vaše názvy klíčů do hierarchie:
+Tady je několik příkladů, jak můžete strukturovat názvy klíčů v hierarchii:
 
-* Podle služby komponent
+* Založené na službě Component Services
 
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
 
-* Podle oblastí nasazení
+* Na základě oblastí nasazení
 
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
 
-### <a name="label-keys"></a>Popis klíče
+### <a name="label-keys"></a>Klíče popisků
 
-Hodnoty klíče v konfiguraci aplikace můžou mít atribut label. Popisky se používají k odlišení hodnoty klíče se stejným klíčem. Klíč *app1* popisky *A* a *B* tvoří dvě různé klíče v obchodě s aplikacemi konfigurace. Ve výchozím nastavení, popisek s hodnotou klíče je prázdný, nebo `null`.
+Hodnoty klíče v konfiguraci aplikace můžou volitelně mít atribut Label. Popisky slouží k odlišení klíčových hodnot se stejným klíčem. Key *app1* *s popisky a* a *B* tvoří dva samostatné klíče v úložišti konfigurace aplikace. Ve výchozím nastavení je popisek pro klíčovou hodnotou prázdný nebo `null`.
 
-Popisek poskytuje pohodlný způsob, jak vytvořit varianty klíče. Běžné použití popisků, které je k určení více prostředí pro stejný klíč:
+Label nabízí pohodlný způsob, jak vytvořit varianty klíče. Běžné použití popisků je zadání více prostředí pro stejný klíč:
 
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
@@ -67,42 +67,42 @@ Popisek poskytuje pohodlný způsob, jak vytvořit varianty klíče. Běžné po
 
 ### <a name="version-key-values"></a>Hodnoty klíče verze
 
-Konfigurace aplikace není hodnoty klíče verze automaticky podle jejich. Použití popisků jako způsob, jak vytvořit více verzí modulu hodnotu klíče. Například můžete zadat číslo verze aplikace nebo Identifikátor potvrzení Git v popiscích k identifikaci hodnoty klíče přidružené k sestavení určitého softwaru.
+Konfigurace aplikace neaktualizuje hodnoty klíče automaticky při jejich úpravě. Použijte popisky jako způsob vytvoření více verzí hodnoty klíče. Můžete například zadat číslo verze aplikace nebo ID potvrzení Git v popisech k identifikaci klíčových hodnot přidružených k určitému sestavení softwaru.
 
-Můžete použít libovolný znak unicode v popiscích s výjimkou `*`, `,`, a `\`. Tyto znaky jsou rezervované. Zahrnout rezervovaným znakem, musíte před něj s použitím `\{Reserved Character}`.
+V popisech můžete použít libovolný znak Unicode s výjimkou `*`, `,`a `\`. Tyto znaky jsou vyhrazené. Chcete-li zahrnout vyhrazený znak, je nutné jej pomocí `\{Reserved Character}`vytvořit.
 
 ### <a name="query-key-values"></a>Hodnoty klíče dotazu
 
-Každá hodnota klíče je jednoznačně identifikují pomocí jeho klíče a popisek, který může být `null`. Dotazování obchod s aplikacemi konfigurační hodnoty klíčů tak, že zadáte vzor. Konfigurace úložiště aplikace vrátí všechny klíčové hodnoty, které odpovídají vzoru a jejich odpovídající hodnoty a atributů. Ve volání rozhraní REST API pro konfiguraci aplikací použijte následující klíčové vzorce:
+Jednotlivé hodnoty klíče se jednoznačně identifikují pomocí klíče a popisku, který může být `null`. Zadáním vzoru zadáte dotaz na úložiště konfigurace aplikace pro klíčové hodnoty. Úložiště konfigurace aplikace vrátí všechny klíčové hodnoty, které odpovídají vzoru, a jejich odpovídající hodnoty a atributy. Použijte následující vzorové vzory v REST API volání do konfigurace aplikace:
 
 | Klíč | |
 |---|---|
-| `key` je tento parametr vynechán nebo `key=*` | Odpovídá všechny klíče |
-| `key=abc` | Název klíče shody **abc** přesně |
-| `key=abc*` | Klíče shody s názvy začínajícími **abc** |
-| `key=*abc` | Názvy, které končí klíče shody **abc** |
-| `key=*abc*` | Názvy, které obsahují klíče shody **abc** |
-| `key=abc,xyz` | Odpovídá názvů klíčů **abc** nebo **xyz**, je omezený na pět sdílené svazky clusteru |
+| `key` se vynechá nebo `key=*` | Odpovídá všem klíčům |
+| `key=abc` | Odpovídá přesně názvu klíče **ABC** |
+| `key=abc*` | Odpovídá názvům klíčů, které začínají na **ABC** |
+| `key=*abc` | Odpovídá názvům klíčů, které končí **ABC** |
+| `key=*abc*` | Odpovídá názvům klíčů, které obsahují **ABC** |
+| `key=abc,xyz` | Odpovídá názvům klíčů **ABC** nebo **XYZ**, které jsou omezeny na pět CSV |
 
-Můžete zahrnout také následující modely popisku:
+Můžete také zahrnout následující vzory popisku:
 
-| Štítek | |
+| Popisek | |
 |---|---|
-| `label` je tento parametr vynechán nebo `label=*` | Odpovídá libovolný popisek, který obsahuje `null` |
-| `label=%00` | Odpovídá `null` popisek |
-| `label=1.0.0` | Popisek shody **1.0.0** přesně |
-| `label=1.0.*` | Odpovídá popisky, které začínají **1.0.** |
-| `label=*.0.0` | Odpovídá popisky, které končí **.0.0** |
-| `label=*.0.*` | Odpovídá popisky, které obsahují **.0.** |
-| `label=%00,1.0.0` | Odpovídá popisky `null` nebo **1.0.0**, je omezený na pět sdílené svazky clusteru |
+| `label` se vynechá nebo `label=*` | Odpovídá jakémukoli popisku, který zahrnuje `null` |
+| `label=%00` | Odpovídá popisku `null` |
+| `label=1.0.0` | Přesně odpovídá popisku **1.0.0** |
+| `label=1.0.*` | Odpovídá popiskům, které začínají na **1,0.** |
+| `label=*.0.0` | Odpovídá jmenovkám, které končí na **. 0,0** |
+| `label=*.0.*` | Odpovídá popiskům, které obsahují **. 0.** |
+| `label=%00,1.0.0` | Odpovídá popiskům `null` nebo **1.0.0**, které jsou omezeny na pět CSV |
 
 ## <a name="values"></a>Hodnoty
 
-Hodnoty přiřazené k klíče jsou také řetězců v kódu unicode. Pro hodnoty můžete použít všechny znaky unicode. Není volitelný uživatelem definovaný typ obsahu spojené s každou hodnotu. Tento atribut použijte k ukládání informací, například kódování schématu, o hodnotu, která pomáhá zajistit u aplikací ke zpracování správně.
+Hodnoty přiřazené klíčům jsou také řetězce Unicode. Pro hodnoty můžete použít všechny znaky Unicode. K jednotlivým hodnotám je přidružen volitelný uživatelem definovaný typ obsahu. Tento atribut slouží k ukládání informací, například schématu kódování, o hodnotě, která pomáhá vaší aplikaci správně zpracovat.
 
-Konfigurační data uložená v úložišti konfigurace aplikace, která zahrnuje všechny klíče a hodnoty, je v klidovém stavu a přenosu šifrovaný. Konfigurace aplikace není náhradní řešení pro Azure Key Vault. V něm není ukládání tajných klíčů aplikací.
+Konfigurační data uložená v úložišti konfigurace aplikace, které zahrnuje všechny klíče a hodnoty, jsou v klidovém stavu a při přenosu šifrovaná. Konfigurace aplikace není náhradní řešení pro Azure Key Vault. Neukládat tajné klíče aplikace do IT.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Snímek bodu v čase](./concept-point-time-snapshot.md)  
-* [Funkce správy](./concept-feature-management.md)  
+* [Snímek v daném časovém okamžiku](./concept-point-time-snapshot.md)  
+* [Správa funkcí](./concept-feature-management.md)  

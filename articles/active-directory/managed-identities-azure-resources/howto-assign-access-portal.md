@@ -1,5 +1,5 @@
 ---
-title: Přiřazení spravovaných identit přístup k prostředku Azure pomocí webu Azure portal
+title: Přiřazení spravované identity k prostředku pomocí Azure Portal – Azure AD
 description: Podrobné pokyny pro přiřazování spravovanou identitu na jeden přístup k prostředkům na jiný prostředek, pomocí webu Azure portal.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8660d5539d9cfc218667bc7bb077f9f6d1191eec
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112925"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184139"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Spravovaná identita přístup k prostředku přiřadit i pomocí webu Azure portal
 
@@ -45,7 +45,7 @@ Po povolení identity spravované v prostředku Azure, jako například [virtuá
 
    ![Snímek obrazovky přístupu (IAM) ovládacího prvku](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Spravovaná identita pro prostředky Azure – přehled](overview.md)
 - Povolit spravované identity na virtuálním počítači Azure, najdete v článku [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md).

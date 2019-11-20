@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 4ed23beae6edb13efabf034c1e87b9cb76048f82
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3d15afc26c876c6e4d2d7244e26f0b13ced59a58
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648464"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184747"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Pochopení kódu Apache Spark pro vývojáře U-SQL
 
@@ -143,13 +143,13 @@ Ve Sparku hodnota NULL označuje, že hodnota je neznámá. Hodnota NULL pro Spa
 
 Toto chování se liší od jazyka U-SQL, který C# následuje sémantika, kde `null` se liší od jakékoli hodnoty, ale je rovna sobě.  
 
-Proto příkaz SparkSQL `SELECT`, který používá `WHERE column_name = NULL` vrací nulové řádky i v případě, že v jazyce U-SQL jsou `column_name`hodnoty NULL, zatímco v U-SQL by byl vrácen řádek, kde `column_name` je nastaven na `null`. Podobně příkaz Spark `SELECT`, který používá `WHERE column_name != NULL` vrací nulové řádky i v případě, že v U-SQL jsou `column_name`hodnoty, které nejsou null, zatímco v U-SQL by vracely řádky, které mají hodnotu, která není null. Proto pokud chcete, aby byla sémantika kontroly hodnoty U-SQL, měli byste použít [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)a [IsNotNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (nebo jejich ekvivalent DSL).
+Proto příkaz SparkSQL `SELECT`, který používá `WHERE column_name = NULL` vrací nulové řádky i v případě, že v jazyce U-SQL jsou `column_name`hodnoty NULL, zatímco v U-SQL by byl vrácen řádek, kde `column_name` je nastaven na `null`. Podobně příkaz Spark `SELECT`, který používá `WHERE column_name != NULL` vrací nulové řádky i v případě, že v U-SQL jsou `column_name`hodnoty, které nejsou null, zatímco v U-SQL by vracely řádky, které mají hodnotu, která není null. Proto pokud chcete, aby sémantika kontroly hodnoty U-SQL byla zaručena, měli byste použít [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) a [IsNotNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (nebo jejich ekvivalent DSL).
 
 ## <a name="transform-u-sql-catalog-objects"></a>Transformace objektů katalogu U-SQL
 
 Jedním z hlavních rozdílů je, že skripty U-SQL mohou využívat své objekty katalogu, z nichž mnoho nemá přímý ekvivalent.
 
-Spark poskytuje podporu konceptů meta Storu úložiště, hlavně databází a tabulek, takže můžete mapovat databáze U-SQL a schémata na databáze podregistru a tabulky U-SQL na tabulky Spark (viz [přesun dat uložených v tabulkách u-SQL](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables)), ale nemá žádnou podporu pro zobrazení, funkce vracející tabulku (TVF), uložené procedury, sestavení U-SQL, externí zdroje dat atd.
+Spark zajišťuje podporu konceptů meta Storu v podregistru, hlavně databáze a tabulky, takže můžete mapovat databáze U-SQL a schémata na databáze podregistru a tabulky U-SQL na tabulky Spark (viz [přesun dat uložených v tabulkách u-SQL](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables), ale nemá žádnou podporu pro zobrazení, funkce vracející tabulku (TVF), uložené procedury, sestavení U-SQL, externí zdroje dat atd.
 
 Objekty kódu U-SQL, jako jsou zobrazení, TVF, uložené procedury a sestavení, mohou být modelovány prostřednictvím funkcí kódu a knihoven ve Sparku a odkazovány pomocí funkcí jazyka hostitele a mechanismů procesických abstrakcí (například prostřednictvím importu Moduly Pythonu nebo odkazování na Scala funkce).
 

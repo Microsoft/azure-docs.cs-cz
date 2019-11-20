@@ -1,14 +1,14 @@
 ---
 title: NIST SP 800-53 R4 Details Sample – postup nasazení
 description: Nasaďte kroky pro ukázkový NIST SP 800-53 R4, včetně podrobností o parametrech artefaktu podrobného plánu.
-ms.date: 06/24/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 9923e2923c57224cadfa471753d8c90b98855607
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 34b765816284d445e3c179f6aad43f590a58f1a1
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037300"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184467"
 ---
 # <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>Nasazení ukázky NIST SP 800-53 R4 podrobný plán
 

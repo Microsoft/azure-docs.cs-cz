@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 8b1a4a8a6c808348ca17a9eebac17c5821ceefe5
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: a4090172e926f21db01a8e374d8c4bb1c80402c7
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530079"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74197355"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Stažení a instalace binárního linkeru linkeru
 
@@ -25,7 +25,7 @@ curl -sLO "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSIO
 Binární soubor klienta `linkerd` běží na klientském počítači a umožňuje interakci s propojenou sítí služby. Použijte následující příkazy k instalaci linkeru `linkerd`ho binárního souboru klienta do prostředí založeného na bash na MacOS. Tyto příkazy kopírují binární soubor `linkerd` klienta do umístění standardního uživatelského programu v `PATH`.
 
 ```bash
-sudo cp ./linkerd2-cli-$LINKERD_VERSION-linux /usr/local/bin/linkerd
+sudo cp ./linkerd2-cli-$LINKERD_VERSION-darwin /usr/local/bin/linkerd
 sudo chmod +x /usr/local/bin/linkerd
 ```
 

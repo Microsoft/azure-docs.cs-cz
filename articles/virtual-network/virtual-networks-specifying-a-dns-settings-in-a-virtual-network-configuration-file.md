@@ -1,5 +1,5 @@
 ---
-title: Zadání nastavení DNS v konfiguračním souboru virtuální sítě | Microsoft Docs
+title: Zadání nastavení DNS v konfiguračním souboru virtuální sítě Azure
 description: Postup změny nastavení serveru DNS ve virtuální síti pomocí konfiguračního souboru virtuální sítě v modelu nasazení Classic
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: db8b1817bb14d293632d16fe02792dbb85766559
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059098"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196642"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Zadání nastavení DNS v konfiguračním souboru virtuální sítě
 Konfigurační soubor sítě má dva prvky, které můžete použít k zadání nastavení DNS (Domain Name System): **DnsServers** a **DnsServerRef**. Seznam serverů DNS můžete přidat zadáním jejich IP adres a referenčních názvů **DnsServers** elementu. Pak můžete pomocí elementu **DnsServerRef** určit, které položky serveru DNS z prvku DnsServers se používají pro různé síťové lokality v rámci vaší virtuální sítě.
@@ -64,7 +64,7 @@ Konfigurační soubor sítě může obsahovat následující prvky. Název každ
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Pochopení [schématu konfigurace Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093).
 * Pochopení [schématu konfigurace služby Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
 * [Nakonfigurujte virtuální síť pomocí konfiguračních souborů sítě](virtual-networks-using-network-configuration-file.md).

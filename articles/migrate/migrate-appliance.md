@@ -1,17 +1,17 @@
 ---
-title: Architektura zařízení Azure Migrate | Microsoft Docs
-description: Poskytuje přehled zařízení Azure Migrate.
+title: Architektura zařízení Azure Migrate
+description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: bdc81820b1ac9867d45fd26e26d24c65e20641e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685091"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185818"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -25,7 +25,7 @@ Tento článek popisuje zařízení Azure Migrate. Zařízení nasazujete při p
 
 Typy a využití Azure Migrate zařízení jsou následující.
 
-**Nasazeno jako** | **Používá se pro** | **Podrobnosti**
+**Nasazeno jako** | **Používá pro** | **Podrobnosti**
 --- | --- |  ---
 Virtuální počítač VMware | Posouzení virtuálního počítače VMware pomocí nástroje pro vyhodnocení Azure Migrate.<br/><br/> Migrace bez agentů virtuálního počítače VMware pomocí nástroje pro migraci Azure Migrate serveru | Stáhněte si šablonu pro sadu vajíček a importujte ji vCenter Server k vytvoření virtuálního počítače zařízení.
 Virtuální počítač Hyper-V | Posouzení virtuálního počítače Hyper-V pomocí nástroje pro vyhodnocení Azure Migrate. | Pokud chcete vytvořit virtuální počítač zařízení, Stáhněte si VHD a importujte ho do Hyper-V.
@@ -58,16 +58,16 @@ Brána migrace | Odesílá replikovaná data virtuálního počítače do Azure.
 
 Tady je údaje o výkonu virtuálních počítačů VMware, které zařízení shromažďuje a odesílá do Azure.
 
-**Data** | **Objektů** | **Dopad posouzení**
+**Data** | **Counter** | **Dopad posouzení**
 --- | --- | ---
 Využití procesoru | CPU. Usage. Average | Doporučená velikost virtuálního počítače/náklady
-Využití paměti | mem. Usage. Average | Doporučená velikost virtuálního počítače/náklady
-Propustnost čtení z disku (MB za sekundu) | virtualDisk. Read. Average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
-Propustnost zápisu na disk (MB za sekundu) | virtualDisk. Write. Average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
-Operace čtení z disku za sekundu | virtualDisk. numberReadAveraged. Average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Využití paměti | mem.usage.average | Doporučená velikost virtuálního počítače/náklady
+Propustnost čtení z disku (MB za sekundu) | virtualDisk.read.average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Propustnost zápisu na disk (MB za sekundu) | virtualDisk.write.average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Operace čtení z disku za sekundu | virtualDisk.numberReadAveraged.average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
 Počet operací zápisu na disk za sekundu | virtualDisk. numberWriteAveraged. Average  | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
-Propustnost čtení síťových adaptérů (MB za sekundu) | NET. Received. Average | Výpočet pro velikost virtuálního počítače
-Propustnost zápisu síťových adaptérů (MB za sekundu) | NET. přenášeno. Average  |Výpočet pro velikost virtuálního počítače
+Propustnost čtení síťových adaptérů (MB za sekundu) | net.received.average | Výpočet pro velikost virtuálního počítače
+Propustnost zápisu síťových adaptérů (MB za sekundu) | net.transmitted.average  |Výpočet pro velikost virtuálního počítače
 
 
 ## <a name="collected-metadata-vmware"></a>Shromážděná metadata – VMware
@@ -77,10 +77,10 @@ Propustnost zápisu síťových adaptérů (MB za sekundu) | NET. přenášeno. 
 
 Tady je úplný seznam metadat virtuálních počítačů VMware, které zařízení shromažďuje a odesílá do Azure.
 
-**Data** | **Objektů**
+**Data** | **Counter**
 --- | --- 
 **Podrobnosti o počítači** | 
-ID VIRTUÁLNÍHO POČÍTAČE | síť. Config. InstanceUuid 
+ID VIRTUÁLNÍHO POČÍTAČE | vm.Config.InstanceUuid 
 název virtuálního počítače | síť. Config.Name
 ID vCenter Server | VMwareClient. instance. UUID
 Popis virtuálního počítače | síť. Summary. config. Annotation
@@ -93,32 +93,32 @@ Počet disků | síť. Config. hardware. Device. ToList – (). FindAll (x = > j
 Seznam velikostí disků | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualDisk)
 Seznam síťových adaptérů | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualEthernet). Count
 Využití procesoru | CPU. Usage. Average
-Využití paměti |mem. Usage. Average
+Využití paměti |mem.usage.average
 **Podrobnosti o jednotlivých discích** | 
 Hodnota klíč disku | disk. Zkrat
 Dikunit číslo | disk. UnitNumber
 Hodnota klíče řadiče disku | disk. ControllerKey. Value
 Zřízené gigabajty | virtualDisk. DeviceInfo. Summary
 Název disku | Hodnota generovaná pomocí disku UnitNumber, disk. Klíč, disk. ControllerKey. VAlue
-Operace čtení za sekundu | virtualDisk. numberReadAveraged. Average
+Operace čtení za sekundu | virtualDisk.numberReadAveraged.average
 Operace zápisu za sekundu | virtualDisk. numberWriteAveraged. Average
-Propustnost čtení (MB za sekundu) | virtualDisk. Read. Average
-Propustnost zápisu (MB za sekundu) | virtualDisk. Write. Average
+Propustnost čtení (MB za sekundu) | virtualDisk.read.average
+Propustnost zápisu (MB za sekundu) | virtualDisk.write.average
 **Podrobnosti na NIC** | 
 Název síťového adaptéru | síťových. Zkrat
-Adresa MAC | ((VirtualEthernetCard) síťová karta). MacAddress
+Adresa MAC | ((VirtualEthernetCard)nic).MacAddress
 Adresy IPv4 | síť. Guest.Net
 IPv6 adresy | síť. Guest.Net
-Propustnost čtení (MB za sekundu) | NET. Received. Average
-Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
+Propustnost čtení (MB za sekundu) | net.received.average
+Propustnost zápisu (MB za sekundu) | net.transmitted.average
 **Podrobnosti o cestě inventáře** | 
-Název | vnitřního. GetType (). Jméno
-Typ podřízeného objektu | vnitřního. ChildType
+Název | container.GetType().Name
+Typ podřízeného objektu | container.ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
-Podrobnosti složky na virtuální počítač | (Složka) kontejneru). ChildEntity. Type
-Podrobnosti datového centra na virtuální počítač | (Datacenter) kontejner). VmFolder
-Podrobnosti datacentra na složku hostitelů | (Datacenter) kontejner). HostFolder
+Podrobnosti složky na virtuální počítač | ((Folder)container).ChildEntity.Type
+Podrobnosti datového centra na virtuální počítač | ((Datacenter)container).VmFolder
+Podrobnosti datacentra na složku hostitelů | ((Datacenter)container).HostFolder
 Podrobnosti o clusteru na hostitele | ((ClusterComputeResource) kontejner). Provoz
 Podrobnosti o hostiteli na virtuálním počítači | ((HostSystem)container).VM
 
@@ -131,7 +131,7 @@ Podrobnosti o hostiteli na virtuálním počítači | ((HostSystem)container).VM
 
 Tady je údaje o výkonu virtuálního počítače Hyper, které zařízení shromažďuje a odesílá do Azure.
 
-**Třída čítače výkonu** | **Objektů** | **Dopad posouzení**
+**Třída čítače výkonu** | **Counter** | **Dopad posouzení**
 --- | --- | ---
 Virtuální procesor hypervisoru technologie Hyper-V | % Doby běhu hosta | Doporučená velikost virtuálního počítače/náklady
 Hyper-V Dynamická paměť virtuální počítač | Aktuální tlak (%)<br/> Fyzická paměť viditelná pro hosta (MB) | Doporučená velikost virtuálního počítače/náklady
@@ -156,7 +156,7 @@ Typ virtuálního počítače (FIN 1 nebo 2) | Msvm_VirtualSystemSettingData | V
 Zobrazovaný název virtuálního počítače | Msvm_VirtualSystemSettingData | ElementName
 Verze virtuálního počítače | Msvm_ProcessorSettingData | VirtualQuantity
 Paměť (bajty) | Msvm_MemorySettingData | VirtualQuantity
-Maximální velikost paměti, kterou může virtuální počítač spotřebovat | Msvm_MemorySettingData | škálování
+Maximální velikost paměti, kterou může virtuální počítač spotřebovat | Msvm_MemorySettingData | Omezení
 Dynamická paměť je povolena | Msvm_MemorySettingData | DynamicMemoryEnabled
 Název/verze operačního systému/plně kvalifikovaný název domény | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems data o názvech
 Stav napájení virtuálního počítače | Msvm_ComputerSystem | EnabledState
@@ -206,7 +206,7 @@ Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zař
 
 - K tomu dochází automaticky, protože ve výchozím nastavení je automaticky povolena automatická aktualizace na zařízení.
 - Toto výchozí nastavení můžete změnit tak, aby se agenti aktualizovaly ručně.
-- Automatické aktualizace zakážete tak, že přejdete do editoru registru > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance a nastavíte klíč registru-"AutoUpdate" na hodnotu 0 (DWORD).
+- Automatické aktualizace zakážete tak, že přejdete do editoru registru > HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance a nastavíte klíč registru-"AutoUpdate" na hodnotu 0 (DWORD).
  
 ### <a name="set-agent-updates-to-manual"></a>Nastavit aktualizace agenta na ruční
 

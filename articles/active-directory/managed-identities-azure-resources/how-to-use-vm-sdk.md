@@ -1,5 +1,5 @@
 ---
-title: Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure se sadami SDK Azure
+title: Použití spravovaných identit na virtuálním počítači Azure se sadami SDK Azure – Azure AD
 description: Ukázky kódu pro použití sad Azure SDK s virtuálním počítačem Azure, který má spravované identity pro prostředky Azure.
 services: active-directory
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c66bb2b4e9af6f4b79b0ead98b8d18fc56cb467
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 422b4c63a86904721fc6910193ffa63a8fe46f0a
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809181"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184156"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure se sadami SDK Azure 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 Tento článek poskytuje seznam ukázek sady SDK, které ukazují použití příslušné podpory sady Azure SDK pro spravované identity prostředků Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -36,7 +36,7 @@ Tento článek poskytuje seznam ukázek sady SDK, které ukazují použití př�
 
 ## <a name="sdk-code-samples"></a>Ukázky kódu SDK
 
-| SDK             | Ukázka kódu |
+| Sada SDK             | Ukázka kódu |
 | --------------- | ----------- |
 | .NET            | [Nasazení šablony Azure Resource Manager z virtuálního počítače s Windows pomocí spravovaných identit pro prostředky Azure](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
 | .NET Core       | [Volání služeb Azure z virtuálního počítače se systémem Linux pomocí spravovaných identit pro prostředky Azure](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |

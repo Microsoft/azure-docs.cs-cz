@@ -1,6 +1,7 @@
 ---
-title: Filtry a Azure Media Services dynamické manifesty | Microsoft Docs
-description: Toto téma popisuje, jak vytvářet filtry, takže klient může používat na určité části datový proud stream. Služba Media Services vytvoří dynamických manifestů k selektivní Streamovat.
+title: Filtrování manifestů pomocí dynamického balíčku
+titleSuffix: Azure Media Services
+description: Naučte se vytvářet filtry pomocí dynamického balíčku pro filtrování a selektivní streamování manifestů.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,36 +14,35 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: dc9f59894da071e956283591cf7206bc371650b7
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991431"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186211"
 ---
-# <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>Předběžné filtrování manifestů pomocí dynamického balíčku
+# <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrování manifestů pomocí dynamického balíčku
 
-Při doručování obsahu streamování s adaptivní přenosovou rychlostí do zařízení často potřebujete publikovat více verzí manifestu, aby bylo možné cílit na konkrétní možnosti zařízení nebo dostupnou šířku pásma sítě. [Dynamický balíček](dynamic-packaging-overview.md) umožňuje zadat filtry, které mohou filtrovat konkrétní kodeky, rozlišení, přenosové rychlosti a kombinace zvukového stopu průběžným odebráním nutnosti vytvářet více kopií. Jednoduše potřebujete publikovat novou adresu URL s konkrétní sadou filtrů nakonfigurovaných na vaše cílová zařízení (iOS, Android, byznysu nebo prohlížeče) a možnosti sítě (scénáře s vysokou šířkou pásma, mobilním nebo malou šířkou pásma). V takovém případě můžou klienti manipulovat s datovým proudem vašeho obsahu prostřednictvím řetězce dotazu (zadáním dostupných [filtrů assetů nebo filtrů účtu](filters-concept.md)) a pomocí filtrů streamovat konkrétní oddíly streamu.
+Při doručování obsahu streamování s adaptivní přenosovou rychlostí do zařízení někdy potřebujete publikovat více verzí manifestu, aby se mohly zaměřit konkrétní možnosti zařízení nebo dostupná šířka pásma sítě. [Dynamický balíček](dynamic-packaging-overview.md) vám umožní určit filtry, které mohou vyfiltrovat konkrétní kodeky, rozlišení, přenosové rychlosti a kombinace zvukového stopu průběžně. Toto filtrování odstraní nutnost vytvářet více kopií. Jednoduše potřebujete publikovat novou adresu URL s konkrétní sadou filtrů nakonfigurovaných na vaše cílová zařízení (iOS, Android, byznysu nebo prohlížeče) a možnosti sítě (scénáře s vysokou šířkou pásma, mobilním nebo malou šířkou pásma). V takovém případě můžou klienti manipulovat s datovým proudem vašeho obsahu prostřednictvím řetězce dotazu (zadáním dostupných [filtrů assetů nebo filtrů účtu](filters-concept.md)) a pomocí filtrů streamovat konkrétní oddíly streamu.
 
-Některé scénáře doručování vyžadují, abyste se ujistili, že zákazník nemá přístup ke konkrétním stopám. Například nebudete chtít publikovat manifest, který obsahuje HD sledovat, do konkrétní úrovně odběratele. Nebo můžete chtít odebrat konkrétní stopy s adaptivní přenosovou rychlostí (ABR), abyste snížili náklady na doručování na konkrétní zařízení, které by nebylo přínosem dalších stop. V takovém případě můžete přidružit seznam předem vytvořených filtrů ke [lokátoru streamování](streaming-locators-concept.md) při vytváření. V takovém případě klienti nemůžou manipulovat s tím, jak je obsah streamovaná, je definovaný **lokátorem streamování**.
+Některé scénáře doručování vyžadují, abyste se ujistili, že zákazník nemá přístup ke konkrétním stopám. Například je možné, že nechcete publikovat manifest, který obsahuje HD stopy, do konkrétní vrstvy odběratele. Nebo možná budete chtít odebrat konkrétní stopy s adaptivní přenosovou rychlostí (ABR), abyste snížili náklady na doručování na konkrétní zařízení, které by nebylo přínosem dalších stop. V takovém případě můžete přidružit seznam předem vytvořených filtrů ke [lokátoru streamování](streaming-locators-concept.md) při vytváření. Klienti pak nemohou manipulovat s tím, jak je obsah streamovaná, protože je definovaný **lokátorem streamování**.
 
-Filtrování můžete kombinovat zadáním [filtrů na lokátoru streamování](filters-concept.md#associating-filters-with-streaming-locator) a dalších filtrů specifických pro zařízení, které klient ZADÁ v adrese URL. To může být užitečné k omezení dalších stop, jako jsou metadata nebo datové proudy událostí, zvukové jazyky nebo popisné zvukové stopy. 
+Filtrování můžete kombinovat zadáním [filtrů na lokátoru streamování](filters-concept.md#associating-filters-with-streaming-locator) a dalších filtrů specifických pro zařízení, které klient ZADÁ v adrese URL. Tato kombinace je užitečná k omezení dalších stop, jako jsou metadata nebo datové proudy událostí, zvukové jazyky nebo popisné zvukové stopy.
 
-Díky této možnosti můžete v datovém proudu zadat různé filtry, což poskytuje výkonné řešení pro manipulaci s dynamickým manifestem, které cílí na více scénářů použití pro vaše cílová zařízení. Toto téma vysvětluje koncepty související s **dynamickými manifesty** a obsahuje příklady scénářů, ve kterých byste mohli chtít použít tuto funkci.
+Tato možnost zadat různé filtry v datovém proudu poskytuje výkonné řešení pro manipulaci s **dynamickým manifestem** , které cílí na více scénářů použití v případě vašich cílových zařízení. Toto téma vysvětluje koncepty související s **dynamickými manifesty** a obsahuje příklady scénářů, ve kterých můžete použít tuto funkci.
 
 > [!NOTE]
-> Dynamické manifesty nemění Asset a výchozí manifest tohoto prostředku. 
-> 
+> Dynamické manifesty nemění Asset a výchozí manifest pro daný prostředek.
 
-##  <a name="overview-of-manifests"></a>Přehled manifestů
+## <a name="overview-of-manifests"></a>Přehled manifestů
 
-Azure Media Services podporuje protokoly HLS, MPEG POMLČKy a Smooth Streaming. V rámci [dynamického balení](dynamic-packaging-overview.md)se dynamicky generují manifesty klienta streamování (HLS hlavní seznam testů, pomlčka multimediální prezentace [MPD] a Smooth Streaming) na základě selektor formátu v adrese URL. Prohlédněte si protokoly doručení v [běžném pracovním postupu na vyžádání](dynamic-packaging-overview.md#delivery-protocols). 
+Azure Media Services podporuje protokoly HLS, MPEG POMLČKy a Smooth Streaming. V rámci [dynamického balení](dynamic-packaging-overview.md)se dynamicky generují manifesty klienta streamování (HLS hlavní seznam testů, pomlčka multimediální prezentace [MPD] a Smooth Streaming) na základě selektor formátu v adrese URL. Další informace najdete v tématu Delivery Protocols ( [běžné pracovní postupy na vyžádání](dynamic-packaging-overview.md#delivery-protocols)).
 
 ### <a name="get-and-examine-manifest-files"></a>Získání a kontrola souborů manifestu
 
 Určíte seznam stavů filtru sledování, které závisí na tom, které stopy datového proudu (živé nebo video na vyžádání [VOD]) by měly být součástí dynamicky vytvořeného manifestu. Chcete-li získat a prohlédnout vlastnosti stop, je třeba nejprve načíst manifest Smooth Streaming.
 
-Kurz [nahrávání, kódování a streamování souborů pomocí .NET](stream-files-tutorial-with-api.md#get-streaming-urls) vám ukáže, jak vytvořit adresy URL streamování pomocí .NET. Pokud aplikaci spouštíte, jedna z adres URL ukazuje na manifest Smooth Streaming: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`.<br/> Zkopírujte a vložte adresu URL do panelu Adresa v prohlížeči. Soubor se stáhne. Můžete ho otevřít v textovém editoru podle vašeho výběru.
+Kurz [nahrávání, kódování a streamování souborů pomocí .NET](stream-files-tutorial-with-api.md#get-streaming-urls) vám ukáže, jak vytvořit adresy URL streamování pomocí .NET. Pokud aplikaci spouštíte, jedna z adres URL ukazuje na manifest Smooth Streaming: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`.<br/> Zkopírujte a vložte adresu URL do panelu Adresa v prohlížeči. Soubor se stáhne. Můžete ho otevřít v libovolném textovém editoru.
 
 Příklad REST najdete v tématu [nahrání, kódování a streamování souborů pomocí REST](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls).
 
@@ -51,12 +51,12 @@ Příklad REST najdete v tématu [nahrání, kódování a streamování soubor�
 Ke sledování přenosové rychlosti streamu videa můžete použít [stránku Azure Media Player demo](https://aka.ms/azuremediaplayer) . Ukázková stránka zobrazuje diagnostické informace na kartě **Diagnostika** :
 
 ![Diagnostika Azure Media Player][amp_diagnostics]
- 
-### <a name="examples-urls-with-filters-in-query-string"></a>Příklady: Adresy URL s filtry v řetězci dotazu
+
+### <a name="examples-urls-with-filters-in-query-string"></a>Příklady: adresy URL s filtry v řetězci dotazu
 
 Můžete použít filtry na protokoly streamování ABR: HLS, MPEG-POMLČKa a Smooth Streaming. V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 
-|Protocol|Příklad|
+|Protocol (Protokol)|Příklad|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -68,48 +68,48 @@ Můžete si vybrat, že se má Asset zakódovat do několika profilů kódován�
 
 Pomocí dynamického manifestu můžete vytvořit profily zařízení (například mobilní zařízení, konzolu nebo HD/SD) a zahrnout stopy a kvality, které chcete být součástí každého profilu. Nazývá se filtrování verzí. V následujícím diagramu je znázorněn příklad.
 
-![Příklad filtrování verzí][renditions2]
+![Příklad filtrování verzí s dynamickým manifestem][renditions2]
 
-V následujícím příkladu byl kodér použit ke kódování Mezzanine prostředku do sedmi verzí rychlostmi videa ISO (od 180p do 1080p). Kódovaný prostředek se dá [dynamicky balit](dynamic-packaging-overview.md) do libovolného z následujících protokolů streamování: HLS, MPEG POMLČKa a hladký. 
+V následujícím příkladu byl kodér použit ke kódování Mezzanine prostředku do sedmi verzí rychlostmi videa ISO (od 180p do 1080p). Kódovaný prostředek se dá [dynamicky balit](dynamic-packaging-overview.md) do libovolného z následujících protokolů streamování: HLS, MPEG pomlčka a hladký.
 
 V horní části následujícího diagramu se zobrazuje manifest HLS pro Asset bez filtrů. (Obsahuje všechny sedm verzí.)  V levém dolním rohu se v diagramu zobrazí manifest HLS, na který se použil filtr s názvem "OTT". Filtr "OTT" Určuje odstranění všech přenosů pod 1 MB/s, takže v odpovědi byly odstraněny dolní dvě úrovně kvality. V pravém dolním rohu diagram zobrazuje manifest HLS, na který se použil filtr s názvem "mobilní". Filtr "mobilní" Určuje odebrání verzí, u kterých je rozlišení větší než 720p, takže dvě verze 1080p byly odstraněny.
 
-![Filtrování verzí][renditions1]
+![Filtrování verzí s dynamickým manifestem][renditions1]
 
 ## <a name="removing-language-tracks"></a>Odebírají se stopy jazyka.
-Vaše prostředky můžou zahrnovat několik zvukových jazyků, jako je angličtina, španělština, francouzština atd. Obvykle manažeři sady Player SDK výchozí zvuk sleduje výběr a dostupné zvukové stopy na výběr uživatele.
+Vaše prostředky můžou zahrnovat několik zvukových jazyků, jako je angličtina, španělština, francouzština a tak dále. Sada SDK přehrávače obvykle spravuje výběr výchozí zvukové stopy a dostupné zvukové stopy na výběr uživatele.
 
-Vývoj takových sad SDK pro hráče je náročný, protože vyžaduje různé implementace v rámci platforem přehrávače specifických pro zařízení. Na některých platformách jsou taky rozhraní API přehrávače omezená a nezahrnují funkci výběru zvuku, kde uživatelé nemůžou vybrat nebo změnit výchozí zvukovou stopu. Pomocí filtrů assetů můžete chování řídit vytvořením filtrů, které obsahují jenom požadované zvukové jazyky.
+Vývoj takových sad SDK pro hráče je náročný, protože vyžaduje různé implementace napříč platformami přehrávače pro konkrétní zařízení. Na některých platformách jsou taky rozhraní API přehrávače omezená a neobsahují funkci výběru zvuku, kde uživatelé nemůžou vybrat nebo změnit výchozí zvukovou stopu. Pomocí filtrů assetů můžete chování řídit vytvořením filtrů, které obsahují jenom požadované zvukové jazyky.
 
-![Filtrování jazykových běhů][language_filter]
+![Filtrování jazykových běhů s dynamickým manifestem][language_filter]
 
 ## <a name="trimming-the-start-of-an-asset"></a>Oříznutí začátku assetu
 
-Ve většině událostí živého streamování operátory spouští některé testy před skutečnou událostí. Například mohou zahrnovat jako tuto hodnotu SLAT před začátkem události: "Program bude začínat za chvíli." 
+Ve většině událostí živého streamování operátory spouští některé testy před skutečnou událostí. Například mohou zahrnovat jako tuto hodnotu SLAT před začátkem události: "program začne za chvíli."
 
-Pokud je program archivován, data testu a SLAT jsou také archivována a součástí prezentace. Tyto informace ale by se neměly zobrazovat klientům. S dynamickým manifestem můžete vytvořit filtr času spuštění a odebrat nežádoucí data z manifestu.
+Pokud je program archivován, data testu a SLAT jsou také archivována a součástí prezentace. Tyto informace by však neměly být zobrazeny klientům. S dynamickým manifestem můžete vytvořit filtr času spuštění a odebrat nežádoucí data z manifestu.
 
-![Začátek ořezávání][trim_filter]
+![Oříznutí začátku assetu s dynamickým manifestem][trim_filter]
 
 ## <a name="creating-subclips-views-from-a-live-archive"></a>Vytváření dílčích klipů (zobrazení) z živého archivu
 
-Spousta živých událostí je dlouhodobě spuštěná a živý archiv může zahrnovat víc událostí. Po skončení živé události budou všesměrové vysílání chtít přerušit živý archiv do sekvence spuštění a zastavení logického programu. 
+Spousta živých událostí je dlouhodobě spuštěná a živý archiv může zahrnovat víc událostí. Po skončení živé události budou všesměrové vysílání chtít přerušit živý archiv do sekvence spuštění a zastavení logického programu.
 
 Tyto virtuální programy můžete publikovat samostatně bez následného zpracování živého archivu a nevytvářejte samostatné prostředky (což nezíská výhodu z existujících fragmentů uložených v mezipaměti v sítě CDN). Příklady takových virtuálních programů jsou čtvrtiny fotbalu nebo basketbalový hry, innings v baseballu nebo jednotlivé události jakéhokoli sportovního programu.
 
-S dynamickým manifestem můžete vytvářet filtry pomocí počátečního/koncového času a vytvářet virtuální zobrazení v horní části živého archivu. 
+S dynamickým manifestem můžete vytvářet filtry pomocí počátečního/koncového času a vytvářet virtuální zobrazení v horní části živého archivu.
 
-![Filtr dílčích klipů][subclip_filter]
+![Filtr dílčích klipů s dynamickým manifestem][subclip_filter]
 
 Tady je filtrovaný prostředek:
 
-![Lyžování][skiing]
+![Filtrovaný prostředek s dynamickým manifestem][skiing]
 
 ## <a name="adjusting-the-presentation-window-dvr"></a>Úprava okna prezentace (DVR)
 
-V současné době Azure Media Services nabízí kruhový archiv, ve kterém je možné nastavit dobu trvání mezi 1 minutou až 25 hodinami. Filtrování manifestu lze použít k vytvoření okna postupného DVR v horní části archivu, aniž byste museli odstraňovat média. Existuje řada scénářů, ve kterých mají všesměrová vysílání poskytnout omezené okno DVR pro přesun s živým okrajem a zároveň zachovat větší archivační interval. Všesměrové vysílání může chtít použít data z okna DVR k zvýraznění klipů nebo může chtít pro různá zařízení poskytnout různá okna se systémem DVR. Například většina mobilních zařízení nezpracovává velká okna ve službě DVR (pro mobilní zařízení a jednu hodinu pro klienty pro stolní počítače můžete mít dvě minuty).
+V současné době Azure Media Services nabízí kruhový archiv, ve kterém je možné nastavit dobu trvání mezi 1 minutou až 25 hodinami. Filtrování manifestu lze použít k vytvoření okna postupného DVR v horní části archivu, aniž byste museli odstraňovat média. Existuje řada scénářů, ve kterých mají všesměrová vysílání poskytnout omezené okno DVR pro přesun s živým okrajem a zároveň zachovat větší archivační interval. Všesměrové vysílání může chtít použít data z okna zaregistrování k zvýraznění klipů nebo může chtít pro různá zařízení poskytnout různá okna se systémem DVR. Například většina mobilních zařízení nezpracovává velká okna ve službě DVR (pro mobilní zařízení a jednu hodinu pro klienty pro stolní počítače můžete mít dvě minuty).
 
-![Okno DVR][dvr_filter]
+![Okno DVR s dynamickým manifestem][dvr_filter]
 
 ## <a name="adjusting-livebackoff-live-position"></a>Úprava LiveBackoff (živá pozice)
 
@@ -117,37 +117,36 @@ Filtrování manifestu lze použít k odebrání několika sekund z živého okr
 
 Kromě podpory inzerce je možné pomocí živého Back-off nastavit umístění čtenářů, aby se klienti při posunu a dosáhli živého okraje, ale můžou z tohoto serveru získat fragmenty. Klienti tak nebudou mít chybu HTTP 404 nebo 412.
 
-![Filtr pro živé zálohování][livebackoff_filter]
+![Filtr pro živé zálohování s dynamickým manifestem][livebackoff_filter]
 
 ## <a name="combining-multiple-rules-in-a-single-filter"></a>Kombinování více pravidel v jednom filtru
 
-V jednom filtru můžete zkombinovat více pravidel filtrování. Jako příklad můžete definovat "pravidlo rozsahu" pro odebrání SLAT z živého archivu a také odfiltrovat dostupné přenosové rychlosti. Při použití více pravidel filtrování je konečným výsledkem průnik všech pravidel.
+V jednom filtru můžete zkombinovat více pravidel filtrování. Můžete například definovat "pravidlo rozsahu" pro odebrání SLAT z živého archivu a také odfiltrovat dostupné přenosové rychlosti. Při použití více pravidel filtrování je konečným výsledkem průnik všech pravidel.
 
-![Více pravidel filtrování][multiple-rules]
+![Vícenásobná pravidla filtrování s dynamickým manifestem][multiple-rules]
 
 ## <a name="combining-multiple-filters-filter-composition"></a>Kombinování více filtrů (složení filtru)
 
 V jedné adrese URL můžete také kombinovat více filtrů. Následující scénář ukazuje, proč byste mohli chtít kombinovat filtry:
 
 1. Potřebujete filtrovat kvality videa pro mobilní zařízení, jako je Android nebo iPad (abyste omezili kvality videa). Chcete-li odebrat nechtěné kvality, vytvořte filtr účtu vhodný pro profily zařízení. Filtry účtu můžete použít pro všechny vaše prostředky v rámci stejného Media Services účtu bez dalšího přidružení.
-1. Také chcete zkrátit čas zahájení a ukončení assetu. Toho dosáhnete vytvořením filtru assetů a nastavením počátečního/koncového času. 
+1. Také chcete zkrátit čas zahájení a ukončení assetu. Chcete-li provést ořezávání, vytvoříte filtr assetu a nastavíte počáteční/koncový čas.
 1. Chcete kombinovat oba tyto filtry. Bez kombinace byste museli do filtru oříznutí přidat filtrování kvality, což by mohlo ztížit použití filtru.
 
-
-Chcete-li kombinovat filtry, je třeba nastavit názvy filtrů na adresu URL manifestu nebo seznamu stop ve formátu odděleném středníkem. Předpokládejme, že máte filtr s názvem *MyMobileDevice* , který filtruje kvality a máte další pojmenovaný *MyStartTime* pro nastavení konkrétního počátečního času. Můžete zkombinovat až tři filtry. 
+Chcete-li kombinovat filtry, nastavte názvy filtrů na adresu URL manifestu nebo seznamu stop ve formátu odděleném středníkem. Předpokládejme, že máte filtr s názvem *MyMobileDevice* , který filtruje kvality a máte další pojmenovaný *MyStartTime* pro nastavení konkrétního počátečního času. Můžete zkombinovat až tři filtry.
 
 Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a name="considerations-and-limitations"></a>Doporučení a omezení
 
-- Pro filtr VOD by neměly být nastaveny hodnoty pro **forceEndTimestamp**, **presentationWindowDuration**a **liveBackoffDuration** . Používají se jenom pro scénáře živého filtru. 
--  Dynamický manifest funguje v hranicích skupinu GOP (klíčové snímky), takže ořezávání má skupinu GOPou přesnost.
--  Pro účty a filtry assetů můžete použít stejný název filtru. Filtry prostředků mají vyšší prioritu a přepíšou filtry účtu.
+- Pro filtr VOD by se neměly nastavit hodnoty pro **forceEndTimestamp**, **presentationWindowDuration**a **liveBackoffDuration** . Používají se jenom pro scénáře živého filtru.
+- Dynamický manifest funguje v hranicích skupinu GOP (klíčové snímky), takže ořezávání má skupinu GOPou přesnost.
+- Pro účty a filtry assetů můžete použít stejný název filtru. Filtry prostředků mají vyšší prioritu a přepíšou filtry účtu.
 - Pokud filtr aktualizujete, může trvat až 2 minuty, než koncový bod streamování aktualizuje pravidla. Pokud jste použili filtry pro poskytování obsahu (a ukládáte obsah do mezipaměti v proxy serverech a v mezipamětech CDN), může aktualizace těchto filtrů způsobit selhání přehrávače. Doporučujeme, abyste po aktualizaci filtru vymazali mezipaměť. Pokud tato možnost není možná, zvažte použití jiného filtru.
 - Zákazníci potřebují stáhnout manifest ručně a analyzovat přesné časové razítko a časové měřítko času spuštění.
-    
+
     - Chcete-li určit vlastnosti stop v assetu, [Získejte a zkontrolujte soubor manifestu](#get-and-examine-manifest-files).
-    - Vzorec pro nastavení vlastností časového razítka filtru assetu je: <br/>startTimestamp = &lt;čas zahájení v manifestu +  &gt;&lt;očekával čas spuštění filtru v sekundách&gt; * časová osa
+    - Vzorec pro nastavení vlastností časového razítka filtru assetu je: <br/>startTimestamp = &lt;počáteční čas v manifestu&gt; +  &lt;Očekávaná doba spuštění filtru v sekundách&gt; × časová osa
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515810"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184718"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Řešení potíží s výkonem dotazů pro Azure Cosmos DB
 Tento článek popisuje, jak identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL. Chcete-li dosáhnout optimálního výkonu pro Azure Cosmos DB dotazy, postupujte podle následujících kroků pro řešení potíží. 
@@ -26,29 +26,29 @@ Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající
 
 ## <a name="log-the-executed-sql-query"></a>Protokolovat spuštěný dotaz SQL 
 
-Spuštěný dotaz SQL můžete protokolovat v účtu úložiště nebo v tabulce diagnostického protokolu. [Protokoly dotazů SQL prostřednictvím diagnostických protokolů](logging.md#turn-on-logging-in-the-azure-portal) umožňují protokolovat zavedený dotaz do účtu úložiště podle vašeho výběru. To vám umožní podívat se na protokoly a najít dotaz, který používá vyšší ru. Později můžete použít ID aktivity tak, aby odpovídalo skutečnému dotazu v QueryRuntimeStatistics. Dotaz je zakódován z důvodu zabezpečení a názvů parametrů dotazu a jejich hodnoty v klauzulích WHERE se liší od skutečných názvů a hodnot. Můžete použít protokolování do účtu úložiště, abyste zachovali dlouhodobé uchovávání provedených dotazů.  
+Spuštěný dotaz SQL můžete protokolovat v účtu úložiště nebo v tabulce diagnostického protokolu. [Protokoly dotazů SQL prostřednictvím diagnostických protokolů](monitor-cosmos-db.md#diagnostic-settings) umožňují protokolovat zavedený dotaz do účtu úložiště podle vašeho výběru. To vám umožní podívat se na protokoly a najít dotaz, který používá vyšší ru. Později můžete použít ID aktivity tak, aby odpovídalo skutečnému dotazu v QueryRuntimeStatistics. Dotaz je zakódován z důvodu zabezpečení a názvů parametrů dotazu a jejich hodnoty v klauzulích WHERE se liší od skutečných názvů a hodnot. Pomocí protokolování do účtu úložiště můžete zachovat dlouhodobé uchovávání provedených dotazů.  
 
 ## <a name="log-query-metrics"></a>Metriky dotazů protokolu
 
-Slouží `QueryMetrics` k řešení potíží s pomalými nebo nákladnými dotazy. 
+Použijte `QueryMetrics` k řešení potíží s pomalými nebo nákladnými dotazy. 
 
-  * Nastavte `FeedOptions.PopulateQueryMetrics = true`vodpovědi. `QueryMetrics`
-  * `QueryMetrics`Třída má přetíženou `.ToString()` funkci, kterou lze vyvolat pro získání řetězcové `QueryMetrics`reprezentace. 
+  * Nastavte `FeedOptions.PopulateQueryMetrics = true`, aby `QueryMetrics` v odpovědi.
+  * Třída `QueryMetrics` má přetíženou `.ToString()` funkci, kterou lze vyvolat pro získání řetězcové reprezentace `QueryMetrics`. 
   * Metriky je možné využít k odvození následujících přehledů, mimo jiné: 
   
       * Zda některé konkrétní součásti kanálu dotazů trvaly neobvykle dlouho (v pořadí stovek milisekund nebo více). 
 
-          * Podívejte se `TotalExecutionTime`na.
-          * `TotalExecutionTime` V případě, že je dotaz menší než čas posledního spuštění, je čas strávený na straně klienta nebo v síti. Překontrolujte, jestli se společně umístěného klient a oblast Azure.
+          * Podívejte se na `TotalExecutionTime`.
+          * Je-li `TotalExecutionTime` dotazu menší než čas ukončení spuštění, bude čas stráven na straně klienta nebo v síti. Překontrolujte, jestli se společně umístěného klient a oblast Azure.
       
       * Zda v analyzovaných dokumentech byly falešně pozitivní (Pokud je počet výstupních dokumentů mnohem menší než počet načtených dokumentů).  
 
-          * Podívejte se `Index Utilization`na.
-          * `Index Utilization`= (Počet vrácených dokumentů/počet načtených dokumentů)
+          * Podívejte se na `Index Utilization`.
+          * `Index Utilization` = (počet vrácených dokumentů/počet načtených dokumentů)
           * Pokud je počet vrácených dokumentů mnohem menší než počet načtený, bude analyzováno falešně pozitivních hodnot.
           * Omezte počet dokumentů, které jsou načítány pomocí užších filtrů.  
 
-      * Jak jednotlivé zpáteční cesty fared (viz `Partition Execution Timeline` z řetězcové `QueryMetrics`reprezentace). 
+      * Způsob, jakým se fared jednotlivé zpáteční cesty (viz `Partition Execution Timeline` z řetězcové reprezentace `QueryMetrics`). 
       * Určuje, zda dotaz využil požadavek na vysokou žádost. 
 
 Další podrobnosti najdete v článku [o tom, jak získat metriky spouštění dotazů SQL](profile-sql-api-query.md) .
@@ -56,8 +56,8 @@ Další podrobnosti najdete v článku [o tom, jak získat metriky spouštění 
 ## <a name="tune-query-feed-options-parameters"></a>Ladění parametrů možností kanálu dotazů 
 Výkon dotazů je možné ladit přes parametry [možností kanálu](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) požadavku. Zkuste nastavit následující možnosti:
 
-  * Nejprve `MaxDegreeOfParallelism` nastavte hodnotu-1 a potom porovnejte výkon napříč různými hodnotami. 
-  * Nejprve `MaxBufferedItemCount` nastavte hodnotu-1 a potom porovnejte výkon napříč různými hodnotami. 
+  * Nejprve nastavte `MaxDegreeOfParallelism` na hodnotu-1 a potom porovnejte výkon napříč různými hodnotami. 
+  * Nejprve nastavte `MaxBufferedItemCount` na hodnotu-1 a potom porovnejte výkon napříč různými hodnotami. 
   * Nastavte `MaxItemCount` na hodnotu-1.
 
 Při porovnávání výkonu pro různé hodnoty zkuste například hodnoty 2, 4, 8, 16 atd.
@@ -147,20 +147,20 @@ Pokud chcete ověřit, že aktuální [zásady indexování](index-policy.md) js
 
 Další podrobnosti najdete v článku [Správa zásad indexování](how-to-manage-indexing-policy.md) .
 
-## <a name="spatial-data-check-ordering-of-points"></a>Prostorová data: Kontrolovat řazení bodů
+## <a name="spatial-data-check-ordering-of-points"></a>Prostorová data: kontrolovat řazení bodů
 Body v rámci mnohoúhelníku musí zadat v pořadí proti směru hodinových ručiček. Mnohoúhelník zadat v pořadí po směru hodinových ručiček představuje inverzní oblasti v rámci něj.
 
 ## <a name="optimize-join-expressions"></a>Optimalizovat výrazy JOIN
-`JOIN`výrazy se můžou rozšířit na velké mezi produkty. Pokud je to možné, dotazování na menší místo pro hledání prostřednictvím užšího filtru.
+`JOIN` výrazy se můžou rozšířit na velké mezi produkty. Pokud je to možné, dotazování na menší místo pro hledání prostřednictvím užšího filtru.
 
-Podhodnoty poddotazů mohou optimalizovat `JOIN` výrazy vložením predikátů za každým výrazem Select-many, nikoli po všech křížových spojeních `WHERE` v klauzuli. Podrobný příklad najdete v článku věnovaném [optimalizaci výrazů spojení](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) .
+Podhodnoty poddotazů mohou optimalizovat `JOIN` výrazy vložením predikátů za každý výraz SELECT-many místo po všech křížových spojeních v klauzuli `WHERE`. Podrobný příklad najdete v článku věnovaném [optimalizaci výrazů spojení](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) .
 
 ## <a name="optimize-order-by-expressions"></a>Optimalizovat pořadí podle výrazů 
-`ORDER BY`Pokud jsou pole zhuštěná nebo nejsou zahrnutá v zásadách indexu, může dojít k výkonu dotazů.
+`ORDER BY` výkon dotazů může být zhoršený, pokud jsou pole zhuštěná nebo nejsou zahrnutá v zásadách indexů.
 
   * Pro zhuštěná pole, jako je například čas, zmenšete hledaný prostor co nejvíce s filtry. 
-  * V případě jedné `ORDER BY`vlastnosti uveďte vlastnost include v zásadách indexování. 
-  * Pro více výrazů `ORDER BY` vlastností definujte [složený index](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) pro pole, která jsou seřazená.  
+  * V případě `ORDER BY`jedné vlastnosti uveďte vlastnost include v zásadách indexování. 
+  * U více vlastností `ORDER BY` výrazů definujte [složený index](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) pro pole, která se řadí.  
 
 ## <a name="many-large-documents-being-loaded-and-processed"></a>Načítá a zpracovává se mnoho velkých dokumentů.
 Čas a ru, které jsou vyžadovány dotazem, nejsou závislé na velikosti odpovědi, jsou také závislé na práci, kterou provádí kanál zpracování dotazů. Čas a ru se proporcionálně zvyšují s množstvím práce, kterou provádí celý kanál zpracování dotazů. U rozsáhlých dokumentů je prováděno více práce, což znamená více času a ru se vyžaduje pro načtení a zpracování velkých dokumentů.

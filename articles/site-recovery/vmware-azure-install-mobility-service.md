@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016371"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186456"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Příprava zdrojového počítače na nabízenou instalaci agenta mobility
 
@@ -24,7 +24,7 @@ Na každém počítači s Windows, který chcete chránit, udělejte toto:
 1. Ujistěte se, že mezi počítačem a procesovým serverem existuje síťové připojení. Pokud jste nenastavili samostatný procesový Server, pak ve výchozím nastavení běží na konfiguračním serveru.
 1. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet by měl mít práva správce, a to buď místní, nebo doména. Tento účet používejte pouze pro nabízenou instalaci a pro aktualizace agenta.
 2. Pokud nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele následujícím způsobem:
-    - V části klíč registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidejte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
+    - V části HKEY_LOCAL_MACHINE klíč registru \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidejte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
     -  Pokud to chcete provést na příkazovém řádku, spusťte následující příkaz:  
    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
 3. V bráně Windows Firewall na počítači, který chcete chránit, vyberte možnost **povolení aplikace nebo funkce přes bránu firewall**. Povolte **sdílení souborů a tiskáren** a **rozhraní WMI (Windows Management Instrumentation) (WMI)** . Pro počítače, které patří do domény, můžete nakonfigurovat nastavení brány firewall pomocí objektu Zásady skupiny (GPO).
@@ -32,7 +32,7 @@ Na každém počítači s Windows, který chcete chránit, udělejte toto:
    ![Nastavení brány firewall](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. V nástroji CSPSConfigtool přidejte účet, který jste vytvořili. Uděláte to tak, že se přihlásíte ke konfiguračnímu serveru.
-5. Otevřete **cspsconfigtool.exe**. Je k dispozici jako zástupce na ploše a ve složce%ProgramData%\home\svsystems\bin.
+5. Otevřete **cspsconfigtool.exe**. Je k dispozici jako zástupce na ploše a ve složce%ProgramData%\ASR\home\svsystems\bin.
 6. Na kartě **Spravovat účty** vyberte **Přidat účet**.
 7. Přidejte účet, který jste vytvořili.
 8. Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.
@@ -46,8 +46,8 @@ V každém počítači se systémem Linux, který chcete chránit, udělejte tot
 3. Zkontrolujte, že soubor /etc/hosts na zdrojovém serveru s Linuxem obsahuje položky, které mapují místní název hostitele na IP adresy přidružené ke všem síťovým adaptérům.
 4. Na počítači, který chcete replikovat, nainstalujte nejnovější balíčky openssh, openssh-server a openssl.
 5. Ujistěte se, že je povolený Secure Shell (SSH) a že běží na portu 22.
-4. V souboru sshd_config povolte podsystém SFTP a ověřování hesla. Uděláte to tak, že se přihlásíte jako **kořen**.
-5. V souboru **/etc/ssh/sshd_config** vyhledejte řádek, který začíná na **PasswordAuthentication**.
+4. Povolit podsystém SFTP a ověřování hesla v souboru sshd_config. Uděláte to tak, že se přihlásíte jako **kořen**.
+5. V souboru **sshd_config/etc/ssh/** vyhledejte řádek, který začíná na **PasswordAuthentication**.
 6. Odkomentujte řádek a změňte hodnotu na **Ano**.
 7. Vyhledejte řádek, který začíná na **subsystému**, a odkomentujte řádek.
 
@@ -64,7 +64,7 @@ V každém počítači se systémem Linux, který chcete chránit, udělejte tot
 
 Pokud mají počítače, které chcete replikovat, spuštěné aktivní antivirový software, ujistěte se, že jste vyloučili instalační složku služby mobility z hlediska antivirové operace (*C:\ProgramData\ASR\agent*). Tím se zajistí, že replikace bude fungovat podle očekávání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po instalaci služby mobility můžete v Azure Portal vybrat **+ replikovat** a začít chránit tyto virtuální počítače. Přečtěte si další informace o povolení replikace pro [virtuální počítače VMware](vmware-azure-enable-replication.md) a [fyzické servery](physical-azure-disaster-recovery.md#enable-replication).
 

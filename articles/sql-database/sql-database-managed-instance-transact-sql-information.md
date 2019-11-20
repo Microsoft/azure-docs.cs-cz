@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158290"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186427"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -302,7 +302,7 @@ Následující funkce agenta SQL momentálně nejsou podporované:
 - Proxy servery
 - Plánování úloh na nečinném procesoru
 - Povolení nebo zakázání agenta
-- Výstrahy
+- Upozornění
 
 Informace o agentovi SQL Server najdete v tématu [agent SQL Server](/sql/ssms/agent/sql-server-agent).
 
@@ -572,14 +572,6 @@ Probíhající příkaz `RESTORE`, proces migrace dat a integrované obnovení k
 Funkce [Správce prostředků](/sql/relational-databases/resource-governor/resource-governor) , která umožňuje omezit prostředky přiřazené k úloze uživatele, může po převzetí služeb při selhání nebo na základě uživatelem iniciované změny úrovně služby (například změna maximálního počtu Vcore nebo maximální instance) nesprávně klasifikovat některé uživatelské úlohy. velikost úložiště).
 
 **Alternativní řešení**: spouštějte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která SPUSTÍ úlohu SQL, když se instance spouští, pokud používáte [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor).
-
-### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Nejde ověřit u externích poštovních serverů pomocí zabezpečeného připojení (SSL).
-
-**Datum:** Srpna 2019
-
-Databázový e-mail, který je [nakonfigurovaný pomocí zabezpečeného připojení (SSL)](/sql/relational-databases/database-mail/configure-database-mail) , se nemůže ověřit na některých e-mailových serverech mimo Azure. Jedná se o problém s konfigurací zabezpečení, který bude brzy vyřešen.
-
-**Alternativní řešení:** Dočasné odebrání zabezpečeného připojení (SSL) z Konfigurace databázového e-mailu, dokud se problém nevyřeší. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Dialogová okna mezidatabázového Service Broker se musí po upgradu na úrovni služby znovu inicializovat.
 

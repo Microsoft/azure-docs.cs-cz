@@ -1,17 +1,17 @@
 ---
-title: Architektura migrace založená na agentech v migraci serveru Azure Migrate
+title: Migrace založená na agentech v migraci serveru Azure Migrate
 description: Poskytuje přehled migrace virtuálních počítačů VMware založených na agentech pomocí migrace serveru Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: f5ad3aa0fc51f47942750d3745ffef1d6e4a087d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a8477b4c10ccbc76f36eed4d64ac12e8bb648a28
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232577"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186104"
 ---
 # <a name="agent-based-migration-architecture"></a>Architektura migrace založené na agentech
 
@@ -42,15 +42,15 @@ Tabulka shrnuje součásti používané pro migraci na základě agenta.
 
 **Komponenta** | **Podrobnosti** | **Instalace**
 --- | --- | ---
-**Replikační zařízení** | Zařízení replikace (konfigurační server) je místní počítač, který funguje jako most mezi místním prostředím a nástrojem pro migraci Azure Migrate serveru. Zařízení zjistí místní inventář virtuálních počítačů, aby mohla migrace serveru Azure orchestrovat replikaci a migraci. Zařízení má dvě komponenty:<br/><br/> **Konfigurační server**: Připojí se k migraci Azure Migrate serveru a koordinuje replikaci.<br/> **Procesový server:** Zpracovává replikaci dat. Přijímá data virtuálních počítačů, komprimuje je a šifruje a odesílá je do předplatného Azure. Migrace serveru zapisuje data na spravované disky. | Ve výchozím nastavení se procesový server instaluje společně s konfiguračním serverem na zařízení replikace.
+**Replikační zařízení** | Zařízení replikace (konfigurační server) je místní počítač, který funguje jako most mezi místním prostředím a nástrojem pro migraci Azure Migrate serveru. Zařízení zjistí místní inventář virtuálních počítačů, aby mohla migrace serveru Azure orchestrovat replikaci a migraci. Zařízení má dvě komponenty:<br/><br/> **Konfigurační server**: připojuje se k migraci Azure Migrate serveru a koordinuje replikaci.<br/> **Procesový Server**: zpracovává replikaci dat. Přijímá data virtuálních počítačů, komprimuje je a šifruje a odesílá je do předplatného Azure. Migrace serveru zapisuje data na spravované disky. | Ve výchozím nastavení se procesový server instaluje společně s konfiguračním serverem na zařízení replikace.
 **Služba Mobility** | Služba mobility je agent nainstalovaný na každém počítači, který chcete replikovat a migrovat. Odesílá data replikace z počítače na procesový Server. K dispozici je několik různých agentů služby mobility. | Instalační soubory služby mobility jsou umístěné na zařízení replikace. Můžete stáhnout a nainstalovat agenta, který potřebujete, v souladu s operačním systémem a verzí počítače, který chcete replikovat.
 
 ### <a name="mobility-service-installation"></a>Instalace služby Mobility
 
 Službu mobility můžete nasadit pomocí následujících metod:
 
-- **Nabízená instalace**: Služba mobility je nainstalována na procesovém serveru, když povolíte ochranu počítače. 
-- **Ruční instalace**: Službu mobility můžete nainstalovat ručně na každém počítači prostřednictvím uživatelského rozhraní nebo příkazového řádku.
+- **Nabízená instalace**: Služba mobility je nainstalovaná procesovým serverem, když povolíte ochranu počítače. 
+- **Ruční instalace**: službu mobility můžete nainstalovat ručně na každém počítači prostřednictvím uživatelského rozhraní nebo příkazového řádku.
 
 Služba mobility komunikuje se zařízením replikace a replikovanými počítači. Pokud máte antivirový software spuštěný na zařízení replikace, procesových serverech nebo počítačích, které se replikují, měly by se z kontroly vyloučit následující složky:
 
@@ -77,9 +77,9 @@ Služba mobility komunikuje se zařízením replikace a replikovanými počíta�
 
 **zařízení** | **připojení**
 --- | --- 
-virtuálních počítačů | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace na portu HTTPS 443 příchozí, pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (ve výchozím nastavení běží na zařízení replikace) na portu HTTPS 9443 příchozí. Tento port lze změnit.
+Virtuální počítače | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace na portu HTTPS 443 příchozí, pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (ve výchozím nastavení běží na zařízení replikace) na portu HTTPS 9443 příchozí. Tento port lze změnit.
 Replikační zařízení | Zařízení replikace orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.
-Procesový server | Procesový server přijímá data replikace, optimalizuje je a šifruje a odesílá je do Azure Storage přes odchozí port 443.
+Procesový Server | Procesový server přijímá data replikace, optimalizuje je a šifruje a odesílá je do Azure Storage přes odchozí port 443.
 
 
 ## <a name="performance-and-scaling"></a>Výkon a škálování
@@ -118,7 +118,7 @@ Pokud potřebujete nasadit procesový Server se škálováním na více instanc�
 
  Provoz VMware, který se replikuje do Azure, prochází přes konkrétní procesový Server. Propustnost nahrávání můžete omezit omezením šířky pásma na počítačích, které jsou spuštěny jako procesové servery. Šířku pásma můžete ovlivnit pomocí tohoto klíče registru:
 
-- Hodnota registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci. Výchozí hodnota je 4. Maximální hodnota je 32. Monitorováním provozu hodnotu optimalizujte.
+- Hodnota registru HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci. Výchozí hodnota je 4. Maximální hodnota je 32. Monitorováním provozu hodnotu optimalizujte.
 - Navíc můžete omezit šířku pásma na počítači procesového serveru následujícím způsobem:
 
     1. Na počítači procesového serveru otevřete modul snap-in Azure Backup MMC. Je k dispozici zástupce na ploše nebo ve složce C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
@@ -126,6 +126,6 @@ Pokud potřebujete nasadit procesový Server se škálováním na více instanc�
     3. V případě **omezení**vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vyzkoušejte [migraci virtuálních počítačů VMware](tutorial-migrate-vmware-agent.md) založenou na agentech pomocí migrace serveru Azure Migrate.

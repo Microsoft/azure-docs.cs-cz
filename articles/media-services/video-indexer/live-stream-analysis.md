@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
-ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
-ms.translationtype: HT
+ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74153557"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186001"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Analýza živého datového proudu pomocí Video Indexer
 
@@ -27,7 +27,7 @@ Azure Media Services Video Indexer je služba Azure, která je určená k extrak
 
 *Obrázek 1 – vzorový přehrávač zobrazující metadata Video Indexer v živém streamu*
 
-[Řešení pro analýzu streamování](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/blob/master/media-functions-for-logic-app/LiveStreamAnalysis.md) používá Azure functions a dvě Logic Apps ke zpracování živého programu z živého kanálu v Azure Media Services s video indexer a výsledek zobrazuje Azure Media Player, který zobrazuje výsledný stream téměř v reálném čase.
+[Řešení pro analýzu streamování](https://aka.ms/livestreamanalysis) používá Azure functions a dvě Logic Apps ke zpracování živého programu z živého kanálu v Azure Media Services s video indexer a výsledek zobrazuje Azure Media Player, který zobrazuje výsledný stream téměř v reálném čase.
 
 Na vysoké úrovni se skládá ze dvou hlavních kroků. První krok se spustí každých 60 sekund a provede dílčí klip za posledních 60 sekund, vytvoří z něho Asset a indexuje ho pomocí Video Indexer. Druhý krok se pak volá po dokončení indexování. Zachycené přehledy jsou zpracovávány, odesílány do Azure Cosmos DB a dílčí klip indexovaný se odstraní.
 

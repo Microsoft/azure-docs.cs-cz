@@ -1,5 +1,5 @@
 ---
-title: Služba front-dveří pro Azure – Nejčastější dotazy pro přední dveře | Microsoft Docs
+title: Služba front-dveří Azure – Nejčastější dotazy
 description: Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se služby Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 4001b3ed8d7a92d8a751486ab4fd3a097d032373
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: c8f95a1de85fd2eb00b0525fca8e62ade87dd57f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809738"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184644"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Nejčastější dotazy ke službě Azure front-dveří
 
@@ -213,5 +213,5 @@ Ano, služba Azure front-dveří podporuje výstrahy. Výstrahy jsou nakonfiguro
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
+- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
 - Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

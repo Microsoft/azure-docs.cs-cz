@@ -13,16 +13,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: e56aba81b2e6b8e66aeb2c3e5284843055713826
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: ae753758a3cd5b7dfa8794ccf98f7a8a063f5b18
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316073"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185197"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Kurz: Použití dynamické konfigurace v aplikaci .NET Core
+# <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Core
 
-Klientská knihovna .NET Core konfigurace aplikace podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. To může být implementováno tak, že nejprve získá `IConfigurationRefresher` instanci z možností pro poskytovatele konfigurace a potom zavolá `Refresh` tuto instanci kdekoli v kódu.
+Klientská knihovna .NET Core konfigurace aplikace podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. To může být implementováno pomocí prvního získání instance `IConfigurationRefresher` z možností pro poskytovatele konfigurace a potom volání `Refresh` na této instanci kdekoli ve vašem kódu.
 
 Aby se nastavení zachovalo jako aktualizované a zabránilo se příliš velkému počtu volání do úložiště konfigurace, použije se pro každé nastavení mezipaměť. Dokud neuplyne hodnota nastavení uložené v mezipaměti, operace aktualizace neaktualizuje hodnotu, a to ani v případě, že se hodnota v úložišti konfigurace změnila. Výchozí doba vypršení platnosti každé žádosti je 30 sekund, ale v případě potřeby může být přepsána.
 
@@ -33,8 +33,8 @@ K provedení kroků v tomto kurzu můžete použít libovolný editor kódu. [Vi
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavte svoji aplikaci tak, aby aktualizovala konfiguraci pomocí úložiště konfigurace aplikace na vyžádání.
-> * Vloží nejnovější konfiguraci do řadičů vaší aplikace.
+> * Nastavte si aplikaci .NET Core, abyste aktualizovali její konfiguraci v reakci na změny v úložišti konfigurace aplikace.
+> * Využijte ve své aplikaci nejnovější konfiguraci.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,7 +44,7 @@ K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.
 
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 
-Otevřete *program.cs* a aktualizujte soubor pro přidání odkazu na `System.Threading.Tasks` obor názvů, pro zadání konfigurace `AddAzureAppConfiguration` aktualizace v metodě `Refresh` a aktivaci ruční aktualizace pomocí metody.
+Otevřete *program.cs* a aktualizujte soubor a přidejte odkaz na obor názvů `System.Threading.Tasks`, pokud chcete zadat konfiguraci aktualizace v metodě `AddAzureAppConfiguration` a aktivovat ruční aktualizaci pomocí metody `Refresh`.
 
 ```csharp
 using System;
@@ -90,10 +90,10 @@ class Program
 }
 ```
 
-`ConfigureRefresh` Metoda se používá k určení nastavení, která se použijí k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. Instance `IConfigurationRefresher` může být načtena voláním `GetRefresher` metody `AddAzureAppConfiguration` na možnosti poskytované metodě a `Refresh` metoda v této instanci může být použita k aktivaci operace aktualizace kdekoli v kódu.
+Metoda `ConfigureRefresh` slouží k určení nastavení použitých k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. Instance `IConfigurationRefresher` lze načíst voláním metody `GetRefresher` na možnosti poskytované `AddAzureAppConfiguration` metodě a metoda `Refresh` této instance může být použita k aktivaci operace aktualizace kdekoli v kódu.
     
 > [!NOTE]
-> Výchozí doba vypršení platnosti mezipaměti pro konfigurační nastavení je 30 sekund, ale lze ji přepsat voláním `SetCacheExpiration` metody v inicializátoru možnosti předaného jako argument `ConfigureRefresh` metody.
+> Výchozí doba vypršení platnosti mezipaměti pro konfigurační nastavení je 30 sekund, ale lze ji přepsat voláním metody `SetCacheExpiration` v inicializátoru možnosti předaného jako argument metody `ConfigureRefresh`.
 
 ## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
@@ -119,11 +119,11 @@ class Program
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure – Aktualizováno |
 
@@ -132,7 +132,7 @@ class Program
     ![Rychlé obnovení místní aktualizace aplikace](./media/quickstarts/dotnet-core-app-run-refresh.png)
     
     > [!NOTE]
-    > Vzhledem k tomu, že doba vypršení platnosti mezipaměti byla nastavena `SetCacheExpiration` na 10 sekund pomocí metody při určování konfigurace pro operaci aktualizace, bude hodnota nastavení konfigurace aktualizována pouze v případě, že od poslední aktualizace uplynula alespoň 10 sekund. pro toto nastavení.
+    > Vzhledem k tomu, že doba vypršení platnosti mezipaměti byla nastavena na 10 sekund pomocí metody `SetCacheExpiration` při určování konfigurace pro operaci aktualizace, bude hodnota nastavení konfigurace aktualizována pouze v případě, že od poslední aktualizace tohoto nastavení uplynula alespoň 10 sekund.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -140,7 +140,7 @@ class Program
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali identitu spravované služby Azure, abyste zjednodušili přístup ke konfiguraci aplikací a vylepšili správu přihlašovacích údajů pro vaši aplikaci. Další informace o tom, jak používat konfiguraci aplikací, najdete v ukázkách Azure CLI.
+V tomto kurzu jste povolili aplikaci .NET Core dynamickou aktualizaci nastavení konfigurace z konfigurace aplikace. Další informace o tom, jak používat spravovanou identitu Azure ke zjednodušení přístupu ke konfiguraci aplikace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Ukázky rozhraní příkazového řádku](./cli-samples.md)
+> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)

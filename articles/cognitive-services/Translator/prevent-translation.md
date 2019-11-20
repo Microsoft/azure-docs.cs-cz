@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/18/2019
 ms.author: swmachan
-ms.openlocfilehash: f3bf784898f7f51beea890d8d2a8401af1403fbc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: dd3684cbd7c03851bfcc75293a9690f77b4652b2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888123"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184815"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Jak zabránit překladu obsahu pomocí Translator Text API
 
 Translator Text API umožňuje označit obsah tak, aby nebyl přeložen. Například můžete chtít označit kód, název značky nebo slovo nebo frázi, které nedává smysl, pokud je lokalizováno.
 
 ## <a name="methods-for-preventing-translation"></a>Metody prevence překladu
-1. Řídicí znak na Twitteru @somethingtopassthrough nebo #somethingtopassthrough. Zrušit řídicí znak po překladu.
+1. Řídicí znak na Twitteru @somethingtopassthrough nebo #somethingtopassthrough. Zrušit řídicí znak po překladu. Toto je regulární výraz pro platné značky Twitteru: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. Značka by měla začínat znakem "@", následovaným znakem a potom následováním jednoho nebo více znaků, číslic nebo podtržítka. Doporučuje se, aby značky byly krátké a před otevírací značkou musí být mezera.
 
 2. Označení obsahu pomocí `notranslate`.
 

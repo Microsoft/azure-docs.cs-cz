@@ -8,135 +8,86 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 7c31520efd881e8e0b5ed309f62d273bac59c0e3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945016"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185607"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
-Tento článek poskytuje informace o nejnovějších aktualizacích vydaných verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
-
-> [!IMPORTANT]  
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v [článku Správa verzí služby HDInsight](hdinsight-component-versioning.md).
+Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
 ## <a name="summary"></a>Souhrn
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure.
 
+## <a name="release-date-11072019"></a>Datum vydání: 11/07/2019
+
+Tato verze platí pro HDInsight 3,6 a 4,0.
+
+> [!IMPORTANT]  
+> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v [článku Správa verzí služby HDInsight](hdinsight-component-versioning.md).
+
+
 ## <a name="new-features"></a>Nové funkce
 
-Další informace o důležitých změnách v HDInsight 4,0 najdete v tématu [co je nového v HDI 4,0?](../hdinsight/hdinsight-version-release.md).
+### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight identity broker (HIB) (ve verzi Preview)
 
-## <a name="component-versions"></a>Verze komponent
+Služba HDInsight identity broker (HIB) umožňuje uživatelům přihlásit se k Apache Ambari pomocí služby Multi-Factor Authentication (MFA) a získat požadované lístky protokolu Kerberos bez nutnosti používat hodnoty hash hesla v Azure Active Directory Domain Services (AAD-DS). Aktuálně je HIB k dispozici pouze pro clustery nasazené prostřednictvím šablony ARM.
 
-Oficiální verze Apache všech komponent HDInsight 4,0 jsou uvedené níže. Uvedené součásti představují verze nejaktuálnějších stabilních verzí, které jsou k dispozici.
+### <a name="kafka-rest-api-proxy-preview"></a>Proxy Kafka REST API (Preview)
 
-- Apache Ambari 2.7.1
-- Apache Hadoop 3.1.1
-- 2\.0.0 Apache HBA
-- Apache Hive 3.1.0
-- Apache Kafka 1.1.1, 2.1.0
-- Apache Mahout 0.9.0 +
-- Apache Oozie 4.2.0
-- Apache Phoenix 4.7.0
-- Apache prasete 0.16.0
-- Apache Ranger 0.7.0
-- 0\.92.0 posuvník Apache
-- Apache Spark 2.3.1, 2.4.0
-- Apache Sqoop 1.4.7
-- Apache TEZ 0.9.1
-- Apache Zeppelin 0.8.0
-- Apache ZooKeeper 3.4.6
+Kafka REST API poskytuje nasazení s vysokou dostupností služby REST proxy s clusterem Kafka prostřednictvím zabezpečeného ověřování AAD a protokolu OAuth jediným kliknutím. 
 
-Kromě výše uvedených verzí jsou někdy součástí distribuce HDP i novější verze komponent Apache. V tomto případě jsou tyto novější verze uvedené v tabulce Technical Preview a neměly by nahrazovat verze výše uvedeného seznamu v produkčním prostředí.
+### <a name="auto-scale"></a>Automatické škálování
 
-## <a name="apache-patch-information"></a>Informace o opravě Apache
+Automatické škálování pro Azure HDInsight je teď všeobecně dostupné ve všech oblastech pro typy clusterů Apache Spark a Hadoop. Tato funkce umožňuje spravovat úlohy analýzy velkých objemů dat v cenově výhodnějším a produktivním způsobu. Teď můžete optimalizovat použití clusterů HDInsight a platit jenom za to, co potřebujete.
 
-Další informace o opravách dostupných v HDInsight 4,0 najdete v seznamu oprav pro každý produkt v následující tabulce.
+V závislosti na vašich požadavcích můžete zvolit automatické škálování založené na zatížení a na základě plánu. Díky automatickému škálování na základě zatížení se dá velikost clusteru škálovat nahoru a dolů na základě aktuálních potřeb prostředků, zatímco automatické škálování na základě plánu může měnit velikost clusteru podle předdefinovaného plánu. 
 
-| Název produktu | Informace o opravě |
-|---|---|
-| Ambari | [Informace o opravě Ambari](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
-| Hadoop | [Informace o opravě Hadoop](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [HBA – informace o opravě](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
-| Hive  | Tato verze poskytuje 3.1.0 podregistru bez dalších oprav Apache.  |
-| Kafka | Tato verze poskytuje Kafka 1.1.1 bez dalších oprav Apache. |
-| Oozie | [Informace o opravě Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
-| Phoenix | [Phoenix – informace o opravě](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
-| Pig | [Informace o opravě prasete](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
-| Ranger | [Informace o opravě Ranger](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
-| Spark | [Informace o opravě Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
-| Sqoop | Tato verze poskytuje Sqoop 1.4.7 bez dalších oprav Apache. |
-| Tez | Tato verze poskytuje tez 0.9.1 bez dalších oprav Apache. |
-| Zeppelin | Tato verze poskytuje Zeppelin 0.8.0 bez dalších oprav Apache. |
-| Zookeeper | [Informace o opravě Zookeeper](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+Podpora automatického škálování pro HBA a LLAP úlohy je také Public Preview. Další informace najdete v tématu [Automatické škálování clusterů Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters).
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>Opravené běžné chyby zabezpečení a ohrožení
+### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Urychlené zápisy HDInsight pro Apache HBA 
 
-Další informace o problémech se zabezpečením vyřešených v této verzi najdete v tématu Hortonworks "opravenými běžnými ohroženími zabezpečení [a hrozbami pro HDP 3.0.1](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html).
+Zrychlené zápisy s využitím spravovaných disků Azure SSD úrovně Premium zvyšují výkon dopředného protokolování Apache HBase. Další informace najdete v tématu [urychlení zápisů Azure HDInsight pro Apache HBA](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
 
-## <a name="known-issues"></a>Známé problémy
+### <a name="custom-ambari-db"></a>Vlastní Ambari DB
 
-### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>U zabezpečených HBA s výchozí instalací je replikace přerušená.
+HDInsight teď nabízí novou kapacitu, která zákazníkům umožní používat vlastní SQL DB pro Ambari. Zákazníci si teď můžou zvolit správnou databázi SQL DB pro Ambari a snadno ji upgradovat na základě jejich vlastního požadavku na růst firmy. Nasazení se provádí pomocí šablony Azure Resource Manager. Další informace najdete v tématu [Nastavení clusterů HDInsight s vlastní AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db).
 
-V případě HDInsight 4,0 proveďte následující kroky:
+### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>Virtuální počítače řady F-Series jsou teď dostupné v HDInsight.
 
-1. Povolte komunikaci mezi clustery.
-1. Přihlaste se k aktivnímu hlavnímu uzlu.
-1. Stáhněte si skript, který povolí replikaci pomocí následujícího příkazu:
-
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. Zadejte příkaz `sudo kinit <domainuser>`.
-1. Zadáním následujícího příkazu spusťte skript:
-
-    ```
-    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-V případě HDInsight 3,6 postupujte takto:
-
-1. Přihlaste se k aktivnímu HMaster ZK.
-1. Stáhněte si skript, který povolí replikaci pomocí následujícího příkazu:
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. Zadejte příkaz `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`.
-1. Zadejte následující příkaz:
-
-    ```bash
-    sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-
-### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>Phoenix SqlLine přestane pracovat po migraci clusteru HBA do HDInsight 4,0
-
-Proveďte následující kroky:
-
-1. Přetáhněte následující tabulky Phoenix:
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.MUTEX`
-    1. `SYSTEM.CATALOG`
-1. Pokud nemůžete odstranit žádnou z tabulek, restartujte HBA a vymažte všechna připojení k tabulkám.
-1. Spusťte `sqlline.py` znovu. Phoenix znovu vytvoří všechny tabulky, které jste odstranili v kroku 1.
-1. Znovu vygenerujte tabulky a zobrazení v Phoenixu pro data z adaptérů HBA.
-
-### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>Phoenix SqlLine přestane pracovat po replikaci adaptérů HBA z HDInsight 3,6 na 4,0
-
-Proveďte následující kroky:
-
-1. Před provedením replikace přejdete do cílového clusteru 4,0 a spustí `sqlline.py`se. Tento příkaz vygeneruje tabulky v Phoenixu `SYSTEM.MUTEX` , `SYSTEM.LOG` například a, které existují pouze v 4,0.
-1. Přetáhněte následující tabulky:
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.CATALOG`
-1. Spuštění replikace HBA
+Virtuální počítače řady F-Series jsou vhodné pro zahájení práce s HDInsight s požadavky na lehké zpracování. Za nižší ceníkové sazby za hodinu nabízí řada F-series nejlepší poměr cena–výkon v portfoliu Azure, pokud jde o množství výpočetních jednotek Azure (ACU) na virtuální procesor. Další informace najdete v tématu [Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size).
 
 ## <a name="deprecation"></a>Vyřazení
 
-Služby Apache Storm a ML nejsou v HDInsight 4,0 dostupné.
+### <a name="g-series-virtual-machine-deprecation"></a>Zastaralé virtuální počítače řady G-series
+Z této verze už virtuální počítače řady G-series nejsou nabízené v HDInsight.
+
+### <a name="dv1-virtual-machine-deprecation"></a>Zastaralá virtuální počítač s Dv1
+Z této verze se použití virtuálních počítačů s Dv1 a HDInsight už nepoužívá. Každý požadavek zákazníka na Dv1 se automaticky zpracuje pomocí Dv2. Mezi virtuálními počítači s Dv1 a Dv2 se nevztahují žádné cenové rozdíly.
+
+## <a name="behavior-changes"></a>Změny chování
+
+### <a name="cluster-managed-disk-size-change"></a>Změna velikosti spravovaného disku clusteru
+HDInsight poskytuje spravované místo na disku clusteru. Z této verze se velikost spravovaného disku u každého uzlu v novém vytvořeném clusteru změní na 128 GB.
+
+## <a name="upcoming-changes"></a>Nadcházející změny
+V nadcházejících verzích dojde k následujícím změnám. 
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od prosince bude HDInsight místo toho používat službu Azure Virtual Machine Scale Sets. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+
+### <a name="hbase-20-to-21"></a>HBA 2,0 až 2,1
+V nadcházející verzi HDInsight 4,0 bude verze HBA upgradována z verze 2,0 na 2,1.
+
+### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>Vyřazení virtuálních počítačů a-Series pro cluster ESP je zastaralé
+Virtuální počítače řady A-Series můžou způsobovat problémy s clusterem ESP v důsledku relativně nízké kapacity procesoru a paměti. V nadcházející verzi budou virtuální počítače řady A-Series pro vytváření nových clusterů ESP zastaralé.
+
+## <a name="bug-fixes"></a>Opravy chyb
+HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
+
+## <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi neexistuje žádná změna verze součásti. Aktuální verze komponent pro HDInsight 4,0 AD HDInsight 3,6 najdete [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).

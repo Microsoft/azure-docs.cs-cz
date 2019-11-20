@@ -1,25 +1,23 @@
 ---
-title: Tabulka podpory Azure Migrate pro posouzení fyzického serveru a jejich migraci
-description: Shrnuje nastavení a omezení pro posouzení fyzického serveru a migraci pomocí služby Azure Migrate.
+title: Podpora pro posouzení fyzického serveru/migrace pomocí Azure Migrate
+description: Shrnuje podporu pro vyhodnocování a migraci fyzických serverů pomocí Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 55ada93e6a77dd7e31640988bad95034f77c90dd
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091893"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196341"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci fyzických serverů
 
 [Službu Azure Migrate](migrate-overview.md) můžete použít k vyhodnocení a migraci počítačů do Microsoft Azure cloudu. Tento článek shrnuje nastavení podpory a omezení pro vyhodnocení a migraci místních fyzických serverů.
 
-> [!NOTE]
-> Pokud jsou zde uvedené funkce, které se ještě nezobrazuje na portálu Azure Migrate, počkejte. Budou zobrazeny v průběhu příštího týdne.
 
 
 ## <a name="physical-server-scenarios"></a>Scénáře fyzického serveru

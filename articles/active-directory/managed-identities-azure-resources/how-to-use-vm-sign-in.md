@@ -1,6 +1,6 @@
 ---
-title: Použití spravované identity pro prostředky Azure na Virtuálním počítači Azure pro přihlášení
-description: Podrobné pokyny a příklady použití virtuálního počítače Azure spravované identity pro prostředky Azure instanční objekt pro klienta přihlašovacího skriptu a přístup k prostředkům.
+title: Použití spravovaných identit na virtuálním počítači Azure pro přihlášení – Azure AD
+description: Podrobný postup a příklady použití identit spravované virtuálními počítači Azure pro instanční objekt služby Azure pro přihlášení a přístup k prostředkům pro klienta
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e3d6d128677d2e82f4750a7771885474bf284fb1
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112977"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184217"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravované identity pro prostředky Azure na Virtuálním počítači Azure pro přihlášení 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure pro přihlášení 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Tento článek obsahuje příklady skriptů Powershellu a rozhraní příkazového řádku pro přihlašování pomocí spravované identity pro instanční objekt služby prostředků Azure a doprovodné materiály k důležitá témata, jako je zpracování chyb.
+Tento článek poskytuje příklady skriptu PowerShellu a rozhraní příkazového řádku pro přihlášení pomocí spravovaných identit pro instanční objekty prostředků Azure a pokyny k důležitým tématům, jako je zpracování chyb.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
@@ -33,27 +33,27 @@ Tento článek obsahuje příklady skriptů Powershellu a rozhraní příkazové
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Pokud máte v plánu pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure příklady v tomto článku, nezapomeňte nainstalovat nejnovější verzi [prostředí Azure PowerShell](/powershell/azure/install-az-ps) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud máte v úmyslu použít Azure PowerShell nebo příklady Azure CLI v tomto článku, nezapomeňte nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 > [!IMPORTANT]
-> - Všechny ukázkový skript v tomto článku předpokládá, že klient příkazového řádku běží na virtuálním počítači pomocí spravované identity pro prostředky Azure, které jsou povolené. Pomocí funkce "Připojení" virtuálního počítače na webu Azure Portal, se vzdáleně připojit k virtuálnímu počítači. Podrobnosti o povolení spravovaných identit pro prostředky Azure na virtuálním počítači, naleznete v tématu [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md), nebo jeden z variant článků (pomocí Powershellu, rozhraní příkazového řádku, šablonu nebo Azure SADA SDK). 
-> - Aby se zabránilo chybám při přístupu k prostředkům, spravovanou identitu Virtuálního počítače se musí předávat aspoň "Čtenář, získat přístup v příslušeného oboru (virtuální počítač nebo vyšší) umožňující operace Azure Resource Manageru ve virtuálním počítači. Zobrazit [přiřazení spravovaných identit pro prostředky Azure přístup k prostředku na webu Azure portal](howto-assign-access-portal.md) podrobnosti.
+> - Všechny ukázkové skripty v tomto článku předpokládají, že klient příkazového řádku je spuštěný na virtuálním počítači se spravovanými identitami pro prostředky Azure. Pomocí funkce připojit k VIRTUÁLNÍmu počítači ve Azure Portal se můžete vzdáleně připojit k vašemu VIRTUÁLNÍmu počítači. Podrobnosti o povolení spravovaných identit pro prostředky Azure na virtuálním počítači najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md)nebo některého z článků variant (pomocí PowerShellu, rozhraní příkazového řádku, šablony nebo sady Azure SDK). 
+> - Aby se zabránilo chybám při přístupu k prostředkům, musí mít spravovaná identita virtuálního počítače alespoň přístup čtenářů v příslušném oboru (virtuální počítač nebo vyšší), aby bylo možné Azure Resource Manager operace na virtuálním počítači. Podrobnosti najdete v tématu [přiřazení spravovaných identit pro prostředky Azure přístup k prostředku pomocí Azure Portal](howto-assign-access-portal.md) .
 
 ## <a name="overview"></a>Přehled
 
-Poskytuje spravované identity pro prostředky Azure [instanční objekt](../develop/developer-glossary.md#service-principal-object) , což je [vytvořené při povolování spravovaných identit pro prostředky Azure](overview.md#how-does-it-work) na virtuálním počítači. Instanční objekt můžete udělen přístup k prostředkům Azure a použít jako identitu, skript nebo příkazového řádku klienti pro přihlašování a přístupu k prostředkům. Tradičně aby bylo možné přistupovat k zabezpečeným prostředkům v rámci své vlastní identity, skript klienta by potřeba:  
+Spravované identity pro prostředky Azure poskytují [objekt instančního objektu](../develop/developer-glossary.md#service-principal-object) , který se [vytvoří po povolení spravovaných identit pro prostředky Azure](overview.md#how-does-it-work) na virtuálním počítači. Instančnímu objektu se může udělit přístup k prostředkům Azure a používá se jako identita klienty skriptu a příkazového řádku pro přihlášení a přístup k prostředkům. Aby bylo možné přistupovat k zabezpečeným prostředkům v rámci vlastní identity, je třeba, aby klient skriptu:  
 
-   - být registrován a vyjádření souhlasu s Azure AD jako důvěrné nebo webové klientské aplikace
-   - Přihlaste se pod jeho instančnímu objektu služby, pomocí přihlašovacích údajů aplikace (které by mohly vložené do skriptu)
+   - musí být zaregistrované a odsouhlasené s Azure AD jako důvěrná/Webová klientská aplikace.
+   - Přihlaste se pod svým instančním objektem a použijte přihlašovací údaje aplikace (které jsou ve skriptu nejspíš vložené).
 
-Pomocí spravované identity pro prostředky Azure skript klienta už musí udělat, jak se můžete přihlásit pod spravovaným identitám pro instanční objekt prostředků Azure. 
+Se spravovanými identitami pro prostředky Azure již není nutné, aby klient s vaším skriptem, jak se může přihlásit pod spravovanými identitami pro objekt služby Azure Resources. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Tento skript ukazuje, jak:
+Následující skript ukazuje, jak:
 
-1. Přihlaste se k Azure AD v rámci spravovanou identitu Virtuálního počítače pro instanční objekt prostředků Azure  
-2. Volání Azure Resource Manageru a získat ID instančního objektu služby Virtuálního počítače. Rozhraní příkazového řádku se stará o správu token pořízení a použití pro vás automaticky. Nezapomeňte nahradit název vašeho virtuálního počítače `<VM-NAME>`.  
+1. Přihlaste se ke službě Azure AD v části spravovaná identita virtuálního počítače pro objekt služby Azure sources.  
+2. Zavolejte Azure Resource Manager a Získejte ID objektu služby virtuálního počítače. CLI se postará o správu získání a používání tokenu automaticky. Nezapomeňte použít název virtuálního počítače pro `<VM-NAME>`.  
 
    ```azurecli
    az login --identity
@@ -64,10 +64,10 @@ Tento skript ukazuje, jak:
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Tento skript ukazuje, jak:
+Následující skript ukazuje, jak:
 
-1. Přihlaste se k Azure AD v rámci spravovanou identitu Virtuálního počítače pro instanční objekt prostředků Azure  
-2. Volání Azure Resource Manageru rutiny pro získání informací o virtuálním počítači. Prostředí PowerShell se stará o správu využití tokenu pro vás automaticky.  
+1. Přihlaste se ke službě Azure AD v části spravovaná identita virtuálního počítače pro objekt služby Azure sources.  
+2. Pokud chcete získat informace o virtuálním počítači, zavolejte rutinu Azure Resource Manager. PowerShell se postará o automatické řízení použití tokenu.  
 
    ```azurepowershell
    Add-AzAccount -identity
@@ -78,27 +78,27 @@ Tento skript ukazuje, jak:
    echo "The managed identity for Azure resources service principal ID is $spID"
    ```
 
-## <a name="resource-ids-for-azure-services"></a>ID prostředků služeb Azure
+## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 
-Zobrazit [, že podpora Azure AD ověřování služby Azure](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) seznam prostředků, které podporují služby Azure AD a prošel testováním s využitím spravované identity pro prostředky Azure a jejich odpovídající ID prostředků.
+V tématu [služby Azure, které podporují ověřování Azure AD](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) , najdete seznam prostředků, které podporují Azure AD a byly testovány se spravovanými identitami pro prostředky Azure a jejich příslušnými ID prostředků.
 
 ## <a name="error-handling-guidance"></a>Pokyny pro zpracování chyb 
 
-Odpovědi, jako je například následující může znamenat, že spravovanou identitu Virtuálního počítače pro prostředky Azure nebyla nakonfigurována správně:
+Odpovědi, jako například následující, mohou znamenat, že spravovaná identita virtuálního počítače pro prostředky Azure nebyla správně nakonfigurována:
 
-- PowerShell: *Invoke-WebRequest: Nelze se připojit ke vzdálenému serveru*
-- CLI: *MSI: Nepovedlo se načíst token z `http://localhost:50342/oauth2/token` s chybou "HTTPConnectionPool (host ="localhost", port = 50342)* 
+- PowerShell: *Invoke-WebRequest: nejde se připojit ke vzdálenému serveru.*
+- CLI: *MSI: Nepodařilo se načíst token z `http://localhost:50342/oauth2/token` s chybou HTTPConnectionPool (host = ' localhost ', port = 50342)* 
 
-Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure ve [webu Azure portal](https://portal.azure.com) a:
+Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure v [Azure Portal](https://portal.azure.com) a:
 
-- Přejděte na **Identity** stránce a zajištění **přiřazenou systémem** je nastavená na "Ano".
-- Přejděte **rozšíření** stránce a ujistěte se spravovaným identitám pro rozšíření prostředků Azure **(plánovaná k převedení na zastaralého v lednu 2019)** úspěšné nasazení.
+- Přejít na stránku **Identita** a zajistěte, aby byl **přiřazený systém** nastaven na Ano.
+- Přejít na stránku **rozšíření** a ujistěte se, že se úspěšně nasadily rozšíření spravované identity pro prostředky Azure **(plánované pro vyřazení z ledna 2019)** .
 
-Pokud je buď nesprávný, budete muset znovu nasadit spravované identity pro prostředky Azure pro váš prostředek znovu, nebo řešení potíží s nasazení se nezdařilo. Zobrazit [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače.
+Pokud je některá z těchto chybná, možná budete muset znovu nasadit spravované identity pro prostředky Azure ve svém prostředku nebo vyřešit chybu nasazení. Pokud potřebujete pomoc s konfigurací virtuálních počítačů, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Povolit spravovaným identitám pro prostředky Azure na Virtuálním počítači Azure, najdete v článku [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu](qs-configure-powershell-windows-vm.md), nebo [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Azure CLI](qs-configure-cli-windows-vm.md)
+- Pokud chcete povolit spravované identity pro prostředky Azure na virtuálním počítači Azure, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](qs-configure-powershell-windows-vm.md)nebo [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI](qs-configure-cli-windows-vm.md) .
 
 
 

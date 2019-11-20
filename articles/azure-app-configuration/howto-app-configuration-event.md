@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326600"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185179"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Rychlý start: Směrování událostí konfigurace aplikace Azure do webového koncového bodu pomocí Azure CLI
+# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Rychlý Start: směrování událostí konfigurace aplikací Azure do webového koncového bodu pomocí Azure CLI
 
 V tomto rychlém startu se dozvíte, jak nastavit odběry událostí konfigurace aplikací Azure pro odesílání událostí úprav klíč-hodnota do webového koncového bodu. Uživatelé Azure App Configuration se můžou přihlásit k odběru událostí, které se generují při změně klíčových hodnot. Tyto události mohou aktivovat Webhooky, Azure Functions, Azure Storage fronty nebo jakékoli jiné obslužné rutiny událostí, které Azure Event Grid podporuje. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration"></a>Vytvoření konfigurace aplikace
 
-Nahraďte `<appconfig_name>` jedinečným názvem vaší konfigurace aplikace a `<resource_group_name>` skupinou prostředků, kterou jste vytvořili dříve. Název musí být jedinečný, protože se používá jako název DNS.
+Nahraďte `<appconfig_name>` jedinečným názvem vaší konfigurace aplikace a `<resource_group_name>` se skupinou prostředků, kterou jste vytvořili dříve. Název musí být jedinečný, protože se používá jako název DNS.
 
 ```azurecli-interactive
 az appconfig create \

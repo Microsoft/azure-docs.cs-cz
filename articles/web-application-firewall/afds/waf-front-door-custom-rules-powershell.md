@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zásad firewallu webových aplikací (WAF) s vlastními pravidly a výchozí Ruse sadou pro front-Azure PowerShell
+title: Konfigurace vlastních pravidel WAF & sada výchozích pravidel pro Azure front-dveří
 description: Naučte se konfigurovat zásady WAF, které se skládají z vlastních i spravovaných pravidel pro existující koncový bod služby front-dveří.
 services: web-application-firewall
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: fec1ed5d51c4afe43df513b54595b4ce1e2f4bbb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512545"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186631"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurace zásad brány firewall webových aplikací pomocí Azure PowerShell
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak nakonfigurovat zásady WAF, které se skládaj
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s nastavením zásady omezení četnosti, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 

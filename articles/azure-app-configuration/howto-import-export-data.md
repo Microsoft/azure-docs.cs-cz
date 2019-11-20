@@ -1,6 +1,6 @@
 ---
-title: Import a export dat s konfigurací aplikace Azure | Dokumentace Microsoftu
-description: Zjistěte, jak importovat nebo exportovat data do nebo z konfigurace aplikace pro Azure
+title: Import nebo export dat pomocí konfigurace aplikace Azure | Microsoft Docs
+description: Přečtěte si, jak importovat nebo exportovat data z konfigurace aplikace Azure nebo z ní.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,62 +12,62 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 377c5088d39821e87412c517540b3190b0a14a00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9780dc34aa6b146fe62b11586cbab46825e60535
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393272"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185157"
 ---
 # <a name="import-or-export-configuration-data"></a>Import nebo export konfiguračních dat
 
-Azure data konfigurace aplikací podporuje import a export operace. Pomocí těchto operací pro práci s konfiguračními daty v datech hromadně a serveru exchange mezi úložiště konfigurace aplikace a kód projektu. Můžete například nastavit konfiguraci jeden obchod s aplikacemi pro testování a druhý k produkci. Potom můžete kopírovat nastavení aplikace mezi nimi prostřednictvím souboru tak, aby je nemuseli zadávat data dvakrát.
+Konfigurace aplikace Azure podporuje operace importu a exportu dat. Tyto operace použijte pro práci s konfiguračními daty v hromadných a výměnných datech mezi úložištěm konfigurace aplikace a projektem kódu. Můžete například nastavit jedno úložiště konfigurace aplikace pro testování a další pro produkční prostředí. Pak můžete zkopírovat nastavení aplikace mezi nimi prostřednictvím souboru, abyste nemuseli zadávat data dvakrát.
 
 Tento článek poskytuje návod pro import a export dat pomocí konfigurace aplikace.
 
 ## <a name="import-data"></a>Import dat
 
-Import přenese konfigurace úložiště dat do konfigurace aplikace z existujícího zdroje, nemusí ručně zadávat. Můžete migrovat data do obchodu s aplikacemi konfigurace nebo agregovaná data z různých zdrojů pomocí funkce importu. Konfigurace aplikací podporuje import ze souboru JSON, YAML nebo vlastnosti.
+Import přináší konfigurační data do úložiště konfigurace aplikace z existujícího zdroje namísto ručního zadání. Pomocí funkce Import můžete migrovat data do úložiště konfigurace aplikace nebo agregovat data z více zdrojů. Konfigurace aplikace podporuje import ze souboru JSON, YAML nebo Properties.
 
-Import dat pomocí [webu Azure portal](https://portal.azure.com) nebo [rozhraní příkazového řádku Azure](./scripts/cli-import.md). Na webu Azure Portal postupujte podle těchto kroků:
+Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pomocí [Azure CLI](./scripts/cli-import.md). V Azure Portal postupujte podle následujících kroků:
 
-1. Přejděte do úložiště konfigurace vaší aplikace a vyberte **Import/Export**.
+1. Přejděte do úložiště konfigurace aplikace a vyberte **Import/export**.
 
-2. Na **Import** kartu, vyberte možnost **zdroje služby** > **konfigurační soubor**.
+2. Na kartě **Import** vyberte **zdrojové služby** > **konfigurační soubor**.
 
 3. Vyberte **pro jazyk** > **typ souboru**.
 
-4. Vyberte **složky** ikonu a přejděte na soubor k importu.
+4. Vyberte ikonu **složky** a vyhledejte soubor, který chcete naimportovat.
 
-    ![Import souboru](./media/import-file.png)
+    ![Importovat soubor](./media/import-file.png)
 
-5. Vyberte **oddělovač**a volitelně zadejte **předpony** pro importované názvy klíčů.
+5. Vyberte **oddělovač**a volitelně zadejte **předponu** , která se má použít pro importované názvy klíčů.
 
 6. Volitelně můžete vybrat **popisek**.
 
-7. Vyberte **použít** na dokončení importu.
+7. Pro dokončení importu vyberte **použít** .
 
-    ![Importovat soubor dokončeno](./media/import-file-complete.png)
+    ![Import souboru byl dokončen.](./media/import-file-complete.png)
 
 ## <a name="export-data"></a>Exportovat data
 
-Export zapíše konfigurační data uložená v konfiguraci aplikace na jiné místo. Pomocí funkce exportu, třeba k uložení dat v app storu konfigurační soubor, který je vložený kódem aplikace během nasazení.
+Export vypíše konfigurační data uložená v konfiguraci aplikace do jiného cílového umístění. Použijte funkci exportu, například k uložení dat v úložišti konfigurace aplikace do souboru, který je vložený s vaším kódem aplikace během nasazení.
 
-Exportovat data jedním [webu Azure portal](https://portal.azure.com) nebo [rozhraní příkazového řádku Azure](./scripts/cli-export.md). Na webu Azure Portal postupujte podle těchto kroků:
+Exportujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pomocí [Azure CLI](./scripts/cli-export.md). V Azure Portal postupujte podle následujících kroků:
 
-1. Přejděte do úložiště konfigurace vaší aplikace a vyberte **Import/Export**.
+1. Přejděte do úložiště konfigurace aplikace a vyberte **Import/export**.
 
-2. Na **exportovat** kartu, vyberte možnost **Cílová služba** > **konfigurační soubor**.
+2. Na kartě **exportovat** vyberte **cílovou službu** > **konfigurační soubor**.
 
-3. Volitelně můžete zadat **předpony** a vyberte **popisek** a v daném okamžiku pro klíče nelze exportovat.
+3. Volitelně můžete zadat **předponu** a vybrat **popisek** a časový okamžik pro export klíčů.
 
 4. Vyberte **typ souboru** > **oddělovač**.
 
-5. Vyberte **použít** na dokončení exportu.
+5. Pro dokončení exportu vyberte **použít** .
 
-    ![Exportujte soubor dokončeno](./media/export-file-complete.png)
+    ![Export souboru byl dokončen.](./media/export-file-complete.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)  
+> [Vytvoření webové aplikace v ASP.NET Core](./quickstart-aspnet-core-app.md)  

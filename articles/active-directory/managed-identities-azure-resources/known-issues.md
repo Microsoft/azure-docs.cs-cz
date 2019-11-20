@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
+title: Nejčastější dotazy a známé problémy se spravovanými identitami – Azure AD
 description: Známé problémy se spravovanými identitami pro prostředky Azure.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d882b34bc4f057035a16b7916249cfe8f0b8d0b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983435"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183890"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
 
@@ -64,11 +64,11 @@ Mezi výhody použití spravovaných identit pro prostředky Azure přes IMDS pa
 Rozšíření spravované identity pro prostředky Azure Resources je stále k dispozici; už ale nevyvíjíme nové funkce. Doporučujeme, abyste přepnuli na použití koncového bodu IMDS. 
 
 Některá omezení používání koncového bodu rozšíření virtuálních počítačů jsou:
-- Omezená podpora distribucí pro Linux: CoreOS stabilní, CentOS 7,1, Red Hat 7,2, Ubuntu 15,04, Ubuntu 16,04
+- Omezená podpora pro distribuce Linux: CoreOS stabilní, CentOS 7,1, Red Hat 7,2, Ubuntu 15,04, Ubuntu 16,04
 - K virtuálnímu počítači se dají přiřadit jenom 32 spravované identity přiřazené uživateli.
 
 
-Poznámka: Rozšíření spravované identity pro prostředky Azure Resources v lednu 2019 nebude podporovat. 
+Poznámka: v lednu 2019 se rozšíření Managed identity for Azure Resources Extension nebude podporovat. 
 
 Další informace o Azure Instance Metadata Service najdete v [dokumentaci k IMDS](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service) .
 
@@ -84,8 +84,8 @@ Ne. Spravované identity v současné době nepodporují scénáře pro více ad
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jaká oprávnění Azure RBAC jsou vyžadována pro spravovanou identitu prostředku? 
 
-- Spravovaná identita přiřazená systémem: K prostředku budete potřebovat oprávnění k zápisu. Například pro virtuální počítače potřebujete Microsoft. COMPUTE/virtualMachines/Write. Tato akce je zahrnutá v předdefinovaných rolích specifických pro prostředky, jako je [Přispěvatel virtuálních počítačů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- Spravovaná identita přiřazená uživatelem: K prostředku budete potřebovat oprávnění k zápisu. Například pro virtuální počítače potřebujete Microsoft. COMPUTE/virtualMachines/Write. Kromě spravované identity se přiřazení role [operátora identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) .
+- Spravovaná identita přiřazená systémem: ke zdroji potřebujete oprávnění k zápisu. Například pro virtuální počítače potřebujete Microsoft. COMPUTE/virtualMachines/Write. Tato akce je zahrnutá v předdefinovaných rolích specifických pro prostředky, jako je [Přispěvatel virtuálních počítačů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Spravovaná identita přiřazená uživatelem: k prostředku potřebujete oprávnění k zápisu. Například pro virtuální počítače potřebujete Microsoft. COMPUTE/virtualMachines/Write. Kromě spravované identity se přiřazení role [operátora identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) .
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak restartujete spravované identity pro rozšíření prostředků Azure?
 Pokud se rozšíření zastaví na Windows a určitých verzích Linux, dá se k ručnímu restartování použít následující rutina:
@@ -95,8 +95,8 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 ```
 
 Kde: 
-- Název a typ rozšíření pro Windows: ManagedIdentityExtensionForWindows
-- Název a typ rozšíření pro Linux: ManagedIdentityExtensionForLinux
+- Název a typ rozšíření pro Windows je: ManagedIdentityExtensionForWindows.
+- Název a typ rozšíření pro Linux je: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Známé problémy
 

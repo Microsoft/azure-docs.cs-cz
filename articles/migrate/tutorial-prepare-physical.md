@@ -1,19 +1,19 @@
 ---
-title: Příprava fyzických serverů na posouzení pomocí Azure Migrateho posouzení serveru
-description: V této části najdete popis postupu při přípravě na posouzení a migraci fyzických serverů do Azure s využitím posouzení Azure Migrate serveru.
+title: Příprava fyzických serverů pro posouzení nebo migraci pomocí Azure Migrate
+description: Přečtěte si, jak připravit na posouzení/migraci fyzických serverů s Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 075c60aed458be8a4bf45fafb2d06757862ff5ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158579"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196399"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Příprava na posouzení a migraci fyzických serverů do Azure
 

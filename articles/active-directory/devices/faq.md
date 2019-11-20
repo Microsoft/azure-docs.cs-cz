@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: MT
+ms.openlocfilehash: f593d5ea621ad450eb82388416534e40df36e2d5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809255"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184195"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -69,7 +69,7 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>Otázka: zařízení je zakázané nebo odstraněné v Azure Portal nebo pomocí Windows PowerShellu. Ale místní stav zařízení říká, že je pořád zaregistrovaný. Co mám dělat?
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>Otázka: zařízení je zakázané nebo odstraněné v Azure Portal nebo pomocí Windows PowerShellu. Ale místní stav zařízení říká, že je pořád zaregistrovaný. Co bych měl/a dělat?
 
 **A:** Tato operace je záměrné. V takovém případě zařízení nemá přístup k prostředkům v cloudu. Správci můžou tuto akci provést u zastaralých, ztracených nebo odcizených zařízení, aby se zabránilo neoprávněnému přístupu. Pokud se tato akce prováděla omylem, budete muset zařízení znovu povolit nebo znovu zaregistrovat, jak je popsáno níže.
 
@@ -119,7 +119,7 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>Otázka: Služba registrace zařízení s Windows 10 v Azure AD podporuje čipy TPM v režimu FIPS?
 
-**A:** Ne, aktuálně registrace zařízení ve Windows 10 pro všechny stavy zařízení – hybridní připojení ke službě Azure AD, připojení k Azure AD a zaregistrovanou službu Azure AD – nepodporuje čipy TPM v režimu FIPS. K úspěšnému připojení ke službě Azure AD a její registraci je potřeba, aby byl pro čipy TPM na těchto zařízeních vypnutý režim FIPS.
+**A:** Registrace zařízení s Windows 10 je podporovaná jenom pro čip TPM kompatibilní se standardem FIPS 2,0 a není podporovaná pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat v připojení k Azure AD nebo k hybridní službě Azure AD, zakázat. Všimněte si, že Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. 
 
 ---
 

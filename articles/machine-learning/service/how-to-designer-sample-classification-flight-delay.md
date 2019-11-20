@@ -1,7 +1,7 @@
 ---
-title: 'Návrhář: klasifikace, předpověď zpoždění letů'
+title: 'Návrhář: příklad zpoždění letu'
 titleSuffix: Azure Machine Learning
-description: V tomto článku se dozvíte, jak vytvořit model strojového učení pro předpověď zpoždění letu pomocí návrháře přetahování a vlastního kódu R.
+description: Sestavte klasifikátor a pomocí vlastního kódu R předpovídat zpoždění letů pomocí návrháře Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 06d158fb228ea82e61e785407fc0c59d66c2de15
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647195"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196021"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Ukázka 6 – klasifikace: předpověď zpoždění letu pomocí R
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Sestavování klasifikátoru & použití R k předpovědi zpoždění letu pomocí návrháře Azure Machine Learning
+
+**Návrhář (Preview) – ukázka 6**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Tento kanál používá historické údaje o letu a počasí k předběžnému předběžnému zpoždění, pokud se naplánovaný osobní let zpozdí o více než 15 minut. K tomuto problému může dojít jako problém klasifikace, předpověď dvou tříd: opožděné nebo včas.

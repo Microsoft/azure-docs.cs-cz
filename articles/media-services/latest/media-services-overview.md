@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 61ffd4857ca9a330a4cb0eeace89791fc0973f70
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575098"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186058"
 ---
 # <a name="azure-media-services-v3-overview"></a>Přehled Azure Media Services V3
 
@@ -54,7 +54,11 @@ Naučte se kódovat a zabalit obsah, streamovat videa na vyžádání, živě vy
 > [!TIP]
 > Než začnete s vývojem, přečtěte si:<br/>* [základní koncepty](concepts-overview.md) (incudes důležité koncepty, jako je balení, kódování a ochrana)<br/>* [vývoj s využitím rozhraní Media Services V3 API](media-services-apis-overview.md) (zahrnuje informace o přístupu k rozhraním API, konvencím pojmenování atd.)
 
-### <a name="quickstarts"></a>Rychlé starty  
+### <a name="sdks"></a>Sady SDK
+
+Začněte vyvíjet pomocí [sad SDK klienta Azure Media Services V3](media-services-apis-overview.md#sdks).
+
+### <a name="quickstarts"></a>Šablony Rychlý start  
 
 V rychlých startech se při rychlém vyzkoušení Media Services v nových zákaznících zobrazují základní pokyny od dne 1.
 

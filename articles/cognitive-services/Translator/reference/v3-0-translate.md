@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 11/12/2019
 ms.author: swmachan
-ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835786"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184793"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3,0: přeložit
 
@@ -33,21 +33,30 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 Parametry žádosti předané řetězci dotazu jsou:
 
+### <a name="required-parameters"></a>Požadované parametry
+
 <table width="100%">
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>verze API-Version</td>
+    <td>api-version</td>
     <td><em>Povinný parametr</em>.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být <code>3.0</code>.</td>
-  </tr>
-  <tr>
-    <td>Výsledkem</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk vstupního textu. Vyhledáním <a href="./v3-0-languages.md">podporovaných jazyků</a> pomocí oboru <code>translation</code> zjistíte, které jazyky jsou k dispozici pro překlad. Pokud parametr <code>from</code> neurčíte, použije se pro určení zdrojového jazyka automatické rozpoznávání jazyka. <br/><br/>Při použití funkce <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamického slovníku</a> je nutné použít parametr <code>from</code>, nikoli funkci autodetection.</td>
   </tr>
   <tr>
     <td>na</td>
     <td><em>Povinný parametr</em>.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z <a href="./v3-0-languages.md">podporovaných jazyků</a> , které jsou zahrnuté v oboru <code>translation</code>. Například použijte <code>to=de</code> k převodu do němčiny.<br/>Je možné překládat na více jazyků současně opakováním parametru v řetězci dotazu. Můžete například použít <code>to=de&to=it</code> k převodu do němčiny a italštiny.</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>Volitelné parametry
+
+<table width="100%">
+  <th width="20%">Parametr dotazu</th>
+  <th>Popis</th>
+  <tr>
+    <td>from</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk vstupního textu. Vyhledáním <a href="./v3-0-languages.md">podporovaných jazyků</a> pomocí oboru <code>translation</code> zjistíte, které jazyky jsou k dispozici pro překlad. Pokud parametr <code>from</code> neurčíte, použije se pro určení zdrojového jazyka automatické rozpoznávání jazyka. <br/><br/>Při použití funkce <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamického slovníku</a> je nutné použít parametr <code>from</code>, nikoli funkci autodetection.</td>
+  </tr>  
   <tr>
     <td>textType</td>
     <td><em>Volitelný parametr</em>.<br/>Definuje, zda je převáděný text prostý text nebo text HTML. Libovolný kód HTML musí být dobře vytvořený, kompletní element. Možné hodnoty jsou: <code>plain</code> (výchozí) nebo <code>html</code>.</td>
@@ -57,7 +66,7 @@ Parametry žádosti předané řetězci dotazu jsou:
     <td><em>Volitelný parametr</em>.<br/>Řetězec určující kategorii (doménu) překladu. Tento parametr slouží k získání překladu z přizpůsobeného systému vytvořeného pomocí <a href="../customization.md">vlastního překladatele</a>. Přidejte ID kategorie z <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">podrobností projektu</a> vlastního překladatele do tohoto parametru pro použití nasazeného přizpůsobeného systému. Výchozí hodnota je: <code>general</code>.</td>
   </tr>
   <tr>
-    <td>ProfanityAction</td>
+    <td>profanityAction</td>
     <td><em>Volitelný parametr</em>.<br/>Určuje, jak by měly být v překladech ošetřeny vulgární výrazy. Možné hodnoty jsou: <code>NoAction</code> (výchozí), <code>Marked</code> nebo <code>Deleted</code>. Pro pochopení způsobů, jak považovat vulgární výrazy, se podívejte na téma <a href="#handle-profanity">zpracování vulgárních výrazů</a>.</td>
   </tr>
   <tr>
@@ -109,7 +118,7 @@ Hlavičky požadavku zahrnují:
     <td><em>Požadovaná hlavička žádosti</em><br/>Délka textu žádosti</td>
   </tr>
   <tr>
-    <td>X – ClientTraceId</td>
+    <td>X-ClientTraceId</td>
     <td><em>Volitelné</em>.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem <code>ClientTraceId</code>.</td>
   </tr>
 </table> 
@@ -129,7 +138,7 @@ Platí následující omezení:
 * Pole může mít maximálně 100 prvků.
 * Celý text zahrnutý v požadavku nesmí být delší než 5 000 znaků včetně mezer.
 
-## <a name="response-body"></a>Tělo odpovědi
+## <a name="response-body"></a>Text odpovědi
 
 Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
 
@@ -155,7 +164,7 @@ Platí následující omezení:
 
     Objekt `transliteration` není zahrnutý v případě, že se nepřekoná přemístění.
 
-    * `alignment`: objekt s jedinou řetězcovou vlastností nazvanou `proj`, která mapuje vstupní text na přeložený text. Informace o zarovnání jsou k dispozici pouze v případě, že parametr žádosti `includeAlignment` `true`. Zarovnání je vráceno jako řetězcová hodnota v následujícím formátu: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dvojtečka odděluje počáteční a koncový index, čárku odděluje jazyky a mezeru odděluje slova. Jedno slovo může být zarovnáno s nula, jedním nebo více slovy v jiném jazyce a zarovnaná slova mohou být nesouvislá. Pokud nejsou k dispozici žádné informace o zarovnání, element zarovnání bude prázdný. Příklady a omezení najdete v tématu [získání informací o zarovnání](#obtain-alignment-information) .
+    * `alignment`: objekt s jedinou řetězcovou vlastností nazvanou `proj`, která mapuje vstupní text na přeložený text. Informace o zarovnání jsou k dispozici pouze v případě, že parametr žádosti `includeAlignment` `true`. Zarovnání je vráceno jako řetězcová hodnota v následujícím formátu: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dvojtečka odděluje počáteční a koncový index, čárku odděluje jazyky a mezeru odděluje slova. O jedno slovo může bylo v souladu s žádným, jedním nebo více slov v jiném jazyce, a může být nesouvislé zarovnané slova. Pokud nejsou k dispozici žádné informace o zarovnání, element zarovnání bude prázdný. Příklady a omezení najdete v tématu [získání informací o zarovnání](#obtain-alignment-information) .
 
     * `sentLen`: objekt vrací hranice věty ve vstupních a výstupních textech.
 

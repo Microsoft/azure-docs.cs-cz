@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 11/17/2019
+ms.openlocfilehash: 3664a7c311e15ce3aa61fc71f98a46e3f2618143
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388052"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184669"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Tvůrce výrazů pro tok dat mapování
 
@@ -53,7 +53,7 @@ Přidejte komentáře ke svým výrazům pomocí jedné řádky a syntaxe více�
 
 ## <a name="regular-expressions"></a>Regulární výrazy
 
-Azure Data Factory jazyk pro datový tok toku dat, [Úplná Referenční dokumentace](https://aka.ms/dataflowexpressions), umožňuje funkce, které zahrnují syntaxi regulárního výrazu. Při použití funkcí regulárních výrazů se Tvůrce výrazů pokusí interpretovat zpětné lomítko (\\) jako řídicí znak sekvence. Při použití zpětných lomítek ve regulárním výrazu buď vložte celý regulární výraz do tiků (\`) nebo použijte dvojité zpětné lomítko.
+Azure Data Factory jazyk pro datový tok toku dat, [Úplná Referenční dokumentace](https://aka.ms/dataflowexpressions), umožňuje funkce, které zahrnují syntaxi regulárního výrazu. Při použití funkcí regulárních výrazů se Tvůrce výrazů pokusí interpretovat zpětné lomítko (\\) jako sekvenci řídicích znaků. Při použití zpětných lomítek ve regulárním výrazu buď vložte celý regulární výraz do impulzů (\`) nebo použijte dvojité zpětné lomítko.
 
 Příklad použití značek
 
@@ -77,6 +77,40 @@ Pomocí funkcí výrazu, které vracejí pole, použijte hranaté závorky [] k 
 
 Pokud máte názvy sloupců, které obsahují speciální znaky nebo mezery, uzavřete název do složených závorek.
 * ```{[dbo].this_is my complex name$$$}```
+
+## <a name="keyboard-shortcuts"></a>Klávesové zkratky
+
+* ```Ctrl-K Ctrl-C```: komentáře k celému řádku
+* ```Ctrl-K Ctrl-U```: odkomentovat
+* ```F1```: Poskytněte příkazy pro Help Editor.
+* ```Alt-Down Arrow```: přesunout aktuální řádek dolů
+* ```Alt-Up Arrow```: přesunout aktuální řádek nahoru
+* ```Cntrl-Space```: zobrazit kontextovou podporu
+
+## <a name="manual-comments"></a>Ruční komentáře
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+Pokud komentář zadáte v horní části výrazu, zobrazí se v textovém poli transformace k dokumentaci vašich transformačních výrazů:
+
+![Komentáře](media/data-flow/comments2.png "Komentáře")
+
+## <a name="convert-to-dates-or-timestamps"></a>Převést na data nebo časová razítka
+
+```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+
+Všimněte si, že pokud chcete do výstupu časového razítka zahrnout řetězcové literály, je potřeba zabalit převod do metody toString ().
+
+## <a name="handling-column-names-with-special-characters"></a>Zpracování názvů sloupců se speciálními znaky
+
+Pokud máte názvy sloupců, které obsahují speciální znaky nebo mezery, uzavřete název do složených závorek.
+
+```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,7 +1,7 @@
 ---
-title: 'Návrhář: předpověď cen aut (regrese)'
+title: 'Návrhář: příklad prediktivních cen aut (rozšířené)'
 titleSuffix: Azure Machine Learning
-description: V tomto článku se dozvíte, jak vytvořit složitý kanál strojového učení bez nutnosti psát jediný řádek kódu pomocí návrháře (Preview). Naučte se, jak vytvořit a porovnat více regresních modelů a předpovídat cenu automobilu na základě technických funkcí.
+description: Sestavujte & Porovnejte více modelů ML regrese a předpovídat cenu automobilu na základě technických funkcí v Návrháři Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647956"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196065"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Ukázka 2 – regrese: předpověď cen a porovnávání algoritmů
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Školení & Porovnejte více regresních modelů a předpovídat ceny automobilů pomocí návrháře Azure Machine Learning
+
+**Návrhář (Preview) – ukázka 2**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Naučte se vytvářet kanály strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview). Tato ukázka vlaků a porovnává více regresních modelů a předpovídá cenu auta na základě svých technických funkcí. Nabídneme vám odůvodnění pro volby provedené v tomto kanálu, abyste se mohli vypořádat s vlastními problémy machine learningu.

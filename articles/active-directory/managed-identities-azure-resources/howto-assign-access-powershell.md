@@ -1,5 +1,5 @@
 ---
-title: Přiřazení spravovanou identitu přístup k prostředku Azure pomocí Powershellu
+title: Přiřazení spravované identity k prostředku pomocí PowerShellu – Azure AD
 description: Podrobné pokyny pro přiřazování spravovanou identitu na jeden prostředek, přístup k do jiného prostředku pomocí Powershellu.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff36be7f87d0dd9e5cac5ee7f788eec0cda5a9fd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82fa5019e740d16d0b97111fcf8dbc4f6c91d57b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290681"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184003"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Přiřazení přístupu spravovanou identitu prostředku pomocí Powershellu
 
@@ -45,14 +45,14 @@ Po povolení identity spravované v prostředku Azure, [jako je například virt
    ```powershell
    Connect-AzAccount
    ```
-2. V tomto příkladu jsme dáváte přístup virtuálních počítačů Azure do účtu úložiště. Nejprve používáme [rutiny Get-AzVM](/powershell/module/az.compute/get-azvm) získat instanční objekt služby pro virtuální počítač s názvem `myVM`, která byla vytvořena, když jsme povolili se identita spravované. Potom použijte [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) poskytnout virtuální počítač **čtečky** přístup na účet úložiště s názvem `myStorageAcct`:
+2. V tomto příkladu jsme dáváte přístup virtuálních počítačů Azure do účtu úložiště. Nejprve pomocí [Get-AzVM](/powershell/module/az.compute/get-azvm) Získejte instanční objekt pro virtuální počítač s názvem `myVM`, který byl vytvořen, když jsme povolili spravovanou identitu. Pak pomocí [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) udělte **čtenářům** virtuálního počítače přístup k účtu úložiště s názvem `myStorageAcct`:
 
     ```powershell
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
     New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Spravovaná identita pro prostředky Azure – přehled](overview.md)
 - Povolit spravované identity na Virtuálním počítači Azure, najdete v článku [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu](qs-configure-powershell-windows-vm.md).

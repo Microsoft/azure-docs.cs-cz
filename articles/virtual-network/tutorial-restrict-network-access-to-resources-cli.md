@@ -1,10 +1,10 @@
 ---
-title: Omezení síťového přístupu k prostředkům PaaS – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: V tomto článku se dozvíte, jak k omezení a omezení síťového přístupu k prostředkům Azure, jako jsou služby Azure Storage a Azure SQL Database s koncovými body služby virtuální sítě pomocí Azure CLI.
+title: Omezení síťového přístupu k prostředkům PaaS – Azure CLI
+description: V tomto článku se dozvíte, jak omezit a omezit síťový přístup k prostředkům Azure, jako jsou Azure Storage a Azure SQL Database, pomocí koncových bodů služby virtuální sítě pomocí rozhraní příkazového řádku Azure CLI.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: e52829723b41f9274251ebe7432aa659251c0da4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2dcc714bc9052dd51f114e24f0b9bd74b87480c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695127"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186409"
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezení síťového přístupu k prostředkům PaaS s koncovými body služby virtuální sítě pomocí Azure CLI
+# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezení síťového přístupu k prostředkům PaaS pomocí koncových bodů služby virtuální sítě pomocí Azure CLI
 
 Koncové body služby pro virtuální síť umožňují omezení síťového přístupu k prostředkům některých služeb Azure na podsíť virtuální sítě. Můžete také odebrat internetový přístup k prostředkům. Koncové body služeb poskytují přímé připojení z vaší virtuální sítě k podporovaným službám Azure a umožňují pro přístup ke službám Azure použít privátní adresní prostor virtuální sítě. Provoz směřující do prostředků Azure prostřednictvím koncových bodů služby zůstává vždy v páteřní síti Microsoft Azure. V tomto článku získáte informace o těchto tématech:
 
@@ -43,7 +43,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Před vytvořením virtuální sítě, je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Před vytvořením virtuální sítě je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive
 az group create \
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-Vytvoření virtuální sítě s jednou podsítí s [az network vnet vytvořit](/cli/azure/network/vnet).
+Vytvořte virtuální síť s jednou podsítí pomocí [AZ Network VNet Create](/cli/azure/network/vnet).
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Povolení koncového bodu služby 
 
-Můžete povolit koncové body služby pouze pro služby, které podporují koncových bodů služby. Zobrazit povolený koncový bod služby k dispozici v umístění Azure s [az síťové připojení typu vnet seznam endpoint služby](/cli/azure/network/vnet). Následující příklad vrátí seznam hodnot povolený koncový bod služby služeb dostupných v *eastus* oblasti. Seznam služeb, vrátí se zvětší v průběhu času dalších služeb Azure jsou povolený koncový bod služby.
+Koncové body služby můžete povolit pouze pro služby, které podporují koncové body služby. Zobrazení služeb s povoleným koncovým bodem služby dostupných v umístění Azure pomocí [AZ Network VNet list-Endpoint-Services](/cli/azure/network/vnet). Následující příklad vrátí seznam služeb s povoleným koncovým bodem služby dostupných v oblasti *eastus* . Seznam vrácených služeb bude v průběhu času růst, protože se další služby Azure stávají koncovým bodem služby.
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-Vytvoření další podsítě ve virtuální síti s [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet). V tomto příkladu koncový bod služby pro *Microsoft.Storage* pro podsíť se vytvoří: 
+Vytvořte další podsíť ve virtuální síti pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet). V tomto příkladu se pro podsíť vytvoří koncový bod služby pro *Microsoft. Storage* : 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Omezení síťového přístupu pro podsíť
 
-Vytvořte skupinu zabezpečení sítě pomocí [az network nsg vytvořit](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNsgPrivate*.
+Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNsgPrivate*.
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-Přidružení skupiny zabezpečení sítě k *privátní* podsíť s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet). V následujícím příkladu *myNsgPrivate* skupiny zabezpečení sítě *privátní* podsítě:
+Přidružte skupinu zabezpečení sítě k *privátní* podsíti pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet). Následující příklad přidruží skupinu zabezpečení sítě *myNsgPrivate* k *privátní* podsíti:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-Vytvoření pravidla zabezpečení se [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule). Pravidlo, které následuje umožňuje odchozí přístup k veřejné IP adresy přiřazené příslušné službě Azure Storage: 
+Vytvořte pravidla zabezpečení pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule). Následující pravidlo umožňuje odchozí přístup k veřejným IP adresám přiřazeným službě Azure Storage: 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Každá skupina zabezpečení sítě obsahuje řadu [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules). Toto pravidlo, který následuje přepíše výchozí pravidlo zabezpečení, které povolí odchozí přístup na všechny veřejné IP adresy. `destination-address-prefix "Internet"` Možnost odepírá přístup na všechny veřejné IP adresy. Toto pravidlo, z důvodu vyšší prioritu, který umožňuje přístup k veřejné IP adresy služby Azure Storage přepíše předchozí pravidlo.
+Každá skupina zabezpečení sítě obsahuje několik [výchozích pravidel zabezpečení](security-overview.md#default-security-rules). Následující pravidlo přepisuje výchozí pravidlo zabezpečení, které umožňuje odchozí přístup ke všem veřejným IP adresám. Možnost `destination-address-prefix "Internet"` zamítne odchozí přístup ke všem veřejným IP adresám. Předchozí pravidlo přepisuje toto pravidlo z důvodu vyšší priority, což umožňuje přístup k veřejným IP adresám Azure Storage.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -137,7 +137,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Následující pravidlo umožní provoz SSH příchozí provoz do podsítě z libovolného místa. Toto pravidlo přepíše výchozí pravidlo zabezpečení, které zakazuje veškerý příchozí provoz z internetu. SSH je pro podsíť povolená z tak, aby připojení můžete otestovat v pozdějším kroku.
+Následující pravidlo umožňuje příchozí komunikaci protokolu SSH do podsítě odkudkoli. Toto pravidlo přepíše výchozí pravidlo zabezpečení, které zakazuje veškerý příchozí provoz z internetu. K podsíti je povolený SSH, aby bylo možné otestovat připojení v pozdějším kroku.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -156,11 +156,11 @@ az network nsg rule create \
 
 ## <a name="restrict-network-access-to-a-resource"></a>Omezení síťového přístupu k prostředku
 
-Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným prostřednictvím služeb Azure povolených v koncových bodech se u jednotlivých služeb liší. Konkrétní kroky pro jednotlivé služby najdete v dokumentaci příslušné služby. Zbývající část tohoto článku obsahuje kroky k omezení síťového přístupu k účtu služby Azure Storage, jako příklad.
+Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným prostřednictvím služeb Azure povolených v koncových bodech se u jednotlivých služeb liší. Konkrétní kroky pro jednotlivé služby najdete v dokumentaci příslušné služby. Zbývající část tohoto článku obsahuje kroky pro omezení síťového přístupu pro účet Azure Storage jako příklad.
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-Vytvoření účtu služby Azure storage s [vytvořit účet úložiště az](/cli/azure/storage/account). Nahraďte `<replace-with-your-unique-storage-account-name>` s názvem, který je jedinečný ve všech umístěních Azure, mezi 3 až 24 znaků a používat pouze číslice a malá písmena.
+Vytvořte účet úložiště Azure pomocí [AZ Storage Account Create](/cli/azure/storage/account). Nahraďte `<replace-with-your-unique-storage-account-name>` názvem, který je jedinečný v rámci všech umístění Azure, mezi 3-24 znaků a s použitím pouze číslic a malých písmen.
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -172,7 +172,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-Po vytvoření účtu úložiště načíst připojovací řetězec pro účet úložiště do proměnné s [az storage account show-connection-string](/cli/azure/storage/account). Připojovací řetězec se používá k vytvoření sdílené složky v pozdějším kroku.
+Po vytvoření účtu úložiště načtěte připojovací řetězec pro účet úložiště do proměnné pomocí [AZ Storage Account show-Connection-String](/cli/azure/storage/account). Připojovací řetězec se používá k vytvoření sdílené složky v pozdějším kroku.
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -182,7 +182,7 @@ saConnectionString=$(az storage account show-connection-string \
   --out tsv)
 ```
 
-<a name="account-key"></a>Zobrazit obsah proměnné a poznamenejte si hodnotu pro **AccountKey** vrací výstup, protože se používá v pozdější fázi.
+<a name="account-key"></a>Zobrazte obsah proměnné a poznamenejte si hodnotu **AccountKey** vrácenou ve výstupu, protože se používá v pozdějším kroku.
 
 ```azurecli-interactive
 echo $saConnectionString
@@ -190,7 +190,7 @@ echo $saConnectionString
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Vytvoření sdílené složky v účtu úložiště
 
-Vytvoření sdílené složky v účtu úložiště pomocí [vytvořit sdílenou složku úložiště az](/cli/azure/storage/share). V pozdějším kroku je potvrďte síťový přístup k ní připojit tuto sdílenou složku souborového.
+Vytvořte sdílenou složku v účtu úložiště pomocí [AZ Storage Share Create](/cli/azure/storage/share). V pozdějším kroku je tato sdílená složka připojená k ověření přístupu k síti.
 
 ```azurecli-interactive
 az storage share create \
@@ -199,9 +199,9 @@ az storage share create \
   --connection-string $saConnectionString > /dev/null
 ```
 
-### <a name="deny-all-network-access-to-a-storage-account"></a>Zakázat všechny přístup k účtu úložiště
+### <a name="deny-all-network-access-to-a-storage-account"></a>Odepřít všem síťovým přístupům účet úložiště
 
-Účty úložiště ve výchozím nastavení přijímají síťová připojení z klientů v jakékoli síti. Omezení přístupu k vybrané sítě, změňte výchozí akci na *Odepřít* s [aktualizace účtu úložiště az](/cli/azure/storage/account). Jakmile byl odepřen přístup k síti, účet úložiště není přístupná z libovolné sítě.
+Účty úložiště ve výchozím nastavení přijímají síťová připojení z klientů v jakékoli síti. Chcete-li omezit přístup k vybraným sítím, změňte výchozí akci na *Odepřít* pomocí [AZ Storage Account Update](/cli/azure/storage/account). Po odepření přístupu k síti není účet úložiště dostupný z žádné sítě.
 
 ```azurecli-interactive
 az storage account update \
@@ -212,7 +212,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>Povolení síťového přístupu z podsítě
 
-Povolení síťového přístupu k účtu úložiště u *privátní* podsíť s [přidat účet úložiště az network-rule](/cli/azure/storage/account/network-rule).
+Povolte síťový přístup k účtu úložiště z *privátní* podsítě pomocí [AZ Storage Account Network-Rule Add](/cli/azure/storage/account/network-rule).
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -227,7 +227,7 @@ Pokud chcete otestovat síťový přístup k účtu úložiště, nasaďte do ka
 
 ### <a name="create-the-first-virtual-machine"></a>Vytvoření prvního virtuálního počítače
 
-Vytvářet virtuální počítače *veřejné* podsíť s [az vm vytvořit](/cli/azure/vm). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Vytvořte virtuální počítač ve *veřejné* podsíti pomocí [AZ VM Create](/cli/azure/vm). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -239,7 +239,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítače Azure CLI zobrazí podobné informace jako v následujícím příkladu: 
+Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu: 
 
 ```azurecli 
 {
@@ -254,7 +254,7 @@ Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtu
 }
 ```
 
-Poznamenejte si **publicIpAddress** ve vrácené výstupu. Tato adresa se používá pro přístup k virtuálnímu počítači z Internetu v pozdějším kroku.
+Poznamenejte si **publicIpAddress** ve vráceném výstupu. Tato adresa se používá pro přístup k virtuálnímu počítači z Internetu v pozdějším kroku.
 
 ### <a name="create-the-second-virtual-machine"></a>Vytvoření druhého virtuálního počítače
 
@@ -268,31 +268,31 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Po vytvoření, poznamenejte si **publicIpAddress** ve výstupu vráceného. Tato adresa se používá pro přístup k virtuálnímu počítači z Internetu v pozdějším kroku.
+Vytvoření virtuálního počítače trvá několik minut. Po vytvoření si poznamenejte **publicIpAddress** ve vráceném výstupu. Tato adresa se používá pro přístup k virtuálnímu počítači z Internetu v pozdějším kroku.
 
 ## <a name="confirm-access-to-storage-account"></a>Ověření přístupu k účtu úložiště
 
-Připojte se přes SSH *myVmPrivate* virtuálního počítače. Nahraďte  *\<publicIpAddress >* s veřejnou IP adresu vašeho *myVmPrivate* virtuálního počítače.
+Připojte se přes SSH k virtuálnímu počítači *myVmPrivate* . *>\<publicIpAddress* nahraďte veřejnou IP adresou vašeho virtuálního počítače *myVmPrivate* .
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-Vytvořte složku pro bod připojení:
+Vytvořte složku pro přípojný bod:
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Připojení sdílené složky Azure do adresáře, který jste vytvořili. Před spuštěním následujícího příkazu, nahraďte `<storage-account-name>` pomocí názvu účtu a `<storage-account-key>` s klíčem, který jste získali v [vytvořit účet úložiště](#create-a-storage-account).
+Připojte sdílenou složku Azure k adresáři, který jste vytvořili. Před spuštěním následujícího příkazu nahraďte `<storage-account-name>` názvem účtu a `<storage-account-key>` klíč, který jste získali v části [Vytvoření účtu úložiště](#create-a-storage-account).
 
 ```bash
 sudo mount --types cifs //<storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Zobrazí `user@myVmPrivate:~$` řádku. Sdílená složka Azure se úspěšně připojil k */mnt/MyAzureFileShare*.
+Zobrazí se výzva `user@myVmPrivate:~$`. Sdílená složka Azure se úspěšně připojila k */mnt/MyAzureFileShare*.
 
-Potvrďte, že virtuální počítač nemá možnost odchozího připojení do všech ostatních veřejných IP adres:
+Potvrďte, že virtuální počítač nemá žádné odchozí připojení k žádným jiným veřejným IP adresám:
 
 ```bash
 ping bing.com -c 4
@@ -300,33 +300,33 @@ ping bing.com -c 4
 
 Neobdržíte žádné odpovědi, protože skupina zabezpečení sítě přidružená k podsíti *Private* nepovoluje odchozí přístup k jiným veřejným IP adresám, než jsou adresy přiřazené službě Azure Storage.
 
-Ukončete relaci SSH k *myVmPrivate* virtuálního počítače.
+Ukončete relaci SSH na virtuálním počítači s *myVmPrivate* .
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Ověření odepření přístupu k účtu úložiště
 
-Pomocí následujícího příkazu vytvořte relaci SSH s *myVmPublic* virtuálního počítače. Nahraďte `<publicIpAddress>` s veřejnou IP adresu vašeho *myVmPublic* virtuálního počítače: 
+Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním počítačem s *myVmPublic* . Nahraďte `<publicIpAddress>` veřejnou IP adresou vašeho virtuálního počítače *myVmPublic* : 
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-Vytvořte adresář pro bod připojení:
+Vytvořte adresář pro přípojný bod:
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Pokus o připojení sdílené složky Azure do adresáře, který jste vytvořili. Tento článek předpokládá, že jste nasadili nejnovější verze Ubuntu. Pokud používáte starší verze Ubuntu, přečtěte si téma [připojení v systému Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro další informace o připojení sdílené složky. Před spuštěním následujícího příkazu, nahraďte `<storage-account-name>` pomocí názvu účtu a `<storage-account-key>` s klíčem, který jste získali v [vytvořit účet úložiště](#create-a-storage-account):
+Pokuste se připojit sdílenou složku Azure k adresáři, který jste vytvořili. V tomto článku se předpokládá, že jste nasadili nejnovější verzi Ubuntu. Pokud používáte starší verze Ubuntu, přečtěte si další informace o připojení sdílených složek v tématu [připojení na Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Před spuštěním následujícího příkazu nahraďte `<storage-account-name>` názvem účtu a `<storage-account-key>` klíč, který jste získali v části [Vytvoření účtu úložiště](#create-a-storage-account):
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Přístup byl odepřen, a zobrazí se `mount error(13): Permission denied` chybu, protože *myVmPublic* virtuální počítač je nasazený v rámci *veřejné* podsítě. Podsíť *Public* nemá povolený koncový bod služby pro Azure Storage a účet úložiště umožňuje síťový přístup pouze z podsítě *Private*, a ne z podsítě *Public*.
+Přístup je odepřený a zobrazí se chyba `mount error(13): Permission denied`, protože virtuální počítač *myVmPublic* je nasazený ve *veřejné* podsíti. Podsíť *Public* nemá povolený koncový bod služby pro Azure Storage a účet úložiště umožňuje síťový přístup pouze z podsítě *Private*, a ne z podsítě *Public*.
 
-Ukončete relaci SSH k *myVmPublic* virtuálního počítače.
+Ukončete relaci SSH na virtuálním počítači s *myVmPublic* .
 
-Z počítače, se pokusí o zobrazení sdílené složky v účtu úložiště s [seznamu sdílenou složku úložiště az](/cli/azure/storage/share?view=azure-cli-latest). Nahraďte `<account-name>` a `<account-key>` s názvem účtu úložiště a klíč z [vytvořit účet úložiště](#create-a-storage-account):
+Z počítače se pokuste zobrazit sdílené složky ve vašem účtu úložiště pomocí [AZ Storage Share list](/cli/azure/storage/share?view=azure-cli-latest). Nahraďte `<account-name>` a `<account-key>` názvem účtu úložiště a klíčem z části [Vytvoření účtu úložiště](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \
@@ -334,18 +334,18 @@ az storage share list \
   --account-key <account-key>
 ```
 
-Přístup se odepře a zobrazí *tento požadavek není autorizovaný k provedení této operace* chybu, protože počítač není v *privátní* podsíť *MyVirtualNetwork* virtuální sítě.
+Přístup byl odepřen a obdržíte-li *tuto žádost nemáte autorizaci k provedení této operace* , protože počítač není v *privátní* podsíti virtuální sítě *MyVirtualNetwork* .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, použijte [odstranění skupiny az](/cli/azure) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
+Pokud už je nepotřebujete, odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [AZ Group Delete](/cli/azure) .
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste povolili koncový bod služby pro podsíť virtuální sítě. Dozvěděli jste se, že koncové body služeb je možné povolit pro prostředky nasazené pomocí několika služeb Azure. Vytvořili jste účet služby Azure Storage a omezili jste síťový přístup k účtu úložiště pouze na prostředky v rámci podsítě virtuální sítě. Další informace o koncových bodech služeb najdete v tématech [Přehled koncových bodů služeb](virtual-network-service-endpoints-overview.md) a [Správa podsítí](virtual-network-manage-subnet.md).
 
-Pokud ve svém účtu máte více virtuálních sítí, možná budete chtít propojit dvě virtuální sítě, aby mezi sebou mohly komunikovat prostředky v obou virtuálních sítích. Další informace o postupu [propojení virtuálních sítí](tutorial-connect-virtual-networks-cli.md).
+Pokud ve svém účtu máte více virtuálních sítí, možná budete chtít propojit dvě virtuální sítě, aby mezi sebou mohly komunikovat prostředky v obou virtuálních sítích. Informace o postupu najdete v tématu [připojení virtuálních sítí](tutorial-connect-virtual-networks-cli.md).

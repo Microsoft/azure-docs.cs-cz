@@ -1,14 +1,14 @@
 ---
 title: Mapování ukázkových ovládacích prvků kontrolního plánu sdílených služeb ISO 27001
 description: Kontrola mapování kontrolního plánu sdílených služeb ISO 27001 Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: e3bba30ddffe85a067d091a328ae4cc4de7258df
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9227b94ce4133d44f73e27c5008aa59d8ed2ea10
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037378"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184427"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Mapování ovládacího prvku ukázka podrobného plánu sdílených služeb ISO 27001
 

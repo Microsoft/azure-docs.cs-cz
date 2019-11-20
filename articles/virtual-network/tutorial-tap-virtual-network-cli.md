@@ -1,6 +1,6 @@
 ---
-title: Vytvoření, změna nebo odstranění virtuální sítě TAP – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit, změnit nebo odstranit virtuální síť TAP pomocí Azure CLI.
+title: Vytvoření, změna nebo odstranění virtuální sítě klepněte na Azure CLI
+description: Naučte se, jak vytvořit, změnit nebo odstranit virtuální síť, klepněte na Azure CLI.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05ce45a52db2b8a47223023ce31b5591b2b97c37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743186"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185401"
 ---
-# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Spolupracovat s virtuální sítí TAP pomocí Azure CLI
+# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Práce s virtuální sítí klepněte pomocí Azure CLI.
 
-Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průběžně stream vašeho virtuálního počítače síťový provoz do síťových paketů kolekcí nebo analytics nástroj. Nástroj kolekcí nebo analytics poskytuje [síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) partnera. Seznam partnerských řešení, kteří jsou ověření pro práci s virtuální sítí TAP najdete v tématu [partnerská řešení](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions). 
+KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuje nepřetržitě streamovat síťový provoz virtuálního počítače do nástroje pro shromažďování síťových paketů nebo pro analýzu. Sběrač nebo nástroj pro analýzu poskytuje síťový partner pro [síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) . Seznam partnerských řešení, která jsou ověřená pro práci s virtuální sítí, najdete v tématu [Partnerská řešení](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions). 
 
-## <a name="create-a-virtual-network-tap-resource"></a>Vytvoření virtuální sítě resource klepněte na
+## <a name="create-a-virtual-network-tap-resource"></a>Vytvoření virtuální sítě klepnutím na prostředek
 
-Čtení [požadavky](virtual-network-tap-overview.md#prerequisites) předtím, než vytvoříte virtuální síť klepnutím na prostředek. Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku Azure (CLI) z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, která nevyžaduje instalaci rozhraní příkazového řádku Azure ve vašem počítači. Musíte se přihlásit do Azure pomocí účtu, který má odpovídající [oprávnění](virtual-network-tap-overview.md#permissions). Tento článek vyžaduje použití Azure CLI verze 2.0.46 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Virtuální síť TAP je momentálně dostupný jako rozšíření. Chcete-li nainstalovat rozšíření, je potřeba spustit `az extension add -n virtual-network-tap`. Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
+[Požadavky](virtual-network-tap-overview.md#prerequisites) na čtení před vytvořením virtuální sítě klepněte na prostředek. Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku Azure (CLI) z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které nevyžaduje instalaci rozhraní příkazového řádku Azure CLI do vašeho počítače. Musíte se přihlásit k Azure pomocí účtu, který má příslušná [oprávnění](virtual-network-tap-overview.md#permissions). Tento článek vyžaduje Azure CLI verze 2.0.46 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Klepnutí na virtuální síť je aktuálně k dispozici jako rozšíření. Chcete-li nainstalovat rozšíření, je třeba spustit `az extension add -n virtual-network-tap`. Pokud používáte Azure CLI místně, je také potřeba spustit `az login` a vytvořit připojení k Azure.
 
-1. Načtení ID vašeho předplatného do proměnné, který se používá v pozdější fázi:
+1. Načtěte ID vašeho předplatného na proměnnou, která se používá v pozdějším kroku:
 
    ```azurecli-interactive
    subscriptionId=$(az account show \
@@ -38,21 +38,21 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
    --out tsv)
    ```
 
-2. Nastavte id předplatného, které použijete k vytvoření virtuální sítě, klepněte na prostředek.
+2. Nastavte ID předplatného, které použijete k vytvoření virtuální sítě klepněte na prostředek.
 
    ```azurecli-interactive
    az account set --subscription $subscriptionId
    ```
 
-3. ID předplatného, které budete používat při vytváření virtuální sítě resource klepněte na znovu zaregistrujte. Pokud se zobrazí chyba registrace při vytváření prostředku TAP, spusťte následující příkaz:
+3. Znovu zaregistrujte ID předplatného, které použijete k vytvoření virtuální sítě klepněte na prostředek. Pokud se při vytváření zdroje klepnutím zobrazí chyba registrace, spusťte následující příkaz:
 
    ```azurecli-interactive
    az provider register --namespace Microsoft.Network --subscription $subscriptionId
    ```
 
-4. Pokud je cíl pro virtuální síť, klepněte na rozhraní sítě na síťové virtuální zařízení kolektoru nebo nástroj pro analýzu-
+4. Pokud je cíl pro virtuální síť klepněte na síťové rozhraní síťového virtuálního zařízení pro kolektor nebo nástroj pro analýzu –
 
-   - Načtěte konfiguraci protokolu IP síťového virtuálního zařízení síťového rozhraní do proměnné, který se používá v pozdější fázi. ID je koncový bod, který se použije k agregaci klepněte na provoz. Následující příklad načte ID *ipconfig1* konfigurace protokolu IP pro síťové rozhraní s názvem *myNetworkInterface*, ve skupině prostředků s názvem *myResourceGroup*:
+   - Načtěte konfiguraci IP síťového rozhraní síťového virtuálního zařízení do proměnné, která se používá v pozdějším kroku. ID je koncový bod, který bude agregovat provoz klepnutím. Následující příklad načte ID konfigurace IP adresy *ipconfig1* pro síťové rozhraní s názvem *myNetworkInterface*ve skupině prostředků s názvem *myResourceGroup*:
 
       ```azurecli-interactive
        IpConfigId=$(az network nic ip-config show \
@@ -63,7 +63,7 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
        --out tsv)
       ```
 
-   - Vytvoření virtuální sítě klepněte v oblasti westcentralus azure jako cíle a volitelně také portu vlastnost s použitím ID konfigurace protokolu IP. Port, který určuje v konfiguraci protokolu IP síťového rozhraní kde bude přijímat provoz klepněte na cílový port:  
+   - Vytvořte virtuální síť klepnutím v westcentralus oblasti Azure pomocí ID konfigurace IP adresy jako cíle a volitelné vlastnosti portu. Port Určuje cílový port pro konfiguraci protokolu IP rozhraní sítě, kde bude přijímán přenos klepněte:  
 
       ```azurecli-interactive
        az network vnet tap create \
@@ -74,9 +74,9 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
        --location westcentralus
       ```
 
-5. Pokud je cíl pro virtuální síť, klepněte na interní azure load balancer:
+5. Pokud je cíl pro virtuální síť klepněte na interní nástroj pro vyrovnávání zatížení Azure:
   
-   - Načtení konfigurace IP front-endu nástroje pro vyrovnávání zatížení Azure interní do proměnné, který se používá v pozdější fázi. ID je koncový bod, který se použije k agregaci klepněte na provoz. Následující příklad načte ID *frontendipconfig1* konfigurace protokolu IP front-endu pro nástroj pro vyrovnávání zatížení s názvem *myInternalLoadBalancer*, ve skupině prostředků s názvem  *myResourceGroup*:
+   - Načtěte konfiguraci IP adresy front-endu interního nástroje pro vyrovnávání zatížení do proměnné, která se používá v pozdějším kroku. ID je koncový bod, který bude agregovat provoz klepnutím. Následující příklad načte ID konfigurace front-end IP adresy *frontendipconfig1* pro nástroj pro vyrovnávání zatížení s názvem *myInternalLoadBalancer*ve skupině prostředků s názvem *myResourceGroup*:
 
       ```azurecli-interactive
       FrontendIpConfigId=$(az network lb frontend-ip show \
@@ -86,7 +86,7 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
       --query id \
       --out tsv)
       ```
-   - Vytvoření virtuální sítě s použitím ID konfigurace protokolu IP front-endu jako cíle a volitelně také portu vlastnost TAP. Port, který určuje v konfiguraci protokolu IP front-endu, kde bude přijímat provoz klepněte na cílový port:  
+   - Vytvořte virtuální síť klepnutím na použít ID konfigurace IP adresy front-endu jako cíle a volitelné vlastnosti portu. Port Určuje cílový port pro konfiguraci IP adresy front-endu, kde bude přijatý přenos klepněte:  
 
       ```azurecli-interactive
       az network vnet tap create \
@@ -97,7 +97,7 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
      --location westcentralus
      ```
 
-6. Vytvoření virtuální sítě, klepněte na potvrďte:
+6. Potvrďte vytvoření virtuální sítě klepnutím na:
 
    ```azurecli-interactive
    az network vnet tap show \
@@ -105,9 +105,9 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
    --name myTap
    ```
 
-## <a name="add-a-tap-configuration-to-a-network-interface"></a>Přidat klepnutím na konfiguraci na síťové rozhraní
+## <a name="add-a-tap-configuration-to-a-network-interface"></a>Přidat konfiguraci klepnutím do síťového rozhraní
 
-1. Načtení ID prostředku klepněte na existující virtuální sítě. Následující příklad načte virtuální síť s názvem TAP *myTap* ve skupině prostředků s názvem *myResourceGroup*:
+1. Načte ID existující virtuální sítě klepněte na prostředek. Následující příklad načte virtuální síť s názvem *myTap* ve skupině prostředků s názvem *myResourceGroup*:
 
    ```azurecli-interactive
    tapId=$(az network vnet tap show \
@@ -117,7 +117,7 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
    --out tsv)
    ```
 
-2. Vytvořte konfiguraci klepnutím na síťovém rozhraní monitorovaných virtuálních počítačů. Následující příklad vytvoří klepněte na konfiguraci pro síťové rozhraní s názvem *myNetworkInterface*:
+2. Vytvořte klepnutím konfiguraci v síťovém rozhraní monitorovaného virtuálního počítače. Následující příklad vytvoří konfiguraci klepnutím pro síťové rozhraní s názvem *myNetworkInterface*:
 
    ```azurecli-interactive
    az network nic vtap-config create \
@@ -128,7 +128,7 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
    --subscription subscriptionId
    ```
 
-3. Vytvoření konfigurace klepněte na potvrďte:
+3. Potvrďte vytvoření konfigurace klepnutí:
 
    ```azurecli-interactive
    az network nic vtap-config show \
@@ -138,7 +138,7 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
    --subscription subscriptionId
    ```
 
-## <a name="delete-the-tap-configuration-on-a-network-interface"></a>Odstranit klepnutím na konfiguraci na síťové rozhraní
+## <a name="delete-the-tap-configuration-on-a-network-interface"></a>Odstraní konfiguraci klepnutí na síťové rozhraní.
 
    ```azure-cli-interactive
    az network nic vtap-config delete \
@@ -148,13 +148,13 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
    --subscription subscriptionId
    ```
 
-## <a name="list-virtual-network-taps-in-a-subscription"></a>Virtuální síť seznamu klepne v rámci předplatného
+## <a name="list-virtual-network-taps-in-a-subscription"></a>Rozevírací seznam virtuálních sítí v rámci předplatného
 
    ```azurecli-interactive
    az network vnet tap list
    ```
 
-## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Odstranit virtuální síť TAP ve skupině prostředků
+## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Odstranění virtuální sítě klepnutím na skupinu prostředků
 
    ```azurecli-interactive
    az network vnet tap delete \

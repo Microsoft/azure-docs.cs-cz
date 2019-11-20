@@ -1,5 +1,5 @@
 ---
-title: Postup konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu
+title: Konfigurace spravovaných identit na virtuálním počítači Azure pomocí PowerShellu – Azure AD
 description: Podrobné pokyny pro konfiguraci spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ba8ce6fb8147736c8265148a9f3576390dcccc6
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 6e17b4a3f71e67b99bfbd4c52edc00f98d549ef2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309765"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183698"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu
 
@@ -48,7 +48,7 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
 
 1. Přečtěte si jedno z následujících rychlých startů virtuálních počítačů Azure a vyplněním pouze nezbytných oddílů ("přihlášení do Azure", "vytvořit skupinu prostředků", "vytvořit síťovou skupinu", "Vytvoření virtuálního počítače").
     
-    Až se dostanete do části Vytvoření virtuálního počítače, udělejte nepatrnou úpravu syntaxe rutiny [New-AzVMConfig](/powershell/module/az.compute/new-azvm) . Nezapomeňte přidat `-AssignIdentity:$SystemAssigned` parametr pro zřízení virtuálního počítače s povolenou identitou přiřazenou systémem, například:
+    Až se dostanete do části Vytvoření virtuálního počítače, udělejte nepatrnou úpravu syntaxe rutiny [New-AzVMConfig](/powershell/module/az.compute/new-azvm) . Nezapomeňte přidat parametr `-AssignIdentity:$SystemAssigned` pro zřízení virtuálního počítače s povolenou identitou přiřazenou systémem, například:
       
     ```powershell
     $vmConfig = New-AzVMConfig -VMName myVM -AssignIdentity:$SystemAssigned ...
@@ -63,13 +63,13 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
 
 Aby se povolila spravovaná identita přiřazená systémem na virtuálním počítači, který se původně zřídil bez něho, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
+1. Přihlaste se k Azure pomocí `Connect-AzAccount`. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Nejdřív načtěte vlastnosti virtuálního počítače pomocí `Get-AzVM` rutiny. Pokud chcete povolit spravovanou identitu přiřazenou systémem, použijte `-AssignIdentity` přepínač v rutině [Update-AzVM](/powershell/module/az.compute/update-azvm) :
+2. Nejdřív načtěte vlastnosti virtuálního počítače pomocí rutiny `Get-AzVM`. Pokud chcete povolit spravovanou identitu přiřazenou systémem, použijte přepínač `-AssignIdentity` v rutině [Update-AzVM](/powershell/module/az.compute/update-azvm) :
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -82,19 +82,19 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
 
 Po povolení identity přiřazené systémem na virtuálním počítači ji můžete přidat do skupiny.  Následující postup přidá identitu přiřazenou systému virtuálního počítače do skupiny.
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
+1. Přihlaste se k Azure pomocí `Connect-AzAccount`. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Načte a poznamenejte `ObjectID` si (jak je uvedeno `Id` v poli vrácených hodnot) objektu služby virtuálního počítače:
+2. Načte a poznamenejte si `ObjectID` (jak je uvedeno v poli `Id` vrácených hodnot) instančního objektu virtuálního počítače:
 
    ```powerhshell
    Get-AzADServicePrincipal -displayname "myVM"
    ```
 
-3. Načte a poznamenejte `ObjectID` si (jak je uvedeno `Id` v poli vrácených hodnot) skupiny:
+3. Načte a poznamenejte si `ObjectID` (jak je uvedeno v poli `Id` vrácených hodnot) skupiny:
 
    ```powershell
    Get-AzADGroup -searchstring "myGroup"
@@ -112,13 +112,13 @@ Aby se na virtuálním počítači zakázala spravovaná identita přiřazená s
 
 Pokud máte virtuální počítač, který už nepotřebuje spravovanou identitu přiřazenou systémem, ale potřebuje spravované identity přiřazené uživatelem, použijte tuto rutinu:
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
+1. Přihlaste se k Azure pomocí `Connect-AzAccount`. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Pomocí `Get-AzVM` rutiny načtěte vlastnosti virtuálního počítače a `-IdentityType` nastavte parametr na `UserAssigned`:
+2. Pomocí rutiny `Get-AzVM` načtěte vlastnosti virtuálního počítače a nastavte parametr `-IdentityType` na `UserAssigned`:
 
    ```powershell   
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
@@ -144,7 +144,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 1. Přečtěte si jedno z následujících rychlých startů virtuálních počítačů Azure a vyplněním pouze nezbytných oddílů ("přihlášení do Azure", "vytvořit skupinu prostředků", "vytvořit síťovou skupinu", "Vytvoření virtuálního počítače"). 
   
-    Až se dostanete do části Vytvoření virtuálního počítače, udělejte mírně změnu [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) syntaxe rutiny. Přidáním parametrů `-IdentityID` a zřídíte virtuální počítač s uživatelem přiřazenou identitou. `-IdentityType UserAssigned`  `<VM NAME>`Nahraďte`<SUBSCRIPTION ID>`,, a`<USER ASSIGNED IDENTITY NAME>`vlastnímihodnotami. `<RESROURCE GROUP>`  Příklad:
+    Až se dostanete do části Vytvoření virtuálního počítače, udělejte mírně změnu v syntaxi rutiny [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) . Přidáním parametrů `-IdentityType UserAssigned` a `-IdentityID` můžete zřídit virtuální počítač s identitou přiřazenou uživatelem.  Nahraďte `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.  Příklad:
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
@@ -159,24 +159,24 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
+1. Přihlaste se k Azure pomocí `Connect-AzAccount`. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Pomocí rutiny [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) vytvořte spravovanou identitu přiřazenou uživatelem.  `Id` Všimněte si výstupů, protože ho budete potřebovat v dalším kroku.
+2. Pomocí rutiny [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) vytvořte spravovanou identitu přiřazenou uživatelem.  Všimněte si `Id` ve výstupu, protože ho budete potřebovat v dalším kroku.
 
    > [!IMPORTANT]
-   > Vytváření uživatelem definovaných spravovaných identit podporuje pouze alfanumerické znaky, podtržítka a spojovníky (0-9 nebo a-z nebo a- \_ z nebo-) znaků. Kromě toho by měl být název omezen na 3 až 128 znaků, aby přiřazení k virtuálnímu počítači/VMSS správně fungovalo. Další informace najdete v [nejčastějších dotazech a známých problémech](known-issues.md) .
+   > Vytváření uživatelem definovaných spravovaných identit podporuje pouze alfanumerické znaky, podtržítka a spojovníky (0-9 nebo a-z nebo A-Z, \_ nebo-) znaků. Kromě toho by měl být název omezen na 3 až 128 znaků, aby přiřazení k virtuálnímu počítači/VMSS správně fungovalo. Další informace najdete v [nejčastějších dotazech a známých problémech](known-issues.md) .
 
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
    ```
-3. Pomocí `Get-AzVM` rutiny načtěte vlastnosti virtuálního počítače. Pak k virtuálnímu počítači Azure přiřadíte spravovanou identitu přiřazenou uživatelem pomocí `-IdentityType` přepínače a `-IdentityID` v rutině [Update-AzVM](/powershell/module/az.compute/update-azvm) .  Hodnota`-IdentityId` parametru`Id` je, kterou jste si poznamenali v předchozím kroku.  `<VM NAME>`Nahraďte `<SUBSCRIPTION ID>`,, a`<USER ASSIGNED IDENTITY NAME>`vlastnímihodnotami. `<RESROURCE GROUP>`
+3. Pomocí rutiny `Get-AzVM` načtěte vlastnosti virtuálního počítače. Pak k virtuálnímu počítači Azure přiřadíte spravovanou identitu přiřazenou uživatelem pomocí přepínače `-IdentityType` a `-IdentityID` v rutině [Update-AzVM](/powershell/module/az.compute/update-azvm) .  Hodnota parametru`-IdentityId` je `Id`, kterou jste si poznamenali v předchozím kroku.  Nahraďte `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.
 
    > [!WARNING]
-   > Pokud chcete zachovat všechny dříve přiřazené spravované identity přiřazené k virtuálnímu počítači, proveďte dotaz `Identity` na vlastnost objektu virtuálního počítače ( `$vm.Identity`například).  Pokud se vrátí nějaké spravované identity přiřazené uživatelem, zahrňte je do následujícího příkazu společně s novou spravovanou identitou přiřazenou uživatelem, kterou chcete přiřadit k virtuálnímu počítači.
+   > Pokud chcete zachovat všechny dříve přiřazené spravované identity přiřazené k virtuálnímu počítači, můžete zadat dotaz na vlastnost `Identity` objektu virtuálního počítače (například `$vm.Identity`).  Pokud se vrátí nějaké spravované identity přiřazené uživatelem, zahrňte je do následujícího příkazu společně s novou spravovanou identitou přiřazenou uživatelem, kterou chcete přiřadit k virtuálnímu počítači.
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>
@@ -189,7 +189,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyžaduje váš účet přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
 
-Pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem, můžete odebrat všechny kromě poslední, a to pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>` Je vlastnost název spravované identity přiřazené uživatelem, která by měla zůstat na virtuálním počítači. Tyto informace se dají najít dotazem na `Identity` vlastnost objektu virtuálního počítače.  Například `$vm.Identity`:
+Pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem, můžete odebrat všechny kromě poslední, a to pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>` je vlastnost název spravované identity přiřazené uživatelem, která by měla zůstat na virtuálním počítači. Tyto informace se dají najít dotazem na vlastnost `Identity` objektu virtuálního počítače.  Například `$vm.Identity`:
 
 ```powershell
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm

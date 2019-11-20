@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží – řešení potíží s konfigurací služby front-dveří pro Azure | Microsoft Docs
+title: Řešení potíží s konfigurací služby předních dveří Azure
 description: V tomto kurzu se naučíte, jak sami řešit některé běžné problémy, které se dají pro vaše přední dveře vytvářet.
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0d6303620b92368e422b54beab4f9c346d022a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335881"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184560"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Řešení běžných potíží se směrováním
 Tento článek popisuje, jak řešit některé běžné problémy s směrováním, které se můžou u konfigurace služby front-dveří pro Azure provést. 

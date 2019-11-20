@@ -1,18 +1,18 @@
 ---
-title: Nasazení Azure Firewall s více veřejnými IP adresami pomocí Azure PowerShell
+title: Nasazení Azure Firewall s více veřejnými IP adresami pomocí prostředí PowerShell
 description: V tomto článku se dozvíte, jak nasadit Azure Firewall s více veřejnými IP adresami pomocí Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: ba2736ae69d0bf7feff5f852da2446bfa7a722a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad54b60d8f15e36636f887015d97967740123669
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325230"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195869"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Nasazení Azure Firewall s více veřejnými IP adresami pomocí Azure PowerShell
 
@@ -100,6 +100,6 @@ $azFw.RemovePublicIpAddress($pip)
 $azFw | Set-AzFirewall
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Kurz: Monitorování protokolů Azure Firewall](./tutorial-diagnostics.md)
+* [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)

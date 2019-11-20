@@ -1,18 +1,18 @@
 ---
-title: Práce s předchozí verzí Azure Migrate | Microsoft Docs
-description: Poskytuje souhrn pro práci se starou verzí Azure Migrate
+title: Práce s předchozí verzí Azure Migrate
+description: Popisuje, jak pracovat s předchozí verzí Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 07/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162460"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186536"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -81,7 +81,7 @@ Zobrazení Připravenost pro Azure v posouzení zobrazuje stav připravenosti je
 Připraveno pro Azure | Žádné problémy s kompatibilitou Počítač se dá migrovat tak, jak je, do Azure, a spustí se v Azure s plnou podporou Azure. | U virtuálních počítačů, které jsou pro migraci vhodné, doporučí Azure Migrate velikost virtuálního počítače v Azure.
 Připraveno pro Azure s podmínkou | Počítač se může spustit v Azure, ale nemusí mít plnou podporu Azure. Například počítač se starší verzí Windows serveru, který se v Azure nepodporuje. | Azure Migrate vysvětluje problémy s připraveností a poskytuje kroky k nápravě.
 Nepřipraveno pro Azure |  Virtuální počítač se nespustí v Azure. Pokud má virtuální počítač například disk, který je větší než 4 TB, nejde ho hostovat v Azure. | Azure Migrate vysvětluje problémy s připraveností a poskytuje kroky k nápravě.
-Připravenost není známá. | Azure Migrate nemůžou identifikovat připravenost Azure, obvykle proto, že data nejsou k dispozici.
+Připravenost neznámá | Azure Migrate nemůžou identifikovat připravenost Azure, obvykle proto, že data nejsou k dispozici.
 
 
 #### <a name="azure-vm-properties"></a>Vlastnosti virtuálního počítače Azure
@@ -92,7 +92,7 @@ Připravenost přihlíží k několika vlastnostem virtuálních počítačů, a
 --- | --- | ---
 **Typ spouštění** | Systém BIOS je podporován. Rozhraní UEFI se nepodporuje. | Podmíněně připravený, pokud je typ spouštění UEFI.
 **Jader** | Počítače Core < = maximální počet jader (128) podporovaných virtuálním počítačem Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využité jádra.<br/>Pokud je v nastavení hodnocení určen faktor komfortu, je počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
-**Paměť** | Velikost paměti počítače < = maximální paměť (3892 GB v Azure M Series Standard_M128m&nbsp;<sup>2</sup>) pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
+**Paměť** | Velikost paměti počítače < = maximální paměť (3892 GB v Azure M Series Standard_M128m&nbsp;<sup>2</sup>) pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
 **Disk úložiště** | Přidělená velikost disku musí být 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku s operačním systémem. | V rámci omezení je připravený.
 **Sítě** | K počítači musí být připojen 32 nebo méně síťových adaptérů. | V rámci omezení je připravený.
 
@@ -162,7 +162,7 @@ V závislosti na procentu dostupných datových bodů jsou možná hodnocení sp
 0 až 20 % | 1 hvězdička
 21 až 40 % | 2 hvězdičky
 41 až 60 % | 3 hvězdičky
-61 až 80 % | 4 Star
+61 až 80 % | 4 hvězdičky
 81 až 100 % | 5 hvězdiček
 
 
@@ -200,7 +200,7 @@ Pokud chcete použít vizualizaci závislostí, přidružte pracovní prostor Lo
 
 1. Pokud chcete k projektu připojit Log Analytics pracovní prostor, klikněte v **přehledu**> **Essentials**na **vyžaduje konfiguraci**.
 2. Můžete vytvořit nový pracovní prostor nebo připojit stávající:
-  - Chcete-li vytvořit nový pracovní prostor, zadejte název. Pracovní prostor se vytvoří v oblasti ve stejném geografickém regionu [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
+  - Chcete-li vytvořit nový pracovní prostor, zadejte název. Pracovní prostor se vytvoří v oblasti ve stejném [geografickém regionu Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
   - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. V seznamu jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v [podporované Service map oblasti](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Pokud chcete připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
 
 > [!NOTE]
@@ -210,7 +210,7 @@ Pokud chcete použít vizualizaci závislostí, přidružte pracovní prostor Lo
 
 Po nakonfigurování pracovního prostoru můžete stáhnout a nainstalovat agenty na každý místní počítač, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, je potřeba stáhnout a nainstalovat [Log Analytics bránu](../azure-monitor/platform/gateway.md) .
 
-1. V části **Přehled**klikněte na možnost **Spravovat** > **počítače**a vyberte požadovaný počítač.
+1. V části **Přehled**klikněte na **Spravovat** > **počítače**a vyberte požadovaný počítač.
 2. Ve sloupci **závislosti** klikněte na možnost **instalovat agenty**.
 3. Na stránce **závislosti** Stáhněte a nainstalujte Microsoft Monitoring Agent (MMA) a na každý virtuální počítač, který chcete vyhodnotit, agenta závislostí.
 4. Zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci MMA na místním počítači.
@@ -244,7 +244,7 @@ Instalace agenta na počítač se systémem Linux:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Instalace agenta MMA na počítači monitorovaném nástrojem Operations Manager
 
-Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Je potřeba nainstalovat agenta závislostí.
+Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) Je potřeba nainstalovat agenta závislostí.
 
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 
@@ -261,7 +261,7 @@ Pro počítače monitorované nástrojem System Center Operations Manager 2012 R
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Vytvoření skupiny s mapováním závislostí
 
-1. Po instalaci agentů přejděte na portál a klikněte na **Spravovat** > **počítače**.
+1. Po instalaci agentů přejděte na portál a klikněte na **spravovat** > **počítače**.
 2. Vyhledejte počítač, do kterého jste nainstalovali agenty.
 3. Sloupec **závislosti** pro tento počítač by se teď měl zobrazit jako **závislosti zobrazení**. Kliknutím na sloupec zobrazíte závislosti počítače.
 4. Mapa závislostí pro počítač zobrazuje následující podrobnosti:
@@ -295,7 +295,7 @@ Spuštění dotazů Kusto:
 
 1. Po instalaci agentů přejděte na portál a klikněte na **Přehled**.
 2. V části **Přehled**přejděte na oddíl **základy** projektu a klikněte na název pracovního prostoru zadaný vedle možnosti **pracovní prostor OMS**.
-3. Na stránce Log Analytics pracovní prostor klikněte na **Obecné** > **protokoly**.
+3. Na stránce Log Analytics pracovní prostor klikněte na **obecné** > **protokoly**.
 4. Napište dotaz pro shromažďování dat závislosti pomocí protokolů Azure Monitor. V další části najdete Ukázkové dotazy.
 5. Spusťte dotaz kliknutím na spustit. 
 

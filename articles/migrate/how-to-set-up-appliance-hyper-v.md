@@ -1,17 +1,17 @@
 ---
-title: Nastavení zařízení pro vyhodnocování/migraci Azure Migrate serveru pro virtuální počítače Hyper-V | Microsoft Docs
-description: V této části najdete popis postupu nastavení zařízení pro účely zjišťování, hodnocení a migrace virtuálních počítačů Hyper-V bez agenta pomocí Azure Migrateho vyhodnocení/migrace serveru.
+title: Nastavení zařízení Azure Migrate pro Hyper-V
+description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů Hyper-V.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 00473519ad324d34d1fd595b2fb08408ad991f4c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158628"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185922"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
 

@@ -1,7 +1,7 @@
 ---
-title: 'Návrhář: klasifikace, předpověď změn'
+title: 'Návrhář: příklad prediktivních změn'
 titleSuffix: Azure Machine Learning
-description: Ukázkový kanál návrháře (Preview) zobrazuje binární předpovědi klasifikátoru pro změny, společný úkol pro řízení vztahů se zákazníky (CRM).
+description: Pomocí tohoto příkladu klasifikace můžete předpovědět změny v Návrháři Azure Machine Learning & zvýšili rozhodovací stromy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5cf61d3446f960b65eb85538be9ea020671cced2
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647178"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196045"
 ---
-# <a name="sample-5---classification-predict-churn"></a>Ukázka 5 – klasifikace: předpověď změn
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Použití zesíleného rozhodovacího stromu k předpovědi změn pomocí návrháře Azure Machine Learning
+
+**Návrhář (Preview) – ukázka 5**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Naučte se vytvářet komplexní kanály strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview).

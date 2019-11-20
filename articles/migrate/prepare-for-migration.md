@@ -1,19 +1,19 @@
 ---
-title: Příprava místních počítačů na migraci do Azure pomocí Azure Migrate
-description: Tento článek popisuje, jak připravit místní počítače na migraci do Azure pomocí Azure Migrate.
+title: Příprava počítačů na migraci pomocí Azure Migrate
+description: Přečtěte si, jak připravit místní počítače na migraci pomocí Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480114"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196425"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -46,8 +46,7 @@ V tomto článku:
 
 - Pro virtuální počítače VMware Azure Migrate migrace serveru podporuje [migraci bez agentů nebo na základě agenta](server-migrate-overview.md). Ověřte požadavky na virtuální počítače VMware a podporu pro migrace bez [agentů](migrate-support-matrix-vmware.md#migration---limitations) a [na základě agentů](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
 - Ověřte [požadavky na migraci a podporu](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) pro virtuální počítače Hyper-V.
-- Ověřte [požadavky na migraci a podporu](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) místních fyzických počítačů nebo jiných virtualizovaných serverů. Tyto požadavky jsou podobné požadavkům na virtuální počítače VMware.
-
+- Ověřte [požadavky na migraci a podporu](migrate-support-matrix-physical.md) místních fyzických počítačů nebo jiných virtualizovaných serverů. 
 
 
 
@@ -68,7 +67,7 @@ Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné
 - Red Hat Enterprise Linux 6.5 +, 7.0 +
 - CentOS 6.5 +, 7.0 +
 - SUSE Linux Enterprise Server 12 SP1 +
-- Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS
+- Ubuntu 14.04LTS, 16.04LTS, 18.04LTS
 - Debian 7, 8
 
 Pro jiné operační systémy musíte počítače před migrací ručně připravit. 
@@ -78,7 +77,7 @@ Pro jiné operační systémy musíte počítače před migrací ručně připra
 Pokud migrujete počítač se systémem Windows, proveďte tyto změny před migrací. Pokud před provedením změn migrujete virtuální počítač, nemusí se virtuální počítač spustit v Azure.
 
 1. [Povolte konzolu sériového přístupu Azure](../virtual-machines/troubleshooting/serial-console-windows.md) pro virtuální počítač Azure. To pomáhá při řešení potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí s použitím bitové kopie disku. Jedná se o ekvivalent restartování nového virtuálního počítače. 
-2. Pokud migrujete počítače se systémem Windows Server 2003, nainstalujte integrační služby technologie Hyper-V hosta do operačního systému virtuálního počítače. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
+2. Pokud migrujete počítače se systémem Windows Server 2003, nainstalujte integrační služby technologie Hyper-V hosta do operačního systému virtuálního počítače. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)
 
 ### <a name="prepare-linux-machines"></a>Příprava počítačů se systémem Linux
 
@@ -136,7 +135,7 @@ Na místních počítačích se systémem Linux proveďte tyto kroky:
 
 Po dokončení migrace proveďte následující na virtuálních počítačích Azure, které se vytvořily.
 
-1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md).
+1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md)
 2. Ověřte, že pravidla skupiny zabezpečení sítě (NSG) na virtuálním počítači povolují příchozí připojení k portu RDP nebo SSH.
 3. Zkontrolujte [diagnostiku spouštění](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
 

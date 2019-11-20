@@ -1,70 +1,72 @@
 ---
-title: Automatizujte migraci velkého počtu virtuálních počítačů do Azure | Dokumentace Microsoftu
-description: Popisuje, jak pomocí skriptů můžete migrovat velký počet virtuálních počítačů pomocí Azure Site Recovery
+title: Automatizace migrace počítačů migrace v Azure Migrate
+description: Popisuje, jak používat skripty k migraci velkého počtu počítačů v Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808028"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196369"
 ---
-# <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Migrace škálovací sady virtuálních počítačů pomocí Azure Site Recovery
+# <a name="scale-migration-of-vms"></a>Škálování migrace virtuálních počítačů 
 
-Tento článek pomáhá pochopit, jak pomocí skriptů můžete migrovat velký počet virtuálních počítačů pomocí Azure Site Recovery. Tyto skripty jsou k dispozici pro stahování na [ukázky Azure Powershellu](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) úložišti na Githubu. Skripty lze použít k migraci VMware, AWS, GCP virtuálních počítačů a fyzických serverů do managed disks v Azure. Tyto skripty můžete také použít k migraci virtuálních počítačů Hyper-V, pokud provádíte migraci virtuálních počítačů jako s fyzickými servery. Skripty, které využívají Powershellu pro Azure Site Recovery jsou popsány [tady](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+Tento článek vám pomůže pochopit, jak používat skripty k migraci velkého počtu virtuálních počítačů (VM). K škálování migrace slouží [Azure Site Recovery](../site-recovery/site-recovery-overview.md). 
 
-## <a name="current-limitations"></a>Aktuální omezení:
-- Nepodporuje určení statickou IP adresu jenom pro primární síťové rozhraní cílového virtuálního počítače
-- Skripty nepřebírají související s programem Azure Hybrid Benefit vstupů, je potřeba ručně aktualizovat vlastnosti replikovaný virtuální počítač na portálu
+Skripty Site Recovery jsou k dispozici ke stažení na [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) na GitHubu. Skripty se dají použít k migraci virtuálních počítačů VMware, AWS, GCP a fyzických serverů na spravované disky v Azure. Tyto skripty můžete také použít k migraci virtuálních počítačů Hyper-V, pokud virtuální počítače migrujete jako fyzické servery. Skripty, které využívají Azure Site Recovery PowerShell, jsou popsané [tady](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+
+## <a name="current-limitations"></a>Aktuální omezení
+- Podpora zadání statické IP adresy jenom pro primární síťovou kartu cílového virtuálního počítače
+- Skripty nevezmou Zvýhodněné hybridní využití Azure související vstupy, musíte ručně aktualizovat vlastnosti replikovaného virtuálního počítače na portálu.
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
 ### <a name="prerequisites"></a>Požadavky
-Než začnete, budete muset provést následující kroky:
-- Ujistěte se, že trezor Site Recovery se vytvoří ve vašem předplatném Azure
-- Ujistěte se, že konfigurační Server a procesový Server jsou nainstalovány ve zdrojovém prostředí a trezor je schopná vyhledávat prostředí
-- Ujistěte se, že zásady replikace je vytvořena a přidružena konfiguračního serveru
-- Ujistěte se, že jste přidali účet správce virtuálního počítače do konfiguračního serveru (který se použije k replikovat místní virtuální počítače)
-- Ujistěte se, že se vytvoří cíl artefakty v Azure
+Než začnete, musíte provést následující kroky:
+- Ujistěte se, že je ve vašem předplatném Azure vytvořený trezor Site Recovery.
+- Ujistěte se, že je konfigurační server a procesový Server nainstalovaný ve zdrojovém prostředí a že je trezor schopný zjistit prostředí.
+- Zajistěte, aby se vytvořila zásada replikace a přidružil ke konfiguračnímu serveru.
+- Ujistěte se, že jste přidali účet správce virtuálního počítače do konfiguračního serveru (který se použije pro replikaci místních virtuálních počítačů).
+- Ujistěte se, že jsou vytvořené cílové artefakty v Azure.
     - Cílová skupina prostředků
-    - Cílový účet úložiště (a jeho skupina prostředků) - vytvoření účtu služby premium storage, pokud plánujete migrovat na premium managed disks
-    - Účet úložiště mezipaměti (a jeho skupina prostředků) - vytvořit účet úložiště úrovně standard ve stejné oblasti jako trezor
-    - Cílová virtuální síť pro převzetí služeb při selhání (a jeho skupina prostředků)
+    - Cílový účet úložiště (a jeho skupina prostředků) – Pokud plánujete migrovat na disky spravované na úrovni Premium, vytvořte účet služby Premium Storage.
+    - Účet úložiště mezipaměti (a jeho skupina prostředků) – vytvoří účet Standard Storage ve stejné oblasti jako trezor.
+    - Cílová Virtual Network pro převzetí služeb při selhání (a její skupinu prostředků)
     - Cílová podsíť
-    - Cílová virtuální síť pro testovací převzetí služeb při selhání (a jeho skupina prostředků)
+    - Cílová Virtual Network pro testovací převzetí služeb při selhání (a její skupinu prostředků)
     - Skupina dostupnosti (v případě potřeby)
-    - Cílová skupina zabezpečení sítě a jeho skupina prostředků
-- Ujistěte se, že jste se rozhodli vlastnosti cílového virtuálního počítače
+    - Cílová skupina zabezpečení sítě a její skupina prostředků
+- Ujistěte se, že jste se rozhodli o vlastnosti cílového virtuálního počítače.
     - Název cílového virtuálního počítače
-    - Cílovou velikost virtuálního počítače v Azure (může být rozhodnuto pomocí Azure Migrate posouzení)
-    - Privátní IP adresu primárního síťového rozhraní ve virtuálním počítači
-- Stáhněte si skripty z [ukázky Azure Powershellu](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) úložišti na Githubu
+    - Velikost cílového virtuálního počítače v Azure (dá se rozhodnout pomocí posouzení Azure Migrate)
+    - Privátní IP adresa primárního síťového rozhraní ve virtuálním počítači
+- Stažení skriptů z [Azure PowerShellch ukázek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) úložiště na GitHubu
 
-### <a name="csv-input-file"></a>Sdílený svazek clusteru vstupního souboru
-Jakmile budete mít všechny předpoklady dokončit, musíte vytvořit si soubor CSV, který obsahuje data pro každý zdrojový počítač, který chcete migrovat. Vstup sdíleného svazku clusteru musí mít záhlaví řádku s podrobnostmi o vstupu a v řádku podrobností pro každý počítač, který je třeba migrovat. Tyto skripty jsou navrženy pro práci na stejném souboru CSV. Ukázková šablona sdíleného svazku clusteru je k dispozici ve složce scripts pro vaši informaci.
+### <a name="csv-input-file"></a>Vstupní soubor CSV
+Po dokončení všech požadavků budete muset vytvořit soubor CSV, který obsahuje data pro každý zdrojový počítač, který chcete migrovat. Vstupní sdílený svazek clusteru musí obsahovat řádek záhlaví s podrobnostmi o vstupu a řádek s podrobnostmi pro každý počítač, který je třeba migrovat. Všechny skripty jsou navržené tak, aby fungovaly ve stejném souboru CSV. Ukázková šablona CSV je k dispozici ve složce Scripts pro váš odkaz.
 
-### <a name="script-execution"></a>Provádění skriptu
-Když sdílený svazek clusteru je připravená, můžete spustit následující kroky a provést migraci místních virtuálních počítačů:
+### <a name="script-execution"></a>Spuštění skriptu
+Jakmile je sdílený svazek clusteru připravený, můžete provést následující kroky, aby se prováděla migrace místních virtuálních počítačů:
 
 **Krok #** | **Název skriptu** | **Popis**
 --- | --- | ---
-1 | asr_startmigration.ps1 | Povolení replikace pro všechny virtuální počítače uvedené ve sdíleném svazku clusteru, skript vytvoří výstupu CSV s podrobnostmi o úloze pro každý virtuální počítač
-2 | asr_replicationstatus.ps1 | Zkontrolovat stav replikace, skript vytvoří sdílený svazek clusteru se stavem pro každý virtuální počítač
-3 | asr_updateproperties.ps1 | Jakmile se virtuální počítače jsou replikovány nebo chráněným, pomocí tohoto skriptu můžete aktualizovat vlastnosti cílového virtuálního počítače (vlastností výpočty a síť)
-4 | asr_propertiescheck.ps1 | Ověření, pokud jsou správně aktualizovat vlastnosti
-5 | asr_testmigration.ps1 |  Spuštění testovacího převzetí služeb při selhání virtuálních počítačů uvedených ve sdíleném svazku clusteru, skript vytvoří výstupu CSV s podrobnostmi o úloze pro každý virtuální počítač
-6 | asr_cleanuptestmigration.ps1 | Po ruční ověření virtuálních počítačů, které byly testování převzetím služeb při selhání, můžete použít tento skript k vyčištění testovacího převzetí služeb virtuálních počítačů
-7 | asr_migration.ps1 | Provedení neplánovaného převzetí služeb při selhání pro virtuální počítače uvedené ve sdíleném svazku clusteru, skript vytvoří výstupu CSV s podrobnostmi o úloze pro každý virtuální počítač. Skript nevypne místní virtuální počítače před aktivací převzetí služeb při selhání pro zajištění konzistence aplikace, je doporučeno, že je ručně vypněte virtuální počítače před spuštěním skriptu.
-8 | asr_completemigration.ps1 | Provedení operace potvrzení na virtuálních počítačích a odstranění entit Azure Site Recovery
-9 | asr_postmigration.ps1 | Pokud hodláte přiřadit skupiny zabezpečení sítě síťových adaptérů post-převzetí služeb při selhání, můžete k tomu tento skript. Přiřadí skupinu zabezpečení sítě na jakékoli jeden síťový adaptér na cílovém virtuálním počítači.
+1 | asr_startmigration.ps1 | Povolí replikaci pro všechny virtuální počítače uvedené ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač.
+2 | asr_replicationstatus.ps1 | Zkontroluje stav replikace. skript vytvoří sdílený svazek clusteru se stavem pro každý virtuální počítač.
+3 | asr_updateproperties.ps1 | Po replikaci nebo ochraně virtuálních počítačů můžete pomocí tohoto skriptu aktualizovat cílové vlastnosti virtuálního počítače (vlastnosti výpočtů a sítě).
+4 | asr_propertiescheck.ps1 | Ověřte, jestli jsou vlastnosti vhodně aktualizované.
+5 | asr_testmigration.ps1 |  Spusťte testovací převzetí služeb při selhání virtuálních počítačů uvedených ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač.
+6 | asr_cleanuptestmigration.ps1 | Po manuálním ověření virtuálních počítačů, u kterých došlo k převzetí služeb při selhání, můžete pomocí tohoto skriptu vyčistit virtuální počítače testovacího převzetí služeb při selhání.
+7 | asr_migration.ps1 | Proveďte neplánované převzetí služeb při selhání u virtuálních počítačů uvedených ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač. Skript před aktivací převzetí služeb při selhání neukončí místní virtuální počítače. kvůli konzistenci aplikací doporučujeme, abyste virtuální počítače před spuštěním skriptu ručně vypnuli.
+8 | asr_completemigration.ps1 | Proveďte operaci potvrzení u virtuálních počítačů a odstraňte entity Azure Site Recovery.
+9 | asr_postmigration.ps1 | Pokud plánujete přiřadit skupiny zabezpečení sítě k síťovým kartám po převzetí služeb při selhání, můžete k tomu použít tento skript. Přiřadí NSG k libovolnému síťovému rozhraní v cílovém virtuálním počítači.
 
-## <a name="how-to-migrate-to-managed-disks"></a>Migrace na spravované disky?
-Skript, ve výchozím nastavení, migruje se virtuální počítače na managed disks v Azure. Pokud zadaný cílový účet úložiště je účtem premium storage, budou vytvořeny premium managed disks po migraci. Účet úložiště mezipaměti může být stále standardní účet. Pokud cílový účet úložiště není účet úložiště úrovně standard, disky úrovně standard budou vytvořeny po migraci. 
+## <a name="how-to-migrate-to-managed-disks"></a>Jak migrovat na Managed disks?
+Ve výchozím nastavení skript migruje virtuální počítače na spravované disky v Azure. Pokud je zadaný cílový účet úložiště účet Premium Storage, Služba Managed disks úrovně Premium se vytvoří po migraci. Účet úložiště mezipaměti může být stále standardní účet. Pokud je cílový účet úložiště standardní účet úložiště, vytvoří se na standardní disky migrace po migraci. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Další informace](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) o migraci serverů do Azure pomocí Azure Site Recovery

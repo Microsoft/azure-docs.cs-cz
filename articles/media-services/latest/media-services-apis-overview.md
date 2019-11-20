@@ -1,6 +1,7 @@
 ---
-title: Vývoj s použitím rozhraní V3 API – Azure | Microsoft Docs
-description: Tento článek popisuje pravidla, která se vztahují na entity a rozhraní API při vývoji s Media Services V3.
+title: Vývoj s využitím rozhraní API V3
+titleSuffix: Azure Media Services
+description: Přečtěte si o pravidlech, která se vztahují na entity a rozhraní API při vývoji s Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,48 +13,48 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 79f1bd95451709485f92050a882c790f9e281eb5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 4a3b699c90e1fefb834f8ddfe3a23fc2a97354ec
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049013"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186129"
 ---
-# <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
+# <a name="develop-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
 
 Jako vývojář můžete použít Media Services [REST API](https://aka.ms/ams-v3-rest-ref) nebo klientské knihovny, které vám umožní pracovat s REST API, abyste mohli snadno vytvářet, spravovat a spravovat vlastní pracovní postupy pro média. Rozhraní [Media Services V3](https://aka.ms/ams-v3-rest-sdk) API je založené na specifikaci openapi (dříve označované jako Swagger).
 
-Tento článek popisuje pravidla, která se vztahují na entity a rozhraní API při vývoji s Media Services V3.
+Tento článek popisuje pravidla, která se vztahují na entity a rozhraní API při vývoji pomocí Media Services V3.
 
 ## <a name="accessing-the-azure-media-services-api"></a>Přístup k rozhraní Azure Media Services API
 
 Aby bylo možné získat přístup k Media Services prostředkům a rozhraní Media Services API, musíte nejdřív ověřit. Media Services podporuje ověřování [založené na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) . Mezi dvě běžné možnosti ověřování patří:
  
-* **Ověřování instančního objektu** – používá se k ověření služby (například webové aplikace, aplikace Function App, Logic Apps, API a mikroslužby). Aplikace, které běžně používají tuto metodu ověřování, jsou aplikace, které spouštějí služby démon, služby střední vrstvy nebo naplánované úlohy. Například pro webové aplikace by měla být vždy střední vrstva, která se připojuje k Media Services s instančním objektem.
-* **Ověřování uživatele** – používá se k ověření osoby, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by nejdřív měla uživatele vyzvat k zadání přihlašovacích údajů uživatele. Příkladem je aplikace konzoly pro správu používaná autorizovanými uživateli k monitorování úloh kódování nebo živého streamování.
+* **Ověřování instančního objektu**: používá se k ověřování služby (například webové aplikace, aplikace Function App, Logic Apps, API a mikroslužby). Aplikace, které běžně používají tuto metodu ověřování, jsou aplikace, které spouštějí služby démon, služby střední vrstvy nebo naplánované úlohy. Například pro webové aplikace by měla být vždy střední vrstva, která se připojuje k Media Services s instančním objektem.
+* **Ověřování uživatelů**: slouží k ověření osoby, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by nejdřív měla vyzvat uživatele k zadání přihlašovacích údajů uživatele. Příkladem je aplikace konzoly pro správu používaná autorizovanými uživateli k monitorování úloh kódování nebo živého streamování.
 
-Rozhraní Media Services API vyžaduje, aby uživatel nebo aplikace, které mají žádosti REST API, měly přístup k prostředku Media Services účtu a používají roli **Přispěvatel** nebo **vlastník** . K rozhraní API se dá získat přístup **, ale** budou k dispozici jenom operace **Get** nebo **list** . Další informace najdete v tématu [řízení přístupu na základě role pro účty Media Services](rbac-overview.md).
+Rozhraní Media Services API vyžaduje, aby uživatel nebo aplikace, které mají REST API požadavky, měly přístup k prostředku Media Services účtu a používají roli **Přispěvatel** nebo **vlastník** . K rozhraní API se dá získat přístup **, ale** budou k dispozici jenom operace **Get** nebo **list** . Další informace najdete v tématu [řízení přístupu na základě role pro účty Media Services](rbac-overview.md).
 
 Místo Vytvoření instančního objektu zvažte použití spravovaných identit pro prostředky Azure pro přístup k rozhraní Media Services API prostřednictvím Azure Resource Manager. Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [co jsou spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-### <a name="azure-ad-service-principal"></a>Instanční objekt služby Azure AD 
+### <a name="azure-ad-service-principal"></a>Instanční objekt služby Azure AD
 
-Pokud vytváříte aplikaci a instanční objekt služby Azure AD, musí být aplikace ve vlastním tenantovi. Po vytvoření aplikace udělte **přispěvateli** aplikace nebo roli **vlastníka** přístup k účtu Media Services. 
+Pokud vytváříte aplikaci a instanční objekt služby Azure AD, musí být aplikace ve vlastním tenantovi. Po vytvoření aplikace udělte **přispěvateli** aplikace nebo roli **vlastníka** přístup k účtu Media Services.
 
 Pokud si nejste jistí, jestli máte oprávnění k vytvoření aplikace služby Azure AD, přečtěte si téma [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
 Na následujícím obrázku čísla reprezentují tok požadavků v chronologickém pořadí:
 
-![Aplikace střední vrstvy](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+![Ověřování aplikací střední vrstvy pomocí AAD z webového rozhraní API](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
 1. Aplikace střední vrstvy požaduje přístupový token Azure AD s následujícími parametry:  
 
    * Koncový bod tenanta Azure AD.
    * Media Services identifikátor URI prostředku.
    * Identifikátor URI prostředku pro Media Services REST
-   * Hodnoty aplikace Azure AD: ID klienta a tajný kód klienta.
-   
-   Pokud chcete získat všechny potřebné hodnoty, přečtěte si téma [přístup k rozhraní API Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) .
+   * Hodnoty aplikací Azure AD: ID klienta a tajný kód klienta.
+
+   Pokud chcete získat všechny potřebné hodnoty, přečtěte si téma [přístup k rozhraní API Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md).
 
 2. Přístupový token Azure AD se pošle do střední úrovně.
 4. Střední vrstva odesílá požadavek do Azure Media REST API s tokenem Azure AD.
@@ -71,11 +72,11 @@ Podívejte se na následující ukázky, které ukazují, jak se připojit pomoc
 
 ## <a name="naming-conventions"></a>Zásady vytváření názvů
 
-Na názvy prostředků služby Azure Media Services v3 (například prostředky, úlohy, transformace) se vztahují omezení vytváření názvů Azure Resource Manageru. V souladu s Azure Resource Managerem jsou názvy prostředků vždy jedinečné. Jako názvy prostředků tedy můžete použít jakékoli řetězce jedinečného identifikátoru (například identifikátory GUID). 
+Na názvy prostředků služby Azure Media Services v3 (například prostředky, úlohy, transformace) se vztahují omezení vytváření názvů Azure Resource Manageru. V souladu s Azure Resource Managerem jsou názvy prostředků vždy jedinečné. Jako názvy prostředků tedy můžete použít jakékoli řetězce jedinečného identifikátoru (například identifikátory GUID).
 
-Názvy prostředků služby Media Services nemůže obsahovat znaky <, >, %, &, :, &#92;, ?, /, *, +, ., jednoduché uvozovky ani žádné řídicí znaky. Všechny ostatní znaky jsou povolené. Maximální délka názvu prostředku je 260 znaků. 
+Názvy prostředků Media Services nemůžou zahrnovat: "<", ">", "%", "&"&#92;, ",", "?", "/", "*", "+", ".", znak jednoduché uvozovky nebo jakékoli řídicí znaky. Všechny ostatní znaky jsou povolené. Maximální délka názvu prostředku je 260 znaků.
 
-Další informace o vytváření názvů Azure Resource Manageru najdete v tématech věnovaných [požadavkům na vytváření názvů](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) a [zásadám vytváření názvů](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Další informace o pojmenování Azure Resource Manager najdete v tématu [požadavky](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) na pojmenování a zásady [vytváření názvů](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Názvy souborů/objektů BLOB v rámci assetu
 
@@ -106,7 +107,7 @@ Media Services má následující dlouhodobě běžící operace:
 * [Zastavit StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
 * [Škálování StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
-Po úspěšném odeslání dlouhé operace obdržíte 202 přijato a musíte se dotázat na dokončení operace pomocí vráceného ID operace.
+Po úspěšném odeslání dlouhé operace obdržíte 202 přijatý a musí se dotazovat na dokončení operace s použitím vráceného ID operace.
 
 Článek [sledování asynchronních operací Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) podrobněji vysvětluje, jak sledovat stav asynchronních operací Azure prostřednictvím hodnot vrácených v odpovědi.
 
@@ -115,7 +116,7 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 ## <a name="sdks"></a>Sady SDK
 
 > [!NOTE]
-> Sady SDK Azure Media Services V3 nejsou zaručeny jako bezpečné pro přístup z více vláken. Při vývoji vícevláknové aplikace byste měli přidat vlastní logiku synchronizace vláken pro ochranu klienta nebo použití nového objektu AzureMediaServicesClient na vlákno. Měli byste také dbát na problémy s více vlákny, které přináší volitelné objekty poskytované vaším kódem, klientovi (například instance HttpClient v rozhraní .NET).
+> Sady SDK Azure Media Services V3 nejsou zaručeny jako bezpečné pro přístup z více vláken. Při vývoji aplikace s více vlákny byste měli přidat vlastní logiku synchronizace vláken pro ochranu klienta nebo použití nového objektu AzureMediaServicesClient na vlákno. Měli byste také dbát na problémy s více vlákny, které přináší volitelné objekty poskytované vaším kódem, klientovi (například instance HttpClient v rozhraní .NET).
 
 |Sada SDK|Referenční informace|
 |---|---|
@@ -135,11 +136,11 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) je nástroj dostupný pro zákazníky s Windows, kteří se chtějí dozvědět o Media Services. AMSE je WinForms neboC# aplikace, které odesílají, stahují, kódují, streamování vod a živý obsah pomocí Media Services. Nástroj AMSE je určen pro klienty, kteří chtějí testovat Media Services bez psaní kódu. Kód AMSE je k dispozici jako prostředek pro zákazníky, kteří chtějí vyvíjet pomocí Media Services.
 
-AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (problémy mohou být hlášeny https://github.com/Azure/Azure-Media-Services-Explorer/issues). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v tématu [Nejčastější dotazy týkající se kódu, časté](https://opensource.microsoft.com/codeofconduct/faq/) otázky nebo kontaktování opencode@microsoft.com s dalšími dotazy nebo komentáři.
+AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (problémy mohou být hlášeny https://github.com/Azure/Azure-Media-Services-Explorer/issues). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v tématu [Nejčastější dotazy ke kódu, časté](https://opensource.microsoft.com/codeofconduct/faq/) otázky nebo kontaktování opencode@microsoft.com s dalšími dotazy nebo komentáři.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování Media Services entit
 
-Viz [filtrování, řazení, stránkování Azure Media Services entit](entities-overview.md)
+Viz téma [filtrování, řazení, stránkování Azure Media Services entit](entities-overview.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

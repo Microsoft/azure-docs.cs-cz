@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037880"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186186"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -63,7 +63,7 @@ Při použití předávací **živé události**se spoléháte na váš místní
 
 Pokud používáte kódování cloudu s Media Services, nakonfigurujete svůj místní kodér Live Encoder tak, aby odesílal video s jednou přenosovou rychlostí (až do 32Mbps agregace) do živé události (pomocí RTMP nebo fragmentu vstupního protokolu-MP4). Živá událost překóduje datový proud příchozího přenosu dat s jednou přenosovou rychlostí na [více datových proudů](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) v různých rozlišeních a zvyšuje tak jejich doručování a zpřístupňuje je pro přehrávání přes standardní protokoly, jako jsou MPEG-pomlčky, Apple HTTP Live Streaming (HLS) a Microsoft Smooth Streaming. 
 
-### <a name="live-transcription"></a>Živý přepis
+### <a name="live-transcription-preview"></a>Živý přepis (Preview)
 
 Živý přepis je funkce, kterou můžete použít s dynamickými událostmi, které jsou buď předávací, nebo živé kódování. Další informace najdete v tématu [živý přepis](live-transcription.md). Když je tato funkce povolená, služba použije funkci [řeči k textu](../../cognitive-services/speech-service/speech-to-text.md) Cognitive Services k přepisovat mluveného slova v příchozím zvukovém textu. Tento text je pak k dispozici pro doručování s videem a zvukem v protokolech MPEG-POMLČKy a HLS.
 

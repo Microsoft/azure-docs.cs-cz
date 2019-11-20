@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure – Vytvoření profilu služby Front Door pomocí portálu Azure Portal k zajištění vysoké dostupnosti aplikací
+title: 'Rychlý Start: vytvoření profilu front-dveří pro vysokou dostupnost aplikací'
 description: Tento článek Rychlý start popisuje, jak vytvořit Front Door pro vaši vysoce dostupnou a výkonnou globální webovou aplikaci.
 services: front-door
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461982"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184515"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření branou pro vysoce dostupná globální webové aplikace
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
 
 Tento rychlý start popisuje, jak vytvořit profil služby Front Door zajišťující vysokou dostupnost a vysoký výkon globální webové aplikace. 
 
@@ -28,7 +28,7 @@ Scénář popsaný v tomto rychlém startu zahrnuje dvě instance webové aplika
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -42,7 +42,7 @@ Tento rychlý start vyžaduje dvě instance webové aplikace nasazené a běží
      | Název           | Zadejte jedinečný název vaší webové aplikace.  |
      | Skupina prostředků          | Vyberte **Nová** a zadejte *myResourceGroupFD1*. |
      | Plán služby App Service / umístění         | Vyberte **Nový**.  Jako plán služby App Service zadejte *myAppServicePlanEastUS* a pak vyberte **OK**. 
-     |      Location  |   USA – východ        |
+     |      Umístění  |   Východní USA        |
     |||
 
 3. Vyberte **Vytvořit**.
@@ -54,7 +54,7 @@ Tento rychlý start vyžaduje dvě instance webové aplikace nasazené a běží
      | Název           | Zadejte jedinečný název vaší webové aplikace.  |
      | Skupina prostředků          | Vyberte **Nová** a zadejte *myResourceGroupFD2*. |
      | Plán služby App Service / umístění         | Vyberte **Nový**.  Jako plán služby App Service zadejte *myAppServicePlanWestEurope* a pak vyberte **OK**. 
-     |      Location  |   Západní Evropa      |
+     |      Umístění  |   Západní Evropa      |
     |||
 
 
@@ -75,14 +75,14 @@ Dále je potřeba nakonfigurovat back-end(y) aplikace v back-endovém fondu, aby
 3. Jako **Typ cílového hostitele** vyberte App Service, vyberte předplatné, ve kterém jste web vytvořili, a pak v poli **Název cílového hostitele** zvolte první web, to znamená *myAppServicePlanEastUS.azurewebsites.net*.
 4. Zbývající pole ponechejte v tuto chvíli tak, jak jsou, a klikněte na **Přidat**.
 5. Opakováním kroků 2 až 4 přidejte druhý web, to znamená *myAppServicePlanWestEurope.azurewebsites.net*.
-6. Pro back-endový fond můžete volitelně změnit nastavení Sondy stavu a Vyrovnávání zatížení, ale výchozí hodnoty by také měly fungovat. Klikněte na tlačítko **Add** (Přidat).
+6. Pro back-endový fond můžete volitelně změnit nastavení Sondy stavu a Vyrovnávání zatížení, ale výchozí hodnoty by také měly fungovat. Klikněte na tlačítko **přidat**.
 
 
 ### <a name="c-add-a-routing-rule"></a>C. Přidání pravidla směrování
 Nakonec klikněte na ikonu „+“ pro Pravidla směrování a nakonfigurujte pravidlo směrování. Je to potřeba k namapování vašeho front-endového hostitele na back-endový fond, což v zásadě znamená nakonfigurovat, že když přijde žádost na `myappfrontend.azurefd.net`, má se přesměrovat na back-endový fond `myBackendPool`. Kliknutím na **Přidat** přidáte pravidlo směrování do Front Dooru. Teď už byste měli být připraveni Front Door vytvořit, proto klikněte na **Zkontrolovat a vytvořit**.
 
 >[!WARNING]
-> **Musíte** zajistit, aby všichni front-endoví hostitelé ve vašem Front Dooru měli přidružené pravidlo směrování s výchozí cestou (/\*). To znamená, že mezi všemi pravidly směrování musí pro každého front-endového hostitele existovat alespoň jedno pravidlo směrování s definovanou výchozí cestou (/\*). Pokud by tomu tak nebylo, nemusel by být provoz koncových uživatelů správně směrovaný.
+> **Musíte** zajistit, aby všichni front-endoví hostitelé ve vašem Front Dooru měli přidružené pravidlo směrování s výchozí cestou (/\*). To znamená, že mezi všemi pravidly směrování musí pro každého front-endového hostitele existovat alespoň jedno pravidlo směrování s definovanou výchozí cestou (/\*). Pokud se vám to nepodaří zajistit, provoz koncových uživatelů se možná nebude směrovat správně.
 
 ## <a name="view-front-door-in-action"></a>Front Door v akci
 Po vytvoření Front Dooru bude pár minut trvat, než se konfigurace všude globálně nasadí. Až bude nasazení dokončené, přistupte k front-endovému hostiteli, kterého jste vytvořili – otevřete webový prohlížeč a zadejte adresu URL `myappfrontend.azurefd.net`. Vaše žádost se automaticky přesměruje na nejbližší back-end z back-endů určených v back-endovém fondu. 
@@ -93,5 +93,5 @@ Pokud chcete otestovat okamžité globální převzetí služeb Front Dooru při
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už je nepotřebujete, odstraňte skupiny prostředků, webové aplikace a všechny související prostředky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste vytvořili Front Door umožňující směrovat uživatelský provoz pro webové aplikace, které vyžadují vysokou dostupnost a maximální výkon. Další informace o směrování provozu najdete v tématu o [metodách směrování](front-door-routing-methods.md) používaných službou Front Door.

@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – odstranění Azure App Configuration Store | Dokumentace Microsoftu
-description: Ukázkový skript Azure CLI – odstranění úložiště konfigurace aplikace pro Azure
+title: Ukázkový skript Azure CLI – odstranění úložiště konfigurace aplikace Azure | Microsoft Docs
+description: Ukázkový skript Azure CLI – odstranění úložiště konfigurace aplikace Azure
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,16 +14,16 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3482cc14e73801af6d0db910ded84adf722bc6f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0983e7d68e7ad01683d588ef89827eaf79754d07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234338"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184917"
 ---
-# <a name="delete-an-azure-app-configuration-store"></a>Odstranit úložiště konfigurace aplikace pro Azure
+# <a name="delete-an-azure-app-configuration-store"></a>Odstranění úložiště konfigurace aplikace Azure
 
-Tento ukázkový skript odstraní instanci z konfigurace aplikace pro Azure.
+Tento ukázkový skript odstraní instanci Azure App Configuration.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Tento ukázkový skript odstraní instanci z konfigurace aplikace pro Azure.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Je třeba nejprve nainstalovat rozšíření Azure App konfigurace rozhraní příkazového řádku spuštěním následujícího příkazu:
+Nejdřív musíte nainstalovat rozšíření rozhraní příkazového řádku Azure App Configuration, a to spuštěním následujícího příkazu:
 
         az extension add -n appconfig
 
@@ -40,7 +40,7 @@ Je třeba nejprve nainstalovat rozšíření Azure App konfigurace rozhraní př
 ```azurecli-interactive
 #/bin/bash
 
-# Delete an app configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
+# Delete an App Configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
 az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 ```
 
@@ -48,14 +48,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy se odstranit konfiguraci app storu. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript pomocí následujících příkazů odstraní úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
-| [Odstranit appconfig az](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Odstraní prostředek úložiště konfigurace aplikace. |
+| [AZ appconfig DELETE](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Odstraní prostředek úložiště konfigurace aplikace. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku konfiguraci aplikace najdete v [dokumentaci Azure aplikace konfigurační](../cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro konfiguraci aplikace najdete v ukázkách rozhraní příkazového [řádku konfigurace Azure](../cli-samples.md).

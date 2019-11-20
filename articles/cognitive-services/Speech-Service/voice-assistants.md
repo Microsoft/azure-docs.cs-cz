@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577986"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195942"
 ---
 # <a name="about-voice-assistants"></a>O hlasových asistentcích
 
@@ -39,7 +39,8 @@ Prvním krokem k vytvoření hlasového asistenta je rozhodování o tom, co by 
 Pokud si zatím nejste jistí, co byste chtěli zvládnout, doporučujeme vám jako nejlepší výchozí volbu použít [přímý vstup hlasu](direct-line-speech.md) . Nabízí integraci s bohatou sadou nástrojů a pomůcek pro vytváření obsahu, jako je [řešení Virtual Assistant a podniková šablona](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) a [Služba QnA maker](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) pro vytváření běžných vzorů a používání stávajících zdrojů znalostí.
 
 [Vlastní příkazy (Preview)](custom-commands.md) poskytují zjednodušené vývojové a hostující prostředí, které je specifické pro scénáře příkazů a ovládacích prvků v přirozeném jazyce.
-   ![Porovnání řešení pomocníka](media/voice-assistants/assistant-solution-comparison.png "CompArison pomocná řešení ")
+
+   ![Porovnání řešení pomocníka](media/voice-assistants/assistant-solution-comparison.png "Porovnání řešení pomocníka")
 
 ## <a name="core-features"></a>Základní funkce
 
@@ -57,9 +58,9 @@ Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za mén
 
 | Rychlý start | Platforma | API – referenční informace |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Hlíží](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Hlíží](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Procházet](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 

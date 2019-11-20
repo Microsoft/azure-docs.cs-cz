@@ -1,5 +1,5 @@
 ---
-title: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API
+title: Kurz`:`použití spravované identity virtuálních počítačů s Windows pro přístup k Azure AD graphu
 description: Tento kurz vás provede použitím spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43ef467adb8970d410404c151d0028ee4cda92b9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307790"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183010"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak používat systém přiřadil spravovanou identitu pro Windows virtuální počítač (VM) pro přístup k Azure AD Graph API k načtení jeho členství ve skupinách. Spravované identity pro prostředky Azure se spravují automaticky v Azure a umožňují vám ověřovat přístup ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu.  V tomto kurzu se budete dotazovat na členství identity virtuálního počítače ve skupinách služby Azure AD. Informace o skupinách se často používají například při rozhodování o autorizaci. Spravovaná identita virtuálního počítače je uvnitř služby Azure AD reprezentovaná **instančním objektem**. Před dotazem na skupiny přidejte do některé skupiny ve službě Azure AD instanční objekt reprezentující identitu virtuálního počítače. Můžete to udělat přes Azure PowerShell, Azure AD PowerShell nebo Azure CLI.
+V tomto kurzu se dozvíte, jak používat spravovanou identitu přiřazenou systémem pro virtuální počítač s Windows pro přístup k Graph API Azure AD, aby se mohla načíst jeho členství ve skupině. Spravované identity pro prostředky Azure se spravují automaticky v Azure a umožňují vám ověřovat přístup ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu.  V tomto kurzu se budete dotazovat na členství identity virtuálního počítače ve skupinách služby Azure AD. Informace o skupinách se často používají například při rozhodování o autorizaci. Spravovaná identita virtuálního počítače je uvnitř služby Azure AD reprezentovaná **instančním objektem**. Před dotazem na skupiny přidejte do některé skupiny ve službě Azure AD instanční objekt reprezentující identitu virtuálního počítače. Můžete to udělat přes Azure PowerShell, Azure AD PowerShell nebo Azure CLI.
 
 > [!div class="checklist"]
 > * Připojení k Azure AD
@@ -39,11 +39,11 @@ V tomto kurzu se dozvíte, jak používat systém přiřadil spravovanou identit
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 - Abyste identitě virtuálního počítače mohli udělit přístup k Azure AD Graphu, musí být ve službě Azure AD váš účet přiřazený k roli **globálního správce**.
-- Nainstalujte nejnovější [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) Pokud jste tak již neučinili. 
+- Pokud jste to ještě neudělali, nainstalujte si nejnovější [prostředí Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) . 
 
 ## <a name="connect-to-azure-ad"></a>Připojení k Azure AD
 
-Kvůli tomu, abyste virtuální počítač přiřadili do skupiny a udělili mu oprávnění k načtení jeho členství ve skupinách, se musíte připojit ke službě Azure AD. Můžete použít rutiny Connect-AzureAD přímo nebo pomocí parametru ID Tenanta v případě, že máte více tenantů.
+Kvůli tomu, abyste virtuální počítač přiřadili do skupiny a udělili mu oprávnění k načtení jeho členství ve skupinách, se musíte připojit ke službě Azure AD. Rutinu Connect-AzureAD můžete použít přímo nebo s parametrem TenantId pro případ, že máte více tenantů.
 
 ```powershell
 Connect-AzureAD
@@ -72,7 +72,7 @@ V tomto kurzu udělíte identitě virtuálního počítače schopnost dotazován
 Azure AD Graph:
 - ID aplikace instančního objektu (používá se při udělování oprávnění aplikace): 00000002-0000-0000-c000-000000000000
 - ID prostředku (používá se při žádosti o přístupový token ze spravovaných identit prostředků Azure): https://graph.windows.net
-- Odkaz na obor oprávnění: [Referenční dokumentace k Azure AD Graph oprávněním](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- Odkaz na obor oprávnění: [Odkaz na oprávnění Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-azure-ad-powershell"></a>Udělení oprávnění aplikace přes Azure AD PowerShell
 
@@ -83,7 +83,7 @@ K použití této možnosti budete potřebovat Azure AD PowerShell. Pokud ho nem
    ```powershell
    Connect-AzureAD
    ```
-   Chcete-li připojit k určité Azure Active Directory, použijte _TenantId_ parametr následujícím způsobem:
+   Pokud se chcete připojit ke konkrétnímu Azure Active Directory, použijte parametr _TenantId_ následujícím způsobem:
 
    ```powershell
    Connect-AzureAD -TenantId "Object Id of the tenant"
@@ -165,7 +165,7 @@ Pokud chcete k ověření vůči Azure AD Graphu použít spravovanou identitu v
    $AccessToken = $content.access_token
    ```
 
-5. Pomocí ID objektu instančního objektu identity virtuálního počítače (tuto hodnotu můžete načíst z proměnné deklarované v předchozích krocích: ``$ManagedIdentitiesServicePrincipal.ObjectId``) můžete dotazovat rozhraní Azure AD Graph API a načíst jeho členství ve skupinách. Nahraďte `<OBJECT ID>` s ID objektu z předchozího kroku a <`ACCESS-TOKEN>` pomocí dříve obdrženého přístupového tokenu:
+5. Pomocí ID objektu instančního objektu identity virtuálního počítače (tuto hodnotu můžete načíst z proměnné deklarované v předchozích krocích: ``$ManagedIdentitiesServicePrincipal.ObjectId``) můžete dotazovat rozhraní Azure AD Graph API a načíst jeho členství ve skupinách. Nahraďte `<OBJECT ID>` IDENTIFIKÁTORem objektu z předchozího kroku a <`ACCESS-TOKEN>` s dřív získaným přístupovým tokenem:
 
    ```powershell
    Invoke-WebRequest 'https://graph.windows.net/<Tenant ID>/servicePrincipals/<VM Object ID>/getMemberGroups?api-version=1.6' -Method POST -Body '{"securityEnabledOnly":"false"}' -Headers @{Authorization="Bearer $AccessToken"} -ContentType "application/json"
@@ -179,7 +179,7 @@ Pokud chcete k ověření vůči Azure AD Graphu použít spravovanou identitu v
    Content : {"odata.metadata":"https://graph.windows.net/<Tenant ID>/$metadata#Collection(Edm.String)","value":["<ObjectID of VM's group membership>"]}
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak využít spravovanou identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup k Azure AD Graphu.  Další informace o Azure AD Graphu najdete zde:
 

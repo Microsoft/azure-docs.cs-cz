@@ -1,7 +1,7 @@
 ---
-title: 'Návrhář: předpověď úvěrového rizika (citlivé na náklady)'
+title: 'Návrhář: příklad prediktivního úvěrového rizika'
 titleSuffix: Azure Machine Learning
-description: V tomto článku se dozvíte, jak vytvořit komplexní kanál strojového učení pomocí návrháře (Preview). Naučíte se, jak implementovat vlastní skripty v Pythonu a porovnat více modelů a vybrat nejlepší možnost.
+description: Sestavujte klasifikátor a pomocí vlastních skriptů v Pythonu můžete předpovědět úvěrové riziko pomocí návrháře Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 7af0ee31c7d7e5dae4a38db7f6c74ff3e5f964bb
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647993"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196093"
 ---
-# <a name="sample-4---classification-with-custom-python-script-predict-credit-risk"></a>Ukázka 4 – klasifikace s vlastním skriptem Pythonu: předpověď úvěrového rizika
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Vytvoření klasifikátoru & použití skriptů Pythonu k předpovídání úvěrového rizika pomocí návrháře Azure Machine Learning
+
+**Návrhář (Preview) – ukázka 4**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak vytvořit komplexní kanál strojového učení pomocí návrháře (Preview). Naučíte se, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnat více modelů a vybrat nejlepší možnost.

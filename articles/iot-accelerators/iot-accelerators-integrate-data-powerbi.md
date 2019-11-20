@@ -1,6 +1,6 @@
 ---
 title: Vizualizace dat vzdáleného monitorování pomocí Power BI – Azure | Microsoft Docs
-description: V tomto kurzu se pomocí Power BI Desktop a Cosmos DB integerate data z řešení vzdáleného monitorování do vlastní vizualizace. Tímto způsobem můžou uživatelé vytvářet vlastní řídicí panely a sdílet je s uživateli, kteří nejsou v řešení.
+description: V tomto kurzu se pomocí Power BI Desktop a Cosmos DB integrují data z řešení vzdáleného monitorování do přizpůsobené vizualizace. Tímto způsobem můžou uživatelé vytvářet vlastní řídicí panely a sdílet je s uživateli, kteří nejsou v řešení.
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 13b10aa4f40b7c4b62b35e8580c2826c10e6683f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: HT
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166294"
+ms.locfileid: "74184241"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Vizualizace dat vzdáleného monitorování pomocí Power BI
 
@@ -22,13 +22,13 @@ Tento kurz vás provede postupem připojení dat řešení vzdáleného monitoro
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít aktuálně spuštěné řešení vzdáleného monitorování.
-- Musíte mít přístup k webu [Azure Portal](https://portal.azure.com) a k vašemu předplatnému, na kterém běží IoT Hub a řešení.
+- Musíte mít přístup k [Azure Portal](https://portal.azure.com) a vašemu předplatnému, na kterém běží IoT Hub a řešení.
 - Musíte mít nainstalovaný [Power BI Desktop](https://powerbi.microsoft.com) , ale všechny verze budou
 
 
-## <a name="information-needed-from-azure-portal"></a>Informace potřebné na webu Azure Portal
+## <a name="information-needed-from-azure-portal"></a>Informace potřebné od Azure Portal
 
-1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se, pokud je to potřeba.
+1. V případě potřeby přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se.
 
 2. Na panelu na levé straně klikněte na skupiny prostředků.
 

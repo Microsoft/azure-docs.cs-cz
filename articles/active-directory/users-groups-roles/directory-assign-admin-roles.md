@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a53f2a0e5927a75c4d22ada5837da26bd8deeda
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc9565f44fdb868bc45d2f99de1d4036e1d5d123
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028282"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181141"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -51,9 +51,14 @@ K dispozici jsou následující role správce:
 
 Uživatelé v této roli můžou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy aplikací. Všimněte si, že uživatelé přiřazení k této roli se při vytváření nových registrací aplikací nebo podnikových aplikací nepřidali jako vlastníci.
 
-> [!IMPORTANT]
-> Tato role uděluje možnost spravovat přihlašovací údaje aplikací. Uživatelé přiřazení k této roli můžou do aplikace přidat přihlašovací údaje a pomocí těchto přihlašovacích údajů zosobnit identitu aplikace. Pokud identitě aplikace byl udělen přístup k Azure Active Directory, jako je například možnost vytvořit nebo aktualizovat uživatele nebo jiné objekty, může uživatel přiřazený k této roli provádět tyto akce při zosobnění aplikace. Tato schopnost zosobnit identitu aplikace může být zvýšením oprávnění, přes co může uživatel dělat prostřednictvím přiřazení rolí v Azure AD. Je důležité pochopit, že přiřazení uživatele k roli správce aplikace jim dává možnost zosobnit identitu aplikace.
+Správci aplikací můžou spravovat přihlašovací údaje aplikací, které jim umožní zosobnit aplikaci. Uživatelé přiřazení k této roli tak mohou spravovat přihlašovací údaje aplikací pouze těch aplikací, které nejsou přiřazeny k žádné roli Azure AD nebo které jsou přiřazeny pouze následujícím rolím Správce:
+* Správce aplikace
+* Vývojář aplikace
+* Správce cloudové aplikace
+* Čtečky adresářů
 
+Pokud je aplikace přiřazena k jakékoli jiné roli, která není uvedená výše, správce aplikace nemůže spravovat pověření této aplikace. 
+ 
 Tato role také uděluje možnost _vyjádřit souhlas_ s delegovanými oprávněními a oprávněními aplikace s výjimkou oprávnění pro Microsoft Graph a Azure AD Graph.
 
 > [!IMPORTANT]
@@ -122,8 +127,12 @@ Umožňuje nákupy, spravovat předplatná, spravovat lístky podpory a monitoro
 
 Uživatelé v této roli mají stejná oprávnění jako role správce aplikace, kromě možnosti spravovat proxy aplikace. Tato role uděluje možnost vytvářet a spravovat všechny aspekty podnikových aplikací a registrací aplikací. Tato role také uděluje možnost vyjádřit souhlas s delegovanými oprávněními a oprávnění aplikací, kromě Microsoft Graph a Azure AD Graph. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
 
-> [!IMPORTANT]
-> Tato role uděluje možnost spravovat přihlašovací údaje aplikací. Uživatelé přiřazení k této roli můžou do aplikace přidat přihlašovací údaje a pomocí těchto přihlašovacích údajů zosobnit identitu aplikace. Pokud identitě aplikace byl udělen přístup k Azure Active Directory, jako je například možnost vytvořit nebo aktualizovat uživatele nebo jiné objekty, může uživatel přiřazený k této roli provádět tyto akce při zosobnění aplikace. Tato schopnost zosobnit identitu aplikace může být zvýšením oprávnění, přes co může uživatel dělat prostřednictvím přiřazení rolí v Azure AD. Je důležité pochopit, že přiřazení uživatele k roli správce cloudové aplikace jim dává možnost zosobnit identitu aplikace.
+Správci cloudové aplikace mohou spravovat přihlašovací údaje aplikací, které jim umožňují zosobnit aplikaci. Uživatelé přiřazení k této roli tak mohou spravovat přihlašovací údaje aplikací pouze těch aplikací, které nejsou přiřazeny k žádné roli Azure AD nebo které jsou přiřazeny pouze následujícím rolím Správce:
+* Vývojář aplikace
+* Správce cloudové aplikace
+* Čtečky adresářů
+
+Pokud je aplikace přiřazena k jakékoli jiné roli, která není uvedená výše, správce cloudové aplikace nemůže spravovat pověření této aplikace.
 
 ### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[Správce cloudového zařízení](#cloud-device-administrator-permissions)
 

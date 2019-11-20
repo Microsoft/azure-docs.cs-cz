@@ -1,5 +1,5 @@
 ---
-title: Migrace virtuální sítě Azure (Classic) ze skupiny vztahů do oblasti | Microsoft Docs
+title: Migrovat virtuální síť Azure (Classic) ze skupiny vztahů do oblasti
 description: Naučte se migrovat virtuální síť (Classic) ze skupiny vztahů do oblasti.
 services: virtual-network
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 57e6c551e1377425dab5509a886a0454b9410a32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058401"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196701"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Migrace virtuální sítě (Classic) ze skupiny vztahů do oblasti
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby většina nových nasazení používala model nasazení Správce prostředků.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby většina nových nasazení používala model nasazení Správce prostředků.
 
 Skupiny vztahů zajistí, aby prostředky vytvořené v rámci stejné skupiny vztahů byly fyzicky hostovány servery, které jsou blízko sebe, a umožňují těmto prostředkům komunikovat rychleji. V minulosti byly skupiny vztahů požadovány pro vytváření virtuálních sítí (Classic). Služba správce sítě, kterou spravované virtuální sítě (Classic), může v tuto chvíli fungovat jenom v rámci sady fyzických serverů nebo jednotek škálování. Vylepšení architektury zvýšily rozsah správy sítě na určitou oblast.
 
@@ -50,7 +50,7 @@ Doporučujeme, abyste skupiny vztahů všeobecně nepoužívali. Mimo požadavek
    
     Upravte následující řádky v souboru konfigurace sítě a nahraďte hodnoty vlastními: 
    
-    **Stará hodnota:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
+    **Star Value:** \<VirtualNetworkSitename = "VNetUSWest" AffinityGroup = "VNetDemoAG"\> 
    
     **Nová hodnota:** \<VirtualNetworkSitename = "VNetUSWest" Location = "Západní USA"\>
 3. Uložte změny a [importujte](virtual-networks-using-network-configuration-file.md#import) konfiguraci sítě do Azure.

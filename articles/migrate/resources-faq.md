@@ -1,17 +1,17 @@
 ---
 title: Běžné otázky týkající se Azure Migrate
-description: Řeší běžné a často kladené otázky týkající se Azure Migrate
+description: Získejte odpovědi na běžné otázky týkající se služby Azure Migrate.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 1663e1d418610bcfa2ada28770944bfc8cbf908f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480061"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185782"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: běžné otázky
 
@@ -182,7 +182,7 @@ Pokud nepoužíváte vizualizaci závislostí, nepotřebujete tyto agenty.
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Můžu použít existující pracovní prostor pro vizualizaci závislostí?
 
-Ano, existující pracovní prostor můžete připojit k projektu migrace a použít ho pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#how-does-it-work).
+Ano, existující pracovní prostor můžete připojit k projektu migrace a použít ho pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#how-does-it-work)
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Můžu sestavu Vizualizace závislostí exportovat?
 

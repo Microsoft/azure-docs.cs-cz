@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357016"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185104"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
 
@@ -56,7 +56,7 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
 
     Přidejte *připojovací řetězec* přidružený k úložišti konfigurace aplikace jako proměnnou prostředí.
 
-2. Otevřete *program.cs*a aktualizujte `CreateWebHostBuilder` metodu pro použití exportovaného `config.AddJsonFile()` souboru JSON voláním metody.
+2. Otevřete *program.cs*a aktualizujte metodu `CreateWebHostBuilder` pro použití exportovaného souboru JSON voláním metody `config.AddJsonFile()`.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -94,7 +94,7 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
 
         dotnet run
 
-4. Otevřete okno prohlížeče a v části přejít `http://localhost:5000`na, což je výchozí adresa URL webové aplikace hostované na místním počítači.
+4. Otevřete okno prohlížeče a klikněte na `http://localhost:5000`, což je výchozí adresa URL pro webovou aplikaci hostovanou místně.
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-app-launch-local.png)
 

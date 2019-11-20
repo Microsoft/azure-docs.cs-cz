@@ -10,78 +10,60 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858480"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196772"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Povolit InfiniBand s rozhraním SR-IOV
 
-Nejjednodušší a doporučený způsob, jak začít s IaaS virtuálními počítači pro HPC, je použití image operačního systému CentOS-HPC 7,6. Pokud používáte vlastní image virtuálního počítače, nejjednodušší způsob, jak ho nakonfigurovat pomocí InfiniBand (IB), je přidat rozšíření virtuálního počítače InfiniBandDriverLinux nebo InfiniBandDriverWindows do svého nasazení.
-Naučte se používat tato rozšíření virtuálních počítačů se systémy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) .
+Řada virtuálních počítačů Azure NC, ND a H-Series je zajištěná vyhrazenou InfiniBand sítí. Všechny velikosti podporující RDMA jsou schopné využití této sítě pomocí Intel MPI. Některé řady virtuálních počítačů mají rozšířenou podporu pro všechny implementace MPI a akce RDMA prostřednictvím rozhraní SR-IOV. Virtuální počítače s podporou RDMA zahrnují [optimalizované grafické procesory](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) a virtuální počítače [HPC (High Performance COMPUTE)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) .
 
-Pokud chcete ručně nakonfigurovat InfiniBand na virtuálních počítačích s povoleným rozhraním SR-IOV (v současnosti se jedná o sérii a HC), postupujte podle následujících pokynů. Tyto kroky platí jenom pro RHEL/CentOS. V případě Ubuntu (16,04 a 18,04) a SLES (12 SP4 a 15) fungují i ovladače doručené pošty.
+## <a name="choose-your-installation-path"></a>Zvolit cestu instalace
 
-## <a name="manually-install-ofed"></a>Ruční instalace OFED
+Chcete-li začít, nejjednodušší možností je použít bitovou kopii platformy, která je předem nakonfigurovaná pro InfiniBand, pokud je k dispozici:
 
-Nainstalujte nejnovější ovladače MLNX_OFED pro ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
+- **Virtuální počítače HPC IaaS** – Pokud chcete začít s virtuálními počítači IaaS pro HPC, nejjednodušší řešení je použít [bitovou kopii operačního systému CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), která je už nakonfigurovaná s InfiniBand. Vzhledem k tomu, že je tato image už nakonfigurovaná pomocí InfiniBand, nemusíte ji konfigurovat ručně. Kompatibilní verze systému Windows najdete v tématu [instance podporující Windows RDMA](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-Pro RHEL/CentOS (příklad uvedený níže pro 7,6):
+- **Virtuální počítače IaaS GPU** – pro virtuální počítače optimalizované pro GPU se momentálně nenakonfigurovaly žádné image platforem, s výjimkou [image operačního systému CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Pokud chcete nakonfigurovat vlastní image pomocí InfiniBand, přečtěte si téma [Ruční instalace Mellanox OFED](#manually-install-mellanox-ofed).
 
-```bash
-sudo yum install -y kernel-devel python-devel
-sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
-sudo yum install -y gtk2 atk cairo tcl tk createrepo
-wget --retry-connrefused --tries=3 --waitretry=5 http://content.mellanox.com/ofed/MLNX_OFED-4.5-1.0.1.0/MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
-```
+Pokud používáte vlastní image virtuálního počítače nebo virtuální počítač s [optimalizovaným grafickým procesorem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) , měli byste ho nakonfigurovat pomocí InfiniBand přidáním rozšíření virtuálního počítače InfiniBandDriverLinux nebo InfiniBandDriverWindows do svého nasazení. Naučte se používat tato rozšíření virtuálních počítačů se systémy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-Pro Windows Stáhněte a nainstalujte ovladače WinOF-2 pro ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34) .
+## <a name="manually-install-mellanox-ofed"></a>Ruční instalace Mellanox OFED
 
-## <a name="enable-ipoib"></a>Povolit IPoIB
+Pokud chcete ručně nakonfigurovat InfiniBand s rozhraním SR-IOV, použijte následující postup. Příklad v těchto krocích zobrazuje syntaxi pro RHEL/CentOS, ale postup je obecný a dá se použít pro libovolný kompatibilní operační systém, jako je například Ubuntu (16,04, 18,04 19,04) a SLES (12 SP4 a 15). Ovladače doručené pošty jsou také funkční, ale ovladače Mellanox OpenFabrics poskytují více funkcí.
+
+Další informace o podporovaných distribucích pro ovladač Mellanox najdete v nejnovějších [ovladačích OpenFabrics Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26). Další informace o ovladači Mellanox OpenFabrics najdete v [uživatelské příručce pro Mellanox](https://docs.mellanox.com/category/mlnxofedib).
+
+V následujícím příkladu se naučíte konfigurovat InfiniBand pro Linux:
 
 ```bash
-sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
-sudo /etc/init.d/openibd restart
-if [ $? -eq 1 ]
-then
-  sudo modprobe -rv  ib_isert rpcrdma ib_srpt
-  sudo /etc/init.d/openibd restart
-fi
+# Modify the variable to desired Mellanox OFED version
+MOFED_VERSION=#4.7-1.0.0.1
+# Modify the variable to desired OS
+MOFED_OS=#rhel7.6
+pushd /tmp
+curl -fSsL https://www.mellanox.com/downloads/ofed/MLNX_OFED-${MOFED_VERSION}/MLNX_OFED_LINUX-${MOFED_VERSION}-${MOFED_OS}-x86_64.tgz | tar -zxpf -
+cd MLNX_OFED_LINUX-*
+sudo ./mlnxofedinstall
+popd
 ```
 
-## <a name="assign-an-ip-address"></a>Přiřazení IP adresy
+Pro Windows Stáhněte a nainstalujte [ovladače Mellanox OFED for Windows](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34).
 
-Přiřaďte IP adresu rozhraní ib0 pomocí některého z těchto:
+## <a name="enable-ip-over-infiniband"></a>Povolit IP adresu přes InfiniBand
 
-- Ručně přiřaďte IP adresu ib0 rozhraní (jako root).
+K povolení protokolu IP přes InfiniBand použijte následující příkazy.
 
-    ```bash
-    ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
-    ```
+```bash
+sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo systemctl restart waagent
+```
 
-NEBO
-
-- Pomocí WALinuxAgent přiřaďte IP adresu a nastavte ji jako trvalou.
-
-    ```bash
-    yum install -y epel-release
-    yum install -y python-pip
-    python -m pip install --upgrade pip setuptools wheel
-    wget "https://github.com/Azure/WALinuxAgent/archive/release-2.2.36.zip"
-    unzip release-2.2.36.zip
-    cd WALinuxAgent*
-    python setup.py install --register-service --force
-    sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
-    sed -i -e 's/# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-    systemctl restart waagent
-    ```
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.

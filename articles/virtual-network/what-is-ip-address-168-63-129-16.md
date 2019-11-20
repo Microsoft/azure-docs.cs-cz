@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067778"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196671"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Co je IP adresa 168.63.129.16?
 
@@ -35,12 +35,13 @@ IP adresa 168.63.129.16 je virtuální veřejná IP adresa, která se používá
 ## <a name="scope-of-ip-address-1686312916"></a>Rozsah IP adres 168.63.129.16
 
 Veřejná IP adresa 168.63.129.16 se používá ve všech oblastech a v národních cloudech. Tato speciální veřejná IP adresa je vlastněná Microsoftem a nebude se měnit. Povoluje se výchozí pravidlo skupiny zabezpečení sítě. Tuto IP adresu doporučujeme povolit v jakýchkoli místních zásadách brány firewall v příchozím i odchozím směru. Komunikace mezi touto zvláštní IP adresou a prostředky je bezpečná, protože z této IP adresy může zdroj zprávy vytvořit jenom interní platforma Azure. Pokud je tato adresa zablokovaná, může dojít k neočekávanému chování v nejrůznějších scénářích.
+Aby bylo možné komunikovat s WireServer: 80, 443 a 32526, musí být otevřeny alespoň následující porty.
 
 Z této IP adresy pocházejí [Azure Load Balancer sondy stavu](../load-balancer/load-balancer-custom-probe-overview.md) . Pokud zablokujete tuto IP adresu, testy se nezdaří.
 
 Ve scénáři nevirtuální sítě (Classic) se sonda stavu nachází z privátní IP adresy a 168.63.129.16 se nepoužije.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Skupiny zabezpečení](security-overview.md)
 - [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](manage-network-security-group.md)

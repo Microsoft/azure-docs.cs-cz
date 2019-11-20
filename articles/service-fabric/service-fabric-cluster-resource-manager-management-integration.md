@@ -1,6 +1,6 @@
 ---
-title: Service Fabric Cluster Resource Manager – integrace správy | Dokumentace Microsoftu
-description: Přehled bodů integrace mezi Cluster Resource Manager a Správa prostředků infrastruktury.
+title: Service Fabric integrace správy Správce prostředků clusteru | Microsoft Docs
+description: Přehled integračních bodů mezi Správce prostředků clusteru a správou Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c201945e94474d54b8a19918f3b55a0b40995a97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743509"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196502"
 ---
-# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Cluster resource manager integrace s správy clusteru Service Fabric
-Service Fabric Cluster Resource Manageru není jednotka upgradu v Service Fabric, ale je zahrnuta. První způsob, který Cluster Resource Manager pomáhá se správou se sledováním požadovaný stav clusteru a služby dovnitř. Cluster Resource Manager odešle sestav o stavu pokud ho nelze vložit do požadovanou konfiguraci clusteru. Například pokud není k dispozici dostatečná kapacita Cluster Resource Manager odešle upozornění stavu a chyb, které označují problém. Další část integrace souvisí se fungování upgradu. Cluster Resource Manager mírně změní jeho chování během upgradu.  
+# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integrace správce prostředků clusteru s Service Fabric správu clusterů
+Cluster Service Fabric Správce prostředků nereaguje na inovace v Service Fabric, ale je součástí této služby. První způsob, jakým cluster Správce prostředků pomáhá se správou, je sledovat požadovaný stav clusteru a služby uvnitř něj. Cluster Správce prostředků odesílá zprávy o stavu, když nedokáže cluster vložit do požadované konfigurace. Pokud například není dostatečná kapacita, cluster Správce prostředků odesílá upozornění na stav a chyby, které signalizují problém. Další integrací se musí udělat s tím, jak upgrade funguje. Cluster Správce prostředků během upgradu mírně mění jeho chování.  
 
 ## <a name="health-integration"></a>Integrace stavu
-Cluster Resource Manager neustále sleduje pravidla, která jste definovali pro uvedení vašich služeb. Také sleduje zbývající kapacity pro jednotlivé metriky na uzlech v clusteru a v clusteru jako celek. Pokud ho nelze splnit pravidla nebo pokud není dostatečná kapacita, jsou emitovány stav varování a chyby. Například, pokud uzel je překročena kapacita a Cluster Resource Manager se pokusí opravit situace přesunutím služby. Pokud se nedá napravit situaci vydává stav varování, který uzel je překročena kapacita a pro jaké metriky.
+Cluster Správce prostředků stále sleduje pravidla, která jste definovali pro umístění služeb. Sleduje také zbývající kapacitu pro každou metriku v uzlech a v clusteru a v clusteru jako celek. Pokud zařízení nesplňuje tato pravidla, nebo pokud není dostatečná kapacita, budou generována upozornění na stav a chyby. Například pokud uzel překročí kapacitu a Správce prostředků clusteru se pokusí tuto situaci opravit přesunutím služeb. Pokud to nedokáže opravit situaci, vygeneruje upozornění na stav označující, který uzel je nad kapacitou, a pro které metriky.
 
-Další příklad upozornění stavu Resource Manageru je porušení omezení umístění. Například, pokud jste definovali omezení umístění (například `“NodeColor == Blue”`) a Resource Manager rozpozná porušení tohoto omezení, vydá upozornění stavu. To platí pro vlastní omezení a výchozí omezení (např. doména selhání a upgradu domény omezení).
+Dalším příkladem upozornění na stav Správce prostředků je porušení omezení umístění. Pokud jste například definovali omezení umístění (například `“NodeColor == Blue”`) a Správce prostředků zjistí porušení tohoto omezení, vygeneruje upozornění na stav. To platí pro vlastní omezení a výchozí omezení (například pro doménu selhání a omezení domény upgradu).
 
-Tady je příklad jednoho tyto sestavy stavu. Sestava stavu v tomto případě je pro jeden z oddílů systémové služby. Zpráva stavu znamená, že repliky oddílu jsou dočasně zkomprimována do moc malý počet domén upgradu.
+Tady je příklad jedné takové sestavy o stavu. V tomto případě je sestava stavu určena pro jeden z oddílů systémové služby. Zpráva o stavu znamená, že repliky tohoto oddílu jsou dočasně zabaleny do příliš málo domén upgradu.
 
 ```posh
 PS C:\Users\User > Get-ServiceFabricPartitionHealth -PartitionId '00000000-0000-0000-0000-000000000001'
@@ -71,67 +71,67 @@ HealthEvents          :
                         Transitions           : Ok->Warning = 8/10/2015 7:13:02 PM, LastError = 1/1/0001 12:00:00 AM
 ```
 
-Zde je, co tato zpráva stavu nám oznamuje je:
+Tady je tato zpráva o stavu, kterou nám řekne:
 
-1. Všechny repliky samotných jsou v pořádku: Každý má AggregatedHealthState: OK
-2. Omezení distribuce upgradu domény je aktuálně porušen. To znamená, že má víc replik oddílu, než by měl v určité doméně upgradu.
-3. Který uzel obsahuje repliku způsobuje narušení. V tomto případě je uzel s názvem "Node.8"
-4. Určuje, zda upgrade se právě děje pro tento oddíl ("aktuálně upgrade--false")
-5. Zásady distribuce pro tuto službu: "Zásady distribuce – balení". To se vztahují `RequireDomainDistribution` [zásady umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Komprimace" znamená, že v tomto případě DomainDistribution byla _není_ vyžaduje, abychom měli jistotu, že zásady umístění nebyl zadaný pro tuto službu. 
-6. Když se stalo sestavy – 8/10/2015 19:13:02: 00
+1. Všechny samotné repliky jsou v pořádku: každá z nich má AggregatedHealthState: OK
+2. V tuto chvíli je porušené omezení distribuce domény upgradu. To znamená, že konkrétní upgradovací doména má více replik z tohoto oddílu, než by měl.
+3. Který uzel obsahuje repliku, která způsobuje narušení. V tomto případě je to uzel s názvem Node. 8.
+4. Zda aktuálně probíhá upgrade pro tento oddíl (aktuálně probíhá upgrade--false)
+5. Zásady distribuce pro tuto službu: "zásady distribuce--balení". To se řídí [zásadami umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)`RequireDomainDistribution`. "Balení" značí, že v tomto případě DomainDistribution _nebylo vyžadováno,_ takže víme, že pro tuto službu nebyly zadány zásady umístění. 
+6. Když se nastala sestava-8/10/2015 7:13:02 ODP.
 
-Informace, jako je tato mocniny výstrahy, které se aktivují v produkčním prostředí s oznámením, něco se pokazilo a slouží také ke zjišťování a zastavit chybný upgrady. V tomto případě jsme byste chtěli zobrazit, pokud jsme můžete zjistit, proč museli pack repliky do domény upgradu Resource Manageru. Obvykle balení je přechodná, protože uzly v upgradu domény nebyly, třeba.
+Takové informace, jako jsou tyto výzvy, upozorňují na to, že se něco pokazilo a že se také používá ke zjištění a zastavení chybných upgradů. V takovém případě chceme zjistit, proč Správce prostředků musela zabalit repliky do upgradovací domény. Balení je obvykle přechodný, protože uzly v jiných doménách upgradu byly mimo provoz, například.
 
-Řekněme, že Cluster Resource Manager se pokouší vložit některé služby, ale nejsou k dispozici žádné řešení, která fungují. Pokud služby nelze umístit, je to obvykle pro jednu z následujících důvodů:
+Řekněme, že Správce prostředků clusteru se snaží umístit některé služby, ale nejsou k dispozici žádná řešení, která by fungovala. Pokud se služby nedají umístit, obvykle se jedná o jeden z následujících důvodů:
 
-1. Některé přechodné podmínky znemožnil správně umístit tato instance služby nebo repliky
-2. Požadavky na umístění služby jsou unsatisfiable.
+1. Některá přechodná podmínka znemožnila, aby tato instance služby nebo replika nebyla správně umístěna.
+2. Požadavky na umístění služby jsou nevyhovující.
 
-V těchto případech sestav o stavu z Cluster Resource Manager vám pomohou určit Proč nelze umístit služby. Tomuto procesu říkáme pořadí odstranění omezení. Během, systém vás provede nakonfigurované omezení týkající se služby a záznamy se vyhnete. Tímto způsobem při služby nemohou být umístěny, zobrazí se uzly, na kterých byly odstraněny a proč.
+V těchto případech se Správce prostředků sestavy o stavu z clusteru, které vám pomůžou zjistit, proč službu nejde umístit. Tento proces se nazývá sekvence eliminace omezení. Během této doby provede systém prochází nakonfigurovanými omezeními, která ovlivňují službu, a zaznamenává, co eliminují. Tímto způsobem, kdy není možné umístit služby, můžete zjistit, které uzly byly eliminovány a proč.
 
 ## <a name="constraint-types"></a>Typy omezení
-Povězme si o všech jiná omezení v těchto sestav o stavu. Zobrazí se stav zprávy související s těmito omezeními během repliky nemůže být umístěn.
+Pojďme se o každé z různých omezení v těchto sestavách stavů spojit. V případě, že repliky nejdou umístit, zobrazí se zprávy o stavu související s těmito omezeními.
 
-* **ReplicaExclusionStatic** a **ReplicaExclusionDynamic**: Tato omezení znamená, že řešení byl odmítnut, protože dva objekty služby ze stejného oddílu by mají být umístěny na stejném uzlu. To není povoleno, protože pak selhání uzlu příliš postihlo daného oddílu. ReplicaExclusionStatic a ReplicaExclusionDynamic jsou téměř stejné pravidlo a nejsou ve skutečnosti důležité rozdíly. Pokud dochází k sekvenci odstranění omezení obsahující ReplicaExclusionStatic nebo ReplicaExclusionDynamic omezení, Cluster Resource Manager domnívá, že nejsou k dispozici dostatek uzlů. To vyžaduje zbývající řešení použít tyto neplatné umístění, které nejsou povoleny. Další omezení v sekvenci se obvykle Řekněte nám, proč uzly se zanikne brány na prvním místě.
-* **PlacementConstraint**: Pokud se zobrazí tato zpráva, znamená to, že jsme odstranili některé uzly vzhledem k tomu, že neodpovídají omezení umístění služby. Jsme trasování si omezení umístění aktuálně nakonfigurovaný jako součást této zprávy. To je normální, pokud máte definované omezení umístění. Nicméně pokud omezení umístění je moc velký počet uzlů se nesprávně příčinou to je, jak by si.
-* **NodeCapacity**: Toto omezení znamená, že Cluster Resource Manager nemohl umístit repliky na uvedené uzly, protože, které vložili překročena kapacita.
-* **Spřažení**: Toto omezení znamená, že jsme nemohl umístit repliky na ovlivněné uzly protože by způsobil porušení omezení spřažení. Další informace o spřažení je v [v tomto článku](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-* **FaultDomain** a **UpgradeDomain**: Toto omezení eliminuje uzly, pokud umístění repliky na uvedené uzly by způsobilo balení v konkrétní chyba nebo upgradovací doméně. Několik příkladů diskuze o tato omezení jsou uvedeny v tématu na [chybových nebo upgradovacích omezení domény a výsledné chování](service-fabric-cluster-resource-manager-cluster-description.md)
-* **PreferredLocation**: Toto omezení odebrání uzlů z řešení, protože je ve výchozím nastavení spustí jako optimalizace neměli vidět normálně. Omezení upřednostňované umístění je také k dispozici během upgradu. Během upgradu se používá k přesunutí služeb zpět do kdy byly při spuštění upgradu.
+* **ReplicaExclusionStatic** a **ReplicaExclusionDynamic**: Tato omezení označují, že řešení bylo odmítnuto, protože dva objekty služby ze stejného oddílu by musely být umístěny do stejného uzlu. Tato možnost není povolená, protože v takovém případě by selhání tohoto uzlu mělo vliv na oddíl. ReplicaExclusionStatic a ReplicaExclusionDynamic jsou skoro stejné pravidlo a rozdíly nezáleží na tom. Pokud vidíte sekvenci eliminace omezení obsahující omezení ReplicaExclusionStatic nebo ReplicaExclusionDynamic, cluster Správce prostředků považuje za to, že nejsou k dispozici dostatek uzlů. K tomu je potřeba, aby zbývající řešení používala tato neplatná umístění, která nejsou povolená. Ostatní omezení v sekvenci obvykle říkají, proč se uzly odstraňují na prvním místě.
+* **PlacementConstraint**: Pokud se zobrazí tato zpráva, znamená to, že jsme některé uzly vyloučili, protože neodpovídaly omezením umístění služby. V rámci této zprávy sledujeme aktuálně konfigurovaná omezení umístění. To je normální, pokud máte definováno omezení umístění. Pokud je ale omezení umístění nesprávně příčinou příliš velkého počtu uzlů, které by bylo možné odstranit, jedná se o to, jak si všimnete.
+* **NodeCapacity**: Toto omezení znamená, že správce prostředků clusteru nemohly umístit repliky na označené uzly, protože by se daly předávat do kapacity.
+* **Spřažení**: Toto omezení znamená, že se nám nepovedlo umístit repliku na ovlivněné uzly, protože by to způsobilo porušení omezení spřažení. Další informace o spřažení [najdete v tomto článku](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) .
+* **FaultDomain** a **UpgradeDomain**: Toto omezení eliminuje počet uzlů, pokud umístění repliky na uvedených uzlech způsobí balení v konkrétní chybě nebo upgradovací doméně. K dispozici je několik příkladů, které se týkají tohoto omezení, a to v tématu [omezení týkající se selhání a upgradu domény a výsledné chování](service-fabric-cluster-resource-manager-cluster-description.md) .
+* **PreferredLocation**: Toto omezení byste normálně neměli vidět z řešení, protože se ve výchozím nastavení spouští jako optimalizace. Omezení upřednostňované umístění je také k dispozici během upgradů. Během upgradu se používá k přesunu služeb zpátky do umístění, kde byly při zahájení upgradu.
 
-## <a name="blocklisting-nodes"></a>Blocklisting uzly
-Další zpráva stavu sestavy Cluster Resource Manageru je při blocklisted jsou uzly. Blocklisting si lze představit jako dočasné omezení, které se automaticky použije za vás. Uzly získáte blocklisted opakovaných neúspěšných dojde při spuštění instance daného typu služby. Uzly jsou blocklisted na základě typu na službu. Uzlem může být blocklisted jedna služba typu, ale jiné ne. 
+## <a name="blocklisting-nodes"></a>Uzly Blocklisting
+Další zpráva o stavu, kterou cluster Správce prostředků, je v případě, že se uzly blocklisted. Blocklisting můžete představit jako dočasné omezení, které je automaticky použito pro vás. Uzly získají blocklisted, když při spouštění instancí tohoto typu služby dojde k opakovaným chybám. Uzly se blocklisted podle typu jednotlivých služeb. Uzel může být blocklisted pro jeden typ služby, ale ne pro jiný. 
 
-Zobrazí se vám blocklisting rozjíždí často během vývoje: Některé chyby způsobí, že hostitel vaší služby k chybě při spuštění. Service Fabric se pokusí vytvořit hostitele služby několikrát a vyskytuje opakovaně selhání. Po několika pokusech se uzel získá blocklisted a Cluster Resource Manager se pokusí vytvořit službu jinde. Pokud tohoto selhání udržuje aktivit ve více uzlů, je možné, že všechny platné uzly v clusteru skončí blokované. Blocklisting můžete také odebrat tolik, že není dostatek můžete úspěšně spustit službu pro splnění požadovaného škálování uzlů. Obvykle uvidíte další chyby nebo upozornění z označující Cluster Resource Manageru, které služba je nižší než požadované repliky nebo počet instancí, stejně jako zprávy stavu označující, co je selhání, které vznikají blocklisting v prvním umístíte.
+Uvidíte, že se během vývoje často Blocklisting při vývoji: některá chyba způsobí selhání hostitele služby při spuštění. Service Fabric se pokusí vytvořit hostitele služby několikrát a dojde k selhání. Po několika pokusech uzel získá blocklisted a cluster Správce prostředků se pokusí službu vytvořit jinde. Pokud se toto selhání chová na více uzlech, je možné, že všechny platné uzly v clusteru jsou zablokované. Blocklisting může také odebrat tolik uzlů, které nestačí k úspěšnému spuštění služby, aby splňovaly požadované škálování. Obvykle se zobrazí další chyby nebo upozornění z Správce prostředků clusteru, což znamená, že služba je pod požadovanou replikou nebo počtem instancí, a také zprávy o stavu, které označují, co selhání je od začátku po Blocklisting v prvním místa.
 
-Blocklisting není trvalé podmínce. Po několika minutách je uzel odebrán z seznamu blokovaných a Service Fabric může znovu aktivovat služby v tomto uzlu. Pokud služby nezdaří, uzel opět blocklisted pro daný typ služby. 
+Blocklisting není trvalá podmínka. Po několika minutách se uzel odebere z seznamu blokovaných a Service Fabric může znovu aktivovat služby v tomto uzlu. Pokud se služby nadále nezdaří, uzel bude znovu blocklisted pro daný typ služby. 
 
 ### <a name="constraint-priorities"></a>Priority omezení
 
 > [!WARNING]
-> Změna priority omezení se nedoporučuje a může mít významný nepříznivý vliv na váš cluster. Níže uvedené informace slouží pro odkaz na výchozí priority omezení a jejich chování. 
+> Změna priorit omezení se nedoporučuje a ve vašem clusteru může mít významný negativní dopad. Níže uvedené informace jsou k dispozici pro referenci na výchozí priority omezení a jejich chování. 
 >
 
-Se všemi těchto omezení vám může mít byla uvažujete "Dobrý den – myslím, že omezení domény selhání jsou nejdůležitější v systému. Aby se zajistilo, že není došlo k porušení omezení domény selhání, chci se jiná omezení porušují."
+U všech těchto omezení jste si možná mysleli, že v systému jsou omezení domén selhání nejdůležitější. Aby bylo zajištěno, že nedošlo k porušení omezení domény selhání, je ochotno porušovat jiná omezení. "
 
-Omezení je nakonfigurovat pomocí různých úrovní priority. Toto jsou:
+Omezení lze konfigurovat s různými úrovněmi priority. Toto jsou:
 
-   - "pevné" (0)
-   - "soft" (1)
+   - "pevná" (0)
+   - "měkké" (1)
    - "optimalizace" (2)
    - "off" (-1). 
    
-Většinu omezení jsou ve výchozím nastavení nakonfigurované jako pevný omezení.
+Většina omezení je ve výchozím nastavení nakonfigurována jako pevná omezení.
 
-Změna priority omezení neobvyklé. Byly doby kde priority omezení potřeba změnit, obvykle Chcete-li nějaké chyby nebo chování, které to mělo vliv na prostředí. Obecně flexibilitu infrastruktury priority omezení pracoval velmi dobře, ale není potřeba často. Ve většině případů je všechno, co umístěno na jejich výchozí priority. 
+Změna priority omezení je neobvyklá. Byly zjištěny časy, kdy se priority omezení potřebují ke změně, obvykle k řešení nějaké jiné chyby nebo chování, které ovlivnilo prostředí. Obecně platí, že flexibilita infrastruktury priority omezení se velmi dobře osvědčila, ale není nutná často. Ve většině případů je vše na jejich výchozích prioritách. 
 
-Úrovně priority neznamenají, který dané omezení _bude_ porušení, ani se vždy splněna. Priority omezení definovat pořadí, ve kterém jsou vynucena omezení. Priority definujte nevýhody po není možné vyhovět všem omezením. Všechna omezení obvykle je možné splnit, pokud je něco jinak se děje v prostředí. Příklady scénářů, které může vést k narušení omezení jsou konfliktní omezení, nebo velkého počtu souběžných selhání.
+Prioritní úrovně neznamenají, že dané omezení _bude_ narušeno, ani že bude vždy splněné. Priority omezení definují pořadí, v jakém se vynutila omezení. Priority definují kompromisy, kdy není možné vyhovět všem omezením. Obvykle je možné vyhovět všechna omezení, pokud v prostředí nebudete dělat něco jiného. Některé příklady scénářů, které vedou k porušení omezení, jsou konfliktní omezení nebo velké počty souběžných selhání.
 
-V situacích, rozšířené můžete změnit prioritu omezení. Řekněme například, že jste chtěli Ujistěte se, že spřažení by vždy být došlo k porušení když je potřeba řešit potíže s kapacitou uzlu. Za tím účelem můžete nastavit prioritu omezení spřažení "soft" (1) a nechte omezení kapacity nastavte na "pevné" (0).
+V pokročilých situacích můžete změnit priority omezení. Řekněme například, že jste chtěli zajistit, aby spřažení bylo vždy porušeno, pokud je to nutné pro řešení problémů s kapacitou uzlů. K tomu byste mohli nastavit prioritu omezení spřažení na "měkké" (1) a ponechat omezení kapacity nastavené na hodnotu "pevná" (0).
 
-Výchozí hodnoty priority pro jiná omezení jsou zadány v následující konfiguraci:
+Výchozí hodnoty priorit pro různá omezení jsou uvedeny v následující konfiguraci:
 
-ClusterManifest.xml
+Manifestem clusteru. XML
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
@@ -144,7 +144,7 @@ ClusterManifest.xml
         </Section>
 ```
 
-prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery:
+přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
 
 ```json
 "fabricSettings": [
@@ -180,33 +180,33 @@ prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.jso
 ]
 ```
 
-## <a name="fault-domain-and-upgrade-domain-constraints"></a>Omezení domény selhání domény a upgrade
-Cluster Resource Manageru se chce ponechat služby rozložené mezi chybových nebo upgradovacích doménách. Modely to jako omezení v Cluster Resource Manageru stroji. Další informace o tom, jak se používají a jejich konkrétní chování, najdete v článku na [konfigurace clusteru](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
+## <a name="fault-domain-and-upgrade-domain-constraints"></a>Omezení domény selhání a domény upgradu
+Cluster Správce prostředků chce zajistit, aby se služby rozšířily mezi selhání a upgradovací domény. IT modeluje toto omezení v modulu Správce prostředků clusteru. Další informace o tom, jak se používají a jejich konkrétní chování, najdete v článku o [konfiguraci clusteru](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
 
-Cluster Resource Manager, může být potřeba pack několik replik do logických sítí, aby bylo možné řešit upgrady, chyby nebo jiné porušení omezení. Balení do domén selhání nebo upgradu obvykle dochází pouze v případě, že existuje několik chyb nebo jiných změn v systému brání správné umístění. Pokud chcete zabránit balení i během těchto situacích, můžete využít `RequireDomainDistribution` [zásady umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). Všimněte si, že to může mít vliv na dostupnost služeb a spolehlivost jako vedlejší účinek, proto pečlivě zvažte.
+Cluster Správce prostředků může potřebovat zabalit několik replik do upgradovací domény, aby bylo možné řešit upgrady, selhání nebo jiná porušení omezení. Dobalení do domén pro selhání nebo k upgradu obvykle probíhá pouze v případě, že dojde k několika selháním nebo jiným výpadkům systému, který brání správnému umístění. Pokud chcete zabránit balení i během těchto situací, můžete využít [Zásady umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)`RequireDomainDistribution`. Všimněte si, že to může mít vliv na dostupnost služby a spolehlivost jako vedlejší efekt, takže je pečlivě zvažte.
 
-Pokud je prostředí správně nakonfigurováno, všechna omezení jsou úplně dodrženy, dokonce i během upgradu. Nejdůležitější je, že Cluster Resource Manager je sledují se omezení. Jakmile rozpozná porušení okamžitě ohlásí ji a pokusí se problém opravte.
+Pokud je prostředí správně nakonfigurované, všechna omezení jsou plně respektována i během upgradu. Klíčovým aspektem je, že Správce prostředků clusteru se na vaše omezení díváte. Když zjistí, že je toto porušení okamžitě, ohlásí ho a pokusí se problém vyřešit.
 
-## <a name="the-preferred-location-constraint"></a>Omezení upřednostňované umístění
-PreferredLocation omezení se mírně liší, protože má dvě různá použití. Jedno použití tohoto omezení je během upgradu aplikace. Cluster Resource Manager automaticky spravuje toto omezení během upgradu. Používá se k Ujistěte se, že až se dokončí, že repliky se vrátit k jejich počáteční umístění upgrady. Použití omezení PreferredLocation je [ `PreferredPrimaryDomain` zásady umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md). Obě tyto optimalizace jsou, a proto PreferredLocation omezení je jenom jedno omezení, které jsou ve výchozím nastavení "Optimalizace".
+## <a name="the-preferred-location-constraint"></a>Upřednostňované omezení umístění
+Omezení PreferredLocation je trochu odlišné, protože má dvě různá použití. Jedno použití tohoto omezení je během upgradu aplikace. Cluster Správce prostředků automaticky spravuje toto omezení během upgradu. Slouží k zajištění, že po dokončení upgradu se repliky vrátí do jejich počátečních umístění. Další použití omezení PreferredLocation je pro [zásadu umístění`PreferredPrimaryDomain`](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md). Obě tyto hodnoty jsou optimalizace, takže omezení PreferredLocation je ve výchozím nastavení jediným omezením nastaveným na "optimalizace".
 
-## <a name="upgrades"></a>Upgrady
-Cluster Resource Manager pomáhá také během aplikací a upgrady clusteru, během kterých má dvě úlohy:
+## <a name="upgrades"></a>Programů
+Cluster Správce prostředků také pomáhá při upgradování aplikací a clusterů, během kterých má dvě úlohy:
 
-* Ujistěte se, že nebudou ohrožena pravidla clusteru
-* Při pokusu o upgrade napomohou nápovědy
+* Zajistěte, aby nedošlo k ohrožení pravidel clusteru.
+* Zkuste přispět k bezproblémovému upgradu.
 
-### <a name="keep-enforcing-the-rules"></a>Zachovat vynucení pravidel
-Hlavní věc, kterou je potřeba vědět je, že pravidla – striktní omezení jako omezení umístění a kapacity – se stále uplatňují během upgradu. Omezení umístění Ujistěte se, že vaše úlohy pouze spustili, kde můžou, dokonce i během upgradu. Když je vysoce vymezené služby, upgrade může trvat déle. Když služba nebo na uzel, který je spuštěn na se načtou aktualizace může být několik možností, kde můžete přejít.
+### <a name="keep-enforcing-the-rules"></a>Udržování vynucování pravidel
+Hlavní věcí, o které je potřeba vědět, je to, že pravidla – striktní omezení, jako jsou omezení umístění a kapacity, se při upgradech pořád vynutila. Omezení umístění zajistí, aby vaše úlohy běžely jenom tam, kde jsou povolené, i během upgradů. Když jsou služby vysoce omezené, můžou upgrady trvat delší dobu. Když je služba nebo uzel, na kterém je spuštěná, zavedený pro aktualizaci, může to mít několik možností, jak to může projít.
 
-### <a name="smart-replacements"></a>Inteligentní nahrazení
-Když se upgrade spustí, správce prostředků pořídí snímek aktuální uspořádání clusteru. Každá doména upgradu dokončení, pokusí se vrátit služby, které byly v této doméně upgradu na jejich původní uspořádání. Tímto způsobem existují maximálně dvě přechody pro službu během upgradu. Existuje jeden přesunout mimo uzel došlo k chybě a jeden přechod. Vrátí do původního stavu před upgradem clusteru nebo služby také zajišťuje, že upgrade nebude mít vliv na rozložení clusteru. 
+### <a name="smart-replacements"></a>Inteligentní náhrady
+Když se spustí upgrade, Správce prostředků pořizuje snímek aktuálního uspořádání clusteru. Vzhledem k tomu, že se každá upgradovací doména dokončí, pokusí se vrátit služby, které byly v této doméně upgradu, na původní uspořádání. Tímto způsobem existují u služby během upgradu nanejvýš dvě přechody. Dojde k jednomu přesunu z ovlivněného uzlu a jeden přesun zpátky. Aktualizace clusteru nebo služby na to, jak probíhala před upgradem, také zajistí, že upgrade nebude mít vliv na rozložení clusteru. 
 
-### <a name="reduced-churn"></a>Snížení četnosti změn
-Další věc, ke které dochází během upgradu je, že Cluster Resource Manager vypne vyrovnávání. Brání vyrovnávání zabrání zbytečné reakcí s palcem k upgradu, samostatně, jako přesunutí služeb do uzlů, které byly vyprázdněna pro upgrade. Je-li upgrade dotyčný upgradu clusteru, není během upgradu balanced celý cluster. Kontroly omezení zůstávají aktivní, pouze pohyb podle proaktivní vyrovnávání metriky je zakázán.
+### <a name="reduced-churn"></a>Omezené změny
+Další věcí, ke které dojde během upgradu, je to, že cluster Správce prostředků vypne vyrovnávání. Prevence vyrovnávání brání zbytečné reakce samotného upgradu, jako je třeba přesunutí služeb do uzlů, které se pro upgrade vyprázdní. Pokud se jedná o upgrade clusteru, celý cluster se během upgradu vyrovnává. Kontroly omezení zůstávají aktivní, pouze pohyb na základě proaktivního vyrovnávání metrik je zakázán.
 
-### <a name="buffered-capacity--upgrade"></a>Kapacita ve vyrovnávací paměti a Upgrade
-Obecně byste měli dokončení i v případě, že je omezen cluster nebo blízko úplné. Správa kapacity clusteru je ještě důležitější během upgradu než obvykle. V závislosti na počet upgradovacích domén mezi 5 a 20 procent kapacity se musí migrovat upgradu prochází clusteru. Tato práce musí projít někde. Tady pojem [ukládány do vyrovnávací paměti kapacity](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) je užitečné. Kapacita ve vyrovnávací paměti je dodržena během normálního provozu. Cluster Resource Manager může vyplnit uzly až po jejich celkové kapacity (využívání vyrovnávací paměti) během upgradu v případě potřeby.
+### <a name="buffered-capacity--upgrade"></a>& Upgrade kapacity vyrovnávací paměti
+Obecně chcete, aby se upgrade dokončil i v případě, že je cluster omezený nebo blízko úplný. Správa kapacity clusteru je ještě důležitější během inovací než obvykle. V závislosti na počtu domén upgradu se musí migrovat 5 až 20 procent kapacity, protože upgrade prochází clusterem. Tato práce musí jít někam. Tady je užitečné vyhodnotit [kapacitu ve vyrovnávací paměti](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) . Při normálním provozu se respektuje kapacita ve vyrovnávací paměti. Cluster Správce prostředků může v případě potřeby doplňovat uzly až do celkové kapacity (což spotřebovává vyrovnávací paměť).
 
-## <a name="next-steps"></a>Další postup
-* Začít od začátku a [Úvod do Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
+## <a name="next-steps"></a>Další kroky
+* Začněte od začátku a [Získejte Úvod do clusteru Service Fabric správce prostředků](service-fabric-cluster-resource-manager-introduction.md)

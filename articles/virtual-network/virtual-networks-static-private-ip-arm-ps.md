@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače se statickou privátní IP adresou – prostředí Azure PowerShell | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit virtuální počítač s použitím privátní IP adresy pomocí prostředí PowerShell.
+title: Vytvoření virtuálního počítače se statickou privátní IP adresou – Azure PowerShell
+description: Naučte se, jak vytvořit virtuální počítač s privátní IP adresou pomocí PowerShellu.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -16,25 +16,25 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9115386b0543e1ac840aec29fc7f57e7c98c03bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685337"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196598"
 ---
-# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou privátní IP adresou pomocí Powershellu
+# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou privátní IP adresou pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Vytvoření virtuálního počítače (VM) se statickou privátní IP adresou. Pokud chcete vybrat adresu z podsítě, která je přiřazena k virtuálnímu počítači přiřadíte statickou privátní IP adresou, nikoli s dynamickou adresou. Další informace o [statické privátní IP adresy](virtual-network-ip-addresses-overview-arm.md#allocation-method). Chcete-li změnit přiřazené k existujícímu virtuálnímu počítači z dynamického na statické privátní IP adresu, nebo pro práci s veřejnými IP adresami, přečtěte si téma [přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md).
+Virtuální počítač (VM) můžete vytvořit se statickou privátní IP adresou. Pokud chcete vybrat, která adresa z podsítě je přiřazená k virtuálnímu počítači, přiřaďte statickou privátní IP adresu, nikoli dynamickou adresu. Přečtěte si další informace o [statických privátních IP adresách](virtual-network-ip-addresses-overview-arm.md#allocation-method). Chcete-li změnit soukromou IP adresu přiřazenou existujícímu virtuálnímu počítači z dynamického na statickou nebo pro práci s veřejnými IP adresami, přečtěte si téma [Přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete provést následující kroky. Použití místního počítače, ujistěte se, máte [nainstalovaný Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu pole libovolný příkaz, který následuje. Cloud Shell se přihlásíte do Azure.
+Následující kroky můžete provést z místního počítače nebo pomocí Azure Cloud Shell. Pokud chcete použít místní počítač, ujistěte se, že máte [nainstalovanou Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu libovolného příkazového řádku, který následuje. Cloud Shell vás přihlásí k Azure.
 
-1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazového řádku a přihlášení do Azure s využitím `Connect-AzAccount`.
-2. Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkazu. Následující příklad vytvoří skupinu prostředků v oblasti Azure USA – východ:
+1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `Connect-AzAccount`.
+2. Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
 
    ```azurepowershell-interactive
    $RgName = "myResourceGroup"
@@ -42,7 +42,7 @@ Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete p
    New-AzResourceGroup -Name $RgName -Location $Location
    ```
 
-3. Vytvořte konfiguraci podsítě a virtuální síť s [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) příkazy:
+3. Vytvořte konfiguraci podsítě a virtuální síť s příkazy [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) :
 
    ```azurepowershell-interactive
    # Create a subnet configuration
@@ -62,7 +62,7 @@ Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete p
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-4. Vytvořte síťové rozhraní ve virtuální síti a přiřadit k síťovému rozhraní s privátní IP adresu z podsítě [New-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) příkazy:
+4. Vytvořte ve virtuální síti síťové rozhraní a přiřaďte privátní IP adresu z podsítě k síťovému rozhraní pomocí příkazů [New-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) :
 
    ```azurepowershell-interactive
    $IpConfigName1 = "IPConfig-1"
@@ -79,7 +79,7 @@ Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete p
      -IpConfiguration $IpConfig1
    ```
 
-5. Vytvořte konfiguraci virtuálního počítače pomocí [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig)a pak vytvořte virtuální počítač s [rutiny New-AzVM](/powershell/module/az.Compute/New-azVM). Po zobrazení výzvy zadejte uživatelské jméno a heslo, které má být použit jako přihlašovací údaje pro virtuální počítač:
+5. Vytvořte konfiguraci virtuálního počítače pomocí [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig)a pak vytvořte virtuální počítač pomocí [New-AzVM](/powershell/module/az.Compute/New-azVM). Po zobrazení výzvy zadejte uživatelské jméno a heslo, které se použije jako přihlašovací údaje pro virtuální počítač:
 
    ```azurepowershell-interactive
    $VirtualMachine = New-AzVMConfig -VMName MyVM -VMSize "Standard_DS3"
@@ -90,23 +90,23 @@ Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete p
    ```
 
 > [!WARNING]
-> I když nastavení privátní IP adresy můžete přidat do operačního systému, doporučujeme, pokud to neuděláte, dokud se po přečtení [přidejte privátní IP adresu pro operační systém](virtual-network-network-interface-addresses.md#private).
+> I když můžete do operačního systému přidat nastavení privátních IP adres, doporučujeme, abyste to neučinili, dokud nepřečtete [do operačního systému možnost Přidat privátní IP adresu](virtual-network-network-interface-addresses.md#private).
 > 
 > 
 > <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
 > 
 > [!IMPORTANT]
-> Pro přístup k virtuálnímu počítači z Internetu, musíte přiřadit veřejnou IP adresu k virtuálnímu počítači. Můžete také změnit dynamické přiřazení privátní adresy IP na statické přiřazení. Podrobnosti najdete v tématu [přidání nebo změna IP adresy](virtual-network-network-interface-addresses.md). Kromě toho se doporučuje, tím, že přidružíte skupinu zabezpečení sítě pro síťové rozhraní a podsítě, kterou jste vytvořili síťové rozhraní v omezení síťového provozu směřujícího do svého virtuálního počítače. Podrobnosti najdete v tématu [Správa skupin zabezpečení sítě](manage-network-security-group.md).
+> Pokud chcete získat přístup k virtuálnímu počítači z Internetu, musíte virtuálnímu počítači přiřadit veřejnou IP adresu. Můžete také změnit dynamické přiřazení privátní IP adresy na statické přiřazení. Podrobnosti najdete v tématu [Přidání nebo změna IP adres](virtual-network-network-interface-addresses.md). Kromě toho se doporučuje omezit síťový provoz na virtuální počítač tím, že přidružíte skupinu zabezpečení sítě k síťovému rozhraní, podsíti, ve které jste síťové rozhraní vytvořili, nebo obojí. Podrobnosti najdete v tématu [Správa skupin zabezpečení sítě](manage-network-security-group.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [privátních IP adres](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) a přiřazení [statickou privátní IP adresou](virtual-network-network-interface-addresses.md#add-ip-addresses) na virtuálním počítači Azure.
-- Další informace o vytváření [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálních počítačů.
+- Přečtěte si další informace o [privátních IP adresách](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) a přiřazení [statických privátních IP adres](virtual-network-network-interface-addresses.md#add-ip-addresses) k virtuálnímu počítači Azure.
+- Přečtěte si další informace o vytváření virtuálních počítačů se systémy [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .

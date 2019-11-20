@@ -1,5 +1,5 @@
 ---
-title: Konfigurovat pravidlo omezení míry brány firewall webových aplikací pro front-Azure PowerShell
+title: Nakonfigurovat pravidlo limitu WAF frekvence pro front-Azure PowerShell
 description: Naučte se konfigurovat pravidlo pro omezení přenosové rychlosti pro existující koncový bod přední dveře.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: ce9ace445d87479da4047da205b59e79402ece07
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517134"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186625"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurace pravidla omezení četnosti brány firewall webových aplikací pomocí Azure PowerShell
 Pravidlo omezení četnosti firewallu webových aplikací (WAF) v Azure pro front-end řídí počet požadavků povolených z jedné IP adresy klienta během doby trvání 1 minuty.
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak nakonfigurovat pravidlo omezení četnosti WAF
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete s nastavením zásady omezení četnosti, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 ### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
 Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
@@ -71,7 +71,7 @@ Nastavte omezení přenosové rychlosti pomocí [New-AzFrontDoorWafCustomRuleObj
 
 ## <a name="configure-a-security-policy"></a>Konfigurace zásad zabezpečení
 
-Vyhledejte název skupiny prostředků, která obsahuje profil předních dveří, pomocí `Get-AzureRmResourceGroup`. V dalším kroku nakonfigurujte zásadu zabezpečení s vlastním pravidlem omezení četnosti pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, která obsahuje profil front-dveří.
+Vyhledejte název skupiny prostředků, která obsahuje profil front-dveří, pomocí `Get-AzureRmResourceGroup`. V dalším kroku nakonfigurujte zásadu zabezpečení s vlastním pravidlem omezení četnosti pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, která obsahuje profil front-dveří.
 
 V níže uvedeném příkladu se používá název skupiny prostředků *myResourceGroupFD1* s předpokladem, že jste vytvořili profil front-dveří pomocí pokynů uvedených v [rychlém startu: vytvořit článek na předních dveřích](../../frontdoor/quickstart-create-front-door.md) .
 

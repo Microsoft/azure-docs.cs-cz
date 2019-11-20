@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
 ms.date: 09/26/2019
 ms.author: mametcal
-ms.openlocfilehash: fe943913f9d33923438efb91630c5a85c4d1b748
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687182"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184947"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
@@ -27,7 +27,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do webové aplika
 
 Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou příznaků funkcí. Tyto knihovny **nezávisí na** žádné službě Azure libries. Bez problémů se integruje s konfigurací aplikací prostřednictvím poskytovatele konfigurace spouštění pružiny.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Podporovaná [sada Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
@@ -47,7 +47,7 @@ Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou p
 
 Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový projekt pro spuštění pružiny.
 
-1. Přejděte na <https://start.spring.io/>.
+1. Přejděte do <https://start.spring.io/>.
 
 2. Zadejte následující možnosti:
 
@@ -62,7 +62,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
 
 1. Po extrahování souborů v místním systému je vaše jednoduchá aplikace pro spouštění pomocí pružiny připravená k úpravám. V kořenovém adresáři vaší aplikace vyhledejte soubor *pom. XML* .
 
-2. V textovém editoru otevřete soubor *pom. XML* a přidejte do seznamu `<dependencies>` novou jarní cloudovou konfiguraci Azure a správu funkcí:
+2. V textovém editoru otevřete soubor *pom. XML* a do seznamu `<dependencies>`přidejte jarní cloudovou konfiguraci Azure Configuration Starter a správu funkcí:
 
     ```xml
     <dependency>
@@ -226,7 +226,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
     mvn spring-boot:run
     ```
 
-2. Otevřete okno prohlížeče a vyberte `https://localhost:8080`, což je výchozí adresa URL pro webovou aplikaci hostovanou místně.
+2. Otevřete okno prohlížeče a pro webovou aplikaci hostovanou místně použijte `https://localhost:8080`, což je výchozí adresa URL.
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

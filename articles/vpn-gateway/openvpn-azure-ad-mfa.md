@@ -7,18 +7,19 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: alzam
-ms.openlocfilehash: 3f407ecfcbfdff72b79bfe6b5bc3e6b7606b1cf0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1b506f8439deabd110daaefab36442140e20d0d4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174626"
+ms.locfileid: "74185358"
 ---
 # <a name="enable-multi-factor-authentication-mfa-for-vpn-users"></a>Povolit Multi-Factor Authentication (MFA) pro uživatele sítě VPN
 
 VÍCEFAKTOROVÉ ověřování můžete povolit pro uživatele ve vašem tenantovi Azure AD, aby se uživatelům zobrazila výzva k ověření druhého faktoru před udělením přístupu.
 
-> [! Předpoklad] nakonfigurovali jste klienta služby Azure AD, jak je popsáno v dokumentu konfigurace tenanta.
+> [!NOTE]
+> Předpoklad: nakonfigurovali jste klienta Azure AD, jak je popsáno v dokumentu konfigurace tenanta.
 >
 
 ### <a name="tenant"></a>1. Přihlaste se k Azure Portal a přejděte do **Azure Active Directory** , **Všichni uživatelé** a klikněte na **Multi-Factor Authentication**

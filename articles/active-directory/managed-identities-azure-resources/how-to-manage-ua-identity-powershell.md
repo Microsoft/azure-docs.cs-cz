@@ -1,6 +1,6 @@
 ---
-title: Jak vytvořit, vypsat a odstranit uživatelsky přiřazené spravovanou identitu pomocí Azure Powershellu
-description: Podrobné pokyny o tom, jak vytvořit, vypsat a odstranit uživatelsky přiřazené spravovaných identit pomocí Azure Powershellu.
+title: Vytvoření, vypsání & odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell-Azure AD
+description: Podrobné pokyny, jak vytvořit, vypsat a odstranit spravovanou identitu přiřazenou uživatelem pomocí Azure PowerShell.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886b56de194f38fbb4b94f96b92bff11f2288b37
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 3aa6a929ef6e3d23cab81cfb199bf733ac25927f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60293506"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184174"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Vytvoření seznamu nebo odstranit uživatelem přidělenou spravovanou identitu pomocí Azure Powershellu
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Spravované identity pro prostředky Azure poskytuje služby Azure s využitím spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření služby, které podporují ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytují služby Azure se spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro služby, které podporují ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-V tomto článku se dozvíte, jak vytvářet, vypsat a odstranit uživatelsky přiřazené spravovanou identitu pomocí Azure Powershellu.
+V tomto článku se dozvíte, jak pomocí Azure PowerShell vytvořit, vypsat a odstranit spravovanou identitu přiřazenou uživatelem.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
@@ -41,44 +41,44 @@ V tomto článku se dozvíte, jak vytvářet, vypsat a odstranit uživatelsky p�
     - Spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure.
     - Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
     - Spuštěním rutiny `Install-Module -Name PowerShellGet -AllowPrerelease` získejte předběžnou verzi modulu `PowerShellGet` (po spuštění tohoto příkazu možná budete muset pomocí příkazu `Exit` ukončit aktuální relaci PowerShellu, aby se modul `Az.ManagedServiceIdentity` nainstaloval).
-    - Spustit `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` nainstalovat zkušební verzi `Az.ManagedServiceIdentity` modulu provádět uživatel přiřazenou spravované identity operace v tomto článku.
+    - Spusťte `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` k instalaci předprodejní verze modulu `Az.ManagedServiceIdentity`, abyste mohli provádět operace spravované identity přiřazené uživatelem v tomto článku.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
-Pro vytvoření uživatelsky přiřazené identity spravované, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
+K vytvoření spravované identity přiřazené uživatelem potřebuje váš účet přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Pro vytvoření uživatelsky přiřazené identity spravované, použijte `New-AzUserAssignedIdentity` příkazu. `ResourceGroupName` Parametr určuje skupinu prostředků, kde k vytvoření uživatelsky přiřazené spravovanou identitu a `-Name` parametr určuje její název. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
+K vytvoření spravované identity přiřazené uživatelem použijte příkaz `New-AzUserAssignedIdentity`. Parametr `ResourceGroupName` určuje skupinu prostředků, ve které se má vytvořit spravovaná identita přiřazená uživateli, a parametr `-Name` určuje jeho název. Nahraďte hodnoty parametrů `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurepowershell-interactive
 New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-managed-identities"></a>Seznam uživatelsky přiřazené spravované identity
+## <a name="list-user-assigned-managed-identities"></a>Výpis spravovaných identit přiřazených uživatelem
 
-Do seznamu/čtení uživatelsky přiřazené spravovanou identitu, musí váš účet [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
+K vypsání nebo načtení spravované identity přiřazené uživatelem vyžaduje váš účet [spravovaný operátor identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Seznam uživatelsky přiřazené spravovaných identit, použijte [Get-AzUserAssigned] příkaz.  `-ResourceGroupName` Parametr určuje skupinu prostředků, kde byl vytvořen uživatelem přidělenou spravovaná identita. Nahraďte `<RESOURCE GROUP>` s vlastní hodnotou:
+Pokud chcete zobrazit seznam spravovaných identit přiřazených uživateli, použijte příkaz [Get-AzUserAssigned].  Parametr `-ResourceGroupName` určuje skupinu prostředků, ve které se vytvořila spravovaná identita přiřazená uživatelem. Nahraďte `<RESOURCE GROUP>` vlastní hodnotou:
 
 ```azurepowershell-interactive
 Get-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 ```
-V odpovědi, mají uživatelsky přiřazené identity spravované `"Microsoft.ManagedIdentity/userAssignedIdentities"` hodnotu pro klíč, `Type`.
+V odpovědi mají uživatelem přiřazené spravované identity `"Microsoft.ManagedIdentity/userAssignedIdentities"` hodnotu vrácenou pro klíč, `Type`.
 
 `Type :Microsoft.ManagedIdentity/userAssignedIdentities`
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživateli
+## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživatelem
 
-Pokud chcete odstranit spravovanou identitu uživatele přiřazeny, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
+Pokud chcete odstranit spravovanou identitu přiřazenou uživatelem, váš účet potřebuje přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Chcete-li odstranit spravovanou identitu uživatele přiřazeny, použijte `Remove-AzUserAssignedIdentity` příkazu.  `-ResourceGroupName` Parametr určuje skupinu prostředků, ve kterém byla vytvořena uživatelsky přiřazené identity a `-Name` parametr určuje její název. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametry hodnoty vlastními hodnotami:
+Pokud chcete odstranit spravovanou identitu přiřazenou uživatelem, použijte příkaz `Remove-AzUserAssignedIdentity`.  Parametr `-ResourceGroupName` určuje skupinu prostředků, ve které byla uživatelem přiřazená identita vytvořena, a parametr `-Name` určuje jeho název. Nahraďte `<RESOURCE GROUP>` a hodnoty parametrů `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami:
 
  ```azurepowershell-interactive
 Remove-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
 > [!NOTE]
-> Odstraňuje se uživatel přiřazenou spravovanou identitu nedojde k odebrání odkazu, ze všech prostředků, který byl přiřazen. Přiřazení identity třeba je odebrat samostatně.
+> Odstraněním spravované identity přiřazené uživatelem se neodebere odkaz z libovolného prostředku, ke kterému byl přiřazen. Přiřazení identit je nutné odebrat samostatně.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Úplný seznam a podrobnosti o prostředí Azure PowerShell spravovaných identit pro příkazy Azure prostředky, najdete v části [Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity).
+Úplný seznam a další podrobnosti o Azure PowerShell spravovaných identit pro prostředky Azure najdete v tématu [AZ. ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity).

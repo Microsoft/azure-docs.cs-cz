@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555445"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195022"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Nastavení výstrah pro problémy s výkonem v Azure Monitor pro kontejnery
 Azure Monitor pro kontejnery monitorují výkon zatížení kontejnerů, které jsou nasazené do Azure Container Instances nebo spravovaných clusterů Kubernetes hostovaných ve službě Azure Kubernetes (AKS).
@@ -102,7 +102,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Následující dotazy používají zástupné hodnoty \<your-cluster-Name > a \<your-Controller-Name > k reprezentaci clusteru a kontroleru. Nahraďte je hodnotami specifickými pro vaše prostředí při nastavování výstrah.
+>Následující dotazy používají zástupné hodnoty \<název-clusteru > a \<, že váš cluster a kontroler > reprezentují. Nahraďte je hodnotami specifickými pro vaše prostředí při nastavování výstrah.
 
 Následující dotaz vypočítá průměrné využití procesoru u všech kontejnerů v řadiči jako průměrnou hodnotu využití procesoru každé instance kontejneru v řadiči v každé minutě. Měření je procento limitu nastaveného pro kontejner.
 
@@ -284,7 +284,7 @@ Pomocí těchto kroků vytvořte v Azure Monitor upozornění protokolu pomocí 
 >Následující postup vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přešli na nové rozhraní API upozornění protokolu, jak je popsáno v tématu [předvoleb rozhraní API pro protokolování výstrah](../platform/alerts-log-api-switch.md).
 >
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. V podokně na levé straně vyberte **monitor** . V části **přehledy**vyberte **kontejnery**.
 3. Na kartě **monitorované clustery** vyberte cluster ze seznamu.
 4. V podokně na levé straně **monitorování**vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů Azure Log Analytics.
@@ -308,4 +308,4 @@ Pomocí těchto kroků vytvořte v Azure Monitor upozornění protokolu pomocí 
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na [příklady dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) , kde najdete předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizace a analýzy clusterů.
-- Další informace o Azure Monitor a o tom, jak monitorovat další aspekty clusteru AKS, najdete v tématu [zobrazení stavu služby Azure Kubernetes](container-insights-analyze.md).
+- Další informace o Azure Monitor a o tom, jak monitorovat další aspekty clusteru Kubernetes, najdete v tématu [zobrazení výkonu clusterů Kubernetes](container-insights-analyze.md) a [zobrazení stavu clusteru Kubernetes](container-insights-health.md).

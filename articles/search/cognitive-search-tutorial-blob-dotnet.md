@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111747"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185698"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Kurz: vytvoření kanálu rozšíření AI pomocí C# a sady .NET SDK
 
@@ -103,7 +103,7 @@ Chcete-li nainstalovat balíček NuGet `Microsoft.Extensions.Configuration.Json`
 
 Abyste se mohli připojit ke službě Azure Kognitivní hledání, budete muset do svého projektu přidat informace o vyhledávací službě. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **přidat** > **Nová položka...** . Zadejte název souboru `appsettings.json` a vyberte **Přidat**. 
 
-Tento soubor bude nutné zahrnout do výstupního adresáře. Uděláte to tak, že kliknete pravým tlačítkem na `appsettings.json` a vyberete **vlastnosti**. Změňte hodnotu **Kopírovat do výstupního adresáře** na **Kopírovat novější**.
+Tento soubor bude nutné zahrnout do výstupního adresáře. Uděláte to tak, že kliknete pravým tlačítkem na `appsettings.json` a vyberete **vlastnosti**. Změňte hodnotu **Kopírovat do výstupního adresáře** na **Kopírovat, pokud je novější**.
 
 Zkopírujte následující kód JSON do nového souboru JSON.
 

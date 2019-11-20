@@ -1,5 +1,5 @@
 ---
-title: Postup konfigurace spravovaných identit pro prostředky Azure ve službě škálování virtuálního počítače pomocí PowerShellu
+title: Konfigurace spravovaných identit ve službě Virtual Machine Scale Sets pomocí prostředí PowerShell – Azure AD
 description: Podrobné pokyny pro konfiguraci spravovaných identit systémových a uživatelem v sadě škálování virtuálního počítače pomocí PowerShellu
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa3100cae9b1a2c9ca320776cc357f3720b3473
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a09780ae117beb1a8d601b8fd88d43191321854f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309997"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183978"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure ve službě Virtual Machine Scale Sets pomocí PowerShellu
 
@@ -56,7 +56,7 @@ V této části se dozvíte, jak povolit a odebrat spravovanou identitu přiřaz
 
 Vytvoření sady škálování virtuálního počítače s povolenou spravovanou identitou přiřazenou systémem:
 
-1. Pokud chcete vytvořit sadu škálování virtuálního počítače pomocí spravované identity přiřazené systémem, podívejte se na *Příklad 1* v referenčním článku k rutině [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) .  Přidejte parametr `-IdentityType SystemAssigned` `New-AzVmssConfig` do rutiny:
+1. Pokud chcete vytvořit sadu škálování virtuálního počítače pomocí spravované identity přiřazené systémem, podívejte se na *Příklad 1* v referenčním článku k rutině [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) .  Přidejte parametr `-IdentityType SystemAssigned` do rutiny `New-AzVmssConfig`:
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
@@ -68,13 +68,13 @@ Vytvoření sady škálování virtuálního počítače s povolenou spravovanou
 
 Pokud potřebujete povolit spravovanou identitu přiřazenou systémem v existující sadě škálování virtuálních počítačů Azure:
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
+1. Přihlaste se k Azure pomocí `Connect-AzAccount`. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Nejdřív načtěte vlastnosti sady škálování virtuálního počítače pomocí [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) rutiny. Pokud chcete povolit spravovanou identitu přiřazenou systémem, použijte `-IdentityType` přepínač v rutině [Update-AzVmss](/powershell/module/az.compute/update-azvmss) :
+2. Nejdřív načtěte vlastnosti sady škálování virtuálního počítače pomocí rutiny [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) . Pokud chcete povolit spravovanou identitu přiřazenou systémem, použijte přepínač `-IdentityType` v rutině [Update-AzVmss](/powershell/module/az.compute/update-azvmss) :
 
    ```powershell
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
@@ -86,7 +86,7 @@ Pokud potřebujete povolit spravovanou identitu přiřazenou systémem v existuj
 
 Pokud máte sadu škálování virtuálního počítače, která už nepotřebuje spravovanou identitu přiřazenou systémem, ale potřebuje spravované identity přiřazené uživatelem, použijte tuto rutinu:
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
+1. Přihlaste se k Azure pomocí `Connect-AzAccount`. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
 
 2. Spusťte následující rutinu:
 
@@ -112,13 +112,13 @@ Vytvoření nové sady škálování virtuálního počítače s uživatelsky p�
 
 Přiřazení spravované identity přiřazené uživatelem do existující sady škálování virtuálních počítačů Azure:
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
+1. Přihlaste se k Azure pomocí `Connect-AzAccount`. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Nejdřív načtěte vlastnosti sady škálování virtuálního počítače pomocí `Get-AzVM` rutiny. Pak k přiřazení spravované identity přiřazené uživatelem do sady škálování virtuálního počítače použijte `-IdentityType` přepínač a `-IdentityID` v rutině [Update-AzVmss](/powershell/module/az.compute/update-azvmss) . Nahraďte,,`<SUBSCRIPTION ID>`, ,`USER ASSIGNED ID2`vlastnímihodnotami. `<USER ASSIGNED ID1>` `<VM NAME>` `<RESROURCE GROUP>`
+2. Nejdřív načtěte vlastnosti sady škálování virtuálního počítače pomocí rutiny `Get-AzVM`. Pak k přiřazení spravované identity přiřazené uživatelem do sady škálování virtuálního počítače použijte přepínač `-IdentityType` a `-IdentityID` v rutině [Update-AzVmss](/powershell/module/az.compute/update-azvmss) . `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>``<USER ASSIGNED ID1>`, nahraďte `USER ASSIGNED ID2` vlastními hodnotami.
 
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -128,7 +128,7 @@ Přiřazení spravované identity přiřazené uživatelem do existující sady 
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Odebrání spravované identity přiřazené uživatelem ze sady škálování virtuálních počítačů Azure
 
-Pokud má vaše sada škálování virtuálních počítačů více uživatelsky přiřazených spravovaných identit, můžete všechny kromě poslední odebrat pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VIRTUAL MACHINE SCALE SET NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>` Je vlastnost název spravované identity přiřazené uživatelem, která by měla zůstat v sadě škálování virtuálního počítače. Tyto informace najdete v části Identita sady škálování virtuálních počítačů pomocí `az vmss show`:
+Pokud má vaše sada škálování virtuálních počítačů více uživatelsky přiřazených spravovaných identit, můžete všechny kromě poslední odebrat pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VIRTUAL MACHINE SCALE SET NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>` je vlastnost název spravované identity přiřazené uživatelem, která by měla zůstat v sadě škálování virtuálního počítače. Tyto informace najdete v části Identita sady škálování virtuálních počítačů pomocí `az vmss show`:
 
 ```powershell
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED IDENTITY NAME>"
