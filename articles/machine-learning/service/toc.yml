@@ -298,8 +298,8 @@
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
         - name: Použití designeru pro dávkové predikce
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
-          href: how-to-run-batch-predictions-ui.md
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: Monitorování modelů
       items:
         - name: Shromažďování a vyhodnocování dat modelů
