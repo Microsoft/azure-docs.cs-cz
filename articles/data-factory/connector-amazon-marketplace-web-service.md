@@ -1,61 +1,59 @@
 ---
-title: Kopírování dat z webové služby Amazon Marketplace pomocí Azure Data Factory
-description: Naučte se, jak kopírovat data z webové služby Amazon Marketplace do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Copy data from Amazon Marketplace Web Service
+description: Learn how to copy data from Amazon Marketplace Web Service to supported sink data stores by using a copy activity in an Azure Data Factory pipeline.
 services: data-factory
-documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 8613b52ff8d04b578342a34fe24d6e9e12a8a98c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
+ms.date: 08/01/2018
+ms.openlocfilehash: 24e0de3efec4e2d442f746e19f4c30363f0b4bfa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681415"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218758"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopírování dat z webové služby Amazon Marketplace pomocí Azure Data Factory
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Copy data from Amazon Marketplace Web Service using Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z webové služby Amazon Marketplace. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
+This article outlines how to use the Copy Activity in Azure Data Factory to copy data from Amazon Marketplace Web Service. It builds on the [copy activity overview](copy-activity-overview.md) article that presents a general overview of copy activity.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Supported capabilities
 
-Tento konektor webové služby Amazon Marketplace se podporuje pro následující činnosti:
+This Amazon Marketplace Web Service connector is supported for the following activities:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
-Data z webové služby Amazon Marketplace můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
+You can copy data from Amazon Marketplace Web Service to any supported sink data store. For a list of data stores that are supported as sources/sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
 
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
+Azure Data Factory provides a built-in driver to enable connectivity, therefore you don't need to manually install any driver using this connector.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobné informace o vlastnostech, které se používají k definování Data Factory entit specifických pro konektor webové služby Amazon Marketplace.
+The following sections provide details about properties that are used to define Data Factory entities specific to Amazon Marketplace Web Service connector.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Linked service properties
 
-Pro propojenou službu webové služby Amazon Marketplace jsou podporovány následující vlastnosti:
+The following properties are supported for Amazon Marketplace Web Service linked service:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **AmazonMWS** . | Ano |
-| endpoint | Koncový bod serveru Amazon MWS (tj. mws.amazonservices.com)  | Ano |
-| marketplaceID | ID služby Amazon Marketplace, ze kterého chcete načíst data. Pokud chcete načíst data z více ID Marketplace, oddělte je čárkou (`,`). (tj. A2EUQ1WTGCTBG2)  | Ano |
-| sellerID | ID prodejce Amazon  | Ano |
-| mwsAuthToken | Ověřovací token Amazon MWS Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| accessKeyId | ID přístupového klíče používaného pro přístup k datům.  | Ano |
-| secretKey | Tajný klíč, který se používá pro přístup k datům. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnota je true (pravda).  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes SSL vyžadovat, aby název hostitele v certifikátu serveru odpovídal názvu hostitele serveru. Výchozí hodnota je true (pravda).  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes SSL ověřit identita serveru. Výchozí hodnota je true (pravda).  | Ne |
+| type | The type property must be set to: **AmazonMWS** | Ano |
+| endpoint | The endpoint of the Amazon MWS server, (that is, mws.amazonservices.com)  | Ano |
+| marketplaceID | The Amazon Marketplace ID you want to retrieve data from. To retrieve data from multiple Marketplace IDs, separate them with a comma (`,`). (that is, A2EUQ1WTGCTBG2)  | Ano |
+| sellerID | The Amazon seller ID.  | Ano |
+| mwsAuthToken | The Amazon MWS authentication token. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| accessKeyId | The access key ID used to access data.  | Ano |
+| secretKey | The secret key used to access data. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| useEncryptedEndpoints | Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.  | Ne |
+| useHostVerification | Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.  | Ne |
+| usePeerVerification | Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.  | Ne |
 
 **Příklad:**
 
@@ -82,16 +80,16 @@ Pro propojenou službu webové služby Amazon Marketplace jsou podporovány nás
 }
 ```
 
-## <a name="dataset-properties"></a>Vlastnosti datové sady
+## <a name="dataset-properties"></a>Dataset properties
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou webové služby Amazon Marketplace.
+For a full list of sections and properties available for defining datasets, see the [datasets](concepts-datasets-linked-services.md) article. This section provides a list of properties supported by Amazon Marketplace Web Service dataset.
 
-Pokud chcete kopírovat data z webové služby Amazon Marketplace, nastavte vlastnost Type datové sady na **AmazonMWSObject**. Podporovány jsou následující vlastnosti:
+To copy data from Amazon Marketplace Web Service, set the type property of the dataset to **AmazonMWSObject**. The following properties are supported:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **AmazonMWSObject** . | Ano |
-| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
+| type | The type property of the dataset must be set to: **AmazonMWSObject** | Ano |
+| tableName | Name of the table. | No (if "query" in activity source is specified) |
 
 **Příklad**
 
@@ -113,16 +111,16 @@ Pokud chcete kopírovat data z webové služby Amazon Marketplace, nastavte vlas
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem webové služby Amazon Marketplace.
+For a full list of sections and properties available for defining activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by Amazon Marketplace Web Service source.
 
 ### <a name="amazon-mws-as-source"></a>Amazon MWS as source
 
-Pokud chcete kopírovat data z webové služby Amazon Marketplace, nastavte typ zdroje v aktivitě kopírování na **AmazonMWSSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
+To copy data from Amazon Marketplace Web Service, set the source type in the copy activity to **AmazonMWSSource**. The following properties are supported in the copy activity **source** section:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AmazonMWSSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| type | The type property of the copy activity source must be set to: **AmazonMWSSource** | Ano |
+| query | Use the custom SQL query to read data. Například: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | No (if "tableName" in dataset is specified) |
 
 **Příklad:**
 
@@ -156,9 +154,9 @@ Pokud chcete kopírovat data z webové služby Amazon Marketplace, nastavte typ 
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+## <a name="lookup-activity-properties"></a>Lookup activity properties
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+For a list of data stores supported as sources and sinks by the copy activity in Azure Data Factory, see [supported data stores](copy-activity-overview.md#supported-data-stores-and-formats).
