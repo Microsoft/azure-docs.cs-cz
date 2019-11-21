@@ -1,214 +1,214 @@
 ---
-title: Použití služby Vyrovnávání zatížení v Azure | Dokumentace Microsoftu
-description: 'V tomto kurzu se dozvíte, jak vytvořit scénář s využitím Azure portfolia Vyrovnávání zatížení: Traffic Manager, služba Application Gateway a nástroje pro vyrovnávání zatížení.'
+title: Using load-balancing services in Azure | Microsoft Docs
+description: 'This tutorial shows you how to create a scenario by using the Azure load-balancing portfolio: Traffic Manager, Application Gateway, and Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: liumichelle
-manager: dkays
+author: asudbring
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: limichel
-ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330437"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227791"
 ---
-# <a name="using-load-balancing-services-in-azure"></a>Použití služby Vyrovnávání zatížení v Azure
+# <a name="using-load-balancing-services-in-azure"></a>Použití služeb pro vyrovnávání zatížení v Azure
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
-Microsoft Azure poskytuje několik služeb pro správu, jak se distribuuje síťový provoz s vyrovnáváním zatížení. Můžete použít tyto služby samostatně nebo zkombinovat jejich metod v závislosti na potřebách, abyste mohli sestavit optimální řešení.
+Microsoft Azure provides multiple services for managing how network traffic is distributed and load balanced. You can use these services individually or combine their methods, depending on your needs, to build the optimal solution.
 
-V tomto kurzu jsme nejprve definovat případu použití zákazníka a zobrazit jak ji můžete nastavit více robustní a výkonné pomocí následující služby Vyrovnávání zatížení portfolia Azure: Traffic Manager, služba Application Gateway a nástroje pro vyrovnávání zatížení. Pak zajišťuje, že podrobné pokyny pro vytvoření nasazení, které je geograficky redundantní, distribuuje provoz do virtuálních počítačů a pomáhá spravovat různé typy požadavků.
+In this tutorial, we first define a customer use case and see how it can be made more robust and performant by using the following Azure load-balancing portfolio: Traffic Manager, Application Gateway, and Load Balancer. We then provide step-by-step instructions for creating a deployment that is geographically redundant, distributes traffic to VMs, and helps you manage different types of requests.
 
-Na koncepční úroveň každou z těchto služeb hraje důležitou roli v hierarchii služby Vyrovnávání zatížení.
+At a conceptual level, each of these services plays a distinct role in the load-balancing hierarchy.
 
-* **Traffic Manager** poskytuje Vyrovnávání zatížení globálního DNS. Prohledá příchozí žádosti DNS a odpovídá zprávou funkční koncový bod, v souladu se zásadami směrování vybraného zákazníka. Možnosti pro směrování metody jsou následující:
-  * Směrování k odeslání do nejbližší koncového bodu z hlediska latence žadatel výkonu.
-  * Priorita směrování směrovat všechen provoz na koncový bod, pomocí dalších koncových bodů jako zálohování.
-  * Vážené kruhové dotazování směrování, která distribuuje provoz podle váhy, který je přiřazen do každého koncového bodu.
-  * Zeměpisné oblasti založené na směrování za účelem distribuce provozu do koncových bodů vaší aplikace na základě geografického umístění uživatele.
-  * Podsíť založené na směrování za účelem distribuce provozu do koncových bodů vaší aplikace na základě podsítě (rozsah IP adres) uživatele.
-  * Parametr s více hodnotami, směrování, která umožňují snadno odeslat více aplikačními koncovými body IP adresy v jednu odpověď DNS.
+* **Traffic Manager** provides global DNS load balancing. It looks at incoming DNS requests and responds with a healthy endpoint, in accordance with the routing policy the customer has selected. Options for routing methods are:
+  * Performance routing to send the requestor to the closest endpoint in terms of latency.
+  * Priority routing to direct all traffic to an endpoint, with other endpoints as backup.
+  * Weighted round-robin routing, which distributes traffic based on the weighting that is assigned to each endpoint.
+  * Geography-based routing to distribute the traffic to your application endpoints based on geographic location of the user.
+  * Subnet-based routing to distribute the traffic to your application endpoints based on the subnet (IP address range) of the user.
+  * Multi Value routing that enable you to send IP addresses of more than one application endpoints in a single DNS response.
 
-  Klient se připojí přímo na koncový bod vrátil Traffic Managerem. Azure Traffic Manager zjistí, že koncový bod není v pořádku a pak přesměruje klienty k jiné instanci v pořádku. Odkazovat na [dokumentace ke službě Azure Traffic Manager](traffic-manager-overview.md) Další informace o službě.
-* **Služba Application Gateway** poskytuje kontroler doručování aplikací (ADC) jako službu, nabízí různé vrstvy 7 možnostmi Vyrovnávání zatížení pro vaši aplikaci. Umožňuje zákazníkům optimalizovat produktivitu webové farmy tím, že se ukončování protokolu SSL náročnou na procesor, ke službě application gateway. Další možnosti přesměrování vrstvy 7 obsahovat kruhové dotazování na distribuci příchozích přenosů, spřažení relace na základě souborů cookie, směrování na základě cesty URL a možnost hostování několika webů za jedné službě application gateway. Application Gateway lze nakonfigurovat jako brány přístupem k Internetu, pouze interní brány nebo kombinaci obojího. Služba Application Gateway je Azure plně spravované, škálovatelné a vysoce dostupné. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu.
-* **Nástroj pro vyrovnávání zatížení** je nedílnou součástí Azure SDN stack, poskytuje vysoce výkonné, s nízkou latencí vrstva 4 služby Vyrovnávání zatížení služby pro všechny protokoly UDP a TCP. Spravuje příchozí a odchozí připojení. Můžete nakonfigurovat veřejné a vnitřní s vyrovnáváním zatížení koncových bodů a definovat pravidla pro namapování příchozí připojení do back endového fondu cílů s použitím TCP nebo HTTP zjišťování stavu možností pro správu dostupnost služeb.
+  The client connects directly to the endpoint returned by Traffic Manager. Azure Traffic Manager detects when an endpoint is unhealthy and then redirects the clients to another healthy instance. Refer to [Azure Traffic Manager documentation](traffic-manager-overview.md) to learn more about the service.
+* **Application Gateway** provides application delivery controller (ADC) as a service, offering various Layer 7 load-balancing capabilities for your application. It allows customers to optimize web farm productivity by offloading CPU-intensive SSL termination to the application gateway. Other Layer 7 routing capabilities include round-robin distribution of incoming traffic, cookie-based session affinity, URL path-based routing, and the ability to host multiple websites behind a single application gateway. Application Gateway can be configured as an Internet-facing gateway, an internal-only gateway, or a combination of both. Application Gateway is fully Azure managed, scalable, and highly available. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu.
+* **Load Balancer** is an integral part of the Azure SDN stack, providing high-performance, low-latency Layer 4 load-balancing services for all UDP and TCP protocols. It manages inbound and outbound connections. You can configure public and internal load-balanced endpoints and define rules to map inbound connections to back-end pool destinations by using TCP and HTTP health-probing options to manage service availability.
 
 ## <a name="scenario"></a>Scénář
 
-V tomto ukázkovém scénáři doporučujeme použít jednoduchý web, který poskytuje dva typy obsahu: imagí a dynamicky vykreslené webové stránky. Webu musí být geograficky redundantní a jeho uživatelům nejblíž (nejnižší latence) by měl sloužit umístění k nim. Vývojář aplikace se rozhodla, že žádné adresy URL, které odpovídají vzoru/imagí / * se obsluhují z vyhrazený fond virtuálních počítačů, které se liší od zbývající části webové farmy.
+In this example scenario, we use a simple website that serves two types of content: images and dynamically rendered webpages. The website must be geographically redundant, and it should serve its users from the closest (lowest latency) location to them. The application developer has decided that any URLs that match the pattern /images/* are served from a dedicated pool of VMs that are different from the rest of the web farm.
 
-Výchozí fond virtuální počítač obsluhující dynamického obsahu se navíc musí komunikovat s back-end databáze, která je hostovaná v clusteru s vysokou dostupností. Celé nasazení je nastavený prostřednictvím Azure Resource Manageru.
+Additionally, the default VM pool serving the dynamic content needs to talk to a back-end database that is hosted on a high-availability cluster. The entire deployment is set up through Azure Resource Manager.
 
-Pomocí služby Traffic Manager, služba Application Gateway a nástroje pro vyrovnávání zatížení umožňuje tento web k dosažení těchto cílů návrhu:
+Using Traffic Manager, Application Gateway, and Load Balancer allows this website to achieve these design goals:
 
-* **Redundance geografickým oblastem**: Pokud jedna oblast přestane fungovat, Traffic Manager směruje provoz bez problémů do nejbližší oblasti bez jakéhokoli zásahu od vlastníka aplikace.
-* **Nižší latenci**: Vzhledem k tomu, že Traffic Manager automatickému směrování zákazníků do nejbližší oblasti, zákazník narazí nižší latenci a pokud se požaduje obsah webové stránky.
-* **Nezávislého škálování**: Protože zatížení webové aplikace jsou oddělené oddělovačem typ obsahu, vlastník aplikace může škálovat nezávisle na sobě navzájem požadavku úlohy. Služba Application Gateway zajišťuje, že provoz se směruje do správné fondů na základě určených pravidel a stav aplikace.
-* **Interní Vyrovnávání zatížení**: Protože nástroj pro vyrovnávání zatížení před tímto clusterem vysokou dostupnost, je přístupný jenom aktivní a funkční koncový bod pro databázi aplikace. Kromě toho správce databáze, můžete optimalizovat zatížení díky distribuci aktivní a pasivní replik napříč clusterem nezávisle na front-endové aplikace. Nástroj pro vyrovnávání zatížení poskytuje připojení ke clusteru vysokou dostupnost a zajistí, že pouze v dobrém stavu databáze přijímat žádosti o připojení.
+* **Multi-geo redundancy**: If one region goes down, Traffic Manager routes traffic seamlessly to the closest region without any intervention from the application owner.
+* **Reduced latency**: Because Traffic Manager automatically directs the customer to the closest region, the customer experiences lower latency when requesting the webpage contents.
+* **Independent scalability**: Because the web application workload is separated by type of content, the application owner can scale the request workloads independent of each other. Application Gateway ensures that the traffic is routed to the right pools based on the specified rules and the health of the application.
+* **Internal load balancing**: Because Load Balancer is in front of the high-availability cluster, only the active and healthy endpoint for a database is exposed to the application. Additionally, a database administrator can optimize the workload by distributing active and passive replicas across the cluster independent of the front-end application. Load Balancer delivers connections to the high-availability cluster and ensures that only healthy databases receive connection requests.
 
-Následující diagram znázorňuje architekturu tento scénář:
+The following diagram shows the architecture of this scenario:
 
-![Diagram služby Vyrovnávání zatížení architektury](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
+![Diagram of load-balancing architecture](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> V tomto příkladu je pouze jeden z mnoha možné konfigurace služby Vyrovnávání zatížení, které nabízí Azure. Traffic Manager, služba Application Gateway a služby Load balancer úrovně lze kombinovat a spárují s nejlepší vyhovovala vašim potřebám Vyrovnávání zatížení. Například pokud přesměrování zpracování SSL nebo vrstvy 7 zpracování není nezbytné, nástroj pro vyrovnávání zatížení může být zastoupen Application Gateway.
+> This example is only one of many possible configurations of the load-balancing services that Azure offers. Traffic Manager, Application Gateway, and Load Balancer can be mixed and matched to best suit your load-balancing needs. For example, if SSL offload or Layer 7 processing is not necessary, Load Balancer can be used in place of Application Gateway.
 
-## <a name="setting-up-the-load-balancing-stack"></a>Nastavení služby Vyrovnávání zatížení zásobníku
+## <a name="setting-up-the-load-balancing-stack"></a>Setting up the load-balancing stack
 
-### <a name="step-1-create-a-traffic-manager-profile"></a>Krok 1: Vytvoření profilu Traffic Manageru
+### <a name="step-1-create-a-traffic-manager-profile"></a>Step 1: Create a Traffic Manager profile
 
-1. Na webu Azure Portal, klikněte na tlačítko **vytvořit prostředek** > **sítě** > **profil služby Traffic Manager**  >   **Vytvoření**.
-2. Zadejte následující informace:
+1. In the Azure portal, click **Create a resource** > **Networking** > **Traffic Manager profile** > **Create**.
+2. Enter the following basic information:
 
-   * **Název**: Zadejte svůj profil Traffic Manageru DNS název předpony.
-   * **Metody směrování**: Vyberte zásadu metodu směrování provozu. Další informace o metodách, naleznete v tématu [metody směrování provozu Traffic Manageru](traffic-manager-routing-methods.md).
-   * **Předplatné**: Vyberte předplatné, obsahuje profil.
-   * **Skupina prostředků**: Vyberte skupinu prostředků, který obsahuje profil. Může být nové nebo existující skupinu prostředků.
-   * **Umístění skupiny prostředků**: Služba Traffic Manager je globální a není vázaná na místo. Musíte však zadat oblast pro skupinu, ve kterém se budou metadata spojená s profilem Traffic Manager nachází. Toto umístění nemá žádný vliv na běhovou dostupnost profilu.
+   * **Name**: Give your Traffic Manager profile a DNS prefix name.
+   * **Routing method**: Select the traffic-routing method policy. For more information about the methods, see [About Traffic Manager traffic routing methods](traffic-manager-routing-methods.md).
+   * **Subscription**: Select the subscription that contains the profile.
+   * **Resource group**: Select the resource group that contains the profile. It can be a new or existing resource group.
+   * **Resource group location**: Traffic Manager service is global and not bound to a location. However, you must specify a region for the group where the metadata associated with the Traffic Manager profile resides. This location has no impact on the runtime availability of the profile.
 
-3. Klikněte na tlačítko **vytvořit** k vygenerování profilu služby Traffic Manager.
+3. Click **Create** to generate the Traffic Manager profile.
 
-   !["Vytvořit Traffic Manageru" okno](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+   !["Create Traffic Manager" blade](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
-### <a name="step-2-create-the-application-gateways"></a>Krok 2: Vytvoření brány application Gateway
+### <a name="step-2-create-the-application-gateways"></a>Step 2: Create the application gateways
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **vytvořit prostředek** > **sítě** > **Application Gateway**.
-2. Zadejte následující informace o službě application gateway:
+1. In the Azure portal, in the left pane, click **Create a resource** > **Networking** > **Application Gateway**.
+2. Enter the following basic information about the application gateway:
 
-   * **Název**: Název služby application gateway.
-   * **Velikost SKU**: Velikost application gateway, k dispozici jako malé, střední nebo velké.
-   * **Počet instancí**: Počet instancí, hodnota od 2 do 10.
-   * **Skupina prostředků**: Skupina prostředků, která obsahuje službu application gateway. Může být existující skupinu prostředků nebo nové.
-   * **Umístění**: Oblast pro službu application gateway, která je na stejném umístění jako skupina prostředků. Umístění je důležité, protože virtuální sítě a veřejné IP adresy musí být ve stejném umístění jako brána.
+   * **Name**: The name of the application gateway.
+   * **SKU size**: The size of the application gateway, available as Small, Medium, or Large.
+   * **Instance count**: The number of instances, a value from 2 through 10.
+   * **Resource group**: The resource group that holds the application gateway. It can be an existing resource group or a new one.
+   * **Location**: The region for the application gateway, which is the same location as the resource group. The location is important, because the virtual network and public IP must be in the same location as the gateway.
 3. Klikněte na **OK**.
-4. Definujte virtuální sítě, podsítě, front-end IP adresu a konfigurace naslouchacího procesu pro službu application gateway. V tomto scénáři je front-endovou IP adresu **veřejné**, což umožňuje přidat jako koncový bod do profilu služby Traffic Manager později.
-5. Nakonfigurujte naslouchací proces s jedním z následujících možností:
-    * Pokud používáte protokol HTTP, není nutné nic konfigurovat. Klikněte na **OK**.
-    * Pokud používáte protokol HTTPS, další konfigurace je nutná. Odkazovat na [vytvoření služby application gateway](../application-gateway/application-gateway-create-gateway-portal.md)začíná v kroku 9. Po dokončení konfigurace klikněte na tlačítko **OK**.
+4. Define the virtual network, subnet, front-end IP, and listener configurations for the application gateway. In this scenario, the front-end IP address is **Public**, which allows it to be added as an endpoint to the Traffic Manager profile later on.
+5. Configure the listener with one of the following options:
+    * If you use HTTP, there is nothing to configure. Klikněte na **OK**.
+    * If you use HTTPS, further configuration is required. Refer to [Create an application gateway](../application-gateway/application-gateway-create-gateway-portal.md), starting at step 9. When you have completed the configuration, click **OK**.
 
-#### <a name="configure-url-routing-for-application-gateways"></a>Konfigurace směrování adres URL pro brány application Gateway
+#### <a name="configure-url-routing-for-application-gateways"></a>Configure URL routing for application gateways
 
-Při výběru back endového fondu trvá aplikační brány, který je nakonfigurovaný s pravidlem na základě cest vzor cesty adresy URL žádosti kromě kruhové dotazování na distribuci. V tomto scénáři přidáváme pravidlo na základě cest pro přesměrování libovolnou adresu URL s "/images/\*" do fondu serverů, bitové kopie. Další informace o konfiguraci adresy URL na základě cest pro aplikační bránu, směrování najdete [vytvořit pravidlo na základě cest pro aplikační bránu](../application-gateway/application-gateway-create-url-route-portal.md).
+When you choose a back-end pool, an application gateway that's configured with a path-based rule takes a path pattern of the request URL in addition to round-robin distribution. In this scenario, we are adding a path-based rule to direct any URL with "/images/\*" to the image server pool. For more information about configuring URL path-based routing for an application gateway, refer to [Create a path-based rule for an application gateway](../application-gateway/application-gateway-create-url-route-portal.md).
 
-![Diagram vrstvy webové aplikace brány](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
+![Application Gateway web-tier diagram](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
-1. Vaší skupiny prostředků přejděte do instance služby application gateway, kterou jste vytvořili v předchozí části.
-2. V části **nastavení**vyberte **back-endové fondy**a pak vyberte **přidat** přidáte virtuální počítače, které chcete přidružit k fondy back endové webové vrstvy.
-3. Zadejte název back endového fondu a všechny IP adresy počítačů, které se nacházejí ve fondu. V tomto scénáři se připojujete dva fondy back endového serveru, virtuálních počítačů.
+1. From your resource group, go to the instance of the application gateway that you created in the preceding section.
+2. Under **Settings**, select **Backend pools**, and then select **Add** to add the VMs that you want to associate with the web-tier back-end pools.
+3. Enter the name of the back-end pool and all the IP addresses of the machines that reside in the pool. In this scenario, we are connecting two back-end server pools of virtual machines.
 
-   ![Služba Application Gateway "Přidat back-endový fond"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+   ![Application Gateway "Add backend pool"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
-4. V části **nastavení** služby application gateway, vyberte **pravidla**a potom klikněte na tlačítko **na základě cest** tlačítko pro přidání pravidlo.
+4. Under **Settings** of the application gateway, select **Rules**, and then click the **Path based** button to add a rule.
 
-   ![Tlačítko "Na základě cest" pravidla bránu aplikace](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+   ![Application Gateway Rules "Path based" button](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
-5. Tím, že poskytuje následující informace o konfiguraci pravidla.
+5. Configure the rule by providing the following information.
 
-   Základní nastavení:
+   Basic settings:
 
-   + **Název**: Popisný název pravidla, které je dostupné na portálu.
-   + **Naslouchací proces**: Naslouchací proces, který se používá pro pravidlo.
-   + **Výchozí back-endový fond**: Back endového fondu, který se má použít výchozí pravidlo.
-   + **Výchozí nastavení protokolu HTTP**: Nastavení HTTP pro použití s výchozí pravidlo.
+   + **Name**: The friendly name of the rule that is accessible in the portal.
+   + **Listener**: The listener that is used for the rule.
+   + **Default backend pool**: The back-end pool to be used with the default rule.
+   + **Default HTTP settings**: The HTTP settings to be used with the default rule.
 
-   Pravidla na základě cest:
+   Path-based rules:
 
-   + **Název**: Popisný název pravidla na základě cest.
-   + **Cesty**: Pravidlo cesty, který se používá pro přesměrování provozu.
-   + **Back-endový fond**: Back endového fondu, který se má použít s tímto pravidlem.
-   + **Nastavení HTTP**: Nastavení HTTP, který se má použít s tímto pravidlem.
+   + **Name**: The friendly name of the path-based rule.
+   + **Paths**: The path rule that is used for forwarding traffic.
+   + **Backend Pool**: The back-end pool to be used with this rule.
+   + **HTTP Setting**: The HTTP settings to be used with this rule.
 
    > [!IMPORTANT]
-   > Cesty: Platná cesta musí začínat znakem "/". Zástupný znak "\*" je povolen pouze na konci. Příklady platných jsou /xyz /xyz\*, nebo /xyz/\*.
+   > Paths: Valid paths must start with "/". The wildcard "\*" is allowed only at the end. Valid examples are /xyz, /xyz\*, or /xyz/\*.
 
-   ![Okno "Přidat pravidlo na základě cest" brány aplikací](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
+   ![Application Gateway "Add path-based rule" blade](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
-### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>Krok 3: Přidání brány application Gateway pro koncové body Traffic Manageru
+### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>Step 3: Add application gateways to the Traffic Manager endpoints
 
-V tomto scénáři je Traffic Manager připojené k branám application Gateway (podle konfigurace v předchozích krocích), které se nacházejí v různých oblastech. Teď, když jsou nakonfigurované brány application Gateway, dalším krokem je pro připojení k vašemu profilu Traffic Manageru.
+In this scenario, Traffic Manager is connected to application gateways (as configured in the preceding steps) that reside in different regions. Now that the application gateways are configured, the next step is to connect them to your Traffic Manager profile.
 
-1. Otevřete svůj profil Traffic Manageru. Uděláte to tak, podívejte se ve vaší skupině prostředků nebo vyhledejte název profilu Traffic Manageru z **všechny prostředky**.
-2. V levém podokně vyberte **koncové body**a potom klikněte na tlačítko **přidat** k přidání koncového bodu.
+1. Open your Traffic Manager profile. To do so, look in your resource group or search for the name of the Traffic Manager profile from **All Resources**.
+2. In the left pane, select **Endpoints**, and then click **Add** to add an endpoint.
 
-   ![Traffic Manager koncové body "Přidat" tlačítko](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+   ![Traffic Manager Endpoints "Add" button](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
-3. Vytvořte koncový bod tak, že zadáte následující informace:
+3. Create an endpoint by entering the following information:
 
-   * **Typ**: Vyberte typ koncový bod Vyrovnávání zatížení. V tomto scénáři vyberte **koncový bod Azure** vzhledem k tomu, že se připojujete k instancím brány aplikací, které byly dříve nakonfigurovány.
-   * **Název**: Zadejte název koncového bodu.
-   * **Typ cílového prostředku**: Vyberte **veřejnou IP adresu** a pak v části **cílový prostředek**, vyberte veřejné IP adresy služby application gateway, která byla dříve nakonfigurovaná.
+   * **Type**: Select the type of endpoint to load-balance. In this scenario, select **Azure endpoint** because we are connecting it to the application gateway instances that were configured previously.
+   * **Name**: Enter the name of the endpoint.
+   * **Target resource type**: Select **Public IP address** and then, under **Target resource**, select the public IP of the application gateway that was configured previously.
 
-   ![Traffic Manager "Přidat koncový bod"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
+   ![Traffic Manager "Add endpoint"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
-4. Teď můžete otestovat nastavení přistupování k aplikacím s DNS vašeho profilu Traffic Manageru (v tomto příkladu: TrafficManagerScenario.trafficmanager.net). Můžete znovu odeslat požadavky, vyvolali nebo přenést virtuální počítače a webové servery, které byly vytvořeny v různých oblastech a změnit nastavení profilu Traffic Manageru k otestování nastavení.
+4. Now you can test your setup by accessing it with the DNS of your Traffic Manager profile (in this example: TrafficManagerScenario.trafficmanager.net). You can resend requests, bring up or bring down VMs and web servers that were created in different regions, and change the Traffic Manager profile settings to test your setup.
 
-### <a name="step-4-create-a-load-balancer"></a>Krok 4: Vytvoření nástroje pro vyrovnávání zatížení
+### <a name="step-4-create-a-load-balancer"></a>Step 4: Create a load balancer
 
-V tomto scénáři nástroje pro vyrovnávání zatížení distribuuje připojení z webové vrstvy do databází v rámci clusteru s vysokou dostupností.
+In this scenario, Load Balancer distributes connections from the web tier to the databases within a high-availability cluster.
 
-Pokud váš cluster vysokou dostupnost databáze používá SQL Server AlwaysOn, podívejte se na [nakonfigurovat jeden nebo více vždy na naslouchacích procesů skupin dostupnosti](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) podrobné pokyny.
+If your high-availability database cluster is using SQL Server AlwaysOn, refer to [Configure one or more Always On Availability Group Listeners](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) for step-by-step instructions.
 
-Další informace o konfiguraci interního nástroje najdete v tématu [vytvoření interního nástroje na webu Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
+For more information about configuring an internal load balancer, see [Create an Internal load balancer in the Azure portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **vytvořit prostředek** > **sítě** > **nástroje pro vyrovnávání zatížení**.
-2. Zvolte název pro nástroj pro vyrovnávání zatížení.
-3. Nastavte **typ** k **interní**a vyberte příslušnou virtuální síť a podsíť pro nástroj pro vyrovnávání zatížení se nacházejí v.
-4. V části **přiřazení IP adresy**, vyberte buď **dynamické** nebo **statické**.
-5. V části **skupiny prostředků**, vyberte skupinu prostředků, nástroje pro vyrovnávání zatížení.
-6. V části **umístění**, vyberte příslušnou oblast, nástroj pro vyrovnávání zatížení.
-7. Klikněte na tlačítko **vytvořit** ke generování nástroje pro vyrovnávání zatížení.
+1. In the Azure portal, in the left pane, click **Create a resource** > **Networking** > **Load balancer**.
+2. Choose a name for your load balancer.
+3. Set the **Type** to **Internal**, and choose the appropriate virtual network and subnet for the load balancer to reside in.
+4. Under **IP address assignment**, select either **Dynamic** or **Static**.
+5. Under **Resource group**, choose the resource group for the load balancer.
+6. Under **Location**, choose the appropriate region for the load balancer.
+7. Click **Create** to generate the load balancer.
 
-#### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Připojit back-end databázová vrstva nástroji pro vyrovnávání zatížení
+#### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Connect a back-end database tier to the load balancer
 
-1. Z vaší skupiny prostředků vyhledejte nástroj pro vyrovnávání zatížení, který byl vytvořen v předchozích krocích.
-2. V části **nastavení**, klikněte na tlačítko **back-endové fondy**a potom klikněte na tlačítko **přidat** přidat back endového fondu.
+1. From your resource group, find the load balancer that was created in the previous steps.
+2. Under **Settings**, click **Backend pools**, and then click **Add** to add a back-end pool.
 
-   ![Nástroj pro vyrovnávání zatížení "Přidat back-endový fond"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+   ![Load Balancer "Add backend pool"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
-3. Zadejte název back endového fondu.
-4. Přidejte jednotlivé počítače nebo dostupnosti do back endového fondu.
+3. Enter the name of the back-end pool.
+4. Add either individual machines or an availability set to the back-end pool.
 
-#### <a name="configure-a-probe"></a>Konfigurace testu
+#### <a name="configure-a-probe"></a>Configure a probe
 
-1. Ve službě load balancer v části **nastavení**vyberte **sondy**a potom klikněte na tlačítko **přidat** přidat sondu.
+1. In your load balancer, under **Settings**, select **Probes**, and then click **Add** to add a probe.
 
-   ![Nástroj pro vyrovnávání zatížení "Přidat test"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+   ![Load Balancer "Add probe"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
-2. Zadejte název pro test paměti.
-3. Vyberte **protokol** pro test paměti. Pro databázi může být vhodné sondu protokolu TCP spíše než sondu protokolu HTTP. Chcete-li další informace o sondy nástroje pro vyrovnávání zatížení, přečtěte si [porozumění testům nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md).
-4. Zadejte **Port** databáze se použije pro přístup k testu.
-5. V části **Interval**, určete, jak často aplikace testovat.
-6. V části **prahová hodnota špatného stavu**, zadejte počet selhání průběžné testu, které se musí vyskytovat virtuálního počítače back-end se považoval za poškozený.
-7. Klikněte na tlačítko **OK** vytvořte test.
+2. Enter the name for the probe.
+3. Select the **Protocol** for the probe. For a database, you might want a TCP probe rather than an HTTP probe. To learn more about load-balancer probes, refer to [Understand load balancer probes](../load-balancer/load-balancer-custom-probe-overview.md).
+4. Enter the **Port** of your database to be used for accessing the probe.
+5. Under **Interval**, specify how frequently to probe the application.
+6. Under **Unhealthy threshold**, specify the number of continuous probe failures that must occur for the back-end VM to be considered unhealthy.
+7. Click **OK** to create the probe.
 
-#### <a name="configure-the-load-balancing-rules"></a>Konfigurace pravidel Vyrovnávání zatížení
+#### <a name="configure-the-load-balancing-rules"></a>Configure the load-balancing rules
 
-1. V části **nastavení** vašeho nástroje pro vyrovnávání zatížení vyberte **pravidla Vyrovnávání zatížení**a potom klikněte na tlačítko **přidat** a vytvořte pravidlo.
-2. Zadejte **název** pravidla Vyrovnávání zatížení.
-3. Zvolte **front-endové IP adresy** nástroje pro vyrovnávání zatížení **protokol**, a **Port**.
-4. V části **back-endový port**, zadejte port, který se má použít v back endového fondu.
-5. Vyberte **back-endový fond** a **Probe** , které byly vytvořeny v předchozích krocích pro pravidlo použít.
-6. V části **trvalost relace**, vyberte, jak chcete uchovávat relace.
-7. V části **vypršení časového limitu nečinnosti**, zadejte počet minut, než časový limit nečinnosti.
-8. V části **plovoucí IP adresy**, vyberte buď **zakázané** nebo **povoleno**.
+1. Under **Settings** of your load balancer, select **Load balancing rules**, and then click **Add** to create a rule.
+2. Enter the **Name** for the load-balancing rule.
+3. Choose the **Frontend IP Address** of the load balancer, **Protocol**, and **Port**.
+4. Under **Backend port**, specify the port to be used in the back-end pool.
+5. Select the **Backend pool** and the **Probe** that were created in the previous steps to apply the rule to.
+6. Under **Session persistence**, choose how you want the sessions to persist.
+7. Under **Idle timeouts**, specify the number of minutes before an idle timeout.
+8. Under **Floating IP**, select either **Disabled** or **Enabled**.
 9. Kliknutím na **OK** vytvořte pravidlo.
 
-### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>Krok 5: Připojte virtuální počítače webové vrstvy do nástroje pro vyrovnávání zatížení
+### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>Step 5: Connect web-tier VMs to the load balancer
 
-Nyní nakonfigurujeme IP adres a nástroje pro vyrovnávání zatížení front-endový port v aplikacích, které jsou spuštěny na vaše virtuální počítače webové vrstvy pro všechna připojení databáze. Tato konfigurace je specifické pro aplikace, které běží na těchto virtuálních počítačů. Pokud chcete nakonfigurovat, cílová IP adresa a port, najdete v dokumentaci aplikace. Pokud chcete zjistit IP adresu front-endu na webu Azure Portal, přejděte na front-endový fond IP adres **nastavení nástroje pro vyrovnávání zatížení**.
+Now we configure the IP address and load-balancer front-end port in the applications that are running on your web-tier VMs for any database connections. This configuration is specific to the applications that run on these VMs. To configure the destination IP address and port, refer to the application documentation. To find the IP address of the front end, in the Azure portal, go to the front-end IP pool on the **Load balancer settings**.
 
-![Navigační podokno "IP front-endový fond" nástroje pro vyrovnávání zatížení](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
+![Load Balancer "Frontend IP pool" navigation pane](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled služby Traffic Manager](traffic-manager-overview.md)
-* [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md)
+* [Application Gateway overview](../application-gateway/application-gateway-introduction.md)
 * [Azure Load Balancer – přehled](../load-balancer/load-balancer-overview.md)

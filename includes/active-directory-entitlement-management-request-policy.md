@@ -5,163 +5,197 @@ services: active-directory
 author: msaburnley
 ms.service: active-directory
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 6f2b5eb96eeb1c4b7d07219d5fe54a8a0ca9e28a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: fb72ed337219f58481c094d68342dbf6f26493c7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73412956"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260684"
 ---
-## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
+## <a name="for-users-in-your-directory"></a>For users in your directory
 
-Postupujte podle těchto kroků, pokud chcete, aby uživatelé ve vašem adresáři mohli požadovat tento balíček přístupu. Při definování zásad žádosti můžete zadat jednotlivé uživatele nebo skupiny uživatelů, kteří jsou často. Vaše organizace například už může mít skupinu, jako je například **Všichni zaměstnanci**.  Pokud se tato skupina přidá v zásadách pro uživatele, kteří můžou požádat o přístup, pak může každý člen této skupiny požádat o přístup.
+Follow these steps if you want to allow users in your directory to be able to request this access package. When defining the request policy, you can specify individual users, or more commonly groups of users. For example, your organization may already have a group such as **All employees**.  If that group is added in the policy for users who can request access, then any member of that group can then request access.
 
-1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na **uživatele v adresáři**.
+1. In the **Users who can request access** section, click **For users in your directory**.
 
-    Když vyberete tuto možnost, zobrazí se nové možnosti, které vám pomůžou lépe upřesnit, kdo v adresáři může tento přístupový balíček požádat.
+    When you select this option, new options appear to further refine who in your directory can request this access package.
 
-    ![Přístup k balíčku – požadavky – pro uživatele ve vašem adresáři](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
+    ![Access package - Requests - For users in your directory](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Vyberte jednu z následujících možností:
+1. Select one of the following options:
 
     |  |  |
     | --- | --- |
-    | **Konkrétní uživatelé a skupiny** | Tuto možnost vyberte, pokud chcete, aby se tento balíček přístupu mohl vyžádat jenom pro uživatele a skupiny v adresáři, který jste zadali. |
-    | **Všichni členové (kromě hostů)** | Tuto možnost vyberte, pokud chcete, aby všichni členové členských uživatelů v adresáři mohli požádat o tento balíček přístupu. Tato možnost nezahrnuje žádné uživatele typu Host, které jste mohli pozvat do adresáře. |
-    | **Všichni uživatelé (včetně hostů)** | Tuto možnost vyberte, pokud chcete, aby se tento balíček přístupu mohl vyžádat všichni členové a uživatelé typu Host v adresáři. |
+    | **Specific users and groups** | Choose this option if you want only the users and groups in your directory that you specify to be able to request this access package. |
+    | **All members (excluding guests)** | Choose this option if you want all member users in your directory to be able to request this access package. This option doesn't include any guest users you might have invited into your directory. |
+    | **All users (including guests)** | Choose this option if you want all member users and guest users in your directory to be able to request this access package. |
 
-    Uživatelé typu Host odkazují na externí uživatele, kteří byli pozváni do vašeho adresáře pomocí [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). Informace o rozdílech mezi členskými uživateli a uživateli typu Host najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
+    Guest users refer to external users that have been invited into your directory with [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). For more information about the differences between member users and guest users, see [What are the default user permissions in Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
 
-1. Pokud jste vybrali **konkrétní uživatele a skupiny**, klikněte na **Přidat uživatele a skupiny**.
+1. If you selected **Specific users and groups**, click **Add users and groups**.
 
-1. V podokně vybrat uživatele a skupiny vyberte uživatele a skupiny, které chcete přidat.
+1. In the Select users and groups pane, select the users and groups you want to add.
 
-    ![Přístup k balíčku – požadavky – výběr uživatelů a skupin](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
+    ![Access package - Requests - Select users and groups](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. Klikněte na **Vybrat** a přidejte uživatele a skupiny.
+1. Click **Select** to add the users and groups.
 
-1. Přeskočte dolů k části [schválení](#approval) .
+1. Skip down to the [Approval](#approval) section.
 
-## <a name="for-users-not-in-your-directory"></a>Pro uživatele, kteří nejsou ve vašem adresáři
+## <a name="for-users-not-in-your-directory"></a>For users not in your directory
 
-Postupujte podle těchto kroků, pokud chcete, aby uživatelé, kteří nejsou ve vašem adresáři, mohli získat tento balíček přístupu. Uživatelé, kteří **nejsou ve vašem adresáři** , odkazují na uživatele, kteří jsou v jiné službě nebo adresáři služby Azure AD, a nemusí být do vašeho adresáře pozváni. Je potřeba nakonfigurovat adresáře Azure AD tak, aby umožňovaly pozvánky v **omezeních spolupráce**. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../articles/active-directory/b2b/delegate-invitations.md).
+ **Users not in your directory** refers to users who are in another Azure AD directory or domain. These users may not have yet been invited into your directory. Azure AD directories must be configured to be allow invitations in **Collaboration restrictions**. For more information, see [Enable B2B external collaboration and manage who can invite guests](../articles/active-directory/b2b/delegate-invitations.md).
 
 > [!NOTE]
-> Uživatelský účet hosta se vytvoří pro uživatele, který ještě není ve vašem adresáři, jehož žádost je schválená nebo automaticky schválená. Host bude pozván, ale neobdrží e-mail s pozvánkou. Místo toho obdrží e-mail po doručení jejich přiřazení balíčku přístupu. Ve výchozím nastavení platí, že pokud už uživatel typu host již nemá žádná přiřazení balíčku přístupu, protože jejich poslední přiřazení vypršela nebo byla zrušena, bude tento uživatelský účet hosta zablokován a následně odstraněn. Pokud chcete, aby uživatelé typu Host zůstali ve vašem adresáři po neomezenou dobu, a to i v případě, že nemají žádná přiřazení balíčků přístupu, můžete změnit nastavení pro konfiguraci správy nároků. Další informace o objektu uživatele hosta najdete v tématu [vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../articles/active-directory/b2b/user-properties.md).
+> A guest user account will be created for a user not yet in your directory whose request is approved or auto-approved. The guest will be invited, but will not receive an invite email. Instead, they will receive an email when their access package assignment is delivered. By default, later when that guest user no longer has any access package assignments, because their last assignment has expired or been cancelled, that guest user account will be blocked from sign in and subsequently deleted. If you want to have guest users remain in your directory indefinitely, even if they have no access package assignments, you can change the settings for your entitlement management configuration. For more information about the guest user object, see [Properties of an Azure Active Directory B2B collaboration user](../articles/active-directory/b2b/user-properties.md).
 
-1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na uživatele, kteří **nejsou ve vašem adresáři**.
+Follow these steps if you want to allow users not in your directory to request this access package:
 
-    Když vyberete tuto možnost, zobrazí se nové možnosti.
+1. In the **Users who can request access** section, click **For users not in your directory**.
 
-    ![Přístup k balíčku – požadavky – pro uživatele, kteří nejsou ve vašem adresáři](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+    When you select this option, new options appear.
 
-1. Vyberte jednu z následujících možností:
+    ![Access package - Requests - For users not in your directory](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+
+1. Select one of the following options:
 
     |  |  |
     | --- | --- |
-    | **Konkrétní propojené organizace** | Tuto možnost vyberte, pokud chcete vybrat ze seznamu organizací, které jste přidali jako správce. Všichni uživatelé z vybraných organizací budou moct požádat o tento balíček přístupu. |
-    | **Všechny připojené organizace** | Tuto možnost vyberte, pokud chcete, aby všichni uživatelé ze všech připojených organizací mohli požádat o tento balíček přístupu. |
+    | **Specific connected organizations** | Choose this option if you want to select from a list of organizations that your administrator previously added. All users from the selected organizations can request this access package. |
+    | **All connected organizations** | Choose this option if all users from all your connected organizations can request this access package. |
 
-    Připojená organizace je externí adresář nebo doména služby Azure AD, ke kterým máte relaci.
+    A connected organization is an external Azure AD directory or domain that you have a relationship with.
 
-1. Pokud jste vybrali **konkrétní připojené organizace**, klikněte na **Přidat adresáře** a vyberte si ze seznamu připojených organizací, které jste přidali jako správce.
+1. If you selected **Specific connected organizations**, click **Add directories** to select from a list of connected organizations that your administrator previously added.
 
-1. Zadejte název nebo název domény, ve kterém chcete hledat dříve připojenou organizaci.
+1. Type the name or domain name to search for a previously connected organization.
 
-    ![Přístup k balíčku – požadavky – výběr adresářů](./media/active-directory-entitlement-management-request-policy/select-directories.png)
+    ![Access package - Requests - Select directories](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    Pokud organizace, se kterou chcete spolupracovat, není v seznamu, můžete požádat správce, aby ho přidal jako připojenou organizaci. Další informace najdete v tématu [Přidání připojené organizace](../articles/active-directory/governance/entitlement-management-organization.md).
+    If the organization you want to collaborate with isn't in the list, you can ask your administrator to add it as a connected organization. For more information, see [Add a connected organization](../articles/active-directory/governance/entitlement-management-organization.md).
 
-1. Po výběru všech připojených organizací klikněte na **Vybrat**.
+1. Once you've selected all your connected organizations, click **Select**.
 
     > [!NOTE]
-    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
+    > All users from the selected connected organizations will be able to request this access package. This includes users in Azure AD from all subdomains associated with the organization, unless those domains are blocked by the Azure B2B allow or deny list. For more information, see [Allow or block invitations to B2B users from specific organizations](../articles/active-directory/b2b/allow-deny-list.md).
 
-1. Přeskočte dolů k části [schválení](#approval) .
+1. Skip down to the [Approval](#approval) section.
 
-## <a name="none-administrator-direct-assignments-only"></a>Žádné (pouze přímé přiřazení správce)
+## <a name="none-administrator-direct-assignments-only"></a>None (administrator direct assignments only)
 
-Postupujte podle těchto kroků, pokud chcete vynechat žádosti o přístup a umožníte správcům, aby k tomuto balíčku přístupu přiřadili přímo konkrétní uživatele. Uživatelé nebudou muset vyžadovat balíček přístupu. Pořád můžete nastavit nastavení životního cyklu, ale neexistují žádná nastavení žádostí.
+Follow these steps if you want to bypass access requests and allow administrators to directly assign specific users to this access package. Users won't have to request the access package. You can still set lifecycle settings, but there are no request settings.
 
-1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na možnost **žádný (pouze přímá přiřazení správců**).
+1. In the **Users who can request access** section, click **None (administrator direct assignments only**.
 
-    ![Přístup k balíčku – požadavky – pouze přímá přiřazení správců](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
+    ![Access package - Requests - None administrator direct assignments only](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    Po vytvoření balíčku pro přístup můžete k balíčku pro přístup přímo přiřadit konkrétní interní a externí uživatele. Pokud zadáte externího uživatele, vytvoří se ve vašem adresáři uživatelský účet hosta. Informace o tom, jak přímo přiřazovat uživatele, najdete v tématu [zobrazení, přidání a odebrání přiřazení balíčku pro přístup](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
+    After you create the access package, you can directly assign specific internal and external users to the access package. If you specify an external user, a guest user account will be created in your directory. For information about directly assigning a user, see [View, add, and remove assignments for an access package](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
 
-1. Přeskočte dolů do oddílu [Povolit žádosti](#enable-requests) .
+1. Skip down to the [Enable requests](#enable-requests) section.
 
 ## <a name="approval"></a>Schválení
 
-V části schvalování určíte, jestli se vyžaduje schválení, když si uživatelé vyžádají tento přístupový balíček. Nastavení schválení fungují následujícím způsobem:
+In the Approval section, you specify whether an approval is required when users request this access package. The approval settings work in the following way:
 
-- Pouze jeden z vybraných schvalovatelů nebo záložní schvalovatelé musí žádost schválit. Schválení ze všech schvalovatelů se nevyžaduje.
-- Rozhodnutí o schválení vychází z toho, kdo žádost nejprve zkontroluje.
+- Only one of the selected approvers or fallback approvers needs to approve a request for single-stage approval. 
+- Only one of the selected approvers from each stage needs to approve a request for 2-stage approval.
+- The approver can be a Manager, Internal sponsor, or External sponsor depending on who the policy is governing access.
+- Approval from every selected approver isn't required for single or 2-stage approval.
+- The approval decision is based on whichever approver reviews the request first.
 
-Pomocí těchto kroků určíte nastavení schválení pro uživatele, které jste předtím vybrali.
+Follow these steps to specify the approval settings for requests for the access package:
 
-1. Pokud chcete pro žádosti od vybraných uživatelů vyžadovat schválení, nastavte u přepínače **vyžadovat schválení** **hodnotu Ano**. Chcete-li automaticky schvalovat požadavky, nastavte přepínač na **ne**.
+1. To require approval for requests from the selected users, set the **Require approval** toggle to **Yes**. Or, to have requests automatically approved, set the toggle to **No**.
 
-1. Pokud chcete, aby uživatelé zadali odůvodnění pro přístup k balíčku pro přístup, nastavte u přepínače **vyžadovat změnu zarovnání** na **hodnotu Ano**.
+1. To require users to provide a justification to request the access package, set the **Require requestor justification** toggle to **Yes**.
+    
+1. Now determine if requests will require single or 2-stage approval. Set the **How many stages** toggle to **1** for single stage approval or set the toggle to **2** for 2-stage approval.
 
-    ![Přístup k balíčku – nastavení schválení](./media/active-directory-entitlement-management-request-policy/approval.png)
+    ![Access package - Requests - Approval settings](./media/active-directory-entitlement-management-request-policy/approval.png)
 
-### <a name="single-stage-approval"></a>Schválení jednou fází
 
-1. U schvalovatelů vyberte **manažera jako schvalovatele** nebo **zvolte konkrétní schvalovatele**.
+Use the following steps to add approvers after selecting how many stages you require: 
 
-    ![Přístup k balíčku – požadavky – nastavení jedné fáze](./media/active-directory-entitlement-management-request-policy/approval-single-stage.png)
+### <a name="single-stage-approval"></a>Single-stage approval
 
-1. Pokud jste vybrali manažera jako schvalovatele, klikněte na **Přidat zálohu** a vyberte jednoho nebo více uživatelů nebo skupin ve vašem adresáři jako záložního schvalovatele v případě, že správa nároků nemůže najít správce.
+1. Add the **First Approver**:
+    
+    If the policy is set to govern access for users in your directory, you can select **Manager as approver**. Or, add a specific user by clicking **Add approvers** after selecting Choose specific approvers from the dropdown menu.
+    
+    ![Access package - Requests - For users in directory - First Approver](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
 
-    Správce je určený atributem **správce** v profilu uživatele Azure AD. Další informace najdete v tématu [Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+    If this policy is set to govern access for users not in your directory, you can select **External sponsor** or **Internal sponsor**. Or, add a specific user by clicking **Add approvers** or groups under Choose specific approvers.
+    
+    ![Access package - Requests - For users out of directory - First Approver](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
+    
+1. If you selected **Manager** as the first approver, click **Add fallback** to select one or more users or groups in your directory to be a fallback approver. Fallback approvers receive the request if entitlement management can't find the manager for the user requesting access.
 
-1. Pokud jste vybrali možnost zvolit konkrétní schvalovatele, klikněte na **Přidat schvalovatele** a vyberte jednoho nebo více uživatelů nebo skupin v adresáři, které mají být schvalovatelé.
+    The manager is found by entitlement management using the **Manager** attribute. The attribute is in the user's profile in Azure AD. For more information, see [Add or update a user's profile information using Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
-1. V části **rozhodnutí se musí**zadat počet dní, po které má schvalovatel zkontrolovat požadavek na tento balíček přístupu.
+1. If you selected **Choose specific approvers**, click **Add approvers** to select one or more users or groups in your directory to be approvers.
 
-    Pokud žádost není v tomto časovém období schválena, bude automaticky odepřena. Uživatel bude muset odeslat další žádost o přístup k balíčku.
+1. In the box under **Decision must be made in how many days?** , specify the number of days that an approver has to review a request for this access package.
 
-1. Pokud chcete, aby uživatelé měli oprávnění k vyžádání balíčku pro přístup, nastavte **vyžadovat odůvodnění schvalovatele** na **Ano**.
+    If a request isn't approved within this time period, it will be automatically denied. The user will have to submit another request for the access package.
 
-    Odůvodnění se zobrazí ostatním schvalovatelům a žadateli.
+1. To require approvers to provide a justification for their decision, set Require approver justification to **Yes**.
 
-### <a name="alternate-approvers"></a>Alternativní schvalovatelé
+    The justification is visible to other approvers and the requestor.
 
-Kromě určení primárních schvalovatelů, kteří mohou schvalovat žádosti, můžete zadat alternativní schvalovatele. Tím zajistíte, že žádosti budou schváleny nebo zamítnuty před vypršením platnosti (časový limit).
+### <a name="2-stage-approval-preview"></a>2-stage approval (Preview)
 
-Zadáním alternativních schvalovatelů v případě, že primární schvalovatelé nezískali žádost o schválení nebo zamítnutí, se nevyřízený požadavek přesměruje na alternativní schvalovatele podle plánu předávání, který jste zadali během nastavování zásad. Obdrží e-mail ke schválení nebo zamítnutí žádosti, která čeká na vyřízení.
+If you selected a 2-stage approval, you'll need to add a second approver.
 
-Po přeposlání žádosti na alternativní schvalovatelé můžou primární schvalovatele tuto žádost schválit nebo zamítnout. Alternativní schvalovatelé používají stejný web přístupu jako primární schvalovatelé ke schválení nebo zamítnutí žádosti, která čeká na vyřízení.
+1. Add the **Second Approver**: 
+    
+    If the users are in your directory, add a specific user as the second approver by clicking **Add approvers** under Choose specific approvers.
 
-Můžeme vypsat osoby nebo skupiny uživatelů, kteří mají být primárními schvalovateli a alternativním schvalovateli. Ujistěte se prosím, že je seznam různých uživatelů, kteří mají být primárními schvalovateli a alternativní schvalovatelé.
-Pokud jste například jako primární schvalovatelé vyřadíi Alice a Bob, seznam Karolínu a Dave jako alternativní schvalovatele. Pomocí následujících kroků přidejte do balíčku pro přístup alternativní schvalovatele:
+    ![Access package - Requests - For users in directory - Second Approver](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
 
-1. Klikněte na **Zobrazit upřesňující nastavení žádostí**.
+    If the users aren't in your directory, select **Internal sponsor** or **External sponsor** as the second approver. After selecting the approver, add the fallback approvers.
 
-    ![Přístup k balíčku – zásady-Zobrazit upřesňující nastavení žádostí](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+    ![Access package - Requests - For users out of directory - Second Approver](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
 
-1. Nastavit **, jestli se žádná akce neuskutečnila, předají se k alternativním schvalovatelům?** přepnout na **Ano**.
+1. Specify the number of days the second approver has to approve the request in the box under **Decision must be made in how many days?** . 
 
-1. Klikněte na **Přidat alternativní schvalovatele** a ze seznamu vyberte alternativní schvalovatele.
+1. Set the Require approver justification toggle to **Yes** or **No**.
 
-    ![Přístup k balíčku – zásady – přidání alternativních schvalovatelů](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+### <a name="alternate-approvers"></a>Alternate approvers
 
-1. V poli **předávat k alternativním schvalovatelům po počtu dní** uveďte počet dní, po které schvalovatelé schválí nebo zamítnou požadavek. Pokud žádný schvalovatel neschválil nebo zamítl požadavek před trváním žádosti, vyprší platnost žádosti (časový limit) a uživatel bude muset odeslat další žádost o přístup k balíčku. 
+You can specify alternate approvers, similar to specifying the first and second approvers who can approve requests. Having alternate approvers will help ensure that the requests are approved or denied before they expire (timeout). You can list alternate approvers the first approver and second approver for 2-stage approval. 
 
-    Žádosti je možné přeslat pouze alternativním schvalovatelům po dnech, kdy doba trvání žádosti dosáhne poloviny životního cyklu. V tomto příkladu je doba trvání žádosti 14 dní. To znamená, že doba trvání žádosti dosáhne poloviny životnosti dne 7. Proto je možné žádost přeposláním bez předchozího dne 8. Požadavky také nelze přeslat alternativnímu schvalovateli v posledním dni trvání žádosti. Takže v tomto příkladu může být nejnovější žádost předána dne 13.
+By specifying alternate approvers, in the event that the first or second approvers were unable to approve or deny the request, the pending request gets forwarded to the alternate approvers, per the forwarding schedule you specified during policy setup. They receive an email to approve or deny the pending request.
 
-## <a name="enable-requests"></a>Povolit žádosti
+After the request is forwarded to the alternate approvers, the first or second approvers can still approve or deny the request. Alternate approvers use the same My Access site to approve or deny the pending request.
 
-1. Pokud chcete, aby byl balíček přístupu hned dostupný pro uživatele v zásadách žádosti, klikněte na **Ano** , aby se aktivovala žádost.
+We can list people or groups of people to be approvers and alternate approvers. Please ensure that you list different sets of people to be the first, second, and alternate approvers.
+For example, if you listed Alice and Bob as the First Approver(s), list Carol and Dave as the alternate approvers. Use the following steps to add alternate approvers to an access package:
 
-    Po dokončení vytváření balíčku pro přístup ho můžete v budoucnu kdykoli povolit.
+1. Under the First Approver, Second Approver, or both, click **Show advanced request settings**.
 
-    Pokud jste vybrali **možnost žádné (pouze oprávnění správce)** a nastavíte možnost povolit na **ne**, správci nebudou moci přiřadit tento balíček přístupu přímo.
+    ![Access package - Policy - Show advanced request settings](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
 
-    ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+1. Set **If no action taken, forward to alternate approvers?** toggle to **Yes**.
+
+1. Click **Add alternate approvers** and select the alternate approver(s) from the list.
+
+    ![Access package - Policy - Add Alternate Approvers](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+1. In the **Forward to alternate approver(s) after how many days** box, put in the number of days the approvers have to approve or deny a request. If no approvers have approved or denied the request before the request duration, the request expires (timeout), and the user will have to submit another request for the access package. 
+
+    Requests can only be forwarded to alternate approvers a day after the request duration reaches half-life. In this example, the duration of the request is 14 days. So, the request duration reaches half-life at day 7. So the request can't be forwarded earlier than day 8. Also, requests can't be forwarded on the last day of the request duration. So in the example, the latest the request can be forwarded is day 13.
+
+## <a name="enable-requests"></a>Enable requests
+
+1. If you want the access package to be made immediately available for users in the request policy to request, click **Yes** to enable.
+
+    You can always enable it in the future after you have finished creating the access package.
+
+    If you selected **None (administrator direct assignments only)** and you set enable to **No**, then administrators can't directly assign this access package.
+
+    ![Access package - Policy- Enable policy setting](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Klikněte na **Další**.

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření interního Vyrovnávání zatížení – šablona Azure
-titlesuffix: Azure Load Balancer
+title: Create an Internal Load Balancer - Azure template
+titleSuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí šablony v Resource Manageru
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: f05c90948fe95f204f268d84c01e1e8773bec468
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: bdc9a8079c46a05e5045d72cd6d7b07a9a457899
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275385"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215275"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí šablony
 
@@ -45,7 +45,7 @@ Pokud chcete nasadit šablonu, kterou jste stáhli, pomocí prostředí PowerShe
 1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přejděte na téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a proveďte všechny pokyny, abyste se mohli přihlásit k Azure a vybrat své předplatné.
 2. Stáhněte si soubor parametrů na místní disk.
 3. Upravte soubor a uložte ho.
-4. Spuštěním rutiny **New-AzResourceGroupDeployment** vytvořte skupinu prostředků pomocí šablony.
+4. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -75,10 +75,10 @@ Pokud chcete nasadit šablonu pomocí rozhraní příkazového řádku Azure, po
     azure group create --name TestRG --location westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json --parameters-file parameters.json
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení pomocí spřažení se zdrojovou IP adresou](load-balancer-distribution-mode.md)
 
 [Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)
 
-Syntaxi a vlastnosti služby Vyrovnávání zatížení v šabloně najdete v tématu [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+For the JSON syntax and properties of a load balancer in a template, see [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

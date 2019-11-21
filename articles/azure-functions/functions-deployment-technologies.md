@@ -1,209 +1,207 @@
 ---
-title: Technologie nasazení v Azure Functions | Microsoft Docs
-description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azure Functions.
+title: Deployment technologies in Azure Functions
+description: Learn the different ways you can deploy code to Azure Functions.
 author: ColbyTresness
-manager: gwallace
-ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: ce8287626b390d6eac4a3461d928c24f515f4023
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0eeb9c0c938793bb13218c5407f2a3fa117880e7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576127"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226995"
 ---
-# <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
+# <a name="deployment-technologies-in-azure-functions"></a>Deployment technologies in Azure Functions
 
-K nasazení kódu Azure Functions projektu do Azure můžete použít několik různých technologií. Tento článek obsahuje vyčerpávající seznam těchto technologií, popisuje, které technologie jsou k dispozici pro které typy funkcí, vysvětluje, co se stane, když použijete jednotlivé metody, a poskytuje doporučení, jak nejlépe využít v různých scénářích. . Různé nástroje, které podporují nasazení na Azure Functions, jsou vyladěny na správnou technologii na základě jejich kontextu. Obecně platí, že nasazení zip je doporučenou technologií nasazení pro Azure Functions.
+You can use a few different technologies to deploy your Azure Functions project code to Azure. This article provides an exhaustive list of those technologies, describes which technologies are available for which flavors of Functions, explains what happens when you use each method, and provides recommendations for the best method to use in various scenarios. The various tools that support deploying to Azure Functions are tuned to the right technology based on their context. In general, zip deployment is the recommended deployment technology for Azure Functions.
 
-## <a name="deployment-technology-availability"></a>Dostupnost technologie nasazení
+## <a name="deployment-technology-availability"></a>Deployment technology availability
 
-Azure Functions podporuje místní vývoj a hostování pro různé platformy v systémech Windows a Linux. V současné době jsou k dispozici tři plány hostování:
+Azure Functions supports cross-platform local development and hosting on Windows and Linux. Currently, three hosting plans are available:
 
-+ [Nároky](functions-scale.md#consumption-plan)
++ [Consumption](functions-scale.md#consumption-plan)
 + [Premium](functions-scale.md#premium-plan)
-+ [Vyhrazeno (App Service)](functions-scale.md#app-service-plan)
++ [Dedicated (App Service)](functions-scale.md#app-service-plan)
 
-Každý plán má jiné chování. Ne všechny technologie nasazení jsou k dispozici pro každý charakter Azure Functions. Následující graf ukazuje, které technologie nasazení jsou podporovány pro každou kombinaci operačního systému a plánu hostování:
+Each plan has different behaviors. Not all deployment technologies are available for each flavor of Azure Functions. The following chart shows which deployment technologies are supported for each combination of operating system and hosting plan:
 
-| Technologie nasazení | Spotřeba Windows | Windows Premium | Vyhrazená pro Windows  | Spotřeba Linux | Linux Premium | Vyhrazený pro Linux |
+| Deployment technology | Windows Consumption | Windows Premium | Windows Dedicated  | Linux Consumption | Linux Premium | Linux Dedicated |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
-| Adresa URL externího balíčku<sup>1</sup> |✔|✔|✔|✔|✔|✔|
-| Nasazení zip |✔|✔|✔|✔|✔|✔|
-| Kontejner Docker | | | | |✔|✔|
-| Nasazení webu |✔|✔|✔| | | |
+| External package URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
+| Zip deploy |✔|✔|✔|✔|✔|✔|
+| Docker container | | | | |✔|✔|
+| Web Deploy |✔|✔|✔| | | |
 | Správa zdrojového kódu |✔|✔|✔| |✔|✔|
-| Místní Git<sup>1</sup> |✔|✔|✔| |✔|✔|
-| Cloudová synchronizace<sup>1</sup> |✔|✔|✔| |✔|✔|
-| Protokol FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
-| Úpravy portálu |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
+| Local Git<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Cloud sync<sup>1</sup> |✔|✔|✔| |✔|✔|
+| FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Portal editing |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
-<sup>1</sup> technologie nasazení, která vyžaduje [synchronizaci ručních triggerů](#trigger-syncing).  
-<sup>2</sup> úpravy portálu jsou povolené jenom pro aktivační události http a Timer pro funkce v systému Linux pomocí prémiových a vyhrazených plánů.
+<sup>1</sup> Deployment technology that requires [manual trigger syncing](#trigger-syncing).  
+<sup>2</sup> Portal editing is enabled only for HTTP and Timer triggers for Functions on Linux using Premium and dedicated plans.
 
 ## <a name="key-concepts"></a>Klíčové koncepty
 
-Některé klíčové koncepty jsou zásadní pro porozumění způsobu, jakým nasazení fungují v Azure Functions.
+Some key concepts are critical to understanding how deployments work in Azure Functions.
 
-### <a name="trigger-syncing"></a>Spustit synchronizaci
+### <a name="trigger-syncing"></a>Trigger syncing
 
-Při změně jakékoli aktivační události musí infrastruktura funkcí znát změny. K synchronizaci dochází automaticky pro mnoho technologií nasazení. V některých případech je však nutné triggery ručně synchronizovat. Když nasadíte aktualizace odkazem na adresu URL externího balíčku, místní Git, synchronizace cloudu nebo FTP, musíte triggery ručně synchronizovat. Triggery můžete synchronizovat jedním ze tří způsobů:
+When you change any of your triggers, the Functions infrastructure must be aware of the changes. Synchronization happens automatically for many deployment technologies. However, in some cases, you must manually sync your triggers. When you deploy your updates by referencing an external package URL, local Git, cloud sync, or FTP, you must manually sync your triggers. You can sync triggers in one of three ways:
 
-* Restartujte aplikaci Function App v Azure Portal
-* Odešlete požadavek HTTP POST `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` pomocí [hlavního klíče](functions-bindings-http-webhook.md#authorization-keys).
-* Odeslat požadavek HTTP POST do `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Zástupné symboly nahraďte ID předplatného, názvem skupiny prostředků a názvem vaší aplikace Function App.
+* Restart your function app in the Azure portal
+* Send an HTTP POST request to `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` using the [master key](functions-bindings-http-webhook.md#authorization-keys).
+* Send an HTTP POST request to `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Replace the placeholders with your subscription ID, resource group name, and the name of your function app.
 
-### <a name="remote-build"></a>Vzdálené sestavení
+### <a name="remote-build"></a>Remote build
 
-Azure Functions může automaticky provádět buildy na kódu, který obdrží po nasazení zip. Tato sestavení se chovají trochu různě v závislosti na tom, jestli je aplikace spuštěná v systému Windows nebo Linux. Vzdálená sestavení se neprovádí, pokud se aplikace dřív nastavila tak, aby běžela v režimu [balíčku](run-functions-from-deployment-package.md) . Pokud se chcete dozvědět, jak používat vzdálené sestavení, přejděte k souboru [zip Deploy](#zip-deploy).
+Azure Functions can automatically perform builds on the code it receives after zip deployments. These builds behave slightly differently depending on whether your app is running on Windows or Linux. Remote builds are not performed when an app has previously been set to run in [Run From Package](run-functions-from-deployment-package.md) mode. To learn how to use remote build, navigate to [zip deploy](#zip-deploy).
 
 > [!NOTE]
-> Pokud máte problémy se vzdáleným sestavením, může to být způsobeno tím, že aplikace byla vytvořena před zpřístupněním funkce (1. srpna 2019). Zkuste vytvořit novou aplikaci Function App nebo spustit `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>`, aby se aktualizovala aplikace Function App. Tento příkaz může trvat dva pokusy o úspěch.
+> If you're having issues with remote build, it might be because your app was created before the feature was made available (August 1, 2019). Try creating a new function app, or running `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>` to update your function app. This command might take two tries to succeed.
 
-#### <a name="remote-build-on-windows"></a>Vzdálené sestavení ve Windows
+#### <a name="remote-build-on-windows"></a>Remote build on Windows
 
-Všechny aplikace Function App spuštěné v systému Windows mají malou aplikaci pro správu, lokalitu SCM (nebo [Kudu](https://github.com/projectkudu/kudu)). Tato lokalita zpracovává většinu nasazení a logiku sestavení pro Azure Functions.
+All function apps running on Windows have a small management app, the SCM (or [Kudu](https://github.com/projectkudu/kudu)) site. This site handles much of the deployment and build logic for Azure Functions.
 
-Při nasazení aplikace do systému Windows se spustí příkazy specifické pro jazyk, jako je napříkladC#`dotnet restore` () nebo `npm install` (JavaScript).
+When an app is deployed to Windows, language-specific commands, like `dotnet restore` (C#) or `npm install` (JavaScript) are run.
 
-#### <a name="remote-build-on-linux"></a>Vzdálené sestavení v systému Linux
+#### <a name="remote-build-on-linux"></a>Remote build on Linux
 
-Pro povolení vzdáleného sestavení v systému Linux musí být nastavena následující [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) :
+To enable remote build on Linux, the following [application settings](functions-how-to-use-azure-function-app-settings.md#settings) must be set:
 
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Ve výchozím nastavení obě [Azure Functions Core Tools](functions-run-local.md) a [rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) provádějí vzdálená sestavení při nasazování do systému Linux. Z tohoto důvodu obě nástroje tato nastavení pro vás v Azure automaticky vytvoří. 
+By default, both [Azure Functions Core Tools](functions-run-local.md) and the [Azure Functions Extension for Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) perform remote builds when deploying to Linux. Because of this, both tools automatically create these settings for you in Azure. 
 
-Když se aplikace na platformě Linux vytváří vzdáleně, [spouštějí se z balíčku pro nasazení](run-functions-from-deployment-package.md). 
+When apps are built remotely on Linux, they [run from the deployment package](run-functions-from-deployment-package.md). 
 
 ##### <a name="consumption-plan"></a>Plán Consumption
 
-Aplikace Functions pro Linux běžící v plánu spotřeby nemají web SCM/Kudu, který omezuje možnosti nasazení. Aplikace Function App v systému Linux spuštěné v plánu spotřeby ale podporují vzdálená sestavení.
+Linux function apps running in the Consumption plan don't have an SCM/Kudu site, which limits the deployment options. However, function apps on Linux running in the Consumption plan do support remote builds.
 
-##### <a name="dedicated-and-premium-plans"></a>Vyhrazené a prémiové plány
+##### <a name="dedicated-and-premium-plans"></a>Dedicated and Premium plans
 
-Aplikace Function App běžící na systému Linux ve [vyhrazeném plánu (App Service)](functions-scale.md#app-service-plan) a [plánu Premium](functions-scale.md#premium-plan) mají také omezený web SCM/Kudu.
+Function apps running on Linux in the [Dedicated (App Service) plan](functions-scale.md#app-service-plan) and the [Premium plan](functions-scale.md#premium-plan) also have a limited SCM/Kudu site.
 
-## <a name="deployment-technology-details"></a>Podrobnosti o technologii nasazení
+## <a name="deployment-technology-details"></a>Deployment technology details
 
-V Azure Functions jsou k dispozici následující metody nasazení.
+The following deployment methods are available in Azure Functions.
 
-### <a name="external-package-url"></a>Adresa URL externího balíčku
+### <a name="external-package-url"></a>External package URL
 
-Adresu URL externího balíčku můžete použít k odkazování na vzdálený soubor balíčku (. zip), který obsahuje vaši aplikaci Function App. Soubor se stáhne ze zadané adresy URL a aplikace se spustí v režimu [spuštění z balíčku](run-functions-from-deployment-package.md) .
+You can use an external package URL to reference a remote package (.zip) file that contains your function app. The file is downloaded from the provided URL, and the app runs in [Run From Package](run-functions-from-deployment-package.md) mode.
 
->__Jak ji použít:__ Přidejte `WEBSITE_RUN_FROM_PACKAGE` do nastavení aplikace. Hodnota tohoto nastavení by měla být adresa URL (umístění konkrétního souboru balíčku, který chcete spustit). Nastavení můžete přidat buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) , nebo [pomocí Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+>__How to use it:__ Add `WEBSITE_RUN_FROM_PACKAGE` to your application settings. The value of this setting should be a URL (the location of the specific package file you want to run). You can add settings either [in the portal](functions-how-to-use-azure-function-app-settings.md#settings) or [by using the Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
 >
->Pokud používáte službu Azure Blob Storage, pomocí privátního kontejneru se [sdíleným přístupovým podpisem (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) udělte funkce přístup k balíčku. Pokaždé, když se aplikace restartuje, načte kopii obsahu. Váš odkaz musí být platný po dobu života aplikace.
+>If you use Azure Blob storage, use a private container with a [shared access signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) to give Functions access to the package. Any time the application restarts, it fetches a copy of the content. Your reference must be valid for the lifetime of the application.
 
->__Kdy ji použít:__ Adresa URL externího balíčku je jediná podporovaná metoda nasazení Azure Functions spuštěná v systému Linux v plánu spotřeby, pokud uživatel nechce, aby probíhat [vzdálené sestavení](#remote-build) . Když aktualizujete soubor balíčku, na který odkazuje aplikace Function App, musíte [triggery ručně synchronizovat](#trigger-syncing) a sdělit tak Azure, že se vaše aplikace změnila.
+>__When to use it:__ External package URL is the only supported deployment method for Azure Functions running on Linux in the Consumption plan, if the user doesn't want a [remote build](#remote-build) to occur. When you update the package file that a function app references, you must [manually sync triggers](#trigger-syncing) to tell Azure that your application has changed.
 
-### <a name="zip-deploy"></a>Nasazení zip
+### <a name="zip-deploy"></a>Zip deploy
 
-Pomocí nástroje zip Deploy nahrajte soubor. zip, který obsahuje vaši aplikaci Function App do Azure. Volitelně můžete nastavit, aby se aplikace spouštěla [z balíčku](run-functions-from-deployment-package.md), nebo určit, že dojde ke [vzdálenému sestavení](#remote-build) .
+Use zip deploy to push a .zip file that contains your function app to Azure. Optionally, you can set your app to start [running from package](run-functions-from-deployment-package.md), or specify that a [remote build](#remote-build) occurs.
 
->__Jak ji použít:__ Nasazení pomocí oblíbeného klientského nástroje: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), [Azure Functions Core Tools](functions-run-local.md)nebo rozhraní příkazového [řádku Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Ve výchozím nastavení tyto nástroje používají nasazení zip a [spouštějí se z balíčku](run-functions-from-deployment-package.md). Základní nástroje a rozšíření Visual Studio Code umožňují [vzdálené sestavení](#remote-build) při nasazení do systému Linux. Pokud chcete soubor. zip nasadit do aplikace Function App ručně, postupujte podle pokynů v tématu [nasazení ze souboru. zip nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__How to use it:__ Deploy by using your favorite client tool: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), the [Azure Functions Core Tools](functions-run-local.md), or the [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). By default, these tools use zip deployment and [run from package](run-functions-from-deployment-package.md). Core Tools and the Visual Studio Code extension both enable [remote build](#remote-build) when deploying to Linux. To manually deploy a .zip file to your function app, follow the instructions in [Deploy from a .zip file or URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
->Když nasadíte pomocí nasazení zip, můžete nastavit, aby se aplikace [spouštěla z balíčku](run-functions-from-deployment-package.md). Pokud chcete spustit z balíčku, nastavte hodnotu nastavení `WEBSITE_RUN_FROM_PACKAGE` aplikace na `1`. Doporučujeme nasazení zip. Poskytuje rychlejší načítání pro vaše aplikace a je výchozím nastavením pro VS Code, Visual Studio a Azure CLI. 
+>When you deploy by using zip deploy, you can set your app to [run from package](run-functions-from-deployment-package.md). To run from package, set the `WEBSITE_RUN_FROM_PACKAGE` application setting value to `1`. We recommend zip deployment. It yields faster loading times for your applications, and it's the default for VS Code, Visual Studio, and the Azure CLI. 
 
->__Kdy ji použít:__ Nasazení zip je doporučená technologie nasazení pro Azure Functions.
+>__When to use it:__ Zip deploy is the recommended deployment technology for Azure Functions.
 
-### <a name="docker-container"></a>Kontejner Docker
+### <a name="docker-container"></a>Docker container
 
-Můžete nasadit image kontejneru pro Linux, která obsahuje vaši aplikaci Function App.
+You can deploy a Linux container image that contains your function app.
 
->__Jak ji použít:__ Vytvořte aplikaci Functions pro Linux v plánu Premium nebo vyhrazené a určete, ze které image kontejneru se má spustit. Můžete to provést dvěma způsoby:
+>__How to use it:__ Create a Linux function app in the Premium or Dedicated plan and specify which container image to run from. You can do this in two ways:
 >
->* Vytvořte aplikaci funkcí pro Linux v plánu Azure App Service Azure Portal. V části **publikovat**vyberte **Image Docker**a pak nakonfigurujte kontejner. Zadejte umístění, kde je bitová kopie hostovaná.
->* Pomocí Azure CLI vytvoříte aplikaci funkcí pro Linux v plánu App Service. Další informace o postupu najdete v tématu [Vytvoření funkce na platformě Linux pomocí vlastní image](functions-create-function-linux-custom-image.md#create-a-premium-plan).
+>* Create a Linux function app on an Azure App Service plan in the Azure portal. For **Publish**, select **Docker Image**, and then configure the container. Enter the location where the image is hosted.
+>* Create a Linux function app on an App Service plan by using the Azure CLI. To learn how, see [Create a function on Linux by using a custom image](functions-create-function-linux-custom-image.md#create-a-premium-plan).
 >
->Pokud chcete nasadit do existující aplikace pomocí vlastního kontejneru, v [Azure Functions Core Tools](functions-run-local.md)použijte příkaz [`func deploy`](functions-run-local.md#publish) .
+>To deploy to an existing app by using a custom container, in [Azure Functions Core Tools](functions-run-local.md), use the [`func deploy`](functions-run-local.md#publish) command.
 
->__Kdy ji použít:__ Možnost kontejneru Docker použijte, když potřebujete větší kontrolu nad prostředím Linux, ve kterém běží aplikace Function App. Tento mechanismus nasazení je k dispozici pouze pro funkce spuštěné v systému Linux.
+>__When to use it:__ Use the Docker container option when you need more control over the Linux environment where your function app runs. This deployment mechanism is available only for Functions running on Linux.
 
-### <a name="web-deploy-msdeploy"></a>Nasazení webu (MSDeploy)
+### <a name="web-deploy-msdeploy"></a>Web Deploy (MSDeploy)
 
-Nasazení webu balíčky a nasadí aplikace Windows na libovolný server služby IIS, včetně aplikací Function App běžících na Windows v Azure.
+Web Deploy packages and deploys your Windows applications to any IIS server, including your function apps running on Windows in Azure.
 
->__Jak ji použít:__ Použijte [Visual Studio Tools for Azure Functions](functions-create-your-first-function-visual-studio.md). Zrušte zaškrtnutí políčka **Spustit ze souboru balíčku (doporučeno)** .
+>__How to use it:__ Use [Visual Studio tools for Azure Functions](functions-create-your-first-function-visual-studio.md). Clear the **Run from package file (recommended)** check box.
 >
->Můžete si také stáhnout [Nasazení webu 3,6](https://www.iis.net/downloads/microsoft/web-deploy) a volat `MSDeploy.exe` přímo.
+>You can also download [Web Deploy 3.6](https://www.iis.net/downloads/microsoft/web-deploy) and call `MSDeploy.exe` directly.
 
->__Kdy ji použít:__ Nasazení webu se podporuje a nemá žádné problémy, ale upřednostňovaným mechanismem je [nasazení zip s povoleným spuštěním z balíčku](#zip-deploy). Další informace najdete v příručce pro [vývoj sady Visual Studio](functions-develop-vs.md#publish-to-azure).
+>__When to use it:__ Web Deploy is supported and has no issues, but the preferred mechanism is [zip deploy with Run From Package enabled](#zip-deploy). To learn more, see the [Visual Studio development guide](functions-develop-vs.md#publish-to-azure).
 
 ### <a name="source-control"></a>Správa zdrojového kódu
 
-Použijte správu zdrojového kódu k připojení aplikace Function App k úložišti Git. Aktualizace kódu v tomto úložišti aktivuje nasazení. Další informace najdete na [wikiwebu Kudu](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
+Use source control to connect your function app to a Git repository. An update to code in that repository triggers deployment. For more information, see the [Kudu Wiki](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
 
->__Jak ji použít:__ Pomocí centra nasazení v oblasti funkce portálu nastavte publikování ze správy zdrojového kódu. Další informace najdete v tématu [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md).
+>__How to use it:__ Use Deployment Center in the Functions area of the portal to set up publishing from source control. For more information, see [Continuous deployment for Azure Functions](functions-continuous-deployment.md).
 
->__Kdy ji použít:__ Používání správy zdrojového kódu je osvědčeným postupem pro týmy, které spolupracují na svých aplikacích Function App. Správa zdrojového kódu je dobrá možnost nasazení, která umožňuje náročnější kanály nasazení.
+>__When to use it:__ Using source control is the best practice for teams that collaborate on their function apps. Source control is a good deployment option that enables more sophisticated deployment pipelines.
 
 ### <a name="local-git"></a>Místní Git
 
-Místní Git můžete použít k nabízení kódu z místního počítače do Azure Functions pomocí Gitu.
+You can use local Git to push code from your local machine to Azure Functions by using Git.
 
->__Jak ji použít:__ Podle pokynů v tématu [nasazení místního úložiště Git Azure App Service](../app-service/deploy-local-git.md).
+>__How to use it:__ Follow the instructions in [Local Git deployment to Azure App Service](../app-service/deploy-local-git.md).
 
->__Kdy ji použít:__ Obecně doporučujeme, abyste používali jinou metodu nasazení. Při publikování z místního Gitu musíte [triggery synchronizovat ručně](#trigger-syncing).
+>__When to use it:__ In general, we recommend that you use a different deployment method. When you publish from local Git, you must [manually sync triggers](#trigger-syncing).
 
-### <a name="cloud-sync"></a>Synchronizace cloudu
+### <a name="cloud-sync"></a>Cloud sync
 
-Použijte synchronizaci cloudu k synchronizaci obsahu z Dropboxu a OneDrivu po Azure Functions.
+Use cloud sync to sync your content from Dropbox and OneDrive to Azure Functions.
 
->__Jak ji použít:__ Postupujte podle pokynů v části [synchronizace obsahu z cloudové složky](../app-service/deploy-content-sync.md).
+>__How to use it:__ Follow the instructions in [Sync content from a cloud folder](../app-service/deploy-content-sync.md).
 
->__Kdy ji použít:__ Obecně doporučujeme další metody nasazení. Když publikujete pomocí synchronizace cloudu, musíte [triggery ručně synchronizovat](#trigger-syncing).
+>__When to use it:__ In general, we recommend other deployment methods. When you publish by using cloud sync, you must [manually sync triggers](#trigger-syncing).
 
 ### <a name="ftp"></a>FTP
 
-Protokol FTP můžete použít k přímému přenosu souborů do Azure Functions.
+You can use FTP to directly transfer files to Azure Functions.
 
->__Jak ji použít:__ Postupujte podle pokynů v části [nasazení obsahu pomocí protokolu FTP/s](../app-service/deploy-ftp.md).
+>__How to use it:__ Follow the instructions in [Deploy content by using FTP/s](../app-service/deploy-ftp.md).
 
->__Kdy ji použít:__ Obecně doporučujeme další metody nasazení. Při publikování pomocí FTP je nutné [triggery ručně synchronizovat](#trigger-syncing).
+>__When to use it:__ In general, we recommend other deployment methods. When you publish by using FTP, you must [manually sync triggers](#trigger-syncing).
 
-### <a name="portal-editing"></a>Úpravy portálu
+### <a name="portal-editing"></a>Portal editing
 
-V editoru založeném na portálu můžete přímo upravovat soubory, které jsou ve vaší aplikaci Function App (v podstatě se nasazují při každém uložení změn).
+In the portal-based editor, you can directly edit the files that are in your function app (essentially deploying every time you save your changes).
 
->__Jak ji použít:__ Aby bylo možné upravit funkce v Azure Portal, je nutné [vytvořit své funkce na portálu](functions-create-first-azure-function.md). Aby bylo možné zachovat jeden zdroj pravdy, může použití jakékoli jiné metody nasazení fungovat jen pro čtení a zabránit pokračování v úpravách portálu. Chcete-li se vrátit do stavu, ve kterém můžete upravovat soubory v Azure Portal, můžete ručně zapnout režim úprav zpět na `Read/Write` a odebrat všechna nastavení aplikace související s nasazením (například `WEBSITE_RUN_FROM_PACKAGE`). 
+>__How to use it:__ To be able to edit your functions in the Azure portal, you must have [created your functions in the portal](functions-create-first-azure-function.md). To preserve a single source of truth, using any other deployment method makes your function read-only and prevents continued portal editing. To return to a state in which you can edit your files in the Azure portal, you can manually turn the edit mode back to `Read/Write` and remove any deployment-related application settings (like `WEBSITE_RUN_FROM_PACKAGE`). 
 
->__Kdy ji použít:__ Portál je dobrým způsobem, jak začít s Azure Functions. Pro přesnější vývojovou práci doporučujeme použít jeden z následujících nástrojů klienta:
+>__When to use it:__ The portal is a good way to get started with Azure Functions. For more intense development work, we recommend that you use one of the following client tools:
 >
 >* [Visual Studio Code](functions-create-first-function-vs-code.md)
->* [Azure Functions Core Tools (příkazový řádek)](functions-run-local.md)
+>* [Azure Functions Core Tools (command line)](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
-V následující tabulce jsou uvedeny operační systémy a jazyky, které podporují úpravy portálu:
+The following table shows the operating systems and languages that support portal editing:
 
-| | Spotřeba Windows | Windows Premium | Vyhrazená pro Windows | Spotřeba Linux | Linux Premium | Vyhrazený pro Linux |
+| | Windows Consumption | Windows Premium | Windows Dedicated | Linux Consumption | Linux Premium | Linux Dedicated |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
-| C#Pravidel |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
+| C# Script |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
 | JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (Preview) | | | | | | |
 | PowerShell (Preview) |✔|✔|✔| | | |
-| TypeScript (Node. js) | | | | | | |
+| TypeScript (Node.js) | | | | | | |
 
-<sup>*</sup> Úpravy portálu jsou povolené jenom pro aktivační události HTTP a Timer pro funkce v systému Linux pomocí prémiových a vyhrazených plánů.
+<sup>*</sup> Portal editing is enabled only for HTTP and Timer triggers for Functions on Linux using Premium and dedicated plans.
 
 ## <a name="deployment-slots"></a>Nasazovací sloty
 
-Když nasadíte aplikaci Function App do Azure, můžete ji nasadit do samostatného slotu pro nasazení místo přímo do produkčního prostředí. Další informace o slotech nasazení najdete v dokumentaci [Azure Functions Deployments](../app-service/deploy-staging-slots.md) – další podrobnosti.
+When you deploy your function app to Azure, you can deploy to a separate deployment slot instead of directly to production. For more information on deployment slots, see the [Azure Functions Deployment Slots](../app-service/deploy-staging-slots.md) documentation for details.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o nasazení aplikací Function App najdete v těchto článcích: 
+Read these articles to learn more about deploying your function apps: 
 
 + [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)
-+ [Průběžné doručování pomocí Azure DevOps](functions-how-to-azure-devops.md)
-+ [Nasazení zip pro Azure Functions](deployment-zip-push.md)
-+ [Spuštění Azure Functions ze souboru balíčku](run-functions-from-deployment-package.md)
-+ [Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions](functions-infrastructure-as-code.md)
++ [Continuous delivery by using Azure DevOps](functions-how-to-azure-devops.md)
++ [Zip deployments for Azure Functions](deployment-zip-push.md)
++ [Run your Azure Functions from a package file](run-functions-from-deployment-package.md)
++ [Automate resource deployment for your function app in Azure Functions](functions-infrastructure-as-code.md)

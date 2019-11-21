@@ -1,40 +1,40 @@
 ---
-title: Vytvoření a sdílení dotazu na webu Azure Portal
-description: V tomto kurzu se naučíte vytvořit dotaz na diagram prostředku a sdílet ho s ostatními v Azure Portal.
+title: 'Tutorial: Manage queries in Azure portal'
+description: In this tutorial, you create a Resource Graph Query and share the new query with others in the Azure portal.
 ms.date: 10/23/2019
 ms.topic: tutorial
-ms.openlocfilehash: 65b96da3bd9064f34d75d5e87f1fcf55336d9893
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
-ms.translationtype: MT
+ms.openlocfilehash: a1f3213ae1dbd3bc7127b4f4adb8648e9f9adf07
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958561"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216226"
 ---
-# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
+# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Create and share an Azure Resource Graph query in the Azure portal
 
-Průzkumník prostředků Azure vám umožňuje uložit dotazy na zdrojové grafy přímo do Azure Portal. Existují dva typy dotazů: _Private_ a _Shared_. Privátní dotaz je uložený v nastaveních Azure Portal. Vzhledem k tomu, že sdílený dotaz je Správce prostředků prostředek, který je možné spravovat pomocí řízení přístupu na základě role (RBAC) a chráněný pomocí zámků prostředků.
+Azure Resource Graph Explorer lets you save your Resource Graph queries directly in the Azure portal. There are two types of queries: _Private_ and _Shared_. A Private query is saved in your Azure portal settings. Whereas a Shared query is a Resource Manager resource that can be managed with role-based access controls (RBAC) and protected with resource locks.
 
-Uložením dotazů v Azure Portal ušetříte čas, který byste jinak strávili hledáním oblíbených nebo běžně používaných dotazů. Když sdílíte dotazy, pomůžete týmu realizovat cíle konzistence a efektivity prostřednictvím opakování.
+By saving queries in the Azure portal, you save the time you might otherwise spend looking for your favorite or commonly used queries. When you share queries, you help your team realize goals of consistency and efficiency through repetition.
 
-V tomto kurzu provedete následující úlohy:
+In this tutorial, you'll complete the following tasks:
 
 > [!div class="checklist"]
-> - Vytvoření a odstranění privátního dotazu
-> - Vytvořit sdílený dotaz
-> - Zjistit sdílené dotazy
-> - Odstranit sdílený dotaz
+> - Create and delete a Private query
+> - Create a Shared query
+> - Discover Shared queries
+> - Delete a Shared query
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="create-and-delete-a-private-query"></a>Vytvoření a odstranění privátního dotazu
+## <a name="create-and-delete-a-private-query"></a>Create and delete a Private query
 
-Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytvoří. Protože jsou uložené v nastavení Azure Portal účtu, dají se vytvořit, používat a odstranit pouze v rámci Azure Portal. Privátní dotaz není Správce prostředků prostředek. Chcete-li vytvořit nový privátní dotaz, použijte následující postup:
+Private queries are accessible and visible only to the account that creates them. As they're saved in an account's Azure portal settings, they can be created, used, and deleted only from inside the Azure portal. A Private query isn't a Resource Manager resource. To create a new Private query, follow these steps:
 
-1. V nabídce portálu vyberte **všechny služby** nebo použijte pole Azure Search v horní části všech stránek. Vyhledejte a vyberte **Průzkumník diagramů prostředků**.
+1. From the portal menu, select **All services** or use the Azure search box at the top of all pages. Search for and then select **Resource Graph Explorer**.
 
-1. Na kartě **dotaz 1** na stránce Průzkumník Azure Resource Graph zadejte následující dotaz:
+1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
 
    ```kusto
    Resources
@@ -42,31 +42,31 @@ Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytv
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-   Výběrem **Spustit dotaz** zobrazíte výsledky dotazu v dolním podokně.
+   Select **Run query** to see the query results in the bottom pane.
 
-   Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-virtual-machines-by-os-type).
+   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
 
 
-1. Vyberte **Uložit** nebo **Uložit jako**, jako název zadejte **počet virtuálních počítačů podle operačního systému** , ponechte typ jako **soukromý dotaz**a potom v dolní části podokna **Uložit dotaz** vyberte **Uložit** . Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**.
+1. Select **Save** or **Save as**, enter **Count VMs by OS** as the name, leave the type as **Private query**, and then select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**.
 
-1. Přesuňte se z Průzkumníka grafu prostředků Azure do Azure Portal a vraťte se k němu. Všimněte si, že uložený dotaz již není zobrazen a karta **dotazu 1** vrátila hodnotu.
+1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
 
-1. Vyberte **Otevřít dotaz**. Ujistěte se, že typ je **privátní dotaz**. **Počet uložených virtuálních počítačů podle operačního systému** se nyní zobrazí v seznamu **název dotazu** . Když vyberete odkaz na název uloženého dotazu, načte se na novou kartu s názvem tohoto dotazu.
+1. Select **Open a query**. Make sure that the type is **Private query**. The saved name **Count VMs by OS** now appears in the **Query Name** list. When you select the title link of the saved query, it's loaded into a new tab with that query's name.
 
    > [!NOTE] 
-   >Když je uložený dotaz otevřený a na kartě se zobrazuje jeho název, výběr tlačítka **Uložit** se aktualizuje změnami, které byly provedeny. Pokud chcete vytvořit nový uložený dotaz z tohoto otevřeného dotazu, vyberte **Uložit jako** a pokračujte, jako kdybyste ušetřili nový dotaz značky.
+   >When a saved query is open and the tab shows its name, selecting the **Save** button updates it with any changes that have been made. To create a new saved query from this open query, select **Save as** and proceed as if you were saving a brand new query.
 
-1. Chcete-li odstranit uložený dotaz, vyberte znovu **Otevřít dotaz** a ověřte, zda je pole **typ** nastaveno na možnost **privátní dotaz**. Na řádku uloženého `Count VMs by OS` dotazu vyberte **Odstranit** (ikona odpadkového koše). Kliknutím na **tlačítko Ano** v potvrzovacím dialogovém okně dokončete odstranění dotazu.
-   Pak zavřete podokno **dotazu** .
+1. To delete the saved query, select **Open a query** again, and verify that the **Type** field is set to **Private query**. On the row of the saved `Count VMs by OS` query, select **Delete** (Recycle bin icon). In the confirmation dialog box, select **Yes** to finish deleting the query.
+   Then, close the **Open a query** pane.
 
-## <a name="create-a-shared-query"></a>Vytvořit sdílený dotaz
+## <a name="create-a-shared-query"></a>Create a Shared query
 
-Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým prostředkem. Tato skutečnost znamená, že dotaz se uložil do skupiny prostředků, dá se spravovat a řídit pomocí RBAC a může se dokonce chránit pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli, kdo má příslušná oprávnění.
-Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kroků:
+Unlike a Private query, a Shared query is a Resource Manager resource. This fact means the query gets saved to a resource group, can be managed and controlled with RBAC, and can even be protected with resource locks. As a resource, anyone who has the appropriate permissions can see and use it.
+To create a new Shared query, follow these steps:
 
-1. V nabídce portálu vyberte **všechny služby**, nebo pomocí pole Azure Search v horní části všech stránek vyhledejte a vyberte **Průzkumník diagramů prostředků**.
+1. From the portal menu, select **All services**, or use the Azure search box at the top of all pages to search for and select **Resource Graph Explorer**.
 
-1. Na kartě **dotaz 1** na stránce Průzkumník Azure Resource Graph zadejte následující dotaz:
+1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
 
    ```kusto
    Resources
@@ -74,62 +74,62 @@ Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kro
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
     
-   Výběrem **Spustit dotaz** zobrazíte výsledky dotazu v dolním podokně.
+   Select **Run query** to see the query results in the bottom pane.
 
-   Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-virtual-machines-by-os-type).
+   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
 
-1. Vyberte **Uložit** nebo **Uložit jako**.
+1. Select **Save** or **Save as**.
 
    
-   ![Uložte nový dotaz pomocí tlačítka Uložit.](../media/create-share-query/save-shared-query-buttons.png)
+   ![Save the new query using the save button](../media/create-share-query/save-shared-query-buttons.png)
 
-1. V podokně **Uložit dotaz** zadejte **počet virtuálních počítačů podle operačního systému** pro název.
+1. In the **Save query** pane, enter **Count VMs by OS** for the name.
 
-1. Změňte typ na **Shared Query**, nastavte popis na **počet virtuálních počítačů podle typu operačního systému**a nastavte **předplatné** tak, aby určovalo vytvoření prostředku dotazu.
+1. Change the type to **Shared query**, set the description to **Count of virtual machines by OS type**, and set **Subscription** to specify where the query resource gets created.
 
-1. Nechejte zaškrtnuté políčko **publikovat do skupiny prostředků dotazy Resource-Graph-** a **umístění skupiny prostředků** nastavené na **(US) středozápadní USA**.
+1. Leave the **Publish to resource-graph-queries resource group** check box selected and the **Resource Group location** set to **(US) West Central US**.
 
-1. V dolní části podokna **Uložit dotaz** vyberte **Save (Uložit** ). Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**. Při prvním použití skupiny prostředků **dotazování prostředků Resource-Graph** trvá uložení déle, než se očekávalo, protože se vytvořila skupina prostředků.
+1. Select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**. The first time the **resource-graph-queries** resource group is used, the save takes longer than expected as the resource group gets created.
    
-   ![Uložit nový dotaz jako sdílený dotaz](../media/create-share-query/save-shared-query-window.png)
+   ![Save the new query as a Shared query](../media/create-share-query/save-shared-query-window.png)
 
    > [!NOTE] 
-   > Pokud chcete zadat název existující skupiny prostředků, do které se uloží sdílený dotaz, můžete zrušit zaškrtnutí políčka **publikovat do skupiny prostředků dotazy Resource-Query-Query-** Query. Použití výchozí pojmenované skupiny prostředků pro dotazy usnadňuje zjišťování sdílených dotazů. Tím se také poukáže účel této skupiny prostředků. Můžete se ale rozhodnout vybrat existující skupinu prostředků z důvodů zabezpečení na základě stávajících oprávnění.
+   > You can clear the **Publish to resource-graph-queries resource group** check box if you want to provide the name of an existing resource group to save the shared query into. Using the default named resource group for queries makes Shared queries easier to discover. It also makes the purpose of that resource group more apparent. However, you might opt to select an existing resource group for security reasons based on existing permissions.
 
-1. Přesuňte se z Průzkumníka grafu prostředků Azure do Azure Portal a vraťte se k němu. Všimněte si, že uložený dotaz již není zobrazen a karta **dotazu 1** vrátila hodnotu.
+1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
 
-1. Vyberte **Otevřít dotaz**. Ověřte, že typ je nastavený na **Shared Query** a že kombinace **předplatného** a **skupiny prostředků** odpovídá umístění, kam jste dotaz uložili. Položka s uloženým **počtem virtuálních počítačů podle operačního systému** se teď zobrazí v seznamu **název dotazu** . Vyberte odkaz na název uloženého dotazu, který chcete načíst na novou kartu s názvem tohoto dotazu. Jako sdílený dotaz zobrazuje na kartě vedle názvu ikonu, která označuje, že je sdílená.
+1. Select **Open a query**. Verify that the type is set to **Shared query** and the combination of **Subscription** and **Resource group** match where you saved the query. The saved **Count VMs by OS** item now appears in the **Query Name** list. Select the title link of the saved query to load it into a new tab with that query's name. As a Shared query, it displays an icon in the tab next to the title, denoting it as shared.
 
-   ![Zobrazit sdílený dotaz s ikonou](../media/create-share-query/show-saved-shared-query.png)
+   ![Show the Shared Query with icon](../media/create-share-query/show-saved-shared-query.png)
 
    > [!NOTE] 
-   > Když je uložený dotaz otevřený a na kartě se zobrazuje jeho název, tlačítko **Uložit** ho aktualizuje o všechny změny, které byly provedeny. Pokud chcete vytvořit nový uložený dotaz, vyberte **Uložit jako** a pokračujte, jako kdybyste ušetřili úplně nový dotaz.
+   > When a saved query is open and the tab shows its name, the **Save** button updates it with any changes that have been made. To create a new saved query, select **Save as** and proceed as if you were saving a brand new query.
 
-## <a name="discover-shared-queries"></a>Zjistit sdílené dotazy
+## <a name="discover-shared-queries"></a>Discover Shared queries
 
-Vzhledem k tomu, že sdílený dotaz je prostředek Správce prostředků, existuje několik způsobů, jak ho najít:
+Because a Shared query is a Resource Manager resource, there are several ways to find one:
 
-- V Průzkumníku grafu prostředků vyberte **Otevřít dotaz** a nastavte typ na **Shared Query**.
-- Na stránce portálu dotazy grafu prostředků.
-- Ze skupiny prostředků, do které byl uložen sdílený dotaz.
-- Pomocí dotazu do grafu prostředků.
+- From Resource Graph Explorer, select **Open a query** and set the type to **Shared query**.
+- From the Resource Graph queries portal page.
+- From the resource group that the Shared query was saved in.
+- Through a query to Resource Graph.
 
-### <a name="view-resource-graph-queries"></a>Zobrazit dotazy na grafy prostředků
+### <a name="view-resource-graph-queries"></a>View Resource Graph queries
 
-Na stránce Azure Portal dotazy na diagram prostředků se zobrazí sdílené dotazy, ke kterým má přihlášený účet přístup. Tato stránka umožňuje filtrování podle názvu, předplatného, skupiny prostředků a dalších vlastností dotazu na graf prostředků. Pomocí tohoto rozhraní můžete také označovat, exportovat a odstranit dotazy na grafy prostředků.
+In the Azure portal, the Resource Graph queries page displays Shared queries that the logged-in account has access to. This page enables filtering by name, subscription, resource group, and other properties of the Resource Graph query. You can also tag, export, and delete Resource Graph queries by using this interface.
 
-Výběrem jednoho z dotazů otevřete stránku dotaz na graf prostředků. Podobně jako u jiných Správce prostředkůch prostředků nabízí tato stránka interaktivní přehled spolu s protokolem aktivit, řízením přístupu a značkami. Zámek prostředku můžete použít také přímo z této stránky.
+Selecting one of the queries opens the Resource Graph query page. Like other Resource Manager resources, this page offers an interactive overview along with the Activity log, access control, and tags. You can also apply a resource lock directly from this page.
 
-Přejděte na stránku dotazů grafu prostředků z nabídky portál, a to výběrem možnosti **všechny služby** nebo pomocí pole Azure Search v horní části všech stránek. Vyhledejte a vyberte **Průzkumník diagramů prostředků**.
+Get to the Resource Graph queries page from the portal menu by selecting **All services** or by using the Azure search box at the top of all pages. Search for and select **Resource Graph Explorer**.
 
-### <a name="list-resource-groups-resources"></a>Vypsat prostředky skupin prostředků
+### <a name="list-resource-groups-resources"></a>List Resource groups resources
 
-Dotaz na graf prostředků je uvedený vedle dalších prostředků, které jsou součástí skupiny prostředků.
-Výběr dotazu grafu prostředku otevře stránku pro daný dotaz. Tři tečky a možnosti místní nabídky (aktivované kliknutím pravým tlačítkem myši) fungují stejně jako na stránce dotazu na graf prostředků.
+The Resource Graph query is listed alongside other resources that are part of a resource group.
+Selecting the Resource Graph query opens the page for that query. The ellipsis and shortcut menu options (triggered by right-clicking) work the same as on the Resource Graph query page.
 
-### <a name="query-resource-graph"></a>Graf prostředku dotazu
+### <a name="query-resource-graph"></a>Query Resource Graph
 
-Dotazy na grafy prostředků můžete najít prostřednictvím dotazu do grafu prostředků. Následující omezení dotazu na diagram prostředku podle typu `Microsoft.ResourceGraph/queries`a poté používá `project` k vypsání pouze názvu, času změny a samotného dotazu:
+You can find Resource Graph queries through a query to Resource Graph. The following Resource Graph query limits by type `Microsoft.ResourceGraph/queries`, and then uses `project` to list only the name, time modified, and the query itself:
 
 ```kusto
 Resources
@@ -137,25 +137,25 @@ Resources
 | project name, properties.timeModified, properties.query
 ```
 
-## <a name="delete-a-shared-query"></a>Odstranit sdílený dotaz
+## <a name="delete-a-shared-query"></a>Delete a Shared query
 
-Pokud už sdílený dotaz nepotřebujete, odstraňte ho. Odstraněním sdíleného dotazu odeberete odpovídající prostředek Správce prostředků. Všechny řídicí panely, se kterými se graf výsledků připnul, se teď zobrazí v chybové zprávě. Po zobrazení této chybové zprávy použijte tlačítko **Odebrat z řídicího panelu** k vyčištění řídicího panelu.
+If a Shared query is no longer needed, delete it. By deleting a Shared query, you remove the corresponding Resource Manager resource. Any dashboards that the results chart was pinned to now display an error message. When that error message is displayed, use the **Remove from dashboard** button to clean up your dashboard.
 
-Sdílený dotaz můžete odstranit pomocí následujících rozhraní:
-- Stránka dotazů na grafy prostředků
-- Stránka dotazu na graf prostředků
-- **Otevření stránky dotazu** v Průzkumníku grafu prostředků
-- Stránka skupiny prostředků
+You can delete a Shared query through the following interfaces:
+- Resource Graph queries page
+- Resource Graph query page
+- The **Open a query** page in Resource Graph Explorer
+- Resource groups page
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto kurzem hotovi, odstraňte soukromé a sdílené dotazy, které jste vytvořili, pokud je už nechcete.
+When you're finished with this tutorial, delete the Private and Shared queries you created if you no longer want them.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Spusťte první dotaz pomocí [Azure Portal](../first-query-portal.md).
-- Získejte další informace o [dotazovacím jazyce](../concepts/query-language.md).
-- Přečtěte si další informace o tom, jak [prozkoumat prostředky](../concepts/explore-resources.md).
-- Podívejte se na ukázky [počátečních dotazů](../samples/starter.md).
-- Podívejte se na ukázky [pokročilých dotazů](../samples/advanced.md).
-- Poskytněte zpětnou vazbu na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+- Run your first query by using the [Azure portal](../first-query-portal.md).
+- Get more information about the [query language](../concepts/query-language.md).
+- Learn more about how to [explore resources](../concepts/explore-resources.md).
+- See samples of [Starter queries](../samples/starter.md).
+- See samples of [Advanced queries](../samples/advanced.md).
+- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

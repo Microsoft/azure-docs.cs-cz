@@ -1,236 +1,240 @@
 ---
-title: Kurz – vytvoření instance Azure Active Directory Domain Services | Microsoft Docs
-description: V tomto kurzu se naučíte vytvořit a nakonfigurovat instanci Azure Active Directory Domain Services a zadat pokročilé možnosti konfigurace pomocí Azure Portal.
+title: Tutorial - Create an Azure Active Directory Domain Services instance | Microsoft Docs
+description: In this tutorial, you learn how to create and configure an Azure Active Directory Domain Services instance and specify advanced configuration options using the Azure portal.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 7bafcb1508cdb01c4fe27a9d02db63c4f00efd74
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 334a5c3c76f1ebaf4c8c36020110ef9c0bcc8d69
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172552"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208689"
 ---
-# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services s pokročilými možnostmi konfigurace
+# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Tutorial: Create and configure an Azure Active Directory Domain Services instance with advanced configuration options
 
-Azure Active Directory Domain Services (Azure služba AD DS) poskytuje spravované doménové služby, jako je připojení k doméně, zásady skupiny, LDAP, ověřování Kerberos/NTLM, které jsou plně kompatibilní se službou Windows Server Active Directory. Tyto doménové služby spotřebujete bez nutnosti nasazovat, spravovat a opravovat řadiče domény sami. Služba Azure služba AD DS se integruje s vaším stávajícím tenant Azure AD. Tato integrace umožňuje uživatelům přihlásit se pomocí svých podnikových přihlašovacích údajů a pomocí existujících skupin a uživatelských účtů můžete zabezpečit přístup k prostředkům.
+Azure Active Directory Domain Services (Azure AD DS) provides managed domain services such as domain join, group policy, LDAP, Kerberos/NTLM authentication that is fully compatible with Windows Server Active Directory. You consume these domain services without deploying, managing, and patching domain controllers yourself. Azure AD DS integrates with your existing Azure AD tenant. This integration lets users sign in using their corporate credentials, and you can use existing groups and user accounts to secure access to resources.
 
-[Pomocí výchozích možností konfigurace][tutorial-create-instance] pro sítě a synchronizaci můžete vytvořit spravovanou doménu nebo tato nastavení definovat ručně. V tomto kurzu se dozvíte, jak definovat tyto rozšířené možnosti konfigurace pro vytvoření a konfiguraci instance Azure služba AD DS pomocí Azure Portal.
+You can [create a managed domain using default configuration options][tutorial-create-instance] for networking and synchronization, or manually define these settings. This tutorial shows how to define those advanced configuration options to create and configure an Azure AD DS instance using the Azure portal.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Konfigurace nastavení DNS a virtuální sítě pro spravovanou doménu
+> * Configure DNS and virtual network settings for a managed domain
 > * Vytvoření instance Azure AD DS
-> * Přidání uživatelů s právy pro správu do správy domén
+> * Add administrative users to domain management
 > * Povolení synchronizace hodnoty hash hesel
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
+To complete this tutorial, you need the following resources and privileges:
 
 * Aktivní předplatné Azure.
-    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
-    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
-* Abyste mohli Azure služba AD DS povolit, potřebujete ve svém tenantovi Azure AD oprávnění *globálního správce* .
-* Abyste mohli vytvořit požadované prostředky Azure služba AD DS, potřebujete oprávnění *přispěvatele* v předplatném Azure.
+    * If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* An Azure Active Directory tenant associated with your subscription, either synchronized with an on-premises directory or a cloud-only directory.
+    * If needed, [create an Azure Active Directory tenant][create-azure-ad-tenant] or [associate an Azure subscription with your account][associate-azure-ad-tenant].
+* You need *global administrator* privileges in your Azure AD tenant to enable Azure AD DS.
+* You need *Contributor* privileges in your Azure subscription to create the required Azure AD DS resources.
 
-I když se pro Azure služba AD DS nevyžaduje, doporučuje se [nakonfigurovat Samoobslužné resetování hesla (SSPR)][configure-sspr] pro TENANTA Azure AD. Uživatelé si můžou změnit heslo bez SSPR, ale SSPR pomáhá, pokud si zapomene heslo a bude ho muset resetovat.
+Although not required for Azure AD DS, it's recommended to [configure self-service password reset (SSPR)][configure-sspr] for the Azure AD tenant. Users can change their password without SSPR, but SSPR helps if they forget their password and need to reset it.
 
 > [!IMPORTANT]
-> Po vytvoření spravované domény Azure služba AD DS nemůžete instanci přesunout do jiné skupiny prostředků, virtuální sítě, předplatného atd. Při nasazování instance služby Azure služba AD DS je nutné vybrat nejvhodnější předplatné, skupinu prostředků, oblast a virtuální síť.
+> After you create an Azure AD DS managed domain, you can't then move the instance to a different resource group, virtual network, subscription, etc. Take care to select the most appropriate subscription, resource group, region, and virtual network when you deploy the Azure AD DS instance.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-V tomto kurzu vytvoříte a nakonfigurujete instanci Azure služba AD DS pomocí Azure Portal. Chcete-li začít, nejprve se přihlaste k [Azure Portal](https://portal.azure.com).
+In this tutorial, you create and configure the Azure AD DS instance using the Azure portal. To get started, first sign in to the [Azure portal](https://portal.azure.com).
 
-## <a name="create-an-instance-and-configure-basic-settings"></a>Vytvoření instance a Konfigurace základního nastavení
+## <a name="create-an-instance-and-configure-basic-settings"></a>Create an instance and configure basic settings
 
-Chcete-li spustit průvodce **povolením Azure AD Domain Services** , proveďte následující kroky:
+To launch the **Enable Azure AD Domain Services** wizard, complete the following steps:
 
-1. V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek**.
-1. Do panelu hledání zadejte *Domain Services* a pak zvolte *Azure AD Domain Services* z návrhů hledání.
-1. Na stránce Azure AD Domain Services vyberte **vytvořit**. Spustí se průvodce **povolením Azure AD Domain Services** .
-1. Vyberte **předplatné** Azure, ve kterém chcete vytvořit spravovanou doménu.
-1. Vyberte **skupinu prostředků** , do které má spravovaná doména patřit. Zvolte možnost **vytvořit novou** nebo vybrat existující skupinu prostředků.
+1. On the Azure portal menu or from the **Home** page, select **Create a resource**.
+1. Enter *Domain Services* into the search bar, then choose *Azure AD Domain Services* from the search suggestions.
+1. On the Azure AD Domain Services page, select **Create**. The **Enable Azure AD Domain Services** wizard is launched.
+1. Select the Azure **Subscription** in which you would like to create the managed domain.
+1. Select the **Resource group** to which the managed domain should belong. Choose to **Create new** or select an existing resource group.
 
-Když vytváříte instanci Azure služba AD DS, zadáte název DNS. Při volbě tohoto názvu DNS máte nějaké okolnosti:
+When you create an Azure AD DS instance, you specify a DNS name. There are some considerations when you choose this DNS name:
 
-* **Název předdefinované domény:** Ve výchozím nastavení se používá integrovaný název domény adresáře (přípona *. onmicrosoft.com* ). Pokud chcete povolit přístup přes Internet k spravované doméně pomocí protokolu Secure LDAP, nemůžete vytvořit digitální certifikát pro zabezpečení připojení s touto výchozí doménou. Společnost Microsoft vlastní doménu *. onmicrosoft.com* , takže certifikační autorita (CA) certifikát nevydá.
-* **Vlastní názvy domén:** Nejběžnějším přístupem je zadat vlastní název domény, obvykle ten, který už vlastníte a který je směrovatelný. Když použijete směrovatelný, vlastní doménu, může provoz správně přesměrovat podle potřeby na podporu vašich aplikací.
-* **Přípony domén bez směrování:** Obecně doporučujeme, abyste se vyhnuli příponě názvu domény, která není směrovatelný, například *contoso. Local*. Přípona *. Local* není směrovatelný a může způsobit problémy s překladem názvů DNS.
+* **Built-in domain name:** By default, the built-in domain name of the directory is used (a *.onmicrosoft.com* suffix). If you wish to enable secure LDAP access to the managed domain over the internet, you can't create a digital certificate to secure the connection with this default domain. Microsoft owns the *.onmicrosoft.com* domain, so a Certificate Authority (CA) won't issue a certificate.
+* **Custom domain names:** The most common approach is to specify a custom domain name, typically one that you already own and is routable. When you use a routable, custom domain, traffic can correctly flow as needed to support your applications.
+* **Non-routable domain suffixes:** We generally recommend that you avoid a non-routable domain name suffix, such as *contoso.local*. The *.local* suffix isn't routable and can cause issues with DNS resolution.
 
 > [!TIP]
-> Pokud vytváříte vlastní název domény, je třeba dbát na stávající obory názvů DNS. Doporučuje se pro název domény zahrnout jedinečnou předponu. Například pokud je název vašeho kořenového adresáře DNS *contoso.com*, vytvořte spravovanou doménu Azure služba AD DS s vlastním názvem domény *Corp.contoso.com* nebo *DS.contoso.com*. V hybridním prostředí s místním prostředím služba AD DS se tyto předpony už můžou používat. Použijte jedinečnou předponu pro Azure služba AD DS.
+> If you create a custom domain name, take care with existing DNS namespaces. It's recommended to include a unique prefix for the domain name. For example, if your DNS root name is *contoso.com*, create an Azure AD DS managed domain with the custom domain name of *corp.contoso.com* or *ds.contoso.com*. In a hybrid environment with an on-premises AD DS environment, these prefixes may already be in use. Use a unique prefix for Azure AD DS.
 >
-> Můžete použít kořenový název DNS pro spravovanou doménu Azure služba AD DS, ale možná budete muset vytvořit další záznamy DNS pro další služby ve vašem prostředí. Pokud například spustíte webový server, který je hostitelem lokality pomocí kořenového názvu DNS, může dojít ke konfliktům názvů, které vyžadují další položky DNS.
+> You can use the root DNS name for your Azure AD DS managed domain, but you may need to create some additional DNS records for other services in your environment. For example, if you run a webserver that hosts a site using the root DNS name, there can be naming conflicts that require additional DNS entries.
 >
-> V těchto kurzech a v článcích s návody se jako krátký příklad používá vlastní doména *contoso.com* . Ve všech příkazech zadejte vlastní název domény, který může obsahovat jedinečnou předponu.
+> In these tutorials and how-to articles, the custom domain of *contoso.com* is used as a short example. In all commands, specify your own domain name, which may include a unique prefix.
 >
-> Další informace najdete v tématu [Výběr předpony pro pojmenování pro doménu][naming-prefix].
+> For more information, see [Select a naming prefix for the domain][naming-prefix].
 
-Platí taky následující omezení názvů DNS:
+The following DNS name restrictions also apply:
 
-* **Omezení prefixu domény:** Nelze vytvořit spravovanou doménu s předponou delší než 15 znaků. Předpona zadaného názvu domény (například *Contoso* v názvu domény *contoso.com* ) musí obsahovat maximálně 15 znaků.
-* **Konflikty síťových názvů:** Název domény DNS pro spravovanou doménu už ve virtuální síti neexistuje. Konkrétně se podívejte na následující scénáře, které by mohly vést ke konfliktu názvů:
-    * Pokud již máte doménu služby Active Directory se stejným názvem domény DNS ve službě Azure Virtual Network.
-    * Pokud má virtuální síť, ve které plánujete povolit spravovanou doménu, připojení VPN s vaší místní sítí. V tomto scénáři se ujistěte, že nemáte doménu se stejným názvem domény DNS ve vaší místní síti.
-    * Pokud máte existující cloudovou službu Azure s tímto názvem ve službě Azure Virtual Network.
+* **Domain prefix restrictions:** You can't create a managed domain with a prefix longer than 15 characters. The prefix of your specified domain name (such as *contoso* in the *contoso.com* domain name) must contain 15 or fewer characters.
+* **Network name conflicts:** The DNS domain name for your managed domain shouldn't already exist in the virtual network. Specifically, check for the following scenarios that would lead to a name conflict:
+    * If you already have an Active Directory domain with the same DNS domain name on the Azure virtual network.
+    * If the virtual network where you plan to enable the managed domain has a VPN connection with your on-premises network. In this scenario, ensure you don't have a domain with the same DNS domain name on your on-premises network.
+    * If you have an existing Azure cloud service with that name on the Azure virtual network.
 
-Dokončete pole v okně *základy* Azure Portal a vytvořte instanci Azure služba AD DS:
+Complete the fields in the *Basics* window of the Azure portal to create an Azure AD DS instance:
 
-1. Zadejte **název domény DNS** pro spravovanou doménu a vezměte v úvahu předchozí body.
-1. Vyberte **umístění** Azure, ve kterém se má spravovaná doména vytvořit. Pokud zvolíte oblast, která podporuje Zóny dostupnosti, prostředky Azure služba AD DS se rozdělují mezi zóny, aby se mohla zvýšit redundance.
+1. Enter a **DNS domain name** for your managed domain, taking into consideration the previous points.
+1. Choose the Azure **Location** in which the managed domain should be created. If you choose a region that supports Availability Zones, the Azure AD DS resources are distributed across zones for additional redundancy.
 
-    Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech.
+    Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. To ensure resiliency, there’s a minimum of three separate zones in all enabled regions.
 
-    Není tu nic, co byste mohli nakonfigurovat pro Azure služba AD DS k distribuci mezi zónami. Platforma Azure automaticky zpracovává distribuci prostředků v zóně. Další informace a informace o dostupnosti oblastí najdete v tématu [co jsou zóny dostupnosti v Azure?][availability-zones]
+    There's nothing for you to configure for Azure AD DS to be distributed across zones. The Azure platform automatically handles the zone distribution of resources. For more information and to see region availability, see [What are Availability Zones in Azure?][availability-zones]
 
-    ![Konfigurace základního nastavení instance Azure AD Domain Services](./media/tutorial-create-instance-advanced/basics-window.png)
+1. A *forest* is a logical construct used by Active Directory Domain Services to group one or more domains. By default, an Azure AD DS managed domain is created as a *User* forest. This type of forest synchronizes all objects from Azure AD, including any user accounts created in an on-premises AD DS environment. A *Resource* forest only synchronizes users and groups created directly in Azure AD. Resource forests are currently in preview. For more information on *Resource* forests, including why you may use one and how to create forest trusts with on-premises AD DS domains, see [Azure AD DS resource forests overview][resource-forests].
 
-1. Pokud chcete ručně nakonfigurovat další možnosti, klikněte na **Další sítě**. V opačném případě vyberte možnost **zkontrolovat + vytvořit** , pokud chcete přijmout výchozí možnosti konfigurace, a potom přejděte k části [nasazení spravované domény](#deploy-the-managed-domain). Když zvolíte tuto možnost vytvoření, nakonfigurují se následující výchozí hodnoty:
+    For this tutorial, choose to create a *User* forest.
 
-* Vytvoří virtuální síť s názvem *aadds-VNet* , která používá rozsah IP adres *10.0.1.0/24*.
-* Vytvoří podsíť s názvem *aadds-Subnet* pomocí rozsahu IP adres *10.0.1.0/24*.
-* Synchronizuje *všechny* uživatele z Azure AD do spravované domény Azure služba AD DS.
+    ![Configure basic settings for an Azure AD Domain Services instance](./media/tutorial-create-instance-advanced/basics-window.png)
 
-## <a name="create-and-configure-the-virtual-network"></a>Vytvoření a konfigurace virtuální sítě
+1. To manually configure additional options, choose **Next - Networking**. Otherwise, select **Review + create** to accept the default configuration options, then skip to the section to [Deploy your managed domain](#deploy-the-managed-domain). The following defaults are configured when you choose this create option:
 
-Pro zajištění připojení je potřeba virtuální síť Azure a vyhrazená podsíť. V této podsíti virtuální sítě je povolený Azure služba AD DS. V tomto kurzu vytvoříte virtuální síť, ale můžete se rozhodnout použít stávající virtuální síť. V obou případech musíte vytvořit vyhrazenou podsíť pro použití v Azure služba AD DS.
+* Creates a virtual network named *aadds-vnet* that uses the IP address range of *10.0.1.0/24*.
+* Creates a subnet named *aadds-subnet* using the IP address range of *10.0.1.0/24*.
+* Synchronizes *All* users from Azure AD into the Azure AD DS managed domain.
 
-Některé z informací pro tuto vyhrazenou podsíť virtuální sítě zahrnují následující oblasti:
+## <a name="create-and-configure-the-virtual-network"></a>Create and configure the virtual network
 
-* Aby bylo možné podporovat prostředky Azure služba AD DS, musí mít podsíť aspoň 3-5 dostupné IP adresy v rozsahu adres.
-* Nevybírejte podsíť *brány* pro nasazení služby Azure služba AD DS. Nasazení Azure služba AD DS do podsítě *brány* se nepodporuje.
-* Nesaďte do podsítě žádné další virtuální počítače. Aplikace a virtuální počítače často používají skupiny zabezpečení sítě k zabezpečení připojení. Spuštění těchto úloh v samostatné podsíti vám umožní použít tyto skupiny zabezpečení sítě bez přerušení připojení ke svojí spravované doméně.
-* Po povolení služby Azure služba AD DS nemůžete svou spravovanou doménu přesunout do jiné virtuální sítě.
+To provide connectivity, an Azure virtual network and a dedicated subnet are needed. Azure AD DS is enabled in this virtual network subnet. In this tutorial, you create a virtual network, though you could instead choose to use an existing virtual network. In either approach, you must create a dedicated subnet for use by Azure AD DS.
 
-Další informace o tom, jak naplánovat a nakonfigurovat virtuální síť, najdete v tématu [požadavky na síť pro Azure Active Directory Domain Services][network-considerations].
+Some considerations for this dedicated virtual network subnet include the following areas:
 
-Vyplňte pole v okně *síť* následujícím způsobem:
+* The subnet must have at least 3-5 available IP addresses in its address range to support the Azure AD DS resources.
+* Don't select the *Gateway* subnet for deploying Azure AD DS. It's not supported to deploy Azure AD DS into a *Gateway* subnet.
+* Don't deploy any other virtual machines to the subnet. Applications and VMs often use network security groups to secure connectivity. Running these workloads in a separate subnet lets you apply those network security groups without disrupting connectivity to your managed domain.
+* You can't move your managed domain to a different virtual network after you enable Azure AD DS.
 
-1. Na stránce **síť** zvolte virtuální síť, do které chcete nasadit Azure služba AD DS z rozevírací nabídky, nebo vyberte **vytvořit novou**.
-    1. Pokud se rozhodnete vytvořit virtuální síť, zadejte název virtuální sítě, například *myVnet*, a pak zadejte rozsah adres, například *10.0.1.0/24*.
-    1. Vytvořte vyhrazenou podsíť s jasným názvem, například *DomainServices*. Zadejte rozsah adres, například *10.0.1.0/24*.
+For more information on how to plan and configure the virtual network, see [networking considerations for Azure Active Directory Domain Services][network-considerations].
 
-    ![Vytvoření virtuální sítě a podsítě pro použití s Azure AD Domain Services](./media/tutorial-create-instance-advanced/create-vnet.png)
+Complete the fields in the *Network* window as follows:
 
-    Nezapomeňte vybrat rozsah adres, který se nachází v rámci vašeho privátního rozsahu IP adres. Rozsahy IP adres, které nevlastníte, jsou ve veřejném adresním prostoru, což způsobí chyby v Azure služba AD DS.
+1. On the **Network** page, choose a virtual network to deploy Azure AD DS into from the drop-down menu, or select **Create new**.
+    1. If you choose to create a virtual network, enter a name for the virtual network, such as *myVnet*, then provide an address range, such as *10.0.1.0/24*.
+    1. Create a dedicated subnet with a clear name, such as *DomainServices*. Provide an address range, such as *10.0.1.0/24*.
 
-1. Vyberte podsíť virtuální sítě, například *DomainServices*.
-1. Až budete připraveni, klikněte na **Další Správa**.
+    ![Create a virtual network and subnet for use with Azure AD Domain Services](./media/tutorial-create-instance-advanced/create-vnet.png)
 
-## <a name="configure-an-administrative-group"></a>Konfigurace skupiny pro správu
+    Make sure to pick an address range that is within your private IP address range. IP address ranges you don't own that are in the public address space cause errors within Azure AD DS.
 
-Pro správu domény Azure služba AD DS se používá speciální skupina pro správu s názvem *AAD DC Administrators* . Členům této skupiny se udělují oprávnění správce na virtuálních počítačích, které jsou připojené k doméně spravované domény. V případě virtuálních počítačů připojených k doméně se tato skupina přidá do místní skupiny Administrators. Členové této skupiny se taky můžou pomocí vzdálené plochy vzdáleně připojit k virtuálním počítačům připojeným k doméně.
+1. Select a virtual network subnet, such as *DomainServices*.
+1. When ready, choose **Next - Administration**.
 
-Nemáte oprávnění *správce domény* nebo *správce podniku* ve spravované doméně pomocí Azure služba AD DS. Tato oprávnění jsou vyhrazena službou a nejsou zpřístupněna uživatelům v rámci tenanta. Místo toho vám skupina *správců řadiče domény AAD* umožňuje provádět některé privilegované operace. Mezi tyto operace patří připojení počítačů k doméně, patřící do skupiny pro správu na virtuálních počítačích připojených k doméně a konfigurace Zásady skupiny.
+## <a name="configure-an-administrative-group"></a>Configure an administrative group
 
-Průvodce automaticky vytvoří skupinu *AAD DC Administrators* v adresáři Azure AD. Pokud máte ve svém adresáři služby Azure AD existující skupinu s tímto názvem, průvodce tuto skupinu vybere. Volitelně můžete zvolit přidání dalších uživatelů do této skupiny *Správci AAD DC* během procesu nasazení. Tyto kroky můžete provést později.
+A special administrative group named *AAD DC Administrators* is used for management of the Azure AD DS domain. Members of this group are granted administrative permissions on VMs that are domain-joined to the managed domain. On domain-joined VMs, this group is added to the local administrators group. Members of this group can also use Remote Desktop to connect remotely to domain-joined VMs.
 
-1. Pokud chcete přidat další uživatele do této skupiny *AAD DC Administrators* , vyberte **spravovat členství ve skupině**.
+You don't have *Domain Administrator* or *Enterprise Administrator* permissions on a managed domain using Azure AD DS. These permissions are reserved by the service and aren't made available to users within the tenant. Instead, the *AAD DC Administrators* group lets you perform some privileged operations. These operations include joining computers to the domain, belonging to the administration group on domain-joined VMs, and configuring Group Policy.
 
-    ![Konfigurace členství ve skupině pro skupinu správci řadiče domény AAD](./media/tutorial-create-instance-advanced/admin-group.png)
+The wizard automatically creates the *AAD DC Administrators* group in your Azure AD directory. If you have an existing group with this name in your Azure AD directory, the wizard selects this group. You can optionally choose to add additional users to this *AAD DC Administrators* group during the deployment process. These steps can be completed later.
 
-1. Vyberte tlačítko **přidat členy** a pak vyhledejte a vyberte uživatele z adresáře Azure AD. Vyhledávejte například svůj vlastní účet a přidejte ho do skupiny *správci řadiče domény AAD* .
-1. V případě potřeby změňte nebo přidejte další příjemce pro oznámení v případě, že jsou výstrahy ve spravované doméně Azure služba AD DS, které vyžadují pozornost.
-1. Až budete připraveni, klikněte na tlačítko **Další synchronizace**.
+1. To add additional users to this *AAD DC Administrators* group, select **Manage group membership**.
 
-## <a name="configure-synchronization"></a>Konfigurace synchronizace
+    ![Configure group membership of the AAD DC Administrators group](./media/tutorial-create-instance-advanced/admin-group.png)
 
-Azure služba AD DS umožňuje synchronizovat *všechny* uživatele a skupiny, které jsou dostupné ve službě Azure AD, nebo jenom *vymezenou* synchronizaci jenom konkrétních skupin. Pokud se rozhodnete synchronizovat *všechny* uživatele a skupiny, nemůžete se později rozhodnout jenom provést synchronizaci s vymezeným oborem. Další informace o vymezené synchronizaci najdete v tématu [Azure AD Domain Services s vymezeným rozsahem synchronizace][scoped-sync].
+1. Select the **Add members** button, then search for and select users from your Azure AD directory. For example, search for your own account, and add it to the *AAD DC Administrators* group.
+1. If desired, change or add additional recipients for notifications when there are alerts in the Azure AD DS managed domain that require attention.
+1. When ready, choose **Next - Synchronization**.
 
-1. V tomto kurzu se rozhodnete synchronizovat **všechny** uživatele a skupiny. Tato volba synchronizace je výchozí možností.
+## <a name="configure-synchronization"></a>Configure synchronization
 
-    ![Provedení úplné synchronizace uživatelů a skupin ze služby Azure AD](./media/tutorial-create-instance-advanced/sync-all.png)
+Azure AD DS lets you synchronize *all* users and groups available in Azure AD, or a *scoped* synchronization of only specific groups. If you choose to synchronize *all* users and groups, you can't later choose to only perform a scoped synchronization. For more information about scoped synchronization, see [Azure AD Domain Services scoped synchronization][scoped-sync].
+
+1. For this tutorial, choose to synchronize **All** users and groups. This synchronization choice is the default option.
+
+    ![Perform a full synchronization of users and groups from Azure AD](./media/tutorial-create-instance-advanced/sync-all.png)
 
 1. Vyberte **Zkontrolovat a vytvořit**.
 
-## <a name="deploy-the-managed-domain"></a>Nasazení spravované domény
+## <a name="deploy-the-managed-domain"></a>Deploy the managed domain
 
-Na stránce **Souhrn** v průvodci zkontrolujte nastavení konfigurace pro spravovanou doménu. Chcete-li provést změny, můžete přejít zpět na libovolný krok průvodce. K opětovnému nasazení spravované domény Azure služba AD DS do jiného tenanta Azure AD pomocí těchto možností konfigurace můžete také **Stáhnout šablonu pro automatizaci**.
+On the **Summary** page of the wizard, review the configuration settings for the managed domain. You can go back to any step of the wizard to make changes. To redeploy an Azure AD DS managed domain to a different Azure AD tenant in a consistent way using these configuration options, you can also **Download a template for automation**.
 
-1. Pokud chcete vytvořit spravovanou doménu, vyberte **vytvořit**. Všimněte si, že některé možnosti konfigurace, jako je název DNS nebo virtuální síť, se po vytvoření spravovaného Azure služba AD DS nedají změnit. Chcete-li pokračovat, vyberte **OK**.
-1. Proces zřizování spravované domény může trvat až hodinu. Na portálu se zobrazí oznámení, ve kterém se zobrazuje průběh nasazení služby Azure služba AD DS. Vyberte oznámení, abyste viděli podrobný průběh nasazení.
+1. To create the managed domain, select **Create**. A note is displayed that certain configuration options like DNS name or virtual network can't be changed once the Azure AD DS managed has been created. To continue, select **OK**.
+1. The process of provisioning your managed domain can take up to an hour. A notification is displayed in the portal that shows the progress of your Azure AD DS deployment. Select the notification to see detailed progress for the deployment.
 
-    ![Oznámení v Azure Portal probíhajícího nasazení](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
+    ![Notification in the Azure portal of the deployment in progress](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
 
-1. Vyberte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte instanci Azure služba AD DS ze seznamu prostředků Azure, jako je třeba *contoso.com*. Na kartě **Přehled** se zobrazuje, že se spravovaná doména aktuálně *nasazuje*. Nemůžete nakonfigurovat spravovanou doménu, dokud není plně zřízené.
+1. Select your resource group, such as *myResourceGroup*, then choose your Azure AD DS instance from the list of Azure resources, such as *contoso.com*. The **Overview** tab shows that the managed domain is currently *Deploying*. You can't configure the managed domain until it's fully provisioned.
 
-    ![Stav služby Domain Services ve stavu zřizování](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
+    ![Domain Services status during the provisioning state](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
 
-1. Když je spravovaná doména plně zřízena, karta **Přehled** zobrazuje stav domény jako *spuštěno*.
+1. When the managed domain is fully provisioned, the **Overview** tab shows the domain status as *Running*.
 
-    ![Stav služby Domain Services po úspěšném zřízení](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
+    ![Domain Services status once successfully provisioned](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
 
-Spravovaná doména je přidružená k vašemu tenantovi služby Azure AD. Během procesu zřizování vytvoří Azure služba AD DS dvě podnikové aplikace s názvem *Služba řadiče domény* a *AzureActiveDirectoryDomainControllerServices* v tenantovi Azure AD. Tyto podnikové aplikace jsou potřeba k obsluhování vaší spravované domény. Tyto aplikace neodstraňujte.
+The managed domain is associated with your Azure AD tenant. During the provisioning process, Azure AD DS creates two Enterprise Applications named *Domain Controller Services* and *AzureActiveDirectoryDomainControllerServices* in the Azure AD tenant. These Enterprise Applications are needed to service your managed domain. Don't delete these applications.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Aktualizace nastavení DNS pro virtuální síť Azure
 
-Po úspěšném nasazení Azure služba AD DS nyní nakonfigurujte virtuální síť tak, aby povolovala jiným připojeným virtuálním počítačům a aplikacím používat spravovanou doménu. Pokud chcete toto připojení poskytnout, aktualizujte nastavení serveru DNS virtuální sítě tak, aby odkazovalo na dvě IP adresy, ve kterých je nasazená služba Azure služba AD DS.
+With Azure AD DS successfully deployed, now configure the virtual network to allow other connected VMs and applications to use the managed domain. To provide this connectivity, update the DNS server settings for your virtual network to point to the two IP addresses where Azure AD DS is deployed.
 
-1. Karta **Přehled** pro spravovanou doménu zobrazuje některé **požadované kroky konfigurace**. První krok konfigurace je aktualizovat nastavení serveru DNS pro vaši virtuální síť. Po správné konfiguraci nastavení DNS se tento krok už nezobrazuje.
+1. The **Overview** tab for your managed domain shows some **Required configuration steps**. The first configuration step is to update DNS server settings for your virtual network. Once the DNS settings are correctly configured, this step is no longer shown.
 
-    Uvedené adresy jsou řadiče domény pro použití ve virtuální síti. V tomto příkladu jsou tyto adresy *10.1.0.4* a *10.1.0.5*. Tyto IP adresy můžete později najít na kartě **vlastnosti** .
+    The addresses listed are the domain controllers for use in the virtual network. In this example, those addresses are *10.1.0.4* and *10.1.0.5*. You can later find these IP addresses on the **Properties** tab.
 
-    ![Konfigurace nastavení DNS pro vaši virtuální síť s Azure AD Domain Services IP adresami](./media/tutorial-create-instance-advanced/configure-dns.png)
+    ![Configure DNS settings for your virtual network with the Azure AD Domain Services IP addresses](./media/tutorial-create-instance-advanced/configure-dns.png)
 
-1. Pokud chcete aktualizovat nastavení serveru DNS pro virtuální síť, klikněte na tlačítko **Konfigurovat** . Nastavení DNS se automaticky nakonfigurují pro vaši virtuální síť.
+1. To update the DNS server settings for the virtual network, select the **Configure** button. The DNS settings are automatically configured for your virtual network.
 
 > [!TIP]
-> Pokud jste v předchozích krocích vybrali existující virtuální síť, všechny virtuální počítače připojené k síti získají po restartování jenom nové nastavení DNS. Virtuální počítače můžete restartovat pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
+> If you selected an existing virtual network in the previous steps, any VMs connected to the network only get the new DNS settings after a restart. You can restart VMs using the Azure portal, Azure PowerShell, or the Azure CLI.
 
-## <a name="enable-user-accounts-for-azure-ad-ds"></a>Povolení uživatelských účtů pro Azure služba AD DS
+## <a name="enable-user-accounts-for-azure-ad-ds"></a>Enable user accounts for Azure AD DS
 
-K ověřování uživatelů ve spravované doméně služba AD DS Azure potřebuje hodnoty hash hesel ve formátu, který je vhodný pro ověřování pomocí protokolu NTLM (NT LAN Manager) a Kerberos. Azure AD negeneruje nebo ukládá hodnoty hash hesel ve formátu, který je vyžadován pro ověřování protokolem NTLM nebo Kerberos, dokud nepovolíte služba AD DS Azure pro vašeho tenanta. Z bezpečnostních důvodů Azure AD také neukládá přihlašovací údaje hesla ve formě nešifrovaných textů. Proto služba Azure AD nemůže automaticky generovat tyto hodnoty hash hesla NTLM nebo Kerberos na základě stávajících přihlašovacích údajů uživatelů.
+To authenticate users on the managed domain, Azure AD DS needs password hashes in a format that's suitable for NT LAN Manager (NTLM) and Kerberos authentication. Azure AD doesn't generate or store password hashes in the format that's required for NTLM or Kerberos authentication until you enable Azure AD DS for your tenant. For security reasons, Azure AD also doesn't store any password credentials in clear-text form. Therefore, Azure AD can't automatically generate these NTLM or Kerberos password hashes based on users' existing credentials.
 
 > [!NOTE]
-> Po správné konfiguraci se použitelné hodnoty hash hesel ukládají do spravované domény Azure služba AD DS. Pokud odstraníte spravovanou doménu Azure služba AD DS, odstraní se i všechny hodnoty hash hesel uložené v tomto okamžiku. Informace o synchronizovaných přihlašovacích údajích ve službě Azure AD se nedají znovu použít, pokud později vytvoříte Azure služba AD DS spravované domény – musíte znovu nakonfigurovat synchronizaci hodnot hash hesel, aby se znovu ukládaly hodnoty hash hesel. Virtuální počítače připojené k doméně nebo uživatelé nebudou moct hned ověřit – Azure AD potřebuje vygenerovat a uložit hodnoty hash hesel v nové spravované doméně Azure služba AD DS. Další informace najdete v tématu [proces synchronizace hodnot hash hesel pro Azure služba AD DS a Azure AD Connect][password-hash-sync-process].
+> Once appropriately configured, the usable password hashes are stored in the Azure AD DS managed domain. If you delete the Azure AD DS managed domain, any password hashes stored at that point are also deleted. Synchronized credential information in Azure AD can't be re-used if you later create an Azure AD DS managed domain - you must reconfigure the password hash synchronization to store the password hashes again. Previously domain-joined VMs or users won't be able to immediately authenticate - Azure AD needs to generate and store the password hashes in the new Azure AD DS managed domain. For more information, see [Password hash sync process for Azure AD DS and Azure AD Connect][password-hash-sync-process].
 
-Postup generování a ukládání hodnot hash hesel se liší pro uživatelské účty, které jsou vytvořené v Azure AD, oproti uživatelským účtům, které jsou synchronizované z místního adresáře pomocí Azure AD Connect. Uživatelský účet jenom cloudu je účet vytvořený v adresáři služby Azure AD pomocí webu Azure Portal nebo rutin Azure AD PowerShellu. Tyto uživatelské účty se nesynchronizují z místního adresáře. V tomto kurzu budeme pracovat se základním uživatelským účtem jenom pro Cloud. Další informace o dalších krocích potřebných pro použití Azure AD Connect najdete v tématu [synchronizace hodnot hash hesel u uživatelských účtů synchronizovaných z místní služby AD do spravované domény][on-prem-sync].
+The steps to generate and store these password hashes are different for cloud-only user accounts created in Azure AD versus user accounts that are synchronized from your on-premises directory using Azure AD Connect. Uživatelský účet jenom cloudu je účet vytvořený v adresáři služby Azure AD pomocí webu Azure Portal nebo rutin Azure AD PowerShellu. These user accounts aren't synchronized from an on-premises directory. In this tutorial, let's work with a basic cloud-only user account. For more information on the additional steps required to use Azure AD Connect, see [Synchronize password hashes for user accounts synced from your on-premises AD to your managed domain][on-prem-sync].
 
 > [!TIP]
-> Pokud má tenant služby Azure AD kombinaci uživatelů jenom pro Cloud a uživatelů z místní služby AD, musíte dokončit obě sady kroků.
+> If your Azure AD tenant has a combination of cloud-only users and users from your on-premises AD, you need to complete both sets of steps.
 
-U uživatelských účtů jenom pro Cloud musí uživatelé změnit svoje heslo, aby mohli používat Azure služba AD DS. Tento proces změny hesla způsobí, že se ve službě Azure AD vygenerují a ukládají hodnoty hash hesel pro ověřování pomocí protokolu Kerberos a NTLM. Můžete buď ukončit platnost hesel pro všechny uživatele v tenantovi, kteří potřebují používat Azure služba AD DS, což vynutí změnu hesla při příštím přihlášení, nebo jim dát pokyn k ruční změně hesla. V tomto kurzu ručně změníte heslo uživatele.
+For cloud-only user accounts, users must change their passwords before they can use Azure AD DS. This password change process causes the password hashes for Kerberos and NTLM authentication to be generated and stored in Azure AD. You can either expire the passwords for all users in the tenant who need to use Azure AD DS, which forces a password change on next sign-in, or instruct them to manually change their passwords. For this tutorial, let's manually change a user password.
 
-Než bude moct uživatel resetovat heslo, musí být tenant služby Azure AD [nakonfigurovaný pro Samoobslužné resetování hesla][configure-sspr].
+Before a user can reset their password, the Azure AD tenant must be [configured for self-service password reset][configure-sspr].
 
-Chcete-li změnit heslo pouze pro cloudového uživatele, musí uživatel provést následující kroky:
+To change the password for a cloud-only user, the user must complete the following steps:
 
-1. Přejděte na stránku přístupového panelu Azure AD na adrese [https://myapps.microsoft.com](https://myapps.microsoft.com).
-1. V pravém horním rohu vyberte své jméno a pak v rozevírací nabídce vyberte možnost **profil** .
+1. Go to the Azure AD Access Panel page at [https://myapps.microsoft.com](https://myapps.microsoft.com).
+1. In the top-right corner, select your name, then choose **Profile** from the drop-down menu.
 
     ![Výběr profilu](./media/tutorial-create-instance-advanced/select-profile.png)
 
-1. Na stránce **profil** vyberte **změnit heslo**.
-1. Na stránce **změnit heslo** zadejte stávající (staré) heslo a pak zadejte a potvrďte nové heslo.
-1. Vyberte **Odeslat**.
+1. On the **Profile** page, select **Change password**.
+1. On the **Change password** page, enter your existing (old) password, then enter and confirm a new password.
+1. Select **Submit**.
 
-Může to trvat několik minut, než se změní heslo pro nové heslo, aby bylo možné použít v Azure služba AD DS a úspěšně se přihlašujete k počítačům připojeným ke spravované doméně.
+It takes a few minutes after you've changed your password for the new password to be usable in Azure AD DS and to successfully sign in to computers joined to the managed domain.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Konfigurace nastavení DNS a virtuální sítě pro spravovanou doménu
+> * Configure DNS and virtual network settings for a managed domain
 > * Vytvoření instance Azure AD DS
-> * Přidání uživatelů s právy pro správu do správy domén
-> * Povolení uživatelských účtů pro Azure služba AD DS a generování hodnot hash hesel
+> * Add administrative users to domain management
+> * Enable user accounts for Azure AD DS and generate password hashes
 
-Pokud chcete tuto spravovanou doménu zobrazit v akci, vytvořte virtuální počítač a připojte se k doméně.
+To see this managed domain in action, create and join a virtual machine to the domain.
 
 > [!div class="nextstepaction"]
-> [Připojení virtuálního počítače s Windows serverem k spravované doméně](join-windows-vm.md)
+> [Join a Windows Server virtual machine to your managed domain](join-windows-vm.md)
 
 <!-- INTERNAL LINKS -->
 [tutorial-create-instance]: tutorial-create-instance.md
@@ -242,7 +246,7 @@ Pokud chcete tuto spravovanou doménu zobrazit v akci, vytvořte virtuální po�
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
-[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: vytvoření veřejné Standard Load Balancer – Azure CLI'
-titlesuffix: Azure Load Balancer
-description: Tento rychlý start ukazuje, jak vytvořit veřejný nástroj pro vyrovnávání zatížení pomocí rozhraní Azure CLI.
+title: Quickstart:Create a public Standard Load Balancer - Azure CLI
+titleSuffix: Azure Load Balancer
+description: Tento rychlý start ukazuje, jak pomocí Azure CLI vytvořit veřejný nástroj pro vyrovnávání zatížení.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fb292e268df57dda8ed2db56a915270b7fe51bb2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 30f2fa7537ed481c25940a2ed67c99c58a7a80ed
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839832"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214790"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý Start: vytvoření Standard Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a Standard Load Balancer to load balance VMs using Azure CLI
 
 V tomto rychlém startu se dozvíte, jak vytvořit Load Balancer úrovně Standard. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače se serverem Ubuntu, které mezi sebou budou vyrovnávat zatížení webové aplikace.
 
@@ -89,7 +89,7 @@ Test stavu kontroluje všechny instance virtuálních počítačů a ověřuje, 
 
 ### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *az network lb rule create* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRuleWeb* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -110,7 +110,7 @@ Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Pomocí příkazu *az network vnet create* vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
+Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků *myResourceGroup*.
 
 ```azurecli-interactive
   az network vnet create \
@@ -197,7 +197,7 @@ Vytvořte skupinu dostupnosti pomocí příkazu [az vm availabilityset create](/
     --name myAvailabilitySet
 ```
 
-### <a name="create-three-virtual-machines"></a>Vytvoření tří virtuálních počítačů
+### <a name="create-three-virtual-machines"></a>Create three virtual machines
 
 K instalaci serveru NGINX a spuštění aplikace Hello World v Node.js na virtuálním počítači s Linuxem můžete použít konfigurační soubor cloud-init. V aktuálním prostředí vytvořte soubor cloud-init.txt a zkopírujte následující konfiguraci a vložte ji do prostředí. Ujistěte se, že správně kopírujete celý soubor cloud-init, zejména první řádek:
 

@@ -1,5 +1,5 @@
 ---
-title: Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Azure Resource Manageru
+title: Tutorial`:` Use managed identity to access Azure Resource Manager - Windows - Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33079303f7f2239b7de4d8a92e78acaf205bfbd5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4431031e5e96c71c6488b57cc570271d763bb764
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236082"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224272"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru
 
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak získat přístup k rozhraní API Azure
 > * Udělení přístupu virtuálnímu počítači ke skupině prostředků v Azure Resource Manageru 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure Resource Manageru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -42,12 +42,12 @@ Když použijete spravované identity pro prostředky Azure, může kód získat
 1.  Přejděte ke kartě **Skupiny prostředků**. 
 2.  Vyberte **skupinu prostředků**, kterou jste pro **virtuální počítač s Windows** vytvořili. 
 3.  Na panelu vlevo přejděte na **Řízení přístupu (IAM)** . 
-4.  Potom **přidat přiřazení role** přiřazení nové role pro vaše **virtuálního počítače Windows**.  V poli **Role** zvolte **Čtenář**. 
+4.  Then **Add role assignment** a new role assignment for your **Windows VM**.  V poli **Role** zvolte **Čtenář**. 
 5.  V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte prostředek **Virtuální počítač**. 
 6.  Potom zkontrolujte, že je v rozevíracím seznamu **Předplatné** uvedené správné předplatné. A ve **skupině prostředků** vyberte **Všechny skupiny prostředků**. 
 7.  Nakonec **vyberte** v rozevíracím seznamu svůj virtuální počítač s Windows a klikněte na **Uložit**.
 
-    ![Text k alternativnímu obrázku](media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
+    ![Alternativní text k obrázku](media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí spravované identity přiřazené systémem virtuálního počítače a jeho použití k volání Azure Resource Manageru 
 
@@ -56,7 +56,7 @@ V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nem�
 1.  Na portálu přejděte na **Virtuální počítače**, přejděte na svůj virtuální počítač s Windows a v části **Přehled** klikněte na **Připojit**. 
 2.  Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
 3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**. 
-4.  Pomocí rutiny Invoke-WebRequest, vytvořte žádost na místní spravovanou identitu pro koncový bod prostředků Azure získat přístupový token pro Azure Resource Manageru.
+4.  Using the Invoke-WebRequest cmdlet, make a request to the local managed identity for Azure resources endpoint to get an access token for Azure Resource Manager.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -76,7 +76,7 @@ V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nem�
     $ArmToken = $content.access_token
     ```
     
-    Nakonec proveďte pomocí přístupového tokenu volání Azure Resource Manageru. V tomto příkladu jsme také používáte rutiny Invoke-WebRequest volání do Azure Resource Manageru a zahrnout přístupového tokenu v autorizační hlavičce.
+    Nakonec proveďte pomocí přístupového tokenu volání Azure Resource Manageru. In this example, we're also using the Invoke-WebRequest cmdlet to make the call to Azure Resource Manager, and include the access token in the Authorization header.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content
@@ -90,9 +90,9 @@ V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nem�
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}}
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak pomocí spravované identity přiřazené systémem získat přístup k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru:
+V tomto rychlém startu jste se dozvěděli, jak pomocí spravované identity přiřazené systémem získat přístup k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru najdete tady:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

@@ -10,6 +10,6 @@
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
           items:
-            - name: IoT Central pro zdravotnictví
+            - name: IoT Central pro zdravotnictví (funkce Preview)
               tocHref: /azure/iot-central/
               topicHref: /azure/iot-central/healthcare/index/

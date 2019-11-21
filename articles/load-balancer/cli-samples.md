@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure CLI pro nástroj pro vyrovnávání zatížení
-titlesuffix: Azure Load Balancer
+title: Azure CLI Samples for Load Balancer
+titleSuffix: Azure Load Balancer
 description: Ukázky Azure CLI
 services: load-balancer
 documentationcenter: load-balancer
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 9567dc1425ea74a9f46912532c5b8e4e4afc2fdb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f35007bc3c47aeec9bcdd8a418983b95f6f20ad6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275681"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225419"
 ---
-# <a name="azure-cli-samples-for-load-balancer"></a>Ukázky Azure CLI pro nástroj pro vyrovnávání zatížení
+# <a name="azure-cli-samples-for-load-balancer"></a>Azure CLI Samples for Load Balancer
 
 Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure CLI.
 
 | | |
 |-|-|
-| [Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti](./scripts/load-balancer-linux-cli-sample-nlb.md) | Vytvoří několik virtuálních počítačů v s vysokou dostupností a s vyrovnáváním zatížení konfigurace. |
-| [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti](./scripts/load-balancer-linux-cli-sample-zone-redundant-frontend.md) | Vytvoří tři virtuální počítače v různých zón dostupnosti v rámci oblasti a Load balanceru úrovně Standard se zónově redundantních front-endovou IP adresou. Tato konfigurace nástroje pro vyrovnávání zatížení pomáhá chránit vaše aplikace a data z málo pravděpodobným selháním nebo ztrátou celého datového centra. |
-|[Vyrovnávání zatížení virtuálních počítačů v konkrétní zóně dostupnosti](./scripts/load-balancer-linux-cli-sample-zonal-frontend.md)|Vytvoří tři virtuální počítače, Load balanceru úrovně Standard s IP Adresou oblastmi front-endu, který pomáhá zarovnat cestu k datům a prostředkům v jedné zóně pro příslušnou oblast.|
-| [Vyvažovat zatížení u více webů na virtuálních počítačích](./scripts/load-balancer-linux-cli-load-balance-multiple-websites-vm.md) | Vytvoří dva virtuální počítače s několika konfigurací IP, připojený k skupině dostupnosti Azure, přístupné prostřednictvím služby Azure Load Balancer. |
+| [Load balance traffic to VMs for high availability](./scripts/load-balancer-linux-cli-sample-nlb.md) | Creates several virtual machines in a highly available and load balanced configuration. |
+| [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti](./scripts/load-balancer-linux-cli-sample-zone-redundant-frontend.md) | Creates three VMs in different availability zones within a region and Standard Load Balancer with a zone-redundant frontend IP address. This load balancer configuration helps to protect your apps and data from an unlikely failure or loss of an entire datacenter. |
+|[Vyrovnávání zatížení virtuálních počítačů v konkrétní zóně dostupnosti](./scripts/load-balancer-linux-cli-sample-zonal-frontend.md)|Creates three VMs, a Standard Load Balancer with zonal frontend IP that helps align data path and resources in a single zone for a given region.|
+| [Load balance multiple websites on VMs](./scripts/load-balancer-linux-cli-load-balance-multiple-websites-vm.md) | Creates two VMs with multiple IP configurations, joined to an Azure Availability Set, accessible through an Azure Load Balancer. |
 | | |
 

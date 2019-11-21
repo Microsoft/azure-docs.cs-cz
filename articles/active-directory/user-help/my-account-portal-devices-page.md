@@ -1,6 +1,6 @@
 ---
-title: Správa připojených zařízení na portálu Můj účet – Azure AD
-description: Jak zobrazit a zakázat připojená zařízení ze stránky zařízení na portálu Můj účet.
+title: Manage your connected devices from the My Account portal - Azure AD
+description: How to view and disable devices connected to your work or school account from the Devices page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0eb691abaabf09ae8f89354e1fdb6f18cf8e5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73804259"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233216"
 ---
-# <a name="manage-your-connected-devices-from-the-my-account-portal"></a>Správa připojených zařízení z portálu Můj účet
+# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Manage devices connected to your work or school account from the Devices page
 
-Na stránce **zařízení** na portálu **můj účet** můžete:
+From the **Devices** page of the **My Account** portal, you can:
 
-- Zobrazit zařízení připojená k pracovnímu nebo školnímu účtu.
+- View your work or school account-connected devices.
 
-- Zakažte všechna zařízení, která už nevlastníte, ztratila nebo která byla odcizena.
+- Disable any devices you no longer own, have lost, or that have been stolen.
 
-## <a name="view-your-connected-devices"></a>Zobrazit připojená zařízení
+## <a name="view-your-connected-devices"></a>View your connected devices
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. V levém navigačním podokně vyberte **zařízení** nebo vyberte odkaz **spravovat zařízení** z bloku **zařízení** .
+2. Select **Devices** from the left navigation pane or select the **Manage devices** link from the **Devices** block.
 
-    ![Stránka můj účet zobrazující odkazy na zvýrazněná zařízení](media/my-account-portal/my-account-portal-devices.png)
+    ![My Account page, showing highlighted Devices links](media/my-account-portal/my-account-portal-devices.png)
 
-3. Zkontrolujte informace o připojených zařízeních a ujistěte se, že jsou všechny rozpoznány.
+3. Review the information for your connected devices, making sure you recognize them all.
 
-    ![Stránka zařízení, která zobrazuje připojená zařízení](media/my-account-portal/my-account-portal-devices-page.png)
+    ![Device page, showing connected devices](media/my-account-portal/my-account-portal-devices-page.png)
 
-## <a name="disable-a-device"></a>Zakázání zařízení
+## <a name="disable-a-device"></a>Disable a device
 
-Všechna připojená zařízení můžete kdykoli zakázat. To je obzvláště důležité, pokud vám zařízení není známé nebo pokud dojde ke ztrátě nebo odcizení zařízení. Když zařízení zakážete, už ho nebude možné ověřit ve vaší organizaci a nebude moct získat přístup k žádným prostředkům vaší organizace.
+You can disable any of your connected devices at any time. This is especially important if a device isn't familiar to you or if a device is lost or stolen. After you disable a device, it can no longer be authenticated by your organization, and will be unable to access any of your organization's resources.
 
 >[!Important]
->Pokud zařízení zakážete omylem, neexistuje žádný způsob, jak ho vrátit zpátky. Budete muset požádat správce vaší organizace, aby zařízení znovu přidal.
+>If you disable a device by mistake, there's no way to undo it. You'll have to contact your organization's administrator to add the device again.
 
-1. V zařízení, které chcete odebrat, vyberte **Zakázat** .
+1. Select **Disable** from the device you want to remove.
 
-    ![Stránka zařízení se zvýrazněným odkazem zakázat](media/my-account-portal/my-account-portal-devices-disable.png)
+    ![Device page with highlighted Disable link](media/my-account-portal/my-account-portal-devices-disable.png)
 
-2. Vyberte **Ano** a potvrďte tak, že chcete zařízení zakázat.
+2. Select **Yes** to confirm you want to disable the device.
 
-## <a name="view-a-bitlocker-key"></a>Zobrazit klíč BitLockeru
+## <a name="view-a-bitlocker-key"></a>View a BitLocker key
 
-Pokud jste se odhlásili ze zařízení nebo máte závažnou chybu, můžete přejít na jiné zařízení a zobrazit klíč BitLockeru na portálu **můj účet** .
+If you're locked out of your device or have a fatal error, you can go to another device and view your BitLocker key from the **My Account** portal.
 
-1. Na jiném zařízení, kde nejste uzamčeni, přejdete na stránku **zařízení** na portálu **můj účet** .
+1. On another device, where you're not locked out, go to the **Devices** page of the **My Account** portal.
 
-    ![Stránka zařízení s možností klíče BitLockeru](media/my-account-portal/my-account-portal-devices-bitlocker.png)
+    ![Device page with BitLocker key option](media/my-account-portal/my-account-portal-devices-bitlocker.png)
 
-2. Vyberte možnost **Zobrazit klíče BitLockeru** pro zařízení se zámkem a zapište klíč BitLockeru pro vaše zamčené zařízení.
+2. Select **View Bitlocker Keys** for the locked out device and write down the BitLocker key for your locked device.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po zobrazení připojených zařízení můžete:
+After viewing your connected devices, you can:
 
-- Tuto možnost vyberte, pokud chcete zobrazit nebo spravovat své [bezpečnostní údaje](user-help-security-info-overview.md).
+- Select to view or manage your [security info](user-help-security-info-overview.md).
 
-- Umožňuje zobrazit a spravovat vaše [organizace](my-account-portal-organizations-page.md).
+- View and manage your [organizations](my-account-portal-organizations-page.md).
 
-- Zobrazit [přihlašovací aktivitu](my-account-portal-sign-ins-page.md)
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- Podívejte se, jak vaše organizace [používá data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

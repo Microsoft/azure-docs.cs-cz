@@ -1,46 +1,46 @@
 ---
-title: Dynamické vytvoření svazku souborů pro více lusků ve službě Azure Kubernetes (AKS)
-description: Zjistěte, jak dynamicky vytvořit trvalý svazek se soubory Azure pro použití s několika souběžnými lusky ve službě Azure Kubernetes Service (AKS).
+title: Dynamically create a Files volume for multiple pods in Azure Kubernetes Service (AKS)
+description: Learn how to dynamically create a persistent volume with Azure Files for use with multiple concurrent pods in Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: mlearned
-ms.openlocfilehash: 045fcb3286c89097459a4a8405d22ee70e44c205
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 999e106240a8a1d95c35d098062d474a0b57228d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018827"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231756"
 ---
-# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku se soubory Azure ve službě Azure Kubernetes Service (AKS)
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamically create and use a persistent volume with Azure Files in Azure Kubernetes Service (AKS)
 
-Trvalý svazek představuje část úložiště, která byla zřízena pro použití s Kubernetes lusky. Trvalý svazek lze použít v jednom nebo mnoha luskech a lze jej dynamicky nebo staticky zřídit. Pokud více lusků potřebuje souběžný přístup ke stejnému svazku úložiště, můžete použít soubory Azure pro připojení pomocí [protokolu SMB (Server Message Block)][smb-overview]. V tomto článku se dozvíte, jak dynamicky vytvořit sdílenou složku Azure Files pro použití v několika luskech v clusteru Azure Kubernetes Service (AKS).
+A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or many pods, and can be dynamically or statically provisioned. If multiple pods need concurrent access to the same storage volume, you can use Azure Files to connect using the [Server Message Block (SMB) protocol][smb-overview]. This article shows you how to dynamically create an Azure Files share for use by multiple pods in an Azure Kubernetes Service (AKS) cluster.
 
-Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
+For more information on Kubernetes volumes, see [Storage options for applications in AKS][concepts-storage].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
+This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+You also need the Azure CLI version 2.0.59 or later installed and configured. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
 
-## <a name="create-a-storage-class"></a>Vytvoření třídy úložiště
+## <a name="create-a-storage-class"></a>Create a storage class
 
-Třída úložiště se používá k definování způsobu vytvoření sdílené složky Azure. Účet úložiště se automaticky vytvoří ve [skupině prostředků uzlu][node-resource-group] pro použití s třídou úložiště pro ukládání sdílených složek Azure. Vyberte následující [redundanci úložiště Azure][storage-skus] pro *skuName*:
+A storage class is used to define how an Azure file share is created. A storage account is automatically created in the [node resource group][node-resource-group] for use with the storage class to hold the Azure file shares. Choose of the following [Azure storage redundancy][storage-skus] for *skuName*:
 
-* *Standard_LRS* – standardní místně redundantní úložiště (LRS)
-* *Standard_GRS* – standardní geograficky redundantní úložiště (GRS)
-* *Standard_RAGRS* – standardní geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)
-* *Premium_LRS* – místně redundantní úložiště (LRS)
+* *Standard_LRS* - standard locally redundant storage (LRS)
+* *Standard_GRS* - standard geo-redundant storage (GRS)
+* *Standard_RAGRS* - standard read-access geo-redundant storage (RA-GRS)
+* *Premium_LRS* - premium locally redundant storage (LRS)
 
 > [!NOTE]
-> Služba soubory Azure podporuje Premium Storage v clusterech AKS se systémem Kubernetes 1,13 nebo vyšším.
+> Azure Files support premium storage in AKS clusters that run Kubernetes 1.13 or higher.
 
-Další informace o třídách úložiště Kubernetes pro soubory Azure najdete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes].
+For more information on Kubernetes storage classes for Azure Files, see [Kubernetes Storage Classes][kubernetes-storage-classes].
 
-Vytvořte soubor s názvem `azure-file-sc.yaml` a zkopírujte ho v následujícím ukázkovém manifestu. Další informace o *mountOptions*najdete v části [Možnosti připojení][mount-options] .
+Create a file named `azure-file-sc.yaml` and copy in the following example manifest. For more information on *mountOptions*, see the [Mount options][mount-options] section.
 
 ```yaml
 kind: StorageClass
@@ -60,54 +60,17 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Vytvořte třídu úložiště pomocí příkazu [kubectl Apply][kubectl-apply] :
+Create the storage class with the [kubectl apply][kubectl-apply] command:
 
 ```console
 kubectl apply -f azure-file-sc.yaml
 ```
 
-## <a name="create-a-cluster-role-and-binding"></a>Vytvoření role clusteru a vazby
+## <a name="create-a-persistent-volume-claim"></a>Create a persistent volume claim
 
-Clustery AKS používají řízení přístupu na základě role (RBAC) Kubernetes k omezení akcí, které je možné provést. *Role* definují oprávnění pro udělení a *vazby* je použijí pro požadované uživatele. Tato přiřazení lze použít na daný obor názvů nebo v celém clusteru. Další informace najdete v tématu [použití autorizace RBAC][kubernetes-rbac].
+A persistent volume claim (PVC) uses the storage class object to dynamically provision an Azure file share. The following YAML can be used to create a persistent volume claim *5 GB* in size with *ReadWriteMany* access. For more information on access modes, see the [Kubernetes persistent volume][access-modes] documentation.
 
-Pokud chcete platformě Azure dovolit, aby vytvořila požadované prostředky úložiště, vytvořte *ClusterRole* a *ClusterRoleBinding*. Vytvořte soubor s názvem `azure-pvc-roles.yaml` a zkopírujte ho do následujícího YAML:
-
-```yaml
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: system:azure-cloud-provider
-rules:
-- apiGroups: ['']
-  resources: ['secrets']
-  verbs:     ['get','create']
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: system:azure-cloud-provider
-roleRef:
-  kind: ClusterRole
-  apiGroup: rbac.authorization.k8s.io
-  name: system:azure-cloud-provider
-subjects:
-- kind: ServiceAccount
-  name: persistent-volume-binder
-  namespace: kube-system
-```
-
-Přiřaďte oprávnění pomocí příkazu [kubectl Apply][kubectl-apply] :
-
-```console
-kubectl apply -f azure-pvc-roles.yaml
-```
-
-## <a name="create-a-persistent-volume-claim"></a>Vytvoření deklarace identity trvalého svazku
-
-Deklarace trvalého svazku (PVC) používá objekt třídy úložiště k dynamickému zřízení sdílené složky Azure. Následující YAML se dají použít k vytvoření deklarace identity trvalého objemu *5 GB* s přístupem *ReadWriteMany* . Další informace o režimech přístupu najdete v dokumentaci k [trvalému svazku Kubernetes][access-modes] .
-
-Teď vytvořte soubor s názvem `azure-file-pvc.yaml` a zkopírujte ho na následující YAML. Ujistěte se, že *storageClassName* odpovídá třídě úložiště vytvořené v posledním kroku:
+Now create a file named `azure-file-pvc.yaml` and copy in the following YAML. Make sure that the *storageClassName* matches the storage class created in the last step:
 
 ```yaml
 apiVersion: v1
@@ -124,15 +87,15 @@ spec:
 ```
 
 > [!NOTE]
-> Pokud používáte skladové položky *Premium_LRS* pro třídu úložiště, musí být minimální hodnota *úložiště* *100Gi*.
+> If using the *Premium_LRS* sku for your storage class, the minimum value for *storage* must be *100Gi*.
 
-Pomocí příkazu [kubectl Apply][kubectl-apply] vytvořte deklaraci trvalého svazku:
+Create the persistent volume claim with the [kubectl apply][kubectl-apply] command:
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
 ```
 
-Po dokončení se sdílená složka vytvoří. Vytvoří se také tajný kód Kubernetes, který obsahuje informace o připojení a přihlašovací údaje. K zobrazení stavu virtuálního okruhu (PVC) můžete použít příkaz [kubectl Get][kubectl-get] :
+Once completed, the file share will be created. A Kubernetes secret is also created that includes connection information and credentials. You can use the [kubectl get][kubectl-get] command to view the status of the PVC:
 
 ```console
 $ kubectl get pvc azurefile
@@ -141,11 +104,11 @@ NAME        STATUS    VOLUME                                     CAPACITY   ACCE
 azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
 ```
 
-## <a name="use-the-persistent-volume"></a>Použití trvalého svazku
+## <a name="use-the-persistent-volume"></a>Use the persistent volume
 
-Následující YAML vytvoří pod, který pomocí *azurefile* trvalého objemu deklarací identity připojí sdílenou složku Azure na cestě */mnt/Azure* . Pro kontejnery Windows serveru (aktuálně ve verzi Preview v AKS) zadejte *mountPath* pomocí konvence cesty Windows, třeba *:* .
+The following YAML creates a pod that uses the persistent volume claim *azurefile* to mount the Azure file share at the */mnt/azure* path. For Windows Server containers (currently in preview in AKS), specify a *mountPath* using the Windows path convention, such as *'D:'* .
 
-Vytvořte soubor s názvem `azure-pvc-files.yaml`a zkopírujte následující YAML. Ujistěte se, že tento *argument* se shoduje s virtuálním okruhem vytvořeným v posledním kroku.
+Create a file named `azure-pvc-files.yaml`, and copy in the following YAML. Make sure that the *claimName* matches the PVC created in the last step.
 
 ```yaml
 kind: Pod
@@ -172,13 +135,13 @@ spec:
         claimName: azurefile
 ```
 
-Vytvořte pod příkazem [kubectl Apply][kubectl-apply] .
+Create the pod with the [kubectl apply][kubectl-apply] command.
 
 ```console
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-Teď máte spuštěný pod složkou sdílené složky Azure, která je připojená v adresáři */mnt/Azure* . Tato konfigurace se dá zobrazit při kontrole přes `kubectl describe pod mypod`. Následující zhuštěný příklad výstupu ukazuje svazek připojený do kontejneru:
+You now have a running pod with your Azure Files share mounted in the */mnt/azure* directory. This configuration can be seen when inspecting your pod via `kubectl describe pod mypod`. The following condensed example output shows the volume mounted in the container:
 
 ```
 Containers:
@@ -201,9 +164,9 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Možnosti připojení
+## <a name="mount-options"></a>Mount options
 
-Výchozí hodnota pro *FileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kuberetes verze 1.8.5 nebo vyšší a dynamicky vytváříte trvalý svazek s třídou úložiště, můžete v objektu třídy úložiště zadat možnosti připojení. Následující příklad nastaví *0777*:
+The default value for *fileMode* and *dirMode* is *0755* for Kubernetes version 1.9.1 and above. If using a cluster with Kuberetes version 1.8.5 or greater and dynamically creating the persistent volume with a storage class, mount options can be specified on the storage class object. The following example sets *0777*:
 
 ```yaml
 kind: StorageClass
@@ -223,16 +186,16 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Pokud používáte cluster verze 1.8.0-1.8.4, je možné určit kontext zabezpečení s hodnotou *runAsUser* nastavenou na *0*. Další informace o kontextu zabezpečení najdete v tématu [Konfigurace kontextu zabezpečení][kubernetes-security-context].
+If using a cluster of version 1.8.0 - 1.8.4, a security context can be specified with the *runAsUser* value set to *0*. For more information on Pod security context, see [Configure a Security Context][kubernetes-security-context].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Související osvědčené postupy najdete [v tématu osvědčené postupy pro úložiště a zálohování v AKS][operator-best-practices-storage].
+For associated best practices, see [Best practices for storage and backups in AKS][operator-best-practices-storage].
 
-Přečtěte si další informace o Kubernetes trvalých svazcích pomocí souborů Azure.
+Learn more about Kubernetes persistent volumes using Azure Files.
 
 > [!div class="nextstepaction"]
-> [Modul plug-in Kubernetes pro soubory Azure][kubernetes-files]
+> [Kubernetes plugin for Azure Files][kubernetes-files]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes

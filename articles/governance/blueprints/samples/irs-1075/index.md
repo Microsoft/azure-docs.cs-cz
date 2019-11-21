@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu IRS 1075 – přehled
 description: Přehled ukázky podrobného plánu IRS 1075 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly IRS 1075.
 ms.date: 11/19/2019
 ms.topic: sample
-ms.openlocfilehash: f713f6a59f439b2d5cb9df0860d16ff761304b4b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1d2fdac47c590e663a51c11f54a3a135a7a0ed3d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210187"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267378"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>Přehled ukázky podrobného plánu IRS 1075
 
@@ -24,6 +24,7 @@ Prošli jste si přehled ukázky podrobného plánu IRS 1075. Jako další si pr
 
 > [!div class="nextstepaction"]
 > [Podrobný plán IRS 1075 – mapování kontrol](./control-mapping.md)
+> [Podrobný plán IRS 1075 – kroky nasazení](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

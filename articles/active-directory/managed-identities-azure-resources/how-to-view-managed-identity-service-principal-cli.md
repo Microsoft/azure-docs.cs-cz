@@ -1,6 +1,6 @@
 ---
-title: Postup zobrazení instanční objekt spravovanou identitu pomocí Azure CLI
-description: Podrobné pokyny pro zobrazení instanční objekt spravovanou identitu pomocí Azure CLI.
+title: View service principal of a managed identity - Azure CLI - Azure AD
+description: Step-by-step instructions for viewing the service principal of a managed identity using Azure CLI.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,41 +15,41 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f379c78113a4edc1efc288617a8a1c205d03552a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ba60fdfefb5d741e92a56d2dc61eb058ac26b5ba
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60442280"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224603"
 ---
-# <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Zobrazení instanční objekt spravovanou identitu pomocí Azure CLI
+# <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>View the service principal of a managed identity using Azure CLI
 
-Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD bez nutnosti přihlašovací údaje ve vašem kódu. 
+Managed identities for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication without having credentials in your code. 
 
-V tomto článku se dozvíte, jak chcete-li zobrazit instanční objekt spravovanou identitu pomocí Azure CLI.
+In this article, you learn how to view the service principal of a managed identity using Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md).
-- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
-- Povolit [identitou přiřazenou systémem ve virtuálním počítači](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) nebo [aplikace](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
-- Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
-    - Použití [Azure Cloud Shell](../../cloud-shell/overview.md) z portálu Azure portal (viz další část).
-    - Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu.
-    - [Nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) Pokud budete chtít použít místní konzoly příkazového řádku a přihlášení do Azure s využitím `az login`
+- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md).
+- If you don't already have an Azure account, [sign up for a free account](https://azure.microsoft.com/free/).
+- Enable [system assigned identity on a virtual machine](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) or [application](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
+- To run the CLI script examples, you have three options:
+    - Use [Azure Cloud Shell](../../cloud-shell/overview.md) from the Azure portal (see next section).
+    - Use the embedded Azure Cloud Shell via the "Try It" button, located in the top right corner of each code block.
+    - [Install the latest version of the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) if you prefer to use a local CLI console and sign in to Azure using `az login`
  
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="view-the-service-principal"></a>Zobrazení instanční objekt služby
+## <a name="view-the-service-principal"></a>View the service principal
 
-Tento následující příkaz ukazuje, jak zobrazit instanční objekt služby virtuálního počítače nebo aplikace s využitím spravované identity povolené. Nahraďte `<VM or application name>` vlastními hodnotami. 
+This following command demonstrates how to view the service principal of a VM or application with managed identity enabled. Replace `<VM or application name>` with your own values. 
 
 ```azurecli-interactive
 az ad sp list --display-name <VM or application name>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o správě instančních objektů Azure AD pomocí Azure CLI najdete v tématu [az ad sp](/cli/azure/ad/sp).
+For more information on managing Azure AD service principals using Azure CLI, see [az ad sp](/cli/azure/ad/sp).
 
 

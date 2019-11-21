@@ -1,22 +1,16 @@
 ---
-title: Vytvoření funkce aktivované zprávami ve frontě v Azure | Dokumentace Microsoftu
+title: Create a function in Azure triggered by queue messages
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou vyvolávají zprávy odeslané do fronty služby Azure Storage.
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 10/01/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 60c8505b8180a60eed114deb4cd2b11f32c8baa4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3f4e9f8a607856e3de92a4824a4221071f3c02a4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096808"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227142"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Vytvoření funkce aktivované službou Azure Queue Storage
 
@@ -24,7 +18,7 @@ Zjistěte, jak vytvořit funkci, která se aktivuje při odeslání zpráv do fr
 
 ![Zobrazte si zprávy v protokolech.](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
@@ -114,7 +108,7 @@ Teď máte frontu úložiště a můžete funkci otestovat přidáním zprávy d
 
 Vytvořili jste funkci, která se spustí při přidání zprávy do fronty úložiště. Další informace o aktivačních událostech fronty úložiště najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md).
 
-Teď, když máte vytvořenou první funkci, přidáme výstupní vazbu do funkce, která zapíše zprávu zpět do jiné fronty.
+Now that you have a created your first function, let's add an output binding to the function that writes a message back to another queue.
 
 > [!div class="nextstepaction"]
 > [Přidání zpráv do fronty Azure Storage pomocí funkcí](functions-integrate-storage-queue-output-binding.md)

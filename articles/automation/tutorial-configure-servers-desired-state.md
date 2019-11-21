@@ -1,6 +1,6 @@
 ---
 title: Konfigurace serverů do požadovaného stavu a správa odchylek s využitím Azure Automation
-description: Kurz – Správa konfigurací serveru s konfigurací stavu Azure Automation
+description: Tutorial - Manage server configurations with Azure Automation State Configuration
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,32 +9,32 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 72e5018dc1212e57dc190c05cc54158d37ca7fe1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432062"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231500"
 ---
-# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů do požadovaného stavu a Správa posunu
+# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Configure servers to a desired state and manage drift
 
-Konfigurace stavu Azure Automation umožňuje zadat konfigurace pro vaše servery a zajistit, aby tyto servery byly v zadaném stavu v průběhu času.
+Azure Automation State Configuration allows you to specify configurations for your servers and ensure that those servers are in the specified state over time.
 
 > [!div class="checklist"]
-> - Připojit virtuální počítač, který se má spravovat pomocí Azure Automation DSC
-> - Nahrajte konfiguraci do Azure Automation
-> - Kompilace konfigurace do konfigurace uzlu
-> - Přiřazení konfigurace uzlu spravovanému uzlu
-> - Zkontroluje stav dodržování předpisů spravovaného uzlu.
+> - Onboard a VM to be managed by Azure Automation DSC
+> - Upload a configuration to Azure Automation
+> - Compile a configuration into a node configuration
+> - Assign a node configuration to a managed node
+> - Check the compliance status of a managed node
 
 ## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
 - Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
-- Azure Resource Manager virtuální počítač (ne Classic) se systémem Windows Server 2008 R2 nebo novějším. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření vašeho prvního virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
-- Azure PowerShell modul verze 3,6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
-- Znalost konfigurace požadovaného stavu (DSC). Informace o DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview) .
+- An Azure Resource Manager VM (not Classic) running Windows Server 2008 R2 or later. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření vašeho prvního virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+- Azure PowerShell module version 3.6 or later. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+- Familiarity with Desired State Configuration (DSC). For information about DSC, see [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -44,9 +44,9 @@ Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` 
 Connect-AzureRmAccount
 ```
 
-## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Vytvoření a nahrání konfigurace pro Azure Automation
+## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Create and upload a configuration to Azure Automation
 
-V tomto kurzu použijeme jednoduchou konfiguraci DSC, která zajistí, že se na virtuálním počítači nainstaluje služba IIS.
+For this tutorial, we will use a simple DSC configuration that ensures that IIS is installed on the VM.
 
 Informace o konfiguracích DSC najdete v tématu [Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations).
 
@@ -65,62 +65,62 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> V pokročilejších scénářích, kdy potřebujete importovat více modulů, které poskytují prostředky DSC, se ujistěte, že každý modul má v konfiguraci jedinečný řádek `Import-DscResource`.
+> In more advanced scenarios where you require multiple modules to be imported that provide DSC Resources, make sure each module has a unique `Import-DscResource` line in your configuration.
 
-Voláním rutiny `Import-AzureRmAutomationDscConfiguration` nahrajte konfiguraci do svého účtu Automation:
+Call the `Import-AzureRmAutomationDscConfiguration` cmdlet to upload the configuration into your Automation account:
 
 ```powershell
  Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
 ```
 
-## <a name="compile-a-configuration-into-a-node-configuration"></a>Kompilace konfigurace do konfigurace uzlu
+## <a name="compile-a-configuration-into-a-node-configuration"></a>Compile a configuration into a node configuration
 
-Konfigurace DSC musí být zkompilována do konfigurace uzlu před tím, než může být přiřazena k uzlu.
+A DSC configuration must be compiled into a node configuration before it can be assigned to a node.
 
-Informace o kompilaci konfigurací najdete v tématu [Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations).
+For information about compiling configurations, see [DSC configurations](/powershell/scripting/dsc/configurations/configurations).
 
-Voláním rutiny `Start-AzureRmAutomationDscCompilationJob` zkompilujte konfiguraci `TestConfig` do konfigurace uzlu:
+Call the `Start-AzureRmAutomationDscCompilationJob` cmdlet to compile the `TestConfig` configuration into a node configuration:
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
 ```
 
-Tím se ve vašem účtu Automation vytvoří konfigurace uzlu s názvem `TestConfig.WebServer`.
+This creates a node configuration named `TestConfig.WebServer` in your Automation account.
 
-## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Registrace virtuálního počítače, který se má spravovat pomocí konfigurace stavu
+## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Register a VM to be managed by State Configuration
 
-Konfiguraci stavu Azure Automation můžete použít ke správě virtuálních počítačů Azure (klasických i Správce prostředků), místních virtuálních počítačů, počítačů se systémem Linux, virtuálních počítačů s AWS a místních fyzických počítačů. V tomto tématu se zabýváme registrací jenom Azure Resource Manager virtuálních počítačů. Informace o registraci jiných typů počítačů najdete v tématu věnovaném [připojování počítačů ke správě podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
+You can use Azure Automation State Configuration to manage Azure VMs (both Classic and Resource Manager), on-premises VMs, Linux machines, AWS VMs, and on-premises physical machines. In this topic, we cover how to register only Azure Resource Manager VMs. For information about registering other types of machines, see [Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md).
 
-Voláním rutiny `Register-AzureRmAutomationDscNode` zaregistrujete virtuální počítač s konfigurací stavu Azure Automation.
+Call the `Register-AzureRmAutomationDscNode` cmdlet to register your VM with Azure Automation State Configuration.
 
 ```powershell
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
 ```
 
-Zaregistruje zadaný virtuální počítač jako spravovaný uzel v konfiguraci stavu.
+This registers the specified VM as a managed node in State Configuration.
 
-### <a name="specify-configuration-mode-settings"></a>Zadat nastavení režimu konfigurace
+### <a name="specify-configuration-mode-settings"></a>Specify configuration mode settings
 
-Když zaregistrujete virtuální počítač jako spravovaný uzel, můžete také zadat vlastnosti konfigurace. Můžete například určit, že se má stav počítače použít jenom jednou (DSC se nepokusí použít konfiguraci po počáteční kontrole) zadáním `ApplyOnly` jako hodnoty vlastnosti **ConfigurationMode** :
+When you register a VM as a managed node, you can also specify properties of the configuration. For example, you can specify that the state of the machine is to be applied only once (DSC does not attempt to apply the configuration after the initial check) by specifying `ApplyOnly` as the value of the **ConfigurationMode** property:
 
 ```powershell
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationMode 'ApplyOnly'
 ```
 
-Můžete také určit, jak často DSC kontroluje stav konfigurace pomocí vlastnosti **ConfigurationModeFrequencyMins** :
+You can also specify how often DSC checks the configuration state by using the **ConfigurationModeFrequencyMins** property:
 
 ```powershell
 # Run a DSC check every 60 minutes
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationModeFrequencyMins 60
 ```
 
-Další informace o nastavení vlastností konfigurace pro spravovaný uzel naleznete v tématu [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode).
+For more information about setting configuration properties for a managed node, see [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode).
 
-Další informace o nastavení konfigurace DSC najdete v tématu [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
+For more information about DSC configuration settings, see [Configuring the Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
-## <a name="assign-a-node-configuration-to-a-managed-node"></a>Přiřazení konfigurace uzlu spravovanému uzlu
+## <a name="assign-a-node-configuration-to-a-managed-node"></a>Assign a node configuration to a managed node
 
-Nyní můžeme konfiguraci zkompilovaného uzlu přiřadit k virtuálnímu počítači, který chceme nakonfigurovat.
+Now we can assign the compiled node configuration to the VM we want to configure.
 
 ```powershell
 # Get the ID of the DSC node
@@ -130,24 +130,24 @@ $node = Get-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Autom
 Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -NodeConfigurationName 'TestConfig.WebServer' -NodeId $node.Id
 ```
 
-Tím se konfigurace uzlu s názvem `TestConfig.WebServer` přiřadí zaregistrovanému uzlu DSC s názvem `DscVm`.
-Ve výchozím nastavení má uzel DSC kontrolu kompatibility s konfigurací uzlu každých 30 minut.
-Informace o tom, jak změnit interval kontroly dodržování předpisů, najdete v tématu [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
+This assigns the node configuration named `TestConfig.WebServer` to the registered DSC node named `DscVm`.
+By default, the DSC node is checked for compliance with the node configuration every 30 minutes.
+For information about how to change the compliance check interval, see [Configuring the Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
-## <a name="working-with-partial-configurations"></a>Práce s částečnými konfiguracemi
+## <a name="working-with-partial-configurations"></a>Working with Partial Configurations
 
-Konfigurace stavu Azure Automation podporuje použití [částečných konfigurací](/powershell/dsc/pull-server/partialconfigs).
-V tomto scénáři je DSC nakonfigurované pro správu více konfigurací nezávisle a každá konfigurace se načte z Azure Automation.
-K uzlu na účet Automation se ale dá přiřadit jenom jedna konfigurace.
-To znamená, že pokud pro uzel používáte dvě konfigurace, budete potřebovat dva účty Automation.
+Azure Automation State Configuration supports usage of [partial configurations](/powershell/scripting/dsc/pull-server/partialconfigs).
+In this scenario, DSC is configured to manage multiple configurations independently, and each configuration is retrieved from Azure Automation.
+However, only one configuration can be assigned to a node per automation account.
+This means if you are using two configurations for a node you will require two automation accounts.
 
-Podrobnosti o tom, jak registrovat částečnou konfiguraci ze služby vyžádané replikace, najdete v dokumentaci pro [částečné konfigurace](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
+For details about how to register a partial configuration from pull service, see the documentation for [partial configurations](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
 
-Další informace o tom, jak můžou týmy spolupracovat na spolupráci se servery, které používají konfiguraci jako kód, najdete [v tématu Principy role DSC v kanálu CI/CD](/powershell/dsc/overview/authoringadvanced).
+For more information about how teams can work together to collaboratively manage servers using configuration as code see [Understanding DSC's role in a CI/CD Pipeline](/powershell/scripting/dsc/overview/authoringadvanced).
 
-## <a name="check-the-compliance-status-of-a-managed-node"></a>Zkontroluje stav dodržování předpisů spravovaného uzlu.
+## <a name="check-the-compliance-status-of-a-managed-node"></a>Check the compliance status of a managed node
 
-Můžete získat sestavy o stavu dodržování předpisů spravovaného uzlu voláním rutiny `Get-AzureRmAutomationDscNodeReport`:
+You can get reports on the compliance status of a managed node by calling the `Get-AzureRmAutomationDscNodeReport` cmdlet:
 
 ```powershell
 # Get the ID of the DSC node
@@ -160,32 +160,32 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="removing-nodes-from-service"></a>Odebírají se uzly ze služby.
+## <a name="removing-nodes-from-service"></a>Removing nodes from service
 
-Když přidáte uzel do konfigurace stavu Azure Automation, nastavení v místní Configuration Manager jsou nastavena k registraci u služby a konfigurace přijetí a požadované moduly pro konfiguraci počítače.
-Pokud se rozhodnete odebrat uzel ze služby, můžete tak učinit buď pomocí Azure Portal, nebo pomocí rutin AZ.
+When you add a node to Azure Automation State Configuration, the settings in Local Configuration Manager are set to register with the service and pull configurations and required modules to configure the machine.
+If you choose to remove the node from the service, you can do so using either the Azure portal or the Az cmdlets.
 
 > [!NOTE]
-> Zrušení registrace uzlu ze služby nastaví pouze nastavení místního Configuration Manager, aby se uzel již nepřipojoval k této službě.
-> To neplatí pro konfiguraci, která je aktuálně použita pro uzel.
-> Pokud chcete odebrat aktuální konfiguraci, použijte [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) nebo odstraňte místní konfigurační soubor (Toto je jediná možnost pro uzly Linux).
+> Unregistering a node from the service only sets the Local Configuration Manager settings so the node is no longer connecting to the service.
+> This does not effect the configuration that is currently applied to the node.
+> To remove the current configuration, use the [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) or delete the local configuration file (this is the only option for Linux nodes).
 
 ### <a name="azure-portal"></a>Portál Azure
 
-V Azure Automation klikněte v obsahu na **Konfigurace stavu (DSC)** .
-Dalším kliknutím na **uzly** zobrazíte seznam uzlů, které jsou zaregistrované ve službě.
-Klikněte na název uzlu, který chcete odebrat.
-V zobrazení uzlu, které se otevře, klikněte na **zrušit registraci**.
+From Azure Automation, click on **State configuration (DSC)** in the table of contents.
+Next click **Nodes** to view the list of nodes that are registered with the service.
+Click on the name of the node you wish to remove.
+In the Node view that opens, click **Unregister**.
 
 ### <a name="powershell"></a>PowerShell
 
-Pokud chcete zrušit registraci uzlu ze služby konfigurace stavu Azure Automation pomocí prostředí PowerShell, postupujte podle dokumentace k rutině [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+To unregister a node from Azure Automation State Configuration service using PowerShell, follow the documentation for the cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md) .
-- Další informace o připojování uzlů najdete v tématu věnovaném [připojování počítačů ke správě podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md) .
-- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md)
-- Referenční informace k rutinám PowerShellu najdete v tématu [rutiny konfigurace stavu Azure Automation](/powershell/module/azurerm.automation/#automation) .
-- Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/) .
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .
+- To get started, see [Getting started with Azure Automation State Configuration](automation-dsc-getting-started.md)
+- To learn how to onboard nodes, see [Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md)
+- To learn about compiling DSC configurations so that you can assign them to target nodes, see [Compiling configurations in Azure Automation State Configuration](automation-dsc-compile.md)
+- For PowerShell cmdlet reference, see [Azure Automation State Configuration cmdlets](/powershell/module/azurerm.automation/#automation)
+- For pricing information, see [Azure Automation State Configuration pricing](https://azure.microsoft.com/pricing/details/automation/)
+- To see an example of using Azure Automation State Configuration in a continuous deployment pipeline, see [Continuous Deployment Using Azure Automation State Configuration and Chocolatey](automation-dsc-cd-chocolatey.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s SimpleNexus | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SimpleNexus.
+title: 'Tutorial: Azure Active Directory integration with SimpleNexus | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and SimpleNexus.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,189 +15,189 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f8041ecea7c297c6eafdedfbedaae62f61e0e8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d368b6cd809ccf4e428974bf7c82c01bc5e035b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090581"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233421"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Kurz: Integrace Azure Active Directory s SimpleNexus
+# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Tutorial: Azure Active Directory integration with SimpleNexus
 
-V tomto kurzu se dozvíte, jak integrovat SimpleNexus s Azure Active Directory (Azure AD).
-SimpleNexus integraci se službou Azure AD poskytuje následující výhody:
+In this tutorial, you learn how to integrate SimpleNexus with Azure Active Directory (Azure AD).
+Integrating SimpleNexus with Azure AD provides you with the following benefits:
 
-* Můžete řídit ve službě Azure AD, který má přístup k SimpleNexus.
-* Můžete povolit uživatelům být automaticky přihlášeni k SimpleNexus (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* You can control in Azure AD who has access to SimpleNexus.
+* You can enable your users to be automatically signed-in to SimpleNexus (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s SimpleNexus, potřebujete následující položky:
+To configure Azure AD integration with SimpleNexus, you need the following items:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* SimpleNexus jednotného přihlašování povolená předplatného
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* SimpleNexus single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Podporuje SimpleNexus **SP** jednotné přihlašování zahájené pomocí
+* SimpleNexus supports **SP** initiated SSO
 
-## <a name="adding-simplenexus-from-the-gallery"></a>Přidání SimpleNexus z Galerie
+## <a name="adding-simplenexus-from-the-gallery"></a>Adding SimpleNexus from the gallery
 
-Konfigurace integrace SimpleNexus do služby Azure AD, budete muset přidat SimpleNexus z Galerie na váš seznam spravovaných aplikací SaaS.
+To configure the integration of SimpleNexus into Azure AD, you need to add SimpleNexus from the gallery to your list of managed SaaS apps.
 
-**Chcete-li přidat SimpleNexus z galerie, postupujte následovně:**
+**To add SimpleNexus from the gallery, perform the following steps:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SimpleNexus**vyberte **SimpleNexus** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. In the search box, type **SimpleNexus**, select **SimpleNexus** from result panel then click **Add** button to add the application.
 
-     ![SimpleNexus v seznamu výsledků](common/search-new-app.png)
+     ![SimpleNexus in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí SimpleNexus podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v SimpleNexus.
+In this section, you configure and test Azure AD single sign-on with SimpleNexus based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in SimpleNexus needs to be established.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SimpleNexus, které potřebujete k dokončení následujících stavebních bloků:
+To configure and test Azure AD single sign-on with SimpleNexus, you need to complete the following building blocks:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace SimpleNexus Single Sign-On](#configure-simplenexus-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele SimpleNexus](#create-simplenexus-test-user)**  – Pokud chcete mít protějšek Britta Simon SimpleNexus, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure SimpleNexus Single Sign-On](#configure-simplenexus-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create SimpleNexus test user](#create-simplenexus-test-user)** - to have a counterpart of Britta Simon in SimpleNexus that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s SimpleNexus, proveďte následující kroky:
+To configure Azure AD single sign-on with SimpleNexus, perform the following steps:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **SimpleNexus** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. In the [Azure portal](https://portal.azure.com/), on the **SimpleNexus** application integration page, select **Single sign-on**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![SimpleNexus domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+    ![SimpleNexus Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://simplenexus.com/<companyname>_login`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://simplenexus.com/<companyname>_login`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://simplenexus.com/<companyname>`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://simplenexus.com/<companyname>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory SimpleNexus klienta](https://simplenexus.com/sn/contact-us/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [SimpleNexus Client support team](https://simplenexus.com/sn/contact-us/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Federation Metadata XML** from the given options as per your requirement and save it on your computer.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![The Certificate download link](common/metadataxml.png)
 
-6. Na **nastavení SimpleNexus** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. On the **Set up SimpleNexus** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    a. Login URL
 
-    b. Identifikátor Azure AD
+    b. Azure AD Identifier
 
-    c. Adresa URL – odhlášení
+    c. Logout URL
 
-### <a name="configure-simplenexus-single-sign-on"></a>Konfigurace SimpleNexus jednotné přihlašování
+### <a name="configure-simplenexus-single-sign-on"></a>Configure SimpleNexus Single Sign-On
 
-Ke konfiguraci jednotného přihlašování na **SimpleNexus** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [SimpleNexus tým podpory. ](https://simplenexus.com/sn/contact-us/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+To configure single sign-on on **SimpleNexus** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [SimpleNexus support team](https://simplenexus.com/sn/contact-us/). They set this setting to have the SAML SSO connection set properly on both sides.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Select **New user** at the top of the screen.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. In the User properties, perform the following steps.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. In the **User name** field type **brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-V této části je povolit Britta Simon k udělení přístupu k SimpleNexus použití Azure jednotného přihlašování.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to SimpleNexus.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **SimpleNexus**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SimpleNexus**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **SimpleNexus**.
+2. In the applications list, select **SimpleNexus**.
 
-    ![Odkaz SimpleNexus v seznamu aplikací](common/all-applications.png)
+    ![The SimpleNexus link in the Applications list](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-simplenexus-test-user"></a>Vytvoření SimpleNexus testovacího uživatele
+### <a name="create-simplenexus-test-user"></a>Create SimpleNexus test user
 
-Chcete-li povolit uživatele Azure AD se přihlaste k SimpleNexus, musí být poskytnuty do SimpleNexus. V případě SimpleNexus zřizování je ruční úloha provádí správce tenanta.
+In order to enable Azure AD users to log in to SimpleNexus, they must be provisioned into SimpleNexus. In the case of SimpleNexus, provisioning is a manual task performed by the tenant administrator.
 
 > [!NOTE]
-> Můžete použít jakékoli jiné SimpleNexus uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných SimpleNexus uživatelským účtům, zřídit AAD.
+> You can use any other SimpleNexus user account creation tools or APIs provided by SimpleNexus to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Po kliknutí na dlaždici SimpleNexus na přístupovém panelu, můžete by měl být automaticky přihlášeni k SimpleNexus, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the SimpleNexus tile in the Access Panel, you should be automatically signed in to the SimpleNexus for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

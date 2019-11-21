@@ -1,21 +1,21 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2ce75624d2f03943c3d722a1f3a34102e70c698f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67175399"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224568"
 ---
-Azure Data Lake Analytics usnadňuje správu distribuované infrastruktury a složitého kódu. Dynamicky zřizuje prostředky a můžete je použít k analýze datových zdrojů Exabyte. Po dokončení úlohy se automaticky vítr prostředky. Platíte jenom za výpočetní výkon, který jste použili. Při zvětšování a zmenšování objemu uložených dat nebo množství využitých výpočtů nemusíte přepisovat kód. Pokud chcete pro své předplatné zvýšit výchozí omezení, obraťte se na podporu.
+Azure Data Lake Analytics makes the complex task of managing distributed infrastructure and complex code easy. It dynamically provisions resources, and you can use it to do analytics on exabytes of data. When the job completes, it winds down resources automatically. You pay only for the processing power that was used. Při zvýšení nebo snížení objemu uložených dat nebo množství prováděných výpočtů nemusíte přepisovat kód. To raise the default limits for your subscription, contact support.
 
-| **Prostředek** | **Výchozí omezení** | **Komentář** |
+| **Prostředek** | **Výchozí omezení** | **Komentáře** |
 | --- | --- | --- |
-| Maximální počet souběžných úloh |20 | |
-| Maximální počet jednotek analýzy (Austrálie) na účet |250 | Použijte libovolnou kombinaci až do maximálního počtu 250 jednotek Austrálie napříč 20 úlohami. Pokud chcete tento limit zvýšit, kontaktujte podpora Microsoftu. |
-| Maximální velikost skriptu pro odeslání úlohy | 3 MB | |
-| Maximální počet účtů Data Lake Analytics na oblast v rámci předplatného | 5 | Pokud chcete tento limit zvýšit, kontaktujte podpora Microsoftu. |
+| Maximum number of concurrent jobs |20 | |
+| Maximum number of analytics units (AUs) per account |250 | Use any combination of up to a maximum of 250 AUs across 20 jobs. To increase this limit, contact Microsoft Support. |
+| Maximum script size for job submission | 3 MB | |
+| Maximum number of Data Lake Analytics accounts per region per subscription | 5 | To increase this limit, contact Microsoft Support. |

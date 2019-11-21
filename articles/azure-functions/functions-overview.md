@@ -1,32 +1,27 @@
 ---
-title: Přehled Azure Functions | Dokumentace Microsoftu
+title: Přehled Azure Functions
 description: Během několika minut se naučte používat Azure Functions k optimalizaci asynchronních úloh.
-documentationcenter: na
 author: mattchenderson
-manager: jeconnoc
-keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 10/03/2017
-ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f3fc7691fc3afa3a1fe886655353d9ed41f631cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 28a2732965ee0a19f69dcd0fc2cd7705cb5f94a1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096080"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230437"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Seznámení s Azure Functions  
-Azure Functions je řešení umožňující snadno spouštět malé kódy (tzv. „funkce“) v cloudu. Můžete napsat přesně takový kód, jaký potřebujete pro aktuální problém, a nestarat se o infrastrukturu k jeho spuštění nebo aplikaci jako celek. Funkce můžou zvýšit produktivitu vývoje a můžete použít svůj vývojářský jazyk podle vlastního výběru, například C#Java, JavaScript, PowerShell a Python. Plaťte pouze za čas, kdy kód běží, a potřebné škálování svěřte Azure. Služba Azure Functions umožňuje v Microsoft Azure vytvářet aplikace [bez serveru](https://azure.microsoft.com/solutions/serverless/).
+Azure Functions je řešení umožňující snadno spouštět malé kódy (tzv. „funkce“) v cloudu. Můžete napsat přesně takový kód, jaký potřebujete pro aktuální problém, a nestarat se o infrastrukturu k jeho spuštění nebo aplikaci jako celek. Functions can make development even more productive, and you can use your development language of choice, such as C#, Java, JavaScript, PowerShell, and Python. Plaťte pouze za čas, kdy kód běží, a potřebné škálování svěřte Azure. Služba Azure Functions umožňuje v Microsoft Azure vytvářet aplikace [bez serveru](https://azure.microsoft.com/solutions/serverless/).
 
 Toto téma obsahuje obecný přehled Azure Functions. Pokud chcete rovnou začít používat službu Functions, začněte tématem [Vytvoření první funkce Azure](functions-create-first-azure-function.md). Pokud hledáte další odborné informace o Functions, přejděte k části [referenční informace pro vývojáře](functions-reference.md).
 
 ## <a name="features"></a>Funkce
 Toto jsou některé klíčové funkce služby Functions:
 
-* **Volba jazyka** – Write Functions podle vašeho výběru C#, jazyků Java, JavaScriptu, Pythonu a dalších jazyků. Úplný seznam najdete v části [podporované jazyky](supported-languages.md) .
+* **Choice of language** - Write functions using your choice of C#, Java, Javascript, Python, and other languages. See [Supported languages](supported-languages.md) for the complete list.
 * **Cenový model platba za použití** – Platíte jen za čas, kdy byl kód spuštěný. Viz možnost plánu hostování Consumption v [části týkající se cen](#pricing).  
 * **Přineste si vlastní závislosti** – Functions podporuje NuGet a NPM, takže můžete používat své oblíbené knihovny.  
 * **Integrované zabezpečení** – Chraňte funkce aktivované protokolem HTTP pomocí poskytovatelů OAuth, jako jsou Azure Active Directory, Facebook, Google, Twitter a účet Microsoft.  
@@ -45,7 +40,7 @@ Functions poskytuje šablony, které vám pomůžou začít s klíčovými scén
 * **BlobTrigger** – Zpracování objektů blob Azure Storage po jejich přidání do kontejnerů. Tuto funkci můžete použít k změně velikosti imagí. Další informace najdete v tématu [Vazby služby Blob Storage](functions-bindings-storage-blob.md).
 * **QueueTrigger** – Reakce na zprávy přicházející do fronty Azure Storage. Další informace najdete v tématu věnovaném [vazbám úložiště fronty Azure](functions-bindings-storage-queue.md).
 * **EventGridTrigger** – Reakce na události doručené do předplatného ve službě Azure Event Grid. Podporuje model založený na předplatném pro příjem událostí, který zahrnuje filtrování. Dobré řešení pro vytváření architektury založené na událostech. Například viz [automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
-* **EventHubTrigger** – Reakce na události doručené do centra událostí Azure. Zvláště užitečné ve scénářích instrumentace aplikací, zkušenostech s uživatelem nebo zpracováním pracovních postupů a na internetu (IoT). Další informace najdete v tématu [Vazby služby Event Hubs](functions-bindings-event-hubs.md).
+* **EventHubTrigger** – Reakce na události doručené do centra událostí Azure. Particularly useful in application instrumentation, user experience or workflow processing, and internet-of-things (IoT) scenarios. Další informace najdete v tématu [Vazby služby Event Hubs](functions-bindings-event-hubs.md).
 * **ServiceBusQueueTrigger** – Připojení kódu k jiným službám Azure nebo místním službám prostřednictvím naslouchání frontě zpráv. Další informace najdete v tématu [Vazby služby Service Bus](functions-bindings-service-bus.md).
 * **ServiceBusTopicTrigger** – Připojení kódu k jiným službám Azure nebo místním službám prostřednictvím registrace k odběru témat. Další informace najdete v tématu [Vazby služby Service Bus](functions-bindings-service-bus.md).
 

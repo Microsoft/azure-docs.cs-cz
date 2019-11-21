@@ -2,21 +2,21 @@
 title: Kurz – Vytvoření vlastních záznamů Azure DNS pro webovou aplikaci
 description: V tomto kurzu vytvoříte pomocí Azure DNS vlastní záznamy domény DNS pro webovou aplikaci.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 9d7a277db7550c1850ec0c9d555553064ab19f7c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: e0a0129f45e5e7612b6ecd79475a49822b42ba19
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730276"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211208"
 ---
-# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření záznamů DNS v vlastní domény pro webovou aplikaci 
+# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
 
-Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Například můžete vytvořit webovou aplikaci Azure a mají uživatelé přístup pomocí obou www\.contoso.com nebo contoso.com jako použitím plně kvalifikovaného názvu domény (FQDN).
+Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. For example, you can create an Azure web app and have your users access it using either www\.contoso.com or contoso.com as a fully qualified domain name (FQDN).
 
 > [!NOTE]
 > V tomto kurzu se jako příklad používá doména contoso.com. Doménu contoso.com nahraďte vlastním názvem domény.
@@ -43,11 +43,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Musí mít název domény, který je k dispozici pro testování, můžete hostovat v Azure DNS. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
+* You must have a domain name available to test with that you can host in Azure DNS . Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 * [Vytvořit plán služby App Service](../app-service/app-service-web-get-started-html.md) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 
 * Vytvořte v Azure DNS zónu DNS a prostřednictvím svého registrátora ji delegujte na Azure DNS.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Služba App Services používá tento záznam jenom při konfiguraci, když potřebuje ověřit, že vám vlastní doména opravdu patří. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
 
 > [!NOTE]
-> Pokud chcete ověřit název domény, ale produkční provoz směrovat do webové aplikace, stačí zadat záznam TXT pro krok ověření.  Ověření nevyžaduje, aby záznam A nebo CNAME kromě záznam TXT.
+> If you want to verify the domain name, but not route production traffic to the web app, you only need to specify the TXT record for the verification step.  Verification does not require an A or CNAME record in addition to the TXT record.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,9 +173,9 @@ set-AzWebApp `
 Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://<you domain name>` .
 
 > [!NOTE]
-> Ujistěte se, že zahrnete `http://` předponu, jinak může váš prohlížeč pokuste se předpovědět adresu URL pro vás!
+> Make sure you include the `http://` prefix, otherwise your browser may attempt to predict a URL for you!
 
-Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Například:
 
 ![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 
@@ -184,7 +184,7 @@ Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
 
 Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, můžete odstranit skupinu prostředků **myresourcegroup**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se vytvářet privátní zóny Azure DNS.
 

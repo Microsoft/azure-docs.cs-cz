@@ -1,80 +1,83 @@
 ---
-title: Porozumění osvědčeným postupům zabezpečení – digitální vlákna Azure | Microsoft Docs
-description: Seznamte se s osvědčenými postupy zabezpečení pro digitální vlákna Azure a Internet věcí.
+title: Understand security best practices - Azure Digital Twins | Microsoft Docs
+description: Learn about security best practices for Azure Digital Twins and the Internet of Things.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 9f3f98863f9a7cd0e6328ddc75b1154ee933fe0b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/19/2019
+ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009241"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229038"
 ---
-# <a name="azure-digital-twins-security-best-practices"></a>Osvědčené postupy zabezpečení u digitálních vláken Azure
+# <a name="azure-digital-twins-security-best-practices"></a>Azure Digital Twins security best practices
 
-Zabezpečení digitálních vláken Azure umožňuje přesný přístup ke konkrétním prostředkům a akcím v grafu IoT. K tomu připadá prostřednictvím podrobné správy rolí a oprávnění označovaného jako [řízení přístupu na základě role](./security-role-based-access-control.md).
+Azure Digital Twins security enables precise access to specific resources and actions in your IoT graph. It does so through granular role and permission management called [role-based access control](./security-role-based-access-control.md).
 
-Funkce digitálních vláken Azure používá i další funkce zabezpečení, které jsou k dispozici v Azure IoT, včetně Azure Active Directory (Azure AD). Z tohoto důvodu se při konfiguraci a zabezpečování aplikací založených na digitálních pročinnostech Azure používá celá řada stejných [postupů zabezpečení Azure IoT](../iot-fundamentals/iot-security-best-practices.md) , které se v tuto chvíli doporučují.
+Azure Digital Twins also uses other security features that are present in Azure IoT, including Azure Active Directory (Azure AD). For that reason, configuring and securing applications built on Azure Digital Twins involves using many of the same [Azure IoT security practices](../iot-fundamentals/iot-security-best-practices.md) currently recommended.
 
-Tento článek shrnuje klíčové osvědčené postupy, které je potřeba sledovat.
+This article summarizes key best practices to follow.
 
 > [!IMPORTANT]
-> Pokud chcete zajistit maximální zabezpečení prostoru IoT, Projděte si další zdroje zabezpečení. Ujistěte se, že jste zahrnuli vaše dodavatele zařízení.
+> To ensure maximal security for your IoT space, review additional security resources. Make sure to include your device vendors.
 
 > [!TIP]
-> Použijte [Azure Security Center pro IoT](https://docs.microsoft.com/azure/asc-for-iot/) , které vám pomůžou odhalit hrozby zabezpečení IoT a ohrožení zabezpečení.
+> Use [Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/) to help detect IoT security threats and vulnerabilities.
 
 ## <a name="iot-security-best-practices"></a>Osvědčené postupy zabezpečení IoT
 
-Mezi klíčové postupy pro bezpečné zabezpečení vašich zařízení IoT patří:
+Some key practices to safely secure your IoT devices include:
 
 > [!div class="checklist"]
-> * Zabezpečte všechna zařízení, která jsou připojená k prostoru IoT v případě úmyslného ověření.
-> * Omezte role všech zařízení, senzorů a osob v rámci vašeho prostoru IoT. Pokud dojde k ohrožení zabezpečení, efekt se minimalizuje.
-> * Vezměte v úvahu potenciální využívání filtrování IP adres a omezení portů zařízení.
-> * Omezí vstupně-výstupní operace a šířku pásma zařízení pro zlepšení výkonu. Omezení rychlosti může zlepšit zabezpečení tím, že se zabrání útokům DOS (Denial-of-Service).
-> * Udržujte firmware zařízení v aktuálním stavu.
-> * Pravidelně auditujte a kontrolujte osvědčené postupy zabezpečení zařízení, sítě a brány, protože se dále zlepšují a vyvíjí.
+> * Secure each device that's connected to your IoT space in a tamper-proof way.
+> * Limit the role of each device, sensor, and person within your IoT space. If compromised, the effect is minimized.
+> * Consider the potential use of device IP address filtering and port restriction.
+> * Limit I/O and device bandwidth to improve performance. Rate-limiting can improve security by preventing denial-of-service attacks.
+> * Keep device firmware, operating system, and software up to date.
+> * Periodically audit and review device, software, network, and gateway security best practices as they continue to improve and evolve.
 
-Mezi klíčové postupy pro bezpečné zabezpečení prostoru IoT patří:
+Some key practices to safely secure an IoT space include:
 
 > [!div class="checklist"]
-> * Šifrování uložených, uložených nebo trvalých dat.
-> * Vyžadovat, aby hesla nebo klíče byly pravidelně měněny nebo aktualizovány.
-> * Pozorně omezte přístup a oprávnění podle role. Další informace najdete v části [osvědčené postupy řízení přístupu založené na rolích](#role-based-access-control-best-practices) níže.
-> * Vezměte v úvahu dělenou topologii sítě, aby byla zařízení v každé síti izolovaná od ostatních.
-> * Používejte výkonné šifrování. Vyžadovat dlouhá hesla a používat zabezpečené protokoly a dvojúrovňové ověřování.
+> * Encrypt saved, stored, or persistent data.
+> * Require passwords or keys to be periodically changed or refreshed.
+> * Carefully restrict access and permissions by role. See the section [Role-based access control best practices](#role-based-access-control-best-practices) below.
+> * Consider a divided network topology so that devices on each network are isolated from the others.
+> * Use powerful encryption. Require long passwords, use secure protocols, and [multi-factor authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
-[Monitorování](./how-to-configure-monitoring.md) Prostředky IoT, které můžete sledovat pro odlehlé hodnoty, hrozby nebo parametry prostředků, které spadají mimo rozsah běžné operace. Využijte Azure Analytics ke správě monitorování.
+[Monitor](./how-to-configure-monitoring.md) IoT resources to watch for outliers, threats, or resource parameters that fall outside the range of usual operation. Use Azure Analytics for monitoring management.
+
+> [!IMPORTANT]
+> Read Azure [IoT security best practices](../iot-fundamentals/iot-security-best-practices.md) to begin a comprehensive IoT security strategy.
 
 > [!NOTE]
-> Další informace o zpracování a monitorování událostí najdete v tématu [události a zprávy směrování pomocí digitálních vláken Azure](./concepts-events-routing.md).
+> For more information on event processing and monitoring, see [Route events and messages with Azure Digital Twins](./concepts-events-routing.md).
 
-## <a name="azure-active-directory-best-practices"></a>Azure Active Directory osvědčené postupy
+## <a name="azure-active-directory-best-practices"></a>Azure Active Directory best practices
 
-Digitální vlákna Azure používá Azure Active Directory k ověřování uživatelů a ochraně aplikací. Azure Active Directory podporuje ověřování pro nejrůznější moderní architektury. Jsou založené na standardních protokolech, jako je OAuth 2,0 nebo OpenID Connect. Mezi nejdůležitější postupy zabezpečení prostoru IoT pro Azure Active Directory patří:
+Azure Digital Twins uses [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/) to authenticate users and protect applications. Azure Active Directory supports authentication for a variety of modern architectures. They're all based on industry-standard protocols such as OAuth 2.0 or OpenID Connect. A few key practices to secure your IoT space for Azure Active Directory include:
 
 > [!div class="checklist"]
-> * Ukládejte Azure Active Directory tajných klíčů a klíčů aplikace v zabezpečeném umístění, jako je například [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
-> * Použijte certifikát vydaný důvěryhodnou [certifikační autoritou](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) namísto ověřování tajných klíčů aplikací.
-> * Omezení rozsahu OAuth 2,0 přístupu pro token.
-> * Ověřte, že doba platnosti tokenu je platná a zda token zůstává platný.
-> * Nastavte odpovídající délkové doby, pro které jsou tokeny platné.
-> * Aktualizujte tokeny, jejichž platnost vypršela.
+> * Store Azure Active Directory app secrets and keys in a secure location, such as [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+> * Use a certificate issued by a trusted [certificate authority](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) rather than app secrets to authenticate.
+> * Limit OAuth 2.0 scope of access for a token.
+> * Verify the length of time a token is valid and whether a token remains valid.
+> * Set appropriate lengths of time that tokens are valid for.
+> * Refresh expired tokens.
 
-## <a name="role-based-access-control-best-practices"></a>Osvědčené postupy řízení přístupu založené na rolích
+## <a name="role-based-access-control-best-practices"></a>Role-based access control best practices
 
 [!INCLUDE [digital-twins-rbac-best-practices](../../includes/digital-twins-rbac-best-practices.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o osvědčených postupech pro Azure IoT najdete v článku [osvědčené postupy zabezpečení IoT](../iot-fundamentals/iot-security-best-practices.md).
+* To learn more about Azure IoT best practices, read [IoT security best practices](../iot-fundamentals/iot-security-best-practices.md).
 
-* Další informace o řízení přístupu na základě rolí najdete v tématu [řízení přístupu na základě role](./security-role-based-access-control.md).
+* To learn about role-based access control, read [Role-based access control](./security-role-based-access-control.md).
 
-* Pokud se chcete dozvědět o ověřování, přečtěte si téma [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
+* To learn about authentication, read [Authenticate with APIs](./security-authenticating-apis.md).

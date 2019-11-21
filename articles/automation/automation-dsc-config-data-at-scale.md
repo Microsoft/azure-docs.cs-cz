@@ -1,7 +1,7 @@
 ---
-title: Konfigurační data ve velkém měřítku – Azure Automation
-description: Naučte se konfigurovat škálovatelná data pro konfiguraci stavu v Azure Automation.
-keywords: DSC, PowerShell, konfigurace, instalace
+title: Configuration data at scale - Azure Automation
+description: Learn how to configure data at scale for state configuration in Azure Automation.
+keywords: dsc,powershell,configuration,setup
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,47 +10,47 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f6bb89370c85389d6c41306ed224d27d710cd7c8
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 3e742f18e86c22b2d798eec5f6b715dfb298670a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559378"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231695"
 ---
-# <a name="configuration-data-at-scale"></a>Škálovaná konfigurační data
+# <a name="configuration-data-at-scale"></a>Konfigurace dat ve velkém měřítku
 
-> Platí pro: Windows PowerShell 5.1
+> Applies To: Windows PowerShell 5.1
 
-Správa stovek nebo tisíců serverů může být výzvou.
-Zákazníci získali zpětnou vazbu, že nejobtížnější aspekt skutečně spravuje [konfigurační data](/powershell/dsc/configurations/configdata).
-Uspořádání informací v rámci logických konstrukcí, jako je umístění, typ a prostředí.
+Managing hundreds or thousands of servers can be a challenge.
+Customers have provided feedback that the most difficult aspect is actually managing [configuration data](/powershell/scripting/dsc/configurations/configdata).
+Organizing information across logical constructs like location, type, and environment.
 
 > [!NOTE]
-> Tento článek popisuje řešení, které spravuje komunita open source.
-> Podpora je dostupná jenom ve formě spolupráce na GitHubu, ne od Microsoftu.
+> This article refers to a solution that is maintained by the Open Source community.
+> Support is only available in the form of GitHub collaboration, not from Microsoft.
 
-## <a name="community-project-datum"></a>Komunitní projekt: Datum
+## <a name="community-project-datum"></a>Community project: Datum
 
-Pro vyřešení této výzvy bylo vytvořeno řešení udržované komunitou s názvem [Datum](https://github.com/gaelcolas/Datum) .
-Datum se staví na skvělých nápadech z jiných platforem správy konfigurace a implementuje stejný typ řešení pro prostředí PowerShell DSC.
-Informace jsou [uspořádány do textových souborů](https://github.com/gaelcolas/Datum#3-intended-usage) na základě logických nápadů.
-Příkladem může být:
+A community maintained solution named [Datum](https://github.com/gaelcolas/Datum) has been created to resolve this challenge.
+Datum builds on great ideas from other configuration management platforms and implements the same type of solution for PowerShell DSC.
+Information is [organized in to text files](https://github.com/gaelcolas/Datum#3-intended-usage) based on logical ideas.
+Examples would be:
 
-- Nastavení, která by se měla použít globálně
-- Nastavení, která by se měla použít na všechny servery v umístění
-- Nastavení, která by se měla použít na všechny databázové servery
-- Individuální nastavení serveru
+- Settings that should apply globally
+- Settings that should apply to all servers in a location
+- Settings that should apply to all database servers
+- Individual server settings
 
-Tyto informace jsou uspořádány ve formátu souboru, který dáváte přednost (JSON, YAML nebo PSD1).
-Pak jsou k dispozici rutiny pro generování datových souborů konfigurace tím, že [konsolidují informace](https://github.com/gaelcolas/Datum#datum-tree) z každého souboru do jednoho zobrazení role serveru nebo serveru.
+This information is organized in the file format you prefer (JSON, Yaml, or PSD1).
+Then cmdlets are provided to generate configuration data files by [consolidating the information](https://github.com/gaelcolas/Datum#datum-tree) from each file in to single view of a server or server role.
 
-Po vygenerování datových souborů je můžete použít s [konfiguračními skripty DSC](/powershell/dsc/configurations/write-compile-apply-configuration) k vygenerování souborů MOF a nahrání [souborů MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Pak můžete své servery zaregistrovat z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a vyžádat si konfigurace.
+Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
 
-Pokud si chcete vyzkoušet datum, navštivte [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/datum/) a Stáhněte řešení nebo klikněte na web projektu a zobrazte [dokumentaci](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
+To try out Datum, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/datum/) and download the solution or click "Project Site" to view the [documentation](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/dsc/overview/overview)
-- [Prostředky DSC](/powershell/dsc/resources/resources)
-- [Konfigurace místní Configuration Manager](/powershell/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
+- [DSC Resources](/powershell/scripting/dsc/resources/resources)
+- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)

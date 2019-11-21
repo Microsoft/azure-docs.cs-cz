@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553572"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213206"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Kurz: Nasazení aplikace Service Fabric do clusteru v Azure
 
@@ -28,7 +28,7 @@ Tento kurz je druhá část série. Ukáže vám, jak nasadit aplikaci Azure Ser
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Vytvořte cluster.
+> * Create a cluster.
 > * Nasadit aplikaci do vzdáleného clusteru pomocí sady Visual Studio
 
 V této sérii kurzů se naučíte:
@@ -44,75 +44,75 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/)a nainstalujte úlohy vývoje pro **vývoj a vývoj pro Azure** a vývoj **webů** .
+* [Install Visual Studio 2019](https://www.visualstudio.com/), and install the **Azure development** and **ASP.NET and web development** workloads.
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 > [!NOTE]
-> Bezplatný účet nemusí splňovat požadavky na vytvoření virtuálního počítače. Tím se zabrání dokončení kurzu.
+> A free account may not meet the requirements to create a virtual machine. This will prevent the completion of the tutorial. In addition, a non-work or non-school account may encounter permission issues while creating the certificate on the keyvault associated with the cluster. If you experience an error related to certificate creation use the Portal to create the cluster instead. 
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové hlasovací aplikace
 
-Pokud jste nesestavili ukázkovou hlasovací aplikaci v [první části této série kurzů](service-fabric-tutorial-create-dotnet-app.md), můžete si ji stáhnout. V příkazovém okně spusťte následující kód, který naklonuje úložiště ukázkové aplikace do místního počítače.
+Pokud jste nesestavili ukázkovou hlasovací aplikaci v [první části této série kurzů](service-fabric-tutorial-create-dotnet-app.md), můžete si ji stáhnout. In a command window, run the following code to clone the sample application repository to your local machine.
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart 
 ```
 
-Otevřete aplikaci v aplikaci Visual Studio, spusťte jako správce a sestavte aplikaci.
+Open the application in Visual Studio, running as administrator, and build the application.
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
-Teď, když je aplikace připravená, vytvoříte Cluster Service Fabric a pak nasadíte aplikaci do clusteru. [Cluster Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby.
+Now that the application is ready, you create a Service Fabric cluster and then deploy the application to the cluster. [Cluster Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby.
 
-V tomto kurzu vytvoříte v integrovaném vývojovém prostředí sady Visual Studio nový cluster testovacího clusteru a pak aplikaci publikujete do tohoto clusteru. Informace o vytváření produkčního clusteru najdete v [kurzu Vytvoření a Správa clusteru](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . Aplikaci můžete nasadit taky do existujícího clusteru, který jste dříve vytvořili prostřednictvím [Azure Portal](https://portal.azure.com), pomocí [PowerShellu](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) nebo skriptů [Azure CLI](./scripts/cli-create-cluster.md) nebo ze [šablony Azure Resource Manager](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+In this tutorial, you create a new three node test cluster in the Visual Studio IDE and then publish the application to that cluster. See the [Create and manage a cluster tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md) for information on creating a production cluster. You can also deploy the application to an existing cluster that you previously created through the [Azure portal](https://portal.azure.com), by using [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) or [Azure CLI](./scripts/cli-create-cluster.md) scripts, or from an [Azure Resource Manager template](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 > [!NOTE]
-> Hlasovací aplikace a řada dalších aplikací, ke komunikaci mezi službami použijte Service Fabric reverzní proxy server. Clustery vytvořené ze sady Visual Studio mají ve výchozím nastavení reverzní proxy server povolený. Pokud nasazujete na existující cluster, musíte [Povolit reverzní proxy server v clusteru](service-fabric-reverseproxy-setup.md) , aby mohla hlasovací aplikace fungovat.
+> The Voting application, and many other applications, use the Service Fabric reverse proxy to communicate between services. Clusters created from Visual Studio have the reverse proxy enabled by default. If you're deploying to an existing cluster, you must [enable the reverse proxy in the cluster](service-fabric-reverseproxy-setup.md) for the Voting application to work.
 
 
 ### <a name="find-the-votingweb-service-endpoint"></a>Vyhledání koncového bodu služby VotingWeb
 
-Front-end webová služba hlasovací aplikace naslouchá na určitém portu (8080, pokud jste postupovali podle kroků v [první části této série kurzů](service-fabric-tutorial-create-dotnet-app.md). Když se aplikace nasadí do clusteru v Azure, běží cluster i aplikace na pozadí služby Azure Load Balancer. Port aplikace musí být otevřen v nástroji pro vyrovnávání zatížení Azure pomocí pravidla. Pravidlo odešle příchozí přenos prostřednictvím nástroje pro vyrovnávání zatížení do webové služby. Tento port se nachází v souboru **VotingWeb/PackageRoot/ServiceManifest.xml** v elementu **Endpoint**. 
+The front-end web service of the Voting application is listening on a specific port (8080 if you in followed the steps in [part one of this tutorial series](service-fabric-tutorial-create-dotnet-app.md). Když se aplikace nasadí do clusteru v Azure, běží cluster i aplikace na pozadí služby Azure Load Balancer. The application port must be opened in the Azure load balancer by using a rule. The rule sends inbound traffic through the load balancer to the web service. Tento port se nachází v souboru **VotingWeb/PackageRoot/ServiceManifest.xml** v elementu **Endpoint**. 
 
 ```xml
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
 ```
 
-Poznamenejte si koncový bod služby, který je potřeba v pozdějším kroku.  Pokud nasazujete na existující cluster, otevřete tento port vytvořením pravidla vyrovnávání zatížení a sondou v nástroji pro vyrovnávání zatížení Azure pomocí [skriptu PowerShellu](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) nebo prostřednictvím nástroje pro vyrovnávání zatížení pro tento cluster v [Azure Portal](https://portal.azure.com).
+Take note of the service endpoint, which is needed in a later step.  If you're deploying to an existing cluster, open this port by creating a load-balancing rule and probe in the Azure load balancer using a [PowerShell script](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) or via the load balancer for this cluster in the [Azure portal](https://portal.azure.com).
 
-### <a name="create-a-test-cluster-in-azure"></a>Vytvoření testovacího clusteru v Azure
+### <a name="create-a-test-cluster-in-azure"></a>Create a test cluster in Azure
 V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**.
 
-V **koncový bod připojení**vyberte **vytvořit nový cluster**.  Pokud nasazujete na existující cluster, vyberte koncový bod clusteru ze seznamu.  Otevře se dialogové okno vytvořit cluster Service Fabric.
+In **Connection Endpoint**, select **Create New Cluster**.  If you're deploying to an existing cluster, select the cluster endpoint from the list.  The Create Service Fabric Cluster dialog opens.
 
-Na kartě **cluster** zadejte **název clusteru** (například "mytestcluster"), vyberte své předplatné, vyberte oblast clusteru (například střed USA – jih), zadejte počet uzlů clusteru (pro testovací cluster doporučujeme tři uzly) a Zadejte skupinu prostředků (například "mytestclustergroup"). Klikněte na **Další**.
+In the **Cluster** tab, enter the **Cluster name** (for example, "mytestcluster"), select your subscription, select a region for the cluster (such as South Central US), enter the number of cluster nodes (we recommend three nodes for a test cluster), and enter a resource group (such as "mytestclustergroup"). Klikněte na **Další**.
 
 ![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-Na kartě **certifikát** zadejte heslo a výstupní cestu pro certifikát clusteru. Certifikát podepsaný svým držitelem se vytvoří jako soubor PFX a uloží se do zadané výstupní cesty.  Certifikát se používá pro zabezpečení mezi uzly i mezi klientem a uzlem.  Pro produkční clustery nepoužívejte certifikát podepsaný svým držitelem.  Tento certifikát používá Visual Studio k ověřování pomocí clusteru a nasazování aplikací. Vyberte **importovat certifikát** a nainstalujte PFX do úložiště certifikátů do currentuser\my vašeho počítače.  Klikněte na **Další**.
+In the **Certificate** tab, enter the password and output path for the cluster certificate. A self-signed certificate is created as a PFX file and saved to the specified output path.  The certificate is used for both node-to-node and client-to-node security.  Don't use a self-signed certificate for production clusters.  This certificate is used by Visual Studio to authenticate with the cluster and deploy applications. Select **Import certificate** to install the PFX in the CurrentUser\My certificate store of your computer.  Klikněte na **Další**.
 
 ![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-Na kartě **Podrobnosti o virtuálním počítači** zadejte **uživatelské jméno** a **heslo** pro účet správce clusteru.  Vyberte **bitovou kopii virtuálního počítače** pro uzly clusteru a **Velikost virtuálního počítače** pro každý uzel clusteru.  Klikněte na kartu **Upřesnit** .
+In the **VM Detail** tab, enter the **User name** and **Password** for the cluster admin account.  Select the **Virtual machine image** for the cluster nodes and the **Virtual machine size** for each cluster node.  Click the **Advanced** tab.
 
 ![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
-V části **porty**Zadejte koncový bod služby VotingWeb z předchozího kroku (například 8080).  Po vytvoření clusteru se tyto porty aplikace otevřou v nástroji pro vyrovnávání zatížení Azure, abyste přesměrovali provoz do clusteru.  Kliknutím na **vytvořit** vytvořte cluster, který trvá několik minut.
+In **Ports**, enter the VotingWeb service endpoint from the previous step (for example, 8080).  When the cluster is created, these application ports are opened in the Azure load balancer to forward traffic to the cluster.  Click **Create** to create the cluster, which takes several minutes.
 
 ![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
-## <a name="publish-the-application-to-the-cluster"></a>Publikování aplikace do clusteru
+## <a name="publish-the-application-to-the-cluster"></a>Publish the application to the cluster
 
-Když je nový cluster připravený, můžete hlasovací aplikaci nasadit přímo ze sady Visual Studio.
+When the new cluster is ready, you can deploy the Voting application directly from Visual Studio.
 
 V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**. Zobrazí se dialogové okno **Publikovat**.
 
-V části **koncový bod připojení**vyberte koncový bod pro cluster, který jste vytvořili v předchozím kroku.  Například "mytestcluster.southcentral.cloudapp.azure.com:19000". Pokud vyberete **rozšířené parametry připojení**, informace o certifikátu by měly být automaticky vyplněné.  
-![Publish Service Fabric aplikace ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+In **Connection Endpoint**, select the endpoint for the cluster you created in the previous step.  For example, "mytestcluster.southcentral.cloudapp.azure.com:19000". If you select **Advanced Connection Parameters**, the certificate information should be auto-filled.  
+![Publish a Service Fabric application](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
 Vyberte **Publikovat**.
 
-Jakmile je aplikace nasazená, otevřete prohlížeč a zadejte adresu clusteru následovanou **: 8080**. Případně zadejte jiný port, pokud je nakonfigurovaný. Příklad: `http://mytestcluster.southcentral.cloudapp.azure.com:8080`. Zobrazí se aplikace spuštěná v clusteru v Azure. Na hlasovací webové stránce zkuste přidávat a odstraňovat možnosti hlasování a hlasovat pro jednu nebo několik z těchto možností.
+Once the application is deployed, open a browser and enter the cluster address followed by **:8080**. Případně zadejte jiný port, pokud je nakonfigurovaný. Příklad: `http://mytestcluster.southcentral.cloudapp.azure.com:8080`. Zobrazí se aplikace spuštěná v clusteru v Azure. Na hlasovací webové stránce zkuste přidávat a odstraňovat možnosti hlasování a hlasovat pro jednu nebo několik z těchto možností.
 
 ![Ukázková hlasovací aplikace Service Fabric](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 
@@ -121,7 +121,7 @@ Jakmile je aplikace nasazená, otevřete prohlížeč a zadejte adresu clusteru 
 V této části kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořte cluster.
+> * Create a cluster.
 > * Nasadit aplikaci do vzdáleného clusteru pomocí sady Visual Studio
 
 Přejděte k dalšímu kurzu:

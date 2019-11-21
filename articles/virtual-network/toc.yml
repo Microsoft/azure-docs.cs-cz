@@ -69,6 +69,8 @@
       href: ddos-protection-overview.md
     - name: Rozšíření podsítě
       href: subnet-extension.md
+    - name: Delegování podsítě
+      href: subnet-delegation-overview.md
     - name: Interoperabilita možností připojení back-endu
       items:
         - name: Úvod a nastavení testu

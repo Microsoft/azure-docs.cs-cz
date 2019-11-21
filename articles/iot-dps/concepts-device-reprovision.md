@@ -1,93 +1,92 @@
 ---
-title: Koncepty zařízení pro neukončil pro Azure IoT Hub Device Provisioning Service | Dokumentace Microsoftu
-description: Popisuje zařízení neukončil koncepty pro Azure IoT Hub Device Provisioning Service
+title: Azure IoT Hub Device Provisioning Service - Device concepts
+description: Describes device reprovisioning concepts for the Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: fa8cb29f145c7658227f93d08a990c98563a0cfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d6e5b5c7e8e8bf83646b417aa94658efd25b49e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729952"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228837"
 ---
-# <a name="iot-hub-device-reprovisioning-concepts"></a>Koncepty neukončil zařízení centra IoT
+# <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device reprovisioning concepts
 
-Během životního cyklu řešení IoT se běžně přesouvat zařízení mezi IoT huby. Důvody pro tento krok může zahrnovat následující scénáře:
+During the lifecycle of an IoT solution, it's common to move devices between IoT hubs. The reasons for this move may include the following scenarios:
 
-* **Informace o zeměpisné poloze / GeoLatency**: Při přesunu zařízení mezi umístěními, zlepší se latence sítě tím, že zařízení migrovat do blíže služby IoT hub.
+* **Geolocation / GeoLatency**: As a device moves between locations, network latency is improved by having the device migrated to a closer IoT hub.
 
-* **Víceklientská architektura**: Zařízení může používat ve stejném řešení IoT a přiřadit k novým zákazníkům nebo Web zákazníka. Tento nový zákazník může údržba používání různých služby IoT hub.
+* **Multi-tenancy**: A device may be used within the same IoT solution and reassigned to a new customer, or customer site. This new customer may be serviced using a different IoT hub.
 
-* **Změna řešení**: Zařízení může přesunout do nové nebo aktualizované řešení IoT. Této změně přiřazení může vyžadovat, aby zařízení ke komunikaci s nového centra IoT, která je připojena k jiné komponenty back-end.
+* **Solution change**: A device could be moved into a new or updated IoT solution. This reassignment may require the device to communicate with a new IoT hub that's connected to other back-end components.
 
-* **Karantény**: Podobně jako řešení změnit. Zařízení, které nepracuje správně, dojde k ohrožení bezpečnosti nebo zastaralý může být přeřazen do služby IoT hub, která se dá jenom aktualizovat a získat zpět v dodržování předpisů. Když zařízení pracuje správně, je potom migrovat zpět na jeho hlavní centra.
+* **Quarantine**: Similar to a solution change. A device that's malfunctioning, compromised, or out-of-date may be reassigned to an IoT hub that can only update and get back in compliance. Once the device is functioning properly, it's then migrated back to its main hub.
 
-Neukončil podpory v rámci služby Device Provisioning adresy těchto potřeb. Zařízení lze automaticky přiřadit nový na základě reprovisioning zásad, který je nakonfigurovaný na položku registrace zařízení služby IoT hub.
+Reprovisioning support within the Device Provisioning Service addresses these needs. Devices can be automatically reassigned to new IoT hubs based on the reprovisioning policy that's configured on the device's enrollment entry.
 
-## <a name="device-state-data"></a>Data o stavu zařízení
+## <a name="device-state-data"></a>Device state data
 
-Data o stavu zařízení se skládá z [dvojče zařízení](../iot-hub/iot-hub-devguide-device-twins.md) a možnosti zařízení. Tato data uložená v instanci služby Device Provisioning a centrem IoT, přiřazená zařízení.
+Device state data is composed of the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) and device capabilities. This data is stored in the Device Provisioning Service instance and the IoT hub that a device is assigned to.
 
-![Zřizování s Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
-Když v zařízení je zpočátku zřízené instanci služby Device Provisioning, následující kroky se provádějí:
+When a device is initially provisioned with a Device Provisioning Service instance, the following steps are done:
 
-1. Zařízení odešle žádost o zřízení instance služby Device Provisioning. Instance služby ověřuje identitu zařízení podle položku registrace a vytvoří počáteční konfiguraci dat o stavu zařízení. Instance služby přiřadí zařízení do služby IoT hub na základě konfigurace registrace a vrátí přiřazení IoT hub do zařízení.
+1. The device sends a provisioning request to a Device Provisioning Service instance. The service instance authenticates the device identity based on an enrollment entry, and creates the initial configuration of the device state data. The service instance assigns the device to an IoT hub based on the enrollment configuration and returns that IoT hub assignment to the device.
 
-2. Zřízení instance služby poskytuje kopii žádná data stavu počáteční zařízení k přiřazené Centrum IoT. Zařízení se připojí k přiřazené Centrum IoT a zahájí operace.
+2. The provisioning service instance gives a copy of any initial device state data to the assigned IoT hub. The device connects to the assigned IoT hub and begins operations.
 
-V průběhu času může aktualizovat data o stavu zařízení ve službě IoT hub [operace zařízení](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) a [back endové operace](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). Informace o stavu počáteční zařízení uložené v instanci služby Device Provisioning zůstává beze změny. Tato data zařízení beze změny stavu je počáteční konfigurace.
+Over time, the device state data on the IoT hub may be updated by [device operations](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) and [back-end operations](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). The initial device state information stored in the Device Provisioning Service instance stays untouched. This untouched device state data is the initial configuration.
 
-![Zřizování s Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
+![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
 
-V závislosti na scénáři při přesunu zařízení mezi IoT huby, může také být potřeba migrovat stav zařízení aktualizovat na předchozí služby IoT hub přes na novou službu IoT hub. Tato migrace podporuje neukončil zásady ve službě Device Provisioning.
+Depending on the scenario, as a device moves between IoT hubs, it may also be necessary to migrate device state updated on the previous IoT hub over to the new IoT hub. This migration is supported by reprovisioning policies in the Device Provisioning Service.
 
-## <a name="reprovisioning-policies"></a>Neukončil zásady
+## <a name="reprovisioning-policies"></a>Reprovisioning policies
 
-V závislosti na scénáři zařízení obvykle odešle požadavek na instanci služby zřizování při restartování. Podporuje také metodu k ruční aktivaci zřizování na vyžádání. Reprovisioning zásad na položku registrace Určuje, jak zařízení zřizování instance služby zpracovává tyto žádosti o zřízení. Zásady také určuje, zda mají být migrovány data o stavu zařízení během neukončil. Jsou dostupné pro jednotlivé registrace a skupin registrací stejné zásady:
+Depending on the scenario, a device usually sends a request to a provisioning service instance on reboot. It also supports a method to manually trigger provisioning on demand. The reprovisioning policy on an enrollment entry determines how the device provisioning service instance handles these provisioning requests. The policy also determines whether device state data should be migrated during reprovisioning. The same policies are available for individual enrollments and enrollment groups:
 
-* **Znovu zřídit a migraci dat**: Tato zásada je výchozí pro nové záznamy registrace. Tato zásada pořizuje akce, když zařízení přidružená k položce registrace odešlete novou žádost (1). V závislosti na konfiguraci položku registrace zařízení může být přeřazen jiné služby IoT hub. Pokud zařízení se mění centra IoT hub, odebere se registrace zařízení s počáteční služby IoT hub. Informace o stavu aktualizace zařízení z tohoto počátečního služby IoT hub se budou migrovat do nového centra IoT (2). Během migrace, bude hlásit stav tohoto zařízení **přiřazování**.
+* **Re-provision and migrate data**: This policy is the default for new enrollment entries. This policy takes action when devices associated with the enrollment entry submit a new request (1). Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The updated device state information from that initial IoT hub will be migrated over to the new IoT hub (2). During migration, the device's status will be reported as **Assigning**.
 
-    ![Zřizování s Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Znovu zřídit a resetování na počáteční konfigurace**: Tato zásada pořizuje akce, když zařízení přidružená k položce registrace odešlete novou žádost o zřízení (1). V závislosti na konfiguraci položku registrace zařízení může být přeřazen jiné služby IoT hub. Pokud zařízení se mění centra IoT hub, odebere se registrace zařízení s počáteční služby IoT hub. Počáteční konfigurace data, která zřizování instance služby přijal při zřizování zařízení je k dispozici na novou službu IoT hub (2). Během migrace, bude hlásit stav tohoto zařízení **přiřazování**.
+* **Re-provision and reset to initial config**: This policy takes action when devices associated with the enrollment entry submit a new provisioning request (1). Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The initial configuration data that the provisioning service instance received when the device was provisioned is provided to the new IoT hub (2). During migration, the device's status will be reported as **Assigning**.
 
-    Tato zásada se často používá pro výrobního beze změny centra IoT hub.
+    This policy is often used for a factory reset without changing IoT hubs.
 
-    ![Zřizování s Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Nikdy znovu zřídit**: Zařízení je nikdy přiřazena k jinému rozbočovači. Tato zásada je k dispozici pro správu zpětné kompatibility.
+* **Never re-provision**: The device is never reassigned to a different hub. This policy is provided for managing backwards compatibility.
 
-### <a name="managing-backwards-compatibility"></a>Správa zpětné kompatibility
+### <a name="managing-backwards-compatibility"></a>Managing backwards compatibility
 
-Přiřazení zařízení do IoT hubů před. září 2018, měli vždy navrchu chování. Když zařízení zpět do procesu zřizování, by přiřadit jenom zpět do stejné služby IoT hub.
+Before September 2018, device assignments to IoT hubs had a sticky behavior. When a device went back through the provisioning process, it would only be assigned back to the same IoT hub.
 
-Pro řešení, které mají závislosti na toto chování zřizovací služba zahrnuje zpětné kompatibility. V současné době toto chování je zachován z důvodu zařízení podle následujících kritérií:
+For solutions that have taken a dependency on this behavior, the provisioning service includes backwards compatibility. This behavior is presently maintained for devices according to the following criteria:
 
-1. Připojit zařízení s verzí rozhraní API před dostupnost nativní podporu neukončil ve službě Device Provisioning. Najdete v následující tabulce rozhraní API.
+1. The devices connect with an API version before the availability of native reprovisioning support in the Device Provisioning Service. Refer to the API table below.
 
-2. Položky registrace zařízení nemá reprovisioning zásadám nastaveným na ně.
+2. The enrollment entry for the devices doesn't have a reprovisioning policy set on them.
 
-Tato kompatibilita zajišťuje, který již dříve nasadili prostředí zařízení stejné chování, která je k dispozici během počátečního testování. Pokud chcete zachovat předchozí chování, neukládat reprovisioning zásady pro tyto registrace. Pokud je nastavena reprovisioning zásad, reprovisioning zásad má přednost před chování. Tím, že reprovisioning zásada přednost, můžete zákazníky aktualizovat chování zařízení bez nutnosti znovu připojit bitovou kopii zařízení.
+This compatibility makes sure that previously deployed devices experience the same behavior that's present during initial testing. To preserve the previous behavior, don't save a reprovisioning policy to these enrollments. If a reprovisioning policy is set, the reprovisioning policy takes precedence over the behavior. By allowing the reprovisioning policy to take precedence, customers can update device behavior without having to reimage the device.
 
-Následující vývojový diagram umožňuje zobrazit, když je k dispozici chování:
+The following flow chart helps to show when the behavior is present:
 
-![zpětné kompatibility vývojový diagram](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
+![backwards compatibility flow chart](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
 
-Verze rozhraní API před dostupnost nativní podporu neukončil ve službě Device Provisioning v následující tabulce:
+The following table shows the API versions before the availability of native reprovisioning support in the Device Provisioning Service:
 
-| REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
+| Rozhraní REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
-| [2018-04-01 a starší](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 a starší](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 a starší](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 nebo starší](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 nebo starší](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 nebo dřívější](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
+| [2018-04-01 and earlier](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 and earlier](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 and earlier](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 or earlier](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 or earlier](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 or earlier](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 
 > [!NOTE]
-> Tyto hodnoty a odkazy se budou pravděpodobně měnit. Toto je pouze požadavku k určení, kde můžete určit verze ze strany zákazníka a očekávaná verze, které je budou na zástupný symbol.
+> These values and links are likely to change. This is only a placeholder attempt to determine where the versions can be determined by a customer and what the expected versions will be.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Jak na bázi zařízení](how-to-reprovision.md)
+* [How to reprovision devices](how-to-reprovision.md)

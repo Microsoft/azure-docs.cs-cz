@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s UserVoice | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a UserVoice.
+title: 'Tutorial: Azure Active Directory integration with UserVoice | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and UserVoice.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,241 +15,241 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c0c259d3d05232aa70016771e2a2bce7622730a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a3302f1ca615fe5005be9ed1f09995ebf432eb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087626"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232005"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Kurz: Integrace Azure Active Directory s UserVoice
+# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Tutorial: Azure Active Directory integration with UserVoice
 
-V tomto kurzu se dozvíte, jak integrovat UserVoice s Azure Active Directory (Azure AD).
-UserVoice integraci se službou Azure AD poskytuje následující výhody:
+In this tutorial, you learn how to integrate UserVoice with Azure Active Directory (Azure AD).
+Integrating UserVoice with Azure AD provides you with the following benefits:
 
-* Můžete řídit ve službě Azure AD, který má přístup k službě UserVoice.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k službě UserVoice (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* You can control in Azure AD who has access to UserVoice.
+* You can enable your users to be automatically signed-in to UserVoice (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s UserVoice, potřebujete následující položky:
+To configure Azure AD integration with UserVoice, you need the following items:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* UserVoice jednotného přihlašování povolená předplatného
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* UserVoice single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Podporuje UserVoice **SP** jednotné přihlašování zahájené pomocí
+* UserVoice supports **SP** initiated SSO
 
-## <a name="adding-uservoice-from-the-gallery"></a>Přidání UserVoice z Galerie
+## <a name="adding-uservoice-from-the-gallery"></a>Adding UserVoice from the gallery
 
-Konfigurace integrace UserVoice do služby Azure AD, budete muset přidat UserVoice z Galerie na váš seznam spravovaných aplikací SaaS.
+To configure the integration of UserVoice into Azure AD, you need to add UserVoice from the gallery to your list of managed SaaS apps.
 
-**Chcete-li přidat UserVoice z galerie, postupujte následovně:**
+**To add UserVoice from the gallery, perform the following steps:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **UserVoice**vyberte **UserVoice** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. In the search box, type **UserVoice**, select **UserVoice** from result panel then click **Add** button to add the application.
 
-     ![UserVoice v seznamu výsledků](common/search-new-app.png)
+     ![UserVoice in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování s UserVoice podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele ve službě UserVoice.
+In this section, you configure and test Azure AD single sign-on with UserVoice based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in UserVoice needs to be established.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s UserVoice, které potřebujete k dokončení následujících stavebních bloků:
+To configure and test Azure AD single sign-on with UserVoice, you need to complete the following building blocks:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace služby UserVoice Single Sign-On](#configure-uservoice-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele UserVoice](#create-uservoice-test-user)**  – Pokud chcete mít protějšek Britta Simon ve službě UserVoice, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure UserVoice Single Sign-On](#configure-uservoice-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create UserVoice test user](#create-uservoice-test-user)** - to have a counterpart of Britta Simon in UserVoice that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s UserVoice, proveďte následující kroky:
+To configure Azure AD single sign-on with UserVoice, perform the following steps:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **UserVoice** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. In the [Azure portal](https://portal.azure.com/), on the **UserVoice** application integration page, select **Single sign-on**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![UserVoice domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+    ![UserVoice Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<tenantname>.UserVoice.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<tenantname>.UserVoice.com`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<tenantname>.UserVoice.com`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://<tenantname>.UserVoice.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory služby UserVoice klienta](https://www.uservoice.com/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [UserVoice Client support team](https://www.uservoice.com/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
+5. In the **SAML Signing Certificate** section, click **Edit** button to open **SAML Signing Certificate** dialog.
 
-    ![Upravit podpisového certifikátu SAML](common/edit-certificate.png)
+    ![Edit SAML Signing Certificate](common/edit-certificate.png)
 
-6. V **podpisový certifikát SAML** tématu, zkopírujte **kryptografický otisk** a uložte ho do počítače.
+6. In the **SAML Signing Certificate** section, copy the **Thumbprint** and save it on your computer.
 
-    ![Zkopírujte hodnotu kryptografického otisku](common/copy-thumbprint.png)
+    ![Copy Thumbprint value](common/copy-thumbprint.png)
 
-7. Na **nastavení UserVoice** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. On the **Set up UserVoice** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    a. Login URL
 
-    b. Identifikátor Azure AD
+    b. Azure AD Identifier
 
-    c. Adresa URL – odhlášení
+    c. Logout URL
 
-### <a name="configure-uservoice-single-sign-on"></a>Konfigurace služby UserVoice jednotné přihlašování
+### <a name="configure-uservoice-single-sign-on"></a>Configure UserVoice Single Sign-On
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu UserVoice společnosti jako správce.
+1. In a different web browser window, sign in to your UserVoice company site as an administrator.
 
-2. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**a pak vyberte **webový portál** z nabídky.
+2. In the toolbar on the top, click **Settings**, and then select **Web portal** from the menu.
    
-    ![Sekce nastavení na straně aplikace](./media/uservoice-tutorial/ic777519.png "nastavení")
+    ![Settings Section On App Side](./media/uservoice-tutorial/ic777519.png "Nastavení")
 
-3. Na **webový portál** kartě **ověřování uživatelů** klikněte na tlačítko **upravit** otevřete **upravit ověření uživatele** dialogového okna stránky.
+3. On the **Web portal** tab, in the **User authentication** section, click **Edit** to open the **Edit User Authentication** dialog page.
    
-    ![Webový portál kartu](./media/uservoice-tutorial/ic777520.png "webový portál")
+    ![Web portal Tab](./media/uservoice-tutorial/ic777520.png "Web portal")
 
-4. Na **upravit ověření uživatele** dialogového okna stránky, proveďte následující kroky:
+4. On the **Edit User Authentication** dialog page, perform the following steps:
    
-    ![Upravit ověření uživatele](./media/uservoice-tutorial/ic777521.png "ověřování uživatelů pro úpravy")
+    ![Edit user authentication](./media/uservoice-tutorial/ic777521.png "Edit user authentication")
    
-    a. Klikněte na tlačítko **jednotné přihlašování (SSO)** .
+    a. Click **Single Sign-On (SSO)** .
  
-    b. Vložit **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal do **jednotného přihlašování vzdáleného přihlášení** textového pole.
+    b. Paste the **Login URL** value, which you have copied from the Azure portal into the **SSO Remote Sign-In** textbox.
 
-    c. Vložit **odhlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal do **jednotné odhlašování vzdálené textbox**.
+    c. Paste the **Logout URL** value, which you have copied from the Azure portal into the **SSO Remote Sign-Out textbox**.
  
-    d. Vložit **kryptografický otisk** hodnotu, kterou jste zkopírovali z portálu Azure portal do **otisk aktuálního certifikátu SHA1** textového pole.
+    d. Paste the **Thumbprint** value , which you have copied from Azure portal  into the **Current certificate SHA1 fingerprint** textbox.
     
-    e. Klikněte na tlačítko **uložit nastavení ověřování**.
+    e. Click **Save authentication settings**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Select **New user** at the top of the screen.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. In the User properties, perform the following steps.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. In the **User name** field type brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k službě UserVoice.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to UserVoice.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **UserVoice**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **UserVoice**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **UserVoice**.
+2. In the applications list, select **UserVoice**.
 
-    ![V seznamu aplikací na odkaz UserVoice](common/all-applications.png)
+    ![The UserVoice link in the Applications list](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-uservoice-test-user"></a>Vytvořit testovacího uživatele UserVoice
+### <a name="create-uservoice-test-user"></a>Create UserVoice test user
 
-Pokud chcete povolit Azure AD uživatelům umožní přihlásit k službě UserVoice, musí být poskytnuty do služby UserVoice. V případě UserVoice zřizování se ruční úlohy.
+To enable Azure AD users to sign in to UserVoice, they must be provisioned into UserVoice. In the case of UserVoice, provisioning is a manual task.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>K poskytnutí uživatelského účtu, postupujte následovně:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>To provision a user account, perform the following steps:
 
-1. Přihlaste se k vaší **UserVoice** tenanta.
+1. Sign in to your **UserVoice** tenant.
 
-2. Přejděte na **nastavení**.
+2. Go to **Settings**.
    
-    ![Nastavení](./media/uservoice-tutorial/ic777811.png "nastavení")
+    ![Nastavení](./media/uservoice-tutorial/ic777811.png "Nastavení")
 
-3. Klikněte na tlačítko **Obecné**.
+3. Click **General**.
 
-4. Klikněte na tlačítko **agenty a oprávnění**.
+4. Click **Agents and permissions**.
    
-    ![Agenti a oprávnění](./media/uservoice-tutorial/ic777812.png "agenty a oprávnění")
+    ![Agents and permissions](./media/uservoice-tutorial/ic777812.png "Agents and permissions")
 
-5. Klikněte na tlačítko **mohli přidávat správce**.
+5. Click **Add admins**.
    
-    ![Přidat správce](./media/uservoice-tutorial/ic777813.png "přidat správce")
+    ![Add admins](./media/uservoice-tutorial/ic777813.png "Add admins")
 
-6. Na **pozvat správci** dialogového okna, proveďte následující kroky:
+6. On the **Invite admins** dialog, perform the following steps:
    
-    ![Pozvat správci](./media/uservoice-tutorial/ic777814.png "pozvat správci")
+    ![Invite admins](./media/uservoice-tutorial/ic777814.png "Invite admins")
    
-    a. V textovém poli e-mailů, zadejte e-mailovou adresu účtu, které chcete zřídit a potom klikněte na tlačítko **přidat**.
+    a. In the Emails textbox, type the email address of the account you want to provision, and then click **Add**.
    
-    b. Klikněte na tlačítko **pozvat**.
+    b. Click **Invite**.
 
 > [!NOTE]
-> Můžete použít jakékoli jiné UserVoice uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných UserVoice uživatelským účtům, zřídit AAD.
+> You can use any other UserVoice user account creation tools or APIs provided by UserVoice to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Po kliknutí na dlaždici služby UserVoice na přístupovém panelu, vám by měl být automaticky přihlášeni k službě UserVoice, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the UserVoice tile in the Access Panel, you should be automatically signed in to the UserVoice for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

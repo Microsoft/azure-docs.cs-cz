@@ -1,99 +1,104 @@
 ---
-title: Referenční informace k datům monitorování Azure Cosmos DB | Microsoft Docs
-description: Reference k protokolům a metrikám pro monitorování dat z Azure Cosmos DB.
+title: Azure Cosmos DB monitoring data reference | Microsoft Docs
+description: Log and metrics reference for monitoring data from Azure Cosmos DB.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
 ms.date: 11/11/2019
 ms.author: bwren
+ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: 5f46c9bf53d791eaec68763edc32996847e78ebd
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: HT
+ms.openlocfilehash: 0f61057daf994fde284e9484e41c01ed2e8ae78c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186900"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220217"
 ---
-# <a name="azure-cosmos-db-monitoring-data-reference"></a>Referenční informace o monitorování Azure Cosmos DB dat
-Tento článek poskytuje referenční informace o datech protokolů a metrik shromažďovaných k analýze výkonu a dostupnosti Azure Cosmos DB. Podrobnosti o shromažďování a analýze dat monitorování pro Azure Cosmos DB najdete v tématu [monitorování Cosmos DB](monitor-cosmos-db.md) .
+# <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB monitoring data reference
+This article provides a reference of log and metric data collected to analyze the performance and availability of Azure Cosmos DB. See [Monitoring Cosmos DB](monitor-cosmos-db.md) for details on collecting and analyzing monitoring data for Azure Cosmos DB.
 
 
 ## <a name="resource-logs"></a>Protokoly prostředků
-V následující tabulce jsou uvedeny vlastnosti Azure Cosmos DBch protokolů prostředků při jejich shromažďování v protokolech Azure Monitor nebo Azure Storage. V Azure Monitor protokoly se shromažďují v tabulce **AzureDiagnostics** s hodnotou **ResourceProvider** *společnosti Microsoft. DOCUMENTDB*.
+The following table lists the properties for Azure Cosmos DB resource logs when they're collected in Azure Monitor Logs or Azure Storage. In Azure Monitor Logs, they're collected in the **AzureDiagnostics** table with a **ResourceProvider** value of *MICROSOFT.DOCUMENTDB*. 
 
-| Azure Storage pole nebo vlastnost | Vlastnost protokolů Azure Monitor | Popis |
+| Azure Storage field or property | Azure Monitor Logs property | Popis |
 | --- | --- | --- |
-| **čas** | **TimeGenerated** | Datum a čas (UTC), kdy došlo k chybě operace. |
-| **ID prostředku** | **Prostředek** | Účet Azure Cosmos DB, pro kterou jsou povolené protokoly.|
-| **Kategorie** | **Kategorie** | Pro protokoly služby Azure Cosmos DB **DataPlaneRequests** je k dispozici pouze hodnota. |
-| **OperationName** | **OperationName** | Název operace Tato hodnota může být některý z následujících operací: vytvoření, aktualizace, čtení, ReadFeed, odstranění, nahradit, Execute, SqlQuery, dotazu, JSQuery, Head, HeadFeed nebo Upsert.   |
-| **Vlastnosti** | neuvedeno | Obsah tohoto pole jsou popsány v řádcích, které následují. |
-| **ID aktivity** | **activityId_g** | Jedinečný identifikátor GUID pro protokolovaných operací. |
-| **userAgent** | **userAgent_s** | Řetězec, který určuje uživatelský agent klienta, který provádí požadavek. Formát je {uživatelské jméno agenta} / {version}.|
-| **requestResourceType** | **requestResourceType_s** | Typ prostředku, u níž. Tato hodnota může být některý z těchto typů prostředků: databáze, kontejner, dokument, přílohy, uživatele, oprávnění, uložené procedury StoredProcedure, aktivační událost, UserDefinedFunction nebo nabídky. |
-| **statusCode** | **statusCode_s** | Stav odpovědi operace. |
-| **requestResourceId** | **ID prostředku** | ID prostředku, které se vztahují k požadavku. Hodnota může odkazovat na databaseRid, collectionRid nebo documentRid v závislosti na operaci provést.|
-| **clientIpAddress** | **clientIpAddress_s** | IP adresa klienta. |
-| **requestCharge** | **requestCharge_s** | Počet rezervovaných jednotek, které jsou používány operace |
-| **collectionRid** | **collectionId_s** | Jedinečný Identifikátor pro kolekci.|
-| **Doba trvání** | **duration_s** | Doba trvání operace v milisekundách. |
-| **requestLength** | **requestLength_s** | Délka požadavku v bajtech. |
-| **responseLength** | **responseLength_s** | Délka odpovědi v bytech.|
-| **resourceTokenUserRid** | **resourceTokenUserRid_s** | Tato hodnota je prázdný, když [tokenech prostředků](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) se používají pro ověřování. Hodnota odkazuje na ID prostředku uživatele. |
+| **time** | **TimeGenerated** | The date and time (UTC) when the operation occurred. |
+| **resourceId** | **Prostředek** | The Azure Cosmos DB account for which logs are enabled.|
+| **category** | **Kategorie** | For Azure Cosmos DB logs, **DataPlaneRequests** is the only available value. |
+| **operationName** | **OperationName** | Name of the operation. This value can be any of the following operations: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed, or Upsert.   |
+| **properties** | – | The contents of this field are described in the rows that follow. |
+| **activityId** | **activityId_g** | The unique GUID for the logged operation. |
+| **userAgent** | **userAgent_s** | A string that specifies the client user agent that's performing the request. The format is {user agent name}/{version}.|
+| **requestResourceType** | **requestResourceType_s** | The type of the resource accessed. This value can be any of the following resource types: Database, Container, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction, or Offer. |
+| **statusCode** | **statusCode_s** | The response status of the operation. |
+| **requestResourceId** | **ResourceId** | The resourceId that pertains to the request. The value may point to databaseRid, collectionRid, or documentRid depending on the operation performed.|
+| **clientIpAddress** | **clientIpAddress_s** | The client's IP address. |
+| **requestCharge** | **requestCharge_s** | The number of RUs that are used by the operation |
+| **collectionRid** | **collectionId_s** | The unique ID for the collection.|
+| **duration** | **duration_s** | The duration of the operation, in milliseconds. |
+| **requestLength** | **requestLength_s** | The length of the request, in bytes. |
+| **responseLength** | **responseLength_s** | The length of the response, in bytes.|
+| **resourceTokenUserRid** | **resourceTokenUserRid_s** | This value is non-empty when [resource tokens](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) are used for authentication. The value points to the resource ID of the user. |
+
+For a list of all Azure Monitor log categories and links to associated schemas, see [Azure Monitor Logs categories and schemas](../azure-monitor/platform/diagnostic-logs-schema.md). 
 
 ## <a name="metrics"></a>Metriky
-V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro službu Azure CosmOS DB. Všechny metriky jsou uložené v oboru názvů **Cosmos DB Standardní metriky**.
+The following tables list the platform metrics collected for Azure CosmOS DB. All metrics are stored in the namespace **Cosmos DB standard metrics**.
 
-#### <a name="request-metrics"></a>Metrika žádosti
+For a list of all Azure Monitor support metrics (including CosmosDB), see [Azure Monitor supported metrics](../azure-monitor/platform/metrics-supported.md). 
+
+#### <a name="request-metrics"></a>Request metrics
             
-|Metrika (zobrazovaný název metriky)|Jednotka (typ agregace) |Popis|Dimenze| Časové členitosti| Zastaralé mapování metrik | Využití |
+|Metric (Metric Display Name)|Unit (Aggregation Type) |Popis|Dimenze| Time granularities| Legacy metric mapping | Využití |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (celkový počet požadavků) | Počet (počet) | Počet provedených požadavků| DatabaseName, CollectionName, region, StatusCode| Vše | TotalRequests, HTTP 2xx, http 3xx, HTTP 400, HTTP 401, interní chyba serveru, nedostupný služba, omezené požadavky, průměrný počet požadavků za sekundu | Slouží k monitorování požadavků na stavový kód v kontejneru při minutové členitosti. Chcete-li získat průměrné požadavky za sekundu, použijte agregaci Count za minutu a dělenou 60. |
-| MetadataRequests (žádosti o metadata) |Počet (počet) | Počet požadavků na metadata Azure Cosmos DB uchovává kontejner systémových metadat pro každý účet, který umožňuje vytvořit výčet kolekcí, databází atd. a jejich konfigurací zdarma. | DatabaseName, CollectionName, region, StatusCode| Vše| |Slouží k monitorování omezení z důvodu požadavků na metadata.|
-| MongoRequests (žádosti Mongo) | Počet (počet) | Počet provedených požadavků Mongo | DatabaseName, CollectionName, region, příkaz, ErrorCode| Vše |Frekvence požadavků na dotaz Mongo, frekvence požadavků na aktualizace Mongo, rychlost žádosti o odstranění Mongo, rychlost žádosti o vložení Mongo, počet požadavků na zadání Mongo| Slouží k monitorování chyb požadavků Mongo, využití na typ příkazu. |
+| TotalRequests (Total Requests) | Count (Count) | Number of requests made| DatabaseName, CollectionName, Region, StatusCode| Všechno | TotalRequests, Http 2xx, Http 3xx, Http 400, Http 401, Internal Server error, Service Unavailable, Throttled Requests, Average Requests per Second | Used to monitor requests per status code, container at a minute granularity. To get average requests per second, use Count aggregation at minute and divide by 60. |
+| MetadataRequests (Metadata Requests) |Count (Count) | Count of metadata requests. Azure Cosmos DB maintains system metadata container for each account, that allows you to enumerate collections, databases, etc., and their configurations, free of charge. | DatabaseName, CollectionName, Region, StatusCode| Všechno| |Used to monitor throttles due to metadata requests.|
+| MongoRequests (Mongo Requests) | Count (Count) | Number of Mongo Requests Made | DatabaseName, CollectionName, Region, CommandName, ErrorCode| Všechno |Mongo Query Request Rate, Mongo Update Request Rate, Mongo Delete Request Rate, Mongo Insert Request Rate, Mongo Count Request Rate| Used to monitor Mongo request errors, usages per command type. |
 
-#### <a name="request-unit-metrics"></a>Metriky jednotek požadavku
+#### <a name="request-unit-metrics"></a>Request Unit metrics
 
-|Metrika (zobrazovaný název metriky)|Jednotka (typ agregace)|Popis|Dimenze| Časové členitosti| Zastaralé mapování metrik | Využití |
+|Metric (Metric Display Name)|Unit (Aggregation Type)|Popis|Dimenze| Time granularities| Legacy metric mapping | Využití |
 |---|---|---|---| ---| ---| ---|
-| MongoRequestCharge (poplatek za požadavek Mongo) | Počet (celkem) |Spotřebované jednotky žádosti Mongo| DatabaseName, CollectionName, region, příkaz, ErrorCode| Vše |Poplatek za požadavek na dotaz Mongo, poplatek za požadavek na aktualizaci Mongo, poplatek za požadavek na odstranění, Mongo vložení žádosti, poplatek za požadavek na počet Mongo| Používá se k monitorování ru prostředků Mongo za minutu.|
-| TotalRequestUnits (celkový počet jednotek žádosti)| Počet (celkem) | Spotřebované jednotky žádosti| DatabaseName, CollectionName, region, StatusCode |Vše| TotalRequestUnits| Používá se k monitorování celkového využití RU při minutové členitosti. K získání průměrného RU za sekundu za sekundu použijte celkovou agregaci za minutu a rozdělte je 60.|
-| ProvisionedThroughput (zřízená propustnost)| Počet (maximum) |Zřízená propustnost při členitosti kontejneru| DatabaseName, ContainerName| 5 min| | Slouží k monitorování zřízené propustnosti na kontejner.|
+| MongoRequestCharge (Mongo Request Charge) | Count (Total) |Mongo Request Units Consumed| DatabaseName, CollectionName, Region, CommandName, ErrorCode| Všechno |Mongo Query Request Charge, Mongo Update Request Charge, Mongo Delete Request Charge, Mongo Insert Request Charge, Mongo Count Request Charge| Used to monitor Mongo resource RUs in a minute.|
+| TotalRequestUnits (Total Request Units)| Count (Total) | Request Units consumed| DatabaseName, CollectionName, Region, StatusCode |Všechno| TotalRequestUnits| Used to monitor Total RU usage at a minute granularity. To get average RU consumed per second, use Total aggregation at minute and divide by 60.|
+| ProvisionedThroughput (Provisioned Throughput)| Count (Maximum) |Provisioned throughput at container granularity| DatabaseName, ContainerName| 5M| | Used to monitor provisioned throughput per container.|
 
-#### <a name="storage-metrics"></a>Metriky úložiště
+#### <a name="storage-metrics"></a>Storage metrics
 
-|Metrika (zobrazovaný název metriky)|Jednotka (typ agregace)|Popis|Dimenze| Časové členitosti| Zastaralé mapování metrik | Využití |
+|Metric (Metric Display Name)|Unit (Aggregation Type)|Popis|Dimenze| Time granularities| Legacy metric mapping | Využití |
 |---|---|---|---| ---| ---| ---|
-| AvailableStorage (úložiště k dispozici) |Bajty (celkem) | Celkové dostupné úložiště hlášené v členitosti 5 minut na oblast| DatabaseName, CollectionName, region| 5 min| Dostupné úložiště| Minimální členitost, která se používá k monitorování dostupné kapacity úložiště (platí jenom pro kolekce pevných úložišť), by měla být 5 minut.| 
-| Využití dat (využití dat) |Bajty (celkem) |Celkové využití dat nahlášené v rozlišení 5 minut na oblast| DatabaseName, CollectionName, region| 5 min |Velikost dat | Používá se k monitorování celkového využití dat v kontejneru a oblasti. minimální členitost by měla být 5 minut.|
-| IndexUsage (využití indexu) | Bajty (celkem) |Celkové využití indexu hlášené v rozlišení 5 minut na oblast| DatabaseName, CollectionName, region| 5 min| Velikost indexu| Používá se k monitorování celkového využití dat v kontejneru a oblasti. minimální členitost by měla být 5 minut. |
-| DocumentQuota (kvóta dokumentu) | Bajty (celkem) | Celková kvóta úložiště vykazovaná na základě rozlišení 5 minut na oblast.| DatabaseName, CollectionName, region| 5 min |Kapacita úložiště| V případě, že se má monitorovat celková kvóta v kontejneru a oblasti, minimální členitost by měla být 5 minut.|
-| DocumentCount (počet dokumentů) | Počet (celkem) |Celkový počet dokumentů hlášených v rozlišení 5 minut na oblast| DatabaseName, CollectionName, region| 5 min |Počet dokumentů|Používá se k monitorování počtu dokumentů v kontejneru a oblasti. minimální členitost by měla být 5 minut.|
+| AvailableStorage (Available Storage) |Bytes (Total) | Total available storage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M| Available Storage| Used to monitor available storage capacity (applicable only for fixed storage collections) Minimum granularity should be 5 minutes.| 
+| DataUsage (Data Usage) |Bytes (Total) |Total data usage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M |Data size | Used to monitor total data usage at container and region, minimum granularity should be 5 minutes.|
+| IndexUsage (Index Usage) | Bytes (Total) |Total Index usage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M| Index Size| Used to monitor total data usage at container and region, minimum granularity should be 5 minutes. |
+| DocumentQuota (Document Quota) | Bytes (Total) | Total storage quota reported at 5-minutes granularity per region.| DatabaseName, CollectionName, Region| 5M |Kapacita služby Storage| Used to monitor total quota at container and region, minimum granularity should be 5 minutes.|
+| DocumentCount (Document Count) | Count (Total) |Total document count reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M |Document Count|Used to monitor document count at container and region, minimum granularity should be 5 minutes.|
 
-#### <a name="latency-metrics"></a>Metriky latence
+#### <a name="latency-metrics"></a>Latency metrics
 
-|Metrika (zobrazovaný název metriky)|Jednotka (typ agregace)|Popis|Dimenze| Časové členitosti| Využití |
+|Metric (Metric Display Name)|Unit (Aggregation Type)|Popis|Dimenze| Time granularities| Využití |
 |---|---|---|---| ---| ---|
-| ReplicationLatency (latence replikace)| Milisekundy (minimální, maximální, průměrná) | Latence replikace p99 napříč zdrojovou a cílovou oblastí pro geograficky povolený účet| SourceRegion, TargetRegion| Vše | Slouží k monitorování latence replikace p99 mezi dvěma oblastmi pro geograficky replikovaný účet. |
+| ReplicationLatency (Replication Latency)| MilliSeconds (Minimum, Maximum, Average) | P99 Replication Latency across source and target regions for geo-enabled account| SourceRegion, TargetRegion| Všechno | Used to monitor P99 replication latency between any two regions for a geo-replicated account. |
 
 
-#### <a name="availability-metrics"></a>Metriky dostupnosti
+#### <a name="availability-metrics"></a>Availability metrics
 
-|Metrika (zobrazovaný název metriky) |Jednotka (typ agregace)|Popis| Časové členitosti| Zastaralé mapování metrik | Využití |
+|Metric (Metric Display Name) |Unit (Aggregation Type)|Popis| Time granularities| Legacy metric mapping | Využití |
 |---|---|---|---| ---| ---|
-| ServiceAvailability (dostupnost služby)| Procento (minimum, maximum) | Dostupnost žádostí o účet při jedné hodinové členitosti| 1H | Dostupnost služby | Představuje procento celkového počtu předaných požadavků. Požadavek se považuje za neúspěšný, protože došlo k chybě systému, pokud je stavový kód 410, 500 nebo 503, který slouží k monitorování dostupnosti účtu při hodinové členitosti. |
+| ServiceAvailability (Service Availability)| Percent (Minimum, Maximum) | Account requests availability at one hour granularity| 1H | Service Availability | Represents the percent of total passed requests. A request is considered to be failed due to system error if the status code is 410, 500 or 503 Used to monitor availability of the account at hour granularity. |
 
 
-#### <a name="cassandra-api-metrics"></a>rozhraní API Cassandra metriky
+#### <a name="cassandra-api-metrics"></a>Cassandra API metrics
 
-|Metrika (zobrazovaný název metriky)|Jednotka (typ agregace)|Popis|Dimenze| Časové členitosti| Využití |
+|Metric (Metric Display Name)|Unit (Aggregation Type)|Popis|Dimenze| Time granularities| Využití |
 |---|---|---|---| ---| ---|
-| CassandraRequests (žádosti Cassandra) | Počet (počet) | Počet provedených požadavků rozhraní API Cassandra| DatabaseName, CollectionName, ErrorCode, region, typem operace OperationType, ResourceType| Vše| Používá se k monitorování požadavků Cassandra při minutové členitosti. Chcete-li získat průměrné požadavky za sekundu, použijte agregaci Count za minutu a dělenou 60.|
-| CassandraRequestCharges (poplatky za žádosti Cassandra) | Počet (Sum, min, Max, AVG) | Jednotky žádostí spotřebované rozhraní API Cassandra požadavky| DatabaseName, CollectionName, oblast, typem operace OperationType, ResourceType| Vše| Slouží k monitorování ru používaných za minutu účtem rozhraní API Cassandra.|
-| CassandraConnectionClosures (uzávěry připojení Cassandra) |Počet (počet) |Počet uzavřených připojení Cassandra| ClosureReason, oblast| Vše | Slouží k monitorování připojení mezi klienty a Azure Cosmos DB rozhraní API Cassandra.|
+| CassandraRequests (Cassandra Requests) | Count (Count) | Number of Cassandra API requests made| DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType| Všechno| Used to monitor Cassandra requests at a minute granularity. To get average requests per second, use Count aggregation at minute and divide by 60.|
+| CassandraRequestCharges (Cassandra Request Charges) | Count (Sum, Min, Max, Avg) | Request Units consumed by Cassandra API requests| DatabaseName, CollectionName, Region, OperationType, ResourceType| Všechno| Used to monitor RUs used per minute by a Cassandra API account.|
+| CassandraConnectionClosures (Cassandra Connection Closures) |Count (Count) |Number of Cassandra Connections closed| ClosureReason, Region| Všechno | Used to monitor the connectivity between clients and the Azure Cosmos DB Cassandra API.|
 
 ## <a name="see-also"></a>Viz také
 
-- Popis Azure Cosmos DB monitorování najdete v tématu [monitorování Azure Cosmos DB](monitor-cosmos-db.md) .
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) .
+- See [Monitoring Azure Cosmos DB](monitor-cosmos-db.md) for a description of monitoring Azure Cosmos DB.
+- See [Monitoring Azure resources with Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md) for details on monitoring Azure resources.

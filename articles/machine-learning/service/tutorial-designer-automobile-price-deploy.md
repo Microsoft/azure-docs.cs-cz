@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: nasazení modelu strojového učení pomocí návrháře'
+title: 'Tutorial: Deploy a machine learning model with the designer'
 titleSuffix: Azure Machine Learning
-description: Naučte se vytvářet řešení prediktivní analýzy v Návrháři Azure Machine Learning (Preview). Využijte moduly pro vytažení, skóre a nasazení modelu strojového učení.
+description: Learn how to build a predictive analytics solution in Azure Machine Learning designer (preview). Train, score, and deploy a machine learning model by using drag-and-drop modules.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,112 +9,112 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 50ee0ad78ae0e54071d90c8118a1989f306b59e6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932045"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224936"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: nasazení modelu strojového učení pomocí návrháře (Preview)
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Deploy a machine learning model with the designer (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md) , který jiným uživatelům umožní tuto možnost použít. V první části jste si vyškole svůj model. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu budete:
+You can deploy the predictive model developed in [part one of the tutorial](tutorial-designer-automobile-price-train-score.md) to give others a chance to use it. In part one, you trained your model. Now, it's time to generate new predictions based on user input. In this part of the tutorial, you will:
 
 > [!div class="checklist"]
-> * Vytvoří kanál pro odvození v reálném čase.
-> * Vytvořte cluster Inferencing.
-> * Nasaďte koncový bod v reálném čase.
-> * Otestujte koncový bod v reálném čase.
+> * Create a real-time inference pipeline.
+> * Create an inferencing cluster.
+> * Deploy the real-time endpoint.
+> * Test the real-time endpoint.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Kompletní [část tohoto kurzu](tutorial-designer-automobile-price-train-score.md) se naučíte, jak v Návrháři naučit a vyhodnocovat model strojového učení.
+Complete [part one of the tutorial](tutorial-designer-automobile-price-train-score.md) to learn how to train and score a machine learning model in the designer.
 
-## <a name="create-a-real-time-inference-pipeline"></a>Vytvoření kanálu odvození v reálném čase
+## <a name="create-a-real-time-inference-pipeline"></a>Create a real-time inference pipeline
 
-Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení na kanál pro odvození v reálném čase. Tento proces odebere školicí moduly a přidá vstupy a výstupy pro požadavky Inferencing.
+To deploy your pipeline, you must first convert the training pipeline into a real-time inference pipeline. This process removes training modules and adds inputs and outputs for inferencing requests.
 
-### <a name="create-a-real-time-inference-pipeline"></a>Vytvoření kanálu odvození v reálném čase
+### <a name="create-a-real-time-inference-pipeline"></a>Create a real-time inference pipeline
 
-1. Nad plátnem kanálu vyberte **vytvořit kanál odvození** > **kanál pro odvození v reálném čase**.
+1. Above the pipeline canvas, select **Create inference pipeline** > **Real-time inference pipeline**.
 
-    Váš kanál by teď měl vypadat takto: 
+    Your pipeline should now look like this: 
 
-   ![Snímek obrazovky znázorňující očekávanou konfiguraci kanálu po jeho přípravě na nasazení](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![Screenshot showing the expected configuration of the pipeline after preparing it for deployment](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    Když vyberete **vytvořit kanál odvození**, nastane několik věcí:
+    When you select **Create inference pipeline**, several things happen:
     
-    * Trained model je uložen jako modul **DataSet** v paletě modulu. Můžete ji najít v části **Moje datové sady**.
-    * Odeberou se moduly, jako je **model výuky** a **rozdělená data** .
-    * Uložený vycvičený model se přidá zpátky do kanálu.
-    * Jsou přidány výstupní moduly **webové služby** a **webové služby** . Tyto moduly ukazují, kde data uživatelů vstupují do modelu a kde se vrátí data.
+    * The trained model is stored as a **Dataset** module in the module palette. You can find it under **My Datasets**.
+    * Training modules like **Train Model** and **Split Data** are removed.
+    * The saved trained model is added back into the pipeline.
+    * **Web Service Input** and **Web Service Output** modules are added. These modules show where user data enters the model and where data is returned.
 
     > [!NOTE]
-    > *Školicí kanál* se uloží pod novou kartu v horní části plátna kanálu. Může být také nalezen jako publikovaný kanál v návrháři.
+    > The *training pipeline* is saved under the new tab at the top of the pipeline canvas. It can also be found as a published pipeline in the designer.
     >
 
-1. Vyberte **Spustit**a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
+1. Select **Run**, and use the same compute target and experiment that you used in part one.
 
-1. Vyberte modul určení **skóre modelu** .
+1. Select the **Score Model** module.
 
-1. V podokně Vlastnosti vyberte **výstupy** > **vizualizaci** , abyste ověřili, že model stále pracuje. Můžete vidět, že se zobrazí původní data spolu s předpovězenou cenou ("popisky s skóre").
+1. In the properties pane, select **Outputs** > **Visualize** to verify the model is still working. You can see the original data is displayed along with the predicted price ("Scored Labels").
 
 1. Vyberte **Nasadit**.
 
-## <a name="create-an-inferencing-cluster"></a>Vytvoření clusteru Inferencing
+## <a name="create-an-inferencing-cluster"></a>Create an inferencing cluster
 
-V dialogovém okně, které se zobrazí, můžete vybrat z existujících clusterů Azure Kubernetes Service (AKS), do kterých chcete model nasadit. Pokud nemáte cluster AKS, vytvořte ho pomocí následujících kroků.
+In the dialog box that appears, you can select from any existing Azure Kubernetes Service (AKS) clusters to deploy your model to. If you don't have an AKS cluster, use the following steps to create one.
 
-1. V dialogovém okně, které se zobrazí, vyberte **COMPUTE** . tím přejdete na stránku **COMPUTE** .
+1. Select **Compute** in the dialog box that appears to go to the **Compute** page.
 
-1. Na pásu karet navigace vyberte **odvozené clustery** >  **+ nové**.
+1. On the navigation ribbon, select **Inference Clusters** >  **+ New**.
 
-    ![Snímek obrazovky znázorňující, jak se dostat k novému podoknu clusteru odvození](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![Screenshot showing how to get to the new inference cluster pane](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
-1. V podokně odvození clusteru nakonfigurujte novou službu Kubernetes.
+1. In the inference cluster pane, configure a new Kubernetes Service.
 
-1. Jako **výpočetní název**zadejte *AKS-COMPUTE* .
+1. Enter *aks-compute* for the **Compute name**.
     
-1. Vyberte okolní oblast, která je k dispozici pro **oblast**.
+1. Select a nearby region that's available for the **Region**.
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
     > [!NOTE]
-    > Vytvoření nové služby AKS trvá přibližně 15 minut. Stav zřizování můžete kontrolovat na stránce **odvození clusterů** .
+    > It takes approximately 15 minutes to create a new AKS service. You can check the provisioning state on the **Inference Clusters** page.
     >
 
-## <a name="deploy-the-real-time-endpoint"></a>Nasazení koncového bodu v reálném čase
+## <a name="deploy-the-real-time-endpoint"></a>Deploy the real-time endpoint
 
-Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v reálném čase, abyste mohli dokončit nasazení.
+After your AKS service has finished provisioning, return to the real-time inferencing pipeline to complete deployment.
 
-1. Na plátně vyberte **nasadit** .
+1. Select **Deploy** above the canvas.
 
-1. Vyberte **nasadit nový koncový bod v reálném čase**. 
+1. Select **Deploy new real-time endpoint**. 
 
-1. Vyberte cluster AKS, který jste vytvořili.
+1. Select the AKS cluster you created.
 
 1. Vyberte **Nasadit**.
 
-    ![Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Screenshot showing how to set up a new real-time endpoint](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
-    Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat několik minut.
+    A success notification above the canvas appears after deployment finishes. It might take a few minutes.
 
-## <a name="test-the-real-time-endpoint"></a>Testování koncového bodu v reálném čase
+## <a name="test-the-real-time-endpoint"></a>Test the real-time endpoint
 
-Po dokončení nasazení můžete koncový bod v reálném čase otestovat tak, že na stránku **koncové body** kliknete.
+After deployment finishes, you can test your real-time endpoint by going to the **Endpoints** page.
 
-1. Na stránce **koncové body** vyberte koncový bod, který jste nasadili.
+1. On the **Endpoints** page, select the endpoint you deployed.
 
-    ![Snímek obrazovky zobrazující kartu koncových bodů v reálném čase s zvýrazněným nedávno vytvořeným koncovým bodem](./media/ui-tutorial-automobile-price-deploy/endpoints.png)
+    ![Screenshot showing the real-time endpoints tab with the recently created endpoint highlighted](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
-1. Vyberte **test**.
+1. Select **Test**.
 
-1. Můžete ručně zadat data testování, nebo použít ukázková data automatického vyplňování a vybrat **test**.
+1. You can manually input testing data or use the autofilled sample data, and select **Test**.
 
-    Portál odešle požadavek na test na koncový bod a zobrazí výsledky. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
+    The portal submits a test request to the endpoint and shows the results. Although a price value is generated for the input data, it isn't used to generate the prediction value.
 
-    ![Snímek obrazovky ukazující, jak otestovat koncový bod v reálném čase pomocí popisku s skóre pro zvýrazněnou cenu](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
+    ![Screenshot showing how to test the real-time endpoint with the scored label for price highlighted](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -122,7 +122,7 @@ Po dokončení nasazení můžete koncový bod v reálném čase otestovat tak, 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu Machine Learning v návrháři. Další informace o tom, jak můžete pomocí návrháře vyřešit jiné typy problémů, najdete v našich ukázkových kanálech.
+In this tutorial, you learned the key steps in how to create, deploy, and consume a machine learning model in the designer. To learn more about how you can use the designer to solve other types of problems, see our other sample pipelines.
 
 > [!div class="nextstepaction"]
-> [Ukázka klasifikace úvěrového rizika](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+> [Credit risk classification sample](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)

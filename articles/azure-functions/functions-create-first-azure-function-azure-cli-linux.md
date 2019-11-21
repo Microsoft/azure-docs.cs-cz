@@ -1,33 +1,29 @@
 ---
 title: Vytvoření první funkce v Linuxu v Azure
-description: Naučte se, jak vytvořit první funkci hostovanou v systému Linux v Azure pomocí nástrojů příkazového řádku Azure Functions Core Tools a Azure CLI.
-author: ggailey777
-ms.author: glenga
+description: Learn how to create your first function hosted on Linux in Azure using the command line tools, Azure Functions Core Tools and the Azure CLI.
 ms.date: 03/12/2019
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
-manager: gwallace
-ms.openlocfilehash: 34f4dc4b36f4efd75c5a7cd14b3214886955a403
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 19abfee69db53c560dfa2696d85f8c1c3d770c09
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329678"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230814"
 ---
-# <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>Rychlý Start: Vytvoření první funkce hostované na platformě Linux pomocí nástrojů příkazového řádku
+# <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>Quickstart: Create your first function hosted on Linux using command line tools
 
-Služba Azure Functions umožňuje spuštění kódu v [bezserverovém](https://azure.com/serverless) prostředí Linuxu, aniž byste nejprve museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. Linux – hostování vyžaduje [modul runtime Functions 2. x](functions-versions.md). Funkce bez serveru se spouštějí v [plánu spotřeby](functions-scale.md#consumption-plan).
+Služba Azure Functions umožňuje spuštění kódu v [bezserverovém](https://azure.com/serverless) prostředí Linuxu, aniž byste nejprve museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. Linux-hosting requires [the Functions 2.x runtime](functions-versions.md). Serverless functions run in the [Consumption plan](functions-scale.md#consumption-plan).
 
 Tento článek Rychlý start vás provede použitím Azure CLI k vytvoření první aplikace funkcí spuštěné v Linuxu. Kód funkce se vytvoří místně a pak se nasadí do Azure pomocí [Azure Functions Core Tools](functions-run-local.md).
 
-Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. Tento článek popisuje, jak vytvářet funkce v JavaScriptu nebo jazyce C#. Informace o tom, jak vytvářet funkce v Pythonu, najdete v tématu [Vytvoření první funkce v Pythonu pomocí základních nástrojů a Azure CLI](functions-create-first-function-python.md).
+Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. Tento článek popisuje, jak vytvářet funkce v JavaScriptu nebo jazyce C#. To learn how to create Python functions, see [Create your first Python function using Core Tools and the Azure CLI](functions-create-first-function-python.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
 Před spuštěním této ukázky musíte mít následující:
 
-+ Nainstalujte [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo novější.
++ Install [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.6.666 or above.
 
 + Nainstalujte [rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). Tento článek vyžaduje použití Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
@@ -37,7 +33,7 @@ Před spuštěním této ukázky musíte mít následující:
 
 [!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Povolit sady rozšíření
+## <a name="enable-extension-bundles"></a>Enable extension bundles
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -53,7 +49,7 @@ Před spuštěním této ukázky musíte mít následující:
 
 K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplikace funkcí poskytuje bezserverové prostředí pro provádění kódu funkcí. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Aplikaci funkcí spuštěnou v Linuxu vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
-V následujícím příkazu nahraďte zástupný text `<app_name>` jedinečným názvem aplikace funkcí a `<storage_name>` názvem účtu úložiště. `<app_name>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure. Měli byste taky nastavit modul runtime `<language>` pro aplikaci Function App, od `dotnet` (C#), `node` (JavaScript/TypeScript) nebo `python`.
+V následujícím příkazu nahraďte zástupný text `<app_name>` jedinečným názvem aplikace funkcí a `<storage_name>` názvem účtu úložiště. `<app_name>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure. You should also set the `<language>` runtime for your function app, from `dotnet` (C#), `node` (JavaScript/TypeScript), or `python`.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \

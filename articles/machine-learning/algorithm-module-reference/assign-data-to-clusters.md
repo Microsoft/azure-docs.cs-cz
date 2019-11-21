@@ -1,52 +1,51 @@
 ---
-title: 'Přiřazení dat ke clusteru: odkaz na modul'
+title: 'Assign Data to Cluster: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul přiřazení dat ke clusteru v Azure Machine Learning k určení skóre modelu clusteringu.
+description: Learn how to use the Assign Data to Cluster module in Azure Machine Learning to score clustering model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 75a547a26057ad05444753253666dceea160d714
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493858"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214559"
 ---
-# <a name="module-assign-data-to-clusters"></a>Modul: přiřazení dat clusterům
+# <a name="module-assign-data-to-clusters"></a>Module: Assign Data to Clusters
 
-Tento článek popisuje, jak používat modul *přiřazení dat ke clusterům* v Návrháři Azure Machine Learning (Preview). Modul generuje předpovědi pomocí modelu clusteringu, který byl vyškolený pomocí rozhraní *K – označuje algoritmus clusteringu* .
+This article describes how to use the *Assign Data to Clusters* module in Azure Machine Learning designer (preview). The module generates predictions through a clustering model that was trained with the *K-means clustering* algorithm.
 
-Modul přiřazení dat ke clusterům vrátí datovou sadu, která obsahuje pravděpodobné přiřazení pro každý nový datový bod. 
+The Assign Data to Clusters module returns a dataset that contains the probable assignments for each new data point. 
 
-
-## <a name="how-to-use-assign-data-to-clusters"></a>Použití přiřazování dat do clusterů
+## <a name="how-to-use-assign-data-to-clusters"></a>How to use Assign Data to Clusters
   
-1. V Návrháři Azure Machine Learning vyhledejte dříve proučený model clusteringu. Model clusteringu můžete vytvořit a naučit pomocí některé z následujících metod:  
+1. In Azure Machine Learning designer, locate a previously trained clustering model. You can create and train a clustering model by using either of the following methods:  
   
-    - Konfigurace K znamená algoritmus clusteringu pomocí modulu [k-označuje modul clusteringu](k-means-clustering.md) a pomocí modulu pro vytváření modelů a modelu clusteringu (v tomto článku) vytvořte výuku modelu pomocí datové sady.  
+    - Configure the K-means clustering algorithm by using the [K-Means Clustering](k-means-clustering.md) module, and train the model by using a dataset and the Train Clustering Model module (this article).  
   
-    - Můžete také přidat existující model proučeného clusteringu ze skupiny **uložených modelů** v pracovním prostoru.
+    - You can also add an existing trained clustering model from the **Saved Models** group in your workspace.
 
-2. Připojte školený model k levému vstupnímu portu **přiřazení dat ke clusterům**.  
+2. Attach the trained model to the left input port of **Assign Data to Clusters**.  
 
-3. Připojí novou datovou sadu jako vstup. 
+3. Attach a new dataset as input. 
 
-   V této datové sadě jsou popisky volitelné. Obecně platí, že clustering je bezdohlednou výukovou metodou. Neočekáváte si, že tyto kategorie předem znáte. Vstupní sloupce však musí být stejné jako sloupce, které byly použity při výuce modelu clusteringu, nebo dojde k chybě.
+   In this dataset, labels are optional. Generally, clustering is an unsupervised learning method. You are not expected to know the categories in advance. However, the input columns must be the same as the columns that were used in training the clustering model, or an error occurs.
 
     > [!TIP]
-    > Chcete-li snížit počet sloupců, které jsou zapsány do návrháře z předpovědi clusteru, použijte [možnost vybrat sloupce v datové sadě](select-columns-in-dataset.md)a vyberte podmnožinu sloupců. 
+    > To reduce the number of columns that are written to the designer from the cluster predictions, use [Select columns in the dataset](select-columns-in-dataset.md), and select a subset of the columns. 
     
-4. Zaškrtněte políčko Pokud chcete, aby výsledky obsahovaly úplnou vstupní datovou sadu, včetně sloupce, který zobrazuje výsledky (přiřazení clusteru), ponechejte políčko **zaškrtnout možnost připojit nebo zrušit kontrolu pouze pro výsledek** .
+4. Leave the **Check for append or uncheck for result only** check box selected if you want the results to contain the full input dataset, including a column that displays the results (cluster assignments).
   
-    Pokud zrušíte zaškrtnutí tohoto políčka, vrátí se pouze výsledky. Tato možnost může být užitečná, když vytváříte předpovědi jako součást webové služby.
+    If you clear this check box, only the results are returned. This option might be useful when you create predictions as part of a web service.
   
 5.  Spuštění kanálu  
   
 ### <a name="results"></a>Výsledky
 
-+  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul, vyberte **výslednou**datovou sadu a pak vyberte **vizualizovat**.
++  To view the values in the dataset, right-click the module, select **Result datasets**, and then select **Visualize**.
 

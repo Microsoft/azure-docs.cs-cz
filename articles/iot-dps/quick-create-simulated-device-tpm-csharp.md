@@ -1,26 +1,25 @@
 ---
-title: 'Rychlý Start: zřízení simulovaného zařízení TPM pro Azure IoT Hub pomocíC#'
-description: Rychlý start Azure – Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení jazyka C# pro službu Azure IoT Hub Device Provisioning. V tomto rychlém startu se používají jednotlivé registrace.
+title: Quickstart - Provision a simulated TPM device to Azure IoT Hub using C#
+description: Quickstart - Create and provision a simulated TPM device using C# device SDK for Azure IoT Hub Device Provisioning Service. V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b850cddfeb36cefe3d205c83628780ee4766a833
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
-ms.translationtype: MT
+ms.openlocfilehash: 65e914700749fca2011d189dc1fbce701a05f16d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903560"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228699"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí C# sady SDK pro zařízení pro IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated TPM device using C# device SDK for IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Tyto kroky ukazují, jak používat [ukázky Azure IoT pro C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp) k simulaci zařízení TPM na vývojovém počítači s operačním systémem Windows. Ukázka také připojí simulované zařízení k IoT Hub pomocí služby Device Provisioning. 
+These steps show you how to use the [Azure IoT Samples for C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) to simulate a TPM device on a development machine running the Windows OS. The sample also connects the simulated device to an IoT Hub using the Device Provisioning Service. 
 
 Vzorový kód používá simulátor Windows TPM jako [modul hardwarového zabezpečení (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) zařízení. 
 
@@ -38,11 +37,11 @@ V tomto článku si předvedeme jednotlivé registrace.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí 
 
-1. Ujistěte se, že máte na svém počítači nainstalovanou [sadu .NET Core 2,1 SDK nebo novější](https://www.microsoft.com/net/download/windows) . 
+1. Make sure you have the [.NET Core 2.1 SDK or later](https://www.microsoft.com/net/download/windows) installed on your machine. 
 
 1. Ujistěte se, že je na vašem počítači nainstalovaný `git` a že je přidaný do proměnných prostředí, ke kterým má příkazové okno přístup. Na stránce [klientských nástrojů Git organizace Software Freedom Conservancy](https://git-scm.com/download/) najdete nejnovější verzi nástrojů `git` k instalaci. Jejich součástí je i **Git Bash**, aplikace příkazového řádku, pomocí které můžete pracovat se svým místním úložištěm Git. 
 
-1. Otevřete příkazový řádek nebo Git Bash. Naklonujte ukázky Azure IoT C# pro úložiště GitHub:
+1. Otevřete příkazový řádek nebo Git Bash. Clone the Azure IoT Samples for C# GitHub repo:
 
     ```cmd
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -66,9 +65,9 @@ V tomto článku si předvedeme jednotlivé registrace.
     dotnet run <IDScope>
     ```
 
-    Tento příkaz spustí simulátor čipu TPM v samostatném příkazovém řádku. V systému Windows se může zobrazit výstraha zabezpečení systému Windows s dotazem, zda chcete pro komunikaci s veřejnými sítěmi umožňovat simulátor. exe. Pro účely této ukázky můžete žádost zrušit.
+    This command will launch the TPM chip simulator in a separate command prompt. On Windows, you may encounter a Windows Security Alert that asks whether you want to allow Simulator.exe to communicate on public networks. For the purposes of this sample, you may cancel the request.
 
-1. V příkazovém okně se zobrazí **_Ověřovací klíč_** , **_ID registrace_** a navrhované **_ID zařízení_** potřebné pro registraci zařízení. Poznamenejte si tyto hodnoty. Tato hodnota se používá k vytvoření jednotlivé registrace v instanci služby Device Provisioning. 
+1. V příkazovém okně se zobrazí **_Ověřovací klíč_** , **_ID registrace_** a navrhované **_ID zařízení_** potřebné pro registraci zařízení. Take note of these values. You will use these value to create an individual enrollment in your Device Provisioning Service instance. 
    > [!NOTE]
    > Nespleťte si okno obsahující výstup příkazu s oknem obsahujícím výstup ze simulátoru TPM. Možná budete na příkazové okno muset kliknout a přenést ho do popředí.
 
@@ -77,11 +76,11 @@ V tomto článku si předvedeme jednotlivé registrace.
 4. Na webu Azure Portal v okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a v horní části klikněte na tlačítko **Přidat jednotlivou registraci**. 
 
 5. V části **Přidat registraci** zadejte následující informace:
-   - Jako **Mechanismus** ověření identity vyberte *TPM*.
-   - Zadejte *ID registrace* a *ověřovací klíč* pro vaše zařízení TPM, které jste si poznamenali dříve.
+   - Jako *Mechanismus* ověření identity vyberte **TPM**.
+   - Enter the *Registration ID* and *Endorsement key* for your TPM device that you noted earlier.
    - Volitelně vyberte centrum IoT propojené s vaší službou zřizování.
    - Zadejte jedinečné ID zařízení. Můžete zadat ID zařízení navrhované v ukázkovém výstupu nebo vlastní ID zařízení. Pokud použijete vlastní, při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. 
-   - Volitelně můžete aktualizovat **počáteční stav** doplňování zařízení s požadovanou počáteční konfigurací pro zařízení.
+   - Optionally update the **Initial device twin state** with the desired initial configuration for the device.
    - Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
      ![Zadání informací o registraci zařízení v okně portálu](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  

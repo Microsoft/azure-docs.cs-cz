@@ -1,39 +1,39 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 4bd890adcaa4982c52366faed0f2975729290360
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: fb77682bce0d9faef8f9ac8197afd8751560d515
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612031"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224329"
 ---
-V následující tabulce jsou uvedené limity, které se vztahují na prostředky Azure IoT Hub Device Provisioning Service.
+The following table lists the limits that apply to Azure IoT Hub Device Provisioning Service resources.
 
 | Prostředek | škálování |
 | --- | --- |
-| Maximální počet služeb Device Provisioning na předplatné Azure | 10 |
-| Maximální počet zápisů | 1 000 000 |
-| Maximální počet registrací | 1 000 000 |
-| Maximální počet skupin zápisu | 100 |
-| Maximální počet certifikačních autorit | 25 |
-| Maximální počet propojených Center IoT Hub | 50 |
-| Maximální velikost zprávy | 96 KB|
+| Maximum device provisioning services per Azure subscription | 10 |
+| Maximum number of enrollments | 1 000 000 |
+| Maximum number of registrations | 1 000 000 |
+| Maximum number of enrollment groups | 100 |
+| Maximum number of CAs | 25 |
+| Maximum number of linked IoT hubs | 50 |
+| Maximum size of message | 96 KB|
 
 
 > [!NOTE]
-> Pokud chcete zvýšit počet instancí v rámci vašeho předplatného, obraťte se na [Podpora Microsoftu](https://azure.microsoft.com/support/options/).
+> To increase the number of instances in your subscription, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
-> Pokud chcete zvýšit počet zápisů a registrací ve službě zřizování, kontaktujte [Podpora Microsoftu](https://azure.microsoft.com/support/options/).
+> To increase the number of enrollments and registrations on your provisioning service, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
 
-Služba Device Provisioning omezuje požadavky na překročení následujících kvót.
+The Device Provisioning Service throttles requests when the following quotas are exceeded.
 
-| Omezení | Hodnota za jednotku |
+| Omezení | Per-unit value |
 | --- | --- |
-| Operace | 200/min/Service |
-| Registrace zařízení | 200/min/Service |
-| Operace cyklického dotazování zařízení | 5/10 s/zařízení |
+| Operations | 200/min/service |
+| Registrace zařízení | 200/min/service |
+| Device polling operation | 5/10 sec/device |

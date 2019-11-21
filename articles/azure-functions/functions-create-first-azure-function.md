@@ -1,31 +1,27 @@
 ---
-title: Vytvoření první funkce bez serveru z Azure Portal
+title: Create your first serverless function from the Azure portal
 description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí webu Azure Portal bez serveru.
-author: ggailey777
-manager: gwallace
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/28/2018
-ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: eb3df5ace97e5a09b2869c0857d49926f354f2b0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3c4d3a8d61597498f027a859a506e9afc2fda5d0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329673"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230828"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
-Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. V tomto článku se dozvíte, jak pomocí Functions vytvořit funkci Hello World v Azure Portal.
+Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. In this article, learn how to use Functions to create a "hello world" function in the Azure portal.
 
 ![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> C#Vývojáři by měli zvážit [Vytvoření první funkce v aplikaci Visual Studio 2019](functions-create-your-first-function-visual-studio.md) místo na portálu. 
+> C# developers should consider [creating your first function in Visual Studio 2019](functions-create-your-first-function-visual-studio.md) instead of in the portal. 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -43,7 +39,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 1. Rozbalte svoji novou aplikaci funkcí, vyberte tlačítko **+** vedle položky **Funkce**, zvolte **Na portálu** a potom **Pokračovat**.
 
-    ![Rychlé spuštění funkcí pro výběr platformy.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Functions quickstart for choosing a platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
 1. Zvolte **Webhook + API** a potom vyberte **Vytvořit**.
 
@@ -77,7 +73,7 @@ Novou funkci můžete spustit odesláním požadavku HTTP.
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořili jste aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP.  
+You've created a function app with a simple HTTP triggered function.  
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

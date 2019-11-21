@@ -1,6 +1,6 @@
 ---
-title: Fondy back-end a back-EndY branou služby Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jaké fondy back-end a back-endů jsou v popředí dveře konfigurace.
+title: Backends and backend pools in Azure Front Door Service | Microsoft Docs
+description: This article describes what backends and backend pools are in Front Door configuration.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,85 +11,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b764799d3f40cef24a0412ac950026af650d4ec7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193706"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229019"
 ---
-# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Fondy back-end a back-EndY branou služby Azure
-Tento článek popisuje koncepty o tom, jak mapovat nasazení aplikace s branou služby Azure. Také vysvětluje různé podmínky v konfiguraci branou kolem back-EndY aplikací.
+# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Backends and backend pools in Azure Front Door Service
+This article describes concepts about how to map your app deployment with Azure Front Door Service. It also explains the different terms in Front Door configuration around app backends.
 
 ## <a name="backends"></a>Back-endy
-Back-end je rovna instance nasazení vaší aplikace v oblasti. Branou služba podporuje Azure i mimo Azure back-EndY, takže oblasti se uplatní jenom do oblastí Azure. Kromě toho může být místní datacentrum nebo app instance v jiném cloudu.
+A backend is equal to an app's deployment instance in a region. Front Door Service supports both Azure and non-Azure backends, so the region isn't only restricted to Azure regions. Also, it can be your on-premises datacenter or an app instance in another cloud.
 
-Back-EndY Service branou odkazovat na název hostitele nebo veřejnou IP adresu vaší aplikace, která může obsluhovat požadavky klientů. Back-EndY, neměly by být zaměňovány s databázová vrstva, vrstva úložiště a tak dále. Back-EndY by měla zobrazit jako veřejný koncový bod služby back-endu aplikace. Při přidání back-endu do back-endový fond branou, je nutné přidat také následující:
+Front Door Service backends refer to the host name or public IP of your app, which can serve client requests. Backends shouldn't be confused with your database tier, storage tier, and so on. Backends should be viewed as the public endpoint of your app backend. When you add a backend in a Front Door backend pool, you must also add the following:
 
-- **Typ hostitele back-endu**. Typ prostředku, který chcete přidat. Přední dveře služba podporuje automatické zjišťování z vašeho back-EndY aplikací ze služby app service, cloudovou službu nebo úložiště. Pokud chcete jinému prostředku v Azure nebo dokonce i mimo Azure back-endu, vyberte **vlastního hostitele**.
+- **Backend host type**. The type of resource you want to add. Front Door Service supports autodiscovery of your app backends from app service, cloud service, or storage. If you want a different resource in Azure or even a non-Azure backend, select **Custom host**.
 
     >[!IMPORTANT]
-    >Během konfigurace rozhraní API není ověřit, jestli je nepřístupný z branou prostředí back-endu. Ujistěte se, že branou dosáhnout back-endu.
+    >During configuration, APIs don't validate if the backend is inaccessible from Front Door environments. Make sure that Front Door can reach your backend.
 
-- **Název předplatného a back-endu hostitele**. Pokud jste nevybrali **vlastního hostitele** pro typ hostitele back-endu, vyberte svůj back-end výběrem příslušné předplatné a odpovídající název hostitele back-end v uživatelském rozhraní.
+- **Subscription and Backend host name**. If you haven't selected **Custom host** for backend host type, select your backend by choosing the appropriate subscription and the corresponding backend host name in the UI.
 
-- **Hlavička hostitele back-endu**. Hodnota hlavičky hostitele posílaná back-endu pro každý požadavek. Další informace najdete v tématu [hlavičku hostitele back-endu](#hostheader).
+- **Backend host header**. The host header value sent to the backend for each request. For more information, see [Backend host header](#hostheader).
 
-- **Priorita**. Pokud chcete použít primární služby back-endu pro veškerý provoz přiřadíte priority váš různé back-end. Pokud jsou k dispozici primární nebo zálohování back-EndY, zadejte také zálohy. Další informace najdete v tématu [Priority](front-door-routing-methods.md#priority).
+- **Priority**. Assign priorities to your different backends when you want to use a primary service backend for all traffic. Also, provide backups if the primary or the backup backends are unavailable. For more information, see [Priority](front-door-routing-methods.md#priority).
 
-- **Váha**. Přiřadíte váhu vaše různé back-EndY za účelem distribuce provozu mezi sadu back-EndY, rovnoměrně nebo podle váhy koeficienty. Další informace najdete v tématu [váhy](front-door-routing-methods.md#weighted).
+- **Weight**. Assign weights to your different backends to distribute traffic across a set of backends, either evenly or according to weight coefficients. For more information, see [Weights](front-door-routing-methods.md#weighted).
 
-### <a name = "hostheader"></a>Hlavička hostitele back-endu
+### <a name = "hostheader"></a>Backend host header
 
-Požadavky branou předány back-endu obsahovat pole hlavičky hostitele, který back-endu používá k načtení na cílový prostředek. Hodnota tohoto pole obvykle pochází z identifikátoru URI back-endu a má hostitele a port.
+Requests forwarded by Front Door to a backend include a host header field that the backend uses to retrieve the targeted resource. The value for this field typically comes from the backend URI and has the host and port.
 
-Například pro webovou žádost\.contoso.com bude mít hlavičky www hostitele\.contoso.com. Pokud pomocí webu Azure portal nakonfigurovat back-endu, výchozí hodnota pro toto pole je název hostitele back-endu. Pokud back-endu je contoso-westus.azurewebsites.net na webu Azure Portal, bude vyplní automaticky hodnota hlavičky hostitele back-endu contoso westus.azurewebsites.net. Ale pokud použijete šablony Azure Resource Manageru nebo jiným způsobem bez explicitní nastavení tohoto pole, branou služby odešle příchozí název hostitele jako hodnota pro hlavičku hostitele. Pokud byl požadavek pro www\.contoso.com a back-endu je contoso-westus.azurewebsites.net, který má prázdný záhlaví pole, nastaví hlavičku hostitele branou služba jako webové\.contoso.com.
+For example, a request made for www\.contoso.com will have the host header www\.contoso.com. If you use Azure portal to configure your backend, the default value for this field is the host name of the backend. If your backend is contoso-westus.azurewebsites.net, in the Azure portal, the autopopulated value for the backend host header will be contoso-westus.azurewebsites.net. However, if you use Azure Resource Manager templates or another method without explicitly setting this field, Front Door Service will send the incoming host name as the value for the host header. If the request was made for www\.contoso.com, and your backend is contoso-westus.azurewebsites.net that has an empty header field, Front Door Service will set the host header as www\.contoso.com.
 
-Většina back-EndY aplikací (Azure Web Apps, Blob storage a Cloud Services) vyžadují Hlavička hostitele shodovala s doménou back-endu. Hostitele front-endu, který směruje do back-endu se však použít jiný název hostitele, jako je například www\.contoso.azurefd.net.
+Most app backends (Azure Web Apps, Blob storage, and Cloud Services) require the host header to match the domain of the backend. However, the frontend host that routes to your backend will use a different hostname such as www\.contoso.azurefd.net.
 
-Pokud back-endu vyžaduje hlavičku hostitele tak, aby odpovídaly názvu hostitele back-endu, ujistěte se, že hlavička hostitele back-end obsahuje název hostitele, back-endu.
+If your backend requires the host header to match the backend host name, make sure that the backend host header includes the host name backend.
 
-#### <a name="configuring-the-backend-host-header-for-the-backend"></a>Konfigurace back-endu hlavičku hostitele pro back-endu
+#### <a name="configuring-the-backend-host-header-for-the-backend"></a>Configuring the backend host header for the backend
 
-Ke konfiguraci **hlavičku hostitele back-endu** pole v části back-endový fond back-endu:
+To configure the **backend host header** field for a backend in the backend pool section:
 
-1. Otevřete prostředek branou a vyberte back-endový fond back-end ke konfiguraci.
+1. Open your Front Door resource and select the backend pool with the backend to configure.
 
-2. Přidáte back-endu. Pokud takto neučinili, nebo upravte nějaký existující.
+2. Add a backend if you haven't done so, or edit an existing one.
 
-3. Nastavte pole hlavičky hostitele back-endu na vlastní hodnotu nebo pole ponechte prázdné. Název hostitele pro tento požadavek se použije jako hodnota hlavičky hostitele.
+3. Set the backend host header field to a custom value or leave it blank. The hostname for the incoming request will be used as the host header value.
 
-## <a name="backend-pools"></a>Back-endové fondy
-Back-endového fondu v popředí dveře služba odkazuje na sadu back-EndY, která přijímají provoz podobně jako u svých aplikací. Jinými slovy je logické seskupení instancí aplikace po celém světě, které přijímají stejný provoz a reakce očekávané chování. Tyto back-endů jsou nasazené v různých oblastech nebo v rámci stejné oblasti. Všechny back-EndY může být v režimu aktivní/aktivní nasazení nebo definovaná jako konfigurace aktivní/pasivní vysokou dostupnost.
+## <a name="backend-pools"></a>Backend pools
+A backend pool in Front Door Service refers to the set of backends that receive similar traffic for their app. In other words, it's a logical grouping of your app instances across the world that receive the same traffic and respond with expected behavior. These backends are deployed across different regions or within the same region. All backends can be in Active/Active deployment mode or what is defined as Active/Passive configuration.
 
-Back-endový fond definuje, jak by měl být vyhodnocen různé back-EndY via sondy stavu. Také definuje, jak dojde k vyrovnávání zatížení mezi nimi.
+A backend pool defines how the different backends should be evaluated via health probes. It also defines how load balancing occurs between them.
 
 ### <a name="health-probes"></a>Sondy stavu
-Služba branou odešle pravidelné požadavky sondy HTTP/HTTPS pro všechny vaše nakonfigurované back-EndY. Požadavky testu určit blízkosti a stav každého back-endového načíst vyvážit požadavky vašich koncových uživatelů. Nastavení sondy stavu pro back-endový fond definovat, jak jsme dotazování stav back-EndY aplikací. Jsou k dispozici pro následující nastavení konfigurace služby Vyrovnávání zatížení:
+Front Door Service sends periodic HTTP/HTTPS probe requests to each of your configured backends. Probe requests determine the proximity and health of each backend to load balance your end-user requests. Health probe settings for a backend pool define how we poll the health status of app backends. The following settings are available for load-balancing configuration:
 
-- **Cesta**. Adresa URL pro požadavky testu pro všechny back-endů v back-endový fond. Například pokud některý váš back-end contoso westus.azurewebsites.net a nastavení cesty k /probe/test.aspx, pak prostředí branou služby, za předpokladu, že protokol je nastavena na HTTP, odešle požadavky sondy stavu protokolu http\:/ / contoso-westus.azurewebsites.net/probe/test.aspx.
+- **Path**. The URL used for probe requests for all the backends in the backend pool. For example, if one of your backends is contoso-westus.azurewebsites.net and the path is set to /probe/test.aspx, then Front Door Service environments, assuming the protocol is set to HTTP, will send health probe requests to http\://contoso-westus.azurewebsites.net/probe/test.aspx.
 
-- **Protokol**. Definuje, zda chcete odesílat požadavky sondy stavu ze branou služby pro váš back-end pomocí protokolu HTTP nebo HTTPS.
+- **Protocol**. Defines whether to send the health probe requests from Front Door Service to your backends with HTTP or HTTPS protocol.
 
-- **Interval (sekundy)** . Definuje frekvence sondy stavu služby pro váš back-end nebo intervaly, ve kterých každé prostředí branou odešle testu.
+- **Interval (seconds)** . Defines the frequency of health probes to your backends, or the intervals in which each of the Front Door environments sends a probe.
 
     >[!NOTE]
-    >Pro rychlejší převzetí služeb při selhání nastavte interval na nižší hodnotu. Čím nižší hodnota, tím větší objem test stavu zobrazí váš back-end. Například pokud interval globálně nastavená na 30 sekund 90 branou prostředí nebo bodů POP, každý back-end se zobrazí informace o 3 až 5 testu požadavků za sekundu.
+    >For faster failovers, set the interval to a lower value. The lower the value, the higher the health probe volume your backends receive. For example, if the interval is set to 30 seconds with 90 Front Door environments or POPs globally, each backend will receive about 3-5 probe requests per second.
 
-Další informace najdete v tématu [sondy stavu](front-door-health-probes.md).
+For more information, see [Health probes](front-door-health-probes.md).
 
-### <a name="load-balancing-settings"></a>Nastavení služby Vyrovnávání zatížení
-Nastavení back-endový fond Vyrovnávání zatížení definují, jak vyhodnocujeme sondy stavu. Toto nastavení určuje, zda je back-endu v pořádku nebo není v pořádku. Jsou také zkontrolujte, jak vyrovnávat zatížení provozu mezi různé back-endů v back-endový fond. Jsou k dispozici pro následující nastavení konfigurace služby Vyrovnávání zatížení:
+### <a name="load-balancing-settings"></a>Load-balancing settings
+Load-balancing settings for the backend pool define how we evaluate health probes. These settings determine if the backend is healthy or unhealthy. They also check how to load-balance traffic between different backends in the backend pool. The following settings are available for load-balancing configuration:
 
-- **Ukázkové velikosti**. Určuje, kolik ukázky sond stavu potřebujeme má zohlednit při vyhodnocování stavu back-endu.
+- **Sample size**. Identifies how many samples of health probes we need to consider for backend health evaluation.
 
-- **Velikost vzorku úspěšné**. Definuje velikost vzorku jak už jsme zmínili, počet úspěšných ukázky potřebné k volání back-endu v pořádku. Předpokládejme například, intervalem branou stavu testu je 30 sekund, velikost vzorku je 5 a velikost vzorku úspěšné je 3. Pokaždé, když vyhodnotíme stav sondy pro back-endu, podíváme na posledních pět ukázky víc než 150 sekund (5 × 30). Alespoň tři úspěšné testy, je potřeba deklarovat back-end jako v pořádku.
+- **Successful sample size**. Defines the sample size as previously mentioned, the number of successful samples needed to call the backend healthy. For example, assume a Front Door health probe interval is 30 seconds, sample size is 5, and successful sample size is 3. Each time we evaluate the health probes for your backend, we look at the last five samples over 150 seconds (5 x 30). At least three successful probes are required to declare the backend as healthy.
 
-- **Latence citlivosti (Další latence)** . Definuje, zda chcete, aby vstupní brána k odesílání požadavku do back-endů do rozsahu citlivosti měření latence nebo předat požadavek na nejbližší back-endu.
+- **Latency sensitivity (additional latency)** . Defines whether you want Front Door to send the request to backends within the latency measurement sensitivity range or forward the request to the closest backend.
 
-Další informace najdete v tématu [směrování metodu na základě nejnižší latence](front-door-routing-methods.md#latency).
+For more information, see [Least latency based routing method](front-door-routing-methods.md#latency).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření profilu branou](quickstart-create-front-door.md)
-- [Jak funguje branou](front-door-routing-architecture.md)
+- [Create a Front Door profile](quickstart-create-front-door.md)
+- [How Front Door works](front-door-routing-architecture.md)

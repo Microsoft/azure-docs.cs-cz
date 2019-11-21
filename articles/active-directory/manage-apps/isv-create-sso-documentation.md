@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a publikování dokumentaci jednotné přihlašování pro vaši aplikaci
-description: Pokyny pro nezávislé dodavatele softwaru na integraci se službou Azure Active Directory
+title: Create & publish single sign-on documentation for your application
+description: Guidance for independent software vendors on integrating with Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -12,53 +12,53 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53221343ac606b6076cc9cc3cff6e0f96c1a3ac3
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659590"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232286"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Vytvoření a publikování dokumentaci jednotné přihlašování pro vaši aplikaci   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Create and publish single sign-on documentation for your application   
 
-## <a name="documentation-on-your-site"></a>Dokumentace na webu
+## <a name="documentation-on-your-site"></a>Documentation on your site
 
-Snadné přijetí je důležitým faktorem při rozhodování o podnikových softwaru. Vymazat snadno podle dokumentace podporuje vaši zákazníci v jejich cesty k osvojení služeb a snižuje náklady na podporu. Práce s tisíce dodavatelů softwaru, Microsoft zaznamenal, co funguje.
+Ease of adoption is a significant factor in enterprise software decisions. Clear easy-to-follow documentation supports your customers in their adoption journey and reduces support costs. Working with thousands of software vendors, Microsoft has seen what works.
 
-Doporučujeme vám, že dokumentaci na webu minimálně zahrnují následující položky.
+We recommend that your documentation on your site at a minimum include the following items.
 
-* Úvod do vaší funkce jednotného přihlašování
+* Introduction to your SSO functionality
 
-  * Podporované protokoly
+  * Protocols supported
 
-  * Verze a SKU
+  * Version and SKU
 
-  * Seznam podporovaných zprostředkovatelů Identity s odkazy na dokumentaci
+  * Supported Identity Providers list with documentation links
 
-* Informace o licencích pro vaši aplikaci
+* Licensing information for your application
 
-* Řízení přístupu na základě rolí pro konfiguraci jednotného přihlašování
+* Role-based access control for configuring SSO
 
-* Postup konfigurace jednotného přihlašování
+* SSO Configuration Steps
 
-  * Konfigurační prvky uživatelského rozhraní pro SAML s očekávané hodnoty od poskytovatele
+  * UI configuration elements for SAML with expected values from the provider
 
-  * Informace o poskytovateli služeb mají být předány zprostředkovatelů identity
+  * Service provider information to be passed to identity providers
 
-* Pokud OIDC/OAuth
+* If OIDC/OAuth
 
-  * Seznam oprávnění požadovaná pro vyjádření souhlasu s obchodní odůvodnění
+  * List of permissions required for consent with business justifications
 
-* Testovací kroky pro uživatele pilotního nasazení
+* Testing steps for pilot users
 
-* Informace o odstraňování potíží, včetně kódy chyb a zprávy
+* Troubleshooting information, including error codes and messages
 
-* Podpora mechanismy pro zákazníky
+* Support mechanisms for customers
 
-## <a name="documentation-on-the-microsoft-site"></a>Dokumentace na webu společnosti Microsoft
+## <a name="documentation-on-the-microsoft-site"></a>Documentation on the Microsoft Site
 
-Po zařazení vaší aplikace pomocí Azure Active Directory aplikace Galerie, které vaší aplikace, publikuje také na webu Azure Marketplace, Microsoft bude generovat dokumentaci pro naše vzájemné zákazníky s vysvětlením podrobný postup. Příklad můžete vidět [tady](https://aka.ms/appstutorial). Tato dokumentace je založeno na váš příspěvek do galerie a můžete ho snadno můžete aktualizovat tak, pokud provedete změny do vaší aplikace pomocí účtu GitHub.
+When you list your application with the Azure Active Directory Application Gallery, which also publishes your application in the Azure Marketplace, Microsoft will generate documentation for our mutual customers explaining the step-by-step process. You can see an example [here](https://aka.ms/appstutorial). This documentation is created based on your submission to the gallery, and you can easily update it if you make changes to your application using your GitHub account.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Uvedení aplikace v galerii aplikací Azure AD](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[List your application in the Azure AD Application Gallery](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

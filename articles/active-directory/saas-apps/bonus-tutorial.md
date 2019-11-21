@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Bonusly | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Bonusly.
+title: 'Tutorial: Azure Active Directory integration with Bonusly | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Bonusly.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,244 +16,244 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f605398896c93d15b7475c05c79361fdcefcfcab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442775"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232061"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Integrace Azure Active Directory s Bonusly
+# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Tutorial: Azure Active Directory integration with Bonusly
 
-V tomto kurzu se dozvíte, jak integrovat Bonusly s Azure Active Directory (Azure AD).
-Bonusly integraci se službou Azure AD poskytuje následující výhody:
+In this tutorial, you learn how to integrate Bonusly with Azure Active Directory (Azure AD).
+Integrating Bonusly with Azure AD provides you with the following benefits:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Bonusly.
-* Můžete povolit uživatelům být automaticky přihlášeni k Bonusly (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* You can control in Azure AD who has access to Bonusly.
+* You can enable your users to be automatically signed-in to Bonusly (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s Bonusly, potřebujete následující položky:
+To configure Azure AD integration with Bonusly, you need the following items:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Bonusly jednotného přihlašování povolená předplatného
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* Bonusly single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Bonusly podporuje **IDP** jednotné přihlašování zahájené pomocí
+* Bonusly supports **IDP** initiated SSO
 
-## <a name="adding-bonusly-from-the-gallery"></a>Přidání Bonusly z Galerie
+## <a name="adding-bonusly-from-the-gallery"></a>Adding Bonusly from the gallery
 
-Konfigurace integrace Bonusly do služby Azure AD, budete muset přidat Bonusly z Galerie na váš seznam spravovaných aplikací SaaS.
+To configure the integration of Bonusly into Azure AD, you need to add Bonusly from the gallery to your list of managed SaaS apps.
 
-**Chcete-li přidat Bonusly z galerie, postupujte následovně:**
+**To add Bonusly from the gallery, perform the following steps:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Bonusly**vyberte **Bonusly** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. In the search box, type **Bonusly**, select **Bonusly** from result panel then click **Add** button to add the application.
 
-    ![Bonusly v seznamu výsledků](common/search-new-app.png)
+    ![Bonusly in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Bonusly podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Bonusly.
+In this section, you configure and test Azure AD single sign-on with Bonusly based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Bonusly needs to be established.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Bonusly, které potřebujete k dokončení následujících stavebních bloků:
+To configure and test Azure AD single sign-on with Bonusly, you need to complete the following building blocks:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Bonusly Single Sign-On](#configure-bonusly-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření Bonusly testovacího uživatele](#create-bonusly-test-user)**  – Pokud chcete mít protějšek Britta Simon Bonusly, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure Bonusly Single Sign-On](#configure-bonusly-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create Bonusly test user](#create-bonusly-test-user)** - to have a counterpart of Britta Simon in Bonusly that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Bonusly, proveďte následující kroky:
+To configure Azure AD single sign-on with Bonusly, perform the following steps:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Bonusly** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Bonusly** application integration page, select **Single sign-on**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![Bonusly domény a adresy URL jednotného přihlašování – informace](common/idp-reply.png)
+    ![Bonusly Domain and URLs single sign-on information](common/idp-reply.png)
 
-    V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://Bonus.ly/saml/<tenant-name>`
+    In the **Reply URL** text box, type a URL using the following pattern:  `https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
-    > Hodnota není skutečný. Skutečná adresa URL odpovědi zaktualizujte příslušnou hodnotu. Kontakt [tým podpory Bonusly klienta](https://bonus.ly/contact) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > The value is not real. Update the value with the actual Reply URL. Contact [Bonusly Client support team](https://bonus.ly/contact) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
+5. In the **SAML Signing Certificate** section, click **Edit** button to open **SAML Signing Certificate** dialog.
 
-    ![Upravit podpisového certifikátu SAML](common/edit-certificate.png)
+    ![Edit SAML Signing Certificate](common/edit-certificate.png)
 
-6. V **podpisový certifikát SAML** tématu, zkopírujte **kryptografický OTISK** a uložte ho do počítače.
+6. In the **SAML Signing Certificate** section, copy the **THUMBPRINT** and save it on your computer.
 
-    ![Zkopírujte hodnotu kryptografického otisku](common/copy-thumbprint.png)
+    ![Copy Thumbprint value](common/copy-thumbprint.png)
 
-7. Na **nastavení Bonusly** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. On the **Set up Bonusly** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    a. Login URL
 
-    b. Identifikátor Azure AD
+    b. Azure AD Identifier
 
-    c. Adresa URL – odhlášení
+    c. Logout URL
 
-### <a name="configure-bonusly-single-sign-on"></a>Konfigurace Bonusly jednotného přihlašování
+### <a name="configure-bonusly-single-sign-on"></a>Configure Bonusly Single Sign-On
 
-1. V jiném okně prohlížeče, přihlaste se k vaší **Bonusly** tenanta.
+1. In a different browser window, sign in to your **Bonusly** tenant.
 
-1. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení** a pak vyberte **integrace a aplikace**.
+1. In the toolbar on the top, click **Settings** and then select **Integrations and apps**.
 
-    ![Bonusly sociální části](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. V části **Single Sign-On**vyberte **SAML**.
+    ![Bonusly Social Section](./media/bonus-tutorial/ic773686.png "Bonusly")
+1. Under **Single Sign-On**, select **SAML**.
 
-1. Na **SAML** dialogového okna stránky, proveďte následující kroky:
+1. On the **SAML** dialog page, perform the following steps:
 
-    ![Bonusly Saml dialogového okna stránky](./media/bonus-tutorial/ic773687.png "Bonusly")
+    ![Bonusly Saml Dialog page](./media/bonus-tutorial/ic773687.png "Bonusly")
 
-    a. V **cílová adresa URL zprostředkovatele identity SSO** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    a. In the **IdP SSO target URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    b. V **přihlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    b. In the **IdP Login URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    c. V **Vystavitel zprostředkovatele identity** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
+    c. In the **IdP Issuer** textbox, paste the value of **Azure AD Identifier**, which you have copied from Azure portal.
     
-    d. Vložit **kryptografický otisk** hodnota zkopírována z webu Azure portal do **otisků prstů certifikátů** textového pole.
+    d. Paste the **Thumbprint** value copied from Azure portal into the **Cert Fingerprint** textbox.
     
     e. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Select **New user** at the top of the screen.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. In the User properties, perform the following steps.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-V této části je povolit Britta Simon k udělení přístupu k Bonusly použití Azure jednotného přihlašování.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Bonusly.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Bonusly**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Bonusly**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Bonusly**.
+2. In the applications list, select **Bonusly**.
 
-    ![Odkaz Bonusly v seznamu aplikací](common/all-applications.png)
+    ![The Bonusly link in the Applications list](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-bonusly-test-user"></a>Vytvoření Bonusly testovacího uživatele
+### <a name="create-bonusly-test-user"></a>Create Bonusly test user
 
-Chcete-li povolit Azure AD uživatelům umožní přihlásit k Bonusly, musí být poskytnuty do Bonusly. V případě Bonusly zřizování se ruční úlohy.
+In order to enable Azure AD users to sign in to Bonusly, they must be provisioned into Bonusly. In the case of Bonusly, provisioning is a manual task.
 
 > [!NOTE]
-> Můžete použít jakékoli další Bonusly uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Bonusly uživatelským účtům, zřídit AAD. 
+> You can use any other Bonusly user account creation tools or APIs provided by Bonusly to provision Azure AD user accounts. 
 
-**Konfigurace zřizování uživatelů, proveďte následující kroky:**
+**To configure user provisioning, perform the following steps:**
 
-1. V okně webového prohlížeče Přihlaste se k tenantovi Bonusly.
+1. In a web browser window, sign in to your Bonusly tenant.
 
-1. Klikněte na tlačítko **nastavení**.
+1. Click **Settings**.
 
-    ![Nastavení](./media/bonus-tutorial/ic781041.png "nastavení")
+    ![Nastavení](./media/bonus-tutorial/ic781041.png "Nastavení")
 
-1. Klikněte na tlačítko **uživatelů a bonusy** kartu.
+1. Click the **Users and bonuses** tab.
 
-    ![Uživatelé a bonusy](./media/bonus-tutorial/ic781042.png "uživatelů a bonusy")
+    ![Users and bonuses](./media/bonus-tutorial/ic781042.png "Users and bonuses")
 
-1. Klikněte na tlačítko **spravovat uživatele**.
+1. Click **Manage Users**.
 
-    ![Správa uživatelů](./media/bonus-tutorial/ic781043.png "Správa uživatelů")
+    ![Manage Users](./media/bonus-tutorial/ic781043.png "Manage Users")
 
-1. Klikněte na tlačítko **přidat uživatele**.
+1. Click **Add User**.
 
-    ![Přidání uživatele](./media/bonus-tutorial/ic781044.png "přidat uživatele")
+    ![Add User](./media/bonus-tutorial/ic781044.png "Přidání uživatele")
 
-1. Na **přidat uživatele** dialogového okna, proveďte následující kroky:
+1. On the **Add User** dialog, perform the following steps:
 
-    ![Přidání uživatele](./media/bonus-tutorial/ic781045.png "přidat uživatele")  
+    ![Add User](./media/bonus-tutorial/ic781045.png "Přidání uživatele")  
 
-    a. V **křestní jméno** textového pole zadejte jméno uživatele, jako je **Britta**.
+    a. In the **First name** textbox, enter the first name of user like **Britta**.
 
-    b. V **příjmení** textového pole zadejte příjmení uživatele, jako je **Simon**.
+    b. In the **Last name** textbox, enter the last name of user like **Simon**.
 
-    c. V **e-mailu** textového pole zadejte e-mailu uživatele, jako je `brittasimon\@contoso.com`.
+    c. In the **Email** textbox, enter the email of user like `brittasimon\@contoso.com`.
 
     d. Klikněte na **Uložit**.
 
     > [!NOTE]
-    > Držitel účtu Azure AD obdrží e-mailu, který obsahuje odkaz pro potvrzení účtu, pak se změní na aktivní.  
+    > The Azure AD account holder receives an email that includes a link to confirm the account before it becomes active.  
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Když kliknete na dlaždici Bonusly na přístupovém panelu, které by měl být automaticky přihlášeni k Bonusly, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Bonusly tile in the Access Panel, you should be automatically signed in to the Bonusly for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

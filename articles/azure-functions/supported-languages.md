@@ -1,57 +1,53 @@
 ---
-title: Podporované jazyky v Azure Functions
-description: Zjistěte, které jazyky jsou podporované (GA) a které jsou experimentální nebo ve verzi Preview.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
+title: Supported languages in Azure Functions
+description: Learn which languages are supported (GA) and which are experimental or in preview.
 ms.topic: conceptual
 ms.date: 08/02/2018
-ms.author: glenga
-ms.openlocfilehash: eac67c43915edb0aed273df40e7b08ca846062bf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802457"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230290"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Podporované jazyky v Azure Functions
+# <a name="supported-languages-in-azure-functions"></a>Supported languages in Azure Functions
 
-Tento článek vysvětluje úrovně podpory poskytované pro jazyky, které můžete používat s Azure Functions.
+This article explains the levels of support offered for languages that you can use with Azure Functions.
 
-## <a name="levels-of-support"></a>Úrovně podpory
+## <a name="levels-of-support"></a>Levels of support
 
-Existují tři úrovně podpory:
+There are three levels of support:
 
-* **Všeobecně dostupná (GA)** – plně podporované a schválené pro použití v produkčním prostředí.
-* **Verze Preview** – zatím není podporovaná, ale očekává se, že bude v budoucnu dostupný stav GA.
-* **Experimentální** – nepodporované a můžou být v budoucnu opuštěné; bez záruky na konečný stav Preview nebo GA.
+* **Generally available (GA)** - Fully supported and approved for production use.
+* **Preview** - Not yet supported but is expected to reach GA status in the future.
+* **Experimental** - Not supported and might be abandoned in the future; no guarantee of eventual preview or GA status.
 
-## <a name="languages-by-runtime-version"></a>Jazyky podle verze modulu runtime 
+## <a name="languages-by-runtime-version"></a>Languages by runtime version 
 
-K dispozici jsou [dvě verze modulu runtime Azure Functions](functions-versions.md) . Následující tabulka uvádí, které jazyky jsou podporovány v každé verzi modulu runtime.
+[Two versions of the Azure Functions runtime](functions-versions.md) are available. The following table shows which languages are supported in each runtime version.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Experimentální jazyky
+### <a name="experimental-languages"></a>Experimental languages
 
-Experimentální jazyky verze 1. x se neškálují správně a nepodporují všechny vazby.
+The experimental languages in version 1.x don't scale well and don't support all bindings.
 
-Nepoužívejte experimentální funkce pro cokoli, co jste se spoléhali, protože pro ně není oficiální podpora k dispozici. Pro problémy s experimentálními jazyky by se neměly otevírat případy podpory. 
+Don't use experimental features for anything that you rely on, as there is no official support for them. Support cases should not be opened for problems with experimental languages. 
 
-Modul runtime verze 2. x nepodporuje experimentální jazyky. Podpora pro nové jazyky se přidá jenom v případě, že je možné jazyk v produkčním prostředí podporovat. 
+The version 2.x runtime doesn't support experimental languages. Support for new languages is added only when the language can be supported in production. 
 
-### <a name="language-extensibility"></a>Jazyková rozšíření
+### <a name="language-extensibility"></a>Language extensibility
 
-Počínaje verzí 2. x je modul runtime navržený tak, aby nabízel [jazykové rozšíření](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Jazyky JavaScript a Java v modulu runtime 2. x jsou sestaveny s tímto rozšířením.
+Starting with version 2.x, the runtime is designed to offer [language extensibility](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). The JavaScript and Java languages in the 2.x runtime are built with this extensibility.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vývoji funkcí v podporovaných jazycích najdete v následujících zdrojích informací:
+To learn more about how to develop functions in the supported languages, see the following resources:
 
-+ [C#Referenční dokumentace pro vývojáře knihovny tříd](functions-dotnet-class-library.md)
-+ [C#Reference pro vývojáře skriptů](functions-reference-csharp.md)
-+ [Referenční dokumentace pro vývojáře v jazyce Java](functions-reference-java.md)
-+ [JavaScript – reference pro vývojáře](functions-reference-node.md)
-+ [Referenční informace pro vývojáře PowerShellu](functions-reference-powershell.md)
-+ [Referenční dokumentace pro vývojáře v Pythonu](functions-reference-python.md)
-+ [Referenční dokumentace pro vývojáře TypeScript](functions-reference-node.md#typescript)
++ [C# class library developer reference](functions-dotnet-class-library.md)
++ [C# script developer reference](functions-reference-csharp.md)
++ [Java developer reference](functions-reference-java.md)
++ [JavaScript developer reference](functions-reference-node.md)
++ [PowerShell developer reference](functions-reference-powershell.md)
++ [Python developer reference](functions-reference-python.md)
++ [TypeScript developer reference](functions-reference-node.md#typescript)

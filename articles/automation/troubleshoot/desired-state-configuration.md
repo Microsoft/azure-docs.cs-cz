@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s Azure Automation konfigurace požadovaného stavu (DSC)
-description: Tento článek poskytuje informace o řešení potíží s konfigurací požadovaného stavu (DSC).
+title: Troubleshooting issues with Azure Automation Desired State Configuration (DSC)
+description: This article provides information on troubleshooting Desired State Configuration (DSC)
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,47 +9,47 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887716"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231543"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s konfigurací požadovaného stavu (DSC)
+# <a name="troubleshoot-desired-state-configuration-dsc"></a>Troubleshoot Desired State Configuration (DSC)
 
-Tento článek poskytuje informace o řešení problémů s požadovanou konfigurací stavu (DSC).
+This article provides information on troubleshooting issues with Desired State Configuration (DSC).
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Postup řešení potíží s konfigurací požadovaného stavu (DSC)
+## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Steps to troubleshoot Desired State Configuration (DSC)
 
-Pokud máte chyby při kompilaci nebo nasazování konfigurací v konfiguraci stavu Azure, najdete tady několik kroků, které vám pomůžou problém diagnostikovat.
+When you have errors compiling or deploying configurations in Azure State Configuration, here are a few steps to help you diagnose the issue.
 
-1. **Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači:**  Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k [PowerShellu DSC](https://docs.microsoft.com/powershell/scripting/overview).
+1. **Ensure your configuration compiles successfully on your local machine:**  Azure State Configuration is built on PowerShell DSC. You can find the documentation for the DSC language and syntax in the [PowerShell DSC Docs](https://docs.microsoft.com/powershell/scripting/overview).
 
-   Zkompilováním konfigurace DSC na místním počítači můžete zjišťovat a řešit běžné chyby, jako například:
+   By compiling your DSC configuration on your local machine you can discover and resolve common errors, such as:
 
-   - **Chybějící moduly**
-   - **Chyby syntaxe**
-   - **Logické chyby**
+   - **Missing Modules**
+   - **Syntax Errors**
+   - **Logic Errors**
 
-2. **Zobrazit protokoly DSC v uzlu:** Pokud se konfigurace úspěšně zkompiluje, ale při použití v uzlu dojde k chybě, můžete najít podrobné informace v protokolech. Informace o tom, kde najít protokoly DSC, najdete v tématu [kde jsou protokoly událostí DSC](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
+2. **View DSC logs on your Node:** If your configuration compiles successfully, but fails when applied to a Node, you can find detailed information in the logs. For information about where to find DSC logs, see [Where are the DSC Event Logs](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-   Kromě toho vám [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) může pomoct při analýze podrobných informací z protokolů DSC. Pokud se obrátíte na podporu, budou tyto protokoly vyžadovat diagnostiku vašeho problému.
+   Furthermore, the [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) can assist you in parsing detailed information from the DSC logs. If you contact support, they will require these logs to diagnose your issue.
 
-   **XDscDiagnostics** můžete na svém místním počítači nainstalovat podle pokynů uvedených v části [Instalace modulu stabilní verze](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
+   You can install **xDscDiagnostics** on your local machine using the instructions found under [Install the stable version module](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
-   Pokud chcete nainstalovat **xDscDiagnostics** na počítač Azure, můžete použít příkaz [AZ VM Run-Command](/cli/azure/vm/run-command) nebo [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand). Na portálu můžete taky použít možnost **Spustit příkaz** , a to podle kroků uvedených v části [spuštění skriptů POWERSHELLu na virtuálním počítači s Windows pomocí příkazu Spustit](../../virtual-machines/windows/run-command.md).
+   To install **xDscDiagnostics** on your Azure machine, you can use [az vm run-command](/cli/azure/vm/run-command) or [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand). You can also use the **Run command** option from the portal, by following the steps found in [Run PowerShell scripts in your Windows VM with Run Command](../../virtual-machines/windows/run-command.md).
 
-   Informace o použití **xDscDiagnostics**najdete v tématu [použití xDscDiagnostics k analýze protokolů DSC](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)a také [rutin xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
-3. **Ujistěte se, že uzly a pracovní prostor služby Automation mají požadované moduly:** Požadovaná konfigurace stavu závisí na modulech nainstalovaných v uzlu.  Při použití konfigurace stavu Azure Automation importujte do svého účtu Automation všechny požadované moduly pomocí kroků uvedených v části [Import modulů](../shared-resources/modules.md#import-modules). Konfigurace můžou mít taky závislost na konkrétních verzích modulů.  Další informace najdete v tématu [řešení potíží s moduly](shared-resources.md#modules).
+   For information on using **xDscDiagnostics**, see [Using xDscDiagnostics to analyze DSC logs](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs), as well as [xDscDiagnostics Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+3. **Ensure your Nodes and Automation workspace have the required modules:** Desired State Configuration depends on modules installed on the Node.  When using Azure Automation State Configuration, import any required modules into your automation account using the steps listed in [Import Modules](../shared-resources/modules.md#import-modules). Configurations can also have a dependency on specific versions of modules.  For more information, see, [Troubleshoot Modules](shared-resources.md#modules).
 
-## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Běžné chyby při práci s konfigurací požadovaného stavu (DSC)
+## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Common errors when working with Desired State Configuration (DSC)
 
-### <a name="unsupported-characters"></a>Scénář: na portálu nejde odstranit konfiguraci se speciálními znaky.
+### <a name="unsupported-characters"></a>Scenario: A configuration with special characters cannot be deleted from the portal
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o odstranění konfigurace DSC z portálu se zobrazí následující chyba:
+When attempting to delete a DSC configuration from the portal, you see the following error:
 
 ```error
 An error occurred while deleting the DSC configuration '<name>'.  Error-details: The argument configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
@@ -57,19 +57,19 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je dočasný problém, který se plánuje vyřešit.
+This error is a temporary issue that is planned to be resolved.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-* Pomocí příkazu AZ rutina Remove-AzAutomationDscConfiguration konfiguraci odstraňte.
-* Dokumentace k této rutině se ještě neaktualizovala.  Do té doby se v dokumentaci k modulu AzureRM Podívejte.
+* Use the Az Cmdlet "Remove-AzAutomationDscConfiguration" to delete the configuration.
+* The documentation for this cmdlet hasn't been updated yet.  Until then, refer to the documentation for the AzureRM module.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Scénář: registrace agenta DSC se nezdařila
+### <a name="failed-to-register-agent"></a>Scenario: Failed to register Dsc Agent
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o spuštění `Set-DscLocalConfigurationManager` nebo jiné rutiny DSC se zobrazí chyba:
+When attempting to run `Set-DscLocalConfigurationManager` or another DSC cmdlet you receive the error:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -84,17 +84,17 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je obvykle způsobena bránou firewall, počítač je za proxy server nebo jinými chybami v síti.
+This error is normally caused by a firewall, the machine being behind a proxy server, or other network errors.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Ověřte, že váš počítač má přístup ke správným koncovým bodům pro Azure Automation DSC, a zkuste to znovu. Seznam potřebných portů a adres najdete v tématu [Plánování sítě](../automation-dsc-overview.md#network-planning) .
+Verify your machine has access to the proper endpoints for Azure Automation DSC and try again. For a list of ports and addresses needed, see [network planning](../automation-dsc-overview.md#network-planning)
 
-### <a name="failed-not-found"></a>Scénář: uzel je v neúspěšném stavu s chybou "Nenalezeno".
+### <a name="failed-not-found"></a>Scenario: Node is in failed status with a "Not found" error
 
 #### <a name="issue"></a>Problém
 
-Uzel má sestavu se stavem **selhání** a obsahuje chybu:
+The node has a report with **Failed** status and containing the error:
 
 ```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
@@ -102,21 +102,21 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 #### <a name="cause"></a>Příčina
 
-K této chybě obvykle dochází v případě, že je uzel přiřazen k názvu konfigurace (například ABC) namísto názvu konfigurace uzlu (například ABC. WebServer).
+This error typically occurs when the node is assigned to a configuration name (for example, ABC) instead of a node configuration name (for example, ABC.WebServer).
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-* Ujistěte se, že přiřadíte uzel s názvem konfigurace uzlu, nikoli "název konfigurace".
-* Můžete přiřadit konfiguraci uzlu uzlu pomocí Azure Portal nebo pomocí rutiny prostředí PowerShell.
+* Make sure that you're assigning the node with "node configuration name" and not the "configuration name".
+* You can assign a node configuration to a node using Azure portal or with a PowerShell cmdlet.
 
-  * Chcete-li přiřadit konfiguraci uzlu uzlu pomocí Azure Portal, otevřete stránku **uzly DSC** a pak vyberte uzel a klikněte na tlačítko **přiřadit konfiguraci uzlu** .
-  * Pokud chcete přiřadit konfiguraci uzlu k uzlu pomocí rutiny prostředí PowerShell, použijte rutinu **set-AzureRmAutomationDscNode** .
+  * To assign a node configuration to a node using Azure portal, open the **DSC Nodes** page, then select a node and click on **Assign node configuration** button.
+  * To assign a node configuration to a node using PowerShell cmdlet, use **Set-AzureRmAutomationDscNode** cmdlet
 
-### <a name="no-mof-files"></a>Scénář: při kompilaci konfigurace nevytvořily se žádné konfigurace uzlů (soubory MOF).
+### <a name="no-mof-files"></a>Scenario: No node configurations (MOF files) were produced when a configuration is compiled
 
 #### <a name="issue"></a>Problém
 
-Úloha kompilace DSC se pozastaví s chybou:
+Your DSC compilation job suspends with the error:
 
 ```error
 Compilation completed successfully, but no node configuration.mofs were generated.
@@ -124,20 +124,20 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Příčina
 
-Pokud je výraz následující po klíčovém slově **uzlu** v konfiguraci DSC vyhodnocen jako `$null`, nebudou vytvořeny žádné konfigurace uzlů.
+When the expression following the **Node** keyword in the DSC configuration evaluates to `$null`, then no node configurations are produced.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Problém vyřeší některá z následujících řešení:
+Any of the following solutions fix the problem:
 
-* Ujistěte se, že výraz vedle klíčového slova **Node** v definici konfigurace není vyhodnocen jako $null.
-* Pokud předáváte ConfigurationData při kompilování konfigurace, ujistěte se, že předáváte očekávané hodnoty, které konfigurace vyžaduje od [ConfigurationData](../automation-dsc-compile.md).
+* Make sure that the expression next to the **Node** keyword in the configuration definition isn't evaluating to $null.
+* If you are passing ConfigurationData when compiling the configuration, make sure that you are passing the expected values that the configuration requires from [ConfigurationData](../automation-dsc-compile.md).
 
-### <a name="dsc-in-progress"></a>Scénář: sestava uzlu DSC se zablokuje ve stavu probíhá.
+### <a name="dsc-in-progress"></a>Scenario: The DSC node report becomes stuck "in progress" state
 
 #### <a name="issue"></a>Problém
 
-Výstupy agenta DSC:
+The DSC agent outputs:
 
 ```error
 No instance found with given property values
@@ -145,17 +145,17 @@ No instance found with given property values
 
 #### <a name="cause"></a>Příčina
 
-Provedli jste upgrade verze WMF a máte poškozenou službu WMI.
+You have upgraded your WMF version and have corrupted WMI.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Pokud chcete problém vyřešit, postupujte podle pokynů v článku [známé problémy a omezení DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) .
+To fix the issue, follow the instructions in the [DSC known issues and limitations](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) article.
 
-### <a name="issue-using-credential"></a>Scénář: nejde použít přihlašovací údaje v konfiguraci DSC.
+### <a name="issue-using-credential"></a>Scenario: Unable to use a credential in a DSC configuration
 
 #### <a name="issue"></a>Problém
 
-Úloha kompilace DSC byla pozastavena s chybou:
+Your DSC compilation job was suspended with the error:
 
 ```error
 System.InvalidOperationException error processing property 'Credential' of type <some resource name>: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true.
@@ -163,17 +163,17 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 #### <a name="cause"></a>Příčina
 
-V konfiguraci jste použili přihlašovací údaje, ale neposkytli správné **ConfigurationData** pro nastavení **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu.
+You've used a credential in a configuration but didn’t provide proper **ConfigurationData** to set **PSDscAllowPlainTextPassword** to true for each node configuration.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-* Nezapomeňte předat správný **ConfigurationData** a nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Další informace najdete v tématu [assety in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
+* Make sure to pass in the proper **ConfigurationData** to set **PSDscAllowPlainTextPassword** to true for each node configuration that is mentioned in the configuration. For more information, see [assets in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
-### <a name="failure-processing-extension"></a>Scénář: Chyba při připojování z rozšíření DSC, Chyba při neúspěšném rozšíření pro zpracování
+### <a name="failure-processing-extension"></a>Scenario: Onboarding from dsc extension, "Failure processing extension" error
 
 #### <a name="issue"></a>Problém
 
-Při připojování pomocí rozšíření DSC dojde k chybě, která obsahuje chybu:
+When onboarding using DSC extension, a failure occurs containing the error:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -181,18 +181,18 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 #### <a name="cause"></a>Příčina
 
-K této chybě obvykle dochází v případě, že se k uzlu přiřadí název konfigurace uzlu, který ve službě neexistuje.
+This error typically occurs when the node is assigned a node configuration name that does not exist in the service.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-* Ujistěte se, že přiřazujete uzel s názvem konfigurace uzlu, který přesně odpovídá názvu ve službě.
-* Můžete zvolit, že nebudete zahrnovat název konfigurace uzlu, což bude mít za následek připojování uzlu, ale ne přiřazení konfigurace uzlu.
+* Make sure that you're assigning the node with a node configuration name that exactly matches the name in the service.
+* You can choose to not include the node configuration name, which will result in onboarding the node but not assigning a node configuration
 
-### <a name="failure-linux-temp-noexec"></a>Scénář: použití konfigurace v systému Linux, při obecné chybě dojde k selhání.
+### <a name="failure-linux-temp-noexec"></a>Scenario: Applying a configuration in Linux, a failure occurs with a general error
 
 #### <a name="issue"></a>Problém
 
-Při použití konfigurace v systému Linux dojde k chybě, která obsahuje chybu:
+When applying a configuration in Linux, a failure occurs containing the error:
 
 ```error
 This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
@@ -200,32 +200,32 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Příčina
 
-Zákazníci zjistili, že pokud je `/tmp` umístění nastavené na `noexec`, aktuální verze DSC se nepodaří použít konfigurace.
+Customers have identified that if the `/tmp` location is set to `noexec`, the current version of DSC will fail to apply configurations.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-* Z umístění `/tmp` odeberte možnost `noexec`.
+* Remove the `noexec` option from the `/tmp` location.
 
-### <a name="compilation-node-name-overlap"></a>Scénář: názvy konfigurací uzlů, které se překrývají, by mohly vést k chybné verzi.
+### <a name="compilation-node-name-overlap"></a>Scenario: Node configuration names that overlap could result in bad release
 
 #### <a name="issue"></a>Problém
 
-Pokud je pro generování více konfigurací uzlů použit jediný konfigurační skript a některé konfigurace uzlů mají název, který je podmnožinou dalších, může problém ve službě kompilace způsobit přiřazení nesprávné konfigurace.  K tomu dochází pouze při použití jediného skriptu ke generování konfigurací s konfiguračními daty na uzel a pouze v případě, že dojde k překrytí názvu na začátku řetězce.
+If a single configuration script is used to generate multiple node configurations, and some of the node configurations have a name that is a subset of others, an issue in the compilation service could result in assigning the wrong configuration.  This only occurs when using a single script to generate configurations with configuration data per node, and only when the name overlap occurs at the beginning of the string.
 
-Pokud je například jeden konfigurační skript použit ke generování konfigurací založených na datech uzlu předaných jako zatřiďovací tabulka pomocí rutin a data uzlu zahrnuje server s názvem "Server" a "1server".
+Example, if a single configuration script is used to generate configurations based on node data passed as a hashtable using cmdlets, and the node data includes a server named "server" and "1server".
 
 #### <a name="cause"></a>Příčina
 
-Známý problém se službou kompilace.
+Known issue with the compilation service.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Nejlepším alternativním řešením je kompilace místně nebo v kanálu CI/CD a nahrání souborů MOF přímo do služby.  Pokud je kompilace ve službě požadavkem, další nejlepší alternativní řešení by mělo rozdělit úlohy kompilace, aby se v názvech překrývaly.
+The best workaround would be to compile locally or in a CI/CD pipeline and upload the MOF files directly to the service.  If compilation in the service is a requirement, the next best workaround would be to split the compilation jobs so there is no overlap in names.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.
-* Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.

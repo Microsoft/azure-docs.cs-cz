@@ -1,5 +1,5 @@
 ---
-title: Použití spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu
+title: Tutorial`:` Use a managed identity to access Azure Data Lake Store - Linux - Azure AD
 description: V tomto kurzu se dozvíte, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474165219d7740e63bb5e0a62d08069109a52c31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f12ec41b661ac2cb462c6bf9ef62d6d831ebac0a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236129"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224286"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Kurz: Použití spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak používat systém přiřadil spravovanou identitu pro virtuální počítač s Linuxem (VM) pro přístup k Azure Data Lake Store. Získáte informace o těchto tématech: 
+This tutorial shows you how to use a system-assigned managed identity for a Linux virtual machine (VM) to access Azure Data Lake Store. Získáte informace o těchto tématech: 
 
 V tomto kurzu se naučíte:
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Udělit přístup virtuálnímu počítači k Azure Data Lake Store.
 > * Získejte přístupový token pomocí spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -71,7 +71,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
 
 1. Na portálu přejděte ke svému linuxovému virtuálním počítači. V **Přehledu** vyberte **Připojit**.  
 2. Připojte se vybraným klientem SSH k virtuálnímu počítači. 
-3. V okně terminálu použijte cURL a požádejte místní spravované identity Azure o koncový bod prostředků Azure, abyste získali přístupový token k systému souborů Data Lake Store. Identifikátor prostředku pro Data Lake Store je `https://datalake.azure.net/`.  V identifikátoru prostředku musí být koncové lomítko.
+3. V okně terminálu použijte cURL a požádejte místní spravované identity Azure o koncový bod prostředků Azure, abyste získali přístupový token k systému souborů Data Lake Store. The resource identifier for Data Lake Store is `https://datalake.azure.net/`.  V identifikátoru prostředku musí být koncové lomítko.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
@@ -101,7 +101,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
    {"FileStatuses":{"FileStatus":[{"length":0,"pathSuffix":"TestFolder","type":"DIRECTORY","blockSize":0,"accessTime":1507934941392,"modificationTime":1508105430590,"replication":0,"permission":"770","owner":"bd0e76d8-ad45-4fe1-8941-04a7bf27f071","group":"bd0e76d8-ad45-4fe1-8941-04a7bf27f071"}]}}
    ```
 
-5. Teď můžete zkusit do instance Data Lake Store nahrát soubor. Napřed vytvořte soubor, který chcete nahrát.
+5. Teď můžete zkusit do instance Data Lake Store nahrát soubor. Nejprve vytvořte soubor, který chcete nahrát.
 
    ```bash
    echo "Test file." > Test1.txt
@@ -150,9 +150,9 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
 
 Pomocí jiných rozhraní API systému souborů Data Lake Store můžete přidávat do souborů, stahovat soubory a provádět další akce.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu. Další informace o službě Azure Data Lake Store:
+V tomto kurzu jste se dozvěděli, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu. Další informace o službě Azure Data Lake Store najdete tady:
 
 > [!div class="nextstepaction"]
 >[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)

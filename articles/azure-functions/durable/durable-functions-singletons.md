@@ -1,28 +1,24 @@
 ---
-title: Singleton pro Durable Functions – Azure
-description: Způsob použití typu Singleton v rozšíření Durable Functions pro Azure Functions.
-services: functions
+title: Singletons for Durable Functions - Azure
+description: How to use singletons in the Durable Functions extension for Azure Functions.
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ec7eb1eba2bc029d592560b39cde20e93e5afcd6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 8c12e0ab854bb2b5764dd326e3f1649202f6f16b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614667"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232805"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Orchestrace singleton v Durable Functions (Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton orchestrators in Durable Functions (Azure Functions)
 
-Pro úlohy na pozadí často potřebujete zajistit, aby v jednom okamžiku běžela jenom jedna instance konkrétního nástroje Orchestrator. Tento druh chování typu Singleton v [Durable Functions](durable-functions-overview.md) můžete zajistit přiřazením konkrétního ID instance ke Orchestrator při jeho vytváření.
+For background jobs, you often need to ensure that only one instance of a particular orchestrator runs at a time. You can ensure this kind of singleton behavior in [Durable Functions](durable-functions-overview.md) by assigning a specific instance ID to an orchestrator when creating it.
 
-## <a name="singleton-example"></a>Příklad typu Singleton
+## <a name="singleton-example"></a>Singleton example
 
-Následující příklad ukazuje funkci triggeru HTTP, která vytvoří orchestraci úlohy na pozadí s jedním prvkem. Kód zajišťuje, aby pro zadané ID instance existovala pouze jedna instance.
+The following example shows an HTTP-trigger function that creates a singleton background job orchestration. The code ensures that only one instance exists for a specified instance ID.
 
 ### <a name="c"></a>C#
 
@@ -56,11 +52,11 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
-Tady je soubor Function. JSON:
+Here's the function.json file:
 ```json
 {
   "bindings": [
@@ -86,7 +82,7 @@ Tady je soubor Function. JSON:
 }
 ```
 
-Tady je kód JavaScriptu:
+Here's the JavaScript code:
 ```javascript
 const df = require("durable-functions");
 
@@ -114,14 +110,14 @@ module.exports = async function(context, req) {
 };
 ```
 
-Ve výchozím nastavení jsou identifikátory instancí náhodně generované identifikátory GUID. V předchozím příkladu se ale ID instance předává v datech směrování z adresy URL. Kód volá `GetStatusAsync`(C#) nebo `getStatus` (JavaScript), aby zkontroloval, jestli instance se zadaným ID už je spuštěná. Pokud taková instance není spuštěná, vytvoří se nová instance s tímto ID.
+By default, instance IDs are randomly generated GUIDs. In the previous example, however, the instance ID is passed in route data from the URL. The code calls `GetStatusAsync`(C#) or `getStatus` (JavaScript) to check if an instance having the specified ID is already running. If no such instance is running, a new instance is created with that ID.
 
 > [!NOTE]
-> V této ukázce je potenciální podmínka časování. Pokud se dvě instance **HttpStartSingle** spustí souběžně, obě volání funkce budou hlásit úspěch, ale pouze jedna instance orchestrace bude skutečně spuštěna. V závislosti na vašich požadavcích může to mít nežádoucí vedlejší účinky. Z tohoto důvodu je důležité zajistit, aby žádné dvě požadavky nemohly současně spouštět tuto triggerovou funkci.
+> There is a potential race condition in this sample. If two instances of **HttpStartSingle** execute concurrently, both function calls will report success, but only one orchestration instance will actually start. Depending on your requirements, this may have undesirable side effects. For this reason, it is important to ensure that no two requests can execute this trigger function concurrently.
 
-Podrobnosti implementace funkce Orchestrator nezáleží na tom. Může se jednat o běžnou funkci Orchestrator, která se spustí a dokončí, nebo to může být jedna z nich, která je trvale spuštěná (to znamená [orchestrace externí](durable-functions-eternal-orchestrations.md)). Důležitým bodem je, že v jednu chvíli běží jenom jedna instance.
+The implementation details of the orchestrator function don't actually matter. It could be a regular orchestrator function that starts and completes, or it could be one that runs forever (that is, an [Eternal Orchestration](durable-functions-eternal-orchestrations.md)). The important point is that there is only ever one instance running at a time.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Seznamte se s nativními funkcemi protokolu HTTP pro orchestraci](durable-functions-http-features.md)
+> [Learn about the native HTTP features of orchestrations](durable-functions-http-features.md)

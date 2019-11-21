@@ -1,7 +1,7 @@
 ---
-title: 'Návrhář: příklad prediktivních cen aut (rozšířené)'
+title: 'Designer: Predict car prices (advanced) example'
 titleSuffix: Azure Machine Learning
-description: Sestavujte & Porovnejte více modelů ML regrese a předpovídat cenu automobilu na základě technických funkcí v Návrháři Azure Machine Learning.
+description: Build & compare multiple ML regression models to predict an automobile's price  based on technical features with Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,79 +10,79 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 60baf2229b6c704f951e6cc54949109d5e403bc0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196065"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225003"
 ---
-# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Školení & Porovnejte více regresních modelů a předpovídat ceny automobilů pomocí návrháře Azure Machine Learning
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Train & compare multiple regression models to predict car prices with Azure Machine Learning designer
 
-**Návrhář (Preview) – ukázka 2**
+**Designer (preview) sample 2**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Naučte se vytvářet kanály strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview). Tato ukázka vlaků a porovnává více regresních modelů a předpovídá cenu auta na základě svých technických funkcí. Nabídneme vám odůvodnění pro volby provedené v tomto kanálu, abyste se mohli vypořádat s vlastními problémy machine learningu.
+Learn how to build a  machine learning pipeline without writing a single line of code using the designer (preview). This sample trains and compares multiple regression models to predict a car's price based on its technical features. We'll provide the rationale for the choices made in this pipeline so you can tackle your own machine learning problems.
 
-Pokud se strojové učení teprve začíná, podívejte se na [základní verzi](how-to-designer-sample-regression-automobile-price-basic.md) tohoto kanálu.
+If you're just getting started with machine learning, take a look at the [basic version](how-to-designer-sample-regression-automobile-price-basic.md) of this pipeline.
 
-Zde je dokončený graf pro tento kanál:
+Here's the completed graph for this pipeline:
 
-[![Graf kanálu](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Kliknutím na položku ukázka 2 ji otevřete. 
+4. Click sample 2 to open it. 
 
-## <a name="pipeline-summary"></a>Souhrn kanálu
+## <a name="pipeline-summary"></a>Pipeline summary
 
-Pomocí následujících kroků Sestavte kanál strojového učení:
+Use following steps to build the machine learning pipeline:
 
-1. Získat data.
-1. Předběžné zpracování dat.
-1. Proveďte výuku modelu.
-1. Otestujte, vyhodnoťte a porovnejte modely.
+1. Get the data.
+1. Pre-process the data.
+1. Train the model.
+1. Test, evaluate, and compare the models.
 
 ## <a name="get-the-data"></a>Získání dat
 
-Tato ukázka používá datovou sadu **dat automobil (RAW)** , která je z úložiště UCI Machine Learning. Tato datová sada obsahuje 26 sloupců, které obsahují informace o Automobiles, včetně funkcí make, model, Price, funkcí vozidel (jako je počet lahví), MPG a hodnocení rizikového rizika.
+This sample uses the **Automobile price data (Raw)** dataset, which is from the UCI Machine Learning Repository. This dataset contains 26 columns that contain information about automobiles, including make, model, price, vehicle features (like the number of cylinders), MPG, and an insurance risk score.
 
-## <a name="pre-process-the-data"></a>Předběžné zpracování dat
+## <a name="pre-process-the-data"></a>Pre-process the data
 
-Hlavní úkoly přípravy dat zahrnují čištění dat, integraci, transformaci, snížení a nalezených diskretizační nebo kvantizační. V Návrháři můžete najít moduly, které provádějí tyto operace a další úlohy předběžného zpracování dat ve skupině **transformace dat** na levém panelu.
+The main data preparation tasks include data cleaning, integration, transformation, reduction, and discretization or quantization. In the designer, you can find modules to perform these operations and other data pre-processing tasks in the **Data Transformation** group in the left panel.
 
-Použijte modul **Výběr sloupců v datové sadě** k vyloučení normalizovaných ztrát, které mají mnoho chybějících hodnot. Pak pomocí **Vyčištění chybějících dat** odeberete řádky, které obsahují chybějící hodnoty. To pomáhá vytvořit čistou sadu školicích dat.
+Use the **Select Columns in Dataset** module to exclude normalized-losses that have many missing values. We then use **Clean Missing Data** to remove the rows that have missing values. This helps to create a clean set of training data.
 
-![Předběžné zpracování dat](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
+![Data pre-processing](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
 ## <a name="train-the-model"></a>Trénování modelu
 
-Problémy strojového učení se liší. Mezi běžné úkoly strojového učení patří klasifikace, clusteringu, regrese a systémy doporučení, z nichž každá může vyžadovat jiný algoritmus. Vaše volba algoritmu často závisí na požadavcích případu použití. Po výběru algoritmu je třeba vyladit jeho parametry a naučit se model lépe přesný. Pak je potřeba vyhodnotit všechny modely na základě metrik, jako je přesnost, intelligibility a efektivita.
+Machine learning problems vary. Common machine learning tasks include classification, clustering, regression, and recommender systems, each of which might require a different algorithm. Your choice of algorithm often depends on the requirements of the use case. After you pick an algorithm, you need to tune its parameters to train a more accurate model. You then need to evaluate all models based on metrics like accuracy, intelligibility, and efficiency.
 
-Vzhledem k tomu, že cílem tohoto kanálu je předpovědět ceny automobilu a protože sloupec popisku (price) obsahuje skutečná čísla, je regresní model vhodný. Vzhledem k tomu, že počet funkcí je relativně malý (méně než 100) a tyto funkce nejsou zhuštěné, je pravděpodobně nelineární hranice rozhodnutí.
+Because the goal of this pipeline is to predict automobile prices, and because the label column (price) contains real numbers, a regression model is a good choice. Considering that the number of features is relatively small (less than 100) and these features aren't sparse, the decision boundary is likely to be nonlinear.
 
-Pro porovnání výkonu různých algoritmů používáme dva nelineární algoritmy, zvýšili jsme regresi **rozhodovacího stromu** a **regresi rozhodovací doménové struktury**a sestavíte modely. Oba algoritmy mají parametry, které lze změnit, ale tato ukázka používá výchozí hodnoty pro tento kanál.
+To compare the performance of different algorithms, we use two nonlinear algorithms, **Boosted Decision Tree Regression** and **Decision Forest Regression**, to build models. Both algorithms have parameters that you can change, but this sample uses the default values for this pipeline.
 
-Použijte modul **rozdělit data** k náhodnému rozdělení vstupních dat tak, aby datová sada školení obsahovala 70% původních dat a testovací datová sada obsahuje 30% původních dat.
+Use the **Split Data** module to randomly divide the input data so that the training dataset contains 70% of the original data and the testing dataset contains 30% of the original data.
 
-## <a name="test-evaluate-and-compare-the-models"></a>Testování, vyhodnocení a porovnání modelů
+## <a name="test-evaluate-and-compare-the-models"></a>Test, evaluate, and compare the models
 
-Použijete dvě různé sady náhodně zvolených dat ke školení a otestování modelu, jak je popsáno v předchozí části. Rozdělte datovou sadu a použijte různé datové sady ke školení a testování modelu, aby bylo vyhodnocení modelu více objektivně.
+You use two different sets of randomly chosen data to train and then test the model, as described in the previous section. Split the dataset and use different datasets to train and test the model to make the evaluation of the model more objective.
 
-Po vyzkoušení modelu použijte **model skóre** a **vyhodnoťte moduly modelů** pro generování předpokládaných výsledků a vyhodnocení modelů. **Model skóre** generuje předpovědi pro testovací datovou sadu pomocí trained model. Pak předejte skóre k **vyhodnocení modelu** pro generování metrik vyhodnocení.
+After the model is trained, use the **Score Model** and **Evaluate Model** modules to generate predicted results and evaluate the models. **Score Model** generates predictions for the test dataset by using the trained model. Then pass the scores to **Evaluate Model** to generate evaluation metrics.
 
 
 
-Tady jsou výsledky:
+Here are the results:
 
-![Porovnat výsledky](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
+![Compare the results](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
-Tyto výsledky ukazují, že model sestavený s **regresí pro zvýšení rozhodovacího stromu** má nižší hlavní střední chybu než model sestavený na **regresi rozhodovací doménové struktury**.
+These results show that the model built with **Boosted Decision Tree Regression** has a lower root mean squared error than the model built on **Decision Forest Regression**.
 
-Oba algoritmy mají v datové sadě školení nižší chybu než v datové sadě nepřesných testů.
+Both algorithms have a lower error on the training dataset than on the unseen testing dataset.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -90,11 +90,11 @@ Oba algoritmy mají v datové sadě školení nižší chybu než v datové sad�
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte další ukázky, které jsou k dispozici pro návrháře:
+Explore the other samples available for the designer:
 
-- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](how-to-designer-sample-classification-predict-income.md)
-- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Ukázka 5 – klasifikace: předpověď změn](how-to-designer-sample-classification-churn.md)
-- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
-- [Ukázka 7 – klasifikace textu: Wikipedii SP 500 DataSet](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

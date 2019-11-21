@@ -1,7 +1,7 @@
 ---
-title: Vytvořit konfigurace z existujících serverů – Azure Automation
-description: Naučte se vytvářet konfigurace z existujících serverů pro Azure Automation.
-keywords: DSC, PowerShell, konfigurace, instalace
+title: Create configurations from existing servers - Azure Automation
+description: Learn how to create configurations from existing servers for Azure Automation.
+keywords: dsc,powershell,configuration,setup
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,41 +10,41 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b8c39ba6c12d43da1b2311ae4d7d85dd13946f25
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 35f967e946854c3ca097db379015a7ee0bbe2f3d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559465"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231692"
 ---
-# <a name="create-configurations-from-existing-servers"></a>Vytvoření konfigurací z existujících serverů
+# <a name="create-configurations-from-existing-servers"></a>Create configurations from existing servers
 
-> Platí pro: Windows PowerShell 5.1
+> Applies To: Windows PowerShell 5.1
 
-Vytváření konfigurací z existujících serverů může být náročný úkol.
-Možná nebudete chtít *všechna* nastavení, jenom ty, které vás zajímají.
-A pak potřebujete znát, v jakém pořadí se musí nastavení použít, aby se konfigurace úspěšně používala.
+Creating configurations from existing servers can be a challenging task.
+You might not want *all* settings, just those that you care about.
+Even then you need to know in what order the settings must be applied in order for the configuration to apply successfully.
 
 > [!NOTE]
-> Tento článek popisuje řešení, které spravuje komunita open source.
-> Podpora je dostupná jenom ve formě spolupráce na GitHubu, ne od Microsoftu.
+> This article refers to a solution that is maintained by the Open Source community.
+> Support is only available in the form of GitHub collaboration, not from Microsoft.
 
-## <a name="community-project-reversedsc"></a>Komunitní projekt: ReverseDSC
+## <a name="community-project-reversedsc"></a>Community project: ReverseDSC
 
-Pro práci v této oblasti od služby SharePoint bylo vytvořeno řešení udržované komunitou s názvem [ReverseDSC](https://github.com/microsoft/reversedsc) .
+A community maintained solution named [ReverseDSC](https://github.com/microsoft/reversedsc) has been created to work in this area starting SharePoint.
 
-Řešení sestaví na [prostředku SharePointDSC](https://github.com/powershell/sharepointdsc) a rozšiřuje ho, aby orchestroval [shromažďování informací](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) z existujících serverů SharePoint.
-Nejnovější verze obsahuje několik [režimů extrakce](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) , které určují, jaké úrovně informací se mají zahrnout.
+The solution builds on the [SharePointDSC resource](https://github.com/powershell/sharepointdsc) and extends it to orchestrate [gathering information](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) from existing SharePoint servers.
+The latest version has multiple [extraction modes](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) to determine what level of information to include.
 
-Výsledkem použití řešení je generování [konfiguračních dat](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) , která se mají použít s konfiguračními skripty pro SharePointDSC.
+The result of using the solution is generating [Configuration Data](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) to be used with SharePointDSC configuration scripts.
 
-Po vygenerování datových souborů je můžete použít s [konfiguračními skripty DSC](/powershell/dsc/overview/overview) k vygenerování souborů MOF a nahrání [souborů MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Pak můžete své servery zaregistrovat z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a vyžádat si konfigurace.
+Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/overview/overview) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
 
-Pokud si chcete vyzkoušet ReverseDSC, navštivte [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/ReverseDSC/) a Stáhněte řešení nebo klikněte na web projektu a zobrazte [dokumentaci](https://github.com/Microsoft/sharepointDSC.reverse).
+To try out ReverseDSC, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/ReverseDSC/) and download the solution or click "Project Site" to view the [documentation](https://github.com/Microsoft/sharepointDSC.reverse).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/dsc/overview/overview)
-- [Prostředky DSC](/powershell/dsc/resources/resources)
-- [Konfigurace místní Configuration Manager](/powershell/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
+- [DSC Resources](/powershell/scripting/dsc/resources/resources)
+- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)

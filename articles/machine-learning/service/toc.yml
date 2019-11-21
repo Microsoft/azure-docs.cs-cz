@@ -193,7 +193,7 @@
             - name: Predikce zpoždění letů
               displayName: 'classification, studio'
               href: how-to-designer-sample-classification-flight-delay.md
-            - name: Klasifikace testu
+            - name: Klasifikace textu
               displayName: 'classification, studio'
               href: how-to-designer-sample-text-classification.md
         - name: Použití nástrojů pro odhady pro ML

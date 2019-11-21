@@ -1,41 +1,37 @@
 ---
-title: Příručka pro vývojáře k odolným entitám v .NET – Azure Functions
-description: Jak pracovat s trvalými entitami v rozhraní .NET s rozšířením Durable Functions pro Azure Functions.
-services: functions
+title: Developer's Guide to Durable Entities in .NET - Azure Functions
+description: How to work with durable entities in .NET with the Durable Functions extension for Azure Functions.
 author: sebastianburckhardt
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 74b013c9953974371957cc4d88439d20770d78a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904063"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231427"
 ---
-# <a name="developers-guide-to-durable-entities-in-net"></a>Příručka pro vývojáře k odolným entitám v .NET
+# <a name="developers-guide-to-durable-entities-in-net"></a>Developer's guide to durable entities in .NET
 
-V tomto článku jsme popsali dostupná rozhraní pro vývoj trvalých entit s .NET, včetně příkladů a obecného poradenství. 
+In this article, we describe the available interfaces for developing durable entities with .NET in detail, including examples and general advice. 
 
-Funkce entit poskytují vývojářům aplikací bez serveru pohodlný způsob, jak uspořádat stav aplikace jako kolekci jemně odstupňovaných entit. Další podrobnosti o základních konceptech najdete v článku [odolné entity: koncepty](durable-functions-entities.md) .
+Entity functions provide serverless application developers with a convenient way to organize application state as a collection of fine-grained entities. For more detail about the underlying concepts, see the [Durable Entities: Concepts](durable-functions-entities.md) article.
 
-Momentálně nabízíme dvě rozhraní API pro definování entit:
+We currently offer two APIs for defining entities:
 
-- **Syntaxe založená na třídě** představuje entity a operace jako třídy a metody. Tato syntaxe generuje snadno čitelný kód a umožňuje vyvolávat operace v kontrolovaném typu prostřednictvím rozhraní. 
+- The **class-based syntax** represents entities and operations as classes and methods. This syntax produces easily readable code and allows operations to be invoked in a type-checked manner through interfaces. 
 
-- **Syntaxe založená na funkcích** je rozhraní nižší úrovně, které představuje entity jako funkce. Poskytuje přesnou kontrolu nad tím, jak se operace entity odesílají a jak se spravují stav entity.  
+- The **function-based syntax** is a lower-level interface that represents entities as functions. It provides precise control over how the entity operations are dispatched, and how the entity state is managed.  
 
-Tento článek se zaměřuje hlavně na syntaxi založenou na třídě, protože očekáváme, že bude vhodnější pro většinu aplikací. [Syntaxe založená na funkcích](#function-based-syntax) ale může být vhodná pro aplikace, které chtějí definovat nebo spravovat své vlastní abstrakce pro stav a operace entity. Také může být vhodné pro implementaci knihoven, které vyžadují obecu, která není aktuálně podporována syntaxí založenou na třídě. 
+This article focuses primarily on the class-based syntax, as we expect it to be better suited for most applications. However, the [function-based syntax](#function-based-syntax) may be appropriate for applications that wish to define or manage their own abstractions for entity state and operations. Also, it may be appropriate for implementing libraries that require genericity not currently supported by the class-based syntax. 
 
 > [!NOTE]
-> Syntaxe založená na třídě je pouze vrstva nad syntaxí založenou na funkci, takže obě varianty lze ve stejné aplikaci použít zaměnitelné. 
+> The class-based syntax is just a layer on top of the function-based syntax, so both variants can be used interchangeably in the same application. 
  
-## <a name="defining-entity-classes"></a>Definování tříd entit
+## <a name="defining-entity-classes"></a>Defining entity classes
 
-Následující příklad je implementace `Counter` entity, která ukládá jednu hodnotu typu Integer a nabízí čtyři operace `Add`, `Reset`, `Get`a `Delete`.
+The following example is an implementation of a `Counter` entity that stores a single value of type integer, and offers four operations `Add`, `Reset`, `Get`, and `Delete`.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -71,38 +67,38 @@ public class Counter
 }
 ```
 
-Funkce `Run` obsahuje často používaný text, který je vyžadován pro použití syntaxe založené na třídě. Musí se jednat o *statickou* funkci Azure Functions. Provádí se jednou pro každou zprávu operace, která je zpracována entitou. Když je zavolána `DispatchAsync<T>` a entita již není v paměti, vytvoří objekt typu `T` a naplní jeho pole z posledního trvalého formátu JSON nalezeného v úložišti (pokud existuje). Poté vyvolá metodu se shodným názvem.
+The `Run` function contains the boilerplate required for using the class-based syntax. It must be a *static* Azure Function. It executes once for each operation message that is processed by the entity. When `DispatchAsync<T>` is called and the entity isn't already in memory, it constructs an object of type `T` and populates its fields from the last persisted JSON found in storage (if any). Then it invokes the method with the matching name.
 
 > [!NOTE]
-> Stav entity založené na třídě je **vytvořen implicitně** předtím, než entita zpracuje operaci a lze ji v operaci **Odstranit explicitně** voláním `Entity.Current.DeleteState()`.
+> The state of a class-based entity is **created implicitly** before the entity processes an operation, and can be **deleted explicitly** in an operation by calling `Entity.Current.DeleteState()`.
 
-### <a name="class-requirements"></a>Požadavky na třídy
+### <a name="class-requirements"></a>Class Requirements
  
-Třídy entit jsou POCOs (prosté staré objekty CLR), které nevyžadují žádné speciální třídy, rozhraní nebo atributy. Naopak
+Entity classes are POCOs (plain old CLR objects) that require no special superclasses, interfaces, or attributes. However:
 
-- Třída musí být constructible (viz [konstrukce entity](#entity-construction)).
-- Třída musí být serializovatelný ve formátu JSON (viz [serializace entity](#entity-serialization)).
+- The class must be constructible (see [Entity construction](#entity-construction)).
+- The class must be JSON-serializable (see [Entity serialization](#entity-serialization)).
 
-Také všechny metody, které mají být vyvolány jako operace, musí splňovat další požadavky:
+Also, any method that is intended to be invoked as an operation must satisfy additional requirements:
 
-- Operace musí mít maximálně jeden argument a nesmí mít žádná přetížení ani obecné argumenty typu.
-- Operace, která se má volat z orchestrace pomocí rozhraní, musí vracet `Task` nebo `Task<T>`.
-- Argumenty a návratové hodnoty musí být serializovatelných hodnot nebo objektů.
+- An operation must have at most one argument, and must not have any overloads or generic type arguments.
+- An operation meant to be called from an orchestration using an interface must return `Task` or `Task<T>`.
+- Arguments and return values must be serializable values or objects.
 
-### <a name="what-can-operations-do"></a>K čemu operace slouží?
+### <a name="what-can-operations-do"></a>What can operations do?
 
-Všechny operace entity můžou číst a aktualizovat stav entity a změny stavu se automaticky uchovávají do úložiště. Kromě toho mohou operace provádět externí vstupně-výstupní operace nebo jiné výpočty v rámci obecných omezení společných pro všechny Azure Functions.
+All entity operations can read and update the entity state, and changes to the state are automatically persisted to storage. Moreover, operations can perform external I/O or other computations, within the general limits common to all Azure Functions.
 
-Operace mají také přístup k funkcím, které poskytuje kontext `Entity.Current`:
+Operations also have access to functionality provided by the `Entity.Current` context:
 
-* `EntityName`: název aktuálně vykonávané entity.
-* `EntityKey`: klíč aktuálně vykonávané entity.
-* `EntityId`: ID aktuálně vykonávané entity (včetně názvu a klíče).
-* `SignalEntity`: odesílá entitu jednosměrné zprávy.
-* `CreateNewOrchestration`: spustí novou orchestraci.
-* `DeleteState`: odstraní stav této entity.
+* `EntityName`: the name of the currently executing entity.
+* `EntityKey`: the key of the currently executing entity.
+* `EntityId`: the ID of the currently executing entity (includes name and key).
+* `SignalEntity`: sends a one-way message to an entity.
+* `CreateNewOrchestration`: starts a new orchestration.
+* `DeleteState`: deletes the state of this entity.
 
-Můžete například upravit entitu čítače, aby spustila orchestraci, když počítadlo dosáhne 100 a předá ID entity jako vstupní argument:
+For example, we can modify the counter entity so it starts an orchestration when the counter reaches 100 and passes the entity ID as an input argument:
 
 ```csharp
     public void Add(int amount) 
@@ -115,16 +111,16 @@ Můžete například upravit entitu čítače, aby spustila orchestraci, když p
     }
 ```
 
-## <a name="accessing-entities-directly"></a>Přímý přístup k entitám
+## <a name="accessing-entities-directly"></a>Accessing entities directly
 
-K entitám založeným na třídě lze získat přímý pøístup pomocí explicitních řetězcových názvů pro entitu a její operace. Níže uvádíme několik příkladů; Podrobnější vysvětlení základních konceptů (jako jsou signály vs. volání) najdete v tématu diskuze v části věnované [přístupu](durable-functions-entities.md#access-entities). 
+Class-based entities can be accessed directly, using explicit string names for the entity and its operations. We provide some examples below; for a deeper explanation of the underlying concepts (such as signals vs. calls) see the discussion in [Access entities](durable-functions-entities.md#access-entities). 
 
 > [!NOTE]
-> Pokud je to možné, doporučujeme přistoupit [k entitám prostřednictvím rozhraní](#accessing-entities-through-interfaces), protože poskytuje další kontrolu typu.
+> Where possible, we recommend [Accessing entities through interfaces](#accessing-entities-through-interfaces), because it provides more type checking.
 
-### <a name="example-client-signals-entity"></a>Příklad: Client – signály entit
+### <a name="example-client-signals-entity"></a>Example: client signals entity
 
-Následující funkce Azure http implementuje pomocí konvencí REST operaci DELETE. Pošle signál k odstranění pro entitu čítače, jejíž klíč se předává v cestě URL.
+The following Azure Http Function implements a DELETE operation using REST conventions. It sends a delete signal to the counter entity whose key is passed in the URL path.
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -139,9 +135,9 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-### <a name="example-client-reads-entity-state"></a>Příklad: klient čte stav entity
+### <a name="example-client-reads-entity-state"></a>Example: client reads entity state
 
-Následující funkce Azure http implementuje operaci GET pomocí konvencí REST. Přečte aktuální stav entity čítače, jejíž klíč se předává v cestě URL.
+The following Azure Http Function implements a GET operation using REST conventions. It reads the current state of the counter entity whose key is passed in the URL path.
 
 ```csharp
 [FunctionName("GetCounter")]
@@ -157,11 +153,11 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> Objekt vrácený `ReadEntityStateAsync` je pouze místní kopie, tj. snímek stavu entity z nějakého dřívějšího bodu v čase. Konkrétně může být zastaralý a změna tohoto objektu nemá žádný vliv na skutečnou entitu. 
+> The object returned by `ReadEntityStateAsync` is just a local copy, that is, a snapshot of the entity state from some earlier point in time. In particular, it may be stale, and modifying this object has no effect on the actual entity. 
 
-### <a name="example-orchestration-first-signals-then-calls-entity"></a>Příklad: první signály Orchestrace a potom volá entitu
+### <a name="example-orchestration-first-signals-then-calls-entity"></a>Example: orchestration first signals, then calls entity
 
-Následující orchestrace signalizuje entitě čítače, aby ji přivolala, a potom zavolá stejnou entitu, aby četla nejnovější hodnotu.
+The following orchestration signals a counter entity to increment it, and then calls the same entity to read its latest value.
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -180,11 +176,11 @@ public static async Task<int> Run(
 }
 ```
 
-## <a name="accessing-entities-through-interfaces"></a>Přístup k entitám prostřednictvím rozhraní
+## <a name="accessing-entities-through-interfaces"></a>Accessing entities through interfaces
 
-Rozhraní lze použít pro přístup k entitám prostřednictvím generovaných objektů proxy. Tento přístup zajišťuje, že název a argument typu operace se shodují s tím, co je implementováno. Pokud je to možné, doporučujeme používat rozhraní pro přístup k entitám.
+Interfaces can be used for accessing entities via generated proxy objects. This approach ensures that the name and argument type of an operation matches what is implemented. We recommend using interfaces for accessing entities whenever possible.
 
-Například můžeme upravit příklad čítače následujícím způsobem:
+For example, we can modify the counter example as follows:
 
 ```csharp
 public interface ICounter
@@ -201,13 +197,13 @@ public class Counter : ICounter
 }
 ```
 
-Třídy entit a rozhraní entit jsou podobné zrnam a rozhraním zrn, která jsou oblíbená pomocí [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). Další informace o podobnostech a rozdílech mezi trvalými entitami a Orleans najdete v tématu [porovnání s virtuálními aktéry](durable-functions-entities.md#comparison-with-virtual-actors).
+Entity classes and entity interfaces are similar to the grains and grain interfaces popularized by [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). For a more information about similarities and differences between Durable Entities and Orleans, see [Comparison with virtual actors](durable-functions-entities.md#comparison-with-virtual-actors).
 
-Kromě poskytování kontroly typu rozhraní jsou užitečná pro lepší oddělení obav v rámci aplikace. Například vzhledem k tomu, že entita může implementovat více rozhraní, může jedna entita obsluhovat více rolí. Kromě toho, vzhledem k tomu, že rozhraní může být implementováno více entitami, mohou být obecné způsoby komunikace implementovány jako opakovaně použitelné knihovny.
+Besides providing type checking, interfaces are useful for a better separation of concerns within the application. For example, since an entity may implement multiple interfaces, a single entity can serve multiple roles. Also, since an interface may be implemented by multiple entities, general communication patterns can be implemented as reusable libraries.
 
-### <a name="example-client-signals-entity-through-interface"></a>Příklad: klient signalizuje entitu prostřednictvím rozhraní.
+### <a name="example-client-signals-entity-through-interface"></a>Example: client signals entity through interface
 
-Klientský kód může použít `SignalEntityAsync<TEntityInterface>` k odesílání signálů entitám, které implementují `TEntityInterface`. Příklad:
+Client code can use `SignalEntityAsync<TEntityInterface>` to send signals to entities that implement `TEntityInterface`. Například:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -222,15 +218,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-V tomto příkladu je parametr `proxy` dynamicky vygenerovanou instancí `ICounter`, která interně překládá volání `Delete` do signálu.
+In this example, the `proxy` parameter is a dynamically generated instance of `ICounter`, which internally translates the call to `Delete` into a signal.
 
 > [!NOTE]
-> Rozhraní API `SignalEntityAsync` lze použít pouze pro jednosměrné operace. I v případě, že operace vrátí `Task<T>`, hodnota parametru `T` bude vždy null nebo `default`, nikoli skutečný výsledek.
-Například nemá smysl signalizovat operaci `Get`, protože není vrácena žádná hodnota. Místo toho mohou klienti použít buď `ReadStateAsync` pro přístup ke stavu čítače přímo, nebo mohou spustit funkci Orchestrator, která volá operaci `Get`. 
+> The `SignalEntityAsync` APIs can be used only for one-way operations. Even if an operation returns `Task<T>`, the value of the `T` parameter will always be null or `default`, not the actual result.
+For example, it doesn't make sense to signal the `Get` operation, as no value is returned. Instead, clients can use either `ReadStateAsync` to access the counter state directly, or can start an orchestrator function that calls the `Get` operation. 
 
-### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Příklad: první signály Orchestrace a pak volají entitu prostřednictvím proxy
+### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Example: orchestration first signals, then calls entity through proxy
 
-Chcete-li volat nebo signalizovat entitu v rámci orchestrace, je možné použít `CreateEntityProxy` společně s typem rozhraní k vygenerování proxy serveru pro danou entitu. Tento proxy server pak můžete použít k volání nebo signalizaci operací:
+To call or signal an entity from within an orchestration, `CreateEntityProxy` can be used, along with the interface type, to generate a proxy for the entity. This proxy can then be used to call or signal operations:
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -250,39 +246,39 @@ public static async Task<int> Run(
 }
 ```
 
-Implicitně jsou volány všechny operace, které vracejí `void`, a jsou volány všechny operace, které vracejí `Task` nebo `Task<T>`. Jeden může změnit toto výchozí chování a signalizovat operace, i když vrátí úlohu, pomocí metody `SignalEntity<IInterfaceType>` explicitně.
+Implicitly, any operations that return `void` are signaled, and any operations that return `Task` or `Task<T>` are called. One can change this default behavior, and signal operations even if they return Task, by using the `SignalEntity<IInterfaceType>` method explicitly.
 
-### <a name="shorter-option-for-specifying-the-target"></a>Kratší možnost pro určení cíle
+### <a name="shorter-option-for-specifying-the-target"></a>Shorter option for specifying the target
 
-Při volání nebo signalizaci entity pomocí rozhraní musí první argument určovat cílovou entitu. Cíl lze zadat zadáním ID entity, nebo v případě, že existuje pouze jedna třída, která implementuje entitu, pouze klíč entity:
+When calling or signaling an entity using an interface, the first argument must specify the target entity. The target can be specified either by specifying the entity ID, or, in cases where there's just one class that implements the entity, just the entity key:
 
 ```csharp
 context.SignalEntity<ICounter>(new EntityId(nameof(Counter), "myCounter"), ...);
 context.SignalEntity<ICounter>("myCounter", ...);
 ```
 
-Je-li zadán pouze klíč entity a jedinečnou implementaci nelze nalézt za běhu, je vyvolána `InvalidOperationException`. 
+If only the entity key is specified and a unique implementation can't be found at runtime, `InvalidOperationException` is thrown. 
 
-### <a name="restrictions-on-entity-interfaces"></a>Omezení pro rozhraní entit
+### <a name="restrictions-on-entity-interfaces"></a>Restrictions on entity interfaces
 
-V obvyklých případech musí být všechny parametry a návratové typy zaserializovatelnýy do formátu JSON. V opačném případě jsou výjimky serializace generovány za běhu.
+As usual, all parameter and return types must be JSON-serializable. Otherwise, serialization exceptions are thrown at runtime.
 
-Vynutili jsme také některá další pravidla:
-* Rozhraní entit musí definovat pouze metody.
-* Rozhraní entit nesmí obsahovat obecné parametry.
-* Metody rozhraní entit nesmí mít více než jeden parametr.
-* Metody rozhraní entit musí vracet `void`, `Task`nebo `Task<T>` 
+We also enforce some additional rules:
+* Entity interfaces must only define methods.
+* Entity interfaces must not contain generic parameters.
+* Entity interface methods must not have more than one parameter.
+* Entity interface methods must return `void`, `Task`, or `Task<T>` 
 
-V případě porušení některého z těchto pravidel je `InvalidOperationException` vyvolána za běhu, když je rozhraní použito jako argument typu pro `SignalEntity` nebo `CreateProxy`. Zpráva výjimky vysvětluje, které pravidlo bylo přerušeno.
+If any of these rules are violated, an `InvalidOperationException` is thrown at runtime when the interface is used as a type argument to `SignalEntity` or `CreateProxy`. The exception message explains which rule was broken.
 
 > [!NOTE]
-> Metody rozhraní vracející `void` lze pouze signalizovat (jednosměrně), nesmí se volat (obousměrný). Metody rozhraní vracející `Task` nebo `Task<T>` mohou být buď volány nebo správcem signalizována. Při volání vrátí výsledek operace nebo znovu vyvolá výjimky vyvolané operací. Nicméně pokud správcem signalizována, nevrátí skutečný výsledek nebo výjimku z operace, ale pouze výchozí hodnotu.
+> Interface methods returning `void` can only be signaled (one-way), not called (two-way). Interface methods returning `Task` or `Task<T>` can be either called or signalled. If called, they return the result of the operation, or re-throw exceptions thrown by the operation. However, when signalled, they do not return the actual result or exception from the operation, but just the default value.
 
-## <a name="entity-serialization"></a>Serializace entity
+## <a name="entity-serialization"></a>Entity serialization
 
-Vzhledem k tomu, že stav entity je trvale trvalé, Třída entity musí být serializovatelný. Modul runtime Durable Functions používá pro tento účel knihovnu [JSON.NET](https://www.newtonsoft.com/json) , která podporuje řadu zásad a atributů pro řízení procesu serializace a deserializace. Nejčastěji používané C# datové typy (včetně polí a typů kolekcí) jsou již serializovatelný a lze je snadno použít k definování stavu trvalých entit.
+Since the state of an entity is durably persisted, the entity class must be serializable. The Durable Functions runtime uses the [Json.NET](https://www.newtonsoft.com/json) library for this purpose, which supports a number of policies and attributes to control the serialization and deserialization process. Most commonly used C# data types (including arrays and collection types) are already serializable, and can easily be used for defining the state of durable entities.
 
-Například Json.NET může snadno serializovat a deserializovat následující třídu:
+For example, Json.NET can easily serialize and deserialize the following class:
 
 ```csharp
 [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -311,13 +307,13 @@ public class User
 }
 ```
 
-### <a name="serialization-attributes"></a>Atributy serializace
+### <a name="serialization-attributes"></a>Serialization Attributes
 
-V předchozím příkladu jsme se rozhodli zahrnout několik atributů, aby se podkladová serializace lépe zobrazila:
-- Třídu přiřadíme `[JsonObject(MemberSerialization.OptIn)]`, abychom nás upozornili, že třída musí být serializovatelný a aby zachovala pouze členy, které jsou explicitně označeny jako vlastnosti JSON.
--  Přidáváme pole, která se mají zachovat s `[JsonProperty("name")]` k upozornění, že pole je součástí trvalého stavu entity a určuje název vlastnosti, která se má použít v reprezentaci JSON.
+In the example above, we chose to include several attributes to make the underlying serialization more visible:
+- We annotate the class with `[JsonObject(MemberSerialization.OptIn)]` to remind us that the class must be serializable, and to persist only members that are explicitly marked as JSON properties.
+-  We annotate the fields to be persisted with `[JsonProperty("name")]` to remind us that a field is part of the persisted entity state, and to specify the property name to be used in the JSON representation.
 
-Tyto atributy se ale nevyžadují. jiné konvence nebo atributy jsou povoleny, pokud pracují s Json.NET. Například jedna může používat atributy `[DataContract]`, nebo vůbec žádné atributy:
+However, these attributes aren't required; other conventions or attributes are permitted as long as they work with Json.NET. For example, one may use `[DataContract]` attributes, or no attributes at all:
 
 ```csharp
 [DataContract]
@@ -335,29 +331,29 @@ public class Counter
 }
 ```
 
-Ve výchozím *nastavení není název třídy uložen jako* součást reprezentace JSON: to znamená, že jako výchozí nastavení používáme `TypeNameHandling.None`. Toto výchozí chování lze přepsat pomocí atributů `JsonObject` nebo `JsonProperty`.
+By default, the name of the class is *not* stored as part of the JSON representation: that is, we use `TypeNameHandling.None` as the default setting. This default behavior can be overridden using `JsonObject` or `JsonProperty` attributes.
 
-### <a name="making-changes-to-class-definitions"></a>Provádění změn v definicích tříd
+### <a name="making-changes-to-class-definitions"></a>Making changes to class definitions
 
-Při provádění změn definice třídy po spuštění aplikace se vyžaduje určitá péče, protože uložený objekt JSON se už nemusí shodovat s definicí nové třídy. Stále je často možné řešit správné transakce se změnou formátů dat, pokud jedna rozumí procesu deserializace, který používá `JsonConvert.PopulateObject`.
+Some care is required when making changes to a class definition after an application has been run, because the stored JSON object may no longer match the new class definition. Still, it is often possible to deal correctly with changing data formats as long as one understands the deserialization process used by `JsonConvert.PopulateObject`.
 
-Například zde jsou některé příklady změn a jejich účinek:
+For example, here are some examples of changes and their effect:
 
-1. Pokud je přidána nová vlastnost, která není přítomna v uloženém formátu JSON, předpokládá, že její výchozí hodnota je.
-1. Pokud je odebrána vlastnost, která je k dispozici v uloženém formátu JSON, předchozí obsah bude ztracen.
-1. Pokud je vlastnost přejmenována, efekt je jako při odebrání starého a přidání nového.
-1. Pokud je typ vlastnosti změněn, takže již nelze deserializovat z uloženého formátu JSON, je vyvolána výjimka.
-1. Pokud se změní typ vlastnosti, ale je možné ji i nadále deserializovat z uloženého formátu JSON, bude to mít.
+1. If a new property is added, which is not present in the stored JSON, it assumes its default value.
+1. If a property is removed, which is present in the stored JSON, the previous content is lost.
+1. If a property is renamed, the effect is as if removing the old one and adding a new one.
+1. If the type of a property is changed so it can no longer be deserialized from the stored JSON, an exception is thrown.
+1. If the type of a property is changed, but it can still be deserialized from the stored JSON, it will do so.
 
-K dispozici je celá řada možností pro přizpůsobení chování Json.NET. Například chcete-li vynutit výjimku, pokud uložený kód JSON obsahuje pole, které není přítomno ve třídě, zadejte atribut `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`. Je také možné napsat vlastní kód pro deserializaci, který může číst JSON uložený v libovolných formátech.
+There are many options available for customizing the behavior of Json.NET. For example, to force an exception if the stored JSON contains a field that is not present in the class, specify the attribute `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`. It is also possible to write custom code for deserialization that can read JSON stored in arbitrary formats.
 
-## <a name="entity-construction"></a>Vytváření entit
+## <a name="entity-construction"></a>Entity construction
 
-Někdy chceme mít větší kontrolu nad tím, jak se objekty entit vytvářejí. Nyní popisujeme několik možností, jak změnit výchozí chování při vytváření objektů entit. 
+Sometimes we want to exert more control over how entity objects are constructed. We now describe several options for changing the default behavior when constructing entity objects. 
 
-### <a name="custom-initialization-on-first-access"></a>Vlastní inicializace při prvním přístupu
+### <a name="custom-initialization-on-first-access"></a>Custom initialization on first access
 
-Občas musíme provést několik zvláštních inicializací před odesláním operace do entity, která nikdy nebyla k dispozici, nebo která byla odstraněna. Chcete-li určit toto chování, může jedna přidat podmíněný objekt před `DispatchAsync`:
+Occasionally we need to perform some special initialization before dispatching an operation to an entity that has never been accessed, or that has been deleted. To specify this behavior, one can add a conditional before the `DispatchAsync`:
 
 ```csharp
 [FunctionName(nameof(Counter))]
@@ -371,11 +367,11 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-### <a name="bindings-in-entity-classes"></a>Vazby v třídách entit
+### <a name="bindings-in-entity-classes"></a>Bindings in entity classes
 
-Na rozdíl od regulárních funkcí nemají metody třídy entit přímý přístup k vstupní a výstupní vazbě. Místo toho musí být vazba dat zachycena v deklaraci funkce vstupního bodu a poté předána metodě `DispatchAsync<T>`. Všechny objekty předané do `DispatchAsync<T>` budou automaticky předány do konstruktoru třídy entity jako argument.
+Unlike regular functions, entity class methods don't have direct access to input and output bindings. Instead, binding data must be captured in the entry-point function declaration and then passed to the `DispatchAsync<T>` method. Any objects passed to `DispatchAsync<T>` will be automatically passed into the entity class constructor as an argument.
 
-Následující příklad ukazuje, jak lze zpřístupnit `CloudBlobContainer` odkaz ze [vstupní vazby objektu BLOB](../functions-bindings-storage-blob.md#input) na entitu založenou na třídě.
+The following example shows how a `CloudBlobContainer` reference from the [blob input binding](../functions-bindings-storage-blob.md#input) can be made available to a class-based entity.
 
 ```csharp
 public class BlobBackedEntity
@@ -402,11 +398,11 @@ public class BlobBackedEntity
 }
 ```
 
-Další informace o vazbách v Azure Functions naleznete v dokumentaci k [aktivačním událostem Azure functions a vazebm](../functions-triggers-bindings.md) .
+For more information on bindings in Azure Functions, see the [Azure Functions Triggers and Bindings](../functions-triggers-bindings.md) documentation.
 
-### <a name="dependency-injection-in-entity-classes"></a>Vkládání závislostí v třídách entit
+### <a name="dependency-injection-in-entity-classes"></a>Dependency injection in entity classes
 
-Třídy entit podporují [vkládání závislostí Azure Functions](../functions-dotnet-dependency-injection.md). Následující příklad ukazuje, jak zaregistrovat službu `IHttpClientFactory` do entity založené na třídě.
+Entity classes support [Azure Functions Dependency Injection](../functions-dotnet-dependency-injection.md). The following example demonstrates how to register an `IHttpClientFactory` service into a class-based entity.
 
 ```csharp
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
@@ -423,7 +419,7 @@ namespace MyNamespace
 }
 ```
 
-Následující fragment kódu ukazuje, jak začlenit vloženou službu do vaší třídy entit.
+The following snippet demonstrates how to incorporate the injected service into your entity class.
 
 ```csharp
 public class HttpEntity
@@ -451,16 +447,16 @@ public class HttpEntity
 ```
 
 > [!NOTE]
-> Chcete-li se vyhnout problémům s serializací, nezapomeňte vyloučit pole, která jsou určena k ukládání vložených hodnot z serializace.
+> To avoid issues with serialization, make sure to exclude fields meant to store injected values from the serialization.
 
 > [!NOTE]
-> Na rozdíl od při použití injektáže konstruktoru v běžném Azure Functions .NET *musí* být metoda vstupního bodu pro entity založené na třídě deklarována `static`. Deklarace vstupního bodu nestatické funkce může způsobit konflikty mezi normálním inicializátorem objektu Azure Functions a inicializátorem objektu trvalé entity.
+> Unlike when using constructor injection in regular .NET Azure Functions, the functions entry point method for class-based entities *must* be declared `static`. Declaring a non-static function entry point may cause conflicts between the normal Azure Functions object initializer and the Durable Entities object initializer.
 
-## <a name="function-based-syntax"></a>Syntaxe založená na funkcích
+## <a name="function-based-syntax"></a>Function-based syntax
 
-Zatím jsme se zaměřili na syntaxi založenou na třídě, protože očekáváme, že bude vhodnější pro většinu aplikací. Syntaxe založená na funkcích ale může být vhodná pro aplikace, které chtějí definovat nebo spravovat své vlastní abstrakce pro stav a operace entity. Také může být vhodné při implementaci knihoven, které vyžadují obecu, která není aktuálně podporována syntaxí založenou na třídě. 
+So far we have focused on the class-based syntax, as we expect it to be better suited for most applications. However, the function-based syntax can be appropriate for applications that wish to define or manage their own abstractions for entity state and operations. Also, it may be appropriate when implementing libraries that require genericity not currently supported by the class-based syntax. 
 
-Pomocí syntaxe založené na funkci entita explicitně zpracovává odeslání operace a explicitně spravuje stav entity. Například následující kód ukazuje, že je entita *čítače* implementována pomocí syntaxe založené na funkci.  
+With the function-based syntax, the Entity Function explicitly handles the operation dispatch, and explicitly manages the state of the entity. For example, the following code shows the *Counter* entity implemented using the function-based syntax.  
 
 ```csharp
 [FunctionName("Counter")]
@@ -484,34 +480,34 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-### <a name="the-entity-context-object"></a>Objekt kontextu entity
+### <a name="the-entity-context-object"></a>The entity context object
 
-K funkcím specifickým pro entitu lze přistupovat prostřednictvím objektu kontextu typu `IDurableEntityContext`. Tento kontextový objekt je k dispozici jako parametr pro funkci entity a prostřednictvím `Entity.Current`vlastností Async-Local.
+Entity-specific functionality can be accessed via a context object of type `IDurableEntityContext`. This context object is available as a parameter to the entity function, and via the async-local property `Entity.Current`.
 
-Následující členové poskytují informace o aktuální operaci a nám umožňují zadat návratovou hodnotu. 
+The following members provide information about the current operation, and allow us to specify a return value. 
 
-* `EntityName`: název aktuálně vykonávané entity.
-* `EntityKey`: klíč aktuálně vykonávané entity.
-* `EntityId`: ID aktuálně vykonávané entity (včetně názvu a klíče).
-* `OperationName`: název aktuální operace.
-* `GetInput<TInput>()`: Získá vstup pro aktuální operaci.
-* `Return(arg)`: vrátí hodnotu do orchestrace, která volala operaci.
+* `EntityName`: the name of the currently executing entity.
+* `EntityKey`: the key of the currently executing entity.
+* `EntityId`: the ID of the currently executing entity (includes name and key).
+* `OperationName`: the name of the current operation.
+* `GetInput<TInput>()`: gets the input for the current operation.
+* `Return(arg)`: returns a value to the orchestration that called the operation.
 
-Následující členové spravují stav entity (vytvořit, číst, aktualizovat, odstranit). 
+The following members manage the state of the entity (create, read, update, delete). 
 
-* `HasState`: zda entita existuje, tj. má nějaký stav. 
-* `GetState<TState>()`: načte aktuální stav entity. Pokud ještě neexistuje, vytvoří se.
-* `SetState(arg)`: vytvoří nebo aktualizuje stav entity.
-* `DeleteState()`: odstraní stav entity, pokud existuje. 
+* `HasState`: whether the entity exists, that is, has some state. 
+* `GetState<TState>()`: gets the current state of the entity. If it does not already exist, it is created.
+* `SetState(arg)`: creates or updates the state of the entity.
+* `DeleteState()`: deletes the state of the entity, if it exists. 
 
-Pokud stav vrácený `GetState` je objekt, může být přímo upraven pomocí kódu aplikace. Na konci není nutné volat `SetState` znovu (ale také bez poškození). Pokud je `GetState<TState>` volána několikrát, je nutné použít stejný typ.
+If the state returned by `GetState` is an object, it can be directly modified by the application code. There is no need to call `SetState` again at the end (but also no harm). If `GetState<TState>` is called multiple times, the same type must be used.
 
-Nakonec se k signalizaci jiných entit používají následující členové, nebo začnou nové orchestrace:
+Finally, the following members are used to signal other entities, or start new orchestrations:
 
-* `SignalEntity(EntityId, operation, input)`: odesílá entitu jednosměrné zprávy.
-* `CreateNewOrchestration(orchestratorFunctionName, input)`: spustí novou orchestraci.
+* `SignalEntity(EntityId, operation, input)`: sends a one-way message to an entity.
+* `CreateNewOrchestration(orchestratorFunctionName, input)`: starts a new orchestration.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o konceptech entit](durable-functions-entities.md)
+> [Learn about entity concepts](durable-functions-entities.md)

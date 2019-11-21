@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se zařízeními pomocí příkazu dsregcmd-Azure Active Directory
-description: Pochopení stavu zařízení ve službě Azure AD pomocí výstupu z dsregcmd
+title: Troubleshooting devices using the dsregcmd command - Azure Active Directory
+description: Using the output from dsregcmd to understand the state of devices in Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,37 +11,37 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aa8f9a7c6807a2f9505559ea13fb0b4f410346d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c2769210b40b011a35973e48eebce60526f6fc10
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987169"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207164"
 ---
-# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Řešení potíží se zařízeními pomocí příkazu dsregcmd
+# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Troubleshooting devices using the dsregcmd command
 
-Nástroj dsregcmd/status musí být spuštěn jako uživatelský účet domény.
+The dsregcmd /status utility must be run as a domain user account.
 
-## <a name="device-state"></a>Stav zařízení
+## <a name="device-state"></a>Device state
 
-V této části jsou uvedené parametry stavu připojení zařízení. V následující tabulce jsou uvedená kritéria pro zařízení v různých stavech spojení.
+This section lists the device join state parameters. The table below lists the criteria for the device to be in various join states.
 
-| AzureAdJoined | EnterpriseJoined | DomainJoined | Stav zařízení |
+| AzureAdJoined | EnterpriseJoined | DomainJoined | Device state |
 | ---   | ---   | ---   | ---   |
-| ANO | NO | NO | Připojené k Azure AD |
-| NO | NO | ANO | Připojeno k doméně |
-| ANO | NO | ANO | Připojeno k hybridní službě AD |
-| NO | ANO | ANO | Připojené k místnímu DRS |
+| YES | NO | NO | Azure AD Joined |
+| NO | NO | YES | Domain Joined |
+| YES | NO | YES | Hybrid AD Joined |
+| NO | YES | YES | On-premises DRS Joined |
 
 > [!NOTE]
-> V části "stav uživatele" se zobrazí stav Workplace Join (registrovaný Azure AD).
+> Workplace Join (Azure AD registered) state is displayed in the "User State" section
 
-- **AzureAdJoined:** -Pokud je zařízení připojené ke službě Azure AD, nastavte na hodnotu Ano. "Ne" jinak.
-- **EnterpriseJoined:** -Pokud je zařízení připojené k místnímu DRS, nastavte hodnotu Ano. Zařízení nemůže být současně EnterpriseJoined i AzureAdJoined.
-- **DomainJoined:** -Pokud je zařízení připojené k doméně (AD), nastavte na hodnotu Ano.
-- **DomainName:** – nastavte název domény, pokud je zařízení připojené k doméně.
+- **AzureAdJoined:** - Set to “YES” if the device is Joined to Azure AD. “NO” otherwise.
+- **EnterpriseJoined:** - Set to “YES” if the device is Joined to an on-premises DRS. A device cannot be both EnterpriseJoined and AzureAdJoined.
+- **DomainJoined:** - Set to “YES” if the device is joined to a domain (AD).
+- **DomainName:** - Set to the name of the domain if the device is joined to a domain.
 
-### <a name="sample-device-state-output"></a>Ukázka výstupu stavu zařízení
+### <a name="sample-device-state-output"></a>Sample device state output
 
 ```
 +----------------------------------------------------------------------+
@@ -54,18 +54,18 @@ V této části jsou uvedené parametry stavu připojení zařízení. V násled
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Detaily zařízení
+## <a name="device-details"></a>Device details
 
-Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo je připojené k hybridní službě Azure AD (není zaregistrované Azure AD). V této části jsou uvedené informace o identifikaci zařízení, které jsou uložené v cloudu.
+Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not Azure AD registered). This section lists device identifying details stored in the cloud.
 
-- **DeviceID:** – jedinečné ID zařízení v TENANTOVI Azure AD
-- **Kryptografický otisk:** – kryptografický otisk certifikátu zařízení 
-- **DeviceCertificateValidity:** -platnost certifikátu zařízení
-- **KeyContainerId:** -ContainerId privátní klíč zařízení přidružený k certifikátu zařízení
-- Klíč **:** -poskytuje (hardware/software), který se používá k uložení privátního klíče zařízení.
-- **TpmProtected:** -"Ano", pokud je privátní klíč zařízení uložený v HARDWAROVÉM čipu TPM.
+- **DeviceId:** - Unique ID of the device in the Azure AD tenant
+- **Thumbprint:** - Thumbprint of the device certificate 
+- **DeviceCertificateValidity:** - Validity of the device certificate
+- **KeyContainerId:** - ContainerId of the device private key associated with the device certificate
+- **KeyProvider:** - KeyProvider (Hardware/Software) used to store the device private key.
+- **TpmProtected:** - “YES” if the device private key is stored in a Hardware TPM.
 
-### <a name="sample-device-details-output"></a>Ukázka výstupu podrobností o zařízení
+### <a name="sample-device-details-output"></a>Sample device details output
 
 ```
 +----------------------------------------------------------------------+
@@ -81,14 +81,17 @@ Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo 
 +----------------------------------------------------------------------+
 ```
 
-## <a name="tenant-details"></a>Podrobnosti o tenantovi
+## <a name="tenant-details"></a>Tenant details
 
-Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo je připojené k hybridní službě Azure AD (není zaregistrované Azure AD). Tato část obsahuje informace o běžných klientech, když je zařízení připojené ke službě Azure AD.
+Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not Azure AD registered). This section lists the common tenant details when a device is joined to Azure AD.
 
 > [!NOTE]
-> I když se zobrazují adresy URL MDM, neznamená to, že zařízení spravuje MDM. Tyto informace se zobrazí, pokud má tenant konfiguraci MDM pro automatický zápis i v případě, že samotné zařízení není spravované. 
+> If the MDM URLs in this section are empty, it indicates that the MDM was either not configured or current user is not in scope of MDM enrollment. Check the Mobility settings in Azure AD to review your MDM configuration.
 
-### <a name="sample-tenant-details-output"></a>Výstup podrobností o ukázkovém tenantovi
+> [!NOTE]
+> Even if you see MDM URLs this does not mean that the device is managed by an MDM. The information is displayed if the tenant has MDM configuration for auto-enrollment even if the device itself is not managed. 
+
+### <a name="sample-tenant-details-output"></a>Sample tenant details output
 
 ```
 +----------------------------------------------------------------------+
@@ -119,24 +122,24 @@ Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo 
 +----------------------------------------------------------------------+
 ```
 
-## <a name="user-state"></a>Stav uživatele
+## <a name="user-state"></a>User state
 
-V této části je uveden seznam stavů různých atributů pro uživatele, který je aktuálně přihlášený k zařízení.
+This section lists the status of various attributes for the user currently logged into the device.
 
 > [!NOTE]
-> Příkaz se musí spustit v uživatelském kontextu, aby se načetl platný stav.
+> The command must run in a user context to retrieve valid status.
 
-- **NgcSet:** -nastavte na hodnotu Ano, pokud je pro aktuálně přihlášený uživatel nastaven klíč Windows Hello.
-- **NgcKeyId:** -ID klíče Windows Hello, pokud je nastaven pro aktuálně přihlášeného uživatele.
-- **CanReset:** -označuje, jestli uživatel může resetovat klíč Windows Hello. 
-- **Možné hodnoty:** -DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive nebo Unknown, pokud se jedná o chybu. 
-- **WorkplaceJoined:** -nastavte na hodnotu Ano, pokud se do zařízení v aktuálním kontextu Ntuser přidaly účty registrované službou Azure AD.
-- **WamDefaultSet:** -nastavte na hodnotu Ano, pokud je pro přihlášeného uživatele vytvořen výchozí účet WAM. Toto pole může zobrazit chybu, pokud dsreg/status běží v kontextu správce. 
-- **WamDefaultAuthority:** -pro Azure AD nastavte na "organizace".
-- **WamDefaultId:** – Always "https://login.microsoft.com" pro Azure AD.
-- **WamDefaultGUID:** – GUID poskytovatele WAM (Azure AD/účet Microsoft) pro výchozí webaccount WAM. 
+- **NgcSet:** - Set to “YES” if a Windows Hello key is set for the current logged on user.
+- **NgcKeyId:** - ID of the Windows Hello key if one is set for the current logged on user.
+- **CanReset:** - Denotes if the Windows Hello key can be reset by the user. 
+- **Possible values:** - DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive, or Unknown if error. 
+- **WorkplaceJoined:** - Set to “YES” if Azure AD registered accounts have been added to the device in the current NTUSER context.
+- **WamDefaultSet:** - Set to “YES” if a WAM default WebAccount is created for the logged in user. This field could display an error if dsreg /status is run in admin context. 
+- **WamDefaultAuthority:** - Set to “organizations” for Azure AD.
+- **WamDefaultId:** - Always “https://login.microsoft.com” for Azure AD.
+- **WamDefaultGUID:** - The WAM provider’s (Azure AD/Microsoft account) GUID for the default WAM WebAccount. 
 
-### <a name="sample-user-state-output"></a>Ukázkový výstup stavu uživatele
+### <a name="sample-user-state-output"></a>Sample user state output
 
 ```
 +----------------------------------------------------------------------+
@@ -155,23 +158,23 @@ V této části je uveden seznam stavů různých atributů pro uživatele, kter
 +----------------------------------------------------------------------+
 ```
 
-## <a name="sso-state"></a>Stav jednotného přihlašování
+## <a name="sso-state"></a>SSO state
 
-Tato část se dá pro zařízení registrovaná v Azure AD ignorovat.
+This section can be ignored for Azure AD registered devices.
 
 > [!NOTE]
-> Příkaz se musí spustit v uživatelském kontextu, aby se načetl platný stav pro tohoto uživatele.
+> The command must run in a user context to retrieve valid status for that user.
 
-- **AzureAdPrt:** -Pokud je v zařízení pro přihlášeného uživatele k DISpozici PRT, nastavte na hodnotu Ano.
-- **AzureAdPrtUpdateTime:** -nastaví se na čas ve standardu UTC, kdy se poslední aktualizace PRT.
-- **AzureAdPrtExpiryTime:** -nastavte na čas ve standardu UTC, kdy platnost PRT vyprší, pokud není obnovena.
-- **AzureAdPrtAuthority:** – adresa URL autority Azure AD
-- **EnterprisePrt:** -Pokud má zařízení PRT z místní služby AD FS, nastavte na hodnotu Ano. Zařízení připojená k hybridní službě Azure AD by mohla mít PRT z Azure AD i z místní služby AD současně. Místní připojená zařízení budou mít jenom PRT Enterprise.
-- **EnterprisePrtUpdateTime:** -nastavte čas ve standardu UTC, kdy se naposledy aktualizoval podniková PRT.
-- **EnterprisePrtExpiryTime:** -nastavte na čas ve standardu UTC, kdy platnost PRT vyprší, pokud není obnovena.
-- **EnterprisePrtAuthority:** – adresa URL pro autoritu ADFS
+- **AzureAdPrt:** - Set to “YES” if a PRT is present on the device for the logged-on user.
+- **AzureAdPrtUpdateTime:** - Set to the time in UTC when the PRT was last updated.
+- **AzureAdPrtExpiryTime:** - Set to the time in UTC when the PRT is going to expire if it is not renewed.
+- **AzureAdPrtAuthority:** - Azure AD authority URL
+- **EnterprisePrt:** - Set to “YES” if the device has PRT from on-premises ADFS. For hybrid Azure AD joined devices the device could have PRT from both Azure AD and on-premises AD simultaneously. On-premises joined devices will only have an Enterprise PRT.
+- **EnterprisePrtUpdateTime:** - Set to the time in UTC when the Enterprise PRT was last updated.
+- **EnterprisePrtExpiryTime:** - Set to the time in UTC when the PRT is going to expire if it is not renewed.
+- **EnterprisePrtAuthority:** - ADFS authority URL
 
-### <a name="sample-sso-state-output"></a>Ukázka výstupu stavu jednotného přihlašování
+### <a name="sample-sso-state-output"></a>Sample SSO state output
 
 ```
 +----------------------------------------------------------------------+
@@ -190,37 +193,37 @@ Tato část se dá pro zařízení registrovaná v Azure AD ignorovat.
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Diagnostická data
+## <a name="diagnostic-data"></a>Diagnostic data
 
-### <a name="pre-join-diagnostics"></a>Diagnostika před spojením
+### <a name="pre-join-diagnostics"></a>Pre-join diagnostics
 
-Tato část se zobrazí jenom v případě, že je zařízení připojené k doméně a nemůže se připojit k hybridní službě Azure AD.
+This section is displayed only if the device is domain joined and is unable to hybrid Azure AD join.
 
-Tato část provádí různé testy, které vám pomůžou diagnostikovat selhání připojení. Tato část obsahuje také podrobnosti o předchozí (?). Tyto informace zahrnují chybovou fázi, kód chyby, ID žádosti serveru, stav HTTP odpovědi serveru, chybová zpráva odpovědi serveru.
+This section performs various tests to help diagnose join failures. This section also includes the details of the previous (?). This information includes the error phase, the error code, the server request ID, server response http status, server response error message.
 
-- **Kontext uživatele:** – kontext, ve kterém se Diagnostika spouští. Možné hodnoty: SYSTEM, uživatel bez ZVÝŠENých oprávnění, ZVÝŠENý uživatel. 
+- **User Context:** - The context in which the diagnostics are run. Possible values: SYSTEM, UN-ELEVATED User, ELEVATED User. 
 
    > [!NOTE]
-   > Vzhledem k tomu, že se skutečné spojení provádí v kontextu systému, je spuštění diagnostiky v kontextu systému nejblíže vašemu skutečnému scénáři spojení. Chcete-li spustit diagnostiku v kontextu systému, je třeba spustit příkaz dsregcmd/status z příkazového řádku se zvýšenými oprávněními.
+   > Since the actual join is performed in SYSTEM context, running the diagnostics in SYSTEM context is closest to the actual join scenario. To run diagnostics in SYSTEM context, the dsregcmd /status command must be run from an elevated command prompt.
 
-- **Čas klienta:** – systémový čas ve standardu UTC.
-- **Test připojení AD:** -test provede test připojení k řadiči domény. Chyba v tomto testu bude nejspíš způsobit chyby spojení v předběžné kontrolní fázi.
-- **Test konfigurace služby AD:** -test načte a ověří, jestli je objekt SCP správně nakonfigurovaný v místní doménové struktuře AD. Chyby v tomto testu by mohly vést k chybám spojení ve fázi zjišťování s kódem chyby 0x801c001d.
-- **Test zjišťování DRS:** -test Získá koncové body DRS z koncového bodu metadat zjišťování a provede požadavek na sféru uživatele. Chyby v tomto testu by mohly vést k chybám spojení ve fázi zjišťování.
-- **Test připojení DRS:** -test provede základní test připojení ke koncovému bodu DRS.
-- **Test získání tokenu:** -test se pokusí získat ověřovací token Azure AD, pokud je tenant uživatele federované. Chyby v tomto testu by mohly vést k chybám spojení ve fázi ověřování. Pokud se nezdaří pokus o přihlášení k synchronizaci synchronizace, bude proveden pokus o použití zálohy, pokud se nezablokuje explicitně pomocí klíče registru.
-- Přechod **na synchronizaci – připojení:** -Pokud se klíč registru zabrání tomu, aby se záloha nesynchronizoval s chybami ověřování, není k dispozici možnost – nastaveno na povoleno. Tato možnost je k dispozici v systému Windows 10 1803 a novějším.
-- **Předchozí registrace:** čas, kdy došlo k předchozímu pokusu o spojení. Protokolují se jenom neúspěšné pokusy o připojení.
-- **Chybová fáze:** – fáze spojení, ve které byla přerušena. Možné hodnoty jsou předběžné kontroly, zjišťování, ověřování, spojení.
-- **Klient ErrorCode:** -vrácený kód chyby klienta (HRESULT).
-- **Server ErrorCode:** -kód chyby serveru, pokud byl požadavek odeslán na server a Server vrátil zpět chybový kód. 
-- **Zpráva serveru:** -zpráva serveru vrácená spolu s kódem chyby.
-- **Stav protokolu https:** -stav HTTP vrácený serverem.
-- **ID žádosti:** – požadavek klienta byl odeslán na server. To je užitečné pro korelaci s protokoly na straně serveru.
+- **Client Time:** - The system time in UTC.
+- **AD Connectivity Test:** - Test performs a connectivity test to the domain controller. Error in this test will likely result in Join errors in pre-check phase.
+- **AD Configuration Test:** - Test reads and verifies whether the SCP object is configured properly in the on-premises AD forest. Errors in this test would likely result in Join errors in the discover phase with the error code 0x801c001d.
+- **DRS Discovery Test:** - Test gets the DRS endpoints from discovery metadata endpoint and performs a user realm request. Errors in this test would likely result in Join errors in the discover phase.
+- **DRS Connectivity Test:** - Test performs basic connectivity test to the DRS endpoint.
+- **Token acquisition Test:** - Test tries to get an Azure AD authentication token if the user tenant is federated. Errors in this test would likely result in Join errors in the auth phase. If auth fails sync join will be attempted as fallback, unless fallback is explicitly disabled with a registry key.
+- **Fallback to Sync-Join:** - Set to “Enabled” if the registry key, to prevent the fallback to sync join with auth failures, is NOT present. This option is available from Windows 10 1803 and later.
+- **Previous Registration:** - Time the previous Join attempt occurred. Only failed Join attempts are logged.
+- **Error Phase:** - The stage of the join in which it was aborted. Possible values are pre-check, discover, auth, join.
+- **Client ErrorCode:** - Client error code returned (HRESULT).
+- **Server ErrorCode:** - Server error code if a request was sent to the server and server responded back with an error code. 
+- **Server Message:** - Server message returned along with the error code.
+- **Https Status:** - Http status returned by the server.
+- **Request ID:** - The client requestId sent to the server. Useful to correlate with server-side logs.
 
-### <a name="sample-pre-join-diagnostics-output"></a>Ukázka předběžného připojení výstup diagnostiky
+### <a name="sample-pre-join-diagnostics-output"></a>Sample pre-join diagnostics output
 
-Následující příklad ukazuje selhání testu diagnostiky s chybou zjišťování.
+The following example shows diagnostics test failing with a discovery error.
 
 ```
 +----------------------------------------------------------------------+
@@ -244,7 +247,7 @@ Následující příklad ukazuje selhání testu diagnostiky s chybou zjišťov�
 +----------------------------------------------------------------------+
 ```
 
-Následující příklad ukazuje testy diagnostiky, ale pokus o registraci se nezdařil s chybou adresáře, která se očekává pro připojení synchronizace. Jakmile se úloha synchronizace Azure AD Connect dokončí, zařízení se bude moci připojit.
+The following example shows diagnostics tests are passing but the registration attempt failed with a directory error, which is expected for sync join. Once the Azure AD Connect synchronization job completes, the device will be able to join.
 
 ```
 +----------------------------------------------------------------------+
@@ -273,14 +276,14 @@ Následující příklad ukazuje testy diagnostiky, ale pokus o registraci se ne
 +----------------------------------------------------------------------+
 ```
 
-### <a name="post-join-diagnostics"></a>Diagnostika po připojení
+### <a name="post-join-diagnostics"></a>Post-join diagnostics
 
-Tato část zobrazuje výstup kontrol správnosti provedených v zařízení připojeném ke cloudu.
+This section displays the output of sanity checks performed on a device joined to the cloud.
 
-- **AadRecoveryEnabled:** -Pokud ano, klíče uložené v zařízení nejsou použitelné a zařízení je označené pro obnovení. Při příštím přihlášení se spustí tok obnovení a zařízení se znovu zaregistruje.
-- **KeySignTest:** -if "Pass" klíče zařízení jsou v dobrém stavu. Pokud KeySignTest selže, zařízení se obvykle označí pro obnovení. Při příštím přihlášení se spustí tok obnovení a zařízení se znovu zaregistruje. Pro zařízení připojená k hybridní službě Azure AD je obnovení tiché. Když jste připojeni k Azure AD nebo zaregistrovali Azure AD, zařízení zobrazí výzvu k ověření uživatele, aby v případě potřeby obnovila a znovu zaregistrovala zařízení. **KeySignTest vyžaduje zvýšená oprávnění.**
+- **AadRecoveryEnabled:** - If “YES”, the keys stored in the device are not usable and the device is marked for recovery. The next sign in will trigger the recovery flow and re-register the device.
+- **KeySignTest:** - If “PASSED” the device keys are in good health. If KeySignTest fails, the device will usually be marked for recovery. The next sign in will trigger the recovery flow and re-register the device. For hybrid Azure AD joined devices the recovery is silent. While Azure AD joined or Azure AD registered, devices will prompt for user authentication to recover and re-register the device if necessary. **The KeySignTest requires elevated privileges.**
 
-#### <a name="sample-post-join-diagnostics-output"></a>Ukázkový výstup diagnostiky po připojení
+#### <a name="sample-post-join-diagnostics-output"></a>Sample post-join diagnostics output
 
 ```
 +----------------------------------------------------------------------+
@@ -292,14 +295,14 @@ Tato část zobrazuje výstup kontrol správnosti provedených v zařízení př
 +----------------------------------------------------------------------+
 ```
 
-## <a name="ngc-prerequisite-check"></a>Kontrola požadavků služby NGC
+## <a name="ngc-prerequisite-check"></a>NGC prerequisite check
 
-Tato část provádí předpokladech kontroly zřízení klíče NGC. 
+This section performs the perquisite checks for the provisioning of an NGC key. 
 
 > [!NOTE]
-> Pokud už uživatel úspěšně nakonfiguroval přihlašovací údaje služby NGC, nesmíte v dsregcmd/status zobrazit podrobnosti o kontrole požadavků na NGC.
+> You may not see NGC pre-requisite check details in dsregcmd /status if the user already successfully configured NGC credentials.
 
-### <a name="sample-ngc-prerequisite-check-output"></a>Ukázka výstupu kontroly požadavků služby NGC
+### <a name="sample-ngc-prerequisite-check-output"></a>Sample NGC prerequisite check output
 
 ```
 +----------------------------------------------------------------------+
@@ -320,6 +323,6 @@ Tato část provádí předpokladech kontroly zřízení klíče NGC.
 +----------------------------------------------------------------------+
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Otázky najdete v tématu [Nejčastější dotazy ke správě zařízení](faq.md) .
+For questions, see the [device management FAQ](faq.md)

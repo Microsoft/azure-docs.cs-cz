@@ -1,37 +1,37 @@
 ---
-title: Průvodce odstraňováním potíží s Azure DNS
-description: Řešení běžných potíží s Azure DNS
+title: Troubleshooting guide - Azure DNS
+description: In this learning path, get started troubleshooting common issues with Azure DNS
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: genli
-ms.openlocfilehash: 885d41c9cea11805b08b19ec9c3cc4e533813673
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.author: allensu
+ms.openlocfilehash: b5fedba7b739c07a37f3aabf75ddd8ca465ba73b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162069"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210942"
 ---
-# <a name="azure-dns-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure DNS
+# <a name="azure-dns-troubleshooting-guide"></a>Azure DNS troubleshooting guide
 
-V tomto článku najdete informace o řešení běžných otázek Azure DNS.
+This article provides troubleshooting information for common Azure DNS questions.
 
-Pokud tyto kroky problém nevyřeší, můžete také vyhledat nebo odeslat svůj problém na našem [fóru podpory komunity na webu MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork). Případně můžete otevřít žádost o podporu Azure.
+If these steps don't resolve your issue, you can also search for or post your issue on our [community support forum on MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork). Or, you can open an Azure support request.
 
 
-## <a name="i-cant-create-a-dns-zone"></a>Nemůžu vytvořit zónu DNS
+## <a name="i-cant-create-a-dns-zone"></a>I can't create a DNS zone
 
 Při řešení běžných problémů zkuste použít jeden nebo několik následujících kroků:
 
-1.  Zkontrolujte Azure DNS protokoly auditu a určete příčinu selhání.
-2.  Název každé zóny DNS musí být v rámci dané skupiny prostředků jedinečný. To znamená, že dvě zóny DNS se stejným názvem nemůžou sdílet skupinu prostředků. Zkuste použít jiný název zóny nebo jinou skupinu prostředků.
+1.  Review the Azure DNS audit logs to determine the failure reason.
+2.  Název každé zóny DNS musí být v rámci dané skupiny prostředků jedinečný. That is, two DNS zones with the same name can't share a resource group. Zkuste použít jiný název zóny nebo jinou skupinu prostředků.
 3.  Může se zobrazit chyba typu Dosáhli nebo přesáhli jste maximální počet zón v předplatném {id předplatného}. Použijte jiné předplatné Azure, odstraňte některé zóny nebo kontaktujte podporu Azure se žádostí o zvýšení limitu vašeho předplatného.
-4.  Může se zobrazit chyba typu Zóna {název zóny} není k dispozici. Tato chyba znamená, že Azure DNS se pro tuto zónu DNS nepodařilo přidělit názvové servery. Zkuste použít jiný název zóny. Nebo, pokud jste vlastníkem názvu domény, můžete kontaktovat podporu Azure, která vám pomůžou přidělit názvové servery za vás.
+4.  Může se zobrazit chyba typu Zóna {název zóny} není k dispozici. Tato chyba znamená, že Azure DNS se pro tuto zónu DNS nepodařilo přidělit názvové servery. Zkuste použít jiný název zóny. Or, if you are the domain name owner you can contact Azure support to allocate name servers for you.
 
 
-### <a name="recommended-articles"></a>Doporučené články
+### <a name="recommended-articles"></a>Recommended articles
 
 * [Záznamy a zóny DNS](dns-zones-records.md)
 * [Vytvoření zóny DNS](dns-getstarted-create-dnszone-portal.md)
@@ -40,14 +40,14 @@ Při řešení běžných problémů zkuste použít jeden nebo několik násled
 
 Při řešení běžných problémů zkuste použít jeden nebo několik následujících kroků:
 
-1.  Zkontrolujte Azure DNS protokoly auditu a určete příčinu selhání.
+1.  Review the Azure DNS audit logs to determine the failure reason.
 2.  Už tato sada záznamů existuje?  Azure DNS spravuje záznamy pomocí *sad* záznamů. To jsou kolekce záznamů se stejným názvem a typem. Pokud záznam se stejným názvem a typem už existuje a chcete přidat další takové záznam, měli byste existující sadu záznamů upravit.
-3.  Pokoušíte se vytvořit záznam ve vrcholu zóny DNS („kořenu“ zóny)? Pokud ano, v rámci konvence DNS se jako název tohoto záznamu používá znak ‘@’. Všimněte si také, že standardy DNS nepovolují záznamy CNAME ve vrcholu zóny.
-4.  Vznikl konflikt CNAME?  Standardy DNS nepovolují záznam CNAME se stejným názvem jako záznam jiného typu. Pokud už máte CNAME, vytvoření záznamu jiného typu se stejným názvem se nepovede.  Podobně se vytvoření CNAME nepovede, pokud jeho název odpovídá existujícímu záznamu jiného typu. Konflikt odstraníte odebráním druhého záznamu nebo volbou jiného názvu záznamu.
-5.  Dosáhli jste limitu povoleného počtu sad záznamů v zóně DNS? Aktuální počet sad záznamů a maximální počet sad záznamů se zobrazuje na webu Azure Portal ve vlastnostech zóny. Pokud jste dosáhli tohoto limitu, buď odstraňte některé sady záznamů, nebo požádejte podporu Azure o zvýšení limitu sady záznamů pro tuto zónu a pak to zkuste znovu. 
+3.  Pokoušíte se vytvořit záznam ve vrcholu zóny DNS („kořenu“ zóny)? Pokud ano, v rámci konvence DNS se jako název tohoto záznamu používá znak ‘@’. Also note that the DNS standards don't permit CNAME records at the zone apex.
+4.  Vznikl konflikt CNAME?  The DNS standards don't allow a CNAME record with the same name as a record of any other type. Pokud už máte CNAME, vytvoření záznamu jiného typu se stejným názvem se nepovede.  Podobně se vytvoření CNAME nepovede, pokud jeho název odpovídá existujícímu záznamu jiného typu. Konflikt odstraníte odebráním druhého záznamu nebo volbou jiného názvu záznamu.
+5.  Dosáhli jste limitu povoleného počtu sad záznamů v zóně DNS? Aktuální počet sad záznamů a maximální počet sad záznamů se zobrazuje na webu Azure Portal ve vlastnostech zóny. If you've reached this limit, then either delete some record sets or contact Azure Support to raise your record set limit for this zone, then try again. 
 
 
-### <a name="recommended-articles"></a>Doporučené články
+### <a name="recommended-articles"></a>Recommended articles
 
 * [Záznamy a zóny DNS](dns-zones-records.md)
 * [Vytvoření zóny DNS](dns-getstarted-create-dnszone-portal.md)
@@ -67,7 +67,7 @@ Překlad názvů DNS je vícefázový proces, který může selhat z mnoha důvo
 4.  Po dokončení těchto kroků by se záznam DNS už měl překládat správně. K ověření můžete znovu využít [digwebinterface](https://digwebinterface.com) a tentokrát použít výchozí nastavení názvového serveru.
 
 
-### <a name="recommended-articles"></a>Doporučené články
+### <a name="recommended-articles"></a>Recommended articles
 
 * [Delegování domény do Azure DNS](dns-domain-delegation.md)
 
@@ -82,7 +82,7 @@ Ukázkové názvy záznamů SRV (služba = sip, protokol = tcp):
 - \_sip.\_tcp (vytvoří sadu záznamů ve vrcholu zóny)
 - \_sip.\_tcp.sipservice (vytvoří sadu záznamů s názvem sipservice)
 
-### <a name="recommended-articles"></a>Doporučené články
+### <a name="recommended-articles"></a>Recommended articles
 
 * [Záznamy a zóny DNS](dns-zones-records.md)
 * [Vytváření sad záznamů a záznamů DNS pomocí webu Azure Portal](dns-getstarted-create-recordset-portal.md)
@@ -91,7 +91,7 @@ Ukázkové názvy záznamů SRV (služba = sip, protokol = tcp):
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure DNS zón a záznamech](dns-zones-records.md)
-* Pokud chcete začít používat Azure DNS, přečtěte si, jak [vytvořit ZÓNU DNS](dns-getstarted-create-dnszone-portal.md) a [vytvořit záznamy DNS](dns-getstarted-create-recordset-portal.md).
-* Pokud chcete migrovat existující zónu DNS, přečtěte si, jak [importovat a exportovat soubor zóny DNS](dns-import-export.md).
+* Learn about [Azure DNS zones and records](dns-zones-records.md)
+* To start using Azure DNS, learn how to [create a DNS zone](dns-getstarted-create-dnszone-portal.md) and [create DNS records](dns-getstarted-create-recordset-portal.md).
+* To migrate an existing DNS zone, learn how to [import and export a DNS zone file](dns-import-export.md).
 

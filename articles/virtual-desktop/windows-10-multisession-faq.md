@@ -1,81 +1,81 @@
 ---
-title: Nejčastější dotazy k Windows 10 Enterprise pro více relací – Azure
-description: Nejčastější dotazy a osvědčené postupy pro používání více relací Windows 10 Enterprise pro virtuální počítače s Windows
+title: Windows 10 Enterprise multi-session FAQ - Azure
+description: Frequently asked questions and best practices for using Windows 10 Enterprise multi-session for Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901610"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227666"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
-Tento článek odpoví na nejčastější dotazy a pokryje osvědčené postupy pro více relací Windows 10 Enterprise.
+This article will answer frequently asked questions and cover best practices for Windows 10 Enterprise multi-session.
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>Co je více relací Windows 10 Enterprise? 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>What is Windows 10 Enterprise multi-session? 
 
-Windows 10 Enterprise s více relacemi, dříve označované jako Windows 10 Enterprise pro virtuální plochy (EVD), je nový Hostitel relace vzdálené plochy, který umožňuje více souběžných interaktivních relací, které dřív mohl udělat jenom Windows Server. Tato funkce poskytuje uživatelům známé prostředí Windows 10, které může využívat výhod nákladů na více relací a používat stávající licencování Windows na uživatele namísto licencí pro klientský přístup k VP (CAL). Další informace o licencích a cenách najdete v tématu [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
+Windows 10 Enterprise multi-session, formerly known as Windows 10 Enterprise for Virtual Desktops (EVD), is a new Remote Desktop Session Host that allows multiple concurrent interactive sessions, which previously only Windows Server could do. This capability gives users a familiar Windows 10 experience while IT can benefit from the cost advantages of multi-session and use existing per-user Windows licensing instead of RDS Client Access Licenses (CALs). For more information about licenses and pricing, see [Windows Virtual Desktop pricing](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
  
-## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>Kolik uživatelů může současně mít interaktivní relaci v rámci více relací Windows 10 Enterprise?
+## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>How many users can simultaneously have an interactive session on Windows 10 Enterprise multi-session?
 
-Kolik interaktivních relací, které může být aktivní současně, spoléhá na hardwarové prostředky vašeho systému (vCPU, paměť, disk a vGPU), jak vaši uživatelé používají své aplikace při přihlášení k relaci a na tom, jak vysoké je zatížení vašeho systému. Doporučujeme, abyste ověřili výkon vašeho systému, abyste porozuměli tomu, kolik uživatelů můžete mít v rámci více relací Windows 10 Enterprise. Další informace najdete v tématu [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
+How many interactive sessions that can be active at the same time relies on your system's hardware resources (vCPU, memory, disk, and vGPU), how your users use their apps while signed in to a session, and how heavy your system's workload is. We suggest you validate your system's performance to understand how many users you can have on Windows 10 Enterprise multi-session. To learn more, see [Windows Virtual Desktop pricing](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
  
-## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Proč moje aplikace sestaví více relací Windows 10 Enterprise jako serverový operační systém?
+## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Why does my application report Windows 10 Enterprise multi-session as a Server operating system?
 
-Windows 10 Enterprise Multi-Session je virtuální edice Windows 10 Enterprise. Jednou z rozdílů je, že tento operační systém (OS) hlásí [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) jako hodnotu 3, což je stejná hodnota jako Windows Server. Tato vlastnost udržuje kompatibilní s operačním systémem s existujícími nástroji pro správu vzdálené plochy, aplikacemi nepracujících s více relacemi a převážně optimalizacemi výkonu systému nižší úrovně pro prostředí vzdálené plochy. Některé instalační programy aplikací můžou blokovat instalaci ve více relacích s Windows 10 v závislosti na tom, jestli ProductType je nastavená na Client. Pokud se vaše aplikace nenainstaluje, obraťte se na dodavatele aplikace a požádejte o aktualizovanou verzi. 
+Windows 10 Enterprise multi-session is a virtual edition of Windows 10 Enterprise. One of the differences is that this operating system (OS) reports the [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) as having a value of 3, the same value as Windows Server. This property keeps the OS compatible with existing RDSH management tooling, RDSH multi-session-aware applications, and mostly low-level system performance optimizations for RDSH environments. Some application installers can block installation on Windows 10 multi-session depending on whether they detect the ProductType is set to Client. If your app won't install, contact your application vendor for an updated version. 
  
-## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Můžu používat Windows 10 Enterprise s více relacemi v místním prostředí?
+## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Can I run Windows 10 Enterprise multi-session on-premises?
 
-Windows 10 Enterprise multi-session nemůže běžet v místních produkčních prostředích, protože je optimalizovaná pro službu Virtual Desktop systému Windows pro Azure. Je v souladu s licenční smlouvou pro provozování více relací Windows 10 Enterprise mimo Azure pro produkční účely. Windows 10 Enterprise multi-session se neaktivuje pro místní služby správy klíčů (KMS).
+Windows 10 Enterprise multi-session can't run in on-premises production environments because it's optimized for the Windows Virtual Desktop service for Azure. It’s against the licensing agreement to run Windows 10 Enterprise multi-session outside of Azure for production purposes. Windows 10 Enterprise multi-session won't activate against on-premises Key Management Services (KMS).
  
-## <a name="how-do-i-customize-the-windows-10-enterprise-multi-session-image-for-my-organization"></a>Návody přizpůsobit image pro více relací Windows 10 Enterprise pro moji organizaci?
+## <a name="how-do-i-customize-the-windows-10-enterprise-multi-session-image-for-my-organization"></a>How do I customize the Windows 10 Enterprise multi-session image for my organization?
 
-Můžete spustit virtuální počítač v Azure s Windows 10 Enterprise multi-session a přizpůsobit ho tak, že nainstalujete obchodní aplikace, Sysprep/generalize a pak vytvoříte image pomocí Azure Portal.  
+You can start a virtual machine (VM) in Azure with Windows 10 Windows 10 Enterprise multi-session and customize it by installing LOB applications, sysprep/generalize, and then create an image using the Azure portal.  
  
-Pokud chcete začít, vytvořte v Azure virtuální počítač s Windows 10 Enterprise multi-session. Místo spuštění virtuálního počítače v Azure si můžete virtuální pevný disk stáhnout přímo. Potom budete moct použít stažený disk VHD k vytvoření nového virtuálního počítače 1. generace v počítači s Windows 10 s povolenou technologií Hyper-V.
+To get started, create a VM in Azure with Windows 10 Windows 10 Enterprise multi-session. Instead of starting the VM in Azure, you can download the VHD directly. After that, you'll be able to use the VHD you downloaded to create a new Generation 1 VM on a Windows 10 PC with Hyper-V enabled.
 
-Přizpůsobte si bitovou kopii podle svých potřeb instalací obchodních aplikací a pomocí nástroje Sysprep image. Až budete hotovi s přizpůsobením, nahrajte image do Azure s virtuálním pevným diskem v. Pak z Azure Marketplace získat virtuální klient Windows a použít ho k nasazení nového fondu hostitelů s přizpůsobenou imagí.
+Customize the image to your needs by installing LOB applications and sysprep the image. When you're done customizing, upload the image to Azure with the VHD inside. After that, get Windows Virtual Desktop from the Azure Marketplace and use it to to deploy a new host pool with the customized image.
  
-## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Návody spravovat více relací Windows 10 Enterprise po nasazení?
+## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>How do I manage Windows 10 Enterprise multi-session after deployment?
 
-Můžete použít libovolný podporovaný konfigurační nástroj, ale doporučujeme System Center Configuration Manager 1906, protože podporuje Windows 10 Enterprise multi-session. V současnosti pracujeme na podpoře Microsoft Intune.
+You can use any supported configuration tool, but we recommend System Center Configuration Manager 1906 because it supports Windows 10 Enterprise multi-session. We're currently working on Microsoft Intune support.
  
-## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Může se Azure Active Directory (AD) Windows 10 Enterprise víc relací připojit?
+## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Can Windows 10 Enterprise multi-session be Azure Active Directory (AD)-joined?
 
-Pro Windows 10 Enterprise s více relacemi se aktuálně podporuje hybridní Azure AD – připojeno. Po připojení Windows 10 Enterprise k doméně použijte existující objekt Zásady skupiny k povolení registrace Azure AD. Další informace najdete v tématu [Plánování implementace služby hybrid Azure Active Directory JOIN](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan).
+Windows 10 Enterprise multi-session is currently supported to be hybrid Azure AD-joined. After Windows 10 Enterprise multi-session is domain-joined, use the existing Group Policy Object to enable Azure AD registration. For more information, see [Plan your hybrid Azure Active Directory join implementation](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan).
  
-## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Kde najdu image pro Windows 10 Enterprise s více relacemi?
+## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Where can I find the Windows 10 Enterprise multi-session image?
 
-Víc relací Windows 10 Enterprise je v galerii Azure. Pokud ho chcete najít, přejděte na Azure Portal a vyhledejte verzi Windows 10 Enterprise pro virtuální počítače. Pro bitovou kopii integrovanou se sadou Office pro plus navštivte Azure Portal a vyhledejte Microsoft Windows 10 + Office 365 ProPlus.
+Windows 10 Enterprise multi-session is in the Azure gallery. To find it, navigate to the Azure portal and search for the Windows 10 Enterprise for Virtual Desktops release. For an image integrated with Office Pro Plus, go to the Azure portal and search for Microsoft Windows 10 + Office 365 ProPlus.
 
-## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>Kterou image Windows 10 Enterprise pro více relací mám použít?
+## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>Which Windows 10 Enterprise multi-session image should I use?
 
-Galerie Azure obsahuje několik verzí, včetně Windows 10 Enterprise multi-session, verze 1809 a Windows 10 Enterprise multi-session verze 1903. Pro zvýšení výkonu a spolehlivosti doporučujeme použít nejnovější verzi.
+The Azure gallery has several releases, including Windows 10 Enterprise multi-session, version 1809, and Windows 10 Enterprise multi-session, version 1903. We recommend using the latest version for improved performance and reliability.
  
-## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>Které verze více relací Windows 10 Enterprise jsou podporované?
+## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>Which Windows 10 Enterprise multi-session versions are supported?
 
-Windows 10 Enterprise multi-session, verze 1809 a novější se podporují a jsou dostupné v galerii Azure. Tyto verze se řídí stejnými zásadami životního cyklu podpory jako Windows 10 Enterprise, což znamená, že vydání pružiny se podporuje po dobu 18 měsíců a vydání na 30 měsíců.
+Windows 10 Enterprise multi-session, versions 1809 and later are supported and are available in the Azure gallery. These releases follow the same support life-cycle policy as Windows 10 Enterprise, which means the spring release is supported for 18 months and the fall release for 30 months.
  
-## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Které řešení pro správu profilů mám použít pro více relací Windows 10 Enterprise?
+## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Which profile management solution should I use for Windows 10 Enterprise multi-session?
 
-Pokud konfigurujete Windows 10 Enterprise v netrvalých prostředích nebo v jiných scénářích, které potřebují centrálně uložený profil, doporučujeme používat kontejnery profilů FSLogix. FSLogix zajišťuje, aby byl profil uživatele k dispozici a byl aktuální pro každou relaci uživatele. Doporučujeme vám také použít váš kontejner profilu FSLogix k uložení profilu uživatele v jakékoli sdílené složce protokolu SMB s příslušnými oprávněními, ale v případě potřeby můžete profily uživatelů ukládat v úložišti objektů blob stránky Azure. Uživatelé virtuálních klientů Windows můžou FSLogix používat bez dalších poplatků.
+We recommend you use FSLogix profile containers when you configure Windows 10 Enterprise in non-persistent environments or other scenarios that need a centrally stored profile. FSLogix ensures the user profile is available and up-to-date for every user session. We also recommend you use your FSLogix profile container to store a user profile in any SMB share with appropriate permissions, but you can store user profiles in Azure page blob storage if necessary. Windows Virtual Desktop users can use FSLogix at no additional cost.
  
-Další informace o tom, jak nakonfigurovat kontejner profilu FSLogix, najdete v tématu [Konfigurace kontejneru profilu FSLogix](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).  
+For more information about how to configure an FSLogix profile container, see [Configure the FSLogix profile container](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).  
 
-## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Kterou licenci potřebuji pro přístup k více relacím Windows 10 Enterprise?
+## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Which license do I need to access Windows 10 Enterprise multi-session?
 
-Úplný seznam použitelných licencí najdete v tématu [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+For a full list of applicable licenses, see [Windows Virtual Desktop pricing](https://azure.microsoft.com/pricing/details/virtual-desktop/).
  
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o virtuálních počítačích s Windows a Windows 10 Enterprise s více relacemi:
+To learn more about Windows Virtual Desktop and Windows 10 Enterprise multi-session:
 
-- Přečtěte si [dokumentaci k virtuálnímu počítači s Windows ve verzi Preview](overview.md)
-- Navštívit naši [TechCommunity virtuálního počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
-- Kurzy k instalaci virtuálních klientských počítačů s Windows pomocí [kurzů pro virtuální počítače s Windows](tenant-setup-azure-active-directory.md)
+- Read our [Windows Virtual Desktop Preview documentation](overview.md)
+- Visit our [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
+- Set up your Windows Virtual Desktop deployment with the [Windows Virtual Desktop tutorials](tenant-setup-azure-active-directory.md)

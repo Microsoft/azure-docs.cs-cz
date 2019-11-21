@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s SumoLogic | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SumoLogic.
+title: 'Tutorial: Azure Active Directory integration with SumoLogic | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and SumoLogic.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,99 +15,99 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07874988c97044ede59c18b8f85a425483679431
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7548d7d7b808472b3f5446fadfe800584f61b1df
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089534"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233358"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Kurz: Integrace Azure Active Directory s SumoLogic
+# <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Tutorial: Azure Active Directory integration with SumoLogic
 
-V tomto kurzu se dozvíte, jak integrovat SumoLogic s Azure Active Directory (Azure AD).
-SumoLogic integraci se službou Azure AD poskytuje následující výhody:
+In this tutorial, you learn how to integrate SumoLogic with Azure Active Directory (Azure AD).
+Integrating SumoLogic with Azure AD provides you with the following benefits:
 
-* Můžete řídit ve službě Azure AD, který má přístup k SumoLogic.
-* Můžete povolit uživatelům být automaticky přihlášeni k SumoLogic (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* You can control in Azure AD who has access to SumoLogic.
+* You can enable your users to be automatically signed-in to SumoLogic (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s SumoLogic, potřebujete následující položky:
+To configure Azure AD integration with SumoLogic, you need the following items:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* SumoLogic jednotného přihlašování povolená předplatného
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* SumoLogic single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Podporuje SumoLogic **SP** jednotné přihlašování zahájené pomocí
+* SumoLogic supports **SP** initiated SSO
 
-## <a name="adding-sumologic-from-the-gallery"></a>Přidání SumoLogic z Galerie
+## <a name="adding-sumologic-from-the-gallery"></a>Adding SumoLogic from the gallery
 
-Konfigurace integrace SumoLogic do služby Azure AD, budete muset přidat SumoLogic z Galerie na váš seznam spravovaných aplikací SaaS.
+To configure the integration of SumoLogic into Azure AD, you need to add SumoLogic from the gallery to your list of managed SaaS apps.
 
-**Chcete-li přidat SumoLogic z galerie, postupujte následovně:**
+**To add SumoLogic from the gallery, perform the following steps:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SumoLogic**vyberte **SumoLogic** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. In the search box, type **SumoLogic**, select **SumoLogic** from result panel then click **Add** button to add the application.
 
-     ![SumoLogic v seznamu výsledků](common/search-new-app.png)
+     ![SumoLogic in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí SumoLogic podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v SumoLogic.
+In this section, you configure and test Azure AD single sign-on with SumoLogic based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in SumoLogic needs to be established.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SumoLogic, které potřebujete k dokončení následujících stavebních bloků:
+To configure and test Azure AD single sign-on with SumoLogic, you need to complete the following building blocks:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace SumoLogic Single Sign-On](#configure-sumologic-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele SumoLogic](#create-sumologic-test-user)**  – Pokud chcete mít protějšek Britta Simon SumoLogic, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure SumoLogic Single Sign-On](#configure-sumologic-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create SumoLogic test user](#create-sumologic-test-user)** - to have a counterpart of Britta Simon in SumoLogic that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s SumoLogic, proveďte následující kroky:
+To configure Azure AD single sign-on with SumoLogic, perform the following steps:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **SumoLogic** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. In the [Azure portal](https://portal.azure.com/), on the **SumoLogic** application integration page, select **Single sign-on**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![SumoLogic domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+    ![SumoLogic Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<tenantname>.SumoLogic.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<tenantname>.SumoLogic.com`
 
-   b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+   b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern:
 
     | |
     |--|
@@ -118,151 +118,151 @@ Ke konfiguraci Azure AD jednotné přihlašování s SumoLogic, proveďte násle
     | `https://<tenantname>.au.sumologic.com` |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory SumoLogic klienta](https://www.sumologic.com/contact-us/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [SumoLogic Client support team](https://www.sumologic.com/contact-us/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-6. Na **nastavení SumoLogic** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. On the **Set up SumoLogic** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    a. Login URL
 
-    b. Identifikátor Azure AD
+    b. Azure AD Identifier
 
-    c. Adresa URL – odhlášení
+    c. Logout URL
 
-### <a name="configure-sumologic-single-sign-on"></a>Konfigurace SumoLogic jednotné přihlašování
+### <a name="configure-sumologic-single-sign-on"></a>Configure SumoLogic Single Sign-On
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti SumoLogic jako správce.
+1. In a different web browser window, sign in to your SumoLogic company site as an administrator.
 
-1. Přejděte na **spravovat \> zabezpečení**.
+1. Go to **Manage \> Security**.
 
-    ![Správa](./media/sumologic-tutorial/ic778556.png "spravovat")
+    ![Správa](./media/sumologic-tutorial/ic778556.png "Spravujte")
 
-1. Klikněte na tlačítko **SAML**.
+1. Click **SAML**.
 
-    ![Nastavení globální zabezpečení](./media/sumologic-tutorial/ic778557.png "nastavení globální zabezpečení")
+    ![Global security settings](./media/sumologic-tutorial/ic778557.png "Global security settings")
 
-1. Z **vyberte konfiguraci, nebo vytvořte novou** vyberte **Azure AD**a potom klikněte na tlačítko **konfigurovat**.
+1. From the **Select a configuration or create a new one** list, select **Azure AD**, and then click **Configure**.
 
-    ![Konfigurace SAML 2.0](./media/sumologic-tutorial/ic778558.png "konfigurace SAML 2.0")
+    ![Configure SAML 2.0](./media/sumologic-tutorial/ic778558.png "Configure SAML 2.0")
 
-1. Na **konfigurace SAML 2.0** dialogového okna, proveďte následující kroky:
+1. On the **Configure SAML 2.0** dialog, perform the following steps:
 
-    ![Konfigurace SAML 2.0](./media/sumologic-tutorial/ic778559.png "konfigurace SAML 2.0")
+    ![Configure SAML 2.0](./media/sumologic-tutorial/ic778559.png "Configure SAML 2.0")
 
-    a. V **název konfigurace** textové pole, typ **Azure AD**.
+    a. In the **Configuration Name** textbox, type **Azure AD**.
 
-    b. Vyberte **režim ladění**.
+    b. Select **Debug Mode**.
 
-    c. V **vystavitele** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
+    c. In the **Issuer** textbox, paste the value of **Azure AD Identifier**, which you have copied from Azure portal.
 
-    d. V **ověřovací adresy URL požadavku** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    d. In the **Authn Request URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    e. Otevřete váš certifikát base-64 kódovaných v poznámkovém bloku, zkopírujte obsah ho do schránky a vložte celý certifikát do **certifikát X.509** textového pole.
+    e. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste the entire Certificate into **X.509 Certificate** textbox.
 
-    f. Jako **atribut e-mailové**vyberte **předmětu pomocí SAML**.  
+    f. As **Email Attribute**, select **Use SAML subject**.  
 
-    g. Vyberte **konfigurace přihlášení zahájené SP**.
+    g. Select **SP initiated Login Configuration**.
 
-    h. V **přihlašovací cestu** textové pole, typ **Azure** a klikněte na tlačítko **Uložit**.
+    h. In the **Login Path** textbox, type **Azure** and click **Save**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Select **New user** at the top of the screen.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. In the User properties, perform the following steps.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. In the **User name** field type **brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-V této části je povolit Britta Simon k udělení přístupu k SumoLogic použití Azure jednotného přihlašování.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to SumoLogic.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **SumoLogic**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SumoLogic**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **SumoLogic**.
+2. In the applications list, select **SumoLogic**.
 
-    ![Odkaz SumoLogic v seznamu aplikací](common/all-applications.png)
+    ![The SumoLogic link in the Applications list](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-sumologic-test-user"></a>Vytvoření SumoLogic testovacího uživatele
+### <a name="create-sumologic-test-user"></a>Create SumoLogic test user
 
-Chcete-li povolit Azure AD uživatelům umožní přihlásit k SumoLogic, musí být poskytnuty k SumoLogic. V případě SumoLogic zřizování se ruční úlohy.
+In order to enable Azure AD users to sign in to SumoLogic, they must be provisioned to SumoLogic. In the case of SumoLogic, provisioning is a manual task.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**To provision a user account, perform the following steps:**
 
-1. Přihlaste se k vaší **SumoLogic** tenanta.
+1. Sign in to your **SumoLogic** tenant.
 
-1. Přejděte na **spravovat \> uživatelé**.
+1. Go to **Manage \> Users**.
 
-    ![Uživatelé](./media/sumologic-tutorial/ic778561.png "uživatelů")
+    ![Uživatelé](./media/sumologic-tutorial/ic778561.png "Uživatelé")
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na tlačítko **Přidat**.
 
-    ![Uživatelé](./media/sumologic-tutorial/ic778562.png "uživatelů")
+    ![Uživatelé](./media/sumologic-tutorial/ic778562.png "Uživatelé")
 
-1. Na **nového uživatele** dialogového okna, proveďte následující kroky:
+1. On the **New User** dialog, perform the following steps:
 
-    ![Nový uživatel](./media/sumologic-tutorial/ic778563.png "nového uživatele") 
+    ![New User](./media/sumologic-tutorial/ic778563.png "New User") 
 
-    a. Související informace účtu Azure AD, které chcete zřídit do typu **křestní jméno**, **příjmení**, a **e-mailu** textových polí.
+    a. Type the related information of the Azure AD account you want to provision into the **First Name**, **Last Name**, and **Email** textboxes.
   
-    b. Vyberte roli.
+    b. Select a role.
   
-    c. Jako **stav**vyberte **aktivní**.
+    c. As **Status**, select **Active**.
   
     d. Klikněte na **Uložit**.
 
 > [!NOTE]
-> Můžete použít jakékoli jiné SumoLogic uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných SumoLogic uživatelským účtům, zřídit AAD.
+> You can use any other SumoLogic user account creation tools or APIs provided by SumoLogic to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Po kliknutí na dlaždici SumoLogic na přístupovém panelu, můžete by měl být automaticky přihlášeni k SumoLogic, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the SumoLogic tile in the Access Panel, you should be automatically signed in to the SumoLogic for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

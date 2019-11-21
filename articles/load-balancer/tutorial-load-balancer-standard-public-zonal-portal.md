@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Virtuální počítače nástroje pro vyrovnávání zatížení v zóně – Azure portal'
-titlesuffix: Azure Load Balancer
+title: 'Tutorial: Load Balancer VMs within a zone--Azure portal'
+titleSuffix: Azure Load Balancer
 description: V tomto kurzu si ukážeme, jak vytvořit Standard Load Balancer se zónovým front-endem, který bude vyrovnávat zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí webu Azure Portal.
 services: load-balancer
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 0ec9fae1ce4ef976d5f50e1d8d8412354706c5f8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273385"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225165"
 ---
-# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů v zóně dostupnosti s využitím Load balanceru úrovně Standard s využitím webu Azure portal
+# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí Standard Load Balanceru na webu Azure Portal
 
 V tomto kurzu vytvoříte veřejnou [instanci Azure Standard Load Balanceru](https://aka.ms/azureloadbalancerstandard) se zónovým front-endem, který používá standardní veřejnou IP adresu na webu Azure Portal. V tomto scénáři zadáte určitou zónu pro instance front-endu a back-endu, aby se datové cesty a prostředky spojily s určitou zónou. Co se v tomto kurzu naučíte:
 
@@ -48,20 +48,20 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když při vytváření nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, automaticky se nakonfiguruje jako standardní verze SKU a bude automaticky zónově redundantní.
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
-2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
+2. In the **Basics** tab of the **Create load balancer** page, enter or select the following information, accept the defaults for the remaining settings, and then select **Review + create**:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Subscription               | Vyberte své předplatné.    |    
-    | Resource group         | Vyberte **vytvořit nový** a typ *MyResourceGroupZLB* v textovém poli.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Předplatné               | Vyberte své předplatné.    |    
+    | Skupina prostředků         | Select **Create new** and type *MyResourceGroupZLB* in the text box.|
+    | Name (Název)                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | type          | Vyberte **veřejné**.                                        |
-    | SKU           | Vyberte **standardní**.                          |
+    | Typ          | Select **Public**.                                        |
+    | Skladová položka           | Select **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
-    | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
-    |Zóna dostupnosti| Vyberte **1**.    |
-3. V **revize + vytvořit** klikněte na tlačítko **vytvořit**.   
+    | Public IP address name              | Type *myPublicIP* in the text box.   |
+    |Availability zone| Vyberte **1**.    |
+3. In the **Review + create** tab, click **Create**.   
 
    ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
@@ -193,7 +193,7 @@ Sonda stavu slouží monitorování stavu vaší aplikace nástrojem pro vyrovn�
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distribuuje do virtuálních počítačů. Definujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo nástroje pro vyrovnávání zatížení **myLoadBalancerRuleWeb**, které naslouchá portu 80 front-endu **FrontendLoadBalancer**. Toto pravidlo posílá vyrovnaný síťový provoz fondu back-endových adres **myBackEndPool**. Používá k tomu také port 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distribuuje do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo nástroje pro vyrovnávání zatížení **myLoadBalancerRuleWeb**, které naslouchá portu 80 front-endu **FrontendLoadBalancer**. Toto pravidlo posílá vyrovnaný síťový provoz fondu back-endových adres **myBackEndPool**. Používá k tomu také port 80. 
 
 1. V nabídce úplně vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myLoadBalancer**.
 2. V části **Nastavení** vyberte **Pravidla vyrovnávání zatížení**. Pak vyberte **Přidat**.
@@ -220,7 +220,7 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distri
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny další související prostředky. Vyberte skupinu prostředků, která obsahuje nástroj pro vyrovnávání zatížení. Vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
 - [Vyrovnávání zatížení virtuálních počítačů mezi zónami dostupnosti](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

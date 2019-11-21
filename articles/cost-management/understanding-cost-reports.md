@@ -1,207 +1,207 @@
 ---
-title: Principy Cloudyn nákladů sestavy správy v Azure | Dokumentace Microsoftu
-description: Tento článek vám pomůže pochopit základní struktura Cloudyn náklady na správu sestav a funkce.
+title: Understanding Cloudyn cost management reports in Azure | Microsoft Docs
+description: This article helps you understand Cloudyn cost management reports basic structure and functions.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 91dc386641c758c42f64afff387d0463d1445f1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d847b78ba9623f3543a3cb1e45b5187605deb550
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969078"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229770"
 ---
-# <a name="understanding-cloudyn-cost-management-reports"></a>Principy Cloudyn sestav správy nákladů
+# <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management reports
 
-Tento článek vám pomůže pochopit základní struktura Cloudyn náklady na správu sestav a funkce. Většina sestav Cloudyn jsou výsledkem je intuitivní a mít jednotný vzhled a chování. Po přečtení tohoto článku, jsou připravené k použití všech sestavách nákladů správy. Mnoho standardních funkcí jsou k dispozici v rámci různých sestav, abyste mohli přejít sestavy s lehkostí a elegancí. Sestavy jsou přizpůsobitelné, a můžete vybrat z několika možností pro výpočet a zobrazit výsledky.
+This article helps you understand Cloudyn cost management reports basic structure and functions. Most Cloudyn reports are intuitive and have a uniform look and feel. After you read this article, are ready to use all the cost management reports. Many standard features are available throughout the various reports, allowing you to navigate the reports with ease. Reports are customizable, and you can select from several options to calculate and display results.
 
-## <a name="report-fields-and-options"></a>Pole sestavy a možnosti
+## <a name="report-fields-and-options"></a>Report fields and options
 
-Tady se můžete podívat na příklad sestavy Cost Over Time. Většina sestav Cloudyn mají podobné rozložení.
+Here's a look at an example of the Cost Over Time report. Most Cloudyn reports have a similar layout.
 
-![Příklad sestavy Cost Over Time s odpovídající popisy očíslovaných oblasti](./media/understanding-cost-reports/sample-report.png)
+![Example of the Cost Over Time report with numbered areas corresponding to descriptions](./media/understanding-cost-reports/sample-report.png)
 
-Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný v následující informace:
+Each numbered area in the preceding image is described in detail in the following information:
 
-1. **Rozsah kalendářních dat**
+1. **Date Range**
 
-    Seznam rozsah kalendářních dat slouží k určení časového intervalu sestavy pomocí vlastní nebo přednastavený kontext.
-2. **Uložený filtr**
+    Use the Date Range list to define a report time interval using a preset or custom.
+2. **Saved Filter**
 
-    Pomocí seznamu filtru Uložit uložte aktuální skupiny a filtry, které se použijí k sestavě. Uložené filtry jsou dostupné v rámci náklady a výkon sestavy, včetně:
+    Use the Saved Filter list to save the current groups and filters that are applied to the report. Saved filters are available across cost and performance reports, including:
 
-      - Analýza nákladů
-      - přidělení
+      - Cost Analysis
+      - Allocation
       - Správa majetku
       - Optimalizace
 
-   Zadejte název filtru a kliknutím na **Uložit**.
+   Type a filter name and the click **Save**.
 
 3. **Značky**
 
-    Použijte oblast značky do skupiny podle kategorií značky. Klíčová slova uvedená v nabídce jsou Azure oddělení nebo cost center značky nebo se jedná značky entity a předplatné náklady od Cloudyn. Vyberte tagy, které chcete filtrovat výsledky. Můžete také zadat název značky (klíčové slovo) pro filtrování výsledků.
+    Use the Tags area to group by tag categories. Tags listed in the menu are Azure department or cost center tags or they are Cloudyn's cost entity and subscription tags. Select tags to filter results. You can also type a tag name (keyword) to filter results.
 
-    ![Příklad: seznam filtrovat výsledky podle značek](./media/understanding-cost-reports/select-options.png)
+    ![Example of a list of tags to filter results by](./media/understanding-cost-reports/select-options.png)
 
-    Klikněte na tlačítko **přidat** přidat nový filtr.
+    Click **Add** to add a new filter.
 
-    ![Přidat pole filtr zobrazující možnosti a ujednání můžete filtrovat podle](./media/understanding-cost-reports/add-filter.png)
+    ![Add filter box showing options and conditions to filter by](./media/understanding-cost-reports/add-filter.png)
 
-    Značka seskupování a filtrování se nevztahuje na prostředky Azure nebo značky skupiny prostředků.
+    Tag grouping or filtering does not relate to Azure resources or resource group tags.
 
-    Jsou k dispozici v přidělení nákladů značky seskupování a filtrování **skupiny** nabídky.
+    Cost allocation tag grouping and filtering are available in the **Groups** menu option.
 
-4. **Skupiny v sestavách**
+4. **Groups in reports**
 
-    Používání skupin v Cost Analysis sestavy, které ukazují na úrovni standard rozpis kategorie z fakturační data v sestavě.  Nicméně podle klíčových slov kategorií zobrazení skupin v zobrazení sestavy přidělování nákladů. Podle klíčových slov kategorie jsou definovány v modelu přidělování nákladů a standardní rozepsané kategorie z fakturačních údajů.
+    Use groups in Cost Analysis reports to show standard, itemized categories from billing data in your report.  However, groups in Cost Allocation reports show view tag-based categories. Tag-based categories are defined in the cost allocation model and standard itemized categories from billing data.
 
-    ![První příklad seznam značek, které můžete seskupit podle](./media/understanding-cost-reports/groups-tags01.png)
+    ![First example list of tags that you can group by](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![Druhý příklad seznam značek, které můžete seskupit podle](./media/understanding-cost-reports/groups-tags02.png)
+    ![Second example list of tags that you can group by](./media/understanding-cost-reports/groups-tags02.png)
 
-    V sestavách přidělování nákladů mohou zahrnovat skupiny do kategorií podle klíčových slov skupiny:
+    In Cost Allocation Reports, groups in tag-based group categories might include:
       - Značky
-      - značky skupiny prostředků
-      - Značky entit nákladů Cloudyn
-      - Kategorie značky předplatného pro účely přidělování nákladů
+      - resource group tags
+      - Cloudyn cost entity tags
+      - Subscription tag categories for cost allocation purposes
 
-   Příklady můžou zahrnovat:
+   Examples might include:
    - Nákladové středisko
    - Oddělení
    - Aplikace
    - Prostředí
-   - Cenově kódu
+   - Cost code
 
-     Tady je seznam předdefinovaných skupin v sestavách dostupná:
+     Here's a list of built-in groups available in reports:
 
-     - **Typ nákladu pro přenos**
-     - Vyberte typ nákladů nebo více typů náklady, nebo všechny. Typy nákladů patří:
-       - Jednorázový poplatek
+     - **Cost Type**
+     - Select a cost type or multiple cost types, or select all. Cost types include:
+       - One-Time Fee
        - Podpora
-       - Poplatky za využití
-     - **Zákazníka**
-       - Vyberte konkrétního zákazníka, více zákazníků, nebo všechny zákazníky.
-     - **Název účtu**
-       - Název účtu nebo předplatného. V Azure je název předplatného Azure.
-     - **Číslo účtu**
-       - Vyberte účet, více účtů nebo pro všechny účty. V Azure je GUID předplatného Azure.
-     - **Nadřazené účtu**
-       - Vyberte účet nadřazené, více účtů nebo select.
+       - Usage Cost
+     - **Customer**
+       - Select a specific customer, multiple customers, or select all customers.
+     - **Account Name**
+       - The account or subscription name. In Azure, it is the name of the Azure subscription.
+     - **Account No**
+       - Select an account, multiple accounts, or all accounts. In Azure, it is the Azure subscription’s GUID.
+     - **Parent Account**
+       - Select the parent account, multiple accounts, or select all.
      - **Služba**
-       - Vyberte službu, více služeb, nebo všechny služby.
+       - Select a service, multiple services, or select all services.
      - **Poskytovatel**
-       - Rozhraní poskytovatele cloudu, kde jsou přidružené prostředky a náklady.
+       - The cloud provider where assets and expenses are associated.
      - **Oblast**
-       - Oblast, ve které je hostitelem prostředku.
-     - **Zóna dostupnosti**
-       - AWS izolované umístění v rámci oblasti.
+       - Region where the resource is hosted.
+     - **Availability Zone**
+       - AWS isolated locations within a region.
      - **Typ prostředku**
-       - Typ prostředku používá.
-     - **Dílčí typ**
-       - Výběr dílčí typu.
+       - The type of resource in use.
+     - **Sub-Type**
+       - Select the sub-type.
      - **Operace**
-       - Vyberte operaci, nebo **Zobrazit vše**.
-     - **Cenový Model**
-       - Všechny předem
-       - Bez předem
-       - Částečné předem
+       - Select the operation or **Show all**.
+     - **Price Model**
+       - All Upfront
+       - No Upfront
+       - Partial Upfront
        - Na vyžádání
        - Rezervace
-       - Místo
-     - **Poplatek za typ**
-       - Vyberte typ poplatku záporné nebo kladné nebo obojí.
-     - **Tenantů**
-       - Určuje, zda počítač běží jako vyhrazený počítač.
-     - **Typ využití**
-       - Typ využití může být jednorázové poplatky nebo opakované poplatky.
+       - Spot
+     - **Charge Type**
+       - Select Negative or Positive charge type or both.
+     - **Tenancy**
+       - Whether a machine is running as a dedicated machine.
+     - **Usage Type**
+       - Usage type can be one-time fees or recurring fees.
 
-5. **Filtry**
+5. **Filters**
 
-    Pomocí jednoduchého nebo vícenásobného výběru filtrů nastavit rozsahy vybraných hodnot. Pokud chcete nastavit filtr, klikněte na tlačítko **přidat** a potom vyberte filtr kategorií a hodnot.
+    Use single or multi-select filters to set ranges to selected values. To set a filter, click **Add** and then select filter categories and values.
 
-6. **Model nákladů**
+6. **Cost Model**
 
-    Vyberte model nákladů, které jste předtím vytvořili pomocí Cost Allocation 360 pomocí modelu nákladů. Můžete mít více modelů nákladů Cloudyn, v závislosti na požadavcích přidělení nákladů. Některé týmy na jednom místě organizace může mít náklady požadavky na přidělení, které se liší od ostatních. Každý tým může mít vlastní vyhrazený nákladový model.
+    Use Cost Model to select a cost model that you previously created with Cost Allocation 360. You might have multiple Cloudyn cost models, depending on your cost allocation requirements. Some of your organizational teams might have cost allocation requirements that differ from others. Each team can have their own dedicated cost model.
 
-    Informace o vytváření definice modelu přidělování nákladů, naleznete v tématu [použití vlastních značek k přidělování nákladů](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+    For information about creating a cost allocation model definition, see [Use custom tags to allocate costs](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-7. **Amortizace**
+7. **Amortization**
 
-    Amortizace použití v sestavách přidělení nákladů k zobrazení bez použití na základě poplatků za služby nebo jednorázové závazků náklady a náklady na jejich rozloženy rovnoměrně dobu jejich životnosti. Příklady jednorázové poplatky můžou zahrnovat:
-    - Roční poplatky za podporu
-    - Roční poplatky součásti zabezpečení
-    - Poplatky za nákupy rezervovaných instancí
-    - Některé položky Azure Marketplace.
+    Use Amortization in Cost Allocation reports to view non-usage based service fees or one-time payable costs and spread their cost over time evenly during their lifespan. Examples of one-time fees might include:
+    - Annual support fees
+    - Annual security components fees
+    - Reserved instances purchase fees
+    - Some Azure Marketplace items.
 
-   V části amortizace, vyberte **Amortizovaných nákladů** nebo **skutečné náklady**.
+   Under Amortization, select **Amortized cost** or **Actual Cost**.
 
-8. **Řešení**
+8. **Resolution**
 
-    Pomocí řešení vyberte řešení čas ve vybraném rozsahu dat. Vaše doba řešení určuje, jak jednotky se zobrazí v sestavě a může být:
+    Use Resolution to select the time resolution within the selected date range. Your time resolution determines how units are displayed in the report and can be:
     - Denně
     - Týdně
     - Měsíční
-    - Čtvrtletně
+    - Quarterly
     - Roční
 
-9. **Pravidla přidělování**
+9. **Allocation rules**
 
-    Použití přidělení pravidel k použití nebo zakázat přidělování nákladů náklady přepočítání. Můžete povolit nebo zakázat přepočet přidělení nákladů pro fakturačních údajů. Přepočítání se vztahuje na vybraných kategorií v sestavě. Umožňuje vám posoudit dopad přepočet přidělení nákladů na nezpracovaných datech fakturace.
+    Use Allocation Rules to apply or disable the cost allocation cost recalculation. You can enable or disable the cost allocation recalculation for billing data. The recalculation applies to the selected categories in the report. It allows you to assess the cost allocation recalculation impact against raw billing data.
 
-10. **Nezařazeno do kategorie**
+10. **Uncategorized**
 
-    Nezařazeno můžete zahrnout nebo vyloučit Nezařazeno do kategorie nákladů v sestavě.
+    Use Uncategorized to include or exclude uncategorized costs in the report.
 
-11. **Zobrazit/skrýt pole**
+11. **Show/hide fields**
 
-    Zobrazit/Skrýt možnost nemá žádný efekt v sestavách.
+    The Show/hide option does not have any effect in reports.
 
-12. **Formáty zobrazení**
+12. **Display formats**
 
-    Pomocí formátů zobrazení vyberte různá zobrazení grafu nebo tabulce.
+    Use Display formats to select various graph or table views.
 
-    ![Symboly formátů zobrazení, které můžete vybrat](./media/understanding-cost-reports/display-formats.png)
+    ![Symbols of display formats that you can select](./media/understanding-cost-reports/display-formats.png)
 
-13. **Více barva**
+13. **Multi-color**
 
-    Použití více barvy k nastavení barvy grafy v sestavě.
+    Use Multi-color to set the color of charts in your report.
 
 14. **Akce**
 
-    Pomocí akcí můžete uložit, exportujte nebo plánování sestavy.
+    Use Actions to save, export, or schedule the report.
 
 15. **Zásady**
 
-    I když nejsou na obrázku, některé sestavy zahrnují zásadu výpočtu odhadovaných nákladů. V těchto sestavách **konsolidované** zásad můžete vidět doporučení pro všechny účty a předplatná v rámci aktuální entity, jako je například Microsoft registrace nebo plátce AWS. **Samostatné** zásady vidět doporučení pro jednoho účtu nebo předplatného, jakoby žádná předplatná neexistují. Zásady, kterou jste vybrali, se liší optimalizace strategie, které vaše organizace používá. Projekce nákladů jsou založeny na posledních 30 dní používání.
+    Although not pictured, some reports include a projected cost calculation policy. In those reports, the **Consolidated** policy shows recommendations for all accounts and subscriptions under the current entity such as Microsoft enrollment or AWS payer. The **Standalone** policy shows recommendations for one account or subscription as if no other subscriptions exist. The policy that you select varies on the optimization strategy used by your organization. Cost projections are based on the last 30 days of usage.
 
-## <a name="save-and-schedule-reports"></a>Uložit a plánování sestav
+## <a name="save-and-schedule-reports"></a>Save and schedule reports
 
-Po vytvoření sestavy, můžete ho uložit pro budoucí použití. Uložené sestavy jsou k dispozici v **Moje nástroje** > **Moje sestavy**. Pokud provedete změny do stávající sestavy a uložte ho, sestava uložena jako novou verzi. Nebo ho můžete uložit jako novou sestavu.
+After you create a report, you can save it for future use. Saved reports are available in **My Tools** > **My Reports**. If you make changes to an existing report and save it, the report is saved as a new version. Or, you can save it as a new report.
 
-### <a name="save-a-report-to-the-cloudyn-portal"></a>Uložení sestavy na portálu Cloudyn
+### <a name="save-a-report-to-the-cloudyn-portal"></a>Save a report to the Cloudyn portal
 
-Při zobrazení všech sestav, klikněte na tlačítko **akce** a pak vyberte **uložit Moje sestavy**. Název sestavy a pak přidejte své vlastní adresu URL nebo použít automaticky vytvořený adresu URL. Volitelně můžete **sdílet** veřejně s jinými uživateli ve vaší organizaci nebo můžete sestavy můžete sdílet do entity. Pokud není sdílet sestavy, zůstává osobní zprávu a pouze se zobrazí. Uložte sestavu.
+While viewing any report, click **Actions** and then select **Save to my reports**. Name the report and then either add a your own URL or use the automatically created URL. You can optionally **Share** the report publicly with others in your organization or you can share it to your entity. If you do not share the report, it remains a personal report and that only you can view. Save the report.
 
 
-### <a name="save-a-report-to-cloud-provider-storage"></a>Uložení sestavy do zprostředkovatele úložiště v cloudu
+### <a name="save-a-report-to-cloud-provider-storage"></a>Save a report to cloud provider storage
 
-Pokud chcete uložit sestavu do poskytovatele cloudových služeb, jste museli už nakonfigurovat účet úložiště. Při zobrazení všech sestav, klikněte na tlačítko **akce** a pak vyberte **Naplánování sestavy**. Název sestavy a pak přidejte své vlastní adresu URL nebo použít automaticky vytvořený adresu URL. Vyberte **uložit do úložiště** a potom vyberte účet úložiště nebo přidat nový. Zadejte předponu, která získá připojeným k názvu souboru sestavy. Vyberte formát souboru CSV nebo JSON a uložte sestavu.
+In order to save a report to your cloud service provider, you must have already configured a storage account. While viewing any report, click **Actions** and then select **Schedule report**. Name the report and then either add a your own URL or use the automatically created URL. Select **Save to storage** and then select the storage account or add a new one. Enter a prefix that gets appended to the report file name. Select a CSV or JSON file format and then save the report.
 
-### <a name="schedule-a-report"></a>Naplánování sestavy
+### <a name="schedule-a-report"></a>Schedule a report
 
-Můžete vytvářet sestavy v naplánovaných intervalech a odesílat je do příjemce seznamu nebo cloudové služby poskytovatele účtu úložiště. Při zobrazení všech sestav, klikněte na tlačítko **akce** a pak vyberte **Naplánování sestavy**. Můžete odeslat zprávu o e-mailem a uložit do účtu úložiště. V části **plán**, vyberte interval (denní, týdenní nebo měsíční frekvencí). Pro týdenní a měsíční vyberte den nebo datum poskytovat a vyberte čas. Uložte naplánovanou sestavu. Pokud vyberete formát sestavy aplikace Excel, sestava se odešle jako příloha. Když vyberete formát obsahu e-mailu, výsledky sestavy, které jsou zobrazeny ve formátu grafu jsou dodávány jako graf.
+You can run reports at scheduled intervals and you can sent them to a recipient list or cloud service provider storage account. While viewing any report, click **Actions** and then select **Schedule report**. You can send the report by email and save to a storage account. Under **Schedule**, select the interval (daily, weekly or monthly). For weekly and monthly, select the day or dates to deliver and select the time. Uložte naplánovanou sestavu. If you select the Excel report format, the report is sent as an attachment. When you select email content format, report results that are displayed in chart format are delivered as a graph.
 
-### <a name="export-a-report-as-a-csv-file"></a>Export sestavy do souboru .csv
+### <a name="export-a-report-as-a-csv-file"></a>Export a report as a CSV file
 
-Při zobrazení všech sestav, klikněte na tlačítko **akce** a pak vyberte **exportovat všechna data sestavy**. Automaticky otevírané okno se zobrazí a stáhne soubor CSV.
+While viewing any report, click **Actions** and then select **Export all report data**. A pop-up window appears and a CSV file is downloaded.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o sestavách, které jsou zahrnuté ve službě Cloudyn na [sestavy použijte Cloudyn](use-reports.md).
-- Další informace o tom, jak můžete vytvořit sestavy [řídicí panely](dashboards.md).
+- Learn about the reports that are included in Cloudyn at [Use Cloudyn reports](use-reports.md).
+- Learn about how to use reports to create [dashboards](dashboards.md).

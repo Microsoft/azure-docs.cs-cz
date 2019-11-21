@@ -1,57 +1,57 @@
 ---
-title: Delegování subdomény Azure DNS pomocí Azure Powershellu
-description: Naučíte se delegovat subdoménu Azure DNS pomocí Azure Powershellu.
+title: Delegate a subdomain - Azure PowerShell - Azure DNS
+description: With this learning path, get started delegating an Azure DNS subdomain using Azure PowerShell.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: victorh
-ms.openlocfilehash: 4ee4d9e6390c9a091096bb7c06160b76fd8af90f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: b6023adb65469dedeeba664a51917306e634146f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730290"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212507"
 ---
-# <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Delegování subdomény Azure DNS pomocí Azure Powershellu
+# <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Delegate an Azure DNS subdomain using Azure PowerShell
 
-Prostředí Azure PowerShell můžete použít pro delegování subdoméně DNS. Například pokud jste vlastníkem domény contoso.com, můžete subdoménu delegovat volá *engineering* jiný, samostatný zóny, který budete moct spravovat samostatně na zónu contoso.com.
+You can use Azure PowerShell to delegate a DNS subdomain. For example, if you own the contoso.com domain, you can delegate a subdomain called *engineering* to another, separate zone that you can administer separately from the contoso.com zone.
 
-Pokud dáváte přednost, můžete subdoménu pomocí delegovat [webu Azure Portal](delegate-subdomain.md).
+If you prefer, you can delegate a subdomain using the [Azure Portal](delegate-subdomain.md).
 
 > [!NOTE]
-> Contoso.com slouží jako příklad v tomto článku. Doménu contoso.com nahraďte vlastním názvem domény.
+> Contoso.com is used as an example throughout this article. Doménu contoso.com nahraďte vlastním názvem domény.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Delegovat subdoménu Azure DNS, musí nejprve přenést svoji veřejnou doménu do Azure DNS. Zobrazit [delegování domény do Azure DNS](./dns-delegate-domain-azure-dns.md) pokyny ke konfiguraci vaší názvové servery pro delegování. Once your domain is delegated to your Azure DNS zone, you can delegate your subdomain.
+To delegate an Azure DNS subdomain, you must first delegate your public domain to Azure DNS. See [Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md) for instructions on how to configure your name servers for delegation. Once your domain is delegated to your Azure DNS zone, you can delegate your subdomain.
 
 ## <a name="create-a-zone-for-your-subdomain"></a>Create a zone for your subdomain
 
-Nejprve vytvořit zónu **engineering** subdomény.
+First, create the zone for the **engineering** subdomain.
 
 `New-AzDnsZone -ResourceGroupName <resource group name> -Name engineering.contoso.com`
 
-## <a name="note-the-name-servers"></a>Mějte na paměti názvové servery
+## <a name="note-the-name-servers"></a>Note the name servers
 
-V dalším kroku mějte na paměti čtyři názvové servery pro technický subdomény.
+Next, note the four name servers for the engineering subdomain.
 
 `Get-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -RecordType NS`
 
-## <a name="create-a-test-record"></a>Vytvořit záznam testu
+## <a name="create-a-test-record"></a>Create a test record
 
-Vytvoření **A** záznamů v zóně engineering pro účely testování.
+Create an **A** record in the engineering zone to use for testing.
 
    `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`.
 
-## <a name="create-an-ns-record"></a>Vytvoření záznamů NS
+## <a name="create-an-ns-record"></a>Create an NS record
 
-V dalším kroku vytvoření záznamu názvového serveru (NS) pro **engineering** zóny v zóně contoso.com.
+Next, create a name server (NS) record  for the **engineering** zone in the contoso.com zone.
 
 ```azurepowershell
 $Records = @()
@@ -62,14 +62,14 @@ $Records += New-AzDnsRecordConfig -Nsdname <name server 4 noted previously>
 $RecordSet = New-AzDnsRecordSet -Name engineering -RecordType NS -ResourceGroupName <resource group name> -TTL 3600 -ZoneName contoso.com -DnsRecords $Records
 ```
 
-## <a name="test-the-delegation"></a>Test delegování
+## <a name="test-the-delegation"></a>Test the delegation
 
-Nslookup použijte k otestování delegování.
+Use nslookup to test the delegation.
 
-1. Otevřete okno Powershellu.
-2. Na příkazovém řádku zadejte `nslookup www.engineering.contoso.com.`
-3. Měli byste obdržet neautoritativní odpovědí, který zobrazuje adresu **10.10.10.10**.
+1. Open a PowerShell window.
+2. At command prompt, type `nslookup www.engineering.contoso.com.`
+3. You should receive a non-authoritative answer showing the address **10.10.10.10**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [konfigurace reverzních záznamů DNS pro služby hostované v Azure](dns-reverse-dns-for-azure-services.md).
+Learn how to [configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).

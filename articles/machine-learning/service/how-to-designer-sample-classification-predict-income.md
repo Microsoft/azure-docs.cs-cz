@@ -1,7 +1,7 @@
 ---
-title: 'Návrhář: klasifikace, předpověď výnosů – příklad'
+title: 'Designer: Classify, predict income example'
 titleSuffix: Azure Machine Learning
-description: Podle tohoto příkladu Sestavte klasifikátor bez kódu pro předpověď příjmů pomocí návrháře Azure Machine Learning.
+description: Follow this example build a no-code classifier to predict income with Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,64 +10,64 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: adc7712a4f41daea9ed691e6df52290e98e8d81f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196054"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214139"
 ---
-# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Vytvoření klasifikátoru & použití výběru funkcí k předpovídání příjmů pomocí návrháře Azure Machine Learning
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Build a classifier & use feature selection to predict income with Azure Machine Learning designer
 
-**Návrhář (Preview) – ukázka 3**
+**Designer (preview) sample 3**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Naučte se vytvářet třídění strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview). Tato ukázka navýšení **rozhodovacího stromu se dvěma třídami** umožňuje odhadnout příjem v rámci sčítání v dospělém (> = 50 tis nebo < = 50 tis).
+Learn how to build a machine learning classifier without writing a single line of code using the designer (preview). This sample trains a **two-class boosted decision tree** to predict adult census income (>=50K or <=50K).
 
-Vzhledem k tomu, že otázka odpovídá "který z nějakého"? označuje se jako problém klasifikace. Stejný základní postup se ale dá použít k tomu, abyste mohli řešit jakýkoli typ problému strojového učení bez ohledu na to, jestli jde o regresi, klasifikaci, clusteringu a tak dále.
+Because the question is answering "Which one?" this is called a classification problem. However, you can apply the same fundamental process to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
 
-Toto je konečný Graf kanálu pro tuto ukázku:
+Here's the final pipeline graph for this sample:
 
-![Graf kanálu](media/how-to-ui-sample-classification-predict-income/overall-graph.png)
+![Graph of the pipeline](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Kliknutím na ukázku 3 ji otevřete.
+4. Click the sample 3 to open it.
 
 
 
 ## <a name="data"></a>Data
 
-Datová sada obsahuje 14 funkcí a jeden sloupec popisku. Existuje několik typů funkcí, včetně číselných a kategorií. Následující diagram znázorňuje výňatek z datové sady: ![data](media/how-to-ui-sample-classification-predict-income/data.png)
+The dataset contains 14 features and one label column. There are multiple types of features, including numerical and categorical. The following diagram shows an excerpt from the dataset: ![data](media/how-to-designer-sample-classification-predict-income/data.png)
 
 
 
-## <a name="pipeline-summary"></a>Souhrn kanálu
+## <a name="pipeline-summary"></a>Pipeline summary
 
-Pomocí těchto kroků vytvořte kanál:
+Follow these steps to create the pipeline:
 
-1. Přetáhněte na plátno kanálu modul binární datové sady pro příjem dospělého.
-1. Přidejte modul **rozdělení dat** pro vytvoření školicích a testovacích sad. Nastavte zlomek řádků v první výstupní sadě dat na 0,7. Toto nastavení určuje, že 70% dat bude výstupem na levý port modulu a zbytek na správném portu. Pro účely testování používáme levou datovou sadu pro školení a tu hned.
-1. Přidejte modul **výběru funkce založený na filtrech** a vyberte 5 funkcí podle PearsonCorreclation. 
-1. Přidejte modul **zesíleného rozhodovacího stromu se dvěma třídami** k inicializaci klasifikátoru rozřízeného rozhodovacího stromu.
-1. Přidejte modul **vlakového modelu** . Připojte třídění od předchozího kroku k levému vstupnímu portu **modelu vlaků**. Připojte filtrovanou datovou sadu z modulu výběru funkce založeného na filtru jako školicí datovou sadu.  **Model vlaků** bude zaškolit třídění.
-1. Přidejte transformaci Select Columns a použijte transformační modul pro použití stejné transformace (výběr založený na výběru funkcí) pro testovací datovou sadu.
-![použít-Transform](media/how-to-ui-sample-classification-predict-income/transformation.png)
-1. Přidejte modul **bodového modelu** a připojte k němu modul **vlak model** . Pak přidejte testovací sadu (výstup použít modul transformace, který pro sadu testů používá výběr funkcí), do **modelu skóre**. **Model skóre** provede předpovědi. Můžete vybrat svůj výstupní port pro zobrazení předpovědi a pozitivních pravděpodobností třídy.
+1. Drag the Adult Census Income Binary dataset module into the pipeline canvas.
+1. Add a **Split Data** module to create the training and test sets. Set the fraction of rows in the first output dataset to 0.7. This setting specifies that 70% of the data will be output to the left port of the module and the rest to the right port. We use the left dataset for training and the right one for testing.
+1. Add the **Filter Based Feature Selection** module to select 5 features by PearsonCorreclation. 
+1. Add a **Two-Class Boosted Decision Tree** module to initialize a boosted decision tree classifier.
+1. Add a **Train Model** module. Connect the classifier from the previous step to the left input port of the **Train Model**. Connect the filtered dataset from Filter Based Feature Selection module as training dataset.  The **Train Model** will train the classifier.
+1. Add Select Columns Transformation and Apply Transformation module to apply the same transformation (filtered based feature selection) to test dataset.
+![apply-transformation](media/how-to-designer-sample-classification-predict-income/transformation.png)
+1. Add **Score Model** module and connect the **Train Model** module to it. Then add the test set (the output of Apply Transformation module which apply feature selection to test set too) to the **Score Model**. The **Score Model** will make the predictions. You can select its output port to see the predictions and the positive class probabilities.
 
 
-    Tento kanál má dva moduly skóre, ale ten na pravé straně má vyřazený sloupec Label, než provede předpověď. To je připraveno k nasazení koncového bodu v reálném čase, protože vstup webové služby očekává jenom nepopisované funkce. 
+    This pipeline has two score modules, the one on the right has excluded label column before make the prediction. This is prepared to deploy a real-time endpoint, because the web service input will expect only features not label. 
 
-1. Přidejte modul **vyhodnocení modelu** a připojte datovou sadu ke svému levému vstupnímu portu. Pokud chcete zobrazit výsledky vyhodnocení, vyberte výstupní port modulu **vyhodnocení modelu** a vyberte **vizualizovat**.
+1. Add an **Evaluate Model** module and connect the scored dataset to its left input port. To see the evaluation results, select the output port of the **Evaluate Model** module and select **Visualize**.
 
 ## <a name="results"></a>Výsledky
 
-![Vyhodnotit výsledky](media/how-to-ui-sample-classification-predict-income/evaluate-result.png)
+![Evaluate the results](media/how-to-designer-sample-classification-predict-income/evaluate-result.png)
 
-Ve výsledcích vyhodnocení vidíte, že se jedná o křivky, jako je například ROC, přesnost odvolání a nejasná metrika. 
+In the evaluation results, you can see that the curves like ROC, Precision-recall and confusion metrics. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -75,11 +75,11 @@ Ve výsledcích vyhodnocení vidíte, že se jedná o křivky, jako je napříkl
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte další ukázky, které jsou k dispozici pro návrháře:
+Explore the other samples available for the designer:
 
-- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Ukázka 5 – klasifikace: předpověď změn](how-to-designer-sample-classification-churn.md)
-- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
-- [Ukázka 7 – klasifikace textu: Wikipedii SP 500 DataSet](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

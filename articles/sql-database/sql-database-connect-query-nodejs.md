@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: použití Node. js k dotazování'
-description: Jak pomocí Node. js vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
+title: 'Quickstart: Use Node.js to query data from an Azure SQL database'
+description: How to use Node.js to create a program that connects to an Azure SQL database and query it using T-SQL statements.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,152 +11,149 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b996b380195b8b339424c8d716c139072a98303f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: bf63cd1fb81dace477b7d9062831f0b563314f8b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827018"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228010"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rychlý start: Použití Node.js k dotazování databáze Azure SQL
 
-Tento rychlý Start ukazuje použití [Node. js](https://nodejs.org) k připojení k databázi SQL Azure. Pak můžete použít příkazy T-SQL k dotazování dat.
+This quickstart demonstrates how to use [Node.js](https://nodejs.org) to connect to an Azure SQL database. You can then use T-SQL statements to query data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení této ukázky se ujistěte, že máte následující požadavky:
+To complete this sample, make sure you have the following prerequisites:
 
-- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
+- Databázi Azure SQL. You can use one of these quickstarts to create and then configure a database in Azure SQL Database:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Vytvoření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
-  |||[Připojení z webu](sql-database-managed-instance-configure-p2s.md)
-  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](sql-database-managed-instance-get-started-restore.md)
-  |||Obnovení nebo import Adventure Works ze souboru [BacPac](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurace | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md)| [Connectivity from a VM](sql-database-managed-instance-configure-vm.md)|
+  |||[Connectivity from on-site](sql-database-managed-instance-configure-p2s.md)
+  |Načtení dat|Adventure Works loaded per quickstart|[Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Se spravovanou instancí musíte buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
+  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
 
 
-- Software související s Node. js pro váš operační systém:
+- Node.js-related software for your operating system:
 
-  - **MacOS**, nainstalujte homebrew a Node. js a potom nainstalujte ovladač ODBC a Nástroj Sqlcmd. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
+  - **MacOS**, install Homebrew and Node.js, then install the ODBC driver and SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
   
-  - **Ubuntu**, nainstalujte Node. js a potom nainstalujte ovladač ODBC a Nástroj Sqlcmd. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
+  - **Ubuntu**, install Node.js, then install the ODBC driver and SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
   
-  - **Windows**, nainstalujte čokolády a Node. js a potom nainstalujte ovladač ODBC a Nástroj Sqlcmd. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
+  - **Windows**, install Chocolatey and Node.js, then install the ODBC driver and SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
+## <a name="get-sql-server-connection-information"></a>Get SQL server connection information
 
-Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Get the connection information you need to connect to the Azure SQL database. You'll need the fully qualified server name or host name, database name, and login information for the upcoming procedures.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Go to the **SQL databases**  or **SQL managed instances** page.
 
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** . 
+3. On the **Overview** page, review the fully qualified server name next to **Server name** for a single database or the fully qualified server name next to **Host** for a managed instance. To copy the server name or host name, hover over it and select the **Copy** icon. 
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
-Otevřete příkazový řádek a vytvořte složku *sqltest*. Otevřete složku, kterou jste vytvořili, a spusťte následující příkaz:
+Otevřete příkazový řádek a vytvořte složku *sqltest*. Open the folder you created and run the following command:
 
   ```bash
   npm init -y
-  npm install tedious@5.0.3
-  npm install async@2.6.2
+  npm install tedious
   ```
 
-## <a name="add-code-to-query-database"></a>Přidání kódu do databáze dotazů
+## <a name="add-code-to-query-database"></a>Add code to query database
 
-1. V oblíbeném textovém editoru vytvořte nový soubor *sqltest. js*.
+1. In your favorite text editor, create a new file, *sqltest.js*.
 
-1. Nahraďte jeho obsah následujícím kódem. Pak přidejte příslušné hodnoty pro váš server, databázi, uživatele a heslo.
+1. Replace its contents with the following code. Then add the appropriate values for your server, database, user, and password.
 
     ```js
-    var Connection = require('tedious').Connection;
-    var Request = require('tedious').Request;
+    const Connection = require("tedious").Connection;
+    const Request = require("tedious").Request;
 
     // Create connection to database
-    var config =
-    {
-        authentication: {
-            options: {
-                userName: 'userName', // update me
-                password: 'password' // update me
-            },
-            type: 'default'
+    const config = {
+      authentication: {
+        options: {
+          userName: "username", // update me
+          password: "password" // update me
         },
-        server: 'your_server.database.windows.net', // update me
-        options:
-        {
-            database: 'your_database', //update me
-            encrypt: true
-        }
-    }
-    var connection = new Connection(config);
+        type: "default"
+      },
+      server: "your_server.database.windows.net", // update me
+      options: {
+        database: "your_database", //update me
+        encrypt: true
+      }
+    };
+
+    const connection = new Connection(config);
 
     // Attempt to connect and execute queries if connection goes through
-    connection.on('connect', function(err)
-        {
-            if (err)
-            {
-                console.log(err)
-            }
-            else
-            {
-                queryDatabase()
-            }
+    connection.on("connect", err => {
+      if (err) {
+        console.error(err.message);
+      } else {
+        queryDatabase();
+      }
+    });
+
+    function queryDatabase() {
+      console.log("Reading rows from the Table...");
+
+      // Read all rows from table
+      const request = new Request(
+        `SELECT TOP 20 pc.Name as CategoryName,
+                       p.name as ProductName
+         FROM [SalesLT].[ProductCategory] pc
+         JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid`,
+        (err, rowCount) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            console.log(`${rowCount} row(s) returned`);
+          }
         }
-    );
+      );
 
-    function queryDatabase()
-    {
-        console.log('Reading rows from the Table...');
-
-        // Read all rows from table
-        var request = new Request(
-            "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc "
-                + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid",
-            function(err, rowCount, rows)
-            {
-                console.log(rowCount + ' row(s) returned');
-                process.exit();
-            }
-        );
-
-        request.on('row', function(columns) {
-            columns.forEach(function(column) {
-                console.log("%s\t%s", column.metadata.colName, column.value);
-            });
+      request.on("row", columns => {
+        columns.forEach(column => {
+          console.log("%s\t%s", column.metadata.colName, column.value);
         });
-        connection.execSql(request);
+      });
+      
+      connection.execSql(request);
     }
     ```
 
 > [!NOTE]
-> Příklad kódu používá ukázkovou databázi **AdventureWorksLT** pro Azure SQL.
+> The code example uses the **AdventureWorksLT** sample database for Azure SQL.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. Na příkazovém řádku spusťte program.
+1. At the command prompt, run the program.
 
     ```bash
     node sqltest.js
     ```
 
-1. Ověřte, že se vrátí prvních 20 řádků a okno aplikace zavřete.
+1. Verify the top 20 rows are returned and close the application window.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Ovladač Microsoft Node.js pro SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server)
 
-- Připojení a dotazování na Windows/Linux/macOS pomocí [.NET Core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md)nebo [SSMS](sql-database-connect-query-ssms.md) (jenom Windows)
+- Connect and query on Windows/Linux/macOS with [.NET core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md), or [SSMS](sql-database-connect-query-ssms.md) (Windows only)
 
-- [Začínáme s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
+- [Get started with .NET Core on Windows/Linux/macOS using the command line](/dotnet/core/tutorials/using-with-xplat-cli)
 
-- Návrh první databáze SQL Azure pomocí [rozhraní .NET](sql-database-design-first-database-csharp.md) nebo [SSMS](sql-database-design-first-database.md)
+- Design your first Azure SQL database using [.NET](sql-database-design-first-database-csharp.md) or [SSMS](sql-database-design-first-database.md)

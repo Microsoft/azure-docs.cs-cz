@@ -4,14 +4,8 @@ title: Dokumentace ke službě Azure Notebooks
 metadata:
   title: Dokumentace ke službě Azure Notebooks
   description: 'Zjistěte, jak vytvářet, spouštět a sdílet poznámkové bloky Jupyter prostřednictvím hostovanou služby Azure Notebooks.'
-  services: notebooks
-  author: kraigb
-  manager: barbkess
-  ms.service: azure-notebooks
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 12/04/2018
-  ms.author: kraigb
 abstract:
   description: 'Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. Jupyter (dříve IPython) je opensourcový projekt, který umožňuje snadno kombinovat text markdownu, spustitelný kód (Python, R a F#), trvalá data, grafiku a vizualizace v jednom plátně, které se označuje jako poznámkový blok a dá se sdílet.'
 sections:

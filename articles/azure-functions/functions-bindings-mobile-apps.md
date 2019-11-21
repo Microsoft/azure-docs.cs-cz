@@ -1,55 +1,50 @@
 ---
-title: Mobile Apps vazby pro Azure Functions
-description: Naučte se používat vazby Azure Mobile Apps v Azure Functions.
-services: functions
-documentationcenter: na
+title: Mobile Apps bindings for Azure Functions
+description: Understand how to use Azure Mobile Apps bindings in Azure Functions.
 author: craigshoemaker
-manager: gwallace
-keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 37192a25bff794ac019fd29b47e0e8ad161790c9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 474cdc52d34d3f5e00dee69b7cc9861042cbcc04
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097323"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231115"
 ---
-# <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps vazby pro Azure Functions 
+# <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps bindings for Azure Functions 
 
 > [!NOTE]
-> Vazby Azure Mobile Apps jsou dostupné jenom pro Azure Functions 1. x. Nejsou podporovány v Azure Functions 2. x.
+> Azure Mobile Apps bindings are only available to Azure Functions 1.x. They are not supported in Azure Functions 2.x.
 
-Tento článek vysvětluje, jak pracovat s vazbami [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) v Azure Functions. Azure Functions podporuje vstupní a výstupní vazby pro Mobile Apps.
+This article explains how to work with [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) bindings in Azure Functions. Azure Functions supports input and output bindings for Mobile Apps.
 
-Vazby Mobile Apps umožňují číst a aktualizovat tabulky dat v mobilních aplikacích.
+The Mobile Apps bindings let you read and update data tables in mobile apps.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
+## <a name="packages---functions-1x"></a>Packages - Functions 1.x
 
-Vazby Mobile Apps jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) , verze 1. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) .
+Mobile Apps bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet package, version 1.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub repository.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="input"></a>Vstup
 
-Vstupní vazba Mobile Apps načte záznam z koncového bodu mobilní tabulky a předá ho do vaší funkce. Ve C# funkcích F# a se všechny změny provedené v záznamu automaticky odešlou zpátky do tabulky, když se funkce ukončí úspěšně.
+The Mobile Apps input binding loads a record from a mobile table endpoint and passes it into your function. In C# and F# functions, any changes made to the record are automatically sent back to the table when the function exits successfully.
 
-## <a name="input---example"></a>Vstupní příklad
+## <a name="input---example"></a>Input - example
 
-Podívejte se na příklad specifické pro jazyk:
+See the language-specific example:
 
-* [C# skript (.csx)](#input---c-script-example)
+* [C# script (.csx)](#input---c-script-example)
 * JavaScript
 
-### <a name="input---c-script-example"></a>Ukázka skriptu C# Input-Script
+### <a name="input---c-script-example"></a>Input - C# script example
 
-Následující příklad ukazuje vstupní vazbu Mobile Apps v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu. Funkce je aktivována zprávou fronty s identifikátorem záznamu. Funkce přečte zadaný záznam a upraví jeho `Text` vlastnost.
+The following example shows a Mobile Apps input binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function is triggered by a queue message that has a record identifier. The function reads the specified record and modifies its `Text` property.
 
-Zde je vazba dat v *function.json* souboru:
+Here's the binding data in the *function.json* file:
 
 ```json
 {
@@ -73,9 +68,9 @@ Zde je vazba dat v *function.json* souboru:
 ]
 }
 ```
-[Konfigurace](#input---configuration) bodu vysvětluje tyto vlastnosti.
+The [configuration](#input---configuration) section explains these properties.
 
-Tady je kód skriptu jazyka C#:
+Here's the C# script code:
 
 ```cs
 #r "Newtonsoft.Json"    
@@ -90,11 +85,11 @@ public static void Run(string myQueueItem, JObject record)
 }
 ```
 
-### <a name="input---javascript"></a>Input – JavaScript
+### <a name="input---javascript"></a>Input - JavaScript
 
-Následující příklad ukazuje vstupní vazbu Mobile Apps v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce je aktivována zprávou fronty s identifikátorem záznamu. Funkce přečte zadaný záznam a upraví jeho `Text` vlastnost.
+The following example shows a Mobile Apps input binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function is triggered by a queue message that has a record identifier. The function reads the specified record and modifies its `Text` property.
 
-Zde je vazba dat v *function.json* souboru:
+Here's the binding data in the *function.json* file:
 
 ```json
 {
@@ -118,9 +113,9 @@ Zde je vazba dat v *function.json* souboru:
 ]
 }
 ```
-[Konfigurace](#input---configuration) bodu vysvětluje tyto vlastnosti.
+The [configuration](#input---configuration) section explains these properties.
 
-Tady je kód jazyka JavaScript:
+Here's the JavaScript code:
 
 ```javascript
 module.exports = function (context, myQueueItem) {    
@@ -129,54 +124,54 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="input---attributes"></a>(Vstup) – atributy
+## <a name="input---attributes"></a>Input - attributes
 
-V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [Mobile](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribute.
 
-Informace o vlastnostech atributů, které můžete konfigurovat, najdete v [následující části Konfigurace](#input---configuration).
+For information about attribute properties that you can configure, see [the following configuration section](#input---configuration).
 
-## <a name="input---configuration"></a>Vstup - konfigurace
+## <a name="input---configuration"></a>Input - configuration
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `MobileTable` atribut.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `MobileTable` attribute.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|function.json property | Attribute property |Popis|
 |---------|---------|----------------------|
-| **type**|| Musí být nastavené na "mobilní".|
-| **direction**||Musí být nastavené na "in"|
-| **name**|| Název vstupního parametru v signatuře funkce.|
-|**tableName** |**TableName**|Název tabulky dat mobilní aplikace|
-| **id**| **ID** | Identifikátor záznamu, který se má načíst Může být statický nebo založený na triggeru, který funkci vyvolá. Pokud například pro funkci použijete Trigger fronty, `"id": "{queueTrigger}"` použije se jako ID záznamu řetězcová hodnota zprávy Queue, která se má načíst.|
-|**připojení**|**připojení**|Název nastavení aplikace, které má adresu URL mobilní aplikace Funkce používá tuto adresu URL k sestavení požadovaných operací REST v mobilní aplikaci. Ve své aplikaci Function App vytvořte nastavení aplikace, které obsahuje adresu URL mobilní aplikace, a potom zadejte název nastavení aplikace ve `connection` vlastnosti ve vstupní vazbě. Adresa URL vypadá jako `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKey**|Název nastavení aplikace, které má klíč rozhraní API mobilní aplikace. Pokud [implementujete klíč rozhraní API v mobilní aplikaci Node. js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)nebo [IMPLEMENTUJETE klíč rozhraní API v mobilní aplikaci .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key), zadejte klíč rozhraní API. Klíč zadáte tak, že ve své aplikaci Function App vytvoříte nastavení aplikace, které obsahuje klíč rozhraní API, a `apiKey` potom do vstupní vazby přidáte vlastnost s názvem nastavení aplikace. |
+| **type**|| Must be set to "mobileTable"|
+| **direction**||Must be set to "in"|
+| **name**|| Name of input parameter in function signature.|
+|**tableName** |**TableName**|Name of the mobile app's data table|
+| **id**| **ID** | The identifier of the record to retrieve. Can be static or based on the trigger that invokes the function. For example, if you use a queue trigger for your function, then `"id": "{queueTrigger}"` uses the string value of the queue message as the record ID to retrieve.|
+|**connection**|**Connection**|The name of an app setting that has the mobile app's URL. The function uses this URL to construct the required REST operations against your mobile app. Create an app setting in your function app that contains the mobile app's URL, then specify the name of the app setting in the `connection` property in your input binding. The URL looks like `http://<appname>.azurewebsites.net`.
+|**apiKey**|**ApiKey**|The name of an app setting that has your mobile app's API key. Provide the API key if you [implement an API key in your Node.js mobile app](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), or [implement an API key in your .NET mobile app](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). To provide the key, create an app setting in your function app that contains the API key, then add the `apiKey` property in your input binding with the name of the app setting. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Nesdílejte klíč rozhraní API s klienty vaší mobilní aplikace. Měla by být zabezpečená jenom pro klienty na straně služby, jako je Azure Functions. Azure Functions ukládá informace o připojení a klíče rozhraní API jako nastavení aplikace tak, aby nebyly zkontrolovány do úložiště správy zdrojového kódu. Tím se chrání vaše citlivé údaje.
+> Don't share the API key with your mobile app clients. It should only be distributed securely to service-side clients, like Azure Functions. Azure Functions stores your connection information and API keys as app settings so that they are not checked into your source control repository. This safeguards your sensitive information.
 
-## <a name="input---usage"></a>(Vstup) – využití
+## <a name="input---usage"></a>Input - usage
 
-V C# Functions, když se nalezne záznam se zadaným ID, se předává do pojmenovaného parametru [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) . Pokud záznam není nalezen, hodnota parametru je `null`. 
+In C# functions, when the record with the specified ID is found, it is passed into the named [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parameter. When the record is not found, the parameter value is `null`. 
 
-Ve funkcích JavaScriptu je záznam předán do `context.bindings.<name>` objektu. Pokud záznam není nalezen, hodnota parametru je `null`. 
+In JavaScript functions, the record is passed into the `context.bindings.<name>` object. When the record is not found, the parameter value is `null`. 
 
-Ve C# funkcích F# a se všechny změny, které provedete v vstupním záznamu (vstupní parametr), automaticky odešlou zpátky do tabulky, když se funkce ukončí úspěšně. Záznam nelze upravovat ve funkcích JavaScriptu.
+In C# and F# functions, any changes you make to the input record (input parameter) are automatically sent back to the table when the function exits successfully. You can't modify a record in JavaScript functions.
 
 ## <a name="output"></a>Výstup
 
-Použijte výstupní vazbu Mobile Apps k zápisu nového záznamu do tabulky Mobile Apps.  
+Use the Mobile Apps output binding to write a new record to a Mobile Apps table.  
 
-## <a name="output---example"></a>Výstup – příklad
+## <a name="output---example"></a>Output - example
 
-Podívejte se na příklad specifické pro jazyk:
+See the language-specific example:
 
 * [C#](#output---c-example)
-* [C# skript (.csx)](#output---c-script-example)
+* [C# script (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
-### <a name="output---c-example"></a>Výstup – příklad v jazyce C#
+### <a name="output---c-example"></a>Output - C# example
 
-Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která se aktivuje v rámci zprávy fronty a vytvoří záznam v tabulce mobilní aplikace.
+The following example shows a [C# function](functions-dotnet-class-library.md) that is triggered by a queue message and creates a record in a mobile app table.
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -189,11 +184,11 @@ public static object Run(
 }
 ```
 
-### <a name="output---c-script-example"></a>Výstup – příklad skriptu jazyka C#
+### <a name="output---c-script-example"></a>Output - C# script example
 
-Následující příklad ukazuje výstupní vazbu Mobile Apps v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu. Funkce je aktivována zprávou fronty a vytvoří nový záznam s pevně zakódovanou hodnotou pro `Text` vlastnost.
+The following example shows a Mobile Apps output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function is triggered by a queue message and creates a new record with hard-coded value for the `Text` property.
 
-Zde je vazba dat v *function.json* souboru:
+Here's the binding data in the *function.json* file:
 
 ```json
 {
@@ -217,9 +212,9 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-[Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
+The [configuration](#output---configuration) section explains these properties.
 
-Tady je kód skriptu jazyka C#:
+Here's the C# script code:
 
 ```cs
 public static void Run(string myQueueItem, out object record)
@@ -230,11 +225,11 @@ public static void Run(string myQueueItem, out object record)
 }
 ```
 
-### <a name="output---javascript-example"></a>Výstup – příklad v jazyce JavaScript
+### <a name="output---javascript-example"></a>Output - JavaScript example
 
-Následující příklad ukazuje výstupní vazbu Mobile Apps v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce je aktivována zprávou fronty a vytvoří nový záznam s pevně zakódovanou hodnotou pro `Text` vlastnost.
+The following example shows a Mobile Apps output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function is triggered by a queue message and creates a new record with hard-coded value for the `Text` property.
 
-Zde je vazba dat v *function.json* souboru:
+Here's the binding data in the *function.json* file:
 
 ```json
 {
@@ -259,9 +254,9 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-[Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
+The [configuration](#output---configuration) section explains these properties.
 
-Tady je kód jazyka JavaScript:
+Here's the JavaScript code:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -274,11 +269,11 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="output---attributes"></a>Výstup – atributy
+## <a name="output---attributes"></a>Output - attributes
 
-V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [Mobile](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribute.
 
-Informace o vlastnostech atributu, které lze konfigurovat, naleznete v tématu [Output-Configuration](#output---configuration). Tady je `MobileTable` příklad atributů v podpisu metody:
+For information about attribute properties that you can configure, see [Output - configuration](#output---configuration). Here's a `MobileTable` attribute example in a method signature:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -291,37 +286,37 @@ public static object Run(
 }
 ```
 
-Kompletní příklad naleznete v tématu [výstup – příklad v jazyce C#](#output---c-example).
+For a complete example, see [Output - C# example](#output---c-example).
 
-## <a name="output---configuration"></a>Výstup – konfigurace
+## <a name="output---configuration"></a>Output - configuration
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `MobileTable` atribut.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `MobileTable` attribute.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|function.json property | Attribute property |Popis|
 |---------|---------|----------------------|
-| **type**|| Musí být nastavené na "mobilní".|
-| **direction**||Musí být nastavené na out.|
-| **name**|| Název výstupního parametru v podpisu funkce.|
-|**tableName** |**TableName**|Název tabulky dat mobilní aplikace|
-|**připojení**|**MobileAppUriSetting**|Název nastavení aplikace, které má adresu URL mobilní aplikace Funkce používá tuto adresu URL k sestavení požadovaných operací REST v mobilní aplikaci. Ve své aplikaci Function App vytvořte nastavení aplikace, které obsahuje adresu URL mobilní aplikace, a potom zadejte název nastavení aplikace ve `connection` vlastnosti ve vstupní vazbě. Adresa URL vypadá jako `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKeySetting**|Název nastavení aplikace, které má klíč rozhraní API mobilní aplikace. Pokud [implementujete klíč rozhraní API v back-endu mobilní aplikace Node. js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)nebo [IMPLEMENTUJEte klíč rozhraní API do back-endu mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key), zadejte klíč rozhraní API. Klíč zadáte tak, že ve své aplikaci Function App vytvoříte nastavení aplikace, které obsahuje klíč rozhraní API, a `apiKey` potom do vstupní vazby přidáte vlastnost s názvem nastavení aplikace. |
+| **type**|| Must be set to "mobileTable"|
+| **direction**||Must be set to "out"|
+| **name**|| Name of output parameter in function signature.|
+|**tableName** |**TableName**|Name of the mobile app's data table|
+|**connection**|**MobileAppUriSetting**|The name of an app setting that has the mobile app's URL. The function uses this URL to construct the required REST operations against your mobile app. Create an app setting in your function app that contains the mobile app's URL, then specify the name of the app setting in the `connection` property in your input binding. The URL looks like `http://<appname>.azurewebsites.net`.
+|**apiKey**|**ApiKeySetting**|The name of an app setting that has your mobile app's API key. Provide the API key if you [implement an API key in your Node.js mobile app backend](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), or [implement an API key in your .NET mobile app backend](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). To provide the key, create an app setting in your function app that contains the API key, then add the `apiKey` property in your input binding with the name of the app setting. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Nesdílejte klíč rozhraní API s klienty vaší mobilní aplikace. Měla by být zabezpečená jenom pro klienty na straně služby, jako je Azure Functions. Azure Functions ukládá informace o připojení a klíče rozhraní API jako nastavení aplikace tak, aby nebyly zkontrolovány do úložiště správy zdrojového kódu. Tím se chrání vaše citlivé údaje.
+> Don't share the API key with your mobile app clients. It should only be distributed securely to service-side clients, like Azure Functions. Azure Functions stores your connection information and API keys as app settings so that they are not checked into your source control repository. This safeguards your sensitive information.
 
-## <a name="output---usage"></a>Výstup – využití
+## <a name="output---usage"></a>Output - usage
 
-Ve C# skriptových funkcích použijte pro přístup k výstupnímu záznamu `out object` pojmenovaný výstupní parametr typu. V C# knihovnách `MobileTable` tříd lze atribut použít s některým z následujících typů:
+In C# script functions, use a named output parameter of type `out object` to access the output record. In C# class libraries, the `MobileTable` attribute can be used with any of the following types:
 
-* `ICollector<T>`nebo `IAsyncCollector<T>`, kde `T` je buď `JObject` nebo jakýkoli typ s `public string Id` vlastností.
+* `ICollector<T>` or `IAsyncCollector<T>`, where `T` is either `JObject` or any type with a `public string Id` property.
 * `out JObject`
-* `out T`nebo `out T[]`, kde `T` jelibovolnýtypsvlastností.`public string Id`
+* `out T` or `out T[]`, where `T` is any Type with a `public string Id` property.
 
-Ve funkcích Node. js použijte `context.bindings.<name>` pro přístup k výstupnímu záznamu.
+In Node.js functions, use `context.bindings.<name>` to access the output record.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
+> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)

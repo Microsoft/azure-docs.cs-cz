@@ -1,33 +1,31 @@
 ---
-title: 'Azure Cosmos DB: Vytvoření aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB'
-description: Tento článek představuje vzorový kód Node.js, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
+title: 'Quickstart: Use Node.js to query from Azure Cosmos DB SQL API account'
+description: How to use Node.js to create an app that connects to Azure Cosmos DB SQL API account and queries data.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 11/19/2019
 ms.author: dech
-ms.openlocfilehash: bd9405630a471fc1909b1930db8efb7d0419daaa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44cdd4307be56d864afb45d619958cc59a3fa978
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495203"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220518"
 ---
-# <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Rychlý Start: Vytvoření aplikace Node. js pomocí Azure Cosmos DB účtu rozhraní SQL API
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Quickstart: Use Node.js to connect and query data from Azure Cosmos DB SQL API account
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
-> * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
-
-V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB, databázi dokumentů a kontejner pomocí webu Azure Portal. Pak vytvoříte a spustíte aplikaci konzoly využívající sadu [SQL JavaScript SDK](sql-api-sdk-node.md). V tomto rychlém startu se používá verze 2.0 sady [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos).
+This quickstart demonstrates how to use a Node.js app to connect to the [SQL API](sql-api-introduction.md) account in Azure Cosmos DB. You can then use Azure Cosmos DB SQL queries to query and manage data. The Node.js app you build in this article uses the [SQL JavaScript SDK](sql-api-sdk-node.md). V tomto rychlém startu se používá verze 2.0 sady [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -38,11 +36,11 @@ V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní [SQL API](sq
     * [Node.js](https://nodejs.org/en/) verze 6.0.0 nebo novější
     * [Git](https://git-scm.com/)
 
-## <a name="create-a-database-account"></a>Vytvoření účtu databáze
+## <a name="create-a-database"></a>Vytvoření databáze 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Přidat kontejner
+## <a name="add-a-container"></a>Add a container
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -56,7 +54,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní [SQL API](sq
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec a spustíme ji.
+Now let's clone a Node.js app from GitHub, set the connection string, and run it.
 
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
@@ -78,25 +76,25 @@ Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace připojovacího řetězce](#update-your-connection-string). 
+Tento krok je volitelný. If you're interested in learning how the Azure Cosmos database resources are created in the code, you can review the following snippets. Jinak můžete přeskočit přímo k části [Aktualizace připojovacího řetězce](#update-your-connection-string). 
 
 Poznámka: Pokud znáte předchozí verzi sady JavaScript SDK, možná jste zvyklí na používání termínů „kolekce“ a „dokument“. Vzhledem k tomu, že Azure Cosmos DB podporuje [více modelů rozhraní API](https://docs.microsoft.com/azure/cosmos-db/introduction), ve verzi 2.0 rozhraní JavaScript SDK a novější se používají termíny „kontejner“, což může být kolekce, graf nebo tabulka, a „položka“ popisující obsah kontejneru.
 
 Všechny následující fragmenty kódu pocházejí ze souboru **app.js**.
 
-* Inicializuje se `CosmosClient`.
+* The `CosmosClient` object is initialized.
 
     ```javascript
     const client = new CosmosClient({ endpoint, key });
     ```
 
-* Vytvoří se nová databáze.
+* Create a new Azure Cosmos database.
 
     ```javascript
     const { database } = await client.databases.createIfNotExists({ id: databaseId });
     ```
 
-* Vytvoří se nový kontejner (kolekce).
+* A new container (collection) is created within the database.
 
     ```javascript
     const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
@@ -108,7 +106,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru **app.js**.
     const { item } = await client.database(databaseId).container(containerId).items.create(itemBody);
     ```
 
-* Provede se dotaz SQL přes JSON.
+* A SQL query over JSON is performed on the family database. The query returns all the children of the "Anderson" family. 
 
     ```javascript
       const querySpec = {
@@ -134,9 +132,9 @@ Všechny následující fragmenty kódu pocházejí ze souboru **app.js**.
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
+Now go back to the Azure portal to get the connection string details of your Azure Cosmos account. Copy the connection string into the app so that it can connect to your database.
 
-1. V [Azure Portal](https://portal.azure.com/)klikněte v účtu Azure Cosmos v levém navigačním panelu na **klíče**a potom klikněte na **klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru `config.js`.
+1. In the [Azure portal](https://portal.azure.com/), in your Azure Cosmos account, in the left navigation click **Keys**, and then click **Read-write Keys**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru `config.js`.
 
     ![Zobrazení a zkopírování přístupového klíče na portálu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
 
@@ -151,11 +149,12 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     `config.key = "FILLME"`
     
 ## <a name="run-the-app"></a>Spusťte aplikaci
+
 1. Spusťte v terminálu `npm install`, aby se nainstalovaly požadované moduly NPM.
 
 2. Spuštění v terminálu `node app.js`, aby se spustila aplikace uzlu.
 
-Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
+You can now go back to Data Explorer, modify, and work with this new data.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
@@ -167,7 +166,7 @@ Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést ú
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos, vytvoření kontejneru pomocí Průzkumník dat a spuštění aplikace. Teď můžete do účtu databáze Cosmos importovat další data. 
+In this quickstart, you've learned how to create an Azure Cosmos account, create a container using the data explorer, and run an app. You can now import additional data to your Azure Cosmos database. 
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

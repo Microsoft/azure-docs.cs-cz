@@ -1,7 +1,7 @@
 ---
-title: Testovací aplikace na portálu LUIS
+title: Test app in LUIS portal
 titleSuffix: Azure Cognitive Services
-description: Pomocí Language Understanding (LUIS) můžete průběžně pracovat na vaší aplikaci a zdokonalit tak její porozumění jazyku.
+description: Use Language Understanding (LUIS) to continuously work on your application to refine it and improve its language understanding.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: ebc86d1cf91cf79ab83b0f49d9898a91d8be8a75
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 628547e8254bb0055cf1f09af50e79b68311a759
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500280"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221729"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
+# <a name="test-your-luis-app-in-the-luis-portal"></a>Test your LUIS app in the LUIS portal
 
-[Testování](luis-concept-test.md) aplikace je iterativní proces. Po školení aplikace LUIS otestujte ji pomocí Sample projevy a zjistěte, jestli jsou záměry a entity správně rozpoznané. Pokud nejsou, proveďte aktualizace aplikace LUIS, školení a testování znovu. 
+[Testing](luis-concept-test.md) an app is an iterative process. After training your LUIS app, test it with sample utterances to see if the intents and entities are recognized correctly. If they're not, make updates to the LUIS app, train, and test again. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -30,90 +30,98 @@ ms.locfileid: "73500280"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="test-an-utterance"></a>Testování utterance
+## <a name="train-before-testing"></a>Train before testing
 
-1. Přístup k aplikaci získáte tak, že na stránce **Moje aplikace** vyberete její název. 
+In order to test against the most recent version of the active app, select **Train** from the top menu, before testing. 
 
-1. Pro přístup k panelu **testovacího** snímku vyberte v horním panelu aplikace **test** .
+## <a name="test-an-utterance"></a>Test an utterance
 
-    ![Výuka stránky testovací aplikace &](./media/luis-how-to-interactive-test/test.png)
+The test utterance should not be exactly the same as any example utterances in the app. The test utterance should include word choice, phrase length, and entity usage you expect for a user. 
 
-1. Do textového pole zadejte utterance a vyberte Enter. V **testu**můžete zadat tolik projevy testů, ale pouze jeden utterance v jednom okamžiku.
+1. Access your app by selecting its name on the **My Apps** page. 
 
-1. Do seznamu projevy pod textovým polem se přidají utterance, jeho nejvyšší záměr a skóre.
+1. To access the **Test** slide-out panel, select **Test** in your application's top panel.
 
-    ![Interaktivní testování identifikuje nesprávný záměr.](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![Train & Test App page](./media/luis-how-to-interactive-test/test.png)
 
-## <a name="inspect-score"></a>Zkontrolovat skóre
+1. Enter an utterance in the text box and select Enter. You can type as many test utterances as you want in the **Test**, but only one utterance at a time.
 
-Podrobnosti o výsledku testu si můžete prohlédnout na panelu **Kontrola** . 
+1. The utterance, its top intent, and score are added to the list of utterances under the text box.
+
+    ![Interactive testing identifies the wrong intent](./media/luis-how-to-interactive-test/test-weather-1.png)
+
+## <a name="inspect-score"></a>Inspect score
+
+You inspect details of the test result in the **Inspect** panel. 
  
-1. V otevřeném panelu **testovacího** snímku vyberte **zkontrolovat** pro utterance, který chcete porovnat. 
+1. With the **Test** slide-out panel open, select **Inspect** for an utterance you want to compare. 
 
-    ![Kliknutím na tlačítko zkontrolovat zobrazíte další podrobnosti o výsledcích testu.](./media/luis-how-to-interactive-test/inspect.png)
+    ![Select Inspect button to see more details about the test results](./media/luis-how-to-interactive-test/inspect.png)
 
-1. Zobrazí se panel **Kontrola** . Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazí výsledek vybrané utterance.
+1. The **Inspection** panel appears. The panel includes the top scoring intent as well as any identified entities. The panel shows the result of the selected utterance.
 
-    ![Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazí výsledek vybrané utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![The panel includes the top scoring intent as well as any identified entities. The panel shows the result of the selected utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-## <a name="correct-top-scoring-intent"></a>Opravit nejvyšší záměr hodnocení
+## <a name="correct-top-scoring-intent"></a>Correct top scoring intent
 
-1. Pokud je záměr nejvyšší bodování nesprávný, vyberte tlačítko **Upravit** .
+1. If the top scoring intent is incorrect, select the **Edit** button.
 
-1.  V rozevíracím seznamu vyberte správný záměr pro utterance.
+1.  In the drop-down list, select the correct intent for the utterance.
 
-    ![Vybrat správný záměr](./media/luis-how-to-interactive-test/intent-select.png)
+    ![Select correct intent](./media/luis-how-to-interactive-test/intent-select.png)
 
-## <a name="view-sentiment-results"></a>Zobrazit výsledky mínění
+## <a name="view-sentiment-results"></a>View sentiment results
 
-Pokud je na stránce **[publikovat](luis-how-to-publish-app.md#enable-sentiment-analysis)** nakonfigurována **Analýza mínění** , výsledky testu zahrnují mínění nalezený v utterance. 
+If **Sentiment analysis** is configured on the **[Publish](luis-how-to-publish-app.md#enable-sentiment-analysis)** page, the test results include the sentiment found in the utterance. 
 
-![Obrázek testovacího podokna s analýzou mínění](./media/luis-how-to-interactive-test/sentiment.png)
+![Image of Test pane with sentiment analysis](./media/luis-how-to-interactive-test/sentiment.png)
 
-## <a name="correct-matched-patterns-intent"></a>Opravit záměr vyhovujícího vzoru
+## <a name="correct-matched-patterns-intent"></a>Correct matched pattern's intent
 
-Pokud používáte [vzory](luis-concept-patterns.md) , ale utterance odpovídá vzoru, ale nesprávný záměr byl předpovězen, vyberte odkaz **Upravit** podle vzoru a pak vyberte správný záměr.
+If you are using [Patterns](luis-concept-patterns.md) and the utterance matched a pattern, but the wrong intent was predicted, select the **Edit** link by the pattern, then select the correct intent.
 
-## <a name="compare-with-published-version"></a>Porovnat s publikovanou verzí
+## <a name="compare-with-published-version"></a>Compare with published version
 
-Aktivní verzi aplikace můžete otestovat pomocí publikované verze [koncového bodu](luis-glossary.md#endpoint) . Na panelu **Kontrola** vyberte **Porovnat s publikováním**. Jakékoli testování u publikovaného modelu se odečte od vyvážení kvóty předplatného Azure. 
+You can test the active version of your app with the published [endpoint](luis-glossary.md#endpoint) version. In the **Inspect** panel, select **Compare with published**. Any testing against the published model is deducted from your Azure subscription quota balance. 
 
-![Porovnat s publikovaným](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+![Compare with published](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
-## <a name="view-endpoint-json-in-test-panel"></a>Zobrazit JSON koncového bodu na testovacím panelu
-Můžete zobrazit vrácený koncový bod JSON pro porovnání tím, že vyberete **zobrazení zobrazit JSON**.
+## <a name="view-endpoint-json-in-test-panel"></a>View endpoint JSON in test panel
+You can view the endpoint JSON returned for the comparison by selecting the **Show JSON view**.
 
-![Publikovaná odpověď JSON](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+![Published JSON response](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 <!--Service name is 'Bing Spell Check v7 API' in the portal-->
-## <a name="additional-settings-in-test-panel"></a>Další nastavení na testovacím panelu
+## <a name="additional-settings-in-test-panel"></a>Additional settings in test panel
 
-### <a name="luis-endpoint"></a>Koncový bod LUIS
+### <a name="luis-endpoint"></a>LUIS endpoint
 
-Pokud máte několik koncových bodů LUIS, použijte odkaz **Další nastavení** v podokně Publikováno v testu ke změně koncového bodu používaného pro testování. Pokud si nejste jisti, který koncový bod chcete použít, vyberte výchozí **Starter_Key**. 
+If you have several LUIS endpoints, use the **Additional Settings** link on the Test's Published pane to change the endpoint used for testing. If you are not sure which endpoint to use, select the default **Starter_Key**. 
 
-![Testovací panel s zvýrazněným dalším nastavením odkazu](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+> [!div class="mx-imgBorder"]
+> ![Test panel with Additional Settings link highlighted](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
+<!--
+###  View Bing Spell Check corrections in test panel
 
-### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Zobrazit Kontrola pravopisu Bingu opravy na testovacím panelu
+Requirements to view the spelling corrections: 
 
-Požadavky pro zobrazení oprav pravopisu: 
+* Published app
+* Bing Spell Check [service key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). The service key is not stored and needs to be reset for each browser session. 
 
-* Publikovaná aplikace
-* [Klíč služby](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)kontrola pravopisu Bingu Klíč služby není uložený a je potřeba ho resetovat pro každou relaci prohlížeče. 
+Use the following procedure to include the [Bing Spell Check v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) service  in the Test pane results. 
 
-Použijte následující postup, chcete-li zahrnout službu [Kontrola pravopisu Bingu v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) do výsledků podokna testu. 
+1. In the **Test** pane, enter an utterance. When the utterance is predicted, select **[Inspect](#inspect-score)** underneath the utterance you entered. 
 
-1. V podokně **test** zadejte utterance. Po předvídání **[utterance vyberte pod](#inspect-score)** utterance, které jste zadali. 
+1. When the **Inspect** panel opens, select **[Compare with Published](#compare-with-published-version)**. 
 
-1. Po otevření panelu **Kontrola** vyberte **[Porovnat s publikováním](#compare-with-published-version)** . 
+1. When the **Published** panel opens, select **[Additional Settings](#additional-settings-in-test-panel)**.
 
-1. Po otevření **publikovaného** panelu vyberte **[Další nastavení](#additional-settings-in-test-panel)** .
+1. In the pop-up dialog, check **Enable Bing Spell Check** and enter the key, then select **Done**. 
+    ![Enter Bing Spell Check service key](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-1. V místním dialogovém okně zaškrtněte **povolit kontrola pravopisu Bingu** a zadejte klíč a potom vyberte **Hotovo**. 
-    ![zadat klíč služby Kontrola pravopisu Bingu](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
-
-1. Zadejte dotaz, který má nesprávný pravopis, například `book flite to seattle`, a vyberte Enter. Nesprávný pravopis slova `flite` je nahrazen v dotazu odeslaném do LUIS a výsledný JSON zobrazuje jak původní dotaz, tak `query`a opravený pravopis v dotazu, jako `alteredQuery`.
+1. Enter a query with an incorrect spelling such as `book flite to seattle` and select enter. The incorrect spelling of the word `flite` is replaced in the query sent to LUIS and the resulting JSON shows both the original query, as `query`, and the corrected spelling in the query, as `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>
@@ -125,13 +133,14 @@ Použijte následující postup, chcete-li zahrnout službu [Kontrola pravopisu 
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+-->
 
 ## <a name="batch-testing"></a>Dávkové testování
-Podívejte se na [Koncepty](luis-concept-batch-test.md) testování dávek a Naučte [se](luis-how-to-batch-test.md) testovat dávku projevy.
+See batch testing [concepts](luis-concept-batch-test.md) and learn [how to](luis-how-to-batch-test.md) test a batch of utterances.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud testování indikuje, že vaše aplikace LUIS nerozpozná správné záměry a entity, můžete pracovat na vylepšení přesnosti vaší aplikace LUIS tak, že se přihlásíte další projevy nebo přidáte funkce. 
+If testing indicates that your LUIS app doesn't recognize the correct intents and entities, you can work to improve your LUIS app's accuracy by labeling more utterances or adding features. 
 
-* [Popisek navržený projevy pomocí LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Využijte funkce ke zlepšení výkonu aplikace v LUIS.](luis-how-to-add-features.md) 
+* [Label suggested utterances with LUIS](luis-how-to-review-endpoint-utterances.md) 
+* [Use features to improve your LUIS app's performance](luis-how-to-add-features.md) 

@@ -1,91 +1,92 @@
 ---
-title: Kopírování dat z a do Dynamics CRM nebo Dynamics 365 (Common Data Service) pomocí Azure Data Factory
-description: Naučte se, jak kopírovat data z Microsoft Dynamics CRM nebo Microsoft Dynamics 365 (Common Data Service) do podporovaných úložišť dat jímky, nebo z podporovaných zdrojových úložišť dat do Dynamics CRM nebo Dynamics 365 pomocí aktivity kopírování v kanálu služby Data Factory.
+title: Copy data in Dynamics (Common Data Service)
+description: Learn how to copy data from Microsoft Dynamics CRM or Microsoft Dynamics 365 (Common Data Service) to supported sink data stores, or from supported source data stores to Dynamics CRM or Dynamics 365, by using a copy activity in a data factory pipeline.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: c9adcf72eeec82fd4b8f1805fca1f284c0b953b7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+author: linda33wj
+manager: craigg
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 10/25/2019
+ms.openlocfilehash: b2eb6f877daf2fddaa5a61a958254cc8222ac6db
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680979"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218590"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí Azure Data Factory
+# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Copy data from and to Dynamics 365 (Common Data Service) or Dynamics CRM by using Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do Microsoft Dynamics 365 nebo Microsoft Dynamics CRM. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
+This article outlines how to use Copy Activity in Azure Data Factory to copy data from and to Microsoft Dynamics 365 or Microsoft Dynamics CRM. It builds on the [Copy Activity overview](copy-activity-overview.md) article that presents a general overview of Copy Activity.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Supported capabilities
 
-Tento konektor se podporuje pro následující činnosti:
+This connector is supported for the following activities:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
-Data z Dynamics 365 (Common Data Service) nebo Dynamics CRM můžete kopírovat do libovolného podporovaného úložiště dat jímky. Data můžete také kopírovat z libovolného podporovaného zdrojového úložiště dat do Dynamics 365 (Common Data Service) nebo Dynamics CRM. Seznam úložišť dat podporovaných jako zdroje nebo jímky aktivitou kopírování najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
+You can copy data from Dynamics 365 (Common Data Service) or Dynamics CRM to any supported sink data store. You also can copy data from any supported source data store to Dynamics 365 (Common Data Service) or Dynamics CRM. For a list of data stores supported as sources or sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
 
-Tento Dynamics Connector podporuje Dynamics verze 7. x až 9. x pro online i místní prostředí. Konkrétně
+This Dynamics connector supports Dynamics version 7.x to 9.x for both online or on-premises. More specifically,
 
-- Verze 7. x se mapuje na Dynamics CRM 2015
-- Verze 8. x se mapuje na Dynamics CRM 2016 a dřívější verzi Dynamics 365.
-- Verze 9. x se mapuje na novější verzi Dynamics 365
+- Version 7.x maps to Dynamics CRM 2015
+- Version 8.x maps to Dynamics CRM 2016 and the early version of Dynamics 365
+- Version 9.x maps to the later version of Dynamics 365
 
-V následující tabulce najdete informace o podporovaných typech a konfiguracích ověřování pro příslušné verze a produkty Dynamics. (IFD je pro internetové nasazení krátké.)
+Refer to the following table on the supported authentication types and configurations for respective Dynamics versions/products. (IFD is short for internet-facing deployment.)
 
-| Verze Dynamics | Typy ověřování | Ukázky propojených služeb |
+| Dynamics versions | Authentication types | Linked service samples |
 |:--- |:--- |:--- |
-| Dynamics 365 online <br> Dynamics CRM Online | Office 365 | [Dynamics Online + ověřování Office 365](#dynamics-365-and-dynamics-crm-online) |
-| Místní prostředí Dynamics 365 s IFD <br> Dynamics CRM 2016 v místním prostředí s IFD <br> Dynamics CRM 2015 v místním prostředí s IFD | SLUŽBU | [Místní řešení s IFD a ověřováním pomocí internetového nasazení](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+| Dynamics 365 online <br> Dynamics CRM Online | Office365 | [Dynamics online + Office365 auth](#dynamics-365-and-dynamics-crm-online) |
+| Dynamics 365 on-premises with IFD <br> Dynamics CRM 2016 on-premises with IFD <br> Dynamics CRM 2015 on-premises with IFD | IFD | [Dynamics on-premises with IFD + IFD auth](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
-Pro Dynamics 365 jsou podporovány následující typy aplikací:
+For Dynamics 365 specifically, the following application types are supported:
 
-- Dynamics 365 pro prodej
-- Dynamics 365 pro zákaznické služby
+- Dynamics 365 for Sales
+- Dynamics 365 for Customer Service
 - Dynamics 365 for Field Service
-- Dynamics 365 pro automatizaci služby Project Service
-- Dynamics 365 pro marketing
+- Dynamics 365 for Project Service Automation
+- Dynamics 365 for Marketing
 
-Tento konektor nepodporuje jiné typy aplikací, např. finance a operace, talentů atd.
+Other application types e.g. Finance and Operations, Talent, etc. are not supported by this connector.
 
-Tento konektor Dynamics je postaven nad [nástroji Dynamics XRM](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
+This Dynamics connector is built on top of [Dynamics XRM tooling](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 >[!TIP]
->Pokud chcete kopírovat data z **dynamics 365 finance a operací**, můžete použít [konektor Dynamics AX](connector-dynamics-ax.md).
+>To copy data from **Dynamics 365 Finance and Operations**, you can use the [Dynamics AX connector](connector-dynamics-ax.md).
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro aplikaci Dynamics.
+The following sections provide details about properties that are used to define Data Factory entities specific to Dynamics.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Linked service properties
 
-Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
+The following properties are supported for the Dynamics linked service.
 
-### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 a Dynamics CRM Online
+### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 and Dynamics CRM Online
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavena na hodnotu **Dynamics**, **DynamicsCrm**nebo **CommonDataServiceForApps**. | Ano |
-| Typ nasazení | Typ nasazení instance Dynamics Musí být **online** pro Dynamics Online. | Ano |
-| serviceUri | Adresa URL služby vaší instance Dynamics, například `https://adfdynamics.crm.dynamics.com`. | Ano |
-| authenticationType | Typ ověřování pro připojení k Dynamics serveru. Zadejte **"Office 365"** pro Dynamics Online. | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku, pokud zdrojová propojená služba nemá modul runtime integrace |
+| type | The type property must be set to **Dynamics**, **DynamicsCrm**, or **CommonDataServiceForApps**. | Ano |
+| deploymentType | The deployment type of the Dynamics instance. It must be **"Online"** for Dynamics online. | Ano |
+| serviceUri | The service URL of your Dynamics instance, e.g. `https://adfdynamics.crm.dynamics.com`. | Ano |
+| authenticationType | The authentication type to connect to a Dynamics server. Specify **"Office365"** for Dynamics online. | Ano |
+| uživatelské jméno | Specify the user name to connect to Dynamics. | Ano |
+| heslo | Specify the password for the user account you specified for username. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | The [integration runtime](concepts-integration-runtime.md) to be used to connect to the data store. If not specified, it uses the default Azure Integration Runtime. | No for source, Yes for sink if the source linked service doesn't have an integration runtime |
 
 >[!NOTE]
->Konektor Dynamics, pomocí kterého se k identifikaci online instance Dynamics CRM/365 používá volitelná vlastnost NázevOrganizace I když stále funguje, navrhnete místo toho zadání nové vlastnosti "serviceUri", abyste získali lepší výkon pro zjišťování instancí.
+>The Dynamics connector used to use optional "organizationName" property to identify your Dynamics CRM/365 Online instance. While it keeps working, you are suggested to specify the new "serviceUri" property instead to gain better performance for instance discovery.
 
-**Příklad: Dynamics Online pomocí ověřování Office 365**
+**Example: Dynamics online using Office365 authentication**
 
 ```json
 {
@@ -111,23 +112,23 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 }
 ```
 
-### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 a Dynamics CRM v místním prostředí s IFD
+### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 and Dynamics CRM on-premises with IFD
 
-*Další vlastnosti, které jsou porovnány s Dynamics Online, jsou "hostName" a "port".*
+*Additional properties that compare to Dynamics online are "hostName" and "port".*
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavena na hodnotu **Dynamics**, **DynamicsCrm**nebo **CommonDataServiceForApps**. | Ano |
-| Typ nasazení | Typ nasazení instance Dynamics Musí se jednat o **"OnPremisesWithIfd"** pro místní prostředí Dynamics pomocí internetového nasazení.| Ano |
-| Název hostitele | Název hostitele místního Dynamics serveru. | Ano |
-| port | Port místního Dynamics serveru. | Ne, výchozí hodnota je 443 |
-| Organizace | Název organizace instance Dynamics | Ano |
-| authenticationType | Typ ověřování pro připojení k Dynamics serveru. Zadejte **"IFD"** pro místní prostředí Dynamics pomocí internetového nasazení. | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat aktivitu kopírování, která se při provádění kopírování dat vyžádá – další informace najdete v části [přihlašovací údaje úložiště v Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
+| type | The type property must be set to **Dynamics**, **DynamicsCrm**, or **CommonDataServiceForApps**. | Ano |
+| deploymentType | The deployment type of the Dynamics instance. It must be **"OnPremisesWithIfd"** for Dynamics on-premises with IFD.| Ano |
+| hostName | The host name of the on-premises Dynamics server. | Ano |
+| port | The port of the on-premises Dynamics server. | No, default is 443 |
+| organizationName | The organization name of the Dynamics instance. | Ano |
+| authenticationType | The authentication type to connect to the Dynamics server. Specify **"Ifd"** for Dynamics on-premises with IFD. | Ano |
+| uživatelské jméno | Specify the user name to connect to Dynamics. | Ano |
+| heslo | Specify the password for the user account you specified for username. You can choose to mark this field as a SecureString to store it securely in ADF, or store password in Azure Key Vault and let the copy activity pull from there when performing data copy - learn more from [Store credentials in Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | The [integration runtime](concepts-integration-runtime.md) to be used to connect to the data store. If not specified, it uses the default Azure Integration Runtime. | No for source, Yes for sink |
 
-**Příklad: místní prostředí Dynamics s IFD pomocí ověřování IFD**
+**Example: Dynamics on-premises with IFD using IFD authentication**
 
 ```json
 {
@@ -155,16 +156,16 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 }
 ```
 
-## <a name="dataset-properties"></a>Vlastnosti datové sady
+## <a name="dataset-properties"></a>Dataset properties
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných sadou Dynamics DataSet.
+For a full list of sections and properties available for defining datasets, see the [Datasets](concepts-datasets-linked-services.md) article. This section provides a list of properties supported by Dynamics dataset.
 
-Chcete-li kopírovat data z a do Dynamics, jsou podporovány následující vlastnosti.
+To copy data from and to Dynamics, the following properties are supported.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na **DynamicsEntity**, **DynamicsCrmEntity**nebo **CommonDataServiceForAppsEntity**. |Ano |
-| entityName | Logický název entity, která se má načíst | Ne pro zdroj (Pokud je zadána možnost dotaz ve zdroji aktivity), Ano pro jímku |
+| type | The type property of the dataset must be set to **DynamicsEntity**, **DynamicsCrmEntity**, or **CommonDataServiceForAppsEntity**. |Ano |
+| entityName | The logical name of the entity to retrieve. | No for source (if "query" in the activity source is specified), Yes for sink |
 
 **Příklad:**
 
@@ -187,23 +188,23 @@ Chcete-li kopírovat data z a do Dynamics, jsou podporovány následující vlas
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem a typy jímky Dynamics.
+For a full list of sections and properties available for defining activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by Dynamics source and sink types.
 
-### <a name="dynamics-as-a-source-type"></a>Dynamics jako typ zdroje
+### <a name="dynamics-as-a-source-type"></a>Dynamics as a source type
 
-Chcete-li kopírovat data z Dynamics, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti.
+To copy data from Dynamics, the following properties are supported in the copy activity **source** section.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DynamicsSource**, **DynamicsCrmSource**nebo **CommonDataServiceForAppsSource**. | Ano |
-| query | FetchXML je proprietární dotazovací jazyk, který se používá v Dynamics (online a v místním prostředí). Prohlédněte si následující příklad. Další informace najdete v tématu [sestavování dotazů pomocí FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Ne (Pokud je zadána "EntityName" v sadě dat.) |
+| type | The type property of the copy activity source must be set to **DynamicsSource**, **DynamicsCrmSource**, or **CommonDataServiceForAppsSource**. | Ano |
+| query | FetchXML is a proprietary query language that is used in Dynamics (online and on-premises). Prohlédněte si následující příklad. To learn more, see [Build queries with FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | No (if "entityName" in the dataset is specified) |
 
 >[!NOTE]
->Sloupec PK bude vždy zkopírován i v případě, že projekce sloupce, kterou nakonfigurujete v dotazu FetchXML, ji neobsahuje.
+>The PK column will always be copied out even if the column projection you configure in the FetchXML query doesn't contain it.
 
 > [!IMPORTANT]
->- Při kopírování dat z Dynamics je explicitní mapování sloupce z Dynamics na jímku volitelné, ale s vysokou dostupností, aby se zajistila deterministické výsledek kopírování.
->- Při importu schématu v uživatelském rozhraní pro vytváření obsahu ADF odvodí schéma pomocí vzorkování horních řádků z výsledku dotazu Dynamics k inicializaci seznamu zdrojového sloupce. v takovém případě budou vynechány sloupce bez hodnot v horních řádcích. Stejné chování platí pro spuštění kopírování, pokud neexistuje explicitní mapování. Můžete zkontrolovat a přidat do mapování více sloupců, které budou během kopírování za běhu zaměněny.
+>- When you copy data from Dynamics, explicit column mapping from Dynamics to sink is optional but highly recommanded to ensure a deterministic copy result.
+>- When importing schema in authoring UI, ADF infers the schema by sampling the top rows from the Dynamics query result to initialize the source column list, in which case columns with no values in top rows will be omitted. The same behavior applies to copy executions if there is no explicit mapping. You can review and add more columns into the mapping, which will be honored during copy runtime.
 
 **Příklad:**
 
@@ -237,7 +238,7 @@ Chcete-li kopírovat data z Dynamics, v části **zdroj** aktivity kopírování
 ]
 ```
 
-### <a name="sample-fetchxml-query"></a>Ukázkový dotaz FetchXML
+### <a name="sample-fetchxml-query"></a>Sample FetchXML query
 
 ```xml
 <fetch>
@@ -257,24 +258,24 @@ Chcete-li kopírovat data z Dynamics, v části **zdroj** aktivity kopírování
 </fetch>
 ```
 
-### <a name="dynamics-as-a-sink-type"></a>Dynamika jako typ jímky
+### <a name="dynamics-as-a-sink-type"></a>Dynamics as a sink type
 
-Chcete-li kopírovat data do Dynamics, v části **jímka** aktivity kopírování jsou podporovány následující vlastnosti.
+To copy data to Dynamics, the following properties are supported in the copy activity **sink** section.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na **DynamicsSink**, **DynamicsCrmSink**nebo **CommonDataServiceForAppsSink**. | Ano |
-| WriteBehavior | Chování operace zápisu.<br/>Povolená hodnota je **"Upsert"** . | Ano |
-| alternateKeyName | Zadejte název alternativního klíče definovaný pro vaši entitu a proveďte "Upsert". | Ne |
-| writeBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
-| ignoreNullValues | Určuje, zda se při operaci zápisu mají ignorovat hodnoty null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **true**: když provedete operaci Upsert/Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.<br/>- **false**: při operaci Upsert/Update aktualizujte data v cílovém objektu na hodnotu null. Při operaci vložení vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
+| type | The type property of the copy activity sink must be set to **DynamicsSink**, **DynamicsCrmSink**, or **CommonDataServiceForAppsSink**. | Ano |
+| writeBehavior | The write behavior of the operation.<br/>Allowed value is **"Upsert"** . | Ano |
+| alternateKeyName | Specify the alternate key name defined on your entity to perform "Upsert". | Ne |
+| writeBatchSize | The row count of data written to Dynamics in each batch. | No (default is 10) |
+| ignoreNullValues | Indicates whether to ignore null values from input data (except key fields) during a write operation.<br/>Allowed values are **true** and **false**.<br>- **True**: Leave the data in the destination object unchanged when you do an upsert/update operation. Insert a defined default value when you do an insert operation.<br/>- **False**: Update the data in the destination object to NULL when you do an upsert/update operation. Insert a NULL value when you do an insert operation. | No (default is false) |
 
 >[!NOTE]
->Výchozí hodnota jímky "**writeBatchSize**" a aktivita kopírování " **[parallelCopies](copy-activity-performance.md#parallel-copy)** " pro jímky v aplikaci Dynamics je 10. Proto jsou záznamy 100 odesílány současně do aplikace Dynamics.
+>The default value of the sink "**writeBatchSize**" and the copy activity " **[parallelCopies](copy-activity-performance.md#parallel-copy)** " for the Dynamics sink are both 10. Therefore, 100 records are submitted to Dynamics concurrently.
 
-Pro Dynamics 365 online existuje limit [2 souběžných volání dávky na jednu organizaci](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Pokud dojde k překročení tohoto limitu, vyvolá se chyba "Server je zaneprázdněn" před tím, než se první požadavek spustí. Udržováním "writeBatchSize" menší nebo rovno 10 se vyhnete omezení souběžných volání.
+For Dynamics 365 online, there is a limit of [2 concurrent batch calls per organization](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). If that limit is exceeded, a "Server Busy" fault is thrown before the first request is ever executed. Keeping "writeBatchSize" less or equal to 10 would avoid such throttling of concurrent calls.
 
-Optimální kombinace "**writeBatchSize**" a "**parallelCopies**" závisí na schématu vaší entity, např. počtu sloupců, velikosti řádku, počtu modulů plug-in, pracovních postupů/aktivit pracovních postupů, které jsou připojeny k těmto voláním atd. Výchozím nastavením 10 writeBatchSize * 10 parallelCopies je doporučení podle služby Dynamics, které by fungovalo pro většinu entit Dynamics, i když ale nemusí být nejlepší výkon. Výkon můžete vyladit úpravou kombinace v nastavení aktivity kopírování.
+The optimal combination of "**writeBatchSize**" and "**parallelCopies**" depends on the schema of your entity e.g. number of columns, row size, number of plugins/workflows/workflow activities hooked up to those calls, etc. The default setting of 10 writeBatchSize * 10 parallelCopies is the recommendation according to Dynamics service, which would work for most Dynamics entities though may not be best performance. You can tune the performance by adjusting the combination in your copy activity settings.
 
 **Příklad:**
 
@@ -310,39 +311,39 @@ Optimální kombinace "**writeBatchSize**" a "**parallelCopies**" závisí na sc
 ]
 ```
 
-## <a name="data-type-mapping-for-dynamics"></a>Mapování datových typů pro Dynamics
+## <a name="data-type-mapping-for-dynamics"></a>Data type mapping for Dynamics
 
-Při kopírování dat z aplikace Dynamics jsou následující mapování použita z datových typů Dynamics k Data Factory dočasných datových typů. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ k jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
+When you copy data from Dynamics, the following mappings are used from Dynamics data types to Data Factory interim data types. To learn how the copy activity maps the source schema and data type to the sink, see [Schema and data type mappings](copy-activity-schema-and-type-mapping.md).
 
-Nakonfigurujte odpovídající Data Factory datový typ ve struktuře datové sady na základě vašeho zdrojového datového typu Dynamics pomocí následující tabulky mapování.
+Configure the corresponding Data Factory data type in a dataset structure based on your source Dynamics data type by using the following mapping table.
 
-| Datový typ Dynamics | Data Factory pomocný datový typ | Podporováno jako zdroj | Podporováno jako jímka |
+| Dynamics data type | Data Factory interim data type | Supported as source | Supported as sink |
 |:--- |:--- |:--- |:--- |
-| AttributeTypeCode. BigInt | Dlouhé | ✓ | ✓ |
-| AttributeTypeCode. Boolean | Logická hodnota | ✓ | ✓ |
-| Zaatributu. Customer | Guid | ✓ | |
-| Typ atributu. DateTime | Hodnotu | ✓ | ✓ |
-| Typ atributu. Decimal | Notaci | ✓ | ✓ |
-| Typ atributu. Double | Klepat | ✓ | ✓ |
-| Atribut atributu. EntityName | Řetězec | ✓ | ✓ |
-| Typ atributu. Integer | Uvedena | ✓ | ✓ |
-| Vymezit. Lookup | Guid | ✓ | ✓ (s přidruženým jedním cílem) |
-| NeManagedProperty. | Logická hodnota | ✓ | |
-| Vydaný zápis | Řetězec | ✓ | ✓ |
-| . Peníze | Notaci | ✓ | ✓ |
-| Atribut atributu. Owner | Guid | ✓ | |
-| Atribut atributu. picklist | Uvedena | ✓ | ✓ |
-| Typ atributu. uniqueidentifier | Guid | ✓ | ✓ |
-| Řetězec atributu. String | Řetězec | ✓ | ✓ |
-| Atribut atributu. State | Uvedena | ✓ | ✓ |
-| Stav atributu. | Uvedena | ✓ | ✓ |
+| AttributeTypeCode.BigInt | Dlouhé | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Logická hodnota | ✓ | ✓ |
+| AttributeType.Customer | Guid | ✓ | |
+| AttributeType.DateTime | Datetime | ✓ | ✓ |
+| AttributeType.Decimal | Decimal | ✓ | ✓ |
+| AttributeType.Double | Double | ✓ | ✓ |
+| AttributeType.EntityName | Řetězec | ✓ | ✓ |
+| AttributeType.Integer | Int32 | ✓ | ✓ |
+| AttributeType.Lookup | Guid | ✓ | ✓ (with single target associated) |
+| AttributeType.ManagedProperty | Logická hodnota | ✓ | |
+| AttributeType.Memo | Řetězec | ✓ | ✓ |
+| AttributeType.Money | Decimal | ✓ | ✓ |
+| AttributeType.Owner | Guid | ✓ | |
+| AttributeType.Picklist | Int32 | ✓ | ✓ |
+| AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
+| AttributeType.String | Řetězec | ✓ | ✓ |
+| AttributeType.State | Int32 | ✓ | ✓ |
+| AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> Datové typy Dynamics mají typ atributu. CalendarRules, atributu atributu. MultiSelectPicklist a typ atributu. PartyList nejsou podporovány.
+> The Dynamics data types AttributeType.CalendarRules, AttributeType.MultiSelectPicklist and AttributeType.PartyList aren't supported.
 
-## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+## <a name="lookup-activity-properties"></a>Lookup activity properties
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+For a list of data stores supported as sources and sinks by the copy activity in Data Factory, see [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats).

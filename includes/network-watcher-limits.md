@@ -1,17 +1,17 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 3a47e72e98711842e40b42494b111025a15e9487
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5aa658fd301bd53fa63df7d86445a4a07e50a7c5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73988622"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224510"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení | Poznámka |
 | --- | --- | --- | --- |
-| Azure Network Watcher | 1 na oblast | 1 na oblast | Pro povolení přístupu ke službě se vytvoří Network Watcher. V každém předplatném na oblast se vyžaduje jenom jedna instance Network Watcher. |
-| Relace zachytávání paketů |10 000 na oblast | 10,000 |Počet pouze relací, neuložená zachycení. |
+| Azure Network Watcher | 1 per region | 1 per region | Network Watcher is created to enable access to the service. Only one instance of Network Watcher is required per subscription per region. |
+| Packet capture sessions |10,000 per region | 10 000 |Number of sessions only, not saved captures. |

@@ -1,23 +1,22 @@
 ---
-title: 'Kurz: zřízení simulovaného zařízení X. 509 pro Azure IoT Hub používáním jazyků Java a registračních skupin'
-description: Kurz Azure – Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu a skupin registrací pro službu IoT Hub Device Provisioning
+title: Provision simulated X.509 device to Azure IoT Hub using Java and enrollment groups
+description: Tutorial - Create and provision a simulated X.509 device using Java device and service SDK and enrollment groups for IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: b3cb506b241adab44df490e2fe7f363d35f0f747
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a903997c6548aad3638ba5785d23ee7642d403fc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112445"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228333"
 ---
-# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Kurz: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady Java Device and Service SDK a registrace skupin pro IoT Hub Device Provisioning Service
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Tutorial: Create and provision a simulated X.509 device using Java device and service SDK and group enrollments for IoT Hub Device Provisioning Service
 
 Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Windows simulovat zařízení X.509 a pomocí vzorového kódu propojit toto simulované zařízení se službou Device Provisioning a centrem IoT s využitím skupin registrací. 
 
@@ -32,10 +31,10 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
 1. Ujistěte se, že je na vašem počítači nainstalovaný `git` a že je přidaný do proměnných prostředí, ke kterým má příkazové okno přístup. Na stránce [klientských nástrojů Git organizace Software Freedom Conservancy](https://git-scm.com/download/) najdete nejnovější verzi nástrojů `git` k instalaci. Jejich součástí je i **Git Bash**, aplikace příkazového řádku, pomocí které můžete pracovat se svým místním úložištěm Git. 
 
-1. Použijte následující [Přehled certifikátů](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) k vytvoření testovacích certifikátů.
+1. Use the following [Certificate Overview](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) to create your test certificates.
 
     > [!NOTE]
-    > Tento krok vyžaduje [OpenSSL](https://www.openssl.org/), který můžete buď sestavit a nainstalovat ze zdroje nebo stáhnout a nainstalovat z [třetí strany](https://wiki.openssl.org/index.php/Binaries) , jako je [to](https://sourceforge.net/projects/openssl/). Pokud jste už vytvořili _kořenový_ a _zprostředkující_ certifikát a certifikát _zařízení_, můžete tento krok přeskočit.
+    > This step requires [OpenSSL](https://www.openssl.org/), which can either be built and installed from source or downloaded and installed from a [3rd-party](https://wiki.openssl.org/index.php/Binaries) such as [this](https://sourceforge.net/projects/openssl/). Pokud jste už vytvořili _kořenový_ a _zprostředkující_ certifikát a certifikát _zařízení_, můžete tento krok přeskočit.
     >
 
     1. Postupujte podle prvních dvou kroků a vytvořte _kořenový_ a _zprostředkující_ certifikát.
@@ -46,14 +45,14 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
         1. V části **Přidat certifikát** zadejte následující informace:
             - Zadejte jedinečný název certifikátu.
-            - Vyberte soubor **_rootca. pem_** , který jste vytvořili.
+            - Select the **_RootCA.pem_** file you created.
             - Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
 
            ![Přidání certifikátu](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. Vyberte nově vytvořený certifikát:
             - Klikněte na **Vygenerovat ověřovací kód**. Zkopírujte vygenerovaný kód.
-            - Proveďte krok ověření. Zadejte nebo klikněte pravým tlačítkem a vložte _ověřovací kód_ do spuštěného okna PowerShellu.  Stisknutím klávesy **zadejte**.
+            - Proveďte krok ověření. Zadejte nebo klikněte pravým tlačítkem a vložte _ověřovací kód_ do spuštěného okna PowerShellu.  Stiskněte **Enter**.
             - Na webu Azure Portal vyberte nově vytvořený soubor **_verifyCert4.pem_** . Klikněte na **Ověřit**.
 
               ![Ověření certifikátu](./media/tutorial-group-enrollments/validate-certificate.png)
@@ -91,9 +90,9 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    1. V textovém editoru otevřete soubor zprostředkujícího podpisového certifikátu. Aktualizujte hodnotu `PUBLIC_KEY_CERTIFICATE_STRING` hodnotou vašeho zprostředkujícího podpisového certifikátu.
+    1. Open your intermediate signing certificate file in a text editor. Update the `PUBLIC_KEY_CERTIFICATE_STRING` value with the value of your intermediate signing certificate.
 
-        Pokud jste vygenerovali certifikáty zařízení pomocí prostředí bash, soubor *./certs/Azure-IoT-test-Only.Intermediate.CERT.pem* obsahuje klíč zprostředkujícího certifikátu. Pokud se vaše certifikáty vygenerovaly pomocí PowerShellu, *./Intermediate1.pem* bude soubor zprostředkujícího certifikátu.
+        If you generated your device certificates with Bash shell, *./certs/azure-iot-test-only.intermediate.cert.pem* contains the intermediate certificate key. If your certs were generated with PowerShell, *./Intermediate1.pem* will be your intermediate certificate file.
 
         ```java
         private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -160,7 +159,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-X509-sample
     ```
 
-1. Upravte `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` tak, aby zahrnoval váš _Rozsah ID_ a _globální koncový bod služby zřizování_ , které jste si poznamenali dříve.
+1. Edit `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` to include your _ID Scope_ and _Provisioning Service Global Endpoint_ that you noted previously.
 
     ```java
     private static final String idScope = "[Your ID scope here]";
@@ -171,13 +170,13 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
     private static final String leafPrivateKey = "<Your Private PEM Key here>";
     ```
 
-1. Aktualizujte `leafPublicPem` a `leafPrivateKey` proměnných pomocí certifikátů veřejného a privátního zařízení.
+1. Update the `leafPublicPem` and `leafPrivateKey` variables with your public and private device certificates.
 
-    Pokud jste vygenerovali certifikáty zařízení pomocí PowerShellu, soubory mojezařízení * obsahují veřejný klíč, privátní klíč a PFX pro zařízení.
+    If you generated your device certificates with PowerShell, the files mydevice* contain the public key, private key, and PFX for the device.
 
-    Pokud jste vygenerovali certifikáty zařízení pomocí prostředí bash,./certs/New-Device.CERT.pem obsahuje veřejný klíč. Privátní klíč zařízení bude v souboru./Private/New-Device.Key.pem.
+    If you generated your device certificates with Bash shell, ./certs/new-device.cert.pem contains the public key. The device's private key will be in the ./private/new-device.key.pem file.
 
-    Otevřete soubor veřejného klíče a aktualizujte `leafPublicPem` proměnnou touto hodnotou. Zkopírujte text z _-----zahajte-----privátního klíče_ , aby _-----konec-----privátního klíče_.
+    Open your public key file and update the `leafPublicPem` variable with that value. Copy the text from _-----BEGIN PRIVATE KEY-----_ to _-----END PRIVATE KEY-----_ .
 
     ```java
     private static final String leafPublicPem = "-----BEGIN CERTIFICATE-----\n" +
@@ -189,7 +188,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
         "-----END CERTIFICATE-----\n";
     ```
 
-    Otevřete soubor privátního klíče a aktualizujte `leafPrivatePem` proměnnou touto hodnotou. Zkopírujte text z _-----zahajte-----privátního klíče RSA_ , abyste _-----koncovým-----RSA privátního klíče_.
+    Open your private key file and update the `leafPrivatePem` variable with that value. Copy the text from _-----BEGIN RSA PRIVATE KEY-----_ to _-----END RSA PRIVATE KEY-----_ .
 
     ```java
     private static final String leafPrivateKey = "-----BEGIN RSA PRIVATE KEY-----\n" +
@@ -201,9 +200,9 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
         "-----END RSA PRIVATE KEY-----\n";
     ```
 
-1. Pro zprostředkující certifikát přidejte novou proměnnou hned `leafPrivateKey`. Pojmenujte tuto novou proměnnou `intermediateKey`. Zadejte hodnotu pro zprostředkující podpisový certifikát.
+1. Add a new variable just below `leafPrivateKey` for your intermediate certificate. Name this new variable `intermediateKey`. Give it the value of your intermediate signing certificate.
 
-    Pokud jste vygenerovali certifikáty zařízení pomocí prostředí bash, soubor *./certs/Azure-IoT-test-Only.Intermediate.CERT.pem* obsahuje klíč zprostředkujícího certifikátu. Pokud se vaše certifikáty vygenerovaly pomocí PowerShellu, *./Intermediate1.pem* bude soubor zprostředkujícího certifikátu.
+    If you generated your device certificates with Bash shell, *./certs/azure-iot-test-only.intermediate.cert.pem* contains the intermediate certificate key. If your certs were generated with PowerShell, *./Intermediate1.pem* will be your intermediate certificate file.
 
     ```java
     private static final String intermediateKey = "-----BEGIN CERTIFICATE-----\n" +
@@ -215,7 +214,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
         "-----END CERTIFICATE-----\n";
     ```
 
-1. Ve funkci `main` přidejte `intermediateKey` do kolekce `signerCertificates` před inicializací `securityProviderX509`.
+1. In the `main` function, add the `intermediateKey` to the `signerCertificates` collection before the initialization of `securityProviderX509`.
 
     ```java
     public static void main(String[] args) throws Exception
@@ -232,7 +231,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
             SecurityProvider securityProviderX509 = new SecurityProviderX509Cert(leafPublicPem, leafPrivateKey, signerCertificates);
     ```
 
-1. Uložte změny a sestavte ukázku. Přejděte do cílové složky a spusťte vytvořený soubor jar.
+1. Save your changes and build the sample. Přejděte do cílové složky a spusťte vytvořený soubor jar.
 
     ```cmd/sh
     mvn clean install
@@ -252,7 +251,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím prozkoumáváním, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
-1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. Otevřete okno **Správa** registrací pro vaši službu a pak klikněte na kartu **jednotlivé registrace** . Vyberte *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části. 
+1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. Open the **Manage Enrollments** blade for your service, and then click the **Individual Enrollments** tab. Select the *REGISTRATION ID* of the device you enrolled in this Quickstart, and click the **Delete** button at the top. 
 1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. Otevřete okno **Zařízení IoT** pro vaše centrum, vyberte *ID ZAŘÍZENÍ*, které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části.
 
 

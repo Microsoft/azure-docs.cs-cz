@@ -1,130 +1,130 @@
 ---
-title: Kurz – vytvoření a Správa rozpočtů Azure | Dokumentace Microsoftu
-description: Tento kurz pomůže plánu a účet pro náklady na služby Azure, které skutečně využijete.
+title: Tutorial - Create and manage Azure budgets | Microsoft Docs
+description: This tutorial helps plan and account for the costs of Azure services that you consume.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c4de8b0d78d66709d13526c69f9d33b16dbad1dc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: edb46bc361c515439a93d9c3d0b9987bebe4b1b1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010219"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229879"
 ---
-# <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
+# <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Create and manage Azure budgets
 
-Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. Pomáhají informovat ostatní o jejich útraty aktivně spravovat náklady a sledovat, jak útraty postupuje v čase. Při překročení prahových hodnot rozpočtu, který jste vytvořili, se aktivují jenom oznámení. Žádná z vašich prostředků neovlivní a spotřebu není zastavená. Rozpočty můžete porovnat a sledovat výdaje podle analýzu nákladů.
+Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. They help you inform others about their spending to proactively manage costs, and to monitor how spending progresses over time. When the budget thresholds you've created are exceeded, only notifications are triggered. None of your resources are affected and your consumption isn't stopped. You can use budgets to compare and track spending as you analyze costs.
 
-Data o nákladech a využití jsou obvykle k dispozici do 12-16 hodin a rozpočty se za tyto náklady vyhodnocují každé čtyři hodiny. E-mailová oznámení se obvykle přijímají během 12-16 hodin.
+Cost and usage data is typically available within 12-16 hours and budgets are evaluated against these costs every four hours. Email notifications are normally received within 12-16 hours.
 
-Rozpočty automaticky resetovat na konci období (měsíčně, čtvrtletně nebo ročně) pro velkou rozpočtu vyberete datum vypršení platnosti v budoucnu. Protože resetují se stejnou velikostí rozpočtu, budete muset vytvořit samostatné rozpočty při rozpočtu peněžních hodnot se liší v budoucích obdobích.
+Budgets reset automatically at the end of a period (monthly, quarterly, or annually) for the same budget amount when you select an expiration date in the future. Because they reset with the same budget amount, you need to create separate budgets when budgeted currency amounts differ for future periods.
 
-Příklady v tomto kurzu vás provede procesem vytvoření a úprava rozpočet pro předplatné Azure Enterprise Agreement (EA).
+The examples in this tutorial walk you through creating and editing a budget for an Azure Enterprise Agreement (EA) subscription.
 
-Podívejte se na téma [jak vytvořit rozpočet pro monitorování útraty pomocí Azure cost management](https://www.youtube.com/watch?v=ExIVG_Gr45A) videa, abyste viděli, jak můžete vytvářet rozpočty v Azure za účelem monitorování útraty.
+Watch the [How to create a budget to monitor your spending with Azure Cost Management](https://www.youtube.com/watch?v=ExIVG_Gr45A) video to see how you can create budgets in Azure to monitor spending.
 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit rozpočet na webu Azure Portal
-> * Upravit rozpočtu
+> * Create a budget in the Azure portal
+> * Edit a budget
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Rozpočty se podporují pro nejrůznější typy účtů Azure. Úplný seznam podporovaných typů účtů najdete v tématu [pochopení cost management dat](understand-cost-mgt-data.md). Chcete-li zobrazit rozpočty, potřebujete alespoň oprávnění ke čtení pro váš účet Azure.
+Budgets are supported for a variety of Azure account types. To view the full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md). To view budgets, you need at least read access for your Azure account.
 
- Pro předplatná Azure EA musíte mít oprávnění ke čtení pro zobrazení rozpočtů. Vytvoření a Správa rozpočtů, musí mít oprávnění přispěvatele. Můžete vytvořit jednotlivé rozpočty pro skupiny prostředků a předplatných EA. Nelze však vytvořit rozpočty pro fakturační účty EA.
+ For Azure EA subscriptions, you must have read access to view budgets. To create and manage budgets, you must have contributor permission. You can create individual budgets for EA subscriptions and resource groups. However, you cannot create budgets for EA billing accounts.
 
-Pro rozpočty podle uživatele a skupiny jsou podporovány následující oprávnění Azure nebo obory. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
+The following Azure permissions, or scopes, are supported per subscription for budgets by user and group. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
 - Vlastník – Může vytvářet, upravovat a odstraňovat rozpočty u předplatných.
-- Přispěvatel a přispěvatelů Cost Management – můžete vytvořit, upravit nebo odstranit vlastní rozpočty. Může měnit částky rozpočtu pro rozpočty, které vytvářejí jiní uživatelé.
-- Čtenář a čtečky Cost Management – můžete zobrazit rozpočty, ke kterým mají oprávnění.
+- Contributor and Cost Management contributor – Can create, modify, or delete their own budgets. Může měnit částky rozpočtu pro rozpočty, které vytvářejí jiní uživatelé.
+- Reader and Cost Management reader – Can view budgets that they have permission to.
 
-Další informace o přiřazování oprávnění k datům služby Cost Management najdete v tématu [přiřazení přístupu k datům služby Cost Management](assign-access-acm-data.md).
+For more information about assigning permission to Cost Management data, see [Assign access to Cost Management data](assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 - Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="create-a-budget-in-the-azure-portal"></a>Vytvořit rozpočet na webu Azure Portal
+## <a name="create-a-budget-in-the-azure-portal"></a>Create a budget in the Azure portal
 
-Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Váš navigační obsah v Azure Portal určuje, zda vytvoříte rozpočet pro předplatné nebo skupinu pro správu.
+You can create an Azure subscription budget for a monthly, quarterly, or annual period. Your navigational content in the Azure portal determines whether you create a budget for a subscription or for a management group.
 
-Chcete-li vytvořit nebo zobrazit rozpočet, otevřete požadovaný obor v Azure Portal a v nabídce vyberte **rozpočty** . Přejděte například na **odběry**, vyberte předplatné ze seznamu a potom v nabídce vyberte **rozpočty** . Pomocí panelu **Rozsah** můžete v rozpočtech přepnout na jiný obor, například na skupinu pro správu. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
+To create or view a budget, open the desired scope in the Azure portal and select **Budgets** in the menu. For example, navigate to **Subscriptions**, select a subscription from the list, and then select **Budgets** in the menu. Use the **Scope** pill to switch to a different scope, like a management group, in Budgets. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
-Po vytvoření rozpočty, zobrazí se vaše aktuální útratu proti nim jednoduché zobrazení.
+After you create budgets, they show a simple view of your current spending against them.
 
-Klikněte na **Přidat**.
+Klikněte na tlačítko **Přidat**.
 
-![Příklad zobrazující seznam rozpočtů, které již byly vytvořeny](./media/tutorial-acm-create-budgets/budgets01.png)
+![Example showing a list of budgets already created](./media/tutorial-acm-create-budgets/budgets01.png)
 
-V okně **vytvořit rozpočet** ověřte, zda je zobrazený obor správný. Vyberte všechny filtry, které chcete přidat. Filtry umožňují vytvářet rozpočty pro konkrétní náklady, jako jsou skupiny prostředků v rámci předplatného nebo služby, jako jsou virtuální počítače. Libovolný filtr, který můžete použít při analýze nákladů, se dá použít i pro rozpočet.
+In the **Create budget** window, make sure that the scope shown is correct. Choose any filters that you want to add. Filters allow you to create budgets on specific costs, such as resource groups in a subscription or a service like virtual machines. Any filter you can use in cost analysis can also be applied to a budget.
 
-Jakmile identifikujete rozsah a filtry, zadejte název rozpočtu. Pak zvolte měsíční, čtvrtletní nebo roční dobu resetování rozpočtu. Toto resetované období určuje časový interval, který je analyzován rozpočtem. Náklady vyhodnocené rozpočtem začínají nulou na začátku každého nového období. Při vytváření čtvrtletní rozpočtu funguje stejným způsobem jako měsíční rozpočtu. Rozdíl je, že je rozpočtu částka za čtvrtletí rovnoměrně rozdělené mezi tři měsíce ve čtvrtletí. Roční částka rozpočtu je rovnoměrně rozdělena mezi všechny 12 měsíců kalendářního roku.
+After you've identified your scope and filters, type a budget name. Then, choose a monthly, quarterly or annual budget reset period. This reset period determines the time window that's analyzed by the budget. The cost evaluated by the budget starts at zero at the beginning of each new period. When you create a quarterly budget, it works in the same way as a monthly budget. The difference is that the budget amount for the quarter is evenly divided among the three months of the quarter. An annual budget amount is evenly divided among all 12 months of the calendar year.
 
-Pokud máte předplatné s průběžnými platbami, MSDN nebo Visual Studio, fakturační období faktury se nemusí zarovnat k kalendářnímu měsíci. Pro tyto typy předplatného a skupiny prostředků můžete vytvořit rozpočet, který je zarovnán na období faktury nebo kalendářní měsíce. Pokud chcete vytvořit rozpočet zarovnaný k vašemu fakturačnímu období, vyberte období resetování **fakturačního měsíce**, **kvartálního čtvrtletí**nebo **fakturačního roku**. Pokud chcete vytvořit rozpočet zarovnaný ke kalendářnímu měsíci, vyberte období resetování **měsíčně**, **čtvrtletně**nebo **ročně**.
+If you have a Pay-As-You-Go, MSDN, or Visual Studio subscription, your invoice billing period might not align to the calendar month. For those subscription types and resource groups, you can create a budget that's aligned to your invoice period or to calendar months. To create a budget aligned to your invoice period, select a reset period of **Billing month**, **Billing quarter**, or **Billing year**. To create a budget aligned to the calendar month, select a reset period of **Monthly**, **Quarterly**, or **Annually**.
 
-Dále určete datum vypršení platnosti, kdy rozpočet přestane být platný, a zastaví vyhodnocování vašich nákladů.
+Next, identify the expiration date when the budget becomes invalid and stops evaluating your costs.
 
-Na základě polí zvolených v rozpočtu je graf zobrazený, který vám umožní vybrat prahovou hodnotu, která se má pro rozpočet použít. Navrhovaný rozpočet vychází z nejvyšších předpokládaných nákladů, které se můžou v budoucích obdobích účtovat. Můžete změnit částku rozpočtu.
+Based on the fields chosen in the budget so far, a graph is shown to help you select a threshold to use for your budget. The suggested budget is based on the highest forecasted cost that you might incur in future periods. You can change the budget amount.
 
-![Příklad znázorňující vytváření rozpočtu s měsíčními údaji o nákladech ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+![Example showing budget creation with monthly cost data ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Po nakonfigurování hodnoty rozpočtu kliknutím na tlačítko **Další** nakonfigurujte výstrahy rozpočtu. Rozpočty vyžadují aspoň jednu cenu prahové hodnoty (% rozpočtu) a odpovídající e-mailovou adresu. Může volitelně zahrnovat až pět prahové hodnoty a pět e-mailových adres v jedné rozpočtu. Po splnění prahové hodnoty rozpočtu se obvykle obdrží e-mailová oznámení za méně než 20 hodin. Další informace o oznámeních najdete v tématu [použití upozornění na náklady](cost-mgt-alerts-monitor-usage-spending.md). V následujícím příkladu se e-mailová výstraha vygeneruje, když se dosáhne 90% rozpočtu. Pokud vytvoříte rozpočet pomocí rozhraní API pro rozpočtování, můžete také přiřadit role lidem pro příjem výstrah. Přiřazování rolí lidem není v Azure Portal podporováno. Další informace o rozhraní API pro rozpočty Azure najdete v tématu [rozpočty rozhraní API](/rest/api/consumption/budgets).
+After you configure the budget amount, click **Next** to configure budget alerts. Budgets require at least one cost threshold (% of budget) and a corresponding email address. You can optionally include up to five thresholds and five email addresses in a single budget. When a budget threshold is met, email notifications are normally received in less than 20 hours. For more information about notifications, see [Use cost alerts](cost-mgt-alerts-monitor-usage-spending.md). In the example below, an email alert gets generated when 90% of the budget is reached. If you create a budget with the Budgets API, you can also assign roles to people to receive alerts. Assigning roles to people isn't supported in the Azure portal. For more about the Azure budgets API, see [Budgets API](/rest/api/consumption/budgets).
 
-![Příklad znázorňující podmínky upozornění](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
+![Example showing alert conditions](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Po vytvoření rozpočtu, se zobrazí v analýze nákladů. Zobrazení vašemu rozpočtu ve vztahu k vaší útraty trend je jedním z prvních kroků při spuštění [analyzovat vaše náklady a výdaje](quick-acm-cost-analysis.md).
+After you create a budget, it is shown in cost analysis. Viewing your budget in relation to your spending trend is one of the first steps when you start to [analyze your costs and spending](quick-acm-cost-analysis.md).
 
-![Příklad snazší plánování rozpočtu a výdaje podle analýzy nákladů](./media/tutorial-acm-create-budgets/cost-analysis.png)
+![Example budget and spending shown in cost analysis](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-V předchozím příkladu jste vytvořili rozpočet pro předplatné. Můžete však také vytvořit rozpočet pro skupinu prostředků. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **Správa nákladů a fakturace** &gt; **předplatná** &gt; Vybrat předplatné > **prostředků skupiny** > vyberte skupinu prostředků > **rozpočty** > a pak **přidat** rozpočtu.
+In the preceding example, you created a budget for a subscription. However, you can also create a budget for a resource group. If you want to create a budget for a resource group, navigate to **Cost Management + Billing** &gt; **Subscriptions** &gt; select a subscription > **Resource groups** > select a resource group > **Budgets** > and then **Add** a budget.
 
-## <a name="trigger-an-action-group"></a>Aktivace skupiny akcí
+## <a name="trigger-an-action-group"></a>Trigger an action group
 
-Když vytváříte nebo upravujete rozpočet pro předplatné nebo obor skupiny prostředků, můžete ho nakonfigurovat tak, aby se zavolala skupina akcí. Skupina akcí může při splnění prahové hodnoty rozpočtu provádět různé akce. Skupiny akcí se aktuálně podporují jenom pro obory předplatného a skupiny prostředků. Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups in the Azure Portal](../azure-monitor/platform/action-groups.md). Další informace o používání automatizace založené na rozpočtu se skupinami akcí najdete v tématu [Správa nákladů pomocí rozpočtů Azure](../billing/billing-cost-management-budget-scenario.md).
-
-
-
-Pokud chcete vytvořit nebo aktualizovat skupiny akcí, klikněte na **Spravovat skupiny akcí** při vytváření nebo úpravách rozpočtu.
-
-![Příklad vytvoření rozpočtu pro zobrazení skupin akcí správy](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+When you create or edit a budget for a subscription or resource group scope, you can configure it to call an action group. The action group can perform a variety of different actions when your budget threshold is met. Action Groups are currently only supported for subscription and resource group scopes. For more information about Action Groups, see [Create and manage action groups in the Azure portal](../azure-monitor/platform/action-groups.md). For more information about using budget-based automation with action groups, see [Manage costs with Azure budgets](../billing/billing-cost-management-budget-scenario.md).
 
 
-Potom klikněte na **Přidat skupinu akcí** a vytvořte skupinu akcí.
+
+To create or update action groups, click **Manage action groups** while you're creating or editing a budget.
+
+![Example of creating a budget to show Manage action groups](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-![Obrázek okna Přidat skupinu akcí](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
+Next, click **Add action group** and create the action group.
 
-Po vytvoření skupiny akcí ji zavřete a vrátíte se do svého rozpočtu.
 
-Nakonfigurujte svůj rozpočet pro použití vaší skupiny akcí, pokud je splněna jednotlivá prahová hodnota. Podporuje se až pět různých prahových hodnot.
+![Image of the Add action group box](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 
-![Příklad znázorňující výběr skupiny akcí pro podmínku upozornění](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
+After the action group is created, close the box to return to your budget.
 
-Následující příklad ukazuje prahové hodnoty rozpočtu nastavené na 50%, 75% a 100%. Každá je nakonfigurována tak, aby aktivovala zadané akce v rámci určené skupiny akcí.
+Configure your budget to use your action group when an individual threshold is met. Up to five different thresholds are supported.
 
-![Příklad znázorňující podmínky výstrah nakonfigurované s různými skupinami akcí a typem akcí](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
+![Example showing action group selection for an alert condition](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
 
-Integrace rozpočtu se skupinami akcí funguje jenom pro skupiny akcí, které mají zakázané společné schéma výstrah. Další informace o zakázání schématu najdete v tématu [návody povolení společného schématu výstrah?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
+The following example shows budget thresholds set to 50%, 75% and 100%. Each is configured to trigger the specified actions within the designated action group.
+
+![Example showing alert conditions configured with various action groups and type of actions](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
+
+Budget integration with action groups only works for action groups that have the common alert schema disabled. For more information about disabling the schema, see [How do I enable the common alert schema?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořit rozpočet na webu Azure Portal
-> * Upravit rozpočtu
+> * Create a budget in the Azure portal
+> * Edit a budget
 
-Přejděte k dalšímu kurzu, kde vytvořit opakované export pro vaše datům služby cost management.
+Advance to the next tutorial to create a recurring export for your cost management data.
 
 > [!div class="nextstepaction"]
-> [Vytvoření a správa exportovaná data](tutorial-export-acm-data.md)
+> [Create and manage exported data](tutorial-export-acm-data.md)

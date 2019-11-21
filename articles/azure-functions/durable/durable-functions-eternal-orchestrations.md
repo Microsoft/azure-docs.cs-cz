@@ -1,41 +1,37 @@
 ---
-title: Externí orchestrace v Durable Functions – Azure
-description: Naučte se implementovat orchestraci externí pomocí rozšíření Durable Functions pro Azure Functions.
-services: functions
+title: Eternal orchestrations in Durable Functions - Azure
+description: Learn how to implement eternal orchestrations by using the Durable Functions extension for Azure Functions.
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 99f57f2e0b34f2e596ff9cf1a872650228ef0acd
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 8d28ae18c44c434dba053b23a60eb78728f8d8e0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614856"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232914"
 ---
-# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orchestrace externí v Durable Functions (Azure Functions)
+# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Eternal orchestrations in Durable Functions (Azure Functions)
 
-*Orchestrace externí* jsou funkce nástroje Orchestrator, které nikdy nekončí. Jsou užitečné, pokud chcete použít [Durable Functions](durable-functions-overview.md) pro agregátory a jakýkoli scénář, který vyžaduje nekonečné smyčky.
+*Eternal orchestrations* are orchestrator functions that never end. They are useful when you want to use [Durable Functions](durable-functions-overview.md) for aggregators and any scenario that requires an infinite loop.
 
-## <a name="orchestration-history"></a>Historie orchestrace
+## <a name="orchestration-history"></a>Orchestration history
 
-Jak je vysvětleno v tématu [Historie orchestrace](durable-functions-orchestrations.md#orchestration-history) , trvalá architektura pro úlohy sleduje historii každé orchestrace funkcí. Tato historie se průběžně rozroste, dokud funkce Orchestrator nadále plánuje novou práci. Pokud se funkce Orchestrator dostane do nekonečné smyčky a průběžně plánuje práci, může tato historie značně růst a způsobovat významné problémy s výkonem. Koncept *orchestrace externí* je navržený tak, aby zmírnil tyto druhy problémů pro aplikace, které potřebují nekonečné smyčky.
+As explained in the [orchestration history](durable-functions-orchestrations.md#orchestration-history) topic, the Durable Task Framework keeps track of the history of each function orchestration. This history grows continuously as long as the orchestrator function continues to schedule new work. If the orchestrator function goes into an infinite loop and continuously schedules work, this history could grow critically large and cause significant performance problems. The *eternal orchestration* concept was designed to mitigate these kinds of problems for applications that need infinite loops.
 
-## <a name="resetting-and-restarting"></a>Resetování a restartování
+## <a name="resetting-and-restarting"></a>Resetting and restarting
 
-Namísto použití nekonečné smyčky funkce nástroje Orchestrator obnoví svůj stav voláním metody `ContinueAsNew` (.NET) nebo `continueAsNew` (JavaScript) [vazby triggeru orchestrace](durable-functions-bindings.md#orchestration-trigger). Tato metoda přijímá jeden parametr s možností serializace JSON, který se stal novým vstupem pro další generování funkce Orchestrator.
+Instead of using infinite loops, orchestrator functions reset their state by calling the `ContinueAsNew` (.NET) or `continueAsNew` (JavaScript) method of the [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger). This method takes a single JSON-serializable parameter, which becomes the new input for the next orchestrator function generation.
 
-Když se zavolá `ContinueAsNew`, instance před ukončením zachová zprávu do sebe samé. Zpráva restartuje instanci s novou vstupní hodnotou. Stejné ID instance je zachované, ale historie funkce Orchestrator je ve skutečnosti zkrácená.
+When `ContinueAsNew` is called, the instance enqueues a message to itself before it exits. The message restarts the instance with the new input value. The same instance ID is kept, but the orchestrator function's history is effectively truncated.
 
 > [!NOTE]
-> Prostředí trvalé úlohy udržuje stejné ID instance, ale interně vytvoří nové *ID spuštění* pro funkci Orchestrator, která obnoví `ContinueAsNew`. Toto ID spuštění většinou není vystaveno externě, ale může být užitečné, abyste měli informace o spuštění orchestrace ladění.
+> The Durable Task Framework maintains the same instance ID but internally creates a new *execution ID* for the orchestrator function that gets reset by `ContinueAsNew`. This execution ID is generally not exposed externally, but it may be useful to know about when debugging orchestration execution.
 
-## <a name="periodic-work-example"></a>Příklad periodické práce
+## <a name="periodic-work-example"></a>Periodic work example
 
-Jeden případ použití pro orchestraci externí je kód, který potřebuje provést pravidelnou práci po neomezenou dobu.
+One use case for eternal orchestrations is code that needs to do periodic work indefinitely.
 
 ### <a name="c"></a>C#
 
@@ -55,9 +51,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí C# příklad je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> The previous C# example is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -74,14 +70,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Rozdíl mezi tímto příkladem a funkcí aktivovanou časovačem je, že doba triggeru vyčištění tady není založena na plánu. Například plán CRON, který spouští funkci každou hodinu, se spustí v 1:00, 2:00, 3:00 atd. a může potenciálně vést k překrývání problémů. V tomto příkladu, pokud vyčištění trvá 30 minut, pak bude naplánováno na 1:00, 2:30, 4:00 atd. a neexistuje možnost překrytí.
+The difference between this example and a timer-triggered function is that cleanup trigger times here are not based on a schedule. For example, a CRON schedule that executes a function every hour will execute it at 1:00, 2:00, 3:00 etc. and could potentially run into overlap issues. In this example, however, if the cleanup takes 30 minutes, then it will be scheduled at 1:00, 2:30, 4:00, etc. and there is no chance of overlap.
 
-## <a name="starting-an-eternal-orchestration"></a>Spuštění orchestrace externí
+## <a name="starting-an-eternal-orchestration"></a>Starting an eternal orchestration
 
-K zahájení orchestrace externí použijte metodu `StartNewAsync` (.NET) nebo `startNew` (JavaScript), stejně jako u jakékoli jiné funkce orchestrace.  
+Use the `StartNewAsync` (.NET) or the `startNew` (JavaScript) method to start an eternal orchestration, just like you would any other orchestration function.  
 
 > [!NOTE]
-> Pokud potřebujete zajistit, aby orchestrace typu Singleton externí běžela, je důležité při spouštění orchestrace zachovat stejné `id` instance. Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
+> If you need to ensure a singleton eternal orchestration is running, it's important to maintain the same instance `id` when starting the orchestration. For more information, see [Instance Management](durable-functions-instance-management.md).
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -97,15 +93,15 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> Předchozí kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> The previous code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-## <a name="exit-from-an-eternal-orchestration"></a>Ukončení orchestrace externí
+## <a name="exit-from-an-eternal-orchestration"></a>Exit from an eternal orchestration
 
-Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, *Nevolejte `ContinueAsNew`* a nechejte funkci ukončit.
+If an orchestrator function needs to eventually complete, then all you need to do is *not* call `ContinueAsNew` and let the function exit.
 
-Pokud je funkce Orchestrator v nekonečné smyčce a je nutné ji zastavit, použijte k zastavení [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) metodu `TerminateAsync` (.NET) nebo `terminate` (JavaScript). Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
+If an orchestrator function is in an infinite loop and needs to be stopped, use the `TerminateAsync` (.NET) or `terminate` (JavaScript) method of the [orchestration client binding](durable-functions-bindings.md#orchestration-client) to stop it. For more information, see [Instance Management](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Naučte se implementovat orchestrace singleton.](durable-functions-singletons.md)
+> [Learn how to implement singleton orchestrations](durable-functions-singletons.md)

@@ -1,79 +1,79 @@
 ---
 title: Co je privátní propojení Azure?
-description: Naučte se používat privátní propojení Azure k přístupu ke službám Azure PaaS (například Azure Storage a SQL Database) a službám Azure Hosted Customer/Partnerská služba prostřednictvím privátního koncového bodu ve vaší virtuální síti.
+description: Learn how to use Azure Private Link to access Azure PaaS Services (for example, Azure Storage and SQL Database) and Azure hosted customer/partner services over a Private Endpoint in your virtual network.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
-ms.author: kumud
-ms.openlocfilehash: aa176cb5ffc67ebba826cf13a1a66608301af5e5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: allensu
+ms.openlocfilehash: e33fce7b3fc19d6dfa83f95b6a9bcb43588945d1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601531"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228077"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co je privátní propojení Azure? (Preview)
-Privátní odkaz Azure vám umožní přístup ke službám Azure PaaS (například Azure Storage, Azure Cosmos DB a SQL Database) a hostovaným zákazníkům a partnerským službám Azure prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Ve své virtuální síti můžete také vytvořit vlastní [službu privátního propojení](private-link-service-overview.md) a poskytnout ji soukromým uživatelům. Prostředí pro nastavení a spotřebu pomocí privátního propojení Azure je konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
+Azure Private Link enables you to access Azure PaaS Services (for example, Azure Storage, Azure Cosmos DB, and SQL Database) and Azure hosted customer/partner services over a [Private Endpoint](private-endpoint-overview.md) in your virtual network. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. You can also create your own [Private Link Service](private-link-service-overview.md) in your virtual network (VNet) and deliver it privately to your customers. The setup and consumption experience using Azure Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
 
 > [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Známá omezení najdete v tématu [privátní koncový bod](private-endpoint-overview.md#limitations) a [Služba privátního propojení](private-link-service-overview.md#limitations).
+> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). For known limitations, see [Private Endpoint](private-endpoint-overview.md#limitations) and [Private Link Service](private-link-service-overview.md#limitations).
 
 
-![Přehled privátního koncového bodu](media/private-link-overview/private-endpoint.png)
+![Private endpoint overview](media/private-link-overview/private-endpoint.png)
 
 ## <a name="key-benefits"></a>Klíčové výhody
-Privátní propojení Azure přináší následující výhody:  
-- **Služby soukromého přístupu na platformě Azure**: Připojte virtuální síť ke službám běžícím v Azure Private bez nutnosti veřejné IP adresy ve zdroji nebo cíli. Poskytovatelé služeb můžou své služby vykreslovat soukromě ve své vlastní virtuální síti a příjemci mají přístup k těmto službám soukromě ve své místní virtuální síti. Platforma privátního propojení bude zpracovávat připojení mezi příjemcem a službami přes páteřní síť Azure. 
+Azure Private Link provides the following benefits:  
+- **Privately access services on the Azure platform**: Connect your virtual network to services running in Azure privately without needing a public IP address at the source or destination. Service providers can render their services privately in their own virtual network and consumers can access those services privately in their local virtual network. The Private Link platform will handle the connectivity between the consumer and services over the Azure backbone network. 
  
-- **Místní a partnerské sítě**: přístup ke službám běžícím v Azure z místního prostředí přes tunely privátního partnerského vztahu/sítě VPN ExpressRoute (z místního) a partnerských virtuálních sítí s použitím privátních koncových bodů. Pro přístup ke službě není nutné nastavovat veřejný partnerský vztah ani procházet internetem. Tato možnost poskytuje zabezpečený způsob migrace úloh do Azure.
+- **On-premises and peered networks**: Access services running in Azure from on-premises over ExpressRoute private peering/VPN tunnels (from on-premises) and peered virtual networks using private endpoints. There is no need to set up public peering or traverse the internet to reach the service. This ability provides a secure way to migrate workloads to Azure.
  
-- **Ochrana proti exfiltrace dat**: pomocí privátního propojení Azure se privátní koncový bod ve virtuální síti namapuje na konkrétní instanci prostředku PaaS zákazníka, a to na rozdíl od celé služby. Použití příjemců privátního koncového bodu se může připojit pouze ke konkrétnímu prostředku a nikoli k žádnému jinému prostředku ve službě. V sestavách mechanismu je zajištěna ochrana před riziky exfiltrace dat. 
+- **Protection against data exfiltration**:  With Azure Private Link, the private endpoint in the VNet is mapped to a specific instance of the customer's PaaS resource as opposed to the entire service. Using the private endpoint consumers can only connect to the specific resource and not to any other resource in the service. This in built mechanism provides protection against data exfiltration risks. 
  
-- **Globální dosah**: Připojte soukromě ke službám běžícím v jiných oblastech. To znamená, že virtuální síť příjemce může být v oblasti a a může se připojit ke službám za soukromým odkazem v oblasti B.  
+- **Global reach**: Connect privately to services running in other regions. This means that the consumer's virtual network could be in region A and it can connect to services behind Private Link in region B.  
  
-- **Přihlaste se ke svým vlastním službám**: Využijte stejné možnosti a funkce, abyste svým uživatelům mohli soukromě vykreslit vlastní službu pro uživatele v Azure. Umístěním služby za Standard Load Balancer můžete povolit pro privátní propojení. Příjemce se pak může připojit přímo k vaší službě pomocí privátního koncového bodu ve své vlastní virtuální síti. Tyto požadavky na připojení můžete spravovat pomocí jednoduchého toku volání schválení. Privátní propojení Azure funguje i pro zákazníky a služby patřící do různých tenantů služby Active Directory. 
+- **Extend to your own services**: Leverage the same experience and functionality to render your own service privately to your consumers in Azure. By placing your service behind a Standard Load Balancer you can enable it for Private Link. The consumer can then connect directly to your service using a Private Endpoint in their own VNet. You can manage these connection requests using a simple approval call flow. Azure Private Link works for consumers and services belonging to different Active Directory tenants as well. 
 
 ## <a name="availability"></a>Dostupnost 
- V následující tabulce jsou uvedeny služby privátních odkazů a oblasti, kde jsou k dispozici. 
+ The following table lists the Private Link services and the regions where they are available. 
 
-|Scénář  |Podporované služby   |Dostupné oblasti | Stav   |
+|Scénář  |Supported services   |Dostupné oblasti | Stav   |
 |---------|---------|---------|---------|
-|Soukromý odkaz pro služby vlastněné zákazníkem|Služby privátních odkazů za Standard Load Balancer | Všechny veřejné oblasti  |  Preview  |
-|Privátní odkaz pro služby Azure PaaS   | Azure Storage        |  Všechny veřejné oblasti      | Preview         |
-|  | Azure Data Lake Storage Gen2        |  Všechny veřejné oblasti      | Preview         |
-|  |  Azure SQL Database         | Všechny veřejné oblasti      |   Preview      |
-||Azure SQL Data Warehouse| Všechny veřejné oblasti |Preview|
-||Databáze Azure Cosmos| Středozápadní USA, WestUS, Střed USA – sever |Preview|
+|Private Link for customer-owned services|Private Link services behind Standard Load Balancer | All public regions  |  Preview  |
+|Private Link for Azure PaaS services   | Azure Storage        |  All public regions      | Preview         |
+|  | Azure Data Lake Storage Gen2        |  All public regions      | Preview         |
+|  |  Azure SQL Database         | All public regions      |   Preview      |
+||Azure SQL Data Warehouse| All public regions |Preview|
+||Azure Cosmos DB| West Central US, WestUS, North Central US |Preview|
 
-Nejaktuálnější oznámení najdete na [stránce s aktualizacemi služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
+For the most up-to-date notifications, check the [Azure Virtual Network updates page](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-Privátní propojení Azure je integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Na Azure Monitor můžete získat přístup k následujícím informacím: 
-- **Privátní koncový bod**: data zpracovaná privátním koncovým bodem (v/v)
+Azure Private Link is integrated with Azure Monitor which allows you to archive logs to a storage account, stream events to your Event Hub, or send them to Azure Monitor logs. You can access the following information on Azure Monitor: 
+- **Private endpoint**: Data processed by the Private Endpoint  (IN/OUT)
  
-- **Služba privátního propojení**:
-    - Data zpracovaná službou privátního propojení (v/v)
-    - Dostupnost portu NAT  
+- **Private Link service**:
+    - Data processed by the Private Link service (IN/OUT)
+    - NAT port availability  
  
 ## <a name="pricing"></a>Ceny   
-Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link/).
+For pricing details, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
  
 ## <a name="faqs"></a>Nejčastější dotazy  
-Nejčastější dotazy najdete v tématu [Nejčastější dotazy k privátním linkám Azure](private-link-faq.md).
+For FAQs, see [Azure Private Link FAQs](private-link-faq.md).
  
 ## <a name="limits"></a>Omezení  
-Omezení najdete v tématu [omezení privátních propojení Azure](../azure-subscription-service-limits.md#private-link-limits).
+For limits, see [Azure Private Link limits](../azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí portálu](create-private-endpoint-portal.md)
-- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí PowerShellu](create-private-endpoint-powershell.md)
-- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
-- [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
-- [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
-- [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)
+- [Create a Private Endpoint for SQL Database Server using Portal ](create-private-endpoint-portal.md)
+- [Create a Private Endpoint for SQL Database Server using PowerShell ](create-private-endpoint-powershell.md)
+- [Create a Private Endpoint for SQL Database Server using CLI ](create-private-endpoint-cli.md)
+- [Create a Private Endpoint for Storage account using Portal ](create-private-endpoint-storage-portal.md)
+- [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Create your own Private Link service using Azure PowerShell](create-private-link-service-powershell.md)
 
 
  

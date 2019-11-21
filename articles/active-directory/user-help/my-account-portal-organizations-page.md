@@ -1,6 +1,6 @@
 ---
-title: Správa organizací na portálu Můj účet – Azure AD
-description: Jak zobrazit a opustit vaše organizace na stránce organizace na portálu Můj účet.
+title: Manage your organizations from the My Account portal - Azure AD
+description: How to view and leave organizations connected to your work or school account from the Organizations page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b81ec4996ae91714b442dd2e62a0bc45c6bfd39
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820415"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231847"
 ---
-# <a name="manage-your-organizations-from-the-my-account-portal"></a>Správa organizací z portálu Můj účet
+# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Manage organizations connected to your work or school account from the Organizations page
 
-Své organizace můžete spravovat na stránce **organizace** na portálu **můj účet** .
+You can manage your organizations from the **Organizations** page of the **My Account** portal.
 
-Na stránce **organizace** se zobrazují dva typy organizací:
+There are two types of organizations shown on the **Organizations** page:
 
-- **Domovská organizace.** Vaše domovská organizace je organizace, která vlastní pracovní nebo školní účet. Nemůžete opustit svou domovskou organizaci.
+- **Home organization.** Your home organization is the organization that owns your work or school account. You can't leave your home organization.
 
-- **Jiné organizace.** Ostatní organizace jsou libovolná skupina, ke které jste se předtím přihlásili pomocí svého pracovního nebo školního účtu. Kterékoli z těchto organizací můžete kdykoli opustit.
+- **Other organizations.** The other organizations are any group that you've signed in to previously using your work or school account. You can leave any of these organizations at any time.
 
     >[!NOTE]
-    > Pokud nemáte přiřazenou domovskou organizaci, zobrazí se jenom jeden nadpis, který uvádí organizace se seznamem vašich přidružených organizací.
+    > If you don't have an assigned Home organization, you'll just see a single heading that says Organizations with the list of your associated organizations.
 
-## <a name="view-your-organizations"></a>Zobrazit vaše organizace
+## <a name="view-your-organizations"></a>View your organizations
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. V levém navigačním podokně vyberte **organizace** nebo vyberte odkaz pro **správu organizací** z bloku **organizace** .
+2. Select **Organizations** from the left navigation pane or select the **Manage organizations** link from the **Organizations** block.
 
-    ![Stránka můj účet, na které se zobrazují odkazy zvýrazněných organizací](media/my-account-portal/my-account-portal-organizations.png)
+    ![My Account page, showing highlighted Organizations links](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Projděte si informace o vaší **domovské organizaci**.
+3. Review the information for your **Home organization**.
 
-    ![Stránka organizace](media/my-account-portal/my-account-portal-organization-page.png)
+    ![Organizations page](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Projděte si další přidružené organizace a ujistěte se, že znáte všechny organizace, které jsou k vašemu účtu připojené.
+4. Review your other associated organizations, making sure you recognize all of the organizations connected to your account.
 
 ## <a name="leave-an-organization"></a>Opuštění organizace
 
-Můžete opustit jakoukoli organizaci, která není vaší domovskou organizací.
+You can leave any organization that isn't your Home organization.
 
 >[!Important]
->Pokud necháte organizaci omylem, neexistuje žádný způsob, jak ji vrátit. Musíte počkat, až správce této organizace bude pozvánku znovu pozvat.
+>If you leave an organization by mistake, there's no way to undo it. You'll have to wait for the administrator of that organization to invite you again.
 
-1. Vyberte **opustit organizaci** vedle organizace, kterou chcete opustit, a pak výběrem **ponechat** potvrďte, že chcete odejít.
+1. Select **Leave organization** next to the organization you want to leave, and then select **Leave** to confirm you want to leave.
 
-    ![Stránka organizace se zvýrazněným odkazem na organizaci](media/my-account-portal/my-account-portal-organizations-leave.png)
+    ![Organizations page with highlighted leave organization link](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Po zobrazení svých organizací můžete:
+After viewing your organizations, you can:
 
-- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
+- View or manage your [security info](user-help-security-info-overview.md).
 
-- Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
+- View or manage your connected [devices](my-account-portal-devices-page.md).
 
-- Zobrazit [přihlašovací aktivitu](my-account-portal-sign-ins-page.md)
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- Podívejte se, jak vaše organizace [používá data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

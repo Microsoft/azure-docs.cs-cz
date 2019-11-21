@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ef9bb41c36e4bfa59f30e2666a26a7e200bfd17b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f0656d9454483c7ee76660050bbd067bef4c9296
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967132"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219080"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Kurz: Odhad budoucí útraty
 
@@ -26,7 +26,7 @@ Cloudyn pomáhá odhadovat budoucí útratu na základě historických údajů o
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít účet Azure.
 - Musíte mít buď zaregistrovanou zkušební verzi, nebo placené předplatné Cloudyn.
@@ -37,11 +37,11 @@ Cloudyn zahrnuje sestavy odhadu nákladů, které pomáhají odhadovat útratu n
 
 Sestava plánovaných nákladů pro aktuální měsíc ukazuje náklady na vaše služby. K zobrazení odhadovaných nákladů využívá náklady ze začátku měsíce a z předchozího měsíce. V nabídce sestav v horní části portálu klikněte na **Costs** > **Projection and Budget** > **Current Month Projected Cost** (Náklady > Plán a rozpočet > Plánované náklady pro aktuální měsíc). Příklad ukazuje následující obrázek.
 
-![Příklad informace uvedené v sestavě aktuální měsíc plánovaných nákladů](./media/tutorial-forecast-spending/project-month01.png)
+![Example information shown in the Current month projected cost report](./media/tutorial-forecast-spending/project-month01.png)
 
 V tomto příkladu vidíte, za které služby se utratilo nejvíc. Náklady na Azure byly nižší než náklady na AWS. Pokud chcete zobrazit podrobné informace o odhadu nákladů pro virtuální počítače Azure, v seznamu **Filtr** vyberte **Azure/VM**.
 
-![Příklad zobrazující aktuální měsíc plánované náklady na virtuální počítač Azure](./media/tutorial-forecast-spending/project-month02.png)
+![Example showing the Azure VM current month projected cost](./media/tutorial-forecast-spending/project-month02.png)
 
 Použijte ten samý základní postup a podívejte se na odhady měsíčních nákladů pro další služby, které vás zajímají.
 
@@ -49,15 +49,15 @@ Sestava ročních plánovaných nákladů ukazuje extrapolované náklady na va�
 
 V nabídce sestav v horní části portálu klikněte na **Costs** > **Projection and Budget** > **Annual Projected Cost** (Náklady > Plán a rozpočet > Roční plánované náklady). Příklad ukazuje následující obrázek.
 
-![Příklad zobrazující sestava ročních plánovaných nákladů](./media/tutorial-forecast-spending/project-annual01.png)
+![Example showing the Annual projected cost report](./media/tutorial-forecast-spending/project-annual01.png)
 
 V tomto příkladu vidíte, za které služby se utratilo nejvíc. Stejně jako u příkladu pro poslední měsíc byly náklady na Azure nižší než náklady na AWS. Pokud chcete zobrazit podrobné informace o odhadu nákladů pro virtuální počítače Azure, v seznamu **Filtr** vyberte **Azure/VM**.
 
-![Příklad zobrazující roční plánované náklady pro virtuální počítače](./media/tutorial-forecast-spending/project-annual02.png)
+![Example showing the Annual projected cost of VMs](./media/tutorial-forecast-spending/project-annual02.png)
 
 Na obrázku výše roční plánované náklady na virtuální počítače Azure dosahují 28 374 USD.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

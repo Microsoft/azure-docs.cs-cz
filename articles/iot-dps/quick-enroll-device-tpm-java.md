@@ -1,23 +1,22 @@
 ---
-title: 'Rychlý Start: registrace zařízení TPM do služby Azure Device Provisioning pomocí jazyka Java'
-description: Rychlý start Azure – Registrace zařízení TPM do služby Azure IoT Hub Device Provisioning pomocí sady SDK služby pro Javu. V tomto rychlém startu se používají jednotlivé registrace.
+title: Enroll TPM device to Azure Device Provisioning Service using Java
+description: Quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service using Java service SDK. V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 88ce16a658e760f69cdf17c9bb4de78fceca927a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: e1ef20b8e4ef865c93c31265d4b036c34b4b1aee
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903490"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229553"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby Java
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Quickstart: Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -79,7 +78,7 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
            ```
 
    2. Přidejte podrobnosti o zařízení TPM:
-       1. Podle postupu vedoucího k části *Simulace zařízení TPM* získejte *ID registrace* a [Ověřovací klíč TPM](quick-create-simulated-device.md#simulatetpm) pro simulaci zařízení TPM.
+       1. Podle postupu vedoucího k části [Simulace zařízení TPM](quick-create-simulated-device.md#simulatetpm) získejte *ID registrace* a *Ověřovací klíč TPM* pro simulaci zařízení TPM.
        2. Použijte **_ID registrace_** a **_Ověřovací klíč_** z výstupu předchozího kroku k nahrazení `[RegistrationId]` a `[TPM Endorsement Key]` v souboru se vzorovým kódem **_ServiceEnrollmentSample.java_** :
         
            ```Java
@@ -136,7 +135,7 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
 
 4. Sledujte v okně výstupu úspěšnou registraci. 
 
-5. Přejděte k vaší službě zřizování na webu Azure Portal. Klikněte na **Správa**registrací a vyberte kartu **jednotlivé registrace** . Všimněte si, že je teď uvedený *ID registrace* simulovaného zařízení TPM. 
+5. Přejděte k vaší službě zřizování na webu Azure Portal. Click **Manage enrollments**, and select the **Individual Enrollments** tab. Notice that the *Registration ID* of your simulated TPM device is now listed. 
 
     ![Ověření úspěšné registrace TPM na portálu](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
@@ -145,7 +144,7 @@ Pokud chcete prozkoumat ukázku služby v Javě, neprovádějte čištění pros
 
 1. Zavřete na svém počítači okno výstupu ukázky v Javě.
 1. Zavřete okno simulátoru TPM, pokud jste ho otevřeli pro simulaci zařízení TPM.
-1. V Azure Portal přejděte na svou službu Device Provisioning, klikněte na **Správa**registrací a pak vyberte kartu **jednotlivé registrace** . Vyberte *ID registrace* zařízení, které jste zaregistrovali pomocí tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části okna. 
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Individual Enrollments** tab. Select the *Registration ID* of the device you enrolled using this Quickstart, and click the **Delete** button at the top of the blade. 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste do své služby Device Provisioning zaregistrovali simulované zařízení TPM. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 

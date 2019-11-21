@@ -1,116 +1,111 @@
 ---
-title: Azure Functions Event Grid místní ladění
-description: Naučte se místně ladit služby Azure Functions aktivované událostmi Event Grid.
-services: functions
-documentationcenter: na
+title: Azure Functions Event Grid local debugging
+description: Learn to locally debug Azure functions triggered by an Event Grid event
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Functions, architektura bez serveru
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: e28abbe8d44094d8599545479f4611a84e9d9bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085690"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227072"
 ---
-# <a name="azure-function-event-grid-trigger-local-debugging"></a>Funkce Azure Function Event Grid aktivovat místní ladění
+# <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Function Event Grid Trigger Local Debugging
 
-Tento článek ukazuje, jak ladit místní funkci, která zpracovává událost Azure Event Grid vyvolanou účtem úložiště. 
+This article demonstrates how to debug a local function that handles an Azure Event Grid event raised by a storage account. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Vytvoření nebo použití existující aplikace Function App
-- Vytvoření nebo použití existujícího účtu úložiště
-- Stáhněte si [ngrok](https://ngrok.com/) , aby mohl Azure volat místní funkci.
+- Create or use an existing function app
+- Create or use an existing storage account
+- Download [ngrok](https://ngrok.com/) to allow Azure to call your local function
 
-## <a name="create-a-new-function"></a>Vytvořit novou funkci
+## <a name="create-a-new-function"></a>Vytvoření nové funkce
 
-Otevřete aplikaci Function App v aplikaci Visual Studio, klikněte pravým tlačítkem na název projektu v Průzkumník řešení a klikněte na **přidat > nové funkce Azure Functions**.
+Open your function app in Visual Studio and, right-click on the project name in the Solution Explorer and click **Add > New Azure Function**.
 
-V *novém okně funkce Azure* vyberte **aktivační událost Event Grid** a klikněte na **OK**.
+In the *New Azure Function* window, select **Event Grid trigger** and click **OK**.
 
 ![Vytvoření nové funkce](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-function.png)
 
-Po vytvoření funkce otevřete soubor kódu a zkopírujte na začátek souboru poznámku URL. Toto umístění se používá při konfiguraci triggeru Event Grid.
+Once the function is created, open the code file and copy the URL commented out at the top of the file. This location is used when configuring the Event Grid trigger.
 
-![Kopírovat umístění](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
+![Copy location](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
 
-Potom nastavte zarážku na řádku, který začíná `log.LogInformation`na.
+Then, set a breakpoint on the line that begins with `log.LogInformation`.
 
-![Nastavit zarážku](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
+![Set breakpoint](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
 
-Potom **stisknutím klávesy F5** spusťte ladicí relaci.
+Next, **press F5** to start a debugging session.
 
-## <a name="allow-azure-to-call-your-local-function"></a>Povolení volání místní funkce v Azure
+## <a name="allow-azure-to-call-your-local-function"></a>Allow Azure to call your local function
 
-Aby bylo možné přerušit funkci laděnou na počítači, je třeba povolit, aby Azure komunikoval s místní funkcí z cloudu.
+To break into a function being debugged on your machine, you must enable a way for Azure to communicate with your local function from the cloud.
 
-Nástroj [ngrok](https://ngrok.com/) poskytuje způsob, jak může Azure volat funkci běžící na vašem počítači. Spusťte *ngrok* pomocí následujícího příkazu:
+The [ngrok](https://ngrok.com/) utility provides a way for Azure to call the function running on your machine. Start *ngrok* using the following command:
 
 ```bash
 ngrok http -host-header=localhost 7071
 ```
-Při nastavení nástroje by okno příkazového řádku mělo vypadat podobně jako na následujícím snímku obrazovky:
+As the utility is set up, the command window should look similar to the following screenshot:
 
-![Spustit ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![Start ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
-Zkopírujte adresu URL **protokolu HTTPS** vygenerovanou při spuštění *ngrok* . Tato hodnota se používá při konfiguraci koncového bodu události Event gridu.
+Copy the **HTTPS** URL generated when *ngrok* is run. This value is used when configuring the event grid event endpoint.
 
-## <a name="add-a-storage-event"></a>Přidat událost úložiště
+## <a name="add-a-storage-event"></a>Add a storage event
 
-Otevřete Azure Portal a přejděte do účtu úložiště a klikněte na možnost **události** .
+Open the Azure portal and navigate to a storage account and click on the **Events** option.
 
-![Přidat událost účtu úložiště](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
+![Add storage account event](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-V okně *události* klikněte na tlačítko **odběr události** . V okně pro *sudé předplatné* klikněte na rozevírací seznam *Typ koncového bodu* a vyberte Webhook.
+In the *Events* window, click on the **Event Subscription** button. In the *Even Subscription* window, click on the *Endpoint Type* dropdown and select **Web Hook**.
 
-![Vybrat typ předplatného](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
+![Select subscription type](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
-Po nakonfigurování typu koncového bodu klikněte na **Vybrat koncový bod** a nakonfigurujte hodnotu koncového bodu.
+Once the endpoint type is configured, click on **Select an endpoint** to configure the endpoint value.
 
-![Vybrat typ koncového bodu](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
+![Select endpoint type](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-Hodnota *koncového bodu odběratele* se skládá ze tří různých hodnot. Předpona je adresa URL protokolu HTTPS vygenerovaná *ngrok*. Zbývající adresa URL pochází z adresy URL, která se nachází v souboru s kódem funkce, s názvem funkce přidaným na konci. Počínaje adresou URL ze souboru kódu funkce nahrazuje `http://localhost:7071` adresa URL *ngrok* a nahrazuje `{functionname}`název funkce.
+The *Subscriber Endpoint* value is made up from three different values. The prefix is the HTTPS URL generated by *ngrok*. The  remainder of the URL comes from the URL found in the function code file, with the function name added at the end. Starting with the URL from the function code file, the *ngrok* URL replaces `http://localhost:7071` and the function name replaces `{functionname}`.
 
-Následující snímek obrazovky ukazuje, jak by měla poslední adresa URL vypadat:
+The following screenshot shows how the final URL should look:
 
-![Výběr koncového bodu](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
+![Endpoint selection](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
 
-Po zadání příslušné hodnoty klikněte na **potvrdit výběr**.
+Once you've entered the appropriate value, click **Confirm Selection**.
 
 > [!IMPORTANT]
-> Pokaždé, když začnete *ngrok*, adresa URL protokolu HTTPS se znovu vygeneruje a změní se hodnota. Proto musíte vytvořit nové předplatné událostí pokaždé, když vystavíte funkci do Azure prostřednictvím *ngrok*.
+> Every time you start *ngrok*, the HTTPS URL is regenerated and the value changes. Therefore you must create a new Event Subscription each time you expose your function to Azure via *ngrok*.
 
-## <a name="upload-a-file"></a>Nahrát soubor
+## <a name="upload-a-file"></a>Nahrání souboru
 
-Teď můžete do svého účtu úložiště nahrát soubor a aktivovat tak Event Grid událost, která má vaše místní funkce zpracovat. 
+Now you can upload a file to your storage account to trigger an Event Grid event for your local function to handle. 
 
-Otevřete [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) a připojte se k účtu úložiště. 
+Open [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) and connect to the your storage account. 
 
-- Rozbalit **kontejnery objektů BLOB** 
-- Klikněte pravým tlačítkem a vyberte **vytvořit kontejner objektů BLOB**.
-- Pojmenování **testu** kontejneru
-- Výběr kontejneru *testů*
-- Klikněte na tlačítko **nahrát** .
-- Klikněte na **nahrát soubory** .
-- Vyberte soubor a nahrajte ho do kontejneru objektů BLOB.
+- Expand **Blob Containers** 
+- Right-click and select **Create Blob Container**.
+- Name the container **test**
+- Select the *test* container
+- Click the **Upload** button
+- Click **Upload Files**
+- Select a file and upload it to the blob container
 
-## <a name="debug-the-function"></a>Ladění funkce
+## <a name="debug-the-function"></a>Debug the function
 
-Jakmile Event Grid rozpozná, že se do kontejneru úložiště nahraje nový soubor, je bod přerušení v místní funkci.
+Once the Event Grid recognizes a new file is uploaded to the storage container, the break point is hit in your local function.
 
-![Spustit ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
+![Start ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit prostředky vytvořené v rámci tohoto článku, odstraňte z účtu úložiště kontejner **testu** .
+To clean up the resources created in this article, delete the **test** container in your storage account.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md)
-- [Aktivační událost Event Grid pro Azure Functions](./functions-bindings-event-grid.md)
+- [Event Grid trigger for Azure Functions](./functions-bindings-event-grid.md)

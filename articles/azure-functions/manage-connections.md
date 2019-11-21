@@ -1,50 +1,45 @@
 ---
-title: Správa připojení v Azure Functions
-description: Zjistěte, jak se vyhnout problémům s výkonem v Azure Functions pomocí klientů se statickým připojením.
-services: functions
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
+title: Manage connections in Azure Functions
+description: Learn how to avoid performance problems in Azure Functions by using static connection clients.
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.author: glenga
-ms.openlocfilehash: 26702ae63dcb7aadb96b5bf77f96a44f7d6776f5
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114330"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226488"
 ---
-# <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
+# <a name="manage-connections-in-azure-functions"></a>Manage connections in Azure Functions
 
-Funkce ve sdílených prostředcích aplikace Function App. Mezi těmito sdílenými prostředky patří připojení: Připojení HTTP, připojení k databázi a připojení ke službám, jako je například Azure Storage. Pokud mnoho funkcí běží souběžně, je možné, že dojde k vyzkoušení dostupných připojení. V tomto článku se dozvíte, jak zakódovat funkce, abyste se vyhnuli používání více připojení, než potřebují.
+Functions in a function app share resources. Among those shared resources are connections: HTTP connections, database connections, and connections to services such as Azure Storage. When many functions are running concurrently, it's possible to run out of available connections. This article explains how to code your functions to avoid using more connections than they need.
 
-## <a name="connection-limit"></a>Limit připojení
+## <a name="connection-limit"></a>Connection limit
 
-Počet dostupných připojení je částečně omezený, protože aplikace Function App běží v [prostředí izolovaného prostoru (sandboxu)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedno z omezení, které ukládá izolovaný prostor ve vašem kódu, je omezení počtu odchozích připojení, která jsou aktuálně 600 aktivní (celkem 1 200) připojení na jednu instanci. Když dosáhnete tohoto limitu, modul runtime Functions zapíše do protokolů následující zprávu `Host thresholds exceeded: Connections`:. Další informace najdete v tématu [omezení služby Functions](functions-scale.md#service-limits).
+The number of available connections is limited partly because a function app runs in a [sandbox environment](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). One of the restrictions that the sandbox imposes on your code is a limit on the number of outbound connections, which is currently 600 active (1,200 total) connections per instance. When you reach this limit, the functions runtime writes the following message to the logs: `Host thresholds exceeded: Connections`. For more information, see the [Functions service limits](functions-scale.md#service-limits).
 
-Toto omezení je na instanci. Když [řadič škálování přidává instance aplikace Function App](functions-scale.md#how-the-consumption-and-premium-plans-work) a zpracovává více požadavků, má každá instance nezávislé omezení počtu připojení. To znamená, že není k dispozici žádný limit globálního připojení a v rámci všech aktivních instancí může být mnohem více než 600 aktivních připojení.
+This limit is per instance. When the [scale controller adds function app instances](functions-scale.md#how-the-consumption-and-premium-plans-work) to handle more requests, each instance has an independent connection limit. That means there's no global connection limit, and you can have much more than 600 active connections across all active instances.
 
-Při řešení potíží se ujistěte, že jste povolili Application Insights aplikace Function App. Application Insights umožňuje zobrazit metriky pro aplikace Function App, jako je spuštění. Další informace najdete v tématu [zobrazení telemetrie v Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
+When troubleshooting, make sure that you have enabled Application Insights for your function app. Application Insights lets you view metrics for your function apps like executions. For more information, see [View telemetry in Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
 
-## <a name="static-clients"></a>Statické klienty
+## <a name="static-clients"></a>Static clients
 
-Aby nedošlo k většímu podílu připojení, než je potřeba, místo vytváření nových funkcí pomocí jednotlivých volání funkce znovu použijte instance klientů. Pro libovolný jazyk, ve kterém můžete napsat funkci, doporučujeme znovu použít připojení klientů. Například klienti .NET, jako jsou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), DocumentClient [](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-)a klienti Azure Storage, můžou spravovat připojení, pokud použijete jediného statického klienta.
+To avoid holding more connections than necessary, reuse client instances rather than creating new ones with each function invocation. We recommend reusing client connections for any language that you might write your function in. For example, .NET clients like the [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+), and Azure Storage clients can manage connections if you use a single, static client.
 
-Tady jsou některé pokyny, které je potřeba provést, když v Azure Functions aplikaci používáte klienta pro konkrétní služby:
+Here are some guidelines to follow when you're using a service-specific client in an Azure Functions application:
 
-- Nevytvářejte nového klienta s každým voláním funkce.
-- Vytvořte jednoho statického klienta, který může použít každé vyvolání funkce.
-- *Zvažte* vytvoření jednoho statického klienta ve sdílené pomocné třídě, pokud různé funkce používají stejnou službu.
+- *Do not* create a new client with every function invocation.
+- *Do* create a single, static client that every function invocation can use.
+- *Consider* creating a single, static client in a shared helper class if different functions use the same service.
 
-## <a name="client-code-examples"></a>Příklady klientského kódu
+## <a name="client-code-examples"></a>Client code examples
 
-Tato část popisuje osvědčené postupy pro vytváření a používání klientů z kódu funkce.
+This section demonstrates best practices for creating and using clients from your function code.
 
-### <a name="httpclient-example-c"></a>Příklad HttpClient (C#)
+### <a name="httpclient-example-c"></a>HttpClient example (C#)
 
-Zde je příklad kódu C# funkce, který vytváří statickou instanci [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) :
+Here's an example of C# function code that creates a static [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) instance:
 
 ```cs
 // Create a single, static HttpClient
@@ -57,19 +52,19 @@ public static async Task Run(string input)
 }
 ```
 
-Běžným dotazem týkajícím se [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) v .NET je "Mám vyřadit klienta?" Obecně platí, že budete nakládat objekty, `IDisposable` které implementují, až je budete používat. Ale nebudete odstraňovat statický klient, protože ho nebudete používat, když funkce skončí. Chcete, aby byl statický klient aktivní po dobu trvání vaší aplikace.
+A common question about [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) in .NET is "Should I dispose of my client?" In general, you dispose of objects that implement `IDisposable` when you're done using them. But you don't dispose of a static client because you aren't done using it when the function ends. You want the static client to live for the duration of your application.
 
-### <a name="http-agent-examples-javascript"></a>Příklady agenta HTTP (JavaScript)
+### <a name="http-agent-examples-javascript"></a>HTTP agent examples (JavaScript)
 
-Vzhledem k tomu, že poskytuje lepší možnosti správy připojení, měli byste [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) použít nativní třídu namísto nenativních metod, jako je `node-fetch` například modul. Parametry připojení jsou konfigurovány prostřednictvím možností `http.agent` třídy. Podrobné možnosti dostupné v agentovi HTTP najdete v tématu [New Agent (\[možnosti\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
+Because it provides better connection management options, you should use the native [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) class instead of non-native methods, such as the `node-fetch` module. Connection parameters are configured through options on the `http.agent` class. For detailed options available with the HTTP agent, see [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
-Globální `http.globalAgent` třída, kterou `http.request()` používá, má všechny tyto hodnoty nastavené na jejich příslušné výchozí hodnoty. Doporučený způsob, jak nakonfigurovat limity připojení ve funkcích, je nastavit maximální počet globálně. Následující příklad nastaví maximální počet soketů pro aplikaci Function App:
+The global `http.globalAgent` class used by `http.request()` has all of these values set to their respective defaults. The recommended way to configure connection limits in Functions is to set a maximum number globally. The following example sets the maximum number of sockets for the function app:
 
 ```js
 http.globalAgent.maxSockets = 200;
 ```
 
- Následující příklad vytvoří novou žádost HTTP s vlastním agentem HTTP pouze pro tento požadavek:
+ The following example creates a new HTTP request with a custom HTTP agent only for that request:
 
 ```js
 var http = require('http');
@@ -79,10 +74,10 @@ options.agent = httpAgent;
 http.request(options, onResponseCallback);
 ```
 
-### <a name="documentclient-code-example-c"></a>Příklad kódu DocumentClient (C#)
+### <a name="documentclient-code-example-c"></a>DocumentClient code example (C#)
 
 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) se připojuje k instanci Azure Cosmos DB. Dokumentace Azure Cosmos DB doporučuje, abyste [pro celou dobu života vaší aplikace používali klienta s jedním Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Následující příklad ukazuje jeden vzor pro provedení ve funkci:
+) connects to an Azure Cosmos DB instance. The Azure Cosmos DB documentation recommends that you [use a singleton Azure Cosmos DB client for the lifetime of your application](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). The following example shows one pattern for doing that in a function:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -110,8 +105,8 @@ public static async Task Run(string input)
 }
 ```
 
-### <a name="cosmosclient-code-example-javascript"></a>Příklad kódu CosmosClient (JavaScript)
-[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) se připojuje k instanci Azure Cosmos DB. Dokumentace Azure Cosmos DB doporučuje, abyste [pro celou dobu života vaší aplikace používali klienta s jedním Azure Cosmos DB](../cosmos-db/performance-tips.md#sdk-usage). Následující příklad ukazuje jeden vzor pro provedení ve funkci:
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient code example (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) connects to an Azure Cosmos DB instance. The Azure Cosmos DB documentation recommends that you [use a singleton Azure Cosmos DB client for the lifetime of your application](../cosmos-db/performance-tips.md#sdk-usage). The following example shows one pattern for doing that in a function:
 
 ```javascript
 const cosmos = require('@azure/cosmos');
@@ -129,16 +124,16 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="sqlclient-connections"></a>Připojení SqlClient
+## <a name="sqlclient-connections"></a>SqlClient connections
 
-Kód funkce může použít .NET Framework Zprostředkovatel dat pro SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) k vytvoření připojení k RELAČNÍ databázi SQL. Toto je také základní poskytovatel pro datové architektury, které spoléhají na ADO.NET, jako je například [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Na rozdíl [](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) od připojení [HttpClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) a DocumentClient implementuje ADO.NET ve výchozím nastavení sdružování připojení. Ale vzhledem k tomu, že stále může docházet k připojení, byste měli optimalizovat připojení k databázi. Další informace najdete v tématu věnovaném [sdružování připojení SQL Server (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+Your function code can use the .NET Framework Data Provider for SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) to make connections to a SQL relational database. This is also the underlying provider for data frameworks that rely on ADO.NET, such as [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Unlike [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) and [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) connections, ADO.NET implements connection pooling by default. But because you can still run out of connections, you should optimize connections to the database. For more information, see [SQL Server Connection Pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Některá datová rozhraní, například Entity Framework, obvykle získávají připojovací řetězce z oddílu connectionStrings konfiguračního souboru. V tomto případě musíte explicitně přidat připojovací řetězce databáze SQL do kolekce připojovacích **řetězců** v nastavení aplikace Function App a v [souboru Local. Settings. JSON](functions-run-local.md#local-settings-file) v místním projektu. Pokud vytváříte instanci [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** s ostatními připojeními.
+> Some data frameworks, such as Entity Framework, typically get connection strings from the **ConnectionStrings** section of a configuration file. In this case, you must explicitly add SQL database connection strings to the **Connection strings** collection of your function app settings and in the [local.settings.json file](functions-run-local.md#local-settings-file) in your local project. If you're creating an instance of [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) in your function code, you should store the connection string value in **Application settings** with your other connections.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, proč doporučujeme statické klienty, najdete v tématu antipattern nesprávného [vytváření instancí](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
+For more information about why we recommend static clients, see [Improper instantiation antipattern](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
 
-Další Azure Functions tipů ke zvýšení výkonu najdete v tématu [optimalizace výkonu a spolehlivosti Azure Functions](functions-best-practices.md).
+For more Azure Functions performance tips, see [Optimize the performance and reliability of Azure Functions](functions-best-practices.md).

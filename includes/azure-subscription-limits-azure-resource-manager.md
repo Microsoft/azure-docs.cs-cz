@@ -3,44 +3,44 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: billing
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: f85605610727ef2c1e1987b7ef93a41ce2417a25
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: a01455da36e8ab573773fec2a6da1f7903b8ea20
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626312"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224479"
 ---
-| Resource | Výchozí omezení | Maximální omezení |
+| Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Počet virtuálních počítačů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |25 000<sup>1</sup> na oblast |25 000 na oblast |
-| Celkový počet jader virtuálního počítače na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast. | Kontaktujte podporu. |
-| Virtuální počítač na řadu, například Dv2 a F, jader na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast. | Kontaktujte podporu. |
-| [Spolusprávci](../articles/billing-add-change-azure-subscription-administrator.md) na předplatné |Počet. |Počet. |
-| [Účty úložiště](../articles/storage/common/storage-quickstart-create-account.md) pro jednotlivé oblasti a předplatné |250 |250 |
-| [Skupiny prostředků](../articles/azure-resource-manager/resource-group-overview.md) na předplatné |980 |980 |
-| [Skupiny dostupnosti](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na předplatné |2 000 na oblast |2 000 na oblast |
-| Velikost požadavku rozhraní API pro Azure Resource Manager |4 194 304 bajtů. |4 194 304 bajtů. |
-| Značky na předplatné<sup>2</sup> |Počet. |Počet. |
-| Jedinečné výpočty značek na předplatné<sup>2</sup> | 10,000 | 10,000 |
-| [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |NENÍ K DISPOZICI<sup>3</sup> |NENÍ K DISPOZICI<sup>3</sup> |
-| [Skupiny vztahů](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na předplatné |NENÍ K DISPOZICI<sup>3</sup> |NENÍ K DISPOZICI<sup>3</sup> |
-| [Nasazení na úrovni](../articles/azure-resource-manager/deploy-to-subscription.md) předplatného na umístění | 800<sup>4</sup> | 800 |
+| Počet virtuálních počítačů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |25,000<sup>1</sup> per region. |25,000 per region. |
+| Celkový počet jader virtuálního počítače na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per region. | Obraťte se na podporu. |
+| VM per series, such as Dv2 and F, cores per [subscription](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per region. | Obraťte se na podporu. |
+| [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription |Unlimited. |Unlimited. |
+| [Storage accounts](../articles/storage/common/storage-quickstart-create-account.md) per region per subscription |250 |250 |
+| [Resource groups](../articles/azure-resource-manager/resource-group-overview.md) per subscription |980 |980 |
+| [Availability sets](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per subscription |2,000 per region. |2,000 per region. |
+| Azure Resource Manager API request size |4,194,304 bytes. |4,194,304 bytes. |
+| Tags per subscription<sup>2</sup> |Unlimited. |Unlimited. |
+| Unique tag calculations per subscription<sup>2</sup> | 10 000 | 10 000 |
+| [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |N/A<sup>3</sup> |N/A<sup>3</sup> |
+| [Skupiny vztahů](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na předplatné |N/A<sup>3</sup> |N/A<sup>3</sup> |
+| [Subscription-level deployments](../articles/azure-resource-manager/deploy-to-subscription.md) per location | 800<sup>4</sup> | 800 |
 
-<sup>1</sup> Výchozí limity se liší podle typu kategorie nabídky, jako je bezplatná zkušební verze a průběžné platby a podle řad, například Dv2, F a G. Například výchozí hodnota pro smlouva Enterprise předplatná je 350.
+<sup>1</sup>Default limits vary by offer category type, such as Free Trial and Pay-As-You-Go, and by series, such as Dv2, F, and G. For example, the default for Enterprise Agreement subscriptions is 350.
 
-<sup>2</sup> . Na jedno předplatné můžete použít neomezený počet značek. Počet značek na prostředek nebo skupinu prostředků je omezený na 50. Správce prostředků vrátí [seznam jedinečných názvů a hodnot značek](/rest/api/resources/tags) v rámci předplatného pouze v případě, že je počet značek 10 000 nebo méně. I když číslo překračuje 10 000, můžete pořád najít prostředek podle značky.  
+<sup>2</sup>You can apply an unlimited number of tags per subscription. The number of tags per resource or resource group is limited to 50. Resource Manager returns a [list of unique tag name and values](/rest/api/resources/tags) in the subscription only when the number of tags is 10,000 or less. You still can find a resource by tag when the number exceeds 10,000.  
 
-<sup>3</sup> . Tyto funkce se už nevyžadují u skupin prostředků Azure a Správce prostředků.
+<sup>3</sup>These features are no longer required with Azure resource groups and Resource Manager.
 
-<sup>4</sup> . Pokud dosáhnete limitu nasazení 800, odstraňte nasazení z historie, která už nepotřebujete. Pokud chcete odstranit nasazení na úrovni předplatného, použijte [Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) nebo [AZ Deployment Delete](/cli/azure/deployment?view=azure-cli-latest#az-deployment-delete).
+<sup>4</sup>If you reach the limit of 800 deployments, delete deployments from the history that are no longer needed. To delete subscription level deployments, use [Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) or [az deployment delete](/cli/azure/deployment?view=azure-cli-latest#az-deployment-delete).
 
 > [!NOTE]
-> Jádra virtuálních počítačů mají celkový limit na úrovni. Mají také omezení pro místní řady jednotlivých velikostí, například Dv2 a F. Tato omezení se vynutila samostatně. Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. Toto předplatné může nasadit virtuální počítače s 30 a1 nebo 30 virtuálních počítačů D1 nebo kombinaci těchto dvou počítačů, které nepřesahují celkem 30 jader. Příkladem kombinace je 10 virtuálních počítačů a 20 virtuálních počítačů D1.  
+> Virtual machine cores have a regional total limit. They also have a limit for regional per-size series, such as Dv2 and F. These limits are separately enforced. Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. This subscription can deploy 30 A1 VMs, or 30 D1 VMs, or a combination of the two not to exceed a total of 30 cores. An example of a combination is 10 A1 VMs and 20 D1 VMs.  
 > <!-- -->
 > 
 > 

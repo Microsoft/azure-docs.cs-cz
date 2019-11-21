@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vytvoření základního Load Balancer – Azure CLI'
-titlesuffix: Azure Load Balancer
-description: Tento rychlý start ukazuje, jak vytvořit veřejný nástroj pro vyrovnávání zatížení pomocí rozhraní Azure CLI.
+title: 'Quickstart: Create a Basic Load Balancer - Azure CLI'
+titleSuffix: Azure Load Balancer
+description: Tento rychlý start ukazuje, jak pomocí Azure CLI vytvořit veřejný nástroj pro vyrovnávání zatížení.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
-ms.openlocfilehash: 67d137039778b7ec8d5e65acb017b84ad6df5cb2
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 49bd66a5ff3cc9d3cddcb0577e335794550ffd17
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274225"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214848"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvoření nástroje pro vyrovnávání zatížení pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a load balancer to load balance VMs using Azure CLI
 
-V tomto rychlém startu se dozvíte, jak vytvořit Azure Load Balancer pro vyrovnávání zatížení internetového provozu mezi virtuálními počítači v Azure. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače se serverem Ubuntu, které mezi sebou budou vyrovnávat zatížení webové aplikace.
+This quickstart shows you how to create an Azure Load Balancer to load balance internet traffic between virtual machines in Azure. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače se serverem Ubuntu, které mezi sebou budou vyrovnávat zatížení webové aplikace.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -146,7 +146,7 @@ Vytvořte pravidlo skupiny zabezpečení sítě, které povolí příchozí při
 ```
 ### <a name="create-nics"></a>Vytvoření síťových rozhraní
 
-Pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create) vytvořte dvě síťová rozhraní a přidružte je k veřejné IP adrese a skupině zabezpečení sítě. 
+Create two network interfaces with [az network nic create](/cli/azure/network/nic#az-network-nic-create) and associate them with the Public IP address and the network security group. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -261,7 +261,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, nástro
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V rámci tohoto rychlého startu jste vytvořili Load Balancer úrovně Basic, připojili jste k němu virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
 
 > [!div class="nextstepaction"]

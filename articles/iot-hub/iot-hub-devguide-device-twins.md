@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení nevláken zařízení v Azure IoT Hub | Microsoft Docs
-description: Příručka pro vývojáře – pomocí vláken zařízení můžete synchronizovat stav a konfigurační data mezi IoT Hub a vašimi zařízeními.
+title: Understand Azure IoT Hub device twins | Microsoft Docs
+description: Developer guide - use device twins to synchronize state and configuration data between IoT Hub and your devices
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,61 +8,61 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: f4db353e3c2f625478df6a547d1b67c5d074d18a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640628"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209720"
 ---
-# <a name="understand-and-use-device-twins-in-iot-hub"></a>Pochopení a používání vláken zařízení v IoT Hub
+# <a name="understand-and-use-device-twins-in-iot-hub"></a>Understand and use device twins in IoT Hub
 
-*Vlákna zařízení* jsou dokumenty JSON, které ukládají informace o stavu zařízení včetně metadat, konfigurací a podmínek. Azure IoT Hub udržuje pro každé zařízení, IoT Hub ke kterému se připojujete, dopředná vlákna zařízení. 
+*Device twins* are JSON documents that store device state information including metadata, configurations, and conditions. Azure IoT Hub maintains a device twin for each device that you connect to IoT Hub. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Tento článek popisuje:
+This article describes:
 
-* Struktura vlákna zařízení: *značky*, *požadované* a *hlášené vlastnosti*.
-* Operace, které aplikace zařízení a back-end můžou provádět na vlákna zařízení.
+* The structure of the device twin: *tags*, *desired* and *reported properties*.
+* The operations that device apps and back ends can perform on device twins.
 
-Použít vlákna zařízení k těmto akcím:
+Use device twins to:
 
-* Ukládat metadata specifická pro zařízení v cloudu. Například umístění nasazení počítače prodejní Automate.
+* Store device-specific metadata in the cloud. For example, the deployment location of a vending machine.
 
-* Ohlaste informace o aktuálních stavech, jako jsou dostupné možnosti a podmínky z aplikace vašeho zařízení. Například zařízení je připojeno ke službě IoT Hub přes mobilní síť nebo Wi-Fi.
+* Report current state information such as available capabilities and conditions from your device app. For example, a device is connected to your IoT hub over cellular or WiFi.
 
-* Synchronizuje stav dlouhotrvajících pracovních postupů mezi aplikací zařízení a back-end aplikací. Například když back-end řešení určuje novou verzi firmwaru, která se má nainstalovat, a aplikace zařízení ohlásí různé fáze procesu aktualizace.
+* Synchronize the state of long-running workflows between device app and back-end app. For example, when the solution back end specifies the new firmware version to install, and the device app reports the various stages of the update process.
 
-* Dotaz na metadata, konfiguraci nebo stav zařízení
+* Query your device metadata, configuration, or state.
 
-Pokyny k používání hlášených vlastností, zpráv zařízení-Cloud nebo nahrání souborů najdete v tématu [pokyny k komunikace zařízení a cloudu](iot-hub-devguide-d2c-guidance.md) .
+Refer to [Device-to-cloud communication guidance](iot-hub-devguide-d2c-guidance.md) for guidance on using reported properties, device-to-cloud messages, or file upload.
 
-Pokyny k používání požadovaných vlastností, přímých metod nebo zpráv z cloudu na zařízení najdete v tématu [pokyny k komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) .
+Refer to [Cloud-to-device communication guidance](iot-hub-devguide-c2d-guidance.md) for guidance on using desired properties, direct methods, or cloud-to-device messages.
 
-## <a name="device-twins"></a>Vlákna zařízení
+## <a name="device-twins"></a>Device twins
 
-V zařízení se ukládají informace týkající se zařízení, které:
+Device twins store device-related information that:
 
-* Zařízení a back-endy se můžou použít k synchronizaci podmínek zařízení a konfigurace.
+* Device and back ends can use to synchronize device conditions and configuration.
 
-* Back-end řešení může používat dotazování a cíle dlouhotrvajících operací.
+* The solution back end can use to query and target long-running operations.
 
-Životní cyklus vlákna zařízení je propojen s odpovídající [identitou zařízení](iot-hub-devguide-identity-registry.md). Vlákna zařízení se při vytvoření nebo odstranění identity zařízení v IoT Hub implicitně vytvoří a odstraní.
+The lifecycle of a device twin is linked to the corresponding [device identity](iot-hub-devguide-identity-registry.md). Device twins are implicitly created and deleted when a device identity is created or deleted in IoT Hub.
 
-Nevlákenná zařízení je dokument JSON, který obsahuje:
+A device twin is a JSON document that includes:
 
-* **Značky**. Oddíl dokumentu JSON, ze kterého může back-end řešení číst a zapisovat do něj. Značky nejsou viditelné pro aplikace zařízení.
+* **Tags**. A section of the JSON document that the solution back end can read from and write to. Tags are not visible to device apps.
 
-* **Požadované vlastnosti**. Používá se společně s nahlášenými vlastnostmi k synchronizaci konfigurace nebo podmínek zařízení. Back-end řešení může nastavit požadované vlastnosti a aplikace zařízení je může číst. Aplikace zařízení může také dostávat oznámení o změnách v požadovaných vlastnostech.
+* **Desired properties**. Used along with reported properties to synchronize device configuration or conditions. The solution back end can set desired properties, and the device app can read them. The device app can also receive notifications of changes in the desired properties.
 
-* **Hlášené vlastnosti**. Používá se společně s požadovanými vlastnostmi k synchronizaci konfigurace nebo podmínek zařízení. Aplikace zařízení může nastavit hlášené vlastnosti a back-end řešení může číst a dotazovat je.
+* **Reported properties**. Used along with desired properties to synchronize device configuration or conditions. The device app can set reported properties, and the solution back end can read and query them.
 
-* **Vlastnosti identity zařízení**. Kořen dokumentu s dvojitou čárkou v zařízení JSON obsahuje vlastnosti jen pro čtení z odpovídající identity zařízení uložené v [registru identit](iot-hub-devguide-identity-registry.md).
+* **Device identity properties**. The root of the device twin JSON document contains the read-only properties from the corresponding device identity stored in the [identity registry](iot-hub-devguide-identity-registry.md).
 
-![Snímek obrazovky se zdvojenými vlastnostmi zařízení](./media/iot-hub-devguide-device-twins/twin.png)
+![Screenshot of device twin properties](./media/iot-hub-devguide-device-twins/twin.png)
 
-Následující příklad ukazuje dokument JSON s dvojím zápisem zařízení:
+The following example shows a device twin JSON document:
 
 ```json
 {
@@ -108,20 +108,20 @@ Následující příklad ukazuje dokument JSON s dvojím zápisem zařízení:
 }
 ```
 
-V kořenovém objektu jsou vlastnosti identity zařízení a objekty kontejneru pro `tags` a a `desired` zároveň `reported` i vlastnosti. `$metadata` `$version` `$etag` [](iot-hub-devguide-device-twins.md#optimistic-concurrency) [](iot-hub-devguide-device-twins.md#device-twin-metadata) Kontejner obsahuje některé prvky jen pro čtení (, a) popsané v oddílech dvojitá metadata zařízení a Optimistická souběžnost. `properties`
+In the root object are the device identity properties, and container objects for `tags` and both `reported` and `desired` properties. The `properties` container contains some read-only elements (`$metadata`, `$etag`, and `$version`) described in the [Device twin metadata](iot-hub-devguide-device-twins.md#device-twin-metadata) and [Optimistic concurrency](iot-hub-devguide-device-twins.md#optimistic-concurrency) sections.
 
-### <a name="reported-property-example"></a>Příklad hlášené vlastnosti
+### <a name="reported-property-example"></a>Reported property example
 
-V předchozím příkladu obsahuje `batteryLevel` vlákna zařízení vlastnost, která je hlášena aplikací pro zařízení. Tato vlastnost umožňuje dotazovat se na zařízení a pracovat s nimi na základě poslední hlášené úrovně baterie. Mezi další příklady patří možnosti zařízení pro vytváření sestav aplikací pro zařízení nebo možnosti připojení.
+In the previous example, the device twin contains a `batteryLevel` property that is reported by the device app. This property makes it possible to query and operate on devices based on the last reported battery level. Other examples include the device app reporting device capabilities or connectivity options.
 
 > [!NOTE]
-> Hlášené vlastnosti zjednodušují scénáře, kde back-end řešení zajímá poslední známou hodnotu vlastnosti. [Zprávy typu zařízení-Cloud](iot-hub-devguide-messages-d2c.md) použijte v případě, že back-end řešení potřebuje zpracovat telemetrii zařízení ve formě posloupností událostí s časovým razítkem, jako je například časová řada.
+> Reported properties simplify scenarios where the solution back end is interested in the last known value of a property. Use [device-to-cloud messages](iot-hub-devguide-messages-d2c.md) if the solution back end needs to process device telemetry in the form of sequences of timestamped events, such as time series.
 
-### <a name="desired-property-example"></a>Požadovaný příklad vlastnosti
+### <a name="desired-property-example"></a>Desired property example
 
-V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a aplikace pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení, aby bylo požadované a hlášené vlastnosti zařízení. Příklad:
+In the previous example, the `telemetryConfig` device twin desired and reported properties are used by the solution back end and the device app to synchronize the telemetry configuration for this device. Například:
 
-1. Back-end řešení nastaví požadovanou vlastnost s požadovanou konfigurační hodnotou. Tady je část dokumentu s požadovanou sadou vlastností:
+1. The solution back end sets the desired property with the desired configuration value. Here is the portion of the document with the desired property set:
 
    ```json
    "desired": {
@@ -132,7 +132,7 @@ V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a ap
    },
    ```
 
-2. Aplikace zařízení se okamžitě upozorní na změnu v případě připojení nebo při prvním opětovném připojení. Aplikace zařízení pak nahlásí aktualizovanou konfiguraci (nebo chybovou podmínku pomocí `status` vlastnosti). Tady je část hlášených vlastností:
+2. The device app is notified of the change immediately if connected, or at the first reconnect. The device app then reports the updated configuration (or an error condition using the `status` property). Here is the portion of the reported properties:
 
    ```json
    "reported": {
@@ -144,21 +144,21 @@ V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a ap
    }
    ```
 
-3. Back-end řešení může sledovat výsledky operace konfigurace napříč mnoha zařízeními pomocí dotazování na [](iot-hub-devguide-query-language.md) vlákna zařízení.
+3. The solution back end can track the results of the configuration operation across many devices by [querying](iot-hub-devguide-query-language.md) device twins.
 
 > [!NOTE]
-> Předchozí fragmenty kódu jsou příklady optimalizované pro čitelnost, které zakódují konfiguraci zařízení a jeho stav. IoT Hub neukládá konkrétní schéma pro požadovanou a hlášené vlastnosti zařízení, které jsou v zařízení vlákna.
+> The preceding snippets are examples, optimized for readability, of one way to encode a device configuration and its status. IoT Hub does not impose a specific schema for the device twin desired and reported properties in the device twins.
 > 
 
-Můžete použít vlákna k synchronizaci dlouhotrvajících operací, jako jsou například aktualizace firmwaru. Další informace o tom, jak pomocí vlastností synchronizovat a sledovat dlouhodobou běžící operaci napříč zařízeními, najdete v tématu věnovaném [použití požadovaných vlastností ke konfiguraci zařízení](tutorial-device-twins.md).
+You can use twins to synchronize long-running operations such as firmware updates. For more information on how to use properties to synchronize and track a long running operation across devices, see [Use desired properties to configure devices](tutorial-device-twins.md).
 
-## <a name="back-end-operations"></a>Back-endové operace
+## <a name="back-end-operations"></a>Back-end operations
 
-Back-end řešení funguje na vlákna zařízení pomocí následujících atomických operací, které jsou vystavené prostřednictvím protokolu HTTPS:
+The solution back end operates on the device twin using the following atomic operations, exposed through HTTPS:
 
-* **Načíst zdvojení zařízení podle ID** Tato operace vrátí dokument s dvojitým označením zařízení, včetně značek a požadovaných a hlášených systémových vlastností.
+* **Retrieve device twin by ID**. This operation returns the device twin document, including tags and desired and reported system properties.
 
-* **Částečně aktualizovat zdvojené zařízení**. Tato operace umožňuje back-endu řešení částečně aktualizovat značky nebo požadované vlastnosti v zařízení s dvojitou funkčností. Částečná aktualizace se vyjádří jako dokument JSON, který přidá nebo aktualizuje libovolnou vlastnost. Vlastnosti nastavené `null` na jsou odebrané. Následující příklad vytvoří novou `{"newProperty": "newValue"}`požadovanou vlastnost s hodnotou, přepíše existující `existingProperty` hodnotu s `"otherNewValue"`a odebere `otherOldProperty`. U stávajících požadovaných vlastností nebo značek nejsou provedeny žádné další změny:
+* **Partially update device twin**. This operation enables the solution back end to partially update the tags or desired properties in a device twin. The partial update is expressed as a JSON document that adds or updates any property. Properties set to `null` are removed. The following example creates a new desired property with value `{"newProperty": "newValue"}`, overwrites the existing value of `existingProperty` with `"otherNewValue"`, and removes `otherOldProperty`. No other changes are made to existing desired properties or tags:
 
    ```json
    {
@@ -174,31 +174,31 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
    }
    ```
 
-* **Nahraďte požadované vlastnosti**. Tato operace umožňuje back-endu řešení úplně přepsat všechny existující požadované vlastnosti a nahradit nový dokument JSON pro `properties/desired`.
+* **Replace desired properties**. This operation enables the solution back end to completely overwrite all existing desired properties and substitute a new JSON document for `properties/desired`.
 
-* **Nahraďte značky**. Tato operace umožňuje back-endu řešení úplně přepsat všechny existující značky a nahradit nový dokument JSON pro `tags`.
+* **Replace tags**. This operation enables the solution back end to completely overwrite all existing tags and substitute a new JSON document for `tags`.
 
-* **Dostávat dvojitá oznámení**. Tato operace umožňuje, aby byl back-end řešení upozorněn při změně vlákna. K tomu je potřeba, aby vaše řešení IoT vytvořilo trasu a nastavilo zdroj dat na hodnotu *twinChangeEvents*. Ve výchozím nastavení už žádné takové trasy neexistují, takže se neodesílají žádná dvojitá oznámení. Pokud je frekvence změny příliš vysoká nebo z jiných důvodů, jako jsou například vnitřní chyby, může IoT Hub odeslat pouze jedno oznámení, které obsahuje všechny změny. Proto pokud vaše aplikace potřebuje spolehlivé auditování a protokolování všech zprostředkujících stavů, měli byste použít zprávy typu zařízení-Cloud. Zpráva s dvojitým oznámením obsahuje vlastnosti a text.
+* **Receive twin notifications**. This operation allows the solution back end to be notified when the twin is modified. To do so, your IoT solution needs to create a route and to set the Data Source equal to *twinChangeEvents*. By default, no such routes pre-exist, so no twin notifications are sent. If the rate of change is too high, or for other reasons such as internal failures, the IoT Hub might send only one notification that contains all changes. Therefore, if your application needs reliable auditing and logging of all intermediate states, you should use device-to-cloud messages. The twin notification message includes properties and body.
 
   - Vlastnosti
 
-    | Name | Hodnota |
+    | Name (Název) | Hodnota |
     | --- | --- |
     $content-type | application/json |
-    $iothub-enqueuedtime |  Čas odeslání oznámení |
-    $iothub-Message-source | twinChangeEvents |
+    $iothub-enqueuedtime |  Time when the notification was sent |
+    $iothub-message-source | twinChangeEvents |
     $content-encoding | utf-8 |
-    deviceId | ID zařízení |
-    hubName | Název IoT Hub |
-    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko operace |
-    iothub-Message-Schema | deviceLifecycleNotification |
-    opType | "replaceTwin" nebo "updateTwin" |
+    deviceId | ID of the device |
+    hubName | Name of IoT Hub |
+    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of operation |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | "replaceTwin" or "updateTwin" |
 
-    Vlastnosti systému zprávy jsou předpony s `$` symbolem.
+    Message system properties are prefixed with the `$` symbol.
 
   - Tělo
         
-    Tato část obsahuje všechny zdvojené změny ve formátu JSON. Používá stejný formát jako oprava, s rozdílem, který může obsahovat všechny nedokončené oddíly: Tagy, Properties. hlášené, Properties. revisioned a obsahuje prvky "$metadata". Například
+    This section includes all the twin changes in a JSON format. It uses the same format as a patch, with the difference that it can contain all twin sections: tags, properties.reported, properties.desired, and that it contains the “$metadata” elements. Například:
 
     ```json
     {
@@ -219,37 +219,37 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
     }
     ```
 
-Všechny předchozí operace podporují [optimistickou souběžnost](iot-hub-devguide-device-twins.md#optimistic-concurrency) a vyžadují oprávnění **ServiceConnect** , jak je definováno v [ovládacím prvku přístup k IoT Hub](iot-hub-devguide-security.md).
+All the preceding operations support [Optimistic concurrency](iot-hub-devguide-device-twins.md#optimistic-concurrency) and require the **ServiceConnect** permission, as defined in [Control access to IoT Hub](iot-hub-devguide-security.md).
 
-Kromě těchto operací může back-end řešení:
+In addition to these operations, the solution back end can:
 
-* Dotaz na práci se zařízením pomocí [dotazovacího jazyka IoT Hub](iot-hub-devguide-query-language.md), který se podobá jazyku SQL.
+* Query the device twins using the SQL-like [IoT Hub query language](iot-hub-devguide-query-language.md).
 
-* Provádění operací s velkými sadami nevláken zařízení pomocí [úloh](iot-hub-devguide-jobs.md).
+* Perform operations on large sets of device twins using [jobs](iot-hub-devguide-jobs.md).
 
-## <a name="device-operations"></a>Operace zařízení
+## <a name="device-operations"></a>Device operations
 
-Aplikace zařízení funguje na vlákna zařízení s použitím následujících atomických operací:
+The device app operates on the device twin using the following atomic operations:
 
-* **Načte nevlákennou zařízení**. Tato operace vrátí k aktuálně připojenému zařízení neodpovídající dokument (včetně požadovaných a hlášených vlastností systému) zařízení. (Značky nejsou viditelné pro aplikace zařízení.)
+* **Retrieve device twin**. This operation returns the device twin document (including desired and reported system properties) for the currently connected device. (Tags are not visible to device apps.)
 
-* **Částečně aktualizované hlášené vlastnosti**. Tato operace umožňuje částečnou aktualizaci hlášených vlastností aktuálně připojeného zařízení. Tato operace používá stejný formát aktualizace JSON, který back-end řešení používá pro částečnou aktualizaci požadovaných vlastností.
+* **Partially update reported properties**. This operation enables the partial update of the reported properties of the currently connected device. This operation uses the same JSON update format that the solution back end uses for a partial update of desired properties.
 
-* **Sledujte požadované vlastnosti**. V aktuálně připojeném zařízení se můžete rozhodnout, že se při jejich výskytu informují o aktualizacích požadovaných vlastností. Zařízení obdrží stejnou formu aktualizace (částečnou nebo úplnou náhradou) spuštěnou back-end řešení.
+* **Observe desired properties**. The currently connected device can choose to be notified of updates to the desired properties when they happen. The device receives the same form of update (partial or full replacement) executed by the solution back end.
 
-Všechny předchozí operace vyžadují oprávnění **DeviceConnect** , jak je definováno v [ovládacím prvku přístup k IoT Hub](iot-hub-devguide-security.md).
+All the preceding operations require the **DeviceConnect** permission, as defined in [Control Access to IoT Hub](iot-hub-devguide-security.md).
 
-Sady [SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md) usnadňují používání předchozích operací z mnoha jazyků a platforem. Další informace o podrobnostech IoT Hub primitiv pro požadovanou synchronizaci vlastností najdete v tématu [Postup opětovného připojení zařízení](iot-hub-devguide-device-twins.md#device-reconnection-flow).
+The [Azure IoT device SDKs](iot-hub-devguide-sdks.md) make it easy to use the preceding operations from many languages and platforms. For more information on the details of IoT Hub primitives for desired properties synchronization, see [Device reconnection flow](iot-hub-devguide-device-twins.md#device-reconnection-flow).
 
-## <a name="tags-and-properties-format"></a>Formát značek a vlastností
+## <a name="tags-and-properties-format"></a>Tags and properties format
 
-Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s následujícími omezeními:
+Tags, desired properties, and reported properties are JSON objects with the following restrictions:
 
-* Všechny klíče v objektech JSON jsou v bajtech UNICODE-8 s rozlišením velkých a malých písmen 64. Povolené znaky vyloučí řídicí znaky Unicode (segmenty C0 a C1) `.`, `$`a, a SP.
+* All keys in JSON objects are UTF-8 encoded, case-sensitive, and up-to 1 KB in length. Allowed characters exclude UNICODE control characters (segments C0 and C1), and `.`, `$`, and SP.
 
-* Všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole nejsou povolena. Maximální hodnota pro celá čísla je 4503599627370495 a minimální hodnota pro celá čísla je-4503599627370496.
+* All values in JSON objects can be of the following JSON types: boolean, number, string, object. Arrays are not allowed. The maximum value for integers is 4503599627370495 and the minimum value for integers is -4503599627370496.
 
-* Všechny objekty JSON ve značkách, požadované a hlášené vlastnosti mohou mít maximální hloubku 5. Například následující objekt je platný:
+* All JSON objects in tags, desired, and reported properties can have a maximum depth of 10. For instance, the following object is valid:
 
    ```json
    {
@@ -260,7 +260,17 @@ Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s ná
                    "three": {
                        "four": {
                            "five": {
-                               "property": "value"
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
                            }
                        }
                    }
@@ -271,21 +281,21 @@ Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s ná
    }
    ```
 
-* Všechny řetězcové hodnoty můžou být dlouhé maximálně 512 bajtů.
+* All string values can be at most 4 KB in length.
 
-## <a name="device-twin-size"></a>Velikost vlákna zařízení
+## <a name="device-twin-size"></a>Device twin size
 
-IoT Hub vynutilo omezení velikosti 8 KB u každé z příslušných celkových hodnot `tags`, `properties/desired`a `properties/reported`s vyloučením prvků jen pro čtení.
+IoT Hub enforces an 8KB size limitation on each of the respective total values of `tags`, `properties/desired`, and `properties/reported`, excluding read-only elements.
 
-Velikost je vypočítána napočítáním všech znaků, kromě řídicích znaků UNICODE (segmenty C0 a C1) a mezer, které jsou mimo řetězcové konstanty.
+The size is computed by counting all characters, excluding UNICODE control characters (segments C0 and C1) and spaces that are outside of string constants.
 
-IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost těchto dokumentů nad rámec limitu.
+IoT Hub rejects with an error all operations that would increase the size of those documents above the limit.
 
-## <a name="device-twin-metadata"></a>Zařízení s dvojitou metadatou
+## <a name="device-twin-metadata"></a>Device twin metadata
 
-IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v požadovaném a hlášeném vlastnosti zařízení. Časová razítka jsou v UTC a kódovaná ve [](https://en.wikipedia.org/wiki/ISO_8601) formátu `YYYY-MM-DDTHH:MM:SS.mmmZ`ISO8601.
+IoT Hub maintains the timestamp of the last update for each JSON object in device twin desired and reported properties. The timestamps are in UTC and encoded in the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 
-Příklad:
+Například:
 
 ```json
 {
@@ -332,55 +342,55 @@ Příklad:
 }
 ```
 
-Tyto informace jsou uchovávány na všech úrovních (nikoli pouze v pochodech struktury JSON), aby zachovaly aktualizace, které odstraňují klíče objektu.
+This information is kept at every level (not just the leaves of the JSON structure) to preserve updates that remove object keys.
 
 ## <a name="optimistic-concurrency"></a>Optimistická souběžnost
 
-Značky, požadované a hlášené vlastnosti podporují optimistickou souběžnost.
-Značky mají ETag, jako na [RFC7232](https://tools.ietf.org/html/rfc7232), které představují reprezentace značky JSON. Pomocí značek ETag v operacích podmíněné aktualizace z back-endu řešení můžete zajistit konzistenci.
+Tags, desired, and reported properties all support optimistic concurrency.
+Tags have an ETag, as per [RFC7232](https://tools.ietf.org/html/rfc7232), that represents the tag's JSON representation. You can use ETags in conditional update operations from the solution back end to ensure consistency.
 
-Požadovaná a nahlášené vlastnosti zařízení neobsahují značky ETag, ale mají `$version` hodnotu, která je zaručena k přírůstkové. Podobně jako ETag může být verze využívána stranou aktualizace k vymáhání konzistence aktualizací. Například aplikace zařízení pro hlášené vlastnosti nebo back-end řešení pro požadovanou vlastnost.
+Device twin desired and reported properties do not have ETags, but have a `$version` value that is guaranteed to be incremental. Similarly to an ETag, the version can be used by the updating party to enforce consistency of updates. For example, a device app for a reported property or the solution back end for a desired property.
 
-Verze jsou užitečné také v případě, že pozorovatelský Agent (například aplikace zařízení, který je pozorovatelem požadovaných vlastností) musí sjednotit Races mezi výsledkem operace načtení a oznámením o aktualizacích. Další informace najdete v [části tok opětovného připojení zařízení](iot-hub-devguide-device-twins.md#device-reconnection-flow) .
+Versions are also useful when an observing agent (such as the device app observing the desired properties) must reconcile races between the result of a retrieve operation and an update notification. The [Device reconnection flow section](iot-hub-devguide-device-twins.md#device-reconnection-flow) provides more information.
 
-## <a name="device-reconnection-flow"></a>Tok opětovného připojení zařízení
+## <a name="device-reconnection-flow"></a>Device reconnection flow
 
-IoT Hub nezachovává u odpojených zařízení oznámení o aktualizacích požadovaných vlastností. Postupuje podle toho, že zařízení, které se připojuje, musí kromě přihlášení k odběru oznámení o aktualizacích načítat úplný dokument požadovaných vlastností. Aby bylo možné Races mezi oznámeními aktualizací a úplným načítáním, je nutné zajistit následující tok:
+IoT Hub does not preserve desired properties update notifications for disconnected devices. It follows that a device that is connecting must retrieve the full desired properties document, in addition to subscribing for update notifications. Given the possibility of races between update notifications and full retrieval, the following flow must be ensured:
 
-1. Aplikace zařízení se připojuje ke centru IoT.
-2. Aplikace zařízení se přihlásí k odběru požadovaných vlastností oznámení aktualizací.
-3. Aplikace zařízení načte celý dokument pro požadované vlastnosti.
+1. Device app connects to an IoT hub.
+2. Device app subscribes for desired properties update notifications.
+3. Device app retrieves the full document for desired properties.
 
-Aplikace zařízení může ignorovat všechna oznámení s `$version` nižší nebo rovnou verzi úplného načteného dokumentu. Tento přístup je možný, protože IoT Hub zaručuje, že se verze vždy zvýší.
+The device app can ignore all notifications with `$version` less or equal than the version of the full retrieved document. This approach is possible because IoT Hub guarantees that versions always increment.
 
 > [!NOTE]
-> Tato logika je už implementovaná v sadách [SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md). Tento popis je vhodný jenom v případě, že aplikace zařízení nemůže používat žádné sady SDK pro zařízení Azure IoT a musí naprogramovat rozhraní MQTT přímo.
+> This logic is already implemented in the [Azure IoT device SDKs](iot-hub-devguide-sdks.md). This description is useful only if the device app cannot use any of Azure IoT device SDKs and must program the MQTT interface directly.
 > 
 
-## <a name="additional-reference-material"></a>Další referenční materiály
+## <a name="additional-reference-material"></a>Additional reference material
 
-Další referenční témata v IoT Hub příručce pro vývojáře zahrnují:
+Other reference topics in the IoT Hub developer guide include:
 
-* Článek [IoT Hubch koncových bodů](iot-hub-devguide-endpoints.md) popisuje různé koncové body, které jednotlivé služby IoT Hub zpřístupňují pro operace run-time a Management.
+* The [IoT Hub endpoints](iot-hub-devguide-endpoints.md) article describes the various endpoints that each IoT hub exposes for run-time and management operations.
 
-* Článek o [omezeních a kvótách](iot-hub-devguide-quotas-throttling.md) popisuje kvóty, které se vztahují na službu IoT Hub, a chování omezování, které se má při používání služby očekávat.
+* The [Throttling and quotas](iot-hub-devguide-quotas-throttling.md) article describes the quotas that apply to the IoT Hub service and the throttling behavior to expect when you use the service.
 
-* Článek sady [SDK pro zařízení a služby Azure IoT](iot-hub-devguide-sdks.md) obsahuje různé jazykové sady SDK, které můžete použít při vývoji aplikací pro zařízení i služby, které komunikují s IoT Hub.
+* The [Azure IoT device and service SDKs](iot-hub-devguide-sdks.md) article lists the various language SDKs you can use when you develop both device and service apps that interact with IoT Hub.
 
-* [IoT Hub dotazovací jazyk pro vlákna zařízení, úlohy a článek směrování zpráv](iot-hub-devguide-query-language.md) popisuje dotazovací jazyk IoT Hub, který můžete použít k načtení informací z IoT Hub o nečinnosti zařízení a úlohách.
+* The [IoT Hub query language for device twins, jobs, and message routing](iot-hub-devguide-query-language.md) article describes the IoT Hub query language you can use to retrieve information from IoT Hub about your device twins and jobs.
 
-* Článek [podpory IoT Hub MQTT](iot-hub-mqtt-support.md) poskytuje další informace o podpoře IoT Hub pro protokol MQTT.
+* The [IoT Hub MQTT support](iot-hub-mqtt-support.md) article provides more information about IoT Hub support for the MQTT protocol.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Seznámili jste se s tím, že jste se dozvěděli o nevlákenách zařízení. možná vás zajímá následující témata IoT Hub příručka pro vývojáře:
+Now you have learned about device twins, you may be interested in the following IoT Hub developer guide topics:
 
-* [Pochopení a použití vláken v modulech v IoT Hub](iot-hub-devguide-module-twins.md)
-* [Vyvolání přímé metody v zařízení](iot-hub-devguide-direct-methods.md)
+* [Understand and use module twins in IoT Hub](iot-hub-devguide-module-twins.md)
+* [Invoke a direct method on a device](iot-hub-devguide-direct-methods.md)
 * [Plánování úloh na několika zařízeních](iot-hub-devguide-jobs.md)
 
-Některé z konceptů popsaných v tomto článku si můžete vyzkoušet v následujících kurzech IoT Hub:
+To try out some of the concepts described in this article, see the following IoT Hub tutorials:
 
-* [Jak používat dvojitě dopředné zařízení](iot-hub-node-node-twin-getstarted.md)
-* [Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
-* [Správa zařízení pomocí nástrojů Azure IoT pro VS Code](iot-hub-device-management-iot-toolkit.md)
+* [How to use the device twin](iot-hub-node-node-twin-getstarted.md)
+* [How to use device twin properties](tutorial-device-twins.md)
+* [Device management with Azure IoT Tools for VS Code](iot-hub-device-management-iot-toolkit.md)

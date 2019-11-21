@@ -1,53 +1,53 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 1f08067768f2d4a0a0c2ab31b3db1c9f2c9e1521
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 707f18ade87e755243a9122ecb7f898a753b2a8e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476906"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224542"
 ---
-| Prostředek | Free | Sdílená | Basic | Standard | Premium (v2) | Isolated </th> |
+| Prostředek | Zadarmo | Shared | Úroveň Basic | Úroveň Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Webové, mobilní nebo API aplikace](https://azure.microsoft.com/services/app-service/) na [plán](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> pro Azure App Service |10 |100 |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup>|
-| [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) |10 na oblast |10 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků|
-| Typ instance COMPUTE |Sdílená |Sdílená |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup></p> |Vyhrazené<sup>3</sup>|
-| [Horizontální](../articles/app-service/manage-scale-up.md) navýšení kapacity (maximální počet instancí) |1 sdílená |1 sdílená |<sup>3 vyhrazené 3</sup> |10 vyhrazených<sup>3</sup> |20 vyhrazených<sup>3</sup>|100 vyhrazené<sup>4</sup>|
-| Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
-| Čas procesoru (5 minut)<sup>6</sup> |3 minuty |3 minuty |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a>|
-| Čas procesoru (den)<sup>6</sup> |60 minut |240 minut |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezené, placené za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |
-| Paměť (1 hodina) |1 024 MB na plán App Service |1 024 MB na aplikaci |Není dostupné. |Není dostupné. |Není dostupné. |Není dostupné. |
-| Šířka pásma |165 MB |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |
-| Architektura aplikace |32 – bit |32 – bit |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |
-| Webové sokety na instanci<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |Unlimited |
-| Připojení IP | 600 | 600 | Závisí na velikosti instance<sup>8</sup> | Závisí na velikosti instance<sup>8</sup> | Závisí na velikosti instance<sup>8</sup> | 64 000 |
-| Souběžná [připojení ladicího programu](../articles/app-service/troubleshoot-dotnet-visual-studio.md) na aplikaci |1 |1 |1 |5 |5 |5 |
-| App Service certifikátů na předplatné<sup>9</sup>| Nepodporuje se | Nepodporuje se |10 |10 |10 |10 |
-| Vlastní domény na aplikaci</a> |0 (pouze subdomény azurewebsites.net)|500 |500 |500 |500 |500 |
-| [Podpora protokolu SSL](../articles/app-service/configure-ssl-certificate.md) vlastní domény |Nepodporováno, ve výchozím nastavení je k dispozici certifikát Wildcard pro *. azurewebsites.net.|Nepodporováno, ve výchozím nastavení je k dispozici certifikát Wildcard pro *. azurewebsites.net.|Neomezené SNI SSL připojení |Zahrnuté neomezené SNI SSL a 1 IP SSL připojení |Zahrnuté neomezené SNI SSL a 1 IP SSL připojení | Zahrnuté neomezené SNI SSL a 1 IP SSL připojení|
-| Hybridní připojení na plán | | | 5 | 25 | 200 | 200 |
-| Integrovaný nástroj pro vyrovnávání zatížení | |× |× |× |× |X<sup>10</sup> |
-| [Vždy zapnuto](../articles/app-service/configure-common.md) | | |× |× |× |× |
-| [Naplánovaná zálohování](../articles/app-service/manage-backup.md) | | | | Naplánované zálohy každé 2 hodiny, maximálně 12 záloh za den (ruční + naplánované) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) |
+| [Web, mobile, or API apps](https://azure.microsoft.com/services/app-service/) per [Azure App Service plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Unlimited<sup>2</sup> |Unlimited<sup>2</sup> |Unlimited<sup>2</sup> |Unlimited<sup>2</sup>|
+| [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) |10 per region |10 per resource group |100 per resource group |100 per resource group |100 per resource group |100 per resource group|
+| Compute instance type |Shared |Shared |Dedicated<sup>3</sup> |Dedicated<sup>3</sup> |Dedicated<sup>3</sup></p> |Dedicated<sup>3</sup>|
+| [Scale out](../articles/app-service/manage-scale-up.md) (maximum instances) |1 shared |1 shared |3 dedicated<sup>3</sup> |10 dedicated<sup>3</sup> |20 dedicated<sup>3</sup>|100 dedicated<sup>4</sup>|
+| Storage<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
+| CPU time (5 minutes)<sup>6</sup> |3 minuty |3 minuty |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a>|
+| CPU time (day)<sup>6</sup> |60 minutes |240 minutes |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |
+| Memory (1 hour) |1,024 MB per App Service plan |1,024 MB per app |Nevztahuje se |Nevztahuje se |Nevztahuje se |Nevztahuje se |
+| Šířka pásma |165 MB |Unlimited, [data transfer rates](https://azure.microsoft.com/pricing/details/data-transfers/) apply |Unlimited, [data transfer rates](https://azure.microsoft.com/pricing/details/data-transfers/) apply |Unlimited, [data transfer rates](https://azure.microsoft.com/pricing/details/data-transfers/) apply |Unlimited, [data transfer rates](https://azure.microsoft.com/pricing/details/data-transfers/) apply |Unlimited, [data transfer rates](https://azure.microsoft.com/pricing/details/data-transfers/) apply |
+| Architektura aplikace |32-bit |32-bit |32-bit/64-bit |32-bit/64-bit |32-bit/64-bit |32-bit/64-bit |
+| Web sockets per instance<sup>7</sup> |5 |35 |350 |Bez omezení |Bez omezení |Bez omezení |
+| IP connections | 600 | 600 | Depends on instance size<sup>8</sup> | Depends on instance size<sup>8</sup> | Depends on instance size<sup>8</sup> | 64,000 |
+| Concurrent [debugger connections](../articles/app-service/troubleshoot-dotnet-visual-studio.md) per application |1\. místo |1\. místo |1\. místo |5 |5 |5 |
+| App Service Certificates per subscription<sup>9</sup>| Nepodporováno | Nepodporováno |10 |10 |10 |10 |
+| Custom domains per app</a> |0 (azurewebsites.net subdomain only)|500 |500 |500 |500 |500 |
+| Custom domain [SSL support](../articles/app-service/configure-ssl-certificate.md) |Not supported, wildcard certificate for *.azurewebsites.net available by default|Not supported, wildcard certificate for *.azurewebsites.net available by default|Unlimited SNI SSL connections |Unlimited SNI SSL and 1 IP SSL connections included |Unlimited SNI SSL and 1 IP SSL connections included | Unlimited SNI SSL and 1 IP SSL connections included|
+| Hybrid connections per plan | | | 5 | 25 | 200 | 200 |
+| Integrated load balancer | |× |× |× |× |X<sup>10</sup> |
+| [Always On](../articles/app-service/configure-common.md) | | |× |× |× |× |
+| [Scheduled backups](../articles/app-service/manage-backup.md) | | | | Scheduled backups every 2 hours, a maximum of 12 backups per day (manual + scheduled) | Scheduled backups every hour, a maximum of 50 backups per day (manual + scheduled) | Scheduled backups every hour, a maximum of 50 backups per day (manual + scheduled) |
 | [Automatické škálování](../articles/app-service/manage-scale-up.md) | | | |× |× |× |
-| Webové [úlohy](../articles/app-service/webjobs-create.md)<sup>11</sup> |× |× |× |× |× |× |
-| Podpora [Azure Scheduleru](https://azure.microsoft.com/services/scheduler/) | |× |× |× |× |× |
+| [WebJobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |× |× |× |× |× |× |
+| [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) support | |× |× |× |× |× |
 | [Monitorování koncových bodů](../articles/app-service/web-sites-monitor.md) | | |× |× |× |× |
-| [Pracovní sloty](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
-| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
+| [Staging slots](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
+| Smlouva SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
 
-<sup>1</sup> Pokud není uvedeno jinak, jsou aplikace a kvóty úložiště podle App Serviceho plánu.  
-<sup>2</sup> . Skutečný počet aplikací, které můžete hostovat na těchto počítačích, závisí na aktivitách aplikací, velikosti instancí počítačů a na odpovídajícím využití prostředků.  
-<sup>3</sup> . Vyhrazené instance mohou mít různé velikosti. Další informace najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> . Další jsou povolená na vyžádání.  
-<sup>5</sup> . Limit úložiště je celková velikost obsahu napříč všemi aplikacemi ve stejném plánu služby App Service. Celková velikost obsahu všech aplikací napříč všemi plány služby App Service v jedné skupině prostředků a oblastí nemůže překročit 500 GB.  
-<sup>6</sup> Tyto prostředky jsou omezené na fyzických prostředcích na vyhrazených instancích (velikost instance a počet instancí).  
-<sup>7</sup> Při škálování aplikace na úrovni Basic na dvě instance máte 350 souběžných připojení pro každou z těchto dvou instancí. Pro úroveň Standard a vyšší nejsou k dispozici žádná teoretická omezení pro webové sokety, ale jiné faktory můžou omezit počet webových soketů. Například maximální počet souběžných požadavků povolených (definovaných v `maxConcurrentRequestsPerCpu`) jsou: 7 500 na malý virtuální počítač, 15 000 na střední virtuální počítač (7 500 × 2 jádra) a 75 000 na velký virtuální počítač (18 750 × 4 jádra).  
-<sup>8</sup> Maximální počet připojení IP je na jednu instanci a závisí na velikosti instance: 1 920 na instanci B1/S1/P1V2, 3 968 na instanci B2/S2/P2V2, 8 064 na instanci B3/S3/P3V2.  
-<sup>9</sup> Limit kvóty App Service Certificate pro každé předplatné se dá zvýšit prostřednictvím žádosti o podporu na maximální limit 200.  
-<sup>10</sup> Služba App Service v izolovaném prostředí SKU se dá pomocí Azure Load Balancer interně vyrovnávat zatížení (interního nástroje), takže není k dispozici žádné veřejné připojení z Internetu. Následkem toho se některé služby ILB App Service v izolovaném prostředí musí používat v počítačích, které mají přímé připojení ke koncovému bodu sítě ILB.  
-<sup>11</sup> Spouštějte vlastní spustitelné soubory nebo skripty na vyžádání, podle plánu nebo nepřetržitě jako úlohu na pozadí v rámci instance App Service. U nepřetržitého provádění úloh WebJobs se vyžaduje stálé připojení. Pro plánované úlohy WebJobs se vyžaduje Azure Scheduler na úrovni Free nebo Standard. Není k dispozici žádný předdefinovaný limit počtu webových úloh, které mohou být spuštěny v instanci App Service. Existují praktická omezení, která závisí na tom, co se snaží kód aplikace provést.  
+<sup>1</sup>Apps and storage quotas are per App Service plan unless noted otherwise.  
+<sup>2</sup>The actual number of apps that you can host on these machines depends on the activity of the apps, the size of the machine instances, and the corresponding resource utilization.  
+<sup>3</sup>Dedicated instances can be of different sizes. For more information, see [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/).  
+<sup>4</sup>More are allowed upon request.  
+<sup>5</sup>The storage limit is the total content size across all apps in the same App service plan. The total content size of all apps across all App service plans in a single resource group and region cannot exceed 500GB.  
+<sup>6</sup>These resources are constrained by physical resources on the dedicated instances (the instance size and the number of instances).  
+<sup>7</sup>If you scale an app in the Basic tier to two instances, you have 350 concurrent connections for each of the two instances. For Standard tier and above, there are no theoretical limits to web sockets, but other factors can limit the number of web sockets. For example, maximum concurrent requests allowed (defined by `maxConcurrentRequestsPerCpu`) are: 7,500 per small VM, 15,000 per medium VM (7,500 x 2 cores), and 75,000 per large VM (18,750 x 4 cores).  
+<sup>8</sup>The maximum IP connections are per instance and depend on the instance size: 1,920 per B1/S1/P1V2 instance, 3,968 per B2/S2/P2V2 instance, 8,064 per B3/S3/P3V2 instance.  
+<sup>9</sup>The App Service Certificate quota limit per subscription can be increased via a support request to a maximum limit of 200.  
+<sup>10</sup>App Service Isolated SKUs can be internally load balanced (ILB) with Azure Load Balancer, so there's no public connectivity from the internet. Následkem toho se některé služby ILB App Service v izolovaném prostředí musí používat v počítačích, které mají přímé připojení ke koncovému bodu sítě ILB.  
+<sup>11</sup>Run custom executables and/or scripts on demand, on a schedule, or continuously as a background task within your App Service instance. U nepřetržitého provádění úloh WebJobs se vyžaduje stálé připojení. Pro plánované úlohy WebJobs se vyžaduje Azure Scheduler na úrovni Free nebo Standard. There's no predefined limit on the number of WebJobs that can run in an App Service instance. There are practical limits that depend on what the application code is trying to do.  

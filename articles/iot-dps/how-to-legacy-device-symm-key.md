@@ -1,6 +1,6 @@
 ---
-title: Jak pomocí symetrických klíčů zřídit starší verze zařízení s Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Jak pomocí symetrických klíčů zřídit starší verze zařízení s instancí služby Device Provisioning
+title: Provision legacy devices using symmetric keys - Azure IoT Hub Device Provisioning Service
+description: How to use symmetric keys to provision legacy devices with your device provisioning service instance
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 13e22d772ef9b90f415f10b65e4a4290a1f7bd81
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3e3b54592608f5c39d618f5ceda40747ad4fd0fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434834"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209918"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
+# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>How to provision legacy devices using symmetric keys
 
-Běžný problém s mnoha staršími zařízeními je, že často mají identitu, která se skládá z jedné části informací. Tato informace o identitě je obvykle adresa MAC nebo sériové číslo. Starší zařízení nemusí obsahovat certifikát, čip TPM ani žádnou jinou funkci zabezpečení, která se dá použít k bezpečné identifikaci zařízení. Služba Device Provisioning pro službu IoT Hub zahrnuje ověření symetrického klíče. Ověření identity symetrického klíče se dá použít k identifikaci zařízení na základě informací, jako je adresa MAC nebo sériové číslo.
+A common problem with many legacy devices is that they often have an identity that is composed of a single piece of information. This identity information is usually a MAC address or a serial number. Legacy devices may not have a certificate, TPM, or any other security feature that can be used to securely identify the device. The Device Provisioning Service for IoT hub includes symmetric key attestation. Symmetric key attestation can be used to identify a device based off information like the MAC address or a serial number.
 
-Pokud můžete snadno nainstalovat [modul hardwarového zabezpečení (HSM)](concepts-security.md#hardware-security-module) a certifikát, může to být lepší přístup k identifikaci a zřizování vašich zařízení. Vzhledem k tomu, že tento přístup vám může dovolit obejít aktualizaci kódu nasazeného na všechna vaše zařízení a nebudete mít v imagi zařízení vložený tajný klíč.
+If you can easily install a [hardware security module (HSM)](concepts-security.md#hardware-security-module) and a certificate, then that may be a better approach for identifying and provisioning your devices. Since that approach may allow you to bypass updating the code deployed to all your devices, and you would not have a secret key embedded in your device image.
 
-V tomto článku se předpokládá, že ani modul HARDWAROVÉho zabezpečení nebo certifikát není možnost životaschopnosti. Předpokládá se ale, že máte nějakou metodu aktualizace kódu zařízení, abyste mohli tato zařízení zřídit pomocí služby Device Provisioning. 
+This article assumes that neither an HSM or a certificate is a viable option. However, it is assumed that you do have some method of updating device code to use the Device Provisioning Service to provision these devices. 
 
-Tento článek také předpokládá, že se aktualizace zařízení provádí v zabezpečeném prostředí, aby se zabránilo neoprávněnému přístupu k klíči hlavní skupiny nebo odvozenému klíči zařízení.
+This article also assumes that the device update takes place in a secure environment to prevent unauthorized access to the master group key or the derived device key.
 
 Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem se však můžete řídit i na Linuxu. Příklad pro Linux najdete v článku o [zřizování architektury s více tenanty](how-to-provision-multitenant.md).
 
 > [!NOTE]
-> Vzorek použitý v tomto článku je napsán v jazyce C. K dispozici je také [ C# ukázka pro zřizování zařízení s vytvořením symetrického klíče](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) . Pokud chcete použít tuto ukázku, Stáhněte nebo naklonujte úložiště [Azure-IoT-Samples-CSharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) a postupujte podle pokynů v tomto ukázkovém kódu. Podle pokynů v tomto článku můžete vytvořit skupinu pro zápis symetrického klíče pomocí portálu a najít rozsah ID a primární a sekundární klíče pro spuštění ukázky. Pomocí ukázky můžete také vytvořit jednotlivé registrace.
+> The sample used in this article is written in C. There is also a [C# device provisioning symmetric key sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) available. To use this sample, download or clone the [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) repository and follow the in-line instructions in the sample code. You can follow the instructions in this article to create a symmetric key enrollment group using the portal and to find the ID Scope and enrollment group primary and secondary keys needed to run the sample. You can also create individual enrollments using the sample.
 
 ## <a name="overview"></a>Přehled
 
-Na základě informací, které toto zařízení identifikuje, bude pro každé zařízení definováno jedinečné ID registrace. Například adresa MAC nebo sériové číslo.
+A unique registration ID will be defined for each device based on information that identifies that device. For example, the MAC address or a serial number.
 
-Ve službě Device Provisioning se vytvoří skupina pro registraci, která používá [symetrický klíč ověření identity](concepts-symmetric-key-attestation.md) . Skupina pro registraci bude obsahovat hlavní klíč skupiny. Tento hlavní klíč se použije k výpočtu hodnoty hash každého jedinečného ID registrace a vytvoří jedinečný klíč zařízení pro každé zařízení. Zařízení použije tento odvozený klíč zařízení s jedinečným ID registrace k ověření pomocí služby Device Provisioning a přiřadí se ke službě IoT Hub.
+An enrollment group that uses [symmetric key attestation](concepts-symmetric-key-attestation.md) will be created with the Device Provisioning Service. The enrollment group will include a group master key. That master key will be used to hash each unique registration ID to produce a unique device key for each device. The device will use that derived device key with its unique registration ID to attest with the Device Provisioning Service and be assigned to an IoT hub.
 
-Kód zařízení, který je znázorněn v tomto článku, bude postupovat stejným způsobem jako [rychlý Start: zřízení simulovaného zařízení s symetrickými klíči](quick-create-simulated-device-symm-key.md). Kód bude simulovat zařízení pomocí ukázky ze [sady Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Simulované zařízení se potvrdí pomocí skupiny registrací místo jednotlivé registrace, jak je znázorněno v rychlém startu.
+The device code demonstrated in this article will follow the same pattern as the [Quickstart: Provision a simulated device with symmetric keys](quick-create-simulated-device-symm-key.md). The code will simulate a device using a sample from the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). The simulated device will attest with an enrollment group instead of an individual enrollment as demonstrated in the quickstart.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povolenou úlohou [" C++vývoj pro stolní počítače"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
+* Completion of the [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) quickstart.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later with the ['Desktop development with C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) workload enabled.
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 
@@ -52,9 +52,9 @@ Kód zařízení, který je znázorněn v tomto článku, bude postupovat stejn�
 
 V této části připravíte vývojové prostředí použité k sestavení [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). 
 
-Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované zařízení se pokusí zřídit během spouštěcí sekvence zařízení.
+The SDK includes the sample code for the simulated device. Toto simulované zařízení se pokusí zřídit během spouštěcí sekvence zařízení.
 
-1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
+1. Download the [CMake build system](https://cmake.org/download/).
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
@@ -99,58 +99,58 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
     ```
 
 
-## <a name="create-a-symmetric-key-enrollment-group"></a>Vytvořit skupinu pro zápis symetrického klíče
+## <a name="create-a-symmetric-key-enrollment-group"></a>Create a symmetric key enrollment group
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete instanci služby Device Provisioning.
+1. Sign in to the [Azure portal](https://portal.azure.com), and open your Device Provisioning Service instance.
 
-2. Vyberte kartu **spravovat registrace** a pak klikněte na tlačítko **Přidat skupinu** registrací v horní části stránky. 
+2. Select the **Manage enrollments** tab, and then click the **Add enrollment group** button at the top of the page. 
 
-3. Do pole **Přidat skupinu**registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
+3. On **Add Enrollment Group**, enter the following information, and click the **Save** button.
 
-   - **Název skupiny**: zadejte **mylegacydevices**.
+   - **Group name**: Enter **mylegacydevices**.
 
-   - **Typ ověření identity**: vyberte **symetrický klíč**.
+   - **Attestation Type**: Select **Symmetric Key**.
 
    - **Automaticky vygenerovat klíče**: Toto políčko zaškrtněte.
 
-   - **Vyberte, jak chcete přiřadit zařízení k**centrům: vyberte **statická konfigurace** , abyste se mohli přiřadit k určitému centru.
+   - **Select how you want to assign devices to hubs**: Select **Static configuration** so you can assign to a specific hub.
 
-   - **Vyberte centra IoT, do kterých se dá tato skupina přiřadit**: vyberte jednu z vašich Center.
+   - **Select the IoT hubs this group can be assigned to**: Select one of your hubs.
 
-     ![Přidat skupinu registrace pro ověření symetrického klíče](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Add enrollment group for symmetric key attestation](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. Po uložení registrace se vygeneruje **Primární klíč** a **Sekundární klíč** a tyto klíče se přidají do položky registrace. Skupina pro registraci symetrického klíče se zobrazí jako **mylegacydevices** ve sloupci *název skupiny* na kartě *skupiny* registrací. 
+4. Po uložení registrace se vygeneruje **Primární klíč** a **Sekundární klíč** a tyto klíče se přidají do položky registrace. Your symmetric key enrollment group appears as **mylegacydevices** under the *Group Name* column in the *Enrollment Groups* tab. 
 
-    Otevřete registraci a zkopírujte hodnotu vygenerovaného **primárního klíče**. Tento klíč je klíčem hlavní skupiny.
+    Otevřete registraci a zkopírujte hodnotu vygenerovaného **primárního klíče**. This key is your master group key.
 
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Zvolit jedinečný registrační identifikátor zařízení
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Choose a unique registration ID for the device
 
-Aby bylo možné identifikovat jednotlivá zařízení, musí být definováno jedinečné ID registrace. V zařízení můžete použít adresu MAC, sériové číslo nebo libovolné jedinečné informace. 
+A unique registration ID must be defined to identify each device. You can use the MAC address, serial number, or any unique information from the device. 
 
-V tomto příkladu používáme kombinaci adresy MAC a sériového čísla, které tvoří následující řetězec pro ID registrace.
+In this example, we use a combination of a MAC address and serial number forming the following string for a registration ID.
 
 ```
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Vytvořte jedinečné ID registrace pro vaše zařízení. Platné znaky jsou malé alfanumerické znaky a spojovníky (-).
+Create a unique registration ID for your device. Valid characters are lowercase alphanumeric and dash ('-').
 
 
-## <a name="derive-a-device-key"></a>Odvodit klíč zařízení 
+## <a name="derive-a-device-key"></a>Derive a device key 
 
-Pokud chcete vygenerovat klíč zařízení, použijte hlavní klíč skupiny k výpočtu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) jedinečného ID registrace zařízení a výsledek převeďte na Formát Base64.
+To generate the device key, use the group master key to compute an [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the unique registration ID for the device and convert the result into Base64 format.
 
-Nezahrnujte hlavní klíč skupiny do kódu zařízení.
+Do not include your group master key in your device code.
 
 
-#### <a name="linux-workstations"></a>Pracovní stanice Linux
+#### <a name="linux-workstations"></a>Linux workstations
 
-Pokud používáte pracovní stanici se systémem Linux, můžete použít OpenSSL k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
+If you are using a Linux workstation, you can use openssl to generate your derived device key as shown in the following example.
 
-Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
+Replace the value of **KEY** with the **Primary Key** you noted earlier.
 
-Nahraďte hodnotu **REG_ID** číslem registrace.
+Replace the value of **REG_ID** with your registration ID.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -165,13 +165,13 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-#### <a name="windows-based-workstations"></a>Pracovní stanice založené na systému Windows
+#### <a name="windows-based-workstations"></a>Windows-based workstations
 
-Pokud používáte pracovní stanici se systémem Windows, můžete použít PowerShell k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
+If you are using a Windows-based workstation, you can use PowerShell to generate your derived device key as shown in the following example.
 
-Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
+Replace the value of **KEY** with the **Primary Key** you noted earlier.
 
-Nahraďte hodnotu **REG_ID** číslem registrace.
+Replace the value of **REG_ID** with your registration ID.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -189,21 +189,21 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-Zařízení použije odvozený klíč zařízení s jedinečným ID registrace a provede ověření symetrického klíče pomocí skupiny registrací během zřizování.
+Your device will use the derived device key with your unique registration ID to perform symmetric key attestation with the enrollment group during provisioning.
 
 
 
-## <a name="create-a-device-image-to-provision"></a>Vytvoření image zařízení pro zřízení
+## <a name="create-a-device-image-to-provision"></a>Create a device image to provision
 
-V této části aktualizujete vzor zřizování s názvem **prov @ no__t-1dev @ no__t-2client @ no__t-3sample** umístěný v sadě Azure IoT C SDK, kterou jste nastavili dříve. 
+In this section, you will update a provisioning sample named **prov\_dev\_client\_sample** located in the Azure IoT C SDK you set up earlier. 
 
-Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesílá požadavek na zřízení do instance služby Device Provisioning. Spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí ke službě IoT Hub, kterou jste nakonfigurovali ve skupině pro registraci.
+This sample code simulates a device boot sequence that sends the provisioning request to your Device Provisioning Service instance. The boot sequence will cause the device to be recognized and assigned to the IoT hub you configured on the enrollment group.
 
 1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_** .
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. V sadě Visual Studio otevřete soubor řešení **azure_iot_sdks. sln** , který byl vygenerován dříve pomocí programu cmake. Soubor řešení by se měl nacházet v následujícím umístění:
+2. In Visual Studio, open the **azure_iot_sdks.sln** solution file that was generated by running CMake earlier. Soubor řešení by se měl nacházet v následujícím umístění:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -226,14 +226,14 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Vyhledejte volání `prov_dev_set_symmetric_key_info()` v **prov @ no__t-2dev @ no__t-3client @ no__t-4sample. c** , který je komentovat.
+6. Find the call to `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** which is commented out.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Odkomentujte volání funkce a nahraďte zástupné hodnoty (včetně lomených závorek) jedinečným ID registrace vašeho zařízení a vygenerovaným klíčem odvozeného zařízení.
+    Uncomment the function call, and replace the placeholder values (including the angle brackets) with the unique registration ID for your device and the derived device key you generated.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -263,15 +263,15 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     Press enter key to exit:
     ```
 
-9. Na portálu přejděte do služby IoT Hub, ke které se simulované zařízení přiřadilo, a klikněte na kartu **zařízení IoT** . Po úspěšném zřízení simulovaného centra pro centrum se jeho ID zařízení zobrazí v okně **zařízení IoT** se *stavem* **povoleno**. Možná budete muset nahoře kliknout na tlačítko **Aktualizovat**. 
+9. In the portal, navigate to the IoT hub your simulated device was assigned to and click the **IoT Devices** tab. On successful provisioning of the simulated to the hub, its device ID appears on the **IoT Devices** blade, with *STATUS* as **enabled**. Možná budete muset nahoře kliknout na tlačítko **Aktualizovat**. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
 
 
-## <a name="security-concerns"></a>Problematika zabezpečení
+## <a name="security-concerns"></a>Security concerns
 
-Mějte na paměti, že to nechá odvozený klíč zařízení zahrnutý jako součást obrázku, což není doporučený postup z hlediska zabezpečení. Toto je jeden z důvodů, proč zabezpečení a snadné použití jsou kompromisy. 
+Be aware that this leaves the derived device key included as part of the image, which is not a recommended security best practice. This is one reason why security and ease-of-use are tradeoffs. 
 
 
 
@@ -279,9 +279,9 @@ Mějte na paměti, že to nechá odvozený klíč zařízení zahrnutý jako sou
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o opětovném zřízení najdete v tématu Koncepty opětovného [zřizování zařízení IoT Hub](concepts-device-reprovision.md) 
-* [Rychlý Start: zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md)
-* Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) . 
+* To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
+* [Quickstart: Provision a simulated device with symmetric keys](quick-create-simulated-device-symm-key.md)
+* To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
 
 
 

@@ -1,26 +1,20 @@
 ---
-title: Vytvoření funkce v Azure, která se spouští podle plánu | Dokumentace Microsoftu
+title: Create a function that runs on a schedule in Azure
 description: Zjistěte, jak v Azure vytvořit funkci, která se spouští na základě vámi definovaného plánu.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/28/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a070a7da48af8abe138900dd0221bace2149aa20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e89c3923daab15793707ff99dbbed6deeb6a0b0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469333"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227177"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Vytvoření funkce v Azure aktivované časovačem
 
-Naučte se, jak pomocí Azure Functions vytvořit funkci bez [serveru](https://azure.microsoft.com/solutions/serverless/) , která se spouští na základě vámi definovaného plánu.
+Learn how to use Azure Functions to create a [serverless](https://azure.microsoft.com/solutions/serverless/) function that runs based on a schedule that you define.
 
 ![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -42,7 +36,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-a-timer-triggered-function"></a>Vytvoření funkce aktivované časovačem
 
-1. Rozbalte aplikaci Function App a klikněte na tlačítko **+** vedle položky **Funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte **Na portálu** a potom **Pokračovat**. V opačném případě přejít ke kroku 3.
+1. Rozbalte aplikaci Function App a klikněte na tlačítko **+** vedle položky **Funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte **Na portálu** a potom **Pokračovat**. Otherwise, go to step 3.
 
    ![Stručný úvod do služby Functions na webu Azure Portal](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
@@ -50,7 +44,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
     ![Rychlý start služby Functions – výběr dalších šablon](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. Do vyhledávacího pole zadejte `timer` a nakonfigurujte novou aktivační událost s nastavením uvedenými v tabulce pod obrázkem.
+3. In the search field, type `timer` and configure the new trigger with the settings as specified in the table below the image.
 
     ![Vytvořte na portálu Azure Portal funkci aktivovanou časovačem.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
@@ -83,6 +77,6 @@ Teď máte funkci, která se spouští jednou za hodinu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořili jste funkci, která se spouští na základě plánu. Další informace o aktivačních událostech časovače najdete v tématu [plánování provádění kódu pomocí Azure Functions](functions-bindings-timer.md).
+Vytvořili jste funkci, která se spouští na základě plánu. For more information about timer triggers, see [Schedule code execution with Azure Functions](functions-bindings-timer.md).
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

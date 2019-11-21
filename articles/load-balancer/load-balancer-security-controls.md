@@ -1,66 +1,66 @@
 ---
-title: Ovládací prvky zabezpečení pro Azure Load Balancer
-description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení Load Balancer
+title: Security controls for Azure Load Balancer
+description: A checklist of security controls for evaluating Load Balancer
 services: load-balancer
-author: msmbaldwin
-manager: barbkess
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: e0be6635a0916183e1dfe776bef4c547578383dc
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.author: allensu
+ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886600"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214898"
 ---
-# <a name="security-controls-for-azure-load-balancer"></a>Ovládací prvky zabezpečení pro Azure Load Balancer
+# <a name="security-controls-for-azure-load-balancer"></a>Security controls for Azure Load Balancer
 
-Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Load Balancer.
+This article documents the security controls built into Azure Load Balancer.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Síť
 
-| Řízení zabezpečení | Ano/Ne | Poznámky |
+| Security control | Ano/Ne | Poznámky |
 |---|---|--|
-| Podpora koncového bodu služby| Není k dispozici | |
-| Podpora vkládání virtuální sítě| Není k dispozici | |
-| Izolace sítě a podpora brány firewall| Není k dispozici |  |
-| Podpora vynuceného tunelování| Není k dispozici | |
+| Service endpoint support| Nevztahuje se | |
+| VNet injection support| Nevztahuje se | |
+| Network Isolation and Firewalling support| Nevztahuje se |  |
+| Forced tunneling support| Nevztahuje se | |
 
-## <a name="monitoring--logging"></a>Monitorování protokolování &
+## <a name="monitoring--logging"></a>Monitoring & logging
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Security control | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | [Load Balancer veřejné základní](load-balancer-monitor-log.md)najdete v tématu protokoly Azure monitor. |
-| Protokolování a audit roviny řízení a správy| Ano | [Load Balancer veřejné základní](load-balancer-monitor-log.md)najdete v tématu protokoly Azure monitor. |
-| Protokolování a audit roviny dat | Není k dispozici |  |
+| Azure monitoring support (Log analytics, App insights, etc.)| Ano | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
+| Control and management plane logging and audit| Ano | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
+| Data plane logging and audit | Nevztahuje se |  |
 
 ## <a name="identity"></a>Identita
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Security control | Ano/Ne | Poznámky|
 |---|---|--|
-| Ověřování| Není k dispozici |  |
-| Authorization| Není k dispozici |  |
+| Ověření| Nevztahuje se |  |
+| Autorizace| Nevztahuje se |  |
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Řízení zabezpečení | Ano/Ne | Poznámky |
+| Security control | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém umístění: Klíče spravované společností Microsoft | Není k dispozici | |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Není k dispozici | |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Není k dispozici | |
-| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
-| Zašifrovaná volání rozhraní API| Ano | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml). |
+| Server-side encryption at rest: Microsoft-managed keys | Nevztahuje se | |
+| Encryption in transit (such as ExpressRoute encryption, in VNet encryption, and VNet-VNet encryption )| Nevztahuje se | |
+| Server-side encryption at rest: customer-managed keys (BYOK) | Nevztahuje se | |
+| Column level encryption (Azure Data Services)| Nevztahuje se | |
+| API calls encrypted| Ano | Via the [Azure Resource Manager](../azure-resource-manager/index.yml). |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Security control | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Není k dispozici |  | 
+| Configuration management support (versioning of configuration, etc.)| Nevztahuje se |  | 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).
+- Learn more about the [built-in security controls across Azure services](../security/fundamentals/security-controls.md).

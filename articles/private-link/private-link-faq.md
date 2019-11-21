@@ -1,81 +1,81 @@
 ---
-title: Nejčastější dotazy týkající se privátního propojení Azure
-description: Přečtěte si o privátních odkazech Azure.
+title: Azure Private Link frequently asked questions (FAQ)
+description: Learn about Azure Private Link.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104591"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229340"
 ---
-# <a name="azure-private-link-frequently-asked-questions-faq"></a>Nejčastější dotazy týkající se privátního propojení Azure
+# <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link frequently asked questions (FAQ)
 
 ## <a name="private-link"></a>Privátní propojení
 
-### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Co je privátní koncový bod Azure a služba privátního propojení Azure?
+### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>What is Azure Private Endpoint and Azure Private Link Service?
 
-- **[Privátní koncový bod Azure](private-endpoint-overview.md)** : Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Pomocí privátních koncových bodů se můžete připojit ke službě Azure PaaS, která podporuje privátní odkazy nebo vlastní službu privátních odkazů.
-- **[Služba privátního propojení Azure](private-link-service-overview.md)** : Služba privátního propojení Azure je služba vytvořená poskytovatelem služeb. V současné době může být služba privátního propojení připojena k konfiguraci protokolu IP front-endu Standard Load Balancer. 
+- **[Azure Private Endpoint](private-endpoint-overview.md)** : Azure Private Endpoint is a network interface that connects you privately and securely to a service powered by Azure Private Link. You can use Private Endpoints to connect to an Azure PaaS service that supports Private Link or to your own Private Link Service.
+- **[Azure Private Link Service](private-link-service-overview.md)** : Azure Private Link service is a service created by a service provider. Currently, a Private Link service can be attached to the frontend IP configuration of a Standard Load Balancer. 
 
-### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Jak se posílá provoz při použití privátního propojení?
-Provoz se odesílá soukromě přes páteřní síť Microsoftu. Neprojde internetem.  
+### <a name="how-is-traffic-being-sent-when-using-private-link"></a>How is traffic being sent when using Private Link?
+Traffic is sent privately using Microsoft backbone. It doesn’t traverse the internet.  
  
-### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Jaký je rozdíl mezi koncovými body služby a soukromými koncovými body?
-- Při použití privátních koncových bodů se k přístupu k síti přidělí konkrétní prostředky za danou službou, která poskytuje podrobné segmentování, provoz se taky může spojit s prostředkem služby z místního prostředí bez použití veřejných koncových bodů.
+### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>What is the difference between a Service Endpoints and a Private Endpoints?
+- When using Private Endpoints, network access is granted to specific resources behind a given service providing granular segmentation, also traffic can reach the service resource from on premises without using public endpoints.
 
-### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Jaký je vztah mezi službou privátního propojení a soukromým koncovým bodem?
-Soukromý koncový bod poskytuje přístup k několika typům prostředků privátního propojení, včetně služeb Azure PaaS a vlastní služby privátního propojení. Jedná se o vztah 1: n. Jedna služba privátního propojení může přijímat připojení z více privátních koncových bodů. Na druhé straně se jeden privátní koncový bod může připojit jenom k jedné službě privátního propojení.    
+### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>What is the relationship between Private Link service and Private Endpoint?
+Private Endpoint provides access to multiple private link resource types, including Azure PaaS services and your own Private Link Service. It is a one-to-many relationship. One Private Link service can receive connections from multiple private endpoints. On the other hand, one private endpoint can only connect to one Private Link service.    
 
-## <a name="private-endpoint"></a>Soukromý koncový bod 
+## <a name="private-endpoint"></a>Privátní koncový bod 
  
-### <a name="can-i-create-multiple-private-endpoints-in-same-vnet-can-they-connect-to-different-services"></a>Můžu ve stejné virtuální síti vytvořit více privátních koncových bodů? Můžou se připojovat k různým službám? 
-Ano. Můžete mít několik privátních koncových bodů ve stejné virtuální síti nebo podsíti. Můžou se připojovat k různým službám.  
+### <a name="can-i-create-multiple-private-endpoints-in-same-vnet-can-they-connect-to-different-services"></a>Can I create multiple Private Endpoints in same VNet? Can they connect to different Services? 
+Ano. You can have multiple private endpoints in same VNet or subnet. They can connect to different services.  
  
-### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Vyžadujem vyhrazenou podsíť pro privátní koncové body? 
-Ne. U privátních koncových bodů nevyžadujete vyhrazenou podsíť. Můžete vybrat IP adresu privátního koncového bodu z jakékoli podsítě z virtuální sítě, ve které je vaše služba nasazená.  
+### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Do I require a dedicated subnet for private endpoints? 
+Ne. You don't require a dedicated subnet for private endpoints. You can choose a private endpoint IP from any subnet from the VNet where your service is deployed.  
  
-### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>Může se privátní koncový bod připojit ke službě privátního připojení napříč klienty Azure Active Directory? 
-Ano. Privátní koncové body se můžou připojovat ke službám privátního propojení nebo Azure PaaS napříč klienty služby AD.  
+### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>Can Private Endpoint connect to Private Link service across Azure Active Directory Tenants? 
+Ano. Private endpoints can connect to Private Link services or Azure PaaS across AD tenants.  
  
-### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Může se privátní koncový bod připojit k prostředkům Azure PaaS napříč oblastmi Azure?
-Ano. Privátní koncové body se můžou připojit k prostředkům Azure PaaS napříč oblastmi Azure.
+### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Can private endpoint connect to Azure PaaS resources across Azure regions?
+Ano. Private endpoints can connect to Azure PaaS resources across Azure regions.
 
 ## <a name="private-link-service"></a>Služba privátního propojení
  
-### <a name="what-are-the-pre-requisites-for-creating-a-private-link-service"></a>Jaké jsou požadavky pro vytvoření služby privátního propojení? 
-Back-endy služby by měly být ve virtuální síti a za Standard Load Balancer.
+### <a name="what-are-the-pre-requisites-for-creating-a-private-link-service"></a>What are the pre-requisites for creating a Private Link service? 
+Your service backends should be in a Virtual network and behind a Standard Load Balancer.
  
-### <a name="how-can-i-scale-my-private-link-service"></a>Jak můžu škálovat službu privátního propojení? 
-Službu privátního propojení můžete škálovat několika různými způsoby: 
-- Přidání back-end virtuálních počítačů do fondu za vaším Standard Load Balancer 
-- Přidejte IP adresu ke službě privátního propojení. Povolujeme až 8 IP adres na jednu službu privátního propojení.  
-- Přidejte novou službu privátního propojení do Standard Load Balancer. Pro každý nástroj pro vyrovnávání zatížení povolujeme až osm služeb privátních odkazů.   
+### <a name="how-can-i-scale-my-private-link-service"></a>How can I scale my Private Link service? 
+You can scale your Private Link service in a few different ways: 
+- Add Backend VMs to the pool behind your Standard Load Balancer 
+- Add an IP to the Private Link service. We allow up to 8 IPs per Private Link service.  
+- Add new Private Link service to Standard Load Balancer. We allow up to eight Private Link services per load balancer.   
 
-### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Můžu připojit službu k více soukromým koncovým bodům?
-Ano. Jedna služba privátního propojení může přijímat připojení z více privátních koncových bodů. Jeden privátní koncový bod se ale může připojit jenom k jedné službě privátního propojení.  
+### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Can I connect my service to multiple Private Endpoints?
+Ano. One Private Link service can receive connections from multiple Private Endpoints. However one Private Endpoint can only connect to one Private Link service.  
  
-### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Jak mám řídit expozici mé služby privátního propojení?
-Můžete řídit expozici pomocí konfigurace viditelnosti ve službě privátního propojení. Viditelnost podporuje tři nastavení:
+### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>How should I control the exposure of my Private Link service?
+You can control the exposure using the visibility configuration on Private Link service. Visibility supports three settings:
 
-- **Žádné** – pouze odběry s přístupem RBAC můžou službu najít. 
-- Jenom **omezující** odběry, které jsou na seznamu povolených a které mají přístup RBAC, můžou službu najít. 
-- **Všechno** – může službu najít kdokoli. 
+- **None** - Only subscriptions with RBAC access can locate the service. 
+- **Restrictive** - Only subscriptions that are whitelisted and with RBAC access can locate the service. 
+- **All** - Everyone can locate the service. 
  
-### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Můžu vytvořit službu privátního propojení se základní Load Balancer? 
-Ne. Služba privátního propojení přes základní Load Balancer není podporována.
+### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Can I create a Private Link service with Basic Load Balancer? 
+Ne. Private Link service over a Basic Load Balancer is not supported.
  
-### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Vyžaduje se pro službu privátního propojení vyhrazená podsíť? 
-Ne. Služba privátního propojení nevyžaduje vyhrazenou podsíť. Můžete zvolit libovolnou podsíť ve virtuální síti, kde je vaše služba nasazená.   
+### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Is a dedicated subnet required for Private Link service? 
+Ne. Private Link service doesn’t require a dedicated subnet. You can choose any subnet in your VNet where your service is deployed.   
 
-### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Jsem poskytovatelem služeb pomocí privátního propojení Azure. Musím se muset ujistit, že všichni moji zákazníci mají jedinečný adresní prostor IP adres a nepřekrývat ho s mým adresním prostorem? 
-Ne. Pro vás tato funkce poskytuje soukromý odkaz Azure. Proto nemusíte mít překrývající se adresní prostor s adresním prostorem zákazníka. 
+### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>I am a service provider using Azure Private Link. Do I need to make sure all my customers have unique IP space and don’t overlap with my IP space? 
+Ne. Azure Private Link provides this functionality for you. Hence, you are not required to have non-overlapping address space with your customer's address space. 
 
-##  <a name="next-steps"></a>Další postup
+##  <a name="next-steps"></a>Další kroky
 
-- Informace o [privátním propojení Azure](private-link-overview.md)
+- Learn about [Azure Private Link](private-link-overview.md)

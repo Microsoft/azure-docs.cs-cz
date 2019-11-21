@@ -1,82 +1,80 @@
 ---
-title: Přehled verzí Durable Functions – Azure Functions
-description: Přečtěte si o Durable Functions verzích.
+title: Durable Functions versions overview - Azure Functions
+description: Learn about Durable Functions versions.
 author: cgillum
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5d6c8bcf610bfc8900e0f2a5237228208cd633ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 93c35eb4f69cc4f9b16f669d96c2df53f50bcf84
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614548"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231197"
 ---
-# <a name="durable-functions-versions-overview"></a>Přehled verzí Durable Functions
+# <a name="durable-functions-versions-overview"></a>Durable Functions versions overview
 
-*Durable Functions* je rozšíření [Azure Functions](../functions-overview.md) a [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) , které umožňuje psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. Pokud ještě neznáte Durable Functions, přečtěte si [dokumentaci přehled](durable-functions-overview.md).
+*Durable Functions* is an extension of [Azure Functions](../functions-overview.md) and [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) that lets you write stateful functions in a serverless environment. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. If you are not already familiar with Durable Functions, see the [overview documentation](durable-functions-overview.md).
 
-## <a name="new-features-in-2x"></a>Nové funkce v 2. x
+## <a name="new-features-in-2x"></a>New features in 2.x
 
-Tato část popisuje funkce Durable Functions přidaných ve verzi 2. x.
+This section describes the features of Durable Functions that are added in version 2.x.
 
-### <a name="durable-entities"></a>Trvalé entity
+### <a name="durable-entities"></a>Durable entities
 
-V Durable Functions 2. x jsme zavedli nový koncept [entity Functions](durable-functions-entities.md) .
+In Durable Functions 2.x, we introduced a new [entity functions](durable-functions-entities.md) concept.
 
-Funkce entit definují operace pro čtení a aktualizaci malých částí stavu, označovaných jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Na rozdíl od funkcí Orchestrator nemají entity Functions žádná konkrétní omezení kódu. Funkce entit také spravují stav explicitně namísto implicitního reprezentace stavu prostřednictvím řízení toku.
+Entity functions define operations for reading and updating small pieces of state, known as *durable entities*. Like orchestrator functions, entity functions are functions with a special trigger type, *entity trigger*. Unlike orchestrator functions, entity functions do not have any specific code constraints. Entity functions also manage state explicitly rather than implicitly representing state via control flow.
 
-Další informace najdete v článku [odolné entity](durable-functions-entities.md) .
+To learn more, see the [durable entities](durable-functions-entities.md) article.
 
-### <a name="durable-http"></a>Trvalá HTTP
+### <a name="durable-http"></a>Durable HTTP
 
-V Durable Functions 2. x jsme zavedli novou funkci [trvalého http](durable-functions-http-features.md#consuming-http-apis) , která vám umožní:
+In Durable Functions 2.x, we introduced a new [Durable HTTP](durable-functions-http-features.md#consuming-http-apis) feature that allows you to:
 
-* Volání rozhraní API HTTP přímo z funkcí orchestrace (s některými dokumentovanými omezeními).
-* Implementujte Automatické dotazování na stav HTTP 202 na straně klienta.
-* Integrovaná podpora [spravovaných identit Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+* Call HTTP APIs directly from orchestration functions (with some documented limitations).
+* Implement automatic client-side HTTP 202 status polling.
+* Built-in support for [Azure Managed Identities](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Další informace najdete v článku věnovaném [funkcím protokolu HTTP](durable-functions-http-features.md#consuming-http-apis) .
+To learn more, see the [HTTP features](durable-functions-http-features.md#consuming-http-apis) article.
 
-## <a name="migrate-from-1x-to-2x"></a>Migrace od 1. x do 2. x
+## <a name="migrate-from-1x-to-2x"></a>Migrate from 1.x to 2.x
 
-Tato část popisuje, jak migrovat existující verzi 1. x Durable Functions na verzi 2. x, abyste mohli využít nové funkce.
+This section describes how to migrate your existing version 1.x Durable Functions to version 2.x to take advantage of the new features.
 
-### <a name="upgrade-the-extension"></a>Upgradovat rozšíření
+### <a name="upgrade-the-extension"></a>Upgrade the extension
 
-Nainstalujte ve svém projektu verzi 2. x [rozšíření vazby Durable Functions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) . Další informace najdete v tématu věnovaném [registraci rozšíření vazby Azure Functions](../functions-bindings-register.md) .
+Install version 2.x of the [Durable Functions bindings extension](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in your project. See [Register Azure Functions binding extensions](../functions-bindings-register.md) for more information.
 
-### <a name="update-your-code"></a>Aktualizace kódu
+### <a name="update-your-code"></a>Update your code
 
-Durable Functions 2. x přináší několik přerušujících změn. Aplikace Durable Functions 1. x nejsou kompatibilní s Durable Functions 2. x bez změny kódu. V této části jsou uvedené některé změny, které je třeba provést při upgradu funkcí verze 1. x na 2. x.
+Durable Functions 2.x introduces several breaking changes. Durable Functions 1.x applications are not compatible with Durable Functions 2.x without code changes. This section lists some of the changes you must make when upgrading your version 1.x functions to 2.x.
 
-#### <a name="hostjson-schema"></a>Schéma Host. JSON
+#### <a name="hostjson-schema"></a>Host.json schema
 
-Durable Functions 2. x používá nové schéma Host. JSON. Hlavní změny od 1. x zahrnují:
+Durable Functions 2.x uses a new host.json schema. The main changes from 1.x include:
 
-* `"storageProvider"` (a pododdíl `"azureStorage"`) pro konfiguraci specifickou pro úložiště.
-* `"tracking"` pro sledování a konfiguraci protokolování.
-* `"notifications"` (a pododdíl `"eventGrid"`) pro konfiguraci oznámení služby Event Grid.
+* `"storageProvider"` (and the `"azureStorage"` subsection) for storage-specific configuration.
+* `"tracking"` for tracking and logging configuration.
+* `"notifications"` (and the `"eventGrid"` subsection) for event grid notification configuration.
 
-Podrobnosti najdete v [referenční dokumentaci k Durable Functions Host. JSON](durable-functions-bindings.md#durable-functions-2-0-host-json) .
+See the [Durable Functions host.json reference documentation](durable-functions-bindings.md#durable-functions-2-0-host-json) for details.
 
-#### <a name="public-interface-changes-net-only"></a>Změny veřejného rozhraní (jenom .NET)
+#### <a name="public-interface-changes-net-only"></a>Public interface changes (.NET only)
 
-V rozhraní verze 1. x různé objekty _kontextu_ podporované Durable Functions mají abstraktní základní třídy určené pro použití při testování částí. Jako součást Durable Functions 2. x jsou tyto abstraktní základní třídy nahrazeny rozhraními.
+In version 1.x, the various _context_ objects supported by Durable Functions have abstract base classes intended for use in unit testing. As part of Durable Functions 2.x, these abstract base classes are replaced with interfaces.
 
-Následující tabulka představuje hlavní změny:
+The following table represents the main changes:
 
-| verze | 2.x |
+| 1.x | 2.x |
 |----------|----------|
 | `DurableOrchestrationClientBase` | `IDurableOrchestrationClient` nebo `IDurableClient` |
 | `DurableOrchestrationContext` nebo `DurableOrchestrationContextBase` | `IDurableOrchestrationContext` |
 | `DurableActivityContext` nebo `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-V případě, kdy abstraktní základní třída obsahovala virtuální metody, byly tyto virtuální metody nahrazeny metodami rozšíření definovanými v `DurableContextExtensions`.
+In the case where an abstract base class contained virtual methods, these virtual methods have been replaced by extension methods defined in `DurableContextExtensions`.
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>změny funkce Function. JSON (JavaScript C# a Script)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>function.json changes (JavaScript and C# Script)
 
-V Durable Functions 1. x používá vazba klienta Orchestration `type` `orchestrationClient`. Verze 2. x používá místo toho `durableClient`.
+In Durable Functions 1.x, the orchestration client binding uses a `type` of `orchestrationClient`. Version 2.x uses `durableClient` instead.

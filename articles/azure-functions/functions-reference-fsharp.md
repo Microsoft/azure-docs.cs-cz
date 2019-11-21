@@ -1,41 +1,35 @@
 ---
-title: Služba Azure Functions F# referenční informace pro vývojáře | Dokumentace Microsoftu
-description: Naučte se vyvíjet funkce Azure pomocí F# skriptu.
-services: functions
-documentationcenter: fsharp
+title: Azure Functions F# developer reference
+description: Understand how to develop Azure Functions using F# script.
 author: sylvanc
-manager: jbronsk
-keywords: Azure funkce, funkce, zpracování událostí, webhooky, dynamické výpočty, architektura bez serveruF#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: azure-functions
-ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 23e9ffa5c86674cb34951f29573e033b4a904941
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442235"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226756"
 ---
-# <a name="azure-functions-f-developer-reference"></a>Služba Azure Functions F# referenční informace pro vývojáře
+# <a name="azure-functions-f-developer-reference"></a>Azure Functions F# Developer Reference
 
-F#pro službu Azure Functions je řešení umožňující snadno spouštět malé části kódu, nebo "funkce" v cloudu. Data budou téci do vaší F# funkce prostřednictvím argumentů funkce. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k věci, jako je funkce protokolovací nástroj a zrušení tokenů. 
+F# for Azure Functions is a solution for easily running small pieces of code, or "functions," in the cloud. Data flows into your F# function via function arguments. Argument names are specified in `function.json`, and there are predefined names for accessing things like the function logger and cancellation tokens. 
 
 >[!IMPORTANT]
->F#skript (.fsx) je podporovaná jenom rozhraním [verzi 1.x](functions-versions.md#creating-1x-apps) modulu runtime Azure Functions. Pokud chcete použít F# s modulem runtime verze 2.x, je nutné použít předkompilované F# projekt knihovny tříd (.fs). Vytvoření, správě a publikování F# projekt knihovny tříd pomocí sady Visual Studio, stejně jako [ C# projekt knihovny tříd](functions-dotnet-class-library.md). Další informace o verzích funkce, najdete v části [přehled verze modulu runtime Azure Functions](functions-versions.md).
+>F# script (.fsx) is only supported by [version 1.x](functions-versions.md#creating-1x-apps) of the Azure Functions runtime. If you want to use F# with the version 2.x runtime, you must use a precompiled F# class library project (.fs). You create, manage, and publish an F# class library project using Visual Studio as you would a [C# class library project](functions-dotnet-class-library.md). For more information about Functions versions, see [Azure Functions runtime versions overview](functions-versions.md).
 
-Tento článek předpokládá, že jste už čtete [referenční informace pro vývojáře Azure Functions](functions-reference.md).
+This article assumes that you've already read the [Azure Functions developer reference](functions-reference.md).
 
-## <a name="how-fsx-works"></a>Jak funguje .fsx
-`.fsx` Soubor je F# skriptu. To můžete představit jako F# projekt, který je obsažen v jednom souboru. Soubor obsahuje kód pro váš program (v tomto případě vaši funkci Azure Functions) a direktivy pro správu závislostí.
+## <a name="how-fsx-works"></a>How .fsx works
+An `.fsx` file is an F# script. It can be thought of as an F# project that's contained in a single file. The file contains both the code for your program (in this case, your Azure Function) and directives for managing dependencies.
 
-Při použití `.fsx` pro funkce Azure Functions, běžně vyžaduje sestavení budou zahrnuty automaticky za vás, abyste mohli zaměřit na samotný kód funkce, nikoli "standardní".
+When you use an `.fsx` for an Azure Function, commonly required assemblies are automatically included for you, allowing you to focus on the function rather than "boilerplate" code.
 
-## <a name="folder-structure"></a>struktura složek
+## <a name="folder-structure"></a>Folder structure
 
-Struktura složek F# skript projekt vypadá takto:
+The folder structure for an F# script project looks like the following:
 
 ```
 FunctionsProject
@@ -52,12 +46,12 @@ FunctionsProject
  | - bin
 ```
 
-Existuje sdílený [host.json](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má svůj vlastní soubor s kódem (.fsx) a vazbu konfigurační soubor (function.json).
+There's a shared [host.json](functions-host-json.md) file that can be used to configure the function app. Each function has its own code file (.fsx) and binding configuration file (function.json).
 
-Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](./functions-bindings-register.md#extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
+The binding extensions required in [version 2.x](functions-versions.md) of the Functions runtime are defined in the `extensions.csproj` file, with the actual library files in the `bin` folder. When developing locally, you must [register binding extensions](./functions-bindings-register.md#extension-bundles). When developing functions in the Azure portal, this registration is done for you.
 
-## <a name="binding-to-arguments"></a>Vytvoření vazby na argumenty
-Každá vazba podporuje některé sadu argumentů, jak je uvedeno v [referenční informace pro vývojáře Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md). Jedna z vazeb argument podporuje aktivační událost objektů blob je třeba POCO, které lze vyjádřit pomocí F# záznamu. Příklad:
+## <a name="binding-to-arguments"></a>Binding to arguments
+Each binding supports some set of arguments, as detailed in the [Azure Functions triggers and bindings developer reference](functions-triggers-bindings.md). For example, one of the argument bindings a blob trigger supports is a POCO, which can be expressed using an F# record. Například:
 
 ```fsharp
 type Item = { Id: string }
@@ -67,11 +61,11 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Vaše F# funkce Azure Functions bude trvat jeden nebo více argumentů. Když mluvíme o Azure Functions argumenty, označujeme *vstupní* argumenty a *výstup* argumenty. Vstupní argument je přesně to vypadá jako: vstup do vaší F# funkce Azure functions. *Výstup* argument je proměnlivé datové nebo `byref<>` argument, který slouží jako způsob, jak předání dat zpět *si* vaší funkce.
+Your F# Azure Function will take one or more arguments. When we talk about Azure Functions arguments, we refer to *input* arguments and *output* arguments. An input argument is exactly what it sounds like: input to your F# Azure Function. An *output* argument is mutable data or a `byref<>` argument that serves as a way to pass data back *out* of your function.
 
-V příkladu výše `blob` je vstupní argument a `output` je výstupní argument. Všimněte si, že jsme použili `byref<>` pro `output` (není nutné přidat `[<Out>]` poznámky). Použití `byref<>` typ umožňuje změnit, který záznam nebo argument odkazuje na objekt funkce.
+In the example above, `blob` is an input argument, and `output` is an output argument. Notice that we used `byref<>` for `output` (there's no need to add the `[<Out>]` annotation). Using a `byref<>` type allows your function to change which record or object the argument refers to.
 
-Když F# záznam se používá jako vstupní typ, musí být označené záznam definice `[<CLIMutable>]` aby rozhraní Azure Functions k odpovídajícím způsobem nastavit pole před předáním funkci záznam. Pod pokličkou `[<CLIMutable>]` generuje setter vlastnosti záznamu. Příklad:
+When an F# record is used as an input type, the record definition must be marked with `[<CLIMutable>]` in order to allow the Azure Functions framework to set the fields appropriately before passing the record to your function. Under the hood, `[<CLIMutable>]` generates setters for the record properties. Například:
 
 ```fsharp
 [<CLIMutable>]
@@ -83,7 +77,7 @@ let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-F# Třídy lze také použít pro vstupní ani výstupní argumenty. Pro třídy vlastnosti obvykle potřebovat metody getter a setter. Příklad:
+An F# class can also be used for both in and out arguments. For a class, properties will usually need getters and setters. Například:
 
 ```fsharp
 type Item() =
@@ -96,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Protokolování
-Protokolovat výstup do vaší [streamování protokolů](../app-service/troubleshoot-diagnostic-logs.md) v F#, funkce by měla trvat argumentu typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Pro zajištění konzistence, doporučujeme tento argument je s názvem `log`. Příklad:
+To log output to your [streaming logs](../app-service/troubleshoot-diagnostic-logs.md) in F#, your function should take an argument of type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). For consistency, we recommend this argument is named `log`. Například:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -105,7 +99,7 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
 ```
 
 ## <a name="async"></a>Async
-`async` Postup se dá použít, ale výsledek musí vracet `Task`. To lze provést pomocí `Async.StartAsTask`, například:
+The `async` workflow can be used, but the result needs to return a `Task`. This can be done with `Async.StartAsTask`, for example:
 
 ```fsharp
 let Run(req: HttpRequestMessage) =
@@ -114,8 +108,8 @@ let Run(req: HttpRequestMessage) =
     } |> Async.StartAsTask
 ```
 
-## <a name="cancellation-token"></a>Token zrušení
-Pokud vaše funkce elegantně zpracovat vypnutí, můžete jí přiřadit [ `CancellationToken` ](/dotnet/api/system.threading.cancellationtoken) argument. To je možné kombinovat s `async`, například:
+## <a name="cancellation-token"></a>Cancellation Token
+If your function needs to handle shutdown gracefully, you can give it a [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) argument. This can be combined with `async`, for example:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -126,8 +120,8 @@ let Run(req: HttpRequestMessage, token: CancellationToken)
     Async.StartAsTask(f, token)
 ```
 
-## <a name="importing-namespaces"></a>Import obory názvů
-Obory názvů lze otevřít obvyklým způsobem:
+## <a name="importing-namespaces"></a>Importing namespaces
+Namespaces can be opened in the usual way:
 
 ```fsharp
 open System.Net
@@ -138,7 +132,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
     ...
 ```
 
-Jsou automaticky otevřeny následující obory názvů:
+The following namespaces are automatically opened:
 
 * `System`
 * `System.Collections.Generic`
@@ -149,8 +143,8 @@ Jsou automaticky otevřeny následující obory názvů:
 * `Microsoft.Azure.WebJobs`
 * `Microsoft.Azure.WebJobs.Host`.
 
-## <a name="referencing-external-assemblies"></a>Odkazování na externí sestavení
-Obdobně lze přidat odkazy na sestavení rozhraní s `#r "AssemblyName"` směrnice.
+## <a name="referencing-external-assemblies"></a>Referencing External Assemblies
+Similarly, framework assembly references can be added with the `#r "AssemblyName"` directive.
 
 ```fsharp
 #r "System.Web.Http"
@@ -164,7 +158,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
     ...
 ```
 
-Následující sestavení jsou automaticky přidány pomocí Azure Functions, který je hostitelem prostředí:
+The following assemblies are automatically added by the Azure Functions hosting environment:
 
 * `mscorlib`,
 * `System`
@@ -177,7 +171,7 @@ Následující sestavení jsou automaticky přidány pomocí Azure Functions, kt
 * `System.Web.Http`
 * `System.Net.Http.Formatting`.
 
-Navíc následující sestavení jsou speciální notaci a mohou být odkazovány simplename (třeba `#r "AssemblyName"`):
+In addition, the following assemblies are special cased and may be referenced by simplename (e.g. `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -185,10 +179,10 @@ Navíc následující sestavení jsou speciální notaci a mohou být odkazován
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`.
 
-Pokud potřebujete odkazovat na soukromé sestavení, můžete nahrát soubor sestavení do `bin` složce relativní k vaší funkce a odkaz, ji pomocí souboru (např. název  `#r "MyAssembly.dll"`). Informace o tom, jak nahrávat soubory do složky funkce naleznete v tématu v následující části týkající se správy balíčků.
+If you need to reference a private assembly, you can upload the assembly file into a `bin` folder relative to your function and reference it by using the file name (e.g.  `#r "MyAssembly.dll"`). For information on how to upload files to your function folder, see the following section on package management.
 
 ## <a name="editor-prelude"></a>Editor Prelude
-Editor, který podporuje F# kompilátoru služby nebude vědět o obory názvů a sestavení, která se automaticky zahrne Azure Functions. V důsledku toho může být užitečné zahrnout prelude, usnadňující editor najít sestavení, které používáte a explicitně otevřít obory názvů. Příklad:
+An editor that supports F# Compiler Services will not be aware of the namespaces and assemblies that Azure Functions automatically includes. As such, it can be useful to include a prelude that helps the editor find the assemblies you are using, and to explicitly open namespaces. Například:
 
 ```fsharp
 #if !COMPILED
@@ -204,12 +198,12 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     ...
 ```
 
-Jakmile Azure Functions spustí váš kód, zpracuje zdroje s `COMPILED` definovány, proto prelude editoru se bude ignorovat.
+When Azure Functions executes your code, it processes the source with `COMPILED` defined, so the editor prelude will be ignored.
 
 <a name="package"></a>
 
 ## <a name="package-management"></a>Správa balíčků
-Použití balíčků NuGet v F# funkci, přidejte `project.json` soubor do složky funkce v systému souborů aplikace function app. Tady je příklad `project.json` soubor, který přidá odkaz na balíček NuGet do `Microsoft.ProjectOxford.Face` verze 1.1.0:
+To use NuGet packages in an F# function, add a `project.json` file to the function's folder in the function app's file system. Here is an example `project.json` file that adds a NuGet package reference to `Microsoft.ProjectOxford.Face` version 1.1.0:
 
 ```json
 {
@@ -223,16 +217,16 @@ Použití balíčků NuGet v F# funkci, přidejte `project.json` soubor do slož
 }
 ```
 
-Rozhraní .NET Framework 4.6 je podporováno, proto se ujistěte, že vaše `project.json` soubor Určuje `net46` jak je znázorněno zde.
+Only the .NET Framework 4.6 is supported, so make sure that your `project.json` file specifies `net46` as shown here.
 
-Po odeslání `project.json` souboru, modul runtime získá balíčky a automaticky přidá odkazy na sestavení balíčku. Není nutné přidat `#r "AssemblyName"` direktivy. Stačí přidat požadované `open` příkazy pro vaše `.fsx` souboru.
+When you upload a `project.json` file, the runtime gets the packages and automatically adds references to the package assemblies. You don't need to add `#r "AssemblyName"` directives. Just add the required `open` statements to your `.fsx` file.
 
-Možná budete chtít změnit automaticky odkazy na sestavení na váš editor prelude zlepšit váš editor interakci s F# kompilaci služby.
+You may wish to put automatically references assemblies in your editor prelude, to improve your editor's interaction with F# Compile Services.
 
-### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>Postup přidání `project.json` soubor pro vaši funkci Azure functions
-1. Začátek řešíme tak, aby vaše aplikace function app běží, což lze provést tak, že otevřete vaši funkci na portálu Azure portal. To také poskytuje přístup do protokolů streamování ve kterém se zobrazí výstup instalace balíčku.
-2. K nahrání `project.json` souboru, použijte jednu z metod popsaných v [aktualizace souborů aplikace funkce](functions-reference.md#fileupdate). Pokud používáte [průběžné nasazování pro službu Azure Functions](functions-continuous-deployment.md), můžete přidat `project.json` soubor k vaší pracovní větve, pokud chcete experimentovat s ním před přidáním do vaší větve nasazení.
-3. Po `project.json` při přidání souboru, se zobrazí výstup jako v následujícím příkladu ve své funkci je streamování protokolů:
+### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>How to add a `project.json` file to your Azure Function
+1. Begin by making sure your function app is running, which you can do by opening your function in the Azure portal. This also gives access to the streaming logs where package installation output will be displayed.
+2. To upload a `project.json` file, use one of the methods described in [how to update function app files](functions-reference.md#fileupdate). If you are using [Continuous Deployment for Azure Functions](functions-continuous-deployment.md), you can add a `project.json` file to your staging branch in order to experiment with it before adding it to your deployment branch.
+3. After the `project.json` file is added, you will see output similar to the following example in your function's streaming log:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -252,7 +246,7 @@ Možná budete chtít změnit automaticky odkazy na sestavení na váš editor p
 ```
 
 ## <a name="environment-variables"></a>Proměnné prostředí
-Chcete-li získat proměnnou prostředí nebo nastavení hodnoty aplikace, použijte `System.Environment.GetEnvironmentVariable`, například:
+To get an environment variable or an app setting value, use `System.Environment.GetEnvironmentVariable`, for example:
 
 ```fsharp
 open System.Environment
@@ -263,8 +257,8 @@ let Run(timer: TimerInfo, log: ILogger) =
     log.LogInformation("Site = " + GetEnvironmentVariable("WEBSITE_SITE_NAME"))
 ```
 
-## <a name="reusing-fsx-code"></a>Opětovné použití kódu .fsx
-Můžete použít kód z jiných `.fsx` souborů s využitím `#load` směrnice. Příklad:
+## <a name="reusing-fsx-code"></a>Reusing .fsx code
+You can use code from other `.fsx` files by using a `#load` directive. Například:
 
 `run.fsx`
 
@@ -282,21 +276,21 @@ let mylog(log: ILogger, text: string) =
     log.LogInformation(text);
 ```
 
-Poskytuje cesty `#load` směrnice jsou relativní k umístění vašeho `.fsx` souboru.
+Paths provides to the `#load` directive are relative to the location of your `.fsx` file.
 
-* `#load "logger.fsx"` načte soubor umístěný ve složce funkce.
-* `#load "package\logger.fsx"` načte soubor umístěný ve `package` složky ve složce funkce.
-* `#load "..\shared\mylogger.fsx"` načte soubor umístěný ve `shared` složky na stejné úrovni jako funkce složky tedy přímo pod `wwwroot`.
+* `#load "logger.fsx"` loads a file located in the function folder.
+* `#load "package\logger.fsx"` loads a file located in the `package` folder in the function folder.
+* `#load "..\shared\mylogger.fsx"` loads a file located in the `shared` folder at the same level as the function folder, that is, directly under `wwwroot`.
 
-`#load` – Direktiva funguje pouze s `.fsx` (F# skript) soubory a ne s `.fs` soubory.
+The `#load` directive only works with `.fsx` (F# script) files, and not with `.fs` files.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace najdete v následujících materiálech:
 
-* [F#Průvodce](/dotnet/articles/fsharp/index)
+* [F# Guide](/dotnet/articles/fsharp/index)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
-* [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
-* [Testování Azure Functions](functions-test-a-function.md)
-* [Škálování Azure Functions](functions-scale.md)
+* [Azure Functions triggers and bindings](functions-triggers-bindings.md)
+* [Azure Functions testing](functions-test-a-function.md)
+* [Azure Functions scaling](functions-scale.md)
 

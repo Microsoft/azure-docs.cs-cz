@@ -1,110 +1,105 @@
 ---
-title: Vytvoření funkce Python aktivované protokolem HTTP v Azure
-description: Zjistěte, jak vytvořit první funkce Pythonu v Azure pomocí Azure Functions Core Tools a rozhraní příkazového řádku Azure.
-author: ggailey777
-ms.author: glenga
+title: Create an HTTP triggered Python function in Azure
+description: Learn how to create your first Python function in Azure using the Azure Functions Core Tools and the Azure CLI.
 ms.date: 11/07/2019
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: python
-manager: gwallace
-ms.openlocfilehash: 61465177c98a31a739946097ca615382175df3d4
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 18ae1ed000ffe61ce1ea9ff5c18aae98a0ffae65
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082769"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227195"
 ---
-# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Rychlý Start: vytvoření funkce Python aktivované protokolem HTTP v Azure
+# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Quickstart: Create an HTTP triggered Python function in Azure
 
-V tomto článku se dozvíte, jak pomocí nástrojů příkazového řádku vytvořit projekt v Pythonu, který běží v Azure Functions. Můžete také vytvořit funkci, která se aktivuje požadavkem HTTP. Po spuštění místně publikujete projekt, aby se spouštěl jako [funkce bez serveru](functions-scale.md#consumption-plan) v Azure. 
+This article shows you how to use command-line tools to create a Python project that runs in Azure Functions. You also create a function that is triggered by an HTTP request. After running locally, you publish your project to run as a [serverless function](functions-scale.md#consumption-plan) in Azure. 
 
-Tento článek je první ze dvou rychlých startů Pythonu pro Azure Functions. Po dokončení tohoto rychlého startu můžete do své funkce [Přidat výstupní vazbu Azure Storage fronty](functions-add-output-binding-storage-queue-python.md) .
+This article is the first of two Python quickstarts for Azure Functions. After you complete this quickstart, you can [add an Azure Storage queue output binding](functions-add-output-binding-storage-queue-python.md) to your function.
 
-K dispozici je také [Visual Studio Codeá verze](/azure/python/tutorial-vs-code-serverless-python-01) tohoto článku.
+There is also a [Visual Studio Code-based version](/azure/python/tutorial-vs-code-serverless-python-01) of this article.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, musíte:
+Before you start, you must:
 
-+ Nainstalujte [Python 3.7.4](https://www.python.org/downloads/). Tato verze Pythonu se ověřuje pomocí funkcí. Python 3,8 a novější verze se zatím nepodporují.
++ Install [Python 3.7.4](https://www.python.org/downloads/). This version of Python is verified with Functions. Python 3.8 and later versions are not yet supported.
 
-+ Nainstalujte verzi [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 nebo novější.
++ Install [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.7.1846 or a later version.
 
-+ Nainstalujte verzi [Azure CLI](/cli/azure/install-azure-cli) 2.0.76 nebo novější.
++ Install the [Azure CLI](/cli/azure/install-azure-cli) version 2.0.76 or a later version.
 
-+ Máte aktivní předplatné Azure.
++ Have an active Azure subscription.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment"></a>Vytvoření a aktivace virtuální prostředí
+## <a name="create-and-activate-a-virtual-environment"></a>Create and activate a virtual environment
 
-Prostředí Python 3,7 byste měli použít k místnímu vývoji funkcí Pythonu. Spusťte následující příkazy k vytvoření a aktivace do virtuálního prostředí s názvem `.venv`.
+You should use a Python 3.7 environment to locally develop Python functions. Run the following commands to create and activate a virtual environment named `.venv`.
 
 > [!NOTE]
-> Pokud Python nenainstaloval venv do distribuce pro Linux, můžete ho nainstalovat pomocí následujícího příkazu:
+> If Python didn't install venv on your Linux distribution, you can install it using the following command:
 > ```command
 > sudo apt-get install python3-venv
 
-### <a name="bash"></a>Bash
+### <a name="bash"></a>Bash:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell nebo příkazový řádek systému Windows:
+### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell or a Windows command prompt:
 
 ```powershell
 py -m venv .venv
 .venv\scripts\activate
 ```
 
-Teď, když jste aktivovali virtuální prostředí, spusťte zbývající příkazy. Pokud se chcete dostat z virtuálního prostředí, spusťte `deactivate`.
+Now that you activated the virtual environment, run the remaining commands in it. To get out of the virtual environment, run `deactivate`.
 
-## <a name="create-a-local-functions-project"></a>Vytvoření projektu místní funkce
+## <a name="create-a-local-functions-project"></a>Create a local functions project
 
-Projekt Functions může mít více funkcí, které mají všechny sdílet stejné místní a hostitelské konfigurace.
+A functions project can have multiple functions that all share the same local and hosting configurations.
 
-Ve virtuálním prostředí spusťte následující příkazy:
+In the virtual environment, run the following commands:
 
 ```console
 func init MyFunctionProj --python
 cd MyFunctionProj
 ```
 
-Příkaz `func init` vytvoří složku _MyFunctionProj_ . Projekt Pythonu v této složce ještě nemá žádné funkce. Přidáte je dál.
+The `func init` command creates a _MyFunctionProj_ folder. The Python project in this folder doesn't yet have any functions. You'll add them next.
 
 ## <a name="create-a-function"></a>Vytvoření funkce
 
-Chcete-li do projektu přidat funkci, spusťte následující příkaz:
+To add a function to your project, run the following command:
 
 ```console
 func new --name HttpTrigger --template "HTTP trigger"
 ```
 
-Tento příkaz vytvoří podsložku s názvem _HttpTrigger_, která obsahuje následující soubory:
+This commands creates a subfolder named _HttpTrigger_, which contains the following files:
 
-* *Function. JSON*: konfigurační soubor, který definuje funkci, Trigger a další vazby. Všimněte si, že v tomto souboru hodnota `scriptFile` odkazuje na soubor obsahující funkci a pole `bindings` definuje Trigger vyvolání a vazby.
+* *function.json*: configuration file that defines the function, trigger, and other bindings. Notice that in this file, the value for `scriptFile` points to the file containing the function, and the `bindings` array defines the invocation trigger and bindings.
 
-    Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost HTTP má vstupní vazbu typu [`httpTrigger`](functions-bindings-http-webhook.md#trigger) a výstupní vazba typu [`http`](functions-bindings-http-webhook.md#output).
+    Each binding requires a direction, type and a unique name. The HTTP trigger has an input binding of type [`httpTrigger`](functions-bindings-http-webhook.md#trigger) and output binding of type [`http`](functions-bindings-http-webhook.md#output).
 
-* *\_\_init\_\_. py*: soubor skriptu, který je funkcí AKTIVOVANÝmi protokolem HTTP. Všimněte si, že tento skript má výchozí `main()`. Data protokolu HTTP z aktivační události přecházejí do funkce pomocí `req` s názvem `binding parameter`. `req`, která je definována v Function. JSON, je instancí [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
+* *\_\_init\_\_.py*: script file that is your HTTP triggered function. Notice that this script has a default `main()`. HTTP data from the trigger passes to the function using the `req` named `binding parameter`. The `req`, which is defined in function.json, is an instance of the [azure.functions.HttpRequest class](/python/api/azure-functions/azure.functions.httprequest). 
 
-    Návratový objekt definovaný jako `$return` v *Function. JSON*je instancí [třídy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](functions-bindings-http-webhook.md).
+    The return object, defined as `$return` in *function.json*, is an instance of [azure.functions.HttpResponse class](/python/api/azure-functions/azure.functions.httpresponse). To learn more, see [Azure Functions HTTP triggers and bindings](functions-bindings-http-webhook.md).
 
-Nyní můžete spustit novou funkci na místním počítači.
+Now you can run the new function on your local computer.
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Tento příkaz spustí aplikaci Function App s použitím modulu Azure Functions runtime (Func. exe):
+This command starts the function app using the Azure Functions runtime (func.exe):
 
 ```console
 func host start
 ```
 
-Měli byste vidět následující informace zapsané do výstupu:
+You should see the following information written to the output:
 
 ```output
 Http Functions:
@@ -112,27 +107,27 @@ Http Functions:
         HttpTrigger: http://localhost:7071/api/HttpTrigger    
 ```
 
-Zkopírujte z tohoto výstupu adresu URL funkce `HttpTrigger` a vložte ji do adresního řádku prohlížeče. K této adrese URL připojte řetězec dotazu `?name=<yourname>` a proveďte požadavek. Následující snímek obrazovky ukazuje odpověď na požadavek GET, který místní funkce vrátí do prohlížeče:
+Copy the URL of your `HttpTrigger` function from this output and paste it into your browser's address bar. K této adrese URL připojte řetězec dotazu `?name=<yourname>` a proveďte požadavek. The following screenshot shows the response to the GET request that the local function returns to the browser:
 
-![Místní ověření v prohlížeči](./media/functions-create-first-function-python/function-test-local-browser.png)
+![Verify locally in the browser](./media/functions-create-first-function-python/function-test-local-browser.png)
 
-Pro vypnutí provádění aplikace Function App použijte kombinaci kláves CTRL + C.
+Use Ctrl+C to shut down your function app execution.
 
-Teď, když máte funkci spuštěnou místně, můžete do Azure nasadit kód vaší funkce.  
-Než budete moct aplikaci nasadit, budete muset vytvořit nějaké prostředky Azure.
+Now that you have run your function locally, you can deploy your function code to Azure.  
+Before you can deploy your app, you'll need to create some Azure resources.
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 
 [!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
 
-## <a name="create-a-function-app-in-azure"></a>Vytvoření aplikace Function App v Azure
+## <a name="create-a-function-app-in-azure"></a>Create a function app in Azure
 
-Aplikace Function App poskytuje prostředí pro provádění kódu vaší funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. 
+A function app provides an environment for executing your function code. It lets you group functions as a logical unit for easier management, deployment, and sharing of resources. 
 
-Spusťte následující příkaz. Nahraďte `<APP_NAME>` jedinečným názvem aplikace Function App. Nahraďte `<STORAGE_NAME>` názvem účtu úložiště. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure.
+Run the following command. Replace `<APP_NAME>` with a unique function app name. Replace `<STORAGE_NAME>` with a storage account name. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure.
 
 > [!NOTE]
-> Nemůžete hostovat aplikace pro Linux a Windows ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `myResourceGroup` s aplikací Function App nebo webovou aplikací Windows, musíte použít jinou skupinu prostředků.
+> You can't host Linux and Windows apps in the same resource group. If you have an existing resource group named `myResourceGroup` with a Windows function app or web app, you must use a different resource group.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --os-type Linux \
@@ -140,21 +135,21 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 --name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
 
-Předchozí příkaz vytvoří aplikaci funkcí běžící v Pythonu 3.7.4. Také zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků. Tuto instanci můžete použít k monitorování aplikace Function App a zobrazení protokolů. 
+The preceding command creates a function app running Python 3.7.4. It also provisions an associated Azure Application Insights instance in the same resource group. You can use this instance to monitor your function app and view logs. 
 
-Teď jste připraveni publikovat projekt místních funkcí do aplikace Function App v Azure.
+You're now ready to publish your local functions project to the function app in Azure.
 
 ## <a name="deploy-the-function-app-project-to-azure"></a>Nasazení projektu aplikace funkcí do Azure
 
-Po vytvoření aplikace Function App v Azure můžete pomocí příkazu [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) Core Tools nasadit kód projektu do Azure. V tomto příkladu nahraďte `<APP_NAME>` názvem vaší aplikace.
+After you create the function app in Azure, you can use the [func azure functionapp publish](functions-run-local.md#project-file-deployment) Core Tools command to deploy your project code to Azure. In this example, replace `<APP_NAME>` with the name of your app.
 
 ```console
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-Možnost `--build remote` sestaví projekt Python vzdáleně v Azure ze souborů v balíčku pro nasazení, který se doporučuje. 
+The `--build remote` option builds your Python project remotely in Azure from the files in the deployment package, which is recommended. 
 
-Zobrazí se výstup podobný následující zprávě. Tady se zkrátí, abyste si ho mohli lépe přečíst:
+You'll see output similar to the following message. It's truncated here so you can read it better:
 
 ```output
 Getting site publishing info...
@@ -170,16 +165,16 @@ Functions in myfunctionapp:
         Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-Můžete zkopírovat `Invoke url` hodnotu pro `HttpTrigger` a použít ji k ověření vaší funkce v Azure. Adresa URL obsahuje `code` hodnotu řetězce dotazu, který je klíčovou funkcí, což ztěžuje ostatním uživatelům volat koncový bod triggeru HTTP v Azure.
+You can copy the `Invoke url` value for your `HttpTrigger` and use it to verify your function in Azure. The URL contains a `code` query string value that is your function key, which makes it difficult for others to call your HTTP trigger endpoint in Azure.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
 > [!NOTE]
-> Pokud chcete zobrazit protokoly téměř v reálném čase pro publikovanou aplikaci v Pythonu, použijte [Application Insights Live Metrics Stream](functions-monitoring.md#streaming-logs).
+> To view near real-time logs for a published Python app, use the [Application Insights Live Metrics Stream](functions-monitoring.md#streaming-logs).
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořili jste projekt funkcí Pythonu s funkcí aktivovaným protokolem HTTP, spustíte ji na místním počítači a nasadíte ji do Azure. Nyní svou funkci rozšíříte do...
+You've created a Python functions project with an HTTP triggered function, run it on your local machine, and deployed it to Azure. Now, extend your function by...
 
 > [!div class="nextstepaction"]
-> [Přidání výstupní vazby fronty Azure Storage](functions-add-output-binding-storage-queue-python.md)
+> [Adding an Azure Storage queue output binding](functions-add-output-binding-storage-queue-python.md)

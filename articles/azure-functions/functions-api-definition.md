@@ -1,85 +1,81 @@
 ---
-title: OpenAPI metadata v Azure Functions | Microsoft Docs
-description: Přehled podpory OpenAPI v Azure Functions
-services: functions
+title: OpenAPI metadata in Azure Functions
+description: Overview of OpenAPI support in Azure Functions
 author: alexkarcher-msft
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 00dedd069914384a1883a54bfb433857286fb49c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097575"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227413"
 ---
-# <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2,0 v Azure Functions (Preview)
-Podpora metadat OpenAPI 2,0 (dříve Swagger) v Azure Functions je funkce verze Preview, kterou můžete použít k zápisu definice OpenAPI 2,0 do aplikace Function App. Tento soubor pak můžete hostovat pomocí aplikace Function App.
+# <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0 metadata support in Azure Functions (preview)
+OpenAPI 2.0 (formerly Swagger) metadata support in Azure Functions is a preview feature that you can use to write an OpenAPI 2.0 definition inside a function app. You can then host that file by using the function app.
 
 > [!IMPORTANT]
 > Funkce OpenAPI ve verzi Preview je v současné době k dispozici pouze v modulu runtime verze 1.x. Informace o tom, jak vytvořit aplikaci funkcí 1.x [najdete tady](./functions-versions.md#creating-1x-apps).
 
-[Openapi metadata](https://swagger.io/) umožňují funkci, která je hostitelem REST API, aby byla spotřebována širokou škálou jiného softwaru. Tento software zahrnuje nabídky Microsoftu, jako je PowerApps, a [funkce API Apps Azure App Service](../app-service/overview.md), vývojářské nástroje třetích stran, jako je například [post](https://www.getpostman.com/docs/importing_swagger)a [spousta dalších balíčků](https://swagger.io/tools/).
+[OpenAPI metadata](https://swagger.io/) allows a function that's hosting a REST API to be consumed by a wide variety of other software. This software includes Microsoft offerings like PowerApps and the [API Apps feature of Azure App Service](../app-service/overview.md), third-party developer tools like [Postman](https://www.getpostman.com/docs/importing_swagger), and [many more packages](https://swagger.io/tools/).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 >[!TIP]
->Doporučujeme začít s kurzem [Začínáme](./functions-api-definition-getting-started.md) a pak se vrátit do tohoto dokumentu a získat další informace o konkrétních funkcích.
+>We recommend starting with the [getting started tutorial](./functions-api-definition-getting-started.md) and then returning to this document to learn more about specific features.
 
-## <a name="enable"></a>Povolit podporu definice OpenAPI
-Všechna nastavení OpenAPI můžete nakonfigurovat na stránce **definice rozhraní API** ve **funkcích platformy**aplikace Function App.
+## <a name="enable"></a>Enable OpenAPI definition support
+You can configure all OpenAPI settings on the **API Definition** page in your function app's **Platform features**.
 
 > [!NOTE]
-> Funkce definice rozhraní API funkce se v současnosti nepodporuje pro modul runtime beta verze.
+> Function API definition feature is not supported for beta runtime currently.
 
-Pokud chcete povolit generování definice hostovaného OpenAPI a definice pro rychlý Start, nastavte **zdroj definice rozhraní API** na **funkci (Preview)** . **Externí adresa URL** umožňuje, aby funkce používala definici openapi, která je hostována jinde.
+To enable the generation of a hosted OpenAPI definition and a quickstart definition, set **API definition source** to **Function (Preview)** . **External URL** allows your function to use an OpenAPI definition that's hosted elsewhere.
 
-## <a name="generate-definition"></a>Generování kostry Swagger z metadat vaší funkce
-Šablona vám může pomáhat začít s psaním první definice OpenAPI. Funkce šablony definice vytvoří zhuštěnou definici OpenAPI pomocí všech metadat v souboru Function. JSON pro každou z vašich funkcí triggeru protokolu HTTP. Budete muset zadat další informace o rozhraní API ze [specifikace openapi](https://swagger.io/specification/), jako jsou šablony žádostí a odpovědí.
+## <a name="generate-definition"></a>Generate a Swagger skeleton from your function's metadata
+A template can help you start writing your first OpenAPI definition. The definition template feature creates a sparse OpenAPI definition by using all the metadata in the function.json file for each of your HTTP trigger functions. You'll need to fill in more information about your API from the [OpenAPI specification](https://swagger.io/specification/), such as request and response templates.
 
-Podrobné pokyny najdete v [úvodním kurzu](./functions-api-definition-getting-started.md).
+For step-by-step instructions, see the [getting started tutorial](./functions-api-definition-getting-started.md).
 
-### <a name="templates"></a>Dostupné šablony
+### <a name="templates"></a>Available templates
 
-|Name| Popis |
+|Name (Název)| Popis |
 |:-----|:-----|
-|Vygenerovaná definice|Definice OpenAPI s maximálním množstvím informací, které lze odvodit z existujících metadat funkce.|
+|Generated Definition|An OpenAPI definition with the maximum amount of information that can be inferred from the function's existing metadata.|
 
-### <a name="quickstart-details"></a>Zahrnutá metadata ve vygenerované definici
+### <a name="quickstart-details"></a>Included metadata in the generated definition
 
-Následující tabulka představuje nastavení Azure Portal a odpovídající data v Function. JSON, protože je namapována na vygenerovaný kostru Swagger.
+The following table represents the Azure portal settings and corresponding data in function.json as it is mapped to the generated Swagger skeleton.
 
-|Swagger.json|Uživatelské rozhraní portálu|Function.json|
+|Swagger.json|Portal UI|Function.json|
 |:----|:-----|:-----|
-|[Hostitel](https://swagger.io/specification/#fixed-fields-15)|**Nastavení** >  >  aplikace Function App App Service adresa URL přehledu nastavení > |*Nepřítomno*
-|[Ruky](https://swagger.io/specification/#paths-object-29)|Integrace > **vybraných metod http**|Vazeb Trasa
-|[Položka cesty](https://swagger.io/specification/#path-item-object-32)|**Integrovat** > **šablonu směrování**|Vazeb Metody
-|[Zabezpečení](https://swagger.io/specification/#security-scheme-object-112)|**Klíče**|*Nepřítomno*|
-|operationId|**Trasy a povolené operace**|Trasy a povolené operace|
+|[Hostitel](https://swagger.io/specification/#fixed-fields-15)|**Function app settings** > **App Service settings** > **Overview** > **URL**|*Not present*
+|[Paths](https://swagger.io/specification/#paths-object-29)|**Integrate** > **Selected HTTP methods**|Bindings: Route
+|[Path Item](https://swagger.io/specification/#path-item-object-32)|**Integrate** > **Route template**|Bindings: Methods
+|[Zabezpečení](https://swagger.io/specification/#security-scheme-object-112)|**Keys**|*Not present*|
+|operationID*|**Route + Allowed verbs**|Route + Allowed Verbs|
 
-\*ID operace se vyžaduje jenom pro integraci s PowerApps a Flowem.
+\*The operation ID is required only for integrating with PowerApps and Flow.
 > [!NOTE]
-> Rozšíření x-MS-Summary poskytuje zobrazované jméno v Logic Apps, PowerApps a flow.
+> The x-ms-summary extension provides a display name in Logic Apps, PowerApps, and Flow.
 >
-> Další informace najdete v tématu [přizpůsobení definice Swagger pro PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/).
+> To learn more, see [Customize your Swagger definition for PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/).
 
-## <a name="CICD"></a>Použití CI/CD k nastavení definice rozhraní API
+## <a name="CICD"></a>Use CI/CD to set an API definition
 
- Než povolíte správu zdrojového kódu, musíte na portálu povolit hostování definice rozhraní API, aby se změnila definice rozhraní API ze správy zdrojového kódu. Postupujte podle těchto pokynů:
+ You must enable API definition hosting in the portal before you enable source control to modify your API definition from source control. Follow these instructions:
 
-1. V nastavení aplikace Function App přejděte do **definice rozhraní API (Preview)** .
-   1. Nastavte **zdroj definice rozhraní API** na **funkci**.
-   1. Klikněte na **vygenerovat šablonu definic rozhraní API** a pak klikněte na **Uložit** a vytvořte definici šablony pro pozdější úpravu.
-   1. Poznamenejte si adresu URL a klíč definice rozhraní API.
-1. [Nastavení průběžné integrace/průběžného nasazování (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
-2. Úprava Swagger. JSON ve správě zdrojového kódu na \site\wwwroot\.azurefunctions\swagger\swagger.JSON.
+1. Browse to **API Definition (preview)** in your function app settings.
+   1. Set **API definition source** to **Function**.
+   1. Click **Generate API definition template** and then **Save** to create a template definition for modifying later.
+   1. Note your API definition URL and key.
+1. [Set up continuous integration/continuous deployment (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
+2. Modify swagger.json in source control at \site\wwwroot\.azurefunctions\swagger\swagger.json.
 
-Změny ve službě Swagger. JSON ve vašem úložišti teď hostuje aplikace Function App na adrese URL a klíči definice rozhraní API, které jste si poznamenali v kroku 1. c.
+Now, changes to swagger.json in your repository are hosted by your function app at the API definition URL and key that you noted in step 1.c.
 
-## <a name="next-steps"></a>Další postup
-* [Úvodní kurz](functions-api-definition-getting-started.md). Vyzkoušejte si náš Názorný postup pro zobrazení definice OpenAPI v akci.
-* [Azure Functions úložiště GitHubu](https://github.com/Azure/Azure-Functions/). Podívejte se na úložiště funkcí a sdělte nám svůj názor na podporu definice rozhraní API ve verzi Preview. Udělejte problém GitHubu pro cokoli, co chcete zobrazit aktualizované.
-* [Azure Functions referenční informace pro vývojáře](functions-reference.md). Přečtěte si o funkcích kódování a definování triggerů a vazeb.
+## <a name="next-steps"></a>Další kroky
+* [Getting started tutorial](functions-api-definition-getting-started.md). Try our walkthrough to see an OpenAPI definition in action.
+* [Azure Functions GitHub repository](https://github.com/Azure/Azure-Functions/). Check out the Functions repository to give us feedback on the API definition support preview. Make a GitHub issue for anything you want to see updated.
+* [Azure Functions developer reference](functions-reference.md). Learn about coding functions and defining triggers and bindings.

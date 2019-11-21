@@ -1,6 +1,6 @@
 ---
-title: Azure Container Registry – často kladené otázky
-description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Registry
+title: Azure Container Registry - frequently asked questions
+description: Answers for frequently asked questions related to the Azure Container Registry service
 services: container-registry
 author: sajayantony
 manager: gwallace
@@ -8,66 +8,66 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
-ms.translationtype: MT
+ms.openlocfilehash: 450144d1e5a49aeb45633b05fc5ecdae986da297
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622708"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220622"
 ---
-# <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
+# <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy ke službě Azure Container Registry
 
-Tento článek popisuje Nejčastější dotazy a známé problémy týkající se Azure Container Registry.
+This article addresses frequently asked questions and known issues about Azure Container Registry.
 
 ## <a name="resource-management"></a>Správa prostředků
 
-- [Můžu pomocí šablony Správce prostředků vytvořit službu Azure Container Registry?](#can-i-create-an-azure-container-registry-using-a-resource-manager-template)
-- [Kontroluje se u obrázků v ACR chyba zabezpečení?](#is-there-security-vulnerability-scanning-for-images-in-acr)
-- [Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?](#how-do-i-configure-kubernetes-with-azure-container-registry)
-- [Návody získat přihlašovací údaje správce pro registr kontejneru?](#how-do-i-get-admin-credentials-for-a-container-registry)
-- [Návody získat přihlašovací údaje správce v šabloně Správce prostředků?](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
-- [Odstranění replikace se nezdařilo, stav zakázáno, i když se replikace odstraní pomocí Azure CLI nebo Azure PowerShell](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
-- [Pravidla brány firewall se úspěšně aktualizují, ale neprojeví se.](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
+- [Can I create an Azure container registry using a Resource Manager template?](#can-i-create-an-azure-container-registry-using-a-resource-manager-template)
+- [Is there security vulnerability scanning for images in ACR?](#is-there-security-vulnerability-scanning-for-images-in-acr)
+- [How do I configure Kubernetes with Azure Container Registry?](#how-do-i-configure-kubernetes-with-azure-container-registry)
+- [How do I get admin credentials for a container registry?](#how-do-i-get-admin-credentials-for-a-container-registry)
+- [How do I get admin credentials in a Resource Manager template?](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
+- [Delete of replication fails with Forbidden status although the replication gets deleted using the Azure CLI or Azure PowerShell](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
+- [Firewall rules are updated successfully but they do not take effect](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
 
-### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Můžu vytvořit Azure Container Registry pomocí šablony Správce prostředků?
+### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Can I create an Azure Container Registry using a Resource Manager template?
 
-Ano. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
+Ano. Here is [a template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) that you can use to create a registry.
 
-### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Kontroluje se u obrázků v ACR chyba zabezpečení?
+### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Is there security vulnerability scanning for images in ACR?
 
-Ano. Podívejte se na dokumentaci z [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Ano. See the documentation from [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) and [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
-### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
+### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>How do I configure Kubernetes with Azure Container Registry?
 
-Přečtěte si dokumentaci k [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) a krokům pro [službu Azure Kubernetes](../aks/cluster-container-registry-integration.md).
+See the documentation for [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) and steps for [Azure Kubernetes Service](../aks/cluster-container-registry-integration.md).
 
-### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>Návody získat přihlašovací údaje správce pro registr kontejneru?
+### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>How do I get admin credentials for a container registry?
 
 > [!IMPORTANT]
-> Uživatelský účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce s více uživateli. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu. Viz [Přehled ověřování](container-registry-authentication.md).
+> The admin user account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials with multiple users. Individual identity is recommended for users and service principals for headless scenarios. See [Authentication overview](container-registry-authentication.md).
 
-Před získáním přihlašovacích údajů správce se ujistěte, že je povolený uživatel s oprávněními správce registru.
+Before getting admin credentials, make sure the registry's admin user is enabled.
 
-Získání přihlašovacích údajů pomocí Azure CLI:
+To get credentials using the Azure CLI:
 
 ```azurecli
 az acr credential show -n myRegistry
 ```
 
-Pomocí Azure PowerShellu:
+Using Azure Powershell:
 
 ```powershell
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
 ```
 
-### <a name="how-do-i-get-admin-credentials-in-a-resource-manager-template"></a>Návody získat přihlašovací údaje správce v šabloně Správce prostředků?
+### <a name="how-do-i-get-admin-credentials-in-a-resource-manager-template"></a>How do I get admin credentials in a Resource Manager template?
 
 > [!IMPORTANT]
-> Uživatelský účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce s více uživateli. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu. Viz [Přehled ověřování](container-registry-authentication.md).
+> The admin user account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials with multiple users. Individual identity is recommended for users and service principals for headless scenarios. See [Authentication overview](container-registry-authentication.md).
 
-Před získáním přihlašovacích údajů správce se ujistěte, že je povolený uživatel s oprávněními správce registru.
+Before getting admin credentials, make sure the registry's admin user is enabled.
 
-První heslo získáte takto:
+To get the first password:
 
 ```json
 {
@@ -75,7 +75,7 @@ První heslo získáte takto:
 }
 ```
 
-Druhé heslo získáte takto:
+To get the second password:
 
 ```json
 {
@@ -83,61 +83,61 @@ Druhé heslo získáte takto:
 }
 ```
 
-### <a name="delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell"></a>Odstranění replikace se nezdařilo, stav zakázáno, i když se replikace odstraní pomocí Azure CLI nebo Azure PowerShell
+### <a name="delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell"></a>Delete of replication fails with Forbidden status although the replication gets deleted using the Azure CLI or Azure PowerShell
 
-Tato chyba se zobrazí, když má uživatel oprávnění k registru, ale nemá oprávnění na úrovni čtenáře k tomuto předplatnému. Chcete-li tento problém vyřešit, přiřaďte uživateli oprávnění ke čtení z předplatného:
+The error is seen when the user has permissions on a registry but doesn't have Reader-level permissions on the subscription. To resolve this issue, assign Reader permissions on the subscription to the user:
 
 
 ```azurecli  
 az role assignment create --role "Reader" --assignee user@contoso.com --scope /subscriptions/<subscription_id> 
 ```
 
-### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>Pravidla brány firewall se úspěšně aktualizují, ale neprojeví se.
+### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>Firewall rules are updated successfully but they do not take effect
 
-Rozšiřování změn pravidel brány firewall trvá nějakou dobu. Po změně nastavení brány firewall prosím počkejte několik minut, než ověříte tuto změnu.
+It takes some time to propagate firewall rule changes. After you change firewall settings, please wait for a few minutes before verifying this change.
 
 
 ## <a name="registry-operations"></a>Operace registru
 
-- [Návody přístup k HTTP API v2 registru Docker?](#how-do-i-access-docker-registry-http-api-v2)
-- [Návody odstranit všechny manifesty, na které není odkazováno pomocí žádné značky v úložišti?](#how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository)
-- [Proč se po odstranění imagí nesnižuje využití kvóty registru?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
-- [Návody ověřit změny kvóty úložiště?](#how-do-i-validate-storage-quota-changes)
-- [Návody ověřování pomocí registru při spuštění CLI v kontejneru?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Nabízí Azure Container Registry jenom konfiguraci TLS v 1.2 a jak povolit TLS v 1.2?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
-- [Podporuje Azure Container Registry důvěryhodnost obsahu?](#does-azure-container-registry-support-content-trust)
-- [Návody udělit přístup k vyžádanému nebo nabízenému obrázku bez oprávnění ke správě prostředku registru?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
-- [Návody povolit automatickou karanténu imagí pro registr](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [How do I access Docker Registry HTTP API V2?](#how-do-i-access-docker-registry-http-api-v2)
+- [How do I delete all manifests that are not referenced by any tag in a repository?](#how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository)
+- [Why does the registry quota usage not reduce after deleting images?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
+- [How do I validate storage quota changes?](#how-do-i-validate-storage-quota-changes)
+- [How do I authenticate with my registry when running the CLI in a container?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
+- [Does Azure Container Registry offer TLS v1.2 only configuration and how to enable TLS v1.2?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [Does Azure Container Registry support Content Trust?](#does-azure-container-registry-support-content-trust)
+- [How do I grant access to pull or push images without permission to manage the registry resource?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
+- [How do I enable automatic image quarantine for a registry](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 
-### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Návody přístup k HTTP API v2 registru Docker?
+### <a name="how-do-i-access-docker-registry-http-api-v2"></a>How do I access Docker Registry HTTP API V2?
 
-ACR podporuje HTTP API v2 v registru Docker. Rozhraní API jsou k dispozici na adrese `https://<your registry login server>/v2/`. Příklad: `https://mycontainerregistry.azurecr.io/v2/`
+ACR supports Docker Registry HTTP API V2. The APIs can be accessed at `https://<your registry login server>/v2/`. Příklad: `https://mycontainerregistry.azurecr.io/v2/`
 
-### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>Návody odstranit všechny manifesty, na které není odkazováno pomocí žádné značky v úložišti?
+### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>How do I delete all manifests that are not referenced by any tag in a repository?
 
-Pokud jste na bash:
+If you are on bash:
 
 ```bash
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
-Pro PowerShell:
+For Powershell:
 
 ```powershell
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-Poznámka: k přeskočení potvrzení můžete přidat `-y` v příkazu DELETE.
+Note: You can add `-y` in the delete command to skip confirmation.
 
-Další informace najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
+For more information, see [Delete container images in Azure Container Registry](container-registry-delete.md).
 
-### <a name="why-does-the-registry-quota-usage-not-reduce-after-deleting-images"></a>Proč se po odstranění imagí nesnižuje využití kvóty registru?
+### <a name="why-does-the-registry-quota-usage-not-reduce-after-deleting-images"></a>Why does the registry quota usage not reduce after deleting images?
 
-K této situaci může dojít, pokud jsou na podkladové vrstvy pořád odkazovány jinými imagemi kontejneru. Pokud odstraníte image bez odkazů, použití registru se během několika minut aktualizuje.
+This situation can happen if the underlying layers are still being referenced by other container images. If you delete an image with no references, the registry usage updates in a few minutes.
 
-### <a name="how-do-i-validate-storage-quota-changes"></a>Návody ověřit změny kvóty úložiště?
+### <a name="how-do-i-validate-storage-quota-changes"></a>How do I validate storage quota changes?
 
-Pomocí následujícího souboru Docker vytvořte image s vrstvou 1 GB. Tím se zajistí, že bitová kopie bude mít vrstvu, která není sdílená žádným jiným obrázkem v registru.
+Create an image with a 1GB layer using the following docker file. This ensures that the image has a layer that is not shared by any other image in the registry.
 
 ```dockerfile
 FROM alpine
@@ -145,183 +145,184 @@ RUN dd if=/dev/urandom of=1GB.bin  bs=32M  count=32
 RUN ls -lh 1GB.bin
 ```
 
-Sestavte a nahrajte image do svého registru pomocí Docker CLI.
+Build and push the image to your registry using the docker CLI.
 
 ```bash
 docker build -t myregistry.azurecr.io/1gb:latest .
 docker push myregistry.azurecr.io/1gb:latest
 ```
 
-Měli byste mít možnost vidět, že využití úložiště se v Azure Portal zvýšilo, nebo můžete využít dotaz na použití rozhraní příkazového řádku.
+You should be able to see that the storage usage has increased in the Azure portal, or you can query usage using the CLI.
 
 ```bash
 az acr show-usage -n myregistry
 ```
 
-Odstraňte Image pomocí Azure CLI nebo portálu a za pár minut si Projděte aktualizované využití.
+Delete the image using the Azure CLI or portal and check the updated usage in a few minutes.
 
 ```bash
 az acr repository delete -n myregistry --image 1gb
 ```
 
-### <a name="how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container"></a>Návody ověřování pomocí registru při spuštění CLI v kontejneru?
+### <a name="how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container"></a>How do I authenticate with my registry when running the CLI in a container?
 
-Musíte spustit kontejner Azure CLI připojením k soketu Docker:
+You need to run the Azure CLI container by mounting the Docker socket:
 
 ```bash
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock azuresdk/azure-cli-python:dev
 ```
 
-V kontejneru nainstalujte `docker`:
+In the container, install `docker`:
 
 ```bash
 apk --update add docker
 ```
 
-Pak proveďte ověření v registru:
+Then authenticate with your registry:
 
 ```azurecli
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Nabízí Azure Container Registry jenom konfiguraci TLS v 1.2 a jak povolit TLS v 1.2?
+### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Does Azure Container Registry offer TLS v1.2 only configuration and how to enable TLS v1.2?
 
-Ano. Povolte protokol TLS pomocí libovolného nedávného klienta Docker (verze 18.03.0 a vyšší). 
+Ano. Enable TLS by using any recent docker client (version 18.03.0 and above). 
 
-### <a name="does-azure-container-registry-support-content-trust"></a>Podporuje Azure Container Registry důvěryhodnost obsahu?
+### <a name="does-azure-container-registry-support-content-trust"></a>Podporuje služba Azure Container Registry důvěryhodnost obsahu?
 
-Ano, v Azure Container Registry můžete použít důvěryhodné image, protože je [Docker notář](https://docs.docker.com/notary/getting_started/) integrovaný a dá se povolit. Podrobnosti najdete v tématu [vztah důvěryhodnosti obsahu v Azure Container Registry](container-registry-content-trust.md).
+Yes, you can use trusted images in Azure Container Registry, since the [Docker Notary](https://docs.docker.com/notary/getting_started/) has been integrated and can be enabled. For details, see [Content Trust in Azure Container Registry](container-registry-content-trust.md).
 
 
-####  <a name="where-is-the-file-for-the-thumbprint-located"></a>Kde se nachází soubor pro kryptografický otisk?
+####  <a name="where-is-the-file-for-the-thumbprint-located"></a>Where is the file for the thumbprint located?
 
-V části `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`:
+Under `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`:
 
-* Veřejné klíče a certifikáty všech rolí (s výjimkou rolí delegování) jsou uloženy v `root.json`.
-* Veřejné klíče a certifikáty role delegování jsou uloženy v souboru JSON své nadřazené role (například `targets.json` pro `targets/releases` roli).
+* Public keys and certificates of all roles (except delegation roles) are stored in the `root.json`.
+* Public keys and certificates of the delegation role are stored in the JSON file of its parent role (for example `targets.json` for the `targets/releases` role).
 
-Doporučuje se tyto veřejné klíče a certifikáty ověřit po celkovém ověření TUF, které provádí Docker a notář klient.
+It is suggested to verify those public keys and certificates after the overall TUF verification done by the Docker and Notary client.
 
-### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>Návody udělit přístup k vyžádanému nebo nabízenému obrázku bez oprávnění ke správě prostředku registru?
+### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>How do I grant access to pull or push images without permission to manage the registry resource?
 
-ACR podporuje [vlastní role](container-registry-roles.md) , které poskytují různé úrovně oprávnění. Konkrétně role `AcrPull` a `AcrPush` umožňují uživatelům načítat a vkládat image bez oprávnění ke správě prostředku registru v Azure.
+ACR supports [custom roles](container-registry-roles.md) that provide different levels of permissions. Specifically, `AcrPull` and `AcrPush` roles allow users to pull and/or push images without the permission to manage the registry resource in Azure.
 
-* Azure Portal: registr-> Access Control (IAM) – > přidejte (vyberte `AcrPull` nebo `AcrPush` pro roli).
-* Azure CLI: vyhledejte ID prostředku v registru spuštěním následujícího příkazu:
+* Azure portal: Your registry -> Access Control (IAM) -> Add (Select `AcrPull` or `AcrPush` for the Role).
+* Azure CLI: Find the resource ID of the registry by running the following command:
 
   ```azurecli
   az acr show -n myRegistry
   ```
   
-  Potom můžete uživateli přiřadit roli `AcrPull` nebo `AcrPush` (Následující příklad používá `AcrPull`):
+  Then you can assign the `AcrPull` or `AcrPush` role to a user (the following example uses `AcrPull`):
 
   ```azurecli
     az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
     ```
 
-  Nebo přiřaďte roli k principu služby, který identifikuje jeho ID aplikace:
+  Or, assign the role to a service principle identified by its application ID:
 
   ```
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
-Nabyvatel pak může ověřit image v registru a získat k nim přístup.
+The assignee is then able to authenticate and access images in the registry.
 
-* Ověření v registru:
+* To authenticate to a registry:
     
   ```azurecli
   az acr login -n myRegistry 
   ```
 
-* K vypsání úložišť:
+* To list repositories:
 
   ```azurecli
   az acr repository list -n myRegistry
   ```
 
- Postup načtení obrázku:
+ To pull an image:
     
   ```azurecli
   docker pull myregistry.azurecr.io/hello-world
   ```
 
-Při použití pouze role `AcrPull` nebo `AcrPush` nemá nabyvatel oprávnění ke správě prostředku registru v Azure. Například `az acr list` nebo `az acr show -n myRegistry` nezobrazí registr.
+With the use of only the `AcrPull` or `AcrPush` role, the assignee doesn't have the permission to manage the registry resource in Azure. For example, `az acr list` or `az acr show -n myRegistry` won't show the registry.
 
-### <a name="how-do-i-enable-automatic-image-quarantine-for-a-registry"></a>Návody povolit automatické karantény imagí pro registr?
+### <a name="how-do-i-enable-automatic-image-quarantine-for-a-registry"></a>How do I enable automatic image quarantine for a registry?
 
-Karanténa obrázku je teď funkcí Preview ACR. Můžete povolit karanténní režim registru, aby byly normálním uživatelům viditelné pouze ty image, které úspěšně prošly kontrolou zabezpečení. Podrobnosti najdete v [úložišti GitHub ACR](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
+Image quarantine is currently a preview feature of ACR. You can enable the quarantine mode of a registry so that only those images which have successfully passed security scan are visible to normal users. For details, see the [ACR GitHub repo](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-## <a name="diagnostics-and-health-checks"></a>Diagnostika a kontroly stavu
+## <a name="diagnostics-and-health-checks"></a>Diagnostics and health checks
 
-- [Ověřit stav pomocí `az acr check-health`](#check-health-with-az-acr-check-health)
-- [docker pull se nepovedlo s chybou: NET/http: žádost se zrušila během čekání na připojení (Client. Timeout se překročila při očekávaných hlavičkách).](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
-- [nabízení Docker Push je úspěšné, ale docker pull se nezdaří s chybou: Neautorizováno: vyžadováno ověřování](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
-- [Povolit a získat protokoly ladění démona Docker](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
-- [Nová oprávnění uživatele nemůžou být účinná hned po aktualizaci.](#new-user-permissions-may-not-be-effective-immediately-after-updating)
-- [Informace o ověřování nejsou uvedené ve správném formátu při přímém REST API volání.](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
-- [Proč Azure Portal neobsahují seznam všech úložišť nebo značek?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
-- [Proč Azure Portal nepodaří načíst úložiště nebo značky?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
-- [Návody shromažďovat trasování http ve Windows?](#how-do-i-collect-http-traces-on-windows)
+- [Check health with `az acr check-health`](#check-health-with-az-acr-check-health)
+- [docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
+- [docker push succeeds but docker pull fails with error: unauthorized: authentication required](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
+- [Enable and get the debug logs of the docker daemon](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [New user permissions may not be effective immediately after updating](#new-user-permissions-may-not-be-effective-immediately-after-updating)
+- [Authentication information is not given in the correct format on direct REST API calls](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
+- [Why does the Azure portal not list all my repositories or tags?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Why does the Azure portal fail to fetch repositories or tags?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
+- [Why does my pull or push request fail with disallowed operation?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [How do I collect http traces on Windows?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Ověřit stav pomocí `az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Check health with `az acr check-health`
 
-Pokud chcete řešit běžné problémy s prostředím a registrací, přečtěte si téma o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md).
+To troubleshoot common environment and registry issues, see [Check the health of an Azure container registry](container-registry-check-health.md).
 
-### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull se nepovedlo s chybou: NET/http: žádost se zrušila během čekání na připojení (Client. Timeout se překročila při očekávaných hlavičkách).
+### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 
- - Pokud je tato chyba přechodným problémem, pak to bude úspěšné.
- - Pokud `docker pull` selžou nepřetržitě, může se jednat o problém s démonem Docker. Problém se může obecně zmírnit restartováním démona Docker. 
- - Pokud se tento problém bude i nadále zobrazovat po restartování procesu Docker, může dojít k potížím s připojením k síti v počítači. Pokud chcete zkontrolovat, jestli je obecná síť v počítači v pořádku, spusťte následující příkaz, který otestuje připojení ke koncovému bodu. Minimální verze `az acr`, která obsahuje tento příkaz kontroly připojení, je 2.2.9. Pokud používáte starší verzi, upgradujte rozhraní příkazového řádku Azure.
+ - If this error is a transient issue, then retry will succeed.
+ - If `docker pull` fails continuously, then there could be a problem with the Docker daemon. The problem can generally be mitigated by restarting the Docker daemon. 
+ - If you continue to see this issue after restarting Docker daemon, then the problem could be some network connectivity issues with the machine. To check if general network on the machine is healthy, run the following command to test endpoint connectivity. The minimum `az acr` version that contains this connectivity check command is 2.2.9. Upgrade your Azure CLI if you are using an older version.
  
    ```azurecli
     az acr check-health -n myRegistry
     ```
- - Vždy byste měli mít mechanismus opakování u všech operací klienta Docker.
+ - You should always have a retry mechanism on all Docker client operations.
 
-### <a name="docker-pull-is-slow"></a>Vyžádané čtení Docker je pomalé.
-[Tento](http://www.azurespeed.com/Azure/Download) nástroj slouží k otestování rychlosti stahování ze sítě počítače. Pokud je síť počítačů pomalá, zvažte použití virtuálního počítače Azure ve stejné oblasti jako registr. To obvykle zajišťuje rychlejší rychlost sítě.
+### <a name="docker-pull-is-slow"></a>Docker pull is slow
+Use [this](http://www.azurespeed.com/Azure/Download) tool to test your machine network download speed. If machine network is slow, consider using Azure VM in the same region as your registry. This usually gives you faster network speed.
 
-### <a name="docker-push-is-slow"></a>Nabízený zápis Docker je pomalý
-[Tento](http://www.azurespeed.com/Azure/Upload) nástroj slouží k otestování rychlosti nahrávání počítače v síti. Pokud je síť počítačů pomalá, zvažte použití virtuálního počítače Azure ve stejné oblasti jako registr. To obvykle zajišťuje rychlejší rychlost sítě.
+### <a name="docker-push-is-slow"></a>Docker push is slow
+Use [this](http://www.azurespeed.com/Azure/Upload) tool to test your machine network upload speed. If machine network is slow, consider using Azure VM in the same region as your registry. This usually gives you faster network speed.
 
-### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Nabízení Docker Push je úspěšné, ale docker pull se nezdaří s chybou: Neautorizováno: vyžadováno ověřování
+### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Docker push succeeds but docker pull fails with error: unauthorized: authentication required
 
-K této chybě může dojít ve verzi Red Hat démona Docker, kde `--signature-verification` je ve výchozím nastavení povolená. Možnosti démona Docker pro Red Hat Enterprise Linux (RHEL) nebo Fedora můžete ověřit spuštěním tohoto příkazu:
+This error can happen with the Red Hat version of the Docker daemon, where `--signature-verification` is enabled by default. You can check the Docker daemon options for Red Hat Enterprise Linux (RHEL) or Fedora by running the following command:
 
 ```bash
 grep OPTIONS /etc/sysconfig/docker
 ```
 
-Například Fedora 28 Server má následující možnosti Docker démon:
+For instance, Fedora 28 Server has the following docker daemon options:
 
 ```
 OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
 ```
 
-Pokud `--signature-verification=false` chybí, `docker pull` se nezdařila s chybou podobnou této:
+With `--signature-verification=false` missing, `docker pull` fails with an error similar to:
 
 ```bash
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
-Řešení této chyby:
-1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker`. Příklad:
+To resolve the error:
+1. Add the option `--signature-verification=false` to the Docker daemon configuration file `/etc/sysconfig/docker`. Například:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
   ```
-2. Restartujte službu Docker démon spuštěním následujícího příkazu:
+2. Restart the Docker daemon service by running the following command:
 
   ```bash
   sudo systemctl restart docker.service
   ```
 
-Podrobnosti o `--signature-verification` lze najít spuštěním `man dockerd`.
+Details of `--signature-verification` can be found by running `man dockerd`.
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Povolit a získat protokoly ladění démona Docker  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Enable and get the debug logs of the Docker daemon  
 
-Spusťte `dockerd` s možností `debug`. Nejdřív vytvořte konfigurační soubor démona Docker (`/etc/docker/daemon.json`), pokud neexistuje, a přidejte možnost `debug`:
+Start `dockerd` with the `debug` option. First, create the Docker daemon configuration file (`/etc/docker/daemon.json`) if it doesn't exist, and add the `debug` option:
 
 ```json
 {   
@@ -329,20 +330,20 @@ Spusťte `dockerd` s možností `debug`. Nejdřív vytvořte konfigurační soub
 }
 ```
 
-Pak restartujte démona. Například s Ubuntu 14,04:
+Then, restart the daemon. For example, with Ubuntu 14.04:
 
 ```bash
 sudo service docker restart
 ```
 
-Podrobnosti najdete v [dokumentaci k Docker](https://docs.docker.com/engine/admin/#enable-debugging). 
+Details can be found in the [Docker documentation](https://docs.docker.com/engine/admin/#enable-debugging). 
 
- * Protokoly se můžou generovat na různých místech v závislosti na vašem systému. Například pro Ubuntu 14,04 je `/var/log/upstart/docker.log`.   
-Podrobnosti najdete v [dokumentaci k Docker](https://docs.docker.com/engine/admin/#read-the-logs) .    
+ * The logs may be generated at different locations, depending on your system. For example, for Ubuntu 14.04, it's `/var/log/upstart/docker.log`.   
+See [Docker documentation](https://docs.docker.com/engine/admin/#read-the-logs) for details.    
 
- * V případě Docker for Windows se protokoly generují v% LOCALAPPDATA%/Docker/. Nemusí však obsahovat všechny informace o ladění.   
+ * For Docker for Windows, the logs are generated under %LOCALAPPDATA%/docker/. However it may not contain all the debug information yet.   
 
-   Pro přístup k úplnému protokolu démona možná budete potřebovat některé další kroky:
+   In order to access the full daemon log, you may need some extra steps:
 
     ```console
     docker run --privileged -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /usr/local/bin/docker:/usr/local/bin/docker alpine sh
@@ -350,21 +351,21 @@ Podrobnosti najdete v [dokumentaci k Docker](https://docs.docker.com/engine/admi
     docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh
     chroot /host
     ```
-    Teď máte přístup ke všem souborům virtuálního počítače, na kterém běží `dockerd`. Protokol je na `/var/log/docker.log`.
+    Now you have access to all the files of the VM running `dockerd`. The log is at `/var/log/docker.log`.
 
-### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>Nová oprávnění uživatele nemůžou být účinná hned po aktualizaci.
+### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>New user permissions may not be effective immediately after updating
 
-Když udělíte novému instančnímu objektu nová oprávnění (nové role), tato změna se nemusí projevit okamžitě. Existují dva možné důvody:
+When you grant new permissions (new roles) to a service principal, the change might not take effect immediately. There are two possible reasons:
 
-* Azure Active Directory zpoždění přiřazení role Obvykle je rychlá, ale může trvat několik minut, než se zpoždění šíření.
-* Zpoždění oprávnění na serveru tokenu ACR. Může to trvat až 10 minut. Pro zmírnění rizika můžete `docker logout` a pak znovu ověřit se stejným uživatelem po 1 minutě:
+* Azure Active Directory role assignment delay. Normally it's fast, but it could take minutes due to propagation delay.
+* Permission delay on ACR token server. This could take up to 10 minutes. To mitigate, you can `docker logout` and then authenticate again with the same user after 1 minute:
 
   ```bash
   docker logout myregistry.azurecr.io
   docker login myregistry.azurecr.io
   ```
 
-V současné době ACR nepodporuje odstranění domácích replikací uživateli. Alternativním řešením je, aby se v šabloně vytvořila Domovská replikace, ale přeskočili jsme její vytváření přidáním `"condition": false`, jak je znázorněno níže:
+Currently ACR doesn't support home replication deletion by the users. The workaround is to include the home replication create in the template but skip its creation by adding `"condition": false` as shown below:
 
 ```json
 {
@@ -380,16 +381,16 @@ V současné době ACR nepodporuje odstranění domácích replikací uživateli
 },
 ```
 
-### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>Informace o ověřování nejsou uvedené ve správném formátu při přímém REST API volání.
+### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>Authentication information is not given in the correct format on direct REST API calls
 
-Může dojít k chybě `InvalidAuthenticationInfo`, zejména pomocí nástroje `curl` s možností `-L``--location` (pro následné přesměrování).
-Například načtení objektu BLOB pomocí `curl` s možností `-L` a základním ověřováním:
+You may encounter an `InvalidAuthenticationInfo` error, especially using the `curl` tool with the option `-L`, `--location` (to follow redirects).
+For example, fetching the blob using `curl` with `-L` option and basic authentication:
 
 ```bash
 curl -L -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest
 ```
 
-může vést k následující reakci:
+may result in the following response:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -398,102 +399,109 @@ RequestId:00000000-0000-0000-0000-000000000000
 Time:2019-01-01T00:00:00.0000000Z</Message></Error>
 ```
 
-Hlavní příčinou je, že některé implementace `curl` následují při přesměrování pomocí hlaviček původní žádosti.
+The root cause is that some `curl` implementations follow redirects with headers from the original request.
 
-Chcete-li tento problém vyřešit, je nutné provést přesměrování ručně bez hlaviček. Vytiskněte hlavičky odpovědi s možností `-D -` `curl` a potom rozbalte: záhlaví `Location`:
+To resolve the problem, you need to follow redirects manually without the headers. Print the response headers with the `-D -` option of `curl` and then extract: the `Location` header:
 
 ```bash
 redirect_url=$(curl -s -D - -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest | grep "^Location: " | cut -d " " -f2 | tr -d '\r')
 curl $redirect_url
 ```
 
-### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Proč Azure Portal neobsahují seznam všech úložišť nebo značek? 
+### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Why does the Azure portal not list all my repositories or tags? 
 
-Pokud používáte prohlížeč Microsoft Edge/IE, můžete vidět maximálně 100 úložišť nebo značek. Pokud má váš registr více než 100 úložišť nebo značek, doporučujeme, abyste k jejich vypsání použili prohlížeč Firefox nebo Chrome.
+If you are using the Microsoft Edge/IE browser, you can see at most 100 repositories or tags. If your registry has more than 100 repositories or tags, we recommend that you use either the Firefox or Chrome browser to list them all.
 
-### <a name="why-does-the-azure-portal-fail-to-fetch-repositories-or-tags"></a>Proč Azure Portal nepodaří načíst úložiště nebo značky?
+### <a name="why-does-the-azure-portal-fail-to-fetch-repositories-or-tags"></a>Why does the Azure portal fail to fetch repositories or tags?
 
-Prohlížeč nemusí být schopný odeslat žádost o načtení úložišť nebo značek na server. Mohou nastat různé důvody:
+The browser might not be able to send the request for fetching repositories or tags to the server. There could be various reasons such as:
 
-* Nedostatečné síťové připojení
+* Lack of network connectivity
 * Brána firewall
-* Blokování služby AD
-* Chyby služby DNS
+* Ad blockers
+* DNS errors
 
-Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a připojení. Zkuste spustit `az acr check-health -n yourRegistry` pomocí rozhraní příkazového řádku Azure CLI a ověřte, jestli se vaše prostředí dokáže připojit k Container Registry. Kromě toho můžete také vyzkoušet anonymním nebo soukromou relaci v prohlížeči, abyste se vyhnuli zastaralým mezipaměťm nebo souborům cookie v prohlížeči.
+Please contact your network administrator or check your network configuration and connectivity. Try running `az acr check-health -n yourRegistry` using your Azure CLI to check if your environment is able to connect to the Container Registry. In addition, you could also try an incognito or private session in your browser to avoid any stale browser cache or cookies.
 
-### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
+### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Why does my pull or push request fail with disallowed operation?
 
-#### <a name="prerequisites"></a>Požadavky
+Here are some senarios where operations maybe disallowed:
+* Classic registries are no longer supported. Please upgrade to a supported [SKUs](https://aka.ms/acr/skus) using [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) or the azure portal.
+* The image or repository maybe locked so that it can't be deleted or updated. You can use the [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) command to view current attributes.
+* Some operations are disallowed if the image is in quarantine. Learn more about [quarantine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-- Povolit dešifrování HTTPS v Fiddler: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
-- Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>
-- Nezapomeňte po dokončení vrátit zpět.  Docker nebude fungovat s povoleným a Fiddler, který neběží.
+### <a name="how-do-i-collect-http-traces-on-windows"></a>How do I collect http traces on Windows?
+
+#### <a name="prerequisites"></a>Předpoklady
+
+- Enable decrypting https in fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Enable Docker to use a proxy through the Docker ui: <https://docs.docker.com/docker-for-windows/#proxies>
+- Be sure to revert when complete.  Docker won't work with this enabled and fiddler not running.
 
 #### <a name="windows-containers"></a>Kontejnery Windows
 
-Konfigurovat proxy Docker na 127.0.0.1:8888
+Configure Docker proxy to 127.0.0.1:8888
 
 #### <a name="linux-containers"></a>Linuxové kontejnery
 
-Vyhledejte IP adresu virtuálního přepínače Docker VM:
+Find the ip of the Docker vm virtual switch:
 
 ```powershell
 (Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
 ```
 
-Nakonfigurujte proxy Docker na výstup předchozího příkazu a portu 8888 (například 10.0.75.1:8888).
+Configure the Docker proxy to output of the previous command and the port 8888 (for example 10.0.75.1:8888)
 
 ## <a name="tasks"></a>Úlohy
 
-- [Návody Batch zruší spuštění?](#how-do-i-batch-cancel-runs)
-- [Návody do příkazu AZ ACR Build zahrnout složku. Git?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
-- [Podporují úlohy GitLab pro aktivační události zdroje?](#does-tasks-support-gitlab-for-source-triggers)
-- [Jakou službu správy úložišť Git podporují úlohy?](#what-git-repository-management-service-does-tasks-support)
+- [How do I batch cancel runs?](#how-do-i-batch-cancel-runs)
+- [How do I include the .git folder in az acr build command?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
+- [Does Tasks support GitLab for Source triggers?](#does-tasks-support-gitlab-for-source-triggers)
+- [What git repository management service does Tasks support?](#what-git-repository-management-service-does-tasks-support)
 
-### <a name="how-do-i-batch-cancel-runs"></a>Návody Batch zruší spuštění?
+### <a name="how-do-i-batch-cancel-runs"></a>How do I batch cancel runs?
 
-Následující příkazy zruší všechny spuštěné úlohy v zadaném registru.
+The following commands cancel all running tasks in the specified registry.
 
 ```azurecli
 az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o tsv \
 | xargs -I% az acr task cancel-run -r $myregistry --run-id %
 ```
 
-### <a name="how-do-i-include-the-git-folder-in-az-acr-build-command"></a>Návody do příkazu AZ ACR Build zahrnout složku. Git?
+### <a name="how-do-i-include-the-git-folder-in-az-acr-build-command"></a>How do I include the .git folder in az acr build command?
 
-Pokud předáte do příkazu `az acr build` místní zdrojovou složku, ve výchozím nastavení se z nahraného balíčku vyloučí složka `.git`. Soubor `.dockerignore` můžete vytvořit pomocí následujícího nastavení. Oznamuje příkazu, aby obnovil všechny soubory v rámci `.git` nahraného balíčku. 
+If you pass a local source folder to the `az acr build` command, the `.git` folder is excluded from the uploaded package by default. You can create a `.dockerignore` file with the following setting. It tells the command to restore all files under `.git` in the uploaded package. 
 
 ```sh
 !.git/**
 ```
 
-Toto nastavení platí také pro příkaz `az acr run`.
+This setting also applies to the `az acr run` command.
 
-### <a name="does-tasks-support-gitlab-for-source-triggers"></a>Podporují úlohy GitLab pro aktivační události zdroje?
+### <a name="does-tasks-support-gitlab-for-source-triggers"></a>Does Tasks support GitLab for Source triggers?
 
-V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
+We currently do not support GitLab for Source triggers.
 
-### <a name="what-git-repository-management-service-does-tasks-support"></a>Jakou službu správy úložišť Git podporují úlohy?
+### <a name="what-git-repository-management-service-does-tasks-support"></a>What git repository management service does Tasks support?
 
-| Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
+| Git service | Source context | Manual build | Auto build through commit trigger |
 |---|---|---|---|
 | GitHubu | https://github.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ano |
 | Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Ano | Ano |
 | GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ne |
 | BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Ano | Ne |
 
-## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
+## <a name="run-error-message-troubleshooting"></a>Run Error Message Troubleshooting
 
-| Chybová zpráva | Průvodce odstraňováním potíží |
+| Chybová zpráva | Průvodce řešením potíží |
 |---|---|
-|Pro virtuální počítač se nenakonfiguroval přístup, proto se nenašly žádné odběry.|K tomu může dojít, pokud v ACR úloze používáte `az login --identity`. Jedná se o přechodnou chybu a nastane, když se přiřazení role spravované identity nerozšíří. Počkejte několik sekund, než se znovu pokusí pracovat.|
+|No access was configured for the VM, hence no subscriptions were found|This could happen if you are using `az login --identity` in your ACR Task. This is a transient error and occurs when the role assignment of your Managed Identity hasn't propagated. Waiting a few seconds before retrying works.|
 
-## <a name="cicd-integration"></a>Integrace CI/CD
+## <a name="cicd-integration"></a>CI/CD integration
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
-- [Akce GitHubu](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
+- [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si další informace](container-registry-intro.md) o Azure Container Registry.
+* [Learn more](container-registry-intro.md) about Azure Container Registry.

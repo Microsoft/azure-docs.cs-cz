@@ -1,6 +1,6 @@
 ---
-title: Výchozí nastavení zabezpečení Azure Active Directory
-description: Výchozí zásady zabezpečení, které vám pomůžou chránit organizace před běžnými útoky
+title: Azure Active Directory security defaults
+description: Security default policies that help protect organizations from common attacks
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,122 +11,123 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151217"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208400"
 ---
-# <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
+# <a name="what-are-security-defaults"></a>What are security defaults?
 
-Správa zabezpečení může být obtížné, pokud se běžné útoky související s identitou stanou více a mnohem populární. Mezi tyto útoky patří sprej, přehrávání a útoky prostřednictvím hesla.
+Managing security can be difficult when common identity-related attacks are becoming more and more popular. These attacks include password spray, replay, and phishing.
 
-Výchozí nastavení zabezpečení v Azure Active Directory (Azure AD) usnadňuje zabezpečení a lepší ochranu vaší organizace. Výchozí nastavení zabezpečení obsahují předem nakonfigurovaná nastavení zabezpečení pro běžné útoky. 
+Security defaults in Azure Active Directory (Azure AD) make it easier to be secure and help protect your organization. Security defaults contain preconfigured security settings for common attacks. 
 
-Microsoft zpřístupňuje výchozí nastavení zabezpečení všem uživatelům. Cílem je zajistit, aby měly všechny organizace základní úroveň zabezpečení povoleno bez dalších poplatků. Výchozí nastavení zabezpečení můžete zapnout v Azure Portal.
+Microsoft is making security defaults available to everyone. The goal is to ensure that all organizations have a basic level of security enabled at no extra cost. You turn on security defaults in the Azure portal.
 
-![Snímek obrazovky Azure Portal s přepínačem pro povolení výchozích hodnot zabezpečení](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
+![Screenshot of the Azure portal with the toggle to enable security defaults](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
  
-Ve vašem tenantovi budou zapnuté následující konfigurace zabezpečení. 
+The following security configurations will be turned on in your tenant. 
 
-## <a name="unified-multi-factor-authentication-registration"></a>Registrace sjednocené Multi-Factor Authentication
+## <a name="unified-multi-factor-authentication-registration"></a>Unified Multi-Factor Authentication registration
 
-Všichni uživatelé ve vašem tenantovi musí zaregistrovat službu Multi-Factor Authentication (MFA) ve formě služby Azure Multi-Factor Authentication. K registraci Multi-Factor Authentication pomocí aplikace Microsoft Authenticator mají uživatelé 14 dní. Po uplynutí 14 dnů se uživatel nebude moct přihlásit, dokud se nedokončí Multi-Factor Authentication registrace.
+All users in your tenant must register for multi-factor authentication (MFA) in the form of the Azure Multi-Factor Authentication service. Users have 14 days to register for Multi-Factor Authentication by using the Microsoft Authenticator app. After the 14 days have passed, the user won't be able to sign in until Multi-Factor Authentication registration is finished.
 
-Chápeme, že někteří uživatelé můžou být mimo kancelář nebo se nebudou přihlašovat během 14 dnů hned po povolení výchozích hodnot zabezpečení. Aby bylo zajištěno, že každý uživatel má dostatek času na registraci Multi-Factor Authentication, je období 14 dní pro každého uživatele jedinečné. Po povolení výchozích hodnot zabezpečení začíná období 14 dní uživatele od prvního úspěšného interaktivního přihlášení.
+We understand that some users might be out of office or won't sign in during the 14 days immediately after enabling security defaults. To ensure that every user has ample time to register for Multi-Factor Authentication, the 14-day period is unique for each user. A user's 14-day period begins after their first successful interactive sign-in after you enable security defaults.
 
-## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication vynucení
+## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication enforcement
 
-### <a name="protecting-administrators"></a>Ochrana správců
+### <a name="protecting-administrators"></a>Protecting administrators
 
-Uživatelé s přístupem k privilegovaným účtům mají zvýšený přístup k vašemu prostředí. Vzhledem k napájení těchto účtů byste je měli považovat za zvláštní péči. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat pro přihlášení silnější formu ověření účtu. V Azure AD můžete získat silnější ověření účtu tím, že budete vyžadovat Multi-Factor Authentication.
+Users with access to privileged accounts have increased access to your environment. Due to the power these accounts have, you should treat them with special care. One common method to improve the protection of privileged accounts is to require a stronger form of account verification for sign-in. In Azure AD, you can get a stronger account verification by requiring Multi-Factor Authentication.
 
-Po dokončení registrace u Multi-Factor Authentication se při každém přihlášení budou vyžadovat následující devět rolí správce Azure AD:
+After registration with Multi-Factor Authentication is finished, the following nine Azure AD administrator roles will be required to perform additional authentication every time they sign in:
 
 - Globální správce
 - Správce SharePointu
-- Správce Exchange
-- Správce podmíněného přístupu
+- Exchange administrator
+- Conditional Access administrator
 - Správce zabezpečení
-- Správce helpdesku nebo správce hesel
+- Helpdesk administrator or password administrator
 - Správce fakturace
-- Správce uživatele
-- Správce ověřování
+- User administrator
+- Authentication administrator
 
-### <a name="protecting-all-users"></a>Ochrana všech uživatelů
+### <a name="protecting-all-users"></a>Protecting all users
 
-Doporučujeme, abyste si myslíte, že účty správců jsou jedinými účty, které vyžadují další vrstvy ověřování. Správci mají rozsáhlý přístup k citlivým informacím a můžou provádět změny nastavení pro celé předplatné. Ale útočníci se zaměřují na koncové uživatele. 
+We tend to think that administrator accounts are the only accounts that need extra layers of authentication. Administrators have broad access to sensitive information and can make changes to subscription-wide settings. But attackers tend to target end users. 
 
-Po získání přístupu pro tyto útočníky můžou požádat o přístup k privilegovaným informacím jménem původního držitele účtu. Můžou si dokonce stáhnout celý adresář a udělat tak útok útoku phishing na celou organizaci. 
+After these attackers gain access, they can request access to privileged information on behalf of the original account holder. They can even download the entire directory to perform a phishing attack on your whole organization. 
 
-Jednou z běžných metod pro zlepšení ochrany pro všechny uživatele je vyžadovat silnější formu ověření účtu, například Multi-Factor Authentication pro každého. Jakmile se uživatelé dokončí Multi-Factor Authentication registraci, budou vyzváni k dalšímu ověřování, kdykoli to bude nutné.
+One common method to improve protection for all users is to require a stronger form of account verification, such as Multi-Factor Authentication, for everyone. After users finish Multi-Factor Authentication registration, they'll be prompted for additional authentication whenever necessary.
 
-### <a name="blocking-legacy-authentication"></a>Blokování starších verzí ověřování
+### <a name="blocking-legacy-authentication"></a>Blocking legacy authentication
 
-Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure AD podporuje nejrůznější ověřovací protokoly, včetně starší verze ověřování. *Starší verze ověřování* je termín, který odkazuje na žádost o ověření, kterou provedla:
+To give your users easy access to your cloud apps, Azure AD supports a variety of authentication protocols, including legacy authentication. *Legacy authentication* is a term that refers to an authentication request made by:
 
-- Starší klienti Office, kteří nepoužívají moderní ověřování (například klienta Office 2010).
-- Každý klient používající starší e-mailové protokoly, jako jsou IMAP, SMTP nebo POP3.
+- Older Office clients that don't use modern authentication (for example, an Office 2010 client).
+- Any client that uses older mail protocols such as IMAP, SMTP, or POP3.
 
-V současné době většina neúspěšných pokusů o přihlášení pocházela ze staršího ověřování. Starší verze ověřování nepodporuje Multi-Factor Authentication. I v případě, že máte ve svém adresáři povolené zásady Multi-Factor Authentication, útočník se může ověřit pomocí staršího protokolu a Multi-Factor Authentication obcházení. 
+Today, the majority of compromising sign-in attempts come from legacy authentication. Legacy authentication does not support Multi-Factor Authentication. Even if you have a Multi-Factor Authentication policy enabled on your directory, an attacker can authenticate by using an older protocol and bypass Multi-Factor Authentication. 
 
-Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou všechny požadavky na ověření provedené starším protokolem blokované. Výchozí nastavení zabezpečení neblokuje Exchange ActiveSync.
+After security defaults are enabled in your tenant, all authentication requests made by an older protocol will be blocked. Security defaults don't block Exchange ActiveSync.
 
-### <a name="protecting-privileged-actions"></a>Ochrana privilegovaných akcí
+### <a name="protecting-privileged-actions"></a>Protecting privileged actions
 
-Organizace používají různé služby Azure spravované prostřednictvím rozhraní Azure Resource Manager API, včetně:
+Organizations use a variety of Azure services managed through the Azure Resource Manager API, including:
 
 - Portál Azure 
 - Azure PowerShell 
 - Azure CLI
 
-Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může měnit konfigurace v rámci tenanta, jako je například nastavení služby a fakturace předplatného. Jednotné vícefaktorové ověřování je zranitelné vůči nejrůznějším útokům, jako je útok phishing a heslo. 
+Using Azure Resource Manager to manage your services is a highly privileged action. Azure Resource Manager can alter tenant-wide configurations, such as service settings and subscription billing. Single-factor authentication is vulnerable to a variety of attacks like phishing and password spray. 
 
-Je důležité ověřit identitu uživatelů, kteří chtějí získat přístup k Azure Resource Manager a aktualizovat konfigurace. Než povolíte přístup, ověříte jejich identitu tím, že budete vyžadovat další ověřování.
+It's important to verify the identity of users who want to access Azure Resource Manager and update configurations. You verify their identity by requiring additional authentication before you allow access.
 
-Po povolení výchozích hodnot zabezpečení ve vašem tenantovi bude nutné, aby každý uživatel, který přistupuje k Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI, dokončil další ověřování. Tato zásada platí pro všechny uživatele, kteří přistupují k Azure Resource Manager, ať už se jedná o správce nebo uživatele. 
+After you enable security defaults in your tenant, any user who's accessing the Azure portal, Azure PowerShell, or the Azure CLI will need to complete additional authentication. This policy applies to all users who are accessing Azure Resource Manager, whether they're an administrator or a user. 
 
-Pokud uživatel není zaregistrován pro Multi-Factor Authentication, bude uživatel vyzván k registraci pomocí aplikace Microsoft Authenticator, aby bylo možné pokračovat. K dispozici není žádné období registrace Multi-Factor Authentication za 14 dní.
+If the user isn't registered for Multi-Factor Authentication, the user will be required to register by using the Microsoft Authenticator app in order to proceed. No 14-day Multi-Factor Authentication registration period will be provided.
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-K nasazení výchozích hodnot zabezpečení pro vašeho tenanta se vztahují následující další požadavky.
+The following additional considerations are related to deployment of security defaults for your tenant.
 
-### <a name="older-protocols"></a>Starší protokoly
+### <a name="older-protocols"></a>Older protocols
 
-K provádění požadavků na ověření používají poštovní klienti starší ověřovací protokoly (třeba IMAP, SMTP a POP3). Tyto protokoly nepodporují Multi-Factor Authentication. Většina z nich je v rozporu s tím, že se Microsoft uvidí proti útokům proti starším protokolům, které se pokoušejí Multi-Factor Authentication obejít. 
+Mail clients use older authentication protocols (like IMAP, SMTP, and POP3) to make authentication requests. These protocols don't support Multi-Factor Authentication. Most of the account compromises that Microsoft sees are from attacks against older protocols that are trying to bypass Multi-Factor Authentication. 
 
-Aby se zajistilo, že Multi-Factor Authentication nutné přihlašovat se k účtu správce a že ho útočníci nemohou obejít, výchozí nastavení zabezpečení zablokují všechny požadavky na ověření provedené u účtů správců ze starších protokolů.
+To ensure that Multi-Factor Authentication is required for signing in to an administrative account and that attackers can't bypass it, security defaults block all authentication requests made to administrator accounts from older protocols.
 
 > [!WARNING]
-> Než povolíte toto nastavení, zajistěte, aby vaši správci nepoužívali starší ověřovací protokoly. Další informace najdete v tématu [Jak přejít pryč ze starší verze ověřování](concept-conditional-access-block-legacy-authentication.md).
+> Before you enable this setting, make sure your administrators aren't using older authentication protocols. For more information, see [How to move away from legacy authentication](concept-conditional-access-block-legacy-authentication.md).
 
 ### <a name="conditional-access"></a>Podmíněný přístup
 
-Podmíněný přístup můžete použít ke konfiguraci zásad, které poskytují stejné chování jako výchozí hodnoty zabezpečení. Pokud používáte podmíněný přístup a ve vašem prostředí máte povolené zásady podmíněného přístupu, výchozí nastavení zabezpečení nebude k dispozici. Pokud máte licenci, která poskytuje podmíněný přístup, ale nemáte ve svém prostředí povolené žádné zásady podmíněného přístupu, budete mít k dispozici výchozí nastavení zabezpečení, dokud nepovolíte Zásady podmíněného přístupu.
+You can use Conditional Access to configure policies that provide the same behavior enabled by security defaults. If you're using Conditional Access and have Conditional Access policies enabled in your environment, security defaults won't be available to you. If you have a license that provides Conditional Access but don't have any Conditional Access policies enabled in your environment, you are welcome to use security defaults until you enable Conditional Access policies.
 
-![Zpráva s upozorněním, že je možné použít výchozí nastavení zabezpečení nebo podmíněný přístup ne obojí](./media/concept-conditional-access-security-defaults/security-defaults-conditional-access.png)
+![Warning message that you can have security defaults or Conditional Access not both](./media/concept-conditional-access-security-defaults/security-defaults-conditional-access.png)
 
-Tady jsou podrobné návody, jak můžete pomocí podmíněného přístupu nakonfigurovat ekvivalentní zásady:
+Here are step-by-step guides on how you can use Conditional Access to configure equivalent policies:
 
-- [Vyžadovat MFA pro správce](howto-conditional-access-policy-admin-mfa.md)
-- [Vyžadovat vícefaktorové ověřování pro správu Azure](howto-conditional-access-policy-azure-management.md)
-- [Blokovat starší verze ověřování](howto-conditional-access-policy-block-legacy.md)
-- [Vyžadovat MFA pro všechny uživatele](howto-conditional-access-policy-all-users-mfa.md)
+- [Require MFA for administrators](howto-conditional-access-policy-admin-mfa.md)
+- [Require MFA for Azure management](howto-conditional-access-policy-azure-management.md)
+- [Block legacy authentication](howto-conditional-access-policy-block-legacy.md)
+- [Require MFA for all users](howto-conditional-access-policy-all-users-mfa.md)
+- [Require Azure MFA registration](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Requires Azure AD Identity Protection
 
-## <a name="enabling-security-defaults"></a>Povolení výchozích hodnot zabezpečení
+## <a name="enabling-security-defaults"></a>Enabling security defaults
 
-Povolení výchozích hodnot zabezpečení v adresáři:
+To enable security defaults in your directory:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)  as správce zabezpečení, správce podmíněného přístupu nebo globální správce.
-1. Vyhledejte **Azure Active Directory**   > **vlastnosti**.
-1. Vyberte **Spravovat výchozí nastavení zabezpečení**.
-1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **Ano**.
+1. Sign in to the [Azure portal](https://portal.azure.com) as a security administrator, Conditional Access administrator, or global administrator.
+1. Browse to **Azure Active Directory** > **Properties**.
+1. Select **Manage security defaults**.
+1. Set the **Enable security defaults** toggle to **Yes**.
 1. Vyberte **Save** (Uložit).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+[Common Conditional Access policies](concept-conditional-access-policy-common.md)
 
-[Co je podmíněný přístup?](overview.md)
+[What is Conditional Access?](overview.md)

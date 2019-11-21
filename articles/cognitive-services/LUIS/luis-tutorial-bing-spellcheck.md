@@ -1,7 +1,7 @@
 ---
-title: Oprava nesprávně napsaných slov – LUIS
+title: Correct misspelled words - LUIS
 titleSuffix: Azure Cognitive Services
-description: Správné slova s překlepem v projevy tak, že přidáte API V7 kontrola pravopisu Bingu dotazy koncový bod služby LUIS.
+description: Correct misspelled words in utterances by adding Bing Spell Check API V7 to LUIS endpoint queries.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,76 +9,78 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 238b76040559148c48aa67b99e856a5987b71a7e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123154"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225448"
 ---
-# <a name="correct-misspelled-words-with-bing-spell-check"></a>Správné chybně napsaná slova s kontrolu pravopisu Bingu
+# <a name="correct-misspelled-words-with-bing-spell-check"></a>Correct misspelled words with Bing Spell Check
 
-Můžete integrovat aplikace LUIS s využitím [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) k opravovat slova s překlepem v projevy před předpoví LUIS skóre a entity utterance. 
+You can integrate your LUIS app with [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) to correct misspelled words in utterances before LUIS predicts the score and entities of the utterance. 
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
-## <a name="create-first-key-for-bing-spell-check-v7"></a>Vytvoření první klíč pro V7 kontrola pravopisu Bingu
-Vaše [první klíč API kontrola pravopisu Bingu v7](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) je zdarma. 
+## <a name="create-first-key-for-bing-spell-check-v7"></a>Create first key for Bing Spell Check V7
 
-![Vytvořit bezplatný klíč](./media/luis-tutorial-bing-spellcheck/free-key.png)
+Your [first Bing Spell Check API v7 key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) is free. 
+
+![Create free key](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
 <a name="create-subscription-key"></a>
 
-## <a name="create-endpoint-key"></a>Vytvoření klíče koncového bodu
-Je-li klíč volný vypršela platnost, vytvořte klíč koncového bodu.
+## <a name="create-endpoint-key"></a>Create Endpoint key
+If your free key expired, create an endpoint key.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-2. Vyberte **vytvořit prostředek** v levém horním rohu.
+2. Select **Create a resource** in the top left corner.
 
 3. Do vyhledávacího pole zadejte `Bing Spell Check API V7`.
 
-    ![Zkontrolujte vyhledávání pro kontrolu pravopisu Bingu, rozhraní API v7 nabízí](./media/luis-tutorial-bing-spellcheck/portal-search.png)
+    ![Search for Bing Spell Check API V7](./media/luis-tutorial-bing-spellcheck/portal-search.png)
 
-4. Vyberte službu. 
+4. Select the service. 
 
-5. Panelu informací se zobrazí napravo obsahující informace, včetně právní upozornění. Vyberte **vytvořit** zahájíte proces vytváření předplatného. 
+5. An information panel appears to the right containing information including the Legal Notice. Select **Create** to begin the subscription creation process. 
 
-6. V panelu Další zadejte nastavení služby. Počkejte na dokončení procesu vytváření služby.
+6. In the next panel, enter your service settings. Wait for service creation process to finish.
 
-    ![Zadejte nastavení služby](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
+    ![Enter service settings](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. Vyberte **všechny prostředky** pod **Oblíbené** title v navigačním panelu na levé straně.
+7. Select **All resources** under the **Favorites** title on the left side navigation.
 
-8. Vyberte novou službu. Jejím typem je **služeb Cognitive Services** a umístění je **globální**. 
+8. Select the new service. Its type is **Cognitive Services** and the location is **global**. 
 
-9. Na hlavním panelu, vyberte **klíče** zobrazíte nové klíče.
+9. In the main panel, select **Keys** to see your new keys.
 
-    ![Získejte klíče](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
+    ![Grab keys](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
-10. První klíč si zkopírujte. Potřebujete jenom jeden ze dvou klíčů. 
+10. Copy the first key. You only need one of the two keys. 
 
-## <a name="using-the-key-in-luis-test-panel"></a>V panelu testu LUIS pomocí klíče
-Existují dvě místa v LUIS používat klíč. První je v [test panelu](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se neuloží do LUIS, ale místo toho je proměnná relace. Je potřeba nastavit klíč pokaždé, když chcete, aby panelu testu použít službu API kontrola pravopisu Bingu v7 utterance. Zobrazit [pokyny](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) v panelu testu pro nastavení klíče.
+<!--
+## Using the key in LUIS test panel
+There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
+-->
+## <a name="adding-the-key-to-the-endpoint-url"></a>Adding the key to the endpoint URL
+The endpoint query needs the key passed in the query string parameters for each query you want to apply spelling correction. You may have a chatbot that calls LUIS or you may call the LUIS endpoint API directly. Regardless of how the endpoint is called, each and every call must include the required information for spelling corrections to work properly.
 
-## <a name="adding-the-key-to-the-endpoint-url"></a>Přidávání klíče do adresu URL koncového bodu
-Dotaz koncový bod, musí klíč předávaný do parametrů řetězce dotazu pro každý dotaz, že který chcete použít opravy pravopisu. Můžete mít chatovací robot, který volá LUIS nebo koncový bod rozhraní API LUIS může volat přímo. Bez ohledu na to, jak se nazývá koncový bod musí obsahovat každého volání požadované informace pro opravy pravopisu fungovala správně.
-
-Koncový bod adresy URL obsahuje několik hodnot, které je potřeba předávat správně. Klíč API kontrola pravopisu Bingu v7 je jenom další jeden z nich. Je nutné nastavit **kontrola pravopisu** parametr na hodnotu true a je nutné nastavit hodnotu **Bingu – pravopisu – kontrola subscription-key** hodnotě klíče:
+The endpoint URL has several values that need to be passed correctly. The Bing Spell Check API v7 key is just another one of these. You must set the **spellCheck** parameter to true and you must set the value of **bing-spell-check-subscription-key** to the key value:
 
 `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=**true**&bing-spell-check-subscription-key=**{bingKey}**&verbose=true&timezoneOffset=0&q={utterance}`
 
-## <a name="send-misspelled-utterance-to-luis"></a>Chybně napsaná utterance posílala LUIS
-1. Ve webovém prohlížeči, zkopírujte předchozí řetězec a nahraďte `region`, `appId`, `luisKey`, a `bingKey` vlastními hodnotami. Nezapomeňte použít oblast koncový bod, pokud se liší od vašeho publikování [oblasti](luis-reference-regions.md).
+## <a name="send-misspelled-utterance-to-luis"></a>Send misspelled utterance to LUIS
+1. In a web browser, copy the preceding string and replace the `region`, `appId`, `luisKey`, and `bingKey` with your own values. Make sure to use the endpoint region, if it is different from your publishing [region](luis-reference-regions.md).
 
-2. Přidání chybně utterance jako například "jak daleko je mountainn?". V angličtině `mountain`, s jednou `n`, je správně. 
+2. Add a misspelled utterance such as "How far is the mountainn?". In English, `mountain`, with one `n`, is the correct spelling. 
 
-3. Vyberte zadejte odeslat dotaz do služby LUIS.
+3. Select enter to send the query to LUIS.
 
-4. Služba LUIS jako odpověď vrátí výsledek JSON pro `How far is the mountain?`. Pokud API kontrola pravopisu Bingu v7 zjistí chyba, `query` pole v odpovědi JSON aplikace LUIS obsahuje původní dotaz a `alteredQuery` pole obsahuje opravený dotaz odeslaný do služby LUIS.
+4. LUIS responds with a JSON result for `How far is the mountain?`. If Bing Spell Check API v7 detects a misspelling, the `query` field in the LUIS app's JSON response contains the original query, and the `alteredQuery` field contains the corrected query sent to LUIS.
 
 ```json
 {
@@ -92,17 +94,17 @@ Koncový bod adresy URL obsahuje několik hodnot, které je potřeba předávat 
 }
 ```
 
-## <a name="ignore-spelling-mistakes"></a>Ignorovat pravopisné chyby hned
+## <a name="ignore-spelling-mistakes"></a>Ignore spelling mistakes
 
-Pokud nechcete používat službu rozhraní API Bingu pro kontrolu pravopisu v7, je nutné přidat správné a nesprávné zadání pravopisu. 
+If you don't want to use the Bing Spell Check API v7 service, you need to add the correct and incorrect spelling. 
 
-Existují dvě řešení:
+Two solutions are:
 
-* Popisek – příklad projevy, který má všechny různé pravopisy, aby LUIS mohl zjistit správné pravopisy a také překlepy. Tato možnost vyžaduje další popisování úsilí než použití kontroly pravopisu.
-* Vytvoří seznam frází se všemi variantami slova. V tomto řešení není nutné označovat variace slov v příkladu projevy. 
+* Label example utterances that have the all the different spellings so that LUIS can learn proper spelling as well as typos. This option requires more labeling effort than using a spell checker.
+* Create a phrase list with all variations of the word. With this solution, you do not need to label the word variations in the example utterances. 
 
-## <a name="publishing-page"></a>Stránka publikování
-[Publikování](luis-how-to-publish-app.md) stránka má **kontrolu pravopisu Bingu povolit** zaškrtávací políčko. Toto je usnadnění a vytvořit klíč a pochopit, jak se změní adresa URL koncového bodu. Budete stále muset použít parametry správný koncový bod aby měla kontrolu pravopisu pro každý utterance. 
+## <a name="publishing-page"></a>Publishing page
+The [publishing](luis-how-to-publish-app.md) page has an **Enable Bing spell checker** checkbox. This is a convenience to create the key and understand how the endpoint URL changes. You still have to use the correct endpoint parameters in order to have spelling corrected for each utterance. 
 
 > [!div class="nextstepaction"]
-> [Další informace o příklad projevy](luis-how-to-add-example-utterances.md)
+> [Learn more about example utterances](luis-how-to-add-example-utterances.md)

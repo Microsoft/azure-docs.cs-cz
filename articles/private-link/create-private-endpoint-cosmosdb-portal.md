@@ -1,141 +1,141 @@
 ---
-title: Připojení k účtu Azure Cosmos pomocí privátního odkazu Azure
-description: Přečtěte si, jak bezpečně přistupovat k účtu Azure Cosmos z virtuálního počítače vytvořením privátního koncového bodu.
-author: SnehaGunda
+title: Connect to an Azure Cosmos account with Azure Private Link
+description: Learn how to securely access the Azure Cosmos account from a VM by creating a Private Endpoint.
+author: asudbring
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: sngun
-ms.openlocfilehash: 32595e561736b5f22f109d0caff1f3990300d2bc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: allensu
+ms.openlocfilehash: 90710176ec16d1c565e24ff7df56b0b838f2699e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007337"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229425"
 ---
-# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Připojení soukromě k účtu Azure Cosmos pomocí privátního odkazu Azure
+# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Connect privately to an Azure Cosmos account using Azure Private Link
 
-Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
+Azure Private Endpoint is the fundamental building block for Private Link in Azure. It enables Azure resources, like virtual machines (VMs), to communicate privately with Private Link resources.
 
-V tomto článku se naučíte, jak vytvořit virtuální počítač ve virtuální síti Azure a účtu Azure Cosmos s privátním koncovým bodem pomocí Azure Portal. Pak můžete bezpečně přistupovat k účtu Azure Cosmos z virtuálního počítače.
+In this article, you will learn how to create a VM on an Azure virtual network and an Azure Cosmos account with a Private Endpoint using the Azure portal. Then, you can securely access the Azure Cosmos account from the VM.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [Azure Portal.](https://portal.azure.com)
+Sign in to the [Azure portal.](https://portal.azure.com)
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
+### <a name="create-the-virtual-network"></a>Create the virtual network
 
-V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který se používá pro přístup k prostředku privátního propojení (v tomto příkladu účet Azure Cosmos).
+In this section, you will create a virtual network and the subnet to host the VM that is used to access your Private Link resource (an Azure Cosmos account in this example).
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Virtual network**.
 
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+1. In **Create virtual network**, enter or select this information:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název | Zadejte *MyVirtualNetwork*. |
-    | Adresní prostor | Zadejte *10.1.0.0/16*. |
+    | Name (Název) | Enter *MyVirtualNetwork*. |
+    | Adresní prostor | Enter *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
-    | Umístění | Vyberte **WestCentralUS**.|
-    | Název podsítě | Zadejte *mySubnet*. |
-    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
+    | Skupina prostředků | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
+    | Umístění | Select **WestCentralUS**.|
+    | Subnet - Name | Enter *mySubnet*. |
+    | Podsíť – Rozsah adres | Enter *10.1.0.0/24*. |
     |||
 
-1. Ponechte REST jako výchozí a vyberte **vytvořit**.
+1. Leave the rest as default and select **Create**.
 
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **výpočetní** > **virtuální počítač**.
+1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Compute** > **Virtual machine**.
 
-1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
+1. In **Create a virtual machine - Basics**, enter or select this information:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **PODROBNOSTI O PROJEKTU** | |
+    | **PROJECT DETAILS** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
-    | **PODROBNOSTI INSTANCE** |  |
-    | Název virtuálního počítače | Zadejte *myVm*. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
-    | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Image | Vyberte **Windows Server 2019 Datacenter**. |
-    | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
-    | **ÚČET SPRÁVCE** |  |
-    | Uživatelské jméno | Zadejte uživatelské jméno podle vašeho výběru. |
-    | Heslo | Zadejte heslo podle svého výběru. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Potvrzení hesla | Znovu zadejte heslo. |
-    | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
-    | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné**. |
-    | **ÚSPORA PENĚZ** |  |
-    | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne**. |
+    | Skupina prostředků | Select **myResourceGroup**. You created this in the previous section.  |
+    | **INSTANCE DETAILS** |  |
+    | Název virtuálního počítače | Enter *myVm*. |
+    | Oblast | Select **WestCentralUS**. |
+    | Availability options | Leave the default **No infrastructure redundancy required**. |
+    | Obrázek | Select **Windows Server 2019 Datacenter**. |
+    | Velikost | Leave the default **Standard DS1 v2**. |
+    | **ADMINISTRATOR ACCOUNT** |  |
+    | Uživatelské jméno | Enter a username of your choice. |
+    | Heslo | Enter a password of your choice. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Confirm Password | Reenter the password. |
+    | **INBOUND PORT RULES** |  |
+    | Public inbound ports | Leave the default **None**. |
+    | **SAVE MONEY** |  |
+    | Already have a Windows license? | Leave the default **No**. |
     |||
 
-1. Vyberte **Další: disky**.
+1. Select **Next: Disks**.
 
-1. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
+1. In **Create a virtual machine - Disks**, leave the defaults and select **Next: Networking**.
 
-1. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
+1. In **Create a virtual machine - Networking**, select this information:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Virtuální síť | Ponechte výchozí **MyVirtualNetwork**.  |
-    | Adresní prostor | Ponechte výchozí **10.1.0.0/24**.|
-    | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)** .|
-    | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
-    | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
+    | Virtuální síť | Leave the default **MyVirtualNetwork**.  |
+    | Adresní prostor | Leave the default **10.1.0.0/24**.|
+    | Podsíť | Leave the default **mySubnet (10.1.0.0/24)** .|
+    | Veřejná IP adresa | Leave the default **(new) myVm-ip**. |
+    | Public inbound ports | Select **Allow selected ports**. |
+    | Select inbound ports | Select **HTTP** and **RDP**.|
     ||
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+1. Vyberte **Zkontrolovat a vytvořit**. You're taken to the **Review + create** page where Azure validates your configuration.
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+1. When you see the **Validation passed** message, select **Create**.
 
 ## <a name="create-an-azure-cosmos-account"></a>Vytvoření účtu Azure Cosmos
 
-Vytvořte [účet rozhraní SQL API služby Azure Cosmos](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account). Pro zjednodušení můžete vytvořit účet Azure Cosmos ve stejné oblasti jako ostatní prostředky (tj. "WestCentralUS").
+Create an [Azure Cosmos SQL API account](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account). For simplicity, you can create the Azure Cosmos account in the same region as the other resources (that is "WestCentralUS").
 
-## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Vytvoření privátního koncového bodu pro účet Azure Cosmos
+## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Create a Private Endpoint for your Azure Cosmos account
 
-Vytvořte privátní odkaz na účet Azure Cosmos, jak je popsáno v části [Vytvoření privátního odkazu](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) v článku věnovaném použití Azure Portal v odkazovaném článku.
+Create a Private Link for your Azure Cosmos account as described in the [Create a Private Link using the Azure portal](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) section of the linked article.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
-Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způsobem:
+Connect to the VM *myVm* from the internet as follows:
 
-1. Na panelu hledání na portálu zadejte *myVm*.
+1. In the portal's search bar, enter *myVm*.
 
-1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
+1. Klikněte na tlačítko **Připojit**. After selecting the **Connect** button, **Connect to virtual machine** opens.
 
-1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Select **Download RDP File**. Azure creates a Remote Desktop Protocol ( *.rdp*) file and downloads it to your computer.
 
-1. Otevřete stažený soubor *. RDP* .
+1. Open the downloaded *.rdp* file.
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
-    1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+    1. Enter the username and password you specified when creating the VM.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > You may need to select **More choices** > **Use a different account**, to specify the credentials you entered when you created the VM.
 
 1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. If you receive a certificate warning, select **Yes** or **Continue**.
 
-1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
+1. Once the VM desktop appears, minimize it to go back to your local desktop.  
 
-## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Privátní přístup k účtu Azure Cosmos z virtuálního počítače
+## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Access the Azure Cosmos account privately from the VM
 
-V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátního koncového bodu. 
+In this section, you will connect privately to the Azure Cosmos account using the Private Endpoint. 
 
 > [!IMPORTANT]
-> Konfigurace DNS pro účet Azure Cosmos potřebuje ruční změnu v souboru Hosts, aby zahrnovala plně kvalifikovaný název domény konkrétního účtu. V produkčních scénářích nakonfigurujete server DNS na používání privátních IP adres. Pro účely ukázky ale můžete použít oprávnění správce na virtuálním počítači a upravit soubor `c:\Windows\System32\Drivers\etc\hosts` (ve Windows) nebo soubor `/etc/hosts` (na Linux) tak, aby zahrnoval IP adresu a mapování DNS.
+> The DNS configuration for the Azure Cosmos account needs a manual modification on the hosts file to include the FQDN of the specific account. In production scenarios you will configure the DNS server to use the private IP addresses. However for the demo purpose, you can use administrator permissions on the VM and modify the `c:\Windows\System32\Drivers\etc\hosts` file (on Windows) or `/etc/hosts` file (on Linux) to include the IP address and DNS mapping.
 
-1. Pokud chcete zahrnout IP adresu a mapování DNS, přihlaste se k virtuálnímu počítači *myVM*, otevřete soubor `c:\Windows\System32\Drivers\etc\hosts` a zahrňte informace DNS z předchozího kroku v následujícím formátu:
+1. To include the IP address and DNS mapping, sign into your Virtual machine *myVM*, open the `c:\Windows\System32\Drivers\etc\hosts` file and include the DNS information from previous step in the following format:
 
-   [Privátní IP adresa] [Koncový bod účtu]. Documents. Azure. com
+   [Private IP Address] [Account endpoint].documents.azure.com
 
    **Příklad:**
 
@@ -144,40 +144,40 @@ V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátn�
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. Ve vzdálené ploše *myVM*nainstalujte [Průzkumník služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
+1. In the Remote Desktop of *myVM*, install [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
 
-1. Kliknutím pravým tlačítkem myši vyberte **Cosmos DB účty (Preview)** .
+1. Select **Cosmos DB Accounts (Preview)** with the right-click.
 
-1. Vyberte **připojit k Cosmos DB**.
+1. Select **Connect to Cosmos DB**.
 
 1. Vyberte **Rozhraní API**.
 
-1. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
+1. Enter the connection string by pasting the information previously copied.
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 
 1. Vyberte **Connect** (Připojit).
 
-1. Procházejte databáze a kontejnery Azure Cosmos z *mycosmosaccount*.
+1. Browse the Azure Cosmos databases and containers from *mycosmosaccount*.
 
-1. (Volitelně) přidejte nové položky do *mycosmosaccount*.
+1. (Optionally) add new items to *mycosmosaccount*.
 
-1. Zavřete připojení ke vzdálené ploše pro *myVM*.
+1. Close the remote desktop connection to *myVM*.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete hotovi s použitím privátního koncového bodu, účtu Azure Cosmos a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
+When you're done using the Private Endpoint, Azure Cosmos account and the VM, delete the resource group and all of the resources it contains: 
 
-1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* .
+1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
 
 1. Vyberte **Odstranit skupinu prostředků**.
 
-1. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**.
+1. Enter *myResourceGroup* for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili virtuální počítač ve virtuální síti, účtu Azure Cosmos a privátním koncovém bodu. Připojili jste se k virtuálnímu počítači z Internetu a bezpečně komunikovali s účtem Azure Cosmos pomocí privátního odkazu.
+In this article, you created a VM on a virtual network, an Azure Cosmos account and a Private Endpoint. You connected to the VM from the internet and securely communicated to the Azure Cosmos account using Private Link.
 
-* Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).
+* To learn more about Private Endpoint, see [What is Azure Private Endpoint?](private-endpoint-overview.md).
 
-* Pokud chcete získat další informace o omezení privátního koncového bodu při použití s Azure Cosmos DB, přečtěte si článek [privátní odkaz na Azure s článkem Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) .
+* To learn more about limitation of Private Endpoint when using with Azure Cosmos DB, see [Azure Private Link with Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) article.

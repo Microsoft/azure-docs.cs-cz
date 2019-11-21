@@ -1,91 +1,91 @@
 ---
-title: Správa připojení privátního koncového bodu v Azure
-description: Naučte se spravovat připojení privátních koncových bodů v Azure.
+title: Manage a Private Endpoint connection in Azure
+description: Learn how to manage private endpoint connections in Azure
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104639"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232536"
 ---
-# <a name="manage-a-private-endpoint-connection"></a>Správa připojení privátního koncového bodu
-Privátní propojení Azure pracuje na modelu toku volání schválení, kde příjemce služby privátního propojení může požádat o připojení k poskytovateli služeb za účelem využívání služby. Poskytovatel služeb se pak může rozhodnout, jestli chcete, aby se příjemce mohl připojit nebo ne. Privátní propojení Azure umožňuje poskytovatelům služeb spravovat připojení privátního koncového bodu na svých prostředcích. Tento článek poskytuje informace o tom, jak spravovat připojení privátního koncového bodu.
+# <a name="manage-a-private-endpoint-connection"></a>Manage a Private Endpoint connection
+Azure Private Link works on an approval call flow model wherein the Private Link service consumer can request a connection to the service provider for consuming the service. The service provider can then decide whether to allow the consumer to connect or not. Azure Private Link enables the service providers to manage the private endpoint connection on their resources. This article provides instructions about how to manage the Private Endpoint connections.
 
-![Správa privátních koncových bodů](media/manage-private-endpoint/manage-private-endpoint.png)
+![Manage Private Endpoints](media/manage-private-endpoint/manage-private-endpoint.png)
 
-Existují dvě metody schvalování připojení, ze kterých může příjemce služby privátního propojení vybírat:
-- **Automaticky**: Pokud má příjemce služby oprávnění RBAC u prostředku poskytovatele služeb, může příjemce zvolit metodu automatického schvalování. V takovém případě, když požadavek dosáhne prostředku poskytovatele služeb, není od poskytovatele služeb vyžadována žádná akce a připojení je automaticky schváleno. 
-- **Ruční**: V opačném případě, pokud nemá uživatel služby oprávnění RBAC u prostředku poskytovatele služeb, může příjemce zvolit metodu ručního schválení. V takovém případě se žádost o připojení zobrazí v části prostředky služby jako **nevyřízená**. Aby bylo možné navázat spojení, musí poskytovatel služeb požadavek ručně schválit. V manuálních případech může příjemce služby také určit zprávu s žádostí o poskytnutí kontextu poskytovateli služeb. Poskytovatel služeb nabízí následující možnosti, ze kterých si můžete vybrat pro všechna připojení privátních koncových bodů: **Schváleno**, **zamítnutí**, **Odebrání**.
+There are two connection approval methods that a Private Link service consumer can choose from:
+- **Automatic**: If the service consumer has RBAC permissions on the service provider resource, the consumer can choose the automatic approval method. In this case, when the request reaches the service provider resource, no action is required from the service provider and the connection is automatically approved. 
+- **Manual**: On the contrary, if the service consumer doesn’t have RBAC permissions on the service provider resource, the consumer can choose the manual approval method. In this case, the connection request appears on the service resources as **Pending**. The service provider has to manually approve the request before connections can be established. In manual cases, service consumer can also specify a message with the request to provide more context to the service provider. The service provider has following options to choose from for all Private Endpoint connections: **Approved**, **Reject**, **Remove**.
 
-V níže uvedené tabulce jsou uvedeny různé akce poskytovatele služeb a výsledné stavy připojení pro soukromé koncové body.  Poskytovatel služeb může také později změnit stav připojení privátního koncového bodu bez zásahu uživatele. Akce aktualizuje stav koncového bodu na straně spotřebitele. 
+The below table shows the various service provider actions and the resulting connection states for Private Endpoints.  The service provider can also change the connection state of private endpoint connection at a later time without consumer intervention. The action will update the state of the endpoint on the consumer side. 
 
 
-|Akce poskytovatele služeb   |Stav privátního koncového bodu příjemce služby   |Popis   |
+|Service Provider Action   |Service Consumer Private Endpoint State   |Popis   |
 |---------|---------|---------|
-|Žádné    |    Čekající na vyřízení     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu.       |
-|Schválit    |  Schválené       |  Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití.     |
-|Odmítnout     | Zamítnuto        | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu.        |
-|odebrat    |  Odpojení       | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění.        |
+|Žádné    |    Čekající na vyřízení     |    Connection is created manually and is pending for approval by the Private Link resource owner.       |
+|Schválení    |  Schválené       |  Connection was automatically or manually approved and is ready to be used.     |
+|Odmítnout     | Rejected        | Connection was rejected by the private link resource owner.        |
+|Odebrat    |  Disconnected       | Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean up.        |
 |   |         |         |
    
-## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Správa připojení privátního koncového bodu na PaaSch prostředcích Azure
-Portál je upřednostňovanou metodou správy připojení privátních koncových bodů v prostředcích Azure PaaS. V současné době neposkytujeme podporu PowerShellu/CLI pro správu připojení k prostředkům Azure PaaS.
+## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Manage Private Endpoint Connections on Azure PaaS resources
+Portal is the preferred method for managing private endpoint connections on Azure PaaS resources. Currently, we don’t have PowerShell/CLI support for managing connections on Azure PaaS resources.
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-2. Přejděte do centra privátních odkazů.
-3. V části **prostředky**vyberte typ prostředku, pro který chcete spravovat připojení privátního koncového bodu.
-4. Pro každý typ prostředku můžete zobrazit počet připojení privátního koncového bodu, která jsou k němu přidružená. Prostředky můžete podle potřeby filtrovat.
-5. Vyberte připojení privátního koncového bodu.  V seznamu připojení vyberte připojení, které chcete spravovat. 
-6. Stav připojení můžete změnit výběrem z možností v horní části.
+2. Navigate to Private Link Center.
+3. Under **Resources**, select the resource type you want to manage the private endpoint connections.
+4. For each of your resource type, you can view the number of Private Endpoint Connections associated with it. You can filter the resources as needed.
+5. Select the private endpoint connections.  Under the connections listed, select the connection that you want to manage. 
+6. You can change the state of the connection by selecting from the options at the top.
 
-## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Správa připojení privátního koncového bodu u zákazníka nebo partnera, který je vlastníkem privátního propojení
+## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Manage Private Endpoint connections on a customer/partner owned Private Link service
 
-Azure PowerShell a Azure CLI jsou preferované metody pro správu připojení privátních koncových bodů k partnerským službám Microsoftu nebo službám vlastněných zákazníky. V současné době nemáme žádná podpora portálu pro správu připojení ve službě privátních odkazů.  
+Azure PowerShell and Azure CLI are the preferred methods for managing Private Endpoint connections on Microsoft Partner Services or customer owned services. Currently, we don’t have any portal support for managing connections on a Private Link service.  
  
 ### <a name="powershell"></a>PowerShell 
   
-Ke správě připojení privátních koncových bodů použijte následující příkazy PowerShellu.  
-#### <a name="get-private-link-connection-states"></a>Získat stavy připojení privátního propojení 
-`Get-AzPrivateLinkService` Pomocí rutiny můžete získat připojení privátního koncového bodu a jejich stavy.  
+Use the following PowerShell commands to manage private endpoint connections.  
+#### <a name="get-private-link-connection-states"></a>Get Private Link connection states 
+Use the `Get-AzPrivateLinkService` cmdlet to get the Private Endpoint connections and their states.  
 ```azurepowershell
 Get-AzPrivateLinkService -Name myPrivateLinkService -ResourceGroupName myResourceGroup 
  ```
  
-#### <a name="approve-a-private-endpoint-connection"></a>Schválení připojení privátního koncového bodu 
+#### <a name="approve-a-private-endpoint-connection"></a>Approve a Private Endpoint connection 
  
-`Approve-AzPrivateEndpointConnection` Pomocí rutiny schválíte připojení privátního koncového bodu. 
+Use the `Approve-AzPrivateEndpointConnection` cmdlet to approve a Private Endpoint connection. 
  
 ```azurepowershell
 Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService
 ```
  
-#### <a name="deny-private-endpoint-connection"></a>Odepřít připojení privátního koncového bodu 
+#### <a name="deny-private-endpoint-connection"></a>Deny Private Endpoint connection 
  
-`Deny-AzPrivateEndpointConnection` Pomocí rutiny odmítnete připojení privátního koncového bodu. 
+Use the `Deny-AzPrivateEndpointConnection` cmdlet to reject a Private Endpoint connection. 
 ```azurepowershell
 Deny-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService 
 ```
-#### <a name="remove-private-endpoint-connection"></a>Odebrat připojení privátního koncového bodu 
+#### <a name="remove-private-endpoint-connection"></a>Remove Private Endpoint Connection 
  
-`Remove-AzPrivateEndpointConnection` Pomocí rutiny odeberte připojení privátního koncového bodu. 
+Use the `Remove-AzPrivateEndpointConnection` cmdlet to remove a Private Endpoint connection. 
 ```azurepowershell
 Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkServiceName 
 ```
  
 ### <a name="azure-cli"></a>Azure CLI 
  
-Používá `az network private-link-service update` se ke správě připojení privátního koncového bodu. Stav připojení je zadán v ```azurecli connection-status``` parametru. 
+Use `az network private-link-service update` for managing your Private Endpoint connections. The connection state is specified in the ```azurecli connection-status``` parameter. 
 ```azurecli
 az network private-link-service connection update -g myResourceGroup -n myPrivateEndpointConnection1 --service-name myPLS --connection-status Approved 
 ```
 
    
 
-## <a name="next-steps"></a>Další postup
-- [Informace o privátních koncových bodech](private-endpoint-overview.md)
+## <a name="next-steps"></a>Další kroky
+- [Learn about Private Endpoints](private-endpoint-overview.md)
  

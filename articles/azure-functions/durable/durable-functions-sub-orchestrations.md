@@ -1,31 +1,26 @@
 ---
-title: Dílčí orchestrace pro Durable Functions – Azure
-description: Jak volat orchestrace z orchestrace v rozšíření Durable Functions pro Azure Functions.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Sub-orchestrations for Durable Functions - Azure
+description: How to call orchestrations from orchestrations in the Durable Functions extension for Azure Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: cf160b767ee82701bad4c88d3b83951a3b875296
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 379f2cb238aef08faba8dd3c8e5d9da4542a1867
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614649"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231294"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dílčí orchestrace v Durable Functions (Azure Functions)
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Sub-orchestrations in Durable Functions (Azure Functions)
 
-Kromě volání funkcí aktivity mohou funkce Orchestrator volat jiné funkce nástroje Orchestrator. Například můžete vytvořit větší orchestraci z knihovny menších funkcí nástroje Orchestrator. Nebo můžete souběžně spustit více instancí funkce nástroje Orchestrator.
+In addition to calling activity functions, orchestrator functions can call other orchestrator functions. For example, you can build a larger orchestration out of a library of smaller orchestrator functions. Or you can run multiple instances of an orchestrator function in parallel.
 
-Funkce Orchestrator může volat další funkci Orchestrator pomocí `CallSubOrchestratorAsync` nebo `CallSubOrchestratorWithRetryAsync` metod v rozhraní .NET nebo `callSubOrchestrator` nebo `callSubOrchestratorWithRetry`ch metod v JavaScriptu. Další informace o automatickém opakování najdete v článku o [zpracování chyb & kompenzaci](durable-functions-error-handling.md#automatic-retry-on-failure) .
+An orchestrator function can call another orchestrator function using the `CallSubOrchestratorAsync` or the `CallSubOrchestratorWithRetryAsync` methods in .NET, or the `callSubOrchestrator` or `callSubOrchestratorWithRetry` methods in JavaScript. The [Error Handling & Compensation](durable-functions-error-handling.md#automatic-retry-on-failure) article has more information on automatic retry.
 
-Funkce dílčího nástroje Orchestrator se chovají stejně jako funkce aktivity z perspektivy volajícího. Mohou vracet hodnotu, vyvolat výjimku a může být očekávána nadřazenou funkcí Orchestrator. 
-## <a name="example"></a>Příklad
+Sub-orchestrator functions behave just like activity functions from the caller's perspective. They can return a value, throw an exception, and can be awaited by the parent orchestrator function. 
+## <a name="example"></a>Příklad:
 
-Následující příklad znázorňuje scénář IoT ("Internet věcí"), kde je více zařízení, které je třeba zřídit. Následující funkce představuje pracovní postup zřizování, který je třeba spustit pro každé zařízení:
+The following example illustrates an IoT ("Internet of Things") scenario where there are multiple devices that need to be provisioned. The following function represents the provisioning workflow that needs to be executed for each device:
 
 ### <a name="c"></a>C#
 
@@ -48,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -69,9 +64,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Tato funkce Orchestrator se dá použít jako pro jednorázové zřizování zařízení nebo může být součástí větší orchestrace. V druhém případě může nadřazená funkce Orchestrator naplánovat instance `DeviceProvisioningOrchestration` pomocí rozhraní API `CallSubOrchestratorAsync` (.NET) nebo `callSubOrchestrator` (JavaScript).
+This orchestrator function can be used as-is for one-off device provisioning or it can be part of a larger orchestration. In the latter case, the parent orchestrator function can schedule instances of `DeviceProvisioningOrchestration` using the `CallSubOrchestratorAsync` (.NET) or `callSubOrchestrator` (JavaScript) API.
 
-Tady je příklad, který ukazuje, jak paralelně spustit více funkcí nástroje Orchestrator.
+Here is an example that shows how to run multiple orchestrator functions in parallel.
 
 ### <a name="c"></a>C#
 
@@ -97,9 +92,9 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -124,9 +119,9 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Dílčí orchestrace musí být definovaná ve stejné aplikaci Function App jako nadřazená orchestrace. Pokud potřebujete zavolat a počkat na orchestraci v jiné aplikaci Function App, zvažte použití integrované podpory rozhraní HTTP API a vzoru příjemce cyklického dotazování HTTP 202. Další informace najdete v tématu [funkce protokolu HTTP](durable-functions-http-features.md) .
+> Sub-orchestrations must be defined in the same function app as the parent orchestration. If you need to call and wait for orchestrations in another function app, consider using the built-in support for HTTP APIs and the HTTP 202 polling consumer pattern. For more information, see the [HTTP Features](durable-functions-http-features.md) topic.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přečtěte si, jak nastavit vlastní stav orchestrace.](durable-functions-custom-orchestration-status.md)
+> [Learn how to set a custom orchestration status](durable-functions-custom-orchestration-status.md)

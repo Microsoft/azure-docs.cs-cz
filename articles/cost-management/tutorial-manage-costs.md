@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: b72e03f6901fbb2b904328992107e31021c76be6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969124"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229806"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Kurz: Správa nákladů pomocí Cloudyn
 
@@ -23,7 +23,7 @@ Ve službě Cloudyn spravujete náklady a vytváříte sestavy metody showback p
 
 Například si můžete chtít nechat uhradit náklady na vytváření. Musíte být schopni svému technickému týmu ukázat, že potřebujete konkrétní částku v závislosti na nákladech na prostředky. Můžete jim ukázat sestavu všech spotřebovaných prostředků označených značkou *engineering* (vytváření).
 
-V tomto článku se značky a kategorie někdy používají jako synonyma. Kategorie jsou rozsáhlé kolekce, které mohou představovat spoustu věcí. Mohou sem patřit obchodní jednotky, nákladová centra, webové služby nebo cokoli, co je opatřené značkou. Značky jsou páry název/hodnota, které umožňují kategorizovat prostředky a umožňuje zobrazit a spravovat konsolidovat informace o fakturaci použitím stejné značky na více prostředků a skupin prostředků. Ve starších verzích webu Azure Portal se *název značky* označoval jako *klíč*. Značky se vytvářejí pro jedno předplatné Azure, ve kterém jsou uložené. V AWS se značky skládají z dvojic klíč/hodnota. Protože v Azure i AWS se používá termín *klíč*, používá tento termín také Cloudyn. Správce kategorií používá klíče (názvy značek) ke sloučení značek.
+V tomto článku se značky a kategorie někdy používají jako synonyma. Kategorie jsou rozsáhlé kolekce, které mohou představovat spoustu věcí. Mohou sem patřit obchodní jednotky, nákladová centra, webové služby nebo cokoli, co je opatřené značkou. Tags are name/value pairs that enable you to categorize resources and to view and manage consolidated billing information by applying the same tag to multiple resources and resource groups. Ve starších verzích webu Azure Portal se *název značky* označoval jako *klíč*. Značky se vytvářejí pro jedno předplatné Azure, ve kterém jsou uložené. V AWS se značky skládají z dvojic klíč/hodnota. Protože v Azure i AWS se používá termín *klíč*, používá tento termín také Cloudyn. Správce kategorií používá klíče (názvy značek) ke sloučení značek.
 
 V tomto kurzu se naučíte:
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít účet Azure.
 - Musíte mít buď zaregistrovanou zkušební verzi, nebo placené předplatné Cloudyn.
@@ -51,13 +51,13 @@ Mějte na paměti, že informace o značkách se u těchto prostředků nezobraz
 
 Když začnete s přidělováním nákladů, první věc, kterou je potřeba udělat, je definovat rozsah s použitím modelu nákladů. Model nákladů náklady nemění, ale distribuuje je. Při vytváření modelu nákladů rozdělíte svá data podle entity nákladů, účtu nebo předplatného a několika značek. Mezi běžné příklady značek může patřit kód pro fakturaci, nákladové středisko nebo název skupiny. Značky pomáhají také provádět showback a chargeback do jiných částí organizace.
 
-Pokud chcete vytvořit vlastní model přidělování nákladů, vyberte v nabídce sestavy **Costs (Náklady)** &gt; **Cost Management (Správa nákladů)** &gt; **Cost Allocation 360° (360° přidělování nákladů)**.
+Pokud chcete vytvořit vlastní model přidělování nákladů, vyberte v nabídce sestavy **Costs (Náklady)** &gt; **Cost Management (Správa nákladů)** &gt; **Cost Allocation 360° (360° přidělování nákladů)** .
 
-![Příklad zobrazující řídicí panel, kde vyberete Cost Allocation 360](./media/tutorial-manage-costs/cost-allocation-360.png)
+![Example showing a dashboard where you select Cost Allocation 360](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 Na stránce **Cost Allocation 360°** (360° přidělování nákladů) vyberte **Add** (Přidat) a pak zadejte název a popis modelu nákladů. Vyberte všechny účty nebo jednotlivé účty. Pokud chcete použít jednotlivé účty, můžete vybrat několik účtů od několika poskytovatelů cloudových služeb. Dále klikněte na **Categorization** (Kategorizace) a ze zjištěných značek zvolte ty, které kategorizují vaše data nákladů. Zvolte značky (kategorie), které chcete zahrnout do svého modelu. V následujícím příkladu je vybraná značka **Unit** (Jednotka).
 
-![Kategorizace modelu nákladů zobrazující příklad](./media/tutorial-manage-costs/cost-model01.png)
+![Example showing cost model categorization](./media/tutorial-manage-costs/cost-model01.png)
 
 Příklad ukazuje, že 19 680 USD není zařazeno do kategorií (nemá značku).
 
@@ -87,15 +87,15 @@ V seznamu modelů nákladů se zobrazí váš nový model nákladů a jeho **Pro
 
 Category Manager (Správce kategorií) je nástroj pro čištění dat, který pomáhá slučováním hodnot v několika kategoriích (značkách) vytvářet nové kategorie. Je to jednoduchý nástroj založený na pravidlech, ve kterém vyberete kategorii a vytvoříte pravidla pro sloučení stávajících hodnot. Například můžete mít existující kategorie **R&amp;D** a **dev**, které obě představují vývojovou skupinu.
 
-Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte možnost **Category Manager** (Správce kategorií). Pokud chcete vytvořit novou kategorii, vyberte symbol plus (**+**). Zadejte název kategorie a pak v části **Keys** (Klíče) zadejte klíče kategorií, které chcete do nové kategorie zahrnout.
+Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte možnost **Category Manager** (Správce kategorií). Pokud chcete vytvořit novou kategorii, vyberte symbol plus ( **+** ). Zadejte název kategorie a pak v části **Keys** (Klíče) zadejte klíče kategorií, které chcete do nové kategorie zahrnout.
 
-Při definování pravidla můžete přidat více hodnot s použitím podmínky OR. Můžete také provádět několik základních operací s řetězci. V každém případě klikněte na symbol tří teček (**...**) napravo od položky **Rule** (Pravidlo).
+Při definování pravidla můžete přidat více hodnot s použitím podmínky OR. Můžete také provádět několik základních operací s řetězci. V každém případě klikněte na symbol tří teček ( **...** ) napravo od položky **Rule** (Pravidlo).
 
 Pokud chcete definovat nové pravidlo, v oblasti **Rules** (Pravidla) vytvořte nové pravidlo. Zadejte například **dev** v části **Rules** (Pravidla) a pak zadejte **R&amp;D** v části **Actions** (Akce). Jakmile budete hotovi, uložte novou kategorii.
 
 Následující obrázek ukazuje příklad pravidel vytvořených pro novou kategorii **Work-Load**:
 
-![Příklad zobrazující novou kategorii pracovní zátěže](./media/tutorial-manage-costs/category01.png)
+![Example showing the new work-load category](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Označování zdrojů a sestav
 
@@ -107,9 +107,9 @@ Data značek, která se zobrazují v sestavách Cloudyn, pocházejí ze tří m�
     - Značky entit Cloudyn – uživatelsky definovaná metadata použitá na entity Cloudyn.
     - Category Manager (Správce kategorií) – nástroj pro čištění dat, který vytváří nové značky na základě pravidel použitých na existující značky.
 
-Pokud chcete v sestavách nákladů Cloudyn zobrazit značky poskytovatele cloudu, musíte vytvořit vlastní model přidělování nákladů pomocí možnosti Cost Allocation 360° (360° přidělování nákladů). Uděláte to tak, že přejdete na **Costs (Náklady)** > **Cost Management (Správa nákladů)** > **Cost Allocation 360 (360° přidělování nákladů)**, vyberete požadované značky a pak definujete pravidla pro nakládání s neoznačenými náklady. Pak vytvořte nový model nákladů. Následně můžete podle značek prostředků Azure zobrazit, filtrovat a řadit sestavy v části Cost Allocation Analysis (Analýza přidělování nákladů).
+Pokud chcete v sestavách nákladů Cloudyn zobrazit značky poskytovatele cloudu, musíte vytvořit vlastní model přidělování nákladů pomocí možnosti Cost Allocation 360° (360° přidělování nákladů). Uděláte to tak, že přejdete na **Costs (Náklady)**  > **Cost Management (Správa nákladů)**  > **Cost Allocation 360 (360° přidělování nákladů)** , vyberete požadované značky a pak definujete pravidla pro nakládání s neoznačenými náklady. Pak vytvořte nový model nákladů. Následně můžete podle značek prostředků Azure zobrazit, filtrovat a řadit sestavy v části Cost Allocation Analysis (Analýza přidělování nákladů).
 
-Značky prostředků Azure se zobrazují jen v sestavách **Costs (Náklady)** > **Cost Allocation Analysis (Analýza přidělování nákladů)**.
+Značky prostředků Azure se zobrazují jen v sestavách **Costs (Náklady)**  > **Cost Allocation Analysis (Analýza přidělování nákladů)** .
 
 Značky fakturace poskytovatele cloudu se zobrazí ve všech sestavách nákladů.
 
@@ -122,14 +122,14 @@ Metody, pomocí kterých organizace provádějí showback a chargeback, se výra
 
 Pokud chcete zobrazit výsledky přidělování nákladů, otevřete sestavu analýzy nákladů a vyberte model nákladů, který jste vytvořili. Pak přidejte seskupení podle jedné nebo několika značek vybraných v modelu nákladů.
 
-![Sestava analýzy nákladů ukazuje příklad data z nového nákladů](./media/tutorial-manage-costs/cost-analysis.png)
+![Cost Analysis report showing an example of data from the new cost](./media/tutorial-manage-costs/cost-analysis.png)
 
 Můžete snadno vytvářet a ukládat sestavy zaměřené na konkrétní služby spotřebované konkrétními skupinami. Například můžete mít oddělení, které ve velké míře využívá virtuální počítače Azure. Můžete vytvořit sestavu s filtrem na virtuální počítače Azure, ve které se zobrazí spotřeba a náklady.
 
 Pokud potřebujete poskytnout data snímků jiným týmům, můžete jakoukoli sestavu exportovat ve formátu PDF nebo CSV.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

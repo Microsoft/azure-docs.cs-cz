@@ -1,65 +1,64 @@
 ---
-title: Načtení metrik pomocí REST API
-titlesuffix: Azure Load Balancer
-description: Pomocí rozhraní Azure REST API můžete shromažďovat metriky stavu a využití pro Load Balancer pro určitý rozsah času a data.
+title: Retrieve metrics with the REST API
+titleSuffix: Azure Load Balancer
+description: In this article, get started using the Azure REST APIs to collect health and usage metrics for Azure Load Balancer.
 services: sql-database
 author: asudbring
-ms.reviewer: routlaw
-manager: jeconnoc
+manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 0d12dc04aff58dd6273d8d29d422bdbd9e7c886b
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274524"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225246"
 ---
-# <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Získat metriky využití Load Balancer pomocí REST API
+# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Get Load Balancer usage metrics using the REST API
 
-Tento postup ukazuje, jak shromáždit počet bajtů zpracovaných [Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) po dobu v časovém intervalu pomocí [REST API Azure](/rest/api/azure/).
+Collect the number of bytes processed by a [Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) for an interval of time using the [Azure REST API](/rest/api/azure/).
 
-Kompletní Referenční dokumentace a další ukázky pro REST API jsou k dispozici v [Referenční příručce Azure monitor REST](/rest/api/monitor). 
+Complete reference documentation and additional samples for the REST API are available in the [Azure Monitor REST reference](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Žádost o sestavení
+## <a name="build-the-request"></a>Sestavení požadavku
 
-K shromáždění [metriky byteCount](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) z Standard Load Balancer použijte následující požadavek GET. 
+Use the following GET request to collect the [ByteCount metric](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) from a Standard Load Balancer. 
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=ByteCount&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
 ```
 
-### <a name="request-headers"></a>Hlavičky požadavku
+### <a name="request-headers"></a>Request headers
 
 Jsou vyžadovány následující hlavičky: 
 
-|Hlavička žádosti|Popis|  
+|Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Povinný parametr. Nastavte na `application/json`.|  
-|*Authorization:*|Povinný parametr. Nastavte na platný `Bearer` [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Authorization:*|Povinná hodnota. Nastavte na platný [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |  
 
-### <a name="uri-parameters"></a>Parametry identifikátoru URI
+### <a name="uri-parameters"></a>URI parameters
 
-| Name | Popis |
+| Name (Název) | Popis |
 | :--- | :---------- |
-| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)předplatnými. |
-| resourceGroupName | Název skupiny prostředků, která obsahuje prostředek. Tuto hodnotu můžete získat z rozhraní Azure Resource Manager API, CLI nebo na portálu. |
-| loadBalancerName | Název Azure Load Balancer. |
-| metricnames | Čárkami oddělený seznam platných [metrik Load Balancer](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| api-version | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje verzi `2018-01-01`rozhraní API, která je součástí výše uvedené adresy URL.  |
-| TimeSpan | Časové rozpětí dotazu. Jedná se o řetězec s následujícím formátem `startDateTime_ISO/endDateTime_ISO`. Tento volitelný parametr je nastaven tak, aby v příkladu vrátil data o hodnotě dne. |
+| subscriptionId | The subscription ID that identifies an Azure subscription. If you have multiple subscriptions, see [Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| resourceGroupName | The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API, CLI, or the portal. |
+| loadBalancerName | The name of the Azure Load Balancer. |
+| metric names | Comma-separated list of valid  [Load Balancer metrics](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| api-version | The API version to use for the request.<br /><br /> This document covers api-version `2018-01-01`, included in the above URL.  |
+| timespan | The timespan of the query. It's a string with the following format `startDateTime_ISO/endDateTime_ISO`. This optional parameter is set to return a day's worth of data in the example. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Text požadavku
 
-Pro tuto operaci není nutný žádný text žádosti.
+No request body is needed for this operation.
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-Po úspěšném vrácení seznamu hodnot metriky se vrátí stavový kód 200. V [referenční dokumentaci](/rest/api/monitor/metrics/list#errorresponse)je dostupný úplný seznam chybových kódů.
+Status code 200 is returned when the list of metric values is returned successfully. A full list of error codes is available in the [reference documentation](/rest/api/monitor/metrics/list#errorresponse).
 
 ## <a name="example-response"></a>Příklad odpovědi 
 

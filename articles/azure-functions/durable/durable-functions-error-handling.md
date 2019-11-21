@@ -1,32 +1,27 @@
 ---
-title: Zpracování chyb v Durable Functions – Azure
-description: Naučte se zpracovávat chyby v rozšíření Durable Functions pro Azure Functions.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Handling errors in Durable Functions - Azure
+description: Learn how to handle errors in the Durable Functions extension for Azure Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: adc23cad4ad7c55ce81096b1550520c496f744c1
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 0900e3f3b76f4a82e06fe3c0e6d9bbe63b545f56
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614875"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231409"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Handling errors in Durable Functions (Azure Functions)
 
-Trvalé orchestrace funkcí je implementována v kódu a může používat integrované funkce pro zpracování chyb v programovacím jazyce. V některých nových konceptech nemusíte se učit, jak přidat zpracování chyb a kompenzace do orchestrace. Existuje však několik chování, o kterých byste měli vědět.
+Durable Function orchestrations are implemented in code and can use the programming language's built-in error-handling features. There really aren't any new concepts you need to learn to add error handling and compensation into your orchestrations. However, there are a few behaviors that you should be aware of.
 
-## <a name="errors-in-activity-functions"></a>Chyby v aktivitách funkcí
+## <a name="errors-in-activity-functions"></a>Errors in activity functions
 
-Veškerá výjimka, která je vyvolána ve funkci aktivity, je zařazena zpět do funkce Orchestrator a vyvolána jako `FunctionFailedException`. Můžete zapsat zpracování chyb a kód kompenzace, který vyhovuje vašim potřebám ve funkci Orchestrator.
+Any exception that is thrown in an activity function is marshaled back to the orchestrator function and thrown as a `FunctionFailedException`. You can write error handling and compensation code that suits your needs in the orchestrator function.
 
-Zvažte například následující funkci Orchestrator, která přenáší prostředky z jednoho účtu na jiný:
+For example, consider the following orchestrator function that transfers funds from one account to another:
 
-### <a name="precompiled-c"></a>PředkompilovanéC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -64,7 +59,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#Pravidel
+### <a name="c-script"></a>C# Script
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -104,9 +99,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -142,13 +137,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Pokud se první volání funkce **CreditAccount** nepovede, funkce Orchestrator se kompenzuje tím, že se prostředky přepíší kreditem zpět na zdrojový účet.
+If the first **CreditAccount** function call fails, the orchestrator function compensates by crediting the funds back to the source account.
 
-## <a name="automatic-retry-on-failure"></a>Automaticky opakovat při selhání
+## <a name="automatic-retry-on-failure"></a>Automatic retry on failure
 
-Při volání funkcí aktivity nebo funkcí dílčí orchestrace můžete zadat zásady automatického opakování. Následující příklad se pokusí zavolat funkci až třikrát a počkat 5 sekund mezi jednotlivými pokusy:
+When you call activity functions or sub-orchestration functions, you can specify an automatic retry policy. The following example attempts to call a function up to three times and waits 5 seconds between each retry:
 
-### <a name="precompiled-c"></a>PředkompilovanéC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -164,7 +159,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#Pravidel
+### <a name="c-script"></a>C# Script
 
 ```csharp
 public static async Task Run(IDurableOrchestrationContext context)
@@ -180,9 +175,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -196,22 +191,22 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Rozhraní API pro `CallActivityWithRetryAsync` (.NET) nebo `callActivityWithRetry` (JavaScript) přebírá parametr `RetryOptions`. Volání dílčí orchestrace pomocí rozhraní API `CallSubOrchestratorWithRetryAsync` (.NET) nebo `callSubOrchestratorWithRetry` (JavaScript) může použít stejné zásady opakování.
+The `CallActivityWithRetryAsync` (.NET) or `callActivityWithRetry` (JavaScript) API takes a `RetryOptions` parameter. Sub-orchestration calls using the `CallSubOrchestratorWithRetryAsync` (.NET) or `callSubOrchestratorWithRetry` (JavaScript) API can use these same retry policies.
 
-K dispozici je několik možností přizpůsobení zásady automatického opakování:
+There are several options for customizing the automatic retry policy:
 
-* **Maximální počet pokusů**: maximální počet opakovaných pokusů.
-* **Interval prvního opakování**: doba, po kterou se má čekat před prvním pokusem.
-* **Omezení rychlostiický koeficient**: koeficient použitý k určení míry zvýšení omezení rychlosti. Výchozí hodnota je 1.
-* **Maximální interval opakování**: maximální doba, po kterou se má čekat mezi opakovanými pokusy.
-* **Časový limit opakování**: maximální doba, po kterou se stráví opakované pokusy. Výchozí chování je opakovat po neomezenou dobu.
-* **Popisovač**: pro určení, zda má být funkce opakována, lze určit uživatelem definované zpětné volání.
+* **Max number of attempts**: The maximum number of retry attempts.
+* **First retry interval**: The amount of time to wait before the first retry attempt.
+* **Backoff coefficient**: The coefficient used to determine rate of increase of backoff. Defaults to 1.
+* **Max retry interval**: The maximum amount of time to wait in between retry attempts.
+* **Retry timeout**: The maximum amount of time to spend doing retries. The default behavior is to retry indefinitely.
+* **Handle**: A user-defined callback can be specified to determine whether a function should be retried.
 
-## <a name="function-timeouts"></a>Vypršení časových limitů funkcí
+## <a name="function-timeouts"></a>Function timeouts
 
-Je možné, že budete chtít opustit volání funkce ve funkci Orchestrator, pokud dokončení trvá příliš dlouho. Vhodným způsobem, jak to provést dnes, je vytvoření [trvalého časovače](durable-functions-timers.md) pomocí `context.CreateTimer` (.NET) nebo `context.df.createTimer` (JavaScript) ve spojení s `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript), jako v následujícím příkladu:
+You might want to abandon a function call within an orchestrator function if it's taking too long to complete. The proper way to do this today is by creating a [durable timer](durable-functions-timers.md) using `context.CreateTimer` (.NET) or `context.df.createTimer` (JavaScript) in conjunction with `Task.WhenAny` (.NET) or `context.df.Task.any` (JavaScript), as in the following example:
 
-### <a name="precompiled-c"></a>PředkompilovanéC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -241,7 +236,7 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 }
 ```
 
-### <a name="c-script"></a>C#Pravidel
+### <a name="c-script"></a>C# Script
 
 ```csharp
 public static async Task<bool> Run(IDurableOrchestrationContext context)
@@ -271,9 +266,9 @@ public static async Task<bool> Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -298,16 +293,16 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Tento mechanismus ve skutečnosti neukončí probíhající zpracování funkce aktivity. Místo toho jednoduše umožňuje, aby funkce Orchestrator ignorovala výsledek a přesunula se na. Další informace najdete v dokumentaci k [časovačům](durable-functions-timers.md#usage-for-timeout) .
+> This mechanism does not actually terminate in-progress activity function execution. Rather, it simply allows the orchestrator function to ignore the result and move on. For more information, see the [Timers](durable-functions-timers.md#usage-for-timeout) documentation.
 
 ## <a name="unhandled-exceptions"></a>Neošetřené výjimky
 
-Pokud funkce Orchestrator dojde k chybě s neošetřenou výjimkou, budou zaprotokolovány podrobnosti o výjimce a instance se dokončí se stavem `Failed`.
+If an orchestrator function fails with an unhandled exception, the details of the exception are logged and the instance completes with a `Failed` status.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o orchestraci externí](durable-functions-eternal-orchestrations.md)
+> [Learn about eternal orchestrations](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak diagnostikovat problémy.](durable-functions-diagnostics.md)
+> [Learn how to diagnose problems](durable-functions-diagnostics.md)

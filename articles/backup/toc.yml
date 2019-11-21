@@ -168,6 +168,12 @@
               href: backup-azure-vms-encryption.md
             - name: Obnovení klíče a tajného kódu pro šifrované virtuální počítače
               href: backup-azure-restore-key-secret.md
+    - name: Diagnostické události pro trezory služby Recovery Services
+      items:
+        - name: Použití nastavení diagnostiky pro trezory služby Recovery Services
+          href: backup-azure-diagnostic-events.md
+        - name: Datový model Log Analytics pro diagnostické události specifické pro prostředek
+          href: backup-azure-log-analytics-new-data-model.md
     - name: Konfigurace sestav Azure Backup
       items:
         - name: Konfigurace sestav Azure Backup

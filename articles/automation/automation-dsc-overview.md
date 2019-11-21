@@ -1,7 +1,7 @@
 ---
-title: Přehled konfigurace stavu Azure Automation
-description: Přehled konfigurace stavu Azure Automation (DSC), jejích pojmů a známých problémů
-keywords: PowerShell DSC, konfigurace požadovaného stavu, PowerShell DSC Azure
+title: Azure Automation State Configuration Overview
+description: An Overview of Azure Automation State Configuration (DSC), its terms, and known issues
+keywords: powershell dsc, desired state configuration, powershell dsc azure
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,94 +10,94 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5ed18f8a8bbd8bd323dec54ca3f700c7ce168dde
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429401"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231634"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
+# <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration Overview
 
-Konfigurace stavu Azure Automation je služba Azure, která umožňuje zapisovat, spravovat a [kompilovat konfigurace požadovaného](/powershell/scripting/dsc/configurations/configurations)stavu prostředí PowerShell, importovat [prostředky DSC](/powershell/scripting/dsc/resources/resources)a přiřazovat konfigurace cílovým uzlům, a to vše v nástroji. cloudu.
+Azure Automation State Configuration is an Azure service that allows you to write, manage, and compile PowerShell Desired State Configuration (DSC) [configurations](/powershell/scripting/dsc/configurations/configurations), import [DSC Resources](/powershell/scripting/dsc/resources/resources), and assign configurations to target nodes, all in the cloud.
 
-## <a name="why-use-azure-automation-state-configuration"></a>Proč používat konfiguraci stavu Azure Automation
+## <a name="why-use-azure-automation-state-configuration"></a>Why use Azure Automation State Configuration
 
-Konfigurace stavu Azure Automation poskytuje několik výhod oproti použití DSC mimo Azure.
+Azure Automation State Configuration provides several advantages over using DSC outside of Azure.
 
-### <a name="built-in-pull-server"></a>Integrovaný server pro vyžádání obsahu
+### <a name="built-in-pull-server"></a>Built-in pull server
 
-Konfigurace stavu Azure Automation poskytuje server vyžádané replikace DSC, který se podobá [funkci Windows DSC-Service](/powershell/scripting/dsc/pull-server/pullserver) , aby cílové uzly automaticky přijímaly konfigurace, splňovaly požadovaný stav a nahlásili zpět na dodržování předpisů. Integrovaný server vyžádané replikace v Azure Automation eliminuje nutnost nastavit a spravovat vlastní server vyžádané replikace. Azure Automation může cílit na virtuální nebo fyzické počítače s Windows nebo Linux, v cloudu i v místním prostředí.
+Azure Automation State Configuration provides a DSC pull server similar to the [Windows Feature DSC-Service](/powershell/scripting/dsc/pull-server/pullserver) so that target nodes automatically receive configurations, conform to the desired state, and report back on their compliance. The built-in pull server in Azure Automation eliminates the need to set up and maintain your own pull server. Azure Automation can target virtual or physical Windows or Linux machines, in the cloud or on-premises.
 
-### <a name="management-of-all-your-dsc-artifacts"></a>Správa všech artefaktů DSC
+### <a name="management-of-all-your-dsc-artifacts"></a>Management of all your DSC artifacts
 
-Konfigurace stavu Azure Automation přináší ke [konfiguraci požadovaného stavu prostředí PowerShell](/powershell/scripting/dsc/overview/overview) stejnou vrstvu správy jako Azure Automation nabídky pro skriptování prostředí PowerShell.
+Azure Automation State Configuration brings the same management layer to [PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) as Azure Automation offers for PowerShell scripting.
 
-Z Azure Portal nebo z PowerShellu můžete spravovat všechny konfigurace DSC, prostředky a cílové uzly.
+From the Azure portal, or from PowerShell, you can manage all your DSC configurations, resources, and target nodes.
 
-![Snímek obrazovky Azure Automation stránky](./media/automation-dsc-overview/azure-automation-blade.png)
+![Screenshot of the Azure Automation page](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-azure-monitor-logs"></a>Importovat data sestavy do protokolů Azure Monitor
+### <a name="import-reporting-data-into-azure-monitor-logs"></a>Import reporting data into Azure Monitor logs
 
-Uzly spravované pomocí konfigurace stavu Azure Automation odesílají podrobné údaje o stavu vytváření sestav na integrovaný server vyžádané replikace. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby odesílala tato data do pracovního prostoru Log Analytics. Informace o tom, jak odeslat údaje o stavu konfigurace stavu do pracovního prostoru Log Analytics, najdete v tématu [předávat data pro sestavy o stavu dopřed Azure Automation do protokolů Azure monitor](automation-dsc-diagnostics.md).
+Nodes that are managed with Azure Automation State Configuration send detailed reporting status data to the built-in pull server. You can configure Azure Automation State Configuration to send this data to your Log Analytics workspace. To learn how to send State Configuration status data to your Log Analytics workspace, see [Forward Azure Automation State Configuration reporting data to Azure Monitor logs](automation-dsc-diagnostics.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Při použití konfigurace stavu Azure Automation (DSC) Vezměte v úvahu následující požadavky.
+Please consider the following requirements when using Azure Automation State Configuration (DSC).
 
-### <a name="operating-system-requirements"></a>Požadavky na operační systém
+### <a name="operating-system-requirements"></a>Operating System Requirements
 
-Pro uzly s Windows se podporují tyto verze:
+For nodes running Windows, the following versions are supported:
 
 - Windows Server 2019
 - Windows Server 2016
-- 2012R2 Windows serveru
+- Windows Server 2012R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
 - Windows 7
 
-SKU samostatného produktového [serveru Microsoft Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci požadovaného stavu konfigurací, takže ji nejde spravovat pomocí prostředí PowerShell DSC nebo konfigurace stavu Azure Automation.
+The [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) standalone product sku does not contain an implementation of Desired State Configuraion so it cannot be managed by PowerShell DSC or Azure Automation State Configuration.
 
-Pro uzly se systémem Linux jsou podporovány následující distribuce/verze:
+For nodes running Linux, the following distros/versions are supported:
 
-Rozšíření DSC pro Linux podporuje všechna distribuce systému Linux uvedená v části [podporovaná distribuce systému Linux](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
+The DSC Linux extension supports all the Linux distributions listed under [Supported Linux Distributions](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
 
-### <a name="dsc-requirements"></a>Požadavky DSC
+### <a name="dsc-requirements"></a>DSC requirements
 
-Pro všechny uzly Windows běžící v Azure se během připojování nainstaluje [WMF 5,1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) .  Pro uzly se systémem Windows Server 2012 a Windows 7 [bude služba WinRM povolena](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+For all Windows nodes running in Azure, [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) will be installed during onboarding.  For nodes running Windows Server 2012 and Windows 7, [WinRM will be enabled](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency).
 
-Pro všechny uzly Linux běžící v Azure se během připojování nainstaluje [POWERSHELL DSC pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) .
+For all Linux nodes running in Azure, [PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) will be installed during onboarding.
 
-### <a name="network-planning"></a>Konfigurace privátních sítí
+### <a name="network-planning"></a>Configure private networks
 
-Pokud jsou uzly umístěny v privátní síti, pro konfiguraci stavu (DSC) pro komunikaci se službou Automation jsou vyžadovány následující porty a adresy URL:
+If your nodes are located within a private network, the following port and URLs are required for State Configuration (DSC) to communicate with Automation:
 
-* Port: odchozí internetový přístup vyžaduje jenom TCP 443.
-* Globální adresa URL: *. azure-automation.net
-* Globální adresa URL US Gov – Virginie: *. azure-automation.us
-* Služba agenta: https://@no__t -0workspaceId\>.agentsvc.azure-automation.net
+* Port: Only TCP 443 is required for outbound internet access.
+* Global URL: *.azure-automation.net
+* Global URL of US Gov Virginia: *.azure-automation.us
+* Agent service: https://\<workspaceId\>.agentsvc.azure-automation.net
 
-To umožňuje síťové připojení pro spravovaný uzel ke komunikaci s Azure Automation.
-Pokud používáte prostředky DSC, které komunikují mezi uzly, například s [prostředky WAITFOR *](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), budete také muset u těchto uzlů povolený přenos.
-Seznamte se s požadavky na síť v dokumentaci ke každému prostředku DSC.
+This provides network connectivity for the managed node to communicate with Azure Automation.
+If you are using DSC resources that communicate between nodes, such as the [WaitFor* resources](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), you will also need to allow traffic between nodes.
+See the documentation for each DSC resource to understand those network requirements.
 
-#### <a name="proxy-support"></a>Podpora proxy serveru
+#### <a name="proxy-support"></a>Proxy Support
 
-Podpora proxy serveru pro agenta DSC je dostupná ve Windows verze 1809 a novějším.
-Chcete-li konfigurovat tuto možnost, nastavte hodnotu pro **ProxyURL** a **ProxyCredential** v rámci [metaconfiguration skriptu](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) používaného k registraci uzlů.
-Proxy server není v DSC k dispozici pro předchozí verze Windows.
+Proxy support for the DSC agent is available in Windows version 1809 and later.
+To configure this option, set the value for **ProxyURL** and **ProxyCredential** in the [metaconfiguration script](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) used to register nodes.
+Proxy is not available in DSC for previous versions of Windows.
 
-V případě uzlů se systémem Linux agent DSC podporuje proxy a k určení adresy URL použije proměnnou http_proxy.
+For Linux nodes, the DSC agent supports proxy and will utilize the http_proxy variable to determine the url.
 
-#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Síťové rozsahy a obory názvů konfigurace Azure State
+#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Azure State Configuration network ranges and namespace
 
-Doporučuje se používat adresy uvedené při definování výjimek. Pro IP adresy můžete stáhnout [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se aktualizuje týdně a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahu IP adres.
+It's recommended to use the addresses listed when defining exceptions. For IP addresses you can download the [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653). This file is updated weekly, and has the currently deployed ranges and any upcoming changes to the IP ranges.
 
-Pokud máte účet Automation, který je definovaný pro konkrétní oblast, můžete omezit komunikaci s tímto oblastním datacentrem. Následující tabulka uvádí záznam DNS pro jednotlivé oblasti:
+If you have an Automation account that's defined for a specific region, you can restrict communication to that regional datacenter. The following table provides the DNS record for each region:
 
-| **Oblast** | **Záznam DNS** |
+| **Oblast** | **DNS record** |
 | --- | --- |
 | Středozápadní USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
@@ -113,20 +113,20 @@ Pokud máte účet Automation, který je definovaný pro konkrétní oblast, mů
 | Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | USA – Virginie | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
-Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služby Stažení [softwaru ve službě](https://www.microsoft.com/download/details.aspx?id=41653) stažení softwaru.
+For a list of region IP addresses instead of region names, download the [Azure Datacenter IP address](https://www.microsoft.com/download/details.aspx?id=41653) XML file from the Microsoft Download Center.
 
 > [!NOTE]
-> Soubor XML IP adresy datacentra Azure obsahuje seznam rozsahů IP adres, které se používají v datových centrech Microsoft Azure. Soubor zahrnuje výpočetní prostředky, SQL a rozsahy úložiště.
+> The Azure Datacenter IP address XML file lists the IP address ranges that are used in the Microsoft Azure datacenters. The file includes compute, SQL, and storage ranges.
 >
->Aktualizovaný soubor je zveřejněný týdně. Tento soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny v rozsahu IP adres. Nové rozsahy, které se zobrazí v souboru, se v datových centrech nepoužijí aspoň na jeden týden.
+>An updated file is posted weekly. The file reflects the currently deployed ranges and any upcoming changes to the IP ranges. New ranges that appear in the file aren't used in the datacenters for at least one week.
 >
-> Každý týden je vhodné stáhnout nový soubor XML. Pak aktualizujte svůj web tak, aby správně identifikoval služby běžící v Azure. Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor používá k aktualizaci inzerce protokolu BGP (Border Gateway Protocol) v Azure Space v první týden v měsíci.
+> It's a good idea to download the new XML file every week. Then, update your site to correctly identify services running in Azure. Azure ExpressRoute users should note that this file is used to update the Border Gateway Protocol (BGP) advertisement of Azure space in the first week of each month.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md) .
-- Další informace o připojování uzlů najdete v tématu věnovaném [připojování počítačů ke správě podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md) .
-- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md)
-- Referenční informace k rutinám PowerShellu najdete v tématu [rutiny konfigurace stavu Azure Automation](/powershell/module/azurerm.automation/#automation) .
-- Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/) .
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .
+- To get started, see [Getting started with Azure Automation State Configuration](automation-dsc-getting-started.md)
+- To learn how to onboard nodes, see [Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md)
+- To learn about compiling DSC configurations so that you can assign them to target nodes, see [Compiling configurations in Azure Automation State Configuration](automation-dsc-compile.md)
+- For PowerShell cmdlet reference, see [Azure Automation State Configuration cmdlets](/powershell/module/azurerm.automation/#automation)
+- For pricing information, see [Azure Automation State Configuration pricing](https://azure.microsoft.com/pricing/details/automation/)
+- To see an example of using Azure Automation State Configuration in a continuous deployment pipeline, see [Continuous Deployment Using Azure Automation State Configuration and Chocolatey](automation-dsc-cd-chocolatey.md)

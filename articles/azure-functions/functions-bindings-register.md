@@ -1,87 +1,83 @@
 ---
-title: Registrovat rozšíření vazby Azure Functions
-description: Naučte se registrovat rozšíření vazby Azure Functions v závislosti na vašem prostředí.
-services: functions
-documentationcenter: na
+title: Register Azure Functions binding extensions
+description: Learn to register an Azure Functions binding extension based on your environment.
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 40dca0797d75597f4728423eb9d6d071a15d81b9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129277"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231113"
 ---
-# <a name="register-azure-functions-binding-extensions"></a>Registrovat rozšíření vazby Azure Functions
+# <a name="register-azure-functions-binding-extensions"></a>Register Azure Functions binding extensions
 
-V Azure Functions verze 2. x jsou [vazby](./functions-triggers-bindings.md) k dispozici jako samostatné balíčky z modulu runtime Functions. I když rozhraní .NET Functions přistupuje k vazbám prostřednictvím balíčků NuGet, rozšiřující balíčky umožňují ostatním funkcím přístup k všem vazbám prostřednictvím nastavení konfigurace.
+In Azure Functions version 2.x, [bindings](./functions-triggers-bindings.md) are available as separate packages from the functions runtime. While .NET functions access bindings through NuGet packages, extension bundles allow other functions access to all bindings through a configuration setting.
 
-Vezměte v úvahu následující položky týkající se rozšíření vazby:
+Consider the following items related to binding extensions:
 
-- Rozšíření vazby nejsou explicitně registrována ve funkcích 1. x s výjimkou [Vytvoření knihovny C# tříd pomocí sady Visual Studio](#local-csharp).
+- Binding extensions aren't explicitly registered in Functions 1.x except when [creating a C# class library using Visual Studio](#local-csharp).
 
-- Aktivační události protokolu HTTP a časovače jsou ve výchozím nastavení podporovány a nevyžadují rozšíření.
+- HTTP and timer triggers are supported by default and don't require an extension.
 
-Následující tabulka uvádí, kdy a jak registrovat vazby.
+The following table indicates when and how you register bindings.
 
-| Vývojové prostředí |Registrace<br/> ve funkcích 1. x  |Registrace<br/> ve funkcích 2. x  |
+| Vývojové prostředí |Registrace<br/> in Functions 1.x  |Registrace<br/> in Functions 2.x  |
 |-------------------------|------------------------------------|------------------------------------|
-|portál Azure|Automatické|Automatické|
-|Non-.NET jazyky nebo místní vývoj nástrojů Azure Core|Automatické|[Použití Azure Functions Core Tools a rozšíření sad](#extension-bundles)|
-|C#Knihovna tříd pomocí sady Visual Studio|[Použití nástrojů NuGet](#vs)|[Použití nástrojů NuGet](#vs)|
-|C#Knihovna tříd pomocí Visual Studio Code|neuvedeno|[Použít .NET Core CLI](#vs-code)|
+|Portál Azure|Automaticky|Automaticky|
+|Non-.NET languages or local Azure Core Tools development|Automaticky|[Use Azure Functions Core Tools and extension bundles](#extension-bundles)|
+|C# class library using Visual Studio|[Use NuGet tools](#vs)|[Use NuGet tools](#vs)|
+|C# class library using Visual Studio Code|Nevztahuje se|[Use .NET Core CLI](#vs-code)|
 
-## <a name="extension-bundles"></a>Sady rozšíření pro místní vývoj
+## <a name="extension-bundles"></a>Extension bundles for local development
 
-Sady rozšíření jsou technologie nasazení, která umožňuje přidat do aplikace Function App kompatibilní sadu funkcí pro vazby. Předdefinovaná sada rozšíření se přidá při sestavování aplikace. Balíčky rozšíření definované v sadě prostředků jsou vzájemně kompatibilní, což pomáhá vyhnout se konfliktům mezi balíčky. V souboru Host. JSON aplikace se povolují balíčky rozšíření.  
+Extension bundles is a deployment technology that lets you add a compatible set of Functions binding extensions to your function app. A predefined set of extensions are added when you build your app. Extension packages defined in a bundle are compatible with each other, which helps you avoid conflicts between packages. You enable extension bundles in the app's host.json file.  
 
-Můžete použít sady rozšíření s verzí 2. x a novějšími verzemi modulu runtime Functions. Při vývoji místně se ujistěte, že používáte nejnovější verzi [Azure Functions Core Tools](functions-run-local.md#v2).
+You can use extension bundles with version 2.x and later versions of the Functions runtime. When developing locally, make sure you are using the latest version of [Azure Functions Core Tools](functions-run-local.md#v2).
 
-Balíčky rozšíření můžete použít pro místní vývoj pomocí Azure Functions Core Tools, Visual Studio Code a při vzdáleném sestavování.
+Use extension bundles for local development using Azure Functions Core Tools, Visual Studio Code, and when you build remotely.
 
-Pokud nepoužíváte sady rozšíření, musíte před instalací rozšíření vazby nainstalovat na svůj místní počítač sadu SDK .NET Core 2. x. Sady rozšíření odstraňují tento požadavek pro místní vývoj. 
+If you don't use extension bundles, you must install the .NET Core 2.x SDK on your local computer before you install any binding extensions. Extension bundles removes this requirement for local development. 
 
-Chcete-li použít sady rozšíření, aktualizujte soubor *Host. JSON* tak, aby obsahoval následující položku pro `extensionBundle`:
+To use extension bundles, update the *host.json* file to include the following entry for `extensionBundle`:
  
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 <a name="local-csharp"></a>
 
-## <a name="vs"></a>Knihovna tříd jazyka C\# se sadou Visual Studio
+## <a name="vs"></a> C\# class library with Visual Studio
 
-V **aplikaci Visual Studio**můžete balíčky nainstalovat z konzoly Správce balíčků pomocí příkazu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) , jak je znázorněno v následujícím příkladu:
+In **Visual Studio**, you can install packages from the Package Manager Console using the [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) command, as shown in the following example:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-Název balíčku, který se používá pro danou vazbu, je uveden v referenčním článku pro tuto vazbu. Příklad naleznete v [části Packages tématu Service Bus reference Binding](functions-bindings-service-bus.md#packages---functions-1x).
+The name of the package used for a given binding is provided in the reference article for that binding. For an example, see the [Packages section of the Service Bus binding reference article](functions-bindings-service-bus.md#packages---functions-1x).
 
-V příkladu nahraďte `<TARGET_VERSION>` konkrétní verzí balíčku, například `3.0.0-beta5`. Platné verze jsou uvedeny na jednotlivých stránkách balíčku na adrese [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají funkcím runtime 1. x nebo 2. x, jsou uvedeny v referenčním článku pro vazbu.
+Replace `<TARGET_VERSION>` in the example with a specific version of the package, such as `3.0.0-beta5`. Valid versions are listed on the individual package pages at [NuGet.org](https://nuget.org). The major versions that correspond to Functions runtime 1.x or 2.x are specified in the reference article for the binding.
 
-Pokud použijete `Install-Package` k odkazování na vazbu, nemusíte používat [sady rozšíření](#extension-bundles). Tento přístup je specifický pro knihovny tříd sestavené v aplikaci Visual Studio.
+If you use `Install-Package` to reference a binding, you don't need to use [extension bundles](#extension-bundles). This approach is specific for class libraries built in Visual Studio.
 
-## <a name="vs-code"></a>C# knihovna tříd s Visual Studio Code
+## <a name="vs-code"></a> C# class library with Visual Studio Code
 
 > [!NOTE]
-> K automatické instalaci kompatibilní sady balíčků rozšíření pro vytváření vazeb doporučujeme použití [rozšiřujících sad](#extension-bundles) . 
+> We recommend using [extension bundles](#extension-bundles) to have Functions automatically install a compatible set of binding extension packages. 
 
-V **Visual Studio Code**nainstalujte balíčky pro projekt knihovny C# tříd z příkazového řádku pomocí příkazu [dotnet Add Package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) v .NET Core CLI. Následující příklad ukazuje, jak přidat vazbu:
+In **Visual Studio Code**, install packages for a C# class library project from the command prompt using the [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) command in the .NET Core CLI. The following example demonstrates how you add a  binding:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
 ```
 
-.NET Core CLI lze použít pouze pro vývoj Azure Functions 2. x.
+The .NET Core CLI can only be used for Azure Functions 2.x development.
 
-Nahraďte `<BINDING_TYPE_NAME>` názvem balíčku, který obsahuje vazbu, kterou potřebujete. Požadovaný odkaz na vazbu můžete najít v [seznamu podporovaných vazeb](./functions-triggers-bindings.md#supported-bindings).
+Replace `<BINDING_TYPE_NAME>` with the name of the package that contains the binding you need. You can find the desired binding reference article in the [list of supported bindings](./functions-triggers-bindings.md#supported-bindings).
 
-V příkladu nahraďte `<TARGET_VERSION>` konkrétní verzí balíčku, například `3.0.0-beta5`. Platné verze jsou uvedeny na jednotlivých stránkách balíčku na adrese [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají funkcím runtime 1. x nebo 2. x, jsou uvedeny v referenčním článku pro vazbu.
+Replace `<TARGET_VERSION>` in the example with a specific version of the package, such as `3.0.0-beta5`. Valid versions are listed on the individual package pages at [NuGet.org](https://nuget.org). The major versions that correspond to Functions runtime 1.x or 2.x are specified in the reference article for the binding.
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Aktivační událost Azure functions a příklad vazby](./functions-bindings-example.md)
+> [Azure Function trigger and binding example](./functions-bindings-example.md)

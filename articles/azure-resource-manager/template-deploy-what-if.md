@@ -1,71 +1,71 @@
 ---
-title: Template deployment co-if (Preview)
-description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
+title: Template deployment what-if (Preview)
+description: Determine what changes will happen to your resources before deploying an Azure Resource Manager template.
 author: mumian
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/19/2019
 ms.author: jgao
-ms.openlocfilehash: 117215e7c41ad7f354c9e76f764e9af1f50b74c1
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
-ms.translationtype: MT
+ms.openlocfilehash: f399a89ff22dd3d1b360196c81d652b55f30e029
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149237"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230213"
 ---
-# <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Operace s citlivostí pro nasazení šablony Správce prostředků (Preview)
+# <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Resource Manager template deployment what-if operation (Preview)
 
-Před nasazením šablony můžete chtít zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace citlivosti neprovede žádné změny stávajících prostředků. Místo toho odhadne změny, pokud je zadaná šablona nasazena.
+Before deploying a template, you might want to preview the changes that will happen. Azure Resource Manager provides the what-if operation to let you see how resources will change if you deploy the template. The what-if operation doesn't make any changes to existing resources. Instead, it predicts the changes if the specified template is deployed.
 
 > [!NOTE]
-> Operace citlivosti je aktuálně ve verzi Preview. Pokud ho chcete použít, musíte se [zaregistrovat ve verzi Preview](https://aka.ms/armtemplatepreviews). Ve verzi Preview můžou výsledky někdy Ukázat, že se prostředek změní, když se ve skutečnosti žádná změna nestane. Pracujeme na tom, abychom tyto problémy snížili, ale potřebujeme vaši technickou podporu. Ohlaste prosím tyto problémy na [https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues).
+> The what-if operation is currently in preview. To use it, you must [sign up for the preview](https://aka.ms/armtemplatepreviews). As a preview release, the results may sometimes show that a resource will change when actually no change will happen. We're working to reduce these issues, but we need your help. Please report these issues at [https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues).
 
-Můžete použít operaci citlivostní operace s příkazem `New-AzDeploymentWhatIf` PowerShellu nebo [nasazením what if](/rest/api/resources/deployments/whatif) REST.
+You can use the what-if operation with the `New-AzDeploymentWhatIf` PowerShell command or the [Deployments - What If](/rest/api/resources/deployments/whatif) REST operation.
 
-Výstup v PowerShellu vypadá takto:
+In PowerShell, the output looks like:
 
-![Správce prostředků fullresourcepayload a typ změny nasazení šablony](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
+![Resource Manager template deployment what-if operation fullresourcepayload and change types](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-## <a name="change-types"></a>Změnit typy
+## <a name="change-types"></a>Change types
 
-Operace citlivostní zpracování seznamu obsahuje šest různých typů změn:
+The what-if operation lists six different types of changes:
 
-- **Vytvořit**: prostředek aktuálně neexistuje, ale je definován v šabloně. Prostředek se vytvoří.
+- **Create**: The resource doesn't currently exist but is defined in the template. The resource will be created.
 
-- **Odstranit**: Tento typ změny platí pouze v případě, že je pro nasazení použit [režim úplného režimu](deployment-modes.md) . Prostředek existuje, ale není definovaný v šabloně. V režimu úplného režimu se prostředek odstraní. V tomto typu změny jsou zahrnuty pouze prostředky, které [podporují odstranění režimu dokončení](complete-mode-deletion.md) .
+- **Delete**: This change type only applies when using [complete mode](deployment-modes.md) for deployment. The resource exists, but isn't defined in the template. With complete mode, the resource will be deleted. Only resources that [support complete mode deletion](complete-mode-deletion.md) are included in this change type.
 
-- **Ignore**: prostředek existuje, ale není definovaný v šabloně. Prostředek se nebude nasazovat ani upravovat.
+- **Ignore**: The resource exists, but isn't defined in the template. The resource won't be deployed or modified.
 
-- Žádná **Změna**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí, ale vlastnosti prostředku se nezmění. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads`, což je výchozí hodnota.
+- **NoChange**: The resource exists, and is defined in the template. The resource will be redeployed, but the properties of the resource won't change. This change type is returned when [ResultFormat](#result-format) is set to `FullResourcePayloads`, which is the default value.
 
-- **Upravit**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí a změní se vlastnosti prostředku. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads`, což je výchozí hodnota.
+- **Modify**: The resource exists, and is defined in the template. The resource will be redeployed, and the properties of the resource will change. This change type is returned when [ResultFormat](#result-format) is set to `FullResourcePayloads`, which is the default value.
 
-- **Nasazení**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí. Vlastnosti prostředku mohou nebo nemusí být změněny. Tato operace vrátí tento typ změny, pokud nemá dostatek informací k určení, zda se změní některé vlastnosti. Tato podmínka se zobrazí jenom v případě, že je [ResultFormat](#result-format) nastavené na `ResourceIdOnly`.
+- **Deploy**: The resource exists, and is defined in the template. The resource will be redeployed. The properties of the resource may or may not change. The operation returns this change type when it doesn't have enough information to determine if any properties will change. You only see this condition when [ResultFormat](#result-format) is set to `ResourceIdOnly`.
 
-## <a name="deployment-scope"></a>Rozsah nasazení
+## <a name="deployment-scope"></a>Deployment scope
 
-Operaci s citlivostí pro nasazení můžete použít buď na úrovni předplatného nebo skupiny prostředků. Rozsah nasazení nastavíte pomocí parametru `-ScopeType`. Přijaté hodnoty jsou `Subscription` a `ResourceGroup`. Tento článek popisuje nasazení skupin prostředků.
+You can use the what-if operation for deployments at either the subscription or resource group level. You set the deployment scope with the `-ScopeType` parameter. The accepted values are `Subscription` and `ResourceGroup`. This article demonstrates resource group deployments.
 
-Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md#).
+To learn about subscription level deployments, see [Create resource groups and resources at the subscription level](deploy-to-subscription.md#).
 
-## <a name="result-format"></a>Výsledný formát
+## <a name="result-format"></a>Result format
 
-Můžete řídit úroveň podrobností vrácených o předpokládaných změnách. Nastavením parametru `ResultFormat` `FullResourcePayloads` získáte seznam prostředků, které se změní a zobrazí se podrobnosti o vlastnostech, které se změní. Nastavením parametru `ResultFormat` `ResourceIdOnly` zobrazíte seznam prostředků, které se změní. Výchozí hodnota je `FullResourcePayloads`.  
+You can control the level of detail that is returned about the predicted changes. Set the `ResultFormat` parameter to `FullResourcePayloads` to get a list of resources what will change and details about the properties that will change. Set the `ResultFormat` parameter to `ResourceIdOnly` to get a list of resources that will change. The default value is `FullResourcePayloads`.  
 
-Následující snímky obrazovky znázorňují dva různé formáty výstupu:
+The following screenshots show the two different output formats:
 
-- Úplné datové vytížení prostředků
+- Full resource payloads
 
-    ![Správce prostředků výstupem operace fullresourcepayloads Deployment Template](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-fullresourcepayload.png)
+    ![Resource Manager template deployment what-if operation fullresourcepayloads output](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-fullresourcepayload.png)
 
-- Pouze ID prostředku
+- Resource ID only
 
-    ![Správce prostředků výstupem operace resourceidonly Deployment Template](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-resourceidonly.png)
+    ![Resource Manager template deployment what-if operation resourceidonly output](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-resourceidonly.png)
 
-## <a name="run-what-if-operation"></a>Spustit operaci s citlivostí
+## <a name="run-what-if-operation"></a>Run what-if operation
 
-### <a name="set-up-environment"></a>Nastavení prostředí
+### <a name="set-up-environment"></a>Set up environment
 
-Pokud chcete zjistit, jak to funguje, spustíme některé testy. Nejdřív nasaďte šablonu ze [šablon Azure pro rychlý Start, které vytvoří účet úložiště](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json). Výchozí typ účtu úložiště je `Standard_LRS`. Tento účet úložiště použijete k otestování toho, jak jsou změny hlášeny podle toho, co je potřeba.
+To see how what-if works, let's runs some tests. First, deploy a template from [Azure Quickstart templates that creates a storage account](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json). The default storage account type is `Standard_LRS`. You'll use this storage account to test how changes are reported by what-if.
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -76,9 +76,9 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-### <a name="test-modification"></a>Změna testu
+### <a name="test-modification"></a>Test modification
 
-Po dokončení nasazení budete připraveni k otestování operace citlivostní zpracování. Spusťte příkaz příkazového řádku, ale změňte typ účtu úložiště na `Standard_GRS`.
+After the deployment completes, you're ready to test the what-if operation. Run the what-if command but change the storage account type to `Standard_GRS`.
 
 ```azurepowershell-interactive
 New-AzDeploymentWhatIf `
@@ -88,17 +88,19 @@ New-AzDeploymentWhatIf `
   -storageAccountType Standard_GRS
 ```
 
-Výstup citlivosti je podobný následujícímu:
+The what-if output is similar to:
 
-![Výstup operace s popisem operace s Správce prostředků šablonou](./media/template-deploy-what-if/resource-manager-deployment-whatif-output.png)
+![Resource Manager template deployment what-if operation output](./media/template-deploy-what-if/resource-manager-deployment-whatif-output.png)
 
-V horní části výstupu si všimněte, že jsou definovány barvy, aby označovaly typ změn.
+Notice at the top of the output that colors are defined to indicate the type of changes.
 
-V dolní části výstupu se zobrazí název SKU (typ účtu úložiště), který bude změněn z **Standard_LRS** na **Standard_GRS**.
+At the bottom of the output, it shows the sku name (storage account type) will be changed from **Standard_LRS** to **Standard_GRS**.
 
-### <a name="test-deletion"></a>Odstranění testu
+Some of the properties that are listed as deleted won't actually change. In the preceding image, these properties are accessTier, encryption.keySource and others in that section. Properties can be incorrectly reported as deleted when they aren't in the template but are automatically set during deployment. The final deployed resource will have the values set for the properties. As the what-if operation matures, these properties will be filtered out of the result.
 
-Operace citlivosti podporuje použití [režimu nasazení](deployment-modes.md). Při nastavení na režim úplné se odstraní prostředky, které nejsou v šabloně. Následující příklad nasadí [šablonu, která nemá definované žádné prostředky](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) v režimu úplného zobrazení.
+### <a name="test-deletion"></a>Test deletion
+
+The what-if operation supports using [deployment mode](deployment-modes.md). When set to complete mode, resources not in the template are deleted. The following example deploys a [template that has no resources defined](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) in complete mode.
 
 ```azurepowershell-interactive
 New-AzDeploymentWhatIf `
@@ -108,15 +110,15 @@ New-AzDeploymentWhatIf `
   -Mode Complete
 ```
 
-Protože v šabloně nejsou definovány žádné prostředky a režim nasazení je nastavený na dokončeno, účet úložiště se odstraní.
+Because no resources are defined in the template and the deployment mode is set to complete, the storage account will be deleted.
 
-![Správce prostředků režim nasazení výstupu operace citlivosti nasazení šablon](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
+![Resource Manager template deployment what-if operation output deployment mode complete](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
 
-Je důležité pamatovat na to, co dělat, když nedělá žádné skutečné změny. Účet úložiště ve vaší skupině prostředků stále existuje.
+It's important to remember what-if makes no actual changes. The storage account still exists in your resource group.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud si všimnete špatných výsledků z verze Preview co-if, nahlaste prosím problémy na [https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues).
-- Postup nasazení šablon pomocí Azure PowerShell najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](resource-group-template-deploy.md).
-- Pokud chcete nasadit šablony s REST, přečtěte si téma [nasazení prostředků pomocí šablon Správce prostředků a Správce prostředků REST API](resource-group-template-deploy-rest.md).
-- Chcete-li se vrátit k úspěšnému nasazení, když se zobrazí chyba, přečtěte si téma [vrácení chyby při úspěšném nasazení](rollback-on-error.md).
+- If you notice incorrect results from the preview release of what-if, please report the issues at [https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues).
+- To deploy templates with Azure PowerShell, see [Deploy resources with Resource Manager templates and Azure PowerShell](resource-group-template-deploy.md).
+- To deploy templates with REST, see [Deploy resources with Resource Manager templates and Resource Manager REST API](resource-group-template-deploy-rest.md).
+- To roll back to a successful deployment when you get an error, see [Rollback on error to successful deployment](rollback-on-error.md).

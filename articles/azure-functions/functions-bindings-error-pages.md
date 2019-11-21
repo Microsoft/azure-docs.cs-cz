@@ -1,36 +1,30 @@
 ---
-title: Průvodce zpracováním chyb Azure Functions
-description: Naučte se zpracovávat chyby v Azure Functions s odkazy na konkrétní chyby vazby.
-services: functions
-cloud: ''
-documentationcenter: ''
+title: Azure Functions error handling guidance
+description: Learn to handle errors in Azure Functions with links to specific binding errors.
 author: craigshoemaker
-manager: gwallace
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
-ms.openlocfilehash: d301940998175adb6469e46cff2de918b5cae9df
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 06dc4c5c1713ee10f263e573a698e9ea36ca2662
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155291"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227327"
 ---
-# <a name="azure-functions-error-handling"></a>Zpracování chyb Azure Functions
+# <a name="azure-functions-error-handling"></a>Azure Functions error handling
 
-Zpracování chyb v Azure Functions je důležité k tomu, abyste se vyhnuli ztrátě dat, nezmeškaným událostem a mohli monitorovat stav vaší aplikace.
+Handling errors in Azure Functions is important to avoid lost data, missed events, and to monitor the health of your application.
 
-Tento článek popisuje obecné strategie pro zpracování chyb spolu s odkazy na chyby specifické pro vazbu.
+This article describes general strategies for error handling along with links to binding-specific errors.
 
-## <a name="handling-errors"></a>Zpracování chyb
+## <a name="handling-errors"></a>Handling errors
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-## <a name="binding-error-codes"></a>Kódy chyb vazby
+## <a name="binding-error-codes"></a>Binding error codes
 
-Při integraci se službami Azure mohou chyby vzcházet z rozhraní API základních služeb. Informace o chybách specifických pro vazbu jsou k dispozici v části **výjimky a návratové kódy** v následujících článcích:
+When integrating with Azure services, errors may originate from the APIs of the underlying services. Information relating to binding-specific errors is available in the **Exceptions and return codes** section of the following articles:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 

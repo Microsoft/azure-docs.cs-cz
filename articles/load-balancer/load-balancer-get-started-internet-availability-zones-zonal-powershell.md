@@ -1,7 +1,7 @@
 ---
-title: Vytvoření Load Balancer s oblastmi front-endu-Azure PowerShell
-titlesuffix: Azure Load Balancer
-description: Naučte se vytvářet Standard Load Balancer s využitím s oblastmi front-endu pomocí Azure PowerShell
+title: Create a Load Balancer with zonal frontend - Azure PowerShell
+titleSuffix: Azure Load Balancer
+description: Learn how to create Standard Load Balancer with a zonal frontend using Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: a2c637ddbf5b7f5883016afe4a6d58ad9752cfc5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1d05b130a98ce816d070bc3ad16e25b867d7dc8a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275121"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215121"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Vytvoření Standard Load Balancer s použitím Zona front-endu pomocí Azure PowerShell
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Create a Standard Load Balancer with zonal frontend using Azure PowerShell
 
-Tento článek vás provede vytvořením veřejné [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) s Zona front-end s použitím standardní IP adresy veřejné IP adresy. Vysvětlení fungování zón dostupnosti s Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md). 
+This article steps through creating a public [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) with a zonal frontend using a Public IP Standard address. To understand how availability zones work with Standard Load Balancer, see [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 > [!NOTE]
-> Podpora pro zóny dostupnosti je k dispozici pro vyberte prostředky Azure a oblasti a velikostní řady virtuálních počítačů. Další informace o tom, jak začít a které prostředky Azure, oblasti a velikostní řady virtuálních počítačů můžete vyzkoušet zóny dostupnosti s, najdete v části [přehledu zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview). Pokud budete potřebovat podporu, můžete kontaktovat [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) nebo [otevřít lístek podpory Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> Support for Availability Zones is available for select Azure resources and regions, and VM size families. For more information on how to get started, and which Azure resources, regions, and VM size families you can try availability zones with, see [Overview of Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview). Pokud budete potřebovat podporu, můžete kontaktovat [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) nebo [otevřít lístek podpory Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
@@ -42,39 +42,39 @@ Connect-AzAccount
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí následujícího příkazu:
+Create a Resource Group using the following command:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupZLB -Location westeurope
 ```
 
-## <a name="create-a-public-ip-standard"></a>Vytvoření veřejného standardní IP 
-Vytvořte veřejné IP Standard pomocí následujícího příkazu:
+## <a name="create-a-public-ip-standard"></a>Create a public IP Standard 
+Create a Public IP Standard using the following command:
 
 ```azurepowershell-interactive
 $publicIp = New-AzPublicIpAddress -ResourceGroupName myResourceGroupZLB -Name 'myPublicIPZonal' `
   -Location westeurope -AllocationMethod Static -Sku Standard -zone 1
 ```
 
-## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Vytvořte front-endovou konfiguraci protokolu IP pro web
+## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Create a front-end IP configuration for the website
 
-Vytvoření konfigurace IP front-endu pomocí následujícího příkazu:
+Create a frontend IP configuration using the following command:
 
 ```azurepowershell-interactive
 $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
 ```
 
-## <a name="create-the-back-end-address-pool"></a>Vytvoření fondu back endových adres
+## <a name="create-the-back-end-address-pool"></a>Create the back-end address pool
 
-Vytvořte fond back-end adres pomocí následujícího příkazu:
+Create a backend address pool using the following command:
 
 ```azurepowershell-interactive
 $bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 ```
 
-## <a name="create-a-load-balancer-probe-on-port-80"></a>Vytvoření testu paměti nástroje pro vyrovnávání zatížení na portu 80
+## <a name="create-a-load-balancer-probe-on-port-80"></a>Create a load balancer probe on port 80
 
-Vytvoření sondy stavu na portu 80 pro nástroj pro vyrovnávání zatížení pomocí následujícího příkazu:
+Create a health probe on port 80 for the load balancer using the following command:
 
 ```azurepowershell-interactive
 $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
@@ -82,14 +82,14 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 ```
 
 ## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
- Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí následujícího příkazu:
+ Create a load balancer rule using the following command:
 
 ```azurepowershell-interactive
    $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
 ## <a name="create-a-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
-Pomocí následujícího příkazu vytvořte Standard Load Balancer:
+Create a Standard Load Balancer using the following command:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `
@@ -97,5 +97,5 @@ $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBala
   -Probe $probe -LoadBalancingRule $rule -Sku Standard
 ```
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md).
+## <a name="next-steps"></a>Další kroky
+- Learn more about [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md).

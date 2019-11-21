@@ -1,126 +1,126 @@
 ---
-title: Nejčastější dotazy týkající se Azure jarního cloudu | Microsoft Docs
-description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure jarního cloudu.
+title: Frequently asked questions about Azure Spring Cloud | Microsoft Docs
+description: This article answers frequently asked questions about Azure Spring Cloud.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 40275b3f643517236db26be8c2784144526fb7a1
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151740"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229250"
 ---
-# <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
+# <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud FAQ
 
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure jarního cloudu. 
+This article answers frequently asked questions about Azure Spring Cloud. 
 
 ## <a name="general"></a>Obecné
 
-### <a name="why-azure-spring-cloud"></a>Proč Azure jaře Cloud?
+### <a name="why-azure-spring-cloud"></a>Why Azure Spring Cloud?
 
-Jarní cloud Azure poskytuje platformu jako službu (PaaS) pro aplikace pro jarní cloudové vývojáře. Azure jaře Cloud spravuje infrastrukturu vaší aplikace, takže se můžete soustředit na kód aplikace a obchodní logiku. K základním funkcím integrovaným v Azure jaře cloudu patří Eureka, config server, server registru služby, služba Pivoted Build Service, nasazení s modrou zelenou a další. Tato služba také umožňuje vývojářům navazovat aplikace s jinými službami Azure, jako jsou Azure Cosmos DB, Azure Database for MySQL a Azure cache pro Redis.
+Azure Spring Cloud provides a platform as a service (PaaS) for Spring Cloud developers. Azure Spring Cloud manages your application infrastructure so that you can focus on application code and business logic. Core features built into Azure Spring Cloud include Eureka, Config Server, Service Registry Server, Pivotal Build Service, Blue-green deployments, and more. This service also enables developers to bind their applications with other Azure services, such as Azure Cosmos DB, Azure Database for MySQL, and Azure Cache for Redis.
 
-Služba Azure jaře Cloud vylepšuje prostředí diagnostiky aplikací pro vývojáře a operátory integrací Azure Monitor, Application Insights a Log Analytics.
+Azure Spring Cloud enhances the application diagnostics experience for developers and operators by integrating Azure Monitor, Application Insights, and Log Analytics.
 
-### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Jaké plány služeb nabízí Azure jaře Cloud?
+### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>What service plans does Azure Spring Cloud offer?
 
-Azure jaře Cloud nabízí v období Preview jeden plán služeb.  Nasazení jarního cloudu obsahuje 16 vCPU jader a 32 gigabajtů (GB) paměti.  Horní mez pro každou instanci mikroslužeb v rámci nasazení je 4 vCPU jádra s 8 GB paměti.
+Azure Spring Cloud offers one service plan during the preview period.  A Spring Cloud deployment contains 16 vCPU cores and 32 gigabytes (GB) of memory.  The upper bound for each microservice instance within a deployment is 4 vCPU cores with 8 GB of memory.
 
 Prostředek | Částka
 ------- | -------
-Instance aplikací na jaře cloudová aplikace | 20
-Celkový počet instancí aplikace na jednu instanci cloudové služby Azure na jaře | 50 *
-Instance služby Azure jaře Cloud Service na oblast na předplatné | odst
-Trvalé svazky | 10 × 50 GB
+App instances per Spring application | 20
+Total app instances per Azure Spring Cloud service instance | 500
+Azure Spring Cloud service instances per region per subscription | 10
+Persistent volumes | 10 x 50 GBytes
 
-\* _pro zvýšení limitu otevřete [lístek podpory](https://azure.microsoft.com/support/faq/)._
+\* _To raise the limit, open a [support ticket](https://azure.microsoft.com/support/faq/)._
 
-Další informace najdete v tématu [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/).
+For more information, see [Azure Support FAQ](https://azure.microsoft.com/support/faq/).
 
-### <a name="how-secure-is-azure-spring-cloud"></a>Jak zabezpečená je Azure jarní Cloud?
+### <a name="how-secure-is-azure-spring-cloud"></a>How secure is Azure Spring Cloud?
 
-Zabezpečení a ochrana osobních údajů jsou v rámci nejdůležitějších priorit pro zákazníky Azure a Azure pro jarní Cloud. Azure pomáhá zajistit, aby měli přístup k datům, protokolům a konfiguracím aplikace, a to díky bezpečnému šifrování všech těchto dat. Všechny instance služby ve jarním cloudu Azure jsou od sebe vzájemně izolované.
+Security and privacy are among the top priorities for Azure and Azure Spring Cloud customers. Azure helps ensure that only customers have access to application data, logs, or configurations by securely encrypting all of this data. All the service instances in Azure Spring Cloud are isolated from each other.
 
-Azure jaře Cloud poskytuje kompletní protokol SSL a správu certifikátů.
+Azure Spring Cloud provides complete SSL and certificate management.
 
-Důležité opravy zabezpečení pro OpenJDK a jarní cloudové moduly runtime se v co nejkratší době aplikují na Azure jaře Cloud.
+Critical security patches for OpenJDK and Spring Cloud runtimes are applied to Azure Spring Cloud as soon as possible.
 
-### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Ve kterých oblastech je k dispozici Azure pružinový Cloud?
+### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In which regions is Azure Spring Cloud available?
 
-Východní USA, Západní USA 2, Západní Evropa a jihovýchodní Asie.
+East US, West US 2, West Europe, and Southeast Asia.
 
-### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Jaká jsou známá omezení Azure jarního cloudu?
+### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>What are the known limitations of Azure Spring Cloud?
 
-Při vydání verze Preview má Azure jarní Cloud následující známá omezení:
+During preview release, Azure Spring Cloud has the following known limitations:
 
-* `spring.application.name` přepíše název aplikace, který se používá k vytvoření jednotlivých aplikací.
-* v konfiguračním souboru z úložiště Git není povolená `server.port`. Přidání do konfiguračního souboru bude nejspíš způsobit, že aplikace nebude dostupná z jiných aplikací nebo z Internetu.
-* Šablony Azure Portal a Azure Resource Manager nepodporují nahrávání balíčků aplikací. Balíčky aplikací můžete nahrát jenom nasazením aplikace přes rozhraní příkazového řádku Azure CLI.
-* Další informace o omezeních kvóty najdete v tématu [Jaké plány služeb nabízí Azure jaře Cloud](#what-service-plans-does-azure-spring-cloud-offer).
+* `spring.application.name` will be overridden by the application name that's used to create each application.
+* `server.port` is not allowed in the configuration file from the Git repo. Adding it to the configuration file will likely render your application unreachable from other applications or the internet.
+* The Azure portal and Azure Resource Manager templates do not support uploading application packages. You can upload application packages only by deploying the application via the Azure CLI.
+* To learn about quota limitations, see [What service plans does Azure Spring Cloud offer?](#what-service-plans-does-azure-spring-cloud-offer).
 
-### <a name="how-can-i-provide-feedback-and-report-issues"></a>Jak můžu sdělit svůj názor a ohlásit problémy?
+### <a name="how-can-i-provide-feedback-and-report-issues"></a>How can I provide feedback and report issues?
 
-Pokud narazíte na nějaké problémy se službou Azure Pramenitého cloudu, vytvořte [žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Pokud chcete odeslat žádost o funkci nebo poskytnout zpětnou vazbu, přečtěte si [názory na Azure](https://feedback.azure.com/forums/34192--general-feedback).
+If you encounter any issues with Azure Spring Cloud, create an [Azure Support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). To submit a feature request or provide feedback, go to [Azure Feedback](https://feedback.azure.com/forums/34192--general-feedback).
 
 ## <a name="development"></a>Vývoj
 
-### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Jsem pružinový vývojář pro Cloud, ale novinka v Azure. Jak mám nejrychlejší způsob, jak se mě naučit vyvíjet cloudovou aplikaci Azure na jaře?
+### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>I am a Spring Cloud developer but new to Azure. What is the quickest way for me to learn how to develop an Azure Spring Cloud application?
 
-Nejrychlejší způsob, jak začít s jarním cloudem v Azure, najdete podle pokynů v tématu [rychlý Start: spuštění aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart-launch-app-portal.md).
+For the quickest way to get started with Azure Spring Cloud, follow the instructions in [Quickstart: Launch an Azure Spring Cloud application by using the Azure portal](spring-cloud-quickstart-launch-app-portal.md).
 
-### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Jaký běhový modul Java podporuje Azure jaře Cloud?
+### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>What Java runtime does Azure Spring Cloud support?
 
-Azure jarní Cloud podporuje jazyky Java 8 a 11.
+Azure Spring Cloud supports Java 8 and 11.
 
-### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Kde můžu zobrazit protokoly a metriky cloudových aplikací pro jaře?
+### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Where can I view my Spring Cloud application logs and metrics?
 
-Metriky najdete na kartě Přehled aplikace a na kartě [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) .
+Find metrics in the App Overview tab and the [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) tab.
 
-Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře cloudu do Azure Storage, EventHub a [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). Název tabulky v Log Analytics je *AppPlatformLogsforSpring*. Další informace o tom, jak ho povolit, najdete v tématu [diagnostické služby](diagnostic-services.md).
+Azure Spring Cloud supports exporting Spring Cloud application logs and metrics to Azure Storage, EventHub, and [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). The table name in Log Analytics is *AppPlatformLogsforSpring*. To learn how to enable it, see [Diagnostic services](diagnostic-services.md).
 
-### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Podporuje Azure jaře Cloud distribuované trasování?
+### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Does Azure Spring Cloud support distributed tracing?
 
-Ano. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
+Ano. For more information, see [Tutorial: Use Distributed Tracing with Azure Spring Cloud](spring-cloud-tutorial-distributed-tracing.md).
 
-### <a name="what-resource-types-does-service-binding-support"></a>Jaké typy prostředků podporuje Service Binding?
+### <a name="what-resource-types-does-service-binding-support"></a>What resource types does Service Binding support?
 
-V současné době jsou podporovány tři služby: Azure Cosmos DB, Azure Database for MySQL a Azure cache pro Redis.
+Three services are currently supported: Azure Cosmos DB, Azure Database for MySQL, and Azure Cache for Redis.
 
-### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Můžu v rámci svých aplikací zobrazit, přidat nebo přesunout trvalé svazky?
+### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Can I view, add, or move persistent volumes from inside my applications?
 
 Ano.
 
 ## <a name="deployment"></a>Nasazení
 
-### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Podporuje nasazení s modrou zeleným cloudem Azure?
-Ano. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
+### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Does Azure Spring Cloud support blue-green deployment?
+Ano. For more information, see [Set up a staging environment](spring-cloud-howto-staging-environment.md).
 
-### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Můžu získat přístup k Kubernetes, abyste mohli manipulovat s kontejnery aplikací?
+### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Can I access Kubernetes to manipulate my application containers?
 
-Ne.  Azure jaře Cloud vyabstrakce vývojáře z základní architektury, což vám umožní soustředit se na kód aplikace a obchodní logiku.
+Ne.  Azure Spring Cloud abstracts the developer from the underlying architecture, allowing you to concentrate on application code and business logic.
 
-### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Podporuje Azure jaře Cloud vytváření kontejnerů ze zdroje?
+### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Does Azure Spring Cloud support building containers from source?
 
-Ano. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-launch-from-source.md).
+Ano. For more information, see [Launch your Spring Cloud application from source code](spring-cloud-launch-from-source.md).
 
-### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Podporuje Azure jaře Cloud automatické škálování v instancích aplikací?
+### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Does Azure Spring Cloud support autoscaling in app instances?
 
 Ne.
 
-### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Jaké jsou osvědčené postupy pro migraci stávajících mikroslužeb pro jarní Cloud do Azure jaře cloudu?
+### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>What are the best practices for migrating existing Spring Cloud microservices to Azure Spring Cloud?
 
-Při migraci stávajících mikroslužeb pro jarní Cloud do jarního cloudu Azure je vhodné sledovat následující osvědčené postupy:
-* Všechny závislosti aplikací je potřeba vyřešit.
-* Připravte si položky konfigurace, proměnné prostředí a parametry JVM, abyste je mohli porovnat s nasazením v Azure jaře cloudu.
-* Pokud chcete použít vazbu služby, Projděte si služby Azure a ujistěte se, že jste nastavili příslušná přístupová oprávnění.
-* Doporučujeme odebrat nebo zakázat všechny vložené služby, které mohou být v konfliktu se službami, které jsou spravovány službou Azure jaře Cloud, jako je naše služba zjišťování služeb, konfigurační server a tak dále.
-* Doporučujeme používat oficiální a stabilní Pivotické knihovny. Neoficiální, beta nebo rozvětvené verze kontingenčních knihoven Pivoter nemají podporu smlouvy o úrovni služeb (SLA).
+As you're migrating existing Spring Cloud microservices to Azure Spring Cloud, it's a good idea to observe the following best practices:
+* All application dependencies need to be resolved.
+* Prepare your configuration entries, environment variables, and JVM parameters so that you can compare them with the deployment in Azure Spring Cloud.
+* If you want to use Service Binding, go through your Azure services and ensure that you've set the appropriate access permissions.
+* We recommend that you remove or disable any embedded services that might conflict with services that are managed by Azure Spring Cloud, such as our Service Discovery service, Config Server, and so on.
+* We recommend that you use official, stable Pivotal Spring libraries. Unofficial, beta, or forked versions of Pivotal Spring libraries have no service-level agreement (SLA) support.
 
-Po migraci monitorujte metriky procesoru/paměti RAM a síťový provoz, abyste měli jistotu, že jsou instance aplikace vhodně škálovatelné.
+After the migration, monitor your CPU/RAM metrics and network traffic to ensure that the application instances are scaled appropriately.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte další otázky, přečtěte si [příručku k odstraňování potíží se službou Azure pružiny Cloud](spring-cloud-troubleshoot.md).
+If you have further questions, see the [Azure Spring Cloud troubleshooting guide](spring-cloud-troubleshoot.md).

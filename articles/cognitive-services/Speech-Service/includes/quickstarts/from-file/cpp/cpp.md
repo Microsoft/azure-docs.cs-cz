@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru C++ , – Speech Service'
+title: 'Quickstart: Recognize speech from an audio file, C++ - Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 32758e1f9ee977fd27d9892054427f31a74cc0d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9ce65f4266faa6af0a631ede3cc145397c62c0c0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504141"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260690"
 ---
-**Volba cílového prostředí**
+**Choose your target environment**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](./linux.md)]
-#### <a name="macostabmacos"></a>[MacOS](#tab/MacOS)
+#### <a name="macostabmacos"></a>[macOS](#tab/macOS)
 [!INCLUDE [macos](./macos.md)]
 #### <a name="windowstabwindows"></a>[Windows](#tab/Windows)
 [!INCLUDE [windows](./windows.md)]

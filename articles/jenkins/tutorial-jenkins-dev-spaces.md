@@ -1,55 +1,55 @@
 ---
-title: Použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubernetes
-description: Naučte se používat modul plug-in Azure Dev Spaces v kanálu průběžné integrace.
+title: Using the Azure Dev Spaces Plug-in for Jenkins with Azure Kubernetes Service
+description: Learn how to use the Azure Dev Spaces plug-in in a continuous integration pipeline.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 42d732cda26f0c34f0a54fffc0b1b9c54def94ad
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158746"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209671"
 ---
-# <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Kurz: použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubernetes 
+# <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Tutorial: Using the Azure Dev Spaces Plug-in for Jenkins with Azure Kubernetes Service 
 
-Azure Dev Spaces umožňuje testovat a iterativní vývoj aplikace mikroslužeb běžící ve službě Azure Kubernetes Service (AKS) bez nutnosti replikovat nebo napodobovat závislosti. Modul plug-in Azure Dev Spaces pro Jenkinse pomáhá používat vývojové prostory v kanálu průběžné integrace a doručování (CI/CD).
+Azure Dev Spaces allows you to test and iteratively develop your microservice application running in Azure Kubernetes Service (AKS) without the need to replicate or mock dependencies. The Azure Dev Spaces plug-in for Jenkins helps you use Dev Spaces in your continuous integration and delivery (CI/CD) pipeline.
 
-V tomto kurzu se používá také Azure Container Registry (ACR). ACR ukládá image a úloha ACR vytvoří artefakty Docker a Helm. Použití úlohy ACR a ACR pro generování artefaktů odstraňuje nutnost instalace dalšího softwaru, jako je například Docker, na serveru Jenkinse. 
+This tutorial also uses Azure Container Registry (ACR). ACR stores images, and an ACR Task builds Docker and Helm artifacts. Using ACR and ACR Task for artifact generation removes the need for you to install additional software, such as Docker, on your Jenkins server. 
 
-V tomto kurzu dokončíte tyto úlohy:
+In this tutorial, you'll complete these tasks:
 
 > [!div class="checklist"]
-> * Vytvoření clusteru AKS s povoleným Azure Dev Spaces
-> * Nasazení aplikace s více službami na AKS
-> * Příprava serveru Jenkinse
-> * Použití modulu plug-in Azure Dev Spaces v kanálu Jenkinse k zobrazení náhledu změn kódu před jejich sloučením do projektu
+> * Create an Azure Dev Spaces enabled AKS cluster
+> * Deploy a multi-service application to AKS
+> * Prepare your Jenkins server
+> * Use the Azure Dev Spaces plug-in in a Jenkins pipeline to preview code changes before merging them into the project
 
-Tento kurz předpokládá průběžné znalosti základních služeb Azure, AKS, ACR, Azure Dev Spaces, [kanálů](https://jenkins.io/doc/book/pipeline/) Jenkinse a modulů plug-in a GitHubu. Základní znalost s podpůrnými nástroji, jako je kubectl a Helm, je užitečná.
+This tutorial assumes intermediate knowledge of core Azure services, AKS, ACR, Azure Dev Spaces, Jenkins [pipelines](https://jenkins.io/doc/book/pipeline/) and plug-ins, and GitHub. Basic familiarity with supporting tools such as kubectl and Helm is helpful.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Účet GitHub. Pokud nemáte účet GitHubu, vytvořte si [bezplatný účet](https://github.com/) před tím, než začnete.
+* Účet GitHub. If you don't have a GitHub account, create a [free account](https://github.com/) before you begin.
 
-* [Visual Studio Code](https://code.visualstudio.com/download) s nainstalovanou rozšířením [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) .
+* [Visual Studio Code](https://code.visualstudio.com/download) with the [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) extension installed.
 
-* Rozhraní příkazového [řádku Azure je nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest), verze 2.0.43 nebo vyšší.
+* [Azure CLI installed](/cli/azure/install-azure-cli?view=azure-cli-latest), version 2.0.43 or higher.
 
-* Hlavní server Jenkins. Pokud ještě nemáte hlavní server Jenkinse, nasaďte [jenkinse](https://aka.ms/jenkins-on-azure) v Azure podle kroků v tomto [rychlém](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)startu. 
+* Hlavní server Jenkins. If you don't already have a Jenkins master, deploy [Jenkins](https://aka.ms/jenkins-on-azure) on Azure by following the steps in this [quickstart](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
-* Server Jenkinse musí mít nainstalovanou Helm a kubectl a k dispozici pro účet Jenkinse, jak je vysvětleno dále v tomto kurzu.
+* The Jenkins server must have both Helm and kubectl installed and available to the Jenkins account, as explained later in this tutorial.
 
-* VS Code, VS Code terminálu nebo WSL a bash. 
+* VS Code, the VS Code Terminal or WSL, and Bash. 
 
 
 ## <a name="create-azure-resources"></a>Vytvoření prostředků Azure
 
-V této části vytvoříte prostředky Azure:
+In this section, you create Azure resources:
 
-* Skupina prostředků, která bude obsahovat všechny prostředky Azure pro účely tohoto kurzu.
-* Cluster [služby Azure Kubernetes](https://docs.microsoft.com/azure/aks/) (AKS).
-* [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) (ACR) pro sestavení (pomocí úloh ACR) a ukládání imagí Docker.
+* A resource group to contain all of the Azure resources for this tutorial.
+* An [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) (AKS) cluster.
+* An [Azure container registry](https://docs.microsoft.com/azure/container-registry/) (ACR) to build (using ACR Tasks) and store Docker images.
 
 1. Vytvořte skupinu prostředků.
 
@@ -57,36 +57,36 @@ V této části vytvoříte prostředky Azure:
     az group create --name MyResourceGroup --location westus2
     ```
 
-2. Vytvořte cluster AKS. Vytvořte cluster AKS v [oblasti, která podporuje vývojové prostory](../dev-spaces/about.md#supported-regions-and-configurations).
+2. Create an AKS cluster. Create the AKS cluster in a [region that supports Dev Spaces](../dev-spaces/about.md#supported-regions-and-configurations).
 
     ```bash
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2
     ```
 
-3. Nakonfigurujte AKS, aby používaly vývojové prostory.
+3. Configure AKS to use Dev Spaces.
 
     ```bash
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
-    Tento krok nainstaluje rozšíření rozhraní příkazového řádku `azds`.
+    This step installs the `azds` CLI extension.
 
-4. Vytvořte registr kontejnerů.
+4. Create a container registry.
 
     ```bash
     az acr create -n MyACR -g MyResourceGroup --sku Basic --admin-enabled true
     ```
 
-## <a name="deploy-sample-apps-to-the-aks-cluster"></a>Nasazení ukázkových aplikací do clusteru AKS
+## <a name="deploy-sample-apps-to-the-aks-cluster"></a>Deploy sample apps to the AKS cluster
 
-V této části nastavíte místo pro vývoj a nasadíte ukázkovou aplikaci do clusteru AKS, který jste vytvořili v poslední části. Aplikace se skládá ze dvou částí: *webendu* a *mywebapi*. Obě součásti jsou nasazeny ve vývojovém prostoru. Později v tomto kurzu odešlete žádost o přijetí změn na mywebapi pro aktivaci kanálu CI v Jenkinse.
+In this section, you set up a dev space and deploy a sample application to the AKS cluster you created in the last section. The application consists of two parts, *webfrontend* and *mywebapi*. Both components are deployed in a dev space. Later in this tutorial, you'll submit a pull request against mywebapi to trigger the CI pipeline in Jenkins.
 
-Další informace o používání Azure Dev Spaces a vývoje více služeb pomocí Azure Dev Spaces najdete v tématu [Začínáme s Azure dev Spaces s Java](https://docs.microsoft.com/azure/dev-spaces/get-started-java)a [vývoj více služeb s](https://docs.microsoft.com/azure/dev-spaces/multi-service-java)využitím Azure dev Spaces. Tyto kurzy poskytují další informace, které tady nejsou uvedené.
+For more information on using Azure Dev Spaces and multi-service development with Azure Dev Spaces, see [Get started on Azure Dev Spaces with Java](https://docs.microsoft.com/azure/dev-spaces/get-started-java), and [Multi-service development with Azure Dev Spaces](https://docs.microsoft.com/azure/dev-spaces/multi-service-java). Those tutorials provide additional background information not included here.
 
-1. Stáhněte si úložiště https://github.com/Azure/dev-spaces z GitHubu.
+1. Download the https://github.com/Azure/dev-spaces repo from GitHub.
 
-2. Otevřete složku `samples/java/getting-started/webfrontend` v VS Code. (Případné výchozí výzvy ohledně přidání prostředků ladění nebo obnovení projektu můžete ignorovat.)
+2. Open the `samples/java/getting-started/webfrontend` folder in VS Code. (Případné výchozí výzvy ohledně přidání prostředků ladění nebo obnovení projektu můžete ignorovat.)
 
-3. `/src/main/java/com/ms/sample/webfrontend/Application.java` aktualizace, aby vypadala takto:
+3. Update `/src/main/java/com/ms/sample/webfrontend/Application.java` to look like the following:
 
     ```java
     package com.ms.sample.webfrontend;
@@ -116,92 +116,92 @@ Další informace o používání Azure Dev Spaces a vývoje více služeb pomoc
     }
     ```
 
-4. Kliknutím na **Zobrazit** a **terminál** otevřete integrovaný terminál v vs Code.
+4. Click **View** then **Terminal** to open the Integrated Terminal in VS Code.
 
-5. Spusťte příkaz `azds prep`, abyste aplikaci připravili tak, aby běžela ve vývojovém prostoru. Tento příkaz musí být spuštěn z `dev-spaces/samples/java/getting-started/webfrontend`, aby bylo možné správně připravit aplikaci:
+5. Run the `azds prep` command to prepare your application to run in a dev space. This command must be run from `dev-spaces/samples/java/getting-started/webfrontend` to prepare your application correctly:
 
     ```bash
     azds prep --public
     ```
 
-    Příkaz `azds prep` vývojové prostory pro vývoj vygeneruje Docker a Kubernetes Asset s výchozími nastaveními. Tyto soubory jsou uchovány po dobu života projektu a lze je přizpůsobit:
+    The Dev Spaces CLI's `azds prep` command generates Docker and Kubernetes assets with default settings. These files persist for the lifetime of the project, and they can be customized:
 
-    * `./Dockerfile` a `./Dockerfile.develop` popisují image kontejneru aplikace a způsob sestavení a spuštění zdrojového kódu v rámci kontejneru.
-    * [Helm chart](https://helm.sh/docs/developing_charts/) v `./charts/webfrontend` popisuje, jak do Kubernetes nasadit kontejner.
-    * `./azds.yaml` je konfigurační soubor Azure Dev Spaces.
+    * `./Dockerfile` and `./Dockerfile.develop` describe the app's container image, and how the source code is built and runs within the container.
+    * [Helm chart](https://helm.sh/docs/topics/charts/) v `./charts/webfrontend` popisuje, jak do Kubernetes nasadit kontejner.
+    * `./azds.yaml` is the Azure Dev Spaces configuration file.
 
-    Další informace najdete v tématu [jak Azure dev Spaces fungují a jsou nakonfigurované](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
+    For more information, see [How Azure Dev Spaces works and is configured](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
 
-6. Sestavte a spusťte aplikaci v AKS pomocí příkazu `azds up`:
+6. Build and run the application in AKS using the `azds up` command:
 
     ```bash
     azds up
     ```
-    <a name="test_endpoint"></a>Vyhledejte v výstupu konzoly informace o adrese URL, která byla vytvořena příkazem `up`. Bude v tomto tvaru:
+    <a name="test_endpoint"></a>Scan the console output for information about the URL that was created by the `up` command. Bude v tomto tvaru:
 
     ```bash
     (pending registration) Service 'webfrontend' port 'http' will be available at '<url>'
     Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
     ```
-    Otevřete tuto adresu URL v okně prohlížeče a měli byste vidět webovou aplikaci. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.
+    Open this URL in a browser window, and you should see the web app. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.
 
-8. V dalším kroku nastavte a nasaďte *mywebapi*:
+8. Next, set up and deploy *mywebapi*:
 
-    1. Změňte adresář na `dev-spaces/samples/java/getting-started/mywebapi`
+    1. Change directory to `dev-spaces/samples/java/getting-started/mywebapi`
 
-    2. Spusťte
+    2. Spuštění
 
         ```bash
         azds prep
         ```
 
-    3. Spusťte
+    3. Spuštění
 
         ```bash
         azds up -d
         ```
 
-## <a name="prepare-jenkins-server"></a>Příprava serveru Jenkinse
+## <a name="prepare-jenkins-server"></a>Prepare Jenkins server
 
-V této části připravíte Server Jenkinse pro spuštění ukázkového kanálu CI.
+In this section, you prepare the Jenkins server to run the sample CI pipeline.
 
-* Nainstalovat moduly plug-in
-* Instalace rozhraní příkazového řádku Helm a Kubernetes
-* Přidat přihlašovací údaje
+* Install plug-ins
+* Install Helm and Kubernetes CLI
+* Add credentials
 
-### <a name="install-plug-ins"></a>Nainstalovat moduly plug-in
+### <a name="install-plug-ins"></a>Install plug-ins
 
-1. Přihlaste se k serveru Jenkinse. Vyberte **Spravovat jenkinse > spravovat moduly plug-in**.
-2. Na kartě **k dispozici** vyberte následující moduly plug-in:
+1. Sign in to your Jenkins server. Choose **Manage Jenkins > Manage Plugins**.
+2. On the **Available** tab, select the following plug-ins:
     * [Azure Dev Spaces](https://plugins.jenkins.io/azure-dev-spaces)
-    * [Azure Container Registry úlohy](https://plugins.jenkins.io/azure-container-registry-tasks)
-    * [Prostředí pro vložení prostředí](https://plugins.jenkins.io/envinject)
-    * [Integrace GitHubu](https://plugins.jenkins.io/github-pullrequest)
+    * [Azure Container Registry Tasks](https://plugins.jenkins.io/azure-container-registry-tasks)
+    * [Environment Injector](https://plugins.jenkins.io/envinject)
+    * [GitHub Integration](https://plugins.jenkins.io/github-pullrequest)
 
-    Pokud se tyto moduly plug-in nezobrazí v seznamu, podívejte se na kartu **nainstalované** a zjistěte, jestli jsou už nainstalované.
+    If these plug-ins don't appear in the list, check the **Installed** tab to see if they're already installed.
 
-3. Pokud chcete nainstalovat moduly plug-in, vyberte **Stáhnout hned a po restartování nainstalujte**.
+3. To install the plug-ins, choose **Download now and install after restart**.
 
-4. Dokončete instalaci restartováním serveru Jenkinse.
+4. Restart your Jenkins server to complete the installation.
 
-### <a name="install-helm-and-kubectl"></a>Instalace Helm a kubectl
+### <a name="install-helm-and-kubectl"></a>Install Helm and kubectl
 
-Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. Když se Jenkinse nainstaluje, vytvoří účet správce s názvem *Jenkinse*. Helm i kubectl musí být přístupné pro uživatele Jenkinse.
+The sample pipeline uses Helm and kubectl to deploy to the dev space. When Jenkins is installed, it creates an admin account named *jenkins*. Both Helm and kubectl need to be accessible to the jenkins user.
 
-1. Vytvořte připojení SSH k hlavnímu serveru Jenkinse. 
+1. Make an SSH connection to the Jenkins master. 
 
-2. Přepněte na uživatele `jenkins`:
+2. Switch to the `jenkins` user:
     ```bash
     sudo su jenkins
     ```
 
-3. Nainstalujte rozhraní příkazového řádku Helm. Další informace najdete v tématu [instalace Helm](https://helm.sh/docs/using_helm/#installing-helm).
+3. Install the Helm CLI. For more information, see [Installing Helm](https://helm.sh/docs/using_helm/#installing-helm).
 
-4. Nainstalujte kubectl. Další informace najdete v tématu [**AZ ACS Kubernetes Install-CLI**](https://helm.sh/docs/using_helm/#installing-helm).
+4. Install kubectl. For more information, see [**az acs kubernetes install-cli**](https://helm.sh/docs/using_helm/#installing-helm).
 
-### <a name="add-credentials-to-jenkins"></a>Přidání přihlašovacích údajů do Jenkinse
+### <a name="add-credentials-to-jenkins"></a>Add credentials to Jenkins
 
-1. Jenkinse potřebuje instanční objekt Azure pro ověřování a přístup k prostředkům Azure. Chcete-li vytvořit instanční objekt, přečtěte si část [Vytvoření instančního objektu služby](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) v kurzu nasazení do Azure App Service. Nezapomeňte uložit kopii výstupu z `create-for-rbac`, protože tyto informace potřebujete k dokončení dalšího kroku. Výstup bude vypadat přibližně takto:
+1. Jenkins needs an Azure service principal for authenticating and accessing Azure resources. To create the service principal, Refer to the [Create service principal](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) section in the Deploy to Azure App Service tutorial. Be sure to save a copy of the output from `create-for-rbac` because you need that information to complete the next step. The output will look something like this:
 
     ```json
     {
@@ -213,23 +213,23 @@ Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. 
     }
     ```
 
-2. Do Jenkinse přidejte typ přihlašovacích údajů *instančního objektu služby* , a Microsoft Azure to pomocí informací o instančním objektu z předchozího kroku. Názvy na snímku obrazovky níže odpovídají výstupu z `create-for-rbac`.
+2. Add a *Microsoft Azure Service Principal* credential type in Jenkins, using the service principal information from the previous step. The names in the screenshot below correspond to the output from `create-for-rbac`.
 
-    Pole **ID** je název přihlašovacího údaje Jenkinse pro instanční objekt. V příkladu se používá hodnota `displayName` (v této instanci, `xxxxxxxjenkinssp`), ale můžete použít libovolný text, který chcete. Tento název přihlašovacích údajů je hodnota proměnné prostředí AZURE_CRED_ID v další části.
+    The **ID** field is the Jenkins credential name for your service principal. The example uses the value of `displayName` (in this instance, `xxxxxxxjenkinssp`), but you can use any text you want. This credential name is the value for the AZURE_CRED_ID environment variable in the next section.
 
-    ![Přidání přihlašovacích údajů instančního objektu do Jenkinse](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
+    ![Add service principal credentials to Jenkins](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
 
-    **Popis** je volitelný. Podrobnější pokyny najdete v tématu [Přidání instančního objektu do jenkinse](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) v kurzu nasazení do Azure App Service. 
+    The **Description** is optional. For more detailed instructions, see [Add service principal to Jenkins](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) section in the Deploy to Azure App Service tutorial. 
 
 
 
-3. Pokud chcete zobrazit přihlašovací údaje pro ACR, spusťte tento příkaz:
+3. To show your ACR credentials, run this command:
 
     ```bash
     az acr credential show -n <yourRegistryName>
     ```
 
-    Vytvořte kopii výstupu JSON, která by měla vypadat přibližně takto:
+    Make a copy of the JSON output, which should look something like this:
 
     ```json
     {
@@ -247,35 +247,35 @@ Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. 
     }
     ```
 
-4. Do Jenkinse přidejte *uživatelské jméno s přihlašovacími údaji k heslu* . **Uživatelské jméno** je uživatelské jméno z posledního kroku, v tomto příkladu `acr01`. **Heslo** je hodnota pro první heslo, v tomto příkladu `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. **ID** tohoto přihlašovacího údaje je hodnota ACR_CRED_ID.
+4. Add a *Username with password* credential type in Jenkins. The **username** is the username from the last step, in this example `acr01`. The **password** is the value for the first password, in this example `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. The **ID** of this credential is the value of ACR_CRED_ID.
 
-5. Nastavte přihlašovací údaje AKS. Přidejte do Jenkinse typ přihlašovacích údajů *Konfigurace Kubernetes (kubeconfig)* (použijte možnost zadat přímo). Přihlašovací údaje pro přístup ke clusteru AKS získáte spuštěním následujícího příkazu:
+5. Set up an AKS credential. Add a *Kubernetes configuration (kubeconfig)* credential type in Jenkins (use the option "Enter directly"). To get the access credentials for your AKS cluster, run the following command:
 
     ```cmd
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
-   **ID** Toto pověření je hodnota KUBE_CONFIG_ID v další části.
+   The **ID** this credential is the value of KUBE_CONFIG_ID in the next section.
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-Scénář vybraný pro příklad kanálu je založený na vzoru reálného světa: žádost o přijetí změn aktivuje kanál CI, který sestaví a následně nasadí navrhované změny do vývojového prostoru Azure pro testování a kontrolu. V závislosti na výsledku recenze se změny buď sloučí, a nasadí, aby se AKS nebo zahodily. Nakonec se odebere místo pro vývoj.
+The scenario selected for the example pipeline is based on a real-world pattern: A pull request triggers a CI pipeline that builds and then deploys the proposed changes to an Azure dev space for testing and review. Depending on the outcome of the review, the changes are either merged and deployed to AKS or discarded. Finally, the dev space is removed.
 
-Konfigurace kanálu Jenkinse a Jenkinsfile definují fáze v kanálu CI. Tento vývojový diagram zobrazuje fáze zřetězení a body rozhodování definované Jenkinsfileem:
+The Jenkins pipeline configuration and Jenkinsfile define the stages in the CI pipeline. This flowchart shows the pipeline stages and decision points defined by the Jenkinsfile:
 
-![Tok kanálu Jenkinse](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
+![Jenkins pipeline flow](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
 
-1. Stáhněte si upravenou verzi projektu *mywebapi* z https://github.com/azure-devops/mywebapi. Tento projekt obsahuje několik souborů potřebných k vytvoření kanálu, včetně grafu *Jenkinsfile*, *fázemi*a Helm.
+1. Download a modified version of the *mywebapi* project from https://github.com/azure-devops/mywebapi. This project contains several files needed to create a pipeline, including the *Jenkinsfile*, *Dockerfiles*, and Helm chart.
 
-2. Přihlaste se k Jenkinse. V nabídce na levé straně vyberte **Přidat položku**.
+2. Log into Jenkins. From the menu on the left, select **Add Item**.
 
-3. Vyberte **kanál**a potom zadejte název do pole **Zadejte název položky** . Vyberte **OK**a obrazovka konfigurace kanálu se automaticky otevře.
+3. Select **Pipeline**, and then enter a name in the **Enter an item name** box. Select **OK**, and then the pipeline configuration screen will automatically open.
 
-4. Na kartě **Obecné** ověřte, že **je pro spuštění připraveno prostředí**. 
+4. On the **General** tab, check **Prepare an environment for the run**. 
 
-5. **Zachovejte proměnné prostředí Jenkinse** a **Udržujte proměnné sestavení Jenkinse**.
+5. Check **Keep Jenkins Environment Variables** and **Keep Jenkins Build Variables**.
 
-6. Do pole **vlastnosti Content (obsah** ) zadejte následující proměnné prostředí:
+6. In the **Properties Content** box, enter the following environment variables:
 
     ```
     AZURE_CRED_ID=[your credential ID of service principal]
@@ -292,19 +292,19 @@ Konfigurace kanálu Jenkinse a Jenkinsfile definují fáze v kanálu CI. Tento v
     TEST_ENDPOINT=[your web frontend end point for testing. Should be webfrontend.XXXXXXXXXXXXXXXXXXX.xxxxxx.aksapp.io]
     ```
 
-    Pomocí ukázkových hodnot uvedených v předchozích částech by měl seznam proměnných prostředí vypadat přibližně takto:
+    Using the sample values given in the preceding sections, the list of environment variables should look something like this:
 
-    ![Proměnné prostředí Jenkinse kanálu](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-environment.png)
+    ![Jenkins pipeline environment variables](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-environment.png)
 
-7. V **> definice kanálu**vyberte **skript kanálu z SCM** .
-8. V **SCM**zvolte **Git** a pak zadejte adresu URL úložiště.
-9. Do **specifikátoru větve**zadejte `refs/remotes/origin/${GITHUB_PR_SOURCE_BRANCH}`.
-10. Vyplňte adresu URL úložiště SCM a cestu ke skriptu "Jenkinsfile".
-11. Měla by být zaškrtnuta **odlehčená rezervace** .
+7. Choose **Pipeline script from SCM** in **Pipeline > Definition**.
+8. In **SCM**, choose **Git** and then enter your repo URL.
+9. In **Branch Specifier**, enter `refs/remotes/origin/${GITHUB_PR_SOURCE_BRANCH}`.
+10. Fill in the SCM repo URL and script path "Jenkinsfile".
+11. **Lightweight checkout** should be checked.
 
-## <a name="create-a-pull-request-to-trigger-the-pipeline"></a>Vytvoření žádosti o přijetí změn pro aktivaci kanálu
+## <a name="create-a-pull-request-to-trigger-the-pipeline"></a>Create a pull request to trigger the pipeline
 
-K dokončení kroku 3 v této části budete muset komentovat část Jenkinsfile, jinak se zobrazí chyba 404, když se pokusíte zobrazit nové a staré verze vedle sebe. Ve výchozím nastavení se při zvolení sloučení žádosti o přijetí změn odebere předchozí sdílená verze mywebapi a nahradí se novou verzí. Před dokončením kroku 1 proveďte následující změnu v Jenkinsfile:
+To complete step 3 in this section, you will need to comment part of the Jenkinsfile, otherwise you will get a 404 error when you try to view the new and old versions side by side. By default, when you choose to merge the PR, the previous shared version of mywebapi will be removed and replaced by the new version. Make the following change to the Jenkinsfile before completing step 1:
 
 ```Groovy
     if (userInput == true) {
@@ -333,7 +333,7 @@ K dokončení kroku 3 v této části budete muset komentovat část Jenkinsfile
     }
 ```
 
-1. Proveďte změnu `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`a pak vytvořte žádost o přijetí změn. Příklad:
+1. Make a change to `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`and then create a pull request. Například:
 
     ```java
     public String index() {
@@ -341,23 +341,23 @@ K dokončení kroku 3 v této části budete muset komentovat část Jenkinsfile
     }
     ```
 
-2. Přihlaste se k Jenkinse a vyberte název kanálu a pak zvolte **sestavit hned**. 
+2. Sign into Jenkins and select the pipeline name, and then choose **Build Now**. 
 
-    Můžete také nastavit *Webhook* , který automaticky aktivuje kanál Jenkinse. Po zadání žádosti o přijetí změn vydá GitHub příspěvek na Jenkinse, který aktivuje kanál. Další informace o nastavení Webhooku najdete v tématu [připojení Jenkinse k GitHubu](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github).
+    You can also set up a *webhook* to automatically trigger the Jenkins pipeline. When a pull request is entered, GitHub issues a POST to Jenkins, triggering the pipeline. For more information about setting up a webhook, see [Connect Jenkins to GitHub](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github).
 
-3. Porovnat změny s aktuální sdílenou verzí:
+3. Compare changes to the current shared version:
 
-    1. Otevřete prohlížeč a přejděte na sdílenou verzi `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. TEST_ENDPOINT obsahuje adresu URL.
+    1. Open your browser and navigate to the shared version `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. TEST_ENDPOINT contains the URL.
 
-    2. Otevřete jinou kartu a potom zadejte adresu URL vývojového prostoru žádosti o přijetí změn. Bude se podobat `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. Odkaz najdete v **historii sestavení > < Build # > >** pro úlohu Jenkinse. Vyhledejte na stránce `aksapp`, nebo pokud chcete zobrazit pouze předponu, vyhledejte `azdsprefix`.
+    2. Open another tab and then enter the PR dev space URL. It will be similar to `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. You'll find the link in **Build History > <build#> > Console Output**  for the Jenkins job. Search the page for `aksapp`, or to see only the prefix, search for `azdsprefix`.
 
  
 
-### <a name="constructing-the-url-to-the-child-dev-space"></a>Sestavení adresy URL podřízeného vývojového prostoru
+### <a name="constructing-the-url-to-the-child-dev-space"></a>Constructing the URL to the child dev space
 
-Při zaznamenání žádosti o přijetí změn vytvoří Jenkinse podřízený prostor pro vývoj na základě sdíleného vývojového prostoru týmu a spustí kód z vaší žádosti o přijetí změn v podřízeném prostoru pro vývoj. Adresa URL podřízeného vývojového prostoru má formu `http://$env.azdsprefix.<test_endpoint>`. 
+When you file a pull request, Jenkins creates a child dev space based on the team's shared dev space and runs the code from your pull request in that child dev space. The URL to the child dev space takes the form `http://$env.azdsprefix.<test_endpoint>`. 
 
-**$env. azdsprefix** se nastavuje během provádění kanálu modulem plug-in Azure dev Spaces podle **devSpacesCreate**:
+**$env.azdsprefix** is set during pipeline execution by the Azure Dev Spaces plug-in by **devSpacesCreate**:
 
 ```Groovy
 stage('create dev space') {
@@ -370,9 +370,9 @@ stage('create dev space') {
 }
 ```
 
-`test_endpoint` je adresa URL aplikace webendu, kterou jste předtím nasadili pomocí `azds up`v [části nasazení ukázkových aplikací do clusteru AKS, krok 7](#test_endpoint). V konfiguraci kanálu je nastavená hodnota `$env.TEST_ENDPOINT`. 
+The `test_endpoint` is the URL to the webfrontend app you previously deployed using `azds up`in [Deploy sample apps to the AKS cluster, Step 7](#test_endpoint). The value of `$env.TEST_ENDPOINT` is set in the pipeline configuration. 
 
-Následující fragment kódu ukazuje, jak se adresa URL podřízeného prostoru pro vývoj používá ve fázi `smoketest`. Kód zkontroluje, zda je k dispozici podřízený prostor pro vývoj TEST_ENDPOINT a v takovém případě stáhne text s pozdravem do stdout:
+The following code snippet shows how the child dev space URL is used in the `smoketest` stage. The code checks to see if the child dev space TEST_ENDPOINT is available, and if so, downloads the greeting text to stdout:
 
 ```Groovy
 stage('smoketest') {
@@ -401,7 +401,7 @@ stage('smoketest') {
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s použitím ukázkové aplikace hotovi, vyčistěte prostředky Azure odstraněním skupiny prostředků:
+When you're done using the sample application, clean up Azure resources by deleting the resource group:
 
 ```bash
 az group delete -y --no-wait -n MyResourceGroup
@@ -409,16 +409,16 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak používat modul plug-in Azure Dev Spaces pro Jenkinse a modul plug-in Azure Container Registry k vytváření kódu a nasazování do vývojového prostoru.
+In this article, you learned how to use the Azure Dev Spaces plug-in for Jenkins and the Azure Container Registry plug-in to build code and deploy to a dev space.
 
-Následující seznam prostředků poskytuje další informace o Azure Dev Spaces, úlohách ACR a CI/CD s Jenkinse.
+The following list of resources provides more information on Azure Dev Spaces, ACR Tasks, and CI/CD with Jenkins.
 
 Azure Dev Spaces:
 * [Jak funguje a jak je nakonfigurována služba Azure Dev Spaces](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
 
-ACR úlohy:
+ACR Tasks:
 * [Automatizace oprav operačního systému a architektury pomocí úloh ACR](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [Automatické sestavení při potvrzení kódu](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
+* [Automatic build on code commit](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
 
-CI/CD s Jenkinse v Azure:
-* [Průběžné nasazování Jenkinse](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+CI/CD with Jenkins on Azure:
+* [Jenkins continuous deployment](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)

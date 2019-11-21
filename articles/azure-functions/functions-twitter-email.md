@@ -1,22 +1,18 @@
 ---
 title: Vytvoření funkce, která se integruje s Azure Logic Apps
 description: Vytvořte funkci, která se integruje se službami Azure Logic Apps a Azure Cognitive Services za účelem kategorizace mínění ve tweetech a odesílání oznámení, pokud je mínění špatné.
-services: functions, logic-apps, cognitive-services
-keywords: pracovní postup, cloudové aplikace, cloudové služby, firemní procesy, systémová integrace, integrace podnikových aplikací, enterprise application integration, EAI
 author: craigshoemaker
-manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480033"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226611"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
@@ -36,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Propojení aplikace logiky s funkcí
 > * Odeslání e-mailu na základě odpovědi z funkce
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Aktivní účet na [Twitteru](https://twitter.com/). 
 + Účet [Outlook.com](https://outlook.com/) (pro odesílání oznámení).
@@ -47,7 +43,7 @@ Pokud jste tento krok zatím neprovedli, vraťte se k němu a vytvořte aplikaci
 
 Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatné prostředky. K rozpoznávání mínění v monitorovaných tweetech použijte rozhraní API pro analýzu textu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
@@ -58,7 +54,7 @@ Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatn
     | Nastavení      |  Navrhovaná hodnota   | Popis                                        |
     | --- | --- | --- |
     | **Název** | MyCognitiveServicesAccnt | Zvolte jedinečný název účtu. |
-    | **Location** | Západní USA | Použijte umístění, které je k vám nejblíže. |
+    | **Umístění** | Západní USA | Použijte umístění, které je k vám nejblíže. |
     | **Cenová úroveň** | F0 | Začněte s nejnižší úrovní. Pokud vyčerpáte všechna volání, proveďte škálování na vyšší úroveň.|
     | **Skupina prostředků** | myResourceGroup | Stejnou skupinu prostředků použijte pro všechny služby v tomto kurzu.|
 
@@ -125,7 +121,7 @@ Funkce poskytují skvělý způsob snižování zátěže úloh zpracování v p
     ```
     Tento kód funkce vrátí barevnou kategorii na základě skóre mínění přijatého v požadavku. 
 
-4. Pokud chcete funkci otestovat, kliknutím na **Test** úplně vpravo rozbalte kartu Test. Jako **Text požadavku** zadejte hodnotu `0.2` a klikněte na **Spustit**. V textu odpovědi se vrátí hodnota **RED** (Červená). 
+4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. V textu odpovědi se vrátí hodnota **RED** (Červená). 
 
     ![Test funkce na webu Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -145,7 +141,7 @@ Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplik
     | ----------------- | ------------ | ------------- |
     | **Název** | TweetSentiment | Zvolte vhodný název vaší aplikace. |
     | **Skupina prostředků** | myResourceGroup | Zvolte stejnou existující skupinu prostředků jako předtím. |
-    | **Location** | USA – východ | Zvolte umístění, které je blízko vás. |    
+    | **Umístění** | USA – východ | Zvolte umístění, které je blízko vás. |    
 
 4. Po zadání odpovídajících hodnot nastavení klikněte na **Vytvořit** a vytvořte aplikaci logiky. 
 
@@ -209,7 +205,7 @@ Když je teď nakonfigurované rozpoznávání mínění, můžete do své funkc
 
 4. V části **Text požadavku** klikněte na **Skóre** a pak na **Uložit**.
 
-    ![Skóre](media/functions-twitter-email/17-function-input-score.png)
+    ![Hodnocení](media/functions-twitter-email/17-function-input-score.png)
 
 Vaše funkce se teď aktivuje při odeslání skóre mínění z aplikace logiky. Funkce do aplikace logiky vrátí barevně rozlišenou kategorii. Dále přidáte e-mailové oznámení, které se odešle, když funkce vrátí hodnotu mínění **RED** (Červená). 
 
@@ -285,7 +281,7 @@ Pokud chcete aplikaci logiky zakázat, klikněte na **Přehled** a pak v horní 
 
 ![Protokoly funkce](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

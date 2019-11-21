@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication uživatele shromažďování dat – Azure Active Directory
-description: Jaké informace slouží ke snadnější, ověřování uživatelů pomocí ověřování Azure Multi-Factor Authentication?
+title: Azure Multi-Factor Authentication user data collection - Azure Active Directory
+description: What information is used to help authenticate users by Azure Multi-Factor Authentication?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,183 +11,183 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe7583ff639fe46671589122efa27b7b00ef9552
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359037"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208540"
 ---
-# <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování dat uživatele služby Azure Multi-Factor Authentication
+# <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication user data collection
 
-Tento dokument vysvětluje, jak vyhledat uživatele shromažďované nástrojem Azure Multi-Factor Authentication (MFA Server) a Azure MFA (Cloud-based) v případě, že chcete odebrat.
+This document explains how to find user information collected by Azure Multi-Factor Authentication Server (MFA Server) and Azure MFA (Cloud-based) in the event you would like to remove it.
 
 [!INCLUDE [gdpr-hybrid-note](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="information-collected"></a>Shromážděné informace
+## <a name="information-collected"></a>Information collected
 
-MFA Server, rozšíření NPS a Windows Server 2016 Azure MFA adaptér služby AD FS shromažďovat a ukládat následující informace po dobu 90 dnů.
+MFA Server, the NPS Extension, and the Windows Server 2016 Azure MFA AD FS Adapter collect and store the following information for 90 days.
 
-Pokusy o ověření (používá se pro vytváření sestav a řešení potíží s):
+Authentication Attempts (used for reporting and troubleshooting):
 
-- Timestamp
+- Časové razítko
 - Uživatelské jméno
-- Křestní jméno
+- Jméno
 - Příjmení
-- E-mailová adresa
-- Skupina uživatelů
-- Metoda ověřování (telefonní hovor, Text tokenu OATH zpráva, mobilní aplikace)
-- Režim telefonního hovoru (standardní, kód PIN)
-- Směr textové zprávy (jednosměrné, pokud vytvoříte obousměrný)
-- Režim textové zprávy (ověřování jednorázovým HESLEM, jednorázové heslo + kód PIN)
-- Režim mobilní aplikace (standardní, kód PIN)
-- Režim tokenu OATH (standardní, kód PIN)
-- Typ ověřování
+- Email Address
+- User Group
+- Authentication Method (Phone Call, Text Message, Mobile App, OATH Token)
+- Phone Call Mode (Standard, PIN)
+- Text Message Direction (One-Way, Two-Way)
+- Text Message Mode (OTP, OTP + PIN)
+- Mobile App Mode (Standard, PIN)
+- OATH Token Mode (Standard, PIN)
+- Authentication Type
 - Název aplikace
-- Kód země primárního volání
-- Volání primární telefonní číslo
-- Primární volání rozšíření
-- Primární ověření volání
-- Výsledek volání primární
-- Kód země záložního volání
-- Volání záložní telefonní číslo
-- Rozšíření zálohování volání
-- Volání zálohy ověřen
-- Výsledek volání zálohy
-- Celkové ověření
-- Celkový výsledek
+- Primary Call Country Code
+- Primary Call Phone Number
+- Primary Call Extension
+- Primary Call Authenticated
+- Primary Call Result
+- Backup Call Country Code
+- Backup Call Phone Number
+- Backup Call Extension
+- Backup Call Authenticated
+- Backup Call Result
+- Overall Authenticated
+- Overall Result
 - Výsledky
-- Ověřeno
+- Authenticated
 - Výsledek
-- Zahajuje se IP adresa
+- Initiating IP Address
 - Zařízení
-- Token zařízení
-- Typ zařízení
-- Verze mobilní aplikace
+- Device Token
+- Device Type
+- Mobile App Version
 - Verze operačního systému
 - Výsledek
-- Využité vyhledat oznámení
+- Used Check for Notification
 
-Počet aktivací (pokusí aktivovat účet mobilní aplikace Microsoft Authenticator):
+Activations (attempts to activate an account in the Microsoft Authenticator mobile app):
 - Uživatelské jméno
 - Název účtu
-- Timestamp
-- Získat výsledek aktivační kód
-- Aktivovat úspěch
-- Chyba aktivace
-- Aktivace stavu výsledku
-- Název zařízení
-- Typ zařízení
-- Verze aplikace
-- Token OATH povoleno
+- Časové razítko
+- Get Activation Code Result
+- Activate Success
+- Activate Error
+- Activation Status Result
+- Device  Name
+- Device Type
+- App Version
+- OATH Token Enabled
 
-Bloky (používá k určení blokovaných stavu a pro vytváření sestav):
+Blocks (used to determine blocked state and for reporting):
 
-- Blokovat časové razítko
-- Blok podle uživatelského jména
+- Block Timestamp
+- Block By Username
 - Uživatelské jméno
 - Kód země
 - Telefonní číslo
-- Telefonní číslo ve formátu
-- Linka
-- Vyčištění rozšíření
-- Blokováno
-- Důvod zablokování
-- Časové razítko ukončení
-- Důvod ukončení
+- Phone Number Formatted
+- Přípona
+- Clean Extension
+- Blocked
+- Block Reason
+- Completion Timestamp
+- Completion Reason
 - Uzamčení účtu
-- Upozornění na podvod
-- Upozornění na podvod Neblokován
+- Fraud Alert
+- Fraud Alert Not Blocked
 - Jazyk
 
-Přeskočení (používá se pro vytváření sestav):
+Bypasses (used for reporting):
 
-- Časové razítko jednorázové přihlášení
-- Počet sekund jednorázového přihlášení
-- Jednorázové přihlášení podle uživatelského jména
+- Bypass Timestamp
+- Bypass Seconds
+- Bypass By Username
 - Uživatelské jméno
 - Kód země
 - Telefonní číslo
-- Telefonní číslo ve formátu
-- Linka
-- Vyčištění rozšíření
-- Důvod k jednorázovému přihlášení
-- Časové razítko ukončení
-- Důvod ukončení
-- Použít jednorázové přihlášení
+- Phone Number Formatted
+- Přípona
+- Clean Extension
+- Bypass Reason
+- Completion Timestamp
+- Completion Reason
+- Bypass Used
 
-Změny (používají k synchronizaci změny uživatelů do MFA serveru nebo AAD):
+Changes (used to sync user changes to MFA Server or Azure AD):
 
-- Změnit časové razítko
+- Change Timestamp
 - Uživatelské jméno
-- Nový kód země
-- Nové telefonní číslo
-- Nové rozšíření
-- Nový kód země záložního telefonu
-- Nové telefonní číslo záložního telefonu
-- Nové rozšíření zálohování
-- Nový kód PIN
-- Vyžadována změna kódu PIN
-- Původní Token zařízení
-- Nový Token zařízení
+- New Country Code
+- New Phone Number
+- New Extension
+- New Backup Country Code
+- New Backup Phone Number
+- New Backup Extension
+- New PIN
+- PIN Change Required
+- Old Device Token
+- New Device Token
 
-## <a name="gather-data-from-mfa-server"></a>Shromažďování dat z MFA serveru
+## <a name="gather-data-from-mfa-server"></a>Gather data from MFA Server
 
-Následující proces pro MFA Server verze 8.0 nebo novější umožňuje správcům se exportovat všechna data pro uživatele:
+For MFA Server version 8.0 or higher the following process allows administrators to export all data for users:
 
-- Přihlaste se k serveru MFA, přejděte **uživatelé** kartu, vyberte uživatele a klikněte na **upravit** tlačítko. Pořizovat snímky obrazovky (Alt + PrtScn) jednotlivé karty můžete poskytnout uživateli jejich aktuální nastavení vícefaktorového ověřování.
-- Z příkazového řádku MFA serveru, spusťte následující příkaz změna cestu podle vaší instalace `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` k vytvoření JSON ve formátu souboru.
-- Správci mohou také pomocí operace GetUserGdpr sady SDK webové služby jako možnost exportovat všechny MFA cloudové služby informace shromážděné pro daného uživatele nebo začlenit do větší řešení generování sestav.
-- Hledání `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` a všechny zálohy pro "\<uživatelské jméno >" (včetně uvozovek v hledání) najít všechny výskyty záznam uživatele je přidáno nebo změněno.
-   - Tyto záznamy můžete omezen (ale nebylo odstraněno) zrušením **"Protokolovat změny uživatelů"** v MFA Server uživatelského rozhraní, protokolování části, karta soubory protokolu.
-   - Pokud je nakonfigurovaná syslog, a **"Protokolovat změny uživatelů"** se změnami MFA Server uživatelského rozhraní, protokolování části, pomocí karty Syslog, pak položky protokolu se dají shromáždit z protokolu syslog místo.
-- Další výskyty uživatelské jméno v souborech MultiFactorAuthSvc.log a druhý Server MFA protokolů vztahující se k ověřování, které pokusy jsou považovány za provozu a hromadně šířenými informacím pomocí exportu MultiFactorAuthGdpr.exe nebo sadu SDK webové služby GetUserGdpr.
+- Log in to your MFA Server, navigate to the **Users** tab, select the user in question, and click the **Edit** button. Take screenshots (Alt-PrtScn) of each tab to provide the user their current MFA settings.
+- From the command line of the MFA Server, run the following command changing the path according to your installation `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` to produce a JSON formatted file.
+- Administrators can also use the Web Service SDK GetUserGdpr operation as an option to export all MFA cloud service information collected for a given user or  incorporate into a larger reporting solution.
+- Search `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` and any backups for “\<username>” (include the quotes in the search) to find all instances of the user record being added or changed.
+   - These records can be limited (but not eliminated) by unchecking **“Log user changes”** in the MFA Server UX, Logging section, Log Files tab.
+   - If syslog is configured, and **“Log user changes”** is checked in the MFA Server UX, Logging section, Syslog tab, then the log entries can be gathered from syslog instead.
+- Other occurrences of the username in MultiFactorAuthSvc.log and other MFA Server log files pertaining to authentication attempts are considered operational and duplicative to the information provided using MultiFactorAuthGdpr.exe export or Web Service SDK GetUserGdpr.
 
-## <a name="delete-data-from-mfa-server"></a>Odstranění dat z MFA serveru
+## <a name="delete-data-from-mfa-server"></a>Delete data from MFA Server
 
-Z příkazového řádku MFA serveru, spusťte následující příkaz změna cestu podle vaší instalace `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` můžete odstranit všechny MFA cloudové služby informace shromážděné pro tohoto uživatele.
+From the command line of the MFA Server, run the following command changing the path according to your installation `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` to delete all MFA cloud service information collected for this user.
 
-- Odstranění dat zahrnutých v exportu v reálném čase, ale může trvat až 30 dnů pro provozní databázi nebo hromadně šířenými data chcete úplně odebrat.
-- Správci mohou také pomocí operace DeleteUserGdpr sady SDK webové služby jako možnost odstranit všechny MFA cloudové služby informace shromážděné pro daného uživatele nebo začlenit do větší řešení generování sestav.
+- Data included in the export is deleted in real time, but it may take up to 30 days for operational or duplicative data to be fully removed.
+- Administrators can also use the Web Service SDK DeleteUserGdpr operation as an option to delete all MFA cloud service information collected for a given user or incorporate into a larger reporting solution.
 
-## <a name="gather-data-from-nps-extension"></a>Shromažďování dat z rozšíření NPS
+## <a name="gather-data-from-nps-extension"></a>Gather data from NPS Extension
 
-Použití [portál společnosti Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvoříte žádost o Export.
+Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Export.
 
-- Informace o MFA je součástí export, což může trvat hodiny nebo i dny.
-- Výskyty uživatelské jméno v AzureMfa/AuthN/AuthNOptCh, AzureMfa/AuthZ/AuthZAdminCh a protokoly událostí AzureMfa/AuthZ/AuthZOptCh jsou považovány za provozu a hromadně šířenými na informace uvedené v exportu.
+- MFA information is included in the export, which may take hours or days to complete.
+- Occurrences of the username in the AzureMfa/AuthN/AuthNOptCh, AzureMfa/AuthZ/AuthZAdminCh, and AzureMfa/AuthZ/AuthZOptCh event logs are considered operational and duplicative to the information provided in the export.
 
-## <a name="delete-data-from-nps-extension"></a>Odstranění dat z rozšíření NPS
+## <a name="delete-data-from-nps-extension"></a>Delete data from NPS Extension
 
-Použití [portál společnosti Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost pro zavřít účet odstraníte všechny MFA cloudové služby informace shromážděné pro tohoto uživatele.
+Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Account Close to delete all MFA cloud service information collected for this user.
 
-- Může trvat až 30 dnů pro data úplně odebrala.
+- It may take up to 30 days for data to be fully removed.
 
-## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Shromažďování dat ze systému Windows Server 2016 Azure MFA adaptér služby AD FS
+## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Gather data from Windows Server 2016 Azure MFA AD FS Adapter
 
-Použití [portál společnosti Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvoříte žádost o Export. 
+Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Export. 
 
-- Informace o MFA je součástí export, což může trvat hodiny nebo i dny.
-- Výskyty uživatelské jméno v protokolech událostí AD FS trasování/Debug (je-li povoleno) se považují za provozu a hromadně šířenými na informace uvedené v exportu.
+- MFA information is included in the export, which may take hours or days to complete.
+- Occurrences of the username in the AD FS Tracing/Debug event logs (if enabled) are considered operational and duplicative to the information provided in the export.
 
-## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Odstranění dat z Windows serveru 2016 Azure MFA adaptér služby AD FS
+## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Delete data from Windows Server 2016 Azure MFA AD FS Adapter
 
-Použití [portál společnosti Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost pro zavřít účet odstraníte všechny MFA cloudové služby informace shromážděné pro tohoto uživatele.
+Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Account Close to delete all MFA cloud service information collected for this user.
 
-- Může trvat až 30 dnů pro data úplně odebrala.
+- It may take up to 30 days for data to be fully removed.
 
-## <a name="gather-data-for-azure-mfa"></a>Shromažďování dat pro Azure MFA
+## <a name="gather-data-for-azure-mfa"></a>Gather data for Azure MFA
 
-Použití [portál společnosti Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvoříte žádost o Export.
+Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Export.
 
-- Informace o MFA je součástí export, což může trvat hodiny nebo i dny.
+- MFA information is included in the export, which may take hours or days to complete.
 
-## <a name="delete-data-for-azure-mfa"></a>Odstranit Data pro Azure MFA
+## <a name="delete-data-for-azure-mfa"></a>Delete Data for Azure MFA
 
-Použití [portál společnosti Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost pro zavřít účet odstraníte všechny MFA cloudové služby informace shromážděné pro tohoto uživatele.
+Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Account Close to delete all MFA cloud service information collected for this user.
 
-- Může trvat až 30 dnů pro data úplně odebrala.
+- It may take up to 30 days for data to be fully removed.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[MFA Server sestav](howto-mfa-reporting.md)
+[MFA Server reporting](howto-mfa-reporting.md)

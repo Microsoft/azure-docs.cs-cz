@@ -1,5 +1,5 @@
 ---
-title: Postup pro Azure – Použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning v Azure
+title: Use different attestation mechanisms with the Azure IoT Hub Device Provisioning Service Client SDK
 description: Postup pro Azure – Použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning v Azure
 author: robinsh
 ms.author: robinsh
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: fd974ad81a641afb1c93fffb0a12a147c55b3a73
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 0cde591d2ec8c6f2f51c83b3f263c188c8cf2605
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951899"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228270"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning pro C
 
-V tomto článku se dozvíte, jak používat různé [mechanismy ověřování](concepts-security.md#attestation-mechanism) pomocí klientské sady SDK služby Device Provisioning pro C. Můžete použít fyzické zařízení nebo simulátor. Služba zřizování podporuje ověřování pro dva typy mechanismů ověřování: X. 509 a Trusted Platform Module (TPM).
+V tomto článku se dozvíte, jak používat různé [mechanismy ověřování](concepts-security.md#attestation-mechanism) pomocí klientské sady SDK služby Device Provisioning pro C. Můžete použít fyzické zařízení nebo simulátor. The provisioning service supports authentication for two types of attestation mechanisms: X.509 and Trusted Platform Module (TPM).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Připravte vývojové prostředí podle části Příprava vývojového prostředí v průvodci [Vytvoření a zřízení simulovaného zařízení](./quick-create-simulated-device.md).
 
@@ -27,19 +27,19 @@ Připravte vývojové prostředí podle části Příprava vývojového prostře
 
 Jako výrobce zařízení musíte nejprve zvolit mechanismus ověřování založený na některém z podporovaných typů. V současné době [klientská sada SDK služby Device Provisioning pro C](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) poskytuje podporu následujících mechanismů ověřování: 
 
-- [Čip TPM (Trusted Platform Module)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM je vytvořený standard pro většinu platforem zařízení založených na systému Windows a také pro některá zařízení se systémem Linux/Ubuntu. Jako výrobce zařízení můžete zvolit tento mechanismus ověřování, pokud vaše zařízení používají některý z následujících operačních systémů a hledáte zavedený standard. V případě čipů TPM můžete zařízení do služby Device Provisioning registrovat pouze jednotlivě. Pro účely vývoje můžete použít simulátor TPM na svém vývojovém počítači s Windows nebo Linuxem.
+- [TPM (Trusted Platform Module):](https://en.wikipedia.org/wiki/Trusted_Platform_Module) TPM představuje zavedený standard pro většinu platforem zařízení založených na Windows a také pro několik zařízení založených na Linuxu nebo Ubuntu. Jako výrobce zařízení můžete zvolit tento mechanismus ověřování, pokud vaše zařízení používají některý z následujících operačních systémů a hledáte zavedený standard. V případě čipů TPM můžete zařízení do služby Device Provisioning registrovat pouze jednotlivě. Pro účely vývoje můžete použít simulátor TPM na svém vývojovém počítači s Windows nebo Linuxem.
 
-- [X.509](https://cryptography.io/en/latest/x509/): Certifikáty X. 509 mohou být uloženy v poměrně novějších čipych nazývaných [hardwarové bezpečnostní moduly (HSM)](concepts-security.md#hardware-security-module). V Microsoft se také pracuje na čipech RIoT nebo DICE, které implementují certifikáty X.509. V případě čipů X.509 můžete registrace zařízení dávkovat na portálu. Podporují také určité operační systémy mimo Windows, jako je například embedOS. Pro účely vývoje klientská sada SDK služby Device Provisioning podporuje simulátor zařízení X.509. 
+- [X.509:](https://cryptography.io/en/latest/x509/) Certifikáty X.509 je možné ukládat v relativně novějších čipech označovaných jako [moduly hardwarového zabezpečení (HSM)](concepts-security.md#hardware-security-module). V Microsoft se také pracuje na čipech RIoT nebo DICE, které implementují certifikáty X.509. V případě čipů X.509 můžete registrace zařízení dávkovat na portálu. Podporují také určité operační systémy mimo Windows, jako je například embedOS. Pro účely vývoje klientská sada SDK služby Device Provisioning podporuje simulátor zařízení X.509. 
 
 Další informace najdete v tématech věnovaných [konceptům zabezpečení](concepts-security.md) a [konceptům automatického zřizování](/azure/iot-dps/concepts-auto-provisioning) ve službě IoT Hub Device Provisioning.
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Povolení ověřování pro podporované mechanismy ověřování
 
-Aby bylo možné zaregistrovat fyzické zařízení nebo simulátor do Azure Portal, musí být povolený režim ověřování sady SDK (X. 509 nebo TPM). Nejprve přejděte do kořenové složky pro azure-iot-sdk-c. Pak spusťte uvedený příkaz v závislosti na zvoleném režimu ověřování:
+The SDK authentication mode (X.509 or TPM) must be enabled for the physical device or simulator before they can be enrolled in the Azure portal. Nejprve přejděte do kořenové složky pro azure-iot-sdk-c. Pak spusťte uvedený příkaz v závislosti na zvoleném režimu ověřování:
 
-### <a name="use-x509-with-simulator"></a>Použití X. 509 s simulátorem
+### <a name="use-x509-with-simulator"></a>Use X.509 with simulator
 
-Zřizovací služba se dodává s emulátorem modulu složení identity zařízení (kost), který generuje certifikát **X. 509** pro ověřování zařízení. Pokud chcete povolit ověřování **X. 509** , spusťte následující příkaz: 
+The provisioning service ships with a Device Identity Composition Engine (DICE) emulator that generates an **X.509** certificate for authenticating the device. To enable **X.509** authentication, run the following command: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -47,9 +47,9 @@ cmake -Ddps_auth_type=x509 ..
 
 Informace o hardwaru s emulátorem DICE najdete [tady](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/).
 
-### <a name="use-x509-with-hardware"></a>Použití X. 509 s hardwarem
+### <a name="use-x509-with-hardware"></a>Use X.509 with hardware
 
-Službu zřizování lze použít s **X. 509** na jiném hardwaru. K navázání připojení je potřeba rozhraní mezi hardwarem a sadou SDK. Pokud potřebujete informace o rozhraní, obraťte se na výrobce vašeho HSM.
+The provisioning service can be used with **X.509** on other hardware. K navázání připojení je potřeba rozhraní mezi hardwarem a sadou SDK. Pokud potřebujete informace o rozhraní, obraťte se na výrobce vašeho HSM.
 
 ### <a name="use-tpm"></a>Použití TPM
 
@@ -138,7 +138,7 @@ Před vytvořením registrace zařízení sestavte sadu SDK.
 
 ## <a name="create-a-device-enrollment-entry-in-device-provisioning-services"></a>Vytvoření položky registrace zařízení ve službě Device Provisioning
 
-### <a name="tpm"></a>Modul TPM
+### <a name="tpm"></a>TPM
 Pokud používáte TPM, podle pokynů v tématu [Vytvoření a zřízení simulovaného zařízení pomocí služby IoT Hub Device Provisioning](./quick-create-simulated-device.md) vytvořte položku registrace zařízení ve službě Device Provisioning a proveďte simulaci prvního spuštění.
 
 ### <a name="x509"></a>X.509
@@ -148,8 +148,8 @@ Pokud používáte TPM, podle pokynů v tématu [Vytvoření a zřízení simulo
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning.
-   - **Jednotlivé registrace X. 509**: V okně s přehledem zřizovací služby vyberte **spravovat registrace**. Vyberte kartu **Jednotlivé registrace** a klikněte na tlačítko **Přidat** v horní části. Jako *mechanismus*ověření identity vyberte **X. 509** , nahrajte listový certifikát, jak to okno vyžaduje. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
-   - **Registrace skupiny X. 509**: V okně s přehledem zřizovací služby vyberte **spravovat registrace**. Vyberte kartu **Skupinové registrace** a klikněte na tlačítko **Přidat** v horní části. Jako *mechanismus*ověření identity vyberte **X. 509** , zadejte název skupiny a název certifikace, nahrajte CA/zprostředkující certifikát, jak to okno vyžaduje. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+   - **X.509 Individual Enrollment**: On the provisioning service summary blade, select **Manage enrollments**. Vyberte kartu **Jednotlivé registrace** a klikněte na tlačítko **Přidat** v horní části. Select **X.509** as the identity attestation *Mechanism*, upload the leaf certificate as required by the blade. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+   - **X.509 Group Enrollment**: On the provisioning service  summary blade, select **Manage enrollments**. Vyberte kartu **Skupinové registrace** a klikněte na tlačítko **Přidat** v horní části. Select **X.509** as the identity attestation *Mechanism*, enter a group name and certification name, upload the CA/Intermediate certificate as required by the blade. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Povolení ověřování pro zařízení používající vlastní mechanismus ověřování (volitelné)
 
@@ -181,7 +181,7 @@ Jakmile se vaše knihovna sama úspěšně sestaví, je potřeba ji integrovat s
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Připojení ke službě IoT Hub po zřízení
 
-Po zřízení zařízení pomocí zřizovací služby používá toto rozhraní API zadaný režim ověřování (**X. 509** nebo TPM) pro připojení k IoT Hub: 
+Once the device has been provisioned with the provisioning service, this API uses the specified authentication mode (**X.509** or TPM) to connect with IoT Hub: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

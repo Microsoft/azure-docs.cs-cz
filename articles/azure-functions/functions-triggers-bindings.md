@@ -1,60 +1,56 @@
 ---
-title: Aktivační události a vazby v Azure Functions
-description: Naučte se používat triggery a vazby k připojení funkce Azure k online událostem a cloudovým službám.
-services: functions
-documentationcenter: na
+title: Triggers and bindings in Azure Functions
+description: Learn to use triggers and bindings to connect your Azure Function to online events and cloud-based services.
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 914158ba7cfcc7530120d427c62e69036b3bb156
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085093"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226565"
 ---
-# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions triggery a koncepty vazeb
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions triggers and bindings concepts
 
-V tomto článku se seznámíte s koncepty a možnostmi triggerů funkcí a vazeb na nejvyšší úrovni.
+In this article you learn the high-level concepts surrounding functions triggers and bindings.
 
-Aktivační události jsou tím, co způsobí spuštění funkce. Aktivační událost definuje způsob volání funkce a funkce musí mít právě jednu aktivační událost. K aktivačním událostem existují přidružená data, která jsou často k dispozici jako datová část funkce. 
+Triggers are what cause a function to run. A trigger defines how a function is invoked and a function must have exactly one trigger. Triggers have associated data, which is often provided as the payload of the function. 
 
-Vazba na funkci je způsob deklarativního připojení jiného prostředku ke funkci; vazby mohou být propojeny jako *vstupní vazby*, *výstupní vazby*nebo obojí. Data z vazeb jsou k dispozici funkci jako parametry.
+Binding to a function is a way of declaratively connecting another resource to the function; bindings may be connected as *input bindings*, *output bindings*, or both. Data from bindings is provided to the function as parameters.
 
-Můžete kombinovat a porovnat různé vazby, aby vyhovovaly vašim potřebám. Vazby jsou volitelné a funkce může mít jednu nebo víc vstupních nebo výstupních vazeb.
+You can mix and match different bindings to suit your needs. Bindings are optional and a function might have one or multiple input and/or output bindings.
 
-Triggery a vazby umožňují vyhnout se zakódujeme přístupu k jiným službám. Vaše funkce přijímá data (například obsah zprávy fronty) v parametrech funkce. Data se odesílají (například pro vytvoření zprávy fronty) pomocí návratové hodnoty funkce. 
+Triggers and bindings let you avoid hardcoding access to other services. Your function receives data (for example, the content of a queue message) in function parameters. You send data (for example, to create a queue message) by using the return value of the function. 
 
-Vezměte v úvahu následující příklady, jak můžete implementovat různé funkce.
+Consider the following examples of how you could implement different functions.
 
-| Příklad scénáře | Trigger | Vstupní vazba | Výstupní vazba |
+| Příklad scénáře | Trigger | Input binding | Output binding |
 |-------------|---------|---------------|----------------|
-| Dojde k doručení nové zprávy fronty, která spustí funkci pro zápis do jiné fronty. | Provedených<sup>*</sup> | *Žádné* | Provedených<sup>*</sup> |
-|Naplánovaná úloha načte Blob Storage obsah a vytvoří nový dokument Cosmos DB. | Časovač | Úložiště objektů blob | Databáze Cosmos |
-|Event Grid slouží ke čtení obrázku z Blob Storage a dokumentu z Cosmos DB k odeslání e-mailu. | Event Grid | Blob Storage a Cosmos DB | SendGrid |
-| Webhook, který používá Microsoft Graph k aktualizaci excelového listu. | HTTP | *Žádné* | Microsoft Graph |
+| A new queue message arrives which runs a function to write to another queue. | Queue<sup>*</sup> | *None* | Queue<sup>*</sup> |
+|A scheduled job reads Blob Storage contents and creates a new Cosmos DB document. | Časovač | Blob Storage | Cosmos DB |
+|The Event Grid is used to read an image from Blob Storage and a document from Cosmos DB to send an email. | Event Grid | Blob Storage and  Cosmos DB | SendGrid |
+| A webhook that uses Microsoft Graph to update an Excel sheet. | HTTP | *None* | Microsoft Graph |
 
-<sup>\*</sup>Představuje různé fronty.
+<sup>\*</sup> Represents different queues
 
-Tyto příklady nejsou určeny k vyčerpávajícímu, ale jsou k dispozici pro ilustraci, jak můžete použít triggery a vazby dohromady.
+These examples are not meant to be exhaustive, but are provided to illustrate how you can use triggers and bindings together.
 
-###  <a name="trigger-and-binding-definitions"></a>Triggery a definice vazeb
+###  <a name="trigger-and-binding-definitions"></a>Trigger and binding definitions
 
-Triggery a vazby jsou definovány odlišně v závislosti na vývoji přístupu.
+Triggers and bindings are defined differently depending on the development approach.
 
-| Platforma | Aktivační události a vazby jsou konfigurovány pomocí... |
+| Platforma | Triggers and bindings are configured by... |
 |-------------|--------------------------------------------|
-| C#Knihovna tříd | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upravení metody a parametry s C# atributy |
-| Všichni ostatní (včetně Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aktualizuje se [Function. JSON](./functions-reference.md) ([schéma](http://json.schemastore.org/function)). |
+| C# class library | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decorating methods and parameters with C# attributes |
+| All others (including Azure portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updating [function.json](./functions-reference.md) ([schema](http://json.schemastore.org/function)) |
 
-Portál poskytuje uživatelské rozhraní pro tuto konfiguraci, ale můžete ho upravovat přímo otevřením **pokročilého editoru** dostupného prostřednictvím karty **integrace** vaší funkce.
+The portal provides a UI for this configuration, but you can edit the file directly by opening the **Advanced editor** available via the **Integrate** tab of your function.
 
-V rozhraní .NET typ parametru definuje datový typ pro vstupní data. Například použijte `string` k vytvoření vazby na text triggeru fronty, bajtové pole pro čtení jako binární a vlastní typ pro deserializaci objektu.
+In .NET, the parameter type defines the data type for input data. For instance, use `string` to bind to the text of a queue trigger, a byte array to read as binary and a custom type to de-serialize to an object.
 
-Pro jazyky, které jsou dynamicky typované, jako je například JavaScript `dataType` , použijte vlastnost v souboru *Function. JSON* . Například pro čtení obsahu požadavku HTTP v binárním formátu nastavte `dataType` na: `binary`
+For languages that are dynamically typed such as JavaScript, use the `dataType` property in the *function.json* file. For example, to read the content of an HTTP request in binary format, set `dataType` to `binary`:
 
 ```json
 {
@@ -65,33 +61,33 @@ Pro jazyky, které jsou dynamicky typované, jako je například JavaScript `dat
 }
 ```
 
-Další možnosti pro `dataType` jsou `stream` a `string`.
+Other options for `dataType` are `stream` and `string`.
 
-## <a name="binding-direction"></a>Směr vazby
+## <a name="binding-direction"></a>Binding direction
 
-Všechny aktivační události a vazby mají `direction` vlastnost v souboru [Function. JSON](./functions-reference.md) :
+All triggers and bindings have a `direction` property in the [function.json](./functions-reference.md) file:
 
-- Pro aktivační události je směr vždy`in`
-- Vstupní a výstupní vazby používají `in` a`out`
-- Některé vazby podporují zvláštní směr `inout`. Pokud použijete `inout`, je k dispozici pouze **Rozšířený editor** prostřednictvím karty **integrace** na portálu.
+- For triggers, the direction is always `in`
+- Input and output bindings use `in` and `out`
+- Some bindings support a special direction `inout`. If you use `inout`, only the **Advanced editor** is available via the **Integrate** tab in the portal.
 
-Použijete-li [atributy v knihovně tříd](functions-dotnet-class-library.md) ke konfiguraci triggerů a vazeb, je směr poskytován v konstruktoru atributu nebo odvozen z typu parametru.
+When you use [attributes in a class library](functions-dotnet-class-library.md) to configure triggers and bindings, the direction is provided in an attribute constructor or inferred from the parameter type.
 
-## <a name="supported-bindings"></a>Podporované vazby
+## <a name="supported-bindings"></a>Supported bindings
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-Informace o tom, které vazby jsou ve verzi Preview nebo které jsou schválené pro použití v produkčním prostředí, najdete v tématu [podporované jazyky](supported-languages.md).
+For information about which bindings are in preview or are approved for production use, see [Supported languages](supported-languages.md).
 
-## <a name="resources"></a>Zdroje a prostředky
-- [Výrazy a vzory vazby](./functions-bindings-expressions-patterns.md)
-- [Použití návratové hodnoty funkce Azure Functions](./functions-bindings-return-value.md)
-- [Postup registrace výrazu vazby](./functions-bindings-register.md)
-- Zkouší
-  - [Strategie pro testování kódu v Azure Functions](functions-test-a-function.md)
-  - [Ruční spuštění funkce bez protokolu HTTP aktivované](functions-manually-run-non-http.md)
-- [Zpracování chyb vazeb](./functions-bindings-errors.md)
+## <a name="resources"></a>Materiály
+- [Binding expressions and patterns](./functions-bindings-expressions-patterns.md)
+- [Using the Azure Function return value](./functions-bindings-return-value.md)
+- [How to register a binding expression](./functions-bindings-register.md)
+- Testing:
+  - [Strategies for testing your code in Azure Functions](functions-test-a-function.md)
+  - [Manually run a non HTTP-triggered function](functions-manually-run-non-http.md)
+- [Handling binding errors](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Registrovat rozšíření vazby Azure Functions](./functions-bindings-register.md)
+> [Register Azure Functions binding extensions](./functions-bindings-register.md)

@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý Start: registrace zařízení TPM do služby Azure Device Provisioning pomocí Pythonu'
-description: Rychlý start Azure – Registrace zařízení TPM do služby Azure IoT Hub Device Provisioning pomocí sady SDK služby zřizování pro Python. V tomto rychlém startu se používají jednotlivé registrace.
+title: Enroll TPM device to Azure Device Provisioning Service using Python
+description: Quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service using Python provisioning service SDK. V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 49e7961200a2ab523997350fffa6606d65f60c8c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f241fd7ca4b0385641067f938f0f8136c9f05ba5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903407"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229540"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby zřizování pro Python
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Quickstart: Enroll TPM device to IoT Hub Device Provisioning Service using Python provisioning service SDK
+
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
 Tyto kroky ukazují, jak prostřednictvím kódu programu vytvořit jednotlivou registraci pro zařízení TPM ve službě Azure IoT Hub Device Provisioning pomocí sady [SDK služby zřizování pro Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) a ukázkové aplikace v Pythonu. Přestože sada SDK služby pro Python funguje na počítačích s Windows i Linuxem, tento článek provádí procesem registrace s použitím vývojového počítače s Windows.
@@ -54,7 +54,7 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
 
 1. Pomocí textového editoru vytvořte nový soubor **TpmEnrollment.py**.
 
-1. Na začátek souboru `import`TpmEnrollment.py**přidejte následující příkazy** a proměnné. Pak nahraďte `dpsConnectionString` vaším připojovacím řetězcem, který najdete v části **Zásady sdíleného přístupu** ve vaší službě **Device Provisioning** na webu **Azure Portal**. Nahraďte `endorsementKey` hodnotou uvedenou dříve v části [Příprava prostředí](quick-enroll-device-tpm-python.md#prepareenvironment). Nakonec vytvořte jedinečné ID registrace `registrationid` a ujistěte se, že se skládá pouze z malých alfanumerických znaků a pomlček.  
+1. Na začátek souboru **TpmEnrollment.py** přidejte následující příkazy `import` a proměnné. Pak nahraďte `dpsConnectionString` vaším připojovacím řetězcem, který najdete v části **Zásady sdíleného přístupu** ve vaší službě **Device Provisioning** na webu **Azure Portal**. Nahraďte `endorsementKey` hodnotou uvedenou dříve v části [Příprava prostředí](quick-enroll-device-tpm-python.md#prepareenvironment). Nakonec vytvořte jedinečné ID registrace `registrationid` a ujistěte se, že se skládá pouze z malých alfanumerických znaků a pomlček.  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -109,7 +109,7 @@ Pokud chcete prozkoumat ukázku služby v Javě, neprovádějte čištění pros
 
 1. Zavřete na svém počítači okno výstupu ukázky v Pythonu.
 1. Pokud jste vytvořili simulované zařízení TPM, zavřete okno simulátoru TPM.
-1. Přejděte do vaší služby Device Provisioning v Azure Portal, klikněte na **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** . Vyberte *ID registrace* pro položku registrace, kterou jste vytvořili pomocí tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části okna.  
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Individual Enrollments** tab. Select the *Registration ID* for the enrollment entry you created using this Quickstart, and click the **Delete** button at the top of the blade.  
 
 
 ## <a name="next-steps"></a>Další kroky

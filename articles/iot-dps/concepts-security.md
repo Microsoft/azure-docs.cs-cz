@@ -1,107 +1,106 @@
 ---
-title: Koncepty zabezpečení v Azure IoT Hub Device Provisioning Service | Dokumentace Microsoftu
-description: Popisuje zabezpečení zřizování koncepty specifické pro zařízení pomocí služby Azure Device Provisioning a centrem IoT
+title: Azure IoT Hub Device Provisioning Service - Security concepts
+description: Describes security provisioning concepts specific to devices with Device Provisioning Service and IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad392d9d979986723c17b43f210959e2504a8fb8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775113"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228829"
 ---
-# <a name="iot-hub-device-provisioning-service-security-concepts"></a>Koncepty zabezpečení IoT Hub Device Provisioning Service 
+# <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service security concepts 
 
-IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, který použijete ke konfiguraci plně automatizované zřizování zařízení pro určité Centrum IoT. Ve službě Device Provisioning Service, můžete [automatické zřizování](concepts-auto-provisioning.md) miliony zařízení bezpečným a škálovatelným způsobem. Tento článek obsahuje přehled *zabezpečení* součástí koncepty zřizování zařízení. Tento článek je relevantní pro všechny osoby, které jsou součástí probíhá příprava pro nasazení zařízení.
+IoT Hub Device Provisioning Service is a helper service for IoT Hub that you use to configure zero-touch device provisioning to a specified IoT hub. With the Device Provisioning Service, you can [auto-provision](concepts-auto-provisioning.md) millions of devices in a secure and scalable manner. This article gives an overview of the *security* concepts involved in device provisioning. This article is relevant to all personas involved in getting a device ready for deployment.
 
-## <a name="attestation-mechanism"></a>Mechanismus ověřování
+## <a name="attestation-mechanism"></a>Attestation mechanism
 
-Mechanismus ověřování použije právě tato metoda za potvrzení identity zařízení. Mechanismus ověřování se taky hodí pro seznamu registrací, který informuje službu zřizování, jakou metodu ověření pro použití s daným zařízením.
+The attestation mechanism is the method used for confirming a device's identity. The attestation mechanism is also relevant to the enrollment list, which tells the provisioning service which method of attestation to use with a given device.
 
 > [!NOTE]
-> IoT Hub "schéma ověřování" používá pro podobný koncept dané služby.
+> IoT Hub uses "authentication scheme" for a similar concept in that service.
 
-Služby Device Provisioning podporuje následující formy ověření identity:
-* **Certifikáty X.509** založen na standardní tok ověřování certifikátu X.509.
-* **Trusted Platform Module (TPM)** podle hodnoty nonce výzvu, pomocí čipu TPM standard pro klíče zobrazíte podepsaný token sdíleného přístupového podpisu (SAS). Tato forma ověření nevyžaduje fyzický čip TPM na zařízení, ale služba očekává, že ověřit pomocí ověřovacího klíče za [specifikace TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
-* **Symetrický klíč** podle sdíleného přístupového podpisu (SAS) [tokeny zabezpečení](../iot-hub/iot-hub-devguide-security.md#security-tokens), která zahrnuje hash podpisu a vložené vypršení platnosti. Další informace najdete v tématu [symetrického klíče ověření](concepts-symmetric-key-attestation.md).
+Device Provisioning Service supports the following forms of attestation:
+* **X.509 certificates** based on the standard X.509 certificate authentication flow.
+* **Trusted Platform Module (TPM)** based on a nonce challenge, using the TPM standard for keys to present a signed Shared Access Signature (SAS) token. This form of attestation does not require a physical TPM on the device, but the service expects to attest using the endorsement key per the [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Symmetric Key**  based on shared access signature (SAS) [Security tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens), which include a hashed signature and an embedded expiration. For more information, see [Symmetric key attestation](concepts-symmetric-key-attestation.md).
 
 
-## <a name="hardware-security-module"></a>Modul hardwarového zabezpečení
+## <a name="hardware-security-module"></a>Hardware security module
 
-Modul hardwarového zabezpečení nebo HSM, se používá pro zabezpečené hardwarové úložiště tajných kódů zařízení a je nejbezpečnější způsob úložiště tajných kódů. Certifikáty X.509 a tokeny SAS, mohou být uloženy v modulu HSM. Moduly hardwarového zabezpečení lze použít s oběma mechanismů ověřování zřizování podporuje.
+The hardware security module, or HSM, is used for secure, hardware-based storage of device secrets, and is the most secure form of secret storage. Both X.509 certificates and SAS tokens can be stored in the HSM. HSMs can be used with both attestation mechanisms the provisioning supports.
 
 > [!TIP]
-> Důrazně doporučujeme pomocí modulu hardwarového zabezpečení zařízení pro bezpečné ukládání tajných klíčů v zařízeních.
+> We strongly recommend using an HSM with devices to securely store secrets on your devices.
 
-Tajné kódy zařízení můžou být uložené taky v softwaru (paměť), ale je méně bezpečné forma úložiště než modulu hardwarového zabezpečení.
+Device secrets may also be stored in software (memory), but it is a less secure form of storage than an HSM.
 
 ## <a name="trusted-platform-module"></a>Trusted Platform Module
 
-TPM může odkazovat na úroveň standard týkající se bezpečného ukládání klíčů používá k ověření na platformu nebo mohou odkazovat na vstupně-výstupních operací rozhraní používaných pro interakci s moduly implementace standardu. Čipy TPM můžete existuje jako diskrétní hardware, integrované hardwaru, na základě firmwaru, nebo na software. Další informace o [čipy TPM a TPM ověření](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Služby Device Provisioning Service podporuje pouze TPM 2.0.
+TPM can refer to a standard for securely storing keys used to authenticate the platform, or it can refer to the I/O interface used to interact with the modules implementing the standard. TPMs can exist as discrete hardware, integrated hardware, firmware-based, or software-based. Learn more about [TPMs and TPM attestation](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Device Provisioning Service only supports TPM 2.0.
 
-Ověření identity čipem TPM je založená na nonce výzvy, která používá kořenové klíče ověřovací a úložiště zobrazíte podepsaný token sdíleného přístupového podpisu (SAS).
+TPM attestation is based on a nonce challenge, which uses the endorsement and storage root keys to present a signed Shared Access Signature (SAS) token.
 
-### <a name="endorsement-key"></a>Ověřovací klíč
+### <a name="endorsement-key"></a>Endorsement key
 
-Ověřovací klíč je obsažena v čipu TPM, které bylo generované interně nebo vložený na výrobní čas asymetrický klíč a je jedinečný pro každý čip TPM. Ověřovací klíč nelze změnit ani odebrat. Soukromá část ověřovací klíč se nikdy uvolní mimo čipu TPM, zatímco veřejnou část ověřovacího klíče slouží k rozpoznání originální čipu TPM. Další informace o [ověřovací klíč](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
+The endorsement key is an asymmetric key contained inside the TPM, which was internally generated or injected at manufacturing time and is unique for every TPM. The endorsement key cannot be changed or removed. The private portion of the endorsement key is never released outside of the TPM, while the public portion of the endorsement key is used to recognize a genuine TPM. Learn more about the [endorsement key](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 
-### <a name="storage-root-key"></a>Kořenový klíč úložiště
+### <a name="storage-root-key"></a>Storage root key
 
-Storage root key je uložená v čipu TPM a slouží k ochraně klíčů TPM vytvořené aplikacemi, tak, aby tyto klíče nelze použít bez čipu TPM. Storage root key se vygeneruje, když převzít vlastnictví TPM; Pokud zrušíte zaškrtnutí čipu TPM, tak nového uživatele může převzít vlastnictví, se vygeneruje nový kořenový klíč úložiště. Další informace o [kořenový klíč úložiště](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
+The storage root key is stored in the TPM and is used to protect TPM keys created by applications, so that these keys cannot be used without the TPM. The storage root key is generated when you take ownership of the TPM; when you clear the TPM so a new user can take ownership, a new storage root key is generated. Learn more about the [storage root key](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
 
-## <a name="x509-certificates"></a>Certifikáty X.509
+## <a name="x509-certificates"></a>X.509 certificates
 
-Jako mechanismus ověřování pomocí certifikátů X.509 je vynikající způsob, jak škálovat produkčního prostředí a zjednodušuje zřizování zařízení. Certifikáty X.509 jsou obvykle uspořádány v řetězu certifikátů, ve kterém je každý certifikát v řetězu podepsány privátní klíč další vyšší certifikátu a tak dále, ukončuje v certifikát podepsaný svým držitelem kořenové důvěryhodnosti. Toto uspořádání se zavádí delegované řetěz certifikátů z kořenového certifikátu vygenerovaného důvěryhodné kořenové certifikační autority (CA) dolů prostřednictvím každý zprostředkující certifikační Autority pro certifikát koncové entity "typu list", nainstalované v zařízení. Další informace najdete v tématu [zařízení ověřování pomocí certifikátů X.509 certifikační Autority](/azure/iot-hub/iot-hub-x509ca-overview). 
+Using X.509 certificates as an attestation mechanism is an excellent way to scale production and simplify device provisioning. X.509 certificates are typically arranged in a certificate chain of trust in which each certificate in the chain is signed by the private key of the next higher certificate, and so on, terminating in a self-signed root certificate. This arrangement establishes a delegated chain of trust from the root certificate generated by a trusted root certificate authority (CA) down through each intermediate CA to the end-entity "leaf" certificate installed on a device. To learn more, see [Device Authentication using X.509 CA Certificates](/azure/iot-hub/iot-hub-x509ca-overview). 
 
-Řetěz certifikátů často představuje některé fyzické nebo logické hierarchie přiřazená zařízení. Například může výrobce:
-- certifikát podepsaný svým držitelem kořenové certifikační Autority
-- vygenerovat jedinečný certifikát zprostředkující certifikační Autority pro každý objekt pro vytváření pomocí kořenového certifikátu
-- vygenerovat jedinečný certifikát zprostředkující certifikační Autority pro každou výrobní linky v závodě pomocí certifikátu každá továrna
-- a nakonec certifikát výrobní linky, použít k vygenerování certifikátu jedinečná zařízení (koncové entity) pro každé zařízení vyrobenými na řádku. 
+Often the certificate chain represents some logical or physical hierarchy associated with devices. For example, a manufacturer may:
+- issue a self-signed root CA certificate
+- use the root certificate to generate a unique intermediate CA certificate for each factory
+- use each factory's certificate to generate a unique intermediate CA certificate for each production line in the plant
+- and finally use the production line certificate, to generate a unique device (end-entity) certificate for each device manufactured on the line. 
 
-Další informace najdete v tématu [koncepční znalost certifikátů webu X.509 v odvětví IoT](/azure/iot-hub/iot-hub-x509ca-concept). 
+To learn more, see [Conceptual understanding of X.509 CA certificates in the IoT industry](/azure/iot-hub/iot-hub-x509ca-concept). 
 
-### <a name="root-certificate"></a>Kořenový certifikát
+### <a name="root-certificate"></a>Root certificate
 
-Kořenový certifikát je podepsaný svým držitelem certifikát X.509 představující certifikační autority (CA). Je nejzažšímu nebo kotva vztahu důvěryhodnosti, řetěz certifikátů. Kořenové certifikáty můžete samostatně vydaný organizací nebo zakoupenému od kořenové certifikační autority. Další informace najdete v tématu [certifikáty webu X.509 získat](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Kořenový certifikát, můžete také označuje jako certifikát kořenové certifikační Autority.
+A root certificate is a self-signed X.509 certificate representing a certificate authority (CA). It is the terminus, or trust anchor, of the certificate chain. Root certificates can be self-issued by an organization or purchased from a root certificate authority. To learn more, see [Get X.509 CA certificates](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). The root certificate can also be referred to as a root CA certificate.
 
-### <a name="intermediate-certificate"></a>Zprostředkující certifikát
+### <a name="intermediate-certificate"></a>Intermediate certificate
 
-Zprostředkující certifikát je certifikát X.509, který byl podepsán pomocí kořenového certifikátu (nebo jinou zprostředkující certifikát pomocí kořenového certifikátu v řetězci). Poslední zprostředkující certifikát v řetězu se používá k podepsání listový certifikát. Zprostředkující certifikát, můžete také označuje jako zprostředkující Certifikační autority.
+An intermediate certificate is an X.509 certificate, which has been signed by the root certificate (or by another intermediate certificate with the root certificate in its chain). The last intermediate certificate in a chain is used to sign the leaf certificate. An intermediate certificate can also be referred to as an intermediate CA certificate.
 
-### <a name="end-entity-leaf-certificate"></a>Certifikát koncové entity "typu list"
+### <a name="end-entity-leaf-certificate"></a>End-entity "leaf" certificate
 
-Listový certifikát nebo certifikát koncové entity, identifikuje držitel certifikátu. Má kořenový certifikát ve svém řetězu certifikátů a nula nebo více zprostředkující certifikáty. Listového certifikátu se nepoužívá k podepisování jiných certifikátů. Jednoznačně identifikuje zařízení ke službě zřizování a se někdy označuje jako certifikát zařízení. Při ověřování zařízení používá privátní klíč spojený s tímto certifikátem reagovat na doklad o vlastnictví challenge ze služby.
+The leaf certificate, or end-entity certificate, identifies the certificate holder. It has the root certificate in its certificate chain as well as zero or more intermediate certificates. The leaf certificate is not used to sign any other certificates. It uniquely identifies the device to the provisioning service and is sometimes referred to as the device certificate. During authentication, the device uses the private key associated with this certificate to respond to a proof of possession challenge from the service.
 
-Listové certifikáty používané s [jednotlivou registraci](./concepts-service.md#individual-enrollment) položka mít požadavek, který **název subjektu** musí být nastavena na ID registrace položky jednotlivé registrace. Listové certifikáty používané s [skupinu registrací](./concepts-service.md#enrollment-group) položka by měla mít **název subjektu** nastavena na ID požadované zařízení, která bude zobrazovat v **záznamy registrace** pro ověřené zařízení ve skupině pro registraci.
+Leaf certificates used with an [Individual enrollment](./concepts-service.md#individual-enrollment) entry have a requirement that the **Subject Name** must be set to the registration ID of the Individual Enrollment entry. Leaf certificates used with an [Enrollment group](./concepts-service.md#enrollment-group) entry should have the **Subject Name** set to the desired device ID which will be shown in the **Registration Records** for the authenticated device in the enrollment group.
 
-Další informace najdete v tématu [ověřování zařízení podepsané certifikáty webu X.509](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+To learn more, see [Authenticating devices signed with X.509 CA certificates](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
-## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509
+## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Controlling device access to the provisioning service with X.509 certificates
 
-Zřizovací služba poskytuje dva typy položku registrace, který můžete použít k řízení přístupu pro zařízení, která používají mechanismus ověřování X.509:  
+The provisioning service exposes two types of enrollment entry that you can use to control access for devices that use the X.509 attestation mechanism:  
 
-- [Jednotlivé registrace](./concepts-service.md#individual-enrollment) položky jsou nakonfigurovány s certifikátem zařízení spojené s určitým zařízením. Tyto položky řízení registrací pro konkrétní zařízení.
-- [Skupiny registrací](./concepts-service.md#enrollment-group) položky jsou spojeny s konkrétní zprostředkující nebo kořenové Certifikační autority. Tyto položky řízení registrací pro všechna zařízení, které mají zprostředkující nebo kořenové certifikační ve svém řetězu certifikátů. 
+- [Individual enrollment](./concepts-service.md#individual-enrollment) entries are configured with the device certificate associated with a specific device. These entries control enrollments for specific devices.
+- [Enrollment group](./concepts-service.md#enrollment-group) entries are associated with a specific intermediate or root CA certificate. These entries control enrollments for all devices that have that intermediate or root certificate in their certificate chain. 
 
-Když se zařízení připojí ke službě zřizování, službu upřednostňuje více konkrétní položky registrace přes méně konkrétní položky registrace. To znamená jednotlivou registraci pro zařízení existuje, zřizovací služby se vztahuje na tuto položku. Pokud neexistuje žádný jednotlivou registraci pro zařízení a skupinu registrací pro první zprostředkující certifikát v řetězu certifikátů zařízení existuje, platí službu tuto položku a tak dále, řetězem do kořenového adresáře. Služba použije první použít položku, která najde, tak, aby:
+When a device connects to the provisioning service, the service prioritizes more specific enrollment entries over less specific enrollment entries. That is, if an individual enrollment for the device exists, the provisioning service applies that entry. If there is no individual enrollment for the device and an enrollment group for the first intermediate certificate in the device's certificate chain exists, the service applies that entry, and so on, up the chain to the root. The service applies the first applicable entry that it finds, such that:
 
-- Pokud je první položku registrace nalezen zapnutá, služba mu.
-- Pokud je první položku registrace, který byl nalezen zakázaný, služba není zřízení zařízení.  
-- Pokud pro některý z certifikátů v řetězu certifikátů zařízení nebyl nalezen žádný záznam registrace, služba není zřízení zařízení. 
+- If the first enrollment entry found is enabled, the service provisions the device.
+- If the first enrollment entry found is disabled, the service does not provision the device.  
+- If no enrollment entry is found for any of the certificates in the device's certificate chain, the service does not provision the device. 
 
-Tento mechanismus a hierarchické struktuře řetězy certifikátů poskytuje výkonné flexibilitu v tom, jak můžete řídit přístup pro jednotlivá zařízení, stejně jako u skupiny zařízení. Představte si například pět zařízení s následující řetězy certifikátů: 
+This mechanism and the hierarchical structure of certificate chains provides powerful flexibility in how you can control access for individual devices as well as for groups of devices. For example, imagine five devices with the following certificate chains: 
 
-- *Zařízení 1*: kořenový certifikát -> certifikát A -> certifikát zařízení 1
-- *Zařízení 2*: kořenový certifikát -> certifikát A -> certifikát zařízení 2
-- *Zařízení 3*: kořenový certifikát -> certifikát A -> certifikát zařízení 3
-- *Zařízení 4*: kořenový certifikát -> certifikát B -> certifikát zařízení 4
-- *Zařízení 5*: kořenový certifikát -> certifikát B -> certifikát zařízení 5
+- *Device 1*: root certificate -> certificate A -> device 1 certificate
+- *Device 2*: root certificate -> certificate A -> device 2 certificate
+- *Device 3*: root certificate -> certificate A -> device 3 certificate
+- *Device 4*: root certificate -> certificate B -> device 4 certificate
+- *Device 5*: root certificate -> certificate B -> device 5 certificate
 
-Na začátku může vytvoření položky registrace povolené jediné skupiny pro kořenový certifikát umožňuje přístup pro všechny pět zařízení. Pokud později certifikát B se stane dojde k ohrožení bezpečnosti, můžete vytvořit položku Zakázané registrace skupiny pro certifikát B, aby se zabránilo *zařízení 4* a *5 zařízení* registrace. Pokud stále vyšší *zařízení 3* stane dojde k ohrožení bezpečnosti, můžete vytvořit položku Zakázané jednotlivou registraci pro svůj certifikát. To odebere přístup pro *zařízení 3*, ale stále umožňuje *1 zařízení* a *zařízení 2* k registraci.
+Initially, you can create a single enabled group enrollment entry for the root certificate to enable access for all five devices. If certificate B later becomes compromised, you can create a disabled enrollment group entry for certificate B to prevent *Device 4* and *Device 5* from enrolling. If still later *Device 3* becomes compromised, you can create a disabled individual enrollment entry for its certificate. This revokes access for *Device 3*, but still allows *Device 1* and *Device 2* to enroll.

@@ -443,6 +443,12 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Vytvoření nové nabídky
       items:
+        - name: Nabídky aplikací Azure
+          items:
+            - name: Vytvoření nabídky aplikací Azure
+              href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Zpracování zpětné vazby
+              href: ./partner-center-portal/azure-apps-review-feedback.md
         - name: Nabídky Dynamics 365
           items:
             - name: Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps

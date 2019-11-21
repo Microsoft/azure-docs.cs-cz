@@ -1,60 +1,55 @@
 ---
-title: Testování Azure Functions
-description: Vytváření automatizovaných testů pro C# funkce v sadě Visual Studio a funkce jazyka JavaScript v nástroji VS Code
-services: functions
-documentationcenter: na
+title: Testování funkcí Azure Functions
+description: Create automated tests for a C# Function in Visual Studio and JavaScript Function in VS Code
 author: craigshoemaker
-manager: gwallace
-keywords: Azure functions, funkce, zpracování událostí, webhooky, dynamické výpočty, architekturu bez serveru, testování
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 3c826cd32b38676bcbfe1bec79f580e17a509145
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: c60cd631e703f929eaae56138a2acd3687121924
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195977"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226578"
 ---
-# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
+# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategies for testing your code in Azure Functions
 
-Tento článek ukazuje, jak vytvořit automatizované testy pro službu Azure Functions. 
+This article demonstrates how to create automated tests for Azure Functions. 
 
-Testování veškerý kód se doporučuje, ale může dosáhnout nejlepších výsledků zabalením funkce logiku a vytváření testů mimo funkci. Poskytuje abstrakci logiky hned omezuje funkce řádků kódu a umožňuje funkci zodpovídat výhradně jen za volání jiné třídy nebo moduly. Tento článek ale ukazuje, jak vytvořit automatizované testy HTTP a funkci aktivovanou časovačem.
+Testing all code is recommended, however you may get the best results by wrapping up a Function's logic and creating tests outside the Function. Abstracting logic away limits a Function's lines of code and allows the Function to be solely responsible for calling other classes or modules. This article, however, demonstrates how to create automated tests against an HTTP and timer-triggered function.
 
-Obsah, který následuje je rozdělený do dvou různých oddílů určená k cílení na různé jazyky a prostředí. Můžete naučit vytvářet testy:
+The content that follows is split into two different sections meant to target different languages and environments. You can learn to build tests in:
 
-- [C#v sadě Visual Studio s použitím xUnit](#c-in-visual-studio)
-- [JavaScript v nástroji VS Code s Jest](#javascript-in-vs-code)
+- [C# in Visual Studio with xUnit](#c-in-visual-studio)
+- [JavaScript in VS Code with Jest](#javascript-in-vs-code)
 
-Ukázkové úložiště je k dispozici na [GitHubu](https://github.com/Azure-Samples/azure-functions-tests).
+The sample repository is available on [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
 
-## <a name="c-in-visual-studio"></a>C#v sadě Visual Studio
-Následující příklad popisuje, jak vytvořit C# aplikace v sadě Visual Studio funkce a spustit testy pomocí služby [xUnit](https://xunit.github.io).
+## <a name="c-in-visual-studio"></a>C# in Visual Studio
+The following example describes how to create a C# Function app in Visual Studio and run and tests with [xUnit](https://xunit.github.io).
 
-![Testování Azure Functions se službou C# v sadě Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+![Testing Azure Functions with C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="setup"></a>Nastavení
 
-K nastavení prostředí, vytvořte funkci a testování aplikací. Následující kroky vám pomůžou vytvořit aplikace a funkce, které jsou potřeba k podpoře testy:
+To set up your environment, create a Function and test app. The following steps help you create the apps and functions required to support the tests:
 
-1. [Vytvořit novou aplikaci funkcí](./functions-create-first-azure-function.md) a pojmenujte ho *funkce*
-2. [Vytvoření funkce protokolu HTTP v šabloně](./functions-create-first-azure-function.md) a pojmenujte ho *HttpTrigger*.
-3. [Vytvoření funkce časovačem ze šablony](./functions-create-scheduled-function.md) a pojmenujte ho *TimerTrigger*.
-4. V aplikaci Visual Studio [vytvořte aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) tak, že kliknete na **soubor > nový C# > projekt > Visual > .NET Core > xUnit test Project** a pojmenujte ho IT *Functions. test*. 
-5. Použití Nugetu k přidání odkazů z testovací aplikace [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Odkaz *funkce* aplikace](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) z *Functions.Test* aplikace.
+1. [Create a new Functions app](./functions-create-first-azure-function.md) and name it *Functions*
+2. [Create an HTTP function from the template](./functions-create-first-azure-function.md) and name it *HttpTrigger*.
+3. [Create a timer function from the template](./functions-create-scheduled-function.md) and name it *TimerTrigger*.
+4. [Create an xUnit Test app](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio by clicking **File > New > Project > Visual C# > .NET Core > xUnit Test Project** and  name it *Functions.Test*. 
+5. Use Nuget to add a references from the test app [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+6. [Reference the *Functions* app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) from *Functions.Test* app.
 
-### <a name="create-test-classes"></a>Vytvoření tříd testu
+### <a name="create-test-classes"></a>Create test classes
 
-Teď, když se vytvoří aplikace, můžete vytvořit třídy používané pro spuštění automatizovaných testů.
+Now that the applications are created, you can create the classes used to run the automated tests.
 
-Každá funkce přebírá instanci [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) pro zpracování přihlašování zprávy. Některé testy protokolování zpráv nebo mít žádné obavy způsob implementace protokolování. Několik dalších testů je nutné vyhodnotit zprávy zaprotokolované k určení, zda je předání testu.
+Each function takes an instance of [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) to handle message logging. Some tests either don't log messages or have no concern for how logging is implemented. Other tests need to evaluate messages logged to determine whether a test is passing.
 
-`ListLogger` Třída slouží k implementaci `ILogger` rozhraní a udržení ve vnitřním seznamu zpráv pro vyhodnocení během testu.
+The `ListLogger` class is meant to implement the `ILogger` interface and hold in internal list of messages for evaluation during a test.
 
-**Klikněte pravým tlačítkem** na aplikaci *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **NullScope.cs** a zadejte následující kód:
+**Right-click** on the *Functions.Test* application and select **Add > Class**, name it **NullScope.cs** and enter the following code:
 
 ```csharp
 using System;
@@ -72,7 +67,7 @@ namespace Functions.Tests
 }
 ```
 
-Potom klikněte **pravým tlačítkem myši** na aplikace *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **ListLogger.cs** a zadejte následující kód:
+Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **ListLogger.cs** and enter the following code:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -108,17 +103,17 @@ namespace Functions.Tests
 }
 ```
 
-`ListLogger` Třída implementuje následující členy jako zakázku podle `ILogger` rozhraní:
+The `ListLogger` class implements the following members as contracted by the `ILogger` interface:
 
-- **BeginScope**: obory přidání kontextu do vaší protokolování. V tomto případě test pouze odkazuje na statickou instanci třídy `NullScope`, aby test mohl fungovat.
+- **BeginScope**: Scopes add context to your logging. In this case, the test just points to the static instance on the `NullScope` class to allow the test to function.
 
-- **Hodnotu IsEnabled**: výchozí hodnota `false` je k dispozici.
+- **IsEnabled**: A default value of `false` is provided.
 
-- **Protokol**: Tato metoda používá zadaných `formatter` fungovat jako formát zprávy a poté přidá výsledný text, který má `Logs` kolekce.
+- **Log**: This method uses the provided `formatter` function to format the message and then adds the resulting text to the `Logs` collection.
 
-`Logs` Kolekce je instance `List<string>` a je inicializována v konstruktoru.
+The `Logs` collection is an instance of `List<string>` and is initialized in the constructor.
 
-Dále **klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **LoggerTypes.cs** a zadejte Následující kód:
+Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **LoggerTypes.cs** and enter the following code:
 
 ```csharp
 namespace Functions.Tests
@@ -130,9 +125,9 @@ namespace Functions.Tests
     }
 }
 ```
-Tento výčet Určuje typ protokolovacího nástroje, testy použít. 
+This enumeration specifies the type of logger used by the tests. 
 
-Dále **klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **TestFactory.cs** a zadejte Následující kód:
+Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **TestFactory.cs** and enter the following code:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -193,17 +188,17 @@ namespace Functions.Tests
     }
 }
 ```
-`TestFactory` Třída implementuje následující členy:
+The `TestFactory` class implements the following members:
 
-- **Data**: Tato vlastnost vrátí [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) kolekce ukázková data. Páry klíč-hodnota představují hodnoty, které jsou předány do řetězce dotazu.
+- **Data**: This property returns an [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) collection of sample data. The key value pairs represent values that are passed into a query string.
 
-- **Createdictionary –** : Tato metoda přijímá dvojice klíč/hodnota jako argumenty a vrátí nový `Dictionary` použitý k vytvoření `QueryCollection` k reprezentaci hodnoty řetězce dotazu.
+- **CreateDictionary**: This method accepts a key/value pair as arguments and returns a new `Dictionary` used to create `QueryCollection` to represent query string values.
 
-- **CreateHttpRequest**: Tato metoda vytvoří inicializovat pomocí parametrů řetězce dotazu daného požadavku HTTP.
+- **CreateHttpRequest**: This method creates an HTTP request initialized with the given query string parameters.
 
-- **CreateLogger**: podle typu protokolovač, tato metoda vrátí třídu protokolovací nástroj pro testování. `ListLogger` Uchovává informace o zprávy zaznamenané dříve k dispozici pro vyhodnocení v testech.
+- **CreateLogger**: Based on the logger type, this method returns a logger class used for testing. The `ListLogger` keeps track of logged messages available for evaluation in tests.
 
-Dále **klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **FunctionsTests.cs** a zadejte Následující kód:
+Next, **right-click** on the *Functions.Test* application and select **Add > Class**, name it **FunctionsTests.cs** and enter the following code:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -244,45 +239,45 @@ namespace Functions.Tests
     }
 }
 ```
-Členy implementovány v této třídě jsou:
+The members implemented in this class are:
 
-- **Http_trigger_should_return_known_string**: Tento test vytvoří žádost s dotazem řetězcové hodnoty `name=Bill` funkce protokolem HTTP a kontroly, které se vrátí očekávaná odezva.
+- **Http_trigger_should_return_known_string**: This test creates a request with the query string values of `name=Bill` to an HTTP function and checks that the expected response is returned.
 
-- **Http_trigger_should_return_string_from_member_data**: Tento test pomocí atributů xUnit poskytuje ukázková data do funkce protokolu HTTP.
+- **Http_trigger_should_return_string_from_member_data**: This test uses xUnit attributes to provide sample data to the HTTP function.
 
-- **Timer_should_log_message**: Tento test vytvoří instanci `ListLogger` a předá ji do funkcí časovače. Po spuštění funkce protokolu se kontroluje k zajištění, že je k dispozici očekávaná zpráva.
+- **Timer_should_log_message**: This test creates an instance of `ListLogger` and passes it to a timer functions. Once the function is run, then the log is checked to ensure the expected message is present.
 
-Chcete-li získat přístup k nastavení aplikace v testech, můžete použít [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+If you want to access application settings in your tests, you can use [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
-### <a name="run-tests"></a>Spouštění testů
+### <a name="run-tests"></a>Run tests
 
-Chcete-li spustit testy, přejděte na **Průzkumník testů** a klikněte na tlačítko **spustit všechny**.
+To run the tests, navigate to the **Test Explorer** and click **Run all**.
 
-![Testování Azure Functions se službou C# v sadě Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+![Testing Azure Functions with C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="debug-tests"></a>Ladit testy
+### <a name="debug-tests"></a>Debug tests
 
-Ladit testy, nastavte zarážku v testu, přejděte na **Průzkumníka testů** a klikněte na tlačítko **spuštění > ladění poslední spuštění**.
+To debug the tests, set a breakpoint on a test, navigate to the **Test Explorer** and click **Run > Debug Last Run**.
 
-## <a name="javascript-in-vs-code"></a>JavaScript v nástroji VS Code
+## <a name="javascript-in-vs-code"></a>JavaScript in VS Code
 
-Následující příklad popisuje, jak vytvořit aplikaci funkcí jazyka JavaScript v nástroji VS Code a spustit a testy s [Jest](https://jestjs.io). Tento postup používá [funkcí VS Code příponou](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) vytvářet funkce Azure.
+The following example describes how to create a JavaScript Function app in VS Code and run and tests with [Jest](https://jestjs.io). This procedure uses the [VS Code Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) to create Azure Functions.
 
-![Testování Azure Functions s použitím jazyka JavaScript v nástroji VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+![Testing Azure Functions with JavaScript in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
 ### <a name="setup"></a>Nastavení
 
-K nastavení prostředí, inicializovat spuštěním nové aplikace Node.js v prázdné složce `npm init`.
+To set up your environment, initialize a new Node.js app in an empty folder by running `npm init`.
 
 ```bash
 npm init -y
 ```
-Dále nainstalujte Jest spuštěním následujícího příkazu:
+Next, install Jest by running the following command:
 
 ```bash
 npm i jest
 ```
-Teď aktualizovat _package.json_ nahradit stávající příkazu test pomocí tohoto příkazu:
+Now update _package.json_ to replace the existing test command with the following command:
 
 ```bash
 "scripts": {
@@ -290,19 +285,19 @@ Teď aktualizovat _package.json_ nahradit stávající příkazu test pomocí to
 }
 ```
 
-### <a name="create-test-modules"></a>Vytvořit test moduly
-S projektem inicializován můžete vytvořit moduly používané ke spuštění automatizovaných testů. Začněte tím, že vytvoříte novou složku s názvem *testování* pro uložení podpora modulů.
+### <a name="create-test-modules"></a>Create test modules
+With the project initialized, you can create the modules used to run the automated tests. Begin by creating a new folder named *testing* to hold the support modules.
 
-V *testování* složky přidejte nový soubor, pojmenujte ho **defaultContext.js**a přidejte následující kód:
+In the *testing* folder add a new file, name it **defaultContext.js**, and add the following code:
 
 ```javascript
 module.exports = {
     log: jest.fn()
 };
 ```
-Tento modul mocks *protokolu* funkce představující výchozí kontext spuštění.
+This module mocks the *log* function to represent the default execution context.
 
-V dalším kroku přidejte nový soubor, pojmenujte ho **defaultTimer.js**a přidejte následující kód:
+Next, add a new file, name it **defaultTimer.js**, and add the following code:
 
 ```javascript
 module.exports = {
@@ -310,9 +305,9 @@ module.exports = {
 };
 ```
 
-Tento modul implementuje `IsPastDue` vlastnost stát je jako instance falešné časovače. Konfigurace časovače, jako jsou výrazy NCRONTAB, zde nejsou požadovány, protože testovací svazek je pouhým voláním funkce přímo k otestování výsledku.
+This module implements the `IsPastDue` property to stand is as a fake timer instance. Timer configurations like NCRONTAB expressions are not required here as the test harness is simply calling the function directly to test the outcome.
 
-Pak pomocí rozšíření VS Code funkce [vytvořit novou funkci jazyka JavaScript HTTP](/azure/javascript/tutorial-vscode-serverless-node-01) a pojmenujte ho *HttpTrigger*. Jakmile se vytvoří funkci, přidejte nový soubor ve stejné složce s názvem **index.test.js**a přidejte následující kód:
+Next, use the VS Code Functions extension to [create a new JavaScript HTTP Function](/azure/javascript/tutorial-vscode-serverless-node-01) and name it *HttpTrigger*. Once the function is created, add a new file in the same folder named **index.test.js**, and add the following code:
 
 ```javascript
 const httpFunction = require('./index');
@@ -330,9 +325,9 @@ test('Http trigger should return known text', async () => {
     expect(context.res.body).toEqual('Hello Bill');
 });
 ```
-Funkce protokolu HTTP v šabloně vrátí řetězec "Hello", které jsou spojeny s názvem zadaná v řetězci dotazu. Tento test vytvoří falešnou instanci požadavku a předá ho do funkce protokolu HTTP. Test kontroluje, zda *protokolu* metoda se volá jednou a vráceném textu budou zobrazeny se rovná "Hello Bill".
+The HTTP function from the template returns a string of "Hello" concatenated with the name provided in the query string. This test creates a fake instance of a request and passes it to the HTTP function. The test checks that the *log* method is called once and the returned text equals "Hello Bill".
 
-Pak pomocí rozšíření VS Code funkce k vytvoření nové funkce jazyka JavaScript časovač a pojmenujte ho *TimerTrigger*. Jakmile se vytvoří funkci, přidejte nový soubor ve stejné složce s názvem **index.test.js**a přidejte následující kód:
+Next, use the VS Code Functions extension to create a new JavaScript Timer Function and name it *TimerTrigger*. Once the function is created, add a new file in the same folder named **index.test.js**, and add the following code:
 
 ```javascript
 const timerFunction = require('./index');
@@ -344,20 +339,20 @@ test('Timer trigger should log message', () => {
     expect(context.log.mock.calls.length).toBe(1);
 });
 ```
-Funkce časovačem ze šablony zaznamená zprávu na konci těla funkce. Tento test zajistí *protokolu* funkce se volá jednou.
+The timer function from the template logs a message at the end of the body of the function. This test ensures the *log* function is called once.
 
-### <a name="run-tests"></a>Spouštění testů
-Chcete-li spustit testy, stiskněte **CTRL + ~** otevřete okno příkazového řádku a spuštění `npm test`:
+### <a name="run-tests"></a>Run tests
+To run the tests, press **CTRL + ~** to open the command window, and run `npm test`:
 
 ```bash
 npm test
 ```
 
-![Testování Azure Functions s použitím jazyka JavaScript v nástroji VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+![Testing Azure Functions with JavaScript in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="debug-tests"></a>Ladit testy
+### <a name="debug-tests"></a>Debug tests
 
-Chcete-li ladit testy, přidejte následující konfiguraci pro vaše *launch.json* souboru:
+To debug your tests, add the following configuration to your *launch.json* file:
 
 ```json
 {
@@ -373,11 +368,11 @@ Chcete-li ladit testy, přidejte následující konfiguraci pro vaše *launch.js
 }
 ```
 
-Dále nastavte zarážku v testu a stiskněte klávesu **F5**.
+Next, set a breakpoint in your test and press **F5**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zjistili, jak sepsání automatizovaných testů pro vaše funkce, pokračujte s těmito prostředky:
-- [Ruční spuštění funkce bez protokolu HTTP aktivované](./functions-manually-run-non-http.md)
-- [Zpracování chyb Azure Functions](./functions-bindings-error-pages.md)
-- [Funkce Azure Event Grid aktivovat místní ladění](./functions-debug-event-grid-trigger-local.md)
+Now that you've learned how to write automated tests for your functions, continue with these resources:
+- [Manually run a non HTTP-triggered function](./functions-manually-run-non-http.md)
+- [Azure Functions error handling](./functions-bindings-error-pages.md)
+- [Azure Function Event Grid Trigger Local Debugging](./functions-debug-event-grid-trigger-local.md)

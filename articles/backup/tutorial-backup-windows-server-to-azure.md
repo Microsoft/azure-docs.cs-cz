@@ -1,15 +1,15 @@
 ---
-title: Kurz – zálohování Windows serveru do Azure
+title: Tutorial - Back up Windows Server to Azure
 description: Tento kurz podrobně popisuje zálohování místních Windows Serverů do trezoru služby Recovery Services.
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171836"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226476"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
 
@@ -19,11 +19,11 @@ Pomocí služby Azure Backup můžete chránit svůj Windows Server před poško
 >
 > * Stažení a nastavení agenta MARS
 > * Konfigurace časů zálohování a plánu uchovávání záloh serveru
-> * Provedení zálohování na vyžádání
+> * Perform an on-demand back up
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure Portal v <https://portal.azure.com.>
+Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -33,13 +33,13 @@ Před zálohováním Windows Serveru musíte vytvořit místo pro uložení zál
 
    ![otevření trezoru služby Recovery Services](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2. V nabídce **Trezory Služeb zotavení** klikněte na **Přidat**.
+2. V nabídce **Trezory Recovery Services** klikněte na **Přidat**.
 
    ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
 3. V nabídce **Trezor služby Recovery Services**:
 
-    * Jako *Název* zadejte **myRecoveryServicesVault**.
+    * Jako **Název** zadejte *myRecoveryServicesVault*.
     * V části **Předplatné** se zobrazí ID aktuálního předplatného.
     * V části **Skupina prostředků** vyberte **Použít existující** a zvolte *myResourceGroup*. Pokud *myResourceGroup* neexistuje, vyberte **Vytvořit novou** a zadejte *myResourceGroup*.
     * V rozevírací nabídce **Umístění** zvolte *Západní Evropa*.
@@ -59,7 +59,7 @@ Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení m
 
 3. V nabídce **Cíl zálohování**:
 
-   * pro **kde je spuštěná vaše úloha?** vyberte **místní** .
+   * for **Where is your workload running?** , select **On-premises**
    * V části **Co chcete zálohovat?** vyberte **Soubory a složky** a **Stav systému**.
 
    ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
@@ -90,7 +90,7 @@ Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení m
 
 4. Po zobrazení výzvy zadejte šifrovací heslo pro šifrování záloh z Windows Serveru. Toto heslo uložte na bezpečném místě, protože ho Microsoft v případě ztráty nemůže obnovit.
 
-5. Klikněte na **Dokončit**.
+5. Klikněte na **Finish** (Dokončit).
 
 ## <a name="configure-backup-and-retention"></a>Konfigurace zálohování a uchovávání
 

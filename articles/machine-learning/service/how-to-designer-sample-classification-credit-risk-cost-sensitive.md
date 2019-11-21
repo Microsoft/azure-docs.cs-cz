@@ -1,7 +1,7 @@
 ---
-title: 'Návrhář: příklad prediktivního úvěrového rizika'
+title: 'Designer: Predict credit risk example'
 titleSuffix: Azure Machine Learning
-description: Sestavujte klasifikátor a pomocí vlastních skriptů v Pythonu můžete předpovědět úvěrové riziko pomocí návrháře Azure Machine Learning.
+description: Build a classifier and use custom Python scripts to predict credit risk using Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,68 +10,68 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: f174ed995b043ef99d22a0a292e9b5be394029a5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196093"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214277"
 ---
-# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Vytvoření klasifikátoru & použití skriptů Pythonu k předpovídání úvěrového rizika pomocí návrháře Azure Machine Learning
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Build a classifier & use Python scripts to predict credit risk using Azure Machine Learning designer
 
-**Návrhář (Preview) – ukázka 4**
+**Designer (preview) sample 4**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak vytvořit komplexní kanál strojového učení pomocí návrháře (Preview). Naučíte se, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnat více modelů a vybrat nejlepší možnost.
+This article shows you how to build a complex machine learning pipeline using the designer (preview). You'll learn how to implement custom logic using Python scripts and compare multiple models to choose the best option.
 
-Tato ukázka navlakuje klasifikátor k předpovídání úvěrového rizika pomocí informací o kreditních aplikacích, jako je například historie kreditů, stáří a počet platebních karet. Koncepty v tomto článku ale můžete použít k tomu, abyste se mohli vypořádat s vlastními problémy machine learningu.
+This sample trains a classifier to predict credit risk using credit application information such as credit history, age, and number of credit cards. However, you can apply the concepts in this article to tackle your own machine learning problems.
 
-Zde je dokončený graf pro tento kanál:
+Here's the completed graph for this pipeline:
 
-[![Graf kanálu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Kliknutím na položku ukázka 4 otevřete.
+4. Click sample 4 to open it.
 
 ## <a name="data"></a>Data
 
-V této ukázce se používá datová sada pro německé kreditní karty z úložiště UC Irvine. Obsahuje 1 000 vzorků s 20 funkcemi a jedním štítkem. Každá ukázka představuje osobu. 20 funkcí zahrnuje číselné a kategorií funkce. Další informace o datové sadě najdete na [webu UCI](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). Poslední sloupec je popisek, který označuje úvěrové riziko a má pouze dvě možné hodnoty: vysoké úvěrové riziko = 2 a nízké úvěrové riziko = 1.
+This sample uses the German Credit Card dataset from the UC Irvine repository. It contains 1,000 samples with 20 features and one label. Each sample represents a person. The 20 features include numerical and categorical features. For more information about the dataset, see the [UCI website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). The last column is the label, which denotes the credit risk and has only two possible values: high credit risk = 2, and low credit risk = 1.
 
-## <a name="pipeline-summary"></a>Souhrn kanálu
+## <a name="pipeline-summary"></a>Pipeline summary
 
-V tomto kanálu porovnáte dva různé přístupy k vygenerování modelů pro vyřešení tohoto problému:
+In this pipeline, you compare two different approaches for generating models to solve this problem:
 
-- Školení s původní datovou sadou.
-- Školení s replikovanou datovou sadou.
+- Training with the original dataset.
+- Training with a replicated dataset.
 
-Oba přístupy vyhodnotí modely pomocí testovací datové sady s replikací, aby bylo zajištěno, že výsledky budou zarovnány s funkcí cost. Test dvou klasifikátorů s oběma přístupy: **Podpora dvou tříd – vektorový počítač** a rozposílený **rozhodovací strom se dvěma třídami**.
+With both approaches, you evaluate the models by using the test dataset with replication to ensure that results are aligned with the cost function. Test two classifiers with both approaches: **Two-Class Support Vector Machine** and **Two-Class Boosted Decision Tree**.
 
-Náklady na chybnou klasifikaci příkladu s nízkým rizikem jako vysoké jsou 1 a náklady na neklasifikaci vysoce rizikového příkladu, který je nízký, je 5. Pro tyto náklady na nesprávnou klasifikaci používáme modul **vykonávání skriptu Pythonu** .
+The cost of misclassifying a low-risk example as high is 1, and the cost of misclassifying a high-risk example as low is 5. We use an **Execute Python Script** module to account for this misclassification cost.
 
-Tady je graf kanálu:
+Here's the graph of the pipeline:
 
-[![Graf kanálu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Zpracování dat
 
-Začněte pomocí modulu **Editor metadat** a přidejte názvy sloupců, abyste nahradili výchozí názvy sloupců, které mají smysluplné názvy, a to z popisu datové sady na webu UCI. Nové názvy sloupců zadejte jako hodnoty oddělené čárkami v poli **nový název sloupce** **editoru metadat**.
+Start by using the **Metadata Editor** module to add column names to replace the default column names with more meaningful names, obtained from the dataset description on the UCI site. Provide the new column names as comma-separated values in the **New column** name field of the **Metadata Editor**.
 
-Dále vygenerujte školicí a testovací sady použité pro vývoj modelu předpovědi rizik. Rozdělte původní datovou sadu do školicích a testovacích sad se stejnou velikostí pomocí modulu **rozdělit data** . Chcete-li vytvořit sady se stejnou velikostí, nastavte **zlomky řádků v první výstupní sadě dat** na 0,7.
+Next, generate the training and test sets used to develop the risk prediction model. Split the original dataset into training and test sets of the same size by using the **Split Data** module. To create sets of equal size, set the **Fraction of rows in the first output dataset** option to 0.7.
 
-### <a name="generate-the-new-dataset"></a>Generovat novou datovou sadu
+### <a name="generate-the-new-dataset"></a>Generate the new dataset
 
-Vzhledem k tomu, že náklady na nebezpečí pododhadu jsou vysoké, nastavte náklady na neplatnou klasifikaci takto:
+Because the cost of underestimating risk is high, set the cost of misclassification like this:
 
-- U vysoce rizikových případů nesprávně klasifikovaných jako nízké riziko: 5
-- Pro případy s nízkým rizikem klasifikované jako vysoké riziko: 1
+- For high-risk cases misclassified as low risk: 5
+- For low-risk cases misclassified as high risk: 1
 
-Chcete-li tuto funkci nákladů odrážet, vygenerujte novou datovou sadu. V nové datové sadě se každý příklad s vysokým rizikem replikuje pětkrát, ale počet příkladů s nízkým rizikem se nezmění. Před replikací rozdělte data na školení a testování datových sad, aby se zabránilo tomu, aby byl stejný řádek v obou sadách.
+To reflect this cost function, generate a new dataset. In the new dataset, each high-risk example is replicated five times, but the number of low-risk examples doesn't change. Split the data into training and test datasets before replication to prevent the same row from being in both sets.
 
-Pokud chcete replikovat data s vysokým rizikem, vložte tento kód Pythonu do modulu **spuštění skriptu Pythonu** :
+To replicate the high-risk data, put this Python code into an **Execute Python Script** module:
 
 ```Python
 import pandas as pd
@@ -85,42 +85,42 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-Modul **spuštění skriptu Pythonu** replikuje jak školicí, tak testovací datové sady.
+The **Execute Python Script** module replicates both the training and test datasets.
 
 ### <a name="feature-engineering"></a>Návrh funkcí
 
-Algoritmus **vektorového stroje podpory dvou tříd** vyžaduje normalizovaná data. Proto použijte modul **Normalize data** pro normalizaci rozsahů všech numerických funkcí pomocí transformace `tanh`. Transformace `tanh` převede všechny číselné funkce na hodnoty v rozsahu 0 až 1 a současně zachovává celkovou distribuci hodnot.
+The **Two-Class Support Vector Machine** algorithm requires normalized data. So use the **Normalize Data** module to normalize the ranges of all numeric features with a `tanh` transformation. A `tanh` transformation converts all numeric features to values within a range of 0 and 1 while preserving the overall distribution of values.
 
-Modul **vektorového stroje podpory dvou tříd** zpracovává řetězcové funkce, převádí je na funkce kategorií a pak na binární funkce s hodnotou nula nebo One. Takže tyto funkce nemusíte normalizovat.
+The **Two-Class Support Vector Machine** module handles string features, converting them to categorical features and then to binary features with a value of zero or one. So you don't need to normalize these features.
 
 ## <a name="models"></a>Modely
 
-Vzhledem k tomu, že jste použili dva klasifikátory, **Mezitřídní vektorový stroj** (SVM) a **dvakrát rozhodovací strom se dvěma třídami**a dvě datové sady, vygenerujete celkem čtyři modely:
+Because you applied two classifiers, **Two-Class Support Vector Machine** (SVM) and **Two-Class Boosted Decision Tree**, and two datasets, you generate a total of four models:
 
-- SVM se vyškolená s původními daty.
-- SVM je vyškolená pro replikovaná data.
-- Posílený rozhodovací strom byl vyučen s původními daty.
-- Posílený rozhodovací strom byl vyučen pomocí replikovaných dat.
+- SVM trained with original data.
+- SVM trained with replicated data.
+- Boosted Decision Tree trained with original data.
+- Boosted Decision Tree trained with replicated data.
 
-Tato ukázka používá standardní pracovní postup pro datové vědy k vytváření, výukě a testování modelů:
+This sample uses the standard data science workflow to create, train, and test the models:
 
-1. Inicializujte algoritmy pro učení pomocí **dvou tříd – vektorový počítač podpory** a se **dvěma třídami se zvyšuje rozhodovací strom**.
-1. Použijte **model výuky** pro použití algoritmu pro data a vytvořte skutečný model.
-1. Použijte **model skóre** k vytvoření skóre pomocí příkladů testu.
+1. Initialize the learning algorithms, using **Two-Class Support Vector Machine** and **Two-Class Boosted Decision Tree**.
+1. Use **Train Model** to apply the algorithm to the data and create the actual model.
+1. Use **Score Model** to produce scores by using the test examples.
 
-Následující diagram znázorňuje část tohoto kanálu, při které se původní a replikované školicí sady používají ke školení dvou různých SVM modelů. **Model výuky** je připojen ke školicí sadě a **model skóre** je připojen k sadě testů.
+The following diagram shows a portion of this pipeline, in which the original and replicated training sets are used to train two different SVM models. **Train Model** is connected to the training set, and **Score Model** is connected to the test set.
 
-![Graf kanálu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Pipeline graph](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-Ve fázi hodnocení kanálu vypočítáte přesnost každého ze čtyř modelů. Pro tento kanál použijte **vyhodnocený model** a porovnejte příklady, které mají stejné náklady na klasifikaci.
+In the evaluation stage of the pipeline, you compute the accuracy of each of the four models. For this pipeline, use **Evaluate Model** to compare examples that have the same misclassification cost.
 
-Modul **vyhodnocení modelu** může vypočítat metriky výkonu, a to až pro dva modely skóre. Proto můžete použít jednu instanci **vyhodnocení modelu** k vyhodnocení dvou modelů SVM a jiné instance **vyhodnocení modelu** pro vyhodnocení dvou modelů rozstupného rozhodovacího stromu.
+The **Evaluate Model** module can compute the performance metrics for as many as two scored models. So you can use one instance of **Evaluate Model** to evaluate the two SVM models and another instance of **Evaluate Model** to evaluate the two Boosted Decision Tree models.
 
-Všimněte si, že se replikovaná testovací datová sada používá jako vstup pro **model skóre**. Jinými slovy, konečné skóre přesnosti zahrnuje náklady na získání špatných popisků.
+Notice that the replicated test dataset is used as the input for **Score Model**. In other words, the final accuracy scores include the cost for getting the labels wrong.
 
-## <a name="combine-multiple-results"></a>Kombinovat více výsledků
+## <a name="combine-multiple-results"></a>Combine multiple results
 
-Modul **vyhodnocení modelu** vytvoří tabulku s jedním řádkem, který obsahuje různé metriky. Chcete-li vytvořit jednu sadu výsledků přesnosti, nejprve použijte příkaz **Přidat řádky** pro zkombinování výsledků do jedné tabulky. Potom pomocí následujícího skriptu Pythonu v modulu **spouštění skriptu Pythonu** přidáte název modelu a postup pro školení pro každý řádek v tabulce výsledků:
+The **Evaluate Model** module produces a table with a single row that contains various metrics. To create a single set of accuracy results, we first use **Add Rows** to combine the results into a single table. We then use the following Python script in the **Execute Python Script** module to add the model name and training approach for each row in the table of results:
 
 ```Python
 import pandas as pd
@@ -142,17 +142,17 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>Výsledky
 
-Chcete-li zobrazit výsledky kanálu, můžete kliknout pravým tlačítkem myši na výstup vizualizace v modulu poslední **Výběr sloupců v datové sadě** .
+To view the results of the pipeline, you can right-click the Visualize output of the last **Select Columns in Dataset** module.
 
-![Vizualizovat výstup](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![Visualize output](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
-První sloupec uvádí algoritmus strojového učení, který se používá k vygenerování modelu.
+The first column lists the machine learning algorithm used to generate the model.
 
-Druhý sloupec indikuje typ sady školení.
+The second column indicates the type of the training set.
 
-Třetí sloupec obsahuje hodnotu přesnosti citlivou na náklady.
+The third column contains the cost-sensitive accuracy value.
 
-Z těchto výsledků vidíte, že je nejlepší přesnost zajištěna modelem vytvořeným se **dvěma třídami pro vektorový stroj podpory** a vyškolenou na replikovanou datovou sadu školení.
+From these results, you can see that the best accuracy is provided by the model that was created with **Two-Class Support Vector Machine** and trained on the replicated training dataset.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -160,11 +160,11 @@ Z těchto výsledků vidíte, že je nejlepší přesnost zajištěna modelem vy
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte další ukázky, které jsou k dispozici pro návrháře:
+Explore the other samples available for the designer:
 
-- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](how-to-designer-sample-classification-predict-income.md)
-- [Ukázka 5 – klasifikace: předpověď změn](how-to-designer-sample-classification-churn.md)
-- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
-- [Ukázka 7 – klasifikace textu: Wikipedii SP 500 DataSet](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

@@ -1,22 +1,18 @@
 ---
 title: Vytvoření první funkce pomocí Azure CLI
 description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí Azure CLI bez serveru a Azure Functions Core Tools.
-author: ggailey777
-ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 11/13/2018
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: 1d0c6edf250e49fe966388253617181ed2b3dff1
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 147ad4bd20ee1c7ae8f1529e1b3bc0e4f3e7dbb0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329641"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230842"
 ---
-# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Rychlý Start: Vytvoření první funkce z příkazového řádku pomocí Azure CLI
+# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Quickstart: Create your first function from the command line using Azure CLI
 
 Toto téma Rychlý start vás provede použitím příkazového řádku nebo terminálu k vytvoření první funkce. Pomocí Azure CLI vytvoříte aplikaci funkcí, což je infrastruktura [bez serveru](https://azure.microsoft.com/solutions/serverless/), která je hostitelem funkce. Projekt kódu funkce je generován ze šablony s použitím [Azure Functions Core Tools](functions-run-local.md), který se používá také k nasazení projektu funkcí aplikace do Azure.
 
@@ -26,9 +22,9 @@ Následující kroky můžete provést v počítačích se systémem Mac, Window
 
 Před spuštěním této ukázky musíte mít následující:
 
-+ Nainstalujte [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo novější.
++ Install [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.6.666 or later.
 
-+ Nainstalujte [rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
++ Nainstalujte [rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). This     article requires the Azure CLI version 2.0 or later. Verzi zjistíte spuštěním příkazu `az --version`. Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
 + Aktivní předplatné Azure.
 
@@ -36,7 +32,7 @@ Před spuštěním této ukázky musíte mít následující:
 
 [!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Povolit sady rozšíření
+## <a name="enable-extension-bundles"></a>Enable extension bundles
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -52,7 +48,7 @@ Před spuštěním této ukázky musíte mít následující:
 
 K hostování provádění funkcí musíte mít aplikaci Function App. Function App poskytuje prostředí pro provádění kódu funkce bez serveru. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Aplikaci Function App vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az-functionapp-create). 
 
-V následujícím příkazu nahraďte zástupný symbol `<APP_NAME>` jedinečným názvem vaší aplikace funkcí a `<STORAGE_NAME>` názvem účtu úložiště. Jako výchozí doména DNS pro příslušnou aplikaci Function App se použije `<APP_NAME>`, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. Měli byste také nastavit modul runtime `<language>` pro aplikaci Function App, od `dotnet` (C#) nebo `node` (JavaScript).
+V následujícím příkazu nahraďte zástupný symbol `<APP_NAME>` jedinečným názvem vaší aplikace funkcí a `<STORAGE_NAME>` názvem účtu úložiště. Jako výchozí doména DNS pro příslušnou aplikaci Function App se použije `<APP_NAME>`, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. You should also set the `<language>` runtime for your function app, from `dotnet` (C#) or `node` (JavaScript).
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westeurope \

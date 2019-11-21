@@ -1,85 +1,85 @@
 ---
-title: Řešení potíží s virtuálním počítačem s Windows vzdálené plochy – Azure
-description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
+title: Troubleshoot Remote Desktop Windows Virtual Desktop - Azure
+description: How to resolve issues when you set up client connections in a Windows Virtual Desktop tenant environment.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 3aae74a4fed499674f015ed0adb59016877583f3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9fcc65768db3029461a5823034336bc883379292
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607387"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227686"
 ---
 # <a name="remote-desktop-client-connections"></a>Připojení klientů Vzdálené plochy
 
-Pomocí tohoto článku můžete vyřešit problémy s připojením klienta k virtuální ploše Windows.
+Use this article to resolve issues with Windows Virtual Desktop client connections.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
-Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
+Visit the [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) to discuss the Windows Virtual Desktop service with the product team and active community members.
 
-## <a name="you-cant-open-a-web-client"></a>Nemůžete otevřít webového klienta.
+## <a name="you-cant-open-a-web-client"></a>You can't open a web client
 
-Potvrďte připojení k Internetu tak, že otevřete jiný web. například [www.Bing.com](https://www.bing.com).
+Confirm there's internet connectivity by opening another web site; for example, [www.Bing.com](https://www.bing.com).
 
-Pomocí nástroje **nslookup** potvrďte, že DNS může přeložit plně kvalifikovaný název domény:
+Use **nslookup** to confirm DNS can resolve the FQDN:
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
 ```
 
-Zkuste se připojit pomocí jiného klienta, jako je klient vzdálené plochy pro Windows 7 nebo Windows 10, a zkontrolujte, jestli můžete otevřít webového klienta.
+Try connecting with another client, like Remote Desktop client for Windows 7 or Windows 10, and check to see if you can open the web client.
 
-### <a name="error-opening-another-site-fails"></a>Chyba: otevření jiného webového serveru se nezdařilo
+### <a name="error-opening-another-site-fails"></a>Error: Opening another site fails
 
-**Příčina:** Problémy se sítí nebo výpadky.
+**Cause:** Network issues and/or outages.
 
-**Oprava:** Kontaktujte podporu sítě.
+**Fix:** Contact network support.
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Chyba: Nástroj Nslookup nemůže přeložit název.
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Error: Nslookup cannot resolve the name
 
-**Příčina:** Problémy se sítí nebo výpadky.
+**Cause:** Network issues and/or outages.
 
-**Oprava:** Kontaktovat podporu sítě
+**Fix:** Contact network support
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Chyba: nemůžete se připojit, ale ostatní klienti se mohou připojit.
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Error: You can't connect but other clients can connect
 
-**Příčina:** Prohlížeč se nechová podle očekávání a přestal fungovat.
+**Cause:** The browser isn't behaving as expected and stopped working.
 
-**Oprava:** Při řešení potíží s prohlížečem postupujte podle těchto pokynů.
+**Fix:** Follow these instructions to troubleshoot the browser.
 
-1. Restartujte prohlížeč.
-2. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
-4. Otevřete prohlížeč v privátním režimu.
+1. Restart the browser.
+2. Clear browser cookies. See [How to delete cookie files in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+3. Smažte mezipaměť prohlížeče. See [clear browser cache for your browser](https://binged.it/2RKyfdU).
+4. Open browser in Private mode.
 
-## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení.
+## <a name="web-client-stops-responding-or-disconnects"></a>Web client stops responding or disconnects
 
-Zkuste se připojit pomocí jiného prohlížeče nebo klienta.
+Try connecting using another browser or client.
 
-### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Chyba: jiné prohlížeče a klienti jsou také nefunkční nebo se nedaří otevřít.
+### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Error: Other browsers and clients also malfunction or fail to open
 
-**Příčina:** Problémy se sítí nebo operačním systémem nebo výpadky
+**Cause:** Network and/or operation system issues or outages
 
-**Oprava:** Obraťte se na tým podpory.
+**Fix:** Contact support teams.
 
-## <a name="web-client-keeps-prompting-for-credentials"></a>Webový klient uchovává výzvy k zadání přihlašovacích údajů
+## <a name="web-client-keeps-prompting-for-credentials"></a>Web client keeps prompting for credentials
 
-Pokud webový klient zachovává výzvy k zadání přihlašovacích údajů, postupujte podle těchto pokynů.
+If the Web client keeps prompting for credentials, follow these instructions.
 
-1. Ověřte správnost adresy URL webového klienta.
-2. Potvrďte, že přihlašovací údaje jsou pro prostředí virtuálních počítačů s Windows svázané s adresou URL.
-3. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
-5. Otevřete prohlížeč v privátním režimu.
+1. Confirm web client URL is correct.
+2. Confirm that credentials are for the Windows Virtual Desktop environment tied to the URL.
+3. Clear browser cookies. See [How to delete cookie files in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Smažte mezipaměť prohlížeče. See [Clear browser cache for your browser](https://binged.it/2RKyfdU).
+5. Open browser in Private mode.
 
-## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient služby Vzdálená plocha pro Windows 7 nebo Windows 10 přestane reagovat nebo ho nejde otevřít.
+## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Remote Desktop client for Windows 7 or Windows 10 stops responding or cannot be opened
 
-K vyčištění registrů klientů OOB (out-of-band) použijte následující rutiny PowerShellu.
+Use the following PowerShell cmdlets to clean up out-of-band (OOB) client registries.
 
 ```PowerShell
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
@@ -91,38 +91,38 @@ Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
 Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 ```
 
-Přejděte na **%AppData%\RdClientRadc** a odstraňte veškerý obsah.
+Navigate to **%AppData%\RdClientRadc** and delete all content.
 
-Odinstalujte a znovu nainstalujte klienta vzdálené plochy pro Windows 7 a Windows 10.
+Uninstall and reinstall Remote Desktop client for Windows 7 and Windows 10.
 
-## <a name="troubleshooting-end-user-connectivity"></a>Řešení potíží s připojením koncových uživatelů
+## <a name="troubleshooting-end-user-connectivity"></a>Troubleshooting end-user connectivity
 
-Někdy uživatelé mají přístup ke svým informačním kanálům a místním prostředkům, ale stále mají problémy s konfigurací, dostupností nebo výkonem, které jim brání v přístupu ke vzdáleným prostředkům. V těchto případech uživatel získá zprávy podobné těmto:
+Sometimes users can access their feed and local resources, but still have configuration, availability, or performance issues that prevent them from accessing remote resources. In these cases, the user gets messages similar to these:
 
-![Připojení ke vzdálené ploše chybová zpráva.](media/eb76b666808bddb611448dfb621152ce.png)
+![Remote Desktop Connection error message.](media/eb76b666808bddb611448dfb621152ce.png)
 
-![Nelze se připojit k chybové zprávě brány.](media/a8fbb9910d4672147335550affe58481.png)
+![Can't connect to the gateway error message.](media/a8fbb9910d4672147335550affe58481.png)
 
-Použijte tyto obecné pokyny pro odstraňování potíží s kódy chyb připojení klientů.
+Follow these general troubleshooting instructions for client connection error codes.
 
-1. Potvrďte uživatelské jméno a čas, kdy došlo k problému.
-2. Otevřete **PowerShell** a navažte připojení k Tenantovi virtuální plochy Windows, ve kterém se nahlásil problém.
-3. Potvrďte připojení ke správnému tenantovi pomocí **Get-RdsTenant.**
-4. Pomocí rutin **Get-RdsHostPool** a **Get-RdsSessionHost** potvrďte, že řešení potíží se provádí ve správném fondu hostitelů.
-5. Spuštěním následujícího příkazu zobrazíte seznam všech neúspěšných aktivit typu připojení pro určený časový interval:
+1. Confirm user name and time when issue was experienced.
+2. Open **PowerShell** and establish connection to the Windows Virtual Desktop tenant where the issue was reported.
+3. Confirm connection to the correct tenant with **Get-RdsTenant.**
+4. Using **Get-RdsHostPool** and **Get-RdsSessionHost** cmdlets, confirm that troubleshooting is being done on the correct host pool.
+5. Execute the command below to get a list of all failed activities of type connection for the specified time window:
 
     ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-6. Pomocí **ActivityId** z předchozího výstupu rutiny spusťte následující příkaz:
+6. Using the **ActivityId** from the previous cmdlet output, run the command below:
 
     ```PowerShell
-    (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
+    (Get-RdsDiagnosticActivities -TenantName <TenantName> -ActivityId <ActivityId> -Detailed).Errors
     ```
 
-7. Příkaz vytvoří výstup podobný výstupu uvedenému níže. K odstranění hlavní příčiny použijte **ErrorCodeSymbolic** a **ErrorMessage** .
+7. The command produces output similar to the output shown below. Use **ErrorCodeSymbolic** and **ErrorMessage** to troubleshoot the root cause.
 
     ```PowerShell
     ErrorSource       : <Source>
@@ -135,47 +135,47 @@ Použijte tyto obecné pokyny pro odstraňování potíží s kódy chyb připoj
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Chyba: O_ADD_USER_TO_GROUP_FAILED/nepovedlo se přidat uživatele = ≤ username ≥ to Group = Remote Desktop Users. Důvod: Win32. ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Error: O_ADD_USER_TO_GROUP_FAILED / Failed to add user = ≤username≥ to group = Remote Desktop Users. Reason: Win32.ERROR_NO_SUCH_MEMBER
 
-**Příčina:** Virtuální počítač není připojený k doméně, ve které je objekt uživatele.
+**Cause:** VM has not been joined to the domain where user object is.
 
-**Oprava:** Přidejte virtuální počítač do správné domény. Viz [připojení virtuálního počítače s Windows serverem ke spravované doméně](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
+**Fix:** Add VM to the correct domain. See [Join a Windows Server virtual machine to a managed domain](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Chyba: Nástroj Nslookup nemůže přeložit název.
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Error: Nslookup cannot resolve the name
 
-**Příčina:** Problémy se sítí nebo výpadky.
+**Cause:** Network issues or outages.
 
-**Oprava:** Kontaktovat podporu sítě
+**Fix:** Contact network support
 
-### <a name="error-connectionfailedclientprotocolerror"></a>Chyba: ConnectionFailedClientProtocolError
+### <a name="error-connectionfailedclientprotocolerror"></a>Error: ConnectionFailedClientProtocolError
 
-**Příčina:** Virtuální počítače, ke kterým se uživatel pokouší připojit, nejsou připojeni k doméně.
+**Cause:** VMs that user is attempting to connect to are not domain joined.
 
-**Oprava:** Připojte všechny virtuální počítače, které jsou součástí fondu hostitelů, do řadiče domény.
+**Fix:** Join all VMs that are part of a host pool to the domain controller.
 
-### <a name="error-connectionfailedusersidinformationmismatch"></a>Chyba: ConnectionFailedUserSIDInformationMismatch
-**Příčina:** Identifikátor SID z tokenu Azure Active Directory uživatele (AD) se neshoduje s identifikátorem SID vráceným řadičem domény při pokusu o povolení uživatele pro vzdálené přihlášení. K této chybě obvykle dochází při pokusu o přihlášení k prostředí Azure Active Directory Domain Servicesu (Azure služba AD DS) s uživatelem původně vytvořeným z Windows Server AD.
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Error: ConnectionFailedUserSIDInformationMismatch
+**Cause:** The SID from the user's Azure Active Directory (AD) token doesn't match the SID returned by the domain controller when attempting to enable the user for remote sign in. This error typically happens when attempting to sign in to an Azure Active Directory Domain Services (Azure AD DS) environment with a user originally sourced from a Windows Server AD.
 
-**Oprava:** Tento scénář se v tuto chvíli nepodporuje. K virtuálním počítačům virtuálních počítačů s Windows připojeným k Azure služba AD DS se můžou přihlásit jenom uživatelé, kteří se nahlásili z Azure Active Directory.
+**Fix:** This scenario isn't supported at this time. Only users sourced from Azure Active Directory can sign in to Windows Virtual Desktop VMs connected to Azure AD DS.
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Uživatel se připojuje, ale nic se nezobrazuje (bez kanálu).
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>User connects but nothing is displayed (no feed)
 
-Uživatel může spustit klienty vzdálené plochy a je schopen ho ověřit, ale uživatel nevidí žádné ikony v informačním kanálu webového zjišťování.
+A user can start Remote Desktop clients and is able to authenticate, however the user doesn't see any icons in the web discovery feed.
 
-Pomocí tohoto příkazového řádku zkontrolujte, jestli se uživateli, který nahlásí problémy, přiřadí ke skupinám aplikací:
+Confirm that the user reporting the issues has been assigned to application groups by using this command line:
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 
-Potvrďte, že se uživatel přihlašuje se správnými přihlašovacími údaji.
+Confirm that the user is logging in with the correct credentials.
 
-Pokud je webový klient používán, zkontrolujte, zda nejsou k dispozici žádné problémy s přihlašovacími údaji v mezipaměti.
+If the web client is being used, confirm that there are no cached credentials issues.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
-- Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
-- Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
-- Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
-- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
+- For an overview on troubleshooting Windows Virtual Desktop and the escalation tracks, see [Troubleshooting overview, feedback, and support](troubleshoot-set-up-overview.md).
+- To troubleshoot issues while creating a tenant and host pool in a Windows Virtual Desktop environment, see [Tenant and host pool creation](troubleshoot-set-up-issues.md).
+- To troubleshoot issues while configuring a virtual machine (VM) in Windows Virtual Desktop, see [Session host virtual machine configuration](troubleshoot-vm-configuration.md).
+- To troubleshoot issues when using PowerShell with Windows Virtual Desktop, see [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
+- To go through a troubleshoot tutorial, see [Tutorial: Troubleshoot Resource Manager template deployments](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).

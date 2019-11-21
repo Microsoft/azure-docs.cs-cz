@@ -1,22 +1,16 @@
 ---
-title: Vytvoření funkce aktivované službou Blob Storage v Azure | Dokumentace Microsoftu
+title: Create a function in Azure triggered by Blob storage
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou volají položky přidané do úložiště služby Azure Blob Storage.
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 10/01/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: b8855fa061e07ec77482ca960971db8252608b51
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: be8d7abc6d7bb583516ca75f316edd18965ac395
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096884"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227151"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Vytvoření funkce aktivované službou Azure Blob Storage
 
@@ -24,7 +18,7 @@ Dozvíte se, jak vytvořit funkci, která se aktivuje při odesílání souborů
 
 ![Zobrazte si zprávy v protokolech.](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 + Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

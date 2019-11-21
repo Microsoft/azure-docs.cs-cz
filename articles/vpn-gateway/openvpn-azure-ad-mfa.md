@@ -1,46 +1,46 @@
 ---
-title: 'Povolit MFA pro uživatele sítě VPN: ověřování Azure AD | Microsoft Docs'
-description: Povolení služby Multi-Factor Authentication pro uživatele sítě VPN
+title: 'Enable MFA for VPN users: Azure AD authentication| Microsoft Docs'
+description: Enable multi-factor authentication for VPN users
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: alzam
-ms.openlocfilehash: 1b506f8439deabd110daaefab36442140e20d0d4
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: HT
+ms.openlocfilehash: b09b66ee7088b879b01a8ea0ee2068267034d9b6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185358"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209505"
 ---
-# <a name="enable-multi-factor-authentication-mfa-for-vpn-users"></a>Povolit Multi-Factor Authentication (MFA) pro uživatele sítě VPN
+# <a name="enable-multi-factor-authentication-mfa-for-vpn-users"></a>Enable Multi-Factor Authentication (MFA) for VPN users
 
-VÍCEFAKTOROVÉ ověřování můžete povolit pro uživatele ve vašem tenantovi Azure AD, aby se uživatelům zobrazila výzva k ověření druhého faktoru před udělením přístupu.
+You can enable MFA for users in your Azure AD tenant so that users are prompted for a second factor authentication before access is granted.
 
 > [!NOTE]
-> Předpoklad: nakonfigurovali jste klienta Azure AD, jak je popsáno v dokumentu konfigurace tenanta.
+> Prerequisite: You have configured an Azure AD tenant as described in the "Configure a tenant" document.
 >
 
-### <a name="tenant"></a>1. Přihlaste se k Azure Portal a přejděte do **Azure Active Directory** , **Všichni uživatelé** a klikněte na **Multi-Factor Authentication**
+#### <a name="tenant"></a>1. Login to the Azure portal and navigate to **Azure Active Directory** , **All users** and click on **Multi-Factor Authentication**
 
 
-   ![Nový tenant Azure AD](./media/openvpn-azure-ad-mfa/mfa1.jpg)
+   ![New Azure AD tenant](./media/openvpn-azure-ad-mfa/mfa1.jpg)
 
-### <a name="users"></a>2. Vyberte uživatele, u kterých chcete povolit vícefaktorové ověřování, a klikněte na **Povolit** .
+#### <a name="users"></a>2. Select the user(s) that you want to enable MFA for and click **enable**
 
-   ![Nový tenant Azure AD](./media/openvpn-azure-ad-mfa/mfa2.jpg)
+   ![New Azure AD tenant](./media/openvpn-azure-ad-mfa/mfa2.jpg)
 
-### <a name="enable-authentication"></a>3. přejděte na **Azure Active Directory** , **podnikové aplikace**, **všechny aplikace** a klikněte na **Azure VPN** .
+#### <a name="enable-authentication"></a>3. Navigate to **Azure Active Directory** , **Enterprise applications**, **All applications**  and click on **Azure VPN**
 
 
-   ![ID adresáře](./media/openvpn-azure-ad-mfa/user1.jpg)
+   ![Directory ID](./media/openvpn-azure-ad-mfa/user1.jpg)
 
-### <a name="users"></a>4. Zajistěte, aby se **Uživatelé, kteří mají povolené přihlášení** , nastavili na Ano. Pokud chcete, aby se mohli přihlásit jenom uživatelé, kteří mají oprávnění k síti VPN v Azure, aby se mohli přihlásit a nastavit **požadované přiřazení uživatelů?** Ano, jinak se všichni uživatelé v tenantovi služby AD budou moci připojit k síti VPN úspěšně.
+#### <a name="users"></a>4. Make sure the **Enabled for users to sign-in?** is set to yes. If you want just the users that have permissions to the Azure VPN to be able to login then Set **User assignment required?** to yes as well otherwise all users in the AD tenant will be able to connect to VPN successfully.
 
    ![Oprávnění](./media/openvpn-azure-ad-mfa/user2.jpg)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Aby bylo možné se připojit k virtuální síti, je nutné vytvořit a nakonfigurovat profil klienta VPN. Viz téma [Konfigurace klienta VPN pro připojení P2S VPN](openvpn-azure-ad-client.md).
+In order to connect to your virtual network, you must create and configure a VPN client profile. See [Configure a VPN client for P2S VPN connections](openvpn-azure-ad-client.md).

@@ -1,138 +1,136 @@
 ---
 title: Plán Azure Functions Premium
-description: Podrobnosti a možnosti konfigurace (virtuální síť, bez počátečního startu, neomezené trvání spuštění) pro plán Azure Functions Premium.
+description: Details and configuration options (VNet, no cold start, unlimited execution duration) for the Azure Functions Premium plan.
 author: jeffhollan
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 36db3d466b2d1de0b8673e218cbfc52fda974b89
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719034"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226788"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
-Plán Azure Functions Premium je možnost hostování pro aplikace Function App. Plán Premium poskytuje funkce, jako je připojení k virtuální síti, žádný studený start a špičkový hardware.  Do stejného plánu Premium se dá nasadit víc aplikací Function App a plán vám umožní nakonfigurovat velikost instance COMPUTE, velikost základního plánu a maximální velikost plánu.  Porovnání plánu Premium a dalších typů plánování a hostování najdete v tématu [možnosti škálování a hostování funkcí](functions-scale.md).
+The Azure Functions Premium plan is a hosting option for function apps. The Premium plan provides features like VNet connectivity, no cold start, and premium hardware.  Multiple function apps can be deployed to the same Premium plan, and the plan allows you to configure compute instance size, base plan size, and maximum plan size.  For a comparison of the Premium plan and other plan and hosting types, see [function scale and hosting options](functions-scale.md).
 
-## <a name="create-a-premium-plan"></a>Vytvořit plán Premium
+## <a name="create-a-premium-plan"></a>Create a Premium plan
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-Plán Premium můžete vytvořit také pomocí příkaz [AZ functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) v rozhraní příkazového řádku Azure CLI. Následující příklad vytvoří plán vrstvy _elastické úrovně Premium 1_ :
+You can also create a Premium plan using [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) in the Azure CLI. The following example creates an _Elastic Premium 1_ tier plan:
 
 ```azurecli-interactive
 az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
 --location <REGION> --sku EP1
 ```
 
-V tomto příkladu nahraďte `<RESOURCE_GROUP>` skupinou prostředků a `<PLAN_NAME>` s názvem pro váš plán, který je ve skupině prostředků jedinečný. Zadejte [podporovanou `<REGION>`](#regions). Pokud chcete vytvořit plán Premium, který podporuje Linux, zahrňte možnost `--is-linux`.
+In this example, replace `<RESOURCE_GROUP>` with your resource group and `<PLAN_NAME>` with a name for your plan that is unique in the resource group. Specify a [supported `<REGION>`](#regions). To create a Premium plan that supports Linux, include the `--is-linux` option.
 
-Pomocí vytvořeného plánu můžete vytvořit aplikaci Function App pomocí [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) . Na portálu se současně vytvoří plán i aplikace. 
+With the plan created, you can use [az functionapp create](/cli/azure/functionapp#az-functionapp-create) to create your function app. In the portal, both the plan and the app are created at the same time. 
 
 ## <a name="features"></a>Funkce
 
-K dispozici jsou následující funkce pro aplikace Functions nasazené do plánu Premium.
+The following features are available to function apps deployed to a Premium plan.
 
-### <a name="pre-warmed-instances"></a>Předem zahřívání instance
+### <a name="pre-warmed-instances"></a>Pre-warmed instances
 
-Pokud v plánu spotřeby nejsou žádné události a spuštění, vaše aplikace může škálovat dolů na nulové instance. Když se přidají nové události v, musí být speciální instance specializovaná na svou aplikaci, která je na ní spuštěná.  Specializace nových instancí může v závislosti na aplikaci nějakou dobu trvat.  Tato další latence při prvním volání se často označuje jako studený start aplikace.
+If no events and executions occur today in the Consumption plan, your app may scale down to zero instances. When new events come in, a new instance needs to be specialized with your app running on it.  Specializing new instances may take some time depending on the app.  This additional latency on the first call is often called app cold start.
 
-V plánu Premium můžete mít aplikaci předem zahřívání na určitém počtu instancí až do minimální velikosti plánu.  Předem zavedené instance také umožňují předem škálovat aplikaci před velkým objemem zátěže. Vzhledem k tomu, že se aplikace škáluje, nejprve se škáluje do předem zahřívání instancí. Další instance pokračují ve vyrovnávací paměti a zahřívá se hned po přípravě na další operaci škálování. Když máte vyrovnávací paměť předběžně zavedených instancí, můžete efektivně zabránit latenci při počátečním startu.  Předem zavedené instance jsou součástí plánu Premium a je potřeba, abyste zachovali aspoň jednu instanci, která je spuštěná a dostupná vždy, když je plán aktivní.
+In the Premium plan, you can have your app pre-warmed on a specified number of instances, up to your minimum plan size.  Pre-warmed instances also let you pre-scale an app before high load. As the app scales out, it first scales into the pre-warmed instances. Additional instances continue to buffer out and warm immediately in preparation for the next scale operation. By having a buffer of pre-warmed instances, you can effectively avoid cold start latencies.  Pre-warmed instances is a feature of the Premium plan, and you need to keep at least one instance running and available at all times the plan is active.
 
-Počet předem zavedených instancí můžete v Azure Portal nakonfigurovat tak, že vyberete **Function App**a kliknete na kartu **funkce platformy** a vyberete možnosti **horizontálního** navýšení kapacity. V okně pro úpravu aplikace Function App jsou předem zavedené instance specifické pro danou aplikaci, ale minimální a maximální počet instancí platí pro celý plán.
+You can configure the number of pre-warmed instances in the Azure portal by selected your **Function App**, going to the **Platform Features** tab, and selecting the **Scale Out** options. In the function app edit window, pre-warmed instances is specific to that app, but the minimum and maximum instances apply to your entire plan.
 
-![Nastavení elastického škálování](./media/functions-premium-plan/scale-out.png)
+![Elastic Scale Settings](./media/functions-premium-plan/scale-out.png)
 
-Můžete taky nakonfigurovat předem zavedené instance pro aplikaci pomocí Azure CLI.
+You can also configure pre-warmed instances for an app with the Azure CLI
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
-### <a name="private-network-connectivity"></a>Připojení k privátní síti
+### <a name="private-network-connectivity"></a>Private network connectivity
 
-Azure Functions nasazené do plánu Premium využívá [novou integraci virtuální sítě pro webové aplikace](../app-service/web-sites-integrate-with-vnet.md).  Když nakonfigurujete aplikaci, může komunikovat s prostředky ve vaší virtuální síti nebo zabezpečená prostřednictvím koncových bodů služby.  V aplikaci jsou k dispozici také omezení IP pro omezení příchozího provozu.
+Azure Functions deployed to a Premium plan takes advantage of [new VNet integration for web apps](../app-service/web-sites-integrate-with-vnet.md).  When configured, your app can communicate with resources within your VNet or secured via service endpoints.  IP restrictions are also available on the app to restrict incoming traffic.
 
-Při přiřazování podsítě do aplikace Function App v plánu Premium budete potřebovat podsíť s dostatečnými IP adresami pro každou potenciální instanci. Vyžadujeme blok IP s minimálně 100 dostupnými adresami.
+When assigning a subnet to your function app in a Premium plan, you need a subnet with enough IP addresses for each potential instance. We require an IP block with at least 100 available addresses.
 
-Další informace najdete v tématu [integrace aplikace Function App s virtuální](functions-create-vnet.md)sítí.
+Fore more information, see [integrate your function app with a VNet](functions-create-vnet.md).
 
-### <a name="rapid-elastic-scale"></a>Rychlé Elastické škálování
+### <a name="rapid-elastic-scale"></a>Rapid elastic scale
 
-Další výpočetní instance se automaticky přidají do vaší aplikace pomocí stejné logiky rychlé škálování jako u plánu spotřeby.  Další informace o tom, jak škálování funguje, najdete v tématu [škálování a hostování funkcí](./functions-scale.md#how-the-consumption-and-premium-plans-work).
+Additional compute instances are automatically added for your app using the same rapid scaling logic as the Consumption plan.  To learn more about how scaling works, see [Function scale and hosting](./functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-### <a name="unbounded-run-duration"></a>Nevázaná doba běhu
+### <a name="unbounded-run-duration"></a>Unbounded run duration
 
-Azure Functions v plánu spotřeby se pro jedno spuštění omezí na 10 minut.  V plánu Premium je doba běhu standardně 30 minut, aby se zabránilo provádění. Můžete ale [Upravit konfiguraci Host. JSON](./functions-host-json.md#functiontimeout) , abyste to nezajistili pro aplikace Premium Plan.
+Azure Functions in a Consumption plan are limited to 10 minutes for a single execution.  In the Premium plan, the run duration defaults to 30 minutes to prevent runaway executions. However, you can [modify the host.json configuration](./functions-host-json.md#functiontimeout) to make this unbounded for Premium plan apps.
 
-## <a name="plan-and-sku-settings"></a>Nastavení plánu a SKU
+## <a name="plan-and-sku-settings"></a>Plan and SKU settings
 
-Při vytváření plánu nakonfigurujete dvě nastavení: minimální počet instancí (nebo velikost plánu) a maximální limit shlukování.  Minimální instance jsou rezervované a vždycky spuštěné.
+When you create the plan, you configure two settings: the minimum number of instances (or plan size) and the maximum burst limit.  Minimum instances are reserved and always running.
 
 > [!IMPORTANT]
-> Za každou instanci přidělenou v minimálním počtu instancí se účtuje bez ohledu na to, jestli jsou funkce spuštěné nebo ne.
+> You are charged for each instance allocated in the minimum instance count regardless if functions are executing or not.
 
-Pokud vaše aplikace vyžaduje instance nad rámec velikosti vašeho plánu, může pokračovat horizontální navýšení kapacity, dokud počet instancí nedosáhne maximálního limitu shlukování.  Účtují se za instance přesahující váš plán jenom v době, kdy jsou spuštěné a pronajaté.  Připravujeme úsilí, aby se vaše aplikace přihlásila na vymezený maximální limit, zatímco pro vaši aplikaci jsou zaručené minimální instance plánu.
+If your app requires instances beyond your plan size, it can continue to scale out until the number of instances hits the maximum burst limit.  You are billed for instances beyond your plan size only while they are running and rented to you.  We will make a best effort at scaling your app out to its defined maximum limit, whereas the minimum plan instances are guaranteed for your app.
 
-Velikost plánu a maximum v Azure Portal můžete nakonfigurovat tak, že vyberete možnosti **horizontálního** navýšení kapacity v plánu nebo aplikaci Function App nasazené do tohoto plánu (v části **funkce platformy**).
+You can configure the plan size and maximums in the Azure portal by selected the **Scale Out** options in the plan or a function app deployed to that plan (under **Platform Features**).
 
-Můžete taky zvýšit maximální limit shluku z Azure CLI:
+You can also increase the maximum burst limit from the Azure CLI:
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
-### <a name="available-instance-skus"></a>Dostupné skladové položky instance
+### <a name="available-instance-skus"></a>Available instance SKUs
 
-Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
+When creating or scaling your plan, you can choose between three instance sizes.  You will be billed for the total number of cores and memory consumed per second.  Your app can automatically scale out to multiple instances as needed.  
 
-|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Storage|
+|Skladová položka|Jádra|Paměť|Úložiště|
 |--|--|--|--|
-|EP1|1|3,5 GB|250 GB|
+|EP1|1\. místo|3.5GB|250 GB|
 |EP2|2|7GB|250 GB|
-|EP3|4|S frekvencí|250 GB|
+|EP3|4|14GB|250 GB|
 
 ## <a name="regions"></a>Oblasti
 
-Níže jsou uvedené aktuálně podporované oblasti pro každý operační systém.
+Below are the currently supported regions for each OS.
 
-|Region (Oblast)| Windows | Linux |
+|Oblast| Windows | Linux |
 |--| -- | -- |
 |Austrálie – střed| ✔<sup>1</sup> | |
 |Austrálie – střed 2| ✔<sup>1</sup> | |
 |Austrálie – východ| ✔ | |
 |Austrálie – jihovýchod | ✔ | ✔ |
 |Brazílie – jih| ✔<sup>2</sup> |  |
-|Střední Kanada| ✔ |  |
+|Kanada – střed| ✔ |  |
 |Střední USA| ✔ |  |
 |Východní Asie| ✔ |  |
-|Východ USA | ✔ | ✔ |
+|USA – východ | ✔ | ✔ |
 |Východ USA 2| ✔ |  |
 |Francie – střed| ✔ |  |
 |Japonsko – východ| ✔ | ✔ |
 |Japonsko – západ| ✔ | |
-|Jižní Korea – střed| ✔ |  |
+|Korea – střed| ✔ |  |
 |Středoseverní USA| ✔ |  |
 |Severní Evropa| ✔ | ✔ |
 |Středojižní USA| ✔ |  |
-|Indie – jih | ✔ | |
+|Jižní Indie | ✔ | |
 |Jihovýchodní Asie| ✔ | ✔ |
-|Spojené království – jih| ✔ | |
-|Spojené království – západ| ✔ |  |
+|Velká Británie – jih| ✔ | |
+|Velká Británie – západ| ✔ |  |
 |Západní Evropa| ✔ | ✔ |
-|Indie – západ| ✔ |  |
+|Západní Indie| ✔ |  |
 |Západní USA| ✔ | ✔ |
 |Západní USA 2| ✔ |  |
 
-<sup>1</sup> Maximální horizontální navýšení kapacity je omezené na 20 instancí.  
-<sup>2</sup> . Maximální horizontální navýšení kapacity je omezeno na 60 instancí.
+<sup>1</sup>Maximum scale out limited to 20 instances.  
+<sup>2</sup>Maximum scale out limited to 60 instances.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Pochopení možností škálování a hostování Azure Functions](functions-scale.md)
+> [Understand Azure Functions scale and hosting options](functions-scale.md)
