@@ -1,94 +1,94 @@
 ---
 title: Co je Windows Virtual Desktop? – Azure
-description: Přehled virtuálního klienta Windows
+description: An overview of Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 11/19/2019
 ms.author: helohr
-ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74119995"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227701"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
-Virtuální plocha Windows je služba virtualizace plochy a aplikací, která běží v cloudu.
+Windows Virtual Desktop is a desktop and app virtualization service that runs on the cloud.
 
-Tady je seznam toho, co můžete udělat při spuštění virtuální plochy Windows v Azure:
+Here’s what you can do when you run Windows Virtual Desktop on Azure:
 
-* Nastavení nasazení s více relacemi s Windows 10, které poskytuje plnou sadu Windows 10 s škálovatelností
-* Virtualizujte Office 365 ProPlus a optimalizujte pro spouštění ve virtuálních scénářích s více uživateli.
-* Poskytněte virtuálním klientům Windows 7 bezplatné rozšířené aktualizace zabezpečení.
-* Přenesení stávajících klientských počítačů a aplikací pro vzdálenou plochu (RDS) a Windows serveru do libovolného počítače
-* Virtualizujte desktopy i aplikace
-* Správa stolních počítačů a aplikací pro Windows 10, Windows Server a Windows 7 pomocí jednotného prostředí pro správu
+* Set up a multi-session Windows 10 deployment that delivers a full Windows 10 with scalability
+* Virtualize Office 365 ProPlus and optimize it to run in multi-user virtual scenarios
+* Provide Windows 7 virtual desktops with free Extended Security Updates
+* Bring your existing Remote Desktop Services (RDS) and Windows Server desktops and apps to any computer
+* Virtualize both desktops and apps
+* Manage Windows 10, Windows Server, and Windows 7 desktops and apps with a unified management experience
 
-## <a name="introductory-video"></a>Úvodní video
+## <a name="introductory-video"></a>Introductory video
 
-Seznamte se s virtuálními počítači s Windows, proč je jedinečný a co je nového v tomto videu:
+Learn about Windows Virtual Desktop, why it’s unique, and what’s new in this video:
 
 <br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
-Další informace o virtuálním počítači s Windows najdete v [našem seznamu](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)testů.
+For more videos about Windows Virtual Desktop, see [our playlist](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 
-S virtuálním počítačem s Windows můžete nastavit škálovatelné a flexibilní prostředí:
+With Windows Virtual Desktop, you can set up a scalable and flexible environment:
 
-* Vytvořte v předplatném Azure úplné prostředí virtualizace plochy, aniž byste museli spouštět žádné další servery brány.
-* Publikujte tolik fondů hostitelů, kolik potřebujete pro nejrůznější úlohy.
-* Využijte vlastní image pro produkční úlohy nebo testy z Galerie Azure.
-* Snižte náklady pomocí fondu a prostředků s více relacemi. Díky nové možnosti více relací pro Windows 10 Enterprise výhradně pro role Virtual Desktop a Hostitel relace vzdálené plochy (autovzdálené plochy) na Windows serveru můžete významně snížit počet virtuálních počítačů a zatížení operačního systému (OS), ale pořád poskytování stejných prostředků vašim uživatelům.
-* Poskytněte individuální vlastnictví prostřednictvím osobních (trvalých) ploch.
+* Create a full desktop virtualization environment in your Azure subscription without having to run any additional gateway servers.
+* Publish as many host pools as you need to accommodate your diverse workloads.
+* Bring your own image for production workloads or test from the Azure Gallery.
+* Reduce costs with pooled, multi-session resources. With the new Windows 10 Enterprise multi-session capability exclusive to Windows Virtual Desktop and Remote Desktop Session Host (RDSH) role on Windows Server, you can greatly reduce the number of virtual machines and operating system (OS) overhead while still providing the same resources to your users.
+* Provide individual ownership through personal (persistent) desktops.
 
-Můžete nasazovat a spravovat virtuální klienty:
+You can deploy and manage virtual desktops:
 
-* K nakonfigurování fondů hostitelů, vytváření skupin aplikací, přiřazování uživatelů a publikování prostředků použijte rozhraní PowerShell a rozhraní REST pro virtuální počítače s Windows.
-* Můžete publikovat celou plochu nebo jednotlivé vzdálené aplikace z jednoho fondu hostitelů, vytvořit jednotlivé skupiny aplikací pro různé sady uživatelů nebo dokonce přiřadit uživatele k několika skupinám aplikací, abyste snížili počet imagí.
-* Při správě prostředí použijte integrovaný delegovaný přístup k přiřazování rolí a shromažďování diagnostiky pro pochopení různých konfiguračních a uživatelských chyb.
-* Použijte novou diagnostickou službu k řešení chyb.
-* Jenom spravovat image a virtuální počítače, ne infrastrukturu. Nemusíte osobně spravovat role vzdálené plochy, jako je třeba Vzdálená plocha, a to jenom virtuální počítače ve vašem předplatném Azure.
+* Use the Windows Virtual Desktop PowerShell and REST interfaces to configure the host pools, create app groups, assign users, and publish resources.
+* Publish full desktop or individual remote apps from a single host pool, create individual app groups for different sets of users, or even assign users to multiple app groups to reduce the number of images.
+* As you manage your environment, use built-in delegated access to assign roles and collect diagnostics to understand various configuration or user errors.
+* Use the new Diagnostics service to troubleshoot errors.
+* Only manage the image and virtual machines, not the infrastructure. You don't need to personally manage the Remote Desktop roles like you do with Remote Desktop Services, just the virtual machines in your Azure subscription.
 
-Můžete také přiřadit uživatele k virtuálním plochám a propojit je:
+You can also assign and connect users to your virtual desktops:
 
-* Po přiřazení můžou uživatelé spustit libovolného klienta virtuální plochy Windows a připojit uživatele k publikovaným plochám a aplikacím Windows. Připojte se z libovolného zařízení prostřednictvím nativní aplikace na zařízení nebo webového klienta pro HTML5 virtuálních počítačů s Windows.
-* Bezpečně navažte uživatele prostřednictvím zpětného připojení ke službě, takže nikdy nemusíte mít otevřené žádné příchozí porty.
+* Once assigned, users can launch any Windows Virtual Desktop client to connect users to their published Windows desktops and applications. Connect from any device through either a native application on your device or the Windows Virtual Desktop HTML5 web client.
+* Securely establish users through reverse connections to the service, so you never have to leave any inbound ports open.
 
 ## <a name="requirements"></a>Požadavky
 
-K dispozici je několik věcí, které potřebujete k nastavení virtuální plochy Windows, a k úspěšnému připojení uživatelů ke svým plochám a aplikacím v systému Windows.
+There are a few things you need to set up Windows Virtual Desktop and successfully connect your users to their Windows desktops and applications.
 
-Plánujeme přidat podporu pro následující operačních systémech, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
+We plan to add support for the following OSes, so make sure you have the [appropriate licenses](https://azure.microsoft.com/pricing/details/virtual-desktop/) for your users based on the desktop and apps you plan to deploy:
 
-|Operační systém|Požadovaná licence|
+|OS|Required license|
 |---|---|
-|Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
-|Windows Server 2012 R2, 2016, 2019|Licence CAL pro klientský přístup (CAL) se Software Assurance|
+|Windows 10 Enterprise multi-session or Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows Server 2012 R2, 2016, 2019|RDS Client Access License (CAL) with Software Assurance|
 
-K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto věci:
+Your infrastructure needs the following things to support Windows Virtual Desktop:
 
-* [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Můžete ji nakonfigurovat jedním z následujících způsobů:
-  * Azure AD Connect (pro hybridní organizace)
-  * Azure AD Domain Services (pro hybridní nebo cloudové organizace)
-* Předplatné Azure, které obsahuje virtuální síť, která buď obsahuje nebo je připojená k Windows serveru Active Directory
+* An [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* A Windows Server Active Directory in sync with Azure Active Directory. You can configure this with one of the following:
+  * Azure AD Connect (for hybrid organizations)
+  * Azure AD Domain Services (for hybrid or cloud organizations)
+* An Azure subscription that contains a virtual network that either contains or is connected to the Windows Server Active Directory
   
-Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
+The Azure virtual machines you create for Windows Virtual Desktop must be:
 
-* [Standardní](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) služba AD připojená k doméně nebo k ní [připojená](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuální počítače nemůžou být připojené k Azure AD.
-* Spouští se jedna z následujících [podporovaných bitových kopií operačního systému](#supported-virtual-machine-os-images).
+* [Standard domain-joined](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) or [Hybrid AD-joined](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtual machines can't be Azure AD-joined.
+* Running one of the following [supported OS images](#supported-virtual-machine-os-images).
 
 >[!NOTE]
->Pokud potřebujete předplatné Azure, můžete si [zaregistrovat měsíční bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Pokud používáte bezplatnou zkušební verzi Azure, měli byste použít službu Azure AD Domain Services k udržování synchronizace služby Windows Server Active Directory s Azure Active Directory.
+>If you need an Azure subscription, you can [sign up for a one-month free trial](https://azure.microsoft.com/free/). If you're using the free trial version of Azure, you should use Azure AD Domain Services to keep your Windows Server Active Directory in sync with Azure Active Directory.
 
-Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít odchozí přístup TCP 443 k následujícím adresám URL:
+The Azure virtual machines you create for Windows Virtual Desktop must have outbound TCP 443 access to the following URLs:
 
-* *. wvd.microsoft.com
+* *.wvd.microsoft.com
 * *.blob.core.windows.net
 * *.core.windows.net
 * *.servicebus.windows.net
@@ -96,52 +96,52 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 * catalogartifact.azureedge.net
 
 >[!NOTE]
->Otevírání těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze webům a prostředkům virtuálních ploch systému Windows a neobsahují adresy URL pro jiné služby, jako je Azure AD.
+>Opening these URLs is essential for a reliable Windows Virtual Desktop deployment. Blocking access to these URLs is unsupported and will affect service functionality. These URLs only correspond to Windows Virtual Desktop sites and resources, and do not include URLS for other services like Azure AD.
 
-Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Stolní počítače a aplikace můžou být nasazené na virtuálních počítačích v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA. To může vést k přenosu dat do USA.
+Windows Virtual Desktop comprises the Windows desktops and apps you deliver to users and the management solution, which is hosted as a service on Azure by Microsoft. Desktops and apps can be deployed on virtual machines (VMs) in any Azure region, and the management solution and data for these VMs will reside in the United States. This may result in data transfer to the United States.
 
-Pro zajištění optimálního výkonu zajistěte, aby vaše síť splňovala následující požadavky:
+For optimal performance, make sure your network meets the following requirements:
 
-* Latence operace Round-Trip (RTT) ze sítě klienta do oblasti Azure, ve které byly nasazené fondy hostitelů, musí být nižší než 150 ms.
-* Síťový provoz se může směrovat mimo hranice země/oblasti, když se virtuální počítače, které hostují desktopy a aplikace, připojí ke službě správy.
-* Pro optimalizaci výkonu sítě doporučujeme, aby se virtuální počítače hostitele relace společně umístěného ve stejné oblasti Azure jako služba pro správu.
+* Round-trip (RTT) latency from the client's network to the Azure region where host pools have been deployed should be less than 150 ms.
+* Network traffic may flow outside country/region borders when VMs that host desktops and apps connect to the management service.
+* To optimize for network performance, we recommend that the session host's VMs are collocated in the same Azure region as the management service.
 
-## <a name="supported-remote-desktop-clients"></a>Podporovaní klienti vzdálené plochy
+## <a name="supported-remote-desktop-clients"></a>Supported Remote Desktop clients
 
-Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
+The following Remote Desktop clients support Windows Virtual Desktop:
 
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-## <a name="supported-virtual-machine-os-images"></a>Podporované image operačních systémů virtuálních počítačů
+## <a name="supported-virtual-machine-os-images"></a>Supported virtual machine OS images
 
-Virtuální počítač s Windows podporuje následující image operačních systémů x64:
+Windows Virtual Desktop supports the following x64 operating system images:
 
-* Windows 10 Enterprise s více relacemi verze 1809 nebo novější
-* Windows 10 Enterprise, verze 1809 nebo novější
+* Windows 10 Enterprise multi-session, version 1809 or later
+* Windows 10 Enterprise, version 1809 or later
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Virtuální počítač s Windows nepodporuje image operačního systému x86 (32 bitů).
+Windows Virtual Desktop does not support x86 (32-bit), Windows 10 Enterprise N, or Windows 10 Enterprise KN operating system images.
 
-Dostupné možnosti automatizace a nasazení závisí na tom, který operační systém a jakou verzi si zvolíte, jak je znázorněno v následující tabulce: 
+Available automation and deployment options depend on which OS and version you choose, as shown in the following table: 
 
-|Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|Aktualizace agenta virtuálního počítače s Windows|
+|Operační systém|Azure Image Gallery|Manual VM deployment|Azure Resource Manager template integration|Provision host pools on Azure Marketplace|Windows Virtual Desktop Agent updates|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|Automatické|
-|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automatické|
-|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automatické|
-|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automatické|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Ruční|
-|Windows Server 2019|Ano|Ano|Ne|Ne|Automatické|
-|Windows Server 2016|Ano|Ano|Ano|Ano|Automatické|
-|Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automatické|
+|Windows 10 multi-session, version 1903|Ano|Ano|Ano|Ano|Automaticky|
+|Windows 10 multi-session, version 1809|Ano|Ano|Ne|Ne|Automaticky|
+|Windows 10 Enterprise, version 1903|Ano|Ano|Ano|Ano|Automaticky|
+|Windows 10 Enterprise, version 1809|Ano|Ano|Ne|Ne|Automaticky|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Manual|
+|Windows Server 2019|Ano|Ano|Ne|Ne|Automaticky|
+|Windows Server 2016|Ano|Ano|Ano|Ano|Automaticky|
+|Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automaticky|
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít, budete muset vytvořit tenanta. Pokud se chcete dozvědět víc o tom, jak vytvořit tenanta, přejděte k kurzu Vytvoření tenanta.
+To get started, you'll need to create a tenant. To learn more about how to create a tenant, continue to the tenant creation tutorial.
 
 > [!div class="nextstepaction"]
 > [Vytvoření klienta v Windows Virtual Desktop](tenant-setup-azure-active-directory.md)

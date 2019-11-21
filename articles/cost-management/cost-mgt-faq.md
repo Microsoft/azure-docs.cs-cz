@@ -1,33 +1,33 @@
 ---
-title: Nejčastější dotazy ke službě Cloudyn v Azure | Dokumentace Microsoftu
-description: Tento článek obsahuje odpovědi na některé běžné dotazy týkající se Cloudyn.
+title: Frequently asked questions for Cloudyn in Azure | Microsoft Docs
+description: This article provides answers to some of the common questions about Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: troubleshooting
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: faa7181ebc7b886fbe06e4ac01c704016d4b0c51
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002030"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230098"
 ---
-# <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy pro Cloudyn
+# <a name="frequently-asked-questions-for-cloudyn"></a>Frequently asked questions for Cloudyn
 
-Tento článek se zabývá některými běžnými dotazy o Cloudyn. Pokud máte dotazy týkající se Cloudyn, můžete požádat je na [nejčastější dotazy pro Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
+This article addresses some common questions about Cloudyn. If you have questions about Cloudyn, you can ask them at [FAQs for Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
 
-## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak můžu řešit běžných problémů s instalací nepřímé enterprise?
+## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>How can I resolve common indirect enterprise setup problems?
 
 Pokud jste uživatel se smlouvou Enterprise nebo Cloud Solution Provider (CSP), můžou se vám při prvním použití portálu Cloudyn zobrazit následující zprávy:
 
-- "Zadaný klíč rozhraní API není klíč nejvyšší úrovně zápisu" zobrazí v **nastavit Cloudyn** průvodce.
-- "Přímá registrace – ne" zobrazí na portálu Enterprise Agreement.
-- "Za posledních 30 dní se nenašla žádná data o využití. Obraťte se prosím na vaše distributora, abyste měli jistotu, že kód byl povolen pro váš účet Azure"zobrazí na portálu Cloudyn.
+- "The specified API key is not a top level enrollment key" displayed in the **Set Up Cloudyn** wizard.
+- "Direct Enrollment – No" displayed in the Enterprise Agreement portal.
+- "No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account" displayed in the Cloudyn portal.
 
 Z předchozích zpráv vyplývá, že jste si smlouvu Azure Enterprise zakoupili přes prodejce nebo poskytovatele CSP. Abyste mohli zobrazovat data ve službě Cloudyn, musí váš prodejce nebo poskytovatel CSP pro váš účet Azure povolit _revize_.
 
@@ -35,7 +35,7 @@ Tady je postup řešení těchto potíží:
 
 1. Váš prodejce musí pro váš účet povolit _revize_. Postup najdete v [pokynech k nepřímé registraci zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Vygenerujte klíč smlouvy Azure Enterprise pro použití se službou Cloudyn. Pokyny najdete v tématu [přidání Azure EA](quick-register-ea.md#register-with-cloudyn) nebo [jak najít svůj EA registrace ID a klíč rozhraní API](https://youtu.be/u_phLs_udig).
+2. Vygenerujte klíč smlouvy Azure Enterprise pro použití se službou Cloudyn. For instructions, see [Adding Your Azure EA](quick-register-ea.md#register-with-cloudyn) or [How to Find Your EA Enrollment ID and API Key](https://youtu.be/u_phLs_udig).
 
 Službu Cloudyn může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí.
 
@@ -47,115 +47,115 @@ Než budete moct vygenerovat klíč rozhraní API smlouvy Azure Enterprise k nas
 
 Také může být potřeba, abyste udělili oprávnění _zobrazovat poplatky_ v rozhraní API pro fakturaci správcům oddělení, vlastníkům účtů a podnikovým správcům.
 
-## <a name="why-dont-i-see-optimizer-recommendations"></a>Proč nevidím doporučení pro optimalizaci?
+## <a name="why-dont-i-see-optimizer-recommendations"></a>Why don’t I see Optimizer recommendations?
 
-Informace o doporučení dostupná jenom pro účty, které jsou aktivované. Neuvidíte žádné doporučení informace v **optimalizace** sestavy kategorie pro účty, které jsou *neaktivovaných*, včetně:
+Recommendation information is only available for accounts that are activated. You will not see any recommendation information in **Optimizer** report categories for accounts that are *unactivated*, including:
 
-- Optimalizace správce
-- Optimalizace velikosti
-- Nedostatečné efektivity
+- Optimization Manager
+- Sizing Optimization
+- Inefficiencies
 
-Pokud nelze zobrazit žádná data doporučení pro optimalizaci, pravděpodobně máte účty, které neaktivovaných. K aktivaci účtu, musíte ho zaregistrovat pomocí přihlašovacích údajů Azure.
+If you cannot view any Optimizer recommendation data, then most likely, you have accounts that are unactivated. To activate an account, you need to register it with your Azure credentials.
 
-Chcete-li aktivovat účet:
+To activate an account:
 
 1.  Na portálu Cloudyn klikněte v pravém horním rohu na **Settings** (Nastavení) a vyberte **Cloud Accounts** (Účty v cloudu).
-2.  Na kartě účty Microsoft Azure, vyhledejte účty, které mají **neaktivovaných** předplatného.
-3.  Napravo od neaktivovaných účet, klikněte na tlačítko **upravit** symbol, který vypadá podobně jako tužka.
-4.  Váš tenant ID a ID sazby je automaticky rozpoznán. Klikněte na tlačítko **Další**.
-5.  Budete přesměrováni na webu Azure portal. Přihlaste se k portálu a autorizaci Cloudyn kolektor přístup k datům v Azure.
-6.  V dalším kroku budete přesměrováni na stránku Správa účty Cloudyn a vaše předplatné se aktualizuje s **aktivní** stav účtu. Zobrazuje zelená značka zaškrtnutí symbol.
-7.  Pokud se nezobrazí zelená značka zaškrtnutí symbolů pro jeden nebo více předplatných, znamená to, že nemáte oprávnění k vytvoření čtečky aplikace (CloudynCollector) pro předplatné. Uživatel s vyšší oprávnění u předplatného je potřeba zopakujte kroky 3 a 4.  
+2.  On the Microsoft Azure Accounts tab, look for accounts that have an **unactivated** subscription.
+3.  To the right of an unactivated account, click the **edit** symbol that resembles a pencil.
+4.  Your tenant ID and rate ID is automatically detected. Klikněte na **Další**.
+5.  You’re redirected to the Azure portal. Sign in to the portal and authorize Cloudyn Collector to access your Azure data.
+6.  Next, you’re redirected to the Cloudyn Accounts management page and your subscription is updated with **active** Account Status. It shows a green check mark symbol.
+7.  If you don’t see a green checkmark symbol for one or more of the subscriptions, it means that you do not have permissions to create a reader app (the CloudynCollector) for the subscription. A user with higher permissions for the subscription needs to repeat steps 3 and 4.  
 
-Po dokončení předchozích kroků můžete zobrazit doporučení pro optimalizaci jedné až dvou dnů. Však může trvat až pět dní před úplná optimalizace data jsou k dispozici.
+After you complete the preceding steps, you can view Optimizer recommendations within one to two days. However, it can take up to five days before full optimization data is available.
 
 
-## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Jak povolím pozastavená nebo uzamčený uživatelů?
+## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>How do I enable suspended or locked-out users?
 
-Nejprve Pojďme se podívat nanejvýš běžný scénář, který způsobí, že uživatelské účty, chcete-li získat *initiallySuspended*.
+First, let's look at the most common scenario that causes user accounts to get *initiallySuspended*.
 
-> Admin1 může být uživatel Microsoft Cloud Solution Provider a smlouvy Enterprise. Organizace je začít využívat Cloudyn.  Osoba zaregistruje na webu Azure portal a přihlásí na portálu Cloudyn. Jako osobě, která registruje službu Cloudyn a přihlásí do portálu Cloudyn, stane se Admin1 *primární správce*. Admin1 nevytvoří všechny uživatelské účty. Ale na portálu Cloudyn, vytváření účtů Azure a nastavení hierarchie entit. Admin1 informuje Admin2, správce klienta, které potřebují k zaregistrovat ve službě Cloudyn a přihlaste se k portálu Cloudyn.
+> Admin1 might be a Microsoft Cloud Solution Provider or Enterprise Agreement user. Their organization is ready to start using Cloudyn.  He registers through the Azure portal and signs into the Cloudyn portal. As the person who registers the Cloudyn service and signs into the Cloudyn portal, Admin1 becomes the *primary administrator*. Admin1 does not create any user accounts. However, using the Cloudyn portal, they do create Azure accounts and set up an entity hierarchy. Admin1 informs Admin2, a tenant administrator, that they need to register with Cloudyn and sign in to the Cloudyn portal.
 >
-> Admin2 zaregistruje na webu Azure portal. Ale při pokusu o přihlášení k portálu Cloudyn, že dojde k chybě, je jeho účet **pozastaveno**. Primární správce Admin1, je oznámení o pozastavení účtu. Admin1 musí aktivovat Admin2 na účet a udělte *přístup správce entity* pro příslušné entity a umožňuje přístup ke správě uživatelů a aktivní uživatelský účet.
+> Admin2 registers through the Azure portal. However when they try to sign in to the Cloudyn portal, they get an error saying their account is **suspended**. The primary administrator, Admin1, is notified of the account suspension. Admin1 needs to activate Admin2’s account and grant *admin entity access* for the appropriate entities and allows user management access and active the user account.
 
 
-Pokud se zobrazí výstraha se požadavek na povolit přístup pro uživatele, musíte aktivovat uživatelský účet.
+If you receive an alert with a request to allow access for a user, you need to activate the user account.
 
-Chcete-li aktivovat uživatelský účet:
+To activate the user account:
 
-1. Přihlaste se do Cloudyn pomocí účtu Azure administrativního uživatele, který jste použili k nastavení Cloudyn. Nebo, přihlaste se pomocí uživatelského účtu, který byl udělen přístup správce.
-2. Vyberte symbol ozubeného kolečka v pravém horním rohu a vyberte **Správa uživatelů**.
-3. Vyhledejte uživatele, vyberte symbol tužky a upravte uživatele.
-4. V části **stav uživatele**, změňte stav z **pozastaveno** k **aktivní**.
+1. Sign in to Cloudyn by using the Azure administrative user account that you used to set up Cloudyn. Or, sign in with a user account that was granted administrator access.
+2. Select the gear symbol in the upper right, and select **User Management**.
+3. Find the user, select the pencil symbol, and then edit the user.
+4. Under **User status**, change the status from **Suspended** to **Active**.
 
-Uživatelské účty Cloudyn připojit s použitím jednotné přihlašování z Azure. Pokud uživatel mistypes své heslo, se může nezůstanete zamknutí mimo Cloudyn, i když jsou i nadále přístup k Azure.
+Cloudyn user accounts connect by using single sign-on from Azure. If a user mistypes their password, they might get locked out of Cloudyn, even though they can still access Azure.
 
-Pokud změníte e-mailovou adresu ve službě Cloudyn z výchozí adresy v Azure, můžete získat váš účet uzamčen. Může zobrazovat "stav initiallySuspended." Pokud váš uživatelský účet je uzamčen, obraťte se na správce alternativní obnovení vašeho účtu.
+If you change your e-mail address in Cloudyn from the default address in Azure, your account can get locked out. It might show "status initiallySuspended." If your user account is locked out, contact an alternate administrator to reset your account.
 
-Doporučujeme vytvořit aspoň dva účty Cloudyn správce v případě, že jeden z účtů získá uzamčen.
+We recommend that you create at least two Cloudyn administrator accounts in case one of the accounts gets locked out.
 
-Pokud nemůžete se přihlásit k portálu Cloudyn, ujistěte se, že používáte správnou adresu URL pro přihlášení do Cloudyn. Použití [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+If you can't sign in to the Cloudyn portal, ensure that you're using the correct URL to sign in to Cloudyn. Use [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Vyhněte se pomocí přímé adresy URL Cloudyn https://app.cloudyn.com.
+Avoid using the Cloudyn direct URL https://app.cloudyn.com.
 
-## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak si můžu aktivovat neaktivovaných účty pomocí přihlašovacích údajů Azure?
+## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>How do I activate unactivated accounts with Azure credentials?
 
-Poté, co zjistí účtů Azure Cloudyn, datům služby cost okamžitě součástí sestavy založené na náklady. Ale pro Cloudyn poskytují data o využití a výkonu, budete muset zaregistrovat přihlašovací údaje pro účty Azure. Pokyny najdete v tématu [přidat účet nebo aktualizovat odběr](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
+As soon as your Azure accounts are discovered by Cloudyn, cost data is immediately provided in cost-based reports. However, for Cloudyn to provide usage and performance data, you need to register your Azure credentials for the accounts. For instructions, see [Add an account or update a subscription](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
 
-Přidat Azure přihlašovací údaje k účtu na portálu Cloudyn, vyberte symbol úpravy napravo od názvu účtu, ne předplatného.
+To add Azure credentials for an account, in the Cloudyn portal, select the edit symbol to the right of the account name, not the subscription.
 
-Dokud přihlašovací údaje Azure jsou přidány do Cloudyn, účet se zobrazí jako _zrušení aktivované_.
+Until your Azure credentials are added to Cloudyn, the account appears as _un-activated_.
 
-## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Jak přidat více účtů a entity k existujícímu předplatnému?
+## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>How do I add multiple accounts and entities to an existing subscription?
 
-Další entity se používají k přidání dalších smlouvy Enterprise s předplatným Cloudyn. Další informace najdete v tématu [vytvořit a spravovat entity](tutorial-user-access.md#create-and-manage-entities).
+Additional entities are used to add additional Enterprise Agreements to a Cloudyn subscription. For more information, see [Create and manage entities](tutorial-user-access.md#create-and-manage-entities).
 
-Pro CSP:
+For CSPs:
 
-Chcete-li přidat další účty poskytovatele CSP s entitou, **přístup účastník programu MSP** místo **Enterprise** při vytváření nové entity. Pokud váš účet je zaregistrovaný jako uzavřenou smlouvu Enterprise Agreement a chcete přidat přihlašovací údaje CSP, pracovníci podpory Cloudyn možná muset upravit nastavení svého účtu. Pokud jste placené předplatitelem Azure, můžete vytvořit novou žádost o podporu na webu Azure Portal. Vyberte **Nápověda a podpora**a pak vyberte **nová žádost o podporu**.
+To add additional CSP accounts to an entity, select **MSP Access** instead of **Enterprise** when you create the new entity. If your account is registered as an Enterprise Agreement and you want to add CSP credentials, Cloudyn support personnel might need to modify your account settings. If you're a paid Azure subscriber, you can create a new support request in the Azure portal. Select **Help + support**, and then select **New support request**.
 
-## <a name="currency-symbols-in-cloudyn-reports"></a>Symboly měny v sestavách Cloudyn
+## <a name="currency-symbols-in-cloudyn-reports"></a>Currency symbols in Cloudyn reports
 
-Můžete mít několika účtům Azure používají různé měny. Sestavy nákladů ve službě Cloudyn však není uveden více než jeden typ currency na sestavu.
+You might have multiple Azure accounts using different currencies. However, cost reports in Cloudyn do not show more than one currency type per report.
 
-Pokud máte více předplatných, které používají různé měny, nadřazená entita a jeho podřízené entity měny se zobrazují v USD **$** . Naše navrhované osvědčeným postupem je vyhýbat se použití různých měnách ve stejné hierarchii entity. Jinými slovy všechna vaše předplatná uspořádány do struktury entity používali stejné měně.
+If you have multiple subscriptions using different currencies, a parent entity and its child entity currencies are displayed in USD **$** . Our suggested best practice is to avoid using different currencies in the same entity hierarchy. In other words, all your subscriptions organized in an entity structure should use the same currency.
 
-Cloudyn automaticky detekuje vaše předplatné měny smlouvy Enterprise a zobrazí správně v sestavách.  Zobrazí se však pouze Cloudyn USD **$** pro CSP a účty Azure přímo na webu.
+Cloudyn automatically detects your Enterprise Agreement subscription currency and presents it properly in reports.  However, Cloudyn only displays USD **$** for CSP and web-direct Azure accounts.
 
-## <a name="what-are-cloudyn-data-refresh-timelines"></a>Co jsou Cloudyn data aktualizujte časové osy?
+## <a name="what-are-cloudyn-data-refresh-timelines"></a>What are Cloudyn data refresh timelines?
 
-Cloudyn zahrnuje následující aktualizace časových dat:
+Cloudyn has the following data refresh timelines:
 
-- **Počáteční**: Po při nastavování může trvat až 24 hodin, chcete-li zobrazit náklady na data ve službě Cloudyn. Můžete taky využít až 10 dní pro Cloudyn shromažďovat dostatek dat k zobrazení doporučení velikosti.
-- **Denní**: Po desátém dni na konci každého měsíce Cloudyn by měla zobrazit vaše data aktuální z předchozího dne po o UTC + 3 dalšího dne.
-- **Měsíční**: Od prvního dne desátý den každého měsíce Cloudyn můžou zobrazovat data pouze do konce předchozího měsíce.
+- **Initial**: After you set up, it can take up to 24 hours to view cost data in Cloudyn. It can also take up to 10 days for Cloudyn to collect enough data to display sizing recommendations.
+- **Daily**: From the tenth day to the end of each month, Cloudyn should show your data up to date from the previous day after about UTC+3 the next day.
+- **Monthly**: From the first day to the tenth day of each month, Cloudyn might show your data only through the end of the previous month.
 
-Cloudyn zpracovává data pro předchozího dne, když jsou k dispozici úplná data z předchozího dne. Data z předchozího dne je obvykle k dispozici ve službě Cloudyn podle o UTC + 3 každý den. Některá data, jako jsou například značky, může trvat dalších 24 hodin ke zpracování.
+Cloudyn processes data for the previous day when full data from the previous day is available. The previous day's data is usually available in Cloudyn by about UTC+3 each day. Some data, such as tags, can take an additional 24 hours to process.
 
-Data pro aktuální měsíc nejsou k dispozici pro kolekci na začátku v každém měsíci. Během doby dokončení poskytovatelé služeb své fakturace za předchozí měsíc. Předchozí měsíc data se zobrazí v Cloudyn 5 do 10 dnů po zahájení každý měsíc. Během této doby se může zobrazit jenom amortizované náklady na z předchozího měsíce. Nemusíte to vidět dat o denním využití nebo fakturace. Až bude dostupná data, Cloudyn ji zpracuje zpětně. Po zpracování, zobrazí se všechny měsíční data mezi páté den a desátý den každého měsíce.
+Data for the current month isn't available for collection at the beginning of every month. During the period, service providers finalize their billing for the previous month. The previous month's data appears in Cloudyn 5 to 10 days after the start of each month. During this time, you might see only amortized costs from the previous month. You might not see daily billing or usage data. When the data becomes available, Cloudyn processes it retroactively. After processing, all the monthly data is displayed between the fifth day and the tenth day of each month.
 
-Pokud dochází ke zpoždění odesílání dat z Azure do Cloudyn, data se stále zaznamená do Azure. Data se přenesou do Cloudyn, když se obnoví připojení.
+If there is a delay sending data from Azure to Cloudyn, data is still recorded in Azure. The data is transferred to Cloudyn when the connection is restored.
 
-## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cenově kolísání v sestavách nákladů Cloudyn
+## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cost fluctuations in Cloudyn Cost Reports
 
-Sestavy nákladů můžete zobrazit náklady kolísání pokaždé, když se aktualizované soubory fakturační odeslat poskytovatelů cloudových služeb. Kolísá dojít, když nové soubory, které byly přijaty z poskytovatele cloudových služeb mimo obvyklého denní nebo měsíční plán vytváření sestav. Cenově změny není výsledkem přepočet Cloudyn.
+Cost reports can show cost fluctuations whenever cloud service providers send updated billing files. Fluctuating costs occur when new files are received from a cloud service provider outside of the usual daily or monthly reporting schedule. Cost changes don't result from Cloudyn recalculation.
 
-V průběhu měsíce jsou všechny fakturační soubory odeslané poskytovatele cloudových služeb odhad denních nákladů. Někdy se často aktualizuje data – čas od času víc než jednou za den. Aktualizace jsou častější od AWS do Azure. Nákladů celkový počet položek by měla zůstat po dokončení výpočet fakturace za předchozí měsíc a po přijetí poslední fakturace souboru. Obvykle pomocí 10 měsíce.
+Throughout the month, all billing files sent by your cloud service provider are an estimation of your daily costs. Sometimes data is updated frequently — occasionally multiple times per day. Updates are more frequent with AWS than Azure. Cost totals should remain stable when the billing calculation for the previous month is complete and the final billing file is received. Usually, by the 10th of the month.
 
-Když dostanete úpravy náklady od poskytovatele cloudových služeb dojde ke změnám. Příjem kredity je jedním z příkladů. Změny můžou nastat měsíců po byla uzavřena v příslušném měsíci. Změny jsou zobrazeny pokaždé, když je přepočet provedené poskytovatele cloudových služeb. Cloudyn aktualizuje její historická data, abyste měli jistotu, že všechny úpravy přepočítána. Také ověřuje, že náklady jsou zobrazeny přesně v oznámí.
+Changes occur when you receive cost adjustments from your cloud service provider. Receiving credits is one example. Changes can occur months after the relevant month was closed. Changes are shown whenever a recalculation is made by your cloud service provider. Cloudyn updates its historical data to make sure that all adjustments are recalculated. It also verifies that the costs are shown accurately in it reports.
 
-## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Jak můžete s přímým přístupem CSP konfigurovat Cloudyn přístup pro nepřímé zákazníky nebo partnery CSP?
+## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>How can a direct CSP configure Cloudyn access for indirect CSP customers or partners?
 
-Pokyny najdete v tématu [konfigurace přístupu nepřímých poskytovatelů CSP v Cloudyn](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
+For instructions, see [Configure indirect CSP access in Cloudyn](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
 
-## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Co způsobí, že Optimalizátor položka nabídky Zobrazit?
+## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>What causes the Optimizer menu item to appear?
 
-Po přidání přístupu k Azure Resource Manageru a data se shromažďují, měli byste vidět **optimalizace** možnost. Chcete-li aktivovat přístup do Azure Resource Manageru, přečtěte si téma [jak si můžu aktivovat neaktivovaných účty pomocí přihlašovacích údajů Azure?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
+After you add Azure Resource Manager access and data is collected, you should see the **Optimizer** option. To activate Azure Resource Manager access, see [How do I activate unactivated accounts with Azure credentials?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
 
-## <a name="is-cloudyn-agent-based"></a>Je na základě Cloudyn agenta?
+## <a name="is-cloudyn-agent-based"></a>Is Cloudyn agent based?
 
-Ne. Agenti nejsou používány. Shromáždění dat metriky virtuálního počítače Azure pro virtuální počítače z rozhraní API Microsoft Insights. Pokud chcete shromažďovat data metrik z virtuálních počítačů Azure, musí mít povolené nastavení diagnostiky.
+Ne. Agents are not used. Azure virtual machine metric data for VMs is gathered from the Microsoft Insights API. If you want to gather metric data from Azure VMs, they need to have diagnostics settings enabled.
 
-## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>V sestavách Cloudyn zobrazit více než jednoho tenanta AD na sestavu?
+## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Do Cloudyn reports show more than one AD tenant per report?
 
-Ano. Je možné [vytvořit odpovídající entity účtu cloudu](tutorial-user-access.md#create-and-manage-entities) pro každého tenanta AD, který máte. Pak můžete zobrazit všechny data tenanta Azure AD a dalších poskytovatelů cloudu platformy, včetně Amazon Web Services a Google Cloud Platform.
+Ano. You can [create a corresponding cloud account entity](tutorial-user-access.md#create-and-manage-entities) for each AD tenant that you have. Then you can view all of your Azure AD tenant data and other cloud platform providers including Amazon Web Services and Google Cloud Platform.

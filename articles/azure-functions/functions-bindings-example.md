@@ -1,28 +1,24 @@
 ---
-title: Příklad triggeru Azure Functions a vazeb
-description: Naučte se konfigurovat vazby funkcí Azure
-services: functions
-documentationcenter: na
+title: Azure Functions trigger and binding example
+description: Learn to configure Azure Function bindings
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097469"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227249"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Příklad triggeru Azure Functions a vazeb
+# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions trigger and binding example
 
-Tento článek ukazuje, jak nakonfigurovat [Trigger a vazby](./functions-triggers-bindings.md) ve funkci Azure Functions.
+This article demonstrates how to configure a [trigger and bindings](./functions-triggers-bindings.md) in an Azure Function.
 
-Předpokládejme, že chcete zapsat nový řádek do služby Azure Table Storage pokaždé, když se ve službě Azure Queue Storage zobrazí nová zpráva. Tento scénář se dá implementovat pomocí triggeru služby Azure Queue Storage a výstupní vazby služby Azure Table Storage. 
+Suppose you want to write a new row to Azure Table storage whenever a new message appears in Azure Queue storage. This scenario can be implemented using an Azure Queue storage trigger and an Azure Table storage output binding. 
 
-Zde je soubor *Function. JSON* pro tento scénář. 
+Here's a *function.json* file for this scenario. 
 
 ```json
 {
@@ -45,18 +41,18 @@ Zde je soubor *Function. JSON* pro tento scénář.
 }
 ```
 
-Prvním prvkem v `bindings` poli je Trigger úložiště Queue. Vlastnosti `type` a`direction` identifikují Trigger. `name` Vlastnost identifikuje parametr funkce, který přijímá obsah zprávy ve frontě. Název fronty, která se má monitorovat, `queueName`je v a připojovací řetězec je v nastavení aplikace, které `connection`identifikuje.
+The first element in the `bindings` array is the Queue storage trigger. The `type` and `direction` properties identify the trigger. The `name` property identifies the function parameter that receives the queue message content. The name of the queue to monitor is in `queueName`, and the connection string is in the app setting identified by `connection`.
 
-Druhým prvkem v `bindings` poli je výstupní vazba Azure Table Storage. Vlastnosti `type` a`direction` identifikují vazbu. `name` Vlastnost určuje způsob, jakým funkce poskytuje nový řádek tabulky, v tomto případě pomocí návratové hodnoty funkce. Název tabulky je v `tableName`a připojovací řetězec je v nastavení aplikace, které `connection`identifikuje.
+The second element in the `bindings` array is the Azure Table Storage output binding. The `type` and `direction` properties identify the binding. The `name` property specifies how the function provides the new table row, in this case by using the function return value. The name of the table is in `tableName`, and the connection string is in the app setting identified by `connection`.
 
-Pokud chcete zobrazit a upravit obsah *Function. JSON* v Azure Portal, klikněte na možnost **Rozšířený editor** na kartě **integrace** vaší funkce.
+To view and edit the contents of *function.json* in the Azure portal, click the **Advanced editor** option on the **Integrate** tab of your function.
 
 > [!NOTE]
-> Hodnota `connection` je název nastavení aplikace, které obsahuje připojovací řetězec, nikoli samotný připojovací řetězec. Vazby používají připojovací řetězce uložené v nastavení aplikace k vykonání osvědčených postupů, které *Function. JSON* neobsahuje tajné klíče služby.
+> The value of `connection` is the name of an app setting that contains the connection string, not the connection string itself. Bindings use connection strings stored in app settings to enforce the best practice that *function.json* does not contain service secrets.
 
-## <a name="c-script-example"></a>C#Příklad skriptu
+## <a name="c-script-example"></a>C# script example
 
-Tady je C# kód skriptu, který funguje s touto triggerem a vazbou. Všimněte si, že název parametru, který poskytuje obsah zprávy ve frontě `order`, je. Tento název je vyžadován `name` , protože hodnota vlastnosti v *Function. JSON* je`order` 
+Here's C# script code that works with this trigger and binding. Notice that the name of the parameter that provides the queue message content is `order`; this name is required because the `name` property value in *function.json* is `order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -84,9 +80,9 @@ public class Person
 }
 ```
 
-## <a name="javascript-example"></a>Příklad JavaScriptu
+## <a name="javascript-example"></a>JavaScript example
 
-Stejný soubor *Functions. JSON* lze použít s funkcí JavaScriptu:
+The same *function.json* file can be used with a JavaScript function:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -104,9 +100,9 @@ function generateRandomId() {
 }
 ```
 
-## <a name="class-library-example"></a>Příklad knihovny tříd
+## <a name="class-library-example"></a>Class library example
 
-V knihovně tříd jsou stejné triggery a informace o &mdash; vazbě a názvech tabulek, účty úložiště, parametry funkce pro vstup a výstup &mdash; , a to pouze pomocí atributů namísto souboru Function. JSON. Tady je příklad:
+In a class library, the same trigger and binding information &mdash; queue and table names, storage accounts, function parameters for input and output &mdash; is provided by attributes instead of a function.json file. Tady je příklad:
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -134,9 +130,9 @@ public class Person
 }
 ```
 
-Teď máte pracovní funkci, která se aktivuje ve frontě Azure a produkuje data do služby Azure Table Storage.
+You now have a working function that is triggered by an Azure Queue and outputs data to Azure Table storage.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Azure Functions vzorů výrazů vazeb](./functions-bindings-expressions-patterns.md)
+> [Azure Functions binding expression patterns](./functions-bindings-expressions-patterns.md)

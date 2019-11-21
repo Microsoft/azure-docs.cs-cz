@@ -1,22 +1,16 @@
 ---
-title: Přidání zpráv do fronty Azure Storage pomocí služby Functions | Dokumentace Microsoftu
+title: Přidání zpráv do fronty Azure Storage pomocí funkcí
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou vyvolá požadavek HTTP a která vytvoří zprávu ve frontě služby Azure Storage.
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 09/19/2017
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1d24eb81361a337ed00d719a7fb5895e73583030
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb5fc2fadf4087ebc42253cf568af424a80cb9d5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096322"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226888"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
@@ -24,7 +18,7 @@ Vstupní a výstupní vazby ve službě Azure Functions poskytují deklarativní
 
 ![Zpráva fronty zobrazená v Průzkumníku služby Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -42,7 +36,7 @@ V této části použijete uživatelské rozhraní portálu pro přidání výst
 
 1. Vyberte **Integrovat > Nový výstup > Azure Queue Storage**.
 
-1. Klikněte na tlačítko **vyberte**.
+1. Klikněte na **Vybrat**.
 
     ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -66,7 +60,7 @@ Teď máte definovanou výstupní vazbu a je potřeba aktualizovat kód tak, aby
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
-V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zpráva obsahuje hodnotu, která se předala triggeru HTTP v řetězci dotazu. Například pokud řetězec dotazu obsahuje `name=Azure`, zpráva fronty *bude název předán funkci: Azure*.
+V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zpráva obsahuje hodnotu, která se předala triggeru HTTP v řetězci dotazu. Pokud například řetězec dotazu obsahuje `name=Azure`, zpráva fronty bude *Name passed to the function: Azure*.
 
 1. Vybráním určité funkce zobrazíte kód této funkce v editoru.
 
@@ -149,7 +143,7 @@ Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste h
 
 1. Rozbalte uzel **Fronty** a potom vyberte frontu s názvem **outqueue**. 
 
-   Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste funkci vyvolali s výchozí `name` hodnotou *Azure*, zpráva fronty je *název předané funkci: Azure*.
+   Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí hodnotou `name` (*Azure*), zpráva fronty je *Name passed to the function: Azure*.
 
     ![Zpráva fronty zobrazená v Průzkumníku služby Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
@@ -159,7 +153,7 @@ Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste h
 
 [!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste přidali k existující funkci výstupní vazbu. Další informace o vazbách do úložiště front najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md).
 

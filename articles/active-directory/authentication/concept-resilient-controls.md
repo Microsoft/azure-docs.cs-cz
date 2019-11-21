@@ -1,6 +1,6 @@
 ---
-title: Vytvoření strategie odolného řízení přístupu – Azure Active Directory
-description: Tento dokument obsahuje pokyny k strategiím, které by organizace měla přijmout pro zajištění odolnosti proti riziku uzamčení během nepředvídatelných výpadků.
+title: Create a resilient access control management strategy - Azure AD
+description: This document provides guidance on strategies an organization should adopt to provide resilience to reduce the risk of lockout during unforeseen disruptions
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -11,262 +11,262 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 478cccb3a8235291a4c4f0566cd130b4b75dbe6b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125114"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208560"
 ---
-# <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory
+# <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Create a resilient access control management strategy with Azure Active Directory
 
 >[!NOTE]
-> Informace obsažené v tomto dokumentu představují aktuální pohled společnosti Microsoft Corporation na problémy, které jsou popsány k datu publikování. Vzhledem k tomu, že Microsoft musí reagovat na měnící se podmínky na trhu, neměl by být interpretován jako závazek společnosti Microsoft a společnost Microsoft nemůže zaručit přesnost všech informací, které jsou uvedeny po datu publikování.
+> The information contained in this document represents the current view of Microsoft Corporation on the issues discussed as of the date of publication. Because Microsoft must respond to changing market conditions, it should not be interpreted to be a commitment on the part of Microsoft, and Microsoft cannot guarantee the accuracy of any information presented after the date of publication.
 
-Organizace, které spoléhají na jeden řízení přístupu, jako je Multi-Factor Authentication (MFA) nebo jediné síťové umístění, jsou pro zabezpečení svých systémů IT náchylné k selhání přístupu ke svým aplikacím a prostředkům, pokud je tato jediná kontrola přístupu nedostupná. nebo nesprávně nakonfigurované. Přírodní havárie může například způsobit nedostupnost velkých segmentů telekomunikačních infrastruktur nebo podnikových sítí. Takové přerušení by mohlo zabránit tomu, aby se koncoví uživatelé a správci mohli přihlásit.
+Organizations that rely on a single access control, such as multi-factor authentication (MFA) or a single network location, to secure their IT systems are susceptible to access failures to their apps and resources if that single access control becomes unavailable or misconfigured. For example, a natural disaster can result in the unavailability of large segments of telecommunications infrastructure or corporate networks. Such a disruption could prevent end users and administrators from being able to sign in.
 
-Tento dokument obsahuje pokyny k strategiím, které by organizace měla přijmout pro zajištění odolnosti proti riziku uzamčení během nepředvídatelného narušení, a to v následujících případech:
+This document provides guidance on strategies an organization should adopt to provide resilience to reduce the risk of lockout during unforeseen disruptions with the following scenarios:
 
- 1. Organizace mohou zvýšit jejich odolnost a snížit tak riziko uzamčení **před přerušením** implementací strategií zmírnění nebo pohotovostních plánů.
- 2. Organizace můžou dál přistupovat k aplikacím a prostředkům, které si vyberou **během přerušení** , tím, že budou mít strategie zmírnění a pohotovostní plány na místě.
- 3. Organizace by se měli ujistit, že uchovávají informace, jako jsou protokoly, **po přerušení** a předtím, než vrátí případné nepotřebné okolnosti.
- 4. Organizace, které neimplementovaly strategie prevence nebo alternativní plány, můžou implementovat **nouzové možnosti** , které se zabývají přerušením.
+ 1. Organizations can increase their resiliency to reduce the risk of lockout **before a disruption** by implementing mitigation strategies or contingency plans.
+ 2. Organizations can continue to access apps and resources they choose **during a disruption** by having mitigation strategies and contingency plans in place.
+ 3. Organizations should make sure they preserve information, such as logs,  **after a disruption** and before they roll back any contingencies they implemented.
+ 4. Organizations that haven’t implemented prevention strategies or alternative plans may be able to implement **emergency options** to deal with the disruption.
 
-## <a name="key-guidance"></a>Klíčové pokyny
+## <a name="key-guidance"></a>Key guidance
 
-V tomto dokumentu jsou čtyři klíčové poznatky:
+There are four key takeaways in this document:
 
-* Vyhněte se uzamknutí správce pomocí účtů pro nouzový přístup.
-* Implementujte vícefaktorové ověřování pomocí podmíněného přístupu (CA), nikoli MFA pro uživatele.
-* Zmírnění uzamčení uživatelů pomocí více ovládacích prvků podmíněného přístupu (CA).
-* Omezení uzamčení uživatelů tím, že zřizujete více metod ověřování nebo ekvivalenty pro každého uživatele.
+* Avoid administrator lockout by using emergency access accounts.
+* Implement MFA using Conditional Access (CA) rather than per-user MFA.
+* Mitigate user lockout by using multiple Conditional Access (CA) controls.
+* Mitigate user lockout by provisioning multiple authentication methods or equivalents for each user.
 
-## <a name="before-a-disruption"></a>Před přerušením
+## <a name="before-a-disruption"></a>Before a disruption
 
-Zmírnění skutečného přerušení musí být hlavním cílem organizace při řešení problémů s řízením přístupu, ke kterým může dojít. Omezení rizik zahrnuje plánování skutečné události a implementaci strategií, aby se zajistilo, že řízení přístupu a operace nebudou při přerušení ovlivněny.
+Mitigating an actual disruption must be an organization’s primary focus in dealing with access control issues that may arise. Mitigating includes planning for an actual event plus implementing strategies to make sure access controls and operations are unaffected during disruptions.
 
-### <a name="why-do-you-need-resilient-access-control"></a>Proč potřebujete odolnější řízení přístupu?
+### <a name="why-do-you-need-resilient-access-control"></a>Why do you need resilient access control?
 
- Identita je řídicí rovina uživatelů, kteří přistupují k aplikacím a prostředkům. Váš systém identit řídí, kteří uživatelé a za jakých podmínek, například řízení přístupu nebo požadavky na ověřování, uživatelé získají přístup k aplikacím. V případě, že jeden nebo více požadavků na ověření nebo řízení přístupu není k dispozici pro uživatele, kteří se budou moci ověřit z důvodu neočekávaných okolností, mohou organizace zaznamenat jeden nebo oba následující problémy:
+ Identity is the control plane of users accessing apps and resources. Your identity system controls which users and under which conditions, such as access controls or authentication requirements, users get access to the applications. When one or more authentication or access control requirements aren’t available for users to authenticate due to unforeseen circumstances, organizations can experience one or both of the following issues:
 
-* **Uzamčení správce:** Správci nemůžou spravovat tenanta ani služby.
-* **Uzamčení uživatele:** Uživatelé nemají přístup k aplikacím nebo prostředkům.
+* **Administrator lockout:** Administrators can’t manage the tenant or services.
+* **User lockout:** Users can’t access apps or resources.
 
-### <a name="administrator-lockout-contingency"></a>Záhotovost uzamčení správce
+### <a name="administrator-lockout-contingency"></a>Administrator lockout contingency
 
-Chcete-li odemknout přístup správce k vašemu tenantovi, měli byste vytvořit účty pro nouzový přístup. Tyto účty pro nouzový přístup, označované také jako účty pro objednání, umožňují přístup ke správě konfigurace služby Azure AD, když nejsou k dispozici normální přístupové procedury privilegovaného účtu. Po doporučeních pro [účet pro nouzový přístup]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)by se měly vytvořit aspoň dva účty pro nouzový přístup.
+To unlock admin access to your tenant, you should create emergency access accounts. These emergency access accounts, also known as *break glass* accounts, allow access to manage Azure AD configuration when normal privileged account access procedures aren’t available. At least two emergency access accounts should be created following the [emergency access account recommendations]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access).
 
-### <a name="mitigating-user-lockout"></a>Zmírnění uzamčení uživatele
+### <a name="mitigating-user-lockout"></a>Mitigating user lockout
 
- Pokud chcete zmírnit riziko uzamknutí uživatelů, použijte zásady podmíněného přístupu s několika ovládacími prvky, které uživatelům umožní zvolit způsob, jakým budou mít přístup k aplikacím a prostředkům. Když uživateli vyberete možnost volby, například přihlašování pomocí MFA **nebo** přihlášení ze spravovaného zařízení **nebo** přihlášení z podnikové sítě, pokud je jedna z ovládacích prvků přístupu nedostupná, má uživatel další možnosti, jak pokračovat v práci.
+ To mitigate the risk of user lockout, use Conditional Access policies with multiple controls to give users a choice of how they will access apps and resources. By giving a user the choice between, for example, signing in with MFA **or** signing in from a managed device **or** signing in from the corporate network, if one of the access controls is unavailable the user has other options to continue to work.
 
-#### <a name="microsoft-recommendations"></a>Doporučení Microsoftu
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
 
-Do stávajících zásad podmíněného přístupu pro organizaci zahrňte následující řízení přístupu:
+Incorporate the following access controls in your existing Conditional Access policies for organization:
 
-1. Zřizování více metod ověřování pro každého uživatele, který spoléhá na různé komunikační kanály, například na aplikaci Microsoft Authenticator (Internet), token OATH (generovaný na zařízení) a SMS (Telephonic).
-2. Nasaďte Windows Hello pro firmy na zařízeních s Windows 10, abyste vyhověli požadavkům na MFA přímo ze zařízení pro přihlášení.
-3. Použijte důvěryhodná zařízení přes [hybridní připojení Azure AD](https://docs.microsoft.com/azure/active-directory/devices/overview) nebo [Microsoft Intune spravovaná zařízení](https://docs.microsoft.com/intune/planning-guide). Důvěryhodná zařízení vylepšit uživatelské prostředí, protože vlastní důvěryhodné zařízení může splnit požadavky zásad silného ověřování, aniž by museli uživateli vyvolávat výzvu MFA. Vícefaktorové ověřování se pak bude vyžadovat při registraci nového zařízení a při přístupu k aplikacím nebo prostředkům z nedůvěryhodných zařízení.
-4. Využijte zásady založené na riziku služby Azure AD Identity Protection, které zabraňují v přístupu, když se uživatel nebo přihlašování nejedná o riziko pevně stanovených zásad MFA.
+1. Provision multiple authentication methods for each user that rely on different communication channels, for example the Microsoft Authenticator app (internet-based), OATH token (generated on-device), and SMS (telephonic).
+2. Deploy Windows Hello for Business on Windows 10 devices to satisfy MFA requirements directly from device sign-in.
+3. Use trusted devices via [Azure AD Hybrid Join](https://docs.microsoft.com/azure/active-directory/devices/overview) or [Microsoft Intune Managed devices](https://docs.microsoft.com/intune/planning-guide). Trusted devices will improve user experience because the trusted device itself can satisfy the strong authentication requirements of policy without an MFA challenge to the user. MFA will then be required when enrolling a new device and when accessing apps or resources from untrusted devices.
+4. Use Azure AD identity protection risk-based policies that prevent access when the user or sign-in is at risk in place of fixed MFA policies.
 
 >[!NOTE]
-> Zásady založené na rizicích vyžadují [Azure AD Premium licence P2](https://azure.microsoft.com/pricing/details/active-directory/) .
+> Risk-based policies require [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
 
-Následující příklad popisuje zásady, které je třeba vytvořit, aby pro uživatele poskytovaly odolné řízení přístupu pro přístup k jejich aplikacím a prostředkům. V tomto příkladu budete potřebovat skupinu zabezpečení **AppUsers** s cílovými uživateli, kterým chcete udělit přístup, skupině s názvem **CoreAdmins** s hlavními správci a skupiny s názvem **EmergencyAccess** s účty pro nouzový přístup.
-Tato ukázková sada zásad uděluje vybraným uživatelům v **AppUsers**, přístup k vybraným aplikacím, pokud se připojují z důvěryhodného zařízení nebo poskytuje silné ověřování, například MFA. Vyloučí účty v nouzi a základní správce.
+The following example describes policies you must create to provide a resilient access control for user to access their apps and resources. In this example, you will require a security group **AppUsers** with the target users you want to give access to, a group named **CoreAdmins** with the core administrators, and a group named **EmergencyAccess** with the emergency access accounts.
+This example policy set will grant selected users in **AppUsers**, access to selected apps if they are connecting from a trusted device OR provide strong authentication, for example MFA. It excludes emergency accounts and core administrators.
 
-**Sada zásad pro zmírnění rizik CA:**
+**CA mitigation policies set:**
 
-* Zásada 1: Zablokovat přístup lidem mimo cílové skupiny
-  * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučení AppUsers, CoreAdmins a EmergencyAccess
-  * Cloudové aplikace: Zahrnout všechny aplikace
-  * Stavu NTato
-  * Udělit řízení: Zablokovat
-* Zásada 2: Udělte přístup k AppUsers vyžadujícímu MFA nebo důvěryhodnému zařízení.
-  * Uživatelé a skupiny: Zahrnout AppUsers Vyloučit CoreAdmins a EmergencyAccess
-  * Cloudové aplikace: Zahrnout všechny aplikace
-  * Stavu NTato
-  * Udělit řízení: Udělit přístup, vyžadovat vícefaktorové ověřování, vyžadovat, aby zařízení splňovalo předpisy. Pro více ovládacích prvků: Vyžadovat jeden z vybraných ovládacích prvků.
+* Policy 1: Block access to people outside target groups
+  * Users and Groups: Include all users. Exclude AppUsers, CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Include all apps
+  * Conditions: (None)
+  * Grant Control: Block
+* Policy 2: Grant access to AppUsers requiring MFA OR trusted device.
+  * Users and Groups: Include AppUsers. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Include all apps
+  * Conditions: (None)
+  * Grant Control: Grant access, require multi-factor authentication, require device to be compliant. For multiple controls: Require one of the selected controls.
 
-### <a name="contingencies-for-user-lockout"></a>Nepředvídané události pro uzamčení uživatele
+### <a name="contingencies-for-user-lockout"></a>Contingencies for user lockout
 
-Případně může vaše organizace také vytvářet pohotovostní zásady. Pokud chcete vytvořit pohotovostní zásady, musíte definovat kritéria kompromisů mezi provozní kontinuitou, provozními náklady, finančními náklady a bezpečnostními riziky. Můžete například aktivovat pohotovostní zásadu pouze pro podmnožinu uživatelů, pro podmnožinu aplikací, pro podmnožinu klientů nebo z podmnožiny umístění. Pohotovostní zásady poskytnou správcům a koncovým uživatelům přístup k aplikacím a prostředkům během přerušení, kdy nebyla implementována žádná metoda zmírnění.
-Porozumění vaší expozici během přerušení pomáhá snížit vaše riziko a je zásadní součástí procesu plánování. Pokud chcete vytvořit svůj pohotovostní plán, nejdřív určete následující obchodní požadavky vaší organizace:
+Alternatively, your organization can also create contingency policies. To create contingency policies, you must define tradeoff criteria between business continuity, operational cost, financial cost, and security risks. For example, you may activate a contingency policy only to a subset of users, for a subset of apps, for a subset of clients, or from a subset of locations. Contingency policies will give administrators and end users access to apps and resources, during a disruption when no mitigation method was implemented.
+Understanding your exposure during a disruption helps reduce your risk and is a critical part of your planning process. To create your contingency plan, first determine the following business requirements of your organization:
 
-1. Určení nejdůležitějších aplikací, které jsou v provozu předem: Jaké jsou aplikace, pro které musíte poskytnout přístup, a to i s nižším rizikem a stav zabezpečení? Sestavte seznam těchto aplikací a zajistěte, aby ostatní účastníci (podnikání, zabezpečení, právní, vedoucí) souhlasili s tím, že pokud všechny řízení přístupu vzroste, musí tyto aplikace nadále běžet. Pravděpodobně budete končit kategoriemi:
-   * **Kategorie 1 má důležité aplikace** , které nemůžou být dostupné déle než několik minut, například aplikace, které přímo ovlivňují tržby organizace.
-   * **Kategorie 2: důležité aplikace** , ke kterým musí být podnik přístupný během pár hodin.
-   * **Kategorie 3 aplikace s nízkou prioritou** , které můžou vydržet přerušení několika dní.
-2. Pro aplikace v kategorii 1 a 2 Společnost Microsoft doporučuje předem naplánovat, jaký typ úrovně přístupu chcete udělit:
-   * Chcete povolit úplný přístup nebo jenom omezenou relaci, jako je třeba omezit stahování?
-   * Chcete povolit přístup k části aplikace, ale ne k celé aplikaci?
-   * Chcete povolit přístup k informačnímu pracovníkovi a zablokovat přístup správce, dokud se neobnoví řízení přístupu?
-3. Pro tyto aplikace Microsoft také doporučuje plánování, které cesty vedoucí přístupu záměrně otevřete a které budete uzavřít:
-   * Chcete povolit, aby prohlížeč měl přístup jenom k blokovaným klientům, kteří můžou ukládat offline data?
-   * Chcete povolit přístup jenom uživatelům v podnikové síti a zablokovat si ho i externí uživatelé?
-   * Chcete povolit přístup z určitých zemí nebo oblastí pouze během přerušení?
-   * Chcete zásady pro pohotovostní zásady, zejména pro kritické aplikace, neúspěšné nebo úspěšné, pokud není k dispozici alternativní řízení přístupu?
+1. Determine your mission critical apps ahead of time: What are the apps that you must give access to, even with a lower risk/security posture? Build a list of these apps and make sure your other stakeholders (business, security, legal, leadership) all agree that if all access control goes away, these apps still must continue to run. You are likely going to end up with categories of:
+   * **Category 1 mission critical apps** that cannot be unavailable for more than a few minutes, for example Apps that directly affect the revenue of the organization.
+   * **Category 2 important apps** that the business needs to be accessible within a few hours.
+   * **Category 3 low-priority apps** that can withstand a disruption of a few days.
+2. For apps in category 1 and 2, Microsoft recommends you pre-plan what type of level of access you want to allow:
+   * Do you want to allow full access or restricted session, like limiting downloads?
+   * Do you want to allow access to part of the app but not the whole app?
+   * Do you want to allow information worker access and block administrator access until the access control is restored?
+3. For those apps, Microsoft also recommends you plan which avenues of access you will deliberately open and which ones you will close:
+   * Do you want to allow browser only access and block rich clients that can save offline data?
+   * Do you want to allow access only for users inside the corporate network and keep outside users blocked?
+   * Do you want to allow access from certain countries or regions only during the disruption?
+   * Do you want policies to the contingency policies, especially for mission critical apps, to fail or succeed if an alternative access control is not available?
 
-#### <a name="microsoft-recommendations"></a>Doporučení Microsoftu
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
 
-Pohotovostní zásada podmíněného přístupu je **zakázaná zásada** , která nezahrnuje Azure MFA, vícefaktorové ověřování od jiných výrobců nebo řízení na základě zařízení. Pak, když se vaše organizace rozhodne aktivovat svůj pohotovostní plán, správci můžou zásadu Povolit a zakázat běžné zásady založené na řízení.
+A contingency Conditional Access policy is a **disabled policy** that omits Azure MFA, third-party MFA, risk-based or device-based controls. Then, when your organization decides to activate your contingency plan, administrators can enable the policy and disable the regular control-based policies.
 
 >[!IMPORTANT]
-> Zakázáním zásad, které vynutily zabezpečení pro vaše uživatele, dojde k omezení stav zabezpečení i v případě, že je plán pohotovostní.
+> Disabling policies that enforce security on your users, even temporarily, will reduce your security posture while the contingency plan is in place.
 
-* Nakonfigurujte sadu záložních zásad, pokud dojde k výpadku jednoho typu přihlašovacích údajů nebo jednoho mechanismu řízení přístupu, který má vliv na přístup k vašim aplikacím. Nakonfigurujte zásady v zakázaném stavu, který vyžaduje připojení k doméně jako řízení, jako zálohu aktivní zásady, která vyžaduje poskytovatele vícefaktorového ověřování od jiného výrobce.
-* Pomocí postupů uvedených v dokumentu White Paper s [pokyny](https://aka.ms/passwordguidance) k heslům snížíte riziko chybných aktérů, které se týkají pokusů o hesla.
-* Nasaďte [Samoobslužné resetování hesel Azure AD (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) a [Azure AD Password Protection](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) , abyste se ujistili, že uživatelé nepoužívají běžné heslo a výrazy, které se rozhodnete zakázat.
-* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Příklad:
-  * Nakonfigurujte zásady zálohování, které odesílají deklaraci omezené relace na Exchange a SharePoint.
-  * Pokud vaše organizace používá Microsoft Cloud App Security, zvažte návrat k zásadám, které MCAS a pak MCAS povolí přístup jen pro čtení, ale ne nahrávání.
-* Pojmenujte zásady, abyste se ujistili, že je budete moct snadno najít při přerušení. Do názvu zásady zahrňte tyto prvky:
-  * *Číslo popisku* pro zásadu.
-  * Text, který se má zobrazit, tato zásada je určena pouze pro mimořádné události. Příklad: **POVOLIT V NOUZI**
-  * *Přerušení* , ke kterému se vztahuje. Příklad: **Při přerušení MFA**
-  * *Pořadové číslo* pro zobrazení pořadí, v jakém je nutné zásady aktivovat.
-  * *Aplikace* , na které se vztahuje
-  * *Ovládací prvky* , které budou použity.
-  * *Podmínky* , které vyžaduje.
+* Configure a set of fallback policies if a disruption in one credential type or one access control mechanism impacts access to your apps. Configure a policy in disabled state that requires Domain Join as a control, as a backup for an active policy that requires a third-party MFA provider.
+* Reduce the risk of bad actors guessing passwords, when MFA is not required, by following the practices in the [password guidance](https://aka.ms/passwordguidance) white paper.
+* Deploy [Azure AD Self-Service Password Reset (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) and [Azure AD Password Protection](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) to make sure users don’t use common password and terms you choose to ban.
+* Use policies that restrict the access within the apps if a certain authentication level is not attained instead of simply falling back to full access. Například:
+  * Configure a backup policy that sends the restricted session claim to Exchange and SharePoint.
+  * If your organization uses Microsoft Cloud App Security, consider falling back to a policy that engages MCAS and then MCAS Allows read-only access but not uploads.
+* Name your policies to make sure it is easy to find them during a disruption. Include the following elements in the policy name:
+  * A *label number* for the policy.
+  * Text to show, this policy is for emergencies only. For example: **ENABLE IN EMERGENCY**
+  * The *disruption* it applies to. For example: **During MFA Disruption**
+  * A *sequence number* to show the order you must activate the policies.
+  * The *apps* it applies to.
+  * The *controls* it will apply.
+  * The *conditions* it requires.
   
-Tato standardní pojmenování pro pohotovostní zásady bude následující: 
+This naming standard for the contingency policies will be as follows: 
 
 ```
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-Následující příklad: **Příkladem nepostradatelné zásady certifikační autority pro obnovení přístupu k důležitým aplikacím pro spolupráci**je typický podnikový pohotovostní. V tomto scénáři organizace obvykle vyžaduje MFA pro všechna přístup k Exchangi Online a SharePointu Online a přerušení v tomto případě je tím, že poskytovatel MFA pro zákazníka má výpadek (ať už jde o Azure MFA, místní poskytovatel MFA nebo vícefaktorové ověřování třetí strany). Tato zásada tento výpadek omezuje tím, že umožňuje konkrétním cílovým uživatelům přistupovat k těmto aplikacím z důvěryhodných zařízení s Windows jenom v případě, že k aplikaci přistupuje z důvěryhodné podnikové sítě. Z těchto omezení taky vyloučí účty v nouzi a základní správce. Cíloví uživatelé pak získají přístup k Exchangi Online a SharePointu Online, zatímco jiní uživatelé stále nebudou mít přístup k aplikacím z důvodu výpadku. Tento příklad bude vyžadovat pojmenované síťové umístění **CorpNetwork** a skupinu zabezpečení **ContingencyAccess** s cílovými uživateli, skupinou s názvem **CoreAdmins** a základními správci a skupinou s názvem **EmergencyAccess** with. účty pro nouzový přístup. Pohotovostní modul vyžaduje pro poskytnutí požadovaného přístupu čtyři zásady. 
+The following example: **Example A - Contingency CA policy to restore Access to mission-critical Collaboration Apps**, is a typical corporate contingency. In this scenario, the organization typically requires MFA for all Exchange Online and SharePoint Online access, and the disruption in this case is the MFA provider for the customer has an outage (whether Azure MFA, on-premises MFA provider, or third-party MFA). This policy mitigates this outage by allowing specific targeted users access to these apps from trusted Windows devices only when they are accessing the app from their trusted corporate network. It will also exclude emergency accounts and core administrators from these restrictions. The targeted users will then gain access to Exchange Online and SharePoint Online, while other users will still not have access to the apps due to the outage. This example will require a named network location **CorpNetwork** and a security group **ContingencyAccess** with the target users, a group named **CoreAdmins** with the core administrators, and a group named **EmergencyAccess** with the emergency access accounts. The contingency requires four policies to provide the desired access. 
 
-**Příklad zásad certifikační autority s pohotovostním přístupem pro obnovení přístupu ke klíčovým aplikacím pro spolupráci:**
+**Example A - Contingency CA policies to restore Access to mission-critical Collaboration Apps:**
 
-* Zásada 1: Vyžadovat zařízení připojená k doméně pro Exchange a SharePoint
-  * Název: EM001 – POVOLENÍ V NOUZI: Přerušení MFA [1/4]-Exchange SharePoint – vyžaduje připojení k hybridní službě Azure AD.
-  * Uživatelé a skupiny: Zahrnout ContingencyAccess Vyloučit CoreAdmins a EmergencyAccess
-  * Cloudové aplikace: Exchange Online a SharePoint Online
-  * Stavu Any
-  * Udělit řízení: Vyžadovat připojené k doméně
-  * Stav: Zakázáno
-* Zásada 2: Blokovat jiné platformy než Windows
-  * Název: EM002 – POVOLENÍ V NOUZI: Přerušení vícefaktorového ověřování [2/4]-Exchange SharePoint – blokovat přístup s výjimkou Windows
-  * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit CoreAdmins a EmergencyAccess
-  * Cloudové aplikace: Exchange Online a SharePoint Online
-  * Stavu Platforma zařízení zahrnuje všechny platformy, vyloučení Windows
-  * Udělit řízení: Zablokovat
-  * Stav: Zakázáno
-* Zásada 3: Blokovat jiné sítě než CorpNetwork
-  * Název: EM003 – POVOLENÍ V NOUZI: Přerušení vícefaktorového ověřování [3/4]-Exchange SharePoint – blokování přístupu s výjimkou podnikové sítě
-  * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit CoreAdmins a EmergencyAccess
-  * Cloudové aplikace: Exchange Online a SharePoint Online
-  * Stavu Umístění zahrnují všechna umístění, vyloučení CorpNetwork
-  * Udělit řízení: Zablokovat
-  * Stav: Zakázáno
-* Zásada 4: Explicitní blokování EAS
-  * Název: EM004 – POVOLENÍ V NOUZI: Přerušení MFA [4/4]-Exchange-Block EAS pro všechny uživatele
-  * Uživatelé a skupiny: Zahrnout všechny uživatele
-  * Cloudové aplikace: Zahrnout Exchange Online
-  * Stavu Klientské aplikace: Exchange Active Sync
-  * Udělit řízení: Zablokovat
-  * Stav: Zakázáno
+* Policy 1: Require Domain Joined devices for Exchange and SharePoint
+  * Name: EM001 - ENABLE IN EMERGENCY: MFA Disruption[1/4] - Exchange SharePoint - Require Hybrid Azure AD Join
+  * Users and Groups: Include ContingencyAccess. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Any
+  * Grant Control: Require Domain Joined
+  * State: Disabled
+* Policy 2: Block platforms other than Windows
+  * Name: EM002 - ENABLE IN EMERGENCY: MFA Disruption[2/4] - Exchange SharePoint - Block access except Windows
+  * Users and Groups: Include all users. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Device Platform Include All Platforms, exclude Windows
+  * Grant Control: Block
+  * State: Disabled
+* Policy 3: Block networks other than CorpNetwork
+  * Name: EM003 - ENABLE IN EMERGENCY: MFA Disruption[3/4] - Exchange SharePoint - Block access except Corporate Network
+  * Users and Groups: Include all users. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Locations Include any location, exclude CorpNetwork
+  * Grant Control: Block
+  * State: Disabled
+* Policy 4: Block EAS Explicitly
+  * Name: EM004 - ENABLE IN EMERGENCY: MFA Disruption[4/4] - Exchange - Block EAS for all users
+  * Users and Groups: Include all users
+  * Cloud Apps: Include Exchange Online
+  * Conditions: Client apps: Exchange Active Sync
+  * Grant Control: Block
+  * State: Disabled
 
-Pořadí aktivace:
+Order of activation:
 
-1. Vylučte z existujících zásad MFA ContingencyAccess, CoreAdmins a EmergencyAccess. Ověřte, že uživatel v ContingencyAccess má přístup k SharePointu Online a Exchange Online.
-2. Povolit zásadu 1: Ověřte, jestli uživatelé na zařízeních připojených k doméně, kteří nejsou ve skupinách vyloučení, mají přístup k Exchangi Online a SharePointu Online. Ověřte, že uživatelé ve skupině vyloučení mají přístup k SharePointu Online a Exchange z libovolného zařízení.
-3. Povolit zásadu 2: Ověřte, že uživatelé, kteří nejsou ve skupině vyloučení, nemůžou získat přístup k SharePointu Online a Exchange Online ze svých mobilních zařízení. Ověřte, že uživatelé ve skupině vyloučení mají přístup k SharePointu a Exchange z libovolného zařízení (Windows/iOS/Android).
-4. Povolit zásadu 3: Ověřte, že uživatelé, kteří nejsou ve skupinách vyloučení, nemají přístup k SharePointu a Exchangi mimo podnikovou síť, a to ani na počítači připojeném k doméně. Ověřte, že uživatelé ve skupině vyloučení mají přístup k SharePointu a Exchange z libovolné sítě.
-5. Povolit zásadu 4: Ověřte, že všichni uživatelé nemůžou na mobilních zařízeních získat Exchange Online z nativních e-mailových aplikací.
-6. Zakažte stávající zásady vícefaktorového ověřování pro SharePoint Online a Exchange Online.
+1. Exclude ContingencyAccess, CoreAdmins, and EmergencyAccess from the existing MFA policy. Verify a user in ContingencyAccess can access SharePoint Online and Exchange Online.
+2. Enable Policy 1: Verify users on Domain Joined devices who are not in the exclude groups are able to access Exchange Online and SharePoint Online. Verify users in the Exclude group can access SharePoint Online and Exchange from any device.
+3. Enable Policy 2: Verify users who are not in the exclude group cannot get to SharePoint Online and Exchange Online from their mobile devices. Verify users in the Exclude group can access SharePoint and Exchange from any device (Windows/iOS/Android).
+4. Enable Policy 3: Verify users who are not in the exclude groups cannot access SharePoint and Exchange off the corporate network, even with a domain joined machine. Verify users in the Exclude group can access SharePoint and Exchange from any network.
+5. Enable Policy 4: Verify all users cannot get Exchange Online from the native mail applications on mobile devices.
+6. Disable the existing MFA policy for SharePoint Online and Exchange Online.
 
-V tomto dalším příkladu **příkladem B-pohotovostní zásady certifikační autority, které umožňují mobilní přístup k Salesforce**, se obnoví přístup obchodní aplikace. V tomto scénáři zákazník obvykle vyžaduje, aby jejich zaměstnanci prodeje měli přístup k Salesforce (nakonfigurovanému pro jednotné přihlašování pomocí Azure AD) z mobilních zařízení, aby je bylo možné povolit jenom ze zařízení dodržujících předpisy. Přerušení v tomto případě znamená, že došlo k potížím při vyhodnocování dodržování předpisů zařízením a výpadek se děje v citlivé době, kdy prodejní tým potřebuje přístup k Salesforce a uzavřít obchody. Tyto pohotovostní zásady udělí důležitému uživateli přístup k Salesforce z mobilního zařízení, aby mohli dál uzavírat obchody a Nerušit činnost podniku. V tomto příkladu **SalesforceContingency** obsahuje všechny zaměstnance prodejů, kteří potřebují zachovat přístup a **SalesAdmins** obsahuje potřebné Správce Salesforce.
+In this next example, **Example B - Contingency CA policies to allow mobile access to Salesforce**, a business app’s access is restored. In this scenario, the customer typically requires their sales employees access to Salesforce (configured for single-sign on with Azure AD) from mobile devices to only be allowed from compliant devices. The disruption in this case is that there is an issue with evaluating device compliance and the outage is happening at a sensitive time where the sales team needs access to Salesforce to close deals. These contingency policies will grant critical users access to Salesforce from a mobile device so that they can continue to close deals and not disrupt the business. In this example, **SalesforceContingency** contains all the Sales employees who need to retain access and **SalesAdmins** contains necessary admins of Salesforce.
 
-**Příklad B-pohotovostní zásady certifikační autority:**
+**Example B - Contingency CA policies:**
 
-* Zásada 1: Blokovat všem, kteří nejsou v týmu SalesContingency
-  * Název: EM001 – POVOLENÍ V NOUZI: Přerušení dodržování předpisů zařízením [1/2]-Salesforce – zablokuje všechny uživatele s výjimkou SalesforceContingency
-  * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit SalesAdmins a SalesforceContingency
-  * Cloudové aplikace: Produktu.
-  * Stavu Žádné
-  * Udělit řízení: Zablokovat
-  * Stav: Zakázáno
-* Zásada 2: Blokování prodejního týmu z jakékoli jiné platformy než mobilní (pro omezení oblasti útoku)
-  * Název: EM002 – POVOLENÍ V NOUZI: Přerušení dodržování předpisů zařízením [2/2]-Salesforce – zablokuje všechny platformy kromě iOS a Androidu.
-  * Uživatelé a skupiny: Zahrnout SalesforceContingency Vyloučit SalesAdmins
-  * Cloudové aplikace: Salesforce
-  * Stavu Platforma zařízení zahrnuje všechny platformy, vyloučení iOS a Androidu.
-  * Udělit řízení: Zablokovat
-  * Stav: Zakázáno
+* Policy 1: Block everyone not in the SalesContingency team
+  * Name: EM001 - ENABLE IN EMERGENCY: Device Compliance Disruption[1/2] - Salesforce - Block All users except SalesforceContingency
+  * Users and Groups: Include all users. Exclude SalesAdmins and SalesforceContingency
+  * Cloud Apps: Salesforce.
+  * Conditions: None
+  * Grant Control: Block
+  * State: Disabled
+* Policy 2: Block the Sales team from any platform other than mobile (to reduce surface area of attack)
+  * Name: EM002 - ENABLE IN EMERGENCY: Device Compliance Disruption[2/2] - Salesforce - Block All platforms except iOS and Android
+  * Users and Groups: Include SalesforceContingency. Exclude SalesAdmins
+  * Cloud Apps: Salesforce
+  * Conditions: Device Platform Include All Platforms, exclude iOS and Android
+  * Grant Control: Block
+  * State: Disabled
 
-Pořadí aktivace:
+Order of activation:
 
-1. Vylučte SalesAdmins a SalesforceContingency z existujících zásad dodržování předpisů zařízeními pro Salesforce. Ověřte, že uživatel ve skupině SalesforceContingency má přístup k Salesforce.
-2. Povolit zásadu 1: Ověřte, že uživatelé mimo SalesContingency nemají přístup k Salesforce. Ověřte, že uživatelé v SalesAdmins a SalesforceContingency mají přístup k Salesforce.
-3. Povolit zásadu 2: Ověřte, že uživatelé ve skupině SalesContingency nemají přístup k Salesforce ze svých přenosných počítačů s Windows/Mac, ale mají stále přístup ze svých mobilních zařízení. Ověřte, že SalesAdmin má stále přístup k Salesforce z libovolného zařízení.
-4. Zakažte stávající zásady dodržování předpisů zařízeními pro Salesforce.
+1. Exclude SalesAdmins and SalesforceContingency from the existing device compliance policy for Salesforce. Verify a user in the SalesforceContingency group can access Salesforce.
+2. Enable Policy 1: Verify users outside of SalesContingency cannot access Salesforce. Verify users in the SalesAdmins and SalesforceContingency can access Salesforce.
+3. Enable Policy 2: Verify users in the SalesContingency group cannot access Salesforce from their Windows/Mac laptops but can still access from their mobile devices. Verify SalesAdmin can still access Salesforce from any device.
+4. Disable the existing device compliance policy for Salesforce.
 
-### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Nasadit synchronizaci hodnot hash hesel i v případě, že jste federované nebo používáte předávací ověřování
+### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Deploy password hash sync even if you are federated or use pass-through authentication
 
-K uzamčení uživatele může dojít také v případě, že jsou splněné následující podmínky:
+User lockout can also occur if the following conditions are true:
 
-- Vaše organizace používá řešení hybridní identity s předávacím ověřováním nebo federaci.
-- Vaše místní systémy identit (například služba Active Directory, AD FS nebo závislá součást) nejsou k dispozici. 
+- Your organization uses a hybrid identity solution with pass-through authentication or federation.
+- Your on-premises identity systems (such as Active Directory, AD FS, or a dependent component) are unavailable. 
  
-Aby byla vaše organizace pružnější, měla by [Povolit synchronizaci hodnot hash hesel](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), protože umožňuje [Přepnout na použití synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) v případě, že vaše místní systémy identity nejsou funkční.
+To be more resilient, your organization should [enable password hash sync](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), because it enables you to [switch to using password hash sync](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) if your on-premises identity systems are down.
 
-#### <a name="microsoft-recommendations"></a>Doporučení Microsoftu
- Povolte synchronizaci hodnot hash hesel pomocí Průvodce Azure AD Connect bez ohledu na to, jestli vaše organizace používá federaci nebo předávací ověřování.
-
->[!IMPORTANT]
-> Pro použití synchronizace hodnot hash hesel není nutné převádět uživatele ze federovaného na spravované ověřování.
-
-## <a name="during-a-disruption"></a>Při přerušení
-
-Pokud jste se rozhodli pro implementaci plánu zmírnění rizik, budete moct automaticky přerušit jednotlivé přerušení řízení přístupu. Pokud jste se ale rozhodli vytvořit plán pro nepředvídané řešení, budete moci aktivovat své pohotovostní zásady během přerušení řízení přístupu:
-
-1. Povolte své pohotovostní zásady, které udělí cílovým uživatelům přístup ke konkrétním aplikacím z konkrétních sítí.
-2. Zakážete své běžné zásady založené na ovládacím prvku.
-
-### <a name="microsoft-recommendations"></a>Doporučení Microsoftu
-
-V závislosti na tom, jaké zmírnění nebo nečinnosti se při přerušení používají, může vaše organizace udělit přístup jenom s heslem. Žádná ochrana není značným bezpečnostním rizikem, které je třeba pečlivě zvážit. Organizace musí:
-
-1. V rámci strategie řízení změn zdokumentujte každou změnu a předchozí stav, abyste mohli vrátit zpět všechny nedokončené okolnosti, jakmile jsou ovládací prvky přístupu plně funkční.
-2. Předpokládá se, že se zlomyslné aktéry pokusí o vybírání hesel prostřednictvím útoků pomocí postřiku hesel nebo útoků phishing při zakázání MFA Chybné objekty actor mohou již mít hesla, která dříve neudělila přístup k jakémukoli prostředku, který lze během tohoto okna provést. U kritických uživatelů, jako jsou například vedoucí pracovníci, můžete toto riziko částečně zmírnit tím, že si resetujete jejich hesla, než je pro ně zakážete MFA.
-3. Archivujte veškerou přihlašovací aktivitu a určete, kdo má přístup k čemu v době zakázání MFA.
-4. [Třídění všech zjištění rizik hlášených](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) v rámci tohoto okna.
-
-## <a name="after-a-disruption"></a>Po přerušení
-
-Po obnovení služby, která způsobila přerušení, vraťte změny, které jste provedli v rámci aktivovaného plánu řešení pro nepředvídané účely. 
-
-1. Povolit běžné zásady
-2. Zakažte zásady pro nepředvídané pracovní postupy. 
-3. Vraťte všechny další změny, které jste provedli a popsali během přerušení.
-4. Pokud jste použili účet pro nouzový přístup, nezapomeňte znovu vygenerovat přihlašovací údaje a fyzicky zabezpečit nové přihlašovací údaje v rámci postupů vašeho účtu pro nouzový přístup.
-5. Pokračujte v [třídění všech zjištění rizik hlášených](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) po přerušení podezřelé aktivity.
-6. Odvolat všechny obnovovací tokeny, které byly vydány [pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) pro cílení na skupinu uživatelů. Odvolání všech aktualizačních tokenů je důležité pro privilegované účty používané při přerušení a v důsledku toho vynutí opětovné ověření a splnění kontroly nad obnovenými zásadami.
-
-## <a name="emergency-options"></a>Nouzové možnosti
-
- V případě nouze a vaše organizace předtím neimplementovala plán zmírňování nebo řešení nepředvídaných událostí, pokud už používají zásady podmíněného přístupu k vymáhání MFA, postupujte podle doporučení v části neškodné volání [uživatele](#contingencies-for-user-lockout) .
-Pokud vaše organizace používá starší zásady vícefaktorového ověřování pro uživatele, můžete zvážit následující alternativy:
-
-1. Pokud máte odchozí IP adresu podnikové sítě, můžete je přidat jako důvěryhodné IP adresy, abyste mohli ověřování povolit jenom pro podnikovou síť.
-   1. Pokud nemáte inventarizaci odchozích IP adres nebo potřebujete povolit přístup v podnikové síti i mimo ni, můžete přidat celý adresní prostor IPv4 jako důvěryhodné IP adresy zadáním 0.0.0.0/1 a 128.0.0.0/1.
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
+ Enable password hash sync using the Azure AD Connect wizard, regardless whether your organization uses federation or pass-through authentication.
 
 >[!IMPORTANT]
- > Pokud rozpoznáváte důvěryhodné IP adresy na přístup odblokování, negenerují se detekce rizik přidružená k IP adresám (například nemožná cesta nebo neznámá umístění).
+> It is not required to convert users from federated to managed authentication to use password hash sync.
+
+## <a name="during-a-disruption"></a>During a disruption
+
+If you opted for implementing a mitigation plan, you will be able to automatically survive a single access control disruption. However, if you opted to create a contingency plan, you will be able to activate your contingency policies during the access control disruption:
+
+1. Enable your contingency policies that grant targeted users, access to specific apps, from specific networks.
+2. Disable your regular control-based policies.
+
+### <a name="microsoft-recommendations"></a>Microsoft recommendations
+
+Depending on which mitigations or contingencies are used during a disruption, your organization could be granting access with just passwords. No safeguard is a considerable security risk that must be weighed carefully. Organizations must:
+
+1. As part of your change control strategy, document every change and the previous state to be able to roll back any contingencies you implemented as soon as the access controls are fully operational.
+2. Assume that malicious actors will attempt to harvest passwords through password spray or phishing attacks while you disabled MFA. Also, bad actors might already have passwords that previously did not grant access to any resource that can be attempted during this window. For critical users such as executives, you can partially mitigate this risk by resetting their passwords before disabling MFA for them.
+3. Archive all sign-in activity to identify who access what during the time MFA was disabled.
+4. [Triage all risk detections reported](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) during this window.
+
+## <a name="after-a-disruption"></a>After a disruption
+
+Undo the changes you made as part of the activated contingency plan once the service is restored that caused the disruption. 
+
+1. Enable the regular policies
+2. Disable your contingency policies. 
+3. Roll back any other changes you made and documented during the disruption.
+4. If you used an emergency access account, remember to regenerate credentials and physically secure the new credentials details as part of your emergency access account procedures.
+5. Continue to [triage all risk detections reported](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) after the disruption for suspicious activity.
+6. Revoke all refresh tokens that were issued [using PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) to target a set of users. Revoking all refresh tokens is important for privileged accounts used during the disruption and doing it will force them to reauthenticate and meet the control of the restored policies.
+
+## <a name="emergency-options"></a>Emergency options
+
+ In case of an emergency and your organization did not previously implement a mitigation or contingency plan, then follow the recommendations in the [Contingencies for user lockout](#contingencies-for-user-lockout) section if they already use Conditional Access policies to enforce MFA.
+If your organization is using per-user MFA legacy policies, then you can consider the following alternative:
+
+1. If you have the corporate network outbound IP address, you can add them as trusted IPs to enable authentication only to the corporate network.
+   1. If you don’t have the inventory of outbound IP addresses, or you required to enable access inside and outside the corporate network, you can add the entire IPv4 address space as trusted IPs by specifying 0.0.0.0/1 and 128.0.0.0/1.
+
+>[!IMPORTANT]
+ > If you broaden the trusted IP addresses to unblock access, risk detections associated with IP addresses (for example, impossible travel or unfamiliar locations) will not be generated.
 
 >[!NOTE]
- > Konfigurace [důvěryhodných IP adres](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) pro Azure MFA je dostupná jenom pro [licence Azure AD Premium](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).
+ > Configuring [trusted IPs](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) for Azure MFA is only available with [Azure AD Premium licenses](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).
 
-## <a name="learn-more"></a>Víc se uč
+## <a name="learn-more"></a>Další informace
 
-* [Dokumentace k ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Spravovat účty pro správu nouzovou přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Konfigurace pojmenovaných umístění v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure AD Authentication Documentation](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Manage emergency-access administrative accounts in Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+* [Configure named locations in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
-* [Jak nakonfigurovat zařízení připojená k hybridnímu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+* [How to configure hybrid Azure Active Directory joined devices](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Průvodce nasazením Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
-  * [Pokyny k heslu – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Jaké jsou podmínky v Azure Active Directory podmíněný přístup?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Co jsou ovládací prvky přístupu v Azure Active Directory podmíněný přístup?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+  * [Password Guidance - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+* [What are conditions in Azure Active Directory Conditional Access?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
+* [What are access controls in Azure Active Directory Conditional Access?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

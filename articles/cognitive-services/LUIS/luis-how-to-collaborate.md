@@ -1,7 +1,7 @@
 ---
-title: Spolupráce s ostatními – LUIS
+title: Collaborate with others - LUIS
 titleSuffix: Azure Cognitive Services
-description: Vlastník aplikace může přidat přispěvatele do prostředku pro vytváření obsahu. Tito přispěvatelé můžou upravit model, výuku a publikování aplikace.
+description: An app owner can add contributors to the authoring resource. These contributors can modify the model, train, and publish the app.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,98 +9,94 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 15c7c6664b0c17d02f1f4e9120c9509fda21e0f4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: efeb8b28ef2b8eec480fcf5090e0173d6451deef
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467528"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225520"
 ---
-# <a name="add-contributors-to-your-app"></a>Přidání přispěvatelů do aplikace
+# <a name="add-contributors-to-your-app"></a>Add contributors to your app
 
-Vlastník aplikace může přidat přispěvatele do aplikací. Tito spolupracovníci můžou upravit model, výuku a publikování aplikace. 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+An app owner can add contributors to apps. These collaborators can modify the model, train, and publish the app. 
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
-## <a name="add-contributor-to-azure-authoring-resource"></a>Přidat přispěvatele do prostředku pro vytváření obsahu Azure
+## <a name="add-contributor-to-azure-authoring-resource"></a>Add contributor to Azure authoring resource
 
-Následující postup platí pro všechny uživatele, kteří se **migrovali** na používání prostředku pro vytváření obsahu Azure.
+The following procedure is for all users that have **migrated** to use the Azure authoring resource.
 
-Migrovali jste, pokud je vaše prostředí pro vytváření LUIS vázané na prostředek vytváření na stránce **> Správa prostředků Azure** na portálu Luis.
+You have migrated if your LUIS authoring experience is tied to an Authoring resource on the **Manage -> Azure resources** page in the LUIS portal.
 
-1. V Azure Portal vyhledejte prostředek pro vytváření obsahu Language Understanding (LUIS). Má typ `LUIS.Authoring`.
-1. Na stránce **Access Control (IAM)** tohoto prostředku vyberte **+ Přidat** a vyberte **Přidat přiřazení role**.
+1. In the Azure portal, find the Language Understanding (LUIS) authoring resource. It has the type `LUIS.Authoring`.
+1. On this resource's **Access Control (IAM)** page, select **+Add** then select **Add role assignment**.
 
-    ![V Azure Portal přidejte přiřazení role při vytváření prostředku.](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
+    ![In Azure portal, add role assignment on authoring resource.](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
 
-1. V okně **Přidat přiřazení role** vyberte **roli** Přispěvatel. V možnosti **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**. V možnosti **Vybrat** zadejte e-mailovou adresu uživatele. Pokud je uživatel znám více než 1 e-mailovou adresou pro stejnou doménu, ujistěte se, že je zadán _primární_ e-mailový účet.
+1. In the **Add role assignment** window, select the **Role** of Contributor. In the **Assign access to** option, select **Azure AD user, group, or service principal**. In the **Select** option, enter the user's email address. If the user is known by more than 1 email address for the same domain, make sure the enter the _primary_ email account.
 
-    ![Přidání e-mailu uživatele do role přispěvatele pro Azure AD](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
+    ![Add user's email to the contributor role for Azure AD](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
 
-    Po nalezení e-mailu uživatele vyberte účet a vyberte **Uložit**. 
+    When the user's email is found, select the account and select **Save**. 
 
-    Pokud máte potíže s přiřazením této role, Projděte si téma [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) a [řešení potíží s řízením přístupu v Azure](../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments).
+    If you have trouble with this role assignment, review [Azure role assignments](../../role-based-access-control/role-assignments-portal.md) and [Azure access control troubleshooting](../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments).
 
-## <a name="add-collaborator-to-luis-app"></a>Přidání spolupracovníka do aplikace LUIS
+## <a name="add-collaborator-to-luis-app"></a>Add collaborator to LUIS app
 
-Následující postup platí pro všechny uživatele, kteří se **nemigrovali** , aby používali prostředek pro vytváření obsahu Azure.
+The following procedure is for all users that have **not migrated** to use the Azure authoring resource.
 
-Nemigrovali jste, pokud vaše prostředí pro vytváření LUIS není vázané na zdroj obsahu na stránce **Správa prostředků Azure >** na portálu Luis.
+You have not migrated if your LUIS authoring experience is not tied to an Authoring resource on the **Manage -> Azure resources** page in the LUIS portal.
 
-Aplikace má jednoho autora, vlastníka, ale může mít mnoho spolupracujících spolupracovníků. Pokud chcete spolupracovníkům dovolit upravit aplikaci LUIS, musíte přidat e-maily, které používají pro přístup k portálu LUIS, do seznamu spolupracovníci. Po přidání se aplikace zobrazí na portálu LUIS.
+An app has a single author, the owner, but can have many collaborators. To allow collaborators to edit your LUIS app, you must add the email they use to access the LUIS portal to the collaborators list. Once they are added, the app shows in their LUIS portal.
 
-1. V pravé horní nabídce vyberte **Spravovat** a v levé nabídce vyberte **spolupracovníci** .
+1. Select **Manage** from the top right menu, then select **Collaborators** in the left menu.
 
-1. Na panelu nástrojů vyberte **Přidat spolupracovníka** .
+1. Select **Add Collaborator** from the toolbar.
 
-    [![Přidat spolupracovníka](./media/luis-how-to-collaborate/add-collaborator.png "Přidat spolupracovníka")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
+1. Enter the email address the collaborator uses to sign in to the LUIS portal.
 
-1. Zadejte e-mailovou adresu, kterou spolupracovníka používá pro přihlášení k portálu LUIS.
-
-    ![Přidat e-mailovou adresu spolupracovníka](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
+    ![Add collaborator's email address](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
-### <a name="users-with-multiple-emails"></a>Uživatelé s více e-maily 
+### <a name="users-with-multiple-emails"></a>Users with multiple emails 
 
-Pokud do aplikace LUIS přidáte přispěvatele nebo spolupracovníky, zadáváte přesnou e-mailovou adresu. I když Azure Active Directory (Azure AD) umožňuje, aby jeden uživatel měl zaměnitelné více e-mailových účtů, LUIS vyžaduje, aby se uživatel přihlásil pomocí e-mailové adresy zadané při přidávání Přispěvatel/spolupracovníka.
+If you add contributors/collaborators to a LUIS app, you are specifying the exact email address. While Azure Active Directory (Azure AD) allows a single user to have more than one email account used interchangeably, LUIS requires the user to sign in with the email address specified when adding the contributor/collaborator.
 
 <a name="owner-and-collaborators"></a>
 
-### <a name="azure-active-directory-resources"></a>Prostředky Azure Active Directory
+### <a name="azure-active-directory-resources"></a>Azure Active Directory resources
 
-Pokud ve vaší organizaci používáte [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD), Language UNDERSTANDING (Luis) potřebuje oprávnění k informacím o přístupu vašich uživatelů, když chtějí používat Luis. Prostředky, které LUIS vyžaduje, jsou minimální. 
+If you use [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) in your organization, Language Understanding (LUIS) needs permission to the information about your users' access when they want to use LUIS. The resources that LUIS requires are minimal. 
 
-V případě, že se pokusíte zaregistrovat účet, který má souhlas správce nebo nevyžaduje souhlas správce, jako je třeba souhlas správce, se zobrazí podrobný popis.
+You see the detailed description when you attempt to sign up with an account that has admin consent or does not require admin consent, such as administrator consent:
 
-* Umožňuje přihlásit se k aplikaci pomocí účtu organizace a nechat si aplikaci číst váš profil. Umožňuje také aplikaci číst základní informace o společnosti. To dává LUIS oprávnění ke čtení dat základních profilů, jako je ID uživatele, e-mail, jméno
-* Umožňuje aplikaci zobrazovat a aktualizovat vaše data, i když tuto aplikaci momentálně nepoužíváte. K aktualizaci přístupového tokenu uživatele se vyžaduje oprávnění.
+* Allows you to sign in to the app with your organizational account and let the app read your profile. It also allows the app to read basic company information. This gives LUIS permission to read basic profile data, such as user ID, email, name
+* Allows the app to see and update your data, even when you are not currently using the app. The permission is required to refresh the access token of the user.
 
 
-### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory uživatel tenanta
+### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory tenant user
 
-LUIS používá tok souhlasu Standard Azure Active Directory (Azure AD). 
+LUIS uses standard Azure Active Directory (Azure AD) consent flow. 
 
-Správce tenanta by měl spolupracovat přímo s uživatelem, který potřebuje udělený přístup k používání LUIS ve službě Azure AD. 
+The tenant admin should work directly with the user who needs access granted to use LUIS in the Azure AD. 
 
-* Nejprve se uživatel přihlásí k LUIS a zobrazí se automaticky otevírané okno, které vyžaduje schválení správcem. Před pokračováním uživatel kontaktuje správce tenanta. 
-* Za druhé se správce tenanta přihlásí do LUIS a zobrazí se místní okno s tokem souhlasu. Toto je dialogové okno, které správce potřebuje k udělení oprávnění uživateli. Jakmile správce přijme oprávnění, může pokračovat v LUIS. Pokud se správce tenanta nebude přihlašovat k LUIS, může správce získat přístup k [souhlasu](https://account.activedirectory.windowsazure.com/r#/applications) pro Luis, které vidíte na následujícím snímku obrazovky. Všimněte si, že seznam je filtrovaný na položky, které obsahují název `LUIS`.
+* First, the user signs into LUIS, and sees the pop-up dialog needing admin approval. The user contacts the tenant admin before continuing. 
+* Second, the tenant admin signs into LUIS, and sees a consent flow pop-up dialog. This is the dialog the admin needs to give permission for the user. Once the admin accepts the permission, the user is able to continue with LUIS. If the tenant admin will not sign in to LUIS, the admin can access [consent](https://account.activedirectory.windowsazure.com/r#/applications) for LUIS, shown in the following screenshot. Notice the list is filtered to items that include the name `LUIS`.
 
-![Oprávnění Azure Active Directory na webu aplikace](./media/luis-how-to-collaborate/tenant-permissions.png)
+![Azure active directory permission by app website](./media/luis-how-to-collaborate/tenant-permissions.png)
 
-Pokud chce správce tenanta používat LUIS jenom někteří uživatelé, existuje několik možných řešení:
-* Udělení souhlasu správce (souhlasu se všemi uživateli Azure AD), ale pak nastavte na Ano, aby se přiřazení uživatelů vyžadovalo v části vlastnosti podnikové aplikace, a nakonec přiřaďte nebo přidejte do aplikace jenom ty, které jsou k tomu potřeba. V této metodě správce stále poskytuje aplikaci souhlas správce, ale je možné řídit uživatele, kteří k nim mají přístup.
-* Druhým řešením je použití [služby Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) k poskytnutí souhlasu každému konkrétnímu uživateli. 
+If the tenant admin only wants certain users to use LUIS, there are a couple of possible solutions:
+* Giving the "admin consent" (consent to all users of the Azure AD), but then set to "Yes" the "User assignment required" under Enterprise Application Properties, and finally assign/add only the wanted users to the Application. With this method, the Administrator is still providing "admin consent" to the App, however, it's possible to control the users that can access it.
+* A second solution, is by using [Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) to provide consent to each specific user. 
 
-Další informace o uživatelích a souhlasu Azure Active Directory: 
-* [Omezení aplikace](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) na sadu uživatelů
+Learn more about Azure active directory users and consent: 
+* [Restrict your app](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) to a set of users
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se [používat verze](luis-how-to-manage-versions.md) k řízení životního cyklu aplikace.
-* Seznamte se s koncepty, včetně [prostředků pro vytváření](luis-concept-keys.md#authoring-key) a [přispěvatelů](luis-concept-keys.md#contributions-from-other-authors) na tomto prostředku.
-* Naučte [se vytvářet prostředky pro](luis-how-to-azure-subscription.md) vytváření obsahu a modul runtime
-* Migrace na nový [prostředek pro vytváření](luis-migration-authoring.md) 
+* Learn [how to use versions](luis-how-to-manage-versions.md) to control your app life cycle.
+* Understand the concepts including the [authoring resource](luis-concept-keys.md#authoring-key) and [contributors](luis-concept-keys.md#contributions-from-other-authors) on that resource.
+* Learn [how to create](luis-how-to-azure-subscription.md) authoring and runtime resources
+* Migrate to the new [authoring resource](luis-migration-authoring.md) 

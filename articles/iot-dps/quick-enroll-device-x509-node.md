@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: registrace zařízení X. 509 do služby Azure Device Provisioning pomocí Node. js'
+title: Enroll X.509 devices to Azure Device Provisioning Service using Node.js
 description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete zařízení X.509 do služby Azure IoT Hub Device Provisioning Service pomocí sady SDK služby Node.js
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 3b2c27b8fc595dae39ed7374ec3647e6b4ba6f23
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: b2995c6ba031e71cba9068b691cbedc1cf80c457
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903419"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228568"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Node.js
 
@@ -30,7 +29,7 @@ Přestože postup v tomto článku funguje na počítačích s Windows i Linuxem
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Nainstalujte [Node.js v4.0 nebo vyšší](https://nodejs.org).
 - Nainstalujte [Git](https://git-scm.com/download/).
@@ -140,7 +139,7 @@ Pokud chcete vygenerovat certifikáty pomocí těchto testovacích nástrojů, p
 Pokud chcete prozkoumat ukázky služeb v Node.js, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky Azure vytvořené tímto rychlým startem.
  
 1. Zavřete na svém počítači okno výstupu ukázky v Node.js.
-2. Přejděte do vaší služby Device Provisioning v Azure Portal, klikněte na **spravovat registrace**a pak vyberte kartu **skupiny** registrací. Vyberte *ID registrace* pro položku registrace, kterou jste vytvořili pomocí tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části okna.  
+2. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *Registration ID* for the enrollment entry you created using this Quickstart and click the **Delete** button at the top of the blade.  
 3. Ve vaší službě Device Provisioning na webu Azure Portal klikněte na **Certifikáty**, klikněte na certifikát, který jste uložili pro účely tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části okna **Podrobnosti o certifikátu**.  
  
 ## <a name="next-steps"></a>Další kroky

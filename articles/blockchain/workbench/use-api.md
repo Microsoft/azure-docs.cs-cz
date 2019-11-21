@@ -1,6 +1,6 @@
 ---
 title: Použití rozhraní REST API služby Azure Blockchain Workbench
-description: Scénáře použití REST API Azure blockchain Workbench Preview
+description: Scenarios for how to use the Azure Blockchain Workbench Preview REST API
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,16 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 2f751cc4f0037b8d60034636a0c512989113e441
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 457c09aa2b235f30bd1f995c90429bdf9acb85ba
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328859"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74222292"
 ---
-# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Používání Azure blockchain Workbench Preview REST API
+# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Using the Azure Blockchain Workbench Preview REST API
 
-Azure blockchain Workbench Preview REST API poskytuje vývojářům a informačním pracovníkům způsob, jak vytvářet bohatou integraci aplikací blockchain. Tento dokument popisuje několik klíčových metod rozhraní REST API služby Workbench. Předpokládejme například, že vývojář chce vytvořit vlastního klienta blockchain. Tento klient blockchain umožňuje přihlášeným uživatelům zobrazení a interakci s přiřazenými aplikacemi blockchain. Klient umožňuje uživatelům zobrazit instance kontraktů a provádět akce s chytrými kontrakty. Klient používá REST API Workbench v kontextu přihlášeného uživatele k provedení následujících akcí:
+Azure Blockchain Workbench Preview REST API provides developers and information workers a way to build rich integrations to blockchain applications. Tento dokument popisuje několik klíčových metod rozhraní REST API služby Workbench. For example, suppose a developer wants to create a custom blockchain client. This blockchain client allows signed in users to view and interact with their assigned blockchain applications. Klient umožňuje uživatelům zobrazit instance kontraktů a provádět akce s chytrými kontrakty. The client uses the Workbench REST API in the context of the signed-in user to do the following actions:
 
 * Výpis aplikací
 * Výpis pracovních postupů pro aplikaci
@@ -27,14 +27,27 @@ Azure blockchain Workbench Preview REST API poskytuje vývojářům a informačn
 * Výpis dostupných akcí pro kontrakt
 * Provedení akce pro kontrakt
 
-Ukázkové blockchain aplikace, které se používají ve scénářích, je možné [stáhnout z GitHubu](https://github.com/Azure-Samples/blockchain).
+The example blockchain applications used in the scenarios, can be [downloaded from GitHub](https://github.com/Azure-Samples/blockchain).
+
+## <a name="blockchain-workbench-api-endpoint"></a>Blockchain Workbench API endpoint
+
+Blockchain Workbench APIs are accessed through an endpoint for your deployment. To get the API endpoint URL for your deployment:
+
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. In the left-hand navigation pane, select **Resource groups**.
+1. Choose the resource group name your deployed Blockchain Workbench.
+1. Select the **TYPE** column heading to sort the list alphabetically by type.
+1. There are two resources with type **App Service**. Select the resource of type **App Service** *with* the "-api" suffix.
+1. In the App Service **Overview**, copy the **URL** value, which represents the API endpoint URL to your deployed Blockchain Workbench.
+
+    ![App service API endpoint URL](media/use-api/app-service-api.png)
 
 ## <a name="list-applications"></a>Výpis aplikací
 
-Jakmile se uživatel přihlásí k blockchain klientovi, prvním úkolem je načíst všechny aplikace blockchain Workbench pro uživatele. V tomto scénáři má uživatel přístup do dvou aplikací:
+Once a user has signed into the blockchain client, the first task is to retrieve all Blockchain Workbench applications for the user. V tomto scénáři má uživatel přístup do dvou aplikací:
 
-1. [Přenos prostředků](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-2. [Chladicí přeprava](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+1. [Asset transfer](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+2. [Refrigerated transportation](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
 Použití rozhraní [Applications GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget):
 
@@ -43,7 +56,7 @@ GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-V odpovědi se zobrazí všechny aplikace blockchain, ke kterým má uživatel přístup v blockchain Workbench. Správci blockchain Workbench získají každou aplikaci blockchain. Správci mimo Workbench získají všechny blockchainy, pro které mají alespoň jednu přidruženou aplikační roli nebo přidruženou roli instance inteligentního kontraktu.
+The response lists all blockchain applications to which a user has access in Blockchain Workbench. Blockchain Workbench administrators get every blockchain application. Non-Workbench administrators get all blockchains for which they have at least one associated application role or an associated smart contract instance role.
 
 ``` http
 HTTP/1.1 200 OK
@@ -77,7 +90,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Výpis pracovních postupů pro aplikaci
 
-Jakmile uživatel vybere příslušnou aplikaci blockchain (například **přenos assetu**), klient blockchain načte všechny pracovní postupy konkrétní aplikace blockchain. Uživatelé si pak můžou vybrat vhodný pracovní postup před zobrazením všech instancí chytrých kontraktů pro daný pracovní postup. Každá blockchainová aplikace má jeden nebo více pracovních postupů a každý pracovní postup má nula nebo více instancí chytrých kontraktů. Pro klientskou aplikaci blockchain, která má jenom jeden pracovní postup, doporučujeme přeskočit tok uživatelského prostředí, který uživatelům umožní vybrat příslušný pracovní postup. V takovém případě **přenos prostředků** má jenom jeden pracovní postup, označovaný také jako **přenos prostředků**.
+Once a user selects the applicable blockchain application (such as **Asset Transfer**), the blockchain client retrieves all workflows of the specific blockchain application. Uživatelé si pak můžou vybrat vhodný pracovní postup před zobrazením všech instancí chytrých kontraktů pro daný pracovní postup. Každá blockchainová aplikace má jeden nebo více pracovních postupů a každý pracovní postup má nula nebo více instancí chytrých kontraktů. For a blockchain client application that has only one workflow, we recommend skipping the user experience flow that allows users to select the appropriate workflow. In this case, **Asset Transfer** has only one workflow, also called **Asset Transfer**.
 
 Použití rozhraní [Applications Workflows GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget):
 
@@ -86,7 +99,7 @@ GET /api/v1/applications/{applicationId}/workflows
 Authorization: Bearer {access token}
 ```
 
-Vrátí seznam všech pracovních postupů zadané blockchainové aplikace, ke kterým má uživatel přístup ve službě Blockchain Workbench. Správci blockchain Workbench získají každý pracovní postup blockchain. Správci mimo aplikaci Workbench získají všechny pracovní postupy, pro které mají alespoň jednu přidruženou roli aplikace nebo která je přidružena k roli instance inteligentního kontraktu.
+Vrátí seznam všech pracovních postupů zadané blockchainové aplikace, ke kterým má uživatel přístup ve službě Blockchain Workbench. Blockchain Workbench administrators get every blockchain workflow. Non-Workbench administrators get all workflows for which they have at least one associated application role or is associated with a smart contract instance role.
 
 ``` http
 HTTP/1.1 200 OK
@@ -109,7 +122,7 @@ Content-type: application/json
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>Výpis instancí chytrých kontraktů pro pracovní postup
 
-Jakmile uživatel vybere příslušný pracovní postup, tento případ **přenos prostředků**, klient blockchain získá všechny instance inteligentních kontraktů pro zadaný pracovní postup. Tyto informace můžete použít k zobrazení všech instancí inteligentních kontraktů pro pracovní postup. Nebo můžete uživatelům dovolit hluboko podrobně do kterékoli ze zobrazených instancí inteligentních kontraktů. V tomto příkladu předpokládejme, že by uživatel chtěl komunikovat s některou z instancí chytrých kontraktů kvůli provedení akce.
+Once a user selects the applicable workflow, this case **Asset Transfer**, the blockchain client will retrieve all smart contract instances for the specified workflow. You can use this information to show all smart contract instances for the workflow. Or you can allow users to deep dive into any of the shown smart contract instances. V tomto příkladu předpokládejme, že by uživatel chtěl komunikovat s některou z instancí chytrých kontraktů kvůli provedení akce.
 
 Použití rozhraní [Contracts GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget):
 
@@ -118,7 +131,7 @@ GET api/v1/contracts?workflowId={workflowId}
 Authorization: Bearer {access token}
 ```
 
-Vrátí seznam všech instancí chytrých kontraktů zadaného pracovního postupu. Správci aplikace Workbench získají všechny instance inteligentních kontraktů. Správci mimo Workbench získají každou instanci inteligentních kontraktů, pro kterou mají alespoň jednu přidruženou aplikační roli nebo přidruženou k roli instance inteligentního kontraktu.
+Vrátí seznam všech instancí chytrých kontraktů zadaného pracovního postupu. Workbench administrators get all smart contract instances. Non-Workbench administrators get every smart contract instance for which they have at least one associated application role or is associated with a smart contract instance role.
 
 ``` http
 HTTP/1.1 200 OK
@@ -208,10 +221,10 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>Výpis dostupných akcí pro kontrakt
 
-Jakmile se uživatel rozhodne do smlouvy hluboko podrobně, může klient blockchain Zobrazit dostupné akce uživatele podle stavu smlouvy. V tomto příkladu uživatel hledá všechny dostupné akce pro nový chytrý kontrakt, který vytvořil:
+Once a user decides to deep dive into a contract, the blockchain client can then show the available user actions given the state of the contract. V tomto příkladu uživatel hledá všechny dostupné akce pro nový chytrý kontrakt, který vytvořil:
 
 * Modify: Umožňuje uživateli upravit popis a cenu majetku.
-* Ukončit: umožňuje uživateli ukončit kontrakt assetu.
+* Terminate: Allows the user to end the contract of the asset.
 
 Použití rozhraní [Contract Action GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget):
 
@@ -275,7 +288,7 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>Provedení akce pro kontrakt
 
-Uživatel se potom může rozhodnout, že provede akci pro zadanou instanci chytrého kontraktu. V takovém případě Zvažte situaci, kdy by uživatel chtěl změnit popis a cenu assetu na následující akci:
+Uživatel se potom může rozhodnout, že provede akci pro zadanou instanci chytrého kontraktu. In this case, consider the scenario where a user would like to modify the description and price of an asset to the following action:
 
 * Popis: „Moje vylepšené auto“
 * Cena: 54321

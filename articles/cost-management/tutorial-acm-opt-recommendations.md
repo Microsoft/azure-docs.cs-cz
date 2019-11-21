@@ -1,111 +1,111 @@
 ---
-title: Kurz – snížení nákladů na Azure s doporučeními pro optimalizaci | Microsoft Docs
-description: Tento kurz vám pomůže snižovat náklady na Azure, když pracujete na doporučeních pro optimalizaci.
+title: Tutorial - Reduce Azure costs with optimization recommendations | Microsoft Docs
+description: This tutorial helps you reduce Azure costs when you act on optimization recommendations.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 10/24/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 603de4d9bed936ecb91f130b0e30f6d1383a9092
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a9dbb121cab49024aaf0dc65bbac938764d9f8b2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935831"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229834"
 ---
-# <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: optimalizace nákladů z doporučení
+# <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimize costs from recommendations
 
-Služba Azure Cost Management spolupracuje s Azure Advisorem a nabízí doporučení, která se týkají optimalizace nákladů. Azure Advisor provádí optimalizaci a zvyšuje efektivitu tím, že identifikuje nečinné a nevyužité prostředky. V tomto kurzu se seznámíte s příkladem, kde zjistíte nevyužité prostředky Azure a pak přijmete opatření, abyste snížili náklady.
+Služba Azure Cost Management spolupracuje s Azure Advisorem a nabízí doporučení, která se týkají optimalizace nákladů. Azure Advisor provádí optimalizaci a zvyšuje efektivitu tím, že identifikuje nečinné a nevyužité prostředky. This tutorial walks you through an example where you identify underutilized Azure resources and then you take action to reduce costs.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Zobrazit doporučení pro optimalizaci nákladů a zobrazit potenciální neefektivitu využití
-> * Vyjednejte doporučení, jak změnit velikost virtuálního počítače na cenově výhodnější možnost.
-> * Ověřte akci, aby se zajistilo, že se virtuálnímu počítači úspěšně změnila velikost.
+> * View cost optimization recommendations to view potential usage inefficiencies
+> * Act on a recommendation to resize a virtual machine to a more cost-effective option
+> * Verify the action to ensure that the virtual machine was successfully resized
 
 ## <a name="prerequisites"></a>Předpoklady
-Doporučení jsou dostupná pro nejrůznější obory a typy účtů Azure. Úplný seznam podporovaných typů účtů najdete v tématu [pochopení cost management dat](understand-cost-mgt-data.md). Abyste mohli zobrazit data nákladů, musíte mít alespoň přístup pro čtení k nejméně jednomu z následujících oborů. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
+Recommendations are available for a variety of scopes and Azure account types. To view the full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md). Abyste mohli zobrazit data nákladů, musíte mít alespoň přístup pro čtení k nejméně jednomu z následujících oborů. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
 - Předplatné
 - Skupina prostředků
 
-Musíte mít aktivní virtuální počítače s alespoň 14 dny aktivity.
+You must have active virtual machines with at least 14 days of activity.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com/).
 
-## <a name="view-cost-optimization-recommendations"></a>Zobrazit doporučení pro optimalizaci nákladů
+## <a name="view-cost-optimization-recommendations"></a>View cost optimization recommendations
 
-Pokud chcete zobrazit doporučení pro optimalizaci nákladů pro předplatné, otevřete požadovaný obor v Azure Portal a vyberte **doporučení poradce**.
+To view cost optimization recommendations for a subscription, open the desired scope in the Azure portal and select **Advisor recommendations**.
 
-Chcete-li zobrazit doporučení pro skupinu pro správu, otevřete požadovaný obor v Azure Portal a v nabídce vyberte položku **Analýza nákladů** . Pro přepnutí do jiného oboru, jako je například skupina pro správu, použijte modul **mikroskop** . V nabídce vyberte **doporučení poradce** . Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
+To view recommendations for a management group, open the desired scope in the Azure portal and select **Cost analysis** in the menu. Use the **Scope** pill to switch to a different scope, such as a management group. Select **Advisor recommendations** in the menu. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
-![Doporučení pro Cost Management Advisor zobrazená v Azure Portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![Cost Management Advisor recommendations shown in the Azure portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
-Seznam doporučení identifikuje neefektivní využití nebo zobrazuje doporučení pro nákup, která vám pomůžou ušetřit další peníze. Celkové **možné roční úspory** ukazují celkovou částku, kterou můžete uložit, pokud vypnete nebo zrušíte přidělení všech virtuálních počítačů, které splňují pravidla pro doporučení. Pokud je nechcete vypnout, měli byste zvážit jejich změnu velikosti na levnější SKU virtuálního počítače.
+The list of recommendations identifies usage inefficiencies or shows purchase recommendations that can help you save additional money. The totaled **Potential yearly savings** shows the total amount that you can save if you shut down or deallocate all of your VMs that meet recommendation rules. If you don't want to shut them down, you should consider resizing them to a less expensive VM SKU.
 
-Kategorie **dopad** , společně s **možnými ročními úsporami**, je navržena tak, aby lépe identifikovala doporučení, která mají potenciál v co největší míře ukládat.
+The **Impact** category, along with the **Potential yearly savings**, are designed to help identify recommendations that have the potential to save as much as possible.
 
-Mezi doporučení s vysokým dopadem patří:
-- [Nákup rezervovaných instancí virtuálních počítačů za účelem úspory peněz nad náklady na průběžné platby](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
-- [Optimalizace útraty virtuálních počítačů změnou velikosti nebo vypnutí nevyužitých instancí](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Použití úložiště standard pro ukládání snímků Managed Disks](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+High impact recommendations include:
+- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [Optimize virtual machine spend by resizing or shutting down underutilized instances](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [Use Standard Storage to store Managed Disks snapshots](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
-Doporučení pro středně velkou dopady zahrnují:
-- [Odstranění neúspěšných kanálů Azure Data Factory](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
-- [Snížení nákladů odstraněním nezajištěných okruhů ExpressRoute](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
-- [Snížení nákladů odstraněním nebo změnou konfigurace nečinných bran virtuální sítě](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
+Medium impact recommendations include:
+- [Delete Azure Data Factory pipelines that are failing](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [Reduce costs by eliminating un-provisioned ExpressRoute circuits](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [Reduce costs by deleting or reconfiguring idle virtual network gateways](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
-## <a name="act-on-a-recommendation"></a>Pracovat na doporučení
+## <a name="act-on-a-recommendation"></a>Act on a recommendation
 
-Azure Advisor monitoruje využití virtuálních počítačů po dobu sedmi dnů a pak identifikuje nevyužité virtuální počítače. Virtuální počítače s využitím procesoru jsou pět procent nebo méně a využití sítě je po dobu čtyř nebo víc dnů považováno za virtuální počítače s nízkým využitím.
+Azure Advisor monitors your virtual machine usage for seven days and then identifies underutilized virtual machines. Virtual machines whose CPU utilization is five percent or less and network usage is seven MB or less for four or more days are considered low-utilization virtual machines.
 
-Výchozí nastavení je 5% nebo méně využití procesoru, ale můžete nastavení upravit. Další informace o úpravě nastavení najdete v tématu [Konfigurace průměrného využití procesoru nebo doporučení pro virtuální počítače s nízkým využitím](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
+The 5% or less CPU utilization setting is the default, but you can adjust the settings. For more information about adjusting the setting, see the [Configure the average CPU utilization rule or the low usage virtual machine recommendation](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
 
-I když některé scénáře můžou mít za následek nízké využití podle návrhu, můžete často ušetřit peníze změnou velikosti virtuálních počítačů na levnější velikosti. Vaše skutečné úspory se mohou lišit, pokud zvolíte akci změny velikosti. Pojďme si projít příkladem změny velikosti virtuálního počítače.
+Although some scenarios can result in low utilization by design, you can often save money by changing the size of your virtual machines to less expensive sizes. Your actual savings might vary if you choose a resize action. Let's walk through an example of resizing a virtual machine.
 
-V seznamu doporučení klikněte na doporučení **správné velikosti nebo vypnutí nevyužitých virtuálních počítačů** . V seznamu kandidátů na virtuální počítače vyberte virtuální počítač, který chcete změnit, a potom klikněte na virtuální počítač. Zobrazí se podrobnosti o virtuálním počítači, abyste mohli ověřit metriky využití. **Potenciální roční hodnota úspory** je to, co můžete uložit při vypnutí nebo odebrání virtuálního počítače. Změna velikosti virtuálního počítače vám pravděpodobně ušetří peníze, ale nebudete moci ukládat celé množství potenciálních ročních úspor.
+In the list of recommendations, click the **Right-size or shutdown underutilized virtual machines** recommendation. In the list of virtual machine candidates, choose a virtual machine to resize and then click the virtual machine. The virtual machine's details are shown so that you can verify the utilization metrics. The **potential yearly savings** value is what you can save if you shut down or remove the VM. Resizing a VM will probably save you money, but you won't save the full amount of the potential yearly savings.
 
-![Příklad podrobností doporučení](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![Example of Recommendation details](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
-V podrobnostech o virtuálním počítači Zkontrolujte využití virtuálního počítače a potvrďte, že se jedná o vhodný kandidát na změnu velikosti.
+In the VM details, check the utilization of the virtual machine to confirm that it's a suitable resize candidate.
 
-![Příklady podrobností o virtuálním počítači s historickým využitím](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![Example VM details showing historical utilization](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
-Poznamenejte si velikost aktuálního virtuálního počítače. Až ověříte, že se má virtuální počítač změnit na velikost, zavřete Podrobnosti o virtuálním počítači, abyste viděli seznam virtuálních počítačů.
+Note the current virtual machine's size. After you've verified that the virtual machine should be resized, close the VM details so that you see the list of virtual machines.
 
-V seznamu kandidátů na vypnutí nebo změnu velikosti vyberte * * změnit velikost *&lt;FromVirtualMachineSKU&gt;* na *&lt;ToVirtualMachineSKU&gt;* * *.
-![příklad doporučení s možností změny velikosti virtuálního počítače](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+In the list of candidates to shut down or resize, select **Resize *&lt;FromVirtualMachineSKU&gt;* to *&lt;ToVirtualMachineSKU&gt;***.
+![Example recommendation with the option to resize the virtual machine](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
-V dalším kroku se zobrazí seznam dostupných možností změny velikosti. Vyberte si ten, který bude poskytovat nejlepší výkon a cenovou efektivitu pro váš scénář. V následujícím příkladu vybraná možnost mění velikost z **Standard_D8s_v3** na **Standard_D2s_v3**.
+Next, you're presented with a list of available resize options. Choose the one that will give the best performance and cost-effectiveness for your scenario. In the following example, the option chosen resizes from **Standard_D8s_v3** to **Standard_D2s_v3**.
 
-![Příklad seznamu dostupných velikostí virtuálních počítačů, kde můžete zvolit velikost](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![Example list of available VM sizes where you can choose a size](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-Po výběru vhodné velikosti klikněte na tlačítko **změnit** velikost a spusťte akci změnit velikost.
+After you choose a suitable size, click **Resize** to start the resize action.
 
-Změna velikosti vyžaduje aktivně běžící virtuální počítač k restartování. Pokud se virtuální počítač nachází v produkčním prostředí, doporučujeme po pracovní době spustit operaci změny velikosti. Plánování restartování může snížit přerušení způsobené nedostupností.
+Resizing requires an actively running virtual machine to restart. If the virtual machine is in a production environment, we recommend that you run the resize operation after business hours. Scheduling the restart can reduce disruptions caused by momentarily unavailability.
 
-## <a name="verify-the-action"></a>Ověřit akci
+## <a name="verify-the-action"></a>Verify the action
 
-Po úspěšném dokončení změny velikosti virtuálního počítače se zobrazí oznámení Azure.
+When the VM resizing completes successfully, an Azure notification is shown.
 
-![Oznámení o změně velikosti virtuálního počítače se úspěšně změnilo.](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![Successful resized virtual machine notification](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Zobrazit doporučení pro optimalizaci nákladů a zobrazit potenciální neefektivitu využití
-> * Vyjednejte doporučení, jak změnit velikost virtuálního počítače na cenově výhodnější možnost.
-> * Ověřte akci, aby se zajistilo, že se virtuálnímu počítači úspěšně změnila velikost.
+> * View cost optimization recommendations to view potential usage inefficiencies
+> * Act on a recommendation to resize a virtual machine to a more cost-effective option
+> * Verify the action to ensure that the virtual machine was successfully resized
 
-Pokud jste si ještě neučinili článek o osvědčených postupech Cost Management, poskytne vám doprovodné materiály a principy, které vám pomůžou se správou nákladů.
+If you haven't already read the Cost Management best practices article, it provides high-level guidance and principles to consider to help manage costs.
 
 > [!div class="nextstepaction"]
-> [Cost Management osvědčené postupy](cost-mgt-best-practices.md)
+> [Cost Management best practices](cost-mgt-best-practices.md)

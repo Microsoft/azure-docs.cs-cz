@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Azure internal Load Balancer pomocí Powershellu
-titlesuffix: Azure Load Balancer
+title: Create an Azure internal Load Balancer by using PowerShell
+titleSuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí modulu Azure PowerShellu a Azure Resource Manageru
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: b53225334c6a7d61fcee70327df5979af1e424ee
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275397"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225390"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí modulu Azure PowerShellu
 
@@ -42,11 +42,11 @@ Tento článek popisuje vytvoření interního nástroje pro vyrovnávání zat�
 
 Pokud chcete nasadit nástroj pro vyrovnávání zatížení, musíte vytvořit následující objekty:
 
-* Front-end fond IP adres: Privátní IP adresa pro veškerý příchozí síťový provoz.
-* Fond back-endové adresy: Síťová rozhraní pro příjem provozu s vyrovnáváním zatížení z front-endové IP adresy.
-* Pravidla vyrovnávání zatížení: Konfigurace portu (zdrojové a místní) pro nástroj pro vyrovnávání zatížení.
-* Konfigurace testu paměti: Sondy stavu pro virtuální počítače.
-* Pravidla příchozího překladu adres (NAT): Pravidla portů pro přímý přístup k virtuálním počítačům.
+* Front-endový fond IP adres: Privátní IP adresa pro veškerý příchozí síťový provoz.
+* Back-endový fond adres: Síťová rozhraní pro příjem provozu s vyrovnáváním zatížení z front-endové IP adresy.
+* Pravidla vyrovnávání zatížení: Konfigurace portů (zdrojového a místního) pro nástroj pro vyrovnávání zatížení.
+* Konfigurace sondy: Sondy stavu pro virtuální počítače.
+* Příchozí pravidla NAT: Pravidla portů pro přímý přístup k virtuálním počítačům.
 
 Další informace součástech nástroje pro vyrovnávání zatížení najdete v tématu [Podpora nástroje pro vyrovnávání zatížení v Azure Resource Manageru](load-balancer-arm.md).
 
@@ -64,7 +64,7 @@ Spusťte modul PowerShellu pro Azure Resource Manager.
 Connect-AzAccount
 ```
 
-### <a name="step-2-view-your-subscriptions"></a>Krok 2: Zobrazení vašich předplatných
+### <a name="step-2-view-your-subscriptions"></a>Krok 2: Zobrazení předplatných
 
 Zkontrolujte dostupná předplatná Azure.
 
@@ -74,7 +74,7 @@ Get-AzSubscription
 
 Po zobrazení výzvy k ověření zadejte své přihlašovací údaje.
 
-### <a name="step-3-select-the-subscription-to-use"></a>Krok 3: Vyberte předplatné, které chcete použít.
+### <a name="step-3-select-the-subscription-to-use"></a>Krok 3: Výběr předplatného, které se má použít
 
 Zvolte, které z vašich předplatných Azure se má použít k nasazení nástroje pro vyrovnávání zatížení.
 
@@ -122,7 +122,7 @@ Vytvořte front-endový fond IP adres s privátní IP adresou 10.0.2.5 pro pods�
 $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $vnet.subnets[0].Id
 ```
 
-### <a name="step-2-create-a-back-end-address-pool"></a>Krok 2: Vytvoření fondu back-endových adres
+### <a name="step-2-create-a-back-end-address-pool"></a>Krok 2: Vytvoření back-endového fondu adres
 
 Vytvořte back-endový fond adres pro příjem příchozího provozu z front-endového fondu IP adres:
 
@@ -134,14 +134,14 @@ $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name "LB-backend"
 
 Po vytvoření front-endového fondu IP adres a back--endového fondu adres zadejte pravidla pro prostředek nástroje pro vyrovnávání zatížení.
 
-### <a name="step-1-create-the-configuration-rules"></a>Krok 1: Vytvořit pravidla konfigurace
+### <a name="step-1-create-the-configuration-rules"></a>Krok 1: Vytvoření pravidel konfigurace
 
 Tento příklad vytvoří následující čtyři objekty pravidel:
 
-* Příchozí pravidlo překladu adres (NAT) pro protokol RDP (Remote Desktop Protocol) (RDP): Přesměruje veškerý příchozí provoz na portu 3441 na port 3389.
-* Druhé pravidlo příchozího překladu adres (NAT) pro protokol RDP: Přesměruje veškerý příchozí provoz na portu 3442 na port 3389.
-* Pravidlo sondy stavu: Kontroluje stav cesty HealthProbe. aspx.
-* Pravidlo nástroje pro vyrovnávání zatížení: Load vyrovnává všechny příchozí přenosy na veřejném portu 80 na místní port 80 ve fondu back-end adres.
+* Příchozí pravidlo NAT pro protokol RDP (Remote Desktop Protocol): Přesměruje veškerý příchozí provoz na portu 3441 na port 3389.
+* Druhé příchozí pravidlo NAT pro protokol RDP: Přesměruje veškerý příchozí provoz na portu 3442 na port 3389.
+* Pravidlo sondy stavu: Kontroluje stav cesty k souboru HealthProbe.aspx.
+* Pravidlo nástroje pro vyrovnávání zatížení: Vyrovnává zatížení veškerého příchozího provozu na veřejném portu 80 na místní port 80 v back-endovém fondu adres.
 
 ```azurepowershell-interactive
 $inboundNATRule1= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
@@ -251,13 +251,13 @@ Po vytvoření virtuálního počítače přidejte síťové rozhraní.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>Krok 1: Uložení prostředku nástroje pro vyrovnávání zatížení
 
-Uložte prostředek nástroje pro vyrovnávání zatížení do proměnné (pokud jste tak ještě neučinili). Používáme proměnnou s názvem **$lb**. Jako hodnoty atributů ve skriptu použijte názvy prostředků nástroje pro vyrovnávání zatížení vytvořené v předchozích krocích.
+Uložte prostředek nástroje pro vyrovnávání zatížení do proměnné (pokud jste tak ještě neučinili). We're using the variable name **$lb**. For the attribute values in the script, use the names for the load balancer resources that were created in the previous steps.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 ```
 
-### <a name="step-2-store-the-back-end-configuration"></a>Krok 2: Uložit konfiguraci back-endu
+### <a name="step-2-store-the-back-end-configuration"></a>Krok 2: Uložení konfigurace back-endu
 
 Uložte konfiguraci back-endu do proměnné **$backend**.
 
@@ -293,7 +293,7 @@ Po přidání rozhraní do back-endového fondu se zatížení síťového provo
 
 ## <a name="update-an-existing-load-balancer"></a>Aktualizace stávajícího nástroje pro vyrovnávání zatížení
 
-### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>Krok 1: Přiřazení objektu nástroje pro vyrovnávání zatížení k proměnné
+### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>Krok 1: Přiřazení objektu nástroje pro vyrovnávání zatížení do proměnné
 
 Přiřaďte objekt nástroje pro vyrovnávání zatížení (z předchozího příkladu) do proměnné **$slb** pomocí příkazu `Get-AzLoadBalancer`:
 
@@ -301,7 +301,7 @@ Přiřaďte objekt nástroje pro vyrovnávání zatížení (z předchozího př
 $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
-### <a name="step-2-add-a-nat-rule"></a>Krok 2: Přidat pravidlo překladu adres (NAT)
+### <a name="step-2-add-a-nat-rule"></a>Krok 2: Přidání pravidla NAT
 
 Přidejte do stávajícího nástroje pro vyrovnávání zatížení nové příchozí pravidlo NAT. Pro front-endový fond použijte port 81 a pro back-endový fond použijte port 8181:
 
@@ -309,7 +309,7 @@ Přidejte do stávajícího nástroje pro vyrovnávání zatížení nové pří
 $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol Tcp
 ```
 
-### <a name="step-3-save-the-configuration"></a>Krok 3: Uložit konfiguraci
+### <a name="step-3-save-the-configuration"></a>Krok 3: Uložení konfigurace
 
 Uložte novou konfiguraci pomocí příkazu `Set-AzureLoadBalancer`:
 
@@ -328,7 +328,7 @@ Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 > [!NOTE]
 > Pokud chcete zabránit zobrazení výzvy k potvrzení odstranění, použijte volitelný přepínač **-Force**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md)
 * [Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)

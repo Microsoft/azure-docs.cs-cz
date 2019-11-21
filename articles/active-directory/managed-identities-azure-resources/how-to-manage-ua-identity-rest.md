@@ -1,6 +1,6 @@
 ---
-title: Správa uživatelsky přiřazené spravované identity Azure pomocí rozhraní REST
-description: Krok za krokem pokyny o tom, jak vytvořit, vypsat a odstranit uživatel přiřazenou spravované identity pro volání rozhraní REST API.
+title: Manage user-assigned managed identities using REST - Azure AD
+description: Step by step instructions on how to create, list and delete a user-assigned managed identity to make REST API calls.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,35 +15,35 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75867242358881c963ab4470bdb7963d0ea4671c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d0b4da7f47181341fce7c5fa5e7a6d239fe3070d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440177"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224653"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Vytvoření seznamu nebo odstranit uživatelem přidělenou spravovanou identitu volání rozhraní REST API
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Create, list or delete a user-assigned managed identity using REST API calls
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Spravovat identity pro prostředky Azure poskytuje služby Azure možnost ověření, že ověřování podpory služby Azure AD pro služby, bez nutnosti přihlašovací údaje ve vašem kódu. 
+Managed identities for Azure resources provides Azure services the ability to authenticate to services that support Azure AD authentication, without needing credentials in your code. 
 
-V tomto článku zjistíte, jak vytvořit, vypsat a odstranit spravovanou identitu přiřazená uživatelem pomocí příkazu CURL k volání rozhraní REST API.
+In this article, you learn how to create, list, and delete a user-assigned managed identity using CURL to make REST API calls.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)** .
+- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Pokud používáte Windows, nainstalujte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) na webu Azure Portal.
-- Pokud používáte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo [operačním systémem distribuce Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalovat místní konzoly Azure CLI](/cli/azure/install-azure-cli).
-- Pokud používáte místní konzoly příkazového řádku Azure, přihlaste se do Azure s využitím `az login` pomocí účtu, který je přidružený k předplatnému Azure chcete nasadit nebo načíst informace o uživatelsky přiřazené spravovaná identita.
-- Získat nosný přístup k tokenu pomocí `az account get-access-token` provádět následující operace uživatelsky přiřazené spravovaná identita.
+- If you are using Windows, install the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or use the [Azure Cloud Shell](../../cloud-shell/overview.md) in the Azure portal.
+- If you use the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or a [Linux distribution OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [Install the Azure CLI local console](/cli/azure/install-azure-cli).
+- If you are using Azure CLI local console, sign in to Azure using `az login` with an account that is associated with the Azure subscription you would like to deploy or retrieve user-assigned managed identity information.
+- Retrieve a Bearer access token using `az account get-access-token` to perform the following user-assigned managed identity operations.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem 
 
-Pro vytvoření uživatelsky přiřazené identity spravované, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
+To create a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -58,22 +58,22 @@ PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
 ```
 
-**Hlavičky žádosti**
+**Request headers**
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
 |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.        |
+|*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        |
 
-**Text žádosti**
+**Request body**
 
-|Název  |Popis  |
+|Name (Název)  |Popis  |
 |---------|---------|
-|location     | Povinná hodnota. Umístění prostředku.        |
+|location     | Povinná hodnota. Resource location.        |
 
-## <a name="list-user-assigned-managed-identities"></a>Seznam uživatelsky přiřazené spravované identity
+## <a name="list-user-assigned-managed-identities"></a>List user-assigned managed identities
 
-Do seznamu/čtení uživatelsky přiřazené spravovanou identitu, musí váš účet [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
+To list/read a user-assigned managed identity, your account needs the [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) or [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -86,14 +86,14 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 |Hlavička požadavku  |Popis  |
 |---------|---------|
 |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.        |
+|*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        |
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživateli
+## <a name="delete-a-user-assigned-managed-identity"></a>Delete a user-assigned managed identity
 
-Pokud chcete odstranit spravovanou identitu uživatele přiřazeny, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
+To delete a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
 
 > [!NOTE]
-> Odstraňuje se uživatel přiřazenou spravovanou identitu nedojde k odebrání odkazu ze všech prostředků, který byl přiřazen. Odebrat uživatelsky přiřazené spravovaná identita z virtuálního počítače pomocí příkazu CURL najdete v článku [odebrání virtuálního počítače Azure uživatelsky přiřazené identity](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
+> Deleting a user-assigned managed identity will not remove the reference from any resource it was assigned to. To remove a user-assigned managed identity from a VM using CURL see [Remove a user-assigned identity from an Azure VM](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
@@ -106,8 +106,8 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |Hlavička požadavku  |Popis  |
 |---------|---------|
 |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.        |
+|*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak přiřadit uživateli přiřazena spravované identity do Azure VM/VMSS pomocí příkazu CURL naleznete v tématu, [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí volání rozhraní REST API](qs-configure-rest-vm.md#user-assigned-managed-identity) a [spravované konfigurace pro prostředky Azure na virtuální počítač škálovací sady s použitím volání rozhraní REST API identit](qs-configure-rest-vmss.md#user-assigned-managed-identity).
+For information on how to assign a user-assigned managed identity to an Azure VM/VMSS using CURL see, [Configure managed identities for Azure resources on an Azure VM using REST API calls](qs-configure-rest-vm.md#user-assigned-managed-identity) and [Configure managed identities for Azure resources on a virtual machine scale set using REST API calls](qs-configure-rest-vmss.md#user-assigned-managed-identity).

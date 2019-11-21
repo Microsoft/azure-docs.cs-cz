@@ -1,28 +1,28 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 5e58429b6a3e2f7c7c39c13dc65af48b064f9771
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2a9e9d79328a7bf5c3ff85ea5a8e8a594d68c4cf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67175396"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224397"
 ---
-| Vrstva | Zdarma | Basic | Standard |
+| Úroveň | Zadarmo | Úroveň Basic | Úroveň Standard |
 | --- | --- | --- | --- |
-| Volání rozhraní API |500,000 |1 500 000 na jednotku |15 000 000 na jednotku |
-| Aktivní zařízení |500 |Unlimited |Unlimited |
-| Měřítko |Není k dispozici |Až 6 jednotek |Neomezený počet jednotek |
-| Nabízená oznámení |Zahrnuje Azure Notification Hubs úrovně Free, až 1 000 000 nabízených oznámení |Zahrnuté úrovně Basic Notification Hubs, až 10 000 000 nabízených oznámení |Zahrnutá úroveň Standard Notification Hubs, až 10 000 000 nabízených oznámení |
-| Zasílání zpráv v reálném čase/<br/>Webové sokety |Omezené |350 na mobilní službu |Unlimited |
-| Offline synchronizace |Omezené |Zahrnuje |Zahrnuje |
-| Naplánované úlohy |Omezené |Zahrnuje |Zahrnuje |
-| Azure SQL Database (povinné) <br/>Pro další kapacitu se použijí standardní sazby. |zahrnuto 20 MB |zahrnuto 20 MB |zahrnuto 20 MB |
-| Kapacita procesoru |60 minut za den |Unlimited |Unlimited |
-| Přenos odchozích dat |165 MB za den (denní výměna) |Zahrnuje |Zahrnuje |
+| Volání rozhraní API |500,000 |1.5 million per unit |15 million per unit |
+| Active devices |500 |Bez omezení |Bez omezení |
+| Limit |Nevztahuje se |Up to 6 units |Neomezený počet jednotek |
+| Nabízená oznámení |Azure Notification Hubs Free tier included, up to 1 million pushes |Notification Hubs Basic tier included, up to 10 million pushes |Notification Hubs Standard tier included, up to 10 million pushes |
+| Real-time messaging/<br/>Webové sokety |Omezená |350 per mobile service |Bez omezení |
+| Offline synchronizace |Omezená |Zahrnuté |Zahrnuté |
+| Naplánované úlohy |Omezená |Zahrnuté |Zahrnuté |
+| Azure SQL Database (required) <br/>Standard rates apply for additional capacity |20 MB included |20 MB included |20 MB included |
+| Kapacita procesoru |60 minutes per day |Bez omezení |Bez omezení |
+| Přenos odchozích dat |165 MB per day (daily rollover) |Zahrnuté |Zahrnuté |
 
-Další informace o limitech a cenách najdete v tématu [ceny za Azure Mobile Services](https://azure.microsoft.com/pricing/details/mobile-services/). 
+For more information on limits and pricing, see [Azure Mobile Services pricing](https://azure.microsoft.com/pricing/details/mobile-services/). 
 

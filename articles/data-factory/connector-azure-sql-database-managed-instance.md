@@ -1,84 +1,84 @@
 ---
-title: Kopírování dat do a z Azure SQL Database spravované instance pomocí Azure Data Factory
-description: Přečtěte si, jak přesunout data do a z Azure SQL Database spravované instance pomocí Azure Data Factory.
+title: Copy data to and from Azure SQL Database Managed Instance
+description: Learn how to move data to and from Azure SQL Database Managed Instance by using Azure Data Factory.
 services: data-factory
-documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a70ecacdf10c985cabca8fa3ddf4314bf266afe
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 09/09/2019
+ms.openlocfilehash: 9eedd8c1ad740f7393da47eac7a20cb5b58ad8d3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075612"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218777"
 ---
-# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database spravované instance pomocí Azure Data Factory
+# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Copy data to and from Azure SQL Database Managed Instance by using Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data do a z Azure SQL Database spravované instance. Vytvoří se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
+This article outlines how to use the copy activity in Azure Data Factory to copy data to and from Azure SQL Database Managed Instance. It builds on the [Copy activity overview](copy-activity-overview.md) article that presents a general overview of the copy activity.
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Supported capabilities
 
-Tato Azure SQL Databasea spravovaná instance Connector se podporuje pro následující činnosti:
+This Azure SQL Database Managed Instance connector is supported for the following activities:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
-- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [GetMetadata activity](control-flow-get-metadata-activity.md)
 
-Data z Azure SQL Database spravované instance můžete kopírovat do libovolného podporovaného úložiště dat jímky. Data můžete také kopírovat z libovolného podporovaného zdrojového úložiště dat do spravované instance. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
+You can copy data from Azure SQL Database Managed Instance to any supported sink data store. You also can copy data from any supported source data store to the managed instance. For a list of data stores that are supported as sources and sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
 
-Konkrétně tato Azure SQL Database konektor spravované instance podporuje:
+Specifically, this Azure SQL Database Managed Instance connector supports:
 
-- Kopírování dat pomocí ověřování SQL a Azure Active Directory (Azure AD) ověřování tokenu aplikace pomocí instančního objektu nebo spravovaných identit pro prostředky Azure.
-- Jako zdroj načítání dat pomocí dotazu SQL nebo uložené procedury.
-- Jako jímky, připojení dat do cílové tabulky nebo vyvolání uložené procedury s vlastní logikou během kopírování.
-
->[!NOTE]
->Tento konektor teď nepodporuje Azure SQL Database Managed instance [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) . Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a SQL Server ovladač ODBC prostřednictvím prostředí Integration runtime v místním prostředí. Postupujte [podle pokynů ke](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) stažení ovladače ODBC a konfigurací připojovacích řetězců.
+- Copying data by using SQL authentication and Azure Active Directory (Azure AD) Application token authentication with a service principal or managed identities for Azure resources.
+- As a source, retrieving data by using a SQL query or a stored procedure.
+- As a sink, appending data to a destination table or invoking a stored procedure with custom logic during copy.
 
 >[!NOTE]
->Tento konektor aktuálně nepodporuje objekt služby a ověřování spravované identity. Chcete-li se vyhnout, vyberte konektor Azure SQL Database a ručně zadejte server vaší spravované instance.
+>Azure SQL Database Managed Instance [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) isn't supported by this connector now. To work around, you can use a [generic ODBC connector](connector-odbc.md) and a SQL Server ODBC driver via a self-hosted integration runtime. Follow [this guidance](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) with ODBC driver download and connection string configurations.
 
-## <a name="prerequisites"></a>Požadavky
+>[!NOTE]
+>Service principal and managed identity authentications currently aren't supported by this connector. To work around, choose an Azure SQL Database connector and manually specify the server of your managed instance.
 
-Pokud chcete získat přístup k [veřejnému koncovému bodu](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)spravované instance Azure SQL Database, můžete použít Azure Data Factory spravované prostředí Azure Integration runtime. Ujistěte se, že jste povolili veřejný koncový bod a zároveň povolili provoz veřejného koncového bodu ve skupině zabezpečení sítě, aby se Azure Data Factory mohl připojit k vaší databázi. Další informace najdete v [těchto pokynech](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete získat přístup k privátnímu koncovému bodu spravované instance Azure SQL Database, nastavte místní [prostředí Integration runtime](create-self-hosted-integration-runtime.md) , které má přístup k databázi. Pokud zřídíte místní prostředí Integration runtime ve stejné virtuální síti jako vaše spravovaná instance, ujistěte se, že je váš počítač Integration runtime v jiné podsíti než vaše spravovaná instance. Pokud zřídíte místní prostředí Integration runtime v jiné virtuální síti než vaše spravovaná instance, můžete k připojení k virtuální síti použít buď partnerský vztah virtuální sítě, nebo virtuální síť. Další informace najdete v tématu [připojení aplikace k Azure SQL Database Managed instance](../sql-database/sql-database-managed-instance-connect-app.md).
+To access the Azure SQL Database Managed Instance [public endpoint](../sql-database/sql-database-managed-instance-public-endpoint-securely.md), you can use an Azure Data Factory managed Azure integration runtime. Make sure that you enable the public endpoint and also allow public endpoint traffic on the network security group so that Azure Data Factory can connect to your database. For more information, see [this guidance](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
 
-## <a name="get-started"></a>Začínáme
+To access the Azure SQL Database Managed Instance private endpoint, set up a [self-hosted integration runtime](create-self-hosted-integration-runtime.md) that can access the database. If you provision the self-hosted integration runtime in the same virtual network as your managed instance, make sure that your integration runtime machine is in a different subnet than your managed instance. If you provision your self-hosted integration runtime in a different virtual network than your managed instance, you can use either a virtual network peering or a virtual network to virtual network connection. For more information, see [Connect your application to Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance-connect-app.md).
+
+## <a name="get-started"></a>Začít
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-V následujících částech najdete podrobné informace o vlastnostech, které slouží k definování Azure Data Factory entit specifických pro konektor Azure SQL Database Managed instance.
+The following sections provide details about properties that are used to define Azure Data Factory entities specific to the Azure SQL Database Managed Instance connector.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Linked service properties
 
-Pro propojenou službu Azure SQL Database spravované instance jsou podporovány následující vlastnosti:
+The following properties are supported for the Azure SQL Database Managed Instance linked service:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na **AzureSqlMI**. | Ano |
-| connectionString |Tato vlastnost určuje informace **připojovacího řetězce** potřebné pro připojení ke spravované instanci pomocí ověřování SQL. Další informace najdete v následujících příkladech. <br/>Výchozí port je 1433. Pokud používáte Azure SQL Database spravovanou instanci s veřejným koncovým bodem, explicitně zadejte port 3342.<br>Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
-| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD s instančním objektem |
-| tenant | Zadejte informace o tenantovi, jako je název domény nebo ID tenanta, pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
-| connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Pokud má vaše spravovaná instance veřejný koncový bod a umožňuje Azure Data Factory k němu přistupovat, můžete použít místní prostředí Integration runtime nebo prostředí Azure Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ano |
+| type | The type property must be set to **AzureSqlMI**. | Ano |
+| connectionString |This property specifies the **connectionString** information that's needed to connect to the managed instance by using SQL authentication. For more information, see the following examples. <br/>The default port is 1433. If you're using Azure SQL Database Managed Instance with a public endpoint, explicitly specify port 3342.<br>Mark this field as **SecureString** to store it securely in Azure Data Factory. You also can put a password in Azure Key Vault. If it's SQL authentication, pull the `password` configuration out of the connection string. For more information, see the JSON example following the table and [Store credentials in Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| servicePrincipalId | Specify the application's client ID. | Yes, when you use Azure AD authentication with a service principal |
+| servicePrincipalKey | Specify the application's key. Mark this field as **SecureString** to store it securely in Azure Data Factory or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Yes, when you use Azure AD authentication with a service principal |
+| tenant | Specify the tenant information, like the domain name or tenant ID, under which your application resides. Retrieve it by hovering the mouse in the upper-right corner of the Azure portal. | Yes, when you use Azure AD authentication with a service principal |
+| connectVia | This [integration runtime](concepts-integration-runtime.md) is used to connect to the data store. You can use a self-hosted integration runtime or an Azure integration runtime if your managed instance has a public endpoint and allows Azure Data Factory to access it. If not specified, the default Azure integration runtime is used. |Ano |
 
-Různými typy ověřování najdete v následujících částech na požadavky a ukázky JSON v uvedeném pořadí:
+For different authentication types, refer to the following sections on prerequisites and JSON samples, respectively:
 
-- [Ověřování SQL](#sql-authentication)
-- [Ověřování tokenu aplikací služby Azure AD: instanční objekt](#service-principal-authentication)
-- [Ověřování tokenu aplikací Azure AD: spravované identity pro prostředky Azure](#managed-identity)
+- [SQL authentication](#sql-authentication)
+- [Azure AD application token authentication: Service principal](#service-principal-authentication)
+- [Azure AD application token authentication: Managed identities for Azure resources](#managed-identity)
 
 ### <a name="sql-authentication"></a>Ověřování pomocí SQL
 
-**Příklad 1: použití ověřování SQL**
+**Example 1: use SQL authentication**
 
 ```json
 {
@@ -99,7 +99,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 }
 ```
 
-**Příklad 2: použití ověřování SQL s heslem v Azure Key Vault**
+**Example 2: use SQL authentication with a password in Azure Key Vault**
 
 ```json
 {
@@ -130,37 +130,37 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 
 ### <a name="service-principal-authentication"></a>Ověřování instančních objektů
 
-Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založené na instančním objektu, postupujte podle následujících kroků:
+To use a service principal-based Azure AD application token authentication, follow these steps:
 
-1. Postupujte podle kroků a [zřiďte správce Azure Active Directory pro vaši spravovanou instanci](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+1. Follow the steps to [Provision an Azure Active Directory administrator for your Managed Instance](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
-2. [Vytvořte aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) z Azure Portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojené služby:
+2. [Create an Azure Active Directory application](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) from the Azure portal. Make note of the application name and the following values that define the linked service:
 
     - ID aplikace
-    - Klíč aplikace
+    - Application key
     - ID tenanta
 
-3. [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin**. V **Hlavní** databázi spusťte následující příkaz T-SQL:
+3. [Create logins](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) for the Azure Data Factory managed identity. In SQL Server Management Studio (SSMS), connect to your Managed Instance using a SQL Server account that is a **sysadmin**. In **master** database, run the following T-SQL:
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-4. [Vytvořte uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) pro Azure Data Factory spravovanou identitu. Připojte se k databázi z nebo do které chcete kopírovat data, spusťte následující příkaz T-SQL: 
+4. [Create contained database users](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) for the Azure Data Factory managed identity. Connect to the database from or to which you want to copy data, run the following T-SQL: 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-5. Udělte Data Factory spravovaná identita potřebná k tomu, aby se běžně daly dělat pro uživatele SQL a jiné. Spusťte následující kód. Další možnosti najdete v [tomto dokumentu](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+5. Grant the Data Factory managed identity needed permissions as you normally do for SQL users and others. Run the following code. For more options, see [this document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
     ```
 
-6. Nakonfigurujte propojenou službu Azure SQL Database spravované instance v Azure Data Factory.
+6. Configure an Azure SQL Database Managed Instance linked service in Azure Data Factory.
 
-**Příklad: použití ověřování instančního objektu**
+**Example: use service principal authentication**
 
 ```json
 {
@@ -187,35 +187,35 @@ Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založ
 }
 ```
 
-### <a name="managed-identity"></a> Spravovaných identit pro ověřování prostředků Azure
+### <a name="managed-identity"></a> Managed identities for Azure resources authentication
 
-Datová továrna může být přidružená ke [spravované identitě pro prostředky Azure](data-factory-service-identity.md) , které představují konkrétní objekt pro vytváření dat. Tuto spravovanou identitu můžete použít pro Azure SQL Database ověřování spravované instance. Určená továrna má přístup k datům a jejich zkopírování z databáze nebo do databáze pomocí této identity.
+A data factory can be associated with a [managed identity for Azure resources](data-factory-service-identity.md) that represents the specific data factory. You can use this managed identity for Azure SQL Database Managed Instance authentication. The designated factory can access and copy data from or to your database by using this identity.
 
-Pokud chcete použít spravované ověřování identity, postupujte podle těchto kroků.
+To use managed identity authentication, follow these steps.
 
-1. Postupujte podle kroků a [zřiďte správce Azure Active Directory pro vaši spravovanou instanci](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+1. Follow the steps to [Provision an Azure Active Directory administrator for your Managed Instance](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
-2. [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin**. V **Hlavní** databázi spusťte následující příkaz T-SQL:
+2. [Create logins](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) for the Azure Data Factory managed identity. In SQL Server Management Studio (SSMS), connect to your Managed Instance using a SQL Server account that is a **sysadmin**. In **master** database, run the following T-SQL:
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. [Vytvořte uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) pro Azure Data Factory spravovanou identitu. Připojte se k databázi z nebo do které chcete kopírovat data, spusťte následující příkaz T-SQL: 
+3. [Create contained database users](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) for the Azure Data Factory managed identity. Connect to the database from or to which you want to copy data, run the following T-SQL: 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-4. Udělte Data Factory spravovaná identita potřebná k tomu, aby se běžně daly dělat pro uživatele SQL a jiné. Spusťte následující kód. Další možnosti najdete v [tomto dokumentu](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+4. Grant the Data Factory managed identity needed permissions as you normally do for SQL users and others. Run the following code. For more options, see [this document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
     ```
 
-5. Nakonfigurujte propojenou službu Azure SQL Database spravované instance v Azure Data Factory.
+5. Configure an Azure SQL Database Managed Instance linked service in Azure Data Factory.
 
-**Příklad: používá spravované ověřování identity.**
+**Example: uses managed identity authentication**
 
 ```json
 {
@@ -236,18 +236,18 @@ Pokud chcete použít spravované ověřování identity, postupujte podle těch
 }
 ```
 
-## <a name="dataset-properties"></a>Vlastnosti datové sady
+## <a name="dataset-properties"></a>Dataset properties
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro použití k definování datových sad, naleznete v článku datové sady. V této části najdete seznam vlastností podporovaných datovou sadou spravované instance Azure SQL Database.
+For a full list of sections and properties available for use to define datasets, see the datasets article. This section provides a list of properties supported by the Azure SQL Database Managed Instance dataset.
 
-Chcete-li kopírovat data do a z Azure SQL Database spravované instance, jsou podporovány následující vlastnosti:
+To copy data to and from Azure SQL Database Managed Instance, the following properties are supported:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na **AzureSqlMITable**. | Ano |
-| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| table | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
-| tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table`. | Ne pro zdroj, Ano pro jímku |
+| type | The type property of the dataset must be set to **AzureSqlMITable**. | Ano |
+| schema | Name of the schema. |No for source, Yes for sink  |
+| table | Name of the table/view. |No for source, Yes for sink  |
+| tableName | Name of the table/view with schema. This property is supported for backward compatibility. For new workload, use `schema` and `table`. | No for source, Yes for sink |
 
 **Příklad**
 
@@ -272,25 +272,25 @@ Chcete-li kopírovat data do a z Azure SQL Database spravované instance, jsou p
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro použití k definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem a jímkou spravované instance Azure SQL Database.
+For a full list of sections and properties available for use to define activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by the Azure SQL Database Managed Instance source and sink.
 
-### <a name="azure-sql-database-managed-instance-as-a-source"></a>Azure SQL Database spravovanou instanci jako zdroj
+### <a name="azure-sql-database-managed-instance-as-a-source"></a>Azure SQL Database Managed Instance as a source
 
-Chcete-li kopírovat data z Azure SQL Database spravované instance, jsou v části zdroje aktivity kopírování podporovány následující vlastnosti:
+To copy data from Azure SQL Database Managed Instance, the following properties are supported in the copy activity source section:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlMISource**. | Ano |
-| sqlReaderQuery |Tato vlastnost používá vlastní dotaz SQL ke čtení dat. Příklad: `select * from MyTable`. |Ne |
-| sqlReaderStoredProcedureName |Tato vlastnost je název uložené procedury, která čte data ze zdrojové tabulky. Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. |Ne |
-| storedProcedureParameters |Tyto parametry jsou pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název nebo hodnota. Názvy a písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
+| type | The type property of the copy activity source must be set to **SqlMISource**. | Ano |
+| sqlReaderQuery |This property uses the custom SQL query to read data. Příklad: `select * from MyTable`. |Ne |
+| sqlReaderStoredProcedureName |This property is the name of the stored procedure that reads data from the source table. The last SQL statement must be a SELECT statement in the stored procedure. |Ne |
+| storedProcedureParameters |These parameters are for the stored procedure.<br/>Allowed values are name or value pairs. The names and casing of the parameters must match the names and casing of the stored procedure parameters. |Ne |
 
 **Je třeba počítat s následujícím:**
 
-- Pokud je pro **SqlMISource**zadána možnost **sqlReaderQuery** , aktivita kopírování spustí tento dotaz proti zdroji spravované instance, aby získala data. Uloženou proceduru lze také určit zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** , pokud uložená procedura přijímá parametry.
-- Pokud nezadáte buď vlastnost **sqlReaderQuery** nebo **sqlReaderStoredProcedureName** , použijí se k sestavení dotazu sloupce definované v oddílu Structure pro datovou sadu JSON. Dotaz `select column1, column2 from mytable` běží na spravované instanci. Pokud definice datové sady nemá "strukturu", všechny sloupce jsou vybrány z tabulky.
+- If **sqlReaderQuery** is specified for **SqlMISource**, the copy activity runs this query against the managed instance source to get the data. You also can specify a stored procedure by specifying **sqlReaderStoredProcedureName** and **storedProcedureParameters** if the stored procedure takes parameters.
+- If you don't specify either the **sqlReaderQuery** or **sqlReaderStoredProcedureName** property, the columns defined in the "structure" section of the dataset JSON are used to construct a query. The query `select column1, column2 from mytable` runs against the managed instance. If the dataset definition doesn't have "structure," all columns are selected from the table.
 
-**Příklad: použití dotazu SQL**
+**Example: Use a SQL query**
 
 ```json
 "activities":[
@@ -322,7 +322,7 @@ Chcete-li kopírovat data z Azure SQL Database spravované instance, jsou v čá
 ]
 ```
 
-**Příklad: použití uložené procedury**
+**Example: Use a stored procedure**
 
 ```json
 "activities":[
@@ -358,7 +358,7 @@ Chcete-li kopírovat data z Azure SQL Database spravované instance, jsou v čá
 ]
 ```
 
-**Definice uložené procedury**
+**The stored procedure definition**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -377,26 +377,26 @@ END
 GO
 ```
 
-### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Azure SQL Database spravovanou instanci jako jímku
+### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Azure SQL Database Managed Instance as a sink
 
 > [!TIP]
-> Přečtěte si další informace o podporovaných chováních, konfiguracích a osvědčených postupech pro zápis z [osvědčeného postupu pro načítání dat do Azure SQL Database spravované instance](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
+> Learn more about the supported write behaviors, configurations, and best practices from [Best practice for loading data into Azure SQL Database Managed Instance](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
 
-Chcete-li kopírovat data do Azure SQL Database spravované instance, jsou v části jímka aktivity kopírování podporovány následující vlastnosti:
+To copy data to Azure SQL Database Managed Instance, the following properties are supported in the copy activity sink section:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlMISink**. | Ano |
-| writeBatchSize |Počet řádků, které mají být vloženy do tabulky SQL *na dávku*.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. Ve výchozím nastavení Azure Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku.  |Ne |
-| writeBatchTimeout |Tato vlastnost určuje dobu čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou pro časové rozpětí. Příkladem je "00:30:00", což je 30 minut. |Ne |
-| preCopyScript |Tato vlastnost určuje dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do spravované instance. Vyvolá se jenom jednou pro každé spuštění kopírování. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |Ne |
-| sqlWriterStoredProcedureName | Název uložené procedury definující, jak se mají zdrojová data použít v cílové tabulce. <br/>Tato uložená procedura je *vyvolána pro každou dávku*. U operací, které se spouští jenom jednou a které nemají nic dělat se zdrojovými daty, třeba odstranění nebo zkrácení, použijte vlastnost `preCopyScript`. | Ne |
-| storedProcedureTableTypeParameterName |Název parametru pro typ tabulky určený v uložené proceduře.  |Ne |
-| sqlWriterTableType |Název typu tabulky, který se má použít v uložené proceduře Aktivita kopírování zpřístupňuje data, která jsou k dispozici v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit data, která jsou kopírována se stávajícími daty. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. | Ne |
-| tableOption | Určuje, jestli se má automaticky vytvořit tabulka jímky, pokud na základě schématu zdroje neexistuje. Automatické vytváření tabulek není podporované, pokud jímka určuje uloženou proceduru nebo připravenou kopii nakonfigurovanou v aktivitě kopírování. Povolené hodnoty jsou: `none` (výchozí), `autoCreate`. |Ne |
+| type | The type property of the copy activity sink must be set to **SqlMISink**. | Ano |
+| writeBatchSize |Number of rows to insert into the SQL table *per batch*.<br/>Allowed values are integers for the number of rows. By default, Azure Data Factory dynamically determines the appropriate batch size based on the row size.  |Ne |
+| writeBatchTimeout |This property specifies the wait time for the batch insert operation to complete before it times out.<br/>Allowed values are for the timespan. An example is “00:30:00,” which is 30 minutes. |Ne |
+| preCopyScript |This property specifies a SQL query for the copy activity to run before writing data into the managed instance. It's invoked only once per copy run. You can use this property to clean up preloaded data. |Ne |
+| sqlWriterStoredProcedureName | The name of the stored procedure that defines how to apply source data into a target table. <br/>This stored procedure is *invoked per batch*. For operations that run only once and have nothing to do with source data, for example, delete or truncate, use the `preCopyScript` property. | Ne |
+| storedProcedureTableTypeParameterName |The parameter name of the table type specified in the stored procedure.  |Ne |
+| sqlWriterTableType |The table type name to be used in the stored procedure. The copy activity makes the data being moved available in a temp table with this table type. Stored procedure code can then merge the data that's being copied with existing data. |Ne |
+| storedProcedureParameters |Parameters for the stored procedure.<br/>Allowed values are name and value pairs. Names and casing of parameters must match the names and casing of the stored procedure parameters. | Ne |
+| tableOption | Specifies whether to automatically create the sink table if not exists based on the source schema. Auto table creation is not supported when sink specifies stored procedure or staged copy is configured in copy activity. Allowed values are: `none` (default), `autoCreate`. |Ne |
 
-**Příklad 1: připojení dat**
+**Example 1: Append data**
 
 ```json
 "activities":[
@@ -429,9 +429,9 @@ Chcete-li kopírovat data do Azure SQL Database spravované instance, jsou v č�
 ]
 ```
 
-**Příklad 2: vyvolání uložené procedury během kopírování**
+**Example 2: Invoke a stored procedure during copy**
 
-Další informace o [vyvolání uložené procedury z jímky SQL mi](#invoke-a-stored-procedure-from-a-sql-sink).
+Learn more details from [Invoke a stored procedure from a SQL MI sink](#invoke-a-stored-procedure-from-a-sql-sink).
 
 ```json
 "activities":[
@@ -469,33 +469,33 @@ Další informace o [vyvolání uložené procedury z jímky SQL mi](#invoke-a-s
 ]
 ```
 
-## <a name="best-practice-for-loading-data-into-azure-sql-database-managed-instance"></a>Osvědčené postupy načítání dat do spravované instance Azure SQL Database
+## <a name="best-practice-for-loading-data-into-azure-sql-database-managed-instance"></a>Best practice for loading data into Azure SQL Database Managed Instance
 
-Když kopírujete data do Azure SQL Database spravované instance, budete možná potřebovat jiné chování při zápisu:
+When you copy data into Azure SQL Database Managed Instance, you might require different write behavior:
 
-- [Připojit](#append-data): zdrojová data obsahují pouze nové záznamy.
-- [Upsert](#upsert-data): moje zdrojová data obsahují vložení i aktualizace.
-- [Přepsat](#overwrite-the-entire-table): Chci pokaždé, když chcete znovu načíst celou tabulku dimenzí.
-- [Zápis pomocí vlastní logiky](#write-data-with-custom-logic): Potřebuji dodatečné zpracování před konečným vložením do cílové tabulky. 
+- [Append](#append-data): My source data has only new records.
+- [Upsert](#upsert-data): My source data has both inserts and updates.
+- [Overwrite](#overwrite-the-entire-table): I want to reload the entire dimension table each time.
+- [Write with custom logic](#write-data-with-custom-logic): I need extra processing before the final insertion into the destination table. 
 
-V příslušných částech najdete informace o tom, jak nakonfigurovat v Azure Data Factory a osvědčených postupech.
+See the respective sections for how to configure in Azure Data Factory and best practices.
 
-### <a name="append-data"></a>Připojit data
+### <a name="append-data"></a>Append data
 
-Připojení dat je výchozím chováním tohoto Azure SQL Database konektoru jímky spravované instance. Azure Data Factory hromadné vložení do tabulky efektivně. Zdroj a jímku můžete v aktivitě kopírování nakonfigurovat odpovídajícím způsobem.
+Appending data is the default behavior of this Azure SQL Database Managed Instance sink connector. Azure Data Factory does a bulk insert to write to your table efficiently. You can configure the source and sink accordingly in the copy activity.
 
 ### <a name="upsert-data"></a>Upsert dat
 
-**Možnost 1:** Pokud máte ke kopírování velké množství dat, použijte následující postup k Upsert: 
+**Option 1:** When you have a large amount of data to copy, use the following approach to do an upsert: 
 
-- Nejdřív použijte [dočasnou tabulku](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) k hromadnému načtení všech záznamů pomocí aktivity kopírování. Vzhledem k tomu, že operace s dočasnými tabulkami nejsou protokolovány, můžete načíst miliony záznamů během několika sekund.
-- Spuštěním aktivity uložené procedury v Azure Data Factory použijte příkaz [Merge](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) nebo INSERT/Update. Použijte dočasnou tabulku jako zdroj k provedení všech aktualizací nebo vložení jako jedné transakce. Tímto způsobem se sníží počet operací Round Trip a log. Na konci aktivity uložená procedura můžete dočasnou tabulku zkrátit, aby byla připravená na další Upsert cyklus.
+- First, use a [temporary table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) to bulk load all records by using the copy activity. Because operations against temporary tables aren't logged, you can load millions of records in seconds.
+- Run a stored procedure activity in Azure Data Factory to apply a [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) or INSERT/UPDATE statement. Use the temp table as the source to perform all updates or inserts as a single transaction. In this way, the number of round trips and log operations is reduced. At the end of the stored procedure activity, the temp table can be truncated to be ready for the next upsert cycle.
 
-Jako příklad můžete v Azure Data Factory vytvořit kanál s **aktivitou kopírování** zřetězenou s **aktivitou uložené procedury**. Předchozí kopie dat ze zdrojového úložiště do dočasné tabulky, například **# #UpsertTempTable**, jako název tabulky v datové sadě. Potom druhá potom vyvolá uloženou proceduru ke sloučení zdrojových dat z dočasné tabulky do cílové tabulky a vyčištění dočasné tabulky.
+As an example, in Azure Data Factory, you can create a pipeline with a **Copy activity** chained with a **Stored Procedure activity**. The former copies data from your source store into a temporary table, for example, **##UpsertTempTable**, as the table name in the dataset. Then the latter invokes a stored procedure to merge source data from the temp table into the target table and clean up the temp table.
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-V databázi definujte uloženou proceduru pomocí logiky sloučení, podobně jako v následujícím příkladu, který ukazuje z předchozí aktivity uložené procedury. Předpokládejme, že cílem je **marketingová** tabulka se třemi sloupci: **ProfileID**, **State**a **Category**. Proveďte Upsert na základě sloupce **ProfileID** .
+In your database, define a stored procedure with MERGE logic, like the following example, which is pointed to from the previous stored procedure activity. Assume that the target is the **Marketing** table with three columns: **ProfileID**, **State**, and **Category**. Do the upsert based on the **ProfileID** column.
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -514,31 +514,31 @@ BEGIN
 END
 ```
 
-**Možnost 2:** Také se můžete rozhodnout [vyvolat uloženou proceduru v rámci aktivity kopírování](#invoke-a-stored-procedure-from-a-sql-sink). Tento přístup spustí každý řádek ve zdrojové tabulce namísto použití hromadného vkládání jako výchozího přístupu v aktivitě kopírování, což není vhodné pro velké Upsert.
+**Option 2:** You also can choose to [invoke a stored procedure within a copy activity](#invoke-a-stored-procedure-from-a-sql-sink). This approach runs each row in the source table instead of using bulk insert as the default approach in the copy activity, which isn't appropriate for large-scale upsert.
 
-### <a name="overwrite-the-entire-table"></a>Přepsat celou tabulku
+### <a name="overwrite-the-entire-table"></a>Overwrite the entire table
 
-Vlastnost **preCopyScript** můžete nakonfigurovat v jímky aktivity kopírování. V takovém případě se pro každou aktivitu kopírování, která běží, Azure Data Factory spustí skript jako první. Potom spustí kopii pro vložení dat. Chcete-li například přepsat celou tabulku nejnovějšími daty, zadejte skript, který nejprve odstraní všechny záznamy před hromadnou zátěží nových dat ze zdroje.
+You can configure the **preCopyScript** property in a copy activity sink. In this case, for each copy activity that runs, Azure Data Factory runs the script first. Then it runs the copy to insert the data. For example, to overwrite the entire table with the latest data, specify a script to first delete all the records before you bulk load the new data from the source.
 
-### <a name="write-data-with-custom-logic"></a>Zápis dat pomocí vlastní logiky
+### <a name="write-data-with-custom-logic"></a>Write data with custom logic
 
-Postup pro zápis dat pomocí vlastní logiky je podobný těm, které jsou popsané v části [Upsert data](#upsert-data) . Pokud potřebujete použít dodatečné zpracování před konečným vložením zdrojových dat do cílové tabulky, můžete pro velkou škálu provést jednu z následujících akcí: 
+The steps to write data with custom logic are similar to those described in the [Upsert data](#upsert-data) section. When you need to apply extra processing before the final insertion of source data into the destination table, for large scale, you can do one of two things: 
 
-- Načíst do dočasné tabulky a poté vyvolat uloženou proceduru.
-- Vyvolat uloženou proceduru během kopírování.
+- Load to a temporary table and then invoke a stored procedure.
+- Invoke a stored procedure during copy.
 
-## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a>Vyvolat uloženou proceduru z jímky SQL
+## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> Invoke a stored procedure from a SQL sink
 
-Když kopírujete data do Azure SQL Database spravované instance, můžete také nakonfigurovat a vyvolat uloženou proceduru zadanou uživatelem s dalšími parametry. Funkce uložené procedury využívá [parametry s hodnotou tabulky](https://msdn.microsoft.com/library/bb675163.aspx).
+When you copy data into Azure SQL Database Managed Instance, you also can configure and invoke a user-specified stored procedure with additional parameters. The stored procedure feature takes advantage of [table-valued parameters](https://msdn.microsoft.com/library/bb675163.aspx).
 
 > [!TIP]
-> Vyvolání uložené procedury zpracuje řádek data na řádku místo pomocí hromadné operace, kterou nedoporučujeme pro velké kopírování. Další informace z [osvědčeného postupu pro načítání dat do Azure SQL Database spravované instance](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
+> Invoking a stored procedure processes the data row by row instead of by using a bulk operation, which we don't recommend for large-scale copy. Learn more from [Best practice for loading data into Azure SQL Database Managed Instance](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
 
-Uloženou proceduru můžete použít, pokud předdefinované mechanismy kopírování neslouží k tomuto účelu. Příkladem je, že chcete použít dodatečné zpracování před konečným vložením zdrojových dat do cílové tabulky. Některé další příklady zpracování jsou, když chcete sloučit sloupce, vyhledat další hodnoty a vložit data do více než jedné tabulky.
+You can use a stored procedure when built-in copy mechanisms don't serve the purpose. An example is when you want to apply extra processing before the final insertion of source data into the destination table. Some extra processing examples are when you want to merge columns, look up additional values, and insert data into more than one table.
 
-Následující příklad ukazuje, jak použít uloženou proceduru k provedení Upsert do tabulky v databázi SQL Server. Předpokládejme, že vstupní data a **marketingová** tabulka jímky mají tři sloupce: **ProfileID**, **State**a **Category**. Proveďte Upsert na základě sloupce **ProfileID** a použijte ho jenom pro konkrétní kategorii s názvem "produkt".
+The following sample shows how to use a stored procedure to do an upsert into a table in the SQL Server database. Assume that the input data and the sink **Marketing** table each have three columns: **ProfileID**, **State**, and **Category**. Do the upsert based on the **ProfileID** column, and only apply it for a specific category called "ProductA".
 
-1. V databázi Definujte typ tabulky se stejným názvem jako **sqlWriterTableType**. Schéma typu tabulky je stejné jako schéma vrácené vašimi vstupními daty.
+1. In your database, define the table type with the same name as **sqlWriterTableType**. The schema of the table type is the same as the schema returned by your input data.
 
     ```sql
     CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -548,7 +548,7 @@ Následující příklad ukazuje, jak použít uloženou proceduru k provedení 
     )
     ```
 
-2. V databázi definujte uloženou proceduru se stejným názvem jako **sqlWriterStoredProcedureName**. Zpracovává vstupní data ze zadaného zdroje a sloučí je do výstupní tabulky. Název parametru typu tabulky v uložené proceduře je stejný jako **TableName** definovaný v datové sadě.
+2. In your database, define the stored procedure with the same name as **sqlWriterStoredProcedureName**. It handles input data from your specified source and merges into the output table. The parameter name of the table type in the stored procedure is the same as **tableName** defined in the dataset.
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -565,7 +565,7 @@ Následující příklad ukazuje, jak použít uloženou proceduru k provedení 
     END
     ```
 
-3. V Azure Data Factory v aktivitě kopírování definujte část **jímka SQL mi** , jak je znázorněno níže:
+3. In Azure Data Factory, define the **SQL MI sink** section in the copy activity as follows:
 
     ```json
     "sink": {
@@ -581,55 +581,55 @@ Následující příklad ukazuje, jak použít uloženou proceduru k provedení 
     }
     ```
 
-## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Mapování datových typů pro Azure SQL Database spravovanou instanci
+## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Data type mapping for Azure SQL Database Managed Instance
 
-Když se data zkopírují do Azure SQL Database spravované instance a z ní, použijí se následující mapování z datových typů Azure SQL Database spravované instance, aby se do nich Azure Data Factory dočasné datové typy. Informace o tom, jak aktivita kopírování mapuje ze zdrojového schématu a datového typu do jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
+When data is copied to and from Azure SQL Database Managed Instance, the following mappings are used from Azure SQL Database Managed Instance data types to Azure Data Factory interim data types. To learn how the copy activity maps from the source schema and data type to the sink, see [Schema and data type mappings](copy-activity-schema-and-type-mapping.md).
 
-| Azure SQL Database datový typ spravované instance | Azure Data Factory pomocný datový typ |
+| Azure SQL Database Managed Instance data type | Azure Data Factory interim data type |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
 | bit |Logická hodnota |
 | char |String, Char[] |
 | date |Datum a čas |
-| Datum a čas |Datum a čas |
+| Datetime |Datum a čas |
 | datetime2 |Datum a čas |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte[] |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
-| int |Datový typ Int32 |
+| int |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
 | numeric |Decimal |
 | nvarchar |String, Char[] |
-| real |Single |
+| real |Jednoduchá |
 | rowversion |Byte[] |
 | smalldatetime |Datum a čas |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Objekt |
 | text |String, Char[] |
-| time |Časový interval |
+| time |TimeSpan |
 | časové razítko |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |identifikátor GUID |
-| Varbinary |Byte[] |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 
 >[!NOTE]
-> Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně Azure Data Factory podporuje přesnost až 28. Pokud máte data, která vyžadují přesnost větší než 28, zvažte převod na řetězec v dotazu SQL.
+> For data types that map to the Decimal interim type, currently Azure Data Factory supports precision up to 28. If you have data that requires precision larger than 28, consider converting to a string in a SQL query.
 
-## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+## <a name="lookup-activity-properties"></a>Lookup activity properties
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
 
-## <a name="getmetadata-activity-properties"></a>Vlastnosti aktivity GetMetadata
+## <a name="getmetadata-activity-properties"></a>GetMetadata activity properties
 
-Pokud se chcete dozvědět víc o vlastnostech, podívejte se na [aktivitu GetMetadata](control-flow-get-metadata-activity.md) . 
+To learn details about the properties, check [GetMetadata activity](control-flow-get-metadata-activity.md) 
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md##supported-data-stores-and-formats).
+For a list of data stores supported as sources and sinks by the copy activity in Azure Data Factory, see [Supported data stores](copy-activity-overview.md##supported-data-stores-and-formats).

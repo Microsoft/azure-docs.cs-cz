@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s lidstvo | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a lidstvo.
+title: 'Tutorial: Azure Active Directory integration with Humanity | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Humanity.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,236 +16,236 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a144bec0a610a5a47e8a9bf3ff6a5de05b239ed
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fd7cfe93aa39982836944230f860c603c7117ceb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159975"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233435"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Kurz: Azure Active Directory integrace s lidstvo
+# <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Tutorial: Azure Active Directory integration with Humanity
 
-V tomto kurzu se dozvíte, jak integrovat lidstvo s Azure Active Directory (Azure AD).
-Integrace lidstvo s Azure AD poskytuje následující výhody:
+In this tutorial, you learn how to integrate Humanity with Azure Active Directory (Azure AD).
+Integrating Humanity with Azure AD provides you with the following benefits:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k lidstvo.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k lidstvo (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* You can control in Azure AD who has access to Humanity.
+* You can enable your users to be automatically signed-in to Humanity (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Ke konfiguraci integrace služby Azure AD s lidstvo potřebujete následující položky:
+To configure Azure AD integration with Humanity, you need the following items:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným lidstvom jednotným přihlašováním
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* Humanity single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Lidstvo podporuje jednotné přihlašování iniciované v **SP**
+* Humanity supports **SP** initiated SSO
 
-## <a name="adding-humanity-from-the-gallery"></a>Přidání lidstvo z Galerie
+## <a name="adding-humanity-from-the-gallery"></a>Adding Humanity from the gallery
 
-Pokud chcete nakonfigurovat integraci lidstvo do služby Azure AD, musíte přidat lidstvo z Galerie do svého seznamu spravovaných aplikací SaaS.
+To configure the integration of Humanity into Azure AD, you need to add Humanity from the gallery to your list of managed SaaS apps.
 
-**Pokud chcete přidat lidstvo z Galerie, proveďte následující kroky:**
+**To add Humanity from the gallery, perform the following steps:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **lidstvo**, vyberte **lidstvo** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. In the search box, type **Humanity**, select **Humanity** from result panel then click **Add** button to add the application.
 
-     ![Lidstvo v seznamu výsledků](common/search-new-app.png)
+     ![Humanity in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí lidstvo na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v lidstvo.
+In this section, you configure and test Azure AD single sign-on with Humanity based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Humanity needs to be established.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí lidstvo, musíte dokončit tyto stavební bloky:
+To configure and test Azure AD single sign-on with Humanity, you need to complete the following building blocks:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování lidstvo](#configure-humanity-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření lidstvo Test User](#create-humanity-test-user)** – pro Britta Simon v lidstvo, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure Humanity Single Sign-On](#configure-humanity-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create Humanity test user](#create-humanity-test-user)** - to have a counterpart of Britta Simon in Humanity that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí lidstvo, proveďte následující kroky:
+To configure Azure AD single sign-on with Humanity, perform the following steps:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **lidstvo** vyberte **jednotné přihlašování**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Humanity** application integration page, select **Single sign-on**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![Informace o jednotném přihlašování v doméně lidstvo a adresách URL](common/sp-identifier.png)
+    ![Humanity Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://company.humanity.com/includes/saml/`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://company.humanity.com/includes/saml/`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://company.humanity.com/app/`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://company.humanity.com/app/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta lidstvo](https://www.humanity.com/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Humanity Client support team](https://www.humanity.com/support/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+4. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
 
-    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-6. V části **Nastavení lidstvo** zkopírujte příslušné adresy URL podle vašich požadavků.
+6. On the **Set up Humanity** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    a. Login URL
 
-    b. Identifikátor Azure AD
+    b. Azure Ad Identifier
 
-    c. Odhlašovací adresa URL
+    c. Logout URL
 
-### <a name="configure-humanity-single-sign-on"></a>Konfigurace jednotného přihlašování lidstvo
+### <a name="configure-humanity-single-sign-on"></a>Configure Humanity Single Sign-On
 
-1. V jiném okně webového prohlížeče se přihlaste k webu **lidstvo** společnosti jako správce.
+1. In a different web browser window, log in to your **Humanity** company site as an administrator.
 
-2. V nabídce v horní části klikněte na **správce**.
+2. In the menu on the top, click **Admin**.
 
-    ![Správ](./media/shiftplanning-tutorial/iC786619.png "Správ")
-3. V části **integrace**klikněte na **jednotné přihlašování**.
+    ![Admin](./media/shiftplanning-tutorial/iC786619.png "Admin")
+3. Under **Integration**, click **Single Sign-On**.
 
-    ![Jednotné přihlašování](./media/shiftplanning-tutorial/iC786620.png "Jednotné přihlašování")
+    ![Single Sign-On](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
 
-4. V části **jednotné přihlašování** proveďte následující kroky:
+4. In the **Single Sign-On** section, perform the following steps:
 
-    ![Jednotné přihlašování](./media/shiftplanning-tutorial/iC786905.png "Jednotné přihlašování")
+    ![Single Sign-On](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
 
-    a. Vyberte **povoleno SAML**.
+    a. Select **SAML Enabled**.
 
-    b. Vyberte možnost **Povolení přihlášení k heslu**.
+    b. Select **Allow Password Login**.
 
-    c. Do textového pole **Adresa URL vystavitele SAML** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    c. In the **SAML Issuer URL** textbox, paste the **Login URL** value, which you have copied from Azure portal.
 
-    d. Do textového pole **Adresa URL vzdáleného odhlášení** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+    d. In the **Remote Logout URL** textbox, paste the **Logout URL** value, which you have copied from Azure portal.
 
-    e. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát X. 509** .
+    e. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **X.509 Certificate** textbox.
 
-    f. Klikněte na **Uložit nastavení**.
+    f. Click **Save Settings**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. Select **New user** at the top of the screen.
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+3. In the User properties, perform the following steps.
 
-    ![Uživatelský dialog](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k lidstvo.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Humanity.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **lidstvo**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Humanity**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **lidstvo**.
+2. In the applications list, select **Humanity**.
 
-    ![Odkaz lidstvo v seznamu aplikací](common/all-applications.png)
+    ![The Humanity link in the Applications list](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-humanity-test-user"></a>Vytvořit testovacího uživatele lidstvo
+### <a name="create-humanity-test-user"></a>Create Humanity test user
 
-Aby se uživatelé Azure AD mohli přihlásit k lidstvo, musí se zřídit v lidstvo. V případě lidstvo je zřizování ručním úkolem.
+In order to enable Azure AD users to log in to Humanity, they must be provisioned into Humanity. In the case of Humanity, provisioning is a manual task.
 
-**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
+**To provision a user account, perform the following steps:**
 
-1. Přihlaste se k webu **lidstvo** společnosti jako správce.
+1. Log in to your **Humanity** company site as an administrator.
 
-2. Klikněte na **správce**.
+2. Click **Admin**.
 
-    ![Správ](./media/shiftplanning-tutorial/iC786619.png "Správ")
+    ![Admin](./media/shiftplanning-tutorial/iC786619.png "Admin")
 
-3. Klikněte na tlačítko **zaměstnanci**.
+3. Click **Staff**.
 
-    ![Sazovat](./media/shiftplanning-tutorial/ic786623.png "Sazovat")
+    ![Staff](./media/shiftplanning-tutorial/ic786623.png "Staff")
 
-4. V části **Akce**klikněte na **Přidat zaměstnance**.
+4. Under **Actions**, click **Add Employees**.
 
-    ![Přidat zaměstnance](./media/shiftplanning-tutorial/iC786624.png "Přidat zaměstnance")
+    ![Add Employees](./media/shiftplanning-tutorial/iC786624.png "Add Employees")
 
-5. V části **Přidat zaměstnance** proveďte následující kroky:
+5. In the **Add Employees** section, perform the following steps:
 
-    ![Uložení zaměstnanců](./media/shiftplanning-tutorial/iC786625.png "Uložení zaměstnanců")
+    ![Save Employees](./media/shiftplanning-tutorial/iC786625.png "Save Employees")
 
-    a. Do příslušných textových polí zadejte **jméno**, **příjmení**a **e-mail** platného účtu AAD, který chcete zřídit.
+    a. Type the **First Name**, **Last Name**, and **Email** of a valid Azure AD account you want to provision into the related textboxes.
 
-    b. Klikněte na možnost **Uložit zaměstnance**.
+    b. Click **Save Employees**.
 
 > [!NOTE]
-> K zřizování uživatelských účtů AAD můžete použít jiné nástroje pro vytváření uživatelských účtů lidstvo nebo rozhraní API poskytovaná lidstvo.
+> You can use any other Humanity user account creation tools or APIs provided by Humanity to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Když na přístupovém panelu kliknete na dlaždici lidstvo, měli byste se automaticky přihlásit k lidstvo, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Humanity tile in the Access Panel, you should be automatically signed in to the Humanity for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
