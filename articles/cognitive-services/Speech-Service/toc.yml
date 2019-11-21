@@ -427,6 +427,33 @@
           href: 'https://aka.ms/csspeech/pythonref'
         - name: Poznámky k verzi sady Speech SDK
           href: releasenotes.md
+- name: Zařízení
+  exanded: false
+  items:
+    - name: Přehled
+      items:
+        - name: Sada Speech Devices SDK
+          href: speech-devices-sdk.md
+        - name: Získání sady Speech Devices SDK
+          href: get-speech-devices-sdk.md
+    - name: Hardware
+      items:
+        - name: Doporučení pro mikrofonní pole
+          href: speech-devices-sdk-microphone.md
+        - name: Sada Roobo v1
+          href: speech-devices-sdk-roobo-v1.md
+    - name: Šablony Rychlý start
+      items:
+        - name: Windows
+          href: speech-devices-sdk-windows-quickstart.md
+        - name: Linux
+          href: speech-devices-sdk-linux-quickstart.md
+        - name: Android
+          href: speech-devices-sdk-android-quickstart.md
+    - name: Zdroje a prostředky
+      items:
+        - name: Řešení potíže se sadou Speech Devices SDK
+          href: speech-devices-sdk-troubleshooting.md
 - name: Migrace
   exanded: false
   items:

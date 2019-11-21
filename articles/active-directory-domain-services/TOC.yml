@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: Vytvoření pokročilé spravované domény
       href: tutorial-create-instance-advanced.md
+    - name: Vytvoření vztahu důvěryhodnosti doménové struktury (Preview)
+      href: tutorial-create-forest-trust.md
 - name: Ukázky
   items:
     - name: Vytvoření spravované domény pomocí Azure PowerShellu
@@ -33,6 +35,12 @@
       href: administration-concepts.md
     - name: Obvyklé scénáře nasazení
       href: scenarios.md
+    - name: Doménové struktury a vztahy důvěryhodnosti
+      items:
+        - name: Lesy prostředků
+          href: concepts-resource-forest.md
+        - name: Vztahy důvěryhodnosti doménové struktury
+          href: concepts-forest-trust.md
     - name: Jak funguje synchronizace Azure AD DS
       href: synchronization.md
     - name: Jak funguje synchronizace hodnot hash hesel

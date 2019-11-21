@@ -1,5 +1,5 @@
 ---
-title: Použití spravované identity přiřazené uživatelem virtuálnímu počítači s Windows pro přístup k Azure Resource Manageru
+title: Tutorial`:` Use a managed identity to access Azure Resource Manager - Windows - Azure AD
 description: Tento kurz vás provede procesem použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 04/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6fc7e13cf5ea3991f81d53edcabe0980d799cb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0999492f0d9c7d28da3ac896792fb2d7b898fd18
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443496"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224218"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: Použít uživatelsky přiřazené Identity spravované na virtuálním počítači s Windows pro přístup k Azure Resource Manageru
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Tutorial: Use a user-assigned managed identity on a Windows VM to access Azure Resource Manager
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -39,7 +39,7 @@ Získáte informace o těchto tématech:
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -48,15 +48,15 @@ Získáte informace o těchto tématech:
 - [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
 
 - K provedení kroků v tomto kurzu potřebných k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](/azure/role-based-access-control/role-assignments-portal).
-- [Nainstalujte nejnovější verzi modulu Azure PowerShell](/powershell/azure/install-az-ps). 
+- [Install the latest version of the Azure PowerShell module](/powershell/azure/install-az-ps). 
 - Spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure.
-- Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
+- Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
 - Spuštěním rutiny `Install-Module -Name PowerShellGet -AllowPrerelease` získejte předběžnou verzi modulu `PowerShellGet` (po spuštění tohoto příkazu možná budete muset pomocí příkazu `Exit` ukončit aktuální relaci PowerShellu, aby se modul `Az.ManagedServiceIdentity` nainstaloval).
 - Spuštěním rutiny `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` nainstalujte předběžnou verzi modulu `Az.ManagedServiceIdentity`, který umožňuje provádět operace s identitou přiřazenou uživatelem v tomto článku.
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 
-Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Použití [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity), Azure vytvoří identitu ve vašem tenantovi Azure AD, jemuž lze přiřadit k jedné nebo více instancí služby Azure.
+Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Using the [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity),  Azure creates an identity in your Azure AD tenant that can be assigned to one or more Azure service instances.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -147,9 +147,9 @@ Odpověď bude obsahovat informace o konkrétní skupině prostředků podobně 
 {"id":"/subscriptions/<SUBSCRIPTIONID>/resourceGroups/myResourceGroupVM","name":"myResourceGroupVM","location":"eastus","properties":{"provisioningState":"Succeeded"}}
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvoření uživatelsky přiřazené identity a připojit ji na virtuální počítač Azure pro přístup k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru:
+In this tutorial, you learned how to create a user-assigned identity and attach it to an Azure Virtual Machine to access the Azure Resource Manager API.  Další informace o Azure Resource Manageru najdete tady:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

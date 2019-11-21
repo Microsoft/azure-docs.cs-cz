@@ -8,44 +8,44 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a7e9e36f75d0b0638fadbf92e713a924e816807d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: adc4a894f4617f681cefbc8049e453d004ce417e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012396"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260691"
 ---
-Přírůstkové snímky (Preview) jsou zálohy v čase pro spravované disky, které se při pořízení skládají pouze ze všech změn od posledního snímku. Při pokusu o stažení nebo jiné použití přírůstkového snímku se použije úplný virtuální pevný disk. Tato nová funkce pro snímky spravovaných disků může potenciálně dovolit, aby bylo cenově výhodnější, protože už nebudete muset ukládat celý disk s každým snímkem, pokud se nerozhodnete. Stejně jako běžné snímky lze přírůstkové snímky použít k vytvoření úplného spravovaného disku, nebo k vytvoření normálního snímku.
+Incremental snapshots (preview) are point in time backups for managed disks that, when taken, consist only of all the changes since the last snapshot. When you attempt to download or otherwise use an incremental snapshot, the full VHD is used. This new capability for managed disk snapshots can potentially allow them to be more cost effective, since you are no longer required to store the entire disk with each individual snapshot, unless you choose to. Just like regular snapshots, incremental snapshots can be used to create a full managed disk or, to make a regular snapshot.
 
-Existuje několik rozdílů mezi přírůstkovým snímkem a běžným snímkem. Přírůstkové snímky budou vždy používat standardní úložiště HDD bez ohledu na typ úložiště disku, zatímco běžné snímky mohou používat Premium SSD. Pokud používáte běžné snímky na Premium Storage k horizontálnímu navýšení kapacity nasazení virtuálních počítačů, doporučujeme používat vlastní image ve službě Storage úrovně Standard v [galerii sdílených imagí](../articles/virtual-machines/linux/shared-image-galleries.md). Pomůže vám dosáhnout větší obrovské škály s nižšími náklady. Navíc přírůstkové snímky potenciálně nabízejí lepší spolehlivost pomocí [redundantního úložiště](../articles/storage/common/storage-redundancy-zrs.md) (ZRS) zóny. Pokud je ve vybrané oblasti k dispozici ZRS, přírůstkový snímek bude automaticky používat ZRS. Pokud ZRS není v této oblasti k dispozici, bude mít tento snímek výchozí [místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md) (LRS). Toto chování můžete přepsat a vybrat ho ručně, ale nedoporučujeme to.
+There are a few differences between an incremental snapshot and a regular snapshot. Incremental snapshots will always use standard HDDs storage, irrespective of the storage type of the disk, whereas regular snapshots can use premium SSDs. If you are using regular snapshots on Premium Storage to scale up VM deployments, we recommend you use custom images on standard storage in the [Shared Image Gallery](../articles/virtual-machines/linux/shared-image-galleries.md). It will help you to achieve a more massive scale with lower cost. Additionally, incremental snapshots potentially offer better reliability with [zone-redundant storage](../articles/storage/common/storage-redundancy-zrs.md) (ZRS). If ZRS is available in the selected region, an incremental snapshot will use ZRS automatically. If ZRS is not available in the region, then the snapshot will default to [locally-redundant storage](../articles/storage/common/storage-redundancy-lrs.md) (LRS). You can override this behavior and select one manually but, we do not recommend that.
 
-Přírůstkové snímky také nabízí rozdílovou možnost, která je jednoznačně dostupná pro spravované disky. Umožňují získat změny dvou přírůstkových snímků stejných spravovaných disků na úrovni bloku. Tuto možnost můžete použít ke snížení objemu dat při kopírování snímků napříč oblastmi.
+Incremental snapshots also offer a differential capability, which is uniquely available to managed disks. They enable you to get the changes between two incremental snapshots of the same managed disks, down to the block level. You can use this capability to reduce your data footprint when copying snapshots across regions.
 
-Pokud jste se ještě nezaregistrovali ve verzi Preview a chcete začít používat přírůstkové snímky, pošlete nám e-mail na AzureDisks@microsoft.com, abyste získali přístup k verzi Public Preview.
+If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview.
 
 ## <a name="restrictions"></a>Omezení
 
-- Přírůstkové snímky jsou v tuto chvíli dostupné jenom v Středozápadní USA a Severní Evropa.
-- Přírůstkové snímky momentálně nelze vytvořit poté, co jste změnili velikost disku.
-- Přírůstkové snímky se aktuálně nedají přesunout mezi předplatnými.
-- V současné době můžete v daném okamžiku generovat pouze identifikátory URI SAS až na pět snímků konkrétní rodiny snímků.
-- Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku.
-- Až sedm přírůstkových snímků na disk lze vytvořit každých pět minut.
-- Pro jeden disk lze vytvořit celkem 200 přírůstkových snímků.
+- Incremental snapshots are currently only available in West Central US and North Europe.
+- Incremental snapshots currently cannot be created after you've changed the size of a disk.
+- Incremental snapshots currently cannot be moved between subscriptions.
+- You can currently only generate SAS URIs of up to five snapshots of a particular snapshot family at any given time.
+- You cannot create an incremental snapshot for a particular disk outside of that disk's subscription.
+- Up to seven incremental snapshots per disk can be created every five minutes.
+- A total of 200 incremental snapshots can be created for a single disk.
 
 ## <a name="powershell"></a>PowerShell
 
-K vytvoření přírůstkového snímku můžete použít Azure PowerShell. Budete potřebovat nejnovější verzi Azure PowerShell, následující příkaz si buď nainstaluje nebo aktualizuje stávající instalaci na nejnovější:
+You can use Azure PowerShell to create an incremental snapshot. You will need the latest version of Azure PowerShell, the following command will either install it or update your existing installation to latest:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Po nainstalování se přihlaste k relaci PowerShellu pomocí `az login`.
+Once that is installed, login to your PowerShell session with `az login`.
 
-Chcete-li vytvořit přírůstkový snímek s Azure PowerShell, nastavte konfiguraci pomocí parametru [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) s parametrem `-Incremental` a pak jej předejte jako proměnnou do [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) prostřednictvím parametru `-Snapshot`.
+To create an incremental snapshot with Azure PowerShell, set the configuration with [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) with the `-Incremental` parameter and then pass that as a variable to [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) through the `-Snapshot` parameter.
 
-Nahraďte `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`a `<yourDesiredSnapShotNameHere>` hodnotami a pak můžete použít následující skript k vytvoření přírůstkového snímku:
+Replace `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`, and `<yourDesiredSnapShotNameHere>` with your values, then you can use the following script to create an incremental snapshot:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -56,9 +56,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` a `SourceUniqueId` vlastností snímků. `SourceResourceId` je ID prostředku Azure Resource Manager nadřazeného disku. `SourceUniqueId` je hodnota zděděná z vlastnosti `UniqueId` disku. Pokud byste chtěli odstranit disk a pak vytvořit nový disk se stejným názvem, změní se hodnota vlastnosti `UniqueId`.
+You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
 
-Pomocí `SourceResourceId` a `SourceUniqueId` můžete vytvořit seznam všech snímků přidružených k určitému disku. Nahraďte `<yourResourceGroupNameHere>` hodnotou a pak můžete použít následující příklad k vypsání stávajících přírůstkových snímků:
+You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. Replace `<yourResourceGroupNameHere>` with your value and then you can use the following example to list your existing incremental snapshots:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -78,15 +78,15 @@ $incrementalSnapshots
 
 ## <a name="cli"></a>Rozhraní příkazového řádku
 
-Můžete vytvořit přírůstkový snímek pomocí Azure CLI, budete potřebovat nejnovější verzi rozhraní příkazového řádku Azure CLI. Následující příkaz buď nainstaluje nebo aktualizuje stávající instalaci na nejnovější verzi:
+You can create an incremental snapshot with the Azure CLI, you will need the latest version of Azure CLI. The following command will either install or update your existing installation to the latest version:
 
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
 
-K vytvoření přírůstkového snímku použijte příkaz [AZ Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) s parametrem `--incremental`.
+To create an incremental snapshot, use [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) with the `--incremental` parameter.
 
-Následující příklad vytvoří přírůstkový snímek, nahraďte `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`a `<exampleLocation>` vlastními hodnotami a pak spusťte příklad:
+The following example creates an incremental snapshot, replace `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`, and `<exampleLocation>` with your own values, then run the example:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -98,13 +98,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` a `SourceUniqueId` vlastností snímků. `SourceResourceId` je ID prostředku Azure Resource Manager nadřazeného disku. `SourceUniqueId` je hodnota zděděná z vlastnosti `UniqueId` disku. Pokud byste chtěli odstranit disk a pak vytvořit nový disk se stejným názvem, změní se hodnota vlastnosti `UniqueId`.
+You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
 
-Pomocí `SourceResourceId` a `SourceUniqueId` můžete vytvořit seznam všech snímků přidružených k určitému disku. Následující příklad zobrazí seznam všech přírůstkových snímků přidružených k určitému disku, ale vyžaduje instalaci.
+You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. The following example will list all incremental snapshots associated with a particular disk but, it requires some setup.
 
-V tomto příkladu se pro dotazování na data používá JQ. Chcete-li spustit příklad, musíte [nainstalovat JQ](https://stedolan.github.io/jq/download/).
+This example uses jq for querying the data. To run the example, you must [install jq](https://stedolan.github.io/jq/download/).
 
-Nahraďte `<yourResourceGroupNameHere>` a `<exampleDiskName>` hodnotami a pak můžete použít následující příklad k vypsání stávajících přírůstkových snímků, pokud jste také nainstalovali JQ:
+Replace `<yourResourceGroupNameHere>` and `<exampleDiskName>` with your values, then you can use the following example to list your existing incremental snapshots, as long as you've also installed jq:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -118,7 +118,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Můžete také použít šablony Azure Resource Manager k vytvoření přírůstkového snímku. Musíte se ujistit, že je apiVersion nastavené na **2019-03-01** a že vlastnost Increment je nastavená taky na true. Následující fragment kódu je příkladem vytvoření přírůstkového snímku pomocí šablon Správce prostředků:
+You can also use Azure Resource Manager templates to create an incremental snapshot. You'll need to make sure the apiVersion is set to **2019-03-01** and that the incremental property is also set to true. The following snippet is an example of how to create an incremental snapshot with Resource Manager templates:
 
 ```json
 {
@@ -154,4 +154,8 @@ Můžete také použít šablony Azure Resource Manager k vytvoření přírůst
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se ještě nezaregistrovali ve verzi Preview a chcete začít používat přírůstkové snímky, pošlete nám e-mail na AzureDisks@microsoft.com, abyste získali přístup k verzi Public Preview.
+1. If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview. 
+
+2. Explore the following samples for cross-region copy of incremental snapshots using differential capability   
+
+    - [Using Azure .Net SDKs](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)

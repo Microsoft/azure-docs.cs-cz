@@ -355,7 +355,7 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: Použití externích balíčků s Jupyterem s využitím magických příkazů v buňkách
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: Použití externích balíčků s Jupyterem s využitím akcí skriptů
+                - name: Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
                   href: ./spark/apache-spark-python-package-installation.md
                 - name: Použití poznámkových bloků Apache Zeppelin
                   href: ./spark/apache-spark-zeppelin-notebook.md

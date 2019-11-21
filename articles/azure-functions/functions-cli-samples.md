@@ -1,22 +1,17 @@
 ---
-title: Ukázky Azure CLI – Azure Functions | Microsoft Docs
+title: Ukázky Azure CLI – Azure Functions
 description: Ukázky Azure CLI – Azure Functions
-services: functions
-documentationcenter: functions
 author: syntaxc4
-manager: jeconnoc
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
-ms.service: azure-functions
 ms.topic: sample
 ms.date: 01/09/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a5cfa6e7a054003750536fbb5c8206ebabafe966
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: b875d2a478ccbd2fa99f43e584e02018866fc5cd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514437"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230919"
 ---
 # <a name="azure-cli-samples"></a>Ukázky Azure CLI
 
@@ -24,7 +19,7 @@ Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functio
 
 <a id="create"></a>
 
-| Vytvoření aplikace | Popis |
+| Create app | Popis |
 |---|---|
 | [Vytvoření aplikace funkcí pro provádění bez serveru](scripts/functions-cli-create-serverless.md) | Vytvoří aplikaci funkcí v plánu Consumption.  |
 | [Vytvoření aplikace funkcí v plánu služby App Service](scripts/functions-cli-create-app-service-plan.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
@@ -34,10 +29,10 @@ Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functio
 | [Vytvoření aplikace funkcí a připojení k účtu úložiště](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Vytvoří aplikaci funkcí a připojí ji k účtu úložiště. |
 | [Vytvoření aplikace funkcí a připojení ke službě Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Vytvoří aplikaci funkcí a připojí ji ke službě Azure Cosmos DB. |
 
-| Průběžné nasazování | Popis|
+| Nepřetržité nasazování | Popis|
 |---|---|
 | [Nasazení z GitHubu](scripts/functions-cli-create-function-app-github-continuous.md) | Vytvoří aplikaci funkcí, která se nasadí z úložiště GitHub.  |
-| [Nasazení z Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Vytvoření aplikace function app, který se nasazuje z úložiště Azure DevOps.  |
+| [Nasazení z Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Create a function app that deploys from an Azure DevOps repository.  |
 
 | Konfigurace aplikace | Popis |
 |---|---|

@@ -183,6 +183,8 @@
           href: storage-sync-files-troubleshoot.md
         - name: Řešení potíží s odstraňováním služby Azure Files
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
+        - name: Obnovení odstraněného účtu úložiště
+          href: storage-how-to-recover-deleted-account.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

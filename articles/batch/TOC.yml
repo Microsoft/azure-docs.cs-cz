@@ -211,10 +211,14 @@
           href: batch-task-fail-event.md
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/'
     - name: Komunita služby Batch
       href: 'https://github.com/Azure/Batch'
+    - name: Názory na službu Batch
+      href: 'https://feedback.azure.com/forums/269742-batch'
+    - name: Fórum služby Batch
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: Blog

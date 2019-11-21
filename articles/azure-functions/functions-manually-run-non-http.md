@@ -1,83 +1,79 @@
 ---
-title: Ruční spuštění Azure Functions bez aktivovanou protokolem HTTP
-description: Funkce Azure aktivované pomocí požadavku HTTP ke spuštění jiným protokolem než HTTP
-services: functions
-keywords: ''
+title: Manually run a non HTTP-triggered Azure Functions
+description: Use an HTTP request to run a non-HTTP triggered Azure Functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: cfebe5c783018cfab51f384cce578e43383c3905
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479831"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230474"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ruční spuštění funkce neaktivované protokolem HTTP
 
-Tento článek ukazuje, jak ručně spustit jiných funkci aktivovanou protokolem HTTP pomocí speciálně formátovaného požadavku HTTP.
+This article demonstrates how to manually run a non HTTP-triggered function via specially formatted HTTP request.
 
-V některých kontextech, budete muset spouštění "na vyžádání" funkce Azure, která je nepřímo aktivována.  Příklady nepřímé triggery [funkcí v plánu](./functions-create-scheduled-function.md) nebo funkce, které spouští jako výsledek [jiný prostředek akce](./functions-create-storage-blob-triggered-function.md). 
+In some contexts, you may need to run "on-demand" an Azure Function that is indirectly triggered.  Examples of indirect triggers include [functions on a schedule](./functions-create-scheduled-function.md) or functions that run as the result of [another resource's action](./functions-create-storage-blob-triggered-function.md). 
 
-[Postman](https://www.getpostman.com/) se používá v následujícím příkladu, ale můžete použít [cURL](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) nebo jakékoli jiné například nástroj pro odesílání požadavků HTTP.
+[Postman](https://www.getpostman.com/) is used in the following example, but you may use [cURL](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) or any other like tool to send HTTP requests.
 
-## <a name="define-the-request-location"></a>Definujte žádost o umístění
+## <a name="define-the-request-location"></a>Define the request location
 
-Ke spuštění jiných funkci aktivovanou protokolem HTTP, potřebujete způsob, jak odeslat žádost o Azure ke spuštění funkce. Adresa URL sloužící k této žádosti trvá konkrétní tvar.
+To run a non HTTP-triggered function, you need to a way to send a request to Azure to run the function. The URL used to make this request takes a specific form.
 
-![Definujte umístění žádosti: název a cestu ke složce + funkce hostování název](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
+![Define the request location: host name + folder path + function name](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Název hostitele:** Aplikace function app veřejné umístění, která se skládá z názvu aplikace function app, plus *azurewebsites.net* nebo vaší vlastní doméně.
-- **Cesta ke složce:** Pro přístup k jiné funkce aktivované protokolem HTTP pomocí požadavku HTTP, budete muset odeslat žádost ve složkách *správce/funkce*.
-- **Název funkce:** Název funkce, do které chcete spustit.
+- **Host name:** The function app's public location that is made up from the function app's name plus *azurewebsites.net* or your custom domain.
+- **Folder path:** To access non HTTP-triggered functions via an HTTP request, you have to send the request through the folders *admin/functions*.
+- **Function name:** The name of the function you want to run.
 
-Tato žádost o umístění v nástroji Postman spolu s hlavní klíč funkce v žádosti o Azure použijete ke spuštění funkce.
+You use this request location in Postman along with the function's master key in the request to Azure to run the function.
 
 > [!NOTE]
-> Při místním spuštění funkce hlavní klíč se nevyžaduje. Můžete se přímo [volat funkci](#call-the-function) vynechání `x-functions-key` záhlaví.
+> When running locally, the function's master key is not required. You can directly [call the function](#call-the-function) omitting the `x-functions-key` header.
 
-## <a name="get-the-functions-master-key"></a>Získat funkce hlavní klíč
+## <a name="get-the-functions-master-key"></a>Get the function's master key
 
-Přejděte do funkce na webu Azure Portal a klikněte na **spravovat** a najít **klíče hostitele** oddílu. Klikněte na **kopírování** tlačítko *_hlavní* řádku, který má hlavní klíč zkopírujte do schránky.
+Navigate to your function in the Azure portal and click on **Manage** and find the **Host Keys** section. Click on the **Copy** button in the *_master* row to copy the master key to your clipboard.
 
-![Zkopírujte hlavní klíč z obrazovky Management – funkce](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+![Copy master key from Function Management screen](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-Po zkopírování hlavního klíče, klikněte na název funkce se vraťte do okna soubor kódu. Potom kliknutím na **protokoly** kartu. Zobrazí zprávy z funkce tady protokolují, když ručně spustíte funkci z Postman.
+After copying the master key, click on the function name to return to the code file window. Next, click on the **Logs** tab. You'll see messages from the function logged here when you manually run the function from Postman.
 
 > [!CAUTION]  
-> Z důvodu vyšší úroveň oprávnění v aplikaci function app udělit pomocí hlavního klíče by neměly sdílet tento klíč s třetími stranami nebo distribuovat v aplikaci.
+> Due to the elevated permissions in your function app granted by the master key, you should not share this key with third parties or distribute it in an application.
 
-## <a name="call-the-function"></a>Volání funkce
+## <a name="call-the-function"></a>Call the function
 
-Otevřete nástroj Postman a postupujte podle těchto kroků:
+Open Postman and follow these steps:
 
-1. Zadejte **žádost o umístění v textovém poli Adresa URL**.
-2. Zkontrolujte metodu HTTP je nastavená na **příspěvek**.
-3. **Klikněte na tlačítko** na **záhlaví** kartu.
-4. Zadejte **x-functions-key** jako první **klíč** a vložte do hlavního klíče (ze schránky) **hodnotu** pole.
-5. Zadejte **Content-Type** jako druhý **klíč** a zadejte **application/json** jako **hodnota**.
+1. Enter the **request location in the URL text box**.
+2. Ensure the HTTP method is set to **POST**.
+3. **Click** on the **Headers** tab.
+4. Enter **x-functions-key** as the first **key** and paste the master key (from the clipboard) into the **value** box.
+5. Enter **Content-Type** as the second **key** and enter **application/json** as the **value**.
 
-    ![Nastavení nástroje postman záhlaví](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    ![Postman headers settings](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-6. **Klikněte na tlačítko** na **tělo** kartu.
-7. Zadejte **{"vstup": "test"}** jako text žádosti.
+6. **Click** on the **Body** tab.
+7. Enter **{ "input": "test" }** as the body for the request.
 
-    ![Nastavení nástroje postman textu](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    ![Postman body settings](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-8. Klikněte na tlačítko **odeslat**.
+8. Click **Send**.
 
-    ![Posílá se žádost o pomocí nástroje Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    ![Sending a request with Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
-Postman hlásí stav **202 přijato**.
+Postman then reports a status of **202 Accepted**.
 
-Pak se vraťte do funkce na webu Azure Portal. Vyhledejte *protokoly* okno a uvidíte zprávy přicházející z ručního volání funkce.
+Next, return to your function in the Azure portal. Locate the *Logs* window and you'll see messages coming from the manual call to the function.
 
-![Funkce protokolu způsobují to ruční zavolání metody](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+![Function log results from manual call](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Strategie pro testování kódu ve službě Azure Functions](./functions-test-a-function.md)
-- [Funkce Azure Event Grid aktivovat místní ladění](./functions-debug-event-grid-trigger-local.md)
+- [Strategies for testing your code in Azure Functions](./functions-test-a-function.md)
+- [Azure Function Event Grid Trigger Local Debugging](./functions-debug-event-grid-trigger-local.md)

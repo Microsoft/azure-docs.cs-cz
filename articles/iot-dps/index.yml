@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentace ke službě Azure IoT Hub Device Provisioning
 metadata:
-  title: 'Dokumentace ke službě Azure IoT Hub Device Provisioning – kurzy, reference k rozhraní API'
+  title: Dokumentace ke službě Azure IoT Hub Device Provisioning
   description: 'Azure IoT Hub Device Provisioning Service – kurzy, rychlá zprovoznění, postupy a reference k rozhraní API'
   author: nberdy
   ms.service: iot-dps
@@ -11,7 +11,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: nberdy
 abstract:
-  description: 'Služba IoT Hub Device Provisioning je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném IoT Hubu, které nevyžaduje zásah člověka. Zákazníci tak mohou bezpečným a škálovatelným způsobem zřizovat miliony zařízení. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte zřizovat zařízení v IoT Hubu.'
+  description: 'Služba IoT Hub Device Provisioning (DPS) je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném IoT Hubu, které nevyžaduje zásah člověka. Zákazníci tak mohou bezpečným a škálovatelným způsobem zřizovat miliony zařízení. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte zřizovat zařízení v IoT Hubu.'
 sections:
   - title: Zprovoznění během 5 minut
     items:

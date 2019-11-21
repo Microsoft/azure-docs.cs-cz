@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Boomi | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Boomi.
+title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with Boomi | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Boomi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,193 +16,193 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1044a78d9bf1b52a7b0dd9e47d7db6d98b45299c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 2469745edb5b8b3696478603cfe874bcabc8c1ff
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081963"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231959"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Boomi
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with Boomi
 
-V tomto kurzu se dozvíte, jak integrovat Boomi s Azure Active Directory (Azure AD). Když integrujete Boomi s Azure AD, můžete:
+In this tutorial, you'll learn how to integrate Boomi with Azure Active Directory (Azure AD). When you integrate Boomi with Azure AD, you can:
 
-* Řízení ve službě Azure AD, která má přístup k Boomi.
-* Umožněte, aby se vaši uživatelé automaticky přihlásili k Boomi svým účtům Azure AD.
-* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+* Control in Azure AD who has access to Boomi.
+* Enable your users to be automatically signed-in to Boomi with their Azure AD accounts.
+* Manage your accounts in one central location - the Azure portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Chcete-li začít, potřebujete následující položky:
+To get started, you need the following items:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Boomi odběr s povoleným jednotným přihlašováním (SSO).
+* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
+* Boomi single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+In this tutorial, you configure and test Azure AD SSO in a test environment.
 
-* Boomi podporuje jednotné přihlašování **IDP** .
+* Boomi supports **IDP** initiated SSO
 
-## <a name="adding-boomi-from-the-gallery"></a>Přidání Boomi z Galerie
+## <a name="adding-boomi-from-the-gallery"></a>Adding Boomi from the gallery
 
-Pokud chcete nakonfigurovat integraci Boomi do služby Azure AD, musíte přidat Boomi z Galerie do svého seznamu spravovaných aplikací SaaS.
+To configure the integration of Boomi into Azure AD, you need to add Boomi from the gallery to your list of managed SaaS apps.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Boomi** .
-1. Na panelu výsledků vyberte **Boomi** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. On the left navigation pane, select the **Azure Active Directory** service.
+1. Navigate to **Enterprise Applications** and then select **All Applications**.
+1. To add new application, select **New application**.
+1. In the **Add from the gallery** section, type **Boomi** in the search box.
+1. Select **Boomi** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-boomi"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Boomi
+## <a name="configure-and-test-azure-ad-single-sign-on-for-boomi"></a>Configure and test Azure AD single sign-on for Boomi
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Boomi pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Boomi.
+Configure and test Azure AD SSO with Boomi using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Boomi.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Boomi, dokončete následující stavební bloky:
+To configure and test Azure AD SSO with Boomi, complete the following building blocks:
 
-1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Nakonfigurujte BOOMI SSO](#configure-boomi-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    * **[Vytvořte Boomi Test User](#create-boomi-test-user)** -to, abyste měli protějšek B. Simon v Boomi, která je propojená s reprezentací uživatele v Azure AD.
-1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
+    * **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
+    * **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
+1. **[Configure Boomi SSO](#configure-boomi-sso)** - to configure the single sign-on settings on application side.
+    * **[Create Boomi test user](#create-boomi-test-user)** - to have a counterpart of B.Simon in Boomi that is linked to the Azure AD representation of user.
+1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
 
-Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
+Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Boomi** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. In the [Azure portal](https://portal.azure.com/), on the **Boomi** application integration page, find the **Manage** section and select **single sign-on**.
+1. On the **Select a single sign-on method** page, select **SAML**.
+1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
-   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
+1. On the **Set up single sign-on with SAML** page, enter the values for the following fields:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL: `https://platform.boomi.com/`
+    a. In the **Identifier** text box, type a URL: `https://platform.boomi.com/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    b. In the **Reply URL** text box, type a URL using the following pattern: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
 
     > [!NOTE]
-    > Hodnota adresy URL odpovědi není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta Boomi](https://boomi.com/company/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > The Reply URL value is not real. Update the value with the actual Reply URL. Contact [Boomi Client support team](https://boomi.com/company/contact/) to get this value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-1. Boomi aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+1. Boomi application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. The following screenshot shows the list of default attributes.
 
     ![image](common/default-attributes.png)
 
-1. Kromě toho očekává aplikace Boomi několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+1. In addition to above, Boomi application expects few more attributes to be passed back in SAML response which are shown below. These attributes are also pre populated but you can review them as per your requirements.
 
-    | Název |  Zdrojový atribut|
+    | Name (Název) |  Source Attribute|
     | ---------------|  --------- |
     | FEDERATION_ID | user.mail |
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. On the **Set up single sign-on with SAML** page, in the **SAML Signing Certificate** section,  find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-1. V části **Nastavení Boomi** zkopírujte na základě vašeho požadavku příslušné adresy URL.
+1. On the **Set up Boomi** section, copy the appropriate URL(s) based on your requirement.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. Ve vlastnostech **uživatele** proveďte následující kroky:
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Select **New user** at the top of the screen.
+1. In the **User** properties, follow these steps:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. In the **User name** field, enter the username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Boomi.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Boomi.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **Boomi**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **Boomi**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![The "Users and groups" link](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. In the **Add Assignment** dialog, click the **Assign** button.
 
-## <a name="configure-boomi-sso"></a>Konfigurace jednotného přihlašování Boomi
+## <a name="configure-boomi-sso"></a>Configure Boomi SSO
 
-1. V jiném okně webového prohlížeče se přihlaste k webu Boomi společnosti jako správce.
+1. In a different web browser window, sign in to your Boomi company site as an administrator.
 
-1. Přejděte na **název společnosti** a přejděte na **Nastavení**.
+1. Navigate to **Company Name** and go to **Set up**.
 
-1. Klikněte na kartu **Možnosti jednotného přihlašování** a proveďte následující kroky.
+1. Click the **SSO Options** tab and perform below steps.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/boomi-tutorial/tutorial_boomi_11.png)
+    ![Configure Single Sign-On On App Side](./media/boomi-tutorial/tutorial_boomi_11.png)
 
-    a. Zaškrtněte políčko **Povolit jednotné přihlašování SAML** .
+    a. Check **Enable SAML Single Sign-On** checkbox.
 
-    b. Kliknutím na **importovat** nahrajte stažený certifikát z Azure AD do **certifikátu poskytovatele identity**.
+    b. Click **Import** to upload the downloaded certificate from Azure AD to **Identity Provider Certificate**.
 
-    c. V textovém poli **Adresa URL pro přihlášení zprostředkovatele identity** zadejte hodnotu **přihlašovací adresa URL** z okna konfigurace aplikace služby Azure AD.
+    c. In the **Identity Provider Login URL** textbox, put the value of **Login URL** from Azure AD application configuration window.
 
-    d. Jako **umístění ID federace**vyberte **id federace v FEDERATION_ID** přepínací tlačítko elementu atributu.
+    d. As **Federation Id Location**, select **Federation Id is in FEDERATION_ID Attribute element** radio button.
 
-    e. Klikněte na tlačítko **Uložit** tlačítko.
+    e. Click **Save** button.
 
-### <a name="create-boomi-test-user"></a>Vytvořit testovacího uživatele Boomi
+### <a name="create-boomi-test-user"></a>Create Boomi test user
 
-Aby se uživatelé Azure AD mohli přihlašovat k Boomi, musí se zřídit v Boomi. V případě Boomi je zřizování ručním úkolem.
+In order to enable Azure AD users to sign in to Boomi, they must be provisioned into Boomi. In the case of Boomi, provisioning is a manual task.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Chcete-li zřídit uživatelský účet, proveďte následující kroky:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>To provision a user account, perform the following steps:
 
-1. Přihlaste se k webu Boomi společnosti jako správce.
+1. Sign in to your Boomi company site as an administrator.
 
-1. Po přihlášení přejděte na **Správa uživatelů** a přejděte na **Uživatelé**.
+1. After logging in, navigate to **User Management** and go to **Users**.
 
     ![Uživatelé](./media/boomi-tutorial/tutorial_boomi_001.png "Uživatelé")
 
-1. Klikněte na ikonu **+** a otevře se dialogové okno **Přidat/udržovat role uživatele** .
+1. Click **+**  icon and the **Add/Maintain User Roles** dialog opens.
 
     ![Uživatelé](./media/boomi-tutorial/tutorial_boomi_002.png "Uživatelé")
 
     ![Uživatelé](./media/boomi-tutorial/tutorial_boomi_003.png "Uživatelé")
 
-    a. Do textového pole **e-mailová adresa uživatele** zadejte e-mailové adresy uživatele, jako B.Simon@contoso.com.
+    a. In the **User e-mail address** textbox, type the email of user like B.Simon@contoso.com.
 
-    b. Do textového pole **název** zadejte jméno uživatele jako B.
+    b. In the **First name** textbox, type the First name of user like B.
 
-    c. Do textového pole **příjmení** zadejte jméno uživatele jako Simon.
+    c. In the **Last name** textbox, type the Last name of user like Simon.
 
-    d. Zadejte **ID federace**uživatele. Každý uživatel musí mít ID federace, které jedinečně identifikuje uživatele v rámci účtu.
+    d. Enter the user's **Federation ID**. Each user must have a Federation ID that uniquely identifies the user within the account.
 
-    e. Přiřaďte uživateli **standardní roli uživatele** . Nepřiřazujte roli správce, protože by jim poskytoval normální přístup do atmosféry i přístup s jednotným přihlašováním.
+    e. Assign the **Standard User** role to the user. Do not assign the Administrator role because that would give them normal Atmosphere access as well as single sign-on access.
 
     f. Klikněte na **OK**.
 
     > [!NOTE]
-    > Uživatel neobdrží uvítací oznamovací e-mail obsahující heslo, které se dá použít k přihlášení k účtu AtomSphere, protože jeho heslo je spravované prostřednictvím poskytovatele identity. K zřizování uživatelských účtů AAD můžete použít jiné nástroje pro vytváření uživatelských účtů Boomi nebo rozhraní API poskytovaná Boomi.
+    > The user will not receive a welcome notification email containing a password that can be used to log in to the AtomSphere account because their password is managed through the identity provider. You may use any other Boomi user account creation tools or APIs provided by Boomi to provision Azure AD user accounts.
 
 ## <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Když na přístupovém panelu kliknete na dlaždici Boomi, měli byste se automaticky přihlásit k Boomi, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Boomi tile in the Access Panel, you should be automatically signed in to the Boomi for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Vyzkoušejte si Boomi s Azure AD](https://aad.portal.azure.com/)
+- [Try Boomi with Azure AD](https://aad.portal.azure.com/)

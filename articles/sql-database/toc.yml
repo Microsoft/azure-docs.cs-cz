@@ -112,14 +112,6 @@
               items:
                 - name: Začínáme s auditováním SQL Database
                   href: sql-database-auditing.md
-        - name: Zabezpečení sítě
-          items:
-            - name: Koncové body virtuální sítě
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Koncové body virtuální sítě – PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: Privátní propojení
-              href: sql-database-private-endpoint-overview.md
         - name: Správa zabezpečení
           items:
             - name: Pokročilé zabezpečení dat
@@ -136,14 +128,22 @@
               href: sql-database-feature-restrictions.md
         - name: Zabezpečení jednoúčelové databáze
           items:
+            - name: Řízení přístupu k síti
+              href: sql-database-networkaccess-overview.md
+            - name: Brána firewall založená na protokolu IP
+              href: sql-database-firewall-configure.md
+            - name: Pravidla brány firewall virtuální sítě
+              items:
+                - name: Koncové body virtuální sítě
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: Koncové body virtuální sítě – PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Privátní propojení
+              href: sql-database-private-endpoint-overview.md
             - name: Formát protokolu auditu
               href: sql-database-audit-log-format.md
             - name: Podmíněný přístup
               href: sql-database-conditional-access.md
-            - name: Pravidla firewallu protokolu IP na úrovni serveru
-              items:
-                - name: Vytvoření a správa
-                  href: sql-database-firewall-configure.md
         - name: Zabezpečení spravované instance
           items:
             - name: Zabezpečení veřejných koncových bodů
