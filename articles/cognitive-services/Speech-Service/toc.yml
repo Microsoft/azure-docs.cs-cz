@@ -468,6 +468,8 @@
   items:
     - name: Podpora
       href: support.md
+    - name: Oblasti
+      href: regions.md
     - name: Ceny a omezení
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Dodržování předpisů

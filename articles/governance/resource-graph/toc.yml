@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Přehled služby Azure Resource Graph
+    - name: Co je Azure Resource Graph?
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
 - name: Šablony Rychlý start
