@@ -114,6 +114,8 @@
           href: serial-console-grub-single-user-mode.md
         - name: Sériová konzola – NMI/SysRq
           href: serial-console-nmi-sysrq.md
+        - name: Aktivní konfigurace grubu sériové konzoly
+          href: serial-console-grub-proactive-configuration.md
     - name: Sériová konzola pro Windows
       href: serial-console-windows.md
       items:
@@ -125,8 +127,6 @@
       href: serial-console-power-options.md
     - name: Běžné chyby sériové konzoly
       href: serial-console-errors.md
-    - name: Aktivní konfigurace grubu sériové konzoly
-      href: serial-console-grub-proactive-configuration.md
 - name: Chyby při odstraňování prostředků úložiště
   href: storage-resource-deletion-errors.md
 - name: Chyby při odstraňování klasických prostředků úložiště
