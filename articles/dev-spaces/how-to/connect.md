@@ -1,22 +1,18 @@
 ---
-title: " Připojení vývojového počítače k AKS clusteru"
-titleSuffix: Azure Dev Spaces
+title: Připojení počítače pro vývoj ke clusteru AKS
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Zjistěte, jak připojit vývojový počítač k AKS clusteru pomocí Azure Dev Spaces
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1b65721b67ff63525adfe5d2061f22f359c02bde
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888913"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280122"
 ---
-# <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Připojení vývojového počítače ke clusteru AKS (Preview)
+# <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Připojení počítače pro vývoj ke clusteru AKS (Preview)
 
 Azure Dev Spaces umožňuje spouštět a ladit kód s kontejnerem ve vývojovém počítači nebo bez něj, a to i nadále připojen ke clusteru Kubernetes se zbytkem vaší aplikace nebo služeb. Připojení vývojového počítače k vašemu clusteru vám pomůže rychle vyvíjet aplikace a provádět komplexní testování bez nutnosti vytvářet žádné Kubernetes nebo konfiguraci Docker nebo konfigurace. Můžete se taky připojit ke clusteru AKS, aniž by to ovlivnilo jiné úlohy nebo uživatele, kteří můžou používat stejný cluster.
 
