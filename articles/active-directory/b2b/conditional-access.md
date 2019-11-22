@@ -1,5 +1,5 @@
 ---
-title: Podmíněný přístup pro uživatele spolupráce B2B – Azure Active Directory | Microsoft Docs
+title: Podmíněný přístup pro uživatele spolupráce B2B – Azure AD
 description: Azure Active Directory spolupráce B2B podporuje vícefaktorové ověřování (MFA) pro selektivní přístup k podnikovým aplikacím.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357116"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272998"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
@@ -46,7 +46,7 @@ Podívejte se na následující animaci, abyste viděli prostředí pro uplatně
 ### <a name="mfa-reset-for-b2b-collaboration-users"></a>Resetování MFA pro uživatele spolupráce B2B
 Správce v současné době může vyžadovat, aby se uživatelé spolupráce B2B znovu probrali pomocí následujících rutin PowerShellu:
 
-1. Připojení ke službě Azure AD
+1. Připojení k Azure AD
 
    ```
    $cred = Get-Credential
@@ -75,9 +75,9 @@ V aktuální verzi je MFA vždy v architektuře prostředků, z důvodu předví
 
 Pokud má společnost Contoso povolené zásady MFA pro app1, ale ne app2, pak se v případě, že se podíváme na deklaracích identity MFA společnosti Contoso v tokenu, se může zobrazit následující problém:
 
-* Den 1: Uživatel má v contoso přístup MFA a přistupuje k app1, ve společnosti Fabrikam se nezobrazí žádná další výzva MFA.
+* Den 1: uživatel má v contoso přístup MFA a přistupuje k app1, ve společnosti Fabrikam se nezobrazuje žádná další výzva MFA.
 
-* Den 2: Uživatel získal přístup k aplikaci 2 ve společnosti Contoso, takže když se přistupují k společnosti Fabrikam, musí se tam zaregistrovat pro MFA.
+* Den 2: uživatel získal přístup k aplikaci 2 ve společnosti Contoso, takže když teď přistupuje k společnosti Fabrikam, musí se tam zaregistrovat pro MFA.
 
 Tento proces může být matoucí a může vést k poklesu dokončení přihlášení.
 
@@ -105,7 +105,7 @@ Zásady podmíněného přístupu na základě umístění je možné vyhovět p
 
 V současné době nelze zásady přihlašování založené na rizicích použít na uživatele B2B, protože hodnocení rizika se provádí v domácí organizaci uživatele B2B.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si následující články o spolupráci Azure AD B2B:
 

@@ -1,5 +1,5 @@
 ---
-title: Spuštění dávkového odvozování pro velké objemy dat
+title: Spuštění dávkového předpovědiu pro velké objemy dat
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak získat asynchronně odvozené informace o velkých objemech dat pomocí dávkového odvozování v Azure Machine Learning. Odvození dávky poskytuje možnosti paralelního zpracování vycházející z pole a optimalizuje odvozenou a nezapomenutou odvozování pro případy využití velkých objemů dat.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929562"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276732"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ V tomto postupu se naučíte následující úlohy:
 
 * Informace o [tom, jak](how-to-configure-environment.md) spravovat vlastní prostředí a závislosti, najdete v tématu Průvodce konfigurací vlastního prostředí. Pokud chcete stáhnout potřebné závislosti, spusťte `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` ve vašem prostředí.
 
-## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků strojového učení
+## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků machine learning
 
 Následující akce nastaví prostředky, které potřebujete ke spuštění kanálu odvození dávky:
 
@@ -292,7 +292,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>Vytvoření kroku kanálu
+### <a name="create-the-pipeline-step"></a>Vytvoření kanálu krok
 
 Vytvořte krok kanálu pomocí skriptu, konfigurace prostředí a parametrů. Určete výpočetní cíl, který jste už ke svému pracovnímu prostoru připojili jako cíl provádění skriptu. Pomocí `ParallelRunStep` vytvořit krok kanálu odvození dávky, který převezme všechny následující parametry:
 - `name`: název kroku s následujícími omezeními pojmenovávání: jedinečné, 3-32 znaky a Regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.

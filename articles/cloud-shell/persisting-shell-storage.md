@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: ee68400d000ca823816c8efc6bcbc224d1388832
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082983"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284815"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachovat soubory v Azure Cloud Shell
 Cloud Shell využívá službu Azure File Storage k uchování souborů napříč relacemi. Při počátečním spuštění vás Cloud Shell vyzve k přidružení nové nebo existující sdílené složky, která bude uchovávat soubory napříč relacemi.
@@ -38,14 +38,11 @@ Když použijete základní nastavení a vyberete jenom předplatné, Cloud Shel
 
 Sdílená složka se připojuje jako `clouddrive` ve vašem adresáři `$Home`. Jedná se o jednorázovou akci a sdílená složka se v následných relacích automaticky připojí. 
 
-> [!NOTE]
-> V případě zabezpečení by měl každý uživatel zřídit vlastní účet úložiště.  Pro řízení přístupu na základě role (RBAC) musí mít uživatelé oprávnění Přispěvatel nebo vyšší na úrovni účtu úložiště.
-
 Sdílená složka také obsahuje 5 GB image, která se vytvoří pro vás, která automaticky uchovává data v adresáři `$Home`. To platí pro bash i PowerShell.
 
 ## <a name="use-existing-resources"></a>Použití existujících prostředků
 
-Pomocí možnosti Upřesnit můžete přidružit stávající prostředky. Při výběru Cloud Shell oblasti musíte vybrat záložní účet úložiště společně umístěný ve stejné oblasti. Pokud je vaše přiřazená oblast například Západní USA, než musíte přidružit sdílenou složku, která se nachází v rámci Západní USA také.
+Pomocí možnosti Upřesnit můžete přidružit stávající prostředky. Při výběru Cloud Shell oblasti musíte vybrat záložní účet úložiště společně umístěný ve stejné oblasti. Pokud je vaše přiřazená oblast například Západní USA pak musíte přidružit sdílenou složku, která se nachází v rámci Západní USA také.
 
 Když se zobrazí výzva k nastavení úložiště, vyberte **Zobrazit upřesňující nastavení** a zobrazte další možnosti. Vyplněné možnosti úložiště filtr pro místně redundantní úložiště (LRS), geograficky redundantní úložiště (GRS) a účty redundantního úložiště (ZRS) zóny. 
 
@@ -54,12 +51,19 @@ Když se zobrazí výzva k nastavení úložiště, vyberte **Zobrazit upřesňu
 
 ![Nastavení skupiny prostředků](media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="supported-storage-regions"></a>Podporované oblasti úložiště
+## <a name="securing-storage-access"></a>Zabezpečení přístupu k úložišti
+V případě zabezpečení by měl každý uživatel zřídit vlastní účet úložiště.  Pro řízení přístupu na základě role (RBAC) musí mít uživatelé oprávnění Přispěvatel nebo vyšší na úrovni účtu úložiště.
+
+Cloud Shell používá ke sdílení souborů Azure v účtu úložiště v rámci zadaného předplatného. Kvůli zděděným oprávněním budou mít uživatelé s dostatečným oprávněním pro přístup k předplatnému přístup ke všem účtům úložiště a sdíleným složkám obsaženým v předplatném.
+
+Uživatelé by měli uzamknout přístup ke svým souborům nastavením oprávnění v účtu úložiště nebo na úrovni předplatného.
+
+## <a name="supported-storage-regions"></a>Podporované oblasti úložiště
 Přidružené účty úložiště Azure se musí nacházet ve stejné oblasti jako Cloud Shell počítač, ke kterému je připojujete. Pokud chcete najít aktuální oblast, kterou můžete spustit `env` v bash a najít `ACC_LOCATION`proměnných. Sdílené složky obdrží obrázek o velikosti 5 GB, který jste vytvořili, abyste zachovali `$Home` adresář.
 
 Cloud Shell počítače existují v následujících oblastech:
 
-|Oblast|Oblast|
+|Oblast|Region (Oblast)|
 |---|---|
 |Amerika|Východní USA, Střed USA – jih Západní USA|
 |Evropa|Severní Evropa, Západní Evropa|
@@ -67,8 +71,6 @@ Cloud Shell počítače existují v následujících oblastech:
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Omezení vytváření prostředků pomocí zásad prostředků Azure
 Účty úložiště, které vytvoříte v Cloud Shell jsou označené `ms-resource-usage:azure-cloud-shell`. Pokud chcete uživatelům zakázat vytváření účtů úložiště v Cloud Shell, vytvořte [zásady prostředků Azure pro značky](../azure-policy/json-samples.md) , které se spouštějí touto konkrétní značkou.
-
-
 
 ## <a name="how-cloud-shell-storage-works"></a>Jak funguje úložiště Cloud Shell 
 Cloud Shell uchovává soubory prostřednictvím obou následujících metod: 

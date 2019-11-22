@@ -1,6 +1,6 @@
 ---
-title: Synchronizovat místní partnerské účty do cloudu jako uživatele B2B – Azure Active Directory | Dokumentace Microsoftu
-description: Místně spravované externím partnerům poskytněte přístup k i místních a cloudových prostředků pomocí stejných přihlašovacích údajů se spoluprací Azure AD B2B.
+title: Synchronizace místních partnerských účtů s cloudem jako uživatelé B2B – Azure AD
+description: Udělte místně spravovaným externím partnerům přístup k místním i cloudovým prostředkům pomocí stejných přihlašovacích údajů ve spolupráci s Azure AD B2B.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,39 +12,39 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae75311ab61449f37ccea15a0bcb88fed80c3ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767339"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272605"
 ---
-# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Udělit partnera místně spravované účty přístup ke cloudovým prostředkům využitím spolupráce Azure AD B2B
+# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Přidělte místně spravované partnerské účty přístup k prostředkům cloudu pomocí spolupráce Azure AD B2B.
 
-Organizace s místními systémy identit před Azure Active Directory (Azure AD), mají partnerské tradičně spravované účty v jejich místní adresář. Chcete v rámci organizace při spuštění přesun aplikací do Azure AD, ujistěte se, že vaši partneři mají přístup k prostředkům, které potřebují. By nemělo záležet, jestli jsou prostředky v místním nebo v cloudu. Navíc se mají vaši uživatelé partnera moct dál používat stejné přihlašovací údaje pro místní i prostředky služby Azure AD. 
+Než Azure Active Directory (Azure AD), organizace s místními systémy identit mají tradičně spravované partnerské účty ve svém místním adresáři. V takové organizaci, když začnete přesouvat aplikace do služby Azure AD, se chcete ujistit, že partneři budou mít přístup k potřebným prostředkům. Nezáleží na tom, jestli jsou prostředky místní nebo v cloudu. Také chcete, aby mohli vaši partneři používat stejné přihlašovací údaje pro místní i prostředky Azure AD. 
 
-Pokud jste vytvořili účty pro externí partnery v místním adresáři (například vytvoříte účet s názvem "wmoran" pro externí uživatele s názvem Wendy firem ve vaší doméně partners.contoso.com přihlášení), teď můžete synchronizovat ryto účty cloud. Konkrétně můžete použít Azure AD Connect pro synchronizaci partnerské účty v cloudu jako uživatele Azure AD B2B (to znamená, že uživatelé s UserType = hosta). To umožňuje uživatelům přístup ke cloudovým prostředkům pomocí stejných přihlašovacích údajů jako místní účty, aniž by jim přístup k více než potřebují partnera. 
+Pokud vytvoříte účty pro externí partnery v místním adresáři (například vytvoříte účet s přihlašovacím jménem "wmoran" pro externího uživatele s názvem Wendy Moran ve vaší doméně partners.contoso.com), můžete nyní tyto účty synchronizovat s cloudu. Konkrétně můžete použít Azure AD Connect k synchronizaci partnerských účtů s cloudem jako uživatelé Azure AD B2B (to znamená uživatele s povýšenou funkcí Guest). Díky tomu budou mít vaši partneři přístup k prostředkům cloudu pomocí stejných přihlašovacích údajů, jako jsou jejich místní účty, a to bez toho, aby k nim měli přístup. 
 
-## <a name="identify-unique-attributes-for-usertype"></a>Identifikuje jedinečné atributy UserType
+## <a name="identify-unique-attributes-for-usertype"></a>Identifikujte jedinečné atributy pro UserType
 
-Než povolíte synchronizaci atribut UserType, musíte nejdřív rozhodnout, jak odvodit atribut UserType z místní služby Active Directory. Jinými slovy jaké parametry se v místním prostředí jsou jedinečné pro externí spolupracovníky? Určete parametr, který odlišuje od členy vaší vlastní organizaci těmito externími spolupracovníky.
+Než povolíte synchronizaci atributu UserType, musíte se nejdřív rozhodnout, jak se má odvodit atribut UserType z místní služby Active Directory. Jinými slovy, jaké parametry v místním prostředí jsou jedinečné pro vaše externí spolupracovníky? Určete parametr, který rozlišuje tyto externí spolupracovníci od členů vaší organizace.
 
-Jsou dvě běžné metody pro toto:
+K tomu patří dva běžné přístupy:
 
-- Určete nevyužitých místních atributů služby Active Directory (například extensionAttribute1) použít jako zdrojový atribut. 
-- Můžete také odvodit hodnotu pro atribut UserType z dalších vlastností. Například chcete synchronizujeme všechny uživatele jako hosta, pokud jejich místní atribut Active Directory UserPrincipalName skončí s doménou  *\@partners.contoso.com*.
+- Určete nepoužitý místní atribut služby Active Directory (například extensionAttribute1), který se použije jako zdrojový atribut. 
+- Alternativně je odvozena hodnota atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut Active Directory UserPrincipalName končí na doméně *\@Partners.contoso.com*.
  
-Atribut podrobné požadavky najdete v tématu [povolení synchronizace hodnot UserType](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
+Podrobné požadavky atributů najdete v tématu [povolení synchronizace usertype](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 
-## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Konfigurace služby Azure AD Connect pro synchronizaci uživatelů do cloudu
+## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Konfigurace Azure AD Connect pro synchronizaci uživatelů s cloudem
 
-Po identifikaci jedinečný atribut, můžete nakonfigurovat synchronizaci tito uživatelé do cloudu jako uživatele Azure AD B2B Azure AD Connect (to znamená, že uživatelé s UserType = hosta). Z autorizační hlediska jsou tito uživatelé nerozeznatelná od uživatele B2B, které jsou vytvořené pomocí proces pozvánky spolupráce B2B ve službě Azure AD.
+Po identifikaci jedinečného atributu můžete nakonfigurovat Azure AD Connect pro synchronizaci těchto uživatelů s cloudem jako uživatelé Azure AD B2B (to znamená, že uživatelé s UserType = Host). Z autorizačního bodu jsou tito uživatelé nerozlišovat od uživatelů B2B vytvořených prostřednictvím procesu pozvání spolupráce B2B v Azure AD.
 
-Pokyny k implementaci, najdete v části [povolení synchronizace hodnot UserType](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype).
+Pokyny k implementaci najdete v tématu [povolení synchronizace usertype](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Spolupráce Azure Active Directory s B2B pro hybridní organizace](hybrid-organizations.md)
+- [Azure Active Directory spolupráce B2B pro hybridní organizace](hybrid-organizations.md)
 - [Uživatelům udělit B2B v Azure AD přístup k místním aplikacím](hybrid-cloud-to-on-premises.md)
-- Přehled služby Azure AD Connect, naleznete v tématu [integrace místních adresářů se službou Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
+- Přehled Azure AD Connect najdete v tématu [Integrace místních adresářů s Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 

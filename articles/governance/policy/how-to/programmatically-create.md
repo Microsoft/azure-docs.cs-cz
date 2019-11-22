@@ -3,18 +3,18 @@ title: Programové vytváření zásad
 description: Tento článek vás provede programově vytváření a Správa zásad pro Azure Policy.
 ms.date: 01/31/2019
 ms.topic: conceptual
-ms.openlocfilehash: 581f7e5cc2fa20f1ff284e32351e495349fdfad2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bc97eac8f66a3c289bb22bfac8617177d60b4583
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959422"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267241"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
 Tento článek vás provede programově vytváření a Správa zásad. Azure Policy definice vynutila různá pravidla a vliv na vaše prostředky. Vynucení zajišťuje, že prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni.
 
-Informace o dodržování předpisů najdete v tématu [získávají data dodržování předpisů](getting-compliance-data.md).
+Informace o dodržování předpisů najdete v tématu [získávají data dodržování předpisů](get-compliance-data.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

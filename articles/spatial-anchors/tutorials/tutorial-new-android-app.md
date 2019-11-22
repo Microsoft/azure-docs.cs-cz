@@ -1,19 +1,19 @@
 ---
-title: Kurz – podrobné pokyny k vytvoření nové aplikace pro Android pomocí prostorových kotev Azure | Microsoft Docs
+title: 'Kurz: vytvoření nové aplikace pro Android'
 description: V tomto kurzu se naučíte, jak vytvořit novou aplikaci pro Android pomocí prostorových kotev Azure.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6386ef775f897ca56d2660adf72a885672c8dfd2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092068"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276928"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Kurz: podrobné pokyny k vytvoření nové aplikace pro Android pomocí prostorových kotev Azure
 
@@ -134,7 +134,7 @@ dependencies {
 }
 ```
 
-Pravým tlačítkem myši klikněte `app\java\<PackageName>`->**nové**->**třídy Java**. Nastavte **název** na _MojePrvníAplikace_a **supertřída** na _Android. app. Application_. Ostatní možnosti ponechte beze změny. Klikněte na **OK**. Vytvoří se soubor s názvem `MyFirstApp.java`. Přidejte do něj následující import:
+Pravým tlačítkem myši klikněte `app\java\<PackageName>`->**nové**->**třídy Java**. Nastavte **název** na _MojePrvníAplikace_a **supertřída** na _Android. app. Application_. Ostatní možnosti ponechte beze změny. Klikněte na tlačítko **OK**. Vytvoří se soubor s názvem `MyFirstApp.java`. Přidejte do něj následující import:
 
 ```java
 import com.microsoft.CloudServices;

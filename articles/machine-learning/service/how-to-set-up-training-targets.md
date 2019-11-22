@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a použití výpočetních cílů pro školení modelů
+title: Použití výpočetních cílů pro školení modelů
 titleSuffix: Azure Machine Learning
 description: Nakonfigurujte školicí prostředí (cíle výpočtů) pro školení modelů ve službě Machine Learning. Mezi školicími prostředími můžete snadno přepínat. Spusťte školení místně. Pokud potřebujete horizontální navýšení kapacity, přepněte na cloudový cíl výpočtů.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d628bbe889617464fe97695a17687d5f02cc61bc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489559"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305314"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,11 +32,11 @@ V tomto článku se dozvíte, jak používat různé výpočetní cíle pro ško
 
 
 >[!NOTE]
-> Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.39 verze.
+> Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.74 verze.
 
 ## <a name="compute-targets-for-training"></a>Výpočetní cíle pro školení
 
-Azure Machine Learning má různou podporu napříč různými výpočetními cíli. Typický životní cyklus vývoje modelu začíná vývojem a experimentováním s malým množstvím dat. V této fázi doporučujeme použít místní prostředí. Například váš místní počítač nebo cloudový virtuální počítač. Při horizontálním navýšení kapacity pro větší datové sady nebo při distribuovaném školení doporučujeme pomocí Azure Machine Learning COMPUTE vytvořit cluster s jedním nebo několika uzly, který při každém odeslání běhu provede automatické škálování. Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit, jak je popsáno níže:
+Azure Machine Learning má různou podporu napříč různými výpočetními cíli. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -76,7 +76,7 @@ I když kanály ML můžou prosazovat modely, můžou také připravit data pře
 Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 * [Místní počítač](#local)
-* [Azure Machine Learning COMPUTE](#amlcompute)
+* [Azure Machine Learning Compute](#amlcompute)
 * [Vzdálené virtuální počítače](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -91,23 +91,20 @@ Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](#submit).
 
-### <a id="amlcompute"></a>Azure Machine Learning COMPUTE
+### <a id="amlcompute"></a>Azure Machine Learning Compute
 
 Azure Machine Learning COMPUTE je spravovaná a výpočetní infrastruktura, která umožňuje uživateli snadno vytvořit výpočetní výkon s jedním uzlem nebo několika uzly. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru jako prostředek, který se dá sdílet s ostatními uživateli v pracovním prostoru. Výpočetní výkon se při odeslání úlohy automaticky škáluje a dá se umístit do Azure Virtual Network. Výpočetní výkon se spouští v kontejnerovém prostředí a zabalí závislosti vašich modelů v [kontejneru Docker](https://www.docker.com/why-docker).
 
-Azure Machine Learning COMPUTE můžete použít k distribuci školicích procesů napříč clusterem výpočetních uzlů procesoru nebo GPU v cloudu. Další informace o velikostech virtuálních počítačů, které zahrnují GPU, najdete v tématu [velikosti virtuálních počítačů optimalizované pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+Azure Machine Learning Compute můžete použít k procesu trénování distribuovat napříč clusterem CPU nebo GPU výpočetních uzlů v cloudu. Další informace o velikostech virtuálních počítačů, které zahrnují GPU, najdete v tématu [velikosti virtuálních počítačů optimalizované pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
 Azure Machine Learning COMPUTE má výchozí omezení, například počet jader, které se dají přidělit. Další informace najdete v tématu [Správa a vyžádání kvót pro prostředky Azure](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 
 Při plánování běhu nebo jako trvalého prostředku můžete vytvořit prostředí Azure Machine Learning COMPUTE na vyžádání.
 
-#### <a name="run-based-creation"></a>Vytváření na základě spuštění
+#### <a name="run-based-creation"></a>Tvorby založené na spuštění
 
 V době běhu můžete vytvořit Azure Machine Learning COMPUTE jako cíl výpočtu. Výpočty se automaticky vytvoří pro váš běh. Výpočty se odstraní automaticky po dokončení spuštění. 
-
-> [!NOTE]
-> Chcete-li určit maximální počet uzlů, které se mají použít, je obvykle nastaveno `node_count` na počet uzlů. V současné době (04/04/2019) dojde k chybě, která brání v práci. Alternativním řešením je použít vlastnost `amlcompute._cluster_max_node_count` konfigurace spuštění. Například, `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Vytváření Azure Machine Learning výpočtů na základě spuštění je momentálně ve verzi Preview. Nepoužívejte vytváření založené na spuštění, pokud používáte automatizované ladění parametrů nebo automatizované strojové učení. Pokud chcete použít ladění pomocí parametrů nebo automatizované strojové učení, vytvořte místo toho [trvalý cíl výpočtů](#persistent) .
@@ -125,8 +122,8 @@ Trvalé Azure Machine Learning výpočetní prostředí se dá opakovaně použ�
 
 1. **Vytvoření a připojení**: Chcete-li v Pythonu vytvořit trvalý Azure Machine Learning výpočetní prostředek, zadejte vlastnosti **vm_size** a **max_nodes** . Azure Machine Learning pak pro ostatní vlastnosti používá inteligentní výchozí hodnoty. Výpočetní výkon se při použití vymění až na nula uzlů.   Vyhrazené virtuální počítače se vytvářejí ke spouštění vašich úloh podle potřeby.
     
-    * **vm_size**: rodina virtuálních počítačů uzlů vytvořená Azure Machine Learning výpočetní prostředky.
-    * **max_nodes**: maximální počet uzlů pro automatické horizontální navýšení kapacity při spuštění úlohy na Azure Machine Learning Compute.
+    * **vm_size**: rodina virtuálních počítačů uzlů vytvořená Azure Machine Learning Compute.
+    * **max_nodes**: maximální počet uzlů pro automatické horizontální navýšení kapacity při spuštění úlohy v Azure Machine Learning Compute.
     
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
@@ -144,9 +141,9 @@ Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj bě
 
 ### <a id="vm"></a>Vzdálené virtuální počítače
 
-Azure Machine Learning také podporuje uvedení vlastního výpočetního prostředku a jeho připojení k pracovnímu prostoru. Jedním z těchto typů prostředků je libovolný vzdálený virtuální počítač, pokud je dostupný z Azure Machine Learning. Prostředkem může být virtuální počítač Azure, vzdálený server ve vaší organizaci nebo místní. Konkrétně pro vzdálené spuštění s ohledem na IP adresu a přihlašovací údaje (uživatelské jméno a heslo nebo klíč SSH) můžete použít libovolný dostupný virtuální počítač.
+Azure Machine Learning podporuje také přináší vlastní výpočetních prostředků a připojíte ho do pracovního prostoru. Jedním z těchto typů prostředků je libovolný vzdálený virtuální počítač, pokud je dostupný z Azure Machine Learning. Prostředkem může být virtuální počítač Azure, vzdálený server ve vaší organizaci nebo místní. Konkrétně pro vzdálené spuštění s ohledem na IP adresu a přihlašovací údaje (uživatelské jméno a heslo nebo klíč SSH) můžete použít libovolný dostupný virtuální počítač.
 
-Můžete použít systémem sestavené prostředí Conda, již existující prostředí Pythonu nebo kontejner Docker. Aby bylo možné provést v kontejneru Docker, je nutné mít na virtuálním počítači spuštěný modul Docker. Tato funkce je užitečná hlavně v případě, že chcete pružně flexibilní prostředí pro vývoj a experimentování v cloudu než na vašem místním počítači.
+Můžete použít prostředí integrovaného systému conda, již existující prostředí Python nebo kontejneru Docker. Aby bylo možné provést v kontejneru Docker, je nutné mít na virtuálním počítači spuštěný modul Docker. Tato funkce je zvlášť užitečné, pokud chcete dev/experimentování flexibilnější a cloudové prostředí než místního počítače.
 
 Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako virtuální počítač Azure s možností výběru. Tento virtuální počítač je předem konfigurovaným vývojovým prostředím pro datové vědy a AI v Azure. Virtuální počítač nabízí uspořádané možnosti nástrojů a platforem pro vývoj v rámci služby Machine Learning pro celou dobu životního cyklu. Další informace o tom, jak používat DSVM s Azure Machine Learning, najdete v tématu [Konfigurace vývojového prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
@@ -155,7 +152,7 @@ Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako vir
     > [!WARNING]
     > Azure Machine Learning podporuje jenom virtuální počítače, které spouštějí Ubuntu. Když vytváříte virtuální počítač nebo zvolíte existující virtuální počítač, musíte vybrat virtuální počítač, který používá Ubuntu.
 
-1. **Připojit**: Chcete-li připojit existující virtuální počítač jako cíl služby COMPUTE, je nutné zadat plně kvalifikovaný název domény (FQDN), uživatelské jméno a heslo pro virtuální počítač. V tomto příkladu nahraďte \<fqdn > veřejným plně kvalifikovaným názvem domény virtuálního počítače nebo veřejnou IP adresou. Pro tento virtuální počítač nahraďte \<username > a \<heslo > a uživatelské jméno a heslo SSH.
+1. **Připojit**: Chcete-li připojit existující virtuální počítač jako cíl služby COMPUTE, je nutné zadat plně kvalifikovaný název domény (FQDN), uživatelské jméno a heslo pro virtuální počítač. V tomto příkladu nahraďte \<plně kvalifikovaný název domény > veřejným plně kvalifikovaným názvem domény virtuálního počítače nebo veřejnou IP adresou. Pro tento virtuální počítač nahraďte \<username > a \<heslo > a uživatelské jméno a heslo SSH.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -197,9 +194,9 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
 
     Při vytváření clusteru je nutné zadat uživatelské jméno a heslo SSH. Tyto hodnoty si poznamenejte, protože je budete potřebovat k použití HDInsight jako cíle výpočtů.
     
-    Po vytvoření clusteru se k němu připojte pomocí názvu hostitele \<clustername >-ssh.azurehdinsight.net, kde \<clustername > je název, který jste zadali pro cluster. 
+    Po vytvoření clusteru se k němu připojte pomocí názvu hostitele \<název_clusteru >-ssh.azurehdinsight.net, kde \<název_clusteru > je název, který jste zadali pro cluster. 
 
-1. **Připojit**: Pokud chcete připojit cluster HDInsight jako cíl výpočetní služby, musíte zadat název hostitele, uživatelské jméno a heslo pro cluster HDInsight. Následující příklad používá sadu SDK k připojení clusteru k vašemu pracovnímu prostoru. V příkladu nahraďte \<clustername > názvem vašeho clusteru. Pro tento cluster nahraďte \<username > a \<heslo > a uživatelské jméno a heslo SSH.
+1. **Připojit**: Pokud chcete připojit cluster HDInsight jako cíl výpočetní služby, musíte zadat název hostitele, uživatelské jméno a heslo pro cluster HDInsight. Následující příklad používá sadu SDK připojit cluster do pracovního prostoru. V příkladu nahraďte \<název_clusteru > názvem vašeho clusteru. Pro tento cluster nahraďte \<username > a \<heslo > a uživatelské jméno a heslo SSH.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -280,7 +277,7 @@ Ke výpočetním cílům, které jsou přidružené k vašemu pracovnímu prosto
 * [Připojte výpočetní cíl](#portal-reuse) , který byl vytvořen mimo pracovní prostor.
 
 
-Po vytvoření a připojení cíle k vašemu pracovnímu prostoru ho použijete v konfiguraci spuštění s objektem `ComputeTarget`: 
+Jakmile je cíl vytvořen a připojen k vašemu pracovnímu prostoru, budete ho používat v konfiguraci spuštění s objektem `ComputeTarget`: 
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -315,7 +312,7 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 
 1. Vyplňte formulář. Zadejte hodnoty požadovaných vlastností, zejména **rodinu virtuálních počítačů**, a **maximální počet uzlů** , které se mají použít ke spuštění výpočtů.  
 
-1. Vyberte __Create__ (Vytvořit).
+1. Vyberte __Vytvořit__.
 
 
 1. Stav operace vytvoření si zobrazíte tak, že v seznamu vyberete cíl služby Compute:
@@ -349,8 +346,8 @@ Podle výše popsaného postupu zobrazte seznam cílů výpočtů. Pak pomocí n
     > [!NOTE]
     > Microsoft doporučuje používat klíče SSH, které jsou bezpečnější než hesla. Hesla jsou zranitelná proti útokům hrubou silou. Klíče SSH spoléhají na kryptografické signatury. Informace o tom, jak vytvořit klíče SSH pro použití s Azure Virtual Machines, najdete v následujících dokumentech:
     >
-    > * [Vytvoření a použití klíčů SSH v systému Linux nebo macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Vytvoření a použití klíčů SSH ve Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [Vytvoření a použití klíčů SSH v Linuxu nebo macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [Vytvoření a používání klíčů SSH na Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. Vyberte __připojit__. 
 1. Pokud chcete zobrazit stav operace připojení, vyberte ze seznamu cíl služby Compute.
@@ -374,13 +371,13 @@ Pomocí [rozšíření vs Code](how-to-vscode-tools.md#create-and-manage-compute
 Po vytvoření konfigurace spuštění ji použijete ke spuštění experimentu.  Vzor kódu pro odeslání školicího běhu je stejný pro všechny typy výpočetních cílů:
 
 1. Vytvoření experimentu ke spuštění
-1. Odešlete běh.
-1. Počkejte, až se běh dokončí.
+1. Odešlete spuštění.
+1. Vyčkat, než běžet do dokončení.
 
 > [!IMPORTANT]
 > Po odeslání školicího cvičení se vytvoří snímek adresáře, který obsahuje vaše školicí skripty, a pošle se do cíle služby Compute. Je také uložen jako součást experimentu v pracovním prostoru. Pokud změníte soubory a znovu odešlete spuštění, nahrají se jenom změněné soubory.
 >
-> Chcete-li zabránit zahrnutí souborů do snímku, vytvořte soubor [. gitignore](https://git-scm.com/docs/gitignore) nebo `.amlignore` v adresáři a přidejte do něj soubory. Soubor `.amlignore` používá stejnou syntaxi a vzory jako soubor [. gitignore](https://git-scm.com/docs/gitignore) . Pokud oba soubory existují, má soubor `.amlignore` přednost.
+> Chcete-li zabránit zahrnutí souborů do snímku, vytvořte soubor [. gitignore](https://git-scm.com/docs/gitignore) nebo `.amlignore` v adresáři a přidejte do něj soubory. `.amlignore` soubor používá stejnou syntaxi a vzory jako soubor [. gitignore](https://git-scm.com/docs/gitignore) . Pokud oba soubory existují, má `.amlignore` soubor přednost.
 > 
 > Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshots).
 
@@ -394,9 +391,9 @@ Nejdřív vytvořte experiment v pracovním prostoru.
 
 Odešlete experiment s objektem `ScriptRunConfig`.  Tento objekt obsahuje:
 
-* **source_directory**: zdrojový adresář, který obsahuje školicí skript
+* **source_directory**: zdrojový adresář, který obsahuje školicí skript.
 * **skript**: identifikace školicího skriptu
-* **run_config**: konfigurace spuštění, která zase definuje, kde bude probíhat školení.
+* **run_config**: konfigurace spuštění, která zase definuje, kde se bude probíhat školení.
 
 Chcete-li například použít [místní cílovou](#local) konfiguraci:
 
@@ -423,7 +420,7 @@ Další informace najdete v dokumentaci k [ScriptRunConfig](https://docs.microso
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Vytvoření konfigurace spuštění a odeslání běhu pomocí Azure Machine Learning CLI
 
-Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a [rozšíření CLI Machine Learning](reference-azure-machine-learning-cli.md) můžete vytvářet konfigurace spouštění a odesílat běhy na různých výpočetních cílech. V následujících příkladech se předpokládá, že máte existující pracovní prostor Azure Machine Learning a jste se k Azure přihlásili pomocí příkazu `az login` CLI. 
+Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a [rozšíření CLI Machine Learning](reference-azure-machine-learning-cli.md) můžete vytvářet konfigurace spouštění a odesílat běhy na různých výpočetních cílech. V následujících příkladech se předpokládá, že máte existující pracovní prostor Azure Machine Learning a jste přihlášeni k Azure pomocí příkazu `az login` CLI. 
 
 ### <a name="create-run-configuration"></a>Vytvořit konfiguraci spuštění
 
@@ -433,7 +430,7 @@ Nejjednodušší způsob, jak vytvořit konfiguraci spuštění, je procházení
 az ml folder attach
 ```
 
-Tento příkaz vytvoří podsložku `.azureml`, která obsahuje konfigurační soubory spouštěné v šabloně pro různé výpočetní cíle. Tyto soubory můžete zkopírovat a upravit, abyste mohli přizpůsobit konfiguraci, například přidat balíčky Pythonu nebo změnit nastavení Docker.  
+Tento příkaz vytvoří podsložku `.azureml` obsahující šablonu pro spouštění konfiguračních souborů pro různé výpočetní cíle. Tyto soubory můžete zkopírovat a upravit, abyste mohli přizpůsobit konfiguraci, například přidat balíčky Pythonu nebo změnit nastavení Docker.  
 
 ### <a name="structure-of-run-configuration-file"></a>Struktura konfiguračního souboru spuštění
 
@@ -507,8 +504,8 @@ Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 
 Příklady školení s různými cíli výpočtů najdete v těchto poznámkových blocích:
-* [postupy – použití – AzureML/školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [kurzy/img-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [postupy-k-použití azureml a školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [kurzy/img – klasifikace – část 1 – training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

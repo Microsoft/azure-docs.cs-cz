@@ -1,53 +1,53 @@
 ---
 title: Připojení ke službě Azure blockchain pomocí Geth
-description: Připojení k síti služby Azure blockchain pomocí Geth
+description: Připojení k instanci Geth na uzlu transakce služby Azure blockchain
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: a26899e291c4f44d3c9d91032b2ee191ba03133a
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: 1c285a7b5cc04aa330e9f68fdb82cfd099a19e03
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931778"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285286"
 ---
-# <a name="quickstart-use-geth-to-connect-to-a-transaction-node"></a>Rychlý start: Použití rozšíření Geth pro připojení k transakčnímu uzlu
+# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Rychlý Start: použití Geth k připojení k uzlu transakce služby Azure blockchain
 
-Geth je klient Ethereem, který můžete použít pro připojení k instanci Geth v uzlu transakce služby Azure blockchain.
+V tomto rychlém startu použijete klienta Geth k připojení k instanci Geth na uzlu transakce služby Azure blockchain. Po připojení použijete konzolu Geth JavaScript k volání rozhraní web3 JavaScript Dapp API.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalovat [Geth](https://github.com/ethereum/go-ethereum/wiki/geth)
-* Kompletní [rychlé spuštění: Vytvořte člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlého startu: Vytvoření členu blockchain služby Azure blockchain pomocí Azure CLI](create-member-cli.md)
+* Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 
-## <a name="get-the-geth-connection-string"></a>Získání připojovacího řetězce Geth
+## <a name="get-geth-connection-string"></a>Získání připojovacího řetězce Geth
 
-Připojovací řetězec Geth můžete najít v Azure Portal.
+Připojovací řetězec Geth můžete získat pro uzel transakce služby Azure blockchain v Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte ke členu služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přejít na člena služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
     ![Vybrat výchozí uzel transakce](./media/connect-geth/transaction-nodes.png)
 
 1. Vyberte **připojovací řetězce**.
-1. Zkopírujte připojovací řetězec z **https (přístupová klávesa 1)** . Pro další část budete potřebovat příkaz.
+1. Zkopírujte připojovací řetězec z **https (přístupová klávesa 1)** . Pro další oddíl potřebujete řetězec.
 
     ![Připojovací řetězec](./media/connect-geth/connection-string.png)
 
 ## <a name="connect-to-geth"></a>Připojení k Geth
 
 1. Otevřete příkazový řádek nebo prostředí.
-1. Pomocí příkazu Geth připojit dílčí příkaz připojte ke spuštěné instanci Geth na svém uzlu transakce. Vložte připojovací řetězec jako argument pro příkaz připojit dílčí příkaz. Například
+1. Pomocí příkazu Geth připojit dílčí příkaz připojte ke spuštěné instanci Geth na svém uzlu transakce. Vložte připojovací řetězec jako argument pro příkaz připojit dílčí příkaz. Příklad:
 
-    ```
+    ``` bash
     geth attach <connection string>
     ```
 
@@ -55,19 +55,19 @@ Připojovací řetězec Geth můžete najít v Azure Portal.
 
     Pomocí následujícího rozhraní API můžete například zjistit chainId.
 
-    ```bash
+    ``` bash
     admin.nodeInfo.protocols.istanbul.config.chainId
     ```
 
-    V tomto příkladu je chainId 297.
+    V tomto příkladu je chainId 661.
 
     ![Možnost služby Azure blockchain](./media/connect-geth/geth-attach.png)
 
-1. Pokud se chcete odpojit od konzoly, `exit`zadejte.
+1. Pokud se chcete odpojit od konzoly, zadejte `exit`.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili klienta Geth pro připojení k instanci Geth na uzlu transakce služby Azure blockchain. Zkuste v dalším kurzu použít Azure blockchain Development Kit pro Ethereem a Truffle k vytvoření, sestavení, nasazení a spuštění funkce inteligentního kontraktu prostřednictvím transakce.
+V tomto rychlém startu jste použili klienta Geth pro připojení k instanci Geth na uzlu transakce služby Azure blockchain. Zkuste v dalším kurzu použít Azure blockchain Development Kit pro Ethereem k vytvoření, sestavení, nasazení a spuštění funkce inteligentního kontraktu prostřednictvím transakce.
 
 > [!div class="nextstepaction"]
 > [Použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv](send-transaction.md)

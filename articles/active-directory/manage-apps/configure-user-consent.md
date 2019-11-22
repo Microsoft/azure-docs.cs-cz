@@ -1,5 +1,5 @@
 ---
-title: Konfigurace souhlasu uživatele s aplikací-Azure Active Directory | Microsoft Docs
+title: Konfigurace souhlasu uživatele s aplikací – Azure Active Directory
 description: Naučte se spravovat způsob, jakým uživatelé souhlasí s oprávněními k aplikacím. Můžete zjednodušit uživatelské prostředí tím, že udělíte souhlas správce. Tyto metody se vztahují na všechny koncové uživatele v tenantovi Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709270"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273994"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Konfigurace způsobu, jakým koncoví uživatelé souhlasí s aplikací v Azure Active Directory
 Naučte se konfigurovat způsob, jakým uživatelé souhlasí s oprávněními k aplikacím. Můžete zjednodušit uživatelské prostředí tím, že udělíte souhlas správce. Tento článek popisuje různé způsoby, jak můžete nakonfigurovat souhlas uživatele. Metody se vztahují na všechny koncové uživatele v tenantovi Azure Active Directory (Azure AD). 
@@ -52,10 +52,10 @@ Tato možnost funguje jenom v případě, že je aplikace:
 
 Udělení souhlasu správce při registraci aplikace: 
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
 2. Přejděte do okna **Registrace aplikací** .
 3. Vyberte aplikaci pro souhlas.
-4. Vyberte **oprávnění rozhraní API**.
+4. Vyberte **oprávnění k rozhraní API**.
 5. Klikněte na **udělit souhlas správce**.
 
 
@@ -63,7 +63,7 @@ Udělení souhlasu správce při registraci aplikace:
 
 Udělení souhlasu správce prostřednictvím žádosti adresy URL:
 
-1. Vytvořte požadavek na *Login.microsoftonline.com* s konfiguracemi vaší aplikace a přihlaste se na `&prompt=admin_consent`. Tato adresa URL bude vypadat takto: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
+1. Vytvořte požadavek na *Login.microsoftonline.com* s konfiguracemi aplikace a přihlaste se na `&prompt=admin_consent`. Tato adresa URL bude vypadat takto: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
 2. Po přihlášení s přihlašovacími údaji správce má aplikace udělena souhlas pro všechny uživatele.
 
 

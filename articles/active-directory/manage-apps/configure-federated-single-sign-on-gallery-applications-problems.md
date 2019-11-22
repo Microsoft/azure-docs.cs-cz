@@ -1,5 +1,5 @@
 ---
-title: Problémy s konfigurací federovaného jednotného přihlašování pro aplikace Galerie Azure AD | Microsoft Docs
+title: Problémy s konfigurací federovaného jednotného přihlašování pro aplikace Galerie Azure AD
 description: Vyřešte některé běžné problémy, se kterými se můžete setkat při konfiguraci federovaného jednotného přihlašování pomocí SAML pro aplikace, které jsou uvedené v galerii aplikací Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381220"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274642"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Problém s konfigurací federovaného jednotného přihlašování pro aplikaci Galerie Azure AD
 
@@ -58,13 +58,13 @@ Chcete-li zjistit, jaké jsou vzory předem nakonfigurované pro aplikaci:
 
 7. Po načtení aplikace klikněte na tlačítko **jednotného přihlašování** z nabídky navigace na levé straně aplikace.
 
-8. V rozevíracím seznamu **režim** vyberte možnost přihlašování **založené na SAML** .
+8. V rozevíracím seznamu **režim** vyberte možnost **přihlašování založené na SAML** .
 
 9. Do textového pole **identifikátor** nebo **Adresa URL odpovědi** v části **doména a adresy URL.**
 
 10. Existují tři způsoby, jak znát podporované vzory pro aplikaci:
 
-    * V textovém poli se zobrazí podporované vzory jako zástupný *Příklad:* <https://contoso.com>.
+    * V textovém poli se zobrazí podporované vzorce jako zástupný *Příklad:* <https://contoso.com>.
 
     * Pokud není tento vzor podporován, zobrazí se při pokusu o zadání hodnoty do textového pole červený vykřičník. Pokud najedete myší na červený vykřičník, uvidíte podporované vzory.
 
@@ -74,7 +74,7 @@ Pokud se hodnoty neshodují se vzorci předem konfigurovanými v Azure AD. Můž
 
 -   Spolupracovat s dodavatelem aplikace a získat hodnoty, které odpovídají vzoru předkonfigurovanému ve službě Azure AD
 
--   Nebo můžete kontaktovat tým Azure AD na adrese <aadapprequest@microsoft.com> nebo v tomto kurzu zanechat komentář, který požádá o aktualizaci podporovaných vzorů pro aplikaci.
+-   Nebo můžete kontaktovat tým služby Azure AD na adrese <aadapprequest@microsoft.com> nebo v tomto kurzu ponechte komentář k žádosti o aktualizaci podporovaných vzorů pro aplikaci.
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Kde mám nastavit formát EntityID (uživatelský identifikátor)
 
@@ -110,5 +110,5 @@ Azure AD neposkytuje adresu URL pro získání metadat. Metadata lze načíst po
 
 Další informace o tom, jak přizpůsobit deklarace identity atributů SAML odeslané do vaší aplikace, najdete v tématu [mapování deklarací v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)

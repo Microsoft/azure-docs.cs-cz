@@ -1,21 +1,21 @@
 ---
 title: Nejčastější dotazy k Azure Monitor pro virtuální počítače (Preview) | Microsoft Docs
-description: Azure Monitor pro virtuální počítače je řešení v Azure, které kombinuje monitorování stavu a výkonu operačního systému virtuálního počítače Azure a automaticky zjišťuje součásti aplikací a závislosti s dalšími prostředky a mapuje komunikaci mezi ihned. Tento článek obsahuje odpovědi na běžné dotazy.
+description: Odpovědi na časté otázky týkající se Azure Monitor pro virtuální počítače, které monitorují stav a výkon virtuálních počítačů Azure Kromě automatického zjišťování a mapování součástí aplikace a jejich závislostí.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/09/2018
-ms.openlocfilehash: 675277a33a5613507297f1c77ee9cef3215b22a2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 579538996e934c7068c397a284d819f5ddb92f08
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555211"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305461"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Nejčastější dotazy k Azure Monitor pro virtuální počítače (Preview)
-Toto je seznam nejčastějších dotazů k Azure Monitor pro virtuální počítače. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
+Toto je seznam nejčastějších dotazů k Azure Monitor pro virtuální počítače. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>Můžu se připojit k existujícímu pracovnímu prostoru?
 Pokud jsou vaše virtuální počítače už připojené k pracovnímu prostoru Log Analytics, můžete tento pracovní prostor i nadále používat při připojování k Azure Monitor pro virtuální počítače za předpokladu, že je v některé z podporovaných oblastí, které jsou [tady](vminsights-enable-overview.md#prerequisites)uvedené.
@@ -30,7 +30,7 @@ Pokud vaše virtuální počítače nejsou aktuálně připojené k existující
 Pokud se rozhodnete použít metodu založenou na skriptu, tyto kroky jsou pokryté v článku [povolení Azure monitor pro virtuální počítače (Preview) pomocí Azure PowerShell nebo šablony Správce prostředků](vminsights-enable-at-scale-powershell.md) . 
 
 ## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Jak mám dělat, když už můj virtuální počítač hlásí stávající pracovní prostor?
-Pokud už data z virtuálních počítačů shromažďujete, je možné, že jste ji už nakonfigurovali k nahlášení dat do existujícího pracovního prostoru Log Analytics.  Pokud je tento pracovní prostor v některé z našich podporovaných oblastí, můžete Azure Monitor pro virtuální počítače do tohoto existujícího pracovního prostoru povolit.  Pokud pracovní prostor, který už používáte, není v některé z našich podporovaných oblastí, nebudete moct Azure Monitor pro virtuální počítače v tuto chvíli zaregistrovat.  Aktivně pracujeme na podpoře dalších oblastí.
+Pokud už data z virtuálních počítačů shromažďujete, je možné, že jste ji už nakonfigurovali k nahlášení dat do existujícího pracovního prostoru Log Analytics.  Pokud je tento pracovní prostor v některé z našich podporovaných oblastí, můžete Azure Monitor pro virtuální počítače do tohoto existujícího pracovního prostoru povolit.  Pokud pracovní prostor, který už používáte, není v některé z našich podporovaných oblastí, nebudete moct Azure Monitor pro virtuální počítače v tuto chvíli zaregistrovat.  Aktivně pracujeme na podporu dalších oblastech.
 
 >[!NOTE]
 >Pro pracovní prostor konfigurujeme čítače výkonu, které mají vliv na všechny virtuální počítače, které jsou v pracovním prostoru nahlášené, bez ohledu na to, jestli jste se rozhodli Azure Monitor pro virtuální počítače. Další informace o tom, jak jsou pro pracovní prostor nakonfigurované čítače výkonu, najdete v naší [dokumentaci](../../azure-monitor/platform/data-sources-performance-counters.md). Informace o čítačích konfigurovaných pro Azure Monitor pro virtuální počítače najdete v našem článku o [povolení Azure monitor pro virtuální počítače](vminsights-enable-overview.md#performance-counters-enabled) .  
@@ -38,7 +38,7 @@ Pokud už data z virtuálních počítačů shromažďujete, je možné, že jst
 ## <a name="why-did-my-vm-fail-to-onboard"></a>Proč se můj virtuální počítač nepovedlo zařadit do provozu?
 Při připojování virtuálního počítače Azure z Azure Portal dojde k následujícím krokům:
 
-* Pokud je vybraná tato možnost, vytvoří se výchozí pracovní prostor Log Analytics.
+* Výchozí pracovní prostor Log Analytics se vytvoří, pokud, který jste vybrali možnost.
 * Čítače výkonu jsou nakonfigurovány pro vybraný pracovní prostor. Pokud tento krok neproběhne úspěšně, Všimněte si, že některé grafy a tabulky výkonu nezobrazuje data pro virtuální počítač, který jste připojili. To můžete vyřešit spuštěním skriptu prostředí PowerShell, který je [zde](vminsights-enable-at-scale-powershell.md#enable-performance-counters)popsán.
 * Agent Log Analytics je nainstalovaný na virtuálních počítačích Azure pomocí rozšíření virtuálního počítače, pokud je to potřeba.  
 * Agent závislostí Azure Monitor pro virtuální počítače se nainstaluje na virtuální počítače Azure s použitím rozšíření, pokud je stanovený jako povinný.  
@@ -61,31 +61,31 @@ Kritéria stavu nejde v této verzi zakázat.
 Závažnost upozornění na stav nelze změnit, lze ji povolit nebo zakázat pouze. V závislosti na stavu kritérií stavu se navíc některá Závažnost výstrahy aktualizují. 
 
 ## <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Pokud překonfigurujem nastavení konkrétního kritéria stavu, může být vymezeno na určitou instanci?  
-Pokud upravíte jakékoli nastavení instance kritéria stavu, upraví se všechny instance všech kritérií stavu stejného typu na virtuálním počítači Azure. Pokud se například změní prahová hodnota instance kritéria stavu volného místa na disku, která odpovídá logickému disku C:, bude tato prahová hodnota platit pro všechny ostatní logické disky, které jsou zjišťovány a monitorovány pro stejný virtuální počítač.
+Pokud upravíte jakékoli nastavení instance kritéria stavu, upraví se všechny instance všech kritérií stavu stejného typu na virtuálním počítači Azure. Například pokud se změní prahovou hodnotu instance kritérium stavu volného místa disku, který odpovídá logický disk C:, tato prahová hodnota se vztahuje na všechny ostatní logické disky, které zjišťování a monitorování pro stejný virtuální počítač.
 
 ## <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Monitoruje funkce stavu logické procesory a jádra?
 Žádná kritéria stavu na úrovni jednotlivých procesorů a logických procesorů nejsou pro Windows zahrnutá, ve výchozím nastavení se monitoruje jenom celkové využití procesoru, aby se účinně vyhodnotilo zatížení procesoru na základě celkového počtu logických procesorů dostupných pro virtuální počítač Azure. 
 
 ## <a name="are-all-health-criteria-thresholds-configurable"></a>Konfigurovatelné jsou všechny prahové hodnoty kritérií stavu?  
-Prahové hodnoty pro kritéria stavu, která cílí na virtuální počítač s Windows, se nedají upravovat, protože jejich stavy jsou nastavené na *spouštění* nebo *k dispozici*. Při dotazování na stav z [rozhraní API pro sledování zatížení](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)zobrazuje *comparisonOperator* hodnotu **LessThan** nebo **GreaterThan** s *prahovou* hodnotou **4** pro službu nebo entitu, pokud:
-   - Service Health klienta DNS – služba není spuštěná. 
-   - Stav služby klienta DHCP – služba není spuštěna. 
-   - Service Health RPC – služba není spuštěná. 
-   - Stav služby brány Windows Firewall – služba není spuštěná.
-   - Stav služby protokolu událostí systému Windows – služba není spuštěna. 
+Prahové hodnoty pro kritéria, které se zaměřují virtuálního počítače s Windows nejsou upravitelné, protože jejich stavů jsou nastaveny na *systémem* nebo *dostupné*. Při dotazování stav z [úlohy monitorování API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), zobrazí *comparisonOperator* hodnotu **LessThan** nebo **GreaterThan** s *prahová hodnota* hodnotu **4** služby nebo entity pokud:
+   - Stav služby Klient DNS – služba není spuštěná. 
+   - Stav služby Klient DHCP – služba není spuštěná. 
+   - Stav služby vzdáleného volání Procedur – služba není spuštěná. 
+   - Stav služby Windows firewall – služba není spuštěná.
+   - Stav služby protokolu událostí Windows – služba není spuštěná. 
    - Stav služby serveru – služba není spuštěná. 
-   - Stav služby vzdálené správy systému Windows – služba není spuštěna. 
-   - Chyba nebo poškození systému souborů – logický disk není k dispozici.
+   - Stav služby vzdálené správy Windows – služba není spuštěná. 
+   - Chyba systému souborů nebo poškození – je logický Disk není k dispozici.
 
-Prahové hodnoty pro následující kritéria stavu systému Linux nelze upravovat, protože jejich stav je již nastaven na *hodnotu true*. Stav zobrazuje *comparisonOperator* s hodnotou **LessThan** a *prahovou* hodnotou **1** , pokud se dotazuje z rozhraní API monitorování úloh pro entitu v závislosti na kontextu:
-   - Stav logického disku – logický disk není online/dostupný.
-   - Stav disku – disk není online/k dispozici
-   - Stav síťového adaptéru – síťový adaptér je zakázaný.
+Prahové hodnoty pro následující stav kritéria Linux nejsou upravitelné, protože jeho stav je již nastavena na *true*. Stav se zobrazí *comparisonOperator* s hodnotou **LessThan** a *prahová hodnota* hodnotu **1** při posílat dotaz z Úloha monitorování rozhraní API pro entitu, v závislosti na jeho kontextu:
+   - Stav logického disku – logický disk není online / k dispozici
+   - Stav disku – Disk není online / k dispozici
+   - Stav síťového adaptéru – síťový adaptér je zakázána.
 
 ## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Návody upravit výstrahy, které jsou součástí funkce Health?
-Pravidla výstrah, která jsou definována pro každé kritérium stavu, se nezobrazí v Azure Portal. Pravidlo upozornění na stav můžete povolit nebo zakázat pouze v [rozhraní API monitorování úloh](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Nemůžete také přiřadit [Azure monitor skupinu akcí](../../azure-monitor/platform/action-groups.md) pro výstrahy týkající se stavu v Azure Portal. Pomocí rozhraní API pro nastavení oznámení můžete nakonfigurovat skupinu akcí, která se aktivuje při každém vyvolání výstrahy na stav. V současné době můžete k virtuálnímu počítači přiřadit skupiny akcí, aby všechny *výstrahy stavu* aktivované virtuálním počítačem měly stejné skupiny akcí. Na rozdíl od tradičních výstrah Azure neexistuje koncept samostatné skupiny akcí pro každé pravidlo upozornění na stav. Při aktivaci upozornění na stav se navíc podporují jenom skupiny akcí, které jsou nakonfigurované tak, aby poskytovaly e-maily nebo oznámení SMS. 
+Pravidla výstrah, které jsou definovány pro každé kritérium stavu se nezobrazují na portálu Azure portal. Můžete povolit nebo zakázat upozornění na stav pouze v pravidlo [úlohy monitorování rozhraní API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Nemůžete také přiřadit [Azure monitor skupinu akcí](../../azure-monitor/platform/action-groups.md) pro výstrahy týkající se stavu v Azure Portal. Pomocí rozhraní API pro nastavení oznámení můžete nakonfigurovat skupinu akcí, která se aktivuje při každém vyvolání výstrahy na stav. V současné době můžete přiřadit skupiny akcí na virtuálním počítači tak, aby všechny *výstrahy týkající se stavu* aktivuje proti aktivační událost virtuální počítač stejné skupiny akcí. Na rozdíl od tradičních upozornění v Azure neexistuje koncept skupiny samostatnou akci pro každé pravidlo výstrahy stavu. Kromě toho pouze skupiny akcí, které jsou nakonfigurované na poskytování e-mailu nebo oznámení SMS jsou podporovány, když se aktivuje upozornění na stav. 
 
-## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>V grafech výkonu pro virtuální počítač nejsou vidět žádná nebo žádná data
+## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Se mi nezobrazují některé nebo všech dat v grafech výkonu pro virtuální počítač
 Pokud nevidíte údaje o výkonu v tabulce disků nebo v některém z grafů výkonu, nemusí být v pracovním prostoru nakonfigurovány čítače výkonu. Pokud ho chcete vyřešit, spusťte následující [skript PowerShellu](vminsights-enable-at-scale-powershell.md#enable-with-powershell).
 
 ## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Jak se Azure Monitor pro virtuální počítače funkce map liší od Service Map?
@@ -101,10 +101,10 @@ Funkce mapy Azure Monitor pro virtuální počítače je založena na Service Ma
 * Možnost výběru skupin a počítačů na mapě byla aktualizována a teď podporuje předplatná, skupiny prostředků, službu Azure Virtual Machine Scale Sets a cloudové služby.
 * Ve funkci mapování Azure Monitor pro virtuální počítače nelze vytvořit nové Service Map skupiny počítačů.  
 
-## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Proč moje grafy výkonu zobrazují tečkované řádky?
+## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Proč se Moje grafy výkonu zobrazit tečkované čáry
 K tomu může dojít z několika důvodů.  V případech, kdy existuje mezera v kolekci dat, můžeme řádky považovat za tečky.  Pokud jste upravili četnost vzorkování dat pro povolené čítače výkonu (výchozí nastavení je shromažďování dat každých 60 sekund), můžete zobrazit tečkované řádky v grafu, pokud vyberete úzký časový rozsah grafu a frekvence vzorkování je menší než velikost intervalu použitá v grafu (například frekvence vzorkování je každých 10 minut a každá sada v grafu je 5 minut).  Když zvolíte širší časový rozsah, který se má zobrazit, musí se čáry grafu zobrazovat jako plné čáry místo teček v tomto případě.
 
-## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Jsou skupiny podporované pomocí Azure Monitor pro virtuální počítače?
+## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Skupiny podporovaných službou Azure Monitor pro virtuální počítače?
 Ano, Jakmile nainstalujete agenta závislostí, shromáždíme informace z virtuálních počítačů pro zobrazení skupin na základě předplatného, skupiny prostředků, sady škálování virtuálních počítačů a cloudových služeb.  Pokud jste používali Service Map a vytvořili jste skupiny počítačů, zobrazí se také.  Skupiny počítačů se zobrazí také ve filtru skupiny, pokud jste je vytvořili pro pracovní prostor, který si prohlížíte. 
 
 ## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Návody se zobrazí podrobnosti o tom, co řídí řádek 95. percentilu v agregovaných grafech výkonu?
@@ -117,7 +117,7 @@ Pokud duplikujete rozsahy IP adres buď pomocí virtuálních počítačů, nebo
 Funkce map aktuálně podporuje jenom protokol IPv4 a prozkoumáme podporu pro protokol IPv6. Podporujeme také protokol IPv4, který je tunelem v rámci protokolu IPv6.
 
 ## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Když nahrajem mapu pro skupinu prostředků nebo jinou velkou skupinu, může se mapa obtížně zobrazit.
-I když jsme vylepšili mapování na zpracování rozsáhlých a složitých konfigurací, uvědomujeme si, že mapa může mít spoustu uzlů, připojení a uzel funguje jako cluster.  Jsme se zavázali, že budete pokračovat v vylepšení podpory pro zvýšení škálovatelnosti.   
+I když jsme vylepšili mapování na zpracování rozsáhlých a složitých konfigurací, uvědomujeme si, že mapa může mít spoustu uzlů, připojení a uzel funguje jako cluster.  Naší prioritou je pokračováním vylepšit podporu o zvýšení škálovatelnosti.   
 
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Proč se síťový graf na kartě výkon liší od síťového grafu na stránce Přehled virtuálního počítače Azure?
 

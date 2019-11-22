@@ -1,5 +1,5 @@
 ---
-title: Pokročilé možnosti podepisování certifikátů tokenu SAML pro předem integrované aplikace služby Azure AD | Microsoft Docs
+title: Pokročilé možnosti podepisování certifikátů tokenu SAML pro aplikace Azure AD
 description: Naučte se používat rozšířené možnosti podepisování certifikátů v tokenu SAML pro předem integrované aplikace v Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea99344399dbbbc17f0d7381e54ab68ae4bcc78f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 614a90fcc0daef3eb77c43e6b56848c34d160ed5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381261"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274745"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Rozšířené možnosti podepisování certifikátů v tokenu SAML pro aplikace Galerie v Azure Active Directory
 
@@ -67,7 +67,7 @@ V dalším kroku změňte možnosti podepsání certifikátu v tokenu SAML pro t
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** , pokud je k dispozici. (Pokud není **SAML** k dispozici, aplikace nepodporuje SAML, ale můžete zbývající část tohoto postupu a článku ignorovat.)
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML-Preview** Najděte hlavičku **podpisového certifikátu SAML** a vyberte ikonu pro **Úpravy** (tužka). Zobrazí se stránka **podpisový certifikát SAML** .
 
-   ![Příklad: Stránka podpisového certifikátu SAML](./media/certificate-signing-options/saml-signing-page.png)
+   ![Příklad: stránka podpisového certifikátu SAML](./media/certificate-signing-options/saml-signing-page.png)
 
 1. V rozevíracím seznamu **možnost podepisování vyberte možnost** **podepsat odpověď SAML**, **podepsat kontrolní výraz SAML**nebo **podepsat odpověď a kontrolní výraz SAML**. Popisy těchto možností se zobrazí výše v tomto článku v části [možnosti podepisování certifikátu](#certificate-signing-options).
 1. V rozevíracím seznamu **algoritmus podepisování** vyberte **SHA-1** nebo **SHA-256**. Popisy těchto možností se zobrazí výše v tomto článku v části [algoritmy podepisování certifikátů](#certificate-signing-algorithms) .

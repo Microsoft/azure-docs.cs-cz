@@ -1,6 +1,6 @@
 ---
-title: Přehled služby Azure prostorových kotvy | Dokumentace Microsoftu
-description: Zjistěte, jak prostorových kotvy Azure vám pomůže vytvořit prostředí pro různé platformy, smíšené reality.
+title: Přehled prostorových kotev Azure
+description: Přečtěte si, jak prostorové kotvy Azure pomáhají vyvíjet hybridní prostředí realit pro různé platformy.
 author: craigktreasure
 manager: aliemami
 services: azure-spatial-anchors
@@ -8,38 +8,38 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2451922f0eb49a5ccee036db72eb046760287dca
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 503004cba0d4109adcfee62f7acd108cbcb73eb6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60240480"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277146"
 ---
-# <a name="azure-spatial-anchors-overview"></a>Přehled služby Azure prostorových kotvy
+# <a name="azure-spatial-anchors-overview"></a>Přehled prostorových kotev Azure
 
-Vítá vás Azure prostorových ukotvení. Azure prostorových kotvy umožňuje vývojářům základní možnosti pro vytváření aplikací prostorově vědět smíšená realita. Tyto aplikace můžou podporovat Microsoft HoloLens, podpora arkit, která zařízení se systémem iOS a zařízení se systémem Android podporuje ARCore. Prostorové kotvy Azure umožňuje vývojářům fungovat pro hybridní realitu vnímat mezery, určit přesné body zájmu a stránkám znovu vyvolat tyto body zájmu z podporovaných zařízení.
-Tyto přesné body zájmu se označují jako prostorových ukotvení.
+Vítá vás prostorové kotvy Azure. Prostorové kotvy Azure umožňují vývojářům vytvářet základní funkce pro vytváření aplikací s kombinovanými realitami s prostorovou podporou. Tyto aplikace můžou podporovat Microsoft HoloLens, zařízení se systémem iOS podporující ARKit a zařízení s Androidem podporující ARCore. Azure Spatial Anchors umožňuje vývojářům pracovat s platformami smíšené reality, vnímat prostory, navrhovat přesné body zájmu a vyvolat tyto body zájmu z podporovaných zařízení.
+Tyto přesné body zájmu se označují jako prostorové kotvy.
 
 ![Různé platformy](./media/cross-platform.png)
 
 ## <a name="examples"></a>Příklady
 
-Některé příklady případů použití umožněné prostorových kotvy zahrnují:
+Příklady případů použití povolené prostorovými kotvami zahrnují:
 
-- [Prostředí pro více uživatelů](tutorials/tutorial-share-anchors-across-devices.md). Prostorový kotvy usnadňuje lidí na stejném místě k účasti v aplikacích pro hybridní realitu více uživatelů. Například dva uživatelé hru lze spustit smíšené reality Šachy umístěním virtuální šachovnici na tabulku. Najetím myší svoje zařízení v tabulce, jsou pak, zobrazení a interakci s virtuální šachovnici společně.
+- [Prostředí pro více uživatelů](tutorials/tutorial-share-anchors-across-devices.md). Prostorové kotvy usnadňují lidem na stejném místě účast v aplikacích hybridní reality více uživatelů. Například dvě osoby můžou začít hru šachy ve hybridní realitě tím, že na tabulku umístí virtuální šachovnici. Díky tomu, že umístíte zařízení v tabulce, může zobrazit a pracovat s virtuální šachovnicí společně.
 
-- [Způsob zjištění](concepts/anchor-relationships-way-finding.md). Také můžou vývojáři připojit prostorových kotvy společně vytváření vztahů mezi nimi. Aplikace může například obsahovat prostředí, které má dva nebo víc bodů zájmu, které uživatel musí spolupracovat s k dokončení úkolu. Tyto body zájmu možné vytvářet propojené způsobem. Později když uživatel dokončuje vícekrokových úkolů, aplikaci požádat o kotev vztahů, které jsou poblíž tu nasměrovat uživatele na další krok v úloze.
+- [Způsob – hledání](concepts/anchor-relationships-way-finding.md). Vývojáři mohou také prostorové kotvy propojit vytvářením vztahů mezi nimi. Aplikace může například zahrnovat prostředí, které má dva nebo více bodů zájmu, se kterými musí uživatel pracovat, aby dokončil úkol. Tyto body zájmu je možné vytvořit připojeným způsobem. Když později uživatel dokončuje úlohu s více kroky, může požádat o kotvy, které jsou poblíž aktuální, a nasměrovat uživatele k dalšímu kroku v úloze.
 
-- [Zachování virtuální obsahu v reálném světě](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Aplikace můžete nechat uživatele umístit virtuální kalendáře na zeď místnosti konference, uživatelé mohou zobrazit aplikaci pro telefon nebo na zařízení HoloLens. V průmyslových nastavení, může uživatel zobrazit kontextové informace o počítači pouhým ukázáním fotoaparát podporovaných zařízení.
+- [Zachování virtuálního obsahu v reálném světě](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Aplikace může uživateli umístit virtuální kalendář na zeď konferenční místnosti, aby mohli vidět použití aplikace pro telefon nebo zařízení HoloLens. V průmyslovém prostředí může uživatel přijímat kontextové informace o stroji tak, že na něj nasměruje kameru podporovaného zařízení.
 
-Azure prostorových ukotvení se skládá z spravovaných služeb a klientských sad SDK pro podporované platformy zařízení. Následující části obsahují informace o začátcích se vytváření aplikací s použitím Azure prostorových ukotvení.
+Azure Spatial Anchors se skládá ze spravované služby a klientských sad SDK pro podporované platformy zařízení. V následujících částech najdete informace o tom, jak začít sestavovat aplikace pomocí prostorových kotev Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vytvoření první aplikace pomocí prostorových ukotvení.
+Vytvořte svou první aplikaci s prostorovými kotvami.
 
 > [!div class="nextstepaction"]
-> [Unity](unity-overview.yml)
+> [Jednot](unity-overview.yml)
 
 > [!div class="nextstepaction"]
 > [iOS](quickstarts/get-started-ios.md)

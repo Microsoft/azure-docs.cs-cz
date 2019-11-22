@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669684"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278584"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
 
 [!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
-V tomto rychlém startu vytvoříte novou aplikaci na [portálu Luis](https://www.luis.ai). Nejdřív vytvoříte základní části aplikace, **záměrů**a **entit**. Pak otestujete aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
+V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Nejdřív vytvoříte základní části aplikace, **záměrů**a **entit**. Pak otestujete aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
 
 Sestavování aplikace je bezplatné a nevyžaduje předplatné Azure. Až budete připraveni k nasazení aplikace, přečtěte si [rychlý Start k nasazení aplikace](get-started-portal-deploy-app.md). Ukazuje, jak vytvořit prostředek služby pro rozpoznávání Azure a přiřadit ho k aplikaci.
 
@@ -37,9 +37,9 @@ Sestavování aplikace je bezplatné a nevyžaduje předplatné Azure. Až budet
 
    |Název nastavení| Hodnota | Účel|
    |--|--|--|
-   |Name (Název)|`myEnglishApp`|Jedinečný název aplikace LUIS<br>požadovanou|
+   |Název|`myEnglishApp`|Jedinečný název aplikace LUIS<br>požadovanou|
    |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>požadovanou|
-   |Popis (volitelné)|`App made with LUIS Portal`|Popis aplikace<br>Volitelné|
+   |Popis (volitelné)|`App made with LUIS Portal`|Popis aplikace<br>volitelné|
    |Prostředek předpovědi (volitelné) |-  |Nevybírejte. LUIS vám nabízí počáteční klíč, který můžete zdarma použít pro vytváření a 1 000 požadavků na koncový bod předpovědi. |
 
    ![Zadat nové nastavení aplikace](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -66,7 +66,7 @@ Chcete-li vytvořit záměry, proveďte následující kroky:
 
 1. Zadejte název záměru `FindForm`a potom vyberte **Hotovo**.
 
-## <a name="add-an-example-utterance"></a>Přidat příklad utterance
+## <a name="add-an-example-utterance"></a>Přidat utterance příklad
 
 Můžete přidat příklad projevy po vytvoření záměrů. Příkladem projevy je text, který uživatel zadá do robota chatu nebo jiné klientské aplikace. Namapují záměr textu uživatele na LUIS záměr.
 
@@ -85,14 +85,14 @@ Přidejte následující 15 příkladů projevy do záměru `FindForm`.
 |5|Potřebuji pro interní úlohu použít HRF-234695?|
 |6|Potřebuje mi správce vědět, že ho mám použít pro úlohu s HRF-234091|
 |7|Kam můžu odeslat HRF-234918? Zobrazuje se mi e-mailová odpověď, která byla přijata?|
-|8|HRF-234555|
+|8|hrf-234555|
 |9|Kdy byla aktualizace HRF-234987?|
 |10|Použít formu HRF-876345 k použití pro technické pozice|
 |11|Byla pro moji Open REQ odeslána nová verze HRF-765234?|
 |12|Používám HRF-234234 pro mezinárodní úlohy?|
 |13|HRF-234598 pravopisná chyba|
 |14|bude HRF-234567 upravovat nové požadavky|
-|15|HRF-123456, HRF-123123, HRF-234567|
+|15|hrf-123456, hrf-123123, hrf-234567|
 
 Podle návrhu se tyto příklady projevy liší následujícími způsoby:
 

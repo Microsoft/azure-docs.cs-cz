@@ -1,6 +1,6 @@
 ---
-title: Pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD – známé problémy a jejich řešení | Dokumentace Microsoftu
-description: Jak řešit běžné problémy s kompatibilitou protokol čelí při přidávání aplikace mimo galerii, která podporuje SCIM 2.0 do služby Azure AD
+title: Známé problémy s dodržováním předpisů protokolu SCIM 2,0 – Azure AD
+description: Řešení běžných problémů s kompatibilitou protokolů při přidávání aplikace mimo galerii, která podporuje SCIM 2,0 do Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,102 +16,102 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963172"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275802"
 ---
-# <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD
+# <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
 
-Azure Active Directory (Azure AD) je možné automaticky zřizovat uživatele a skupiny pro všechny aplikace nebo systému, který je přední stěnou pomocí webové služby s využitím rozhraní definované v [systému pro protokol mezi doménami Identity Management (SCIM) 2.0 specifikace](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
+Azure Active Directory (Azure AD) může automaticky zřídit uživatele a skupiny do jakékoli aplikace nebo systému, který je frontou webové služby, s rozhraním definovaným v [systému pro specifikaci protokolu SCIM (Domain Identity Management) 2,0](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
 
-Podpora služby Azure AD pro protokol SCIM 2.0 je popsaný v [pomocí systému pro mezi doménami Identity Management (SCIM) k automatickému zřízení uživatelů a skupin ze služby Azure Active Directory do aplikací](use-scim-to-provision-users-and-groups.md), se seznamem konkrétní části protokol, který implementuje za účelem automatické zřizování uživatelů a skupin ze služby Azure AD a aplikace s podporou SCIM 2.0.
+Podpora Azure AD pro protokol SCIM 2,0 je popsaná v tématu [použití systému pro správu identit mezi doménami (SCIM) k automatickému zřizování uživatelů a skupin z Azure Active Directory do aplikací](use-scim-to-provision-users-and-groups.md), které obsahují seznam specifických částí protokolu, které implementuje, aby bylo možné automaticky zřídit uživatele a skupiny z Azure AD až po aplikace podporující SCIM 2,0.
 
-Tento článek popisuje aktuálního i staršího problémy s zřizování služby dodržování protokol SCIM 2.0 a jak tyto problémy obejít uživatelů Azure AD.
+Tento článek popisuje aktuální a minulé problémy se službou zřizování uživatelů Azure AD při dodržování protokolu SCIM 2,0 a o tom, jak tyto problémy obejít.
 
 > [!IMPORTANT]
-> Nejnovější aktualizace pro klienta služby Azure AD uživatele pro zřizování SCIM služby byl proveden na 18. prosince 2018. Tato aktualizace řeší problémy s kompatibilitou uvedené v následující tabulce. Přečtěte si nejčastější dotazy níže pro další informace o této aktualizaci.
+> Poslední aktualizace služby Azure AD Provisioning Service SCIM Client se provedla 18. prosince 2018. Tato aktualizace řeší známé problémy s kompatibilitou, které jsou uvedeny v následující tabulce. Další informace o této aktualizaci najdete na stránce s nejčastějšími dotazy.
 
-## <a name="scim-20-compliance-issues-and-status"></a>Problémy s dodržováním předpisů SCIM 2.0 a stav
+## <a name="scim-20-compliance-issues-and-status"></a>Problémy a stav dodržování předpisů SCIM 2,0
 
-| **Problém dodržování předpisů SCIM 2.0** |  **Oprava?** | **Opravte datum**  |  
+| **Problém dodržování předpisů pro SCIM 2,0** |  **Určí?** | **Opravit datum**  |  
 |---|---|---|
-| Azure AD vyžaduje "nebo scim" v kořenovém adresáři aplikace je adresa URL koncového bodu SCIM  | Ano  |  18\. prosince 2018 | 
-| Atributy rozšíření použít tečku "."zápis před názvy atributů místo dvojtečka":" zápis |  Ano  | 18\. prosince 2018  | 
-|  Oprava žádosti více hodnotami atributů obsahovat řiďte se syntaxí filtru neplatná cesta | Ano  |  18\. prosince 2018  | 
-|  Požadavky na vytvoření skupiny obsahují neplatné schéma identifikátoru URI | Ano  |  18\. prosince 2018  |  
+| Azure AD vyžaduje, aby "/SCIM" v kořenu adresy URL koncového bodu SCIM aplikace.  | Ano  |  18. prosince 2018 | 
+| Atributy rozšíření používají tečku "." před názvy atributů namísto dvojtečky ":" Notation. |  Ano  | 18. prosince 2018  | 
+|  Žádosti o opravu atributů s více hodnotami obsahují neplatnou syntaxi filtru cesty. | Ano  |  18. prosince 2018  | 
+|  Žádosti o vytvoření skupiny obsahují neplatný identifikátor URI schématu. | Ano  |  18. prosince 2018  |  
 
-## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Jsou opravy služeb popsány, automaticky využije na mé existující aplikace SCIM?
+## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Byly opravy služeb popsané automaticky u stávající aplikace SCIM?
 
-Ne. Bude mít k rozbíjející změny SCIM aplikace, které bylo kódováno k práci s starší chování, změny nebyly automaticky použít pro existující aplikace.
+Ne. Vzhledem k tomu, že by šlo o zásadní změnu aplikací SCIM, které byly kódované pro práci se starším chováním, se změny automaticky nepoužily u existujících aplikací.
 
-Změny se použijí na všechny nové [aplikace mimo Galerii SCIM](configure-single-sign-on-non-gallery-applications.md) nakonfigurované na webu Azure Portal, po datu opravy.
+Změny se aplikují na všechny nové [aplikace SCIM bez Galerie](configure-single-sign-on-non-gallery-applications.md) nakonfigurované v Azure Portal po datu opravy.
 
-Informace o tom, jak migrovat existující Úloha zřizování uživatele zahrnout nejnovější opravy najdete v další části.
+Informace o tom, jak migrovat existující úlohu zřizování uživatelů tak, aby zahrnovala nejnovější opravy, najdete v další části.
 
-## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Můžete migrovat stávající na základě SCIM zřizování uživatelů úlohy zahrnout nejnovější opravy služby?
+## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Můžu migrovat existující úlohu zřizování uživatelů založenou na SCIM, aby zahrnovala nejnovější opravy služeb?
 
-Ano. Pokud už používáte tato instance aplikace pro jednotné přihlašování a potřebujete migrovat existující Úloha zřizování zahrnout nejnovější opravy, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak používat rozhraní Microsoft Graph API a Průzkumníka Microsoft Graph API k odebrání existující aplikaci SCIM vaše staré úlohy zřizování a vytvořte novou vykazuje nové chování.
+Ano. Pokud už tuto instanci aplikace používáte pro jednotné přihlašování a potřebujete migrovat existující úlohu zřizování, aby zahrnovala nejnovější opravy, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph API Exploreru odebrat starou úlohu zřizování z vaší stávající aplikace SCIM a vytvořit novou, která bude vykazovat nové chování.
 
 > [!NOTE]
-> Pokud vaše aplikace je stále ve vývoji a nebyla ještě nasazena pro jednotné přihlašování nebo zřizování uživatelů, je odstranit položku aplikace v Nejjednodušším řešením **Azure Active Directory > podnikové aplikace**tématu na webu Azure portal a jednoduše přidat novou položku pro aplikace pomocí **vytvoření aplikace > mimo galerii** možnost. Jedná se o alternativu ke spuštění níže uvedeného postupu.
+> Pokud je vaše aplikace stále ve vývoji a ještě nebyla nasazena pro jednotné přihlašování nebo zřizování uživatelů, nejjednodušší řešení je odstranit položku aplikace v části **Azure Active Directory > podnikové aplikace** v Azure Portal a jednoduše přidat novou položku pro aplikaci pomocí možnosti **vytvořit aplikaci > mimo galerii** . Toto je alternativa ke spuštění níže uvedeného postupu.
  
-1. Přihlaste se k webu Azure portal na https://portal.azure.com.
-2. V **Azure Active Directory > podnikové aplikace** části na webu Azure Portal, vyhledejte a vyberte svou stávající aplikaci SCIM.
-3. V **vlastnosti** část vaší existující aplikace SCIM kopírování **ID objektu**.
-4. V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
-5. V Graph Exploreru spusťte následující příkaz k vyhledání ID zřizování úlohy. Nahraďte ID objektu zabezpečení (ID objektu) zkopírovanými z třetí krok služba "[object-id]".
+1. Přihlaste se k Azure Portal v https://portal.azure.com.
+2. V Azure Portal oddílu **Azure Active Directory > podnikové aplikace** vyhledejte a vyberte existující aplikaci SCIM.
+3. V části **Properties (vlastnosti** ) vaší existující aplikace SCIM zkopírujte **ID objektu**.
+4. V novém okně webového prohlížeče, přejít na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, do kterého se vaše aplikace přidala.
+5. V Průzkumníku grafů spusťte následující příkaz a vyhledejte ID vaší úlohy zřizování. Nahraďte "[Object-ID]" ID objektu služby (ID objektu) zkopírovaným z třetího kroku.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Získat úlohy](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "úloh") 
+   ![Získat úlohy](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Získat úlohy") 
 
 
-6. Ve výsledcích zkopírujte úplný řetězec "ID", který začíná "customappsso" nebo "scim".
-7. Spusťte následující příkaz pro načtení konfigurace mapování atributů, takže můžete vytvořit zálohu. Použít stejné [object-id] jako před a nahraďte [id úlohy] zřizování ID úlohy, které jsou zkopírovány z posledního kroku.
+6. Ve výsledcích zkopírujte úplný řetězec "ID", který začíná buď "customappsso", nebo "SCIM".
+7. Spusťte následující příkaz, který načte konfiguraci mapování atributů, takže můžete vytvořit zálohu. Použijte stejné [Object-ID] jako dřív a nahraďte [Job-ID] ID úlohy zřizování zkopírované z posledního kroku.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![Získat schéma](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "získat schéma") 
+   ![Získat schéma](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Získat schéma") 
 
-8. Kopírovat výstup JSON v posledním kroku a uložte ho do textového souboru. Tato položka obsahuje všechny vlastní – mapování atributů přidá do vaší aplikace starý a by měla být přibližně několik tisíc řádků JSON.
-9. Spuštěním následujícího příkazu odstraňte úlohu zřizování:
+8. Zkopírujte výstup JSON z posledního kroku a uložte ho do textového souboru. Obsahuje všechny vlastní mapování atributů, které jste přidali do staré aplikace, a mělo by to být přibližně několik tisíc řádků formátu JSON.
+9. Chcete-li odstranit úlohu zřizování, spusťte následující příkaz:
  
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
-10. Spusťte následující příkaz k vytvoření nové úlohy zřizování, který má nejnovější opravy služby.
+10. Spuštěním následujícího příkazu vytvořte novou úlohu zřizování s nejnovějšími opravami služeb.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
  `{   templateId: "scim"   }`
    
-11. Ve výsledcích poslední krok zkopírujte úplný řetězec "ID", který začíná "scim". Znovu použijte v případě potřeby vaše staré mapování atributů spuštěním příkazu nahrazujte [nové-– id úlohy] s novou úlohu s ID jste zkopírovali a zadat, které ve formátu JSON výstup z kroku 7 # jako datovou část požadavku.
+11. V části Výsledky posledního kroku zkopírujte úplný řetězec "ID", který začíná řetězcem "SCIM". Volitelně můžete znovu použít staré mapování atributů spuštěním následujícího příkazu, a to tak, že nahradíte [New-Job-ID] novým ID úlohy, kterou jste právě zkopírovali, a zadáte výstup JSON z kroku #7 jako text žádosti.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
  `{   <your-schema-json-here>   }`
 
-12. Vraťte se do první okno webového prohlížeče a vyberte **zřizování** kartu pro vaši aplikaci.
-13. Zkontrolujte konfiguraci a spusťte úlohy zřizování. 
+12. Vraťte se do prvního okna webového prohlížeče a vyberte kartu **zřizování** pro vaši aplikaci.
+13. Ověřte konfiguraci a potom spusťte úlohu zřizování. 
 
-## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Můžete přidat novou aplikaci mimo galerii, která má starý zřizování chování uživatelů?
+## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Můžu přidat novou aplikaci mimo galerii, která má staré chování při zřizování uživatelů?
 
-Ano. Pokud měl programového aplikace do staré chování, které existovaly před opravy a budete muset nasadit novou instanci, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak použít rozhraní Microsoft Graph API a Průzkumník Microsoft Graph API k vytvoření úlohy zřizování SCIM, vykazující staré chování.
+Ano. Pokud jste nasadili aplikaci na staré chování, které existovalo před opravami, a potřebujete nasadit novou instanci této služby, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph API Exploreru vytvořit úlohu zřizování SCIM, která se projeví ve starém chování.
  
-1. Přihlaste se k webu Azure portal na https://portal.azure.com.
-2. v **Azure Active Directory > podnikové aplikace > Vytvoření aplikace** části na webu Azure Portal vytvořte novou **mimo galerii** aplikace.
-3. V **vlastnosti** části nové vlastní aplikace, kopie **ID objektu**.
-4. V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
-5. V Graph Exploreru spusťte následující příkaz k inicializaci konfigurace zřizování pro vaši aplikaci.
-   Nahraďte ID objektu zabezpečení (ID objektu) zkopírovanými z třetí krok služba "[object-id]".
+1. Přihlaste se k Azure Portal v https://portal.azure.com.
+2. v části **Azure Active Directory > podnikové aplikace > vytvořit aplikaci** v Azure Portal vytvořte novou aplikaci **mimo galerii** .
+3. V části **vlastnosti** vaší nové vlastní aplikace zkopírujte **ID objektu**.
+4. V novém okně webového prohlížeče, přejít na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, do kterého se vaše aplikace přidala.
+5. V Průzkumníku grafů spusťte níže uvedený příkaz pro inicializaci konfigurace zřizování pro vaši aplikaci.
+   Nahraďte "[Object-ID]" ID objektu služby (ID objektu) zkopírovaným z třetího kroku.
 
    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
    `{   templateId: "customappsso"   }`
  
-6. Vraťte se do první okno webového prohlížeče a vyberte **zřizování** kartu pro vaši aplikaci.
-7. Dokončení zřizování konfigurace, jako obvykle uživatelů.
+6. Vraťte se do prvního okna webového prohlížeče a vyberte kartu **zřizování** pro vaši aplikaci.
+7. Dokončete konfiguraci zřizování uživatelů obvyklým způsobem.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Další informace o zřizování a zrušení zřizování pro aplikace SaaS](user-provisioning.md)
 

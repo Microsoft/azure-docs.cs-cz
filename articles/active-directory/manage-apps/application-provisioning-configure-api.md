@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b3e6f84051aec97691d2bedda6665d3c9c0ceb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125071"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275722"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurace zřizování pomocí rozhraní API Microsoft Graph
 
-Azure Portal je pohodlný způsob, jak nakonfigurovat zřizování pro jednotlivé aplikace po jednom. Pokud ale vytváříte několik (nebo dokonce stovky) instancí aplikace, může být snazší automatizovat vytváření a konfiguraci aplikací pomocí Microsoft Graph rozhraní API. Tento článek popisuje, jak automatizovat konfiguraci zřizování prostřednictvím rozhraní API. Tato metoda se běžně používá pro aplikace, jako je [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on).
+Azure Portal je pohodlný způsob, jak nakonfigurovat zřizování pro jednotlivé aplikace po jednom. Pokud ale vytváříte několik (nebo dokonce stovky) instancí aplikace, může být snazší automatizovat vytváření a konfiguraci aplikací pomocí Microsoft Graph rozhraní API. Tento článek popisuje, jak automatizovat konfiguraci zřizování prostřednictvím rozhraní API. Tato metoda se běžně používá pro aplikace, jako je [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso).
 
 **Přehled kroků pro automatizaci konfigurace zřizování pomocí rozhraní Microsoft Graph API**
 

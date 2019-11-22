@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: d3869438f299383a0b3096babbd4874c24f08b3a
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031431"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286585"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -33,7 +33,7 @@ Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé en
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Rozpoznávání pojmenovaných entit V3 Public Preview
 
-[Další verze rozpoznávání pojmenovaných entit]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) je nyní k dispozici ve verzi Public Preview. Poskytuje aktualizace pro odkazování na entity i pro rozpoznávání pojmenovaných entit. 
+[Další verze rozpoznávání pojmenovaných entit](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) je nyní k dispozici ve verzi Public Preview. Poskytuje aktualizace pro odkazování na entity i pro rozpoznávání pojmenovaných entit.
 
 :::row:::
     :::column span="":::
@@ -108,7 +108,7 @@ Propojení entit
 | Množství      | Procento    | "50 %", "padesát procent"|
 | Množství      | Pořadí       | "2.", "druhý"     |
 | Množství      | Věk           | "90 den starý", "30 let starý"    |
-| Množství      | Měna      | "10,99 USD"     |
+| Množství      | Currency      | "10,99 USD"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
 | Množství      | Teplota   | "32 stupňů"    |
 | Datum a čas      | Není k dispozici\*         | "4. února 2012 – 18:30"      |

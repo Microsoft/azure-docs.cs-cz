@@ -1,60 +1,51 @@
 ---
-title: Přehled Azure Notebooks
-description: Spouštějte Jupyter poznámkové bloky v cloudu pomocí bezplatné Azure Notebooks služby, ve které není potřeba nastavení nebo konfigurace.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Přehled Azure poznámkové bloky
+description: Spouštějte poznámkové bloky Jupyter v cloudu s využitím bezplatné služby poznámkových bloků Azure, kde se vyžaduje bez instalace nebo konfigurace.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.author: kraigb
-ms.openlocfilehash: ad4a1d89809ebd1b7ac933ef391965accbfd1a6c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3dfa6cec962809fad1a03f5100c55315ff6a9ad
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496722"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277682"
 ---
-# <a name="overview-of-azure-notebooks"></a>Přehled Azure Notebooks
+# <a name="overview-of-azure-notebooks"></a>Přehled Azure poznámkové bloky
 
-Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. [Jupyter](https://jupyter.org/) (dříve IPython) je open source projekt, který umožňuje snadno kombinovat Markdownu text, spustitelný kód, trvalá data, grafiky a vizualizace na jediném, dostupném plátnu, *poznámkovém bloku* (SMS, kde se nachází Jupyter.org):
+Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. [Jupyter](https://jupyter.org/) (dříve IPython) je opensourcový projekt, který vám umožní snadno kombinovat text Markdownu, spustitelného kódu, trvalá data, grafiky a vizualizace na jedné, které se dají sdílet plátno, *Poznámkový blok* (image poskytuje jupyter.org):
 
 [![příklady poznámkových bloků Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
-Z důvodu této výkonné kombinace kódu, grafiky a vysvětlujícího textu se Jupyter stala oblíbená pro spoustu použití, včetně instrukcí pro datové vědy, čištění a transformace dat, číselné simulace, statistického modelování a vývoje modely strojového učení.
+Z důvodu této výkonnou kombinaci vysvětlující text, kód a grafické Jupyter získal oblibu pro mnoho účelů, včetně data science instrukce, čištění dat a transformace, číselná simulace, statistické modelování a vývoj modely strojového učení.
 
 ## <a name="hassle-free-experience"></a>Bezproblémové prostředí
 
-Azure Notebooks vám pomůže rychle začít pracovat na vytváření prototypů, datové vědy, vědecký výzkum nebo učení programu Pythonu:
+Poznámkových bloků Azure vám umožní začít rychle na vytváření prototypů, datové vědy, vědecký výzkum nebo se program Pythonu:
 
-- Vědecký odborník na data má okamžitý přístup k plnému prostředí Anaconda bez instalace.
-- Učitel může k studentům poskytnout bezproblémové prostředí Pythonu.
-- Předvádějící může vést jako rozhovor nebo webinář, aniž by vyžádala účastníky o útratu 45 minut instalace softwaru.
-- Vývojář nebo Hobbyist může používat poznámkové bloky jako rychlý kód scratchpad.
+- Mezi odborníky přes data má okamžitý přístup k úplné prostředí Anaconda s žádná instalace.
+- Učitel může poskytnout bezproblémové prostředí Pythonu pro studenty.
+- Skládání můžete poskytnout lajk Přednáška nebo webinář bez nutnosti účastníků, který můžete utratit za 45 minut. instalace softwaru.
+- Vývojář nebo tuto možnost můžete použít poznámkových bloků jako zápisník rychlý kód.
 
-Poznámkové bloky se ještě výkonnější, když je můžou lidé na nich spolupracovat prostřednictvím cloudové služby přístupné v prohlížeči, jako je Azure Notebooks (ve verzi Preview). V cloudu uživatelé nepotřebují instalovat Jupyter místně nebo se k němu netýkat při údržbě prostředí. Cloud také usnadňuje sdílení poznámkových bloků (a přidružených datových souborů) s jinými autorizovanými uživateli, což vyloučí komplikace sdílení poznámkových bloků prostřednictvím externích prostředků, jako jsou úložiště pro správu zdrojového kódu. S Azure Notebooks mohou uživatelé také zkopírovat (neboli "klonovat") poznámkové bloky do vlastního účtu pro změny nebo experimentování, což je zvláště užitečné pro účely instrukcí.
+Poznámkové bloky stát ještě výkonnější, když uživatelé mohou spolupracovat na nich prostřednictvím prohlížeče přístupné cloudovou službu jako je poznámkových bloků Azure (ve verzi Preview). V cloudu uživatelé nemusí instalace Jupyteru místně nebo starat zachování prostředí. Cloud také usnadňuje sdílení poznámkových bloků (a přidružené datové soubory) s jiným autorizovaným uživatelům zabránit komplikacím sdílení poznámkových bloků externí prostředky, jako je úložiště správy zdrojového kódu. Pomocí poznámkových bloků Azure uživatelé mohou také poznámkových bloků kopii (nebo "klonování") do své vlastní účet pro úpravy nebo experimentování, což je užitečné zejména pro účely instrukce.
 
-Vzhledem k tomu, že Azure Notebooks je obecná platforma pro vytváření, spouštění a sdílení kódu, můžete ji použít pro mnoho různých scénářů:
+Protože poznámkových bloků Azure je obecný kód pro vytváření, spouštění a sdílení platformy, můžete ho pro řadu různých scénářů:
 
-- Naučte se nový programovací jazyk – Vyzkoušejte si jeden z [kurzů pro FrontPage](https://notebooks.azure.com/Microsoft/projects/samples/html/Introduction%20to%20Python.ipynb) .
-- Naučte se data věda – Vyzkoušejte si [Jake VanderPlas Book](https://notebooks.azure.com/jakevdp/projects/PythonDataScienceHandbook)
-- [Učení kurzu](https://notebooks.azure.com/garth-wells/projects/CUED-IA-Computing-Michaelmas) pro stovky studentů
-- Poskytněte webinář online nebo na konferenci bez doby útraty při instalaci. 
-- Povolit uživatelům GitHubu přímé načítání a spouštění poznámkových bloků [vytvořením spouštěcího znaku GitHubu](https://notebooks.azure.com/help/projects/sharing/create-a-github-badge)
-- Poskytněte [aplikaci PowerPoint jako prezentace](https://notebooks.azure.com/help/jupyter-notebooks/slides) , kde je kód na snímcích spustitelný.
+- Přečtěte si nový programovací jazyk – zkuste použít jeden z [frontpage kurzy](https://notebooks.azure.com/Microsoft/projects/samples/html/Introduction%20to%20Python.ipynb)
+- Další informace pro datové vědy – zkuste [Jake VanderPlas knihy](https://notebooks.azure.com/jakevdp/projects/PythonDataScienceHandbook)
+- [Představuje kurz](https://notebooks.azure.com/garth-wells/projects/CUED-IA-Computing-Michaelmas) pro stovky studentů
+- Dejte webinář online nebo na konferenci nějaký produkt, aniž by bylo nutné na instalaci 
+- Povolit uživatelům Githubu přímo načíst a možnost spouštět poznámkové bloky ve [vytváření Odznáček spuštění Githubu](https://notebooks.azure.com/help/projects/sharing/create-a-github-badge)
+- Poskytnout [jako prezentací PowerPoint](https://notebooks.azure.com/help/jupyter-notebooks/slides) ve kterém je spustitelný kód ve snímcích!
 
-V krátkém Azure Notebooks vám pomůže dosáhnout efektivnější práce a tím i další.
+Stručně řečeno poznámkových bloků Azure vám pomůže provádět práci efektivněji a tím dosáhnout více.
 
 > [!Note]
-> Další informace o samotné Jupyter najdete na [Jupyter.org](https://jupyter.org/) a v [dokumentaci Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/).
+> Další informace o Jupyter samotný najdete na [jupyter.org](https://jupyter.org/) a [Jupyter dokumentaci](https://jupyter-notebook.readthedocs.io/en/latest/).
 
 ## <a name="pricing-and-quotas"></a>Ceny a kvóty
 
-Azure Notebooks je bezplatná služba, ale každý projekt je omezený na 4 GB paměti a 1 GB dat, aby nedocházelo k zneužití. Legitimní uživatelé, kteří překračují tato omezení, uvidí CAPTCHA výzvu pro pokračování ve spouštění poznámkových bloků.
+Azure Notebooks je bezplatná služba, ale každý projekt je omezený na 4 GB paměti a 1 GB dat, aby nedocházelo k zneužití. Oprávněným uživatelům, které tyto limity překročit najdete v článku v rámci kontroly Captcha k pokračování ve spouštění poznámkových bloků.
 
 Pokud chcete uvolnit všechna omezení, přihlaste se Azure Notebooks pomocí účtu s použitím Azure Active Directory (například firemní účet). Pokud je tento účet přidružený k předplatnému Azure, můžete se připojit k libovolným instancím Azure Data Science Virtual Machine v rámci tohoto předplatného. Další informace najdete v tématu [Správa a konfigurace projektů – výpočetní vrstva](configure-manage-azure-notebooks-projects.md#compute-tier).
 
@@ -62,60 +53,60 @@ U notebookových serverů je zaručeno, že bude mít maximálně 8 hodin. Ve v�
 
 ## <a name="available-kernels-and-environments"></a>Dostupná jádra a prostředí
 
-Pro každý Poznámkový blok vyberete jádro (to znamená běhové prostředí), které se používá ke spouštění libovolných buněk s kódem. Azure Notebooks podporuje následující jádra:
+Každý Poznámkový blok jupyter vyberete jádra (to znamená, běhové prostředí), který se používá ke spuštění jakékoli buňky kódu. Poznámkových bloků Azure podporuje následujícími jádry:
 
-- Python 2,7 + Anaconda2-5.3.0
-- Python 3,6 + Anaconda3-5.3.0
-- Python 3,5 + Anaconda3-4.2.0 (bude zastaralé)
+- Python 2.7 + Anaconda2 5.3.0
+- Python 3.6 + Anaconda3 5.3.0
+- Python 3.5 + Anaconda3-4.2.0 (bude zastaralé)
 - R 3.4.1 + Microsoft R Open 3.4.1
 - F#4.1.9
 
-Azure Notebooks také zahrnuje další balíčky přesahující základní distribuce. Jádry Pythonu zahrnují například knihovny numpy, PANDAS, scikit-učení, matplotlib a rozostření.
+Poznámkových bloků Azure obsahuje také další balíčky nad rámec základní distribuce. Jádrech Pythonu, například obsahovat numpy, balíčky pandas, scikit-informace rozostření knihoven a matplotlib.
 
-Můžete také přizpůsobit projekt a vytvořit prostředí pro všechny poznámkové bloky v daném projektu. Další informace najdete v tématu [rychlý Start: vytvoření projektu s vlastním prostředím](quickstart-create-jupyter-notebook-project-environment.md).
+Můžete také upravit projekt pro vytvoření prostředí pro všechny poznámkových bloků v daném projektu. Další informace najdete v tématu [rychlý start: vytvoření projektu s vlastním prostředím](quickstart-create-jupyter-notebook-project-environment.md).
 
-Kromě základních distribucí Azure Notebooks přináší předinstalované množství dalších balíčků, které jsou užitečné pro odborníky přes data. Můžete také nainstalovat vlastní balíčky pomocí typického procesu pro jednotlivé jazyky.
+Kromě základní distribuce poznámkových bloků Azure dodává s předinstalovanou s mnoha dalších balíčků, které jsou užitečné pro odborníky přes data. Můžete také nainstalovat vlastní balíčky pomocí typickým procesem pro jednotlivé jazyky.
 
-## <a name="pre-configured-jupyter-extensions"></a>Předem nakonfigurovaná rozšíření Jupyter
+## <a name="pre-configured-jupyter-extensions"></a>Předem nakonfigurované rozšíření Jupyter
 
-Azure Notebooks je předem nakonfigurovaný s následujícími rozšířeními Jupyter:
+Poznámkových bloků Azure je předem nakonfigurovaný s těmito příponami Jupyter:
 
-- [Zvýšení](https://github.com/damianavila/RISE): rozšíření prezentace Jupyter (označuje se také jako live_reveal). Další informace najdete v tématu [spuštění prezentace poznámkového bloku](present-jupyter-notebooks-slideshow.md).
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab): úplné výpočetní prostředí pro práci s poznámkovým blokem Jupyter.
-- [Altair](https://github.com/ellisonbg/altair): deklarativní statistickou vizualizaci knihovny pro Python.
-- [BQPlot](https://github.com/bloomberg/bqplot): interaktivní rozhraní pro vykreslení pro notebooky Jupyter.
-- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): interaktivní widgety HTML pro notebooky Jupyter.
+- [PŘEKONÁNÍ](https://github.com/damianavila/RISE): A Jupyter prezentace rozšíření (označované také jako live_reveal). Další informace najdete v tématu [spustit Poznámkový blok prezentace](present-jupyter-notebooks-slideshow.md).
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): úplné výpočetní prostředí pro práci s poznámkovými bloky Jupyter.
+- [Altair](https://github.com/ellisonbg/altair): deklarativní statistické vizualizace knihovny pro Python.
+- [BQPlot](https://github.com/bloomberg/bqplot): interaktivní zobrazování framework pro aplikace Jupyter notebook.
+- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): interaktivní HTML pomůcky pro poznámkové bloky Jupyter.
 
-## <a name="issues-and-getting-help"></a>Problémy a získání nápovědě
+## <a name="issues-and-getting-help"></a>Problémy a získání nápovědy
 
-Vzhledem k tomu, že Azure Notebooks je stále ve verzi Preview, může docházet k dočasným výpadkům, které můžou být častěji nebo delší než jiné služby Azure. Některé funkce můžou být neúplné nebo obsahují chyby.
+Protože poznámkových bloků Azure je stále ve verzi Preview, může docházet k službě dočasných výpadků, které mohou být častější nebo trvalé déle než ostatní služby Azure. Některé funkce mohou být neúplné nebo obsahují chyby.
 
-V současnosti doporučujeme používat Azure Notebooks Preview pro důležité obchodní aplikace nebo citlivé notebooky a data.
+V současné době doporučujeme nepoužívat poznámkových bloků Azure verze Preview pro důležité podnikové aplikace, nebo citlivých poznámkových bloků a data.
 
-Pokud chcete diskutovat o Azure Notebooks, zapište problém do [úložiště GitHub](https://github.com/Microsoft/AzureNotebooks/issues).
+Do diskuse o poznámkových bloků Azure, založte problém na [úložiště GitHub](https://github.com/Microsoft/AzureNotebooks/issues).
 
 ## <a name="next-steps"></a>Další kroky  
 
-- [Prozkoumat ukázkové poznámkové bloky](azure-notebooks-samples.md)
+- [Prozkoumejte ukázkové poznámkové bloky](azure-notebooks-samples.md)
 
-- Šablon rychlý Start
+- Šablony rychlý start:
 
-  - [Vytvoření a sdílení poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
-  - [Klonovat Poznámkový blok](quickstart-clone-jupyter-notebook.md)
-  - [Migrace místního poznámkového bloku Jupyter](quickstart-migrate-local-jupyter-notebook.md)
-  - [Použití vlastního prostředí](quickstart-create-jupyter-notebook-project-environment.md)
-  - [Přihlaste se a nastavte ID uživatele.](quickstart-sign-in-azure-notebooks.md)
+  - [Vytvářejte a sdílejte poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
+  - [Klonovat poznámkového bloku](quickstart-clone-jupyter-notebook.md)
+  - [Migrovat místní aplikace Jupyter notebook](quickstart-migrate-local-jupyter-notebook.md)
+  - [Použít vlastní prostředí](quickstart-create-jupyter-notebook-project-environment.md)
+  - [Přihlaste se a nastavit ID uživatele](quickstart-sign-in-azure-notebooks.md)
 
 - Kurzy:
 
   - [Vytvoření a spuštění poznámkového bloku](tutorial-create-run-jupyter-notebook.md  )
 
-- Články s postupy:
+- Články s návody:
   
-  - [Vytváření a klonování projektů](create-clone-jupyter-notebooks.md)
+  - [Vytvoření a klonování projekty](create-clone-jupyter-notebooks.md)
   - [Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-  - [Instalace balíčků z poznámkového bloku](install-packages-jupyter-notebook.md)
-  - [Prezentace prezentace](present-jupyter-notebooks-slideshow.md)
+  - [Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
+  - [K dispozici prezentace](present-jupyter-notebooks-slideshow.md)
   - [Práce s datovými soubory](work-with-project-data-files.md)
-  - [Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
+  - [Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
   - [Použít Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

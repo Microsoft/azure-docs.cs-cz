@@ -1,5 +1,5 @@
 ---
-title: Zjistěte, kdy bude mít konkrétní uživatel přístup k aplikaci | Microsoft Docs
+title: Zjistěte, kdy bude mít konkrétní uživatel přístup k aplikaci.
 description: Jak zjistit, kdy uživatel s kritickou důležitosti bude mít přístup k aplikaci, kterou jste nakonfigurovali pro zřizování uživatelů pomocí Azure AD
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3b334df8cd24a1d8ca88c8ac2e3117bdd24d8b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057768"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275741"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -40,7 +40,7 @@ Při první konfiguraci automatického zřizování se v části **aktuální st
 
 Po dokončení cyklu zřizování se v části **Statistika k datu** zobrazuje kumulativní počet uživatelů a skupin, které byly zřízeny do data, spolu s datem dokončení a dobou trvání posledního cyklu. **ID aktivity** jednoznačně identifikuje nejnovější cyklus zřizování. **ID úlohy** je jedinečný identifikátor pro úlohu zřizování a je specifický pro aplikaci ve vašem tenantovi.
 
-Průběh zřizování můžete zobrazit v Azure Portal na kartě **Azure Active Directory &gt; podnikové\] aplikace &gt; \[ &gt; název aplikace** .
+Průběh zřizování lze zobrazit v Azure Portal v **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace**\] &gt; karta zřizování.
 
 ![Indikátor průběhu zřizování stránky](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -48,7 +48,7 @@ Průběh zřizování můžete zobrazit v Azure Portal na kartě **Azure Active 
 
 Pokud chcete zobrazit stav zřizování pro vybraného uživatele, přečtěte si téma [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) ve službě Azure AD. Všechny operace spouštěné službou zřizování uživatelů se zaznamenávají v protokolech zřizování služby Azure AD. To zahrnuje všechny operace čtení a zápisu provedené ve zdrojovém a cílovém systému a uživatelská data, která byla během každé operace načtena nebo zapsána.
 
-K protokolům zřizování v Azure Portal můžete získat přístup tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; **podnikové aplikace** &gt; **protokoly zřizování (Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
 Protokoly zřizování zaznamenávají všechny operace prováděné službou zřizování, včetně:
 
@@ -66,7 +66,7 @@ Při použití automatického zřizování uživatelů s aplikací Azure AD auto
 
 - Pro **počáteční cyklus**je doba úlohy závislá na mnoha faktorech, včetně počtu uživatelů a skupin v oboru pro zřizování a celkového počtu uživatelů a skupin ve zdrojovém systému. První synchronizace mezi službou Azure AD a aplikací může trvat až 20 minut až několik hodin, a to v závislosti na velikosti adresáře služby Azure AD a počtu uživatelů v oboru pro zřizování. Úplný seznam faktorů, které ovlivňují výkon počátečního cyklu, jsou shrnuty dále v této části.
 
-- V případě **přírůstkových cyklů** po počátečním cyklu je doba úloh obvykle rychlejší (například během 10 minut), protože služba zřizování ukládá meze, které reprezentují stav obou systémů po počátečním cyklu, což zvyšuje výkon následujících synchronizuje. Čas úlohy závisí na počtu změn zjištěných v rámci tohoto cyklu zřizování. Pokud je k dispozici méně než 5 000 změn členství uživatele nebo skupiny, může být úloha dokončena v rámci jednoho přírůstkového zřizovacího cyklu. 
+- Pro **přírůstkové cykly** po počátečním cyklu úlohy mají někdy rychlejší dobu (například během 10 minut), protože služba zřizování ukládá meze, které reprezentují stav obou systémů po počátečním cyklu, což zlepšuje výkon následných synchronizací. Čas úlohy závisí na počtu změn zjištěných v rámci tohoto cyklu zřizování. Pokud je k dispozici méně než 5 000 změn členství uživatele nebo skupiny, může být úloha dokončena v rámci jednoho přírůstkového zřizovacího cyklu. 
 
 Následující tabulka shrnuje časy synchronizace pro běžné scénáře zřizování. V těchto scénářích je zdrojový systém Azure AD a cílový systém je aplikace SaaS. Časy synchronizace se odvozují ze statistické analýzy úloh synchronizace pro aplikace SaaS ServiceNow, pracoviště, Salesforce a G Suite.
 
@@ -102,5 +102,5 @@ Souhrn faktorů, které mají vliv na dobu potřebnou k dokončení **počáteč
 
 - Počet a velikost přiřazených skupin. Synchronizace přiřazených skupin trvá déle než synchronizace uživatelů. Počet i velikost přiřazených skupin mají vliv na výkon. Pokud má aplikace [povolená mapování pro synchronizaci objektů skupin](customize-application-attributes.md#editing-group-attribute-mappings), jsou kromě uživatelů synchronizovány i vlastnosti skupiny, jako jsou názvy skupin a členství. Tyto další synchronizace budou trvat déle než jenom synchronizace uživatelských objektů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

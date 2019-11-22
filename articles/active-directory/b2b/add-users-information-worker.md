@@ -1,6 +1,6 @@
 ---
-title: Přidat uživatele spolupráce B2B jako pracovník s informacemi – Azure Active Directory | Dokumentace Microsoftu
-description: Spolupráce B2B ve službě umožňuje pracovníkům a vlastníci aplikace přidat uživatele typu Host do služby Azure AD pro přístup k | Dokumentace Microsoftu
+title: Přidání uživatelů spolupráce B2B jako informační pracovník – Azure AD
+description: Spolupráce B2B umožňuje informačním pracovníkům a vlastníkům aplikací přidat uživatele typu Host do služby Azure AD pro přístup | Microsoft Docs
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,112 +12,112 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8606a0d4e203e1a910a5cd15ca83a622f5286bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812534"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268855"
 ---
-# <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Jak uživatelé ve vaší organizaci můžete pozvat uživatele typu Host do aplikace
+# <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Způsob, jakým uživatelé ve vaší organizaci můžou pozvat uživatele typu Host do aplikace
 
-Po Host uživatel přidaný do adresáře ve službě Azure AD, vlastníka aplikace můžete odeslat uživatele typu Host přímý odkaz na aplikaci, kterou chce sdílet. Správci služby Azure AD můžete také nastavit správu samoobslužných služeb pro galerii nebo založené na SAML aplikace v rámci jejich tenanta Azure AD. Tímto způsobem, počet vlastníků aplikace můžete spravovat své vlastní uživatele typu Host, i v případě, že uživatelé typu Host se nepřidaly do adresáře zatím. Pokud aplikace je nakonfigurovaná pro samoobslužné služby, vlastník aplikace používá svůj přístupový Panel pozvat uživatele typu Host do aplikace nebo přidat uživatele typu Host do skupiny, který má přístup k aplikaci. Správa aplikací samoobslužných služeb pro galerii a aplikace založené na SAML vyžaduje některé počáteční nastavení správce. Tady je přehled kroků instalace (podrobnější pokyny najdete v článku [požadavky](#prerequisites) později na této stránce):
+Po přidání uživatele typu Host do adresáře ve službě Azure AD může vlastník aplikace odeslat uživateli typu Host přímý odkaz na aplikaci, kterou chce sdílet. Správci Azure AD taky můžou v tenantovi Azure AD nastavit samoobslužnou správu pro galerie nebo aplikace založené na SAML. Vlastníci aplikace tak můžou spravovat své vlastní uživatele typu Host, i když do tohoto adresáře ještě nepřidali uživatele typu Host. Když je aplikace nakonfigurovaná pro samoobslužnou službu, vlastník aplikace použije svůj přístupový panel k pozvání uživatele typu Host k aplikaci nebo přidání uživatele typu Host do skupiny, která má přístup k aplikaci. Samoobslužná správa aplikací pro galerii a aplikace založené na SAML vyžadují od správce určité počáteční nastavení. Následuje souhrn kroků při instalaci (podrobné pokyny najdete v části [požadavky](#prerequisites) dále na této stránce):
 
- - Povolit samoobslužnou správu skupin pro vašeho tenanta
- - Vytvoření skupiny pro přiřazení k aplikaci a nastavit uživatele jako vlastníka
- - Konfigurace aplikace pro samoobslužné funkce a přiřaďte skupiny k aplikaci
+ - Povolení samoobslužné správy skupin pro vašeho tenanta
+ - Vytvořte skupinu, která se přiřadí k aplikaci a nastaví uživatele jako vlastníka.
+ - Konfigurace aplikace pro samoobslužnou službu a přiřazení skupiny k aplikaci
 
 > [!NOTE]
-> Tento článek popisuje, jak nastavit správu samoobslužných služeb pro galerii a aplikace založené na SAML, které jste přidali do svého tenanta Azure AD. Můžete také [nastavit samoobslužné skupiny Office 365](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) tak uživatelům můžete spravovat přístup k vlastní skupiny Office 365. Další způsoby, jak uživatelé mohou sdílet soubory sady Office a aplikace s uživatele typu Host, najdete v části [přístup hosta ve skupinách Office 365](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) a [SharePoint sdílení souborů nebo složek](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> Tento článek popisuje, jak nastavit samoobslužnou správu pro galerie a aplikace založené na SAML, které jste přidali do svého tenanta Azure AD. Můžete také [nastavit samoobslužné skupiny office 365](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) , aby uživatelé mohli spravovat přístup ke svým vlastním skupinám Office 365. Další způsoby, jak můžou uživatelé sdílet soubory Office a aplikace s uživateli typu Host, najdete v tématu [přístup hosta ve skupinách Office 365](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) a [sdílení souborů a složek služby SharePoint](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
 
-## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Pozvat uživatele typu Host do aplikace na přístupovém panelu
+## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Pozvání uživatele typu Host k aplikaci z přístupového panelu
 
-Po dokončení konfigurace aplikace pro samoobslužné funkce, můžete počet vlastníků aplikace použít přístupovém panelu se pozvat uživatele typu Host do aplikace, které chtějí. Uživatel typu Host nemusí nutně být přidány do služby Azure AD předem. 
+Po nakonfigurování aplikace pro samoobslužné uživatele mohou vlastníci aplikace pomocí vlastního přístupového panelu pozvat uživatele typu Host do aplikace, kterou chtějí sdílet. Uživatel typu Host není nutně potřeba do Azure AD přidat předem. 
 
-1. Otevřete tak, že přejdete na přístupovém panelu `https://myapps.microsoft.com`.
-2. Přejděte na aplikaci, vyberte symbol tří teček ( **...** ) a pak vyberte **spravovat aplikaci**.
+1. Přejděte na `https://myapps.microsoft.com`otevřete přístupového panelu.
+2. Ukažte na aplikace, vyberte tři tečky ( **...** ) a pak vyberte **Spravovat aplikaci**.
  
-   ![Snímek obrazovky aplikace spravovat dílčí nabídky pro aplikaci Salesforce](media/add-users-iw/access-panel-manage-app.png)
+   ![Snímek obrazovky s podnabídkou spravovat aplikaci pro aplikaci Salesforce](media/add-users-iw/access-panel-manage-app.png)
  
-3. V horní části seznamu uživatelů vyberte **+** .
+3. V horní části seznamu uživatelů vyberte možnost **+** .
    
-   ![Snímek obrazovky ukazující na symbol plus pro přidávání členů do aplikace](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![Snímek obrazovky zobrazující symbol plus pro přidání členů do aplikace](media/add-users-iw/access-panel-manage-app-add-user.png)
    
-4. V **přidat členy** vyhledávací pole, zadejte e-mailovou adresu pro uživatele typu Host. Volitelně můžete zahrnout uvítací zprávu.
+4. Do vyhledávacího pole **přidat členy** zadejte e-mailovou adresu uživatele typu Host. Volitelně můžete zahrnout uvítací zprávu.
    
-   ![Snímek obrazovky zobrazující přidat členy okno pro přidání hosta](media/add-users-iw/access-panel-invitation.png)
+   ![Snímek obrazovky zobrazující okno Přidat členy pro přidání hosta](media/add-users-iw/access-panel-invitation.png)
    
-5. Vyberte **přidat** odeslat pozvánku uživateli typu Host. Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
+5. Vyberte **Přidat** a odešlete pozvánku uživateli typu Host. Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
 
-## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>Pozvat další připojení ke skupině, která má přístup k aplikaci
-Po dokončení konfigurace aplikace pro samoobslužné funkce, počet vlastníků aplikace můžete pozvat uživatele typu Host do skupiny, které spravují, ke kterým mají přístup k aplikacím, které chtějí. Uživatelé typu Host, nemusíte v adresáři už existují. Vlastník aplikace postupujte podle těchto kroků se pozvat uživatele typu Host do skupiny tak, aby se přístup k aplikaci.
+## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>Pozvat někoho, aby se připojil ke skupině, která má přístup k aplikaci
+Po nakonfigurování aplikace pro samoobslužné uživatele můžou vlastníci aplikací pozvat uživatele typu Host do skupin, které spravují, a získat tak přístup k aplikacím, které chtějí sdílet. Uživatelé typu host již nemusí v adresáři existovat. Vlastník aplikace podle těchto kroků vyzve uživatele typu Host ke skupině, aby k němu měli přístup.
 
-1. Ujistěte se, že jste vlastníkem skupiny samoobslužné služby, který má přístup k aplikaci, kterou chcete sdílet.
-2. Otevřete tak, že přejdete na přístupovém panelu `https://myapps.microsoft.com`.
-3. Vyberte **skupiny** aplikace.
+1. Ujistěte se, že jste vlastníkem samoobslužné skupiny, která má přístup k aplikaci, kterou chcete sdílet.
+2. Přejděte na `https://myapps.microsoft.com`otevřete přístupového panelu.
+3. Vyberte aplikaci **skupiny** .
    
-   ![Snímek obrazovky zobrazující skupiny aplikace na přístupovém panelu](media/add-users-iw/access-panel-groups.png)
+   ![Snímek obrazovky s aplikací skupiny na přístupovém panelu](media/add-users-iw/access-panel-groups.png)
    
-4. V části **skupiny moje**, vyberte skupinu, která má přístup k aplikaci, kterou chcete sdílet.
+4. V části **vlastní skupiny**vyberte skupinu, která má přístup k aplikaci, kterou chcete sdílet.
    
-   ![Snímek obrazovky znázorňující, kde chcete vybrat skupinu v rámci skupiny moje](media/add-users-iw/access-panel-groups-i-own.png)
+   ![Snímek obrazovky zobrazující, kde vybrat skupinu ve skupinách](media/add-users-iw/access-panel-groups-i-own.png)
    
-5. V horní části seznamu členů skupiny, vyberte **+** .
+5. V horní části seznamu členů skupiny vyberte možnost **+** .
    
-   ![Snímek obrazovky ukazující na symbol plus pro přidávání členů do skupiny](media/add-users-iw/access-panel-groups-add-member.png)
+   ![Snímek obrazovky zobrazující symbol plus pro přidání členů do skupiny](media/add-users-iw/access-panel-groups-add-member.png)
    
-6. V **přidat členy** vyhledávací pole, zadejte e-mailovou adresu pro uživatele typu Host. Volitelně můžete zahrnout uvítací zprávu.
+6. Do vyhledávacího pole **přidat členy** zadejte e-mailovou adresu uživatele typu Host. Volitelně můžete zahrnout uvítací zprávu.
    
-   ![Snímek obrazovky zobrazující přidat členy okno pro přidání hosta](media/add-users-iw/access-panel-invitation.png)
+   ![Snímek obrazovky zobrazující okno Přidat členy pro přidání hosta](media/add-users-iw/access-panel-invitation.png)
    
-7. Vyberte **přidat** automaticky odeslat pozvánku uživateli typu Host. Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
+7. Vyberte možnost **Přidat** a automaticky odešlete pozvánku uživateli typu Host. Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Správa samoobslužných služeb aplikací vyžaduje některé počáteční nastavení tak, že globální správce a správce Azure AD. Jako součást této instalace a nastavení bude konfigurace aplikace pro samoobslužné funkce a přiřadit skupiny k aplikaci, která může spravovat vlastníka aplikace. Můžete také nakonfigurovat skupinu, kterou chcete povolit všem uživatelům žádat o členství, ale vyžadují schválení vlastníka skupiny. (Další informace o [Samoobslužná správa skupin](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).) 
+Samoobslužná správa aplikací vyžaduje určité počáteční nastavení globálním správcem a správcem Azure AD. V rámci tohoto nastavení nakonfigurujete aplikaci pro samoobslužnou službu a přiřadíte skupinu k aplikaci, kterou může vlastník aplikace spravovat. Skupinu můžete také nakonfigurovat tak, aby umožňovala komukoli požádat o členství, ale vyžaduje schválení vlastníka skupiny. (Další informace o [správě skupin samoobslužných služeb](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).) 
 
 > [!NOTE]
-> Nelze přidat uživatele typu Host do dynamické skupiny nebo skupiny, která je synchronizovaná s místní služby Active Directory.
+> Uživatele typu Host nemůžete přidat do dynamické skupiny nebo do skupiny, která je synchronizovaná s místní službou Active Directory.
 
-### <a name="enable-self-service-group-management-for-your-tenant"></a>Povolit samoobslužnou správu skupin pro vašeho tenanta
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako globální správce.
+### <a name="enable-self-service-group-management-for-your-tenant"></a>Povolení samoobslužné správy skupin pro vašeho tenanta
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce.
 2. V navigačním panelu vyberte **Azure Active Directory**.
 3. Vyberte **skupiny**.
-4. V části **nastavení**vyberte **Obecné**.
-5. V části **Self Service skupiny správy**vedle možnosti **vlastníci můžou spravovat žádosti o členství ve skupině na přístupovém panelu**vyberte **Ano**.
+4. V části **Nastavení**vyberte **Obecné**.
+5. V části **Samoobslužná správa skupin**, vedle **vlastníků můžou spravovat žádosti o členství ve skupině na přístupovém panelu**, vyberte **Ano**.
 6. Vyberte **Uložit**.
 
-### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Vytvoření skupiny pro přiřazení k aplikaci a nastavit uživatele jako vlastníka
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako globální správce nebo správce Azure AD.
+### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Vytvořte skupinu, která se přiřadí k aplikaci a nastaví uživatele jako vlastníka.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce Azure AD nebo globální správce.
 2. V navigačním panelu vyberte **Azure Active Directory**.
 3. Vyberte **skupiny**.
-4. Vyberte **novou skupinu**.
+4. Vyberte možnost **Nová skupina**.
 5. V části **typ skupiny**vyberte **zabezpečení**.
 6. Zadejte **Název skupiny** a **Popis skupiny**.
 7. V části **typ členství**vyberte **přiřazeno**.
-8. Vyberte **vytvořit**a ukončete **skupiny** stránky.
-9. Na **skupiny – všechny skupiny** stránce, otevřete skupinu. 
-10. V části **spravovat**vyberte **vlastníky** > **přidat vlastníky**. Vyhledejte uživatele, který má spravovat přístup k aplikaci. Vyberte uživatele a potom klikněte na tlačítko **vyberte**.
+8. Vyberte **vytvořit**a zavřete stránku **skupiny** .
+9. Na stránce **skupiny – všechny skupiny** otevřete skupinu. 
+10. V části **Spravovat**vyberte **vlastníci** > **Přidat vlastníky**. Vyhledejte uživatele, který by měl spravovat přístup k aplikaci. Vyberte uživatele a pak klikněte na **Vybrat**.
 
-### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>Konfigurace aplikace pro samoobslužné funkce a přiřaďte skupiny k aplikaci
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako globální správce nebo správce Azure AD.
+### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>Konfigurace aplikace pro samoobslužnou službu a přiřazení skupiny k aplikaci
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce Azure AD nebo globální správce.
 2. V navigačním podokně vyberte **Azure Active Directory**.
-3. V části **spravovat**vyberte **podnikové aplikace** > **všechny aplikace**.
-4. V seznamu aplikací najít a otevřít aplikaci.
-5. V části **spravovat**vyberte **jednotného přihlašování**a nakonfigurovat aplikaci pro jednotné přihlašování. (Podrobnosti najdete v tématu [Správa jednotného přihlašování pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
-6. V části **spravovat**vyberte **samoobslužné**a nastavit přístup k aplikaci Samoobslužné služby. (Podrobnosti najdete v tématu [použití přístup k aplikaci Samoobslužné](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
+3. V části **Spravovat**vyberte **podnikové aplikace** > **všech aplikacích**.
+4. V seznamu aplikace vyhledejte a otevřete aplikaci.
+5. V části **Spravovat**vyberte **jednotné přihlašování**a nakonfigurujte aplikaci pro jednotné přihlašování. (Podrobnosti najdete v tématu [Správa jednotného přihlašování pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
+6. V části **Spravovat**vyberte **Samoobslužná služba**a nastavte Samoobslužný přístup k aplikacím. (Podrobnosti najdete v tématu [Jak používat Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
 
     > [!NOTE]
-    > Pro nastavení **do které skupiny by měl přiřazení uživatelé měli přidat?** vyberte skupinu, kterou jste vytvořili v předchozí části.
-7. V části **spravovat**vyberte **uživatelů a skupin**a ověřte, že se v seznamu zobrazí samoobslužné skupinu, kterou jste vytvořili.
-8. Postup přidání aplikace na přístupovém panelu vlastník skupiny, vyberte **přidat uživatele** > **uživatelů a skupin**. Vyhledejte vlastníka skupiny a vyberte uživatele, klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **přiřadit** přidejte uživatele k aplikaci.
+    > **Chcete-li přidat nastavení, které skupiny má přiřadit uživatele?** vyberte skupinu, kterou jste vytvořili v předchozí části.
+7. V části **Spravovat**vyberte **Uživatelé a skupiny**a ověřte, že se v seznamu objeví samoobslužná skupina, kterou jste vytvořili.
+8. Pokud chcete přidat aplikaci do přístupového panelu vlastníka skupiny, vyberte **Přidat uživatele** > **Uživatelé a skupiny**. Vyhledejte vlastníka skupiny a vyberte uživatele, klikněte na **Vybrat**a potom kliknutím na **přiřadit** přidejte uživatele do aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Na spolupráce B2B ve službě Azure AD najdete v následujících článcích:
+Přečtěte si následující články o spolupráci Azure AD B2B:
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-- [Jak správci služby Azure Active Directory přidat uživatele spolupráce B2B?](add-users-administrator.md)
-- [Uplatnění pozvání spolupráce B2B](redemption-experience.md)
+- [Jak Azure Active Directory správci přidávají uživatele spolupráce B2B?](add-users-administrator.md)
+- [Uplatnění pozvánky B2B pro spolupráci](redemption-experience.md)
 - [Licencování spolupráce B2B ve službě Azure AD](licensing-guidance.md)

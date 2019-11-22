@@ -1,5 +1,5 @@
 ---
-title: Začněte s rolemi, oprávněními a zabezpečením pomocí Azure Monitor
+title: Role, oprávnění a zabezpečení v Azure Monitor
 description: Naučte se používat předdefinované role a oprávnění Azure Monitor k omezení přístupu k prostředkům monitorování.
 author: johnkemnetz
 services: azure-monitor
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260609"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305154"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začněte s rolemi, oprávněními a zabezpečením pomocí Azure Monitor
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Role, oprávnění a zabezpečení v Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Mnoho týmů potřebuje výhradně regulovat přístup k datům a nastavením monitorování. Například pokud máte členy týmu, kteří pracují výhradně na monitorování (technické podpory, DevOps technici) nebo pokud používáte poskytovatele spravované služby, můžete jim udělit přístup pouze k monitorování dat a omezit jejich schopnost vytvářet, upravovat nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít integrovanou roli RBAC pro monitorování pro uživatele v Azure nebo vytvořit vlastní roli pro uživatele, který potřebuje omezená oprávnění monitorování. Pak popisuje bezpečnostní požadavky pro vaše prostředky související s Azure Monitor a způsob, jakým můžete omezit přístup k datům, která obsahují.
 
 ## <a name="built-in-monitoring-roles"></a>Předdefinované role monitorování
-Předdefinované role Azure Monitor jsou navržené tak, aby lépe omezily přístup k prostředkům v rámci předplatného, a zároveň umožňují uživatelům, kteří zodpovídají za monitorování infrastruktury, získat a nakonfigurovat potřebná data. Azure Monitor poskytuje dvě předem připravené role: Čtenář monitorování a přispěvatel monitorování.
+Předdefinované role Azure Monitor jsou navržené tak, aby lépe omezily přístup k prostředkům v rámci předplatného, a zároveň umožňují uživatelům, kteří zodpovídají za monitorování infrastruktury, získat a nakonfigurovat potřebná data. Azure Monitor poskytuje dvě předem připravené role: čtečku monitorování a přispěvatel monitorování.
 
-### <a name="monitoring-reader"></a>Čtenář monitorování
+### <a name="monitoring-reader"></a>Čtečka monitorování
 Lidé, kteří mají přiřazenou roli Čtenář monitorování, můžou zobrazit všechna data monitorování v rámci předplatného, ale nemůžou upravovat žádné prostředky ani upravovat žádná nastavení související s monitorováním prostředků. Tato role je vhodná pro uživatele v organizaci, jako je například podpora nebo provozní technici, kteří potřebují mít tyto možnosti:
 
 * Zobrazení řídicích panelů pro monitorování na portálu a vytváření vlastních privátních řídicích panelů pro monitorování.
@@ -61,7 +61,7 @@ Lidé, kteří mají přiřazenou roli Přispěvatel monitorování, můžou zob
 * Vytváření a odstraňování a spouštění uložených hledání v pracovním prostoru Log Analytics.
 * Vytvořte a odstraňte konfiguraci úložiště Log Analytics pracovního prostoru.
 
-\*uživatel musí také samostatně udělit oprávnění klíče listkey pro cílový prostředek (účet úložiště nebo obor názvů centra událostí), aby mohl nastavit profil protokolu nebo nastavení diagnostiky.
+aby bylo možné nastavit profil protokolu nebo nastavení diagnostiky, musí mít uživatel \*také samostatně udělené oprávnění klíče listkey pro cílový prostředek (účet úložiště nebo obor názvů centra událostí).
 
 > [!NOTE]
 > Tato role neuděluje oprávnění ke čtení pro data protokolu, která byla streamovaná do centra událostí nebo uložená v účtu úložiště. Informace o konfiguraci přístupu k těmto prostředkům [najdete níže](#security-considerations-for-monitoring-data) .
@@ -127,7 +127,7 @@ Všechny tři tyto datové typy můžou být uložené v účtu úložiště neb
 * Nikdy udělte oprávnění klíče listkey pro účty úložiště nebo centra událostí v oboru předplatného, když uživatel potřebuje přístup k datům monitorování. Místo toho udělte uživatelům tato oprávnění v rámci prostředku nebo skupiny prostředků (Pokud máte vyhrazený rozsah skupiny prostředků monitorování).
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Omezení přístupu k účtům úložiště souvisejícím s monitorováním
-Pokud uživatel nebo aplikace potřebuje přístup k datům monitorování v účtu úložiště, měli byste vygenerovat [SAS účtu](https://msdn.microsoft.com/library/azure/mt584140.aspx) v účtu úložiště, který obsahuje data monitorování s přístupem jen pro čtení na úrovni služby k úložišti objektů BLOB. V PowerShellu to může vypadat takto:
+Pokud uživatel nebo aplikace potřebuje přístup k datům monitorování v účtu úložiště, měli byste [vygenerovat SAS účtu](https://msdn.microsoft.com/library/azure/mt584140.aspx) v účtu úložiště, který obsahuje data monitorování s přístupem jen pro čtení na úrovni služby k úložišti objektů BLOB. V PowerShellu to může vypadat takto:
 
 ```powershell
 $context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
@@ -182,7 +182,7 @@ Azure Monitor potřebuje přístup k prostředkům Azure, abyste mohli poskytova
 ### <a name="secured-storage-accounts"></a>Zabezpečené účty úložiště 
 
 Data monitorování se často zapisují do účtu úložiště. Možná budete chtít zajistit, aby data zkopírovaná do účtu úložiště nezískal přístup neautorizovaných uživatelů. Pro zvýšení zabezpečení můžete uzamknout síťový přístup a povolit přístup jenom autorizovaným prostředkům a důvěryhodným službám Microsoftu k účtu úložiště tím, že omezíte účet úložiště tak, aby používal vybrané sítě.
-![Dialog](./media/roles-permissions-security/secured-storage-example.png) nastavení Azure Storage Azure monitor se považuje za jednu z těchto "důvěryhodných služeb Microsoftu", pokud povolíte důvěryhodným službám Microsoftu přístup k zabezpečenému úložišti, bude mít Azure monitor přístup k vašemu zabezpečenému účtu úložiště. povoluje se v těchto chráněných podmínkách se do účtu úložiště zapisují protokoly diagnostiky Azure Monitor, protokol aktivit a metriky. Umožní vám taky Log Analytics číst protokoly ze zabezpečeného úložiště.   
+Dialog ![Azure Storage nastavení](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor se považuje za jednu z těchto "důvěryhodných služeb Microsoftu", pokud povolíte důvěryhodným službám Microsoftu přístup k zabezpečenému úložišti, bude mít Azure monitor přístup k vašemu účtu zabezpečeného úložiště. povolením psaní protokolů diagnostiky Azure Monitor, protokolu aktivit a metrik do účtu úložiště za těchto chráněných podmínek. Umožní vám taky Log Analytics číst protokoly ze zabezpečeného úložiště.   
 
 
 Další informace najdete v tématu [zabezpečení sítě a Azure Storage](../../storage/common/storage-network-security.md)

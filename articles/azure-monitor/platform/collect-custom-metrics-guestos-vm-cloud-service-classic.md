@@ -1,6 +1,6 @@
 ---
-title: Odeslat metriky hostovaného operačního systému do Azure Monitor klasický Cloud Services úložiště metrik
-description: Odeslat metriky hostovaného operačního systému do úložiště metrik Azure Monitor Cloud Services
+title: Odeslání metriky pro klasický Cloud Services do Azure Monitor databáze metrik
+description: Popisuje proces odeslání metrik výkonu hostovaného operačního systému pro Azure Classic Cloud Services do úložiště metrik Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844934"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304781"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Odeslat metriky hostovaného operačního systému do Azure Monitor klasický Cloud Services úložiště metrik 
 
@@ -29,7 +29,7 @@ Proces, který je popsaný v tomto článku, funguje jenom pro čítače výkonu
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte být [správcem služeb nebo](~/articles/billing/billing-add-change-azure-subscription-administrator.md) spolusprávcem svého předplatného Azure. 
+- Musíte být [správcem služeb nebo spolusprávcem](~/articles/billing/billing-add-change-azure-subscription-administrator.md) svého předplatného Azure. 
 
 - Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
@@ -53,7 +53,7 @@ Vytvořte v tenantovi Azure Active Directory Princip služby pomocí pokynů na 
 - Vytvoří nový tajný klíč klienta pro tuto aplikaci.  
 - Uložte klíč a ID klienta pro použití v pozdějších krocích.  
 
-Poskytněte aplikaci vytvořenou v předchozím kroku monitorováním oprávnění *Vydavatel metrik* pro prostředek, se kterým chcete metriky vygenerovat. Pokud plánujete použití aplikace k vygenerování vlastních metrik pro mnoho prostředků, můžete tato oprávnění udělit na úrovni skupiny prostředků nebo předplatného.  
+Poskytněte aplikaci vytvořenou v předchozím kroku *monitorováním oprávnění Vydavatel metrik* pro prostředek, se kterým chcete metriky vygenerovat. Pokud plánujete použití aplikace k vygenerování vlastních metrik pro mnoho prostředků, můžete tato oprávnění udělit na úrovni skupiny prostředků nebo předplatného.  
 
 > [!NOTE]
 > Diagnostické rozšíření používá instanční objekt k ověřování proti Azure Monitor a vygeneruje metriky pro cloudovou službu.
@@ -190,7 +190,7 @@ K zobrazení celkové paměti, kterou používá konkrétní role nebo instance 
 
  ![Azure Portal metriky](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
 

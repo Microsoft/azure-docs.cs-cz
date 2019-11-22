@@ -1,6 +1,6 @@
 ---
 title: Otázky & odpovědi týkající se Microsoft Authenticator aplikace – Azure AD
-description: Obsahuje seznam nejčastějších dotazů a odpovědí týkajících se aplikace ověřování a ověřování od společnosti Microsoft.
+description: Nejčastější dotazy a odpovědi (FAQ) o aplikaci ověřování Microsoft a dvojúrovňové ověřování.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcd8140acaff693f5b73fe9654968a5ae7cd4c4a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5ba475ecae09dadf31441827a2db846286b74ad2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029809"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266961"
 ---
-# <a name="frequently-asked-questions-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
+# <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se aplikace Microsoft Authenticator. Pokud nevidíte odpověď na svoji otázku, přejděte na [Fórum aplikace Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp).
 

@@ -1,6 +1,7 @@
 ---
-title: Řešení potíží s brány virtuální sítě a připojení pomocí Azure Network Watcher – REST | Dokumentace Microsoftu
-description: Tato stránka vysvětluje, jak řešit potíže brány virtuální sítě a připojení pomocí služby Azure Network Watcher pomocí rozhraní REST
+title: Řešení potíží se službou VNET Gateway a připojeními – Azure REST API
+titleSuffix: Azure Network Watcher
+description: Tato stránka vysvětluje, jak řešit potíže s Virtual Network branami a připojeními pomocí Azure Network Watcher pomocí REST.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 0f10b9b45f63485417685a0826c047725a264772
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b3898a7c4cd09b59da0fc167b758199119793eb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686114"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277802"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Řešení potíží s brány virtuální sítě a připojení pomocí Azure Network Watcher
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](diagnose-communication-problem-between-networks.md)
@@ -29,37 +30,37 @@ ms.locfileid: "64686114"
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-Sledovací proces sítě poskytuje mnoho funkcí, jako má vztah k pochopení síťovým prostředkům v Azure. Jeden z těchto funkcí je prostředek řešení potíží. Řešení potíží s prostředků lze volat na portálu, Powershellu, rozhraní příkazového řádku nebo rozhraní REST API. Při volání, Network Watcheru kontroluje stav brány virtuální sítě nebo připojení a vrátí jeho zjištění.
+Network Watcher poskytuje řadu možností, které se týkají porozumění síťovým prostředkům v Azure. Jednou z těchto funkcí je řešení potíží s prostředky. Řešení potíží s prostředky je možné volat prostřednictvím portálu, PowerShellu, rozhraní příkazového řádku nebo REST API. Při volání Network Watcher zkontroluje stav Virtual Network brány nebo připojení a vrátí své závěry.
 
-Tento článek vás provede jiné úlohy, které jsou aktuálně k dispozici pro řešení potíží s prostředků.
+Tento článek vás provede různými úlohami správy, které jsou aktuálně k dispozici pro řešení potíží s prostředky.
 
-- [**Řešení potíží s bránu virtuální sítě**](#troubleshoot-a-virtual-network-gateway)
-- [**Řešení potíží s připojení**](#troubleshoot-connections)
+- [**Řešení potíží s bránou Virtual Network**](#troubleshoot-a-virtual-network-gateway)
+- [**Řešení potíží s připojením**](#troubleshoot-connections)
 
 ## <a name="before-you-begin"></a>Než začnete
 
-ARMclient slouží k volání rozhraní REST API pomocí Powershellu. ARMClient se nachází na chocolatey na [ARMClient v Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient se používá k volání REST API s využitím PowerShellu. ARMClient se nachází v čokoládě na [ARMClient při čokoládě](https://chocolatey.org/packages/ARMClient) .
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit Network Watcher](network-watcher-create.md) vytvořit Network Watcher.
+V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
-Seznam podporovaných brány najdete typy [typy brány nepodporuje](network-watcher-troubleshoot-overview.md#supported-gateway-types).
+Seznam podporovaných typů bran najdete v části [podporované typy bran](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Přehled
 
-Network Watcher troubleshooting poskytuje možnosti, které vznikají pomocí brány virtuální sítě a připojení k řešení potíží. Po odeslání žádosti k prostředku, řešení potíží s protokoly jsou dotazování a prozkoumat. Po dokončení kontroly výsledky jsou vráceny. Žádosti rozhraní API Poradce při potížích se dlouho trvající požadavky, což může trvat několik minut, než vrácení výsledku. Protokoly se ukládají v kontejneru v účtu úložiště.
+Řešení potíží s Network Watcher poskytuje možnost řešit problémy, které se týkají Virtual Network bran a připojení. V případě, že se k řešení potíží s prostředky připojí požadavek, protokoly se dotazují a kontrolují. Po dokončení kontroly se vrátí výsledky. Řešení potíží s požadavky rozhraní API jsou dlouho běžící požadavky, což může trvat několik minut, než se výsledek vrátí. Protokoly se ukládají do kontejneru v účtu úložiště.
 
-## <a name="log-in-with-armclient"></a>Přihlaste se pomocí ARMClient
+## <a name="log-in-with-armclient"></a>Přihlášení pomocí ARMClient
 
 ```powershell
 armclient login
 ```
 
-## <a name="troubleshoot-a-virtual-network-gateway"></a>Řešení potíží s bránu virtuální sítě
+## <a name="troubleshoot-a-virtual-network-gateway"></a>Řešení potíží s bránou Virtual Network
 
 
-### <a name="post-the-troubleshoot-request"></a>ODESLÁNÍ žádosti o řešení potíží
+### <a name="post-the-troubleshoot-request"></a>PUBLIKOVÁNÍ žádosti o Poradce při potížích
 
-Následující příklad zadá dotaz na stav brány virtuální sítě.
+V následujícím příkladu se dotazuje na stav Virtual Network brány.
 
 ```powershell
 
@@ -84,12 +85,12 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${NWresourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/troubleshoot?api-version=2016-03-30" $requestBody -verbose
 ```
 
-Protože tato operace je dlouho spuštěný, identifikátor URI pro dotazování na operaci a identifikátor URI pro výsledek se vrátí v hlavičce odpovědi, jak je znázorněno v následující odpověď:
+Vzhledem k tomu, že je tato operace dlouho spuštěná, vrátí se identifikátor URI pro dotazování na operaci a identifikátor URI pro výsledek v hlavičce odpovědi, jak je znázorněno v následující reakci:
 
-**Hodnoty je důležité**
+**Důležité hodnoty**
 
-* **Azure-AsyncOperation** – tato vlastnost obsahuje identifikátor URI pro dotaz asynchronní řešení potíží s operace
-* **Umístění** – tato vlastnost obsahuje identifikátor URI, kde jsou výsledky po dokončení operace
+* **Azure-AsyncOperation** – Tato vlastnost obsahuje identifikátor URI pro dotaz na operaci asynchronního odstraňování potíží.
+* **Umístění** – Tato vlastnost obsahuje identifikátor URI, ve kterém jsou výsledky po dokončení operace.
 
 ```
 HTTP/1.1 202 Accepted
@@ -109,15 +110,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Dotaz pro dokončení asynchronní operace
+### <a name="query-the-async-operation-for-completion"></a>Dotaz na asynchronní operaci pro dokončení
 
-Použijte operace identifikátoru URI dotazu pro průběh operace, jak je znázorněno v následujícím příkladu:
+Pomocí identifikátoru URI operací se Dotazujte na průběh operace, jak je vidět v následujícím příkladu:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30" -verbose
 ```
 
-Když probíhá operace, odpověď ukazuje **InProgress** jak je znázorněno v následujícím příkladu:
+I když probíhá operace, odpověď zobrazuje **průběh** , jak je vidět v následujícím příkladu:
 
 ```json
 {
@@ -125,7 +126,7 @@ Když probíhá operace, odpověď ukazuje **InProgress** jak je znázorněno v 
 }
 ```
 
-Po dokončení operace se stav změní na **Succeeded**.
+Po dokončení operace se stav změní na **úspěch**.
 
 ```json
 {
@@ -135,13 +136,13 @@ Po dokončení operace se stav změní na **Succeeded**.
 
 ### <a name="retrieve-the-results"></a>Načtení výsledků
 
-Jakmile se vrátí stav **Succeeded**, volání metody GET na identifikátor URI k načtení výsledků výsledek.
+Po **úspěšném**dokončení stavu volejte metodu GET na identifikátor URI výsledek operace uvnitř a načtěte výsledky.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30" -verbose
 ```
 
-Příklady typických degradovaný odpovědi vrácené při dotazování na výsledky brány pro řešení potíží, jsou tyto odpovědi. Zobrazit [Principy výsledky](#understanding-the-results) chcete získat další informace na významu vlastnosti v odpovědi.
+Následující odpovědi jsou příklady typických odpovědí, které byly vráceny při dotazování na výsledky řešení potíží s bránou. V tématu [vysvětlení výsledků](#understanding-the-results) získáte informace o tom, jaké vlastnosti v odpovědi znamenají.
 
 ```json
 {
@@ -188,9 +189,9 @@ Příklady typických degradovaný odpovědi vrácené při dotazování na výs
 ```
 
 
-## <a name="troubleshoot-connections"></a>Řešení potíží s připojením
+## <a name="troubleshoot-connections"></a>Řešení potíží s připojeními
 
-Následující příklad zadá dotaz na stav připojení.
+V následujícím příkladu se dotazuje na stav připojení.
 
 ```powershell
 
@@ -213,14 +214,14 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ```
 
 > [!NOTE]
-> Poradce při potížích operaci nelze spustit souběžně na jeho odpovídající brány a připojení. Operaci musíte dokončit před spuštěním na předchozí zdroj.
+> Operace řešení potíží nemůže běžet paralelně na připojení a odpovídajících branách. Operaci je nutné provést před spuštěním v předchozím prostředku.
 
-Protože to je dlouhodobá transakce v hlavičce odpovědi se vrátí identifikátor URI pro dotazování na operaci a identifikátor URI pro výsledek, jak je znázorněno v následující odpověď:
+Vzhledem k tomu, že se jedná o dlouhou spuštěnou transakci, vrátí se v hlavičce odpovědi identifikátor URI pro dotazování na operaci a identifikátor URI pro výsledek, jak je znázorněno v následující reakci:
 
-**Hodnoty je důležité**
+**Důležité hodnoty**
 
-* **Azure-AsyncOperation** – tato vlastnost obsahuje identifikátor URI pro dotaz asynchronní řešení potíží s operace
-* **Umístění** – tato vlastnost obsahuje identifikátor URI, kde jsou výsledky po dokončení operace
+* **Azure-AsyncOperation** – Tato vlastnost obsahuje identifikátor URI pro dotaz na operaci asynchronního odstraňování potíží.
+* **Umístění** – Tato vlastnost obsahuje identifikátor URI, ve kterém jsou výsledky po dokončení operace.
 
 ```
 HTTP/1.1 202 Accepted
@@ -240,15 +241,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Dotaz pro dokončení asynchronní operace
+### <a name="query-the-async-operation-for-completion"></a>Dotaz na asynchronní operaci pro dokončení
 
-Použijte operace identifikátoru URI dotazu pro průběh operace, jak je znázorněno v následujícím příkladu:
+Pomocí identifikátoru URI operací se Dotazujte na průběh operace, jak je vidět v následujícím příkladu:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Když probíhá operace, odpověď ukazuje **InProgress** jak je znázorněno v následujícím příkladu:
+I když probíhá operace, odpověď zobrazuje **průběh** , jak je vidět v následujícím příkladu:
 
 ```json
 {
@@ -256,7 +257,7 @@ Když probíhá operace, odpověď ukazuje **InProgress** jak je znázorněno v 
 }
 ```
 
-Po dokončení operace se stav změní na **Succeeded**.
+Po dokončení operace se stav změní na **úspěch**.
 
 ```json
 {
@@ -264,17 +265,17 @@ Po dokončení operace se stav změní na **Succeeded**.
 }
 ```
 
-Příklady typických odpovědi vrácené při dotazování na výsledky připojení pro řešení potíží, jsou tyto odpovědi.
+Následující odpovědi jsou příklady typické odpovědi vracené při dotazování na výsledky řešení potíží s připojením.
 
 ### <a name="retrieve-the-results"></a>Načtení výsledků
 
-Jakmile se vrátí stav **Succeeded**, volání metody GET na identifikátor URI k načtení výsledků výsledek.
+Po **úspěšném**dokončení stavu volejte metodu GET na identifikátor URI výsledek operace uvnitř a načtěte výsledky.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Příklady typických odpovědi vrácené při dotazování na výsledky připojení pro řešení potíží, jsou tyto odpovědi.
+Následující odpovědi jsou příklady typické odpovědi vracené při dotazování na výsledky řešení potíží s připojením.
 
 ```json
 {
@@ -321,12 +322,12 @@ is a transient state while the Azure platform is being updated.",
 }
 ```
 
-## <a name="understanding-the-results"></a>Principy výsledky
+## <a name="understanding-the-results"></a>Porozumění výsledkům
 
-Text akce obsahuje obecné pokyny k vyřešení daného problému. Pokud mohou se akce pro tento problém, je k dispozici odkaz Další informace. V případě, pokud neexistuje žádné další doprovodné materiály, odpověď obsahuje adresu url pro otevření případu podpory.  Další informace o vlastnostech odpovědi a co je součástí [přehled řešení potíží s sledovací proces sítě](network-watcher-troubleshoot-overview.md)
+Text akce poskytuje obecné pokyny k vyřešení tohoto problému. Pokud je možné provést akci pro daný problém, je k dispozici odkaz s dalšími pokyny. V případě, že nejsou k dispozici žádné další doprovodné materiály, odpověď poskytne adresu URL pro otevření případu podpory.  Další informace o vlastnostech odpovědi a o tom, co je zahrnuto, najdete v tématu [Network Watcher řešení potíží – přehled](network-watcher-troubleshoot-overview.md)
 
-Pokyny ke stahování souborů z účtů úložiště azure, najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Dalším nástrojem, který je možné je Průzkumníka služby Storage. Další informace o Průzkumníku služby Storage najdete tady na následující odkaz: [Storage Explorer](https://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud byly změněny nastavení této možnosti připojení sítě VPN stop, přečtěte si téma [spravovat skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md) vysledovat pravidla zabezpečení sítě skupiny a zabezpečení, které mohou být nejistá.
+Pokud se změnila nastavení, která zastavují připojení k síti VPN, přečtěte si téma [Správa skupin zabezpečení](../virtual-network/manage-network-security-group.md) sítě a sledujte skupinu zabezpečení sítě a pravidla zabezpečení, která mohou být v dané otázce.

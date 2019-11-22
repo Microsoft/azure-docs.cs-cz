@@ -1,5 +1,6 @@
 ---
-title: Diagnostika problému se směrováním sítě virtuálního počítače – kurz – Azure Portal | Microsoft Docs
+title: 'Kurz: Diagnostika problému se směrováním sítě virtuálních počítačů – Azure Portal'
+titleSuffix: Azure Network Watcher
 description: V tomto kurzu zjistíte, jak diagnostikovat problém se směrováním sítě virtuálního počítače pomocí funkce dalšího směrování služby Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3ad9cd8b620b55aaa17e84343a82ac361081de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684521"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276051"
 ---
-# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Kurz: Diagnostikovat problém směrování sítě virtuálních počítačů pomocí webu Azure portal
+# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Kurz: Diagnostika problému se směrováním sítě virtuálního počítače pomocí portálu Azure Portal
 
 Když nasadíte virtuální počítač, Azure pro něj vytvoří několik výchozích tras. Můžete vytvořit vlastní trasy a přepsat tak výchozí trasy Azure. Někdy se může stát, že vlastní trasa způsobí, že virtuální počítač nemůže komunikovat s ostatními prostředky. V tomto kurzu se naučíte:
 
@@ -45,7 +46,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
-2. Vyberte **Compute** a pak vyberte **Windows Server 2016 Datacenter** nebo **Ubuntu Server 17.10 VM**.
+2. Vyberte **Compute** a pak **Windows Server 2016 Datacenter** nebo **Ubuntu Server 17.10 VM**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **OK**:
 
     |Nastavení|Hodnota|
@@ -55,7 +56,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
-    |Location| Vyberte **USA – východ**.|
+    |Umístění| Vyberte **USA – východ**.|
 
 4. Vyberte velikost virtuálního počítače a pak vyberte **Vybrat**.
 5. V části **Nastavení** přijměte všechny výchozí hodnoty a vyberte **OK**.
@@ -89,7 +90,7 @@ Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlast
     | Virtuální počítač         | Vyberte myVm.                                            |
     | Síťové rozhraní       | myvm – Název vašeho síťového rozhraní se může lišit.   |
     | Zdrojová IP adresa       | 10.0.0.4                                               |
-    | Cílová IP adresa  | 13.107.21.200 – jeden z adresy < www.bing.com>. |
+    | Cílová IP adresa  | 13.107.21.200 – jedna z adres pro > < www. Bing. com. |
 
     ![Další směrování](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
@@ -112,11 +113,11 @@ Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlast
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
-1. Do pole **Hledat** v horní části portálu zadejte *myResourceGroup*. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
+1. Do pole *Hledat* v horní části portálu zadejte **myResourceGroup**. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
-3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
+3. V části *ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ* zadejte **myResourceGroup** a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili virtuální počítač a diagnostikovali směrování síťového provozu z daného virtuálního počítače. Dozvěděli jste se, že Azure vytváří několik výchozích tras, a otestovali jste směrování na dva různé cíle. Přečtěte si i další informace o [směrování v Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a o tom, jak [vytvářet vlastní trasy](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 

@@ -1,6 +1,7 @@
 ---
-title: Diagnostika místního připojení prostřednictvím brány VPN pomocí služby Azure Network Watcher | Dokumentace Microsoftu
-description: Tento článek popisuje, jak Diagnostika místního připojení prostřednictvím brány VPN s řešením potíží prostředků Azure Network Watcher.
+title: Diagnostika místního připojení prostřednictvím brány VPN
+titleSuffix: Azure Network Watcher
+description: Tento článek popisuje, jak diagnostikovat místní připojení prostřednictvím brány VPN pomocí řešení potíží s prostředky v Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,38 +15,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754060"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275939"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
-Brána VPN Gateway Azure umožňuje vytvářet hybridní řešení, které potřebu pro zabezpečené připojení mezi vaší místní sítí a virtuální sítí Azure. Vaše požadavky jsou jedinečné, proto je možnost místního zařízení VPN. Azure v současné době podporuje [několik zařízení VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , které jsou neustále ověření ve spolupráci s dodavateli zařízení. Před konfigurací vaše místní zařízení VPN zkontrolujte nastavení konfigurace pro konkrétní zařízení. Podobně, Azure VPN Gateway má nakonfigurovanou sadu [nepodporuje parametry protokolu IPsec](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) , který slouží k navázání připojení. Současné době neexistuje žádný způsob, jak zadat nebo vybrat konkrétní kombinaci parametry protokolu IPsec ze služby Azure VPN Gateway. Pro vytvoření úspěšného připojení mezi místními a Azure, místní nastavení zařízení VPN musí být v souladu s parametry protokolu IPsec stanovené službou Azure VPN Gateway. Pokud jsou nastavení správná, tady je ke ztrátě připojení a až do této chvíle při řešení těchto problémů není triviální a obvykle trvalo hodiny a identifikovat a opravit tento problém.
+Azure VPN Gateway umožňuje vytvářet hybridní řešení, které řeší nutnost zabezpečeného připojení mezi vaší místní sítí a virtuální sítí Azure. Vzhledem k tomu, že vaše požadavky jsou jedinečné, je to volba místního zařízení VPN. Azure v současné době podporuje [několik zařízení VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , která se neustále ověřují ve spolupráci s dodavateli zařízení. Před konfigurací místního zařízení VPN zkontrolujte nastavení konfigurace specifické pro konkrétní zařízení. Podobně je Azure VPN Gateway nakonfigurovaný se sadou [podporovaných parametrů protokolu IPSec](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) , které se používají pro vytváření připojení. V současné době neexistuje způsob, jak zadat nebo vybrat konkrétní kombinaci parametrů protokolu IPsec z VPN Gateway Azure. Pro navázání úspěšného připojení mezi místními a Azure musí být nastavení místního zařízení VPN v souladu s parametry protokolu IPsec, které jsou předepsané v Azure VPN Gateway. Pokud jsou nastavení správná, dojde ke ztrátě připojení a dokud tyto problémy nevyřešíte sami, nedošlo k jejich odhalení a obvykle trvalo hodiny k identifikaci a vyřešení problému.
 
-Pomocí služby Azure Network Watcher řešení potíží s funkcí, máte možnost diagnostikovat problémy s vaší brány a připojení a během několika minut mít dostatek informací, které se informovaně rozhodnout, jestli k nápravě problému.
+Funkce řešení potíží s Azure Network Watcher vám umožní diagnostikovat všechny problémy s bránou a připojeními a během několika minut má dostatek informací, aby bylo možné problém opravit.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Scénář
 
-Chcete konfigurovat připojení site-to-site mezi Azure a místní pomocí FortiGate jako brána místní sítě VPN. K dosažení tohoto scénáře, by vyžadovaly následující nastavení:
+Chcete nakonfigurovat připojení typu Site-to-site mezi Azure a místním prostředím pomocí FortiGate jako místní VPN Gateway. Chcete-li dosáhnout tohoto scénáře, budete potřebovat následující nastavení:
 
-1. Brána virtuální sítě – VPN Gateway v Azure
-1. Brány místní sítě – [místní brána sítě VPN (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) reprezentace v cloudu Azure
-1. Připojení Site-to-site (směrování na základě) - [připojení mezi bránou VPN a místní směrovač](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
+1. Brána Virtual Network – VPN Gateway v Azure
+1. Brána místní sítě – místní [(Fortigate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) reprezentaci v cloudu Azure
+1. Připojení Site-to-Site (založené na směrování) – [připojení mezi VPN Gateway a místním směrovačem](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
 1. [Konfigurace FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Podrobné pokyny ke konfiguraci konfigurace Site-to-Site najdete tématu: [Vytvoření virtuální sítě s připojením typu Site-to-Site pomocí webu Azure portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Podrobný návod pro konfiguraci konfigurace site-to-site najdete v tématu [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Jeden z kroků konfigurace důležitých konfiguruje komunikace parametry protokolu IPsec, všechny chybné konfigurace vede ke ztrátě připojení mezi místní sítí a Azure. Azure VPN Gateway aktuálně jsou konfigurovány pro podporu následující parametry protokolu IPsec pro fázi 1. Všimněte si, jak bylo zmíněno dříve, že tato nastavení nelze změnit.  Jak je vidět v následující tabulce, jsou podporovány službou Azure VPN Gateway šifrovacích algoritmů AES256, AES128 a 3DES.
+Jedním z důležitých kroků konfigurace je konfigurace komunikačních parametrů protokolu IPsec, jakákoli Chybná konfigurace vede ke ztrátě připojení mezi místní sítí a Azure. V současné době jsou brány VPN Azure nakonfigurované tak, aby podporovaly následující parametry protokolu IPsec pro fázi 1. Všimněte si, že výše uvedená nastavení nelze upravovat.  Jak vidíte v následující tabulce, šifrovací algoritmy podporované službou Azure VPN Gateway jsou AES256, AES128 a 3DES.
 
 ### <a name="ike-phase-1-setup"></a>Nastavení protokolu IKE fáze 1
 
-| **Vlastnost** | **PolicyBased** | **Bránu typu RouteBased a standardní nebo VPN s vysokým výkonem** |
+| **Vlastnost** | **PolicyBased** | **RouteBased a standardní nebo vysoce výkonná Brána VPN Gateway** |
 | --- | --- | --- |
 | Verze IKE |IKEv1 |IKEv2 |
 | Skupina Diffie-Hellman |Skupina 2 (1 024 bitů) |Skupina 2 (1 024 bitů) |
@@ -54,66 +55,66 @@ Jeden z kroků konfigurace důležitých konfiguruje komunikace parametry protok
 | Algoritmus hash |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
 | Životnost přidružení zabezpečení (SA) Fáze 1 (čas) |28 800 sekund |10 800 sekund |
 
-Jako uživatel, bude potřeba nakonfigurovat váš FortiGate, najdete v ukázkové konfiguraci [Githubu](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Neúmyslně jste nakonfigurovali váš FortiGate používat jako algoritmu hash SHA-512. Tento algoritmus není podporovaný algoritmus pro připojení na základě zásad, připojení k síti VPN funguje.
+Jako uživatel byste se museli FortiGate nakonfigurovat, ukázkovou konfiguraci najdete na [GitHubu](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Nevědomě jste si nakonfigurovali FortiGate, aby jako algoritmus hash používala SHA-512. Vzhledem k tomu, že tento algoritmus není podporovaným algoritmem pro připojení založená na zásadách, vaše připojení k síti VPN funguje.
 
-Je těžké k řešení těchto problémů a hlavní příčiny jsou často neintuitivní. V takovém případě můžete otevřít lístek podpory a získat nápovědu k řešení problému. Ale pomocí služby Azure Network Watcher řešit problémy rozhraní API, můžete určit tyto problémy s vlastními silami.
+Tyto problémy je obtížné řešit a hlavní příčiny jsou často neintuitivní. V takovém případě můžete otevřít lístek podpory a získat pomoc při řešení tohoto problému. Ale u Azure Network Watcher řešení potíží s rozhraním API můžete tyto problémy identifikovat sami.
 
-## <a name="troubleshooting-using-azure-network-watcher"></a>Řešení potíží s využitím Azure Network Watcher
+## <a name="troubleshooting-using-azure-network-watcher"></a>Řešení potíží s používáním Azure Network Watcher
 
-K diagnostice připojení, připojte se k Azure Powershellu a zahájit `Start-AzNetworkWatcherResourceTroubleshooting` rutiny. Můžete najít podrobnosti o použití této rutiny v [Poradce při potížích s brány virtuální sítě a připojení – prostředí PowerShell](network-watcher-troubleshoot-manage-powershell.md). Tato rutina může trvat až několik minut na dokončení.
+Chcete-li diagnostikovat připojení, připojte se k Azure PowerShell a zahajte rutinu `Start-AzNetworkWatcherResourceTroubleshooting`. Podrobnosti o používání této rutiny najdete v tématu [řešení potíží s Virtual Network bránou a připojením – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Dokončení této rutiny může trvat až několik minut.
 
-Po dokončení rutiny můžete přejít na umístění úložiště, zadaná v rutině získat podrobné informace o problému a protokoly. Azure Network Watcher vytvoří složku zip, který obsahuje následující soubory protokolu:
+Po dokončení rutiny můžete přejít do umístění úložiště určeného v rutině a získat podrobné informace o problémech a protokolech. Azure Network Watcher vytvoří složku zip, která obsahuje následující soubory protokolu:
 
 ![1][1]
 
-Otevřete soubor s názvem IKEErrors.txt a zobrazí se následující chyba, oznamující problém s místními chybné konfigurace nastavení protokolu IKE.
+Otevřete soubor s názvem IKEErrors. txt a zobrazí se následující chyba s informacemi o potížích s nastavením místní služby IKE chybné konfigurace.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-Můžete získat podrobné informace wfpdiag.txt Scrubbed o chybě, protože v tomto případě uvádí, že došlo `ERROR_IPSEC_IKE_POLICY_MATCH` , které umožňují připojení nefunguje správně.
+Můžete získat podrobné informace z Scrubbed-wfpdiag. txt o chybě, protože v tomto případě uvádí, že se `ERROR_IPSEC_IKE_POLICY_MATCH`, že vedoucí k připojení nepracuje správně.
 
-Další běžné chybné konfigurace je určení nesprávné sdílené klíče. Pokud v předchozím příkladu má zadán jiné sdílené klíče, IKEErrors.txt zobrazí následující chyba: `Error: Authentication failed. Check shared key`.
+Další běžnou chybnou konfigurací je zadání nesprávných sdílených klíčů. Pokud v předchozím příkladu jste určili jiné sdílené klíče, zobrazí se v IKEErrors. txt následující chyba: `Error: Authentication failed. Check shared key`.
 
-Řešení potíží s Azure Network Watcher umožňuje pro diagnostiku a řešení potíží s bránou VPN a připojení se snadným jednoduchou rutinu prostředí PowerShell. Aktuálně podporujeme Diagnostika následující podmínky a pracujeme na přidání další podmínky.
+Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a řešit potíže s VPN Gateway a připojení s jednoduchou rutinou PowerShellu. V současné době podporujeme diagnostiku následujících podmínek a pracujeme na přidávání dalších podmínek.
 
 ### <a name="gateway"></a>brána
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Když je zjištěna žádná chyba. |Ano|
-| GatewayNotFound | Nejde najít brána nebo brána není zřízená. |Ne|
-| PlannedMaintenance |  Instance brány probíhá údržba.  |Ne|
-| UserDrivenUpdate | Když uživatel aktualizace probíhá. To může být operace změny velikosti. | Ne |
-| VipUnResponsive | Primární instance brány nemá přístup. To se stane, když selže sondu stavu. | Ne |
-| PlatformInActive | Se vyskytl problém s platformou. | Ne|
-| ServiceNotRunning | Základní služba není spuštěná. | Ne|
-| NoConnectionsFoundForGateway | Neexistuje žádná připojení k bráně. Toto je pouze upozornění.| Ne|
-| ConnectionsNotConnected | Žádné připojení jsou připojené. Toto je pouze upozornění.| Ano|
-| GatewayCPUUsageExceeded | Aktuální využití brány využití procesoru je > 95 %. | Ano |
+| Chyba | Pokud není zjištěna žádná chyba. |Ano|
+| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
+| PlannedMaintenance |  Instance brány je pod údržbou.  |Ne|
+| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | Ne |
+| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
+| PlatformInActive | Došlo k potížím s platformou. | Ne|
+| ServiceNotRunning | Podkladová služba není spuštěná. | Ne|
+| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| Ne|
+| ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Ano|
+| GatewayCPUUsageExceeded | Aktuální využití procesoru využití brány je > 95%. | Ano |
 
 ### <a name="connection"></a>Připojení
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Když je zjištěna žádná chyba. |Ano|
-| GatewayNotFound | Nejde najít brána nebo brána není zřízená. |Ne|
-| PlannedMaintenance | Instance brány probíhá údržba.  |Ne|
-| UserDrivenUpdate | Když uživatel aktualizace probíhá. To může být operace změny velikosti.  | Ne |
-| VipUnResponsive | Primární instance brány nemá přístup. To se stane, když selže sondu stavu. | Ne |
-| ConnectionEntityNotFound | Konfigurace připojení se nenašel. | Ne |
-| ConnectionIsMarkedDisconnected | Připojení je označen "odpojené". |Ne|
-| ConnectionNotConfiguredOnGateway | Základní služba nemá nakonfigurované připojení. | Ano |
-| ConnectionMarkedStandby | Základní služba je označena jako pohotovostní režim.| Ano|
-| Authentication | Neshoda předsdílený klíč. | Ano|
-| PeerReachability | Brána partnera není dostupná. | Ano|
-| IkePolicyMismatch | Partner brány má IKE zásady, které nejsou podporovány službou Azure. | Ano|
-| WfpParse Error | Došlo k chybě při analýze protokolu Ochrana souborů systému Windows. |Ano|
+| Chyba | Pokud není zjištěna žádná chyba. |Ano|
+| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
+| PlannedMaintenance | Instance brány je pod údržbou.  |Ne|
+| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | Ne |
+| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
+| ConnectionEntityNotFound | Chybí konfigurace připojení. | Ne |
+| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |Ne|
+| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
+| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
+| Authentication | Neshoda s předsdíleným klíčem. | Ano|
+| PeerReachability | Partnerská brána není dostupná. | Ano|
+| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
+| WfpParse Error | Při analýze protokolu WFP došlo k chybě. |Ano|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, aby se ověřilo připojení VPN Gateway pomocí Powershellu a Azure Automation návštěvou [monitorování VPN Gateway pomocí Azure Network Watcher troubleshooting](network-watcher-monitor-with-azure-automation.md)
+Naučte se VPN Gateway kontrolovat možnosti připojení k prostředí PowerShell a Azure Automation v tématu [monitorování bran VPN pomocí Azure Network Watcher řešení potíží](network-watcher-monitor-with-azure-automation.md) .
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png

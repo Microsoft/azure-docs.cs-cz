@@ -12,18 +12,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: c6df50db564dac09785b460d158d4276ea8a215e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941381"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271254"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostikování chyb pomocí Azure Active Directory připojené služby
 
-Při zjišťování dřívějšího ověřovacího kódu zjistil server Azure Active Director Connect nekompatibilní typ ověřování.
+Při zjišťování dřívějšího ověřovacího kódu zjistila Azure Active Directory připojená služba nekompatibilní typ ověřování.
 
-Aby bylo možné správně zjistit předchozí ověřovací kód v projektu, musí být projekt sestaven.  Pokud se zobrazí tato chyba a v projektu nemáte předchozí ověřovací kód, znovu ho Sestavte a zkuste to znovu.
+Aby bylo možné správně zjistit předchozí ověřovací kód v projektu, je nutné projekt znovu sestavit. Pokud se zobrazí tato chyba a v projektu nemáte předchozí ověřovací kód, znovu ho Sestavte a zkuste to znovu.
 
 ## <a name="project-types"></a>Typy projektů
 

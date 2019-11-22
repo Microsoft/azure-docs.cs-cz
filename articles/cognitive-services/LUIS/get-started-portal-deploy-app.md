@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669426"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278546"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
@@ -29,6 +29,7 @@ V tomto rychlém startu se naučíte nasadit aplikaci. Vytvoříte prostředek k
 
 * Získejte [předplatné Azure](https://azure.microsoft.com/free).
 * Dokončete [předchozí portál pro rychlý Start](get-started-portal-build-app.md) nebo [si stáhněte a importujte aplikaci](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Pokud máte aplikace, které předem nastavily ověřování prostředků Azure, [migrujte na prostředek Azure](luis-migration-authoring.md). Některé stránky portálu při ověřování e-mailu vypadají jinak.
 
 ## <a name="create-the-endpoint-resource"></a>Vytvoření prostředku koncového bodu
 
@@ -40,7 +41,7 @@ V Azure Portal vytvoříte prostředek koncového bodu předpovědi. Tento prost
 
    |Nastavení|Hodnota|Účel|
    |--|--|--|
-   |Name (Název)|`my-luis-resource`|Název prostředku Azure. Tento název budete potřebovat při přiřazení prostředku k aplikaci na portálu LUIS.|
+   |Název|`my-luis-resource`|Název prostředku Azure. Tento název budete potřebovat při přiřazení prostředku k aplikaci na portálu LUIS.|
    |Předplatné|Vaše předplatné|Vyberte jedno z předplatných přidružených k vašemu účtu.|
    |Skupina prostředků|`my-resource-group`|Vytvořte novou skupinu prostředků pro všechny prostředky služby vnímání. Až budete s prostředky hotovi, můžete odstranit skupinu prostředků, abyste mohli vyčistit své předplatné. |
    |Umístění pro vytváření obsahu|**Západní USA**|Oblast Azure pro vytváření obsahu.|
@@ -60,7 +61,7 @@ V Azure Portal vytvoříte prostředek koncového bodu předpovědi. Tento prost
 
 Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit prostředek k aplikaci LUIS. Po přiřazení Tento krok nebudete muset provádět znovu, dokud nevytvoříte nový prostředek. Můžete vytvořit nový prostředek pro rozšíření oblastí vaší aplikace nebo pro podporu většího počtu předpovědních dotazů.
 
-1. Přihlaste se k [portálu Luis](https://www.luis.ai) a v seznamu aplikací vyberte aplikaci **myEnglishApp** .
+1. Přihlaste se k [portálu Luis](https://preview.luis.ai) a v seznamu aplikací vyberte aplikaci **myEnglishApp** .
 
 1. V pravé horní nabídce vyberte **Spravovat** a pak vyberte **prostředky Azure**.
 
@@ -68,9 +69,9 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit 
 
     ![Pokud chcete přidat prostředek předpovědi LUIS, vyberte Přidat prostředek předpovědi.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřadit prostředek**.
+1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřazení prostředků**.
 
-   ![Přiřazení prostředku k aplikaci](./media/get-started-portal-deploy-app/assign-resource.png)
+   ![Přiřadit prostředek vaší aplikace](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Při přidávání klíčového obsahu do aplikace proveďte stejný postup.
 
@@ -86,7 +87,7 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit 
 
 ## <a name="prediction-endpoint-request"></a>Požadavek koncového bodu předpovědi
 
-`query=` na konci adresy URL je místo, kde se uživateli připojí utterance k žádosti o získání. Po `query=`zadejte stejný utterance uživatele, který jste použili na konci předchozího rychlého startu:
+Na portálu Preview `query=` na konci adresy URL místo, kde je uživatel připojen k žádosti o získání utterance. Po `query=`zadejte stejný utterance uživatele, který jste použili na konci předchozího rychlého startu:
 
 ```Is there a form named hrf-234098```
 

@@ -2,13 +2,13 @@
 title: Exportovat šablonu v Azure Portal
 description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Manager z prostředků v rámci vašeho předplatného.
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 6e05a8bff27e56bc5942a7c16ab63921c489f44c
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/21/2019
+ms.openlocfilehash: 9e6a4089758809cbebc6a3c0cd586cb418ca42bf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149864"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306777"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
 
@@ -33,7 +33,7 @@ V závislosti na zvolené možnosti mají exportované šablony různé kvality.
 | Šablona je snímkem aktuálního stavu prostředků. Obsahuje všechny ruční změny, které jste provedli po nasazení. | Šablona zobrazuje pouze stav prostředků v době nasazení. Žádné ruční změny, které jste provedli po nasazení, nejsou zahrnuté. |
 | Můžete vybrat prostředky ze skupiny prostředků, které se mají exportovat. | Součástí jsou všechny prostředky pro konkrétní nasazení. Nemůžete vybrat podmnožinu těchto prostředků nebo přidat prostředky, které byly přidány v jinou dobu. |
 | Šablona obsahuje všechny vlastnosti prostředků, včetně některých vlastností, které byste při nasazení nenormálně nastavili. Tyto vlastnosti můžete chtít před použitím šablony znovu odebrat nebo vyčistit. | Šablona obsahuje pouze vlastnosti, které jsou potřebné pro nasazení. Šablona je připravená k použití. |
-| Šablona pravděpodobně neobsahuje všechny parametry, které potřebujete pro opakované použití. Většina hodnot vlastností je pevně zakódována v šabloně. Aby bylo možné šablonu znovu nasadit v jiných prostředích, je třeba přidat parametry, které zvyšují možnost konfigurace prostředků. | Šablona obsahuje parametry, které usnadňují opětovné nasazení v různých prostředích. |
+| Šablona pravděpodobně neobsahuje všechny parametry, které potřebujete pro opakované použití. Většina hodnot vlastností je pevně zakódována v šabloně. Aby bylo možné šablonu znovu nasadit v jiných prostředích, je třeba přidat parametry, které zvyšují možnost konfigurace prostředků.  Máte také možnost zrušit výběr **parametrů include** , abyste mohli vytvářet vlastní parametry. | Šablona obsahuje parametry, které usnadňují opětovné nasazení v různých prostředích. |
 
 Exportujte šablonu ze skupiny prostředků nebo prostředku, pokud:
 
@@ -62,6 +62,8 @@ Export jednoho nebo více prostředků ze skupiny prostředků:
 
    ![Zobrazit šablonu](./media/export-template-portal/show-template.png)
 
+   Ve výchozím nastavení je vybraná možnost **zahrnout parametry** .  Pokud je tato možnost vybrána, budou všechny parametry šablony zahrnuty při generování šablony. Pokud chcete vytvořit vlastní parametry, přepněte toto zaškrtávací políčko na nezahrnuté.
+
 ## <a name="export-template-from-a-resource"></a>Exportovat šablonu z prostředku
 
 Export jednoho prostředku:
@@ -74,7 +76,7 @@ Export jednoho prostředku:
 
    ![Exportovat prostředek](./media/export-template-portal/export-single-resource.png)
 
-1. Zobrazí se vyexportovaná šablona a je možné ji stáhnout a nasadit. Šablona obsahuje pouze jeden prostředek.
+1. Zobrazí se vyexportovaná šablona a je možné ji stáhnout a nasadit. Šablona obsahuje pouze jeden prostředek. Ve výchozím nastavení je vybraná možnost **zahrnout parametry** .  Pokud je tato možnost vybrána, budou všechny parametry šablony zahrnuty při generování šablony. Pokud chcete vytvořit vlastní parametry, přepněte toto zaškrtávací políčko na nezahrnuté.
 
 ## <a name="export-template-before-deployment"></a>Exportovat šablonu před nasazením
 

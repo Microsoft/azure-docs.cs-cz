@@ -1,5 +1,5 @@
 ---
-title: Aplikace se zástupnými znaky v proxy aplikací Azure Active Directory | Dokumentace Microsoftu
+title: Aplikace se zástupnými znaky v Azure Proxy aplikací služby AD
 description: Další informace o použití aplikace se zástupnými znaky v proxy aplikací Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c5a9e7be5f582051e03cba08733fcbfa697cc8f5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827992"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275037"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikací Azure Active Directory
 
@@ -45,7 +45,7 @@ Aplikace se zástupnými znaky můžete publikovat, pokud obě, interní a exter
 
 > http(s)://*.\<domain\>
 
-Například: `http(s)://*.adventure-works.com`.
+Příklad: `http(s)://*.adventure-works.com`.
 
 Během interní a externí adresy URL můžete použít jako osvědčený postup různých doménách, musí být stejné. Při publikování aplikace, se zobrazí chyba, pokud jedna z adres URL neobsahuje zástupný znak.
 
@@ -55,13 +55,13 @@ Vytváření aplikací se zástupnými znaky je založena na stejném [publikov�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, zkontrolujte, zda že splnění těchto požadavků.
+Abyste mohli začít, ujistěte se, že jste splnili tyto požadavky.
 
 ### <a name="custom-domains"></a>Vlastní domény
 
 Zatímco [vlastních domén](application-proxy-configure-custom-domain.md) jsou volitelné pro všechny ostatní aplikace, jsou předpokladem pro aplikace se zástupnými znaky. Vytváří se vlastní domény vyžaduje, abyste:
 
-1. Vytvořte ověřené domény v Azure.
+1. Vytvořte ověřenou doménu v rámci Azure.
 1. Nahrajte certifikát SSL ve formátu PFX na vaše proxy aplikací.
 
 Měli byste zvážit použití certifikát se zástupným znakem tak, aby odpovídaly aplikaci, kterou chcete vytvořit. Alternativně můžete také použít certifikát, který je uveden pouze konkrétní aplikace. Jenom aplikace uvedené v certifikátu v tomto případě bude přístupné prostřednictvím této aplikaci se zástupnými znaky.
@@ -78,17 +78,17 @@ Potvrďte, že jste správně nakonfigurovali váš záznam CNAME, můžete pou�
 
 ## <a name="considerations"></a>Požadavky
 
-Tady jsou některé aspekty, které byste měli vzít v úvahu pro aplikace se zástupnými znaky.
+Tady je několik důležitých informací, které byste měli vzít v úvahu pro aplikace se zástupnými znaky.
 
 ### <a name="accepted-formats"></a>Přijímané formáty
 
 Pro aplikace se zástupnými znaky **interní adresa URL** musí být ve formátu `http(s)://*.<domain>`.
 
-![Pro interní adresa URL, použijte formát http :/ / *. \<domény >](./media/application-proxy-wildcard/22.png)
+![Pro interní adresu URL použijte formát http (s)://*. > domény\<](./media/application-proxy-wildcard/22.png)
 
 Při konfiguraci **externí adresa URL**, je nutné použít následující formát: `https://*.<custom domain>`
 
-![Pro externí adresu URL pomocí formátu https://*. \<vlastní domény >](./media/application-proxy-wildcard/21.png)
+![Pro externí adresu URL použijte formát https://*.\<vlastní > domény](./media/application-proxy-wildcard/21.png)
 
 Další pozice zástupný znak, více zástupných znaků nebo jiných řetězců regulárního výrazu nejsou podporovány a jsou příčinou chyby.
 
@@ -142,25 +142,25 @@ Následující [popsané kroky](application-proxy-add-on-premises-application.md
 
 - Interní adresa URL:
 
-    ![Příklad: Zástupný znak v interní adresa URL](./media/application-proxy-wildcard/42.png)
+    ![Příklad: zástupný znak v interní adrese URL](./media/application-proxy-wildcard/42.png)
 
 - Externí adresa URL:
 
-    ![Příklad: Zástupný znak v externí adresa URL](./media/application-proxy-wildcard/43.png)
+    ![Příklad: zástupný znak v externí adrese URL](./media/application-proxy-wildcard/43.png)
 
 - Interní aplikace hlavní název služby:
 
-    ![Příklad: Zástupný znak v konfiguraci hlavního názvu služby](./media/application-proxy-wildcard/44.png)
+    ![Příklad: zástupný znak v konfiguraci hlavního názvu služby](./media/application-proxy-wildcard/44.png)
 
 Publikováním aplikací se zástupnými znaky můžete nyní přístup tři aplikace tak, že přejdete na adresy URL, které se používají pro (například `travel.adventure-works.com`).
 
 Konfigurace implementuje následující strukturu:
 
-![Znázorňuje strukturu implementované Ukázková konfigurace](./media/application-proxy-wildcard/05.png)
+![Zobrazuje strukturu implementovanou ukázkovou konfigurací.](./media/application-proxy-wildcard/05.png)
 
 | Barva | Popis |
 | ---   | ---         |
-| Modrá  | Aplikace explicitně publikované a je viditelný na webu Azure Portal. |
+| Modrá  | Aplikace jsou explicitně publikované a viditelné v Azure Portal. |
 | Šedá  | Aplikace můžete přístupné prostřednictvím nadřazená aplikace. |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scénář 2: Aplikaci se zástupnými znaky obecné s výjimkou
@@ -173,25 +173,25 @@ Následující [popsané kroky](application-proxy-add-on-premises-application.md
 
 - V **interní adresa URL**, nastavíte **finance** místo zástupné znaky.
 
-    ![Příklad: Sada finance místo zástupných znaků v interní adresa URL](./media/application-proxy-wildcard/52.png)
+    ![Příklad: nastavte finance místo zástupného znaku na interní adrese URL.](./media/application-proxy-wildcard/52.png)
 
 - V **externí adresa URL**, nastavíte **finance** místo zástupné znaky.
 
-    ![Příklad: Sada finance místo zástupných znaků v externí adresa URL](./media/application-proxy-wildcard/53.png)
+    ![Příklad: nastavte finance místo zástupného znaku v externí adrese URL.](./media/application-proxy-wildcard/53.png)
 
 - Vnitřní hlavní název služby aplikace nastavíte **finance** místo zástupné znaky.
 
-    ![Příklad: Sada finance místo zástupných znaků v konfiguraci hlavního názvu služby](./media/application-proxy-wildcard/54.png)
+    ![Příklad: nastavte finance místo zástupného znaku v konfiguraci hlavního názvu služby (SPN).](./media/application-proxy-wildcard/54.png)
 
 Tato konfigurace implementuje následující scénář:
 
-![Zobrazí konfiguraci implementované vzorový scénář](./media/application-proxy-wildcard/09.png)
+![Zobrazuje konfiguraci implementovanou ukázkovým scénářem.](./media/application-proxy-wildcard/09.png)
 
 Protože `finance.adventure-works.com` je adresa URL konkrétnější než `*.adventure-works.com`, má přednost. Uživatelé, že přejdete na `finance.adventure-works.com` mají prostředí podle prostředků finanční aplikace. V tomto případě jsou mít přístup jenom zaměstnanci finančního `finance.adventure-works.com`.
 
 Pokud máte více aplikací publikovaných pro finance a máte `finance.adventure-works.com` jako ověřenou doménu, můžete publikovat aplikaci se zástupnými znaky jiné `*.finance.adventure-works.com`. Protože se jedná konkrétnější než Obecné `*.adventure-works.com`, má přednost, pokud uživatel přistupuje k aplikaci v doméně finance.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o **vlastní domény**, naleznete v tématu [práce s vlastními doménami v Proxy aplikací Azure AD](application-proxy-configure-custom-domain.md).
-- Další informace o **publikování aplikací**, naleznete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md)
+- Další informace o **vlastních doménách**najdete v tématu [práce s vlastními doménami v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md).
+- Další informace o **publikování aplikací**najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md)

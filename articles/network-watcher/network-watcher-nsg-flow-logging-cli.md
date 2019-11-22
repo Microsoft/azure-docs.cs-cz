@@ -1,5 +1,6 @@
 ---
-title: Správa protokolů toku skupin zabezpečení sítě pomocí Azure Network Watcher – Azure CLI | Microsoft Docs
+title: Správa protokolů toku NSG – Azure CLI
+titleSuffix: Azure Network Watcher
 description: Tato stránka vysvětluje, jak spravovat protokoly toku skupin zabezpečení sítě v Azure Network Watcher pomocí Azure CLI.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5e7c09c1a06a94a2ed64f3624ee38dc42606d7bc
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 950b014d7e08eeeeed40ba7b294e53e1c200474b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563488"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278021"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurace protokolů toku skupiny zabezpečení sítě pomocí Azure CLI
 
@@ -53,7 +54,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 Účet úložiště, který zadáte, nemůže mít pro něj nakonfigurovaná Síťová pravidla, která omezují přístup k síti jenom na služby Microsoftu nebo konkrétní virtuální sítě. Účet úložiště může být ve stejném nebo jiném předplatném Azure, než NSG, pro který povolíte protokol toku. Pokud používáte jiné odběry, musí být oba přidruženy ke stejnému Azure Active Directory tenantovi. Účet, který použijete pro každé předplatné, musí mít [potřebná oprávnění](required-rbac-permissions.md). 
 
-Pokud je účet úložiště v jiné skupině prostředků nebo předplatném, než je skupina zabezpečení sítě, zadejte celé ID účtu úložiště, nikoli jeho název. Pokud je například účet úložiště ve skupině prostředků s názvem *RG-Storage*, místo určení *storageAccountName* v předchozím příkazu byste zadali */Subscriptions/{SubscriptionId}/resourceGroups/RG-Storage/Providers/ Microsoft. Storage/storageAccounts/storageAccountName*.
+Pokud je účet úložiště v jiné skupině prostředků nebo předplatném, než je skupina zabezpečení sítě, zadejte celé ID účtu úložiště, nikoli jeho název. Pokud je například účet úložiště ve skupině prostředků s názvem *RG-Storage*, místo určení *storageAccountName* v předchozím příkazu byste zadali */Subscriptions/{SubscriptionId}/resourceGroups/RG-Storage/Providers/Microsoft.Storage/storageAccounts/storageAccountName*.
 
 ## <a name="disable-network-security-group-flow-logs"></a>Zakázat protokoly toků skupin zabezpečení sítě
 

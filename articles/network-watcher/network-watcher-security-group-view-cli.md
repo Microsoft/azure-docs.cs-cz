@@ -1,6 +1,7 @@
 ---
-title: Analýza zabezpečení sítě v Azure Network Watcher zobrazení skupin zabezpečení – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak používat rozhraní příkazového řádku Azure pro analýzu zabezpečení virtuálních počítačů pomocí zobrazení skupin zabezpečení.
+title: Analýza zabezpečení sítě pomocí zobrazení skupiny zabezpečení – Azure CLI
+titleSuffix: Azure Network Watcher
+description: Tento článek popisuje, jak pomocí Azure CLI analyzovat zabezpečení virtuálních počítačů pomocí zobrazení skupin zabezpečení.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,49 +15,49 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 68222a90eb60ab4f84a34b5e46833128ea081ec1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70460d3b46baa094f227f96733f8ac98fae9285b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724434"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277854"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Analyzovat zabezpečení vašich virtuálních počítačů se zobrazením skupin zabezpečení pomocí Azure CLI
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Analýza zabezpečení virtuálního počítače pomocí zobrazení skupiny zabezpečení pomocí Azure CLI
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Zobrazení skupin zabezpečení vrátí pravidla zabezpečení sítě nakonfigurovaná a efektivní, které se použijí k virtuálnímu počítači. Tato možnost je užitečná k auditování a diagnostice skupiny zabezpečení sítě a pravidel, které jsou nakonfigurované na virtuálním počítači k zajištění provozu se správně povolený nebo zakázaný. V tomto článku ukážeme, jak načíst pravidla nakonfigurovaná a efektivní zabezpečení k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure
+Zobrazení skupiny zabezpečení vrací nakonfigurovaná a efektivní pravidla zabezpečení sítě, která se používají pro virtuální počítač. Tato funkce je užitečná pro audit a diagnostiku skupin zabezpečení sítě a pravidel nakonfigurovaných na virtuálním počítači, aby se zajistilo správné povolení nebo odepření provozu. V tomto článku vám ukážeme, jak načíst nakonfigurovaná a platná pravidla zabezpečení pro virtuální počítač pomocí Azure CLI.
 
-K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure pro Mac, Linux a Windows (CLI)](/cli/azure/install-azure-cli).
+K provedení kroků v tomto článku potřebujete [nainstalovat rozhraní příkazového řádku Azure pro Mac, Linux a Windows (CLI)](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit Network Watcher](network-watcher-create.md) vytvořit Network Watcher.
+V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
 ## <a name="scenario"></a>Scénář
 
-Scénáře popsané v tomto článku načte pravidla nakonfigurovaná a efektivní zabezpečení pro daný virtuální počítač.
+Scénář popsaný v tomto článku načte nakonfigurovaná a platná pravidla zabezpečení pro daný virtuální počítač.
 
 ## <a name="get-a-vm"></a>Získání virtuálního počítače
 
-Virtuální počítač se vyžaduje pro spuštění `vm list` rutiny. Následující příkaz zobrazí seznam virtuálních počítačů ve skupině prostředků:
+Ke spuštění rutiny `vm list` se vyžaduje virtuální počítač. Následující příkaz vypíše virtuální počítače ve skupině prostředků:
 
 ```azurecli
 az vm list -resource-group resourceGroupName
 ```
 
-Když víte, virtuální počítač, můžete použít `vm show` rutiny pro získání jeho Id prostředku:
+Jakmile znáte virtuální počítač, můžete pomocí rutiny `vm show` získat jeho ID prostředku:
 
 ```azurecli
 az vm show -resource-group resourceGroupName -name virtualMachineName
 ```
 
-## <a name="retrieve-security-group-view"></a>Načtení zobrazení skupin zabezpečení
+## <a name="retrieve-security-group-view"></a>Načíst zobrazení skupiny zabezpečení
 
-Dalším krokem je načtení výsledný objekt zobrazení skupiny zabezpečení.
+Dalším krokem je načtení výsledku zobrazení skupiny zabezpečení.
 
 ```azurecli
 az network watcher show-security-group-view --resource-group resourceGroupName --vm vmName
@@ -64,7 +65,7 @@ az network watcher show-security-group-view --resource-group resourceGroupName -
 
 ## <a name="viewing-the-results"></a>Zobrazení výsledků
 
-Následující příklad je zkrácený odpovědi vrácené výsledky. Ve výsledcích zobrazí všechna pravidla zabezpečení efektivní a použité na virtuálním počítači rozdělené ve skupinách **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, a  **EffectiveSecurityRules**.
+Následující příklad je zkrácená odezva vrácených výsledků. Ve výsledcích se zobrazí všechna platná a použitá pravidla zabezpečení na virtuálním počítači rozdělená do skupin **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**a **EffectiveSecurityRules**.
 
 ```json
 {
@@ -154,8 +155,8 @@ Následující příklad je zkrácený odpovědi vrácené výsledky. Ve výsled
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Navštivte [auditování skupiny zabezpečení sítě (NSG) pomocí služby Network Watcher](network-watcher-nsg-auditing-powershell.md) postup automatizace ověření skupiny zabezpečení sítě.
+Informace o tom, jak automatizovat ověřování skupin zabezpečení sítě, najdete [v tématu auditování skupin zabezpečení sítě (NSG) s Network Watcher](network-watcher-nsg-auditing-powershell.md) .
 
-Další informace o pravidlech zabezpečení, které se použijí k síťovým prostředkům návštěvou [přehled zobrazení skupin zabezpečení](network-watcher-security-group-view-overview.md)
+Další informace o pravidlech zabezpečení, která se vztahují na vaše síťové prostředky, najdete v tématu [Přehled zobrazení skupiny zabezpečení.](network-watcher-security-group-view-overview.md)

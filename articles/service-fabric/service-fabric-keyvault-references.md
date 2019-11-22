@@ -8,18 +8,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: atsenthi
-ms.openlocfilehash: b0f1a081727721ea0325276cf9edd52c6d71fb6b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 96da89a00b054767553b0ed3d8debf30c344dd62
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243857"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307336"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
 
 Běžným problémem při sestavování cloudových aplikací je bezpečné ukládání tajných kódů vyžadovaných vaší aplikací. Můžete například chtít uložit přihlašovací údaje úložiště kontejnerů do trezoru klíčů a odkazovat na něj v manifestu aplikace. Service Fabric KeyVaultReference používá Service Fabric spravovanou identitu a usnadňuje referenční informace trezoru klíčů. Zbývající část tohoto článku podrobně popisuje, jak používat Service Fabric KeyVaultReference a obsahuje některé typické využití.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Spravovaná identita pro aplikaci (MIT)
     
@@ -37,7 +37,7 @@ Běžným problémem při sestavování cloudových aplikací je bezpečné ukl�
         ...
     {
         "parameters":  [
-            "name":  "CentralSecretService"
+            "name":  "CentralSecretService",
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -142,7 +142,7 @@ KeyVaultReference je podporovaný typ pro RepositoryCredentials kontejneru, ní�
         <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 - Pro podporu KeyVaultReference je potřeba povolit spravovanou identitu, aktivace vaší aplikace selže, pokud se KeyVaultReference použije bez povolení spravované identity.
 
 - Pokud používáte identitu přiřazenou systémem, je vytvořena až po nasazení aplikace a tím se vytvoří cyklická závislost. Jakmile je vaše aplikace nasazená, můžete k trezoru klíčů udělit oprávnění k přístupu k identitě přidělené systémem. Identitu přiřazenou systémem můžete najít podle názvu {cluster}/{Application Name}/{ServiceName}

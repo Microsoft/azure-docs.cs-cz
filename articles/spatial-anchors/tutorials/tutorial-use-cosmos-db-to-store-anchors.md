@@ -1,19 +1,19 @@
 ---
-title: Kurz – sdílení prostorových kotev Azure napříč relacemi a zařízeními pomocí back-endu Azure Cosmos DB | Microsoft Docs
+title: 'Kurz: sdílení kotev pomocí Azure Cosmos DB'
 description: V tomto kurzu se dozvíte, jak sdílet identifikátory prostorových kotev Azure v zařízeních s Androidem/iOS v Unity pomocí back-endové služby a Azure Cosmos DB.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7ddbff563f79992f21aef5182177f4fb60c61dab
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882166"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276877"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Kurz: sdílení prostorových kotev Azure napříč relacemi a zařízeními pomocí back-endu Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Je potřeba si všimnout, že i když v tomto kurzu budete používat Unity a Az
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
-Přidejte databázi Azure Cosmos do skupiny prostředků, kterou jste vytvořili dříve. 
+Přidejte databázi Azure Cosmos do skupiny prostředků, kterou jste vytvořili dříve.
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 

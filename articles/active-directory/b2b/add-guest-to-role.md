@@ -1,5 +1,5 @@
 ---
-title: Přidat uživatele spolupráce B2B do role – Azure Active Directory | Dokumentace Microsoftu
+title: Přidat uživatele spolupráce B2B do role – Azure Active Directory
 description: Přidat uživatele typu Host do role v Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -12,30 +12,30 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb195fd3fbf668afe436d3247767d2cc998281a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 703e68994a9d156ccf3e74a5df4a2f4ee2f062cd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767586"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268552"
 ---
-# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Udělit oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory
+# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory
 
-Uživatelé Azure Active Directory (Azure AD) B2B spolupráce se přidají jako uživatele typu Host do adresáře, a ve výchozím nastavení jsou omezené na oprávnění typu Host do adresáře. Vaší firmy může být nutné některé uživatele typu Host k vyplnění vyšší oprávnění role ve vaší organizaci. Pro podporu, definování rolí vyšší úrovní oprávnění, můžete přidat uživatele typu Host k žádné roli vyžadujete, na základě potřeb vaší organizace.
+Uživatelé spolupráce B2B v Azure Active Directory (Azure AD) se uživatelům přidávají jako uživatelé typu Host do adresáře a oprávnění hosta v adresáři se standardně omezují. Vaše podnikání může vyžadovat, aby někteří uživatelé typu Host mohli ve vaší organizaci plnit role s vyšším oprávněním. Aby bylo možné podporovat definování rolí s vyšším oprávněním, můžete uživatele typu Host přidat k libovolným požadovaným rolím na základě potřeb vaší organizace.
 
 ## <a name="default-role"></a>Výchozí role
 
-![Snímek obrazovky zobrazující výchozí role adresáře](./media/add-guest-to-role/default-role.png)
+![Snímek obrazovky s výchozí rolí adresáře](./media/add-guest-to-role/default-role.png)
 
-## <a name="global-administrator-role"></a>Role Globální správce
+## <a name="global-administrator-role"></a>Role globálního správce
 
-![Snímek obrazovky s rolí globálního správce](./media/add-guest-to-role/global-admin-role.png)
+![Snímek obrazovky zobrazující roli globálního správce](./media/add-guest-to-role/global-admin-role.png)
 
-## <a name="limited-administrator-role"></a>Role správce s omezením
+## <a name="limited-administrator-role"></a>Omezená role správce
 
-![Snímek obrazovky s rolí správce s omezením](./media/add-guest-to-role/limited-admin-role.png)
+![Snímek obrazovky s rolí omezená role správce](./media/add-guest-to-role/limited-admin-role.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 - [Vlastnosti uživatele spolupráce B2B](user-properties.md)

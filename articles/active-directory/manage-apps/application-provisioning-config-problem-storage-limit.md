@@ -1,5 +1,5 @@
 ---
-title: Problém při ukládání přihlašovacích údajů správce konfigurace aplikace Galerie Azure AD | Microsoft Docs
+title: Problém při ukládání přihlašovacích údajů správce konfigurace aplikace Galerie Azure AD
 description: Řešení běžných problémů při konfiguraci zřizování uživatelů pro aplikaci, která je už uvedená v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 02/21/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152b704ca597fb473a820124ee6147d6d9bc7845
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 77e48b8921a1ebe3affd981c068da7fa55fdf30f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381481"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275790"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím. 
 
@@ -41,9 +41,9 @@ U všech tajných tokenů, identifikátorů URI, e-mailových adres oznámení, 
 
 Existují dva možné způsoby, jak tento problém vyřešit Dnes:
 
-1. **Použijte dvě instance aplikace Galerie, jednu pro jednotné přihlašování a jednu pro zřizování uživatelů** – pořídit linkedinový přístup k [](../saas-apps/linkedinelevate-tutorial.md) aplikaci Galerie jako příklad můžete přidat zvýšení úrovně LinkedInu z galerie a nakonfigurovat ho pro jednotné přihlašování. V případě zřizování přidejte další instanci LinkedInu z Galerie aplikací Azure AD a pojmenujte ji "LinkedIn – zvýšení (zřizování)". Pro tuto druhou instanci nakonfigurujte [zřizování](../saas-apps/linkedinelevate-provisioning-tutorial.md), ale ne jednotné přihlašování. Při použití tohoto alternativního řešení je potřeba [přiřadit](assign-user-or-group-access-portal.md) stejné uživatele a skupiny k oběma aplikacím. 
+1. **Použijte dvě instance aplikace Galerie, jednu pro jednotné přihlašování a jednu pro zřizování uživatelů** – pořídit [linkedinový](../saas-apps/linkedinelevate-tutorial.md) přístup k aplikaci Galerie jako příklad můžete přidat zvýšení úrovně LinkedInu z galerie a nakonfigurovat ho pro jednotné přihlašování. V případě zřizování přidejte další instanci LinkedInu z Galerie aplikací Azure AD a pojmenujte ji "LinkedIn – zvýšení (zřizování)". Pro tuto druhou instanci nakonfigurujte [zřizování](../saas-apps/linkedinelevate-provisioning-tutorial.md), ale ne jednotné přihlašování. Při použití tohoto alternativního řešení je potřeba [přiřadit](assign-user-or-group-access-portal.md) stejné uživatele a skupiny k oběma aplikacím. 
 
 2. **Omezení množství uložených konfiguračních dat** – všechna data zadaná v části [přihlašovací údaje správce](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) na kartě zřizování se ukládají na stejné místo jako certifikát SAML. I když nemusí být možné zkrátit všechna tato data, některá volitelná konfigurační pole, jako je **e-mailová oznámení** , můžete odebrat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Konfigurace zřizování uživatelů a zrušení zřizování pro aplikace SaaS](user-provisioning.md)

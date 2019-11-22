@@ -1,5 +1,6 @@
 ---
-title: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – rychlý start – Azure PowerShell | Microsoft Docs
+title: 'Rychlý Start: Diagnostika problému s filtrem provozu sítě virtuálních počítačů – Azure PowerShell'
+titleSuffix: Azure Network Watcher
 description: V tomto rychlém startu zjistíte, jak diagnostikovat problém s filtrováním síťového provozu virtuálního počítače pomocí funkce ověření toku protokolů IP služby Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cc735c6ad3986161b155ab97bbb3d6be5713d15
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 756c8d4d7e227d477c3031aab0d0a478454c35bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729877"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276053"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Rychlý start: Diagnostika virtuální počítač sítě filtrováním provozu – Azure PowerShell
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure PowerShell
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
@@ -34,19 +35,19 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, v tomto rychlém startu vyžaduje prostředí Azure PowerShell `Az` modulu. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento rychlý Start modul Azure PowerShell `Az`. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Než vytvoříte virtuální počítač, musíte vytvořit skupinu prostředků, která bude virtuální počítač obsahovat. Vytvořte skupinu prostředků s [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Než vytvoříte virtuální počítač, musíte vytvořit skupinu prostředků, která bude virtuální počítač obsahovat. Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-Vytvoření virtuálního počítače s [nové AzVM](/powershell/module/az.compute/new-azvm). Při spuštění tohoto kroku se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač.
+Vytvořte virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Při spuštění tohoto kroku se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač.
 
 ```azurepowershell-interactive
 $vM = New-AzVm `
@@ -61,9 +62,9 @@ Vytvoření virtuálního počítače trvá několik minut. Dokud se virtuální
 
 Pokud chcete otestovat síťovou komunikaci pomocí služby Network Watcher, musíte nejprve sledovací proces sítě povolit v oblasti, ve které se nachází daný virtuální počítač, a potom teprve můžete k otestování komunikace použít funkci ověření toků protokolu IP služby Network Watcher.
 
-### <a name="enable-network-watcher"></a>Povolení sledovacího procesu sítě
+### <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
-Pokud už máte k dispozici sledovací proces sítě povolené v oblasti USA – východ, použijte [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) načíst sledovací proces sítě. Následující příklad načte existující sledovací proces sítě s názvem *NetworkWatcher_eastus*, který se nachází ve skupině prostředků *NetworkWatcherRG*:
+Pokud již máte povolen sledovací proces sítě v oblasti Východní USA, použijte [příkaz Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) k načtení sledovacího procesu sítě. Následující příklad načte existující sledovací proces sítě s názvem *NetworkWatcher_eastus*, který se nachází ve skupině prostředků *NetworkWatcherRG*:
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -71,7 +72,7 @@ $networkWatcher = Get-AzNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Pokud ještě nemáte sledovací proces sítě povolené v oblasti USA – východ, použijte [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) vytvořit network watcher v oblasti USA – východ:
+Pokud v oblasti Východní USA ještě nemáte povolený sledovací proces sítě, vytvořte sledovací proces sítě v Východní USA oblasti pomocí [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) :
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzNetworkWatcher `
@@ -82,7 +83,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-ip-flow-verify"></a>Použití ověření toku protokolu IP
 
-Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení blokuje příchozí i odchozí síťový provoz. Později můžete výchozí nastavení Azure přepsat a povolit nebo odepřít další typy provozu. K otestování, jestli provoz je povolený nebo zakázaný do různých cílů a z zdrojové IP adresy, použijte [testovací AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) příkazu.
+Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení blokuje příchozí i odchozí síťový provoz. Později můžete výchozí nastavení Azure přepsat a povolit nebo odepřít další typy provozu. K otestování, jestli je povolený nebo zakázaný provoz do různých umístění a ze zdrojové IP adresy, použijte příkaz [test-AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) .
 
 Otestujte odchozí komunikaci z virtuálního počítače na jednu z IP adres stránky www.bing.com:
 
@@ -134,7 +135,7 @@ Vrácený výsledek vás informuje o tom, že přístup byl odepřen kvůli prav
 
 ## <a name="view-details-of-a-security-rule"></a>Zobrazení podrobností pravidla zabezpečení
 
-Chcete-li zjistit, proč pravidla v [testování síťové komunikace](#test-network-communication) povolují nebo znemožňuje komunikaci, zkontrolujte platná pravidla zabezpečení pro síťové rozhraní s [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup):
+Chcete-li zjistit, proč pravidla v [testovací síti](#test-network-communication) povolují nebo zabraňují komunikaci, Projděte si platná pravidla zabezpečení pro síťové rozhraní pomocí [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup):
 
 ```azurepowershell-interactive
 Get-AzEffectiveNetworkSecurityGroup `
@@ -177,7 +178,7 @@ Vrácený výstup obsahuje následující text pravidla **AllowInternetOutbound*
   },
 ```
 
-Ve výstupu můžete vidět, že **předponou zdrojové adresy** (DestinationAddressPrefix) je **Internet**. Není však jasné, jak adresa 13.107.21.200, kterou jste testovali v části [Použití ověření toku protokolu IP](#use-ip-flow-verify), souvisí s **Internetem**. V části **ExpandedDestinationAddressPrefix** můžete vidět několik předpon adres a jednou z nich je **12.0.0.0/6**, která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho na výstupu vráceném příkazem `Get-AzEffectiveNetworkSecurityGroup` nejsou uvedená žádná jiná pravidla s vyšší **prioritou** (nižším číslem), která by toto pravidlo přepisovala. Pokud byste chtěli odepřít odchozí komunikaci na IP adresu 13.107.21.200, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
+Ve výstupu můžete vidět, že **předponou zdrojové adresy** (DestinationAddressPrefix) je **Internet**. Není však jasné, jak adresa 13.107.21.200, kterou jste testovali v části [Použití ověření toku protokolu IP](#use-ip-flow-verify), souvisí s **Internetem**. V části **ExpandedDestinationAddressPrefix** můžete vidět několik předpon adres a jednou z nich je **12.0.0.0/6**, která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho na výstupu vráceném příkazem **nejsou uvedená žádná jiná pravidla s vyšší**prioritou`Get-AzEffectiveNetworkSecurityGroup` (nižším číslem), která by toto pravidlo přepisovala. Pokud byste chtěli odepřít odchozí komunikaci na IP adresu 13.107.21.200, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
 
 Když jste spustili příkaz `Test-AzNetworkWatcherIPFlow`, abyste v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) otestovali odchozí komunikaci na IP adresu 172.131.0.100, výstup vás informoval, že pravidlo **DefaultOutboundDenyAll** komunikaci odepřelo. Pravidlo **DefaultOutboundDenyAll** plní stejnou funkci jako pravidlo **DenyAllOutBound** uvedené v následujícím výstupu z příkazu `Get-AzEffectiveNetworkSecurityGroup`:
 
@@ -239,13 +240,13 @@ Kontroly v tomto rychlém startu testovaly konfiguraci Azure. Pokud kontroly vr�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili virtuální počítač a diagnostikovali jste příchozí a odchozí filtry síťového provozu. Zjistili jste, že pravidla skupiny zabezpečení sítě umožňují nebo odepírají příchozí i odchozí provoz virtuálního počítače. Zjistěte více o [pravidlech zabezpečení](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a způsobu [jejich vytvoření](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
 

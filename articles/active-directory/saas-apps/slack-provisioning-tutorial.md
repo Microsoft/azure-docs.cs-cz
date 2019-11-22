@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Nakonfigurujte časovou rezervu pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+title: 'Kurz: zřizování uživatelů pro časovou rezervu – Azure AD'
 description: Naučte se, jak nakonfigurovat Azure Active Directory pro Automatické zřizování a rušení uživatelských účtů pro časovou rezervu.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932492"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278172"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace časové rezervy pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 * Tenant časové rezervy s [plánem plus](https://aadsyncfabric.slack.com/pricing) nebo vyšší povoleno
 * Uživatelský účet v časové rezervě s oprávněními správce týmu
 
-Poznámka: Integrace zřizování Azure AD spoléhá na [rozhraní API](https://api.slack.com/scim)pro časová rezervu, které je dostupné pro časové rezervy týmů na plánu plus nebo vyšším.
+Poznámka: integrace zřizování Azure AD spoléhá na [rozhraní API pro časová rezervu](https://api.slack.com/scim), které je dostupné pro časové rezervy týmů na plánu plus nebo vyšší.
 
 ## <a name="assigning-users-to-slack"></a>Přiřazování uživatelů k časové rezervě
 
@@ -70,15 +70,15 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. Tím se otevře dialogové okno autorizace časové rezervy v novém okně prohlížeče.
 
-6. V novém okně se přihlaste k časové rezervě pomocí účtu správce týmu. v dialogovém okně výsledné autorizace vyberte tým časové rezervy, pro který chcete povolit zřizování, a potom vyberte autorizovat. Až se dokončí, vraťte se do Azure Portal a dokončete konfiguraci zřizování.
+6. V novém okně se přihlaste k časové rezervě pomocí účtu správce týmu. v dialogovém okně výsledné autorizace vyberte tým časové rezervy, pro který chcete povolit zřizování, a potom vyberte **autorizovat**. Až se dokončí, vraťte se do Azure Portal a dokončete konfiguraci zřizování.
 
     ![Dialogové okno autorizace](./media/slack-provisioning-tutorial/Slack3.PNG)
 
 7. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci časové rezervy. Pokud se připojení nepovede, ujistěte se, že váš účet časové rezervy má oprávnění správce týmu, a zkuste znovu provést krok autorizovat.
 
-8. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail** s oznámením, a zaškrtněte políčko níže.
+8. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko níže.
 
-9. Klikněte na **Uložit**.
+9. Klikněte na možnost **Uložit**.
 
 10. V části mapování vyberte **synchronizovat Azure Active Directory uživatele s časovou rezervou**.
 
@@ -86,7 +86,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 12. Pokud chcete povolit službu Azure AD Provisioning pro časovou rezervu, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-13. Klikněte na **Uložit**.
+13. Klikněte na možnost **Uložit**.
 
 Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených k časové rezervě v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než další synchronizace, ke kterým dojde přibližně každých 10 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavy aktivit zřizování, které popisují všechny akce prováděné službou zřizování v aplikaci časové rezervy.
 
@@ -102,7 +102,7 @@ Volitelně můžete povolit zřizování skupin objektů z Azure AD do časové 
 
 3. V části **mapování atributů** zkontrolujte atributy skupin, které se budou synchronizovat z Azure AD, s časovou rezervou. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování skupin v časové rezervě pro operace aktualizace. 
 
-4. Klikněte na **Uložit**.
+4. Klikněte na možnost **Uložit**.
 
 To má za následek to, že všechny objekty skupiny přiřazené k časové rezervě v části **Uživatelé a skupiny** jsou plně synchronizované z Azure AD do časové rezervy. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci pro časovou rezervu.
 

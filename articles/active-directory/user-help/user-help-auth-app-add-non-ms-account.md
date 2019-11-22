@@ -1,6 +1,6 @@
 ---
-title: Přidání neúčet Microsoft do ověřovací aplikace – Azure AD
-description: Postup přidání účtů jiných společností než Microsoft, jako je Google, Facebook nebo GitHub, do aplikace Microsoft Authenticator pro dvoustupňové ověřování.
+title: Přidání účtů mimo Microsoft do aplikace Microsoft Authenticator – Azure AD
+description: Přidejte účty jiné než Microsoft, například pro Google nebo Facebook do aplikace Microsoft Authenticator k ověření vaší identity při použití dvojúrovňového ověřování.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803661"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278885"
 ---
-# <a name="add-your-non-microsoft-accounts"></a>Přidání účtů jiných společností než Microsoft
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání jiných účtů než do aplikace Microsoft Authenticator
 
 Přidejte k aplikaci Microsoft Authenticator své účty, jako je Google, Facebook nebo GitHub, do aplikace pro ověřování dvou faktorů. Microsoft Authenticator aplikace funguje se všemi aplikacemi, které používají dvojúrovňové ověřování, a s libovolným účtem, který podporuje standardy pro jednorázové heslo (TOTP) založené na čase.
 

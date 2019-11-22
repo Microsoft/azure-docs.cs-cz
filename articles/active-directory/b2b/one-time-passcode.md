@@ -1,6 +1,6 @@
 ---
-title: Ověřování jednorázovým heslem pro uživatele typu Host B2B – Azure Active Directory | Dokumentace Microsoftu
-description: Jak použít jednorázové heslo e-mailu k ověření uživatelů typu Host B2B bez účtu Microsoft.
+title: Jednorázové ověřování hesla pro uživatele typu Host B2B – Azure AD
+description: Jak používat jednorázové heslo e-mailu k ověřování uživatelů typu Host B2B bez nutnosti účet Microsoft.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,75 +12,75 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952862"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272322"
 ---
-# <a name="email-one-time-passcode-authentication-preview"></a>Ověření e-mailu jednorázové heslo (preview)
+# <a name="email-one-time-passcode-authentication-preview"></a>E-mailové ověřování heslem jednorázového hesla (Preview)
 
 |     |
 | --- |
-| Jednorázové heslo e-mailu je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Heslo pro jednorázové e-maily je funkce veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Tento článek popisuje, jak povolit ověřování jednorázovým heslem e-mailu pro uživatele typu Host B2B. Funkce jednorázové heslo e-mailu ověří uživatele typu Host B2B, když nemůže být ověřen jiným způsobem, jako je Azure AD, účet Microsoft (MSA) nebo federační služby Google. S ověřováním jednorázovým heslem není nutné vytvořit účet Microsoft. Když uživatel typu Host uplatňuje pozvánku nebo přistupuje ke sdílenému prostředku, můžete požádat o dočasný kód, která je odeslána na e-mailová adresa. Pak zadejte tento kód Pokračujte přihlášením.
+Tento článek popisuje, jak povolit jednorázové ověřování e-mailových hesel pro uživatele typu Host B2B. Funkce jednorázového hesla pro E-mail ověřuje uživatele typu Host B2B, když se nemůžou ověřit jiným způsobem jako Azure AD, účet Microsoft (MSA) nebo Google Federation. Při jednorázovém ověřování pomocí hesla není nutné vytvářet účet Microsoft. Když uživatel typu Host uplatňuje pozvánku nebo přistupuje ke sdílenému prostředku, může požádat o dočasný kód, který se pošle na svou e-mailovou adresu. Pak tento kód zadá, aby bylo možné pokračovat v přihlašování.
 
-Tato funkce je aktuálně dostupná ve verzi preview (viz [vyjádření výslovného souhlasu s Náhled](#opting-in-to-the-preview) níže). Za verzi preview tato funkce bude mít ve výchozím nastavení zapnutá pro všechny tenanty.
-
-> [!NOTE]
-> Jednorázové heslo uživatele musíte se přihlásit pomocí odkazu, který zahrnuje kontextu tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>`, nebo v případě ověřenou doménu, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Přímé odkazy k aplikacím a prostředkům také fungovat tak dlouho, dokud zahrnují kontextu tenanta. K přihlášení pomocí koncových bodů, které nemají žádný kontext tenanta v tuto chvíli nedaří uživatele typu Host. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com`, nebo koncový bod pro běžné týmy způsobí chybu. 
-
-## <a name="user-experience-for-one-time-passcode-guest-users"></a>Činnost koncového uživatele pro uživatele typu Host jednorázové heslo
-S ověřováním jednorázovým heslem může uživatel typu Host uplatnit pozvání, kliknutím na přímý odkaz nebo s použitím e-mailová pozvánka. V obou případech se zobrazí v prohlížeči se zpráva, že kód se pošle e-mailovou adresu uživatele typu Host. Uživatel typu Host vybere **poslat kód**:
- 
-   ![Snímek obrazovky zobrazující tlačítko Poslat kód](media/one-time-passcode/otp-send-code.png)
- 
-Heslo se odešle e-mailovou adresu uživatele. Uživatel načte hesla v e-mailu a vloží jej do okna prohlížeče:
- 
-   ![Snímek obrazovky zobrazující Enter znaková stránka](media/one-time-passcode/otp-enter-code.png)
- 
-Uživatel typu Host je nyní ověřen a můžete zobrazit sdílený prostředek nebo pokračovat v přihlašování. 
+Tato funkce je aktuálně dostupná pro verzi Preview (viz možnost přihlašování [k verzi Preview](#opting-in-to-the-preview) níže). Po zobrazení verze Preview bude tato funkce ve výchozím nastavení zapnutá pro všechny klienty.
 
 > [!NOTE]
-> Jednorázového hesla jsou platné po dobu 30 minut. Po 30 minutách již není platný tento konkrétní jednorázového hesla a uživatel musí požádat o nový. Uživatelské relace vyprší za 24 hodin. Po tomto datu se uživatel typu Host obdrží nové heslo při přístupu k prostředku. Vypršení platnosti relace poskytuje dodatečné zabezpečení, zejména v případě, že uživatel typu Host opustí společnost nebo už nepotřebuje přístup.
+> Jednorázovým uživatelům se musí přihlásit pomocí odkazu, který zahrnuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>`, nebo v případě ověřené domény `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé typu Host se aktuálně nemohou přihlašovat pomocí koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com`nebo společného koncového bodu týmů způsobí chybu. 
 
-## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Když uživatel typu Host získat jednorázové heslo?
+## <a name="user-experience-for-one-time-passcode-guest-users"></a>Uživatelské prostředí pro uživatele typu Host pro jednorázové heslo
+Při jednorázovém ověřování pomocí hesla může uživatel typu Host uplatnit pozvánku kliknutím na přímý odkaz nebo pomocí e-mailu s pozvánkou. V obou případech zpráva v prohlížeči indikuje, že se kód pošle na e-mailovou adresu uživatele typu Host. Uživatel typu host vybere **Odeslat kód**:
+ 
+   ![Snímek obrazovky zobrazující tlačítko pro odeslání kódu](media/one-time-passcode/otp-send-code.png)
+ 
+Heslo se pošle na e-mailovou adresu uživatele. Uživatel načte heslo z e-mailu a vloží ho do okna prohlížeče:
+ 
+   ![Snímek obrazovky, na které se zobrazuje znaková stránka ENTER](media/one-time-passcode/otp-enter-code.png)
+ 
+Uživatel typu Host je teď ověřený a může zobrazit sdílený prostředek nebo pokračovat v přihlašování. 
 
-Když uživatel typu Host uplatňuje pozvánku nebo používá odkaz na prostředek, který s nimi někdo sdílí, obdrží jednorázové heslo, pokud:
-- Nemají účet Azure AD 
+> [!NOTE]
+> Jednorázová hesla platí po dobu 30 minut. Po 30 minutách již není konkrétní zadání jednorázového hesla platné a uživatel musí požádat o nový. Platnost uživatelských relací vyprší za 24 hodin. Po uplynutí této doby obdrží uživatel typu Host při přístupu k prostředku nové heslo. Vypršení platnosti relace poskytuje zabezpečení, zejména v případě, že uživatel typu Host opustí svou společnost nebo už nepotřebuje přístup.
+
+## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Kdy uživatel typu Host získá jednorázové heslo?
+
+Když uživatel typu Host uplatní pozvánku nebo použije odkaz na prostředek, který s nimi sdílí, obdrží jednorázové heslo, pokud:
+- Nemají účet Azure AD. 
 - Nemají účet Microsoft 
-- Pozvání tenanta nenastavili Google federaci pro @gmail.com a @googlemail.com uživatelů 
+- Tenant pro pozvání nenainstaloval Google Federation pro @gmail.com a uživatele @googlemail.com. 
 
-V době pozvánky neexistuje žádné označení, že uživatel, kterého jste pozvání použije ověřování jednorázovým heslem. Ale při přihlášení uživatele typu Host, ověřování jednorázovým heslem bude náhradní metody, pokud žádné jiné metody ověřování, je možné. 
+V době pozvání není k dispozici žádný náznak, že uživatel, kterého Zvete, bude používat jednorázové ověřování pomocí hesla. Pokud se ale uživatel typu Host přihlásí, bude metoda jednorázového ověřování hesla záložní metodou, pokud nebude možné použít žádné jiné metody ověřování. 
 
-Můžete zobrazit uživatele typu Host, kteří používají ověřování pomocí jednorázových hesel na webu Azure Portal tak, že přejdete do **Azure Active Directory** > **organizační vztahy**  >   **Uživatelé z jiných organizací**.
+Uživatele typu Host, kteří se v Azure Portal ověřují pomocí jednorázových hesel, můžete zobrazit tak, že **Azure Active Directory** > **organizační vztahy** > **uživatelům z jiných organizací**.
 
-![Snímek obrazovky zobrazující jednorázové heslo uživatele s zdrojová hodnota ověřování jednorázovým HESLEM](media/one-time-passcode/otp-users.png)
+![Snímek obrazovky, který zobrazuje jednorázového uživatele se zdrojovou hodnotou JEDNORÁZOVého hesla](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
-> Když uživatel uplatňuje jednorázové heslo a později získá MSA, účet Azure AD nebo jiný federovaný účet, budou dál možné ověřit pomocí jednorázového hesla. Pokud chcete aktualizovat své metody ověřování, můžete odstranit jeho uživatelský účet guest a znovu je pozvat.
+> Když uživatel uplatňuje jednorázové heslo a později získá MSA, účet Azure AD nebo jiný federovaný účet, budou se i nadále ověřovat pomocí jednorázového hesla. Pokud chcete aktualizovat metodu ověřování, můžete odstranit svůj uživatelský účet hosta a znovu ho pozvat.
 
-### <a name="example"></a>Příklad:
-Uživatel typu Host alexdoe@gmail.com organizace pozvaný ke společnosti Fabrikam, který nemá nastavení federace služby Google. Alex nemá účet Microsoft. Obdrží pro ověřování jednorázovým heslem.
+### <a name="example"></a>Příklad
+Uživatel typu Host alexdoe@gmail.com je pozván společnosti Fabrikam, která nemá nastavenou Google Federation. Alex nemá účet Microsoft. Obdrží pro ověřování jednorázové heslo.
 
-## <a name="opting-in-to-the-preview"></a>Vyjádření výslovného souhlasu ve verzi Preview 
-Může trvat několik minut, než akce opt-in se projeví. Poté použije pouze nově pozvaným uživatelům, kteří splňují podmínky výše ověřování jednorázovým heslem. Uživatelé typu Host, kteří dříve uplatnit pozvání bude nadále používat stejnou metodu ověření.
+## <a name="opting-in-to-the-preview"></a>Přihlaste se k verzi Preview 
+Může to trvat několik minut, než se akce přihlášení projeví. Pak budou používat jenom nově pozvaní uživatelé, kteří splňují podmínky uvedené výše, k ověřování pomocí jednorázového hesla. Uživatelé typu Host, kteří dřív použili pozvánku, budou i nadále používat stejnou metodu ověřování.
 
-### <a name="to-opt-in-using-the-azure-ad-portal"></a>K přihlášení na portálu Azure AD
-1.  Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce Azure AD.
+### <a name="to-opt-in-using-the-azure-ad-portal"></a>Výslovný souhlas s používáním portálu Azure AD
+1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
-3.  V části **spravovat**vyberte **organizační vztahy**.
+3.  V části **Spravovat**vyberte **vztahy organizace**.
 4.  Vyberte **nastavení**.
-5.  V části **povolit e-mailu jednorázového hesla pro hosty (Preview)** vyberte **Ano**.
+5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **Ano**.
  
-### <a name="to-opt-in-using-powershell"></a>K přihlášení pomocí Powershellu
+### <a name="to-opt-in-using-powershell"></a>Výslovný souhlas s používáním PowerShellu
 
-Nejprve budete muset nainstalovat nejnovější verzi Azure AD PowerShell pro modul grafu (AzureADPreview). Pak je nutné určit, jestli zásady B2B ještě neexistuje a spusťte odpovídající příkazy.
+Nejdřív budete muset nainstalovat nejnovější verzi Azure AD PowerShellu pro modul Graph (AzureADPreview). Pak určíte, zda zásady B2B již existovaly, a spusťte příslušné příkazy.
 
-#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Předpoklad: Instalace nejnovějšího modulu AzureADPreview
+#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Předpoklad: instalace nejnovějšího modulu AzureADPreview
 Nejdřív zkontrolujte, které moduly jste nainstalovali. Otevřete Windows PowerShell se zvýšenými uživatelskými oprávněními (Spustit jako správce) a spusťte následující příkaz:
  
 ```powershell  
@@ -109,22 +109,22 @@ Pokud se modul AzureADPreview zobrazí bez zprávy s oznámením, že existuje n
 
 Může se zobrazit výzva, že modul instalujete z nedůvěryhodného úložiště. K tomu dochází, pokud jste úložiště PSGallery dříve nenastavili jako důvěryhodné. Stisknutím klávesy **Y** modul nainstalujte.
 
-#### <a name="check-for-existing-policies-and-opt-in"></a>Vyhledejte existující zásady a vyjádřit výslovný souhlas
+#### <a name="check-for-existing-policies-and-opt-in"></a>Vyhledat existující zásady a vyjádřit se
 
-V dalším kroku zkontrolujte, jestli aktuálně existuje B2BManagementPolicy spuštěním následujícího:
+V dalším kroku zkontrolujte, jestli B2BManagementPolicy aktuálně existuje, spuštěním následujícího:
 
 ```powershell 
 $currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 $currentpolicy -ne $null
 ```
-- Pokud výstupem je False, neexistuje aktuálně zásady. Vytvořte nový B2BManagementPolicy a přihlásit se k verzi preview spuštěním následujícího:
+- Pokud je výstup nepravdivý, zásada v tuto chvíli neexistuje. Vytvořte nový B2BManagementPolicy a přihlaste se ke službě Preview spuštěním následujícího:
 
    ```powershell 
    $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
    New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
    ```
 
-- Pokud výstupem je hodnota True, zásady B2BManagementPolicy aktuálně existuje. Aktualizovat zásady a přihlásit se k verzi preview, spusťte následující příkaz:
+- Pokud má výstup hodnotu true, zásada B2BManagementPolicy aktuálně existuje. Chcete-li aktualizovat zásadu a přihlásit se k verzi Preview, spusťte následující příkaz:
   
    ```powershell 
    $policy = $currentpolicy.Definition | ConvertFrom-Json
@@ -133,25 +133,25 @@ $currentpolicy -ne $null
    Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
    ```
 
-## <a name="opting-out-of-the-preview-after-opting-in"></a>Výslovné odhlášení z verze preview po aktivaci ochrany
-Může trvat několik minut, než akce výslovného nesouhlasu se projeví. Pokud vypnete verzi preview, všechny uživatele typu Host, kteří mají uplatnit jednorázové heslo nebudou moct přihlásit. Můžete odstranit uživatele typu Host a znovu pozvat uživatele, aby se mohly přihlásit znovu použít jinou metodu ověřování.
+## <a name="opting-out-of-the-preview-after-opting-in"></a>Vypnutí náhledu po jeho přijetí
+Může to trvat několik minut, než se akce odsouhlasení projeví. Pokud vypnete verzi Preview, všichni uživatelé typu Host, kteří se znovu považovali za jednorázové heslo, se nebudou moct přihlásit. Uživatele typu Host můžete odstranit a znovu pozvat, aby se mohli znovu přihlásit pomocí jiné metody ověřování.
 
-### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Chcete-li vypnout náhled pomocí portálu Azure AD
-1.  Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce Azure AD.
+### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Vypnutí verze Preview pomocí portálu Azure AD
+1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
-3.  V části **spravovat**vyberte **organizační vztahy**.
+3.  V části **Spravovat**vyberte **vztahy organizace**.
 4.  Vyberte **nastavení**.
-5.  V části **povolit e-mailu jednorázového hesla pro hosty (Preview)** vyberte **ne**.
+5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **ne**.
 
-### <a name="to-turn-off-the-preview-using-powershell"></a>Chcete-li vypnout náhled pomocí Powershellu
-Pokud ho ještě nemáte, nainstalujte nejnovější modulu AzureADPreview (viz [požadovaných součástí: Instalace nejnovější modulu AzureADPreview](#prerequisite-install-the-latest-azureadpreview-module) výše). Pak ověřte, že zásady jednorázové heslo ve verzi preview momentálně existuje spuštěním následujícího:
+### <a name="to-turn-off-the-preview-using-powershell"></a>Vypnutí verze Preview pomocí PowerShellu
+Pokud ho ještě nemáte, nainstalujte nejnovější modul AzureADPreview (viz [předpoklad: Nainstalujte nejnovější modul AzureADPreview](#prerequisite-install-the-latest-azureadpreview-module) výše). Pak ověřte, že aktuálně existuje zásada jednorázového náhledu hesla, a to spuštěním následujícího:
 
 ```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 ($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
 ```
 
-Pokud výstupem je hodnota True, vyjádřit výslovný nesouhlas náhledu spuštěním následujícího:
+Pokud má výstup hodnotu true, odhlaste se od verze Preview spuštěním následujícího:
 
 ```powershell 
 $policy = $currentpolicy.Definition | ConvertFrom-Json

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace výkonu prostředí Azure-SSIS Integration runtime | Dokumentace Microsoftu
-description: Další informace o konfiguraci vlastností prostředí Azure-SSIS Integration Runtime pro vysoký výkon
+title: Konfigurace výkonu pro Azure-SSIS Integration Runtime
+description: Naučte se konfigurovat vlastnosti Azure-SSIS Integration Runtime pro vysoký výkon.
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
@@ -10,23 +10,23 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 42c69653a002446552da998320a43730dfdaadf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 518da092f690108111ca4456eaca66e4f3153c54
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232525"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681442"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace prostředí Azure-SSIS Integration Runtime pro vysoký výkon
+# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace Azure-SSIS Integration Runtime pro vysoký výkon
 
-Tento článek popisuje, jak nakonfigurovat Azure-SSIS Integration Runtime (IR) pro vysoce výkonné. Prostředí Azure-SSIS IR umožňuje nasazení a spouštění balíčků SQL Server Integration Services (SSIS) v Azure. Další informace o Azure-SSIS IR najdete v tématu [prostředí Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) článku. Informace o nasazování a spouštění balíčků služby SSIS v Azure najdete v tématu [Lift and shift úloh SQL Server Integration Services do cloudu](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
+Tento článek popisuje, jak nakonfigurovat Azure-SSIS Integration Runtime (IR) pro vysoký výkon. Azure-SSIS IR umožňuje nasadit a spouštět balíčky služba SSIS (SQL Server Integration Services) (SSIS) v Azure. Další informace o Azure-SSIS IR najdete v článku věnovaném [prostředí Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) . Informace o nasazování a spouštění balíčků SSIS v Azure najdete v tématu [zátěž a shift služba SSIS (SQL Server Integration Services) úloh do cloudu](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
 > [!IMPORTANT]
-> Tento článek obsahuje výsledky výkonu a připomínek interní testování provádí členové vývojového týmu prostředí SSIS. Vaše výsledky se mohou lišit. Proveďte vlastní testování před další změny nastavení konfigurace, které ovlivňují náklady a výkon.
+> Tento článek obsahuje výsledky výkonu a pozorování z interního testování, které provádí členové vývojového týmu SSIS. Vaše výsledky se můžou lišit. Proveďte vlastní testování před dokončením nastavení konfigurace, které ovlivňuje náklady i výkon.
 
-## <a name="properties-to-configure"></a>Vlastnosti konfigurace
+## <a name="properties-to-configure"></a>Vlastnosti ke konfiguraci
 
-Následující část skript konfigurace jsou uvedeny vlastnosti, které můžete nakonfigurovat při vytváření prostředí Azure-SSIS Integration Runtime. Celý skript prostředí PowerShell a popis najdete v tématu [balíčků nasazení SQL Server Integration Services do Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
+Následující část konfiguračního skriptu zobrazuje vlastnosti, které můžete konfigurovat při vytváření Azure-SSIS Integration Runtime. Úplný skript a Popis prostředí PowerShell najdete v tématu [nasazení balíčků služba SSIS (SQL Server Integration Services) do Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ```powershell
 # If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$"
@@ -66,11 +66,11 @@ $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** je umístění pro pracovníka uzel integration runtime. Pracovní uzel udržuje stálé připojení k databázi katalogu služby SSIS (SSISDB) ve službě Azure SQL database. Nastavte **AzureSSISLocation** do stejného umístění jako databáze SQL serveru, který je hostitelem databáze SSISDB, což umožňuje prostředí integration runtime jako efektivní práce.
+**AzureSSISLocation** je umístění pracovního uzlu modulu runtime integrace. Pracovní uzel udržuje konstantní připojení k databázi katalogu SSIS (SSISDB) ve službě Azure SQL Database. Nastavte **AzureSSISLocation** na stejné umístění jako server SQL Database, který hostuje SSISDB, což umožňuje prostředí Integration runtime co nejefektivněji fungovat co nejúčinnější.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
-Data Factory, včetně Azure-SSIS IR podporuje následující možnosti:
--   Standard\_A4\_v2
+Data Factory, včetně Azure-SSIS IR, podporují následující možnosti:
+-   Standard\_a4\_v2
 -   Standard\_A8\_v2
 -   Standard\_D1\_v2
 -   Standard\_D2\_v2
@@ -89,76 +89,76 @@ Data Factory, včetně Azure-SSIS IR podporuje následující možnosti:
 -   Standard\_E32\_v3
 -   Standard\_E64\_v3
 
-V neoficiální interní testování pomocí služby SSIS technický tým, řady D series pravděpodobně vhodnější pro spouštění balíčku služby SSIS než řady A series.
+V neoficiálním testování interního týmu SSIS technický tým je řada D vhodná pro spuštění balíčku SSIS než řada A.
 
--   Výkon a cenu poměr řady D series je vyšší než řady A series a výkon a cenu poměr řady v3 je vyšší než dv2 series.
--   Propustnost pro řady D series je vyšší než řada A za stejnou cenu a propustnosti pro řadu v3 je vyšší než dv2 series za stejnou cenu.
--   Uzly řady v2 prostředí Azure-SSIS IR nejsou vhodné pro vlastní nastavení, takže místo toho použijte uzly řady v3. Pokud už používáte uzly řady v2, přepněte na co nejdříve použít uzly řady v3.
--   Řada E je paměťově optimalizované velikosti virtuálních počítačů, které poskytuje vyšší poměr paměti k procesoru než jiné počítače. Pokud balíček vyžaduje velké množství paměti, můžete zvážit, vyberete virtuální počítače E-series.
+-   Poměr výkonu a ceny řady D je vyšší než řada a a poměr výkonu a ceny řady v3 je vyšší než série v2.
+-   Propustnost pro řady D je vyšší než série za stejnou cenu a propustnost pro řadu v3 je vyšší než série v2 za stejnou cenu.
+-   Uzly řady v2 Azure-SSIS IR nejsou vhodné pro vlastní instalaci, proto prosím použijte místo toho uzly řady v3. Pokud už používáte uzly řady v2, přepněte prosím na použití uzlů řady V3 co nejdříve.
+-   Řada E má paměťově optimalizované velikosti virtuálních počítačů, které poskytují vyšší poměr paměti na procesor než jiné počítače. Pokud váš balíček vyžaduje hodně paměti, můžete zvážit výběr možnosti virtuální počítač E-series.
 
-### <a name="configure-for-execution-speed"></a>Konfigurace pro rychlost provádění
-Pokud nemáte mnoho balíčky ke spuštění a chcete, aby balíčky pro rychlé spouštění, použijte informace v následující tabulce vybrat typ virtuálního počítače, který je vhodný pro váš scénář.
+### <a name="configure-for-execution-speed"></a>Konfigurace pro rychlost spuštění
+Pokud nemáte mnoho balíčků ke spuštění a chcete, aby se balíčky spouštěly rychle, použijte informace v následujícím grafu pro výběr typu virtuálního počítače vhodného pro váš scénář.
 
-Tato data představuje jeden balíček provádění na jeden pracovního uzlu. Balíček načte 3 miliony záznamů s názvem prvního a posledního sloupce z Azure Blob Storage vygeneruje úplný název sloupce a zapíše záznamy, které mají příjmení delší než 20 znaků do Azure Blob Storage.
+Tato data představují jedno spuštění balíčku v jednom pracovním uzlu. Balíček načte 3 000 000 záznamů se sloupci křestní jméno a příjmení z Azure Blob Storage, vygeneruje sloupec s úplným názvem a zapíše záznamy, které mají úplný název delší než 20 znaků, do Azure Blob Storage.
 
-![Rychlost provádění balíčků služby SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
+![SSIS Integration Runtime – rychlost spuštění balíčku](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>Konfigurace pro celkovou propustnost
 
-Pokud máte velké balíčky ke spuštění a vám nejvíce jde o celkovou propustnost, vyberte typ virtuálního počítače, který je vhodný pro váš scénář pomocí informací v následující tabulce.
+Pokud máte spoustu balíčků, které je třeba spustit, a Vy se zajímáte o celkové propustnosti, použijte informace v následujícím grafu k výběru typu virtuálního počítače vhodného pro váš scénář.
 
-![Maximální celkovou propustnost služby SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
+![SSIS Integration Runtime maximální celkovou propustnost](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** upraví škálovatelnost prostředí integration runtime. Propustnost modulu runtime integrace je přímo úměrný **AzureSSISNodeNumber**. Nastavte **AzureSSISNodeNumber** malou hodnotu při prvním sledovat propustnost prostředí integration runtime a pak upravte hodnotu pro váš scénář. Změna konfigurace počet uzlů pracovního procesu, naleznete v tématu [správě prostředí Azure-SSIS integration runtime](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** upravuje škálovatelnost prostředí Integration runtime. Propustnost prostředí Integration runtime je úměrná **AzureSSISNodeNumber**. Nastavte nejprve **AzureSSISNodeNumber** na malou hodnotu, Sledujte propustnost prostředí Integration runtime a pak upravte hodnotu pro váš scénář. Informace o překonfigurování počtu pracovních uzlů najdete v tématu [Správa prostředí Azure-SSIS Integration runtime](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Pokud už používáte výkonné pracovního uzlu ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí integration runtime. 1 – 4 paralelních úloh na uzlu Standard_D1_v2 uzly, jsou podporovány. Pro všechny ostatní typy uzlů se podporují 1 max(2 x number of cores, 8) paralelních úloh na uzlu. Chcete-li **AzureSSISMaxParallelExecutionsPerNode** mimo maximální hodnota podporujeme, můžete otevřít lístek podpory a můžeme zvýšit maximální hodnota pro vás a po, který je třeba aktualizovat pomocí prostředí Azure Powershell  **AzureSSISMaxParallelExecutionsPerNode**.
-Chcete-li odhadnout příslušnou hodnotu na základě nákladů balíčku a následujících konfigurací pracovních uzlů. Další informace najdete v tématu [velikostí virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
+Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. V případě Standard_D1_v2ch uzlů je podporována paralelní spouštění 1-4 na uzel. Pro všechny ostatní typy uzlů je podporovaná hodnota 1 – Max (2 x počet jader, 8) paralelního spouštění na uzel. Pokud chcete **AzureSSISMaxParallelExecutionsPerNode** nad rámec maximální hodnoty, kterou podporujeme, můžete otevřít lístek podpory a můžeme prodloužit maximální hodnotu pro vás a potom, co potřebujete k aktualizaci **AzureSSISMaxParallelExecutionsPerNode**pomocí Azure PowerShellu.
+Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
 
-| Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
+| Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standard\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2×500                         | 2 / 750                                        |
 | Standard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4×500                         | 2 / 1 500                                       |
 | Standard\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8×500                         | 4 / 3 000                                       |
 | Standard\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16×500                       | 8 / 6 000                                       |
-| Standard\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8×500                         | 4 / 1 000                                       |
+| Standard\_a4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8×500                         | 4 / 1 000                                       |
 | Standard\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16×500                       | 8 / 2 000                                       |
-| Standard\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4 / 6 x 500                         | 2 / 1 000                                       |
-| Standard\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8 / 12x500                        | 2 / 2 000                                       |
-| Standard\_D8\_v3 | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16 / 24 x 500                       | 4 / 4000                                       |
-| Standard\_D16\_v3| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32 / 48 x 500                        | 8 / 8000                                       |
-| Standard\_D32\_v3| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32 / 96 x 500                       | 8 / 16 000                                      |
-| Standard\_D64\_v3| 64   | 256         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192 x 500                      | 8 / 30000                                      |
-| Standard\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4 / 6 x 500                         | 2 / 1 000                                       |
-| Standard\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8 / 12x500                        | 2 / 2 000                                       |
-| Standard\_E8\_v3 | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16 / 24 x 500                       | 4 / 4000                                       |
-| Standard\_E16\_v3| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32 / 48x500                       | 8 / 8000                                       |
-| Standard\_E32\_v3| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32 / 96 x 500                       | 8 / 16 000                                      |
-| Standard\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192 x 500                      | 8 / 30000                                      |
+| Standard\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1 000                                       |
+| Standard\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2 000                                       |
+| Standard\_D8\_v3 | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| Standard\_D16\_v3| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32/48x500                        | 8 / 8000                                       |
+| Standard\_D32\_v3| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16 000                                      |
+| Standard\_D64\_v3| 64   | 256         | 1600                   | 96000 / 1000 / 500                                         | 32/192x500                      | 8 / 30000                                      |
+| Standard\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1 000                                       |
+| Standard\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2 000                                       |
+| Standard\_E8\_v3 | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| Standard\_E16\_v3| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
+| Standard\_E32\_v3| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16 000                                      |
+| Standard\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32/192x500                      | 8 / 30000                                      |
 
-Tady jsou pokyny pro nastavení správné hodnoty pro **AzureSSISMaxParallelExecutionsPerNode** vlastnost: 
+Tady jsou pokyny pro nastavení správné hodnoty pro vlastnost **AzureSSISMaxParallelExecutionsPerNode** : 
 
-1. Nastavte malou hodnotu při prvním.
-2. Zvýšit o malou část ke kontrole, jestli je lepší celkovou propustnost.
-3. Zastavte, pokud celková propustnost nedosáhne maximální hodnoty zvýšit hodnotu.
+1. Nastavte nejprve na malou hodnotu.
+2. Zvyšte ho o malou část, abyste zkontrolovali, jestli se zvýšila celková propustnost.
+3. Zastavit zvýšení hodnoty, když celková propustnost dosáhne maximální hodnoty.
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** je cenovou úroveň pro databázi katalogu služby SSIS (SSISDB) ve službě Azure SQL database. Toto nastavení má vliv na maximální počet pracovních procesů v instanci reakcí na Incidenty, rychlost do fronty spouštění balíčku a rychlost pro načtení protokolu spuštění.
+**SSISDBPricingTier** je cenová úroveň pro databázi katalogu SSIS (SSISDB) ve službě Azure SQL Database. Toto nastavení má vliv na maximální počet pracovních procesů v instanci IR, rychlost pro zařazení běhu balíčku do fronty a rychlost načtení protokolu spuštění.
 
--   Pokud vám nezáleží na rychlost spouštění balíčku fronty a pro načtení protokolu spuštění, můžete databázi nejnižší cenovou úroveň. Základní ceny za Azure SQL Database podporuje 8 pracovních procesů v instanci modulu runtime integrace.
+-   Pokud nezáleží na tom, jak zrychlit spuštění balíčku a načíst protokol spuštění, můžete zvolit nejnižší cenovou úroveň databáze. Azure SQL Database se základními cenami podporuje 8 pracovních procesů v instanci prostředí Integration runtime.
 
--   Zvolte databázi výkonnější než základní, pokud počet pracovních procesů je víc než 8, nebo počet jader je více než 50. Jinak databáze se stane kritickým bodem instance modulu runtime integrace a je celkový výkon negativně ovlivněn.
+-   Pokud je počet pracovních procesů větší než 8 nebo je počet jader větší než 50, vyberte výkonnější databázi, než je základní. V opačném případě se databáze stal kritickým bodem instance prostředí Integration runtime a celkový výkon je negativně ovlivněn.
 
--   Pokud úroveň protokolování je nastavená na podrobné, zvolte výkonnější databáze, jako je například s3. Podle našich neoficiální interní testování, cenovou úroveň s3 podporují spouštění balíčku služby SSIS se 2 uzly, 128 paralelní počty a úroveň podrobné protokolování.
+-   Vyberte výkonnější databázi, jako je například S3, pokud je úroveň protokolování nastavená na Verbose. V souladu s neoficiálním testováním interních testů může cenová úroveň S3 podporovat provádění balíčků SSIS se dvěma uzly, 128 paralelních počtů a podrobné úrovně protokolování.
 
-Můžete také upravit databázi cenovou úroveň na základě [jednotky transakcí databáze](../sql-database/sql-database-what-is-a-dtu.md) (DTU) informace o využití na portálu Azure portal.
+Cenovou úroveň databáze můžete také upravit na základě informací o využití [jednotek databázové transakce](../sql-database/sql-database-what-is-a-dtu.md) (DTU) dostupných na Azure Portal.
 
 ## <a name="design-for-high-performance"></a>Návrh pro vysoký výkon
-Navrhování balíčku SSIS v Azure se liší od návrhu balíčku pro místní spuštění. Místo kombinování více nezávislých úloh, které ve stejném balíčku, oddělte je do několika balíčků pro efektivnější spouštění v prostředí Azure-SSIS IR. Spouštění balíčků pro každý balíček, vytvořte tak, aby si uživatelé nebudou muset čekat na jiných na dokončení. Tento přístup těží z prostředí Azure-SSIS integration runtime škálovatelnost a zlepšuje celkovou propustnost.
+Návrh balíčku SSIS, který se má spustit v Azure, se liší od návrhu balíčku pro místní spuštění. Místo kombinace více nezávislých úloh ve stejném balíčku je můžete oddělit do několika balíčků a zefektivnit tak provádění Azure-SSIS IR. Vytvořte spuštění balíčku pro každý balíček, aby nemuseli čekat na jeho dokončení. Tento přístup přináší výhody škálovatelnosti prostředí Azure-SSIS Integration runtime a zlepšuje celkovou propustnost.
 
-## <a name="next-steps"></a>Další postup
-Další informace o Azure-SSIS Integration Runtime. Zobrazit [prostředí Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o Azure-SSIS Integration Runtime. Viz [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).

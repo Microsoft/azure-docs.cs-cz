@@ -1,6 +1,6 @@
 ---
-title: Omezení tenanta můžete spravovat přístup k SaaS cloudovým aplikacím – Azure | Dokumentace Microsoftu
-description: Jak používat exportní tenanta pro správu, které uživatelé můžou používat aplikace na základě jejich tenantů Azure AD.
+title: Použití omezení tenanta ke správě přístupu k SaaS aplikacím – Azure AD
+description: Jak používat omezení tenanta ke správě uživatelů, kteří budou mít přístup k aplikacím na základě jejich tenanta Azure AD.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,134 +15,134 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a340663a1ec4ddf748c6dc2bc3a4e2ce0c4228e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824382"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276507"
 ---
-# <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Umožňuje spravovat přístup ke cloudovým aplikacím SaaS exportní tenanta
+# <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
-Velké organizace, které zdůrazňují zabezpečení chcete přesunout do cloudové služby, jako je Office 365, ale třeba vědět, že jejich pouze mohou uživatelé schválené prostředky. Společnosti tradičně, omezení názvů domény nebo IP adres, ji můžete spravovat přístup. Tento postup selže ve světě hostuje software jako služba (nebo platformám SaaS) aplikací ve veřejném cloudu, které běží na názvy sdílená doména jako [outlook.office.com](https://outlook.office.com/) a [login.microsoftonline.com](https://login.microsoftonline.com/). Blokování tyto adresy byste zabránit uživatelům v přístupu k aplikaci Outlook na webu úplně, namísto pouze omezení schválené identity a prostředky.
+Velké organizace, které zdůrazňují zabezpečení chcete přesunout do cloudové služby, jako je Office 365, ale třeba vědět, že jejich pouze mohou uživatelé schválené prostředky. Společnosti tradičně, omezení názvů domény nebo IP adres, ji můžete spravovat přístup. Tento přístup se nezdařil v celém světě, kde jsou aplikace typu software jako služba (nebo SaaS) hostované ve veřejném cloudu a běží na sdílených doménách, jako je [Outlook.Office.com](https://outlook.office.com/) a [Login.microsoftonline.com](https://login.microsoftonline.com/). Blokování tyto adresy byste zabránit uživatelům v přístupu k aplikaci Outlook na webu úplně, namísto pouze omezení schválené identity a prostředky.
 
-Řešení Azure Active Directory (Azure AD), aby tento problém je funkce volána exportní tenanta. Omezení tenanta organizace můžete řídit přístup ke cloudovým aplikacím SaaS, založené na tenanta Azure AD, které aplikace se používají pro jednotné přihlašování. Chcete například povolit přístup k aplikacím Office 365 vaší organizace, zároveň je možné zabránit přístupu do jiných organizací instancí tyto stejné aplikace.  
+Řešení Azure Active Directory (Azure AD) pro tuto výzvu je funkce s názvem omezení tenanta. Díky omezením tenanta můžou organizace řídit přístup k SaaS cloudovým aplikacím, a to na základě tenanta Azure AD, které aplikace používají pro jednotné přihlašování. Chcete například povolit přístup k aplikacím Office 365 vaší organizace, zároveň je možné zabránit přístupu do jiných organizací instancí tyto stejné aplikace.  
 
-Omezení tenanta organizace mohou určit seznam klientů, které mají povolen přístup k svým uživatelům. Azure AD pak pouze uděluje přístup k těmto klientům povoleno.
+V případě omezení tenanta můžou organizace určovat seznam tenantů, ke kterým mají uživatelé přístup. Azure AD pak pouze uděluje přístup k těmto klientům povoleno.
 
-Tento článek se zaměřuje na klienta omezení pro Office 365, ale tato funkce by měla fungovat s žádnou cloudovou aplikaci SaaS, která používá moderní ověřování protokoly s Azure AD pro jednotné přihlašování. Pokud používáte SaaS aplikací pomocí jiné služby Azure AD tenanta z tenanta používaný v Office 365, ujistěte se, že všechny požadované jsou klientům povolené. Další informace o cloudových aplikacích SaaS, najdete v článku [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
+Tento článek se zaměřuje na omezení klientů pro Office 365, ale tato funkce by měla fungovat s libovolnou cloudovou aplikací SaaS, která používá moderní ověřovací protokoly se službou Azure AD pro jednotné přihlašování. Pokud používáte SaaS aplikací pomocí jiné služby Azure AD tenanta z tenanta používaný v Office 365, ujistěte se, že všechny požadované jsou klientům povolené. Další informace o cloudových aplikacích SaaS, najdete v článku [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
 Celkové řešení se skládá z následujících součástí:
 
-1. **Azure AD**: Pokud `Restrict-Access-To-Tenants: <permitted tenant list>` je k dispozici, Azure AD pouze problémy s tokeny zabezpečení pro povolených tenantů.
+1. **Azure AD**: pokud je `Restrict-Access-To-Tenants: <permitted tenant list>` k dispozici, Azure AD vydává tokeny zabezpečení jenom pro povolené klienty.
 
-2. **Místní proxy server infrastruktury**: Tato infrastruktura se proxy zařízení schopné kontroly vrstvy SSL (Secure Sockets). Je nutné nakonfigurovat proxy server pro vložení záhlaví obsahující seznam povolených tenantů do provozu určeného pro službu Azure AD.
+2. **Místní infrastruktura proxy server**: Tato infrastruktura je proxy zařízení, které umožňuje kontrolu SSL (Secure SOCKETS Layer) (SSL). Musíte nakonfigurovat proxy server, aby se vložila hlavička obsahující seznam povolených klientů do provozu určeného pro Azure AD.
 
-3. **Klientský software**: Podporovat exportní tenanta, klientský software musí požádat o tokeny přímo ze služby Azure AD tak, aby infrastruktury proxy může zachytávat provoz. Aplikace využívající prohlížeč Office 365 aktuálně podporují exportní tenanta, stejně jako klienti Office, které používají moderní ověřování (jako jsou OAuth 2.0).
+3. **Klientský software**: aby bylo možné podporovat omezení klientů, musí klientský software požádat o tokeny přímo z Azure AD, aby mohla infrastruktura proxy zachytit provoz. Aplikace Office 365 založené na prohlížeči aktuálně podporují omezení tenanta, stejně jako klienti Office, kteří používají moderní ověřování (například OAuth 2,0).
 
-4. **Moderní ověřování**: Cloudové služby musí používat omezení klienta a zablokovat přístup pro všechny tenanty bez povolené používají moderní ověřování. Je nutné nakonfigurovat cloudové služby Office 365, které používají moderní ověřování protokoly ve výchozím nastavení. Nejnovější informace o podpoře služeb Office 365 pro moderní ověřování, přečtěte si [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Moderní ověřování**: cloudové služby musí používat moderní ověřování k používání omezení tenanta a zablokovat přístup ke všem nepovoleným klientům. Ve výchozím nastavení je nutné nakonfigurovat cloudové služby Office 365 pro použití moderních ověřovacích protokolů. Nejnovější informace o podpoře služeb Office 365 pro moderní ověřování, přečtěte si [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
-Následující diagram znázorňuje tok provozu vysoké úrovně. Omezení tenanta nevyžadují kontrolu SSL pouze na provoz do služby Azure AD, nikoli do cloudové služby Office 365. Tento rozdíl je důležitý, protože objem přenosů pro ověření do služby Azure AD je obvykle mnohem nižší než objem provozu pro aplikace SaaS, jako je Exchange Online a SharePoint Online.
+Následující diagram znázorňuje tok provozu vysoké úrovně. Omezení tenanta vyžadují kontrolu SSL jenom v provozu do Azure AD, nikoli cloudové služby Office 365. Toto rozlišení je důležité, protože objem provozu pro ověřování do služby Azure AD je obvykle mnohem menší než objem přenosu, aby SaaS aplikace jako Exchange Online a SharePoint Online.
 
-![Tenant omezení toku provozu – diagram](./media/tenant-restrictions/traffic-flow.png)
+![Tok přenosů omezení tenanta – diagram](./media/tenant-restrictions/traffic-flow.png)
 
 ## <a name="set-up-tenant-restrictions"></a>Nastavení omezení tenanta
 
-Existují dva kroky, abyste mohli začít s omezeními pro tenanta. Nejprve se ujistěte, jestli vaši klienti může připojit ke správné adresy. Za druhé konfigurace vaší infrastruktury služby proxy.
+Existují dva kroky, jak začít s omezeními tenanta. Nejprve se ujistěte, že se klienti mohou připojit ke správným adresám. Potom nakonfigurujte infrastrukturu proxy serveru.
 
 ### <a name="urls-and-ip-addresses"></a>Adresy URL a IP adresy
 
-Pokud chcete použít exportní tenanta, musí být schopný se připojit k následujícím adresám URL Azure AD k ověření vaši klienti: [login.microsoftonline.com](https://login.microsoftonline.com/), [login.microsoft.com](https://login.microsoft.com/), a [ Login.Windows.NET](https://login.windows.net/). Kromě toho pro přístup k Office 365, klienti musí být také moci připojit k plně kvalifikované názvy domény (FQDN) adresy URL a IP adresy definované v [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2). 
+Aby bylo možné použít omezení tenanta, klienti musí být schopni se připojit k následujícím adresám URL služby Azure AD a ověřit: [Login.microsoftonline.com](https://login.microsoftonline.com/), [Login.Microsoft.com](https://login.microsoft.com/)a [Login.Windows.NET](https://login.windows.net/). Pro přístup k sadě Office 365 musí být navíc klienti schopni se připojit k plně kvalifikovaným názvům domén (FQDN), adresám URL a IP adresám definovaným v [adresách URL sady Office 365 a v rozsahu IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2). 
 
 ### <a name="proxy-configuration-and-requirements"></a>Konfigurace proxy serveru a požadavky
 
-Aktivaci tenanta omezení prostřednictvím vaší infrastruktury služby proxy je nutná tato konfigurace. Tyto pokyny je obecný, takže by měla odkazovat na dokumentaci od dodavatele proxy server pro konkrétní implementaci.
+K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se vyžaduje následující konfigurace. Tyto pokyny je obecný, takže by měla odkazovat na dokumentaci od dodavatele proxy server pro konkrétní implementaci.
 
 #### <a name="prerequisites"></a>Požadavky
 
 - Proxy server musí být schopen provést SSL zachycení, HTTP záhlaví vložení a filtrovat pomocí plně kvalifikovaných názvů domén a adres URL cíle.
 
-- Klienti musí důvěřovat řetězu certifikátů, které jsou prezentované podle proxy serveru k zajištění komunikace SSL. Například pokud certifikáty z interní [infrastruktury veřejných klíčů (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) se používá, interní vydávající certifikát kořenové certifikační autority musí být důvěryhodný.
+- Klienti musí důvěřovat řetězu certifikátů, které jsou prezentované podle proxy serveru k zajištění komunikace SSL. Pokud se například použijí certifikáty z interní [infrastruktury veřejných klíčů (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) , musí být interní vydávající certifikát kořenové certifikační autority důvěryhodný.
 
-- Tato funkce je zahrnutá v předplatných Office 365, ale pokud chcete používat tenanta omezení řízení přístupu k jiným aplikacím SaaS, pak licence Azure AD Premium 1 se vyžadují.
+- Tato funkce je součástí předplatných sady Office 365, ale pokud chcete k řízení přístupu k ostatním aplikacím SaaS použít omezení tenanta, je nutné licence Azure AD Premium 1.
 
 #### <a name="configuration"></a>Konfigurace
 
-Pro každého příchozího požadavku login.microsoftonline.com login.microsoft.com a login.windows.net, vložte dva hlavičky protokolu HTTP: *Omezit přístup na Tenantů* a *omezit kontextu přístup*.
+Pro každého příchozího požadavku login.microsoftonline.com login.microsoft.com a login.windows.net, vložit dvě záhlaví HTTP: *omezit přístup pro klienty* a *omezit přístup kontextu*.
 
 Záhlaví by měl obsahovat následující prvky:
 
-- Pro *omezit přístup pro klienty*, použijte hodnotu \<povolené seznamu v tenantovi\>, což je čárkou oddělený seznam klientů, které chcete povolit uživatelům přístup k. Do libovolné domény, který je registrovaný pomocí tenanta můžete použít k identifikaci tenanta služby v tomto seznamu. Například tak, aby povolovala přístup pro klienty Contoso a Fabrikam, dvojice název/hodnota vypadá takto: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- V případě *omezení přístupu k tenantovi*použijte hodnotu \<povoleného seznamu klientů\>, což je seznam klientů oddělených čárkami, kterým chcete povolit přístup uživatelům. Do libovolné domény, který je registrovaný pomocí tenanta můžete použít k identifikaci tenanta služby v tomto seznamu. Například tak, aby povolovala přístup pro klienty Contoso a Fabrikam, dvojice název/hodnota vypadá takto: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
-- Pro *omezit přístup kontextu*, použijte hodnotu ID jeden adresář, kterého tenanta deklarace je nastavení tenanta omezení. Například chcete-li deklarovat Contoso jako tenant, který nastavení zásady omezení tenanta, dvojice název/hodnota vypadá takto: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+- Pro *kontext omezení přístupu*použijte hodnotu jednoho ID adresáře, která deklaruje, který tenant nastavuje omezení tenanta. Chcete-li například deklarovat contoso jako tenanta, který nastaví zásady omezení klientů, bude dvojice název/hodnota vypadat takto: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
-> Do své ID adresáře můžete najít [portálu Azure Active Directory](https://aad.portal.azure.com/). Přihlaste se jako správce, vyberte **Azure Active Directory**a pak vyberte **vlastnosti**.
+> ID vašeho adresáře najdete na [portálu Azure Active Directory](https://aad.portal.azure.com/). Přihlaste se jako správce, vyberte **Azure Active Directory**a pak vyberte **vlastnosti**.
 
-Chcete-li zabránit uživatelům ve vkládání vlastní hlavičku HTTP s neschválené klienty, proxy server potřebuje nahradit *omezit přístup pro klienty* záhlaví, pokud je již k dispozici v příchozím požadavku.
+Aby uživatelé nemohli vkládat vlastní hlavičku HTTP s neschválenými klienty, musí proxy nahradit hlavičku *omezení-Access-to-tenant* , pokud už je v příchozím požadavku přítomná.
 
-Klienti musí vynutit pro všechny požadavky login.microsoftonline.com login.microsoft.com a login.windows.net používal proxy server. Například pokud PAC soubory se používají k nasměrování klientů používal proxy server, koncoví uživatelé by neměl být schopni upravit nebo zakázat PAC soubory.
+Klienti musí vynutit pro všechny požadavky login.microsoftonline.com login.microsoft.com a login.windows.net používal proxy server. Například pokud jsou soubory PAC použity k přímému směrování klientů na používání proxy serveru, neměli by koncoví uživatelé moci upravovat ani zakazovat soubory PAC.
 
 ## <a name="the-user-experience"></a>Činnost koncového uživatele
 
-Tato část popisuje prostředí pro koncové uživatele a správce.
+Tato část popisuje prostředí pro koncové uživatele i správce.
 
 ### <a name="end-user-experience"></a>Činnost koncového uživatele
 
-Příklad uživatel je v síti Contoso, ale se pokouší získat přístup k instanci Fabrikam sdílené SaaS aplikace jako je Outlook online. Pokud společnost Fabrikam je tenant není povolené pro instanci Contoso, uživateli se zobrazí zpráva o odepření přístupu, která říká, že se pokoušíte přistupovat k prostředku, který patří do organizace neschválených vaším IT oddělením.
+Příklad uživatel je v síti Contoso, ale se pokouší získat přístup k instanci Fabrikam sdílené SaaS aplikace jako je Outlook online. Pokud je Fabrikam neautorizovaným klientem pro instanci contoso, uživateli se zobrazí zpráva o odepření přístupu, která říká, že se snažíte získat přístup k prostředku, který patří do organizace, kterou vaše IT oddělení neschválilo.
 
 ### <a name="admin-experience"></a>Prostředí pro správu
 
-Během konfigurace omezení klienta se provádí na infrastruktuře podnikový proxy server, můžou správci přímý přístup sestavy omezení tenanta na portálu Azure portal. Chcete-li zobrazit sestavy:
+I když se konfigurace omezení tenanta provádí v podnikové infrastruktuře proxy serveru, můžou správci získat přístup k sestavám omezení klientů přímo v Azure Portal. Zobrazení sestav:
 
-1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/). **Centra pro správu Azure Active Directory** se zobrazí řídicí panel.
+1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/). Zobrazí se řídicí panel **centra pro správu Azure Active Directory** .
 
-2. V levém podokně vyberte **Azure Active Directory**. Zobrazí se stránka s přehledem Azure Active Directory.
+2. V levém podokně vyberte **Azure Active Directory**. Zobrazí se stránka přehled Azure Active Directory.
 
-3. V **další možnosti** záhlaví, vyberte **Tenanta omezení**.
+3. V části **Další možnosti** vyberte **omezení tenanta**.
 
-ID správce pro tenanta, zadaný jako s omezeným přístupem. přístup kontextu tenanta můžete pomocí této sestavy naleznete v tématu přihlášení blokováno z důvodu omezení zásad klienta, včetně identity použité a cílový adresář. Přihlášení jsou zahrnuty, pokud nastavení tohoto omezení tenanta je tenantovi uživatele nebo prostředků tenanta pro přihlášení.
+Správce pro tenanta, který je zadaný jako tenant s omezeným přístupem, může pomocí této sestavy zobrazit blokované přihlášení kvůli zásadám omezení tenanta, včetně použité identity a ID cílového adresáře. Přihlášení jsou zahrnuty, pokud nastavení tohoto omezení tenanta je tenantovi uživatele nebo prostředků tenanta pro přihlášení.
 
-Stejně jako jiné sestavy na webu Azure Portal můžete použít filtry k zadání oboru sestavy. Můžete filtrovat podle určitého časového intervalu, uživatele, aplikace, klienta nebo stav. Pokud vyberete **sloupce** tlačítko, můžete k zobrazení dat s libovolnou kombinací následující pole:
+Stejně jako jiné sestavy na webu Azure Portal můžete použít filtry k zadání oboru sestavy. Můžete filtrovat podle určitého časového intervalu, uživatele, aplikace, klienta nebo stavu. Pokud vyberete tlačítko **sloupce** , můžete se rozhodnout zobrazit data s libovolnou kombinací následujících polí:
 
-- **Uživatel**
+- **Uživatelský**
 - **Aplikace**
 - **Stav**
 - **Datum**
-- **Datum (UTC)** (kde UTC je koordinovaný univerzální čas)
-- **Ověřovací metoda MFA** (vícefaktorové ověřování)
-- **Podrobnosti ověřování MFA** (podrobnosti o vícefaktorové ověřování)
-- **Výsledek vícefaktorového ověřování**
+- **Datum (UTC)** (kde UTC je koordinovaný světový čas)
+- **Metoda ověřování MFA** (metoda vícefaktorového ověřování)
+- **Podrobnosti** o ověřování MFA (podrobnosti o vícefaktorového ověřování)
+- **Výsledek MFA**
 - **IP adresa**
-- **Klienta**
+- **Služba**
 - **Uživatelské jméno**
 - **Umístění**
 - **ID cílového tenanta**
 
 ## <a name="office-365-support"></a>Podpora Office 365
 
-Aplikace Office 365, musí splňovat dvě kritéria pro úplnou podporu exportní tenanta:
+Aby bylo možné plně podporovat omezení klientů, aplikace Office 365 musí splňovat dvě kritéria:
 
-1. Podporuje klient používá moderní ověřování.
+1. Použitý klient podporuje moderní ověřování.
 2. Jako výchozí protokol ověřování pro cloudové služby je povolené moderní ověřování.
 
-Odkazovat na [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) nejnovější informace, na které Office klientů aktuálně podporují moderní ověřování. Tuto stránku obsahuje také odkazy na pokyny pro povolení moderního ověřování v konkrétní Exchange Online a Skype pro firmy Online tenanty. SharePoint Online už moderní ověřování ve výchozím nastavení povoluje.
+Odkazovat na [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) nejnovější informace, na které Office klientů aktuálně podporují moderní ověřování. Tuto stránku obsahuje také odkazy na pokyny pro povolení moderního ověřování v konkrétní Exchange Online a Skype pro firmy Online tenanty. SharePoint Online už ve výchozím nastavení umožňuje moderní ověřování.
 
-Aplikace založené na prohlížeči Office 365 (SharePoint portálu Office, Yammer, weby, Outlook na webu a další) v současné době podporují exportní tenanta. Tlustých klientů (Outlook, Skype pro firmy, Word, Excel, PowerPoint a více) můžete vynutit omezení tenanta jenom při použití moderního ověřování.  
+Aplikace založené na prohlížeči Office 365 (portál Office, Yammer, weby SharePointu, Outlook na webu a další) aktuálně podporují omezení klientů. Silné klienty (Outlook, Skype pro firmy, Word, Excel, PowerPoint a další) můžou vymáhat omezení tenanta jenom v případě, že se používá moderní ověřování.  
 
-Outlook a Skype pro firmy klienty podporující moderní ověřování může stále moct používat starší protokoly s tenanty, kde není povolené moderní ověřování, efektivně obcházení omezení tenanta. Omezení tenanta může blokovat aplikace, které používají starší protokoly, pokud kontaktovat login.microsoftonline.com login.microsoft.com a login.windows.net během ověřování.
+Klienti Outlooku a Skype pro firmy, kteří podporují moderní ověřování, můžou pořád používat starší protokoly pro klienty, u kterých není povolené moderní ověřování, a efektivně tak obejít omezení tenanta. Omezení tenanta můžou blokovat aplikace, které používají starší protokoly, pokud při ověřování kontaktují login.microsoftonline.com, login.microsoft.com nebo login.windows.net.
 
 Pro aplikaci Outlook na Windows mohou zákazníci zvolit implementovat omezení, zabrání koncovým uživatelům přidávání neschválený e-mailové účty do jejich profily. Viz například [zabránit přidání jiné než výchozí účty serveru Exchange](https://gpsearch.azurewebsites.net/default.aspx?ref=1) nastavení zásad skupiny.
 
 ## <a name="testing"></a>Testování
 
-Pokud chcete vyzkoušet exportní tenanta před implementací pro celou vaši organizaci, máte dvě možnosti: přístupu založené na hostiteli pomocí nástroje, jako jsou nástroje Fiddler nebo postupné zavedení nastavení proxy serveru.
+Pokud si chcete vyzkoušet omezení tenanta před implementací pro celou organizaci, máte dvě možnosti: přístup založený na hostiteli pomocí nástroje, jako je Fiddler, nebo dvoufázové zavedení nastavení proxy serveru.
 
 ### <a name="fiddler-for-a-host-based-approach"></a>Fiddler pro přístup na základě hostitele
 
-Fiddler je bezplatný webový ladicí proxy server, který slouží k zaznamenání a upravit přenosy HTTP/HTTPS, včetně vkládání hlavičky protokolu HTTP. Pokud chcete nakonfigurovat aplikace Fiddler k otestování exportní tenanta, postupujte následovně:
+Fiddler je bezplatný webový ladicí proxy server, který slouží k zaznamenání a upravit přenosy HTTP/HTTPS, včetně vkládání hlavičky protokolu HTTP. Pokud chcete nakonfigurovat Fiddler pro testování omezení tenanta, proveďte následující kroky:
 
 1. [Stáhnout a nainstalovat Fiddler](https://www.telerik.com/fiddler).
 
@@ -152,7 +152,7 @@ Fiddler je bezplatný webový ladicí proxy server, který slouží k zaznamená
 
    1. V nástroji pro ladicí program webové aplikaci Fiddler, vyberte **pravidla** nabídky a vybereme **přizpůsobit pravidla...** Otevřít soubor CustomRules.
 
-   2. Přidejte následující řádky na začátek `OnBeforeRequest` funkce. Nahraďte \<doména tenanta\> s doménou zaregistrována ve vašem tenantovi (například `contoso.onmicrosoft.com`). Nahraďte \<ID adresáře\> s identifikátorem Azure AD GUID vašeho tenanta.
+   2. Na začátek funkce `OnBeforeRequest` přidejte následující řádky. \> doménu tenanta \<nahraďte doménou registrovanou pro vašeho tenanta (například `contoso.onmicrosoft.com`). Nahraďte \<ID adresáře\> s identifikátorem Azure AD GUID vašeho tenanta.
 
       ```JScript.NET
       if (
@@ -181,9 +181,9 @@ V závislosti na možnosti vaší infrastruktury služby proxy budete moci fáze
 1. Použijte PAC soubory pro testovací uživatele přejděte testovací infrastrukturu proxy server při normálním uživatelé nadále používat provozní infrastruktuře proxy.
 2. Některé proxy servery můžou podporovat různé konfigurace pomocí skupin.
 
-Konkrétní podrobnosti najdete v dokumentaci k proxy serveru.
+Konkrétní podrobnosti najdete v dokumentaci k proxy server.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si informace o [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
 - Zkontrolujte [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

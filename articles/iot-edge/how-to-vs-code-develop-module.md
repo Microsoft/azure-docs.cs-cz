@@ -8,18 +8,18 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e5bfd2fc127774b9630e87ab4f51241e82ed7c87
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 788d5eb049a27500a6518b7be9bb6caedd543637
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999068"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276156"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code k vývoji a ladění modulů pro Azure IoT Edge
 
 Obchodní logiky můžete proměnit moduly pro Azure IoT Edge. V tomto článku se dozvíte, jak používat Visual Studio Code jako hlavní nástroj pro vývoj a ladění modulů.
 
-Existují dva způsoby, jak ladit moduly napsané C#v, Node. js nebo Java v Visual Studio Code: Můžete buď připojit proces do kontejneru modulu, nebo spustit kód modulu v režimu ladění. Chcete-li ladit moduly napsané v Pythonu nebo C, můžete se připojit pouze k procesu v kontejnerech Linux amd64.
+Existují dva způsoby, jak ladit moduly napsané C#v, Node. js nebo Java v Visual Studio Code: můžete buď připojit proces v kontejneru modulu, nebo spustit kód modulu v režimu ladění. Chcete-li ladit moduly napsané v Pythonu nebo C, můžete se připojit pouze k procesu v kontejnerech Linux amd64.
 
 Pokud nejste obeznámeni s funkcemi ladění Visual Studio Code, přečtěte si o [ladění](https://code.visualstudio.com/Docs/editor/debugging).
 
@@ -37,10 +37,10 @@ Nejdřív nainstalujte [Visual Studio Code](https://code.visualstudio.com/) a pa
 - [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Rozšíření Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - Rozšíření pro Visual Studio specifická pro jazyk, v němž vyvíjíte:
-  - C#včetně Azure Functions: [C#klapk](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-  - Python: [Rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  - Java: [Balíček rozšíření Java pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
-  - C: [C/C++ rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+  - C#včetně Azure Functions: [ C# rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  - Python: [rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  - Java: [balíček rozšíření Java pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+  - C: [rozšíření cC++ /rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
 Pro vývoj vašeho modulu budete taky muset nainstalovat některé další nástroje pro konkrétní jazyk:
 
@@ -48,9 +48,9 @@ Pro vývoj vašeho modulu budete taky muset nainstalovat některé další nást
 
 - Python: [Python](https://www.python.org/downloads/) a [PIP](https://pip.pypa.io/en/stable/installing/#installation) pro instalaci balíčků Pythonu (obvykle zahrnutých v instalaci Pythonu).
 
-- Node.js: [Node.js](https://nodejs.org). Budete také chtít nainstalovat [Yeoman](https://www.npmjs.com/package/yo) a [generátor modulu Azure IoT Edge Node. js](https://www.npmjs.com/package/generator-azure-iot-edge-module).
+- Node. js: [Node. js](https://nodejs.org) Budete také chtít nainstalovat [Yeoman](https://www.npmjs.com/package/yo) a [generátor modulu Azure IoT Edge Node. js](https://www.npmjs.com/package/generator-azure-iot-edge-module).
 
-- Java: [Java se Development Kit 10](https://aka.ms/azure-jdks) a [Maven](https://maven.apache.org/). Budete muset [ `JAVA_HOME` nastavit proměnnou prostředí](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby odkazovala na instalaci JDK.
+- Java: [Java se Development Kit 10](https://aka.ms/azure-jdks) a [Maven](https://maven.apache.org/). Budete muset [nastavit proměnnou prostředí `JAVA_HOME`](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby odkazovala na instalaci JDK.
 
 K sestavení a nasazení image modulu potřebujete Docker pro sestavení image modulu a registru kontejneru pro uložení image modulu:
 
@@ -61,13 +61,15 @@ K sestavení a nasazení image modulu potřebujete Docker pro sestavení image m
     > [!TIP]
     > Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru.
 
-Pokud nevyvíjíte modul v jazyce C, budete také potřebovat nástroj pro vývoj [Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/) v Pythonu, aby bylo možné nastavit místní vývojové prostředí pro ladění, spouštění a testování vašeho řešení IoT Edge. Pokud jste to ještě neudělali, nainstalujte [Python (2.7/3.6 +) a PIP](https://www.python.org/) a pak **iotedgehubdev** Nainstalujte spuštěním tohoto příkazu v terminálu.
+Pokud nevyvíjíte modul v jazyce C, budete také potřebovat nástroj pro vývoj [Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/) v Pythonu, aby bylo možné nastavit místní vývojové prostředí pro ladění, spouštění a testování vašeho řešení IoT Edge. Pokud jste to ještě neudělali, nainstalujte [Python (2.7/3.6/3.7) a PIP](https://www.python.org/) a pak **iotedgehubdev** Nainstalujte spuštěním tohoto příkazu v terminálu.
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
 > [!NOTE]
-> Pokud máte několik Pythonů včetně předem nainstalovaného Pythonu 2,7 (například na Ubuntu nebo MacOS), ujistěte se, že používáte správnou `pip` instalaci nebo `pip3` Pokud chcete nainstalovat **iotedgehubdev** .
+> V současné době iotedgehubdev používá knihovnu Docker-py, která není kompatibilní s Pythonem 3,8.
+>
+> Pokud máte několik Pythonů včetně předinstalovaného Pythonu 2,7 (například na Ubuntu nebo macOS), ujistěte se, že používáte správný `pip` nebo `pip3` k instalaci **iotedgehubdev** .
 
 K otestování modulu v zařízení budete potřebovat aktivní službu IoT Hub s aspoň jedním IoT Edge zařízením. Pokud chcete počítač použít jako zařízení IoT Edge, postupujte podle kroků v rychlém startu pro [Linux](quickstart-linux.md) nebo [Windows](quickstart.md). Pokud ve vývojovém počítači používáte IoT Edge démon, možná budete muset před přechodem na další krok zastavit EdgeHub a EdgeAgent.
 
@@ -77,7 +79,7 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge v preferovaném výv
 
 1. Vyberte **zobrazení** > **příkaz palety**.
 
-1. V paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení**IoT Edge.
+1. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: nové řešení IoT Edge**.
 
    ![Spustit nové řešení IoT Edge](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -89,7 +91,7 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge v preferovaném výv
 
 1. Zadejte název svého modulu. Vyberte název, který je jedinečný v rámci vašeho registru kontejneru.
 
-1. Zadejte název úložiště imagí modulu. Visual Studio Code automaticky vyplní název modulu názvem **localhost: 5000/< název\>vašeho modulu**. Nahraďte ho vlastním registru informace. Pokud pro testování používáte místní registr Docker, pak je **localhost** v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá jako   **_\<název\>registru_. azurecr.IO**. Jenom nahraďte část **localhost: 5000** řetězce tak, aby konečný výsledek vypadal jako  **\< *název*\>registru. azurecr.IO/ _\<svůj název\>modulu_** .
+1. Zadejte název úložiště imagí modulu. Visual Studio Code automaticky vyplní název modulu názvem **localhost: 5000/< název modulu\>** . Nahraďte ho vlastním registru informace. Pokud pro testování používáte místní registr Docker, pak je **localhost** v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá jako  **_\<název registru\>_ . azurecr.IO**. Nahraďte pouze část **localhost: 5000** řetězce, aby konečný výsledek vypadal jako **\<*název registru*\>. azurecr.IO/ _\<název modulu\>_** .
 
    ![Zadání úložiště imagí Dockeru](./media/how-to-develop-csharp-module/repository.png)
 
@@ -99,18 +101,18 @@ V rámci řešení jsou čtyři položky:
 
 - Složka **. VSCode** obsahuje konfigurace ladění.
 
-- Složka **modulů** má podsložky pro každý modul.  V rámci složky pro každý modul je soubor **Module. JSON**, který určuje, jak jsou moduly sestavené a nasazené.  Tento soubor je třeba upravit, aby se změnil registr kontejneru nasazení modulu z místního hostitele na vzdálený registr. V tuto chvíli máte jenom jeden modul.  V paletě příkazů ale můžete přidat další příkazem **Azure IoT Edge: Přidejte IoT Edge modul**.
+- Složka **modulů** má podsložky pro každý modul.  V rámci složky pro každý modul je soubor **Module. JSON**, který určuje, jak jsou moduly sestavené a nasazené.  Tento soubor je třeba upravit, aby se změnil registr kontejneru nasazení modulu z místního hostitele na vzdálený registr. V tuto chvíli máte jenom jeden modul.  Ale další informace můžete přidat do palety příkazů pomocí příkazu **Azure IoT Edge: přidat IoT Edge modul**.
 
 - Soubor **. env** obsahuje seznam proměnných prostředí. Pokud je Azure Container Registry vašeho registru, budete mít v něm Azure Container Registry uživatelské jméno a heslo.
 
   > [!NOTE]
   > Soubor prostředí je vytvořen pouze v případě, že pro modul zadáte úložiště imagí. Pokud jste přijali, že se místní localhost bude standardně testovat a ladit, pak nemusíte deklarovat proměnné prostředí.
 
-- Soubor **Deployment. template. JSON** obsahuje nový modul spolu s ukázkovým modulem **SimulatedTemperatureSensor** , který simuluje data, která můžete použít pro testování. Další informace o tom, jak manifesty nasazení fungují, najdete v tématu Naučte se [používat manifesty nasazení k nasazení modulů a vytváření tras](module-composition.md).
+- Soubor **Deployment. template. JSON** obsahuje nový modul spolu s ukázkovým modulem **SimulatedTemperatureSensor** , který simuluje data, která můžete použít pro testování. Další informace o tom, jak manifesty nasazení fungují, najdete v tématu [Naučte se používat manifesty nasazení k nasazení modulů a vytváření tras](module-composition.md).
 
 ## <a name="add-additional-modules"></a>Přidat další moduly
 
-Chcete-li do řešení přidat další moduly, spusťte příkaz **Azure IoT Edge: Přidejte modul** IoT Edge z palety příkazů. Můžete také kliknout pravým tlačítkem na složku **moduly** nebo `deployment.template.json` soubor v zobrazení Průzkumník Visual Studio Code a pak vybrat **Přidat IoT Edge modul**.
+Chcete-li do řešení přidat další moduly, spusťte příkaz **Azure IoT Edge: přidat IoT Edge modul** z palety příkazů. Můžete také kliknout pravým tlačítkem na složku **moduly** nebo `deployment.template.json` soubor v zobrazení Průzkumník Visual Studio Code a pak vybrat **Přidat IoT Edge modul**.
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
@@ -118,10 +120,10 @@ Výchozí kód modulu, který je součástí řešení, je umístěn v následuj
 
 - C#Funkce Azure Functions (): **moduly >  *&lt;název&gt;*  >  *&lt;vašeho modulu název&gt;vašeho modulu*. cs**
 - C#: **moduly >  *&lt;název&gt; modulu* > program.cs**
-- Python: **moduly >  *&lt;název&gt; modulu* > Main.py**
-- Node. js: **moduly >  *&lt;název&gt; modulu* > App. js** .
-- Java: **moduly >  *&lt;&gt; název modulu* > src > Main > Java > com > edgemodulemodules > App. Java**
-- C: **moduly >  *&lt;název&gt; modulu* > Main. c**
+- Python: **moduly > *&lt;název modulu&gt;* > Main.py**
+- Node. js: **moduly > *&lt;název modulu&gt;* > App. js.**
+- Java: **moduly > *&lt;název modulu&gt;* > src > main > java > com > edgemodulemodules > App. Java**
+- C: **moduly > *&lt;název modulu&gt;* > Main. c**
 
 V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je sestaven tak, aby jednoduše převzal vstup ze zdroje (v tomto případě modul SimulatedTemperatureSensor, který simuluje data) a přesměruje jej na IoT Hub.
 
@@ -140,7 +142,7 @@ Ve vývojovém počítači můžete spustit simulátor IoT Edge a nemusíte inst
 
 ### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>Nastavení simulátoru IoT Edge pro aplikaci s jedním modulem
 
-Chcete-li nastavit a spustit simulátor, spusťte příkaz **Azure IoT Edge: Spustí simulátor centra IoT Edge pro jeden modul** z palety příkazů Visual Studio Code. Po zobrazení výzvy použijte hodnotu **input1** z výchozího kódu modulu (nebo ekvivalentní hodnoty z vašeho kódu) jako vstupní název vaší aplikace. Příkaz aktivuje rozhraní příkazového řádku **iotedgehubdev** a potom spustí simulátor IoT Edge a kontejner modulu testovacího nástroje. V případě úspěšného spuštění simulátoru v režimu jediného modulu můžete zobrazit výstupy uvedené níže v integrovaném terminálu. Můžete se také podívat `curl` na příkaz, který vám umožní poslat zprávu prostřednictvím. Budete jej později potřebovat.
+Chcete-li nastavit a spustit simulátor, spusťte příkaz **Azure IoT Edge: spustit simulátor IoT Edge centra pro jeden modul** z palety příkazů Visual Studio Code. Po zobrazení výzvy použijte hodnotu **input1** z výchozího kódu modulu (nebo ekvivalentní hodnoty z vašeho kódu) jako vstupní název vaší aplikace. Příkaz aktivuje rozhraní příkazového řádku **iotedgehubdev** a potom spustí simulátor IoT Edge a kontejner modulu testovacího nástroje. V případě úspěšného spuštění simulátoru v režimu jediného modulu můžete zobrazit výstupy uvedené níže v integrovaném terminálu. Můžete se také podívat na `curl` příkaz, který vám umožní poslat zprávu prostřednictvím. Budete jej později potřebovat.
 
    ![Nastavení simulátoru IoT Edge pro aplikaci s jedním modulem](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
@@ -154,7 +156,7 @@ Chcete-li nastavit a spustit simulátor, spusťte příkaz **Azure IoT Edge: Spu
 
 1. Připravte prostředí pro ladění podle požadavků vašeho vývojového jazyka, nastavte zarážku v modulu a vyberte konfiguraci ladění, která se má použít:
    - **C#**
-     - V Visual Studio Code integrovaný terminál změňte adresář na  ***&lt;složku&gt; název modulu*** a pak spusťte následující příkaz pro sestavení aplikace .NET Core.
+     - V Visual Studio Code integrovaný terminál změňte adresář na ***&lt;název modulu&gt;*** složku a spusťte následující příkaz pro sestavení aplikace .NET Core.
 
        ```cmd
        dotnet build
@@ -162,13 +164,13 @@ Chcete-li nastavit a spustit simulátor, spusťte příkaz **Azure IoT Edge: Spu
 
      - Otevřete soubor `Program.cs` a přidejte zarážku.
 
-     - Výběrem možnosti **zobrazit > ladit**přejděte do zobrazení ladění Visual Studio Code. V rozevíracím seznamu vyberte konfiguraci   ***&lt;ladění&gt; název vašeho modulu* místní ladění (.NET Core)** .
+     - Výběrem možnosti **zobrazit > ladit**přejděte do zobrazení ladění Visual Studio Code. Vyberte konfiguraci ladění  ***&lt;název modulu&gt;* místní ladění (.NET Core)** z rozevíracího seznamu.
 
         > [!NOTE]
-        > Pokud vaše .NET Core `TargetFramework` není konzistentní s cestou k programu v `launch.json`, budete muset ručně aktualizovat cestu programu v `launch.json` aplikaci tak, aby se shodovala `TargetFramework` se souborem. csproj, aby ji Visual Studio Code mohl úspěšně spustit. editoru.
+        > Pokud vaše `TargetFramework` .NET Core není konzistentní s cestou k programu v `launch.json`, budete muset ručně aktualizovat cestu programu v `launch.json` tak, aby odpovídala `TargetFramework` v souboru. csproj, aby Visual Studio Code mohl tento program úspěšně spustit.
 
    - **Node.js**
-     - V Visual Studio Code integrovaný terminál, změňte adresář na  ***&lt;složku&gt; název modulu*** a pak spusťte následující příkaz pro instalaci balíčků Node
+     - V Visual Studio Code integrovaný terminál změňte adresář na ***&lt;název modulu&gt;*** složku a spusťte následující příkaz, který nainstaluje balíčky uzlů.
 
        ```cmd
        npm install
@@ -176,11 +178,11 @@ Chcete-li nastavit a spustit simulátor, spusťte příkaz **Azure IoT Edge: Spu
 
      - Otevřete soubor `app.js` a přidejte zarážku.
 
-     - Výběrem možnosti **zobrazit > ladit**přejděte do zobrazení ladění Visual Studio Code. V rozevíracím seznamu vyberte konfiguraci   ***&lt;ladění&gt; název vašeho modulu* místní ladění (Node. js)** .
+     - Výběrem možnosti **zobrazit > ladit**přejděte do zobrazení ladění Visual Studio Code. Z rozevíracího seznamu vyberte konfiguraci ladění  ***&lt;název modulu&gt;* místní ladění (Node. js)** .
    - **Java**
      - Otevřete soubor `App.java` a přidejte zarážku.
 
-     - Výběrem možnosti **zobrazit > ladit**přejděte do zobrazení ladění Visual Studio Code. V rozevíracím seznamu vyberte konfiguraci   ***&lt;ladění&gt; název modulu* místní ladění (Java)** .
+     - Výběrem možnosti **zobrazit > ladit**přejděte do zobrazení ladění Visual Studio Code. Vyberte konfiguraci ladění  ***&lt;název modulu&gt;* místní ladění (Java)** z rozevíracího seznamu.
 
 1. Kliknutím na tlačítko **Spustit ladění** nebo stisknutím klávesy **F5** spusťte relaci ladění.
 
@@ -191,13 +193,13 @@ Chcete-li nastavit a spustit simulátor, spusťte příkaz **Azure IoT Edge: Spu
     ```
 
    > [!NOTE]
-   > Pokud používáte systém Windows, ujistěte se, že prostředí Visual Studio Code integrovaným terminálem je **Git bash** nebo **WSL bash**. Nemůžete spustit `curl` příkaz z PowerShellu nebo příkazového řádku.
+   > Pokud používáte systém Windows, ujistěte se, že prostředí Visual Studio Code integrovaným terminálem je **Git bash** nebo **WSL bash**. Nemůžete spustit příkaz `curl` z PowerShellu nebo příkazového řádku.
    > [!TIP]
    > Můžete také použít [PostMan](https://www.getpostman.com/) nebo jiné nástroje rozhraní API pro odesílání zpráv prostřednictvím místo `curl`.
 
 1. V zobrazení ladění Visual Studio Code uvidíte proměnné na levém panelu.
 
-1. Chcete-li zastavit relaci ladění, vyberte tlačítko Zastavit nebo stiskněte klávesy **SHIFT + F5**a potom spusťte **Azure IoT Edge: Ukončete IoT Edge simulátoru** v paletě příkazů pro zastavení simulátoru a vyčištění.
+1. Chcete-li zastavit relaci ladění, vyberte tlačítko Zastavit nebo stiskněte klávesy **SHIFT + F5**a potom spusťte **Azure IoT Edge: zastavit IoT Edge simulátoru** v paletě příkazů pro zastavení simulátoru a vyčištění.
 
 ## <a name="debug-in-attach-mode-with-iot-edge-simulator-c-nodejs-java-azure-functions"></a>Ladění v režimu připojení s IoT Edge simulátoremC#(, Node. js, Java, Azure Functions)
 
@@ -222,24 +224,24 @@ Ve vývojovém počítači můžete spustit simulátor IoT Edge a nemusíte inst
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Sestavení a spuštění kontejneru pro ladění a ladění v režimu připojení
 
-1. Otevřete soubor modulu`Program.cs`(, `app.js`, `App.java`nebo `<your module name>.cs`) a přidejte zarážku.
+1. Otevřete soubor modulu (`Program.cs`, `app.js`, `App.java`nebo `<your module name>.cs`) a přidejte zarážku.
 
-1. V zobrazení Průzkumníka Visual Studio Code klikněte pravým tlačítkem na `deployment.debug.template.json` soubor pro vaše řešení a pak vyberte sestavování **a spouštění IoT Edge řešení v simulátoru**. Všechny protokoly kontejneru modulů můžete sledovat ve stejném okně. Můžete také přejít do zobrazení Docker a sledovat stav kontejneru.
+1. V zobrazení Průzkumníka Visual Studio Code klikněte pravým tlačítkem na soubor `deployment.debug.template.json` pro vaše řešení a pak vyberte **Sestavit a spustit IoT Edge řešení v simulátoru**. Všechny protokoly kontejneru modulů můžete sledovat ve stejném okně. Můžete také přejít do zobrazení Docker a sledovat stav kontejneru.
 
    ![Sledovat proměnné](media/how-to-vs-code-develop-module/view-log.png)
 
-1. Přejděte do zobrazení ladění Visual Studio Code a vyberte konfigurační soubor ladění pro váš modul. Název možnosti ladění by měl být podobný   ***&lt;vašemu názvu&gt; modulu* vzdáleného ladění.**
+1. Přejděte do zobrazení ladění Visual Studio Code a vyberte konfigurační soubor ladění pro váš modul. Název možnosti ladění by měl být podobný  ***&lt;název modulu&gt;* vzdálené ladění.**
 
 1. Vyberte **Spustit ladění** nebo stiskněte klávesu **F5**. Vyberte proces, ke kterému se chcete připojit.
 
 1. V zobrazení ladění Visual Studio Code uvidíte proměnné na levém panelu.
 
-1. Chcete-li zastavit relaci ladění, vyberte nejprve tlačítko Zastavit nebo stiskněte klávesy **SHIFT + F5**a potom vyberte **možnost Azure IoT Edge: Zastaví IoT Edge simulátor** z palety příkazů.
+1. Chcete-li zastavit relaci ladění, vyberte nejprve tlačítko Zastavit nebo stiskněte klávesy **SHIFT + F5**a potom vyberte **Azure IoT Edge: zastavit IoT Edge simulátor** z palety příkazů.
 
 > [!NOTE]
-> Předchozí příklad ukazuje, jak ladit IoT Edge moduly na kontejnerech. Do nastavení kontejneru `createOptions` vašeho modulu se přidaly vystavené porty. Po dokončení ladění modulů doporučujeme odebrat tyto vystavené porty pro moduly IoT Edge připravené pro produkční prostředí.
+> Předchozí příklad ukazuje, jak ladit IoT Edge moduly na kontejnerech. Přidali jste vystavené porty do kontejneru modulu `createOptions` nastavení. Po dokončení ladění modulů doporučujeme odebrat tyto vystavené porty pro moduly IoT Edge připravené pro produkční prostředí.
 >
-> V případě modulů napsaných v C#, včetně Azure Functions, je tento příklad založen na ladicí `Dockerfile.amd64.debug`verzi nástroje, která zahrnuje ladicí program příkazového řádku .NET Core (VSDBG) ve vaší imagi kontejneru při jeho vytváření. Po ladění C# modulů doporučujeme, abyste přímo používali souboru DOCKERFILE bez VSDBG pro IoT Edge moduly připravené pro produkční prostředí.
+> V případě modulů napsaných v C#, včetně Azure Functions, je tento příklad založen na ladicí verzi `Dockerfile.amd64.debug`, která zahrnuje ladicí program příkazového řádku .NET Core (VSDBG) v imagi kontejneru při jeho vytváření. Po ladění C# modulů doporučujeme, abyste přímo používali souboru DOCKERFILE bez VSDBG pro IoT Edge moduly připravené pro produkční prostředí.
 
 ## <a name="debug-a-module-with-the-iot-edge-runtime"></a>Ladění modulu pomocí modulu runtime IoT Edge
 
@@ -249,11 +251,11 @@ Při ladění modulů pomocí této metody jsou moduly spuštěny na IoT Edge mo
 
 - Nastavte zařízení IoT Edge, sestavte moduly IoT Edge pomocí souboru Dockerfile **. Debug** a pak je nasaďte do IoT Edgeho zařízení.
 - Vystavte IP adresu a port modulu, aby bylo možné připojit ladicí program.
-- `launch.json` Aktualizujte, aby se Visual Studio Code mohl připojit k procesu v kontejneru na vzdáleném počítači. Tento soubor je umístěn ve `.vscode` složce v pracovním prostoru a aktualizuje pokaždé, když přidáte nový modul, který podporuje ladění.
+- Aktualizujte `launch.json` tak, aby se Visual Studio Code mohl připojit k procesu v kontejneru na vzdáleném počítači. Tento soubor se nachází ve složce `.vscode` ve vašem pracovním prostoru a aktualizuje pokaždé, když přidáte nový modul, který podporuje ladění.
 
 ### <a name="build-and-deploy-your-module-to-the-iot-edge-device"></a>Sestavte a nasaďte modul do zařízení IoT Edge.
 
-1. V Visual Studio Code otevřete `deployment.debug.template.json` soubor, který obsahuje ladicí verzi imagí modulu se správnými `createOptions` hodnotami sady.
+1. V Visual Studio Code otevřete `deployment.debug.template.json` souboru, který obsahuje ladicí verzi vašich imagí modulu se správnými nastavenými hodnotami `createOptions`.
 
 1. Pokud vyvíjíte modul v Pythonu, proveďte následující kroky, než budete pokračovat:
    - Otevřete soubor `main.py` a přidejte tento kód za oddíl import:
@@ -269,7 +271,7 @@ Při ladění modulů pomocí této metody jsou moduly spuštěny na IoT Edge mo
       ptvsd.break_into_debugger()
       ```
 
-     Například pokud chcete `receive_message_listener` funkci ladit, vložte tento řádek kódu, jak je znázorněno níže:
+     Například pokud chcete ladit funkci `receive_message_listener`, vložte tento řádek kódu, jak je znázorněno níže:
 
       ```python
       def receive_message_listener(client):
@@ -288,9 +290,9 @@ Při ladění modulů pomocí této metody jsou moduly spuštěny na IoT Edge mo
       ```
 
 1. Na paletě příkazu Visual Studio Code:
-   1. Spusťte příkaz **Azure IoT Edge: Sestavování a nabízených IoT Edge řešení**.
+   1. Spusťte příkaz **Azure IoT Edge: Build a Push IoT Edge řešení**.
 
-   1. `deployment.debug.template.json` Vyberte soubor pro vaše řešení.
+   1. Vyberte soubor `deployment.debug.template.json` pro vaše řešení.
 
 1. V části **IoT Hub zařízení Azure** v zobrazení Průzkumník Visual Studio Code:
    1. Klikněte pravým tlačítkem na ID zařízení IoT Edge a pak vyberte **vytvořit nasazení pro jedno zařízení**.
@@ -298,59 +300,59 @@ Při ladění modulů pomocí této metody jsou moduly spuštěny na IoT Edge mo
       > [!TIP]
       > Pokud chcete potvrdit, že zařízení, které jste zvolili, je IoT Edge zařízení, vyberte ho a rozbalte seznam modulů a ověřte přítomnost **$edgeHub** a **$edgeAgent**. Každé zařízení IoT Edge zahrnuje tyto dva moduly.
 
-   1. Přejděte do **konfigurační** složky vašeho řešení, vyberte `deployment.debug.amd64.json` soubor a pak vyberte **možnost vybrat manifest nasazení Edge**.
+   1. Přejděte do **konfigurační** složky vašeho řešení, vyberte soubor `deployment.debug.amd64.json` a pak vyberte **možnost vybrat manifest nasazení Edge**.
 
 V integrovaném terminálu se nasazování úspěšně vytvoří s ID nasazení.
 
-Stav kontejneru můžete zjistit spuštěním `docker ps` příkazu v terminálu. Pokud Visual Studio Code a modul runtime IoT Edge běží na stejném počítači, můžete také zjistit stav v zobrazení Docker Visual Studio Code.
+Stav kontejneru můžete zjistit spuštěním příkazu `docker ps` v terminálu. Pokud Visual Studio Code a modul runtime IoT Edge běží na stejném počítači, můžete také zjistit stav v zobrazení Docker Visual Studio Code.
 
 ### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger"></a>Vystavení IP adresy a portu modulu pro ladicí program
 
-Tuto část můžete přeskočit, pokud jsou moduly spuštěné na stejném počítači jako Visual Studio Code, protože používáte localhost pro připojení ke kontejneru a už mají správné nastavení portu v **. Debug** souboru Dockerfile, kontejneru `createOptions` modulu. nastavení a `launch.json` soubor. Pokud jsou moduly a Visual Studio Code spuštěné v samostatných počítačích, postupujte podle kroků pro vývoj v jazyce.
+Tuto část můžete přeskočit, pokud jsou moduly spuštěny na stejném počítači jako Visual Studio Code, protože používáte localhost pro připojení ke kontejneru a již mají správné nastavení portu v souboru **. Debug** souboru dockerfile, `createOptions` nastavení kontejneru a `launch.json` souboru. Pokud jsou moduly a Visual Studio Code spuštěné v samostatných počítačích, postupujte podle kroků pro vývoj v jazyce.
 
 - **C#včetně Azure Functions**
 
-  [Nakonfigurujte kanál SSH na vašem vývojovém počítači a IoT Edge zařízení](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes) a pak upravte `launch.json` soubor tak, aby se připojil.
+  [Nakonfigurujte kanál SSH na vašem vývojovém počítači a IoT Edge zařízení](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes) a pak upravte `launch.json` souboru, který se má připojit.
 
 - **Node.js**
 
   - Zajistěte, aby byl modul na počítači, který se má ladit, spuštěný a připravený pro ladicí program, a že je tento port 9229 přístupný externě. To můžete ověřit otevřením `http://<target-machine-IP>:9229/json` v počítači ladicího programu. Tato adresa URL by měla zobrazovat informace o modulu Node. js, který se má ladit.
   
-  - Na svém vývojovém počítači otevřete Visual Studio Code a pak ho `launch.json` upravte tak, aby byla hodnota   ***&lt;adresy vašeho názvu&gt; modulu* vzdálený ladění (Node. js)** (nebo ***&lt;název vašeho modulu Když je modul spuštěný jako kontejner Windows, vzdálený ladění (kontejner Node. js v kontejneru Windows) je IP adresa počítače, který se právě ladí. &gt;***
+  - Na svém vývojovém počítači otevřete Visual Studio Code a pak upravte `launch.json` tak, aby hodnota adresy  ***&lt;název vašeho modulu&gt;* profil vzdáleného ladění (Node. js)** (nebo  ***&lt;název modulu&gt;* vzdáleného ladění (Node. js v kontejneru Windows)** , pokud je modul spuštěný jako kontejner Windows) je IP adresa počítače, který se právě ladí.
 
 - **Java**
 
-  - Vytvořte tunel SSH na počítači, který chcete ladit spuštěním `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`.
+  - Vytvořte tunel SSH na počítači, který se má ladit spuštěním `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`.
   
-  - Na svém vývojovém počítači otevřete Visual Studio Code a upravte `launch.json`   ***&lt;profil Java (název&gt; modulu* Remote Debug)** v nástroji, abyste se mohli připojit k cílovému počítači. Další informace o úpravách `launch.json` a ladění Java pomocí Visual Studio Code najdete v části o [konfiguraci ladicího programu](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
+  - Na svém vývojovém počítači otevřete Visual Studio Code a upravte  ***&lt;profilu&gt;* vzdáleného ladění (Java)** v `launch.json`, abyste se mohli připojit k cílovému počítači. Další informace o úpravách `launch.json` a ladění Java pomocí Visual Studio Code najdete v části o [konfiguraci ladicího programu](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
 
 - **Python**
 
   - Ujistěte se, že port 5678 na počítači, který se má ladit, je otevřený a přístupný.
 
-  - V kódu `ptvsd.enable_attach(('0.0.0.0', 5678))` , který jste dříve vložili `main.py`do, změňte **0.0.0.0** na IP adresu počítače, který se má ladit. Sestavte, dosaďte a znovu nasaďte IoT Edge modul.
+  - V kódu `ptvsd.enable_attach(('0.0.0.0', 5678))`, který jste dříve vložili do `main.py`, změňte **0.0.0.0** na IP adresu počítače, který se má ladit. Sestavte, dosaďte a znovu nasaďte IoT Edge modul.
 
-  - Na svém vývojovém počítači otevřete Visual Studio Code a pak upravte `launch.json` `host` , aby hodnota   ***&lt;profilu název&gt; modulu* vzdáleného ladění (Python)** používala IP adresu cílového počítače. `localhost`místo.
+  - Na svém vývojovém počítači otevřete Visual Studio Code a pak upravte `launch.json` tak, aby `host` hodnota&lt;profil  ***&gt;* vzdáleného ladění (Python)** používá IP adresu cílového počítače namísto `localhost`.
 
 ### <a name="debug-your-module"></a>Ladit modul
 
-1. V zobrazení ladění Visual Studio Code vyberte konfigurační soubor ladění pro váš modul. Název možnosti ladění by měl být podobný   ***&lt;vašemu názvu&gt; modulu* vzdáleného ladění.**
+1. V zobrazení ladění Visual Studio Code vyberte konfigurační soubor ladění pro váš modul. Název možnosti ladění by měl být podobný  ***&lt;název modulu&gt;* vzdálené ladění.**
 
 1. Otevřete soubor modulu pro vývojový jazyk a přidejte zarážku:
 
-   - **Funkce Azure (C#)** : Přidejte do souboru `<your module name>.cs`zarážku.
-   - **C#** : Přidejte do souboru `Program.cs`zarážku.
-   - **Node.js**: Přidejte do souboru `app.js`zarážku.
-   - **Java**: Přidejte do souboru `App.java`zarážku.
-   - **Python**: Přidejte do souboru `main.py`zarážku v metodě zpětného volání, do které jste `ptvsd.break_into_debugger()` přidali řádek.
-   - **C**: Přidejte do souboru `main.c`zarážku.
+   - **Funkce Azure FunctionsC#()** : přidejte zarážku do souboru `<your module name>.cs`.
+   - **C#** : Přidejte zarážku do souboru `Program.cs`.
+   - **Node. js**: přidejte zarážku do souboru `app.js`.
+   - **Java**: přidejte zarážku do souboru `App.java`.
+   - **Python**: přidejte zarážku do souboru `main.py`v metodě zpětného volání, do které jste přidali řádek `ptvsd.break_into_debugger()`.
+   - **C**: přidejte zarážku do souboru `main.c`.
 
 1. Vyberte **Spustit ladění** nebo vyberte **F5**. Vyberte proces, ke kterému se chcete připojit.
 
 1. V zobrazení ladění Visual Studio Code uvidíte proměnné na levém panelu.
 
 > [!NOTE]
-> Předchozí příklad ukazuje, jak ladit IoT Edge moduly na kontejnerech. Do nastavení kontejneru `createOptions` vašeho modulu se přidaly vystavené porty. Po dokončení ladění modulů doporučujeme odebrat tyto vystavené porty pro moduly IoT Edge připravené pro produkční prostředí.
+> Předchozí příklad ukazuje, jak ladit IoT Edge moduly na kontejnerech. Přidali jste vystavené porty do kontejneru modulu `createOptions` nastavení. Po dokončení ladění modulů doporučujeme odebrat tyto vystavené porty pro moduly IoT Edge připravené pro produkční prostředí.
 
 ## <a name="build-and-debug-a-module-remotely"></a>Vzdálené sestavení a ladění modulu
 
@@ -358,7 +360,7 @@ Díky nedávným změnám v Docker i modulech Moby pro podporu připojení SSH a
 
 Další informace a podrobné pokyny najdete v této [položce blogu vývojář pro IoT](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po vytvoření modulu se naučíte, jak [nasadit Azure IoT Edge moduly z Visual Studio Code](how-to-deploy-modules-vscode.md).
 

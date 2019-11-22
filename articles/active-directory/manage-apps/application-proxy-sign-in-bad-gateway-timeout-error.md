@@ -1,5 +1,5 @@
 ---
-title: Nepovedlo se získat přístup k této chybě podnikové aplikace s aplikací proxy aplikace | Microsoft Docs "
+title: Nepovedlo se získat přístup k této chybě podnikové aplikace s aplikací proxy aplikace
 description: Jak řešit běžné potíže s přístupem k s aplikací Azure AD Application Proxy.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e54b54f592082ad998e1f5dfbdcb5ed30e6dc4a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381401"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275469"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Chyba "Nelze přistupovat k této podnikové aplikace" při použití aplikace Proxy aplikací
 
@@ -31,9 +31,9 @@ Tento článek pomůže při řešení běžných potíží chyba "Tato podnikov
 
 Když se zobrazí tato chyba, najdete stavový kód na chybové stránce. Tento kód je jedním z následujících stavů:
 
-- **Časový limit brány**: Služba proxy aplikací nemůže kontaktovat konektor. Tato chyba obvykle znamená potíže s přiřazením konektoru, konektor samostatně, nebo pravidel sítě kolem konektoru.
-- **Chybná brána**: Konektor nemůže získat přístup k back-endové aplikaci. Tato chyba může znamenat nesprávnou konfiguraci aplikace.
-- **Zakázáno**: Uživatel nemá oprávnění pro přístup k aplikaci. K této chybě může dojít, když uživatel není přiřazen k aplikaci v Azure Active Directory nebo pokud na back-endu uživatel nemá oprávnění pro přístup k aplikaci.
+- **Vypršel časový limit brány**: The Proxy aplikace služby se nepovedlo se kontaktovat konektoru. Tato chyba obvykle znamená potíže s přiřazením konektoru, konektor samostatně, nebo pravidel sítě kolem konektoru.
+- **Chybná brána**: konektoru se nám kontaktovat back-end aplikace. Tato chyba může znamenat nesprávnou konfiguraci aplikace.
+- **Je zakázané**: uživatel nemá oprávnění pro přístup k aplikaci. K této chybě může dojít, když uživatel není přiřazen k aplikaci v Azure Active Directory nebo pokud na back-endu uživatel nemá oprávnění pro přístup k aplikaci.
 
 Chcete-li najít kód, podívejte se na text v levé dolní části v chybové zprávě pole "Stavový kód". Podívejte se také pro všechny další tipy v dolní části stránky.
 
@@ -75,9 +75,9 @@ K ověření aplikace je přiřazený k pracovní skupině konektorů:
 1. Pokud chybného se zobrazuje skupina konektorů, pomocí rozevírací nabídky vyberte správné skupině a potvrďte, že už se nezobrazují žádné upozornění. Pokud se zobrazuje odpovídající skupinu konektorů, klikněte na upozornění otevřete stránku se správou konektoru.
 1. Tady je několik způsobů, jak zobrazit další podrobnosti:
 
-   - Přesunout aktivní konektor do skupiny: Pokud máte aktivní konektor, který by měl patřit do této skupiny a má pohled na cílovou back-end aplikaci, můžete konektor přesunout do přiřazené skupiny. Uděláte to tak, klikněte na tento konektor. V poli "Skupina konektorů" pomocí rozevíracího seznamu vyberte správnou skupinu a pak klikněte na Uložit.
-   - Stažení nového konektoru pro tuto skupinu: Na této stránce můžete získat odkaz pro [stažení nového konektoru](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Nainstalujte Connector na počítači s přístupem na dohled back-end aplikace. Konektor se obvykle nainstaluje na stejný server jako aplikace. Použijte ke stažení konektoru odkaz ke stažení konektoru na cílovém počítači. V dalším kroku klikněte na tlačítko konektoru a ujistěte se, že patří do správné skupině. pomocí "Skupina konektorů" rozevíracího seznamu.
-   - Prozkoumat neaktivní konektor: Pokud se konektor zobrazí jako neaktivní, nemůže se připojit ke službě. Tato chyba je obvykle kvůli některé požadované porty budou blokovány. Chcete-li tento problém vyřešit, přejděte na příkaz a ověřte, zda jsou povoleny všechny požadované porty.
+   - Přesunout do skupiny pro konektor služby active: Pokud máte aktivní konektor, by měly patřit do této skupiny, který má dohled cílové aplikace back-end, můžete přesunout do přiřazené skupině konektoru. Uděláte to tak, klikněte na tento konektor. V poli "Skupina konektorů" pomocí rozevíracího seznamu vyberte správnou skupinu a pak klikněte na Uložit.
+   - Stáhněte si nový konektor pro tuto skupinu: Z této stránky můžete získat odkaz na [si stáhli nový konektor](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Nainstalujte Connector na počítači s přístupem na dohled back-end aplikace. Konektor se obvykle nainstaluje na stejný server jako aplikace. Použijte ke stažení konektoru odkaz ke stažení konektoru na cílovém počítači. V dalším kroku klikněte na tlačítko konektoru a ujistěte se, že patří do správné skupině. pomocí "Skupina konektorů" rozevíracího seznamu.
+   - Prozkoumat neaktivní konektor: Pokud se konektor zobrazí jako neaktivní, se nám kontaktovat službu. Tato chyba je obvykle kvůli některé požadované porty budou blokovány. Chcete-li tento problém vyřešit, přejděte na příkaz a ověřte, zda jsou povoleny všechny požadované porty.
 
 Po použití těchto kroků zkontrolujte, že aplikace je přiřazenou ke skupině se práce konektory, otestujte aplikaci znovu spustit. Pokud stále nefunguje, pokračujte k další části.
 
@@ -103,6 +103,6 @@ Pokud budete pokračovat chybu, přejděte k počítači, kde je konektor nainst
 
 Pokud dosáhnete aplikace z tohoto počítače mají vyhledávat problémy nebo chyby se konektor sám. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](application-proxy-troubleshoot.md#connector-errors). Můžete se také podívat na protokoly konektoru a identifikovat chyby přímo. Mnohé z našich chybové zprávy mohli sdílet více konkrétní doporučení pro opravy. Zjistěte, jak zobrazit protokoly, najdete v článku [naši dokumentaci konektory](application-proxy-connectors.md#under-the-hood).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)

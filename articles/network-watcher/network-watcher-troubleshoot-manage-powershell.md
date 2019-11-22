@@ -1,5 +1,6 @@
 ---
-title: Řešení potíží s bránou a připojeními Azure Virtual Network – PowerShell | Microsoft Docs
+title: Řešení potíží s bránou virtuální sítě Azure a připojeními – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Tato stránka vysvětluje, jak používat rutinu PowerShellu pro řešení potíží s Network Watcher Azure
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163857"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277836"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher PowerShellu
 
@@ -34,7 +35,7 @@ Network Watcher poskytuje řadu možností, které se týkají porozumění sí�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
@@ -46,7 +47,7 @@ Seznam podporovaných typů bran najdete v části [podporované typy bran](netw
 
 ## <a name="retrieve-network-watcher"></a>Načíst Network Watcher
 
-Prvním krokem je načtení instance Network Watcher. Proměnná je předána `Start-AzNetworkWatcherResourceTroubleshooting` rutině v kroku 4. `$networkWatcher`
+Prvním krokem je načtení instance Network Watcher. Proměnná `$networkWatcher` je předána rutině `Start-AzNetworkWatcherResourceTroubleshooting` v kroku 4.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -60,7 +61,7 @@ V tomto příkladu Probíhá odstraňování potíží s prostředky v připojen
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Řešení potíží s prostředky vrátí data o stavu prostředku, ale také uloží protokoly do účtu úložiště, který se má zkontrolovat. V tomto kroku vytvoříme účet úložiště, pokud už existuje existující účet úložiště, který můžete použít.
 
@@ -72,10 +73,10 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Řešení potíží se spuštěním Network Watcher prostředků
 
-Pomocí `Start-AzNetworkWatcherResourceTroubleshooting` rutiny můžete řešit problémy s prostředky. Rutinu předáte objekt Network Watcher, ID připojení nebo Virtual Network bránu, ID účtu úložiště a cestu k uložení výsledků.
+Problémy s prostředky pomocí rutiny `Start-AzNetworkWatcherResourceTroubleshooting`. Rutinu předáte objekt Network Watcher, ID připojení nebo Virtual Network bránu, ID účtu úložiště a cestu k uložení výsledků.
 
 > [!NOTE]
-> `Start-AzNetworkWatcherResourceTroubleshooting` Rutina je dlouho spuštěná a dokončení může trvat několik minut.
+> Rutina `Start-AzNetworkWatcherResourceTroubleshooting` je dlouho spuštěná a dokončení může trvat několik minut.
 
 ```powershell
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"

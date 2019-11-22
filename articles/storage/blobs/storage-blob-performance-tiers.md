@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932276"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270222"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Úrovně výkonu pro úložiště objektů blob bloku
 
@@ -54,6 +54,12 @@ S ohledem na náklady poskytuje Premium Performance optimalizované ceny pro apl
 ## <a name="standard-performance"></a>Standardní výkon
 
 Standardní výkon podporuje různé [úrovně přístupu](storage-blob-storage-tiers.md) , aby bylo možné data ukládat nejefektivnějším způsobem. Je optimalizovaná pro vysokou kapacitu a vysokou propustnost u velkých datových sad.
+
+- **Datové sady pro zálohování a zotavení po havárii**. Standardní úložiště výkonu nabízí nákladově efektivní úrovně, které představují dokonalý případ použití pro krátkodobé i dlouhodobé datové sady pro zotavení po havárii, sekundární zálohování a archivaci dat dodržování předpisů.
+
+- **Mediální obsah**. K obrázkům a videím se často přistupuje často při prvním vytvoření a uložení, ale tento typ obsahu se používá méně často, jako je starší. Standardní úložiště výkonu nabízí vhodné úrovně pro potřeby mediálního obsahu. 
+
+- **Hromadné zpracování dat**. Tyto typy úloh jsou vhodné pro úložiště úrovně Standard, protože vyžadují nákladově efektivní úložiště s vysokou propustností, místo aby se shodovala s nízkou latencí. Velké a nezpracované datové sady jsou připravené ke zpracování a nakonec se migrují na úrovně chladicích souborů.
 
 ## <a name="migrate-from-standard-to-premium"></a>Migrace z úrovně Standard na Premium
 

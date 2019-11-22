@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s konfiguracemi omezeného delegování protokolu Kerberos pro proxy aplikací | Microsoft Docs
+title: Řešení potíží s vynuceným delegováním protokolu Kerberos – proxy aplikací
 description: Řešení potíží s konfigurace omezeného delegování protokolu Kerberos pro Proxy aplikací
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381519"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275684"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikací
 
@@ -56,11 +56,11 @@ Nejlepším místem pro umístění konektory je co nejblíže k svých cílů. 
 
 Co se zobrazí KCD problém? Existuje několik běžných označení, které se nedaří KCD jednotného přihlašování. První příznaky problému se zobrazí v prohlížeči.
 
-![Příklad: Chyba konfigurace nesprávné KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![Příklad: nesprávná chyba konfigurace KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
-![Příklad: Ověření se nezdařilo z důvodu chybějící oprávnění](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
+![Příklad: autorizace se nezdařila z důvodu chybějících oprávnění.](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Oba tyto obrázky obsahují stejný příznak: Chyba jednotného přihlašování Byl odepřen přístup uživatelů k aplikaci.
+Obě tyto Image zobrazit stejný příznak: selhání jednotného přihlašování. Byl odepřen přístup uživatelů k aplikaci.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -84,7 +84,7 @@ Externí komunikace mezi klientem a front-endu Azure na KCD mít žádný vliv. 
 
 Jak už bylo zmíněno dříve, chybové zprávy prohlížeče poskytuje některé dobré příčiny o proč věci selže. Nezapomeňte si poznamenejte si ID aktivity a časové razítko v odpovědi. Tyto informace vám korelaci chování na skutečné události v protokolu událostí Proxy služby Azure.
 
-![Příklad: Chyba konfigurace nesprávné KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
+![Příklad: nesprávná chyba konfigurace KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
 Odpovídající položky v protokolu událostí se zobrazí jako události 13019 nebo 12027. Konektor protokolů událostí v **protokoly aplikací a služeb** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt;  **Konektor** &gt; **správce**.
 
@@ -168,6 +168,6 @@ Pokud stále nemůžete provádět průběh, může vám pomůže podporu Micros
 - Proxy aplikací Azure vyžádá lístek protokolu Kerberos před odesláním jeho žádost do aplikace. Některé aplikace od jiných výrobců nezpůsobují tuto metodu ověřování. Tyto aplikace můžete očekávat konvenčnější jednání uskutečnit. První požadavek je anonymní, což umožňuje, aby aplikace reagovat s typy ověřování, podporuje prostřednictvím zobrazuje chyba 401.
 - Ověřování s více segmenty směrování se běžně používá ve scénářích kde vrstvenou aplikaci s front-endu a back-endu kde vyžadují ověřování, jako je SQL Server Reporting Services. Pokud chcete nakonfigurovat scénář s více segmenty směrování, přečtěte si článek podpora [omezeného delegování protokolu Kerberos ve scénářích s více segmenty směrování může vyžadovat přechod protokolu](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Konfigurace KCD ve spravované doméně](../../active-directory-domain-services/deploy-kcd.md).

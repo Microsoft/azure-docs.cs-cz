@@ -1,6 +1,7 @@
 ---
-title: Skupiny zabezpečení sítě Azure visualizing protokolů toku s využitím Power BI | Dokumentace Microsoftu
-description: Tato stránka popisuje, jak vizualizace protokolů toku NSG s Power BI.
+title: Vizualizace protokolů toku Azure NSG – Power BI
+titleSuffix: Azure Network Watcher
+description: Tato stránka popisuje, jak vizualizovat protokoly toku NSG pomocí Power BI.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,116 +15,116 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05378799dd77a17b69adbcf492af2e1cb1030375
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860768"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277733"
 ---
-# <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Skupina zabezpečení sítě visualizing protokolů toku s využitím Power BI
+# <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Vizualizace protokolů toku skupin zabezpečení sítě pomocí Power BI
 
-Protokoly toku skupin zabezpečení sítě umožňují zobrazit informace o příchozí a odchozí přenosy na skupiny zabezpečení sítě. Tok tyto protokoly zobrazení odchozí a příchozí toků na základě pravidel za NIC toku se vztahuje na, 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový Port, protokol), a pokud provoz byl povolen nebo odepřen.
+Protokoly toku skupin zabezpečení sítě umožňují zobrazit informace o příchozích a odchozích přenosech IP adres ve skupinách zabezpečení sítě. Tyto protokoly toku ukazují odchozí a příchozí toky pro každé pravidlo. síťové rozhraní, ke kterému se tok vztahuje, je 5 – informace o toku (zdrojová nebo cílová IP adresa, zdrojový/cílový port, protokol) a pokud byl provoz povolen nebo odepřen.
 
-Může být obtížné získat přehled o datech protokolování tok tak, že ručně soubor protokolu. V tomto článku zajišťuje řešení k vizualizaci protokolů toku s vaší aktuální a další informace o provozu v síti.
+Může být obtížné získat přehledy o datech protokolování, a to ručním prohledáváním souborů protokolu. V tomto článku poskytujeme řešení pro vizualizaci nejaktuálnějších protokolů toků a další informace o provozu ve vaší síti.
 
 > [!Warning]  
-> Následující postup fungovat s verzí protokolů toku 1. Podrobnosti najdete v tématu [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Postupujte podle následujících pokynů nebude fungovat s verzí 2 soubory protokolů, bez jakýchkoli úprav.
+> Následující kroky fungují s protokoly toku verze 1. Podrobnosti najdete v tématu [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Následující pokyny nebudou fungovat s verzí 2 souborů protokolu bez úprav.
 
 ## <a name="scenario"></a>Scénář
 
-V následujícím scénáři jsme Power BI desktopu připojit k účtu úložiště, který jsme nakonfigurovali jako jímka pro naše data NSG Flow protokolování. Poté, co nám připojit se k naší účet úložiště, Power BI soubory ke stažení a analyzuje protokoly a poskytují vizuální znázornění provoz, který je protokolován podle skupin zabezpečení sítě.
+V následujícím scénáři připojíme Power BI plochu k účtu úložiště, který jsme nakonfigurovali jako jímku pro naše data protokolování toku NSG. Po připojení k našemu účtu úložiště Power BI stáhne a analyzuje protokoly, aby poskytovaly vizuální znázornění přenosů protokolovaných skupinami zabezpečení sítě.
 
-Pomocí zadané v šabloně, kterou můžete prozkoumat vizuály:
+Pomocí vizuálů dodaných v šabloně můžete prozkoumávat:
 
-* Hlavní vyjádření
-* Data toku Time Series podle směru a rozhodnutí pravidel
-* Toky podle adres MAC síťového rozhraní
-* Toky podle NSG a pravidel
+* Hlavní rozhovory
+* Data toku časových řad podle směru a rozhodnutí o pravidle
+* Toky podle adresy MAC síťového rozhraní
+* Toky podle NSG a rule
 * Toky podle cílového portu
 
-Šablony, kterou lze upravit, můžete ho upravit tak, že nová data, vizuály, přidat nebo upravit dotazy tak, aby odpovídala vašim potřebám.
+Poskytnutá šablona je upravitelná, takže ji můžete upravovat, abyste mohli přidat nová data, vizuály nebo upravit dotazy tak, aby vyhovovaly vašim potřebám.
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 
-Než začnete, musíte mít síťové zabezpečení skupiny tok protokolování povoleno na jeden nebo více skupin zabezpečení sítě ve vašem účtu. Pokyny k povolení protokolů toku zabezpečení sítě najdete v následujícím článku: [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+Než začnete, musíte mít povolené protokolování toku skupin zabezpečení sítě v jedné nebo několika skupinách zabezpečení sítě ve vašem účtu. Pokyny k povolení protokolů toku zabezpečení sítě najdete v následujícím článku: [Úvod do protokolování toku pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
-Také musíte mít nainstalovaného na vašem počítači a dostatek volného místa na vašem počítači ke stažení a načíst data protokolu, který existuje ve vašem účtu úložiště klienta Power BI Desktopu.
+Musíte mít také nainstalovaného klienta Power BI Desktop v počítači a dostatek volného místa na svém počítači ke stažení a načtení dat protokolu, která existují v účtu úložiště.
 
 ![Diagram Visia][1]
 
 ### <a name="steps"></a>Kroky
 
-1. Stáhnout a otevřít následující šablony Power BI v aplikaci Power BI Desktopu [protokoly toku Network Watcher PowerBI šablony](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
-1. Zadejte požadované parametry dotazu
-   1. **StorageAccountName** – Určuje, že název účtu úložiště obsahující protokoly toků NSG, které chcete načíst a vizualizace.
-   1. **NumberOfLogFiles** – určuje počet souborů protokolů, které chcete stáhnout a vizualizace v Power BI. Pokud je zadán 50, například 50 nejnovějších souborů protokolu. Pokud budeme mít 2 skupin zabezpečení sítě povolené a nakonfigurované k odeslání protokolů toku NSG k tomuto účtu, můžete zobrazit posledních 25 hodin protokolů.
+1. Stáhněte a otevřete následující šablonu Power BI v šabloně Power BI Desktop aplikace [Network Watcher šablona protokolů Flow PowerBI](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
+1. Zadejte požadované parametry dotazu.
+   1. **StorageAccountName** – Určuje název účtu úložiště obsahujícího protokoly toku NSG, které chcete načíst a vizualizovat.
+   1. **NumberOfLogFiles** – určuje počet souborů protokolu, které byste chtěli stáhnout a vizualizovat v Power BI. Například, pokud je zadána 50, soubor posledních protokolů 50. Pokud máme 2 skupin zabezpečení sítěy povolené a nakonfigurované pro odesílání protokolů NSG Flow do tohoto účtu, můžete si prohlédnout posledních 25 hodin protokolů.
 
-      ![hlavní Power BI][2]
+      ![Power BI – hlavní][2]
 
-1. Zadejte přístupový klíč účtu úložiště. Platné přístupové klíče můžete najít tak, že přejdete do účtu úložiště v Azure portal a potom zvolíte **přístupové klíče** z nabídky nastavení. Klikněte na tlačítko **připojit** pak použít změny.
+1. Zadejte přístupový klíč pro váš účet úložiště. Platné přístupové klíče můžete najít tak, že přejdete na svůj účet úložiště v Azure Portal a vyberete **přístupové klíče** z nabídky nastavení. Klikněte na **připojit** a pak použít změny.
 
-    ![Přístupové klíče][3]
+    ![přístupové klíče][3]
 
     ![přístupový klíč 2][4]
 
-4. Protokoly jsou stáhnout a analyzovat a mohou nyní využívat předem vytvořených vizuálů.
+4. Vaše protokoly se stahují a analyzují a teď můžete využít předem vytvořené vizuály.
 
-## <a name="understanding-the-visuals"></a>Principy vizuály
+## <a name="understanding-the-visuals"></a>Princip vizuálů
 
-Součástí šablony jsou sadu vizuálů, které pomáhají smysl protokolů toku NSG. Následující obrázky znázorňují vzorek vypadá řídicí panel, když naplněný daty. Níže najdete Zkoumáme, každý vizuál podrobněji 
+V šabloně jsou k dispozici sady vizuálů, které vám pomůžou vydávat smysl dat protokolu toku NSG. Následující obrázky znázorňují ukázku toho, jak řídicí panel vypadá po naplnění daty. Níže podíváme se na každý vizuál podrobněji. 
 
-![powerbi][5]
+![Power BI][5]
  
-Ukazuje visual horní vyjádření zadané IP adresy, které inicializovali většina připojení za období. Velikost pole odpovídá relativní počet připojení. 
+Vizuál v horních rozhovorech zobrazuje IP adresy, které iniciují nejvíc připojení za zadané období. Velikost polí odpovídá relativnímu počtu připojení. 
 
 ![toptalkers][6]
 
-Následující grafy řady času zobrazit počet toků za období. Horní grafu je segmentované podle směr toku a čím nižší je segmentované podle rozhodnutí provedli (povolit nebo zakázat). Se tímto vizuálem můžete prozkoumat trendy váš provoz v průběhu času a přímé všechny neobvyklé špičky nebo odmítnout v provozu nebo provozu segmentace.
+Následující grafy časových řad zobrazují počet toků v průběhu období. Horní graf je rozdělen podle směru toku a nižší je rozdělen podle rozhodnutí učiněného (povolit nebo odepřít). V tomto vizuálu můžete sledovat trendy provozu v průběhu času a zabývat se případnými neobvyklými špičkami nebo poklesem provozu nebo segmentace provozu.
 
 ![flowsoverperiod][7]
 
-Následující grafy zobrazit toků na síťové rozhraní s horní segmentované podle směr toku a nižší segmentované podle rozhodnutí provedli. Tyto informace můžete získat přehled o které z vašich virtuálních počítačů předány nejvíce relativně k ostatním, a pokud se přenosy konkrétnímu virtuálnímu počítači povolený nebo zakázaný.
+Následující grafy znázorňují toky pro každé síťové rozhraní s horním segmentem podle směru toku a dolní segmentace podle toho, jaké rozhodnutí bylo provedeno. Pomocí těchto informací můžete získat přehled o tom, které virtuální počítače budou co nejvíc informovat s ostatními, a jestli je provoz na konkrétním virtuálním počítači povolený nebo zakázaný.
 
 ![flowspernic][8]
 
-Následující kolečko prstencový graf zobrazuje přehled toky podle cílového portu. Pomocí těchto informací můžete zobrazit nejčastěji používané cílové porty používané v tomto stanoveném období.
+Následující graf prstence znázorňuje rozdělení toků podle cílového portu. Pomocí těchto informací můžete zobrazit nejčastěji používané cílové porty používané v zadaném období.
 
-![Prstencový][9]
+![prstencový][9]
 
-Následující pruhový graf znázorňuje tok podle NSG a pravidel. Pomocí těchto informací uvidíte zodpovědná za největším provozem a rozdělení provozu skupiny Nsg na skupinu zabezpečení sítě pravidlem.
+Následující pruhový graf znázorňuje tok podle NSG a rule. S těmito informacemi můžete vidět skupin zabezpečení sítě zodpovědný za většinu provozu a rozpis provozu na NSG podle pravidla.
 
 ![barchart][10]
  
-Následující informační grafy se zobrazují informace o skupinách Nsg v protokoly toků zachytávaných v průběhu doby a datum protokolu nejdřívější zachytit. Tyto informace vám napoví, jaké skupiny zabezpečení sítě jsou zaznamenána a rozsah toků.
+V následujících informativních grafech se zobrazují informace o skupin zabezpečení sítě, které jsou k dispozici v protokolech, počtu toků zachycených za období a datu dřívějšího zaznamenaného protokolu. Tyto informace vám poskytnou představu o tom, co skupin zabezpečení sítě se protokoluje, a rozsah dat toků.
 
 ![infochart1][11]
 
 ![infochart2][12]
 
-Tato šablona obsahuje následující průřezů, aby bylo možné zobrazit pouze data, která vás nejvíce zajímají. Můžete filtrovat podle skupin prostředků, skupin zabezpečení sítě a pravidel. Můžete také filtrovat podle informace 5 řazené kolekce členů, rozhodnutí a čas, kdy protokol byl zapsán.
+Tato šablona obsahuje následující průřezy, které vám umožní zobrazit jenom data, která vás zajímají. Můžete filtrovat podle svých skupin prostředků, skupin zabezpečení sítě a pravidel. Můžete také filtrovat 5 – informace o řazené kolekci členů, rozhodnutí a čas, kdy byl protokol napsán.
 
 ![průřezy][13]
 
 ## <a name="conclusion"></a>Závěr
 
-Jsme ukázali v tomto případě, že používáte protokoly toku skupin zabezpečení sítě tak, že sledovací proces sítě a Power BI k dispozici, jsme schopní vizualizace a pochopení provoz. Power BI pomocí poskytnuté šabloně, stáhne protokoly přímo ze služby storage a zpracuje je místně. Čas potřebný k načtení šablony se liší v závislosti na počtu požadované soubory a stáhnout celková velikost souborů.
+V tomto scénáři jsme ukázali, že pomocí protokolů toku skupiny zabezpečení sítě, které poskytuje Network Watcher a Power BI, jsme schopni vizualizovat a pochopit provoz. Pomocí zadané šablony Power BI stáhne protokoly přímo z úložiště a zpracuje je místně. Doba potřebná k načtení šablony se liší v závislosti na počtu požadovaných souborů a celkové velikosti stahovaných souborů.
 
-Nebojte se, že jste tuto šablonu pro vaše potřeby přizpůsobit. Existuje mnoho mnoho způsobů, že můžete používat Power BI s provádění příkazu tok protokoly skupiny zabezpečení sítě. 
+Tuto šablonu si můžete přizpůsobit podle svých potřeb. Existuje mnoho způsobů, jak můžete použít Power BI s protokoly toku skupin zabezpečení sítě. 
 
-## <a name="notes"></a>Poznámky
+## <a name="notes"></a>Poznámky:
 
-* Protokoly ve výchozím nastavení se ukládají v `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
+* Protokoly ve výchozím nastavení jsou uloženy v `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 
-    * Pokud existují další data v jiném adresáři, dotazy, které o přijetí změn a zpracovávat je nutné upravit.
+    * Pokud jiná data existují v jiném adresáři, dotazy na vyžádání a zpracování dat musí být upraveny.
 
-* Zadaná šablona není doporučeno používat s více než 1 GB protokolů.
+* Poskytnutá šablona se nedoporučuje používat s více než 1 GB protokolů.
 
-* Pokud máte velké množství protokoly, doporučujeme, aby měli prošetřit řešení pomocí jiného úložiště dat, jako je Data Lake nebo SQL server.
+* Pokud máte velké množství protokolů, doporučujeme prozkoumat řešení pomocí jiného úložiště dat, jako je Data Lake nebo SQL Server.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak vizualizovat vaše protokoly toků NSG pomocí řešení Elastic Stack návštěvou [vizualizovat Azure Network Watcher NSG protokolů toku s využitím opensourcových nástrojů](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Naučte se vizualizovat protokoly toku NSG pomocí elastického zásobníku tím, že navštívíte [vizualizace Azure Network WATCHER NSG Flow log pomocí nástrojů Open Source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) .
 
 [1]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure1.png
 [2]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure2.png

@@ -1,6 +1,6 @@
 ---
 title: Archivace metrik Azure a dat protokolů s použitím Azure Storage
-description: Archivujte data protokolů a metrik vygenerovaná v rámci Azure do účtu úložiště.
+description: Archivujte data protokolu a metriky vygenerované prostředky Azure do účtu úložiště.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: e784b76af478f834a7d1104650da1cbd3ca2a31f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60552833"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304699"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
@@ -38,9 +38,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorování budou archivovat. Provedete to [podle těchto kroků](../../storage/common/storage-quickstart-create-account.md).
 
@@ -86,7 +86,7 @@ Teď nakonfigurujeme směrování dat na úrovni prostředku (metriky prostředk
 
    ![Část Nastavení diagnostiky](media/tutorial-archive-data/diagnostic-settings-home.png)
 
-4. Klikněte na tlačítko **Konfigurovat** pod možností **Archivovat do účtu úložiště** a vyberte účet úložiště, který jste vytvořili v předchozí části. Klikněte na **OK**.
+4. Klikněte na tlačítko **Konfigurovat** pod možností **Archivovat do účtu úložiště** a vyberte účet úložiště, který jste vytvořili v předchozí části. Klikněte na tlačítko **OK**.
 
    ![Nastavení diagnostiky – účet úložiště](media/tutorial-archive-data/diagnostic-settings-storage.png)
 
@@ -96,14 +96,14 @@ Teď nakonfigurujeme směrování dat na úrovni prostředku (metriky prostředk
 
 6. Nastavte posuvník **Doba uchování (dny)** na hodnotu 30. Tento posuvník nastavuje počet dnů, po který se mají data monitorování uchovávat v účtu úložiště. Azure Monitor automaticky odstraní data starší než zadaný počet dnů. Pokud jako dobu uchování nastavíte 0 dnů, data se uloží navždy.
 
-7. Klikněte na **Uložit**.
+7. Klikněte na možnost **Uložit**.
 
 Data monitorování z vašeho prostředku se teď přenášejí do účtu úložiště.
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
-> *Například*: Metrika 'Příchozí zprávy' v Centru událostí můžete prozkoumat a převést na graf úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
+> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
 >
 
@@ -137,14 +137,14 @@ Data monitorování z vašeho prostředku se teď přenášejí do účtu úlož
 
 9. V části, která se zobrazí, vyberte účet úložiště, který jste vytvořili v předchozím kroku **Vytvoření účtu úložiště**.
 
-10. Klikněte na **Uložit**.
+10. Klikněte na možnost **Uložit**.
 
 Data monitorování z vašich virtuálních počítačů se teď přenášejí do účtu úložiště.
 
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Zobrazení dat monitorování v účtu úložiště
 
 > [!WARNING]
-> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
+> 1\. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
 >
 > 
 
@@ -182,7 +182,7 @@ Právě jste úspěšně nastavili archivaci dat monitorování do účtu úlož
 
 5. Pokud jste v předchozích krocích vytvořili virtuální počítač nebo aplikaci logiky, odstraňte je také.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak nastavit archivaci dat monitorování z vašeho prostředí Azure (předplatné, prostředek a hostovaný operační systém) do účtu úložiště.
 

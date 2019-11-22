@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717992"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307354"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
@@ -156,7 +156,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Spuštění aplikace a vygenerování testovacích dat událostí
 
-[Ukázky na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) pro službu Event Hubs zahrnují [aplikaci detektoru anomálií](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector), která generuje testovací data za vás. Simuluje používání platebních karet tím, že do centra událostí zapisuje transakce provedené platebními kartami. Zároveň občas pro jednu platební kartu zapíše několik transakcí v několika oblastech, aby se označily jako anomálie. Pokud chcete tuto aplikaci spustit, postupujte následovně: 
+[Ukázky na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) pro službu Event Hubs zahrnují [aplikaci detektoru anomálií](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector), která generuje testovací data za vás. Simuluje používání platebních karet tím, že do centra událostí zapisuje transakce provedené platebními kartami. Zároveň občas pro jednu platební kartu zapíše několik transakcí v několika oblastech, aby se označily jako anomálie. Pokud chcete tuto aplikaci spustit, postupujte následovně: 
 
 1. Z GitHubu si stáhněte [ukázky pro službu Azure Event Hubs](https://github.com/Azure/azure-event-hubs/archive/master.zip) a místně je rozbalte.
 
@@ -217,7 +217,7 @@ Vstupy pro úlohu Stream Analytics jsou transakce provedené platebními kartami
 
    ![Snímek obrazovky předvádějící přidání vstupního datového proudu do úlohy Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. Klikněte na **Uložit**.
+5. Klikněte na možnost **Uložit**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
@@ -239,7 +239,7 @@ Vstupy pro úlohu Stream Analytics jsou transakce provedené platebními kartami
 
 4. Pro zbývající pole můžete použít výchozí hodnoty.
 
-5. Klikněte na **Uložit**.
+5. Klikněte na možnost **Uložit**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
@@ -268,7 +268,7 @@ Tento dotaz slouží k načtení dat, která se nakonec odešlou do vizualizace 
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Klikněte na **Uložit**.
+4. Klikněte na možnost **Uložit**.
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>Test dotazu pro úlohu Stream Analytics 
 

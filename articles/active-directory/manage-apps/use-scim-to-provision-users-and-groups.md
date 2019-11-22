@@ -1,5 +1,5 @@
 ---
-title: SCIM zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs
+title: Automatizace zřizování aplikací pomocí SCIM ve službě Azure AD
 description: Naučte se sestavovat koncový bod SCIM, integrovat rozhraní SCIM API pomocí Azure Active Directory a začít automatizovat zřizování uživatelů a skupin do svých aplikací.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8bb9b507763c935ab244c42584120a279063954
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 1d4694dfa92d282e1dc098a510ac82dd9c703c1e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195457"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276490"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>Zřizování uživatelů SCIM pomocí Azure Active Directory (Azure AD)
 
@@ -68,7 +68,7 @@ Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže
 | pracovní funkce |Název |
 | e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
-| manažer |manažer |
+| Správce |Správce |
 | Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
 | ID objektu |ID |
 | PSČ |.postalCode adresy [typ eq "pracovní"] |
@@ -433,7 +433,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-#### <a name="delete-user"></a>Odstranit uživatele
+#### <a name="delete-user"></a>Odstranění uživatele
 
 ##### <a name="request-6"></a>Request
 
@@ -602,7 +602,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *HTTP/1.1 204 bez obsahu*
 
-#### <a name="delete-group"></a>Odstranit skupinu
+#### <a name="delete-group"></a>Odstranění skupiny
 
 ##### <a name="request-13"></a>Request
 

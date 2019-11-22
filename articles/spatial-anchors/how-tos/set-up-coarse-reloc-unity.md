@@ -1,5 +1,5 @@
 ---
-title: Jak vytvořit a najít kotvy pomocí senzorů na zařízení v C# | Microsoft Docs
+title: Hrubá lokální v Unity
 description: Podrobné vysvětlení způsobu vytváření a hledání kotev pomocí senzorů zařízení v C#nástroji.
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 409eb2e6bb9d77ac7a204fe119d9a73cc493933f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 8b960ee168a1af66cafc52082138097cda240c9a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093122"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277174"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-c"></a>Jak vytvořit a umístit kotvy pomocí senzorů na zařízení vC#
 

@@ -5,14 +5,14 @@ author: musa-57
 ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/21/2019
 ms.author: hamusa
-ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 12f8f64c051d33ac2518edbe8b937521318a9e71
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970640"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284504"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -88,8 +88,8 @@ Odstranění projektu ve starší verzi Azure Migrate:
 ### <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
 
 Přejděte do pracovního prostoru Log Analytics připojeného k projektu.
-* Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v **Essentials** > **Server Assessment**.
-       @no__t – pracovní prostor 0LA @ no__t-1
+* Pokud jste neodstranili Azure Migrate projekt, najdete odkaz na pracovní prostor v **Essentials** > **Server Assessment**.
+       Pracovní prostor ![LA](./media/troubleshooting-general/loganalytics-workspace.png)
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -108,11 +108,11 @@ Při vytváření projektu může tato chyba znamenat, že nemáte přístup k t
 
 Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF", udělejte toto:
 
-1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Další informace](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
+1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Další informace](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware) Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
 2. Pokud se nasazení stále nedaří a k nasazení souboru OVF používáte klienta VMware vSphere, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení ještě neproběhne úspěšně, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi:
    - Připojte se k hostiteli ESXi přímo (místo vCenter Server) pomocí webového klienta (https://<*IP adresa hostitele*>/UI).
-   - V @no__t**inventáře** **domácích**-1 vyberte **soubor** > **nasadit šablonu OVF**. Přejděte k VAJÍČKám a dokončete nasazení.
+   - V > **inventáře** **domů** vyberte **soubor** > **nasadit šablonu OVF**. Přejděte k VAJÍČKám a dokončete nasazení.
 4. Pokud se nasazení stále nedaří, obraťte se na podporu Azure Migrate.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>Zařízení se nemůže připojit k Internetu.
@@ -178,7 +178,7 @@ Chyba 60028: zjišťování nelze iniciovat z důvodu chyby. Operace se pro zada
 
 ## <a name="fix-azure-ad-operation-failed-60025"></a>Oprava: operace Azure AD se nezdařila (60025)
 
-Chyba 60025: operace Azure AD se nezdařila. K chybě při vytváření nebo aktualizaci aplikace Azure AD dojde v případě, že se uživatelský účet Azure, který se používá k zahájení zjišťování, liší od účtu použitého k registraci zařízení. Proveďte jednu z následujících akcí:
+Chyba 60025: operace Azure AD se nezdařila. K chybě při vytváření nebo aktualizaci aplikace Azure AD dojde v případě, že se uživatelský účet Azure, který se používá k zahájení zjišťování, liší od účtu použitého k registraci zařízení. Proveďte jednu z těchto akcí:
 
 - Ujistěte se, že uživatelský účet, který spouští zjišťování, je stejný jako ten, který se používá k registraci zařízení.
 - Zadejte Azure Active Directory oprávnění k přístupu k aplikacím pro uživatelský účet, pro který se operace zjišťování nedaří.
@@ -201,7 +201,7 @@ Pokud jste nasadili zařízení, které nepřetržitě hledá vaše místní pro
 - Data zjišťování shromážděná zařízením zabírají až 30 minut, než se na portálu projeví.
 - Pokud nevidíte aktuální informace po 30 minutách, aktualizujte data pomocí následujících kroků:
 
-    1. Na **serverech** > **Azure Migrate posouzení serveru**vyberte **Přehled**.
+    1. V > servery **Azure Migrate posouzení serveru**vyberte **Přehled**.
     2. V části **Spravovat**vyberte **Agent Health**
     3. Vyberte **aktualizovat agenta**.
     1. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
@@ -211,7 +211,7 @@ Pokud jste nasadili zařízení, které nepřetržitě hledá vaše místní pro
 - Data zjišťování shromážděná zařízením zabírají až 30 minut, než se na portálu projeví.
 - Pokud nevidíte aktuální informace po 30 minutách, aktualizujte data pomocí následujících kroků:
 
-    1. Na **serverech** > **Azure Migrate posouzení serveru**vyberte **Přehled**.
+    1. V > servery **Azure Migrate posouzení serveru**vyberte **Přehled**.
     2. V části **Spravovat**vyberte **Agent Health**
     3. Vyberte **aktualizovat agenta**.
     1. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
@@ -226,9 +226,34 @@ Chyba 50004: Nelze se připojit k hostiteli nebo clusteru, protože název serve
     1. Otevřete Poznámkový blok jako správce.
     2. Otevřete soubor C:\Windows\System32\Drivers\etc\hosts.
     3. Přidejte IP adresu a název hostitele do řádku. Opakujte pro každého hostitele nebo cluster, kde se zobrazí tato chyba.
-    4. Uložte a zavřete soubor Hosts.
+    4. Uložte a zavřete soubor hostitelů.
     5. Ověřte, jestli se zařízení může připojit k hostitelům pomocí aplikace pro správu zařízení. Po 30 minutách byste měli vidět nejnovější informace pro tyto hostitele v Azure Portal.
 
+## <a name="application-discovery-issues"></a>Problémy se zjišťováním aplikací
+
+Zjišťování aplikací je v současné době podporováno pouze pro virtuální počítače VMware. Podpora virtuálních počítačů Hyper-V a fyzických serverů bude v budoucnu povolená. Zjišťování aplikací vyžaduje zadání přihlašovacích údajů k virtuálnímu počítači v zařízení. Přečtěte si další informace o přístupových oprávněních potřebných pro vCenter Server a pro virtuální počítače VMware. Zjišťování může selhat z důvodu některého z následujících problémů, přečtěte si prosím doporučený postup, jak je uvedeno níže, a problém vyřešte:
+
+**Kód chyby:** | **Zpráva** | **Možná příčina** | **Doporučená akce**
+--- | --- | --- | ---
+10000 | Nelze zjistit aplikace nainstalované na serveru. | K tomu může dojít v případě, že operační systém spuštěný na serveru není ani Windows ani Linux. | Zjišťování nainstalovaných aplikací je podporováno pouze pro servery se systémy Windows a Linux.
+10001 | Nepovedlo se načíst aplikace nainstalovaná na serveru. | Důvodem je interní chyba, protože v zařízení chybí nějaké soubory. | Kontaktujte prosím podpora Microsoftu.
+10002 | Nepovedlo se načíst aplikace nainstalovaná na serveru. | K tomu může dojít, pokud agent zjišťování v zařízení Azure Migrate nepracuje správně. | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
+10003 | Nepovedlo se načíst aplikace nainstalovaná na serveru. | K tomu může dojít, pokud agent zjišťování nepracuje správně. | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
+10004 | Nepovedlo se zjistit nainstalované aplikace pro < počítače > Windows/Linux. |  Přihlašovací údaje pro přístup k < počítačům > Windows/Linux nebyly v zařízení Azure Migrate k dispozici. | Přidejte prosím přihlašovací údaje do zařízení Azure Migrate, které má přístup k <m počítačům se systémem Windows/Linux >.
+10005 | Nepovedlo se získat přístup k místnímu serveru. | K tomu může dojít, pokud přihlašovací údaje zadané pro počítač pro přístup k serveru nejsou správné. | Aktualizujte prosím přihlašovací údaje, které jste zadali v zařízení, a ujistěte se, že je server přístupný pomocí přihlašovacích údajů.
+10006 | Nepovedlo se získat přístup k místnímu serveru. | K tomu může dojít v případě, že operační systém spuštěný na serveru není ani Windows ani Linux. | Zjišťování nainstalovaných aplikací je podporováno pouze pro servery se systémy Windows a Linux.
+9000 | Nepovedlo se zjistit aplikace nainstalované na virtuálním počítači. | Nástroje VMware pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Nainstalujte nebo přeinstalujte nástroje VMware na virtuálním počítači a ověřte, jestli je spuštěný.
+9001 | Nepovedlo se zjistit aplikace nainstalované na virtuálním počítači. | Nástroje VMware pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Nainstalujte nebo přeinstalujte nástroje VMware na virtuálním počítači a ověřte, jestli je spuštěný.
+9002 | Nepovedlo se zjistit aplikace nainstalované na virtuálním počítači. | Nástroje VMware pravděpodobně nejsou spuštěny. | Nainstalujte nebo přeinstalujte nástroje VMware na virtuálním počítači a ověřte, jestli je spuštěný.
+9003 | Nelze zjistit aplikace nainstalované na serveru. | K tomu může dojít v případě, že operační systém spuštěný na serveru není ani Windows ani Linux. | Zjišťování nainstalovaných aplikací je podporováno pouze pro servery se systémy Windows a Linux.
+9004 | Nelze zjistit aplikace nainstalované na serveru. | K tomu může dojít v případě, že je virtuální počítač vypnutý. | Pokud chcete zjistit nainstalované aplikace na serveru, ujistěte se, že je virtuální počítač zapnutý.
+9005 | Nepovedlo se zjistit aplikace nainstalované na virtuálním počítači. | K tomu může dojít v případě, že operační systém, který běží na virtuálním počítači, není Windows ani Linux. | Zjišťování nainstalovaných aplikací je podporováno pouze pro servery se systémy Windows a Linux.
+9006 | Nepovedlo se načíst aplikace nainstalovaná na serveru. | K tomu může dojít, pokud agent zjišťování nepracuje správně. | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
+9007 | Nepovedlo se načíst aplikace nainstalovaná na serveru. | K tomu může dojít, pokud agent zjišťování nepracuje správně. | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
+9008 | Nepovedlo se načíst aplikace nainstalovaná na serveru. | K tomuto problému může dojít z důvodu vnitřní chyby.  | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
+9009 | Nepovedlo se načíst aplikace nainstalovaná na serveru. | K tomuto problému může dojít v případě, že nastavení řízení uživatelských účtů (UAC) systému Windows na serveru jsou omezující a znemožňuje zjišťování nainstalovaných aplikací. | Vyhledejte nastavení řízení uživatelských účtů na serveru a nakonfigurujte nastavení nástroje řízení uživatelských účtů na serveru tak, aby bylo na jednom z nižších dvou úrovní.
+9010 | Nepovedlo se načíst aplikace nainstalovaná na serveru. | K tomuto problému může dojít z důvodu vnitřní chyby.  | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
+8084 | Kvůli chybě VMware se nepovedlo zjistit aplikace: <Exception from VMware> | Zařízení Azure Migrate používá rozhraní API VMware ke zjišťování aplikací. K tomuto problému může dojít z důvodu výjimky vyvolané vCenter Server při pokusu o zjišťování aplikací. Zpráva o chybě z VMware se zobrazí v chybové zprávě zobrazené na portálu. | Projděte si [dokumentaci k VMware](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), vyhledejte zprávu o chybě a opravte problém podle kroků v článku věnovaném řešení potíží v článku VMware. Pokud stále nemůžete tento problém vyřešit, je třeba získat podpora Microsoftu.
 
 
 ## <a name="fix-assessment-readiness"></a>Oprava připravenosti na posouzení
@@ -321,19 +346,17 @@ Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místníc
 - Pokud chcete vybrat špičku pro období a nechcete vyznačit žádné z nich, měli byste vybrat 99 percentil pro využití percentilu.
 
 
-
 ## <a name="i-cant-find-dependency-visualization-for-azure-government"></a>Nemohu najít vizualizaci závislostí pro Azure Government
 
 Azure Migrate závisí na Service Map funkce Vizualizace závislostí. Protože Service Map v tuto chvíli není v Azure Government k dispozici, tato funkce není v Azure Government dostupná.
 
 ## <a name="dependencies-dont-show-after-installing-agents"></a>Po instalaci agentů se nezobrazují závislosti
 
-
 Po instalaci agentů Vizualizace závislostí na místní virtuální počítače Azure Migrate k zobrazení závislostí na portálu obvykle trvá 15-30 minut. Pokud jste čekali na více než 30 minut, ujistěte se, že Microsoft Monitoring Agent (MMA) se může připojit k pracovnímu prostoru Log Analytics.
 
 Pro virtuální počítače s Windows:
 1. V Ovládacích panelech spusťte MMA.
-2. Ve **vlastnostech Microsoft Monitoring Agent** > **Azure Log Analytics (OMS)** zkontrolujte, zda je **stav** pracovního prostoru zelený.
+2. Ve **vlastnostech Microsoft Monitoring Agent** > **Azure Log Analytics (OMS)** zkontrolujte, že je **stav** pracovního prostoru zelený.
 3. Pokud stav není zelený, zkuste odebrat pracovní prostor a znovu ho přidat do MMA.
 
       ![Dialogové okno Vlastnosti MMA](./media/troubleshooting-general/mma-status.png)
@@ -375,7 +398,7 @@ Po migraci počítačů s povolenou vizualizací závislostí do Azure se můžo
 
 Shromážděte protokoly následujícím způsobem:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

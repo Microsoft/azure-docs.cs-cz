@@ -1,5 +1,5 @@
 ---
-title: Uplatnění pozvánky ve spolupráci B2B – Azure Active Directory | Microsoft Docs
+title: Uplatnění pozvánky ve spolupráci B2B – Azure AD
 description: Popisuje prostředí pro uplatnění pozvánky Azure AD B2B pro koncové uživatele, včetně souhlasu s podmínkami ochrany osobních údajů.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d32818f9e96e931f9e8c3c13554752327c5c456
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3e85b0ae298589c0e0e051a24e5db89eae81db62
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622611"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272142"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory uplatnění pozvánky B2B pro spolupráci
 
@@ -35,10 +35,10 @@ Když do svého adresáře přidáte uživatele typu host [pomocí Azure Portal]
 
 ## <a name="redemption-through-a-direct-link"></a>Uplatnění přes přímý odkaz
 
-Jako alternativu k e-mailu s pozvánkou můžete hostům poskytnout přímý odkaz na vaši aplikaci nebo portál. Nejdřív je potřeba přidat uživatele typu Host do adresáře prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) nebo PowerShellu. [](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) Pak můžete použít kterýkoli z přizpůsobitelných [způsobů, jak nasadit aplikace pro uživatele](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), včetně odkazů přímo přihlašování. Když host použije přímý odkaz namísto e-mailu s pozvánkou, bude se dál nacházet pomocí prostředí pro vyjádření souhlasu po prvním čase.
+Jako alternativu k e-mailu s pozvánkou můžete hostům poskytnout přímý odkaz na vaši aplikaci nebo portál. Nejdřív je potřeba přidat uživatele typu Host do adresáře prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) nebo [PowerShellu](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell). Pak můžete použít kterýkoli z [přizpůsobitelných způsobů, jak nasadit aplikace pro uživatele](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), včetně odkazů přímo přihlašování. Když host použije přímý odkaz namísto e-mailu s pozvánkou, bude se dál nacházet pomocí prostředí pro vyjádření souhlasu po prvním čase.
 
 > [!IMPORTANT]
-> Přímý odkaz musí být specifický pro tenanta. Jinými slovy, musí obsahovat ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Společná adresa URL, https://myapps.microsoft.com jako by se u hosta nefunguje, protože se přesměruje na svého domovského tenanta pro ověřování. Tady je několik příkladů přímých odkazů s kontextem tenanta:
+> Přímý odkaz musí být specifický pro tenanta. Jinými slovy, musí obsahovat ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Společná adresa URL, jako je https://myapps.microsoft.com, nebude pro hosta fungovat, protože se přesměruje na svého domovského tenanta pro ověřování. Tady je několik příkladů přímých odkazů s kontextem tenanta:
  > - Přístupový panel aplikací: https://myapps.microsoft.com/?tenantid=&lt; ID tenanta&gt; 
  > - Přístupový panel aplikací pro ověřenou doménu: https://myapps.microsoft.com/&lt; ověřená doména&gt;
  > - Azure Portal: https://portal.azure.com/&lt; ID tenanta&gt;
@@ -58,22 +58,22 @@ Když se host přihlásí k přístupu k prostředkům v partnerské organizaci 
    ![Snímek obrazovky se stránkou pro kontrolu oprávnění](media/redemption-experience/review-permissions.png) 
 
    > [!NOTE]
-   > Informace o tom, jak se dá správce tenanta připojit k prohlášení o zásadách ochrany osobních údajů vaší organizace [, najdete v tématu How to: Přidejte informace o ochraně osobních údajů vaší organizace](https://aka.ms/adprivacystatement)v Azure Active Directory.
+   > Informace o tom, jak se může správce klienta připojit k prohlášení o zásadách ochrany osobních údajů vaší organizace, najdete [v tématu Postup: Přidání informací o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement).
 
 2. Pokud jsou podmínky použití nakonfigurované, Host se otevře a zkontroluje podmínky použití a pak vybere **přijmout**. 
 
    ![Snímek obrazovky s novými podmínkami použití](media/redemption-experience/terms-of-use-accept.png) 
 
    > [!NOTE]
-   > V části **Správa** > **vztahů** [](../governance/active-directory-tou.md) organizace > **podmínky použití**můžete nakonfigurovat zobrazení podmínek použití.
+   > V části **správa** > ch **vztahů organizace** > **podmínky použití**můžete nakonfigurovat zobrazení [podmínek použití](../governance/active-directory-tou.md) .
 
 3. Pokud není uvedeno jinak, Host se přesměruje na přístupový panel aplikace, který obsahuje seznam aplikací, ke kterým má host přístup.
 
    ![Snímek obrazovky s přístupovým panelem aplikací](media/redemption-experience/myapps.png) 
 
-Ve vašem adresáři se u pozvánky hosta přijala hodnota **Ano**. Pokud byl vytvořen MSA, zobrazí se ve **zdroji** hosta **účet Microsoft**. Další informace o vlastnostech uživatelského účtu hosta najdete v tématu [Vlastnosti uživatele spolupráce Azure AD B2B](user-properties.md). 
+Ve vašem adresáři se u **pozvánky hosta přijala** hodnota **Ano**. Pokud byl vytvořen MSA, zobrazí se ve **zdroji** hosta **účet Microsoft**. Další informace o vlastnostech uživatelského účtu hosta najdete v tématu [Vlastnosti uživatele spolupráce Azure AD B2B](user-properties.md). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 - [Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal](add-users-administrator.md)

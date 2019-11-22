@@ -1,78 +1,69 @@
 ---
-title: Vytvoření a sdílení poznámkového bloku Jupyter v Azure
-description: Rychle vytvořte a spusťte Poznámkový blok Jupyter v Azure Notebooks a potom tento poznámkový blok sdílejte s ostatními.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Vytvářejte a sdílejte aplikace Jupyter notebook v Azure
+description: Rychle vytvořit a spustit Poznámkový blok Jupyter v poznámkových blocích Azure a potom sdílet s ostatními tento poznámkový blok.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 19e8217bf88427c353fdd4c90c9f421445b7c81a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970178"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277507"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>Rychlý Start: vytvoření a sdílení poznámkového bloku
+# <a name="quickstart-create-and-share-a-notebook"></a>Rychlý start: Vytvoření a sdílení poznámkového bloku
 
-1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. (Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Přejděte na [poznámkových bloků Azure](https://notebooks.azure.com) a přihlaste se. (Podrobnosti najdete v tématu [rychlý start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
-1. Na stránce veřejný profil vyberte v horní části stránky **Moje projekty** :
+1. Na stránce svého veřejného profilu vyberte **projekty** v horní části stránky:
 
-    ![Odkaz Moje projekty v horní části okna prohlížeče](media/quickstarts/my-projects-link.png)
+    ![Moje projekty odkaz horní části okna prohlížeče](media/quickstarts/my-projects-link.png)
 
-1. Na stránce **Moje projekty** vyberte **+ Nový projekt** (Klávesová zkratka: n); tlačítko se může zobrazit pouze jako **+** , pokud je okno prohlížeče úzké:
+1. Na **projekty** stránce **+ nový projekt** (Klávesová zkratka: n); na tlačítko se může objevit pouze jako **+** li úzké okno prohlížeče:
 
-    ![Nový projekt na stránce Moje projekty](media/quickstarts/new-project-command.png)
+    ![Nový projekt – příkaz na stránce Mé projekty](media/quickstarts/new-project-command.png)
 
-1. V místní nabídce **vytvořit nový projekt** , která se zobrazí, zadejte nebo nastavte následující podrobnosti a pak vyberte **vytvořit**:
+1. V **vytvořit nový projekt** automaticky otevírané okno, které se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **vytvořit**:
 
    - **Název projektu**: Hello World v Pythonu
-   - **ID projektu**: Hello-World – Python
-   - **Veřejný projekt**: (nezaškrtnuto)
-   - **Vytvořit Readme.MD**: (nezaškrtnuto)
+   - **ID projektu**: hello-world – python
+   - **Veřejné projektu**: (zaškrtnuto)
+   - **Vytvoření README.md**: (zaškrtnuto)
 
-     ![Místní nabídka nový projekt s vyplněnými podrobnostmi](media/quickstarts/new-project-popup.png)
+     ![Nový projekt automaticky otevírané okno s podrobnostmi mají údaj vyplněný](media/quickstarts/new-project-popup.png)
 
-1. Po chvíli Azure Notebooks přejít k novému projektu. Přidejte do projektu Poznámkový blok tak, že vyberete rozevírací seznam **+ Nový** (může se zobrazit jenom **+** ) a pak vybrat **Poznámkový blok**:
+1. Po chvíli se poznámkových bloků Azure přejde do nového projektu. Poznámkového bloku přidejte do projektu tak, že vyberete **+ nový** rozevíracího seznamu (který může zobrazit jako pouze **+** ), pak vyberete **Poznámkový blok**:
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png#lightbox)(media/quickstarts/empty-project-new-notebook-button.png "Nový, prázdný projekt a příkaz Přidat Poznámkový blok")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
-1. V automaticky otevřeném okně **vytvořit nový Poznámkový blok** zadejte název souboru pro svůj Poznámkový blok, například *HelloWorldInPython. ipynb* ( *. ipynb* označuje notebook ironpythonu (Jupyter)) a vyberte **Python 3,6** pro jazyk (také se mu říká *jádro*):
+1. V **vytvoření nového poznámkového bloku** automaticky otevírané okno, které se zobrazí, zadejte název souboru pro poznámkový blok, jako například *HelloWorldInPython.ipynb* ( *.ipynb* znamená, že poznámkový blok IronPython (Jupyter) ) a vyberte **Python 3.6** pro jazyk (také nazývané *jádra*):
 
-    ![Místní nabídka pro vytvoření nového poznámkového bloku](media/quickstarts/new-notebook-popup.png)
+    ![Vytvoření nového poznámkového bloku automaticky otevíraného okna](media/quickstarts/new-notebook-popup.png)
 
-1. Když vyberete **Nový** , dokončí se vytváření poznámkového bloku, který se pak zobrazí v seznamu souborů vašeho projektu:
+1. Vyberte **nový** dokončete vytváření Poznámkový blok, který se pak objeví v seznamu souboru projektu:
 
-    ![Nový Poznámkový blok se zobrazuje v seznamu souborů projektu](media/quickstarts/new-notebook-created.png)
+    ![Nový poznámkový blok, v seznamu souborů v projektu](media/quickstarts/new-notebook-created.png)
 
 ## <a name="run-the-notebook"></a>Spuštění poznámkového bloku
 
-1. Vyberte nový Poznámkový blok, který chcete spustit v editoru. vybrané jádro (v tomto příkladu Python 3,6) se automaticky aktivuje pro tento poznámkový blok:
+1. Vyberte nový poznámkový blok spustit v editoru; jádra vyberete (v tomto příkladu Python 3.6) se automaticky aktivuje pro tento poznámkový blok:
 
-    ![Zobrazení nového poznámkového bloku v Azure Notebooks](media/quickstarts/create-notebook-first-open.png)
+    ![Zobrazení nového poznámkového bloku v poznámkových bloků Azure](media/quickstarts/create-notebook-first-open.png)
 
-1. Ve výchozím nastavení má Poznámkový blok jednu prázdnou buňku s kódem. Chcete-li změnit typ buňky na **Markdownu**, použijte rozevírací seznam typ buňky k výběru **Markdownu**:
+1. Poznámkový blok má ve výchozím nastavení jednu buňku prázdný kód. Chcete-li změnit typ buňky do **Markdownu**, pomocí buňky typ rozevírací nabídky vyberte **Markdownu**:
 
-    ![Změna typu buňky v novém poznámkovém bloku](media/quickstarts/create-notebook-cell-type.png)
+    ![Změna typu buňky v nového poznámkového bloku](media/quickstarts/create-notebook-cell-type.png)
 
-1. Do buňky zadejte nebo vložte následující text nadpisu:
+1. Zadejte nebo vložte do buňky následující text nadpisu:
 
     ```markdown
     # Hello World in Python
     ```
 
-1. Vzhledem k tomu, že upravujete Markdownu, text se zobrazí jako záhlaví s znakem "#". Pokud chcete Markdownu vykreslit do HTML, vyberte tlačítko **Spustit** . Azure Notebooks pak automaticky vytvoří novou buňku kódu následně:
+1. Protože upravujete Markdownu, text se zobrazí jako záhlaví znakem "#". Chcete-li zobrazit Markdown do kódu HTML, vyberte **spustit** tlačítko. Poznámkových bloků Azure automaticky vytvoří novou buňku kódu později:
 
-    ![Tlačítko spustit pro buňku a vykreslený Markdownu](media/quickstarts/run-cell-markdown-render.png)
+    ![Na tlačítko pro spuštění pro buňku a vykreslený Markdown](media/quickstarts/run-cell-markdown-render.png)
 
-1. V buňce Code (kód) zadejte následující kód Pythonu:
+1. Do buňky kódu zadejte následující kód Pythonu:
 
     ```python
     from datetime import datetime
@@ -82,27 +73,27 @@ ms.locfileid: "71970178"
     print(msg)
     ```
 
-1. Pro spuštění kódu vyberte **Spustit** (Klávesová zkratka: SHIFT + ENTER). Pod buňkou byste měli vidět úspěšný výstup podobný následujícímu textu:
+1. Vyberte **spustit** (Klávesová zkratka: Shift + Enter) ke spuštění kódu. Pod buňku byste měli vidět úspěšné výstup podobný následujícímu textu:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
     ```
 
-1. Kliknutím na ikonu Uložit uložte svou práci:
+1. Uložení vyberte ikonu a práci uložte:
 
-    ![Ikona uložit na panelu nástrojů Jupyter Poznámkový blok](media/quickstarts/hello-results-save-icon.png)
+    ![Uložit ikonu na panelu nástrojů poznámkového bloku Jupyter](media/quickstarts/hello-results-save-icon.png)
 
 1. Vyberte **soubor** > **Zavřít a zastavit** příkaz nabídky k zastavení serveru a zavření okna prohlížeče.
 
-## <a name="share-the-notebook"></a>Sdílet Poznámkový blok
+## <a name="share-the-notebook"></a>Sdílet poznámkového bloku
 
-Chcete-li sdílet svůj Poznámkový blok, v případě potřeby přepněte zpět na stránku projektu, klikněte pravým tlačítkem na soubor poznámkového bloku, vyberte **Kopírovat odkaz** (Klávesová zkratka: y) a vložte tento odkaz do příslušné zprávy (E-mail, im atd.).
+Pokud chcete sdílet v poznámkovém bloku, v případě potřeby přepněte zpět na stránku projektu, klikněte pravým tlačítkem na soubor poznámkového bloku, vyberte **Kopírovat odkaz** (Klávesová zkratka: y) a vložte odkaz do odpovídající zprávu (e-mailu, zasílání rychlých zpráv atd.).
 
-Na stránce projekt můžete také pomocí nabídky **sdílet** získat odkaz, vytvořit e-mailovou zprávu s odkazem nebo získat kód pro vložení HTML a Markdownu:
+Na stránce projektu, můžete použít také **sdílené složky** kód pro vložení nabídky získat odkaz, vytvořte e-mailovou zprávu s odkazem nebo získat HTML a Markdown:
 
-![Sdílení projektu – příkaz](media/quickstarts/share-project-command.png)
+![Sdílet projekt – příkaz](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření Jupyter poznámkového bloku pro provádění lineární regrese](tutorial-create-run-jupyter-notebook.md)
+> [Kurz: vytvoření spustit Poznámkový blok Jupyter provedete lineární regrese](tutorial-create-run-jupyter-notebook.md)

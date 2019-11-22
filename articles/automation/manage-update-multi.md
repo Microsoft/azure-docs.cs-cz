@@ -1,20 +1,20 @@
 ---
 title: Správa aktualizací pro několik virtuálních počítačů Azure
-description: Tento článek popisuje, jak spravovat aktualizace pro virtuální počítače Azure.
+description: Tento článek popisuje, jak spravovat aktualizace pro virtuální počítače Azure a mimo Azure.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 367a4409c004c98cc4b5ec844aab5b05ec74abcb
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374499"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278662"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -25,31 +25,29 @@ Pomocí řešení Update Management můžete spravovat aktualizace a opravy pro 
 - Naplánovat instalaci požadovaných aktualizací
 - Zkontrolujte výsledky nasazení a ověřte, jestli se aktualizace úspěšně nastavily na všechny virtuální počítače, pro které je povolená Update Management.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít Update Management, potřebujete:
 
 - Virtuální počítač nebo počítač s nainstalovaným jedním z podporovaných operačních systémů.
 
+- Přístup k úložišti aktualizací pro virtuální počítače se systémem Linux připojené k řešení.
+
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 Update Management se podporuje v těchto operačních systémech:
 
-|Operační systém  |Poznámky  |
+|Operační systém  |Poznámky:  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze posouzení aktualizací.         |
 |Windows Server 2008 R2 SP1 a novější     |Je vyžadován Windows PowerShell 4,0 nebo novější. ([Stáhnout WMF 4,0](https://www.microsoft.com/download/details.aspx?id=40855))</br> Pro zvýšení spolehlivosti se doporučuje prostředí Windows PowerShell 5,1. ([Stáhnout WMF 5,1](https://www.microsoft.com/download/details.aspx?id=54616))         |
-|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací.        |
-|Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
-|Ubuntu 14,04 LTS, 16,04 LTS a 18,04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
+|CentOS 6 (x86/x64) a 7 (x64)      | |
+|Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | |
+|SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | |
+|Ubuntu 14,04 LTS, 16,04 LTS a 18,04 LTS (x86/x64)      | |
 
 > [!NOTE]
 > Pokud se chcete zabránit tomu, aby se aktualizace používaly mimo časové období údržby v Ubuntu, změňte konfiguraci balíčku Unattended-Upgrade tak, aby automatické aktualizace byly zakázány. Další informace najdete v [tématu věnovaném automatickým aktualizacím v příručce k Ubuntu Serveru](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
-
-Agenty Linux musí mít přístup k úložišti aktualizací.
-
-Toto řešení nepodporuje agenta Log Analytics pro systém Linux, který je nakonfigurován tak, aby hlásil více pracovních prostorů Azure Log Analytics.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Povolit Update Management pro virtuální počítače Azure
 
@@ -69,13 +67,11 @@ Po dokončení registrace je Update Management pro váš virtuální počítač 
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Povolení Update Management pro virtuální počítače a počítače mimo Azure
 
-Informace o tom, jak povolit Update Management pro virtuální počítače a počítače s Windows mimo Azure, najdete v tématu [připojení počítačů s Windows ke službě Azure monitor v Azure](../log-analytics/log-analytics-windows-agent.md).
-
-Informace o tom, jak povolit Update Management pro virtuální počítače a počítače mimo Azure Linux, najdete v tématu [připojení počítačů se systémem Linux k Azure monitor protokolů](../log-analytics/log-analytics-agent-linux.md).
+Agent Log Analytics pro systém Windows a Linux musí být nainstalován na virtuálních počítačích, které jsou spuštěny ve vaší podnikové síti nebo jiném cloudovém prostředí, aby je bylo možné povolit s Update Management. Informace o požadavcích na systém a podporovaných metodách nasazení agenta do počítačů hostovaných mimo Azure najdete v tématu [Přehled agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Zobrazit počítače připojené k vašemu účtu Automation
 
-Po povolení Update Management pro vaše počítače můžete zobrazit informace o počítači výběrem možnosti **počítače**. Můžete si prohlédnout informace o *názvu počítače*, *stavu dodržování předpisů*, *prostředí*, *typu operačního systému*, *nainstalovaných důležitých aktualizacích a aktualizacích zabezpečení*, *nainstalovaných dalších aktualizacích*a *aktualizacích připravenosti agenta* . pocítac.
+Po povolení Update Management pro vaše počítače můžete zobrazit informace o počítači výběrem možnosti **počítače**. Můžete si prohlédnout informace o *názvu počítače*, *stavu dodržování předpisů*, *prostředí*, *typu operačního systému*, *nainstalovaných důležitých a aktualizacích zabezpečení*, *nainstalovaných dalších aktualizacích*a *aktualizacích připravenosti agenta* pro vaše počítače.
 
   ![Zobrazení karty Počítače](./media/manage-update-multi/update-computers-tab.png)
 
@@ -103,7 +99,7 @@ Agenti, kteří jsou nainstalováni na virtuálních počítačích a počítač
 
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje:
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporuje se | Popis |
 | --- | --- | --- |
 | Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a pak inicializuje instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
@@ -130,8 +126,13 @@ V podokně **nové nasazení aktualizací** zadejte následující informace:
 
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
 - **Operační systém**: vyberte **Windows** nebo **Linux**.
-- **Skupiny, které se mají aktualizovat (Preview)** : Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek a vytvořte dynamickou skupinu virtuálních počítačů Azure, která se má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management-groups.md).
-- **Počítače k aktualizaci**: pro výběr počítačů, které chcete aktualizovat, vyberte uložené hledání, importovanou skupinu nebo vyberte počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Před naplánováním nasazení aktualizace se můžete podívat na stav počítače. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md)
+- **Skupiny, které se mají aktualizovat**: Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. V případě virtuálních počítačů mimo Azure se uložená hledání použijí k vytvoření dynamické skupiny pro zahrnutí do nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management-groups.md).
+- **Počítače k aktualizaci**: pro výběr počítačů, které chcete aktualizovat, vyberte uložené hledání, importovanou skupinu nebo vyberte počítače.
+
+   >[!NOTE]
+   >Vyberete-li možnost uloženého hledání, nebudou vraceny identity počítačů, pouze jejich názvy. Pokud máte v několika skupinách prostředků několik virtuálních počítačů se stejným názvem, vrátí se výsledky. Použití možnosti **skupiny k aktualizaci** se doporučuje k tomu, abyste zajistili zahrnutí jedinečných virtuálních počítačů, které odpovídají vašim kritériím.
+
+   Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Před naplánováním nasazení aktualizace se můžete podívat na stav počítače. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md)
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
 
@@ -196,5 +197,5 @@ Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o Update Management, včetně protokolů, výstupu a chyb, najdete v tématu [Update Management řešení v Azure](../operations-management-suite/oms-solution-update-management.md).
+Další informace o Update Management, včetně protokolů, výstupu a chyb, najdete v tématu [Update Management řešení v Azure](../operations-management-suite/oms-solution-update-management.md).
 

@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3274641f7b118e13b3ed727f609ce7471fd66b54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682289"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287031"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformační funkce v toku dat tahání
 
@@ -73,7 +73,7 @@ K agregaci hodnot použijte [Table. Group](https://docs.microsoft.com/powerquery
 * Musí se používat s agregační funkcí
 * Podporované agregační funkce: [Table. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount), [list. Sum](https://docs.microsoft.com/powerquery-m/list-sum), [list. Count](https://docs.microsoft.com/powerquery-m/list-count), [list. Average](https://docs.microsoft.com/powerquery-m/list-average), [list. min](https://docs.microsoft.com/powerquery-m/list-min), [list. Max](https://docs.microsoft.com/powerquery-m/list-max), [list. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation), [list. First](https://docs.microsoft.com/powerquery-m/list-first), [list. Last](https://docs.microsoft.com/powerquery-m/list-last)
 
-## <a name="sorting"></a>řazen
+## <a name="sorting"></a>Řazen
 
 K řazení hodnot použijte [Table. Sort](https://docs.microsoft.com/powerquery-m/table-sort) .
 
@@ -81,12 +81,21 @@ K řazení hodnot použijte [Table. Sort](https://docs.microsoft.com/powerquery-
 
 Zachovat a odebrat horní, zachovat rozsah (odpovídající funkce M, jenom počty, nikoli podmínky: [Table. FirstN](https://docs.microsoft.com/powerquery-m/table-firstn), [Table. Skip](https://docs.microsoft.com/powerquery-m/table-skip), [Table. RemoveFirstN](https://docs.microsoft.com/powerquery-m/table-removefirstn), [Table. Range](https://docs.microsoft.com/powerquery-m/table-range), [Table. MinN](https://docs.microsoft.com/powerquery-m/table-minn), [Table. MaxN](https://docs.microsoft.com/powerquery-m/table-maxn))
 
-## <a name="known-unsupported-functionality"></a>Známá Nepodporovaná funkce
+## <a name="known-unsupported-functions"></a>Známé nepodporované funkce
 
-Níže jsou uvedené funkce, které nejsou podporované. Tento seznam není vyčerpávající a může se změnit.
-* Sloučit sloupce (lze dosáhnout pomocí AddColumn)
-* Rozdělit sloupec
-* Připojit dotazy
-* ' Použít první řádek jako záhlaví a použít záhlaví jako první řádek '
+| Funkce | Status |
+| -- | -- |
+| Table. PromoteHeaders | Nepodporuje se. Stejný výsledek lze dosáhnout nastavením "první řádek jako záhlaví" v datové sadě. |
+| Table. CombineColumns | Toto je běžný scénář, který není přímo podporován, ale je možné ho dosáhnout přidáním nového sloupce, který zřetězí dva sloupce.  Například Table. AddColumn (RemoveEmailColumn; "Name"; Each [FirstName] & "" & [LastName]) |
+| Table. TransformColumnTypes | To se ve většině případů podporuje. Následující scénáře nejsou podporovány: transformuje řetězec na typ měny, transformuje řetězec na typ času a transformuje řetězec na typ procent. |
+| Table. NestedJoin | Pouhým připojením dojde k chybě ověření. Aby bylo možné tyto sloupce fungovat, musí být rozbaleny. |
+| Table. DISTINCT | Odstranění duplicitních řádků není podporováno. |
+| Table. RemoveLastN | Odebrat dolní řádky nejsou podporovány. |
+| Table. RowCount | Nepodporuje se, ale dá se dosáhnout pomocí výrazu přidat sloupec se všemi buňkami s prázdným sloupcem (můžete použít sloupec podmínka) a potom v tomto sloupci použít Group by. Tabulka. Group je podporována. | 
+| Zpracování chyb na úrovni řádků | Zpracování chyb na úrovni řádků se momentálně nepodporuje. Chcete-li například vyfiltrovat nečíselné hodnoty ze sloupce, může být jedním z přístupů převod textového sloupce na číslo. Každá buňka, která se nedokáže transformovat, bude v chybovém stavu a bude nutné ji filtrovat. Tento scénář není možný v toku dat tahání. |
+| Tabulka. transponovat | Nepodporováno |
+| Table. Pivot | Nepodporováno |
 
 ## <a name="next-steps"></a>Další kroky
+
+Naučte se [vytvářet tahání tok dat](wrangling-data-flow-tutorial.md).

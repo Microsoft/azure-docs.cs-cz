@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d4cb2d424d242fd9ea078d981a85516a00c8115f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125006"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268667"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Inteligentní uzamčení Azure Active Directory
 
@@ -35,7 +35,7 @@ Inteligentní uzamčení je vždycky zapnuté pro všechny zákazníky Azure AD 
 
 Pomocí inteligentního uzamčení není zaručeno, že se originální uživatel nikdy nezamkne. Když inteligentní uzamčení uzamkne uživatelský účet, zkusíme, že nebudete moct tohoto uživatele uzamknout. Služba uzamčení se pokusí zajistit, aby chybné objekty actor nemohly získat přístup k účtu originálního uživatele.  
 
-* Každé Azure Active Directory datové centrum sleduje uzamčení nezávisle. Uživatel bude mít počet pokusů (threshold_limit * datacenter_count), pokud se uživatel dostane do každého datového centra.
+* Každé Azure Active Directory datové centrum sleduje uzamčení nezávisle. Uživatel bude mít (threshold_limit * datacenter_count) počet pokusů, pokud se uživatel dostane do každého datového centra.
 * Inteligentní uzamčení používá ke odlišení vadného objektu actor a originálního uživatele známé umístění a neznámé umístění. Neznámá a známá umístění budou mít oddělené čítače uzamčení.
 
 Inteligentní uzamčení se dá integrovat s hybridními nasazeními, a to pomocí synchronizace hodnot hash hesel nebo předávacího ověřování k ochraně místních účtů služby Active Directory před tím, než je útočníci zamkne. Pokud se ve službě Azure AD patřičně nastavují zásady inteligentního zamykání, můžou se útoky filtrovat předtím, než se dostanou k místní službě Active Directory.
@@ -56,8 +56,8 @@ Pomocí následujících pokynů ověřte zásady uzamčení místních účtů 
 
 1. Otevřete nástroj pro správu Zásady skupiny.
 2. Upravte zásady skupiny, které obsahují zásady uzamčení účtů vaší organizace, například **výchozí zásady domény**.
-3. Přejít > na > zásadyKonfiguracepočítače > nastavení systému Windows nastavení zabezpečenízásadyúčtuuzamčeníúčtu >  >  **Zásady**.
-4. Ověřte **prahovou hodnotu uzamčení účtu** a vynulovat **čítač uzamčení účtu po** hodnotách.
+3. Přejděte na **Konfigurace počítače** **zásady** >  > **nastavení systému Windows** > **nastavení zabezpečení** > zásady **účtů** > **zásady uzamčení účtů**.
+4. Ověřte **prahovou hodnotu uzamčení účtu** a **Vynulovat čítač uzamčení účtu po** hodnotách.
 
 ![Úprava zásad uzamčení místních účtů služby Active Directory](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
@@ -67,7 +67,8 @@ Na základě požadavků vaší organizace může být nutné přizpůsobit hodn
 
 Chcete-li kontrolovat nebo upravovat hodnoty inteligentního uzamknutí pro vaši organizaci, použijte následující postup:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte na **Azure Active Directory** > **metody** > ověřování**ochrana heslem**.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **metody ověřování** > **ochrana heslem**.
 1. Nastavte **prahovou hodnotu uzamčení**na základě toho, kolik neúspěšných přihlášení na účtu je před prvním uzamčením povolené. Výchozí hodnota je 10.
 1. Nastavte **dobu uzamčení v sekundách**na délku v sekundách každého uzamknutí. Výchozí hodnota je 60 sekund (jedna minuta).
 
@@ -82,7 +83,7 @@ Když se aktivuje prahová hodnota inteligentního uzamčení, při zamčení ú
 
 **Váš účet je dočasně zamčený, aby nedocházelo k neoprávněnému použití. Zkuste to znovu později. Pokud pořád máte potíže, obraťte se na správce.**
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zjistěte, jak zakázat chybná hesla ve vaší organizaci pomocí Azure AD.](howto-password-ban-bad.md)
 * [Nakonfigurujte Samoobslužné resetování hesla, aby uživatelé mohli odemknout svoje vlastní účty.](quickstart-sspr.md)

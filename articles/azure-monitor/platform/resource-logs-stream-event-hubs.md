@@ -1,6 +1,6 @@
 ---
 title: Streamování protokolů prostředků Azure do centra událostí
-description: Naučte se streamovat protokoly prostředků Azure do centra událostí.
+description: Naučte se streamovat protokoly prostředků Azure do centra událostí, abyste mohli odesílat data do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 1d7a533658b6c72caae9649d7e5a9c4fad117245
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262411"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304949"
 ---
 # <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Streamování protokolů prostředků Azure do Azure Event Hubs
 [Protokoly prostředků](resource-logs-overview.md) v Azure poskytují bohatě a často větší údaje o interním provozu prostředku Azure. Tento článek popisuje protokoly prostředků streamování do Center událostí, aby odesílaly data do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.
@@ -25,7 +25,7 @@ Streamujte protokoly prostředků v Azure do centra událostí a poskytněte ná
 * **Streamování protokolů na systémy protokolování a telemetrie od jiných výrobců** – Streamujte všechny protokoly prostředků do jednoho centra událostí, aby se data protokolu přesměroval na Siem nebo nástroj Log Analytics od jiného výrobce.
 * **Vytvoření vlastní telemetrie a protokolovací platformy** – vysoce škálovatelná povaha pro publikování a odběr centra událostí umožňuje flexibilní ingestování protokolů o prostředcích do vlastní teletry platformy. Podrobnosti najdete v tématu [navrhování a změna velikosti platformy telemetrie s globálním škálováním na platformě Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
 
-* **Zobrazení stavu služby podle streamování dat do Power BI** – pomocí Event Hubs, Stream Analytics a Power BI můžete transformovat diagnostická data na vaše služby Azure téměř v reálném čase. Viz [Stream Analytics a Power BI: Řídicí panel analýzy v reálném čase pro streamovaná](../../stream-analytics/stream-analytics-power-bi-dashboard.md) data pro podrobnosti o tomto řešení.
+* **Zobrazení stavu služby podle streamování dat do Power BI** – pomocí Event Hubs, Stream Analytics a Power BI můžete transformovat diagnostická data na vaše služby Azure téměř v reálném čase. Podrobnosti o tomto řešení najdete v tématu [Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 
     Následující kód SQL je ukázkový Stream Analytics dotaz, který můžete použít k analýze všech dat protokolu v tabulce Power BI:
     
@@ -59,12 +59,12 @@ Když využijete protokoly prostředků z Center událostí, bude to formát JSO
 
 | Název elementu | Popis |
 | --- | --- |
-| záznamy |Pole všech událostí protokolu v této datové části. |
+| eviduje |Pole všech událostí protokolu v této datové části. |
 | time |Čas, kdy došlo k události. |
 | category |Kategorie protokolu pro tuto událost. |
 | resourceId |ID prostředku prostředku, který vygeneroval tuto událost |
 | operationName |Název operace |
-| level |Volitelný parametr. Označuje úroveň události protokolu. |
+| úroveň |Volitelné. Označuje úroveň události protokolu. |
 | properties |Vlastnosti události Ty se budou lišit pro každou službu Azure, jak [ ]()je popsáno v tématu. |
 
 

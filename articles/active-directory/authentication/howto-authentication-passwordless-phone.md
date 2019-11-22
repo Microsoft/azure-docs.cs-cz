@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3ca668036a8b4a4af261ee85b8a884c22258beb4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474349"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269504"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -29,7 +29,7 @@ Namísto zobrazení výzvy k zadání hesla po zadání uživatelského jména s
 > [!NOTE]
 > Tato funkce byla v aplikaci Microsoft Authenticator od března 2017, takže pokud je zásada pro adresář povolená, můžou se uživatelé setkat okamžitě a zobrazit chybovou zprávu, pokud je zásada nepovolila. Mějte na paměti informace a připravte uživatele na tuto změnu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Multi-Factor Authentication s nabízenými oznámeními povolenými jako metoda ověřování 
 - Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.
@@ -46,7 +46,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Povolit metody ověřování přihlašování bezheslem pro telefonování
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-1. Přejděte do **služby Azure AD Security** > **metod ověřování** > **zásady metody ověřování (Preview)** .
+1. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **metody ověřování** **zabezpečení** >  > **zásady metody ověřování (Preview)** .
 1. V části **přihlášení bez hesla pro telefonování**vyberte následující možnosti.
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele

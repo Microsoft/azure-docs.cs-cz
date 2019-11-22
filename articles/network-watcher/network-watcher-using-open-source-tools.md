@@ -1,6 +1,7 @@
 ---
-title: Vizualizace provozu sítě pomocí opensourcových nástrojů a Azure Network Watcher | Dokumentace Microsoftu
-description: Tato stránka popisuje, jak pomocí služby Network Watcher zachytávání paketů Capanalysis vizualizace provozu do a z vašich virtuálních počítačů.
+title: Vizualizace vzorů síťových přenosů pomocí nástrojů Open Source
+titleSuffix: Azure Network Watcher
+description: Tato stránka popisuje, jak použít Network Watcher zachytávání paketů s Capanalysis k vizualizaci vzorců provozu do a z vašich virtuálních počítačů.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,89 +15,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64936009"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277761"
 ---
-# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Vizualizace provozu sítě do a z virtuálních počítačů pomocí opensourcových nástrojů
+# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Vizualizace vzorů síťových přenosů z vašich virtuálních počítačů a z nich pomocí Open-source nástrojů
 
-Zachytávání paketů obsahovat data sítě, která umožňují sítě forenzní analýzy a hloubkové kontroly paketů. Existuje mnoho otevře source nástroje, které lze použít k analýze zachytávání paketů a získejte přehled o vaší síti. Jeden takový nástroj je CapAnalysis, nástroj pro vizualizaci zachycení paketů open source. Vizualizace dat zachytávání paketů se výhodný způsob, jak rychle vyvoďte z nich na vzory a anomálie v rámci vaší sítě. Vizualizace také poskytují způsob sdílení těchto přehledů snadno využitelným způsobem.
+Zachycení paketů obsahují síťová data, která umožňují provádět forenzní sítě a hloubkovou kontrolu paketů. Existuje mnoho nástrojů pro vytváření zdrojů, pomocí kterých můžete analyzovat zachycení paketů a získat přehled o vaší síti. Jedním z těchto nástrojů je CapAnalysis, což je open source nástroj pro vizualizaci zachytávání paketů. Vizualizace dat zachycení paketů představuje cenný způsob, jak rychle odvodit přehledy o vzorech a anomáliích ve vaší síti. Vizualizace také poskytují prostředky ke sdílení těchto přehledů snadno účinným způsobem.
 
-Azure Network Watcher dává možnost k zaznamenání dat tím, že můžete provádět zachytávání paketů ve vaší síti. Tento článek poskytuje procházení pomocí toho, jak vizualizovat a zkoumat velké paketů zachycuje pomocí CapAnalysis pomocí služby Network Watcher.
+Azure Network Watcher poskytuje možnost zachytit data tím, že vám umožní zachytávání paketů v síti. Tento článek poskytuje přehled o tom, jak vizualizovat a získávat poznatky z zachycení paketů pomocí CapAnalysis s využitím Network Watcher.
 
 ## <a name="scenario"></a>Scénář
 
-Budete mít jednoduchou webovou aplikaci nasadit na virtuální počítač v Azure použít open source nástroje pro vizualizaci jeho síťový provoz rychle identifikovat vzory v toku a je to možné anomálie. Pomocí služby Network Watcher můžete získat zachytávání paketů síťového prostředí a uložit je přímo na váš účet úložiště. CapAnalysis můžete ingestovat zachytávání paketů přímo z úložiště objektů blob a jeho obsah vizualizace.
+Máte jednoduchou webovou aplikaci nasazenou na virtuálním počítači v Azure, chcete použít Open Source nástroje k vizualizaci svého síťového provozu, abyste mohli rychle identifikovat modely toků a případné anomálie. Pomocí Network Watcher můžete získat zachycení paketů v síťovém prostředí a přímo ho uložit do svého účtu úložiště. CapAnalysis může následně ingestovat zachytávání paketů přímo z objektu BLOB úložiště a vizualizovat jeho obsah.
 
 ![scénář][1]
 
 ## <a name="steps"></a>Kroky
 
-### <a name="install-capanalysis"></a>Nainstalujte CapAnalysis
+### <a name="install-capanalysis"></a>Nainstalovat CapAnalysis
 
-K instalaci CapAnalysis na virtuálním počítači, můžete odkazovat na oficiální pokyny https://www.capanalysis.net/ca/how-to-install-capanalysis.
-V pořadí CapAnalysis vzdálený přístup, budete muset otevřít port 9877 na vašem virtuálním počítači tak, že přidáte nové pravidlo příchozího zabezpečení. Další informace o vytváření pravidel ve skupinách zabezpečení sítě, najdete v tématu [vytvoření pravidel v existující skupině NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule). Po úspěšném přidání pravidlo byste měli mít přístup k CapAnalysis z `http://<PublicIP>:9877`
+Chcete-li nainstalovat CapAnalysis na virtuální počítač, můžete zde https://www.capanalysis.net/ca/how-to-install-capanalysisníže uveden oficiální postup.
+V zájmu vzdáleného přístupu k CapAnalysis je potřeba na svém VIRTUÁLNÍm počítači otevřít port 9877 přidáním nového příchozího pravidla zabezpečení. Další informace o vytváření pravidel ve skupinách zabezpečení sítě najdete v tématu [Vytvoření pravidel v existující NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule). Po úspěšném přidání pravidla byste měli mít přístup k CapAnalysis z `http://<PublicIP>:9877`
 
-### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Azure Network Watcher můžete využít ke spuštění relace zachytávání paketů
+### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Spuštění relace zachytávání paketů pomocí Azure Network Watcher
 
-Network Watcher umožňuje při zachytávání paketů sledujte provoz do a z virtuálního počítače. Můžete použít pokyny v [zachycuje spravovat paketů pomocí služby Network Watcher](network-watcher-packet-capture-manage-portal.md) pro spuštění relace zachytávání paketů. Zachytávání paketů mohou být uloženy v objektu blob úložiště, ke kterým přistupují CapAnalysis.
+Network Watcher umožňuje zachytit pakety pro sledování provozu na virtuálním počítači a z něj. Postup, jak spustit relaci zachycení paketů, najdete v pokynech v tématu [Správa zachytávání paketů pomocí Network Watcher](network-watcher-packet-capture-manage-portal.md) . Zachytávání paketů může být uloženo v objektu BLOB úložiště, aby k němu měl získat pøístup CapAnalysis.
 
-### <a name="upload-a-packet-capture-to-capanalysis"></a>Nahrajte do CapAnalysis zachytávání paketů
-Můžete přímo nahrát zachytávání paketů přijatých sledovací proces sítě na kartě "Import z adresy URL" a poskytnutí odkazu na objekt blob úložiště zachytávání paketů se mají ukládat.
+### <a name="upload-a-packet-capture-to-capanalysis"></a>Nahrání zachytávání paketů do CapAnalysis
+Pomocí karty importovat z adresy URL můžete přímo nahrát zachytávání paketů pořízené sledovacím procesem sítě a poskytnout odkaz na objekt BLOB úložiště, ve kterém je zachytávání paketů uložené.
 
-Při zadávání odkazu na CapAnalysis, ujistěte se, že připojte SAS token k adrese URL objektu blob úložiště.  Chcete-li to provést, přejděte do sdíleného přístupového podpisu z účtu úložiště, určení povolených oprávnění a stiskněte tlačítko Generovat SAS k vytvoření tokenu. Můžete pak připojte SAS token k adrese URL paketů zachycení úložiště objektů blob.
+Při zadání odkazu na CapAnalysis nezapomeňte připojit token SAS k adrese URL objektu BLOB úložiště.  Provedete to tak, že přejdete na podpis sdíleného přístupu z účtu úložiště, určíte povolená oprávnění a vytvoříte token stisknutím tlačítka generovat SAS. Pak můžete připojit token SAS k adrese URL objektu BLOB úložiště pro zachytávání paketů.
 
-Výsledná adresa URL bude vypadat podobně jako následující adresa URL: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+Výsledná adresa URL bude vypadat přibližně jako na následující adrese URL: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
 
 
-### <a name="analyzing-packet-captures"></a>Zaznamená analýza paketů
+### <a name="analyzing-packet-captures"></a>Analýza zachycení paketů
 
-CapAnalysis nabízí různé možnosti, jak vizualizovat zachytávání paketů, každý poskytuje analýzy z hlediska různých. Pomocí těchto vizuální souhrny můžete pochopit trendy provozu vaší sítě a rychle odhalovat případné problémy žádnou neobvyklou aktivitu. V následujícím seznamu jsou uvedeny některé z těchto funkcí:
+CapAnalysis nabízí různé možnosti pro vizualizaci zachytávání paketů, z nichž každá zajišťuje analýzu z jiné perspektivy. Pomocí těchto vizuálních souhrnů můžete pochopit trendy síťových přenosů a rychle odhalit jakoukoli neobvyklou aktivitu. V následujícím seznamu jsou uvedeny některé z těchto funkcí:
 
-1. Tok tabulky
+1. Tabulky toků
 
-    Tato tabulka obsahuje seznam toků v datový paket, časové razítko přidružené k toků a různé protokoly, které jsou přidružené k toku, a jako zdrojových a cílových IP.
+    Tato tabulka obsahuje seznam toků v datech paketů, časové razítko přidružené ke tokům a různé protokoly, které jsou přidružené k tomuto toku, a také zdrojovou a cílovou IP adresu.
 
-    ![stránka flow capanalysis][5]
+    ![Stránka capanalysis Flow][5]
 
 1. Přehled protokolu
 
-    V tomto podokně můžete rychle zobrazit distribuci síťového provozu přes různé protokoly a geografickými oblastmi.
+    V tomto podokně můžete rychle zobrazit distribuci síťového provozu přes různé protokoly a geografické oblasti.
 
     ![Přehled protokolu capanalysis][6]
 
 1. Statistika
 
-    V tomto podokně umožňuje můžete zobrazit statistiku provozu sítě – počet bajtů odeslaných a přijatých ze zdrojových a cílových IP adres, pracovních postupů pro jednotlivé zdrojové a cílové IP adresy, používá protokol pro různé toky a doba trvání toků.
+    V tomto podokně můžete zobrazit statistiku síťového provozu – bajty odeslané a přijímané ze zdrojových a cílových IP adres, toky pro každou zdrojovou a cílovou IP adresu, protokol, který se používá pro různé toky, a dobu trvání toků.
 
-    ![capanalysis statistiky][7]
+    ![statistiky capanalysis][7]
 
-1. Geografickou mapu.
+1. geografickou mapu
 
-    V tomto podokně poskytuje zobrazení mapy síťového provozu s barvami škálovaný objem přenosů z každé země/oblasti. Můžete vybrat zvýrazněné země/oblasti zobrazíte další tok statistiky, jako je objem dat odeslaných a přijatých z IP adres v zemi/oblast.
+    V tomto podokně se zobrazuje mapa síťových přenosů s barevným škálováním na objem přenosů z každé země nebo oblasti. Můžete vybrat zvýrazněné země nebo oblasti a zobrazit tak další statistiku toků, například poměr dat odesílaných a přijatých z IP adres v dané zemi nebo oblasti.
 
-    ![Geografickou mapu.][8]
+    ![geografickou mapu][8]
 
 1. Filtry
 
-    CapAnalysis poskytuje sadu filtrů pro rychlou analýzu konkrétní paketů. Můžete například filtrovat data podle protokolu získáte konkrétní přehledy tuto dílčí provozu.
+    CapAnalysis poskytuje sadu filtrů pro rychlou analýzu konkrétních paketů. Můžete například zvolit filtrování dat podle protokolu, aby bylo možné získat konkrétní přehledy o této podmnožině provozu.
 
     ![Filtry][11]
 
-    Navštivte [ https://www.capanalysis.net/ca/#about ](https://www.capanalysis.net/ca/#about) získat další informace o všech CapAnalysis možnosti.
+    Další informace o možnostech všech CapAnalysis najdete na stránce věnovaném [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) .
 
 ## <a name="conclusion"></a>Závěr
 
-Funkce zachytávání paketů ve službě Network Watcher umožňuje zaznamenat data potřebná k provedení forenzní sítě a až lépe porozumíte provozu vaší sítě. V tomto scénáři jsme ukázali, jak zachytávání paketů z Network Watcher lze snadno integrovat s open source vizualizačních nástrojů. S využitím opensourcových nástrojů, jako je například CapAnalysis k vizualizaci zachycení paketů, můžete provádějí hloubkové kontroly paketů a rychle odhalovat trendy v rámci provozu vaší sítě.
+Funkce zachytávání paketů Network Watcher umožňuje zachytit data potřebná k provádění síťových forenzní a lépe porozumět síťovému provozu. V tomto scénáři jsme ukázali, jak je možné zachytávání paketů z Network Watcher snadno integrovat s open source nástroji pro vizualizaci. Díky použití open source nástrojů, jako je CapAnalysis, k vizualizaci zachycení paketů, můžete provádět hloubkovou kontrolu paketů a rychle identifikovat trendy v rámci síťového provozu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o protokoly toků NSG najdete v tématu [protokolů toku NSG](network-watcher-nsg-flow-logging-overview.md)
+Další informace o protokolech toku NSG najdete v [protokolech toků NSG](network-watcher-nsg-flow-logging-overview.md) .
 
-Zjistěte, jak vizualizovat vaše protokoly toků NSG s Power BI návštěvou [toků NSG vizualizaci protokolů pomocí Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Naučte se vizualizovat protokoly toku NSG pomocí Power BI tím, že navštívíte [vizualizace NSG toků protokolů s Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 <!--Image references-->
 
 [1]: ./media/network-watcher-using-open-source-tools/figure1.png

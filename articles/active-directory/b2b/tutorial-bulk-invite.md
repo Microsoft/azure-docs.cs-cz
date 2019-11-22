@@ -1,5 +1,5 @@
 ---
-title: Kurz pro hromadné pozvání uživatelů pro spolupráci B2B – Azure Active Directory | Microsoft Docs
+title: Kurz pro hromadné pozvání uživatelů pro spolupráci B2B – Azure AD
 description: V tomto kurzu se dozvíte, jak použít PowerShell a soubor CSV k hromadnému rozeslání pozvánek externím uživatelům spolupráce B2B služby Azure AD.
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128727"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272352"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Kurz: Hromadné pozvání uživatelů pro spolupráci s B2B v Azure AD (Preview)
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Kurz: Hromadná Pozvánka pro uživatele spolupráce Azure AD B2B (Preview)
 
 |     |
 | --- |
@@ -43,7 +43,7 @@ Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozv�
 
 1. Přihlaste se k Azure Portal pomocí účtu, který je správcem uživatele v organizaci.
 2. V navigačním podokně vyberte **Azure Active Directory**.
-3. V části **Spravovat**vyberte **Uživatelé** > **hromadné pozvánky**.
+3. V části **Spravovat**vyberte **Uživatelé** > **hromadně pozvat**.
 4. Na stránce **hromadně pozvat uživatele (Preview)** vyberte **Stáhnout** a získejte platný soubor. csv s vlastnostmi pozvánky.
 
     ![Tlačítko pro stažení hromadného pozvání](media/tutorial-bulk-invite/bulk-invite-button.png)
@@ -88,7 +88,7 @@ Spusťte následující příkaz:
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Měli byste vidět uživatele, které jste pozvali v seznamu, s hlavním názvem uživatele (UPN) ve formátu *EmailAddress*#EXT #\@*Domain*. Například *lstokes_fabrikam. com\@# contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
+Měli byste vidět seznam uživatelů, které jste pozvali, s hlavním názvem uživatele (UPN) ve formátu *emailaddress*#EXT #\@*domény*. Například *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

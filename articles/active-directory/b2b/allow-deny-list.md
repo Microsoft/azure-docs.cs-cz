@@ -1,5 +1,5 @@
 ---
-title: Povolí nebo zablokuje pozvánky konkrétním organizacím – Azure Active Directory | Microsoft Docs
+title: Povolení nebo blokování pozvánek konkrétním organizacím – Azure AD
 description: Ukazuje, jak může správce pomocí Azure Portal nebo PowerShellu nastavit přístup nebo seznam zamítnutí a povolit nebo zablokovat uživatelům B2B z určitých domén.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474162"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273427"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolí nebo zablokuje pozvánky uživatelům B2B z konkrétních organizací.
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací
 
 Pomocí seznamu povolených nebo zakázaných seznamů můžete povolit nebo zablokovat pozvánky uživatelům B2B z konkrétních organizací. Například pokud chcete blokovat domény osobní e-mailové adresy, můžete nastavit seznam odepření, který obsahuje domény, jako je Gmail.com a Outlook.com. Nebo pokud má vaše firma partnerství s jinými společnostmi, jako jsou Contoso.com, Fabrikam.com a Litware.com, a chcete omezit pozvánky jenom na tyto organizace, můžete do seznamu povolených aplikací přidat Contoso.com, Fabrikam.com a Litware.com.
   
@@ -41,15 +41,15 @@ Toto je nejběžnější scénář, ve kterém vaše organizace potřebuje praco
 
 Přidání seznamu odepření:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Vyberte **Azure Active Directory** > **Uživatelé** > **nastavení uživatele**.
 3. V části **externí uživatelé**vyberte **Spravovat nastavení externí spolupráce**.
 4. V části **omezení spolupráce**vyberte **Odepřít pozvánky zadaným doménám**.
-5. V části **cílové domény**zadejte název jedné z domén, které chcete blokovat. V případě více domén zadejte každou doménu na nový řádek. Například:
+5. V části **cílové domény**zadejte název jedné z domén, které chcete blokovat. V případě více domén zadejte každou doménu na nový řádek. Příklad:
 
    ![Zobrazí možnost Odepřít u přidaných domén.](./media/allow-deny-list/DenyListSettings.png)
  
-6. Až skončíte, klikněte na **Uložit**.
+6. Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
 
 Pokud se po nastavení zásady pokusíte pozvat uživatele z Blokované domény, zobrazí se zpráva s informací o tom, že je doména uživatele v tuto chvíli zablokovaná vašimi zásadami pro pozvánky.
  
@@ -62,15 +62,15 @@ Pokud chcete použít seznam povolených, ujistěte se, že strávíte čas pot�
 
 Chcete-li přidat seznam povolených:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Vyberte **Azure Active Directory** > **Uživatelé** > **nastavení uživatele**.
 3. V části **externí uživatelé**vyberte **Spravovat nastavení externí spolupráce**.
 4. V části **omezení spolupráce**vyberte možnost **povoluje pozvánky pouze do zadaných domén (nejvíce omezující)** .
-5. V části **cílové domény**zadejte název jedné z domén, které chcete udělit. V případě více domén zadejte každou doménu na nový řádek. Například:
+5. V části **cílové domény**zadejte název jedné z domén, které chcete udělit. V případě více domén zadejte každou doménu na nový řádek. Příklad:
 
    ![Zobrazí možnost Allow s přidanými doménami.](./media/allow-deny-list/AllowListSettings.png)
  
-6. Až skončíte, klikněte na **Uložit**.
+6. Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
 
 Pokud se po nastavení zásady pokusíte pozvat uživatele z domény, která není v seznamu povolených, zobrazí se zpráva s informací o tom, že je doména uživatele v tuto chvíli zablokovaná vašimi zásadami pro pozvánky.
 
@@ -140,19 +140,19 @@ V následujícím příkladu vidíte stejný příklad, ale s vloženou definic�
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-Pokud chcete nastavit zásadu seznamu povolených nebo zakázaných, použijte rutinu [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) . Například:
+Pokud chcete nastavit zásadu seznamu povolených nebo zakázaných, použijte rutinu [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) . Příklad:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-K získání této zásady použijte rutinu [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) . Například:
+K získání této zásady použijte rutinu [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) . Příklad:
 
 ```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-Pokud chcete zásadu odebrat, použijte rutinu [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) . Například:
+Pokud chcete zásadu odebrat, použijte rutinu [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) . Příklad:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 

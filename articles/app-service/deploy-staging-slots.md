@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 02d8c511b799a4caee185f7ecb847e6cc15f3c87
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669101"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304744"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravného prostředí v Azure App Service
 <a name="Overview"></a>
@@ -248,6 +249,10 @@ Postup automatického směrování provozních přenosů:
 Po uložení nastavení se zadané procento klientů náhodně směruje do neprodukčního slotu. 
 
 Po automatickém směrování klienta na konkrétní slot je tento slot "připnuté" do této patice po celou dobu trvání této klientské relace. V klientském prohlížeči uvidíte, ke kterému slotu je vaše relace připnuté, a Prohlédněte si soubor cookie `x-ms-routing-name` v hlavičkách protokolu HTTP. Žádost, která je směrována do "přípravného" slotu, má soubor cookie `x-ms-routing-name=staging`. Požadavek, který je směrován do produkčního slotu, má `x-ms-routing-name=self`souborů cookie.
+
+   > [!NOTE]
+   > Vedle webu Azure Portal můžete k nastavení procenta směrování z nástrojů CI/CD, jako jsou kanály DevOps nebo jiné systémy automatizace, použít také příkaz [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing.md#az-webapp-traffic-routing-set) v rozhraní příkazového řádku Azure CLI.
+   > 
 
 ### <a name="route-production-traffic-manually"></a>Ruční směrování provozní provozu
 

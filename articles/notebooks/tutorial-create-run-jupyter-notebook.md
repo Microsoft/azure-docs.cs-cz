@@ -1,74 +1,65 @@
 ---
 title: Kurz – vytvoření a spuštění poznámkového bloku Jupyter v Azure
-description: Vytvoření poznámkového bloku Jupyter v Azure Notebooks, který demonstruje proces lineární regrese v oblasti datové vědy.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+description: Postup vytvoření spustit Poznámkový blok Jupyter v poznámkových bloků Azure, který znázorňuje proces lineární regrese v datové vědy.
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: kraigb
-ms.openlocfilehash: 42072894b99ebf1cfcbb5e622c2a9c3a4321a944
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c151cb0de2855856e92d9de07ad7dabfda2f55b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496652"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277413"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter pomocí Pythonu
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter s využitím Pythonu
 
-Tento kurz vás provede procesem použití Azure Notebooks k vytvoření kompletního poznámkového bloku Jupyter, který ukazuje jednoduchou lineární regresi. V průběhu tohoto kurzu se seznámíte s uživatelským rozhraním poznámkového bloku Jupyter, které zahrnuje vytváření různých buněk, spouštění buněk a prezentování poznámkového bloku jako prezentace.
+Tento kurz vás provede procesem vytvoření kompletní Poznámkový blok Jupyter, který ukazuje jednoduchý lineární regrese pomocí poznámkových bloků Azure. V tomto kurzu se můžete seznámit s Poznámkový blok Jupyter uživatelské rozhraní, které zahrnuje vytvoření různé buňky s buňky a nabízí ten samý poznámkového bloku jako prezentaci.
 
-Dokončený Poznámkový blok najdete na [ukázkách Azure Notebooks GitHubu](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Tento kurz ale začíná novým projektem a prázdným poznámkovým blokem, abyste se mohli setkat s jeho vytvořením krok za krokem.
+Dokončené poznámkovém bloku můžete najít na [GitHub - Samples poznámkových bloků Azure](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Tento kurz, ale začíná nový projekt a prázdný poznámkový blok, může docházet, vytvoříte ho krok za krokem.
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
-1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. (Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Přejděte na [poznámkových bloků Azure](https://notebooks.azure.com) a přihlaste se. (Podrobnosti najdete v tématu [rychlý start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
-1. Na stránce veřejný profil vyberte v horní části stránky **Moje projekty** :
+1. Na stránce svého veřejného profilu vyberte **projekty** v horní části stránky:
 
-    ![Odkaz Moje projekty v horní části okna prohlížeče](media/quickstarts/my-projects-link.png)
+    ![Moje projekty odkaz horní části okna prohlížeče](media/quickstarts/my-projects-link.png)
 
-1. Na stránce **Moje projekty** vyberte **+ Nový projekt** (Klávesová zkratka: n); tlačítko se může zobrazit jenom jako **+** , pokud je okno prohlížeče úzké:
+1. Na **projekty** stránce **+ nový projekt** (Klávesová zkratka: n); na tlačítko se může objevit pouze jako **+** li úzké okno prohlížeče:
 
-    ![Nový projekt na stránce Moje projekty](media/quickstarts/new-project-command.png)
+    ![Nový projekt – příkaz na stránce Mé projekty](media/quickstarts/new-project-command.png)
 
-1. V místní nabídce **vytvořit nový projekt** , která se zobrazí, zadejte nebo nastavte následující podrobnosti a pak vyberte **vytvořit**:
+1. V **vytvořit nový projekt** automaticky otevírané okno, které se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **vytvořit**:
 
-    - **Název projektu**: příklad lineární regrese – Cricket chirps
-    - **ID projektu**: lineární regrese – příklad
-    - **Veřejný projekt**: (nezaškrtnuto)
-    - **Vytvořit Readme.MD**: (nezaškrtnuto)
+    - **Název projektu**: Příklad lineární regrese - kriketu zpěv
+    - **ID projektu**: lineární regrese příklad
+    - **Veřejné projektu**: (zaškrtnuto)
+    - **Vytvoření README.md**: (zaškrtnuto)
 
-1. Po chvíli Azure Notebooks přejít k novému projektu.
+1. Po chvíli se poznámkových bloků Azure přejde do nového projektu.
 
-## <a name="create-the-data-file"></a>Vytvořit datový soubor
+## <a name="create-the-data-file"></a>Vytvoření datového souboru
 
-Model lineární regrese, který vytvoříte v poznámkovém bloku, nakreslí data ze souboru v projektu s názvem *cricket_chirps. csv*. Tento soubor můžete vytvořit buď tak, že ho zkopírujete ze [vzorků Azure Notebooks GitHubu](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)nebo přímo zadáním dat. V následujících částech jsou popsány oba přístupy.
+Trénování modelu lineární regrese v poznámkovém bloku vytvoříte načítá data ze souboru v projektu volá *cricket_chirps.csv*. Tento soubor můžete vytvořit buď tak, že ho zkopírujete ze [vzorků Azure Notebooks GitHubu](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)nebo přímo zadáním dat. Následující části popisují oba přístupy.
 
-### <a name="upload-the-data-file"></a>Nahrát datový soubor
+### <a name="upload-the-data-file"></a>Odeslat datový soubor
 
-1. Na řídicím panelu projektu v Azure Notebooks vyberte **odeslat** > **z adresy URL** .
-1. V místní nabídce zadejte do pole **Adresa URL souboru** a *cricket_chirps. csv* v poli **název souboru**následující adresu URL a potom vyberte **Hotovo**.
+1. Na řídicím panelu projektu v poznámkových bloků Azure, vyberte **nahrát** > **z adresy URL**
+1. V místní nabídce zadejte následující adresu URL v **adresa URL souboru** a *cricket_chirps.csv* v **název_souboru**a pak vyberte **provádí**.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
     ```
 
-1. Soubor *cricket_chirps. csv* by se teď měl zobrazit v seznamu souborů vašeho projektu:
+1. *Cricket_chirps.csv* souboru by se měla objevit v seznamu souboru projektu:
 
-    ![Nově vytvořený soubor CSV zobrazený v seznamu soubor projektu](media/tutorial/csv-file-in-project.png)
+    ![Nově vytvořený soubor CSV zobrazující v seznamu souboru projektu](media/tutorial/csv-file-in-project.png)
 
-### <a name="create-a-file-from-scratch"></a>Vytvoření nového souboru
+### <a name="create-a-file-from-scratch"></a>Vytvořte soubor úplně od začátku
 
-1. Na řídicím panelu projektu v Azure Notebooks vyberte **+ nový** > **prázdný soubor** .
-1. Pole se zobrazí v seznamu souborů projektu. Zadejte *cricket_chirps. csv* a stiskněte klávesu ENTER.
-1. Klikněte pravým tlačítkem na *cricket_chirps. csv* a vyberte **Upravit soubor**.
-1. V editoru, který se zobrazí, zadejte následující data:
+1. Na řídicím panelu projektu v poznámkových bloků Azure, vyberte **+ nová** > **prázdný soubor**
+1. Pole se zobrazí v seznamu souboru projektu. Zadejte *cricket_chirps.csv* a stiskněte klávesu Enter.
+1. Klikněte pravým tlačítkem na *cricket_chirps.csv* a vyberte **upravit soubor**.
+1. V editoru, který se zobrazí zadejte následující údaje:
 
     ```csv
     Chirps/Minute,Temperature
@@ -89,13 +80,13 @@ Model lineární regrese, který vytvoříte v poznámkovém bloku, nakreslí da
     14.4,76.3
     ```
 
-1. Vyberte **Uložit soubor** a uložte soubor a vraťte se na řídicí panel projekt.
+1. Vyberte **uložit soubor** uložte soubor a vraťte se do řídicího panelu Projekt.
 
-## <a name="install-project-level-packages"></a>Instalovat balíčky na úrovni projektu
+## <a name="install-project-level-packages"></a>Instalace balíčků na úrovni projektu
 
-V rámci poznámkového bloku můžete vždy použít příkazy jako `!pip install` v buňce kódu k instalaci požadovaných balíčků. Tyto příkazy se ale spustí pokaždé, když spustíte buňky kódu poznámkového bloku a může trvat značnou dobu. Z tohoto důvodu můžete místo toho instalovat balíčky na úrovni projektu pomocí souboru `requirements.txt`.
+V rámci Poznámkový blok, můžete kdykoli použít příkazů, jako jsou `!pip install` do buňky kódu k instalaci požadované balíčky. Tyto příkazy jsou však spustit pokaždé, když spustíte buňky poznámkovém bloku kódu a může být časově náročné. Z tohoto důvodu můžete místo toho nainstalovat balíčky na úrovni projektu pomocí `requirements.txt` souboru.
 
-1. Pomocí postupu popsaného v části [Vytvoření souboru od začátku vytvořte](#create-a-file-from-scratch) soubor s názvem `requirements.txt` s následujícím obsahem:
+1. Použijte postup v [vytvořit úplně od začátku souboru](#create-a-file-from-scratch) vytvořte soubor s názvem `requirements.txt` s následujícím obsahem:
 
     ```text
     matplotlib==3.0.0
@@ -104,78 +95,78 @@ V rámci poznámkového bloku můžete vždy použít příkazy jako `!pip insta
     scikit-learn==0.20.0
     ```
 
-    Soubor `requirements.txt` můžete také odeslat z místního počítače, pokud dáváte přednost, jak je popsáno v tématu [odeslání datového souboru](#upload-the-data-file).
+    Můžete také nahrát `requirements.txt` soubor ze svého místního počítače, pokud dáváte přednost, jak je popsáno na [Odeslat datový soubor](#upload-the-data-file).
 
-1. Na řídicím panelu projekt vyberte **nastavení projektu**.
-1. V místní nabídce, která se zobrazí, vyberte kartu **prostředí** a pak vyberte **+ Přidat**.
-1. V prvním ovládacím prvku rozevíracího seznamu (operace) v části **nastavení prostředí**vyberte **požadavky. txt**.
-1. V druhém ovládacím prvku rozevírací seznam (název souboru) vyberte soubor *požadavky. txt* (soubor, který jste vytvořili).
-1. V třetím ovládacím prvku rozevíracího seznamu (verze Pythonu) vyberte **Python verze 3,6**.
-1. Vyberte **Save** (Uložit).
+1. Na řídicím panelu Projekt, vyberte **nastavení projektu**.
+1. V místní nabídce, která se zobrazí, vyberte **prostředí** kartu a potom vyberte **+ přidat**.
+1. V prvním rozevíracím seznamu ovládacího prvku (operace) v části **pokynů k instalaci prostředí**, zvolte **souboru Requirements.txt**.
+1. V druhém prvku rozevíracího seznamu (název souboru), zvolte *souboru requirements.txt* (souboru, které jste vytvořili).
+1. Ve třetí rozevíracího seznamu ovládacího prvku (verze Pythonu), zvolte **Python verze 3.6**.
+1. Vyberte **Uložit**.
 
-![Karta prostředí nastavení projektu určující soubor požadavků. txt](media/tutorial/tutorial-requirements-txt.png)
+![Na kartě nastavení prostředí projektu soubor requirements.txt, který zadáte](media/tutorial/tutorial-requirements-txt.png)
 
-V tomto kroku nastavení se všechny poznámkové bloky spuštěné v projektu spustí v prostředí, ve kterém jsou tyto balíčky nainstalované.
+Tento krok instalace na místě se všechny Poznámkový blok, který spustíte v projektu běžet v prostředí kde tyto balíčky nainstalují.
 
 ## <a name="create-and-run-a-notebook"></a>Vytvoření a spuštění poznámkového bloku
 
-S připraveným datovým souborem a nastavením prostředí projektu teď můžete vytvořit a otevřít poznámkový blok.
+Připraveno datový soubor a nastavení prostředí projektu můžete teď vytvořit a otevřete Poznámkový blok.
 
-1. Na řídicím panelu projekt vyberte **+ nový** > **Poznámkový blok**.
-1. V překryvném okně zadejte *příklad lineární regrese – Cricket chirps. ipynb* pro **položku název položky**, zvolte **Python 3,6** pro jazyk a pak vyberte **Nový**.
-1. Po zobrazení nového poznámkového bloku v seznamu soubor vyberte ho a spusťte Poznámkový blok. Automaticky se otevře nová karta prohlížeče.
-1. Vzhledem k tomu, že máte soubor *. txt s požadavky* v nastavení prostředí, zobrazí se zpráva "čeká se na dokončení přípravy kontejneru". Kliknutím na **tlačítko OK** můžete zprávu Zavřít a pokračovat v práci na poznámkovém bloku. Nemůžete však spouštět buňky kódu, dokud nebude prostředí zcela nastavené.
-1. Poznámkový blok se otevře v rozhraní Jupyter s jednou prázdnou buňkou kódu jako výchozí.
+1. Na řídicím panelu Projekt, vyberte **+ nová** > **Poznámkový blok**.
+1. V místní nabídce zadejte *lineární regrese příklad - kriketu Chirps.ipynb* pro **název položky**, zvolte **Python 3.6** pro daný jazyk, vyberte **nový**.
+1. Poté, co nového poznámkového bloku se zobrazí v seznamu souborů, vyberte ji a spuštění poznámkového bloku. Automaticky se otevře na nové kartě prohlížeče.
+1. Vzhledem k tomu, že máte *souboru requirements.txt* soubor v nastavení prostředí se zobrazí zpráva "časový limit na kontejnerech dokončete připravuje." Můžete vybrat **OK** zavřete zprávu a pokračovat v práci v poznámkovém bloku; nelze spustit buňky kódu, ale dokud je plně nastavení prostředí.
+1. Poznámkový blok se otevře v rozhraní Jupyter s buňky jeden prázdný kód jako výchozí.
 
     [![počáteční zobrazení nového poznámkového bloku v Azure Notebooks](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
-## <a name="tour-the-notebook-interface"></a>Prohlídka rozhraní poznámkového bloku
+## <a name="tour-the-notebook-interface"></a>Přehled rozhraní poznámkového bloku
 
-Pomocí poznámkového bloku, který běží, můžete přidat kód a Markdownu buňky, spouštět tyto buňky a spravovat operace poznámkového bloku. Nejdřív ale stačí pár minut seznámit se s rozhraním. Úplnou dokumentaci získáte příkazem nabídky Help ** > ** **Poznámkový blok** .
+Pomocí poznámkového bloku spuštěna můžete přidat kód a buňky Markdownu, spusťte tyto buňky a můžete spravovat činnost poznámkového bloku. Nejprve je však vhodné trvá několik minut se seznámit s rozhraním. Úplnou dokumentaci, vyberte **pomáhají** > **Poznámkový blok pomáhají** příkazu nabídky.
 
 V horní části okna se zobrazí následující položky:
 
-(A) název vašeho poznámkového bloku, který můžete upravit kliknutím na.
-(B) tlačítka pro přechod na obsahující projekt a řídicí panel projekty, které otevřou nové karty v prohlížeči.
-(C) nabídka s příkazy pro práci s poznámkovým blokem.
-(D) panel nástrojů s zástupci pro běžné operace.
-(E) plátno pro úpravy obsahující buňky.
-(F) indikátor, zda je Poznámkový blok důvěryhodný (výchozí není **důvěryhodný**).
-(G) jádro používané ke spuštění poznámkového bloku spolu s indikátorem aktivity.
+(A) název v poznámkovém bloku, který můžete upravit kliknutím.
+(B) tlačítek přejděte na projekt a řídicím panelu projekty, které otevřete nových kartách v prohlížeči.
+Nabídka (C) A s příkazy pro práci s poznámkového bloku.
+(D) panel nástrojů, pomocí klávesové zkratky pro běžné operace.
+(E) úpravy plátna obsahující buňky.
+(F) ukazatelem toho, jestli je důvěryhodný Poznámkový blok (výchozí hodnota je **není důvěryhodné**).
+(G) jádru používá ke spouštění spolu s indikátorem aktivity poznámkového bloku.
 
 [![oblasti primárního uživatelského rozhraní rozhraní Jupyter](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
-Jupyter poskytuje vestavěnou prohlídku primárních prvků uživatelského rozhraní. Spusťte prohlídku tak, že vyberete příkaz **Prohlídka uživatelského rozhraní** > **help** a kliknete na automaticky otevíraná okna.
+Jupyter poskytuje integrované si základní prvky uživatelského rozhraní. Spusťte prohlídku kliknutím na položku **pomáhají** > **uživatelské rozhraní Tour** příkazu a klikání automaticky otevíraná okna.
 
 Skupiny příkazů nabídky jsou následující:
 
 | Nabídka | Popis |
 | --- | --- |
-| Soubor | Příkazy pro správu souboru poznámkového bloku, včetně příkazů pro vytváření a kopírování poznámkových bloků, zobrazení náhledu tisku a stažení poznámkového bloku v nejrůznějších formátech. |
-| Upravit | Typické příkazy pro vyjímání, kopírování a vkládání buněk, hledání a nahrazování hodnot, správu příloh buněk a vkládání obrázků.  |
-| Zobrazit | Příkazy pro řízení viditelnosti různých částí uživatelského rozhraní Jupyter. |
-| Vložit | Příkazy pro vložení nové buňky nad nebo pod aktuální buňku. Tyto příkazy použijete často při vytváření poznámkového bloku. |
-| Jednobuňkovou | Různé příkazy **spuštění** spouštějí jednu nebo více buněk v různých kombinacích. Příkazy **typu buňky** mění typ buňky mezi **kódem**, **Markdownu**a **nezpracovaným NBConvert** (prostý text). Příkazy **aktuální výstupy** a **všechny výstupy** řídí způsob, jakým se zobrazuje výstup z kódu spuštění, a obsahuje příkaz pro vymazání všech výstupů. |
-| Jádra | Příkazy pro správu způsobu spouštění kódu v jádru spolu s **jádrem Change** pro změnu jazyka nebo verze Pythonu používané ke spuštění poznámkového bloku. |
-| Data | Příkazy pro nahrání a stažení souborů z projektu nebo relace. Viz [práce s datovými soubory projektu](work-with-project-data-files.md) |
-| Widgety | Příkazy pro správu [widgetů Jupyter](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), které poskytují další možnosti pro vizualizaci, mapování a vykreslování.|
-| Nápověda | Příkazy, které poskytují nápovědu a dokumentaci pro rozhraní Jupyter. |
+| Soubor | Příkazy pro správu soubor poznámkového bloku, včetně příkazů při vytváření a kopírování poznámkových bloků, zobrazit náhled před tiskem a stáhnout Poznámkový blok v různých formátech. |
+| Upravit | Typické příkazy Vyjmout, kopírovat a vkládat buňky, najít a nahradit hodnoty, spravovat přílohy buňky a vkládat obrázky.  |
+| Zobrazení | Příkazy pro řízení viditelnosti různé části uživatelského rozhraní aplikace Jupyter. |
+| Vložit | Příkazů vložte novou buňku nad nebo pod aktuální buňky. Můžete použít tyto příkazy často při vytvoření poznámkového bloku. |
+| Buňky | Různé **spustit** příkazy se spouští jeden nebo více buněk v různých kombinacích. **Typ buňky** příkazy změnit typ buňky mezi **kód**, **Markdownu**, a **nezpracovaná NBConvert** (prostý text). **Aktuální výstupy** a **všechny výstupy** příkazy řídit, jak se zobrazí výstup z spuštění kódu a zadat příkaz pro vymazání veškerý výstup. |
+| Jádra | Příkazy pro správu, jak je kód spuštěn v jádru, spolu s **změnu jádra** Změna jazyka nebo verze Pythonu používá ke spuštění poznámkového bloku. |
+| Data | Příkazy pro nahrávání a stahování souborů z projektu nebo relace. Zobrazit [práce s datovými soubory projektu](work-with-project-data-files.md) |
+| Widgety | Příkazy pro správu [Jupyter widgety](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), která poskytují další funkce pro vizualizaci, mapování a vykreslení.|
+| Nápověda | Příkazy, které poskytují nápovědy a dokumentace pro rozhraní Jupyter. |
 
-Většina příkazů na panelu nástrojů má ekvivalentní příkazy nabídky. Jedinou výjimkou je, že je k dispozici **prezentace pro vložení nebo úpravu**, která je popsána v [poznámkových blocích pro sdílení](present-jupyter-notebooks-slideshow.md)
+Většina příkazů na panelu nástrojů má ekvivalentní příkazy. Jedinou výjimkou je **Enter/upravit NARŮSTAT prezentace**, která je popsána v [sdílených složek a k dispozici poznámkových bloků](present-jupyter-notebooks-slideshow.md).
 
-K naplnění poznámkového bloku v následujících částech použijete několik těchto příkazů.
+Použijete některé z těchto příkazů jako naplnit je Poznámkový blok v následujících částech.
 
-## <a name="create-a-markdown-cell"></a>Vytvoření buňky Markdownu
+## <a name="create-a-markdown-cell"></a>Vytváření Markdownu buňky
 
-1. Klikněte do první prázdné buňky zobrazené na plátně poznámkového bloku. Ve výchozím nastavení je buňka typem **kódu** , což znamená, že je navržena tak, aby obsahovala kód spustitelný pro vybrané jádro (Python, R F#nebo). Aktuální typ je zobrazen v rozevíracím seznamu typ na panelu nástrojů:
+1. Klikněte do první prázdné buňky, zobrazí na plátně poznámkového bloku. Ve výchozím nastavení, je buňka **kód** typu, což znamená, že je navržena tak, aby obsahovala spustitelného kódu pro vybrané jádra (Python, R, nebo F#). Aktuální typ je zobrazen v typu rozevíracího seznamu na panelu nástrojů:
 
-    ![Rozevírací seznam panelu nástrojů typu buňky](media/tutorial/tutorial-cell-type-drop-down.png)
+    ![Buňka nástrojů rozevírací nabídky typu](media/tutorial/tutorial-cell-type-drop-down.png)
 
-1. Pomocí rozevíracího seznamu na panelu nástrojů změňte typ buňky na **Markdownu** ; případně **použijte > buňky** **typ** buňky > příkazu nabídky **Markdownu** :
+1. Změnit typ buňky do **Markdownu** pomocí rozevíracího seznamu, nebo můžete použít **buňky** > **typ buňky**  >   **Markdown** příkazu nabídky:
 
-    ![Příkaz nabídky pro typ buňky](media/tutorial/tutorial-cell-type-menu.png)
+    ![Příkaz nabídky typ buňky](media/tutorial/tutorial-cell-type-menu.png)
 
-1. Klikněte na buňku pro zahájení úprav a pak zadejte následující Markdownu:
+1. Klikněte na buňku, kterou chcete začít upravovat, a pak zadejte následující Markdown:
 
     ```markdown
     # Example Linear Regression
@@ -196,9 +187,9 @@ K naplnění poznámkového bloku v následujících částech použijete někol
     When you run a code cell, Jupyter executes the code; when you run a Markdown cell, Jupyter renders all the formatting into text that's suitable for presentation.
     ```
 
-1. Chcete-li vykreslit Markdownu do HTML pro prohlížeč, vyberte příkaz **Spustit** na panelu nástrojů nebo použijte **příkaz > ** **Spustit buňky** . Kód Markdownu pro formátování a propojení se teď zobrazuje podle očekávání v prohlížeči.
+1. Vykreslování Markdownu do kódu HTML v prohlížeči, vyberte **spustit** příkaz na panelu nástrojů, nebo použít **buňky** > **spustit buňky** příkazu. Kód Markdownu pro formátování a odkazy teď budou zobrazovat jako očekáváte, že je v prohlížeči.
 
-1. Když na poznámkovém bloku spustíte poslední buňku, Jupyter automaticky vytvoří novou buňku pod tu, kterou jste spustili. Do této buňky vložte více Markdownu zopakováním kroků v této části s následujícím Markdownu:
+1. Při spuštění poslední buňky v poznámkovém bloku Jupyter automaticky vytvoří novou buňku pod ta, kterou jste spustili. Vložte další Markdownu do této buňce opakováním kroků v této části s následující Markdown:
 
     ```markdown
     ## Install packages using pip or conda
@@ -212,13 +203,13 @@ K naplnění poznámkového bloku v následujících částech použijete někol
     \```
     ```
 
-1. Pokud chcete znovu upravit Markdownu, dvakrát klikněte na vykreslenou buňku. Chcete-li po provedení změn znovu vykreslit kód HTML, spusťte buňku.
+1. Chcete-li upravit Markdown znovu, klikněte dvakrát na vykresleného buňky. K vykreslení HTML znovu po provedení změn, spusťte na buňku.
 
-## <a name="create-a-code-cell-with-commands"></a>Vytvoření buňky kódu pomocí příkazů
+## <a name="create-a-code-cell-with-commands"></a>Vytvořit buňku kódu pomocí příkazů
 
-Jak je vysvětleno v předchozí buňce Markdownu, můžete zahrnout příkazy přímo do poznámkového bloku. Příkazy můžete použít k instalaci balíčků, spuštění oblého nebo wget k načtení dat nebo cokoli jiného. Jupyter poznámkové bloky se efektivně spouštějí v rámci virtuálního počítače se systémem Linux, takže máte k dispozici úplný příkaz pro systém Linux, se kterým pracujete.
+Jak jsme vysvětlili předcházejí buňky Markdown, můžete zahrnout příkazy přímo v poznámkovém bloku. Příkazy můžete použít k instalaci balíčků, spusťte nástroj curl nebo wget pro načtení dat nebo cokoli jiného. Poznámkové bloky Jupyter se efektivně provozovat v rámci virtuálního počítače s Linuxem, abyste získali úplný Linuxový příkaz nastaven pro práci s.
 
-1. Níže uvedené příkazy zadejte v buňce kódu, která se zobrazila po použití **příkazu Spustit** na předchozí buňce Markdownu. Pokud nevidíte novou buňku, vytvořte ji s **vložením** > **Vložit buňku níže** nebo použijte tlačítko **+** na panelu nástrojů.
+1. Zadejte příslušného příkazu do buňky kódu, které se zobrazovalo po vyčerpání limitů pro vás **spustit** na předcházejí buňky Markdownu. Pokud nevidíte novou buňku, vytvořte si ho s **vložit** > **Vložit buňku pod** nebo použijte **+** tlačítko na panelu nástrojů.
 
     ```bash
     !pip install numpy
@@ -227,21 +218,21 @@ Jak je vysvětleno v předchozí buňce Markdownu, můžete zahrnout příkazy p
     !pip install sklearn
     ```
 
-1. Před spuštěním této buňky vytvořte novou buňku s tlačítkem **+** na panelu nástrojů, nastavte ji na Markdownu a zadejte následující vysvětlení:
+1. Před spuštěním buňku, vytvořte novou buňku s **+** tlačítko na panelu nástrojů, nastavte ho na Markdown a zadejte následující vysvětlení:
 
     ```markdown
     Note that when you run a code block that contains install commands, and also those with `import` statements, it make take the notebooks a little time to complete the task. To the left of the code block you see `In [*]` to indicate that execution is happening. The Notebook's kernel on the upper right also shows a filled-in circle to indicate "busy."
     ```
 
-1. Vyberte **buňku** > **spuštění příkazu Spustit vše** pro spuštění všech buněk v poznámkovém bloku. Všimněte si, že se buňky Markdownu vykreslují jako HTML a příkaz se spustí v jádru a sledujte indikátor jádra, jak je popsáno v samotném Markdownu:
+1. Vyberte **buňky** > **spustit všechny** příkaz ke spuštění všechny buňky v poznámkovém bloku. Všimněte si, že buňky Markdownu vykreslují jako HTML a pomocí příkazu Spustit v jádru a sledujte indikátor jádra, jak je popsáno v Markdownu, samotný:
 
-    ![Indikátor zaneprázdněnosti pro jádro poznámkového bloku](media/tutorial/tutorial-kernel-busy.png)
+    ![Indikátor zaneprázdnění pro jádra poznámkového bloku](media/tutorial/tutorial-kernel-busy.png)
 
-1. I když se všechny `pip install` příkazy spouštějí a protože jste už tyto balíčky v prostředí projektu nainstalovali (a protože jsou taky zahrnuté ve výchozím nastavení Azure Notebooks), zobrazí se celá řada zpráv, které si přečtou "požadavek už spokojeni. " Celý výstup může být vizuálně rušivý, takže vyberte tento prodej (pomocí jediného kliknutí) a pak **použijte > ** **výstupy buněk** > **přepínač** pro skrytí výstupu. Výstup můžete zcela odebrat také pomocí příkazu **clear** v této nabídce.
+1. Také trvá nějakou dobu pro všechny `pip install` příkazy se spustí a protože jste už nainstalovali tyto balíčky v prostředí projektu (a jsou také zahrnuté poznámkových bloků Azure ve výchozím nastavení), uvidíte počet zpráv, které čtou, "požadavek již splněny." Všechny tento výstup může být vizuálně rušivé, proto vyberte, který prodávat (pomocí kliknutí) a pak použít **buňky** > **buňky výstupy** > **přepnout**skrýt výstup. Můžete také použít **vymazat** Tento stejný podnabídce zcela odstranit výstup příkazu.
 
-    Příkaz **přepínání** skrývá pouze poslední výstup z buňky; Pokud znovu spustíte tuto buňku, výstup se znovu zobrazí.
+    **Přepnout** příkaz skryje pouze nejnovější výstup z buňky; Pokud znovu spustíte buňku, zobrazí se výstup.
 
-1. Vzhledem k tomu, že balíčky jsou nainstalovány v prostředí projektu, odkomentujte `! pip install` příkazy pomocí `#`; tímto způsobem můžou zůstat v poznámkovém bloku jako instruktážní materiál, ale nebudete je muset spouštět a nebudete mít k disdobu zbytečné výstupy. V takovém případě zachováte příkazy s komentářem v poznámkovém bloku také závislosti poznámkového bloku.
+1. Vzhledem k tomu, že jsou balíčky instalovány v prostředí projektu, okomentujte `! pip install` příkazy pomocí `#`; tímto způsobem můžete zůstávají v poznámkovém bloku jako instruktážní materiál, ale nepořizuje kdykoli spustit a nevytvoří výstup zbytečné. V takovém případě uchovávání komentářem příkazy v poznámkovém bloku také určuje závislosti poznámkového bloku.
 
     ```bash
     # !pip install numpy
@@ -250,17 +241,17 @@ Jak je vysvětleno v předchozí buňce Markdownu, můžete zahrnout příkazy p
     # !pip install sklearn
     ```
 
-## <a name="create-the-remaining-cells"></a>Vytvoření zbývajících buněk
+## <a name="create-the-remaining-cells"></a>Vytvořit zbývající buňky
 
-K naplnění zbytku poznámkového bloku můžete dál vytvořit řadu Markdownu a buněk kódu. Pro každou buňku uvedenou níže vytvořte novou buňku a pak nastavte typ a vložte ho do obsahu.
+K vyplnění zbývající části Poznámkový blok, můžete pak vytvořit sérii Markdown a buňky s kódem. Pro každou buňku uvedených níže nejprve vytvoříte novou buňku, pak nastavte typ, pak vložte obsah.
 
-I když můžete počkat na spuštění poznámkového bloku po vytvoření každé buňky, je zajímavou pro spuštění každé buňky při jejím vytváření. Ne všechny buňky zobrazují výstup; Pokud se nezobrazí žádné chyby, Předpokládejme, že buňka běžela normálně.
+I když můžete počkat a po vytvoření každé buňce Poznámkový blok spustit, je zajímavé pro spuštění jednotlivých buněk při vytváření. Ne všechny buňky zobrazit výstup; Pokud nevidíte všechny chyby, se předpokládá, že buňka spustil normálně.
 
-Každá buňka kódu závisí na kódu, který byl spuštěn v předchozích buňkách, a pokud ponecháte spustit jednu z buněk, mohou další buňky způsobit chyby. Pokud zjistíte, že jste zapomněli spustit buňku, zkuste použít **buňku** > **Spustit vše výše** před spuštěním aktuální buňky.
+Každá buňka kód závisí na kódu, který je spuštěn v předchozí buňky a Pokud opomenete ke spuštění jednu z buněk, novější buňky může způsobit chyby. Pokud zjistíte, že jste zapomněli ke spuštění na buňku, zkuste použít **buňky** > **spustit všechny nad** před spuštěním na aktuální buňku.
 
-Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), zkontrolujte, zda je v případě potřeby každá buňka nastavena na "Code" nebo "Markdownu". Například chyba "Neplatná syntaxe" obvykle nastane, pokud jste zadali Markdownu do buňky kódu.
+Pokud se zobrazí neočekávaným výsledkům (což je pravděpodobně bude!), zkontrolujte, že každá buňka je nastavena na "Kód" nebo "Markdownu" podle potřeby. Například chybu "Neplatná syntaxe" obvykle dochází, když jste zadali Markdownu do buňky kódu.
 
-1. Buňka Markdownu:
+1. Buňka markdown:
 
     ```markdown
     ## Import packages and prepare the dataset
@@ -268,7 +259,7 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     In this example we're using numpy, pandas, and matplotlib. Data is in the file cricket_chirps.csv. Because this file is in the same project as this present Notebook, we can just load it using a relative pathname.
     ```
 
-1. Buňka kódu; Při spuštění zobrazuje obsah tabulky jako výstup. Výstup můžete potlačit zadáním komentáře k příkazu `print`.
+1. Buňky kódu; Při spuštění se zobrazí obsah tabulky jako výstup. Můžete tak potlačit výstup `print` příkazu.
 
     ```python
     import numpy as np
@@ -281,15 +272,15 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     ```
 
     > [!Note]
-    > Může se zobrazit upozornění z tohoto kódu o změně velikosti numpy. dtype. upozornění je možné ignorovat.
+    > Může se zobrazit upozornění z tohoto kódu o "velikost numpy.dtype změnit"; upozornění můžete ignorovat.
 
-1. Buňka Markdownu:
+1. Buňka markdown:
 
     ```markdown
     Next, split the dataset into a Training set (2/3rds) and Test set (1/3rd). We don't need to do any feature scaling because there is only one column of independent variables, and packages typically do scaling for you.
     ```
 
-1. Buňka kódu; Při spuštění nemá tato buňka žádný výstup.
+1. Buňky kódu; Při spuštění této buňce nemá žádný výstup.
 
     ```python
     from sklearn.model_selection import train_test_split
@@ -297,7 +288,7 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
     ```
 
-1. Buňka Markdownu:
+1. Buňka markdown:
 
     ```markdown
     ## Fit the data to the training set
@@ -309,7 +300,7 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept_`).
     ```
 
-1. Buňka kódu; Po spuštění se v této buňce zobrazí výstup `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
+1. Buňky kódu; Při spuštění této buňce zobrazí výstup, `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
 
     ```python
     from sklearn.linear_model import LinearRegression
@@ -318,7 +309,7 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     regressor.fit(X_train, y_train)   # Provide training data so the machine can learn to predict using a learned model.
     ```
 
-1. Buňka Markdownu:
+1. Buňka markdown:
 
     ```markdown
     ## Predict the results
@@ -330,14 +321,14 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     In the code, the `y_test` matrix (from when we split the set) contains the real observations. `y_pred` assigned here contains the predictions for the same `X_test` inputs. It's not expected that the test or training points exactly fit the regression; the regression is trying to find the model that we can use to make predictions with new observations of the independent variables.
     ```
 
-1. Buňka kódu; Při spuštění se v této buňce zobrazí výsledky, jako `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`.
+1. Buňky kódu; Při spuštění této buňce zobrazí výsledky, jako je `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`.
 
     ```python
     y_pred = regressor.predict(X_test)
     print(y_pred)
     ```
 
-1. Buňka Markdownu:
+1. Buňka markdown:
 
     ```markdown
     It's interesting to think that all the "predictions" we use in daily life, like weather forecasts, are just regression models of some sort working with various data sets. Those models are much more complicated than what's shown here, but the idea is the same.
@@ -349,7 +340,7 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     The challenge is determining what data to actually use. For example, with weather, how far back in time do you go? How have weather patterns been changing decade by decade? In any case, something like weather predictions will be doing things hour by hour, day by day, for things like temperature, precipitation, winds, cloud cover, etc. Radar and other observations are of course fed into the model and the predictions are reduced to mathematics.
     ```
 
-1. Buňka Markdownu:
+1. Buňka markdown:
 
     ```markdown
     ## Visualize the results
@@ -357,7 +348,7 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     The following code generates a plot: green dots are training data, red dots are test data, blue dots are predictions. Gray line is the regression itself. You see that all the blue dots are exactly on the line, as they should be, because the predictions exactly fit the model (the line).
     ```
 
-1. Buňka kódu; Při spuštění tato buňka vytvoří grafický graf. Pokud se vykreslení nezobrazí poprvé (a místo toho se zobrazí "obrázek 640 × 1 osy"), spusťte tuto buňku znovu.
+1. Buňky kódu; Při spuštění, vytvoří tato buňka Grafický diagram. Pokud nemáte čas vykreslení první (a místo toho najdete v článku "Velikost obrázku 640 × 480 měřiče s 1 osy"), spusťte znovu buňku.
 
     ```python
     import matplotlib.pyplot as plt
@@ -372,9 +363,9 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     plt.show()
     ```
 
-    ![Vykreslit výstup z matplotlib kódu](media/tutorial/tutorial-plot-output.png)
+    ![Diagram výstup z matplotlib kódu](media/tutorial/tutorial-plot-output.png)
 
-1. Buňka Markdownu:
+1. Buňka markdown:
 
     ```markdown
     ## Closing comments
@@ -386,31 +377,31 @@ Pokud se zobrazí neočekávané výsledky (což pravděpodobně budete mít!), 
     Again, once you are working with more than one or two independent variables, it's much easier to use machine learning to crunch the numbers than to try to visualize it graphically.
     ```
 
-## <a name="clear-outputs-and-rerun-all-cells"></a>Vymazat výstupy a znovu spustit všechny buňky
+## <a name="clear-outputs-and-rerun-all-cells"></a>Vymazat výstupy a znovu spusťte všechny buňky
 
-Po provedení kroků v předchozím oddílu k naplnění celého poznámkového bloku jste v kontextu úplného kurzu lineární regrese vytvořili jak běh kódu. Tato přímá kombinace kódu a textu je jednou z skvělých výhod poznámkových bloků!
+Po provedení kroků v předchozí části a naplnit celý poznámkový blok, vytvořili jste i část spouštění kódu v rámci úplný kurz týkající se lineární regrese. Přímé kombinací kód a text je jedním z velké výhody poznámkových bloků!
 
-Zkuste teď znovu spustit celý Poznámkový blok:
+Zkuste znovu spustit v celé Poznámkový blok:
 
-1. Vymažte všechna data relace jádra a veškerý výstup z buňky, a to tak, že vyberete **jádro** > **restartovat & Vymazat výstup**. Tento příkaz je vždycky dobrý, aby se spouštěl po dokončení poznámkového bloku, abyste měli jistotu, že jste nevytvořili žádné neobvyklé závislosti mezi buňkami kódu.
+1. Vymazat všechna jádra relace data a všechny buňky výstup tak, že vyberete **jádra** > **Vymazat výstup & restartování**. Tento příkaz je vždy vhodné spustit, když jste dokončili Poznámkový blok, pro jistotu, že jste ještě nevytvořili žádné neobvyklé závislosti mezi buňkami v kódu.
 
-1. Spusťte Poznámkový blok znovu pomocí **buňky** > **Spustit vše**. Všimněte si, že indikátor jádra je vyplněn, zatímco je spuštěný kód.
+1. Znovu spustit pomocí poznámkového bloku **buňky** > **spustit všechny**. Všimněte si, že indikátor jádra je vyplněna je spuštěný kód.
 
-    Pokud máte nějaký kód, který se spouští příliš dlouho nebo jinak se zablokuje, můžete zastavit jádro pomocí příkazu **kernel** > **Interrupt** .
+    Pokud máte veškerý kód, který běží příliš dlouho, nebo jinak zasekne, můžete zastavit jádra s použitím **jádra** > **přerušení** příkazu.
 
-1. Posuňte se přes Poznámkový blok a Projděte si výsledky. (Pokud se graf znovu nezobrazí, spusťte tuto buňku znovu.)
+1. Projděte si ho na podívejte se na výsledky. (Pokud znovu vykreslení nezobrazí, spusťte znovu buňka.)
 
-## <a name="save-halt-and-close-the-notebook"></a>Uložení, zastavení a zavření poznámkového bloku
+## <a name="save-halt-and-close-the-notebook"></a>Uložte, zastavení a zavřete poznámkový blok
 
-Během úprav poznámkového bloku můžete jeho aktuální stav uložit pomocí příkazu **soubor** > **Uložit a kontrolní bod** nebo tlačítko Uložit na panelu nástrojů. Kontrolní bod vytvoří snímek, ke kterému se můžete kdykoli vrátit během relace. Kontrolní body umožňují provést řadu experimentálních změn, a pokud tyto změny nefungují, **můžete se vrátit** k kontrolnímu bodu pomocí příkazu > **vrátit zpět ke** kontrolnímu bodu. Alternativním přístupem je vytvořit nadbytečné buňky a komentovat libovolný kód, který nechcete spouštět; Jak funguje.
+Během doby upravujete Poznámkový blok, uložíte jeho aktuální stav s **souboru** > **uložit a kontrolního bodu** příkaz nebo uložit na panelu nástrojů. "Kontrolního bodu" vytvoří snímek, který můžete se vrátit k kdykoli během relace. Kontrolní body umožňují provádět řadu experimentální změn, a pokud se tyto změny nefungují, můžete pouze se vrátit k kontrolního bodu pomocí **souboru** > **obnovit kontrolní bod** příkazu. Alternativním přístupem je vytvoření další buňky a Odkomentujte veškerý kód, který nechcete spuštění. v obou případech funguje.
 
-Můžete také použít **soubor** > **vytvořit kopii** kdykoli a vytvořit kopii aktuálního stavu poznámkového bloku do nového souboru v projektu. Toto kopírování se automaticky otevře na nové kartě prohlížeče.
+Můžete také použít **souboru** > **vytvořit kopii** příkaz kdykoli vytvoříte kopii aktuální stav poznámkového bloku do nového souboru ve vašem projektu. Tuto kopii automaticky se otevře na nové kartě prohlížeče.
 
-Po dokončení práce s poznámkovým blokem použijte **příkaz** > **Zavřít a zastavit** , který zavře Poznámkový blok a ukončí jádro, na kterém je spuštěný. Azure Notebooks pak automaticky zavře kartu prohlížeče.
+Jakmile budete hotovi s poznámkového bloku, použijte **souboru** > **zavřít a zastavení** příkaz, který zavření poznámkového bloku a jádra, který byl spuštěný ji vypne. Poznámkových bloků Azure klikněte na kartu prohlížeče se automaticky zavře.
 
-## <a name="debug-notebooks-using-visual-studio-code"></a>Ladění poznámkových bloků pomocí Visual Studio Code
+## <a name="debug-notebooks-using-visual-studio-code"></a>Ladění pomocí Visual Studio Code poznámkové bloky
 
-Pokud se buňky kódu v poznámkovém bloku nechovají očekávaným způsobem, může dojít k chybám kódu nebo jiným VADM. Nicméně Kromě použití příkazů `print` k zobrazení hodnoty proměnných, typické prostředí Jupyter nenabízí žádné ladicí pomůcky.
+Pokud kód buňky v poznámkovém bloku není chovají způsobem, jakým jste očekávali, můžete mít kód chyby nebo jiné chyby. Nicméně Kromě použití příkazů `print` k zobrazení hodnoty proměnných, typické prostředí Jupyter nenabízí žádné ladicí pomůcky.
 
 Naštěstí si můžete stáhnout soubor *. ipynb* poznámkového bloku a pak ho otevřít v Visual Studio Code pomocí rozšíření Python. Rozšíření přímo importuje Poznámkový blok jako jeden soubor kódu a zachovává vaše Markdownu buňky v komentářích. Po importu poznámkového bloku můžete pomocí ladicího programu Visual Studio Code krokovat kód, nastavit zarážky, kontrolovat stav a tak dále. Po provedení oprav kódu pak exportujte soubor *. ipynb* z Visual Studio Code a nahrajte ho zpátky do Azure Notebooks.
 
@@ -420,14 +411,14 @@ Další funkce Visual Studio Code pro notebooky Jupyter také najdete v tématu 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Prozkoumat ukázkové poznámkové bloky](azure-notebooks-samples.md)
+- [Prozkoumejte ukázkové poznámkové bloky](azure-notebooks-samples.md)
 
-Články s postupy:
+Články s návody:
 
-- [Vytváření a klonování projektů](create-clone-jupyter-notebooks.md)
+- [Vytvoření a klonování projekty](create-clone-jupyter-notebooks.md)
 - [Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Instalace balíčků z poznámkového bloku](install-packages-jupyter-notebook.md)
-- [Prezentace prezentace](present-jupyter-notebooks-slideshow.md)
+- [Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
+- [K dispozici prezentace](present-jupyter-notebooks-slideshow.md)
 - [Práce s datovými soubory](work-with-project-data-files.md)
-- [Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
+- [Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
 - [Použít Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

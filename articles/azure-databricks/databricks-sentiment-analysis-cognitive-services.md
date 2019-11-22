@@ -9,16 +9,16 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 12e6d292779d497d907bb68eece3fc2338f072fd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 13afdf4d6c45927c60e8de9fd228f70b7c0a3c68
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602066"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286539"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Kurz: Analýza mínění na streamovaných datech pomocí Azure Databricks
 
-V tomto kurzu se naučíte, jak spustit analýzu mínění pro datový proud dat pomocí Azure Databricks téměř v reálném čase. Pomocí služby Azure Event Hubs nastavíte systém pro příjem dat. Pomocí konektoru služby Event Hubs pro Spark budete přijímat zprávy ze služby Event Hubs do Azure Databricks. Nakonec použijete rozhraní API pro rozpoznávání služby ke spuštění analýzy mínění dat v datových proudech.
+V tomto kurzu se dozvíte, jak spustit analýzu mínění na streamovaných datech téměř v reálném čase pomocí Azure Databricks. Pomocí služby Azure Event Hubs nastavíte systém pro příjem dat. Pomocí konektoru služby Event Hubs pro Spark budete přijímat zprávy ze služby Event Hubs do Azure Databricks. Nakonec použijete rozhraní API pro rozpoznávání služby ke spuštění analýzy mínění dat v datových proudech.
 
 Na konci tohoto kurzu budete streamovat tweety z Twitteru, které obsahují výraz Azure, a na těchto tweetech spustíte analýzu mínění.
 
@@ -57,7 +57,7 @@ Tyto požadavky můžete splnit dokončením kroků v článku [Vytvoření obor
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+Přihlásit se na [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
@@ -102,7 +102,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     Přijměte všechny výchozí hodnoty kromě následujících:
 
    * Zadejte název clusteru.
-   * V tomto článku vytvořte cluster s modulem runtime **5,2** .
+   * V tomto článku vytvořte cluster s modulem runtime **6,0** .
    * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po __ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
    Vyberte pracovní proces clusteru a velikost uzlu ovladače vhodné pro vaše technická kritéria a [rozpočet](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).
@@ -160,7 +160,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
 V tomto kurzu použijete [rozhraní API služby Azure Cognitive Services analýza textu](../cognitive-services/text-analytics/overview.md) ke spouštění analýzy mínění pro datový proud tweety téměř v reálném čase. Předtím, než použijete rozhraní API, musíte vytvořit účet Azure Cognitive Services v Azure a načíst přístupový klíč pro použití rozhraní API Analýza textu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 2. Vyberte **+ Vytvořit prostředek**.
 
@@ -176,11 +176,11 @@ V tomto kurzu použijete [rozhraní API služby Azure Cognitive Services analýz
    - Vyberte předplatné Azure, ve kterém se účet vytvoří.
    - Vyberte umístění Azure.
    - Vyberte cenovou úroveň služby. Další informace o cenách služeb Cognitive Services najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/?WT.mc_id=sparkeventhubs-docs-alehall).
-   - Určete, jestli chcete vytvořit novou skupinu prostředků, nebo vyberte existující.
+   - Určete, jestli chcete vytvořit novou skupinu prostředků nebo vyberte existující.
 
      Vyberte **Vytvořit**.
 
-5. Po vytvoření účtu vyberte na kartě **Přehled** možnost **Zobrazit přístupové klíče**.
+5. Po vytvoření účtu se z **přehled** kartu, vyberte možnost **zobrazení přístupových klíčů**.
 
     ![Zobrazit přístupové klíče](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Zobrazit přístupové klíče")
 
@@ -439,7 +439,7 @@ Výstup teď vypadá podobně jako následující fragment kódu:
     ...
     ...
 
-Nyní máte streamovaná data z Azure Event Hubs do Azure Databricks téměř v reálném čase pomocí konektoru Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall).
+Jste nyní streamovali data ze služby Azure Event Hubs do Azure Databricks v reálném čase pomocí konektoru služby Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="run-sentiment-analysis-on-tweets"></a>Spuštění analýzy mínění na tweetech
 
@@ -552,7 +552,7 @@ object SentimentDetector extends Serializable {
 }
 ```
 
-Přidejte další buňku pro definování systému Spark UDF (uživatelsky definovaná funkce), která určuje mínění.
+Přidejte jinou buňku k definování Spark UDF (uživatelem definované funkce), který určuje mínění.
 
 ```scala
 // User Defined Function for processing content of messages to return their sentiment.
@@ -614,7 +614,7 @@ Zobrazený výstup by měl vypadat přibližně jako následující fragment kó
 
 Hodnota ve sloupci **Sentiment** (Mínění) blížící se **1** značí skvělé zkušenosti s Azure. Hodnota blížící se **0** značí, že se uživatel při práci s Microsoft Azure setkal s problémy.
 
-A to je vše! Pomocí Azure Databricks jste úspěšně streamovaná data do služby Azure Event Hubs, využili jste data datového proudu pomocí konektoru Event Hubs a potom jsme spustili mínění analýzu dat streamování téměř v reálném čase.
+A to je vše! Pomocí Azure Databricks jste úspěšně streamovali data do služby Azure Event Hubs, streamovaná data pomocí konektoru služby Event Hubs a pak jste spustili analýzu mínění na streamovaných datech téměř v reálném čase.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -622,7 +622,7 @@ Po dokončení tohoto kurzu můžete cluster ukončit. Pokud to chcete udělat, 
 
 ![Zastavení clusteru datacihly](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
 
-Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_\_ minut při nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
+Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak pomocí Azure Databricks streamovat data do služby Azure Event Hubs a pak streamovaná data v reálném čase číst ze služby Event Hubs. Naučili jste se tyto postupy:

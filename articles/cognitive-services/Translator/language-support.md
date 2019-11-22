@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25ab298a8b72b3734e41daf66ef5063b8e43a96e
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837332"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286619"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyků a oblastí pro Translator Text API
 
@@ -40,7 +40,7 @@ Translator Text API podporuje překlady textu na text v následujících jazycí
 > [!NOTE]
 > V současné době je k dispozici podmnožina jazyků neuronové ve vlastním překladateli a postupně přidáváme další. [Zobrazit jazyky, které jsou aktuálně k dispozici ve vlastním překladateli](#customization).
 
-|Jazyk|  Kód jazyka|  V2 API| ROZHRANÍ V3 API|
+|Jazyk|  Kód jazyka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
 |Afrikánština| `af`    |Pouze statistické|  Neurální|
 |arabština|    `ar`    |Neuronové k dispozici|  Neurální|
@@ -57,7 +57,7 @@ Translator Text API podporuje překlady textu na text v následujících jazycí
 |Holandština| `nl`    |Neuronové k dispozici|  Neurální|
 |Angličtina|   `en`    |Neuronové k dispozici|  Neurální|
 |Estonština|  `et`    |Neuronové k dispozici|  Neurální|
-|Fijian|    `fj`    |Pouze statistické|  Ložený|
+|Vládní|    `fj`    |Pouze statistické|  Ložený|
 |Filipínština|  `fil`   |Pouze statistické|  Ložený|
 |Finština|   `fi`    |Neuronové k dispozici|  Neurální|
 |Francouzština|    `fr`    |Neuronové k dispozici|  Neurální|
@@ -66,7 +66,7 @@ Translator Text API podporuje překlady textu na text v následujících jazycí
 |Haitská kreolština|    `ht`    |Pouze statistické   |Ložený|
 |Hebrejština |`he`   |Neuronové k dispozici   |Neurální|
 |Hindština| `hi`    |Neuronové výchozí|    Neurální|
-|Hmong Macek| `mww`   |Pouze statistické|  Ložený|
+|Hmong Daw| `mww`   |Pouze statistické|  Ložený|
 |Maďarština| `hu`    |Neuronové k dispozici|  Neurální|
 |Islandština| `is`    |Jenom neuronové|   Neurální|
 |Indonéština|    `id`    |Pouze statistické|  Ložený|
@@ -78,9 +78,10 @@ Translator Text API podporuje překlady textu na text v následujících jazycí
 |Korejština |`ko`   |Neuronové k dispozici|  Neurální|
 |Lotyština|   `lv`    |Neuronové k dispozici|  Neurální|
 |Litevština|    `lt`    |Neuronové k dispozici|  Neurální|
-|Malgašština|  `mg`    |Pouze statistické|  Ložený|
+|Malgašský|  `mg`    |Pouze statistické|  Ložený|
 |Malajština| `ms`    |Pouze statistické   |Ložený|
 |Maltština|   `mt`    |Pouze statistické|  Ložený|
+|Maorština| `mi`  |Jenom neuronové| Neurální|
 |norština| `nb`    |Neuronové k dispozici|  Neurální|
 |Perština|   `fa`    |Neuronové k dispozici|  Neurální|
 |polština|    `pl`    |Neuronové k dispozici|  Neurální|
@@ -99,7 +100,7 @@ Translator Text API podporuje překlady textu na text v následujících jazycí
 |Tamilština| `ta`    |Pouze statistické|  Ložený|
 |Telugština|    `te`    |Jenom neuronové|   Neurální|
 |Thajština|  `th`    |Neuronové k dispozici|  Neurální|
-|Tongánština|    `to`    |Pouze statistické|  Ložený|
+|Tonžská|    `to`    |Pouze statistické|  Ložený|
 |turečtina|   `tr`    |Neuronové k dispozici   |Neurální|
 |Ukrajinština| `uk`    |Neuronové k dispozici|  Neurální|
 |Urdština|  `ur`    |Pouze statistické|  Ložený|
@@ -123,11 +124,11 @@ Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že
 | Hebrejština | `he` | Hebrejská `Hebr` | <--> | `Latn` latinky |
 | Hindština | `hi` | `Deva` Dévanágarí | <--> | `Latn` latinky |
 | Japonština | `ja` | Japonské `Jpan` | <--> | `Latn` latinky |
-| Kannadština | `kn` | Kannadské `Knda` | --> | `Latn` latinky |
-| Malajalámština | `ml` | Malajalámština `Mlym` | --> | `Latn` latinky |
+| Kannada | `kn` | Kannada `Knda` | --> | `Latn` latinky |
+| Malajálamština | `ml` | Malajalámština `Mlym` | --> | `Latn` latinky |
 | Maráthština | `mr` | `Deva` Dévanágarí | --> | `Latn` latinky |
-| Krí | `or` | Uríské `Orya` | <--> | `Latn` latinky |
-| Paňdžábština | `pa` | Gurmukhí `Guru`  | <--> | `Latn` latinky  |
+| Oriya | `or` | Oriya `Orya` | <--> | `Latn` latinky |
+| Paňdžábština | `pa` | Gurmukhi `Guru`  | <--> | `Latn` latinky  |
 | Srbština (cyrilice) | `sr-Cyrl` | `Cyrl` v cyrilici  | --> | `Latn` latinky |
 | Srbština (latinka) | `sr-Latn` | `Latn` latinky | --> | `Cyrl` v cyrilici|
 | Tamilština | `ta` | Kanadské `Taml` | --> | `Latn` latinky |
@@ -159,7 +160,7 @@ Slovník podporuje následující jazyky pro nebo z angličtiny pomocí vyhledá
 | Haitská kreolština      | `ht`          |
 | Hebrejština      | `he`          |
 | Hindština      | `hi`          |
-| Hmong Macek      | `mww`          |
+| Hmong Daw      | `mww`          |
 | Maďarština      | `hu`          |
 | Islandština    | `is`  |
 | Indonéština      | `id`          |
@@ -236,7 +237,8 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |
-|Malgašština|  `mg`    |
+|Malgašský|  `mg`    |
+|Maorština| `mi`  |
 | norština      | `nb`          |
 | Perština      | `fa`          |
 | polština      | `pl`          |

@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173638"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279641"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Pochopení stavu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
 
-U Azure Monitor pro kontejnery monitoruje a hlásí stav komponent spravované infrastruktury a všechny uzly spuštěné v jakémkoli clusteru Kubernetes podporovaném Azure Monitor for Containers. Toto prostředí překračuje stav clusteru vypočtený a nahlášený v [zobrazení více clusterů](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), kde teď můžete pochopit, jestli je jeden nebo více uzlů v clusteru omezené nebo že uzel nebo uzel je nedostupný, což by mohlo mít vliv na spuštěnou aplikaci v clusteru na základě spravovaných metrik. 
+U Azure Monitor pro kontejnery monitoruje a hlásí stav komponent spravované infrastruktury a všechny uzly spuštěné v jakémkoli clusteru Kubernetes podporovaném Azure Monitor for Containers. Toto prostředí překračuje stav clusteru vypočtený a nahlášený v [zobrazení více clusterů](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), kde teď můžete pochopit, jestli je jeden nebo více uzlů v clusteru omezené nebo že uzel nebo uzel je nedostupný, což by mohlo mít vliv na spuštěnou aplikaci v clusteru na základě spravovaných metrik.
+
+>[!NOTE]
+>Funkce Health je v tuto chvíli ve verzi Public Preview.
+>
 
 Informace o tom, jak povolit Azure Monitor pro kontejnery, najdete v tématu připojení [Azure monitor kontejnerů](container-insights-onboard.md).
 
@@ -33,7 +37,7 @@ Informace o tom, jak povolit Azure Monitor pro kontejnery, najdete v tématu př
 
 ## <a name="overview"></a>Přehled
 
-Funkce Health v Azure Monitor for Containers poskytuje proaktivní monitorování stavu clusteru Kubernetes, které vám pomůžou identifikovat a diagnostikovat problémy. Poskytuje možnost Zobrazit zjištěné významné problémy. Monitory vyhodnocující stav clusteru se spouští ve vašem clusteru s kontejnerem a data o stavu se zapisují do tabulky **KubeHealth** v pracovním prostoru Log Analytics. 
+V Azure Monitor pro kontejnery poskytuje funkce stavu (Preview) proaktivní monitorování stavu clusteru Kubernetes, který vám usnadní identifikaci a diagnostiku problémů. Poskytuje možnost Zobrazit zjištěné významné problémy. Monitory vyhodnocující stav clusteru se spouští ve vašem clusteru s kontejnerem a data o stavu se zapisují do tabulky **KubeHealth** v pracovním prostoru Log Analytics. 
 
 Stav clusteru Kubernetes je založený na mnoha scénářích monitorování uspořádaných podle následujících Kubernetes objektů a abstrakcí:
 
@@ -72,7 +76,7 @@ Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Zobrazení stavu clusteru AKS nebo non-AKS
 
-Přístup k funkci Azure Monitor for Containers Health je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně Azure Portal vyberete **přehledy** . V části **Insights** vyberte **kontejnery**. 
+Přístup k funkci Azure Monitor for Containers Health (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně Azure Portal vyberete **přehledy** . V části **Insights** vyberte **kontejnery**. 
 
 Pokud chcete zobrazit stav z neAKSho clusteru, který je hostitelem AKS modulu, který je hostovaný místně nebo na Azure Stack, vyberte **Azure monitor** v levém podokně Azure Portal. V části **Insights** vyberte **kontejnery**.  Na stránce více clusterů vyberte v seznamu cluster bez AKS.
 

@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start Azure – vytvoření fronty v Azure Storage pomocí Azure Portal | Microsoft Docs
-description: V tomto rychlém startu použijete Azure Portal k vytvoření fronty. Pak použijete Azure Portal k přidání zprávy, zobrazení vlastností zprávy a vyřazení zprávy do fronty.
+title: 'Rychlý Start: Vytvoření front Azure Storage na portálu'
+description: Vytvořte frontu pomocí Azure Portal. Pak použijte Azure Portal k přidání zprávy, zobrazení vlastností zprávy a vyřazení zprávy do fronty.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/06/2019
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: d2f7b01c03b877a3dede496fc02f0d0cc9525cef
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 2876d2a680aa41372557a9f04c1d6a5eed56b8ae
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721321"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269249"
 ---
-# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý start: Vytvořte frontu a přidejte zprávu s Azure Portal
+# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý Start: vytvoření fronty a přidání zprávy s Azure Portal
 
 V tomto rychlém startu se dozvíte, jak pomocí [Azure Portal](https://portal.azure.com/) vytvořit frontu v Azure Storage a přidat a vyřadit zprávy z fronty.
 
@@ -61,7 +61,7 @@ Při zrušení zařazení do fronty se vždy odebere nejstarší zpráva ve fron
 
 ![Snímek obrazovky ukazující, jak vyřadit z fronty zprávu z portálu](media/storage-quickstart-queues-portal/dequeue-message.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak vytvořit frontu, přidat zprávu, zobrazit vlastnosti zprávy a odstranit zprávu ve frontě Azure Portal.
 

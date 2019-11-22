@@ -1,5 +1,5 @@
 ---
-title: Propojené přihlašování pro aplikace Azure AD – Microsoft Identity Platform | Microsoft Docs
+title: Propojené přihlašování pro aplikace Azure AD – Microsoft Identity Platform
 description: Konfigurace propojeného jednotného přihlašování (SSO) k podnikovým aplikacím Azure AD na platformě Microsoft Identity Platform (Azure AD)
 services: active-directory
 author: msmimart
@@ -12,18 +12,18 @@ ms.date: 05/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1e26a3c7d284a60b830f6f66cdcecef97db4d6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2c4547bddeea8b67bd3377124b1c299662fea3e6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834619"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274172"
 ---
 # <a name="configure-linked-sign-on"></a>Konfigurace propojeného přihlašování
 
-Když přidáte galerii nebo webovou aplikaci mimo galerii, je k dispozici jedna z možností jednotného přihlašování, která je k dispozici. [](what-is-single-sign-on.md) Tuto možnost vyberte, pokud chcete přidat odkaz na aplikaci na přístupovém panelu Azure AD nebo na portálu Office 365 vaší organizace. Pomocí této metody můžete přidat odkazy na vlastní webové aplikace, které aktuálně používají Active Directory Federation Services (AD FS) (nebo jinou federační službu) místo Azure AD k ověřování. Nebo můžete přidat přímé odkazy na konkrétní SharePointové stránky nebo jiné webové stránky, které chcete zobrazit na přístupových panelech uživatele.
+Když přidáte galerii nebo webovou aplikaci mimo galerii, je k dispozici jedna z možností jednotného [přihlašování,](what-is-single-sign-on.md)která je k dispozici. Tuto možnost vyberte, pokud chcete přidat odkaz na aplikaci na přístupovém panelu Azure AD nebo na portálu Office 365 vaší organizace. Pomocí této metody můžete přidat odkazy na vlastní webové aplikace, které aktuálně používají Active Directory Federation Services (AD FS) (nebo jinou federační službu) místo Azure AD k ověřování. Nebo můžete přidat přímé odkazy na konkrétní SharePointové stránky nebo jiné webové stránky, které chcete zobrazit na přístupových panelech uživatele.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace Galerie](add-gallery-app.md) nebo [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
@@ -31,7 +31,7 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce cloudové aplikace nebo správce aplikace pro vašeho TENANTA Azure AD.
 
-1. Přejděte na **Azure Active Directory** > **podnikové aplikace**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
+1. Přejděte na **Azure Active Directory** > **podnikových aplikací**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
 
 1. V nabídce **Typ aplikace** vyberte **všechny aplikace**a pak vyberte **použít**.
 
@@ -43,11 +43,11 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 1. Zadejte adresu URL aplikace, na kterou se má vytvořit odkaz. Zadejte adresu URL a vyberte **Uložit**. 
  
-1. K aplikaci můžete přiřadit uživatele a skupiny, což způsobí, že se aplikace zobrazí ve [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo na přístupovém [panelu Azure AD](end-user-experiences.md) pro tyto uživatele.
+1. K aplikaci můžete přiřadit uživatele a skupiny, což způsobí, že se aplikace zobrazí ve [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo na [přístupovém panelu Azure AD](end-user-experiences.md) pro tyto uživatele.
 
 1. Vyberte **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md)
 - [Konfigurace automatického zřizování uživatelských účtů](configure-automatic-user-provisioning-portal.md)

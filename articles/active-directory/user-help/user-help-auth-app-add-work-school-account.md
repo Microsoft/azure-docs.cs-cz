@@ -1,6 +1,6 @@
 ---
-title: Přidání pracovního nebo školního účtu k ověřovací aplikaci – Azure AD
-description: Jak do aplikace Microsoft Authenticator přidat svůj pracovní nebo školní účet pro účely dvou faktorů ověřování.
+title: Přidání pracovního nebo školního účtu do aplikace Microsoft Authenticator – Azure AD
+description: Přidejte svůj pracovní nebo školní účet do aplikace Microsoft Authenticator, abyste ověřili svoji identitu při použití dvojúrovňového ověřování.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803740"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267144"
 ---
-# <a name="add-your-work-or-school-account"></a>Přidat svůj pracovní nebo školní účet
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Přidání pracovního nebo školního účtu do aplikace Microsoft Authenticator
 
 Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastavit pracovní nebo školní účet tak, aby používal aplikaci Microsoft Authenticator jako jednu z metod ověřování.
 

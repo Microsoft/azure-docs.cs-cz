@@ -1,5 +1,5 @@
 ---
-title: Vytvořte si první automatizovaný experiment klasifikace ML.
+title: Vytvoření prvního automatizovaného experimentu v ML
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak pomocí automatizovaného strojového učení v Azure Machine Learning Studiu naučit a nasazovat model klasifikace.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 04035e23c0c650fb6cbf4fdca3b78ce5e814c9d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581587"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270727"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,16 +27,16 @@ Pomocí automatizovaného strojového učení můžete automatizovat časově n�
 V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 > [!div class="checklist"]
-> * Vytvořte pracovní prostor Azure Machine Learning.
+> * Vytvoření pracovního prostoru Azure Machine Learning.
 > * Spusťte automatizovaný experiment strojového učení.
 > * Zobrazit podrobnosti experimentu.
-> * Nasaďte model.
+> * Nasazení modelu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
-* Stáhněte si datový soubor [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Sloupec **y** indikuje, jestli se zákazník přihlásil k odběru pevně stanoveného termínu, který se později identifikuje jako cílový sloupec pro předpovědi v tomto kurzu. 
+* Stáhněte bankmarketing_train datový soubor [ **. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Sloupec **y** indikuje, jestli se zákazník přihlásil k odběru pevně stanoveného termínu, který se později identifikuje jako cílový sloupec pro předpovědi v tomto kurzu. 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
@@ -87,18 +87,18 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi&nbsp; samostatné, nezávislé oblasti v prostém textu nebo jiných datových proudech. |Tečkou
-        Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádný
 
-    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač pro funkci **day_of_week** , a tak, aby se pro tento experiment nezahrnul. Vyberte **Next** (Další).
+    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , tak, aby se pro tento experiment nezahrnul. Vyberte **Next** (Další).
 
         ![Konfigurace karty Preview](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
     1. Na formuláři **potvrdit podrobnosti** ověřte, že se informace shodují s dříve vyplněnými **základními informacemi** o formulářích pro informace a **nastavení a ve verzi Preview** .
     1. Vyberte **vytvořit** a dokončete vytvoření datové sady.
     1. Jakmile se datová sada zobrazí v seznamu, vyberte ji.
-    1. Přečtěte si **Náhled dat** a ujistěte se, že jste nezahrnuli **day_of_week** , a pak vyberte **OK**.
+    1. Přečtěte si **Náhled dat** a ujistěte se, že jste nezahrnuli **Day_of_week** pak vyberte **OK**.
 
     1. Vyberte **Další**.
 
@@ -167,7 +167,7 @@ Pro tento experiment nasazení do webové služby znamená, že finanční insti
 
 Po dokončení spuštění přejděte zpátky na stránku **podrobností o spuštění** a vyberte kartu **modely** . Vyberte **aktualizovat**. 
 
-V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model, a to na základě metriky **AUC_weighted** .  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
+V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model na základě metriky **AUC_weighted** .  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
 
 1. V levém dolním rohu vyberte tlačítko **nasadit nejlepší model** .
 

@@ -1,5 +1,5 @@
 ---
-title: Zřizování uživatelů pro aplikaci Galerie Azure AD trvá hodiny nebo více | Microsoft Docs
+title: Zřizování uživatelů v aplikaci Galerie Azure AD trvá několik hodin.
 description: Jak zjistit, proč zřizování vaší aplikace může trvat déle, než jste očekávali.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2257a46815dd5e685b9cc746a64cede510d10a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 7425731a8d4adde11cd3f15df2cd27cd8541f615
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034190"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275696"
 ---
 # <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>Zřizování uživatelů pro aplikaci Galerie Azure AD trvá několik hodin.
 

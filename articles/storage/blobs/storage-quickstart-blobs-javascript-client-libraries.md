@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí JavaScriptu a HTML v prohlížeči
-description: Zjistěte, jak pomocí instance třídy BlobService nahrávat, vypisovat a odstraňovat objekty blob s využitím JavaScriptu na stránce HTML.
+title: 'Rychlý Start: Azure Blob Storage pro JavaScript V2 v prohlížeči'
+description: Naučte se používat instanci BlobService k nahrávání, vypsání a odstranění objektů BLOB pomocí sady JavaScript v2 SDK na stránce HTML.
 keywords: storage, javascript, html
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,16 +8,16 @@ ms.date: 08/29/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 3dbd78f9c233515c675cd511924b3d4600b72fbd
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1bf71f899a38fa4ce36f8f0ffc78de0c64f6c3f3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173084"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270045"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Rychlý start: Nahrávání, výpis a odstraňování objektů BLOB pomocí JavaScriptu/HTML v prohlížeči
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Rychlý start: Nahrávání, vypisování a odstraňování objektů blob pomocí JavaScriptu a HTML v prohlížeči
 
 Tento rychlý start předvádí správu objektů blob z kódu spuštěného zcela v prohlížeči. Níže použitý přístup ukazuje, jak používat požadovaná bezpečnostní opatření pro zajištění chráněného přístupu k účtu úložiště objektů blob. K dokončení tohoto rychlého startu potřebujete [předplatné Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -76,7 +76,7 @@ az storage account generate-sas
 ```
 Několik hodnot uvedených za jednotlivými parametry je možná trochu nesrozumitelných. Tyto hodnoty parametrů představují první písmeno odpovídajícího oprávnění. Následující tabulka vysvětluje, odkud hodnoty pochází: 
 
-| Parametr        | Value   | Popis  |
+| Parametr        | Hodnota   | Popis  |
 |------------------|---------|---------|
 | *oprávnění*    | racwdl  | Tento SAS povoluje funkce *read* (čtení), *append* (připojení), *create* (vytvoření), *write* (zápis), *delete* (odstranění) a *list* (výpis). |
 | *resource-types* | sco     | Tento SAS ovlivňuje prostředky *service* (služba), *container* (kontejner) a *object* (objekt). |
@@ -249,7 +249,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > Aby tento vzorový kód fungoval, je potřeba jako *blobName* (název objektu blob) zadat řetězcovou hodnotu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete vyčistit prostředky vytvořené v průběhu tohoto rychlého startu, vraťte se na [Azure Portal](https://portal.azure.com) a vyberte svůj účet úložiště. Po výběru můžete účet úložiště odstranit tak, že kliknete na: **Přehled > odstranění účtu úložiště**
+Pokud chcete vyčistit prostředky vytvořené v průběhu tohoto rychlého startu, vraťte se na [Azure Portal](https://portal.azure.com) a vyberte svůj účet úložiště. Jakmile bude vybraný, můžete účet úložiště odstranit tak, že přejdete do části **Přehled > Odstranit účet úložiště**.
 
 ## <a name="next-steps"></a>Další kroky
 Prozkoumejte ukázky, ve kterých se dozvíte, jak stahovat objekty blob a hlásit stav během nahrávání souborů.

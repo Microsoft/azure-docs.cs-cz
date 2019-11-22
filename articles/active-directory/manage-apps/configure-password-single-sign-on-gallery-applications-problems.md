@@ -1,5 +1,5 @@
 ---
-title: Problémy s konfigurací jednotného přihlašování k heslu pro aplikaci Galerie Azure AD | Microsoft Docs
+title: Problémy s konfigurací jednotného přihlašování k heslu pro aplikaci Galerie Azure AD
 description: Seznamte se s běžnými problémy, které uživatelé čelí při konfiguraci jednotného přihlašování k heslům pro aplikace, které jsou už uvedené v galerii aplikací Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc75346b1093cc41a44edad1376c5f10dfec2409
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381129"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274197"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problém s konfigurací jednotného přihlašování k heslu pro aplikaci Galerie Azure AD
 
@@ -41,13 +41,13 @@ Chcete-li tento problém vyřešit, vyzkoušejte nejprve tyto věci:
 
   * Pokud se přihlásíte, klikněte na tlačítko **Aktualizovat přihlašovací údaje** na **dlaždici aplikace** v části **aplikace** na [panelu přístup k aplikaci](https://myapps.microsoft.com/) a aktualizujte je na nejnovější známé funkční uživatelské jméno a heslo.
 
-  * Pokud jste vy nebo jiný správce přiřadili přihlašovací údaje pro tohoto uživatele, vyhledejte přiřazení aplikace uživateli nebo skupině, a to tak, že přejdete na kartu **uživatelé & skupiny** aplikace, vyberete přiřazení a kliknete na **Aktualizovat přihlašovací údaje.** tlačítko.
+  * Pokud jste vy nebo jiný správce přiřadili přihlašovací údaje pro tohoto uživatele, vyhledejte přiřazení aplikace uživateli nebo skupině, a to tak, že přejdete na kartu **uživatelé & skupiny** aplikace, vyberete přiřazení a kliknete na tlačítko **Aktualizovat přihlašovací údaje** .
 
-- Pokud uživatel přiřadil svoje vlastní přihlašovací údaje, musí **zkontrolovat, jestli v aplikaci nevypršela platnost hesla** , a pokud ano, **aktualizovat heslo** s vypršenou platností tak, že se přihlásí přímo k aplikaci.
+- Pokud uživatel přiřadil svoje vlastní přihlašovací údaje, musí **zkontrolovat, jestli v aplikaci nevypršela platnost hesla** , a pokud ano, **aktualizovat heslo s vypršenou platností** tak, že se přihlásí přímo k aplikaci.
 
-  * Až se v aplikaci aktualizuje heslo, požádejte uživatele, aby po kliknutí na tlačítko **Aktualizovat přihlašovací údaje** na **dlaždici aplikace** v části **aplikace** na [panelu přístup k aplikaci](https://myapps.microsoft.com/) aktualizoval na nejnovější známý pracovní uživatelské jméno a heslo.
+  * Až se v aplikaci aktualizuje heslo, požádejte uživatele, aby po kliknutí na tlačítko **aktualizovat pověření** na **dlaždici aplikace** **v části aplikace** v [panelu přístup k aplikaci](https://myapps.microsoft.com/) aktualizoval na nejnovější známé funkční uživatelské jméno a heslo.
 
-  * Pokud jste vy nebo jiný správce přiřadili přihlašovací údaje pro tohoto uživatele, vyhledejte přiřazení aplikace uživateli nebo skupině, a to tak, že přejdete na kartu **uživatelé & skupiny** aplikace, vyberete přiřazení a kliknete na **Aktualizovat přihlašovací údaje.** tlačítko.
+  * Pokud jste vy nebo jiný správce přiřadili přihlašovací údaje pro tohoto uživatele, vyhledejte přiřazení aplikace uživateli nebo skupině, a to tak, že přejdete na kartu **uživatelé & skupiny** aplikace, vyberete přiřazení a kliknete na tlačítko **Aktualizovat přihlašovací údaje** .
 
 - Pomocí následujících kroků v části [Postup instalace rozšíření prohlížeče přístupového panelu](#how-to-install-the-access-panel-browser-extension) aktualizujte uživatele tak, aby aktualizovali rozšíření prohlížeče přístupového panelu.
 
@@ -89,7 +89,7 @@ Chcete-li nainstalovat rozšíření prohlížeče přístupového panelu, postu
 
 1.  Otevřete [přístupový panel](https://myapps.microsoft.com) v jednom z podporovaných prohlížečů a přihlaste se jako **uživatel** ve službě Azure AD.
 
-2.  na přístupovém panelu klikněte na **aplikaci pro jednotné přihlašování pomocí hesla** .
+2.  Na přístupovém panelu klikněte na **aplikaci pro jednotné přihlašování pomocí hesla** .
 
 3.  Na příkazovém řádku s výzvou k instalaci softwaru vyberte **nainstalovat hned**.
 
@@ -107,6 +107,6 @@ Rozšíření pro Chrome a Firefox si můžete stáhnout také z přímých odka
 
 -   [Rozšíření přístupového panelu Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Poskytovat jednotné přihlašování do aplikací pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)
 

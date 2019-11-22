@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927141"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271499"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas koncového bodu Microsoft Identity Platform
 
@@ -41,6 +41,7 @@ Platforma Microsoft Identity implementuje autorizační protokol [OAuth 2,0](act
 * Microsoft Graph: `https://graph.microsoft.com`
 * Rozhraní API pro poštu Office 365: `https://outlook.office.com`
 * Graf Azure AD: `https://graph.windows.net`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
 > Důrazně doporučujeme použít Microsoft Graph místo Azure AD Graph, Office 365 mail API atd.
@@ -89,7 +90,7 @@ Pokud aplikace provede přihlášení pomocí [OpenID Connect](active-directory-
 
 Obor `email` lze použít s oborem `openid` a všemi ostatními. Umožňuje aplikaci přístup k primární e-mailové adrese uživatele ve formě deklarace identity `email`. Deklarace `email` je obsažena v tokenu, pouze pokud je k uživatelskému účtu přidružena e-mailová adresa, která není vždy v případě případu. Pokud používá obor `email`, vaše aplikace by měla být připravená na zpracování případu, ve kterém deklarace identity `email` v tokenu neexistuje.
 
-### <a name="profile"></a>profilu
+### <a name="profile"></a>profile
 
 Obor `profile` lze použít s oborem `openid` a všemi ostatními. Poskytuje aplikaci přístup k podstatnému množství informací o uživateli. K informacím, ke kterým může přistupovat, patří, ale nejsou omezené na jméno, příjmení, upřednostňované uživatelské jméno a ID objektu uživatele. Úplný seznam deklarací identity, které jsou dostupné v parametru id_tokens pro konkrétního uživatele, najdete v [referenčních informacích k`id_tokens`](id-tokens.md).
 

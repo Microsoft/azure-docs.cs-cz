@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Pomocí Node. js zavolejte Analýza textu REST API'
+title: 'Rychlý Start: použití Node. js k volání Analýza textu REST API'
 titleSuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 2b98949ca93be5ec0324561a053df730705af152
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: fe07290eaa68965e2ebe1f9220fc963c915f48f1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671880"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284961"
 ---
-# <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Node. js k volání služby pro rozpoznávání Analýza textu  
+# <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý Start: použití Node. js k volání služby Analýza textu pro rozpoznávání  
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [Analýza textu rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) with Node. js.
+V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [Analýza textu rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) s Node. js.
 
-Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,14 +31,14 @@ Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní A
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Zjistit jazyk
+## <a name="detect-language"></a>Zjištění jazyka
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
+1. Pro koncový bod a klíč předplatného prostředku vytvořte proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
 1. Vytvořte nový projekt Node. JS na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
-1. Přidejte níže uvedený kód do nového `.js` souboru.
-1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo `npm start` z `node detect.js`příkazového řádku, například nebo.
+1. Níže uvedený kód přidejte do nového souboru `.js`.
+1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo z příkazového řádku, například `npm start` nebo `node detect.js`.
 
 ```javascript
 'use strict';
@@ -154,10 +154,10 @@ get_language(documents);
 
 Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Analýza mínění se dá použít k zjištění toho, co si zákazníci myslí o vaší značce nebo tématu, analýzou nezpracovaného textu o značkách pozitivních nebo negativních mínění. Následující příklad uvádí skóre pro dva dokumenty, jednu v angličtině a jinou v španělštině.
 
-1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
+1. Pro koncový bod a klíč předplatného prostředku vytvořte proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
 1. Vytvořte nový projekt Node. JS na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
-1. Přidejte níže uvedený kód do nového `.js` souboru.
-1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo `npm start` z `node sentiment.js`příkazového řádku, například nebo.
+1. Níže uvedený kód přidejte do nového souboru `.js`.
+1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo z příkazového řádku, například `npm start` nebo `node sentiment.js`.
 
 ```javascript
 'use strict';
@@ -243,14 +243,14 @@ Výsledek je měřen jako kladný, pokud je skóre zaokrouhleno na 1,0 a záporn
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Extrahovat klíčové fráze
+## <a name="extract-key-phrases"></a>Extrakce klíčových frází
 
 Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Extrakce klíčových frází slouží k rychlé identifikaci hlavních bodů dokumentu nebo textu. Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
-1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
+1. Pro koncový bod a klíč předplatného prostředku vytvořte proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
 1. Vytvořte nový projekt Node. JS na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
-1. Přidejte níže uvedený kód do nového `.js` souboru.
-1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo `npm start` z `node key-phrases.js`příkazového řádku, například nebo.
+1. Níže uvedený kód přidejte do nového souboru `.js`.
+1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo z příkazového řádku, například `npm start` nebo `node key-phrases.js`.
 
 ```javascript
 'use strict';
@@ -358,12 +358,12 @@ get_key_phrases(documents);
 
 ## <a name="identify-linked-entities"></a>Identifikace propojených entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je. `https://en.wikipedia.org/wiki/United_States`  Následující příklad identifikuje entity pro anglické dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je `https://en.wikipedia.org/wiki/United_States`.  Následující příklad identifikuje entity pro anglické dokumenty.
 
-1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
+1. Pro koncový bod a klíč předplatného prostředku vytvořte proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
 1. Vytvořte nový projekt Node. JS na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
-1. Přidejte níže uvedený kód do nového `.js` souboru.
-1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo `npm start` z `node entities.js`příkazového řádku, například nebo.
+1. Níže uvedený kód přidejte do nového souboru `.js`.
+1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo z příkazového řádku, například `npm start` nebo `node entities.js`.
 
 ```javascript
 'use strict';
@@ -481,7 +481,7 @@ get_entities(documents);
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

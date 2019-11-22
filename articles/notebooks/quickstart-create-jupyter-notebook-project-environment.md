@@ -1,79 +1,70 @@
 ---
-title: Vytvoření projektu Azure Notebooks s vlastním prostředím
-description: Vytvoří nový projekt v Azure Notebooks, který je nakonfigurovaný pomocí konkrétní sady nainstalovaných balíčků a spouštěcích skriptů.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Vytvoření projektu poznámkových bloků Azure s vlastním prostředím
+description: Vytvoření nového projektu v poznámkových bloků Azure, který je nakonfigurovaný s konkrétní sadou balíčků nainstalovaných a spouštění skriptů.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 6ec0d2fae285889a731e9b881ea90f15b96c85f2
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973074"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277485"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Rychlý Start: vytvoření projektu s vlastním prostředím
+# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Rychlý start: Vytvoření projektu s vlastním prostředím
 
-Projekt v Azure Notebooks je kolekce souborů, například poznámkových bloků, datových souborů, dokumentace, obrázků a tak dále, spolu s prostředím, které lze konfigurovat s konkrétními příkazy instalace. Když definujete prostředí s projektem, všichni uživatelé, kteří naklonují projekt na svůj vlastní Azure Notebooks účet, mají všechny informace, které potřebují k opětovnému vytvoření potřebného prostředí.
+Projekt v poznámkových bloků Azure je kolekce souborů, jako jsou poznámkové bloky, datové soubory, dokumentace, obrázky a tak dále, spolu s prostředí, ve kterém můžete nakonfigurovat specifické nastavení příkazy. Definováním prostředí s projektem každý, kdo duplicity projektu do účtu poznámkových bloků Azure má všechny informace, které je nutné znovu vytvořit potřebná prostředí.
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
-1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. (Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Přejděte na [poznámkových bloků Azure](https://notebooks.azure.com) a přihlaste se. (Podrobnosti najdete v tématu [rychlý start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
-1. Na stránce veřejný profil vyberte v horní části stránky **Moje projekty** :
+1. Na stránce svého veřejného profilu vyberte **projekty** v horní části stránky:
 
-    ![Odkaz Moje projekty v horní části okna prohlížeče](media/quickstarts/my-projects-link.png)
+    ![Moje projekty odkaz horní části okna prohlížeče](media/quickstarts/my-projects-link.png)
 
-1. Na stránce **Moje projekty** vyberte **+ Nový projekt** (Klávesová zkratka: n); tlačítko se může zobrazit pouze jako **+** , pokud je okno prohlížeče úzké:
+1. Na **projekty** stránce **+ nový projekt** (Klávesová zkratka: n); na tlačítko se může objevit pouze jako **+** li úzké okno prohlížeče:
 
-    ![Nový projekt na stránce Moje projekty](media/quickstarts/new-project-command.png)
+    ![Nový projekt – příkaz na stránce Mé projekty](media/quickstarts/new-project-command.png)
 
-1. V místní nabídce **vytvořit nový projekt** , která se zobrazí, zadejte nebo nastavte následující podrobnosti a pak vyberte **vytvořit**:
+1. V **vytvořit nový projekt** automaticky otevírané okno, které se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **vytvořit**:
 
     - **Název projektu**: projekt s vlastním prostředím
-    - **ID projektu**: projekt – vlastní – prostředí
-    - **Veřejný projekt**: (nezaškrtnuto)
-    - **Vytvořit Readme.MD**: (nezaškrtnuto)
+    - **ID projektu**: prostředí vlastní projektu
+    - **Veřejné projektu**: (zaškrtnuto)
+    - **Vytvoření README.md**: (zaškrtnuto)
 
-1. Po chvíli Azure Notebooks přejít k novému projektu. Přidejte do projektu Poznámkový blok tak, že vyberete rozevírací seznam **+ Nový** (může se zobrazit jenom **+** ) a pak vybrat **Poznámkový blok**.
+1. Po chvíli se poznámkových bloků Azure přejde do nového projektu. Poznámkového bloku přidejte do projektu tak, že vyberete **+ nový** rozevíracího seznamu (který může zobrazit jako pouze **+** ), pak vyberete **Poznámkový blok**.
 
-1. Poznámkový blok pojmenujte jako *vlastní prostředí. ipynb*, vyberte **Python 3,6** pro jazyk a vyberte **Nový**.
+1. Zadejte název jako je Poznámkový blok *environment.ipynb vlastní*vyberte **Python 3.6** pro jazyk a vyberte **nový**.
 
-## <a name="add-a-custom-setup-step"></a>Přidat vlastní krok instalace
+## <a name="add-a-custom-setup-step"></a>Přidání kroku s vlastním nastavením
 
-1. Na stránce projekt vyberte **nastavení projektu**.
+1. Na stránce projektu vyberte **nastavení projektu**.
 
-    ![Nastavení projektu – příkaz](media/quickstarts/project-settings-command.png)
+    ![Nastavení projekt – příkaz](media/quickstarts/project-settings-command.png)
 
-1. V místní nabídce **nastavení projektu** vyberte kartu **prostředí** a potom v části **nastavení prostředí**vyberte **+ Přidat**:
+1. V **nastavení projektu** automaticky otevírané okno, vyberte **prostředí** kartu, pak v oblasti **pokynů k instalaci prostředí**vyberte **+ přidat**:
 
     ![Příkaz pro přidání nového kroku nastavení prostředí](media/quickstarts/environment-add-command.png)
 
-1. Příkaz **+ Add** vytvoří krok, který je definován operací a cílovým souborem, který je vybrán ze souborů v projektu. Podporují se tyto operace:
+1. **+ Přidat** příkaz vytvoří krok, který je definován tak, že operace a cílový soubor, který je vybrán ze souborů ve vašem projektu. Podporovány jsou následující operace:
 
     | Operace | Popis |
     | --- | --- |
-    | Požadavky. txt | Projekty Pythonu definují své závislosti v souboru. txt požadavků. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu a také v rozevíracím seznamu, který se zobrazí, vyberte verzi Pythonu. V případě potřeby vyberte **Zrušit** a vraťte se do projektu, nahrajte nebo vytvořte soubor a pak se vraťte na kartu**prostředí** **nastavení projektu** >  a vytvořte nový krok. V tomto kroku je spuštěný Poznámkový blok v projektu se automaticky spustí `pip install -r <file>`. |
-    | Skript prostředí | Použijte k označení skriptu prostředí bash (obvykle souboru s příponou *. sh* ), který obsahuje příkazy, které chcete spustit k inicializaci prostředí. |
-    | Environment. yml | Projekt Pythonu, který používá conda ke správě prostředí, používá k popisu závislostí soubor *Environment. yml* . Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu. |
+    | Soubor Requirements.txt | Projekty Pythonu definovat jejich závislosti v souboru requirements.txt. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu a v dalších rozevíracího seznamu, který se zobrazí také vyberte verzi Pythonu. V případě potřeby vyberte **zrušit** vraťte se do projektu, nahrání nebo vytvoření souboru a potom vrátit **nastavení projektu** > **prostředí** kartu a vytvořit nový krok. Spuštění poznámkového bloku v projektu automaticky spustí s tímto krokem na místě `pip install -r <file>` |
+    | Skript prostředí | Používá se k označení skript prostředí bash (obvykle soubor s *.sh* rozšíření), která obsahuje všechny příkazy, které chcete spustit inicializace prostředí. |
+    | Environment.yml | Projekt Python, který používá systém conda pro správu prostředí používá *environments.yml* souboru k popsání závislostí. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů v projektu. |
 
-1. Pokud chcete odebrat nějaký krok nastavení, vyberte **X** napravo od kroku.
+1. Chcete-li odebrat libovolný krok instalace, vyberte **X** napravo od kroku.
 
-1. Až budou všechny kroky instalace na místě, vyberte **Uložit**. (Vyberte **Zrušit** pro zahození změn).
+1. Až všechny kroky v místě, vyberte **Uložit**. (Vyberte **zrušit** pro zrušení změn).
 
-1. Chcete-li otestovat prostředí, vytvořte a spusťte nový Poznámkový blok a pak vytvořte buňku kódu s příkazy, které jsou závislé na balíčku v prostředí, například pomocí příkazu Python `import`. Pokud se příkaz úspěšně dokončí, potřebný balíček se úspěšně nainstaloval do prostředí.
+1. Pro testovací prostředí, vytvořte a spusťte nový poznámkový blok a pak vytvořte buňku kódu s příkazy, které závisí na balíčku v prostředí, například pomocí Python `import` příkazu. Pokud příkaz bude úspěšné, pak potřebný balíček byl úspěšně nainstalován v prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Správa a konfigurace projektů v Azure Notebooks](configure-manage-azure-notebooks-projects.md)
+> [Správa a konfigurace projektů v poznámkových bloků Azure](configure-manage-azure-notebooks-projects.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření Jupyter poznámkového bloku pro provádění lineární regrese](tutorial-create-run-jupyter-notebook.md)
+> [Kurz: vytvoření spustit Poznámkový blok Jupyter provedete lineární regrese](tutorial-create-run-jupyter-notebook.md)

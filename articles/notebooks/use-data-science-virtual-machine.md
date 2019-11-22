@@ -1,23 +1,17 @@
 ---
 title: Použití Virtual Machines pro datové vědy v Azure
 description: Připojte se k Azure Data Science Virtual Machine (DSVM), abyste rozšířili výpočetní výkon, který je k dispozici pro Azure Notebooks.
-services: app-service
-documentationcenter: ''
 author: getroyer
 manager: andneil
-ms.assetid: 0ccc2529-e17f-4221-b7c7-9496d6a731cc
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.author: getroyer
 ms.topic: article
 ms.date: 06/13/2019
-ms.author: getroyer
-ms.openlocfilehash: 0f06475708adaf1324eedbd8e315fe4d731339be
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970105"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277407"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Použití Virtual Machines pro datové vědy v Azure
 
@@ -30,7 +24,7 @@ Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní*
 
 Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů v tématu [Vytvoření Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Další informace, včetně podrobností o cenách, najdete v článku [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="connect-to-the-dsvm"></a>Připojení k DSVM
+## <a name="connect-to-the-dsvm"></a>Připojte se k datové VĚDY
 
 Po vytvoření DSVM vyberte rozevírací seznam **Spustit** na řídicím panelu projektu Azure Notebooks a vyberte příslušnou instanci DSVM. V rozevíracím seznamu se zobrazí instance DSVM, pokud jsou splněné následující podmínky:
 

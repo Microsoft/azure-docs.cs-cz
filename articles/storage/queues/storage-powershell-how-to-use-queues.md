@@ -1,5 +1,5 @@
 ---
-title: Provádění operací s Azure Queue Storage pomocí PowerShellu – Azure Storage
+title: Provádění akcí Azure Queue Storage v PowerShellu
 description: Jak provádět operace s Azure Queue Storage pomocí PowerShellu
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bf5cf668620eb08e0d808c2052eac59b15af740c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 98c59555f2b9b93ee3f78da91f85a7728679235d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721226"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269377"
 ---
-# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue Storage s Azure PowerShell
+# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue Storage s využitím Azure PowerShellu
 
 Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke kterým se dá dostat odkudkoli na světě přes HTTP nebo HTTPS. Podrobné informace najdete v tématu [Úvod do front Azure](storage-queues-introduction.md). Tento článek s návody popisuje běžné operace s úložištěm front. Získáte informace o těchto tématech:
 
@@ -85,7 +85,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-Informace o zásadách vytváření názvů pro službu Azure Queue najdete v tématu pojmenování [front a metadat](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+Informace o zásadách vytváření názvů pro službu Azure Queue najdete v tématu [pojmenování front a metadat](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 
 ## <a name="retrieve-a-queue"></a>Načtení fronty
 
@@ -129,7 +129,7 @@ Pokud používáte [Průzkumník služby Azure Storage](https://storageexplorer.
 
 Zprávy jsou čteny nejlépe při prvním prvním vyzkoušení. To není zaručeno. Když si přečtete zprávu z fronty, bude se neviditelná pro všechny ostatní procesy, které prohlíží ve frontě. Tím je zajištěno, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a opakovat akci.  
 
-Tento **časový limit** neviditelnosti definuje, jak dlouho zpráva zůstane neviditelná, než se znovu zpřístupní pro zpracování. Výchozí hodnota je 30 sekund.
+Tento **časový limit neviditelnosti** definuje, jak dlouho zpráva zůstane neviditelná, než se znovu zpřístupní pro zpracování. Výchozí hodnota je 30 sekund.
 
 Kód přečte zprávu z fronty ve dvou krocích. Když zavoláte metodu [Microsoft. Azure. Storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) , dostanete další zprávu ve frontě. Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. Chcete-li dokončit odebrání zprávy z fronty, zavoláte metodu [Microsoft. Azure. Storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) .
 

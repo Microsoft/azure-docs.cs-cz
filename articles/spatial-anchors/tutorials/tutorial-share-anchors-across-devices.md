@@ -1,19 +1,19 @@
 ---
-title: Kurz – sdílení prostorových kotev Azure napříč relacemi a zařízeními | Microsoft Docs
+title: 'Kurz: sdílení kotev napříč relacemi a zařízeními'
 description: V tomto kurzu se dozvíte, jak sdílet identifikátory prostorové kotvy Azure mezi zařízeními s Androidem/iOS v Unity pomocí back-endové služby.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e8a60d5d90b684698d6fcb612278bcae6d4ed08e
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882306"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276967"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Kurz: sdílení prostorových kotev Azure napříč relacemi a zařízeními
 
@@ -78,7 +78,7 @@ V dialogovém okně **Konfigurovat plán hostování** použijte Tato nastavení
 |-|-|-|
 |Plán služby App Service| MySharingServicePlan | Název plánu služby App Service. |
 | Umístění | Západní USA | Datacentrum, které je hostitelem webové aplikace. |
-| Velikost | Zadarmo | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , která určuje funkce hostování. |
+| Velikost | Zdarma | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , která určuje funkce hostování. |
 
 Vyberte **OK**.
 

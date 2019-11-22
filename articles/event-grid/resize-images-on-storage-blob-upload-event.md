@@ -1,6 +1,6 @@
 ---
-title: Automatizace změny velikosti nahraných obrázků pomocí Azure Event Gridu | Microsoft Docs
-description: Při každém nahrání objektu blob v Azure Storage se může aktivovat Azure Event Grid. Díky tomu můžete odesílat soubory obrázků nahrané do Azure Storage do jiných služeb, třeba Azure Functions, ke změně velikosti a dalším vylepšením.
+title: 'Kurz: použití Azure Event Grid k automatizaci změny velikosti nahraných obrázků'
+description: 'Kurz: Azure Event Grid se můžou aktivovat při nahrávání objektů BLOB v Azure Storage. Díky tomu můžete odesílat soubory obrázků nahrané do Azure Storage do jiných služeb, třeba Azure Functions, ke změně velikosti a dalším vylepšením.'
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 11/05/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4359ce859e3fbe270785c3cf4bbc673e71d19799
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69623884"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718217"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid
 
@@ -52,9 +52,9 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-Je nutné, abyste dokončili předchozí kurz pro úložiště objektů BLOB: [Nahrajte obrazová data v cloudu pomocí Azure Storage][previous-tutorial].
+Je nutné, abyste dokončili předchozí kurz BLOB Storage: [nahrání obrazových dat v cloudu pomocí Azure Storage][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -72,7 +72,7 @@ Pokud nepoužíváte cloudové prostředí, musíte se nejdřív přihlásit pom
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
-Azure Functions vyžaduje obecný účet úložiště. Kromě účtu BLOB Storage, který jste vytvořili v předchozím kurzu, vytvořte ve skupině prostředků samostatný obecný účet úložiště pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account) . Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. 
+Azure Functions vyžaduje obecný účet úložiště. Kromě účtu BLOB Storage, který jste vytvořili v předchozím kurzu, vytvořte ve skupině prostředků samostatný obecný účet úložiště pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account) . Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom čísla a malá písmena. 
 
 1. Nastavte proměnnou tak, aby obsahovala název skupiny prostředků, kterou jste vytvořili v předchozím kurzu. 
 
@@ -168,7 +168,7 @@ Teď můžete nasadit do této aplikace Function App nasadit projekt projektu k�
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Ukázková C# funkce změny velikosti je dostupná [](https://github.com/Azure-Samples/function-image-upload-resize)na GitHubu. Pomocí příkazu [AZ functionapp Deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu do aplikace Function App. 
+Ukázková C# funkce změny velikosti je dostupná na [GitHubu](https://github.com/Azure-Samples/function-image-upload-resize). Pomocí příkazu [AZ functionapp Deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu do aplikace Function App. 
 
 ```azurecli-interactive
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName --branch master --manual-integration --repo-url https://github.com/Azure-Samples/function-image-upload-resize
@@ -225,7 +225,7 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
 
     ![Přechod na aplikace Function App na webu Azure Portal](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
 
-2. Rozbalte aplikaci Function App, zvolte funkci **Miniatura** a pak vyberte **Přidat Event Grid**předplatného.
+2. Rozbalte aplikaci Function App, zvolte funkci **Miniatura** a pak vyberte **Přidat Event Grid předplatného**.
 
     ![Přechod na aplikace Function App na webu Azure Portal](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
 
@@ -248,7 +248,7 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     2. Pro **předmět začíná**na zadejte následující hodnotu: **/blobServices/default/Containers/images/BLOBs/** .
 
         ![Zadat filtr pro odběr události](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
-2. Vyberte **vytvořit** a přidejte odběr událostí. Tím se vytvoří odběr události, který `Thumbnail` aktivuje funkci při přidání objektu BLOB `images` do kontejneru. Funkce změní velikost obrázků a přidá je do `thumbnails` kontejneru.
+2. Vyberte **vytvořit** a přidejte odběr událostí. Tím se vytvoří odběr událostí, který se aktivuje `Thumbnail` funkce při přidání objektu blob do kontejneru `images`. Funkce změní velikost obrázků a přidá je do kontejneru `thumbnails`.
 
 Teď máte nakonfigurované back-endové služby a můžete funkci změny velikosti obrázků otestovat v ukázkové webové aplikaci. 
 
@@ -266,19 +266,19 @@ Všimněte si, že po zmizení nahraného obrázku se na karuselu **Vygenerovan�
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
-Klikněte na **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Po úspěšném nahrání se v prohlížeči přejde na stránku úspěchu. Klikněte na odkaz a vraťte se na domovskou stránku. V oblasti **vygenerované miniatury** se zobrazí kopie nahraného obrázku. (Pokud se obrázek nezobrazuje napřed, zkuste stránku znovu načíst.) Funkce změnila velikost tohoto obrázku, přidala miniaturu do kontejneru *thumbnails* a webový klient ji stáhl.
+Klikněte na **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Po úspěšném nahrání se v prohlížeči přejde na stránku úspěchu. Klikněte na odkaz a vraťte se na domovskou stránku. V oblasti **vygenerované miniatury** se zobrazí kopie nahraného obrázku. (Pokud se obrázek nezobrazuje napřed, zkuste stránku znovu načíst.) Velikost tohoto obrázku byla změněna funkcí, přidána do kontejneru *miniatur* a stažena webovým klientem.
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
 
-Klikněte na **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Po úspěšném nahrání se v prohlížeči přejde na stránku úspěchu. Klikněte na odkaz a vraťte se na domovskou stránku. V oblasti **vygenerované miniatury** se zobrazí kopie nahraného obrázku. (Pokud se obrázek nezobrazuje napřed, zkuste stránku znovu načíst.) Funkce změnila velikost tohoto obrázku, přidala miniaturu do kontejneru *thumbnails* a webový klient ji stáhl.
+Klikněte na **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Po úspěšném nahrání se v prohlížeči přejde na stránku úspěchu. Klikněte na odkaz a vraťte se na domovskou stránku. V oblasti **vygenerované miniatury** se zobrazí kopie nahraného obrázku. (Pokud se obrázek nezobrazuje napřed, zkuste stránku znovu načíst.) Velikost tohoto obrázku byla změněna funkcí, přidána do kontejneru *miniatur* a stažena webovým klientem.
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ---
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

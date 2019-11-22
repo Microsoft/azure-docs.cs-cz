@@ -1,5 +1,6 @@
 ---
-title: Automatizace NSG auditování pomocí zobrazení skupiny zabezpečení Azure Network Watcher | Microsoft Docs
+title: Automatizace NSG auditování – zobrazení skupiny zabezpečení
+titleSuffix: Azure Network Watcher
 description: Tato stránka poskytuje pokyny, jak nakonfigurovat auditování skupiny zabezpečení sítě.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f4c553cd144f7c921121aa943e3c40849891f957
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165147"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278046"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatizace NSG auditování pomocí zobrazení skupiny zabezpečení Azure Network Watcher
 
@@ -30,7 +31,7 @@ Pokud neznáte skupiny zabezpečení sítě, přečtěte si téma [Přehled zabe
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto scénáři porovnáte známý dobrý směrný plán k výsledkům zobrazení ve skupině zabezpečení vráceným pro virtuální počítač.
 
@@ -49,7 +50,7 @@ V tomto scénáři provedete tyto kroky:
 
 ## <a name="retrieve-rule-set"></a>Načíst sadu pravidel
 
-Prvním krokem v tomto příkladu je práce s existujícím směrným plánem. Následující příklad je ukázkový kód JSON extrahovaný z existující skupiny zabezpečení sítě pomocí `Get-AzNetworkSecurityGroup` rutiny, která se používá jako základ pro tento příklad.
+Prvním krokem v tomto příkladu je práce s existujícím směrným plánem. Následující příklad je ukázkový kód JSON extrahovaný z existující skupiny zabezpečení sítě pomocí rutiny `Get-AzNetworkSecurityGroup`, která se používá jako základ pro tento příklad.
 
 ```json
 [
@@ -126,7 +127,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Načíst Network Watcher
 
-Dalším krokem je načtení instance Network Watcher. Proměnná je předána `AzNetworkWatcherSecurityGroupView`rutině. `$networkWatcher`
+Dalším krokem je načtení instance Network Watcher. Do rutiny `AzNetworkWatcherSecurityGroupView` se předává Proměnná `$networkWatcher`.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -134,7 +135,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Získání virtuálního počítače
 
-Pro spuštění `Get-AzNetworkWatcherSecurityGroupView` rutiny se vyžaduje virtuální počítač. Následující příklad načte objekt virtuálního počítače.
+Pro spuštění rutiny `Get-AzNetworkWatcherSecurityGroupView` se vyžaduje virtuální počítač. Následující příklad načte objekt virtuálního počítače.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
@@ -152,7 +153,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 Odpověď je seskupena podle síťových rozhraní. U různých typů vrácených pravidel jsou platná a výchozí pravidla zabezpečení. Výsledek je dále rozepsán podle toho, jak je použit, a to buď v podsíti, nebo ve virtuální síťové kartě.
 
-Následující skript prostředí PowerShell porovná výsledky zobrazení skupiny zabezpečení s existujícím výstupem NSG. Následující příklad představuje jednoduchý příklad, jak lze výsledky porovnat s `Compare-Object` rutinou.
+Následující skript prostředí PowerShell porovná výsledky zobrazení skupiny zabezpečení s existujícím výstupem NSG. V následujícím příkladu je jednoduchý příklad, jak lze výsledky porovnat s `Compare-Object` rutinou.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `
@@ -188,7 +189,7 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se nastavení změnila, přečtěte si téma [Správa skupin zabezpečení](../virtual-network/manage-network-security-group.md) sítě a sledujte příslušné skupiny zabezpečení sítě a pravidla zabezpečení.
 

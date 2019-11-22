@@ -1,21 +1,21 @@
 ---
-title: Použití Visual Studio Code – služba Azure blockchain
+title: Kurz vytvoření, sestavení, & nasazení inteligentních kontraktů – Azure blockchain Service
 description: Kurz týkající se použití rozšíření Azure blockchain Development Kit pro rozšíření Ethereem v Visual Studio Code k vytvoření, sestavení a nasazení inteligentních kontraktů ve službě Azure blockchain Service.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 9e3b9dc7ea10e67b636194d955f3a7b50d990a23
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329241"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286688"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Kurz: použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Kurz: vytvoření, sestavení a nasazení inteligentních smluv ve službě Azure blockchain
 
 V tomto kurzu pomocí rozšíření Azure blockchain Development Kit pro Ethereem v Visual Studio Code vytvoříte, sestavíte a nasadíte inteligentní smlouvu na Azure blockchain Service. Pomocí Truffle můžete také spustit funkci inteligentního kontraktu prostřednictvím transakce.
 
@@ -29,9 +29,24 @@ Pomocí Azure blockchain Development Kit pro Ethereem:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní [rychlé zprovoznění: použití Visual Studio Code pro připojení k síti konsorcia Azure blockchain](connect-vscode.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Azure blockchain Development Kit pro rozšíření Ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node. js 10.15. x nebo vyšší](https://nodejs.org/download)
+* [Git 2.10. x nebo vyšší](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Přidejte Python. exe do cesty. Pro Azure blockchain Development Kit se vyžaduje Python verze 2.7.15 ve vaší cestě.
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
+
+V systému Windows je potřebný C++ kompilátor vyžadován pro modul Node-gyp. Můžete použít nástroje MSBuild:
+
+* Pokud je nainstalována aplikace Visual Studio 2017, nakonfigurujte npm pro použití nástrojů MSBuild s příkazem `npm config set msvs_version 2017 -g`
+* Pokud je nainstalována sada Visual Studio 2019, nastavte cestu k nástrojům pro sestavení MS pro npm. Například `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`.
+* V opačném případě nainstalujte samostatné nástroje VS Build Tools pomocí `npm install --global windows-build-tools` v příkazovém okně *Spusťte správce* se zvýšenými oprávněními.
+
+Další informace o Node-gyp najdete v části [úložiště Node-gyp na GitHubu](https://github.com/node-gyp).
 
 ## <a name="create-a-smart-contract"></a>Vytvoření inteligentního kontraktu
 
@@ -104,7 +119,7 @@ Funkce **SendRequest** kontraktu **HelloBlockchain** změní proměnnou stavu **
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    Nahraďte \<blockchain síť @ no__t-1 názvem sítě blockchain definované v **Truffle-config. js**.
+    Nahraďte \<blockchain síť\> názvem sítě blockchain definované v **Truffle-config. js**.
 
 Truffle spustí skript ve vaší síti blockchain.
 
@@ -159,13 +174,13 @@ Funkce inteligentních kontraktů mohou vracet aktuální hodnotu proměnných s
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    Nahraďte \<blockchain síť @ no__t-1 názvem sítě blockchain definované v **Truffle-config. js**.
+    Nahraďte \<blockchain síť\> názvem sítě blockchain definované v **Truffle-config. js**.
 
 Skript se dotazuje na inteligentní kontrakt zavoláním funkce GetMessage. Vrátí se aktuální hodnota **RequestMessage** stavu proměnné.
 
 ![Výstup skriptu](./media/send-transaction/execute-get.png)
 
-Všimněte si, že hodnota není **Hello, blockchain!** . Místo toho je vrácená hodnota zástupný symbol. Když změníte a nasadíte smlouvu, kontrakt získá novou adresu kontraktu a proměnné stavu jsou přiřazené hodnoty v konstruktoru inteligentního kontraktu. Truffle Sample **2_deploy_contracts. js** nasadí inteligentní kontrakt a předá jako argument hodnotu zástupného symbolu. Konstruktor nastaví proměnnou stavu **RequestMessage** na hodnotu zástupného symbolu a vrátí to, co je vráceno.
+Všimněte si, že hodnota není **Hello, blockchain!** . Místo toho je vrácená hodnota zástupný symbol. Když změníte a nasadíte smlouvu, je změna smlouvy nasazena na novou adresu a proměnné stavu jsou přiřazeny hodnoty v konstruktoru inteligentních kontraktů. Ukázkový skript Truffle **2_deploy_contracts. js** nasadí inteligentní kontrakt a předá jako argument hodnotu zástupného symbolu. Konstruktor nastaví proměnnou stavu **RequestMessage** na hodnotu zástupného symbolu a vrátí to, co je vráceno.
 
 1. Chcete-li nastavit proměnnou stavu **RequestMessage** a zadat dotaz na hodnotu, spusťte znovu skripty **SendRequest. js** a **GetMessage. js** .
 
@@ -175,7 +190,7 @@ Všimněte si, že hodnota není **Hello, blockchain!** . Místo toho je vrácen
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete prostředky odstranit odstraněním skupiny prostředků `myResourceGroup`, kterou jste vytvořili v rychlém startu pro *vytváření požadovaných členů blockchain* .
+Pokud už je nepotřebujete, můžete prostředky odstranit tak, že odstraníte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v rychlém startu průvodce *vytvořením blockchain člena* .
 
 Odstranění skupiny prostředků:
 

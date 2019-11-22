@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: a07fa597305771ed3f4da01f2819297fc9cd3d77
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811632"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271694"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro Azure App Service
 
@@ -31,7 +31,7 @@ Přístup k aplikaci Azure App Service můžete omezit povolením různých typ�
 
 ## <a name="enable-client-certificates"></a>Povolit klientské certifikáty
 
-Chcete-li nastavit aplikaci tak, aby vyžadovala klientské certifikáty, je třeba nastavit nastavení `clientCertEnabled` pro vaši aplikaci na `true`. Nastavení nastavíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com).
+Pokud chcete nastavit aplikaci tak, aby vyžadovala klientské certifikáty, musíte nastavit `clientCertEnabled` nastavení aplikace tak, aby `true`. Nastavení nastavíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -41,7 +41,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 Pokud povolíte vzájemné ověřování pro vaši aplikaci, všechny cesty pod kořenem vaší aplikace budou vyžadovat klientský certifikát pro přístup. Pokud chcete, aby některé cesty zůstaly otevřené pro anonymní přístup, můžete v rámci konfigurace aplikace definovat cesty vyloučení.
 
-Cesty vyloučení lze nakonfigurovat výběrem možnosti **konfigurace** > **Obecné nastavení** a definováním cesty vyloučení. V tomto příkladu cokoli pod cestou `/public` pro vaši aplikaci nepožadují klientský certifikát.
+Cesty vyloučení se dají nakonfigurovat tak, že vyberete **konfigurační** > **Obecná nastavení** a definujete cestu vyloučení. V tomto příkladu cokoli, co `/public` cesta k vaší aplikaci, nepožadují klientský certifikát.
 
 ![Cesty vyloučení certifikátu][exclusion-paths]
 
@@ -52,7 +52,7 @@ V App Service probíhá ukončení žádosti SSL na front-endu Load Balancer. P�
 
 V případě ASP.NET je certifikát klienta k dispozici prostřednictvím vlastnosti **HttpRequest. ClientCertificate** .
 
-Pro ostatní zásobníky aplikací (Node. js, PHP atd.) je certifikát klienta k dispozici ve vaší aplikaci prostřednictvím hodnoty kódované v kódování Base64 v hlavičce žádosti `X-ARR-ClientCert`.
+Pro ostatní zásobníky aplikací (Node. js, PHP atd.) je certifikát klienta k dispozici ve vaší aplikaci prostřednictvím hodnoty kódované v kódování Base64 v hlavičce `X-ARR-ClientCert` žádosti.
 
 ## <a name="aspnet-sample"></a>Ukázka ASP.NET
 
@@ -64,7 +64,7 @@ Pro ostatní zásobníky aplikací (Node. js, PHP atd.) je certifikát klienta k
 
     namespace ClientCertificateUsageSample
     {
-        public partial class cert : System.Web.UI.Page
+        public partial class Cert : System.Web.UI.Page
         {
             public string certHeader = "";
             public string errorString = "";

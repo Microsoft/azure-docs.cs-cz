@@ -2,18 +2,18 @@
 title: 'Výhody: migrace místních Apache Hadoop do Azure HDInsight'
 description: Seznamte se s motivací a výhodami migrace místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494930"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267323"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
 
@@ -51,7 +51,7 @@ Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsig
 
 - **Produktivita** – v upřednostňovaném vývojovém prostředí můžete použít různé nástroje pro Hadoop a Spark.
 
-- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight se dají rozšířit o nainstalované komponenty a dají se také integrovat s dalšími řešeními pro velké objemy dat pomocí nasazení [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) z Azure. Místo na trhu.
+- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight se dají rozšířit o nainstalované komponenty a dají se také integrovat s dalšími řešeními pro velké objemy dat pomocí nasazení [jedním kliknutím na](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) místo na trhu Azure.
 
 - **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) k poskytnutí jediného rozhraní, se kterým můžete monitorovat všechny clustery.
 
@@ -60,7 +60,7 @@ Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsig
     - Azure Data Factory (ADF)
     - Azure Blob Storage
     - Azure Data Lake Storage Gen2
-    - Azure Cosmos DB
+    - Databáze Azure Cosmos
     - Azure SQL Database
     - Azure Analysis Services
 
@@ -90,7 +90,7 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 | **Daná** | **Příklad** | **Zodpovědět** |
 |---|---|---|
 |**Téma**: **prostředí**|||
-|Verze distribuce clusteru|HDP 2.6.5, CDH – 5,7|
+|Verze distribuce clusteru|HDP 2.6.5, CDH 5.7|
 |Součásti pro ekosystém velkých objemů dat|HDFS, příze, podregistr, LLAP, Impala, Kudu, HBA, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
 |Typy clusterů|Hadoop, Spark, Kafka, zaplavení, Solr|
 |Počet clusterů|4|
@@ -112,8 +112,8 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |HDFS – Access Control|  Ruční, uživatelé SSH|
 |Ověřování podregistru & autorizaci|Sentry, LDAP, AD s protokolem Kerberos, Ranger|
 |Auditování|Ambari, Cloudera Navigator, Ranger|
-|Sledování|Grafit, Collect, statd, telegraf, InfluxDB|
-|Upozorňování|Kapacitor, Prometheus, služby Datadog|
+|Monitorování|Grafit, Collect, statd, telegraf, InfluxDB|
+|Zobrazení výstrah|Kapacitor, Prometheus, služby Datadog|
 |Doba uchovávání dat| 3 roky, 5 let|
 |Správci clusteru|Jeden správce, více správců|
 
@@ -147,10 +147,10 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Míra nárůstu dat|10% za rok||
 |Míra růstu uzlů clusteru|5% za rok
 |**Téma**: **využití clusteru**|||
-|Průměrné využití procesoru v%|60 %||
+|Průměrné využití procesoru v%|60%||
 |Průměrná doba využití paměti%|75%||
 |Využité místo na disku|75%||
-|Průměrná doba využití sítě%|25 %
+|Průměrná doba využití sítě%|25%
 |**Téma**: **zaměstnanci**|||
 |Počet správců|2||
 |Počet vývojářů|10||

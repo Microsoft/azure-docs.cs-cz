@@ -1,5 +1,5 @@
 ---
-title: Vysoká dostupnost a vyrovnávání zatížení pro Azure Proxy aplikací služby AD | Microsoft Docs
+title: Vysoká dostupnost a vyrovnávání zatížení – Azure Proxy aplikací služby AD
 description: Jak funguje distribuce provozu s vaším nasazením proxy aplikací. Obsahuje tipy pro optimalizaci výkonu konektoru a použití vyrovnávání zatížení pro back-endové servery.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9add6ac30184d87ef50200c3ab944698a1a660f8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169805"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275533"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací
 
@@ -98,8 +98,8 @@ Informace o požadavcích na Vyrovnávání zatížení back-endové aplikace na
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit proxy aplikací](application-proxy-add-on-premises-application.md)
+- [Povolení Proxy aplikace](application-proxy-add-on-premises-application.md)
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Povolit podmíněný přístup](application-proxy-integrate-with-sharepoint-server.md)
-- [Řešení problémů, které máte s proxy aplikací](application-proxy-troubleshoot.md)
+- [Řešení potíží s problémy, se kterými máte potíže s Proxy aplikací](application-proxy-troubleshoot.md)
 - [Přečtěte si, jak architektura Azure AD podporuje vysokou dostupnost](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

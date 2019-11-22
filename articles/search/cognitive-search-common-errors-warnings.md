@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185704"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286997"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -291,3 +291,19 @@ Mapování polí výstupu, které odkazují na neexistující nebo null data, vy
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>Upozornění: zásady detekce změny dat jsou nakonfigurovány tak, aby používaly klíčový sloupec X.
 [Zásady detekce změn dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) mají specifické požadavky pro sloupce, které používají ke zjištění změny. Jedním z těchto požadavků je, že tento sloupec se aktualizuje pokaždé, když se změní zdrojová položka. Dalším požadavkem je, aby nová hodnota pro tento sloupec byla větší než předchozí hodnota. Klíčové sloupce tento požadavek nesplňují, protože se při každé aktualizaci nezmění. Pokud chcete tento problém obejít, vyberte pro zásady zjišťování změn jiný sloupec.
+
+<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"/>
+
+## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>Upozornění: text dokumentu vypadá jako kódovaný v kódování UTF-16, ale chybí mu znak pořadí bajtů.
+
+[Režimy analýzy indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) musí před analýzou zjistit, jak je text kódovaný. Dvěma nejběžnějšími způsoby kódování textu jsou UTF-16 a UTF-8. UTF-8 je kódování s proměnlivou délkou, kde každý znak je dlouhý 1 bajt a 4 bajty. UTF-16 je kódování s pevnou délkou, kde každý znak je dlouhý 2 bajty. UTF-16 má dvě různé varianty, "big endian" a "Little endian". Kódování textu je určeno označením "znak pořadí bajtů", řady bajtů před textem.
+
+| Kódování | Znak pořadí bajtů |
+| --- | --- |
+| UTF-16 big endian | 0xFE 0xFF |
+| UTF-16 Little endian | 0xFF – 0xFE |
+| UTF-8 | 0xEF 0xBB 0xBF |
+
+Pokud není k dispozici žádný znak pořadí bajtů, je text považován za kódování UTF-8.
+
+Chcete-li toto upozornění obejít, určete, co je kódování textu tohoto objektu blob, a přidejte odpovídající značku pořadí bajtů.
