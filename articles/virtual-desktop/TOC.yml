@@ -34,32 +34,42 @@
           href: connect-macos.md
         - name: Připojení s klientem iOS
           href: connect-ios.md
-    - name: Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
-      href: create-host-pools-arm-template.md
-    - name: Vytvoření fondu hostitelů pomocí PowerShellu
-      href: create-host-pools-powershell.md
-    - name: Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
-      href: deploy-windows-7-virtual-machine.md
-    - name: Použití licence Windows pro hostitele relací Windows Virtual Desktop
+    - name: Vytvoření fondu hostitelů a hostitelů relací
+      items:
+        - name: Šablona Azure Resource Manageru
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell.md
+        - name: Nasazení virtuálního počítače s Windows 7
+          href: deploy-windows-7-virtual-machine.md
+        - name: Nasazení hostitele relace na bázi GPU
+          href: configure-vm-gpu.md
+    - name: Vytvoření kontejneru profilů
+      items:
+        - name: Použití sdílené složky na bázi virtuálních počítačů
+          href: create-host-pools-user-profile.md
+        - name: Použití Azure NetApp Files
+          href: create-fslogix-profile-container.md
+    - name: Konfigurace nastavení fondu hostitelů
+      items:
+        - name: Vlastnosti protokolu RDP
+          href: customize-rdp-properties.md
+        - name: Vyrovnávání zatížení pro fondy hostitelů ve fondu
+          href: configure-host-pool-load-balancing.md
+    - name: Použití licence Windows Virtual Desktopu
       href: apply-windows-license.md
     - name: Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky
       href: create-host-pools-user-profile.md
-    - name: Vytvoření kontejneru profilů pro fond hostitelů s využitím Azure NetApp Files
-      href: create-fslogix-profile-container.md
-    - name: Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
-      href: configure-host-pool-load-balancing.md
-    - name: Příprava a přizpůsobení hlavní image VHD
-      href: set-up-customize-master-image.md
-    - name: Instalace sady Office do hlavní image virtuálního pevného disku
-      href: install-office-on-wvd-master-image.md
-    - name: Konfigurace GPU pro Windows Virtual Desktop
-      href: configure-vm-gpu.md
+    - name: Přizpůsobení image hostitele relace
+      items:
+        - name: Nastavení hlavní image virtuálního pevného disku
+          href: set-up-customize-master-image.md
+        - name: Instalace sady Office do hlavní image virtuálního pevného disku
+          href: install-office-on-wvd-master-image.md
     - name: Dynamické škálování hostitelů relace
       href: set-up-scaling-script.md
-    - name: Přizpůsobení kanálu pro uživatele Windows Virtual Desktopu
+    - name: Vlastní kanál
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Přizpůsobení vlastností RDP
-      href: customize-rdp-properties.md
     - name: Nasazení diagnostických nástrojů
       href: deploy-diagnostics.md
     - name: Nastavení připojení aplikace MSIX

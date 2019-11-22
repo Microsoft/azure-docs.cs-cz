@@ -836,8 +836,10 @@
               href: insights/container-insights-update-metrics.md
             - name: Konfigurace sledování pro cluster
               href: insights/container-insights-health-monitors-config.md
-            - name: Zákaz monitorování
+            - name: Zákaz monitorování AKS
               href: insights/container-insights-optout.md
+            - name: Zákaz monitorování Red Hat OpenShiftu
+              href: insights/container-insights-optout-openshift.md
             - name: Řešení potíží
               href: insights/container-insights-troubleshoot.md
         - name: Monitorování Dockeru a kontejnerů s Windows
