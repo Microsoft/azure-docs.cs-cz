@@ -177,15 +177,35 @@
           displayName: DevOps
     - name: Export šablony
       href: export-template-portal.md
-    - name: Přesunout
+    - name: Přesun – oblasti
       items:
-        - name: Přesunutí prostředků
+        - name: Přesun mezi oblastmi
+          href: resource-group-move-region.md
+        - name: Podporované služby
+          href: region-move-support.md
+        - name: Služby
+          items:
+            - name: Virtuální počítače Azure
+              href: ../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtuální síť
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Skupina zabezpečení sítě (NSG)
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Veřejné IP adresy
+              href: ../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Přesun – skupiny prostředků / předplatná
+      items:
+        - name: Přesun napříč skupinami prostředků / předplatnými
           href: resource-group-move-resources.md
-        - name: Podpora prostředků
+        - name: Podporované služby
           href: move-support-resources.md
         - name: Řešení potíží s přesunem
           href: troubleshoot-move.md
-        - name: Pokyny k přesunu pro služby
+        - name: Služby
           items:
             - name: App Service
               href: ./move-limitations/app-service-move-limitations.md

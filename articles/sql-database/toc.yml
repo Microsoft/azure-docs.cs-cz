@@ -526,7 +526,7 @@
               href: sql-database-elastic-pool-manage.md
         - name: Prostředky databázových serverů
           items:
-            - name: Omezení prostředků databázových serverů
+            - name: Omezení prostředků databází
               href: sql-database-resource-limits-database-server.md
             - name: Architektura připojení
               href: sql-database-connectivity-architecture.md

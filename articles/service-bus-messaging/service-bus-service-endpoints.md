@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: 7d31dd004c879fd3e689f4ba7a8ae58cb223ae70
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484924"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277304"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Použití koncových bodů služby Virtual Network s Azure Service Bus
 
-Integrace Service Bus s [koncovými body služby Virtual Network (VNET)][vnet-sep] umožňuje zabezpečenému přístupu k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená v obou. přípon.
+Integrace Service Bus s [koncovými body služby Virtual Network (VNET)][vnet-sep] umožňuje zabezpečenému přístupu k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená na obou koncích.
 
 Po navázání vazby na alespoň jeden koncový bod služby virtuální sítě nebude příslušný obor názvů Service Bus nadále přijímat přenosy z odkudkoli, ale z autorizovaných virtuálních sítí. Z perspektivy virtuální sítě naváže obor názvů Service Bus na koncový bod služby a nakonfiguruje izolovaný síťový tunel z podsítě virtuální sítě do služby zasílání zpráv.
 
@@ -31,7 +31,6 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 > Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud jsou implementovány virtuální sítě.
 >
 > Běžné scénáře Azure, které nefungují s virtuálními sítěmi (Všimněte si, že seznam **není vyčerpávající)** –
-> - Azure Monitor
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
 > - Trasy k Azure IoT Hub
@@ -39,7 +38,7 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 >
 > Níže uvedené služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service
-> - Funkce Azure
+> - Azure Functions
 
 > [!IMPORTANT]
 > Virtuální sítě se podporují jenom v oborech názvů Service Bus [úrovně Premium](service-bus-premium-messaging.md) .
@@ -48,11 +47,11 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 
 Důležitým aspektem při použití koncových bodů služby virtuální sítě s Service Bus je, že byste neměli povolit tyto koncové body v aplikacích, které přibývají obory názvů Service Bus úrovně Standard a Premium. Protože standardní vrstva nepodporuje virtuální sítě, koncový bod je omezený jenom na obory názvů úrovně Premium.
 
-## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé scénáře zabezpečení povolené integrací virtuální sítě 
+## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé zabezpečení scénáře povolené ve integrace virtuální sítě 
 
-Řešení, která vyžadují těsné a compartmentalized zabezpečení a kde podsítě virtuální sítě poskytují segmentaci mezi službami compartmentalized, obecně potřebují cesty komunikace mezi službami, které se nacházejí v těchto oddílech.
+Řešení, které vyžadují vysoké a zpřehlednění zabezpečení a kde podsítě virtuální sítě poskytuje segmentace mezi těmito službami compartmentalized obecně stále potřebovat komunikační trasy mezi službami, které se nacházejí v těchto oddílech.
 
-Veškerá okamžitá trasa IP mezi oddíly, včetně těch, které přenáší HTTPS přes protokol TCP/IP, přináší riziko zneužití chyb zabezpečení z síťové vrstvy. Služby zasílání zpráv poskytují zcela izolované komunikační cesty, ve kterých se při přechodu mezi stranami na disk zapisují i zprávy. Úlohy ve dvou různých virtuálních sítích, které jsou vázané na stejnou instanci Service Bus, mohou komunikovat efektivně a spolehlivě prostřednictvím zpráv, zatímco příslušná integrita hranice izolace sítě zůstane zachovaná.
+Žádné okamžité IP trasy mezi oddíly, včetně těch, které může přenos HTTPS přes protokol TCP/IP, přináší riziko zneužití slabých míst z síťové vrstvy v provozu. Zasílání zpráv služby poskytují zcela izolované komunikační cesty, kde se zprávy i zapisují na disk po jejich přechod mezi stranami. Úlohy ve dvou různých virtuálních sítích, které jsou vázané na stejnou instanci Service Bus, mohou komunikovat efektivně a spolehlivě prostřednictvím zpráv, zatímco příslušná integrita hranice izolace sítě zůstane zachovaná.
  
 To znamená, že vaše cloudová řešení citlivá na zabezpečení nezískají přístup k špičkovým spolehlivým a škálovatelným funkcím asynchronního zasílání zpráv v oboru Azure, ale teď můžou pomocí zasílání zpráv vytvořit cesty komunikace mezi oddíly zabezpečeného řešení, které jsou ze své podstaty bezpečnější než u libovolného režimu komunikace peer-to-peer, včetně protokolu HTTPS a dalších protokolů soketu zabezpečených pro TLS.
 
@@ -71,13 +70,13 @@ Následující šablona Správce prostředků umožňuje přidání pravidla vir
 Parametry šablony:
 
 * **obor názvů**: Service Bus obor názvů.
-* **virtualNetworkingSubnetId**: plně kvalifikovaná cesta správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
+* **virtualNetworkingSubnetId**: plně kvalifikovanou cestu Resource Manageru pro podsíť virtuální sítě, například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
 > Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
 > 
-> Výsledkem
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -191,7 +190,7 @@ Pokud chcete nasadit šablonu, postupujte podle pokynů [Azure Resource Manager]
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o virtuálních sítích najdete v následujících odkazech:
+Další informace o virtuálních sítích najdete v následujících tématech:
 
 - [Koncové body služby virtuální sítě Azure][vnet-sep]
 - [Azure Service Bus filtrování IP adres][ip-filtering]

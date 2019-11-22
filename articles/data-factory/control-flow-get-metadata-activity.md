@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: e891f6675920e7bb90d2a6d007676cdd65f19917
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679886"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280645"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
 
@@ -43,11 +43,11 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 
 **Úložiště souborů**
 
-| Konektory/metadata | ItemName<br>(soubor/složka) | ItemType<br>(soubor/složka) | hodnota<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | strukturované<br/>souborů | Sloupců<br>souborů | Neexistuje<br>(soubor/složka) |
+| Konektory/metadata | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | size<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | structure<br/>souborů | Sloupců<br>souborů | neexistuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Úložiště Google Cloud](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| [Úložiště Google Cloud](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -57,10 +57,11 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 
 - Pro Amazon S3 a Google Cloud Storage se `lastModified` vztahuje na kontejner a klíč, ale ne na virtuální složku, a `exists` se vztahuje na kontejner a klíč, ale ne na předponu nebo virtuální složku.
 - Pro úložiště objektů BLOB v Azure se `lastModified` vztahuje na kontejner a objekt blob, ale ne na virtuální složku.
+- Pro aktivitu získat metadata není podporován filtr zástupných znaků u složek nebo souborů.
 
 **Relační databáze**
 
-| Konektory/metadata | strukturované | Sloupců | Neexistuje |
+| Konektory/metadata | structure | Sloupců | neexistuje |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Spravovaná instance Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -73,16 +74,16 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 
 | Typ metadat | Popis |
 |:--- |:--- |
-| ItemName | Název souboru nebo složky |
-| ItemType | Typ souboru nebo složky Vrácená hodnota je `File` nebo `Folder`. |
-| hodnota | Velikost souboru (v bajtech) Platí pouze pro soubory. |
+| itemName | Název souboru nebo složky |
+| itemType | Typ souboru nebo složky Vrácená hodnota je `File` nebo `Folder`. |
+| size | Velikost souboru (v bajtech) Platí pouze pro soubory. |
 | vytvářejí | Datum a čas vytvoření souboru nebo složky. |
 | lastModified | Datum a čas poslední změny souboru nebo složky |
 | childItems | Seznam podsložek a souborů v dané složce. Platí pouze pro složky. Vrácená hodnota je seznam názvů a typů jednotlivých podřízených položek. |
 | contentMD5 | Algoritmus MD5 souboru Platí pouze pro soubory. |
-| strukturované | Datová struktura tabulky souborů nebo relačních databází. Vrácená hodnota je seznam názvů sloupců a typů sloupců. |
+| structure | Datová struktura tabulky souborů nebo relačních databází. Vrácená hodnota je seznam názvů sloupců a typů sloupců. |
 | Sloupců | Počet sloupců v souboru nebo relační tabulce |
-| Neexistuje| Zda existuje soubor, složka nebo tabulka. Všimněte si, že pokud je `exists` zadán v seznamu pole získat metadata, aktivita nebude úspěšná, i když soubor, složka nebo tabulka neexistují. Místo toho se ve výstupu vrátí `exists: false`. |
+| neexistuje| Zda existuje soubor, složka nebo tabulka. Všimněte si, že pokud je `exists` zadán v seznamu pole získat metadata, aktivita nebude úspěšná, i když soubor, složka nebo tabulka neexistují. Místo toho se ve výstupu vrátí `exists: false`. |
 
 >[!TIP]
 >Chcete-li ověřit, zda existuje soubor, složka nebo tabulka, zadejte `exists` v seznamu polí získat metadata pro aktivitu. Pak můžete zaškrtnout `exists: true/false` výsledek ve výstupu aktivity. Pokud není v seznamu polí zadána možnost `exists`, aktivita získat metadata selže, pokud objekt nebude nalezen.
@@ -108,7 +109,7 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 }
 ```
 
-**Integrován**
+**Dataset**
 
 ```json
 {
@@ -137,7 +138,7 @@ V současné době aktivita získat metadata může vracet následující typy i
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
 fieldList | Typy informací o metadatech, které jsou požadovány. Podrobnosti o podporovaných metadatech najdete v části [Možnosti metadat](#metadata-options) v tomto článku. | Ano 
-Integrován | Referenční datová sada, jejíž metadata mají být načtena aktivitou získání metadat. Informace o podporovaných konektorech najdete v části [Možnosti](#capabilities) . Podrobnosti o syntaxi datové sady najdete v tématech konkrétního konektoru. | Ano
+integrován | Referenční datová sada, jejíž metadata mají být načtena aktivitou získání metadat. Informace o podporovaných konektorech najdete v části [Možnosti](#capabilities) . Podrobnosti o syntaxi datové sady najdete v tématech konkrétního konektoru. | Ano
 formatSettings | Použijte při použití typu DataSet typu Format. | Ne
 storeSettings | Použijte při použití typu DataSet typu Format. | Ne
 

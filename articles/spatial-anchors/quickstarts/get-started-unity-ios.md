@@ -1,19 +1,19 @@
 ---
-title: Rychlý Start – vytvoření aplikace Unity pro iOS pomocí prostorových kotev Azure | Microsoft Docs
+title: 'Rychlý Start: Vytvoření aplikace Unity pro iOS'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS s Unity pomocí prostorových ukotvení.
 author: craigktreasure
-manager: aliemami
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a121cc7bcb9fba3a01c1e71c7b9e6fc67dce0572
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ca4a36f824c2287e49a202ada2254d4f8a94c562
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092166"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277031"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro iOS pomocí prostorových kotev Azure
 

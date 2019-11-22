@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486624"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280796"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
@@ -60,17 +60,17 @@ Vezměte v úvahu tento příklad projevy:
 |Chci získat počítač, jak na něj mám přejít?|
 |Kdy můžu počítač dělat?| 
 
-Základní pojem, "počítač", není proměnlivý. Používejte alternativy, jako je stolní počítač, přenosný počítač, pracovní stanice nebo dokonce jenom počítač. LUIS inteligentně odvodí synonyma z kontextu, ale při vytváření projevy pro školení je stále lepší je měnit.
+Klíčové slovo "Computer" se neliší. Používejte alternativy, jako je stolní počítač, přenosný počítač, pracovní stanice nebo dokonce jenom počítač. LUIS dokáže inteligentně odvodit synonyma z kontextu, ale při vytváření projevy pro školení je vždy lepší je měnit.
 
 ## <a name="example-utterances-in-each-intent"></a>Příklad projevy v každém záměru
 
-Každý záměr musí mít příklad projevy, nejméně 15. Pokud máte záměr, který nemá žádné ukázkové projevy, nebudete moci LUIS. Pokud máte záměr s jedním nebo velmi malým příkladem projevy, LUIS nebude přesně předpovědět záměr. 
+Každý záměr musí mít příklad projevy, nejméně 15. Pokud máte záměr, který nemá žádné ukázkové projevy, nebudete moci LUIS. Pokud máte záměr s jedním nebo velmi malým příkladem projevy, LUIS nemusí přesně předpovědět záměr. 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Přidat malé skupiny s 15 projevy pro každou iteraci vytváření
 
 V každé iteraci modelu nepřidávejte velké množství projevy. Přidejte projevy do množství 15. Znovu proveďte [výuku](luis-how-to-train.md), [publikování](luis-how-to-publish-app.md)a [testování](luis-interactive-test.md) .  
 
-LUIS vytváří efektivní modely s projevy, které pečlivě vybral Autor modelu LUIS. Přidání příliš velkého počtu projevy není důležité, protože představuje nejasnost.  
+LUIS vytváří efektivní modely s projevy, které pečlivě vybral Autor modelu LUIS. Přidání příliš velkého počtu projevy není důležité, protože představuje nejasnost.
 
 Je lepší začít s několika projevy a pak [zkontrolovat projevy Endpoint](luis-how-to-review-endpoint-utterances.md) za účelem správné předpovědi záměru a extrakci entit.
 
@@ -108,11 +108,11 @@ Normalizace neznamená, že se v příkladech projevy nebo prediktivních odpov�
 
 ### <a name="punctuation-marks"></a>Interpunkční značky
 
-Interpunkce je samostatný token v LUIS. Utterance, která obsahuje tečku na konci oproti utterance, která neobsahuje tečku na konci, je dvě samostatné projevy a může získat dvě různé předpovědi. 
+Rozdělení je samostatný token v LUIS. Utterance, která obsahuje tečku na konci oproti utterance, která neobsahuje tečku na konci, je dvě samostatné projevy a může získat dvě různé předpovědi. 
 
 Pokud interpunkční znaménko není normalizováno, LUIS Neignoruje interpunkční znaménka ve výchozím nastavení, protože některé klientské aplikace mohou na tyto značky umístit význam. Ujistěte se, že váš příklad projevy použít interpunkční znaménka i bez interpunkce v případě, že oba styly vrátí stejné relativní skóre. 
 
-Ujistěte se, že model zpracovává interpunkční znaménka buď v [příkladu projevy](luis-concept-utterance.md) (s a bez interpunkce), nebo ve [vzorech](luis-concept-patterns.md) , kde je snazší ignorovat interpunkci se speciální syntaxí: `I am applying for the {Job} position[.]`
+Ujistěte se, že model zpracovává interpunkční znaménka buď v příkladu projevy (s a bez interpunkce), nebo ve [vzorech](luis-concept-patterns.md) , kde je snazší ignorovat interpunkci se speciální syntaxí: `I am applying for the {Job} position[.]`
 
 Pokud interpunkční znaménko nemá v klientské aplikaci žádný zvláštní význam, zvažte [ignorování interpunkce](#utterance-normalization) normalizací interpunkce. 
 
@@ -136,18 +136,18 @@ Po vyškolení, publikování a přijímání dotazů na [koncové body](luis-gl
 
 Projděte si [osvědčené postupy](luis-concept-best-practices.md) a použijte je jako součást běžného cyklu vytváření.
 
-## <a name="label-for-word-meaning"></a>Označení pro wordový význam
+## <a name="label-for-word-meaning"></a>Popisek pro význam slova
 
-Pokud je volba slova nebo uspořádání slov stejná, ale neznamená to stejné, nepište je entitou. 
+Pokud volba slovo nebo slovo uspořádání je stejný, ale není to samé, není popisek s entitou. 
 
-V následujícím projevy je slovo `fair` homograf. Je pravopisné, ale má jiný význam:
+Následující projevy, slovo `fair` je homograf. Je napsána stejný, ale má odlišný význam:
 
 |Promluva|
 |--|
-|Jaký druh veletrhů se děje v oblasti Praha této léto?|
-|Je aktuální hodnocení pro Seattle na veletrzích?|
+|Jaký druh county veletrhů se dějí v Seattlu toto léto?|
+|Je aktuální hodnocení ke kontrole Seattle přiměřená?|
 
-Pokud jste chtěli, aby entita události vyhledala všechna data události, označte slovo `fair` v prvním utterance, ale ne za sekundu.
+Pokud byste chtěli entity událost najít všechna data událostí, popisek slovo `fair` v první utterance, ale nikoli do druhého.
 
 
 ## <a name="next-steps"></a>Další kroky

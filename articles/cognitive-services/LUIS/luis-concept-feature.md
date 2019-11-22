@@ -1,7 +1,7 @@
 ---
 title: Funkce – LUIS
 titleSuffix: Azure Cognitive Services
-description: Přidáním funkcí do jazykového modelu poskytněte nápovědu týkající se rozpoznávání vstupu, který chcete označit nebo klasifikovat.
+description: Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647421"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280903"
 ---
 # <a name="machine-learned-features"></a>Funkce učené počítačem 
 
-Ve službě Machine Learning je *funkce* odlišující se vlastností a atributů dat, které systém sleduje & se naučí. V Language Understanding (LUIS) funkce popisuje a vysvětluje, co je důležité o vašich záměrech a entitách.
+Ve službě Machine Learning je _funkce_ odlišující se vlastností a atributů dat, které systém sleduje & se naučí. V Language Understanding (LUIS) funkce popisuje a vysvětluje, co je důležité o vašich záměrech a entitách.
 
 Na [portálu Luis ve verzi Preview](https://preview.luis.ai)jsou funkce _popisovače_ , protože se používají k _popisu_ záměru nebo entity.  
 
@@ -43,7 +43,7 @@ Seznam frází LUIS považuje za kontext a generalizy k identifikaci položek, k
 
 Pokud chcete být schopni rozpoznat nové instance, jako je třeba Plánovač schůzky, který by měl rozpoznávat názvy nových kontaktů, nebo aplikaci inventáře, která by měla rozpoznávat nové produkty, začněte s entitou učenou počítačem. Pak vytvořte seznam frází, který pomůže LUIS hledání slov s podobným významem. Tento seznam frází LUIS k rozpoznávání příkladů přidáním dalšího významu k hodnotě těchto slov. 
 
-Seznamy frází jsou podobně jako slovníky specifické pro doménu, které vám pomůžou se zvýšením kvality porozumění jejich záměrům a entitám. 
+Fráze seznamy jsou jako slovník jazyka specifického pro doménu, která usnadní vylepšení kvality znalost záměry a entity. 
 
 ## <a name="considerations-when-using-a-phrase-list"></a>Předpoklady při použití seznamu frází
 
@@ -82,13 +82,13 @@ Například pokud je záměrem rezervovat určitý let a entita má informace o 
 
 ### <a name="entity-as-a-feature-to-another-entity"></a>Entita jako funkce pro jinou entitu
 
-Entita (A) by měla být přidána jako funkce jiné entitě (B), pokud je zjišťování této entity (A) významné pro (B).
+Entita (A) by měla být přidána jako funkce jiné entitě (B), pokud je zjišťování této entity (A) významné pro předpověď entity (B).
 
 Například pokud je zjištěna entita adresy (A), pak hledání ulice (A) přidá váhu předpovědi pro entitu dodací adresy (B). 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Seznamte se s [osvědčenými postupy](luis-concept-best-practices.md).
+Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak přidat funkce do aplikace LUIS, najdete v tématu věnovaném [Přidání funkcí](luis-how-to-add-features.md) .
+Zobrazit [přidat funkce](luis-how-to-add-features.md) získat další informace o tom, jak přidat funkce do vaší aplikace LUIS.

@@ -62,6 +62,8 @@
       href: customize-rdp-properties.md
     - name: Nasazení diagnostických nástrojů
       href: deploy-diagnostics.md
+    - name: Nastavení připojení aplikace MSIX
+      href: app-attach.md
 - name: Koncepty
   items:
     - name: Prostředí Windows Virtual Desktop

@@ -1,57 +1,59 @@
 ---
-title: 'Quickstart: Your first portal query'
-description: In this quickstart, you follow the steps to run your first query from Azure portal using Azure Resource Graph Explorer.
-ms.date: 10/21/2019
+title: 'Rychlý Start: váš první dotaz na portálu'
+description: V tomto rychlém startu budete postupovat podle pokynů ke spuštění prvního dotazu z Azure Portal pomocí Průzkumníka Azure Resource Graph.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 4fbd4748cfeff46718cf65812ede886027b3961b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 164475581a325f47a6a2965b3cf1c3b99737f379
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216568"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304098"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Quickstart: Run your first Resource Graph query using Azure Resource Graph Explorer
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
 
-The power of Azure Resource Graph is available directly in Azure portal through Azure Resource Graph Explorer. Resource Graph Explorer provides browsable information about the Azure Resource Manager resource types and properties that you can query. Resource Graph Explorer also provides a clean interface for working with multiple queries, evaluating the results, and even converting the results of some queries into a chart that can be pinned to an Azure dashboard.
+Výkon Azure Resource graphu je k dispozici přímo v Azure Portal prostřednictvím Průzkumníka Azure Resource graphu. Průzkumník prostředků Resource Explorer poskytuje procházetelné informace o Azure Resource Manager typech prostředků a vlastnostech, které se dají dotazovat. Průzkumník diagramů prostředků také poskytuje čisté rozhraní pro práci s více dotazy, vyhodnocení výsledků a dokonce i převod výsledků některých dotazů do grafu, který je možné připnout na řídicí panel Azure.
 
-At the end of this quickstart, you'll have used Azure portal and Resource Graph Explorer to run your first Resource Graph query and pinned the results to a dashboard.
+Na konci tohoto rychlého startu použijete Azure Portal a Průzkumník diagramů prostředků ke spuštění prvního dotazu grafu prostředku a připnuté výsledky na řídicí panel.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="run-your-first-resource-graph-query"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
-Open the [Azure portal](https://portal.azure.com) to find and use the Resource Graph Explorer following these steps to run your first Resource Graph query:
+Otevřete [Azure Portal](https://portal.azure.com) pro vyhledání a použití Průzkumníka grafu prostředků podle těchto kroků ke spuštění prvního dotazu na graf prostředku:
 
-1. Select **All services** in the left pane. Search for and select **Resource Graph Explorer**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **Průzkumník diagramů prostředků**.
 
-1. In the **Query 1** portion of the window, enter the query `Resources | project name, type | limit 5` and select **Run query**.
+1. V části **dotazu 1** v rámci okna zadejte dotaz `Resources | project name, type | limit 5` a vyberte **Spustit dotaz**.
 
    > [!NOTE]
-   > As this query example doesn't provide a sort modifier such as `order by`, running this query multiple times is likely to yield a different set of resources per request.
+   > Jelikož tento příklad dotazu neposkytuje modifikátor řazení, jako je například `order by`, spuštění tohoto dotazu bude pravděpodobně zajišťovat jinou sadu prostředků na požadavek.
 
-1. Review the query response in the **Results** tab. Select the **Messages** tab to see details about the query, including the count of results and duration of the query. Errors, if any, are displayed under this tab.
+1. Zkontrolujte odpověď na dotaz na kartě **výsledky** . výběrem karty **zprávy** zobrazíte podrobnosti o dotazu, včetně počtu výsledků a doby trvání dotazu. Případné chyby se zobrazí na této kartě.
 
-1. Update the query to `order by` the **Name** property: `Resources | project name, type | limit 5 | order by name asc`. Then, select **Run query**.
+1. Aktualizujte dotaz tak, aby `order by` vlastnost **Name** : `Resources | project name, type | limit 5 | order by name asc`. Pak vyberte **Spustit dotaz**.
 
    > [!NOTE]
    > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
 
-1. Update the query to first `order by` the **Name** property and then `limit` to the top five results: `Resources | project name, type | order by name asc | limit 5`. Then, select **Run query**.
+1. Aktualizujte dotaz tak, aby nejprve `order by` vlastnost **Name** a pak `limit` na horních 5 výsledků: `Resources | project name, type | order by name asc | limit 5`. Pak vyberte **Spustit dotaz**.
 
-When the final query is run several times, assuming that nothing in your environment is changing, the results returned are consistent and as expected -- ordered by the **Name** property, but still limited to the top five results.
+Pokud se konečný dotaz několikrát spustí, za předpokladu, že se nic ve vašem prostředí nemění, vrácené výsledky jsou konzistentní a podle očekávání – seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
 
-### <a name="schema-browser"></a>Schema browser
+### <a name="schema-browser"></a>Prohlížeč schémat
 
-The schema browser is located in the left pane of Resource Graph Explorer. This list of resources shows all the _resource types_ of Azure resources that are both supported by Azure Resource Graph and that exist in a tenant that you have access to. Expanding a resource type or subproperties show child properties that can be used to create a Resource Graph query.
+Prohlížeč schématu je umístěný v levém podokně Průzkumníka grafu prostředků. Tento seznam prostředků zobrazuje všechny _typy_ prostředků Azure, které podporuje Azure Resource Graph a které existují v tenantovi, ke kterému máte přístup. Rozbalením typu prostředku nebo podvlastnostmi se zobrazí podřízené vlastnosti, které lze použít k vytvoření dotazu grafu prostředku.
 
-Selecting the resource type places `where type =="<resource type>"` into the query box. Selecting one of the child properties adds `where <propertyName> == "INSERT_VALUE_HERE"` into the query box.
-The schema browser is a great way to discover properties for use in queries. Be sure to replace _INSERT\_VALUE\_HERE_ with your own value, adjust the query with conditions, operators, and functions to achieve your intended results.
+V poli dotaz vyberte umístění typu prostředku `where type =="<resource type>"`. Výběrem jedné z podřízených vlastností přidáte `where <propertyName> == "INSERT_VALUE_HERE"` do pole dotazu.
+Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit _hodnotu INSERT\_\_zde_ vlastní hodnotou, upravte dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
 
-## <a name="create-a-chart-from-the-resource-graph-query"></a>Create a chart from the Resource Graph query
+## <a name="create-a-chart-from-the-resource-graph-query"></a>Vytvoření grafu z dotazu na graf prostředků
 
-After running the last query above, if you select the **Charts** tab, you get a message that "the result set isn't compatible with a pie chart visualization." Queries that list results can't be made into a chart, but queries that provide counts of resources can. Using the [Sample query - Count virtual machines by OS type](./samples/starter.md#count-virtual-machines-by-os-type), let's create a visualization from the Resource Graph query.
+Pokud po spuštění posledního dotazu vyberete kartu **grafy** , zobrazí se zpráva, že sada výsledků dotazu není kompatibilní s vizualizací výsečového grafu. Dotazy, které uvádějí výsledky seznamu, se nedají provést v grafu, ale můžou se zadat i dotazy, které poskytují počty prostředků. Pomocí [ukázkového dotazu – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-virtual-machines-by-os-type)vytvoříme vizualizaci z dotazu na graf prostředků.
 
-1. In the **Query 1** portion of the window, enter the following query and select **Run query**.
+1. V části pro **dotaz 1** v okně zadejte následující dotaz a vyberte **Spustit dotaz**.
 
    ```kusto
    Resources
@@ -59,67 +61,65 @@ After running the last query above, if you select the **Charts** tab, you get a 
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-1. Select the **Results** tab and note that the response for this query provides counts.
+1. Vyberte kartu **výsledky** a Všimněte si, že odpověď pro tento dotaz poskytuje počty.
 
-1. Select the **Charts** tab. Now, the query results in visualizations. Change the type from _Select chart type..._ to either _Bar chart_ or _Donut chart_ to experiment with the available visualization options.
+1. Vyberte kartu **grafy** . Nyní je výsledkem dotazu vizualizace. Změňte typ z volby _typ grafu.._ . na _sloupcový graf_ nebo _prstencový graf_ pro experimentování s dostupnými možnostmi vizualizace.
 
-## <a name="pin-the-query-visualization-to-a-dashboard"></a>Pin the query visualization to a dashboard
+## <a name="pin-the-query-visualization-to-a-dashboard"></a>Připnutí vizualizace dotazu na řídicí panel
 
-When you have results from a query that can be visualized, that data visualization can then be pinned to one of your dashboards. After running the query above, follow these steps:
+Když máte výsledky z dotazu, který je možné vizuálně vyfiltrovat, můžete tuto vizualizaci dat připnout k některému z vašich řídicích panelů. Po spuštění dotazu výše použijte následující postup:
 
-1. Select **Save** and provide the name "VMs by OS Type". Then select **Save** at the bottom of the right pane.
+1. Vyberte **Uložit** a zadejte název virtuální počítače podle typu operačního systému. Potom v dolní části pravého podokna vyberte **Save (Uložit** ).
 
-1. Select **Run query** to rerun the query now that it's been saved.
+1. Výběrem **Spustit dotaz** spusťte dotaz nyní, který je uložený.
 
-1. On the **Charts** tab, select a data visualization. Then select **Pin to dashboard**.
+1. Na kartě **grafy** vyberte vizualizaci dat. Pak vyberte **Připnout na řídicí panel**.
 
-1. Either select the portal notification that appears or select **Dashboard** from the left pane.
+1. Buď vyberte oznámení na portálu, které se zobrazí, nebo v levém podokně vyberte **řídicí panel** .
 
-The query is now available on your dashboard with the title of the tile matching the query name. If the query was unsaved when it was pinned, it's named 'Query 1' instead.
+Dotaz je nyní k dispozici na řídicím panelu s názvem dlaždice, která odpovídá názvu dotazu. Pokud byl dotaz při připnutí neuložený, nazývá se místo toho dotaz 1.
 
-The query and resulting data visualization run and update each time the dashboard loads, providing real-time and dynamic insights to your Azure environment directly in your workflow.
-
-> [!NOTE]
-> Queries that result in a list can also be pinned to the dashboard. The feature isn't limited to data visualizations of queries.
-
-## <a name="import-example-resource-graph-explorer-dashboards"></a>Import example Resource Graph Explorer dashboards
-
-To provide examples of Resource Graph queries and how Resource Graph Explorer can be used to enhance your Azure portal workflow, try out these example dashboards.
-
-- [Resource Graph Explorer - Sample Dashboard #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
-
-  [![Example image for Sample Dashboard #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
-
-- [Resource Graph Explorer - Sample Dashboard #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
-
-  [![Example image for Sample Dashboard #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+Dotaz a výsledná vizualizace dat se spustí a aktualizuje pokaždé, když se řídicí panel načte, a poskytuje v reálném čase a dynamické poznatky k prostředí Azure přímo ve vašem pracovním postupu.
 
 > [!NOTE]
-> Counts and charts in the above example dashboard screenshots will vary depending on your Azure environment.
+> Dotazy, které jsou výsledkem seznamu, lze také připnout na řídicí panel. Tato funkce není omezena na vizualizace dat dotazů.
 
-1. Select and download the sample dashboard you want to evaluate.
+## <a name="import-example-resource-graph-explorer-dashboards"></a>Příklady importu řídicích panelů Průzkumníka diagramů prostředků
 
-1. In Azure portal, select **Dashboard** from the left pane.
+Chcete-li poskytnout příklady dotazů na grafy prostředků a jak lze použít Průzkumníka grafu prostředků k vylepšení Azure Portalho pracovního postupu, vyzkoušejte tyto ukázkové řídicí panely.
 
-1. Select **Upload**, then locate and select the downloaded sample dashboard file. Then select **Open**.
+- [Průzkumník grafu prostředků – ukázkový #1 řídicího panelu](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-The imported dashboard is automatically displayed. Since it now exists in your Azure portal, you may explore and make changes as needed or create new dashboards from the example to share with your teams. For more information about working with dashboards, see [Create and share dashboards in the Azure portal](../../azure-portal/azure-portal-dashboards.md).
+  [![příklad obrázku pro ukázkový řídicí panel #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
-## <a name="clean-up-resources"></a>Clean-up resources
+- [Průzkumník grafu prostředků – ukázkový #2 řídicího panelu](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-If you wish to remove the sample Resource Graph dashboards from your Azure portal environment, you can do so with the following steps:
+  [![příklad obrázku pro ukázkový řídicí panel #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
-1. Select **Dashboard** from the left pane.
+> [!NOTE]
+> Počty a grafy ve výše uvedených ukázkových snímcích obrazovky řídicího panelu se budou lišit v závislosti na prostředí Azure.
 
-1. From the dashboard drop-down, select the sample Resource Graph dashboard you wish to delete.
+1. Vyberte a Stáhněte si ukázkový řídicí panel, který chcete vyhodnotit.
 
-1. Select **Delete** from the dashboard menu at the top of the dashboard and select **Ok** to confirm.
+1. V Azure Portal v levém podokně vyberte **řídicí panel** .
+
+1. Vyberte **nahrát**a pak vyhledejte a vyberte stažený ukázkový soubor řídicího panelu. Pak vyberte **otevřít**.
+
+Automaticky se zobrazí importovaný řídicí panel. Protože teď existuje ve vašem Azure Portal, můžete podle potřeby prozkoumat a dělat změny nebo vytvořit nové řídicí panely z tohoto příkladu a sdílet je s vašimi týmy. Další informace o práci s řídicími panely najdete v tématu [Vytvoření a sdílení řídicích panelů v Azure Portal](../../azure-portal/azure-portal-dashboards.md).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete odebrat ukázkové řídicí panely grafu prostředků z prostředí Azure Portal, můžete to udělat pomocí následujících kroků:
+
+1. V levém podokně vyberte **řídicí panel** .
+
+1. V rozevíracím seznamu řídicí panel vyberte ukázkový řídicí panel grafu prostředků, který chcete odstranit.
+
+1. V nabídce řídicího panelu v horní části řídicího panelu vyberte **Odstranit** a potvrďte ji kliknutím na **OK** .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Get more information about the [query language](./concepts/query-language.md).
-- Learn more about how to [explore resources](./concepts/explore-resources.md).
-- Run your first query with [Azure CLI](first-query-azurecli.md).
-- See samples of [Starter queries](./samples/starter.md).
-- See samples of [Advanced queries](./samples/advanced.md).
-- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+V tomto rychlém startu jste použili Azure Resource Graph Explorer ke spuštění prvního dotazu a prohlédli si příklady řídicích panelů, které jsou napájené podle grafu zdrojů. Chcete-li získat další informace o jazyku grafu prostředků, přejděte na stránku podrobností dotazovacího jazyka.
+
+> [!div class="nextstepaction"]
+> [Získat další informace o dotazovacím jazyku](./concepts/query-language.md)

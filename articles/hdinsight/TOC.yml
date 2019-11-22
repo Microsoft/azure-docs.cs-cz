@@ -243,14 +243,8 @@
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
         - name: Vysvětlení a řešení chyb WebHCat
           href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
-        - name: Plány Azure do budoucna
-          href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
         - name: Získejte pomoc na fóru
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
-        - name: Postup výuky
-          href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
-        - name: Program Microsoft Professional pro velké objemy dat
-          href: 'https://academy.microsoft.com/en-us/professional-program/tracks/big-data/'
         - name: Cenová kalkulačka
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Nástroje Windows pro HDInsight
@@ -279,8 +273,6 @@
           href: ./spark/apache-spark-intellij-tool-failure-debug.md
         - name: Analýza dat pomocí nástrojů BI
           href: ./spark/apache-spark-use-bi-tools.md
-        - name: Spuštění úlohy streamování
-          href: ./spark/apache-spark-eventhub-streaming.md
         - name: Vytvoření aplikace strojového učení
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: Vytvoření aplikace Apache Spark v IntelliJ

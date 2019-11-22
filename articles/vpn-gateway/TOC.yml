@@ -156,7 +156,7 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Inzerce vlastních tras pro klienty P2S
           href: vpn-gateway-p2s-advertise-custom-routes.md
-    - name: Vytvoření zónově redundantní brány virtuální sítě v zónách dostupnosti Azure
+    - name: Vytvoření zónově redundantní brány
       href: create-zone-redundant-vnet-gateway.md
     - name: Konfigurace zásad IPsec/IKE pro připojení
       href: vpn-gateway-ipsecikepolicy-rm-powershell.md

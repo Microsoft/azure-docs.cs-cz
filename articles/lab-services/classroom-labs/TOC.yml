@@ -40,6 +40,8 @@
           href: class-type-ethical-hacking.md
         - name: Správa databází
           href: class-type-database-management.md
+        - name: Poznámkové bloky Jupyter a Python
+          href: class-type-jupyter-notebook.md
     - name: Vytvoření a konfigurace účtů testovacího prostředí (vlastník testovacího prostředí)
       items:
         - name: Vytvoření a správa účtů testovacího prostředí

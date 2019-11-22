@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: Blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/18/2019
 ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 9fcf75a07d1caf7b411c315d11ce984cbe35df75
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 55c4c3f2c6a7856f3e7c0aea81ce013d3ff56f8b
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577187"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284792"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
@@ -31,7 +31,7 @@ Tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dal
 
 ## <a name="network-deployment-and-operations"></a>Síťové nasazení a operace
 
-Nasazení služby Azure blockchain můžete provést prostřednictvím Azure Portal, Azure CLI a také prostřednictvím Visual Studio Code pomocí rozšíření Azure blockchain.  Nasazení je zjednodušené, včetně zřízení transakcí i ověřovacích uzlů, virtuálních sítí Azure pro izolaci zabezpečení i úložiště spravovaného službou.  Kromě toho, když se nasazuje nový člen blockchain, uživatelé také vytvoří nebo připojí konsorcium.  Konsorcia umožňují více stranám v různých předplatných Azure vzájemně komunikovat na sdílených blockchain.  Toto zjednodušené nasazení omezuje blockchain síťové nasazení ze dnů na minuty.
+Nasazení služby Azure blockchain se provádí prostřednictvím Azure Portal, Azure CLI nebo prostřednictvím Visual studia Code pomocí rozšíření Azure blockchain. Nasazení je zjednodušené, včetně zřízení transakcí i ověřovacích uzlů, virtuálních sítí Azure pro izolaci zabezpečení i úložiště spravovaného službou.  Kromě toho, když se nasazuje nový člen blockchain, uživatelé také vytvoří nebo připojí konsorcium.  Konsorcia umožňují více stranám v různých předplatných Azure vzájemně komunikovat na sdílených blockchain.  Toto zjednodušené nasazení omezuje blockchain síťové nasazení ze dnů na minuty.
 
 ### <a name="performance-and-service-tiers"></a>Výkon a úrovně služeb
 
@@ -43,13 +43,13 @@ Kromě nabídky dvou ověřovacích uzlů poskytuje úroveň *Standard* 2 *virtu
 
 ### <a name="security-and-maintenance"></a>Zabezpečení a údržba
 
-Po zřízení prvního blockchain člena máte možnost přidávat do svého člena další uzly transakcí.  Ve výchozím nastavení jsou uzly transakcí zabezpečeny prostřednictvím pravidel brány firewall a je nutné je nakonfigurovat pro přístup.  Kromě toho všechny uzly transakcí šifrují data v pohybu přes protokol TLS.  Existuje více možností pro zabezpečení přístupu k uzlům v transakci, včetně pravidel brány firewall, základního ověřování, přístupových klíčů a Azure Active Directory integrace. Další informace najdete v tématech [Konfigurace uzlů transakcí](configure-transaction-nodes.md) a [Konfigurace přístupu Azure Active Directory](configure-aad.md).
+Po zřízení prvního blockchain člena máte možnost přidávat do svého člena další uzly transakcí.  Ve výchozím nastavení jsou uzly transakcí zabezpečeny prostřednictvím pravidel brány firewall a vyžadují konfiguraci pro přístup.  Kromě toho všechny uzly transakcí šifrují data v pohybu přes protokol TLS.  Existuje více možností pro zabezpečení přístupu k uzlům v transakci, včetně pravidel brány firewall, základního ověřování, přístupových klíčů a Integrace Azure Active Directory. Další informace najdete v tématech [Konfigurace uzlů transakcí](configure-transaction-nodes.md) a [Konfigurace přístupu Azure Active Directory](configure-aad.md).
 
 Jako spravovaná služba Služba Azure blockchain zajišťuje, aby byly uzly členů blockchain opraveny pomocí nejnovějšího operačního systému hostitele a aktualizací softwarového zásobníku, který je nakonfigurovaný pro vysokou dostupnost (jenom na úrovni Standard), což eliminuje většinu DevOps. vyžaduje se pro tradiční IaaS uzly blockchain.  Další informace o opravách a aktualizacích najdete v článku [podporované verze hlavní knihy služby Azure blockchain](ledger-versions.md).
 
 ### <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
-Kromě toho služba Azure blockchain poskytuje bohatou metriku prostřednictvím služby Azure Monitor Service, která poskytuje přehledy o využití procesoru, paměti a úložiště a také užitečné poznatky o aktivitě blockchain sítě, jako jsou transakce a bloky dolována za účely. Hloubka fronty transakcí a také aktivní připojení.  Metriky je možné přizpůsobit tak, aby poskytovaly přehledy, které jsou důležité pro vaši aplikaci blockchain.  Kromě toho je možné definovat prahové hodnoty prostřednictvím výstrah umožňujících uživatelům aktivovat akce, jako je odeslání e-mailu nebo textové zprávy, spuštění aplikace logiky, funkce Azure nebo odeslání do vlastního Webhooku definovaného uživatelem.
+Kromě toho služba Azure blockchain poskytuje bohatou metriku prostřednictvím služby Azure Monitor Service, která poskytuje přehledy o využití procesoru, paměti a úložiště uzlů.  Azure Monitor taky poskytuje užitečné poznatky k blockchain síťové aktivitě, jako jsou transakce a bloky dolována za účely, hloubka fronty transakcí a aktivní připojení.  Metriky je možné přizpůsobit tak, aby poskytovaly přehledy, které jsou důležité pro vaši aplikaci blockchain.  Kromě toho je možné definovat prahové hodnoty prostřednictvím výstrah umožňujících uživatelům aktivovat akce, jako je odeslání e-mailu nebo textové zprávy, spuštění aplikace logiky, funkce Azure nebo odeslání do vlastního Webhooku definovaného uživatelem.
 
 ![Metriky](./media/overview/metrics.png)
 

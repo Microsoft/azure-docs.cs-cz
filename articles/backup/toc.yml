@@ -28,6 +28,8 @@
       href: tutorial-restore-files.md
     - name: Zálohování SQL Serveru na virtuálním počítači Azure
       href: tutorial-sql-backup.md
+    - name: Zálohování databází SAP HANA na virtuálních počítačích Azure
+      href: tutorial-backup-sap-hana-db.md
     - name: Zálohování sdílených složek Azure Files
       href: tutorial-backup-azure-files.md
     - name: Zálohování Windows Serveru
@@ -52,6 +54,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: Matice podpory pro agenty MARS
           href: backup-support-matrix-mars-agent.md
+        - name: Matice podpory pro zálohování SAP HANA
+          href: sap-hana-backup-support-matrix.md
     - name: Zabezpečení
       items:
         - name: Řízení přístupu na základě rolí
@@ -74,6 +78,8 @@
           href: backup-azure-files-faq.md
         - name: Nejčastější dotazy k zálohování databází SQL Serveru na virtuálních počítačích Azure
           href: faq-backup-sql-server.md
+        - name: Nejčastější dotazy k zálohování databází SAP HANA na virtuálních počítačích Azure
+          href: sap-hana-faq-backup-azure-vm.md
         - name: Nejčastější dotazy k Azure Backup Serveru a DPM
           href: backup-azure-dpm-azure-server-faq.md
         - name: Nejčastější dotazy k výstrahám monitorování Azure Backupu
@@ -228,8 +234,14 @@
           href: restore-sql-database-azure-vm.md
         - name: Správa zálohovaných databází SQL Serveru
           href: manage-monitor-sql-database-backup.md
-    - name: Zálohování databází SAP HANA na virtuálních počítačích Azure
-      href: backup-azure-sap-hana-database.md
+    - name: Databáze SAP HANA na virtuálních počítačích Azure
+      items:
+        - name: Zálohování databází SAP HANA na virtuálních počítačích Azure
+          href: backup-azure-sap-hana-database.md
+        - name: Obnovení databází SAP HANA na virtuálních počítačích Azure
+          href: sap-hana-db-restore.md
+        - name: Správa zálohovaných databází SAP HANA
+          href: sap-hana-db-manage.md
     - name: Windows Server
       items:
         - name: Zálohování souborů a složek Windows Serveru

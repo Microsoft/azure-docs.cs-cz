@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e522ede7da669f6e684fc9a07adcc506a69e77e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597121"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267909"
 ---
 # <a name="monitor-data-flows"></a>Monitorování toků dat
 
@@ -51,7 +51,7 @@ Po spuštění toku dat ve Sparku Azure Data Factory určí optimální cesty k�
   * Čas spuštění clusteru: doba, po kterou se získá výpočetní prostředí JIT ve službě JIT pro spuštění toku dat
   * Počet transformací: kolik kroků transformace se provádí v toku
   
-![Monitorování toku dat ACiT](media/data-flow/monitornew.png "Nové monitorování toku dat")  
+![Sledování toku dat](media/data-flow/monitornew.png "Nové monitorování toku dat")  
   
 ## <a name="monitor-icons"></a>Monitorovat ikony
 

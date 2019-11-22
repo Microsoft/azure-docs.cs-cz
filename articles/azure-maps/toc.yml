@@ -49,6 +49,8 @@
           href: routing-coverage.md
         - name: Zajištění mobility
           href: mobility-coverage.md
+        - name: Zajištění povětrnostních služeb
+          href: weather-coverage.md
     - name: Podpora lokalizace
       href: supported-languages.md
     - name: Podporované styly map
@@ -57,6 +59,8 @@
       href: zoom-levels-and-tile-grid.md
     - name: Datová struktura Mobility Service
       href: mobility-service-data-structure.md
+    - name: Koncepty povětrnostních služby
+      href: weather-services-concepts.md
 - name: Návody
   items:
     - name: Správa účtů Maps
@@ -185,6 +189,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: Služba Render
           href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: Služba Render V2
+          href: 'https://docs.microsoft.com/rest/api/maps/renderv2'
         - name: Služba Route
           href: 'https://docs.microsoft.com/rest/api/maps/route'
         - name: Služba Search
@@ -195,6 +201,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/timezone'
         - name: Služba Traffic
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: Služba Weather
+          href: 'https://docs.microsoft.com/rest/api/maps/weather'
         - name: Správa účtů služby Maps
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

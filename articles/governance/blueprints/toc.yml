@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Přehled Azure Blueprints
+    - name: Co je Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
 - name: Šablony Rychlý start
