@@ -3,12 +3,12 @@ title: Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 95eb72fe9d918b527cdceec69a0e90a682d62b07
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172723"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278244"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy, které používají Azure Backup
 
@@ -41,7 +41,7 @@ Obnovitelné odstranění se v současné době podporuje v Středozápadní USA
    > [!NOTE]
    > Pokud se v trezoru nacházejí nějaké záložní zálohované položky, trezor se v této době nedá odstranit. Zkuste prosím odstranit trezor, až se zálohované položky trvale odstraní, a v trezoru se neodstraní žádná položka v tichém odstraněném stavu.
 
-4. Aby bylo možné obnovit částečný odstraněný virtuální počítač, musí být nejprve obnoven. Pokud ho chcete obnovit, vyberte virtuální počítač s příjemným odstraněnou a pak klikněte na možnost **zrušit odstranění**.
+4. Aby bylo možné obnovit částečný odstraněný virtuální počítač, musí být nejprve obnoven. Pokud ho chcete obnovit, vyberte virtuální počítač s příjemným odstraněnou a potom vyberte možnost **obnovit**.
 
    ![Snímek obrazovky Azure Portal, odstranění virtuálního počítače](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
@@ -60,7 +60,7 @@ Obnovitelné odstranění se v současné době podporuje v Středozápadní USA
 
    ![Snímek obrazovky Azure Portal, obnovit možnost zálohování](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
-Tento vývojový diagram znázorňuje různé kroky a stavy zálohované položky:
+Tento vývojový diagram zobrazuje různé kroky a stavy zálohované položky, když je povolené obnovitelné odstranění:
 
 ![Životní cyklus záložní položky odstraněné položky](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
@@ -68,26 +68,47 @@ Další informace najdete v části [Nejčastější dotazy](backup-azure-securi
 
 ## <a name="disabling-soft-delete"></a>Zákaz obnovitelného odstranění
 
-Obnovitelné odstranění je ve výchozím nastavení povolené u nově vytvořených trezorů. Pokud je funkce slabého odstranění zabezpečení zakázaná, zálohovaná data nebudou chráněná před náhodnými nebo škodlivými odstraněními. Bez funkce obnovitelného odstranění budou všechna odstranění chráněných položek výsledkem okamžitého odebrání bez možnosti obnovení. Vzhledem k tomu, že data zálohování ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka, zakázání této funkce se nedoporučuje. Jediným případem, kdy byste měli zvážit zakázání obnovitelného odstranění, je, že plánujete přesunutí chráněných položek do nového trezoru a nemůžete počkat 14 dní před odstraněním a obnovením ochrany (například v testovacím prostředí).
+Obnovitelné odstranění je ve výchozím nastavení povolené u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Zakázání této funkce se nedoporučuje. Jediným případem, kdy byste měli zvážit zakázání obnovitelného odstranění, je, že plánujete přesunutí chráněných položek do nového trezoru a nemůžete počkat 14 dní před odstraněním a obnovením ochrany (například v testovacím prostředí). Tuto funkci může zakázat pouze správce zálohování. Pokud tuto funkci zakážete, všechna odstranění chráněných položek budou mít za následek okamžité odebrání bez možnosti obnovení. Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud chcete tyto okamžité odstranění trvale odstranit, musíte je znovu odstranit a znovu odstranit, abyste se mohli trvale odstranit.
 
-### <a name="prerequisites-for-disabling-soft-delete"></a>Předpoklady pro zakázání obnovitelného odstranění
-
-- Povolení nebo zakázání obnovitelného odstranění pro trezory (bez chráněných položek) může být provedeno pouze Azure Portal. To platí pro:
-  - Nově vytvořené trezory, které neobsahují chráněné položky
-  - Stávající trezory, jejichž chráněné položky byly odstraněny a jejichž platnost vypršela (mimo stanovenou dobu uchovávání za 14 dní)
-- Pokud je funkce obnovitelného odstranění pro trezor zakázaná, můžete ji znovu povolit, ale tuto volbu nemůžete změnit a znovu ji zakázat, pokud trezor obsahuje chráněné položky.
-- Nemůžete zakázat obnovitelné odstranění pro trezory, které obsahují chráněné položky nebo položky ve stavu nepodmíněného odstranění. Pokud to budete potřebovat, postupujte podle těchto kroků:
-  - Zastavte ochranu odstraněných dat pro všechny chráněné položky.
-  - Počkejte, než 14 dní do vypršení platnosti bezpečnostního uchování.
-  - Zakáže obnovitelné odstranění.
-
-Chcete-li zakázat obnovitelné odstranění, zajistěte splnění požadavků a pak postupujte podle těchto kroků:
+Chcete-li zakázat obnovitelné odstranění, použijte následující postup:
 
 1. V Azure Portal přejdete do svého trezoru a pak přejdete na **nastavení** -> **vlastnosti**.
-2. V podokně Vlastnosti vyberte **nastavení zabezpečení** -> **aktualizovat**.
-3. V podokně nastavení zabezpečení v části obnovitelné odstranění vyberte **Zakázat**.
+2. V podokně Vlastnosti vyberte **nastavení zabezpečení** -> **aktualizovat**.  
+3. V podokně nastavení zabezpečení v části **obnovitelné odstranění**vyberte **Zakázat**.
+
 
 ![Zakázat obnovitelné odstranění](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+## <a name="permanently-deleting-soft-deleted-backup-items"></a>Trvale se odstraňují obnovitelné položky odstraněné zálohy
+
+Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud je chcete trvale odstranit, odstraňte je znovu a znovu je odstraňte, abyste je mohli trvale odstranit. 
+
+Postupujte následovně:
+
+1. Chcete-li [Zakázat obnovitelné odstranění](#disabling-soft-delete), postupujte podle pokynů. 
+2. V Azure Portal přejdete do svého trezoru, přejdete na **zálohované položky** a zvolíte obnovitelné odstraněný virtuální počítač. 
+
+![Výběr obnovitelného odstraněného virtuálního počítače](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+
+3. Vyberte možnost zrušit **odstranění**.
+
+![Zvolit možnost zrušit odstranění](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+
+
+4. Zobrazí se okno. Vyberte možnost zrušit **odstranění**.
+
+![Vybrat zrušit odstranění](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+
+5. Chcete-li trvale odstranit data zálohy, vyberte možnost **Odstranit zálohovaná data** .
+
+![Zvolit odstranění zálohovaných dat](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+
+6. Zadejte název zálohované položky, abyste potvrdili, že chcete body obnovení odstranit.
+
+![Zadejte název zálohované položky.](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+
+7. Chcete-li odstranit data zálohy pro položku, vyberte možnost **Odstranit**. Zpráva s oznámením vám poskytne informace o odstranění zálohovaných dat.
+
 
 ## <a name="other-security-features"></a>Další funkce zabezpečení
 
@@ -139,7 +160,7 @@ Operace zrušit odstranění, po které následuje operace pokračovat, bude chr
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Můžu odstranit svůj trezor, pokud jsou v trezoru obnovitelné odstraněné položky?
 
-Trezor Recovery Services nelze odstranit, pokud jsou v trezoru nějaké zálohované položky. Odstraněné položky jsou po 14 dnech operace odstranění trvale odstraněny. Trezor můžete odstranit až po vyprázdnění všech neodstraněných položek.  
+Trezor Recovery Services nelze odstranit, pokud jsou v trezoru nějaké zálohované položky. Odstraněné položky jsou trvale odstraněny 14 dnů po operaci odstranění. Pokud nemůžete počkat na 14 dní, pak [zakažte obnovitelné odstranění](#disabling-soft-delete), odstrante obnovitelné odstraněné položky a znovu je odstraňte, aby se trvale odstranily. Po zajistěte, aby nedocházelo k žádným chráněným položkám a žádné měkké odstraněné položky nemohly být odstraněny.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Můžu odstranit data starší než 14 dní, po jejichž uplynutí bude období obnovitelného odstranění?
 

@@ -3,12 +3,12 @@ title: Vyhodnocení dopadu nové zásady Azure
 description: Pochopení procesu, který se má provést při zavedení nové zásady do prostředí Azure
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e39183b13d2b3cf8c7527f9372879372b2123648
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959824"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279427"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Vyhodnocení dopadu nové zásady Azure
 
@@ -71,6 +71,6 @@ Implementace a přiřazení definice zásad není posledním krokem. Průběžn�
 - Přečtěte si o [struktuře definic zásad](./definition-structure.md).
 - Přečtěte si o [struktuře přiřazení zásad](./assignment-structure.md).
 - Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](../how-to/get-compliance-data.md).
 - Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
 - Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

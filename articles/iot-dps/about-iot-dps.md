@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8331161cde9e7717834dabd2228848de40f7be23
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e02f0de685dc1f67633e13fed1f4114c399afdea
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360288"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280538"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení pomocí služby Azure IoT Hub Device Provisioning Service
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejných cloudových služeb pro všechny potřeby vašeho řešení IoT. IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném centru IoT, které nevyžaduje zásah člověka. Zákazníci tak můžou bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
@@ -78,7 +78,7 @@ Služba Device Provisioning obsahuje řadu funkcí, díky kterým je ideální p
 
 * Podpora **zabezpečeného osvědčení** pro identity založené na X.509 i TPM.
 * **Seznam registrací** obsahující úplné záznamy o zařízeních a skupinách zařízení, která se někdy můžou registrovat. Jakmile se zařízení zaregistruje, bude seznam registrací obsahovat informace o požadované konfiguraci zařízení a může se kdykoli aktualizovat.
-* **Několik zásad přidělování**, pomocí kterých můžete řídit, jak služba Device Provisioning v rámci podpory vašich scénářů přiřazuje zařízení k centrům IoT.
+* **Více zásad přidělování** pro řízení způsobu, jakým služba Device Provisioning přiřadí zařízení do centra IoT, v rámci podpory vašich scénářů: nejnižší latence, rovnoměrně vážená distribuce (výchozí) a statická konfigurace prostřednictvím seznamu registrací. Všimněte si, že latence je určena pomocí stejné metody jako [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Monitorování a protokolování diagnostiky** pro zajištění, že vše funguje správně.
 * **Podpora více center** umožňuje službě Device Provisioning přiřazovat zařízení k více než jednomu centru IoT. Služba Device Provisioning může komunikovat s centry napříč několika předplatnými Azure.
 * **Podpora více oblastí** umožňuje službě Device Provisioning přiřazovat zařízení k centrům IoT v jiných oblastech.
@@ -116,7 +116,7 @@ Další podrobnosti o limitech kvót:
 ## <a name="related-azure-components"></a>Související komponenty Azure
 Služba Device Provisioning automatizuje zřizování zařízení s využitím služby Azure IoT Hub. Další informace o službě [IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď máte přehled o zřizování zařízení IoT v Azure. Dalším krokem je vyzkoušet si kompletní scénář IoT.
 > [!div class="nextstepaction"]
 > [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](quick-setup-auto-provision.md)

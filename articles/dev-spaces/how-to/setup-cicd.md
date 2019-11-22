@@ -1,21 +1,19 @@
 ---
 title: Použití CI/CD s Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Rychlý vývoj Kubernetes díky kontejnerům a mikroslužbám v Azure
+description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 7058806e58dbc2d9a196062c129688e6a96c5f31
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264454"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280027"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
 
@@ -34,7 +32,7 @@ I když vás tento článek provede s Azure DevOps, stejné koncepty by se měly
 * [Autorizace clusteru AKS pro vyžádání z Azure Container Registry](../../aks/cluster-container-registry-integration.md)
 
 ## <a name="download-sample-code"></a>Stáhnout vzorový kód
-V průběhu času vytvoříme větev našeho úložiště GitHub ukázkového kódu. Přejít na https://github.com/Azure/dev-spaces a vybrat **rozvětvení**. Po dokončení procesu rozvětvení **naklonujte** rozvětvenou verzi úložiště místně. Ve výchozím nastavení bude _Hlavní_ větev rezervována, ale zahrnuli jsme do větve _azds_updates_ nějaké změny času, které by se také měly přenést během rozvětvení. Větev _azds_updates_ obsahuje aktualizace, které požádáme o ruční provedení v částech kurzu pro vývojové prostory a také některé předem připravené soubory YAML a JSON pro zjednodušení nasazení systému CI/CD. Pomocí příkazu, například `git checkout -b azds_updates origin/azds_updates`, můžete rezervovat větev _azds_updates_ v místním úložišti.
+V průběhu času vytvoříme větev našeho úložiště GitHub ukázkového kódu. Přejít na https://github.com/Azure/dev-spaces a vybrat **rozvětvení**. Po dokončení procesu rozvětvení **naklonujte** rozvětvenou verzi úložiště místně. Ve výchozím nastavení bude _Hlavní_ větev rezervována, ale zahrnuli jsme do větve _azds_updates_ nějaké změny času, které by se také měly přenést během rozvětvení. Větev _azds_updates_ obsahuje aktualizace, které požádáme o ruční provedení v oddílech kurzu pro vývoj prostorů a také některých předem připravených souborů YAML a JSON pro zjednodušení nasazení systému CI/CD. Pomocí příkazu, jako `git checkout -b azds_updates origin/azds_updates`, můžete rezervovat _azds_updates_ větev v místním úložišti.
 
 ## <a name="dev-spaces-setup"></a>Nastavení vývojových prostorů
 Pomocí příkazu `azds space select` vytvořte nové místo s názvem _dev_ . Místo pro _vývoj_ bude použit kanál CI/CD, aby bylo možné vložit změny kódu. Také se použije k vytvoření _podřízených prostorů_ na základě _vývoje_.
@@ -43,9 +41,9 @@ Pomocí příkazu `azds space select` vytvořte nové místo s názvem _dev_ . M
 azds space select -n dev
 ```
 
-Po zobrazení výzvy k výběru nadřazeného prostoru pro vývoj vyberte _\<none @ no__t-2_.
+Po zobrazení výzvy k výběru nadřazeného prostoru pro vývoj vyberte _\<žádná\>_ .
 
-Po vytvoření vývojového prostoru musíte určit příponu hostitele. Pomocí příkazu `azds show-context` Zobrazte příponu hostitele řadiče Azure Dev Spaces příchozího přenosu dat.
+Po vytvoření vývojového prostoru musíte určit příponu hostitele. Pomocí příkazu `azds show-context` můžete zobrazit příponu hostitele řadiče pro Azure Dev Spaces příchozího přenosu dat.
 
 ```cmd
 $ azds show-context
@@ -70,22 +68,22 @@ Možnost zakázání:
 > [!Note]
 > Funkce Preview _prostředí pro vytváření nových kanálů YAML_ v Azure DevOps je v konfliktu s vytvářením předem definovaných kanálů sestavení. Pokud chcete nasadit náš předem definovaný kanál sestavení, musíte ho teď zakázat.
 
-Ve větvi _azds_updates_ jsme zahrnuli jednoduchý [YAML kanálu Azure](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) , který definuje kroky sestavení vyžadované pro *mywebapi* a *webendu*.
+Ve větvi _azds_updates_ jsme zahrnuli jednoduché [YAML kanálu Azure](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) definující kroky sestavení vyžadované pro *mywebapi* a *webendu*.
 
-V závislosti na zvoleném jazyce se YAML kanálu vrátil se změnami v cestě, která je podobná: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`.
+V závislosti na zvoleném jazyce se YAML kanálu vrátil se změnami v cestě, která vypadá přibližně takto: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Vytvoření kanálu z tohoto souboru:
 1. Na hlavní stránce projektu DevOps přejděte na kanály > sestavení.
 1. Vyberte možnost pro vytvoření **nového** kanálu sestavení.
-1. V případě potřeby vyberte **GitHub** jako zdroj, v případě potřeby ho udělte vašemu účtu GitHub a vyberte větev _azds_updates_ z větvené verze úložiště ukázkové aplikace pro _vývoj a prostory_ .
+1. Jako zdroj vyberte **GitHub** , v případě potřeby proveďte autorizaci s vaším účtem GitHub a vyberte větev _azds_updates_ z větvené verze úložiště ukázkové aplikace pro _vývoj a prostory_ .
 1. Jako šablonu vyberte **Konfigurace jako kód**nebo **YAML**.
-1. Nyní se zobrazí stránka konfigurace pro váš kanál sestavení. Jak bylo zmíněno výše, přejděte k cestě k **souboru YAML** pomocí tlačítka **...** v konkrétní jazyku. Například `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
+1. Nyní se zobrazí stránka konfigurace pro váš kanál sestavení. Jak bylo zmíněno výše, přejděte k cestě k **souboru YAML** pomocí tlačítka **...** v konkrétní jazyku. Například, `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Přejít na kartu **proměnné** .
 1. Ručně přidejte _dockerId_ jako proměnnou, která je uživatelské jméno [účtu správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). (Zmíněné v článku požadavky)
 1. Ručně přidejte _dockerPassword_ jako proměnnou, což je heslo [účtu správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). Nezapomeňte zadat _dockerPassword_ jako tajný kód (výběrem ikony zámku) z bezpečnostních důvodů.
 1. Vyberte **uložit & frontu**.
 
-Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webendu* pro všechny aktualizace vložené do větve _azds_updates_ vaší větve GitHubu. Image Docker můžete ověřit tak, že přejdete na Azure Portal, vyberete Azure Container Registry a prohlížíte kartu **úložiště** . Může trvat několik minut, než se image sestaví a zobrazí ve vašem registru kontejneru.
+Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webendu* pro všechny aktualizace odeslané do _azds_updates_ větve vaší větve GitHubu. Image Docker můžete ověřit tak, že přejdete na Azure Portal, vyberete Azure Container Registry a prohlížíte kartu **úložiště** . Může trvat několik minut, než se image sestaví a zobrazí ve vašem registru kontejneru.
 
 ![Azure Container Registry úložišť](../media/common/ci-cd-images-verify.png)
 
@@ -101,13 +99,13 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. U **výchozí verze**vyberte možnost **nejnovější z výchozí větve kanálu sestavení s značkami**.
 1. Nechejte **značky** prázdné.
 1. Nastavte **alias zdroje** na `drop`. Hodnota **zdrojového aliasu** se používá v předdefinovaných úlohách vydaných verzí, takže je nutné ji nastavit.
-1. Klikněte na tlačítko **Přidat**.
-1. Nyní klikněte na ikonu blesku na nově vytvořeném zdroji artefaktů `drop`, jak je znázorněno níže:
+1. Klikněte na **Přidat**.
+1. Nyní klikněte na ikonu blesku na nově vytvořeném zdroji artefaktu `drop`, jak je znázorněno níže:
 
     ![Nastavení průběžného nasazování artefaktů verzí](../media/common/release-artifact-cd-setup.png)
 1. Povolte **aktivační událost průběžného nasazování**.
 1. Najeďte myší na kartu **úlohy** vedle **kanálu** a kliknutím na možnost _vývoj_ upravte úkoly fáze _vývoje_ .
-1. Ověřte, **Azure Resource Manager** je vybrána možnost **Typ připojení.** a uvidíte tři ovládací prvky rozevíracího seznamu, které jsou zvýrazněné červeně: ![Release definice nastavení @ no__t-1
+1. Ověřte, **Azure Resource Manager** je vybrána možnost **Typ připojení.** a uvidíte tři ovládací prvky rozevíracího seznamu, které jsou zvýrazněné červeně: ![nastavení definice vydaných verzí](../media/common/release-setup-tasks.png)
 1. Vyberte předplatné Azure, které používáte se službou Azure Dev Spaces. Může být také nutné kliknout na **autorizovat**.
 1. Vyberte skupinu prostředků a cluster, který používáte se službou Azure Dev Spaces.
 1. Klikněte na **úlohu agenta**.
@@ -117,11 +115,11 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. Klikněte na **úlohu agenta**.
 1. V části **fond agentů**vyberte **hostovaná Ubuntu 1604** .
 1. Klikněte na kartu **proměnné** a aktualizujte proměnné pro danou verzi.
-1. Aktualizujte hodnotu **DevSpacesHostSuffix** z **UPDATE_ME** na příponu hostitele. Přípona hostitele se zobrazí při spuštění příkazu `azds show-context` dříve.
+1. Aktualizujte hodnotu **DevSpacesHostSuffix** z **UPDATE_ME** na vaši příponu hostitele. Přípona hostitele se zobrazí, když jste dříve spustili `azds show-context` příkaz.
 1. Klikněte na **Uložit** v pravém horním rohu a pak na **OK**.
 1. Klikněte na **+ release** (vedle tlačítka Uložit) a **vytvořte vydání**.
 1. V části **artefakty**ověřte, zda je vybráno nejnovější sestavení z kanálu sestavení.
-1. Klikněte na **vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 Nyní začne proces automatizované verze, nasazování grafů *mywebapi* a *webendu* do clusteru Kubernetes v _prostoru nejvyšší úrovně_ . Průběh vydaných verzí můžete monitorovat na webovém portálu Azure DevOps:
 
@@ -133,7 +131,7 @@ Nyní začne proces automatizované verze, nasazování grafů *mywebapi* a *web
 Vydaná verze se provádí po dokončení všech úloh.
 
 > [!TIP]
-> Pokud se vaše verze nezdařila s chybovou zprávou, jako *je upgrade se nezdařil: vypršel časový limit při čekání na podmínku*, zkuste zkontrolovat lusky v clusteru [pomocí řídicího panelu Kubernetes](../../aks/kubernetes-dashboard.md). Pokud vidíte, že se v části nedaří začít s chybovými zprávami, jako je například *získání image azdsexample.azurecr.IO/mywebapi:122, došlo k chybě RPC: Code = neznámá funkce DESC = chybová odezva z procesu démon: Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: Neautorizováno: vyžaduje se ověření*, může být vzhledem k tomu, že váš cluster nemá autorizaci k vyžádání z Azure Container Registry. Ujistěte se, že jste dokončili [autorizaci svého clusteru AKS, který bude vyžádanou z vašich potřeb Azure Container Registry](../../aks/cluster-container-registry-integration.md) .
+> Pokud se vaše verze nezdařila s chybovou zprávou, jako *je upgrade se nezdařil: vypršel časový limit při čekání na podmínku*, zkuste zkontrolovat lusky v clusteru [pomocí řídicího panelu Kubernetes](../../aks/kubernetes-dashboard.md). Pokud vidíte, že se v části nedaří začít s chybovými zprávami, jako je například získání *image azdsexample.azurecr.IO/mywebapi:122, došlo k chybě RPC: Code = neznámý DESC = chybová odezva z procesu démon: Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: Neautorizováno: vyžaduje se ověření*, důvodem může být to, že váš cluster nemá oprávnění k vyžádání z vaší Azure Container Registry. Ujistěte se, že jste dokončili [autorizaci svého clusteru AKS, který bude vyžádanou z vašich potřeb Azure Container Registry](../../aks/cluster-container-registry-integration.md) .
 
 Teď máte plně automatizovaný kanál CI/CD pro vaše větve GitHubu ukázkových aplikací pro vývoj prostorů. Pokaždé, když potvrdíte a napíšete kód, kanál sestavení vytvoří a vloží image *mywebapi* a *webendu* do vlastní instance ACR. Kanál pro vydávání verzí pak nasadí graf Helm pro každou aplikaci do _vývojového_ prostoru v clusteru s povolenými prostory pro vývoj.
 
@@ -155,7 +153,7 @@ Ruční zvýšení úrovně konkrétní verze do _výrobního_ seznamu pomocí s
 1. Pro ukázkovou aplikaci klikněte na kanál pro vydání verze.
 1. Klikněte na název nejnovější verze.
 1. Najeďte myší na pole **kat** v části **fáze** a klikněte na **nasadit**.
-    @no__t – 0Promote do produkčního prostředí @ no__t-1
+    ![zvýšit úroveň na produkční](../media/common/prod-promote.png)
 1. Najeďte myší na pole **výr** . v části **fáze** a klikněte na **protokoly**.
 
 Vydaná verze se provádí po dokončení všech úloh.
@@ -172,18 +170,18 @@ Pokud chcete zjistit IP adresu služby webendu, rozbalte výstup protokolu klikn
 ```
 
 ## <a name="dev-spaces-instrumentation-in-production"></a>Instrumentace prostorů pro vývoj v produkčním prostředí
-I když je instrumentace vývojových prostorů navržena tak, _aby se_ nedostala do normálního provozu vaší aplikace, doporučujeme spouštět provozní úlohy v oboru názvů Kubernetes, který není povolený pomocí vývojových prostorů. Tento typ Kubernetes oboru názvů znamená, že byste buď měli vytvořit produkční obor názvů pomocí rozhraní příkazového řádku `kubectl`, nebo nechat systém CI/CD, aby se vytvořil během prvního nasazení Helm. _Výběr_ nebo jiné vytvoření prostoru pomocí nástrojů pro vývoj prostorů přidá do tohoto oboru názvů instrumentaci pro vývojové prostory.
+I když je instrumentace vývojových prostorů navržena tak, _aby se_ nedostala do normálního provozu vaší aplikace, doporučujeme spouštět provozní úlohy v oboru názvů Kubernetes, který není povolený pomocí vývojových prostorů. Tento typ Kubernetes oboru názvů znamená, že byste měli buď vytvořit produkční obor názvů pomocí rozhraní příkazového řádku `kubectl`, nebo nechat systém CI/CD, aby se vytvořil během prvního nasazení Helm. _Výběr_ nebo jiné vytvoření prostoru pomocí nástrojů pro vývoj prostorů přidá do tohoto oboru názvů instrumentaci pro vývojové prostory.
 
 Tady je příklad struktury oboru názvů, která podporuje vývoj funkcí, prostředí pro vývoj a produkci, _a_ to všechno v jednom Kubernetes clusteru:
 
 ![Příklad struktury oboru názvů](../media/common/cicd-namespaces.png)
 
 > [!Tip]
-> Pokud jste už vytvořili `prod` a chcete ho jednoduše vyloučit z instrumentace pro vývoj prostorů (bez odstranění IT!), můžete to udělat pomocí následujícího příkazu dev Spaces CLI:
+> Pokud jste už `prod`é místo vytvořili a chtěli byste ho jednoduše vyloučit z instrumentace vývojových prostorů (bez odstranění IT!), můžete to udělat pomocí následujícího příkazu pro vývoj rozhraní příkazového řádku:
 >
 > `azds space remove -n prod --no-delete`
 >
-> Po provedení tohoto postupu možná budete muset odstranit všechny lusky v oboru názvů `prod`, aby je bylo možné znovu vytvořit bez instrumentace pro vývojové prostory.
+> Po provedení tohoto postupu možná budete muset všechny lusky v oboru názvů `prod` odstranit, aby je bylo možné znovu vytvořit bez instrumentace pro vývojové prostory.
 
 ## <a name="next-steps"></a>Další kroky
 

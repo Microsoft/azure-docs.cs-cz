@@ -1,21 +1,17 @@
 ---
 title: Ladění a iterace pomocí Visual Studio Code a Java v Kubernetes pomocí Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Rychlý vývoj Kubernetes pomocí kontejnerů, mikroslužeb a Java v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Java, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 2154ec3ae99ae816b970c96ffde435f1a3366e99
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.openlocfilehash: 2002126e67bfd83d3c9ca68735bbf9cbdb678c76
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815864"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279858"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Rychlý Start: ladění a iterace pomocí Visual Studio Code a Java v Kubernetes pomocí Azure Dev Spaces
 
@@ -30,7 +26,7 @@ Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
 - [.NET Core a Visual Studio Code](quickstart-netcore.md)
 - [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Visual Studio Code nainstalován](https://code.visualstudio.com/download).
@@ -52,7 +48,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 Pomocí příkazu `use-dev-spaces` povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
 
 > [!NOTE]
-> Příkaz `use-dev-spaces` nainstaluje také Azure Dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
+> Příkaz `use-dev-spaces` také nainstaluje Azure Dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -92,7 +88,7 @@ Chcete-li otevřít paletu příkazů v Visual Studio Code, klikněte na tlačí
 
 ![Příprava konfiguračních souborů pro Azure Dev Spaces](./media/common/command-palette.png)
 
-Když Visual Studio Code také vyzve ke konfiguraci základních imagí, vystaveného portu a veřejného koncového bodu, pro základní bitovou kopii vyberte `Azul Zulu OpenJDK for Azure (Free LTS)`, `8080` pro vystavený port a `Yes` pro povolení veřejného koncového bodu.
+Když Visual Studio Code také vyzve ke konfiguraci základních imagí, vystaveného portu a veřejného koncového bodu, vyberte `Azul Zulu OpenJDK for Azure (Free LTS)` pro základní bitovou kopii, `8080` pro vystavený port a `Yes` k povolení veřejného koncového bodu.
 
 ![Vybrat základní image](media/get-started-java/select-base-image.png)
 
@@ -119,7 +115,7 @@ Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *program Java (AZDS)* . Například:
+Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *program Java (AZDS)* . Příklad:
 
 1. Pokud je vaše aplikace stále spuštěná, klikněte na tlačítko *ladění* a zastavte tak *ladění* .
 1. Aktualizujte [řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) na:
@@ -137,7 +133,7 @@ Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný
 
 Spusťte službu pomocí *spuštění programu Java (AZDS)* . Tím se také spustí vaše služba v režimu ladění.
 
-Kliknutím na tlačítko *Zobrazit* a *Průzkumník*přejděte zpět do zobrazení *Průzkumníka* . Otevřete `src/main/java/com/ms/sample/webfrontend/Application.java` a kliknutím někam na řádku 19 umístěte kurzor do umístění. Chcete-li nastavit zarážku *F9* nebo klikněte na položku *ladit* a pak *Přepnout zarážku*.
+Kliknutím na tlačítko *Zobrazit* a *Průzkumník*přejděte zpět do zobrazení *Průzkumníka* . Otevřete `src/main/java/com/ms/sample/webfrontend/Application.java` a Kliknutím kamkoli na řádku 19 umístěte kurzor do umístění. Chcete-li nastavit zarážku *F9* nebo klikněte na položku *ladit* a pak *Přepnout zarážku*.
 
 V prohlížeči otevřete službu a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se na Visual Studio Code a sledujte, že je zvýrazněna řádková 19. Zarážka, kterou jste nastavili, pozastavila službu na řádku 19. Pokud chcete službu obnovit, stiskněte klávesu *F5* nebo klikněte na *ladit* a pak *pokračovat*. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
 
@@ -147,7 +143,7 @@ Odstraňte zarážku tak, že umístíte kurzor na řádek 19 v `src/main/java/c
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu z Visual Studio Code
 
-Když je služba spuštěna v režimu ladění, aktualizujte řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java`. Například:
+Když je služba spuštěna v režimu ladění, aktualizujte řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java`. Příklad:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```

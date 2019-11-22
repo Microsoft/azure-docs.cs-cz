@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: cea0e9709afb65caa23d28be093c28498f2b82d0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: dae9c47f535d87214c9e1583562b4c0419cd44cf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122980"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305445"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Přístup k Grafana ve službě Azure HDInsight
 
 [Grafana](https://grafana.com/) je oblíbený Open Source tvůrce grafů a řídicích panelů. Grafana je funkce bohatá; neumožňuje uživatelům vytvářet přizpůsobitelné řídicí panely a sdílet je, ale také nabízí šablony/skripty řídicí panely, integraci protokolu LDAP, více zdrojů dat a další.
 
-V současné době se v Azure HDInsight Grafana podporuje s typy clusterů HBA a interaktivních dotazů.
+V současné době se v Azure HDInsight Grafana podporuje s typy clusterů HBA, Kafka a interaktivních dotazů. U clusterů s povolenou sadou Enterprise Security Pack není podporována podpora.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -37,7 +37,7 @@ V této části vytvoříte pomocí šablony Azure Resource Manager interaktivn�
     > 
     >
     
-    ![Šablona Resource Manageru pro zahájení práce s HDInsight Linux na portálu](./media/hdinsight-grafana/hdinsight-linux-get-started-arm-template-on-portal.png "Nasazení clusteru Hadoop ve službě HDInsight pomocí webu Azure Portal a šablony správce skupin prostředků")
+    ![Začínáme s Správce prostředků šablonou HDInsight Linux na portálu](./media/hdinsight-grafana/hdinsight-linux-get-started-arm-template-on-portal.png "Nasazení clusteru Hadoop v HDInsigut pomocí Azure Portal a šablony správce skupin prostředků")
 
     Zadejte nebo vyberte tyto hodnoty:
     
@@ -48,18 +48,18 @@ V této části vytvoříte pomocí šablony Azure Resource Manager interaktivn�
     |**Umístění**     | Vyberte umístění Azure, ve kterém chcete cluster vytvořit.  Pro dosažení lepšího výkonu zvolte co nejbližší umístění. |
     |**Typ clusteru**     | Vyberte **hadoop**. |
     |**Název clusteru**     | Zadejte název clusteru Apache Hadoop. Vzhledem k tomu, že všechny clustery ve službě HDInsight sdílejí stejný obor názvů DNS, musí být tento název jedinečný. Název může mít až 59 znaků a může obsahovat písmena, číslice a pomlčky. První a poslední znak názvu nemůže být pomlčka. |
-    |**Přihlašovací jméno a heslo clusteru**     | Výchozí přihlašovací jméno je **admin** (správce). Heslo musí mít minimálně 10 znaků a musí obsahovat alespoň jedno číslo, jedno velké písmeno, jedno malé písmeno a jeden jiný než alfanumerický znak (kromě znaků ' " ` \). **Nezadávejte** běžné heslo, jako je „Pass@word1“.|
-    |**Uživatelské jméno a heslo SSH**     | Výchozí uživatelské jméno je **sshuser** (uživatelssh).  Uživatelské jméno SSH můžete změnit.  Pro heslo uživatele SSH platí stejné požadavky jako pro přihlašovací heslo clusteru.|
+    |**Přihlašovací jméno a heslo clusteru**     | Výchozí přihlašovací jméno je **admin**. Heslo musí mít minimálně 10 znaků a musí obsahovat aspoň jedno číslo, jedno velké písmeno a jedno malé písmeno, jeden nealfanumerický znak (kromě znaků ' "' ' \). Ujistěte se, že **nezadáváte** běžné heslo, jako je například Pass@word1.|
+    |**Uživatelské jméno a heslo SSH**     | Výchozí uživatelské jméno je **sshuser**.  Uživatelské jméno SSH můžete změnit.  Pro heslo uživatele SSH platí stejné požadavky jako pro přihlašovací heslo clusteru.|
 
     Některé vlastnosti jsou v šabloně pevně kódované.  Takové hodnoty můžete konfigurovat v šabloně. Další vysvětlení těchto vlastností najdete v tématu [Vytvoření clusterů Apache Hadoop ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 3. Vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a **Připnout na řídicí panel** a pak vyberte **Koupit**. Na řídicím panelu portálu by se měla zobrazit nová dlaždice s názvem **Odesílá se nasazení**. Vytvoření clusteru trvá přibližně 20 minut.
 
-    ![Průběh Template Deployment Azure](./media/hdinsight-grafana/deployment-progress-tile.png "Průběh Template Deployment Azure")
+    ![Průběh Template deployment Azure](./media/hdinsight-grafana/deployment-progress-tile.png "Průběh Template deployment Azure")
 
-4. Jakmile se cluster vytvoří, popis dlaždice se změní na zadaný název skupiny prostředků. Na dlaždici je uvedený také cluster HDInsight vytvořený v rámci skupiny prostředků.
+4. Jakmile je cluster vytvořen, popis dlaždice se změní na zadaný název skupiny prostředků. Na dlaždici je uvedený také cluster HDInsight vytvořený v rámci skupiny prostředků.
 
-    ![Počáteční skupina prostředků HDInsight Linux](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Skupina prostředků clusteru Azure HDInsight")
+    ![Skupina prostředků Začínáme s HDInsight Linux](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Skupina prostředků clusteru Azure HDInsight")
 
 5. Na dlaždici je uvedené také výchozí úložiště přidružené ke clusteru. Každý cluster obsahuje závislost [účtu Azure Storage](../hdinsight-hadoop-use-blob-storage.md) nebo [účtu Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
     
@@ -69,7 +69,7 @@ V této části vytvoříte pomocí šablony Azure Resource Manager interaktivn�
 
 ## <a name="access-the-grafana-dashboard"></a>Přístup k řídicímu panelu Grafana
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **clustery HDInsight**a potom vyberte název clusteru, který jste vytvořili v poslední části.
 
@@ -77,7 +77,7 @@ V této části vytvoříte pomocí šablony Azure Resource Manager interaktivn�
 
     ![Portál pro řídicí panel clusteru HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "Řídicí panel clusteru HDInsight na portálu")
 
-4. Na řídicím panelu klikněte na dlaždici **Grafana** . Případně přejděte k `/grafana/` cestě k adrese URL vašeho clusteru. Například, `https://<clustername>.azurehdinsight.net/grafana/`.
+4. Na řídicím panelu klikněte na dlaždici **Grafana** . Případně vyhledejte `/grafana/` cestu k adrese URL clusteru. Například, `https://<clustername>.azurehdinsight.net/grafana/`.
 
 5. Zadejte přihlašovací údaje uživatele clusteru Hadoop.
 
@@ -112,19 +112,19 @@ Pokud chcete začít pracovat s vlastními daty a potřebujete další informace
 * Informace o tom, jak HDInsight používá Azure Storage, najdete v tématu [Používání Azure Storage s HDInsight](../hdinsight-hadoop-use-blob-storage.md).
 * Informace o tom, jak nahrát data do služby HDInsight, najdete v tématu [Nahrání dat do služby HDInsight](../hdinsight-upload-data.md).
 
-Další informace o analýze dat pomocí HDInsight najdete v následujících článcích:
+Další informace o analýze dat pomocí HDInsight naleznete v následujících článcích:
 
 * Další informace o použití podregistru se službou HDInsight, včetně postupu pro provádění dotazů na podregistry ze sady Visual Studio, najdete v tématu [použití Apache Hive se službou HDInsight](../hdinsight-use-hive.md).
 * Další informace o prasečím jazyce, který slouží k transformaci dat, najdete v tématu [použití nástroje Apache prasete se službou HDInsight](../hdinsight-use-pig.md).
 * Další informace o MapReduce, způsobu psaní programů, které zpracovávají data v Hadoopu, najdete v tématu [Použití MapReduce se službou HDInsight](../hdinsight-use-mapreduce.md).
-* Další informace o použití nástrojů HDInsight pro Visual Studio k analýze dat na HDInsight najdete v části [Začněte používat nástroje Visual Studio Hadoop pro HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* Další informace o použití nástrojů HDInsight pro Visual Studio k analýze dat na HDInsight naleznete v části [Začněte používat nástroje Visual Studio Hadoop pro HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 
 
 Pokud potřebujete další informace o vytváření a správě clusteru HDInsight, přečtěte si následující články:
 
-* Další informace o správě clusteru HDInsight se systémem Linux najdete v části [Správa clusterů HDInsight pomocí Ambari](../hdinsight-hadoop-manage-ambari.md).
-* Další informace o možnostech, které můžete vybrat při vytváření clusteru služby HDInsight, najdete v tématu [Vytváření HDInsight na Linuxu pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md).
+* Další informace o správě clusteru HDInsight se systémem Linux naleznete v části [Správa clusterů HDInsight pomocí Ambari](../hdinsight-hadoop-manage-ambari.md).
+* Další informace o možnostech, které můžete vybrat při vytváření clusteru služby HDInsight, naleznete v tématu [Vytváření HDInsight na Linuxu pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md).
 
 
 [1]: ../HDInsight/apache-hadoop-visual-studio-tools-get-started.md

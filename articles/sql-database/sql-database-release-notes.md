@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bdea9af04008ef68578ff8c136760f2493a2ae35
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166256"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279215"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -80,6 +80,7 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
 
 - **Srpna 2019** – obsažené databáze jsou ve spravované instanci plně podporovány.
 - **Oct 2019** – integrované obnovení databáze z pro důležité obchodní informace úrovně do pro obecné účely úrovně nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.
+- **Říjen 2019** – funkce **databázová pošta** s externími poštovními servery (mimo Azure) e-mailových serverů pomocí zabezpečeného připojení.
 - **Listopadu 2019** – konzistence databáze se ověřuje pomocí `DBCC CHECKDB` po obnovení databáze z Azure Blob Storage.
 
 ## <a name="updates"></a>Aktualizace

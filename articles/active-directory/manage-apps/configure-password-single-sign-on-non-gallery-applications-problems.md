@@ -1,6 +1,6 @@
 ---
-title: Problémy s konfigurací heslem jednotného přihlašování pro aplikaci mimo Galerii | Dokumentace Microsoftu
-description: Běžné problémy, ke kterým dochází při konfiguraci hesla jednotné přihlašování (SSO) pro vlastní aplikace, které nejsou v galerii aplikací Azure AD.
+title: Problémy s konfigurací jednotného přihlašování k heslům pro aplikace mimo galerii
+description: Běžné problémy, ke kterým dochází při konfiguraci jednotného přihlašování k heslům (SSO) pro vlastní aplikace, které nejsou v galerii aplikací Azure AD.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -15,241 +15,241 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24330dc874173ba1c6f15abb7b4caf9f23e2e00c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440355"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274137"
 ---
-# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problémy s konfigurací heslem jednotného přihlašování pro aplikaci mimo Galerii
+# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problémy s konfigurací jednotného přihlašování k heslům pro aplikaci mimo galerii
 
-Tento článek popisuje běžné problémy, které může dojít, když nakonfigurujete *heslem jednotného přihlašování* (SSO) pro aplikaci mimo galerii.
+Tento článek popisuje běžné problémy, ke kterým může dojít při konfiguraci *jednotného přihlašování* (SSO) hesel pro aplikaci mimo galerii.
 
-## <a name="capture-sign-in-fields-for-an-app"></a>Zachytit pole přihlášení pro aplikaci
+## <a name="capture-sign-in-fields-for-an-app"></a>Zaznamenání přihlašovacích polí pro aplikaci
 
-Pole zachycování je podporováno pouze pro povolené HTML přihlašovací stránky. To má není podporována pro nestandardní přihlašovacích stránek služby, jako jsou ty, které používají Adobe Flash nebo jiné technologie HTML nepodporujícím.
+Zachytávání přihlašovacích polí se podporuje jenom pro přihlašovací stránky s povoleným HTML. Není podporováno pro nestandardní přihlašovací stránky, jako jsou ty, které používají Adobe Flash nebo jiné technologie, které nepodporují formát HTML.
 
-Existují dva způsoby, jak zachytit pole pro vaše vlastní aplikace:
+Existují dva způsoby, jak zaznamenat přihlašovací pole pro vlastní aplikace:
 
-- **Automatické přihlášení pole zachycení** dobře funguje pro většinu podporujících formát HTML přihlašovací stránky, *pokud používají známé identifikátory DIV* pro pole uživatelské jméno a heslo. K vyhledání ID DIV, které splňují určitá kritéria, je získaný kód HTML na stránce. Tato metadata se uloží, takže ho můžete znovu přehrát aplikaci později.
+- **Automatické zachycení přihlašovacích polí** funguje dobře s největší přihlašovací stránkou s povoleným HTML, pokud používají pro pole uživatelského jména a hesla *dobře známá ID div* . KÓD HTML na stránce je vyřazen, aby bylo možné najít ID DIV, která odpovídají určitým kritériím. Tato metadata se uloží, aby je bylo možné později znovu přehrát do aplikace.
 
-- **Ruční pole zachycení** se používá v případě jejím dodavatelem *nemá popisek přihlašovací vstupní pole*. Ruční zachytávání se také používá, pokud dodavatel *vykreslí několik polí, která nelze automaticky rozpoznané*. Azure Active Directory (Azure AD) můžete ukládat data pro libovolný počet polí tak, že existují na přihlašovací stránku, pokud můžete určit, kde jsou tato pole na stránce.
+- Pokud dodavatel aplikace *neoznačí vstupní pole přihlašování*, použije se **Ruční zachycení pole** . Ruční zachytávání se používá také v případě *, že dodavatel vykresluje více polí, která nelze automaticky zjistit*. Azure Active Directory (Azure AD) může ukládat data pro libovolný počet polí, která jsou na přihlašovací stránce, pokud se jim poříkáte, kde jsou tato pole na stránce.
 
-Obecně platí Pokud zachytit pole automatické přihlašování nefunguje, vyzkoušet ruční variantu.
+Obecně platí, že pokud automatické zachycení přihlašovacích polí nefunguje, zkuste ruční možnost.
 
-### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Automaticky zachytit pole přihlášení pro aplikaci
+### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Automatické zachycení přihlašovacích polí pro aplikaci
 
-Konfigurace jednotného přihlašování pomocí hesla pomocí zachycení pole automatické přihlašování, postupujte podle těchto kroků:
+Pokud chcete nakonfigurovat jednotné přihlašování založené na heslech pomocí automatického zachycení pole pro přihlášení, postupujte takto:
 
 1. Otevřete web [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
 
-2. V navigačním podokně na levé straně vyberte **všechny služby** otevřít rozšíření Azure AD.
+2. V navigačním podokně na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 
-3. Typ **Azure Active Directory** do vyhledávacího pole filtrovat a pak vyberte **Azure Active Directory**.
+3. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte **Azure Active Directory**.
 
-4. Vyberte **podnikové aplikace** v navigačním podokně Azure AD.
+4. V navigačním podokně Azure AD vyberte **podnikové aplikace** .
 
-5. Vyberte **všechny aplikace** zobrazení seznamu aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam aplikací.
 
    > [!NOTE]
-   > Pokud nevidíte aplikaci, kterou chcete, použijte **filtr** ovládacího prvku v horní části **všechny aplikace** seznamu. Nastavte **zobrazit** možnost "Všech aplikací."
+   > Pokud nevidíte aplikaci, kterou chcete, použijte ovládací prvek **filtru** v horní části seznamu **všechny aplikace** . Nastavte možnost **Zobrazit** na všechny aplikace.
 
-6. Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-7. Po dokončení načítání aplikace, vyberte **jednotného přihlašování** v navigačním podokně na levé straně.
+7. Po načtení aplikace vyberte v navigačním podokně na levé straně **jednotné přihlašování** .
 
-8. Vyberte **přihlašování na základě heslo** režimu.
+8. Vyberte režim **přihlašování založený na hesle** .
 
-9. Zadejte **přihlašovací adresa URL**, což je adresa URL stránky, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení. *Ujistěte se, že pole přihlášení se zobrazují na stránce pro adresu URL, kterou zadáte*.
+9. Zadejte **přihlašovací adresu URL**, což je adresa URL stránky, kde uživatelé zadají své uživatelské jméno a heslo, aby se mohli přihlásit. Ujistěte se *, že jsou na stránce zobrazena přihlašovací pole pro adresu URL, kterou zadáte*.
 
 10. Vyberte **Uložit**.
 
-    Na stránce je automaticky získaný pro uživatelské jméno a heslo vstupních polí. Nyní můžete v Azure AD bezpečně přenášet hesla do této aplikace s použitím rozšíření prohlížeče přístupového panelu.
+    Tato stránka se automaticky vyřadí do vstupních polí uživatelské jméno a heslo. Teď můžete pomocí Azure AD bezpečně přenášet hesla do této aplikace pomocí rozšíření prohlížeče přístupového panelu.
 
-### <a name="manually-capture-sign-in-fields-for-an-app"></a>Ručně zachytit pole přihlášení pro aplikaci
+### <a name="manually-capture-sign-in-fields-for-an-app"></a>Ruční zachytávání přihlašovacích polí pro aplikaci
 
-Chcete-li ručně zachytit pole pro přihlášení, musíte mít nainstalované rozšíření prohlížeče přístupového panelu. Navíc prohlížeči nemůže běžet ve *se službou inPrivate*, *incognito*, nebo *privátní* režimu.
+Chcete-li ručně zachytit pole přihlášení, je nutné mít nainstalované rozšíření prohlížeče přístupového panelu. Prohlížeč také nemůže běžet ve službě *InPrivate*, *anonymním*nebo *privátním* režimu.
 
-K instalaci rozšíření, najdete v článku [nainstalovat rozšíření prohlížeče Panel přístupu](#install-the-access-panel-browser-extension) části tohoto článku.
+Informace o instalaci rozšíření najdete v části [Instalace rozšíření prohlížeče přístupového panelu](#install-the-access-panel-browser-extension) v tomto článku.
 
-Konfigurace založené na heslech jednotné přihlašování pro aplikace pomocí ruční pole zachycení, postupujte podle těchto kroků:
+Pokud chcete pro aplikaci nakonfigurovat jednotné přihlašování na základě hesla pomocí ručního zachycení pole pro přihlášení, postupujte podle těchto kroků:
 
 1. Otevřete web [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
 
-2. V navigačním podokně na levé straně vyberte **všechny služby** otevřít rozšíření Azure AD.
+2. V navigačním podokně na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 
-3. Typ **Azure Active Directory** do vyhledávacího pole filtrovat a pak vyberte **Azure Active Directory**.
+3. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte **Azure Active Directory**.
 
-4. Vyberte **podnikové aplikace** v navigačním podokně Azure AD.
+4. V navigačním podokně Azure AD vyberte **podnikové aplikace** .
 
-5. Vyberte **všechny aplikace** zobrazení seznamu aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam aplikací.
 
    > [!NOTE] 
-   > Pokud nevidíte aplikaci, kterou chcete, použijte **filtr** ovládacího prvku v horní části **všechny aplikace** seznamu. Nastavte **zobrazit** možnost "Všech aplikací."
+   > Pokud nevidíte aplikaci, kterou chcete, použijte ovládací prvek **filtru** v horní části seznamu **všechny aplikace** . Nastavte možnost **Zobrazit** na všechny aplikace.
 
-6. Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-7. Po dokončení načítání aplikace, vyberte **jednotného přihlašování** v navigačním podokně na levé straně.
+7. Po načtení aplikace vyberte v navigačním podokně na levé straně **jednotné přihlašování** .
 
-8. Vyberte **přihlašování na základě heslo** režimu.
+8. Vyberte režim **přihlašování založený na hesle** .
 
-9. Zadejte **přihlašovací adresa URL**, což je stránka, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení. *Ujistěte se, že pole přihlášení se zobrazují na stránce pro adresu URL, kterou zadáte*.
+9. Zadejte **přihlašovací adresu URL**, což je stránka, kde uživatelé zadají své uživatelské jméno a heslo, aby se mohli přihlásit. Ujistěte se *, že jsou na stránce zobrazena přihlašovací pole pro adresu URL, kterou zadáte*.
 
-10. Vyberte **konfigurovat *&lt;appname&gt;* nastavení hesla jednotného přihlašování**.
+10. Vyberte **konfigurovat *&lt;název_aplikace&gt;* nastavení pro jednotné přihlašování pomocí hesla**.
 
-11. Vyberte **ručně zjišťovat pole pro přihlášení**.
+11. Vyberte možnost **ručně zjišťovat přihlašovací pole**.
 
 14. Vyberte **OK**.
 
 15. Vyberte **Uložit**.
 
-16. Postupujte podle pokynů a použít přístupový Panel.
+16. Postupujte podle pokynů k použití přístupového panelu.
 
-## <a name="troubleshoot-problems"></a>Poradce při potížích
+## <a name="troubleshoot-problems"></a>Řešení problémů
 
-### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Získat chybu "Jsme nenašli žádné pole na této adrese URL"
+### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Zobrazuje se chybová zpráva: nenašly se žádné přihlašovací pole na adrese URL.
 
-Pokud se nezdaří automatické zjišťování pole se zobrazit tato chybová zpráva. Chcete-li vyřešit tento problém, zkuste detekce ruční pole. Zobrazit [ručně zachytit pole přihlášení pro aplikaci](#manually-capture-sign-in-fields-for-an-app) části tohoto článku.
+Tato chybová zpráva se zobrazí, když se automatické zjišťování přihlašovacích polí nezdařilo. Chcete-li tento problém vyřešit, zkuste Ruční rozpoznávání polí pro přihlašování. Další informace najdete v části [Ruční zachytávání přihlašovacích polí pro aplikaci](#manually-capture-sign-in-fields-for-an-app) v tomto článku.
 
-### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>Můžu získat "Nelze pro uložení konfigurace jednotného přihlašování" Chyba
+### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>Zobrazí se chyba "nepovedlo se uložit konfiguraci jednotného přihlašování"
 
-Jen zřídka aktualizuje se konfigurace jednotného přihlašování se nezdaří. Chcete-li vyřešit tento problém, uložte konfiguraci znovu.
+Zřídka se aktualizace konfigurace jednotného přihlašování nezdařila. Chcete-li tento problém vyřešit, zkuste konfiguraci uložit znovu.
 
-Pokud bude dále zobrazovat chybu, otevřete případ podpory. Zahrnují informace, podle popisu v [zobrazit podrobnosti o portálu oznámení](#view-portal-notification-details) a [Odeslat podrobnosti o oznámení pro pracovníka podpory pomoc](#send-notification-details-to-a-support-engineer-to-get-help) částech tohoto článku.
+Pokud se vám tato chyba bude zobrazovat, otevřete případ podpory. Přidejte informace, které jsou popsány v [podrobnostech oznámení o zobrazení portálu](#view-portal-notification-details) a [odeslání podrobností oznámení pracovníkovi podpory, aby získali nápovědu k](#send-notification-details-to-a-support-engineer-to-get-help) části tohoto článku.
 
-### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>Můžu nerozpozná ručně pole pro moji aplikaci
+### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>Nejde ručně detekovat přihlašovací pole pro moji aplikaci
 
-Můžete všimnout následujícího chování při ruční detekce nefunguje:
+V případě, že ruční zjišťování nefunguje, můžete sledovat následující chování:
 
-- Proces ručního zachycení pravděpodobně fungovat, ale zachycené pole nejsou správné.
+- Proces ručního zachytávání se zdá fungovat, ale zachycená pole nejsou správná.
 
-- Správná pole není získat zvýrazněnou při spuštění procesu zachycení.
+- Při spuštění procesu zachycení nejsou správná pole zvýrazněna.
 
-- Proces sběru vás přesměruje na přihlašovací stránce aplikace podle očekávání, ale nic se nestane.
+- Proces zachytávání vás přesměruje na přihlašovací stránku aplikace podle očekávání, ale nic se nestane.
 
-- Ruční zachycení zdánlivě fungovat, ale jednotného přihlašování nemá dojít, když uživatelé přejdou na aplikace z přístupového panelu.
+- Je možné, že ruční zachycení funguje, ale SSO se nestane, když uživatelé přejdou na aplikaci z přístupového panelu.
 
-Pokud dochází k některým z těchto problémů, proveďte následující akce:
+Pokud se setkáte s některým z těchto problémů, proveďte následující akce:
 
-- Ujistěte se, že máte nejnovější verzi rozšíření prohlížeče přístupového panelu *nainstalovaný a povolený*. Zobrazit [nainstalovat rozšíření prohlížeče přístupového panelu](#install-the-access-panel-browser-extension) části tohoto článku.
+- Ujistěte se, že máte *nainstalovanou a povolenou*nejnovější verzi rozšíření prohlížeče přístupového panelu. Viz část [Instalace rozšíření prohlížeče přístupového panelu](#install-the-access-panel-browser-extension) v tomto článku.
 
-- Ujistěte se, že váš prohlížeč není v *incognito*, *se službou inPrivate*, nebo *privátní* režimu během procesu zachycení. Přístupový Panel rozšíření není podporováno v těchto režimech.
+- Ujistěte se, že během procesu zachycení není váš prohlížeč v *anonymním*, *InPrivate*nebo *privátním* režimu. V těchto režimech není rozšíření přístupového panelu podporováno.
 
-- Ujistěte se, že vaši uživatelé nejsou pokoušel se přihlásit k aplikaci z přístupového panelu při v *incognito*, *se službou inPrivate*, nebo *privátním režimu*.
+- Ujistěte se, že se uživatelé nesnaží přihlašovat k aplikaci z přístupového panelu v *anonymním*, *InPrivate*nebo *privátním režimu*.
 
-- Opakujte proces ručního zachycení. Ujistěte se, že červené značky jsou přes správné pole.
+- Zkuste znovu zpracovat proces ručního zachycení. Ujistěte se, že červené značky jsou nad správnými poli.
 
-- Pokud proces ručního zachycení zdá se, že přestane reagovat nebo nereaguje na přihlašovací stránku, opakujte proces ručního zachycení. Ale tentokrát po dokončení procesu, stisknutím klávesy F12 otevřete konzolu pro vývojáře v prohlížeči. Vyberte **konzoly** kartu. Typ **window.location= " *&lt;přihlašovací adresa URL, který jste zadali při konfiguraci aplikace&gt;* "** , a potom stiskněte klávesu Enter. To vynutí přesměrování stránky, která ukončí proces zachycení a uloží pole, které byly zachyceny.
+- Pokud se zdá, že proces ručního zachytávání přestane reagovat nebo stránka pro přihlášení nereaguje, zkuste proces ručního zachytávání zopakovat. Tentokrát ale po dokončení procesu stiskněte klávesu F12 a otevřete konzolu pro vývojáře v prohlížeči. Vyberte kartu **Konzola** . zadejte **window. location = " *&lt;přihlašovací adresu URL, kterou jste zadali při konfiguraci&gt;aplikace*** , a potom stiskněte klávesu ENTER. Tím se vynutí přesměrování stránky, které ukončí proces zachytávání a uloží pole, která byla zachycena.
 
 ### <a name="contact-support"></a>Kontaktujte podporu
 
-Pokud stále dochází k potížím, otevřete případ s Microsoft Support. Popište, co jste se pokusili. Zahrnout podrobnosti, které jsou popsány v [zobrazit podrobnosti o portálu oznámení](#view-portal-notification-details) a [Odeslat podrobnosti o oznámení pro pracovníka podpory pomoc](#send-notification-details-to-a-support-engineer-to-get-help) částech tohoto článku (pokud existuje).
+Pokud stále máte problémy, otevřete případ s podpora Microsoftu. Popište, co jste zkusili. Uveďte podrobnosti, které jsou popsány v [podrobnostech oznámení o zobrazení portálu](#view-portal-notification-details) a [odeslání podrobností oznámení pracovníkovi podpory, aby získali nápovědu k](#send-notification-details-to-a-support-engineer-to-get-help) oddílům tohoto článku (pokud jsou k dispozici).
 
-## <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření prohlížeče přístupového panelu
+## <a name="install-the-access-panel-browser-extension"></a>Nainstalovat rozšíření prohlížeče přístupového panelu
 
 Postupujte následovně:
 
-1. Otevřít [přístupového panelu](https://myapps.microsoft.com) v podporovaném prohlížeči. Přihlaste se k Azure AD jako *uživatele*.
+1. Otevřete [panel přístupu](https://myapps.microsoft.com) v podporovaném prohlížeči. Přihlaste se k Azure AD jako *uživatel*.
 
-2. Vyberte **heslem jednotného přihlašování aplikace** přístupovém panelu.
+2. V přístupovém panelu vyberte **aplikace heslem pro jednotné přihlašování** .
 
-3. Po zobrazení výzvy k instalaci softwaru, vyberte **nainstalovat**.
+3. Až se zobrazí výzva k instalaci softwaru, vyberte **nainstalovat hned**.
 
-4. Budete přesměrováni na stránku stahování pro váš prohlížeč. Zvolit **přidat** rozšíření.
+4. Budete přesměrováni na stránku ke stažení pro váš prohlížeč. Vyberte možnost **Přidat** rozšíření.
 
-5. Pokud budete vyzváni, vyberte **povolit** nebo **povolit**.
+5. Pokud budete vyzváni, vyberte **Povolit** nebo **Povolit**.
 
 6. Po instalaci restartujte prohlížeč.
 
-7. Přihlaste se na přístupovém panelu. Podívejte se, pokud lze otevřít vaše heslo podporou jednotného přihlašování aplikace.
+7. Přihlaste se k přístupovému panelu. Podívejte se, jestli můžete otevřít aplikace s podporou jednotného přihlašování k heslům.
 
-Můžete také přímo stáhnout rozšíření prohlížeče Chrome a Firefox prostřednictvím těchto odkazů:
+Rozšíření prohlížeče pro Chrome a Firefox můžete také přímo stáhnout pomocí těchto odkazů:
 
--   [Rozšíření Chrome přístupového panelu](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Rozšíření přístupového panelu Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Rozšíření Firefox přístupového panelu](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Rozšíření přístupového panelu Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="view-portal-notification-details"></a>Zobrazit podrobnosti o portálu oznámení
+## <a name="view-portal-notification-details"></a>Zobrazit podrobnosti oznámení na portálu
 
-Pokud chcete zobrazit podrobnosti o každém portálu oznámení, postupujte podle těchto kroků:
+Chcete-li zobrazit podrobnosti o jakémkoli oznámení portálu, postupujte takto:
 
-1. Vyberte **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal.
+1. Vyberte ikonu **oznámení** (zvonek) v pravém horním rohu Azure Portal.
 
-2. Vyberte všechna oznámení, který ukazuje *chyba* stavu. (Mají červený "!".)
+2. Vyberte jakékoli oznámení, které zobrazuje *chybový* stav. (Mají červenou "!".)
 
    > [!NOTE]
-   > Nelze vybrat oznámení, které jsou v *úspěšné* nebo *probíhá* stavu.
+   > Nemůžete vybrat oznámení, která jsou v *úspěšném* nebo *probíhajícím* stavu.
 
-3. **Podrobnosti oznámení** se otevře podokno. Přečtěte si informace o další informace o problému.
+3. Otevře se podokno **Podrobnosti oznámení** . Přečtěte si informace o tomto problému.
 
-5. Pokud stále potřebujete pomoc, sdílejte informace s pracovníkem technické podpory nebo produktové skupiny. Vyberte **kopírování** ikony napravo **Kopírovat chybu** pole zkopírovat podrobnosti oznámení, které chcete sdílet.
+5. Pokud stále potřebujete pomoc, sdílejte tyto informace s pracovníkem podpory nebo produktovou skupinou. Kliknutím na ikonu **Kopírovat** napravo od pole **Chyba kopírování** zkopírujte podrobnosti oznámení ke sdílení.
 
-## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Odeslat podrobnosti o oznámení pro pracovníka podpory k získání nápovědy
+## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Odeslat podrobnosti oznámení pracovníkovi podpory a získat pomoc
 
-Je důležité, jakým sdílíte *všechny* podrobnosti, které jsou uvedené v této části s podporou tak, aby se vám může pomoct rychle. Poznamenejte si ho, můžete pořídit snímek obrazovky nebo vyberte **Kopírovat chybu**.
+Je důležité, abyste nasdíleli *všechny* podrobnosti uvedené v této části s podporou, aby vám mohli rychle pomoci. Pokud ho chcete zaznamenat, můžete si udělat snímek obrazovky nebo vybrat **chybu kopírování**.
 
-Následující informace vysvětluje, co jednotlivé položky oznámení znamená, že a poskytuje příklady.
+Následující informace popisují, co jednotlivé položky oznámení znamenají a obsahují příklady.
 
-### <a name="essential-notification-items"></a>Základní oznámení položky
+### <a name="essential-notification-items"></a>Základní položky oznámení
 
 - **Název**: popisný název oznámení.
 
-   Příklad: *Nastavení proxy aplikace.*
+   Příklad: *nastavení proxy aplikace*
 
-- **Popis**: k čemu došlo v důsledku operace.
+- **Popis**: co se stalo v důsledku operace.
 
-   Příklad: *Zadanou vnitřní adresu URL už používá jiná aplikace.*
+   Příklad: *zadaná interní adresa URL je již používána jinou aplikací.*
 
 - **ID oznámení**: jedinečné ID oznámení.
 
     Příklad: *clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068*
 
-- **ID žádosti klienta**: ID konkrétní požadavek, který vytvořil váš prohlížeč.
+- **ID žádosti klienta**: konkrétní ID žádosti, kterou vytvořil váš prohlížeč.
 
     Příklad: *302fd775-3329-4670-a9f3-bea37004f0bc*
 
-- **Časové razítko UTC**: časové razítko při oznámení došlo k chybě, ve standardu UTC.
+- **Časové razítko UTC**: časové razítko v okamžiku, kdy k oznámení došlo, ve formátu UTC.
 
-    Příklad: *2017-03-23T19:50:43.7583681Z*
+    Příklad: *2017-03-23T19:50:43.7583681 z*
 
-- **Interní ID transakce**: interní ID, který se používá k vyhledání Chyba v našem systému.
+- **ID interní transakce**: interní ID, které se používá k vyhledání chyby v našich systémech.
 
-    Příklad: **71a2f329-ca29-402f-aa72-bc00a7aca603**
+    Příklad: **71a2f329-ca29-402F-aa72-bc00a7aca603**
 
-- **HLAVNÍ NÁZEV UŽIVATELE**: Uživatel, který operaci spustil.
+- **Hlavní název uživatele (UPN)** : uživatel, který operaci spustil.
 
     Příklad: *tperkins\@f128.info*
 
-- **ID tenanta**: jedinečné ID tenanta, který je členem uživatel, který operaci spustil.
+- **ID tenanta**: jedinečné ID tenanta, kterého je uživatel, který spustil operaci, členem.
 
     Příklad: *7918d4b5-0442-4a97-be2d-36f9f9962ece*
 
-- **ID objektu uživatele**: Jedinečné ID uživatele, který operaci spustil.
+- **ID objektu uživatele**: jedinečné ID uživatele, který operaci spustil.
 
     Příklad: *17f84be4-51f8-483a-b533-383791227a99*
 
-### <a name="detailed-notification-items"></a>Podrobný oznamovací položky
+### <a name="detailed-notification-items"></a>Podrobné položky oznámení
 
-- **Zobrazovaný název**: (může být prázdné) podrobnější zobrazovaný název pro chybu.
+- **Zobrazovaný název**: (může být prázdný) podrobnější zobrazovaný název chyby.
 
-    Příklad: *Nastavení proxy aplikace.*
+    Příklad: *nastavení proxy aplikace*
 
-- **Stav**: konkrétní stavové oznámení.
+- **Stav**: konkrétní stav oznámení.
 
-    Příklad: *Se nezdařilo*
+    Příklad: *selhání*
 
-- **ID objektu**: (může být prázdné) ID objektu, pro který byla spustit operaci.
+- **ID objektu**: (může být prázdné) ID objektu, proti kterému byla operace spuštěna.
 
    Příklad: *8e08161d-f2fd-40ad-a34a-a9632d6bb599*
 
-- **Podrobnosti o**: podrobný popis, k čemu došlo v důsledku operace.
+- **Podrobnosti**: podrobný popis toho, co se stalo v důsledku operace.
 
-    Příklad: *Interní adresa url '<https://bing.com/>"je neplatná, protože je již používán.*
+    Příklad: *interní adresa URL '<https://bing.com/>' je neplatná, protože je již používána.*
 
-- **Chyba při kopírování**: Umožňuje vybrat **ikonu kopírování** napravo od **Kopírovat chybu** textového pole zkopírujte podrobnosti oznámení, které pomůžou s podporou.
+- **Chyba kopírování**: umožňuje vybrat **ikonu kopírování** napravo od textového pole **Kopírovat chybu** a Kopírovat podrobnosti oznámení, které vám pomůžou s podporou.
 
-    Příklad:   ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    Příklad: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Poskytovat jednotné přihlašování do aplikací pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 28ef082d6aac5557998f7b67443d4dafd3a0fb15
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012913"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285578"
 ---
 # <a name="access-and-customize-developer-portal"></a>Přístup a přizpůsobení portálu pro vývojáře
 
@@ -35,10 +35,6 @@ V tomto kurzu se naučíte:
 Další podrobnosti najdete na portálu pro vývojáře v článku [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md).
 
 ![Portál pro vývojáře API Management – režim správy](media/api-management-howto-developer-portal-customize/cover.png)
-
-> [!WARNING]
-> Portál pro vývojáře se v tuto chvíli zavádí na API Management služby.
-> Pokud je vaše služba nově vytvořená nebo se jedná o službu vrstvy vývojářů, měli byste už mít nejnovější verzi. V opačném případě může docházet k problémům (například s funkcí publikování). Zavedení funkce se očekává až do pátku v pátek listopadu 22 2019. 
 
 ## <a name="prerequisites"></a>Požadavky
 

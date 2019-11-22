@@ -1,6 +1,6 @@
 ---
-title: Nasazení Azure Log Analytics Nozzle pro Cloud Foundry monitorování | Dokumentace Microsoftu
-description: Podrobné pokyny k nasazení Cloud Foundry loggregator Nozzle pro Azure Log Analytics. Pomocí Nozzle monitorujte metriky stavu a výkonu systému Cloud Foundry.
+title: Nasazení služby Azure Log Analytics trysek pro monitorování Cloud Foundry
+description: Podrobné pokyny k nasazení Cloud Foundry trysku loggregator pro Azure Log Analytics. Pomocí trysky můžete monitorovat stav Cloud Foundry systému a metriky výkonu.
 services: virtual-machines-linux
 author: ningk
 manager: jeconnoc
@@ -12,105 +12,105 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199393"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286647"
 ---
-# <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení Azure Log Analytics Nozzle pro monitorování systému Cloud Foundry
+# <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení služby Azure Log Analytics trysek pro Cloud Foundry sledování systému
 
-[Azure Monitor](https://azure.microsoft.com/services/log-analytics/) je služba v Azure. Pomáhá shromažďovat a analyzovat data, která se generuje z vašeho cloudu a místních prostředích.
+[Azure monitor](https://azure.microsoft.com/services/log-analytics/) je služba v Azure. Pomáhá shromažďovat a analyzovat data vygenerovaná z vašich cloudových a místních prostředí.
 
-Log Analytics Nozzle (Nozzle) je komponenta Cloud Foundry (CR), která předává metriky z [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose protokoly Azure monitoru. Nozzle můžete shromažďovat, zobrazit a analyzovat vaše CF systému stavu a výkonu metrik, mezi několika nasazeními.
+Log Analytics tryska (trysek) je komponenta Cloud Foundry (CF), která přepošle metriky z [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose na protokoly Azure monitor. Pomocí této trysky můžete shromažďovat, zobrazovat a analyzovat stav systému CF a metriky výkonu napříč různými nasazeními.
 
-V tomto dokumentu se dozvíte, jak k nasazení Nozzle pro CF prostředí a pak přístup k datům z konzoly pro protokoly Azure monitoru.
+V tomto dokumentu se dozvíte, jak nasadit trysek do svého prostředí CF a pak přistupovat k datům z konzoly Azure Monitor Logs.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Následující kroky jsou požadavky pro nasazení Nozzle.
+Následující kroky jsou požadavky na nasazení trysek.
 
-### <a name="1-deploy-a-cf-or-pivotal-cloud-foundry-environment-in-azure"></a>1. Nasazení prostředí CF nebo Pivotal Cloud Foundry v Azure
+### <a name="1-deploy-a-cf-or-pivotal-cloud-foundry-environment-in-azure"></a>1. nasazení Cloud Foundry CF nebo Pivoted pro prostředí v Azure
 
-Nozzle můžete použít k nasazení CF opensourcových nebo nasazení Pivotal Cloud Foundry (PCF).
+Můžete použít trysku s nasazením Open Source CF nebo PCF (Pivoted Cloud Foundry).
 
 * [Nasazení Cloud Foundry v Azure](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)
 
-* [Nasazení Pivotal Cloud Foundry v Azure](https://docs.pivotal.io/pivotalcf/1-11/customizing/azure.html)
+* [Nasazení Pivot Cloud Foundry v Azure](https://docs.pivotal.io/pivotalcf/1-11/customizing/azure.html)
 
-### <a name="2-install-the-cf-command-line-tools-for-deploying-the-nozzle"></a>2. Instalace CF příkazového řádku nástrojů pro nasazení Nozzle
+### <a name="2-install-the-cf-command-line-tools-for-deploying-the-nozzle"></a>2. Nainstalujte nástroje příkazového řádku CF pro nasazení trysek.
 
-Nozzle spouští jako aplikace CF prostředí. Je třeba CF rozhraní příkazového řádku pro nasazení aplikace.
+Tryska běží jako aplikace v prostředí CF. K nasazení aplikace potřebujete CF CLI.
 
-Nozzle musí také přístupová oprávnění k loggregator firehose a kontroler cloudu. Vytvoření a konfigurace uživatele, musíte službu uživatelský účet a ověřování (UAA).
+Tato tryska taky potřebuje oprávnění k přístupu k loggregator firehose a k řadiči cloudu. Chcete-li vytvořit a nakonfigurovat uživatele, potřebujete službu uživatelského účtu a ověřování (UAA).
 
-* [Instalace Cloud Foundry rozhraní příkazového řádku](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+* [Instalace Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 
-* [Instalace Cloud Foundry UAA klienta příkazového řádku](https://github.com/cloudfoundry/cf-uaac/blob/master/README.md)
+* [Instalace klienta příkazového řádku Cloud Foundry UAA](https://github.com/cloudfoundry/cf-uaac/blob/master/README.md)
 
-Před nastavením klienta příkazového řádku UAA, ujistěte se, že je nainstalovaný RubyGems.
+Před nastavením klienta příkazového řádku architektury UAA se ujistěte, že je nainstalovaná služba RubyGems.
 
-### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Vytvoření pracovního prostoru Log Analytics v Azure
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. vytvoření pracovního prostoru Log Analytics v Azure
 
-Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony. Šablona nasadí nastavení předem nakonfigurovaná zobrazení klíčových ukazatelů výkonu a výstrahy pro protokoly konzoly Azure Monitor. 
+Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony. Šablona nasadí nastavení předem nakonfigurovaných zobrazení a výstrah klíčových ukazatelů výkonu pro konzolu Azure Monitorch protokolů. 
 
-#### <a name="to-create-the-workspace-manually"></a>Ruční vytvoření pracovního prostoru:
+#### <a name="to-create-the-workspace-manually"></a>Postup ručního vytvoření pracovního prostoru:
 
-1. Na webu Azure Portal v seznamu služeb na webu Azure Marketplace vyhledejte a pak vyberte pracovní prostory Log Analytics.
-2. Vyberte **vytvořit**a podle potřeby změňte hodnoty následujících položek:
+1. V Azure Portal vyhledejte seznam služeb v Azure Marketplace a pak vyberte Log Analytics pracovní prostory.
+2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
 
-   * **Pracovní prostor log Analytics**: Zadejte název pro váš pracovní prostor.
-   * **Předplatné**: Pokud máte více předplatných, vyberte ten, který je stejný jako vaše nasazení CF.
-   * **Skupina prostředků**: Můžete vytvořit novou skupinu prostředků nebo použijte to samé s nasazením CF.
-   * **Umístění**: Zadejte umístění.
-   * **Cenová úroveň**: Vyberte **OK** dokončete.
+   * **Log Analytics pracovní prostor**: zadejte název pracovního prostoru.
+   * **Předplatné**: Pokud máte více předplatných, vyberte ten, který se shoduje s vaším nasazením CF.
+   * **Skupina prostředků**: můžete vytvořit novou skupinu prostředků, nebo použít stejnou pro nasazení CF.
+   * **Umístění**: zadejte umístění.
+   * **Cenová úroveň**: dokončete výběr kliknutím na **tlačítko OK** .
 
-Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+Další informace najdete v tématu [Začínáme s protokoly Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-#### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Chcete-li vytvořit pracovní prostor Log Analytics prostřednictvím monitorování šablony z Tržiště Azure:
+#### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Pokud chcete vytvořit pracovní prostor Log Analytics pomocí šablony monitorování z místa na trhu Azure:
 
-1. Otevřete Azure portal.
-1. Klikněte na znaménko "+" nebo "Vytvořit prostředek" v levém horním rohu.
-1. V okně hledání zadejte "Cloud Foundry" a vyberte "Cloud Foundry řešení pro monitorování".
-1. Cloud Foundry je načten monitorování front-stránka šablony řešení, klikněte na možnost "Vytvořit", spusťte okno šablonu.
+1. Otevřete Azure Portal.
+1. Klikněte na symbol "+" nebo "vytvořit prostředek" v levém horním rohu.
+1. Zadejte "Cloud Foundry" v okně hledání vyberte "Cloud Foundry monitorování řešení".
+1. Načetla se úvodní stránka šablony řešení Cloud Foundry, kliknutím na vytvořit otevřete okno šablony.
 1. Zadejte požadované parametry:
-    * **Předplatné**: Vyberte předplatné Azure pro pracovní prostor Log Analytics, obvykle stejným způsobem pracovat s Cloud Foundry nasazení.
-    * **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte nový pracovní prostor Log Analytics.
-    * **Umístění skupiny prostředků**: Vyberte umístění skupiny prostředků.
-    * **OMS_Workspace_Name**: Zadejte název pracovního prostoru, pokud pracovní prostor neexistuje, tato šablona vytvoří nový.
-    * **OMS_Workspace_Region**: Vyberte umístění pro pracovní prostor.
-    * **OMS_Workspace_Pricing_Tier**: Vyberte pracovní prostor Log Analytics SKU. Zobrazit [doprovodné materiály k cenám](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
-    * **Právní podmínky**: Klikněte na právní podmínky a pak klikněte na "Vytvořit", aby přijal právní podmínky.
-1. Jakmile jsou zadány všechny parametry, klikněte na možnost "Vytvořit" k nasazení šablony. Když se nasazení dokončí, stav se zobrazí na kartě oznámení.
+    * **Předplatné**: vyberte předplatné Azure pro pracovní prostor Log Analytics, obvykle stejně jako nasazení Cloud Foundry.
+    * **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou pro Log Analytics pracovní prostor.
+    * **Umístění skupiny prostředků**: vyberte umístění skupiny prostředků.
+    * **OMS_Workspace_Name**: zadejte název pracovního prostoru, pokud pracovní prostor neexistuje, šablona vytvoří novou.
+    * **OMS_Workspace_Region**: vyberte umístění pro pracovní prostor.
+    * **OMS_Workspace_Pricing_Tier**: vyberte skladovou položku pracovního prostoru Log Analytics. Podívejte se na informace o [cenách](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
+    * **Právní podmínky**: klikněte na právní podmínky a potom klikněte na vytvořit, aby se právní období přijalo.
+1. Po zadání všech parametrů klikněte na vytvořit a nasaďte šablonu. Po dokončení nasazení se stav zobrazí na kartě oznámení.
 
 
-## <a name="deploy-the-nozzle"></a>Nasazení Nozzle
+## <a name="deploy-the-nozzle"></a>Nasazení trysky
 
-Existuje několik různých způsobů, jak nasadit Nozzle: jako dlaždici PCF nebo jako aplikace CF.
+Existuje několik různých způsobů, jak nasadit trysek: jako dlaždici PCF nebo jako aplikaci v podobě CF.
 
-### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>Nasazení Nozzle jako dlaždice správce PCF Ops
+### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>Nasazení trysek jako dlaždice správce OPS PCF
 
-Uvedený postup [instalace a konfigurace Azure Log Analytics Nozzle pro PCF](https://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Toto je zjednodušený přístup, automaticky nakonfiguruje a push nozzle dlaždice správce PCF Ops. 
+Postupujte podle pokynů pro [instalaci a konfiguraci služby Azure Log Analytics trysek pro PCF](https://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Toto je zjednodušený přístup. na dlaždici Správce OPS PCF se automaticky nakonfiguruje a nasadí trysk. 
 
-### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>Ruční nasazení Nozzle jako aplikace CF
+### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>Ruční nasazení trysek jako aplikace CF
 
-Pokud nepoužíváte PCF Ops Manager, nasazení Nozzle jako aplikace. Následující části popisují tento proces.
+Pokud nepoužíváte nástroj PCF OPS Manager, nasaďte trysku jako aplikaci. Následující části popisují tento proces.
 
-#### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>Přihlaste se k nasazení CF jako správce pomocí rozhraní CLI CF
+#### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>Přihlaste se k nasazení CF jako správce prostřednictvím CF CLI.
 
 Spusťte následující příkaz:
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
 
-"SYSTEM_DOMAIN" je název vaší domény CF. To můžete načíst tak, že "SYSTEM_DOMAIN" v souboru manifestu nasazení CF. 
+"SYSTEM_DOMAIN" je název domény CF. Můžete ho načíst tak, že ve svém souboru manifestu nasazení CF vyhledáte "SYSTEM_DOMAIN". 
 
-"CF_User" je CF jméno správce. Uživatelské jméno a heslo můžete načíst tak, že v části "scim" vyhledávání, vyhledávání pro název a "cf_admin_password" v souboru manifestu nasazení CF.
+"CF_User" je název správce CF. Název a heslo můžete načíst tak, že v části "SCIM" vyhledáte název a "cf_admin_password" v souboru manifestu nasazení CF.
 
-#### <a name="create-a-cf-user-and-grant-required-privileges"></a>Vytvořte CF uživatele a udělit požadovaná oprávnění
+#### <a name="create-a-cf-user-and-grant-required-privileges"></a>Vytvoření uživatele CF a udělení požadovaných oprávnění
 
 Spusťte následující příkazy:
 ```
@@ -121,9 +121,9 @@ uaac member add cloud_controller.admin ${FIREHOSE_USER}
 uaac member add doppler.firehose ${FIREHOSE_USER}
 ```
 
-"SYSTEM_DOMAIN" je název vaší domény CF. To můžete načíst tak, že "SYSTEM_DOMAIN" v souboru manifestu nasazení CF.
+"SYSTEM_DOMAIN" je název domény CF. Můžete ho načíst tak, že ve svém souboru manifestu nasazení CF vyhledáte "SYSTEM_DOMAIN".
 
-#### <a name="download-the-latest-log-analytics-nozzle-release"></a>Stáhněte si nejnovější verzi Log Analytics Nozzle
+#### <a name="download-the-latest-log-analytics-nozzle-release"></a>Stáhnout nejnovější verzi Log Analyticsch trysek
 
 Spusťte následující příkaz:
 ```
@@ -133,7 +133,7 @@ cd oms-log-analytics-firehose-nozzle
 
 #### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
-Nyní můžete nastavit proměnné prostředí v souboru manifest.yml v aktuálním adresáři. Následuje ukázka pro Nozzle manifestu aplikace. Nahraďte hodnoty konkrétní informace o pracovním prostoru Log Analytics.
+Nyní můžete nastavit proměnné prostředí v souboru manifest. yml v aktuálním adresáři. Následující příklad ukazuje manifest aplikace pro trysek. Nahraďte hodnoty konkrétními informacemi z Log Analytics pracovního prostoru.
 
 ```
 OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
@@ -154,97 +154,97 @@ LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle h
 LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azure Monitor logs. The default is 60 seconds.
 ```
 
-### <a name="push-the-application-from-your-development-computer"></a>Předejte aplikaci z vývojového počítače
+### <a name="push-the-application-from-your-development-computer"></a>Vložení aplikace z vývojového počítače
 
-Ujistěte se, že jste v rámci oms-log-analytics-firehose-nozzle složky. Spusťte následující příkaz:
+Ujistěte se, že jste pod složkou OMS-Log-Analytics-firehose-trysek. Spusťte následující příkaz:
 ```
 cf push
 ```
 
-## <a name="validate-the-nozzle-installation"></a>Ověření instalace Nozzle
+## <a name="validate-the-nozzle-installation"></a>Ověření instalace trysek
 
 ### <a name="from-apps-manager-for-pcf"></a>Ze Správce aplikací (pro PCF)
 
-1. Přihlaste se k Ops správce a ujistěte se, že se zobrazí na dlaždici na řídicím panelu instalace.
-2. Přihlaste se na správce aplikace, ujistěte se, že místo, které jste vytvořili pro Nozzle je uveden v sestavě využití a potvrďte, že stav je normální.
+1. Přihlaste se k nástroji OPS Manager a ujistěte se, že se na řídicím panelu instalace zobrazuje dlaždice.
+2. Přihlaste se k aplikaci Správce aplikací, ujistěte se, že je místo, které jste vytvořili pro tuto trysku, uvedené v sestavě využití, a ověřte, že je stav normální.
 
 ### <a name="from-your-development-computer"></a>Z vývojového počítače
 
-V okně CF rozhraní příkazového řádku zadejte:
+V okně CF CLI zadejte:
 ```
 cf apps
 ```
-Ujistěte se, že je OMS Nozzle aplikace spuštěna.
+Ujistěte se, že je aplikace pro trysek OMS spuštěná.
 
-## <a name="view-the-data-in-the-azure-portal"></a>Zobrazení dat na webu Azure Portal
+## <a name="view-the-data-in-the-azure-portal"></a>Zobrazit data v Azure Portal
 
-Pokud jste nasadili řešení pro monitorování šablonou Marketplace, přejděte na web Azure portal a vyhledejte řešení. Řešení můžete najít ve skupině prostředků, které jste zadali v šabloně. Klikněte na řešení, vyhledejte "log analytics konzole", jsou uvedeny předem nakonfigurovaná zobrazení, klíčové ukazatele výkonu systému nejvyšší Cloud Foundry, data aplikací, výstrahy a metriky stavu virtuálního počítače. 
+Pokud jste nasadili řešení monitorování prostřednictvím šablony umístění na trhu, přejděte na Azure Portal a najděte řešení. Řešení najdete ve skupině prostředků, kterou jste zadali v šabloně. Klikněte na řešení, přejděte do konzoly Log Analytics, předkonfigurovaná zobrazení jsou uvedena s hlavními Cloud Foundry systémových klíčových ukazatelů výkonu, dat aplikací, výstrah a metrik stavu virtuálních počítačů. 
 
-Pokud jste vytvořili pracovní prostor Log Analytics ručně, postupujte podle následujících kroků a vytvořte výstrahy a zobrazení:
+Pokud jste pracovní prostor Log Analytics vytvořili ručně, vytvořte zobrazení a výstrahy pomocí následujících kroků:
 
-### <a name="1-import-the-oms-view"></a>1. Importovat zobrazení OMS
+### <a name="1-import-the-oms-view"></a>1. Import zobrazení OMS
 
-Z portálu OMS vyhledejte **Návrhář zobrazení** > **Import** > **Procházet**a vyberte jednu z omsview soubory. Vyberte například *cloudu Foundry.omsview*a toto zobrazení uložíte. Nyní se zobrazí na dlaždici na **přehled** stránky. Vyberte ho, abyste viděli vizualizovaný metriky.
+Z portálu OMS přejděte na **zobrazení návrhář** > **importovat** > **Procházet**a vyberte jeden ze souborů omsview. Vyberte například *Cloud Foundry. omsview*a uložte zobrazení. Na stránce **Přehled** se teď zobrazí dlaždice. Vyberte ho a podívejte se na vizuální metriky.
 
-Můžete přizpůsobit tato zobrazení nebo vytvořit nová zobrazení prostřednictvím **Návrhář zobrazení**.
+Tato zobrazení můžete přizpůsobit nebo vytvořit nová zobrazení prostřednictvím **návrháře zobrazení**.
 
-*"Cloud Foundry.omsview"* je verze preview zobrazení šablony Cloud Foundry OMS. Toto je plně nakonfigurované výchozí šablona. Pokud máte nějaké návrhy nebo zpětné vazby o šabloně, pošlete je [vydat části](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues).
+*Cloud Foundry. omsview* je verze Preview šablony zobrazení Cloud Foundry OMS. Toto je plně nakonfigurovaná výchozí šablona. Pokud máte návrhy nebo názory na šablonu, odešlete je do [části problém](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues).
 
-### <a name="2-create-alert-rules"></a>2. Vytváření pravidel upozornění
+### <a name="2-create-alert-rules"></a>2. vytvoření pravidel upozornění
 
-Je možné [vytvoření výstrahy](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)a podle potřeby upravte dotazy a prahové hodnoty. Následující jsou doporučené výstrahy:
+Můžete [vytvořit výstrahy](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)a podle potřeby upravit dotazy a prahové hodnoty. Následující jsou doporučené výstrahy:
 
-| Vyhledávací dotaz                                                                  | Vydat výstrahu na základě | Popis                                                                       |
+| Vyhledávací dotaz                                                                  | Generovat výstrahu na základě | Popis                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
-| Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Počet výsledků < 1   | **BBS. Aplikace Domain.cf** značí, zda je aktuální domény aplikace cf. To znamená, že aplikace CF požadavky z cloudu řadiče jsou synchronizovány do bbs. LRPsDesired (AIs požadovaného Diegu) pro spuštění. Nepřišla žádná data znamená, že aplikace cf domény není aktuální v zadané časové okno. |
-| Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Počet výsledků > 0   | Diego buněk 0 znamená, že jsou v pořádku a 1 znamená, že není v pořádku. Nastavte upozornění, pokud více buněk není v pořádku Diegu nalezených v zadané časové okno. |
-| Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Počet výsledků > 0 | 1 znamená, že systém je v pořádku a 0 znamená, že v systému není v pořádku. |
-| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Počet výsledků > 0   | Konzul pravidelně vydává její dobrý stav. 0 znamená, že systém je v pořádku a 1 znamená, že vysílače trasy zjistí, že konzul dolů. |
-| Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Počet výsledků > 0 | Rozdílová počet zpráv podle Doppler záměrně vynechaný kvůli protitlak. |
-| Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Počet výsledků > 0   | Vysílá Loggregator **LGR** případné problémy s procesem protokolování. Příkladem takových problém při výstupní zprávy protokolu je příliš vysoká. |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Počet výsledků > 0   | Nozzle obdrží upozornění na pomalé příjemce od loggregator, odešle **slowConsumerAlert** protokoly ValueMetric do Azure monitoru. |
-| Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Počet výsledků > 0   | Pokud počet delta ke ztrátě událostí, které dosáhne prahové hodnoty, znamená to, že nozzle máte problém se spuštěním. |
+| Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Počet výsledků < 1   | **BBS. Domain.cf – aplikace** určuje, jestli je doména CF-Apps aktuální. To znamená, že žádosti o aplikace z cloudového kontroleru se synchronizují do BBS. LRPsDesired (Diegu-požadovaný AIs) pro provedení. Žádná data neobdržena znamená, že doména CF-Apps není v určeném časovém intervalu v aktuálním stavu. |
+| Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Počet výsledků > 0   | U Dieguch buněk znamená 0 v pořádku a 1 znamená špatný stav. Nastavte výstrahu, pokud v určeném časovém intervalu dojde k detekci více Diegu buněk v pořádku. |
+| Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Počet výsledků > 0 | 1 znamená, že je systém v pořádku a 0 znamená, že systém není v pořádku. |
+| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Počet výsledků > 0   | Consul vygeneruje svůj stav pravidelně. 0 znamená, že systém je v pořádku a 1 znamená, že modul pro vystavování tras zjistí, že Consul je mimo provoz. |
+| Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Počet výsledků > 0 | Rozdílový počet zpráv záměrně vyřazených z Doppler z důvodu protitlaku. |
+| Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Počet výsledků > 0   | Loggregator vygeneruje **LGR** pro indikaci problémů s procesem protokolování. Příkladem takového problému je, že výstup zprávy protokolu je příliš vysoký. |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Počet výsledků > 0   | Když tryska obdrží pomalé upozornění zákazníků z loggregator, pošle ValueMetricu **slowConsumerAlert** do Azure monitor protokolů. |
+| Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Počet výsledků > 0   | Pokud rozdílový počet ztracených událostí dosáhne prahové hodnoty, znamená to, že může dojít k potížím s trysek. |
 
 ## <a name="scale"></a>Měřítko
 
-Je možné škálovat Nozzle a loggregator.
+Můžete škálovat trysku a loggregator.
 
-### <a name="scale-the-nozzle"></a>Škálování Nozzle
+### <a name="scale-the-nozzle"></a>Škálování trysky
 
-Měli byste začít s aspoň dvě instance Nozzle. Firehose distribuuje zatížení napříč všemi instancemi Nozzle.
-Pokud chcete mít jistotu, Nozzle je dokáže dodat s přenosy dat z firehose, nastavte **slowConsumerAlert** upozornění (uvedené v předchozí části "Vytvoření pravidla upozornění"). Po upozornění můžete podle pokynů [pokyny pro pomalé Nozzle](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz) k určení, jestli je škálování potřeba.
-Vertikálně navýšit kapacitu Nozzle, pomocí aplikace správce nebo rozhraní příkazového řádku CF zvýšení čísla instance nebo prostředky paměti a disku pro Nozzle.
+Měli byste začít s alespoň dvěma instancemi této trysky. Firehose distribuuje zatížení napříč všemi instancemi trysky.
+Aby se zajistilo, že tryska bude mít přenos dat z firehose, nastavte výstrahu **slowConsumerAlert** (uvedená v předchozí části "Vytvoření pravidel upozornění"). Jakmile budete upozorněni, postupujte podle [pokynů pro pomalou trysku](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz) a určete, zda je nutné škálování provést.
+K navýšení kapacity trysek použijte Správce aplikací nebo CF CLI, abyste zvýšili čísla instancí nebo prostředky paměti nebo disku pro trysky.
 
 ### <a name="scale-the-loggregator"></a>Škálování loggregator
 
-Odešle Loggregator **LGR** zprávy protokolu případné problémy s procesem protokolování. Můžete monitorovat výstrahu, kterou chcete určit, zda loggregator musí vertikálně navyšovat kapacitu.
-Vertikální navýšení kapacity loggregator, zvětšete velikost vyrovnávací paměti Doppler nebo přidat dalšího serveru pro Doppler instance v manifestu CF. Další informace najdete v tématu [pokyny pro škálování loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
+Loggregator pošle zprávu protokolu **LGR** , která indikuje problémy s procesem protokolování. Výstrahu můžete monitorovat, abyste zjistili, jestli je potřeba škálovat loggregator.
+Pro horizontální navýšení kapacity loggregator zvětšete velikost vyrovnávací paměti Doppler nebo přidejte další instance Doppler serveru v manifestu CF. Další informace najdete v [pokynech pro škálování loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
 ## <a name="update"></a>Aktualizace
 
-Aktualizovat Nozzle s novější verzí, stáhněte si novou verzi Nozzle, postupujte podle kroků v předchozí části "Nasazení the Nozzle" a nasdílejte aplikaci znovu.
+Chcete-li aktualizovat trysek pomocí novější verze, Stáhněte si novou verzi nové trysky, postupujte podle kroků v předchozí části nasazení trysek a znovu aplikaci nahrajte.
 
-### <a name="remove-the-nozzle-from-ops-manager"></a>Odebrání správce operací Nozzle
+### <a name="remove-the-nozzle-from-ops-manager"></a>Odebrat trysku z nástroje OPS Manager
 
-1. Přihlaste se na správce Ops.
-2. Vyhledejte **Microsoft Azure Log Analytics Nozzle pro PCF** dlaždici.
-3. Vyberte ikonu uvolňování paměti a potvrďte odstranění.
+1. Přihlaste se ke Správci OPS.
+2. Vyhledejte dlaždici **Microsoft Azure Log Analytics trysek pro PCF** .
+3. Vyberte ikonu uvolnění paměti a potvrďte odstranění.
 
-### <a name="remove-the-nozzle-from-your-development-computer"></a>Odeberte Nozzle z vývojového počítače
+### <a name="remove-the-nozzle-from-your-development-computer"></a>Odebrat trysku z vývojového počítače
 
-V okně rozhraní příkazového řádku CF zadejte:
+V okně CF CLI zadejte:
 ```
 cf delete <App Name> -r
 ```
 
-Pokud odeberete Nozzle, se automaticky odeberou data v portálu OMS. Vypršení platnosti podle vaší uchovávání protokolů Azure Monitor nastavení.
+Pokud tuto trysku odeberete, data na portálu OMS se automaticky neodeberou. Vyprší na základě vašeho nastavení uchovávání protokolů Azure Monitor.
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 
-Azure Log Analytics Nozzle je open source. Posílat dotazy a zpětnou vazbu, která [části GitHub](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues). Otevřete žádost o podporu Azure, zvolte "Virtuální počítač s Cloud Foundry" jako kategorie služby. 
+Pro službu Azure Log Analytics tryska je otevřený zdroj. Odešlete své dotazy a zpětnou vazbu do [části GitHub](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues). Pokud chcete otevřít žádost o podporu Azure, vyberte jako kategorie služby možnost virtuální počítač se spuštěným Cloud Foundry. 
 
 ## <a name="next-step"></a>Další krok
 
-Z PCF2.0 jsou metriky výkonu virtuálních počítačů k Azure Log Analytics nozzle přenáší systémové metriky předávání a integrovat do pracovního prostoru Log Analytics. Už nepotřebujete agenta Log Analytics pro metriky výkonu virtuálních počítačů. Agenta Log Analytics ale můžete použít ke shromažďování informací Syslog. Agenta Log Analytics je nainstalován jako doplněk Bosh k vašim virtuálním počítačům CF. 
+Z PCF 2.0 se metriky výkonu virtuálních počítačů přenáší do služby Azure Log Analytics na základě předávacích systémových metrik a integrují se do pracovního prostoru Log Analytics. Už nepotřebujete agenta Log Analytics pro metriky výkonu virtuálního počítače. Můžete však stále používat agenta Log Analytics ke shromažďování informací o syslogu. Agent Log Analytics je nainstalován jako doplněk Bosh k virtuálním počítačům CF. 
 
-Podrobnosti najdete v tématu [agenta Log Analytics nasazení do nasazení Cloud Foundry](https://github.com/Azure/oms-agent-for-linux-boshrelease).
+Podrobnosti najdete v tématu [nasazení agenta Log Analytics do nasazení Cloud Foundry](https://github.com/Azure/oms-agent-for-linux-boshrelease).

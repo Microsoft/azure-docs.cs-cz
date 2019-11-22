@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Githubu pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do Githubu.
+title: 'Kurz: zřizování uživatelů pro GitHub – Azure AD'
+description: Naučte se konfigurovat Azure Active Directory pro Automatické zřizování a rušení uživatelských účtů na GitHubu.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,92 +15,92 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356af6567cea96efc7edbe8bc4932182d35ebc07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02bae60622ca8f0e660c8fafbd21189d8e368ba9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963956"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276605"
 ---
-# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace Githubu pro automatické zřizování uživatelů
+# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v Githubu a Azure AD automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD na Githubu.
+Cílem tohoto kurzu je Ukázat kroky, které musíte provést na GitHubu a Azure AD, a automaticky zřídit a zrušit zřízení uživatelských účtů ze služby Azure AD do GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
-* Tenanta služby Azure Active directory
-* Organizaci GitHub vytvoří v [Githubu Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise), což vyžaduje [fakturační plán Githubu Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
-* Uživatelský účet v Githubu s oprávněními správce v organizaci
+* Tenant Azure Active Directory
+* Organizace GitHubu vytvořená v [GitHub Enterprise cloudu](https://help.github.com/articles/github-s-products/#github-enterprise), která vyžaduje [fakturační plán pro GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
+* Uživatelský účet v GitHubu s oprávněními správce k organizaci
 
 > [!NOTE]
-> Zřizování integrace Azure AD spoléhá na [rozhraní API Githubu SCIM](https://developer.github.com/v3/scim/), která je k dispozici [Githubu Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) zákazníky [fakturační plán Githubu Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) .
+> Integrace zřizování Azure AD spoléhá na [rozhraní API GITHUB SCIM](https://developer.github.com/v3/scim/), které je dostupné pro zákazníky [GitHubu Enterprise cloudu](https://help.github.com/articles/github-s-products/#github-enterprise) v [plánu fakturace na webu GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations).
 
-## <a name="assigning-users-to-github"></a>Přiřazování uživatelů do Githubu
+## <a name="assigning-users-to-github"></a>Přiřazení uživatelů k GitHubu
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů je synchronizovat jenom uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD. 
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD. 
 
-Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD představují, kteří potřebují přístup k vaší aplikaci Githubu. Po se rozhodli, můžete přiřadit tito uživatelé do vaší aplikace Githubu podle zde uvedených pokynů:
+Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny v Azure AD reprezentují uživatelé, kteří potřebují přístup k vaší aplikaci GitHubu. Jakmile se rozhodnete, můžete tyto uživatele přiřadit do vaší aplikace GitHub podle pokynů uvedených tady:
 
-[Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
+[Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-github"></a>Důležité tipy pro přiřazování uživatelů do Githubu
+### <a name="important-tips-for-assigning-users-to-github"></a>Důležité tipy pro přiřazování uživatelů do GitHubu
 
-* Dále je doporučeno jednoho uživatele Azure AD je přiřazen ke Githubu k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
+* Doporučuje se, aby se k GitHubu pro otestování konfigurace zřizování přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazení uživatele k Githubu, je nutné vybrat buď **uživatele** roli, nebo jinou platnou specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. **Výchozího přístupu k** role nefunguje pro zřizování a tito uživatelé se přeskočí.
+* Když přiřadíte uživatele do GitHubu, musíte vybrat buď roli **uživatele** , nebo jinou platnou roli specifickou pro aplikaci (Pokud je dostupná) v dialogovém okně přiřazení. **Výchozí přístupová** role nefunguje pro zřizování a tito uživatelé se přeskočí.
 
-## <a name="configuring-user-provisioning-to-github"></a>Konfigurace zřizování uživatelů pro GitHub
+## <a name="configuring-user-provisioning-to-github"></a>Konfigurace zřizování uživatelů na GitHubu
 
-Tato část vás provede připojením služby Azure AD na Githubu uživatelský účet rozhraní API zřizování a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v Githubu podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojením k rozhraní API pro zřizování uživatelských účtů na GitHubu a konfigurací zřizovací služby k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v GitHubu na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolena založené na SAML jednotného přihlašování pro GitHub, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
+> Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML pro GitHub, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů ke Githubu v Azure AD
+### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na GitHubu ve službě Azure AD
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
-2. Pokud jste už nakonfigurovali GitHub pro jednotné přihlašování, vyhledejte svoji instanci služby GitHub pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **Githubu** v galerii aplikací. Ve výsledcích hledání vyberte GitHub a přidat do seznamu aplikací.
+2. Pokud jste již nakonfigurovali GitHub pro jednotné přihlašování, vyhledejte vaši instanci GitHubu pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **GitHub** v galerii aplikací. Z výsledků hledání vyberte GitHub a přidejte ho do seznamu aplikací.
 
-3. Vyberte instanci služby GitHub a potom **zřizování** kartu.
+3. Vyberte svou instanci GitHubu a pak vyberte kartu **zřizování** .
 
-4. Nastavte **režim zřizování** k **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Zřizování Githubu](./media/github-provisioning-tutorial/GitHub1.png)
+    ![Zřizování GitHubu](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. V části **přihlašovacích údajů správce** klikněte na tlačítko **Authorize**. Tato operace se otevře dialogové okno autorizace Githubu v novém okně prohlížeče. 
+5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. Tato operace otevře dialogové okno pro autorizaci GitHubu v novém okně prohlížeče. 
 
-6. V novém okně se přihlaste pomocí svého správce účtu GitHub. V dialogovém okně výsledný autorizace, vyberte tým Githubu, který chcete povolit zajišťování pro a pak vyberte **Authorize**. Po dokončení vrátí k webu Azure portal k dokončení konfigurace zřizování.
+6. V novém okně se přihlaste k GitHubu pomocí účtu správce. V dialogovém okně výsledné autorizace vyberte tým GitHubu, pro který chcete povolit zřizování, a pak vyberte **autorizovat**. Až se dokončí, vraťte se do Azure Portal a dokončete konfiguraci zřizování.
 
     ![Dialogové okno autorizace](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Na webu Azure Portal, vstup **adresy URL Tenanta** a klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci Githubu. Pokud se nepovede, ověřte účet GitHub má oprávnění správce a **adresy URl Tenanta** je detekován správně a pak opakujte krok "Ověřit" (mohou představovat **adresy URL Tenanta** pravidlem: `https://api.github.com/scim/v2/organizations/<Organization_name>` , vaše organizace najdete pod vaším účtem Githubu: **Nastavení** > **organizace**).
+7. V Azure Portal zadejte **adresu URL klienta** a klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k vaší aplikaci GitHub. Pokud se připojení nepovede, ujistěte se, že váš účet GitHub má oprávnění správce a **Adresa URL tenanta** je zavedená správně, a potom zkuste znovu provést krok autorizovat (můžete vytvořit **adresu URL klienta** podle pravidla: `https://api.github.com/scim/v2/organizations/<Organization_name>`, můžete své organizace najít v rámci svého účtu GitHub: **Nastavení** > **organizace**).
 
     ![Dialogové okno autorizace](./media/github-provisioning-tutorial/GitHub3.png)
 
-8. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko "Odeslat e-mailové oznámení, když dojde k chybě."
+8. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko Odeslat e-mailové oznámení, když dojde k chybě.
 
-9. Klikněte na **Uložit**.
+9. Klikněte na možnost **Uložit**.
 
-10. V oddílu mapování, vyberte **synchronizace Azure Active Directory Users na GitHub**.
+10. V části mapování vyberte **synchronizovat Azure Active Directory uživatelů do GitHubu**.
 
-11. V **mapování atributů** , projděte si atributy uživatele, které se synchronizují ze služby Azure AD na Githubu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelských účtů ve službě GitHub pro operace update. Vyberte tlačítko Uložit potvrďte změny.
+11. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do GitHubu. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v GitHubu pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
-12. Povolit zřizování služby pro GitHub Azure AD, změňte **stavu zřizování** k **na** v **nastavení** oddílu
+12. Pokud chcete povolit službu Azure AD Provisioning pro GitHub, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-13. Klikněte na **Uložit**.
+13. Klikněte na možnost **Uložit**.
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Githubu v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v zřizovací služba.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených k GitHubu v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)

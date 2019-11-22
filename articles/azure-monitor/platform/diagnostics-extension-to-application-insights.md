@@ -1,5 +1,5 @@
 ---
-title: Konfigurace Azure Diagnostics k odesílání dat do Application Insights
+title: Odeslat data Azure Diagnostics do Application Insights
 description: Aktualizujte Azure Diagnostics veřejnou konfiguraci, aby odesílala data do Application Insights.
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2016
-ms.openlocfilehash: 5328d2be4b8bf733041c39fe029ae2d02ecc3a6e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6165ff13f489f9f23b9ece677b3643641150130d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552042"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285992"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Odeslat cloudovou službu, virtuální počítač nebo Service Fabric diagnostická data do Application Insights
 Služba Cloud Services, Virtual Machines, Virtual Machine Scale Sets a Service Fabric k shromažďování dat používá rozšíření Azure Diagnostics.  Diagnostika Azure odesílá data do tabulek Azure Storage.  Můžete však také přesměrovat všechny nebo podmnožiny dat do jiných umístění pomocí rozšíření Azure Diagnostics 1,5 nebo novější.
@@ -66,11 +66,11 @@ Příklad konfigurace jímky pro Application Insights:
 - Element **Channels** obsahuje jeden nebo více prvků **kanálu** .
     - Atribut *Name* jednoznačně odkazuje na daný kanál.
     - Atribut *LogLevel* umožňuje zadat úroveň protokolu, kterou kanál povoluje. Dostupné úrovně protokolu v pořadí od nejvíc do nejnižší informace jsou následující:
-        - Podrobné
+        - Podrobnosti
         - Informace
         - Upozornění
         - Chyba
-        - Kritické
+        - Kritická
 
 Kanál funguje jako filtr a umožňuje vybrat konkrétní úrovně protokolu k odeslání do cílové jímky. Můžete například shromáždit podrobné protokoly a odeslat je do úložiště, ale zaslat do jímky pouze chyby.
 

@@ -1,24 +1,20 @@
 ---
-title: Vytvoření prostoru vývoje Kubernetes v cloudu s využitím .NET Core a Visual Studio
-titleSuffix: Azure Dev Spaces
+title: Vytvoření Kubernetes vývojového prostoru v cloudu s využitím .NET Core a sady Visual Studio
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: 4b37da8d31fc5ac605e59d9aceb456e996df438b
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
-ms.translationtype: MT
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
+ms.openlocfilehash: 2509226bfa76d4a2f98282b062f7d7714f202b00
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503048"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280212"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Začínáme s Azure Dev prostorů s .NET Core a Visual Studio
+# <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Začínáme s Azure Dev Spaces pomocí .NET Core a sady Visual Studio
 
 V tomto průvodci se naučíte:
 
@@ -28,7 +24,7 @@ V tomto průvodci se naučíte:
 - Produktivně vyvíjet a testovat kód v týmovém prostředí
 
 > [!Note]
-> **Pokud jste zablokuje** kdykoli, najdete v článku [Poradce při potížích s](troubleshooting.md) oddílu.
+> **Pokud se vám pozastavila** kdykoli, přečtěte si část [Poradce při potížích](troubleshooting.md) .
 
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Vytvoření clusteru Kubernetes s podporou Azure Dev Spaces
@@ -36,16 +32,16 @@ V tomto průvodci se naučíte:
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 1. Zvolte **Vytvořit prostředek**, vyhledejte **Kubernetes** a vyberte **Služba Kubernetes** > **Vytvořit**.
 
-   Proveďte následující kroky v rámci každého čísla *clusteru Kubernetes vytvořit* formuláře a ověřit vybranou [oblasti podporuje prostory Azure Dev][supported-regions].
+   V každém z nadpisu formuláře *vytvořit cluster Kubernetes* proveďte následující kroky a ověřte, jestli vybraná [oblast podporuje Azure dev Spaces][supported-regions].
 
-   - **Podrobnosti o projektu**: Vyberte předplatné Azure a nové nebo existující skupinu prostředků Azure.
+   - **Podrobnosti o projektu**: vyberte předplatné Azure a novou nebo existující skupinu prostředků Azure.
    - **PODROBNOSTI O CLUSTERU:** Zadejte název, oblast, verzi a předponu názvu DNS pro cluster AKS.
    - **ŠKÁLOVÁNÍ:** Vyberte velikost virtuálního počítače pro uzly agentů AKS a počet uzlů. Pokud s Azure Dev Spaces začínáte, na prozkoumání všech funkcí vám stačí jeden uzel. Počet uzlů můžete po nasazení clusteru kdykoli snadno upravit. Mějte na paměti, že velikost virtuálního počítače není možné po vytvoření clusteru AKS změnit. Pokud však potřebujete vertikálně navýšit kapacitu, po nasazení clusteru AKS můžete snadno vytvořit nový cluster AKS s většími virtuálními počítači a pomocí Dev Spaces provést opětovné nasazení do tohoto většího clusteru.
 
    ![Nastavení konfigurace Kubernetes](media/common/Kubernetes-Create-Cluster-2.PNG)
 
 
-   Vyberte **Další: Ověřování** po dokončení.
+   Po dokončení vyberte **Další: Ověřování**.
 
 1. Vyberte požadované nastavení pro řízení přístupu na základě role (RBAC). Služba Azure Dev Spaces podporuje clustery s vypnutým i zapnutým řízením přístupu na základě role.
 
@@ -54,19 +50,19 @@ V tomto průvodci se naučíte:
 1. Vyberte **Zkontrolovat a vytvořit** a po dokončení vyberte **Vytvořit**.
 
 ## <a name="get-the-visual-studio-tools"></a>Získání nástrojů sady Visual Studio
-Nainstalujte nejnovější verzi [sady Visual Studio](https://www.visualstudio.com/vs/). Pro Visual Studio 2019 na Windows, budete muset, nainstalujte úlohu vývoj pro Azure. Pro Visual Studio 2017 na Windows, je potřeba, nainstalujte úlohu vývoj pro ASP.NET a web a jednak [Visual Studio Tools pro systém Kubernetes](https://aka.ms/get-azds-visualstudio).
+Nainstalujte nejnovější verzi sady [Visual Studio](https://www.visualstudio.com/vs/). Pro Visual Studio 2019 ve Windows potřebujete nainstalovat úlohu vývoj pro Azure. Pro Visual Studio 2017 ve Windows je potřeba nainstalovat úlohu vývoje ASP.NET a webu a také [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio).
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Vytvoření webové aplikace spuštěné v kontejneru
 
-V této části vytvoříte webovou aplikaci ASP.NET Core a získat jeho spuštění v kontejneru v Kubernetes.
+V této části vytvoříte webovou aplikaci ASP.NET Core a získáte její spuštění v kontejneru v Kubernetes.
 
-### <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
+### <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace v ASP.NET
 
-Ze sady Visual Studio vytvořte nový projekt. V současné době se musí jednat o projekt **Webová aplikace ASP.NET Core**. Dejte projektu název **webfrontend**.
+V sadě Visual Studio vytvořte nový projekt. V současné době se musí jednat o projekt **Webová aplikace ASP.NET Core**. Dejte projektu název **webfrontend**.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
-Vyberte šablonu **Webová aplikace (model-zobrazení-kontroler)** a ujistěte se, že jsou ve dvou rozevíracích seznamech v horní části dialogového okna vybrané položky **.NET Core** a **ASP.NET Core 2.0**. Projekt vytvoříte kliknutím na **OK**.
+Vyberte šablonu **Webová aplikace (model-zobrazení-kontroler)** a ujistěte se, že jsou ve dvou rozevíracích seznamech v horní části dialogového okna vybrané položky **.NET Core** a **ASP.NET Core 2.0**. Kliknutím na tlačítko **OK** vytvořte projekt.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
@@ -90,10 +86,10 @@ Pokud zvolíte cluster, který není povolený pro práci s Azure Dev Spaces, zo
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-Zvolte **OK**.
+Vyberte **OK**.
 
 > [!IMPORTANT]
-> Proces konfigurace Azure Dev mezery se odeberou `azds` oboru názvů v clusteru, pokud existuje.
+> Proces konfigurace Azure Dev Spaces odstraní obor názvů `azds` v clusteru, pokud existuje.
 
  K provedení této akce se spustí úloha na pozadí. Dokončí se za několik minut. Pokud chcete zjistit, jestli se úloha pořád vytváří, podržte ukazatel myši nad ikonou **úloh na pozadí** v levém dolním rohu stavového řádku, jak znázorňuje následující obrázek.
 
@@ -127,7 +123,7 @@ Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes.
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 
 
-1. Najděte soubor `./Views/Home/Index.cshtml` a upravte kód HTML. Například změnit [řádku 73, který čte `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) na něco jako: 
+1. Najděte soubor `./Views/Home/Index.cshtml` a upravte kód HTML. Například změňte [řádek 73, který čte `<h2>Application uses</h2>`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) něco podobného: 
   
     ```html
     <h2>Hello k8s in Azure!</h2>`
@@ -150,10 +146,10 @@ Místo opětovného sestavení a nasazení nové image kontejneru po každé pro
 
 Aktualizujte webovou aplikaci v prohlížeči a přejděte na stránku O aplikaci. V uživatelském rozhraní by se měla zobrazit vaše upravená zpráva.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Informace o vývoji pro víc služeb](multi-service-netcore-visualstudio.md)
+> [Další informace o vývoji více služeb](multi-service-netcore-visualstudio.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations

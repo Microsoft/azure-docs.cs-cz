@@ -1,6 +1,6 @@
 ---
-title: Uživatele spolupráce B2B Azure Active Directory deklarací mapování - | Dokumentace Microsoftu
-description: Přizpůsobení deklarací identity uživatele, které jsou vystavených v tokenu SAML pro uživatele Azure Active Directory (Azure AD) B2B.
+title: Mapování deklarací identity uživatelů spolupráce B2B – Azure Active Directory
+description: Přizpůsobte deklarace identity uživatelů, které jsou vydány v tokenu SAML pro Azure Active Directory (Azure AD) uživatelé B2B.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,33 +11,33 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb18c31f40de3358ad987be4a9c67ed3a5079e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65811933"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273191"
 ---
-# <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Uživatele spolupráce B2B mapování deklarací v Azure Active Directory
+# <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Mapování deklarací identity uživatelů spolupráce B2B v Azure Active Directory
 
-Přizpůsobování deklarací identity, které jsou vystavených v tokenu SAML pro uživatele spolupráce B2B Azure Active Directory (Azure AD) podporuje. Když se uživatel přihlásí k aplikaci, Azure AD vydá SAML token aplikaci, která obsahuje informace (nebo deklarace identity) informace o uživateli, který jednoznačně identifikuje je. Ve výchozím nastavení to zahrnuje uživatelské jméno, e-mailová adresa, jméno a příjmení uživatele.
+Azure Active Directory (Azure AD) podporuje přizpůsobení deklarací identity vystavených v tokenu SAML pro uživatele spolupráce B2B. Když se uživatel do aplikace ověří, služba Azure AD vydá token SAML pro aplikaci, která obsahuje informace (nebo deklarace identity) o uživateli, který je jednoznačně identifikuje. Ve výchozím nastavení sem patří uživatelské jméno, e-mailová adresa, jméno a příjmení.
 
-V [webu Azure portal](https://portal.azure.com), při prohlížení nebo úpravách deklarace identity, které se odesílají v tokenu SAML pro aplikaci. Chcete-li získat přístup k nastavení, vyberte **Azure Active Directory** > **podnikové aplikace** > aplikaci, která je nakonfigurována pro jednotné přihlašování > **jednotného přihlašování** . Podívejte se na nastavení tokenu SAML v **atributy uživatele** části.
+V [Azure Portal](https://portal.azure.com)můžete zobrazit nebo upravit deklarace identity, které se odesílají v tokenu SAML do aplikace. Pro přístup k nastavení vyberte **Azure Active Directory** > **podnikové aplikace** > aplikaci, která je nakonfigurovaná pro jednotné přihlašování > **jednotné přihlašování**. Viz nastavení tokenu SAML v části **atributy uživatele** .
 
-![V uživatelském rozhraní jsou uvedeny atributy tokenu SAML](media/claims-mapping/view-claims-in-saml-token.png)
+![Zobrazuje atributy tokenu SAML v uživatelském rozhraní.](media/claims-mapping/view-claims-in-saml-token.png)
 
-Existují dva možné důvody, proč může být potřeba upravit deklarace, které jsou vystavených v tokenu SAML:
+Existují dva možné důvody, proč možná budete muset upravit deklarace identity, které se vydávají v tokenu SAML:
 
-1. Aplikace vyžaduje jinou sadu identifikátorů URI nebo hodnoty deklarací.
+1. Aplikace vyžaduje jinou sadu identifikátorů URI deklarace identity nebo hodnot deklarací identity.
 
-2. Aplikace vyžaduje deklarace identity NameIdentifier na něco jiného než hlavní název uživatele (UPN), která je uložená ve službě Azure AD.
+2. Aplikace vyžaduje, aby deklarace identity NameIdentifier byla jiná než hlavní název uživatele (UPN), který je uložený ve službě Azure AD.
 
-Informace o tom, jak přidávat a upravovat deklarací identity najdete v tématu [přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
+Informace o tom, jak přidat a upravit deklarace identity, najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
 
-Spolupráci B2B z bezpečnostních důvodů nemají uživatelé mapování NameID a hlavní název uživatele mezi tenanty.
+Pro uživatele spolupráce B2B se z bezpečnostních důvodů brání mapování NameID a mezi klienty hlavního názvu uživatele (UPN).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Informace o vlastnosti uživatele spolupráce B2B najdete v tématu [vlastnosti uživatele spolupráce Azure Active Directory s B2B](user-properties.md).
-- Informace o tokeny uživatele pro uživatele spolupráce B2B najdete v tématu [pochopit tokeny uživatele v Azure AD B2B collaboration](user-token.md).
+- Informace o vlastnostech uživatele spolupráce B2B najdete v tématu [vlastnosti Azure Active Directoryho uživatele spolupráce B2B](user-properties.md).
+- Informace o tokenech uživatelů pro uživatele spolupráce B2B najdete v tématu [vysvětlení tokenů uživatelů ve spolupráci Azure AD B2B](user-token.md).
 

@@ -3,12 +3,12 @@ title: Oprava prostředků, které nevyhovují předpisům
 description: Tato příručka vás provede opravou prostředků, které nedodržují zásady v Azure Policy.
 ms.date: 09/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53ca21e4b8a1f3e7973706acd10601593efc3448
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8f1d263286a7504e7a8234ebd944bbbee69c5303
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959508"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267361"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
@@ -187,5 +187,5 @@ Další rutiny a příklady pro nápravu najdete v tématu [AZ. PolicyInsights](
 - Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
 - Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](getting-compliance-data.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](get-compliance-data.md).
 - Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

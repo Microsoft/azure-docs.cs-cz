@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: Klientská knihovna pro Azure Blob Storage v2 pro JavaScript'
-description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak pomocí klientské knihovny Azure Storage pro Node. js v2 nahrajte objekt blob do Azure Storage, Stáhněte objekt BLOB a vypište seznam objektů BLOB v kontejneru.
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pro nahrání objektu blob, stažení objektu BLOB a výpisu objektů BLOB v kontejneru použijte klientskou knihovnu Azure Storage pro Node. js v2.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/04/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825346"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269690"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Rychlý Start: Klientská knihovna pro Azure Blob Storage v2 pro JavaScript
 
@@ -151,7 +151,7 @@ Druhý parametr (*options*) pro metodu **createContainerIfNotExists** přijímá
 
 Použití metody **createContainerIfNotExists** umožňuje aplikaci několikrát spustit příkaz *createContainer* bez vracení chyb, pokud kontejner již existuje. V produkčním prostředí často voláte metodu **createContainerIfNotExists** pouze jednou, protože se stejný kontejner používá v rámci celé aplikace. V těchto případech můžete vytvořit kontejner předem prostřednictvím portálu nebo Azure CLI.
 
-### <a name="upload-text"></a>Nahrání textu
+### <a name="upload-text"></a>Nahrání textového řetězce
 
 Funkce *uploadString* zavolá metodu [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) a do kontejneru objektů blob zapíše libovolný řetězec (nebo ho přepíše).
 
@@ -341,7 +341,7 @@ console.log(`Container "${containerName}" is deleted`);
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci této ukázky kódu. 
+Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci vzorku kódu. 
 
 ## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací Node.js s využitím objektů blob
 

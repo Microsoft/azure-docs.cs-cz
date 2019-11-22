@@ -1,29 +1,25 @@
 ---
-title: Použití kubectl s Azure Dev mezery
-titleSuffix: Azure Dev Spaces
+title: Jak používat kubectl s Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 05/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 0dfe88966deeb4dcf0196aa1f1584a06794b36a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
+ms.openlocfilehash: fea14668c35eddcd01417b417e2239788eddd6d1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686320"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279929"
 ---
-# <a name="use-kubectl-with-an-azure-dev-space"></a>Použití kubectl s prostorem vývoj Azure
+# <a name="use-kubectl-with-an-azure-dev-space"></a>Použití kubectl s prostorem pro vývoj v Azure
 
-Má přístup ke clusteru Kubernetes v rámci adresního prostoru vývoje Azure a použití existujících nástrojů pro Kubernetes, jako jsou `kubectl`.
+Ke clusteru Kubernetes můžete přistupovat v rámci vývojového prostoru Azure a používat existující nástroje Kubernetes, jako je `kubectl`.
 
-Spuštění `az aks use-dev-spaces` příkaz automaticky přidá `kubectl` kontextu konfigurace pro vás, takže kubectl musí být už připojené k vašemu clusteru Kubernetes v Azure Dev mezery. Příklady:
+Spuštění příkazu `az aks use-dev-spaces` automaticky přidá kontext konfigurace `kubectl`, takže kubectl by již měl být připojen k vašemu clusteru Azure Dev Spaces Kubernetes. Příklady:
 - Potvrďte aktuální kontext: `kubectl config current-context`
-- Seznam všech dostupných kontextech: `kubectl config get-contexts`. 
-- Změna kontextu: `kubectl config use-context <context-name>`
-- Zobrazit řídicí panel Kubernetes: Spusťte `kubectl proxy`, potom otevřete prohlížeč na adresu, kterou tento příkaz vysílá (připojit `/ui` k adrese URL můžete přejít na řídicí panel Kubernetes).
-- Seznam spuštění služby v prostoru výchozí prostory vývoj Azure s názvem *výchozí*: `kubectl get services --namespace=default`
+- Vypíše všechny dostupné kontexty: `kubectl config get-contexts`. 
+- Změnit kontext: `kubectl config use-context <context-name>`
+- Zobrazte si řídicí panel Kubernetes: Spusťte `kubectl proxy`a pak otevřete prohlížeč na adrese, kterou tento příkaz vygeneruje (připojovat `/ui` k adrese URL pro přechod na řídicí panel Kubernetes).
+- Vypíše běžící služby ve výchozím Azure Dev Spaces prostoru s názvem *Default*: `kubectl get services --namespace=default`
 

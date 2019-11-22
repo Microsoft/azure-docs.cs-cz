@@ -1,5 +1,5 @@
 ---
-title: Správa zřizování uživatelů pro podnikové aplikace v Azure Active Directory | Microsoft Docs
+title: Správa zřizování uživatelů pro podnikové aplikace v Azure AD
 description: Naučte se spravovat zřizování uživatelských účtů pro podnikové aplikace pomocí Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315259"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285619"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 
@@ -85,9 +85,4 @@ Pokud je zřizování pro aplikaci poprvé zapnuté, zapněte službu změnou **
 
 Změňte **stav zřizování** na **vypnuto** , aby se služba zřizování zastavila. V tomto stavu Azure v aplikaci nevytvoří, neaktualizuje ani neodebere žádné objekty uživatelů ani skupin. Změňte stav zpět na **zapnuto** a služba se ponechá tam, kde skončila.
 
-Zaškrtněte políčko **Vymazat aktuální stav a restartovat synchronizaci** a vyberte **Uložit** do:
-
-* Zastavení služby zřizování
-* Restartujte služby a znovu spusťte počáteční cyklus.
-
-Tato možnost umožňuje správcům znovu spustit proces nasazení.
+**Vymazání aktuálního stavu a restartuje synchronizaci** aktivuje počáteční cyklus. Služba potom znovu vyhodnotí všechny uživatele ve zdrojovém systému a určí, jestli jsou v oboru pro zřizování. To může být užitečné, pokud je vaše aplikace momentálně v karanténě nebo potřebujete provést změnu mapování atributů. Tato akce by se neměla používat k aktivaci žádosti o odstranění nebo zakázání, protože tyto události je možné vyřadit, když se aktivuje jasný stav a restartuje se. Počáteční cyklus také trvá déle než typický přírůstkový cyklus z důvodu počtu objektů, které je třeba vyhodnotit. Další informace o výkonu počátečních a přírůstkových cyklů najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user). 

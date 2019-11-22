@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití Pythonu k volání rozhraní API pro analýzu textu'
+title: 'Rychlý start: Volání rozhraní API pro analýzu textu pomocí Pythonu'
 titleSuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 15f0cf7725dec99884497be79b63c21ef16f88b1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387376"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284975"
 ---
-# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití REST API Pythonu k volání služby Analýza textu rozpoznávání 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý Start: použití REST API Pythonu k volání služby Analýza textu rozpoznávání 
 <a name="HOLTop"></a>
 
 V tomto rychlém startu můžete začít s analýzou jazyka pomocí Analýza textu REST API a Pythonu. V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities).
 
-Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -71,13 +71,13 @@ Následující části popisují, jak volat jednotlivé funkce rozhraní API.
 
 ## <a name="detect-languages"></a>Rozpoznávání jazyků
 
-Připojíte `/text/analytics/v2.1/languages` se k základnímu koncovému bodu analýza textu, abyste mohli vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
+Pokud chcete vytvořit adresu URL pro rozpoznávání jazyka, přidejte `/text/analytics/v2.1/languages` do základního koncového bodu Analýza textu. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
-Datová část pro rozhraní API se skládá ze seznamu `documents`, který je řazenými kolekcemi členů `id` obsahující a `text` atributem. Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text` 
+Datová část rozhraní API se skládá ze seznamu `documents`, což jsou řazené kolekce členů obsahující `id` a atribut `text`. Atribut `text` ukládá text, který má být analyzován, a `id` může být libovolná hodnota. 
 
 ```python
 documents = {"documents": [
@@ -87,7 +87,7 @@ documents = {"documents": [
 ]}
 ```
 
-K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
+K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného a odešlete žádost `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -140,13 +140,13 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-Chcete-li zjistit mínění (které rozsahy jsou kladné nebo záporné) sady dokumentů, přidejte `/text/analytics/v2.1/sentiment` do základního koncového bodu analýza textu, aby bylo možné vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
+Chcete-li zjistit mínění (které rozsahy jsou kladné nebo záporné) sady dokumentů, přidejte `/text/analytics/v2.1/sentiment` do základního koncového bodu Analýza textu, aby bylo možné vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
-Stejně jako u příkladu detekce jazyka vytvořte slovník s `documents` klíčem, který se skládá ze seznamu dokumentů. Každý dokument je řazená kolekce členů skládající se z hodnot `id`, `text` (text, který se má analyzovat) a `language` (jazyk textu). 
+Stejně jako u příkladu detekce jazyka vytvořte slovník s klíčem `documents`, který se skládá ze seznamu dokumentů. Každý dokument je řazená kolekce členů skládající se z hodnot `id`, `text` (text, který se má analyzovat) a `language` (jazyk textu). 
 
 ```python
 documents = {"documents": [
@@ -161,7 +161,7 @@ documents = {"documents": [
 ]}
 ```
 
-K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
+K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného a odešlete žádost `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -200,9 +200,9 @@ Mínění skóre dokumentu je mezi 0,0 a 1,0 a s vyšším skóre, které signal
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Extrahovat klíčové fráze
+## <a name="extract-key-phrases"></a>Extrakce klíčových frází
  
-Pro extrakci klíčových frází ze sady dokumentů přidejte `/text/analytics/v2.1/keyPhrases` do základního koncového bodu analýza textu, aby bylo možné vytvořit adresu URL pro zjišťování jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
+Chcete-li extrahovat klíčové fráze ze sady dokumentů, přidejte `/text/analytics/v2.1/keyPhrases` do základního koncového bodu Analýza textu, aby bylo možné vytvořit adresu URL pro zjišťování jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -223,7 +223,7 @@ documents = {"documents": [
 ]}
 ```
 
-K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
+K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného a odešlete žádost `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -278,7 +278,7 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Identifikace entit
 
-Chcete-li identifikovat známé entity (osoby, místa a věci) v textových dokumentech, přihlaste se `/text/analytics/v2.1/entities` do základního koncového bodu analýza textu, aby bylo možné vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+Chcete-li identifikovat známé entity (osoby, místa a věci) v textových dokumentech, přidejte `/text/analytics/v2.1/entities` do základního koncového bodu Analýza textu k vytvoření adresy URL pro rozpoznávání jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"
@@ -292,7 +292,7 @@ documents = {"documents": [
 ]}
 ```
 
-K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`.
+K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného a odešlete žádost `requests.post()`.
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -461,7 +461,7 @@ pprint(entities)
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

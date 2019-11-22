@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vytvoření prvního experimentu ML: nastavení'
+title: 'Kurz: vytvoření prvního experimentu v ML'
 titleSuffix: Azure Machine Learning
 description: V tomto kurzu se naučíte, jak začít používat sadu SDK Azure Machine Learning Python spuštěnou v poznámkových blocích Jupyter.  V části 1 vytvoříte pracovní prostor, ve kterém budete spravovat experimenty a modely ML.
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d2247ba965c5e6db6e2da0218859d207d2fc61b8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049145"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276628"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

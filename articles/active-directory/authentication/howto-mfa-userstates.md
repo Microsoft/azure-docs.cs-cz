@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 316d82cbfd0c96fba2ac9714f8025d71c743d7d5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569849"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269542"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -56,7 +56,7 @@ Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v
 Pro přístup ke stránce, kde můžete zobrazit a spravovat stavy uživatelů, použijte následující postup:
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejít na **Azure Active Directory** > **uživatelé a skupiny** > **všech uživatelích**.
+2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **uživatelé** > **Všichni uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
    ![vybrat Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Otevře se nová stránka, která zobrazuje stav uživatele.

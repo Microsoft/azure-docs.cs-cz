@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Asana pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do Asana.
+title: 'Kurz: zřizování uživatelů pro Asana – Azure AD'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Asana.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,90 +16,90 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d5ceedfd1f0fad0c6f03feba2150968aecf02b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60a237e4295f17ce37f622022d318e9f2aff24d7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964222"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276590"
 ---
-# <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Kurz: Konfigurace Asana pro automatické zřizování uživatelů
+# <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Kurz: Konfigurace Asana pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v Asaně a Azure Active Directory (Azure AD) automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD do Asana.
+Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v Asana a Azure Active Directory (Azure AD) k automatickému zřízení a zrušení zřízení uživatelských účtů z Azure AD až Asana.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
-* Klient služby Azure AD
-* K tenantovi Asana s [Enterprise](https://www.asana.com/pricing) plán nebo lépe povoleno
-* Uživatelský účet v Asaně s oprávněními správce
+* Tenant Azure AD
+* Tenant Asana s plánem [Enterprise](https://www.asana.com/pricing) nebo lepším povoleným
+* Uživatelský účet v Asana s oprávněními správce
 
 > [!NOTE]
-> Zřizování integrace Azure AD spoléhá na [Asana API](https://asana.com/developers/api-reference/users), která je k dispozici v Asaně.
+> Integrace zřizování Azure AD spoléhá na [rozhraní Asana API](https://asana.com/developers/api-reference/users), které je k dispozici pro Asana.
 
-## <a name="assign-users-to-asana"></a>Přiřazení uživatelů k Asaně
+## <a name="assign-users-to-asana"></a>Přiřazení uživatelů k Asana
 
-Azure AD používá koncept volá *přiřazení* určit, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů jsou synchronizovány pouze uživatelé přiřazení k aplikaci v Azure AD.
+Azure AD používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé přiřazení k aplikaci v Azure AD.
 
-Než začnete konfigurovat a povolit službu zřizování, musíte se rozhodnout, které uživatelé ve službě Azure AD potřebují přístup k vaší aplikaci Asana. Pak můžete přiřadit tito uživatelé do vaší aplikace Asana podle zde uvedených pokynů:
+Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, kteří uživatelé ve službě Azure AD potřebují přístup k vaší aplikaci Asana. Potom tyto uživatele můžete přiřadit do aplikace Asana podle pokynů uvedených tady:
 
-[Přiřazení uživatele k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
+[Přiřazení uživatele k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-asana"></a>Důležité tipy pro přiřazování uživatelů k Asaně
+### <a name="important-tips-for-assigning-users-to-asana"></a>Důležité tipy pro přiřazení uživatelů k Asana
 
-Doporučujeme vám, přiřadit jeden Asana pro testování konfigurace zřizování uživatele Azure AD. Později můžete přiřadit dalším uživatelům.
+Doporučujeme, abyste jednomu uživateli Azure AD přiřadili Asana k otestování konfigurace zřizování. Další uživatele je možné přiřadit později.
 
-## <a name="configure-user-provisioning-to-asana"></a>Konfigurace zřizování uživatelů pro Asaně
+## <a name="configure-user-provisioning-to-asana"></a>Konfigurace zřizování uživatelů na Asana
 
-Tato část vás provede připojením služby Azure AD na uživatelský účet v Asaně zřizování rozhraní API. Můžete také nakonfigurovat službu zřizování vytvářet, aktualizovat a vypnout přiřazené uživatelské účty v Asaně podle přiřazení uživatelů ve službě Azure AD.
+Tato část vás provede připojením služby Azure AD k Asana rozhraní API pro zřizování uživatelských účtů. Službu zřizování můžete také nakonfigurovat tak, aby vytvářela, aktualizovala a zakázala přiřazené uživatelské účty v Asana na základě přiřazení uživatelů v Azure AD.
 
 > [!TIP]
-> Povolit založené na SAML jednotného přihlašování pro Asana, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce se vzájemně doplňují.
+> Pokud chcete povolit jednotné přihlašování založené na SAML pro Asana, postupujte podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když tyto dvě funkce doplňují sebe.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů do Asana ve službě Azure AD
+### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na Asana ve službě Azure AD
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory** > **podnikové aplikace** > **všechnyaplikace** oddílu.
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory** > **Enterprise Apps** > **všechny aplikace** .
 
-1. Pokud jste již nakonfigurovali Asana pro jednotné přihlašování, vyhledejte pomocí vyhledávacího pole vaší instance Asana. V opačném případě vyberte **přidat** a vyhledejte **Asana** v galerii aplikací. Vyberte **Asana** ve výsledcích hledání a přidejte do seznamu aplikací.
+1. Pokud jste už nakonfigurovali Asana pro jednotné přihlašování, vyhledejte vaši instanci Asana pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **Asana** v galerii aplikací. Ve výsledcích hledání vyberte **Asana** a přidejte je do seznamu aplikací.
 
-1. Vyberte instanci Asana a pak vyberte **zřizování** kartu.
+1. Vyberte instanci Asana a pak vyberte kartu **zřizování** .
 
-1. Nastavte **režim zřizování** k **automatické**.
+1. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Zřizování v Asaně](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
+    ![Zřizování Asana](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
 
-1. V části **přihlašovacích údajů správce** , postupujte podle těchto pokynů k vygenerování tokenu a zadejte ho v **tajný klíč tokenu**:
+1. V části **přihlašovací údaje správce** postupujte podle těchto pokynů a vygenerujte token a zadejte ho v **tajném tokenu**:
 
-    a. Přihlaste se k [Asana](https://app.asana.com) s použitím účtu správce.
+    a. Přihlaste se k [Asana](https://app.asana.com) pomocí účtu správce.
 
-    b. Vyberte profilové fotky na horním panelu a vyberte vaše aktuální nastavení název organizace.
+    b. Vyberte profilovou fotografii z horního panelu a vyberte aktuální nastavení názvu organizace.
 
-    c. Přejděte **účty služeb** kartu.
+    c. Přejít na kartu **účty služby** .
 
-    d. Vyberte **přidejte účet služby**.
+    d. Vyberte **Přidat účet služby**.
 
-    e. Aktualizace **název** a **o** a profilové fotky, podle potřeby. Zkopírujte token v **Token**a vyberte ho v **uložit změny**.
+    e. Podle potřeby aktualizujte **název** a **informace o** a fotografii profilu. Zkopírujte token v **tokenu**a vyberte ho v části **Uložit změny**.
 
-1. Na webu Azure Portal, vyberte **Test připojení** zajistit, že Azure AD může připojit k aplikaci Asana. Pokud se nepovede, ujistěte se, že má váš účet Asana oprávnění správce a zkuste **Test připojení** krok znovu.
+1. V Azure Portal vyberte **Test připojení** , aby se služba Azure AD mohla připojit k vaší aplikaci Asana. Pokud se připojení nepovede, ujistěte se, že má váš účet Asana oprávnění správce, a zkuste krok **test Connection** znovu.
 
-1. Zadejte e-mailovou adresu osoby nebo skupiny, která chcete dostávat oznámení zřizování chyby v **e-mailové oznámení**. Zaškrtněte políčko pod.
-
-1. Vyberte **Uložit**.
-
-1. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Asana**.
-
-1. V **mapování atributů** , projděte si atributy uživatele ze služby Azure AD synchronizovány se službou Asana. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Asaně pro operace update. Vyberte **Uložit** potvrďte všechny změny. Další informace najdete v tématu [přizpůsobení mapování atributů zřízení uživatele](../manage-apps/customize-application-attributes.md).
-
-1. Povolit služba pro Asana, zřizování v Azure AD **nastavení** oddíl, změna **stavu zřizování** k **na**.
+1. Zadejte e-mailovou adresu osoby nebo skupiny, které chcete dostávat oznámení o chybách zřizování v **oznamovacím e-mailu**. Zaškrtněte políčko pod položkou.
 
 1. Vyberte **Uložit**.
 
-Nyní spustí počáteční synchronizaci pro všechny uživatele s přiřazenými v Asaně **uživatelé** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Použití **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokolů aktivit. Protokoly auditu popisují všechny akce provedené v Asaně aplikaci zřizovací služba.
+1. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Asana**.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [zprávu o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+1. V části **mapování atributů** zkontrolujte atributy uživatele, které se mají synchronizovat z Azure AD do Asana. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Asana pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny. Další informace najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů](../manage-apps/customize-application-attributes.md).
 
-## <a name="additional-resources"></a>Další materiály
+1. Pokud chcete povolit službu Azure AD Provisioning pro Asana, v části **Nastavení** změňte **stav zřizování** na **zapnuto**.
+
+1. Vyberte **Uložit**.
+
+Nyní se spustí počáteční synchronizace pro všechny uživatele přiřazené k Asana v části **Uživatelé** . Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit. Protokoly auditu popisují všechny akce prováděné službou zřizování ve vaší aplikaci Asana.
+
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

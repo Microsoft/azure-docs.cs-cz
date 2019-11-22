@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 81384bb784e3417dabfd673ef746463f55fc3063
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595063"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304732"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 
@@ -35,7 +35,7 @@ Použít virtuální sítě k:
 
 * Povolte hybridní cloudové scénáře. Virtuální sítě vám nabízí flexibilitu při podpoře řady hybridních cloudových scénářů. Cloudové aplikace můžete bezpečně propojit s jakýmkoli typem místního systému, jako jsou sálové počítače a systémy UNIX.
 
-### <a name="how-do-i-get-started"></a>Jak začít?
+### <a name="how-do-i-get-started"></a>Jak mám začít?
 Začněte tím, že přejdete do dokumentace ke službě [Virtual Network](https://docs.microsoft.com/azure/virtual-network/) . Tento obsah poskytuje informace o přehledu a nasazení všech funkcí virtuální sítě.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Můžu používat virtuální sítě bez připojení mezi místními místy?
@@ -49,7 +49,7 @@ Ano. [Virtuální zařízení pro optimalizaci sítě WAN](https://azuremarketpl
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Jaké nástroje slouží k vytvoření virtuální sítě?
 Virtuální síť můžete vytvořit nebo nakonfigurovat pomocí následujících nástrojů:
 
-* Portál Azure
+* portál Azure
 * PowerShell
 * Azure CLI
 * Konfigurační soubor sítě (jenom netcfg – jenom pro klasický virtuální sítě). Informace najdete v článku [Konfigurace sítě VNet pomocí konfiguračního souboru sítě](virtual-networks-using-network-configuration-file.md) .
@@ -63,7 +63,7 @@ Libovolný rozsah IP adres definovaný v [dokumentu RFC 1918](https://tools.ietf
 * 168.63.129.16/32 (interní DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Můžu mít v virtuální sítě veřejné IP adresy?
-Ano. Další informace o rozsahech veřejných IP adres najdete v tématu [vytvoření virtuální sítě](manage-virtual-network.md#create-a-virtual-network). Veřejné IP adresy nejsou přímo přístupné z Internetu.
+Ano. Další informace o rozsahech veřejných IP adres najdete v tématu [vytvoření virtuální sítě](manage-virtual-network.md#create-a-virtual-network). Veřejné IP adresy nejsou přímo dostupné z Internetu.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Existuje omezení počtu podsítí ve virtuální síti?
 Ano. Podrobnosti najdete v tématu [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Adresní prostory podsítě nemůžou překrývat sebe.
@@ -188,7 +188,7 @@ Ano. Můžete nasadit Web Apps v rámci virtuální sítě pomocí pomocného me
 
 * [Funkce App Service sítě](../app-service/networking-features.md)
 * [Vytváření Web Apps v App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Integrace aplikace s Virtual Network Azure](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Integrace aplikace s virtuální sítí Azure](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Omezení přístupu App Service](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Můžu ve virtuální síti nasazovat Cloud Services s webovými a pracovními rolemi (PaaS)?
@@ -232,7 +232,7 @@ Ano. Další informace o používání:
 - PowerShell pro správu virtuální sítě nasazených prostřednictvím modelů nasazení [Správce prostředků](/powershell/module/az.network) a [Classic](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) .
 - Rozhraní příkazového řádku Azure (CLI) pro nasazení a správu virtuální sítě nasazených prostřednictvím modelů nasazení [Správce prostředků](/cli/azure/network/vnet) a [Classic](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) .  
 
-## <a name="vnet-peering"></a>VNet Peering
+## <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
 ### <a name="what-is-vnet-peering"></a>Co je partnerský vztah VNet?
 Partnerský vztah virtuálních sítí (nebo partnerský vztah virtuálních sítí) umožňuje propojit virtuální sítě. Připojení peer-to-VNet mezi virtuálními sítěmi umožňuje směrovat provoz mezi nimi soukromě prostřednictvím adres IPv4. Virtuální počítače v partnerských virtuální sítě můžou vzájemně komunikovat, jako kdyby byly ve stejné síti. Tyto virtuální sítě mohou být ve stejné oblasti nebo v různých oblastech (označuje se také jako globální partnerské vztahy virtuálních sítí). Připojení partnerských vztahů virtuální sítě je také možné vytvořit v rámci předplatných Azure.
@@ -241,8 +241,8 @@ Partnerský vztah virtuálních sítí (nebo partnerský vztah virtuálních sí
 Ano. Globální VNet peering umožňuje peer virtuální sítě v různých oblastech. Globální síť VNet peering je dostupná ve všech veřejných oblastech Azure, Číně v oblasti cloudu a oblastech cloudu pro státní správu. Z veřejných oblastí Azure se nemůžete globálně peere navázat na národní oblasti cloudu.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Jaká jsou omezení týkající se globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení?
-Pokud jsou dvě virtuální sítě v různých oblastech (globální partnerské vztahy virtuálních sítí), nemůžete se připojit k prostředkům, které používají základní Load Balancer. Můžete se připojit k prostředkům, které používají Standard Load Balancer.
-Následující zdroje využívají základní nástroje pro vyrovnávání zatížení, což znamená, že nemůžete komunikovat s nimi v globálním partnerském vztahu virtuálních sítí:
+Pokud jsou dvě virtuální sítě ve dvou různých oblastech partnerského vztahu přes globální partnerský vztah VNet, nemůžete se připojit k prostředkům, které jsou za základní Load Balancer prostřednictvím IP adresy front-endu Load Balancer. Toto omezení pro Standard Load Balancer neexistuje.
+Následující prostředky můžou používat základní nástroje pro vyrovnávání zatížení, což znamená, že se k nim nemůžete dostat prostřednictvím IP adresy front-endu Load Balancer přes globální partnerský vztah virtuálních sítí. Můžete ale použít globální partnerský vztah virtuálních sítí k dosažení prostředků přímo prostřednictvím svých privátních IP adres, pokud je to povoleno. 
 - Virtuální počítače za základními nástroji pro vyrovnávání zatížení
 - Virtual Machine Scale Sets se základními nástroji pro vyrovnávání zatížení 
 - Redis Cache 
@@ -254,7 +254,7 @@ Následující zdroje využívají základní nástroje pro vyrovnávání zatí
 - Logic Apps
 - HDInsight
 -   Azure Batch
-- Prostředí App Service
+- App Service Environment
 
 K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
 
@@ -406,10 +406,10 @@ Celkový počet koncových bodů služby virtuální sítě ve virtuální síti
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
 |Trezor klíčů Azure|    127|
-|Azure Cosmos DB|   64|
-|Azure Event Hubs|   128|
+|Databáze Azure Cosmos|   64|
+|Centrum událostí Azure|   128|
 |Azure Service Bus| 128|
-|Azure Data Lake Store v1|  100|
+|Azure Data Lake Store V1|  100|
  
 >[!NOTE]
 > Tato omezení se vztahují na změny na uvážení služby Azure. Podrobnosti o službách najdete v příslušné dokumentaci ke službě. 

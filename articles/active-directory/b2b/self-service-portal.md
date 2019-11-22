@@ -1,5 +1,5 @@
 ---
-title: Registrační portál samoobslužné služby pro spolupráci B2B – Azure Active Directory | Dokumentace Microsoftu
+title: Samoobslužná registrace portálu pro spolupráci B2B – Azure AD
 description: Spolupráce B2B ve službě Azure Active Directory podporuje vaše vztahy s ostatními společnostmi tím, že vašim obchodním partnerům umožní selektivní přístup ke podnikovým aplikacím
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28db43a345fb29a7529136ddfb929f5a48ccb1f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785439"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272112"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Portál se samoobslužnou registrací pro spolupráci B2B služby Azure AD
 
@@ -30,7 +30,7 @@ Tento projekt na GitHubu ukazuje, jak můžou organizace použít rozhraní API,
 
 Tento kód je k dispozici jako ukázka použití rozhraní API pro pozvánky Azure Active Directory B2B. Váš tým vývojářů nebo partner by ho měl přizpůsobit a před nasazením do produkčního prostředí byste ho měli zkontrolovat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 * [Licencování spolupráce B2B ve službě Azure AD](licensing-guidance.md)

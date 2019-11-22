@@ -1,6 +1,6 @@
 ---
-title: Auditování a vytváření sestav uživatele spolupráce B2B – Azure Active Directory | Dokumentace Microsoftu
-description: Vlastnosti uživatele typu Host se dají konfigurovat v spolupráce Azure Active Directory s B2B
+title: Auditování a vytváření sestav uživatele spolupráce B2B – Azure AD
+description: Vlastnosti uživatele typu Host se dají konfigurovat v Azure Active Directory spolupráci B2B.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,32 +12,32 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 506721a23a5a18eaea76efaca61df49f20dc9228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812464"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273301"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditování a vytváření sestav uživatele spolupráce B2B
-Uživatelé typu Host máte podobné možnosti auditování s využitím členské uživatele. 
+U uživatelů typu host máte k dispozici možnosti auditování podobně jako u členských uživatelů. 
 
 ## <a name="access-reviews"></a>Kontroly přístupu
-Kontroly přístupu můžete pravidelně ověřovat, jestli uživatelé typu Host stále potřebují přístup k vašim prostředkům. **Kontrol přístupu** funkce je dostupná v **Azure Active Directory** pod **spravovat** > **organizační vztahy**. ("Kontroly přístupu" můžete vyhledat taky z **všechny služby** na webu Azure Portal.) Další informace o použití kontroly přístupu, najdete v článku [kontroly přístupu hostů spravovat pomocí služby Azure AD access](../governance/manage-guest-access-with-access-reviews.md).
+Pomocí kontrol přístupu můžete pravidelně ověřovat, jestli uživatelé typu Host stále potřebují přístup k vašim prostředkům. Funkce kontroly **přístupu** je dostupná v **Azure Active Directory** v části **Správa** > ch **vztahů organizace**. (Můžete také vyhledat "kontroly přístupu" ze **všech služeb** v Azure Portal.) Pokud chcete zjistit, jak používat kontroly přístupu, přečtěte si téma [Správa přístupu hostů pomocí kontrol přístupu Azure AD](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Auditování Azure AD protokoly poskytuje záznamy systémových a uživatelských aktivit, včetně aktivit iniciovaných uživatele typu Host. Pro přístup k protokolům auditu v **Azure Active Directory**v části **monitorování**vyberte **protokoly auditu**. Tady je příklad historie pozvánku a uplatnění pozvaného Sam Oogle:
+Protokoly auditu Azure AD poskytují záznamy o aktivitách systému a uživatelů, včetně aktivit iniciované uživateli typu Host. Chcete-li získat přístup k protokolům auditu, **Azure Active Directory**v části **monitorování**vyberte možnost **protokoly auditu**. Tady je příklad historie oznámení a uplatnění pro pozvání Sam Oogle:
 
-![Snímek obrazovky zobrazující a příklad auditu protokolu výstupu](./media/auditing-and-reporting/audit-log.png)
+![Snímek obrazovky s příkladem výstupu protokolu auditu](./media/auditing-and-reporting/audit-log.png)
 
-Můžete věnovat každá z těchto událostí, který obsahuje podrobné informace. Například Pojďme se podívat na podrobnosti přijetí.
+K získání podrobností můžete podrobně jednotlivé události. Řekněme například, že se podíváme na podrobnosti o přijetí.
 
-![Snímek obrazovky zobrazující a příklad výstupu podrobnosti aktivity](./media/auditing-and-reporting/activity-details.png)
+![Snímek obrazovky zobrazující výstup podrobností o aktivitě a ukázka](./media/auditing-and-reporting/activity-details.png)
 
-Můžete také exportovat tyto protokoly z Azure AD a získání přizpůsobených sestav pomocí vytváření sestav nástroje podle vašeho výběru.
+Tyto protokoly můžete také exportovat z Azure AD a pomocí nástroje pro vytváření sestav podle svého výběru získat přizpůsobené sestavy.
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
 - [Vlastnosti uživatele spolupráce B2B](user-properties.md)
 

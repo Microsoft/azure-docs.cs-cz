@@ -1,6 +1,6 @@
 ---
-title: Správa Azure CDN pomocí Powershellu | Dokumentace Microsoftu
-description: Další informace o použití rutin prostředí Azure PowerShell ke správě Azure CDN.
+title: Správa Azure CDN s využitím PowerShellu | Microsoft Docs
+description: Naučte se používat rutiny Azure PowerShell ke správě Azure CDN.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -12,61 +12,75 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 11/20/2019
 ms.author: magattus
-ms.openlocfilehash: 44274c2a46ce51e51d3d8f16d96a0b50c43a3aa1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 476779eff41cb9ce1c0a9c79430813ce9a39e91f
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593694"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286662"
 ---
-# <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN pomocí Powershellu
-PowerShell poskytuje jednu z metod nejflexibilnější ke správě koncových bodů a profilů CDN.  Interaktivně nebo psaní skriptů můžete použít PowerShell k automatizaci úloh správy.  Tento kurz ukazuje některé z nejčastějších úloh můžete provést pomocí Powershellu ke správě koncových bodů a profilů CDN.
+# <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN s využitím PowerShellu
+PowerShell poskytuje jednu z nejpružnější metod pro správu profilů a koncových bodů Azure CDN.  PowerShell můžete interaktivně používat nebo psát pomocí skriptů pro automatizaci úloh správy.  Tento kurz předvádí několik nejběžnějších úloh, které můžete s prostředím PowerShell využít ke správě Azure CDN profilů a koncových bodů.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Použití Powershellu ke správě koncových bodů a profilů CDN, musíte mít instalace modulu Azure Powershellu.  Další informace o instalaci prostředí Azure PowerShell a připojit se k Azure s využitím `Connect-AzAccount` rutiny, najdete v článku [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
+Pokud chcete ke správě Azure CDN profilů a koncových bodů použít PowerShell, musíte mít nainstalovaný modul Azure PowerShell.  Informace o tom, jak nainstalovat Azure PowerShell a připojit se k Azure pomocí rutiny `Connect-AzAccount`, najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview).
 
 > [!IMPORTANT]
-> Musíte se přihlásit pomocí `Connect-AzAccount` před spuštěním rutin prostředí Azure PowerShell.
+> Abyste mohli spouštět rutiny Azure PowerShell, musíte se přihlásit pomocí `Connect-AzAccount`.
 > 
 > 
 
-## <a name="listing-the-azure-cdn-cmdlets"></a>Seznam rutin Azure CDN
-Seznam všech rutin Azure CDN pomocí `Get-Command` rutiny.
+## <a name="listing-the-azure-cdn-cmdlets"></a>Výpis rutin Azure CDN
+Pomocí rutiny `Get-Command` můžete vypsat všechny rutiny Azure CDN.
 
 ```text
 PS C:\> Get-Command -Module Az.Cdn
 
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Cmdlet          Get-AzCdnCustomDomain                         2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnEndpoint                             2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnEndpointNameAvailability             2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnOrigin                               2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnProfile                              2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnProfileSsoUrl                        2.0.0      Az.Cdn
-Cmdlet          New-AzCdnCustomDomain                         2.0.0      Az.Cdn
-Cmdlet          New-AzCdnEndpoint                             2.0.0      Az.Cdn
-Cmdlet          New-AzCdnProfile                              2.0.0      Az.Cdn
-Cmdlet          Publish-AzCdnEndpointContent                  2.0.0      Az.Cdn
-Cmdlet          Remove-AzCdnCustomDomain                      2.0.0      Az.Cdn
-Cmdlet          Remove-AzCdnEndpoint                          2.0.0      Az.Cdn
-Cmdlet          Remove-AzCdnProfile                           2.0.0      Az.Cdn
-Cmdlet          Set-AzCdnEndpoint                             2.0.0      Az.Cdn
-Cmdlet          Set-AzCdnOrigin                               2.0.0      Az.Cdn
-Cmdlet          Set-AzCdnProfile                              2.0.0      Az.Cdn
-Cmdlet          Start-AzCdnEndpoint                           2.0.0      Az.Cdn
-Cmdlet          Stop-AzCdnEndpoint                            2.0.0      Az.Cdn
-Cmdlet          Test-AzCdnCustomDomain                        2.0.0      Az.Cdn
-Cmdlet          Unpublish-AzCdnEndpointContent                2.0.0      Az.Cdn
+Cmdlet          Confirm-AzCdnEndpointProbeURL                      1.4.0      Az.Cdn
+Cmdlet          Disable-AzCdnCustomDomain                          1.4.0      Az.Cdn
+Cmdlet          Disable-AzCdnCustomDomainHttps                     1.4.0      Az.Cdn
+Cmdlet          Enable-AzCdnCustomDomain                           1.4.0      Az.Cdn
+Cmdlet          Enable-AzCdnCustomDomainHttps                      1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnCustomDomain                              1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnEdgeNode                                  1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnEndpoint                                  1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnEndpointNameAvailability                  1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnEndpointResourceUsage                     1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnOrigin                                    1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnProfile                                   1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnProfileResourceUsage                      1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnProfileSsoUrl                             1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnProfileSupportedOptimizationType          1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnSubscriptionResourceUsage                 1.4.0      Az.Cdn
+Cmdlet          New-AzCdnCustomDomain                              1.4.0      Az.Cdn
+Cmdlet          New-AzCdnDeliveryPolicy                            1.4.0      Az.Cdn
+Cmdlet          New-AzCdnDeliveryRule                              1.4.0      Az.Cdn
+Cmdlet          New-AzCdnDeliveryRuleAction                        1.4.0      Az.Cdn
+Cmdlet          New-AzCdnDeliveryRuleCondition                     1.4.0      Az.Cdn
+Cmdlet          New-AzCdnEndpoint                                  1.4.0      Az.Cdn
+Cmdlet          New-AzCdnProfile                                   1.4.0      Az.Cdn
+Cmdlet          Publish-AzCdnEndpointContent                       1.4.0      Az.Cdn
+Cmdlet          Remove-AzCdnCustomDomain                           1.4.0      Az.Cdn
+Cmdlet          Remove-AzCdnEndpoint                               1.4.0      Az.Cdn
+Cmdlet          Remove-AzCdnProfile                                1.4.0      Az.Cdn
+Cmdlet          Set-AzCdnEndpoint                                  1.4.0      Az.Cdn
+Cmdlet          Set-AzCdnOrigin                                    1.4.0      Az.Cdn
+Cmdlet          Set-AzCdnProfile                                   1.4.0      Az.Cdn
+Cmdlet          Start-AzCdnEndpoint                                1.4.0      Az.Cdn
+Cmdlet          Stop-AzCdnEndpoint                                 1.4.0      Az.Cdn
+Cmdlet          Test-AzCdnCustomDomain                             1.4.0      Az.Cdn
+Cmdlet          Unpublish-AzCdnEndpointContent                     1.4.0      Az.Cdn
 ```
 
 ## <a name="getting-help"></a>Získání nápovědy
-Můžete získat pomoc s některou z těchto rutin pomocí `Get-Help` rutiny.  `Get-Help` poskytuje syntaxi a použití a volitelně zobrazuje příklady.
+Pomocí rutiny `Get-Help` můžete získat pomoc s kteroukoli z těchto rutin.  `Get-Help` poskytuje použití a syntaxi a volitelně ukazuje příklady.
 
 ```text
 PS C:\> Get-Help Get-AzCdnProfile
@@ -96,14 +110,14 @@ REMARKS
 
 ```
 
-## <a name="listing-existing-azure-cdn-profiles"></a>Výpis existujících profilů Azure CDN
-`Get-AzCdnProfile` Rutiny bez parametrů obnoví všechny vaše stávající profily CDN.
+## <a name="listing-existing-azure-cdn-profiles"></a>Výpis stávajících profilů Azure CDN
+Rutina `Get-AzCdnProfile` bez parametrů načte všechny vaše stávající profily CDN.
 
 ```powershell
 Get-AzCdnProfile
 ```
 
-Tento výstup lze přesměrovat na rutiny pro výčet.
+Tento výstup lze přesměrovat do rutin pro výčet.
 
 ```powershell
 # Output the name of all profiles on this subscription.
@@ -113,19 +127,19 @@ Get-AzCdnProfile | ForEach-Object { Write-Host $_.Name }
 Get-AzCdnProfile | Where-Object { $_.Sku.Name -eq "Standard_Verizon" }
 ```
 
-Můžete se taky vrátit jeden profil tak, že zadáte profil a skupinou prostředků.
+Můžete také vrátit jeden profil zadáním názvu profilu a skupiny prostředků.
 
 ```powershell
 Get-AzCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 ```
 
 > [!TIP]
-> Je možné mít víc profilů CDN se stejným názvem, tak dlouho, dokud jsou v různých skupinách prostředků.  Vynechání `ResourceGroupName` parametr vrátí všechny profily s odpovídajícím názvem.
+> Je možné mít několik profilů CDN se stejným názvem, pokud jsou v různých skupinách prostředků.  Vynechání parametru `ResourceGroupName` vrátí všechny profily se shodným názvem.
 > 
 > 
 
-## <a name="listing-existing-cdn-endpoints"></a>Výpis stávající koncové body CDN
-`Get-AzCdnEndpoint` můžete načíst koncový bod jednotlivých nebo všechny koncové body v profilu.  
+## <a name="listing-existing-cdn-endpoints"></a>Výpis stávajících koncových bodů CDN
+`Get-AzCdnEndpoint` může načíst jednotlivý koncový bod nebo všechny koncové body v profilu.  
 
 ```powershell
 # Get a single endpoint.
@@ -141,8 +155,8 @@ Get-AzCdnProfile | Get-AzCdnEndpoint
 Get-AzCdnProfile | Get-AzCdnEndpoint | Where-Object { $_.ResourceState -eq "Running" }
 ```
 
-## <a name="creating-cdn-profiles-and-endpoints"></a>Vytváření koncových bodů a profilů CDN
-`New-AzCdnProfile` a `New-AzCdnEndpoint` se používají k vytváření koncových bodů a profilů CDN. Podporují se následující SKU:
+## <a name="creating-cdn-profiles-and-endpoints"></a>Vytváření profilů a koncových bodů CDN
+`New-AzCdnProfile` a `New-AzCdnEndpoint` se používají k vytváření profilů a koncových bodů CDN. Podporovány jsou následující SKU:
 - Standard_Verizon
 - Premium_Verizon
 - Custom_Verizon
@@ -162,8 +176,8 @@ New-AzCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku Stan
 
 ```
 
-## <a name="checking-endpoint-name-availability"></a>Kontrola dostupnosti názvu koncového bodu
-`Get-AzCdnEndpointNameAvailability` Vrátí objekt označující, zda je k dispozici název koncového bodu.
+## <a name="checking-endpoint-name-availability"></a>Kontroluje se dostupnost názvu koncového bodu.
+`Get-AzCdnEndpointNameAvailability` vrátí objekt, který označuje, zda je k dispozici název koncového bodu.
 
 ```powershell
 # Retrieve availability
@@ -175,10 +189,10 @@ Else { Write-Host "No, that endpoint name is not available." }
 ```
 
 ## <a name="adding-a-custom-domain"></a>Přidání vlastní domény
-`New-AzCdnCustomDomain` Přidá název vlastní domény do existující koncový bod.
+`New-AzCdnCustomDomain` přidá vlastní název domény do existujícího koncového bodu.
 
 > [!IMPORTANT]
-> Musíte vytvořit záznam CNAME u svého poskytovatele DNS jak je popsáno v [jak namapovat vlastní doménu na koncový bod Content Delivery Network (CDN)](cdn-map-content-to-custom-domain.md).  Můžete testovat mapování před změnou vašeho koncového bodu pomocí `Test-AzCdnCustomDomain`.
+> CNAME musíte nastavit poskytovatelem DNS, jak je popsáno v tématu [Postup mapování vlastní domény na koncový bod Content Delivery Network (CDN)](cdn-map-content-to-custom-domain.md).  Mapování můžete otestovat před změnou koncového bodu pomocí `Test-AzCdnCustomDomain`.
 > 
 > 
 
@@ -193,8 +207,8 @@ $result = Test-AzCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName "c
 If($result.CustomDomainValidated){ New-AzCdnCustomDomain -CustomDomainName Contoso -HostName "cdn.contoso.com" -CdnEndpoint $endpoint }
 ```
 
-## <a name="modifying-an-endpoint"></a>Změna koncového bodu
-`Set-AzCdnEndpoint` upravuje existující koncový bod.
+## <a name="modifying-an-endpoint"></a>Úprava koncového bodu
+`Set-AzCdnEndpoint` upraví existující koncový bod.
 
 ```powershell
 # Get an existing endpoint
@@ -208,8 +222,8 @@ $endpoint.ContentTypesToCompress = "text/javascript","text/css","application/jso
 Set-AzCdnEndpoint -CdnEndpoint $endpoint
 ```
 
-## <a name="purgingpre-loading-cdn-assets"></a>Vymazání/Předprodukčním-loading CDN prostředky
-`Unpublish-AzCdnEndpointContent` Vymazat do mezipaměti prostředky, zatímco `Publish-AzCdnEndpointContent` předběžné načtení prostředků v podporovaných koncových bodů.
+## <a name="purgingpre-loading-cdn-assets"></a>Vyprazdňování a předběžné načítání prostředků CDN
+`Unpublish-AzCdnEndpointContent` vyprázdnit assety uložené v mezipaměti, zatímco `Publish-AzCdnEndpointContent` předem načtené prostředky na podporované koncové body.
 
 ```powershell
 # Purge some assets.
@@ -222,8 +236,8 @@ Publish-AzCdnEndpointContent -ProfileName CdnDemo -ResourceGroupName CdnDemoRG -
 Get-AzCdnProfile | Get-AzCdnEndpoint | Unpublish-AzCdnEndpointContent -PurgeContent "/images/*"
 ```
 
-## <a name="startingstopping-cdn-endpoints"></a>Koncové body CDN spuštění/zastavení
-`Start-AzCdnEndpoint` a `Stop-AzCdnEndpoint` umožňuje spouštět a zastavovat jednotlivé koncové body nebo skupiny koncových bodů.
+## <a name="startingstopping-cdn-endpoints"></a>Spouštění/zastavování koncových bodů CDN
+`Start-AzCdnEndpoint` a `Stop-AzCdnEndpoint` lze použít ke spuštění a zastavení jednotlivých koncových bodů nebo skupin koncových bodů.
 
 ```powershell
 # Stop the cdndocdemo endpoint
@@ -236,8 +250,31 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Stop-AzCdnEndpoint
 Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
 ```
 
-## <a name="deleting-cdn-resources"></a>Odstranění prostředků CDN
-`Remove-AzCdnProfile` a `Remove-AzCdnEndpoint` slouží k odstranění koncových bodů a profilů.
+## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>Vytváření zásad modulu pro standardní pravidla a použití pro existující koncový bod CDN
+`New-AzCdnDeliveryRule`, `New=AzCdnDeliveryRuleCondition`a `New-AzCdnDeliveryRuleAction` lze použít ke konfiguraci modulu Azure CDN Standard Rules on Azure CDN z profilů společnosti Microsoft. 
+
+```powershell
+# Create a new http to https redirect rule
+$Condition=New-AzCdnDeliveryRuleCondition -MatchVariable RequestProtocol -Operator Equal -MatchValue HTTP
+$Action=New-AzCdnDeliveryRuleAction -RedirectType Found -DestinationProtocol HTTPS
+$HttpToHttpsRedirectRule=New-AzCdnDeliveryRule -Name "HttpToHttpsRedirectRule" -Order 2 -Condition $Condition -Action $Action
+
+# Create a path based Response header modification rule. 
+$Cond1=New-AzCdnDeliveryRuleCondition -MatchVariable UrlPath -Operator BeginsWith -MatchValue "/images/"
+$Action1=New-AzCdnDeliveryRuleAction -HeaderActionType ModifyResponseHeader -Action Overwrite -HeaderName "Access-Control-Allow-Origin" -Value "*"
+$PathBasedCacheOverrideRule=New-AzCdnDeliveryRule -Name "PathBasedCacheOverride" -Order 1 -Condition $Cond1 -Action $action1
+
+# Create a delivery policy with above deliveryRules.
+$Policy = New-AzCdnDeliveryPolicy -Description "DeliveryPolicy" -Rule $HttpToHttpsRedirectRule,$UrlRewriteRule
+
+# Update existing endpoint with created delivery policy
+$ep = Get-AzCdnEndpoint -EndpointName cdndocdemo -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
+$ep.DeliveryPolicy = $Policy
+Set-AzCdnEndpoint -CdnEndpoint $ep
+```
+
+## <a name="deleting-cdn-resources"></a>Odstraňují se prostředky CDN
+k odebrání profilů a koncových bodů lze použít `Remove-AzCdnProfile` a `Remove-AzCdnEndpoint`.
 
 ```powershell
 # Remove a single endpoint
@@ -253,5 +290,5 @@ Remove-AzCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si informace o automatizaci Azure CDN s [.NET](cdn-app-dev-net.md) nebo [Node.js](cdn-app-dev-node.md).
 
-Další informace o funkcích CDN, najdete v článku [přehled sítě CDN](cdn-overview.md).
+Další informace o funkcích CDN najdete v tématu [Přehled CDN](cdn-overview.md).
 

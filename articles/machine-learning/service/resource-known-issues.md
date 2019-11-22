@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619787"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286983"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -25,7 +25,7 @@ Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým došl
 
 Azure COMPUTE bude aktualizovat skladové položky NCv3 počínaje začátkem listopadu 2019, aby podporovaly všechny MPI implementace a verze, a operace RDMA pro virtuální počítače s podporou InfiniBand. To bude vyžadovat krátké výpadky. [Další informace o upgradu SR-IOV najdete v tématu](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
-Jako zákazník z nabídky spravované COMPUTE (AmlCompute) Azure Machine Learning nemusíte v tuto chvíli provádět žádné změny. Na základě [plánu aktualizací](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) byste museli naplánovat krátké přerušení školení. Služba bude mít za úkol, aby na uzlech clusteru aktualizovala image virtuálních počítačů a automaticky nastavila horizontální navýšení kapacity clusteru. Po dokončení upgradu může být možné použít všechny ostatní MPI discibutions (například OpenMP s Pytorch), kromě toho, že se zvyšuje šířka pásma InfiniBand, nižší latence a lepší výkon distribuovaných aplikací.
+Jako zákazník z nabídky spravované COMPUTE (AmlCompute) Azure Machine Learning nemusíte v tuto chvíli provádět žádné změny. Na základě [plánu aktualizací](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) byste museli naplánovat krátké přerušení školení. Služba bude mít za úkol, aby na uzlech clusteru aktualizovala image virtuálních počítačů a automaticky nastavila horizontální navýšení kapacity clusteru. Po dokončení upgradu může být možné použít všechny ostatní MPI distribuce (například OpenMP s Pytorch), kromě toho, že se zvyšuje větší šířka pásma InfiniBand, nižší latence a lepší výkon distribuovaných aplikací.
 
 ## <a name="azure-machine-learning-designer-issues"></a>Problémy s návrhářem Azure Machine Learning
 
@@ -44,11 +44,11 @@ Před opravou můžete datovou sadu připojit k jakémukoli modulu transformace 
 
 Následující obrázek ukazuje, jak: ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
 
-## <a name="sdk-installation-issues"></a>Problémy s instalací sady SDK
+## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
 
-**Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
+**Chybová zpráva: "PyYAML" nelze odinstalovat.**
 
-Azure Machine Learning SDK pro Python: PyYAML je distutils nainstalovaný projekt. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK a tuto chybu ignorovat, použijte:
+Azure Machine Learning SDK pro Python: PyYAML je projekt distutils nainstalované. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -62,13 +62,13 @@ conda create -n <env-name> python=3.7.3
 ```
 Díky tomu vytvoří prostředí conda s využitím Pythonu 3.7.3, ve kterém není problém instalace přítomen v 3.7.4.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Problémy při vytváření Azure Machine Learning COMPUTE
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Problémy s vytvářením, Azure Machine Learning Compute
 
-Je pravděpodobné, že někteří uživatelé, kteří vytvořili svůj Azure Machine Learning pracovní prostor z Azure Portal před vydáním GA, nemusí být schopni vytvořit Azure Machine Learning COMPUTE v daném pracovním prostoru. Můžete buď vyvolat žádost o podporu na službu, nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo sadu SDK pro okamžité odblokování.
+Je vzácné pravděpodobné, že někteří uživatelé, kteří si vytvořili jejich pracovního prostoru Azure Machine Learning z portálu Azure portal před verze GA nemusí být možné vytvořit Azure Machine Learning Compute v daném pracovním prostoru. Můžete zvýšit žádost o podporu na službu nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo pomocí sady SDK pro odblokování sami okamžitě.
 
-## <a name="image-building-failure"></a>Chyba při vytváření obrázku
+## <a name="image-building-failure"></a>Chyba vytváření bitové kopie
 
-Při nasazování webové služby došlo k chybě sestavení obrázku. Alternativním řešením je přidat "pynacl = = 1.2.1" jako závislost PIP k souboru conda pro konfiguraci bitové kopie.
+Obrázek po nasazení webové služby vytvářet selhání. Alternativním řešením je přidat "pynacl == 1.2.1" jako pip závislosti systému Conda v souboru konfigurace image.
 
 ## <a name="deployment-failure"></a>Selhání nasazení
 
@@ -76,7 +76,7 @@ Pokud zjistíte `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died 
 
 ## <a name="fpgas"></a>FPGA
 
-Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai
+Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
@@ -108,11 +108,11 @@ pip install --upgrade azureml-dataprep
 
 ## <a name="databricks"></a>Databricks
 
-Datacihly a Azure Machine Learning problémy.
+Problémy s Databricks a Azure Machine Learning.
 
 ### <a name="failure-when-installing-packages"></a>Chyba při instalaci balíčků
 
-Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, například `psutil`, můžou způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
+Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -161,11 +161,11 @@ Pokud se při čtení dat v clusteru Azure Databricks zobrazí chyba `FailToSend
 
 ## <a name="azure-portal"></a>portál Azure
 
-Pokud přejdete přímo k pracovnímu prostoru z odkazu pro sdílení ze sady SDK nebo portálu, nebudete moci zobrazit stránku normální přehled s informacemi o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledat název pracovního prostoru.
+Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledat název pracovního prostoru.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-V některých případech může být užitečné, pokud při dotazování na nápovědu poskytnete diagnostické informace. Pokud chcete zobrazit některé protokoly, přejděte na web [Azure Machine Learning Studio](https://ml.azure.com) , přejděte do svého pracovního prostoru a vyberte **pracovní prostor > experiment > Spustit protokoly >** .  
+V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Pokud chcete zobrazit některé protokoly, přejděte na web [Azure Machine Learning Studio](https://ml.azure.com) , přejděte do svého pracovního prostoru a vyberte **pracovní prostor > experiment > Spustit protokoly >** .  
 
 > [!NOTE]
 > Azure Machine Learning v průběhu školení protokolovat informace z nejrůznějších zdrojů, jako je například AutoML nebo kontejner Docker, který spouští školicí úlohu. Mnohé z těchto protokolů nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
@@ -178,7 +178,7 @@ Některé z těchto akcí se zobrazí v oblasti __aktivity__ pracovního prostor
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
-Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými se můžete setkat při práci s Azure Machine Learning.
+Další informace o [kvóty prostředků](how-to-manage-quotas.md) můžete setkat při práci se službou Azure Machine Learning.
 
 ## <a name="authentication-errors"></a>Chyby ověřování
 
@@ -264,7 +264,7 @@ Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušné
 Tato výjimka by se měla nacházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK můžete použít `run.get_details()` k zobrazení chybové zprávy. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript, opravte chybu a zkuste to znovu. 
 
 ### <a name="horovod-is-shutdown"></a>Horovod je vypnutý.
-Ve většině případů tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů `_rank` s příponou, aby bylo snazší odlišit protokoly. Pokud chcete najít přesnou chybu, která způsobila vypnutí horovod, Projděte všechny soubory protokolů a hledejte `Traceback` na konci souborů driver_log. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
+Ve většině případů tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů `_rank` s příponou, aby bylo snazší odlišit protokoly. Pokud chcete najít přesnou chybu, která způsobila vypnutí horovod, Projděte všechny soubory protokolů a hledejte `Traceback` na konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
 
 ## <a name="labeling-projects-issues"></a>Problémy s označováním projektů
 

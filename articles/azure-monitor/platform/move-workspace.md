@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: fd7ff7aa2275defba57aa24b5ef0b9adc78a5355
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093784"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278790"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
@@ -29,17 +29,17 @@ Zdrojové a cílové odběry pracovního prostoru musí existovat v rámci stejn
 (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
 ```
 
-## <a name="remove-solutions"></a>Odebrat řešení
-Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se přesunou pomocí operace přesunu pracovního prostoru Log Analytics. Vzhledem k tomu, že je nutné odebrat odkaz z pracovního prostoru na libovolný účet služby Automation, je třeba odebrat řešení, která spoléhají na tento odkaz.
+## <a name="workspace-move-considerations"></a>Požadavky na přesun v pracovním prostoru
+Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se přesunou pomocí operace přesunu pracovního prostoru Log Analytics. Připojení agenti zůstanou připojeni a po přesunutí budou data v pracovním prostoru posílat. Vzhledem k tomu, že operace přesunutí vyžaduje, aby z pracovního prostoru nebylo žádný odkaz na žádný účet Automation, je nutné odebrat řešení, která tento odkaz spoléhají.
 
-Mezi řešení, která je nutné odebrat, patří následující: 
+Řešení, která je potřeba odebrat, než budete moct zrušit propojení svého účtu Automation:
 
 - Update Management
 - Sledování změn
 - Spuštění/zastavení virtuálních počítačů mimo špičku
 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="delete-in-azure-portal"></a>Odstranění na webu Azure Portal
 K odebrání řešení pomocí Azure Portal použijte následující postup:
 
 1. Otevřete nabídku pro skupinu prostředků, ve které jsou nainstalována nějaká řešení.
@@ -48,7 +48,7 @@ K odebrání řešení pomocí Azure Portal použijte následující postup:
 
 ![Odstranit řešení](media/move-workspace/delete-solutions.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="delete-using-powershell"></a>Odstranění pomocí PowerShellu
 
 Pokud chcete řešení odebrat pomocí prostředí PowerShell, použijte rutinu [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) , jak je znázorněno v následujícím příkladu:
 
@@ -58,7 +58,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-## <a name="remove-alert-rules"></a>Odebrat pravidla upozornění
+### <a name="remove-alert-rules"></a>Odebrat pravidla upozornění
 Pro řešení **spouštění a zastavování virtuálních počítačů** je také potřeba odebrat pravidla upozornění vytvořená řešením. Tato pravidla odeberete pomocí následujícího postupu v Azure Portal.
 
 1. Otevřete nabídku **monitorování** a pak vyberte **výstrahy**.

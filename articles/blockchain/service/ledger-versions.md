@@ -1,21 +1,21 @@
 ---
-title: Verze v hlavní knize služby Azure blockchain, opravy a upgrade
+title: Verze hlavní knihy služeb Azure blockchain, opravy, aktualizace &
 description: Přehled podporovaných verzí v hlavní knize ve službě Azure blockchain, včetně zásad týkajících se oprav systémů a počítačů spravovaných systémem a uživatelem spravovaných upgradů.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 16d0f0876e7d75dfd0266468ddc3005b86fc632f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 03eaf86ece191cce7eef6647a582a66495692db2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579800"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284928"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Podporované verze hlavní knihy služby Azure blockchain
 
@@ -27,7 +27,7 @@ V současné době služba Azure blockchain podporuje [kvorum verze 2.2.3](https
 
 Správa verzí v kvoru se provádí prostřednictvím hlavní, vedlejší a opravné verze. Pokud je například kvorum verze 2.0.1, typ verze bude zařazen následovně:
 
-|Hlavní | Moll  | Použita  |
+|Hlavní | Podverze  | Použita  |
 | :--- | :----- | :----- |
 | 2 | 0 | 1 | 
 

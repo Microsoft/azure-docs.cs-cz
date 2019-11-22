@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6234a13d07ac024849d1c890d82ef03e19c11af4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011999"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280859"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -45,7 +45,7 @@ Vzory pomocí kombinace technologií předpovědi. Nastavení pro šablony utter
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Vzory nezlepšují detekci entit zjištěné počítačem
 
-Vzor je primárně určen pro lepší předpověď záměrů a rolí. Vzor. Každá entita se používá k extrakci entit volných formulářů. I když vzory používají entity, vzor nedokáže detekovat entitu získanou počítačem.  
+Vzor je primárně určen pro lepší předpověď záměrů a rolí. _Vzor. Každá_ entita se používá k extrakci entit volných formulářů. I když vzory používají entity, vzor nedokáže detekovat entitu získanou počítačem.  
 
 Neočekává se, že se lepší předpověď entity zobrazí, pokud sbalíte více projevy do jediného vzoru. Aby bylo možné jednoduché entity aktivovat, je nutné přidat projevy nebo použít entity seznamu jinak se váš vzor neaktivuje.
 
@@ -64,7 +64,7 @@ Můžete vytvořit aplikaci s záměry, které nemají žádný vzorový projevy
 ## <a name="best-practices"></a>Osvědčené postupy
 Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).
 
-## <a name="pattern-syntax"></a>Vzor syntaxe
+## <a name="pattern-syntax"></a>Syntaxe vzoru
 
 Přečtěte si syntaxi vzorů z [odkazu syntaxe vzoru](reference-pattern-syntax.md). 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití možnosti přejít k volání rozhraní API pro analýzu textu'
+title: 'Rychlý start: Volání rozhraní API pro analýzu textu pomocí Go'
 titleSuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 5c97648bd11a506d3c818584ed7d82d0a12d2e2c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: d833293d094837c164da855aef197ad927c60ad7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387491"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286523"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití možnosti přejít k volání služby Analýza textu rozpoznávání 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services s využitím Go 
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [Analýza textu rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) s využitím funkce Přejít.
+V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [Analýza textu rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí funkce Přejít.
 
-Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,11 +33,11 @@ Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní A
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Zjistit jazyk
+## <a name="detect-language"></a>Zjištění jazyka
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
+1. Pro koncový bod a klíč předplatného prostředku vytvořte proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
 1. Uložte soubor s příponou .go.
@@ -178,7 +178,7 @@ func main() {
 
 Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
 
-1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
+1. Pro koncový bod a klíč předplatného prostředku vytvořte proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
 1. Uložte soubor s příponou .go.
@@ -290,11 +290,11 @@ Výsledek je měřen jako kladný, pokud je skóre zaokrouhleno na 1,0 a záporn
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Extrahovat klíčové fráze
+## <a name="extract-key-phrases"></a>Extrakce klíčových frází
 
 Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
-1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
+1. Pro koncový bod a klíč předplatného prostředku vytvořte proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
 1. Uložte soubor s příponou .go.
@@ -428,9 +428,9 @@ func main() {
 
 ## <a name="identify-entities"></a>Identifikace entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je. `https://en.wikipedia.org/wiki/United_States`  Následující příklad identifikuje entity pro anglické dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je `https://en.wikipedia.org/wiki/United_States`.  Následující příklad identifikuje entity pro anglické dokumenty.
 
-1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
+1. Pro koncový bod a klíč předplatného prostředku vytvořte proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
 1. Uložte soubor s příponou .go.
@@ -572,7 +572,7 @@ func main() {
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

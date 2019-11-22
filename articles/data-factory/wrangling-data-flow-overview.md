@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7b46b1108246f0b83fcfce69844d19d01b1994c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e36cc044e6a4160d16f15b93d8a88d946f476c89
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665653"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287098"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Co jsou toky dat tahání?
 
@@ -37,6 +37,30 @@ Integrátory dat občana stráví více než 60% času hledáním a přípravou 
 ### <a name="data-validation"></a>Ověření dat
 
 Vizuálně naskenujte vaše data způsobem bez kódu, abyste mohli odebrat jakékoli odlehlé hodnoty, anomálie a odpovídat na obrazec pro rychlou analýzu.
+
+## <a name="supported-sources"></a>Podporované zdroje
+
+| Konektor | Formát dat | Typ ověřování |
+| -- | -- | --|
+| [Azure Blob Storage](connector-azure-blob-storage.md) | SDÍLENÝ SVAZEK CLUSTERU | Klíč účtu |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | SDÍLENÝ SVAZEK CLUSTERU | Instanční objekt |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | SDÍLENÝ SVAZEK CLUSTERU | Klíč účtu, instanční objekt |
+| [Azure SQL Database](connector-azure-sql-database.md) | - | Ověřování pomocí SQL |
+| [Azure synapse Analytics](connector-azure-sql-data-warehouse.md) | - | Ověřování pomocí SQL |
+
+## <a name="the-mashup-editor"></a>Editor hybridní webové aplikace
+
+Při vytváření toku dat tahání se všechny zdrojové datové sady stanou dotazy datových sad a jsou umístěné ve složce **ADFResource** . Ve výchozím nastavení bude UserQuery ukazovat na první dotaz DataSet. Všechny transformace by se měly provádět na UserQuery, protože změny dotazů na datovou sadu se nepodporují, ani nebudou trvalé. Přejmenování, přidání a odstranění dotazů není aktuálně podporováno.
+
+![Tahání](media/wrangling-data-flow/editor.png)
+
+V současné době nejsou všechny funkce Power Query M podporovány pro tahání dat, přestože jsou k dispozici při vytváření obsahu. Při sestavování datových toků tahání se zobrazí výzva s následující chybovou zprávou, pokud funkce není podporována:
+
+`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+
+Další informace o podporovaných transformacích najdete v tématu [tahání data Flow Functions](wrangling-data-flow-functions.md).
+
+Datový tok aktuálně tahání podporuje zápis pouze do jedné jímky.
 
 ## <a name="next-steps"></a>Další kroky
 

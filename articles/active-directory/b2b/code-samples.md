@@ -1,5 +1,5 @@
 ---
-title: B2B kód pro spolupráci a ukázky prostředí PowerShell – Azure Active Directory | Dokumentace Microsoftu
+title: Kód spolupráce B2B a ukázky prostředí PowerShell – Azure AD
 description: Kód a ukázky PowerShellu pro spolupráci B2B služby Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79352c2c82cae8fe77ef6313d74e60432c710ec0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f3a43ce4c560e89d88594d173aae7b2ad2db99ee
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812508"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273096"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kód a ukázky PowerShellu spolupráce B2B služby Azure Active Directory
 
@@ -229,7 +229,7 @@ namespace SampleInviteApp
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 

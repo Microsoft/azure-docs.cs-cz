@@ -1,23 +1,21 @@
 ---
-title: Vytvoření prostoru vývoje Kubernetes v cloudu pomocí Javy a VS Code
-titleSuffix: Azure Dev Spaces
+title: Vytvoření Kubernetes vývojového prostoru v cloudu pomocí jazyka Java a VS Code
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: ec1c2b385797b1219814e584a9db7da82d111e2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
-ms.translationtype: MT
+ms.openlocfilehash: 8e5d1c070b3c8320a97ab4345cb8c5c12118d0af
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704091"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280227"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-java"></a>Začínáme s Azure Dev prostory s Javou
+# <a name="get-started-on-azure-dev-spaces-with-java"></a>Začínáme s Azure Dev Spaces pomocí Java
 
 V tomto průvodci se naučíte:
 
@@ -26,7 +24,7 @@ V tomto průvodci se naučíte:
 - Produktivně vyvíjet a testovat kód v týmovém prostředí
 
 > [!Note]
-> **Pokud jste zablokuje** kdykoli, najdete v článku [Poradce při potížích s](troubleshooting.md) oddílu.
+> **Pokud se vám pozastavila** kdykoli, přečtěte si část [Poradce při potížích](troubleshooting.md) .
 
 ## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -56,7 +54,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Vytvoření clusteru Kubernetes s podporou Azure Dev Spaces
 
-Na příkazovém řádku, vytvořte skupinu prostředků [oblast, která podporuje Azure Dev prostory][supported-regions].
+V příkazovém řádku vytvořte skupinu prostředků v [oblasti, která podporuje Azure dev Spaces][supported-regions].
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -79,7 +77,7 @@ Zadejte následující příkaz Azure CLI se skupinou prostředků, která obsah
    ```
 
 > [!IMPORTANT]
-> Proces konfigurace Azure Dev mezery se odeberou `azds` oboru názvů v clusteru, pokud existuje.
+> Proces konfigurace Azure Dev Spaces odstraní obor názvů `azds` v clusteru, pokud existuje.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>Získání ladění Kubernetes pro VS Code
 Výkonné funkce, jako je ladění Kubernetes, jsou prostřednictvím editoru VS Code k dispozici vývojářům .NET Core a Node.js.
@@ -113,7 +111,7 @@ Příkaz Azure CLI `azds prep` vygeneruje prostředky Dockeru a Kubernetes s vý
 
 Celému obsahu těchto souborů prozatím rozumět nemusíte. Stojí však za zmínku, že **stejné prostředky konfigurace jako kódu pro Kubernetes a Docker můžete používat v různých fázích od vývoje až po produkci, takže si napříč různými prostředími zajistíte lepší konzistentnost**.
  
-Příkaz `prep` také vygeneruje soubor s názvem `./azds.yaml`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.
+Příkaz `./azds.yaml` také vygeneruje soubor s názvem `prep`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 Teď spustíme náš kód! V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend:
@@ -141,18 +139,18 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Identifikace veřejné adresy URL pro službu ve výstupu `up` příkazu. Končí na `.azds.io`. V předchozím příkladu je veřejnou adresu URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Identifikujte veřejnou adresu URL pro službu ve výstupu příkazu `up`. Končí `.azds.io`. Ve výše uvedeném příkladu je veřejná adresa URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
 
-Pokud chcete zobrazit webovou aplikaci, otevřete veřejnou adresu URL v prohlížeči. Všimněte si také, `stdout` a `stderr` streamuje výstup do *azds trasování* okno terminálu při interakci s vaší webovou aplikací. Potěší vás také informace o sledování požadavků HTTP, které procházejí systému. Díky tomu je snadněji sledovat komplexní volání víc služeb během vývoje. Instrumentace přidal Dev prostory poskytuje této žádosti sledování.
+Webovou aplikaci zobrazíte otevřením veřejné adresy URL v prohlížeči. Všimněte si také, že `stdout` a `stderr` výstup se streamuje do okna *azds Trace* Terminal při interakci s webovou aplikací. V případě, že procházejí systémem, uvidíte také informace o sledování požadavků HTTP. Díky tomu je snazší sledovat komplexní volání více služeb během vývoje. Toto sledování požadavků poskytuje instrumentace, kterou přidávají vývojové prostory.
 
 > [!Note]
-> Kromě veřejné adresy URL, můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Azure Dev prostory používá Kubernetes *port vpřed* funkce, které mapují port místního hostitele do kontejneru ve službě AKS. To usnadňuje práci se službou z místního počítače.
+> Kromě veřejné adresy URL můžete použít alternativní `http://localhost:<portnumber>` URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Azure Dev Spaces používá k namapování portu localhost na kontejner spuštěný v AKS funkci Kubernetes pro *přeposílání portů* . To usnadňuje interakci se službou z místního počítače.
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
-1. V okně terminálu stiskněte `Ctrl+C` (kvůli zastavení `azds up`).
-1. Otevřít `src/main/java/com/ms/sample/webfrontend/Application.java`a upravit zprávu s pozdravem na [řádek 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
+1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
+1. Otevřete `src/main/java/com/ms/sample/webfrontend/Application.java`a upravte zprávu pozdravu na [řádku 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
 
     ```java
     return "Hello from webfrontend in Azure!";
@@ -172,7 +170,7 @@ V této části použijete editor VS Code k přímému ladění kontejneru spuš
 ![](media/common/edit-refresh-see.png)
 
 > [!Note]
-> **Pokud se někde zaseknete**, podívejte se do části [Řešení potíží](troubleshooting.md) nebo na tuto stránku přidejte komentář.
+> **Pokud se někde zaseknete**, podívejte se na článek o [odstraňování potíží](troubleshooting.md) nebo na tuto stránku přidejte komentář.
 
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Inicializace prostředků ladění s využitím rozšíření VS Code
 Nejdřív musíte nakonfigurovat projekt kódu tak, aby editor VS Code komunikoval s naším vývojářským prostorem v Azure. Rozšíření VS Code pro Azure Dev Spaces poskytuje pomocný příkaz pro nastavení konfigurace ladění. 
@@ -190,7 +188,7 @@ Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`. N
 ![](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> Pokud na paletě příkazů nevidíte příkazy Azure Dev Spaces, ověřte, že máte nainstalované rozšíření VS Code pro Azure Dev Spaces. Zkontrolujte, zda pracovní prostor otevřít ve VS Code, který obsahuje složku `azds.yaml`.
+> Pokud na paletě příkazů nevidíte příkazy Azure Dev Spaces, ověřte, že máte nainstalované rozšíření VS Code pro Azure Dev Spaces. Ujistěte se, že se pracovní prostor, který jste otevřeli v VS Code, nachází ve složce, která obsahuje `azds.yaml`.
 
 ### <a name="debug-the-container-in-kubernetes"></a>Ladění kontejneru v Kubernetes
 Když chcete v Kubernetes ladit kód, stiskněte **F5**.
@@ -198,7 +196,7 @@ Když chcete v Kubernetes ladit kód, stiskněte **F5**.
 Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostorem a sestaví se kontejner, který se nasadí v Kubernetes. Ladicí program se tentokrát samozřejmě připojí ke vzdálenému kontejneru.
 
 > [!Tip]
-> Stavový řádek VS Code se změní na oranžovou, která udává, že je připojen ladicí program. Zobrazí se také kliknout, čímž adresu URL, která slouží k otevření vaší aplikace.
+> Stavový řádek VS Code změní oranžová, což znamená, že ladicí program je připojen. Zobrazí se také adresa URL pro kliknutí, kterou můžete použít k otevření aplikace.
 
 ![](media/common/vscode-status-bar-url.png)
 
@@ -216,7 +214,7 @@ public String greeting()
 }
 ```
 
-Uložte soubor a v **podokna akcí ladění**, klikněte na tlačítko **restartovat** tlačítko.
+Uložte soubor a v **podokně akce ladění**klikněte na tlačítko **restartovat** .
 
 ![](media/common/debug-action-refresh.png)
 
@@ -226,10 +224,10 @@ Aktualizujte webovou aplikaci v prohlížeči. V uživatelském rozhraní by se 
 
 **Teď máte metodu, jak rychle provádět iteraci kódu a jeho ladění v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Informace o vývoji pro víc služeb](multi-service-java.md)
+> [Další informace o vývoji více služeb](multi-service-java.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations

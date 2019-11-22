@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3b7fed91be00e1bf2ac097638f14d1bbe6481f0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672093"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280303"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny pro .NET
 
@@ -35,11 +35,51 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro .
 * Účet portálu Language Understanding (LUIS) – [Vytvořte si ho zdarma](https://www.luis.ai) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
+
 ## <a name="setting-up"></a>Nastavení
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Získání spouštěcího klíče pro Language Understanding (LUIS)
 
-Získejte [počáteční klíč](luis-how-to-azure-subscription.md#starter-key)a [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `COGNITIVESERVICE_AUTHORING_KEY`.
+Získejte [počáteční klíč](luis-how-to-azure-subscription.md#starter-key) vytvořením prostředku pro vytváření Luis. Zachovejte klíč a oblast klíče pro další krok.
+
+### <a name="create-an-environment-variable"></a>Vytvoření proměnné prostředí
+
+Pomocí klíče a oblasti pro klíč vytvořte dvě proměnné prostředí pro ověřování:
+
+* `COGNITIVESERVICE_AUTHORING_KEY` – klíč prostředku pro ověřování vašich požadavků.
+* `COGNITIVESERVICE_REGION` – oblast přidružená ke klíči. Například `westus`.
+
+Použijte pokyny pro váš operační systém.
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx COGNITIVESERVICE_AUTHORING_KEY <replace-with-your-authoring-key>
+setx COGNITIVESERVICE_REGION <replace-with-your-authoring-region>
+```
+
+Po přidání proměnné prostředí restartujte okno konzoly.
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změna projevila.
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+Upravte `.bash_profile`a přidejte proměnnou prostředí:
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key> 
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změna projevila.
+***
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové C# aplikace
 
@@ -129,7 +169,7 @@ V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru ne
 
     [!code-csharp[Create LUIS client object](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateClient)]
 
-## <a name="create-a-luis-app"></a>Vytvoření aplikace v LUIS
+## <a name="create-a-luis-app"></a>Vytvoření aplikace LUIS
 
 1. Vytvořte aplikaci LUIS, která bude obsahovat pracovní záměry modelu NLP (přirozený jazyk Processing), entity a příklad projevy. 
 

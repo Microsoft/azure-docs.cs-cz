@@ -1,5 +1,5 @@
 ---
-title: Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Správce prostředků pro virtuální počítač s Windows
+title: Shromažďování metrik virtuálních počítačů s Windows v Azure Monitor se šablonou
 description: Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Správce prostředků pro virtuální počítač s Windows
 author: anirudhcavale
 services: azure-monitor
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844958"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286187"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Správce prostředků pro virtuální počítač s Windows
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pomocí [rozšíření](diagnostics-extension-overview.md)Azure monitor Diagnostics můžete shromažďovat metriky a protokoly z hostovaného operačního systému (hostovaného operačního systému), který je spuštěn jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Pomocí [rozšíření Azure monitor Diagnostics](diagnostics-extension-overview.md)můžete shromažďovat metriky a protokoly z hostovaného operačního systému (hostovaného operačního systému), který je spuštěn jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
 Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows do úložiště dat Azure Monitor. Počínaje diagnostikou verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem.
 
@@ -40,7 +40,7 @@ Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení
 Rozšíření Azure Diagnostics používá funkci s názvem "datové jímky" ke směrování metrik a protokolů do různých umístění. Následující kroky ukazují, jak použít šablonu Správce prostředků a PowerShell k nasazení virtuálního počítače pomocí nové jímky dat "Azure Monitor".
 
 ## <a name="author-resource-manager-template"></a>Šablona pro vytváření Správce prostředků
-V tomto příkladu můžete použít veřejně dostupnou ukázkovou šablonu. Spouští se šablony na adrese https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
+V tomto příkladu můžete použít veřejně dostupnou ukázkovou šablonu. Úvodní šablony jsou na https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
 
 - **Azuredeploy. JSON** je předkonfigurovaná správce prostředků šablona pro nasazení virtuálního počítače.
 
@@ -70,7 +70,7 @@ Po zadání položky pro StorageAccountName přidejte do části **proměnné** 
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
 ```
 
-Přidejte toto rozšíření Identita spravované služby (MSI) do šablony v horní části oddílu Resources ( **prostředky** ). Rozšíření zajišťuje, že Azure Monitor akceptuje metriky, které jsou emitovány.
+Přidejte toto rozšíření Identita spravované služby (MSI) do šablony v horní části oddílu **Resources (prostředky** ). Rozšíření zajišťuje, že Azure Monitor akceptuje metriky, které jsou emitovány.
 
 ```json
 //Find this code.
@@ -126,7 +126,7 @@ Přidejte konfiguraci **identity** do prostředku virtuálního počítače, aby
     ...
 ```
 
-Přidejte následující konfiguraci, aby bylo možné povolit diagnostické rozšíření na virtuálním počítači s Windows. Pro jednoduchý Správce prostředků virtuální počítač můžeme přidat konfiguraci rozšíření do pole prostředky pro virtuální počítač. Řádek "jímky"&mdash; "AzMonSink" a odpovídající "SinksConfig" dále v části&mdash;umožňují rozšíření generovat metriky přímo do Azure monitor. Podle potřeby můžete přidávat nebo odebírat čítače výkonu.
+Přidejte následující konfiguraci, aby bylo možné povolit diagnostické rozšíření na virtuálním počítači s Windows. Pro jednoduchý Správce prostředků virtuální počítač můžeme přidat konfiguraci rozšíření do pole prostředky pro virtuální počítač. Řádek "jímka"&mdash; "AzMonSink" a odpovídající "SinksConfig" dále v části&mdash;povolení rozšíření k vygenerování metrik přímo do Azure Monitor. Podle potřeby můžete přidávat nebo odebírat čítače výkonu.
 
 
 ```json
@@ -241,8 +241,8 @@ Oba soubory uložte a zavřete.
 K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 
 1. Spusťte PowerShell.
-1. Přihlaste se k `Login-AzAccount`Azure pomocí.
-1. Seznam předplatných získáte pomocí `Get-AzSubscription`.
+1. Přihlaste se k Azure pomocí `Login-AzAccount`.
+1. Získejte seznam předplatných pomocí `Get-AzSubscription`.
 1. Nastavte předplatné, které používáte k vytvoření nebo aktualizaci virtuálního počítače v nástroji:
 
    ```powershell
@@ -275,7 +275,7 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 
 2. V nabídce vlevo vyberte **monitor**.
 
-3. Na stránce Monitor vyberte metriky.
+3. Na stránce Monitor vyberte **metriky**.
 
    ![Stránka metriky](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
@@ -285,9 +285,9 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 
 6. V rozevírací nabídce obory názvů vyberte **Azure. VM. Windows. Host.**
 
-7. V rozevírací nabídce metriky vyberte **paměť\%při použití potvrzených bajtů**.
+7. V rozevírací nabídce metriky vyberte **paměť\%používané Potvrzené bajty**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
 

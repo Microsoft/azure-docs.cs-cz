@@ -1,5 +1,6 @@
 ---
-title: Pomocí zachycení paketů provedete proaktivní monitorování sítě s výstrahami a Azure Functions | Microsoft Docs
+title: Použití zachycení paketů k proaktivnímu monitorování sítě pomocí výstrah – Azure Functions
+titleSuffix: Azure Network Watcher
 description: Tento článek popisuje, jak vytvořit výstrahu zachytávání paketů aktivované pomocí Azure Network Watcher
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d894fabf3cfd4c6949aba94d558751bf007356d9
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165157"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276121"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro proaktivní monitorování sítě s výstrahami a Azure Functions
 
@@ -69,7 +70,7 @@ Tento scénář provádí následující akce:
 
 Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoření zachytávání paketů.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **Function App** **COMPUTE** > .
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **COMPUTE** > **Function App**.
 
     ![Vytvoření aplikace Function App][1-1]
 
@@ -81,10 +82,10 @@ Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoře
     |**Předplatné**|[Vaše předplatné] Předplatné, pro které chcete vytvořit aplikaci Function App.||
     |**Skupina prostředků**|PacketCaptureRG|Skupina prostředků, která obsahuje aplikaci Function App|
     |**Plán hostování**|Plán Consumption| Typ plánování použití aplikace Function App Možnosti jsou spotřeba nebo plán Azure App Service. |
-    |**Location**|Střed USA| Oblast, ve které se má vytvořit aplikace Function App|
+    |**Umístění**|Střední USA| Oblast, ve které se má vytvořit aplikace Function App|
     |**Účet úložiště**|automaticky generované| Účet úložiště, který Azure Functions potřeby pro účely obecného úložiště.|
 
-3. V okně **aplikací funkcí PacketCaptureExample** **+** vyberte **funkce** > **vlastní funkce** >.
+3. V okně **aplikace funkcí PacketCaptureExample** vyberte **funkce** > **vlastní funkce** > **+** .
 
 4. Vyberte **HttpTrigger-PowerShell**a potom zadejte zbývající informace. Nakonec, pokud chcete vytvořit funkci, vyberte **vytvořit**.
 
@@ -121,9 +122,9 @@ Pokud chcete použít rutiny Network Watcher PowerShellu, nahrajte do aplikace F
 
      ![Složky PowerShellu][functions5]
 
-1. Vyberte možnost >  **nastavení aplikace Function App** **Přejít na Editor služby App Service**.
+1. Vyberte **Nastavení funkce aplikace** > **Přejít na Editor služby App Service**.
 
-    ![Nastavení Function App][functions2]
+    ![Nastavení aplikace funkcí][functions2]
 
 1. Klikněte pravým tlačítkem na složku **AlertPacketCapturePowershell** a pak vytvořte složku s názvem **azuremodules**. 
 
@@ -141,7 +142,7 @@ Pokud chcete použít rutiny Network Watcher PowerShellu, nahrajte do aplikace F
 
 6. Přejít do modulů Azure. V místní složce **AZ. Network** vyberte všechny soubory ve složce. Pak vyberte **OK**. 
 
-7. Opakujte tyto kroky pro **AZ. Accounts** a **AZ.** Resources.
+7. Opakujte tyto kroky pro **AZ. Accounts** a **AZ. Resources**.
 
     ![Nahrání souborů][functions6]
 
@@ -149,7 +150,7 @@ Pokud chcete použít rutiny Network Watcher PowerShellu, nahrajte do aplikace F
 
     ![Soubory PowerShellu][functions7]
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Chcete-li použít rutiny prostředí PowerShell, je nutné provést ověření. Ověřování nakonfigurujete v aplikaci Function App. Pokud chcete nakonfigurovat ověřování, musíte nakonfigurovat proměnné prostředí a nahrát do aplikace Function app soubor se zašifrovaným klíčem.
 
@@ -208,7 +209,7 @@ ID klienta je ID aplikace aplikace v Azure Active Directory.
    > [!NOTE]
    > Heslo, které použijete při vytváření aplikace, by mělo být stejné jako heslo, které jste vytvořili dříve při ukládání souboru klíče.
 
-1. V Azure Portal vyberte předplatná. Vyberte předplatné, které chcete použít, a pak vyberte **řízení přístupu (IAM)** .
+1. V Azure Portal vyberte **předplatná**. Vyberte předplatné, které chcete použít, a pak vyberte **řízení přístupu (IAM)** .
 
     ![Funkce IAM][functions9]
 
@@ -226,7 +227,7 @@ Získejte ID tenanta spuštěním následující ukázky prostředí PowerShell:
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-Hodnotou proměnné prostředí AzureCredPassword je hodnota, kterou získáte spuštěním následující ukázky prostředí PowerShell. Tento příklad je stejný, který je zobrazený v předchozím šifrovaném oddílu **přihlašovací údaje** . Hodnota, která je potřebná, je výstupem `$Encryptedpassword` proměnné.  Toto je heslo instančního objektu, které jste zašifroval pomocí skriptu PowerShellu.
+Hodnotou proměnné prostředí AzureCredPassword je hodnota, kterou získáte spuštěním následující ukázky prostředí PowerShell. Tento příklad je stejný, který je zobrazený v předchozím **šifrovaném oddílu přihlašovací údaje** . Požadovaná hodnota je výstupem `$Encryptedpassword` proměnné.  Toto je heslo instančního objektu, které jste zašifroval pomocí skriptu PowerShellu.
 
 ```powershell
 #Variables
@@ -247,13 +248,13 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>Uložení proměnných prostředí
 
-1. Přejít do aplikace Function App. Pak vyberte **funkce nastavení** > aplikace**Konfigurovat nastavení aplikace**.
+1. Přejít do aplikace Function App. Pak vyberte **Nastavení funkce aplikace** > **Konfigurovat nastavení aplikace**.
 
     ![Konfigurace nastavení aplikace][functions11]
 
 1. Přidejte proměnné prostředí a jejich hodnoty do nastavení aplikace a pak vyberte **Uložit**.
 
-    ![Nastavení aplikací][functions12]
+    ![Nastavení aplikace][functions12]
 
 ### <a name="add-powershell-to-the-function"></a>Přidání PowerShellu do funkce
 
@@ -348,7 +349,7 @@ Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy
   |**Název**|TCP_Segments_Sent_Exceeded|Název pravidla výstrahy.|
   |**Popis**|Počet odeslaných segmentů TCP překročení prahové hodnoty|Popis pravidla výstrahy.|
   |**Metrika**|Odeslané segmenty TCP| Metrika, která se má použít k aktivaci výstrahy. |
-  |**Pomocné**|Je větší než| Podmínka, která se má použít při vyhodnocování metriky.|
+  |**Pomocné**|Větší než| Podmínka, která se má použít při vyhodnocování metriky.|
   |**Mezí**|100| Hodnota metriky, která aktivuje výstrahu. Tato hodnota by měla být nastavená na platnou hodnotu pro vaše prostředí.|
   |**Hodin**|Za posledních pět minut| Určuje období, ve kterém se má hledat prahová hodnota metriky.|
   |**Webhook**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
@@ -371,7 +372,7 @@ Po stažení je vaše zachycení možné zobrazit pomocí libovolného nástroje
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
 - [WireShark](https://www.wireshark.org/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se, jak zobrazit zachycení paketů pomocí [analýzy zachycení paketů pomocí programu Wireshark](network-watcher-deep-packet-inspection.md).
 

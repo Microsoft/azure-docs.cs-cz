@@ -1,25 +1,26 @@
 ---
-title: Vyzkoušejte Azure Resource Manageru | Azure Marketplace
-description: Sestavení webu Marketplace testovací jízdu a pomocí Azure Resource Manageru
+title: Azure Resource Manager testovacích jednotek | Azure Marketplace
+description: Sestavení testovací jednotky Marketplace pomocí Azure Resource Manager
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Patrick .Butler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606430"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838083"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
+# <a name="azure-resource-manager-test-drive"></a>Testovací verze Azure Resource Manageru
 
 Tento článek je určený pro vydavatele, kteří mají jejich nabídek zveřejněných na webu Azure Marketplace nebo kteří jsou v AppSource, ale má být sestaveno jejich testovací verze s pouze prostředky Azure.
 
-Šablony Azure Resource Manageru (Resource Manager) je programový kontejner prostředků Azure navrhnout pro představují doporučené řešení. Pokud nejste obeznámeni s tím, jaké šablony Resource Manageru je, přečtěte si o [pochopení šablon Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [Tvorba šablon Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) k Ujistěte se, že víte, jak vytvářet a testovat vlastní šablony.
+Šablona Azure Resource Manager (Správce prostředků) je kódovaný kontejner prostředků Azure, který navrhujete, aby nejlépe představoval vaše řešení. Pokud si nejste obeznámeni s tím, co je šablona Správce prostředků, přečtěte si článek [principy správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [vytváření správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) , abyste se ujistili, jak vytvářet a testovat vlastní šablony.
 
 Co dělá Test Drive je, že přijímá zadané šablony Resource Manageru a umožňuje nasazení všech prostředků potřebných z této šablony Resource Manageru do skupiny prostředků.
 
@@ -31,25 +32,25 @@ Pokud budete chtít vytvořit vyzkoušejte Azure Resource Manageru, jsou požada
 
 ## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak vytvořit vyzkoušejte Azure Resource Manageru
 
-Tady je proces vytváření Azure Resource Manageru testovací verze:
+Tady je postup pro vytvoření Azure Resource Manager testovacích jednotek:
 
-1. Navrhněte, co chcete zákazníkům v vývojový diagram.
-1. Definujte, jaké prostředí byste chtěli zákazníky k sestavení.
-1. Podle výše uvedenou definicí, rozhodněte, jaké části a prostředky jsou potřeba pro zákazníky, kteří k provedení těchto prostředí: například D365 instance nebo web s databází.
-1. Vytváření návrhu místně a testovací prostředí.
-1. Prostředí v nasazení šablony ARM a z něj balíček:
-    1. Definovat, jaké části prostředky jsou vstupní parametry.
-    1. Co jsou proměnné;
-    1. Jaké výstupy disponují uživatelské prostředí.
-1. Publikování, testování a publikování.
+1. Navrhněte, co mají vaši zákazníci dělat v diagramu toku.
+1. Definujte, co byste chtěli, aby si vaši zákazníci mohli sestavit.
+1. Na základě výše uvedených definic rozhodněte, které součásti a prostředky jsou nutné pro zákazníky k tomu, aby mohli provádět tyto zkušenosti: například instance D365 nebo web s databází.
+1. Sestavte návrh místně a otestujte prostředí.
+1. Zabalit prostředí v nasazení šablony ARM a odtud:
+    1. Určete, jaké části prostředků jsou vstupní parametry;
+    1. Jaké proměnné jsou;
+    1. Jaké jsou výstupy daného zákazníka.
+1. Publikujte, testujte a jděte do provozu.
 
 Nejdůležitější část o vytvoření Azure Resource Manageru Test Drive je určit, jaké scénáře mají vaši zákazníci práce. Je, že brána firewall a chcete je ukázka, jak dobře zpracování útoků prostřednictvím injektáže skriptu? Se, že je produkt úložiště a chcete ukázka jak rychlé a snadné řešení komprimuje soubory?
 
-Ujistěte se, že věnovat dostatečné množství času hodnocení, jaké jsou nejlepší způsoby předvést váš produkt. Konkrétně kolem všechny požadované prostředky budete potřebovat, jako je balení dostatečně jednodušší šablony Resource Manageru.
+Nezapomeňte strávit dostatečný čas hodnocením, jaké jsou nejlepší způsoby, jak se má váš produkt zobrazit. Konkrétně pro všechny požadované prostředky, které byste potřebovali, protože balíček Správce prostředků šablonu dostatečně jednodušší.
 
 Chcete-li pokračovat v našem příkladu brány firewall, může být architektury, že budete potřebovat veřejnou IP adresu URL pro vaši službu a jinou veřejnou IP adresu URL webu, který chrání vaše brána firewall. Každý IP je nasazené ve virtuálním počítači a společně se skupinu zabezpečení sítě a síťové rozhraní připojené.
 
-Jakmile jste vytvořili balíček požadovaných prostředků, nyní zahrnuje psaní a vytváření testů jednotek Resource Manageru šablony.
+Po navržení požadovaného balíčku prostředků teď dovedeme k vytváření a sestavování testovacích jednotek Správce prostředků šablony.
 
 ## <a name="writing-test-drive-resource-manager-templates"></a>Zápis testů jednotek Resource Manageru šablony
 
@@ -207,7 +208,7 @@ Ujistěte se, že zřetězí vašeho parametru nebo proměnnou řetězce (\'cont
 
 Například většina názvy prostředků nemůže začínat číslicí, ale jedinečnou funkci řetězce může vrátit řetězec, který začíná znakem číslici. Takže pokud používáte výstupní nezpracovaná jedinečný řetězec, nasazení se nezdaří. 
 
-Můžete najít další informace o pravidlech pojmenování prostředků a omezení v [v tomto článku](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
+Můžete najít další informace o pravidlech pojmenování prostředků a omezení v [v tomto článku](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="deployment-location"></a>Umístění nasazení
 
@@ -317,9 +318,9 @@ Teď, když máte vaše testovací verze vytvořené, tato část vás provede k
 
 ![Povolení testovací verze v uživatelském rozhraní](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Je toto první a nejdůležitější pole můžete určit, jestli chcete, aby Test Drive, nebo není povolená pro vaši nabídku. Když vyberete **Ano,** rest s všechna požadovaná pole ve formuláři se zobrazí pro vás k vyplnění. Když vyberete **Ne,** formuláře bude zakázáno a opětovné publikování pomocí testovací verze zakázán, vaše testovací verze se odebere z produkčního prostředí.
+Je toto první a nejdůležitější pole můžete určit, jestli chcete, aby Test Drive, nebo není povolená pro vaši nabídku. Když vyberete **Ano,** zobrazí se zbytek formuláře se všemi požadovanými poli, abyste mohli vyplnit. Když vyberete **Ne,** formulář se deaktivuje a pokud znovu publikujete s neaktivovanou testovací jednotkou, bude testovací jednotka z produkčního prostředí odebrána.
 
-Poznámka: Pokud neexistují žádné testy jednotek aktivně používá uživatelů, tyto jednotky testů bude pokračovat ke spuštění, dokud nevyprší jejich relace.
+Poznámka: Pokud jsou všechny testy jednotek aktivně používá uživatelů, tyto testovací verze bude nadále spuštěna do vypršení platnosti jejich relace.
 
 ### <a name="details"></a>Podrobnosti
 
@@ -382,7 +383,7 @@ V opačném případě vytvořte nového Tenanta v Azure Active Directory.
 
 ![Přehled služby Azure Active Directory klienty](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Definování organizace, domény a zemi/oblast pro tenanta Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Definujte organizaci, doménu a zemi/oblast pro tenanta Azure AD.](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![Potvrďte výběr](./media/azure-resource-manager-test-drive/subdetails6.png)
 
@@ -403,19 +404,19 @@ Klikněte na Uložit. Posledním krokem je zkopírovat ID aplikace pro tuto regi
 Zadané aplikace se používá k nasazení do předplatného, potřebujeme pro tuto aplikaci přidat jako přispěvatele daného předplatného. Tyto pokyny jsou jako níže:
 
 1. Přejděte do okna odběry a vyberte odpovídající předplatné, který používáte pro pouze na testovací verzi.
-1. Klikněte na tlačítko **řízení přístupu (IAM)** .
-1. Klikněte na tlačítko **přiřazení rolí** kartu.  ![Přidat nový objekt řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na kartu **přiřazení rolí** .  ![přidat nový objekt zabezpečení Access Control](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Klikněte na tlačítko **přidat přiřazení role**.
 1. Nastavit jako roli **Přispěvatel**.
 1. Zadejte název aplikace Azure AD a vyberte aplikaci, pokud chcete přiřadit roli.
     ![Přidat oprávnění](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 **Klíč aplikace Azure AD –** *vyžaduje* poslední pole má generovat ověřovací klíč. V části klíče přidejte popis klíče, nastavte dobu trvání nikdy nevyprší, pak vyberte možnost uložit. Je **důležité** abyste se vyhnuli nutnosti vypršela klíčů, což naruší vaše testovací verze v produkčním prostředí. Zkopírujte tuto hodnotu a vložte ho do vašeho povinné pole testovací verze.
 
 ![Obsahuje seznam klíčů pro aplikaci Azure AD](./media/azure-resource-manager-test-drive/subdetails8.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte všechna vaše testovací verze pole doplnit, projděte si a **znovu publikovat** vaší nabídky. Jakmile se vaše testovací verze uplynutí certifikace, byste se měli zúčastnit rozsáhlé testování prostředí pro zákazníky v **ve verzi preview** o vaší nabídce. Spusťte si testovací jízdu v uživatelském rozhraní a otevřete vašeho předplatného Azure v portálu Azure portal a ověřte, že vaše testovací verze se plně nasazují správně.
 

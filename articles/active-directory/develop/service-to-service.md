@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 11/20/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8f95dfd6410ae22a4596ac7d5d72add57e8029d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 49081ba72559b021d2e4846e7d9feffd61ae7b36
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373893"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284902"
 ---
 # <a name="service-to-service-apps"></a>Aplikace Service-to-Service
 
@@ -40,7 +40,7 @@ Aplikace Service-to-Service můžou být démon nebo serverová aplikace, které
 
 ![Diagram démona nebo serverové aplikace do webového rozhraní API](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
-## <a name="dprotocol-flow"></a>Tok DProtocol
+## <a name="protocol-flow"></a>Tok protokolu
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Identita aplikace s udělenými přihlašovacími údaji klienta OAuth 2,0
 
@@ -57,13 +57,13 @@ Tok popsaný níže předpokládá, že uživatel byl ověřen v jiné aplikaci 
 1. Azure AD ověří, že webové rozhraní API na první vrstvě má oprávnění pro přístup k webovému rozhraní API druhé úrovně a ověří požadavek a vrátí přístupový token JWT a obnovovací token JWT na první vrstvu webového rozhraní API.
 1. Webové rozhraní API první vrstvy pak prostřednictvím protokolu HTTPS volá webové rozhraní API druhé vrstvy připojením řetězce tokenu v autorizační hlavičce v žádosti. Webové rozhraní API první vrstvy může dál volat webové rozhraní API druhé úrovně, pokud je přístupový token a aktualizační tokeny platné.
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
-Podívejte se na ukázky kódu pro scénáře a aplikace typu démon nebo server webové rozhraní API. A pravidelně se podívejte na to, jak se často přidávají nové ukázky. [Aplikace serveru nebo démona do webového rozhraní API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Podívejte se na ukázky kódu pro procesy démona nebo serverové aplikace do webového rozhraní API: [aplikace serveru nebo démona do webového rozhraní API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>Registrace aplikací
 
-* Jeden tenant – pro případy identity aplikace i delegovaného uživatele musí být démon nebo serverová aplikace zaregistrované ve stejném adresáři v Azure AD. Webové rozhraní API je možné nakonfigurovat tak, aby vystavilo sadu oprávnění, která slouží k omezení přístupu démona nebo serveru k jeho prostředkům. Pokud se používá typ identity delegovaný uživatel, musí serverová aplikace v Azure Portal vybrat požadovaná oprávnění z rozevírací nabídky "oprávnění k ostatním aplikacím". Tento krok není nutný, pokud se používá typ identity aplikace.
+* Jeden tenant – pro případy identity aplikace i delegovaného uživatele musí být démon nebo serverová aplikace zaregistrované ve stejném adresáři v Azure AD. Webové rozhraní API je možné nakonfigurovat tak, aby vystavilo sadu oprávnění, která slouží k omezení přístupu démona nebo serveru k jeho prostředkům. Pokud se používá typ identity delegovaný uživatel, musí serverová aplikace vybrat požadovaná oprávnění. Na stránce **oprávnění rozhraní API** pro registraci aplikace po výběru možnosti **Přidat oprávnění** a zvolení rodiny rozhraní API zvolte **delegovaná oprávnění**a pak vyberte vaše oprávnění. Tento krok není nutný, pokud se používá typ identity aplikace.
 * Více tenantů – nejprve je démon nebo serverová aplikace nakonfigurovaná tak, aby označovala oprávnění, která vyžaduje, aby byla funkční. Tento seznam požadovaných oprávnění se zobrazí v dialogovém okně, když uživatel nebo správce v cílovém adresáři udělí souhlas s aplikací a zpřístupní ji pro jejich organizaci. Některé aplikace vyžadují oprávnění na úrovni uživatele, ke kterým může udělit každý uživatel v organizaci souhlas. Jiné aplikace vyžadují oprávnění na úrovni správce, kterým uživatel v organizaci nemůže udělit souhlas. Pouze správce adresáře může udělit souhlas aplikacím, které vyžadují tuto úroveň oprávnění. Když uživatel nebo správce souhlasí, obě webová rozhraní API se zaregistrují ve svém adresáři.
 
 ## <a name="token-expiration"></a>Vypršení platnosti tokenu

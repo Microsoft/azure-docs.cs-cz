@@ -1,19 +1,19 @@
 ---
-title: Jak vytvořit a najít kotvy pomocí prostorových kotev Azure v C++/NDK | Microsoft Docs
+title: Vytvoření & hledání kotev v C++/NDK
 description: Podrobné vysvětlení způsobu vytváření a hledání kotev pomocí prostorových kotev Azure v C++/NDK.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2578202c2464248c1c765368d308ca669d918057
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9592de0bfb53d0ba3f37cf3d34c6cd7ce3d4d65d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562548"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270283"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Jak vytvořit a najít kotvy pomocí prostorových kotev Azure v C++/NDK
 
@@ -341,7 +341,7 @@ Přečtěte si další informace o metodě [stop](https://docs.microsoft.com/cpp
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Přečtěte si další [](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) informace o metodě resetování.
+Přečtěte si další informace o metodě [resetování](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) .
 
 ```cpp
     cloudSession_->Reset();

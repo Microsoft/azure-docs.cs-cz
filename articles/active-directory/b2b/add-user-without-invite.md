@@ -1,6 +1,6 @@
 ---
-title: Přidání hostů B2B bez pozvánky odkaz nebo e-mailu – Azure Active Directory | Dokumentace Microsoftu
-description: Můžete nechat přidat další uživatele typu Host do služby Azure AD bez uplatnění pozvání v Azure Active Directory s B2B spolupráce uživatele typu Host.
+title: Přidání hostů B2B bez odkazu na pozvánku nebo e-mailu – Azure AD
+description: Uživatelům typu Host můžete umožnit, aby k Azure AD přidali další uživatele typu Host bez uplatnění pozvánky v Azure Active Directory spolupráce B2B.
 services: active-directory
 documentationcenter: ''
 ms.service: active-directory
@@ -12,31 +12,31 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81aad3ef9a4a53532d19fdb81bc48fc50931d49c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9efbb941e589cb8e4cf56ee06a697a1557a3cc89
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056065"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268930"
 ---
-# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Přidat uživatele typu Host spolupráce B2B bez pozvánky odkaz nebo e-mailu
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Přidání uživatelů typu Host pro spolupráci B2B bez odkazu na pozvánku nebo e-mailu
 
-Nyní můžete pozvat uživatele typu Host odesláním na přímý odkaz na sdílené aplikace. Pomocí této metody uživatele typu Host už nemusí používat e-mailová pozvánka s výjimkou v některé zvláštní případy. Uživatel typu Host klikne odkaz na aplikaci, kontroly a přijme podmínky ochrany osobních údajů a bez problémů přistupuje aplikace. Další informace najdete v tématu [uplatnění pozvání spolupráce B2B](redemption-experience.md).   
+Nyní můžete pozvat uživatele typu Host odesláním přímého odkazu na sdílenou aplikaci. Pomocí této metody už uživatelé typu host již nepotřebují používat e-mail s pozvánkou, s výjimkou některých zvláštních případů. Uživatel typu Host klikne na odkaz aplikace, zkontroluje a přijme podmínky ochrany osobních údajů a pak bezproblémově přistupuje k aplikaci. Další informace najdete v tématu věnovaném [uplatnění pozvánky B2B na spolupráci](redemption-experience.md).   
 
-Předtím, než tato nová metoda byla k dispozici, může pozvat uživatele typu Host bez nutnosti e-mailová pozvánka přidáním odesílatele pozvánky (z vaší organizace nebo z partnerské organizace) **odesílatel pozvánky hostů** roli adresáře a pak s odesílatel pozvánky přidat uživatele typu Host do adresáře, skupiny nebo aplikace prostřednictvím uživatelského rozhraní nebo Powershellu. (Pokud používáte PowerShell, můžete potlačit e-mailová pozvánka úplně). Příklad:
+Před tím, než byla tato nová metoda k dispozici, můžete pozvat uživatele typu Host bez vyžadování e-mailu s pozvánkou přidáním pozvánky (z vaší organizace nebo z partnerské organizace) do role adresáře **pozvání hosta** a poté, co uživatel přizvaní přidá uživatele typu Host do adresáře, skupiny nebo aplikace prostřednictvím uživatelského rozhraní nebo prostřednictvím prostředí PowerShell. (Pokud používáte PowerShell, můžete úplně potlačit e-mail s pozvánkou). Příklad:
 
-1. Uživatel v organizaci hostitele (například WoodGrove) vyzývá jeden uživatel od partnerské organizace (třeba Sam@litware.com) jako hosta.
-2. Správce v organizaci hostitele [nastaví zásady](delegate-invitations.md) , která umožňují Sam k identifikaci a přidat další uživatele v organizaci partnera poskytujícího (Litware). (Sam, musí být přidaný do **odesílatel pozvánky hostů** role.)
-3. Nyní Sam můžete přidat další uživatele z Litware do adresáře, skupiny nebo aplikace společnosti WoodGrove bez nutnosti pozvánky uplatnit. Pokud Sam má oprávnění odpovídající výčet Litware, dojde automaticky.
+1. Uživatel v organizaci hostitele (například WoodGrove) pozve jednoho uživatele z partnerské organizace (například Sam@litware.com) jako host.
+2. Správce v organizaci hostitele [nastavuje zásady](delegate-invitations.md) , které umožňují Sam identifikovat a přidat další uživatele z partnerské organizace (Litware). (Do role **pozvat hosta** musí být přidán účet Sam.)
+3. Nyní může Sam přidat další uživatele z Litware do adresáře WoodGrove, do skupin nebo aplikací, aniž by museli uplatnit pozvánky. Pokud má Sam příslušné oprávnění výčtu v Litware, proběhne automaticky.
  
-Tato metoda původní stále funguje. Je však malý rozdíl v chování. Pokud používáte PowerShell, můžete si všimnout, že teď má účet pozvaný hosta **PendingAcceptance** stav místo okamžitě zobrazení **přijato**. I když je ve stavu čekající na vyřízení, uživatel typu Host stále přihlásit a přístup k aplikaci bez kliknutí na odkaz na e-mailové pozvání. Stav Čekání znamená, že není uživatel zatím prošli [souhlas prostředí](redemption-experience.md#consent-experience-for-the-guest), kde přijmou podmínky ochrany osobních údajů zvoucí organizaci. Uživatel typu Host při prvním přihlášení se zobrazí tato obrazovka pro vyjádření souhlasu. 
+Tato původní metoda pořád funguje. Existuje však malý rozdíl v chování. Pokud používáte PowerShell, všimnete si, že pozvaný účet Guest teď má stav **PendingAcceptance** místo toho, aby se hned zobrazila **přijatá**. I když stav čeká na vyřízení, může se uživatel typu Host stále přihlašovat a přistupovat k aplikaci bez kliknutí na odkaz e-mailové pozvánky. Stav čekání na vyřízení znamená, že uživatel se ještě neprošlý [možností souhlasu](redemption-experience.md#consent-experience-for-the-guest), kde přijímá podmínky ochrany osobních údajů v rámci pozvání organizace. Uživatel typu Host uvidí tuto obrazovku pro vyjádření souhlasu při prvním přihlášení. 
 
-Pokud můžete pozvat uživatele do adresáře, musí uživatel typu Host přístup k prostředku specifickým pro tenanta webu Azure portal přímo adresu URL (například https://portal.azure.com/ *resourcetenant*. onmicrosoft.com) k zobrazení a souhlasit s podmínkami ochrany osobních údajů.
+Pokud uživatele přistupujete k adresáři, musí uživatel typu Host přistupovat přímo k adrese URL Azure Portal pro konkrétního tenanta (například https://portal.azure.com/*resourcetenant*. onmicrosoft.com), aby si mohli zobrazit a vyjádřit souhlas s podmínkami ochrany osobních údajů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-- [Uplatnění pozvání spolupráce B2B](redemption-experience.md)
+- [Uplatnění pozvánky B2B pro spolupráci](redemption-experience.md)
 - [Delegování pozvánek pro spolupráci Azure Active Directory s B2B](delegate-invitations.md)
-- [Jak informačních pracovníků vynutit přidat uživatele spolupráce B2B?](add-users-information-worker.md)
+- [Jak mohou informační pracovníci přidat uživatele spolupráce B2B?](add-users-information-worker.md)
 

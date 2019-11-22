@@ -1,51 +1,42 @@
 ---
-title: Prezentace Jupyter poznámkového bloku jako prezentace v Azure
-description: Jak nakonfigurovat buňky pro režim prezentace v Jupyter poznámkovém bloku a pak prezentaci prezentovat pomocí rozšíření pro zvýšení.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+title: K dispozici Poznámkový blok Jupyter jako prezentace v Azure
+description: Jak nakonfigurovat buňky pro režim prezentace v poznámkovém bloku Jupyter a pak prezentujte prezentace pomocí rozšíření VZESTUPU.
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 04612dc8892a544397251580b3494badc84e2ad5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973120"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277597"
 ---
-# <a name="run-a-notebook-slideshow"></a>Spuštění prezentace poznámkového bloku
+# <a name="run-a-notebook-slideshow"></a>Spusťte Poznámkový blok prezentace
 
-Azure Notebooks je předem nakonfigurovaný s rozšířením prezentace Jupyter/IPython (VZESTUPně), které umožňuje prezentovat Poznámkový blok přímo jako prezentaci. V prezentaci jsou buňky obvykle zobrazeny po jednom pomocí velikosti písma, která je vhodná pro prezentace na velkých obrazovkách, a stále můžete kód spustit, nikoli přepnout na samostatný ukázkový počítač.
+Poznámkových bloků Azure je předem nakonfigurovaný pomocí Jupyter/IPython prezentace rozšíření (VZESTUPU), který umožňuje poznámkového bloku přímo jako prezentaci. V prezentaci buňky jsou obvykle zobrazené jeden po druhém použitím velikosti písma, která je vhodná pro prezentace na velkých obrazovkách a můžete se ještě může spustit kód, spíše než přepnutí na ukázku samostatné počítače.
 
-Následující obrázek znázorňuje standardní zobrazení poznámkového bloku, ve kterém můžete zobrazit Markdownu a buňky kódu dohromady:
+Zobrazení standardního Poznámkový blok, ve kterém uvidíte Markdown a buňky s kódem všechno dohromady na následujícím obrázku:
 
-![Poznámkový blok ve standardním zobrazení](media/slideshow/slideshow-notebook-view.png)
+![Poznámkový blok v standardní zobrazení](media/slideshow/slideshow-notebook-view.png)
 
-Při zahájení prezentace je první buňka zvětšena tak, aby vyplnila prohlížeč, kde **X** v levém horním rohu prezentace opustí **?** v levém dolním rohu se zobrazí klávesové zkratky a šipky v pravém dolním rohu mezi snímky:
+Při spuštění prezentaci první buňky se zvětší tak, aby vyplnil prohlížeče, kde **X** v levém horním rohu se ukončí prezentací, **?** v dolním levém zobrazí klávesové zkratky a šipky v pravém dolním přecházet mezi snímky:
 
 ![Poznámkový blok v režimu prezentace](media/slideshow/slideshow-slide-view.png)
 
 Příprava poznámkového bloku pro prezentaci zahrnuje dvě primární aktivity:
 
-1. Vzhledem k tomu, že se buňky Markdownu vykreslují s velkými písmy, nemusí být v prezentaci vidět nějaký obsah. Tím se obvykle omezí množství textu v určité buňce; obvykle funguje záhlaví, které má čtyři až šest řádků. Pokud máte více textu, rozdělte tyto informace do více buněk.
+1. Protože buňky Markdown se vykreslují velká písma, nemusí být zobrazeny v prezentaci nějaký obsah. Proto obvykle omezit množství textu v jakékoli dané buňky; záhlaví řádků čtyř až šesti obvykle je nejvhodnější. Pokud máte více textu, rozdělte tyto informace do více buněk.
 
-2. Nakonfigurujte chování jednotlivých buněk v prezentaci pomocí panelu nástrojů buňky prezentace. Typy buněk určují chování navigačních tlačítek.
+2. Konfigurace chování každá buňka v prezentaci pomocí nástrojů buňky prezentace. Typy buňky určují chování navigačních tlačítek.
 
-## <a name="the-anatomy-of-a-slideshow"></a>Anatomie prezentace
+## <a name="the-anatomy-of-a-slideshow"></a>Anatomie prezentaci
 
-Pokud vezmete náhodný Poznámkový blok a použijete ho pro prezentaci, obvykle zjistíte, že jsou všechny buňky jumbled společně, a většina obsahu je v dolní části okna prohlížeče skrytá. Chcete-li vytvořit efektivní prezentaci, je třeba přiřadit typ prezentace ke každé buňce pomocí panelu nástrojů buňky prezentace:
+Je-li provést náhodné Poznámkový blok a používat ho pro prezentaci, obvykle pro vás, že všechny buňky jsou neuspořádaná společně a většina obsahu je skrytý spodní část okna prohlížeče. Aby efektivní prezentace, musíte přiřadit typ prezentace jednotlivé buňky pomocí nástrojů buňky prezentace:
 
-1. V nabídce **zobrazení** vyberte **panel nástrojů buňky** > **prezentace**:
+1. Na **zobrazení** nabídce vyberte možnost **buňky nástrojů** > **prezentace**:
 
-    ![Zapnutí panelu nástrojů prezentace buněk](media/slideshow/slideshow-view-cell-toolbar.png)
+    ![Zapnutí nástrojů prezentace buňky](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. Rozevírací seznam **typ snímku** se zobrazí v pravém horním rohu každé buňky v poznámkovém bloku:
+1. A **typ snímku** rozevíracího seznamu se zobrazí v pravém horním rohu buňky v poznámkovém bloku:
 
     ![Panel nástrojů prezentace buňky](media/slideshow/slideshow-cell-toolbar.png)
 
@@ -55,53 +46,53 @@ Pokud vezmete náhodný Poznámkový blok a použijete ho pro prezentaci, obvykl
 
     | Typ snímku | Chování |
     | --- | --- |
-    | -(Nenastaveno) | Buňka se zobrazí s předchozí buňkou, která se často nejedná o požadovaný efekt v prezentaci. |
-    | Snímek | Buňka je primární snímek, který se přechází pomocí levé a pravé šipky ovládacího prvku navigace. |
-    | Dílčí snímek | Buňka je "pod" primárním snímkem, přechodem na použití šipky dolů ovládacího prvku navigace. Šipka nahoru se vrátí k primárnímu snímku. Dílčí snímky se používají pro sekundární materiál, který můžete přeskočit v hlavní cestě prezentace, ale v případě potřeby je možné snadno zpřístupnit. |
-    | Zpomalen | Obsah buňky se zobrazí v kontextu předchozího snímku nebo dílčího snímku při použití šipky dolů (při použití šipky nahoru se odebere fragment). Pomocí fragmentu s buňkou kódu můžete nastavit, aby se kód zobrazoval v rámci snímku, nebo můžete použít více fragmentů, aby se odrážky textu zobrazovaly po jednom (viz příklad v další části). Vzhledem k tomu, že fragmenty jsou sestaveny na aktuálním snímku, nadbytečné fragmenty nebudou zobrazeny v dolní části okna prohlížeče. |
-    | Přeskočit | V prezentaci není zobrazená buňka. |
-    | Poznámky | Buňka obsahuje poznámky mluvčího, které se nezobrazují v prezentaci. |
+    | -(Nenastaveno) | Buňka se zobrazí s předcházejí buňky, která není často požadovaného efektu v prezentaci. |
+    | Snímek | Buňka je primární snímku, procházet pomocí šipky vlevo a vpravo navigaci ovládacího prvku. |
+    | Dílčí snímku | Buňka je "primární snímku, přejde na šipku dolů v ovládacím prvku navigace pomocí below". Na šipku nahoru vrátí primární snímku. Dílčí snímky se používají pro sekundární materiál může přeskočit na hlavní cestě prezentace, ale snadno dostupné v případě potřeby. |
+    | Fragment | Při použití na šipku navigace (fragment odebere pomocí kláves Šipka nahoru), zobrazí se v rámci předchozího snímku nebo dílčí snímku obsah buňky. Fragment můžete použít s buňku kódu k Ujistěte se, že kód, který se zobrazí v rámci snímku, nebo můžete použít několik fragmentů aby text, který se zobrazí odrážky jeden po druhém (viz příklad v další části). Protože fragmenty sestavení na aktuálním snímku, nadbytečné fragmenty nebudou viditelné mimo dolní části okna prohlížeče. |
+    | Přeskočit | Buňka se nezobrazí v prezentaci. |
+    | Poznámky: | V buňce jako poznámky lektora, které se nezobrazují v prezentaci. |
 
-1. Zpočátku je vhodné zvolit **snímek** pro každou buňku. Pak můžete prezentaci spustit a provést příslušné úpravy.
+1. Standardně je užitečné, chcete-li zvolit **snímků** pro každou buňku. Budete moct zprovoznit službu prezentaci a proveďte příslušné změny.
 
-### <a name="example-fragment-cells-for-bullet-items"></a>Příklad: fragment buněk pro položky odrážek
+### <a name="example-fragment-cells-for-bullet-items"></a>Příklad: fragment buněk pro položky odrážky
 
-Aby se odrážky na snímku zobrazovaly po jednom, umístěte záhlaví snímku do buňky Markdownu s typem **snímku** a potom každou odrážku umístěte do samostatné buňky Markdownu s typem **fragmentu** :
+Aby odrážky na snímku snímku hlavička v Markdownu buňku s se zobrazí po jednom, místě **snímku** zadejte pak umístit každý odrážek v buňce samostatné Markdown s **Fragment** typ:
 
-![Příklad vytvoření více Markdownu buněk pro položky odrážek](media/slideshow/slideshow-fragments.png)
+![Příklad vytvoření více buněk Markdownu pro položky s odrážkami](media/slideshow/slideshow-fragments.png)
 
-Vzhledem k tomu, že prezentace vykresluje fragmenty s více svislými mezerami, než jsou všechny odrážky ve stejné buňce, pravděpodobně nebudete moci použít tolik položek odrážek.
+Protože prezentaci vykreslí fragmenty s více svislé mezery než když jsou všechny odrážek v jedné buňce, nebudete moci používat libovolný počet položek odrážky.
 
-## <a name="run-the-slideshow"></a>Spuštění prezentace
+## <a name="run-the-slideshow"></a>Spuštění prezentaci
 
-1. Pokud jste upravovali všechny buňky Markdownu, ujistěte se, že je spouštíte pro vykreslování HTML, jinak se v prezentaci zobrazí *jako* Markdownu.
+1. Pokud jste upravili všechny buňky Markdownu, ujistěte se, že je k vykreslení jejich HTML, jinak se zobrazují spustit *jako* Markdownu v prezentaci.
 
-1. Jakmile nakonfigurujete **typ snímku** pro každou buňku, vyberte buňku, se kterou chcete prezentaci spustit, a pak na hlavním panelu nástrojů vyberte tlačítko pro vytvoření **přírůstku pro vložení/ukončení** :
+1. Po dokončení konfigurace **typ snímku** pro každou buňku, vyberte buňku, pomocí kterého se má spustit prezentaci a pak vyberte **Enter a její opuštění NARŮSTAT prezentace** tlačítko na hlavním panelu nástrojů:
 
-    ![Tlačítko pro vložení nebo ukončení zvýšení prezentace na hlavním panelu nástrojů](media/slideshow/slideshow-start.png)
+    ![Zapne/ukončí NARŮSTAT prezentace tlačítko na hlavním panelu nástrojů](media/slideshow/slideshow-start.png)
 
-1. Chcete-li procházet mezi snímky a fragmenty, použijte levou a pravou šipku v ovládacím prvku navigace. Text v ovládacím prvku zobrazuje číslo představující *snímek. dílčí snímek*.
+1. Přecházet mezi snímky, jakož i fragmenty, použijte v ovládacím prvku navigační šipky vlevo a vpravo. Text v ovládacím prvku zobrazuje číslo představující *slide.sub snímku*.
 
-    ![Navigační ovládací prvek prezentace](media/slideshow/slideshow-navigation-control.png)
+    ![Ovládací prvek navigace prezentace](media/slideshow/slideshow-navigation-control.png)
 
-1. Chcete-li procházet snímky a dílčí snímky i fragmenty, použijte šipky nahoru a dolů, pokud je tato možnost povolena:
+1. Přecházet mezi snímky a dílčí snímky, jakož i fragmenty, použijte nahoru a dolů šipkami, pokud je povoleno:
 
-    ![Ovládací prvky pro navigaci prezentace pro dílčí snímky](media/slideshow/slideshow-navigation-control-subslide.png)
+    ![Ovládací prvky pro navigaci k prezentaci pro dílčí snímky](media/slideshow/slideshow-navigation-control-subslide.png)
 
-1. V buňce kódu použijte tlačítko Přehrát ke spuštění kódu; výstup se zobrazí na snímku:
+1. Na buňky kódu použijte na tlačítko Přehrát akci pro spuštění kódu; na snímku, zobrazí se výstup:
 
-    ![Tlačítko Přehrát pro spuštění buňky kódu](media/slideshow/slideshow-run-code-cell.png)
+    ![Tlačítko Přehrát akci spustíte buňku kódu](media/slideshow/slideshow-run-code-cell.png)
 
-    ![Výstup buňky kódu se zobrazí v zobrazení prezentace.](media/slideshow/slideshow-run-code-cell-output.png)
+    ![Zobrazí se výstup buňky kódu v prezentaci](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Výstup buňky se považuje za součást buňky v prezentaci. Pokud jste v zobrazení poznámkového bloku nebo zobrazení prezentace spustili buňku, výstup se zobrazí také v jiném zobrazení. Výstup vymažete tak, že použijete **buňku** > **aktuální výstupy** > **Vymazat** příkaz (pro aktuální buňku) nebo **buňku** > **všechny výstupy** > **clear** (pro všechny buňky).
+    > Výstup buňky je považováno za součást buněk v prezentaci. Pokud spustíte buňky v poznámkovém bloku nebo zobrazení prezentace, se zobrazí v ostatních zobrazeních i výstup. Pokud chcete vymazat výstup, použijte **buňky** > **aktuální výstupy** > **vymazat** příkazu (pro aktuální buňka) nebo **buňky**  >  **Všechny výstupy** > **vymazat** (pro všechny buňky).
 
-1. Až budete s prezentací hotovi, použijte **X** k návratu do zobrazení Poznámkový blok.
+1. Jakmile budete hotovi s prezentaci, použijte **X** se vrátíte do zobrazení poznámkového bloku.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Postupy: konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Postupy: Instalace balíčků z poznámkového bloku](install-packages-jupyter-notebook.md)
+- [Postupy: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Postupy: instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
 - [Postupy: práce s datovými soubory](work-with-project-data-files.md)
 - [Postupy: přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)

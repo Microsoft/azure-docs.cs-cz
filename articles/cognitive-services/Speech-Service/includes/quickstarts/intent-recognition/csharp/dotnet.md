@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 6cb970a59118a93c7a9023cc7c0448019dc77362
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 599f59df1a18dfe77d66c497c52a05d7d2e3b6d6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125447"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280430"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -25,7 +25,7 @@ Než začnete, nezapomeňte:
 > [!div class="checklist"]
 >
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
-> * [Vytvoření aplikace LUIS a získání klíče koncového bodu](../../../../quickstarts/create-luis.md)
+> * [Vytvoření aplikace Language Understanding (LUIS) a získání klíče koncového bodu](../../../../quickstarts/create-luis.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=dotnet)
 

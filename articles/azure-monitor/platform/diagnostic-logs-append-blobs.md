@@ -1,6 +1,6 @@
 ---
 title: Příprava na změnu formátu Azure Monitor diagnostické protokoly
-description: Diagnostické protokoly Azure se přesunou na používání doplňovacích objektů BLOB od 1. listopadu 2018.
+description: Popisuje dopad a postup aktualizace nástrojů na zpracování nových diagnostických protokolů Azure, které se změnily tak, aby používaly doplňovací objekty blob, od 1. listopadu 2018.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258385"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307049"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Příprava na změnu formátu Azure Monitor diagnostické protokoly archivované na účet úložiště
 
 > [!WARNING]
-> Pokud odesíláte [diagnostické protokoly prostředků Azure nebo metriky do účtu úložiště pomocí nastavení diagnostiky prostředků](./../../azure-monitor/platform/archive-diagnostic-logs.md) nebo [protokolů aktivit v účtu úložiště pomocí profilů protokolů](./../../azure-monitor/platform/archive-activity-log.md), formát dat v účtu úložiště se změní na řádky JSON. 1. listopadu 2018. Níže uvedené pokyny popisují dopad a způsob aktualizace nástrojů pro zpracování nového formátu. 
+> Pokud odesíláte [diagnostické protokoly prostředků Azure nebo metriky do účtu úložiště pomocí nastavení diagnostiky prostředků](./../../azure-monitor/platform/archive-diagnostic-logs.md) nebo [protokolů aktivit v účtu úložiště pomocí profilů protokolů](./../../azure-monitor/platform/archive-activity-log.md), formát dat v účtu úložiště se změní na řádky JSON od 1. listopadu 2018. Níže uvedené pokyny popisují dopad a způsob aktualizace nástrojů pro zpracování nového formátu. 
 >
 > 
 
@@ -31,7 +31,7 @@ Azure Monitor nabízí možnost, která umožňuje odeslat data diagnostických 
 * Nastavení diagnostiky mezi Now a 1. listopadu 1 nadále vygeneruje data v aktuálním formátu do 1. listopadu.
 * Tato změna proběhne současně ve všech oblastech veřejného cloudu. Tato změna se neprojeví v Microsoft Azure provozovaných v cloudech 21Vianet, Azure Německo nebo Azure Government.
 * Tato změna má vliv na následující typy dat:
-  * [Diagnostické protokoly prostředků Azure](archive-diagnostic-logs.md) ([tady najdete seznam prostředků](diagnostic-logs-schema.md).)
+  * [Diagnostické protokoly prostředků Azure](archive-diagnostic-logs.md) ([tady najdete seznam prostředků](diagnostic-logs-schema.md))
   * [Metriky prostředků Azure, které se exportují pomocí nastavení diagnostiky](diagnostic-settings.md)
   * [Data protokolu aktivit Azure, která se exportují pomocí profilů protokolů](archive-activity-log.md)
 * Tato změna nemá vliv na:
@@ -45,7 +45,7 @@ Tato změna ovlivní jenom v případě, že:
 1. Odesílají data protokolu do účtu služby Azure Storage pomocí nastavení diagnostiky prostředků a
 2. Mít nástroje, které závisí na struktuře JSON těchto protokolů v úložišti.
  
-Pokud chcete zjistit, jestli máte nastavení diagnostiky prostředků, které odesílá data do účtu služby Azure Storage, můžete přejít do části **monitorování** na portálu, kliknout na **nastavení diagnostiky**a identifikovat všechny prostředky, které mají **diagnostiku. Stav** nastaven na **povoleno**:
+Pokud chcete zjistit, jestli máte nastavení diagnostiky prostředků, které odesílá data do účtu služby Azure Storage, můžete přejít do části **monitorování** na portálu, kliknout na **nastavení diagnostiky**a identifikovat všechny prostředky, u kterých je **stav diagnostiky** nastaven na **povoleno**:
 
 ![Okno nastavení diagnostiky Azure Monitor](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 

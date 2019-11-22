@@ -2,40 +2,41 @@
 title: Vytváření clusterů Apache Hadoop pomocí šablon – Azure HDInsight
 description: Naučte se vytvářet clustery pro HDInsight pomocí šablon Správce prostředků.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: 5dd8b54e0d3febf7dbb3209a9f0bde76263aa726
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/18/2019
+ms.openlocfilehash: dba64d432231873676c49a1f4f2fac579c3f4be9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494819"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279282"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytváření clusterů Apache Hadoop ve službě HDInsight pomocí šablon Správce prostředků
+
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 V tomto článku se dozvíte několik způsobů, jak vytvářet clustery Azure HDInsight pomocí šablon Azure Resource Manager. Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Další informace o dalších nástrojích pro vytváření clusteru a funkcích získáte kliknutím na volič karty v horní části této stránky nebo v tématu [metody vytváření clusteru](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
-## <a name="prerequisites"></a>Předpoklady
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Pokud chcete postupovat podle pokynů v tomto článku, budete potřebovat:
+## <a name="prerequisites"></a>Požadavky
 
-* [Předplatné Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Azure PowerShell a/nebo rozhraní příkazového řádku Azure Classic.
+* [Předplatného Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Azure PowerShell a/nebo Azure CLI.
 
-### <a name="resource-manager-templates"></a>Šablony Správce prostředků
+### <a name="resource-manager-templates"></a>Šablony Resource Manageru
+
 Šablona Správce prostředků usnadňuje vytvoření následujících prostředků pro vaši aplikaci v rámci jediné koordinované operace:
 * Clustery HDInsight a jejich závislé prostředky (například výchozí účet úložiště).
 * Další prostředky (například Azure SQL Database pro použití [Apache Sqoop](https://sqoop.apache.org/)).
 
 V šabloně definujete prostředky, které jsou nutné pro aplikaci. Parametry nasazení můžete zadat také pro vstupní hodnoty pro různá prostředí. Šablona se skládá z formátu JSON a výrazů, které slouží k vytvoření hodnot pro vaše nasazení.
 
-Ukázky šablon HDInsight najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Použijte [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) pro různé platformy s [rozšířením správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) nebo textovým editorem a uložte šablonu do souboru na pracovní stanici. 
+Ukázky šablon HDInsight najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Použijte [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) pro různé platformy s [rozšířením správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) nebo textovým editorem a uložte šablonu do souboru na pracovní stanici.
 
 Další informace o šablonách Správce prostředků najdete v následujících článcích a příkladech:
 
@@ -58,21 +59,24 @@ Správce prostředků umožňuje exportovat šablonu Správce prostředků z exi
 
 ## <a name="deploy-using-azure-cli"></a>Nasazení s využitím rozhraní příkazového řádku Azure
 
-Pomocí klasického rozhraní příkazového řádku můžete nasadit šablonu Správce prostředků. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) a [nasazení privátních správce prostředků šablony s tokenem SAS a](../azure-resource-manager/resource-manager-cli-sas-token.md)rozhraním příkazového řádku Azure CLI.
+Pomocí Azure CLI můžete nasadit šablonu Správce prostředků. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) a [nasazení privátních správce prostředků šablony s tokenem SAS a](../azure-resource-manager/resource-manager-cli-sas-token.md)rozhraním příkazového řádku Azure CLI.
 
 ## <a name="deploy-using-the-rest-api"></a>Nasazení pomocí REST API
+
 Šablonu Správce prostředků můžete nasadit pomocí REST API. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Správce prostředků REST API](../azure-resource-manager/resource-group-template-deploy-rest.md).
 
-## <a name="deploy-with-visual-studio"></a>Nasazení pomocí sady Visual Studio
+## <a name="deploy-with-visual-studio"></a>Nasazení s využitím sady Visual Studio
+
  Pomocí sady Visual Studio vytvořte projekt skupiny prostředků a nasaďte ho do Azure prostřednictvím uživatelského rozhraní. Vyberte typ prostředků, které chcete zahrnout do projektu. Tyto prostředky jsou automaticky přidány do šablony Správce prostředků. Projekt také poskytuje skript prostředí PowerShell pro nasazení šablony.
 
 Úvod k používání sady Visual Studio se skupinami prostředků najdete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-hadoop-create-linux-clusters-portal.md).
+Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto článku jste se dozvěděli o několika způsobech, jak vytvořit cluster HDInsight. Další informace najdete v následujících článcích:
 
 * Další šablony související s HDInsight najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight).

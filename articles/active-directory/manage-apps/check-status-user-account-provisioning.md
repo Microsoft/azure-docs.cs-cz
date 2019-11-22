@@ -1,5 +1,5 @@
 ---
-title: Vykázat Automatické zřizování uživatelských účtů do aplikací SaaS | Microsoft Docs
+title: Vykázat Automatické zřizování uživatelských účtů do aplikací SaaS
 description: Zjistěte, jak kontrolovat stav automatických úloh zřizování uživatelských účtů a jak řešit problémy zřizování jednotlivých uživatelů.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e5ef4067f22d0e9e015e4d9a646f8b92309010a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033533"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275067"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Vytváření sestav o automatickém zřizování uživatelských účtů
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: vytváření sestav o automatickém zřizování uživatelských účtů
 
 Azure Active Directory (Azure AD) obsahuje [službu zřizování uživatelských účtů](user-provisioning.md) , která pomáhá automatizovat zřizování uživatelských účtů v aplikacích SaaS a dalších systémech za účelem komplexní správy životního cyklu identity. Azure AD podporuje předem integrované konektory zřizování uživatelů pro všechny aplikace a systémy v části "Doporučené" v [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
@@ -39,12 +39,12 @@ Zřizovací konektory se nastavují a konfigurují pomocí [Azure Portal](https:
 
 Tento článek používá následující výrazy, které jsou definovány níže:
 
-* **Zdrojový systém** – úložiště uživatelů, ze kterých se služba zřizování Azure AD synchronizuje. Azure Active Directory je zdrojovým systémem většiny předintegrovaných zřizovacích konektorů, ale vyskytly se nějaké výjimky (příklad: Synchronizace příchozích do Workday).
-* **Cílový systém** – úložiště uživatelů, se kterými se služba zřizování Azure AD synchronizuje. Obvykle se jedná o aplikaci SaaS (příklady: Salesforce, ServiceNow, G Suite, Dropbox pro firmy), ale v některých případech se může jednat o místní systém, jako je například služba Active Directory (příklad: Příchozí synchronizace v Workday do služby Active Directory).
+* **Zdrojový systém** – úložiště uživatelů, ze kterých se služba zřizování Azure AD synchronizuje. Azure Active Directory je zdrojovým systémem většiny předintegrovaných zřizovacích konektorů, ale vyskytly se nějaké výjimky (příklad: synchronizace příchozích dat Workday).
+* **Cílový systém** – úložiště uživatelů, se kterými se služba zřizování Azure AD synchronizuje. Obvykle se jedná o aplikaci SaaS (příklady: Salesforce, ServiceNow, G Suite, Dropbox pro firmy), ale v některých případech může jít o místní systém, jako je například služba Active Directory (například: příchozí synchronizace Workday do služby Active Directory).
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Získávání sestav zřizování z Azure Portal
 
-Pokud chcete získat informace o zřizovacích sestavách pro danou aplikaci, Začněte spuštěním [Azure Portal](https://portal.azure.com) a **Azure Active Directorych** &gt; protokolů zřizování **podnikových aplikací** &gt; **(Preview)** v části  **Oddíl Activity** . Můžete také přejít na podnikovou aplikaci, pro kterou je zřizování nakonfigurováno. Pokud například zřizujete uživatele na zvýšení oprávnění LinkedInu, navigační cesta k aplikaci je následující:
+Pokud chcete získat informace o zřizovacích sestavách pro danou aplikaci, Začněte spuštěním [Azure Portal](https://portal.azure.com) a **Azure Active Directory** &gt; **podnikových aplikací** &gt; **zřizovacích protokolů (Preview)** v části **Activity (aktivita** ). Můžete také přejít na podnikovou aplikaci, pro kterou je zřizování nakonfigurováno. Pokud například zřizujete uživatele na zvýšení oprávnění LinkedInu, navigační cesta k aplikaci je následující:
 
 **Azure Active Directory > podnikové aplikace > všech aplikacích > zvýšení úrovně LinkedInu**
 
@@ -65,7 +65,7 @@ Odtud můžete přístup k řádku průběh zřizování i k protokolům zřizov
 
 ## <a name="provisioning-logs-preview"></a>Zřizování protokolů (Preview)
 
-Všechny aktivity prováděné službou zřizování se zaznamenávají v [protokolech zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)Azure AD. K protokolům zřizování v Azure Portal můžete získat přístup tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Typy událostí protokolovaných aktivit zahrnují:
+Všechny aktivity prováděné službou zřizování se zaznamenávají v [protokolech zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)Azure AD. Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; **podnikové aplikace** &gt; **protokoly zřizování (Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Typy událostí protokolovaných aktivit zahrnují:
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

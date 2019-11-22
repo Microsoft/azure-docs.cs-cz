@@ -1,20 +1,16 @@
 ---
 title: Postup upgradu Azure Dev Spacesch nástrojů
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/03/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 24a66c5218bb75672ae784b19213116efdb83690
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 6ad28a5da05cf77cfaa834ed9752daefeb5f4fdb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232443"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279978"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Postup upgradu Azure Dev Spacesch nástrojů
 
@@ -45,6 +41,6 @@ Podobně jako u jiných rozšíření a aktualizací Visual Studio vás upozorn�
 
 Chcete-li aktualizovat nástroje v aplikaci Visual Studio, klikněte na položku nabídky **rozšíření a aktualizace nástroje >** a na levé straně vyberte možnost **aktualizace**. Vyhledejte **Visual Studio Tools for Kubernetes** a klikněte na tlačítko **aktualizovat** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Otestujte nové nástroje vytvořením nového clusteru. Vyzkoušejte rychlé starty a kurzy na [Azure dev Spaces](/azure/dev-spaces).

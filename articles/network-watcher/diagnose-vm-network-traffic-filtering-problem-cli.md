@@ -1,5 +1,6 @@
 ---
-title: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – rychlý start – Azure CLI | Microsoft Docs
+title: 'Rychlý Start: Diagnostika problému s filtrováním provozu sítě virtuálních počítačů – Azure CLI'
+titleSuffix: Azure Network Watcher
 description: V tomto rychlém startu zjistíte, jak diagnostikovat problém s filtrováním síťového provozu virtuálního počítače pomocí funkce ověření toku protokolů IP služby Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 460513e4818cbef8fca0cd1b84d69b3021afaab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690429"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276080"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rychlý start: Diagnostika virtuálního počítače network filtrováním provozu – rozhraní příkazového řádku Azure
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure CLI
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
@@ -58,7 +59,7 @@ Vytvoření virtuálního počítače trvá několik minut. Dokud se virtuální
 
 Pokud chcete otestovat síťovou komunikaci pomocí služby Network Watcher, musíte nejprve sledovací proces sítě povolit v oblasti, ve které se nachází daný virtuální počítač, a potom teprve můžete k otestování komunikace použít funkci ověření toků protokolu IP služby Network Watcher.
 
-### <a name="enable-network-watcher"></a>Povolení sledovacího procesu sítě
+### <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
 Pokud už máte sledovací proces sítě v oblasti USA – východ povolený, přeskočte vpřed na část [Použití ověření toku protokolu IP](#use-ip-flow-verify). K vytvoření sledovacího procesu sítě v oblasti USA – východ použijte příkaz [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure):
 
@@ -248,7 +249,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili virtuální počítač a diagnostikovali jste příchozí a odchozí filtry síťového provozu. Zjistili jste, že pravidla skupiny zabezpečení sítě umožňují nebo odepírají příchozí i odchozí provoz virtuálního počítače. Zjistěte více o [pravidlech zabezpečení](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a způsobu [jejich vytvoření](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
 

@@ -1,5 +1,5 @@
 ---
-title: Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro sadu škálování virtuálního počítače s Windows
+title: Shromažďovat metriky Windows škálované sady v Azure Monitor se šablonou
 description: Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Správce prostředků pro sadu škálování virtuálního počítače s Windows
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844970"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286126"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro sadu škálování virtuálního počítače s Windows
 
@@ -52,7 +52,7 @@ Otevřete soubor **azuredeploy. Parameters. JSON** :
 - Zadejte **windowsOSVersion** , který chcete použít pro sadu škálování virtuálního počítače. Doporučujeme 2016 – Datacenter. 
 - Pojmenujte prostředek sady škálování virtuálního počítače, který se má nasadit, pomocí vlastnosti **vmssName** . Příkladem je **VMSS-wad-test**.    
 - Zadejte počet virtuálních počítačů, které chcete spustit v sadě škálování virtuálního počítače pomocí vlastnosti **instanceCount** .
-- Zadejte hodnoty pro **adminUsername** a **adminPassword** pro sadu škálování virtuálního počítače. Tyto parametry se používají pro vzdálený přístup k virtuálním počítačům v sadě škálování. Abyste se vyhnuli napadení virtuálního počítače, nepoužívejte ty v této šabloně. Roboty prověřování Internetu pro uživatelská jména a hesla ve veřejných úložištích GitHubu. Budou pravděpodobně testovány virtuální počítače s těmito výchozími hodnotami. 
+- Zadejte hodnoty pro **adminUsername** a **adminPassword** pro sadu škálování virtuálního počítače. Tyto parametry se používají pro vzdálený přístup k virtuálním počítačům v sadě škálování. Abyste se vyhnuli napadení virtuálního **počítače, nepoužívejte ty** v této šabloně. Roboty prověřování Internetu pro uživatelská jména a hesla ve veřejných úložištích GitHubu. Budou pravděpodobně testovány virtuální počítače s těmito výchozími hodnotami. 
 
 
 ###  <a name="modify-azuredeployjson"></a>Modify azuredeploy.json
@@ -239,8 +239,8 @@ Oba soubory uložte a zavřete.
 Pokud chcete nasadit šablonu Správce prostředků, použijte Azure PowerShell:  
 
 1. Spusťte PowerShell. 
-1. Přihlaste se k `Login-AzAccount`Azure pomocí.
-1. Seznam předplatných získáte pomocí `Get-AzSubscription`.
+1. Přihlaste se k Azure pomocí `Login-AzAccount`.
+1. Získejte seznam předplatných pomocí `Get-AzSubscription`.
 1. Nastavte odběr, který vytvoříte, nebo aktualizujte virtuální počítač: 
 
    ```powershell
@@ -276,7 +276,7 @@ Pokud chcete nasadit šablonu Správce prostředků, použijte Azure PowerShell:
 
 1. V nabídce na levé straně vyberte **monitor**. 
 
-1. Na stránce **monitor** vyberte metriky. 
+1. Na stránce **monitor** vyberte **metriky**. 
 
    ![Monitor – stránka metriky](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
 
@@ -286,13 +286,13 @@ Pokud chcete nasadit šablonu Správce prostředků, použijte Azure PowerShell:
 
 1. V rozevírací nabídce obory názvů vyberte **Azure. VM. Windows. Host**. 
 
-1. V rozevírací nabídce metriky vyberte **paměť\%, která se používá při použití svěřených bajtů**.  
+1. V rozevírací nabídce metriky vyberte **paměť\%používané Potvrzené bajty**.  
 
 Pak můžete zvolit, aby se dimenze v této metrikě použily k vytvoření grafu pro konkrétní virtuální počítač, nebo aby se každý virtuální počítač vynesl v sadě škálování. 
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
 
 

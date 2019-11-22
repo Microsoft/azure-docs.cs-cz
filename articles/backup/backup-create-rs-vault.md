@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit Recovery Services trezo
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c678452cd65d0b03d923659e380c1dcef3540ce1
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172429"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273395"
 ---
 # <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -72,6 +72,13 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit zp
 
 > [!NOTE]
 > Změna **typu replikace úložiště** (místně redundantní/geograficky redundantní) pro trezor služby Recovery Services je potřeba provést před konfigurací záloh v trezoru. Když nakonfigurujete zálohování, možnost změnit je zakázaná a **typ replikace úložiště**nemůžete změnit.
+
+## <a name="modifying-default-settings"></a>Úprava výchozích nastavení
+
+Důrazně doporučujeme před konfigurací záloh v trezoru zkontrolovat výchozí nastavení pro **typ replikace úložiště** a **nastavení zabezpečení** . 
+* **Typ replikace úložiště** je ve výchozím nastavení nastaven na **geograficky redundantní**. Po nakonfigurování zálohy bude možnost úprav zakázána. Chcete-li zkontrolovat a upravit nastavení, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) . 
+* **Obnovitelné odstranění** je ve výchozím nastavení **povolené** u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními. Chcete-li zkontrolovat a upravit nastavení, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) .
+
 
 ## <a name="next-steps"></a>Další kroky
 

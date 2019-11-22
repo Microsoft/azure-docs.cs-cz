@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 10/29/2019
+ms.date: 11/21/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 92f8aaad1cc3279142d419faa2852406c2956595
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2a6c5ca9f7d2ceaef08b28e78b38b94a459548f5
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685984"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304763"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Rychlý Start: Konfigurace izolace úloh pomocí T-SQL
 
@@ -77,19 +77,25 @@ Vytvořte [klasifikátor úloh](/sql/t-sql/statements/create-workload-classifier
 
 ```sql
 CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
-WITH (WORKLOAD_GROUP = 'ELTLogin'
-      ,MEMBERNAME = 'DataLoads')
+WITH (WORKLOAD_GROUP = 'DataLoads'
+      ,MEMBERNAME = 'ELTLogin')
 ;
 ```
 
-## <a name="view-existing-workload-groups-and-classifiers"></a>Zobrazení existujících skupin úloh a klasifikátorů
+## <a name="view-existing-workload-groups-and-classifiers-and-run-time-values"></a>Zobrazení existujících skupin úloh a klasifikátorů a hodnot runtime
 
 ```sql
+--Workload groups
 SELECT * FROM 
 sys.workload_management_workload_groups
 
+--Workload classifiers
 SELECT * FROM 
 sys.workload_management_workload_classifiers
+
+--Run-time values
+SELECT * FROM 
+sys.dm_workload_management_workload_groups_stats
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -122,5 +128,5 @@ Pomocí těchto kroků vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nyní jste vytvořili skupinu úloh. Spusťte několik dotazů jako ELTLogin, abyste viděli, jak fungují. V tématu [Sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) můžete zobrazit dotazy a přiřazenou skupinu úloh.
+- Nyní jste vytvořili skupinu úloh. Spusťte několik dotazů jako ELTLogin, abyste viděli, jak fungují. V tématu [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) můžete zobrazit dotazy a přiřazenou skupinu úloh.
 - Další informace o správě úloh Azure SQL Data Warehouse najdete v tématu věnovaném [správě](sql-data-warehouse-workload-management.md) úloh a [izolaci úloh](sql-data-warehouse-workload-isolation.md).

@@ -1,8 +1,6 @@
 ---
 title: Vývoj týmu pomocí Azure Dev Spaces s využitím jazyků Java a VS Code
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 08/01/2018
@@ -10,12 +8,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 08155dec072b6ce82eae62443712350ee5f70890
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.openlocfilehash: 7ffa47fb3bbb57941849876eabaa06ffa2f3971b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132069"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279548"
 ---
 # <a name="team-development-with-azure-dev-spaces-using-java-and-vs-code"></a>Vývoj týmu pomocí Azure Dev Spaces s využitím jazyků Java a VS Code
 

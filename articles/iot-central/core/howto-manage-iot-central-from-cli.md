@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: ddf1cfb1cb3997431b83812d03535ed990c88922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 80f91849a35bcb94b934941a204d4503ddda376b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806874"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278858"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
 
@@ -48,16 +48,16 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplikaci. Následující tabulka popisuje parametry používané pomocí příkazu **AZ iotcentral App Create** :
+Tyto příkazy nejprve vytvoří skupinu prostředků v umístění východní USA pro danou aplikaci. Následující tabulka popisuje parametry používané pomocí příkazu **AZ iotcentral App Create** :
 
 | Parametr         | Popis |
 | ----------------- | ----------- |
 | resource-group    | Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
-| location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **východní USA**, **západní USA**, **Severní Evropa**nebo **západní Evropa** nebo v zeměpisných oblastech **Austrálie** a **Asie a Tichomoří** . |
+| location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě** . |
 | jméno              | Název aplikace v Azure Portal. |
-| Subdomény         | Subdoména v adrese URL aplikace V příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
-| Skladové               | V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-| šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
+| subdomény         | Subdoména v adrese URL aplikace V příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
+| skladové               | V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+| Šablony          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
 | zobrazované jméno      | Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
 **Šablony aplikací**
@@ -69,7 +69,7 @@ Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA p
 | iotc-devkit-sample@1.0.0 | Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s některým z těchto zařízení. |
 
 > [!NOTE]
-> Šablona **aplikace Preview** je aktuálně dostupná pouze v oblastech **Severní Evropa** a **střed USA** .
+> Šablona **aplikace Preview** je aktuálně dostupná jenom v oblastech **Evropa** a **USA** .
 
 ## <a name="view-your-applications"></a>Zobrazení vašich aplikací
 

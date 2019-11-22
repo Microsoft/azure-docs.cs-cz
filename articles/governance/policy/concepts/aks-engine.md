@@ -3,12 +3,12 @@ title: Další Azure Policy pro modul AKS
 description: Přečtěte si, jak Azure Policy používá CustomResourceDefinitions a Open Agent zásad z gatekeeper V3 ke správě clusterů pomocí stroje AKS.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072065"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267255"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Vysvětlení Azure Policy pro modul AKS
 
@@ -282,6 +282,6 @@ Informace shromažďované doplňkem nejsou osobní údaje. V současné době j
 - Projděte si [strukturu definic zásad](definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).
 - Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](../how-to/get-compliance-data.md).
 - Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
 - Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

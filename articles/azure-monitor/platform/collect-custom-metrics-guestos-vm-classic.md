@@ -1,5 +1,5 @@
 ---
-title: Odeslání metriky hostovaného operačního systému do úložiště dat Azure Monitor pro virtuální počítač s Windows (Classic)
+title: Odeslání metriky pro klasický virtuální počítač s Windows do Azure Monitor databáze metrik
 description: Odeslání metriky hostovaného operačního systému do úložiště dat Azure Monitor pro virtuální počítač s Windows (Classic)
 author: anirudhcavale
 services: azure-monitor
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844919"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286144"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Odeslání metriky hostovaného operačního systému do úložiště dat Azure Monitor pro virtuální počítač s Windows (Classic)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Odeslání metriky hostovaného operačního systému do databáze Azure Monitor metriky pro virtuální počítač s Windows (Classic)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [Rozšíření diagnostika](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) Azure monitor (označované jako "wad" nebo "Diagnostika") umožňuje shromažďovat metriky a protokoly ze hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows (Classic) do úložiště metrik Azure Monitor. Počínaje diagnostikou verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem. 
+Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows (Classic) do databáze metriky Azure Monitor. Počínaje diagnostikou verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem. 
 
 Ukládání do tohoto umístění vám umožní přístup ke stejným akcím, jako u metrik platforem. Akce zahrnují upozorňování na téměř v reálném čase, vytváření grafů, směrování, přístup z REST API a další. Diagnostické rozšíření v minulosti vytvořilo Azure Storage, ale ne do Azure Monitorho úložiště dat. 
 
@@ -29,7 +29,7 @@ Proces, který je popsaný v tomto článku, funguje jenom na klasických virtu�
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte být [správcem služeb nebo](../../billing/billing-add-change-azure-subscription-administrator.md) spolusprávcem svého předplatného Azure. 
+- Musíte být [správcem služeb nebo spolusprávcem](../../billing/billing-add-change-azure-subscription-administrator.md) svého předplatného Azure. 
 
 - Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
@@ -40,12 +40,12 @@ Proces, který je popsaný v tomto článku, funguje jenom na klasických virtu�
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Vytvoření klasického virtuálního počítače a účtu úložiště
 
 1. Pomocí Azure Portal vytvořte klasický virtuální počítač.
-   ![Vytvoření klasického virtuálního počítače](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
+   ![vytvoření klasického virtuálního počítače](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
 
 1. Když vytváříte tento virtuální počítač, vyberte možnost pro vytvoření nového účtu klasického úložiště. Tento účet úložiště používáme v pozdějších krocích.
 
 1. V Azure Portal otevřete okno prostředek **účty úložiště** . Vyberte **klíče**a poznamenejte si název účtu úložiště a klíč účtu úložiště. Tyto informace budete potřebovat v pozdějších krocích.
-   ![Přístupové klíče k úložišti](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
+   přístupové klíče ![Storage](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
@@ -191,7 +191,7 @@ Udělte této aplikaci oprávnění vydavatele metrik monitorování pro prostř
 
 1.  V nabídce vlevo vyberte **monitor.**
 
-1.  V okně **monitor** vyberte metriky.
+1.  V okně **monitor** vyberte **metriky**.
 
     ![Přejít na metriky](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
 
@@ -200,9 +200,9 @@ Udělte této aplikaci oprávnění vydavatele metrik monitorování pro prostř
 1. V rozevírací nabídce obory názvů vyberte **Azure. VM. Windows. Host**.
 
 1. V rozevírací nabídce metriky vyberte svěřené bajtů, které **se používají**.
-   ![Metriky grafu](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
+   ![metriky vykreslení](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
 

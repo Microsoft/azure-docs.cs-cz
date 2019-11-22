@@ -1,6 +1,6 @@
 ---
-title: Jednotné upozorňování & monitorování v Azure Monitor nahrazuje klasické výstrahy & monitorování
-description: Přehled vyřazení klasických monitorovacích služeb a funkcí, které se dříve zobrazovaly v Azure Portal v části výstrahy (klasické). Monitorování klasického zobrazování výstrah & zahrnuje klasické výstrahy metrik pro prostředky Azure, klasické výstrahy metriky pro Application Insights, klasické výstrahy WebTest pro Application Insights, klasické výstrahy na základě vlastních metrik pro Application Insights a Classic. výstrahy pro Application Insights SmartDetection v1
+title: Aktualizace klasického upozorňování & monitorování v Azure Monitor
+description: Popis vyřazení klasických monitorovacích služeb a funkcí, které se dříve zobrazovaly v Azure Portal v části výstrahy (Classic).
 author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676899"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307090"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Jednotné upozorňování & monitorování v Azure Monitor nahrazuje klasické výstrahy & monitorování
 
 Azure Monitor se teď stala sjednocenou úplnou službou pro monitorování zásobníku, která teď v rámci prostředků podporuje jednu metriku a jedno upozornění. Další informace najdete v našem [blogovém příspěvku o novém Azure monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Nové platformy pro monitorování a upozorňování Azure jsou sestavené tak, aby byly rychlejší, inteligentnější a rozšiřitelné, a přitom dodržíte rostoucí expansei cloud computingu a online pomocí inteligentního cloudového filozofie Microsoftu. 
 
-S novou platformou monitorování a upozorňování Azure vyřadíme monitorování "klasického" a upozornění na platformu, která je hostovaná v části *zobrazení klasických výstrah* Azure upozornění, bude od **srpna 2019 ve veřejných cloudech Azure zastaralé** . . Nebudete mít vliv na [Azure Government Cloud](../../azure-government/documentation-government-welcome.md) a [Azure Čína 21Vianet](https://docs.azure.cn/) .
+S novou platformou monitorování a upozorňování Azure vyřadíme monitorování "klasického" a upozornění na platformu, která je hostovaná v části *zobrazení klasických výstrah* v rámci Azure Alerts. **srpna 2019 ve veřejných cloudech Azure**. Nebudete mít vliv na [Azure Government Cloud](../../azure-government/documentation-government-welcome.md) a [Azure Čína 21Vianet](https://docs.azure.cn/) .
 
 > [!NOTE]
 > Vzhledem k prodlevám při zavádění migračního nástroje pro migraci se datum vyřazení pro migraci klasických výstrah [rozšířila na 31. srpna 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od původně oznámeného dne 30. června 2019.
@@ -70,20 +70,20 @@ Na konci srpna 2019 v Azure Monitor:
 - Některá [klasická pravidla výstrah, která nelze automaticky migrovat](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated) a vyžadují ruční akci od uživatelů, budou nadále běžet až do června 2020.
 
 > [!IMPORTANT]
-> Microsoft Azure monitorování má v nástroji fáze zahrnuté [do nejbližší migrace](alerts-using-migration-tool.md) svých klasických pravidel upozornění na novou platformu. A spustí se tím, že vynutí všechna klasická pravidla výstrah, která stále existují a můžou být migrována od září 2019. Zákazníci budou muset zajistit, aby datová část pravidla upozornění Classic pro automatizaci byla přizpůsobená, aby zpracovávala novou datovou část z [sjednocených metrik a výstrah v Application Insights](#unified-metrics-and-alerts-in-application-insights) nebo [sjednocených metrik a výstrah pro jiné prostředky Azure](#unified-metrics-and-alerts-for-other-azure-resources), po migraci z klasických pravidel výstrahy. Další informace najdete v tématu [Příprava pro migraci pravidla upozornění Classic](alerts-prepare-migration.md) .
+> Microsoft Azure monitorování má v nástroji fáze zahrnuté [do nejbližší migrace](alerts-using-migration-tool.md) svých klasických pravidel upozornění na novou platformu. A spustí se tím, že vynutí všechna klasická pravidla výstrah, která stále existují a můžou být migrována od září 2019. Zákazníci budou muset zajistit, aby datová část pravidla pro automatizaci Classic byla přizpůsobená, aby zpracovávala novou datovou část z [sjednocených metrik a výstrah v Application Insights](#unified-metrics-and-alerts-in-application-insights) nebo [sjednocených metrik a výstrah pro jiné prostředky Azure](#unified-metrics-and-alerts-for-other-azure-resources), po migraci klasických pravidel upozornění. Další informace najdete v tématu [Příprava pro migraci pravidla upozornění Classic](alerts-prepare-migration.md) .
 
 Tento článek se průběžně aktualizuje pomocí odkazů & podrobnostmi týkajícími se nových funkcí upozorňování služby Azure Monitoring & a dostupnosti nástrojů pro pomoc uživatelům při přijímání nové Azure Monitor platformy.
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Ceny pro migrovaná pravidla výstrah
 
-Zavádíme Nástroj pro migraci, který vám umožní migrovat [výstrahy Azure monitor Classic](../../azure-monitor/platform/alerts-classic.overview.md) na nové prostředí výstrah. Migrovaná pravidla výstrah a odpovídající migrované skupiny akcí (e-mail, Webhook nebo LogicApp) zůstanou zadarmo. Funkce, které jste používali s klasickými výstrahami včetně možnosti upravit prahovou hodnotu, typ agregace a členitosti agregace, budou nadále k dispozici zdarma s vaším pravidlem upozornění na migraci. Pokud však pravidlo migrované výstrahy upravíte tak, aby používalo některou z nových funkcí a oznámení z nové platformy pro upozornění, budou platit odpovídající poplatky. Další informace o cenách pro pravidla a oznámení výstrah najdete v tématu [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/).
+Zavádíme Nástroj pro migraci, který vám umožní migrovat [výstrahy Azure monitor Classic](../../azure-monitor/platform/alerts-classic.overview.md) na nové prostředí výstrah. Migrovaná pravidla upozornění a odpovídající migrované skupiny akcí (e-mail, webhook nebo LogicApp) zůstanou zadarmo. Funkce, které jste měli s klasickými upozorněními, jako je možnost upravit prahovou hodnotu, typ agregace a granularitu agregace, budou dál s migrovaným pravidlem upozornění k dispozici zadarmo. Pokud ale upravíte migrované pravidlo upozornění, aby používalo některou z nových funkcí, oznámení nebo typů akcí platformy upozornění, uplatní se odpovídající poplatek. Další informace o cenách pro pravidla a oznámení výstrah najdete v tématu [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/).
 
-Následují příklady případů, kdy se vám za pravidlo výstrahy účtují poplatky:
+Následují příklady případů, kdy u pravidla upozornění vzniknou poplatky:
 
-- Jakékoli nové (nemigrováno) pravidlo výstrahy vytvořené nad rámec volných jednotek na nové platformě Azure Monitor
-- Všechna data ingestovaná a zachovaná mimo volné jednotky, kterou zahrnuje Azure Monitor
-- Všechny webové testy multi-test spouštěné Application Insights
-- Všechny vlastní metriky uložené mimo volné jednotky, které jsou součástí Azure Monitor
+- Libovolné nové (nemigrované) pravidlo upozornění vytvořené nad bezplatné jednotky na nové platformě Azure Monitor
+- Libovolná data ingestovaná a zachovaná nad bezplatné jednotky obsažené Azure Monitorem
+- Libovolné násobné webové testy provedené službou Application Insights
+- Libovolné vlastní metriky uložené nad bezplatné jednotky obsažené v Azure Monitoru
 - Všechna migrovaná pravidla výstrah, která jsou upravena pro použití novějších funkcí metriky, jako je frekvence, více prostředků nebo dimenzí, [dynamické prahové hodnoty](alerts-dynamic-thresholds.md), změna prostředku nebo signálu atd.
 - Všechny migrované skupiny akcí, které jsou upraveny pro použití novějších oznámení, nebo typů akcí, jako je SMS, hlasový hovor nebo integrace ITSM.
 

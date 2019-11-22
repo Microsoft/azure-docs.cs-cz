@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Nakonfigurujte centrální Cerner pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat služby Azure Active Directory tak, aby automaticky zřizovat uživatele pro plán Indie – střed Cerner.
+title: 'Kurz: zřizování uživatelů pro CERN – střed – Azure AD'
+description: Naučte se, jak nakonfigurovat Azure Active Directory pro Automatické zřizování uživatelů v seznamu v centru CERN.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,121 +15,121 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61e88e0fe7e6eec5b3cdfd03755a186744b77b47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e80373fa28f1ea24d6a2d5fc2c147bf81b2b279
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964202"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276515"
 ---
-# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Kurz: Nakonfigurujte centrální Cerner pro automatické zřizování uživatelů
+# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Kurz: Konfigurace centrálního přivisionu pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v centrální Cerner a Azure AD automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD do seznamu uživatelů v centrální Cerner.
+Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste v rámci služby CERN a Azure AD automaticky zřídili a zrušili zřizování uživatelských účtů od Azure AD až po seznam uživatelů ve společnosti CERN – střed.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
 * Tenanta Azure Active Directory.
-* Centrální Cerner tenanta
+* Centrální tenant pro CERN
 
 > [!NOTE]
-> Azure Active Directory se integruje s centrální Cerner pomocí [SCIM](http://www.simplecloud.info/) protokolu.
+> Azure Active Directory se integruje se standardem CERN pomocí protokolu [SCIM](http://www.simplecloud.info/) .
 
-## <a name="assigning-users-to-cerner-central"></a>Přiřazování uživatelů k Cerner – střed
+## <a name="assigning-users-to-cerner-central"></a>Přiřazení uživatelů ke CERN – střed
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů jsou synchronizovány pouze uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD. 
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD. 
 
-Před konfigurací a povolení služby zřizování, byste měli rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup k Cerner střed. Jakmile se rozhodli, můžete přiřadit těmto uživatelům Cerner centrální podle zde uvedených pokynů:
+Než nakonfigurujete a povolíte službu zřizování, měli byste se rozhodnout, co můžou uživatelé a skupiny v Azure AD zastupovat s uživateli, kteří potřebují přístup ke službě CERN (střed). Jakmile se rozhodnete, můžete těmto uživatelům přiřadit střed k CERN, a to podle pokynů uvedených tady:
 
-[Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
+[Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Důležité tipy pro přiřazování uživatelů k Cerner – střed
+### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Důležité tipy pro přiřazení uživatelů ke CERN – střed
 
-* Dále je doporučeno jednoho uživatele Azure AD pro centrální Cerner přidělí k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
+* Doporučuje se, aby se jeden uživatel Azure AD přiřadil ke službě CERN Central, aby otestoval konfiguraci zřizování. Další uživatele a skupiny můžete přiřadit později.
 
-* Po dokončení pro jednoho uživatele počátečního testování Cerner centrální doporučuje přiřazení celý seznam uživatelů určená pro přístup k žádným řešením Cerner (nejen Cerner centrální) být zřízená soupisky Cerner od uživatele.  Jiná řešení Cerner využít tento seznam uživatelů v seznamu uživatelů.
+* Po dokončení počátečního testování pro jednoho uživatele doporučuje společnost CERN přiřazovat úplný seznam uživatelů, kteří mají přístup k jakémukoli řešení CERN (ne jenom k centrálnímu úřadu), aby je bylo možné zřídit v seznamu uživatelů ve společnosti CERN.  Další řešení pro CERN využívají tento seznam uživatelů v pracovním seznamu uživatelů.
 
-* Při přiřazení uživatele k centrální Cerner, je nutné vybrat **uživatele** v dialogovém okně přiřazení role. Uživatelé s rolí "Výchozí přístup" jsou vyloučeny z zřizování.
+* Když přiřadíte uživatele do organizace CERN, musíte v dialogovém okně přiřazení vybrat roli **uživatele** . Uživatelé s rolí "výchozí přístup" se z zřizování vylučují.
 
-## <a name="configuring-user-provisioning-to-cerner-central"></a>Konfigurace zřizování uživatelů pro centrální Cerner
+## <a name="configuring-user-provisioning-to-cerner-central"></a>Konfigurace zřizování uživatelů na CERN – střed
 
-Tato část vás provede připojením služby Azure AD pro centrální Cerner soupisky uživatele pomocí jeho Cerner SCIM uživatelského účtu rozhraní API zřizování a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazených uživatelských účtů, Indie – střed Cerner v závislosti na přiřazení uživatelů a skupin ve službě Azure AD.
+V této části se seznámíte s tím, že propojíte svůj účet Azure AD s využitím rozhraní API pro zřizování uživatelských účtů SCIM CERN a nakonfigurujete službu zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v centru CERN na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také pro centrální Cerner povoleno založené na SAML jednotného přihlašování, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce se vzájemně doplňují. Další informace najdete v tématu [Cerner centrální jednotné přihlašování – kurz](cernercentral-tutorial.md).
+> Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML pro standard CERN, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když tyto dvě funkce doplňují sebe. Další informace najdete v [kurzu centrálního jednotného přihlašování ve službě CERN](cernercentral-tutorial.md).
 
-### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Postup konfigurace automatického zřizování uživatelských účtů do centrální Cerner ve službě Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na CERN – střed v Azure AD:
 
-Pro zřízení uživatelských účtů do centrální Cerner, budete muset Cerner žádat Cerner centrální systémový účet a vygenerování tokenu nosiče OAuth, Azure AD můžete použít k připojení ke koncovému bodu SCIM Cerner společnosti. Doporučuje se také, že integrace provést v prostředí izolovaného prostoru Cerner, před nasazením do produkčního prostředí.
+Aby bylo možné zřídit uživatelské účty pro společnost "CERN", budete muset požádat o účet centrálního systému CERN od společnosti CERN a vygenerovat token nosiče OAuth, který může služba Azure AD použít pro připojení ke koncovému bodu SCIM společnosti CERN. Před nasazením do produkčního prostředí taky doporučujeme, aby se integrace prováděla v prostředí s izolovaným prostorem (CERN).
 
-1. Prvním krokem je zajistit uživatelům správu Cerner a integrace služby Azure AD s účtem CernerCare, je nutná pro přístup k dokumentaci, které jsou nezbytné pro dokončení pokynů. V případě potřeby použijte k vytvoření účtů CernerCare v každé příslušné prostředí níže uvedených adres URL.
+1. Prvním krokem je zajistit, aby lidé, kteří spravují CERN a integraci služby Azure AD, měli účet CernerCare, který je nezbytný pro přístup k dokumentaci, která je nutná k dokončení těchto pokynů. V případě potřeby pomocí níže uvedených adres URL vytvořte účty CernerCare v každém příslušném prostředí.
 
-   * Izolovaného prostoru:  https://sandboxcernercare.com/accounts/create
+   * Izolovaný prostor: https://sandboxcernercare.com/accounts/create
 
-   * Produkční:  https://cernercare.com/accounts/create  
+   * Výroba: https://cernercare.com/accounts/create  
 
-2. V dalším kroku musí být vytvořený účet systém pro službu Azure AD. Postupujte podle pokynů níže požádat o systémový účet pro izolovaný prostor a produkční prostředí.
+2. V dalším kroku se musí vytvořit systémový účet pro Azure AD. Pomocí níže uvedených pokynů si vyžádejte systémový účet pro izolovaný prostor a produkční prostředí.
 
-   * Pokyny:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Pokyny: https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Izolovaného prostoru: https://sandboxcernercentral.com/system-accounts/
+   * Izolovaný prostor: https://sandboxcernercentral.com/system-accounts/
 
-   * Produkční:  https://cernercentral.com/system-accounts/
+   * Výroba: https://cernercentral.com/system-accounts/
 
-3. Dále vygenerujte tokenu nosiče OAuth pro každý z vašich účtů systému. Chcete-li to provést, postupujte podle pokynů níže.
+3. Dále vygenerujte nosný token OAuth pro každý účet systému. Pokud to chcete provést, postupujte podle následujících pokynů.
 
-   * Pokyny:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Pokyny: https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Izolovaného prostoru: https://sandboxcernercentral.com/system-accounts/
+   * Izolovaný prostor: https://sandboxcernercentral.com/system-accounts/
 
-   * Produkční:  https://cernercentral.com/system-accounts/
+   * Výroba: https://cernercentral.com/system-accounts/
 
-4. Nakonec budete muset získat ID sféry seznamu uživatelů pro prostředí izolovaného prostoru i produkčním prostředí v Cerner a dokončete tak konfiguraci. Informace o tom, jak získat to najdete v tématu: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
+4. Nakonec potřebujete pro dokončení konfigurace získat ID sféry soupisu uživatelů pro izolovaný prostor a produkční prostředí ve společnosti CERN. Informace o tom, jak to získat, najdete v tématu: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
 
-5. Teď můžete konfigurovat Azure AD za účelem zřízení uživatelských účtů do Cerner. Přihlaste se k [webu Azure portal](https://portal.azure.com)a vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+5. Teď můžete službu Azure AD nakonfigurovat tak, aby zřídila uživatelské účty pro CERN. Přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte do části **Azure Active Directory > podnikové aplikace > všechny aplikace** .
 
-6. Pokud jste už nakonfigurovali Cerner centrální pro jednotné přihlašování, hledání instance Cerner střední pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **Cerner centrální** v galerii aplikací. Ve výsledcích hledání vyberte Cerner centrální a přidat do seznamu aplikací.
+6. Pokud jste již v rámci jednotného přihlašování nakonfigurovali CERN (), vyhledejte svou instanci poskytovatele CERN pomocí vyhledávacího pole. V opačném případě vyberte možnost **Přidat** a vyhledejte v galerii aplikací položku **CERN** . Z výsledků hledání vyberte CERN – střed a přidejte ho do seznamu aplikací.
 
-7. Vyberte instanci Cerner centrální a potom **zřizování** kartu.
+7. Vyberte svou instanci nástroje CERN (střed) a pak vyberte kartu **zřizování** .
 
-8. Nastavte **režim zřizování** k **automatické**.
+8. Nastavte **režim zřizování** na **automaticky**.
 
-   ![Centrální Cerner zřizování](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
+   ![Centrální zřizování pro CERN](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9. Vyplňte následující pole v rámci **přihlašovacích údajů správce**:
+9. Do následujících polí zadejte v části **přihlašovací údaje správce**:
 
-   * V **adresy URL Tenanta** pole, zadejte adresu URL ve formátu níže, nahraďte ID sféry jste získali v kroku #4 "– seznam členů-sféry – ID uživatele".
+   * V poli **Adresa URL tenanta** zadejte adresu URL ve formátu níže a nahraďte "User-The-REALM-ID" ID sféry, kterou jste získali v kroku #4.
 
-    > Izolovaného prostoru: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Izolovaný prostor: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
     > 
-    > Produkční: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Výroba: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * V **tajný klíč tokenu** pole, zadejte tokenu nosiče OAuth, který jste vygenerovali v kroku #3 a klikněte na tlačítko **Test připojení**.
+   * V poli **token tajného klíče** zadejte token nosiče OAuth, který jste vygenerovali v kroku #3 a klikněte na **Test připojení**.
 
-   * Zobrazí se oznámení o úspěchu upperright straně na portálu.
+   * Na straně upperright na portálu by se mělo zobrazit oznámení o úspěchu.
 
-1. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko níže.
+1. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko níže.
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
-1. V **mapování atributů** , projděte si atributy uživatelů a skupin ze služby Azure AD synchronizovány se službou Cerner střed. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty a skupiny v centrální Cerner pro operace update. Vyberte tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se mají synchronizovat z Azure AD do společnosti CERN – střed. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů a skupin v centru CERN – střed pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
-1. Služba pro centrální Cerner zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu
+1. Pokud chcete povolit službu Azure AD Provisioning pro CERN (střed), změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
-Tím se spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k centrální Cerner v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v aplikaci Centrální Cerner zřizovací služba.
+Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených ke službě CERN (střed) v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v centrální aplikaci pro vaši organizaci.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Centrální Cerner: Publikování dat identit pomocí Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
-* [Kurz: Konfigurace Cerner centrální pro jednotné přihlašování s Azure Active Directory](cernercentral-tutorial.md)
+* [CERN – střed: publikování dat identity pomocí Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
+* [Kurz: Konfigurace služby CERN (střed) pro jednotné přihlašování pomocí Azure Active Directory](cernercentral-tutorial.md)
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
+* Přečtěte si, [Jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).

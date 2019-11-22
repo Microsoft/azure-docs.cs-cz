@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822979"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306419"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy týkající se komerčního tržiště Microsoftu
 
@@ -165,7 +165,7 @@ Nepřímí zákazníci smlouva Enterprise (EA) musí kontaktovat své Licensing 
 
 **Můžu řídit přístup zaměstnanců do Azure Marketplace a nákupních oprávnění?**
 
-Ano, pro zákazníky smlouva Enterprise (EA) může správce registrace vypnout oprávnění koupit pro všechny účty v registraci a znovu ho převést na dostatečně dlouhou dobu, aby si mohl koupit. Všichni zákazníci navíc můžou použít Azure Policy k omezení možností nasazení pro svá předplatná Azure, včetně správy prostředků Azure Marketplace.
+Ano, pro zákazníky smlouva Enterprise (EA) může správce registrace vypnout oprávnění koupit pro všechny účty v registraci a znovu ho převést na dostatečně dlouhou dobu, aby si mohl koupit.
 
 **Jaké způsoby platby se podporují pro nákupy na komerčním webu Marketplace?**
 
@@ -173,7 +173,7 @@ Zákazníci si můžou koupit nabídky z Azure Marketplace a Microsoft AppSource
 
 **Můžu ve svém účtu použít prostředky peněžních závazků nebo kredity předplatného Azure k dispozici pro Azure Marketplace nabídky?**
 
-Pro konkrétní nabídky Azure Marketplace je možné využít kredity předplatného Azure nebo prostředky peněžních závazků. Úplný seznam produktů, které se účastní tohoto programu, najdete v tématu [finanční závazek Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) . Tyto nabídky nezahrnují možnosti BYOL nebo BYOS. Všechny ostatní Azure Marketplace nabídky nemůžou používat kredity nebo peněžní závazky předplatného Azure, jako je například bezplatný kredit na zkušební verzi v rámci Azure, měsíční kredity MSDN, kredity z propagačních akcí Azure, zůstatky peněžních závazků a jakékoli jiné bezplatné kredity od Azure.
+Pro konkrétní nabídky Azure Marketplace je možné využít kredity předplatného Azure nebo prostředky peněžních závazků. Úplný seznam produktů zapojených do tohoto programu najdete v tématu [Peněžní závazek Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Tyto nabídky nezahrnují možnosti BYOL nebo BYOS. Všechny ostatní Azure Marketplace nabídky nemůžou používat kredity nebo peněžní závazky předplatného Azure, jako je například bezplatný kredit na zkušební verzi v rámci Azure, měsíční kredity MSDN, kredity z propagačních akcí Azure, zůstatky peněžních závazků a jakékoli jiné bezplatné kredity od Azure.
 
 **Vztahují se na nákupy Azure Marketplace multilicenční slevy?**
 
@@ -348,7 +348,7 @@ Po dokončení nabídky a nastavení cíle realizace se seznam může řádně p
 
 **Které země nebo oblasti jsou Azure Marketplace k dispozici pro vydavatele, kteří prodávají?**
 
-Vydavatelé založené na následujících zemích nebo oblastech můžou v současné době prodávat v Azure Marketplace: Afghánistán, Albánie, Alžírsko, Angola, Antigua a Barbuda, Argentina, Arménie, Austrálie, Rakousko, Ázerbájdžán, Bahrajn, Bělorusko, Austrálie, Benin Bolívie, Bosna a Hercegovina, Botswana, Brazílie, Bulharsko, Burkina Faso, Burundi, Kambodža, Kamerun, Kanada, Středoafrická republika, Čad, Chile, Kolumbie, Kongo, Kongo, Konžská demokratická republika, Kostarika, Chorvatsko, Chorvatsko, Kypr, Česká republika, Dánsko, Dominika, Dominikánská republika, Ekvádor, Egypt, Island, Salvador, Island, Etiopie, Singapur, Island, Finsko, Francie, Gruzie, Německo, Ghana, Řecko, Rakousko, Rakousko, Island, Indie, Hongkong Irsko, Izrael, Itálie, Jamajka, Japonsko, Indie, Maďarsko, Keňa, Indie, Indie, Indie, Lotyšsko, Indie, Indie, Indie, Indie, Lotyšsko, Indie, Indie, Indie, Lotyšsko, Malta, Jižní Hora Maroko, Mosambik, Nepál, Nizozemsko, Nový Zéland, Nikaragua, Niger, Nigérie, Norsko, Omán, Rumunsko, Panama, Paraguay, Peru, Filipíny, Polsko, Portugalsko, Rumunsko, Srbsko, Rwanda, Saúdská Arábie, Senegal, Srbsko, Sierra Leone, Singapur Slovensko, Slovinsko, Somálsko, Jižní Afrika, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tádžikistán, Tanzanie, Indie, Východní Timor, Togo, Tonga, Trinidad a Tobago, Tunisko, Turecko, Turkmenistán, Uganda, Ukrajina, Spojené arabské emiráty, Spojené království, Spojené království Státy, Uruguay, Uzbekistán, Venezuela, Vietnam, Zambie a Zimbabwe.
+Vydavatelé založené na následujících zemích nebo oblastech můžou v současné době prodávat v Azure Marketplace: Afghánistán, Albánie, Alžírsko, Angola, Antigua a Barbuda, Argentina, Arménie, Austrálie, Rakousko, Ázerbájdžán, Bahrajn, Bangladéš, Bělorusko, Belgie, Benin, Bolívie, Singapur, Bosna, Brazílie, Indie, Burkina Faso, Burundi, Kambodža, Kamerun, Kanada, Středoafrická republika, Čad, Chile, Kolumbie, Kypr, Česká republika, Kostarika, Brazílie, Chorvatsko, Kypr, Kypr Dánsko, Dominika, Dominikánská republika, Ekvádor, Egypt, El Salvador, Eritrea, Estonsko, Etiopie, Fidži, Finsko, Francie, Gruzie, Německo, Ghana, Řecko, Rakousko, Guatemala Guinea, Haiti, Honduras, Hongkong – zvláštní správní oblast, Maďarsko, Island, Indie, Indie, Indie, Irsko, Izrael, Itálie, Jamajka, Japonsko, Maďarsko, Indie, Indie, Indie, Indie, Lotyšsko, Lotyšsko, Indie, Lotyšsko, Lotyšsko, Malta, Lucembursko Maroko, Mosambik, Nepál, Nizozemsko, Nový Zéland, Nikaragua, Niger, Nigérie, Norsko, Omán, Pákistán, Panama, Paraguay, Peru, Filipíny, Polsko Portugalsko, Katar, Rumunsko, Indie, Rwanda, Saúdská Arábie, Senegal, Srbsko, Sierra Leone, Singapur, Slovensko, Slovinsko, Somálsko, Jižní Afrika, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tádžikistán, Egypt, Indie, Turkmenistán, Indie, Trinidad, Spojené království Státy, Uruguay, Uzbekistán, Venezuela, Vietnam, Zambie a Zimbabwe.
 
 **Návody odstranit výpis z Azure Marketplace?**
 

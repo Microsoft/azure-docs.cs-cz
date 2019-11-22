@@ -1,31 +1,31 @@
 ---
-title: Připojení s využitím rozšíření Truffle
+title: Připojení ke službě Azure blockchain pomocí Truffle
 description: Připojení k síti služby Azure blockchain pomocí Truffle
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: f5d752c99331d454e7f9f98c06b9ba0209de8cc7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932593"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285384"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Rychlý start: Použití rozšíření Truffle pro připojení k transakčnímu uzlu
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Rychlý Start: použití Truffle pro připojení ke službě Azure blockchain
 
-Truffle je blockchain vývojové prostředí, které můžete použít pro připojení k uzlu transakce služby Azure blockchain.
+V tomto rychlém startu použijete Truffle připojit k uzlu transakce služby Azure blockchain. Pak použijete interaktivní konzolu Truffle k volání metod **web3** pro interakci se sítí blockchain.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Kompletní [rychlé spuštění: Vytvořte člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlého startu: Vytvoření členu blockchain služby Azure blockchain pomocí Azure CLI](create-member-cli.md)
+* Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Nainstalujte [Truffle](https://github.com/trufflesuite/truffle). Truffle vyžaduje instalaci několika nástrojů, včetně [Node. js](https://nodejs.org), [Gitu](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Pro Web3 je potřeba Python.
 
@@ -33,7 +33,7 @@ Truffle je blockchain vývojové prostředí, které můžete použít pro přip
 
 1. Otevřete příkazový řádek Node. js nebo prostředí.
 1. Změňte adresář na místo, kde chcete vytvořit adresář projektu Truffle.
-1. Vytvořte adresář pro projekt a změňte cestu k novému adresáři. Například
+1. Vytvořte adresář pro projekt a změňte cestu k novému adresáři. Například:
 
     ``` bash
     mkdir truffledemo
@@ -58,18 +58,21 @@ Truffle je blockchain vývojové prostředí, které můžete použít pro přip
 
 Ke konfiguraci projektu Truffle potřebujete některé informace o uzlu transakce z Azure Portal.
 
-### <a name="transaction-node-endpoint-addresses"></a>Adresy koncových bodů uzlu transakce
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přejít na člena služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
-1. V Azure Portal přejděte na výchozí uzel transakce a vyberte **uzly transakce > připojovací řetězce**.
-1. Zkopírujte a uložte adresu URL koncového bodu z **https (přístupový klíč 1)** . Adresy koncových bodů pro konfigurační soubor inteligentních smluv budete potřebovat později v tomto kurzu.
+    ![Vybrat výchozí uzel transakce](./media/connect-truffle/transaction-nodes.png)
 
-    ![Adresa koncového bodu transakce](./media/connect-truffle/endpoint.png)
+1. Vyberte **připojovací řetězce**.
+1. Zkopírujte připojovací řetězec z **https (přístupová klávesa 1)** . Pro další oddíl potřebujete řetězec.
+
+    ![Připojovací řetězec](./media/connect-truffle/connection-string.png)
 
 ### <a name="edit-configuration-file"></a>Upravit konfigurační soubor
 
 Dále je potřeba aktualizovat konfigurační soubor Truffle pomocí koncového bodu uzlu transakce.
 
-1. Ve složce projektu **truffledemo** otevřete konfigurační soubor `truffle-config.js` Truffle v editoru.
+1. Ve složce projektu **truffledemo** otevřete konfigurační soubor Truffle `truffle-config.js` v editoru.
 1. Nahraďte obsah souboru následujícími konfiguračními informacemi. Přidejte proměnnou obsahující adresu koncového bodu. Nahraďte lomenou závorku hodnotami, které jste shromáždili z předchozí části.
 
     ``` javascript
@@ -86,7 +89,7 @@ Dále je potřeba aktualizovat konfigurační soubor Truffle pomocí koncového 
     }
     ```
 
-1. Uložte změny do `truffle-config.js`.
+1. Uložte změny `truffle-config.js`.
 
 ## <a name="connect-to-transaction-node"></a>Připojení k transakčnímu uzlu
 
@@ -100,7 +103,7 @@ Pomocí *Web3* se připojte k uzlu transakce.
 
     Truffle se připojí k výchozímu uzlu transakce a poskytne interaktivní konzolu.
 
-    Můžete volat metody v objektu **web3** pro interakci s vaším uzlem transakce.
+    Můžete volat metody v objektu **web3** pro interakci se sítí blockchain.
 
 1. Zavolejte metodu **getBlockNumber** , která vrátí aktuální číslo bloku.
 
@@ -122,9 +125,9 @@ Pomocí *Web3* se připojte k uzlu transakce.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili projekt Truffle pro připojení ke svému výchozímu uzlu transakce služby Azure blockchain.
+V tomto rychlém startu jste použili Truffle k připojení k výchozímu uzlu transakce služby Azure blockchain a použili interaktivní konzolu pro návrat aktuální číslo blockchain bloku.
 
-Zkuste v dalším kurzu použít Azure blockchain Development Kit pro Ethereem a Truffle k vytvoření, sestavení, nasazení a spuštění funkce inteligentního kontraktu prostřednictvím transakce.
+Zkuste v dalším kurzu použít Azure blockchain Development Kit pro Ethereem k vytvoření, sestavení, nasazení a spuštění funkce inteligentního kontraktu prostřednictvím transakce.
 
 > [!div class="nextstepaction"]
 > [Použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv](send-transaction.md)

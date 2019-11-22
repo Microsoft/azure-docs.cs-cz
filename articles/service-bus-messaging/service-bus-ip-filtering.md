@@ -11,30 +11,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02d6e150e638321e11a8dec9838e360faa00783e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496342"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280945"
 ---
 # <a name="use-firewall-rules"></a>Použít pravidla brány firewall
 
-V případě scénářů, ve kterých je Azure Service Bus dostupné jenom z určitých dobře známých lokalit, pravidla brány firewall umožňují konfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Například tyto adresy můžou být firemní bránou NAT.
+V případě scénářů, ve kterých je Azure Service Bus dostupné jenom z určitých dobře známých lokalit, pravidla brány firewall umožňují konfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Tyto adresy může být například těch, které podnikové bráně překladu adres.
 
-## <a name="when-to-use"></a>When to use
+## <a name="when-to-use"></a>Kdy je použít
 
 Pokud chcete nastavit Service Bus tak, že by měl přijímat přenosy jenom ze zadaného rozsahu IP adres, a zamítnout všechno ostatní, můžete *bránu firewall* použít k blokování Service Bus koncových bodů z jiných IP adres. Například používáte Service Bus se službou [Azure Express Route][express-route] k vytváření privátních připojení k místní infrastruktuře. 
 
 ## <a name="how-filter-rules-are-applied"></a>Jak se používají pravidla filtru
 
-Pravidla filtru IP jsou použita na úrovni oboru názvů Service Bus. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu.
+Pravidla filtru IP jsou použita na úrovni oboru názvů Service Bus. Takže pravidla se vztahují na všechna připojení od klientů pomocí libovolného protokolu pro podporované.
 
-Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Service Bus, se odmítnou jako neoprávněné. Odpověď nezmiňuje pravidlo protokolu IP.
+Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Service Bus, se odmítnou jako neoprávněné. Odpověď není zmiňuje pravidlo protokolu IP.
 
 ## <a name="default-setting"></a>Výchozí nastavení
 
-Ve výchozím nastavení je mřížka **filtru IP** na portálu pro Service Bus prázdná. Toto výchozí nastavení znamená, že váš obor názvů přijímá připojení libovolné IP adresy. Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0.
+Ve výchozím nastavení je mřížka **filtru IP** na portálu pro Service Bus prázdná. Toto výchozí nastavení znamená, že váš obor názvů přijímá připojení libovolné IP adresy. Toto výchozí nastavení je ekvivalentní pravidlo, které přijímá tento rozsah IP adres 0.0.0.0/0.
 
 ## <a name="ip-filter-rule-evaluation"></a>Vyhodnocení pravidla filtru IP
 
@@ -46,7 +46,6 @@ Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá 
 > Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud je implementováno filtrování IP adres (pravidla brány firewall) a bude k dispozici brzy.
 >
 > Běžné scénáře Azure, které nefungují s filtrováním IP adres (Všimněte si, že seznam **není vyčerpávající)** –
-> - Azure Monitor
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
 > - Trasy k Azure IoT Hub
@@ -54,7 +53,7 @@ Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá 
 >
 > Níže uvedené služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service
-> - Funkce Azure
+> - Azure Functions
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Vytvoření virtuální sítě a pravidla brány firewall pomocí šablon Azure Resource Manager
 
@@ -65,13 +64,13 @@ Následující šablona Správce prostředků umožňuje přidání pravidla vir
 
 Parametry šablony:
 
-- **ipMask** je jedna adresa IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 70.37.104.0/24 představuje 256 IPv4 adres z 70.37.104.0 do 70.37.104.255, přičemž 24 značí počet významných bitů předpony pro daný rozsah.
+- **ipMask** je jedna IPv4 adresa nebo blok IP adres v zápisu CIDR. Například v CIDR notation 70.37.104.0/24 představuje 256 adresy IPv4 z 70.37.104.0 70.37.104.255 s 24 označující počet bitů významné předpona pro rozsah.
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
 > Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
 > 
-> Výsledkem
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

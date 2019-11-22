@@ -1,21 +1,17 @@
 ---
 title: Vývoj pro tým v Kubernetes pomocí Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 04/25/2019
 ms.topic: quickstart
 description: Vývoj týmu Kubernetes pomocí kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 9bdd52f2c120d338859259b046f7f4b97bbc4eed
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: b6afd4193c38e414937fc0e57461d403f47cbd6d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585198"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279772"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Rychlý Start: vývoj týmu v Kubernetes pomocí Azure Dev Spaces
 

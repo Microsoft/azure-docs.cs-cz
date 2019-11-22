@@ -1,5 +1,5 @@
 ---
-title: Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory | Microsoft Docs
+title: Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure AD
 description: Jak vybrat podnikovou aplikaci, do které se přiřadí uživatel nebo skupina v Azure Active Directory
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d28b9c31b8fbad8a565ff8cbdf717bfb3bc1309
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a5135f97ffb7d29c9fd928382ca4344beaa654d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896476"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274738"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory
 
@@ -89,7 +89,7 @@ Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v do
 
 Pokud chcete přiřadit skupinu k podnikové aplikaci, je potřeba nahradit `Get-AzureADUser` `Get-AzureADGroup`.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workplace Analytics](https://products.office.com/business/workplace-analytics) pomocí PowerShellu.
 

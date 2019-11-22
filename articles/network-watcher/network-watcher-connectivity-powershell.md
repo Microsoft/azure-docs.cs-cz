@@ -1,5 +1,6 @@
 ---
-title: Řešení potíží s připojením pomocí Azure Network Watcher – PowerShell | Microsoft Docs
+title: Řešení potíží s připojením – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Naučte se používat funkci řešení potíží s připojením pro Azure Network Watcher s využitím PowerShellu.
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802044"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276000"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Řešení potíží s připojením k Azure Network Watcher pomocí PowerShellu
 
@@ -39,13 +40,13 @@ Naučte se používat řešení potíží s připojením k ověření, jestli je
 * Virtuální počítače pro řešení potíží s připojeními.
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešíte potíže, byl nainstalován rozšíření virtuálního počítače `AzureNetworkWatcherExtension`. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl nainstalovaný `AzureNetworkWatcherExtension` rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Ověřte připojení k virtuálnímu počítači.
 
 Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```powershell
 $rgName = "ContosoRG"
@@ -64,7 +65,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi je `ConnectionStatus` **nedosažitelný**. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení k virtuálnímu zařízení se nepovedlo kvůli uživatelsky nakonfigurované `NetworkSecurityRule` s názvem **UserRule_Port80**, která je nakonfigurovaná tak, aby blokovala příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
+Následující odpověď je z předchozího příkladu.  V této odpovědi je `ConnectionStatus` **nedosažitelný**. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení na virtuálním zařízení se nepovedlo kvůli `NetworkSecurityRule` nakonfigurovanému uživatelem s názvem **UserRule_Port80**, která je nakonfigurovaná tak, aby blokovala příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
 
 ```
 ConnectionStatus : Unreachable
@@ -139,7 +140,7 @@ Hops             : [
 
 Tento příklad kontroluje připojení mezi virtuálním počítačem a vzdáleným koncovým bodem. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```powershell
 $rgName = "ContosoRG"
@@ -155,7 +156,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu je `ConnectionStatus` zobrazeno jako **nedostupné**. Podrobnosti o `Hops` můžete zobrazit v části `Issues`, že provoz byl zablokován z důvodu `UserDefinedRoute`. 
+V následujícím příkladu je `ConnectionStatus` zobrazen jako **nedosažitelný**. V podrobnostech o `Hops` se můžete podívat v části `Issues`, že provoz byl zablokován z důvodu `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -202,7 +203,7 @@ Hops             : [
 
 Následující příklad zkontroluje připojení k webu. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```powershell
 $rgName = "ContosoRG"
@@ -219,7 +220,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpověď
 
-V následující reakci vidíte `ConnectionStatus` zobrazených jako **dostupné**. Po úspěšném připojení se dodávají hodnoty latence.
+V následující reakci vidíte, že `ConnectionStatus` zobrazuje, jak lze **dosáhnout**. Po úspěšném připojení se dodávají hodnoty latence.
 
 ```
 ConnectionStatus : Reachable
@@ -254,7 +255,7 @@ Hops             : [
 
 Následující příklad zkontroluje připojení z virtuálního počítače k účtu úložiště blogu. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```powershell
 $rgName = "ContosoRG"
@@ -271,7 +272,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpověď
 
-Následující JSON je příklad reakce na spuštění předchozí rutiny. Jelikož je cíl dosažitelný, vlastnost `ConnectionStatus` se zobrazí jako **dosažitelná**.  Zadali jste podrobnosti o počtu směrování, které vyžaduje, aby se dosáhlo objektu BLOB úložiště a latence.
+Následující JSON je příklad reakce na spuštění předchozí rutiny. Jelikož je cíl dosažitelný, zobrazí se jako **dosažitelná**vlastnost `ConnectionStatus`.  Zadali jste podrobnosti o počtu směrování, které vyžaduje, aby se dosáhlo objektu BLOB úložiště a latence.
 
 ```json
 ConnectionStatus : Reachable

@@ -1,7 +1,7 @@
 ---
-title: Run batch predictions using Azure Machine Learning designer (preview)
+title: Spuštění dávkového předpovědiu pomocí návrháře Azure Machine Learning (Preview)
 titleSuffix: Azure Machine Learning
-description: Learn how to train a model and set up a batch prediction pipeline using the designer. Deploy the pipeline as a parameterized web service, which can be triggered from any HTTP library.
+description: Naučte se naučit model a nastavit kanál předpovědi dávky pomocí návrháře. Nasaďte kanál jako parametrizovanou webovou službu, která se dá aktivovat z libovolné knihovny HTTP.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,101 +11,101 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 623400c2ee75f9ef1495e839ba9f418e48f11708
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: a44ac821271cc07a790c380287391f41650ced19
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229155"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276738"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Run batch predictions using Azure Machine Learning designer
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In this how-to, you learn how to use the designer to train a model and set up a batch prediction pipeline and web service. Batch prediction allows for continuous and on-demand scoring of trained models on large data sets, optionally configured as a web service that can be triggered from any HTTP library. 
+V tomto postupu se naučíte, jak používat návrháře k učení modelu a nastavení kanálu předpovědi a webové služby Batch. Předpovědi dávek umožňuje průběžné a vyhodnocování vyškolených modelů ve velkých sadách dat, volitelně nakonfigurovaných jako webová služba, která se dá aktivovat z libovolné knihovny HTTP. 
 
-For setting up batch scoring services using the SDK, see the accompanying [how-to](how-to-run-batch-predictions.md).
+Informace o nastavení služby Batch vyhodnocování pomocí sady SDK najdete v doprovodném [postupu](how-to-run-batch-predictions.md).
 
-In this how-to, you learn the following tasks:
+V tomto postupu se naučíte následující úlohy:
 
 > [!div class="checklist"]
-> * Create a basic ML experiment in a pipeline
-> * Create a parameterized batch inference pipeline
-> * Manage and run pipelines manually or from a REST endpoint
+> * Vytvoření experimentu na základním ML v kanálu
+> * Vytvoření parametrizovaného kanálu pro odvození dávky
+> * Ruční správa a spouštění kanálů nebo použití koncového bodu REST
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-1. If you don’t have an Azure subscription, create a free account before you begin. Try the [free or paid version of the Azure Machine Learning service](https://aka.ms/AMLFree).
+1. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-1. Create a [workspace](tutorial-1st-experiment-sdk-setup.md).
+1. Vytvořte [pracovní prostor](tutorial-1st-experiment-sdk-setup.md).
 
-1. Sign in to [Azure Machine Learning studio](https://ml.azure.com/).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
-This how-to assumes basic knowledge of building a simple pipeline in the designer. For a guided introduction to the designer, complete the [tutorial](tutorial-designer-automobile-price-train-score.md). 
+Tento postup předpokládá základní znalosti o vytvoření jednoduchého kanálu v návrháři. Úvodní Úvod k Návrháři dokončíte pomocí tohoto [kurzu](tutorial-designer-automobile-price-train-score.md). 
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-To create a batch inference pipeline, you first need a machine learning experiment. To create one, navigate to the **Designer** tab in your workspace and create a new pipeline by selecting the **Easy-to-use prebuilt modules** option.
+Pokud chcete vytvořit kanál pro odvození dávky, budete nejdřív potřebovat experiment strojového učení. Pokud ho chcete vytvořit, přejděte na kartu **Návrhář** v pracovním prostoru a vytvořte nový kanál výběrem možnosti **snadno používané předem připravené moduly** .
 
-![Designer home](media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
+![Domovská stránka Návrháře](media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
 
-The following is a simple machine learning model for demonstration purposes. The data is a registered Dataset created from the Azure Open Datasets diabetes data. See the [how-to section](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) for registering Datasets from Azure Open Datasets. The data is split into training and validation sets, and a boosted decision tree is trained and scored. The pipeline must be run at least once to be able to create an inferencing pipeline. Click the **Run** button to run the pipeline.
+Následuje jednoduchý model strojového učení pro demonstrační účely. Tato data jsou registrovanou datovou sadou vytvořenou z dat diabetes otevřených pomocí Azure Open DataSet. V [části postupy](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) pro registraci datových sad z otevřených datových sad Azure. Data jsou rozdělená na školicí a ověřovací sady a vyškolený rozhodovací strom se vystaví a vyhodnotí skóre. Aby bylo možné vytvořit kanál Inferencing, musí se kanál aspoň jednou spustit. Kliknutím na tlačítko **Spustit** kanál spustíte.
 
-![Create simple experiment](media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+![Vytvoření jednoduchého experimentu](media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
 
-## <a name="create-a-batch-inference-pipeline"></a>Create a batch inference pipeline
+## <a name="create-a-batch-inference-pipeline"></a>Vytvoření kanálu odvození dávky
 
-Now that the pipeline has been run, there is a new option available next to **Run** and **Publish** called **Create inference pipeline**. Click the dropdown and select **Batch inference pipeline**.
+Teď, když je kanál spuštěný, je k dispozici nová možnost pro **spuštění** a **publikování** s názvem **vytvořit odvození kanálu**. Klikněte na rozevírací seznam a vyberte **kanál odvození dávky**.
 
-![Create batch inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+![Vytvořit kanál odvození dávky](media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
 
-The result is a default batch inference pipeline. This includes a node for your original pipeline experiment setup, a node for raw data for scoring, and a node to score the raw data against your original pipeline.
+Výsledkem je výchozí kanál odvození dávky. Patří sem uzel pro instalaci experimentu s vaším původním kanálem, uzel pro nezpracované data pro bodování a uzel, který bude vyhodnocovat nezpracovaná data oproti původnímu kanálu.
 
-![Default batch inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+![Výchozí odvozený kanál dávky](media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
 
-You can add other nodes to change the behavior of the batch inferencing process. In this example, you add a node for randomly sampling from the input data before scoring. Create a **Partition and Sample** node and place it between the raw data and scoring nodes. Next, click on the **Partition and Sample** node to gain access to the settings and parameters.
+Chcete-li změnit chování procesu dávkového Inferencing, můžete přidat další uzly. V tomto příkladu přidáte uzel pro náhodné vzorkování ze vstupních dat před vyhodnocením. Vytvořte **oddíl a ukázkový** uzel a umístěte ho mezi nezpracovaná data a uzly bodování. Potom kliknutím na **oddíl oddíl a ukázkový** uzel získáte přístup k nastavení a parametrům.
 
-![New node](media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+![Nový uzel](media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
 
-The *Rate of sampling* parameter controls what percent of the original data set to take a random sample from. This is a parameter that will be useful to adjust frequently, so you enable it as a pipeline parameter. Pipeline parameters can be changed at runtime, and can be specified in a payload object when rerunning the pipeline from a REST endpoint. 
+Parametr *frekvence vzorkování* určuje, v jakém procentu původní sady dat se vybral náhodný vzorek. Toto je parametr, který bude vhodný k častému úpravám, takže ho aktivujete jako parametr kanálu. Parametry kanálu lze změnit za běhu a lze je zadat v objektu datové části při spuštění kanálu z koncového bodu REST. 
 
-To enable this field as a pipeline parameter, click the ellipses above the field and then click **Add to pipeline parameter**. 
+Pokud chcete toto pole Povolit jako parametr kanálu, klikněte na tři tečky nad polem a pak klikněte na **Přidat do parametru kanálu**. 
 
-![Sample settings](media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+![Ukázková nastavení](media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
 
-Next, give the parameter a name and default value. The name will be used to identify the parameter, and specify it in a REST call.
+Dále zadejte název a výchozí hodnotu parametru. Název bude použit k identifikaci parametru a jeho určení ve volání REST.
 
 ![Parametr kanálu](media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
 
-## <a name="deploy-batch-inferencing-pipeline"></a>Deploy batch inferencing pipeline
+## <a name="deploy-batch-inferencing-pipeline"></a>Nasazení kanálu Batch Inferencing
 
-Now you are ready to deploy the pipeline. Click the **Deploy** button, which opens the interface to set up an endpoint. Click the dropdown and select **New PipelineEndpoint**.
+Nyní jste připraveni k nasazení kanálu. Klikněte na tlačítko **nasadit** , které otevře rozhraní pro nastavení koncového bodu. Klikněte na rozevírací seznam a vyberte **Nový PipelineEndpoint**.
 
-![Pipeline deploy](media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+![Nasazení kanálu](media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
 
-Give the endpoint a name and optional description. Near the bottom you see the `sample-rate` parameter you configured with a default value of 0.8. When you're ready, click **Deploy**.
+Zadejte název a volitelný popis koncového bodu. V dolní části uvidíte parametr `sample-rate`, u kterého jste nakonfigurovali výchozí hodnotu 0,8. Až budete připraveni, klikněte na **nasadit**.
 
-![Setup endpoint](media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+![Koncový bod instalace](media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
 
 ## <a name="manage-endpoints"></a>Správa koncových bodů 
 
-After deployment is complete, go to the **Endpoints** tab and click the name of the endpoint you just created.
+Po dokončení nasazení přejděte na kartu **koncové body** a klikněte na název koncového bodu, který jste právě vytvořili.
 
-![Endpoint link](media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+![Odkaz na koncový bod](media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
 
-This screen shows all published pipelines under the specific endpoint. Click on your inferencing pipeline.
+Tato obrazovka zobrazuje všechny publikované kanály v rámci konkrétního koncového bodu. Klikněte na svůj kanál Inferencing.
 
-![Inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+![Odvození kanálu](media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
 
-The pipeline details page shows you detailed run history and connection string information for your pipeline. Click the **Run** button to create a manual run of the pipeline.
+Na stránce Podrobnosti o kanálu najdete detailní historii spuštění a informace o připojovacím řetězci pro váš kanál. Kliknutím na tlačítko **Spustit** vytvoříte ruční spuštění kanálu.
 
-![Pipeline details](media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
+![Podrobnosti kanálu](media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-In the run setup, you can provide a description for the run, and change the value for any pipeline parameters. This time, rerun the inferencing pipeline with a sample rate of 0.9. Click **Run** to run the pipeline.
+V instalačním programu můžete zadat popis běhu a změnit hodnotu parametrů kanálu. Tentokrát znovu spusťte kanál Inferencing s vzorkovací frekvencí 0,9. Kliknutím na **Spustit** kanál spustíte.
 
-![Pipeline run](media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+![Spuštění kanálu](media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
 
-The **Consume** tab contains the REST endpoint for rerunning your pipeline. To make a rest call, you will need an OAuth 2.0 bearer-type authentication header. See the following [tutorial section](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) for more detail on setting up authentication to your workspace and making a parameterized REST call.
+Karta **Spotřeba** obsahuje koncový bod REST pro spuštění vašeho kanálu. Chcete-li provést volání REST, budete potřebovat hlavičku ověřování typu Bearer (OAuth 2,0). Další informace o nastavení ověřování pro váš pracovní prostor a o tom, jak se provádí parametrizované volání REST, najdete v následující [části kurzu](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Follow the designer [tutorial](tutorial-designer-automobile-price-train-score.md) to train and deploy a regression model.
+Postupujte podle [kurzu](tutorial-designer-automobile-price-train-score.md) návrháře a Projděte a nasaďte regresní model.

@@ -1,6 +1,6 @@
 ---
-title: Odkazy na stránce nefungují pro aplikaci Proxy aplikací | Dokumentace Microsoftu
-description: Řešení potíží s nefunkční odkazy na aplikace Proxy aplikací, které mají integrované s Azure AD
+title: Odkazy na stránce nefungují pro aplikaci proxy aplikace.
+description: Řešení potíží s nefunkčními odkazy v aplikacích proxy aplikací, které jste integrují s Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,36 +16,36 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bb7326ed22217e56bdaf9a119529ba775b69a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 570699fe83197a1b5442909d8b89e285a1dfa73b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783247"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275440"
 ---
-# <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nefungují pro aplikaci Proxy aplikací
+# <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nefungují pro aplikaci proxy aplikace.
 
-Tento článek pomáhá řešit potíže způsobující odkazy na aplikace Azure Active Directory Application Proxy nebudou správně fungovat.
+Tento článek vám pomůže při odstraňování potíží, proč odkazy v aplikaci Proxy aplikací služby Azure Active Directory nefungují správně.
 
 ## <a name="overview"></a>Přehled 
-Po publikování aplikace Proxy aplikací, jenom odkazy, které fungují ve výchozím nastavení v aplikaci jsou odkazy na cíle, které jsou obsažené v publikované kořenová adresa URL. Nefungují odkazy v rámci aplikace, interní adresa URL pro aplikaci pravděpodobně nezahrnuje všechny cíle odkazů v rámci aplikace.
+Po publikování aplikace proxy aplikací jsou jediným odkazům, které fungují ve výchozím nastavení v aplikaci, odkazy na cíle obsažené v publikované kořenové adrese URL. Odkazy v aplikacích nefungují, interní adresa URL pro aplikaci pravděpodobně neobsahuje všechna umístění odkazů v rámci aplikace.
 
-**Proč k tomu dochází?** Při klepnutí na odkaz v aplikaci Proxy aplikací se pokusí přeložit adresu URL jako buď interní adresa URL uvnitř stejné aplikace nebo jako adresu URL externě dostupný. Pokud odkaz směřuje na interní adresu URL, která není v rámci stejné aplikace, ji není patří do některé z těchto kontejnerů a způsobit chybu nenalezení.
+**Proč k tomu dochází?** Když kliknete na odkaz v aplikaci, pokusí se proxy aplikace přeložit adresu URL jako interní adresu URL v rámci stejné aplikace nebo jako externě dostupnou adresu URL. Pokud odkaz odkazuje na interní adresu URL, která není v rámci stejné aplikace, nepatří do žádné z těchto kontejnerů a výsledkem není chyba, která nebyla nalezena.
 
-## <a name="ways-you-can-resolve-broken-links"></a>Způsoby, které lze vyřešit nefunkční odkazy
+## <a name="ways-you-can-resolve-broken-links"></a>Způsoby, jak můžete vyřešit nefunkční odkazy
 
-Existují tři způsoby, jak tento problém vyřešit. Volby níže jsou uvedeny v zvýšit složitost.
+Existují tři způsoby, jak tento problém vyřešit. Níže uvedené možnosti jsou uvedeny a zvyšují složitost.
 
-1.  Ujistěte se, že interní adresa URL kořenového, která obsahuje všechny odkazy, které jsou relevantní pro aplikaci. To umožňuje všechny odkazy na být vyřešeny automatickým obsah publikovaný v rámci stejné aplikace.
+1.  Ujistěte se, že interní adresa URL je kořen, který obsahuje všechny relevantní odkazy pro aplikaci. To umožňuje, aby všechny odkazy byly vyřešeny jako obsah publikovaný v rámci stejné aplikace.
 
-    Pokud změníte interní adresa URL, ale nechcete změnit cílová stránka pro uživatele, změňte adresu URL domovské stránky na dříve publikovaným interní adresa URL. To můžete udělat tak, že přejdete do "Azure Active Directory" -&gt; registrace aplikací –&gt; vyberte aplikaci, kterou -&gt; vlastnosti. Na této kartě Vlastnosti se zobrazí pole "Adresa URL domovské stránky", který můžete upravit na požadovanou cílovou stránkou.
+    Pokud změníte interní adresu URL, ale nechcete změnit cílovou stránku pro uživatele, změňte adresu URL domovské stránky na dříve publikovanou interní adresu URL. Můžete to udělat tak, že v části Azure Active Directory&gt; registrace aplikací-&gt; vyberete vlastnosti aplikace-&gt;. Na této kartě Vlastnosti vidíte pole Adresa URL domovské stránky, které můžete upravit jako požadovanou cílovou stránku.
 
-2.  Pokud vaše aplikace použít plně kvalifikované názvy domény (FQDN), použijte [vlastních domén](application-proxy-configure-custom-domain.md) k publikování aplikace. Tato funkce umožňuje stejnou adresu URL, který se má použít jak interně a externě.
+2.  Pokud vaše aplikace používají plně kvalifikované názvy domén (FQDN), publikujte své aplikace pomocí [vlastních domén](application-proxy-configure-custom-domain.md) . Tato funkce umožňuje používat stejnou adresu URL interně i externě.
 
-    Tato možnost zajišťuje odkazy v aplikaci zvenku přístupný prostřednictvím Proxy aplikací od odkazy v aplikaci na interní adresy URL jsou také rozpoznány externě. Všechny odkazy stále musí patřit do publikované aplikace. Však s touto možností odkazy nemusí patřit do stejné aplikace a můžou patřit do několika aplikací.
+    Tato možnost zajistí, že jsou odkazy v aplikaci externě přístupné prostřednictvím proxy aplikací, protože odkazy v aplikaci na interní adresy URL jsou také rozpoznány externě. Všechny odkazy stále potřebují patřit do publikované aplikace. Pomocí této možnosti ale odkazy nemusejí patřit do stejné aplikace a můžou patřit do více aplikací.
 
-3.  Pokud žádná z těchto možností jsou to proveditelné, povolení vložený odkaz překlad více způsoby. Mezi tyto možnosti patří pomocí Intune Managed Browser, Moje aplikace rozšíření, nebo pomocí nastavení překladu odkaz na aplikaci. Další informace o každé z těchto možností a jak je chcete povolit, najdete v článku [přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD](application-proxy-configure-hard-coded-link-translation.md).
+3.  Pokud žádná z těchto možností není proveditelná, existuje více možností pro povolení překladu vloženého odkazu. Mezi tyto možnosti patří použití rozšíření Intune Managed Browser, moje aplikace nebo použití nastavení překladu odkazů ve vaší aplikaci. Další informace o každé z těchto možností a o tom, jak je povolit, najdete v tématu [přesměrování pevně zakódované odkazů pro aplikace publikované pomocí Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
 

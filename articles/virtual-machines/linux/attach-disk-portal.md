@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037050"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279139"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
 V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -183,6 +183,15 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>Alternativní metoda používající částečně
+Nástroj Fdisk potřebuje interaktivní vstup, a proto není ideální pro použití v rámci skriptů automatizace. [Nástroj, který se dá](https://www.gnu.org/software/parted/) využít, ale může být skriptovaná, takže se ve scénářích automatizace lépe zahodí. Částečný nástroj lze použít k rozdělení na oddíly a naformátování datového disku. V tomto návodu použijeme nový datový disk/dev/sdc a naformátujeme ho pomocí systému souborů [XFS](https://xfs.wiki.kernel.org/) .
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+Jak vidíte výše, používáme nástroj [partprobe](https://linux.die.net/man/8/partprobe) k tomu, abyste se ujistili, že jádro okamžitě ví o novém oddílu a systému souborů. Neúspěšné použití partprobe může způsobit, že blkid nebo lslbk příkazy nevrátí UUID pro nový systém souborů hned.
+
 ### <a name="mount-the-disk"></a>Připojit disk
 Vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následující příklad vytvoří adresář na adrese */datadrive*:
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933028"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278611"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu v Azure Monitor
 
@@ -105,11 +105,11 @@ SecurityEvent
 
 Při psaní podmínek filtrování můžete použít následující výrazy:
 
-| Výraz | Popis | Příklad: |
+| Výraz | Popis | Příklad |
 |:---|:---|:---|
 | == | Kontrolovat rovnost<br>(rozlišuje velká a malá písmena) | `Level == 8` |
 | =~ | Kontrolovat rovnost<br>(nerozlišuje velká a malá písmena) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =, < > | Kontrolovat nerovnost<br>(oba výrazy jsou identické) | `Level != 4` |
+| !=, <> | Kontrolovat nerovnost<br>(oba výrazy jsou identické) | `Level != 4` |
 | *a*, *nebo* | Požadováno mezi podmínkami| `Level == 16 or CommandLine != ""` |
 
 Chcete-li filtrovat podle více podmínek, můžete buď použít **, a**:
@@ -239,4 +239,7 @@ Chcete-li, aby byl výstup jasný, vyberte ho a zobrazte ho jako časový graf. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [psaní vyhledávacích dotazů](search-queries.md)
+- Přečtěte si další informace o použití řetězcových dat v dotazu protokolu s použitím [řetězců v Azure Monitorch](string-operations.md)dotazech protokolu.
+- Přečtěte si další informace o agregaci dat v dotazu protokolu s [pokročilými agregacemi v Azure Monitorch dotazech protokolu](advanced-aggregations.md).
+- Naučte se, jak propojit data z několika tabulek pomocí [spojení v Azure monitor dotazy protokolu](joins.md).
+- Získejte dokumentaci k celému dotazovacímu jazyku Kusto v [Referenční příručce jazyka KQL](/azure/kusto/query/).

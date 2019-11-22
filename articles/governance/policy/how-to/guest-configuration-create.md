@@ -3,12 +3,12 @@ title: Postup vytvoření zásad konfigurace hostů
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro virtuální počítače se systémem Windows nebo Linux.
 ms.date: 09/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c7b214a07b89f4b66aa32724259b01129b9b7e9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2f8ad66e636f7fa37d94d24d12a2537759a3304b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959481"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279356"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
@@ -412,4 +412,4 @@ Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-
 
 - Přečtěte si o auditování virtuálních počítačů pomocí [Konfigurace hostů](../concepts/guest-configuration.md).
 - Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](getting-compliance-data.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](get-compliance-data.md).

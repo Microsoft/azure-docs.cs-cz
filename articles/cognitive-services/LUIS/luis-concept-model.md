@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4cbca96ed95167615f3ff2876e27e546d08d92f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507712"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280864"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Návrh s využitím a modelů entit 
 
@@ -37,7 +37,7 @@ Dekompozice modelu má následující části:
 * [entity rozpoznané počítačem](#machine-learned-entities)
     * dílčí [součásti](#entity-subcomponents-help-extract-data) (také přeučené entity počítače)
         * [popisovače](#descriptors-are-features) poskytované funkcemi 
-        * [omezení](#constraints-are-text-rules) poskytovaná entitami, které neodkazují na počítač, například (regulární výrazy a seznamy)
+        * [omezení](#constraints-are-text-rules) poskytovaná entitami, které nejsou učené počítačem, jako jsou regulární výrazy a seznamy
 
 ## <a name="v2-authoring-models"></a>Modely vytváření sestav v2
 
@@ -134,7 +134,7 @@ Záměrem je požadovaný výsledek _celého_ utterance, zatímco entity jsou č
 
 Tento utterance _musí_ mít záměr a _může_ mít entity:
 
-`Buy a airline ticket from Seattle to Cairo`
+`Buy an airline ticket from Seattle to Cairo`
 
 Tento utterance má jeden záměr:
 

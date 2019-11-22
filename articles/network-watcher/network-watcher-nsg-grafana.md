@@ -1,6 +1,7 @@
 ---
-title: Správa protokoly skupiny zabezpečení sítě tok pomocí Network Watcheru a Grafany | Dokumentace Microsoftu
-description: Správa a analyzovat protokoly skupiny zabezpečení sítě tok v Azure s využitím Network Watcheru a Grafany.
+title: Správa protokolů toku NSG pomocí Grafana
+titleSuffix: Azure Network Watcher
+description: Spravujte a analyzujte protokoly toku skupin zabezpečení sítě v Azure pomocí Network Watcher a Grafana.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -15,41 +16,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e92f4db575e4b318af8dc7bf3ba2eb4b69a3a2d9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116243"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277940"
 ---
-# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Správa a analýza protokolů toku skupin zabezpečení sítě s využitím Network Watcheru a Grafany
+# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Správa a analýza protokolů toku skupiny zabezpečení sítě pomocí Network Watcher a Grafana
 
-[Síťové protokoly toků skupin zabezpečení (NSG)](network-watcher-nsg-flow-logging-overview.md) poskytují informace, které lze použít k pochopení příchozí a odchozí přenosy na síťových rozhraních. Tyto protokoly toku zobrazení odchozí a příchozí toků na jednotlivé pravidlo skupiny zabezpečení sítě síťového rozhraní tok vztahuje na 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový Port, protokol), a jestli byl povolený nebo zakázaný provoz.
+[Protokoly toku pro skupinu zabezpečení sítě (NSG)](network-watcher-nsg-flow-logging-overview.md) poskytují informace, které se dají použít k pochopení příchozího a odchozího provozu IP na síťových rozhraních. Tyto protokoly toku ukazují odchozí a příchozí toky na základě pravidla pro NSG, síťové rozhraní, ke kterému se tok vztahuje, 5 – informace o toku (zdrojová nebo cílová IP adresa, zdrojový/cílový port, protokol) a pokud byl provoz povolen nebo odepřen.
 
 > [!Warning]  
-> Následující postup fungovat s verzí protokolů toku 1. Podrobnosti najdete v tématu [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Postupujte podle následujících pokynů nebude fungovat s verzí 2 soubory protokolů, bez jakýchkoli úprav.
+> Následující kroky fungují s protokoly toku verze 1. Podrobnosti najdete v tématu [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Následující pokyny nebudou fungovat s verzí 2 souborů protokolu bez úprav.
 
-Může mít mnoho skupin zabezpečení sítě v síti s povoleno protokolování toků. Díky takové množství dat protokolování náročná analyzovat a zkoumat velké vaše protokoly. Tento článek obsahuje některé řešení a centrálně spravovat tyto protokoly toků NSG pomocí služby Grafana, open source grafické zobrazení nástroje, ElasticSearch, distribuované vyhledávání a analytickém modulu a Logstash, což je kanál opensourcových zpracování dat na straně serveru.  
+V síti můžete mít mnoho skupin zabezpečení sítě s povoleným protokolováním toků. Toto množství dat protokolování umožňuje nenáročným analyzovat a získávat poznatky z protokolů. Tento článek poskytuje řešení centrální správy těchto protokolů toku NSG pomocí Grafana, open source nástroje pro vytváření grafů, ElasticSearch, distribuovaného vyhledávacího a analytického stroje a Logstash, což je open source kanál pro zpracování dat na straně serveru.  
 
 ## <a name="scenario"></a>Scénář
 
-Protokoly toků NSG jsou povolené pomocí Network Watcheru a jsou uloženy v úložišti objektů blob v Azure. Modul plug-in se používá k připojení a zpracování protokolů toku z úložiště objektů blob a odeslat je do ElasticSearch.  Jakmile tok protokoly se ukládají do ElasticSearch, mohou být analyzovat a vizualizovat do přizpůsobené řídicí panely v Grafana.
+Protokoly toku NSG jsou povolené pomocí Network Watcher a jsou uložené v úložišti objektů BLOB v Azure. Modul plug-in Logstash se používá k připojení a zpracování protokolů toku ze služby Blob Storage a jejich posílání do ElasticSearch.  Jakmile se protokoly toků ukládají v ElasticSearch, dají se analyzovat a vizuálně přizpůsobovat do přizpůsobených řídicích panelů v Grafana.
 
 ![NSG Network Watcher Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
 
-## <a name="installation-steps"></a>Postup instalace
+## <a name="installation-steps"></a>Instalační kroky
 
-### <a name="enable-network-security-group-flow-logging"></a>Protokolování toků povolit skupiny zabezpečení sítě
+### <a name="enable-network-security-group-flow-logging"></a>Povolit protokolování toku skupin zabezpečení sítě
 
-V tomto scénáři musí mít síťové zabezpečení skupiny tok protokolování povoleno na alespoň jednu skupinu zabezpečení sítě ve vašem účtu. Pokyny k povolení protokolů toku zabezpečení sítě, najdete v následujícím článku [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+V tomto scénáři musíte mít povolené protokolování toku skupin zabezpečení sítě ve vašem účtu aspoň v jedné skupině zabezpečení sítě. Pokyny k povolení protokolů toku zabezpečení sítě najdete v následujícím článku [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
-### <a name="setup-considerations"></a>Důležité informace o nastavení
+### <a name="setup-considerations"></a>Předpoklady pro instalaci
 
-V tomto příkladu jsou Grafana a ElasticSearch, Logstash nakonfigurované na serveru se systémem Ubuntu 16.04 LTS nasazené v Azure. Tato minimální instalaci se používají pro spouštění všechny tři komponenty – všechny jsou spuštěné na stejném virtuálním počítači. Toto nastavení slouží pouze pro testování a méně náročné úlohy. Grafana, Logstash a Elasticsearch můžete navržený nezávisle škálovat napříč velký počet instancí. Další informace najdete v dokumentaci pro jednotlivé komponenty.
+V tomto příkladu jsou Grafana, ElasticSearch a Logstash nakonfigurované na serveru Ubuntu 16,04 LTS nasazeném v Azure. Tato minimální instalace se používá pro spouštění všech tří komponent – všechny jsou spuštěné na stejném virtuálním počítači. Toto nastavení by se mělo používat jenom pro testování a méně důležité úlohy. Logstash, Elasticsearch a Grafana se dají navrhovat tak, aby se nezávisle škálovat napříč mnoha instancemi. Další informace najdete v dokumentaci pro každou z těchto součástí.
 
-### <a name="install-logstash"></a>Instalace Logstash
+### <a name="install-logstash"></a>Nainstalovat Logstash
 
-Pomocí Logstash sloučit protokolů toku ve formátu JSON na úroveň tok řazené kolekce členů.
+Pomocí Logstash můžete shrnout protokoly toku ve formátu JSON do úrovně řazené kolekce členů toku.
 
 1. Pokud chcete nainstalovat Logstash, spusťte následující příkazy:
 
@@ -58,13 +59,13 @@ Pomocí Logstash sloučit protokolů toku ve formátu JSON na úroveň tok řaze
     sudo dpkg -i logstash-5.2.0.deb
     ```
 
-2. Konfigurace Logstash pro analýzu protokolů toku a odešlete do ElasticSearch. Vytvoření souboru Logstash.conf pomocí:
+2. Nakonfigurujte Logstash k analýze protokolů toku a jejich odeslání do ElasticSearch. Vytvořte soubor Logstash. conf pomocí:
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-3. Přidejte následující obsah do souboru. Změníte klíč účtu úložiště název a přístup tak, aby odrážely podrobnosti o vašem účtu úložiště:
+3. Do souboru přidejte následující obsah. Změňte název účtu úložiště a přístupový klíč tak, aby odrážely podrobnosti účtu úložiště:
 
    ```bash
     input {
@@ -138,27 +139,27 @@ Pomocí Logstash sloučit protokolů toku ve formátu JSON na úroveň tok řaze
     }
    ```
 
-Konfigurační soubor Logstash k dispozici se skládá ze tří částí: vstup, filtrovat a výstup.
-Vstupní části určí vstupní zdroj protokoly, které bude zpracovávat Logstash – v takovém případě budeme používat "azureblob" vstupu modulu plug-in (nainstalované v dalších krocích), které vám umožní, abychom soubory JSON protokolů toku NSG uložená v blob storage. 
+Zadaný konfigurační soubor Logstash se skládá ze tří částí: vstup, filtr a výstup.
+Vstupní oddíl určuje vstupní zdroj protokolů, které Logstash zpracuje – v tomto případě budeme používat vstupní modul plug-in azureblobu (nainstalovaný v dalších krocích), který nám umožní přístup k souborům JSON protokolu toku NSG uloženým v úložišti objektů BLOB. 
 
-Část Filtr pak sloučí soubor protokolu každý tok tak, aby každá řazená kolekce členů jednotlivé toku a jeho přidružených vlastností samostatná událost Logstash.
+Oddíl Filter pak sloučí jednotlivé soubory protokolu toku, aby se jednotlivé řazené kolekce členů toku a jeho přidružených vlastností staly samostatnou událostí Logstash.
 
-Nakonec výstupní sekce předává každou událost Logstash k ElasticSearch serveru. Teď můžete upravit konfigurační soubor Logstash tak, aby vyhovovala vašim konkrétním potřebám.
+Nakonec oddíl Output předá každou událost Logstash serveru ElasticSearch. Můžete si klidně upravit konfigurační soubor Logstash tak, aby vyhovoval vašim konkrétním potřebám.
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Nainstalujte modul plug-in vstupu pro úložiště objektů Blob v Azure
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Instalace vstupního modulu plug-in Logstash pro úložiště objektů BLOB v Azure
 
-Tento modul plug-in pro Logstash umožňuje přímý přístup k protokolů toku ze svého účtu úložiště objektů blob v určené. Chcete-li nainstalovat tento modul plug-in, z instalace Logstash výchozí adresář (v tomto případu /usr/share/logstash/bin) spusťte příkaz:
+Tento modul plug-in Logstash vám umožňuje přímý přístup k protokolům toků z určeného účtu úložiště BLOB. Pokud chcete tento modul plug-in nainstalovat z výchozího instalačního adresáře Logstash (v tomto případě/usr/share/logstash/bin), spusťte příkaz:
 
 ```bash
 cd /usr/share/logstash/bin
 sudo ./logstash-plugin install logstash-input-azureblob
 ```
 
-Další informace o tomto plug v najdete v tématu [vstupní modul plug-in pro Logstash pro Azure Storage blob](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+Další informace o tomto modulu plug-in najdete v tématu [Vstupní modul plug-in Logstash pro objekty blob Azure Storage](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
 
-### <a name="install-elasticsearch"></a>Instalace ElasticSearch
+### <a name="install-elasticsearch"></a>Nainstalovat ElasticSearch
 
-Instalace ElasticSearch, můžete použít následující skript. Informace o instalaci ElasticSearch, naleznete v tématu [řešení Elastic Stack](https://www.elastic.co/guide/en/elastic-stack/current/index.html).
+K instalaci ElasticSearch můžete použít následující skript. Informace o instalaci ElasticSearch najdete v tématu [elastický zásobník](https://www.elastic.co/guide/en/elastic-stack/current/index.html).
 
 ```bash
 apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen -y
@@ -171,9 +172,9 @@ systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
 ```
 
-### <a name="install-grafana"></a>Instalace služby Grafana
+### <a name="install-grafana"></a>Nainstalovat Grafana
 
-K instalaci a spuštění Grafana, spusťte následující příkazy:
+Pokud chcete nainstalovat a spustit Grafana, spusťte následující příkazy:
 
 ```bash
 wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.5.1_amd64.deb
@@ -182,29 +183,29 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-Další informace o instalaci, naleznete v tématu [instalace v Debianu / Ubuntu](https://docs.grafana.org/installation/debian/).
+Další informace o instalaci najdete v tématu [instalace na Debian/Ubuntu](https://docs.grafana.org/installation/debian/).
 
-#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Přidání serveru funkce ElasticSearch jako zdroj dat
+#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Přidání serveru ElasticSearch jako zdroje dat
 
-Dále je třeba přidat index funkce ElasticSearch jako zdroj dat obsahující protokolů toku. Zdroj dat můžete přidat tak, že vyberete **přidat zdroj dat** a vyplnění formuláře příslušné informace. Ukázku této konfigurace najdete na následujícím snímku obrazovky:
+Dále je nutné přidat index ElasticSearch obsahující protokoly toku jako zdroj dat. Zdroj dat můžete přidat výběrem možnosti **Přidat zdroj dat** a vyplněním formuláře odpovídajícími informacemi. Ukázku této konfigurace najdete na následujícím snímku obrazovky:
 
 ![Přidání zdroje dat](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>Vytvoření řídicího panelu
 
-Teď, když jste úspěšně nakonfigurovali Grafana ke čtení z protokolů toku NSG obsahující indexu ElasticSearch, můžete vytvořit a přizpůsobit řídicí panely. Chcete-li vytvořit nový řídicí panel, vyberte **vytvořit svůj první řídicí panel**. V následující ukázkové konfiguraci graf ukazuje toky segmentované podle pravidla skupiny zabezpečení sítě:
+Teď, když jste úspěšně nakonfigurovali Grafana ke čtení z indexu ElasticSearch obsahujícího protokoly NSG flow, můžete vytvářet a přizpůsobovat řídicí panely. Pokud chcete vytvořit nový řídicí panel, vyberte **vytvořit první řídicí panel**. Následující ukázka konfigurace grafu zobrazuje toky segmentované podle NSG pravidla:
 
-![Graf na řídicí panel](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
+![Graf řídicích panelů](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 
-Následující snímek obrazovky znázorňuje grafu a graf zobrazující hlavní toků a jejich četnost. Toky jsou také zobrazeny pravidlem NSG a toky podle rozhodnutí. Grafana je vysoce přizpůsobitelné, takže je vhodné vytvořit řídicí panely tak, aby vyhovovala vašim konkrétním potřebám monitorování. Následující příklad ukazuje typické řídicího panelu:
+Následující snímek obrazovky znázorňuje graf a graf znázorňující horní toky a jejich četnost. Toky také ukazují pravidlo NSG a toky podle rozhodnutí. Grafana je vysoce přizpůsobitelná, takže je vhodné vytvořit řídicí panely, které budou vyhovovat vašim konkrétním požadavkům na monitorování. Následující příklad ukazuje typický řídicí panel:
 
-![Graf na řídicí panel](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Graf řídicích panelů](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Závěr
 
-Díky integraci služby Network Watcher s ElasticSearch a Grafana, máte teď způsob pohodlný a centralizovanou správu a vizualizaci protokolů toku NSG, jakož i další data. Grafana má několik dalších efektivních funkcí grafovým se taky dají na další správa protokolů toku a až lépe porozumíte provozu vaší sítě. Teď, když máte instanci Grafana nastavení a připojení k Azure a bez obav pokračovat a prozkoumejte další funkce, které nabízí.
+Integrací Network Watcher s ElasticSearch a Grafana teď máte pohodlný a centralizovaný způsob správy a vizualizace protokolů toku NSG i dalších dat. Grafana má řadu dalších výkonných funkcí pro grafy, které se dají použít i k dalšímu správě protokolů Flow a k lepšímu pochopení síťového provozu. Teď, když máte nanastavenou instanci Grafana a připojili se k Azure, můžete si i nadále prozkoumat další funkce, které nabízí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o používání [Network Watcher](network-watcher-monitoring-overview.md).
+- Přečtěte si další informace o použití [Network Watcher](network-watcher-monitoring-overview.md).
 

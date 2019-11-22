@@ -1,10 +1,6 @@
 ---
 title: Ladění a iterování pomocí sady Visual Studio a .NET Core v AKS s využitím Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 11/13/2019
 ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
@@ -12,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5a7ab993c58730594a0c4e10572939d3dccbdf02
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 58812a4bea7948c38fb0dda782a3f601004b74c0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091835"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279840"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Rychlý Start: ladění a iterování pomocí sady Visual Studio a .NET Core v Kubernetes s využitím Azure Dev Spaces
 
@@ -48,7 +44,7 @@ Cluster AKS musíte vytvořit v [podporované oblasti][supported-regions]. Vytvo
     ![Vytvoření AKS v Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Klikněte na *Zkontrolovat a vytvořit*.
-1. Klikněte na možnost *Vytvořit*.
+1. Klikněte na *Vytvořit*.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
 
@@ -64,7 +60,7 @@ V Azure Portal přejděte na svůj cluster AKS a klikněte na *vývojové prosto
 1. Pojmenujte svůj projekt *webendu* a klikněte na *vytvořit*.
 1. Po zobrazení výzvy vyberte možnost *Webová aplikace (model-zobrazení-kontroler)* pro šablonu.
 1. V horní části vyberte *.NET Core* a *ASP.NET Core 2,1* .
-1. Klikněte na možnost *Vytvořit*.
+1. Klikněte na *Vytvořit*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Připojte svůj projekt k prostoru pro vývoj
 

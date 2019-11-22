@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/28/2019
+ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127922"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278080"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Porovnání funkcí produktu Azure CDN
 
-Azure Content Delivery Network (CDN) zahrnuje čtyři produkty: **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Akamai**, **Azure CDN Standard z Verizon**a **Azure CDN Premium od Verizon**. Informace o migraci profilu **Azure CDN Standard od společnosti Verizon** na profil **Azure CDN Premium od společnosti Verizon** najdete v článku [Migrace profilu Azure CDN z úrovně Standard Verizon na úroveň Premium Verizon](cdn-migrate.md). Všimněte si, že když existuje cesta pro upgrade ze Standard Verizon na Premium Verizon, neexistuje žádný mechanismus převodu mezi ostatními produkty v tuto chvíli.
+Azure Content Delivery Network (CDN) zahrnuje čtyři produkty: **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Akamai**, **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon**. Informace o migraci profilu **Azure CDN Standard od společnosti Verizon** na profil **Azure CDN Premium od společnosti Verizon** najdete v článku [Migrace profilu Azure CDN z úrovně Standard Verizon na úroveň Premium Verizon](cdn-migrate.md). Všimněte si, že když existuje cesta pro upgrade ze Standard Verizon na Premium Verizon, neexistuje žádný mechanismus převodu mezi ostatními produkty v tuto chvíli.
 
 Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jednotlivých produktech.
 
@@ -41,11 +41,11 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 | [Vyrovnávání zatížení globálního serveru (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Rychlé vyprázdnění](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** , Vyprázdnit všechny a zástupné znaky nejsou aktuálně podporované Azure CDN z Akamai. |**&#x2713;** |**&#x2713;** |
 | [Předběžné načítání prostředku](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| Nastavení mezipaměti nebo hlaviček (pomocí [pravidel ukládání do mezipaměti](cdn-caching-rules.md))  |  |**&#x2713;** |**&#x2713;** | |
-| Přizpůsobitelný modul pro doručování obsahu založený na pravidlech (pomocí [stroje pravidel](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| Nastavení mezipaměti nebo hlaviček (pomocí [stroje pravidel](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| Přesměrování nebo přepsání adresy URL (pomocí [stroje pravidel](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| Pravidla mobilních zařízení (pomocí [stroje pravidel](cdn-rules-engine.md))  |  | | |**&#x2713;** |
+| Nastavení mezipaměti nebo hlaviček (pomocí [pravidel ukládání do mezipaměti](cdn-caching-rules.md))  |**&#x2713;** použití [modulu Standard Rules](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
+| Přizpůsobitelný modul pro doručování obsahu založený na pravidlech |**&#x2713;** použití [modulu Standard Rules](cdn-standard-rules-engine.md)  | | |**&#x2713;** použití [modulu pravidel](cdn-rules-engine.md) |
+| Nastavení mezipaměti nebo hlaviček  |**&#x2713;** použití [modulu Standard Rules](cdn-standard-rules-engine.md) | | |**&#x2713;** používání [modulu pravidel Premium](cdn-rules-engine.md) |
+| Přesměrování nebo přepsání adresy URL |**&#x2713;** použití [modulu Standard Rules](cdn-standard-rules-engine.md)  | | |**&#x2713;** používání [modulu pravidel Premium](cdn-rules-engine.md) |
+| Pravidla mobilních zařízení  |**&#x2713;** použití [modulu Standard Rules](cdn-standard-rules-engine.md) | | |**&#x2713;** používání [modulu pravidel Premium](cdn-rules-engine.md) |
 | [Ukládání řetězce dotazu do mezipaměti](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Duální sada protokolů IPv4/IPv6 | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Podpora HTTP/2](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |

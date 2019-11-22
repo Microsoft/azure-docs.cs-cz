@@ -1,6 +1,6 @@
 ---
-title: Nastavení informací o zabezpečení (Preview) pro klíč zabezpečení – Azure AD
-description: Jak nastavit bezpečnostní údaje pro ověření identity pomocí klíče zabezpečení rychlá identita online (FIDO2).
+title: Nastavení bezpečnostního klíče jako metody ověřování – Azure AD
+description: Jak nastavit stránku informací o zabezpečení (Preview), abyste ověřili, že vaše identita má jako metodu ověření používat klíč zabezpečení rychlá identita online (FIDO2).
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803794"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278947"
 ---
-# <a name="set-up-security-info-preview-for-a-security-key"></a>Nastavení informací o zabezpečení (Preview) pro klíč zabezpečení
+# <a name="set-up-a-security-key-as-your-verification-method"></a>Nastavte bezpečnostní klíč jako metodu ověřování.
 
 Klíče zabezpečení můžete použít jako metodu přihlašování s neplatným heslem v rámci vaší organizace. Bezpečnostní klíč je fyzické zařízení, které se používá s jedinečným PIN kódem pro přihlášení ke svému pracovnímu nebo školnímu účtu. Vzhledem k tomu, že klíče zabezpečení vyžadují, abyste měli fyzické zařízení a něco znáte, považuje se za silnější metodu ověřování než uživatelské jméno a heslo.
 
@@ -150,7 +150,7 @@ Aby bylo možné zaregistrovat klíč zabezpečení, musíte mít zaregistrovano
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o metodách ověřování bez hesla najdete na [webu Azure AD, který začíná ve verzi Public Preview klíčů zabezpečení FIDO2, povolení](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogu pro přihlášení bez hesla nebo Přečtěte si článek [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md) [. Články s přehledem Windows Hello](https://www.microsoft.com/windows/windows-hello) .
+- Další informace o metodách ověřování bez hesla najdete v článku [Microsoft Azure AD začíná ve verzi Public Preview klíčů zabezpečení FIDO2, povolení](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogu pro přihlášení bez hesla nebo Přečtěte si článek [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md) a [Přehled Windows Hello](https://www.microsoft.com/windows/windows-hello) .
 
 - Podrobnější informace o [bezpečnostních klíčích kompatibilních se společností Microsoft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 

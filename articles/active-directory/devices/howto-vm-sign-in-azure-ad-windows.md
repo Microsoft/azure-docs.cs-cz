@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0bfd75f54e2b57e57fcadc27df2ca43d8be5cf37
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832857"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285521"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -34,8 +34,8 @@ K přihlášení k virtuálním počítačům s Windows v Azure přinášíme sp
 - Azure RBAC vám umožňuje udělit odpovídající přístup k virtuálním počítačům podle potřeby a odebrat je, když už nepotřebujete.
 - Než povolíte přístup k virtuálnímu počítači, podmíněný přístup Azure AD může vynutil další požadavky, jako třeba: 
    - Ověřování pomocí služby Multi-Factor Authentication
-   - Riziko přihlášení
-- Automatizujte a škálujte službu Azure AD JOIN pro virtuální počítače s Windows na bázi Azure.
+   - Kontroly rizika přihlašování
+- Automatizujte a škálujte připojení Azure AD k virtuálním počítačům Azure s Windows, které jsou součástí nasazení infrastruktury virtuálních klientských počítačů.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -68,7 +68,7 @@ Pokud chcete používat přihlášení Azure AD pro virtuální počítače s Wi
 Přihlášení Azure AD pro virtuální počítač s Windows můžete povolit několika způsoby:
 
 - Použití prostředí Azure Portal při vytváření virtuálního počítače s Windows
-- Použití prostředí Azure Cloud Shell při vytváření virtuálního počítače s Windows nebo pro existující virtuální počítač s Windows
+- Použití prostředí Azure Cloud Shell při vytváření virtuálního počítače s Windows **nebo pro existující virtuální počítač s Windows**
 
 ### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Povolení přihlášení Azure AD pomocí Azure Portal vytvoření prostředí pro virtuální počítače
 
@@ -187,6 +187,13 @@ Další informace o tom, jak pomocí RBAC spravovat přístup k prostředkům p�
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - [Spravujte přístup k prostředkům Azure pomocí RBAC a Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
+## <a name="using-conditional-access"></a>Použití podmíněného přístupu
+
+Před autorizací přístupu k virtuálním počítačům s Windows v Azure, které jsou povolené při přihlášení ke službě Azure AD, můžete vyhovět zásadám podmíněného přístupu, jako je vícefaktorové ověřování nebo ověření rizik přihlašování uživatelů. Pokud chcete použít zásady podmíněného přístupu, musíte v rámci možnosti přiřazení cloudových aplikací nebo akcí vybrat aplikaci přihlášení k virtuálnímu počítači Azure Azure a pak použít pro podmínku přihlášení podmínky přihlášení nebo vyžadovat vícefaktorové ověřování jako řízení přístupu pro udělení. 
+
+> [!NOTE]
+> Pokud použijete "vyžadovat vícefaktorové ověřování" jako udělení přístupu k aplikaci "přihlášení k virtuálnímu počítači Azure s Windows", musíte zadat službu Multi-Factor Authentication jako součást klienta, která inicializuje relaci RDP k cílovému virtuálnímu počítači s Windows v. Azure. Jediným způsobem, jak toho dosáhnout na klientovi s Windows 10, je použít PIN kód Windows Hello pro firmy nebo biometrické ověřování během protokolu RDP. V systému Windows 10 1809 byla přidána podpora biometrického ověřování během protokolu RDP. Použití ověřování ve Windows Hello pro firmy během protokolu RDP je dostupné jenom pro nasazení, která používají model důvěryhodnosti certifikátu a v současnosti není k dispozici pro model vztahu důvěryhodnosti klíče.
+
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Přihlášení pomocí přihlašovacích údajů Azure AD k virtuálnímu počítači s Windows
 
 > [!IMPORTANT]
@@ -196,7 +203,7 @@ Přihlášení k virtuálnímu počítači s Windows serverem 2019 pomocí Azure
 
 1. Přejděte na stránku Přehled virtuálního počítače, který je povolený s přihlášením pomocí Azure AD.
 1. Kliknutím na **připojit** otevřete okno připojit k virtuálnímu počítači.
-1. Vyberte **Stáhnout soubor RDP**.
+1. Vyberte **stáhnout soubor RDP**.
 1. Vyberte **otevřít** a spusťte klienta připojení ke vzdálené ploše.
 1. Vyberte **připojit** a spusťte přihlašovací dialog Windows.
 1. Přihlaste se pomocí přihlašovacích údajů Azure AD.
@@ -208,7 +215,7 @@ Nyní jste přihlášeni k virtuálnímu počítači s Windows serverem 2019 Azu
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-### <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
+### <a name="troubleshoot-deployment-issues"></a>Řešení problémů s nasazením
 
 Aby virtuální počítač dokončil proces připojení k Azure AD, musí se úspěšně nainstalovat rozšíření AADLoginForWindows. Pokud se nepovede správně nainstalovat rozšíření virtuálního počítače, proveďte následující kroky.
 
@@ -337,7 +344,12 @@ Pokud se při inicializaci připojení ke vzdálené ploše na virtuální poč�
 
 ![Metoda přihlašování, kterou se pokoušíte použít, není povolená.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-Pokud jste nakonfigurovali zásadu podmíněného přístupu, která vyžaduje, aby se MFA prováděla předtím, než budete mít přístup k prostředku RBAC, musíte zajistit, aby se počítač s Windows 10, který iniciuje připojení ke vzdálenému počítači, přihlásí k vašemu VIRTUÁLNÍmu počítači pomocí metody silného ověřování, například jako Windows Hello. Pokud pro připojení ke vzdálené ploše nepoužíváte metodu silného ověřování, zobrazí se následující chyba.
+Pokud jste nakonfigurovali zásadu podmíněného přístupu, která vyžaduje, aby se MFA prováděla předtím, než budete mít přístup k prostředku RBAC, musíte zajistit, aby se počítač s Windows 10, který iniciuje připojení ke vzdálenému počítači, přihlásí k vašemu VIRTUÁLNÍmu počítači pomocí metody silného ověřování, například jako Windows Hello. Pokud pro připojení ke vzdálené ploše nepoužíváte metodu silného ověřování, zobrazí se následující chyba. 
+
+Pokud jste nenainstalovali Windows Hello pro firmy a pokud to není možnost pro teď, můžete exlcude požadavek MFA konfigurací zásad podmíněného přístupu, která z seznamu cloudových aplikací vyloučí aplikaci pro přihlášení k virtuálnímu počítači Azure s Windows, která vyžaduje MFA. Další informace o Windows Hello pro firmy najdete v tématu [Přehled Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+
+> [!NOTE]
+> Ověřování PIN kódu ve Windows Hello pro firmy během protokolu RDP už teď podporuje Windows 10. V systému Windows 10 1809 byla přidána podpora biometrického ověřování během protokolu RDP. Použití ověřování ve Windows Hello pro firmy během protokolu RDP je dostupné jenom pro nasazení, která používají model důvěryhodnosti certifikátu a v současnosti není k dispozici pro model vztahu důvěryhodnosti klíče.
  
 ## <a name="preview-feedback"></a>Náhled zpětné vazby
 

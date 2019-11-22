@@ -1,7 +1,7 @@
 ---
-title: Migrate to Azure resource for authoring
+title: Migrace na prostředek Azure pro vytváření obsahu
 titleSuffix: Azure Cognitive Services
-description: Migrate to an Azure authoring resource key.
+description: Migrujte na klíč prostředku pro vytváření Azure.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,99 +11,99 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 7721b6c86642ad79cd646c66b1ef578acdca1505
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 44baac5eb4e8887594ba05498901ba664380005f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225511"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280774"
 ---
-# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrate to an Azure resource authoring key
+# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
-Language Understanding (LUIS) authoring authentication changed from an email account to an Azure resource. 
+Language Understanding (LUIS) ověřování při vytváření se změnilo z e-mailového účtu na prostředek Azure. I když to není v současnosti nutné, bude v budoucnu vynutilo přepnutí do prostředku Azure.
 
-## <a name="why-migrate"></a>Why migrate?
+## <a name="why-migrate"></a>Proč migrovat?
 
-Using an Azure resource for authoring allows you, as the owner of the resource, to control access to authoring. You can create and name authoring resources to manage different groups of authors. 
+Pomocí prostředku Azure pro vytváření obsahu můžete jako vlastníka prostředku řídit přístup k vytváření obsahu. Můžete vytvořit a pojmenovat prostředky vytváření pro správu různých skupin autorů. 
 
-For example, if you have 2 types of LUIS apps you are authoring, with different members, you can create two different authoring resources and assign contributors. The Azure authoring resource controls the authorization. 
+Například pokud máte 2 typy aplikací LUIS, které vytváříte, s různými členy, můžete vytvořit dva různé prostředky pro vytváření obsahu a přiřadit přispěvatele. Prostředek pro vytváření Azure řídí autorizaci. 
 
 > [!Note]
-> Before migration, co-authors are known as _collaborators_. After migration, the Azure role of _contributor_ is used for the same functionality.
+> Před migrací se jako _spolupracovníci_označují spoluautoři. Po migraci se pro stejnou funkci používá role Azure _Přispěvatel_ .
 
-## <a name="what-is-migrating"></a>What is migrating?
+## <a name="what-is-migrating"></a>Co se migruje?
 
-Migration includes:
+Migrace zahrnuje:
 
-* All users of LUIS, owners and contributors.
-* **All** apps.
-* A **one-way** migration.
+* Všichni uživatelé LUIS, vlastníci a přispěvatelé.
+* **Všechny** aplikace
+* **Jednosměrná** migrace.
 
-The owner can't choose a subset of apps to migrate and the process isn't reversible. 
+Vlastník nemůže zvolit podmnožinu aplikací k migraci a proces nebude vratný. 
 
-The migration is not: 
+Migrace není: 
 
-* A process that collects collaborators and automatically moves or adds to the Azure authoring resource. You, as the app owner, need to complete this step. This step requires permissions to the appropriate resource.
-* A process to create and assign a prediction runtime resource. If you need a prediction runtime resource, that is [a separate process](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) and is unchanged. 
+* Proces, který shromažďuje spolupracovníky a automaticky přesouvá nebo přidává do prostředku pro vytváření obsahu Azure. Jako vlastník aplikace je potřeba tento krok dokončit. Tento krok vyžaduje oprávnění k příslušnému prostředku.
+* Proces vytvoření a přiřazení prostředku modulu runtime předpovědi. Pokud potřebujete běhový prostředek předpovědi, je to [samostatný proces](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) a nemění se. 
 
-## <a name="how-are-the-apps-migrating"></a>How are the apps migrating?
+## <a name="how-are-the-apps-migrating"></a>Jak se aplikace migrují?
 
-The [LUIS portal](https://www.luis.ai) provides the migration process. 
+[Portál Luis](https://www.luis.ai) poskytuje proces migrace. 
 
-You will be asked to migrate if:
+Budete vyzváni k migraci, pokud:
 
-* You have apps on the email authentication system for authoring.
-* And you are the app owner. 
+* Máte aplikace v systému ověřování e-mailů pro vytváření obsahu.
+* A jste vlastníkem aplikace. 
 
-You can delay the migration process, by canceling out of the window. You are periodically asked to migrate until you migrate or the migration deadline is passed. You can start the migration process from the top navigation bar's lock icon.
+Proces migrace můžete odložit zrušením z okna. Pravidelně budete požádáni o migraci, dokud neprovedete migraci nebo neuplyne konečný termín migrace. Proces migrace můžete spustit z ikony zámku horní navigační panel.
 
-## <a name="migration-for-the-app-owner"></a>Migration for the app owner
+## <a name="migration-for-the-app-owner"></a>Migrace pro vlastníka aplikace
 
-### <a name="before-you-migrate"></a>Before you migrate
+### <a name="before-you-migrate"></a>Před migrací
 
-* **Optionally**, backup the apps from the LUIS portal's apps list by exporting each app or use the export [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40).
-* **Optionally**, save each app's collaborator's list. This email list is provided as part of the migration process.
-* **Required**, you need to have an [Azure subscription](https://azure.microsoft.com/free/). A part of the subscription process does require billing information. However, you can use the Free (`F0`) pricing tier when you use LUIS. 
+* **Volitelně můžete**aplikace zálohovat ze seznamu aplikací portálu Luis, a to tak, že jednotlivé aplikace exportujete nebo použijete [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)pro export.
+* **Volitelně můžete**Uložit seznam collaborator's jednotlivých aplikací. Tento e-mailový seznam se poskytuje jako součást procesu migrace.
+* Je **potřeba mít** [předplatné Azure](https://azure.microsoft.com/free/). Součástí procesu předplatného je vyžadování fakturačních informací. Při použití LUIS ale můžete použít cenovou úroveň Free (`F0`). 
 
-**Authoring your LUIS app is free**, indicated by the `F0` tier. Learn [more about pricing tiers](luis-boundaries.md#key-limits).
+**Vytváření aplikací Luis je zadarmo**, které uvádí `F0` vrstva. Přečtěte si [Další informace o cenových úrovních](luis-boundaries.md#key-limits).
 
-If you do not have an Azure subscription, [sign up](https://azure.microsoft.com/free/). 
+Pokud nemáte předplatné Azure, [Zaregistrujte](https://azure.microsoft.com/free/)se. 
 
 ### <a name="migration-steps"></a>Kroky migrace
 
-Follow [these migration steps](luis-migration-authoring-steps.md).
+Postupujte podle [těchto kroků migrace](luis-migration-authoring-steps.md).
 
 ### <a name="after-you-migrate"></a>Po migraci 
 
-After the migration process, all your LUIS apps are now assigned to a single LUIS authoring resource.
+Po dokončení procesu migrace se teď všechny vaše aplikace LUIS přiřadí k jednomu prostředku pro vytváření LUIS.
 
-You can create more authoring resources and assign from the **Manage -> Azure resources** page in the _LUIS portal_. 
+Na _portálu Luis_můžete vytvořit další prostředky pro vytváření obsahu a přiřadit je na stránce **Spravovat > prostředky Azure** . 
 
-You can add contributors to the authoring resource from the _Azure portal_, on the **Access Control (IAM)** page for that resource. See [add contributor access](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) for more information.
+Přispěvatele můžete přidat do prostředku vytváření z _Azure Portal_na stránce **Access Control (IAM)** daného prostředku. Další informace najdete v tématu [Přidání přístupu přispěvatele](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) .
 
 |Portál|Účel|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* Create prediction and authoring resources.<br>* Assign contributors.|
-|[LUIS](https://www.luis.ai)|* Migrate to new authoring resources.<br>* Assign or unassign prediction and authoring resources to apps from **Manage -> Azure resources** page.| 
+|[Azure](https://azure.microsoft.com/free/)|* Vytvořte předpověď a vytváření prostředků.<br>* Přiřaďte přispěvatele.|
+|[LUIS](https://www.luis.ai)|* Migrujte na nové prostředky pro vytváření obsahu.<br>* Přiřaďte nebo zrušte přiřazení předpovědí a vytváření prostředků aplikacím ze stránky **Spravovat – > prostředky Azure** .| 
 
-## <a name="migration-for-the-app-contributor"></a>Migration for the app contributor
+## <a name="migration-for-the-app-contributor"></a>Migrace pro přispěvatele aplikací
 
-Every user of LUIS needs to migrate, including collaborators/contributors. 
+Každý uživatel LUIS musí migrovat, včetně spolupracovníků a přispěvatelů. 
 
-### <a name="before-the-app-is-migrated"></a>Before the app is migrated
+### <a name="before-the-app-is-migrated"></a>Před migrací aplikace
 
-You may choose to export an app you are a collaborator on, then import the app back into LUIS. The import process creates a new app with a new app ID, for which you are the owner.
+Můžete zvolit export aplikace, kterou jste spolupracovníka, a pak aplikaci importovat zpátky do LUIS. Proces importu vytvoří novou aplikaci s novým ID aplikace, pro kterou jste vlastníkem.
 
-### <a name="after-the-app-is-migrated"></a>After the app is migrated
+### <a name="after-the-app-is-migrated"></a>Po migraci aplikace
 
-The app owner needs to [add your email to the Azure authoring resource as a collaborator](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+Vlastník aplikace musí [Přidat váš e-mail do prostředku pro tvorbu Azure jako spolupracovníka](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
 
-After the migration process, any apps you own are available on the **My apps** page of the LUIS portal.  
+Po dokončení procesu migrace budou všechny aplikace, které vlastníte, k dispozici na stránce **Moje aplikace** na portálu Luis.  
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-LUIS authoring keys are only visible in the LUIS portal after the migration process is complete. If you create the authoring keys, such as with the LUIS CLI, the user still needs to complete the migration process. 
+Klíče pro vytváření LUIS se po dokončení procesu migrace zobrazují jenom na portálu LUIS. Pokud vytváříte klíče pro vytváření obsahu, například s rozhraním příkazového řádku LUIS, uživatel pořád potřebuje dokončit proces migrace. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [How to migrate your app to an authoring resource](luis-migration-authoring-steps.md)
+* [Postup migrace aplikace do prostředku pro vytváření](luis-migration-authoring-steps.md)

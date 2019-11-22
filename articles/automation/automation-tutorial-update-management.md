@@ -1,20 +1,20 @@
 ---
 title: Správa aktualizací a oprav pro virtuální počítače Azure
-description: Tento článek poskytuje přehled použití řešení Update Management služby Azure Automation ke správě aktualizací a oprav pro vaše virtuální počítače Azure s Windows.
+description: Tento článek poskytuje přehled o tom, jak pomocí Azure Automation Update Management spravovat aktualizace a opravy pro virtuální počítače Azure a mimo Azure.
 services: automation
-author: zjalexander
+author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.author: zachal
+ms.date: 11/20/2019
+ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469725"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278785"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Naplánování nasazení aktualizace
 > * Zobrazení výsledků nasazení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -51,15 +51,15 @@ Pro účely tohoto kurzu nejprve na svém virtuálním počítači povolte řeš
 1. Vyberte virtuální počítač, pro který chcete povolit Update Management.
 1. Na stránce virtuálního počítače v části **OPERACE** vyberte **Správa aktualizací**. Otevře se podokno **Povolit řešení Update Management**.
 
-Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management. Toto ověření zahrnuje kontroly pracovního prostoru služby Azure Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení Update Management nachází v tomto pracovním prostoru.
+Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management. Toto ověření zahrnuje kontrolu Log Analyticsho pracovního prostoru a propojeného účtu Automation a to, jestli je řešení Update Management v pracovním prostoru povolené.
 
-Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
+Pracovní prostor [Log Analytics](../azure-monitor/platform/data-platform-logs.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
-Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a funkcí Hybrid Runbook Worker služby Automation. Agent slouží ke komunikaci se službou Azure Automation a získávání informací o stavu aktualizací. Agent ke komunikaci se službou Azure Automation a stahování aktualizací vyžaduje otevřený port 443.
+Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený pomocí agenta Log Analytics a Hybrid Runbook Worker Automation. Agent slouží ke komunikaci se službou Azure Automation a získávání informací o stavu aktualizací. Agent ke komunikaci se službou Azure Automation a stahování aktualizací vyžaduje otevřený port 443.
 
 Pokud během připojování chyběla některá z následujících požadovaných součástí, automaticky se přidá:
 
-* Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)
+* Pracovní prostor [Log Analytics](../azure-monitor/platform/data-platform-logs.md)
 * [Účet Automation](./automation-offering-get-started.md)
 * Funkce [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) (povolená na virtuálním počítači)
 
@@ -71,9 +71,9 @@ Povolení řešení může trvat až několik minut. Během této doby nezavíre
 
 ## <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
-Po povolení řešení Update Management se otevře podokno **Správa aktualizací**. Pokud nějaké aktualizace chybí, na kartě **Chybějící aktualizace** se zobrazí seznam chybějících aktualizací.
+Po povolení řešení Update Management se otevře podokno **Správa aktualizací**. Pokud se nějaké aktualizace identifikují jako chybějící, zobrazí se na kartě **chybějící aktualizace** seznam chybějících aktualizací.
 
-V části **ODKAZ NA INFORMACE** vyberte odkaz na nějakou aktualizaci a v novém okně se otevře článek podpory o dané aktualizaci. V tomto okně najdete důležité informace týkající se dané aktualizace.
+V části **informační odkaz**vyberte odkaz aktualizace a otevřete tak článek podpory pro aktualizaci. Důležité informace o této aktualizaci najdete v části.
 
 ![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
@@ -144,7 +144,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
   Typy klasifikace jsou:
 
-   |OS  |Typ  |
+   |Operační systém  |Typ  |
    |---------|---------|
    |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>Nástroje</br>Aktualizace        |
    |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |

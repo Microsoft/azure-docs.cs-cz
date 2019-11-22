@@ -1,21 +1,21 @@
 ---
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.date: 04/03/2019
 ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fcc6c10419b46d31fde20001fefccb32b7a421ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175592"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276947"
 ---
-## <a name="putting-everything-together"></a>Umístění všeho najednou
+## <a name="putting-everything-together"></a>Vložení všech objektů dohromady
 
-Tady je způsob kompletní `MainActivity` soubor třídy by měl vypadat, až různé prvky byly dohromady. Slouží jako odkaz k porovnání svůj vlastní soubor a odhalit, pokud máte případné rozdíly vlevo.
+Zde je uveden způsob, jakým by měl soubor `MainActivity` třídy vypadat jako, po tom, co byly všechny různé prvky vloženy dohromady. Můžete ji použít jako referenci pro porovnání s vlastním souborem a na místě, kde můžete mít nějaké jiné rozdíly.
 
 ```java
 package com.example.myfirstapp;
@@ -242,9 +242,9 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste viděli, jak vytvořit novou aplikaci Android, která se integruje s Azure prostorových kotvy ARCore funkce. Další informace o knihovně prostorových kotvy Azure, i nadále naší příručce o tom, jak vytvořit a vyhledejte ukotvení.
+V tomto kurzu jste viděli, jak vytvořit novou aplikaci pro Android, která integruje funkce ARCore s prostorovými kotvami Azure. Další informace o knihovně prostorových kotev Azure najdete v naší příručce k vytváření a hledání kotev.
 
 > [!div class="nextstepaction"]
-> [Vytvoření a vyhledejte ukotvení pomocí prostorových kotev vztahů Azure](/azure/spatial-anchors/create-locate-anchors-overview)
+> [Vytváření a hledání kotev pomocí prostorových kotev Azure](/azure/spatial-anchors/create-locate-anchors-overview)

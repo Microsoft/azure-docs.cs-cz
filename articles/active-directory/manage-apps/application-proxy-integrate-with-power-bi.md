@@ -1,5 +1,5 @@
 ---
-title: Povolení vzdáleného přístupu pro Power BI s využitím Azure Proxy aplikací služby AD | Microsoft Docs
+title: Povolení vzdáleného přístupu pro Power BI s využitím Azure Proxy aplikací služby AD
 description: Obsahuje základní informace o tom, jak integrovat místní Power BI s využitím Azure Proxy aplikací služby AD.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795631"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275512"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu pro Power BI Mobile s využitím Azure Proxy aplikací služby AD
 
@@ -37,7 +37,7 @@ Tento článek předpokládá, že jste již nasadili služby sestav a [povolili
 
 ## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>Krok 1: Konfigurace omezeného delegování protokolu Kerberos (KCD)
 
-U místních aplikací, které používají ověřování systému Windows, můžete dosáhnout jednotného přihlašování (SSO) pomocí ověřovacího protokolu Kerberos a funkce označované jako omezené delegování protokolu Kerberos (KCD). Když se nakonfiguruje, KCD umožňuje konektoru proxy aplikací získat pro uživatele token Windows, a to i v případě, že uživatel není přihlášený přímo k Windows. Další informace o KCD najdete v tématu [Přehled omezeného delegování Kerberos](https://technet.microsoft.com/library/jj553400.aspx) a [vynucené delegování protokolu Kerberos pro jednotné přihlašování k vašim aplikacím pomocí proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
+Pro místní aplikace, které používají ověřování Windows můžete dosáhnout jednotného přihlašování (SSO) s ověřovací protokol Kerberos a funkci s názvem omezené delegování protokolu Kerberos (KCD). Když se nakonfiguruje, KCD umožňuje konektoru proxy aplikací získat pro uživatele token Windows, a to i v případě, že uživatel není přihlášený přímo k Windows. Další informace o KCD najdete v tématu [Přehled omezeného delegování Kerberos](https://technet.microsoft.com/library/jj553400.aspx) a [vynucené delegování protokolu Kerberos pro jednotné přihlašování k vašim aplikacím pomocí proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
 
 Na straně služby Reporting Services nemusíte nic konfigurovat. Stačí, abyste měli platný hlavní název služby (SPN), aby mohlo probíhat správné ověřování protokolem Kerberos. Také se ujistěte, že je server služby Reporting Services povolen pro ověřování Negotiate.
 
@@ -63,14 +63,14 @@ Pokud chcete povolit, aby server sestav používal ověřování pomocí protoko
 Další informace najdete v tématech [Změna konfiguračního souboru služby Reporting Services](https://msdn.microsoft.com/library/bb630448.aspx) a [Konfigurace ověřování systému Windows na serveru sestav](https://msdn.microsoft.com/library/cc281253.aspx).
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Zajistěte, aby byl konektor důvěryhodný pro delegování do hlavního názvu služby (SPN) přidaný do účtu fondu aplikací služby Reporting Services.
-Nakonfigurujte KCD, aby služba Azure Proxy aplikací služby AD mohla delegovat identity uživatelů na účet fondu aplikací služby Reporting Services. Nakonfigurujte KCD tak, že povolíte konektor proxy aplikací k načtení lístků protokolu Kerberos pro uživatele, kteří byli ověřeni ve službě Azure AD. Pak tento server předá v tomto případě kontext cílové aplikaci nebo služby Reporting Services.
+Nakonfigurujte KCD, aby služba Azure Proxy aplikací služby AD mohla delegovat identity uživatelů na účet fondu aplikací služby Reporting Services. Nakonfigurujte KCD povolením konektoru Proxy aplikace načíst lístky protokolu Kerberos pro uživatele, kteří byli ověřeni ve službě Azure AD. Pak tento server předá v tomto případě kontext cílové aplikaci nebo služby Reporting Services.
 
 Pokud chcete nakonfigurovat KCD, opakujte následující kroky pro každý počítač konektoru:
 
 1. Přihlaste se k řadiči domény jako správce domény a pak otevřete položku **Uživatelé a počítače služby Active Directory**.
-2. Vyhledejte počítač, na kterém konektor běží.  
+2. Najděte, na kterém běží konektor na počítač.  
 3. Dvakrát klikněte na počítač a pak vyberte kartu **delegování** .
-4. Nastavení delegování nastavte na **Důvěřovat tomuto počítači pro delegování pouze určeným službám**. Pak vyberte **použít libovolný protokol pro ověřování**.
+4. Nastavení delegování nastavte na **Důvěřovat tomuto počítači pro delegování pouze určeným službám**. Vyberte **použití libovolného protokolu pro ověřování**.
 5. Vyberte **Přidat**a pak vyberte **Uživatelé nebo počítače**.
 6. Zadejte účet služby, který používáte pro službu Reporting Services. Jedná se o účet, do kterého jste přidali hlavní název služby (SPN) v rámci konfigurace služby Reporting Services.
 7. Klikněte na tlačítko **OK**. Pokud chcete změny uložit, klikněte znovu na **OK** .
@@ -89,17 +89,17 @@ Teď jste připraveni nakonfigurovat Azure Proxy aplikací služby AD.
 
    - **Metoda**předběžného ověřování: Azure Active Directory
 
-2. Po publikování aplikace nakonfigurujte nastavení jednotného přihlašování pomocí následujících kroků:
+2. Po publikování aplikace konfigurujte nastavení jednotného přihlašování pomocí následujících kroků:
 
-   a. Na stránce aplikace na portálu vyberte **jednotné přihlašování**.
+   a. Na stránce aplikace na portálu vyberte **jednotného přihlašování**.
 
    b. V případě **režimu jednotného přihlašování**vyberte **integrované ověřování systému Windows**.
 
    c. Nastavte **vnitřní hlavní název aplikace** na hodnotu, kterou jste nastavili dříve.  
 
-   d. Vyberte **delegovanou identitu přihlášení** , kterou má konektor použít jménem uživatelů. Další informace najdete v tématu [práce s různými místními a cloudovou identitou](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Zvolte **delegovaná identita přihlášení** pro konektor nekonfigurovali používání jménem uživatele. Další informace najdete v tématu [práce s různými místními a cloudovou identitou](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Kliknutím na **Uložit** uložte změny.
+   e. Klikněte na tlačítko **Uložit** uložte provedené změny.
 
 Pokud chcete dokončit nastavování aplikace, přejděte do části **Uživatelé a skupiny** a přiřaďte uživatele k přístupu k této aplikaci.
 

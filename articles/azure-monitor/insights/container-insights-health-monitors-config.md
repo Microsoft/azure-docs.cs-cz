@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b782581318751830ec47b9fecb056fecefb353eb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134954"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279697"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Průvodce konfigurací monitorování stavu kontejnerů Azure Monitor
 
-Monitory jsou primárním prvkem pro měření stavu a zjišťování chyb v Azure Monitor pro kontejnery. Tento článek vám pomůže porozumět konceptům, jak se měří stav, a prvků, které tvoří model stavu pro monitorování a hlášení stavu clusteru Kubernetes s [funkcí Health](container-insights-health.md).
+Monitory jsou primárním prvkem pro měření stavu a zjišťování chyb v Azure Monitor pro kontejnery. Tento článek vám pomůže porozumět konceptům, jak se měří stav, a prvků, které tvoří model stavu pro monitorování a hlášení stavu clusteru Kubernetes s funkcí [stavu (Preview)](container-insights-health.md) .
+
+>[!NOTE]
+>Funkce Health je v tuto chvíli ve verzi Public Preview.
+>
 
 ## <a name="monitors"></a>Monitory
 

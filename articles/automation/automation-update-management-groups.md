@@ -1,22 +1,22 @@
 ---
 title: Použití dynamických skupin s Azure Update Management
-description: Popisuje, jak dynamické skupiny pracují s Update Management
+description: Tento článek popisuje, jak dynamické skupiny pracují s Azure Automation Update Management.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 10/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edc4384be0f1dc73f2e7e098114080d304d92ce8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 022c2061febb54666acee1cfed4ec595421660a3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377743"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278716"
 ---
-# <a name="use-dynamic-groups-with-update-management"></a>Použití dynamických skupin s Update Management
+# <a name="use-dynamic-groups-with-update-management"></a>Použití dynamických skupin s Update Managementem
 
 Update Management poskytuje možnost cílit na dynamickou skupinu virtuálních počítačů Azure nebo mimo Azure pro nasazení aktualizací. Tyto skupiny jsou vyhodnocovány v době nasazení, takže není nutné upravovat nasazení, aby bylo možné přidat počítače.
 
@@ -37,7 +37,7 @@ Chcete-li zobrazit náhled výsledků dynamické skupiny, klikněte na tlačítk
 
 ## <a name="non-azure-machines"></a>Počítače mimo Azure
 
-Pro počítače, které nejsou v Azure, se při vytváření dynamické skupiny používají taky uložená hledání, která se označují jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření skupiny ji můžete vybrat ze seznamu uložených hledání. Kliknutím na **Náhled** zobrazíte v daném čase počítače v uloženém hledání.
+Pro počítače, které nejsou v Azure, se k vytvoření dynamické skupiny používají taky uložená hledání, která se označují jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření skupiny ji můžete vybrat ze seznamu uložených hledání. Kliknutím na **Náhled** zobrazíte v daném čase počítače v uloženém hledání.
 
 ![Vybrat skupiny](./media/automation-update-management/select-groups-2.png)
 

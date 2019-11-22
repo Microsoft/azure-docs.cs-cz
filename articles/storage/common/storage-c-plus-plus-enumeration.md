@@ -1,5 +1,5 @@
 ---
-title: Vypíše Azure Storage prostředky s klientskou knihovnou C++ úložiště pro | Microsoft Docs
+title: Vypsat Azure Storage prostředky C++ pomocí klientské knihovny
 description: Naučte se používat rozhraní API pro výpisy Microsoft Azure Storage klientské knihovny C++ pro k zobrazení výčtu kontejnerů, objektů blob, front, tabulek a entit.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721924"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269453"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Vypsat Azure Storage prostředky vC++
 
@@ -60,9 +60,9 @@ Proto je nepraktické zobrazit seznam všech objektů v jediné odpovědi. Míst
 Odpověď pro segmentované operace výpisu zahrnuje:
 
 * *_segment*, která obsahuje sadu výsledků vrácených pro jedno volání rozhraní API výpisu.
-* *continuation_token*, který se předává dalšímu volání, aby se získala další stránka výsledků. Pokud neexistují žádné další výsledky k vrácení, token pokračování má hodnotu null.
+* *continuation_token*, která je předána dalšímu volání, aby se zobrazila další stránka výsledků. Pokud neexistují žádné další výsledky k vrácení, token pokračování má hodnotu null.
 
-Například typické volání pro výpis všech objektů BLOB v kontejneru může vypadat jako následující fragment kódu. Kód je k dispozici v [](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)našich ukázkách:
+Například typické volání pro výpis všech objektů BLOB v kontejneru může vypadat jako následující fragment kódu. Kód je k dispozici v našich [ukázkách](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
 
 ```cpp
 // List blobs in the blob container
@@ -143,7 +143,7 @@ do
 } while (!token.empty());
 ```
 
-Zadáním parametru *max_results* segmentu můžete vyrovnávat počet požadavků a využití paměti pro splnění požadavků na výkon vaší aplikace.
+Zadáním parametru *max_results* segmentu můžete vyrovnávat počet požadavků a využití paměti, aby splňovala požadavky na výkon vaší aplikace.
 
 Pokud navíc používáte segmentovaná rozhraní API, ale ukládáte data do místní kolekce ve stylu "hladce", důrazně doporučujeme, abyste si kód rehlásili do místní kolekce pečlivě v rozsahu.
 
@@ -153,7 +153,7 @@ Přestože hladový výpis vyvolal potenciální problémy, je vhodné, pokud v 
 
 Pokud používáte také C# nebo Oracle Java SDK, měli byste být obeznámeni se vyčíslitelném programovacím modelem, který nabízí seznam opožděného použití, kde data na určitém posunu jsou načtena pouze v případě, že jsou požadována. V C++systému poskytuje šablona založená na iterátoru také podobný přístup.
 
-Typické rozhraní API pro opožděné výpisy, které používá **list_blobs** jako příklad, vypadá takto:
+Typické rozhraní API opožděného výpisu, které používá **list_blobs** jako příklad, vypadá takto:
 
 ```cpp
 list_blob_item_iterator list_blobs() const;
@@ -192,7 +192,7 @@ V tomto článku jsme probrali různá přetížení pro výpisy rozhraní API p
 * Opožděný výpis je v knihovně k dispozici jako vhodná obálka v synchronních scénářích.
 * Hladový výpis není doporučen a byl odebrán z knihovny.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Storage a klientské knihovně pro C++najdete v následujících zdrojích informací.
 

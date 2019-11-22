@@ -4,14 +4,14 @@ description: Získejte odpovědi na běžné otázky týkající se služby Azur
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: dc7dff0119ec849b447754ae54a45911038f6c48
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185782"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284456"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: běžné otázky
 
@@ -118,16 +118,10 @@ Posouzení serveru poskytuje hodnocení, které vám pomůžou s připraveností
 
 ### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Jaký je rozdíl mezi posuzováním serveru a Site Recovery Plánovač nasazení?
 
-Posuzování serveru je nástroj pro plánování migrace. Plánovač nasazení Site Recovery je nástroj pro plánování zotavení po havárii. 
+Posuzování serveru je nástroj pro plánování migrace. Plánovač nasazení Site Recovery je nástroj pro plánování zotavení po havárii.
 
 - **Plánování místní migrace do Azure**: Pokud plánujete migrovat místní servery do Azure, použijte k plánování migrace server hodnocení. Vyhodnocuje místní úlohy a poskytuje pokyny a nástroje, které vám pomůžou s migrací. Po dokončení plánu migrace můžete k migraci počítačů do Azure použít nástroje, včetně migrace Azure Migrate serveru.
 - **Plánování zotavení po havárii do Azure**: Pokud plánujete nastavovat zotavení po havárii z místního prostředí do azure pomocí Site Recovery, použijte Plánovač nasazení Site Recovery. Plánovač nasazení poskytuje hloubkové a Site Recovery vyhodnocení místního prostředí pro účely zotavení po havárii. Poskytuje doporučení týkající se zotavení po havárii, jako je například replikace a převzetí služeb při selhání.
-
-### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>Má Azure Migrate odhadované náklady na program smlouva Enterprise (EA)?
-
-Vyhodnocování Azure Migrate serveru v tuto chvíli nepodporuje odhad nákladů pro [smlouva Enterprise program](https://azure.microsoft.com/offers/enterprise-agreement-support/). Alternativním řešením je, že při vytváření posouzení můžete jako **nabídku**zadat průběžné **platby** a ručně přidat procento slevy (použitelné pro předplatné) jako **slevu** ve vlastnostech posouzení:
-
-  ![Vlastnosti posouzení](./media/resources-faq/discount.png)
 
 ### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>Jaký je rozdíl mezi určením velikosti mezi místními a na základě výkonu?
 

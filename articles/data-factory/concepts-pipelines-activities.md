@@ -5,20 +5,19 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/12/2018
-ms.openlocfilehash: bed81633b27d5d0f89cb7e3d7a6e0975de4b6772
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681462"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280742"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
+
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-create-pipelines.md)
 > * [Aktuální verze](concepts-pipelines-activities.md)
@@ -26,17 +25,18 @@ ms.locfileid: "73681462"
 Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a naučit se je používat k sestavení kompletních pracovních postupů založených na datech pro potřeby přesunů a zpracování dat.
 
 ## <a name="overview"></a>Přehled
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Kanál může například obsahovat sadu aktivit, které přijímají a čistí data protokolu a potom spouští úlohu Spark v clusteru služby HDInsight, která tato data protokolu analyzuje. Výhodou tohoto přístupu je, že vám kanál umožňuje spravovat aktivity jako sadu, a ne každou jednotlivě. Například můžete nasadit a naplánovat kanál namísto jednotlivých aktivit.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Kanál například může obsahovat sadu aktivit, které ingestují a čistí data protokolu, a pak vypíná tok dat mapování, který analyzuje data protokolu. Kanál umožňuje spravovat aktivity jako sadu, a ne jednotlivě. Kanál se místo aktivit nasazuje a naplánuje nezávisle.
 
-Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Například můžete použít aktivitu kopírování ke zkopírování dat z místního SQL Serveru do služby Azure Blob Storage. Pak použijete aktivitu Hive, která spouští skript Hive v clusteru Azure HDInsight, aby zpracovala/transformovala data z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec použijte druhou aktivitu kopírování, která zkopíruje výstupní data do služby Azure SQL Data Warehouse, které jsou postavena řešení tvorby sestav business intelligence (BI).
+Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Například můžete použít aktivitu kopírování ke zkopírování dat z místního SQL Serveru do služby Azure Blob Storage. Pak použijte aktivitu toku dat nebo aktivitu poznámkového bloku datacihly ke zpracování a transformaci dat z úložiště objektů blob do fondu služby Azure synapse Analytics nad tím, které business intelligence řešení pro vytváření sestav sestavená.
 
-Data Factory podporuje tři typy aktivit: [aktivity přesunu dat](copy-activity-overview.md), [aktivity transformace dat](transform-data.md) a [aktivity řízení](control-flow-web-activity.md). Každá aktivita může mít nula nebo více vstupních [datových sad](concepts-datasets-linked-services.md) a může generovat jednu nebo více výstupních [datových sad](concepts-datasets-linked-services.md). Následující diagram znázorňuje vztah mezi kanálem, aktivitou a datovou sadou v Data Factory:
+Data Factory má tři skupiny aktivit: [aktivity přesunu dat](copy-activity-overview.md), [aktivity transformace dat](transform-data.md)a [aktivity řízení](control-flow-web-activity.md). Každá aktivita může mít nula nebo více vstupních [datových sad](concepts-datasets-linked-services.md) a může generovat jednu nebo více výstupních [datových sad](concepts-datasets-linked-services.md). Následující diagram znázorňuje vztah mezi kanálem, aktivitou a datovou sadou v Data Factory:
 
 ![Vztah mezi datovou sadou, aktivitou a kanálem](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
 Vstupní datová sada představuje vstup pro aktivitu v kanálu a výstupní datová sada představuje výstup pro aktivitu. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Po vytvoření datové sady můžete tuto datovou sadu používat v aktivitách v rámci kanálu. Datová sada například může být vstupní/výstupní datovou sadou aktivity kopírování nebo aktivity HDInsightHive. Další informace o datových sadách najdete v článku [Datové sady v Azure Data Factory](concepts-datasets-linked-services.md).
 
 ## <a name="data-movement-activities"></a>Aktivity přesunu dat
+
 Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového úložiště dat do úložiště dat jímky. Služba Data Factory podporuje úložiště dat uvedená v tabulce v této části. Data z libovolného zdroje lze zapsat do libovolné jímky. Kliknutím na úložiště dat se dozvíte, jak kopírovat data z a do daného úložiště.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
@@ -48,6 +48,8 @@ Azure Data Factory podporuje následující aktivity transformace, které lze p�
 
 Aktivita transformace dat | Výpočetní prostředí
 ---------------------------- | -------------------
+[Tok dat](control-flow-execute-data-flow-activity.md) | Azure Databricks spravované pomocí Azure Data Factory
+[Funkce Azure](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
@@ -56,26 +58,31 @@ Aktivita transformace dat | Výpočetní prostředí
 [Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](transform-data-using-machine-learning.md) | Virtuální počítač Azure
 [Uložená procedura](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse nebo SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
-[Vlastní kód](transform-data-using-dotnet-custom-activity.md) | Azure Batch
+[Vlastní aktivita](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Poznámkový blok Databricks](transform-data-databricks-notebook.md) | Azure Databricks
 [Aktivita JAR pro datacihly](transform-data-databricks-jar.md) | Azure Databricks
 [Aktivita v Pythonu datacihly](transform-data-databricks-python.md) | Azure Databricks
 
 Další informace najdete v článku [Aktivity transformace dat](transform-data.md).
 
-## <a name="control-activities"></a>Aktivity řízení
+## <a name="control-flow-activities"></a>Aktivity toku řízení
 Podporují se následující aktivity toku řízení:
 
 Aktivita řízení | Popis
 ---------------- | -----------
-[Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md) | Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
-[ForEachActivity](control-flow-for-each-activity.md) | Aktivita ForEach definuje ve vašem kanálu opakovaný tok řízení. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
-[WebActivity](control-flow-web-activity.md) | Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup.
-[Aktivita vyhledávání](control-flow-lookup-activity.md) | Aktivita vyhledávání slouží ke čtení nebo vyhledání záznamu / názvu tabulky / hodnoty z jakéhokoli externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity.
-[Aktivita GetMetadata](control-flow-get-metadata-activity.md) | Aktivita GetMetadata slouží k načtení metadat jakýchkoli dat ve službě Azure Data Factory.
-[Aktivita Until](control-flow-until-activity.md) | Implementuje smyčku Do-Until, která se podobá struktuře smyčky Do-Until v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu.
+[Připojit proměnnou](control-flow-append-variable-activity.md) | Přidejte hodnotu do existující proměnné pole.
+[Spustit kanál](control-flow-execute-pipeline-activity.md) | Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
+[Filtr](control-flow-filter-activity.md) | Použití výrazu filtru na vstupní pole
+[Pro každý](control-flow-for-each-activity.md) | Aktivita ForEach definuje ve vašem kanálu opakovaný tok řízení. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
+[Získat metadata](control-flow-get-metadata-activity.md) | Aktivita GetMetadata slouží k načtení metadat jakýchkoli dat ve službě Azure Data Factory.
 [Aktivita podmínky If](control-flow-if-condition-activity.md) | Podmínka If se dá použít k vytvoření větve na základě podmínky, která provádí vyhodnocení na hodnotu True nebo False. Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnotí sadu aktivit, když se podmínka vyhodnotí jako `true`, a jinou sadu aktivit, když se podmínka vyhodnotí jako `false`.
+[Aktivita vyhledávání](control-flow-lookup-activity.md) | Aktivita vyhledávání slouží ke čtení nebo vyhledání záznamu / názvu tabulky / hodnoty z jakéhokoli externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity.
+[Nastavit proměnnou](control-flow-set-variable-activity.md) | Nastaví hodnotu existující proměnné.
+[Aktivita Until](control-flow-until-activity.md) | Implementuje smyčku Do-Until, která se podobá struktuře smyčky Do-Until v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu.
+[Ověřovací aktivita](control-flow-validation-activity.md) | Zajistěte, aby kanál pokračoval pouze v provádění, pokud existuje referenční datová sada, splňuje zadaná kritéria nebo byl dosažen časový limit.
 [Aktivita Wait](control-flow-wait-activity.md) | Pokud v kanálu použijete aktivitu Wait, kanál před pokračováním v provádění dalších aktivit počká zadanou dobu.
+[Aktivita webu](control-flow-web-activity.md) | Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup.
+[Aktivita Webhooku](control-flow-webhook-activity.md) | Pomocí aktivity Webhook volejte koncový bod a předejte adresu URL zpětného volání. Běh kanálu čeká na vyvolání zpětného volání před pokračováním na další aktivitu.
 
 ## <a name="pipeline-json"></a>Zápis JSON kanálu
 Tady je způsob definice kanálu ve formátu JSON:
@@ -90,7 +97,10 @@ Tady je způsob definice kanálu ve formátu JSON:
         [
         ],
         "parameters": {
-         }
+        },
+        "concurrency": <your max pipeline concurrency>,
+        "annotations": [
+        ]
     }
 }
 ```
@@ -101,6 +111,8 @@ jméno | Název kanálu. Určuje název, který představuje akci prováděnou k
 description | Určuje text popisující, k čemu se kanál používá. | Řetězec | Ne
 activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Pole | Ano
 parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | Ne
+concurrency | Maximální počet souběžných spuštění kanálu může být. Ve výchozím nastavení neexistuje žádná maximální hodnota. Pokud je dosaženo limitu souběžnosti, další spuštění kanálu budou zařazena do fronty, dokud nebudou dokončeny dříve. | Číslo | Ne 
+Anotac | Seznam značek přidružených k kanálu | Pole | Ne
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
 Část **activities** může obsahovat definici jedné nebo více aktivit. Existují dva hlavní typy aktivit: aktivity spuštění a aktivity řízení.
@@ -132,7 +144,7 @@ Značka | Popis | Požaduje se
 --- | ----------- | ---------
 jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li></ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
-type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-activities). | Ano
+type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Ano
 linkedServiceName | Název propojené služby používané aktivitou.<br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. | Ano v případě aktivity HDInsight, dávkové hodnoticí aktivity služby Azure Machine Learning a aktivita uložené procedury <br/><br/>Ne ve všech ostatních případech
 typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
 policy | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost zahrnuje chování při vypršení časového limitu a opakovaných pokusech. Pokud není zadaná, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | Ne
@@ -172,8 +184,8 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 Název JSON | Popis | Povolené hodnoty | Požaduje se
 --------- | ----------- | -------------- | --------
 timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
-retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.
-retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | Ne. Výchozí hodnota je 30 sekund.
+retry | Maximální počet opakovaných pokusů. | Celé číslo | Ne. Výchozí hodnota je 0.
+retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Celé číslo | Ne. Výchozí hodnota je 30 sekund.
 secureOutput | Při nastavení vlastnosti na true se výstup aktivity považuje za bezpečný, tzn. že se nezaznamená do monitorování. | Logická hodnota | Ne. Výchozí hodnota je false.
 
 ### <a name="control-activity"></a>Aktivita řízení
@@ -197,7 +209,7 @@ Značka | Popis | Požaduje se
 --- | ----------- | --------
 jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li><ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
-type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-activities). | Ano
+type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Ano
 typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
 dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | Ne
 
@@ -362,7 +374,7 @@ Kanály se plánují pomocí aktivačních událostí. Existují různé druhy a
 
 Pokud chcete, aby aktivační událost aktivovala spuštění kanálu, musíte do definice aktivační události zahrnout odkaz na příslušný kanál. Mezi kanály a aktivačními událostmi existuje vztah n-m. Více aktivačních událostí může aktivovat jeden kanál a jedna aktivační událost může aktivovat více kanálů. Jakmile je aktivační událost definovaná, musíte ji spustit, aby mohla začít aktivovat kanál. Další informace o aktivačních událostech najdete v článku [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md).
 
-Například předpokládejme, že máte aktivační událost plánovače „Trigger A“, pomocí které chcete spustit kanál „MyCopyPipeline“. Definujte aktivační událost podle následujícího příkladu:
+Řekněme například, že máte aktivační událost plánovače "Trigger A", kterou chci aktivovat mého kanálu "MyCopyPipeline". Definujte aktivační událost podle následujícího příkladu:
 
 ### <a name="trigger-a-definition"></a>Definice aktivační události Trigger A
 

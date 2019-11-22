@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803926"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307313"
 ---
 # <a name="supported-platforms"></a>Podporované platformy 
 
@@ -41,7 +41,7 @@ V následujících oddílech jsou uvedeny podporované serverové operační sys
 
 ### Operační systémy Windows Server<a name="os-windows"></a>
 
-|OS|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
+|Operační systém|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
 |:---|:-:|:-:|
 |Windows Server 2019|✔|×|
 |Windows Server 2016|✔|✔|
@@ -55,7 +55,7 @@ Další informace o podporovaných funkcích pro operační systémy Windows, kt
 64 – bit
 
 * CentOS 6 a 7
-* Amazon Linux 2017,09
+* Amazon Linux 2017.09
 * Oracle Linux 6 a 7
 * Red Hat Enterprise Linux Server 6 a 7
 * Debian GNU/Linux 8 a 9
@@ -95,7 +95,7 @@ Azure Security Center podporují následující prostředky Azure PaaS:
 * Funkce
 * Cloudová služba
 * VNet
-* Podsíť
+* Subnet
 * NIC
 * NSG
 * Účet Batch
@@ -103,16 +103,18 @@ Azure Security Center podporují následující prostředky Azure PaaS:
 * Účet Automation
 * Nástroj pro vyrovnávání zatížení
 * Hledat
-* Obor názvů služby Service Bus
+* Názvový prostor služby Service Bus
 * Stream Analytics
 * Obor názvů centra událostí
 * Logické aplikace
 * Redis
-* Analýza Data Lake
+* Data Lake Analytics
 * Data Lake Store
-* Key Vault
+* Trezor klíčů
 
 Další informace o podporovaných funkcích pro výše uvedený seznam prostředků PaaS najdete v tématu [funkce podporované službami PaaS](security-center-services.md#paas-services).
+
+Také je podporována ochrana pro Virtual Machines umístěná v Azure Stack. Další informace o integraci Security Center s Azure Stack najdete v tématu připojení [virtuálních počítačů s Azure Stack k Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Opustit organizaci jako uživatele typu Host – Azure Active Directory | Dokumentace Microsoftu
-description: Ukazuje, jak uživatele typu Host s Azure AD B2B opustit organizaci pomocí přístupového panelu.
+title: Opuštění organizace jako uživatel typu Host-Azure Active Directory
+description: Ukazuje, jak může uživatel typu Host služby Azure AD B2B opustit organizaci pomocí přístupového panelu.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,58 +11,58 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26d9eb883cc014c1bea092a12e22b6d144a37994
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112970"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272495"
 ---
-# <a name="leave-an-organization-as-a-guest-user"></a>Opustit organizaci jako uživatele typu Host
+# <a name="leave-an-organization-as-a-guest-user"></a>Opuštění organizace jako uživatel typu Host
 
-Můžete se rozhodnout opustit organizaci kdykoli, pokud už nepotřebujete k použití aplikací z této organizace nebo udržovat žádné přidružení uživatele typu Host s Azure Active Directory (Azure AD) B2B. Uživatele můžete nechat organizace samostatně, aniž by bylo nutné kontaktovat správce.
+Uživatel typu Host pro Azure Active Directory (Azure AD) B2B se může kdykoli rozhodnout opustit organizaci, pokud už nepotřebují používat aplikace z této organizace nebo spravovat jakékoli přidružení. Uživatel může organizaci opustit svou vlastní, aniž by se museli kontaktovat správce.
 
 > [!NOTE]
-> Uživatel typu Host nemůže opustit organizaci, pokud jejich účet je zakázaný v domovském tenantovi nebo prostředku tenanta. Pokud jejich účet není povolen, uživatel typu Host muset požádat správce tenanta, který můžete buď odstranit účet guest nebo povolte účet guest, takže uživatel může opustit organizaci.
+> Uživatel typu Host nemůže opustit organizaci, pokud je jejich účet zakázaný buď v domácím klientovi, nebo v tenantovi prostředků. Pokud je jejich účet zakázaný, uživatel typu host bude muset kontaktovat správce tenanta, který může buď odstranit účet hosta, nebo povolit účet Guest, aby uživatel mohl opustit organizaci.
 
 ## <a name="leave-an-organization"></a>Opuštění organizace
 
-Pokud chcete opustit organizaci, postupujte takto.
+Pokud chcete opustit organizaci, postupujte podle těchto kroků.
 
-1. Přejděte na stránku profil přístupového panelu pomocí jedné z následujících kroků:
+1. Přejděte na stránku profilu přístupového panelu pomocí jednoho z následujících kroků:
    
-   - V [webu Azure portal](https://portal.azure.com), klikněte na své jméno v pravém horním rohu a vyberte **zobrazit účet**.
-   - Otevřete váš [přístupového panelu](https://myapps.microsoft.com), klikněte na své jméno pravém horním rohu a další **organizace**, vyberte ikonu nastavení (ozubené kolo).
+   - V [Azure Portal](https://portal.azure.com)klikněte na jméno v pravém horním rohu a vyberte **Zobrazit účet**.
+   - Otevřete [přístupový panel](https://myapps.microsoft.com), klikněte na jméno v pravém horním rohu a vedle možnosti **organizace**vyberte ikonu nastavení (ozubené kolo).
  
-   ![Snímek obrazovky zobrazující nastavení uživatele v přístupovém panelu](media/leave-the-organization/UserSettings.png) 
+   ![Snímek obrazovky s uživatelským nastavením na přístupovém panelu](media/leave-the-organization/UserSettings.png) 
 
    > [!NOTE]
-   > Pokud jste to ještě neudělali organizaci chcete ponechat v části **organizace**, klikněte na tlačítko **přihlášení chcete opustit organizaci** odkaz vedle názvu organizace. Jakmile jste přihlášení, klikněte na název znovu v pravém horním rohu a vedle položky **organizace**, vyberte ikonu nastavení (ozubené kolo).
+   > Pokud ještě nejste přihlášeni k organizaci, kterou chcete opustit, klikněte v části **organizace**na odkaz **Přihlásit se a ponechte** název organizace vedle názvu organizace. Po přihlášení klikněte v pravém horním **rohu na své**jméno a pak vyberte ikonu nastavení (ozubené kolo).
 
-3. V části **organizace**, najít organizace, která chcete ponechat a vyberte **opustit organizaci**.
+3. V části **organizace**Najděte organizaci, kterou chcete opustit, a vyberte **opustit organizaci**.
 
-   ![Snímek obrazovky zobrazující možnost nechte organizace v uživatelském rozhraní](media/leave-the-organization/LeaveOrg.png)
+   ![Snímek obrazovky, který ukazuje možnost opustit organizaci v uživatelském rozhraní](media/leave-the-organization/LeaveOrg.png)
 
-4. Když se zobrazí výzva k potvrzení, vyberte **ponechte**. 
+4. Po zobrazení výzvy k potvrzení vyberte **opustit**. 
 
 ## <a name="account-removal"></a>Odebrání účtu
 
-Když uživatel odejde z organizace, odstranění uživatelského účtu"soft" v adresáři. Ve výchozím nastavení, objekt uživatele přesune **odstraněných uživatelů** oblasti ve službě Azure AD, ale není trvale odstraněny po dobu 30 dnů. Obnovitelné odstranění umožňuje správci obnovit uživatelský účet (včetně skupin a oprávnění), pokud uživatel odešle žádost o obnovení účtu v rámci 30denní období.
+Když uživatel opustí organizaci, uživatelský účet bude v adresáři "soft odstraněn". Ve výchozím nastavení se objekt uživatele přesouvá do oblasti **odstraněné uživatele** ve službě Azure AD, ale po dobu 30 dnů se trvale neodstraní. Toto obnovitelné odstranění umožňuje správci obnovit uživatelský účet (včetně skupin a oprávnění), pokud uživatel vytvoří požadavek na obnovení účtu v průběhu 30 dnů.
 
-V případě potřeby správce tenanta můžete trvale odstranit účet kdykoli během 30 dnů. Použijte následující postup:
+V případě potřeby může správce klienta účet trvale odstranit kdykoli během 30 dnů. Použijte následující postup:
 
-1. V [webu Azure portal](https://portal.azure.com)vyberte **Azure Active Directory**.
+1. V [Azure Portal](https://portal.azure.com)vyberte **Azure Active Directory**.
 2. V části **Spravovat** vyberte **Uživatele**.
-3. Vyberte **odstraněných uživatelů**.
-4. Zaškrtněte políčko vedle odstraněného uživatele a pak vyberte **trvale odstranit**.
+3. Vyberte **odstraněné uživatele**.
+4. Zaškrtněte políčko vedle odstraněného uživatele a pak vyberte možnost **odstranit trvale**.
 
-Pokud se trvale odstranit uživatele, tato akce je nezvratná.
+Pokud uživatele trvale odstraníte, tato akce je nevratná.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přehled Azure AD s B2B, naleznete v tématu [co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
+- Přehled služby Azure AD B2B najdete v tématu [co je spolupráce B2B Azure AD?](what-is-b2b.md)
 
 
 

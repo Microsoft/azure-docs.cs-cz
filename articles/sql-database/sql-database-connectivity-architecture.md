@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3b735f7ee644bb017756f3d6378e625fa66d448
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826914"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280791"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
 
@@ -55,6 +55,10 @@ Pokud se připojujete z oblasti mimo Azure, vaše připojení mají ve výchozí
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
+> [!IMPORTANT]
+> Také otevřete porty 14000-14999, abyste umožnili [připojení pomocí DAC](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) .
+
+
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy brány Azure SQL Database
 
 V následující tabulce jsou uvedené IP adresy bran podle oblasti. Pokud se chcete připojit k Azure SQL Database, je potřeba, abyste povolili & síťového provozu ze **všech** bran pro danou oblast.
@@ -69,16 +73,16 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Austrálie – východ       | 13.75.149.87, 40.79.161.1 |
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
 | Brazílie – jih         | 104.41.11.5, 191.233.200.14 |
-| Střední Kanada       | 40.85.224.249      |
-| Kanada – východ          | 40.86.226.166      |
+| Kanada – střed       | 40.85.224.249      |
+| Východní Kanada          | 40.86.226.166      |
 | Střední USA           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Čína – východ           | 139.219.130.35     |
 | Čína – východ 2         | 40.73.82.1         |
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
 | Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| Východ USA              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
-| Východ USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
+| USA – východ              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| Východní USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
 | Německo – sever východ   | 51.5.144.179       |
@@ -97,7 +101,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Jihovýchodní Asie      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Spojené arabské emiráty – střed          | 20.37.72.64        |
 | Spojené arabské emiráty – sever            | 65.52.248.0        |
-| Spojené království – jih             | 51.140.184.11      |
+| Velká Británie – jih             | 51.140.184.11      |
 | Spojené království – západ              | 51.141.8.11        |
 | Středozápadní USA      | 13.78.145.25       |
 | Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |

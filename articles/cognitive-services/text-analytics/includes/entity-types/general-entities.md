@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: aahi
-ms.openlocfilehash: 693a81cfb15407541311d7ab053bb2ab6a267b29
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: a4c911fa077c2ec332974fb2f0c5abcdef21307c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799765"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284094"
 ---
 ## <a name="general-entity-types"></a>Obecné typy entit:
 
@@ -24,7 +24,7 @@ Jazyky
 
 | Název podtypu | Popis             |
 |--------------|-------------------------|
-| Není dostupné.          | Rozpoznané názvy, například `Bill Gates`, `Marie Curie` |
+| neuvedeno          | Rozpoznané názvy, například `Bill Gates`, `Marie Curie` |
 
 ### <a name="location"></a>Umístění
 
@@ -37,7 +37,7 @@ Jazyky
 
 | Název podtypu | Popis                                                                                      |
 |--------------|--------------------------------------------------------------------------------------------------|
-| Není dostupné.          | umístění, například `Atlantic Ocean`, `library`, `Eiffel Tower``Statue of Liberty` |
+| neuvedeno          | umístění, například `Atlantic Ocean`, `library`, `Eiffel Tower``Statue of Liberty` |
 
 ### <a name="organization"></a>Organizace  
 
@@ -47,11 +47,11 @@ Uznávané organizace, společnosti, organizace a další skupiny lidí. Napří
 
 | Název podtypu | Popis                                                                                      |
 |--------------|--------------------------------------------------------------------------------------------------|
-| Není dostupné.          | organizace, například `Microsoft``NASA` `National Oceanic and Atmospheric Administration` |
+| neuvedeno          | organizace, například `Microsoft``NASA` `National Oceanic and Atmospheric Administration` |
 
 ### <a name="phone-number"></a>Telefonní číslo
 
-Telefonní čísla. 
+Telefonní čísla (jenom telefonní čísla USA). 
 
 Jazyky
 
@@ -60,7 +60,7 @@ Jazyky
 
 | Název podtypu | Popis                                  |
 |----------|----------------------------------------------|
-| Není dostupné.         | Telefonní čísla, například `+1 123-123-123`. |
+| neuvedeno         | Telefonní čísla pro USA, například `(312) 555-0176`. |
 
 ### <a name="email"></a>Email
 
@@ -73,9 +73,9 @@ Jazyky
 
 | Název podtypu | Popis                                  |
 |----------|----------------------------------------------|
-| Není dostupné.         | E-mailová adresa, například `support@contoso.com` |
+| neuvedeno         | E-mailová adresa, například `support@contoso.com` |
 
-### <a name="url"></a>zprostředkovatele identity
+### <a name="url"></a>Adresa URL
 
 Internetové adresy URL.
 
@@ -86,7 +86,7 @@ Jazyky
 
 | Název podtypu | Popis                                           |
 |----------|-------------------------------------------------------|
-| Není dostupné.         | Adresy URL webů, například `https://www.bing.com`. |
+| neuvedeno         | Adresy URL webů, například `https://www.bing.com`. |
 
 ###  <a name="number"></a>Číslo
 
@@ -99,9 +99,9 @@ Jazyky
 
 | Název podtypu    | Příklady                     |
 |-------------|------------------------------|
-| Není dostupné.         | `6`, `six`                   |
+| neuvedeno         | `6`, `six`                   |
 | Procento  | `50%`, `fifty percent`       |
 | Pořadí     | `2nd`, `second`              |
-| Měna    | `$10.99`, `€30.00`           |
+| Currency    | `$10.99`, `€30.00`           |
 | Dimenze   | `10 miles`, `40 cm`          |
 | Teplota | `32 degrees`, `10°C`         |
