@@ -44,10 +44,10 @@ Následující tabulka mapuje typy služby na odpovídající požadované datov
 | --- | --- | --- | --- |  
 | Azure AD Connect (synchronizace) | Služba analýz synchronizace služby Azure AD Connect Health | Shromažďování informací specifických pro AAD Connect (konektory, synchronizační pravidla atd.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService-konektory <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
 |  | Služba monitorování synchronizace služby Azure AD Connect Health | Shromažďování čítačů výkonu pro AAD Connect, trasování ETW, soubory | Čítač výkonu |
-| služba AD DS | Služba analýz AD DS pro Azure AD Connect Health | Provádět syntetické testy, shromažďovat informace o topologii, metadata replikace |  -Přidat-TopologyInfo-JSON <br /> -Common-TestData-JSON (vytvoří výsledky testu)   | 
+| AD DS | Služba analýz AD DS pro Azure AD Connect Health | Provádět syntetické testy, shromažďovat informace o topologii, metadata replikace |  -Přidat-TopologyInfo-JSON <br /> -Common-TestData-JSON (vytvoří výsledky testu)   | 
 |  | Služba monitorování AD DS pro Azure AD Connect Health | Shromažďování čítačů výkonu specifických pro přidání, trasování ETW, soubory | – Čítač výkonu  <br /> -Common-TestData-JSON (odesílá výsledky testu)  |
 | AD FS | Diagnostické služby AD FS pro Azure AD Connect Health | Provádět syntetické testy | TestResult (vytvoří výsledky testu) | 
-| | Služba analýz AD FS pro Azure AD Connect Health  | Shromažďovat metriky využití služby AD FS | ADFS – UsageMetrics |
+| | Služba analýz AD FS pro Azure AD Connect Health  | Shromažďovat metriky využití služby AD FS | Adfs-UsageMetrics |
 | | Služba monitorování AD FS pro Azure AD Connect Health | Shromažďování čítačů výkonu specifických pro AD FS, trasování ETW, soubory | TestResult (nahrává výsledky testu) |
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží 
@@ -59,7 +59,7 @@ Postup potřebný k diagnostice tohoto problému je uveden níže. První je sad
 
 * Ujistěte se, že jsou nainstalované nejnovější verze agentů. Zobrazit [historii verzí](reference-connect-health-version-history.md). 
 * Ujistěte se, že na počítači **běží** služby Azure AD Connect Health agenti. Například Connect Health for AD FS by měl mít tři služby.
-  ![Verify Azure AD Connect Health @ no__t-1
+  ![ověřit Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 * Ujistěte se, že překročíte a splňujete [část požadavky](how-to-connect-health-agent-install.md#requirements).
 * Pomocí [nástroje test Connectivity](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) můžete zjistit problémy s připojením.

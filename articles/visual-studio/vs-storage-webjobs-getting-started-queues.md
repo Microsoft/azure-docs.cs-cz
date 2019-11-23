@@ -24,7 +24,7 @@ ms.locfileid: "72298746"
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek popisuje, jak začít používat Azure Queue Storage v projektu webové úlohy Azure Visual Studio po vytvoření nebo odkazu na účet služby Azure Storage pomocí dialogového okna **Přidat připojené služby** v aplikaci Visual Studio. Když přidáte účet úložiště do projektu webové úlohy pomocí dialogového okna **Přidat připojené služby** sady Visual Studio, budou nainstalovány příslušné balíčky NuGet Azure Storage, do projektu jsou přidány příslušné odkazy .NET a připojovací řetězce pro účet úložiště se aktualizuje v souboru App. config.  
+Tento článek popisuje, jak začít používat Azure Queue Storage v projektu webové úlohy Azure Visual Studio po vytvoření nebo odkazu na účet služby Azure Storage pomocí dialogového okna **Přidat připojené služby** v aplikaci Visual Studio. Když přidáte účet úložiště do projektu webové úlohy pomocí dialogového okna **Přidat připojené služby** sady Visual Studio, nainstalují se příslušné balíčky NuGet Azure Storage, do projektu se přidají příslušné odkazy .NET a v souboru App. config se aktualizují připojovací řetězce pro účet úložiště.  
 
 Tento článek obsahuje C# ukázky kódu, které ukazují, jak používat sadu Azure WebJobs SDK verze 1. x ve službě Azure Queue Storage.
 
@@ -89,7 +89,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typy atributů QueueTrigger fungují s
 **QueueTrigger** můžete použít s následujícími typy:
 
-* **řetezce**
+* **string**
 * Typ POCO serializovaný jako JSON
 * **Byte []**
 * **CloudQueueMessage**
@@ -191,7 +191,7 @@ Další informace najdete v tématu [řádné vypnutí služby WebJobs](http://b
 Chcete-li napsat funkci, která vytvoří novou zprávu fronty, použijte atribut **Queue** . Podobně jako **QueueTrigger**, předáváte název fronty jako řetězec, nebo můžete [název fronty nastavit dynamicky](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Zprávy ve frontě řetězců
-Následující neasynchronní ukázka kódu vytvoří novou zprávu fronty ve frontě s názvem "funkce outputqueue" se stejným obsahem, jako je zpráva fronty přijatá ve frontě s názvem "InputQueue". (Pro asynchronní funkce použijte **IAsyncCollector @ no__t-1T >** , jak je uvedeno dále v této části.)
+Následující neasynchronní ukázka kódu vytvoří novou zprávu fronty ve frontě s názvem "funkce outputqueue" se stejným obsahem, jako je zpráva fronty přijatá ve frontě s názvem "InputQueue". (U asynchronních funkcí použijte **IAsyncCollector\<t >** , jak je uvedeno dále v této části.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -217,7 +217,7 @@ public static void CreateQueueMessage(
 Sada SDK automaticky serializace objektu do formátu JSON. Zpráva fronty je vždy vytvořena, a to i v případě, že objekt má hodnotu null.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Vytvoření více zpráv nebo v asynchronních funkcích
-Chcete-li vytvořit více zpráv, nastavte typ parametru pro výstupní frontu **ICollector @ no__t-1T >** nebo **IAsyncCollector @ no__t-3T >** , jak je znázorněno v následujícím příkladu.
+Chcete-li vytvořit více zpráv, nastavte typ parametru pro výstupní frontu **ICollector\<t >** nebo **IAsyncCollector\<t >** , jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -326,13 +326,13 @@ Pokud potřebujete před navázáním objektu BLOB na objekt udělat nějakou pr
 Atribut **objektu BLOB** lze použít s následujícími typy:
 
 * **Stream** (čtení nebo zápis, zadaný pomocí parametru konstruktoru FileAccess)
-* **Elementu**
+* **TextReader**
 * **TextWriter**
 * **řetězec** (čtení)
 * **výstupní řetězec** (zápis; vytvoří objekt BLOB pouze v případě, že parametr řetězce má hodnotu null, když se funkce vrátí)
 * POCO (čtení)
 * out POCO (zápis; vždy vytvoří objekt blob, vytvoří se jako objekt s hodnotou null, pokud parametr POCO má hodnotu null, když se funkce vrátí)
-* **CloudBlobStream** (zápis)
+* **CloudBlobStream** (write)
 * **ICloudBlob** (čtení nebo zápis)
 * **CloudBlockBlob** (čtení nebo zápis)
 * **CloudPageBlob** (čtení nebo zápis)
@@ -545,7 +545,7 @@ V řídicím panelu SDK WebJobs se při přechodu na stránku webové úlohy (ne
 
 ![Přepnout výstup](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-V nepřetržité úloze WebJob se protokoly aplikací zobrazí v/data/Jobs/Continuous/ *{webjobname}* /job_log.txt v systému souborů webové aplikace.
+V průběžné úloze WebJob se protokoly aplikací zobrazí v/data/Jobs/Continuous/ *{webjobname}* /job_log. txt v systému souborů webové aplikace.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

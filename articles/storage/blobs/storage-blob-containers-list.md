@@ -32,7 +32,7 @@ Přetížení pro tyto metody poskytují další možnosti pro správu způsobu,
 
 Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků. Chcete-li vrátit menší sadu výsledků, zadejte nenulovou hodnotu parametru `maxresults` při volání jedné z metod **ListContainerSegmented** .
 
-Pokud váš účet úložiště obsahuje více než 5000 kontejnerů, nebo pokud jste zadali hodnotu pro `maxresults` tak, že operace výpisu vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí *token pro pokračování* se seznamem kontejnery. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
+Pokud váš účet úložiště obsahuje více než 5000 kontejnerů, nebo pokud jste zadali hodnotu pro `maxresults` tak, že operace výpisu vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí *token pro pokračování* se seznamem kontejnerů. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
 
 V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, zavolejte znovu **ListContainersSegmented** nebo **ListContainersSegmentedAsync** , předejte do tokenu pro pokračování, aby se načetla další sada výsledků, dokud token pro pokračování nemá hodnotu null.
 
@@ -97,7 +97,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-[Vypsat kontejnery](/rest/api/storageservices/list-containers2) 
+[Vypsat kontejnery](/rest/api/storageservices/list-containers2)
 [vytváření výčtu prostředků objektů BLOB](/rest/api/storageservices/enumerating-blob-resources)

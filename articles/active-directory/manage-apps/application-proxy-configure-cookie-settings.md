@@ -48,7 +48,7 @@ Navíc platí, že pokud vaše back-end aplikace obsahuje soubory cookie, které
 ## <a name="set-the-cookie-settings---azure-portal"></a>Nastavení souborů cookie – Azure Portal
 Nastavení souborů cookie pomocí Azure Portal:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). 
 2. Přejděte na **Azure Active Directory** > **podnikových aplikací** > **všech aplikacích**.
 3. Vyberte aplikaci, pro kterou chcete povolit nastavení souborů cookie.
 4. Klikněte na **proxy aplikace**.

@@ -280,6 +280,6 @@ Za předpokladu, že Typický scénář Azure jedné instance aplikačního serv
   * [Spuštění nebo zastavení SAP společně s vaším serverem UNIX spustit/zastavit](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
   * [Spouštění a zastavování agentů pro správu SAP NetWeaver](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o plné dostupnosti aplikace SAP NetWeaver s podporou aplikací najdete v článku o [vysoké dostupnosti aplikace SAP v Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha].

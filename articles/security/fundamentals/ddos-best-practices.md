@@ -97,7 +97,7 @@ DDoS Protection Standard zpřístupňuje bohatou telemetrii prostřednictvím [A
 
 ##### <a name="ddos-mitigation-policies"></a>Zásady zmírnění DDoS
 
-V Azure Portal vyberte **monitorovat**  > **metriky**. V podokně **metriky** vyberte skupinu prostředků, vyberte typ prostředku **Veřejná IP adresa**a vyberte veřejnou IP adresu Azure. Metriky DDoS jsou viditelné v podokně **dostupné metriky** .
+V Azure Portal vyberte **monitorovat** > **metriky**. V podokně **metriky** vyberte skupinu prostředků, vyberte typ prostředku **Veřejná IP adresa**a vyberte veřejnou IP adresu Azure. Metriky DDoS jsou viditelné v podokně **dostupné metriky** .
 
 DDoS Protection Standard aplikuje tři zásady zmírnění rizik (TCP SYN, TCP a UDP) pro každou veřejnou IP adresu chráněného prostředku ve virtuální síti, ve které je povolený DDoS. Prahové hodnoty zásad můžete zobrazit tak, že vyberete **příchozí pakety metriky, které budou aktivovat zmírnění DDoS**.
 
@@ -235,7 +235,7 @@ V této architektuře je ve virtuální síti povolená DDoS Protection Standard
 
 #### <a name="paas-web-application"></a>Webová aplikace PaaS
 
-Tato referenční architektura ukazuje spuštění aplikace Azure App Service v jedné oblasti. Tato architektura ukazuje sadu osvědčených postupů pro webovou aplikaci, která používá [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)  and [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
+Tato referenční architektura ukazuje spuštění aplikace Azure App Service v jedné oblasti. Tato architektura ukazuje sadu osvědčených postupů pro webovou aplikaci, která používá [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) a [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
 Pohotovostní oblast je nastavená pro scénáře převzetí služeb při selhání.
 
 ![Diagram referenční architektury pro webovou aplikaci v PaaS](./media/ddos-best-practices/image11.png)

@@ -1,6 +1,6 @@
 ---
-title: Connect privately to a storage account using Azure Private Endpoint
-description: Learn how to connect privately to a storage account in Azure using a Private Endpoint.
+title: Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
+description: Naučte se připojit soukromě k účtu úložiště v Azure pomocí privátního koncového bodu.
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,10 +14,10 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228096"
 ---
-# <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Connect privately to a storage account using Azure Private Endpoint
-Azure Private Endpoint is the fundamental building block for Private Link in Azure. It enables Azure resources, like virtual machines (VMs), to communicate privately with Private Link resources.
+# <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
+Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
 
-In this Quickstart, you will learn how to create a VM on an Azure virtual network, a storage account with a Private Endpoint using the Azure portal. Then, you can securely access the storage account from the VM.
+V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač ve službě Azure Virtual Network, účet úložiště s privátním koncovým bodem pomocí Azure Portal. Pak můžete z virtuálního počítače bezpečně přistupovat k účtu úložiště.
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -25,156 +25,156 @@ In this Quickstart, you will learn how to create a VM on an Azure virtual networ
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
-In this section, you will create virtual network and the subnet to host the VM that is used to access your Private Link Resource (a storage account in this example).
+V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který se používá pro přístup k prostředku privátního propojení (účet úložiště v tomto příkladu).
 
-### <a name="create-the-virtual-network"></a>Create the virtual network
+### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-In this section, you will create virtual network and the subnet to host the VM that is used to access your Private Link resource.
+V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který se používá pro přístup k prostředku privátního propojení.
 
-1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Virtual network**.
-1. In **Create virtual network**, enter or select this information:
+1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name (Název) | Enter *MyVirtualNetwork*. |
-    | Adresní prostor | Enter *10.1.0.0/16*. |
+    | Název | Zadejte *MyVirtualNetwork*. |
+    | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
-    | Umístění | Select **WestCentralUS**.|
-    | Subnet - Name | Enter *mySubnet*. |
-    | Podsíť – Rozsah adres | Enter *10.1.0.0/24*. |
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
+    | Umístění | Vyberte **WestCentralUS**.|
+    | Název podsítě | Zadejte *mySubnet*. |
+    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
     |||
-1. Leave the rest as default and select **Create**.
+1. Ponechte REST jako výchozí a vyberte **vytvořit**.
 
 
 ### <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Compute** > **Virtual machine**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **výpočetní** > **virtuální počítač**.
 
-1. In **Create a virtual machine - Basics**, enter or select this information:
+1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
+    | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Select **myResourceGroup**. You created this in the previous section.  |
-    | **INSTANCE DETAILS** |  |
-    | Název virtuálního počítače | Enter *myVm*. |
-    | Oblast | Select **WestCentralUS**. |
-    | Availability options | Leave the default **No infrastructure redundancy required**. |
-    | Obrázek | Select **Windows Server 2019 Datacenter**. |
-    | Velikost | Leave the default **Standard DS1 v2**. |
-    | **ADMINISTRATOR ACCOUNT** |  |
-    | Uživatelské jméno | Enter a username of your choosing. |
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
+    | **PODROBNOSTI INSTANCE** |  |
+    | Název virtuálního počítače | Zadejte *myVm*. |
+    | Oblast | Vyberte **WestCentralUS**. |
+    | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
+    | Image | Vyberte **Windows Server 2019 Datacenter**. |
+    | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
+    | **ÚČET SPRÁVCE** |  |
+    | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
     | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Confirm Password | Reenter password. |
-    | **INBOUND PORT RULES** |  |
-    | Public inbound ports | Leave the default **None**. |
-    | **SAVE MONEY** |  |
-    | Already have a Windows license? | Leave the default **No**. |
+    | Potvrzení hesla | Zadejte znovu heslo. |
+    | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
+    | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné**. |
+    | **ÚSPORA PENĚZ** |  |
+    | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne**. |
     |||
 
-1. Select **Next: Disks**.
+1. Vyberte **Další: disky**.
 
-1. In **Create a virtual machine - Disks**, leave the defaults and select **Next: Networking**.
+1. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
 
-1. In **Create a virtual machine - Networking**, select this information:
+1. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Virtuální síť | Leave the default **MyVirtualNetwork**.  |
-    | Adresní prostor | Leave the default **10.1.0.0/24**.|
-    | Podsíť | Leave the default **mySubnet (10.1.0.0/24)** .|
-    | Veřejná IP adresa | Leave the default **(new) myVm-ip**. |
-    | Public inbound ports | Select **Allow selected ports**. |
-    | Select inbound ports | Select **HTTP** and **RDP**.|
+    | Virtuální síť | Ponechte výchozí **MyVirtualNetwork**.  |
+    | Adresní prostor | Ponechte výchozí **10.1.0.0/24**.|
+    | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)** .|
+    | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
+    | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
+    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
     ||
 
-1. Vyberte **Zkontrolovat a vytvořit**. You're taken to the **Review + create** page where Azure validates your configuration.
+1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
 
-1. When you see the **Validation passed** message, select **Create**.
+1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
 
-## <a name="create-your-private-endpoint"></a>Create your Private Endpoint
-In this section, you will create a private storage account using a Private Endpoint to it. 
+## <a name="create-your-private-endpoint"></a>Vytvoření privátního koncového bodu
+V této části vytvoříte privátním koncovým bodem privátního účtu úložiště. 
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Storage** > **Storage account**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **úložiště** > **účet úložiště**.
 
-1. In **Create storage account - Basics**, enter or select this information:
+1. V nástroji **vytvořit účet úložiště – základy**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
+    | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Select **myResourceGroup**. You created this in the previous section.|
-    | **INSTANCE DETAILS** |  |
-    | Název účtu úložiště  | Enter *mystorageaccount*. If this name is taken, create a unique name. |
-    | Oblast | Select **WestCentralUS**. |
-    | Výkon| Leave the default **Standard**. |
-    | Account kind (Druh účtu) | Leave the default **Storage (general purpose v2)** . |
-    | Replikace | Select **Read-access geo-redundant storage (RA-GRS)** . |
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
+    | **PODROBNOSTI INSTANCE** |  |
+    | Název účtu úložiště  | Zadejte *mystorageaccount*. Pokud se tento název povede, vytvořte jedinečný název. |
+    | Oblast | Vyberte **WestCentralUS**. |
+    | Výkon| Ponechte výchozí **Standard**. |
+    | Account kind (Druh účtu) | Ponechte výchozí **úložiště (pro obecné účely v2)** . |
+    | Replikace | Vyberte **geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)** . |
     |||
   
-3. Select **Next: Networking**.
-4. In **Create a storage account - Networking**, connectivity method, select **Private Endpoint**.
-5. In **Create a storage account - Networking**, select **Add Private Endpoint**. 
-6. In **Create Private Endpoint**, enter or select this information:
+3. Vyberte **Další: sítě**.
+4. V možnosti **vytvořit účet úložiště – síť**, způsob připojení vyberte **privátní koncový bod**.
+5. V nástroji **vytvořit účet úložiště – síť**vyberte **Přidat privátní koncový bod**. 
+6. V **Vytvoření privátního koncového bodu**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
+    | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Select **myResourceGroup**. You created this in the previous section.|
-    |Umístění|Select **WestCentralUS**.|
-    |Name (Název)|Enter *myPrivateEndpoint*.  |
-    |Storage sub-resource|Leave the default **Blob**. |
-    | **NETWORKING** |  |
-    | Virtuální síť  | Select *MyVirtualNetwork* from resource group *myResourceGroup*. |
-    | Podsíť | Select *mySubnet*. |
-    | **PRIVATE DNS INTEGRATION**|  |
-    | Integrate with private DNS zone  | Leave the default **Yes**. |
-    | Zóna privátního DNS  | Leave the default ** (New) privatelink.blob.core.windows.net**. |
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
+    |Umístění|Vyberte **WestCentralUS**.|
+    |Název|Zadejte *myPrivateEndpoint*.  |
+    |Dílčí prostředek úložiště|Ponechte výchozí **objekt BLOB**. |
+    | **SÍTĚ** |  |
+    | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
+    | Podsíť | Vyberte *mySubnet*. |
+    | **INTEGRACE PRIVÁTNÍ DNS**|  |
+    | Integrace s privátní zónou DNS  | Ponechte výchozí **hodnotu Ano**. |
+    | Zóna privátního DNS  | Ponechte výchozí * * (New) privatelink.blob.core.windows.net * *. |
     |||
 7. Vyberte **OK**. 
-8. Vyberte **Zkontrolovat a vytvořit**. You're taken to the **Review + create** page where Azure validates your configuration. 
-9. When you see the **Validation passed** message, select **Create**. 
-10. Browse to the storage account resource that you just created.
-11. Select **Access Keys** from the left content menu.
-12. Select **Copy** on the connection string for key1.
+8. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
+9. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
+10. Přejděte k prostředku účtu úložiště, který jste právě vytvořili.
+11. V nabídce vlevo obsah vyberte **přístupové klíče** .
+12. Vyberte možnost **Kopírovat** na připojovací řetězec pro klíč1.
  
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
-Connect to the VM *myVm* from the internet as follows:
+Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způsobem:
 
-1. In the portal's search bar, enter *myVm*.
+1. Na panelu hledání na portálu zadejte *myVm*.
 
-1. Klikněte na tlačítko **Připojit**. After selecting the **Connect** button, **Connect to virtual machine** opens.
+1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Select **Download RDP File**. Azure creates a Remote Desktop Protocol ( *.rdp*) file and downloads it to your computer.
+1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Open the downloaded.rdp* file.
+1. Otevřete stažený soubor. RDP *.
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
-    1. Enter the username and password you specified when creating the VM.
+    1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > You may need to select **More choices** > **Use a different account**, to specify the credentials you entered when you created the VM.
+        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. If you receive a certificate warning, select **Yes** or **Continue**.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
 
-1. Once the VM desktop appears, minimize it to go back to your local desktop.  
+1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
 
-## <a name="access-storage-account-privately-from-the-vm"></a>Access storage account privately from the VM
+## <a name="access-storage-account-privately-from-the-vm"></a>Přístup k účtu úložiště soukromě z virtuálního počítače
 
-In this section, you will connect privately to the storage account using the Private Endpoint.
+V této části se soukromě připojíte k účtu úložiště pomocí privátního koncového bodu.
 
 > [!IMPORTANT]
-> DNS configuration for storage needs a manual modification on the hosts file to include the FQDN of the specific account Please modify the following file using administrator permissions on Windows: c:\Windows\System32\Drivers\etc\hosts or Linux /etc/hosts Include the DNS information for the account from previous step in the following format [Private IP Address] myaccount.blob.core.windows.net
+> Konfigurace DNS pro úložiště vyžaduje ruční úpravu souboru hostitelů, aby zahrnovala plně kvalifikovaný název domény konkrétního účtu. Upravte následující soubor pomocí oprávnění správce ve Windows: c:\Windows\System32\Drivers\etc\hosts nebo Linux/etc/hosts zahrnuje informace DNS pro účet z předchozího kroku v následujícím formátu [privátní IP adresa] myaccount.blob.core.windows.net
 
-1. In the Remote Desktop of *myVM*, open PowerShell.
-2. Enter `nslookup mystorageaccount.blob.core.windows.net` You'll receive a message similar to this:
+1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+2. Zadejte `nslookup mystorageaccount.blob.core.windows.net` obdržíte zprávu podobnou této:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -184,28 +184,28 @@ In this section, you will connect privately to the storage account using the Pri
     Aliases:  mystorageaccount.blob.core.windows.net
     ```
 3. Nainstalujte [Průzkumníka služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
-4. Select **Storage accounts** with the right-click.
-5. Select **Connect to an azure storage**.
-6. Select **Use a connection string**.
-7. Vyberte **Další**.
-8. Enter the connection string by pasting the information previously copied.
-9. Vyberte **Další**.
+4. Vyberte **účty úložiště** kliknutím pravým tlačítkem myši.
+5. Vyberte **připojit k úložišti Azure**.
+6. Vyberte **Použít připojovací řetězec**.
+7. Vyberte **Next** (Další).
+8. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
+9. Vyberte **Next** (Další).
 10. Vyberte **Connect** (Připojit).
-11. Browse the Blob containers from mystorageaccount 
-12. (Optionally) Create folders and/or upload files to *mystorageaccount*. 
-13. Close the remote desktop connection to *myVM*. 
+11. Procházení kontejnerů objektů BLOB z mystorageaccount 
+12. Volitelně Vytvořte složky nebo nahrajte soubory do *mystorageaccount*. 
+13. Zavřete připojení ke vzdálené ploše pro *myVM*. 
 
-Additional options to access the storage account:
-- Microsoft Azure Storage Explorer is a standalone free app from Microsoft that enables you to work visually with Azure storage data on Windows, macOS, and Linux. You can install the application to browse privately the storage account content. 
+Další možnosti pro přístup k účtu úložiště:
+- Průzkumník služby Microsoft Azure Storage je samostatná bezplatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linux. Můžete nainstalovat aplikaci, která bude procházet soukromý obsah účtu úložiště. 
  
-- The AzCopy utility is another option for high-performance scriptable data transfer for Azure storage. Pomocí AzCopy můžete přenášet data do a ze služeb Blob, File a Table Storage. 
+- Nástroj AzCopy je další možností pro vysoce výkonný přenos dat pro Azure Storage. Pomocí AzCopy můžete přenášet data do a ze služeb Blob, File a Table Storage. 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
-When you're done using the Private Endpoint, storage account and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
+Až budete hotovi s použitím privátního koncového bodu, účtu úložiště a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
+1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* . 
 2. Vyberte **Odstranit skupinu prostředků**. 
-3. Enter *myResourceGroup* for **TYPE THE RESOURCE GROUP NAME** and select **Delete**. 
+3. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**. 
 
 ## <a name="next-steps"></a>Další kroky
-In this Quickstart, you created a VM on a virtual network and storage account and a Private Endpoint. You connected to one VM from the internet and securely communicated to the storage account using Private Link. To learn more about Private Endpoint, see [What is Azure Private Endpoint?](private-endpoint-overview.md).
+V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální síti a účtu úložiště a privátním koncovém bodu. Připojili jste se k jednomu virtuálnímu počítači z Internetu a zabezpečeně komunikovali s účtem úložiště pomocí privátního odkazu. Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).

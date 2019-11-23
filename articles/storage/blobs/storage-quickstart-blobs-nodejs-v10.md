@@ -254,7 +254,7 @@ async function showContainerNames(aborter, serviceURL) {
 
 Při vrácení odpovědi se pomocí iterace *containerItems* vypíše název do konzoly. 
 
-### <a name="upload-text"></a>Nahrání textu
+### <a name="upload-text"></a>Nahrání textového řetězce
 
 K nahrání textu do objektu blob se používá metoda *upload*.
 
@@ -399,7 +399,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci této ukázky kódu. 
+Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci vzorku kódu. 
 
 ## <a name="next-steps"></a>Další kroky
 

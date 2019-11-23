@@ -77,7 +77,7 @@ Názvy zadané pro úložiště a adresáře v tomto kurzu předpokládají, že
 - Malá skupina pro datové vědy, která nemá více týmů pro datové vědy. 
 - Širší skupina pro datové vědy s více týmy pro datové vědy, které si ale přeje optimalizovat spolupráci s aktivitami, jako je plánování sprintů na úrovni skupiny. 
 
-Pokud se týmy rozhodnou, že mají svá vlastní úložiště v rámci jedné skupiny projektů, vedoucí týmu by měl vytvořit úložiště s názvy, jako  *\<je název týmu > Template* a  *\<> nástrojů týmu*. Příklad: *TeamATemplate* a *TeamAUtilities*. 
+Pokud se týmy rozhodnou, že mají svá vlastní úložiště v rámci jedné skupiny projektů, vedoucí týmu by měl vytvořit úložiště s názvy, jako je *\<týmu > Template* a *\<název týmu > nástroje*. Např.: *TeamATemplate* a *TeamAUtilities*. 
 
 V každém případě vedoucí týmu potřebuje nechat své členy týmu, aby věděli, které šablony a úložiště nástrojů se mají nastavit a klonovat. Vedoucí projektu by měli postupovat podle [úkolů vedoucího týmu pro datové vědy](project-lead-tasks.md) k vytváření úložišť projektů, ať už v samostatných projektech nebo v jednom projektu. 
 
@@ -85,7 +85,7 @@ V každém případě vedoucí týmu potřebuje nechat své členy týmu, aby v�
 
 Vytvoření samostatného projektu pro váš tým:
 
-1. Ve webovém prohlížeči přejdete na domovskou stránku organizace Azure DevOps ve vaší skupině na adrese URL *https\/:/\<název serveru >\</název organizace >* a vyberte **Nový projekt**. 
+1. Ve webovém prohlížeči přejdete na domovskou stránku organizace Azure DevOps ve skupině na adrese URL *https:\//\<název serveru >/\<název organizace >* a vyberte **Nový projekt**. 
    
    ![Vybrat nový projekt](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
@@ -95,7 +95,7 @@ Vytvoření samostatného projektu pro váš tým:
    
    ![Vytvoření projektu](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Otevře se stránka se **souhrnem** týmového projektu s adresou URL stránky *\/https:\</\<název\<serveru >/název organizace >/název týmu >* .
+Otevře se stránka se **souhrnem** týmového projektu s adresou URL stránky *https:\//\<název serveru >/\<název organizace >/\<název týmu*>.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Přejmenujte výchozí úložiště MyTeam na TeamUtilities
 
@@ -140,7 +140,7 @@ Pokud chcete naplnit svá úložiště v týmu obsahem společných úložišť 
    
    ![Vybrat Import](./media/team-lead-tasks/import-repo.png)
    
-1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a v části **Adresa URL klonu**zadejte adresu URL pro úložiště šablon společné šablony. Adresa URL je *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/_git/\<repository name >* . Například: *https: \//dev. Azure. com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a v části **Adresa URL klonu**zadejte adresu URL pro úložiště šablon společné šablony. Adresa URL je *https:\//\<název serveru >/\<název organizace >/_git/\<název úložiště >* . Například: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Vyberte **importovat**. Obsah úložiště šablony skupiny se importuje do vašeho týmového úložiště šablony. 
    
@@ -194,7 +194,7 @@ Klonování úložišť:
    
 1. Na místním počítači vytvořte následující adresáře:
    
-   - Ve Windows: **C:\GitRepos\MyTeam**
+   - Pro Windows: **C:\GitRepos\MyTeam**
    - Pro Linux **$Home/gitrepos/myTeam** 
    
 1. Přejděte do adresáře, který jste vytvořili.
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> Pokud se jedná o první potvrzení do úložiště Git, možná budete muset nakonfigurovat globální parametry *User.Name* a *User. email* před spuštěním `git commit` příkazu. Spusťte následující dva příkazy:
+> Pokud se jedná o první potvrzení do úložiště Git, možná budete muset nakonfigurovat globální parametry *User.Name* a *User. email* před spuštěním příkazu `git commit`. Spusťte následující dva příkazy:
 > 
 > `git config --global user.name <your name>`
 > 

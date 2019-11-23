@@ -47,7 +47,7 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 > [!NOTE]
 > Podrobnou jazykovou podporu pro funkci rozpoznávání pojmenovaných entit (NER) v3 Public Preview najdete v tématu [typy pojmenovaných entit](named-entity-types.md).
 
-| Jazyk              | Kód jazyka | Zabarvení | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky        |
+| Jazyk              | Kód jazyka | Mínění | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky:        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | arabština                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Čeština                 |     `cs`      |           |             |           ✔ \*           |                |                    |
@@ -77,7 +77,7 @@ Podpora jazyka \* je ve verzi Preview.
 
 \** k dispozici také v [Analýza mínění V3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) a/nebo ve verzi Public Preview pro [rozpoznávání entit V3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) .
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 [Stránka dokumentace Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

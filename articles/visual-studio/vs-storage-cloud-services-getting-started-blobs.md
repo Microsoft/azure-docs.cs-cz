@@ -24,7 +24,7 @@ ms.locfileid: "72298808"
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek popisuje, jak začít s Azure Blob Storage po vytvoření nebo odkazování Azure Storage účtu pomocí dialogového okna **Přidat připojené služby** sady Visual Studio v projektu cloudové služby Visual Studio. Ukážeme vám, jak používat a vytvářet kontejnery objektů BLOB a jak provádět běžné úlohy, jako je nahrávání, výpis a stahování objektů BLOB. Ukázky jsou napsány v jazyce C @ no__t-0 a používají [klientské knihovny Microsoft Azure Storage pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Tento článek popisuje, jak začít s Azure Blob Storage po vytvoření nebo odkazování Azure Storage účtu pomocí dialogového okna **Přidat připojené služby** sady Visual Studio v projektu cloudové služby Visual Studio. Ukážeme vám, jak používat a vytvářet kontejnery objektů BLOB a jak provádět běžné úlohy, jako je nahrávání, výpis a stahování objektů BLOB. Ukázky jsou napsány v jazyce C\# a používají [Microsoft Azure Storage klientské knihovny pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 Azure Blob Storage je služba pro ukládání velkých objemů nestrukturovaných dat, ke kterým se dá dostat odkudkoli na světě přes HTTP nebo HTTPS. Jeden objekt BLOB může být libovolná velikost. Objekty blob můžou být například obrázky, zvukové soubory a videosoubory, nezpracovaná data a soubory dokumentů.
 

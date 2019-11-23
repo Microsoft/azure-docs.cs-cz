@@ -26,7 +26,7 @@ ms.locfileid: "72298814"
 
 Tento článek popisuje, jak začít používat úložiště Azure Table v aplikaci Visual Studio po vytvoření nebo odkazu na účet služby Azure Storage v ASP.NET Core projektu pomocí funkce **připojené služby** sady Visual Studio. Operace **připojené služby** nainstaluje příslušné balíčky NuGet pro přístup k úložišti Azure v projektu a přidá připojovací řetězec pro účet úložiště do konfiguračních souborů projektu. (Obecné informace o Azure Storage najdete v [dokumentaci k úložišti](https://azure.microsoft.com/documentation/services/storage/) .)
 
-Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání zevnitř i mimo cloud Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat. Obecnější informace o používání služby Azure Table Storage najdete v tématu Začínáme [s úložištěm Azure Table pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md).
+Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání zevnitř i mimo cloud Azure. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure. Obecnější informace o používání služby Azure Table Storage najdete v tématu Začínáme [s úložištěm Azure Table pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
 Začněte tím, že nejprve vytvoříte tabulku v účtu úložiště. Tento článek ukazuje, jak vytvořit tabulku v C# nástroji a jak provádět základní operace s tabulkami, jako je například přidávání, úpravy, čtení a odebírání položek tabulky.  Kód používá klientskou knihovnu Azure Storage pro .NET. Další informace o ASP.NET najdete v tématu [ASP.NET](https://www.asp.net).
 
@@ -52,14 +52,14 @@ Chcete-li získat přístup k tabulkám v ASP.NET Core projektech, je třeba zah
                 "<name>", "<account-key>"), true);
     ```
 
-1. Získat objekt `CloudTableClient` pro odkazování na objekty tabulky v účtu úložiště:
+1. Získat objekt `CloudTableClient`, který odkazuje na objekty tabulky v účtu úložiště:
 
     ```csharp
     // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získat referenční objekt `CloudTable` pro odkaz na konkrétní tabulku a entity:
+1. Získat `CloudTable` objekt odkazu, který odkazuje na konkrétní tabulku a entity:
 
     ```csharp
     // Get a reference to a table named "peopleTable"
@@ -99,7 +99,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Operace s tabulkami zahrnující entity používají objekt @no__t 0, který jste vytvořili dříve v [tabulkách přístupu v kódu](#access-tables-in-code). Objekt `TableOperation` představuje operaci, kterou chcete provést. Následující příklad kódu ukazuje, jak vytvořit objekt `CloudTable` a objekt `CustomerEntity`. Pro přípravu operace je vytvořen `TableOperation` pro vložení entity zákazníka do tabulky. Nakonec se operace provede voláním `CloudTable.ExecuteAsync`.
+Operace s tabulkami zahrnující entity používají objekt `CloudTable`, který jste vytvořili dříve v [tabulkách přístupu v kódu](#access-tables-in-code). Objekt `TableOperation` představuje operaci, kterou chcete provést. Následující příklad kódu ukazuje, jak vytvořit objekt `CloudTable` a objekt `CustomerEntity`. Pro přípravu operace je vytvořen `TableOperation` pro vložení entity zákazníka do tabulky. Nakonec se operace provede voláním `CloudTable.ExecuteAsync`.
 
 ```csharp
 // Create a new customer entity.
@@ -165,7 +165,7 @@ do
 
 ## <a name="get-a-single-entity"></a>Získat jednu entitu
 
-Můžete napsat dotaz, který získá jednu konkrétní entitu. Následující kód používá objekt `TableOperation` k určení zákazníka s názvem "Ben Smith". Metoda vrátí pouze jednu entitu, nikoli kolekci, a vrácenou hodnotu v `TableResult.Result` je objekt `CustomerEntity`. Určení obou klíčů oddílů a řádků v dotazu je nejrychlejší způsob, jak načíst jednu entitu ze služby `Table`.
+Můžete napsat dotaz, který získá jednu konkrétní entitu. Následující kód používá objekt `TableOperation` k určení zákazníka s názvem "Ben Smith". Metoda vrátí pouze jednu entitu, nikoli kolekci, a vrácenou hodnotu v `TableResult.Result` je objekt `CustomerEntity`. Určení obou klíčů oddílů a řádků v dotazu je nejrychlejší způsob, jak načíst jednu entitu z `Table` služby.
 
 ```csharp
 // Create a retrieve operation that takes a customer entity.

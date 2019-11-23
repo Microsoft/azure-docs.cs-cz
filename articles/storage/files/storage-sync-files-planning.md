@@ -99,7 +99,7 @@ Zobrazení výsledků ve formátu CSV:
 ### <a name="system-requirements"></a>Systémové požadavky
 - Server, na kterém je spuštěná jedna z následujících verzí operačního systému:
 
-    | Verze | Podporované SKU | Podporované možnosti nasazení |
+    | Version | Podporované SKU | Podporované možnosti nasazení |
     |---------|----------------|------------------------------|
     | Windows Server 2019 | Datacenter a Standard | Úplné a základní |
     | Windows Server 2016 | Datacenter a Standard | Úplné a základní |
@@ -122,7 +122,7 @@ Zobrazení výsledků ve formátu CSV:
 
 ### <a name="file-system-features"></a>Funkce systému souborů
 
-| Funkce | Stav podpory | Poznámky |
+| Funkce | Stav podpory | Poznámky: |
 |---------|----------------|-------|
 | Seznamy řízení přístupu (ACL) | Plně podporováno | Seznamy řízení přístupu systému Windows jsou zachovány Azure File Sync a jsou vynutily Windows Server na koncových bodech serveru. Seznamy řízení přístupu (ACL) Windows nejsou (zatím) podporované soubory Azure, pokud se k souborům dostanete přímo v cloudu. |
 | Pevné odkazy | Přeskočeno | |
@@ -141,14 +141,14 @@ Zobrazení výsledků ve formátu CSV:
 
 | Soubor nebo složka | Poznámka |
 |-|-|
-| Desktop. ini | Soubor specifický pro systém |
-| ethumbs. DB $ | Dočasný soubor pro miniatury |
+| Desktop.ini | Soubor specifický pro systém |
+| ethumbs.db$ | Dočasný soubor pro miniatury |
 | ~$\*.\* | Dočasný soubor Office |
 | \*. tmp | Dočasný soubor |
-| \*. laccdb | Soubor zámků Access DB|
+| \*.laccdb | Soubor zámků Access DB|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Soubor interní synchronizace|
 | Informace o svazcích \\systému | Složka specifická pro svazek |
-| $RECYCLE. BIN| Složka |
+| $RECYCLE. BIN| Folder |
 | \\SyncShareState | Složka pro synchronizaci |
 
 ### <a name="failover-clustering"></a>Clusteringu s podporou převzetí služeb při selhání
@@ -247,7 +247,7 @@ S Azure File Sync by se neměla používat žádná další řešení HSM.
 ## <a name="region-availability"></a>Dostupnost v oblastech
 Azure File Sync je k dispozici pouze v následujících oblastech:
 
-| Region (Oblast) | Umístění Datacenter |
+| Oblast | Umístění Datacenter |
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
 | Austrálie – jihovýchod | Victoria |
@@ -257,7 +257,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Střed Indie | Puné |
 | Střední USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
-| Východ USA | Virginie |
+| Východní USA | Virginie |
 | USA – východ 2 | Virginie |
 | Francie – střed | Paříž |
 | Francie – jih * | Marseille |
@@ -272,7 +272,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Středojižní USA | Texas |
 | Indie – jih | Čennaj |
 | Jihovýchodní Asie | Singapur |
-| Spojené království – jih | Londýn |
+| Velká Británie – jih | Londýn |
 | Spojené království – západ | Cardiff |
 | USA (Gov) – Arizona | Arizona |
 | USA (Gov) – Texas | Texas |
@@ -282,7 +282,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Západní Evropa | Nizozemsko |
 | Středozápadní USA | Wyoming |
 | Západní USA | Kalifornie |
-| Západní USA 2 | Washington |
+| USA – západ 2 | Washington |
 
 Azure File Sync podporuje synchronizaci jenom se sdílenou složkou Azure, která je ve stejné oblasti jako služba synchronizace úložiště.
 
@@ -304,10 +304,10 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Kanada – střed      | Kanada – východ        |
 | Kanada – východ         | Kanada – střed     |
 | Střed Indie       | Indie – jih        |
-| Střední USA          | Východ USA 2          |
+| Střední USA          | Východní USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
-| Východ USA             | Západní USA            |
-| Východ USA 2           | Střední USA         |
+| Východní USA             | Západní USA            |
+| Východní USA 2           | Střední USA         |
 | Francie – střed      | Francie – jih       |
 | Francie – jih        | Francie – střed     |
 | Japonsko – východ          | Japonsko – západ         |
@@ -321,15 +321,15 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Středojižní USA    | Středoseverní USA   |
 | Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
-| Spojené království – jih            | Spojené království – západ            |
-| Spojené království – západ             | Spojené království – jih           |
+| Velká Británie – jih            | Spojené království – západ            |
+| Spojené království – západ             | Velká Británie – jih           |
 | USA (Gov) – Arizona      | USA (Gov) – Texas       |
 | US Gov – Iowa         | USA (Gov) – Virginia    |
 | USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
-| Středozápadní USA     | Západní USA 2          |
-| Západní USA             | Východ USA            |
-| Západní USA 2           | Středozápadní USA    |
+| Středozápadní USA     | USA – západ 2          |
+| Západní USA             | Východní USA            |
+| USA – západ 2           | Středozápadní USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

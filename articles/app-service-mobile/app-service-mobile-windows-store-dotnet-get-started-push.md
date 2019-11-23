@@ -28,7 +28,7 @@ ms.locfileid: "72388633"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
 
@@ -44,7 +44,7 @@ Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, budete po
 
 Musíte odeslat aplikaci do Microsoft Store a potom nakonfigurovat projekt serveru pro integraci se službou [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) , abyste mohli odeslat nabízení.
 
-1. V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace UWP, klikněte na **uložit** > **přidružit aplikaci k obchodu...** .
+1. V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace UWP, klikněte na **Store** > **přidružit aplikaci ke Storu...** .
 
     ![Přidružit aplikaci k Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
@@ -66,7 +66,7 @@ Musíte odeslat aplikaci do Microsoft Store a potom nakonfigurovat projekt serve
 
 ## <a id="update-service"></a>Aktualizace serveru pro odesílání nabízených oznámení
 
-Použijte níže uvedený postup, který odpovídá vašemu typu back-endu @ no__t-0either [.NET back-end](#dotnet) nebo [Node. js back-end](#nodejs).
+Použijte níže uvedený postup, který odpovídá vašemu typu back-endu vašeho projektu,&mdash;back-endu [.NET](#dotnet) nebo [back-end Node. js](#nodejs).
 
 ### <a name="dotnet"></a>Projekt back-endu .NET
 

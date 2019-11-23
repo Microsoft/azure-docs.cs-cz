@@ -112,7 +112,7 @@ Aby se zajistilo, že se skript snímku úspěšně spustí, ujistěte se, že j
 
 Pokud chcete nastavit snímky úložiště s velkými instancemi HANA, postupujte podle těchto kroků.
 1. Ujistěte se, že je v operačním systému Linux na serveru velkých instancí HANA nainstalovaný jazyk Perl.
-1. Upravte/etc/ssh/ssh @ no__t-0config a přidejte tak řádek _Mac HMAC-SHA1_.
+1. Upravte/etc/ssh/ssh\_config a přidejte tak řádek _Mac HMAC-SHA1_.
 1. Pro každou spuštěnou instanci SAP HANA a v případě potřeby vytvořte účet uživatele SAP HANA Backup na hlavním uzlu.
 1. Nainstalujte klienta SAP HANA HDB na všechny servery Velké instance SAP HANA.
 1. Na prvním Velké instance SAP HANA serveru každé oblasti vytvořte veřejný klíč pro přístup k základní infrastruktuře úložiště, která řídí vytváření snímků.
@@ -131,7 +131,7 @@ Operační systém Linux nainstalovaný na SAP HANA v Azure (velké instance) ob
 
 Je vaší zodpovědností nainstalovat klienta SAP HANA HDB do jednotek velkých instancí HANA při instalaci SAP HANA.
 
-### <a name="step-2-change-the-etcsshssh_config"></a>Krok 2: Změna/etc/ssh/ssh @ no__t-0config
+### <a name="step-2-change-the-etcsshssh_config"></a>Krok 2: Změna/etc/ssh/ssh\_config
 
 Tento krok je popsaný v tématu povolení komunikace s úložištěm v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
@@ -154,7 +154,7 @@ Pokud chcete nastavit a používat uživatelský účet, přečtěte si téma po
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>Krok 5: ověření účtu SAP HANAho uživatele
 
-V tomto kroku autorizujete SAP HANA uživatelský účet, který jste vytvořili, aby skripty nemusely odesílat hesla za běhu. Příkaz SAP HANA `hdbuserstore` umožňuje vytvořit SAP HANA klíč uživatele. Klíč je uložen na jednom nebo více SAP HANA uzlech. Klíč uživatele umožňuje uživateli přístup SAP HANA bez nutnosti spravovat hesla v rámci procesu skriptování. Postup skriptování je popsán dále v tomto článku.
+V tomto kroku autorizujete SAP HANA uživatelský účet, který jste vytvořili, aby skripty nemusely odesílat hesla za běhu. Příkaz SAP HANA `hdbuserstore` umožňuje vytvořit klíč uživatele SAP HANA. Klíč je uložen na jednom nebo více SAP HANA uzlech. Klíč uživatele umožňuje uživateli přístup SAP HANA bez nutnosti spravovat hesla v rámci procesu skriptování. Postup skriptování je popsán dále v tomto článku.
 
 >[!IMPORTANT]
 >Spusťte tyto příkazy konfigurace se stejným uživatelským kontextem, ve kterém jsou spuštěny příkazy snímku. V opačném případě nebudou příkazy snímku správně fungovat.
@@ -178,7 +178,7 @@ Konfigurace sady nástrojů Snapshot je popsaná v části "config File-HANABack
 
 #### <a name="test-connectivity-with-sap-hana"></a>Test připojení pomocí SAP HANA
 
-Po vložení všech konfiguračních dat do souboru *HANABackupCustomerDetails. txt* ověřte, zda jsou konfigurace pro data instance Hana správné. Použijte skript `testHANAConnection`, což je nezávisle na konfiguraci SAP HANA škálování nebo škálování na více instancí.
+Po vložení všech konfiguračních dat do souboru *HANABackupCustomerDetails. txt* ověřte, zda jsou konfigurace pro data instance Hana správné. Použijte skript `testHANAConnection`, který je nezávisle na konfiguraci SAP HANA škálování nebo škálování na více instancí.
 
 Další informace najdete v části "zjištění připojení pomocí SAP HANA-testHANAConnection" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
@@ -195,9 +195,9 @@ Pokud se snímek testu úspěšně spustí se skriptem, můžete naplánovat sku
 
 Po dokončení přípravných kroků můžete začít konfigurovat a naplánovat skutečné snímky úložiště. Skript, který má být naplánován, funguje s SAP HANA konfigurací škály nahoru a na více instancí. Pro pravidelné a pravidelné spouštění zálohovacího skriptu Naplánujte skript pomocí nástroje cron. 
 
-Přesný syntax a funkčnost příkazu najdete v části "provedení snímků Backup-azure_hana_backup" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
+Přesný syntax a funkčnost příkazu najdete v části "provedení zálohování snímků azure_hana_backup" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
 
-Když se skript `azure_hana_backup` spustí, vytvoří se snímek úložiště v následujících třech fázích:
+Když se skript `azure_hana_backup` spustí, vytvoří snímek úložiště v následujících třech fázích:
 
 1. Spustí SAP HANA snímek.
 1. Spustí snímek úložiště.
@@ -286,7 +286,7 @@ Po prvním úspěšném spuštění snímků úložiště odstraňte snímek tes
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>Monitorování počtu a velikosti snímků na svazku disku
 
-Na konkrétním svazku úložiště můžete monitorovat počet snímků a spotřebu úložiště těchto snímků. Příkaz `ls` nezobrazuje adresář snímků ani soubory. Příkaz Linux OS `du` zobrazuje podrobnosti o těchto snímcích úložiště, protože jsou uložené na stejných svazcích. Použijte příkaz s následujícími možnostmi:
+Na konkrétním svazku úložiště můžete monitorovat počet snímků a spotřebu úložiště těchto snímků. Příkaz `ls` nezobrazuje adresář snímků ani soubory. Příkaz Linux OS `du` zobrazí podrobnosti o těchto snímcích úložiště, protože jsou uložené na stejných svazcích. Použijte příkaz s následujícími možnostmi:
 
 - `du –sh .snapshot`: Tato možnost poskytuje celkový počet všech snímků v adresáři snímků.
 - `du –sh --max-depth=1`: Tato možnost vypíše všechny snímky uložené ve složce **. Snapshot** a velikost každého snímku.
@@ -336,7 +336,7 @@ Druhou možností, jak odstranit konkrétní snímky, je použití skriptu `azur
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 
-Další informace o skriptu najdete v části "odstranění snímku – azure_hana_snapshot_delete" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
+Další informace o skriptu najdete v tématu "odstranění snímku-azure_hana_snapshot_delete" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 Spusťte skript jako **kořenový**uživatel.
 

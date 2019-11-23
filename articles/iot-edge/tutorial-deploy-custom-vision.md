@@ -1,6 +1,6 @@
 ---
-title: Kurz nasazení Custom Vision klasifikátoru do zařízení – Azure IoT Edge | Microsoft Docs
-description: V tomto kurzu se naučíte, jak pomocí Custom Vision a IoT Edge spustit model počítačové vize jako kontejner.
+title: Kurz nasazení Custom Vision třídění zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak aby běžela jako kontejner pomocí vlastní vize a IoT Edge modelem počítačového zpracování obrazu.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -32,11 +32,12 @@ V tomto kurzu se naučíte:
 
 <center>
 
-@no__t – 0Diagram – seznámení s architekturou, fáze a nasazování pro třídění @ no__t-1 @ no__t-2
+Diagram ![– architektura kurzu, fáze a](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+klasifikátoru nasazení </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 >[!TIP]
 >Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
@@ -73,7 +74,7 @@ Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho ex
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Name (Název) | Zadejte název projektu, například **EdgeTreeClassifier**. |
+   | Název | Zadejte název projektu, například **EdgeTreeClassifier**. |
    | Popis | Volitelný popis projektu. |
    | Prostředek | Vyberte jednu ze skupin prostředků Azure, která zahrnuje prostředek Custom Vision Service, nebo **vytvořte novou** , pokud jste ho ještě nepřidali. |
    | Typy projektů | **Klasifikace** |
@@ -101,7 +102,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 5. Vyberte **Nahrát soubory (10)** . 
 
-   ![Nahrání souborů s příznakem Hemlock do Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Nahrát soubory označené hemlock Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Po úspěšném nahrání obrázků vyberte **Hotovo**.
 
@@ -119,7 +120,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 1. Po natrénování klasifikátoru na stránce Výkon klasifikátoru vyberte **Exportovat**. 
 
-   ![Exportovat klasifikátor vyškolených imagí](./media/tutorial-deploy-custom-vision/export.png)
+   ![Export klasifikátoru trénovaného image](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Jako platformu vyberte **DockerFile**. 
 
@@ -151,7 +152,7 @@ Teď máte soubory pro kontejnerovou verzi klasifikátoru obrázků na svém mí
    | Zadejte název řešení | Zadejte popisný název řešení, například **CustomVisionSolution**, nebo přijměte výchozí hodnotu. |
    | Vyberte šablonu modulu | Zvolte **Modul Python**. |
    | Zadejte název modulu | Pojmenujte modul **classifier**.<br><br>Je důležité, aby tento název modulu obsahoval pouze malá písmena. IoT Edge při odkazování na moduly rozlišuje malá a velká písmena a toto řešení využívá knihovnu, která všechny požadavky formátuje tak, aby obsahovaly pouze malá písmena. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal.<br><br>Výsledný řetězec vypadá jako **\<registry Name\>.azurecr.io/Classifier**. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal.<br><br>Výsledný řetězec vypadá jako **\<název registru\>. azurecr.IO/Classifier**. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-deploy-custom-vision/repository.png)
 

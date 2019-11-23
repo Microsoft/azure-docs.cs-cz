@@ -79,7 +79,7 @@ Tady je tok dat na nejvyšší úrovni pro a shrnutí kroků pro kopírování p
 * Pokud se hostitelský počítač přepne do režimu hibernace, brána nereaguje na požadavky na data. Proto před instalací brány nakonfigurujte příslušné **schéma napájení** v počítači. Pokud je počítač nakonfigurovaný do režimu hibernace, zobrazí se při instalaci brány zpráva.
 * Abyste mohli úspěšně nainstalovat a nakonfigurovat bránu pro správu dat, musíte být správcem počítače. Můžete přidat další uživatele do místní skupiny Windows **Uživatelé brány pro správu dat** . Členové této skupiny můžou ke konfiguraci brány použít nástroj **Správa dat brány Configuration Manager** .
 
-Vzhledem k tomu, že se spustí aktivita kopírování na konkrétní frekvenci, využívá využití prostředků (CPU, paměť) na počítači stejný vzor s špičkou a nečinnými časy. Využití prostředků také závisí na množství dat, která se přesunují. Když probíhají více úloh kopírování, vidíte využití prostředků v době špičky.
+Vzhledem k tomu, že se spustí aktivita kopírování na konkrétní frekvenci, využívá využití prostředků (CPU, paměť) na počítači stejný vzor s špičkou a nečinnými časy. Využití prostředků také závisí do značné míry na množství dat, který se přesouvá. Když probíhají více úloh kopírování, vidíte využití prostředků v době špičky.
 
 ### <a name="installation-options"></a>Možnosti instalace
 Bránu pro správu dat je možné nainstalovat následujícími způsoby:
@@ -98,7 +98,7 @@ Bránu pro správu dat je možné nainstalovat následujícími způsoby:
 4. Na **úvodní** stránce vyberte **jazyk** a klikněte na tlačítko **Další**.
 5. **Přijměte** licenční smlouvu s koncovým uživatelem a klikněte na tlačítko **Další**.
 6. Vyberte **složku** pro instalaci brány a klikněte na **Další**.
-7. Na stránce **připraveno k instalaci** klikněte na **nainstalovat**.
+7. Na **připraveno k instalaci** klikněte na **nainstalovat**.
 8. Instalaci dokončíte kliknutím na **Dokončit** .
 9. Získat klíč z Azure Portal. Podrobné pokyny najdete v další části.
 10. Na stránce **zaregistrovat bránu** **Správa dat brány Configuration Manager** na vašem počítači spusťte následující kroky:
@@ -144,8 +144,8 @@ Na úrovni podnikové brány firewall je potřeba nakonfigurovat následující 
 | Názvy domén | Porty | Popis |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Používá se pro komunikaci s back-end služby pro přesun dat. |
-| *. core.windows.net |443 |Používá se pro připravené kopírování pomocí objektu blob Azure (Pokud je nakonfigurované).|
-| *. frontend.clouddatahub.net |443 |Používá se pro komunikaci s back-end služby pro přesun dat. |
+| *.core.windows.net |443 |Používá se pro připravené kopírování pomocí objektu blob Azure (Pokud je nakonfigurované).|
+| *.frontend.clouddatahub.net |443 |Používá se pro komunikaci s back-end služby pro přesun dat. |
 | *.servicebus.windows.net |9350-9354, 5671 |Volitelná služba Service Bus Relay přes TCP, kterou používá Průvodce kopírováním |
 
 Na úrovni brány Windows Firewall jsou tyto Odchozí porty obvykle povoleny. Pokud ne, můžete podle potřeby nakonfigurovat domény a porty na počítači brány.
@@ -365,9 +365,9 @@ Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :
 
 Vlastnost monitorování | Popis
 :------------------ | :----------
-Name (Název) | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
+Název | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
-Verze | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
+Version | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase.
 Využití procesoru | Využití procesoru uzlu brány Tato hodnota je snímkem téměř v reálném čase.
 Sítě (za sekundu) | Využití sítě uzlu brány. Tato hodnota je snímkem téměř v reálném čase.
@@ -382,7 +382,7 @@ Následující tabulka uvádí možné stavy **uzlu brány**:
 Status  | Komentáře a scénáře
 :------- | :------------------
 Online | Uzel je připojený ke službě Data Factory.
-Stav | Uzel je offline.
+V režimu offline | Uzel je offline.
 Inovován | Uzel se automaticky aktualizuje.
 Omezená | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů.
 Termín | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům.
@@ -393,7 +393,7 @@ Status | Komentáře
 :----- | :-------
 Vyžaduje registraci | Pro tuto logickou bránu ještě není zaregistrovaný žádný uzel.
 Online | Uzly brány jsou online.
-Stav | Žádný uzel ve stavu online.
+V režimu offline | Žádný uzel ve stavu online.
 Omezená | Ne všechny uzly v této bráně jsou v dobrém stavu. Tento stav je upozorněním, že některý uzel může být mimo provoz. <br/><br/>Důvodem může být problém synchronizace přihlašovacích údajů u dispečera nebo pracovního uzlu.
 
 ## <a name="scale-up-gateway"></a>Horizontální navýšení kapacity brány

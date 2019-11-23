@@ -162,7 +162,7 @@ Své scény můžete zanesli na výpočetním clusteru v cloudu pomocí služby 
 3. Po vytvoření účtu Azure zadejte svoje přihlašovací údaje Azure do těchto polí. Další informace najdete v tématu [Vytvoření účtu Azure Batch](create-azure-account.md).
 4. Pole značky obrázku Docker pro sadu nástrojů akustického zobrazení
 5. Otevře Azure Portal pro správu předplatných, monitorování využití a zobrazení fakturačních informací.
-6. Určuje typ Azure Batch výpočetního uzlu, který se má použít pro výpočet. Typ uzlu musí být podporovaný vaším umístěním datacentra Azure. Pokud si nejste jistí, ponechte jako **Standard_F8s_v2**.
+6. Určuje typ Azure Batch výpočetního uzlu, který se má použít pro výpočet. Typ uzlu musí být podporovaný vaším umístěním datacentra Azure. Pokud si nejste jistí, nechte **Standard_F8s_v2**.
 7. Počet uzlů, které se mají použít pro výpočet. Toto číslo ovlivňuje zanesliý čas. Je omezeno vaším přidělením Azure Batchho jádra. Výchozí přidělení povoluje pouze dva uzly s osmi jádry nebo 1 16, ale lze je rozšířit. Další informace o omezeních základní alokace najdete v tématu [Vytvoření účtu Azure Batch](create-azure-account.md).
 8. Toto políčko zaškrtněte, pokud chcete fond COMPUTE nakonfigurovat tak, aby používal [uzly s nízkou prioritou](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Výpočetní uzly s nízkou prioritou mají mnohem nižší náklady. Ale nemusí být vždy k dispozici nebo je možné je kdykoli zapustit.
 9. Počet testů pro vaši scénu, jak je vypočítáno na kartě **sondy** . Počet sond určuje počet simulací, které musí běžet v cloudu. Nemůžete zadat více uzlů, než jsou sondy.
@@ -224,9 +224,9 @@ Příklad: v našem testování na 8-Core počítači, Intel Xeon E5-1660 @ 3 GH
 Nainstalujte a nakonfigurujte Docker na počítači, který bude zpracovávat simulaci:
 1. Nainstalujte [Docker Desktop](https://www.docker.com/products/docker-desktop).
 2. Otevřete nastavení Docker, pokračujte na **Upřesnit**a nakonfigurujte prostředky aspoň na 8 GB paměti RAM. Čím více procesorů můžete přidělit Docker, tím rychleji bude zanesli dokončeno.  
-![Sample Docker Settings @ no__t-1
+![ukázka nastavení Docker](media/docker-settings.png)
 1. Přejít na **sdílené jednotky**a zapnout sdílení pro jednotku, která se používá ke zpracování.  
-@no__t – možnosti sdílené jednotky 0Docker @ no__t-1
+možnosti ![Docker Shared Drive](media/docker-shared-drives.png)
 
 ### <a name="run-the-local-bake"></a>Spustit místní zanesli
 1. Na kartě **zanesli** vyberte tlačítko **připravit místní zanesli** . Pak vyberte umístění složky pro uložení vstupních souborů a spouštěcích skriptů do. Zanesli pak můžete spustit na jakémkoli počítači, pokud splňuje minimální požadavky na hardware a nainstalujete Docker zkopírováním složky do daného počítače.
@@ -238,14 +238,14 @@ Nainstalujte a nakonfigurujte Docker na počítači, který bude zpracovávat si
 Během procesu zanesli se vytvoří následující čtyři datové soubory. Jeden obsahuje výsledky simulace a dodává se s vaším názvem. Jiní uživatelé ukládají data související s editorem Unity.
 
 Výsledek simulace:
-* *Assety/AcousticsData/akustické zdroje @ no__t-1 [scéna]. ACE. bytes*: Tento soubor je běhová vyhledávací tabulka. Obsahuje výsledky simulace a voxelized akustické scény. Název a umístění tohoto souboru můžete změnit na kartě **sondy** .
+* *Assets/AcousticsData/akustické\_[scéna]. ACE. bytes*: Tento soubor je běhová vyhledávací tabulka. Obsahuje výsledky simulace a voxelized akustické scény. Název a umístění tohoto souboru můžete změnit na kartě **sondy** .
 
    *Dejte pozor, abyste neodstranili soubor výsledků simulace. Nedá se zotavit s výjimkou úprav scény.*
 
 Datové soubory editoru:
-* *Assets/Editor/[scéna] \_AcousticsParameters. Asset*: Tento soubor ukládá data, která zadáte do polí v uživatelském rozhraní akustického prostředí. Nemůžete změnit název a umístění tohoto souboru.
+* *Assets/Editor/[scéna]\_AcousticsParameters. Asset*: Tento soubor ukládá data, která zadáte do polí v uživatelském rozhraní akustického prostředí. Nemůžete změnit název a umístění tohoto souboru.
 * *Assets/AcousticsData/Editor/Acoustics_ [scéna]. Vox*: Tento soubor uchovává geometrii voxelized akustické a vlastnosti materiálu, které jsou vypočítány po výběru tlačítka **Vypočítat** na kartě **sondy** . Název a umístění tohoto souboru můžete změnit na kartě **sondy** .
-* *Assets/AcousticsData/Editor/akustické datové vazby @ no__t-1 [scéna] @no__t -2config. XML*: Tento soubor uchovává parametry simulace, které jsou vypočítány při výběru položky **Vypočítat**. Název a umístění tohoto souboru můžete změnit na kartě **sondy** .
+* *Assets/AcousticsData/Editor/akustické\_[scéna]\_config. XML*: Tento soubor uchovává parametry simulace, které jsou vypočítány při výběru položky **Vypočítat**. Název a umístění tohoto souboru můžete změnit na kartě **sondy** .
 
 ## <a name="set-up-the-acoustics-lookup-table"></a>Nastavení vyhledávací tabulky akustického obsahu
 Přetáhněte z panelu projekt **akustické** prefaby projektu do své scény:

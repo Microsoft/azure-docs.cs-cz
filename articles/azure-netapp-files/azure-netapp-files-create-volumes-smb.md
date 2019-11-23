@@ -44,21 +44,21 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |-----------------------|--------------|------------------|
     |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
-    |    DNS                |    53        |    KONTROLNÍ           |
-    |    ICMPv4             |    Nevztahuje se       |    Odpověď na ozvěnu    |
+    |    DNS                |    53        |    UDP           |
+    |    ICMPv4             |    neuvedeno       |    Odpověď na ozvěnu    |
     |    Sdílené           |    464       |    TCP           |
-    |    Sdílené           |    464       |    KONTROLNÍ           |
+    |    Sdílené           |    464       |    UDP           |
     |    Sdílené           |    88        |    TCP           |
-    |    Sdílené           |    88        |    KONTROLNÍ           |
-    |    ADRESÁŘOVÝ               |    389       |    TCP           |
-    |    ADRESÁŘOVÝ               |    389       |    KONTROLNÍ           |
-    |    ADRESÁŘOVÝ               |    3268      |    TCP           |
-    |    Název pro rozhraní NetBIOS       |    138       |    KONTROLNÍ           |
+    |    Sdílené           |    88        |    UDP           |
+    |    LDAP               |    389       |    TCP           |
+    |    LDAP               |    389       |    UDP           |
+    |    LDAP               |    3268      |    TCP           |
+    |    Název pro rozhraní NetBIOS       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
-    |    SAM/LSA            |    445       |    KONTROLNÍ           |
+    |    SAM/LSA            |    445       |    UDP           |
     |    Protokol Secure LDAP        |    636       |    TCP           |
     |    Protokol Secure LDAP        |    3269      |    TCP           |
-    |    W32Time            |    123       |    KONTROLNÍ           |
+    |    W32Time            |    123       |    UDP           |
 
 * Topologie lokality pro cílovou Active Directory Domain Services musí splňovat osvědčené postupy, zejména v případě, že je nasazená síť Azure Azure NetApp Files.  
 
@@ -86,9 +86,9 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     * **Primární DNS**  
         Toto je služba DNS potřebná pro operace připojení k doméně služby Active Directory a ověřování SMB. 
-    * **Sekundární DNS**   
+    * **Sekundární  DNS**  
         Toto je sekundární server DNS pro zajištění redundantních názvových služeb. 
-    * **Domain**  
+    * **Domény**  
         Toto je název domény vašeho Active Directory Domain Services, ke které se chcete připojit.
     * **Předpona serveru SMB (účet počítače)**  
         Toto je předpona názvů pro účet počítače ve službě Active Directory, kterou Azure NetApp Files použít pro vytváření nových účtů.

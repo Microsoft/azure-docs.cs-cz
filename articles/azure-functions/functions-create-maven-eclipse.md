@@ -1,6 +1,6 @@
 ---
-title: Create an Azure function app with Java and Eclipse
-description: How-to guide to create and publish a simple HTTP triggered serverless app using Java and Eclipse to Azure Functions.
+title: Vytvoření aplikace funkcí Azure pomocí Java a zatmění
+description: Průvodce vytvořením a publikováním jednoduché aplikace bez serveru s protokolem HTTP, která se spouští pomocí jazyka Java a zatmění pro Azure Functions.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 07/01/2018
@@ -13,9 +13,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227127"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse"></a>Create your first function with Java and Eclipse 
+# <a name="create-your-first-function-with-java-and-eclipse"></a>Vytvoření první funkce pomocí Java a zatmění 
 
-This article shows you how to create a [serverless](https://azure.microsoft.com/solutions/serverless/) function project with the Eclipse IDE and Apache Maven, test and debug it, then deploy it to Azure Functions. 
+V tomto článku se dozvíte, jak vytvořit projekt funkce bez [serveru](https://azure.microsoft.com/solutions/serverless/) s využitím integrovaného vývojového prostředí (IDE) a Apache Maven, otestovat a ladit ho a pak ho nasadit do Azure Functions. 
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 
@@ -23,62 +23,62 @@ This article shows you how to create a [serverless](https://azure.microsoft.com/
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
-To develop a functions app with Java and Eclipse, you must have the following installed:
+K vývoji aplikace Functions pomocí Java a zatmění je nutné mít nainstalované následující:
 
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/) verze 8.
 -  [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější.
--  [Eclipse](https://www.eclipse.org/downloads/packages/), with Java and Maven support.
+-  [Zatmění](https://www.eclipse.org/downloads/packages/)s podporou Java a Maven.
 -  [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
 
-It's highly recommended to also install [Azure Functions Core Tools, version 2](functions-run-local.md#v2), which provide a local environment for running and debugging Azure Functions. 
+Doporučujeme také nainstalovat [Azure Functions Core Tools, verzi 2](functions-run-local.md#v2), která poskytuje místní prostředí pro spouštění a ladění Azure Functions. 
 
-## <a name="create-a-functions-project"></a>Create a Functions project
+## <a name="create-a-functions-project"></a>Vytvoření projektu Functions
 
-1. In Eclipse, select the **File** menu, then select **New -&gt; Maven Project**. 
-1. Accept the defaults in the **New Maven Project** dialogue and select **Next**.
-1. Select **Add Archetype** and add the entries for the [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
-    - Archetype Group ID: com.microsoft.azure
-    - Archetype Artifact ID: azure-functions-archetype
-    - Version: Use latest version **1.22** from [the central repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Click **OK** and then click **Next**.  Be sure to fill in values for all of the fields including `resourceGroup`, `appName`, and `appRegion` (please use a different appName other than **fabrikam-function-20170920120101928**), and eventually **Finish**.
-    ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
+1. V části zatmění vyberte nabídku **soubor** a pak vyberte **Nový-&gt; projekt Maven**. 
+1. Přijměte výchozí hodnoty v dialogovém okně **Nový projekt Maven** a vyberte **Další**.
+1. Vyberte **Přidat Archetype** a přidejte položky pro [Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
+    - ID skupiny archetype: com. Microsoft. Azure
+    - ID artefaktu archetype: Azure-Functions-Archetype
+    - Verze: použijte nejnovější verzi **1,22** z [centrálního úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![zatmění Maven vytvořit](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+1. Klikněte na **OK** a potom na **Další**.  Nezapomeňte vyplnit hodnoty pro všechna pole, včetně `resourceGroup`, `appName`a `appRegion` (použijte prosím jinou název_aplikace kromě **Fabrikam-Function-20170920120101928**) a nakonec **dokončete**.
+    ](media/functions-create-first-java-eclipse/functions-create-eclipse2.png) ![Maven zatmění create2  
 
-Maven přesune soubory projektu do nové složky s názvem _artifactId_. The generated code in the project is a simple [HTTP triggered](/azure/azure-functions/functions-bindings-http-webhook) function that echoes the body of the triggering HTTP request.
+Maven přesune soubory projektu do nové složky s názvem _artifactId_. Generovaný kód v projektu je jednoduchá funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) , která vypisuje tělo triggeru požadavku HTTP.
 
-## <a name="run-functions-locally-in-the-ide"></a>Run functions locally in the IDE
+## <a name="run-functions-locally-in-the-ide"></a>Místní spuštění funkcí v integrovaném vývojovém prostředí
 
 > [!NOTE]
-> [Azure Functions Core Tools, version 2](functions-run-local.md#v2) must be installed to run and debug functions locally.
+> Azure Functions Core Tools musí být nainstalována [verze 2](functions-run-local.md#v2) pro místní spouštění a ladění funkcí.
 
-1. Right-click on the generated project, then choose **Run As** and **Maven build**.
-1. In the **Edit Configuration** dialog, Enter `package` in the **Goals** and **Name** fields, then select **Run**. This will build and package the function code.
-1. Once the build is complete, create another Run configuration as above, using `azure-functions:run` as the goal and name. Select **Run** to run the function in the IDE.
+1. Klikněte pravým tlačítkem na vygenerovaný projekt a pak zvolte **Spustit jako** a **Maven sestavení**.
+1. V dialogovém okně **Upravit konfiguraci** zadejte do polí **cíle** a **název** `package` a pak vyberte **Spustit**. Tím se sestaví a zabalí kód funkce.
+1. Po dokončení sestavení vytvořte další konfiguraci spuštění výše pomocí `azure-functions:run` jako cíle a názvu. Vyberte **Spustit** a spusťte funkci v integrovaném vývojovém prostředí (IDE).
 
-Terminate the runtime in the console window when you're done testing your function. Only one function host can be active and running locally at a time.
+Až skončíte s testováním funkce, ukončete modul runtime v okně konzoly. Pouze jeden hostitel funkce může být aktivní a spuštěn místně v jednom okamžiku.
 
-### <a name="debug-the-function-in-eclipse"></a>Debug the function in Eclipse
+### <a name="debug-the-function-in-eclipse"></a>Ladění funkce v zatmění
 
-In your **Run As** configuration set up in the previous step, change `azure-functions:run` to `azure-functions:run -DenableDebug` and run the updated configuration to start the function app in debug mode.
+V nastavení konfigurace **Spustit jako** v předchozím kroku změňte `azure-functions:run` na `azure-functions:run -DenableDebug` a spusťte aktualizovanou konfiguraci, aby se spustila aplikace Function App v režimu ladění.
 
-Select the **Run** menu and open **Debug Configurations**. Choose **Remote Java Application** and create a new one. Give your configuration a name and fill in the settings. The port should be consistent with the debug port opened by function host, which by default is `5005`. After setup, click on `Debug` to start debugging.
+Vyberte nabídku **Spustit** a otevřete **Konfigurace ladění**. Vyberte možnost **Vzdálená aplikace Java** a vytvořte novou. Zadejte název vaší konfigurace a vyplňte nastavení. Port by měl být konzistentní s portem ladění otevřeným hostitelem funkce, který je ve výchozím nastavení `5005`. Po nastavení kliknutím na `Debug` spusťte ladění.
 
-![Debug functions in Eclipse](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
+![Ladění funkcí v zatmění](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
-Set breakpoints and inspect objects in your function using the IDE. When finished, stop the debugger and the running function host. Only one function host can be active and running locally at a time.
+Nastavte zarážky a prozkoumejte objekty ve funkci pomocí rozhraní IDE. Po dokončení ukončete ladicí program a běžícího hostitele funkcí. Pouze jeden hostitel funkce může být aktivní a spuštěn místně v jednom okamžiku.
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
-V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. [Log in with the Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) before continuing using your computer's command prompt.
+V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. Před pokračováním v používání příkazového řádku počítače [se přihlaste pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-Deploy your code into a new Function app using the `azure-functions:deploy` Maven goal in a new **Run As** configuration.
+Nasaďte svůj kód do nové aplikace Function App pomocí `azure-functions:deploy` cílem Maven v nové konfiguraci **Spustit jako** .
 
 Po dokončení nasazení se zobrazí adresa URL, pomocí které můžete přistupovat k vaší aplikaci funkcí Azure:
 

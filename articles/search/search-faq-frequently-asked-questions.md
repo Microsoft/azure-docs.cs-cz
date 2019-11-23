@@ -23,7 +23,7 @@ ms.locfileid: "72792915"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Jak se Azure Kognitivní hledání liší od fulltextového vyhledávání v mém systému DBMS?
 
-Azure Kognitivní hledání podporuje více zdrojů dat, [jazykovou analýzu pro mnoho jazyků](https://docs.microsoft.com/rest/api/searchservice/language-support), [vlastní analýzu zajímavých a neobvyklých datových vstupů](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), hledání kontrolních mechanismů pomocí [profilů vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)a uživatelského prostředí. funkce, jako je typeahead, zvýrazňování přístupů a omezující navigace. Zahrnuje taky další funkce, jako jsou synonyma a bohatou syntaxi dotazů, ale tyto funkce obecně nejsou rozdílné.
+Azure Kognitivní hledání podporuje více zdrojů dat, [jazykovou analýzu pro spoustu jazyků](https://docs.microsoft.com/rest/api/searchservice/language-support), [vlastní analýzu zajímavých a neobvyklých datových vstupů](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), vyhledávání kontrolních mechanismů pomocí [profilů vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)a funkce uživatelského prostředí, jako je typeahead, zvýrazňování přístupů a hodnocená navigace. Zahrnuje taky další funkce, jako jsou synonyma a bohatou syntaxi dotazů, ale tyto funkce obecně nejsou rozdílné.
 
 ### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Jaký je rozdíl mezi Azure Kognitivní hledání a Elasticsearch?
 
@@ -103,7 +103,7 @@ Většina zákazníků zvolí vyhrazená pole na kolekci, když přichází na p
 
 Máte dotaz ohledně chybějící funkce nebo funkce? Vyžádejte si funkci na webu [User Voice](https://feedback.azure.com/forums/263029-azure-search).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
  [StackOverflow: Azure Kognitivní hledání](https://stackoverflow.com/questions/tagged/azure-search)   
  [Jak funguje úplné hledání textu v Azure Kognitivní hledání](search-lucene-query-architecture.md)  

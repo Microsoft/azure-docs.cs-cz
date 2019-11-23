@@ -21,12 +21,12 @@ ms.locfileid: "67174998"
 **SSD úrovně Standard spravované disky**
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**SSD úrovně Premium spravované disky: Omezení podle počtu disků**
+**SSD úrovně Premium spravované disky: omezení na disk**
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**SSD úrovně Premium spravované disky: Omezení pro virtuální počítače**
+**SSD úrovně Premium spravované disky: omezení pro jednotlivé virtuální počítače**
 
-| Resource | Výchozí omezení |
+| Prostředek | Výchozí omezení |
 | --- | --- |
 | Maximální počet vstupně-výstupních operací na virtuální počítač |80 000 IOPS s virtuálním počítačem s GS5 |
 | Maximální propustnost na virtuální počítač |2 000 MB/s s virtuálním počítačem s GS5 |

@@ -312,7 +312,7 @@ Tento dokument popisuje několik různých oblastí, které je potřeba vzít v 
 Informace o verzích Oracle a odpovídajících verzích operačních systémů, které jsou podporované pro provoz SAP v Oracle v Azure, najdete v poznámce SAP [2039619].
 
 Obecné informace o používání SAP Business Suite v Oracle najdete v [SAP v Oracle](https://www.sap.com/community/topic/oracle.html).
-Oracle podporuje software Oracle pro spouštění na Microsoft Azure. Další informace o obecné podpoře pro Windows Hyper-V a Azure najdete v nejčastějších [dotazech k Oracle a Microsoft Azure](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Oracle podporuje software Oracle pro spouštění na Microsoft Azure. Další informace o obecné podpoře pro Windows Hyper-V a Azure najdete v [nejčastějších dotazech k Oracle a Microsoft Azure](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 ## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>Poznámky SAP relevantní pro Oracle, SAP a Azure 
 
@@ -320,13 +320,13 @@ Následující poznámky SAP souvisejí s SAP v Azure.
 
 | Číslo poznámky | Název |
 | --- | --- |
-| [1928533] |Aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure |
-| [2015553] |SAP v Microsoft Azure: Požadavky na podporu |
+| [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
+| [2015553] |SAP v Microsoft Azure: požadavky na podporu |
 | [1999351] |Řešení potíží s vylepšeným monitorováním Azure pro SAP |
 | [2178632] |Klíčové metriky monitorování pro SAP v Microsoft Azure |
-| [2191498] |SAP v systému Linux s Azure: Rozšířené monitorování |
-| [2039619] |Aplikace SAP na Microsoft Azure s využitím databáze Oracle: Podporované produkty a verze |
-| [2243692] |Virtuální počítač se systémem Linux na Microsoft Azure (IaaS): Problémy s licencí SAP |
+| [2191498] |SAP v systému Linux s Azure: rozšířené monitorování |
+| [2039619] |Aplikace SAP na Microsoft Azure s využitím databáze Oracle: podporované produkty a verze |
+| [2243692] |Virtuální počítač se systémem Linux na Microsoft Azure (IaaS): problémy s licencí SAP |
 | [2069760] |Instalace a upgrade systému Oracle Linux 7. x SAP |
 | [1597355] |Doporučení pro zaměněné místo pro Linux |
 | [2171857] |Oracle Database 12c-podpora systému souborů na platformě Linux |
@@ -366,35 +366,35 @@ Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azu
 
 Pokud používáte disky založené na Azure Page Storage nebo Managed Disks, příkazy v části [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) se vztahují i na nasazení s Oracle Database.
 
-Kvóty pro propustnost vstupně-výstupních operací pro disky Azure existují. Tento koncept je vysvětlen v tématu týkajícím se [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Přesná kvóta závisí na typu virtuálního počítače, který používáte. Seznam typů virtuálních počítačů s jejich kvótami najdete ve [velikosti pro virtuální počítače s Windows v Azure][virtual-machines-sizes-windows].
+Kvóty pro propustnost vstupně-výstupních operací pro disky Azure existují. Tento koncept je vysvětlen v tématu [týkajícím se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Přesná kvóta závisí na typu virtuálního počítače, který používáte. Seznam typů virtuálních počítačů s jejich kvótami najdete ve [velikosti pro virtuální počítače s Windows v Azure][virtual-machines-sizes-windows].
 
 Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, přečtěte si článek SAP Note [1928533].
 
 Minimální konfigurace je následující: 
 
-| Komponenta | Disk | Caching | Fond úložiště |
+| Komponenta | Disk | Mezipaměť | Fond úložiště |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA & mirrlogB | Premium | Žádné | Nepožadováno |
-| \oracle\<SID > \origlogaB & mirrlogA | Premium | Žádné | Nepožadováno |
+| \oracle\<SID > \origlogaA & mirrlogB | Premium | Žádný | Nepožadováno |
+| \oracle\<SID > \origlogaB & mirrlogA | Premium | Žádný | Nepožadováno |
 | \oracle\<SID > \sapdata1... n | Premium | Jen pro čtení | Dá se použít |
-| \oracle\<SID > \oraarch | Standard | Žádné | Nepožadováno |
-| Oracle Home, saptrace,... | Disk s operačním systémem | | Nepožadováno |
+| \oracle\<SID > \oraarch | Standard | Žádný | Nepožadováno |
+| Oracle Home, saptrace,... | Disk OS | | Nepožadováno |
 
 
 Výběr disků pro hostování online protokolů opětovného provedení by měl být řízen požadavky IOPs. Je možné uložit všechny sapdata1... n (tabulkové prostory) na jednom jednom připojeném disku, pokud velikost, IOPS a propustnost splňují požadavky. 
 
 Konfigurace výkonu je následující:
 
-| Komponenta | Disk | Caching | Fond úložiště |
+| Komponenta | Disk | Mezipaměť | Fond úložiště |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA | Premium | Žádné | Dá se použít  |
-| \oracle\<SID > \origlogaB | Premium | Žádné | Dá se použít |
-| \oracle\<SID > \mirrlogAB | Premium | Žádné | Dá se použít |
-| \oracle\<SID > \mirrlogBA | Premium | Žádné | Dá se použít |
+| \oracle\<SID > \origlogaA | Premium | Žádný | Dá se použít  |
+| \oracle\<SID > \origlogaB | Premium | Žádný | Dá se použít |
+| \oracle\<SID > \mirrlogAB | Premium | Žádný | Dá se použít |
+| \oracle\<SID > \mirrlogBA | Premium | Žádný | Dá se použít |
 | \oracle\<SID > \sapdata1... n | Premium | Jen pro čtení | Doporučené  |
-| \oracle\SID\sapdata (n + 1) * | Premium | Žádné | Dá se použít |
-| \oracle\<SID > \oraarch * | Premium | Žádné | Nepožadováno |
-| Oracle Home, saptrace,... | Disk s operačním systémem | Nepožadováno |
+| \oracle\SID\sapdata (n + 1) * | Premium | Žádný | Dá se použít |
+| \oracle\<SID > \oraarch * | Premium | Žádný | Nepožadováno |
+| Oracle Home, saptrace,... | Disk OS | Nepožadováno |
 
 \* (n + 1): hostování systému, dočasné a ZPĚTná prostoru. Vzor vstupně-výstupních prostorů systému a zpětných prostorů se liší od ostatních tabulkových prostorů hostujících data aplikací. Nejedná se o nejlepší možnost pro výkon systému a vrácení tabulkových prostorů.
 
@@ -418,13 +418,13 @@ Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po
 
 Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v tématu [zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Akcelerované síťové služby
-Pro nasazení Oracle ve Windows důrazně doporučujeme zrychlit sítě, jak je popsáno v tématu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou k disVirtual Machines v části [požadavky na nasazení Azure DBMS pro úlohy SAP](dbms_guide_general.md). 
+### <a name="accelerated-networking"></a>Urychlení sítě
+Pro nasazení Oracle ve Windows důrazně doporučujeme zrychlit sítě, jak je popsáno v tématu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou k [disVirtual Machines v části požadavky na nasazení Azure DBMS pro úlohy SAP](dbms_guide_general.md). 
 ### <a name="other"></a>Ostatní
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Specifické pro Oracle Database Oracle Linux
-Oracle podporuje software Oracle pro spouštění na Microsoft Azure s Oracle Linux jako hostovaný operační systém. Další informace o obecné podpoře pro Windows Hyper-V a Azure najdete v nejčastějších [dotazech k Azure a Oracle](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Oracle podporuje software Oracle pro spouštění na Microsoft Azure s Oracle Linux jako hostovaný operační systém. Další informace o obecné podpoře pro Windows Hyper-V a Azure najdete v [nejčastějších dotazech k Azure a Oracle](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 Podporuje se taky konkrétní scénář aplikací SAP využívajících databáze Oracle. Podrobnosti jsou popsány v následující části dokumentu.
 
@@ -456,40 +456,40 @@ Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azu
 
 Pokud používáte disky založené na Azure Page Storage nebo Managed Disks, příkazy v části [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) se vztahují i na nasazení s Oracle Database.
 
- Kvóty pro propustnost vstupně-výstupních operací pro disky Azure existují. Tento koncept je vysvětlen v tématu týkajícím se [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Přesná kvóta závisí na použitém typu virtuálního počítače. Seznam typů virtuálních počítačů s jejich kvótami najdete v tématu [velikosti pro virtuální počítače Linux v Azure][virtual-machines-sizes-linux].
+ Kvóty pro propustnost vstupně-výstupních operací pro disky Azure existují. Tento koncept je vysvětlen v tématu [týkajícím se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Přesná kvóta závisí na použitém typu virtuálního počítače. Seznam typů virtuálních počítačů s jejich kvótami najdete v tématu [velikosti pro virtuální počítače Linux v Azure][virtual-machines-sizes-linux].
 
 Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, přečtěte si článek SAP Note [1928533].
 
 Minimální konfigurace:
 
-| Komponenta | Disk | Caching | Odstranění |
+| Komponenta | Disk | Mezipaměť | Odstranění |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Žádné | Nepožadováno |
-| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Žádné | Nepožadováno |
+| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Žádný | Nepožadováno |
+| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Žádný | Nepožadováno |
 | /Oracle/\<SID >/sapdata1... n | Premium | Jen pro čtení | Dá se použít |
-| /Oracle/\<SID >/oraarch | Standard | Žádné | Nepožadováno |
-| Oracle Home, saptrace,... | Disk s operačním systémem | | Nepožadováno |
+| /Oracle/\<SID >/oraarch | Standard | Žádný | Nepožadováno |
+| Oracle Home, saptrace,... | Disk OS | | Nepožadováno |
 
-Odstranění LVM Stripe nebo MDADM pomocí RAID0
+\* Odstranění: LVM Stripe nebo MDADM using RAID0
 
 Výběr disku pro hostování protokolů opětovného provedení online v Oracle by měl být řízený požadavky IOPS. Je možné uložit všechny sapdata1... n (tabulkové prostory) na jednom připojeném disku, pokud svazek, IOPS a propustnost splňují požadavky. 
 
 Konfigurace výkonu:
 
-| Komponenta | Disk | Caching | Odstranění |
+| Komponenta | Disk | Mezipaměť | Odstranění |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA | Premium | Žádné | Dá se použít  |
-| /Oracle/\<SID >/origlogaB | Premium | Žádné | Dá se použít |
-| /Oracle/\<SID >/mirrlogAB | Premium | Žádné | Dá se použít |
-| /Oracle/\<SID >/mirrlogBA | Premium | Žádné | Dá se použít |
+| /Oracle/\<SID >/origlogaA | Premium | Žádný | Dá se použít  |
+| /Oracle/\<SID >/origlogaB | Premium | Žádný | Dá se použít |
+| /Oracle/\<SID >/mirrlogAB | Premium | Žádný | Dá se použít |
+| /Oracle/\<SID >/mirrlogBA | Premium | Žádný | Dá se použít |
 | /Oracle/\<SID >/sapdata1... n | Premium | Jen pro čtení | Doporučené  |
-| /Oracle/\<SID >/sapdata (n + 1) * | Premium | Žádné | Dá se použít |
-| /Oracle/\<SID >/oraarch * | Premium | Žádné | Nepožadováno |
-| Oracle Home, saptrace,... | Disk s operačním systémem | Nepožadováno |
+| /Oracle/\<SID >/sapdata (n + 1) * | Premium | Žádný | Dá se použít |
+| /Oracle/\<SID >/oraarch * | Premium | Žádný | Nepožadováno |
+| Oracle Home, saptrace,... | Disk OS | Nepožadováno |
 
-Odstranění LVM Stripe nebo MDADM pomocí RAID0
+\* Odstranění: LVM Stripe nebo MDADM using RAID0
 
-\* (n + 1): prostory hostování systému, dočasné a zpět: Vzor vstupně-výstupních prostorů systému a zpětných prostorů se liší od ostatních tabulkových prostorů hostujících data aplikací. Nejedná se o nejlepší možnost pro výkon systému a vrácení tabulkových prostorů.
+\* (n + 1): hostující prostředí, dočasné a odvolatelné prostory: vzor vstupně-výstupních prostorů systému a zpětných prostorů se liší od ostatních tabulkových prostorů hostujících data aplikací. Nejedná se o nejlepší možnost pro výkon systému a vrácení tabulkových prostorů.
 
 \* oraarch: fond úložiště není potřebný z hlediska výkonu v zobrazení.
 
@@ -512,7 +512,7 @@ Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po
 
 Aspekty zotavení po havárii pro databáze Oracle v Azure jsou uvedené v článku [zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Akcelerované síťové služby
+### <a name="accelerated-networking"></a>Urychlení sítě
 Podpora pro rychlejší síťové sítě Azure v Oracle Linux je k dispozici s Oracle Linux 7 Update 5 (Oracle Linux 7,5). Pokud nemůžete upgradovat na nejnovější verzi Oracle Linux 7,5, může to být alternativní řešení s využitím jádra RHCK (RedHat Compatible kernel) místo jádra Oracle UEK. 
 
 Použití jádra RHEL v rámci Oracle Linux je podporované v souladu s poznámkou SAP [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Pro akcelerované síťové služby Azure musí být minimální verze jádra RHCKL 3.10.0-862.13.1. el7. Pokud používáte jádro UEK v Oracle Linux ve spojení s [akcelerovanými síťovými sítěmi Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), musíte použít jádro Oracle uek verze 5.

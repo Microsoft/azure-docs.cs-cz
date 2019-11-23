@@ -122,7 +122,7 @@ Stránka centra centrálních **událostí** obsahuje seznam odkazů na klienty 
 
 Aplikace Wingtip používá k řízení distribuce příchozích žádostí službu [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) . Adresa URL pro přístup ke stránce události pro konkrétního klienta používá následující formát:
 
-- http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     Části předchozího formátu jsou vysvětleny v následující tabulce.
 
@@ -130,7 +130,7 @@ Aplikace Wingtip používá k řízení distribuce příchozích žádostí slu�
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Části události aplikace Wingtip.<br /><br /> *– DPT* rozlišuje implementaci lístků Wingtip *na základě databáze* z jiných implementací. Příklady jsou implementace s *jedním* z aplikací na tenanta ( *-SA*) nebo *víceklientské databáze* ( *-Mt*). |
     | . *&lt;&gt;uživatele* | *AF1* v příkladu. |
-    | . trafficmanager.net/ | Traffic Manager základní adresa URL. |
+    | .trafficmanager.net/ | Traffic Manager základní adresa URL. |
     | fabrikamjazzclub | Identifikuje tenanta s názvem Fabrikam nápadný klub. |
     | &nbsp; | &nbsp; |
 

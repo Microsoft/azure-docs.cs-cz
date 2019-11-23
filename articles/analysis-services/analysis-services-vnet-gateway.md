@@ -38,5 +38,5 @@ Azure SQL Database zdroje dat spravované instance se spouštějí v rámci virt
 ## <a name="see-also"></a>Viz také
 [Připojení k místním zdrojům dat](analysis-services-gateway.md)   
 [Instalace a konfigurace místní brány dat](analysis-services-gateway-install.md)   
-[Azure Virtual Network (virtuální síť)](../virtual-network/virtual-networks-overview.md)   
+[Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md)   
 

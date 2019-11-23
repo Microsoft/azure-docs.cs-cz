@@ -35,7 +35,7 @@ V rámci klasifikace "dospělý" je několik různých kategorií:
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Obsah pro dospělé můžete detekovat pomocí rozhraní API pro [analýzu imagí](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Když do parametru dotazu **visualFeatures** přidáte hodnotu `Adult`, vrátí rozhraní API tři logické vlastnosti @ no__t-2 @ no__t-3, `isRacyContent` a `isGoryContent` @ no__t-6in jeho odpověď JSON. Metoda také vrátí odpovídající vlastnosti @ no__t-0 @ no__t-1, `racyScore` a `goreScore` @ no__t-4which představuje hodnocení spolehlivosti mezi nulou a jednou pro každou příslušnou kategorii.
+Obsah pro dospělé můžete detekovat pomocí rozhraní API pro [analýzu imagí](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Když přidáte hodnotu `Adult` do parametru dotazu **visualFeatures** , vrátí rozhraní API tři logické vlastnosti&mdash;`isAdultContent`, `isRacyContent`a `isGoryContent`&mdash;ve své odpovědi JSON. Metoda také vrátí odpovídající vlastnosti&mdash;`adultScore`, `racyScore`a `goreScore`&mdash;který představuje hodnocení spolehlivosti mezi nulou a jednou pro každou příslušnou kategorii.
 
 - [Rychlý Start: analýza obrázku (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [Rychlý Start: analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

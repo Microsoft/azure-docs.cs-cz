@@ -68,9 +68,9 @@ Stavové mikroslužby zjednodušují návrhy aplikací, protože odstraňují nu
 
 Následující diagramy znázorňují rozdíly mezi návrhem aplikace, která je Bezstavová a ta je stavová. Díky využití [Reliable Services](service-fabric-reliable-services-introduction.md) a [Reliable Actors](service-fabric-reliable-actors-introduction.md) programovacích modelů omezuje stavové služby složitost aplikace při dosahování vysoké propustnosti a nízké latence.
 
-Tady je ukázková aplikace, která používá bezstavové služby: ![Application, která používá bezstavové služby @ no__t-1.
+Tady je ukázková aplikace, která používá bezstavové služby: ![aplikaci, která používá bezstavové služby][Image1]
 
-Tady je ukázková aplikace, která používá stavové služby: ![Application, který používá stavové služby @ no__t-1.
+Tady je ukázková aplikace, která používá stavové služby: ![aplikace používající stavové služby][Image2]
 
 ## <a name="next-steps"></a>Další kroky
 
