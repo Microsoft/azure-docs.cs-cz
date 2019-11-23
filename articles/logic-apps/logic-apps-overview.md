@@ -1,6 +1,6 @@
 ---
-title: Automatizace úloh pro podnikovou integraci – Azure Logic Apps
-description: Naučte se automatizovat pracovní postupy, které integrují aplikace, data, služby a systémy s minimálním kódem pro podnikovou integraci pomocí Azure Logic Apps.
+title: Automate tasks for enterprise integration - Azure Logic Apps
+description: Learn about automating workflows that integrate apps, data, services, and systems with minimal code for enterprise integration by using Azure Logic Apps.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,16 +11,16 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
-ms.openlocfilehash: 85e2216e39658fde42f298dabc38c737621d6be4
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 679c648df1daaaaacec0c13922b4dd6ae42cf777
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178029"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420112"
 ---
-# <a name="overview---what-is-azure-logic-apps"></a>Přehled – co je Azure Logic Apps?
+# <a name="overview---what-is-azure-logic-apps"></a>Overview - What is Azure Logic Apps?
 
-[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) je cloudová služba usnadňující plánování, automatizaci a orchestraci úkolů, obchodních procesů a [pracovních postupů](#logic-app-concepts) , pokud potřebujete integrovat aplikace, data, systémy a služby v rámci podniků nebo organizací. Logic Apps zjednodušuje návrh a vytváření škálovatelných řešení pro [integraci](https://azure.microsoft.com/product-categories/integration/)aplikací, integraci dat, integraci systémů, integraci podnikových aplikací (EAI) a komunikaci B2B (Business-to-Business), ať už v cloudu, místně i v místním prostředí. nebo obojí.
+[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) is a cloud service that helps you schedule, automate, and orchestrate tasks, business processes, and [workflows](#logic-app-concepts) when you need to integrate apps, data, systems, and services across enterprises or organizations. Logic Apps simplifies how you design and build scalable solutions for app [integration](https://azure.microsoft.com/product-categories/integration/), data integration, system integration, enterprise application integration (EAI), and business-to-business (B2B) communication, whether in the cloud, on premises, or both.
 
 Tady je například pouze několik úloh, které můžete pomocí aplikací logiky automatizovat:
 
@@ -32,17 +32,17 @@ Tady je například pouze několik úloh, které můžete pomocí aplikací logi
 
 * Monitorování výskytu konkrétního tématu ve tweetech, analýza mínění a vytváření upozornění na položky, které vyžadují kontrolu.
 
-Pokud chcete vytvořit podniková podniková řešení pomocí Azure Logic Apps, můžete si vybrat z rostoucí galerie se [stovkami připravených konektorů](../connectors/apis-list.md), které zahrnují služby jako Azure Service Bus, Azure Functions, Azure Storage, SQL Server, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, sdílené složky a další. [Konektory](#logic-app-concepts) poskytují [triggery](#logic-app-concepts), [akce](#logic-app-concepts) nebo obojí pro vytváření aplikací logiky, které bezpečně přistupují k datům a zpracovávají je v reálném čase.
+To build enterprise integration solutions with Azure Logic Apps, you can choose from a growing gallery with [hundreds of ready-to-use connectors](../connectors/apis-list.md), which include services such as Azure Service Bus, Azure Functions, Azure Storage, SQL Server, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, file shares, and more. [Konektory](#logic-app-concepts) poskytují [triggery](#logic-app-concepts), [akce](#logic-app-concepts) nebo obojí pro vytváření aplikací logiky, které bezpečně přistupují k datům a zpracovávají je v reálném čase.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
 ## <a name="how-does-logic-apps-work"></a>Jako Logic Apps funguje? 
 
-Každý pracovní postup aplikace logiky se spouští triggerem, který se aktivuje při určité události nebo když nová dostupná data splní určitá kritéria. Řada triggerů poskytovaných konektory v Logic Apps zahrnuje základní možnosti plánování, abyste mohli nastavit, jak často se úlohy spouštějí. V případě složitějšího plánování nebo pokročilých opakování můžete jako první krok v jakémkoli pracovním postupu použít Trigger opakování. Přečtěte si další informace o [pracovních postupech na základě plánu](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Každý pracovní postup aplikace logiky se spouští triggerem, který se aktivuje při určité události nebo když nová dostupná data splní určitá kritéria. Many triggers provided by the connectors in Logic Apps include basic scheduling capabilities so that you can set up how regularly your workloads run. For more complex scheduling or advanced recurrences, you can use a Recurrence trigger as the first step in any workflow. Learn more about [schedule-based workflows](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky, ve které se spustí akce v pracovním postupu. Tyto akce můžou zahrnovat také konverze dat a ovládací prvky toků, jako jsou podmíněné příkazy, příkazy přepínače, smyčky a větvení. Například tato aplikace logiky se spouští triggerem Dynamics 365 s integrovaným kritériem Při aktualizaci záznamu. Pokud trigger rozpozná událost, která splňuje toto kritérium, aktivuje se a spustí akce pracovního postupu. V tomto případě mezi tyto akce patří transformace XML, aktualizace dat, větvení rozhodování a e-mailová oznámení.
 
-![Návrhář pro Logic Apps – příklad aplikace logiky](./media/logic-apps-overview/azure-logic-apps-overview.png)
+![Návrhář pro Logic Apps – příklad aplikace logiky](./media/logic-apps-overview/azure-logic-apps-designer.png)
 
 Aplikace logiky můžete vytvářet vizuálně pomocí Návrháře pro Logic Apps, který je k dispozici v prohlížeči na webu Azure Portal a v sadě Visual Studio. V případě dalších vlastních aplikací logiky můžete vytvářet nebo upravovat definice aplikací logiky ve formátu JSON (JavaScript Object Notation) při práci v editoru v režimu Zobrazení kódu. Pro vybrané úlohy můžete použít také příkazy Azure PowerShellu a šablony Azure Resource Manageru. Aplikace logiky se nasazují a spouštějí v cloudu Azure. Podrobnější informace najdete v tomto videu: [Použití služeb Azure pro podnikovou integraci k provozu cloudových aplikací ve velkém měřítku](https://channel9.msdn.com/Events/Connect/2017/T119/).
 
@@ -102,11 +102,11 @@ A naopak, BizTalk Server se může připojit k aplikacím logiky a komunikovat s
 
 ### <a name="write-once-reuse-often"></a>Časté používání jednou napsaného kódu
 
-Vytvářejte aplikace logiky jako šablony Azure Resource Manager, abyste mohli [automatizovat nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) napříč různými prostředími a oblastmi.
+Create your logic apps as Azure Resource Manager templates so that you can [automate logic app deployment](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) across multiple environments and regions.
 
 ### <a name="built-in-extensibility"></a>Integrovaná rozšiřitelnost
 
-Pokud nenajdete konektor, ve kterém chcete spustit vlastní kód, můžete aplikace logiky zvětšovat vytvořením a voláním vlastních fragmentů kódu na vyžádání prostřednictvím [Azure Functions](../azure-functions/functions-overview.md). Vytvářejte vlastní rozhraní [API](../logic-apps/logic-apps-create-api-app.md) a [vlastní konektory](../logic-apps/custom-connector-overview.md), které můžete volat z aplikací logiky.
+If you don't find the connector that you want to run custom code, you can extend logic apps by creating and calling your own code snippets on-demand through [Azure Functions](../azure-functions/functions-overview.md). Vytvářejte vlastní rozhraní [API](../logic-apps/logic-apps-create-api-app.md) a [vlastní konektory](../logic-apps/custom-connector-overview.md), které můžete volat z aplikací logiky.
 
 ### <a name="pay-only-for-what-you-use"></a>Platíte jenom za to, co používáte
   
@@ -124,7 +124,7 @@ Další informace o Logic Apps najdete v těchto úvodních videích:
 
 * **Pracovní postup:** Vizualizace, návrh, tvorba, automatizace a nasazování obchodních procesů jako série kroků.
 
-* **Spravované konektory:** Aplikace logiky potřebují přístup k datům, službám a systémům. Můžete použít předem připravené konektory spravované Microsoftem, které jsou navržení pro připojení, přístup a práci s vašimi daty. Viz [konektory pro Azure Logic Apps](../connectors/apis-list.md).
+* **Spravované konektory:** Aplikace logiky potřebují přístup k datům, službám a systémům. Můžete použít předem připravené konektory spravované Microsoftem, které jsou navržení pro připojení, přístup a práci s vašimi daty. See [Connectors for Azure Logic Apps](../connectors/apis-list.md).
 
 * **Triggery:** Řada konektorů spravovaných Microsoftem poskytuje triggery, které se aktivují, když událost nebo nová data splní zadané podmínky. Událostí může být například přijetí e-mailu nebo detekce změn v účtu služby Azure Storage. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps novou instanci aplikace logiky, ve které se spustí pracovní postup.
 

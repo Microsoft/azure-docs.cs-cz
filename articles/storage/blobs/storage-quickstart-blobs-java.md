@@ -1,54 +1,54 @@
 ---
-title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – Java'
-description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro Java vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
+title: 'Quickstart: Azure Blob storage library v12 - Java'
+description: In this quickstart, you learn how to use the Azure Blob storage client library version 12 for Java to create a container and a blob in Blob (object) storage. Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5196dbbfb52ce75031a53764b371d6d34b43fba7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 27fbd0084f9f8c91ee83802efe6a96213363b78f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091417"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422052"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro jazyk Java
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Quickstart: Azure Blob storage client library v12 for Java
 
-Začněte s klientskou knihovnou V12 Azure Blob Storage pro Java. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+Get started with the Azure Blob storage client library v12 for Java. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Follow steps to install the package and try out example code for basic tasks. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
 
 > [!NOTE]
-> Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Klientská knihovna pro Azure Blob Storage pro Java](storage-quickstart-blobs-java-legacy.md).
+> To get started with the previous SDK version, see [Quickstart: Azure Blob storage client library for Java](storage-quickstart-blobs-java-legacy.md).
 
-Použijte klientskou knihovnu služby Azure Blob Storage V12 pro jazyk Java:
+Use the Azure Blob storage client library v12 for Java to:
 
 * Vytvoření kontejneru
-* Nahrání objektu blob do Azure Storage
-* Výpis všech objektů BLOB v kontejneru
-* Stažení objektu blob do místního počítače
+* Upload a blob to Azure Storage
+* List all of the blobs in a container
+* Download a blob to your local computer
 * Odstranění kontejneru
 
-[Referenční dokumentace k rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) |  | [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) [(Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter)
+[API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [Library source code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [Package (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší
+* [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) version 8 or above
 * [Apache Maven](https://maven.apache.org/download.cgi)
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure subscription - [create one for free](https://azure.microsoft.com/free/)
+* Azure storage account - [create a storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 
-## <a name="setting-up"></a>Nastavení
+## <a name="setting-up"></a>Setting up
 
-Tato část vás provede přípravou projektu pro práci s klientskou knihovnou služby Azure Blob Storage V12 for Java.
+This section walks you through preparing a project to work with the Azure Blob storage client library v12 for Java.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci Java Core s názvem *BLOB-Start-V12*.
+Create a Java Core application named *blob-quickstart-v12*.
 
-1. V okně konzoly (například cmd, PowerShell nebo bash) použijte Maven a vytvořte novou konzolovou aplikaci s názvem *objekt BLOB-rychlý Start-V12*. Pro vytvoření jednoduchého "Hello World!" zadejte na jeden řádek následující příkaz **MVN** . Projekt Java. Tento příkaz se zobrazí na více řádcích pro čitelnost.
+1. In a console window (such as cmd, PowerShell, or Bash), use Maven to create a new console app with the name *blob-quickstart-v12*. Type the following **mvn** command all on a single line to create a simple "Hello world!" Java project. The command is displayed here on multiple lines for readability.
 
    ```console
    mvn archetype:generate -DgroupId=com.blobs.quickstart
@@ -58,7 +58,7 @@ Vytvořte aplikaci Java Core s názvem *BLOB-Start-V12*.
                           -DinteractiveMode=false
    ```
 
-1. Výstup z generování projektu by měl vypadat přibližně takto:
+1. The output from generating the project should look something like this:
 
     ```console
     [INFO] Scanning for projects...
@@ -101,15 +101,15 @@ Vytvořte aplikaci Java Core s názvem *BLOB-Start-V12*.
    cd blob-quickstart-v12
    ```
 
-1. V adresáři *objektů BLOB pro rychlý Start – V12* vytvořte další adresář s názvem *data*. V tomto umístění se vytvoří a uloží datové soubory objektů BLOB.
+1. In side the *blob-quickstart-v12* directory, create another directory called *data*. This is where the blob data files will be created and stored.
 
     ```console
     mkdir data
     ```
 
-### <a name="install-the-package"></a>Instalace balíčku
+### <a name="install-the-package"></a>Install the package
 
-V textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvek závislosti do skupiny závislostí.
+Open the *pom.xml* file in your text editor. Add the following dependency element to the group of dependencies.
 
 ```xml
 <dependency>
@@ -119,16 +119,16 @@ V textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvek
 </dependency>
 ```
 
-### <a name="set-up-the-app-framework"></a>Nastavení aplikační architektury
+### <a name="set-up-the-app-framework"></a>Set up the app framework
 
-Z adresáře projektu:
+From the project directory:
 
-1. Přejděte do adresáře */Src/Main/Java/com/BLOBs/Quickstart*
-1. Otevřete soubor *App. Java* v editoru.
-1. Odstranění příkazu `System.out.println("Hello world!");`
-1. Přidat direktivy `import`
+1. Navigate to the */src/main/java/com/blobs/quickstart* directory
+1. Open the *App.java* file in your editor
+1. Delete the `System.out.println("Hello world!");` statement
+1. Add `import` directives
 
-Zde je kód:
+Here's the code:
 
 ```java
 package com.blobs.quickstart;
@@ -148,81 +148,44 @@ public class App
 }
 ```
 
-### <a name="copy-your-credentials-from-the-azure-portal"></a>Zkopírování přihlašovacích údajů z webu Azure Portal
+[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-Když ukázková aplikace odešle požadavek na Azure Storage, musí být ověřena. K autorizaci žádosti přidejte do aplikace přihlašovací údaje účtu úložiště jako připojovací řetězec. Přihlašovací údaje účtu úložiště zobrazíte pomocí následujícího postupu:
+## <a name="object-model"></a>Object model
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyhledejte svůj účet úložiště.
-3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**. Tady se zobrazí přístupové klíče vašeho účtu a úplný připojovací řetězec pro jednotlivé klíče.
-4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a výběrem tlačítka **Kopírovat** zkopírujte připojovací řetězec. V dalším kroku přidáte hodnotu připojovacího řetězce do proměnné prostředí.
+Azure Blob storage is optimized for storing massive amounts of unstructured data. Unstructured data is data that does not adhere to a particular data model or definition, such as text or binary data. Blob storage offers three types of resources:
 
-    ![Snímek obrazovky ukazující zkopírování připojovacího řetězce z webu Azure Portal](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
-
-### <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
-
-Po zkopírování připojovacího řetězce ho zapište do nové proměnné prostředí na místním počítači, na kterém aplikaci spouštíte. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` skutečným připojovacím řetězcem.
-
-#### <a name="windows"></a>Windows
-
-```cmd
-setx CONNECT_STR "<yourconnectionstring>"
-```
-
-Po přidání proměnné prostředí v systému Windows je nutné spustit novou instanci příkazového okna.
-
-#### <a name="linux"></a>Linux
-
-```bash
-export CONNECT_STR="<yourconnectionstring>"
-```
-
-#### <a name="macos"></a>macOS
-
-```bash
-export CONNECT_STR="<yourconnectionstring>"
-```
-
-#### <a name="restart-programs"></a>Restartovat programy
-
-Po přidání proměnné prostředí restartujte všechny spuštěné programy, které budou muset číst proměnnou prostředí. Před pokračováním například restartujte vývojové prostředí nebo editor.
-
-## <a name="object-model"></a>Objektový model
-
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Nestrukturovaná data jsou data, která nevyhovují konkrétnímu datovému modelu nebo definici, jako jsou textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
-
-* Účet úložiště
-* Kontejner v účtu úložiště
-* Objekt BLOB v kontejneru
+* The storage account
+* A container in the storage account
+* A blob in the container
 
 Na následujícím diagramu jsou vztahy těchto prostředků.
 
-![Diagram architektury služby Blob Storage](./media/storage-blob-introduction/blob1.png)
+![Diagram of Blob storage architecture](./media/storage-blob-introduction/blob1.png)
 
-K interakci s těmito prostředky použijte následující třídy Java:
+Use the following Java classes to interact with these resources:
 
-* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): třída `BlobServiceClient` umožňuje manipulovat s prostředky Azure Storage a kontejnery objektů BLOB. Účet úložiště poskytuje obor názvů nejvyšší úrovně pro Blob service.
-* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): třída `BlobServiceClientBuilder` poskytuje rozhraní API pro tvůrce Fluent, které pomáhá pomoci při konfiguraci a vytváření instancí `BlobServiceClient` objektů.
-* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): třída `BlobContainerClient` umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
-* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): třída `BlobClient` umožňuje manipulovat s objekty blob Azure Storage.
-* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): třída `BlobItem` představuje jednotlivé objekty blob vrácené voláním `listBlobsFlat`.
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): The `BlobServiceClient` class allows you to manipulate Azure Storage resources and blob containers. The storage account provides the top-level namespace for the Blob service.
+* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): The `BlobServiceClientBuilder` class provides a fluent builder API to help aid the configuration and instantiation of `BlobServiceClient` objects.
+* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): The `BlobContainerClient` class allows you to manipulate Azure Storage containers and their blobs.
+* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): The `BlobClient` class allows you to manipulate Azure Storage blobs.
+* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): The `BlobItem` class represents individual blobs returned from a call to `listBlobsFlat`.
 
-## <a name="code-examples"></a>Příklady kódu
+## <a name="code-examples"></a>Code examples
 
-Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s klientskou knihovnou služby Azure Blob Storage pro jazyk Java:
+These example code snippets show you how to perform the following with the Azure Blob storage client library for Java:
 
-* [Získání připojovacího řetězce](#get-the-connection-string)
-* [Vytvoření kontejneru](#create-a-container)
-* [Nahrání objektů blob do kontejneru](#upload-blobs-to-a-container)
-* [Výpis objektů BLOB v kontejneru](#list-the-blobs-in-a-container)
-* [Stáhnout objekty blob](#download-blobs)
+* [Get the connection string](#get-the-connection-string)
+* [Create a container](#create-a-container)
+* [Upload blobs to a container](#upload-blobs-to-a-container)
+* [List the blobs in a container](#list-the-blobs-in-a-container)
+* [Download blobs](#download-blobs)
 * [Odstranění kontejneru](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>Získání připojovacího řetězce
 
-Následující kód načte připojovací řetězec pro účet úložiště z proměnné prostředí vytvořené v oddílu [konfigurace vašeho připojovacího řetězce úložiště](#configure-your-storage-connection-string) .
+The code below retrieves the connection string for the storage account from the environment variable created in the [Configure your storage connection string](#configure-your-storage-connection-string) section.
 
-Přidejte tento kód do metody `Main`:
+Add this code inside the `Main` method:
 
 ```java
 System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
@@ -238,14 +201,14 @@ String connectStr = System.getenv("CONNECT_STR");
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
-Určete název nového kontejneru. Následující kód připojí hodnotu UUID k názvu kontejneru, aby bylo zajištěno, že je jedinečný.
+Decide on a name for the new container. The code below appends a UUID value to the container name to ensure that it is unique.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Dále vytvořte instanci třídy [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) a potom zavolejte metodu [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) , která ve skutečnosti vytvoří kontejner v účtu úložiště.
+Next, create an instance of the [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) class, then call the [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) method to actually create the container in your storage account.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```java
 // Create a BlobServiceClient object which will be used to create a container client
@@ -258,15 +221,15 @@ String containerName = "quickstartblobs" + java.util.UUID.randomUUID();
 BlobContainerClient containerClient = blobServiceClient.createBlobContainer(containerName);
 ```
 
-### <a name="upload-blobs-to-a-container"></a>Nahrání objektů blob do kontejneru
+### <a name="upload-blobs-to-a-container"></a>Upload blobs to a container
 
-Následující fragment kódu:
+The following code snippet:
 
-1. Vytvoří textový soubor v místním *datovém* adresáři.
-1. Získá odkaz na objekt [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) voláním metody [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) na kontejneru z oddílu [vytvoření kontejneru](#create-a-container) .
-1. Nahraje místní textový soubor do objektu BLOB voláním metody [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) . Tato metoda vytvoří objekt blob, pokud ještě neexistuje, ale nepřepíše jej, pokud k tomu dojde.
+1. Creates a text file in the local *data* directory.
+1. Gets a reference to a [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) object by calling the [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) method on the container from the [Create a container](#create-a-container) section.
+1. Uploads the local text file to the blob by calling the [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) method. This method creates the blob if it doesn't already exist, but will not overwrite it if it does.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```java
 // Create a local file in the ./data/ directory for uploading and downloading
@@ -290,9 +253,9 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Seznam objektů BLOB v kontejneru zavoláním metody [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) . V tomto případě byl do kontejneru přidán pouze jeden objekt blob, takže operace výpisu vrátí pouze jeden objekt BLOB.
+List the blobs in the container by calling the [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) method. In this case, only one blob has been added to the container, so the listing operation returns just that one blob.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```java
 System.out.println("\nListing blobs...");
@@ -305,9 +268,9 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>Stáhnout objekty blob
 
-Stáhněte dřív vytvořený objekt BLOB voláním metody [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) . Vzorový kód přidá příponu "DOWNLOAD" do názvu souboru, aby bylo možné zobrazit oba soubory v místním systému souborů.
+Download the previously created blob by calling the [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) method. The example code adds a suffix of "DOWNLOAD" to the file name so that you can see both files in local file system.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```java
 // Download the blob to a local file
@@ -322,11 +285,11 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>Odstranění kontejneru
 
-Následující kód vyčistí prostředky, které aplikace vytvořila, odebráním celého kontejneru pomocí metody [Delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) . Odstraní také místní soubory vytvořené aplikací.
+The following code cleans up the resources the app created by removing the entire container using the [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) method. It also deletes the local files created by the app.
 
-Aplikace pozastaví vstup uživatele voláním `System.console().readLine()` předtím, než odstraní objekt blob, kontejner a místní soubory. Tato možnost je vhodná pro ověření, že prostředky byly ve skutečnosti vytvořeny správně, než byly odstraněny.
+The app pauses for user input by calling `System.console().readLine()` before it deletes the blob, container, and local files. This is a good chance to verify that the resources were actually created correctly, before they are deleted.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```java
 // Clean up
@@ -345,27 +308,27 @@ System.out.println("Done");
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Tato aplikace vytvoří testovací soubor v místní složce a nahraje ho do úložiště objektů BLOB. Příklad zobrazí seznam objektů BLOB v kontejneru a stáhne soubor s novým názvem, abyste mohli porovnat staré a nové soubory.
+This app creates a test file in your local folder and uploads it to Blob storage. The example then lists the blobs in the container and downloads the file with a new name so that you can compare the old and new files.
 
-Přejděte do adresáře, který obsahuje soubor *pom. XML* a zkompilujte projekt pomocí následujícího příkazu `mvn`.
+Navigate to the directory containing the *pom.xml* file and compile the project by using the following `mvn` command.
 
 ```console
 mvn compile
 ```
 
-Pak Sestavte balíček.
+Then, build the package.
 
 ```console
 mvn package
 ```
 
-Spuštěním následujícího příkazu `mvn` aplikaci spusťte.
+Run the following `mvn` command to execute the app.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonThreads=false
 ```
 
-Výstup aplikace je podobný následujícímu příkladu:
+The output of the app is similar to the following example:
 
 ```output
 Azure Blob storage v12 - Java quickstart sample
@@ -386,18 +349,18 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-Než zahájíte proces vyčištění, vyhledejte tyto dva soubory ve složce *dokumenty* . Můžete je otevřít a podívat se, že jsou identické.
+Before you begin the clean up process, check your *MyDocuments* folder for the two files. Můžete je otevřít a podívat se, že jsou identické.
 
-Po ověření souborů stiskněte klávesu **ENTER** , aby se odstranily soubory testu, a dokončete ukázku.
+After you've verified the files, press the **Enter** key to delete the test files and finish the demo.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty BLOB pomocí Java.
+In this quickstart, you learned how to upload, download, and list blobs using Java.
 
-Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
+To see Blob storage sample apps, continue to:
 
 > [!div class="nextstepaction"]
-> [Ukázky V12 Java sady SDK pro Azure Blob Storage](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+> [Azure Blob storage SDK v12 Java samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-* Další informace najdete v tématu [sada Azure SDK pro jazyk Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md).
-* Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu [Azure pro vývojáře v jazyce Java pro cloudy](/azure/java/).
+* To learn more, see the [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md).
+* For tutorials, samples, quick starts and other documentation, visit [Azure for Java cloud developers](/azure/java/).

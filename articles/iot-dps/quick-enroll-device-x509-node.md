@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: b2995c6ba031e71cba9068b691cbedc1cf80c457
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6056859cf1742fc4bda6056ad7c1c78059a8407a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228568"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423220"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Node.js
 
@@ -111,13 +111,13 @@ Pokud chcete vygenerovat certifikáty pomocí těchto testovacích nástrojů, p
 ## <a name="run-the-enrollment-group-sample"></a>Spuštění ukázky skupiny registrací
  
 1. Ke spuštění ukázky potřebujete připojovací řetězec pro vaši službu zřizování. 
-    1. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning. 
-    2. Klikněte na **Zásady sdíleného přístupu** a pak kliknutím na zásadu přístupu, kterou chcete použít, otevřete její vlastnosti. V okně **Zásady přístupu** si zkopírujte a poznamenejte primární připojovací řetězec klíče. 
+    1. Sign in to the Azure portal, select the **All resources** button on the left-hand menu and open your Device Provisioning service. 
+    2. Click **Shared access policies**, then select the access policy you want to use to open its properties. V okně **Zásady přístupu** si zkopírujte a poznamenejte primární připojovací řetězec klíče. 
 
        ![Získání připojovacího řetězce služby zřizování z portálu](./media/quick-enroll-device-x509-node/get-service-connection-string.png) 
 
 
-3. Jak se píše v části [Příprava testovacích certifikátů](quick-enroll-device-x509-node.md#prepare-test-certificates), potřebujete také soubor .pem obsahující zprostředkující nebo kořenový certifikát X.509 certifikační autority, který jste předtím nahráli do své služby zřizování a ověřili. Pokud chcete ověřit uložení a ověření vašeho certifikátu, na stránce s přehledem služby Device Provisioning na webu Azure Portal klikněte na **Certifikáty**. Vyhledejte certifikát, který chcete použít pro skupinovou registraci, a ujistěte se, že jeho stav má hodnotu *ověřeno*.
+3. Jak se píše v části [Příprava testovacích certifikátů](quick-enroll-device-x509-node.md#prepare-test-certificates), potřebujete také soubor .pem obsahující zprostředkující nebo kořenový certifikát X.509 certifikační autority, který jste předtím nahráli do své služby zřizování a ověřili. To check that your certificate has been uploaded and verified, on the Device Provisioning Service summary page in the Azure portal, select **Certificates**. Vyhledejte certifikát, který chcete použít pro skupinovou registraci, a ujistěte se, že jeho stav má hodnotu *ověřeno*.
 
     ![Ověřený certifikát na portálu](./media/quick-enroll-device-x509-node/verify-certificate.png) 
 
@@ -136,14 +136,14 @@ Pokud chcete vygenerovat certifikáty pomocí těchto testovacích nástrojů, p
     ![Vlastnosti registrace na portálu](./media/quick-enroll-device-x509-node/verify-enrollment-portal.png) 
  
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete prozkoumat ukázky služeb v Node.js, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky Azure vytvořené tímto rychlým startem.
+If you plan to explore the Node.js service samples, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all Azure resources created by this quickstart.
  
 1. Zavřete na svém počítači okno výstupu ukázky v Node.js.
-2. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *Registration ID* for the enrollment entry you created using this Quickstart and click the **Delete** button at the top of the blade.  
-3. Ve vaší službě Device Provisioning na webu Azure Portal klikněte na **Certifikáty**, klikněte na certifikát, který jste uložili pro účely tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části okna **Podrobnosti o certifikátu**.  
+2. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the check box next to the *GROUP NAME* for the X.509 devices you enrolled using this quickstart, and press the **Delete** button at the top of the pane.    
+3. From your Device Provisioning service in the Azure portal, select **Certificates**, select the certificate you uploaded for this quickstart, and press the **Delete** button at the top of the **Certificate Details** window.  
  
 ## <a name="next-steps"></a>Další kroky
-V rámci tohoto rychlého startu jste pomocí služby Azure IoT Hub Device Provisioning vytvořili skupinovou registraci pro certifikát X.509 zprostředkující nebo kořenové certifikační autority. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 
+In this quickstart, you created a group enrollment for an X.509 intermediate or root CA certificate using the Azure IoT Hub Device Provisioning Service. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 
  
 > [!div class="nextstepaction"]
 > [Kurzy pro službu Azure IoT Hub Device Provisioning](./tutorial-set-up-cloud.md)

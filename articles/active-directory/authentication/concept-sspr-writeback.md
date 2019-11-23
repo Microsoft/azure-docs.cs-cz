@@ -1,6 +1,6 @@
 ---
-title: Integrace místního zpětného zápisu hesel pomocí Azure AD SSPR-Azure Active Directory
-description: Získat cloudová hesla napsaná zpátky do místního AD infratstructure
+title: On-premises password writeback integration with Azure AD SSPR - Azure Active Directory
+description: Get cloud passwords written back to on-premises AD infrastructure
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,161 +11,161 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07069d22d57540c6a16472bc7278821e14f1f18e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 758d7122a991309504c5cac18b9aaf1268808887
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561280"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420655"
 ---
-# <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
+# <a name="what-is-password-writeback"></a>What is password writeback?
 
-Použití nástroje pro resetování hesla na Cloud je skvělé, ale většina společností má stále místní adresář, ve kterém jejich uživatelé existují. Jak Microsoft podporuje udržování tradiční místní služby Active Directory (AD) v synchronizaci se změnami hesel v cloudu? Zpětný zápis hesla je funkce povolená u [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , která umožňuje v reálném čase zapisovat změny hesel v cloudu zpátky do stávajícího místního adresáře.
+Having a cloud-based password reset utility is great but most companies still have an on-premises directory where their users exist. How does Microsoft support keeping traditional on-premises Active Directory (AD) in sync with password changes in the cloud? Password writeback is a feature enabled with [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) that allows password changes in the cloud to be written back to an existing on-premises directory in real time.
 
-Zpětný zápis hesla se podporuje v prostředích, která používají:
+Password writeback is supported in environments that use:
 
 * [Active Directory Federation Services (AD FS)](../hybrid/how-to-connect-fed-management.md)
 * [Synchronizace hodnoty hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Předávací ověřování](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> Zpětný zápis hesla přestane fungovat pro zákazníky, kteří používají Azure AD Connect verze 1.0.8641.0 a starší, pokud [je služba Azure Access Control Service (ACS) vyřazena 7. listopadu 2018](../develop/active-directory-acs-migration.md). Azure AD Connect verze 1.0.8641.0 a starší již v tuto chvíli neumožňují zpětný zápis hesla, protože pro tuto funkci závisí na službě ACS.
+> Password writeback will stop working for customers who are using Azure AD Connect versions 1.0.8641.0 and older when the [Azure Access Control service (ACS) is retired on November 7th, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versions 1.0.8641.0 and older will no longer allow password writeback at that time because they depend on ACS for that functionality.
 >
-> Chcete-li se vyhnout výpadkům služby, upgradujte z předchozí verze Azure AD Connect na novější verzi, přečtěte si článek [Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi](../hybrid/how-to-upgrade-previous-version.md)
+> To avoid a disruption in service, upgrade from a previous version of Azure AD Connect to a newer version, see the article [Azure AD Connect: Upgrade from a previous version to the latest](../hybrid/how-to-upgrade-previous-version.md)
 >
 
-Zpětný zápis hesla poskytuje:
+Password writeback provides:
 
-* **Vynucování místních zásad hesel pro službu Active Directory**: Když uživatel resetuje heslo, před jeho potvrzením do tohoto adresáře se ověří, jestli splňuje vaše místní zásady Active Directory. Tato revize zahrnuje kontrolu historie, složitosti, stáří, filtrů hesel a dalších omezení hesla, která jste definovali v místní službě Active Directory.
-* **Nulování zpětná vazba**: Zpětný zápis hesla je synchronní operace. Uživatelé se okamžitě oznámí, pokud heslo nesplňuje zásady nebo ho z nějakého důvodu nemůžete resetovat ani změnit.
-* **Podporuje změny hesla z přístupového panelu a sady Office 365**: Když se uživatelům synchronizovaných a hesel synchronizovaná hodnota hash ztratí, aby změnili hesla, jejichž platnost vypršela nebo kdy vypršela platnost, tato hesla se napíší zpátky do místního prostředí Active Directory.
-* **Podporuje zpětný zápis hesla, když ho správce obnoví z Azure Portal**: Kdykoli správce resetuje heslo uživatele v [Azure Portal](https://portal.azure.com), pokud je tento uživatel synchronizovaný nebo je hodnota hash hesla synchronizovaná, heslo se zapíše zpátky do místního prostředí. Tato funkce se v současnosti nepodporuje na portálu pro správu Office.
-* **Nevyžaduje žádná pravidla brány firewall pro příchozí spojení**: Zpětný zápis hesla používá jako základní komunikační kanál Azure Service Bus Relay. Veškerá komunikace je odchozí přes port 443.
+* **Enforcement of on-premises Active Directory password policies**: When a user resets their password, it is checked to ensure it meets your on-premises Active Directory policy before committing it to that directory. This review includes checking the history, complexity, age, password filters, and any other password restrictions that you have defined in local Active Directory.
+* **Zero-delay feedback**: Password writeback is a synchronous operation. Your users are notified immediately if their password did not meet the policy or could not be reset or changed for any reason.
+* **Supports password changes from the access panel and Office 365**: When federated or password hash synchronized users come to change their expired or non-expired passwords, those passwords are written back to your local Active Directory environment.
+* **Supports password writeback when an admin resets them from the Azure portal**: Whenever an admin resets a user’s password in the [Azure portal](https://portal.azure.com), if that user is federated or password hash synchronized, the password is written back to on-premises. This functionality is currently not supported in the Office admin portal.
+* **Doesn’t require any inbound firewall rules**: Password writeback uses an Azure Service Bus relay as an underlying communication channel. All communication is outbound over port 443.
 
 > [!NOTE]
-> Účty správců, které existují v chráněných skupinách v místní službě AD, se dají používat se zpětným zápisem hesla. Správci můžou změnit heslo v cloudu, ale nemůžou pomocí resetování hesla resetovat zapomenuté heslo. Další informace o chráněných skupinách najdete v tématu [chráněné účty a skupiny ve službě Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Administrator accounts that exist within protected groups in on-premises AD can be used with password writeback. Administrators can change their password in the cloud but cannot use password reset to reset a forgotten password. For more information about protected groups, see [Protected accounts and groups in Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
-## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla
+## <a name="licensing-requirements-for-password-writeback"></a>Licensing requirements for password writeback
 
-**Samoobslužné resetování hesla/změna/odemknutí pomocí místního zpětného zápisu je funkce Premium služby Azure AD**. Další informace o licencování najdete na [webu Azure Active Directory Price](https://azure.microsoft.com/pricing/details/active-directory/).
+**Self-Service Password Reset/Change/Unlock with on-premises writeback is a premium feature of Azure AD**. For more information about licensing, see the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Pokud chcete použít zpětný zápis hesla, musíte mít přiřazenou jednu z následujících licencí ve vašem tenantovi:
+To use password writeback, you must have one of the following licenses assigned on your tenant:
 
 * Azure AD Premium P1
 * Azure AD Premium P2
-* Enterprise Mobility + Security E3 nebo a3
-* Enterprise Mobility + Security E5 nebo a5
-* Microsoft 365 E3 nebo a3
-* Microsoft 365 E5 nebo a5
+* Enterprise Mobility + Security E3 or A3
+* Enterprise Mobility + Security E5 or A5
+* Microsoft 365 E3 or A3
+* Microsoft 365 E5 or A5
 * Microsoft 365 F1
 * Microsoft 365 Business
 
 > [!WARNING]
-> Samostatné plány licencování Office 365 *nepodporují Samoobslužné resetování hesla, změny/odemknutí pomocí místního zpětného zápisu* a vyžadují, abyste měli k dispozici jeden z předchozích plánů, aby tato funkce fungovala.
+> Standalone Office 365 licensing plans *don't support "Self-Service Password Reset/Change/Unlock with on-premises writeback"* and require that you have one of the preceding plans for this functionality to work.
 
-## <a name="how-password-writeback-works"></a>Jak funguje zpětný zápis hesla
+## <a name="how-password-writeback-works"></a>How password writeback works
 
-Při pokusu o resetování nebo změně hesla v cloudu se může zobrazit následující akce:
+When a federated or password hash synchronized user attempts to reset or change their password in the cloud, the following actions occur:
 
-1. Provede se ověření, jaký typ hesla uživatel má. Pokud je heslo spravované místně:
-   * Provede se ověření, zda je služba zpětného zápisu v provozu. V takovém případě může uživatel pokračovat.
-   * Pokud je služba zpětného zápisu vypnutá, uživateli se dozvíte, že heslo nejde resetovat hned teď.
-1. V dalším kroku uživatel předává příslušné ověřovací brány a dosáhne stránky pro **resetování hesla** .
-1. Uživatel vybere nové heslo a potvrdí ho.
-1. Když uživatel vybere **Odeslat**, heslo ve formátu prostého textu se zašifruje pomocí symetrického klíče vytvořeného během procesu nastavení zpětného zápisu.
-1. Šifrované heslo je zahrnuté v datové části, která se posílá přes kanál HTTPS k přenosu Service Bus konkrétního tenanta (to je nastavené během procesu nastavení zpětného zápisu). Tento přenos je chráněný náhodně generovaným heslem, které ví jenom vaše místní instalace.
-1. Jakmile zpráva dosáhne služby Service Bus, koncový bod pro resetování hesla se automaticky probudí a zjistí, že se čeká na vyřízení žádosti o resetování.
-1. Služba pak vyhledá uživatele pomocí atributu kotva cloudu. Aby bylo toto vyhledávání úspěšné:
+1. A check is performed to see what type of password the user has. If the password is managed on-premises:
+   * A check is performed to see if the writeback service is up and running. If it is, the user can proceed.
+   * If the writeback service is down, the user is informed that their password can't be reset right now.
+1. Next, the user passes the appropriate authentication gates and reaches the **Reset password** page.
+1. The user selects a new password and confirms it.
+1. When the user selects **Submit**, the plaintext password is encrypted with a symmetric key created during the writeback setup process.
+1. The encrypted password is included in a payload that gets sent over an HTTPS channel to your tenant-specific service bus relay (that is set up for you during the writeback setup process). This relay is protected by a randomly generated password that only your on-premises installation knows.
+1. After the message reaches the service bus, the password-reset endpoint automatically wakes up and sees that it has a reset request pending.
+1. The service then looks for the user by using the cloud anchor attribute. For this lookup to succeed:
 
-   * Objekt uživatele musí existovat v prostoru konektoru služby Active Directory.
-   * Objekt uživatele musí být propojený s odpovídajícím objektem úložiště metaverse (MV).
-   * Objekt uživatele musí být propojený s odpovídajícím objektem Azure Active Directory konektoru.
-   * Odkaz z objektu konektoru služby Active Directory na MV musí mít pravidlo `Microsoft.InfromADUserAccountEnabled.xxx` synchronizace na tomto odkazu.
+   * The user object must exist in the Active Directory connector space.
+   * The user object must be linked to the corresponding metaverse (MV) object.
+   * The user object must be linked to the corresponding Azure Active Directory connector object.
+   * The link from the Active Directory connector object to the MV must have the synchronization rule `Microsoft.InfromADUserAccountEnabled.xxx` on the link.
    
-   Když se volání dostane z cloudu, modul synchronizace používá atribut **cloudAnchor** k vyhledání objektu prostoru konektoru Azure Active Directory. Pak následuje odkaz zpátky na objekt MV a pak následuje odkaz zpátky na objekt služby Active Directory. Vzhledem k tomu, že může existovat více objektů služby Active Directory (více doménových struktur) pro stejného uživatele, synchronizační modul `Microsoft.InfromADUserAccountEnabled.xxx` spoléhá na odkaz pro výběr správné.
+   When the call comes in from the cloud, the synchronization engine uses the **cloudAnchor** attribute to look up the Azure Active Directory connector space object. It then follows the link back to the MV object, and then follows the link back to the Active Directory object. Because there can be multiple Active Directory objects (multi-forest) for the same user, the sync engine relies on the `Microsoft.InfromADUserAccountEnabled.xxx` link to pick the correct one.
 
-1. Po nalezení uživatelského účtu se provede pokus o resetování hesla přímo v příslušné doménové struktuře služby Active Directory.
-1. Je-li operace set hesla úspěšná, uživatel má informaci, že heslo bylo změněno.
+1. After the user account is found, an attempt to reset the password directly in the appropriate Active Directory forest is made.
+1. If the password set operation is successful, the user is told their password has been changed.
    > [!NOTE]
-   > Pokud je hodnota hash hesla uživatele synchronizovaná s Azure AD pomocí synchronizace hodnot hash hesel, existuje možnost, že místní zásady hesel jsou slabé, než zásady pro heslo pro Cloud. V takovém případě se zásady místních zásad vynutily. Tato zásada zajišťuje, že vaše místní zásady se vynutily v cloudu, bez ohledu na to, jestli k zajištění jednotného přihlašování použijete synchronizaci hodnot hash hesel nebo federaci.
+   > If the user's password hash is synchronized to Azure AD by using password hash synchronization, there is a chance that the on-premises password policy is weaker than the cloud password policy. In this case, the on-premises policy is enforced. This policy ensures that your on-premises policy is enforced in the cloud, no matter if you use password hash synchronization or federation to provide single sign-on.
 
-1. Pokud operace nastavení hesla neproběhne úspěšně, vyzve uživatele k zadání chyby. Operace může selhat z těchto důvodů:
-    * Služba byla mimo provoz.
-    * Heslo, které si zvolili, nevyhovělo zásadám organizace.
-    * Nepovedlo se najít uživatele v místní službě Active Directory.
+1. If the password set operation fails, an error prompts the user to try again. The operation might fail because:
+    * The service was down.
+    * The password they selected did not meet the organization's policies.
+    * Unable to find the user in local Active Directory.
 
-      Chybové zprávy poskytují uživatelům pokyny, aby se mohli pokusit o vyřešení bez zásahu správce.
+      The error messages provide guidance to users so they can attempt to resolve without administrator intervention.
 
-## <a name="password-writeback-security"></a>Zabezpečení zpětného zápisu hesla
+## <a name="password-writeback-security"></a>Password writeback security
 
-Zpětný zápis hesla je vysoce Zabezpečená služba. Aby bylo zajištěno, že jsou vaše informace chráněny, je povolený čtyřstránkový model zabezpečení, jak je popsáno níže:
+Password writeback is a highly secure service. To ensure your information is protected, a four-tiered security model is enabled as the following describes:
 
-* **Služba pro předávání přes konkrétního tenanta**
-   * Při nastavování služby se nastaví předávání Service Bus pro konkrétního tenanta, které je chráněné náhodně generovaným silným heslem, ke kterému má přístup Microsoft nikdy.
-* **Uzamčená, kryptograficky silný šifrovací klíč hesla**
-   * Po vytvoření služby Service Bus Relay se vytvoří silný symetrický klíč, který slouží k šifrování hesla při jeho přenosech. Tento klíč se používá jenom v tajném úložišti vaší společnosti v cloudu, které je silně uzamčené a auditované, stejně jako jakékoli jiné heslo v adresáři.
-* **Standardní obor TLS (Transport Layer Security)**
-   1. V případě, že dojde k resetování hesla nebo k operaci změny v cloudu, heslo ve formátu prostého textu se zašifruje pomocí veřejného klíče.
-   1. Šifrované heslo se umístí do zprávy HTTPS, která se pošle přes zašifrovaný kanál pomocí certifikátů Microsoft SSL pro předávání přes Service Bus.
-   1. Po doručení zprávy ve službě Service Bus se Váš místní agent probudí a ověří ve službě Service Bus pomocí silného hesla, které bylo dříve vygenerováno.
-   1. Místní agent převezme šifrovanou zprávu a dešifruje ji pomocí privátního klíče.
-   1. Místní Agent se pokusí nastavit heslo prostřednictvím rozhraní služba AD DS SetPassword API. Tento krok umožňuje vynucení místních zásad hesel ve službě Active Directory (například složitost, stáří, historie a filtry) v cloudu.
-* **Zásady pro vypršení platnosti zprávy**
-   * Pokud se zpráva nachází v Service Bus, protože vaše místní služba nefunguje, vyprší časový limit a po několika minutách se odeberou. Časový limit a odebrání zprávy zvyšují zabezpečení ještě více.
+* **Tenant-specific service-bus relay**
+   * When you set up the service, a tenant-specific service bus relay is set up that's protected by a randomly generated strong password that Microsoft never has access to.
+* **Locked down, cryptographically strong, password encryption key**
+   * After the service bus relay is created, a strong symmetric key is created that is used to encrypt the password as it comes over the wire. This key only lives in your company's secret store in the cloud, which is heavily locked down and audited, just like any other password in the directory.
+* **Industry standard Transport Layer Security (TLS)**
+   1. When a password reset or change operation occurs in the cloud, the plaintext password is encrypted with your public key.
+   1. The encrypted password is placed into an HTTPS message that is sent over an encrypted channel by using Microsoft SSL certs to your service bus relay.
+   1. After the message arrives in the service bus, your on-premises agent wakes up and authenticates to the service bus by using the strong password that was previously generated.
+   1. The on-premises agent picks up the encrypted message and decrypts it by using the private key.
+   1. The on-premises agent attempts to set the password through the AD DS SetPassword API. This step is what allows enforcement of your Active Directory on-premises password policy (such as the complexity, age, history, and filters) in the cloud.
+* **Message expiration policies**
+   * If the message sits in service bus because your on-premises service is down, it times out and is removed after several minutes. The time-out and removal of the message increases security even further.
 
-### <a name="password-writeback-encryption-details"></a>Podrobnosti šifrování zpětného zápisu hesla
+### <a name="password-writeback-encryption-details"></a>Password writeback encryption details
 
-Jakmile uživatel odešle resetování hesla, požadavek na obnovení projde několika kroky šifrování, než dorazí do místního prostředí. Tyto kroky šifrování zajišťují maximální spolehlivost a zabezpečení služby. Jsou popsány takto:
+After a user submits a password reset, the reset request goes through several encryption steps before it arrives in your on-premises environment. These encryption steps ensure maximum service reliability and security. They are described as follows:
 
-* **Krok 1: Šifrování hesla pomocí 2048 klíče**RSA: Jakmile uživatel odešle heslo pro zpětný zápis do místního počítače, je odeslané heslo samotné, které je zašifrované pomocí 2048 klíče RSA.
-* **Krok 2: Šifrování na úrovni balíčku pomocí AES-GCM**: Celý balíček, heslo a požadovaná metadata se šifrují pomocí AES-GCM. Toto šifrování brání komukoli s přímým přístupem k základnímu ServiceBus kanálu v zobrazení nebo manipulaci s obsahem.
-* **Krok 3: Veškerá komunikace probíhá přes protokol TLS/** SSL: Veškerá komunikace s ServiceBus se odehrává v kanálu SSL/TLS. Toto šifrování zabezpečuje obsah od neautorizovaných třetích stran.
-* **Automatické posunutí klíčů každých šest měsíců**: Všechny klíče se převezmou každých šest měsíců, nebo pokaždé, když se zpětný zápis hesla zakáže a pak se znovu aktivuje na Azure AD Connect, aby se zajistilo maximální zabezpečení a bezpečnost služby.
+* **Step 1: Password encryption with 2048-bit RSA Key**: After a user submits a password to be written back to on-premises, the submitted password itself is encrypted with a 2048-bit RSA key.
+* **Step 2: Package-level encryption with AES-GCM**: The entire package, the password plus the required metadata, is encrypted by using AES-GCM. This encryption prevents anyone with direct access to the underlying ServiceBus channel from viewing or tampering with the contents.
+* **Step 3: All communication occurs over TLS/SSL**: All the communication with ServiceBus happens in an SSL/TLS channel. This encryption secures the contents from unauthorized third parties.
+* **Automatic key roll over every six months**: All keys roll over every six months, or every time password writeback is disabled and then re-enabled on Azure AD Connect, to ensure maximum service security and safety.
 
-### <a name="password-writeback-bandwidth-usage"></a>Využití šířky pásma zpětného zápisu hesla
+### <a name="password-writeback-bandwidth-usage"></a>Password writeback bandwidth usage
 
-Zpětný zápis hesla je služba s nízkou šířkou pásma, která odesílá požadavky pouze zpět do místního agenta za následujících okolností:
+Password writeback is a low-bandwidth service that only sends requests back to the on-premises agent under the following circumstances:
 
-* Pokud je funkce povolená nebo zakázaná prostřednictvím Azure AD Connect, odesílají se dvě zprávy.
-* Jedna zpráva se pošle každých pět minut jako prezenční signál služby, pokud je služba spuštěná.
-* Při každém odeslání nového hesla se odesílají dvě zprávy:
-   * První zpráva je žádost o provedení operace.
-   * Druhá zpráva obsahuje výsledek operace a je odeslána v následujících případech:
-      * Pokaždé, když se během samoobslužného resetování hesla uživatele odešle nové heslo.
-      * Pokaždé, když se během operace změny hesla uživatele odešle nové heslo.
-      * Pokaždé, když se nové heslo odešle během resetování hesla uživatele iniciované správcem (jenom z portálů pro správu Azure).
+* Two messages are sent when the feature is enabled or disabled through Azure AD Connect.
+* One message is sent once every five minutes as a service heartbeat for as long as the service is running.
+* Two messages are sent each time a new password is submitted:
+   * The first message is a request to perform the operation.
+   * The second message contains the result of the operation, and is sent in the following circumstances:
+      * Each time a new password is submitted during a user self-service password reset.
+      * Each time a new password is submitted during a user password change operation.
+      * Each time a new password is submitted during an admin-initiated user password reset (only from the Azure admin portals).
 
-#### <a name="message-size-and-bandwidth-considerations"></a>Požadavky na velikost zprávy a šířku pásma
+#### <a name="message-size-and-bandwidth-considerations"></a>Message size and bandwidth considerations
 
-Velikost každé zprávy popsané výše je obvykle v rozsahu 1 KB. I v případě extrémního zatížení služba zpětného zápisu hesla sama o sobě spotřebovává několik kilobitů za sekundu šířky pásma. Vzhledem k tomu, že se každá zpráva odesílá v reálném čase, a to jenom v případě, že to vyžaduje operace aktualizace hesla, a protože je velikost zprávy malá, je využití šířky pásma pro funkci zpětného zápisu moc malé, aby nemohlo měřitelné dopady.
+The size of each of the message described previously is typically under 1 KB. Even under extreme loads, the password writeback service itself is consuming a few kilobits per second of bandwidth. Because each message is sent in real time, only when required by a password update operation, and because the message size is so small, the bandwidth usage of the writeback capability is too small to have a measurable impact.
 
-## <a name="supported-writeback-operations"></a>Podporované operace zpětného zápisu
+## <a name="supported-writeback-operations"></a>Supported writeback operations
 
-Hesla se zapisují zpátky do všech těchto situací:
+Passwords are written back in all the following situations:
 
-* **Podporované operace koncového uživatele**
-   * Všechny operace samoobslužné změny hesla koncových uživatelů
-   * Všechny operace samoobslužné změny hesla koncového uživatele, například vypršení platnosti hesla
-   * Jakékoli Samoobslužné resetování hesla koncového uživatele, které pochází z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com)
-* **Podporované operace Správce**
-   * Operace hesla pro samoobslužnou změnu hesla všech správců
-   * Jakákoli operace změny hesla samoobslužného hesla pro správce, například vypršení platnosti hesla
-   * Jakékoli Samoobslužné resetování hesla pro správce, které pochází z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com)
-   * Jakékoli resetování hesla koncového uživatele iniciované správcem z [Azure Portal](https://portal.azure.com)
+* **Supported end-user operations**
+   * Any end-user self-service voluntary change password operation
+   * Any end-user self-service force change password operation, for example, password expiration
+   * Any end-user self-service password reset that originates from the [password reset portal](https://passwordreset.microsoftonline.com)
+* **Supported administrator operations**
+   * Any administrator self-service voluntary change password operation
+   * Any administrator self-service force change password operation, for example, password expiration
+   * Any administrator self-service password reset that originates from the [password reset portal](https://passwordreset.microsoftonline.com)
+   * Any administrator-initiated end-user password reset from the [Azure portal](https://portal.azure.com)
 
-## <a name="unsupported-writeback-operations"></a>Nepodporované operace zpětného zápisu
+## <a name="unsupported-writeback-operations"></a>Unsupported writeback operations
 
-Hesla se *nezapisují zpátky* v následujících situacích:
+Passwords are *not* written back in any of the following situations:
 
-* **Nepodporované operace koncového uživatele**
-   * Libovolný koncový uživatel resetuje vlastní heslo pomocí prostředí PowerShell verze 1, verze 2 nebo Azure AD Graph API
-* **Nepodporované operace Správce**
-   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo Azure AD Graph API
-   * Jakékoli resetování hesla koncových uživatelů iniciované správcem z [centra pro správu Microsoft 365](https://admin.microsoft.com)
+* **Unsupported end-user operations**
+   * Any end user resetting their own password by using PowerShell version 1, version 2, or the Azure AD Graph API
+* **Unsupported administrator operations**
+   * Any administrator-initiated end-user password reset from PowerShell version 1, version 2, or the Azure AD Graph API
+   * Any administrator-initiated end-user password reset from the [Microsoft 365 admin center](https://admin.microsoft.com)
 
 > [!WARNING]
-> Pomocí zaškrtávacího políčka Uživatel musí změnit heslo při příštím přihlášení v místních nástrojích pro správu služby Active Directory, jako jsou uživatelé a počítače služby Active Directory, nebo Centrum správy služby Active Directory není podporována. Při změně místního hesla tuto možnost nekontrolujte.
+> Use of the checkbox "User must change password at next logon" in on-premises Active Directory administrative tools like Active Directory Users and Computers or the Active Directory Administrative Center is supported as a preview feature of Azure AD Connect. For more information, see the article, [Implement password hash synchronization with Azure AD Connect sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Povolení zpětného zápisu hesla pomocí kurzu: [Povolení zpětného zápisu hesla](tutorial-enable-writeback.md)
+Enable password writeback using the Tutorial: [Enabling password writeback](tutorial-enable-writeback.md)

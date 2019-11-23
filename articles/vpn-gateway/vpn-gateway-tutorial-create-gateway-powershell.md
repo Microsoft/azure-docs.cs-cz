@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN Gateway: vytvoření a správa brány: kurz'
+title: Tutorial - Create and manage a gateway using Azure VPN Gateway
 description: Kurz – Vytvoření a správa brány VPN pomocí modulu Azure PowerShell
 services: vpn-gateway
 author: cherylmc
@@ -7,20 +7,20 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 80fd4d707b8335d4edcc5a660569d25886054b6f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b144a70ee88138966d9cc38a56e1cff1e63fca1b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151834"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74424143"
 ---
-# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Kurz: vytvoření a Správa služby VPN Gateway pomocí PowerShellu
+# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Tutorial: Create and manage a VPN gateway using PowerShell
 
 Brány VPN Azure poskytují propojení různých míst mezi zákazníkem a Azure. Tento kurz se zabývá základními položkami nasazení brány VPN Azure, jako je vytvoření a správa brány VPN. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření brány VPN
-> * Zobrazení veřejné IP adresy
+> * Vytvořit bránu VPN
+> * View the public IP address
 > * Změna velikosti brány VPN
 > * Resetování brány VPN
 
@@ -36,7 +36,7 @@ Následující diagram ukazuje virtuální síť a bránu VPN vytvořené v rám
 
 ## <a name="common-network-parameter-values"></a>Společné hodnoty parametrů sítě
 
-Níže jsou uvedené hodnoty parametrů používané v tomto kurzu. V příkladech se proměnné převádějí na následující:
+Below are the parameter values used for this tutorial. In the examples, the variables translate to the following:
 
 ```
 #$RG1         = The name of the resource group
@@ -55,7 +55,7 @@ Níže jsou uvedené hodnoty parametrů používané v tomto kurzu. V příklade
 #$GwIPConf1   = The name of the IP configuration
 ```
 
-Změňte hodnoty níže na základě vašeho prostředí a nastavení sítě a potom zkopírujte a vložte, abyste nastavili proměnné pro tento kurz. Pokud vypršel časový limit relace Cloud Shell nebo potřebujete použít jiné okno prostředí PowerShell, zkopírujte a vložte proměnné do nové relace a pokračujte v tomto kurzu.
+Change the values below based on your environment and network setup, then copy and paste to set the variables for this tutorial. If your Cloud Shell session times out, or you need to use a different PowerShell window, copy and paste the variables to your new session and continue the tutorial.
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"
@@ -76,7 +76,7 @@ $GwIPConf1   = "gwipconf1"
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupinu prostředků je potřeba vytvořit jako první. V následujícím příkladu se vytvoří skupina prostředků *TestRG1* v oblasti *USA – východ*:
+Create a resource group with the [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) command. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupinu prostředků je potřeba vytvořit jako první. V následujícím příkladu se vytvoří skupina prostředků *TestRG1* v oblasti *USA – východ*:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
@@ -84,7 +84,7 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Brána VPN Azure poskytuje pro vaši virtuální síť propojení různých míst a funkce serveru VPN typu Point-to-Site. Přidejte bránu VPN do existující virtuální sítě nebo vytvořte novou virtuální síť a bránu. Všimněte si, že příklad určuje konkrétně název podsítě brány. Je-li třeba, aby správně fungovala, je nutné zadat název podsítě brány jako "GatewaySubnet". Tento příklad vytvoří novou virtuální síť se třemi podsítěmi: front-end, back-end a GatewaySubnet pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
+Brána VPN Azure poskytuje pro vaši virtuální síť propojení různých míst a funkce serveru VPN typu Point-to-Site. Přidejte bránu VPN do existující virtuální sítě nebo vytvořte novou virtuální síť a bránu. Notice that the example specifies the name of the gateway subnet specifically. You must always specify the name of the gateway subnet as "GatewaySubnet" in order for it to function properly. This example creates a new virtual network with three subnets: Frontend, Backend, and GatewaySubnet using [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) and [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
@@ -100,7 +100,7 @@ $vnet   = New-AzVirtualNetwork `
 
 ## <a name="request-a-public-ip-address-for-the-vpn-gateway"></a>Vyžádání veřejné IP adresy pro bránu VPN
 
-Brány VPN Azure komunikují s místními zařízeními VPN přes internet za účelem provádění vyjednávání protokolu IKE (Internet Key Exchange) a vytváření tunelů IPsec. Vytvořte a přiřaďte k bráně VPN veřejnou IP adresu, jak je znázorněno v následujícím příkladu s [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) a [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig):
+Brány VPN Azure komunikují s místními zařízeními VPN přes internet za účelem provádění vyjednávání protokolu IKE (Internet Key Exchange) a vytváření tunelů IPsec. Create and assign a public IP address to your VPN gateway as shown in the example below with [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) and [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig):
 
 > [!IMPORTANT]
 > V současné době můžete pro bránu použít pouze dynamickou veřejnou IP adresu. Statickou IP adresu brány VPN Azure nepodporují.
@@ -114,9 +114,9 @@ $gwipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 `
               -Subnet $subnet -PublicIpAddress $gwpip
 ```
 
-## <a name="create-a-vpn-gateway"></a>Vytvoření brány VPN
+## <a name="create-a-vpn-gateway"></a>Vytvořit bránu VPN
 
-Vytvoření brány VPN může trvat 45 minut nebo déle. Po dokončení vytváření brány můžete vytvořit propojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo můžete vytvořit propojení mezi vaší virtuální sítí a místním umístěním. Pomocí rutiny [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) vytvořte bránu VPN.
+Vytvoření brány VPN může trvat 45 minut nebo déle. Po dokončení vytváření brány můžete vytvořit propojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo můžete vytvořit propojení mezi vaší virtuální sítí a místním umístěním. Create a VPN gateway using the [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) cmdlet.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
@@ -127,26 +127,26 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 Klíčové hodnoty parametrů:
 * GatewayType: Pro připojení typu Site-to-Site a VNet-to-VNet použijte **Vpn**.
 * VpnType: Pokud chcete komunikovat s širší škálou zařízení VPN a získat další funkce směrování, použijte **RouteBased**.
-* GatewaySku: **VpnGw1** je výchozí hodnota. Pokud potřebujete vyšší propustnost nebo více připojení, změňte ji na jinou SKU VpnGw. Další informace najdete v části [Skladové jednotky (SKU) brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+* GatewaySku: **VpnGw1** is the default; change it to another VpnGw SKU if you need higher throughputs or more connections. Další informace najdete v části [Skladové jednotky (SKU) brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-Pokud používáte TryIt, vaše relace může vyprší časový limit. To je OK. Brána se pořád vytvoří.
+If you are using the TryIt, your session may time out. That's OK. The gateway will still create.
 
 Po dokončení vytváření brány můžete vytvořit propojení mezi vaší virtuální sítí a jinou virtuální sítí nebo propojení mezi vaší virtuální sítí a místním umístěním. Můžete také nakonfigurovat připojení typu Point-to-Site z klientského počítače k vaší virtuální síti.
 
-## <a name="view-the-gateway-public-ip-address"></a>Zobrazení veřejné IP adresy brány
+## <a name="view-the-gateway-public-ip-address"></a>View the gateway public IP address
 
-Pokud znáte název veřejné IP adresy, použijte [příkaz Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) k zobrazení veřejné IP adresy přiřazené k bráně.
+If you know the name of the public IP address, use [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) to show the public IP address assigned to the gateway.
 
-Pokud vypršel časový limit relace, zkopírujte do nové relace společné síťové parametry od začátku tohoto kurzu a pokračujte a pokračujte.
+If your session timed out, copy the common network parameters from the beginning of this tutorial into your new session and proceed, then proceed.
 
 ```azurepowershell-interactive
 $myGwIp = Get-AzPublicIpAddress -Name $GwIP1 -ResourceGroup $RG1
 $myGwIp.IpAddress
 ```
 
-## <a name="resize-a-gateway"></a>Změna velikosti brány
+## <a name="resize-a-gateway"></a>Resize a gateway
 
-Po vytvoření brány VPN můžete změnit její skladovou položku. Různé skladové položky brány podporují různé specifikace, jako jsou propustnosti, počet připojení atd. Následující příklad používá [změnu velikosti – AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) pro změnu velikosti brány z VpnGw1 na VpnGw2. Další informace najdete v části [Skladové jednotky (SKU) brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+Po vytvoření brány VPN můžete změnit její skladovou položku. Different gateway SKUs support different specifications such as throughputs, number of connections, etc. The following example uses [Resize-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) to resize your gateway from VpnGw1 to VpnGw2. Další informace najdete v části [Skladové jednotky (SKU) brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
@@ -155,9 +155,9 @@ Resize-AzVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gatewa
 
 Změna velikosti brány VPN také trvá přibližně 30 až 45 minut, i když tato operace **nepřeruší** ani neodebere stávající připojení a konfigurace.
 
-## <a name="reset-a-gateway"></a>Resetování brány
+## <a name="reset-a-gateway"></a>Reset a gateway
 
-V rámci postupu při řešení potíží můžete bránu VPN Azure resetovat a vynutit tak restartování konfigurací tunelů IPsec/IKE. K resetování brány použijte [reset-AzVirtualNetworkGateway](/powershell/module/az.network/Reset-azVirtualNetworkGateway) .
+V rámci postupu při řešení potíží můžete bránu VPN Azure resetovat a vynutit tak restartování konfigurací tunelů IPsec/IKE. Use [Reset-AzVirtualNetworkGateway](/powershell/module/az.network/Reset-azVirtualNetworkGateway) to reset your gateway.
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
@@ -168,9 +168,9 @@ Další informace najdete v tématu [Resetování brány VPN](vpn-gateway-resetg
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se chystáte o [Další kurz](vpn-gateway-tutorial-vpnconnection-powershell.md), budete chtít tyto prostředky zachovat, protože se jedná o požadavky.
+If you're advancing to the [next tutorial](vpn-gateway-tutorial-vpnconnection-powershell.md), you will want to keep these resources because they are the prerequisites.
 
-Pokud je ale brána součástí nasazení prototypu, testu nebo testování konceptu, můžete k odebrání skupiny prostředků, brány VPN a všech souvisejících prostředků použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
+However, if the gateway is part of a prototype, test, or proof-of-concept deployment, you can use the [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) command to remove the resource group, the VPN gateway, and all related resources.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $RG1
@@ -181,8 +181,8 @@ Remove-AzResourceGroup -Name $RG1
 V tomto kurzu jste se dozvěděli o základních úkolech při vytváření a správě brány VPN, jako jsou:
 
 > [!div class="checklist"]
-> * Vytvoření brány VPN
-> * Zobrazení veřejné IP adresy
+> * Vytvořit bránu VPN
+> * View the public IP address
 > * Změna velikosti brány VPN
 > * Resetování brány VPN
 

@@ -1,88 +1,88 @@
 ---
-title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – .NET'
-description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro .NET vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
+title: 'Quickstart: Azure Blob storage library v12 - .NET'
+description: In this quickstart, you learn how to use the Azure Blob storage client library version 12 for .NET to create a container and a blob in Blob (object) storage. Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 18f4053a2f8b1b5c880b46cf6eeb46c0dbf97f15
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8a4ebf6c2ddf3e361e306ae37ad8dabb052e0efc
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825398"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423991"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro .NET
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Quickstart: Azure Blob storage client library v12 for .NET
 
-Začněte s klientskou knihovnou V12 Azure Blob Storage pro .NET. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+Get started with the Azure Blob storage client library v12 for .NET. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Follow steps to install the package and try out example code for basic tasks. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
 
 > [!NOTE]
-> Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Klientská knihovna pro Azure Blob Storage pro .NET](storage-quickstart-blobs-dotnet-legacy.md).
+> To get started with the previous SDK version, see [Quickstart: Azure Blob storage client library for .NET](storage-quickstart-blobs-dotnet-legacy.md).
 
-Použijte klientskou knihovnu služby Azure Blob Storage V12 pro .NET pro:
+Use the Azure Blob storage client library v12 for .NET to:
 
 * Vytvoření kontejneru
-* Nahrání objektu blob do Azure Storage
-* Výpis všech objektů BLOB v kontejneru
-* Stažení objektu blob do místního počítače
+* Upload a blob to Azure Storage
+* List all of the blobs in a container
+* Download the blob to your local computer
 * Odstranění kontejneru
 
-[Referenční dokumentace k rozhraní API](/dotnet/api/azure.storage.blobs) | [ukázka | ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) [(NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/12.0.0)
+[API reference documentation](/dotnet/api/azure.storage.blobs) | [Library source code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/12.0.0) | [Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Aktuální [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém. Ujistěte se, že jste získali sadu SDK a ne modul runtime.
+* Azure subscription - [create one for free](https://azure.microsoft.com/free/)
+* Azure storage account - [create a storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Current [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) for your operating system. Be sure to get the SDK and not the runtime.
 
-## <a name="setting-up"></a>Nastavení
+## <a name="setting-up"></a>Setting up
 
-Tato část vás provede přípravou projektu pro práci s klientskou knihovnou služby Azure Blob Storage V12 for .NET.
+This section walks you through preparing a project to work with the Azure Blob storage client library v12 for .NET.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci .NET Core s názvem *BlobQuickstartV12*.
+Create a .NET Core application named *BlobQuickstartV12*.
 
-1. V okně konzoly (například cmd, PowerShell nebo bash) použijte příkaz `dotnet new` a vytvořte novou konzolovou aplikaci s názvem *BlobQuickstartV12*. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: *program.cs*.
+1. In a console window (such as cmd, PowerShell, or Bash), use the `dotnet new` command to create a new console app with the name *BlobQuickstartV12*. This command creates a simple "Hello World" C# project with a single source file: *Program.cs*.
 
    ```console
    dotnet new console -n BlobQuickstartV12
    ```
 
-1. Přepněte do nově vytvořeného adresáře *BlobQuickstartV12* .
+1. Switch to the newly created *BlobQuickstartV12* directory.
 
    ```console
    cd BlobQuickstartV12
    ```
 
-1. Na straně adresáře *BlobQuickstartV12* vytvořte další adresář s názvem *data*. V tomto umístění se vytvoří a uloží datové soubory objektů BLOB.
+1. In side the *BlobQuickstartV12* directory, create another directory called *data*. This is where the blob data files will be created and stored.
 
     ```console
     mkdir data
     ```
 
-### <a name="install-the-package"></a>Instalace balíčku
+### <a name="install-the-package"></a>Install the package
 
-Ještě pořád v adresáři aplikace nainstalujte klientskou knihovnu pro Azure Blob Storage pro balíček .NET pomocí příkazu `dotnet add package`.
+While still in the application directory, install the Azure Blob storage client library for .NET package by using the `dotnet add package` command.
 
 ```console
 dotnet add package Azure.Storage.Blobs
 ```
 
-### <a name="set-up-the-app-framework"></a>Nastavení aplikační architektury
+### <a name="set-up-the-app-framework"></a>Set up the app framework
 
-Z adresáře projektu:
+From the project directory:
 
-1. V editoru otevřete soubor *program.cs*
-1. Odebrání příkazu `Console.WriteLine("Hello World!");`
-1. Přidat direktivy `using`
-1. Aktualizace deklarace `Main` metody pro podporu asynchronního kódu
+1. Open the *Program.cs* file in your editor
+1. Remove the `Console.WriteLine("Hello World!");` statement
+1. Add `using` directives
+1. Update the `Main` method declaration to support async code
 
-Zde je kód:
+Here's the code:
 
 ```csharp
 using Azure.Storage;
@@ -103,80 +103,43 @@ namespace BlobQuickstartV12
 }
 ```
 
-### <a name="copy-your-credentials-from-the-azure-portal"></a>Zkopírování přihlašovacích údajů z webu Azure Portal
+[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-Když ukázková aplikace odešle požadavek na Azure Storage, musí být ověřena. K autorizaci žádosti přidejte do aplikace přihlašovací údaje účtu úložiště jako připojovací řetězec. Přihlašovací údaje účtu úložiště zobrazíte pomocí následujícího postupu:
+## <a name="object-model"></a>Object model
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyhledejte svůj účet úložiště.
-3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**. Tady se zobrazí přístupové klíče vašeho účtu a úplný připojovací řetězec pro jednotlivé klíče.
-4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a výběrem tlačítka **Kopírovat** zkopírujte připojovací řetězec. V dalším kroku přidáte hodnotu připojovacího řetězce do proměnné prostředí.
+Azure Blob storage is optimized for storing massive amounts of unstructured data. Unstructured data is data that does not adhere to a particular data model or definition, such as text or binary data. Blob storage offers three types of resources:
 
-    ![Snímek obrazovky ukazující zkopírování připojovacího řetězce z webu Azure Portal](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
-
-### <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
-
-Po zkopírování připojovacího řetězce ho zapište do nové proměnné prostředí na místním počítači, na kterém aplikaci spouštíte. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` skutečným připojovacím řetězcem.
-
-#### <a name="windows"></a>Windows
-
-```cmd
-setx CONNECT_STR "<yourconnectionstring>"
-```
-
-Po přidání proměnné prostředí v systému Windows je nutné spustit novou instanci příkazového okna.
-
-#### <a name="linux"></a>Linux
-
-```bash
-export CONNECT_STR="<yourconnectionstring>"
-```
-
-#### <a name="macos"></a>macOS
-
-```bash
-export CONNECT_STR="<yourconnectionstring>"
-```
-
-#### <a name="restart-programs"></a>Restartovat programy
-
-Po přidání proměnné prostředí restartujte všechny spuštěné programy, které budou muset číst proměnnou prostředí. Před pokračováním například restartujte vývojové prostředí nebo editor.
-
-## <a name="object-model"></a>Objektový model
-
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Nestrukturovaná data jsou data, která nevyhovují konkrétnímu datovému modelu nebo definici, jako jsou textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
-
-* Účet úložiště
-* Kontejner v účtu úložiště
-* Objekt BLOB v kontejneru
+* The storage account
+* A container in the storage account
+* A blob in the container
 
 Na následujícím diagramu jsou vztahy těchto prostředků.
 
-![Diagram architektury služby Blob Storage](./media/storage-blob-introduction/blob1.png)
+![Diagram of Blob storage architecture](./media/storage-blob-introduction/blob1.png)
 
-Pro interakci s těmito prostředky použijte následující třídy .NET:
+Use the following .NET classes to interact with these resources:
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): třída `BlobServiceClient` umožňuje manipulovat s prostředky Azure Storage a kontejnery objektů BLOB.
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): třída `BlobContainerClient` umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): třída `BlobClient` umožňuje manipulovat s objekty blob Azure Storage.
-* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): třída `BlobDownloadInfo` představuje vlastnosti a obsah vrácený stažením objektu BLOB.
+* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): The `BlobServiceClient` class allows you to manipulate Azure Storage resources and blob containers.
+* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): The `BlobContainerClient` class allows you to manipulate Azure Storage containers and their blobs.
+* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): The `BlobClient` class allows you to manipulate Azure Storage blobs.
+* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): The `BlobDownloadInfo` class represents the properties and content returned from downloading a blob.
 
-## <a name="code-examples"></a>Příklady kódu
+## <a name="code-examples"></a>Code examples
 
-Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s klientskou knihovnou služby Azure Blob Storage pro .NET:
+These example code snippets show you how to perform the following with the Azure Blob storage client library for .NET:
 
-* [Získání připojovacího řetězce](#get-the-connection-string)
-* [Vytvoření kontejneru](#create-a-container)
-* [Nahrání objektů blob do kontejneru](#upload-blobs-to-a-container)
-* [Výpis objektů BLOB v kontejneru](#list-the-blobs-in-a-container)
-* [Stáhnout objekty blob](#download-blobs)
+* [Get the connection string](#get-the-connection-string)
+* [Create a container](#create-a-container)
+* [Upload blobs to a container](#upload-blobs-to-a-container)
+* [List the blobs in a container](#list-the-blobs-in-a-container)
+* [Download blobs](#download-blobs)
 * [Odstranění kontejneru](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>Získání připojovacího řetězce
 
-Následující kód načte připojovací řetězec pro účet úložiště z proměnné prostředí vytvořené v oddílu [konfigurace vašeho připojovacího řetězce úložiště](#configure-your-storage-connection-string) .
+The code below retrieves the connection string for the storage account from the environment variable created in the [Configure your storage connection string](#configure-your-storage-connection-string) section.
 
-Přidejte tento kód do metody `Main`:
+Add this code inside the `Main` method:
 
 ```csharp
 Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
@@ -192,14 +155,14 @@ string connectionString = Environment.GetEnvironmentVariable("CONNECT_STR");
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
-Určete název nového kontejneru. Následující kód připojí hodnotu identifikátoru GUID k názvu kontejneru, aby bylo zajištěno, že je jedinečný.
+Decide on a name for the new container. The code below appends a GUID value to the container name to ensure that it is unique.
 
 > [!IMPORTANT]
 > Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Vytvořte instanci třídy [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) . Pak zavolejte metodu [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) a vytvořte kontejner v účtu úložiště.
+Create an instance of the [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) class. Then, call the [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) method to create the container in your storage account.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```csharp
 // Create a BlobServiceClient object which will be used to create a container client
@@ -212,15 +175,15 @@ string containerName = "quickstartblobs" + Guid.NewGuid().ToString();
 BlobContainerClient containerClient = await blobServiceClient.CreateBlobContainerAsync(containerName);
 ```
 
-### <a name="upload-blobs-to-a-container"></a>Nahrání objektů blob do kontejneru
+### <a name="upload-blobs-to-a-container"></a>Upload blobs to a container
 
-Následující fragment kódu:
+The following code snippet:
 
-1. Vytvoří textový soubor v místním *datovém* adresáři.
-1. Získá odkaz na objekt [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) voláním metody [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) na kontejneru z oddílu [vytvoření kontejneru](#create-a-container) .
-1. Nahraje místní textový soubor do objektu BLOB voláním metody [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) . Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
+1. Creates a text file in the local *data* directory.
+1. Gets a reference to a [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) object by calling the [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) method on the container from the [Create a container](#create-a-container) section.
+1. Uploads the local text file to the blob by calling the [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) method. Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```csharp
 // Create a local file in the ./data/ directory for uploading and downloading
@@ -244,9 +207,9 @@ uploadFileStream.Close();
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Seznam objektů BLOB v kontejneru zavoláním metody [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) . V tomto případě byl do kontejneru přidán pouze jeden objekt blob, takže operace výpisu vrátí pouze jeden objekt BLOB.
+List the blobs in the container by calling the [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) method. In this case, only one blob has been added to the container, so the listing operation returns just that one blob.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```csharp
 Console.WriteLine("Listing blobs...");
@@ -260,9 +223,9 @@ await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
 
 ### <a name="download-blobs"></a>Stáhnout objekty blob
 
-Stáhněte dřív vytvořený objekt BLOB voláním metody [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) . Vzorový kód přidá příponu "stažený" do názvu souboru, aby bylo možné zobrazit oba soubory v místním systému souborů.
+Download the previously created blob by calling the [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) method. The example code adds a suffix of "DOWNLOADED" to the file name so that you can see both files in local file system.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```csharp
 // Download the blob to a local file
@@ -281,11 +244,11 @@ downloadFileStream.Close();
 
 ### <a name="delete-a-container"></a>Odstranění kontejneru
 
-Následující kód vyčistí prostředky, které aplikace vytvořila, odstraněním celého kontejneru pomocí [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync). Odstraní také místní soubory vytvořené aplikací.
+The following code cleans up the resources the app created by deleting the entire container by using [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync). It also deletes the local files created by the app.
 
-Aplikace pozastaví vstup uživatele voláním `Console.ReadLine` předtím, než odstraní objekt blob, kontejner a místní soubory. Tato možnost je vhodná pro ověření, že prostředky byly ve skutečnosti vytvořeny správně, než byly odstraněny.
+The app pauses for user input by calling `Console.ReadLine` before it deletes the blob, container, and local files. This is a good chance to verify that the resources were actually created correctly, before they are deleted.
 
-Přidejte tento kód na konec metody `Main`:
+Add this code to the end of the `Main` method:
 
 ```csharp
 // Clean up
@@ -304,9 +267,9 @@ Console.WriteLine("Done");
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Tato aplikace vytvoří testovací soubor v místní složce *dokumenty* a nahraje ho do úložiště objektů BLOB. Příklad zobrazí seznam objektů BLOB v kontejneru a stáhne soubor s novým názvem, abyste mohli porovnat staré a nové soubory.
+This app creates a test file in your local *MyDocuments* folder and uploads it to Blob storage. The example then lists the blobs in the container and downloads the file with a new name so that you can compare the old and new files.
 
-Přejděte do adresáře aplikace a pak Sestavte a spusťte aplikaci.
+Navigate to your application directory, then build and run the application.
 
 ```console
 dotnet build
@@ -316,7 +279,7 @@ dotnet build
 dotnet run
 ```
 
-Výstup aplikace je podobný následujícímu příkladu:
+The output of the app is similar to the following example:
 
 ```output
 Azure Blob storage v12 - .NET quickstart sample
@@ -336,18 +299,18 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-Než zahájíte proces vyčištění, vyhledejte tyto dva soubory ve složce *dokumenty* . Můžete je otevřít a podívat se, že jsou identické.
+Before you begin the clean up process, check your *MyDocuments* folder for the two files. Můžete je otevřít a podívat se, že jsou identické.
 
-Po ověření souborů stiskněte klávesu **ENTER** , aby se odstranily soubory testu, a dokončete ukázku.
+After you've verified the files, press the **Enter** key to delete the test files and finish the demo.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty blob pomocí .NET.
 
-Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
+To see Blob storage sample apps, continue to:
 
 > [!div class="nextstepaction"]
-> [Ukázky rozhraní .NET V12 pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+> [Azure Blob storage SDK v12 .NET samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
 
-* Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu [Azure pro vývojáře na platformě .NET a .NET Core](/dotnet/azure/).
+* For tutorials, samples, quick starts and other documentation, visit [Azure for .NET and .NET Core developers](/dotnet/azure/).
 * Další informace o .NET Core najdete v tématu [Začínáme s .NET během 10 minut](https://www.microsoft.com/net/learn/get-started/).

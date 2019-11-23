@@ -1,6 +1,6 @@
 ---
-title: Co je identita zařízení v Azure Active Directory?
-description: Přečtěte si, jak vám Správa identit zařízení může pomáhat při správě zařízení, která přistupují k prostředkům ve vašem prostředí.
+title: What is device identity in Azure Active Directory?
+description: Learn how device identity management can help you to manage the devices that are accessing resources in your environment.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,77 +11,77 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c1d6e3c622a76a1e625962ad5f08d414ad8cef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b56319579bc8766bbd8467296daf41e25fc31862
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175041"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420509"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
-Díky rozšiřování zařízení všech tvarů a velikostí a pojmu Přineste si vlastní zařízení (BYOD) se profesionálům v oblasti IT setkávají se dvěma trochu protichůdnými cíli:
+With the proliferation of devices of all shapes and sizes and the Bring Your Own Device (BYOD) concept, IT professionals are faced with two somewhat opposing goals:
 
-- Umožnění produktivity koncových uživatelů bez ohledu na to, kdy
-- Ochrana prostředků organizace
+- Allow end users to be productive wherever and whenever
+- Protect the organization's assets
 
-Pro ochranu těchto prostředků musí IT pracovníci nejdřív spravovat identity zařízení. Zaměstnanci IT můžou sestavovat identitu zařízení pomocí nástrojů, jako je Microsoft Intune, abyste zajistili splnění standardů zabezpečení a dodržování předpisů. Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k zařízením, aplikacím a službám odkudkoli přes tato zařízení.
+To protect these assets, IT staff need to first manage the device identities. IT staff can build on the device identity with tools like Microsoft Intune to ensure standards for security and compliance are met. Azure Active Directory (Azure AD) enables single sign-on to devices, apps, and services from anywhere through these devices.
 
-- Uživatelé získají přístup k potřebným prostředkům vaší organizace. 
-- Vaši pracovníci IT získají ovládací prvky, které potřebují k zabezpečení vaší organizace.
+- Your users get access to your organization's assets they need. 
+- Your IT staff get the controls they need to secure your organization.
 
-Správa identit zařízení je základem pro [podmíněný přístup na základě zařízení](../conditional-access/require-managed-devices.md). Pomocí zásad podmíněného přístupu na základě zařízení můžete zajistit, aby byl přístup k prostředkům ve vašem prostředí možný jenom se spravovanými zařízeními.
+Device identity management is the foundation for [device-based Conditional Access](../conditional-access/require-managed-devices.md). With device-based Conditional Access policies, you can ensure that access to resources in your environment is only possible with managed devices.
 
-## <a name="getting-devices-in-azure-ad"></a>Získávají se zařízení v Azure AD.
+## <a name="getting-devices-in-azure-ad"></a>Getting devices in Azure AD
 
-Pokud chcete v Azure AD získat zařízení, máte několik možností:
+To get a device in Azure AD, you have multiple options:
 
-- **Registrace Azure AD**
-   - Zařízení, která jsou registrovaná v Azure AD, jsou obvykle osobně vlastněná nebo mobilní zařízení a jsou přihlášená pomocí osobního účet Microsoft nebo jiného místního účtu.
+- **Azure AD registered**
+   - Devices that are Azure AD registered are typically personally owned or mobile devices, and are signed into with a personal Microsoft account or another local account.
       - Windows 10
       - iOS
       - Android
       - MacOS
-- **Připojeno k Azure AD**
-   - Zařízení, která jsou připojená k Azure AD, jsou vlastněna organizací a přihlásili jste se k účtu Azure AD patřícímu do této organizace. Existují jenom v cloudu.
+- **Azure AD joined**
+   - Devices that are Azure AD joined are owned by an organization, and are signed in to with an Azure AD account belonging to that organization. They exist only in the cloud.
       - Windows 10 
 - **k hybridní službě Azure AD**.
-   - Zařízení, která jsou připojená k hybridní službě Azure AD, jsou vlastněna organizací a přihlásili jste se k účtu Azure AD patřícímu do této organizace. Existují v cloudu i v místním prostředí.
-      - Windows 7, 8,1 nebo 10
-      - Windows Server 2008 nebo novější
+   - Devices that are hybrid Azure AD joined are owned by an organization, and are signed in to with an Azure AD account belonging to that organization. They exist in the cloud and on-premises.
+      - Windows 7, 8.1, or 10
+      - Windows Server 2008 or newer
 
-![Zařízení zobrazená v okně zařízení Azure AD](./media/overview/azure-ad-devices-all-devices-overview.png)
+![Devices displayed in Azure AD Devices blade](./media/overview/azure-active-directory-devices-all-devices.png)
 
 ## <a name="device-management"></a>Správa zařízení
 
-Zařízení ve službě Azure AD je možné spravovat pomocí nástrojů pro správu mobilních zařízení (MDM), jako je Microsoft Intune, System Center Configuration Manager Zásady skupiny (připojení k hybridní službě Azure AD), nástrojů pro správu mobilních aplikací (MAM) nebo jiných nástrojů třetích stran.
+Devices in Azure AD can be managed using Mobile Device Management (MDM) tools like Microsoft Intune, System Center Configuration Manager, Group Policy (hybrid Azure AD join), Mobile Application Management (MAM) tools, or other third-party tools.
 
-## <a name="resource-access"></a>Přístup k prostředkům
+## <a name="resource-access"></a>Resource access
 
-Registrace a spojování umožní uživatelům bezproblémové přihlašování (SSO) ke cloudovým prostředkům a správcům možnost uplatňovat zásady podmíněného přístupu na tyto prostředky. 
+Registering and joining give your users Seamless Sign-on (SSO) to cloud resources and administrators the ability to apply Conditional Access policies to those resources. 
 
-Zařízení, která jsou připojená k Azure AD nebo hybridní služba Azure AD, využívají výhody jednotného přihlašování k místním prostředkům vaší organizace i k prostředkům cloudu. Další informace najdete v článku [o tom, jak jednotné přihlašování k místním prostředkům funguje na zařízeních připojených k Azure AD](azuread-join-sso.md).
+Devices that are Azure AD joined or hybrid Azure AD joined benefit from SSO to your organization's on-premises resources as well as cloud resources. More information can be found in the article, [How SSO to on-premises resources works on Azure AD joined devices](azuread-join-sso.md).
 
 ## <a name="device-security"></a>Zabezpečení zařízení
 
-- **Zařízení registrovaná v Azure AD** využívají účet spravovaný koncovým uživatelem, tento účet je účet Microsoft nebo jiné místně spravované přihlašovací údaje, které jsou zabezpečené pomocí jedné nebo několika z následujících možností.
+- **Azure AD registered devices** utilize an account managed by the end user, this account is either a Microsoft account or another locally managed credential secured with one or more of the following.
    - Heslo
-   - KOTVICÍ
+   - PIN
    - Vzor
    - Windows Hello
-- **Připojené služby Azure AD nebo zařízení připojená k hybridní službě Azure AD** využívají účet organizace ve službě Azure AD, který je zabezpečený pomocí jedné nebo několika z následujících možností.
+- **Azure AD joined or hybrid Azure AD joined devices** utilize an organizational account in Azure AD secured with one or more of the following.
    - Heslo
    - Windows Hello pro firmy
 
 ## <a name="provisioning"></a>Zřizování
 
-Získání zařízení v rámci služby Azure AD se dá provádět samoobslužným způsobem nebo řízeným procesem zřizování správců.
+Getting devices in to Azure AD can be done in a self-service manner or a controlled provisioning process by administrators.
 
 ## <a name="summary"></a>Souhrn
 
-Správa identit zařízení ve službě Azure AD vám umožní:
+With device identity management in Azure AD, you can:
 
-- Zjednodušení procesu zavedení a správy zařízení v Azure AD
+- Simplify the process of bringing and managing devices in Azure AD
 - Poskytnout uživatelům snadný přístup ke cloudovým prostředkům vaší organizace
 
 ## <a name="license-requirements"></a>Licenční požadavky
@@ -90,8 +90,8 @@ Správa identit zařízení ve službě Azure AD vám umožní:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [zařízeních registrovaných v Azure AD](concept-azure-ad-register.md)
-- Další informace o [zařízeních připojených k Azure AD](concept-azure-ad-join.md)
-- Další informace o [zařízeních připojených k hybridní službě Azure AD](concept-azure-ad-join-hybrid.md)
-- Přehled správy identit zařízení v Azure Portal najdete v tématu [Správa identit zařízení pomocí Azure Portal](device-management-azure-portal.md).
-- Další informace o podmíněném přístupu na základě zařízení najdete v tématu [Konfigurace zásad podmíněného přístupu na základě zařízení Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Learn more about [Azure AD registered devices](concept-azure-ad-register.md)
+- Learn more about [Azure AD joined devices](concept-azure-ad-join.md)
+- Learn more about [hybrid Azure AD joined devices](concept-azure-ad-join-hybrid.md)
+- To get an overview of how to manage device identities in the Azure portal, see [Managing device identities using the Azure portal](device-management-azure-portal.md).
+- To learn more about device-based Conditional Access, see [Configure Azure Active Directory device-based Conditional Access policies](../conditional-access/require-managed-devices.md).

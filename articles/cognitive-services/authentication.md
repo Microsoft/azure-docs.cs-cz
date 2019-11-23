@@ -1,59 +1,59 @@
 ---
-title: Ověřování
+title: Ověření
 titleSuffix: Azure Cognitive Services
-description: 'Existují tři způsoby, jak ověřit požadavek na prostředek služby Azure Cognitive Services: klíč předplatného, nosný token nebo předplatné s více službami. V tomto článku se dozvíte o jednotlivých metodách a o tom, jak vytvořit žádost.'
+description: "There are three ways to authenticate a request to an Azure Cognitive Services resource: a subscription key, a bearer token, or a multi-service subscription. In this article, you'll learn about each method, and how to make a request."
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276781"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423942"
 ---
-# <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověřování požadavků do Azure Cognitive Services
+# <a name="authenticate-requests-to-azure-cognitive-services"></a>Authenticate requests to Azure Cognitive Services
 
-Každý požadavek na službu rozpoznávání Azure musí obsahovat hlavičku ověřování. Tato hlavička se předává na klíč předplatného nebo přístupového tokenu, který se používá k ověření předplatného služby nebo skupiny služeb. V tomto článku se dozvíte o třech způsobech ověření žádosti a požadavků na jednotlivé služby.
+Each request to an Azure Cognitive Service must include an authentication header. This header passes along a subscription key or access token, which is used to validate your subscription for a service or group of services. In this article, you'll learn about three ways to authenticate a request and the requirements for each.
 
-* [Ověřování pomocí klíče předplatného s jednou službou](#authenticate-with-a-single-service-subscription-key)
-* [Ověřování pomocí klíče předplatného s více službami](#authenticate-with-a-multi-service-subscription-key)
-* [Ověřování pomocí tokenu](#authenticate-with-an-authentication-token)
-* [Ověřování pomocí Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
+* [Authenticate with a single-service subscription key](#authenticate-with-a-single-service-subscription-key)
+* [Authenticate with a multi-service subscription key](#authenticate-with-a-multi-service-subscription-key)
+* [Authenticate with a token](#authenticate-with-an-authentication-token)
+* [Authenticate with Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Před vytvořením žádosti potřebujete účet Azure a předplatné Azure Cognitive Services. Pokud již účet máte, přejděte k další části a přejděte k dalšímu oddílu. Pokud účet nemáte, máme průvodce, který vám pomůže s nastavením během několika minut: [Vytvořte účet Cognitive Services pro Azure](cognitive-services-apis-create-account.md).
+Before you make a request, you need an Azure account and an Azure Cognitive Services subscription. If you already have an account, go ahead and skip to the next section. If you don't have an account, we have a guide to get you set up in minutes: [Create a Cognitive Services account for Azure](cognitive-services-apis-create-account.md).
 
-Klíč předplatného můžete získat z [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) po vytvoření účtu nebo aktivaci [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/my-apis).
+You can get your subscription key from the [Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) after creating your account, or activating a [free trial](https://azure.microsoft.com/try/cognitive-services/my-apis).
 
-## <a name="authentication-headers"></a>Ověřovací hlavičky
+## <a name="authentication-headers"></a>Authentication headers
 
-Pojďme rychle zkontrolovat hlavičky ověřování, které jsou k dispozici pro použití s Azure Cognitive Services.
+Let's quickly review the authentication headers available for use with Azure Cognitive Services.
 
-| Záhlaví | Popis |
+| Hlavička | Popis |
 |--------|-------------|
-| OCP-Apim-Subscription-Key | Tuto hlavičku použijte k ověření pomocí klíče předplatného pro konkrétní službu nebo klíč předplatného s více službami. |
-| OCP – APIM – předplatné – oblast | Tato hlavička se vyžaduje jenom v případě, že se používá klíč předplatného s více službami s [Translator text API](./Translator/reference/v3-0-reference.md). Pomocí této hlavičky můžete zadat oblast předplatného. |
-| Authorization | Tuto hlavičku použijte v případě, že používáte ověřovací token. Postup pro výměnu tokenu je podrobně popsán v následujících částech. Zadaná hodnota je následující: `Bearer <TOKEN>`. |
+| Ocp-Apim-Subscription-Key | Use this header to authenticate with a subscription key for a specific service or a multi-service subscription key. |
+| Ocp-Apim-Subscription-Region | This header is only required when using a multi-service subscription key with the [Translator Text API](./Translator/reference/v3-0-reference.md). Use this header to specify the subscription region. |
+| Autorizace | Use this header if you are using an authentication token. The steps to perform a token exchange are detailed in the following sections. The value provided follows this format: `Bearer <TOKEN>`. |
 
-## <a name="authenticate-with-a-single-service-subscription-key"></a>Ověřování pomocí klíče předplatného s jednou službou
+## <a name="authenticate-with-a-single-service-subscription-key"></a>Authenticate with a single-service subscription key
 
-První možností je ověřit požadavek pomocí klíče předplatného pro konkrétní službu, například Translator Text. Klíče jsou k dispozici v Azure Portal pro každý prostředek, který jste vytvořili. Chcete-li k ověření požadavku použít klíč předplatného, musí být předán společně s `Ocp-Apim-Subscription-Key` hlavičkou.
+The first option is to authenticate a request with a subscription key for a specific service, like Translator Text. The keys are available in the Azure portal for each resource that you've created. To use a subscription key to authenticate a request, it must be passed along as the `Ocp-Apim-Subscription-Key` header.
 
-Tyto ukázkové požadavky demonstrují, jak `Ocp-Apim-Subscription-Key` používat hlavičku. Mějte na paměti, že při použití této ukázky budete muset zahrnout platný klíč předplatného.
+These sample requests demonstrates how to use the `Ocp-Apim-Subscription-Key` header. Keep in mind, when using this sample you'll need to include a valid subscription key.
 
-Toto je ukázkové volání rozhraní API Bingu pro vyhledávání na webu:
+This is a sample call to the Bing Web Search API:
 ```cURL
 curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pembroke%20Corgis' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Toto je ukázkové volání Translator Text API:
+This is a sample call to the Translator Text API:
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -61,26 +61,26 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-Následující video demonstruje použití Cognitive Servicesho klíče.
+The following video demonstrates using a Cognitive Services key.
 
-## <a name="authenticate-with-a-multi-service-subscription-key"></a>Ověřování pomocí klíče předplatného s více službami
+## <a name="authenticate-with-a-multi-service-subscription-key"></a>Authenticate with a multi-service subscription key
 
 >[!WARNING]
-> V tuto chvíli tyto služby nepodporují klíče s **více službami:** QnA Maker, služba Speech Services, Custom Vision a detektor anomálií.
+> At this time, these services **don't** support multi-service keys: QnA Maker, Speech Services, Custom Vision, and Anomaly Detector.
 
-Tato možnost také používá k ověření požadavků klíč předplatného. Hlavní rozdíl spočívá v tom, že klíč předplatného není vázaný na konkrétní službu, ale jeden klíč lze použít k ověření požadavků na více Cognitive Services. Informace o místní dostupnosti, podporovaných funkcích a cenách najdete v tématu [Cognitive Services ceny](https://azure.microsoft.com/pricing/details/cognitive-services/) .
+This option also uses a subscription key to authenticate requests. The main difference is that a subscription key is not tied to a specific service, rather, a single key can be used to authenticate requests for multiple Cognitive Services. See [Cognitive Services pricing](https://azure.microsoft.com/pricing/details/cognitive-services/) for information about regional availability, supported features, and pricing.
 
-Klíč předplatného je k dispozici v každé `Ocp-Apim-Subscription-Key` žádosti jako záhlaví.
+The subscription key is provided in each request as the `Ocp-Apim-Subscription-Key` header.
 
-[![Ukázka klíče předplatného pro více služeb pro Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
+[![Multi-service subscription key demonstration for Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>Podporované oblasti
 
-Při použití klíče předplatného s více službami k vytvoření požadavku na `api.cognitive.microsoft.com`, musíte zahrnout oblast do adresy URL. Například: `westus.api.cognitive.microsoft.com`.
+When using the multi-service subscription key to make a request to `api.cognitive.microsoft.com`, you must include the region in the URL. Například: `westus.api.cognitive.microsoft.com`.
 
-Při použití klíče předplatného s více službami s Translator text API musíte zadat oblast předplatného s `Ocp-Apim-Subscription-Region` hlavičkou.
+When using multi-service subscription key with the Translator Text API, you must specify the subscription region with the `Ocp-Apim-Subscription-Region` header.
 
-Ověřování více službami je podporované v těchto oblastech:
+Multi-service authentication is supported in these regions:
 
 | | | |
 |-|-|-|
@@ -91,16 +91,16 @@ Ověřování více službami je podporované v těchto oblastech:
 | `westeurope` | `westus` | `westus2` |
 
 
-### <a name="sample-requests"></a>Ukázkové požadavky
+### <a name="sample-requests"></a>Sample requests
 
-Toto je ukázkové volání rozhraní API Bingu pro vyhledávání na webu:
+This is a sample call to the Bing Web Search API:
 
 ```cURL
 curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pembroke%20Corgis' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Toto je ukázkové volání Translator Text API:
+This is a sample call to the Translator Text API:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -110,27 +110,27 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-## <a name="authenticate-with-an-authentication-token"></a>Ověřování pomocí ověřovacího tokenu
+## <a name="authenticate-with-an-authentication-token"></a>Authenticate with an authentication token
 
-Některé služby Azure Cognitive Services akceptují a v některých případech vyžadují ověřovací token. V současné době tyto služby podporují ověřovací tokeny:
+Some Azure Cognitive Services accept, and in some cases require, an authentication token. Currently, these services support authentication tokens:
 
-* Rozhraní API pro překlad textu
-* Služby pro rozpoznávání řeči: Převod řeči na text REST API
-* Služby pro rozpoznávání řeči: REST API převodu textu na řeč
+* Text Translation API
+* Speech Services: Speech-to-text REST API
+* Speech Services: Text-to-speech REST API
 
 >[!NOTE]
-> QnA Maker používá taky autorizační hlavičku, ale vyžaduje klíč koncového bodu. Další informace najdete v tématu [QnA maker: Získejte odpověď od znalostní báze](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md)Knowledge Base.
+> QnA Maker also uses the Authorization header, but requires an endpoint key. For more information, see [QnA Maker: Get answer from knowledge base](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md).
 
 >[!WARNING]
-> Služby, které podporují tokeny ověřování, se můžou v průběhu času měnit, před použitím této metody ověřování prosím zkontrolujte Reference k rozhraní API pro službu.
+> The services that support authentication tokens may change over time, please check the API reference for a service before using this authentication method.
 
-U ověřovacích tokenů se dá vyměňovat jedna služba i klíč předplatného s více službami. Ověřovací tokeny jsou platné po dobu 10 minut.
+Both single service and multi-service subscription keys can be exchanged for authentication tokens. Authentication tokens are valid for 10 minutes.
 
-Tokeny ověřování jsou součástí žádosti jako `Authorization` záhlaví. Zadaná hodnota tokenu musí předcházet `Bearer`, například:. `Bearer YOUR_AUTH_TOKEN`
+Authentication tokens are included in a request as the `Authorization` header. The token value provided must be preceded by `Bearer`, for example: `Bearer YOUR_AUTH_TOKEN`.
 
-### <a name="sample-requests"></a>Ukázkové požadavky
+### <a name="sample-requests"></a>Sample requests
 
-Pomocí této adresy URL můžete vyměňovat klíč předplatného pro ověřovací `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`token:.
+Use this URL to exchange a subscription key for an authentication token: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 ```cURL
 curl -v -X POST \
@@ -140,7 +140,7 @@ curl -v -X POST \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-Tyto oblasti s více službami podporují výměnu tokenů:
+These multi-service regions support token exchange:
 
 | | | |
 |-|-|-|
@@ -150,7 +150,7 @@ Tyto oblasti s více službami podporují výměnu tokenů:
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-Po získání ověřovacího tokenu ho budete muset předat do každého požadavku jako `Authorization` hlavičku. Toto je ukázkové volání Translator Text API:
+After you get an authentication token, you'll need to pass it in each request as the `Authorization` header. This is a sample call to the Translator Text API:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -161,8 +161,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 [!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Co je služba Cognitive Services?](welcome.md)
 * [Ceny služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [Vlastní subdomény](cognitive-services-custom-subdomains.md)
+* [Custom subdomains](cognitive-services-custom-subdomains.md)

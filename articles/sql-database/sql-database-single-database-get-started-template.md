@@ -1,6 +1,6 @@
 ---
-title: 'Azure Resource Manager: vytvoření samostatné databáze'
-description: Pomocí šablony Azure Resource Manager vytvořte v Azure SQL Database jednu databázi.
+title: 'Azure Resource Manager: Create a single database'
+description: Create a single database in Azure SQL Database using the Azure Resource Manager template.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,73 +11,99 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: b7888215a2d463c8007168e215179ace898ca1cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5d090add7bdb2c3ee08f4c186bd57d63f14ab113
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821024"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422570"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Quickstart: Create a single database in Azure SQL Database using the Azure Resource Manager template
 
-Vytvoření [jedné databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit jedinou databázi pomocí šablony Azure Resource Manager. Další informace najdete v [dokumentaci Azure Resource Manager](/azure/azure-resource-manager/).
+Creating a [single database](sql-database-single-database.md) is the quickest and simplest deployment option for creating a database in Azure SQL Database. This quickstart shows you how to create a single database using the Azure Resource Manager template. For more information, see [Azure Resource Manager documentation](/azure/azure-resource-manager/).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="create-a-single-database"></a>Vytvoření izolované databáze
+## <a name="create-a-single-database"></a>Create a single database
 
-Jedna databáze má definovanou sadu výpočetních, paměťových, vstupně-výstupních prostředků a prostředků úložiště pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md). Když vytvoříte izolovanou databázi, nadefinujete taky [SQL Database Server](sql-database-servers.md) , který budete spravovat a umístit do [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v zadané oblasti.
+A single database has a defined set of compute, memory, IO, and storage resources using one of two [purchasing models](sql-database-purchase-models.md). When you create a single database, you also define a [SQL Database server](sql-database-servers.md) to manage it and place it within [Azure resource group](../azure-resource-manager/resource-group-overview.md) in a specified region.
 
-Následující soubor JSON je šablona použitá v tomto článku. Šablona je uložena na [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/SQLServerAndDatabase/azuredeploy.json). Další ukázky šablon Azure SQL Database najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
+The following JSON file is the template that is used in this article. The template is stored in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/SQLServerAndDatabase/azuredeploy.json). More Azure SQL database template samples can be found in [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
 
 [!code-json[create-azure-sql-database-server-and-database](~/resourcemanager-templates/SQLServerAndDatabase/azuredeploy.json)]
 
-1. Vyberte příkaz **vyzkoušet** z následujícího bloku kódu prostředí PowerShell a otevřete Azure Cloud Shell.
+Select **Try it** from the following PowerShell code block to open Azure Cloud Shell.
 
-    ```azurepowershell-interactive
-    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
-    $location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
-    $adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
-    $adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
-
-    $resourceGroupName = "${projectName}rg"
-
-
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" -projectName $projectName -adminUser $adminUser -adminPassword $adminPassword
-
-    Read-Host -Prompt "Press [ENTER] to continue ..."
-    ```
-
-1. Výběrem **Kopírovat** zkopírujte skript prostředí PowerShell do schránky.
-1. Klikněte pravým tlačítkem na podokno prostředí a pak vyberte **Vložit**.
-
-    Vytvoření databázového serveru a databáze chvíli trvá.
-
-## <a name="query-the-database"></a>Dotazování databáze
-
-Dotaz na databázi najdete v tématu [dotazování databáze](./sql-database-single-database-get-started.md#query-the-database).
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud chcete přejít k [dalším krokům](#next-steps), zachovejte tuto skupinu prostředků, databázový server a samostatnou databázi. Následující kroky ukazují, jak se připojit k databázi a dotazovat se na ni pomocí různých metod.
-
-Odstranění skupiny prostředků pomocí Azure PowerShellu:
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name"
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
+$adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
+$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
+
 $resourceGroupName = "${projectName}rg"
 
-Remove-AzResourceGroup -Name $resourceGroupName
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" -projectName $projectName -adminUser $adminUser -adminPassword $adminPassword
 
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
+$adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
+$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
+
+$resourceGroupName = "${projectName}rg"
+
+az group create --location $location --name $resourceGroupName
+
+az group deployment create -g $resourceGroupName --template-uri "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" `
+    --parameters 'projectName=' + $projectName \
+                 'adminUser=' + $adminUser \
+                 'adminPassword=' + $adminPassword
+
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
+
+* * *
+
+## <a name="query-the-database"></a>Query the database
+
+To query the database, see [Query the database](./sql-database-single-database-get-started.md#query-the-database).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Keep this resource group, database server, and single database if you want to go to the [Next steps](#next-steps). The next steps show you how to connect and query your database using different methods.
+
+To delete the resource group:
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName
+```
+
+* * *
+
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k izolované databázi z místních nebo vzdálených nástrojů. Další informace najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
-- Po vytvoření pravidla brány firewall na úrovni serveru se [připojte a Dotazujte](sql-database-connect-query.md) databázi pomocí několika různých nástrojů a jazyků.
+- Create a server-level firewall rule to connect to the single database from on-premises or remote tools. For more information, see [Create a server-level firewall rule](sql-database-server-level-firewall-rule.md).
+- After you create a server-level firewall rule, [connect and query](sql-database-connect-query.md) your database using several different tools and languages.
   - [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)
   - [Připojení a dotazování pomocí Azure Data Studia](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Pokud chcete vytvořit izolovanou databázi pomocí Azure CLI, přečtěte si [ukázky v Azure CLI](sql-database-cli-samples.md).
-- Chcete-li vytvořit izolovanou databázi pomocí Azure PowerShell, přečtěte si téma [Azure PowerShell Samples](sql-database-powershell-samples.md).
+- To create a single database using Azure CLI, see [Azure CLI samples](sql-database-cli-samples.md).
+- To create a single database using Azure PowerShell, see [Azure PowerShell samples](sql-database-powershell-samples.md).

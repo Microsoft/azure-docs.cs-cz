@@ -1,6 +1,6 @@
 ---
-title: Import souboru BACPAC pro vytvoření databáze
-description: Vytvoření databáze SQL newAzure importem souboru BACPAC.
+title: Import a BACPAC file to create a database
+description: Create a newAzure SQL database by importing a BACPAC file.
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -11,136 +11,151 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 07949f0aac1d18b88eb3ac59a6e7ad91d6865fcd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5f3b1890901eac510086a64cc2ccd341d0b23e00
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166313"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420836"
 ---
-# <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Rychlý Start: Import souboru BACPAC do databáze v Azure SQL Database
+# <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Quickstart: Import a BACPAC file to a database in Azure SQL Database
 
-SQL Serverovou databázi můžete importovat do databáze v Azure SQL Database pomocí souboru [BacPac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) . Data můžete importovat z `BACPAC` souboru uloženého v Azure Blob Storage (jenom úložiště úrovně Standard) nebo z místního úložiště v místním umístění. Aby se maximalizovala rychlost importu tím, že poskytuje více a rychlejší prostředky, během procesu importu Škálujte databázi na vyšší úroveň služby a výpočetní velikost. Po úspěšném dokončení importu pak můžete horizontální navýšení kapacity snížit.
+You can import a SQL Server database into a database in Azure SQL Database using a [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) file. You can import the data from a `BACPAC` file stored in Azure Blob storage (standard storage only) or from local storage in an on-premises location. To maximize import speed by providing more and faster resources, scale your database to a higher service tier and compute size during the import process. You can then scale down after the import is successful.
 
 > [!NOTE]
-> Úroveň kompatibility databáze importované je založená na úrovni kompatibility databáze zdroje.
+> The imported database's compatibility level is based on the source database's compatibility level.
+
 > [!IMPORTANT]
-> Po importu vaší databáze, můžete k provozu databáze na její aktuální úroveň kompatibility (úroveň 100 pro databázi AdventureWorks2008R2) nebo vyšší úrovni. Další informace o důsledcích a možnostech provozu databáze na konkrétní úrovni kompatibility najdete v tématu [Úroveň kompatibility ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). V tématu věnovaném příkazu [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) najdete také informace o dalších nastaveních na úrovni databáze souvisejících s úrovněmi kompatibility.
+> After importing your database, you can choose to operate the database at its current compatibility level (level 100 for the AdventureWorks2008R2 database) or at a higher level. Další informace o důsledcích a možnostech provozu databáze na konkrétní úrovni kompatibility najdete v tématu [Úroveň kompatibility ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). V tématu věnovaném příkazu [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) najdete také informace o dalších nastaveních na úrovni databáze souvisejících s úrovněmi kompatibility.
 
-## <a name="import-from-a-bacpac-file-in-the-azure-portal"></a>Importovat ze souboru BACPAC na webu Azure Portal
+## <a name="using-azure-portal"></a>Použití webu Azure Portal
 
-Podívejte se na toto video, kde se dozvíte, jak naimportovat ze souboru BACPAC do Azure Portal nebo pokračovat v čtení níže:
+Watch this video to see how to import from a BACPAC file in the Azure portal or continue reading below:
 
 > [!VIDEO hhttps://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-Restoring-a-database-to-Azure-SQL-DB-from-backup/player?WT.mc_id=dataexposed-c9-niner]
 
-[Azure Portal](https://portal.azure.com) podporuje *pouze* vytváření izolovaných databází v Azure SQL Database a *pouze* ze souboru BacPac uloženého v úložišti objektů BLOB v Azure.
+The [Azure portal](https://portal.azure.com) *only* supports creating a single database in Azure SQL Database and *only* from a BACPAC file stored in Azure Blob storage.
 
-Migrace databáze do [spravované instance](sql-database-managed-instance.md) ze souboru BACPAC pomocí Azure PowerShell není aktuálně podporována. Místo toho použijte SQL Server Management Studio nebo SQLPackage.
+Migrating a database into a [managed instance](sql-database-managed-instance.md) from a BACPAC file using Azure PowerShell is not currently supported. Use SQL Server Management Studio or SQLPackage instead.
 
 > [!NOTE]
-> Počítače zpracovávající požadavky na Import a export odeslané prostřednictvím Azure Portal nebo PowerShellu musí ukládat soubor BACPAC a také dočasné soubory generované rozhraním Application Framework (DacFX) na datové vrstvě. Požadované místo na disku se výrazně liší mezi databázemi se stejnou velikostí a může vyžadovat místo na disku až třikrát velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé požadavky selžou s chybou `There is not enough space on the disk`. V takovém případě je alternativním řešením spustit SqlPackage. exe na počítači s dostatečným místem na místním disku. K tomu, abyste se vyhnuli tomuto problému, doporučujeme používat [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) k importu a exportu databází větších než 150 GB.
- 
-1. Pokud chcete importovat ze souboru BACPAC do nové izolované databáze pomocí Azure Portal, otevřete příslušnou stránku databázového serveru a pak na panelu nástrojů vyberte **importovat databázi**.  
+> Machines processing import/export requests submitted through the Azure portal or PowerShell need to store the BACPAC file as well as temporary files generated by the Data-Tier Application Framework (DacFX). The disk space required varies significantly among databases with the same size and can require disk space up to 3 times the size of the database. Machines running the import/export request only have  450GB local disk space. As a result, some requests may fail with the error `There is not enough space on the disk`. In this case, the workaround is to run sqlpackage.exe on a machine with enough local disk space. We encourage using SqlPackage to import/export databases larger than 150GB to avoid this issue.
 
-   ![Import1 databáze](./media/sql-database-import/import1.png)
+1. To import from a BACPAC file into a new single database using the Azure portal, open the appropriate database server page and then, on the toolbar, select **Import database**.  
 
-2. Vyberte účet úložiště a kontejner pro soubor BACPAC a pak vyberte soubor BACPAC, ze kterého se má importovat.
-3. Zadejte novou velikost databáze (obvykle stejné jako původní) a cíl zadejte přihlašovací údaje SQL serveru. Seznam možných hodnot pro novou databázi SQL Azure najdete v tématu [Vytvoření databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+   ![Database import1](./media/sql-database-import/import1.png)
 
-   ![Import2 databáze](./media/sql-database-import/import2.png)
+1. Select the storage account and the container for the BACPAC file and then select the BACPAC file from which to import.
 
-4. Klikněte na tlačítko **OK**.
+1. Specify the new database size (usually the same as origin) and provide the destination SQL Server credentials. For a list of possible values for a new Azure SQL database, see [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
 
-5. Chcete-li monitorovat průběh importu, otevřete stránku serveru databáze a v části **Nastavení**vyberte **Historie importu a exportu**. V případě úspěchu se import **dokončeno** stav.
+   ![Database import2](./media/sql-database-import/import2.png)
 
-   ![Stav importu databáze](./media/sql-database-import/import-status.png)
+1. Klikněte na **OK**.
 
-6. Pokud chcete ověřit, jestli je databáze na databázovém serveru živá, vyberte **databáze SQL** a ověřte, jestli je nová databáze **online**.
+1. To monitor an import's progress, open the database's server page, and, under **Settings**, select **Import/Export history**. When successful, the import has a **Completed** status.
 
-## <a name="import-from-a-bacpac-file-using-sqlpackage"></a>Importovat ze souboru BACPAC s použitím nástroje SqlPackage
+   ![Database import status](./media/sql-database-import/import-status.png)
 
-Chcete-li importovat databázi SQL Server pomocí nástroje příkazového řádku [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) , přečtěte si téma [Import parametrů a vlastností](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage má nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Můžete si také stáhnout nejnovější [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) z webu Microsoft download center.
+1. To verify the database is live on the database server, select **SQL databases** and verify the new database is **Online**.
 
-Pro škálování a výkon doporučujeme místo použití Azure Portal používat SqlPackage ve většině produkčních prostředí. Blog týmu pro poradenské zákazníky SQL Server o migraci pomocí souborů `BACPAC` najdete v tématu [migrace z SQL Server na Azure SQL Database pomocí souborů BacPac](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+## <a name="using-sqlpackage"></a>Using SqlPackage
 
-Následující příkaz SqlPackage importuje databázi **AdventureWorks2008R2** z místního úložiště na server Azure SQL Database s názvem **mynewserver20170403**. Vytvoří novou databázi s názvem **myMigratedDatabase** s **Premium** úroveň služby a **P6** cíle služby. Změňte tyto hodnoty v závislosti na vašem prostředí.
+To import a SQL Server database using the [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) command-line utility, see [import parameters and properties](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage has the latest [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) and [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). You can also download the latest [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) from the Microsoft download center.
+
+For scale and performance, we recommend using SqlPackage in most production environments rather than using the Azure portal. For a SQL Server Customer Advisory Team blog about migrating using `BACPAC` files, see [migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+
+The following SqlPackage command imports the **AdventureWorks2008R2** database from local storage to an Azure SQL Database server called **mynewserver20170403**. It creates a new database called **myMigratedDatabase** with a **Premium** service tier and a **P6** Service Objective. Change these values as appropriate for your environment.
 
 ```cmd
-SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=<your_server_admin_account_user_id>;Password=<your_server_admin_account_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
+sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=<migratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> Pokud se chcete připojit k SQL Database serveru, který spravuje izolovanou databázi za podnikovou bránou firewall, musí mít brána firewall otevřený port 1433. Chcete-li se připojit ke spravované instanci, je nutné mít [připojení typu Point-to-site](sql-database-managed-instance-configure-p2s.md) nebo připojení Express Route.
->
+> To connect to a SQL Database server managing a single database from behind a corporate firewall, the firewall must have port 1433 open. To connect to a managed instance, you must have a [point-to-site connection](sql-database-managed-instance-configure-p2s.md) or an express route connection.
 
-Tento příklad ukazuje, jak importovat databázi s použitím nástroje SqlPackage pomocí univerzálního ověřování Active Directory.
+This example shows how to import a database using SqlPackage with Active Directory Universal Authentication.
 
 ```cmd
-SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
+sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
 ```
 
-## <a name="import-into-a-single-database-from-a-bacpac-file-using-powershell"></a>Import do jedné databáze ze souboru BACPAC pomocí prostředí PowerShell
+## <a name="using-powershell"></a>Použití PowerShellu
 
 > [!NOTE]
-> [Spravovaná instance](sql-database-managed-instance.md) v současné době nepodporuje migraci databáze do databáze instancí ze souboru BACPAC pomocí Azure PowerShell. Chcete-li importovat do spravované instance, použijte SQL Server Management Studio nebo SQLPackage.
+> [A managed instance](sql-database-managed-instance.md) does not currently support migrating a database into an instance database from a BACPAC file using Azure PowerShell. To import into a managed instance, use SQL Server Management Studio or SQLPackage.
 
 > [!NOTE]
-> Počítače zpracovávající požadavky import/export odeslané prostřednictvím portálu nebo PowerShellu musí ukládat soubor BacPac a také dočasné soubory vygenerované rozhraním Application Framework (DacFX) na datové vrstvě. Požadované místo na disku se výrazně liší mezi databáze se stejnou velikostí a může trvat až 3 časy velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé žádosti selžou a na disku není dost místa. V takovém případě je alternativním řešením spustit SqlPackage. exe na počítači s dostatečným místem na místním disku. Při importu a exportu databází větších než 150 GB použijte [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) , abyste se tomuto problému vyhnuli.
+> The machines processing import/export requests submitted through portal or Powershell need to store the bacpac file as well as temporary files generated by Data-Tier Application Framework (DacFX). The disk space required varies significantly among DBs with same size and can take up to 3 times of the database size. Machines running the import/export request only have  450GB local disk space. As result, some requests may fail with “There is not enough space on the disk” error. In this case, the workaround is to run sqlpackage.exe on a machine with enough local disk space. When importing/exporting databases larger than 150GB, use SqlPackage to avoid this issue.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
-K odeslání žádosti o import databáze službě Azure SQL Database použijte rutinu [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) . V závislosti na velikosti databáze může import trvat nějakou dobu.
+Use the [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) cmdlet to submit an import database request to the Azure SQL Database service. Depending on database size, the import may take some time to complete.
 
- ```powershell
- $importRequest = New-AzSqlDatabaseImport 
-    -ResourceGroupName "<your_resource_group>" `
-    -ServerName "<your_server>" `
-    -DatabaseName "<your_database>" `
-    -DatabaseMaxSizeBytes "<database_size_in_bytes>" `
-    -StorageKeyType "StorageAccessKey" `
-    -StorageKey $(Get-AzStorageAccountKey -ResourceGroupName "<your_resource_group>" -StorageAccountName "<your_storage_account").Value[0] `
-    -StorageUri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
-    -Edition "Standard" `
-    -ServiceObjectiveName "P6" `
-    -AdministratorLogin "<your_server_admin_account_user_id>" `
-    -AdministratorLoginPassword $(ConvertTo-SecureString -String "<your_server_admin_account_password>" -AsPlainText -Force)
+```powershell
+$importRequest = New-AzSqlDatabaseImport -ResourceGroupName "<resourceGroupName>" `
+    -ServerName "<serverName>" -DatabaseName "<databaseName>" `
+    -DatabaseMaxSizeBytes "<databaseSizeInBytes>" -StorageKeyType "StorageAccessKey" `
+    -StorageKey $(Get-AzStorageAccountKey `
+        -ResourceGroupName "<resourceGroupName>" -StorageAccountName "<storageAccountName>").Value[0] `
+        -StorageUri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
+        -Edition "Standard" -ServiceObjectiveName "P6" `
+        -AdministratorLogin "<userId>" `
+        -AdministratorLoginPassword $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
+```
 
- ```
-
- Pomocí rutiny [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) můžete kontrolovat průběh importu. Spuštěním rutiny ihned po žádosti obvykle vrátí **stav: Probíhá zpracování**. Když se zobrazí dokončení importu **stav: úspěšné**.
+You can use the [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet to check the import's progress. Running the cmdlet immediately after the request usually returns `Status: InProgress`. The import is complete when you see `Status: Succeeded`.
 
 ```powershell
 $importStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
+
 [Console]::Write("Importing")
-while ($importStatus.Status -eq "InProgress")
-{
+while ($importStatus.Status -eq "InProgress") {
     $importStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
     [Console]::Write(".")
     Start-Sleep -s 10
 }
+
 [Console]::WriteLine("")
 $importStatus
 ```
 
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Use the [az-sql-db-import](/cli/azure/sql/db#az-sql-db-import) command to submit an import database request to the Azure SQL Database service. Depending on database size, the import may take some time to complete.
+
+```azure-cli
+# get the storage account key
+az storage account keys list --resource-group "<resourceGroupName>" --account-name "<storageAccountName>"
+
+az sql db import --resource-group "<resourceGroupName>" --server "<serverName>" --name "<databaseName>" `
+    --storage-key-type "StorageAccessKey" --storage-key "<storageAccountKey>" `
+    --storage-uri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
+    -u "<userId>" -p $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
+```
+
+* * *
+
 > [!TIP]
-> Další příklad skriptu, naleznete v tématu [Import databáze ze souboru BACPAC](scripts/sql-database-import-from-bacpac-powershell.md).
+> For another script example, see [Import a database from a BACPAC file](scripts/sql-database-import-from-bacpac-powershell.md).
 
 ## <a name="limitations"></a>Omezení
 
-Import do databáze v elastickém fondu se nepodporuje. Data můžete importovat do izolované databáze a pak databázi přesunout do elastického fondu.
+Importing to a database in elastic pool isn't supported. You can import data into a single database and then move the database to an elastic pool.
 
-## <a name="import-using-wizards"></a>Import pomocí průvodců
+## <a name="import-using-wizards"></a>Import using wizards
 
-Můžete také použít průvodců.
+You can also use these wizards.
 
-- [Průvodce aplikace datové vrstvy v aplikaci SQL Server Management Studio importem](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
-- [SQL Server Import a Export průvodce](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
+- [Import Data-tier Application Wizard in SQL Server Management Studio](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
+- [SQL Server Import and Export Wizard](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o připojení a dotazování importovanou databázi SQL, najdete v článku [rychlý start: Azure SQL Database: použití SQL Server Management Studio k připojení a dotazování dat](sql-database-connect-query-ssms.md).
+- To learn how to connect to and query an imported SQL Database, see [Quickstart: Azure SQL Database: Use SQL Server Management Studio to connect and query data](sql-database-connect-query-ssms.md).
 - Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).
-- Diskuzi o celý proces SQL serveru databáze migrace, včetně doporučení k výkonu, naleznete v tématu [migrace databáze SQL serveru do Azure SQL Database](sql-database-single-database-migrate.md).
-- Informace o správě a sdílení klíčů k úložišti a sdílené přístupové podpisy bezpečně, najdete v [Průvodci zabezpečením Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+- For a discussion of the entire SQL Server database migration process, including performance recommendations, see [SQL Server database migration to Azure SQL Database](sql-database-single-database-migrate.md).
+- To learn how to manage and share storage keys and shared access signatures securely, see [Azure Storage Security Guide](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

@@ -3,114 +3,114 @@ title: Připojení počítače pro vývoj ke clusteru AKS
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: Zjistěte, jak připojit vývojový počítač k AKS clusteru pomocí Azure Dev Spaces
-keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 1b65721b67ff63525adfe5d2061f22f359c02bde
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+description: Learn how to connect your development machine to an AKS cluster with Azure Dev Spaces
+keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+ms.openlocfilehash: a4cc88252ec92ad696366661d80ca8f69adc6e66
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280122"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74424104"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Připojení počítače pro vývoj ke clusteru AKS (Preview)
 
-Azure Dev Spaces umožňuje spouštět a ladit kód s kontejnerem ve vývojovém počítači nebo bez něj, a to i nadále připojen ke clusteru Kubernetes se zbytkem vaší aplikace nebo služeb. Připojení vývojového počítače k vašemu clusteru vám pomůže rychle vyvíjet aplikace a provádět komplexní testování bez nutnosti vytvářet žádné Kubernetes nebo konfiguraci Docker nebo konfigurace. Můžete se taky připojit ke clusteru AKS, aniž by to ovlivnilo jiné úlohy nebo uživatele, kteří můžou používat stejný cluster.
+Azure Dev Spaces allows you to run and debug code with or without a container on your development machine, while still connected to your Kubernetes cluster with the rest of your application or services. Connecting your development machine to your cluster helps you to quickly develop your application and perform end-to-end testing without having to create any Docker or Kubernetes configuration. You can also connect to your AKS cluster without affecting other workloads or users who may be using the same cluster.
 
-Azure Dev Spaces přesměruje provoz mezi připojeným clusterem AKS a vývojovým počítačem. Toto přesměrování provozu umožňuje kódu na vašem vývojovém počítači a službách spuštěných v clusteru AKS komunikovat jako v případě, že jsou ve stejném clusteru AKS. Vzhledem k tomu, že váš kód běží na vašem vývojovém počítači, máte také flexibilitu v vývojářských nástrojích, které používáte ke spouštění a ladění kódu. Azure Dev Spaces taky poskytuje způsob, jak replikovat proměnné prostředí a připojené soubory, které jsou dostupné pro lusky ve vašem clusteru AKS ve vývojovém počítači.
+Azure Dev Spaces redirects traffic between your connected AKS cluster and your development machine. This traffic redirection allows code on your development machine and services running in your AKS cluster to communicate as if they are in the same AKS cluster. Since your code is running on your development machine, you also have flexibility in the development tools you are using to run and debug that code. Azure Dev Spaces also provides a way to replicate environment variables and mounted files available to pods in your AKS cluster in your development machine.
 
 V tomto průvodci se naučíte:
 
-* Nastavte Azure Dev Spaces ve spravovaném clusteru Kubernetes v Azure.
-* Nasaďte rozsáhlou aplikaci s více mikroslužbami do vývojového prostoru.
-* Pomocí Azure Dev Spaces můžete přesměrovat provoz mezi clusterem AKS a kódem běžícím na vašem vývojovém počítači.
+* Set up Azure Dev Spaces on a managed Kubernetes cluster in Azure.
+* Deploy a large application with multiple microservices to a dev space.
+* Use Azure Dev Spaces to redirect traffic between your AKS cluster and code running on your development machine.
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tato příručka používá [ukázkovou aplikaci pro sdílení kol Azure dev Spaces](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) k předvedení připojení vývojového počítače k AKS clusteru. Pokud chcete spustit ukázkovou aplikaci, postupujte podle pokynů v [souboru Readme ukázek aplikace Azure dev Spaces sdílení kolací](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/README.md) . Případně, pokud máte vlastní aplikaci v clusteru AKS, můžete postupovat podle následujících kroků a používat názvy vlastních služeb a lusků.
+This guide uses the [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) to demonstrate connecting your development machine to an AKS cluster. Follow the instructions in the [Azure Dev Spaces Bike Sharing sample application README](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/README.md) to run the sample application. Alternatively, if you have your own application on an AKS cluster you can still follow the steps below and use the names of your own services and pods.
 
 ### <a name="limitations"></a>Omezení
 
-* Protokol UDP není v tuto chvíli podporován.
+* UDP is not supported at this time.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI][azure-cli]
-* [Visual Studio Code][vs-code] s nainstalovaným rozšířením [Azure dev Spaces][azds-vs-code] a spuštěným v MacOS nebo Windows 10.
-* [Ukázková aplikace Azure dev Spaces pro sdílení kol](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) nebo vlastní aplikace běžící v clusteru AKS.
+* [Visual Studio Code][vs-code] with the [Azure Dev Spaces][azds-vs-code] extension installed and running on MacOS or Windows 10.
+* The [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) or your own application running on an AKS cluster.
 
-## <a name="connect-your-development-machine"></a>Připojení vývojového počítače
+## <a name="connect-your-development-machine"></a>Connect your development machine
 
-Otevřete okno *dev-Spaces/Samples/BikeSharingApp/Bikes* in Visual Studio Code a pomocí rozšíření Azure dev Spaces Připojte svůj vývojový počítač k vašemu clusteru AKS.
+Open *dev-spaces/samples/BikeSharingApp/Bikes* in Visual Studio Code and use the Azure Dev Spaces extension to connect your development machine to your AKS cluster.
 
-Chcete-li použít rozšíření Azure Dev Spaces, otevřete paletu příkazů v Visual Studio Code kliknutím na tlačítko *Zobrazit* a *paleta příkazů*. Začněte psát `Azure Dev Spaces: Redirect` a klikněte buď na `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`nebo `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`.
+To use the Azure Dev Spaces extension, open the Command Palette in Visual Studio Code by clicking *View* then *Command Palette*. Begin typing `Azure Dev Spaces: Redirect` and click on either `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`, or `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`.
 
 ![Příkazy](../media/how-to-connect/connect-commands.png)
 
-### <a name="select-a-redirection-option"></a>Výběr možnosti přesměrování
+### <a name="select-a-redirection-option"></a>Select a redirection option
 
-Pokud `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`spustíte, budete požádáni o výběr existující služby Kubernetes:
+If you run `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, you are asked to choose an existing Kubernetes service:
 
-![Zvolit službu](../media/how-to-connect/connect-choose-service.png)
+![Choose Service](../media/how-to-connect/connect-choose-service.png)
 
-Tato možnost přesměruje veškerý provoz v clusteru AKS pro tuto službu na verzi vaší aplikace spuštěné ve vývojovém počítači. Pokud má tato služba více prostředí spuštěných v clusteru AKS, veškerý provoz této služby je směrován pouze do vašeho vývojového počítače. Azure Dev Spaces také směruje veškerý odchozí provoz z aplikace zpátky do vašeho clusteru AKS.
+This option redirects all traffic in the AKS cluster for this service to the version of your application running in your development machine. If this service has multiple pods running in the AKS cluster, all traffic for this service is only routed to your development machine. Azure Dev Spaces also routes all outbound traffic from the application back to your AKS cluster.
 
-Pokud spustíte `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`, budete požádáni o výběr konkrétního pod:
+If you run `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`, you are asked to choose a specific pod:
 
-![Zvolit pod](../media/how-to-connect/connect-choose-pod.png)
+![Choose Pod](../media/how-to-connect/connect-choose-pod.png)
 
-Tato možnost se připojí k určitému pod. Tato možnost je užitečná pro interakci s lusky, které neodesílají ani nepřijímaly provoz a replikují ukončené lusky. V případě, že v poli pod odesílá a přijímá přenos, tato možnost se chová podobným způsobem `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` a přesměruje veškerý provoz v clusteru AKS pro všechny lusky související se službou vybraného seznamu pod.
+This option connects to a specific pod. This option is useful for interacting with pods that do not send or receive traffic and replicating terminated pods. If the pod does send and receive traffic, this option behaves in a similar way to `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` and will redirect all traffic in the AKS cluster for all pods related to the service of the selected pod.
 
-Pokud spustíte `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`, nebudete vyzváni k výběru existujícího pod nebo služba. Tato možnost přesměruje veškerý odchozí provoz z aplikace spuštěné na vašem vývojovém počítači do clusteru AKS.
+If you run `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`, you are not prompted to select an existing pod or service. This option redirects all outbound traffic from the application running on your development machine to the AKS cluster.
 
-V tomto příkladu zvolte možnost `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` a vyberte službu *Bikes* .
+For this example, choose `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` and select the *bikes* service.
 
-### <a name="select-a-connection-mode"></a>Vyberte režim připojení.
+### <a name="select-a-connection-mode"></a>Select a connection mode
 
-Po výběru možnosti přesměrování se zobrazí výzva k výběru režimu připojení *nahradit* nebo *klonovat* .
+After you select your redirection option, you are prompted to choose either the *Replace* or *Clone* connection mode.
 
-![Nahrazení nebo klonování](../media/how-to-connect/connect-replace-clone.png)
+![Replace or Clone](../media/how-to-connect/connect-replace-clone.png)
 
-Možnost *nahradit* nahrazuje aktuální položku pod nebo službu v clusteru AKS a přesměruje veškerý provoz této služby do vašeho vývojového počítače. Tato možnost může být narušena na jiné služby v clusteru AKS, které komunikují se službou, kterou přesměrováváte, nemusí fungovat, dokud nespustíte aplikaci na vývojovém počítači. Možnost *klonování* vám umožňuje zvolit existující podřízený prostor pro vývoj nebo vytvořit nový podřízený vývojový prostor pro přesměrování provozu pro uzel pod nebo službu do vývojového počítače. Tato možnost umožňuje pracovat v izolaci a Nerušit jiné služby, protože do vašeho vývojového počítače budou přesměrovány jenom přenosy do tohoto podřízeného vývojového prostoru. Možnost *klonování* vyžaduje, aby cluster AKS měl povolený Azure dev Spaces.
+The *Replace* option replaces current pod or service in the AKS cluster and redirects all the traffic for that service to your development machine. This option can be disruptive to other services in your AKS cluster that interact with the service you are redirecting may not function until you start the application on your development machine. The *Clone* option allows you to choose an existing child dev space or create a new child dev space for redirecting traffic for a pod or service to your development machine. This option allows you to work in isolation and not disrupt other services since only traffic to that child dev space will be redirected to your development machine. The *Clone* option requires your AKS cluster to have Azure Dev Spaces enabled.
 
-V tomto příkladu vyberte *nahradit*.
+For this example, choose *Replace*.
 
 > [!NOTE]
-> Pokud má již vaše stávající služba více kontejnerů, zobrazí se také výzva k výběru kontejneru aplikace.
+> If your existing service's pod has multiple containers, you are also prompted to choose the application's container.
 
-### <a name="select-a-port-for-your-application"></a>Vyberte port pro vaši aplikaci.
+### <a name="select-a-port-for-your-application"></a>Select a port for your application
 
-Po výběru režimu připojení budete vyzváni k zadání portu TCP vaší místní aplikace. Pokud vaše aplikace otevře více portů, oddělte je čárkami, například *80, 81*. Pokud aplikace nepřijímá žádné síťové požadavky, zadejte *hodnotu 0*. V tomto příkladu zadejte *3000*.
+After you select your connection mode, you are prompted to enter the TCP port your local application. If your application opens multiple ports, separate them by a comma for example *80,81*. If your application does not accept any network requests, enter *0*. For this example, enter *3000*.
 
-![Připojit zvolit port](../media/how-to-connect/connect-choose-port.png)
+![Connect choose port](../media/how-to-connect/connect-choose-port.png)
 
-### <a name="confirm-you-are-connected"></a>Potvrďte, že jste připojení.
+### <a name="confirm-you-are-connected"></a>Confirm you are connected
 
-Po výběru portu TCP vaší aplikace Azure Dev Spaces naváže připojení ke clusteru AKS. Azure Dev Spaces do clusteru AKS vloží agenta pro přesměrování provozu mezi clusterem AKS a vývojovým počítačem. Vytvoření tohoto připojení může trvat několik minut. Azure Dev Spaces také požádá o přístup správce, aby mohl upravovat soubor *hostitelů* ve vývojovém počítači.
+After you select your application's TCP port, Azure Dev Spaces will establish a connection to the AKS cluster. Azure Dev Spaces injects an agent into your AKS cluster to redirect traffic between the AKS cluster and your development machine. Establishing this connection may take a few minutes. Azure Dev Spaces will also request administrator access in order to modify the *hosts* file in your development machine.
 
 > [!IMPORTANT]
-> Jakmile Azure Dev Spaces naváže připojení ke clusteru AKS, nemusí ostatní služby v clusteru AKS fungovat správně, dokud službu nespustíte ve vývojovém počítači, pokud zvolíte možnost *nahradit* režim připojení. Místo toho můžete zvolit režim připojení *klonování* pro vytvoření podřízeného vývojového prostoru pro přesměrování a vyhnout se případnému přerušení v nadřazeném prostoru. Pokud má vaše služba závislost, která není ve vývojovém počítači k dispozici, může být nutné upravit svou aplikaci nebo zadat [Další konfiguraci](#additional-configuration) .
+> Once Azure Dev Spaces establishes a connection to your AKS cluster, the other services in your AKS cluster may not function correctly until you start the service in your development machine if you choose the *Replace* connection mode. You can choose the *Clone* connection mode instead to create a child dev space for your redirection and avoid any disruption to the parent space. Also, if your service has a dependency that is not available in your development machine, you may need to modify your application or provide [additional configuration](#additional-configuration)
 
-Po navázání připojení ke clusteru AKS otevře Azure Dev Spaces okno terminálu s názvem *AZDS Connect-Bikes* . Toto okno terminálu obsahuje všechny proměnné prostředí a položky DNS nakonfigurované z clusteru AKS. Jakýkoli kód, který spustíte v tomto okně terminálu nebo pomocí ladicího programu Visual Studio Code, je připojen ke clusteru AKS.
+Azure Dev Spaces opens a terminal window titled *AZDS Connect - Bikes* after it establishes a connection to your AKS cluster. This terminal window has all the environment variables and DNS entries configured from your AKS cluster. Any code you run in this terminal window or using the Visual Studio Code debugger is connected to the AKS cluster.
 
-![Terminálovému](../media/how-to-connect/connect-terminal.png)
+![Terminal](../media/how-to-connect/connect-terminal.png)
 
-Kromě toho Azure Dev Spaces vytvoří okno s názvem *vývojářské prostory připojit* se ke všem jeho výstupům.
+Additionally, Azure Dev Spaces creates a window titled *Dev Spaces Connect* with all its output.
 
 ![Výstup](../media/how-to-connect/connect-output.png)
 
-Azure Dev Spaces má také položku stavového řádku, která zobrazuje stav připojení.
+Azure Dev Spaces also has a status bar item showing the connection status.
 
-![Status](../media/how-to-connect/connect-status.png)
+![Stav](../media/how-to-connect/connect-status.png)
 
-Ověřte, že se ve stavovém řádku zobrazují *vývojové prostory: připojeno k vývojovým/bicyklům na místním portu 3000*.
+Verify the status bar shows *Dev Spaces: Connected to dev/bikes on local port 3000*.
 
-### <a name="configure-your-application-on-your-development-machine"></a>Konfigurace aplikace na vývojovém počítači
+### <a name="configure-your-application-on-your-development-machine"></a>Configure your application on your development machine
 
-Otevřete okno terminálu *AZDS Connect-Bikes* a spusťte `npm install`:
+Open the *AZDS Connect - Bikes* terminal window and run `npm install`:
 
 ```console
 $ npm install
@@ -120,8 +120,7 @@ $ npm install
 ...
 ```
 
-
-Klikněte na *ladit* a pak *Otevřete konfigurace*. Pokud se zobrazí výzva k výběru prostředí, zvolte *Node. js*. Tím se vytvoří soubor `.vscode/launch.json`. Obsah tohoto souboru nahraďte následujícím:
+Click *Debug* then *Open Configurations*. If prompted to select an environment, choose *Node.js*.This creates a `.vscode/launch.json` file. Replace the contents of that file with the following:
 
 ```json
 {
@@ -141,7 +140,7 @@ Klikněte na *ladit* a pak *Otevřete konfigurace*. Pokud se zobrazí výzva k v
 }
 ```
 
-Otevřete soubor [Package. JSON](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/package.json) a přidejte ladicí skript:
+Open [package.json](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/package.json) and add a debugging script:
 
 ```json
   "devDependencies": {
@@ -152,13 +151,13 @@ Otevřete soubor [Package. JSON](https://github.com/Azure/dev-spaces/blob/master
   }
 ```
 
-### <a name="start-your-application-on-your-development-machine"></a>Spuštění aplikace na vývojovém počítači
+### <a name="start-your-application-on-your-development-machine"></a>Start your application on your development machine
 
-Klikněte na ikonu *ladění* na levé straně a potom klikněte na tlačítko Start vedle tlačítka Spustit *přes npm* v horní části.
+Click on the *Debug* icon on the left and click on the start button next to *Launch via NPM* at the top.
 
-![Spustit přes NPM](../media/how-to-connect/launch-npm.png)
+![Launch via NPM](../media/how-to-connect/launch-npm.png)
 
-Vaše aplikace spustí a Azure Dev Spaces přesměruje provoz mezi vaším clusterem AKS a vývojovým počítačem. V *konzole ladění*se zobrazí zprávy podobné následujícímu:
+Your application will start and Azure Dev Spaces redirects traffic between your AKS cluster and your development machine. You will see messages similar to the below in the *Debug Console*:
 
 ```console
 /usr/local/bin/npm run-script debug 
@@ -170,26 +169,26 @@ Connected to MongoDB
 Listening on port 3000
 ```
 
-Přejděte do služby *bikesharingweb* tak, že kliknete na stavový řádek Azure dev Spaces a zvolíte veřejnou adresu URL vaší aplikace. Veřejnou adresu URL můžete najít také z příkazu `azds list-uris`, který jste spustili dříve. Pokud ve vašem clusteru nepoužíváte Azure Dev Spaces, použijte IP adresu nebo adresu URL pro aplikaci pro obor názvů, který používáte. Ve výše uvedeném příkladu je veřejná adresa URL pro službu *bikesharingweb* `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Jako uživatel vyberte *Aurelia Briggs (zákazník)* a pak vyberte kolo k pronajmutí.
+Navigate to the *bikesharingweb* service by clicking on the Azure Dev Spaces status bar and choosing the public URL of your application. You can also find the public URL from the `azds list-uris` command you ran earlier. If you are not using Azure Dev Spaces on your cluster, use the IP or the URL for the application for the namespace you are using. In the above example, the public URL for the *bikesharingweb* service is `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Select *Aurelia Briggs (customer)* as the user, then select a bike to rent.
 
-### <a name="set-a-break-point"></a>Nastavení bodu přerušení
+### <a name="set-a-break-point"></a>Set a break point
 
-Otevřete [Server. js](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L233) a Kliknutím kamkoli na řádku 233 umístěte kurzor do umístění. Nastavte zarážku zavoláním *F9* nebo kliknutím na *ladění* a potom *přepínací zarážku*.
+Open [server.js](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L233) and click somewhere on line 233 to put your cursor there. Set a breakpoint by hitting *F9* or clicking *Debug* then *Toggle Breakpoint*.
 
-Přejděte do služby *bikesharingweb* otevřením veřejné adresy URL. Jako uživatel vyberte *Aurelia Briggs (zákazník)* a pak vyberte kolo k pronajmutí. Všimněte si, že se obrázek pro kolo nenačte. Vraťte se na Visual Studio Code a sledujte řádek 233, který je zvýrazněný. Zarážka, kterou jste nastavili, pozastavila službu na řádku 233. Pokud chcete službu obnovit, stiskněte klávesu *F5* nebo klikněte na *ladit* a pak *pokračovat*. Vraťte se do prohlížeče a ověřte, že se zobrazí zástupný obrázek pro kolo.
+Navigate to the *bikesharingweb* service by opening the public URL. Select *Aurelia Briggs (customer)* as the user, then select a bike to rent. Notice the image for the bike does not load. Return to Visual Studio Code and observe line 233 is highlighted. The breakpoint you set has paused the service at line 233. To resume the service, hit *F5* or click *Debug* then *Continue*. Return to your browser and verify you see a placeholder image for the bike.
 
-Odstraňte zarážku tak, že umístíte kurzor na řádek 233 v `server.js` a zapnete *F9*.
+Remove the breakpoint by putting your cursor on line 233 in `server.js` and hitting *F9*.
 
-### <a name="update-your-application"></a>Aktualizace aplikace
+### <a name="update-your-application"></a>Update your application
 
-Upravte `server.js` a odeberte řádky 232 a 233:
+Edit `server.js` to remove lines 232 and 233:
 
 ```javascript
     // Hard code image url *FIX ME*
     theBike.imageUrl = "/static/logo.svg";
 ```
 
-Oddíl by teď měl vypadat takto:
+The section should now look like:
 
 ```javascript
     var theBike = result;
@@ -197,15 +196,15 @@ Oddíl by teď měl vypadat takto:
     delete theBike._id;
 ```
 
-Uložte změny a klikněte na *ladit* a pak *znovu spusťte ladění*. Aktualizujte si prohlížeč a ověřte, že se už nezobrazuje zástupný obrázek pro kolo.
+Save your changes and click *Debug* then *Restart Debugging*. Refresh your browser and verify that you no longer see a placeholder image for the bike.
 
-Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil. Kliknutím na stavový řádek Azure Dev Spaces se odpojíte od clusteru AKS.
+Click *Debug* then *Stop Debugging* to stop the debugger. Click on the Azure Dev Spaces status bar to disconnect from the AKS cluster.
 
-## <a name="additional-configuration"></a>Další konfigurace
+## <a name="additional-configuration"></a>Additional configuration
 
-Azure Dev Spaces může zpracovávat směrování provozu a replikovat proměnné prostředí bez jakékoli další konfigurace. Potřebujete-li stáhnout všechny soubory, které jsou připojeny ke kontejneru v clusteru AKS, jako je například soubor ConfigMap, můžete vytvořit `azds-local.env` ke stažení těchto souborů do vývojového počítače.
+Azure Dev Spaces can handle routing traffic and replicating environment variables without any additional configuration. If you need to download any files that are mounted to the container in your AKS cluster, such as a ConfigMap file, you can create a `azds-local.env` to download those files to your development machine.
 
-Tady je příklad `azds-local.env`:
+Here is an example `azds-local.env`:
 
 ```
 # This downloads the "whitelist" volume from the container,
@@ -231,13 +230,26 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 # in addition to the IP in the MYAPP1_SERVICE_HOST environment variable.
 ```
 
+## <a name="using-logging-and-diagnostics"></a>Using logging and diagnostics
+
+Logging output is written to the *Dev Spaces Connect* window after connect your development machine to your AKS cluster.
+
+![Výstup](../media/how-to-connect/connect-output.png)
+
+Click on the Azure Dev Spaces status bar and choose *Show diagnostics info*. This command prints the current environment variables and DNS entires in the logging output.
+
+![Output with diagnostics](../media/how-to-connect/connect-output-diagnostics.png)
+
+Additionally, you can find the diagnostic logs in `Azure Dev Spaces` directory in your [development machine's *TEMP* directory][azds-tmp-dir].
+
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se, jak pomocí akcí Azure Dev Spaces a GitHubu testovat změny z žádosti o přijetí změn přímo v AKS před sloučením žádosti o získání dat do hlavní větve úložiště.
+Learn how to use Azure Dev Spaces and GitHub Actions to test changes from a pull request directly in AKS before the pull request is merged into your repository’s main branch.
 
 > [!div class="nextstepaction"]
-> [Akce GitHubu & službě Azure Kubernetes][gh-actions]
+> [GitHub Actions & Azure Kubernetes Service][gh-actions]
 
+[azds-tmp-dir]: ../troubleshooting.md#before-you-begin
 [azds-vs-code]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [bike-sharing-github]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp

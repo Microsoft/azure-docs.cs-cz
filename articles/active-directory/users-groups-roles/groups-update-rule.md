@@ -1,6 +1,6 @@
 ---
-title: Aktualizace a Správa pravidla dynamické skupiny a řešení potíží s členstvím Azure Active Directory | Microsoft Docs
-description: Postup vytvoření pravidla členství ve skupině v Azure Portal najdete v části stav.
+title: Update and manage a dynamic group rule and troubleshoot membership - Azure Active Directory | Microsoft Docs
+description: How to create a group membership rule in the Azure portal, check status.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,79 +14,79 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84290ee3c242b5ccb91bdca8a6b82fc0bf963751
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c387e2d78adcaebc430073a2a45818c4a0928b9f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194584"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422353"
 ---
-# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Aktualizace dynamické skupiny pro správu členství v Azure Active Directory
+# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Update a dynamic group to manage membership in Azure Active Directory
 
-V Azure Active Directory (Azure AD) můžete pomocí pravidel určit členství ve skupině na základě vlastností uživatele nebo zařízení. V tomto článku se dozvíte, jak nastavit pravidlo pro dynamickou skupinu v Azure Portal.
-Dynamické členství je podporováno pro skupiny zabezpečení nebo skupiny Office 365. Při použití pravidla členství ve skupině se vyhodnotí atributy uživatelů a zařízení pro shody s pravidlem členství. Když se změní atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci pro změny členství. Uživatelé a zařízení se přidají nebo odeberou, pokud splňují podmínky pro skupinu.
+In Azure Active Directory (Azure AD), you can use rules to determine group membership based on user or device properties. This article tells how to set up a rule for a dynamic group in the Azure portal.
+Dynamic membership is supported for security groups or Office 365 groups. When a group membership rule is applied, user and device attributes are evaluated for matches with the membership rule. When an attribute changes for a user or device, all dynamic group rules in the organization are processed for membership changes. Users and devices are added or removed if they meet the conditions for a group.
 
-## <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
+## <a name="rule-builder-in-the-azure-portal"></a>Rule builder in the Azure portal
 
-Azure AD poskytuje tvůrci pravidel pro rychlejší vytváření a aktualizaci důležitých pravidel. Tvůrce pravidel podporuje vytváření až pěti výrazů. Tvůrce pravidel usnadňuje vytvoření pravidla s několika jednoduchými výrazy, ale nelze ho použít k reprodukování všech pravidel. Pokud tvůrce pravidel nepodporuje pravidlo, které chcete vytvořit, můžete použít textové pole.
+Azure AD provides a rule builder to create and update your important rules more quickly. The rule builder supports the construction up to five expressions. The rule builder makes it easier to form a rule with a few simple expressions, however, it can't be used to reproduce every rule. If the rule builder doesn't support the rule you want to create, you can use the text box.
 
-Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které doporučujeme sestavit pomocí textového pole:
+Here are some examples of advanced rules or syntax for which we recommend that you construct using the text box:
 
-- Pravidlo s více než pěti výrazy
-- Pravidlo přímých sestav
-- Nastavení [priority operátoru](groups-dynamic-membership.md#operator-precedence)
-- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například`(user.proxyAddresses -any (_ -contains "contoso"))`
+- Rule with more than five expressions
+- The Direct reports rule
+- Setting [operator precedence](groups-dynamic-membership.md#operator-precedence)
+- [Rules with complex expressions](groups-dynamic-membership.md#rules-with-complex-expressions); for example `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
+> The rule builder might not be able to display some rules constructed in the text box. You might see a message when the rule builder is not able to display the rule. The rule builder doesn't change the supported syntax, validation, or processing of dynamic group rules in any way.
 
-![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla členství najdete v tématu [dynamická pravidla členství pro skupiny v Azure Active Directory](groups-dynamic-membership.md).
+For examples of syntax, supported properties, operators, and values for a membership rule, see [Dynamic membership rules for groups in Azure Active Directory](groups-dynamic-membership.md).
 
-## <a name="to-update-a-group-membership-rule"></a>Aktualizace pravidla členství ve skupině
+## <a name="to-update-a-group-membership-rule"></a>To update a group membership rule
 
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, Správce služby Intune nebo Správce uživatelů v tenantovi.
-1. Vyberte **skupiny** > **všechny skupiny**.
-1. Vyberte skupinu a otevřete její profil.
-1. Na stránce profil pro skupinu vyberte **dynamická pravidla členství**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat více než pět výrazů, je nutné použít textové pole.
+1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with an account that is in the Global administrator, Group administrator, Intune administrator, or User administrator role in the tenant.
+1. Select **Groups** > **All groups**.
+1. Select a group to open its profile.
+1. On the profile page for the group, select **Dynamic membership rules**. The rule builder supports up to five expressions. To add more than five expressions, you must use the text box.
 
-   ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-update-rule/update-dynamic-group-rule.png)
+   ![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-1. Chcete-li zobrazit vlastnosti vlastního rozšíření, které jsou k dispozici pro pravidlo členství:
-   1. Vyberte **získat vlastnosti vlastního rozšíření** .
-   1. Zadejte ID aplikace a pak vyberte **aktualizovat vlastnosti**.
-1. Po aktualizaci pravidla vyberte **Uložit**.
+1. To see the custom extension properties available for your membership rule:
+   1. Select **Get custom extension properties**
+   1. Enter the application ID, and then select **Refresh properties**.
+1. After updating the rule, select **Save**.
 
-Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azure na portálu vysvětlení, proč se pravidlo nedalo zpracovat. Pečlivě si přečtěte, abyste zjistili, jak pravidlo opravit.
+If the rule you entered isn't valid, an explanation of why the rule couldn't be processed is displayed in an Azure notification in the portal. Read it carefully to understand how to fix the rule.
 
-## <a name="check-processing-status-for-a-rule"></a>Zkontroluje stav zpracování pravidla.
+## <a name="check-processing-status-for-a-rule"></a>Check processing status for a rule
 
-Stav zpracování členství a datum poslední aktualizace můžete zobrazit na stránce **Přehled** pro danou skupinu.
+You can see the membership processing status and the last updated date on the **Overview** page for the group.
   
-  ![zobrazení stavu dynamické skupiny](./media/groups-create-rule/group-status.png)
+  ![display of dynamic group status](./media/groups-create-rule/group-status.png)
 
-Pro stav **zpracování členství** lze zobrazit následující stavové zprávy:
+The following status messages can be shown for **Membership processing** status:
 
-- **Vyhodnocení**:  Byla přijata změna skupiny a probíhá vyhodnocení aktualizací.
-- **Zpracovává**se: Probíhá zpracování aktualizací.
-- **Aktualizace dokončena**: Zpracování bylo dokončeno a všechny použitelné aktualizace byly provedeny.
-- **Chyba zpracování**:  Zpracování se nepodařilo dokončit kvůli chybě při vyhodnocování pravidla členství.
-- **Aktualizace**pozastavena: Správci pozastavili aktualizace pravidla dynamického členství. MembershipRuleProcessingState je nastavené na pozastaveno.
+- **Evaluating**:  The group change has been received and the updates are being evaluated.
+- **Processing**: Updates are being processed.
+- **Update complete**: Processing has completed and all applicable updates have been made.
+- **Processing error**:  Processing couldn't be completed because of an error evaluating the membership rule.
+- **Update paused**: Dynamic membership rule updates have been paused by the administrator. MembershipRuleProcessingState is set to “Paused”.
 
-Pro stav **Poslední aktualizace členství** se můžou zobrazit tyto stavové zprávy:
+The following status messages can be shown for **Membership last updated** status:
 
-- **Datum a čas**: Čas poslední aktualizace členství.
-- **Probíhá**: Aktuálně probíhá aktualizace.
-- **Neznámý**: Čas poslední aktualizace nelze načíst. Tato skupina může být nová.
+- **Date and time**: The last time the membership was updated.
+- **In Progress**: Updates are currently in progress.
+- **Unknown**: The last update time can't be retrieved. The group might be new.
 
-Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud není možné zpracovat žádné nedokončené dynamické aktualizace členství pro všechny skupiny v tenantovi za více než 24 hodin, zobrazí se v horní části **všech skupin**výstraha.
+If an error occurs while processing the membership rule for a specific group, an alert is shown on the top of the **Overview page** for the group. If no pending dynamic membership updates can be processed for all the groups within the tenant for more then 24 hours, an alert is shown on the top of **All groups**.
 
-![zpracování upozornění na chybové zprávy](./media/groups-create-rule/processing-error.png)
+![processing error message alerts](./media/groups-create-rule/processing-error.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tyto články poskytují další informace o práci s dynamickými skupinami v Azure AD.
+These articles provide additional information on working with dynamic groups in Azure AD.
 
-- Úplný odkaz na strukturu dynamického pravidla najdete v tématu [syntaxe pravidla dynamického členství](groups-dynamic-membership.md).
-- [Vytvořte skupinu statických členství a přidejte členy](../fundamentals/active-directory-groups-create-azure-portal.md).
+- For a complete reference to dynamic rule structure, see [Dynamic membership rule syntax](groups-dynamic-membership.md).
+- [Create a static membership group and add members](../fundamentals/active-directory-groups-create-azure-portal.md).

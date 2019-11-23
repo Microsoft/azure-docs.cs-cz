@@ -1,92 +1,95 @@
 ---
-title: Co je služba QnA Maker?
+title: What is QnA Maker service?
 titleSuffix: Azure Cognitive Services
-description: QnA Maker je cloudová služba NLP, která v rámci vašich dat snadno vytvoří přirozenou konverzační vrstvu. Dá se použít k vyhledání nejvhodnější odpovědi pro všechny vstupy v přirozeném jazyce, od vlastní znalostní báze (KB) informací.
+description: QnA Maker is a cloud-based NLP service that easily creates a natural conversational layer over your data. It can be used to find the most appropriate answer for any given natural language input, from your custom knowledge base (KB) of information.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 944ddb7f83a4d10861e5a16dbc69b8f9e4dabfe0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973787"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422681"
 ---
-# <a name="what-is-the-qna-maker-service"></a>Co je služba QnA Maker?
+# <a name="what-is-the-qna-maker-service"></a>What is the QnA Maker service?
 
-QnA Maker je cloudová služba pro zpracování přirozeného jazyka (NLP), která snadno vytvoří přirozenou konverzační vrstvu nad vašimi daty. Dá se použít k vyhledání nejvhodnější odpovědi pro všechny vstupy v přirozeném jazyce, od vlastní znalostní báze (KB) informací.
+QnA Maker is a cloud-based Natural Language Processing (NLP) service that easily creates a natural conversational layer over your data. It can be used to find the most appropriate answer for any given natural language input, from your custom knowledge base (KB) of information.
 
-Klientská aplikace pro QnA Maker je jakákoli konverzační aplikace, která komunikuje s uživatelem v přirozeném jazyce a odpoví na otázku. Mezi příklady klientských aplikací patří aplikace sociálních médií, chatboti a desktopové aplikace s podporou hlasových služeb.
+A client application for QnA Maker is any conversational application that communicates with a user in natural language to answer a question. Mezi příklady klientských aplikací patří aplikace sociálních médií, chatboti a desktopové aplikace s podporou hlasových služeb.
 
-## <a name="when-to-use-qna-maker"></a>Kdy použít QnA Maker
+## <a name="when-to-use-qna-maker"></a>When to use QnA Maker
 
-* **Pokud** máte statické informace – použijte QnA maker, když máte statické informace ve znalostní bázi odpovědí. Tato znalostní báze je vlastní pro vaše potřeby, které jste sestavili s dokumenty, jako jsou [soubory PDF a adresy URL](../concepts/data-sources-supported.md).
-* **Pokud chcete zadat stejnou odpověď na žádost, dotaz nebo příkaz** – když jiný uživatel odešle stejnou otázku, stejná odpověď se vrátí do obou. 
-* **Pokud chcete filtrovat statické informace založené na metadatech meta-informace** – Přidání značek [metadat](../how-to/metadata-generateanswer-usage.md) k poskytnutí dalších možností filtrování, které jsou relevantní pro uživatele klientské aplikace a informace. Mezi běžné informace o metadatech patří funkce [CHITEST-chat](../how-to/chit-chat-knowledge-base.md), typ obsahu nebo formát, účel obsahu a aktuálnost obsahu.
-* **Pokud chcete spravovat konverzaci robota, která zahrnuje statické informace** – vaše znalostní báze přebírá text nebo příkaz v konverzaci uživatele a odpoví na něj. Pokud je odpověď součástí předem stanoveného toku konverzace, který je ve znalostní bázi v [kontextu vícenásobného](../how-to/multiturn-conversation.md)zastavení, může tento tok snadno poskytnout.  
+* **When you have static information** - Use QnA Maker when you have static information in your knowledge base of answers. This knowledge base is custom to your needs, which you've built with documents such as [PDFs and URLs](../concepts/data-sources-supported.md).
+* **When you want to provide the same answer to a request, question, or command** - when different users submit the same question, the same answer is returned. 
+* **When you want to filter static information based on meta-information** - add [metadata](../how-to/metadata-generateanswer-usage.md) tags to provide additional filtering options relevant to your client application's users and the information. Common metadata information includes [chit-chat](../how-to/chit-chat-knowledge-base.md), content type or format, content purpose, and content freshness.
+* **When you want to manage a bot conversation that includes static information** - your knowledge base takes a user's conversational text or command and answers it. If the answer is part of a pre-determined conversation flow, represented in your knowledge base with [multi-turn context](../how-to/multiturn-conversation.md), the bot can easily provide this flow.  
 
-## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>Použití QnA Maker Knowledge Base v robotovi chatu
+## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>Use QnA Maker knowledge base in a chat bot
 
-Po publikování QnA Maker znalostní báze pošle klientská aplikace dotaz do koncového bodu znalostní báze a výsledky obdrží jako odpověď JSON. Společná klientská aplikace pro QnA Maker je robotem chatu.
+Once a QnA Maker knowledge base is published, a client application sends a question to your knowledge base endpoint and receives the results as a JSON response. A common client application for QnA Maker is a chat bot.
 
-![Požádat o otázku a získat odpověď od obsahu znalostní báze](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
+![Ask a bot a question and get answer from knowledge base content](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
 |Krok|Akce|
 |:--|:--|
-|1\. místo|Klientská aplikace pošle _dotaz_ uživatele (text vlastními slovy), "návody programově aktualizovat moji znalostní bázi?" do koncového bodu znalostní báze.|
-|2|QnA Maker využívá školenou znalostní bázi k poskytnutí správné odpovědi a dalších výzev, které lze použít k upřesnění hledání nejlepší odpovědi. QnA Maker vrátí odpověď ve formátu JSON.|
-|3|Klientská aplikace používá odpověď JSON k rozhodování o tom, jak pokračovat v konverzaci. Mezi tato rozhodnutí patří například zobrazení horní odpovědi nebo předvádění dalších možností pro upřesnění vyhledávání pro nejlepší odpověď. |
+|1\. místo|The client application sends the user's _question_ (text in their own words), "How do I programmatically update my Knowledge Base?" to your knowledge base endpoint.|
+|2|QnA Maker uses the trained knowledge base to provide the correct answer and any follow-up prompts that can be used to refine the search for the best answer. QnA Maker returns a JSON-formatted response.|
+|3|The client application uses the JSON response to make decisions about how to continue the conversation. These decisions can include showing the top answer and presenting more choices to refine the search for the best answer. |
 |||
 
-## <a name="what-is-a-knowledge-base"></a>Co je znalostní báze? 
+## <a name="what-is-a-knowledge-base"></a>What is a knowledge base? 
 
-QnA Maker [importuje obsah](../concepts/data-sources-supported.md) do znalostní báze sad otázek a odpovědí. Proces importu extrahuje informace o vztahu mezi částmi strukturovaného a částečně strukturovaného obsahu, aby vyznamenal vztahy mezi otázkami a sadami odpovědí. Tyto otázky a sady odpovědí můžete upravit nebo přidat nové.  
+QnA Maker [imports your content](../concepts/data-sources-supported.md) into a knowledge base of question and answer sets. The import process extracts information about the relationship between the parts of your structured and semi-structured content to imply relationships between the question and answer sets. You can edit these question and answer sets or add new sets.  
 
-Obsah sady otázek a odpovědí zahrnuje všechny alternativní otázky pro konkrétní odpověď, značky metadat použité k filtrování výběru odpovědí během hledání a následné výzvy pro pokračování v upřesnění hledání.
+The content of the question and answer set includes:
+* All the alternate forms of the question
+* Metadata tags used to filter answer choices during the search
+* Follow-up prompts to continue the search refinement
 
-![Ukázková otázka a odpověď s metadaty](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
+![Example question and answer with metadata](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
 
-Po publikování znalostní báze pošle klientská aplikace do vašeho koncového bodu otázku uživatele. Vaše služba QnA Maker zpracuje otázku a odpoví nejlepší odpovědí. 
+After you publish your knowledge base, a client application sends a user's question to your endpoint. Your QnA Maker service processes the question and responds with the best answer. 
 
-## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Vytváření, Správa a publikování na robotu bez kódu
+## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Create, manage, and publish to a bot without code
 
-Portál QnA Maker poskytuje kompletní prostředí pro vytváření znalostí znalostní báze. Do své znalostní báze můžete importovat dokumenty v jejich aktuálním formuláři. Tyto dokumenty (například časté otázky, ruční zadání produktu, tabulka nebo webová stránka) se převedou na sady otázek a odpovědí. Každá sada je analyzována pro následné výzvy a připojená k jiným sadám. Konečný formát Markdownu podporuje bohatou prezentaci, včetně obrázků a odkazů. 
+The QnA Maker portal provides the complete knowledge base authoring experience. You can import documents, in their current form, to your knowledge base. These documents (such as an FAQ, product manual, spreadsheet, or web page) are converted into question and answer sets. Each set is analyzed for follow-up prompts and connected to other sets. The final _markdown_ format supports rich presentation including images and links. 
 
-Po úpravě znalostní báze publikujte znalostní bázi do funkčního [robota webové aplikace Azure](https://azure.microsoft.com/services/bot-service/) bez psaní kódu. Vyzkoušejte si robota v [Azure Portal](https://portal.azure.com) nebo si stáhněte a pokračujte v vývoji. 
+Once your knowledge base is edited, publish the knowledge base to a working [Azure Web App bot](https://azure.microsoft.com/services/bot-service/) without writing any code. Test your bot in the [Azure portal](https://portal.azure.com) or download and continue development. 
 
-## <a name="search-quality-and-ranking-provides-the-best-possible-answer"></a>Hledání kvality a hodnocení poskytuje nejlepší možnou odpověď.
+## <a name="search-quality-and-ranking-provides-the-best-possible-answer"></a>Search quality and ranking provides the best possible answer
 
-Systém QnA Maker je přístup k vrstveným seřazením. Data se ukládají do služby Azure Search, která také slouží jako první vrstva hodnocení. Výsledky z Azure Search se pak předávají QnA Maker pomocí NLP modelu rehodnocení, který vám umožní dosáhnout konečných výsledků a skóre spolehlivosti.
+QnA Maker's system is a layered ranking approach. The data is stored in Azure search, which also serves as the first ranking layer. The top results from Azure search are then passed through QnA Maker's NLP re-ranking model to produce the final results and confidence score.
 
-## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker vylepšuje proces konverzace.
+## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker improves the conversation process
 
-QnA Maker poskytuje vícenásobné výzvy a aktivní učení, které vám pomůžou vylepšit základní otázky a sady odpovědí. 
+QnA Maker provides multi-turn prompts and active learning to help you improve your basic question and answer sets. 
 
-Funkce **vícenásobného zapnutí** vám umožní propojit páry otázek a odpovědí. Toto připojení umožňuje klientské aplikaci poskytovat nejlepší odpověď a poskytuje další otázky pro upřesnění hledání konečné odpovědi. 
+**Multi-turn prompts** give you the opportunity to connect question and answer pairs. This connection allows the client application to provide a top answer and provides more questions to refine the search for a final answer. 
 
-Až znalostní báze obdrží dotazy od uživatelů v publikovaném koncovém bodu, QnA Maker použije **aktivní učení** na tyto otázky reálného světa a navrhne tak změny ve znalostní bázi, aby se zlepšila kvalita. 
+After the knowledge base receives questions from users at the published endpoint, QnA Maker applies **active learning** to these real-world questions to suggest changes to your knowledge base to improve the quality. 
 
 ## <a name="development-lifecycle"></a>Životní cyklus vývoje
 
-QnA Maker poskytuje vytváření, školení a publikování společně s oprávněními pro spolupráci k integraci do celého životního cyklu vývoje. 
+QnA Maker provides authoring, training, and publishing along with collaboration permissions to integrate into the full development life cycle. 
 
 ## <a name="how-do-i-start"></a>Jak začít?
 
-**Krok 1**: vytvoření prostředku QnA Maker v [Azure Portal](https://portal.azure.com). 
+**Step 1**: Create a QnA Maker resource in the [Azure portal](https://portal.azure.com). 
 
-**Krok 2**: vytvoření znalostní báze na portálu [QnA maker](https://www.qnamaker.ai) . Přidejte [soubory a adresy URL](../concepts/data-sources-supported.md) pro vytvoření znalostní báze.  
+**Step 2**: Create a knowledge base in the [QnA Maker](https://www.qnamaker.ai) portal. Add [files and URLs](../concepts/data-sources-supported.md) to create the knowledge base.  
 
-**Krok 3**: publikování znalostní báze a testování z vlastního koncového bodu pomocí [oblé](../quickstarts/get-answer-from-kb-using-curl.md) nebo [post](../quickstarts/get-answer-from-kb-using-postman.md). 
+**Step 3**: Publish your knowledge base and test from your custom endpoint using [cURL or Postman](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md). 
 
-**Krok 4**: z klientské aplikace programově zavolejte koncový bod znalostní báze a přečtěte si odpověď JSON. zobrazí se nejlepší odpověď pro uživatele.  
+**Step 4**: From your client application, programmatically call your knowledge base's endpoint. The client application processes the JSON response to show the best answer to the user.  
 
 ## <a name="next-steps"></a>Další kroky
-QnA Maker poskytuje vše, co potřebujete k sestavování, správě a nasazení vlastní znalostní báze. 
+QnA Maker provides everything you need to build, manage, and deploy your custom knowledge base. 
 
 > [!div class="nextstepaction"]
-> [Projděte si nejnovější změny.](../whats-new.md)
+> [Review the latest changes](../whats-new.md)

@@ -1,6 +1,6 @@
 ---
-title: Implementace geograficky distribuovaného řešení
-description: Naučte se konfigurovat službu Azure SQL Database a aplikaci pro převzetí služeb při selhání replikovanou databází a testovací převzetí služeb při selhání.
+title: Implement a geo-distributed solution
+description: Learn to configure your Azure SQL database and application for failover to a replicated database, and test failover.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,119 +11,136 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 51380d312c778380602c64cac766b050511cf994
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1da977f41add19afa6f84b7e5a3dc99c980ac1cf
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810925"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421137"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>Kurz: implementace geograficky distribuované databáze
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Tutorial: Implement a geo-distributed database
 
-Nakonfigurujte službu Azure SQL Database a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestujte plán převzetí služeb při selhání. Získáte informace o těchto tématech:
+Configure an Azure SQL database and application for failover to a remote region and test a failover plan. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> - Vytvoření [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md)
-> - Spuštění aplikace Java pro dotazování databáze SQL Azure
+> - Create a [failover group](sql-database-auto-failover-group.md)
+> - Run a Java application to query an Azure SQL database
 > - Testovací převzetí služeb při selhání
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-K dokončení tohoto kurzu se ujistěte, že máte nainstalované následující položky:
+> [!IMPORTANT]
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+
+To complete the tutorial, make sure you've installed the following items:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Jedna databáze v Azure SQL Database. Chcete-li vytvořit jedno použití,
+- A single database in Azure SQL Database. To create one use,
   - [Azure Portal](sql-database-single-database-get-started.md)
   - [Rozhraní příkazového řádku](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
   > [!NOTE]
-  > V tomto kurzu se používá ukázková databáze *AdventureWorksLT* .
+  > The tutorial uses the *AdventureWorksLT* sample database.
 
-- Java a Maven, přečtěte si téma [Vytvoření aplikace pomocí SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), zvýraznění **Java** a výběr vašeho prostředí a pak postupujte podle pokynů.
+- Java and Maven, see [Build an app using SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), highlight **Java** and select your environment, then follow the steps.
 
 > [!IMPORTANT]
-> Nezapomeňte nastavit pravidla brány firewall tak, aby používala veřejnou IP adresu počítače, na kterém provedete kroky v tomto kurzu. Pravidla brány firewall na úrovni databáze se automaticky replikují na sekundární server.
+> Be sure to set up firewall rules to use the public IP address of the computer on which you're performing the steps in this tutorial. Database-level firewall rules will replicate automatically to the secondary server.
 >
-> Informace najdete v tématu vytvoření [pravidla brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) nebo určení IP adresy používané pro pravidlo brány firewall na úrovni serveru pro váš počítač v tématu [Vytvoření brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).  
+> For information see [Create a database-level firewall rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) or to determine the IP address used for the server-level firewall rule for your computer see [Create a server-level firewall](sql-database-server-level-firewall-rule.md).  
 
-## <a name="create-a-failover-group"></a>Vytvoření skupiny převzetí služeb při selhání
+## <a name="create-a-failover-group"></a>Create a failover group
 
-Pomocí Azure PowerShell vytvořit [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md) mezi existujícím serverem SQL Azure a novým serverem SQL Azure v jiné oblasti. Pak přidejte ukázkovou databázi do skupiny převzetí služeb při selhání.
+Using Azure PowerShell, create [failover groups](sql-database-auto-failover-group.md) between an existing Azure SQL server and a new Azure SQL server in another region. Then add the sample database to the failover group.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 
-Chcete-li vytvořit skupinu převzetí služeb při selhání, spusťte následující skript:
+To create a failover group, run the following script:
 
-   ```powershell
-    # Set variables for your server and database
-    $adminlogin = "<your admin>"
-    $password = "<your password>"
-    $myresourcegroupname = "<your resource group name>"
-    $mylocation = "<your resource group location>"
-    $myservername = "<your existing server name>"
-    $mydatabasename = "<your database name>"
-    $mydrlocation = "<your disaster recovery location>"
-    $mydrservername = "<your disaster recovery server name>"
-    $myfailovergroupname = "<your globally unique failover group name>"
+```powershell
+$admin = "<adminName>"
+$password = "<password>"
+$resourceGroup = "<resourceGroupName>"
+$location = "<resourceGroupLocation>"
+$server = "<serverName>"
+$database = "<databaseName>"
+$drLocation = "<disasterRecoveryLocation>"
+$drServer = "<disasterRecoveryServerName>"
+$failoverGroup = "<globallyUniqueFailoverGroupName>"
 
-    # Create a backup server in the failover region
-    New-AzSqlServer -ResourceGroupName $myresourcegroupname `
-       -ServerName $mydrservername `
-       -Location $mydrlocation `
-       -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
-          -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+# create a backup server in the failover region
+New-AzSqlServer -ResourceGroupName $resourceGroup -ServerName $drServer `
+    -Location $drLocation -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
+    -ArgumentList $admin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
-    # Create a failover group between the servers
-    New-AzSqlDatabaseFailoverGroup `
-       –ResourceGroupName $myresourcegroupname `
-       -ServerName $myservername `
-       -PartnerServerName $mydrservername  `
-       –FailoverGroupName $myfailovergroupname `
-       –FailoverPolicy Automatic `
-       -GracePeriodWithDataLossHours 2
+# create a failover group between the servers
+New-AzSqlDatabaseFailoverGroup –ResourceGroupName $resourceGroup -ServerName $server `
+    -PartnerServerName $drServer –FailoverGroupName $failoverGroup –FailoverPolicy Automatic -GracePeriodWithDataLossHours 2
 
-    # Add the database to the failover group
-    Get-AzSqlDatabase `
-       -ResourceGroupName $myresourcegroupname `
-       -ServerName $myservername `
-       -DatabaseName $mydatabasename | `
-     Add-AzSqlDatabaseToFailoverGroup `
-       -ResourceGroupName $myresourcegroupname `
-       -ServerName $myservername `
-       -FailoverGroupName $myfailovergroupname
-   ```
+# add the database to the failover group
+Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -DatabaseName $database | `
+    Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
+```
 
-Nastavení geografické replikace můžete v Azure Portal změnit také tak, že vyberete databázi **a pak > ** **geografické replikace**.
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-![Nastavení geografické replikace](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
+> [!IMPORTANT]
+> Run `az login` to sign in to Azure.
 
-## <a name="run-the-sample-project"></a>Spuštění ukázkového projektu
+```powershell
+$admin = "<adminName>"
+$password = "<password>"
+$resourceGroup = "<resourceGroupName>"
+$location = "<resourceGroupLocation>"
+$server = "<serverName>"
+$database = "<databaseName>"
+$drLocation = "<disasterRecoveryLocation>" # must be different then $location
+$drServer = "<disasterRecoveryServerName>"
+$failoverGroup = "<globallyUniqueFailoverGroupName>"
 
-1. V konzole vytvořte projekt Maven pomocí následujícího příkazu:
+# create a backup server in the failover region
+az sql server create --admin-password $password --admin-user $admin `
+    --name $drServer --resource-group $resourceGroup --location $drLocation
+
+# create a failover group between the servers
+az sql failover-group create --name $failoverGroup --partner-server $drServer `
+    --resource-group $resourceGroup --server $server --add-db $database `
+    --failover-policy Automatic --grace-period 2
+```
+
+* * *
+
+Geo-replication settings can also be changed in the Azure portal, by selecting your database, then **Settings** > **Geo-Replication**.
+
+![Geo-replication settings](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
+
+## <a name="run-the-sample-project"></a>Run the sample project
+
+1. In the console, create a Maven project with the following command:
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. Zadejte **Y** a stiskněte **ENTER**.
+1. Type **Y** and press **Enter**.
 
-1. Změňte adresáře na nový projekt.
+1. Change directories to the new project.
 
    ```bash
    cd SqlDbSample
    ```
 
-1. Pomocí oblíbeného editoru otevřete soubor *pom. XML* ve složce projektu.
+1. Using your favorite editor, open the *pom.xml* file in your project folder.
 
-1. Přidejte ovladač Microsoft JDBC pro závislost SQL Server přidáním následujícího oddílu `dependency`. Závislost musí být vložená v oblasti větší `dependencies`.
+1. Add the Microsoft JDBC Driver for SQL Server dependency by adding the following `dependency` section. The dependency must be pasted within the larger `dependencies` section.
 
    ```xml
    <dependency>
@@ -133,7 +150,7 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    </dependency>
    ```
 
-1. Zadejte verzi jazyka Java přidáním části `properties` za `dependencies` oddíl:
+1. Specify the Java version by adding the `properties` section after the `dependencies` section:
 
    ```xml
    <properties>
@@ -142,7 +159,7 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    </properties>
    ```
 
-1. Podporu souborů manifestu přidáním části `build` za `properties` oddíl:
+1. Support manifest files by adding the `build` section after the `properties` section:
 
    ```xml
    <build>
@@ -163,9 +180,9 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    </build>
    ```
 
-1. Uložte a zavřete soubor *pom. XML* .
+1. Save and close the *pom.xml* file.
 
-1. Otevřete soubor *App. Java* umístěný v souboru.. \SqlDbSample\src\main\java\com\sqldbsamples a nahraďte obsah následujícím kódem:
+1. Open the *App.java* file located in ..\SqlDbSample\src\main\java\com\sqldbsamples and replace the contents with the following code:
 
    ```java
    package com.sqldbsamples;
@@ -271,15 +288,15 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    }
    ```
 
-1. Uložte a zavřete soubor *App. Java* .
+1. Save and close the *App.java* file.
 
-1. V konzole příkazů spusťte následující příkaz:
+1. In the command console, run the following command:
 
    ```bash
    mvn package
    ```
 
-1. Spusťte aplikaci, která bude běžet přibližně 1 hodinu až do ručního zastavení, což vám umožní spustit test převzetí služeb při selhání.
+1. Start the application that will run for about 1 hour until stopped manually, allowing you time to run the failover test.
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -298,47 +315,67 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
 
 ## <a name="test-failover"></a>Testovací převzetí služeb při selhání
 
-Spusťte následující skripty pro simulaci převzetí služeb při selhání a sledujte výsledky aplikace. Všimněte si, že při migraci databáze dojde k selhání některých vložení a výběrů.
+Run the following scripts to simulate a failover and observe the application results. Notice how some inserts and selects will fail during the database migration.
 
-V průběhu testu můžete také zkontrolovat roli serveru pro zotavení po havárii pomocí následujícího příkazu:
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-   ```powershell
-   (Get-AzSqlDatabaseFailoverGroup `
-      -FailoverGroupName $myfailovergroupname `
-      -ResourceGroupName $myresourcegroupname `
-      -ServerName $mydrservername).ReplicationRole
-   ```
+You can check the role of the disaster recovery server during the test with the following command:
 
-Testování převzetí služeb při selhání:
+```powershell
+(Get-AzSqlDatabaseFailoverGroup -FailoverGroupName $failoverGroup `
+    -ResourceGroupName $resourceGroup -ServerName $drServer).ReplicationRole
+```
 
-1. Spustit ruční převzetí služeb při selhání pro skupinu převzetí služeb při selhání:
+To test a failover:
 
-   ```powershell
-   Switch-AzSqlDatabaseFailoverGroup `
-      -ResourceGroupName $myresourcegroupname `
-      -ServerName $mydrservername `
-      -FailoverGroupName $myfailovergroupname
-   ```
-
-1. Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
+1. Start a manual failover of the failover group:
 
    ```powershell
-   Switch-AzSqlDatabaseFailoverGroup `
-      -ResourceGroupName $myresourcegroupname `
-      -ServerName $myservername `
-      -FailoverGroupName $myfailovergroupname
+   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $myresourcegroupname `
+    -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
+
+1. Revert failover group back to the primary server:
+
+   ```powershell
+   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
+    -ServerName $server -FailoverGroupName $failoverGroup
+   ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+You can check the role of the disaster recovery server during the test with the following command:
+
+```azure-cli
+az sql failover-group show --name $failoverGroup --resource-group $resourceGroup --server $drServer
+```
+
+To test a failover:
+
+1. Start a manual failover of the failover group:
+
+   ```azure-cli
+   az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $drServer
+   ```
+
+1. Revert failover group back to the primary server:
+
+   ```azure-cli
+   az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
+   ```
+
+* * *
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali službu Azure SQL Database a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestovali jste plán převzetí služeb při selhání. Naučili jste se tyto postupy:
+In this tutorial, you configured an Azure SQL database and application for failover to a remote region and tested a failover plan. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > - Vytvoření skupiny převzetí služeb při selhání geografické replikace
-> - Spuštění aplikace Java pro dotazování databáze SQL Azure
+> - Run a Java application to query an Azure SQL database
 > - Testovací převzetí služeb při selhání
 
-Přejděte k dalšímu kurzu migrace pomocí DMS.
+Advance to the next tutorial on how to migrate using DMS.
 
 > [!div class="nextstepaction"]
-> [Migrace SQL Server do Azure SQL Database Managed instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md)
+> [Migrate SQL Server to Azure SQL database managed instance using DMS](../dms/tutorial-sql-server-to-managed-instance.md)

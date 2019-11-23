@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: Správa modelů na ML'
+title: 'MLOps: ML model management'
 titleSuffix: Azure Machine Learning
-description: 'Přečtěte si o správě modelů pomocí Azure Machine Learning (MLOps). Nasaďte, spravujte a Monitorujte své modely, abyste je mohli průběžně vylepšit. '
+description: 'Learn about model management with Azure Machine Learning (MLOps). Deploy, manage, and monitor your models to continuously improve them. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,166 +9,160 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 715752072a14a3220d17d0dbda2efd0786a83de4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271271"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420070"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model management, deployment, and monitoring with Azure Machine Learning
 
-V tomto článku se dozvíte, jak pomocí Azure Machine Learning spravovat životní cyklus vašich modelů. Azure Machine Learning využívá přístup k operacím s Machine Learning (MLOps), což zlepšuje kvalitu a konzistenci vašich řešení pro strojové učení. 
+In this article, learn about how to use Azure Machine Learning to manage the lifecycle of your models. Azure Machine Learning uses a Machine Learning Operations (MLOps) approach. MLOps improves the quality and consistency of your machine learning solutions. 
 
-Azure Machine Learning poskytuje následující možnosti MLOps:
+Azure Machine Learning provides the following MLOps capabilities:
 
-- **Nasazení projektů ML odkudkoli**
-- **Monitorovat aplikace na úrovni ml pro problémy související s provozními a ml** – porovnávají vstupy modelů mezi školením a odvozem, prozkoumejte metriky specifické pro model a poskytněte monitorování a výstrahy v infrastruktuře ml.
-- **Zachyťte data potřebná k vytvoření koncového záznamu v rámci životního cyklu ml**, včetně toho, kdo je publikuje, proč se změny provádějí a kdy se modely nasadily nebo používaly v produkčním prostředí.
-- **Automatizujte kompletní životní cyklus ml s Azure Machine Learning a Azure DevOps** , abyste často aktualizovali modely, otestovali nové modely a průběžně zavedli nové modely ml společně s ostatními aplikacemi a službami.
+- **Create reproducible ML pipelines**. Pipelines allow you to define repeatable and reusable steps for your data preparation, training, and scoring processes.
+- **Register, package, and deploy models from anywhere** and track associated metadata required to use the model.
+- **Capture the governance data required for capturing the end-to-end ML lifecycle**, including who is publishing models, why changes are being made, and when models were deployed or used in production.
+- **Notify and alert on events in the ML lifecycle** such as experiment completion, model registration, model deployment, and data drift detection.
+- **Monitor ML applications for operational and ML-related issues**. Compare model inputs between training and inference, explore model-specific metrics, and provide monitoring and alerts on your ML infrastructure.
+- **Automate the end-to-end ML lifecycle with Azure Machine Learning and Azure DevOps** to frequently update models, test new models, and continuously roll out new ML models alongside your other applications and services.
 
-Pokud chcete další informace o konceptech na pozadí MLOps a o tom, jak se vztahují na Azure Machine Learning, podívejte se na následující video.
+## <a name="create-reproducible-ml-pipelines"></a>Create reproducible ML pipelines
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
+Use ML pipelines from Azure Machine Learning to stitch together all of the steps involved in your model training process.
 
-## <a name="deploy-ml-projects-from-anywhere"></a>Nasazení projektů ML odkudkoli
+An ML pipeline can contain steps from data preparation to feature extraction to hyperparameter tuning to model evaluation. For more information, see [ML pipelines](concept-ml-pipelines.md).
 
-### <a name="turn-your-training-process-into-a-reproducible-pipeline"></a>Zapněte svůj školicí proces do reprodukovatelného kanálu.
-Použijte kanály ML z Azure Machine Learning ke spojování všech kroků zapojených do procesu školicích procesů, od přípravy dat až po extrakci parametrů až po vyladění modelu.
+## <a name="register-package-and-deploy-models-from-anywhere"></a>Register, package, and deploy models from anywhere
 
-Další informace najdete v tématu [ml kanály](concept-ml-pipelines.md).
+### <a name="register-and-track-ml-models"></a>Register and track ML models
 
-### <a name="register-and-track-ml-models"></a>Registrace a sledování modelů ML
-
-Registrace modelu umožňuje ukládat a modelovat modely v cloudu Azure ve vašem pracovním prostoru. Modelový registr usnadňuje uspořádání a sledování vašich vyškolených modelů.
-
-> [!TIP]
-> Registrovaný model je logický kontejner pro jeden nebo více souborů, které tvoří model. Například pokud máte model, který je uložený v několika souborech, můžete je zaregistrovat jako jeden model v pracovním prostoru Azure Machine Learning. Po registraci můžete zaregistrovaný model stáhnout nebo nasadit a získat všechny soubory, které byly zaregistrovány.
- 
-Registrované modely se identifikují podle názvu a verze. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky. Azure Machine Learning podporuje libovolný model, který lze načíst pomocí Pythonu 3.5.2 nebo vyššího.
+Model registration allows you to store and version your models in the Azure cloud, in your workspace. The model registry makes it easy to organize and keep track of your trained models.
 
 > [!TIP]
-> Můžete také registrovat modely školení mimo Azure Machine Learning.
+> A registered model is a logical container for one or more files that make up your model. For example, if you have a model that is stored in multiple files, you can register them as a single model in your Azure Machine Learning workspace. After registration, you can then download or deploy the registered model and receive all the files that were registered.
 
-Registrovaný model, který se používá v aktivním nasazení, se nedá odstranit.
-Další informace naleznete v části model registru v tématu [nasazení modelů](how-to-deploy-and-where.md#registermodel).
+Registered models are identified by name and version. Each time you register a model with the same name as an existing one, the registry increments the version. Additional metadata tags can be provided during registration. These tags are then used when searching for a model. Azure Machine Learning supports any model that can be loaded using Python 3.5.2 or higher.
 
-### <a name="package-and-debug-models"></a>Modely balíčků a ladění
+> [!TIP]
+> You can also register models trained outside Azure Machine Learning.
 
-Než model nasadíte do produkčního prostředí, je zabalen do image Docker. Ve většině případů probíhá vytváření obrázků automaticky na pozadí během nasazování. V případě pokročilých scénářů můžete bitovou kopii zadat ručně.
+You can't delete a registered model that is being used in an active deployment.
+For more information, see the register model section of [Deploy models](how-to-deploy-and-where.md#registermodel).
 
-Pokud narazíte na problémy s nasazením, můžete nasadit v místním vývojovém prostředí pro řešení potíží a ladění.
+### <a name="package-and-debug-models"></a>Package and debug models
 
-Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.md#registermodel) a [řešení potíží s nasazeními](how-to-troubleshoot-deployment.md).
+Before deploying a model into production, it is packaged into a Docker image. In most cases, image creation happens automatically in the background during deployment. You can manually specify the image.
 
-### <a name="validate-and-profile-models"></a>Ověřování modelů a profilace
+If you run into problems with the deployment, you can deploy on your local development environment for troubleshooting and debugging.
 
-Azure Machine Learning dá profilaci použít k určení ideálního nastavení procesoru a paměti, které se má použít při nasazení modelu. Ověřování modelu probíhá jako součást tohoto procesu pomocí dat, která zadáte pro proces profilace.
+For more information, see [Deploy models](how-to-deploy-and-where.md#registermodel) and [Troubleshooting deployments](how-to-troubleshoot-deployment.md).
 
-### <a name="convert-and-optimize-models"></a>Převod a optimalizace modelů
+### <a name="validate-and-profile-models"></a>Validate and profile models
 
-Převod modelu na [otevřený neuronové Network Exchange](https://onnx.ai) (ONNX) může zlepšit výkon. V průměru může převod na ONNX přinést dvojnásobnou hodnotu zvýšení výkonu.
+Azure Machine Learning can use profiling to determine the ideal CPU and memory settings to use when deploying your model. Model validation happens as part of this process, using data that you supply for the profiling process.
 
-Další informace o ONNX s Azure Machine Learning najdete v článku o [Vytvoření a zrychlení ml modelů](concept-onnx.md) .
+### <a name="convert-and-optimize-models"></a>Convert and optimize models
 
-### <a name="use-models"></a>Použití modelů
+Converting your model to [Open Neural Network Exchange](https://onnx.ai) (ONNX) may improve performance. On average, converting to ONNX can yield a 2x performance increase.
 
-Školicí modely strojového učení se dají nasadit jako webové služby v cloudu nebo lokálně na svém vývojovém prostředí. Můžete také nasadit modely pro Azure IoT Edge zařízení. Nasazení můžou pro Inferencing používat PROCESORová, GPU nebo pole FPGA (Array-programovatelná). Můžete také použít modely z Power BI.
+For more information on ONNX with Azure Machine Learning, see the [Create and accelerate ML models](concept-onnx.md) article.
 
-Při použití modelu jako webové služby nebo zařízení IoT Edge zadejte následující položky:
+### <a name="use-models"></a>Use models
 
-* Model (y), které se používají k určení skóre dat odeslaných do služby nebo zařízení.
-* Vstupní skript. Tento skript přijímá požadavky, používá model (y) k vyhodnocení dat a vrací odpověď.
-* Soubor prostředí Conda, který popisuje závislosti vyžadované modelem (y) a vstupním skriptem.
-* Jakékoli další prostředky, například text, data atd., které jsou vyžadovány modelem (y) a vstupním skriptem.
+Trained machine learning models are deployed as web services in the cloud or locally. You can also deploy models to Azure IoT Edge devices. Deployments use CPU, GPU, or field-programmable gate arrays (FPGA) for inferencing. You can also use models from Power BI.
 
-Tyto prostředky jsou zabaleny do bitové kopie Docker a nasazeny jako webová služba nebo modul IoT Edge.
+When using a model as a web service or IoT Edge device, you provide the following items:
 
-Volitelně můžete k dalšímu vyladění nasazení použít následující parametry:
+* The model(s) that are used to score data submitted to the service/device.
+* An entry script. This script accepts requests, uses the model(s) to score the data, and return a response.
+* A conda environment file that describes the dependencies required by the model(s) and entry script.
+* Any additional assets such as text, data, etc. that are required by the model(s) and entry script.
 
-* Povolit GPU: používá se k povolení podpory GPU v imagi Docker. Image se musí používat pro Microsoft Azure služby, jako je Azure Container Instances, Azure Kubernetes Service, Azure Machine Learning COMPUTE nebo Azure Virtual Machines.
-* Další kroky souboru Docker: soubor, který obsahuje další kroky Docker, které se mají spustit při vytváření image Docker.
-* Základní obrázek: vlastní image, která se použije jako základní image. Pokud nepoužíváte vlastní image, poskytuje Azure Machine Learning základní image.
+You also provide the configuration of the target deployment platform. For example, the VM family type, available memory, and number of cores when deploying to Azure Kubernetes Service.
 
-Také zadáte konfiguraci cílové platformy nasazení. Například typ rodiny virtuálních počítačů, dostupnou paměť a počet jader při nasazení do služby Azure Kubernetes.
+When the image is created, components required by Azure Machine Learning are also added. For example, assets needed to run the web service and interact with IoT Edge.
 
-Při vytvoření bitové kopie jsou přidány také součásti požadované Azure Machine Learning. Například prostředky potřebné ke spuštění webové služby a interakci s IoT Edge.
+#### <a name="batch-scoring"></a>Dávkové vyhodnocování
+Batch scoring is supported through ML pipelines. For more information, see [Batch predictions on big data](how-to-run-batch-predictions.md).
 
-> [!NOTE]
-> Webový server nebo součásti IoT Edge používané v imagi Docker nemůžete upravovat ani měnit. Azure Machine Learning používá konfiguraci webového serveru a IoT Edge součásti, které jsou testovány a podporovány společností Microsoft.
+#### <a name="real-time-web-services"></a>Real-time web services
 
-#### <a name="web-service"></a>Webová služba
-
-Můžete použít vaše modely ve **webových službách** s následujícími výpočetními cíli:
+You can use your models in **web services** with the following compute targets:
 
 * Instance kontejneru Azure
 * Azure Kubernetes Service
-* Místní vývojové prostředí
+* Local development environment
 
-Chcete-li model nasadit jako webovou službu, je nutné zadat následující položky:
+To deploy the model as a web service, you must provide the following items:
 
-* Model nebo komplet modelů.
-* Závislosti vyžadované pro použití modelu Například skript, který přijímá požadavky a vyvolá model, závislosti conda atd.
-* Konfigurace nasazení, která popisuje, jak a kde nasadit model.
+* The model or ensemble of models.
+* Dependencies required to use the model. For example, a script that accepts requests and invokes the model, conda dependencies, etc.
+* Deployment configuration that describes how and where to deploy the model.
 
-Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.md).
+For more information, see [Deploy models](how-to-deploy-and-where.md).
 
-#### <a name="iot-edge-devices"></a>IoT Edge zařízení
+#### <a name="iot-edge-devices"></a>IoT Edge devices
 
-Modely se zařízeními IoT můžete používat prostřednictvím **Azure IoT Edgech modulů**. Moduly IoT Edge jsou nasazeny do hardwarového zařízení, které umožňuje odvození modelu nebo vyhodnocování modelů na zařízení.
+You can use models with IoT devices through **Azure IoT Edge modules**. IoT Edge modules are deployed to a hardware device, which enables inference, or model scoring, on the device.
 
-Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.md).
+For more information, see [Deploy models](how-to-deploy-and-where.md).
 
 ### <a name="analytics"></a>Analýzy
 
-Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Microsoft Power BI supports using machine learning models for data analytics. For more information, see [Azure Machine Learning integration in Power BI (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 
-## <a name="monitor-for-operational--ml-issues"></a>Monitorování problémů s provozní & ML
+## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Capture the governance data required for capturing the end-to-end ML lifecycle
 
-Monitorování vám umožní pochopit, jaká data jsou odesílána do modelu, a předpovědi, který vrátí.
+Azure ML gives you the capability to track the end-to-end audit trail of all of your ML assets. Zejména:
 
-Tyto informace vám pomohou pochopit, jak je model používán. Shromážděná vstupní data mohou být užitečná také při výuce budoucích verzí modelu.
+- Azure ML [integrates with Git](how-to-set-up-training-targets.md#gitintegration) to track information on which repository / branch / commit your code came from.
+- [Azure ML Datasets](how-to-create-register-datasets.md) help you track, profile, and version data. 
+- Azure ML Run history stores a snapshot of the code, data, and compute used to train a model.
+- The Azure ML Model Registry captures all of the metadata associated with your model (which experiment trained it, where it is being deployed, if its deployments are healthy).
 
-Další informace najdete v tématu [Jak povolit shromažďování dat modelu](how-to-enable-data-collection.md).
+## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Notify, automate, and alert on events in the ML lifecycle
+Azure ML publishes key events to Azure EventGrid, which can be used to notify and automate on events in the ML lifecycle. For more information, please see [this document](how-to-use-event-grid.md).
+
+## <a name="monitor-for-operational--ml-issues"></a>Monitor for operational & ML issues
+
+Monitoring enables you to understand what data is being sent to your model, and the predictions that it returns.
+
+This information helps you understand how your model is being used. The collected input data may also be useful in training future versions of the model.
+
+For more information, see [How to enable model data collection](how-to-enable-data-collection.md).
 
 
-## <a name="audit-trail-of-the-ml-lifecycle"></a>Záznam auditu pro životní cyklus ML
+## <a name="automate-the-ml-lifecycle"></a>Automate the ML lifecycle 
 
-Azure ML vám nabízí možnost sledovat záznam o všech svých prostředcích ML na konci auditu. Konkrétně:
+You can use GitHub and Azure Pipelines to create a continuous integration process that trains a model. In a typical scenario, when a Data Scientist checks a change into the Git repo for a project, the Azure Pipeline will start a training run. The results of the run can then be inspected to see the performance characteristics of the trained model. You can also create a pipeline that deploys the model as a web service.
 
-- Azure ML [se integruje s Git](how-to-set-up-training-targets.md#gitintegration) , aby mohla sledovat informace o tom, ze kterého úložiště, větvení a potvrzení kódu pochází.
-- Datové [sady Azure ml](how-to-create-register-datasets.md) vám pomůžou sledovat a data verze.
-- Historie spuštění Azure ML ukládá snímek kódu, data a výpočetní prostředky, které se používají pro výuku modelu.
-- Registr modelu Azure ML zachycuje všechna metadata přidružená k vašemu modelu (které experiment vyškole, pokud je nasazený, pokud je jeho nasazení v pořádku).
+The [Azure Machine Learning extension](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) makes it easier to work with Azure Pipelines. It provides the following enhancements to Azure Pipelines:
 
-## <a name="automate-the-ml-lifecycle"></a>Automatizace životního cyklu ML 
+* Enables workspace selection when defining a service connection.
+* Enables release pipelines to be triggered by trained models created in a training pipeline.
 
-Pomocí GitHubu a Azure Pipelines můžete vytvořit proces průběžné integrace, který bude navlakovat do modelu. Když se v typickém scénáři zkontroluje data v úložišti Git pro projekt, kanál Azure spustí školicí běh. Výsledky spuštění je pak možné zkontrolovat, aby se zobrazily výkonnostní charakteristiky vyučeného modelu. Můžete také vytvořit kanál, který nasadí model jako webovou službu.
-
-[Rozšíření Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) usnadňuje práci s Azure Pipelines. Poskytuje následující vylepšení pro Azure Pipelines:
-
-* Umožňuje výběr pracovního prostoru při definování připojení služby.
-* Umožňuje aktivované kanály vydání vyškolené modely vytvořené v školicím kanálu.
-
-Další informace o použití Azure Pipelines s Azure Machine Learning najdete v článku [průběžná integrace a nasazování modelů ml s Azure Pipelinesm](/azure/devops/pipelines/targets/azure-machine-learning) článkem a úložištěm [Azure Machine Learning MLOps](https://aka.ms/mlops) .
+For more information on using Azure Pipelines with Azure Machine Learning, see the [Continuous integration and deployment of ML models with Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) article and the [Azure Machine Learning MLOps](https://aka.ms/mlops) repository.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu o tom, jak číst a prozkoumat následující zdroje:
+Learn more by reading and exploring the following resources:
 
-+ [Postup & nasazení modelů](how-to-deploy-and-where.md) pomocí Azure Machine Learning
++ [How & where to deploy models](how-to-deploy-and-where.md) with Azure Machine Learning
 
-+ [Kurz: nasazení modelu klasifikace image v ACI](tutorial-deploy-models-with-aml.md).
++ [Tutorial: Deploy an image classification model in ACI](tutorial-deploy-models-with-aml.md).
 
-+ [Ucelené příklady MLOps úložiště](https://github.com/microsoft/MLOps)
++ [End-to-end MLOps examples repo](https://github.com/microsoft/MLOps)
 
-+ [CI/CD modelů ML s Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning)
++ [CI/CD of ML models with Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning)
 
-+ Vytváření klientů využívajících [nasazený model](how-to-consume-web-service.md)
++ Create clients that [consume a deployed model](how-to-consume-web-service.md)
 
 + [Strojové učení ve velkém měřítku](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
-+ [Referenční architektury Azure AI & zástupce osvědčených postupů](https://github.com/microsoft/AI)
++ [Azure AI reference architectures & best practices rep](https://github.com/microsoft/AI)

@@ -1,5 +1,5 @@
 ---
-title: Zřízení simulovaného zařízení X. 509 pro Azure IoT Hub pomocí Node. js
+title: Provision simulated X.509 device to Azure IoT Hub using Node.js
 description: Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Node.js SDK pro zařízení pro službu Azure IoT Hub Device Provisioning. V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6572b4bc7e6ca8c364d64e8da33fe9140dbfbbbc
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5ba18ae304ee1d72306f233a5b288c358efcd696
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276281"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423357"
 ---
-# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení Node. js pro IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision an X.509 simulated device using Node.js device SDK for IoT Hub Device Provisioning Service
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Tyto kroky ukazují, jak vytvořit položku registrace ve službě Device Provisioning, simulovat zařízení X.509 na vývojovém počítači, propojit simulované zařízení se službou Device Provisioning a zaregistrovat zařízení v centru IoT pomocí sady [SDK pro zařízení Azure IoT Hub pro Node.js](https://github.com/Azure/azure-iot-sdk-node).
@@ -74,28 +74,28 @@ Pomocí vzorového kódu ze sady [Azure IoT SDK pro Node.js](https://github.com/
     node create_test_cert.js device {certificate-name}
     ```
 
-4. Přihlaste se k [Azure Portal](https://portal.azure.com), v nabídce vlevo vyberte tlačítko **všechny prostředky** a otevřete svou instanci služby Device Provisioning.
+4. Sign in to the [Azure portal](https://portal.azure.com), select the **All resources** button on the left-hand menu and open your Device Provisioning Service instance.
 
-5. V nabídce služba Device Provisioning vyberte **spravovat registrace**. Vyberte kartu **jednotlivé registrace** a v horní části vyberte tlačítko **přidat jednotlivou registraci** . 
+5. From the Device Provisioning Service menu, select **Manage enrollments**. Select **Individual Enrollments** tab and select the **Add individual enrollment** button at the top. 
 
-6. Na panelu **Přidat registraci** zadejte následující informace:
-   - Jako **Mechanismus** ověření identity vyberte *X.509*.
-   - V části *soubor. pem nebo. cer primárního certifikátu*zvolte *Vybrat soubor* a vyberte soubor certifikátu **{Certificate-Name} _cert. pem** vytvořený v předchozích krocích.  
+6. In the **Add Enrollment** panel, enter the following information:
+   - Jako *Mechanismus* ověření identity vyberte **X.509**.
+   - Under the *Primary certificate .pem or .cer file*, choose *Select a file* to select the certificate file **{certificate-name}_cert.pem** created in the previous steps.  
    - Volitelně můžete zadat následující informace:
      - Vyberte centrum IoT propojené s vaší zřizovací službou.
      - Zadejte jedinečné ID zařízení. Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. 
      - Aktualizujte **Počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace zařízení.
-     - Po dokončení klikněte na tlačítko **Uložit** . 
+     - Once complete, press the **Save** button. 
 
      [![Přidání jednotlivé registrace pro ověření X.509 na portálu](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
 
-     Po úspěšné registraci se vaše zařízení X. 509 zobrazí jako **{Certificate}** ve sloupci *ID registrace* na kartě *jednotlivé registrace* . tuto hodnotu si poznamenejte později.
+     On successful enrollment, your X.509 device appears as **{certificatename}** under the *Registration ID* column in the *Individual Enrollments* tab. Note this value for later.
 
 ## <a name="simulate-the-device"></a>Simulace zařízení
 
 Sada [SDK pro zařízení Azure IoT Hub pro Node.js](https://github.com/Azure/azure-iot-sdk-node) poskytuje snadný způsob, jak simulovat zařízení. Další informace najdete v tématu [Koncepty zařízení](https://docs.microsoft.com/azure/iot-dps/concepts-device).
 
-1. V Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning a poznamenejte si hodnoty **_globální koncový bod zařízení_** a **_Rozsah ID_** .
+1. In the Azure portal, select the **Overview** blade for your Device Provisioning service and note the **_GLobal Device Endpoint_** and **_ID Scope_** values.
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509-node/extract-dps-endpoints.png) 
 
@@ -115,8 +115,8 @@ Sada [SDK pro zařízení Azure IoT Hub pro Node.js](https://github.com/Azure/az
 
 4. Upravte soubor **register\_x509.js**. Po provedení následujících změn soubor uložte.
     - Hodnotu `provisioning host` nahraďte za **_Globální koncový bod zařízení_** , který jste si poznamenali dříve v **kroku 1**.
-    - Nahraďte `id scope` **_rozsahem ID_** , který jste si poznamenali v **kroku 1** výše. 
-    - Nahraďte `registration id` **_registračním ID_** zaznamenaným v předchozí části.
+    - Replace `id scope` with the **_ID Scope_** noted in **Step 1** above. 
+    - Replace `registration id` with the **_Registration ID_** noted in the previous section.
     - Hodnoty `cert filename` a `key filename` nahraďte za soubory, které jste si zkopírovali dříve v **kroku 2**. 
 
 5. Spusťte skript a ověřte úspěšné zřízení zařízení.
@@ -125,7 +125,7 @@ Sada [SDK pro zařízení Azure IoT Hub pro Node.js](https://github.com/Azure/az
     node register_x509.js
     ```   
 
-6. Na portálu přejděte k centru IoT propojenému s vaší službou zřizování a otevřete okno **zařízení IoT** . Po úspěšném zřízení simulovaného zařízení X. 509 do centra se jeho ID zařízení zobrazí v okně **zařízení IoT** se *stavem* **povoleno**. Pokud jste okno už otevřeli před spuštěním ukázkové aplikace zařízení, možná budete muset stisknout tlačítko **aktualizovat** v horní části. 
+6. In the portal, navigate to the IoT hub linked to your provisioning service and open the **IoT devices** blade. On successful provisioning of the simulated X.509 device to the hub, its device ID appears on the **IoT devices** blade, with *STATUS* as **enabled**. You might need to press the **Refresh** button at the top if you already opened the blade prior to running the sample device application. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/quick-create-simulated-device-x509-node/hubregistration.png) 
 
@@ -134,16 +134,16 @@ Sada [SDK pro zařízení Azure IoT Hub pro Node.js](https://github.com/Azure/az
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zařízení, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
+If you plan to continue working on and exploring the device client sample, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all resources created by this quickstart.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
-2. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete okno **Správa** registrací pro vaši službu a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
-3. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. Otevřete okno **zařízení IoT** pro vaše centrum, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
+2. From the left-hand menu in the Azure portal, select **All resources** and then select your Device Provisioning service. Open the **Manage Enrollments** blade for your service, and then select the **Individual Enrollments** tab. Select the check box next to the *REGISTRATION ID* of the device you enrolled in this quickstart, and press the **Delete** button at the top of the pane. 
+3. From the left-hand menu in the Azure portal, select **All resources** and then select your IoT hub. Open the **IoT devices** blade for your hub, select the check box next to the *DEVICE ID* of the device you registered in this quickstart, and then press the **Delete** button at the top of the pane.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili simulované zařízení X. 509 a zřídili ho do služby IoT Hub pomocí IoT Hub Device Provisioning Service Azure na portálu. Informace o tom, jak zaregistrovat zařízení X. 509 prostřednictvím kódu programu, najdete v rychlém startu pro programovou registraci zařízení X. 509. 
+In this quickstart, you’ve created a simulated X.509 device and provisioned it to your IoT hub using the Azure IoT Hub Device Provisioning Service on the portal. To learn how to enroll your X.509 device programmatically, continue to the quickstart for programmatic enrollment of X.509 devices. 
 
 > [!div class="nextstepaction"]
-> [Rychlý Start Azure – registrace zařízení X. 509 do Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-node.md)
+> [Azure quickstart - Enroll X.509 devices to Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-node.md)

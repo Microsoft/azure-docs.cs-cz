@@ -1,5 +1,5 @@
 ---
-title: Zřízení simulovaného zařízení X. 509 pro Azure IoT Hub pomocí jazyka C
+title: Provision simulated X.509 device to Azure IoT Hub using C
 description: V tomto rychlém startu se používají jednotlivé registrace. V tomto rychlém startu vytvoříte a zřídíte simulované zařízení X.509 pomocí sady SDK pro zařízení jazyka C pro službu Azure IoT Hub Device Provisioning.
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 525c0e1935b2e9a9c73f6f5a8be07c626a5a5c05
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5d0b634de9d296bc56d18b2e7a4a92e6340b07c3
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276223"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423163"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Rychlé zprovoznění: Zřízení simulovaného zařízení X.509 s využitím sady Azure IoT C SDK
 
@@ -32,9 +32,9 @@ V tomto článku si předvedeme jednotlivé registrace.
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povolenou úlohou [" C++vývoj pro stolní počítače"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later with the ['Desktop development with C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) workload enabled.
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 
@@ -42,9 +42,9 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="prepare-a-development-environment-for-the-azure-iot-c-sdk"></a>Příprava vývojového prostředí pro Azure IoT C SDK
 
-V této části připravíte vývojové prostředí, které se používá k sestavení [sady Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c), která obsahuje vzorový kód pro spouštěcí sekvenci X. 509.
+In this section, you will prepare a development environment used to build the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c), which includeS the sample code for the X.509 boot sequence.
 
-1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
+1. Download the [CMake build system](https://cmake.org/download/).
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
@@ -114,14 +114,14 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>Vytvoření položky registrace zařízení na portálu
 
-1. Přihlaste se k Azure Portal, v nabídce na levé straně vyberte tlačítko **všechny prostředky** a otevřete svou službu Device Provisioning.
+1. Sign in to the Azure portal, select the **All resources** button on the left-hand menu and open your Device Provisioning service.
 
-2. Vyberte kartu **spravovat registrace** a pak v horní části vyberte tlačítko **přidat jednotlivou registraci** . 
+2. Select the **Manage enrollments** tab, and then select the **Add individual enrollment** button at the top. 
 
-3. Na panelu **Přidat registraci** zadejte následující informace a stiskněte tlačítko **Uložit** .
+3. In the **Add Enrollment** panel, enter the following information, and press the **Save** button.
 
-    - **Mechanismus:** Jako **Mechanismus** ověření identity vyberte *X.509*.
-    - **Primární soubor certifikátu. pem nebo. CER:** Zvolte **Vybrat soubor** a vyberte soubor certifikátu X509testcert. pem, který jste vytvořili dříve.
+    - **Mechanismus:** Jako *Mechanismus* ověření identity vyberte **X.509**.
+    - **Primary certificate .pem or .cer file:** Choose **Select a file** to select the certificate file, X509testcert.pem, you created earlier.
     - **ID zařízení centra IoT Hub:** Jako ID zařízení zadejte **test-docs-cert-device**.
 
       [![Přidání jednotlivé registrace pro ověření X.509 na portálu](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
@@ -134,11 +134,11 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
 
 ## <a name="simulate-first-boot-sequence-for-the-device"></a>Simulace první spouštěcí sekvence pro zařízení
 
-V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekvenci zařízení do instance služby Device Provisioning Service. Toto spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí službě IoT Hub propojené s instancí služby Device Provisioning.
+V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekvenci zařízení do instance služby Device Provisioning Service. Tato spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí službě IoT Hub propojené s instancí služby Device Provisioning Service.
 
 
 
-1. V Azure Portal vyberte kartu **Přehled** vaší služby Device Provisioning a poznamenejte si hodnotu **_Rozsah ID_** .
+1. In the Azure portal, select the **Overview** tab for your Device Provisioning service and note the **_ID Scope_** value.
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -160,7 +160,7 @@ V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekven
 
 5. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**. 
 
-6. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano**a znovu sestavte projekt před spuštěním.
+6. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. In the prompt to rebuild the project, select **Yes**, to rebuild the project before running.
 
     Následující výstup je příkladem úspěšného spuštění ukázky klienta zřizování zařízení a připojení k instanci služby zřizování pro získání informací o centru IoT hub a zajištění registrace:
 
@@ -177,22 +177,22 @@ V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekven
     test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device    
     ```
 
-7. Na portálu přejděte k centru IoT propojenému s vaší službou zřizování a vyberte kartu **zařízení IoT** . Po úspěšném zřízení simulovaného zařízení X. 509 do centra se jeho ID zařízení zobrazí v okně **zařízení IoT** se *stavem* **povoleno**. Možná budete muset stisknout tlačítko **aktualizovat** v horní části. 
+7. In the portal, navigate to the IoT hub linked to your provisioning service and select the **IoT devices** tab. On successful provisioning of the simulated X.509 device to the hub, its device ID appears on the **IoT devices** blade, with *STATUS* as **enabled**. You might need to press the **Refresh** button at the top. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/quick-create-simulated-device/hub-registration.png) 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zařízení, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
+If you plan to continue working on and exploring the device client sample, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all resources created by this quickstart.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
-1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete **spravovat registrace** pro vaši službu a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
-1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. Otevřete **zařízení IoT** pro vaše centrum, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
+1. From the left-hand menu in the Azure portal, select **All resources** and then select your Device Provisioning service. Open **Manage Enrollments** for your service, and then select the **Individual Enrollments** tab. Select the check box next to the *REGISTRATION ID* of the device you enrolled in this quickstart, and press the **Delete** button at the top of the pane. 
+1. From the left-hand menu in the Azure portal, select **All resources** and then select your IoT hub. Open **IoT devices** for your hub, select the check box next to the *DEVICE ID* of the device you registered in this quickstart, and then press the **Delete** button at the top of the pane.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste na svém počítači s Windows vytvořili simulované zařízení X. 509 a pomocí Azure IoT Hub Device Provisioning Service na portálu jste ho zřídili ve službě IoT Hub. Informace o tom, jak zaregistrovat zařízení X. 509 prostřednictvím kódu programu, najdete v rychlém startu pro programovou registraci zařízení X. 509. 
+In this quickstart, you’ve created a simulated X.509 device on your Windows machine and provisioned it to your IoT hub using the Azure IoT Hub Device Provisioning Service on the portal. To learn how to enroll your X.509 device programmatically, continue to the quickstart for programmatic enrollment of X.509 devices. 
 
 > [!div class="nextstepaction"]
-> [Rychlý Start Azure – registrace zařízení X. 509 do Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)
+> [Azure quickstart - Enroll X.509 devices to Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)

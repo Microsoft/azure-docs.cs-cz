@@ -1,6 +1,6 @@
 ---
-title: Vytváření a Správa skupin akcí v Azure Portal
-description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
+title: Create and manage action groups in the Azure portal
+description: Learn how to create and manage action groups in the Azure portal.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,131 +8,129 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898162"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423851"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
-Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Create and manage action groups in the Azure portal
+An action group is a collection of notification preferences defined by the owner of an Azure subscription. Azure Monitor and Service Health alerts use action groups to notify users that an alert has been triggered. Various alerts may use the same action group or different action groups depending on the user's requirements. You may configure up to 2,000 action groups in a subscription.
 
-Nakonfigurujete akci, která upozorní uživatele e-mailem nebo SMS, obdrží potvrzení oznamující, že byly přidány do skupiny akcí.
+You configure an action to notify a person by email or SMS, they receive a confirmation indicating they have been added to the action group.
 
-V tomto článku se dozvíte, jak vytvořit a spravovat skupiny akcí v Azure Portal.
+This article shows you how to create and manage action groups in the Azure portal.
 
-Každá akce se skládá z následujících vlastností:
+Each action is made up of the following properties:
 
-* **Název**: Jedinečný identifikátor v rámci skupiny akcí.  
-* **Typ akce**: Akce provedena. Mezi příklady patří odesílání hlasových hovorů, SMS, e-mailu; nebo spouštějí různé typy automatizovaných akcí. Další informace najdete v části typy dále v tomto článku.
-* **Podrobnosti**: Odpovídající podrobnosti, které se liší podle *typu akce*.
+* **Name**: A unique identifier within the action group.  
+* **Action type**: The action performed. Examples include sending a voice call, SMS, email; or triggering various types of automated actions. See types later in this article.
+* **Details**: The corresponding details that vary by *action type*.
 
-Informace o použití šablon Azure Resource Manager ke konfiguraci skupin akcí naleznete v tématu [Group action správce prostředků Templates](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+For information on how to use Azure Resource Manager templates to configure action groups, see [Action group Resource Manager templates](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-## <a name="create-an-action-group-by-using-the-azure-portal"></a>Vytvoření skupiny akcí pomocí Azure Portal
+## <a name="create-an-action-group-by-using-the-azure-portal"></a>Create an action group by using the Azure portal
 
-1. V [Azure Portal](https://portal.azure.com)vyberte monitorovat. Podokno **monitorování** slučuje všechna nastavení monitorování a data v jednom zobrazení.
+1. In the [Azure portal](https://portal.azure.com), search for and select **Monitor**. The **Monitor** pane consolidates all your monitoring settings and data in one view.
 
-    ![Služba monitorování](./media/action-groups/home-monitor.png)
+1. Vyberte **Upozornění** a pak vyberte **Spravovat akce**.
+
+    ![Manage Actions button](./media/action-groups/manage-action-groups.png)
     
-1. Vyberte **výstrahy** a pak vyberte **Spravovat akce**.
+1. Select **Add action group**, and fill in the fields.
 
-    ![Tlačítko pro správu akcí](./media/action-groups/manage-action-groups.png)
+    ![The "Add action group" command](./media/action-groups/add-action-group.png)
     
-1. Vyberte **Přidat skupinu akcí**a vyplňte pole.
+1. Enter a name in the **Action group name** box, and enter a name in the **Short name** box. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 
-    ![Příkaz Přidat skupinu akcí](./media/action-groups/add-action-group.png)
+      ![The Add action group" dialog box](./media/action-groups/action-group-define.png)
+
+1. The **Subscription** box autofills with your current subscription. This subscription is the one in which the action group is saved.
+
+1. Select the **Resource group** in which the action group is saved.
+
+1. Define a list of actions. Provide the following for each action:
+
+    1. **Name**: Enter a unique identifier for this action.
+
+    1. **Action Type**: Select Email/SMS/Push/Voice, Logic App, Webhook, ITSM, or Automation Runbook.
+
+    1. **Details**: Based on the action type, enter a phone number, email address, webhook URI, Azure app, ITSM connection, or Automation runbook. For ITSM Action, additionally specify **Work Item** and other fields your ITSM tool requires.
     
-1. Do pole **název skupiny akcí** zadejte název a zadejte název do pole **krátký název** . Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
+    1. **Common alert schema**: You can choose to enable the [common alert schema](https://aka.ms/commonAlertSchemaDocs), which provides the advantage of having a single extensible and unified alert payload across all the alert services in Azure Monitor.
 
-      ![Dialogové okno Přidat skupinu akcí](./media/action-groups/action-group-define.png)
+1. Select **OK** to create the action group.
 
-1. Pole **předplatné** se vyplní vaším aktuálním předplatným. Toto předplatné je ten, ve kterém je skupina akcí uložená.
+## <a name="manage-your-action-groups"></a>Manage your action groups
 
-1. Vyberte **skupinu prostředků** , ve které se skupina akcí uloží.
+After you create an action group, it's visible in the **Action groups** section of the **Monitor** pane. Select the action group you want to manage to:
 
-1. Definujte seznam akcí. Pro každou akci zadejte následující:
+* Add, edit, or remove actions.
+* Delete the action group.
 
-    1. **Název**: Zadejte jedinečný identifikátor pro tuto akci.
-
-    1. **Typ akce**: Vyberte E-mail/SMS/nabízený/hlas, Logic App, Webhook, ITSM nebo Automation Runbook.
-
-    1. **Podrobnosti**: Na základě typu akce zadejte telefonní číslo, e-mailovou adresu, identifikátor URI Webhooku, aplikaci Azure, připojení ITSM nebo Runbook Automation. Pro akci ITSM zadejte také **pracovní položku** a další pole, které nástroj ITSM vyžaduje.
-    
-    1. **Běžné schéma výstrah**: Můžete zvolit, že se má povolit [společné schéma výstrah](https://aka.ms/commonAlertSchemaDocs), což vám umožní využít jedinou rozšiřitelnou a jednotnou datovou část pro všechny služby výstrah v rámci Azure monitor.
-
-1. Vyberte **OK** a vytvořte skupinu akcí.
-
-## <a name="manage-your-action-groups"></a>Správa skupin akcí
-
-Po vytvoření skupiny akcí je tato skupina zobrazená v části **skupiny akcí** v podokně **monitorování** . Vyberte skupinu akcí, pro kterou chcete spravovat:
-
-* Přidat, upravit nebo odebrat akce.
-* Odstraňte skupinu akcí.
-
-## <a name="action-specific-information"></a>Informace specifické pro akci
+## <a name="action-specific-information"></a>Action specific information
 
 > [!NOTE]
-> V tématu [omezení služby předplatného pro monitorování](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) pro číselná omezení u každé z níže uvedených položek.  
+> See [Subscription Service Limits for Monitoring](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) for numeric limits on each of the items below.  
 
-### <a name="automation-runbook"></a>Runbook služby Automation
-Omezení pro datové části sady Runbook najdete v části [omezení služby předplatného Azure](../../azure-subscription-service-limits.md) .
+### <a name="automation-runbook"></a>Automation Runbook
+Refer to the [Azure subscription service limits](../../azure-subscription-service-limits.md) for limits on Runbook payloads.
 
-Ve skupině akcí můžete mít omezený počet akcí sady Runbook. 
+You may have a limited number of Runbook actions in an Action Group. 
 
-### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
-Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
+### <a name="azure-app-push-notifications"></a>Azure app Push Notifications
+You may have a limited number of Azure app actions in an Action Group.
 
-### <a name="email"></a>Email
-E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že je správně nakonfigurováno filtrování e-mailů.
+### <a name="email"></a>E-mail
+Emails will be sent from the following email addresses. Ensure that your email filtering is configured appropriately
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+You may have a limited number of email actions in an Action Group. See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
 
-### <a name="email-azure-resource-manager-role"></a>Poslat e-mail roli Azure Resource Manageru
-Odešlete e-mail členům role předplatného.
+### <a name="email-azure-resource-manager-role"></a>Email Azure Resource Manager Role
+Send email to the members of the subscription's role.
 
-Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+You may have a limited number of email actions in an Action Group. See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
 
 ### <a name="function"></a>Funkce
-Klíče funkcí pro aplikace Function App nakonfigurované jako akce jsou čteny prostřednictvím rozhraní API Functions, které aktuálně vyžaduje aplikace funkce v2 ke konfiguraci nastavení aplikace "AzureWebJobsSecretStorageType" na "soubory". Další informace najdete v tématu [změny správy klíčů ve Functions v2]( https://aka.ms/funcsecrets).
+The function keys for Function Apps configured as actions are read through the Functions API, which currently requires v2 function apps to configure the app setting “AzureWebJobsSecretStorageType” to “files”. For more information, see [Changes to Key Management in Functions V2]( https://aka.ms/funcsecrets).
 
-Ve skupině akcí můžete mít omezený počet akcí funkce.
+You may have a limited number of Function actions in an Action Group.
 
 ### <a name="itsm"></a>ITSM
-Akce ITSM vyžaduje připojení ITSM. Naučte se vytvořit [připojení ITSM](../../azure-monitor/platform/itsmc-overview.md).
+ITSM Action requires an ITSM Connection. Learn how to create an [ITSM Connection](../../azure-monitor/platform/itsmc-overview.md).
 
-Ve skupině akcí můžete mít omezený počet ITSM akcí. 
+You may have a limited number of ITSM actions in an Action Group. 
 
-### <a name="logic-app"></a>Aplikace logiky
-Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
+### <a name="logic-app"></a>Logická aplikace
+You may have a limited number of Logic App actions in an Action Group.
 
-### <a name="secure-webhook"></a>Zabezpečený Webhook
-**Funkce zabezpečeného Webhooku je teď ve verzi Preview.**
+### <a name="secure-webhook"></a>Secure Webhook
+**The Secure Webhook functionality is currently in Preview.**
 
-Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+The Action Groups Webhook action enables you to take advantage of Azure Active Directory to secure the connection between your action group and your protected web API (webhook endpoint). The overall workflow for taking advantage of this functionality is described below. For an overview of Azure AD Applications and service principals, see [Microsoft identity platform (v2.0) overview](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
-1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
-    - Nakonfigurujte chráněné rozhraní API, které bude volat aplikace typu démon.
+1. Create an Azure AD Application for your protected web API. Viz https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+    - Configure your protected API to be called by a daemon app.
     
-1. Povolením použití skupin akcí v aplikaci Azure AD.
+1. Enable Action Groups to use your Azure AD Application.
 
     > [!NOTE]
-    > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) .
+    > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
     
-    - Pokud chcete použít ID tenanta Azure AD, upravte volání Connect-AzureAD skriptu PowerShellu.
-    - Úprava proměnné $myAzureADApplicationObjectId skriptu PowerShellu pro použití ID objektu vaší aplikace Azure AD
-    - Spusťte upravený skript.
+    - Modify the PowerShell script's Connect-AzureAD call to use your Azure AD Tenant ID.
+    - Modify the PowerShell script's variable $myAzureADApplicationObjectId to use the Object ID of your Azure AD Application
+    - Run the modified script.
     
-1. Nakonfigurujte akci zabezpečeného Webhooku skupiny akcí.
-    - Zkopírujte hodnotu $myApp. ObjectId ze skriptu a zadejte ji do pole ID objektu aplikace v definici akce Webhooku.
+1. Configure the Action Group Secure Webhook action.
+    - Copy the value $myApp.ObjectId from the script and enter it in the Application Object ID field in the Webhook action definition.
     
-    ![Akce zabezpečení Webhooku](./media/action-groups/action-groups-secure-webhook.png)
+    ![Secure Webhook action](./media/action-groups/action-groups-secure-webhook.png)
 
-#### <a name="secure-webhook-powershell-script"></a>Zabezpečený skript prostředí PowerShell Webhooku
+#### <a name="secure-webhook-powershell-script"></a>Secure Webhook PowerShell Script
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -202,19 +200,19 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>SMS
-Další důležité informace najdete v tématu [omezení přenosové rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) a [chování výstrah serveru SMS](../../azure-monitor/platform/alerts-sms-behavior.md) .
+See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) and [SMS alert behavior](../../azure-monitor/platform/alerts-sms-behavior.md) for additional important information.
 
-Ve skupině akcí můžete mít omezený počet akcí serveru SMS.  
+You may have a limited number of SMS actions in an Action Group.  
 
 ### <a name="voice"></a>Hlas
-Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
 
-Ve skupině akcí můžete mít omezený počet hlasových akcí.
+You may have a limited number of Voice actions in an Action Group.
 
 ### <a name="webhook"></a>Webhook
-Webhooky se zopakují pomocí následujících pravidel. Volání Webhooku se v případě vrácení následujících stavových kódů HTTP znovu pokusí o maximálně 2 časy: 408, 429, 503, 504 nebo když koncový bod HTTP neodpovídá. První opakování se provede po 10 sekundách. Druhý pokus proběhne po 100 sekundách. Po dvou selháních nebude žádná skupina akcí volat koncový bod na 30 minut. 
+Webhooks are retried using the following rules. The webhook call is retried a maximum of 2 times when the following HTTP status codes are returned: 408, 429, 503, 504 or the HTTP endpoint does not respond. První opakování se provede po 10 sekundách. The second retry happens after 100 seconds. After two failures, no action group will call the endpoint for 30 minutes. 
 
-Zdrojové rozsahy IP adres
+Source IP address ranges
  - 13.72.19.232
  - 13.106.57.181
  - 13.106.54.3
@@ -231,16 +229,16 @@ Zdrojové rozsahy IP adres
  - 51.5.148.86
  - 51.5.149.19
 
-Chcete-li dostávat aktualizace o změnách těchto IP adres, doporučujeme nakonfigurovat Service Health výstrahu, která sleduje informační oznámení o službě skupin akcí.
+To receive updates about changes to these IP addresses, we recommend you configure a Service Health alert, which monitors for Informational notifications about the Action Groups service.
 
-Ve skupině akcí můžete mít omezený počet akcí Webhooku.
+You may have a limited number of Webhook actions in an Action Group.
 
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md).  
-* Získejte [informace o schématu Webhooku upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Další informace o [konektoru ITSM](../../azure-monitor/platform/itsmc-overview.md)
-* Přečtěte si další informace o [omezování četnosti](../../azure-monitor/platform/alerts-rate-limiting.md) výstrah.
-* Získejte [Přehled výstrah protokolu aktivit](../../azure-monitor/platform/alerts-overview.md)a Naučte se přijímat výstrahy.  
-* Naučte se [konfigurovat výstrahy pokaždé, když se publikuje oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+* Learn more about [SMS alert behavior](../../azure-monitor/platform/alerts-sms-behavior.md).  
+* Gain an [understanding of the activity log alert webhook schema](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
+* Learn more about [ITSM Connector](../../azure-monitor/platform/itsmc-overview.md)
+* Learn more about [rate limiting](../../azure-monitor/platform/alerts-rate-limiting.md) on alerts.
+* Get an [overview of activity log alerts](../../azure-monitor/platform/alerts-overview.md), and learn how to receive alerts.  
+* Learn how to [configure alerts whenever a service health notification is posted](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

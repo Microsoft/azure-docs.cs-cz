@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: protokolování toku přenosů v síti do a z virtuálního počítače – Azure Portal'
+title: Tutorial - Log network traffic flow to and from a VM using the Azure portal
 titleSuffix: Azure Network Watcher
-description: Zjistěte, jak protokolovat tok síťového provozu do a z virtuálního počítače pomocí funkce protokolů toku NSG služby Network Watcher.
+description: In this tutorial, learn how to log network traffic flow to and from a VM using Network Watcher's NSG flow logs capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 53cfb2e46b642def12bfc6aea2f35c245e8427aa
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a5d600e761ce3c3cebbe155c6be7e0f5a377eb32
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278006"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419628"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí portálu Azure Portal
 
@@ -41,12 +41,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
-2. Vyberte **COMPUTE**a potom vyberte **Windows Server 2016 Datacenter** nebo verzi **Ubuntu serveru**.
+2. Select **Compute**, and then select **Windows Server 2016 Datacenter** or a version of **Ubuntu Server**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **OK**:
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVm|
+    |Name (Název)|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
@@ -63,7 +63,7 @@ Vytvoření virtuálního počítače trvá několik minut. Se zbývajícími kr
 
 Pokud už máte sledovací proces sítě v oblasti USA – východ povolený, přejděte na [Registrace poskytovatele Insights](#register-insights-provider).
 
-1. Na portálu vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
 2. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
@@ -89,14 +89,14 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
     | Nastavení        | Hodnota                                                        |
     | ---            | ---   |
-    | Název           | Délka 3–24 znaků, může obsahovat jenom malá písmena a čísla a musí být jedinečný v rámci všech účtů Azure Storage.                                                               |
+    | Name (Název)           | Délka 3–24 znaků, může obsahovat jenom malá písmena a čísla a musí být jedinečný v rámci všech účtů Azure Storage.                                                               |
     | Umístění       | Vyberte **USA – východ**.                                           |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
 
-    Vytvoření účtu úložiště může trvat kolem minuty. Se zbývajícími kroky nepokračujte, dokud se účet úložiště nevytvoří. Pokud místo vytvoření nového účtu úložiště používáte už existující účet, vyberte účet úložiště, který má vybrané **Všechny sítě** (výchozí) v možnosti **Brány firewall a virtuální sítě** v **NASTAVENÍ** pro účet úložiště. Ve všech případech musí být účet úložiště ve stejné oblasti jako NSG. 
+    Vytvoření účtu úložiště může trvat kolem minuty. Se zbývajícími kroky nepokračujte, dokud se účet úložiště nevytvoří. Pokud místo vytvoření nového účtu úložiště používáte už existující účet, vyberte účet úložiště, který má vybrané **Všechny sítě** (výchozí) v možnosti **Brány firewall a virtuální sítě** v **NASTAVENÍ** pro účet úložiště. In all cases, the storage account must be in the same region as the NSG. 
     
     > [!NOTE]
-    > I když jsou poskytovatelé služeb Microsoft. Insight a Microsoft. Network aktuálně podporováni jako [důvěryhodné služby Microsoftu pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), protokoly toku NSG se pořád neúplně zaregistrují. Aby bylo možné povolit protokolování toku NSG, musí být **všechny sítě** vybrány jak je uvedeno výše.
+    > While Microsoft.Insight and Microsoft.Network providers are currently supported as [trusted Microsoft Services for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), NSG Flow logs is still not fully onboarded. To enable NSG Flow logging, **All Networks** must be selected as mentioned above.
     
 4. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 5. Pod **PROTOKOLY** vyberte **Protokoly toku NSG**, jak je vidět na tomto obrázku:
@@ -105,19 +105,19 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
 6. V seznamu NSG vyberte NSG s názvem **myVm-nsg**.
 7. V **Nastavení protokolů toku** vyberte **Zapnuto**.
-8. Vyberte verzi protokolování toku. Verze 2 obsahuje statistiku relací toků (bajty a pakety).
+8. Select the flow logging version. Version 2 contains flow-session statistics (Bytes and Packets)
 
-   ![Vyberte verzi protokolů Flow](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+   ![Select flow Logs version](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. Vyberte účet úložiště, který jste vytvořili v kroku 3.
    > [!NOTE]
-   > Protokoly NSG Flow nefungují s účty úložiště, pokud:
-   > * Účty úložiště mají povolenou bránu firewall.
-   > * Účty úložiště mají povolený [hierarchický obor názvů](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
+   > NSG Flow Logs do not work with storage accounts if:
+   > * The storage accounts have a firewall enabled.
+   > * The storage accounts have [hierarchical namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) enabled.
 1. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 10. Nastavte **Doba uchování (dny)** na 5 a pak vyberte **Uložit**.
     > [!IMPORTANT]
-    > V současné době dochází k potížím s [protokolem toku NSG (Network Security Group)](network-watcher-nsg-flow-logging-overview.md) pro Network Watcher se z úložiště objektů BLOB automaticky neodstraňují na základě nastavení zásad uchovávání informací. Pokud máte existující nenulové zásady uchovávání informací, doporučujeme, abyste pravidelně odstranili objekty blob úložiště, které jsou po dobu jejich uchování, a nemuseli se jim účtovat poplatky. Další informace o tom, jak odstranit blog úložiště protokolu toku NSG, najdete v tématu [odstranění objektů BLOB úložiště protokolu toku NSG](network-watcher-delete-nsg-flow-log-blobs.md).
+    > Currently, there’s an issue where [network security group (NSG) flow logs](network-watcher-nsg-flow-logging-overview.md) for Network Watcher are not automatically deleted from Blob storage based on retention policy settings. If you have an existing non-zero retention policy, we recommend that you periodically delete the storage blobs that are past their retention period to avoid any incurring charges. For more information about how to delete the NSG flow log storage blog, see [Delete NSG flow log storage blobs](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="download-flow-log"></a>Stažení toku protokolu
 
@@ -127,10 +127,10 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
    ![Stažení protokolů toku](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Vyberte účet úložiště, který jste nakonfigurovali ve 2. kroku [Povolení protokolu toku NSG](#enable-nsg-flow-log).
-4. V části **BLOB Service**vyberte **objekty blob**a potom vyberte kontejner **Insights-logs-networksecuritygroupflowevent** .
-5. V kontejneru přejděte do hierarchie složek, dokud se nedostanete do souboru PT1H. JSON, jak je znázorněno na následujícím obrázku. Soubory protokolu se zapisují do hierarchie složek, které následují po následujících konvencích vytváření názvů: https://{storageAccountName}. blob. Core. Windows. NET/Insights-logs-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
+4. Under **Blob service**, select **Blobs**, and then select the **insights-logs-networksecuritygroupflowevent** container.
+5. In the container, navigate the folder hierarchy until you get to a PT1H.json file, as shown in the picture that follows. Log files are written to a folder hierarchy that follows the following naming convention: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
-   ![Protokol toku](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
+   ![Flow log](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. Vyberte **...**  vpravo od souboru PT1H.json a vyberte **Stáhnout**.
 
@@ -138,7 +138,7 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
 Následující kód json je příkladem toho, co se zobrazí v souboru PT1H.json pro každý tok, pro který se protokolují data:
 
-### <a name="version-1-flow-log-event"></a>Událost protokolu toku verze 1
+### <a name="version-1-flow-log-event"></a>Version 1 flow log event
 ```json
 {
     "time": "2018-05-01T15:00:02.1713710Z",
@@ -164,7 +164,7 @@ Následující kód json je příkladem toho, co se zobrazí v souboru PT1H.json
     }
 }
 ```
-### <a name="version-2-flow-log-event"></a>Událost protokolu toku verze 2
+### <a name="version-2-flow-log-event"></a>Version 2 flow log event
 ```json
 {
     "time": "2018-11-13T12:00:35.3899262Z",
@@ -215,15 +215,15 @@ Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, kte
 | 10.0.0.4  | Zdrojová IP adresa      | Zdrojová IP adresa, ze které tok pocházel. 10.0.0.4 je privátní IP adresa virtuálního počítače, který jste vytvořili ve [Vytvoření virtuálního počítače](#create-a-vm).
 | 13.67.143.118     | Cílová IP adresa | Cílová IP adresa, kam tok mířil.                                                                                  |
 | 44931        | Zdrojový port            | Zdrojový port, ze které tok pocházel.                                           |
-| 443         | Cílový port       | Cílový port, do kterého tok mířil. Vzhledem k tomu, že provoz byl určen pro port 443, pravidlo s názvem **UserRule_default-Allow-RDP**v souboru protokolu zpracovalo tok.                                                |
-| T            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
+| 443         | Cílový port       | Cílový port, do kterého tok mířil. Since the traffic was destined to port 443, the rule named **UserRule_default-allow-rdp**, in the log file processed the flow.                                                |
+| bil.            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
 | O            | Směr              | Jestli byl provoz příchozí (I) nebo odchozí (O).                                     |
 | A            | Akce                 | Jestli byl provoz povolený (A) nebo odmítnutý (D).  
-| C            | Pouze stav toku **verze 2** | Zachycuje stav toku. Možné stavy jsou při vytváření toku **B**: begin. Statistiky nejsou k dispozici. **C**: pokračuje se na průběžný tok. Statistika je k dispozici v intervalu 5 minut. **E**: end, když se ukončí tok. Statistiky jsou k dispozici. |
-| 30 | Odeslané pakety – pouze zdrojová do cílové **verze 2** | Celkový počet paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace. |
-| 16978 | Odeslané bajty – pouze zdrojová do cíle **verze 2** | Celkový počet bajtů paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část. |
-| 24 | Odeslané pakety – pouze cíl až ke zdrojové **verzi 2** | Celkový počet paketů TCP nebo UDP odeslaných z cíle do zdroje od poslední aktualizace. |
-| 14008| Odeslané bajty – pouze cíl až ke zdrojové **verzi 2** | Celkový počet bajtů paketů TCP a UDP odeslaných z cíle do zdroje od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.|
+| C            | Flow State **Version 2 Only** | Captures the state of the flow. Possible states are **B**: Begin, when a flow is created. Statistics aren't provided. **C**: Continuing for an ongoing flow. Statistics are provided at 5-minute intervals. **E**: End, when a flow is terminated. Statistics are provided. |
+| 30 | Packets sent - Source to destination **Version 2 Only** | The total number of TCP or UDP packets sent from source to destination since last update. |
+| 16978 | Bytes sent - Source to destination **Version 2 Only** | The total number of TCP or UDP packet bytes sent from source to destination since last update. Packet bytes include the packet header and payload. |
+| 24 | Packets sent - Destination to source **Version 2 Only** | The total number of TCP or UDP packets sent from destination to source since last update. |
+| 14008| Bytes sent - Destination to source **Version 2 Only** | The total number of TCP and UDP packet bytes sent from destination to source since last update. Packet bytes include packet header and payload.|
 
 ## <a name="next-steps"></a>Další kroky
 

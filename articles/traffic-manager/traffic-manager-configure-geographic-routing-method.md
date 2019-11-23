@@ -1,63 +1,63 @@
 ---
-title: Konfigurace geografického směrování provozu – Azure Traffic Manager
-description: Tento článek vysvětluje, jak nakonfigurovat metodu geografického směrování provozu pomocí Azure Traffic Manager
+title: Tutorial - Configure geographic traffic routing with Azure Traffic Manager
+description: This tutorial explains how to configure the geographic traffic routing method using Azure Traffic Manager
 services: traffic-manager
 author: asudbring
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: allensu
-ms.openlocfilehash: f15871705b9839f1c7a7c7f04f6f4a88641673fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9de1f0b0adc4d82b666adcd4bc9b26e31e7750d6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031949"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422792"
 ---
-# <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Konfigurace metody směrování geografického provozu pomocí Traffic Manager
+# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Tutorial: Configure the geographic traffic routing method using Traffic Manager
 
-Metoda geografického směrování provozu umožňuje směrovat provoz do konkrétních koncových bodů na základě geografického umístění, ve kterém požadavky pocházejí. V tomto kurzu se dozvíte, jak vytvořit profil Traffic Manager s touto metodou směrování a nakonfigurovat koncové body pro příjem provozu z konkrétních geografických oblastí.
+The Geographic traffic routing method allows you to direct traffic to specific endpoints based on the geographic location where the requests originate. This tutorial shows you how to create a Traffic Manager profile with this routing method and configure the endpoints to receive traffic from specific geographies.
 
-## <a name="create-a-traffic-manager-profile"></a>Vytvořit profil Traffic Manager
+## <a name="create-a-traffic-manager-profile"></a>Create a Traffic Manager Profile
 
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/).
 2. Klikněte na **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager** > **Vytvořit**.
-4. V **profilu Create Traffic Manager**:
-    1. Zadejte název profilu. Tento název musí být v rámci zóny trafficmanager.net jedinečný. Pro přístup k profilu Traffic Manager použijte název DNS `<profilename>.trafficmanager.net`.
-    2. Vyberte metodu **geografického** směrování.
-    3. Vyberte předplatné, pod kterým chcete tento profil vytvořit.
-    4. Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků, do které chcete tento profil umístit. Pokud se rozhodnete vytvořit novou skupinu prostředků, zadejte umístění skupiny prostředků pomocí rozevíracího seznamu **umístění skupiny prostředků** . Toto nastavení odkazuje na umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manager, který se globálně nasazuje.
-    5. Po kliknutí na **vytvořit**se profil Traffic Manager vytvoří a nasadí globálně.
+4. In the **Create Traffic Manager profile**:
+    1. Provide a name for your profile. This name needs to be unique within the trafficmanager.net zone. To access your Traffic Manager profile, you use the DNS name `<profilename>.trafficmanager.net`.
+    2. Select the **Geographic** routing method.
+    3. Select the subscription you want to create this profile under.
+    4. Use an existing resource group or create a new resource group to place this profile under. If you choose to create a new resource group, use the **Resource Group location** dropdown to specify the location of the resource group. This setting refers to the location of the resource group, and has no impact on the Traffic Manager profile that's deployed globally.
+    5. After you click **Create**, your Traffic Manager profile is created and deployed globally.
 
 ![Vytvoření profilu Traffic Manageru](./media/traffic-manager-geographic-routing-method/create-traffic-manager-profile.png)
 
-## <a name="add-endpoints"></a>Přidat koncové body
+## <a name="add-endpoints"></a>Add endpoints
 
-1. Vyhledejte název profilu Traffic Manager, který jste vytvořili v panelu hledání na portálu, a po zobrazení klikněte na výsledek.
-2. Přejděte do **nastavení** -> **koncových bodů** v Traffic Manager.
-3. Kliknutím na **Přidat** zobrazíte **koncový bod přidat**.
-3. Klikněte na **Přidat** a v zobrazení přidat zobrazený **koncový bod** proveďte následující kroky:
-4. V závislosti na typu koncového bodu, který chcete přidat, vyberte **typ** . Pro geografické profily směrování používané v produkčním prostředí důrazně doporučujeme používat vnořené typy koncových bodů obsahující podřízený profil s více než jedním koncovým bodem. Další podrobnosti najdete v tématu [Nejčastější dotazy týkající se metod směrování geografického provozu](traffic-manager-FAQs.md).
+1. Search for the Traffic Manager profile name you created in the portal’s search bar and click on the result when it is shown.
+2. Navigate to **Settings** -> **Endpoints** in Traffic Manager.
+3. Click **Add** to show the **Add Endpoint**.
+3. Click **Add** and in the **Add endpoint** that is displayed, complete as follows:
+4. Select **Type** depending upon the type of endpoint you are adding. For geographic routing profiles used in production, we strongly recommend using nested endpoint types containing a child profile with more than one endpoint. For more details, see [FAQs about geographic traffic routing methods](traffic-manager-FAQs.md).
 5. Zadejte **Název**, podle kterého tento koncový bod rozpoznáte.
-6. Některá pole na této stránce závisí na typu koncového bodu, který přidáváte:
-    1. Pokud přidáváte koncový bod Azure, vyberte **cílový typ prostředku** a **cíl** na základě prostředku, do kterého chcete směrovat provoz.
-    2. Pokud přidáváte **externí** koncový bod, zadejte **plně kvalifikovaný název domény (FQDN)** pro váš koncový bod.
-    3. Pokud přidáváte **vnořený koncový bod**, vyberte **cílový prostředek** , který odpovídá podřízenému profilu, který chcete použít, a určete **minimální počet podřízených koncových bodů**.
-7. V části geografické mapování můžete pomocí rozevírací nabídky Přidat oblasti, ze kterých chcete odeslat provoz do tohoto koncového bodu. Musíte přidat alespoň jednu oblast a můžete mít namapované více oblastí.
-8. Tento postup opakujte pro všechny koncové body, které chcete přidat pod tento profil.
+6. Certain fields on this page depend on the type of endpoint you are adding:
+    1. If you are adding an Azure endpoint, select the **Target resource type** and the **Target** based on the resource you want to direct traffic to
+    2. If you are adding an **External** endpoint, provide the **Fully-qualified domain name (FQDN)** for your endpoint.
+    3. If you are adding a **Nested endpoint**, select the **Target resource** that corresponds to the child profile you want to use and specify the **Minimum child endpoints count**.
+7. In the Geo-mapping section, use the drop down to add the regions from where you want traffic to be sent to this endpoint. You must add at least one region, and you can have multiple regions mapped.
+8. Repeat this for all endpoints you want to add under this profile
 
 ![Přidání koncového bodu služby Traffic Manager](./media/traffic-manager-geographic-routing-method/add-traffic-manager-endpoint.png)
 
-## <a name="use-the-traffic-manager-profile"></a>Použít profil Traffic Manager
-1.  Na panelu hledání na portálu vyhledejte název **profilu Traffic Manager** , který jste vytvořili v předchozí části, a klikněte na profil Traffic Manageru v zobrazených výsledcích.
+## <a name="use-the-traffic-manager-profile"></a>Use the Traffic Manager profile
+1.  In the portal’s search bar, search for the **Traffic Manager profile** name that you created in the preceding section and click on the traffic manager profile in the results that the displayed.
 2. Klikněte na **Přehled**.
-3. V části **Profil služby Traffic Manager** se zobrazí název DNS nově vytvořeného profilu služby Traffic Manager. Můžete je použít u všech klientů (například tak, že na ně přejdete pomocí webového prohlížeče), abyste se dostali ke správnému koncovému bodu, který určuje typ směrování.  V případě geografického směrování Traffic Manager prohlíží zdrojovou IP adresu příchozího požadavku a určí oblast, ze které pochází. Pokud je tato oblast namapovaná na koncový bod, do ní se směruje provoz. Pokud tato oblast není namapovaná na koncový bod, Traffic Manager vrátí odpověď na dotaz na DATA.
+3. V části **Profil služby Traffic Manager** se zobrazí název DNS nově vytvořeného profilu služby Traffic Manager. This can be used by any clients (for example, by navigating to it using a web browser) to get routed to the right endpoint as determined by the routing type.  In the case of geographic routing, Traffic Manager looks at the source IP of the incoming request and determines the region from which it is originating. If that region is mapped to an endpoint, traffic is routed to there. If this region is not mapped to an endpoint, then Traffic Manager returns a NODATA query response.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [metodě směrování geografického provozu](traffic-manager-routing-methods.md#geographic).
-- Naučte se [Testovat nastavení Traffic Manager](traffic-manager-testing-settings.md).
+- Learn more about [Geographic traffic routing method](traffic-manager-routing-methods.md#geographic).
+- Learn how to [test Traffic Manager settings](traffic-manager-testing-settings.md).

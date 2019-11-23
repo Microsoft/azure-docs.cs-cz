@@ -1,7 +1,7 @@
 ---
-title: Návrh iterační aplikace – LUIS
+title: Iterative app design - LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS se nejlépe učí v iterativním cyklu změn modelů, utterance příkladů, publikování a shromažďování dat z dotazů na koncové body.
+description: LUIS learns best in an iterative cycle of model changes, utterance examples, publishing, and gathering data from endpoint queries.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,143 +9,145 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 12a1f2304e4255eb9abd04ab2e2d0726066dd1e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c1c1b2df301634a435b610c395a1a58aa5573da3
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487767"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422601"
 ---
-# <a name="authoring-cycles-and-versions"></a>Vytváření cyklů a verzí
+# <a name="iterative-app-design-for-luis"></a>Iterative app design for LUIS
 
-Vaše aplikace LUIS se nejlépe učí v iterativním cyklu:
+A Language Understanding (LUIS) app learns and performs most efficiently with iteration. Here's a typical iteration cycle:
 
-* vytvořit novou verzi
-* Upravit schéma aplikace
-    * záměry s příkladem projevy
-    * podnikům
-    * Database
-* průřez
-* test
-* publish
-    * test na koncovém bodu předpovědi pro aktivní učení
-* shromažďování dat z dotazů na koncový bod
+* Create new version
+* Edit the LUIS app schema. To zahrnuje:
+    * Intents with example utterances
+    * Entity
+    * Funkce
+* Train, test, and publish
+    * Test at the prediction endpoint for active learning
+* Gather data from endpoint queries
 
 ![Cyklus vytváření](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-schema"></a>Sestavení schématu LUIS
+## <a name="building-a-luis-schema"></a>Building a LUIS schema
 
-Účelem schématu aplikace je definovat, co uživatel žádá (záměr nebo záměr) a jaké části otázky poskytují podrobnosti (entity), které vám pomůžou určit odpověď. 
+An app's schema defines what the user is asking for (the _intention_ or _intent_ ) and what parts of the intent provide details (called _entities_) that are used to help determine the answer. 
 
-Aby bylo možné určit slova a fráze, které jsou relevantní, a také typické řazení slov, musí být schéma aplikace specifické pro domény aplikace. 
+The app schema must be specific to the app domains to determine words and phrases that are relevant, as well as to determine typical word ordering. 
 
-Příklad projevy představuje vstup uživatele, u kterého se očekává, že se má za běhu získat aplikace. 
+Example utterances represent user inputs, such as recognized speech or text, that the app expects at runtime. 
 
-Schéma vyžaduje záměry a _musí mít_ entity. 
+The schema requires intents, and _should have_ entities. 
 
-### <a name="example-schema-of-intents"></a>Příklady schématu záměrů
+### <a name="example-schema-of-intents"></a>Example schema of intents
 
-Nejběžnější schéma je schéma záměru uspořádané s záměry. Tento typ schématu závisí na LUIS a určení záměru uživatele. 
+The most common schema is an intent schema organized with intents. This type of schema uses LUIS to determine a user's intention. 
 
-Tento typ schématu může mít entity, pokud pomáhá LUIS určit záměr. Například expediční entita (jako deskriptor k záměru) pomáhá LUIS určit záměr expedice. 
+The intent schema type may have entities if it helps LUIS determine the user's intention. For example, a shipping entity (as a descriptor to an intent) helps LUIS determine a shipping intention. 
 
-### <a name="example-schema-of-entities"></a>Příklad schématu entit
+### <a name="example-schema-of-entities"></a>Example schema of entities
 
-Schéma entity se zaměřuje na entity, které jsou data pro extrakci z projevy. 
+An entity schema focuses on entities, which is the data that is extracted from user utterances. For example, if a user was to say, "I'd like to order three pizzas." There are two entities that would be extracted: _three_ and _pizzas_. These are used to help fulfill the intention, which was to make an order. 
 
-Záměr utterance je menší nebo není důležitý pro klientskou aplikaci. 
+For an entity schema, the intention of the utterance is less important to the client application. 
 
-Běžnou metodou uspořádání schématu entity je přidání všech příkladů projevy do záměru None. 
+A common method of organizing an entity schema is to add all example utterances to the **None** intent. 
 
-### <a name="example-of-a-mixed-schema"></a>Příklad smíšeného schématu
+### <a name="example-of-a-mixed-schema"></a>Example of a mixed schema
 
-Nejefektivnější a vyspělé schéma je schéma záměru s celou škálou entit a funkcí. Toto schéma může začínat buď jako záměr, nebo jako schéma entit, a rozšířit tak, aby zahrnovalo koncepty obou, protože klientská aplikace potřebuje tyto části informací. 
+The most powerful and mature schema is an intent schema with a full range of entities and features. This schema can begin as either an intent or entity schema and grow to include concepts of both, as the client application needs those pieces of information. 
 
-## <a name="add-example-utterances-to-intents"></a>Přidat příklad projevy k záměrům
+## <a name="add-example-utterances-to-intents"></a>Add example utterances to intents
 
-LUIS potřebuje několik příkladů projevy v každém **záměru**. Příklad projevy potřebuje dostatečnou variaci volby Wordu a pořadí slov, aby bylo možné určit, pro který záměr je utterance určen. 
+LUIS needs a few example utterances in each **intent**. The example utterances need enough variation of word choice and word order to be able to determine which intent the utterance is meant for. 
 
 > [!CAUTION]
-> Nepřidávejte do hromadného projevy příklad. Začněte s 15 až 30 specifickými a různými příklady. 
+> Do not add example utterances in bulk. Start with 15 to 30 specific and varying examples. 
 
-Každý příklad utterance musí mít všechna **požadovaná data pro extrakci** navrženou a označenou **entitami**. 
+Each example utterance needs to have any **required data to extract** designed and labeled with **entities**. 
 
-|Klíčový element|Účel|
+|Key element|Účel|
 |--|--|
-|Záměr|**Klasifikovat** uživatele projevy do jediného záměru nebo akce. Příklady zahrnují `BookFlight` a `GetWeather`.|
-|Entita|**Extrahujte** data z utterance, která jsou nutná k dokončení záměru. Mezi příklady patří datum a čas cestování a umístění.|
+|Záměr|**Classify** user utterances into a single intention, or action. Examples include `BookFlight` and `GetWeather`.|
+|Entita|**Extract** data from utterance required to complete intention. Examples include date and time of travel, and location.|
 
-Aplikaci LUIS navrhujete tak, aby ignorovala projevy, které nejsou relevantní pro doménu vaší aplikace, a to přiřazením utterance k záměru **none** . 
+A LUIS app can be designed to ignore utterances that aren't relevant to an app's domain by assigning the utterance to the **None** intent.
 
-## <a name="test-and-train-your-app"></a>Testování a výuka vaší aplikace
+## <a name="test-and-train-your-app"></a>Test and train your app
 
-Po 15 až 30 různých příkladech projevy v každém záměru s povinnými entitami, které jsou označeny, je nutné testovat a [vyškolit](luis-how-to-train.md). 
+After you have 15 to 30 different example utterances in each intent, with the required entities labeled, you need to test and [train](luis-how-to-train.md) your LUIS app. 
 
-## <a name="publish-to-a-prediction-endpoint"></a>Publikovat do koncového bodu předpovědi
+## <a name="publish-to-a-prediction-endpoint"></a>Publish to a prediction endpoint
 
-Ujistěte se, že jste aplikaci publikovali tak, aby byla dostupná v [oblastech koncového bodu předpovědi](luis-reference-regions.md) , kterou potřebujete. 
+The LUIS app must be published so that it's available to you in the list [prediction endpoint regions](luis-reference-regions.md).
 
-## <a name="test-your-published-app"></a>Testování publikované aplikace
+## <a name="test-your-published-app"></a>Test your published app
 
-Publikovanou aplikaci LUIS můžete testovat z koncového bodu předpovědi HTTPS. Testování z koncového bodu předpovědi umožňuje LUIS vybrat libovolný projevy s nízkou mírou spolehlivosti ke [kontrole](luis-how-to-review-endpoint-utterances.md).  
+You can test your published LUIS app from the HTTPS prediction endpoint. Testing from the prediction endpoint allows LUIS to choose any utterances with low-confidence for [review](luis-how-to-review-endpoint-utterances.md).  
 
-## <a name="create-a-new-version-for-each-cycle"></a>Vytvořit novou verzi pro každý cyklus
+## <a name="create-a-new-version-for-each-cycle"></a>Create a new version for each cycle
 
-Verze v LUIS se podobají verzím v tradičním programování. Každá verze je snímkem v čase aplikace. Než v aplikaci provedete změny, vytvořte novou verzi. Je snazší přejít zpět na starší verzi a pak se pokusit odebrat záměry a projevy do předchozího stavu.
+Each version is a snapshot in time of the LUIS app. Before you make changes to the app, create a new version. It is easier to go back to an older version than to try to remove intents and utterances to a previous state.
 
-ID verze se skládá ze znaků, číslic nebo "." a nemůže být delší než 10 znaků.
+The version ID consists of characters, digits or '.' and cannot be longer than 10 characters.
 
-Počáteční verze (0,1) je výchozí aktivní verze. 
+The initial version (0.1) is the default active version. 
 
-### <a name="begin-by-cloning-an-existing-version"></a>Zahájení klonování existující verze
+### <a name="begin-by-cloning-an-existing-version"></a>Begin by cloning an existing version
 
-Naklonujte existující verzi, která se má použít jako výchozí bod pro novou verzi. Po naklonování verze se nová verze zobrazí jako **aktivní** verze. 
+Clone an existing version to use as a starting point for each new version. After you clone a version, the new version becomes the **active** version. 
 
-### <a name="publishing-slots"></a>Sloty publikování
-Publikujete do fází a produkčních slotů. Každá patice může mít jinou verzi nebo stejnou verzi. To je užitečné pro ověření změn před publikováním do produkčního prostředí, které je k dispozici pro roboty nebo jiné LUIS volání aplikací. 
+### <a name="publishing-slots"></a>Publishing slots
 
-Školené verze nejsou automaticky dostupné na [koncovém bodu](luis-glossary.md#endpoint)vaší aplikace. Je nutné [publikovat](luis-how-to-publish-app.md) nebo znovu publikovat verzi, aby byla k dispozici ve vašem koncovém bodě aplikace. Můžete publikovat do **přípravy** a **výroby**a poskytnout tak dvě verze aplikace, které jsou k dispozici na koncovém bodu. Pokud potřebujete další verze aplikace, kterou máte k dispozici na koncovém bodu, měli byste verzi exportovat a znovu importovat do nové aplikace. Nová aplikace má jiné ID aplikace.
+You can publish to either the stage and/or production slots. Each slot can have a different version or the same version. This is useful for verifying changes before publishing to production, which is available to bots or other LUIS calling apps. 
 
-### <a name="import-and-export-a-version"></a>Import a export verze
-Verzi můžete importovat na úrovni aplikace. Tato verze se zobrazí jako aktivní verze a používá ID verze ve vlastnosti `versionId` souboru aplikace. Můžete také importovat do existující aplikace na úrovni verze. Nová verze se zobrazí jako aktivní verze. 
+Trained versions aren't automatically available at your LUIS app's [endpoint](luis-glossary.md#endpoint). You must [publish](luis-how-to-publish-app.md) or republish a version in order for it to be available at your LUIS app endpoint. You can publish to **Staging** and **Production**, giving you two versions of the app available at the endpoint. If more versions of the app need to be available at an endpoint, you should export the version and reimport it to a new app. The new app has a different app ID.
 
-Verzi můžete exportovat na úrovni aplikace nebo verze. Jediným rozdílem je, že vyexportovaná verze na úrovni aplikace je aktuálně aktivní verze, zatímco na úrovni verze můžete na stránce **[Nastavení](luis-how-to-manage-versions.md)** zvolit libovolnou verzi, kterou chcete exportovat. 
+### <a name="import-and-export-a-version"></a>Import and export a version
 
-Exportovaný soubor neobsahuje:
+A version can be imported at the app level. That version becomes the active version and uses the version ID in the `versionId` property of the app file. You can also import into an existing app, at the version level. The new version becomes the active version. 
 
-* informace zjištěné počítačem, protože aplikace je po importu znovu přeučena
-* informace o přispěvateli
+A version can be exported at the app or version level as well. The only difference is that the app-level exported version is the currently active version while at the version level, you can choose any version to export on the **[Settings](luis-how-to-manage-versions.md)** page. 
 
-Chcete-li zálohovat schéma aplikace LUIS, exportujte verzi z portálu LUIS.
+The exported file **doesn't** contain:
 
-## <a name="manage-contributor-changes-with-versions-and-apps"></a>Správa změn přispěvatelů pomocí verzí a aplikací
+* Machine-learned information, because the app is retrained after it's imported
+* Contributor information
 
-LUIS poskytuje koncept přispěvatelů aplikace tím, že poskytuje oprávnění na úrovni prostředků Azure. Kombinací tohoto konceptu se správou verzí zajistíte cílenou spolupráci. 
+In order to back up your LUIS app schema, export a version from the [LUIS portal](https://www.luis.ai/applications).
 
-Pomocí následujících postupů můžete spravovat změny přispěvatele ve vaší aplikaci.
+## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Manage contributor changes with versions and contributors
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Správa více verzí ve stejné aplikaci
-Začněte [klonováním](luis-how-to-manage-versions.md#clone-a-version), od základní verze pro každého autora. 
+LUIS uses the concept of contributors to an app, by providing Azure resource-level permissions. Combine this concept with versioning to provide targeted collaboration. 
 
-Každý autor provádí změny ve své vlastní verzi aplikace. Jakmile s modelem splníte všechny autory, exportujte nové verze do souborů JSON.  
+Use the following techniques to manage contributor changes to your app.
 
-U exportovaných aplikací, souborů JSON nebo. lu se dají porovnat změny. Zkombinujte soubory a vytvořte jeden soubor nové verze. Změnou vlastnosti **versionId** vyznačíte novou sloučenou verzi. Importujte tuto verzi do původní aplikace. 
+### <a name="manage-multiple-versions-inside-the-same-app"></a>Manage multiple versions inside the same app
 
-Tato metoda umožňuje mít jednu aktivní verzi, jednu verzi fáze a jednu publikovanou verzi. Výsledky aktivní verze můžete porovnat s publikovanou verzí (fáze nebo produkce) v [podokně interaktivní testování](luis-interactive-test.md).
+Begin by [cloning](luis-how-to-manage-versions.md#clone-a-version) from a base version for each author. 
 
-### <a name="manage-multiple-versions-as-apps"></a>Správa více verzí jako aplikací
-[Exportujte](luis-how-to-manage-versions.md#export-version) základní verzi. Každý autor importuje verzi. Osoba, která aplikaci importuje, je vlastníkem verze. Po dokončení úprav aplikace exportujte verzi. 
+Each author makes changes to their own version of the app. When the author is satisfied with the model, export the new versions to JSON files.  
 
-Exportované aplikace jsou soubory ve formátu JSON, které je možné porovnat se základním exportem pro změny. Zkombinujte soubory a vytvořte jeden soubor JSON nové verze. Změňte vlastnost **versionId** ve formátu JSON tak, aby poznamenat novou sloučenou verzi. Importujte tuto verzi do původní aplikace.
+Exported apps, .json or .lu files, can be compared for changes. Combine the files to create a single file of the new version. Change the `versionId` property to signify the new merged version. Import that version into the original app. 
 
-Přečtěte si další informace o vytváření příspěvků od [spolupracovníků](luis-how-to-collaborate.md).
+This method allows you to have one active version, one stage version, and one published version. You can compare the results of the active version with a published version (stage or production) in the [interactive testing pane](luis-interactive-test.md).
 
-## <a name="review-endpoint-utterances-to-begin-the-new-authoring-cycle"></a>Podívejte se na téma Endpoint projevy a začněte nový cyklus vytváření.
+### <a name="manage-multiple-versions-as-apps"></a>Manage multiple versions as apps
 
-Až budete hotovi s cyklem vytváření, můžete začít znovu. Začněte s [revizí koncového bodu projevy](luis-how-to-review-endpoint-utterances.md) Luis označeného s nízkou spolehlivostí. Ověřte tyto projevy pro správný předpokládaný záměr a správný a dokončenou entitu. Po kontrole a přijetí změn by seznam revizí měl být prázdný.  
+[Export](luis-how-to-manage-versions.md#export-version) the base version. Each author imports the version. The person that imports the app is the owner of the version. When they are done modifying the app, export the version. 
+
+Exported apps are JSON-formatted files, which can be compared with the base export for changes. Combine the files to create a single JSON file of the new version. Change the **versionId** property in the JSON to signify the new merged version. Import that version into the original app.
+
+Learn more about authoring contributions from [collaborators](luis-how-to-collaborate.md).
+
+## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Review endpoint utterances to begin the new iterative cycle
+
+When you are done with an iteration cycle, you can repeat the process. Start with [reviewing prediction endpoint utterances](luis-how-to-review-endpoint-utterances.md) LUIS marked with low-confidence. Check these utterances for both correct predicted intent and correct and complete entity extracted. After you review and accept changes, the review list should be empty.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s koncepty [spolupráce](luis-concept-keys.md).
+Learn concepts about [collaboration](luis-concept-keys.md).

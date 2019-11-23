@@ -1,6 +1,6 @@
 ---
-title: Monitorování síťové komunikace – kurz – Azure Portal | Microsoft Docs
-description: Naučte se monitorovat síťovou komunikaci mezi dvěma virtuálními počítači pomocí funkce monitorování připojení v Azure Network Watcheru.
+title: Tutorial - Monitor network communication using the Azure portal
+description: In this tutorial, learn how to monitor network communication between two virtual machines with Azure Network Watcher's connection monitor capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233890"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419690"
 ---
-# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači pomocí webu Azure portal
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
 
 Úspěšná komunikace mezi virtuálním počítačem a koncovým bodem, jako je například jiný virtuální počítač, může být pro organizaci velmi důležitá. Někdy se zavádějí změny konfigurace, po kterých může dojít k narušení komunikace. V tomto kurzu se naučíte:
 
@@ -35,9 +35,9 @@ ms.locfileid: "66233890"
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Vytvoření virtuálních počítačů
 
@@ -51,12 +51,12 @@ Vytvořte dva virtuální počítače.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVm1|
+    |Name (Název)|myVm1|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
-    |Location| Vyberte **USA – východ**.|
+    |Umístění| Vyberte **USA – východ**.|
 
 4. Vyberte velikost virtuálního počítače a pak vyberte **Vybrat**.
 5. V části **Nastavení** vyberte **Rozšíření**. Vyberte **Přidat rozšíření** a vyberte **Network Watcher Agent for Windows**, jak ukazuje následující obrázek:
@@ -73,11 +73,11 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 
 |Krok|Nastavení|Hodnota|
 |---|---|---|
-| 1 | Vyberte verzi **Ubuntu Server** |                                                                         |
-| 3 | Název                                  | myVm2                                                                   |
+| 1\. místo | Select a version of **Ubuntu Server** |                                                                         |
+| 3 | Name (Název)                                  | myVm2                                                                   |
 | 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
 | 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
-| 6 | Rozšíření                            | **Agent Network Watcher pro Linux**                                             |
+| 6 | Rozšíření                            | **Network Watcher Agent for Linux**                                             |
 
 Nasazení virtuálního počítače trvá několik minut. Než budete pokračovat ve zbývajících krocích, počkejte, až virtuální počítač dokončí nasazování.
 
@@ -93,7 +93,7 @@ Vytvořte monitorování připojení pro monitorování komunikace přes port TC
 
     | Nastavení                  | Hodnota               |
     | ---------                | ---------           |
-    | Název                     | myVm1-myVm2(22)     |
+    | Name (Název)                     | myVm1-myVm2(22)     |
     | Zdroj                   |                     |
     | Virtuální počítač          | myVm1               |
     | Cíl              |                     |
@@ -117,7 +117,7 @@ Vytvořte monitorování připojení pro monitorování komunikace přes port TC
 
     | Položka                     | Hodnota                      | Podrobnosti                                                     |
     | ---------                | ---------                  |--------                                                     |
-    | Status                   | Dostupné                  | Oznamuje, jestli je koncový bod dostupný nebo ne.|
+    | Stav                   | Dostupné                  | Oznamuje, jestli je koncový bod dostupný nebo ne.|
     | PRŮM. DOBA ODEZVY          | Oznamuje dobu odezvy pro vytvoření připojení v milisekundách. Monitorování připojení testuje připojení každých 60 sekund, takže můžete monitorovat latenci v čase.                                         |
     | Směrování                     | Monitorování připojení oznamuje segmenty směrování mezi dvěma koncovými body. V tomto příkladu existuje připojení mezi dvěma virtuálními počítači ve stejné virtuální síti, takže je tam jenom jeden segment směrování, a to na IP adresu 10.0.0.5. Pokud provoz mezi virtuálními počítači směruje nějaký existující systém nebo vlastní směrování, například přes bránu VPN nebo síťové virtuální zařízení, budou uvedené další segmenty směrování.                                                                                                                         |
     | STAV                   | Zelené značky zaškrtnutí u jednotlivých koncových bodů oznamují, že dané koncové body jsou v pořádku.    ||
@@ -150,9 +150,9 @@ Azure ve výchozím nastavení umožňuje komunikaci mezi virtuálními počíta
     | Nastavení                 | Hodnota          |
     | ---                     | ---            |
     | Rozsahy cílových portů | 22             |
-    | Akce                  | Odepření           |
+    | Akce                  | Zamítnout           |
     | Priorita                | 100            |
-    | Název                    | DenySshInbound |
+    | Name (Název)                    | DenySshInbound |
 
 5. Monitorování připojení provádí testování v intervalech 60 sekund, a proto počkejte několik minut a pak na levé straně portálu vyberte **Network Watcher**, pak **Monitorování připojení** a pak znovu vyberte monitorování **myVm1-myVm2(22)** . Výsledky se teď liší, jak můžete vidět na následujícím obrázku:
 
@@ -160,7 +160,7 @@ Azure ve výchozím nastavení umožňuje komunikaci mezi virtuálními počíta
 
     Ve sloupci se stavem pro síťové rozhraní **myvm2529** se zobrazuje červený vykřičník.
 
-6. Pokud chcete zjistit, proč se tento stav změnil, vyberte na předchozím obrázku položku 10.0.0.5. Monitorování připojení vás informuje, že je důvod selhání komunikace: *Provoz zablokovaný kvůli následující pravidlo skupiny zabezpečení sítě: UserRule_DenySshInbound*.
+6. Pokud chcete zjistit, proč se tento stav změnil, vyberte na předchozím obrázku položku 10.0.0.5. Monitorování připojení vám oznámí příčinu chyby komunikace: *Provoz se zablokoval kvůli následujícímu pravidlu skupiny zabezpečení sítě: UserRule_DenySshInbound*.
 
     Pokud jste nevěděli, že někdo implementoval pravidlo zabezpečení, které jste vytvořili v kroku 4, zjistili byste z monitorování připojení, že příčinou problému s komunikací je toto pravidlo. Komunikaci mezi virtuálními počítači můžete potom obnovit tak, že dané pravidlo změníte, přepíšete nebo odeberete.
 
@@ -172,7 +172,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili monitorovat připojení mezi dvěma virtuálními počítači. Zjistili jste, že pravidlo skupiny zabezpečení sítě zabránilo komunikaci s virtuálním počítačem. Pokud chcete získat informace o všech různých odpovědích, které monitorování připojení může vrátit, podívejte se na [typy odpovědí](network-watcher-connectivity-overview.md#response). Můžete monitorovat také připojení mezi virtuálním počítačem, plně kvalifikovaným názvem domény, identifikátorem URI nebo IP adresou.
 

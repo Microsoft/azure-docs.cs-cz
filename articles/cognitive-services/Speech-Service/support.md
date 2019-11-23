@@ -1,7 +1,7 @@
 ---
-title: Podpora a možnosti pomoci – služba Speech
+title: Support and help options - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Jak získat nápovědu a podporu pro otázky a problémy při vytváření aplikací, které se integrují se službou Speech
+description: How to obtain help and support for questions and problems when you create applications that integrate with the Speech Service
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,116 +10,107 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: f8793975d920e24924fca7c2ae366f70972e6ab7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468620"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422610"
 ---
-# <a name="support-and-help-options"></a>Podpora a možnosti pomoci
+# <a name="support-and-help-options"></a>Support and help options
 
-Právě začínáte zkoumat funkčnost služeb Speech? Implementujete u své aplikace novou funkci? Tady jsou návrhy, kde můžete získat pomoc jako vývojář.
+Are you just starting to explore the functionality of the Speech Services? Are you implementing a new feature to your application? Here are suggestions about where you can get help as a developer.
 
 > [!div class="checklist"]
-> * Informujte se o novém vývoji v *Azure Cognitive Services*, nebo si přečtěte nejnovější novinky týkající se *služby Speech*.
-> * Poznámky k verzi obsahují informace pro všechny verze.
-> * Vyhledejte informace o tom, zda byl problém projednán komunitou nebo zda již existuje stávající dokumentace pro funkci, kterou chcete implementovat.
-> * Pokud nemůžete najít uspokojivou odpověď, Položte otázku *Stack Overflow*.
-> * Pokud zjistíte problém s jednou z ukázek na GitHubu, vyvolejte problém *GitHubu* .
-> * Vyhledejte řešení ve *fóru UserVoice*.
+> * Stay informed about new developments in *Azure Cognitive Services*, or find the latest news related to *Speech service*.
+> * Release notes contain information for all releases.
+> * Search to see if your issue was discussed by the community, or if existing documentation for the feature you want to implement already exists.
+> * If you can't find a satisfactory answer, ask a question on *Stack Overflow*.
+> * If you find an issue with one of the samples on GitHub, raise a *GitHub* issue.
+> * Search for a solution in the *UserVoice forum*.
 
 ## <a name="stay-informed"></a>Aktuální informace
 
-Novinky o Cognitive Services se shromažďují na [blogu Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Chcete-li získat nejnovější informace o službě Speech Services, Sledujte [blog služby Speech Services](https://azure.microsoft.com/blog/tag/speech-service/).
+News about Cognitive Services is collected in the [Cognitive Services blog](https://azure.microsoft.com/blog/topics/cognitive-services/). For the latest information about Speech Services, track the [Speech Services blog](https://azure.microsoft.com/blog/tag/speech-service/).
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-[Poznámky k verzi](https://aka.ms/csspeech/whatsnew) se aktualizují, jakmile bude k dispozici nová verze. Poznámky obsahují informace o nových funkcích, vylepšeních a opravách chyb.
+The [release notes](https://aka.ms/csspeech/whatsnew) are updated as soon as a new release is available. The notes contain information about new features, improvements, and bug fixes.
 
 ## <a name="search"></a>Hledat
 
-Odpověď, kterou potřebujete, najdete v dokumentaci, ukázkách nebo odpovědích na [Stack Overflow](https://www.stackoverflow.com) dotazy nebo v ukázkách.
+You might find the answer you need in the documentation, the samples, or answers to [Stack Overflow](https://www.stackoverflow.com) questions or in the samples.
 
-### <a name="scoped-search"></a>Hledání v oboru
+### <a name="scoped-search"></a>Scoped Search
 
-Pro dosažení rychlejších výsledků můžete určit rozsah hledání Stack Overflow, dokumentaci a ukázky kódu pomocí následujícího dotazu na [oblíbeném vyhledávacím stroji](https://bing.com):
+For faster results, scope your search to Stack Overflow, the documentation, and code samples by using the following query on your [favorite search engine](https://bing.com):
 
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples)
 ```
 
-Kde *{vaše hledané výrazy}* jsou vaše klíčová slova pro hledání.
+Where *{Your Search Terms}* is your search keywords.
 
-## <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
+## <a name="create-an-azure-support-request"></a>Create an Azure support request
 
-Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v Azure Portal.
+Azure customers can create and manage support requests in the Azure portal.
 
 * [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-* [Azure Portal pro vládu USA](https://portal.azure.us)
+* [Azure portal for the United States government](https://portal.azure.us)
 
-## <a name="post-a-question-to-stack-overflow"></a>Vystavení otázky pro Stack Overflow
+## <a name="post-a-question-to-stack-overflow"></a>Post a question to Stack Overflow
 
-Stack Overflow je preferovaným kanálem pro otázky související s vývojem. Je tam, kde jsou členové komunity a členové týmu Microsoftu přímo zapojeni na pomoc při řešení vašich problémů.
+Stack Overflow is the preferred channel for development-related questions. It's where members of the community and Microsoft team members are directly involved in helping you solve your problems.
 
-Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete novou otázku pro Stack Overflow. Při formulování otázky použijte jednu z následujících značek:
-
-|Součást/oblast  |Značky  |
-|---------|---------|
-|Rozpoznávání řeči |[[Microsoft-rozpoznávání + převod řeči na text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|Syntéza řeči |[[Microsoft-rozpoznávání + převod textu na řeč]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|Překlad řeči |[[Microsoft-rozpoznávání + překlad]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|Záměr řeči |[[Microsoft-rozpoznávání + Luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Obecná sada Speech SDK |[[Microsoft-rozpoznávání + Microsoft-Speech-API]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-|Asistenti hlasu | [[Microsoft-rozpoznávání + Virtual-Assistant + botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+If you can't find an answer to your problem via search, submit a new question to Stack Overflow by using the [microsoft-cognitive-speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive-speech) tag.
 
 > [!TIP]
-> Následující příspěvky z Stack Overflow obsahují tipy, jak vytvořit otázky a přidat zdrojový kód. Podle těchto pokynů může pomáhat zvýšit riziko, že členové komunity vyhodnotili a rychle reagují na své otázky:  
-> * [Návody klást dobré otázky?](https://stackoverflow.com/help/how-to-ask)
-> * [Jak vytvořit minimální, úplný a ověřitelný příklad](https://stackoverflow.com/help/mcve)
+> The following posts from Stack Overflow contain tips on how to form questions and add source code. Following these guidelines might help increase the chances that community members assess and respond to your question quickly:  
+> * [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)
+> * [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve)
 
-## <a name="create-a-github-issue"></a>Vytvoření problému GitHubu
+## <a name="create-a-github-issue"></a>Create a GitHub issue
 
-Ukázky se často účtují jako open source. V případě otázek a problémů vytvořte *problém* v příslušném úložišti GitHub. Žádost o získání dat můžete také odeslat. Následující seznam obsahuje odkazy na úložiště ukázek:
+Samples are often posted as open source. For questions and issues, create an *issue* in the respective GitHub repository. You can submit a pull request, too. The following list contains links to the sample repositories:
 
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Sada Speech Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Speech Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-Můžete vytvořit zprávu o chybě, žádost o funkci nebo požádat o obecnou otázku a sdílet osvědčené postupy. Pro zprávy o chybách prosím postupujte podle poskytnuté šablony:
+You can create a bug report, feature request, or ask a general question and share best practices. For bug reports, please follow the provided template:
 
-**Popsat chybu**
+**Describe the bug**
 
-Jasný a výstižný popis toho, co je chyba.
+A clear and concise description of what the bug is.
 
-**Pro reprodukování**
+**To Reproduce**
 
-Kroky pro reprodukování chování:
+Steps to reproduce the behavior:
 1. Tlačítka ...
 2. Tlačítka ...
 
-**Očekávané chování**
+**Expected behavior**
 
-Jasný a výstižný popis toho, co byste měli očekávat.
+A clear and concise description of what you expected to happen.
 
-**Verze sady Cognitive Services Speech SDK**
+**Version of the Cognitive Services Speech SDK**
 
-Kterou verzi sady SDK používáte.
+Which version of the SDK are you using.
 
-**Platforma, operační systém a programovací jazyk**
+**Platform, Operating System, and Programming Language**
 
- - Operační systém: [např. Windows, Linux, Android, iOS,...] – zadejte konkrétní
- - Hardware – x64, x86, ARM,...
- - Prohlížeč [například Chrome, Safari] (Pokud je k dispozici) – zadejte konkrétní
+ - OS: [e.g. Windows, Linux, Android, iOS, ...] - please be specific
+ - Hardware - x64, x86, ARM, ...
+ - Browser  [e.g. Chrome, Safari] (if applicable)- please be specific
 
-**Další kontext**
+**Additional context**
 
- - Chybové zprávy, protokolové informace, trasování zásobníku,...
- - Pokud nahlásíte chybu pro konkrétní interakci služby, nahlaste identifikátor SessionId a čas (včetně časového pásma) nahlášených incidentů. Identifikátor SessionId je hlášen ve všech zpětných voláních a událostech, které obdržíte.
- - Jakékoli další informace
+ - Error messages, log information, stack trace, ...
+ - If you report an error for a specific service interaction, report the SessionId and time (incl. timezone) of the reported incidents. The SessionId is reported in all call-backs/events you receive.
+ - Any other additional information
 
 
 ## <a name="uservoice-forum"></a>Fórum UserVoice
 
-Sdílejte své nápady pro vytváření Cognitive Services a doprovodné rozhraní API fungují lépe pro aplikace, které vyvíjíte. Získejte odpovědi na běžné otázky pomocí naší rostoucí znalostní báze:
+Share your ideas for making Cognitive Services and the accompanying APIs work better for the applications you develop. Use our growing Knowledge Base to find answers to common questions:
 
 [UserVoice](https://cognitive.uservoice.com/)

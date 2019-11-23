@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Diagnostika potíží s komunikací mezi sítěmi – Azure Portal'
+title: Tutorial - Diagnose communication problem between networks using the Azure portal
 titleSuffix: Azure Network Watcher
-description: Zjistěte, jak pomocí možnosti diagnostiky VPN Network Watcher diagnostikovat potíže s komunikací mezi virtuální sítí Azure, která je připojená k místní síti nebo k jiné virtuální síti přes bránu virtuální sítě Azure.
+description: In this tutorial, learn how to diagnose a communication problem between an Azure virtual network connected to an on-premises, or other virtual network, through an Azure virtual network gateway, using Network Watcher's VPN diagnostics capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 0f7ce37bd6454492980525f288212fbff2c06625
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276149"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419733"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Kurz: Diagnostika potíží s komunikací mezi sítěmi na portálu Azure Portal
 
@@ -37,23 +37,23 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat diagnostiku VPN, musí být spuštěná brána VPN. Pokud bránu VPN pro diagnostiku ještě nepoužíváte, můžete ji nasadit pomocí [skriptu PowerShellu](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skript PowerShellu můžete spustit z těchto umístění:
-- **Místní instalace prostředí PowerShell**: skript vyžaduje modul Azure PowerShell `Az`. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, podívejte se na článek o [instalaci Azure PowerShellu](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+- **A local PowerShell installation**: The script requires the Azure PowerShell `Az` module. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, podívejte se na článek o [instalaci Azure PowerShellu](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - **Azure Cloud Shell**: Služba [Azure Cloud Shell](https://shell.azure.com/powershell) má nainstalovanou a nakonfigurovanou nejnovější verzi PowerShellu a přihlásí vás k Azure.
 
 Vytvoření brány VPN pomocí tohoto skriptu trvá přibližně hodinu. Ve zbývajících krocích se předpokládá, že diagnostikovanou bránou je brána nasazená pomocí tohoto skriptu. Pokud tedy diagnostikujete jinou vlastní bránu, výsledky se budou lišit.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlásit se na [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
 Pokud už máte Network Watcher v oblasti USA – východ povolený, přeskočte na část [Diagnostika brány](#diagnose-a-gateway).
 
-1. Na portálu vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
 2. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
@@ -63,7 +63,7 @@ Pokud už máte Network Watcher v oblasti USA – východ povolený, přeskočte
 ## <a name="diagnose-a-gateway"></a>Diagnostika brány
 
 1. Na levé straně portálu vyberte **Všechny služby**.
-2. Do pole *Filtr* začněte psát **network watcher**. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 3. V části **NÁSTROJE PRO DIAGNOSTIKU SÍTĚ** vyberte **Diagnostika VPN**.
 4. Vyberte **Účet úložiště** a pak vyberte účet úložiště, do kterého se mají zapisovat diagnostické informace.
 5. V seznamu **Účty úložiště** vyberte účet úložiště, který chcete použít. Pokud účet úložiště ještě nemáte, vytvořte ho tak, že vyberete **+ Účet úložiště**, zadáte nebo vyberete požadované informace a pak vyberete **Vytvořit**. Pokud jste vytvořili bránu VPN pomocí skriptu uvedeného v části [Požadavky](#prerequisites), můžete se rozhodnout, že účet úložiště vytvoříte ve stejné skupině prostředků *TestRG1*, která se používá pro tuto bránu.
@@ -75,7 +75,7 @@ Pokud už máte Network Watcher v oblasti USA – východ povolený, přeskočte
 8. Po spuštění testu se tam, kde ve sloupci **STAV ŘEŠENÍ POTÍŽÍ** byla na předchozím obrázku hodnota **Nespuštěno**, zobrazí hodnota **Spuštěno**. Test může trvat několik minut.
 9. Prohlédněte si stav po dokončení testu. Následující obrázek ukazuje výsledky se stavem po dokončení diagnostického testu:
 
-    ![Status](./media/diagnose-communication-problem-between-networks/status.png)
+    ![Stav](./media/diagnose-communication-problem-between-networks/status.png)
 
     Ve sloupci **STAV ŘEŠENÍ POTÍŽÍ** je hodnota **Není v pořádku** a na kartě **Stav** můžete vidět také **souhrn** a **podrobnosti** potíží.
 10. Další informace zobrazí diagnostika VPN po výběru karty **Akce**. V příkladu na následujícím obrázku vám diagnostika VPN oznamuje, že byste měli stav jednotlivých připojení zkontrolovat:
@@ -107,9 +107,9 @@ Brána se připojuje k jiným sítím přes připojení brány. Pro úspěšnou 
 
 Pokud jste vytvořili bránu VPN pomocí skriptu uvedeného v části [Požadavky](#prerequisites) výhradně pro účely tohoto kurzu a už ji nepotřebujete, odstraňte příslušnou skupinu prostředků a všechny prostředky, které obsahuje:
 
-1. Do pole *Hledat* v horní části portálu zadejte **TestRG1**. Když se ve výsledcích hledání zobrazí skupina prostředků **TestRG1**, vyberte ji.
+1. Do pole **Hledat** v horní části portálu zadejte *TestRG1*. Když se ve výsledcích hledání zobrazí skupina prostředků **TestRG1**, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
-3. V části *ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ* zadejte **TestRG1** a vyberte **Odstranit**.
+3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *TestRG1* a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
