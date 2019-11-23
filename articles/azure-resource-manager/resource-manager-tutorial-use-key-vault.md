@@ -1,30 +1,30 @@
 ---
-title: Použití Azure Key Vault v šablonách
+title: Use Azure Key Vault in templates
 description: Zjistěte, jak pomocí služby Azure Key Vault předávat hodnoty zabezpečených parametrů během nasazení šablony Resource Manageru.
 author: mumian
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 86625132e4ac4aa3ed2c42f1e94babcfbbf63a51
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ebb61bfd0fd1d39a9c1b17126fdd0e576e5629a2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149281"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326400"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Kurz: Integrace Azure Key Vault v nasazení šablon Správce prostředků
+# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Tutorial: Integrate Azure Key Vault in your Resource Manager template deployment
 
-Naučte se, jak načíst tajné kódy z trezoru klíčů Azure a předat tajné klíče jako parametry při nasazení Azure Resource Manager. Hodnota parametru se nikdy nezveřejňuje, protože odkazuje jenom na jeho ID trezoru klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./resource-manager-keyvault-parameter.md).
+Learn how to retrieve secrets from an Azure key vault and pass the secrets as parameters when you deploy Azure Resource Manager. The parameter value is never exposed, because you reference only its key vault ID. For more information, see [Use Azure Key Vault to pass secure parameter value during deployment](./resource-manager-keyvault-parameter.md).
 
-V kurzu [Nastavení pořadí nasazení prostředků](./resource-manager-tutorial-create-templates-with-dependent-resources.md) můžete vytvořit virtuální počítač (VM). Musíte zadat uživatelské jméno a heslo správce virtuálního počítače. Místo zadání hesla můžete heslo ukládat do trezoru klíčů Azure a pak šablonu přizpůsobit, aby se během nasazování načetlo heslo z trezoru klíčů.
+In the [Set resource deployment order](./resource-manager-tutorial-create-templates-with-dependent-resources.md) tutorial, you create a virtual machine (VM). You need to provide the VM administrator username and password. Instead of providing the password, you can pre-store the password in an Azure key vault and then customize the template to retrieve the password from the key vault during the deployment.
 
-![Diagram znázorňující integraci šablony Správce prostředků s trezorem klíčů](./media/resource-manager-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
+![Diagram displaying the integration of a Resource Manager template with a key vault](./media/resource-manager-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Příprava trezoru klíčů
+> * Prepare a key vault
 > * Otevření šablony rychlého startu
 > * Úprava souboru parametrů
 > * Nasazení šablony
@@ -35,29 +35,29 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* [Visual Studio Code](https://code.visualstudio.com/) s [rozšířením nástroje Správce prostředků Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
-* Pokud chcete zvýšit zabezpečení, použijte vygenerované heslo pro účet správce virtuálního počítače. Tady je ukázka pro vygenerování hesla:
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* To increase security, use a generated password for the VM administrator account. Here's a sample for generating a password:
 
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Ověřte, že vygenerovaná hesla splňují požadavky na heslo k virtuálnímu počítači. Každá služba Azure má specifické požadavky na hesla. Požadavky na heslo k virtuálnímu počítači najdete v tématu [Jaké jsou požadavky na heslo při vytváření virtuálního počítače](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    Verify that the generated password meets the VM password requirements. Každá služba Azure má specifické požadavky na hesla. For the VM password requirements, see [What are the password requirements when you create a VM?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-## <a name="prepare-a-key-vault"></a>Příprava trezoru klíčů
+## <a name="prepare-a-key-vault"></a>Prepare a key vault
 
-V této části vytvoříte Trezor klíčů a do něj přidáte tajný klíč, abyste mohli načíst tajný klíč při nasazení šablony. Existuje mnoho způsobů, jak vytvořit Trezor klíčů. V tomto kurzu použijete Azure PowerShell k nasazení [Správce prostředků šablony](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). Tato šablona provede následující:
+In this section, you create a key vault and add a secret to it, so that you can retrieve the secret when you deploy your template. There are many ways to create a key vault. In this tutorial, you use Azure PowerShell to deploy a [Resource Manager template](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). This template does the following:
 
-* Vytvoří Trezor klíčů s povolenou vlastností `enabledForTemplateDeployment`. Tato vlastnost musí mít *hodnotu true* , aby mohl proces nasazení šablony přistupovat ke tajným klíčům, které jsou definovány v trezoru klíčů.
-* Přidá tajný klíč do trezoru klíčů. Tajný kód uchovává heslo správce virtuálního počítače.
+* Creates a key vault with the `enabledForTemplateDeployment` property enabled. This property must be *true* before the template deployment process can access the secrets that are defined in the key vault.
+* Adds a secret to the key vault. The secret stores the VM administrator password.
 
 > [!NOTE]
-> Jako uživatel, který nasazuje šablonu virtuálního počítače, pokud nejste vlastníkem nebo přispěvatelem trezoru klíčů, vlastník nebo přispěvatel vám musí udělit přístup ke službě *Microsoft. webkey trezor/trezory/* k oprávněním k nasazení/akci pro Trezor klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./resource-manager-keyvault-parameter.md).
+> As the user who's deploying the virtual machine template, if you're not the Owner of or a Contributor to the key vault, the Owner or a Contributor must grant you access to the *Microsoft.KeyVault/vaults/deploy/action* permission for the key vault. For more information, see [Use Azure Key Vault to pass a secure parameter value during deployment](./resource-manager-keyvault-parameter.md).
 
-Chcete-li spustit následující skript Azure PowerShell, vyberte možnost **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na podokno prostředí a pak vyberete **Vložit**.
+To run the following Azure PowerShell script, select **Try it** to open Azure Cloud Shell. To paste the script, right-click the shell pane, and then select **Paste**.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -75,40 +75,40 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 ```
 
 > [!IMPORTANT]
-> * Název skupiny prostředků je název projektu, ale s připojeným **rgem** . Aby bylo snazší [vyčistit prostředky, které jste vytvořili v tomto kurzu](#clean-up-resources), při [nasazení další šablony](#deploy-the-template)použijte stejný název projektu a název skupiny prostředků.
-> * Výchozí název tajného klíče je **vmAdminPassword**. Je pevně zakódované v šabloně.
-> * Pokud chcete šabloně povolit načtení tajného kódu, musíte povolit zásadu přístupu nazvanou povolit přístup k Azure Resource Manager nasazení šablony pro Trezor klíčů. Tato zásada je v šabloně povolená. Další informace o zásadách přístupu najdete v tématu [nasazení trezorů klíčů a tajných](./resource-manager-keyvault-parameter.md#deploy-key-vaults-and-secrets)kódů.
+> * The resource group name is the project name, but with **rg** appended to it. To make it easier to [clean up the resources that you created in this tutorial](#clean-up-resources), use the same project name and resource group name when you [deploy the next template](#deploy-the-template).
+> * The default name for the secret is **vmAdminPassword**. It's hardcoded in the template.
+> * To enable the template to retrieve the secret, you must enable an access policy called "Enable access to Azure Resource Manager for template deployment" for the key vault. This policy is enabled in the template. For more information about the access policy, see [Deploy key vaults and secrets](./resource-manager-keyvault-parameter.md#deploy-key-vaults-and-secrets).
 
-Šablona obsahuje jednu výstupní hodnotu s názvem *keyVaultId*. Pokud nasadíte virtuální počítač, zapište hodnotu ID pro pozdější použití. Formát ID prostředku je:
+The template has one output value, called *keyVaultId*. Write down the ID value for later use, when you deploy the virtual machine. The resource ID format is:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
 ```
 
-Když zkopírujete a vložíte ID, může být rozděleno na více řádků. Sloučí řádky a ořízne nadbytečné mezery.
+When you copy and paste the ID, it might be broken into multiple lines. Merge the lines and trim the extra spaces.
 
-Chcete-li nasazení ověřit, spusťte následující příkaz prostředí PowerShell ve stejném podokně prostředí pro načtení tajného kódu jako nešifrovaný text. Příkaz funguje pouze ve stejné relaci prostředí, protože používá proměnnou *$keyVaultName*, která je definována v předchozím skriptu prostředí PowerShell.
+To validate the deployment, run the following PowerShell command in the same shell pane to retrieve the secret in clear text. The command works only in the same shell session, because it uses the variable *$keyVaultName*, which is defined in the preceding PowerShell script.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
 ```
 
-Teď jste připravili Trezor klíčů a tajný klíč. V následujících částech se dozvíte, jak přizpůsobit existující šablonu pro načtení tajného klíče během nasazení.
+Now you've prepared a key vault and a secret. The following sections show you how to customize an existing template to retrieve the secret during the deployment.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony rychlého startu
 
-Šablony pro rychlý Start Azure jsou úložiště pro šablony Správce prostředků. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona použitá v tomto kurzu se nazývá [nasazení jednoduchého virtuálního počítače s Windows](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
+Azure Quickstart Templates is a repository for Resource Manager templates. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. The template that's used in this tutorial is called [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
-1. V Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. In Visual Studio Code, select **File** > **Open File**.
 
-1. Do pole **název souboru** vložte následující adresu URL:
+1. In the **File name** box, paste the following URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Výběrem **Open** (Otevřít) soubor otevřete. Scénář je stejný jako ten, který se používá v [kurzu: vytváření Azure Resource Manager šablon se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
-   Šablona definuje pět prostředků:
+1. Výběrem **Open** (Otevřít) soubor otevřete. The scenario is the same as the one that's used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+   The template defines five resources:
 
    * `Microsoft.Storage/storageAccounts`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
    * `Microsoft.Network/publicIPAddresses`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
@@ -116,11 +116,11 @@ Teď jste připravili Trezor klíčů a tajný klíč. V následujících část
    * `Microsoft.Network/networkInterfaces`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
    * `Microsoft.Compute/virtualMachines`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-   Před přizpůsobením šablony je užitečné, abyste měli základní znalosti šablony.
+   It's helpful to have some basic understanding of the template before you customize it.
 
-1. Vyberte **soubor** > **Uložit jako**a pak uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON*.
+1. Select **File** > **Save As**, and then save a copy of the file to your local computer with the name *azuredeploy.json*.
 
-1. Opakujte kroky 1-3 pro otevření následující adresy URL a pak soubor uložte jako *azuredeploy. Parameters. JSON*.
+1. Repeat steps 1-3 to open the following URL, and then save the file as *azuredeploy.parameters.json*.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
@@ -130,8 +130,8 @@ Teď jste připravili Trezor klíčů a tajný klíč. V následujících část
 
 V souboru šablony není nutné provádět žádné změny.
 
-1. V Visual Studio Code otevřete *azuredeploy. Parameters. JSON* , pokud ještě není otevřený.
-1. Aktualizujte parametr `adminPassword` na:
+1. In Visual Studio Code, open *azuredeploy.parameters.json* if it's not already open.
+1. Update the `adminPassword` parameter to:
 
     ```json
     "adminPassword": {
@@ -145,22 +145,22 @@ V souboru šablony není nutné provádět žádné změny.
     ```
 
     > [!IMPORTANT]
-    > Nahraďte hodnotu pro **ID** ID prostředku trezoru klíčů, který jste vytvořili v předchozím postupu.
+    > Replace the value for **id** with the resource ID of the key vault that you created in the previous procedure.
 
-    ![Integrace trezoru klíčů a Správce prostředků šablonou souborů parametrů nasazení virtuálního počítače](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
+    ![Integrate key vault and Resource Manager template virtual machine deployment parameters file](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
-1. Aktualizací následujících hodnot:
+1. Update the following values:
 
-    * **adminUsername**: název účtu správce virtuálního počítače.
-    * **dnsLabelPrefix**: pojmenujte hodnotu dnsLabelPrefix.
+    * **adminUsername**: The name of the virtual machine administrator account.
+    * **dnsLabelPrefix**: Name the dnsLabelPrefix value.
 
-    Příklady názvů naleznete na předchozím obrázku.
+    For examples of names, see the preceding image.
 
 1. Uložte změny.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Postupujte podle pokynů v části [nasazení šablony](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Nahrajte *azuredeploy. JSON* a *azuredeploy. Parameters. Cloud Shell JSON* a pomocí následujícího skriptu PowerShellu nasaďte šablonu:
+Follow the instructions in [Deploy the template](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Upload both *azuredeploy.json* and *azuredeploy.parameters.json* to Cloud Shell, and then use the following PowerShell script to deploy the template:
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -173,21 +173,21 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
 ```
 
-Když šablonu nasadíte, použijte stejnou skupinu prostředků, kterou jste použili v trezoru klíčů. Tento přístup usnadňuje vyčištění prostředků, protože potřebujete odstranit jenom jednu skupinu prostředků namísto dvou.
+When you deploy the template, use the same resource group that you used in the key vault. This approach makes it easier for you to clean up the resources, because you need to delete only one resource group instead of two.
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-Po úspěšném nasazení virtuálního počítače testujte přihlašovací údaje pomocí hesla uloženého v trezoru klíčů.
+After you've successfully deployed the virtual machine, test the sign-in credentials by using the password that's stored in the key vault.
 
-1. Otevřete [portál Azure](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **skupiny prostředků** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
-1. V horní části vyberte **připojit** .
-1. Vyberte **Stáhnout soubor RDP**a pak podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla uloženého v trezoru klíčů.
+1. Select **Resource groups** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
+1. Select **connect** at the top.
+1. Select **Download RDP File**, and then follow the instructions to sign in to the virtual machine by using the password that's stored in the key vault.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už prostředky Azure nepotřebujete, vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředků.
+When you no longer need your Azure resources, clean up the resources that you deployed by deleting the resource group.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste načetli tajný klíč z trezoru klíčů Azure. Pak jste tajný klíč použili v nasazení šablony. Informace o vytváření propojených šablon najdete tady:
+In this tutorial, you retrieved a secret from your Azure key vault. You then used the secret in your template deployment. Informace o vytváření propojených šablon najdete tady:
 
 > [!div class="nextstepaction"]
 > [Vytvoření propojených šablon](./resource-manager-tutorial-create-linked-templates.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: hledání imagí – Vyhledávání obrázků Bingu REST API a Python'
+title: 'Quickstart: Search for images REST API and Python - Bing Image Search'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API pomocí Pythonu a přijímat odpovědi JSON.
+description: Use this quickstart to send image search requests to the Bing Image Search REST API using Python, and receive JSON responses.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 17864ed471537f80b537af4b3a8679cb9deaab57
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390121"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323800"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a Pythonu
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Quickstart: Search for images using the Bing Image Search REST API and Python
 
-V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání rozhraní API Bingu pro vyhledávání obrázků. Tato aplikace Python odešle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v Pythonu, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Use this quickstart to start sending search requests to the Bing Image Search API. This Python application sends a search query to the API, and displays the URL of the first image in the results. While this application is written in Python, the API is a RESTful web service compatible with most programming languages.
 
 Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu:
 
@@ -32,15 +32,15 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* [Python 2. x nebo 3. x](https://www.python.org/)
-* [Knihovna pil (Python Imaging Library)](https://pillow.readthedocs.io/en/stable/index.html)
+* [Python 2.x or 3.x](https://www.python.org/)
+* The [Python Imaging Library (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
 * [matplotlib](https://matplotlib.org/) 
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. V oblíbených IDE nebo editoru vytvořte nový soubor Pythonu a naimportujte následující moduly. Vytvořte proměnnou pro klíč předplatného, koncový bod hledání a hledaný termín.
+1. Create a new Python file in your favorite IDE or editor, and import the following modules. Create a variable for your subscription key, search endpoint, and search term.
 
     ```python
     import requests
@@ -53,21 +53,21 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     search_term = "puppies"
     ```
 
-2. Přidejte klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key` tak, že vytvoříte slovník a přidáte klíč jako hodnotu. 
+2. Add your subscription key to the `Ocp-Apim-Subscription-Key` header by creating a dictionary, and adding the key as a value. 
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     ```
 
-## <a name="create-and-send-a-search-request"></a>Vytvoření a odeslání žádosti o vyhledávání
+## <a name="create-and-send-a-search-request"></a>Create and send a search request
 
-1. Vytvořte slovník pro parametry vyhledávacího požadavku. Přidejte hledaný termín do parametru `q`. K vyhledání imagí ve veřejné doméně použijte možnost Public pro parametr `license`. Použijte "fotografii" pro `imageType`, chcete-li hledat pouze fotografie.
+1. Create a dictionary for the search request's parameters. Add your search term to the `q` parameter. Use "public" for the `license` parameter to search for images in the public domain. Use "photo" for the `imageType` to search only for photos.
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. K volání rozhraní API Bingu pro vyhledávání obrázků použijte knihovnu `requests`. Přidejte do žádosti hlavičku a parametry a vraťte odpověď jako objekt JSON. Načte adresy URL z několika miniaturních obrázků z pole odpovědi `thumbnailUrl`.
+2. Use the `requests` library to call the Bing Image Search API. Add your header and parameters to the request, and return the response as a JSON object. Get The URLs to several thumbnail images from the response's `thumbnailUrl` field.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -76,13 +76,13 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
-## <a name="view-the-response"></a>Zobrazit odpověď
+## <a name="view-the-response"></a>View the response
 
-1. Vytvoří nový obrázek se čtyřmi sloupci a čtyřmi řádky pomocí knihovny matplotlib. 
+1. Create a new figure with four columns, and four rows using the matplotlib library. 
 
-2. Iterujte pomocí řádků a sloupců na obrázku a pomocí metody `Image.open()` knihovny PIL přidejte miniaturu obrázku do každého prostoru. 
+2. Iterate through the figure's rows and columns, and use the PIL library's `Image.open()` method to add an image thumbnail to each space. 
 
-3. K nakreslení obrázku a zobrazení imagí použijte `plt.show()`.
+3. Use `plt.show()` to draw the figure and display the images.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -97,7 +97,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     ```
 
 
-## <a name="example-json-response"></a>Příklad odpovědi JSON
+## <a name="example-json-response"></a>Example JSON response
 
 Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
@@ -150,8 +150,8 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 > [!div class="nextstepaction"]
 > [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
 
-* [Co je rozhraní API Bingu pro vyhledávání obrázků?](../overview.md)  
-* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
+* [What is the Bing Image Search API?](../overview.md)  
+* [Pricing details](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) for the Bing Search APIs. 
 * [Získat zdarma přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

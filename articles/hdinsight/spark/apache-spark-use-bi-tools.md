@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Analýza dat Apache Spark Azure HDInsight pomocí Power BI'
-description: Kurz – použití Microsoft Power BI k vizualizaci Apache Spark uložených clusterů HDInsight
+title: 'Tutorial: Analyze Azure HDInsight Apache Spark data with Power BI'
+description: Tutorial - Use Microsoft Power BI to visualize Apache Spark data stored HDInsight clusters
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: c2d6a5acba304d7421b000cab2ee5cee5b85e5ce
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241359"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327279"
 ---
-# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: analýza Apache Spark dat pomocí Power BI ve službě HDInsight
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Tutorial: Analyze Apache Spark data using Power BI in HDInsight
 
-V tomto kurzu se naučíte používat [Microsoft Power BI](https://powerbi.microsoft.com/) k vizualizaci dat v clusteru Apache Spark ve [službě Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
+In this tutorial, you learn how to use [Microsoft Power BI](https://powerbi.microsoft.com/) to visualize data in an Apache Spark cluster in [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -27,15 +27,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Dokončete kurz k článkům [: načtěte data a spouštějte dotazy na Apache Sparkm clusteru ve službě Azure HDInsight](./apache-spark-load-data-run-query.md).
+* Complete the article [Tutorial: Load data and run queries on an Apache Spark cluster in Azure HDInsight](./apache-spark-load-data-run-query.md).
 
 * [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
-* Volitelné: [předplatné Power BI zkušební verze](https://app.powerbi.com/signupredirect?pbi_source=web).
+* Optional: [Power BI trial subscription](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="verify-the-data"></a>Ověření dat
 
-[Jupyter notebook](https://jupyter.org/) , který jste vytvořili v [předchozím kurzu](apache-spark-load-data-run-query.md) , obsahuje kód pro vytvoření tabulky `hvac`. Tato tabulka je založená na souboru CSV, který je k dispozici ve všech clusterech HDInsight Spark na `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`. Pomocí následujícího postupu ověřte data.
+The [Jupyter Notebook](https://jupyter.org/) that you created in the [previous tutorial](apache-spark-load-data-run-query.md) includes code to create an `hvac` table. This table is based on the CSV file available on all HDInsight Spark clusters at `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`. Pomocí následujícího postupu ověřte data.
 
 1. Do poznámkového bloku Jupyter vložte následující kód a pak stiskněte **SHIFT + ENTER**. Kód ověří existenci tabulek.
 
@@ -74,27 +74,27 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 > [!NOTE]  
 > Konektor ukázaný v tomto článku je aktuálně ve verzi Preview. Případnou zpětnou vazbu můžete poskytnout přes web [komunity Power BI](https://community.powerbi.com/) nebo na fóru [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) (Nápady ohledně Power BI).
 
-1. Otevřete Power BI Desktop. Zavře úvodní obrazovku, pokud se spustí.
+1. Otevřete Power BI Desktop. Close the start-up splash screen if it opens.
 
-2. Na kartě **Domů** přejděte na **získat data** > **Další.** ..
+2. From the **Home** tab, navigate to **Get Data** > **More..** .
 
-    ![Načtení dat do Power BI Desktop ze služby HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Načtení dat do Power BI z Apache Spark BI")
+    ![Get data into Power BI Desktop from HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Get data into Power BI from Apache Spark BI")
 
-3. Do vyhledávacího pole zadejte `Spark`, vyberte **Azure HDInsight Spark**a pak vyberte **připojit**.
+3. Enter `Spark` in the search box, select **Azure HDInsight Spark**, and then select **Connect**.
 
-    ![Načtení dat do Power BI z Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Načtení dat do Power BI z Apache Spark BI")
+    ![Get data into Power BI from Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Get data into Power BI from Apache Spark BI")
 
-4. Do textového pole **Server** zadejte adresu URL clusteru (ve formátu `mysparkcluster.azurehdinsight.net`).
+4. Enter your cluster URL (in the form `mysparkcluster.azurehdinsight.net`) in the **Server** text box.
 
-5. V části **režim připojení dat**vyberte **DirectQuery**. Pak vyberte **OK**.
+5. Under **Data connectivity mode**, select **DirectQuery**. Pak vyberte **OK**.
 
     V případě Sparku můžete použít jakýkoli režim připojení dat. Pokud použijete DirectQuery, změny se v sestavách projeví bez nutnosti aktualizace celé datové sady. Pokud data importujete, musíte datovou sadu aktualizovat, aby se změny projevily. Další informace o tom, jak a kdy použít DirectQuery, najdete v tématu [Použití DirectQuery v Power BI](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
-6. Zadejte informace o přihlašovacím účtu HDInsight a pak vyberte **připojit**. Výchozí název účtu je *admin*.
+6. Enter the HDInsight login account information, then select **Connect**. Výchozí název účtu je *admin*.
 
-7. Vyberte tabulku `hvac`, počkejte, než se zobrazí náhled dat, a pak vyberte **načíst**.
+7. Select the `hvac` table, wait to see a preview of the data, and then select **Load**.
 
-    ![Uživatelské jméno a heslo clusteru Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Uživatelské jméno a heslo clusteru Spark")
+    ![Spark cluster user name and password](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Spark cluster user name and password")
 
     Power BI Desktop má všechny potřebné informace pro připojení ke clusteru Spark a načtení dat z tabulky `hvac`. Tabulka a její sloupce se zobrazí v podokně **Pole**.
 
@@ -104,27 +104,27 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 
     2. Přetáhněte pole **BuildingID** (ID budovy) do části **Osa** a pole **ActualTemp** (Skutečná teplota) a **TargetTemp** (Cílová teplota) do části **Hodnota**.
 
-        ![Přidat sloupce hodnot](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Přidat sloupce hodnot")
+        ![add value columns](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "add value columns")
 
         Diagram vypadá takto:
 
-        ![součet plošného grafu](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "součet plošného grafu")
+        ![area graph sum](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "area graph sum")
 
-        Vizualizace ve výchozím nastavení zobrazí pro **ActualTemp** a **TargetTemp** součet hodnot. V podokně vizualizace vyberte šipku dolů vedle **ActualTemp** a **TragetTemp** , kde vidíte, že je vybraná možnost **Sum** .
+        Vizualizace ve výchozím nastavení zobrazí pro **ActualTemp** a **TargetTemp** součet hodnot. Select the down arrow next to **ActualTemp** and **TragetTemp** in the Visualizations pane, you can see **Sum** is selected.
 
-    3. V podokně vizualizace vyberte šipky dolů vedle **ActualTemp** a **TragetTemp** . Pokud chcete získat průměr skutečných a cílových teplot pro každé sestavení, vyberte **průměr** .
+    3. Select the down arrows next to **ActualTemp** and **TragetTemp** in the Visualizations pane, select **Average** to get an average of actual and target temperatures for each building.
 
-        ![průměr hodnot](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "průměr hodnot")
+        ![average of values](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "average of values")
 
         Vaše vizualizace dat by měla vypadat podobně jako na následujícím snímku obrazovky. Přesunutím kurzoru nad vizualizaci zobrazte popisky s relevantními daty.
 
-        ![plošný graf](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "plošný graf")
+        ![area graph](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "area graph")
 
-9. Přejděte do **souboru** > **Uložit**, zadejte název souboru `BuildingTemperature` a pak vyberte **Uložit**.
+9. Navigate to **File** > **Save**, enter the name `BuildingTemperature` for the file, then select **Save**.
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>Publikování sestavy ve službě Power BI (volitelné)
 
-Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organizací. V této části nejprve publikujete datovou sadu a sestavu. Pak sestavu připnete na řídicí panel. Řídicí panely se obvykle používají k zaměření na podmnožinu dat v sestavě. V sestavě máte jenom jednu vizualizaci, ale je to ještě užitečné při Projděte si postup.
+Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organizací. V této části nejprve publikujete datovou sadu a sestavu. Pak sestavu připnete na řídicí panel. Dashboards are typically used to focus on a subset of data in a report. You have only one visualization in your report, but it's still useful to go through the steps.
 
 1. Otevřete Power BI Desktop.
 
@@ -134,27 +134,27 @@ Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organiz
 
 1. Vyberte pracovní prostor, do kterého chcete datovou sadu a sestavu publikovat, a klikněte na **Vybrat**. Na následujícím obrázku je vybraný výchozí pracovní prostor **My Workspace**.
 
-    ![Vyberte pracovní prostor, pro který chcete publikovat datovou sadu a sestavu.](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Vyberte pracovní prostor, pro který chcete publikovat datovou sadu a sestavu.") 
+    ![Select workspace to publish dataset and report to](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Select workspace to publish dataset and report to") 
 
 1. Po úspěšném publikování klikněte na **Otevřít soubor BuildingTemperature.pbix v Power BI**.
 
-    ![Úspěch publikování, kliknutím zadejte přihlašovací údaje.](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Úspěch publikování, kliknutím zadejte přihlašovací údaje.") 
+    ![Publish success, click to enter credentials](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publish success, click to enter credentials") 
 
 1. Ve službě Power BI klikněte na **Zadat přihlašovací údaje**.
 
-    ![Zadejte přihlašovací údaje v služba Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Zadejte přihlašovací údaje v služba Power BI")
+    ![Enter credentials in Power BI service](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Enter credentials in Power BI service")
 
 1. Klikněte na **Upravit přihlašovací údaje**.
 
-    ![Upravit přihlašovací údaje v služba Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Upravit přihlašovací údaje v služba Power BI")
+    ![Edit credentials in Power BI service](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Edit credentials in Power BI service")
 
 1. Zadejte přihlašovací údaje účtu služby HDInsight a pak klikněte na **Přihlásit se**. Výchozí název účtu je *admin*.
 
-    ![Přihlášení ke clusteru Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Přihlášení ke clusteru Spark")
+    ![Sign in to Spark cluster](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Sign in to Spark cluster")
 
 1. V levém podokně přejděte do části **Pracovní prostory** > **My Workspace** > **SESTAVY** a klikněte na **BuildingTemperature**.
 
-    ![Sestava uvedená v části sestavy v levém podokně](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Sestava uvedená v části sestavy v levém podokně")
+    ![Report listed under reports in left pane](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Report listed under reports in left pane")
 
     V části **DATOVÉ SADY** v levém podokně by se také měla zobrazit datová sada **BuildingTemperature**.
 
@@ -162,25 +162,25 @@ Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organiz
 
 1. Najeďte kurzorem na vizualizaci a klikněte na ikonu připínáčku v pravém horním rohu.
 
-    ![Sestava v služba Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Sestava v služba Power BI")
+    ![Report in the Power BI service](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Report in the Power BI service")
 
 1. Vyberte Nový řídicí panel, zadejte název `Building temperature` a klikněte na **Připnout**.
 
-    ![Připnout na nový řídicí panel](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Připnout na nový řídicí panel")
+    ![Pin to new dashboard](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Pin to new dashboard")
 
 1. V sestavě klikněte na **Přejít na řídicí panel**.
 
-Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat další vizuály a připnout je na stejný řídicí panel. Další informace o sestavách a řídicích panelech najdete v tématu [sestavy v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) a [řídicích panelech v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat další vizuály a připnout je na stejný řídicí panel. For more information about reports and dashboards, see [Reports in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) and [Dashboards in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení kurzu můžete cluster odstranit. Ve službě HDInsight jsou vaše data uložená v Azure Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají.
+Po dokončení kurzu můžete cluster odstranit. With HDInsight, your data is stored in Azure Storage, so you can safely delete a cluster when it isn't in use. You're also charged for an HDInsight cluster, even when it isn't in use. Since the charges for the cluster are many times more than the charges for storage, it makes economic sense to delete clusters when they aren't in use.
 
-Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
+To delete a cluster, see [Delete an HDInsight cluster using your browser, PowerShell, or the Azure CLI](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak používat [Microsoft Power BI](https://powerbi.microsoft.com/) k vizualizaci dat v clusteru Apache Spark ve [službě Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). V dalším článku se dozvíte, jak můžete data zaregistrovaná ve Sparku přetáhnout do nástroje pro analýzu BI, jako je Power BI.
+In this tutorial, you learned how to use [Microsoft Power BI](https://powerbi.microsoft.com/) to visualize data in an Apache Spark cluster in [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). Advance to the next article to see you can create a machine learning application.
 
 > [!div class="nextstepaction"]
-> [Spuštění úlohy streamování Apache Spark](apache-spark-eventhub-streaming.md)
+> [Create a machine learning application](./apache-spark-ipython-notebook-machine-learning.md)

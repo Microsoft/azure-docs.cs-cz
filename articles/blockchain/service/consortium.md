@@ -1,88 +1,82 @@
 ---
-title: Konsorcium služeb Azure blockchain
-description: Vysvětlení způsobu, jakým služba Azure blockchain používá privátního konsorcia
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service consortium
+description: Understand how Azure Blockchain Service uses a private consortium
 ms.date: 10/14/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: ddb3f02662c0c71ebc90e1a740b4068d6fbcded4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 44a5aa7ca530c230b42e5b8a7d88a912729e5695
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577515"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325239"
 ---
-# <a name="azure-blockchain-service-consortium"></a>Konsorcium služeb Azure blockchain
+# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service Consortium
 
-Pomocí služby Azure blockchain můžete vytvořit soukromé sítě konsorcia blockchain, kde je možné každou blockchain síť omezit na konkrétní účastníky v síti. Blockchain mohou zobrazit a pracovat s pouze účastníci v blockchain síti privátního sdružení. Sítě konsorcia ve službě Azure blockchain můžou obsahovat dva typy rolí členu účastníka:
+Using Azure Blockchain Service, you can create private consortium blockchain networks where each blockchain network can be limited to specific participants in the network. Only participants in the private consortium blockchain network can view and interact with the blockchain. Consortium networks in Azure Blockchain Service can contain two types of member participant roles:
 
-* Účastníci s oprávněním **správce** , kteří můžou přebírat akce správy konsorcia a můžou se zúčastnit transakcí blockchain.
+* **Administrator** - Privileged participants who can take consortium management actions and can participate in blockchain transactions.
 
-* Účastníci, kteří nemohou provádět žádnou akci správy konsorcia, ale mohou se zúčastnit transakcí blockchain.
+* **User** -  Participants who cannot take any consortium management action but can participate in blockchain transactions.
 
-Sítě konsorcia můžou být kombinací rolí účastníka a můžou mít libovolný počet jednotlivých typů rolí. Musí existovat alespoň jeden správce.
+Consortium networks can be a mix of participant roles and can have an arbitrary number of each role type. There must be at least one administrator.
 
-Následující diagram znázorňuje síť konsorcia s více účastníky:
+The following diagram shows a consortium network with multiple participants:
 
-![Síťový diagram privátního konsorcia](./media/consortium/network-diagram.png)
+![Private consortium network diagram](./media/consortium/network-diagram.png)
 
-Se správou konsorcia ve službě Azure blockchain můžete spravovat účastníky v síti konsorcia. Správa konsorcia je založena na modelu konsensu v síti. V aktuální verzi Preview poskytuje služba Azure blockchain centralizovaný model konsensu pro správu konsorcia. Každý privilegovaný účastník s rolí spravovat může provádět akce správy konsorcia, například přidávání nebo odebírání účastníků ze sítě.
+With consortium management in Azure Blockchain Service, you can manage participants in the consortium network. Management of the consortium is based on the consensus model of the network. In the current preview release, Azure Blockchain Service provides a centralized consensus model for consortium management. Any privileged participant with an administer role can take consortium management actions, such as adding or removing participants from a network.
 
 ## <a name="roles"></a>Role
 
-Účastníci konsorcia můžou být jednotlivci nebo organizace a je možné jim přiřadit roli uživatele nebo roli správce. V následující tabulce jsou uvedeny rozdíly vysoké úrovně mezi dvěma rolemi:
+Participants in a consortium can be individuals or organizations and can be assigned a user role or an administrator role. The following table lists the high-level differences between the two roles:
 
-| Akce | Role uživatele | Role správce
+| Akce | User role | Administrator role
 |--------|:----:|:------------:|
-| Vytvořit nového člena | Ano | Ano |
-| Pozvat nové členy | Ne | Ano |
-| Nastavení nebo změna role člena účastníka | Ne | Ano |
-| Zobrazovaný název člena změny | Pouze pro vlastního člena | Pouze pro vlastního člena |
-| Odebrat členy | Pouze pro vlastního člena | Ano |
-| Účast v transakcích blockchain | Ano | Ano |
+| Create new member | Ano | Ano |
+| Invite new members | Ne | Ano |
+| Set or change member participant role | Ne | Ano |
+| Change member display name | Only for own member | Only for own member |
+| Remove members | Only for own member | Ano |
+| Participate in blockchain transactions | Ano | Ano |
 
-### <a name="user-role"></a>Role uživatele
+### <a name="user-role"></a>User role
 
-Uživatelé jsou účastníky konsorcia bez schopností správce. Nemůžou se podílet na správě členů spojených s konsorciem. Uživatelé mohou změnit zobrazovaný název členů a mohou se z konsorcia odebrat sami.
+Users are consortium participants with no administrator capabilities. They cannot participate in managing members related to the consortium. Users can change their member display name and can remove themselves from a consortium.
 
 ### <a name="administrator"></a>Správce
 
-Správce může spravovat členy v rámci konsorcia. Správce může pozvat členy, odebrat členy nebo aktualizovat role členů v rámci konsorcia.
-V rámci konsorcia musí být vždy alespoň jeden správce. Poslední správce musí před opustili konsorcium zadat jiného účastníka jako roli správce.
+An administrator can manage members within the consortium. An administrator can invite members, remove members, or update members roles within the consortium.
+There must always be at least one administrator within a consortium. The last administrator must specify another participant as an administrator role before leaving a consortium.
 
-## <a name="managing-members"></a>Správa členů
+## <a name="managing-members"></a>Managing members
 
-Pouze správci mohou pozvat další účastníky do konsorcia. Správci můžou pozvat účastníky pomocí svého ID předplatného Azure.
+Only administrators can invite other participants to the consortium. Administrators invite participants using their Azure subscription ID.
 
-Po pozvání se můžou účastníci připojit k blockchain Consortium nasazením nového člena ve službě Azure blockchain. Chcete-li zobrazit pozvaní konsorcium, je nutné zadat stejné ID předplatného Azure, které bylo použito v pozvání správce sítě.
+Once invited, participants can join the blockchain consortium by deploying a new member in Azure Blockchain Service. To view and join the invited consortium, you must specify the same Azure subscription ID used in the invite by the network administrator.
 
-Správci mohou odebrat jakéhokoli účastníka z konsorcia, včetně jiných správců. Členové mohou z konsorcia odebrat pouze sebe sama.
+Administrators can remove any participant from the consortium, including other administrators. Members can only remove themselves from a consortium.
 
-## <a name="consortium-management-smart-contract"></a>Inteligentní kontrakt správy konsorcia
+## <a name="consortium-management-smart-contract"></a>Consortium management smart contract
 
-Správa konsorcia ve službě Azure blockchain se provádí prostřednictvím inteligentních kontraktů správy konsorcia. Inteligentní kontrakty se při nasazení nového člena blockchain automaticky nasadí do vašich uzlů.
+Consortium management in Azure Blockchain Service is done via consortium management smart contracts. The smart contracts are automatically deployed to your nodes when you deploy a new blockchain member.
 
-Adresa inteligentního kontraktu správy root Consortium se dá zobrazit v Azure Portal. **Adresa RootContract** je v oddílu přehled členů blockchain.
+The address of the root consortium management smart contract can be viewed in the Azure portal. The **RootContract address** is in blockchain member's overview section.
 
-![Adresa RootContract](./media/consortium/rootcontract-address.png)
+![RootContract address](./media/consortium/rootcontract-address.png)
 
-Pomocí [modulu PowerShell](manage-consortium-powershell.md)pro správu konsorcia, Azure Portal nebo přímo prostřednictvím inteligentního kontraktu s využitím účtu ethereem generovaného službou Azure blockchain, můžete komunikovat s inteligentní smlouvou správy konsorcia.
+You can interact with the consortium management smart contract using the consortium management [PowerShell module](manage-consortium-powershell.md), Azure portal, or directly through the smart contract using the Azure Blockchain Service generated Ethereum account.
 
-## <a name="ethereum-account"></a>Účet ethereem
+## <a name="ethereum-account"></a>Ethereum account
 
-Při vytvoření člena se vytvoří klíč účtu Ethereem. Služba Azure blockchain používá klíč k vytváření transakcí souvisejících se správou konsorcia. Klíč účtu Ethereem se automaticky spravuje službou Azure blockchain.
+When a member is created, an Ethereum account key is created. Azure Blockchain Service uses the key to create transactions related to consortium management. The Ethereum account key is managed by Azure Blockchain Service automatically.
 
-Členský účet lze zobrazit v Azure Portal. Členský účet je v oddílu přehled členů blockchain.
+The member account can be viewed in the Azure portal. The member account is in blockchain member's overview section.
 
-![Členský účet](./media/consortium/member-account.png)
+![Member account](./media/consortium/member-account.png)
 
-Svůj účet Ethereem můžete resetovat kliknutím na svůj členský účet a zadáním nového hesla. Bude resetována jak adresa účtu Ethereem, tak heslo.  
+You can reset your Ethereum account by clicking on your member account and entering a new password. Both the Ethereum account address and the password will be reset.  
 
 ## <a name="next-steps"></a>Další kroky
 
-[Správa členů ve službě Azure blockchain pomocí prostředí PowerShell](manage-consortium-powershell.md)
+[How to manage members in Azure Blockchain Service using PowerShell](manage-consortium-powershell.md)

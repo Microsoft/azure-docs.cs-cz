@@ -1,72 +1,72 @@
 ---
-title: Povolit víceklientské aplikace – digitální vlákna Azure | Microsoft Docs
-description: Jak nakonfigurovat víceklientské Azure Active Directory aplikace pro digitální vlákna Azure
+title: Enable multitenant applications - Azure Digital Twins | Microsoft Docs
+description: How to configure multitenant Azure Active Directory applications for Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: 6394d519b93b55358ef9d528f89978d5a3cf3007
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: 65e1fa3fe371766566eeeaaa2d33479ea0243d61
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005917"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383331"
 ---
-# <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Povolení víceklientské aplikací s využitím digitálních vláken Azure
+# <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Enable multitenant applications with Azure Digital Twins
 
-Vývojáři řešení, kteří vytvářejí na digitálních Vlákenách Azure, můžou najít, že chtějí podporovat více zákazníků s jednou službou nebo řešením. Ve skutečnosti jsou *víceklientské* aplikace z nejběžnějších konfigurací digitálních vláken Azure.
+Solutions developers who build on Azure Digital Twins may find that they want to support multiple customers with a single service or solution. In fact, *multitenant* applications are among the most common Azure Digital Twins configurations.
 
-Tento dokument popisuje, jak nakonfigurovat aplikaci Azure Digital revlákens pro podporu několika Azure Active Directory klientů a zákazníků.
+This document describes how to configure an Azure Digital Twins app to support several Azure Active Directory tenants and customers.
 
-## <a name="multitenancy"></a>Víceklientskou architekturu
+## <a name="multitenancy"></a>Multitenancy
 
-Prostředek s více *klienty* je jediná zřízená instance, která podporuje víc zákazníků. Každý zákazník má svá nezávislá data a oprávnění. Činnost každého zákazníka je izolovaná od sebe, takže jejich "zobrazení" aplikace je jedinečné.
+A *multitenant* resource is a single provisioned instance that supports multiple customers. Each customer has their own independent data and privileges. Each customer's experience is isolated from each other's so that their "view" of the application is distinct.
 
-Pokud chcete získat další informace o víceklientské architektuře, přečtěte si víc [tenantů aplikací v Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
+To learn more about multitenancy, read [Multitenant Applications in Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
 
-## <a name="problem-scenario"></a>Scénář problému
+## <a name="problem-scenario"></a>Problem scenario
 
-V tomto scénáři zvažte vývojáře, který sestaví řešení digitálních vláken Azure (**Developer**) a zákazníka, který používá toto řešení (**Zákazník**):
+In this scenario, consider a developer building an Azure Digital Twins solution (**DEVELOPER**) and a customer who uses that solution (**CUSTOMER**):
 
-- **Vývojář** má předplatné Azure s klientem Azure Active Directory.
-- **Vývojář** nasadí instanci digitálního vlákna Azure do svého předplatného Azure. Azure Active Directory automaticky vytvořil instanční objekt v tenantovi Azure Active Directory **vývojáře**.
-- Uživatelé v rámci tenanta Azure Active Directory **vývojářů**potom můžou [získat tokeny OAuth 2,0](./security-authenticating-apis.md) ze služby digitálního vlákna Azure.
-- **Vývojář** teď vytvoří mobilní aplikaci, která se přímo integruje s rozhraními API pro správu digitálních vláken Azure.
-- **Vývojář** umožňuje **zákazníkům** používat mobilní aplikace.
-- **Zákazník** musí mít autorizaci používat rozhraní API pro správu digitálních vláken Azure v rámci aplikace **vývojáře**.
+- **DEVELOPER** has an Azure subscription with an Azure Active Directory tenant.
+- **DEVELOPER** deploys an Azure Digital Twins instance into their Azure subscription. Azure Active Directory automatically created a service principal in **DEVELOPER**'s Azure Active Directory tenant.
+- Users within **DEVELOPER**'s Azure Active Directory tenant can then [acquire OAuth 2.0 tokens](./security-authenticating-apis.md) from the Azure Digital Twins service.
+- **DEVELOPER** now creates a mobile app that directly integrates with the Azure Digital Twins Management APIs.
+- **DEVELOPER** allows **CUSTOMER** the use of the mobile application.
+- **CUSTOMER** must be authorized to use the Azure Digital Twins Management API within **DEVELOPER**'s application.
 
-Problém:
+The problem:
 
-- Když se **Zákazník** do aplikace pro **vývojáře**přihlásí, aplikace nemůže získat tokeny pro uživatele **zákazníka**k ověření pomocí rozhraní API pro správu digitálních vláken Azure.
-- V Azure Active Directory je vyvolána výjimka, která znamená, že v adresáři **zákazníka**nejsou rozpoznány digitální vlákna Azure.
+- When **CUSTOMER** logs into **DEVELOPER**'s application, the app can't acquire tokens for **CUSTOMER**'s users to authenticate with the Azure Digital Twins Management APIs.
+- An exception is issued in Azure Active Directory indicating that Azure Digital Twins isn't recognized within **CUSTOMER**'s directory.
 
-## <a name="problem-solution"></a>Řešení problému
+## <a name="problem-solution"></a>Problem solution
 
-K vyřešení předchozího scénáře problému je potřeba k vytvoření instančního objektu služby digitálních vláken Azure v rámci klienta Azure Active Directory **zákazníka**použít následující akce:
+To solve the previous problem scenario, the following actions are needed to create an Azure Digital Twins service principal within the **CUSTOMER**'s Azure Active Directory tenant:
 
-- Pokud **Zákazník** ještě nemá předplatné Azure s Azure Active Directory tenant:
+- If **CUSTOMER** doesn't already have an Azure subscription with an Azure Active Directory tenant:
 
-  - Správce tenanta Azure Active Directory **zákazníka**musí získat [předplatné Azure s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/).
-  - Správce tenanta Azure Active Directory **zákazníka**pak musí [propojit svého tenanta s novým předplatným](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
+  - **CUSTOMER**'s Azure Active Directory tenant admin must acquire a [pay-as-you-go Azure subscription](https://azure.microsoft.com/offers/ms-azr-0003p/).
+  - **CUSTOMER**'s Azure Active Directory tenant admin then must [link their tenant with the new subscription](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
 
-- Na [Azure Portal](https://portal.azure.com)Azure Active Directory správce tenanta u **zákazníka**provede následující kroky:
+- On the [Azure portal](https://portal.azure.com), **CUSTOMER**'s Azure Active Directory tenant admin takes the following steps:
 
-  1. Otevřete **odběry**.
-  1. Vyberte předplatné, které má klienta Azure Active Directory použít v aplikaci **vývojáře**.
+  1. Search for **Subscriptions** in the top Azure search field. Vyberte **Předplatná**.
+  1. Select the subscription that has the Azure Active Directory tenant to be used in **DEVELOPER**'s application.
 
-     [předplatná ![Azure Active Directory](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
+     [![Azure Active Directory subscriptions](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
-  1. Vyberte **poskytovatelé prostředků**.
-  1. Vyhledejte **Microsoft. IoTSpaces**.
+  1. Select **Resource Providers**.
+  1. Search for **Microsoft.IoTSpaces**.
   1. Vyberte **Zaregistrovat**.
 
-     [poskytovatelé prostředků ![Azure Active Directory](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
+     [![Azure Active Directory resource providers](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud se chcete dozvědět víc o tom, jak používat uživatelsky definované funkce s digitálními úkoly Azure, přečtěte si téma [jak vytvořit Azure Digital vlákna – uživatelsky definované funkce](./how-to-user-defined-functions.md).
+- To learn more about how to use user-defined functions with Azure Digital Twins, read [How to create Azure Digital Twins user-defined functions](./how-to-user-defined-functions.md).
 
-- Informace o tom, jak pomocí řízení přístupu na základě role dále zabezpečit aplikaci pomocí přiřazení rolí, najdete v tématu [Vytvoření a Správa řízení přístupu na základě role v rámci služby Azure Digital](./security-create-manage-role-assignments.md)forming.
+- To learn how to use role-based access control to further secure the application with role assignments, read [How to create and manage Azure Digital Twins role-based access control](./security-create-manage-role-assignments.md).

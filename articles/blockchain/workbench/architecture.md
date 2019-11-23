@@ -1,123 +1,117 @@
 ---
-title: Architektura Azure blockchain Workbench Preview
-description: Přehled architektury Azure blockchain Workbench Preview a jejích komponent.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Workbench architecture
+description: Overview of Azure Blockchain Workbench Preview architecture and its components.
 ms.date: 09/05/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 4613d441fd0d363654073d4832de19139a7781e7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579737"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324900"
 ---
-# <a name="azure-blockchain-workbench-preview-architecture"></a>Architektura Azure blockchain Workbench Preview
+# <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench architecture
 
-Azure blockchain Workbench Preview zjednodušuje vývoj aplikací blockchain tím, že poskytuje řešení s využitím několika komponent Azure. Blockchain Workbench se dá nasadit pomocí šablony řešení v Azure Marketplace. Šablona umožňuje vybrat moduly a komponenty, které chcete nasadit, včetně blockchain zásobníku, typu klientské aplikace a podpory pro integraci IoT. Po nasazení poskytuje blockchain Workbench přístup k webové aplikaci, aplikaci pro iOS a aplikaci pro Android.
+Azure Blockchain Workbench Preview simplifies blockchain application development by providing a solution using several Azure components. Blockchain Workbench can be deployed using a solution template in the Azure Marketplace. The template allows you to pick modules and components to deploy including blockchain stack, type of client application, and support for IoT integration. Once deployed, Blockchain Workbench provides access to a web app, iOS app, and Android app.
 
-![Architektura blockchain Workbench](./media/architecture/architecture.png)
+![Blockchain Workbench architecture](./media/architecture/architecture.png)
 
-## <a name="identity-and-authentication"></a>Identita a ověřování
+## <a name="identity-and-authentication"></a>Identity and authentication
 
-Pomocí blockchain Workbench může konsorcium federovat své podnikové identity pomocí Azure Active Directory (Azure AD). Workbench generuje nové uživatelské účty pro identity v řetězcích s podnikovými identitami uloženými ve službě Azure AD. Mapování identit usnadňuje ověřené přihlášení k klientským rozhraním API a aplikacím a používá zásady ověřování organizací. Workbench také umožňuje přidružit podnikové identity k určitým rolím v rámci dané inteligentní smlouvy. Aplikace Workbench také poskytuje mechanismus pro identifikaci akcí, které mohou tyto role provádět a v jakém čase.
+Using Blockchain Workbench, a consortium can federate their enterprise identities using Azure Active Directory (Azure AD). Workbench generates new user accounts for on-chain identities with the enterprise identities stored in Azure AD. The identity mapping facilitates authenticated login to client APIs and applications and uses the authentication policies of organizations. Workbench also provides the ability to associate enterprise identities to specific roles within a given smart contract. In addition, Workbench also provides a mechanism to identify the actions those roles can take and at what time.
 
-Po nasazení aplikace blockchain Workbench uživatelé komunikují s blockchain Workbench prostřednictvím klientských aplikací, rozhraní API klienta založeného na REST nebo rozhraní API pro zasílání zpráv. Ve všech případech musí být interakce ověřené buď prostřednictvím Azure Active Directory (Azure AD) nebo pomocí přihlašovacích údajů specifických pro zařízení.
+After Blockchain Workbench is deployed, users interact with Blockchain Workbench either via the client applications, REST-based client API, or Messaging API. In all cases, interactions must be authenticated, either via Azure Active Directory (Azure AD) or device-specific credentials.
 
-Uživatelé federovat své identity do konsorcia Azure AD odesláním e-mailových pozvánek účastníkům na jejich e-mailové adrese. Při přihlášení se tito uživatelé ověřují pomocí jména, hesla a zásad. Například dvojúrovňové ověřování organizace.
+Users federate their identities to a consortium Azure AD by sending an email invitation to participants at their email address. When logging in, these users are authenticated using the name, password, and policies. For example, two-factor authentication of their organization.
 
-Služba Azure AD se používá ke správě všech uživatelů, kteří mají přístup k blockchain Workbench. Všechna zařízení, která se připojují k vaší inteligentní smlouvě, jsou také přidružená k Azure AD.
+Azure AD is used to manage all users who have access to Blockchain Workbench. Each device connecting to a smart contract is also associated with Azure AD.
 
-Služba Azure AD se používá také k přiřazení uživatelů ke speciální skupině správců. Uživatelům přidruženým ke skupině správců se uděluje přístup k právům a akcím v rámci blockchain Workbench, včetně nasazení smluv a udělení oprávnění uživateli k přístupu ke smlouvě. Uživatelé mimo tuto skupinu nemají přístup k akcím správce.
+Azure AD is also used to assign users to a special administrator group. Users associated with the administrator group are granted access to rights and actions within Blockchain Workbench including deploying contracts and giving permissions to a user to access a contract. Users outside this group do not have access to administrator actions.
 
 ## <a name="client-applications"></a>Klientské aplikace
 
-Workbench poskytuje automaticky generované klientské aplikace pro web a mobilní zařízení (iOS, Android), které se dají použít k ověřování, testování a zobrazování aplikací blockchain. Aplikační rozhraní se dynamicky generuje na základě metadat inteligentních kontraktů a může podkládat případ použití. Klientské aplikace dodávají front-end pro uživatele k kompletním aplikacím blockchain vygenerovaným aplikací blockchain Workbench. Klientské aplikace ověřují uživatele prostřednictvím služby Azure Active Directory (Azure AD) a pak prezentují uživatelské prostředí, které je přizpůsobeno obchodnímu kontextu inteligentních kontraktů. Činnost koncového uživatele umožňuje vytvořit nové instance inteligentních kontraktů autorizovanými osobami a pak zaznamená možnost spouštět určité typy transakcí v příslušných bodech v obchodním procesu, který představuje inteligentní smlouva.
+Workbench provides automatically generated client applications for web and mobile (iOS, Android), which can be used to validate, test, and view blockchain applications. The application interface is dynamically generated based on smart contract metadata and can accommodate any use case. The client applications deliver a user-facing front end to the complete blockchain applications generated by Blockchain Workbench. Client applications authenticate users via Azure Active Directory (Azure AD) and then present a user experience tailored to the business context of the smart contract. The user experience enables the creation of new smart contract instances by authorized individuals and then presents the ability to execute certain types of transactions at appropriate points in the business process the smart contract represents.
 
-Ve webové aplikaci mají oprávnění uživatelé přístup ke konzole správce. Konzola je k dispozici uživatelům ve skupině správce ve službě Azure AD a poskytuje přístup k následujícím funkcím:
+In the web application, authorized users can access the Administrator Console. The console is available to users in the Administrator group in Azure AD and provides access to the following functionality:
 
-* V případě oblíbených scénářů nasaďte společnosti Microsoft poskytnuté inteligentní smlouvy. Například scénář přenosu assetů.
-* Nahrajte a nasaďte vlastní inteligentní kontrakty.
-* Přiřaďte uživateli přístup k této inteligentní smlouvě v kontextu konkrétní role.
+* Deploy Microsoft provided smart contracts for popular scenarios. For example, an asset transfer scenario.
+* Upload and deploy their own smart contracts.
+* Assign a user access to the smart contract in the context of a specific role.
 
-Další informace najdete v tématu [ukázkové klientské aplikace Azure blockchain Workbench na GitHubu](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
+For more information, see the [Azure Blockchain Workbench sample client applications on GitHub](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
 
-## <a name="gateway-service-api"></a>Rozhraní API služby brány
+## <a name="gateway-service-api"></a>Gateway service API
 
-Blockchain Workbench obsahuje rozhraní API služby brány založené na REST. Při zápisu do blockchain rozhraní API generuje a doručuje zprávy zprostředkovateli událostí. Když rozhraní API požaduje data, odesílají se dotazy do offline databáze SQL mimo řetěz. SQL Database obsahuje repliku dat a metadat v řetězcích, které poskytují informace o kontextu a konfiguraci pro podporované inteligentní kontrakty. Dotazy vrátí požadovaná data z repliky z nepoužívaného řetězce ve formátu informující o metadatech pro kontrakt.
+Blockchain Workbench includes a REST-based gateway service API. When writing to a blockchain, the API generates and delivers messages to an event broker. When data is requested by the API, queries are sent to the off-chain SQL database. The SQL database contains a replica of on-chain data and metadata that provides context and configuration information for supported smart contracts. Queries return the required data from the off-chain replica in a format informed by the metadata for the contract.
 
-Vývojáři mají přístup k rozhraní API služby brány, aby mohli vytvářet nebo integrovat řešení blockchain, aniž by se museli spoléhat na klientské aplikace blockchain Workbench.
+Developers can access the gateway service API to build or integrate blockchain solutions without relying on Blockchain Workbench client apps.
 
 > [!NOTE]
-> K povolení ověřeného přístupu k rozhraní API se v Azure Active Directory zaregistrují dvě klientské aplikace. Azure Active Directory vyžaduje odlišnou registraci aplikací pro každý typ aplikace (nativní a webový). 
+> To enable authenticated access to the API, two client applications are registered in Azure Active Directory. Azure Active Directory requires distinct application registrations each application type (native and web). 
 
-## <a name="message-broker-for-incoming-messages"></a>Zprostředkovatel zpráv pro příchozí zprávy
+## <a name="message-broker-for-incoming-messages"></a>Message broker for incoming messages
 
-Vývojáři, kteří chtějí odesílat zprávy přímo do aplikace blockchain Workbench, mohou odesílat zprávy přímo do Service Bus. Například můžete použít rozhraní API zprávy pro integraci systému do systému nebo zařízení IoT.
+Developers who want to send messages directly to Blockchain Workbench can send messages directly to Service Bus. For example, messages API could be used for system-to-system integration or IoT devices.
 
-## <a name="message-broker-for-downstream-consumers"></a>Zprostředkovatel zpráv pro příjemce pro příjem dat
+## <a name="message-broker-for-downstream-consumers"></a>Message broker for downstream consumers
 
-Během životního cyklu aplikace dojde k události. Události může aktivovat rozhraní API brány nebo v hlavní knize. Oznámení událostí mohou spustit podřízený kód na základě události.
+During the lifecycle of the application, events occur. Events can be triggered by the Gateway API or on the ledger. Event notifications can initiate downstream code based on the event.
 
-Blockchain Workbench automaticky nasadí dva typy uživatelů událostí. Jeden příjemce se spustí blockchain událostmi k naplnění úložiště SQL pro off-Chain. Druhým příjemcem je zaznamenat metadata pro události generované rozhraním API, které souvisí s nahráváním a ukládáním dokumentů.
+Blockchain Workbench automatically deploys two types of event consumers. One consumer is triggered by blockchain events to populate the off-chain SQL store. The other consumer is to capture metadata for events generated by the API related to the upload and storage of documents.
 
-## <a name="message-consumers"></a>Příjemci zpráv
+## <a name="message-consumers"></a>Message consumers
 
- Příjemci zpráv přebírají zprávy od Service Bus. Základní model událostí pro příjemce zpráv umožňuje rozšíření dalších služeb a systémů. Můžete například přidat podporu k naplnění CosmosDB nebo vyhodnocení zpráv pomocí Azure Stream Analytics. V následujících částech jsou popsány příjemce zpráv zahrnuté v blockchain Workbench.
+ Message consumers take messages from Service Bus. The underlying eventing model for message consumers allows for extensions of additional services and systems. For example, you could add support to populate CosmosDB or evaluate messages using Azure Streaming Analytics. The following sections describe the message consumers included in Blockchain Workbench.
 
-### <a name="distributed-ledger-consumer"></a>Příjemce distribuované hlavní knihy
+### <a name="distributed-ledger-consumer"></a>Distributed ledger consumer
 
-Zprávy o službě distribuované hlavní knihy (DLT) obsahují metadata pro transakce, které mají být zapsány do blockchain. Příjemce načte zprávy a vloží data do Tvůrce transakcí, podepisujícího a směrovače.
+Distributed ledger technology (DLT) messages contain the metadata for transactions to be written to the blockchain. The consumer retrieves the messages and pushes the data to a transaction builder, signer, and router.
 
-### <a name="database-consumer"></a>Příjemce databáze
+### <a name="database-consumer"></a>Database consumer
 
-Příjemce databáze přebírá zprávy od Service Bus a vkládá data do připojené databáze, jako je například SQL Database.
+The database consumer takes messages from Service Bus and pushes the data to an attached database, such as SQL database.
 
-### <a name="storage-consumer"></a>Příjemce úložiště
+### <a name="storage-consumer"></a>Storage consumer
 
-Uživatel úložiště přebírá zprávy od Service Bus a vkládá data do připojeného úložiště. Například ukládání dokumentů s algoritmem hash do Azure Storage.
+The storage consumer takes messages from Service Bus and pushes data to an attached storage. For example, storing hashed documents in Azure Storage.
 
-## <a name="transaction-builder-and-signer"></a>Tvůrce a podepisující transakce
+## <a name="transaction-builder-and-signer"></a>Transaction builder and signer
 
-Pokud je nutné zapsat zprávu v zprostředkovateli příchozích zpráv do blockchain, bude zpracována příjemcem služby DLT. Příjemce DLT je služba, která načte zprávu obsahující metadata pro požadovanou transakci, která se má provést, a pak tyto informace odešle do *Tvůrce a podpisu transakce*. *Tvůrce transakce a podepisující osoba* sestaví transakci blockchain na základě dat a požadovaného cíle blockchain. Po sestavení je transakce podepsána. Privátní klíče jsou uloženy v Azure Key Vault.
+If a message on the inbound message broker needs to be written to the blockchain, it will be processed by the DLT consumer. The DLT consumer is a service, which retrieves the message containing metadata for a desired transaction to execute and then sends the information to the *transaction builder and signer*. The *transaction builder and signer* assembles a blockchain transaction based on the data and the desired blockchain destination. Once assembled, the transaction is signed. Private keys are stored in Azure Key Vault.
 
- Blockchain Workbench načte příslušný privátní klíč z Key Vault a podepíše transakci mimo Key Vault. Po podepsání se transakce posílá do transakčních směrovačů a do knih.
+ Blockchain Workbench retrieves the appropriate private key from Key Vault and signs the transaction outside of Key Vault. Once signed, the transaction is sent to transaction routers and ledgers.
 
-## <a name="transaction-routers-and-ledgers"></a>Směrovače transakcí a hlavní knihy
+## <a name="transaction-routers-and-ledgers"></a>Transaction routers and ledgers
 
-Směrovače a účetní deníky transakcí berou podepsané transakce a směrují je na příslušné blockchain. V současné době blockchain Workbench podporuje Ethereem jako cílovou blockchain.
+Transaction routers and ledgers take signed transactions and route them to the appropriate blockchain. Currently, Blockchain Workbench supports Ethereum as its target blockchain.
 
-## <a name="dlt-watcher"></a>Sledovací proces DLT
+## <a name="dlt-watcher"></a>DLT watcher
 
-Sledovací proces distribuované hlavní knihy (DLT) monitoruje události, ke kterým dochází v řetězcích bloků připojených k blockchain Workbench.
-Události odrážejí informace, které jsou relevantní pro jednotlivce a systémy. Například vytváření nových instancí kontraktů, provádění transakcí a změny stavu. Události jsou zachyceny a odesílány do zprostředkovatele odchozích zpráv, aby je mohli využívat i příjemci s dalšími uživateli.
+A distributed ledger technology (DLT) watcher monitors events occurring on block chains attached to Blockchain Workbench.
+Events reflect information relevant to individuals and systems. For example, the creation of new contract instances, execution of transactions, and changes of state. The events are captured and sent to the outbound message broker, so they can be consumed by downstream consumers.
 
-Například příjemce SQL monitoruje události, spotřebovává je a naplní databázi SQL pomocí zahrnutých hodnot. Kopírování umožňuje rekreaci v úložišti s neplatnými daty v neznámém řetězci.
+For example, the SQL consumer monitors events, consumes them, and populates the SQL database with the included values. The copy enables recreation of a replica of on-chain data in an off-chain store.
 
 ## <a name="azure-sql-database"></a>Databáze Azure SQL
 
-Azure SQL Database připojená k blockchain Workbench ukládá definice kontraktů, metadata konfigurace a repliky přístupné pro SQL data uložená v blockchain. Tato data lze snadno dotazovat, vizuálně nebo analyzovat přímým přístupem k databázi. Vývojáři a jiní uživatelé mohou používat databázi pro vytváření sestav, analýzy nebo jiné integrace zaměřené na data. Například uživatelé mohou vizualizovat data transakcí pomocí Power BI.
+The Azure SQL database attached to Blockchain Workbench stores contract definitions, configuration metadata, and a SQL-accessible replica of data stored in the blockchain. This data can easily be queried, visualized, or analyzed by directly accessing the database. Developers and other users can use the database for reporting, analytics, or other data-centric integrations. For example, users can visualize transaction data using Power BI.
 
-Toto úložiště s neplatnými prostředky umožňuje podnikovým organizacím dotazovat se na data v SQL, a ne na blockchain hlavní knihy. Kromě toho, díky standardizaci na standardním schématu, které je nezávislá z blockchainch technologických zásobníků, umožňuje úložiště s neplatnými možnostmi opětovného použití sestav a dalších artefaktů v projektech, scénářích a organizacích.
+This off-chain storage provides the ability for enterprise organizations to query data in SQL rather than in a blockchain ledger. Also, by standardizing on a standard schema that's agnostic of blockchain technology stacks, the off-chain storage enables the reuse of reports and other artifacts across projects, scenarios, and organizations.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure Storage slouží k uložení smluv a metadat přidružených ke smlouvám.
+Azure Storage is used to store contracts and metadata associated with contracts.
 
-Z nákupních objednávek a dodacích dokladů, do imagí používaných v novinkách a lékařských obrazech, na video pocházející ze Continuum, včetně nejdůležitějších a podstatných snímků, dokumenty hrají roli v mnoha scénářích orientovaných na blockchain. Dokumenty není vhodné přímo umístit do blockchain.
+From purchase orders and bills of lading, to images used in the news and medical imagery, to video originating from a continuum including police body cameras and major motion pictures, documents play a role in many blockchain-centric scenarios. Documents are not appropriate to place directly on the blockchain.
 
-Blockchain Workbench podporuje možnost přidávat dokumenty nebo další multimediální obsah pomocí obchodní logiky blockchain. Hodnota hash dokumentu nebo mediálního obsahu je uložená v blockchain a skutečný dokument nebo mediální obsah je uložený v Azure Storage. Související informace o transakci se doručí zprostředkovateli příchozích zpráv, zabalí se, podepíše a směruje do blockchain. Tento proces spustí události, které jsou sdíleny prostřednictvím zprostředkovatele odchozích zpráv. SQL DB tyto informace spotřebuje a pošle je do databáze pro pozdější dotazování. Navazující systémy můžou tyto události využít také k jednání podle potřeby.
+Blockchain Workbench supports the ability to add documents or other media content with blockchain business logic. A hash of the document or media content is stored in the blockchain and the actual document or media content is stored in Azure Storage. The associated transaction information is delivered to the inbound message broker, packaged up, signed, and routed to the blockchain. This process triggers events, which are shared via the outbound message broker. The SQL DB consumes this information and sends it to the DB for later querying. Downstream systems could also consume these events to act as appropriate.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
-Workbench poskytuje protokolování aplikace pomocí Application Insights a Azure Monitor. Application Insights slouží k ukládání všech protokolovaných informací z aplikace blockchain Workbench a obsahuje chyby, varování a úspěšné operace. Application Insights můžou vývojáři použít k ladění problémů s blockchain Workbench. 
+Workbench provides application logging using Application Insights and Azure Monitor. Application Insights is used to store all logged information from Blockchain Workbench and includes errors, warnings, and successful operations. Application Insights can be used by developers to debug issues with Blockchain Workbench. 
 
-Azure Monitor poskytuje informace o stavu sítě blockchain. 
+Azure Monitor provides information on the health of the blockchain network. 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,47 +1,47 @@
 ---
-title: Import a export definic podrobných plánů pomocí PowerShellu
-description: Naučte se pracovat s definicemi podrobného plánu jako s kódem. Sdílení, Správa zdrojového kódu a jejich správa pomocí příkazů exportu a importu.
+title: Import and export blueprints with PowerShell
+description: Learn how to work with your blueprint definitions as code. Share, source control, and manage them using the export and import commands.
 ms.date: 09/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: ca756ed093d5d423f6f83e5ca3953a8ecfce7d5a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2822fd1aea1911ba264113d43595346a612ebc50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960373"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406357"
 ---
-# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import a export definic podrobných plánů pomocí PowerShellu
+# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import and export blueprint definitions with PowerShell
 
-Plány Azure je možné plně spravovat prostřednictvím Azure Portal. Protože organizace budou v používání modrotisky předem, měly by začít myslet na definice podrobného plánu jako spravovaný kód. Tento koncept se často označuje jako infrastruktura jako kód (IaC). S tím, jak kód zpracovává definice podrobného plánu, nabízí další výhody nad rámec toho, co Azure Portal nabídky. Mezi tyto výhody patří:
+Azure Blueprints can be fully managed through Azure portal. As organizations advance in their use of Blueprints, they should start thinking of blueprint definitions as managed code. This concept is often referred to as Infrastructure as Code (IaC). Treating your blueprint definitions as code offers additional advantages beyond what Azure portal offers. These benefits include:
 
-- Sdílení definic podrobného plánu
-- Zálohování definic podrobných plánů
-- Znovu použít definice podrobného plánu v různých klientech nebo předplatných
-- Umístění definic podrobného plánu do správy zdrojového kódu
-  - Automatizované testování definic podrobných plánů v testovacích prostředích
-  - Podpora kanálů průběžné integrace a průběžného nasazování (CI/CD)
+- Sharing blueprint definitions
+- Backing up your blueprint definitions
+- Reusing blueprint definitions in different tenants or subscriptions
+- Placing the blueprint definitions in source control
+  - Automated testing of blueprint definitions in test environments
+  - Support of continuous integration and continuous deployment (CI/CD) pipelines
 
-Bez ohledu na vaše důvody a Správa definic podrobných plánů jako kód přináší výhody. V tomto článku se dozvíte, jak používat příkazy `Import-AzBlueprintWithArtifact` a `Export-AzBlueprintWithArtifact` v modulu [AZ. detail](https://powershellgallery.com/packages/Az.Blueprint/) .
+Whatever your reasons, managing your blueprint definitions as code has benefits. This article shows how to use the `Import-AzBlueprintWithArtifact` and `Export-AzBlueprintWithArtifact` commands in the [Az.Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) module.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-V tomto článku se předpokládá, že jsou v Azure modrotisky mírné znalosti. Pokud jste to ještě neudělali, Projděte si následující články:
+This article assumes a moderate working knowledge of Azure Blueprints. If you haven't done so yet, work through the following articles:
 
-- [Vytvořit podrobný plán na portálu](../create-blueprint-portal.md)
-- Přečtěte si o [fázích nasazení](../concepts/deployment-stages.md) a [životním cyklu](../concepts/lifecycle.md) podrobného plánu.
-- [Vytváření](../create-blueprint-powershell.md) a [Správa](./manage-assignments-ps.md) definic a přiřazení podrobného plánu pomocí PowerShellu
+- [Create a blueprint in the portal](../create-blueprint-portal.md)
+- Read about [deployment stages](../concepts/deployment-stages.md) and [the blueprint lifecycle](../concepts/lifecycle.md)
+- [Creating](../create-blueprint-powershell.md) and [managing](./manage-assignments-ps.md) blueprint definitions and assignments with PowerShell
 
-Pokud ještě není nainstalovaná, nainstalujte a ověřte modul **AZ. detail** z Galerie prostředí PowerShell podle pokynů v tématu [Přidání modulu AZ. detail](./manage-assignments-ps.md#add-the-azblueprint-module) .
+If it isn't already installed, follow the instructions in [Add the Az.Blueprint module](./manage-assignments-ps.md#add-the-azblueprint-module) to install and validate the **Az.Blueprint** module from the PowerShell Gallery.
 
-## <a name="folder-structure-of-a-blueprint-definition"></a>Struktura složek v definici podrobného plánu
+## <a name="folder-structure-of-a-blueprint-definition"></a>Folder structure of a blueprint definition
 
-Než začnete s exportem a importem modrotisky, Podívejme se na to, jak jsou strukturované soubory, které tvoří definici podrobného plánu. Definice podrobného plánu by měla být uložena ve své vlastní složce.
+Before looking at exporting and importing blueprints, let's look at how the files that make up the blueprint definition are structured. A blueprint definition should be stored in its own folder.
 
 > [!IMPORTANT]
-> Pokud se do parametru **Name** rutiny `Import-AzBlueprintWithArtifact` nepředává žádná hodnota, použije se název složky, ve které je definice podrobného plánu uložená.
+> If no value is passed to the **Name** parameter of the `Import-AzBlueprintWithArtifact` cmdlet, the name of the folder the blueprint definition is stored in is used.
 
-Spolu s definicí podrobného plánu, který musí být pojmenován `blueprint.json`, jsou artefakty, ze kterých se definice podrobného plánu skládá. Každý artefakt musí být v podsložce s názvem `artifacts`.
-Společně se strukturou vaší definice podrobného plánu jako soubory JSON ve složkách, které by se měly podávat, vypadá takto:
+Along with the blueprint definition, which must be named `blueprint.json`, are the artifacts that the blueprint definition is composed of. Each artifact must be in the subfolder named `artifacts`.
+Put together, the structure of your blueprint definition as JSON files in folders should look as follows:
 
 ```text
 .
@@ -56,20 +56,20 @@ Společně se strukturou vaší definice podrobného plánu jako soubory JSON ve
 
 ```
 
-## <a name="export-your-blueprint-definition"></a>Exportovat definici podrobného plánu
+## <a name="export-your-blueprint-definition"></a>Export your blueprint definition
 
-Postup exportu definice podrobného plánu je jednoduchý. Export definice podrobného plánu může být užitečný pro sdílení, zálohování nebo vložení do správy zdrojového kódu.
+The steps to exporting your blueprint definition are straightforward. Exporting the blueprint definition can be useful for sharing, backup, or placing into source control.
 
-- Podrobný **plán** [povinné]
-  - Určuje definici podrobného plánu.
-  - K získání referenčního objektu použijte `Get-AzBlueprint`.
-- **OutputPath** [povinné]
-  - Určuje cestu, do které budou uloženy soubory JSON definice podrobného plánu.
-  - Výstupní soubory jsou v podsložce s názvem definice podrobného plánu.
-- **Verze** (volitelné)
-  - Určuje verzi pro **výstup, pokud referenční objekt** podrobného plánu obsahuje odkazy na více než jednu verzi.
+- **Blueprint** [required]
+  - Specifies the blueprint definition
+  - Use `Get-AzBlueprint` to get the reference object
+- **OutputPath** [required]
+  - Specifies the path to save the blueprint definition JSON files to
+  - The output files are in a subfolder with the name of the blueprint definition
+- **Version** (optional)
+  - Specifies the version to output if the **Blueprint** reference object contains references to more than one version.
 
-1. Získejte odkaz na definici podrobného plánu pro export z předplatného, které je reprezentované jako `{subId}`:
+1. Get a reference to the blueprint definition to export from the subscription represented as `{subId}`:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -78,31 +78,31 @@ Postup exportu definice podrobného plánu je jednoduchý. Export definice podro
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. Pomocí rutiny `Export-AzBlueprintWithArtifact` exportujte zadanou definici podrobného plánu:
+1. Use the `Export-AzBlueprintWithArtifact` cmdlet to export the specified blueprint definition:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
    ```
 
-## <a name="import-your-blueprint-definition"></a>Import definice podrobného plánu
+## <a name="import-your-blueprint-definition"></a>Import your blueprint definition
 
-Když máte buď [exportovanou definici](#export-your-blueprint-definition) podrobného plánu, nebo máte vytvořenou definici podrobného plánu ve [struktuře požadované složky](#folder-structure-of-a-blueprint-definition), můžete tuto definici podrobného plánu naimportovat do jiné skupiny pro správu nebo předplatného.
+Once you have either an [exported blueprint definition](#export-your-blueprint-definition) or have a manually created blueprint definition in the [required folder structure](#folder-structure-of-a-blueprint-definition), you can import that blueprint definition to a different management group or subscription.
 
-Příklady předdefinovaných definic podrobných plánů najdete v tématu [Azure Blueprint úložiště GitHub](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins).
+For examples of built-in blueprint definitions, see the [Azure Blueprint GitHub repo](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins).
 
-- **Název** [povinné]
-  - Určuje název nové definice podrobného plánu.
-- **InputPath** [povinné]
-  - Určuje cestu, ze které se má vytvořit definice podrobného plánu.
-  - Musí odpovídat [požadované struktuře složek](#folder-structure-of-a-blueprint-definition) .
-- **ManagementGroupId** (volitelné)
-  - ID skupiny pro správu, do které se uloží definice podrobného plánu, pokud není aktuální kontextový Standard
-  - Musí se zadat buď **ManagementGroupId** , nebo **SubscriptionId** .
-- **SubscriptionId** (volitelné)
-  - ID předplatného, do kterého se uloží definice podrobného plánu, pokud není aktuální kontext výchozí
-  - Musí se zadat buď **ManagementGroupId** , nebo **SubscriptionId** .
+- **Name** [required]
+  - Specifies the name for the new blueprint definition
+- **InputPath** [required]
+  - Specifies the path to create the blueprint definition from
+  - Must match the [required folder structure](#folder-structure-of-a-blueprint-definition)
+- **ManagementGroupId** (optional)
+  - The management group ID to save the blueprint definition to if not the current context default
+  - Either **ManagementGroupId** or **SubscriptionId** must be specified
+- **SubscriptionId** (optional)
+  - The subscription ID to save the blueprint definition to if not the current context default
+  - Either **ManagementGroupId** or **SubscriptionId** must be specified
 
-1. Pomocí rutiny `Import-AzBlueprintWithArtifact` importujte zadanou definici podrobného plánu:
+1. Use the `Import-AzBlueprintWithArtifact` cmdlet to import the specified blueprint definition:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -110,14 +110,14 @@ Příklady předdefinovaných definic podrobných plánů najdete v tématu [Azu
    Import-AzBlueprintWithArtifact -Name 'MyBlueprint' -ManagementGroupId 'DevMG' -InputPath 'C:\Blueprints\MyBlueprint'
    ```
 
-Po importu definice podrobného plánu [ji přiřaďte k prostředí PowerShell](./manage-assignments-ps.md#create-blueprint-assignments).
+Once the blueprint definition is imported, [assign it with PowerShell](./manage-assignments-ps.md#create-blueprint-assignments).
 
-Informace o vytváření pokročilých definic podrobných plánů najdete v následujících článcích:
+For information about creating advanced blueprint definitions, see the following articles:
 
-- Použijte [statické a dynamické parametry](../concepts/parameters.md).
-- Přizpůsobení [pořadí klasifikace](../concepts/sequencing-order.md)podrobného plánu.
-- Chraňte nasazení pomocí [uzamykání prostředků](../concepts/resource-locking.md)podrobného plánu.
-- [Spravujte modrotisky jako kód](https://github.com/Azure/azure-blueprints/blob/master/README.md).
+- Use [static and dynamic parameters](../concepts/parameters.md).
+- Customize the [blueprint sequencing order](../concepts/sequencing-order.md).
+- Protect deployments with [blueprint resource locking](../concepts/resource-locking.md).
+- [Manage Blueprints as Code](https://github.com/Azure/azure-blueprints/blob/master/README.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,54 +1,54 @@
 ---
-title: Analýza mínění Kubernetes konfigurace a postup nasazení
+title: Sentiment Analysis Kubernetes config and deploy steps
 titleSuffix: Azure Cognitive Services
-description: Analýza mínění Kubernetes konfigurace a postup nasazení
+description: Sentiment Analysis Kubernetes config and deploy steps
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: f1c571e421dccad366abf403de350b07113e04ba
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: bd93773e4d3c5e06bca752612dac6c563a2f5da1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130027"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383415"
 ---
-### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Nasazení kontejneru Analýza mínění do clusteru AKS
+### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Deploy the Sentiment Analysis container to an AKS cluster
 
-1. Otevřete rozhraní příkazového řádku Azure a přihlaste se k Azure.
+1. Open the Azure CLI, and sign in to Azure.
 
     ```azurecli
     az login
     ```
 
-1. Přihlaste se ke clusteru AKS. `your-cluster-name` Nahraďte `your-resource-group` a odpovídajícími hodnotami.
+1. Sign in to the AKS cluster. Replace `your-cluster-name` and `your-resource-group` with the appropriate values.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Po spuštění tohoto příkazu se nahlásí zpráva podobná následující:
+    After this command runs, it reports a message similar to the following:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Pokud máte na svém účtu Azure k dispozici více předplatných a `az aks get-credentials` příkaz se vrátí k chybě, běžný problém je, že používáte nesprávné předplatné. Nastavte kontext relace Azure CLI tak, aby používal stejné předplatné, se kterým jste prostředky vytvořili, a zkuste to znovu.
+    > If you have multiple subscriptions available to you on your Azure account and the `az aks get-credentials` command returns with an error, a common problem is that you're using the wrong subscription. Set the context of your Azure CLI session to use the same subscription that you created the resources with and try again.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Otevřete textový editor, který vyberete. Tento příklad používá Visual Studio Code.
+1. Open the text editor of choice. This example uses Visual Studio Code.
 
     ```azurecli
     code .
     ```
 
-1. V textovém editoru vytvořte nový soubor s názvem *mínění. yaml*a vložte do něj následující YAML. Nezapomeňte nahradit `billing/value` a `apikey/value` vlastními informacemi.
+1. Within the text editor, create a new file named *sentiment.yaml*, and paste the following YAML into it. Be sure to replace `billing/value` and `apikey/value` with your own information.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -66,6 +66,13 @@ ms.locfileid: "71130027"
             image: mcr.microsoft.com/azure-cognitive-services/sentiment
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -87,39 +94,39 @@ ms.locfileid: "71130027"
         app: sentiment-app
     ```
 
-1. Uložte soubor a zavřete textový editor.
-1. Spusťte příkaz Kubernetes `apply` se souborem *mínění. yaml* jako jeho cíl:
+1. Save the file, and close the text editor.
+1. Run the Kubernetes `apply` command with the *sentiment.yaml* file as its target:
 
     ```console
-    kuberctl apply -f sentiment.yaml
+    kubectl apply -f sentiment.yaml
     ```
 
-    Poté, co příkaz úspěšně použije konfiguraci nasazení, se zobrazí zpráva podobná následujícímu výstupu:
+    After the command successfully applies the deployment configuration, a message appears similar to the following output:
 
     ```console
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. Ověřte, že byla nasazena pod:
+1. Verify that the pod was deployed:
 
     ```console
     kubectl get pods
     ```
 
-    Výstup pro stav spuštění pod:
+    The output for the running status of the pod:
 
     ```console
     NAME                         READY     STATUS    RESTARTS   AGE
     sentiment-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Ověřte, zda je služba k dispozici a získejte IP adresu.
+1. Verify that the service is available, and get the IP address.
 
     ```console
     kubectl get services
     ```
 
-    Výstup stavu spuštění služby *mínění* v pod:
+    The output for the running status of the *sentiment* service in the pod:
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

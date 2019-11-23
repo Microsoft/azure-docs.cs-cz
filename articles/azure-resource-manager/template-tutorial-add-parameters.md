@@ -1,48 +1,48 @@
 ---
-title: Kurz – přidání parametrů do šablony
-description: Přidejte parametry do šablony Azure Resource Manager, abyste je mohli opakovaně používat.
+title: Tutorial - add parameters to template
+description: Add parameters to your Azure Resource Manager template to make it reusable.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7a4d8db57167bc82d13b4d46be1abc3518c340e4
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150233"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406079"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Kurz: Přidání parametrů do šablony Správce prostředků
+# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Tutorial: Add parameters to your Resource Manager template
 
-V [předchozím kurzu](template-tutorial-add-resource.md)jste zjistili, jak do šablony přidat účet úložiště a nasadit ho. V tomto kurzu se naučíte, jak tuto šablonu vylepšit přidáním parametrů. Dokončení tohoto kurzu trvá přibližně **14 minut** .
+In the [previous tutorial](template-tutorial-add-resource.md), you learned how to add a storage account to the template and deploy it. In this tutorial, you learn how to improve the template by adding parameters. This tutorial takes about **14 minutes** to complete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Doporučujeme, abyste dokončili [kurz o prostředcích](template-tutorial-add-resource.md), ale není to nutné.
+We recommend that you complete the [tutorial about resources](template-tutorial-add-resource.md), but it's not required.
 
-Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Kontrola šablony
+## <a name="review-template"></a>Review template
 
-Na konci předchozího kurzu má vaše šablona následující JSON:
+At the end of the previous tutorial, your template had the following JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
 
-Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně kódovaný. Tuto šablonu můžete použít jenom k nasazení stejného účtu úložiště pokaždé, když. Chcete-li nasadit účet úložiště s jiným názvem, bude nutné vytvořit novou šablonu, což zjevně není praktický způsob, jak automatizovat nasazení.
+You may have noticed that there's a problem with this template. The storage account name is hard-coded. You can only use this template to deploy the same storage account every time. To deploy a storage account with a different name, you would have to create a new template, which obviously isn't a practical way to automate your deployments.
 
-## <a name="make-your-template-reusable"></a>Nastavení šablony k opakovanému použití
+## <a name="make-template-reusable"></a>Make template reusable
 
-Aby bylo možné šablonu znovu použít, přidejte parametr, který můžete použít k předání názvu účtu úložiště. Zvýrazněný kód JSON v následujícím příkladu ukazuje, co se změnilo ve vaší šabloně. Parametr **úložiště** je identifikován jako řetězec. Maximální délka je nastavená na 24 znaků, aby nedocházelo k příliš dlouhým názvům.
+To make your template reusable, let's add a parameter that you can use to pass in a storage account name. The highlighted JSON in the following example shows what changed in your template. The **storageName** parameter is identified as a string. The max length is set to 24 characters to prevent any names that are too long.
 
-Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
+Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-template"></a>Nasazení šablony
 
-Pojďme šablonu nasadit. Následující příklad nasadí šablonu pomocí Azure CLI nebo PowerShellu. Všimněte si, že jako jednu z hodnot v příkazu nasazení zadáte název účtu úložiště. Jako název účtu úložiště zadejte stejný název, který jste použili v předchozím kurzu.
+Let's deploy the template. The following example deploys the template with Azure CLI or PowerShell. Notice that you provide the storage account name as one of the values in the deployment command. For the storage account name, provide the same name you used in the previous tutorial.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -66,27 +66,27 @@ az group deployment create \
 
 ---
 
-## <a name="understand-resource-updates"></a>Principy aktualizací prostředků
+## <a name="understand-resource-updates"></a>Understand resource updates
 
-V předchozí části jste nasadili účet úložiště se stejným názvem, který jste vytvořili dříve. Možná vás zajímá, jak je prostředek ovlivněný znovu nasazením.
+In the previous section, you deployed a storage account with the same name that you had created earlier. You may be wondering how the resource is affected by the redeployment.
 
-Pokud prostředek již existuje a ve vlastnostech není zjištěna žádná změna, není provedena žádná akce. Pokud prostředek už existuje a vlastnost se změnila, prostředek se aktualizuje. Pokud prostředek neexistuje, vytvoří se.
+If the resource already exists and no change is detected in the properties, no action is taken. If the resource already exists and a property has changed, the resource is updated. If the resource doesn't exist, it's created.
 
-Tato možnost manipulace s aktualizacemi znamená, že vaše šablona může zahrnovat všechny prostředky, které potřebujete pro řešení Azure. Šablonu můžete bezpečně znovu nasadit a zjistit, jestli se prostředky v případě potřeby změnily nebo vytvářejí. Pokud jste například přidali soubory do svého účtu úložiště, můžete znovu nasadit účet úložiště bez ztráty těchto souborů.
+This way of handling updates means your template can include all of the resources you need for an Azure solution. You can safely redeploy the template and know that resources are changed or created only when needed. For example, if you have added files to your storage account, you can redeploy the storage account without losing those files.
 
-## <a name="customize-by-environment"></a>Přizpůsobit podle prostředí
+## <a name="customize-by-environment"></a>Customize by environment
 
-Parametry umožňují přizpůsobit nasazení tím, že zadáte hodnoty vhodné pro konkrétní prostředí. Můžete například předat různé hodnoty na základě toho, jestli nasazujete do prostředí pro vývoj, testování a produkci.
+Parametry umožňují přizpůsobit nasazení tím, že zadáte hodnoty vhodné pro konkrétní prostředí. For example, you can pass different values based on whether you're deploying to an environment for development, test, and production.
 
-Předchozí šablona vždycky nasadila Standard_LRS účet úložiště. Možná budete chtít, aby flexibilita nasadila různé SKU v závislosti na prostředí. Následující příklad ukazuje změny pro přidání parametru pro SKLADOVOU položku. Zkopírujte celý soubor a vložte ho do šablony.
+The previous template always deployed a Standard_LRS storage account. You might want the flexibility to deploy different SKUs depending on the environment. The following example shows the changes to add a parameter for SKU. Copy the whole file and paste over your template.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
 
-Parametr **storageSKU** má výchozí hodnotu. Tato hodnota se používá v případě, že při nasazení není zadána hodnota. Obsahuje také seznam povolených hodnot. Tyto hodnoty odpovídají hodnotám, které jsou potřeba k vytvoření účtu úložiště. Nechcete, aby uživatelé šablony předávali do SKU, které nefungují.
+The **storageSKU** parameter has a default value. This value is used when a value isn't specified during the deployment. It also has a list of allowed values. These values match the values that are needed to create a storage account. You don't want users of your template to pass in SKUs that don't work.
 
-## <a name="redeploy-the-template"></a>Opětovné nasazení šablony
+## <a name="redeploy-template"></a>Opětovné nasazení šablony
 
-Jste připraveni znovu nasadit. Vzhledem k tomu, že výchozí SKU je nastavená na **Standard_LRS**, nemusíte zadávat hodnotu pro tento parametr.
+You're ready to deploy again. Because the default SKU is set to **Standard_LRS**, you don't need to provide a value for that parameter.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -110,7 +110,7 @@ az group deployment create \
 
 ---
 
-Chcete-li zobrazit flexibilitu šablony, nasaďte se znovu. Tentokrát nastavte parametr SKU na **Standard_GRS**. Můžete buď předat nový název a vytvořit jiný účet úložiště, nebo použít stejný název k aktualizaci stávajícího účtu úložiště. Obě možnosti fungují.
+To see the flexibility of your template, let's deploy again. This time set the SKU parameter to **Standard_GRS**. You can either pass in a new name to create a different storage account, or use the same name to update your existing storage account. Both options work.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -135,7 +135,7 @@ az group deployment create \
 
 ---
 
-Nakonec spustíme ještě jeden test a zjistíte, co se stane, když předáte SKU, které není jednou z povolených hodnot. V tomto případě testujeme scénář, ve kterém bude uživatel vaší šablony považovat za **základ** jednu z SKU.
+Finally, let's run one more test and see what happens when you pass in a SKU that isn't one of the allowed values. In this case, we test the scenario where a user of your template thinks **basic** is one of the SKUs.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -160,13 +160,13 @@ az group deployment create \
 
 ---
 
-Příkaz se okamžitě nezdařil s chybovou zprávou, která uvádí, které hodnoty jsou povoleny. Správce prostředků identifikuje chybu před spuštěním nasazení.
+The command fails immediately with an error message that states which values are allowed. Resource Manager identifies the error before the deployment starts.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
@@ -175,7 +175,7 @@ Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste
 
 ## <a name="next-steps"></a>Další kroky
 
-Vylepšili jste šablonu vytvořenou v [prvním kurzu](template-tutorial-create-first-template.md) přidáním parametrů. V dalším kurzu se dozvíte o funkcích šablon.
+You improved the template created in the [first tutorial](template-tutorial-create-first-template.md) by adding parameters. In the next tutorial, you'll learn about template functions.
 
 > [!div class="nextstepaction"]
-> [Přidat funkce šablony](template-tutorial-add-functions.md)
+> [Add template functions](template-tutorial-add-functions.md)

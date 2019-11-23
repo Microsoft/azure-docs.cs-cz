@@ -1,36 +1,36 @@
 ---
-title: Plánování Azure Machine Learningch kanálů
+title: Schedule Azure Machine Learning pipelines
 titleSuffix: Azure Machine Learning
-description: Naplánování Azure Machine Learning kanálů pomocí sady Azure Machine Learning SDK pro Python. Naplánované kanály umožňují automatizovat rutiny, časově náročné úlohy, jako je zpracování dat, školení a monitorování.
+description: Schedule Azure Machine Learning pipelines using the Azure Machine Learning SDK for Python. Scheduled pipelines allow you to automate routine, time-consuming tasks such as data processing, training, and monitoring.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 11/06/2019
-ms.openlocfilehash: ded95800c482d43fcaf27993869f1e71eee68f47
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 11/12/2019
+ms.openlocfilehash: 76e489f76d29f5fa0b68a743a302668a285a5d90
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831825"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406527"
 ---
-# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí sady Azure Machine Learning SDK pro Python
+# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Schedule machine learning pipelines with Azure Machine Learning SDK for Python
 
-V tomto článku se dozvíte, jak programově naplánovat spuštění kanálu v Azure. Můžete zvolit vytvoření plánu na základě uplynulého času nebo změny systému souborů. Plány založené na čase se dají využít k zajištění běžné úlohy, jako je monitorování pro posun dat. Plány založené na změnách lze použít k reakci na nepředvídatelné nebo nepředvídatelné změny, například na nahrávání nových dat nebo při úpravách starých dat. Po získání informací o tom, jak vytvořit plány, se dozvíte, jak je načíst a deaktivovat.
+In this article, you'll learn how to programmatically schedule a pipeline to run on Azure. You can choose to create a schedule based on elapsed time or on file-system changes. Time-based schedules can be used to take care of routine tasks, such as monitoring for data drift. Change-based schedules can be used to react to irregular or unpredictable changes, such as new data being uploaded or old data being edited. After learning how to create schedules, you'll learn how to retrieve and deactivate them.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. If you don’t have an Azure subscription, create a [free account](https://aka.ms/AMLFree).
 
-* Prostředí Pythonu, ve kterém je nainstalovaná sada Azure Machine Learning SDK pro Python. Další informace najdete v tématu [vytváření a Správa opakovaně použitelných prostředí pro školení a nasazení pomocí Azure Machine Learning.](how-to-use-environments.md)
+* A Python environment in which the Azure Machine Learning SDK for Python is installed. For more information, see [Create and manage reusable environments for training and deployment with Azure Machine Learning.](how-to-use-environments.md)
 
-* Machine Learning pracovní prostor s publikovaným kanálem. V sadě Azure Machine Learning SDK můžete použít jeden z vestavěných [kanálů pro vytváření a spouštění strojového učení](how-to-create-your-first-pipeline.md).
+* A Machine Learning workspace with a published pipeline. You can use the one built in [Create and run machine learning pipelines with Azure Machine Learning SDK](how-to-create-your-first-pipeline.md).
 
-## <a name="initialize-the-workspace--get-data"></a>Inicializujte pracovní prostor & získat data
+## <a name="initialize-the-workspace--get-data"></a>Initialize the workspace & get data
 
-K naplánování kanálu budete potřebovat odkaz na svůj pracovní prostor, identifikátor publikovaného kanálu a název experimentu, ve kterém chcete plán vytvořit. Tyto hodnoty můžete získat pomocí následujícího kódu:
+To schedule a pipeline, you'll need a reference to your workspace, the identifier of your published pipeline, and the name of the experiment in which you wish to create the schedule. You can get these values with the following code:
 
 ```Python
 import azureml.core
@@ -52,15 +52,15 @@ experiment_name = "MyExperiment"
 pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" 
 ```
 
-## <a name="create-a-schedule"></a>Vytvořit plán
+## <a name="create-a-schedule"></a>Create a schedule
 
-Pro opakované spuštění kanálu vytvoříte plán. `Schedule` přidruží kanál, experiment a Trigger. Trigger může být buď`ScheduleRecurrence`, který popisuje čekání mezi běhy nebo cestou úložiště dat, která určuje adresář, ve kterém se mají sledovat změny. V obou případech budete potřebovat identifikátor kanálu a název experimentu, ve kterém chcete plán vytvořit.
+To run a pipeline on a recurring basis, you'll create a schedule. A `Schedule` associates a pipeline, an experiment, and a trigger. The trigger can either be a`ScheduleRecurrence` that describes the wait between runs or a Datastore path that specifies a directory to watch for changes. In either case, you'll need the pipeline identifier and the name of the experiment in which to create the schedule.
 
-### <a name="create-a-time-based-schedule"></a>Vytvoření plánu založeného na čase
+### <a name="create-a-time-based-schedule"></a>Create a time-based schedule
 
-Konstruktor `ScheduleRecurrence` má povinný `frequency` argument, který musí být jeden z následujících řetězců: "Minute", "hour", "Day", "Week" nebo "Month". Také vyžaduje celočíselný `interval` Argument určující, kolik `frequency`ch jednotek by měl uplynout mezi začátkem plánu. Volitelné argumenty vám umožní podrobnější informace o počátečních časech, jak je popsáno v [dokumentaci k sadě SDK pro ScheduleRecurrence](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py).
+The `ScheduleRecurrence` constructor has a required `frequency` argument that must be one of the following strings: "Minute", "Hour", "Day", "Week", or "Month". It also requires an integer `interval` argument specifying how many of the `frequency` units should elapse between schedule starts. Optional arguments allow you to be more specific about starting times, as detailed in the [ScheduleRecurrence SDK docs](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py).
 
-Vytvořte `Schedule`, který začíná běžet každých 15 minut:
+Create a `Schedule` that begins a run every 15 minutes:
 
 ```python
 recurrence = ScheduleRecurrence(frequency="Minute", interval=15)
@@ -71,15 +71,15 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
                             recurrence=recurrence)
 ```
 
-### <a name="create-a-change-based-schedule"></a>Vytvořit plán na základě změny
+### <a name="create-a-change-based-schedule"></a>Create a change-based schedule
 
-Kanály aktivované změnami souborů můžou být efektivnější než plány založené na čase. Například můžete chtít provést krok předzpracování při změně souboru nebo při přidání nového souboru do datového adresáře. Můžete sledovat všechny změny v úložišti dat nebo změny v rámci určitého adresáře v úložišti dat. Pokud monitorete konkrétní adresář, změny v podadresářích tohoto adresáře nebudou _aktivovat běh_ .
+Pipelines that are triggered by file changes may be more efficient than time-based schedules. For instance, you may want to perform a preprocessing step when a file is changed, or when a new file is added to a data directory. You can monitor any changes to a datastore or changes within a specific directory within the datastore. If you monitor a specific directory, changes within subdirectories of that directory will _not_ trigger a run.
 
-Chcete-li vytvořit soubor – reaktivní `Schedule`, je nutné nastavit parametr `datastore` ve volání metody [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Chcete-li monitorovat složku, nastavte argument `path_on_datastore`.
+To create a file-reactive `Schedule`, you must set the `datastore` parameter in the call to [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). To monitor a folder, set the `path_on_datastore` argument.
 
-Argument `polling_interval` umožňuje zadat v minutách četnost změn, ve kterých je úložiště dat kontrolováno.
+The `polling_interval` argument allows you to specify, in minutes, the frequency at which the datastore is checked for changes.
 
-Pokud byl kanál vytvořen pomocí [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py), můžete tuto proměnnou nastavit na název změněného souboru nastavením argumentu `data_path_parameter_name`.
+If the pipeline was constructed with a [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py), you can set that variable to the name of the changed file by setting the `data_path_parameter_name` argument.
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -88,28 +88,28 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 
-### <a name="optional-arguments-when-creating-a-schedule"></a>Nepovinné argumenty při vytváření plánu
+### <a name="optional-arguments-when-creating-a-schedule"></a>Optional arguments when creating a schedule
 
-Kromě výše popsaných argumentů můžete nastavit argument `status`, aby `"Disabled"` vytvoření neaktivního plánu. Nakonec `continue_on_step_failure` umožňuje předat logickou hodnotu, která přepíše chování výchozího selhání kanálu.
+In addition to the arguments discussed previously, you may set the `status` argument to `"Disabled"` to create an inactive schedule. Finally, the `continue_on_step_failure` allows you to pass a Boolean that will override the pipeline's default failure behavior.
 
-## <a name="view-your-scheduled-pipelines"></a>Zobrazit naplánované kanály
+## <a name="view-your-scheduled-pipelines"></a>View your scheduled pipelines
 
-Ve webovém prohlížeči přejděte na Azure Machine Learning. V části **koncové body** v navigačním panelu vyberte možnost **koncové body kanálu**. Tím přejdete na seznam kanálů publikovaných v pracovním prostoru.
+In your Web browser, navigate to Azure Machine Learning. From the **Endpoints** section of the navigation panel, choose **Pipeline endpoints**. This takes you to a list of the pipelines published in the Workspace.
 
-![Stránka kanálů v AML](media/how-to-schedule-pipelines/scheduled-pipelines.png)
+![Pipelines page of AML](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
-Na této stránce si můžete prohlédnout souhrnné informace o všech kanálech v pracovním prostoru: názvy, popisy, stav a tak dále. Kliknutím na svůj kanál přejděte k podrobnostem. Na výsledné stránce jsou k dispozici další podrobnosti o vašem kanálu a můžete přejít k podrobnostem o jednotlivých spuštěních.
+In this page you can see summary information about all the pipelines in the Workspace: names, descriptions, status, and so forth. Drill in by clicking in your pipeline. On the resulting page, there are more details about your pipeline and you may drill down into individual runs.
 
-## <a name="deactivate-the-pipeline"></a>Deaktivace kanálu
+## <a name="deactivate-the-pipeline"></a>Deactivate the pipeline
 
-Pokud máte `Pipeline`, která je publikována, ale není naplánována, můžete ji zakázat pomocí:
+If you have a `Pipeline` that is published, but not scheduled, you can disable it with:
 
 ```python
 pipeline = PublishedPipeline.get(ws, id=pipeline_id)
 pipeline.disable()
 ```
 
-Pokud je tento kanál naplánovaný, musíte nejdřív zrušit plán. Načtěte identifikátor plánu z portálu nebo spuštěním:
+If the pipeline is scheduled, you must cancel the schedule first. Retrieve the schedule's identifier from the portal or by running:
 
 ```python
 ss = Schedule.list(ws)
@@ -117,7 +117,7 @@ for s in ss:
     print(s)
 ```
 
-Jakmile budete mít `schedule_id` chcete zakázat, spusťte příkaz:
+Once you have the `schedule_id` you wish to disable, run:
 
 ```python
 def stop_by_schedule_id(ws, schedule_id):
@@ -128,16 +128,16 @@ def stop_by_schedule_id(ws, schedule_id):
 stop_by_schedule(ws, schedule_id)
 ```
 
-Pokud pak znovu spustíte `Schedule.list(ws)`, měli byste získat prázdný seznam.
+If you then run `Schedule.list(ws)` again, you should get an empty list.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste použili sadu SDK Azure Machine Learning pro Python k naplánování kanálu dvěma různými způsoby. Jeden plán se opakuje na základě uplynulých časových taktů. Druhý plán se spustí, pokud je soubor změněn v zadaném `Datastore` nebo v adresáři v tomto úložišti. Zjistili jste, jak použít portál k prohlédnutí kanálu a jednotlivých spuštění. Nakonec jste zjistili, jak zakázat plán, aby kanál přestal běžet.
+In this article, you used the Azure Machine Learning SDK for Python to schedule a pipeline in two different ways. One schedule recurs based on elapsed clock time. The other schedule runs if a file is modified on a specified `Datastore` or within a directory on that store. You saw how to use the portal to examine the pipeline and individual runs. Finally, you learned how to disable a schedule so that the pipeline stops running.
 
-Další informace naleznete v tématu:
+Další informace:
 
 > [!div class="nextstepaction"]
-> [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)
+> [Use Azure Machine Learning Pipelines for batch scoring](tutorial-pipeline-batch-scoring-classification.md)
 
-* Další informace o [kanálech](concept-ml-pipelines.md)
-* Další informace o [prozkoumání Azure Machine Learning pomocí Jupyter](samples-notebooks.md)
+* Learn more about [pipelines](concept-ml-pipelines.md)
+* Learn more about [exploring Azure Machine Learning with Jupyter](samples-notebooks.md)

@@ -1,6 +1,6 @@
 ---
-title: Přidání zařízení Azure IoT Edge do Azure IoT Central | Microsoft Docs
-description: Jako operátor přidejte zařízení Azure IoT Edge do Azure IoT Central
+title: Add an Azure IoT Edge device to Azure IoT Central | Microsoft Docs
+description: As an operator, add an Azure IoT Edge device to your Azure IoT Central application
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -9,185 +9,177 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ae80a624ed1f85a1f59fea79b152a4bc31067ad1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f16db7ebff087b164228f2b23d6fa7ec302705bb
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893477"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406330"
 ---
-# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application-preview-features"></a>Kurz: Přidání zařízení Azure IoT Edge do aplikace Azure IoT Central (funkce ve verzi Preview)
+# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Tutorial: Add an Azure IoT Edge device to your Azure IoT Central application
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-V tomto kurzu se dozvíte, jak přidat a nakonfigurovat *zařízení Azure IoI Edge* do IoT Central aplikace Microsoft Azure. V tomto kurzu jsme zvolili Azure IoT Edge povolený virtuální počítač Linux z Azure Marketplace.
+This tutorial shows you how to add and configure an Azure IoT Edge device to your Azure IoT Central application. In this tutorial, we chose an IoT Edge-enabled Linux VM from Azure Marketplace.
 
 Tento kurz se skládá ze dvou částí:
 
-* Jako první se naučíte, jak si Cloud nejdřív zřídí Azure IoT Edge zařízení.
-* Naučíte se, jak se zařízení poprvé zřídí Azure IoT Edge zařízení.
+* First, as an operator, you learn how to do cloud first provisioning of an IoT Edge device.
+* Then, you learn how to do "device first" provisioning of an IoT Edge device.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidat nové zařízení Azure IoT Edge
-> * Konfigurace zařízení Azure IoT Edge, aby bylo možné zajistit používání klíče SAS
-> * Zobrazení řídicích panelů, stavu modulu v IoT Central
-> * Odeslání příkazů do modulu běžícím na zařízení Azure IoT Edge
-> * Nastavení vlastností modulu běžícího na Azure IoT Edgem zařízení
+> * Add a new IoT Edge device
+> * Configure the IoT Edge device to help provision by using a shared access signature (SAS) key
+> * View dashboards and module health in IoT Central
+> * Send commands to a module running on the IoT Edge device
+> * Set properties on a module running on the IoT Edge device
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. V tomto rychlém startu [vytvoříte aplikaci Azure IoT Central](./quick-deploy-iot-central.md).
+K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Follow [this quickstart to create an Azure IoT Central application](./quick-deploy-iot-central.md).
 
-## <a name="enable-azure-iot-edge-enrollment-group"></a>Povolit Azure IoT Edge skupinu registrace
-Povolte klíče SAS pro Azure IoT Edge skupinu registrací ze stránky Správa.
+## <a name="enable-azure-iot-edge-enrollment-group"></a>Enable Azure IoT Edge enrollment group
+From the **Administration** page, enable SAS keys for Azure IoT Edge enrollment group.
 
-![Šablona zařízení-Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/groupenrollment.png)
+![Screenshot of Administration page, with Device connection highlighted](./media/tutorial-add-edge-as-leaf-device/groupenrollment.png)
 
-## <a name="cloud-first-azure-iot-edge-device-provisioning"></a>Nejprve cloud Azure IoT Edge zřizování zařízení   
-V této části vytvoříte nové zařízení Azure IoT Edge pomocí **šablony senzoru prostředí** a zřídíte zařízení. V levém navigačním panelu klikněte na zařízení a pak klikněte na šablonu senzoru prostředí. 
+## <a name="provision-a-cloud-first-azure-iot-edge-device"></a>Provision a "cloud first" Azure IoT Edge device  
+In this section, you create a new IoT Edge device by using the environment sensor template, and you provision a device. Select **Devices** > **Environment Sensor Template**. 
 
-![Šablona zařízení-Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
+![Screenshot of Devices page, with Environment Sensor Template highlighted](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
 
-Klikněte na **+ Nový** a zadejte ID a název zařízení, které vám to vyhovuje. 
+Select **+ New**, and enter a device ID and name of your choosing. Vyberte **Create** (Vytvořit).
 
-![Šablona zařízení-Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
+![Screenshot of Create new device dialog box, with Device ID and Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
 
-Zařízení přejde do **registrovaného** režimu.
+The device goes into **Registered** mode.
 
-![Šablona zařízení-Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/cfregistered.png)
+![Screenshot of Environment Sensor Template page, with Device status highlighted](./media/tutorial-add-edge-as-leaf-device/cfregistered.png)
 
-## <a name="deploy-an-azure-iot-edge-enabled-linux-vm"></a>Nasazení virtuálního počítače Linux s povoleným Azure IoT Edge
+## <a name="deploy-an-iot-edge-enabled-linux-vm"></a>Deploy an IoT Edge enabled Linux VM
 
->Poznámka: můžete zvolit, že se má použít libovolný počítač nebo zařízení. Operační systém: Linux nebo Windows)
+> [!NOTE]
+> You can choose to use any machine or device. The operating system can be Linux or Windows.
 
-Pro tento kurz jsme zvolili virtuální počítač Linux s podporou Azure IoT, který se dá vytvořit v Azure. Přejdete na [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) a kliknete na tlačítko **získat nyní** . 
+For this tutorial, we're using an Azure IoT enabled Linux VM, created on Azure. In [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview), select **GET IT NOW**. 
 
-![Azure Marketplace](./media/tutorial-add-edge-as-leaf-device/cfmarketplace.png)
+![Screenshot of Azure Marketplace, with GET IT NOW highlighted](./media/tutorial-add-edge-as-leaf-device/cfmarketplace.png)
 
-Klikněte na **pokračovat** .
+Vyberte **Pokračovat**.
 
-![Azure Marketplace](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
+![Screenshot of Create this app in Azure dialog box, with Continue highlighted](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
 
 
-Budete se muset Azure Portal. Klikněte na tlačítko **vytvořit** .
+You're taken to the Azure portal. Vyberte **Create** (Vytvořit).
 
-![Azure Marketplace](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
+![Screenshot of the Azure portal, with Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
 
-Vyberte předplatné, vytvořte novou skupinu prostředků, pokud chcete, vyberte USA – západ 2 pro dostupnost virtuálního počítače zadejte uživatel a heslo. Zapamatovat uživatele, bude nutné zadat heslo pro budoucí kroky. Klikněte na tlačítko **zkontrolovat + vytvořit** .
+Select **Subscription**, create a new resource group, and select **(US) West US 2** for VM availability. Then, enter user and password information. These will be required for future steps, so remember them. Vyberte **Zkontrolovat a vytvořit**.
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfvm.png)
+![Screenshot of Create a virtual machine details page, with various options highlighted](./media/tutorial-add-edge-as-leaf-device/cfvm.png)
 
-Po ověření klikněte na **vytvořit** .
+After validation, select **Create**.
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfvmvalidated.png)
+![Screenshot of Create a virtual machine page, with Validation passed and Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfvmvalidated.png)
 
-Vytvoření prostředků trvá několik minut. Klikněte na přejít k **prostředku** .
+It takes a few minutes to create the resources. Select **Go to resource**.
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfvmdeploymentcomplete.png)
+![Screenshot of deployment completion page, with Go to resource highlighted](./media/tutorial-add-edge-as-leaf-device/cfvmdeploymentcomplete.png)
 
-### <a name="provision-vm-as-azure-iot-edge-device"></a>Zřízení virtuálního počítače jako zařízení Azure IoT Edge 
+### <a name="provision-vm-as-an-iot-edge-device"></a>Provision VM as an IoT Edge device 
 
-V části Podpora a řešení potíží v levém navigačním panelu klikněte na Sériová konzola
+Under **Support + troubleshooting**, select **Serial console**.
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfserialconsole.png)
+![Screenshot of Support + troubleshooting options, with Serial console highlighted](./media/tutorial-add-edge-as-leaf-device/cfserialconsole.png)
 
-Zobrazí se obrazovka podobná této:
+You'll see a screen similar to the following:
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfconsole.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsole.png)
 
-Po zobrazení výzvy stiskněte klávesu ENTER a zadejte uživatelské jméno a heslo a stiskněte klávesu ENTER. 
+Press Enter, provide the user name and password as prompted, and then press Enter again. 
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfconsolelogin.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolelogin.png)
 
-Pokud chcete spustit příkaz jako správce nebo root, spusťte příkaz: **sudo Su –**
+To run a command as administrator (user "root"), enter: **sudo su –**
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfsudo.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfsudo.png)
 
-Zkontroluje Azure IoT Edge verzi modulu runtime. Aktuální verze GA je 1.0.8
+Check the IoT Edge runtime version. At the time of this writing, the current GA version is 1.0.8.
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfconsoleversion.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsoleversion.png)
 
-Nainstalujte Editor vim nebo použijte nano, pokud je to vaše preference. 
+Install the vim editor, or use nano if you prefer. 
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfconsolevim.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolevim.png)
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfvim.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfvim.png)
 
-Upravit soubor Azure IoT Edge config. yaml
+Edit the IoT Edge config.yaml file.
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfconsoleconfig.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsoleconfig.png)
 
-Posuňte se dolů a odkomentujte část připojovacího řetězce v souboru YAML. 
+Scroll down, and comment out the connection string portion of the yaml file. 
 
-**Uložení**
+**Before**
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
 
-**Po** (stiskněte klávesu ESC a stiskněte malé písmeno a, abyste mohli začít upravovat)
+**After** (Press Esc, and press lowercase a, to start editing.)
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioningcomments.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioningcomments.png)
 
-Odkomentujte symetrickou část klíče souboru YAML. 
+Uncomment the symmetric key portion of the yaml file. 
 
-**Uložení**
+**Before**
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
 
-**Konci**
+**After**
 
-![Virtuální počítač s Ubuntu](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
 
-Přejít na IoT Central a získat ID oboru, ID zařízení a symetrický klíč zařízení Azure IoT Edge ![připojit](./media/tutorial-add-edge-as-leaf-device/cfdeviceconnect.png)
+Go to IoT Central. Get the scope ID, device ID, and symmetric key of the IoT Edge device.
+![Screenshot of IoT Central, with various device connection options highlighted](./media/tutorial-add-edge-as-leaf-device/cfdeviceconnect.png)
 
-Přejít do pole Linux a nahradit ID oboru, ID registrace a ID zařízení a symetrickým klíčem
+Go to the Linux computer, and replace the scope ID and registration ID with the device ID and symmetric key.
 
-Stiskněte klávesu **ESC** a zadejte **: WQ!** a stisknutím klávesy **ENTER** změny uložte.
+Press Esc, and type **:wq!** . Press Enter to save your changes.
 
-Restartujte Azure IoT Edge pro zpracování změn a stiskněte klávesu **ENTER** .
+Restart IoT Edge to process your changes, and press Enter.
 
-![Připojení zařízení](./media/tutorial-add-edge-as-leaf-device/cfrestart.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfrestart.png)
 
-Typ: **seznam iotedge**, který bude trvat několik minut, se zobrazí tři moduly nasazené
+Type **iotedge list**. After a few minutes, you'll see three modules deployed.
 
-![Připojení zařízení](./media/tutorial-add-edge-as-leaf-device/cfconsolemodulelist.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolemodulelist.png)
 
 
-## <a name="iot-central-device-explorer"></a>IoT Central Průzkumník zařízení 
+## <a name="iot-central-device-explorer"></a>IoT Central device explorer 
 
-V IoT Central se vaše zařízení přesune do zřízeného stavu.
+In IoT Central, your device moves into provisioned state.
 
-![Připojení zařízení](./media/tutorial-add-edge-as-leaf-device/cfprovisioned.png)
+![Screenshot of IoT Central Devices options, with Device status highlighted](./media/tutorial-add-edge-as-leaf-device/cfprovisioned.png)
 
-Karta moduly zobrazí stav zařízení a modulu v IoT Central 
+The **Modules** tab shows the status of the device and module on IoT Central. 
 
-![Připojení zařízení](./media/tutorial-add-edge-as-leaf-device/cfiotcmodulestatus.png)
+![Screenshot of IoT Central Modules tab](./media/tutorial-add-edge-as-leaf-device/cfiotcmodulestatus.png)
 
 
-Vlastnosti cloudu se zobrazí ve formuláři (ze šablony zařízení, kterou jste vytvořili v předchozím postupu). Zadejte hodnoty a klikněte na **Uložit**. 
+You'll see cloud properties in a form, from the device template you created in the previous steps. Enter values, and select **Save**. 
 
-![Připojení zařízení](./media/tutorial-add-edge-as-leaf-device/deviceinfo.png)
+![Screenshot of My Linux Edge Device form](./media/tutorial-add-edge-as-leaf-device/deviceinfo.png)
 
-Dlaždice řídicího panelu
+Here's a view presented in the form of a dashboard tile.
 
-![Připojení zařízení](./media/tutorial-add-edge-as-leaf-device/dashboard.png)
-
-V tomto kurzu jste se naučili:
-
-* Přidat nové zařízení Azure IoT Edge
-* Konfigurace zařízení Azure IoT Edge, aby bylo možné zajistit používání klíče SAS
-* Zobrazení řídicích panelů, stavu modulu v IoT Central
-* Odeslání příkazů do modulu běžícím na zařízení Azure IoT Edge
-* Nastavení vlastností modulu běžícího na Azure IoT Edgem zařízení
+![Screenshot of My Linux Edge Device dashboard tiles](./media/tutorial-add-edge-as-leaf-device/dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak pracovat s Azure IoT Edge zařízení v IoT Central, je tady doporučený další krok:
+Now that you've learned how to work with and manage IoT Edge devices in IoT Central, here's the suggested next step:
 
 <!-- Next how-tos in the sequence -->
 
-Postup konfigurace transparentní brány najdete v tomto kurzu.
-
 > [!div class="nextstepaction"]
-> [Konfigurace transparentní brány](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Configure transparent gateway](../../iot-edge/how-to-create-transparent-gateway.md)

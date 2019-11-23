@@ -1,34 +1,35 @@
 ---
-title: Získání záměru pomocí volání REST v Pythonu
+title: Get intent with REST call in Python
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/18/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: b2c840b9de25ff6997037c284c60390e7afa03ec
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 37249cc560d4493c34dd4be6139de03f9c152a08
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125451"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414624"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python 3.6](https://www.python.org/downloads/) nebo novější.
 * [Visual Studio Code](https://code.visualstudio.com/)
+* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Získání klíče LUIS
 
 [!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
-## <a name="get-intent--programmatically"></a>Získání záměru prostřednictvím kódu programu
+## <a name="get-intent-from-the-prediction-endpoint"></a>Get intent from the prediction endpoint
 
-Použijte Python k dotazování koncového bodu předpovědi [rozhraní API](https://aka.ms/luis-apim-v3-prediction) k získání výsledku předpovědi.
+Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
 
-1. Zkopírujte jeden z následujících fragmentů do souboru s názvem `predict.py`:
+1. Copy this code snippet into a file called `predict.py`:
 
     ```python
     ########### Python 3.6 #############
@@ -61,30 +62,30 @@ Použijte Python k dotazování koncového bodu předpovědi [rozhraní API](htt
         print(f'{e}')
     ```
 
-1. Nahraďte následující hodnoty:
+1. Replace the following values:
 
-    * `YOUR-KEY` pomocí počátečního klíče
-    * `YOUR-ENDPOINT` s vaším koncovým bodem, například `westus2.api.cognitive.microsoft.com`
+    * `YOUR-KEY` with your starter key.
+    * `YOUR-ENDPOINT` with your endpoint. Například, `westus2.api.cognitive.microsoft.com`.
 
-1. Nainstalujte závislosti pomocí následujícího příkazu konzoly:
+1. Install the `requests` dependency. This is used to make HTTP requests:
 
     ```console
     pip install requests
     ```
 
-1. Spusťte skript s následujícím příkazem konzoly:
+1. Run your script with this console command:
 
     ```console
     python predict.py
     ``` 
 
-1. Kontrola odpovědi předpovědi ve formátu JSON:
+1. Review the prediction response, which is returned as JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Odpověď JSON naformátovaná pro čitelnost: 
+    Here's the JSON response formatted for readability: 
 
     ```JSON
     {
@@ -133,9 +134,9 @@ Použijte Python k dotazování koncového bodu předpovědi [rozhraní API](htt
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů. 
+When you are finished with this quickstart, delete the file from the file system. 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidat projevy a vlak](../get-started-get-model-rest-apis.md)
+> [Add utterances and train](../get-started-get-model-rest-apis.md)

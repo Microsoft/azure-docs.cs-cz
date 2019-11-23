@@ -1,61 +1,61 @@
 ---
-title: Správci spravují uživatele a zařízení – Azure MFA – Azure Active Directory
-description: Jak správci můžou měnit uživatelská nastavení, třeba vynucení opětovného provedení procesu ověření uživatele.
+title: Manage users and devices Azure MFA - Azure Active Directory
+description: How can administrators change user settings such as forcing the users to do the proof-up process again.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 808faaed76ff63d69feb8170eaac72021c7bd49d
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 5fd03ea807e48f6f0e287bb4497e4d20268995db
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042109"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404168"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication v cloudu
+# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Manage user settings with Azure Multi-Factor Authentication in the cloud
 
-Jako správce můžete spravovat následující nastavení uživatelů a zařízení:
+As an administrator, you can manage the following user and device settings:
 
-* Vyžadovat od uživatelů opětovné poskytnutí metod kontaktu
-* Odstranit hesla aplikací
-* Vyžadovat MFA na všech důvěryhodných zařízeních
+* Require users to provide contact methods again
+* Delete app passwords
+* Require MFA on all trusted devices
 
-## <a name="manage-authentication-methods"></a>Správa metod ověřování
+## <a name="manage-authentication-methods"></a>Manage authentication methods
 
-Jako správce, který má přiřazenou roli Správce ověřování, můžete vyžadovat, aby uživatelé resetoval heslo, znovu zaregistrovali MFA nebo odvolali stávající relace MFA z uživatelského objektu.
+As an administrator assigned the Authentication Administrator role you can require users to reset their password, re-register for MFA, or revoke existing MFA sessions from their user object.
 
-![Správa metod ověřování z Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
-
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Na levé straně vyberte **Azure Active Directory**  > **Uživatelé**  > **všech uživatelích**.
-1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**.
-   - Při **resetování hesla** dojde k resetování hesla uživatele a přiřazení dočasného hesla, které musí být při příštím přihlášení změněno.
-   - Když se uživatel poprvé přihlásí, bude se vyžadovat, aby si ho **znovu zaregistroval** . v takovém případě bude požádán o nastavení nové metody ověřování MFA.
-   - **Odvolání relací MFA** vymaže relace uživatele, které se pamatuje, a vyžaduje, aby při dalším požadavku na zařízení prováděli MFA.
-
-## <a name="delete-users-existing-app-passwords"></a>Odstranit stávající hesla uživatelů aplikací
-
-Toto nastavení odstraní všechna hesla aplikací, která uživatel vytvořil. Neprohlížečové aplikace, které jsou přidružené k těmto heslům aplikace, přestanou fungovat, dokud se nevytvoří nové heslo aplikace. K provedení této akce jsou vyžadována oprávnění globálního správce.
-
-### <a name="how-to-delete-users-existing-app-passwords"></a>Jak odstranit existující hesla aplikací pro uživatele
+![Manage authentication methods from the Azure portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory**  > **Uživatelé**  > **všech uživatelích**.
-3. Na pravé straně vyberte **Multi-Factor Authentication** na panelu nástrojů. Otevře se stránka Multi-Factor Authentication.
-4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
-5. Vyberte **Spravovat uživatelská nastavení**.
-6. Zaškrtněte políčko pro **odstranění všech existujících hesel aplikací generovaných vybranými uživateli**.
-   ![odstranit všechna existující hesla aplikací](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. On the left, select **Azure Active Directory** > **Users** > **All users**.
+1. Choose the user you wish to perform an action on and select **Authentication methods**.
+   - **Reset Password** will reset the user's password and assign a temporary password that must be changed on the next sign in.
+   - **Require Re-register MFA** will make it so that when the user signs in next time, they will be requested to setup a new MFA authentication method.
+   - **Revoke MFA Sessions** clears the user's remembered MFA sessions and requires them to perform MFA the next time it is required by the policy on the device.
+
+## <a name="delete-users-existing-app-passwords"></a>Delete users existing app passwords
+
+This setting deletes all of the app passwords that a user has created. Non-browser apps that were associated with these app passwords stop working until a new app password is created. Global administrator permissions are required to perform this action.
+
+### <a name="how-to-delete-users-existing-app-passwords"></a>How to delete users existing app passwords
+
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. On the left, select **Azure Active Directory** > **Users** > **All users**.
+3. On the right, select **Multi-Factor Authentication** on the toolbar. The multi-factor authentication page opens.
+4. Check the box next to the user or users that you wish to manage. A list of quick step options appears on the right.
+5. Select **Manage user settings**.
+6. Check the box for **Delete all existing app passwords generated by the selected users**.
+   ![Delete all existing app passwords](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. Klikněte na **Uložit**.
-8. Klikněte na **Zavřít**.
+8. Click **close**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [konfiguraci nastavení Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
-- Pokud uživatelé potřebují nápovědu, najeďte je k [uživatelské příručce pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user.md) .
+- Get more information about how to [Configure Azure Multi-Factor Authentication settings](howto-mfa-mfasettings.md)
+- If your users need help, point them towards the [User guide for two-step verification](../user-help/multi-factor-authentication-end-user.md)

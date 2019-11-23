@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity Platform Developer Glosář | Azure
-description: Seznam podmínek pro běžně používané koncepce a funkce Microsoft Identity Platform Developer
+title: Microsoft identity platform developer glossary | Azure
+description: A list of terms for commonly used Microsoft identity platform developer concepts and features.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -13,216 +13,216 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/21/2019
+ms.date: 10/28/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6b7c732a0af7fb3519cf255fa26478cd9ae82d2
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 221a491abad6c11ee12c75b1d69f1263f4abddc4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835121"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322601"
 ---
-# <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
+# <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft identity platform developer glossary
 
-Tento článek obsahuje definice některých základních konceptů a terminologie pro vývojáře, které jsou užitečné při učení o vývoji aplikací s využitím platformy Microsoft Identity Platform.
+This article contains definitions for some of the core developer concepts and terminology, which are helpful when learning about application development using Microsoft identity platform.
 
-## <a name="access-token"></a>přístupový token
+## <a name="access-token"></a>access token
 
-Typ tokenu [zabezpečení](#security-token) vydaného [autorizačním serverem](#authorization-server), který používá klientská [aplikace](#client-application) pro přístup k [chráněnému serveru prostředků](#resource-server). Ve formě [JSON web token (Jwt)][JWT]se obvykle token podílí na autorizaci udělené klientovi [vlastníkem prostředku](#resource-owner), a to pro požadovanou úroveň přístupu. Token obsahuje všechny použitelné [deklarace identity](#claim) týkající se předmětu, což umožňuje klientské aplikaci, aby ji používala jako formu přihlašovacích údajů při přístupu k danému prostředku. Zároveň se tím eliminuje nutnost, aby vlastník prostředku vystavoval přihlašovací údaje pro klienta.
+A type of [security token](#security-token) issued by an [authorization server](#authorization-server), and used by a [client application](#client-application) in order to access a [protected resource server](#resource-server). Typically in the form of a [JSON Web Token (JWT)][JWT], the token embodies the authorization granted to the client by the [resource owner](#resource-owner), for a requested level of access. The token contains all applicable [claims](#claim) about the subject, enabling the client application to use it as a form of credential when accessing a given resource. This also eliminates the need for the resource owner to expose credentials to the client.
 
-Přístupové tokeny se někdy označují jako "uživatel + aplikace" nebo "jenom aplikace", v závislosti na tom, jaké přihlašovací údaje jsou reprezentované. Například když klientská aplikace používá:
+Access tokens are sometimes referred to as "User+App" or "App-Only", depending on the credentials being represented. For example, when a client application uses the:
 
-* ["Autorizační kód" udělení autorizace](#authorization-grant), koncový uživatel je nejprve ověřuje jako vlastník prostředku a při přístupu k prostředku delegování autorizace klientovi. Po získání přístupového tokenu se klient ověřuje později. Token se někdy může označovat přesněji jako token "uživatel + aplikace", protože představuje uživatele, který schválil klientskou aplikaci, a aplikaci.
-* [Přihlašovací údaje klienta udělují autorizaci](#authorization-grant), klient poskytuje jediné ověřování a funguje bez ověřování/autorizace vlastníka prostředků, takže se token může někdy označovat jako token jenom pro aplikace.
+* ["Authorization code" authorization grant](#authorization-grant), the end user authenticates first as the resource owner, delegating authorization to the client to access the resource. The client authenticates afterward when obtaining the access token. The token can sometimes be referred to more specifically as a "User+App" token, as it represents both the user that authorized the client application, and the application.
+* ["Client credentials" authorization grant](#authorization-grant), the client provides the sole authentication, functioning without the resource-owner's authentication/authorization, so the token can sometimes be referred to as an "App-Only" token.
 
-Další podrobnosti najdete v referenčních informacích k [tokenům platformy Microsoft Identity Platform][AAD-Tokens-Claims] .
+See [Microsoft identity platform Token Reference][AAD-Tokens-Claims] for more details.
 
-## <a name="application-id-client-id"></a>ID aplikace (ID klienta)
+## <a name="application-id-client-id"></a>application ID (client ID)
 
-Jedinečný identifikátor, který Azure AD vystavuje při registraci aplikace, která identifikuje konkrétní aplikaci a související konfigurace. Toto ID aplikace ([ID klienta](https://tools.ietf.org/html/rfc6749#page-15)) se používá při provádění požadavků na ověření a je součástí knihoven ověřování v době vývoje. ID aplikace (ID klienta) není tajný klíč.
+The unique identifier Azure AD issues to an application registration that identifies a specific application and the associated configurations. This application ID ([client ID](https://tools.ietf.org/html/rfc6749#page-15)) is used when performing authentication requests and is provided to the authentication libraries in development time. The application ID (client ID) is not a secret.
 
-## <a name="application-manifest"></a>manifest aplikace
+## <a name="application-manifest"></a>application manifest
 
-Funkce poskytovaná [Azure Portal][AZURE-portal], která vytvoří reprezentaci JSON konfigurace identity aplikace, která se používá jako mechanismus aktualizace přidružené [aplikace][AAD-Graph-App-Entity] a [ServicePrincipal][AAD-Graph-Sp-Entity] entit. Další podrobnosti najdete v tématu věnovaném [porozumění manifestu aplikace Azure Active Directory][AAD-App-Manifest] .
+A feature provided by the [Azure portal][AZURE-portal], which produces a JSON representation of the application's identity configuration, used as a mechanism for updating its associated [Application][AAD-Graph-App-Entity] and [ServicePrincipal][AAD-Graph-Sp-Entity] entities. See [Understanding the Azure Active Directory application manifest][AAD-App-Manifest] for more details.
 
-## <a name="application-object"></a>objekt aplikace
+## <a name="application-object"></a>application object
 
-Když zaregistrujete nebo aktualizujete aplikaci v [Azure Portal][AZURE-portal], portál vytvoří nebo aktualizuje aplikační objekt a odpovídající [instanční objekt služby](#service-principal-object) pro daného tenanta. Objekt aplikace *definuje* konfiguraci identit aplikace globálně (ve všech klientech, kde má přístup), a poskytuje šablonu, ze které jsou příslušné objekty instančních objektů odvozeny pro místní použití v doba běhu (v konkrétním tenantovi).
+When you register/update an application in the [Azure portal][AZURE-portal], the portal creates/updates both an application object and a corresponding [service principal object](#service-principal-object) for that tenant. The application object *defines* the application's identity configuration globally (across all tenants where it has access), providing a template from which its corresponding service principal object(s) are *derived* for use locally at run-time (in a specific tenant).
 
-Další informace naleznete v tématu [Application and Service instanční objekty][AAD-App-SP-Objects].
+For more information, see [Application and Service Principal Objects][AAD-App-SP-Objects].
 
 ## <a name="application-registration"></a>registrace aplikací
 
-Aby mohla aplikace integrovat s funkcemi pro správu identit a přístupu do služby Azure AD, musí být zaregistrované v [Tenantovi](#tenant)Azure AD. Při registraci aplikace ve službě Azure AD poskytujete konfiguraci identity pro vaši aplikaci, která umožňuje integraci s Azure AD a používání funkcí, jako například:
+In order to allow an application to integrate with and delegate Identity and Access Management functions to Azure AD, it must be registered with an Azure AD [tenant](#tenant). When you register your application with Azure AD, you are providing an identity configuration for your application, allowing it to integrate with Azure AD and use features such as:
 
-* Robustní Správa jednotného přihlašování pomocí Azure AD identity managementu a implementace protokolu [OpenID Connect][OpenIDConnect]
-* Zprostředkovaný přístup k [chráněným prostředkům](#resource-server) pomocí [klientských aplikací](#client-application)prostřednictvím autorizačního [serveru](#authorization-server) OAuth 2,0
-* [Rozhraní pro vyjádření souhlasu](#consent) pro správu přístupu klientů k chráněným prostředkům na základě autorizace vlastníka prostředků.
+* Robust management of Single Sign-On using Azure AD Identity Management and [OpenID Connect][OpenIDConnect] protocol implementation
+* Brokered access to [protected resources](#resource-server) by [client applications](#client-application), via OAuth 2.0 [authorization server](#authorization-server)
+* [Consent framework](#consent) for managing client access to protected resources, based on resource owner authorization.
 
-Další podrobnosti najdete v tématu [Integrace aplikací s Azure Active Directory][AAD-Integrating-Apps] .
+See [Integrating applications with Azure Active Directory][AAD-Integrating-Apps] for more details.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>ověřování
 
-Nenáročný večírek na legitimní přihlašovací údaje, který poskytuje základ pro vytvoření objektu zabezpečení, který se má použít k řízení identit a přístupu. V rámci [udělení autorizace OAuth2](#authorization-grant) je třeba, aby ověřování strany naplnilo roli [vlastníka prostředku](#resource-owner) nebo [klientské aplikace](#client-application)v závislosti na používaném udělení.
+The act of challenging a party for legitimate credentials, providing the basis for creation of a security principal to be used for identity and access control. During an [OAuth2 authorization grant](#authorization-grant) for example, the party authenticating is filling the role of either [resource owner](#resource-owner) or [client application](#client-application), depending on the grant used.
 
 ## <a name="authorization"></a>authorization
 
-Způsob udělení oprávnění ověřeného objektu zabezpečení k tomu, aby něco fungovalo. V modelu programování Azure AD existují dva hlavní případy použití:
+The act of granting an authenticated security principal permission to do something. V modelu programování Azure AD existují dva hlavní případy použití:
 
-* Během procesu [udělení autorizace OAuth2](#authorization-grant) : [vlastník prostředku](#resource-owner) udělí autorizaci [klientské aplikaci](#client-application)a umožňuje klientovi přístup k prostředkům vlastníka prostředku.
-* Během přístupu k prostředkům klienta: jak je implementováno [serverem prostředků](#resource-server), pomocí hodnot [deklarací identity](#claim) přítomných v [přístupovém tokenu](#access-token) k rozhodování o řízení přístupu na základě nich.
+* During an [OAuth2 authorization grant](#authorization-grant) flow: when the [resource owner](#resource-owner) grants authorization to the [client application](#client-application), allowing the client to access the resource owner's resources.
+* During resource access by the client: as implemented by the [resource server](#resource-server), using the [claim](#claim) values present in the [access token](#access-token) to make access control decisions based upon them.
 
-## <a name="authorization-code"></a>autorizační kód
+## <a name="authorization-code"></a>authorization code
 
-Pro [klientskou aplikaci](#client-application) poskytnutý [koncovým bodem autorizace](#authorization-endpoint)má krátkodobý "token", který je součástí toku "autorizační kód", jedním ze čtyř OAuth2 autorizací [](#authorization-grant). Kód se vrátí do klientské aplikace v reakci na ověření [vlastníka prostředku](#resource-owner), což značí, že vlastník prostředku má delegovanou autorizaci pro přístup k požadovaným prostředkům. V rámci toku je kód později uplatněn pro [přístupový token](#access-token).
+A short lived "token" provided to a [client application](#client-application) by the [authorization endpoint](#authorization-endpoint), as part of the "authorization code" flow, one of the four OAuth2 [authorization grants](#authorization-grant). The code is returned to the client application in response to authentication of a [resource owner](#resource-owner), indicating the resource owner has delegated authorization to access the requested resources. As part of the flow, the code is later redeemed for an [access token](#access-token).
 
-## <a name="authorization-endpoint"></a>koncový bod autorizace
+## <a name="authorization-endpoint"></a>authorization endpoint
 
-Jeden z koncových bodů implementovaných [autorizačním serverem](#authorization-server), který slouží k interakci s [vlastníkem prostředku](#resource-owner) za účelem poskytnutí [udělení autorizace](#authorization-grant) během toku udělení autorizace OAuth2. V závislosti na použitém toku autorizačního udělení se může skutečný poskytnutý grant lišit, včetně [autorizačního kódu](#authorization-code) nebo [tokenu zabezpečení](#security-token).
+One of the endpoints implemented by the [authorization server](#authorization-server), used to interact with the [resource owner](#resource-owner) in order to provide an [authorization grant](#authorization-grant) during an OAuth2 authorization grant flow. Depending on the authorization grant flow used, the actual grant provided can vary, including an [authorization code](#authorization-code) or [security token](#security-token).
 
-Další podrobnosti najdete v částech [typy udělení autorizace][OAuth2-AuthZ-Grant-Types] a [koncových bodů autorizace][OAuth2-AuthZ-Endpoint] specifikace OAuth2 a [specifikace OpenIDConnect][OpenIDConnect-AuthZ-Endpoint] .
+See the OAuth2 specification's [authorization grant types][OAuth2-AuthZ-Grant-Types] and [authorization endpoint][OAuth2-AuthZ-Endpoint] sections, and the [OpenIDConnect specification][OpenIDConnect-AuthZ-Endpoint] for more details.
 
-## <a name="authorization-grant"></a>udělení autorizace
+## <a name="authorization-grant"></a>authorization grant
 
-Přihlašovací údaje představující autorizaci [vlastníka prostředků](#resource-owner) [](#authorization) pro přístup k chráněným prostředkům uděleným [klientské aplikaci](#client-application). Klientská aplikace může použít jeden ze [čtyř typů grantů definovaných pomocí autorizačního rozhraní OAuth2][OAuth2-AuthZ-Grant-Types] k získání grantu v závislosti na typu nebo požadavcích klienta: "udělení autorizačního kódu", "udělení pověření klienta", "implicitní udělení", "prostředek". udělení přihlašovacích údajů pro heslo vlastníka. Přihlašovací údaje vracené klientovi jsou buď [přístupový token](#access-token), nebo [autorizační kód](#authorization-code) (vyměňovaný později pro přístupový token) v závislosti na typu použitého autorizačního oprávnění.
+A credential representing the [resource owner's](#resource-owner) [authorization](#authorization) to access its protected resources, granted to a [client application](#client-application). A client application can use one of the [four grant types defined by the OAuth2 Authorization Framework][OAuth2-AuthZ-Grant-Types] to obtain a grant, depending on client type/requirements: "authorization code grant", "client credentials grant", "implicit grant", and "resource owner password credentials grant". The credential returned to the client is either an [access token](#access-token), or an [authorization code](#authorization-code) (exchanged later for an access token), depending on the type of authorization grant used.
 
-## <a name="authorization-server"></a>autorizační Server
+## <a name="authorization-server"></a>authorization server
 
-Jak je definováno [autorizačním rozhraním OAuth2][OAuth2-Role-Def], server zodpovědný za vydávání přístupových tokenů [klientovi](#client-application) po úspěšném ověření [vlastníka prostředku](#resource-owner) a získání jeho autorizace. [Klientská aplikace](#client-application) komunikuje s autorizačním serverem za běhu prostřednictvím svých koncových bodů [tokenu](#token-endpoint) , a to v souladu s OAuth2 definovanými [autorizačními uděleními](#authorization-grant). [](#authorization-endpoint)
+As defined by the [OAuth2 Authorization Framework][OAuth2-Role-Def], the server responsible for issuing access tokens to the [client](#client-application) after successfully authenticating the [resource owner](#resource-owner) and obtaining its authorization. A [client application](#client-application) interacts with the authorization server at runtime via its [authorization](#authorization-endpoint) and [token](#token-endpoint) endpoints, in accordance with the OAuth2 defined [authorization grants](#authorization-grant).
 
-V případě integrace aplikací Microsoft Identity Platform implementuje Microsoft Identity Platform roli autorizačního serveru pro aplikace Azure AD a rozhraní API služeb Microsoftu, například [Microsoft Graph rozhraní API][Microsoft-Graph].
+In the case of Microsoft identity platform application integration, Microsoft identity platform implements the authorization server role for Azure AD applications and Microsoft service APIs, for example [Microsoft Graph APIs][Microsoft-Graph].
 
-## <a name="claim"></a>deklarace identity
+## <a name="claim"></a>claim
 
-[Token zabezpečení](#security-token) obsahuje deklarace identity, které poskytují kontrolní výrazy týkající se jedné entity (například [klientské aplikace](#client-application) nebo [vlastníka prostředku](#resource-owner)) k jiné entitě (například k [serveru prostředků](#resource-server)). Deklarace identity jsou páry název-hodnota, které přenášejí fakta týkající se předmětu tokenu (například objekt zabezpečení, který byl ověřen [autorizačním serverem](#authorization-server)). Deklarace identity přítomné v daném tokenu jsou závislé na několika proměnných, včetně typu tokenu, typu přihlašovacích údajů použitých k ověření předmětu, konfigurace aplikace atd.
+A [security token](#security-token) contains claims, which provide assertions about one entity (such as a [client application](#client-application) or [resource owner](#resource-owner)) to another entity (such as the [resource server](#resource-server)). Claims are name/value pairs that relay facts about the token subject (for example, the security principal that was authenticated by the [authorization server](#authorization-server)). The claims present in a given token are dependent upon several variables, including the type of token, the type of credential used to authenticate the subject, the application configuration, etc.
 
-Další podrobnosti najdete v referenčních informacích k [tokenům platformy Microsoft Identity Platform][AAD-Tokens-Claims] .
+See [Microsoft identity platform token reference][AAD-Tokens-Claims] for more details.
 
-## <a name="client-application"></a>klientská aplikace
+## <a name="client-application"></a>client application
 
-Jak je definováno v [rámci autorizačního rozhraní OAuth2][OAuth2-Role-Def], aplikace, která vytváří chráněné požadavky na prostředky jménem [vlastníka prostředku](#resource-owner). Pojem "klient" nezahrnuje žádné konkrétní charakteristiky implementace hardwaru (například bez ohledu na to, jestli se aplikace spouští na serveru, počítači nebo jiném zařízení).
+As defined by the [OAuth2 Authorization Framework][OAuth2-Role-Def], an application that makes protected resource requests on behalf of the [resource owner](#resource-owner). The term "client" does not imply any particular hardware implementation characteristics (for instance, whether the application executes on a server, a desktop, or other devices).
 
-Klientská aplikace požaduje [autorizaci](#authorization) od vlastníka prostředku, aby se účastnila toku [udělení autorizace OAuth2](#authorization-grant) a mohli přistupovat k rozhraním API/data jménem vlastníka prostředku. Autorizační rozhraní OAuth2 [definuje dva typy klientů][OAuth2-Client-Types]"důvěrné" a "veřejné" na základě schopnosti klienta zachovat důvěrnost svých přihlašovacích údajů. Aplikace můžou implementovat [webového klienta (důvěrné)](#web-client) , který běží na webovém serveru, nativním [klientovi (veřejném)](#native-client) nainstalovaném na zařízení nebo klientovi s [uživatelským agentem (veřejný)](#user-agent-based-client) , který běží v prohlížeči zařízení.
+A client application requests [authorization](#authorization) from a resource owner to participate in an [OAuth2 authorization grant](#authorization-grant) flow, and may access APIs/data on the resource owner's behalf. The OAuth2 Authorization Framework [defines two types of clients][OAuth2-Client-Types], "confidential" and "public", based on the client's ability to maintain the confidentiality of its credentials. Applications can implement a [web client (confidential)](#web-client) which runs on a web server, a [native client (public)](#native-client) installed on a device, or a [user-agent-based client (public)](#user-agent-based-client) which runs in a device's browser.
 
-## <a name="consent"></a>souhlas
+## <a name="consent"></a>consent
 
-Proces [vlastníka prostředku](#resource-owner) , který uděluje autorizaci [klientské aplikaci](#client-application), pro přístup k chráněným prostředkům v rámci konkrétních [oprávnění](#permissions)jménem vlastníka prostředku. V závislosti na oprávněních, která klient požaduje, bude správce nebo uživatel požádán o souhlas s povolením přístupu ke svým organizacím/jednotlivým datům. Všimněte si, že ve scénáři s [více klienty](#multi-tenant-application) je [instanční objekt](#service-principal-object) aplikace také zaznamenán v tenantovi odesílajícího uživatele.
+The process of a [resource owner](#resource-owner) granting authorization to a [client application](#client-application), to access protected resources under specific [permissions](#permissions), on behalf of the resource owner. Depending on the permissions requested by the client, an administrator or user will be asked for consent to allow access to their organization/individual data respectively. Note, in a [multi-tenant](#multi-tenant-application) scenario, the application's [service principal](#service-principal-object) is also recorded in the tenant of the consenting user.
 
-Další informace najdete v tématu o [souhlasu](consent-framework.md) .
+See [consent framework](consent-framework.md) for more information.
 
-## <a name="id-token"></a>Token ID
+## <a name="id-token"></a>ID token
 
-[Token zabezpečení](#security-token) [OpenID Connect][OpenIDConnect-ID-Token] poskytnutý koncovým [](#authorization-server) [bodem autorizace](#authorization-endpoint)autorizačního serveru, který obsahuje [deklarace identity](#claim) související s ověřováním [vlastníka prostředku](#resource-owner)koncového uživatele. Podobně jako přístupový token se tokeny ID také reprezentují jako digitálně podepsaný [JSON web token (Jwt)][JWT]. Na rozdíl od přístupového tokenu se ale deklarace tokenu ID nepoužívají pro účely související s přístupem k prostředkům a specifickou kontrolou přístupu.
+An [OpenID Connect][OpenIDConnect-ID-Token] [security token](#security-token) provided by an [authorization server's](#authorization-server) [authorization endpoint](#authorization-endpoint), which contains [claims](#claim) pertaining to the authentication of an end user [resource owner](#resource-owner). Like an access token, ID tokens are also represented as a digitally signed [JSON Web Token (JWT)][JWT]. Unlike an access token though, an ID token's claims are not used for purposes related to resource access and specifically access control.
 
-Další podrobnosti najdete v referenčních informacích k [tokenům platformy Microsoft Identity Platform][AAD-Tokens-Claims] .
+See [Microsoft identity platform token reference][AAD-Tokens-Claims] for more details.
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
-Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Další podrobnosti najdete v tématu [o platformě Microsoft Identity](about-microsoft-identity-platform.md) .
+Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. It’s a full-featured platform that consists of an authentication service, libraries, application registration and configuration, full developer documentation, code samples, and other developer content. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. See [About Microsoft identity platform](about-microsoft-identity-platform.md) for more details.
 
-## <a name="multi-tenant-application"></a>víceklientské aplikace
+## <a name="multi-tenant-application"></a>multi-tenant application
 
-Třída aplikace, která umožňuje přihlašovat a odsouhlasit uživatele zřízené v jakémkoli [Tenantovi](#tenant)Azure AD, včetně jiných klientů, než je ten, kde je klient zaregistrován. [](#consent) [Nativní klientské](#native-client) aplikace jsou ve výchozím nastavení víceklientské, zatímco [webové klientské](#web-client) a [webové prostředky nebo aplikace API](#resource-server) umožňují výběr mezi jedním nebo více klienty. Naproti tomu webová aplikace zaregistrovaná jako jeden tenant povolí jenom přihlášení z uživatelských účtů zřízených ve stejném tenantovi jako ten, ve kterém je aplikace zaregistrovaná.
+A class of application that enables sign in and [consent](#consent) by users provisioned in any Azure AD [tenant](#tenant), including tenants other than the one where the client is registered. [Native client](#native-client) applications are multi-tenant by default, whereas [web client](#web-client) and [web resource/API](#resource-server) applications have the ability to select between single or multi-tenant. By contrast, a web application registered as single-tenant, would only allow sign-ins from user accounts provisioned in the same tenant as the one where the application is registered.
 
-Další podrobnosti najdete v tématu [jak se přihlásit k libovolnému uživateli Azure AD pomocí vzoru aplikace pro více tenantů][AAD-Multi-Tenant-Overview] .
+See [How to sign in any Azure AD user using the multi-tenant application pattern][AAD-Multi-Tenant-Overview] for more details.
 
-## <a name="native-client"></a>Nativní klient
+## <a name="native-client"></a>native client
 
-Typ [klientské aplikace](#client-application) , která je nainstalovaná nativně na zařízení. Vzhledem k tomu, že je veškerý kód spuštěný v zařízení, považuje se za "veřejný" klient, protože jeho neschopnost ukládat přihlašovací údaje soukromě/důvěrné. Další podrobnosti najdete v tématu [typy a profily klienta OAuth2][OAuth2-Client-Types] .
+A type of [client application](#client-application) that is installed natively on a device. Since all code is executed on a device, it is considered a "public" client due to its inability to store credentials privately/confidentially. See [OAuth2 client types and profiles][OAuth2-Client-Types] for more details.
 
-## <a name="permissions"></a>oprávnění
+## <a name="permissions"></a>permissions
 
-[Klientská aplikace](#client-application) získá přístup k [serveru prostředků](#resource-server) tím, že deklaruje žádosti o oprávnění. K dispozici jsou dva typy:
+A [client application](#client-application) gains access to a [resource server](#resource-server) by declaring permission requests. Two types are available:
 
-* Delegovaná oprávnění, která určují přístup [založený na rozsahu](#scopes) pomocí delegované autorizace z přihlášeného [vlastníka prostředku](#resource-owner), se předloží prostředku za běhu jako [deklarace spojovacího bodu](#claim) služby v [přístupovém tokenu](#access-token)klienta.
-* Oprávnění "aplikace", která určují přístup [založený](#roles) na rolích pomocí pověření nebo identity klientské aplikace, jsou prezentována prostředku za běhu jako [deklarace role](#claim) v přístupovém tokenu klienta.
+* "Delegated" permissions, which specify [scope-based](#scopes) access using delegated authorization from the signed-in [resource owner](#resource-owner), are presented to the resource at run-time as ["scp" claims](#claim) in the client's [access token](#access-token).
+* "Application" permissions, which specify [role-based](#roles) access using the client application's credentials/identity, are presented to the resource at run-time as ["roles" claims](#claim) in the client's access token.
 
-Také se během procesu [souhlasu](#consent) nastavily správci nebo prostředku, aby měli možnost udělit nebo odepřít klientský přístup k prostředkům ve svém tenantovi.
+They also surface during the [consent](#consent) process, giving the administrator or resource owner the opportunity to grant/deny the client access to resources in their tenant.
 
-Žádosti o oprávnění jsou nakonfigurovány na stránce **oprávnění rozhraní API** pro aplikaci v [Azure Portal][AZURE-portal]tak, že vyberete požadovaná "delegovaná oprávnění" a "oprávnění aplikace" (ta druhá vyžaduje členství v roli globálního správce). Vzhledem k tomu, že [veřejný klient](#client-application) nemůže bezpečně udržovat přihlašovací údaje, může požadovat jenom delegovaná oprávnění, zatímco [důvěrného klienta](#client-application) má možnost požadovat oprávnění delegovaná i aplikace. [Objekt aplikace](#application-object) klienta ukládá deklarovaná oprávnění do své [vlastnosti requiredResourceAccess][AAD-Graph-App-Entity].
+Permission requests are configured on the **API permissions** page for an application in the [Azure portal][AZURE-portal], by selecting the desired "Delegated Permissions" and "Application Permissions" (the latter requires membership in the Global Admin role). Because a [public client](#client-application) can't securely maintain credentials, it can only request delegated permissions, while a [confidential client](#client-application) has the ability to request both delegated and application permissions. The client's [application object](#application-object) stores the declared permissions in its [requiredResourceAccess property][AAD-Graph-App-Entity].
 
-## <a name="resource-owner"></a>vlastník prostředku
+## <a name="resource-owner"></a>resource owner
 
-Jak je definováno v [rámci autorizačního rozhraní OAuth2][OAuth2-Role-Def], entita, která umožňuje udělit přístup k chráněnému prostředku. Když je vlastníkem prostředku osoba, označuje se jako koncový uživatel. Například když chce klientská [aplikace](#client-application) získat přístup k poštovní schránce uživatele prostřednictvím [rozhraní Microsoft Graph API][Microsoft-Graph], vyžaduje oprávnění od vlastníka prostředku poštovní schránky.
+As defined by the [OAuth2 Authorization Framework][OAuth2-Role-Def], an entity capable of granting access to a protected resource. When the resource owner is a person, it is referred to as an end user. For example, when a [client application](#client-application) wants to access a user's mailbox through the [Microsoft Graph API][Microsoft-Graph], it requires permission from the resource owner of the mailbox.
 
-## <a name="resource-server"></a>Server prostředků
+## <a name="resource-server"></a>resource server
 
-Jak je definováno v [rámci autorizačního rozhraní OAuth2][OAuth2-Role-Def], server, který je hostitelem chráněných prostředků, umožňuje přijímat a reagovat na požadavky na chráněné prostředky [klientskými aplikacemi](#client-application) , které prezentují [přístupový token](#access-token). Označuje se také jako chráněný server prostředků nebo aplikace prostředků.
+As defined by the [OAuth2 Authorization Framework][OAuth2-Role-Def], a server that hosts protected resources, capable of accepting and responding to protected resource requests by [client applications](#client-application) that present an [access token](#access-token). Also known as a protected resource server, or resource application.
 
-Server prostředků zveřejňuje rozhraní API a vynutil přístup k chráněným prostředkům prostřednictvím [oborů](#scopes) a [rolí](#roles)pomocí autorizačního rozhraní OAuth 2,0. Mezi příklady patří Graph API Azure AD poskytující přístup k datům tenanta Azure AD a rozhraní API pro Office 365, která poskytují přístup k datům, jako je například pošta a kalendář. Obě tyto jsou také přístupné prostřednictvím [rozhraní Microsoft Graph API][Microsoft-Graph].
+A resource server exposes APIs and enforces access to its protected resources through [scopes](#scopes) and [roles](#roles), using the OAuth 2.0 Authorization Framework. Examples include the Azure AD Graph API which provides access to Azure AD tenant data, and the Office 365 APIs that provide access to data such as mail and calendar. Both of these are also accessible via the [Microsoft Graph API][Microsoft-Graph].
 
-Stejně jako klientská aplikace, konfigurace identity aplikace prostředků se vytváří prostřednictvím [registrace](#application-registration) v TENANTOVI Azure AD, která poskytuje aplikační i instanční objekt. Některá rozhraní API poskytnutá Microsoftem, jako je třeba Azure AD Graph API, mají předem registrované instanční objekty, které jsou k dispozici ve všech klientech během zřizování.
+Just like a client application, resource application's identity configuration is established via [registration](#application-registration) in an Azure AD tenant, providing both the application and service principal object. Some Microsoft-provided APIs, such as the Azure AD Graph API, have pre-registered service principals made available in all tenants during provisioning.
 
-## <a name="roles"></a>roles
+## <a name="roles"></a>prostředků
 
-Podobně [](#scopes)jako obory role poskytují [serveru prostředků](#resource-server) způsob, jak řídit přístup k chráněným prostředkům. Existují dva typy: role "uživatel" implementuje řízení přístupu na základě rolí pro uživatele nebo skupiny, které vyžadují přístup k prostředku, zatímco role "aplikace" implementuje stejné pro [klientské aplikace](#client-application) , které vyžadují přístup.
+Like [scopes](#scopes), roles provide a way for a [resource server](#resource-server) to govern access to its protected resources. There are two types: a "user" role implements role-based access control for users/groups that require access to the resource, while an "application" role implements the same for [client applications](#client-application) that require access.
 
-Role jsou řetězce definované pomocí prostředků (například schvalovatel výdajů, "jen pro čtení", "Directory. četl. All") spravované v [Azure Portal][AZURE-portal] prostřednictvím [manifestu aplikace](#application-manifest)prostředku a uložené ve [vlastnosti appRoles][AAD-Graph-Sp-Entity] prostředku. . Azure Portal se také používá k přiřazení uživatelů k rolím "uživatel" a ke konfiguraci [oprávnění klientských aplikací](#permissions) pro přístup k roli "aplikace".
+Roles are resource-defined strings (for example "Expense approver", "Read-only", "Directory.ReadWrite.All"), managed in the [Azure portal][AZURE-portal] via the resource's [application manifest](#application-manifest), and stored in the resource's [appRoles property][AAD-Graph-Sp-Entity]. The Azure portal is also used to assign users to "user" roles, and configure client [application permissions](#permissions) to access an "application" role.
 
-Podrobnou diskuzi o aplikačních rolích, které zveřejňuje Graph API služby Azure AD, najdete v tématu [Graph API obory oprávnění][AAD-Graph-Perm-Scopes]. Podrobný příklad implementace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal][AAD-RBAC].
+For a detailed discussion of the application roles exposed by Azure AD's Graph API, see [Graph API Permission Scopes][AAD-Graph-Perm-Scopes]. For a step-by-step implementation example, see [Manage access using RBAC and the Azure portal][AAD-RBAC].
 
 ## <a name="scopes"></a>obory
 
-Podobně jako [role](#roles)poskytují obory pro [server prostředků](#resource-server) způsob, jak řídit přístup k chráněným prostředkům. Obory se používají k implementaci řízení přístupu [na základě oboru][OAuth2-Access-Token-Scopes] pro [klientskou aplikaci](#client-application) , která má delegovaný přístup k prostředku podle jeho majitele.
+Like [roles](#roles), scopes provide a way for a [resource server](#resource-server) to govern access to its protected resources. Scopes are used to implement [scope-based][OAuth2-Access-Token-Scopes] access control, for a [client application](#client-application) that has been given delegated access to the resource by its owner.
 
-Obory jsou řetězce definované prostředky (například mail. Read "," Directory. četl. All ") spravované v [Azure Portal][AZURE-portal] prostřednictvím [manifestu aplikace](#application-manifest)prostředku a uložené ve [vlastnosti oauth2Permissions][AAD-Graph-Sp-Entity]prostředku. Azure Portal se také používá ke konfiguraci [delegovaných oprávnění](#permissions) klientské aplikace pro přístup k oboru.
+Scopes are resource-defined strings (for example "Mail.Read", "Directory.ReadWrite.All"), managed in the [Azure portal][AZURE-portal] via the resource's [application manifest](#application-manifest), and stored in the resource's [oauth2Permissions property][AAD-Graph-Sp-Entity]. The Azure portal is also used to configure client application [delegated permissions](#permissions) to access a scope.
 
-Osvědčenými postupy pro vytváření názvů je použití formátu "prostředek. Operation. Constraint". Podrobnou diskuzi o oborech vystavených Graph API služby Azure AD najdete v tématu [Graph API obory oprávnění][AAD-Graph-Perm-Scopes]. Obory vystavené službami Office 365 najdete v [referenčních informacích k rozhraní API pro office 365][O365-Perm-Ref].
+A best practice naming convention, is to use a "resource.operation.constraint" format. For a detailed discussion of the scopes exposed by Azure AD's Graph API, see [Graph API Permission Scopes][AAD-Graph-Perm-Scopes]. For scopes exposed by Office 365 services, see [Office 365 API permissions reference][O365-Perm-Ref].
 
-## <a name="security-token"></a>token zabezpečení
+## <a name="security-token"></a>security token
 
-Podepsaný dokument obsahující deklarace identity, jako je například token OAuth2 nebo kontrolní výraz SAML 2,0. Pro [udělení autorizace](#authorization-grant)OAuth2 jsou tokeny [přístupu](#access-token) (OAuth2) a [token ID](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) typy tokenů zabezpečení, které jsou implementovány jako [JSON web token (Jwt)][JWT].
+A signed document containing claims, such as an OAuth2 token or SAML 2.0 assertion. For an OAuth2 [authorization grant](#authorization-grant), an [access token](#access-token) (OAuth2) and an [ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) are types of security tokens, both of which are implemented as a [JSON Web Token (JWT)][JWT].
 
-## <a name="service-principal-object"></a>instanční objekt služby
+## <a name="service-principal-object"></a>service principal object
 
-Když zaregistrujete nebo aktualizujete aplikaci v [Azure Portal][AZURE-portal], portál vytvoří nebo aktualizuje aplikační [objekt](#application-object) a odpovídající instanční objekt služby pro daného tenanta. Objekt aplikace *definuje* konfiguraci identit aplikace globálně (ve všech klientech, kde má přidružená aplikace udělen přístup) a je šablona, ze které jsou *příslušné objekty instančních služeb. odvozeno* pro místní použití v době běhu (v konkrétním tenantovi).
+When you register/update an application in the [Azure portal][AZURE-portal], the portal creates/updates both an [application object](#application-object) and a corresponding service principal object for that tenant. The application object *defines* the application's identity configuration globally (across all tenants where the associated application has been granted access), and is the template from which its corresponding service principal object(s) are *derived* for use locally at run-time (in a specific tenant).
 
-Další informace naleznete v tématu [Application and Service instanční objekty][AAD-App-SP-Objects].
+For more information, see [Application and Service Principal Objects][AAD-App-SP-Objects].
 
-## <a name="sign-in"></a>přihlášení
+## <a name="sign-in"></a>sign-in
 
-Proces [klientské aplikace](#client-application) , která zahajuje ověřování koncového uživatele a zachytí související stav, pro účely získání [tokenu zabezpečení](#security-token) a určení rozsahu relace aplikace do daného stavu. Stav může zahrnovat artefakty, jako jsou informace o profilu uživatele, a informace odvozené z deklarací identity tokenu.
+The process of a [client application](#client-application) initiating end-user authentication and capturing related state, for the purpose of acquiring a [security token](#security-token) and scoping the application session to that state. State can include artifacts such as user profile information, and information derived from token claims.
 
-Funkce přihlašování aplikace se obvykle používá k implementaci jednotného přihlašování (SSO). Je také možné, že před tím, jako vstupní bod pro koncového uživatele, získá přístup k aplikaci (při prvním přihlášení). Funkce registrace se používá ke shromáždění a uchování dalších stavů specifických pro uživatele a může vyžadovat [souhlas s uživatelem](#consent).
+The sign-in function of an application is typically used to implement single-sign-on (SSO). It may also be preceded by a "sign-up" function, as the entry point for an end user to gain access to an application (upon first sign-in). The sign-up function is used to gather and persist additional state specific to the user, and may require [user consent](#consent).
 
 ## <a name="sign-out"></a>adresa URL
 
-Proces ověřování koncového uživatele odpojením stavu uživatele přidruženého k relaci [klientské aplikace](#client-application) během přihlašování [](#sign-in)
+The process of unauthenticating an end user, detaching the user state associated with the [client application](#client-application) session during [sign-in](#sign-in)
 
 ## <a name="tenant"></a>tenant
 
-Instance adresáře služby Azure AD je označována jako tenant služby Azure AD. Poskytuje několik funkcí, včetně:
+An instance of an Azure AD directory is referred to as an Azure AD tenant. It provides several features, including:
 
-* Služba registru pro integrované aplikace
-* ověřování uživatelských účtů a registrovaných aplikací
-* Koncové body REST vyžadované pro podporu různých protokolů, včetně OAuth2 a SAML, včetně koncového bodu [autorizace](#authorization-endpoint), [koncového bodu tokenu](#token-endpoint) a "společného" koncového bodu používaného [více aplikacemi tenantů](#multi-tenant-application).
+* a registry service for integrated applications
+* authentication of user accounts and registered applications
+* REST endpoints required to support various protocols including OAuth2 and SAML, including the [authorization endpoint](#authorization-endpoint), [token endpoint](#token-endpoint) and the "common" endpoint used by [multi-tenant applications](#multi-tenant-application).
 
-Tenant Azure AD se vytvářejí/přidružit k předplatným Azure a Office 365 během registrace a poskytují Správa identit a přístupu funkce pro toto předplatné. Správci předplatného Azure můžou také vytvářet další klienty Azure AD prostřednictvím Azure Portal. Podrobnosti o různých způsobech přístupu ke klientovi získáte v tématu [Jak získat klienta Azure Active Directory][AAD-How-To-Tenant] . Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v článku [o tom, jak jsou předplatná Azure přidružená k Azure Active Directory][AAD-How-Subscriptions-Assoc] .
+Azure AD tenants are created/associated with Azure and Office 365 subscriptions during sign-up, providing Identity & Access Management features for the subscription. Azure subscription administrators can also create additional Azure AD tenants via the Azure portal. See [How to get an Azure Active Directory tenant][AAD-How-To-Tenant] for details on the various ways you can get access to a tenant. See [How Azure subscriptions are associated with Azure Active Directory][AAD-How-Subscriptions-Assoc] for details on the relationship between subscriptions and an Azure AD tenant.
 
-## <a name="token-endpoint"></a>koncový bod tokenu
+## <a name="token-endpoint"></a>token endpoint
 
-Jeden z koncových bodů implementovaných [autorizačním serverem](#authorization-server) pro podporu [autorizací OAuth2 autorizace](#authorization-grant). V závislosti na udělení se dá klientovi použít k získání [přístupového tokenu](#access-token) (a souvisejícího "aktualizačního) tokenu [klienta](#client-application)nebo tokenu [ID](#id-token) při použití s protokolem [OpenID Connect][OpenIDConnect] .
+One of the endpoints implemented by the [authorization server](#authorization-server) to support OAuth2 [authorization grants](#authorization-grant). Depending on the grant, it can be used to acquire an [access token](#access-token) (and related "refresh" token) to a [client](#client-application), or [ID token](#id-token) when used with the [OpenID Connect][OpenIDConnect] protocol.
 
-## <a name="user-agent-based-client"></a>Uživatel – klient založený na agentovi
+## <a name="user-agent-based-client"></a>User-agent-based client
 
-Typ [klientské aplikace](#client-application) , který stáhne kód z webového serveru a provede ho v rámci uživatelského agenta (například webového prohlížeče), jako je například jednostránkové aplikace (Spa). Vzhledem k tomu, že je veškerý kód spuštěný v zařízení, považuje se za "veřejný" klient, protože jeho neschopnost ukládat přihlašovací údaje soukromě/důvěrné. Další informace najdete v tématu [typy a profily klienta OAuth2][OAuth2-Client-Types].
+A type of [client application](#client-application) that downloads code from a web server and executes within a user-agent (for instance, a web browser), such as a single-page application (SPA). Since all code is executed on a device, it is considered a "public" client due to its inability to store credentials privately/confidentially. For more information, see [OAuth2 client types and profiles][OAuth2-Client-Types].
 
-## <a name="user-principal"></a>objekt zabezpečení uživatele
+## <a name="user-principal"></a>user principal
 
-Podobně jako instanční objekt se používá k reprezentaci instance aplikace, objekt zabezpečení uživatele je jiný typ objektu zabezpečení, který představuje uživatele. [Entita uživatele][AAD-Graph-User-Entity] grafu Azure AD definuje schéma pro objekt uživatele, včetně uživatelských vlastností, jako je například křestní jméno a příjmení, hlavní název uživatele, členství v adresáři role atd. To poskytuje konfiguraci identity uživatele pro Azure AD k navázání hlavního uživatele v době běhu. Objekt zabezpečení uživatele slouží k reprezentaci ověřeného uživatele pro jednotné přihlašování, zaznamenávání [souhlasu](#consent) delegace, rozhodování o řízení přístupu atd.
+Similar to the way a service principal object is used to represent an application instance, a user principal object is another type of security principal, which represents a user. The Azure AD Graph [User entity][AAD-Graph-User-Entity] defines the schema for a user object, including user-related properties such as first and last name, user principal name, directory role membership, etc. This provides the user identity configuration for Azure AD to establish a user principal at run-time. The user principal is used to represent an authenticated user for Single Sign-On, recording [consent](#consent) delegation, making access control decisions, etc.
 
-## <a name="web-client"></a>Webový klient
+## <a name="web-client"></a>web client
 
-Typ [klientské aplikace](#client-application) , který spouští veškerý kód na webovém serveru a který je schopný fungovat jako "důvěrný" klient bezpečně uložený přihlašovací údaje na serveru. Další informace najdete v tématu [typy a profily klienta OAuth2][OAuth2-Client-Types].
+A type of [client application](#client-application) that executes all code on a web server, and able to function as a "confidential" client by securely storing its credentials on the server. For more information, see [OAuth2 client types and profiles][OAuth2-Client-Types].
 
 ## <a name="next-steps"></a>Další kroky
 
-[Příručka pro vývojáře Microsoft Identity Platform Developer][AAD-Dev-Guide] je cílová stránka, která se používá pro všechna témata související s vývojem na platformě Microsoft Identity Platform, včetně přehledu o [integraci aplikací][AAD-How-To-Integrate] a základních informací o [identitě Microsoftu. ověřování platformy a podporované scénáře ověřování][AAD-Auth-Scenarios]. Můžete také najít ukázky kódu & kurzy, jak rychle začít pracovat na [GitHubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+The [Microsoft identity platform Developer's Guide][AAD-Dev-Guide] is the landing page to use for all Microsoft identity platform development-related topics, including an overview of [application integration][AAD-How-To-Integrate] and the basics of [Microsoft identity platform authentication and supported authentication scenarios][AAD-Auth-Scenarios]. You can also find code samples & tutorials on how to get up and running quickly on [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
-Následující komentáře vám poskytnou zpětnou vazbu a nápovědu k vylepšení a obnově obsahu obsahu, včetně požadavků na nové definice nebo aktualizace stávajících.
+Use the following comments section to provide feedback and help to refine and shape this content, including requests for new definitions or updating existing ones!
 
 <!--Image references-->
 
@@ -231,7 +231,7 @@ Následující komentáře vám poskytnou zpětnou vazbu a nápovědu k vylepše
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
+[AAD-Graph-Perm-Scopes]: /graph/permissions-reference
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity

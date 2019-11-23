@@ -1,7 +1,7 @@
 ---
-title: Monitorování a shromažďování dat z Machine Learning koncových bodů webové služby
+title: Monitor and collect data from Machine Learning web service endpoints
 titleSuffix: Azure Machine Learning
-description: Monitorování webových služeb nasazených pomocí Azure Machine Learning pomocí Azure Application Insights
+description: Monitor web services deployed with Azure Machine Learning using Azure Application Insights
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,153 +9,153 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 10/11/2019
+ms.date: 11/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 545826a66e518366cd993a1e293c4137bde08c22
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 19dba88bf04ee84459ebd9ef0279f125724d7522
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839083"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406437"
 ---
-# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
+# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitor and collect data from ML web service endpoints
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nasazené do koncových bodů webové služby ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI) povolením Azure Application Insights. Kromě shromažďování vstupních dat a odpovědí koncového bodu můžete sledovat:
+In this article, you learn how to collect data from and monitor models deployed to web service endpoints in Azure Kubernetes Service (AKS) or Azure Container Instances (ACI) by enabling Azure Application Insights. In addition to collecting an endpoint's input data and response, you can monitor:
 
-* Sazby požadavků, doba odezvy a frekvence selhání
-* Sazby závislosti, doba odezvy a frekvence selhání
+* Request rates, response times, and failure rates
+* Dependency rates, response times, and failure rates
 * Výjimky
 
-[Přečtěte si další informace o Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). 
+[Learn more about Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* If you don’t have an Azure subscription, create a free account before you begin. Try the [free or paid version of Azure Machine Learning](https://aka.ms/AMLFree) today
 
-* Azure Machine Learning pracovní prostor, místní adresář, který obsahuje vaše skripty a nainstalovanou sadu Azure Machine Learning SDK pro Python. Informace o tom, jak tyto požadavky získat, najdete v tématu [Jak konfigurovat vývojové prostředí](how-to-configure-environment.md) .
-* Školený model strojového učení, který se má nasadit do služby Azure Kubernetes (AKS) nebo Azure Container instance (ACI). Pokud ho nemáte, přečtěte si kurz pro [model klasifikace imagí v výukovém](tutorial-train-models-with-aml.md) programu.
+* An Azure Machine Learning workspace, a local directory that contains your scripts, and the Azure Machine Learning SDK for Python installed. To learn how to get these prerequisites, see [How to configure a development environment](how-to-configure-environment.md)
+* A trained machine learning model to be deployed to Azure Kubernetes Service (AKS) or Azure Container Instance (ACI). If you don't have one, see the [Train image classification model](tutorial-train-models-with-aml.md) tutorial
 
-## <a name="web-service-input-and-response-data"></a>Data vstupu a odpovědi webové služby
+## <a name="web-service-input-and-response-data"></a>Web service input and response data
 
-Vstup a odpověď na službu, která odpovídá vstupům na model ML a jeho předpověď –, se zaznamenávají do trasování Azure Application Insights v `"model_data_collection"`zpráv. Můžete se dotázat na Azure Application Insights přímo pro přístup k těmto datům nebo nastavit [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do účtu úložiště pro delší dobu uchovávání nebo dalšího zpracování. Data modelu se pak dají ve službě Azure ML použít k nastavení popisků, rekurzování, vyjasnění, analýzy dat nebo jiné použití. 
+The input and response to the service - corresponding to the inputs to the ML model and its prediction - are logged to the Azure Application Insights traces under the message `"model_data_collection"`. You can query Azure Application Insights directly to access this data, or set up a [continuous export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) to a storage account for longer retention or further processing. Model data can then be used in the Azure ML service to setup labeling, retraining, explainability, data analysis, or other use. 
 
-## <a name="use-the-azure-portal-to-configure"></a>Ke konfiguraci použijte Azure Portal
+## <a name="use-the-azure-portal-to-configure"></a>Use the Azure portal to configure
 
-V Azure Portal můžete povolit a zakázat službu Azure Application Insights. 
+You can enable and disable Azure Application Insights in the Azure portal. 
 
-1. V [Azure Portal](https://portal.azure.com)otevřete pracovní prostor.
+1. In the [Azure portal](https://portal.azure.com), open your workspace
 
-1. Na kartě **nasazení** vyberte službu, ve které chcete povolit Azure Application Insights
+1. On the **Deployments** tab, select the service where you want to enable Azure Application Insights
 
-   [![seznam služeb na kartě nasazení](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![List of services on the Deployments tab](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
-3. Vybrat **Upravit**
+3. Select **Edit**
 
-   [![– tlačítko pro úpravy](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Edit button](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-4. V okně **Upřesnit nastavení**zaškrtněte políčko **Povolit diagnostiku AppInsights** .
+4. In **Advanced Settings**, select the **Enable AppInsights diagnostics** check box
 
-   [![zaškrtnuté políčko pro povolení diagnostiky](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![Selected check box for enabling diagnostics](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
-1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily.
+1. Select **Update** at the bottom of the screen to apply the changes
 
-### <a name="disable"></a>Zakázat
+### <a name="disable"></a>Zákaz
 
-1. V [Azure Portal](https://portal.azure.com)otevřete pracovní prostor.
-1. Vyberte **nasazení**, vyberte službu a pak vyberte **Upravit** .
+1. In the [Azure portal](https://portal.azure.com), open your workspace
+1. Select **Deployments**, select the service, and then select **Edit**
 
-   [![použít tlačítko Upravit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Use the edit button](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-1. V části **Upřesnit nastavení**zrušte zaškrtnutí políčka **Povolit diagnostiku AppInsights** .
+1. In **Advanced Settings**, clear the **Enable AppInsights diagnostics** check box
 
-   [zaškrtnutí políčka ![pro povolení diagnostiky nezaškrtnuté.](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![Cleared check box for enabling diagnostics](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
-1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily.
+1. Select **Update** at the bottom of the screen to apply the changes
  
-## <a name="use-python-sdk-to-configure"></a>Použití sady Python SDK ke konfiguraci 
+## <a name="use-python-sdk-to-configure"></a>Use Python SDK to configure 
 
-### <a name="update-a-deployed-service"></a>Aktualizace nasazené služby
+### <a name="update-a-deployed-service"></a>Update a deployed service
 
-1. Identifikujte službu ve vašem pracovním prostoru. Hodnota pro `ws` je název vašeho pracovního prostoru.
+1. Identify the service in your workspace. The value for `ws` is the name of your workspace
 
     ```python
     from azureml.core.webservice import Webservice
     aks_service= Webservice(ws, "my-service-name")
     ```
-2. Aktualizace služby a povolení Azure Application Insights
+2. Update your service and enable Azure Application Insights
 
     ```python
     aks_service.update(enable_app_insights=True)
     ```
 
-### <a name="log-custom-traces-in-your-service"></a>Protokolovat vlastní trasování ve službě
+### <a name="log-custom-traces-in-your-service"></a>Log custom traces in your service
 
-Pokud chcete protokolovat vlastní trasování, postupujte podle standardního procesu nasazení pro AKS nebo ACI v tématu [postup nasazení a umístění](how-to-deploy-and-where.md) dokumentu. Pak použijte následující postup:
+If you want to log custom traces, follow the standard deployment process for AKS or ACI in the [How to deploy and where](how-to-deploy-and-where.md) document. Then use the following steps:
 
-1. Aktualizace souboru bodování přidáním příkazů Print
+1. Update the scoring file by adding print statements
     
     ```python
     print ("model initialized" + time.strftime("%H:%M:%S"))
     ```
 
-2. Aktualizace konfigurace služby
+2. Update the service configuration
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. Sestavení image a její nasazení na [AKS](how-to-deploy-to-aks.md) nebo [ACI](how-to-deploy-to-aci.md)
+3. Build an image and deploy it on [AKS](how-to-deploy-to-aks.md) or [ACI](how-to-deploy-to-aci.md)
 
-### <a name="disable-tracking-in-python"></a>Zakázat sledování v Pythonu
+### <a name="disable-tracking-in-python"></a>Disable tracking in Python
 
-Pokud chcete zakázat službu Azure Application Insights, použijte následující kód:
+To disable Azure Application Insights, use the following code:
 
 ```python 
 ## replace <service_name> with the name of the web service
 <service_name>.update(enable_app_insights=False)
 ```
 
-## <a name="evaluate-data"></a>Vyhodnotit data
-Data vaší služby se ukládají do účtu Azure Application Insights v rámci stejné skupiny prostředků jako Azure Machine Learning.
-Zobrazení:
+## <a name="evaluate-data"></a>Evaluate data
+Your service's data is stored in your Azure Application Insights account, within the same resource group as Azure Machine Learning.
+To view it:
 
-1. Přejděte do pracovního prostoru služby Machine Learning v [Azure Machine Learning Studiu](https://ml.azure.com) a klikněte na odkaz Application Insights.
+1. Go to your Machine Learning service workspace in [Azure Machine Learning studio](https://ml.azure.com) and click on Application Insights link
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. Výběrem karty **Přehled** zobrazíte základní sadu metrik pro vaši službu.
+1. Select the **Overview** tab to see a basic set of metrics for your service
 
-   [Přehled ![](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [![Overview](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. Chcete-li se podívat na vstupy a výstupy vaší webové služby, vyberte **Analýza** .
-1. V části schéma vyberte **trasování** a vyfiltrujte trasování pomocí `"model_data_collection"`zpráv. Ve vlastních dimenzích můžete zobrazit vstupy, předpovědi a další relevantní podrobnosti.
+1. To look into your web service input and response payloads, select **Analytics**
+1. In the schema section, select **Traces** and filter down traces with the message `"model_data_collection"`. In the custom dimensions, you can see the inputs, predictions, and other relevant details
 
-   [![data modelu](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
-
-
-3. Pokud chcete hledat vlastní trasování, vyberte **Analytics** .
-4. V části schématu vyberte **trasování**. Pak vyberte **Spustit** a spusťte dotaz. Data by se měla zobrazit ve formátu tabulky a měla by se namapovat na vaše vlastní volání v souboru bodování.
-
-   [![vlastní trasování](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
-
-Další informace o tom, jak používat Azure Application Insights, najdete v tématu [co je Application Insights?](../../azure-monitor/app/app-insights-overview.md).
-
-## <a name="export-data-for-further-processing-and-longer-retention"></a>Exportovat data pro další zpracování a delší dobu uchování
-
-Můžete použít [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) v Azure Application Insights k posílání zpráv do podporovaného účtu úložiště, kde je možné nastavit delší dobu uchování. Zprávy `"model_data_collection"` jsou uloženy ve formátu JSON a lze je snadno analyzovat pro extrakci dat modelu. Azure Data Factory, kanály Azure ML nebo jiné nástroje pro zpracování dat se dají použít k transformaci dat podle potřeby. Po transformaci dat je můžete zaregistrovat v pracovním prostoru Azure Machine Learning jako datovou sadu. Postup najdete v tématu [jak vytvořit a zaregistrovat datové sady](how-to-create-register-datasets.md).
-
-   [![průběžný export](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
+   [![Model data](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
-## <a name="example-notebook"></a>Příklad poznámkového bloku
+3. To look into your custom traces, select **Analytics**
+4. In the schema section, select **Traces**. Then select **Run** to run your query. Data should appear in a table format and should map to your custom calls in your scoring file
 
-Poznámkový blok [Enable-App-Insights-in-produkční-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) ukazuje koncepty v tomto článku. 
+   [![Custom traces](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+
+To learn more about how to use Azure Application Insights, see [What is Application Insights?](../../azure-monitor/app/app-insights-overview.md).
+
+## <a name="export-data-for-further-processing-and-longer-retention"></a>Export data for further processing and longer retention
+
+You can use Azure Application Insights' [continuous export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) to send messages to a supported storage account, where a longer retention can be set. The `"model_data_collection"` messages are stored in JSON format and can be easily parsed to extract model data. Azure Data Factory, Azure ML Pipelines, or other data processing tools can be used to transform the data as needed. When you have transformed the data, you can then register it with the Azure Machine Learning workspace as a dataset. To do so, see [How to create and register datasets](how-to-create-register-datasets.md).
+
+   [![Continuous Export](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
+
+
+## <a name="example-notebook"></a>Example notebook
+
+The [enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) notebook demonstrates concepts in this article. 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte [se, jak nasadit model do clusteru služby Azure Kubernetes](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) nebo [Jak nasadit model, Azure Container Instances aby](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) se nasadily vaše modely do koncových bodů webové služby, a umožněte službě Azure Application Insights využívat shromažďování dat a monitorování koncových bodů.
-* Další informace o využití dat shromážděných z modelů v produkčním prostředí najdete v tématu [MLOps: Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) . Tato data vám můžou pomoci při neustálém vylepšování procesu strojového učení.
+* See [how to deploy a model to an Azure Kubernetes Service cluster](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) or [how to deploy a model to Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) to deploy your models to web service endpoints, and enable Azure Application Insights to leverage data collection and endpoint monitoring
+* See [MLOps: Manage, deploy, and monitor models with Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) to learn more about leveraging data collected from models in production. Such data can help to continually improve your machine learning process

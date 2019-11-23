@@ -1,110 +1,109 @@
 ---
 title: Pochopení životního cyklu podrobného plánu
-description: Seznamte se s životním cyklem, který projde podrobný plán, a podrobně o jednotlivých fázích.
+description: Learn about the lifecycle that a blueprint definition goes through and details about each stage, including updating and removing blueprint assignments.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: d071a2af985d294bc87a5363d9e7566762e0fd8a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960495"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404581"
 ---
-# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Pochopení životního cyklu Azure Blueprint
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Understand the lifecycle of an Azure Blueprint
 
-Podobně jako u mnoha prostředků v Azure má plán v plánech Azure typický a přirozený životní cyklus. Vytváří, nasazují a konečně odstranily, pokud už nejsou potřeba nebo nejsou relevantní.
-Plány podporují standardní operace životního cyklu. Pak je na nich vytvoří, aby poskytovala další úrovně stavu, které podporují běžné kanály průběžné integrace a průběžného nasazování pro organizace, které spravují svou infrastrukturu jako kód – klíčový prvek v DevOps.
+Like many resources within Azure, a blueprint in Azure Blueprints has a typical and natural lifecycle. They're created, deployed, and finally deleted when no longer needed or relevant.
+Blueprints supports standard lifecycle operations. It then builds upon them to provide additional levels of status that support common continuous integration and continuous deployment pipelines for organizations that manage their Infrastructure as Code – a key element in DevOps.
 
-Pokud chcete plně porozumět podrobným plánům a fázím, pokryjeme standardní životní cyklus:
+To fully understand a blueprint and the stages, we'll cover a standard lifecycle:
 
 > [!div class="checklist"]
-> - Vytvoření a úprava podrobného plánu
-> - Publikování podrobného plánu
-> - Vytvoření a úprava nové verze podrobného plánu
-> - Publikování nové verze podrobného plánu
-> - Odstranění konkrétní verze podrobného plánu
-> - Odstraňuje se podrobný plán
+> - Creating and editing a blueprint
+> - Publishing the blueprint
+> - Creating and editing a new version of the blueprint
+> - Publishing a new version of the blueprint
+> - Deleting a specific version of the blueprint
+> - Deleting the blueprint
 
-## <a name="creating-and-editing-a-blueprint"></a>Vytvoření a úprava podrobného plánu
+## <a name="creating-and-editing-a-blueprint"></a>Creating and editing a blueprint
 
-Při vytváření podrobného plánu přidejte do něj artefakty, uložte ho do skupiny pro správu nebo předplatného a zadejte jedinečný název a jedinečnou verzi. Podrobný plán je nyní v režimu **konceptu** a nelze jej ještě přiřadit. V režimu **konceptu** se může i nadále aktualizovat a měnit.
+When creating a blueprint, add artifacts to it, save to a management group or subscription, and provided a unique name and a unique version. The blueprint is now in a **Draft** mode and can't yet be assigned. While in the **Draft** mode, it can continue to be updated and changed.
 
-Nepublikovaný podrobný plán v režimu **konceptu** zobrazuje na stránce **definice** podrobného plánu jinou ikonu než ty, které byly **publikovány**. **Nejnovější verze** se zobrazuje jako **koncept** pro tyto dosud publikované plány.
+A never published blueprint in **Draft** mode displays a different icon on the **Blueprint Definitions** page than ones that have been **Published**. The **Latest Version** is displayed as **Draft** for these never published blueprints.
 
-Vytvořte a upravte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#create-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#create-a-blueprint).
+Create and edit a blueprint with the [Azure portal](../create-blueprint-portal.md#create-a-blueprint) or [REST API](../create-blueprint-rest-api.md#create-a-blueprint).
 
-## <a name="publishing-a-blueprint"></a>Publikování podrobného plánu
+## <a name="publishing-a-blueprint"></a>Publishing a blueprint
 
-Jakmile provedete všechny plánované změny podrobného plánu v režimu **konceptu** , je možné je **publikovat** a zpřístupnit pro přiřazení. **Publikovanou** verzi podrobného plánu nelze změnit.
-Po **publikování**se v podrobném plánu zobrazí s jinou ikonou než s **Koncepty** a ve sloupci **nejnovější verze** se zobrazí zadané číslo verze.
+Once all planned changes have been made to a blueprint in **Draft** mode, it can be **Published** and made available for assignment. The **Published** version of the blueprint can't be altered. Once **Published**, the blueprint displays with a different icon than **Draft** blueprints and displays the provided version number in the **Latest Version** column.
 
-Publikovat podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
+Publish a blueprint with the [Azure portal](../create-blueprint-portal.md#publish-a-blueprint) or [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
-## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Vytvoření a úprava nové verze podrobného plánu
+## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Creating and editing a new version of the blueprint
 
-**Publikovanou** verzi podrobného plánu nelze změnit. Novou verzi podrobného plánu je však možné do stávajícího podrobného plánu přidat a upravit podle potřeby. Změny v existujícím podrobném plánu proveďte úpravou. Když se nové změny uloží, plán nyní obsahuje **nepublikované změny**. Tyto změny představují novou **Konceptovou** verzi podrobného plánu.
+A **Published** version of a blueprint can't be altered. However, a new version of the blueprint can be added to the existing blueprint and modified as needed. Make changes to an existing blueprint by editing it. When the new changes are saved, the blueprint now has **Unpublished Changes**. These changes are a new **Draft** version of the blueprint.
 
-Upravte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint).
+Edit a blueprint with the [Azure portal](../create-blueprint-portal.md#edit-a-blueprint).
 
-## <a name="publishing-a-new-version-of-the-blueprint"></a>Publikování nové verze podrobného plánu
+## <a name="publishing-a-new-version-of-the-blueprint"></a>Publishing a new version of the blueprint
 
-Každá upravená verze podrobného plánu musí být **publikována** před tím, než bude možné ji přiřadit. Pokud byly provedené **nepublikované změny** v podrobném plánu, ale ne **publikovány**, je na stránce Upravit podrobný plán k dispozici tlačítko **publikovat plán** . Pokud tlačítko není viditelné, podrobný plán již byl **publikován** a neobsahuje žádné **nepublikované změny**.
-
-> [!NOTE]
-> Jeden podrobný plán může mít několik **publikovaných** verzí, které je možné přiřadit k předplatným.
-
-Pokud chcete publikovat podrobný plán s **nepublikovanými změnami**, použijte stejný postup pro publikování nového podrobného plánu.
-
-## <a name="deleting-a-specific-version-of-the-blueprint"></a>Odstranění konkrétní verze podrobného plánu
-
-Každá verze podrobného plánu je jedinečný objekt a lze jej **publikovat**jednotlivě. V takovém případě lze také odstranit každou verzi podrobného plánu. Odstranění verze podrobného plánu nemá žádný vliv na jiné verze tohoto podrobného plánu.
+Each edited version of a blueprint must be **Published** before it can be assigned. When **Unpublished Changes** have been made to a blueprint but not **Published**, the **Publish Blueprint** button is available on the edit blueprint page. If the button isn't visible, the blueprint has already been **Published** and has no **Unpublished Changes**.
 
 > [!NOTE]
-> Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a pak odstraňte verzi, kterou chcete odebrat.
+> A single blueprint can have multiple **Published** versions that can each be assigned to subscriptions.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+To publish a blueprint with **Unpublished Changes**, use the same steps for publishing a new blueprint.
 
-1. Na stránce vlevo vyberte **definice** podrobného plánu a pomocí možností filtru Najděte plán, ve kterém chcete odstranit verzi. Kliknutím na ni otevřete stránku pro úpravy.
+## <a name="deleting-a-specific-version-of-the-blueprint"></a>Deleting a specific version of the blueprint
 
-1. Klikněte na kartu **publikované verze** a vyhledejte verzi, kterou chcete odstranit.
-
-1. Klikněte pravým tlačítkem na verzi, kterou chcete odstranit, a vyberte **Odstranit tuto verzi**.
-
-## <a name="deleting-the-blueprint"></a>Odstraňuje se podrobný plán
-
-Základní plán bude také možné odstranit. Odstraněním základního plánu se odstraní také všechny verze podrobného plánu tohoto podrobného plánu, včetně **konceptu** a **publikovaných** modrotisky. Stejně jako u odstranění verze podrobného plánu neodstraní základní plán obnovení stávající přiřazení žádné z verzí podrobného plánu.
+Each version of a blueprint is a unique object and can be individually **Published**. As such, each version of a blueprint can also be deleted. Deleting a version of a blueprint doesn't have any impact on other versions of that blueprint.
 
 > [!NOTE]
-> Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a pak odstraňte verzi, kterou chcete odebrat.
+> It's not possible to delete a blueprint that has active assignments. Delete the assignments first and then delete the version you wish to remove.
 
-Odstraňte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#delete-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#delete-a-blueprint).
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
+
+1. Select **Blueprint definitions** from the page on the left and use the filter options to locate the blueprint you want to delete a version of. Select it to open the edit page.
+
+1. Select the **Published versions** tab and locate the version you wish to delete.
+
+1. Right-click on the version to delete and select **Delete this version**.
+
+## <a name="deleting-the-blueprint"></a>Deleting the blueprint
+
+The core blueprint can also be deleted. Deleting the core blueprint also deletes any blueprint versions of that blueprint, including both **Draft** and **Published** blueprints. As with deleting a version of a blueprint, deleting the core blueprint doesn't remove the existing assignments of any of the blueprint versions.
+
+> [!NOTE]
+> It's not possible to delete a blueprint that has active assignments. Delete the assignments first and then delete the version you wish to remove.
+
+Delete a blueprint with the [Azure portal](../create-blueprint-portal.md#delete-a-blueprint) or [REST API](../create-blueprint-rest-api.md#delete-a-blueprint).
 
 ## <a name="assignments"></a>Přiřazení
 
-V životním cyklu je několik bodů, které je možné přiřadit k předplatnému. Po **publikování**režimu verze podrobného plánu lze tuto verzi přiřadit k předplatnému. Tento životní cyklus umožňuje používat verze podrobného plánu a aktivně je přiřazovat během vývoje novější verze.
+There's several points during the lifecycle a blueprint can be assigned to a subscription. When the mode of a version of the blueprint is **Published**, then that version can be assigned to a subscription. This lifecycle enables versions of a blueprint to be used and actively assigned while a newer version is being developed.
 
-Vzhledem k tomu, že se přiřadí verze plánů, je důležité pochopit, kde jsou přiřazené, a s parametry, se kterými byly přiřazeny. Parametry mohou být buď statické, nebo dynamické. Další informace najdete v tématu [statické a dynamické parametry](parameters.md).
+As versions of blueprints are assigned, it's important to understand where they're assigned and with what parameters they've been assigned with. The parameters can either be static or dynamic. To learn more, see [static and dynamic parameters](parameters.md).
 
-### <a name="updating-assignments"></a>Aktualizace přiřazení
+### <a name="updating-assignments"></a>Updating assignments
 
-Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje několik důvodů Aktualizace existujícího přiřazení, včetně:
+When a blueprint is assigned, the assignment can be updated. There are several reasons for updating an existing assignment, including:
 
-- Přidat nebo odebrat [uzamykání prostředků](resource-locking.md)
-- Změna hodnoty [dynamických parametrů](parameters.md#dynamic-parameters)
-- Upgradujte přiřazení na novější **publikovanou** verzi podrobného plánu.
+- Add or remove [resource locking](resource-locking.md)
+- Change the value of [dynamic parameters](parameters.md#dynamic-parameters)
+- Upgrade the assignment to a newer **Published** version of the blueprint
 
-Informace o postupu najdete v tématu [aktualizace existujících přiřazení](../how-to/update-existing-assignments.md).
+To learn how, see [update existing assignments](../how-to/update-existing-assignments.md).
 
-### <a name="unassigning-assignments"></a>Zrušení přiřazení přiřazení
+### <a name="unassigning-assignments"></a>Unassigning assignments
 
-Pokud již podrobný plán není potřebný, může být nepřiřazený ze skupiny pro správu nebo předplatného. Při zrušení přiřazení podrobného plánu dojde k následujícímu:
+If the blueprint is no longer needed, it can be unassigned from the management group or subscription. During blueprint unassignment, the following occurs:
 
-- Odebrání [uzamykání prostředků](resource-locking.md) podrobného plánu
-- Odstranění objektu přiřazení podrobného plánu
-- Podmíněného Pokud se použila **spravovaná identita přiřazená systémem** , odstraní se taky.
+- Removal of [blueprint resource locking](resource-locking.md)
+- Deletion of the blueprint assignment object
+- (Conditional) If a **system-assigned managed identity** was used, it's also deleted
 
 > [!NOTE]
-> Všechny prostředky nasazené přiřazením podrobného plánu zůstávají v platnosti, ale již nejsou chráněny plány Azure.
+> All resources deployed by the blueprint assignment remain in place, but are no longer protected by Azure Blueprints.
 
 ## <a name="next-steps"></a>Další kroky
 

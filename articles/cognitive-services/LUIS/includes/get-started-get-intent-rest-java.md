@@ -1,25 +1,25 @@
 ---
-title: Získání záměru pomocí volání REST v jazyce Java
+title: Get intent with REST call in Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: cac3ee99598f8bcb29bd15c60063159b51f71923
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4e2fb81b19694136896b1dee07c3bd74c63fc01b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125448"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414465"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* [Visual Studio Code](https://code.visualstudio.com/) nebo vaše oblíbené integrované vývojové prostředí (IDE)
-* ID veřejné aplikace: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* [Visual Studio Code](https://code.visualstudio.com/) or your favorite IDE
+* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Získání klíče LUIS
 
@@ -27,16 +27,15 @@ ms.locfileid: "74125448"
 
 ## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
-Použijte Java k dotazování koncového bodu předpovědi [rozhraní API](https://aka.ms/luis-apim-v3-prediction) k získání výsledku předpovědi.
+Use Java to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
 
-1. Vytvořte podadresář s názvem `lib` a zkopírujte ho do následujících Java knihovny:
+1. Make a subdirectory named `lib` and copy in the following java libs:
 
-    * [Commons-Logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [HttpClient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. Zkopírujte následující kód a vytvořte třídu v souboru s názvem `Predict.java`:
-
 
     ```java
     import java.io.*;
@@ -105,31 +104,31 @@ Použijte Java k dotazování koncového bodu předpovědi [rozhraní API](https
     }    
     ```
 
-1. Nahraďte následující hodnoty:
+1. Replace the following values:
 
-    * `YOUR-KEY` pomocí počátečního klíče
-    * `YOUR-ENDPOINT` s vaším koncovým bodem, například `westus2.api.cognitive.microsoft.com`
+    * `YOUR-KEY` with your starter key
+    * `YOUR-ENDPOINT` with your endpoint. Například, `westus2.api.cognitive.microsoft.com`.
 
 
-1. Zkompilujte program Java z příkazového řádku: 
+1. Compile the java program from the command line: 
 
     ```console
     javac -cp ":lib/*" Predict.java
     ```
 
-1. Spusťte program Java z příkazového řádku:
+1. Run the java program from the command line:
 
     ```console
     java -cp ":lib/*" Predict
     ```
 
-1. Kontrola odpovědi předpovědi ve formátu JSON:
+1. Review the prediction response, which is returned as JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Odpověď JSON naformátovaná pro čitelnost: 
+    The JSON response formatted for readability: 
 
     ```JSON
     {
@@ -178,9 +177,9 @@ Použijte Java k dotazování koncového bodu předpovědi [rozhraní API](https
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů. 
+When you are finished with this quickstart, delete the file from the file system. 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidání projevy a výukového programu pomocí Java](../get-started-get-model-rest-apis.md)
+> [Add utterances and train with Java](../get-started-get-model-rest-apis.md)

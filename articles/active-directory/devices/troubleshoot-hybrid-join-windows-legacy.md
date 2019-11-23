@@ -1,26 +1,26 @@
 ---
-title: Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory | Dokumentace Microsoftu
-description: Řešení potíží s hybridní služby Azure Active Directory zařízení připojená k nižší úrovně
+title: Troubleshoot legacy hybrid Azure Active Directory joined devices
+description: Troubleshooting hybrid Azure Active Directory joined down-level devices.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7f02937555f7637a6d2f81be717aaad83bab74f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481461"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379116"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Troubleshooting hybrid Azure Active Directory joined down-level devices 
 
-V tomto článku se vztahuje pouze na následujících zařízeních: 
+This article is applicable only to the following devices: 
 
 - Windows 7 
 - Windows 8.1 
@@ -28,81 +28,81 @@ V tomto článku se vztahuje pouze na následujících zařízeních:
 - Windows Server 2012 
 - Windows Server 2012 R2 
 
-Pro Windows 10 nebo Windows Server 2016, najdete v článku [zařízení s Windows 10 a Windows serveru 2016 připojená k hybridní Poradce při potížích s Azure Active Directory](troubleshoot-hybrid-join-windows-current.md).
+For Windows 10 or Windows Server 2016, see [Troubleshooting hybrid Azure Active Directory joined Windows 10 and Windows Server 2016 devices](troubleshoot-hybrid-join-windows-current.md).
 
-Tento článek předpokládá, že máte [nakonfigurované hybridní služby Azure Active Directory zařízení připojená k](hybrid-azuread-join-plan.md) pro podporu následujících scénářů:
+This article assumes that you have [configured hybrid Azure Active Directory joined devices](hybrid-azuread-join-plan.md) to support the following scenarios:
 
-- Podmíněný přístup podle zařízení
+- Device-based Conditional Access
 
-Tento článek poskytuje pokyny o tom, jak vyřešit potenciální problémy při řešení potíží.  
+This article provides you with troubleshooting guidance on how to resolve potential issues.  
 
-**Co byste měli vědět:** 
+**What you should know:** 
 
-- Připojení k hybridní službě Azure AD pro starší verze Windows zařízení funguje trochu jinak než nemá ve Windows 10. Mnoho zákazníků není dobré si uvědomit, že potřebují služby AD FS (u federovaných domén) nebo bezproblémové jednotné přihlašování nakonfigurovali (pro spravované domény).
-- Pro zákazníky s federovaných domén pokud bod připojení služby (SCP) byla nakonfigurovaná tak, aby odkazovala na název spravované domény (například contoso.onmicrosoft.com, ne contoso.com), pak hybridní připojení k Azure AD pro zařízení s Windows nižší úrovně se nebude fungovat.
-- Maximální počet zařízení na uživatele v současné době platí také pro zařízení připojená k Azure AD hybridní nižší úrovně. 
-- Více než jednou ve službě Azure AD, kdy více uživatelů domény přihlášení zařízení připojených k Azure AD hybridní nižší úrovně se zobrazí stejné fyzické zařízení.  Například pokud *jdoe* a *jharnett* přihlášení k zařízení, samostatných registrací (DeviceID) se vytvoří pro každý z nich ve **uživatele** Karta informace. 
-- Můžete také získat několik záznamů pro zařízení na kartě informace o uživateli z důvodu přeinstalaci operačního systému nebo ruční opětovné registraci.
-- Počáteční registraci / připojení k zařízení umožňují provést pokus o přihlášení nebo uzamčení nebo odemčení. Může dojít k 5 minut, než aktivované úloh služby Plánovač úloh. 
-- Ujistěte se, že [KB4284842](https://support.microsoft.com/help/4284842) je nainstalována v případě Windows 7 SP1 nebo Windows Server 2008 R2 SP1. Tato aktualizace brání selhání budoucích ověřování kvůli ztrátám zákazníka přístup k chráněné klíče po změně hesla.
+- Hybrid Azure AD join for downlevel Windows devices works slightly differently than it does in Windows 10. Many customers do not realize that they need AD FS (for federated domains) or Seamless SSO configured (for managed domains).
+- For customers with federated domains, if the Service Connection Point (SCP) was configured such that it points to the managed domain name (for example, contoso.onmicrosoft.com, instead of contoso.com), then Hybrid Azure AD Join for downlevel Windows devices will not work.
+- The maximum number of devices per user currently also applies to downlevel hybrid Azure AD joined devices. 
+- The same physical device appears multiple times in Azure AD when multiple domain users sign-in the downlevel hybrid Azure AD joined devices.  For example, if *jdoe* and *jharnett* sign-in to a device, a separate registration (DeviceID) is created for each of them in the **USER** info tab. 
+- You can also get multiple entries for a device on the user info tab because of a reinstallation of the operating system or a manual re-registration.
+- The initial registration / join of devices is configured to perform an attempt at either sign-in or lock / unlock. There could be 5-minute delay triggered by a task scheduler task. 
+- Make sure [KB4284842](https://support.microsoft.com/help/4284842) is installed, in case of Windows 7 SP1 or Windows Server 2008 R2 SP1. This update prevents future authentication failures due to customer's access loss to protected keys after changing password.
 
-## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Načíst stav registrace 
+## <a name="step-1-retrieve-the-registration-status"></a>Step 1: Retrieve the registration status 
 
-**Pokud chcete ověřit stav registrace:**  
+**To verify the registration status:**  
 
-1. Přihlásit se pomocí uživatelského účtu, který se má provést připojení k Azure AD hybridní.
-1. Otevřete příkazový řádek 
-1. Typ `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
+1. Sign on with the user account that has performed a hybrid Azure AD join.
+1. Open the command prompt 
+1. Zadejte `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
 
-Tento příkaz zobrazí dialogové okno, které vám poskytne podrobné informace o stavu připojení.
+This command displays a dialog box that provides you with details about the join status.
 
-![Připojení k pracovní ploše pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Vyhodnocení hybridního stav připojení k Azure AD 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Step 2: Evaluate the hybrid Azure AD join status 
 
-Pokud zařízení nebyla připojená k hybridní Azure AD, pokuste se provést připojení k hybridní službě Azure AD. Kliknutím na tlačítko "Join". Pokud se nezdaří pokus provést připojení k hybridní službě Azure AD, zobrazí se podrobnosti o chybě.
+If the device was not hybrid Azure AD joined, you can attempt to do hybrid Azure AD join by clicking on the "Join" button. If the attempt to do hybrid Azure AD join fails, the details about the failure will be shown.
 
-**Nejčastější problémy jsou:**
+**The most common issues are:**
 
-- A správně nakonfigurovaný. Služba AD FS nebo služby Azure AD nebo problémy sítě
+- A misconfigured AD FS or Azure AD or Network issues
 
-    ![Připojení k pracovní ploše pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-   - Autoworkplace.exe nedokáže bezobslužné ověření pomocí Azure AD nebo AD FS. To může být způsobeno chybějícími nebo špatně nakonfigurovaný. Služba AD FS (u federovaných domén) nebo chybějící nebo nesprávně nakonfigurované Azure AD bezproblémové jednotné přihlašování (pro spravované domény) nebo problémů se sítí. 
-   - Je možné, že vícefaktorové ověřování (MFA) je povolený a nakonfigurovaný pro tohoto uživatele a WIAORMULTIAUTHN není nakonfigurovaná na serveru služby AD FS. 
-   - Další možností je, že tuto stránku zjišťování domovské sféry čeká pro interakci s uživatelem, což zabrání **autoworkplace.exe** tiše vyžádat token.
-   - Je možné, že adresy URL služby Azure AD a AD FS chybí v zóně intranetu IE na straně klienta.
-   - Problémy se síťovým připojením možná nepůjde **autoworkplace.exe** dosažení služby AD FS nebo adresy URL Azure AD. 
-   - **Autoworkplace.exe** vyžaduje, aby měl přímé dohlednost služby z klienta do organizace místní klient řadič domény služby AD, což znamená, že připojení k hybridní službě Azure AD úspěšné, jenom když je klient připojen k intranetu organizace.
-   - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` nejsou k dispozici v nastavení aplikace Internet Explorer intranetu zařízení, a **povolit aktualizace stavového řádku prostřednictvím skriptu** není povolená pro zónu intranetu.
-- Nejste přihlášení jako uživatel domény
+   - Autoworkplace.exe is unable to silently authenticate with Azure AD or AD FS. This could be caused by missing or misconfigured AD FS (for federated domains) or missing or misconfigured Azure AD Seamless Single Sign-On (for managed domains) or network issues. 
+   - It could be that multi-factor authentication (MFA) is enabled/configured for the user and WIAORMULTIAUTHN is not configured at the AD FS server. 
+   - Another possibility is that home realm discovery (HRD) page is waiting for user interaction, which prevents **autoworkplace.exe** from silently requesting a token.
+   - It could be that AD FS and Azure AD URLs are missing in IE's intranet zone on the client.
+   - Network connectivity issues may be preventing **autoworkplace.exe** from reaching AD FS or the Azure AD URLs. 
+   - **Autoworkplace.exe** requires the client to have direct line of sight from the client to the organization's on-premises AD domain controller, which means that hybrid Azure AD join succeeds only when the client is connected to organization's intranet.
+   - Your organization uses Azure AD Seamless Single Sign-On, `https://autologon.microsoftazuread-sso.com` or `https://aadg.windows.net.nsatc.net` are not present on the device's IE intranet settings, and **Allow updates to status bar via script** is not enabled for the Intranet zone.
+- You are not signed on as a domain user
 
-   ![Připojení k pracovní ploše pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+   ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
 
-   Existuje několik různých důvodů, proč tato situace může nastat:
+   There are a few different reasons why this can occur:
 
-   - Přihlášený uživatel není uživatelem domény (například místní uživatel). Hybridní připojení k Azure AD na zařízeních s nižší úrovně je podporována pouze pro uživatele domény.
-   - Klient není možné se připojit k řadiči domény.    
-- Bylo dosaženo kvóty
+   - The signed in user is not a domain user (for example, a local user). Hybrid Azure AD join on down-level devices is supported only for domain users.
+   - The client is not able to connect to a domain controller.    
+- A quota has been reached
 
-    ![Připojení k pracovní ploše pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
 
-- Služba nereaguje 
+- The service is not responding 
 
-    ![Připojení k pracovní ploše pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-Informace o stavu můžete také najít v protokolu událostí v části: **Aplikace a služby Log\Microsoft Workplace Join**
+You can also find the status information in the event log under: **Applications and Services Log\Microsoft-Workplace Join**
   
-**Nejběžnější příčiny selhání hybridní službě Azure AD join jsou:** 
+**The most common causes for a failed hybrid Azure AD join are:** 
 
-- Počítač není připojený k interní síti vaší organizace nebo k síti VPN s připojením k místní řadič domény služby AD.
-- Jste přihlášeni k počítači pomocí účtu místního počítače. 
-- Problémy s konfigurací služby: 
-   - Server služby AD FS není nakonfigurován pro podporu **WIAORMULTIAUTHN**. 
-   - Doménová struktura počítače nemá žádný bod připojení služby objekt, který odkazuje na název ověřené domény ve službě Azure AD 
-   - Nebo pokud spravované domény, pak bezproblémového jednotného přihlašování nebyl nakonfigurován nebo nepracuje.
-   - Uživatel dosáhl limitu počtu zařízení. 
+- Your computer is not connected to your organization’s internal network or to a VPN with a connection to your on-premises AD domain controller.
+- You are logged on to your computer with a local computer account. 
+- Service configuration issues: 
+   - The AD FS server has not been configured to support **WIAORMULTIAUTHN**. 
+   - Your computer's forest has no Service Connection Point object that points to your verified domain name in Azure AD 
+   - Or if your domain is managed, then Seamless SSO was not configured or working.
+   - A user has reached the limit of devices. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Dotazy, najdete v článku [nejčastější dotazy ke správě zařízení](faq.md)  
+For questions, see the [device management FAQ](faq.md)  

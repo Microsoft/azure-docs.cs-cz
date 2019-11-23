@@ -1,63 +1,63 @@
 ---
-title: Samoobslužné resetování hesla služby Azure AD pro Windows Azure Active Directory
-description: Jak povolit samoobslužné resetování hesla pomocí zapomenutého hesla na přihlašovací obrazovce Windows
+title: Self-service password reset for Windows - Azure Active Directory
+description: How to enable self-service password reset using forgot password at the Windows login screen
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 44e25efcb068fe51f05dbbde50e8a96da492a735
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171860"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381227"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postupy: povolení resetování hesla z přihlašovací obrazovky Windows
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>How to: Enable password reset from the Windows login screen
 
-V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povolit resetování hesla na přihlašovací obrazovce systému Windows. Uživatelé už nemusí najít zařízení s webovým prohlížečem pro přístup k [portálu SSPR](https://aka.ms/sspr).
+For machines running Windows 7, 8, 8.1, and 10 you can enable users to reset their password at the Windows login screen. Users no longer have to find a device with a web browser to access the [SSPR portal](https://aka.ms/sspr).
 
-![Příklady přihlašovacích obrazovek Windows 7 a 10 se zobrazeným odkazem na SSPR](./media/howto-sspr-windows/windows-reset-password.png)
+![Example Windows 7 and 10 login screens with SSPR link shown](./media/howto-sspr-windows/windows-reset-password.png)
 
 ## <a name="general-limitations"></a>Obecná omezení
 
-- Resetování hesla není v současné době podporováno ze vzdálené plochy nebo z rozšířených relací technologie Hyper-V.
-- Tato funkce nefunguje pro sítě s nasazeným ověřováním sítě 802.1 x a možnost provést těsně před přihlášením uživatele. Pro povolení této funkce doporučujeme, aby se sítě s nasazeným ověřováním pomocí sítě 802.1 x používaly ověřování počítače.
-- Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti.
-- Pokud použijete image, před provedením kroku CopyProfile zajistěte, aby byla mezipaměť webu pro předdefinovaný správce vymazána. Další informace o tomto kroku najdete v článku o [výkonu nekvalitního výkonu při používání vlastního výchozího uživatelského profilu](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
-- U následujících nastavení je známo, že se bude rušit možnost používat a resetovat hesla na zařízeních s Windows 10.
-    - Pokud zásady ve verzích Windows 10 před v1809 vyžadují CTRL + ALT + DEL, **resetování hesla** nebude fungovat.
-    - Pokud jsou oznámení na zamykací obrazovce vypnutá, **resetování hesla** nebude fungovat.
-    - HideFastUserSwitching je nastavené na povoleno nebo 1.
-    - DontDisplayLastUserName je nastavené na povoleno nebo 1.
-    - NoLockScreen je nastavené na povoleno nebo 1.
-    - EnableLostMode je nastavené na zařízení.
-    - Explorer. exe se nahradí vlastním prostředím.
-- Tato funkce může způsobit, že tato funkce nefunguje v kombinaci následujících tří nastavení.
-    - Interaktivní přihlašování: Nevyžadovat CTRL + ALT + DEL = zakázáno
-    - DisableLockScreenAppNotifications = 1 nebo povoleno
-    - IsContentDeliveryPolicyEnforced = 1 nebo true
+- Password reset is not currently supported from a Remote Desktop or from Hyper-V enhanced sessions.
+- This feature does not work for networks with 802.1x network authentication deployed and the option “Perform immediately before user logon”. For networks with 802.1x network authentication deployed it is recommended to use machine authentication to enable this feature.
+- Hybrid Azure AD joined machines must have network connectivity line of sight to a domain controller to use the new password and update cached credentials.
+- If using an image, prior to running sysprep ensure that the web cache is cleared for the built-in Administrator prior to performing the CopyProfile step. More information about this step can be found in the support article [Performance poor when using custom default user profile](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
+- The following settings are known to interfere with the ability to use and reset passwords on Windows 10 devices
+    - If Ctrl+Alt+Del is required by policy in versions of Windows 10 before v1809, **Reset password** will not work.
+    - If lock screen notifications are turned off, **Reset password** will not work.
+    - HideFastUserSwitching is set to enabled or 1
+    - DontDisplayLastUserName is set to enabled or 1
+    - NoLockScreen is set to enabled or 1
+    - EnableLostMode is set on the device
+    - Explorer.exe is replaced with a custom shell
+- The combination of the following specific three settings can cause this feature to not work.
+    - Interactive logon: Do not require CTRL+ALT+DEL = Disabled
+    - DisableLockScreenAppNotifications = 1 or Enabled
+    - IsContentDeliveryPolicyEnforced = 1 or True
 
-## <a name="windows-10-password-reset"></a>Resetování hesla Windows 10
+## <a name="windows-10-password-reset"></a>Windows 10 password reset
 
-### <a name="windows-10-prerequisites"></a>Požadavky Windows 10
+### <a name="windows-10-prerequisites"></a>Windows 10 prerequisites
 
-- Správce musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal.
-- **Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.**
-- Požadavky na síťový proxy server
-   - Zařízení s Windows 10 
-       - Port 443 pro `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com`
-       - Zařízení s Windows 10 podporují jenom konfiguraci proxy serveru na úrovni počítače.
-- Spusťte aspoň Windows 10, verze z dubna 2018 Update (v1803) a zařízení musí být buď:
-    - Připojeno k Azure AD
-    - Připojeno k hybridní službě Azure AD
+- An administrator must enable Azure AD self-service password reset from the Azure portal.
+- **Users must register for SSPR before using this feature**
+- Network proxy requirements
+   - Windows 10 devices 
+       - Port 443 to `passwordreset.microsoftonline.com` and `ajax.aspnetcdn.com`
+       - Windows 10 devices only support machine-level proxy configuration
+- Run at least Windows 10, version April 2018 Update (v1803), and the devices must be either:
+    - Azure AD joined
+    - Hybrid Azure AD joined
 
-### <a name="enable-for-windows-10-using-intune"></a>Povolení pro Windows 10 pomocí Intune
+### <a name="enable-for-windows-10-using-intune"></a>Enable for Windows 10 using Intune
 
 Nasazení změny konfigurace, která umožní resetování hesla z přihlašovací obrazovky, pomocí Intune je nejflexibilnější metodou. Intune vám umožňuje nasadit změnu konfigurace pro vámi zvolenou skupinu počítačů. Tato metoda vyžaduje registraci zařízení v Intune.
 
@@ -79,81 +79,81 @@ Nasazení změny konfigurace, která umožní resetování hesla z přihlašovac
       - Klikněte na tlačítko **OK**.
    - Klikněte na tlačítko **OK**.
 1. Klikněte na **Vytvořit**
-1. Tato zásada se dá přiřadit konkrétním uživatelům, zařízením nebo skupinám. Další informace najdete v článku [přiřazení profilů uživatelů a zařízení v Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+1. This policy can be assigned to specific users, devices, or groups. More information can be found in the article [Assign user and device profiles in Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
 
-### <a name="enable-for-windows-10-using-the-registry"></a>Povolení pro Windows 10 pomocí registru
+### <a name="enable-for-windows-10-using-the-registry"></a>Enable for Windows 10 using the Registry
 
-1. Přihlaste se k počítači s Windows pomocí přihlašovacích údajů správce.
+1. Sign in to the Windows PC using administrative credentials
 1. Spusťte program **regedit** jako správce.
 1. Nastavte následující klíč registru:
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-#### <a name="troubleshooting-windows-10-password-reset"></a>Řešení potíží s resetováním hesla Windows 10
+#### <a name="troubleshooting-windows-10-password-reset"></a>Troubleshooting Windows 10 password reset
 
 Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu klienta, kde došlo k resetování hesla.
 
-![Příklad resetování hesla systému Windows 7 v protokolu auditu Azure AD](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Example Windows 7 password reset in the Azure AD Audit log](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Windows 10, vytvoří se dočasný účet s nízkou úrovní oprávnění s názvem `defaultuser1`. Tento účet se používá k zabezpečení procesu resetování hesla. Samotný účet má náhodně generované heslo, nezobrazuje se pro přihlášení k zařízení a automaticky se odebere po resetování hesla uživatelem. Může existovat více profilů `defaultuser`, ale lze je bezpečně ignorovat.
+When users reset their password from the login screen of a Windows 10 device, a low-privilege temporary account called `defaultuser1` is created. This account is used to keep the password reset process secure. The account itself has a randomly generated password, doesn’t show up for device sign-in, and will automatically be removed after the user resets their password. Multiple `defaultuser` profiles may exist but can be safely ignored.
 
-## <a name="windows-7-8-and-81-password-reset"></a>Resetování hesla Windows 7, 8 a 8,1
+## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8, and 8.1 password reset
 
-### <a name="windows-7-8-and-81-prerequisites"></a>Požadavky pro Windows 7, 8 a 8,1
+### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8, and 8.1 prerequisites
 
-- Správce musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal.
-- **Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.**
-- Požadavky na síťový proxy server
-   - Zařízení se systémem Windows 7, 8 a 8,1
-       - Port 443 pro `passwordreset.microsoftonline.com`
-- Opraven operační systém Windows 7 nebo Windows 8.1.
-- Protokol TLS 1,2 povolený pomocí pokynů uvedených v [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
-- Pokud je na vašem počítači povolený víc než jeden poskytovatel přihlašovacích údajů třetích stran, zobrazí se uživatelům na přihlašovací obrazovce víc než jeden profil uživatele.
+- An administrator must enable Azure AD self-service password reset from the Azure portal.
+- **Users must register for SSPR before using this feature**
+- Network proxy requirements
+   - Windows 7, 8, and 8.1 devices
+       - Port 443 to `passwordreset.microsoftonline.com`
+- Patched Windows 7 or Windows 8.1 Operating System.
+- TLS 1.2 enabled using the guidance found in [Transport Layer Security (TLS) registry settings](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
+- If more than one 3rd party credential provider is enabled on your machine, users will see more than one user profile on the login screen.
 
 > [!WARNING]
-> Je nutné povolit TLS 1,2, není pouze nastaveno na automatické vyjednávání.
+> TLS 1.2 must be enabled, not just set to auto negotiate
 
 ### <a name="install"></a>Instalace
 
-1. Stáhněte si odpovídající instalační program pro verzi systému Windows, kterou chcete povolit.
-   - Software je k dispozici na webu Microsoft Download Center na [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
-1. Přihlaste se k počítači, do kterého chcete nainstalovat, a spusťte instalační program.
-1. Po instalaci se důrazně doporučuje restartování počítače.
-1. Po restartování počítače na přihlašovací obrazovce vyberte uživatele a klikněte na tlačítko zapomenuté heslo. Pro zahájení pracovního postupu pro resetování hesla.
-1. Dokončete pracovní postup podle pokynů na obrazovce a resetujte heslo.
+1. Download the appropriate installer for the version of Windows you would like to enable.
+   - Software is available on the Microsoft download center at [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+1. Sign in to the machine where you would like to install, and run the installer.
+1. After installation, a reboot is highly recommended.
+1. After the reboot, at the login screen choose a user and click "Forgot password?" to initiate the password reset workflow.
+1. Complete the workflow following the onscreen steps to reset your password.
 
-![Příklad Windows 7 klikl na "Zapomenuté heslo?" Tok SSPR](media/howto-sspr-windows/windows-7-sspr.png)
+![Example Windows 7 clicked "Forgot password?" SSPR flow](media/howto-sspr-windows/windows-7-sspr.png)
 
-#### <a name="silent-installation"></a>Tichá instalace
+#### <a name="silent-installation"></a>Silent installation
 
-- Pro tichou instalaci použijte příkaz "msiexec/i SsprWindowsLogon. PROD. msi/Qn"
-- Pro tichou odinstalaci použijte příkaz "msiexec/x SsprWindowsLogon. PROD. msi/Qn"
+- For silent install, use the command “msiexec /i SsprWindowsLogon.PROD.msi /qn”
+- For silent uninstall, use the command “msiexec /x SsprWindowsLogon.PROD.msi /qn”
 
-#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Řešení potíží s resetováním hesla pro Windows 7, 8 a 8,1
+#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Troubleshooting Windows 7, 8, and 8.1 password reset
 
-Události se budou protokolovat v počítači i ve službě Azure AD. Události Azure AD budou zahrnovat informace o IP adrese a ClientType, kde došlo k resetování hesla.
+Events will be logged both on the machine and in Azure AD. Azure AD Events will include information about the IP address and ClientType where the password reset occurred.
 
-![Příklad resetování hesla systému Windows 7 v protokolu auditu Azure AD](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Example Windows 7 password reset in the Azure AD Audit log](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Pokud se vyžaduje další protokolování, můžete změnit klíč registru v počítači tak, aby se povolilo podrobné protokolování. Povolí podrobné protokolování jenom pro účely řešení potíží.
+If additional logging is required, a registry key on the machine can be changed to enable verbose logging. Enable verbose logging for troubleshooting purposes only.
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Chcete-li povolit podrobné protokolování, vytvořte `REG_DWORD: “EnableLogging”`a nastavte jej na hodnotu 1.
-- Chcete-li zakázat podrobné protokolování, změňte `REG_DWORD: “EnableLogging”` na hodnotu 0.
+- To enable verbose logging, create a `REG_DWORD: “EnableLogging”`, and set it to 1.
+- To disable verbose logging, change the `REG_DWORD: “EnableLogging”` to 0.
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé
 
-Teď, když jste nakonfigurovali resetování hesla pro zařízení s Windows, které změny pro uživatele? Jak se dozví, že své heslo můžou resetovat na přihlašovací obrazovce?
+Now that you have configured password reset for your Windows devices, what changes for the user? Jak se dozví, že své heslo můžou resetovat na přihlašovací obrazovce?
 
-![Příklady přihlašovacích obrazovek Windows 7 a 10 se zobrazeným odkazem na SSPR](./media/howto-sspr-windows/windows-reset-password.png)
+![Example Windows 7 and 10 login screens with SSPR link shown](./media/howto-sspr-windows/windows-reset-password.png)
 
-Když se uživatel pokusí přihlásit, zobrazí se jim odkaz pro **resetování** hesla nebo **zapomenuté heslo** , který otevře možnosti samoobslužného resetování hesla na přihlašovací obrazovce. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
+When users attempt to sign in, they now see a **Reset password** or **Forgot password** link that opens the self-service password reset experience at the login screen. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
 
 Vaši uživatelé najdou pokyny k použití této funkce v tématu popisujícím [resetování hesla k pracovnímu nebo školnímu účtu](../user-help/active-directory-passwords-update-your-own-password.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Plánování metod ověřování pro povolení](concept-authentication-methods.md)
+[Plan authentication methods to allow](concept-authentication-methods.md)
 
-[Konfigurace Windows 10](https://docs.microsoft.com/windows/configuration/)
+[Configure Windows 10](https://docs.microsoft.com/windows/configuration/)

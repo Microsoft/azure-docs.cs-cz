@@ -1,116 +1,116 @@
 ---
-title: Co je firewall webových aplikací Azure na frontách Azure?
-description: Přečtěte si, jak Firewall webových aplikací Azure na službě Azure front-dveří chrání vaše webové aplikace před škodlivými útoky.
+title: What is Azure web application firewall on Azure Front Door?
+description: Learn how Azure web application firewall on Azure Front Door service protects your web applications from malicious attacks.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 09/28/2019
+ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: ce70260c6033d22b20675d6f3872c2ffa6368252
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b646035f6a952f679059abab86d94179f447f9ff
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502349"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406209"
 ---
-# <a name="azure-web-application-firewall-on-azure-front-door"></a>Firewall webových aplikací Azure na frontách Azure
+# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall on Azure Front Door
 
-Firewall webových aplikací (WAF) Azure na frontách Azure poskytuje centralizovanou ochranu pro vaše webové aplikace, které jsou globálně dodávány pomocí služby Azure front-dveří. Je navržený a provozovaný tak, aby chránil vaše webové služby před běžným zneužitím a ohrožením zabezpečení, udržoval vaše služby vysoce dostupné pro uživatele a navíc pomáhal splnit požadavky na dodržování předpisů.
+Azure Web Application Firewall (WAF) on Azure Front Door provides centralized protection for your web applications that are globally delivered using Azure Front Door. Je navržený a provozovaný tak, aby chránil vaše webové služby před běžným zneužitím a ohrožením zabezpečení, udržoval vaše služby vysoce dostupné pro uživatele a navíc pomáhal splnit požadavky na dodržování předpisů.
 
-WAF na předních dveřích je globální a centralizované řešení. Je nasazená na hraničních místech sítě Azure po celém světě a každý příchozí požadavek na webovou aplikaci s podporou WAF, která se dodává přes dveře, se kontroluje v hraniční síti. To umožňuje WAF zabránit škodlivým útokům blízko zdrojů útoků, než vstoupí do vaší virtuální sítě, a nabízí globální ochranu ve velkém měřítku, aniž by došlo k obětování výkonu. Zásady WAF můžete snadno propojit s libovolným profilem front-dveří v rámci předplatného a nová pravidla je možné nasadit během několika minut. můžete tak rychle reagovat na měnící se vzory hrozeb.
+WAF on Front Door is a global and centralized solution. It is deployed on Azure network edge locations around the globe and every incoming request for a WAF enabled web application delivered by Front Door is inspected at the network edge. This allows WAF to prevent malicious attacks close to the attack sources, before they enter your virtual network and offers global protection at scale without sacrificing performance. A WAF policy can be easily linked to any Front Door profile in your subscription and new rules can be deployed within minutes, allowing you to respond quickly to changing threat patterns.
 
-![Firewall webových aplikací Azure](../media/overview/wafoverview.png)
+![Azure web application firewall](../media/overview/wafoverview.png)
 
-## <a name="waf-policy-and-rules"></a>Zásady a pravidla WAF
+## <a name="waf-policy-and-rules"></a>WAF policy and rules
 
-Můžete nakonfigurovat zásady WAF a přidružit tuto zásadu k jedné nebo více front-endu front-endy pro ochranu. Zásady WAF se skládají ze dvou typů pravidel zabezpečení:
+You can configure a WAF policy and associate that policy to one or more Front Door front-ends for protection. A WAF policy consists of two types of security rules:
 
-- vlastní pravidla, která jsou autorem zákazníka.
+- custom rules that are authored by the customer.
 
-- spravované sady pravidel, které jsou kolekcí předem nakonfigurovaných sad pravidel spravovaných Azure.
+- managed rule sets that are a collection of Azure-managed pre-configured set of rules.
 
-Pokud jsou přítomny obě, před zpracováním pravidel v sadě spravovaných pravidel se zpracují vlastní pravidla. Pravidlo se skládá z podmínky shody, priority a akce. Podporované typy akcí: ALLOW, BLOCK, LOG a REDIRECT. Můžete vytvořit plně přizpůsobené zásady, které vyhovují konkrétním požadavkům na ochranu aplikací, a to kombinováním spravovaných a vlastních pravidel.
+When both are present, custom rules are processed before processing the rules in a managed rule set. A rule is made of a match condition, a priority, and an action. Action types supported are: ALLOW, BLOCK, LOG, and REDIRECT. You can create a fully customized policy that meets your specific application protection requirements by combining managed and custom rules.
 
-Pravidla v rámci zásad se zpracovávají v pořadí podle priority, kde priorita je jedinečné celé číslo, které definuje pořadí zpracovávaných pravidel. Menší celočíselná hodnota znamená vyšší prioritu a ta se vyhodnotí před pravidly s vyšší celočíselnou hodnotou. Po porovnání pravidla se na žádost aplikuje odpovídající akce, která byla definována v pravidle. Po zpracování této shody se pravidla s nižšími prioritami nezpracují dále.
+Rules within a policy are processed in a prioritized order where priority is a unique integer that defines the order of rules being processed. Smaller integer value denotes a higher priority and those are evaluated before rules with a higher integer value. Once a rule is matched, the corresponding action that was defined in the rule is applied to the request. Once such a match is processed, rules with lower priorities are not processed further.
 
-K webové aplikaci dodávané přes dvířka může být v jednu chvíli přidružená jenom jedna zásada WAF. Můžete ale mít konfiguraci front-dveří bez jakýchkoli zásad WAF, které jsou k němu přidružené. Pokud jsou přítomné zásady WAF, replikují se do všech našich hraničních umístění, aby se zajistila konzistence v zásadách zabezpečení po celém světě.
+A web application delivered by Front Door can have only one WAF policy associated with it at a time. However, you can have a Front Door configuration without any WAF policies associated with it. If a WAF policy is present, it is replicated to all of our edge locations to ensure consistency in security policies across the world.
 
-## <a name="waf-modes"></a>WAF režimy
+## <a name="waf-modes"></a>WAF modes
 
-Zásady WAF je možné nakonfigurovat tak, aby běžely v následujících dvou režimech:
+WAF policy can be configured to run in the following two modes:
 
-- **Detekční režim:** Při spuštění v režimu detekce neprovádí WAF žádné jiné jiné akce než monitory a zaznamená požadavek a odpovídající WAF pravidlo na WAF protokoly. Diagnostiku protokolování pro přední dvířka můžete zapnout (Pokud používáte portál, můžete to dosáhnout tak, že v Azure Portal v části **Diagnostika** ).
+- **Detection mode:** When run in detection mode, WAF does not take any other actions other than monitors and logs the request and its matched WAF rule to WAF logs. You can turn on logging diagnostics for Front Door (when using portal, this can be achieved by going to the **Diagnostics** section in the Azure portal).
 
-- **Režim prevence:** Když je konfigurace spuštěna v režimu prevence, WAF převezme zadanou akci, pokud požadavek odpovídá pravidlu a pokud je nalezena shoda, nevyhodnotí se žádná další pravidla s nižší prioritou. V protokolech WAF se zaznamenávají i všechny odpovídající požadavky.
+- **Prevention mode:** When configured to run in prevention mode, WAF takes the specified action if a request matches a rule and if a match is found, no further rules with lower priority are evaluated. Any matched requests are also logged in the WAF logs.
 
-## <a name="waf-actions"></a>Akce WAF
+## <a name="waf-actions"></a>WAF actions
 
-WAF zákazníci můžou zvolit spuštění z jedné z akcí, když požadavek odpovídá podmínkám pravidla:
+WAF customers can choose to run from one of the actions when a request matches a rule’s conditions:
 
-- **Povolení:**  Požadavek projde přes WAF a předává se back-end. Tato žádost nemůže blokovat žádná další pravidla s nižší prioritou.
-- **Blok:** Požadavek je zablokován a WAF odešle odpověď klientovi bez předání žádosti do back-endu.
-- **Protokol:**  Požadavek se zaznamená do protokolů WAF a WAF pokračuje v hodnocení pravidel s nižší prioritou.
-- **Přesměrování:** WAF přesměruje požadavek na zadaný identifikátor URI. Zadaný identifikátor URI je nastavení úrovně zásad. Po nakonfigurování se do tohoto identifikátoru URI odešlou všechny požadavky, které odpovídají akci **přesměrování** .
+- **Allow:**  Request passes through the WAF and is forwarded to back-end. No further lower priority rules can block this request.
+- **Block:** The request is blocked and WAF sends a response to the client without forwarding the request to the back-end.
+- **Log:**  Request is logged in the WAF logs and WAF continues evaluating lower priority rules.
+- **Redirect:** WAF redirects the request to the specified URI. The URI specified is a policy level setting. Once configured, all requests that match the **Redirect** action will be sent to that URI.
 
-## <a name="waf-rules"></a>Pravidla WAF
+## <a name="waf-rules"></a>WAF rules
 
-Zásady WAF můžou sestávat ze dvou typů pravidel zabezpečení – vlastní pravidla vytvořená zákazníkem a spravovaným rulesetsem, předem nakonfigurovanou sadou pravidel spravovaných pomocí Azure.
+A WAF policy can consist of two types of security rules - custom rules, authored by the customer and managed rulesets, Azure-managed pre-configured set of rules.
 
-### <a name="custom-authored-rules"></a>Vlastní vytvořená pravidla
+### <a name="custom-authored-rules"></a>Custom authored rules
 
-Vlastní pravidla WAF můžete nakonfigurovat následujícím způsobem:
+You can configure custom rules WAF as follows:
 
-- Seznam **povolených a blokovaných IP adres:** Můžete nakonfigurovat vlastní pravidla pro řízení přístupu k webovým aplikacím na základě seznamu IP adres klientů nebo rozsahů IP adres. Podporují se typy adres IPv4 i IPv6. Tento seznam je možné nakonfigurovat tak, aby buď blokoval, nebo povolil tyto požadavky, kde zdrojová IP adresa odpovídá IP adrese v seznamu.
+- **IP allow list and block list:** You can configure custom rules to control access to your web applications based on a list of client IP addresses or IP address ranges. Both IPv4 and IPv6 address types are supported. This list can be configured to either block or allow those requests where the source IP matches an IP in the list.
 
-- **Geografické řízení přístupu:** Můžete nakonfigurovat vlastní pravidla pro řízení přístupu k webovým aplikacím na základě kódu země přidruženého k IP adrese klienta.
+- **Geographic based access control:** You can configure custom rules to control access to your web applications based on the country code associated with a client’s IP address.
 
-- **Řízení přístupu na základě parametrů http:** Můžete nakonfigurovat vlastní pravidla na základě řetězců, které odpovídají parametrům požadavků HTTP/HTTPS, jako jsou řetězce dotazů, POST argumenty, identifikátor URI požadavku, Hlavička požadavku a text žádosti.
+- **HTTP parameters-based access control:** You can configure custom rules based on string matching HTTP/HTTPS request parameters such as query strings, POST args, Request URI, Request Header, and Request Body.
 
-- **Řízení přístupu na základě metody požadavku:** Vlastní pravidla můžete nakonfigurovat na základě metody požadavku HTTP, jako je například GET, PUT nebo HEAD.
+- **Request method-based access control:** You may configure custom rules based on the HTTP request method of the request such as GET, PUT, or HEAD.
 
-- **Omezení velikosti:** Můžete nakonfigurovat vlastní pravidla na základě délek specifických částí požadavku, jako je řetězec dotazu, identifikátor URI nebo text žádosti.
+- **Size constraint:** You can configure custom rules based on the lengths of specific parts of a request such as query string, Uri, or request body.
 
-- **Pravidla omezující rychlost:** Pravidlem řízení sazeb je omezit neobvykle vysoký provoz z jakékoli IP adresy klienta. Prahovou hodnotu můžete nakonfigurovat pro počet webových požadavků povolených z IP adresy klienta během doby trvání 1 minuty. To se liší od vlastního pravidla povolit/zablokování založeného na seznamu IP adres, které buď povolí všechny požadavky nebo zablokuje všechny žádosti z IP adresy klienta. Omezení rychlosti lze kombinovat s dalšími podmínkami shody, jako jsou například parametry HTTP (S) odpovídající pro detailní řízení sazeb.
+- **Rate limiting rules:** A rate control rule is to limit abnormal high traffic from any client IP. You may configure a threshold on the number of web requests allowed from a client IP during a one-minute duration. This is distinct from an IP list-based allow/block custom rule that either allows all or blocks all request from a client IP. Rate limiting can be combined with additional match conditions such as HTTP(S) parameters matching for granular rate control.
 
-### <a name="azure-managed-rule-sets"></a>Sady pravidel spravované v Azure
+### <a name="azure-managed-rule-sets"></a>Azure-managed rule sets
 
-Sady pravidel spravované pomocí Azure poskytují snadný způsob, jak nasadit ochranu proti běžné sadě bezpečnostních hrozeb. Vzhledem k tomu, že tato RuleSets spravuje Azure, pravidla se aktualizují podle potřeby k ochraně před novými signaturami útoku. Ve verzi Public Preview sada výchozích pravidel spravovaná v Azure zahrnuje pravidla proti těmto kategoriím hrozeb:
+Azure-managed rule sets provide an easy way to deploy protection against a common set of security threats. Since such rulesets are managed by Azure, the rules are updated as needed to protect against new attack signatures. At public preview, the Azure-managed Default Rule Set includes rules against the following threat categories:
 
-- Skriptování mezi weby
-- Útoky Java
-- Zahrnutí místních souborů
-- Útoky injektáže PHP
-- Vzdálené spuštění příkazu
-- Zahrnutí vzdálených souborů
-- Fixace relace
+- Cross-site scripting
+- Java attacks
+- Local file inclusion
+- PHP injection attacks
+- Remote command execution
+- Remote file inclusion
+- Session fixation
 - Ochrana před útoky prostřednictvím injektáže SQL.
-- Útočníci protokolu
+- Protocol attackers
 
-Číslo verze výchozí sady pravidel se zvýší, když budou do sady pravidel přidány nové podpisy útoků.
-Výchozí sada pravidel je ve výchozím nastavení povolená v režimu detekce v zásadách WAF. Můžete zakázat nebo povolit jednotlivá pravidla v rámci výchozího pravidla nastavená tak, aby splňovala požadavky vaší aplikace. Můžete také nastavit konkrétní akce (povolení/blokování/přesměrování/protokol) na pravidlo. Výchozí akce je zablokovat. Vlastní pravidla se navíc dají nakonfigurovat ve stejné zásadě WAF, pokud chcete vynechat některá z předkonfigurovaných pravidel v sadě výchozích pravidel.
-Vlastní pravidla se vždycky aplikují předtím, než se vyhodnotí pravidla v sadě výchozích pravidel. Pokud požadavek odpovídá vlastnímu pravidlu, použije se odpovídající akce pravidla a požadavek se buď zablokuje, nebo projde back-endu bez vyvolání jakýchkoli dalších vlastních pravidel nebo pravidel v sadě výchozích pravidel. Kromě toho máte možnost odebrat ze zásad WAF výchozí sadu pravidel.
+The version number of the Default Rule Set will increment when new attack signatures are added to the rule set.
+Default Rule Set is enabled by default in Detection mode in your WAF policies. You can disable or enable individual rules within the Default Rule Set to meet your application requirements. You can also set specific actions (ALLOW/BLOCK/REDIRECT/LOG) per rule. Default action is to BLOCK. In addition, custom rules can be configured in the same WAF policy if you wish to bypass any of the pre-configured rules in the Default Rule Set.
+Custom rules are always applied before rules in the Default Rule Set are evaluated. If a request matches a custom rule, corresponding rule action is applied, and the request is either blocked or passed through to back-end, without invocation of any further custom rules or the rules in the Default Rule Set. Furthermore, you have the option to remove Default Rule Set from your WAF policies.
 
 
-### <a name="bot-protection-rule-preview"></a>Pravidlo ochrany robota (Preview)
+### <a name="bot-protection-rule-set-preview"></a>Bot protection rule set (preview)
 
-Sada pravidel spravované ochrany robotů může být povolená pro WAF, aby mohla přijímat vlastní akce na žádostech ze známých škodlivých IP adres. IP adresy se naúčtují z informačního kanálu Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
+A managed bot protection rule set can be enabled for your WAF to take custom actions on requests from known bot categories. There are three bot categories supported: Bad Bots, Good Bots, and Unknown Bots. Bot signatures are managed and dynamically updated by the WAF platform. Malicious IP addresses for Bad Bots are sourced from the Microsoft Threat Intelligence feed. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) powers Microsoft Threat Intelligence and is used by multiple services including Azure Security Center. Good Bots include validated search engines. Unknown categories include additional bot groups. You may set custom actions to block, allow, log, or redirect for different types of bots.
 
-![Sada pravidel ochrany bot](../media/afds-overview/botprotect2.png)
+![Bot Protection Rule Set](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
-> Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.  Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> The Bot protection rule set is currently in public preview and is provided with a preview service level agreement. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.  Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pokud je povolená ochrana robota, protokolují se příchozí požadavky, které se shodují se škodlivými IP adresami klienta roboty, do protokolu FrontdoorWebApplicationFirewallLog K protokolům WAF můžete přistupovat z účtu úložiště, centra událostí nebo Log Analytics. 
+If bot protection is enabled, incoming requests that match bot rules are logged at the FrontdoorWebApplicationFirewallLog log. You may access WAF logs from a storage account, event hub, or log analytics.
 
 ## <a name="configuration"></a>Konfigurace
 
-Konfigurace a nasazení všech typů pravidel WAF je plně podporované pomocí Azure Portal, rozhraní REST API, šablon Azure Resource Manager a Azure PowerShell.
+Configuring and deploying all WAF rule types is fully supported using Azure portal, REST APIs, Azure Resource Manager templates, and Azure PowerShell.
 
 ## <a name="monitoring"></a>Sledování
 
-Monitorování pro WAF ve front-dveřích je integrované s Azure Monitor pro sledování výstrah a snadné monitorování trendů provozu.
+Monitoring for WAF at Front Door is integrated with Azure Monitor to track alerts and easily monitor traffic trends.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [bráně firewall webových aplikací v Azure Application Gateway](../ag/ag-overview.md)
+- Learn about [Web Application Firewall on Azure Application Gateway](../ag/ag-overview.md)

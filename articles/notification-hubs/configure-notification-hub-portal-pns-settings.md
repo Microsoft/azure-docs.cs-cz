@@ -1,6 +1,6 @@
 ---
-title: Nastavení nabízených oznámení v Azure Notification Hubs | Microsoft Docs
-description: Přečtěte si, jak nastavit Azure Notification Hubs v Azure Portal pomocí nastavení systému PNS (Platform Notification System).
+title: Set up push notifications in Azure Notification Hubs | Microsoft Docs
+description: Learn how to set up Azure Notification Hubs in the Azure portal by using platform notification system (PNS) settings.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -12,114 +12,114 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 9a17b96da376843c07a4324856bf8943aa385cac
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 951f03f581906e45946ef75742421ba27d405267
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212462"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406984"
 ---
-# <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Nastavení nabízených oznámení v centru oznámení v Azure Portal
+# <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Set up push notifications in a notification hub in the Azure portal
 
-Azure Notification Hubs poskytuje modul nabízených oznámení, který se snadno používá a který se škáluje. Pomocí Notification Hubs můžete odesílat oznámení na libovolnou platformu (iOS, Android, Windows, Baidu) a z libovolného back-endu (v cloudu nebo místně). Další informace najdete v tématu [co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
+Azure Notification Hubs provides a push engine that's easy to use and that scales out. Use Notification Hubs to send notifications to any platform (iOS, Android, Windows, Baidu) and from any back end (cloud or on-premises). For more information, see [What is Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-V tomto rychlém startu použijete nastavení PNS (Platform Notification System) v Notification Hubs k nastavení nabízených oznámení na více platformách. V tomto rychlém startu se dozvíte o krocích, které je potřeba provést v Azure Portal.
+In this quickstart, you'll use the platform notification system (PNS) settings in Notification Hubs to set up push notifications on multiple platforms. The quickstart shows you the steps to take in the Azure portal.
 
-Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md). 
+If you haven't already created a notification hub, create one now. For more information, see [Create an Azure notification hub in the Azure portal](create-notification-hub-portal.md). 
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
-Nastavení služby Apple Push Notification Service (APNS):
+To set up Apple Push Notification Service (APNS):
 
-1. V Azure Portal na stránce **centra oznámení** vyberte **Apple (APNs)** z nabídky vlevo.
+1. In the Azure portal, on the **Notification Hub** page, select **Apple (APNS)** from the left menu.
 
-1. V **režimu ověřování**vyberte buď **certifikát** , nebo **token**.
+1. For **Authentication Mode**, select either **Certificate** or **Token**.
 
-   a. Pokud vyberete možnost **certifikát**:
-   * Vyberte ikonu souboru a potom vyberte soubor *. p12* , který chcete nahrát.
-   * Zadejte heslo.
-   * Vyberte režim **Sandbox**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
+   a. If you select **Certificate**:
+   * Select the file icon, and then select the *.p12* file you want to upload.
+   * Enter a password.
+   * Vyberte režim **Izolovaný prostor**. Or, to send push notifications to users who purchased your app from the store, select **Production** mode.
 
-     ![Snímek obrazovky s konfigurací certifikátu APNS v Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Screenshot of an APNS certificate configuration in the Azure portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Pokud vyberete **token**:
+   b. If you select **Token**:
 
-   * Zadejte hodnoty **ID klíče**, **ID sady**, **ID týmu**a tokenu.
-   * Vyberte režim **Sandbox**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
+   * Enter the values for **Key ID**, **Bundle ID**, **Team ID**, and **Token**.
+   * Vyberte režim **Izolovaný prostor**. Or, to send push notifications to users who purchased your app from the store, select **Production** mode.
 
-     ![Snímek obrazovky s konfigurací tokenu APNS v Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Screenshot of an APNS token configuration in the Azure portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
-Další informace najdete v tématu [nabízená oznámení do systému iOS pomocí služby Azure Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+For more information, see [Push notifications to iOS by using Azure Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md).
 
-## <a name="google-firebase-cloud-messaging"></a>Cloudové zasílání zpráv Google Firebase
+## <a name="google-firebase-cloud-messaging"></a>Google Firebase Cloud Messaging
 
-Nastavení nabízených oznámení pro zasílání zpráv Google Firebase do cloudu (FCM):
+To set up push notifications for Google Firebase Cloud Messaging (FCM):
 
-1. V Azure Portal na stránce **centra oznámení** v nabídce vlevo vyberte **Google (GCM/FCM)** . 
-2. Vložte **klíč rozhraní API** pro projekt FCM, který jste předtím uložili. 
-3. Vyberte **Uložit**. 
+1. In the Azure portal, on the **Notification Hub** page, select **Google (GCM/FCM)** from the left menu. 
+2. Paste the **API Key** for the FCM project that you saved earlier. 
+3. Vyberte **Save** (Uložit). 
 
-   ![Snímek obrazovky, který ukazuje, jak nakonfigurovat Notification Hubs pro Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+   ![Screenshot that shows how to configure Notification Hubs for Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
-Po dokončení těchto kroků výstraha indikuje, že centrum oznámení bylo úspěšně aktualizováno. Tlačítko **Uložit** je zakázané. 
+When you complete these steps, an alert indicates that the notification hub has been successfully updated. The **Save** button is disabled. 
 
-Další informace najdete v tématu [nabízená oznámení na zařízení s Androidem pomocí Notification Hubs a Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
+For more information, see [Push notifications to Android devices by using Notification Hubs and Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
-## <a name="windows-push-notification-service"></a>Služba nabízených oznámení Windows
+## <a name="windows-push-notification-service"></a>Windows Push Notification Service
 
-Nastavení služby nabízených oznámení Windows (WNS):
+To set up Windows Push Notification Service (WNS):
 
-1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows (WNS)** .
-2. Zadejte hodnoty pro **SID balíčku** a **klíč zabezpečení**.
-3. Vyberte **Uložit**.
+1. In the Azure portal, on the **Notification Hub** page, select **Windows (WNS)** from the left menu.
+2. Enter values for **Package SID** and **Security Key**.
+3. Vyberte **Save** (Uložit).
 
-   ![Snímek obrazovky zobrazující pole SID balíčku a klíč zabezpečení](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![Screenshot that shows the Package SID and Security Key boxes](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
-Informace najdete v tématu [posílání oznámení do aplikací pro UWP pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+For information, see [Send notifications to UWP apps by using Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-## <a name="microsoft-push-notification-service-for-windows-phone"></a>Služba nabízených oznámení společnosti Microsoft pro Windows Phone
+## <a name="microsoft-push-notification-service-for-windows-phone"></a>Microsoft Push Notification Service for Windows Phone
 
-Nastavení služby Microsoft Push Notification Service (MPNS) pro Windows Phone: 
+To set up Microsoft Push Notification Service (MPNS) for Windows Phone: 
 
-1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows Phone (MPNS)** .
-1. Povolit buď neověřené, nebo ověřené nabízené oznámení:
+1. In the Azure portal, on the **Notification Hub** page, select **Windows Phone (MPNS)** from the left menu.
+1. Enable either unauthenticated or authenticated push notifications:
 
-   a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené** > oznámení.
+   a. To enable unauthenticated push notifications, select **Enable unauthenticated push** > **Save**.
 
-      ![Snímek obrazovky, který ukazuje, jak povolit neověřená nabízená oznámení](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+      ![Screenshot that shows how to enable unauthenticated push notifications](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
-   b. Povolení ověřených nabízených oznámení:
-      * Na panelu nástrojů vyberte **Odeslat certifikát**.
-      * Vyberte ikonu souboru a potom vyberte soubor certifikátu.
+   b. To enable authenticated push notifications:
+      * On the toolbar, select **Upload Certificate**.
+      * Select the file icon, and then select the certificate file.
       * Zadejte heslo pro certifikát.
       * Vyberte **OK**.
-      * Na stránce **Windows Phone (MPNS)** vyberte **Uložit**.
+      * On the **Windows Phone (MPNS)** page, select **Save**.
 
-Další informace najdete v tématu [nabízená oznámení pro Windows Phone aplikace pomocí Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
+For more information, see [Push notifications to Windows Phone apps by using Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
       
 
 ## <a name="baidu-android-china"></a>Baidu (Android China)
 
-Nastavení nabízených oznámení pro Baidu:
+To set up push notifications for Baidu:
 
-1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Baidu (Android China)** . 
-2. Zadejte **klíč rozhraní API** , který jste získali z konzoly Baidu v projektu nabízená oznámení cloudu Baidu. 
-3. Zadejte **tajný klíč** , který jste získali z konzoly Baidu v projektu nabízená oznámení cloudu Baidu. 
-4. Vyberte **Uložit**. 
+1. In the Azure portal, on the **Notification Hub** page, select **Baidu (Android China)** from the left menu. 
+2. Enter the **Api Key** that you obtained from the Baidu console in the Baidu cloud push project. 
+3. Enter the **Secret Key** that you obtained from the Baidu console in the Baidu cloud push project. 
+4. Vyberte **Save** (Uložit). 
 
-    ![Snímek obrazovky Notification Hubs zobrazující konfiguraci Baidu (Android China) pro nabízená oznámení](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+    ![Screenshot of Notification Hubs that shows the Baidu (Android China) configuration for push notifications](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
-Po dokončení těchto kroků výstraha indikuje, že centrum oznámení bylo úspěšně aktualizováno. Tlačítko **Uložit** je zakázané. 
+When you complete these steps, an alert indicates that the notification hub has been successfully updated. The **Save** button is disabled. 
 
-Další informace najdete v tématu [Začínáme s Notification Hubs pomocí Baidu](notification-hubs-baidu-china-android-notifications-get-started.md).
+For more information, see [Get started with Notification Hubs by using Baidu](notification-hubs-baidu-china-android-notifications-get-started.md).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste zjistili, jak nakonfigurovat nastavení systému oznámení platformy pro Centrum oznámení v Azure Portal. 
+In this quickstart, you learned how to configure platform notification system settings for a notification hub in the Azure portal. 
 
-Další informace o nabízených oznámeních na různých platformách najdete v těchto kurzech:
+To learn more about how to push notifications to various platforms, see these tutorials:
 
-- [Nabízená oznámení na zařízení s iOS pomocí Notification Hubs a APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
-- [Nabízená oznámení na zařízení s Androidem pomocí Notification Hubs a Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
-- [Nabízená oznámení do aplikace UWP běžící na zařízení s Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
-- [Nabízená oznámení do aplikace pro Windows Phone 8 pomocí MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
-- [Nabízená oznámení pomocí Notification Hubs a nabízená oznámení cloudu Baidu](notification-hubs-baidu-china-android-notifications-get-started.md)
+- [Push notifications to iOS devices by using Notification Hubs and APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+- [Push notifications to Android devices by using Notification Hubs and Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
+- [Push notifications to a UWP app running on a Windows device](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+- [Push notifications to a Windows Phone 8 app by using MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
+- [Push notifications by using Notification Hubs and Baidu cloud push](notification-hubs-baidu-china-android-notifications-get-started.md)

@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShell | Microsoft Docs
-description: Naučte se spravovat přístup k prostředkům Azure pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě role (RBAC) a Azure PowerShell. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
+title: Manage access to Azure resources using RBAC and Azure PowerShell | Microsoft Docs
+description: Learn how to manage access to Azure resources for users, groups, and applications using role-based access control (RBAC) and Azure PowerShell. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,34 +11,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/22/2019
+ms.date: 11/21/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5de62fd52360511fe660255dc023721a2837fe85
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c92cf6ae8777a343432d9d54dd7fcbedbb6b210c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819791"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384017"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShell
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Manage access to Azure resources using RBAC and Azure PowerShell
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí RBAC a Azure PowerShell.
+[Role-based access control (RBAC)](overview.md) is the way that you manage access to Azure resources. This article describes how you manage access for users, groups, and applications using RBAC and Azure PowerShell.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Ke správě přístupu budete potřebovat jednu z následujících možností:
+To manage access, you need one of the following:
 
-* [PowerShell v Azure Cloud Shell](/azure/cloud-shell/overview)
+* [PowerShell in Azure Cloud Shell](/azure/cloud-shell/overview)
 * [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-roles"></a>Výpis rolí
 
-### <a name="list-all-available-roles"></a>Zobrazit seznam všech dostupných rolí
+### <a name="list-all-available-roles"></a>List all available roles
 
-K vypsání rolí RBAC, které jsou k dispozici pro přiřazení, a kontrole operací, ke kterým udělují přístup, použijte [příkaz Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+To list RBAC roles that are available for assignment and to inspect the operations to which they grant access, use [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, Description
@@ -58,9 +58,9 @@ Automation Operator                               Automation Operators are able 
 ...
 ```
 
-### <a name="list-a-specific-role"></a>Vypsat konkrétní roli
+### <a name="list-a-specific-role"></a>List a specific role
 
-K vypsání konkrétní role použijte [příkaz Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+To list a specific role, use [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name>
@@ -81,11 +81,11 @@ NotDataActions   : {}
 AssignableScopes : {/}
 ```
 
-## <a name="list-a-role-definition"></a>Seznam definice role
+## <a name="list-a-role-definition"></a>List a role definition
 
-### <a name="list-a-role-definition-in-json-format"></a>Vypsání definice role ve formátu JSON
+### <a name="list-a-role-definition-in-json-format"></a>List a role definition in JSON format
 
-Chcete-li zobrazit definici role ve formátu JSON, použijte [příkaz Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+To list a role definition in JSON format, use [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | ConvertTo-Json
@@ -117,9 +117,9 @@ PS C:\> Get-AzRoleDefinition "Contributor" | ConvertTo-Json
 }
 ```
 
-### <a name="list-actions-of-a-role"></a>Seznam akcí role
+### <a name="list-actions-of-a-role"></a>List actions of a role
 
-Chcete-li zobrazit seznam akcí pro konkrétní roli, použijte [příkaz Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+To list the actions for a specific role, use [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | FL Actions, NotActions
@@ -155,11 +155,11 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 
 ## <a name="list-access"></a>Výpis přístupu
 
-V části RBAC pro vypsání přístupu k seznamu se zobrazí seznam přiřazení rolí.
+In RBAC, to list access, you list the role assignments.
 
-### <a name="list-all-role-assignments-in-a-subscription"></a>Zobrazit seznam všech přiřazení rolí v předplatném
+### <a name="list-all-role-assignments-in-a-subscription"></a>List all role assignments in a subscription
 
-Nejjednodušší způsob, jak získat seznam všech přiřazení rolí v rámci aktuálního předplatného (včetně děděných přiřazení rolí z kořenu a skupin pro správu), je použít [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) bez parametrů.
+The easiest way to get a list of all the role assignments in the current subscription (including inherited role assignments from root and management groups) is to use [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) without any parameters.
 
 ```azurepowershell
 Get-AzRoleAssignment
@@ -193,7 +193,7 @@ CanDelegate        : False
 
 ### <a name="list-role-assignments-for-a-user"></a>Výpis přiřazení rolí pro uživatele
 
-Chcete-li zobrazit seznam všech rolí, které jsou přiřazeny určitému uživateli, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+To list all the roles that are assigned to a specified user, use [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -SignInName <email_or_userprincipalname>
@@ -207,7 +207,7 @@ RoleDefinitionName : BizTalk Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
 ```
 
-Chcete-li zobrazit seznam všech rolí, které jsou přiřazeny určenému uživateli, a rolím, které jsou přiřazeny ke skupinám, do kterých uživatel patří, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+To list all the roles that are assigned to a specified user and the roles that are assigned to the groups to which the user belongs, use [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -SignInName <email_or_userprincipalname> -ExpandPrincipalGroups
@@ -217,9 +217,9 @@ Get-AzRoleAssignment -SignInName <email_or_userprincipalname> -ExpandPrincipalGr
 Get-AzRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
 ```
 
-### <a name="list-role-assignments-at-a-resource-group-scope"></a>Vypsat přiřazení rolí v oboru skupiny prostředků
+### <a name="list-role-assignments-at-a-resource-group-scope"></a>List role assignments at a resource group scope
 
-Pokud chcete zobrazit seznam všech přiřazení rolí v oboru skupiny prostředků, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+To list all role assignments at a resource group scope, use [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -ResourceGroupName <resource_group_name>
@@ -241,9 +241,9 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
 ```
 
-### <a name="list-role-assignments-at-a-subscription-scope"></a>Seznam přiřazení rolí v oboru předplatného
+### <a name="list-role-assignments-at-a-subscription-scope"></a>List role assignments at a subscription scope
 
-Pokud chcete zobrazit seznam všech přiřazení rolí v oboru předplatného, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). Pokud chcete získat ID předplatného, najdete ho v okně **předplatná** v Azure Portal nebo můžete použít [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
+To list all role assignments at a subscription scope, use [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). To get the subscription ID, you can find it on the **Subscriptions** blade in the Azure portal or you can use [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
@@ -253,9 +253,9 @@ Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzRoleAssignment -Scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-### <a name="list-role-assignments-at-a-management-group-scope"></a>Vypsat přiřazení rolí v oboru skupiny pro správu
+### <a name="list-role-assignments-at-a-management-group-scope"></a>List role assignments at a management group scope
 
-Chcete-li zobrazit seznam všech přiřazení rolí v oboru skupiny pro správu, použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). Pokud chcete získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup).
+To list all role assignments at a management group scope, use [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). To get the management group ID, you can find it on the **Management groups** blade in the Azure portal or you can use [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup).
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -265,45 +265,52 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Seznam přiřazení rolí pro klasického správce služeb a spolusprávce
+### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>List role assignments for classic service administrator and co-administrators
 
-K zobrazení seznamu přiřazení rolí pro klasického Správce předplatného a spolusprávce použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+To list role assignments for the classic subscription administrator and co-administrators, use [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -IncludeClassicAdministrators
+```
+
+## <a name="get-object-ids"></a>Get object IDs
+
+To list, add, or remove role assignments, you might need to specify the unique ID of an object. The ID has the format: `11111111-1111-1111-1111-111111111111`. You can get the ID using the Azure portal or Azure PowerShell.
+
+### <a name="user"></a>Uživatel
+
+To get the object ID for an Azure AD user, you can use [Get-AzADUser](/powershell/module/az.resources/get-azaduser).
+
+```azurepowershell
+Get-AzADUser -StartsWith <string_in_quotes>
+(Get-AzADUser -DisplayName <name_in_quotes>).id
+```
+
+### <a name="group"></a>Skupina
+
+To get the object ID for an Azure AD group, you can use [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup).
+
+```azurepowershell
+Get-AzADGroup -SearchString <group_name_in_quotes>
+(Get-AzADGroup -DisplayName <group_name_in_quotes>).id
+```
+
+### <a name="application"></a>Aplikace
+
+To get the object ID for an Azure AD service principal (identity used by an application), you can use [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal). For a service principal, use the object ID and **not** the application ID.
+
+```azurepowershell
+Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
+(Get-AzADServicePrincipal -DisplayName <service_name_in_quotes>).id
 ```
 
 ## <a name="grant-access"></a>Udělení přístupu
 
 V RBAC se přístup uděluje vytvořením přiřazení role.
 
-### <a name="search-for-object-ids"></a>Hledat ID objektů
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Create a role assignment for a user at a resource group scope
 
-Chcete-li přiřadit roli, je nutné určit objekt (uživatel, skupina nebo aplikace) a obor.
-
-Pokud chcete získat ID předplatného, najdete ho v okně **předplatná** v Azure Portal nebo můžete použít [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
-
-Pokud chcete získat ID objektu pro uživatele Azure AD, použijte [příkaz Get-AzADUser](/powershell/module/az.resources/get-azaduser).
-
-```azurepowershell
-Get-AzADUser -StartsWith <string_in_quotes>
-```
-
-Pokud chcete získat ID objektu pro skupinu Azure AD, použijte [příkaz Get-AzADGroup](/powershell/module/az.resources/get-azadgroup).
-
-```azurepowershell
-Get-AzADGroup -SearchString <group_name_in_quotes>
-```
-
-Chcete-li získat ID objektu pro instanční objekt nebo aplikaci služby Azure AD, použijte [příkaz Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
-
-```azurepowershell
-Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
-```
-
-### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Vytvoření přiřazení role pro uživatele v oboru skupiny prostředků
-
-Pokud chcete udělit přístup k uživateli v oboru skupiny prostředků, použijte [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+To grant access to a user at a resource group scope, use [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
 
 ```azurepowershell
 New-AzRoleAssignment -SignInName <email_or_userprincipalname> -RoleDefinitionName <role_name> -ResourceGroupName <resource_group_name>
@@ -325,26 +332,26 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Vytvoření přiřazení role pomocí jedinečného ID role
+### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Create a role assignment using the unique role ID
 
-V některých případech se může stát, že se název role změní například takto:
+There are a couple of times when a role name might change, for example:
 
-- Používáte vlastní roli a Vy se rozhodnete název změnit.
-- V názvu používáte roli Preview, která má **(Preview)** . Po uvolnění role se role přejmenuje.
+- You are using your own custom role and you decide to change the name.
+- You are using a preview role that has **(Preview)** in the name. When the role is released, the role is renamed.
 
 > [!IMPORTANT]
-> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> A preview version is provided without a service level agreement, and it's not recommended for production workloads. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-I když je role přejmenována, ID role se nezmění. Pokud k vytváření přiřazení rolí používáte skripty nebo automatizaci, je vhodné místo názvu role použít jedinečné ID role. Proto pokud je role přejmenována, vaše skripty budou pravděpodobnější, že budou fungovat.
+Even if a role is renamed, the role ID does not change. If you are using scripts or automation to create your role assignments, it's a best practice to use the unique role ID instead of the role name. Therefore, if a role is renamed, your scripts are more likely to work.
 
-K vytvoření přiřazení role pomocí jedinečného ID role místo názvu role použijte [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+To create a role assignment using the unique role ID instead of the role name, use [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
 
 ```azurepowershell
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k *alain@example.com* uživatele v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo se podívat na [předdefinované role pro prostředky Azure](built-in-roles.md).
+The following example assigns the [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor) role to *alain\@example.com* user at the *pharma-sales* resource group scope. To get the unique role ID, you can use [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) or see [Built-in roles for Azure resources](built-in-roles.md).
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -360,9 +367,9 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Vytvoření přiřazení role pro skupinu v oboru prostředků
+### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Create a role assignment for a group at a resource scope
 
-Pokud chcete udělit přístup ke skupině v oboru prostředků, použijte [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+To grant access to a group at a resource scope, use [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). For information about how to get the object ID of the group, see [Get object IDs](#get-object-ids).
 
 ```azurepowershell
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -ResourceName <resource_name> -ResourceType <resource_type> -ParentResource <parent resource> -ResourceGroupName <resource_group_name>
@@ -391,12 +398,12 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Vytvoření přiřazení role pro aplikaci v oboru předplatného
+### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Create a role assignment for an application at a subscription scope
 
-Pokud chcete udělit přístup k aplikaci v oboru předplatného, použijte [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+To grant access to an application at a subscription scope, use [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). For information about how to get the object ID of the application, see [Get object IDs](#get-object-ids).
 
 ```azurepowershell
-New-AzRoleAssignment -ObjectId <application_id> -RoleDefinitionName <role_name> -Scope /subscriptions/<subscription_id>
+New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /subscriptions/<subscription_id>
 ```
 
 ```Example
@@ -413,9 +420,9 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Vytvoření přiřazení role pro uživatele v oboru skupiny pro správu
+### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Create a role assignment for a user at a management group scope
 
-Chcete-li udělit uživateli přístup v oboru skupiny pro správu, použijte [příkaz New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). Pokud chcete získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup).
+To grant access to a user at a management group scope, use [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). To get the management group ID, you can find it on the **Management groups** blade in the Azure portal or you can use [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup).
 
 ```azurepowershell
 New-AzRoleAssignment -SignInName <email_or_userprincipalname> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -437,30 +444,30 @@ CanDelegate        : False
 
 ## <a name="remove-access"></a>Odebrání přístupu
 
-Chcete-li odebrat přístup, odeberte přiřazení role v RBAC pomocí funkce [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
+In RBAC, to remove access, you remove a role assignment by using [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
 
-Následující příklad odebere přiřazení role *Přispěvatel virtuálních počítačů* z *Alain \@example. com* uživatel ve skupině prostředků *Pharma-Sales* :
+The following example removes the *Virtual Machine Contributor* role assignment from the *alain\@example.com* user on the *pharma-sales* resource group:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
 ```
 
-Následující příklad odebere roli < role_name > z < object_id > v oboru předplatného.
+The following example removes the <role_name> role from <object_id> at a subscription scope.
 
 ```azurepowershell
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /subscriptions/<subscription_id>
 ```
 
-Následující příklad odebere roli < role_name > z < object_id > v oboru skupiny pro správu.
+The following example removes the <role_name> role from <object_id> at the management group scope.
 
 ```azurepowershell
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Pokud se zobrazí chybová zpráva: "zadané informace nejsou mapovány na přiřazení role", ujistěte se, že jste zadali také parametry `-Scope` nebo `-ResourceGroupName`. Další informace najdete v tématu [řešení potíží s RBAC pro prostředky Azure](troubleshooting.md#role-assignments-with-unknown-security-principal).
+If you get the error message: "The provided information does not map to a role assignment", make sure that you also specify the `-Scope` or `-ResourceGroupName` parameters. For more information, see [Troubleshoot RBAC for Azure resources](troubleshooting.md#role-assignments-with-unknown-security-principal).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: udělení přístupu skupině k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-group-powershell.md)
-- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Správa prostředků pomocí Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)
+- [Tutorial: Grant a group access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-group-powershell.md)
+- [Tutorial: Create a custom role for Azure resources using Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Manage resources with Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)

@@ -1,24 +1,24 @@
 ---
-title: Šablona se závislými prostředky
+title: Template with dependent resources
 description: Zjistěte, jak vytvořit šablonu Azure Resource Manageru s více prostředky a jak ji nasadit pomocí webu Azure Portal
 author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3e7d397b097691b79f4f74dfd5aa9079af3a84f9
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ef26074b0dd6450895c6aa81d5ab8853e652b41e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149359"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325394"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Kurz: Vytváření šablon Azure Resource Manageru se závislými prostředky
 
-Naučte se vytvořit šablonu Azure Resource Manager pro nasazení několika prostředků a konfiguraci pořadí nasazení. Po vytvoření šablonu nasadíte pomocí Cloud Shellu z webu Azure Portal.
+Learn how to create an Azure Resource Manager template to deploy multiple resources and configure the deployment order. Po vytvoření šablonu nasadíte pomocí Cloud Shellu z webu Azure Portal.
 
 V tomto kurzu vytvoříte účet úložiště, virtuální počítač, virtuální síť a několik dalších závislých prostředků. Některé prostředky se nedají nasadit, dokud bude existovat jiný prostředek. Nemůžete třeba vytvořit virtuální počítač, dokud bude existovat jeho účet úložiště a síťové rozhraní. Tento vztah se definuje tím, že jeden prostředek označíte jako závislý na jiných prostředcích. Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Další informace najdete v článku [Určení pořadí pro nasazení prostředků v šablonách Azure Resource Manageru](./resource-group-define-dependencies.md).
 
-![Diagram pořadí nasazení závislých prostředků v šabloně Resource Manageru](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
+![resource manager template dependent resources deployment order diagram](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -29,11 +29,11 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* [Visual Studio Code](https://code.visualstudio.com/) s rozšířením Nástroje Resource Manageru  Přečtěte si, [jak toto rozšíření nainstalovat](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```azurecli-interactive
@@ -84,7 +84,7 @@ Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
 3. Rozbalte druhý prostředek. Typ prostředku je `Microsoft.Network/publicIPAddresses`. Porovnejte definici prostředku s [referenčními informacemi k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
 
     ![Šablony Azure Resource Manageru ve Visual Studio Code – definice veřejné IP adresy](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. Rozbalte čtvrtý prostředek. Typ prostředku je `Microsoft.Network/networkInterfaces`:  
+4. Rozbalte čtvrtý prostředek. Typ prostředku je `Microsoft.Network/networkInterfaces`:
 
     ![Šablony Azure Resource Manageru ve Visual Studio Code – dependson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -110,14 +110,14 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
 
 Šablony můžete nasadit mnoha způsoby.  V tomto kurzu použijete Cloud Shell z webu Azure Portal.
 
-1. Přihlaste se do služby [Cloud Shell](https://shell.azure.com). 
+1. Přihlaste se do služby [Cloud Shell](https://shell.azure.com).
 2. V levém horním rohu služby Cloud Shell vyberte **PowerShell** a pak **Potvrdit**.  V tomto kurzu použijete prostředí PowerShell.
 3. V Cloud Shellu vyberte **Nahrát soubor**:
 
     ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 4. Vyberte šablonu, kterou jste si v rámci tohoto kurzu uložili. Výchozí název je **azuredeploy.json**.  Pokud máte soubor se stejným názvem, starý soubor se bez upozornění přepíše.
 
-    Volitelně můžete použít příkaz **ls $Home** a příkaz **Cat $Home/azuredeploy.JSON** k ověření úspěšného nahrání souborů areis. 
+    You can optionally use the **ls $HOME** command and the **cat $HOME/azuredeploy.json** command to verify the files areis uploaded successfully.
 
 5. Ve službě Cloud Shell spusťte následující příkazy PowerShellu. Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Viz [Požadavky](#prerequisites).
 

@@ -1,75 +1,69 @@
 ---
-title: Připojení MetaMask k síti služby Azure blockchain
-description: Připojte se k síti služby Azure blockchain pomocí MetaMask a nasaďte inteligentní kontrakt.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Connect MetaMask to an Azure Blockchain Service network
+description: Connect to an Azure Blockchain Service network using MetaMask and deploy a smart contract.
 ms.date: 09/12/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.reviewer: janders
+ms.openlocfilehash: 8b60f26f1ab5283c7abc5a2f164fbb0c780c92ad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966547"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326276"
 ---
-# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Rychlý start: Připojení a nasazení inteligentního kontraktu pomocí MetaMask
+# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Quickstart: Use MetaMask to connect and deploy a smart contract
 
-V tomto rychlém startu použijete MetaMask k připojení k síti služby Azure blockchain a pomocí Remix nasadíte inteligentní kontrakt. Metamask je rozšíření prohlížeče pro správu etherového kapesního a provádění akcí v rámci inteligentních smluv.
+In this quickstart, you'll use MetaMask to connect to an Azure Blockchain Service network and use Remix to deploy a smart contract. Metamask is a browser extension to manage an Ether wallet and perform smart contract actions.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Kompletní [rychlé spuštění: Vytvořte člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlého startu: Vytvoření členu blockchain služby Azure blockchain pomocí Azure CLI](create-member-cli.md)
-* Nainstalovat [rozšíření prohlížeče MetaMask](https://metamask.io)
-* Generování [kapesního](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time) MetaMask
+* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* Install [MetaMask browser extension](https://metamask.io)
+* Generate a MetaMask [wallet](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time)
 
-## <a name="get-endpoint-address"></a>Získat adresu koncového bodu
+## <a name="get-endpoint-address"></a>Get endpoint address
 
-Pro připojení k síti blockchain potřebujete adresu koncového bodu služby Azure blockchain. Adresu koncového bodu a přístupové klávesy najdete v Azure Portal.
+You need the Azure Blockchain Service endpoint address to connect to the blockchain network. You can find the endpoint address and access keys in the Azure portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte ke členu služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Navigate to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
 
-    ![Vybrat výchozí uzel transakce](./media/connect-metamask/transaction-nodes.png)
+    ![Select default transaction node](./media/connect-metamask/transaction-nodes.png)
 
-1. Vyberte **připojovací řetězce > přístupové klíče**.
-1. Zkopírujte adresu koncového bodu z **https (přístupový klíč 1)** . Potřebujete adresu pro další část.
+1. Select **Connection strings > Access keys**.
+1. Copy the endpoint address from **HTTPS (Access key 1)** . You need the address for the next section.
 
     ![Připojovací řetězec](./media/connect-metamask/connection-string.png)
 
-## <a name="connect-metamask"></a>Připojit MetaMask
+## <a name="connect-metamask"></a>Connect MetaMask
 
-1. Otevřete rozšíření prohlížeče MetaMask a přihlaste se.
-1. V rozevíracím seznamu síť vyberte **vlastní RPC**.
+1. Open MetaMask browser extension and sign in.
+1. In the network dropdown, select  **Custom RPC**.
 
-    ![Vlastní RPC](./media/connect-metamask/custom-rpc.png)
+    ![Custom RPC](./media/connect-metamask/custom-rpc.png)
 
-1. V **nové síti > nové adresy URL služby RPC**zadejte adresu koncového bodu zkopírovanou z předchozí části.
-1. Vyberte **Uložit**.
+1. In **New Network > New RPC URL**, enter your endpoint address copied from the previous section.
+1. Vyberte **Save** (Uložit).
 
-    Pokud bylo připojení úspěšné, zobrazí se v rozevíracím seznamu síť privátní síť.
+    If connection was successful, the private network is displayed in the network dropdown.
 
-    ![Nová síť](./media/connect-metamask/new-network.png)
+    ![New network](./media/connect-metamask/new-network.png)
 
-## <a name="deploy-smart-contract"></a>Nasazení inteligentního kontraktu
+## <a name="deploy-smart-contract"></a>Deploy smart contract
 
-Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a Remix společně můžete nasadit a provádět akce s inteligentními kontrakty.
+Remix is a browser-based Solidity development environment. Using MetaMask and Remix together, you can deploy and take actions on smart contracts.
 
 1. V prohlížeči přejděte na adresu `https://remix.ethereum.org`.
-1. Na kartě **Domů** v části **soubor**vyberte **nový soubor** .
+1. Select **New file** in the **Home** tab under **File**.
 
-    Pojmenujte nový `simple.sol`soubor.
+    Name the new file `simple.sol`.
 
-    ![Vytvořit soubor](./media/connect-metamask/create-file.png)
+    ![Create file](./media/connect-metamask/create-file.png)
 
     Vyberte **OK**.
-1. V editoru Remix vložte do následujícího **jednoduchého kódu inteligentního kontraktu** .
+1. In the Remix editor, paste in the following **simple smart contract** code.
 
     ```solidity
     pragma solidity ^0.5.0;
@@ -91,57 +85,57 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
     }
     ```
 
-    **Jednoduchá smlouva** deklaruje stavovou proměnnou s názvem **Zůstatek**. Jsou definovány dvě funkce. Funkce **Add** přidá číslo k **vyvážení**. Funkce **Get** vrátí hodnotu **zůstatku**.
-1. Chcete-li zkompilovat kontrakt, nejprve vyberte podokno kompilátor nehustoty a pak vyberte možnost **zkompilovat jednoduchý. Sol**. 
+    The **simple contract** declares a state variable named **balance**. There are two functions defined. The **add** function adds a number to **balance**. The **get** function returns the value of **balance**.
+1. To compile the contract, first select the Solidity compiler pane then select the  **Compile simple.sol**. 
 
-    ![Kompilace](./media/connect-metamask/compile.png)
+    ![Compile](./media/connect-metamask/compile.png)
 
-1. Vyberte podokno **nasazení & spuštění** a pak nastavte **prostředí** na **vložené Web3** pro připojení prostřednictvím MetaMask k vašemu členovi blockchain.
+1. Select the **Deploy & Run** pane then set the **Environment** to **Injected Web3** to connect through MetaMask to your blockchain member.
 
-    ![Karta spustit](./media/connect-metamask/injected-web3.png)
+    ![Run tab](./media/connect-metamask/injected-web3.png)
 
-1. Vyberte **jednoduchý** kontrakt a pak **nasazení**.
+1. Select the **simple** contract then **Deploy**.
 
     ![Nasazení](./media/connect-metamask/deploy.png)
 
 
-1. Zobrazí se upozornění MetaMask s nedostatečnými prostředky k provedení transakce.
+1. A MetaMask notification is displayed alerting you of insufficient funds to perform the transaction.
 
-    V případě veřejné sítě blockchain budete potřebovat ether pro platbu za náklady na transakci. Vzhledem k tomu, že se jedná o soukromou síť v konsorciu, můžete nastavit cenu za plyn na nulu.
+    For a public blockchain network, you would need Ether to pay for the transaction cost. Since this is a private network in a consortium, you can set gas price to zero.
 
-1.  Vyberte **poplatek za plyn > upravit > Upřesnit**a nastavte **cenu za plyn** na 0.
+1.  Select **Gas Fee > Edit > Advanced**,  set the **Gas Price** to 0.
 
-    ![Cena za plyn](./media/connect-metamask/gas-price.png)
+    ![Gas price](./media/connect-metamask/gas-price.png)
 
-    Vyberte **Uložit**.
+    Vyberte **Save** (Uložit).
 
-1. Vyberte **Potvrdit** a nasaďte inteligentní kontrakt do blockchain.
-1. V části **nasazené smlouvy** rozbalte **jednoduchý** kontrakt.
+1. Select **Confirm** to deploy the smart contract to the blockchain.
+1. In the **Deployed Contracts** section, expand the **simple** contract.
 
-    ![Nasazený kontrakt](./media/connect-metamask/deployed-contract.png)
+    ![Deployed contract](./media/connect-metamask/deployed-contract.png)
 
-    Existují dvě akce **Přidat** a **získat** tuto mapu do funkcí definovaných ve smlouvě.
+    There are two actions **add** and **get** that map to the functions defined in the contract.
 
-1. Chcete-li provést transakci **Přidání** na blockchain, zadejte číslo, které chcete přidat, a pak vyberte **Přidat**. Může se zobrazit zpráva o selhání odhadu plynu z Remix. Transakci posíláte do privátního blockchain, který nevyžaduje plyn. Vyberte **Odeslat transakci** pro vynucení transakce.
-1. Podobně jako při nasazení kontraktu se zobrazí oznámení MetaMask upozorňující na nedostatečné prostředky k provedení transakce.
+1. To perform an **add** transaction on the blockchain, enter a number to add then select **add**. You may get a gas estimation failure message from Remix. You are sending the transaction to a private blockchain that does not require gas. Select **Send Transaction** to force the transaction.
+1. Similar to when you deployed the contract, a MetaMask notification is displayed alerting you of insufficient funds to perform the transaction.
 
-    Vzhledem k tomu, že se jedná o soukromou síť v konsorciu, můžeme nastavit cenu za plyn na nulu.
+    Since this is a private network in a consortium, we can set gas price to zero.
 
-1.  Vyberte **poplatek za plyn > upravit > Upřesnit**, nastavte **cenu plynu** na 0 a vyberte **Uložit**.
-1. Vyberte **Potvrdit** a odešlete transakci do blockchain.
-1. Vyberte **získat** akci. Toto je volání pro dotazování na data uzlu. Transakce není potřebná.
-1. V podokně ladění Remix můžete zobrazit podrobnosti o transakcích na blockchain.
+1.  Select **Gas Fee > Edit > Advanced**,  set the **Gas Price** to 0, and select **Save**.
+1. Select **Confirm** to send the transaction to the blockchain.
+1. Select **get** action. This is a call to query node data. A transaction isn't needed.
+1. In the debug pane of Remix, you can see details about the transactions on the blockchain.
 
-    ![Historie ladění](./media/connect-metamask/debug.png)
+    ![Debug history](./media/connect-metamask/debug.png)
 
-    Můžete si prohlédnout **jednoduché** Vytvoření kontraktu, transakci pro **jednoduché přidávání**a volání metody **Simple. Get**.
+    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
 
-1. Historii transakcí můžete zobrazit také v MetaMask. Otevřete rozšíření prohlížeče MetaMask.
-1. V části **Historie** vidíte protokol nasazených kontraktů a transakcí.
+1. You can also see transaction history in MetaMask. Open the MetaMask browser extension.
+1. In the **History** section, you can see a log of the deployed contract and transactions.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili rozšíření prohlížeče MetaMask pro připojení k uzlu transakce služby Azure blockchain, nasazení inteligentní smlouvy a odeslání transakce do blockchain. Zkuste v dalším kurzu použít Azure blockchain Development Kit pro Ethereem a Truffle k vytvoření, sestavení, nasazení a spuštění funkce inteligentního kontraktu prostřednictvím transakce.
+In this quickstart, you used the MetaMask browser extension to connect to an Azure Blockchain Service transaction node, deploy a smart contract, and send a transaction to the blockchain. Try the next tutorial to use Azure Blockchain Development Kit for Ethereum and Truffle to create, build, deploy, and execute a smart contract function via a transaction.
 
 > [!div class="nextstepaction"]
-> [Použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv](send-transaction.md)
+> [Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md)

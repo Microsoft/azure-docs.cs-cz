@@ -1,38 +1,38 @@
 ---
-title: Konfigurace prostředí pro operátora podrobného plánu
-description: Přečtěte si, jak nakonfigurovat prostředí Azure pro použití pomocí předdefinované role řízení přístupu na základě role (RBAC).
+title: Setup your environment for Blueprint Operator
+description: Learn how to configure your Azure environment for use with the Blueprint Operator built-in role-based access control (RBAC) role.
 ms.date: 08/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: f4b999354e31afed56a3a5f5a35a80887292e83f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 671ac3aaf42bddb3e775baec6838e4c271c4e855
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960387"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406376"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurace prostředí pro operátora podrobného plánu
 
-Správa definic podrobných plánů a přiřazení podrobného plánu se dá přiřadit k různým týmům. Je běžné, že architekt nebo tým zásad správného řízení bude zodpovědný za správu životního cyklu vašich definicí podrobného plánu, zatímco provozní tým zodpovídá za správu přiřazení těchto centrálně kontrolovaných definic podrobných plánů.
+The management of your blueprint definitions and blueprint assignments can be assigned to different teams. It's common for an architect or governance team to be responsible for the lifecycle management of your blueprint definitions while an operations team is responsible for managing assignments of those centrally controlled blueprint definitions.
 
-**Operátor** podrobného plánu řízení přístupu na základě role (RBAC) je navržený speciálně pro použití v tomto typu scénáře. Role umožňuje týmům typu operací spravovat přiřazení definic podrobného plánu, ale ne možnost je upravovat. To vyžaduje určitou konfiguraci v prostředí Azure a tento článek popisuje nezbytné kroky.
+The **Blueprint Operator** built-in role-based access control (RBAC) is designed specifically for use in this type of scenario. The role allows for operations type teams to manage the assignment of the organizations blueprint definitions, but not the ability to modify them. Doing so requires some configuration in your Azure environment and this article explains the necessary steps.
 
-## <a name="grant-permission-to-the-blueprint-operator"></a>Udělení oprávnění k operátoru podrobného plánu
+## <a name="grant-permission-to-the-blueprint-operator"></a>Grant permission to the Blueprint Operator
 
-Prvním krokem je udělení role **operátora** podrobného plánu na účet nebo skupinu zabezpečení (doporučeno), která bude přiřazovat modrotisky. Tato akce by se měla provést na nejvyšší úrovni v hierarchii skupiny pro správu, která zahrnuje všechny skupiny pro správu a odběry, ke kterým má provozní tým přístup v přiřazení podrobného plánu. Při udělování těchto oprávnění se doporučuje postupovat podle principu minimálního oprávnění.
+The first step is to grant the **Blueprint Operator** role to the account or security group (recommended) that is going to be assigning blueprints. This action should be done at the highest level in the management group hierarchy that encompasses all of the management groups and subscriptions the operations team should have blueprint assignment access to. It's recommended to follow the principle of least privilege when granting these permissions.
 
-1. Doporučil [Vytvoření skupiny zabezpečení a přidání členů](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+1. (Recommended) [Create a security group and add members](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. [Přidání přiřazení role](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) **operátora** podrobného plánu k účtu nebo skupině zabezpečení
+1. [Add a role assignment](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) of **Blueprint Operator** to the account or security group
 
-## <a name="user-assign-managed-identity"></a>Přiřazení spravované identity uživatelem
+## <a name="user-assign-managed-identity"></a>User-assign managed identity
 
-Definice podrobného plánu může používat spravované identity přiřazené systémem nebo uživatelem. Při použití role **operátoru** podrobného plánu ale musí být definice podrobného plánu nakonfigurovaná tak, aby používala uživatelsky přiřazenou spravovanou identitu. Kromě toho musí být účtu nebo skupině zabezpečení udělená role **operátora** podrobného plánu udělena role **operátora** podrobného identity na spravované identitě přiřazené uživatelem. Bez tohoto oprávnění se přiřazení podrobného plánu nezdařila z důvodu nedostatku oprávnění.
+A blueprint definition can use either system-assigned or user-assigned managed identities. However, when using the **Blueprint Operator** role, the blueprint definition needs to be configured to use a user-assigned managed identity. Additionally, the account or security group being granted the **Blueprint Operator** role needs to be granted the **Managed Identity Operator** role on the user-assigned managed identity. Without this permission, blueprint assignments fail because of lack of permissions.
 
-1. [Vytvoření spravované identity přiřazené uživatelem](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) pro použití přiřazeným podrobným plánem
+1. [Create a user-assigned managed identity](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) for use by an assigned blueprint
 
-1. [Přidejte přiřazení role](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) **spravovaného operátoru identity** k účtu nebo skupině zabezpečení. Určení rozsahu přiřazení role k nové uživatelsky přiřazené spravované identitě.
+1. [Add a role assignment](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) of **Managed Identity Operator** to the account or security group. Scope the role assignment to the new user-assigned managed identity.
 
-1. Jako **operátor**podrobného plánu [přiřaďte podrobný plán](../create-blueprint-portal.md#assign-a-blueprint) , který používá novou spravovanou identitu přiřazenou uživatelem.
+1. As the **Blueprint Operator**, [assign a blueprint](../create-blueprint-portal.md#assign-a-blueprint) that uses the new user-assigned managed identity.
 
 ## <a name="next-steps"></a>Další kroky
 

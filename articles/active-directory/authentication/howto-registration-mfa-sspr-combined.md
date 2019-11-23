@@ -1,102 +1,102 @@
 ---
-title: Začínáme s kombinovanou registrací pro Azure AD SSPR a Multi-Factor Authentication (Preview) – Azure Active Directory
-description: Povolit kombinované Multi-Factor Authentication služby Azure AD a registraci samoobslužného resetování hesla (Preview)
+title: Get started with combined registration - Azure Active Directory
+description: Enable combined Azure AD Multi-Factor Authentication and self-service password reset registration (preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b610a62e9ca9b964482638c2c0302461996c0bf2
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 075f5112a5ff7d2184a6a42ec531d472974199f3
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145676"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381319"
 ---
-# <a name="enable-combined-security-information-registration-preview"></a>Povolit registraci kombinovaných zabezpečení informací (Preview)
+# <a name="enable-combined-security-information-registration-preview"></a>Enable combined security information registration (preview)
 
-Než začnete s novým prostředím, přečtěte si článek [Registrace informací o zabezpečení (Preview)](concept-registration-mfa-sspr-combined.md) a ujistěte se, že rozumíte funkcím a účinkům této funkce.
+Before enabling the new experience, review the article [Combined security information registration (preview)](concept-registration-mfa-sspr-combined.md) to ensure you understand the functionality and effects of this feature.
 
-![Rozšířené možnosti registrace informací o zabezpečení](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
+![Combined security information registration enhanced experience](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 |     |
 | --- |
-| Souhrnná registrace informací o zabezpečení pro Azure Multi-Factor Authentication a Azure Active Directory (Azure AD) Samoobslužné resetování hesla je funkce Public Preview služby Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Combined security information registration for Azure Multi-Factor Authentication and Azure Active Directory (Azure AD) self-service password reset is a public preview feature of Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 > [!NOTE]
-> Organizace, které povolily předchozí verzi Preview pro registraci a správu bezpečnostních údajů, by měly dokončit níže uvedené kroky, aby bylo možné používat vylepšené prostředí Preview. Pro organizace, které tento přepínač nedělají, od 8. října 2019 bude Microsoft přepínat uživatele předchozí verze Preview, aby mohli registrovat a spravovat informace o zabezpečení v rozšířeném prostředí. 
+> Organizations who enabled the previous preview for registering and managing security info should complete the steps below to enable the enhanced preview experience. For organizations who do not make the switch, on October 8, 2019, Microsoft will switch users of the previous preview for registering and managing security info to the enhanced experience. 
 > 
-> Pokud jste nepovolili žádnou verzi Preview, nebude mít vliv na vaši organizaci.
+> If you have not enabled any version of the preview your organization will not be impacted.
 
 ## <a name="enable-combined-registration"></a>Povolení kombinované registrace
 
-Pokud chcete povolit kombinovanou registraci, proveďte tyto kroky:
+Complete these steps to enable combined registration:
 
-1. Přihlaste se k Azure Portal jako správce uživatele nebo globální správce.
-2. Přejděte na **Azure Active Directory** > **uživatelské nastavení** > **Spravovat nastavení pro přístupové panely funkce verze Preview**.
-3. V části **Uživatelé můžou k registraci a správě informací o zabezpečení používat funkce verze Preview – aktualizovat**, zvolit povolit pro **vybranou** skupinu uživatelů nebo pro **všechny** uživatele.
+1. Sign in to the Azure portal as a user administrator or global administrator.
+2. Go to **Azure Active Directory** > **User settings** > **Manage settings for access panel preview features**.
+3. Under **Users can use preview features for registering and managing security info - refresh**, choose to enable for a **Selected** group of users or for **All** users.
 
-   ![Povolit prostředí Preview pro všechny uživatele v kombinaci s informacemi o zabezpečení](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![Enable the combined security info preview experience for All users](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
-> Od března 2019 nebudou možnosti telefonního hovoru k dispozici pro Multi-Factor Authentication a SSPR uživatele v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Možnosti telefonního hovoru budou pořád dostupné uživatelům v placených klientech Azure AD.
+> Starting in March 2019, the phone call options won't be available to Multi-Factor Authentication and SSPR users in free/trial Azure AD tenants. SMS messages are not affected by this change. The phone call options will still be available to users in paid Azure AD tenants.
 
 > [!NOTE]
-> Po povolení kombinované registrace si uživatelé, kteří si zaregistrují nebo potvrdí jejich telefonní číslo nebo mobilní aplikaci prostřednictvím nového prostředí, můžou použít pro Multi-Factor Authentication a SSPR, pokud jsou tyto metody povolené v Multi-Factor Authentication a SSPR. konfigurovaný. Pokud pak toto prostředí zakážete, `https://aka.ms/ssprsetup` budou se uživatelé, kteří na předchozí registrační stránce SSPR, napřed k přístupu k této stránce vyzváni, aby provedli službu Multi-Factor Authentication.
+> After you enable combined registration, users who register or confirm their phone number or mobile app through the new experience can use them for Multi-Factor Authentication and SSPR, if those methods are enabled in the Multi-Factor Authentication and SSPR policies. If you then disable this experience, users who go to the previous SSPR registration page at `https://aka.ms/ssprsetup` will be required to perform multi-factor authentication before they can access the page.
 
-Pokud jste v Internet Exploreru nakonfigurovali seznam přiřazení lokality k zóně, musí být tyto lokality ve stejné zóně:
+If you have configured the Site to Zone Assignment List in Internet Explorer, the following sites have to be in the same zone:
 
 * [https://login.microsoftonline.com](https://login.microsoftonline.com)
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 * [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 
-## <a name="conditional-access-policies-for-combined-registration"></a>Zásady podmíněného přístupu pro kombinovanou registraci
+## <a name="conditional-access-policies-for-combined-registration"></a>Conditional Access policies for combined registration
 
-Zabezpečení, kdy a jak se uživatelé registrují pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla, je teď možné u uživatelských akcí v zásadách podmíněného přístupu. Tato funkce ve verzi Preview je dostupná pro organizace, u kterých je povolená [Kombinovaná registrace ve verzi Preview](../authentication/concept-registration-mfa-sspr-combined.md). Tato funkce může být povolená v organizacích, kde se chtějí uživatelé zaregistrovat pro Azure Multi-Factor Authentication a SSPR z centrálního umístění, jako je důvěryhodné síťové umístění při registraci lidských zdrojů. Další informace o vytváření důvěryhodných umístění v podmíněném přístupu najdete v článku [co je podmínka umístění v Azure Active Directory podmíněný přístup?](../conditional-access/location-condition.md#named-locations)
+Securing when and how users register for Azure Multi-Factor Authentication and self-service password reset is now possible with user actions in Conditional Access policy. This preview feature is available to organizations who have enabled the [combined registration preview](../authentication/concept-registration-mfa-sspr-combined.md). This functionality may be enabled in organizations where they want users to register for Azure Multi-Factor Authentication and SSPR from a central location such as a trusted network location during HR onboarding. For more information about creating trusted locations in Conditional Access, see the article [What is the location condition in Azure Active Directory Conditional Access?](../conditional-access/location-condition.md#named-locations)
 
-### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Vytvoření zásady, která vyžaduje registraci z důvěryhodného umístění
+### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Create a policy to require registration from a trusted location
 
-Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného prostředí pro registraci, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
+The following policy applies to all selected users, who attempt to register using the combined registration experience, and blocks access unless they are connecting from a location marked as trusted network.
 
-![Vytvoření zásady certifikační autority pro řízení registrace bezpečnostních údajů](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![Create a CA policy to control security info registration](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
 
-1. V **Azure Portal**přejděte na **Azure Active Directory** > **podmíněný přístup** .
+1. In the **Azure portal**, browse to **Azure Active Directory** > **Conditional Access**
 1. Vyberte **Nová zásada**.
-1. Do název zadejte název pro tuto zásadu. Například **Kombinovaná registrace informací o zabezpečení v důvěryhodných sítích**
-1. V části **přiřazení**klikněte na **Uživatelé a skupiny**a vyberte uživatele a skupiny, pro které chcete tuto zásadu použít.
+1. In Name, Enter a Name for this policy. For example, **Combined Security Info Registration on Trusted Networks**
+1. Under **Assignments**, click **Users and groups**, and select the users and groups you want this policy to apply to
 
    > [!WARNING]
-   > Uživatelé musí mít povolený [Náhled pro kombinovanou registraci](../authentication/howto-registration-mfa-sspr-combined.md).
+   > Users must be enabled for the [combined registration preview](../authentication/howto-registration-mfa-sspr-combined.md).
 
-1. V části **cloudové aplikace nebo akce**vyberte **akce uživatele**, zaškrtněte políčko **zaregistrovat informace o zabezpečení (Preview)** .
-1. V **podmínkách** > **umístění**
-   1. Konfigurovat **Ano**
-   1. Zahrnout **libovolné umístění**
-   1. Vyloučit **všechna důvěryhodná umístění**
-   1. V okně umístění klikněte na **Hotovo** .
-   1. V okně podmínky klikněte na **Hotovo** .
-1. V části **řízení** > přístupu**udělení oprávnění**
-   1. Klikněte na **blokovat přístup** .
-   1. Pak klikněte na **Vybrat** .
-1. Nastavte **Povolit zásadu** na **zapnuto** .
-1. Pak klikněte na **vytvořit** .
+1. Under **Cloud apps or actions**, select **User actions**, check **Register security information (preview)**
+1. Under **Conditions** > **Locations**
+   1. Configure **Yes**
+   1. Include **Any location**
+   1. Exclude **All trusted locations**
+   1. Click **Done** on the Locations blade
+   1. Click **Done** on the Conditions blade
+1. Under **Access controls** > **Grant**
+   1. Click **Block access**
+   1. Then click **Select**
+1. Set **Enable policy** to **On**
+1. Then click **Create**
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vynutí uživatele, aby znovu zaregistrovali metody ověřování.](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Force users to re-register authentication methods](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
-[Dostupné metody pro Multi-Factor Authentication a SSPR](concept-authentication-methods.md)
+[Available methods for Multi-Factor Authentication and SSPR](concept-authentication-methods.md)
 
-[Konfigurace samoobslužného resetování hesla](howto-sspr-deployment.md)
+[Configure self-service password reset](howto-sspr-deployment.md)
 
-[Konfigurace Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+[Configure Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 
-[Řešení potíží s kombinovanou registrací informací o zabezpečení](howto-registration-mfa-sspr-combined-troubleshoot.md)
+[Troubleshooting combined security info registration](howto-registration-mfa-sspr-combined-troubleshoot.md)
 
-[Jaká je podmínka umístění v Azure Active Directory podmíněný přístup?](../conditional-access/location-condition.md)
+[What is the location condition in Azure Active Directory Conditional Access?](../conditional-access/location-condition.md)

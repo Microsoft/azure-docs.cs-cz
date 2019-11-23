@@ -1,6 +1,6 @@
 ---
-title: Vytvoření zařízení IoT technologie Plug and Play Preview (Windows) | Microsoft Docs
-description: Pomocí modelu schopností zařízení vygenerujte kód zařízení. Pak spusťte kód zařízení a zkontrolujte, že se zařízení připojí k vašemu IoT Hub.
+title: Create an IoT Plug and Play Preview device (Windows) | Microsoft Docs
+description: Use a device capability model to generate device code. Then run the device code and see the device connect to your IoT Hub.
 author: miagdp
 ms.author: miag
 ms.date: 08/02/2019
@@ -8,41 +8,41 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4af238241293f32be296e7a4243b0d2a6fef15dd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 72927dd89a81d2440bf78ba24402f5ce283006da
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152033"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405817"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Rychlý Start: vytvoření zařízení IoT technologie Plug and Play Preview pomocí modelu schopností zařízení (Windows)
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Quickstart: Use a device capability model to create an IoT Plug and Play Preview device (Windows)
 
-_Model schopností zařízení_ (DCM) popisuje možnosti zařízení IoT technologie Plug and Play. DCM je často spojený s SKU produktu. Funkce definované v DCM jsou uspořádané do opakovaně použitelných rozhraní. Z DCM můžete vygenerovat kostru kódu zařízení. V tomto rychlém startu se dozvíte, jak pomocí VS Code v systému Windows vytvořit zařízení IoT technologie Plug and Play pomocí DCM.
+A _device capability model_ (DCM) describes the capabilities of an IoT Plug and Play device. A DCM is often associated with a product SKU. The capabilities defined in the DCM are organized into reusable interfaces. You can generate skeleton device code from a DCM. This quickstart shows you how to use VS Code on Windows to create an IoT Plug and Play device using a DCM.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu je potřeba na svůj místní počítač nainstalovat následující software:
+To complete this quickstart, you need to install the following software on your local machine:
 
-* [Nástroje pro sestavení pro sadu Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) pomocí  **C++ nástrojů sestavení** a úloh **komponent správce balíčků NuGet** . Nebo pokud už máte [Visual Studio (Community, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 nebo 2015 se stejnými úlohami.
+* [Build Tools for Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) with **C++ build tools** and **NuGet package manager component** workloads. Or if you already have [Visual Studio (Community, Professional, or Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 or 2015 with same workloads installed.
 * [Git](https://git-scm.com/download/)
-* [Cmake](https://cmake.org/download/).
+* [CMake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
 
-### <a name="install-azure-iot-tools"></a>Instalace nástrojů Azure IoT
+### <a name="install-azure-iot-tools"></a>Install Azure IoT Tools
 
-Pomocí následujících kroků nainstalujte sadu [nástrojů Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack:
+Use the following steps to install the [Azure IoT Tools for VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) extension pack:
 
-1. V VS Code vyberte kartu **rozšíření** .
-1. Vyhledejte **nástroje Azure IoT Tools**.
+1. In VS Code, select the **Extensions** tab.
+1. Search for **Azure IoT Tools**.
 1. Vyberte **Install** (Nainstalovat).
 
-### <a name="install-the-azure-iot-explorer"></a>Instalace Azure IoT Exploreru
+### <a name="install-the-azure-iot-explorer"></a>Install the Azure IoT explorer
 
-Stáhněte a nainstalujte si nejnovější verzi **Azure IoT Exploreru** ze stránky [úložiště](https://github.com/Azure/azure-iot-explorer/releases) tohoto nástroje tak, že vyberete soubor. msi v části assets (prostředky) pro nejnovější aktualizaci.
+Download and install the latest release of **Azure IoT explorer** from the tool's [repository](https://github.com/Azure/azure-iot-explorer/releases) page, by selecting the .msi file under "Assets" for the most recent update.
 
-### <a name="get-the-connection-string-for-your-company-model-repository"></a>Získání připojovacího řetězce pro úložiště podnikového modelu
+### <a name="get-the-connection-string-for-your-company-model-repository"></a>Get the connection string for your company model repository
 
-_Připojovací řetězec úložiště modelů společnosti_ můžete najít na portálu [Azure Certified for IoT Portal](https://preview.catalog.azureiotsolutions.com) při přihlášení pomocí pracovního nebo školního účtu Microsoft nebo svého ID partnera Microsoftu, pokud ho máte. Po přihlášení vyberte **úložiště společnosti** a pak **připojovací řetězce**.
+You can find your _company model repository connection string_ in the [Azure Certified for IoT portal](https://preview.catalog.azureiotsolutions.com) portal when you sign in with a Microsoft work or school account, or your Microsoft Partner ID if you have one. After you sign in, select **Company repository** and then **Connection strings**.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,94 +50,92 @@ _Připojovací řetězec úložiště modelů společnosti_ můžete najít na p
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
-### <a name="get-azure-iot-device-sdk-for-c"></a>Získat sadu SDK pro zařízení Azure IoT pro jazyk C
+In this quickstart, you use the [Vcpkg](https://github.com/microsoft/vcpkg) library manager to install the Azure IoT C device SDK in your development environment.
 
-V tomto rychlém startu připravíte vývojové prostředí pomocí instalace sady SDK pro zařízení Azure IoT C přes [Vcpkg](https://github.com/microsoft/vcpkg).
+1. Otevřete příkazový řádek. Execute the following command to install Vcpkg:
 
-1. Otevřete příkazový řádek. Spusťte následující příkaz pro instalaci Vcpkg:
-
-    ```cmd/sh
+    ```cmd
     git clone https://github.com/Microsoft/vcpkg.git
     cd vcpkg
 
     .\bootstrap-vcpkg.bat
     ```
 
-    Pokud pak chcete připojit [integraci](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)uživatelů na úrovni uživatele, spusťte následující příkaz (Poznámka: vyžaduje správce při prvním použití):
+    Then, to hook up user-wide [integration](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md), run the following (note: requires admin on first use):
 
-    ```cmd/sh
+    ```cmd
     .\vcpkg.exe integrate install
     ```
 
-1. Instalace sady SDK pro zařízení Azure IoT C Vcpkg:
+1. Install Azure IoT C device SDK Vcpkg:
 
-    ```cmd/sh
+    ```cmd
     .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
-## <a name="author-your-model"></a>Vytváření modelu
+## <a name="author-your-model"></a>Author your model
 
-V tomto rychlém startu použijete existující Vzorový model zařízení a přidružená rozhraní.
+In this quickstart, you use an existing sample device capability model and associated interfaces.
 
-1. Vytvořte `pnp_app` adresář na místním disku. Tuto složku použijete pro soubory modelů zařízení a pro zástupné kódy zařízení.
+1. Create a `pnp_app` directory in your local drive. You use this folder for the device model files and device code stub.
 
-1. Stáhněte si [model funkce zařízení a ukázkové soubory rozhraní](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) a [ukázky](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) rozhraní a uložte soubory do složky `pnp_app`.
+1. Download the [device capability model and interface sample files](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) and [interface sample](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) and save files into `pnp_app` folder.
 
     > [!TIP]
-    > Pokud chcete stáhnout soubor z GitHubu, přejděte do souboru, klikněte pravým tlačítkem na **nezpracovaný**a pak vyberte **Uložit odkaz jako**.
+    > To download a file from GitHub, navigate to the file, right-click on **Raw**, and then select **Save link as**.
 
-1. Otevřete `pnp_app` složku pomocí VS Code. Můžete zobrazit soubory pomocí IntelliSense:
+1. Open `pnp_app` folder with VS Code. You can view the files with IntelliSense:
 
-    ![Model schopností zařízení](media/quickstart-create-pnp-device/dcm.png)
+    ![Device capability model](media/quickstart-create-pnp-device/dcm.png)
 
-1. V souborech, které jste stáhli, nahraďte `<YOUR_COMPANY_NAME_HERE>` v polích `@id` a `schema` jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního Nevlákenového identifikátoru](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
+1. In the files you downloaded, replace `<YOUR_COMPANY_NAME_HERE>` in the `@id` and `schema` fields with a unique value. Use only the characters a-z, A-Z, 0-9, and underscore. For more information, see [Digital Twin identifier format](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
 
-## <a name="generate-the-c-code-stub"></a>Generovat zástupný kód kódu jazyka C
+## <a name="generate-the-c-code-stub"></a>Generate the C code stub
 
-Teď, když máte modul DCM a jeho přidružená rozhraní, můžete vygenerovat kód zařízení, který model implementuje. Chcete-li vygenerovat zástupnou proceduru kódu C v VS Code:
+Now that you have a DCM and its associated interfaces, you can generate the device code that implements the model. To generate the C code stub in VS Code:
 
-1. Když je složka `pnp_app` v VS Code otevřená, pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte **IoT technologie Plug and Play**a vyberte **Generovat zástupný kód zařízení**.
+1. With the `pnp_app` folder open in VS Code, use **Ctrl+Shift+P** to open the command palette, enter **IoT Plug and Play**, and select **Generate Device Code Stub**.
 
     > [!NOTE]
-    > Při prvním použití rozhraní příkazového řádku IoT technologie Plug and Play CodeGen bude stažení a instalace automaticky trvat několik sekund.
+    > The first time you use the IoT Plug and Play CodeGen CLI, it takes a few seconds to download and install automatically.
 
-1. Vyberte soubor **SampleDevice. capabilitymodel. JSON** , který se použije k vygenerování zástupné procedury pro kód zařízení.
+1. Choose the **SampleDevice.capabilitymodel.json** file to use for generating the device code stub.
 
-1. Zadejte název projektu **sample_device**. Toto bude název aplikace vašeho zařízení.
+1. Enter the project name **sample_device**. This will be the name of your device application.
 
-1. Jako jazyk vyberte **ANSI C** .
+1. Choose **ANSI C** as your language.
 
-1. Jako metodu připojení vyberte **prostřednictvím IoT Hub připojovací řetězec zařízení** .
+1. Choose **Via IoT Hub device connection string** as connection method.
 
-1. Jako šablonu projektu vyberte možnost **projekt cmake v systému Windows** .
+1. Choose **CMake Project on Windows** as your project template.
 
-1. Vyberte **prostřednictvím Vcpkg** jako způsob, jak zahrnout sadu SDK pro zařízení.
+1. Choose **Via Vcpkg** as the way to include the device SDK.
 
-1. Nová složka s názvem **sample_device** se vytvoří ve stejném umístění jako soubor DCM a v takovém případě se jedná o vygenerované soubory zástupných procedur kódu zařízení. VS Code otevře nové okno, ve kterém se zobrazí.
-    ![kód zařízení](media/quickstart-create-pnp-device/device-code.png)
+1. A new folder called **sample_device** is created in the same location as the DCM file, and in it are the generated device code stub files. VS Code opens a new window to display these.
+    ![Device code](media/quickstart-create-pnp-device/device-code.png)
 
-## <a name="build-and-run-the-code"></a>Sestavit a spustit kód
+## <a name="build-and-run-the-code"></a>Build and run the code
 
-Zdrojový kód sady SDK pro zařízení slouží k sestavení zástupné procedury pro vygenerovaný kód zařízení. Vytvořená aplikace simuluje zařízení, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
+You use the device SDK source code to build the generated device code stub. The application you build simulates a device that connects to an IoT hub. The application sends telemetry and properties and receives commands.
 
-1. Vytvořte podadresář `cmake` ve složce `sample_device` a přejděte do této složky:
+1. Create a `cmake` subdirectory in the `sample_device` folder, and navigate to that folder:
 
-    ```cmd\sh
+    ```cmd
     mkdir cmake
     cd cmake
     ```
 
-1. Spuštěním následujících příkazů Sestavte zástupnou proceduru vygenerovaného kódu (zástupný symbol nahraďte adresářem úložiště Vcpkg):
+1. Run the following commands to build the generated code stub (replacing the placeholder with the directory of your Vcpkg repo):
 
-    ```cmd\sh
+    ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
 
     cmake --build .
     ```
     
     > [!NOTE]
-    > Pokud používáte sadu Visual Studio 2017 nebo 2015, je nutné určit generátor CMake na základě nástrojů pro sestavení, které používáte:
-    >```cmd\sh
+    > If you are using Visual Studio 2017 or 2015, you need to specify the CMake generator based on the build tools you are using:
+    >```cmd
     ># Either
     >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
     ># or
@@ -145,75 +143,75 @@ Zdrojový kód sady SDK pro zařízení slouží k sestavení zástupné procedu
     >```
 
     > [!NOTE]
-    > Pokud cmake nenajde váš C++ kompilátor, při spuštění předchozího příkazu se zobrazí chyby sestavení. Pokud k tomu dojde, zkuste spustit tento příkaz na příkazovém [řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    > If cmake can't find your C++ compiler, you get build errors when you run the previous command. If that happens, try running this command at the [Visual Studio command prompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
 
-1. Po úspěšném dokončení sestavení spusťte aplikaci a jako parametr předejte připojovací řetězec zařízení služby IoT Hub.
+1. After the build completes successfully, run your application, passing the IoT hub device connection string as a parameter.
 
-    ```cmd\sh
+    ```cmd
     .\Debug\sample_device.exe "<device connection string>"
     ```
 
-1. Aplikace zařízení spouští odesílání dat do IoT Hub.
+1. The device application starts sending data to IoT Hub.
 
-    ![Aplikace pro zařízení je spuštěná.](media/quickstart-create-pnp-device/device-app-running.png)
+    ![Device app running](media/quickstart-create-pnp-device/device-app-running.png)
 
-## <a name="validate-the-code"></a>Ověřit kód
+## <a name="validate-the-code"></a>Validate the code
 
-### <a name="publish-device-model-files-to-model-repository"></a>Publikování souborů modelů zařízení do úložiště modelů
+### <a name="publish-device-model-files-to-model-repository"></a>Publish device model files to model repository
 
-K ověření kódu zařízení v **Azure IoT Exploreru**je potřeba publikovat soubory do úložiště modelu.
+To validate the device code with **Azure IoT Explorer**, you need to publish the files to the model repository.
 
-1. Když je složka `pnp_app` v VS Code otevřená, pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte a vyberte **IoT plug & Play: odešlete soubory do úložiště modelů**.
+1. With the `pnp_app` folder open in VS Code, use **Ctrl+Shift+P** to open the command palette, type and select **IoT Plug & Play: Submit files to Model Repository**.
 
-1. Vyberte `SampleDevice.capabilitymodel.json` a `EnvironmentalSensor.interface.json` soubory.
+1. Select `SampleDevice.capabilitymodel.json` and `EnvironmentalSensor.interface.json` files.
 
-1. Zadejte připojovací řetězec úložiště podnikového modelu.
-
-    > [!NOTE]
-    > Připojovací řetězec je vyžadován pouze při prvním připojení k úložišti.
-
-1. V okně výstup VS Code a oznámení můžete ověřit, že soubory byly úspěšně publikovány.
+1. Enter your company model repository connection string.
 
     > [!NOTE]
-    > Pokud při publikování souborů modelů zařízení dojde k chybám, můžete zkusit použít příkaz **IoT technologie Plug and Play:** odhlaste se a Projděte si kroky znovu.
+    > The connection string is only required the first time you connect to the repository.
 
-### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Použití Průzkumníka Azure IoT k ověření kódu
+1. In VS Code output window and notification, you can check that the files have been published successfully.
 
-1. Otevřete Azure IoT Explorer. Zobrazí se stránka **Konfigurace aplikace** .
+    > [!NOTE]
+    > If you get errors on publishing the device model files, you can try use command **IoT Plug and Play: Sign out Model Repository** to sign out and go through the steps again.
 
-1. Zadejte _připojovací řetězec IoT Hub_ a vyberte **připojit**.
+### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Use the Azure IoT explorer to validate the code
 
-1. Po připojení se zobrazí stránka s přehledem **zařízení** .
+1. Open Azure IoT explorer. You see the **App configurations** page.
 
-1. Pokud chcete přidat úložiště společnosti, vyberte **Nastavení**, potom **+ Přidat zdroj definice modulu**a pak **úložiště společnosti**. Přidejte připojovací řetězec úložiště modelu společnosti a vyberte **Uložit a připojit**.
+1. Enter your _IoT Hub connection string_ and select **Connect**.
 
-1. Zpátky na stránce Přehled **zařízení** vyhledejte identitu zařízení, kterou jste vytvořili dříve. Když je aplikace zařízení pořád spuštěná na příkazovém řádku, ověřte, že se **stav připojení** zařízení v Azure IoT Exploreru hlásí jako _připojené_ (Pokud ne, stiskněte **aktualizovat** , dokud není). Kliknutím na zařízení zobrazíte další podrobnosti.
+1. After you connect, you see the **Devices** overview page.
 
-1. Rozbalte rozhraní s ID **urn: < YOUR_INTERFACE_NAME >: EnvironmentalSensor: 1** , abyste viděli primitivy technologie Plug and Play IoT – vlastnosti, příkazy a telemetrie. Název rozhraní, který se zobrazí, je název, který vložíte při vytváření modelu.
+1. To add your company repository, select **Settings**, then **+ Add module definition source**, then **Company repository**. Add your company model repository connection string, and select **Save and Connect**.
 
-1. Vyberte stránku **telemetrie** a _začněte_ zobrazit data telemetrie, která zařízení odesílá.
+1. Back on the **Devices** overview page, find the device identity you created previously. With the device application still running in the command prompt, check that the device's **Connection state** in Azure IoT explorer is reporting as _Connected_ (if not, hit **Refresh** until it is). Select the device to view more details.
 
-1. Vyberte stránku **vlastnosti (bez možnosti zápisu)** , ve které se zobrazí nezapisovatelné vlastnosti hlášené zařízením.
+1. Expand the interface with ID **urn:<YOUR_INTERFACE_NAME>:EnvironmentalSensor:1** to see the IoT Plug and Play primitives - properties, commands, and telemetry. The interface name that will appear is the name you put in when authoring your model.
 
-1. Výběrem stránky **vlastnosti (zapisovatelné)** zobrazíte vlastnosti, které můžete aktualizovat.
+1. Select the **Telemetry** page and hit _Start_ to view the telemetry data the device is sending.
 
-1. Rozbalte **název**vlastnosti, aktualizujte ho novým názvem a vyberte možnost **aktualizovat zapisovatelnou vlastnost**. 
+1. Select the **Properties (non-writable)** page to view the non-writable properties reported by the device.
 
-1. Pokud chcete zobrazit nový název ve sloupci **hlášené vlastnosti** , vyberte tlačítko **aktualizovat** v horní části stránky.
+1. Select the **Properties (writable)** page to view the writable properties you can update.
 
-1. Výběrem stránky **příkazy** zobrazíte všechny příkazy, které zařízení podporuje.
+1. Expand property **name**, update with a new name and select **Update writable property**. 
 
-1. Rozbalte příkaz **Blink** a nastavte nový časový interval pro blikání. Vyberte **Odeslat příkaz** pro volání příkazu na zařízení.
+1. To see the new name show up in the **Reported Property** column, select the **Refresh** button on top of the page.
 
-1. Přejít na příkazový řádek simulovaného zařízení a přečtěte si tištěné potvrzovací zprávy, abyste ověřili, že příkazy byly provedeny podle očekávání.
+1. Select the **Commands** page to view all the commands the device supports.
+
+1. Expand the **blink** command and set a new blink time interval. Select **Send command** to call the command on the device.
+
+1. Go to the simulated device command prompt and read through the printed confirmation messages, to verify that the commands have executed as expected.
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak vytvořit zařízení IoT technologie Plug and Play pomocí DCM.
+In this quickstart, you learned how to create an IoT Plug and Play device using a DCM.
 
-Pokud chcete získat další informace o DCMs a vytváření vlastních modelů, pokračujte v kurzu:
+To learn more about DCMs and how to create your own models, continue to the tutorial:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a otestování modelu schopností zařízení pomocí Visual Studio Code](tutorial-pnp-visual-studio-code.md)
+> [Tutorial: Create and test a device capability model using Visual Studio Code](tutorial-pnp-visual-studio-code.md)

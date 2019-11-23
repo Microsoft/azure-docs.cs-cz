@@ -1,35 +1,35 @@
 ---
-title: Vývoj týmu pomocí Azure Dev Spaces s využitím .NET Core a VS Code
+title: Team development using .NET Core and Visual Studio Code
 services: azure-dev-spaces
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: a8bd4b947d5437396c8b6ec16faa74bf5d08a2b4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s '
+ms.openlocfilehash: 30d132b78279e9ae1ca190c0037c962a7cbd8e6f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279526"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325516"
 ---
-# <a name="team-development-with-azure-dev-spaces-using-net-core-and-vs-code"></a>Vývoj týmu pomocí Azure Dev Spaces s využitím .NET Core a VS Code
+# <a name="team-development-using-net-core-and-visual-studio-code-with-azure-dev-spaces"></a>Team development using .NET Core and Visual Studio Code with Azure Dev Spaces
 
-V tomto kurzu se dozvíte, jak může tým vývojářů současně spolupracovat ve stejném clusteru Kubernetes pomocí vývojových prostorů.
+In this tutorial, you'll learn how a team of developers can simultaneously collaborate in the same Kubernetes cluster using Dev Spaces.
 
 ## <a name="learn-about-team-development"></a>Informace o týmovém vývoji
 Zatím jste kód aplikace spouštěli tak, jako byste byli jediným vývojářem, který na aplikaci pracuje. V této části se dozvíte, jak služba Azure Dev Spaces zjednodušuje týmový vývoj:
-* Umožněte týmu vývojářů pracovat ve stejném prostředí, při práci ve sdíleném prostoru pro vývoj nebo v různých prostorech pro vývoj podle potřeby.
+* Enable a team of developers to work in the same environment, by working in a shared dev space or in distinct dev spaces as needed.
 * Podporuje iterace kódu každého vývojáře v izolaci a bez obav z narušování práce ostatních.
 * Umožňuje komplexní testování kódu před jeho potvrzením, bez nutnosti vytvářet napodobení nebo simulovat závislosti.
 
 ### <a name="challenges-with-developing-microservices"></a>Problémy při vývoji mikroslužeb
 V tuto chvíli není ukázková aplikace moc složitá. Když ale při vývoji v reálném světě budete přidávat další služby a vývojový tým se bude zvětšovat, začnou brzy vznikat problémy. Může se stát, že spouštění všech služeb místně nebude během vývoje reálné.
 
-* Váš vývojový počítač nemusí mít dostatek prostředků ke spuštění každé služby, kterou potřebujete.
-* Některé služby možná budou muset být veřejně dosažitelné. Služba může například potřebovat koncový bod, který reaguje na Webhook.
-* Pokud chcete spustit podmnožinu služeb, musíte znát celou hierarchii závislostí mezi všemi vašimi službami. Určení toho může být obtížné, zejména při zvýšení počtu služeb.
-* Někteří vývojáři se uchylují k simulacím nebo napodobením řady závislostí svých služeb. Tento přístup může pomáhat, ale Správa těchto napodobenin může brzy ovlivnit náklady na vývoj. Kromě toho tento přístup vede k vašemu vývojovému prostředí, které se velmi liší od výroby, což umožňuje jemné chyby v nárůstu.
-* Postup provádění jakéhokoli typu integračního testování se bude obtížně provádět. Testování integrace se dá věrohodně provést až po potvrzení, což znamená, že se problémy projeví později ve vývojovém cyklu.
+* Your development machine may not have enough resources to run every service you need at once.
+* Some services may need to be publicly reachable. For example, a service may need to have an endpoint that responds to a webhook.
+* If you want to run a subset of services, you have to know the full dependency hierarchy between all your services. Determining this can be difficult, especially as your number of services increase.
+* Někteří vývojáři se uchylují k simulacím nebo napodobením řady závislostí svých služeb. This approach can help, but managing those mocks can soon impact development cost. Plus, this approach leads to your development environment looking very different from production, which allows subtle bugs to creep in.
+* It follows that doing any type of integration testing becomes difficult. Testování integrace se dá věrohodně provést až po potvrzení, což znamená, že se problémy projeví později ve vývojovém cyklu.
 
     ![](media/common/microservices-challenges.png)
 
@@ -39,33 +39,33 @@ Pomocí služby Azure Dev Spaces můžete nastavit *sdílený* vývojový prosto
 ### <a name="work-in-your-own-space"></a>Práce ve vašem vlastním prostoru
 Než je kód při vývoji pro vaši službu připravený k odevzdání, často není ve funkčním stavu. Pořád ho iterativně vytváříte, testujete ho a experimentujete s různými řešeními. Služba Azure Dev Spaces nabízí koncept **prostoru**, který umožňuje pracovat v izolaci a bez obav z narušení práce jiných členů vašeho týmu.
 
-## <a name="use-dev-spaces-for-team-development"></a>Použití vývojových prostorů pro vývoj v týmu
-Pojďme předvést tyto nápady pomocí konkrétního příkladu s naší ukázkovou aplikací *webendu* -> *mywebapi* . Představme si situaci, kdy vývojář, Scott, potřebuje provést změnu služby *mywebapi* a *jenom* tuto službu. Webfront- *Endu* se nebude muset změnit jako součást Scott Update.
+## <a name="use-dev-spaces-for-team-development"></a>Use Dev Spaces for team development
+Let's demonstrate these ideas with a concrete example using our *webfrontend* -> *mywebapi* sample application. We'll imagine a scenario where a developer, Scott, needs to make a change to the *mywebapi* service, and *only* that service. The *webfrontend* won't need to change as part of Scott's update.
 
-_Bez_ použití vývojových prostorů by Scott měl několik způsobů vývoje a testování jeho aktualizace, přičemž žádná z nich není ideální:
-* VŠECHNY součásti spouštějte místně. To vyžaduje výkonnější vývojový počítač s nainstalovaným Docker a potenciálně MiniKube.
-* Spustí všechny komponenty v izolovaném oboru názvů v clusteru Kubernetes. Vzhledem k tomu, že se *webendu* nemění, je to odpad z prostředků clusteru.
-* Spouštějte jenom *mywebapi*a proveďte manuální volání REST. Tím se netestuje celý tok na konci.
-* Přidejte do *webendu* kód zaměřený na vývoj, který vývojářům umožňuje odesílat požadavky na jinou instanci *mywebapi*. Tím se ztěžuje služba *webendu* .
+_Without_ using Dev Spaces, Scott would have a few ways to develop and test his update, none of which are ideal:
+* Run ALL components locally. This requires a more powerful development machine with Docker installed, and potentially MiniKube.
+* Run ALL components in an isolated namespace on the Kubernetes cluster. Since *webfrontend* isn't changing, this is a waste of cluster resources.
+* ONLY run *mywebapi*, and make manual REST calls to test. This doesn't test the full end-to-end flow.
+* Add development-focused code to *webfrontend* that allows the developer to send requests to a different instance of *mywebapi*. This complicates the *webfrontend* service.
 
-### <a name="set-up-your-baseline"></a>Nastavení standardních hodnot
-Nejprve bude nutné nasadit směrný plán našich služeb. Toto nasazení bude představovat "poslední známé funkční", takže můžete snadno porovnat chování místního kódu a verze vráceného se změnami. Pak vytvoříme podřízený prostor na základě tohoto směrného plánu, abychom mohli otestovat naše změny v *mywebapi* v kontextu větší aplikace.
+### <a name="set-up-your-baseline"></a>Set up your baseline
+First we'll need to deploy a baseline of our services. This deployment will represent the "last known good" so you can easily compare the behavior of your local code vs. the checked-in version. We'll then create a child space based on this baseline so we can test our changes to *mywebapi* within the context of the larger application.
 
-1. Naklonujte [ukázkovou aplikaci pro vývojové prostory](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
-1. Rezervovat *azds_updates*vzdálené větve: `git checkout -b azds_updates origin/azds_updates`
-1. Vyberte prostor pro _vývoj_ : `azds space select --name dev`. Po zobrazení výzvy k výběru nadřazeného prostoru pro vývoj vyberte _\<žádná\>_ .
-1. Přejděte do adresáře _mywebapi_ a spusťte příkaz: `azds up -d`
-1. Přejděte do adresáře _webendu_ a spusťte: `azds up -d`
-1. Spusťte `azds list-uris` pro zobrazení veřejného koncového bodu pro _webendu_
+1. Clone the [Dev Spaces sample application](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. Checkout the remote branch *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
+1. Select the _dev_ space: `azds space select --name dev`. When prompted to select a parent dev space, select _\<none\>_ .
+1. Navigate to the _mywebapi_ directory and execute: `azds up -d`
+1. Navigate to the _webfrontend_ directory and execute: `azds up -d`
+1. Execute `azds list-uris` to see the public endpoint for _webfrontend_
 
 > [!TIP]
-> Výše uvedené kroky ručně nastaví směrný plán, ale doporučujeme, aby týmy používaly CI/CD k automatickému udržování směrného plánu v aktuálním stavu pomocí potvrzeného kódu.
+> The above steps manually set up a baseline, but we recommend teams use CI/CD to automatically keep your baseline up to date with committed code.
 >
-> Pokud chcete vytvořit pracovní postup podobný následujícímu diagramu, přečtěte si náš průvodce vytvořením [CI/CD pomocí Azure DevOps](how-to/setup-cicd.md) .
+> Check out our [guide to setting up CI/CD with Azure DevOps](how-to/setup-cicd.md) to create a workflow similar to the following diagram.
 >
-> ![Příklad diagramu CI/CD](media/common/ci-cd-complex.png)
+> ![Example CI/CD diagram](media/common/ci-cd-complex.png)
 
-V tomto okamžiku by měl být spuštěný základní plán. Spusťte příkaz `azds list-up --all` a zobrazí se podobný výstup:
+At this point your baseline should be running. Spusťte příkaz `azds list-up --all` a zobrazí se podobný výstup:
 
 ```
 $ azds list-up --all
@@ -78,27 +78,27 @@ webfrontend                   dev       Service  1m ago   Running
 webfrontend-6b6ddbb98f-fgvnc  dev       Pod      1m ago   Running
 ```
 
-Sloupec DevSpace ukazuje, že obě služby jsou spuštěny v prostoru s názvem _vývoj_. Kdokoli, kdo otevře veřejnou adresu URL a přejde k webové aplikaci, vyvolá cestu k vrácenému kódu, která se spouští prostřednictvím obou služeb. Nyní předpokládejme, že chcete pokračovat ve vývoji _mywebapi_. Jak provedete změny kódu a otestujete je bez toho, abyste přerušili práci ostatních vývojářů, kteří používají stejné vývojové prostředí? Vytvoříte si k tomu vlastní prostor.
+The DevSpace column shows that both services are running in a space named _dev_. Anyone who opens the public URL and navigates to the web app will invoke the checked-in code path that runs through both services. Now suppose you want to continue developing _mywebapi_. Jak provedete změny kódu a otestujete je bez toho, abyste přerušili práci ostatních vývojářů, kteří používají stejné vývojové prostředí? Vytvoříte si k tomu vlastní prostor.
 
 ### <a name="create-a-dev-space"></a>Vytvoření vývojového prostoru
-Chcete-li spustit vlastní verzi _mywebapi_ v _jiném než vývoji_, můžete vytvořit vlastní místo pomocí následujícího příkazu:
+To run your own version of _mywebapi_ in a space other than _dev_, you can create your own space by using the following command:
 
 ```cmd
 azds space select --name scott
 ```
 
-Po zobrazení výzvy vyberte možnost _dev (vývoj_ ) **nadřazeného vývojového prostoru**. To znamená, že náš nový prostor, _dev/Scott_, bude odvozen od _vývoje_místa. Za chvíli si ukážeme, jak nám to pomůže s testováním.
+When prompted, select _dev_ as the **parent dev space**. This means our new space, _dev/scott_, will derive from the space _dev_. Za chvíli si ukážeme, jak nám to pomůže s testováním.
 
-V naší úvodní hypotetickě jsme použili název _Scott_ pro nové místo, takže partneři budou moci zjistit, kdo v něm pracuje. Ale může být volána cokoli, co potřebujete, a být flexibilní o tom, co to znamená, jako je _sprint4_ nebo _demo_. Bez ohledu na to, jaký případ nabízí, může _vývoj_ sloužit jako základ pro všechny vývojáře, kteří pracují na části této aplikace:
+Keeping with our introductory hypothetical, we've used the name _scott_ for the new space so peers can identify who is working in it. But it can be called anything you like, and be flexible about what it means, like _sprint4_ or _demo_. Whatever the case, _dev_ serves as the baseline for all developers working on a piece of this application:
 
 ![](media/common/ci-cd-space-setup.png)
 
-Spuštěním příkazu `azds space list` zobrazíte seznam všech prostorů ve vývojovém prostředí. _Vybraný_ sloupec indikuje, který prostor máte aktuálně vybraný (true/false). V takovém případě bylo při vytvoření automaticky vybráno místo s názvem _dev/Scott_ . Kdykoli si můžete vybrat jiný prostor pomocí příkazu `azds space select`.
+Spuštěním příkazu `azds space list` zobrazíte seznam všech prostorů ve vývojovém prostředí. The _Selected_ column indicates which space you currently have selected (true/false). In your case, the space named _dev/scott_ was automatically selected when it was created. Kdykoli si můžete vybrat jiný prostor pomocí příkazu `azds space select`.
 
 Podívejte se, jak to funguje:
 
-### <a name="make-a-code-change"></a>Provedení změny kódu
-Pro `mywebapi` použijte VS Code okno a v `Controllers/ValuesController.cs`proveďte úpravy kódu pro metodu `string Get(int id)` například:
+### <a name="make-a-code-change"></a>Make a code change
+Go to the VS Code window for `mywebapi` and make a code edit to the `string Get(int id)` method in `Controllers/ValuesController.cs`, for example:
 
 ```csharp
 [HttpGet("{id}")]
@@ -110,7 +110,7 @@ public string Get(int id)
 
 ### <a name="run-the-service"></a>Spuštění služby
 
-Pokud chcete službu spustit, stiskněte klávesu F5 (nebo zadejte `azds up` do okna terminálu) a službu spusťte. Služba se automaticky spustí s nově vybraným místem pro _vývoj/Scott_. Ověřte, že je služba spuštěná na svém vlastním prostoru spuštěním `azds list-up`:
+To run the service, hit F5 (or type `azds up` in the Terminal Window) to run the service. The service will automatically run in your newly selected space _dev/scott_. Confirm that your service is running in its own space by running `azds list-up`:
 
 ```cmd
 $ azds list-up
@@ -120,9 +120,9 @@ mywebapi                  scott     Service  3m ago   Running
 webfrontend               dev       Service  26m ago  Running
 ```
 
-Všimněte si, že instance *mywebapi* je teď spuštěná v prostoru pro _vývoj/Scott_ . Verze spuštěná v _dev_ je pořád spuštěná, ale není uvedená.
+Notice an instance of *mywebapi* is now running in the _dev/scott_ space. The version running in _dev_ is still running but it is not listed.
 
-Vypíše adresy URL pro aktuální prostor spuštěním `azds list-uris`.
+List the URLs for the current space by running `azds list-uris`.
 
 ```cmd
 $ azds list-uris
@@ -133,18 +133,18 @@ http://localhost:53831 => mywebapi.scott:80                                Tunne
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
 
-Všimněte si, že adresa URL bodu veřejného přístupu pro *webendu* je s předponou *Scott. s*. Tato adresa URL je jedinečná pro _vývojové a scottský_ prostor. Tato předpona adresy URL oznamuje řadiči příchozího přenosu žádostí, aby směroval požadavky na verzi služby _dev/Scott_ . Pokud je žádost s touto adresou URL zpracována pomocí vývojových prostorů, kontroler příchozího přenosu dat se nejprve pokusí směrovat požadavek do služby *webendu* ve _vývojovém nebo scottovém_ prostoru. Pokud se to nezdaří, bude požadavek směrován do služby *webendu* v prostoru pro _vývoj_ jako záložní. Všimněte si také, že adresa URL místního hostitele pro přístup ke službě přes localhost pomocí funkce *předávaného portu* Kubernetes. Další informace o adresách URL a směrování v Azure Dev Spaces najdete v tématu [Jak fungují Azure dev Spaces a jsou nakonfigurované](how-dev-spaces-works.md).
+Notice the public access point URL for *webfrontend* is prefixed with *scott.s*. This URL is unique to the _dev/scott_ space. This URL prefix tells the Ingress controller to route requests to the _dev/scott_ version of a service. When a request with this URL is handled by Dev Spaces, the Ingress Controller first tries to route the request to the *webfrontend* service in the _dev/scott_ space. If that fails, the request will be routed to the *webfrontend* service in the _dev_ space as a fallback. Also notice there is a localhost URL to access the service over localhost using the Kubernetes *port-forward* functionality. For more information about URLs and routing in Azure Dev Spaces, see [How Azure Dev Spaces works and is configured](how-dev-spaces-works.md).
 
-![Směrování místa](media/common/Space-Routing.png)
+![Space Routing](media/common/Space-Routing.png)
 
 Tato integrovaná funkce služby Azure Dev Spaces umožňuje testování kódu ve sdíleném prostoru bez toho, aby si každý vývojář musel znovu vytvářet všechny služby ve svém prostoru. Tyto cesty vyžadují přesměrování šíření hlaviček v kódu aplikace, jak ukazuje předchozí krok tohoto průvodce.
 
 ### <a name="test-code-in-a-space"></a>Testování kódu v prostoru
-Pokud chcete otestovat novou verzi *mywebapi* pomocí *webendu*, otevřete prohlížeč na adrese URL veřejného přístupového bodu pro *webendu* a přejděte na stránku o produktu. Měla by se zobrazit nová zpráva.
+To test your new version of *mywebapi* with *webfrontend*, open your browser to the public access point URL for *webfrontend* and go to the About page. Měla by se zobrazit nová zpráva.
 
-Nyní odeberte část „scott.s.“ adresy URL a aktualizujte stránku v prohlížeči. Mělo by se zobrazit staré chování (s verzí *mywebapi* spuštěnou v _dev_).
+Nyní odeberte část „scott.s.“ adresy URL a aktualizujte stránku v prohlížeči. You should see the old behavior (with the *mywebapi* version running in _dev_).
 
-Jakmile budete mít místo pro _vývoj_ , které vždycky obsahuje vaše nejnovější změny, a za předpokladu, že vaše aplikace je navržená tak, aby využila výhod směrování založeného na DevSpace, jak je popsané v tomto kurzu, snad se snadno podívat, jak si můžou vývojové prostory významně pomoct při testování nových funkcí v kontextu větší aplikace. Místo toho, abyste museli nasazovat _všechny_ služby do privátního prostoru, můžete vytvořit soukromý prostor, který je odvozený od _vývoje_, a jenom služby, na kterých skutečně pracujete. Infrastruktura směrování pro vývoj pro vývojová prostředí zpracuje zbytek tím, že se z vašeho privátního prostoru dokončí tolik služeb, jak může najít, zatímco se ve výchozím nastavení vrátí na nejnovější verzi, která běží ve _vývojovém_ prostoru. A stále ještě _víc_ vývojářům může aktivně vyvíjet různé služby ve stejnou dobu, aniž by navzájem narušily vzájemné přerušení.
+Once you have a _dev_ space, which always contains your latest changes, and assuming your application is designed to take advantage of DevSpace's space-based routing as described in this tutorial section, hopefully it becomes easy to see how Dev Spaces can greatly assist in testing new features within the context of the larger application. Rather than having to deploy _all_ services to your private space, you can create a private space that derives from _dev_, and only "up" the services you're actually working on. The Dev Spaces routing infrastructure will handle the rest by utilizing as many services out of your private space as it can find, while defaulting back to the latest version running in the _dev_ space. And better still, _multiple_ developers can actively develop different services at the same time in their own space without disrupting each other.
 
 ### <a name="well-done"></a>Hotovo!
 Dokončili jste úvodní příručku! Naučili jste se tyto postupy:
@@ -154,9 +154,9 @@ Dokončili jste úvodní příručku! Naučili jste se tyto postupy:
 > * Iterativně vyvíjet kód v kontejnerech
 > * Vyvíjet nezávisle dvě samostatné služby a pomocí zjišťování služby DNS v Kubernetes volat jinou službu
 > * Produktivně vyvíjet a testovat kód v týmovém prostředí
-> * Vytvořte základní hodnoty funkcí pomocí vývojových prostorů, abyste mohli snadno testovat izolované změny v kontextu větší aplikace mikroslužeb.
+> * Establish a baseline of functionality using Dev Spaces to easily test isolated changes within the context of a larger microservice application
 
-Teď, když jste prozkoumali Azure Dev Spaces, [sdílejte místo pro vývoj s členem týmu](how-to/share-dev-spaces.md) a začněte spolupracovat.
+Now that you've explored Azure Dev Spaces, [share your dev space with a team member](how-to/share-dev-spaces.md) and begin collaborating.
 
 ## <a name="clean-up"></a>Vyčištění
 Pokud chcete z clusteru úplně odstranit instanci Azure Dev Spaces včetně všech vývojových prostorů a služeb v nich spuštěných, použijte příkaz `az aks remove-dev-spaces`. Mějte na paměti, že tato akce je nevratná. Do clusteru můžete znovu přidat podporu Azure Dev Spaces, ale bude to, jako byste začínali znovu. Vaše staré služby a prostory se neobnoví.

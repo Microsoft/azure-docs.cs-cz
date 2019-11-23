@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení cloudových prostředků s Azure MFA a AD FS – Azure Active Directory
+title: Secure resources with Azure MFA and ADFS - Azure Active Directory
 description: Toto je stránka vícefaktorového ověřování Azure, která popisuje, jak začít s vícefaktorovým ověřováním Azure a službami AD FS v cloudu.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b1838007e1be7fc1d9872516ede14c208b1f57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20e9f0b9a993d2a8af9b9d91399fdd49f9a06eaa
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113460"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381835"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS
 
@@ -30,21 +30,21 @@ K zabezpečení cloudových prostředků nastavte pravidlo deklarace identity ta
 2. Na levé straně vyberte **Vztahy důvěryhodnosti předávající strany**.
 3. Klikněte pravým tlačítkem na **Platforma identit Microsoft Office 365** a vyberte **Upravit pravidla deklarací identity**.
 
-   ![Konzola služby AD FS – vztahy důvěryhodnosti předávající strany](./media/howto-mfa-adfs/trustedip1.png)
+   ![ADFS Console - Relying Party Trusts](./media/howto-mfa-adfs/trustedip1.png)
 
 4. V pravidlech transformace vystavení klikněte na **Přidat pravidlo**.
 
-   ![Úprava pravidla transformace vystavení](./media/howto-mfa-adfs/trustedip2.png)
+   ![Editing Issuance Transform Rules](./media/howto-mfa-adfs/trustedip2.png)
 
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
 
-   ![Přidat Průvodce vytvořením pravidla transformace deklarací identity](./media/howto-mfa-adfs/trustedip3.png)
+   ![Add Transform Claim Rule Wizard](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Pojmenujte pravidlo. 
 7. Jako typ příchozí deklarace identity vyberte **Odkazy na metody ověřování**.
 8. Vyberte **Předávat všechny hodnoty deklarací identity**.
     ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/configurewizard.png)
-9. Klikněte na **Dokončit**. Uzavřete konzolu pro správu služby AD FS.
+9. Klikněte na **Finish** (Dokončit). Uzavřete konzolu pro správu služby AD FS.
 
 ## <a name="trusted-ips-for-federated-users"></a>Důvěryhodné IP adresy pro federované uživatele
 
@@ -58,16 +58,16 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
 1. Otevřete správu služby AD FS.
 2. Na levé straně vyberte **Vztahy důvěryhodnosti předávající strany**.
-3. Klikněte pravým tlačítkem na **platforma identit Microsoft Office 365** a vyberte **upravit pravidla deklarací identity... ** 
-    ![Konzoly služby AD FS – upravit pravidla deklarací identity](./media/howto-mfa-adfs/trustedip1.png)
-4. V pravidlech transformace vystavení klikněte na tlačítko **přidat pravidlo.** 
-    ![Přidávání pravidel deklarací identity](./media/howto-mfa-adfs/trustedip2.png)
+3. Right-click on **Microsoft Office 365 Identity Platform** and select **Edit Claim Rules…** 
+   ![ADFS Console - Edit Claim Rules](./media/howto-mfa-adfs/trustedip1.png)
+4. On Issuance Transform Rules, click **Add Rule.** 
+   ![Adding a Claim Rule](./media/howto-mfa-adfs/trustedip2.png)
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
    ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/trustedip3.png)
 6. Do pole vedle názvu pravidla deklarace identity zadejte název pravidla. Příklad: InsideCorpNet.
 7. V rozevíracím seznamu vedle Typ příchozí deklarace vyberte **Uvnitř podnikové sítě**.
-   ![Deklarace identity přidává uvnitř podnikové sítě](./media/howto-mfa-adfs/trustedip4.png)
-8. Klikněte na **Dokončit**.
+   ![Adding Inside Corporate Network claim](./media/howto-mfa-adfs/trustedip4.png)
+8. Klikněte na **Finish** (Dokončit).
 9. V pravidlech transformace vystavení klikněte na **Přidat pravidlo**.
 10. V Průvodci přidáním pravidla – deklarace identity transformace vyberte **Odesílat deklarace pomocí vlastního pravidla** v rozevíracím seznamu a klikněte na **Další**.
 11. Do pole pod Název pravidla deklarace napište *Nechat uživatele přihlášené*.
@@ -75,9 +75,9 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![Vytvoření vlastní deklarace identity uživatele přihlášení](./media/howto-mfa-adfs/trustedip5.png)
-13. Klikněte na **Dokončit**.
-14. Klikněte na tlačítko **Použít**.
+    ![Create custom claim to keep users signed in](./media/howto-mfa-adfs/trustedip5.png)
+13. Klikněte na **Finish** (Dokončit).
+14. Klikněte na **Použít**.
 15. Klikněte na tlačítko **OK**.
 16. Zavřete správu služby AD FS.
 
@@ -85,11 +85,11 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
 Teď, když máme vytvořené deklarace identity, můžeme nakonfigurovat důvěryhodné IP adresy.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **podmíněného přístupu** > **pojmenovaná umístění**.
-3. Z **podmíněný přístup – pojmenovaná umístění** okně vyberte **MFA nakonfigurovat důvěryhodné IP adresy**
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Select **Azure Active Directory** > **Conditional Access** > **Named locations**.
+3. From the **Conditional Access - Named locations** blade, select **Configure MFA trusted IPs**
 
-   ![Pojmenovaná umístění podmíněný přístup Azure AD MFA nakonfigurovat důvěryhodné IP adresy](./media/howto-mfa-adfs/trustedip6.png)
+   ![Azure AD Conditional Access named locations Configure MFA trusted IPs](./media/howto-mfa-adfs/trustedip6.png)
 
 4. Na stránce Nastavení služby v části **Důvěryhodné IP adresy** vyberte **Pro žádosti od federovaných uživatelů v mém intranetu přeskočit vícefaktorové ověřování**.  
 5. Klikněte na **Uložit**.

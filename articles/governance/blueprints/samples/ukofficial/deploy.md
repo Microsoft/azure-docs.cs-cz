@@ -1,109 +1,109 @@
 ---
-title: '& Oficiální Velká Británie – ukázky NHS podrobného plánu – postup nasazení'
-description: Nasaďte kroky pro oficiální Spojené království a ukázky pro Spojené království (NHS), včetně podrobností parametrů artefaktu podrobného plánu.
+title: UK OFFICIAL & UK NHS blueprint samples - Deploy steps
+description: Deploy steps for the UK OFFICIAL and UK NHS blueprint samples including blueprint artifact parameter details.
 ms.date: 06/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 1905e5fee894575d5ee85ce1bffb536813d34287
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.topic: sample
+ms.openlocfilehash: 33ac888c0803a743c3e0c63b0de59b58717e1c2e
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037754"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406647"
 ---
-# <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
+# <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Deploy the UK OFFICIAL and UK NHS blueprint samples
 
-K nasazení ukázek pro Spojené království a NHS podrobného plánu je potřeba provést tyto kroky:
+To deploy the UK OFFICIAL and UK NHS blueprint samples, the following steps must be taken:
 
 > [!div class="checklist"]
-> - Vytvořit nový podrobný plán z ukázky
-> - Označení kopie ukázky jako **publikované**
-> - Přiřazení kopie podrobného plánu k existujícímu předplatnému
+> - Create a new blueprint from the sample
+> - Mark your copy of the sample as **Published**
+> - Assign your copy of the blueprint to an existing subscription
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
+## <a name="create-blueprint-from-sample"></a>Create blueprint from sample
 
-Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
+First, implement the blueprint sample by creating a new blueprint in your environment using the sample as a starter.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
+1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
 
-1. V části _Další ukázky_ Najděte oficiální nebo **NHS** podrobný plán na velká **Británie** a vyberte **použít tuto ukázku**.
+1. Find the **UK OFFICIAL** or **UK NHS** blueprint sample under _Other Samples_ and select **Use this sample**.
 
-1. Zadejte _základy_ ukázky podrobného plánu:
+1. Enter the _Basics_ of the blueprint sample:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu.
-   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
+   - **Blueprint name**: Provide a name for your copy of the blueprint sample.
+   - **Definition location**: Use the ellipsis and select the management group to save your copy of the sample to.
 
-1. Vyberte kartu _artefakty_ v horní části stránky nebo **Další: artefakty** v dolní části stránky.
+1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
 
-1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
+1. Review the list of artifacts that make up the blueprint sample. Many of the artifacts have parameters that we'll define later. Select **Save Draft** when you've finished reviewing the blueprint sample.
 
-## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
+## <a name="publish-the-sample-copy"></a>Publish the sample copy
 
-Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard.
+Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs, but that modification may move it away from the standard.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
+1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
 
-1. V horní části stránky vyberte **publikovat podrobný plán** . Na stránce Nová na pravé straně zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud uděláte změnu později. Poskytněte **poznámky ke změnám** , jako je například "první verze publikovaná ze vzorové Británie nebo ukázky pro Velká Británie (NHS)." Potom v dolní části stránky vyberte **publikovat** .
+1. Select **Publish blueprint** at the top of the page. In the new page on the right, provide a **Version** for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the UK OFFICIAL or UK NHS blueprint sample." Then select **Publish** at the bottom of the page.
 
-## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
+## <a name="assign-the-sample-copy"></a>Assign the sample copy
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
+Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
+1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
 
-1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
+1. Select **Assign blueprint** at the top of the blueprint definition page.
 
-1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
+1. Provide the parameter values for the blueprint assignment:
 
    - Základy
 
-     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
-       Změňte podle potřeby nebo ponechte tak, jak je.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
+     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint.
+       Change as needed or leave as is.
+     - **Location**: Select a region for the managed identity to be created in. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Blueprint definition version**: Pick a **Published** version of your copy of the blueprint sample.
 
-   - Zamknout přiřazení
+   - Lock Assignment
 
-     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
+     Select the blueprint lock setting for your environment. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Ponechte výchozí _systém přiřazenou_ možnost spravovaná identita.
+     Leave the default _system assigned_ managed identity option.
 
-   - Parametry artefaktu
+   - Artifact parameters
 
-     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
+     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For a full list or artifact parameters and their descriptions, see [Artifact parameters table](#artifact-parameters-table).
 
-1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** . Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
+1. Once all parameters have been entered, select **Assign** at the bottom of the page. The blueprint assignment is created and artifact deployment begins. Deployment takes roughly an hour. To check on the status of deployment, open the blueprint assignment.
 
 > [!WARNING]
-> Služba Azure modrotisky a předdefinované ukázky podrobného plánu jsou **zdarma**. Ceny prostředků Azure se účtují [podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
+> The Azure Blueprints service and the built-in blueprint samples are **free of cost**. Azure resources are [priced by product](https://azure.microsoft.com/pricing/). Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost of running resources deployed by this blueprint sample.
 
-## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
+## <a name="artifact-parameters-table"></a>Artifact parameters table
 
-Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
+The following table provides a list of the blueprint artifact parameters:
 
-Název artefaktu|Typ artefaktu|Název parametru|Popis|
+Artifact name|Artifact type|Název parametru|Popis|
 |-|-|-|-|
-|Iniciativa pro Spojené království a oficiální nebo Velká Británie NHS|Přiřazení zásad |Typy prostředků pro audit diagnostických protokolů (zásady: podrobný plán iniciativ pro Spojené království a oficiální nebo Velká Británie NHS) |Seznam typů prostředků, které se mají auditovat, pokud je v nastavení diagnostického protokolu zapnutá možnost Poznámka  Přijatelné hodnoty najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
-|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které podporují Linux OS pro přidání do oboru (Policy: \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru (zásady: \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|Blueprint initiative for UK OFFICIAL or UK NHS|Přiřazení zásad |Resource types to audit diagnostic logs (Policy: Blueprint initiative for UK OFFICIAL or UK NHS) |List of resource types to audit if diagnostic log setting is note enabled.  For acceptable values, see [Supported services, schemas, and categories for Azure Diagnostic Logs](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
+|\[Preview\]: Deploy Log Analytics Agent for Linux VMs |Přiřazení zásad |Optional: List of VM images that have supported Linux OS to add to scope (Policy: \[Preview\]: Deploy Log Analytics Agent for Linux VMs) |(Optional) Default value is _none_. For more information, see [Create a Log Analytics workspace in the Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview\]: Deploy Log Analytics Agent for Windows VMs |Přiřazení zásad |Optional: List of VM images that have supported Windows OS to add to scope (Policy: \[Preview\]: Deploy Log Analytics Agent for Windows VMs) |(Optional) Default value is _none_. For more information, see [Create a Log Analytics workspace in the Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste si prohlédli kroky k nasazení ukázek OFICIÁLNÍch a NHS podrobných plánů na Velká Británie, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
+Now that you've reviewed the steps to deploy the UK OFFICIAL and UK NHS blueprint samples, visit the following articles to learn about the overview and control mapping:
 
 > [!div class="nextstepaction"]
-> [Oficiální Velká Británie a plány pro Velká Británie a NHS – přehled](./index.md)
-> [UK oficiální a UK NHS modrotisky – mapování ovládacích prvků](./control-mapping.md)
+> [UK OFFICIAL and UK NHS blueprints - Overview](./index.md)
+> [UK OFFICIAL and UK NHS blueprints - Control mapping](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

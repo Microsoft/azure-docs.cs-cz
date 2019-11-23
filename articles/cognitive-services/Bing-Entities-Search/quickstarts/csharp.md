@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Odeslat požadavek hledání do Vyhledávání entit Bingu REST API pomocíC#'
+title: 'Quickstart: Send a search request to the REST API using C# - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání entit Bingu REST API pomocí C#a přijmout odpověď JSON.
+description: Use this quickstart to send a request to the Bing Entity Search REST API using C#, and receive a JSON response.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,38 +10,38 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: e41d99b4ddee41778e97aac9b5b947c0aa0eac5a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: efb2c646d364a93910d2105edb6527ad1116ccb2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404959"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327174"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý start: Odeslat požadavek hledání do Vyhledávání entit Bingu REST API pomocíC#
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Quickstart: Send a search request to the Bing Entity Search REST API using C#
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá C# aplikace pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
+Use this quickstart to make your first call to the Bing Entity Search API and view the JSON response. This simple C# application sends a news search query to the API, and displays the response. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
 
 Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+- Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
 
-- Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet. Instalace balíčku NuGet v aplikaci Visual Studio:
+- Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet. To install the NuGet package in Visual Studio:
 
-   1. Klikněte pravým tlačítkem na projekt v **Průzkumník řešení**.
-   2. Vyberte **Spravovat balíčky NuGet**.
-   3. Vyhledejte *Newtonsoft. JSON* a nainstalujte balíček.
+   1. Right click your project in **Solution Explorer**.
+   2. Select **Manage NuGet Packages**.
+   3. Search for *Newtonsoft.Json* and install the package.
 
-- Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
+- If you're using Linux/MacOS, this application can be run by  using [Mono](https://www.mono-project.com/).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové C# řešení konzoly v aplikaci Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. create a new C# console solution in Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
     
     ```csharp
     using Newtonsoft.Json;
@@ -50,7 +50,7 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
     using System.Text;
     ```
 
-2. Vytvořte novou třídu a přidejte proměnné pro koncový bod rozhraní API, klíč předplatného a dotaz, který chcete vyhledat.
+2. Create a new class, and add variables for the API endpoint, your subscription key, and query you want to search.
 
     ```csharp
     namespace EntitySearchSample
@@ -71,13 +71,13 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
     }
     ```
 
-## <a name="send-a-request-and-get-the-api-response"></a>Poslat žádost a získat odpověď rozhraní API
+## <a name="send-a-request-and-get-the-api-response"></a>Send a request and get the API response
 
-1. V rámci třídy vytvořte funkci s názvem `Search()`. Vytvořte nový `HttpClient` objekt a přidejte `Ocp-Apim-Subscription-Key` do záhlaví klíč předplatného.
+1. Within the class, create a function called `Search()`. Create a new `HttpClient` object, and add your subscription key to the `Ocp-Apim-Subscription-Key` header.
 
-   1. Vytvořte identifikátor URI pro vaši žádost kombinací hostitele a cesty. Pak přidejte svůj trh a zakódovat dotaz na adresu URL.
-   2. Očekává `client.GetAsync()` se, že se získá odpověď HTTP, a pak se odpověď JSON uloží podle `ReadAsStringAsync()`očekávání.
-   3. Naformátujte řetězec JSON `JsonConvert.DeserializeObject()` pomocí a vytiskněte ho do konzoly.
+   1. Construct the URI for your request by combining the host and path. Then add your market, and URL-encode your query.
+   2. Await `client.GetAsync()` to get a HTTP response, and then store the json response by awaiting `ReadAsStringAsync()`.
+   3. Format the JSON string with `JsonConvert.DeserializeObject()` and print it to the console.
 
       ```csharp
       async static void Search()
@@ -96,7 +96,7 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
       }
       ```
 
-2. V metodě Main vaší aplikace zavolejte `Search()` funkci.
+2. In the main method of your application, call the `Search()` function.
     
     ```csharp
     static void Main(string[] args)
@@ -107,7 +107,7 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
     ```
 
 
-## <a name="example-json-response"></a>Příklad odpovědi JSON
+## <a name="example-json-response"></a>Example JSON response
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -172,10 +172,10 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)
+> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [What is the Bing Entity Search API?](../overview.md )
+* [Bing Entity Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

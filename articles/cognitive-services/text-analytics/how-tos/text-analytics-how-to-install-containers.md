@@ -1,7 +1,7 @@
 ---
-title: Instalace a spuštění kontejnerů – Analýza textu
+title: Install and run containers - Text Analytics
 titleSuffix: Azure Cognitive Services
-description: Postup stažení, instalaci a spouštění kontejnerů v tomto kurzu návod pro analýzu textu.
+description: How to download, install, and run containers for Text Analytics in this walkthrough tutorial.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,77 +9,77 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 69fc955bbd9fc584e0d95e02087b778624def11b
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 6e05dc2136211bcd15a9f0583358b05ccbf96f5a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316477"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383166"
 ---
-# <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýza textu
+# <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
-Kontejnery umožňují spouštět text analytická rozhraní API ve vašem vlastním prostředí a jsou skvělé pro konkrétní požadavky na zabezpečení a zabezpečení dat. Kontejnery Analýza textu poskytují pokročilé zpracování přirozeného jazyka v nezpracovaném textu a zahrnují tři hlavní funkce: analýzu mínění, extrakci klíčových frází a detekci jazyka. Odkaz na entitu se v kontejneru aktuálně nepodporuje.
+Containers enable you to run the Text Analytic APIs in your own environment and are great for your specific security and data governance requirements. The Text Analytics containers provide advanced natural language processing over raw text, and include three main functions: sentiment analysis, key phrase extraction, and language detection. Entity linking is not currently supported in a container.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Chcete-li spustit některý z Analýza textu kontejnerů, je nutné mít prostředí hostitelského počítače a kontejneru.
+To run any of the Text Analytics containers, you must have the host computer and container environments.
 
 ## <a name="preparation"></a>Příprava
 
-Před použitím kontejnerů pro analýzu textu, musí splňovat následující požadavky:
+You must meet the following prerequisites before using Text Analytics containers:
 
-|Požadováno|Účel|
+|Požaduje se|Účel|
 |--|--|
-|Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
-|Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
-|Prostředek Analýza textu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek služby Azure [Analýza textu](../../cognitive-services-apis-create-account.md) , který získá přidružený klíč rozhraní API a identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách Analýza textu přehledu a klíčů Azure Portal a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : Jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : Koncový bod, jak je uvedený na stránce **Přehled**|
+|Docker Engine| You need the Docker Engine installed on a [host computer](#the-host-computer). Docker provides packages that configure the Docker environment on [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), and [Linux](https://docs.docker.com/engine/installation/#supported-platforms). For a primer on Docker and container basics, see the [Docker overview](https://docs.docker.com/engine/docker-overview/).<br><br> Docker must be configured to allow the containers to connect with and send billing data to Azure. <br><br> **On Windows**, Docker must also be configured to support Linux containers.<br><br>|
+|Familiarity with Docker | You should have a basic understanding of Docker concepts, like registries, repositories, containers, and container images, as well as knowledge of basic `docker` commands.| 
+|Text Analytics resource |In order to use the container, you must have:<br><br>An Azure [Text Analytics resource](../../cognitive-services-apis-create-account.md) to get the associated API key and endpoint URI. Both values are available on the Azure portal's Text Analytics Overview and Keys pages and are required to start the container.<br><br>**{API_KEY}** : One of the two available resource keys on the **Keys** page<br><br>**{ENDPOINT_URI}** : The endpoint as provided on the **Overview** page|
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="the-host-computer"></a>Hostitelský počítač
+## <a name="the-host-computer"></a>The host computer
 
 [!INCLUDE [Host Computer requirements](../../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
+### <a name="container-requirements-and-recommendations"></a>Container requirements and recommendations
 
-Následující tabulka popisuje minimální a doporučené Procesorových jader a aspoň 2.6 gigahertz (GHz) nebo rychlejší a paměti v gigabajtech (GB), přidělit pro každý kontejner pro analýzu textu.
+The following table describes the minimum and recommended CPU cores, at least 2.6 gigahertz (GHz) or faster, and memory, in gigabytes (GB), to allocate for each Text Analytics container.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Key Phrase Extraction](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-# <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Language Detection](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Sentiment Analysis](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
 ***
 
-* Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
-* TPS-transakcí za sekundu
+* Each core must be at least 2.6 gigahertz (GHz) or faster.
+* TPS - transactions per second
 
-Základní a paměť odpovídají `--cpus` nastavení a `--memory` , která se `docker run` používají jako součást příkazu.
+Core and memory correspond to the `--cpus` and `--memory` settings, which are used as part of the `docker run` command.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Get the container image with `docker pull`
 
-Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Microsoft.
+Container images for Text Analytics are available on the Microsoft Container Registry.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Key Phrase Extraction](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-# <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Language Detection](#tab/language)
 
 [!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Sentiment Analysis](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
@@ -87,81 +87,81 @@ Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Micro
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-text-analytics-containers"></a>Vyžádané čtení Docker pro kontejnery Analýza textu
+### <a name="docker-pull-for-the-text-analytics-containers"></a>Docker pull for the Text Analytics containers
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Key Phrase Extraction](#tab/keyphrase)
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Language Detection](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Sentiment Analysis](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
 ***
 
-## <a name="how-to-use-the-container"></a>Jak používat kontejner
+## <a name="how-to-use-the-container"></a>How to use the container
 
-Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
+Once the container is on the [host computer](#the-host-computer), use the following process to work with the container.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [](../text-analytics-resource-container-config.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
-1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
+1. [Run the container](#run-the-container-with-docker-run), with the required billing settings. More [examples](../text-analytics-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available.
+1. [Query the container's prediction endpoint](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
+## <a name="run-the-container-with-docker-run"></a>Run the container with `docker run`
 
-Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) spusťte kterýkoli ze tří kontejnerů. Podrobnosti o tom, jak získat `{ENDPOINT_URI}` hodnoty a `{API_KEY}` , najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
+Use the [docker run](https://docs.docker.com/engine/reference/commandline/run/) command to run any of the three containers. Refer to [Gathering required parameters](#gathering-required-parameters) for details on how to get the `{ENDPOINT_URI}` and `{API_KEY}` values.
 
-K dispozici jsou [Příklady](../text-analytics-resource-container-config.md#example-docker-run-commands) příkazů.`docker run`
+[Examples](../text-analytics-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Key Phrase Extraction](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Language Detection](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Sentiment Analysis](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
 ***
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
+> The `Eula`, `Billing`, and `ApiKey` options must be specified to run the container; otherwise, the container won't start.  For more information, see [Billing](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
+## <a name="query-the-containers-prediction-endpoint"></a>Query the container's prediction endpoint
 
-Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST.
+The container provides REST-based query prediction endpoint APIs.
 
-Pro rozhraní API kontejneru `http://localhost:5000`použijte hostitele.
+Use the host, `http://localhost:5000`, for container APIs.
 
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Zastavení kontejneru
+## <a name="stop-the-container"></a>Stop the container
 
 [!INCLUDE [How to stop the container](../../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud spouštíte kontejner s povoleným výstupním [připojením](../text-analytics-resource-container-config.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
+If you run the container with an output [mount](../text-analytics-resource-container-config.md#mount-settings) and logging enabled, the container generates log files that are helpful to troubleshoot issues that happen while starting or running the container.
 
 [!INCLUDE [Cognitive Services FAQ note](../../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Fakturace
+## <a name="billing"></a>Vyúčtování
 
-Kontejnery Analýza textu odesílají informace o fakturaci do Azure pomocí prostředku _Analýza textu_ na účtu Azure. 
+The Text Analytics containers send billing information to Azure, using a _Text Analytics_ resource on your Azure account. 
 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](../text-analytics-resource-container-config.md).
+For more information about these options, see [Configure containers](../text-analytics-resource-container-config.md).
 
 <!--blogs/samples/video course -->
 
@@ -169,21 +169,21 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů pro analýzu textu. Souhrn:
+In this article, you learned concepts and workflow for downloading, installing, and running Text Analytics containers. Souhrn:
 
-* Analýza textu poskytuje pro Docker tři kontejnery pro Linux, které zapouzdřují různé možnosti:
-   * *Extrakce klíčových frází*
-   * *Rozpoznávání jazyka*
-   * *Analýza subjektivního hodnocení*
-* Image kontejneru se stáhnou z kontejneru registru Microsoft (MCR) v Azure.
-* Spuštění imagí kontejnerů v Dockeru.
-* Rozhraní REST API nebo sady SDK můžete použít k volání operací v kontejnerech rozhraní Text Analytics tak, že zadáte identifikátor URI kontejneru hostitele.
-* Při vytváření instance kontejneru, je nutné zadat fakturační informace.
+* Text Analytics provides three Linux containers for Docker, encapsulating various capabilities:
+   * *Key Phrase Extraction*
+   * *Language Detection*
+   * *Sentiment Analysis*
+* Container images are downloaded from the Microsoft Container Registry (MCR) in Azure.
+* Container images run in Docker.
+* You can use either the REST API or SDK to call operations in Text Analytics containers by specifying the host URI of the container.
+* You must specify billing information when instantiating a container.
 
 > [!IMPORTANT]
-> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.
+> Cognitive Services containers are not licensed to run without being connected to Azure for metering. Customers need to enable the containers to communicate billing information with the metering service at all times. Cognitive Services containers do not send customer data (e.g., the image or text that is being analyzed) to Microsoft.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Kontrola [konfigurace kontejnery](../text-analytics-resource-container-config.md) nastavení konfigurace
-* Přečtěte si [Nejčastější dotazy](../text-analytics-resource-faq.md) k řešení problémů souvisejících s funkcemi.
+* Review [Configure containers](../text-analytics-resource-container-config.md) for configuration settings
+* Refer to [Frequently asked questions (FAQ)](../text-analytics-resource-faq.md) to resolve issues related to functionality.

@@ -5,18 +5,18 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 73d8abcbc6e902855592f4bf3ca0373b8582130d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: df41094d163b8e3ecb78827df1a52dafab0aec1f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150435"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326519"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Kurz: Vytvoření více instancí prostředků pomocí šablon Resource Manageru
 
 Zjistěte, jak iterovat vaši šablonu Azure Resource Manageru k vytvoření více instancí prostředku Azure. V tomto kurzu upravíte šablonu tak, aby vytvořila tři instance účtu úložiště.
 
-![Azure Resource Manager vytvoří diagram více instancí.](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
+![Azure Resource Manager creates multiple instances diagram](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -27,11 +27,11 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* [Visual Studio Code](https://code.visualstudio.com/) s [rozšířením Nástroje Resource Manageru](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
@@ -49,7 +49,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-Stávající šablona vytvoří jeden účet úložiště. Upravíte šablonu tak, aby vytvořila tři účty úložiště.  
+Stávající šablona vytvoří jeden účet úložiště. Upravíte šablonu tak, aby vytvořila tři účty úložiště.
 
 Z Visual Studio Code proveďte následující čtyři změny:
 

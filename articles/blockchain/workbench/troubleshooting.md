@@ -1,38 +1,32 @@
 ---
-title: Řešení potíží s Azure blockchain Workbench
-description: Řešení potíží s aplikací Azure blockchain Workbench Preview
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Workbench troubleshooting
+description: How to troubleshoot an Azure Blockchain Workbench Preview application.
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 3032a81a4411cb162a335189ca65b845f8d6305f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.reviewer: brendal
+ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329087"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324307"
 ---
-# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Řešení potíží s Azure blockchain Workbench Preview
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench Preview troubleshooting
 
-K dispozici je skript PowerShellu, který vám pomůže s vývojářským laděním nebo podporou. Skript vygeneruje Shrnutí a shromáždí podrobné protokoly pro řešení potíží. Shromážděné protokoly zahrnují:
+A PowerShell script is available to assist with developer debugging or support. The script generates a summary and collects detailed logs for troubleshooting. Collected logs include:
 
-* Blockchain síť, jako je například Ethereem
-* Mikroslužby blockchain Workbench
+* Blockchain network, such as Ethereum
+* Blockchain Workbench microservices
 * Application Insights
-* Monitorování Azure (protokoly Azure Monitor)
+* Azure Monitoring (Azure Monitor logs)
 
-Tyto informace můžete použít k určení dalších kroků a určení hlavní příčiny problémů.
+You can use the information to determine next steps and determine root cause of issues.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-## <a name="troubleshooting-script"></a>Skript pro řešení potíží
+## <a name="troubleshooting-script"></a>Troubleshooting script
 
-Skript pro řešení potíží s PowerShellem je k dispozici na GitHubu. [Stáhněte soubor .zip](https://github.com/Azure-Samples/blockchain/archive/master.zip) nebo naklonujte ukázku z GitHubu.
+The PowerShell troubleshooting script is available on GitHub. [Stáhněte soubor .zip](https://github.com/Azure-Samples/blockchain/archive/master.zip) nebo naklonujte ukázku z GitHubu.
 
 ```
 git clone https://github.com/Azure-Samples/blockchain.git
@@ -41,40 +35,40 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Spuštění skriptu
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Spusťte skript `collectBlockchainWorkbenchTroubleshooting.ps1` pro shromáždění protokolů a vytvoření souboru ZIP obsahujícího složku s informacemi o řešení potíží. Například:
+Run the `collectBlockchainWorkbenchTroubleshooting.ps1` script to collect logs and create a ZIP file containing a folder of troubleshooting information. Například:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
 ```
-Skript přijímá následující parametry:
+The script accepts the following parameters:
 
 | Parametr  | Popis | Požaduje se |
 |---------|---------|----|
-| SubscriptionID | SubscriptionID pro vytvoření nebo vyhledání všech prostředků. | Ano |
-| ResourceGroupName | Název skupiny prostředků Azure, do které se nasadila aplikace blockchain Workbench | Ano |
-| OutputDirectory | Cesta pro vytvoření výstupu Soubor ZIP. Pokud není zadaný, použije se ve výchozím nastavení aktuální adresář. | Ne |
-| LookbackHours | Počet hodin, které se mají použít při přijímání telemetrie Výchozí hodnota je 24 hodin. Maximální hodnota je 90 hodin. | Ne |
-| OmsSubscriptionId | ID předplatného, kde se nasadí protokoly Azure Monitor Tento parametr předejte jenom v případě, že protokoly Azure Monitor pro síť blockchain se nasazují mimo skupinu prostředků blockchain Workbench.| Ne |
-| OmsResourceGroup |Skupina prostředků, ve které se nasadí protokoly Azure Monitor Tento parametr předejte jenom v případě, že protokoly Azure Monitor pro síť blockchain se nasazují mimo skupinu prostředků blockchain Workbench.| Ne |
-| OmsWorkspaceName | Název Log Analytics pracovního prostoru. Tento parametr předejte jenom v případě, že protokoly Azure Monitor pro síť blockchain se nasazují mimo skupinu prostředků blockchain Workbench. | Ne |
+| SubscriptionID | SubscriptionID to create or locate all resources. | Ano |
+| ResourceGroupName | Name of the Azure Resource Group where Blockchain Workbench has been deployed. | Ano |
+| OutputDirectory | Path to create the output .ZIP file. If not specified, defaults to the current directory. | Ne |
+| LookbackHours | Number of hours to use when pulling telemetry. Default value is 24 hours. Maximum value is 90 hours | Ne |
+| OmsSubscriptionId | The subscription ID where Azure Monitor logs is deployed. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group.| Ne |
+| OmsResourceGroup |The resource group where Azure Monitor logs is deployed. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group.| Ne |
+| OmsWorkspaceName | The Log Analytics workspace name. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group | Ne |
 
-## <a name="what-is-collected"></a>Co se shromažďuje?
+## <a name="what-is-collected"></a>What is collected?
 
-Výstupní soubor ZIP obsahuje následující strukturu složek:
+The output ZIP file contains the following folder structure:
 
-| Složka nebo soubor | Popis  |
+| Folder or File | Popis  |
 |---------|---------|
-| \Summary.txt | Souhrn systému |
-| \Metrics\blockchain | Metriky o blockchain |
-| \Metrics\Workbench | Metriky o aplikaci Workbench |
-| \Details\Blockchain | Podrobné protokoly o blockchain |
-| \Details\Workbench | Podrobné protokoly o aplikaci Workbench |
+| \Summary.txt | Summary of the system |
+| \Metrics\blockchain | Metrics about the blockchain |
+| \Metrics\Workbench | Metrics about the workbench |
+| \Details\Blockchain | Detailed logs about the blockchain |
+| \Details\Workbench | Detailed logs about the workbench |
 
-Soubor Shrnutí poskytuje snímek celkového stavu aplikace a stavu aplikace. Souhrn obsahuje doporučené akce, nejdůležitější hlavní chyby a metadata o spuštěných službách.
+The summary file gives you a snapshot of the overall state of the application and health of the application. The summary provides recommended actions, highlights top errors, and metadata about running services.
 
-Složka **metriky** obsahuje metriky různých systémových komponent v průběhu času. Například výstupní soubor `\Details\Workbench\apiMetrics.txt` obsahuje souhrn různých kódů odpovědí a dobu odezvy v průběhu období shromažďování. Složka **podrobností** obsahuje podrobné protokoly pro řešení konkrétních problémů s nástrojem Workbench nebo základní blockchainou sítí. Například `\Details\Workbench\Exceptions.csv` obsahuje seznam nejaktuálnějších výjimek, ke kterým došlo v systému, což je užitečné při řešení chyb s inteligentními kontrakty nebo interakcemi s blockchain. 
+The **Metrics** folder contains metrics of various system components over time. For example, the output file `\Details\Workbench\apiMetrics.txt` contains a summary of different response codes, and response times throughout the collection period. The **Details** folder contains detailed logs for troubleshooting specific issues with Workbench or the underlying blockchain network. For example, `\Details\Workbench\Exceptions.csv` contains a list of the most recent exceptions that have occurred in the system, which is useful for troubleshooting errors with smart contracts or interactions with the blockchain. 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Průvodce odstraňováním potíží s Application Insights pro Azure blockchain Workbench](https://aka.ms/workbenchtroubleshooting)
+> [Azure Blockchain Workbench Application Insights troubleshooting guide](https://aka.ms/workbenchtroubleshooting)

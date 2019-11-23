@@ -1,48 +1,48 @@
 ---
-title: Kurz – Přidání značek k prostředkům v šabloně
-description: Přidejte značky do prostředků, které nasadíte v šabloně Azure Resource Manager. Značky umožňují logicky organizovat prostředky.
+title: Tutorial - add tags to resources in template
+description: Add tags to resources that you deploy in your Azure Resource Manager template. Tags let you logically organize resources.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 663de1e341815eac039c49cee63f8a492b0cb7a9
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 078d85b3120baf5b8bea9c305fb1f97763f8df59
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150182"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406066"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Kurz: Přidání značek do šablony Správce prostředků
+# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Tutorial: Add tags in your Resource Manager template
 
-V tomto kurzu se naučíte přidávat značky do prostředků v šabloně. [Značky](resource-group-using-tags.md) vám pomůžou logicky organizovat vaše prostředky. Hodnoty značek se zobrazí v sestavách nákladů. Dokončení tohoto kurzu trvá **8 minut** .
+In this tutorial, you learn how to add tags to resources in your template. [Tags](resource-group-using-tags.md) help you logically organize your resources. The tag values show up in cost reports. This tutorial takes **8 minutes** to complete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Doporučujeme, abyste dokončili [kurz týkající se šablon pro rychlý Start](template-tutorial-quickstart-template.md), ale není to nutné.
+We recommend that you complete the [tutorial about Quickstart templates](template-tutorial-quickstart-template.md), but it's not required.
 
-Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Kontrola šablony
+## <a name="review-template"></a>Review template
 
-Předchozí šablona nasadila účet úložiště, App Service plán a webovou aplikaci.
+Your previous template deployed a storage account, App Service plan, and web app.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json)]
 
-Po nasazení těchto prostředků možná budete potřebovat sledovat náklady a hledat prostředky, které patří do určité kategorie. Můžete přidat značky, které vám pomohou tyto problémy vyřešit.
+After deploying these resources, you might need to track costs and find resources that belong to a category. You can add tags to help solve these issues.
 
 ## <a name="add-tags"></a>Přidání značek
 
-Prostředky označíte přidáním hodnot, které vám pomůžou identifikovat jejich použití. Můžete například přidat značky, které uvádějí prostředí a projekt. Můžete přidat značky, které identifikují nákladové středisko nebo tým, který je vlastníkem daného prostředku. Přidejte všechny hodnoty, které dávají smysl pro vaši organizaci.
+You tag resources to add values that help you identify their use. For example, you can add tags that list the environment and the project. You could add tags that identify a cost center or the team that owns the resource. Add any values that make sense for your organization.
 
-Následující příklad zvýrazní změny šablony. Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
+The following example highlights the changes to the template. Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-template"></a>Nasazení šablony
 
-Je čas nasadit šablonu a prohlédnout si výsledky.
+It's time to deploy the template and look at the results.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -68,22 +68,22 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Ověření nasazení
+## <a name="verify-deployment"></a>Ověření nasazení
 
-Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
+You can verify the deployment by exploring the resource group from the Azure portal.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. V nabídce vlevo vyberte **skupiny prostředků**.
-1. Vyberte skupinu prostředků, do které jste nasadili.
-1. Vyberte jeden z prostředků, například prostředek účtu úložiště. Vidíte, že má nyní značky.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. From the left menu, select **Resource groups**.
+1. Select the resource group you deployed to.
+1. Select one of the resources, such as the storage account resource. You see that it now has tags.
 
-   ![Zobrazit značky](./media/template-tutorial-add-tags/show-tags.png)
+   ![Show tags](./media/template-tutorial-add-tags/show-tags.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
@@ -92,7 +92,7 @@ Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali značky k prostředkům. V dalším kurzu se dozvíte, jak pomocí souborů parametrů zjednodušit předávání hodnot do šablony.
+In this tutorial, you added tags to the resources. In the next tutorial, you'll learn how to use parameter files to simplify passing in values to the template.
 
 > [!div class="nextstepaction"]
-> [Použít soubor parametrů](template-tutorial-use-parameter-file.md)
+> [Use parameter file](template-tutorial-use-parameter-file.md)

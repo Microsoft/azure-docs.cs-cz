@@ -1,78 +1,78 @@
 ---
-title: Omezení služby Public Preview – digitální vlákna Azure | Microsoft Docs
-description: Přečtěte si o omezeních služby Public Preview pro digitální vlákna Azure.
+title: Public preview service limits - Azure Digital Twins | Microsoft Docs
+description: Learn about public preview service, subscription, instance, and rate limits for Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 3cea4fe65e49bfa2d49822d443103ae6cc6ce69f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: f54311af65d9678b2a51b23a38bab66111a818ca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014169"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383050"
 ---
 # <a name="public-preview-service-limits"></a>Omezení služby ve verzi Public Preview
 
-V rámci verze Public Preview má digitální vlákna Azure následující dočasné předplatné, instanci a omezení přenosové rychlosti.
+During the public preview, Azure Digital Twins has the following temporary subscription, instance, and rate limits.
 
-Tato omezení existují, pokud chcete zjednodušit učení o nové službě a jejich mnoha funkcích.
+These constraints exist to help simplify learning about the new service and its many features.
 
 > [!NOTE]
-> Tato omezení se zvýší nebo odeberou obecnou dostupností (GA).
+> These limits will be increased or removed by general availability (GA).
 
-## <a name="per-subscription-limits"></a>Omezení pro předplatné
+## <a name="per-subscription-limits"></a>Per-subscription limits
 
-V rámci verze Public Preview může každé předplatné Azure vytvořit nebo spustit pouze jednu instanci digitálního vlákna Azure v jednom okamžiku.
+During the public preview, each Azure subscription can create or run only one Azure Digital Twins instance at a time.
 
 > [!TIP]
-> Odstraníte-li instanci, můžete vytvořit novou.
+> If you delete your instance, you can create a new one.
 
-## <a name="per-instance-limits"></a>Omezení podle instancí
+## <a name="per-instance-limits"></a>Per-instance limits
 
-Každá instance digitálního vlákna v Azure pak může mít:
+In turn, each Azure Digital Twins instance can have:
 
-- Právě jeden integrovaný prostředek **IoTHub** , který se vytvoří automaticky během zřizování služby.
-- Právě jeden koncový bod **EventHub** pro typ události **DeviceMessage**.
-- Až tři koncové body **EventHub**, **ServiceBus**nebo **EventGrid** typu události **SensorChange**, **SpaceChange**, **TopologyOperation**nebo **UdfCustom**.
+- Exactly one embedded **IoTHub** resource that's created automatically during service provisioning.
+- Exactly One **EventHub** endpoint for the event type **DeviceMessage**.
+- Up to three **EventHub**, **ServiceBus**, or **EventGrid** endpoints of the event type **SensorChange**, **SpaceChange**, **TopologyOperation**, or **UdfCustom**.
 
 > [!NOTE]
-> Některé parametry, které jsou obvykle definovány při vytváření výše uvedených entit Azure IoT, nejsou ve verzi Public Preview požadovány.
-> - Nejnovější specifikace rozhraní API najdete v [referenční dokumentaci k Swagger](./how-to-use-swagger.md) .
+> Some parameters that are usually defined in creating the above Azure IoT entities are not required during public preview.
+> - Consult the [Swagger reference documentation](./how-to-use-swagger.md) for the most recent API specifications.
 
-## <a name="azure-digital-twins-management-api-limits"></a>Omezení rozhraní API pro správu digitálních vláken Azure
+## <a name="azure-digital-twins-management-api-limits"></a>Azure Digital Twins Management API limits
 
-Omezení přenosové rychlosti požadavků pro rozhraní API pro správu digitálních vláken Azure je:
+The request rate limits for your Azure Digital Twins Management API are:
 
-- 100 požadavků za sekundu rozhraní API pro správu digitálních vláken Azure.
-- Až 1 000 objektů vrácených jedním dotazem rozhraní API pro správu digitálních vláken Azure.
+- 100 requests per second to the Azure Digital Twins Management API.
+- Up to 1,000 objects returned by a single Azure Digital Twins Management API query.
 
 > [!IMPORTANT]
-> Pokud překročíte limit 1 000 objektů, zobrazí se chybová zpráva a bude nutné dotaz zjednodušit.
+> If you exceed the 1,000-object limit, you receive an error and must simplify your query.
 
-## <a name="user-defined-functions-rate-limits"></a>Omezení rychlosti uživatelem definovaných funkcí
+## <a name="user-defined-functions-rate-limits"></a>User-defined functions rate limits
 
-Následující omezení nastaví celkový počet všech volání uživatelsky definovaných funkcí provedených u vaší instance digitálního vlákna Azure:
+The following limits set the total number of all user-defined function calls made to your Azure Digital Twins instance:
 
-- 400 volání klientské knihovny za sekundu
-- 100 **SendNotification** volání za sekundu
+- 400 client library calls per second
+- 100 **SendNotification** calls per second
 
 > [!NOTE]
-> Následující akce mohou způsobit dočasné použití limitů dalších sazeb:
-> - Úpravy provedené v metadatech objektu topologie
-> - Aktualizace provedené v definici uživatelsky definované funkce
-> - Zařízení, která poprvé odesílají telemetrii
+> The following actions might cause additional rate limits to be applied temporarily:
+> - Edits made to the topology object metadata
+> - Updates made to the user-defined function definition
+> - Devices that send telemetry for the first time
 
-## <a name="device-telemetry-limits"></a>Omezení telemetrie zařízení
+## <a name="device-telemetry-limits"></a>Device telemetry limits
 
-Tato omezení omezují celkový počet všech zpráv, které vaše zařízení můžou odeslat do instance digitálních vláken Azure:
+The following limits cap the total number of all messages your devices can send to your Azure Digital Twins instance:
 
-- 100 zpráv za sekundu napříč všemi zařízeními
--   25 zpráv za sekundu na zařízení
+- 100 messages per second across all devices
+-   25 messages per second per device
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud si chcete vyzkoušet ukázku digitálních vláken Azure, [vyhledejte dostupné místnosti v rychlém](./quickstart-view-occupancy-dotnet.md)startu.
+- To try out an Azure Digital Twins sample, go to [Quickstart to find available rooms](./quickstart-view-occupancy-dotnet.md).

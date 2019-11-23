@@ -1,7 +1,7 @@
 ---
-title: Rychlý Start – odeslání dotazu do rozhraní API pro místní vyhledávání Bingu pomocí Node. js
+title: Quickstart - Send a query to the API using Node.js - Bing Local Business Search
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure.
+description: Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,35 +10,35 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 925e3bfb4a89832d5cde7e35d5ce5e3be3a5bcbb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: db9132936604e8eed17bbdf173ce1b766fb1b334
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075631"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326688"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání v místním obchodu pomocí Node. js
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Quickstart: Send a query to the Bing Local Business Search API using Node.js
 
-Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v Node. js, je rozhraní API webová služba RESTful kompatibilní s jakýmkoli programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
+Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Node.js, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
 
-Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
+This example application gets local response data from the API for the search query `hotel in Bellevue`.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Nejnovější verze [Node.js](https://nodejs.org/en/download/).
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 
-* [Knihovna požadavků JavaScriptu](https://github.com/request/request)
+* The [JavaScript Request Library](https://github.com/request/request)
 
-Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+You must have a [Cognitive Services API account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) with Bing APIs. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Use the access key provided by the free trial.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Scénář kódu
 
-Následující kód získá definici a odešle požadavek. Implementuje se v následujících krocích:
+The following code gets defines and sends the request. Implementuje se v následujících krocích:
 
 1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
-2. Zadejte dotaz a přidejte parametr dotazu.
+2. Specify the query, and add the query parameter.
 3. Vytvořte pro odpověď funkci obslužné rutiny.
-4. Zadejte vyhledávací funkci, která vytvoří požadavek a přidá hlavičku OCP-APIM-Subscription-Key.
+4. Define the Search function that creates the request and adds the Ocp-Apim-Subscription-Key header.
 5. Spusťte funkci vyhledávání.
 
 Následuje celý kód pro tuto ukázku:
@@ -94,6 +94,6 @@ Search();
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý start hledání místních obchodních obchodů](local-quickstart.md)
-* [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
-* [Rychlý Start pro místní vyhledávání v Pythonu](local-search-python-quickstart.md)
+* [Local Business Search quickstart](local-quickstart.md)
+* [Local Business Search Java quickstart](local-search-java-quickstart.md)
+* [Local Business Search Python quickstart](local-search-python-quickstart.md)

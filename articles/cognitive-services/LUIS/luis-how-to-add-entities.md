@@ -1,7 +1,7 @@
 ---
-title: Přidat entity – LUIS
+title: Add entities - LUIS
 titleSuffix: Azure Cognitive Services
-description: Vytvořte entity pro extrakci klíčových dat z uživatelských projevy v aplikacích Language Understanding (LUIS). Extrahovaná data entity používá klientská aplikace pro moje požadavky zákazníků.
+description: Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by the client application to fullfil customer requests.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,182 +11,186 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132689"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383694"
 ---
-# <a name="add-entities-to-extract-data"></a>Přidat entity pro extrakci dat 
+# <a name="add-entities-to-extract-data"></a>Add entities to extract data 
 
-Vytvořte entity pro extrakci klíčových dat z uživatelských projevy v aplikacích Language Understanding (LUIS). Extrahovaná data entity používá vaše klientská aplikace pro moje požadavky zákazníků.
+Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by your client application to fullfil customer requests.
 
-Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Entity popisují informace související s cílem a někdy jsou nezbytné pro vaši aplikaci k provedení svých úkolů. Můžete vytvořit entity, když přidáte příklad utterance k záměru nebo od (před nebo po) přidání příkladu utterance k záměru.
+The entity represents a word or phrase inside the utterance that you want extracted. Entities describe information relevant to the intent, and sometimes they are essential for your app to perform its task. You can create entities when you add an example utterance to an intent or apart from (before or after) adding an example utterance to an intent.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="plan-entities-then-create-and-label"></a>Plánování entit a pak vytvoření a označení
+## <a name="plan-entities-then-create-and-label"></a>Plan entities, then create and label
 
-Entity, které se naučily počítačem, se dají vytvořit z příkladu projevy nebo vytvořit ze stránky **entity** . 
+Machine-learned entities can be created from the example utterances or created from the **Entities** page. 
 
-Obecně platí, že je potřeba věnovat čas plánování entit předtím, než na portálu vytvoříte entitu získanou počítačem. Pak vytvořte entitu získanou počítačem z příkladu utterance s toliki podrobnostmi dílčích komponent a popisovačů a omezení v době, kdy víte v čase. Tento [kurz](tutorial-machine-learned-entity.md) ukazuje, jak použít tuto metodu. 
+In general, a best practice is to spend time planning the entities before creating a machine-learned entity in the portal. Then create the machine-learned entity from the example utterance with as much detail in the subcomponents and descriptors and constraints as you know at the time. The [decomposable entity tutorial](tutorial-machine-learned-entity.md) demonstrates how to use this method. 
 
-V rámci plánování entit můžete znát, že budete potřebovat entity vyhovující textu (například předem připravené entity, entity regulárních výrazů nebo seznam entit). Můžete je vytvořit ze stránky **entity** předtím, než jsou označeny jako projevy. 
+As part of planning the entities, you may know you need text-matching entities (such as prebuilt entities, regular expression entities, or list entities). You can create these from the **Entities** page before they are labeled in example utterances. 
 
-Při označování můžete jednotlivé entity označit popiskem a pak sestavit až na nadřazenou entitu počítačového učení. Nebo můžete začít s entitou získanou nadřazeným počítačem a rozložit ji na podřízené entity. 
+When labeling, you can either label individual entities then build up to a parent machine-learned entity. Or you can start with a parent machine-learned entity and decompose into child entities. 
 
 > [!TIP] 
->Označte všechna slova, která mohou označovat entitu, a to i v případě, že se slova při extrakci v klientské aplikaci nepoužívají. 
+>Label all words that may indicate an entity, even if the words are not used when extracted in the client application. 
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Vytvoření entity před nebo s popisky
+## <a name="creating-an-entity-before-or-with-labeling"></a>Creating an entity before or with labeling
 
-Následující tabulka vám pomůže pochopit, které entity chcete do aplikace vytvořit nebo přidat jednotlivé entity. 
+Use the following table to understand which entities where to create or add each entity to the app. 
 
-|Typ entity|Kde vytvořit entitu na portálu LUIS|
+|Entity type|Where to create entity in the LUIS portal|
 |--|--|
-|Strojově naučená entita|Podrobnosti o entitách nebo záměrech|
-|Entita seznamu|Podrobnosti o entitách nebo záměrech|
+|Strojově naučená entita|Entities or Intent detail|
+|Entita seznamu|Entities or Intent detail|
 |Entiay regulárního výrazu|Entity|
 |Entita Pattern.any|Entity|
-|Předem připravených entit|Entity|
-|Předem sestavená doménová entita|Entity|
+|Prebuilt entity|Entity|
+|Prebuilt domain entity|Entity|
 
-Můžete vytvořit všechny entity ze stránky **entity** , nebo můžete vytvořit několik entit jako součást popisu entity v příkladu utterance na stránce s **podrobnostmi o záměru** . Entitu můžete _Označit_ jenom na příkladu utterance ze stránky s **podrobnostmi záměru** . 
+You can create all the entities from the **Entities** page, or you can create a couple of the entities as part of labeling the entity in the example utterance on the **Intent detail** page. You can only _label_ an entity in an example utterance from the **Intent detail** page. 
 
-## <a name="create-a-machine-learned-entity"></a>Vytvořit entitu získanou počítačem
+## <a name="create-a-machine-learned-entity"></a>Create a machine-learned entity
 
 [!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Vytvoření entity, která odpovídá textu
+## <a name="create-a-text-matching-entity"></a>Create a text-matching entity
 
-Použití entit pro porovnání textu nabízí několik způsobů, jak extrahovat data:
+Use text-matching entities provide several ways to extract data:
 
-|Entity, které se shodují s textem|Účel|
+|Text-matching entities|Účel|
 |--|--|
-|[Seznam entit](#add-list-entities-for-exact-matches)|seznam kanonických názvů spolu s synonymy jako s použitím alternativních forem|
-|Entiay regulárního výrazu|porovnat text s použitím entity regulárního výrazu|
-|[Předem vytvořená entita](tutorial-machine-learned-entity.md#add-prebuilt-number-to-app-to-help-extract-data)|odpovídají běžným datovým typům, jako je číslo, e-mail, datum|
-|Předem sestavená doménová entita|shoda s použitím vybraných domén předmětu|
-|[Pattern.Any](#add-a-patternany-entity)| aby odpovídaly entitám, které mohou být snadno zaměňovány s okolním textem|  
+|[List entity](#add-list-entities-for-exact-matches)|list of canonical names along with synonyms as alternative forms|
+|Entiay regulárního výrazu|match text using a regular expression entity|
+|[Prebuilt entity](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|match common data types such as number, email, date|
+|Prebuilt domain entity|match using selected subject domains|
+|[Pattern.any](#add-a-patternany-entity)| to match entities that may be easily confused with the surrounding text|  
 
-Předem připravené entity fungují bez poskytování vlastních školicích dat. Ostatní entity potřebují zadat data školení zákazníka (například položky seznamu entit) nebo výraz (například regulární výraz nebo vzor. any).
+Prebuilt entities work without providing any custom training data. The other entities need you to provide either customer training data (such as List entity's items) or an expression (such as a regular expression or pattern.any).
 
 <a name="add-list-entities"></a>
 
-### <a name="how-to-create-a-new-custom-entity"></a>Jak vytvořit novou vlastní entitu
+### <a name="how-to-create-a-new-custom-entity"></a>How to create a new custom entity
 
-1. Na portálu LUIS přejděte do části **Správa** a pak na stránku **entity** . 
-1. Vyberte **+ vytvořit**a pak vyberte typ entity. 
-1. Pokračujte v konfiguraci entity a potom po dokončení vyberte **vytvořit** . 
+1. In the LUIS portal, goto the **Manage** section, then the **Entities** page. 
+1. Select **+ Create**, then select the entity type. 
+1. Continue configuring the entity then select **Create** when you are done. 
 
-### <a name="add-list-entities-for-exact-matches"></a>Přidat seznam entit pro přesné shody
+### <a name="add-list-entities-for-exact-matches"></a>Add list entities for exact matches
 
-Seznam entit představují pevné, uzavřené sadu souvisejících slov. I když jako autor může seznam změnit, LUIS nebude zvětšovat nebo zmenšovat seznam. Můžete také importovat do existující entity seznamu pomocí formátu [list entity. JSON (Reference-entity-list. MD # example-JSON-to-list-into-import-entita). 
+List entities represent a fixed, closed set of related words. While you, as the author, can change the list, LUIS won't grow or shrink the list. You can also import to an existing list entity using a [list entity .json format(reference-entity-list.md#example-json-to-import-into-list-entity). 
 
-Následující seznam znázorňuje kanonický název a synonyma. 
+The following list demonstrates the canonical name and the synonyms. 
 
-|Název položky seznamu barev|Barva – synonyma|
+|Color - list item name|Color - synonyms|
 |--|--|
-|Červená|Crimson, krev, Apple, hasicí stroj|
-|Modrá|nebe, Azure, kobalt|
-|Zelená|Kelly, vápno|
+|Červená|crimson, blood, apple, fire-engine|
+|Modrá|sky, azure, cobalt|
+|Zelená|kelly, lime|
 
-Pomocí postupu vytvořte entitu seznamu. Po vytvoření entity seznamu nemusíte v záměru popsat vzorový projevy. Položky seznamu a synonyma se shodují pomocí přesného textu. 
+Use the procedure to create a list entity. Once the list entity is created, you don't need to label example utterances in an intent. List items and synonyms are matched using exact text. 
 
-1. V části **sestavení** vyberte **entity** na levém panelu a potom vyberte **+ vytvořit**.
+1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
 
-1. V dialogovém okně **vytvořit typ entity** zadejte název entity, například `Colors` a **seznam**pro výběr.
-1. V dialogovém okně **vytvořit entitu** vyberte v **podseznamu přidat nový**, zadejte název položky seznamu, například `Green`, a přidejte synonyma.
+1. In the **Create an entity type** dialog box, enter the name of the entity, such as `Colors` and select **List**.
+1. In the **Create a list entity** dialog box, in the **Add new sublist....** , enter the list item name, such as `Green`, then add synonyms.
 
     > [!div class="mx-imgBorder"]
-    > na stránce podrobností entity ![vytvořit seznam barev jako entitu seznamu.](media/how-to-add-entities/create-list-entity-of-colors.png) 
+    > ![Create a list of colors as a list entity in the Entity detail page.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-1. Až skončíte s přidáváním položek seznamu a synonym, vyberte **vytvořit**.
+1. When you are finished adding list items and synonyms, select **Create**.
 
-    Až budete hotovi se skupinou změn v aplikaci, nezapomeňte aplikaci **naučit** . Neprovádějte výuku aplikace po jedné změně. 
+    When you are done with a group of changes to the app, remember to **Train** the app. Do not train the app after a single change. 
 
     > [!NOTE]
-    > Tento postup ukazuje vytvoření a označení entity seznamu z příkladu utterance na stránce s **podrobnostmi o záměru** . Stejnou entitu můžete také vytvořit ze stránky **entity** .
+    > This procedure demonstrates creating and labeling a list entity from an example utterance in the **Intent detail** page. You can also create the same entity from the **Entities** page.
 
-## <a name="add-a-role-for-an-entity"></a>Přidání role pro entitu
+## <a name="add-a-role-for-an-entity"></a>Add a role for an entity
 
-Role je pojmenovaný podtyp entity na základě kontextu. 
+A role is a named subtype of an entity, based on context. 
 
-### <a name="add-a-role-to-distinguish-different-contexts"></a>Přidání role pro odlišení různých kontextů
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Add a role to distinguish different contexts
 
-V následujících utterance jsou dvě umístění a každý z nich je sémanticky určenými slovy, například `to` a `from`: 
+In the following utterance, there are two locations, and each is specified semantically by the words around it such as `to` and `from`: 
 
 `Pick up the package from Seattle and deliver to New York City.`
 
-V tomto postupu přidáte `origin` a `destination` role k předem sestavené entitě geographyV2.
+In this procedure, add `origin` and `destination` roles to a prebuilt geographyV2 entity.
 
-1. Z **sestavení** vyberte **entity** na levém panelu.
+1. From the **Build** section, select **Entities** in the left panel.
 
-1. Vyberte **+ Přidat předem vytvořenou entitu**. Vyberte **geographyV2** a potom vyberte **Hotovo**. Tím se do aplikace přidá předem sestavená entita.
+1. Select **+ Add prebuilt entity**. Select **geographyV2** then select **Done**. This adds a prebuilt entity to the app.
     
     Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](reference-pattern-syntax.md#explicit-lists). 
 
-1. Vyberte nově přidanou předem vytvořenou entitu geographyV2 ze seznamu entit na stránce **entity** . 
-1. Pokud chcete přidat novou roli, vyberte **+** vedle **žádné přidané role**.
-1. Do textového pole **typ role...** zadejte název role `Origin` pak zadejte. Přidejte název druhé role `Destination` pak zadejte. 
+1. Select the newly added prebuilt geographyV2 entity from the **Entities** page list of entities. 
+1. To add a new role, select **+** next to **No roles added**.
+1. In the **Type role...** textbox, enter the name of the role `Origin` then enter. Add a second role name of `Destination` then enter. 
 
     > [!div class="mx-imgBorder"]
-    > ![snímku obrazovky přidání role původu do entity umístění](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+    > ![Screenshot of adding Origin role to Location entity](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
 
-    Role se přidá k předem připravené entitě, ale nepřidá se do žádné projevy pomocí této entity. 
+    The role is added to the prebuilt entity but isn't added to any utterances using that entity. 
 
-### <a name="label-text-with-a-role-in-an-example-utterance"></a>Popisek textu s rolí v příkladu utterance
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Label text with a role in an example utterance
 
-1. Přejít na stránku s podrobnostmi záměru, která obsahuje příklad projevy, který používá roli. 
-1. Pokud chcete s rolí označit popisek, vyberte v příkladu utterance popisek entity (plná čára pod textem) a pak v rozevíracím seznamu vyberte **Zobrazit v paletě entit** . 
-
-    > [!div class="mx-imgBorder"]
-    > ![snímek obrazovky s výběrem zobrazení v paletě entit](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
-
-    Na pravé straně se otevře paleta entit. 
-
-1. Vyberte entitu, potom klikněte na dolní část palety a vyberte roli. 
+1. Go to the Intent details page, which has example utterances that use the role. 
+1. To label with the role, select the entity label (solid line under text) in the example utterance, then select **View in entity palette** from the drop-down list. 
 
     > [!div class="mx-imgBorder"]
-    > ![snímek obrazovky s výběrem zobrazení v paletě entit](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    The entity palette opens to the right. 
+
+1. Select the entity, then go to the bottom of the palette and select the role. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>Přidejte vzor. libovolnou entitu
+## <a name="add-a-patternany-entity"></a>Add a pattern.any entity
 
-[Vzor. všechny](luis-concept-entity-types.md) entity jsou platné jenom v [vzorcích](luis-how-to-model-intent-pattern.md), ne záměrech, jako je například projevy. Tento typ entity pomáhá najít koncové entity různé délky a výběr slov LUIS. Protože tato entita se používá ve vzorku, LUIS ví, kde koncové entity je v šabloně utterance.
+[Pattern.any](luis-concept-entity-types.md) entities are only valid in [patterns](luis-how-to-model-intent-pattern.md), not intents' example utterances. This type of entity helps LUIS find the end of entities of varying length and word choice. Because this entity is used in a pattern, LUIS knows where the end of the entity is in the utterance template.
 
-### <a name="steps-to-create-a-patternany-entity"></a>Postup vytvoření vzoru. kterákoli entita
+### <a name="steps-to-create-a-patternany-entity"></a>Steps to create a pattern.any entity
 
-1. V části **sestavení** vyberte **entity** na levém panelu a potom vyberte **+ vytvořit**.
+1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
 
-1. V dialogovém okně **Zvolte typ entity** zadejte název entity do pole **název** a jako **typ** vyberte **vzor. any** a pak vyberte **vytvořit**.
+1. In the **Choose an entity type** dialog box, enter the entity name in the **Name** box, and select **Pattern.Any** as the **Type** then select **Create**.
 
-    Jakmile [vytvoříte vzor utterance](luis-how-to-model-intent-pattern.md) pomocí této entity, bude se tato entita extrahovat pomocí kombinovaného algoritmu pro porovnávání počítačů a textu. 
+    Once you [create a pattern utterance](luis-how-to-model-intent-pattern.md) using this entity, the entity is extracted with a combined machine-learned and text-matching algorithm. 
 
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Vytvořte šablonu vzoru utterance pro použití vzoru. libovolnou entitu
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Create a pattern template utterance to use pattern.any entity
 
-Použití pattern.any entity, přidejte vzor na **vzory** stránku, **zvýšit výkon aplikace** části, se syntaxí správné složenou závorku, jako například `Where is **{HumanResourcesFormTitle}** on the server?`.
+To use the pattern.any entity, add a pattern on the **Patterns** page, in the **Improve app performance** section, with the correct curly brace syntax, such as `Where is **{HumanResourcesFormTitle}** on the server?`.
 
 Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](reference-pattern-syntax.md#explicit-lists). 
 
-## <a name="do-not-change-entity-type"></a>Neměnit typ entity
+## <a name="do-not-change-entity-type"></a>Do not change entity type
 
-Služba LUIS neumožňuje změnit typ entity, protože nebude vědět, co se má přidat nebo odebrat k vytvoření této entity. Chcete-li změnit typ, je lepší vytvořit novou entitu správného typu s mírně odlišný název. Po vytvoření entity v každé utterance, odeberte starý název s popiskem entity a přidejte nový název entity. Jakmile se všechny projevy mít relabeled, odstraňte staré entitu. 
+LUIS does not allow you to change the type of the entity because it doesn't know what to add or remove to construct that entity. In order to change the type, it is better to create a new entity of the correct type with a slightly different name. Once the entity is created, in each utterance, remove the old labeled entity name and add the new entity name. Once all the utterances have been relabeled, delete the old entity. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vzorcích:
+> [!div class="nextstepaction"] 
+> [Use prebuilt models](howto-add-prebuilt-models.md) 
 
-* [Koncepty vzorů](luis-concept-patterns.md)
-* [Syntaxe vzorů](reference-pattern-syntax.md)
+Další informace:
+* How to [train](luis-how-to-train.md)
+* How to [test](luis-interactive-test.md)
+* How to [publish](luis-how-to-publish-app.md)
+* Patterns:
+    * [Koncepty](luis-concept-patterns.md)
+    * [Syntax](reference-pattern-syntax.md)
+* [Prebuilt entities GitHub repository](https://github.com/Microsoft/Recognizers-Text)
+* [Data Extraction concepts](luis-concept-data-extraction.md)
 
-Další informace o předem připravených entit, najdete v článku [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text) projektu. 
 
-Informace o tom, jak se entita zobrazuje v odpovědi JSON koncového bodu dotazu, naleznete v tématu [extrakce dat](luis-concept-data-extraction.md)
-
-Teď, když jste přidali projevy záměry a entity, budete mít základní aplikaci LUIS. Zjistěte, jak [trénování](luis-how-to-train.md), [testování](luis-interactive-test.md), a [publikovat](luis-how-to-publish-app.md) vaší aplikace.
  

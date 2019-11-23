@@ -1,27 +1,27 @@
 ---
-title: 'C#Kurz: indexování dat z databází SQL Azure'
+title: 'Tutorial: Index data in C# from Azure SQL databases'
 titleSuffix: Azure Cognitive Search
-description: C#příklad kódu ukazuje, jak se připojit ke službě Azure SQL Database, extrahovat hledaná data a načíst je do indexu služby Azure Kognitivní hledání.
+description: In this C# tutorial, connect to Azure SQL database, extract searchable data, and load it into an Azure Cognitive Search index.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 36215403f99cc86ab4fb111ce95a6b3190063d7b
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113324"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406716"
 ---
-# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Kurz: Import databáze SQL Azure s využitím indexerů Azure Kognitivní hledání
+# <a name="tutorial-import-azure-sql-database-in-c-using-azure-cognitive-search-indexers"></a>Tutorial: Import Azure SQL database in C# using Azure Cognitive Search indexers
 
-Naučte se konfigurovat indexer pro extrakci prohledávatelných dat z ukázkové databáze SQL Azure. [Indexery](search-indexer-overview.md) jsou součástí služby Azure kognitivní hledání, která prochází externími zdroji dat a naplňuje [Index vyhledávání](search-what-is-an-index.md) obsahem. U všech indexerů je indexer pro Azure SQL Database nejčastěji používaný. 
+Learn how to configure an indexer for extracting searchable data from a sample Azure SQL database. [Indexers](search-indexer-overview.md) are a component of Azure Cognitive Search that crawl external data sources, populating a [search index](search-what-is-an-index.md) with content. Of all indexers, the indexer for Azure SQL Database is the most widely used. 
 
 Znalost konfigurace indexeru je užitečná, protože zjednodušuje množství kódu, který musíte psát a spravovat. Místo přípravy a nabízení datové sady JSON odpovídající schématu můžete ke zdroji dat připojit indexer a nechat ho extrahovat data a vložit je do indexu. Volitelně také můžete indexer spouštět podle plánu opakování, aby přebíral změny v základním zdroji.
 
-V tomto kurzu pomocí [klientských knihoven Azure kognitivní hledání .NET](https://aka.ms/search-sdk) a konzolové aplikace .NET Core provedete následující úlohy:
+In this tutorial, use the [Azure Cognitive Search .NET client libraries](https://aka.ms/search-sdk) and a .NET Core console application to perform the following tasks:
 
 > [!div class="checklist"]
 > * Přidání informací o vyhledávací službě do nastavení aplikace
@@ -33,41 +33,41 @@ V tomto kurzu pomocí [klientských knihoven Azure kognitivní hledání .NET](h
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-V tomto rychlém startu se používají následující služby, nástroje a data. 
+The following services, tools, and data are used in this quickstart. 
 
-[Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
+[Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this tutorial.
 
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) ukládá externí zdroj dat používaný indexerem. Ukázkové řešení obsahuje datový soubor SQL pro vytvoření tabulky. Postup pro vytvoření služby a databáze jsou k dispozici v tomto kurzu.
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) stores the external data source used by an indexer. Ukázkové řešení obsahuje datový soubor SQL pro vytvoření tabulky. Steps for creating the service and database are provided in this tutorial.
 
-Pro spuštění ukázkového řešení lze použít [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), libovolné vydání. Vzorový kód a pokyny byly testovány na bezplatnou edici Community.
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), any edition, can be used to run the sample solution. Sample code and instructions were tested on the free Community edition.
 
-[Azure-Samples/Search-dotnet-Začínáme](https://github.com/Azure-Samples/search-dotnet-getting-started) poskytuje ukázkové řešení, které najdete v úložišti GitHub Samples Azure. Stáhněte a extrahujte řešení. Ve výchozím nastavení jsou řešení jen pro čtení. Klikněte pravým tlačítkem na řešení a zrušte zaškrtnutí atributu jen pro čtení, aby bylo možné upravovat soubory.
+[Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) provides the sample solution, located in the Azure samples GitHub repository. Download and extract the solution. By default, solutions are read-only. Right-click the solution and clear the read-only attribute so that you can modify files.
 
 > [!Note]
-> Pokud používáte bezplatnou službu Azure Kognitivní hledání, budete omezeni na tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Ujistěte se, že ve své službě máte místo pro příjem nových prostředků.
+> If you are using the free Azure Cognitive Search service, you are limited to three indexes, three indexers, and three data sources. V tomto kurzu se vytváří od každého jeden. Ujistěte se, že ve své službě máte místo pro příjem nových prostředků.
 
-## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
+## <a name="get-a-key-and-url"></a>Get a key and URL
 
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
 
-![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
 
-Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+All requests require an api-key on every request sent to your service. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="set-up-connections"></a>Nastavení připojení
 Informace o připojení k požadovaným službám se zadává do souboru **appsettings.json** v řešení. 
 
-1. V aplikaci Visual Studio otevřete soubor **DotNetHowToIndexers. sln** .
+1. In Visual Studio, open the **DotNetHowToIndexers.sln** file.
 
-1. V Průzkumník řešení otevřete **appSettings. JSON** , abyste mohli naplnit jednotlivá nastavení.  
+1. In Solution Explorer, open **appsettings.json** so that you can populate each setting.  
 
-První dvě položky, které můžete hned vyplnit, pomocí adresy URL a klíčů pro správu služby Azure Kognitivní hledání. Když je zadaný koncový bod `https://mydemo.search.windows.net`, název služby, který se má poskytnout, je `mydemo`.
+The first two entries you can fill in right now, using the URL and admin keys for your Azure Cognitive Search service. Given an endpoint of `https://mydemo.search.windows.net`, the service name to provide is `mydemo`.
 
 ```json
 {
@@ -77,17 +77,17 @@ První dvě položky, které můžete hned vyplnit, pomocí adresy URL a klíč�
 }
 ```
 
-Poslední položka vyžaduje existující databázi. Vytvoříte ho v dalším kroku.
+The last entry requires an existing database. You'll create it in the next step.
 
-## <a name="prepare-sample-data"></a>Příprava ukázkových dat
+## <a name="prepare-sample-data"></a>Prepare sample data
 
-V tomto kroku vytvoříte externí zdroj dat, který může indexer procházet. Datovou sadu ve službě Azure SQL Database můžete vytvořit pomocí webu Azure Portal a souboru *hotels.sql* z ukázky. Azure Kognitivní hledání spotřebovává sloučené sady řádků, jako je například jedna vygenerovaná ze zobrazení nebo dotazu. Soubor SQL v ukázkovém řešení vytvoří a naplní jednu tabulku.
+V tomto kroku vytvoříte externí zdroj dat, který může indexer procházet. Datovou sadu ve službě Azure SQL Database můžete vytvořit pomocí webu Azure Portal a souboru *hotels.sql* z ukázky. Azure Cognitive Search consumes flattened rowsets, such as one generated from a view or query. Soubor SQL v ukázkovém řešení vytvoří a naplní jednu tabulku.
 
 Následující cvičení předpokládá, že neexistuje žádný server ani databáze, a v kroku 2 poskytuje pokyny k jejich vytvoření. Pokud máte existující prostředek, volitelně můžete tabulku hotels přidat do něj podle pokynů od kroku 4 dále.
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/). 
+1. [Sign in to the Azure portal](https://portal.azure.com/). 
 
-2. Pokud chcete vytvořit databázi, server a skupinu prostředků, najděte nebo vytvořte **Azure SQL Database** . Můžete použít výchozí hodnoty a nejnižší cenovou úroveň. Jednou z výhod vytvoření serveru je, že můžete zadat uživatelské jméno a heslo správce, které jsou potřeba k vytvoření a načtení tabulek v pozdějším kroku.
+2. Find or create an **Azure SQL Database** to create a database, server, and resource group. Můžete použít výchozí hodnoty a nejnižší cenovou úroveň. Jednou z výhod vytvoření serveru je, že můžete zadat uživatelské jméno a heslo správce, které jsou potřeba k vytvoření a načtení tabulek v pozdějším kroku.
 
    ![Stránka Nová databáze](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 
@@ -97,7 +97,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
    ![Stránka databáze SQL](./media/search-indexer-tutorial/hotels-db.png)
 
-4. V navigačním podokně klikněte na **Editor dotazů (Preview)** .
+4. On the navigation pane, click **Query editor (preview)** .
 
 5. Klikněte na **Přihlášení** a zadejte uživatelské jméno a heslo správce serveru.
 
@@ -135,7 +135,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Jakmile jsou data a nastavení konfigurace na místě, vzorový program v **DotNetHowToIndexers. sln** je připravený k sestavování a spouštění. Než to provedete, věnujte chvíli prostudování definic indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
+Once the data and configuration settings are in place, the sample program in **DotNetHowToIndexers.sln** is ready to build and run. Než to provedete, věnujte chvíli prostudování definic indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
 
   + **hotel.cs**, který obsahuje schéma definující index
   + **Program.cs**, který obsahuje funkce pro vytváření a správu struktur ve vaší službě
@@ -153,13 +153,13 @@ public string HotelName { get; set; }
 
 Schéma může obsahovat také další elementy, včetně profilů vyhodnocování pro zvýšení skóre vyhledávání, vlastních analyzátorů a dalších konstrukcí. Pro naše účely je však schéma definováno řídce a skládá se pouze z polí, která jsou v ukázkových datových sadách.
 
-V tomto kurzu indexer přetahuje data z jednoho zdroje dat. V praxi můžete ke stejnému indexu připojit více indexerů a vytvořit tak konsolidovanou prohledávatelný index z více zdrojů dat. V závislosti na tom, kde potřebujete flexibilitu, můžete použít stejný pár indexu a indexeru a měnit pouze zdroje dat nebo jeden index s různými kombinacemi indexeru a zdroje dat.
+V tomto kurzu indexer přetahuje data z jednoho zdroje dat. In practice, you can attach multiple indexers to the same index, creating a consolidated searchable index from multiple data sources. V závislosti na tom, kde potřebujete flexibilitu, můžete použít stejný pár indexu a indexeru a měnit pouze zdroje dat nebo jeden index s různými kombinacemi indexeru a zdroje dat.
 
 ### <a name="in-programcs"></a>Soubor Program.cs
 
-Hlavní program obsahuje logiku pro vytváření klienta, index, zdroj dat a indexer. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
+The main program includes logic for creating a client, an index, a data source, and an indexer. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
 
-Objekt zdroje dat je nakonfigurovaný s nastavením, která jsou specifická pro prostředky Azure SQL Database, včetně [přírůstkového indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [funkcí detekce změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) v Azure SQL. Ukázková databáze hotelů v Azure SQL má sloupec "obnovitelné odstranění" s názvem **IsDeleted**. Pokud je tento sloupec v databázi nastavený na hodnotu true, indexer odebere odpovídající dokument z indexu služby Azure Kognitivní hledání.
+The data source object is configured with settings that are specific to Azure SQL database resources, including [incremental indexing](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) for leveraging the built-in [change detection features](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) of Azure SQL. The demo hotels database in Azure SQL has a "soft delete" column named **IsDeleted**. When this column is set to true in the database, the indexer removes the corresponding document from the Azure Cognitive Search index.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -176,7 +176,7 @@ Objekt zdroje dat je nakonfigurovaný s nastavením, která jsou specifická pro
   searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
   ```
 
-Objekt indexeru je Platform-nezávislá, kde konfigurace, plánování a volání jsou stejné bez ohledu na zdroj. Tento příklad indexeru zahrnuje plán, možnost resetu, která vymaže historii indexeru a volá metodu pro vytvoření a spuštění indexeru hned.
+An indexer object is platform-agnostic, where  configuration, scheduling, and invocation are the same regardless of the source. This example indexer includes a schedule, a reset option that clears indexer history, and calls a method to create and run the indexer immediately.
 
   ```csharp
   Console.WriteLine("Creating Azure SQL indexer...");
@@ -230,7 +230,7 @@ Váš kód je spuštěný místně v sadě Visual Studio a připojuje se k vaš�
 
 + Informace o připojení k databázi v souboru **appsettings.json**. Měl by to být připojovací řetězec ADO.NET získaný z portálu a upravený tak, aby obsahoval platné uživatelské jméno a heslo pro vaši databázi. Uživatelský účet musí mít oprávnění k načtení dat.
 
-+ Omezení prostředků. Vyvoláte si, že úroveň Free má omezení 3 indexy, indexerů a zdrojů dat. Služba, která dosáhne maximálního omezení, nemůže vytvářet nové objekty.
++ Omezení prostředků. Recall that the Free tier has limits of 3 indexes, indexers, and data sources. Služba, která dosáhne maximálního omezení, nemůže vytvářet nové objekty.
 
 ## <a name="search-the-index"></a>Prohledání indexu 
 
@@ -254,18 +254,18 @@ Na webu Azure Portal na stránce Přehled vyhledávací služby klikněte v horn
 
 Všechny indexery, včetně toho, který jste právě vytvořili prostřednictvím kódu programu, jsou uvedené na portálu. Můžete otevřít definici indexeru a zobrazit jeho zdroj dat nebo nakonfigurovat plán aktualizace pro přebírání nových a změněných řádků.
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby klikněte na odkazy pro **indexy**, **indexery**a **zdroje dat**.
-3. Vyberte jednotlivé objekty, které chcete zobrazit nebo upravit nastavení konfigurace.
+1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, click the links for **Indexes**, **Indexers**, and **Data Sources**.
+3. Select individual objects to view or modify configuration settings.
 
    ![Dlaždice Indexery a Zdroje dat](./media/search-indexer-tutorial/tiles-portal.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob vyčištění po kurzu odstraněním skupiny prostředků, která obsahuje službu Azure Kognitivní hledání. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Kognitivní hledání.
+The fastest way to clean up after a tutorial is by deleting the resource group containing the Azure Cognitive Search service. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. In the portal, the resource group name is on the Overview page of Azure Cognitive Search service.
 
 ## <a name="next-steps"></a>Další kroky
 
-K kanálu indexeru můžete připojit algoritmy obohacení AI. Jako další krok pokračujte následujícím kurzem.
+You can attach AI enrichment algorithms to an indexer pipeline. Jako další krok pokračujte následujícím kurzem.
 
 > [!div class="nextstepaction"]
 > [Indexování dokumentů ve službě Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

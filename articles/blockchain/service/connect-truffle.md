@@ -1,79 +1,73 @@
 ---
-title: Připojení ke službě Azure blockchain pomocí Truffle
-description: Připojení k síti služby Azure blockchain pomocí Truffle
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Use Truffle to connect to Azure Blockchain Service
+description: Connect to an Azure Blockchain Service network using Truffle
 ms.date: 11/20/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: f5d752c99331d454e7f9f98c06b9ba0209de8cc7
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: b83685ccaf29f1004b01f9125a2a438251bc9239
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285384"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325288"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Rychlý Start: použití Truffle pro připojení ke službě Azure blockchain
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Quickstart: Use Truffle to connect to Azure Blockchain Service
 
-V tomto rychlém startu použijete Truffle připojit k uzlu transakce služby Azure blockchain. Pak použijete interaktivní konzolu Truffle k volání metod **web3** pro interakci se sítí blockchain.
+In this quickstart, you use Truffle connect to an Azure Blockchain Service transaction node. You then use the Truffle interactive console to call **web3** methods to interact with your blockchain network.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
-* Nainstalujte [Truffle](https://github.com/trufflesuite/truffle). Truffle vyžaduje instalaci několika nástrojů, včetně [Node. js](https://nodejs.org), [Gitu](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Pro Web3 je potřeba Python.
+* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* Install [Truffle](https://github.com/trufflesuite/truffle). Truffle requires several tools to be installed including [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Install [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python is needed for Web3.
 
-## <a name="create-truffle-project"></a>Vytvořit projekt Truffle
+## <a name="create-truffle-project"></a>Create Truffle project
 
-1. Otevřete příkazový řádek Node. js nebo prostředí.
-1. Změňte adresář na místo, kde chcete vytvořit adresář projektu Truffle.
-1. Vytvořte adresář pro projekt a změňte cestu k novému adresáři. Například:
+1. Open a Node.js command prompt or shell.
+1. Change directory to where you want to create the Truffle project directory.
+1. Create a directory for the project and change your path to the new directory. Například:
 
     ``` bash
     mkdir truffledemo
     cd truffledemo
     ```
 
-1. Inicializujte projekt Truffle.
+1. Initialize the Truffle project.
 
     ``` bash
     truffle init
     ```
 
-1. Do složky projektu nainstalujte Ethereem JavaScript API web3. V současné době je vyžadována verze web3 verze 1.0.0-beta. 37.
+1. Install Ethereum JavaScript API web3 in the project folder. Currently, version web3 version 1.0.0-beta.37 is required.
 
     ``` bash
     npm install web3@1.0.0-beta.37
     ```
 
-    Během instalace se může zobrazit upozornění npm.
+    You may receive npm warnings during installation.
     
-## <a name="configure-truffle-project"></a>Konfigurace projektu Truffle
+## <a name="configure-truffle-project"></a>Configure Truffle project
 
-Ke konfiguraci projektu Truffle potřebujete některé informace o uzlu transakce z Azure Portal.
+To configure the Truffle project, you need some transaction node information from the Azure portal.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. Přejít na člena služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Go to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
 
-    ![Vybrat výchozí uzel transakce](./media/connect-truffle/transaction-nodes.png)
+    ![Select default transaction node](./media/connect-truffle/transaction-nodes.png)
 
-1. Vyberte **připojovací řetězce**.
-1. Zkopírujte připojovací řetězec z **https (přístupová klávesa 1)** . Pro další oddíl potřebujete řetězec.
+1. Select **Connection strings**.
+1. Copy the connection string from **HTTPS (Access key 1)** . You need the string for the next section.
 
     ![Připojovací řetězec](./media/connect-truffle/connection-string.png)
 
-### <a name="edit-configuration-file"></a>Upravit konfigurační soubor
+### <a name="edit-configuration-file"></a>Edit configuration file
 
-Dále je potřeba aktualizovat konfigurační soubor Truffle pomocí koncového bodu uzlu transakce.
+Next, you need to update the Truffle configuration file with the transaction node endpoint.
 
-1. Ve složce projektu **truffledemo** otevřete konfigurační soubor Truffle `truffle-config.js` v editoru.
-1. Nahraďte obsah souboru následujícími konfiguračními informacemi. Přidejte proměnnou obsahující adresu koncového bodu. Nahraďte lomenou závorku hodnotami, které jste shromáždili z předchozí části.
+1. In the **truffledemo** project folder, open the Truffle configuration file `truffle-config.js` in an editor.
+1. Replace the contents of the file with the following configuration information. Add a variable containing the endpoint address. Replace the angle bracket with values you collected from the previous section.
 
     ``` javascript
     var defaultnode = "<default transaction node connection string>";   
@@ -89,23 +83,23 @@ Dále je potřeba aktualizovat konfigurační soubor Truffle pomocí koncového 
     }
     ```
 
-1. Uložte změny `truffle-config.js`.
+1. Save the changes to `truffle-config.js`.
 
 ## <a name="connect-to-transaction-node"></a>Připojení k transakčnímu uzlu
 
-Pomocí *Web3* se připojte k uzlu transakce.
+Use *Web3* to connect to the transaction node.
 
-1. Použijte konzolu Truffle pro připojení k výchozímu uzlu transakce. V příkazovém řádku nebo prostředí spusťte následující příkaz:
+1. Use the Truffle console to connect to the default transaction node. At a command prompt or shell, run the following command:
 
     ``` bash
     truffle console --network defaultnode
     ```
 
-    Truffle se připojí k výchozímu uzlu transakce a poskytne interaktivní konzolu.
+    Truffle connects to the default transaction node and provides an interactive console.
 
-    Můžete volat metody v objektu **web3** pro interakci se sítí blockchain.
+    You can call methods on the **web3** object to interact with your blockchain network.
 
-1. Zavolejte metodu **getBlockNumber** , která vrátí aktuální číslo bloku.
+1. Call the **getBlockNumber** method to return the current block number.
 
     ```bash
     web3.eth.getBlockNumber();
@@ -117,7 +111,7 @@ Pomocí *Web3* se připojte k uzlu transakce.
     truffle(defaultnode)> web3.eth.getBlockNumber();
     18567
     ```
-1. Ukončete konzolu Truffle.
+1. Exit the Truffle console.
 
     ```bash
     .exit
@@ -125,9 +119,9 @@ Pomocí *Web3* se připojte k uzlu transakce.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili Truffle k připojení k výchozímu uzlu transakce služby Azure blockchain a použili interaktivní konzolu pro návrat aktuální číslo blockchain bloku.
+In this quickstart, you used Truffle connect to an Azure Blockchain Service default transaction node and used the interactive console to return the current blockchain block number.
 
-Zkuste v dalším kurzu použít Azure blockchain Development Kit pro Ethereem k vytvoření, sestavení, nasazení a spuštění funkce inteligentního kontraktu prostřednictvím transakce.
+Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
 
 > [!div class="nextstepaction"]
-> [Použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv](send-transaction.md)
+> [Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md)

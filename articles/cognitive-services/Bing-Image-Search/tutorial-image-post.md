@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Extrahovat obrázek podrobně popisuje použití rozhraní API Bingu pro vyhledávání obrázků aC#'
+title: 'Tutorial: Extract image details with the REST API and C# - Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: Pomocí informací v tomto článku vytvořte aplikaci v jazyce C#, která extrahuje podrobnosti o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 995ccc8ffeb436526608803362cc361c74a75316
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e9ba5925ce562e53dbc415d66bbb529c32a725a7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790040"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327009"
 ---
-# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Kurz: Extrahovat obrázek podrobně popisuje použití rozhraní API Bingu pro vyhledávání obrázků aC#
+# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Kurz: Extrahování podrobností pomocí rozhraní API Bingu pro vyhledávání obrázků a C#
 
 Existuje více [koncových bodů](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint) dostupných prostřednictvím rozhraní API Bingu pro vyhledávání obrázků. Koncový bod `/details` přijímá s obrázkem požadavek POST a může vrátit různé informace o obrázku. Tato aplikace C# odešle obrázek pomocí tohoto rozhraní API a zobrazí podrobnosti vrácené Bingem, což jsou objekty JSON, například následující:
 
@@ -34,9 +34,9 @@ Tento kurz vysvětluje následující postupy:
 
 Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Libovolná edice [sady Visual studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
+* Any edition of [Visual studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -98,7 +98,7 @@ Tato odpověď JSON pak může být vytištěna v konzole.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>Použití tokenu přehledu obrázků v požadavku
 
-Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Příklad:
+Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Například:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2
@@ -106,7 +106,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 
 Pokud obrázek obsahuje identifikovatelné osoby nebo místa, tento požadavek o nich vrátí informace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Zobrazení obrázků a možnosti vyhledávání v jednostránkové webové aplikaci ](tutorial-bing-image-search-single-page-app.md)

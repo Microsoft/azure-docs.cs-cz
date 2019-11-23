@@ -1,90 +1,84 @@
 ---
-title: Jak nakonfigurovat přístup k Azure Active Directory
-description: Jak nakonfigurovat službu Azure Blockchain s přístupem Azure Active Directory
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: seal
+title: Configure Azure Active Directory access - Azure Blockchain Service
+description: How to configure Azure Blockchain Service with Azure Active Directory access
 ms.date: 05/02/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 616e342f1d52179c40c225c5dafc9de13ce85e06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: janders
+ms.openlocfilehash: 6f1271f9bbf89a5e1a6fdfffc00ca856aff94c91
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028212"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326290"
 ---
-# <a name="how-to-configure-azure-active-directory-access"></a>Jak nakonfigurovat přístup k Azure Active Directory
+# <a name="how-to-configure-azure-active-directory-access"></a>How to configure Azure Active Directory access
 
-V tomto článku se dozvíte, jak udělit přístup a připojení k uzlům služba Blockchain v Azure pomocí uživatele, skupiny nebo ID aplikace Azure Active Directory (Azure AD).
+In this article, you learn how to grant access and connect to Azure Blockchain Service nodes using Azure Active Directory (Azure AD) user, group, or application IDs.
 
-Azure AD poskytuje správu identit v cloudu a umožňuje používat jednu identitu napříč celé aplikace enterprise a přístup v Azure. Služba Azure Blockchain integrovat se službou Azure AD a nabízí výhody, jako je například ID federace, ověření jednotného přihlašování a službou Multi-Factor Authentication.
+Azure AD provides cloud-based identity management and allows you to use a single identity across an entire enterprise and access applications in Azure. Azure Blockchain Service is integrated with Azure AD and offers benefits such as ID federation, single sign-on and multi-factor authentication.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Vytvoření blockchainové členu pomocí webu Azure portal](create-member.md)
+* [Create a blockchain member using the Azure portal](create-member.md)
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-Můžete udělit přístup na úrovni člena i na úrovni uzlu. Udělení oprávnění na úrovni člena zase udělí přístup do všech uzlů v rámci člena.
+You can grant access at both the member level and the node level. Granting access rights at the member level will in turn grant access to all nodes under the member.
 
-### <a name="grant-member-level-access"></a>Udělení přístupu na úrovni člena
+### <a name="grant-member-level-access"></a>Grant member level access
 
-Chcete-li udělit přístupová oprávnění na úrovni člena.
+To grant access permission at the member level.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte do **řízení přístupu (IAM) > Přidat > Přidat přiřazení role**.
-1. Vyberte **Blockchain člen uzlu přístup (Preview)** role a přidejte objekt Azure AD ID, kterým chcete přiřadit přístup k. Azure AD ID objektu může být:
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Navigate to **Access control (IAM) > Add > Add role assignment**.
+1. Select the **Blockchain Member Node Access (Preview)** role and add the Azure AD ID object you wish to grant access to. Azure AD ID object can be:
 
-    | Objekt Azure AD | Příklad: |
+    | Azure AD object | Příklad: |
     |-----------------|---------|
-    | Uživatele Azure AD   | `frank@contoso.onmicrosoft.com` |
-    | Skupiny Azure AD  | `sales@contoso.onmicrosoft.com` |
+    | Azure AD user   | `frank@contoso.onmicrosoft.com` |
+    | Azure AD group  | `sales@contoso.onmicrosoft.com` |
     | ID aplikace  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
-    ![Přidání přiřazení role](./media/configure-aad/add-role-assignment.png)
+    ![Add role assignment](./media/configure-aad/add-role-assignment.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
-### <a name="grant-node-level-access"></a>Udělení přístupu na úrovni uzlu
+### <a name="grant-node-level-access"></a>Grant node level access
 
-1. Můžete udělit přístup na úrovni uzlu tak, že přejdete do uzlu zabezpečení a klikněte na název uzlu, který chcete udělit přístup.
-1. Vyberte roli Blockchain člen uzlu přístup (Preview) a přidejte objekt Azure AD ID, kterou chcete udělit přístup k. 
+1. You can grant access at the node level by navigating to node security and click on the node name that you wish to grant access.
+1. Select the Blockchain Member Node Access (Preview) role and add the Azure AD ID object you wish to grant access to. 
 
-## <a name="connect-using-azure-blockchain-connector"></a>Připojit pomocí konektoru služby Azure Blockchain
+## <a name="connect-using-azure-blockchain-connector"></a>Connect using Azure Blockchain Connector
 
-Stáhněte nebo naklonujte [Azure Blockchain konektor z Githubu](https://github.com/Microsoft/azure-blockchain-connector/).
+Download or clone the [Azure Blockchain Connector from GitHub](https://github.com/Microsoft/azure-blockchain-connector/).
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-Postupujte podle tohoto rychlého startu tématu **readme** k vytvoření konektoru ze zdrojového kódu.
+The follow the quickstart section in the **readme** to build the connector from the source code.
 
-### <a name="connect-using-an-azure-ad-user-account"></a>Připojte se pomocí uživatelského účtu Azure AD
+### <a name="connect-using-an-azure-ad-user-account"></a>Connect using an Azure AD user account
 
-1. Spuštěním následujícího příkazu proveďte ověření pomocí účtu uživatele Azure AD. Nahraďte \<myAADDirectory\> s doménou Azure AD. Například, `yourdomain.onmicrosoft.com`.
+1. Run the following command to authenticate using an Azure AD user account. Replace \<myAADDirectory\> with an Azure AD domain. Například, `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
-1. Azure AD vyzve k zadání přihlašovacích údajů.
-1. Přihlaste se pomocí uživatelského jména a hesla.
-1. Po úspěšném ověření váš místní proxy server připojí k uzlu blockchain. Nyní můžete připojit váš klient Geth s místním koncovým bodem.
+1. Azure AD prompts for credentials.
+1. Sign in with your user name and password.
+1. Upon successful authentication, your local proxy connects to your blockchain node. You can now attach your Geth client with the local endpoint.
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>Připojte se pomocí ID aplikace.
+### <a name="connect-using-an-application-id"></a>Connect using an application ID
 
-Mnoho aplikací se ověřování pomocí Azure AD pomocí ID aplikace místo účtu uživatele Azure AD.
+Many applications authenticate with Azure AD using an application ID instead of an Azure AD user account.
 
-Chcete-li připojit k uzlu pomocí ID aplikace, nahraďte **aadauthcode** s **aadclient**.
+To connect to your node using an application ID, replace **aadauthcode** with **aadclient**.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -92,25 +86,25 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | Parametr | Popis |
 |-----------|-------------|
-| id tenanta | Doména služby Azure AD, například `yourdomain.onmicrosoft.com`
-| id klienta | ID klienta registrované aplikace ve službě Azure AD
-| client-secret | Tajný kód klienta registrované aplikace ve službě Azure AD
+| tenant-id | Azure AD domain, For example, `yourdomain.onmicrosoft.com`
+| client-id | Client ID of the registered application in Azure AD
+| client-secret | Client secret of the registered application in Azure AD
 
-Další informace o tom, jak zaregistrovat aplikaci v Azure AD najdete v tématu [jak: Použití portálu k vytvoření aplikace Azure AD a instanční objekt, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md)
+For more information on how to register an application in Azure AD, see [How to: Use the portal to create an Azure AD application and service principal that can access resources](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>Připojení mobilních zařízení nebo text prohlížeče
+### <a name="connect-a-mobile-device-or-text-browser"></a>Connect a mobile device or text browser
 
-Pro mobilní zařízení nebo založený na textu prohlížeče, kde není možné zobrazovat místní ověřování Azure AD Azure AD vygeneruje jednorázové heslo. Můžete zkopírovat přístupový kód a pokračujte v ověřování Azure AD v jiném prostředí.
+For a mobile device or text-based browser where the Azure AD authentication pop-up display is not possible, Azure AD generates a one-time passcode. You can copy the passcode and proceed with Azure AD authentication in another environment.
 
-Chcete-li vygenerovat přístupový kód, nahraďte **aadauthcode** s **aaddevice**. Nahraďte \<myAADDirectory\> s doménou Azure AD. Například, `yourdomain.onmicrosoft.com`.
+To generate the passcode, replace **aadauthcode** with **aaddevice**. Replace \<myAADDirectory\> with an Azure AD domain. Například, `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o zabezpečení dat ve službě Azure Blockchain naleznete v tématu:
+For more information about data security in Azure Blockchain Service, see:
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain služby zabezpečení](data-security.md)
+> [Azure Blockchain Service security](data-security.md)

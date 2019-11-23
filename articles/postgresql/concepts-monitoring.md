@@ -1,59 +1,67 @@
 ---
-title: Sledování a ladění ve službě Azure Database for PostgreSQL – jeden Server
-description: Tento článek popisuje monitorování a ladění funkcí ve službě Azure Database for PostgreSQL – jeden Server.
+title: Monitor and Tune in Azure Database for PostgreSQL - Single Server
+description: This article describes monitoring and tuning features in Azure Database for PostgreSQL - Single Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: c69ffb30a37de8e6dc3e15aa1f7dcd6a9311d614
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 799b2b6ee6074472a951e69dec7e9a87056373b4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274300"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384027"
 ---
-# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Sledování a ladění – Azure Database for PostgreSQL – jeden Server
-Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for PostgreSQL nabízí různé možnosti monitorování k poskytování přehledů o chování vašeho serveru.
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitor and tune Azure Database for PostgreSQL - Single Server
+Monitoring data about your servers helps you troubleshoot and optimize for your workload. Azure Database for PostgreSQL provides various monitoring options to provide insight into the behavior of your server.
 
 ## <a name="metrics"></a>Metriky
-Azure Database for PostgreSQL poskytuje různé metriky, které poskytují přehled o chování prostředků podporujících PostgreSQL server. Jednotlivé metriky je vygenerován v minutových intervalech a má až 30 dní. Můžete nakonfigurovat výstrahy o metrikách. Pokyny krok za krokem, najdete v článku [jak nastavit výstrahy](howto-alert-on-metric.md). Další úkoly zahrnují nastavením automatizovaných akcí, provádění pokročilých analýz a pro archivaci historie. Další informace najdete v tématu [přehled metriky Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Database for PostgreSQL provides various metrics that give insight into the behavior of the resources supporting the PostgreSQL server. Each metric is emitted at a one-minute frequency, and has up to 30 days of history. You can configure alerts on the metrics. For step by step guidance, see [How to set up alerts](howto-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-### <a name="list-of-metrics"></a>Seznam metrik
-Tyto metriky jsou k dispozici pro službu Azure Database for PostgreSQL:
+### <a name="list-of-metrics"></a>List of metrics
+These metrics are available for Azure Database for PostgreSQL:
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Popis|
+|Metrika|Metric Display Name|Jednotka|Popis|
 |---|---|---|---|
-|cpu_percent|Procento CPU|Procento|Procento procesoru používá.|
-|memory_percent|Paměť v procentech|Procento|Procento paměti používá.|
-|io_consumption_percent|V/v úrovně procent|Procento|Procentuální podíl vstupně-výstupní operace používá.|
-|storage_percent|Procento úložiště|Procento|Je maximální procento využité místo mimo server.|
-|storage_used|Využité úložiště|B|Množství využívaného úložiště. Úložiště využívané ve službě mohou být soubory databáze, protokoly transakcí a v protokolech serveru.|
-|storage_limit|Limit úložiště.|B|Maximální velikost úložiště pro tento server.|
-|serverlog_storage_percent|Procento úložiště protokolů serveru|Procento|Procento úložiště protokolů serveru používat úložiště protokolů maximální server na server.|
-|serverlog_storage_usage|Využité úložiště protokolů serveru|B|Množství využívaného úložiště protokolu serveru.|
-|serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
-|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
-|network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
-|network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
-|backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|
-|pg_replica_log_delay_in_bytes|Maximální prodleva mezi repliky|B|Prodleva v bajtech mezi hlavní a většina obložení repliky. Tato metrika je k dispozici na hlavní server.|
-|pg_replica_log_delay_in_seconds|Prodleva repliky|Sekundy|Čas od poslední přehrály transakce. Tato metrika je k dispozici pouze servery repliky.|
+|cpu_percent|CPU percent|Procento|The percentage of CPU in use.|
+|memory_percent|Memory percent|Procento|The percentage of memory in use.|
+|io_consumption_percent|IO percent|Procento|The percentage of IO in use.|
+|storage_percent|Storage percentage|Procento|The percentage of storage used out of the server's maximum.|
+|storage_used|Využité úložiště|Bytes|The amount of storage in use. The storage used by the service may include the database files, transaction logs, and the server logs.|
+|storage_limit|Storage limit|Bytes|The maximum storage for this server.|
+|serverlog_storage_percent|Server Log storage percent|Procento|The percentage of server log storage used out of the server's maximum server log storage.|
+|serverlog_storage_usage|Server Log storage used|Bytes|The amount of server log storage in use.|
+|serverlog_storage_limit|Server Log storage limit|Bytes|The maximum server log storage for this server.|
+|active_connections|Active Connections|Počet|The number of active connections to the server.|
+|connections_failed|Neúspěšná připojení|Počet|The number of failed connections to the server.|
+|network_bytes_egress|Síťové výstupy|Bytes|Network Out across active connections.|
+|network_bytes_ingress|Síťové vstupy|Bytes|Network In across active connections.|
+|backup_storage_used|Backup Storage Used|Bytes|The amount of backup storage used.|
+|pg_replica_log_delay_in_bytes|Max Lag Across Replicas|Bytes|The lag in bytes between the master and the most-lagging replica. This metric is available on the master server only.|
+|pg_replica_log_delay_in_seconds|Replica Lag|Sekund|The time since the last replayed transaction. This metric is available for replica servers only.|
 
 ## <a name="server-logs"></a>Protokoly serveru
-Můžete povolit protokolování na server. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md), Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
+You can enable logging on your server. These logs are also available through Azure Diagnostic Logs in [Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md), Event Hubs, and Storage Account. To learn more about logging, visit the [server logs](concepts-server-logs.md) page.
 
 ## <a name="query-store"></a>Úložiště dotazů
-[Query Store](concepts-query-store.md) uchovává informace o dotazu dotazování statistické údaje o výkonu v průběhu času včetně a počkejte události. Funkci nevyřeší dotazu informace o výkonu modulu runtime v systémové databázi s názvem **azure_sys** pod query_store schématu. Můžete řídit shromažďování a ukládání dat prostřednictvím různých knoflíky konfigurace.
+[Query Store](concepts-query-store.md) keeps track of query performance over time including query runtime statistics and wait events. The feature persists query runtime performance information in a system database named **azure_sys** under the query_store schema. You can control the collection and storage of data via various configuration knobs.
 
-## <a name="query-performance-insight"></a>Query Performance Insight
-[Query Performance Insight](concepts-query-performance-insight.md) funguje ve spojení s Query Store vizualizace, které jsou přístupné z portálu Azure portal. Tyto grafy umožňují identifikovat dotazy klíčů tohoto ovlivnit výkon. Dotazování výkonu Insightis přístupná **podpora a řešení potíží** část Azure Database for PostgreSQL server stránky portálu.
+## <a name="query-performance-insight"></a>Přehled o výkonu dotazů
+[Query Performance Insight](concepts-query-performance-insight.md) works in conjunction with Query Store to provide visualizations accessible from the Azure portal. These charts enable you to identify key queries that impact performance. Query Performance Insightis accessible from the **Support + troubleshooting** section of your Azure Database for PostgreSQL server's portal page.
 
 ## <a name="performance-recommendations"></a>Doporučení k výkonu
-[Doporučení k výkonu](concepts-performance-recommendations.md) funkce identifikuje příležitosti pro zlepšení výkonu úloh. Doporučení k výkonu poskytuje doporučení pro vytvoření nové indexy, které by mohly zvýšit výkon vašich úloh. K vytvoření doporučení indexu, tato funkce vezme v úvahu různé vlastnosti databáze, včetně jeho schématu a úloh podle Query Store. Po implementaci jakékoli doporučení výkon, by měl zákazníkům testování výkonu vyhodnotit její dopad těchto změn. 
+The [Performance Recommendations](concepts-performance-recommendations.md) feature identifies opportunities to improve workload performance. Performance Recommendations provides you with recommendations for creating new indexes that have the potential to improve the performance of your workloads. To produce index recommendations, the feature takes into consideration various database characteristics, including its schema and the workload as reported by Query Store. After implementing any performance recommendation, customers should test performance to evaluate the impact of those changes. 
 
-## <a name="next-steps"></a>Další postup
-- Zobrazit [jak nastavit výstrahy](howto-alert-on-metric.md) pokyny k vytvoření upozornění na metriku.
-- Další informace o tom, jak získat přístup a exportovat metriky pomocí webu Azure portal, rozhraní REST API nebo rozhraní příkazového řádku najdete v tématu [přehled metriky Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-- Přečtěte si náš blog o [osvědčené postupy pro monitorování serveru](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).
+## <a name="service-health"></a>Stav služby
+[Azure Service health](../service-health/overview.md) provides a view of all service health notifications in your subscription. You can set up Service Health alerts to notify you via your preferred communication channels when there are issues or changes that may affect the Azure services and regions you use.
+
+You can view scheduled maintenance events for Azure Database for PostgreSQL - Single Server by using the **planned maintenance** event type. To learn how to create **service health alerts**, visit the [Create activity log alerts on service notifications](../service-health/alerts-activity-log-service-notifications.md) article.
+
+> [!IMPORTANT]
+> The planned maintenance notifications is available in preview for EAST US and UK South only.
+
+## <a name="next-steps"></a>Další kroky
+- See [how to set up alerts](howto-alert-on-metric.md) for guidance on creating an alert on a metric.
+- For more information on how to access and export metrics using the Azure portal, REST API, or CLI, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+- Read our blog on [best practices for monitoring your server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).

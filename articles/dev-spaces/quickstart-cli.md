@@ -1,44 +1,44 @@
 ---
-title: Nasazení aplikace v Kubernetes pomocí Azure Dev Spaces
+title: Develop an application on Kubernetes
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Nasazení mikroslužeb v AKS s využitím Azure Dev Spaces
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
+description: Deploy a microservice on AKS with Azure Dev Spaces
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b43cedce2660c081f51d90cd8dd587e8d0361acd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 932b25e277936a2efe6a3e037458fabd67b024c2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279826"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325646"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Rychlý Start: vývoj aplikace v Kubernetes pomocí Azure Dev Spaces
+# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Quickstart: Develop an application on Kubernetes - Azure Dev Spaces
 V tomto průvodci se naučíte:
 
 - Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
-- Vývoj a spouštění kódu v kontejnerech pomocí příkazového řádku.
+- Develop and run code in containers using the command line.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Create an Azure Kubernetes Service cluster
 
-Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. Níže uvedené příkazy vytvoří skupinu prostředků s názvem *MyResourceGroup* a cluster AKS s názvem *MyAKS*.
+You need to create an AKS cluster in a [supported region][supported-regions]. The below commands create a resource group called *MyResourceGroup* and an AKS cluster called *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Enable Azure Dev Spaces on your AKS cluster
 
-Pomocí příkazu `use-dev-spaces` povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
+Use the `use-dev-spaces` command to enable Dev Spaces on your AKS cluster and follow the prompts. The below command enables Dev Spaces on the *MyAKS* cluster in the *MyResourceGroup* group and creates a *default* dev space.
 
 > [!NOTE]
-> Příkaz `use-dev-spaces` také nainstaluje Azure Dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
+> The `use-dev-spaces` command will also install the Azure Dev Spaces CLI if its not already installed. You cannot install the Azure Dev Spaces CLI in the Azure Cloud Shell.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -58,32 +58,32 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-## <a name="get-sample-application-code"></a>Získat ukázkový kód aplikace
+## <a name="get-sample-application-code"></a>Get sample application code
 
-V tomto článku pomocí [ukázkové aplikace Azure dev Spaces](https://github.com/Azure/dev-spaces) předvádíte použití Azure dev Spaces.
+In this article, you use the [Azure Dev Spaces sample application](https://github.com/Azure/dev-spaces) to demonstrate using Azure Dev Spaces.
 
-Naklonujte aplikaci z GitHubu a přejděte do adresáře *dev-Spaces/Samples/NodeJS/Začínáme/webfront-Endu* :
+Clone the application from GitHub and navigate into the *dev-spaces/samples/nodejs/getting-started/webfrontend* directory:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/nodejs/getting-started/webfrontend
 ```
 
-## <a name="prepare-the-application"></a>Příprava aplikace
+## <a name="prepare-the-application"></a>Prepare the application
 
-Aby bylo možné spustit aplikaci na Azure Dev Spaces, potřebujete graf souboru Dockerfile a Helm. Pro některé jazyky, jako jsou [Java][java-quickstart], [.NET Core][netcore-quickstart]a [Node. js][nodejs-quickstart], můžou Azure dev Spaces nástroje klienta vygenerovat všechny potřebné prostředky. Pro mnoho dalších jazyků, jako je například jít, PHP nebo Python, mohou nástroje klienta generovat graf Helm, pokud můžete zadat platné souboru Dockerfile.
+In order to run your application on Azure Dev Spaces, you need a Dockerfile and Helm chart. For some languages, such as [Java][java-quickstart], [.NET core][netcore-quickstart], and [Node.js][nodejs-quickstart], the Azure Dev Spaces client tooling can generate all the assets you need. For many other languages, such as Go, PHP, and Python, the client tooling can generate the Helm chart as long as you can provide a valid Dockerfile.
 
-Vygenerujte prostředky Docker a Helm Chart pro spuštění aplikace v Kubernetes pomocí příkazu `azds prep`:
+Generate the Docker and Helm chart assets for running the application in Kubernetes using the `azds prep` command:
 
 ```cmd
 azds prep --public
 ```
 
-Chcete-li správně vygenerovat prostředky Docker a Helm Chart, je nutné spustit příkaz `prep` z adresáře *dev-Spaces/Samples/NodeJS/Začínáme/webfront-Endu* .
+You must run the `prep` command from the *dev-spaces/samples/nodejs/getting-started/webfrontend* directory to correctly generate the Docker and Helm chart assets.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 
-Sestavte a spusťte kód v AKS pomocí příkazu `azds up`:
+Build and run your code in AKS using the `azds up` command:
 
 ```cmd
 $ azds up
@@ -107,26 +107,26 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL, která se zobrazí ve výstupu příkazu `azds up`. V tomto příkladu je veřejná adresa URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
+You can see the service running by opening the public URL, which is displayed in the output from the `azds up` command. In this example, the public URL is *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
 
 > [!NOTE]
-> Když při spuštění `azds up`přejdete ke službě, ve výstupu příkazu `azds up` se zobrazí také trasování požadavků HTTP. Tyto trasování vám můžou pomoct při řešení potíží a ladění vaší služby. Tato trasování můžete zakázat pomocí `--disable-http-traces` při spuštění `azds up`.
+> When you navigate to your service while running `azds up`, the HTTP request traces are also displayed in the output of the `azds up` command. These traces can help you troubleshoot and debug your service. You can disable these traces using `--disable-http-traces` when running `azds up`.
 
-Pokud příkaz `azds up` zastavíte pomocí *kombinace kláves Ctrl + c*, služba bude nadále běžet v AKS a veřejná adresa URL zůstane dostupná.
+If you stop the `azds up` command using *Ctrl+c*, the service will continue to run in AKS, and the public URL will remain available.
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit příkaz `azds up`. Příklad:
+To deploy an updated version of your service, you can update any file in your project and rerun the `azds up` command. Například:
 
-1. Pokud je stále spuštěna `azds up`, stiskněte klávesy *Ctrl + c*.
-1. Aktualizujte [řádek 13 v `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) na:
+1. If `azds up` is still running, press *Ctrl+c*.
+1. Update [line 13 in `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) to:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Uložte provedené změny.
-1. Spusťte příkaz `azds up` znovu:
+1. Rerun the `azds up` command:
 
     ```cmd
     $ azds up
@@ -137,10 +137,10 @@ Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný
     ...    
     ```
 
-1. Přejděte do spuštěné služby a sledujte své změny.
-1. Stisknutím *kombinace kláves Ctrl + c* zastavte příkaz `azds up`.
+1. Navigate to your running service and observe your changes.
+1. Press *Ctrl+c* to stop the `azds up` command.
 
-## <a name="clean-up-your-azure-resources"></a>Vyčištění prostředků Azure
+## <a name="clean-up-your-azure-resources"></a>Clean up your Azure resources
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait
@@ -148,10 +148,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
+Learn how Azure Dev Spaces helps you develop more complex applications across multiple containers, and how you can simplify collaborative development by working with different versions or branches of your code in different spaces.
 
 > [!div class="nextstepaction"]
-> [Vývoj pro tým v Azure Dev Spaces][team-quickstart]
+> [Team development in Azure Dev Spaces][team-quickstart]
 
 [java-quickstart]: quickstart-java.md
 [nodejs-quickstart]: quickstart-nodejs.md

@@ -1,53 +1,53 @@
 ---
-title: Ladění a iterace pomocí Visual Studio Code a .NET Core v Kubernetes pomocí Azure Dev Spaces (Visual Studio Code)
+title: 'Debug and iterate on Kubernetes: Visual Studio Code & .NET Core'
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 94bab8044ad9221fe9445dfa7c9e6912274bfe2b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 278ec0683a7ddb3c41f724e06e8ca291d18e3bad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279804"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325588"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Rychlý Start: ladění a iterace pomocí Visual Studio Code a .NET Core v Kubernetes pomocí Azure Dev Spaces (Visual Studio Code)
+# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Quickstart: Debug and iterate on Kubernetes: Visual Studio Code and .NET Core - Azure Dev Spaces
 
 V tomto průvodci se naučíte:
 
 - Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
-- Iterativní vývoj kódu v kontejnerech pomocí Visual Studio Code.
-- Ladit kód ve vývojovém prostoru z Visual Studio Code.
+- Iteratively develop code in containers using Visual Studio Code.
+- Debug the code in your dev space from Visual Studio Code.
 
-Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
-- [Java a Visual Studio Code](quickstart-java.md)
-- [Node. js a Visual Studio Code](quickstart-nodejs.md)
-- [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
+Azure Dev Spaces also allows you debug and iterate using:
+- [Java and Visual Studio Code](quickstart-java.md)
+- [Node.js and Visual Studio Code](quickstart-nodejs.md)
+- [.NET Core and Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
-- [Visual Studio Code nainstalován](https://code.visualstudio.com/download).
-- [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) a [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) rozšíření pro Visual Studio Code nainstalovány.
+- [Visual Studio Code installed](https://code.visualstudio.com/download).
+- The [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) extensions for Visual Studio Code installed.
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Create an Azure Kubernetes Service cluster
 
-Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. Níže uvedené příkazy vytvoří skupinu prostředků s názvem *MyResourceGroup* a cluster AKS s názvem *MyAKS*.
+You need to create an AKS cluster in a [supported region][supported-regions]. The below commands create a resource group called *MyResourceGroup* and an AKS cluster called *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Enable Azure Dev Spaces on your AKS cluster
 
-Pomocí příkazu `use-dev-spaces` povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
+Use the `use-dev-spaces` command to enable Dev Spaces on your AKS cluster and follow the prompts. The below command enables Dev Spaces on the *MyAKS* cluster in the *MyResourceGroup* group and creates a *default* dev space.
 
 > [!NOTE]
-> Příkaz `use-dev-spaces` také nainstaluje Azure Dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
+> The `use-dev-spaces` command will also install the Azure Dev Spaces CLI if its not already installed. You cannot install the Azure Dev Spaces CLI in the Azure Cloud Shell.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -67,93 +67,93 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-## <a name="get-sample-application-code"></a>Získat ukázkový kód aplikace
+## <a name="get-sample-application-code"></a>Get sample application code
 
-V tomto článku pomocí [ukázkové aplikace Azure dev Spaces](https://github.com/Azure/dev-spaces) předvádíte použití Azure dev Spaces.
+In this article, you use the [Azure Dev Spaces sample application](https://github.com/Azure/dev-spaces) to demonstrate using Azure Dev Spaces.
 
-Naklonujte aplikaci z GitHubu.
+Clone the application from GitHub.
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
 ```
 
-## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Příprava ukázkové aplikace v Visual Studio Code
+## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Prepare the sample application in Visual Studio Code
 
-Otevřete Visual Studio Code, klikněte na *soubor* a pak na otevřít *...* , přejděte do adresáře *dev-Spaces/Samples/dotnetcore/Začínáme/webendu* a klikněte na *otevřít*.
+Open Visual Studio Code, click *File* then *Open...* , navigate to the *dev-spaces/samples/dotnetcore/getting-started/webfrontend* directory, and click *Open*.
 
-Nyní máte projekt *webendu* otevřený v Visual Studio Code. Chcete-li aplikaci spustit ve vývojovém prostoru, vygenerujte pomocí rozšíření Azure Dev Spaces v paletě příkazů prostředky Docker a Helm Chart.
+You now have the *webfrontend* project open in Visual Studio Code. To run the application in your dev space, generate the Docker and Helm chart assets using the Azure Dev Spaces extension in the Command Palette.
 
-Chcete-li otevřít paletu příkazů v Visual Studio Code, klikněte na tlačítko *Zobrazit* *paletu příkazů*. Začněte psát `Azure Dev Spaces` a klikněte na `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
+To open the Command Palette in Visual Studio Code, click *View* then *Command Palette*. Begin typing `Azure Dev Spaces` and click on `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
-![Příprava konfiguračních souborů pro Azure Dev Spaces](./media/common/command-palette.png)
+![Prepare configuration files for Azure Dev Spaces](./media/common/command-palette.png)
 
-Když Visual Studio Code taky vyzve ke konfiguraci veřejného koncového bodu, vyberte `Yes` a povolte veřejný koncový bod.
+When Visual Studio Code also prompts you to configure your public endpoint, choose `Yes` to enable a public endpoint.
 
-![Vybrat veřejný koncový bod](media/common/select-public-endpoint.png)
+![Select public endpoint](media/common/select-public-endpoint.png)
 
-Tento příkaz připraví projekt tak, aby běžel v Azure Dev Spaces generováním grafu typu souboru Dockerfile a Helm. Také generuje adresář *. VSCode* s konfigurací ladění v kořenovém adresáři projektu.
+This command prepares your project to run in Azure Dev Spaces by generating a Dockerfile and Helm chart. It also generates a *.vscode* directory with debugging configuration at the root of your project.
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Sestavování a spouštění kódu v Kubernetes ze sady Visual Studio
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Build and run code in Kubernetes from Visual Studio
 
-Klikněte na ikonu *ladění* vlevo a v horní části klikněte na možnost *spuštění .NET Core (AZDS)* .
+Click on the *Debug* icon on the left and click *.NET Core Launch (AZDS)* at the top.
 
 ![](media/get-started-netcore/debug-configuration.png)
 
-Tento příkaz vytvoří a spustí vaši službu v Azure Dev Spaces v režimu ladění. V dolní části okna *terminálu* se zobrazuje výstup sestavení a adresy URL pro vaši službu běžící Azure dev Spaces. *Konzola ladění* zobrazuje výstup protokolu.
+This command builds and runs your service in Azure Dev Spaces in debugging mode. The *Terminal* window at the bottom shows the build output and URLs for your service running Azure Dev Spaces. The *Debug Console* shows the log output.
 
 > [!Note]
-> Pokud nevidíte žádné příkazy Azure Dev Spaces v *paletě příkazů*, ujistěte se, že máte nainstalovanou [příponu Visual Studio Code pro Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Ověřte také, že jste v Visual Studio Code otevřeli adresář *dev-Spaces/Samples/dotnetcore/Začínáme/webendu* .
+> If you don't see any Azure Dev Spaces commands in the *Command Palette*, make sure you have installed the [Visual Studio Code extension for Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Also verify you opened the *dev-spaces/samples/dotnetcore/getting-started/webfrontend* directory in Visual Studio Code.
 
-Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL.
+You can see the service running by opening the public URL.
 
-Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil.
+Click *Debug* then *Stop Debugging* to stop the debugger.
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Pokud chcete nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *.NET Core Launch (AZDS)* . Příklad:
+To deploy an updated version of your service, you can update any file in your project and rerun *.NET Core Launch (AZDS)* . Například:
 
-1. Pokud je vaše aplikace stále spuštěná, klikněte na tlačítko *ladění* a zastavte tak *ladění* .
-1. Aktualizace [řádku 22 v `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) na:
+1. If your application is still running, click *Debug* then *Stop Debugging* to stop it.
+1. Update [line 22 in `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) to:
     
     ```csharp
     ViewData["Message"] = "Your application description page in Azure.";
     ```
 
 1. Uložte provedené změny.
-1. Znovu spusťte *rozhraní .NET Core Launch (AZDS)* .
-1. Přejděte do spuštěné služby a klikněte na *o*aplikaci.
-1. Sledujte své změny.
-1. Klikněte na *ladit* a pak *Zastavit ladění* a zastavte aplikaci.
+1. Rerun *.NET Core Launch (AZDS)* .
+1. Navigate to your running service and click *About*.
+1. Observe your changes.
+1. Click *Debug* then *Stop Debugging* to stop your application.
 
-## <a name="setting-and-using-breakpoints-for-debugging"></a>Nastavení a použití zarážek pro ladění
+## <a name="setting-and-using-breakpoints-for-debugging"></a>Setting and using breakpoints for debugging
 
-Spusťte službu v režimu ladění pomocí *.NET Core Launch (AZDS)* .
+Start your service in debugging mode using *.NET Core Launch (AZDS)* .
 
-Kliknutím na tlačítko *Zobrazit* a *Průzkumník*přejděte zpět do zobrazení *Průzkumníka* . Otevřete `Controllers/HomeController.cs` a Kliknutím kamkoli na řádku 22 umístěte kurzor do umístění. Chcete-li nastavit zarážku *F9* nebo klikněte na položku *ladit* a pak *Přepnout zarážku*.
+Navigate back to the *Explorer* view by clicking *View* then *Explorer*. Open `Controllers/HomeController.cs` and click somewhere on line 22 to put your cursor there. To set a breakpoint hit *F9* or click *Debug* then *Toggle Breakpoint*.
 
-V prohlížeči otevřete službu a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se na Visual Studio Code a sledujte, že řádek 20 je zvýrazněný. Zarážka, kterou jste nastavili, pozastavila službu na řádku 20. Pokud chcete službu obnovit, stiskněte klávesu *F5* nebo klikněte na *ladit* a pak *pokračovat*. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
+Open your service in a browser and notice no message is displayed. Return to Visual Studio Code and observe line 20 is highlighted. The breakpoint you set has paused the service at line 20. To resume the service, hit *F5* or click *Debug* then *Continue*. Return to your browser and notice the message is now displayed.
 
-Při spouštění služby v Kubernetes s připojeným ladicím programem máte úplný přístup k ladicím informacím, jako je zásobník volání, místní proměnné a informace o výjimkách.
+While running your service in Kubernetes with a debugger attached, you have full access to debug information such as the call stack, local variables, and exception information.
 
-Odstraňte zarážku tak, že umístíte kurzor na řádek 22 v `Controllers/HomeController.cs` a zapnete *F9*.
+Remove the breakpoint by putting your cursor on line 22 in `Controllers/HomeController.cs` and hitting *F9*.
 
-## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu z Visual Studio Code
+## <a name="update-code-from-visual-studio-code"></a>Update code from Visual Studio Code
 
-Když je služba spuštěna v režimu ladění, aktualizujte řádek 22 v `Controllers/HomeController.cs`. Příklad:
+While the service is running in debugging mode, update line 22 in `Controllers/HomeController.cs`. Například:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";
 ```
 
-Uložte soubor. Klikněte na *ladit* a pak *znovu spusťte ladění* nebo na *panelu nástrojů ladění*klikněte na tlačítko *restartovat ladění* .
+Uložte soubor. Click *Debug* then *Restart Debugging* or in the *Debug toolbar*, click the *Restart Debugging* button.
 
 ![](media/common/debug-action-refresh.png)
 
-V prohlížeči otevřete službu a Všimněte si, že se zobrazí aktualizovaná zpráva.
+Open your service in a browser and notice your updated message is displayed.
 
-Místo opětovného sestavování a opětovného nasazení nové image kontejneru pokaždé, když jsou provedeny úpravy kódu, Azure Dev Spaces přírůstkově znovu zkompiluje kód v rámci existujícího kontejneru, aby byla zajištěna rychlejší smyčka úprav/ladění.
+Instead of rebuilding and redeploying a new container image each time code edits are made, Azure Dev Spaces incrementally recompiles code within the existing container to provide a faster edit/debug loop.
 
-## <a name="clean-up-your-azure-resources"></a>Vyčištění prostředků Azure
+## <a name="clean-up-your-azure-resources"></a>Clean up your Azure resources
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait
@@ -161,7 +161,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech. 
+Learn how Azure Dev Spaces helps you develop more complex applications across multiple containers, and how you can simplify collaborative development by working with different versions or branches of your code in different spaces. 
 
 > [!div class="nextstepaction"]
 > [Práce s více kontejnery a týmový vývoj](multi-service-netcore.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Pomocí sady SDK vyhledávání zpráv Bingu pro vyhledávání zprávC#'
+title: 'Quickstart: Perform a news search using the SDK for C# - Bing News Search'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu slouží k vyhledání zpráv pomocí sady SDK vyhledávání zpráv Bingu pro C#a zpracování odpovědi.
+description: Use this quickstart to search for news using the Bing News Search SDK for C#, and process the response.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 626596cc88b1b3b1067d7d6d157a548f92fb621a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 03f582b4ba5b3321f46af370a0bb4adfa005046c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206017"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379015"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Rychlý start: Pomocí sady SDK vyhledávání zpráv Bingu pro vyhledávání zprávC#
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Quickstart: Perform a news search with the Bing News Search SDK for C#
 
-Pomocí tohoto rychlého startu zahájíte zpráv pomocí sady SDK vyhledávání zpráv Bingu pro vyhledávání C#. Při vyhledávání zpráv Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch).
+Use this quickstart to begin searching for news with the Bing News Search SDK for C#. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+* Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
-* [Balíček NuGet sady SDK pro vyhledávání zpráv Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). Instaluje se tento balíček nainstaluje taky následující:
+* The [Bing News Search SDK NuGet package](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). Installing this package also installs the following:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
@@ -37,11 +37,11 @@ Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Bingu pro vyhledává
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nový C# konzole řešení v sadě Visual Studio. Pak přidejte následující kód do souboru hlavní kód.
+1. Create a new C# console solution in Visual Studio. Then add the following into the main code file.
     
     ```csharp
     using System;
@@ -49,7 +49,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
     ```
 
-2. Vytvořte proměnnou pro vaše rozhraní API key hledaný termín a potom vytvořte instanci klienta hledání zpráv s ním.
+2. Create a variable for your API key, a search term, and then instantiate the news search client with it.
 
     ```csharp
     var key = "YOUR-ACCESS-KEY";
@@ -57,14 +57,14 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     var client = new NewsSearchClient(new ApiKeyServiceClientCredentials(key));
     ```
 
-## <a name="send-a-request-and-parse-the-result"></a>Odešle žádost a analyzovat výsledky
+## <a name="send-a-request-and-parse-the-result"></a>Send a request, and parse the result
 
-1. Odeslat žádost o vyhledávání službě Bingu pro vyhledávání zpráv pomocí klienta:
+1. Use the client to send a search request to the Bing News Search service:
     ```csharp
     var newsResults = client.News.SearchAsync(query: searchTerm, market: "en-us", count: 10).Result;
     ```
 
-2. Pokud nebyly vráceny žádné výsledky, analyzovat je:
+2. If any results were returned, parse them:
 
     ```csharp
     if (newsResults.Value.Count > 0)
@@ -88,7 +88,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     Console.ReadKey();
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

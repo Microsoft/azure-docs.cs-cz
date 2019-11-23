@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání videí pomocí Bingu Video Search SDK pro Javu'
+title: 'Quickstart: Search for videos using the SDK for Java - Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu používáme k odeslání žádosti pro vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Javu.
+description: Use this quickstart to send video search requests using the Bing Video Search SDK for Java.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3051f663f277c216fe18513b816bb86478a2efbd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cbe5f0023b16aec1ed68e7a78ddb3103f40eb85b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447010"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378598"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Rychlý start: Vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Javu
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Java
 
-V tomto rychlém startu můžete zahájit hledání zpráv se Video Bingu hledání sady SDK pro Javu. Při vyhledávání videí Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)s další poznámky a funkce.
+Use this quickstart to begin searching for news with the Bing Video Search SDK for Java. While Bing Video Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), with additional annotations, and features.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* The [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * [Knihovna Gson](https://github.com/google/gson)
 
@@ -59,9 +59,9 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
     import java.util.List; 
     ```
 
-## <a name="create-a-search-client"></a>Vytvoření klienta vyhledávání
+## <a name="create-a-search-client"></a>Create a search client
 
-1. Implementace `VideoSearchAPIImpl` klienta, které vyžaduje váš koncový bod rozhraní API a instance `ServiceClientCredentials` třídy.
+1. Implement the `VideoSearchAPIImpl` client, which requires your API endpoint, and an instance of the `ServiceClientCredentials` class.
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -72,9 +72,9 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
     )};
     ```
 
-    K implementaci `ServiceClientCredentials`, postupujte podle těchto kroků:
+    To implement `ServiceClientCredentials`, follow these steps:
 
-    1. Přepsat `applyCredentialsFilter()` funkce, se `OkHttpClient.Builder` objektu jako parametr. 
+    1. override the `applyCredentialsFilter()` function, with a `OkHttpClient.Builder` object as a parameter. 
         
         ```java
         //...
@@ -86,7 +86,7 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
         //...
         ```
     
-    2. V rámci `applyCredentialsFilter()`, volání `builder.addNetworkInterceptor()`. Vytvořte nový `Interceptor` objektu a přepsat její `intercept()` metoda trvat `Chain` zachycování objektu.
+    2. Within `applyCredentialsFilter()`, call `builder.addNetworkInterceptor()`. Create a new `Interceptor` object, and override its `intercept()` method to take a `Chain` interceptor object.
 
         ```java
         //...
@@ -100,7 +100,7 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
         ///...
         ```
 
-    3. V rámci `intercept` funkce, vytváření proměnných pro vaši žádost. Použití `Request.Builder()` na vaši žádost o sestavení. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví a vraťte se `chain.proceed()` na objekt žádosti.
+    3. Within the `intercept` function, create variables for your request. Use `Request.Builder()` to build your request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header, and return `chain.proceed()` on the request object.
             
         ```java
         //...
@@ -115,9 +115,9 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
         //...
         ```
 
-## <a name="send-a-search-request-and-receive-the-response"></a>Odeslat žádost o vyhledávání a přijetí odpovědi 
+## <a name="send-a-search-request-and-receive-the-response"></a>Send a search request and receive the response 
 
-1. Vytvořit funkci s názvem `VideoSearch()` , která má váš klíč předplatného jako řetězec. Vytvořit instanci klienta hledání vytvořili dříve.
+1. Create a function called `VideoSearch()` that takes your subscription key as a string. Instantiate the search client created earlier.
     
     ```java
     public static void VideoSearch(String subscriptionKey){
@@ -125,7 +125,7 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
         //...
     }
     ```
-2. V rámci `VideoSearch()`, pošlete žádost pro vyhledávání videí pomocí klienta, `SwiftKey` jako hledaný termín. Pokud rozhraní API pro vyhledávání videí vrátilo výsledek, získá první hodnota a tisk jeho id, název a adresu URL, společně s celkový počet videí vrátila. 
+2. Within `VideoSearch()`, Send a video search request using the client, with `SwiftKey` as the search term. If the Video Search API returned a result, get the first result and print its id, name, and URL, along with the total number of videos returned. 
     
     ```java
     VideosInner videoResults = client.searchs().list("SwiftKey");
@@ -148,7 +148,7 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
     }
     ```
 
-3. Volejte metodu vyhledávání z hlavní metody.
+3. Call the search method from your main method.
 
     ```java
     public static void main(String[] args) {
@@ -156,12 +156,12 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
     }
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace v jediné stránce](../tutorial-bing-video-search-single-page-app.md)
+> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-* [Co je API pro vyhledávání videí Bingu?](../overview.md)
+* [What is the Bing Video Search API?](../overview.md)
 * [Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

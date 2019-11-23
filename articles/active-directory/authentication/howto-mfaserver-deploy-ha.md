@@ -1,77 +1,77 @@
 ---
-title: Konfigurace serveru Azure MFA pro zajištění vysoké dostupnosti – Azure Active Directory
-description: Nasazení více instancí Azure Multi-Factor Authentication Server v konfiguracích, které zajišťují vysokou dostupnost.
+title: High availability for Azure MFA Server - Azure Active Directory
+description: Deploy multiple instances of Azure Multi-Factor Authentication Server in configurations that provide high availability.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43154e428c3208f5d990688554407777d09f2f1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18f56665041fed301faf3b4b5f99c78c1d468f8e
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056028"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404308"
 ---
-# <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurovat ověřování Azure Multi-Factor Authentication Server pro zajištění vysoké dostupnosti
+# <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Configure Azure Multi-Factor Authentication Server for high availability
 
-K dosažení vysoké dostupnosti s nasazením Azure Server MFA, budete muset nasadit víc serverů MFA. Tato část obsahuje informace o návrhu s vyrovnáváním zatížení pro dosažení cílů vaší vysokou dostupnost v vám nasazení serverů MFS Azure.
+To achieve high-availability with your Azure Server MFA deployment, you need to deploy multiple MFA servers. This section provides information on a load-balanced design to achieve your high availability targets in you Azure MFS Server deployment.
 
 > [!IMPORTANT]
-> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
+> As of July 1, 2019, Microsoft will no longer offer MFA Server for new deployments. New customers who would like to require multi-factor authentication from their users should use cloud-based Azure Multi-Factor Authentication. Existing customers who have activated MFA Server prior to July 1 will be able to download the latest version, future updates and generate activation credentials as usual.
 
-## <a name="mfa-server-overview"></a>MFA serveru – přehled
+## <a name="mfa-server-overview"></a>MFA Server overview
 
-Architektura služby Azure MFA serveru zahrnuje několik komponent, jak je znázorněno v následujícím diagramu:
+The Azure MFA Server service architecture comprises several components as shown in the following diagram:
 
- ![Komponenty architektury serveru MFA](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
+ ![MFA Server Architecture components](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
 
-MFA Server je Windows Server, který je nainstalován software ověřování Azure Multi-Factor Authentication. Instance serveru MFA musí být aktivovaná služba vícefaktorového ověřování v Azure do funkce. Více než jeden Server MFA může být nainstalovaný místní.
+An MFA Server is a Windows Server that has the Azure Multi-Factor Authentication software installed. The MFA Server instance must be activated by the MFA Service in Azure to function. More than one MFA Server can be installed on-premises.
 
-První MFA serveru, který je nainstalován je hlavní MFA Server při aktivaci pomocí služby Azure MFA ve výchozím nastavení. Hlavní MFA server má kopii databáze PhoneFactor.pfdata zapisovatelné. Následné instalace instancí systému MFA Server jsou označovány jako podřízené uzly. Podřízené uzly MFA kopie replikovaných jen pro čtení PhoneFactor.pfdata databáze. MFA servery replikují informace pomocí vzdáleného volání procedur (RPC). Přeruší všechny MFA musí souhrnně být buď připojené k doméně nebo samostatnou replikaci informací.
+The first MFA Server that is installed is the master MFA Server upon activation by the Azure MFA Service by default. The master MFA server has a writeable copy of the PhoneFactor.pfdata database. Subsequent installations of instances of MFA Server are known as subordinates. The MFA subordinates have a replicated read-only copy of the PhoneFactor.pfdata database. MFA servers replicate information using Remote Procedure Call (RPC). All MFA Severs must collectively either be domain joined or standalone to replicate information.
 
-Hlavní server MFA a MFA serverů za podřízené komunikovat se službou vícefaktorové ověřování při vyžádáním dvoufaktorového ověřování. Například když se uživatel pokusí získat přístup k aplikaci, která vyžaduje dvojúrovňové ověřování, uživatel se nejdřív ověřit pomocí zprostředkovatele identity, jako je Active Directory (AD).
+Both MFA master and subordinate MFA Servers communicate with the MFA Service when two-factor authentication is required. For example, when a user attempts to gain access to an application that requires two-factor authentication, the user will first be authenticated by an identity provider, such as Active Directory (AD).
 
-Po úspěšném ověření službou AD MFA Server bude komunikovat se službou vícefaktorové ověřování. MFA Server čeká na oznámení ze služby MFA umožňuje povolit nebo odepřít přístup uživatelů k aplikaci.
+After successful authentication with AD, the MFA Server will communicate with the MFA Service. The MFA Server waits for notification from the MFA Service to allow or deny the user access to the application.
 
-Pokud hlavní MFA server přejde do režimu offline, stále zpracovávat ověřování, ale operace, které vyžadují změny v databázi MFA nelze zpracovat. (Příklady: Přidání uživatele samoobslužné služby PIN kód změny, měnící informace o uživateli a přístup k portálu user portal)
+If the MFA master server goes offline, authentications can still be processed, but operations that require changes to the MFA database cannot be processed. (Examples include: the addition of users, self-service PIN changes, changing user information, or access to the user portal)
 
 ## <a name="deployment"></a>Nasazení
 
-Vezměte v úvahu následující důležité skutečnosti pro vyrovnávání zatížení Azure MFA serverem a jeho souvisejících součástí.
+Consider the following important points for load balancing Azure MFA Server and its related components.
 
-* **K dosažení vysoké dostupnosti pomocí protokolu RADIUS standard**. Pokud používáte Azure MFA serverů jako servery RADIUS, můžete potenciálně nakonfigurovat jeden Server MFA jako primární cíl ověřování protokolu RADIUS a dalších serverů Azure MFA jako cíle sekundární ověřování. Tuto metodu za účelem dosažení vysoké dostupnosti však nemusí být praktické, protože je nutné počkat časový limit, dojde k selhání ověření na cílové primární ověřování předtím, než můžete ověřovány proti cíli sekundární ověřování. Je mnohem efektivnější k vyrovnávání zatížení provozu pomocí protokolu RADIUS mezi klienta protokolu RADIUS a servery RADIUS (v tomto případě Azure MFA Server fungující jako servery RADIUS) tak, aby klienti RADIUS můžete nakonfigurovat jednu adresu URL, která může odkazovat na.
-* **Muset manuálně povýšit MFA podřízené**. Pokud hlavní Azure MFA server přejde do režimu offline, sekundární Azure MFA servery dál zpracovávat žádosti vícefaktorové ověřování. Ale až do hlavního serveru MFA je k dispozici, nelze přidat uživatele nebo změnit nastavení MFA správci a uživatelé nemohou provádět změny pomocí portálu user portal. Zvyšuje se úroveň MFA podřízený na role hlavního operačního serveru je vždy ruční.
-* **Separability komponent**. Azure MFA Server se skládá z několika součástí, které mohou být nainstalovány ve stejné instanci Windows serveru nebo v různých instancích. Tyto součásti zahrnují adaptéru služby AD FS (agent), portál User Portal a webové služby mobilní aplikace. Tato separability umožňuje použít Proxy webových aplikací portálu User Portal a Mobile App Web Server publikovat z hraniční sítě. Taková konfigurace se přidá do celkové zabezpečení návrhu, jak je znázorněno v následujícím diagramu. MFA User Portal a mobilní aplikace Webový Server může také nasadit v konfiguracích s vysokou DOSTUPNOSTÍ s vyrovnáváním zatížení.
+* **Using RADIUS standard to achieve high availability**. If you are using Azure MFA Servers as RADIUS servers, you can potentially configure one MFA Server as a primary RADIUS authentication target and other Azure MFA Servers as secondary authentication targets. However, this method to achieve high availability may not be practical because you must wait for a time-out period to occur when authentication fails on the primary authentication target before you can be authenticated against the secondary authentication target. It is more efficient to load balance the RADIUS traffic between the RADIUS client and the RADIUS Servers (in this case, the Azure MFA Servers acting as RADIUS servers) so that you can configure the RADIUS clients with a single URL that they can point to.
+* **Need to manually promote MFA subordinates**. If the master Azure MFA server goes offline, the secondary Azure MFA Servers continue to process MFA requests. However, until a master MFA server is available, admins can not add users or modify MFA settings, and users can not make changes using the user portal. Promoting an MFA subordinate to the master role is always a manual process.
+* **Separability of components**. The Azure MFA Server comprises several components that can be installed on the same Windows Server instance or on different instances. These components include the User Portal, Mobile App Web Service, and the ADFS adapter (agent). This separability makes it possible to use the Web Application Proxy to publish the User Portal and Mobile App Web Server from the perimeter network. Such a configuration adds to the overall security of your design, as shown in the following diagram. The MFA User Portal and Mobile App Web Server may also be deployed in HA load-balanced configurations.
 
-   ![MFA Server s hraniční síti](./media/howto-mfaserver-deploy-ha/mfasecurity.png)
+   ![MFA Server with a Perimeter Network](./media/howto-mfaserver-deploy-ha/mfasecurity.png)
 
-* **Jednorázovým heslem (OTP) přes SMS (označuje se také jako jednosměrná zpráva SMS) potřebuje použít rychlé relace, pokud je provoz s vyrovnáváním zatížení**. Jednosměrné služby SMS je možnost ověřování, která způsobí, že se serveru MFA uživatelům poslat textovou zprávu jednorázovým HESLEM. Uživatel zadá kombinací jednorázového HESLA v okně výzvy k dokončení ověřovacím testem MFA. Pokud načítáte zůstatek Azure MFA servery, musí být stejný server, který obsluhuje požadavek na počáteční ověření serveru, který obdrží zprávu ověřování jednorázovým HESLEM od uživatele; Pokud jiný MFA Server obdrží odpověď ověřování jednorázovým HESLEM, výzvu ověřování se nezdaří. Další informace najdete v tématu [jedno heslo čas přes SMS přidán do Azure MFA Server](https://blogs.technet.microsoft.com/enterprisemobility/2015/03/02/one-time-password-over-sms-added-to-azure-mfa-server).
-* **Nasazení portálu User Portal a webová služba mobilní aplikace s vyrovnáváním zatížení vyžaduje rychlé relace**. Pokud jste se vyrovnávání zatížení MFA User Portal a webová služba mobilní aplikace, musí každá relace zůstat na stejném serveru.
+* **One-time password (OTP) over SMS (aka one-way SMS) requires the use of sticky sessions if traffic is load-balanced**. One-way SMS is an authentication option that causes the MFA Server to send the users a text message containing an OTP. The user enters the OTP in a prompt window to complete the MFA challenge. If you load balance Azure MFA Servers, the same server that served the initial authentication request must be the server that receives the OTP message from the user; if another MFA Server receives the OTP reply, the authentication challenge fails. For more information, see [One Time Password over SMS Added to Azure MFA Server](https://blogs.technet.microsoft.com/enterprisemobility/2015/03/02/one-time-password-over-sms-added-to-azure-mfa-server).
+* **Load-Balanced deployments of the User Portal and Mobile App Web Service require sticky sessions**. If you are load-balancing the MFA User Portal and the Mobile App Web Service, each session needs to stay on the same server.
 
-## <a name="high-availability-deployment"></a>Nasazení vysoké dostupnosti
+## <a name="high-availability-deployment"></a>High-availability deployment
 
-Následující diagram ukazuje kompletní vysokou dostupnost s vyrovnáváním zatížení implementaci vícefaktorovým Ověřováním Azure a jeho komponenty, spolu s AD FS pro referenci.
+The following diagram shows a complete HA load-balanced implementation of Azure MFA and its components, along with ADFS for reference.
 
- ![Azure MFA Server HA implementace](./media/howto-mfaserver-deploy-ha/mfa-ha-deployment.png)
+ ![Azure MFA Server HA implementation](./media/howto-mfaserver-deploy-ha/mfa-ha-deployment.png)
 
-Mějte na paměti následující položky pro odpovídajícím způsobem očíslované oblasti na předchozím obrázku.
+Note the following items for the correspondingly numbered area of the preceding diagram.
 
-1. Dva servery Azure MFA (MFA1 a MFA2) jsou s vyrovnáváním zatížení (mfaapp.contoso.com) a jsou nakonfigurovány pro použití statického portu (4443) k replikaci databáze PhoneFactor.pfdata. Sada SDK webové služby je nainstalovanými na každém z MFA serveru k umožnění komunikace přes port TCP 443 se servery služby AD FS. MFA servery jsou nasazené v konfiguraci bezstavové s vyrovnáváním zatížení. Ale pokud byste chtěli použít ověřování jednorázovým HESLEM prostřednictvím serveru SMS, musíte použít stavová zátěže.
-   ![Azure MFA serveru – aplikační server HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
+1. The two Azure MFA Servers (MFA1 and MFA2) are load balanced (mfaapp.contoso.com) and are configured to use a static port (4443) to replicate the PhoneFactor.pfdata database. The Web Service SDK is installed on each of the MFA Server to enable communication over TCP port 443 with the ADFS servers. The MFA servers are deployed in a stateless load-balanced configuration. However, if you wanted to use OTP over SMS, you must use stateful load balancing.
+   ![Azure MFA Server - App server HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > Vzhledem k tomu RPC používá dynamické porty, se nedoporučuje k otevření brány firewall až rozsah dynamické porty, které mohou potenciálně používat RPC. Pokud máte bránu firewall **mezi** aplikačních serverů MFA, měli byste nakonfigurovat MFA serveru komunikaci na statický port pro přenosy replikace mezi hlavní a podřízené servery a otevřít tento port v bráně firewall. Statický port můžete vynutit tím, že vytvoříte hodnotu DWORD registru na ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` volá ```Pfsvc_ncan_ip_tcp_port``` a nastavením této hodnoty na dostupné statický port. Připojení jsou vždycky iniciováno podřízené servery vícefaktorové ověřování k hlavnímu serveru, statický port je potřeba jenom na hlavním serveru, ale protože podřízená položka bude hlavní kdykoli můžete zvýšit úroveň, byste měli nastavit statický port ve všech serverech vícefaktorové ověřování.
+   > Because RPC uses dynamic ports, it is not recommended to open firewalls up to the range of dynamic ports that RPC can potentially use. If you have a firewall **between** your MFA application servers, you should configure the MFA Server to communicate on a static port for the replication traffic between subordinate and master servers and open that port on your firewall. You can force the static port by creating a DWORD registry value at ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` called ```Pfsvc_ncan_ip_tcp_port``` and setting the value to an available static port. Connections are always initiated by the subordinate MFA Servers to the master, the static port is only required on the master, but since you can promote a subordinate to be the master at any time, you should set the static port on all MFA Servers.
 
-2. Dva servery mobilní aplikace uživatele portál/MFA (vícefaktorové ověřování. až MAS1 a vícefaktorové ověřování. až MAS2) jsou v skupinu s vyrovnáváním zatížení **stavová** konfigurace (mfa.contoso.com). Připomínáme, že rychlé relace jsou nutné pro vyrovnávání zatížení portálu User Portal pro MFA a služby mobilní aplikace.
-   ![Azure MFA serveru – portál User Portal a mobilní služby App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
-3. Farmě služby AD FS je load balanced a publikovat na Internetu prostřednictvím vyrovnáváním zatížení služby AD FS proxy serverů v hraniční síti. Každý Server služby AD FS používá ke komunikaci s Azure MFA servery pomocí jednoho s vyrovnáváním zatížení adresy URL (mfaapp.contoso.com) přes TCP port 443 agent služby AD FS.
+2. The two User Portal/MFA Mobile App servers (MFA-UP-MAS1 and MFA-UP-MAS2) are load balanced in a **stateful** configuration (mfa.contoso.com). Recall that sticky sessions are a requirement for load balancing the MFA User Portal and Mobile App Service.
+   ![Azure MFA Server - User Portal and Mobile App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
+3. The ADFS Server farm is load balanced and published to the Internet through load-balanced ADFS proxies in the perimeter network. Each ADFS Server uses the ADFS agent to communicate with the Azure MFA Servers using a single load-balanced URL (mfaapp.contoso.com) over TCP port 443.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Instalace a konfigurace Azure MFA serveru](howto-mfaserver-deploy.md)
+* [Install and configure Azure MFA Server](howto-mfaserver-deploy.md)

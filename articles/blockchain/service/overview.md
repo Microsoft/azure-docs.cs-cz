@@ -1,83 +1,77 @@
 ---
-title: Přehled služby Azure blockchain
-description: Přehled služby Azure blockchain
-services: azure-blockchain
-keywords: Blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service overview
+description: Overview of Azure Blockchain Service
 ms.date: 11/18/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 55c4c3f2c6a7856f3e7c0aea81ce013d3ff56f8b
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 80d231981a225bb10e8c97f7debd2c2d1a7ee8f0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284792"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326112"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
-Služba Azure Blockchain je plně spravovaná služba v hlavní knize, která umožňuje uživatelům rozšiřovat a provozovat blockchain sítě ve velkém měřítku v Azure. Poskytováním jednotného řízení pro správu infrastruktury i zásad správného řízení sítě blockchain zajišťuje služba Azure blockchain:
+Azure Blockchain Service is a fully managed ledger service that enables users the ability to grow and operate blockchain networks at scale in Azure. By providing unified control for both infrastructure management as well as blockchain network governance, Azure Blockchain Service provides:
 
-* Jednoduché síťové nasazení a operace
+* Simple network deployment and operations
 * Integrovaná správa konsorcií
-* Vývoj inteligentních smluv pomocí známých vývojářských nástrojů
+* Develop smart contracts with familiar development tools
 
-Služba Azure Blockchain je navržená tak, aby podporovala více protokolů hlavní knihy. V současné době poskytuje podporu pro hlavní knihu [kvora](https://www.jpmorgan.com/Quorum) ethereem pomocí mechanismu [iBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensu.
+Azure Blockchain Service is designed to support multiple ledger protocols. Currently, it provides support for the Ethereum [Quorum](https://www.jpmorgan.com/Quorum) ledger using the [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) consensus mechanism.
 
-Tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Místo přidělení času a prostředků ke správě virtuálních počítačů a infrastruktury se můžete soustředit na vývoj aplikací a obchodní logiku. Kromě toho můžete pokračovat v vývoji aplikace pomocí Open source nástrojů a platformy podle vašeho výběru, abyste mohli doručovat vaše řešení, aniž byste se museli učit nové dovednosti.
+Tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. You can focus on app development and business logic rather than allocating time and resources to managing virtual machines and infrastructure. In addition, you can continue to develop your application with the open-source tools and platform of your choice to deliver your solutions without having to learn new skills.
 
-## <a name="network-deployment-and-operations"></a>Síťové nasazení a operace
+## <a name="network-deployment-and-operations"></a>Network deployment and operations
 
-Nasazení služby Azure blockchain se provádí prostřednictvím Azure Portal, Azure CLI nebo prostřednictvím Visual studia Code pomocí rozšíření Azure blockchain. Nasazení je zjednodušené, včetně zřízení transakcí i ověřovacích uzlů, virtuálních sítí Azure pro izolaci zabezpečení i úložiště spravovaného službou.  Kromě toho, když se nasazuje nový člen blockchain, uživatelé také vytvoří nebo připojí konsorcium.  Konsorcia umožňují více stranám v různých předplatných Azure vzájemně komunikovat na sdílených blockchain.  Toto zjednodušené nasazení omezuje blockchain síťové nasazení ze dnů na minuty.
+Deploying Azure Blockchain Service is done through the Azure portal, Azure CLI, or through Visual Studio code using the Azure Blockchain extension. Deployment is simplified, including provisioning both transaction and validator nodes, Azure Virtual Networks for security isolation as well as service-managed storage.  In addition, when deploying a new blockchain member, users also create, or join, a consortium.  Consortiums enable multiple parties in different Azure subscriptions to be able to securely communicate with one another on a shared blockchain.  This simplified deployment reduces blockchain network deployment from days to minutes.
 
-### <a name="performance-and-service-tiers"></a>Výkon a úrovně služeb
+### <a name="performance-and-service-tiers"></a>Performance and service tiers
 
-Služba Azure blockchain nabízí dvě úrovně služeb: *Basic* a *Standard*. Každá úroveň nabízí jiný výkon a možnosti pro podporu zjednodušeného vývoje a testování zatížení až po rozsáhlou škálu nasazení produkčního blockchainu. Obě úrovně zahrnují aspoň jeden uzel transakce a jeden uzel validátoru (základní) nebo dva uzly validátoru (Standard).
+Azure Blockchain Service offers two service tiers: *Basic* and *Standard*. Each tier offers different performance and capabilities to support lightweight development and test workloads up to massively scaled production blockchain deployments. Both tiers include at least one transaction node, and one validator node (Basic) or two validator nodes (Standard).
 
 ![Cenové úrovně](./media/overview/pricing-tiers.png)
 
-Kromě nabídky dvou ověřovacích uzlů poskytuje úroveň *Standard* 2 *virtuální jádra* pro každou transakci a uzel validátoru, zatímco úroveň Basic nabízí 1 Vcore konfiguraci.  Díky nabídce 2 virtuální jádra pro transakce a ověřovací uzly může být 1 vCore vyhrazený pro hlavní knihu kvora, zatímco zbývající 1 vCore lze použít pro jiné služby související s infrastrukturou a zajistit optimální výkon pro produkční úlohy blockchain. Další informace o cenách najdete v článku o [cenách služby Azure blockchain](https://azure.microsoft.com/pricing/details/blockchain-service).
+In addition to offering two validator nodes, the *Standard* tier provides 2 *vCores* for each transaction and validator node whereas the Basic tier offers a 1 vCore configuration.  By offering 2 vCores for transaction and validator nodes, 1 vCore can be dedicated to the Quorum ledger while the remaining 1 vCore can be used for other infrastructure-related services, ensuring optimal performance for production blockchain workloads. For more information on pricing details, see [Azure Blockchain Service pricing](https://azure.microsoft.com/pricing/details/blockchain-service).
 
-### <a name="security-and-maintenance"></a>Zabezpečení a údržba
+### <a name="security-and-maintenance"></a>Security and maintenance
 
-Po zřízení prvního blockchain člena máte možnost přidávat do svého člena další uzly transakcí.  Ve výchozím nastavení jsou uzly transakcí zabezpečeny prostřednictvím pravidel brány firewall a vyžadují konfiguraci pro přístup.  Kromě toho všechny uzly transakcí šifrují data v pohybu přes protokol TLS.  Existuje více možností pro zabezpečení přístupu k uzlům v transakci, včetně pravidel brány firewall, základního ověřování, přístupových klíčů a Integrace Azure Active Directory. Další informace najdete v tématech [Konfigurace uzlů transakcí](configure-transaction-nodes.md) a [Konfigurace přístupu Azure Active Directory](configure-aad.md).
+After provisioning your first blockchain member, you have the ability to add additional transaction nodes to your member.  By default, transaction nodes are secured through firewall rules and require configuration for access.  Additionally, all transaction nodes encrypt data in motion via TLS.  Multiple options exist for securing transaction node access, including firewall rules, basic authentication, access keys, and Azure Active Directory integration. For more information, see [configure transaction nodes](configure-transaction-nodes.md) and [configure Azure Active Directory access](configure-aad.md).
 
-Jako spravovaná služba Služba Azure blockchain zajišťuje, aby byly uzly členů blockchain opraveny pomocí nejnovějšího operačního systému hostitele a aktualizací softwarového zásobníku, který je nakonfigurovaný pro vysokou dostupnost (jenom na úrovni Standard), což eliminuje většinu DevOps. vyžaduje se pro tradiční IaaS uzly blockchain.  Další informace o opravách a aktualizacích najdete v článku [podporované verze hlavní knihy služby Azure blockchain](ledger-versions.md).
+As a managed service, Azure Blockchain Service ensures that your blockchain member's nodes are patched with the latest host operating system and ledger software stack updates, configured for high-availability (Standard tier only), eliminating much of the DevOps required for traditional IaaS blockchain nodes.  For more information on patching and updates, see [supported Azure Blockchain Service ledger versions](ledger-versions.md).
 
 ### <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
-Kromě toho služba Azure blockchain poskytuje bohatou metriku prostřednictvím služby Azure Monitor Service, která poskytuje přehledy o využití procesoru, paměti a úložiště uzlů.  Azure Monitor taky poskytuje užitečné poznatky k blockchain síťové aktivitě, jako jsou transakce a bloky dolována za účely, hloubka fronty transakcí a aktivní připojení.  Metriky je možné přizpůsobit tak, aby poskytovaly přehledy, které jsou důležité pro vaši aplikaci blockchain.  Kromě toho je možné definovat prahové hodnoty prostřednictvím výstrah umožňujících uživatelům aktivovat akce, jako je odeslání e-mailu nebo textové zprávy, spuštění aplikace logiky, funkce Azure nebo odeslání do vlastního Webhooku definovaného uživatelem.
+In addition, Azure Blockchain Service provides rich metrics through Azure Monitor Service providing insights into nodes' CPU, memory, and storage usage.  Azure Monitor also provides helpful insights into blockchain network activity such as transactions and blocks mined, transaction queue depth, and active connections.  Metrics can be customized to provide views into the insights that are important to your blockchain application.  In addition, thresholds can be defined through alerts enabling users to trigger actions such as sending an email or text message, running a Logic App, Azure Function or sending to a custom-defined webhook.
 
 ![Metriky](./media/overview/metrics.png)
 
-Uživatelé můžou prostřednictvím Azure Log Analytics zobrazovat protokoly související s hlavní knihou kvora nebo jiné důležité informace, jako je například pokus o připojení k uzlům transakcí.
+Through Azure Log Analytics, users can view logs related to the Quorum ledger, or other important information such as attempted connections to the transaction nodes.
 
 ## <a name="built-in-consortium-management"></a>Integrovaná správa konsorcií
 
-Při nasazování prvního blockchain člena se buď připojte, nebo vytvořte novou konsorcium.  Konsorcium je logická skupina, která slouží ke správě zásad správného řízení a připojení mezi blockchain členy, kteří pracují v procesu s více stranami.  Služba Azure blockchain poskytuje předdefinované ovládací prvky zásad správného řízení prostřednictvím předem definovaných inteligentních kontraktů, které určují, jaké akce mohou členové konsorcia provádět.  Tyto ovládací prvky zásad správného řízení je možné přizpůsobit správcem konsorcia podle potřeby. Při vytváření nového konsorcia je váš blockchain člen výchozím správcem konsorcia a umožňuje tak pozvat jiné strany, aby se připojili k vašemu konsorciu.  Konsorcium můžete spojit pouze v případě, že jste byli dříve pozváni.  Při spojení s konsorciem se váš blockchain člen řídí ovládacími prvky zásad správného řízení, které provádí správce konsorcia.
+When deploying your first blockchain member, you either join or create a new consortium.  A consortium is a logical group used to manage the governance and connectivity between blockchain members who transact in a multi-party process.  Azure Blockchain Service provides built-in governance controls through pre-defined smart contracts, which determine what actions members in the consortium can take.  These governance controls can be customized as necessary by the administrator of the consortium. When you create a new consortium, your blockchain member is the default administrator of the consortium, enabling the ability to invite other parties to join your consortium.  You can join a consortium only if you have been previously invited.  When joining a consortium, your blockchain member is subject to the governance controls put in place by the consortium's administrator.
 
-![Správa konsorcia](./media/overview/consortium.png)
+![Consortium management](./media/overview/consortium.png)
 
-Akce správy konsorcia, jako je přidávání a odebírání členů z konsorcia, je možné použít prostřednictvím PowerShellu a REST API. Konsorcium můžete programově spravovat pomocí společných rozhraní, nikoli změnou a odesláním inteligentních kontraktů založených na pevné úrovni. Další informace najdete v tématu [Správa konsorcia](consortium.md).
+Consortium management actions such as adding and removing members from a consortium can be accessed through PowerShell and a REST API. You can programmatically manage a consortium using common interfaces rather than modifying and submitting solidity-based smart contracts. For more information, see [consortium management](consortium.md).
 
-## <a name="develop-using-familiar-development-tools"></a>Vývoj s využitím známých vývojářských nástrojů
+## <a name="develop-using-familiar-development-tools"></a>Develop using familiar development tools
 
-Na základě open source hlavní knihy Ethereem kvora můžete vyvíjet aplikace pro službu Azure blockchain stejným způsobem jako u stávajících aplikací Ethereem. Při práci s předními průmyslovými partnery Visual Studio Code rozšíření Azure blockchain Development Kit umožňuje vývojářům využít známé nástroje, jako je Truffle Suite, k sestavování inteligentních smluv. Pomocí rozšíření Azure blockchain Development Kit můžou vývojáři vytvářet nebo se připojovat k a stávajícímu konsorciu, abyste mohli vytvářet a nasazovat své inteligentní smlouvy z jednoho integrovaného vývojového prostředí (IDE). Pomocí rozšíření Azure blockchain Visual Studio Code můžete vytvořit existující konsorcium nebo se k němu připojit, abyste mohli vytvářet a nasazovat své inteligentní smlouvy z jednoho integrovaného vývojového prostředí (IDE). Další informace najdete v tématu [Azure blockchain Development Kit na webu vs Code Marketplace](https://aka.ms/vscodebcextension) a v [uživatelské příručce k sadě Azure blockchain Development Kit](https://aka.ms/vscodebcextensionwiki ).
+Based on the open-sourced Quorum Ethereum ledger, you can develop applications for Azure Blockchain Service the same way as you do for existing Ethereum applications. Working with leading industry partners, the Azure Blockchain Development Kit Visual Studio Code extension allows developers to leverage familiar tools like Truffle Suite to build smart contracts. Using the Azure Blockchain Development Kit extension, developers can create, or connect to and existing consortium so that you can build and deploy your smart contracts all from one IDE. Using the Azure Blockchain Visual Studio Code extension, you can create or connect to an existing consortium so that you can build and deploy your smart contracts all from one IDE. For more information, see [Azure Blockchain Development Kit in the VS Code marketplace](https://aka.ms/vscodebcextension)  and the [Azure Blockchain Development Kit user guide](https://aka.ms/vscodebcextensionwiki ).
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 
-Potřebujete pomáhat nebo mít zpětnou vazbu?
+Need help or have feedback?
 
-* Navštivte [blog Azure blockchain](https://azure.microsoft.com/blog/topics/blockchain/), [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)a [Fórum Azure blockchain](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
+* Visit the [Azure Blockchain blog](https://azure.microsoft.com/blog/topics/blockchain/), [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain), and [Azure Blockchain forum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
 * Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/921130-azure-blockchain-service).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít, vyzkoušejte si rychlý Start nebo si přečtěte další podrobnosti z těchto zdrojů.
-* [Vytvoření členu blockchain pomocí Azure Portal](create-member.md) nebo [Vytvoření členu BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
-* Porovnání nákladů a kalkulačky najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/blockchain-service).
-* Vytvoření první aplikace pomocí [vývojové sady Azure blockchain](https://github.com/Azure-Samples/blockchain-devkit)
-* [Uživatelská příručka](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki) k rozšíření Azure blockchain VSCode
+To get started, try a quickstart or find out more details from these resources.
+* [Create a blockchain member using the Azure portal](create-member.md) or [create a blockchain member using Azure CLI](create-member-cli.md)
+* For cost comparisons and calculators, see the [pricing page](https://azure.microsoft.com/pricing/details/blockchain-service).
+* Build your first app using the [Azure Blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit)
+* Azure Blockchain VSCode Extension [user guide](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

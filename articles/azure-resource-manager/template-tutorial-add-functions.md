@@ -1,52 +1,52 @@
 ---
-title: Kurz – přidání funkcí šablon
-description: Přidejte do šablony Azure Resource Manager funkce šablon k vytvoření hodnot.
+title: Tutorial - add template functions
+description: Add template functions to your Azure Resource Manager template to construct values.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fe571c2a0088375feff8351f49a476669461b6aa
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 03a38178ec66c1c1a10934975d20778369d80dbe
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150244"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405963"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Kurz: Přidání funkcí šablony do šablony Správce prostředků
+# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Tutorial: Add template functions to your Resource Manager template
 
-V tomto kurzu se naučíte, jak do šablony přidat [funkce šablon](resource-group-template-functions.md) . Funkce slouží k dynamickému vytváření hodnot. Kromě těchto funkcí šablon poskytovaných systémem můžete také vytvořit [uživatelsky definované funkce](./template-user-defined-functions.md). Dokončení tohoto kurzu trvá **7 minut** .
+In this tutorial, you learn how to add [template functions](resource-group-template-functions.md) to your template. You use functions to dynamically construct values. In addition to these system-provided template functions, you can also create [user-defined functions](./template-user-defined-functions.md). This tutorial takes **7 minutes** to complete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Doporučujeme, abyste dokončili [kurz týkající se parametrů](template-tutorial-add-parameters.md), ale není to nutné.
+We recommend that you complete the [tutorial about parameters](template-tutorial-add-parameters.md), but it's not required.
 
-Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Kontrola šablony
+## <a name="review-template"></a>Review template
 
-Na konci předchozího kurzu má vaše šablona následující JSON:
+At the end of the previous tutorial, your template had the following JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
 
-Umístění účtu úložiště je pevně zakódováno pro **východní USA**. Je ale možné, že budete muset účet úložiště nasadit do jiných oblastí. Opět jste se stali problémem vaší šablony, která nemá flexibilitu. Můžete přidat parametr pro umístění, ale bude skvělé, pokud jeho výchozí hodnota byla větší, než jenom pevně zakódovaná hodnota.
+The location of the storage account is hard-coded to **East US**. However, you may need to deploy the storage account to other regions. You're again facing an issue of your template lacking flexibility. You could add a parameter for location, but it would be great if its default value made more sense than just a hard-coded value.
 
-## <a name="use-function"></a>Použití funkce
+## <a name="use-function"></a>Use function
 
-Pokud jste dokončili předchozí kurz v této sérii, už jste použili funkci. Když jste přidali **[Parameters (' Storage ')]** , použili jste funkci [Parameters](resource-group-template-functions-deployment.md#parameters) . Hranaté závorky označují, že syntaxe uvnitř závorek je [výraz šablony](template-expressions.md). Správce prostředků vyřeší syntax místo toho, aby ji znovu nakládala jako hodnota literálu.
+If you've completed the previous tutorial in this series, you've already used a function. When you added **"[parameters('storageName')]"** , you used the [parameters](resource-group-template-functions-deployment.md#parameters) function. The brackets indicate that the syntax inside the brackets is a [template expression](template-expressions.md). Resource Manager resolves the syntax rather than treating it as a literal value.
 
-Funkce přidávají vaší šabloně flexibilitu pomocí dynamického načítání hodnot během nasazování. V tomto kurzu použijete funkci k získání umístění skupiny prostředků, kterou používáte pro nasazení.
+Functions add flexibility to your template by dynamically getting values during deployment. In this tutorial, you use a function to get the location of the resource group you're using for deployment.
 
-Následující příklad zvýrazní změny pro přidání parametru s názvem **Location**.  Výchozí hodnota parametru volá funkci [Resource](resource-group-template-functions-resource.md#resourcegroup) . Tato funkce vrací objekt s informacemi o skupině prostředků, která se používá k nasazení. Jedna z vlastností objektu je vlastnost umístění. Když použijete výchozí hodnotu, umístění účtu úložiště má stejné umístění jako skupina prostředků. Prostředky ve skupině prostředků nemusí sdílet stejné umístění. V případě potřeby můžete také zadat jiné umístění.
+The following example highlights the changes to add a parameter called **location**.  The parameter default value calls the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. This function returns an object with information about the resource group being used for deployment. One of the properties on the object is a location property. When you use the default value, the storage account location has the same location as the resource group. The resources inside a resource group don't have to share the same location. You can also provide a different location when needed.
 
-Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
+Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-V předchozích kurzech jste v Východní USA vytvořili účet úložiště, ale skupina prostředků se vytvořila v Střed USA. V tomto kurzu se účet úložiště vytvoří ve stejné oblasti jako skupina prostředků. Použijte výchozí hodnotu pro umístění, takže tuto hodnotu parametru nemusíte zadávat. Musíte zadat nový název účtu úložiště, protože vytváříte účet úložiště v jiném umístění. Použijte například **store2** jako předponu namísto **store1**.
+In the previous tutorials, you created a storage account in East US, but your resource group was created in Central US. For this tutorial, your storage account is created in the same region as the resource group. Use the default value for location, so you don't need to provide that parameter value. You must provide a new name for the storage account because you're creating a storage account in a different location. For example, use **store2** as the prefix instead of **store1**.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,20 +70,20 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Ověření nasazení
+## <a name="verify-deployment"></a>Ověření nasazení
 
-Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
+You can verify the deployment by exploring the resource group from the Azure portal.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. V nabídce vlevo vyberte **skupiny prostředků**.
-1. Vyberte skupinu prostředků, do které jste nasadili.
-1. Vidíte, že je prostředek účtu úložiště nasazený a má stejné umístění jako skupina prostředků.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. From the left menu, select **Resource groups**.
+1. Select the resource group you deployed to.
+1. You see that a storage account resource has been deployed and has the same location as the resource group.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
@@ -92,7 +92,7 @@ Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste použili funkci při definování výchozí hodnoty pro parametr. V této sérii kurzů budete dál používat funkce. Za konec série přidáte funkce do všech sekcí šablony.
+In this tutorial, you used a function when defining the default value for a parameter. In this tutorial series, you'll continue using functions. By the end of the series, you'll add functions to every section of the template.
 
 > [!div class="nextstepaction"]
-> [Přidat proměnné](template-tutorial-add-variables.md)
+> [Add variables](template-tutorial-add-variables.md)

@@ -1,53 +1,53 @@
 ---
-title: Instalace funkcí Speech Containers – Speech Service
+title: Install Speech containers - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Instalace a spuštění kontejnerů řeči. Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Převod textu na řeč převede vstupní text na syntetizované řeč podobné člověku.
+description: Install and run speech containers. Speech-to-text transcribes audio streams to text in real time that your applications, tools, or devices can consume or display. Text-to-speech converts input text into human-like synthesized speech.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: b83ece803a72fe6132c1ba98414e95897a0fcc90
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
-ms.translationtype: HT
+ms.openlocfilehash: 3d9373067c78f1fe0fa0b414886c30f2ed3c1c9f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304884"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325870"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech
+# <a name="install-and-run-speech-service-containers-preview"></a>Install and run Speech Service containers (Preview)
 
-Kontejnery umožňují spouštět některá rozhraní API služby Speech Service ve vašem vlastním prostředí. Kontejnery jsou skvělé pro specifické požadavky zabezpečení a zásad správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner řeči.
+Containers enable you to run some of the Speech Service APIs in your own environment. Containers are great for specific security and data governance requirements. In this article you'll learn how to download, install, and run a Speech container.
 
-Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro rozpoznávání řeči, která je optimalizována pro možnosti robustního cloudu i pro celou hranici. K dispozici jsou čtyři různé kontejnery. Dva standardní kontejnery jsou **Převod řeči na text** a **Převod textu na řeč**. Mezi dva vlastní kontejnery patří **Custom Speech** textu a **vlastní převod textu na řeč**.
+Speech containers enable customers to build a speech application architecture that is optimized for both robust cloud capabilities and edge locality. There are four different containers available. The two standard containers are **Speech-to-text** and **Text-to-speech**. The two custom containers are **Custom Speech-to-text** and **Custom Text-to-speech**.
 
 > [!IMPORTANT]
-> Všechny kontejnery řeči jsou aktuálně nabízeny jako součást [veřejné "gated" verze Preview](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio). Oznámení se provede, když se v kontejnerech rozpoznávání řeči dosáhne všeobecné dostupnosti (GA).
+> All speech containers are currently offered as part of a [Public "Gated" Preview](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio). An announcement will be made when speech containers progress to General Availability (GA).
 
-| Funkce | Funkce | Nejnovější |
+| Funkce | Funkce | Latest |
 |--|--|--|
-| Převod řeči na text | Transcribes v reálném čase nepřetržité audio nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.0.0 |
-| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.0.0 |
-| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.3.0 |
-| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.3.0 |
+| Převod řeči na text | Transcribes continuous real-time speech or batch audio recordings into text with intermediate results. | 2.0.0 |
+| Custom Speech-to-text | Using a custom model from the [Custom Speech portal](https://speech.microsoft.com/customspeech), transcribes continuous real-time speech or batch audio recordings into text with intermediate results. | 2.0.0 |
+| Převod textu na řeč | Converts text to natural-sounding speech with plain text input or Speech Synthesis Markup Language (SSML). | 1.3.0 |
+| Custom Text-to-speech | Using a custom model from the [Custom Voice portal](https://aka.ms/custom-voice-portal), converts text to natural-sounding speech with plain text input or Speech Synthesis Markup Language (SSML). | 1.3.0 |
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
+The following prerequisites before using Speech containers:
 
 | Požaduje se | Účel |
 |--|--|
-| Modul Docker | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
-| Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
-| Prostředek řeči | Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého klíče rozhraní API a identifikátoru URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách s přehledem a klíči pro Azure Portal **řeči** . Oba jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled** |
+| Docker Engine | You need the Docker Engine installed on a [host computer](#the-host-computer). Docker provides packages that configure the Docker environment on [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), and [Linux](https://docs.docker.com/engine/installation/#supported-platforms). For a primer on Docker and container basics, see the [Docker overview](https://docs.docker.com/engine/docker-overview/).<br><br> Docker must be configured to allow the containers to connect with and send billing data to Azure. <br><br> **On Windows**, Docker must also be configured to support Linux containers.<br><br> |
+| Familiarity with Docker | You should have a basic understanding of Docker concepts, like registries, repositories, containers, and container images, as well as knowledge of basic `docker` commands. |
+| Speech resource | In order to use these containers, you must have:<br><br>An Azure _Speech_ resource to get the associated API key and endpoint URI. Both values are available on the Azure portal's **Speech** Overview and Keys pages. They are both required to start the container.<br><br>**{API_KEY}** : One of the two available resource keys on the **Keys** page<br><br>**{ENDPOINT_URI}** : The endpoint as provided on the **Overview** page |
 
-## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
+## <a name="request-access-to-the-container-registry"></a>Request access to the container registry
 
-Pokud chcete požádat o přístup ke kontejneru, vyplňte a odešlete [formulář žádosti o Cognitive Services kontejnerech řeči](https://aka.ms/speechcontainerspreview/) . 
+Fill out and submit the [Cognitive Services Speech Containers Request form](https://aka.ms/speechcontainerspreview/) to request access to the container. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -55,194 +55,194 @@ Pokud chcete požádat o přístup ke kontejneru, vyplňte a odešlete [formulá
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="the-host-computer"></a>Hostitelský počítač
+## <a name="the-host-computer"></a>The host computer
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Rozšířená podpora rozšíření Vector
+### <a name="advanced-vector-extension-support"></a>Advanced Vector Extension support
 
-**Hostitel** je počítač, který spouští kontejner Docker. Hostitel *musí podporovat* [Rozšířená rozšíření Vector](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Podporu AVX2 pro hostitele se systémem Linux můžete vyhledat pomocí následujícího příkazu:
+The **host** is the computer that runs the docker container. The host *must support* [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). You can check for AVX2 support on Linux hosts with the following command:
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 > [!WARNING]
-> K podpoře AVX2 se *vyžaduje* hostitelský počítač. *Kontejner nebude* správně fungovat bez podpory AVX2.
+> The host computer is *required* to support AVX2. The container *will not* function correctly without AVX2 support.
 
-### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
+### <a name="container-requirements-and-recommendations"></a>Container requirements and recommendations
 
-Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner řeči.
+The following table describes the minimum and recommended allocation of resources for each Speech container.
 
 # <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
-| Převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
+| Převod řeči na text | 2 core, 2-GB memory | 4 core, 4-GB memory |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-to-text](#tab/cstt)
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
-| Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
+| Custom Speech-to-text | 2 core, 2-GB memory | 4 core, 4-GB memory |
 
 # <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
-| Převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
+| Převod textu na řeč | 1 core, 2-GB memory | 2 core, 3-GB memory |
 
-# <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
+# <a name="custom-text-to-speechtabctts"></a>[Custom Text-to-speech](#tab/ctts)
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
-| Vlastní převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
+| Custom Text-to-speech | 1 core, 2-GB memory | 2 core, 3-GB memory |
 
 ***
 
-* Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
+* Each core must be at least 2.6 gigahertz (GHz) or faster.
 
-Základní a paměť odpovídají nastavení `--cpus` a `--memory`, které se používají jako součást příkazu `docker run`.
+Core and memory correspond to the `--cpus` and `--memory` settings, which are used as part of the `docker run` command.
 
 > [!NOTE]
-> Minimum a doporučené jsou založeny na omezeních Docker, *nikoli* na prostředky hostitelského počítače. Například kontejnery Speech-to-text namapují část velkých jazykových modelů a *doporučuje* se, aby se celý soubor vešel do paměti, což je dalších 4-6 GB. První spuštění obou kontejnerů může trvat delší dobu, protože modely jsou stránkované v paměti.
+> The minimum and recommended are based off of Docker limits, *not* the host machine resources. For example, speech-to-text containers memory map portions of a large language model, and it is *recommended* that the entire file fits in memory, which is an additional 4-6 GB. Also, the first run of either container may take longer, since models are being paged into memory.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Get the container image with `docker pull`
 
-Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Registry.
+Container images for Speech are available in the following Container Registry.
 
 # <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
 
-| Kontejner | Úložiště |
+| Kontejner | Repository |
 |-----------|------------|
 | Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-to-text](#tab/cstt)
 
-| Kontejner | Úložiště |
+| Kontejner | Repository |
 |-----------|------------|
-| Custom Speech na text | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
+| Custom Speech-to-text | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
 # <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
 
-| Kontejner | Úložiště |
+| Kontejner | Repository |
 |-----------|------------|
 | Převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
+# <a name="custom-text-to-speechtabctts"></a>[Custom Text-to-speech](#tab/ctts)
 
-| Kontejner | Úložiště |
+| Kontejner | Repository |
 |-----------|------------|
-| Vlastní převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
+| Custom Text-to-speech | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
 
 ***
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-speech-containers"></a>Vyžádání obsahu Docker pro kontejnery řeči
+### <a name="docker-pull-for-the-speech-containers"></a>Docker pull for the Speech containers
 
 # <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
 
-#### <a name="docker-pull-for-the-speech-to-text-container"></a>Funkce Docker Pull pro kontejner převodu řeči na text
+#### <a name="docker-pull-for-the-speech-to-text-container"></a>Docker pull for the Speech-to-text container
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to download a container image from Container Preview registry.
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest
 ```
 
 > [!IMPORTANT]
-> Značka `latest` vyžádá `en-US` národní prostředí. Pro další národní prostředí viz [národní prostředí pro převod řeči na text](#speech-to-text-locales).
+> The `latest` tag pulls the `en-US` locale. For additional locales see [Speech-to-text locales](#speech-to-text-locales).
 
-#### <a name="speech-to-text-locales"></a>Národní prostředí pro převod textu na text
+#### <a name="speech-to-text-locales"></a>Speech-to-text locales
 
-Všechny značky, s výjimkou `latest`, jsou v následujícím formátu a rozlišují se velká a malá písmena:
+All tags, except for `latest` are in the following format and are case-sensitive:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
 ```
 
-Následující značka je příkladem formátu:
+The following tag is an example of the format:
 
 ```
 2.0.0-amd64-en-us-preview
 ```
 
-Pro všechna podporovaná národní prostředí kontejneru **převodů řeči** na text se podívejte na [tagy pro obrázky typu převod řeči na text](../containers/container-image-tags.md#speech-to-text).
+For all of the supported locales of the **speech-to-text** container, please see [Speech-to-text image tags](../containers/container-image-tags.md#speech-to-text).
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-to-text](#tab/cstt)
 
-#### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Vyžádání obsahu Docker pro kontejner Custom Speech-to-text
+#### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Docker pull for the Custom Speech-to-text container
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to download a container image from Container Preview registry.
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest
 ```
 
 > [!NOTE]
-> `locale` a `voice` pro vlastní kontejnery řeči jsou určeny vlastním modelem ingestované kontejnerem.
+> The `locale` and `voice` for custom Speech containers is determined by the custom model ingested by the container.
 
 # <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
 
-#### <a name="docker-pull-for-the-text-to-speech-container"></a>Vyžádání obsahu Docker pro kontejner převodu textu na řeč
+#### <a name="docker-pull-for-the-text-to-speech-container"></a>Docker pull for the Text-to-speech container
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to download a container image from Container Preview registry.
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
 ```
 
 > [!IMPORTANT]
-> Značka `latest` vyžádá `en-US` národního prostředí a `jessarus` hlas. Pro další národní prostředí viz [národní prostředí pro převod textu na mluvené slovo](#text-to-speech-locales).
+> The `latest` tag pulls the `en-US` locale and `jessarus` voice. For additional locales see [Text-to-speech locales](#text-to-speech-locales).
 
-#### <a name="text-to-speech-locales"></a>Národní prostředí pro převod textu na řeč
+#### <a name="text-to-speech-locales"></a>Text-to-speech locales
 
-Všechny značky, s výjimkou `latest`, jsou v následujícím formátu a rozlišují se velká a malá písmena:
+All tags, except for `latest` are in the following format and are case-sensitive:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
 ```
 
-Následující značka je příkladem formátu:
+The following tag is an example of the format:
 
 ```
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-U všech podporovaných národních prostředí a odpovídajících hlasů kontejneru **textu na řeč** se podívejte na [značky obrázku pro převod textu na mluvené slovo](../containers/container-image-tags.md#text-to-speech).
+For all of the supported locales and corresponding voices of the **text-to-speech** container, please see [Text-to-speech image tags](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
-> Při vytváření standardního příspěvku http *pro převod textu na řeč* vyžaduje zpráva [SSML (Speech promarkup Language)](speech-synthesis-markup.md) prvek `voice` s atributem `name`. Hodnota je odpovídající národní prostředí a hlas kontejneru, označovaný také jako ["krátký název"](language-support.md#standard-voices). Například značka `latest` by měla název hlasu `en-US-JessaRUS`.
+> When constructing a *Standard Text-to-speech* HTTP POST, the [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) message requires a `voice` element with a `name` attribute. The value is the corresponding container locale and voice, also known as the ["short name"](language-support.md#standard-voices). For example, the `latest` tag would have a voice name of `en-US-JessaRUS`.
 
-# <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
+# <a name="custom-text-to-speechtabctts"></a>[Custom Text-to-speech](#tab/ctts)
 
-#### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Vyžádání obsahu Docker pro vlastní kontejner převodu textu na řeč
+#### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Docker pull for the Custom Text-to-speech container
 
-Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) Stáhněte image kontejneru z registru služby Container Preview.
+Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to download a container image from Container Preview registry.
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest
 ```
 
 > [!NOTE]
-> `locale` a `voice` pro vlastní kontejnery řeči jsou určeny vlastním modelem ingestované kontejnerem.
+> The `locale` and `voice` for custom Speech containers is determined by the custom model ingested by the container.
 
 ***
 
-## <a name="how-to-use-the-container"></a>Jak používat kontejner
+## <a name="how-to-use-the-container"></a>How to use the container
 
-Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
+Once the container is on the [host computer](#the-host-computer), use the following process to work with the container.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K dispozici jsou [ další ](speech-container-configuration.md#example-docker-run-commands)příklady`docker run` příkazu.
-1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
+1. [Run the container](#run-the-container-with-docker-run), with the required billing settings. More [examples](speech-container-configuration.md#example-docker-run-commands) of the `docker run` command are available.
+1. [Query the container's prediction endpoint](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner pomocí `docker run`
+## <a name="run-the-container-with-docker-run"></a>Run the container with `docker run`
 
-Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat `{Endpoint_URI}` a `{API_Key}` hodnoty, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) . K dispozici jsou také další [příklady](speech-container-configuration.md#example-docker-run-commands) `docker run` příkazu.
+Use the [docker run](https://docs.docker.com/engine/reference/commandline/run/) command to run the container. Refer to [gathering required parameters](#gathering-required-parameters) for details on how to get the `{Endpoint_URI}` and `{API_Key}` values. Additional [examples](speech-container-configuration.md#example-docker-run-commands) of the `docker run` command are also available.
 
 # <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
 
-Chcete-li spustit kontejner převodu *řeči na text* , spusťte následující příkaz `docker run`.
+To run the *Speech-to-text* container, execute the following `docker run` command.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -252,35 +252,35 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Tento příkaz:
+This command:
 
-* Spouští kontejner *řeči na text* z image kontejneru.
-* Přiděluje 4 jádra procesoru a 4 gigabajty (GB) paměti.
-* Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+* Runs a *Speech-to-text* container from the container image.
+* Allocates 4 CPU cores and 4 gigabytes (GB) of memory.
+* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
+* Automatically removes the container after it exits. The container image is still available on the host computer.
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-to-text](#tab/cstt)
 
-Kontejner *Custom Speech-to-text* spoléhá na vlastní model řeči. Vlastní model se musí [vyškolet](how-to-custom-speech-train-model.md) pomocí [vlastního portálu pro rozpoznávání řeči](https://speech.microsoft.com/customspeech). Pro spuštění kontejneru je vyžadováno **ID vlastního modelu** řeči. Najdete ho na stránce **školení** na vlastním portálu pro rozpoznávání řeči. Z vlastního portálu pro rozpoznávání řeči přejděte na stránku **školení** a vyberte model.
+The *Custom Speech-to-text* container relies on a custom speech model. The custom model has to have been [trained](how-to-custom-speech-train-model.md) using the [custom speech portal](https://speech.microsoft.com/customspeech). The custom speech **Model ID** is required to run the container. It can be found on the **Training** page of the custom speech portal. From the custom speech portal, navigate to the **Training** page and select the model.
 <br>
 
-![Stránka s vlastním školením pro rozpoznávání řeči](media/custom-speech/custom-speech-model-training.png)
+![Custom speech training page](media/custom-speech/custom-speech-model-training.png)
 
-Získejte **ID modelu** , které chcete použít jako argument pro parametr `ModelId` příkazu `docker run`.
+Obtain the **Model ID** to use as the argument to the `ModelId` parameter of the `docker run` command.
 <br>
 
-![Podrobnosti o vlastním modelu řeči](media/custom-speech/custom-speech-model-details.png)
+![Custom speech model details](media/custom-speech/custom-speech-model-details.png)
 
-Následující tabulka představuje různé parametry `docker run` a jejich odpovídající popisy:
+The following table represents the various `docker run` parameters and their corresponding descriptions:
 
 | Parametr | Popis |
 |---------|---------|
-| `{VOLUME_MOUNT}` | [Připojení svazku](https://docs.docker.com/storage/volumes/)hostitelského počítače, které Docker používá k trvalému uložení vlastního modelu. Například *C:\CustomSpeech* , kde se *jednotka C* nachází na hostitelském počítači. |
-| `{MODEL_ID}` | Custom Speech **ID modelu** ze stránky **školení** na vlastním portálu pro rozpoznávání řeči. |
-| `{ENDPOINT_URI}` | Koncový bod je vyžadován pro měření a fakturaci. Další informace najdete v tématu [shromažďování požadovaných parametrů](#gathering-required-parameters). |
-| `{API_KEY}` | Klíč rozhraní API je povinný. Další informace najdete v tématu [shromažďování požadovaných parametrů](#gathering-required-parameters). |
+| `{VOLUME_MOUNT}` | The host computer [volume mount](https://docs.docker.com/storage/volumes/), which docker uses to persist the custom model. For example, *C:\CustomSpeech* where the *C drive* is located on the host machine. |
+| `{MODEL_ID}` | The Custom Speech **Model ID** from the **Training** page of the custom speech portal. |
+| `{ENDPOINT_URI}` | The endpoint is required for metering and billing. For more information, see [gathering required parameters](#gathering-required-parameters). |
+| `{API_KEY}` | The API key is required. For more information, see [gathering required parameters](#gathering-required-parameters). |
 
-Chcete-li spustit kontejner *Custom Speech-text* , spusťte následující `docker run` příkaz:
+To run the *Custom Speech-to-text* container, execute the following `docker run` command:
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -292,19 +292,19 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Tento příkaz:
+This command:
 
-* Spustí kontejner *Custom Speech-to-text* z image kontejneru.
-* Přiděluje 4 jádra procesoru a 4 gigabajty (GB) paměti.
-* Načte model *Custom Speech-to-text* ze vstupního připojení svazku, například *C:\CustomSpeech*.
-* Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
-* Stáhne model daného `ModelId` (Pokud se nenalezne v připojení svazku).
-* Pokud se vlastní model stáhl dříve, `ModelId` se ignoruje.
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+* Runs a *Custom Speech-to-text* container from the container image.
+* Allocates 4 CPU cores and 4 gigabytes (GB) of memory.
+* Loads the *Custom Speech-to-Text* model from the volume input mount, for example *C:\CustomSpeech*.
+* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
+* Downloads the model given the `ModelId` (if not found on the volume mount).
+* If the custom model was previously downloaded, the `ModelId` is ignored.
+* Automatically removes the container after it exits. The container image is still available on the host computer.
 
 # <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
 
-Chcete-li spustit kontejner převodu *textu na řeč* , spusťte následující příkaz `docker run`.
+To run the *Text-to-speech* container, execute the following `docker run` command.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -314,35 +314,35 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Tento příkaz:
+This command:
 
-* Spustí kontejner převodu *textu na řeč* z image kontejneru.
-* Přiděluje 2 jádra procesoru a 1 gigabajt (GB) paměti.
-* Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+* Runs a *Text-to-speech* container from the container image.
+* Allocates 2 CPU cores and one gigabyte (GB) of memory.
+* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
+* Automatically removes the container after it exits. The container image is still available on the host computer.
 
-# <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
+# <a name="custom-text-to-speechtabctts"></a>[Custom Text-to-speech](#tab/ctts)
 
-Vlastní kontejner převodu *textu na řeč* spoléhá na vlastní hlasový model. Vlastní model se musí [vyškolet](how-to-custom-voice-create-voice.md) pomocí [vlastního hlasového portálu](https://aka.ms/custom-voice-portal). Pro spuštění kontejneru je vyžadováno **ID vlastního modelu** hlasu. Najdete ho na stránce **školení** na vlastním hlasovém portálu. Z vlastního hlasového portálu přejděte na stránku **školení** a vyberte model.
+The *Custom Text-to-speech* container relies on a custom voice model. The custom model has to have been [trained](how-to-custom-voice-create-voice.md) using the [custom voice portal](https://aka.ms/custom-voice-portal). The custom voice **Model ID** is required to run the container. It can be found on the **Training** page of the custom voice portal. From the custom voice portal, navigate to the **Training** page and select the model.
 <br>
 
-![Stránka pro vlastní výuku hlasu](media/custom-voice/custom-voice-model-training.png)
+![Custom voice training page](media/custom-voice/custom-voice-model-training.png)
 
-Získejte **ID modelu** , které chcete použít jako argument pro parametr `ModelId` příkazu Docker run.
+Obtain the **Model ID** to use as the argument to the `ModelId` parameter of the docker run command.
 <br>
 
-![Podrobnosti o vlastním hlasovém modelu](media/custom-voice/custom-voice-model-details.png)
+![Custom voice model details](media/custom-voice/custom-voice-model-details.png)
 
-Následující tabulka představuje různé parametry `docker run` a jejich odpovídající popisy:
+The following table represents the various `docker run` parameters and their corresponding descriptions:
 
 | Parametr | Popis |
 |---------|---------|
-| `{VOLUME_MOUNT}` | [Připojení svazku](https://docs.docker.com/storage/volumes/)hostitelského počítače, které Docker používá k trvalému uložení vlastního modelu. Například *C:\CustomSpeech* , kde se *jednotka C* nachází na hostitelském počítači. |
-| `{MODEL_ID}` | **ID modelu** Custom Speech ze stránky **školení** vlastního hlasového portálu. |
-| `{ENDPOINT_URI}` | Koncový bod je vyžadován pro měření a fakturaci. Další informace najdete v tématu [shromažďování požadovaných parametrů](#gathering-required-parameters). |
-| `{API_KEY}` | Klíč rozhraní API je povinný. Další informace najdete v tématu [shromažďování požadovaných parametrů](#gathering-required-parameters). |
+| `{VOLUME_MOUNT}` | The host computer [volume mount](https://docs.docker.com/storage/volumes/), which docker uses to persist the custom model. For example, *C:\CustomSpeech* where the *C drive* is located on the host machine. |
+| `{MODEL_ID}` | The Custom Speech **Model ID** from the **Training** page of the custom voice portal. |
+| `{ENDPOINT_URI}` | The endpoint is required for metering and billing. For more information, see [gathering required parameters](#gathering-required-parameters). |
+| `{API_KEY}` | The API key is required. For more information, see [gathering required parameters](#gathering-required-parameters). |
 
-Chcete-li spustit vlastní kontejner převodu *textu na řeč* , spusťte následující příkaz `docker run`:
+To run the *Custom Text-to-speech* container, execute the following `docker run` command:
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -354,63 +354,63 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Tento příkaz:
+This command:
 
-* Spustí z image kontejneru vlastní kontejner převodu *textu na řeč* .
-* Přiděluje 2 jádra procesoru a 1 gigabajt (GB) paměti.
-* Načte vlastní model převodu *textu na řeč* ze vstupního připojení svazku, například *C:\CustomVoice*.
-* Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
-* Stáhne model daného `ModelId` (Pokud se nenalezne v připojení svazku).
-* Pokud se vlastní model stáhl dříve, `ModelId` se ignoruje.
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+* Runs a *Custom Text-to-speech* container from the container image.
+* Allocates 2 CPU cores and one gigabyte (GB) of memory.
+* Loads the *Custom Text-to-speech* model from the volume input mount, for example *C:\CustomVoice*.
+* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
+* Downloads the model given the `ModelId` (if not found on the volume mount).
+* If the custom model was previously downloaded, the `ModelId` is ignored.
+* Automatically removes the container after it exits. The container image is still available on the host computer.
 
 ***
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
+> The `Eula`, `Billing`, and `ApiKey` options must be specified to run the container; otherwise, the container won't start.  For more information, see [Billing](#billing).
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
+## <a name="query-the-containers-prediction-endpoint"></a>Query the container's prediction endpoint
 
 | Kontejner | Koncový bod | Protocol (Protokol) |
 |--|--|--|
 | Převod řeči na text | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
-| Custom Speech na text | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
+| Custom Speech-to-text | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
 | Převod textu na řeč | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
-| Vlastní převod textu na řeč | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
+| Custom Text-to-speech | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
 
-Další informace o používání protokolů WSS a HTTPS najdete v tématu [zabezpečení kontejnerů](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
+For more information on using WSS and HTTPS protocols, see [container security](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
 
-### <a name="text-to-speech-or-custom-text-to-speech"></a>Převod textu na řeč nebo vlastní převod textu na řeč
+### <a name="text-to-speech-or-custom-text-to-speech"></a>Text-to-speech or Custom Text-to-speech
 
 [!INCLUDE [Query Text-to-speech container endpoint](includes/text-to-speech-container-query-endpoint.md)]
 
-### <a name="run-multiple-containers-on-the-same-host"></a>Spuštění více kontejnerů na stejném hostiteli
+### <a name="run-multiple-containers-on-the-same-host"></a>Run multiple containers on the same host
 
-Pokud máte v úmyslu spustit více kontejnerů s vystavenými porty, ujistěte se, že každý kontejner spustíte s jiným vystaveným portem. Například spusťte první kontejner na portu 5000 a druhý kontejner na portu 5001.
+If you intend to run multiple containers with exposed ports, make sure to run each container with a different exposed port. For example, run the first container on port 5000 and the second container on port 5001.
 
-Můžete mít tento kontejner a jiný kontejner Azure Cognitive Services běžící na hostiteli společně. Můžete mít také více kontejnerů stejného Cognitive Services kontejneru se systémem.
+You can have this container and a different Azure Cognitive Services container running on the HOST together. You also can have multiple containers of the same Cognitive Services container running.
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Zastavení kontejneru
+## <a name="stop-the-container"></a>Stop the container
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Při spuštění nebo spuštění kontejneru může docházet k problémům. Použijte výstupní [připojení](speech-container-configuration.md#mount-settings) a povolte protokolování. Tím umožníte, aby kontejner generoval soubory protokolu, které jsou užitečné při řešení problémů.
+When starting or running the container, you may experience issues. Use an output [mount](speech-container-configuration.md#mount-settings) and enable logging. Doing so will allow the container to generate log files that are helpful when troubleshooting issues.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Fakturace
+## <a name="billing"></a>Vyúčtování
 
-Kontejnery řeči odesílají informace o fakturaci do Azure pomocí prostředku *řeči* ve vašem účtu Azure.
+The Speech containers send billing information to Azure, using a *Speech* resource on your Azure account.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](speech-container-configuration.md).
+For more information about these options, see [Configure containers](speech-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 
@@ -418,23 +418,23 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů řeči. Souhrn:
+In this article, you learned concepts and workflow for downloading, installing, and running Speech containers. Souhrn:
 
-* Speech poskytuje pro Docker čtyři kontejnery pro Linux, které zapouzdřují různé možnosti:
+* Speech provides four Linux containers for Docker, encapsulating various capabilities:
   * *Převod řeči na text*
-  * *Custom Speech na text*
+  * *Custom Speech-to-text*
   * *Převod textu na řeč*
-  * *Vlastní převod textu na řeč*
-* Image kontejneru se stáhnou z registru kontejneru v Azure.
-* Spuštění imagí kontejnerů v Dockeru.
-* Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech řeči zadáním identifikátoru URI hostitele kontejneru.
-* Při vytváření instance kontejneru budete muset zadat fakturační údaje.
+  * *Custom Text-to-speech*
+* Container images are downloaded from the container registry in Azure.
+* Container images run in Docker.
+* You can use either the REST API or SDK to call operations in Speech containers by specifying the host URI of the container.
+* You're required to provide billing information when instantiating a container.
 
 > [!IMPORTANT]
->  Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.
+>  Cognitive Services containers are not licensed to run without being connected to Azure for metering. Customers need to enable the containers to communicate billing information with the metering service at all times. Cognitive Services containers do not send customer data (e.g., the image or text that is being analyzed) to Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si téma [konfigurace kontejnerů](speech-container-configuration.md) pro nastavení konfigurace
-* Naučte [se používat kontejnery služby Speech s Kubernetes a Helm](speech-container-howto-on-premises.md)
-* Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)
+* Review [configure containers](speech-container-configuration.md) for configuration settings
+* Learn how to [use Speech Service containers with Kubernetes and Helm](speech-container-howto-on-premises.md)
+* Use more [Cognitive Services containers](../cognitive-services-container-support.md)

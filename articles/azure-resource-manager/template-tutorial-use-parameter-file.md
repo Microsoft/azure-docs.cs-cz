@@ -1,58 +1,58 @@
 ---
-title: Kurz – použití souboru parametrů k nasazení šablony
-description: Použijte soubory parametrů, které obsahují hodnoty, které se mají použít k nasazení šablony Azure Resource Manager.
+title: Tutorial - use parameter file to deploy template
+description: Use parameter files that contain the values to use for deploying your Azure Resource Manager template.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7ebf8a3eed81c8f5233f7212df7e245a27f7fd16
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1b01e9ece2d194d76c7184a676f17d626c41a011
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149160"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405976"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Kurz: použití souborů parametrů k nasazení šablony Správce prostředků
+# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Tutorial: Use parameter files to deploy your Resource Manager template
 
-V tomto kurzu se naučíte používat [soubory parametrů](resource-manager-parameter-files.md) k uložení hodnot, které předáte během nasazování. V předchozích kurzech jste v příkazu nasazení použili vložené parametry. Tento přístup pracoval při testování šablony, ale když je automatizace nasazení snazší, předejte sadu hodnot pro vaše prostředí. Soubory parametrů usnadňují zabalení hodnot parametrů pro konkrétní prostředí. V tomto kurzu vytvoříte soubory parametrů pro vývojová a produkční prostředí. Dokončení trvá přibližně **12 minut** .
+In this tutorial, you learn how to use [parameter files](resource-manager-parameter-files.md) to store the values you pass in during deployment. In the previous tutorials, you used inline parameters with your deployment command. This approach worked for testing your template, but when automating deployments it can be easier to pass a set of values for your environment. Parameter files make it easier to package parameter values for a specific environment. In this tutorial, you'll create parameter files for development and production environments. It takes about **12 minutes** to complete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Doporučujeme, abyste dokončili [kurz týkající se značek](template-tutorial-add-tags.md), ale není to nutné.
+We recommend that you complete the [tutorial about tags](template-tutorial-add-tags.md), but it's not required.
 
-Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Kontrola šablony
+## <a name="review-template"></a>Review template
 
-Vaše šablona má mnoho parametrů, které můžete během nasazení zadat. Na konci předchozího kurzu vaše šablona vypadala takto:
+Your template has many parameters you can provide during deployment. At the end of the previous tutorial, your template looked like:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
 
-Tato šablona funguje dobře, ale nyní chcete snadno spravovat parametry, které předáváte pro šablonu.
+This template works well, but now you want to easily manage the parameters that you pass in for the template.
 
-## <a name="add-parameter-files"></a>Přidat soubory parametrů
+## <a name="add-parameter-files"></a>Add parameter files
 
-Soubory parametrů jsou soubory JSON se strukturou, která je podobná vaší šabloně. V souboru zadejte hodnoty parametrů, které chcete předat během nasazování.
+Parameter files are JSON files with a structure that is similar to your template. In the file, you provide the parameter values you want to pass in during deployment.
 
-V VS Code vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy. Parameters. dev. JSON**.
+In VS Code, create a new file with following content. Save the file with the name **azuredeploy.parameters.dev.json**.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
 
-Tento soubor je vaším souborem parametrů pro vývojové prostředí. Všimněte si, že pro účet úložiště používá Standard_LRS, pojmenuje prostředky s předponou pro **vývoj** a nastaví značku **prostředí** na **dev**.
+This file is your parameter file for the development environment. Notice that it uses Standard_LRS for the storage account, names resources with a **dev** prefix, and sets the **Environment** tag to **Dev**.
 
-Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy. Parameters. prod. JSON**.
+Again, create a new file with the following content. Save the file with the name **azuredeploy.parameters.prod.json**.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
 
-Tento soubor je vaším souborem parametrů pro produkční prostředí. Všimněte si, že používá Standard_GRS pro účet úložiště, názvy prostředků s předponou **Contoso** a nastaví značku **prostředí** na **produkční**. V reálném produkčním prostředí byste také chtěli použít službu App Service s jinou skladovou jednotkou než bezplatnou, ale pro tento kurz bude tato SKU nadále používat.
+This file is your parameter file for the production environment. Notice that it uses Standard_GRS for the storage account, names resources with a **contoso** prefix, and sets the **Environment** tag to **Production**. In a real production environment, you would also want to use an app service with a SKU other than free, but we'll continue to use that SKU for this tutorial.
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-template"></a>Nasazení šablony
 
-K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell.
+Use either Azure CLI or Azure PowerShell to deploy the template.
 
-Jako konečný test šablony vytvoříme dvě nové skupiny prostředků. Jednu pro vývojové prostředí a jednu pro produkční prostředí.
+As a final test of your template, let's create two new resource groups. One for the dev environment and one for the production environment.
 
-Nejdřív nasadíme do vývojového prostředí.
+First, we'll deploy to the dev environment.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,7 +85,7 @@ az group deployment create \
 
 ---
 
-Nyní nasadíme do produkčního prostředí.
+Now, we'll deploy to the production environment.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -116,27 +116,27 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Ověření nasazení
+## <a name="verify-deployment"></a>Ověření nasazení
 
-Nasazení můžete ověřit prozkoumáním skupin prostředků z Azure Portal.
+You can verify the deployment by exploring the resource groups from the Azure portal.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. V nabídce vlevo vyberte **skupiny prostředků**.
-1. V tomto kurzu se zobrazí dvě nové skupiny prostředků, které jste nasadili.
-1. Vyberte buď skupinu prostředků, a zobrazte nasazené prostředky. Všimněte si, že odpovídají hodnotám, které jste zadali v souboru parametrů pro toto prostředí.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. From the left menu, select **Resource groups**.
+1. You see the two new resource groups you deployed in this tutorial.
+1. Select either resource group and view the deployed resources. Notice that they match the values you specified in your parameter file for that environment.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
-2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků. Pokud jste tuto řadu dokončili, máte tři skupiny prostředků pro odstranění – myResourceGroup, myResourceGroupDev a myResourceGroupProd.
+2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků. If you've completed this series, you have three resource groups to delete - myResourceGroup, myResourceGroupDev, and myResourceGroupProd.
 3. Vyberte název skupiny prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Gratulujeme, dokončili jste tento Úvod k nasazování šablon do Azure. Dejte nám vědět, pokud máte komentáře a návrhy v části věnované zpětné vazbě. Děkujeme!
+Congratulations, you've finished this introduction to deploying templates to Azure. Let us know if you have any comments and suggestions in the feedback section. Děkujeme!
 
-Jste připraveni přejít k pokročilejším koncepcím o šablonách. V dalším kurzu se dozvíte víc o používání Referenční dokumentace k šablonám, které vám pomůžou definovat prostředky k nasazení.
+You're ready to jump into more advanced concepts about templates. The next tutorial goes into more detail about using template reference documentation to help with defining resources to deploy.
 
 > [!div class="nextstepaction"]
 > [Využití referenčních informací k šablonám](resource-manager-tutorial-create-encrypted-storage-accounts.md)

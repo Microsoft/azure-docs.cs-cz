@@ -1,119 +1,119 @@
 ---
-title: Migrovat klasické zásady, která vyžaduje ověření službou Multi-Factor Authentication na webu Azure Portal
-description: Tento článek ukazuje, jak migrovat klasické zásady, která vyžaduje ověření službou Multi-Factor Authentication na webu Azure Portal.
+title: Migrate Conditional Access policies - Azure Active Directory
+description: This article shows how to migrate a classic policy that requires multi-factor authentication in the Azure portal.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: tutorial
-ms.date: 06/13/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4819c283a136057ad7c3ffd755fd9e157d99a1bf
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ca00ae62ba114aecef48117fd8a54b7f2e962dfd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509450"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380329"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrovat klasické zásady, která vyžaduje ověření službou Multi-Factor Authentication na webu Azure Portal
+# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrate a classic policy that requires multi-factor authentication in the Azure portal
 
-Tento kurz ukazuje, jak migrovat klasické zásady, které vyžadují **ověřování službou Multi-Factor Authentication** pro cloudové aplikace. I když není požadována, doporučujeme, abyste si přečetli [migrace klasických zásad na webu Azure Portal](policy-migration.md) předtím, než začnete s migrací klasické zásady.
+This tutorial shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app. Although it is not a prerequisite, we recommend that you read [Migrate classic policies in the Azure portal](policy-migration.md) before you start migrating your classic policies.
 
 ## <a name="overview"></a>Přehled
 
-Scénář v tomto článku ukazuje, jak migrovat klasické zásady, které vyžadují **ověřování službou Multi-Factor Authentication** pro cloudové aplikace.
+The scenario in this article shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app.
 
 ![Azure Active Directory](./media/policy-migration/33.png)
 
-Proces migrace se skládá z následujících kroků:
+The migration process consists of the following steps:
 
-1. [Otevřete klasické zásady](#open-a-classic-policy) zobrazíte nastavení konfigurace.
-1. Vytvořte novou zásadu podmíněného přístupu Azure AD k nahrazení klasické zásady. 
-1. Zakážete klasické zásady.
+1. [Open the classic policy](#open-a-classic-policy) to get the configuration settings.
+1. Create a new Azure AD Conditional Access policy to replace your classic policy. 
+1. Disable the classic policy.
 
-## <a name="open-a-classic-policy"></a>Otevřete klasické zásady
+## <a name="open-a-classic-policy"></a>Open a classic policy
 
-1. V [webu Azure portal](https://portal.azure.com), v levém navigačním panelu klikněte na **Azure Active Directory**.
+1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
 
    ![Azure Active Directory](./media/policy-migration-mfa/01.png)
 
-1. Na **Azure Active Directory** stránku, **spravovat** klikněte na tlačítko **podmíněného přístupu**.
+1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
 
    ![Podmíněný přístup](./media/policy-migration-mfa/02.png)
 
-1. V **spravovat** klikněte na tlačítko **klasické zásady (preview)** .
+1. In the **Manage** section, click **Classic policies (preview)** .
 
-   ![Klasické zásady](./media/policy-migration-mfa/12.png)
+   ![Classic policies](./media/policy-migration-mfa/12.png)
 
-1. V seznamu klasické zásady, klikněte na zásadu, která vyžaduje **ověřování službou Multi-Factor Authentication** pro cloudové aplikace.
+1. In the list of classic policies, click the policy that requires **multi-factor authentication** for a cloud app.
 
-   ![Klasické zásady](./media/policy-migration-mfa/13.png)
+   ![Classic policies](./media/policy-migration-mfa/13.png)
 
-## <a name="create-a-new-conditional-access-policy"></a>Vytvořit novou zásadu podmíněného přístupu
+## <a name="create-a-new-conditional-access-policy"></a>Create a new Conditional Access policy
 
-1. V [webu Azure portal](https://portal.azure.com), v levém navigačním panelu klikněte na **Azure Active Directory**.
+1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
 
    ![Azure Active Directory](./media/policy-migration/01.png)
 
-1. Na **Azure Active Directory** stránku, **spravovat** klikněte na tlačítko **podmíněného přístupu**.
+1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
 
    ![Podmíněný přístup](./media/policy-migration/02.png)
 
-1. Na **podmíněného přístupu** stránky, otevřete **nový** klikněte na stránku, na panelu nástrojů v horní části **přidat**.
+1. On the **Conditional Access** page, to open the **New** page, in the toolbar on the top, click **Add**.
 
    ![Podmíněný přístup](./media/policy-migration/03.png)
 
-1. Na **nový** stránku, **název** textového pole zadejte název zásady.
+1. On the **New** page, in the **Name** textbox, type a name for your policy.
 
    ![Podmíněný přístup](./media/policy-migration/29.png)
 
-1. V **přiřazení** klikněte na tlačítko **uživatelů a skupin**.
+1. In the **Assignments** section, click **Users and groups**.
 
    ![Podmíněný přístup](./media/policy-migration/05.png)
 
-   1. Pokud máte vybrané všechny uživatele v klasické zásady, klikněte na tlačítko **všichni uživatelé**. 
+   1. If you have all users selected in your classic policy, click **All users**. 
 
       ![Podmíněný přístup](./media/policy-migration/35.png)
 
-   1. Pokud máte vybrané v klasické zásady skupiny, klikněte na tlačítko **výběr uživatelů a skupin**a potom vyberte požadované uživatele a skupiny.
+   1. If you have groups selected in your classic policy, click **Select users and groups**, and then select the required users and groups.
 
       ![Podmíněný přístup](./media/policy-migration/36.png)
 
-   1. Pokud máte vyloučené skupiny, klikněte na tlačítko **vyloučit** kartu a potom vyberte požadované uživatele a skupiny. 
+   1. If you have the excluded groups, click the **Exclude** tab, and then select the required users and groups. 
 
       ![Podmíněný přístup](./media/policy-migration/37.png)
 
-1. Na **nový** stránky, otevřete **cloudové aplikace** stránku, **přiřazení** klikněte na tlačítko **cloudové aplikace**.
-1. Na **cloudové aplikace** stránce, proveďte následující kroky:
-   1. Klikněte na tlačítko **vyberte aplikace**.
+1. On the **New** page, to open the **Cloud apps** page, in the **Assignment** section, click **Cloud apps**.
+1. On the **Cloud apps** page, perform the following steps:
+   1. Click **Select apps**.
    1. Klikněte na **Vybrat**.
-   1. Na **vyberte** stránce vyberte cloudové aplikace a pak klikněte na **vyberte**.
-   1. Na **cloudové aplikace** klikněte na **provádí**.
-1. Pokud máte **vyžadovat vícefaktorové ověřování** vybrané:
+   1. On the **Select** page, select your cloud app, and then click **Select**.
+   1. On the **Cloud apps** page, click **Done**.
+1. If you have **Require multi-factor authentication** selected:
 
    ![Podmíněný přístup](./media/policy-migration/26.png)
 
-   1. V **ovládací prvky přístupu** klikněte na tlačítko **udělení**.
+   1. In the **Access controls** section, click **Grant**.
 
       ![Podmíněný přístup](./media/policy-migration/27.png)
 
-   1. Na **udělení** klikněte na **udělit přístup**a potom klikněte na tlačítko **vyžadovat vícefaktorové ověřování**.
+   1. On the **Grant** page, click **Grant access**, and then click **Require multi-factor authentication**.
    1. Klikněte na **Vybrat**.
-1. Klikněte na tlačítko **na** povolit vaše zásady.
+1. Click **On** to enable your policy.
 
    ![Podmíněný přístup](./media/policy-migration/30.png)
 
-## <a name="disable-the-classic-policy"></a>Zakázat klasické zásady
+## <a name="disable-the-classic-policy"></a>Disable the classic policy
 
-Chcete-li zakázat klasické zásady, klikněte na tlačítko **zakázat** v **podrobnosti** zobrazení.
+To disable your classic policy, click **Disable** in the **Details** view.
 
-![Klasické zásady](./media/policy-migration-mfa/14.png)
+![Classic policies](./media/policy-migration-mfa/14.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o migraci klasické zásady, najdete v části [migrace klasických zásad na webu Azure Portal](policy-migration.md).
-- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- For more information about the classic policy migration, see [Migrate classic policies in the Azure portal](policy-migration.md).
+- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
+- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).

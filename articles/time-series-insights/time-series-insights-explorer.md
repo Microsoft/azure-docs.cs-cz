@@ -1,6 +1,6 @@
 ---
-title: Prozkoumejte data pomocí Průzkumníka – Azure Time Series Insights | Microsoft Docs
-description: Naučte se používat Azure Time Series Insights Explorer k zobrazení dat IoT.
+title: Explore data using the explorer - Azure Time Series Insights  | Microsoft Docs
+description: Learn how to use the Azure Time Series Insights explorer to view your IoT data.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,121 +10,121 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df895f99b64d30506bc9457fb5bdc54a2182b5fe
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f6fafb2d4d363ee0d01d5bd9f18a1294ae8110b7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012631"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327754"
 ---
-# <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
+# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights explorer
 
-Tento článek popisuje funkce a možnosti všeobecně dostupné pro [webovou aplikaci Azure Time Series Insights Explorer](https://insights.timeseries.azure.com/). Průzkumník Time Series Insights ukazuje výkonné možnosti vizualizace dat poskytované službou a lze k němu přistupovat v rámci vašeho vlastního prostředí.
+This article describes the features and options in general availability for the Azure Time Series Insights [explorer web app](https://insights.timeseries.azure.com/). The Time Series Insights explorer demonstrates the powerful data visualization capabilities provided by the service and can be accessed within your own environment.
 
-Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech, který vám umožní rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Můžete zjišťovat skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase. Průzkumník Time Series Insights je aktuálně ve verzi Public Preview.
+Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. It gives you a global view of your data, which lets you quickly validate your IoT solution and avoid costly downtime to mission-critical devices. You can discover hidden trends, spot anomalies, and conduct root-cause analyses in near real time. The Time Series Insights explorer is currently in public preview.
 
 > [!TIP]
-> Prohlídku provedenou pomocí demonstračního prostředí si můžete přečíst v tématu [rychlý start Azure Time Series Insights](time-series-quickstart.md).
+> For a guided tour through the demonstration environment, read the [Azure Time Series Insights quickstart](time-series-quickstart.md).
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Přečtěte si informace o dotazování na data pomocí Time Series Insights Exploreru. </br>
+### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Learn about querying data by using the Time Series Insights explorer. </br>
 
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 >[!NOTE]
->Projděte si předchozí video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Začínáme s Time Series Insights pomocí akcelerátoru řešení Azure IoT".</a>
+>See the preceding video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Getting started with Time Series Insights by using an Azure IoT Solution Accelerator."</a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než budete moct použít Time Series Insights Explorer, musíte:
+Before you can use Time Series Insights explorer, you must:
 
-- Vytvoření prostředí Time Series Insights. Další informace najdete v tématu [jak začít s Time Series Insights](./time-series-insights-get-started.md).
-- [Poskytněte](time-series-insights-data-access.md) v prostředí přístup k vašemu účtu.
-- Přidejte do něj zdroj události služby [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md) nebo [centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) .
+- Create a Time Series Insights environment. For more information, see [How to get started with Time Series Insights](./time-series-insights-get-started.md).
+- [Provide access](time-series-insights-data-access.md) to your account in the environment.
+- Add an [IoT hub](time-series-insights-how-to-add-an-event-source-iothub.md) or [event hub](time-series-insights-how-to-add-an-event-source-eventhub.md) event source to it.
 
-## <a name="explore-and-query-data"></a>Prozkoumat data a dotazovat se na ně
+## <a name="explore-and-query-data"></a>Explore and query data
 
-Během několika minut od připojení zdroje událostí k vašemu Time Series Insights prostředí můžete zkoumat a dotazovat se na data časových řad.
+Within minutes of connecting your event source to your Time Series Insights environment, you can explore and query your time series data.
 
-1. Začněte tím, že ve webovém prohlížeči otevřete [průzkumníka Time Series Insights](https://insights.timeseries.azure.com/) . Na levé straně okna vyberte prostředí. Všechna prostředí, ke kterým máte přístup, jsou uvedena v abecedním pořadí.
+1. To start, open the [Time Series Insights explorer](https://insights.timeseries.azure.com/) in your web browser. On the left side of the window, select an environment. All environments that you have access to are listed in alphabetical order.
 
-1. Po výběru prostředí buď použijte konfigurace **od** a **do** v horní části, nebo klikněte a přetáhněte ukazatel na časový rozsah, který chcete. Vyberte lupu v pravém horním rohu nebo klikněte pravým tlačítkem na vybraný časový interval a vyberte **Hledat**.
+1. After you select an environment, either use the **From** and **To** configurations at the top, or click and drag over the timespan you want. Select the magnifying glass in the upper-right corner, or right-click on the selected timespan and select **Search**.
 
-1. Dostupnost můžete také automaticky aktualizovat, a to tak, že vyberete tlačítko **automaticky zapnuto** . Tlačítko **automaticky zapnuto** se vztahuje pouze na graf dostupnosti, nikoli na obsah hlavní vizualizace.
+1. You also can refresh availability automatically every minute by selecting the **Auto On** button. The **Auto On** button only applies to the availability chart, not the content of the main visualization.
 
-1. Ikona cloudu Azure vás přesměruje do vašeho prostředí v Azure Portal.
+1. The Azure cloud icon takes you to your environment in the Azure portal.
 
-   [prostředí ![Time Series Insights](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
+   [![Time Series Insights environment selection](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
-1. V dalším kroku se zobrazí graf, který zobrazuje počet všech událostí během vybraného časového rozmezí. Tady máte několik ovládacích prvků:
+1. Next, you see a chart that shows a count of all events during the selected timespan. Here you have a number of controls:
 
-    - **Panel editoru podmínek**: termín místo, kde se dotazuje na vaše prostředí. Nachází se na levé straně obrazovky:
-      - **Measure**: Tento rozevírací seznam zobrazuje všechny číselné sloupce (**Double**).
-      - **Rozdělit podle**: Tento rozevírací seznam zobrazuje kategorií sloupce (**řetězce**).
-      - Můžete povolit interpolaci kroku, zobrazit minimum a maximum a upravit osu y z ovládacích panelů vedle **míry**. Můžete také upravit, zda jsou zobrazená data počet, průměr nebo součet dat.
-      - Můžete přidat až pět podmínek pro zobrazení na stejné ose x. Pomocí tlačítka pro **kopírování** přidejte další termín nebo vyberte **Přidat** a přidejte nový termín.
+    - **Terms Editor panel**: The term space is where you query your environment. It’s found on the left side of the screen:
+      - **MEASURE**: This drop-down list shows all numeric columns (**Doubles**).
+      - **SPLIT BY**: This drop-down list shows categorical columns (**Strings**).
+      - You can enable step interpolation, show minimum and maximum, and adjust the y-axis from the control panel next to **MEASURE**. You also can adjust whether data shown is a count, average, or sum of the data.
+      - You can add up to five terms to view on the same x-axis. Select **Add** to add a fresh term or use the **Clone this term** button to add a copy of an existing term.
 
-        [panel editoru ![ch podmínek](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
+        [![Terms selection, filtering, and query panel](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
 
-      - **Predikát**: pomocí predikátu můžete rychle filtrovat události pomocí sady operandů uvedených v následující tabulce. Pokud hledání provádíte tak, že vyberete nebo kliknete, predikát se na základě tohoto hledání automaticky aktualizuje. Operand podporované typy patří:
+      - **Predicate**: Use the predicate to quickly filter your events by using the set of operands listed in the following table. If you conduct a search by selecting or clicking, the predicate automatically updates based on that search. Supported operand types include:
 
-         |Operace  |Podporované typy  |Poznámky:  |
+         |Operace  |Supported types  |Poznámky  |
          |---------|---------|---------|
-         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, časový interval       |         |
-         |`=`, `!=`, `<>`     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |         |
-         |IN     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |  Všechny operandy musí být stejného typu nebo konstanta NULL.        |
-         |MÁ     | Řetězec        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a hodnota NULL nejsou povoleny.       |
+         |**<** , **>** , **<=** , **>=**    |  **Double**, **DateTime**, **TimeSpan**       |         |
+         |**=** , **!=** , **<>**     | **String**, **Bool**, **Double**, **DateTime**, **TimeSpan**, **NULL**        |         |
+         |**IN**     | **String**, **Bool**, **Double**, **DateTime**, **TimeSpan**, **NULL**        |  All operands should be of the same type or be **NULL** constant.        |
+         |**HAS**     | **String**        |  Only constant string literals are allowed at the right side. Empty string and **NULL** aren't allowed.       |
 
-      - **Příklady dotazů**
+      - **Example queries**
 
-         [Příklady dotazů ![](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
+         [![Example GA queries](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
-1. Pomocí nástroje posuvník **velikosti intervalu** můžete přiblížit nebo oddálit intervaly ve stejném časovém intervalu. Posuvník poskytuje přesnější kontrolu nad pohybem mezi velkými řezy času, které znázorňují hladké trendy v průřezech až do milisekund, což vám umožní zobrazit podrobné a vysoce rozlišení vašich dat. Výchozí počáteční bod posuvníku je nastaven jako optimální zobrazení dat z výběru pro vyvážení rozlišení, rychlosti dotazů a členitosti.
+1. You can use the **Interval Size** slider tool to zoom in and out of intervals over the same timespan. The slider provides more precise control of movement between large slices of time that show smooth trends down to slices as small as the millisecond, which allow you to see granular, high-resolution cuts of your data. The slider’s default starting point is set as the most optimal view of the data from your selection to balance resolution, query speed, and granularity.
 
-1. Nástroj **Time štětec** usnadňuje přechod z jednoho časového rozpětí do druhého.
+1. The **Time brush** tool makes it easy to navigate from one timespan to another.
 
-1. Pomocí příkazu **Uložit** uložte aktuální dotaz a sdílejte ho s dalšími uživateli prostředí. Když použijete možnost **otevřít**, můžete zobrazit všechny uložené dotazy a všechny sdílené dotazy dalších uživatelů v prostředích, ke kterým máte přístup.
+1. Select the **Save** icon to save your current query and share it with other users of the environment. When you select the **Open** icon, you can see all of your saved queries and any shared queries of other users in environments you have access to.
 
-   [![dotazy](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
+   [![Queries](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
 ## <a name="visualize-data"></a>Vizualizace dat
 
-1. Použijte nástroj **perspektivní zobrazení** pro simultánní zobrazení až čtyř jedinečných dotazů. Tlačítko **zobrazení Perspektiva** se nachází v pravém horním rohu grafu.
+1. Use the **Perspective View** tool for a simultaneous view of up to four unique queries. The **Perspective View** button is in the upper-right corner of the chart.
 
-   [![zobrazení perspektivy](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
+   [![Select queries to add to the perspective pane](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png)](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png#lightbox)
 
-1. Zobrazením grafu můžete vizuálně prozkoumat data a použít nástroje **grafu** :
+1. View a chart to visually explore your data, and use the **Chart** tools:
 
-    - **Vyberte** nebo **klikněte** na konkrétní časový rozsah nebo jednu datovou řadu.
-    - V rámci výběru TimeSpan můžete události přiblížit nebo prozkoumat.
-    - V rámci datové řady můžete řadu rozdělit na jiný sloupec, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyřadit z nich vybrané řady, vyloučíte je z této řady a prozkoumáte události z vybrané řady.
-    - V oblasti filtru nalevo od grafu můžete zobrazit všechny zobrazené datové řady a změnit jejich pořadí podle hodnoty nebo názvu. Můžete také zobrazit všechny datové řady nebo připnuté nebo nepřipnutých řad. Můžete vybrat jednu datovou řadu a rozdělit ji na jiný sloupec, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyloučit vybrané řady, připnout tyto řady nebo prozkoumat události z vybrané řady.
-    - Pokud současně zobrazujete více podmínek, můžete vytvořit zásobník, odskládat, zobrazit další data o datové řadě a použít stejnou osu y napříč všemi podmínkami. Použijte tlačítka v pravém horním rohu grafu.
+    - **Select** or **click** a specific timespan or a single data series.
+    - Within a timespan selection, you can zoom or explore events.
+    - Within a data series, you can split the series by another column, add the series as a new term, show only the selected series, exclude the selected series, ping that series, or explore events from the selected series.
+    - In the filter area to the left of the chart, you can see all displayed data series and reorder by value or name. You also can view all data series or any pinned or unpinned series. You can select a single data series and split the series by another column, add the series as a new term, show only the selected series, exclude the selected series, pin that series, or explore events from the selected series.
+    - When you view multiple terms simultaneously, you can stack, unstack, see additional data about a data series, and use the same y-axis across all terms. Use the buttons in the upper-right corner of the chart.
 
-    [Nástroj ![Chart](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
+    [![Chart tool upper right corner option settings](media/time-series-insights-explorer/tsi-ga-example-chart-options.png)](media/time-series-insights-explorer/tsi-ga-example-chart-options.png#lightbox)
 
-1. Pomocí **heatmapu** můžete v daném dotazu rychle vymezit jedinečné nebo neobvyklé datové řady. Pouze jeden hledaný termín lze vizuálně rozčlenit jako heatmapu.
+1. Use the **heatmap** to quickly spot unique or anomalous data series in a given query. Only one search term can be visualized as a heatmap.
 
-    [![heatmapu](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
+    [![GA explorer heatmap charting ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
-1. Když prozkoumáte události tak, že vyberete nebo kliknete pravým tlačítkem myši, zpřístupní se panel **události** . Tady uvidíte všechny nezpracované události a exportujte události jako soubory JSON nebo CSV. Time Series Insights ukládá všechna nezpracovaná data.
+1. When you explore events by selecting or right-clicking, the **EVENTS** panel is made available. Here, you can see all of your raw events and export your events as JSON or CSV files. Time Series Insights stores all raw data.
 
-    [Události ![](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
+    [![Events](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
-1. Po prozkoumání událostí a vystavení vzorců a statistiky sloupců vyberte kartu **statistiky** .
+1. Select the **STATS** tab after you explore events to expose patterns and column stats.
 
-    - **Vzory**: Tato funkce proaktivně rozsvítí nejdůležitější vzory ve vybrané datové oblasti. Nemusíte se pohlížet na tisíce událostí, abyste zjistili, jaké vzory vyžadují nejvíce času a energii. Pomocí Time Series Insights můžete přejít přímo na tyto statisticky významné vzory, abyste mohli pokračovat v analýze. Tato funkce je užitečná také pro následné šetření do historických dat.
-    - **Statistiky sloupce**: statistiky sloupců poskytují grafy a tabulky, které rozdělují data z každého sloupce vybrané řady dat přes vybrané časové rozpětí.
+    - **Patterns**: This feature proactively surfaces the most statistically significant patterns in a selected data region. You don't have to look at thousands of events to understand what patterns require the most time and energy. With Time Series Insights, you can jump directly into these statistically significant patterns to continue conducting an analysis. This feature is also helpful for post-mortem investigations into historical data.
+    - **Column Stats**: Column stats provide charts and tables that break down data from each column of the selected data series over the selected timespan.
 
-      [STATISTIKY ![](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
+      [![STATS column charting and options](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
-Nyní jste viděli různé funkce a možnosti, které jsou k dispozici v rámci webové aplikace Time Series Insights Explorer.
+Now you've seen the various features and options that are available within the Time Series Insights explorer web app.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [diagnostikovat a řešit problémy](time-series-insights-diagnose-and-solve-problems.md) v prostředí Time Series Insights.
+- Learn how to [diagnose and solve problems](time-series-insights-diagnose-and-solve-problems.md) in your Time Series Insights environment.
 
-- Převezměte [Azure Time Series Insights](time-series-quickstart.md) úvodní prohlídka s asistencí.
+- Take the guided [Azure Time Series Insights quickstart](time-series-quickstart.md) tour.

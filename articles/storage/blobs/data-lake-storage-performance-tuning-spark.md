@@ -1,115 +1,115 @@
 ---
-title: Azure Data Lake Storage Gen2 výkonu Sparku pokyny k ladění | Dokumentace Microsoftu
-description: Azure Data Lake Storage Gen2 výkonu Sparku pokyny k ladění
+title: 'Tune performance: Spark, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
+description: Azure Data Lake Storage Gen2 Spark Performance Tuning Guidelines
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: feefcf4f9f4448ab2b36c415cb745fd98277eb28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939323"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327551"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Průvodce laděním výkonu pro Spark v HDInsight a Azure Data Lake Storage Gen2
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: Spark, HDInsight & Azure Data Lake Storage Gen2
 
-Při ladění výkonu ve Sparku, je potřeba zvážit počet aplikací, které budou spuštěny v clusteru.  Ve výchozím nastavení, můžete spustit 4 aplikací souběžně v clusteru HDI (Poznámka: ve výchozím nastavení se může změnit).  Můžete se rozhodnout použít menší počet aplikací, takže můžete přepsat výchozí nastavení a informace clusteru použijte pro tyto aplikace.  
+When tuning performance on Spark, you need to consider the number of apps that will be running on your cluster.  By default, you can run 4 apps concurrently on your HDI cluster (Note: the default setting is subject to change).  You may decide to use fewer apps so you can override the default settings and use more of the cluster for those apps.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
-* **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage Gen2. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
-* **Spuštění clusteru Spark v Data Lake Storage Gen2**.  Další informace najdete v tématu [clusteru HDInsight Spark použít k analýze dat v Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Pokyny pro Data Lake Storage Gen2 pro optimalizaci výkonu**.  Obecné informace o výkonu koncepty, najdete v části [Data Lake Storage Gen2 ladění Průvodce výkonem](data-lake-storage-performance-tuning-guidance.md) 
+* **An Azure Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create an Azure Data Lake Storage Gen2 storage account](data-lake-storage-quickstart-create-account.md).
+* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Make sure you enable Remote Desktop for the cluster.
+* **Running Spark cluster on Data Lake Storage Gen2**.  For more information, see [Use HDInsight Spark cluster to analyze data in Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md) 
 
 ## <a name="parameters"></a>Parametry
 
-Při spuštění úlohy Spark, tady jsou nejdůležitější nastavení, které můžete ladit pro zvýšení výkonu při Gen2 úložiště Data Lake:
+When running Spark jobs, here are the most important settings that can be tuned to increase performance on Data Lake Storage Gen2:
 
-* **Počet prováděcích modulů** – počet souběžných úloh, které mohou být provedeny.
+* **Num-executors** - The number of concurrent tasks that can be executed.
 
-* **Prováděcí modul paměti** -množství paměti přidělené na každý prováděcího modulu.
+* **Executor-memory** - The amount of memory allocated to each executor.
 
-* **Prováděcí modul jader** – počet jader přidělené na každý prováděcího modulu.                     
+* **Executor-cores** - The number of cores allocated to each executor.                     
 
-**Počet prováděcích modulů** počet prováděcích modulů Nastaví maximální počet úloh, které můžou běžet paralelně.  Skutečný počet úloh, které můžou běžet paralelně ohraničená paměťových a Procesorových prostředků k dispozici ve vašem clusteru.
+**Num-executors** Num-executors will set the maximum number of tasks that can run in parallel.  The actual number of tasks that can run in parallel is bounded by the memory and CPU resources available in your cluster.
 
-**Prováděcí modul paměti** Toto je množství paměti přidělené na každý prováděcího modulu.  Paměti potřebné pro každé prováděcí modul je závislá na úlohu.  Paměť pro složité operace musí být vyšší.  Jednoduché operací, jako je čtení a zápis bude nižší požadavky na paměť.  Velikost paměti pro každou prováděcí modul lze zobrazit v Ambari.  V Ambari přejděte na Spark a zobrazit na kartě konfigurace.  
+**Executor-memory** This is the amount of memory that is being allocated to each executor.  The memory needed for each executor is dependent on the job.  For complex operations, the memory needs to be higher.  For simple operations like read and write, memory requirements will be lower.  The amount of memory for each executor can be viewed in Ambari.  In Ambari, navigate to Spark and view the Configs tab.  
 
-**Prováděcí modul jader** tím se nastaví počet jader využívaných za prováděcího modulu, která určuje počet paralelních vláken, které můžou běžet na prováděcího modulu.  Například pokud prováděcí modul jádra = 2, pak každý prováděcí modul můžete spustit 2 paralelní úlohy v prováděcí modul.  Prováděcí modul jádra potřeby budou závislé na úlohu.  Vstupně-výstupní operace náročné úlohy nevyžadují velké množství paměti na jeden úkol, takže každý prováděcí modul dokáže zpracovat další paralelní úlohy.
+**Executor-cores** This sets the number of cores used per executor, which determines the number of parallel threads that can be run per executor.  For example, if executor-cores = 2, then each executor can run 2 parallel tasks in the executor.  The executor-cores needed will be dependent on the job.  I/O heavy jobs do not require a large amount of memory per task so each executor can handle more parallel tasks.
 
-Ve výchozím nastavení jsou definovány dvě virtuální jádra YARN pro každé fyzické jádro při spouštění Sparku v HDInsight.  Toto číslo obsahuje dobrou rovnováhu mezi souběžnosti a množství kontextu přepínání z více vláken.  
+By default, two virtual YARN cores are defined for each physical core when running Spark on HDInsight.  This number provides a good balance of concurrency and amount of context switching from multiple threads.  
 
-## <a name="guidance"></a>Doprovodné materiály
+## <a name="guidance"></a>Pokyny
 
-Při spouštění analytických úloh pro práci s daty v Data Lake Storage Gen2 Spark, doporučujeme používat nejnovější verzi HDInsight k co nejlepšího výkonu s Data Lake Storage Gen2. Po další náročných na vstupně-výstupních operací vaší úlohy se může určité parametry nakonfigurovány ke zlepšení výkonu.  Data Lake Storage Gen2 je vysoce škálovatelné úložiště platforma, která dokáže zpracovat vysokou propustnost.  Pokud úloha obsahuje především pro čtení nebo zápisu, pak zvýšit souběžnost pro vstup a výstup do a z Data Lake Storage Gen2 může zvýšit výkon.
+While running Spark analytic workloads to work with data in Data Lake Storage Gen2, we recommend that you use the most recent HDInsight version to get the best performance with Data Lake Storage Gen2. When your job is more I/O intensive, then certain parameters can be configured to improve performance.  Data Lake Storage Gen2 is a highly scalable storage platform that can handle high throughput.  If the job mainly consists of read or writes, then increasing concurrency for I/O to and from Data Lake Storage Gen2 could increase performance.
 
-Pro zlepšení souběžnosti pro úlohy náročné na vstupně-výstupních operací několik obecné způsoby.
+There are a few general ways to increase concurrency for I/O intensive jobs.
 
-**Krok 1: Určení, kolik aplikace běží ve vašem clusteru** – měli byste vědět, kolik aplikace běží na clusteru, včetně aktuální.  Výchozí hodnoty pro každý Spark nastavení předpokládá, které jsou 4 aplikace, které běží souběžně.  Proto bude mít jenom 25 % clusteru k dispozici pro každou aplikaci.  Pokud chcete získat lepší výkon, můžete přepsat výchozí hodnoty změnou počtu prováděcích procesů.  
+**Step 1: Determine how many apps are running on your cluster** – You should know how many apps are running on the cluster including the current one.  The default values for each Spark setting assumes that there are 4 apps running concurrently.  Therefore, you will only have 25% of the cluster available for each app.  To get better performance, you can override the defaults by changing the number of executors.  
 
-**Krok 2: Nastavení paměti prováděcí modul** – první věc, kterou chcete nastavit je paměť prováděcího modulu.  Paměť budou závislé na úlohu, která se má spustit.  Zlepšení souběžnosti přidělením méně paměti za prováděcího modulu.  Pokud se zobrazí nedostatek paměti výjimky při spuštění úlohy, měli byste zvýšit hodnotu tohoto parametru.  Jeden alternativou je načíst větší množství paměti pomocí funkce clusteru, který má větší objem paměti a zvyšuje velikost vašeho clusteru.  Větší množství paměti umožní další moduly provádění, kterou chcete použít, což znamená, že větší souběžnost.
+**Step 2: Set executor-memory** – The first thing to set is the executor-memory.  The memory will be dependent on the job that you are going to run.  You can increase concurrency by allocating less memory per executor.  If you see out of memory exceptions when you run your job, then you should increase the value for this parameter.  One alternative is to get more memory by using a cluster that has higher amounts of memory or increasing the size of your cluster.  More memory will enable more executors to be used, which means more concurrency.
 
-**Krok 3: Nastavte prováděcího modulu jádra** – pro vstupně-výstupních operací úloh náročných na, které nemají komplexních operací, je dobré začít s vysokým počtem prováděcího modulu jádra na zvýšení počtu paralelních úkolů na prováděcí modul.  Nastavení prováděcího modulu jádra na 4 je dobrý začátek.   
+**Step 3: Set executor-cores** – For I/O intensive workloads that do not have complex operations, it’s good to start with a high number of executor-cores to increase the number of parallel tasks per executor.  Setting executor-cores to 4 is a good start.   
 
     executor-cores = 4
-Zvýšení počtu jader prováděcí modul vám poskytne další paralelismu tak můžete experimentovat s jinou prováděcího modulu jádra.  Pro úlohy, které mají složitějších operací by měla snížit počet jader na prováděcího modulu.  Pokud prováděcí modul jader je nastavená na vyšší hodnotu než 4, pak uvolňování paměti může být neefektivní a snížit výkon.
+Increasing the number of executor-cores will give you more parallelism so you can experiment with different executor-cores.  For jobs that have more complex operations, you should reduce the number of cores per executor.  If executor-cores is set higher than 4, then garbage collection may become inefficient and degrade performance.
 
-**Krok 4: Určit množství paměti YARN v clusteru** – tyto informace jsou k dispozici v Ambari.  Přejděte na YARN a zobrazit na kartě konfigurace.  V tomto okně se zobrazí paměti YARN.  
-Poznámka: když jste v okně se zobrazí také výchozí velikost kontejneru YARN.  Velikost kontejneru YARN je stejný jako paměti na jeden parametr prováděcího modulu.
+**Step 4: Determine amount of YARN memory in cluster** – This information is available in Ambari.  Navigate to YARN and view the Configs tab.  The YARN memory is displayed in this window.  
+Note while you are in the window, you can also see the default YARN container size.  The YARN container size is the same as memory per executor parameter.
 
     Total YARN memory = nodes * YARN memory per node
-**Krok 5: Vypočítat počet prováděcích modulů**
+**Step 5: Calculate num-executors**
 
-**Vypočítat omezení paměti** – parametr Počet prováděcích modulů je omezena paměti nebo procesoru.  Omezení paměti určuje množství dostupné paměti YARN pro vaši aplikaci.  By měla trvat celkové paměti YARN a dělení, který paměti prováděcího modulu.  Omezení musí být zrušit škálován pro počet aplikací, které tak jsme rozdělit podle počtu aplikací.
+**Calculate memory constraint** - The num-executors parameter is constrained either by memory or by CPU.  The memory constraint is determined by the amount of available YARN memory for your application.  You should take total YARN memory and divide that by executor-memory.  The constraint needs to be de-scaled for the number of apps so we divide by the number of apps.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
-**Výpočet procesoru omezení** – omezení procesor se vypočte jako celkový počet virtuálních jader, které jsou rozdělené podle počtu jader na prováděcího modulu.  Existují 2 virtuální jádra pro každé fyzické jádro.  Podobná omezení paměti, musíme rozdělit podle počtu aplikací.
+**Calculate CPU constraint** - The CPU constraint is calculated as the total virtual cores divided by the number of cores per executor.  There are 2 virtual cores for each physical core.  Similar to the memory constraint, we have to divide by the number of apps.
 
     virtual cores = (nodes in cluster * # of physical cores in node * 2)
     CPU constraint = (total virtual cores / # of cores per executor) / # of apps
-**Nastavte počet prováděcích modulů** – počet prováděcích modulů parametru se určuje podle trvá minimálně omezení paměti a procesoru omezení. 
+**Set num-executors** – The num-executors parameter is determined by taking the minimum of the memory constraint and the CPU constraint. 
 
     num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
-Nastaví větší číslo počet prováděcích modulů nemusí se nutně zvýšit výkon.  Měli byste zvážit přidání další moduly provádění, přidá další režie pro každý další prováděcí modul, který může potenciálně dojít ke snížení výkonu.  Počet prováděcích modulů ohraničená prostředky clusteru.    
+Setting a higher number of num-executors does not necessarily increase performance.  You should consider that adding more executors will add extra overhead for each additional executor, which can potentially degrade performance.  Num-executors is bounded by the cluster resources.    
 
-## <a name="example-calculation"></a>Příklad výpočtu
+## <a name="example-calculation"></a>Example calculation
 
-Řekněme, že máte aktuálně cluster skládá z 8 D4v2 uzly, na kterém běží 2 aplikace, včetně toho, který chcete spustit.  
+Let’s say you currently have a cluster composed of 8 D4v2 nodes that is running 2 apps including the one you are going to run.  
 
-**Krok 1: Určení, kolik aplikace běží ve vašem clusteru** – víte, že máte 2 aplikací v clusteru, včetně toho, který chcete spustit.  
+**Step 1: Determine how many apps are running on your cluster** – you know that you have 2 apps on your cluster, including the one you are going to run.  
 
-**Krok 2: Nastavení paměti prováděcí modul** – v tomto příkladu ověříme, že bude 6 GB paměti prováděcí modul dostatečná pro úlohy náročné na vstupně-výstupních operací.  
+**Step 2: Set executor-memory** – for this example, we determine that 6GB of executor-memory will be sufficient for I/O intensive job.  
 
     executor-memory = 6GB
-**Krok 3: Nastavte prováděcího modulu jádra** – protože úlohu náročné na vstupně-výstupních operací, jsme nastavili na počet jader pro každý prováděcí modul na 4.  Nastavování počet jader na prováděcí modul na větší než 4 může způsobit problémy kolekce uvolnění paměti.  
+**Step 3: Set executor-cores** – Since this is an I/O intensive job, we can set the number of cores for each executor to 4.  Setting cores per executor to larger than 4 may cause garbage collection problems.  
 
     executor-cores = 4
-**Krok 4: Určit množství paměti YARN v clusteru** – přejdeme na Ambari a zjistěte, zda má každý D4v2 25 GB paměti YARN.  Protože je 8 uzlů, dostupné paměti YARN se násobí hodnotou 8.
+**Step 4: Determine amount of YARN memory in cluster** – We navigate to Ambari to find out that each D4v2 has 25GB of YARN memory.  Since there are 8 nodes, the available YARN memory is multiplied by 8.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**Krok 5: Vypočítat počet prováděcích modulů** – počet prováděcích modulů parametru se určuje podle trvá minimálně omezení paměti a procesoru omezení dělený # aplikace běžící na Sparku.    
+**Step 5: Calculate num-executors** – The num-executors parameter is determined by taking the minimum of the memory constraint and the CPU constraint divided by the # of apps running on Spark.    
 
-**Vypočítat omezení paměti** – omezení paměti se počítá jako celkové paměti YARN dělený paměti za prováděcího modulu.
+**Calculate memory constraint** – The memory constraint is calculated as the total YARN memory divided by the memory per executor.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
     Memory constraint = (200GB / 6GB) / 2   
     Memory constraint = 16 (rounded)
-**Výpočet procesoru omezení** – The procesoru omezení se počítá jako yarn celkový počet jader, vydělí počtem jader na prováděcího modulu.
+**Calculate CPU constraint** - The CPU constraint is calculated as the total yarn cores divided by the number of cores per executor.
     
     YARN cores = nodes in cluster * # of cores per node * 2   
     YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
     CPU constraint = (total YARN cores / # of cores per executor) / # of apps
     CPU constraint = (128 / 4) / 2
     CPU constraint = 16
-**Počet prováděcích modulů set**
+**Set num-executors**
 
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)

@@ -1,40 +1,40 @@
 ---
-title: Vytvořit prostředek Cognitive Services Analýza textu
+title: Create a Cognitive Services Text Analytics resource
 titleSuffix: Azure Cognitive Services
-description: Naučte se vytvořit prostředek Cognitive Services Analýza textu.
+description: Learn how to create a Cognitive Services Text Analytics resource.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 6a9363472e1d5770232ca9a0b151fb309d9c4c75
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: d3b65174f3d161e0b8780a890f297d9d1c812b44
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377421"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383478"
 ---
-## <a name="create-a-cognitive-services-text-analytics-resource"></a>Vytvořit prostředek Cognitive Services Analýza textu
+## <a name="create-a-cognitive-services-text-analytics-resource"></a>Create a Cognitive Services Text Analytics resource
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyberte **vytvořit prostředek**a pak přejít na **AI + Machine Learning** > **Analýza textu**.
-   Případně můžete přejít na [vytvořit analýza textu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
-1. Zadejte všechna požadovaná nastavení:
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Select **Create a resource**, and then go to **AI + Machine Learning** > **Text Analytics**.
+   Or, go to [Create Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
+1. Enter all the required settings:
 
-    |Nastavení|Value|
+    |Nastavení|Hodnota|
     |--|--|
-    |Name|Zadejte název (2-64 znaků).|
-    |Subscription|Vyberte příslušné předplatné.|
-    |Location|Vyberte okolní umístění.|
-    |Cenová úroveň| Zadejte **S**, cenová úroveň Standard.|
-    |Resource group|Vyberte dostupnou skupinu prostředků.|
+    |Name (Název)|Enter a name (2-64 characters).|
+    |Předplatné|Select the appropriate subscription.|
+    |Umístění|Select a nearby location.|
+    |Cenová úroveň| Enter **S**, the standard pricing tier.|
+    |Skupina prostředků|Select an available resource group.|
 
-1. Vyberte **vytvořit**a počkejte na vytvoření prostředku. Prohlížeč automaticky přesměruje na stránku nově vytvořeného prostředku.
-1. Shromáždění nakonfigurovaného `endpoint` a klíč rozhraní API:
+1. Select **Create**, and wait for the resource to be created. Your browser automatically redirects to the newly created resource page.
+1. Collect the configured `endpoint` and an API key:
 
-    |Karta prostředek na portálu|Nastavení|Hodnota|
+    |Resource tab in portal|Nastavení|Hodnota|
     |--|--|--|
-    |**Přehled**|Koncový bod|Zkopírujte koncový bod. Vypadá to jako `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`.|
-    |**Klíče**|Klíč rozhraní API|Zkopírujte jeden ze dvou klíčů. Jedná se o alfanumerický řetězec s 32 znaky bez mezer nebo pomlček: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|
+    |**Přehled**|Koncový bod|Copy the endpoint. It appears similar to `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`.|
+    |**Keys**|API Key|Copy one of the two keys. It's a 32-character alphanumeric string with no spaces or dashes: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|
