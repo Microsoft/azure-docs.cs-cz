@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API a Java'
+title: 'Quickstart: Search for videos using the REST API and Java - Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání videí Vvyhledávání videí Bingu REST API pomocí Java.
+description: Use this quickstart to send video search requests to the Bing Video Search REST API using Java.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: aahi
-ms.openlocfilehash: 0823c115f47bb6bff0396cd154164183cf46d8e4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 30234758761e06c65e621c7f512ed8cafa02e090
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500700"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378647"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API a Java
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Quickstart: Search for videos using the Bing Video Search REST API and Java
 
-Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá aplikace Java pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) s dalšími zpracováním chyb, funkcemi a poznámkami ke kódu.
+Use this quickstart to make your first call to the Bing Video Search API and view a search result from the JSON response. This simple Java application sends an HTTP video search query to the API, and displays the response. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. The source code for this sample is available [on GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) with additional error handling, features, and code annotations.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* The [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * [Knihovna Gson](https://github.com/google/gson)
 
@@ -45,7 +45,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte novou třídu s názvem `SearchResults` pro uložení hlaviček a odpovědi JSON z rozhraní API.
+2. Create a new class named `SearchResults` to store the headers and JSON response from the API.
 
     ```java
     // Container class for search results encapsulates relevant headers and JSON data
@@ -59,7 +59,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
     }
     ```
 
-3. Vytvořte novou metodu s názvem `SearchVideos()` s proměnnými pro hostitele koncového bodu rozhraní API a cestu, klíč předplatného a hledaný výraz. Vrátí `SearchResults` objekt. 
+3. Create a new method named `SearchVideos()` with variables for your API endpoint host and path, your subscription key, and a search term. It will return a `SearchResults` object. 
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -70,11 +70,11 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
     }
     ```
 
-## <a name="construct-and-send-the-search-request"></a>Sestavit a odeslat požadavek hledání
+## <a name="construct-and-send-the-search-request"></a>Construct and send the search request
 
-1. V `SearchVideos()`nástroji proveďte následující kroky:
+1. In `SearchVideos()`, perform the following steps:
 
-    1. Vytvořte adresu URL pro vaši žádost kombinací hostitele rozhraní API, cesty a kódování vyhledávacího dotazu. Pak pomocí `openConnection()` vytvořte připojení a přidejte `Ocp-Apim-Subscription-Key` do hlavičky klíč předplatného.
+    1. construct the URL for your request by combining your API host, path, and encoding your search query. Then use `openConnection()` to create a connection, and add your subscription key to the `Ocp-Apim-Subscription-Key` header.
 
         ```java
         URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
@@ -82,14 +82,14 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
         connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
         ```
 
-    2. Získejte odpověď z rozhraní API a uložte řetězec JSON.
+    2. Get the response from the API and store the JSON string.
 
         ```java
         InputStream stream = connection.getInputStream();
         String response = new Scanner(stream).useDelimiter("\\A").next();
         ```
 
-    3. Slouží `getHeaderFields();` k extrakci hlaviček protokolu HTTP z odpovědi a uložení `results` objektů souvisejících s bingem v objektu. Pak datový proud zavřete a vraťte výsledek.
+    3. Use `getHeaderFields();` to extract the HTTP headers from the response, and store the Bing-related ones in the `results` object. Then close the stream and return the result.
 
         ```java
         // extract Bing-related HTTP headers
@@ -106,7 +106,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 
 ## <a name="format-the-response"></a>Formátování odpovědi
 
-1. Vytvořte metodu pojmenovanou `prettify()` k formátování odpovědi vrácené z rozhraní Bing video API. Použijte knihovnu `JsonParser` gson k převzetí řetězce JSON a převeďte jej na objekt. Pak použijte `GsonBuilder()` a `toJson()` k vytvoření formátovaného řetězce. 
+1. Create a method named `prettify()` to format the response returned from the Bing Video API. Use the Gson library's `JsonParser` to take in a JSON string and convert it into an object. Then use `GsonBuilder()` and `toJson()` to create the formatted string. 
 
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -118,9 +118,9 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
     }
     ```
 
-## <a name="send-the-request-and-print-the-response"></a>Odeslat požadavek a vytisknout odpověď
+## <a name="send-the-request-and-print-the-response"></a>Send the request and print the response
 
-1. V metodě Main vaší aplikace zavolejte `SearchVideos` pomocí hledaného výrazu. pak můžete vytisknout hlavičky HTTP uložené v odpovědi a také řetězec JSON vrácený rozhraním API.
+1. In the main method of your application, call `SearchVideos` with your search term. you can then print the HTTP headers stored in the response, as well as the JSON string returned by the API.
 
     ```java
     public static void main (String[] args) {
@@ -243,11 +243,11 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
+> [Build a single-page web app](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
- [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)
+ [What is the Bing Video Search API?](../overview.md)

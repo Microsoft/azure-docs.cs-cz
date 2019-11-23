@@ -8,60 +8,60 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 50a215175d7305834a64b7e0cfbc153431b10b7c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2dbe8a1bf8c4fd0ead20c50a320265a3acefa43c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174986"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74328330"
 ---
-## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Zobrazovat virtuální počítače s naplánovanou údržbou na portálu
+## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>View VMs scheduled for maintenance in the portal
 
-Jakmile je naplánováno vlny plánované údržby, můžete sledovat seznam virtuálních počítačů, které jsou ovlivněny wave nadcházející údržbě. 
+Once a planned maintenance wave is scheduled, you can observe the list of virtual machines that are impacted by the upcoming maintenance wave. 
 
-Můžete použít na webu Azure portal a vyhledejte virtuální počítače s naplánovanou údržbou.
+You can use the Azure portal and look for VMs scheduled for maintenance.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-2. V levém navigačním panelu klikněte na tlačítko **virtuálních počítačů**.
+2. In the left navigation, click **Virtual Machines**.
 
-3. V podokně virtuální počítače, klikněte **sloupce** tlačítka pro otevření seznamu dostupných sloupců.
+3. In the Virtual Machines pane, click the **Columns** button to open the list of available columns.
 
-4. Vyberte a přidejte následující sloupce:
+4. Select and add the following columns:
 
-   **Údržba**: Zobrazuje stav údržby pro virtuální počítač. Toto jsou možné hodnoty:
+   **Maintenance**: Shows the maintenance status for the VM. The following are the potential values:
       
       | Hodnota | Popis |
       |-------|-------------|
-      | Začít teď | Virtuální počítač je v intervalu samoobslužné údržby, který umožní, abyste údržbu zahájili sami. Níže jsou na tom, jak spustit údržbu na virtuálním počítači. | 
-      | Naplánováno | Pro virtuální počítač je naplánovaná údržba, ale bez možnosti, abyste ji zahájili vy. Další časového období údržby tak, že vyberete Údržba – plánované časové období v tomto zobrazení, nebo kliknutím na virtuálním počítači. | 
-      | Už aktualizováno | Váš virtuální počítač je už aktualizovaná a v tuto chvíli není vyžadována žádná další akce. | 
-      | Zkuste to znovu později | Inicializovali jste údržby bez úspěchu. Budete moct používat samoobslužné údržby možnost kdykoli později. | 
-      | Zkuste to znovu | Zkuste to znovu dříve neúspěšné Údržba svým zahájená uživatelem. | 
-      | - | Váš virtuální počítač není součástí vlny plánované údržby. |
+      | Začít teď | The VM is in the self-service maintenance window that lets you initiate the maintenance yourself. See below on how to start maintenance on your VM. | 
+      | Naplánované | Pro virtuální počítač je naplánovaná údržba, ale bez možnosti, abyste ji zahájili vy. You can learn of the maintenance window by selecting the Maintenance - Scheduled window in this view or by clicking on the VM. | 
+      | Already updated | Your VM is already updated and no further action is required at this time. | 
+      | Retry later | You have initiated maintenance with no success. You will be able to use the self-service maintenance option at a later time. | 
+      | Retry now | You can retry a previously unsuccessful self-initiated maintenance. | 
+      | - | Your VM is not part of a planned maintenance wave. |
       
 
-   **Údržba – samoobslužná služba okno**: Ukazuje časové okno spustíte můžete samoobslužné údržby na virtuálních počítačích.
+   **Maintenance - Self-service window**: Shows the time window when you can self-start maintenance on your VMs.
    
-   **Údržba – naplánované okno**: Zobrazuje časové okno, když Azure, aby bylo možné dokončit údržbu zůstane váš virtuální počítač. 
+   **Maintenance - Scheduled window**: Shows the time window when Azure will maintain your VM in order to complete maintenance. 
 
 
 
-## <a name="notification-and-alerts-in-the-portal"></a>Oznámení a výstrahy na portálu
+## <a name="notification-and-alerts-in-the-portal"></a>Notification and alerts in the portal
 
-Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Můžete přidat další příjemce a kanály pro tuto komunikaci tak, že vytvoříte upozornění protokolu aktivit Azure. Další informace najdete v tématu [vytvoření upozornění protokolu aktivit pro oznámení služby](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md).
+Azure communicates a schedule for planned maintenance by sending an email to the subscription owners group. You can add additional recipients and channels to this communication by creating Azure activity log alerts. For more information, see [Create activity log alerts on service notifications](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
-Ujistěte se, že nastavíte **typ události** jako **plánované údržby** a **služby** jako **Virtual Machine Scale Sets** a/nebo **Virtuálních počítačů**
+Make sure you set the **Event type** as **Planned maintenance** and **Services** as **Virtual Machine Scale Sets** and/or **Virtual Machines**
     
     
-## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Spustit údržbu na virtuálním počítači z portálu
+## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Start Maintenance on your VM from the portal
 
-Při pohledu na podrobnosti o virtuálním počítači, bude moci zobrazit další podrobnosti související s údržbou.  
-V horní části stránky zobrazení podrobností virtuálního počítače nového pásu karet oznámení se přidají, pokud se váš virtuální počítač je součástí vlny plánované údržby. Kromě toho je přidána nová možnost začít údržbu, pokud je to možné. 
+While looking at the VM details, you will be able to see more maintenance-related details.  
+At the top of the VM details view, a new notification ribbon will be added if your VM is included in a planned maintenance wave. In addition, a new option is added to start maintenance when possible. 
 
 
-Klikněte na oznámení o údržbě zobrazíte na stránce Údržba s dalšími podrobnostmi o plánované údržbě. Odtud můžete budou moci **spustit údržbu** na vašem virtuálním počítači.
+Click on the maintenance notification to see the maintenance page with more details on the planned maintenance. From there, you will be able to **start maintenance** on your VM.
 
-Po spuštění údržby ve virtuálním počítači bude udržovat a stav údržby bude aktualizován tak, aby odrážel výsledek během několika minut.
+Once you start maintenance, your virtual machine will be maintained and the maintenance status will be updated to reflect the result within few minutes.
 
-Pokud jste okno samoobslužné služby, budete moct dál najdete v okně, když se zachová svůj virtuální počítač Azure. 
+If you missed the self-service window, you will still be able to see the window when your VM will be maintained by Azure. 

@@ -1,69 +1,69 @@
 ---
-title: Začínáme s ověřováním na základě certifikátů – Azure Active Directory
-description: Další informace o konfiguraci ověřování na základě certifikátu ve vašem prostředí
+title: Certificate-based authentication - Azure Active Directory
+description: Learn how to configure certificate-based authentication in your environment
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359071"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382028"
 ---
-# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním na základě certifikátů v Azure Active Directory
+# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Get started with certificate-based authentication in Azure Active Directory
 
-Ověřování pomocí certifikátů umožňuje ověřit pomocí služby Azure Active Directory pomocí klientského certifikátu na zařízení s Windows, Android nebo iOS při připojování svůj účet Exchange online a:
+Certificate-based authentication enables you to be authenticated by Azure Active Directory with a client certificate on a Windows, Android, or iOS device when connecting your Exchange online account to:
 
-- Mobilní aplikace Microsoftu, jako je například Microsoft Outlook a Microsoft Word
-- Klienti Exchange ActiveSync (EAS)
+- Microsoft mobile applications such as Microsoft Outlook and Microsoft Word
+- Exchange ActiveSync (EAS) clients
 
-Tuto funkci konfiguruje eliminuje nutnost zadat kombinace uživatelského jména a hesla do určité e-mailu a aplikace Microsoft Office na svém mobilním zařízení.
+Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
 
-V tomto tématu:
+This topic:
 
-- Nabízí postup pro konfiguraci a využít ověřování pomocí certifikátů pro uživatele tenantů v plánech Office 365 Enterprise, obchodní, vzdělávání a státní správu USA. Tato funkce je dostupná ve verzi preview v plánech Office 365 China, obrany státní správy USA a US Government federální.
-- Předpokládá, že už máte [infrastruktury veřejných klíčů (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) a [služby AD FS](../hybrid/how-to-connect-fed-whatis.md) nakonfigurované.
+- Provides you with the steps to configure and utilize certificate-based authentication for users of tenants in Office 365 Enterprise, Business, Education, and US Government plans. This feature is available in preview in Office 365 China, US Government Defense, and US Government Federal plans.
+- Assumes that you already have a [public key infrastructure (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) and [AD FS](../hybrid/how-to-connect-fed-whatis.md) configured.
 
 ## <a name="requirements"></a>Požadavky
 
-Konfigurace ověřování pomocí certifikátů, musí platit následující příkazy:
+To configure certificate-based authentication, the following statements must be true:
 
-- Ověřování pomocí certifikátu (certifikátů) je podporována pouze pro federativní prostředí pro aplikace prohlížeče nebo nativní klienty používající moderní ověřování (ADAL). Jedinou výjimkou je Exchange Active Sync (EAS) pro Exchange Online (EXO), který lze použít u federovaných a spravovaných účtů.
-- Kořenová certifikační autorita a všechny zprostředkující certifikační autority musí být nakonfigurovány v Azure Active Directory.
-- Každou certifikační autority musí mít seznam odvolaných certifikátů (CRL), který může být odkazováno prostřednictvím adresy URL přístupem k Internetu.
-- Musí mít alespoň jeden certifikační autorita nakonfigurovaná ve službě Azure Active Directory. Související postup v najdete [konfigurace certifikační autority](#step-2-configure-the-certificate-authorities) oddílu.
-- U klientů Exchange ActiveSync klientský certifikát musí mít směrovatelné e-mailovou adresu uživatele v systému Exchange online v hlavní název nebo název RFC822 hodnota pole alternativní název subjektu. Azure Active Directory mapuje RFC822 hodnotu atributu adresa proxy serveru v adresáři.
-- Klientské zařízení musí mít přístup k alespoň jeden certifikační autority, která vydává certifikáty klienta.
-- Klientský certifikát pro ověřování klientů musí být vydán pro vašeho klienta.
+- Certificate-based authentication (CBA) is only supported for Federated environments for browser applications or native clients using modern authentication (ADAL). The one exception is Exchange Active Sync (EAS) for Exchange Online (EXO), which can be used for  federated and managed accounts.
+- The root certificate authority and any intermediate certificate authorities must be configured in Azure Active Directory.
+- Each certificate authority must have a certificate revocation list (CRL) that can be referenced via an internet-facing URL.
+- You must have at least one certificate authority configured in Azure Active Directory. You can find related steps in the [Configure the certificate authorities](#step-2-configure-the-certificate-authorities) section.
+- For Exchange ActiveSync clients, the client certificate must have the user’s routable email address in Exchange online in either the Principal Name or the RFC822 Name value of the Subject Alternative Name field. Azure Active Directory maps the RFC822 value to the Proxy Address attribute in the directory.
+- Your client device must have access to at least one certificate authority that issues client certificates.
+- A client certificate for client authentication must have been issued to your client.
 
-## <a name="step-1-select-your-device-platform"></a>Krok 1: Vyberte platformu zařízení
+## <a name="step-1-select-your-device-platform"></a>Step 1: Select your device platform
 
-Jako první krok pro platformu zařízení, na kterých vám záleží je potřeba zkontrolovat následující:
+As a first step, for the device platform you care about, you need to review the following:
 
-- Podpora mobilních aplikací Office
-- Požadavky na konkrétní implementaci
+- The Office mobile applications support
+- The specific implementation requirements
 
-Související informace existuje pro zařízení s následujícími platformami:
+The related information exists for the following device platforms:
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>Krok 2: Konfigurace certifikační autority
+## <a name="step-2-configure-the-certificate-authorities"></a>Step 2: Configure the certificate authorities
 
-Konfigurace certifikačních autorit ve službě Azure Active Directory, pro každou certifikační autority, odešlete následující:
+To configure your certificate authorities in Azure Active Directory, for each certificate authority, upload the following:
 
-* Veřejnou část certifikátu v *.cer* formátu
-* Internetové adresy URL, kde se nacházejí seznamy odvolaných certifikátů (CRL)
+* The public portion of the certificate, in *.cer* format
+* The internet-facing URLs where the Certificate Revocation Lists (CRLs) reside
 
-Schéma pro certifikační autority by měl vypadat takto:
+The schema for a certificate authority looks as follows:
 
     class TrustedCAsForPasswordlessAuth
     {
@@ -87,30 +87,30 @@ Schéma pro certifikační autority by měl vypadat takto:
         IntermediateAuthority = 1
     }
 
-Pro konfiguraci, můžete použít [Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0):
+For the configuration, you can use the [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0):
 
-1. Spusťte prostředí Windows PowerShell s oprávněními správce.
-2. Nainstalovat verzi modulu Azure AD [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) nebo vyšší.
+1. Start Windows PowerShell with administrator privileges.
+2. Install the Azure AD module version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) or higher.
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
-Jako první krok konfigurace budete muset navázat spojení se váš tenant. Co nejdříve po připojení k vašemu tenantovi existuje, můžete zkontrolovat, přidat, odstranit a upravit důvěryhodných certifikačních autorit, které jsou definovány ve vašem adresáři.
+As a first configuration step, you need to establish a connection with your tenant. As soon as a connection to your tenant exists, you can review, add, delete, and modify the trusted certificate authorities that are defined in your directory.
 
-### <a name="connect"></a>Připojení
+### <a name="connect"></a>Propojení
 
-Pokud chcete navázat spojení se váš tenant, použijte [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) rutiny:
+To establish a connection with your tenant, use the [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet:
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>Načtení
+### <a name="retrieve"></a>Retrieve
 
-Pokud chcete načíst důvěryhodných certifikačních autorit, které jsou definovány ve vašem adresáři, použijte [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) rutiny.
+To retrieve the trusted certificate authorities that are defined in your directory, use the [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet.
 
     Get-AzureADTrustedCertificateAuthority
 
 ### <a name="add"></a>Přidat
 
-Chcete-li vytvořit důvěryhodné certifikační autority, použijte [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) rutiny a nastavte **crlDistributionPoint** správnou hodnotu atributu:
+To create a trusted certificate authority, use the [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet and set the **crlDistributionPoint** attribute to a correct value:
 
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
@@ -119,91 +119,91 @@ Chcete-li vytvořit důvěryhodné certifikační autority, použijte [New-Azure
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-### <a name="remove"></a>odebrat
+### <a name="remove"></a>Odebrat
 
-Chcete-li odebrat důvěryhodné certifikační autority, použijte [odebrat AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) rutiny:
+To remove a trusted certificate authority, use the [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
 
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
 ### <a name="modify"></a>Úpravy
 
-Chcete-li upravit důvěryhodné certifikační autority, použijte [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) rutiny:
+To modify a trusted certificate authority, use the [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>Krok 3: Konfigurace odvolání
+## <a name="step-3-configure-revocation"></a>Step 3: Configure revocation
 
-K odvolání klientského certifikátu, Azure Active Directory načte seznam odvolaných certifikátů (CRL) z adresy URL odeslán jako součást certifikátu autority informace a zapíše jej do mezipaměti. Poslední publikování časové razítko (**datum účinnosti** vlastnost) v seznamu CRL, které se používá k zajištění seznam CRL je stále platný. Seznam odvolaných certifikátů se pravidelně odkazuje odvolat přístup k certifikáty, které jsou součástí seznamu.
+To revoke a client certificate, Azure Active Directory fetches the certificate revocation list (CRL) from the URLs uploaded as part of certificate authority information and caches it. The last publish timestamp (**Effective Date** property) in the CRL is used to ensure the CRL is still valid. The CRL is periodically referenced to revoke access to certificates that are a part of the list.
 
-Pokud více rychlé odvolání je potřeba (například, pokud uživatel ztratí zařízení), lze zrušit autorizační token uživatele. Platnost autorizačního tokenu, nastavte **StsRefreshTokenValidFrom** pole pro tento konkrétní uživatel pomocí Windows Powershellu. Je nutné aktualizovat **StsRefreshTokenValidFrom** pole pro každého uživatele, které chcete odvolat přístup.
+If a more instant revocation is required (for example, if a user loses a device), the authorization token of the user can be invalidated. To invalidate the authorization token, set the **StsRefreshTokenValidFrom** field for this particular user using Windows PowerShell. You must update the **StsRefreshTokenValidFrom** field for each user you want to revoke access for.
 
-Chcete-li zajistit, aby odvolání nevyřeší, je nutné nastavit **datum účinnosti** seznamu CRL na datum po hodnoty nastavené v **StsRefreshTokenValidFrom** a seznam CRL, musí daný certifikát.
+To ensure that the revocation persists, you must set the **Effective Date** of the CRL to a date after the value set by **StsRefreshTokenValidFrom** and ensure the certificate in question is in the CRL.
 
-Následující kroky popisují proces pro aktualizaci nebo zrušení platnosti autorizačního tokenu tím, že nastavíte **StsRefreshTokenValidFrom** pole.
+The following steps outline the process for updating and invalidating the authorization token by setting the **StsRefreshTokenValidFrom** field.
 
-**Postup konfigurace odvolání:**
+**To configure revocation:**
 
-1. Připojte se pomocí přihlašovacích údajů správce ke službě MSOL:
+1. Connect with admin credentials to the MSOL service:
 
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
 
-2. Načte aktuální hodnotu StsRefreshTokensValidFrom pro uživatele:
+2. Retrieve the current StsRefreshTokensValidFrom value for a user:
 
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
 
-3. Nakonfigurujte novou hodnotu StsRefreshTokensValidFrom pro uživatele, který se rovná aktuální časové razítko:
+3. Configure a new StsRefreshTokensValidFrom value for the user equal to the current timestamp:
 
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
-Datum, které nastavíte, musí být v budoucnu. Pokud není datum v budoucnosti, **StsRefreshTokensValidFrom** není nastavena vlastnost. Pokud je datum v budoucnosti, **StsRefreshTokensValidFrom** je nastavena na aktuální čas (ne datum uvedené pomocí příkazu Set-MsolUser).
+The date you set must be in the future. If the date is not in the future, the **StsRefreshTokensValidFrom** property is not set. If the date is in the future, **StsRefreshTokensValidFrom** is set to the current time (not the date indicated by Set-MsolUser command).
 
-## <a name="step-4-test-your-configuration"></a>Krok 4: Testování konfigurace
+## <a name="step-4-test-your-configuration"></a>Step 4: Test your configuration
 
-### <a name="testing-your-certificate"></a>Testování certifikátu
+### <a name="testing-your-certificate"></a>Testing your certificate
 
-Jako první Konfigurace testu, snažte se přihlaste se k [Outlook Web Access](https://outlook.office365.com) nebo [Sharepointu Online](https://microsoft.sharepoint.com) pomocí vaší **prohlížeč na zařízení**.
+As a first configuration test, you should try to sign in to [Outlook Web Access](https://outlook.office365.com) or [SharePoint Online](https://microsoft.sharepoint.com) using your **on-device browser**.
 
-Pokud vaše přihlášení úspěšné, pak víte, že:
+If your sign-in is successful, then you know that:
 
-- Uživatelský certifikát zřízený testovací zařízení
-- Služba AD FS je správně nakonfigurovaná.
+- The user certificate has been provisioned to your test device
+- AD FS is configured correctly
 
-### <a name="testing-office-mobile-applications"></a>Testování mobilních aplikací Office
+### <a name="testing-office-mobile-applications"></a>Testing Office mobile applications
 
-**K otestování ověřování prostřednictvím certifikátu na vaše mobilní aplikace Office:**
+**To test certificate-based authentication on your mobile Office application:**
 
-1. Na testovacím zařízení instalace mobilní aplikace Office (třeba Onedrivu).
-3. Spusťte aplikaci.
-4. Zadejte svoje uživatelské jméno a pak vyberte certifikát uživatele, který chcete použít.
+1. On your test device, install an Office mobile application (for example, OneDrive).
+3. Launch the application.
+4. Enter your username, and then select the user certificate you want to use.
 
-By měl být úspěšném přihlášení.
+You should be successfully signed in.
 
-### <a name="testing-exchange-activesync-client-applications"></a>Testování aplikací klienta Exchange ActiveSync
+### <a name="testing-exchange-activesync-client-applications"></a>Testing Exchange ActiveSync client applications
 
-Pro přístup k protokolu Exchange ActiveSync (EAS) prostřednictvím ověřování pomocí certifikátů, musí být dostupné pro aplikace EAS profil, který obsahuje certifikát klienta.
+To access Exchange ActiveSync (EAS) via certificate-based authentication, an EAS profile containing the client certificate must be available to the application.
 
-Profilu EAS musí obsahovat následující informace:
+The EAS profile must contain the following information:
 
-- Uživatelský certifikát má být použit pro ověřování
+- The user certificate to be used for authentication
 
-- Koncový bod EAS (třeba outlook.office365.com)
+- The EAS endpoint (for example, outlook.office365.com)
 
-Profilu EAS můžete nakonfigurovat a umístí na zařízení prostřednictvím využívání správy mobilních zařízení (MDM) jako je například Intune nebo ručně umístěním certifikátu v profilu EAS na zařízení.
+An EAS profile can be configured and placed on the device through the utilization of Mobile device management (MDM) such as Intune or by manually placing the certificate in the EAS profile on the device.
 
-### <a name="testing-eas-client-applications-on-android"></a>Testování aplikací klienta EAS v Androidu
+### <a name="testing-eas-client-applications-on-android"></a>Testing EAS client applications on Android
 
-**Otestovat ověření certifikátu:**
+**To test certificate authentication:**
 
-1. Konfigurace profilu EAS v aplikaci, která splňuje požadavky uvedené v předchozí části.
-2. Otevřete aplikaci a ověřte, zda je synchronizace e-mailu.
+1. Configure an EAS profile in the application that satisfies the requirements in the prior section.
+2. Open the application, and verify that mail is synchronizing.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Další informace o ověřování pomocí certifikátů na zařízeních s Androidem.](active-directory-certificate-based-authentication-android.md)
+[Additional information about certificate-based authentication on Android devices.](active-directory-certificate-based-authentication-android.md)
 
-[Další informace o ověřování pomocí certifikátů na zařízeních s Iosem.](active-directory-certificate-based-authentication-ios.md)
+[Additional information about certificate-based authentication on iOS devices.](active-directory-certificate-based-authentication-ios.md)

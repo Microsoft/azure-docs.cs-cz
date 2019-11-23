@@ -1,56 +1,56 @@
 ---
-title: Kurz – přidání výstupů do šablony
-description: Chcete-li zjednodušit syntaxi, přidejte do šablony Azure Resource Manager výstupy.
+title: Tutorial - add outputs to template
+description: Add outputs to your Azure Resource Manager template to simplify the syntax.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0d89c1651e6b897da7538432d183a8ac003a51ac
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 654d3f7cbf6362d982549c86e6f54fea1e890cfc
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148268"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405996"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Kurz: Přidání výstupů do šablony Správce prostředků
+# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Tutorial: Add outputs to your Resource Manager template
 
-V tomto kurzu zjistíte, jak vrátit hodnotu ze šablony. Výstupy použijete, když potřebujete hodnotu z nasazeného prostředku. Dokončení tohoto kurzu trvá **7 minut** .
+In this tutorial, you learn how to return a value from your template. You use outputs when you need a value from a deployed resource. This tutorial takes **7 minutes** to complete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Doporučujeme, abyste dokončili [kurz o proměnných](template-tutorial-add-variables.md), ale není to nutné.
+We recommend that you complete the [tutorial about variables](template-tutorial-add-variables.md), but it's not required.
 
-Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Kontrola šablony
+## <a name="review-template"></a>Review template
 
-Na konci předchozího kurzu má vaše šablona následující JSON:
+At the end of the previous tutorial, your template had the following JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
 
-Nasadí účet úložiště, ale nevrátí žádné informace o účtu úložiště. Je možné, že budete muset zachytit vlastnosti z nového prostředku, aby byly k dispozici později pro referenci.
+It deploys a storage account, but it doesn't return any information about the storage account. You might need to capture properties from a new resource so they're available later for reference.
 
-## <a name="add-outputs"></a>Přidat výstupy
+## <a name="add-outputs"></a>Add outputs
 
-Pomocí výstupů můžete vracet hodnoty ze šablony. Může být například užitečné získat koncové body pro váš nový účet úložiště.
+You can use outputs to return values from the template. For example, it might be helpful to get the endpoints for your new storage account.
 
-Následující příklad zvýrazní změnu šablony pro přidání výstupní hodnoty. Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
+The following example highlights the change to your template to add an output value. Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
 
-V některých důležitých položkách si všimněte o výstupní hodnotě, kterou jste přidali.
+There are some important items to note about the output value you added.
 
-Typ vrácené hodnoty je nastaven na **Object**, což znamená, že vrátí objekt JSON.
+The type of returned value is set to **object**, which means it returns a JSON object.
 
-Pomocí [referenční](resource-group-template-functions-resource.md#reference) funkce získá běhový stav účtu úložiště. Chcete-li získat běhový stav prostředku, předáte název nebo ID prostředku. V takovém případě použijete stejnou proměnnou, kterou jste použili k vytvoření názvu účtu úložiště.
+It uses the [reference](resource-group-template-functions-resource.md#reference) function to get the runtime state of the storage account. To get the runtime state of a resource, you pass in the name or ID of a resource. In this case, you use the same variable you used to create the name of the storage account.
 
-Nakonec vrátí vlastnost **primaryEndpoints** z účtu úložiště.
+Finally, it returns the **primaryEndpoints** property from the storage account
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-template"></a>Nasazení šablony
 
-Jste připraveni šablonu nasadit a podívat se na vrácenou hodnotu.
+You're ready to deploy the template and look at the returned value.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -75,7 +75,7 @@ az group deployment create \
 
 ---
 
-Ve výstupu příkazu pro nasazení se zobrazí objekt podobný tomuto:
+In the output for the deployment command, you'll see an object similar to:
 
 ```json
 {
@@ -88,41 +88,41 @@ Ve výstupu příkazu pro nasazení se zobrazí objekt podobný tomuto:
 }
 ```
 
-## <a name="review-your-work"></a>Kontrola práce
+## <a name="review-your-work"></a>Review your work
 
-Za posledních šest kurzů jste provedli spoustu. Pojďme se podívat na to, co jste provedli. Vytvořili jste šablonu s parametry, které lze snadno poskytnout. Šablona se opakovaně používá v různých prostředích, protože umožňuje přizpůsobení a dynamicky vytváří potřebné hodnoty. Vrátí taky informace o účtu úložiště, který můžete ve svém skriptu použít.
+You've done a lot in the last six tutorials. Let's take a moment to review what you have done. You created a template with parameters that are easy to provide. The template is reusable in different environments because it allows for customization and dynamically creates needed values. It also returns information about the storage account that you could use in your script.
 
-Teď se podívejme na skupinu prostředků a historii nasazení.
+Now, let's look at the resource group and deployment history.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. V nabídce vlevo vyberte **skupiny prostředků**.
-1. Vyberte skupinu prostředků, do které jste nasadili.
-1. V závislosti na krocích, které jste provedli, byste měli mít ve skupině prostředků aspoň jeden a možná několik účtů úložiště.
-1. K dispozici je také několik úspěšných nasazení uvedených v historii. Vyberte tento odkaz.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. From the left menu, select **Resource groups**.
+1. Select the resource group you deployed to.
+1. Depending on the steps you did, you should have at least one and perhaps several storage accounts in the resource group.
+1. You should also have several successful deployments listed in the history. Select that link.
 
-   ![Výběr nasazení](./media/template-tutorial-add-outputs/select-deployments.png)
+   ![Select deployments](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. V historii uvidíte všechna nasazení. Vyberte nasazení s názvem **addoutputs**.
+1. You see all of your deployments in the history. Select the deployment called **addoutputs**.
 
-   ![Zobrazit historii nasazení](./media/template-tutorial-add-outputs/show-history.png)
+   ![Show deployment history](./media/template-tutorial-add-outputs/show-history.png)
 
-1. Můžete zkontrolovat vstupy.
+1. You can review the inputs.
 
-   ![Zobrazit vstupy](./media/template-tutorial-add-outputs/show-inputs.png)
+   ![Show inputs](./media/template-tutorial-add-outputs/show-inputs.png)
 
-1. Můžete si prohlédnout výstupy.
+1. You can review the outputs.
 
-   ![Zobrazit výstupy](./media/template-tutorial-add-outputs/show-outputs.png)
+   ![Show outputs](./media/template-tutorial-add-outputs/show-outputs.png)
 
-1. Můžete si prohlédnout šablonu.
+1. You can review the template.
 
-   ![Zobrazit šablonu](./media/template-tutorial-add-outputs/show-template.png)
+   ![Show template](./media/template-tutorial-add-outputs/show-template.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
@@ -131,7 +131,7 @@ Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste do šablony přidali návratovou hodnotu. V dalším kurzu se dozvíte, jak exportovat šablonu a použít části této exportované šablony ve vaší šabloně.
+In this tutorial, you added a return value to the template. In the next tutorial, you'll learn how to export a template and use parts of that exported template in your template.
 
 > [!div class="nextstepaction"]
-> [Použít exportovanou šablonu](template-tutorial-export-template.md)
+> [Use exported template](template-tutorial-export-template.md)

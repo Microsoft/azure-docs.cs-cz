@@ -1,72 +1,72 @@
 ---
-title: Jak vyžadovat vícefaktorové ověřování (MFA) pro přístup z nedůvěryhodných sítí pomocí podmíněného přístupu Azure Active Directory (Azure AD) | Microsoft Docs
-description: Naučte se konfigurovat zásady podmíněného přístupu v Azure Active Directory (Azure AD) pro pokusy o přístup z nedůvěryhodných sítí.
+title: Require MFA from untrusted networks - Azure Active Directory
+description: Learn how to configure a Conditional Access policy in Azure Active Directory (Azure AD) to for access attempts from untrusted networks.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ec09c1ecb94a5ae189317d89cce4bc8f279b48
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4cedec7f0bd51460796d8138f8d481d2982098f4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175681"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379990"
 ---
-# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Postupy: vyžadování MFA pro přístup z nedůvěryhodných sítí s podmíněným přístupem   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>How to: Require MFA for access from untrusted networks with Conditional Access   
 
-Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k zařízením, aplikacím a službám odkudkoli. Vaši uživatelé mají přístup k vašim cloudovým aplikacím nejen ze sítě vaší organizace, ale také z jakéhokoli nedůvěryhodného umístění v Internetu. Běžným postupem přístupu z nedůvěryhodných sítí je vyžadovat službu Multi-Factor Authentication (MFA).
+Azure Active Directory (Azure AD) enables single sign-on to devices, apps, and services from anywhere. Your users can access your cloud apps not only from your organization's network, but also from any untrusted Internet location. A common best practice for access from untrusted networks is to require multi-factor authentication (MFA).
 
-Tento článek obsahuje informace, které potřebujete ke konfiguraci zásad podmíněného přístupu, které vyžadují MFA pro přístup z nedůvěryhodných sítí. 
+This article gives you the information you need to configure a Conditional Access policy that requires MFA for access from untrusted networks. 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-V tomto článku se předpokládá, že máte zkušenosti s nástrojem: 
+This article assumes that you are familiar with: 
 
-- [Základní koncepty](overview.md) podmíněného přístupu Azure AD 
-- [Osvědčené postupy](best-practices.md) pro konfiguraci zásad podmíněného přístupu v Azure Portal
+- The [basic concepts](overview.md) of Azure AD Conditional Access 
+- The [best practices](best-practices.md) for configuring Conditional Access policies in the Azure portal
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-Abyste mohli vyvážit rovnováhu mezi zabezpečením a produktivitou, stačí, když budete vyžadovat jenom heslo pro přihlášení ze sítě vaší organizace. Nicméně pro přístup z nedůvěryhodného umístění v síti existuje zvýšené riziko, že se přihlášení legitimních uživatelů neprovede. Chcete-li tento problém vyřešit, můžete zablokovat přístup z nedůvěryhodných sítí. Alternativně můžete také vyžadovat vícefaktorové ověřování (MFA) a získat další jistotu, že byl proveden pokus legitimním vlastníkem účtu. 
+To master the balance between security and productivity, it might be sufficient for you to only require a password for sign-ins from your organization's network. However, for access from an untrusted network location, there is an increased risk that sign-ins are not performed by legitimate users. To address this concern, you can block access from untrusted networks. Alternatively, you can also require multi-factor authentication (MFA) to gain back additional assurance that an attempt was made by the legitimate owner of the account. 
 
-Pomocí podmíněného přístupu Azure AD můžete tento požadavek vyřešit pomocí jediné zásady, která udělí přístup: 
+With Azure AD Conditional Access, you can address this requirement with a single policy that grants access: 
 
-- Pro vybrané cloudové aplikace
-- Pro vybrané uživatele a skupiny  
-- Vyžadování Multi-Factor Authentication 
-- Kdy přístup pochází: 
-   - Nedůvěryhodné umístění
+- To selected cloud apps
+- For selected users and groups  
+- Requiring multi-factor authentication 
+- When access is originated from: 
+   - A location that is not trusted
 
 ## <a name="implementation"></a>Implementace
 
-Výzvou k tomuto scénáři je přeložit *přístup z nedůvěryhodného síťového umístění* do podmínky podmíněného přístupu. V zásadách podmíněného přístupu můžete nakonfigurovat [podmínku umístění](location-condition.md) pro řešení scénářů, které se vztahují k umístěním v síti. Podmínka umístění umožňuje vybrat pojmenovaná umístění, což jsou logické skupiny rozsahů IP adres, zemí a oblastí.  
+The challenge of this scenario is to translate *access from an untrusted network location* into a Conditional Access condition. In a Conditional Access policy, you can configure the [locations condition](location-condition.md) to address scenarios that are related to network locations. The locations condition enables you to select named locations, which are logical groupings of IP address ranges, countries and regions.  
 
-Vaše organizace obvykle vlastní jeden nebo více rozsahů adres, například 199.30.16.0-199.30.16.15.
-Pojmenované umístění můžete nakonfigurovat pomocí:
+Typically, your organization owns one or more address ranges, for example, 199.30.16.0 - 199.30.16.15.
+You can configure a named location by:
 
-- Zadání tohoto rozsahu (199.30.16.0/28) 
-- Přiřazení popisného názvu, jako je **podniková síť** 
+- Specifying this range (199.30.16.0/28) 
+- Assigning a descriptive name such as **Corporate Network** 
 
-Místo toho, abyste se pokoušeli definovat, která všechna umístění nejsou důvěryhodná, můžete:
+Instead of trying to define what all locations are that are not trusted, you can:
 
-- Zahrnout libovolné umístění 
+- Include any location 
 
    ![Podmíněný přístup](./media/untrusted-networks/02.png)
 
-- Vyloučit všechna důvěryhodná umístění 
+- Exclude all trusted locations 
 
    ![Podmíněný přístup](./media/untrusted-networks/01.png)
 
-## <a name="policy-deployment"></a>Nasazení zásad
+## <a name="policy-deployment"></a>Policy deployment
 
-S přístupem popsaným v tomto článku teď můžete nakonfigurovat zásady podmíněného přístupu pro nedůvěryhodná umístění. Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje se před jejich vyzkoušením do produkčního prostředí otestovat. V ideálním případě použijte testovacího tenanta a ověřte, zda vaše nové zásady fungují tak, jak mají. Další informace najdete v tématu [nasazení nové zásady](best-practices.md#how-should-you-deploy-a-new-policy). 
+With the approach outlined in this article, you can now configure a Conditional Access policy for untrusted locations. To make sure that your policy works as expected, the recommended best practice is to test it before rolling it out into production. Ideally, use a test tenant to verify whether your new policy works as intended. For more information, see [How to deploy a new policy](best-practices.md#how-should-you-deploy-a-new-policy). 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět víc o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+If you would like to learn more about Conditional Access, see [What is Conditional Access in Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)

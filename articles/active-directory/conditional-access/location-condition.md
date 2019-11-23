@@ -1,152 +1,152 @@
 ---
-title: Jaká je podmínka umístění v Azure Active Directory podmíněný přístup? | Dokumenty Microsoft
-description: Naučte se používat podmínku umístění k řízení přístupu ke cloudovým aplikacím na základě síťového umístění uživatele.
+title: Location condition in Azure Active Directory Conditional Access
+description: Learn how to use the location condition to control access to your cloud apps based on a user's network location.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 799a994e1351f62fac9f5a07060658cea60c9274
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74065737"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380301"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Jaká je podmínka umístění v Azure Active Directory podmíněný přístup? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>What is the location condition in Azure Active Directory Conditional Access? 
 
-Pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)můžete řídit, jak můžou autorizovaní uživatelé přistupovat k vašim cloudovým aplikacím. Podmínka umístění zásad podmíněného přístupu umožňuje propojení nastavení řízení přístupu k síťovým umístěním vašich uživatelů.
+With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users can access your cloud apps. The location condition of a Conditional Access policy enables you to tie access controls settings to the network locations of your users.
 
-Tento článek poskytuje informace, které potřebujete ke konfiguraci podmínky umístění.
+This article provides you with the information you need to configure the location condition.
 
 ## <a name="locations"></a>Umístění
 
-Azure AD umožňuje jednotné přihlašování k zařízením, aplikacím a službám odkudkoli na veřejném Internetu. V případě podmínky umístění můžete řídit přístup k vašim cloudovým aplikacím na základě síťového umístění uživatele. Běžné případy použití pro podmínku umístění:
+Azure AD enables single sign-on to devices, apps, and services from anywhere on the public internet. With the location condition, you can control access to your cloud apps based on the network location of a user. Common use cases for the location condition are:
 
-- Vyžadování služby Multi-Factor Authentication pro uživatele, kteří přistupují ke službě, když jsou mimo podnikovou síť.
-- Blokování přístupu pro uživatele, kteří přistupují ke službě z určitých zemí nebo oblastí.
+- Requiring multi-factor authentication for users accessing a service when they are off the corporate network.
+- Blocking access for users accessing a service from specific countries or regions.
 
-Umístění je popisek pro síťové umístění, které buď představuje pojmenované umístění nebo důvěryhodné IP adresy služby Multi-Factor Authentication.
+A location is a label for a network location that either represents a named location or multi-factor authentication Trusted IPs.
 
-## <a name="named-locations"></a>Pojmenovaná umístění
+## <a name="named-locations"></a>Named locations
 
-Pomocí pojmenovaných umístění můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí.
+With named locations, you can create logical groupings of IP address ranges or countries and regions.
 
-K pojmenovaným umístěním se dostanete v části **Správa** na stránce podmíněný přístup.
+You can access your named locations in the **Manage** section of the Conditional Access page.
 
-![Pojmenovaná umístění v podmíněném přístupu](./media/location-condition/02.png)
+![Named locations in Conditional Access](./media/location-condition/02.png)
 
-Pojmenované umístění má následující komponenty:
+A named location has the following components:
 
-![Vytvořit nové pojmenované umístění](./media/location-condition/42.png)
+![Create a new named location](./media/location-condition/42.png)
 
-- **Name** – zobrazovaný název pojmenovaného umístění.
-- **Rozsahy IP** adres – jeden nebo víc rozsahů IPv4 adres ve formátu CIDR. Zadání rozsahu IPv6 adres se nepodporuje.
+- **Name** - The display name of a named location.
+- **IP ranges** - One or more IPv4 address ranges in CIDR format. Specifying an IPv6 address range is not supported.
 
    > [!NOTE]
-   > Rozsahy IPv6 adres se aktuálně nedají zahrnout do pojmenovaného umístění. To znamená, že rozsahy IPv6 nelze vyloučit ze zásady podmíněného přístupu.
+   > IPv6 address ranges cannot currently be included in a named location. This means IPv6 ranges cannot be excluded from a Conditional Access policy.
 
-- **Označit jako důvěryhodné umístění** – příznak, který můžete nastavit pro pojmenované umístění k označení důvěryhodného umístění. Obvykle jsou důvěryhodná umístění síťová oblast, která je řízena vaším IT oddělením. Kromě podmíněného přístupu jsou důvěryhodná pojmenovaná umístění používána také v sestavách Azure Identity Protection a Azure AD k omezení [falešně pozitivních](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)událostí.
-- **Země nebo oblasti** – Tato možnost umožňuje vybrat jednu nebo více zemí nebo oblastí k definování pojmenovaného umístění.
-- **Zahrnout neznámé oblasti** – některé IP adresy nejsou namapované na konkrétní zemi nebo oblast. Tato možnost umožňuje zvolit, jestli se mají tyto IP adresy zahrnout do pojmenovaného umístění. Toto nastavení použijte, pokud se zásada používající pojmenované umístění má vztahovat na neznámá umístění.
+- **Mark as trusted location** - A flag you can set for a named location to indicate a trusted location. Typically, trusted locations are network areas that are controlled by your IT department. In addition to Conditional Access, trusted named locations are also used by Azure Identity Protection and Azure AD security reports to reduce [false positives](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
+- **Countries/Regions** - This option enables you to select one or more country or region to define a named location.
+- **Include unknown areas** - Some IP addresses are not mapped to a specific country or region. This option allows you to choose if these IP addresses should be included in the named location. Use this setting when the policy using the named location should apply to unknown locations.
 
-Počet pojmenovaných umístění, která můžete konfigurovat, se omezuje na velikost souvisejícího objektu ve službě Azure AD. Umístění můžete nakonfigurovat na základě následujících omezení:
+The number of named locations you can configure is constrained by the size of the related object in Azure AD. You can configure locations based on of the following limitations:
 
-- Jedno pojmenované umístění s rozsahem IP adres až 1200.
-- Do každé z nich se přiřadí maximálně 90 pojmenovaných umístění s jedním rozsahem IP adres.
+- One named location with up to 1200 IP ranges.
+- A maximum of 90 named locations with one IP range assigned to each of them.
 
-Zásady podmíněného přístupu se vztahují na přenosy IPv4 a IPv6. Aktuálně pojmenovaná umístění neumožňují konfigurovat rozsahy IPv6. Toto omezení způsobuje následující situace:
+Conditional Access policy applies to IPv4 and IPv6 traffic. Currently named locations do not allow IPv6 ranges to be configured. This limitation causes the following situations:
 
-- Zásady podmíněného přístupu se nedají cílit na konkrétní rozsahy IPv6.
-- Zásady podmíněného přístupu nemůžou vyloučit konkrétní rozsahy IPV6.
+- Conditional Access policy cannot be targeted to specific IPv6 ranges
+- Conditional Access policy cannot exclude specific IPV6 ranges
 
-Pokud je zásada nakonfigurovaná tak, aby se nastavila na jakékoli místo, bude se vztahovat na přenosy IPv4 a IPv6. Pojmenovaná umístění konfigurovaná pro zadané země a oblasti podporují pouze adresy IPv4. Přenos IPv6 je zahrnutý jenom v případě, že je vybraná možnost zahrnout neznámé oblasti.
+If a policy is configured to apply to “Any location”, it will apply to IPv4 and IPv6 traffic. Named locations configured for specified countries and regions only support IPv4 addresses. IPv6 traffic is only included if the option to “include unknown areas” selected.
 
 ## <a name="trusted-ips"></a>Důvěryhodné IP adresy
 
-V [nastavení služby Multi-Factor Authentication Service](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)můžete také nakonfigurovat rozsahy IP adres reprezentující místní intranet vaší organizace. Tato funkce vám umožní nakonfigurovat až 50 rozsahů IP adres. Rozsahy IP adres jsou ve formátu CIDR. Další informace najdete v tématu [důvěryhodné IP adresy](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
+You can also configure IP address ranges representing your organization's local intranet in the [multi-factor authentication service settings](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). This feature enables you to configure up to 50 IP address ranges. The IP address ranges are in CIDR format. For more information, see [Trusted IPs](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-Pokud máte nakonfigurované důvěryhodné IP adresy, zobrazí se v seznamu umístění pro podmínku umístění jako **důvěryhodné IP adresy MFA** .
+If you have Trusted IPs configured, they show up as **MFA Trusted IPS** in the list of locations for the location condition.
 
-### <a name="skipping-multi-factor-authentication"></a>Přeskakuje se Multi-Factor Authentication
+### <a name="skipping-multi-factor-authentication"></a>Skipping multi-factor authentication
 
-Na stránce nastavení služby Multi-Factor Authentication Service můžete identifikovat uživatele firemní sítě intranet tak, že **pro žádosti od federovaných uživatelů v mém intranetu vyberete přeskočit vícefaktorové ověřování**. Toto nastavení indikuje, že deklarace identity uvnitř podnikové sítě, která je vydaná AD FS, by měla být důvěryhodná a slouží k identifikaci uživatele jako v podnikové síti. Další informace najdete v tématu [Povolení funkce důvěryhodných IP adres pomocí podmíněného přístupu](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+On the multi-factor authentication service settings page, you can identify corporate intranet users by selecting  **Skip multi-factor authentication for requests from federated users on my intranet**. This setting indicates that the inside corporate network claim, which is issued by AD FS, should be trusted and used to identify the user as being on the corporate network. For more information, see [Enable the Trusted IPs feature by using Conditional Access](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
-Po zaškrtnutí této možnosti, včetně pojmenovaného umístění, **důvěryhodných IP adres MFA** budou platit pro všechny zásady s vybranou možností.
+After checking this option, including the named location **MFA Trusted IPS** will apply to any policies with this option selected.
 
-U mobilních a desktopových aplikací, které mají dlouhodobé životnosti relací, se podmíněný přístup pravidelně znovu vyhodnocuje. Výchozí hodnota je jednou hodinu. Pokud je deklarace identity uvnitř podnikové sítě vydaná jenom v době počátečního ověřování, služba Azure AD nemusí mít seznam důvěryhodných IP adres. V takovém případě je obtížné zjistit, jestli je uživatel stále v podnikové síti:
+For mobile and desktop applications, which have long lived session lifetimes, Conditional Access is periodically reevaluated. The default is once an hour. When the inside corporate network claim is only issued at the time of the initial authentication, Azure AD may not have a list of trusted IP ranges. In this case, it is more difficult to determine if the user is still on the corporate network:
 
-1. Ověřte, zda je IP adresa uživatele v jednom z rozsahů důvěryhodných IP adres.
-2. Ověřte, zda první tři oktety IP adresy uživatele odpovídají prvním třem oktetům IP adresy počátečního ověřování. IP adresa je porovnávána s počátečním ověřováním, když byla původně vydaná deklarace identity uvnitř podnikové sítě a bylo ověřené umístění uživatele.
+1. Check if the user’s IP address is in one of the trusted IP ranges.
+2. Check whether the first three octets of the user’s IP address match the first three octets of the IP address of the initial authentication. The IP address is compared with the initial authentication when the inside corporate network claim was originally issued and the user location was validated.
 
-Pokud dojde k selhání obou kroků, bude uživatel považován za již nepřipojený k důvěryhodné IP adrese.
+If both steps fail, a user is considered to be no longer on a trusted IP.
 
-## <a name="location-condition-configuration"></a>Konfigurace podmínky umístění
+## <a name="location-condition-configuration"></a>Location condition configuration
 
-Když konfigurujete podmínku umístění, máte možnost rozlišovat mezi:
+When you configure the location condition, you have the option to distinguish between:
 
-- Jakékoli umístění
-- Všechna důvěryhodná umístění
-- Vybraná umístění
+- Any location
+- All trusted locations
+- Selected locations
 
-![Konfigurace podmínky umístění](./media/location-condition/01.png)
+![Location condition configuration](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Jakékoli umístění
+### <a name="any-location"></a>Any location
 
-Ve výchozím nastavení při výběru **kteréhokoli umístění** dojde k použití zásad pro všechny IP adresy, což znamená libovolnou adresu na internetu. Toto nastavení není omezeno na IP adresy, které jste nakonfigurovali jako pojmenované umístění. Když vyberete **libovolné umístění**, můžete i nadále vyloučit konkrétní umístění ze zásad. Můžete například použít zásadu na všechna umístění kromě důvěryhodných umístění a nastavit obor na všechna umístění kromě podnikové sítě.
+By default, selecting **Any location** causes a policy to be applied to all IP addresses, which means any address on the Internet. This setting is not limited to IP addresses you have configured as named location. When you select **Any location**, you can still exclude specific locations from a policy. For example, you can apply a policy to all locations except trusted locations to set the scope to all locations, except the corporate network.
 
-### <a name="all-trusted-locations"></a>Všechna důvěryhodná umístění
+### <a name="all-trusted-locations"></a>All trusted locations
 
-Tato možnost se týká:
+This option applies to:
 
-- Všechna umístění, která byla označena jako důvěryhodná umístění
-- **Důvěryhodné IP adresy MFA** (pokud jsou nakonfigurované)
+- All locations that have been marked as trusted location
+- **MFA Trusted IPS** (if configured)
 
-### <a name="selected-locations"></a>Vybraná umístění
+### <a name="selected-locations"></a>Selected locations
 
-Pomocí této možnosti můžete vybrat jedno nebo více pojmenovaných umístění. Chcete-li použít zásadu s tímto nastavením, musí se uživatel připojit z libovolného umístění. Když kliknete na **Vybrat** ovládací prvek pro výběr sítě, který zobrazuje seznam pojmenovaných sítí, otevře se. V seznamu se zobrazí také informace o tom, zda bylo síťové umístění označeno jako důvěryhodné. Pojmenované umístění s názvem **MFA Trusted IP** adresa slouží k zahrnutí nastavení IP adresy, která se dají konfigurovat na stránce nastavení služby Multi-Factor Authentication Service.
+With this option, you can select one or more named locations. For a policy with this setting to apply, a user needs to connect from any of the selected locations. When you click **Select** the named network selection control that shows the list of named networks opens. The list also shows if the network location has been marked as trusted. The named location called **MFA Trusted IPs** is used to include the IP settings that can be configured in the multi-factor authentication service setting page.
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-### <a name="when-is-a-location-evaluated"></a>Kdy je vyhodnoceno umístění?
+### <a name="when-is-a-location-evaluated"></a>When is a location evaluated?
 
-Zásady podmíněného přístupu jsou vyhodnocovány v těchto případech:
+Conditional Access policies are evaluated when:
 
-- Uživatel se zpočátku přihlašuje k webové aplikaci, mobilní aplikaci nebo aplikaci klasické pracovní plochy.
-- Mobilní aplikace nebo aplikace klasické pracovní plochy, která používá moderní ověřování, používá k získání nového přístupového tokenu obnovovací token. Ve výchozím nastavení je tato kontrolu jednou za hodinu.
+- A user initially signs in to a web app, mobile or desktop application.
+- A mobile or desktop application that uses modern authentication, uses a refresh token to acquire a new access token. By default this check is once an hour.
 
-Tato kontrolu znamená, že mobilní a desktopové aplikace využívají moderní ověřování, v průběhu změny síťového umístění se zjistí změna v umístění. Pro mobilní a desktopové aplikace, které nepoužívají moderní ověřování, se zásady použijí u každé žádosti o token. Frekvence požadavku se může lišit v závislosti na aplikaci. Podobně platí, že u webových aplikací se zásady aplikují při počátečním přihlašování a jsou vhodné po dobu života relace ve webové aplikaci. V důsledku rozdílů v životnosti relací napříč aplikacemi se čas mezi vyhodnocením zásad liší také. Pokaždé, když aplikace požádá o nový token přihlášení, zásada se použije.
+This check means for mobile and desktop applications using modern authentication, a change in location would be detected within an hour of changing the network location. For mobile and desktop applications that don’t use modern authentication, the policy is applied on each token request. The frequency of the request can vary based on the application. Similarly, for web applications, the policy is applied at initial sign-in and is good for the lifetime of the session at the web application. Due to differences in session lifetimes across applications, the time between policy evaluation will also vary. Each time the application requests a new sign-in token, the  policy is applied.
 
-Ve výchozím nastavení služba Azure AD vydá token po hodinách. Po přesunu podnikové sítě do celé hodiny se zásady vynutily pro aplikace používající moderní ověřování.
+By default, Azure AD issues a token on an hourly basis. After moving off the corporate network, within an hour the policy is enforced for applications using modern authentication.
 
-### <a name="user-ip-address"></a>IP adresa uživatele
+### <a name="user-ip-address"></a>User IP address
 
-IP adresa, která se používá při vyhodnocování zásad, je veřejná IP adresa uživatele. V případě zařízení v privátní síti tato IP adresa nepředstavuje IP adresu klienta zařízení uživatele v intranetu, jedná se o adresu, kterou síť používá pro připojení k veřejnému Internetu.
+The IP address that is used in policy evaluation is the public IP address of the user. For devices on a private network, this IP address is not the client IP of the user’s device on the intranet, it is the address used by the network to connect to the public internet.
 
 > [!WARNING]
-> Pokud má vaše zařízení jenom adresu IPv6, konfigurace podmínky umístění není podporovaná.
+> If your device has only an IPv6 address, configuring the location condition is not supported.
 
-### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Hromadné nahrávání a stahování pojmenovaných umístění
+### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Bulk uploading and downloading of named locations
 
-Při vytváření nebo aktualizaci pojmenovaných umístění můžete pro hromadné aktualizace nahrát nebo stáhnout soubor CSV s rozsahy IP adres. Nahrávání nahradí rozsahy IP adres v seznamu hodnotami ze souboru. Každý řádek souboru obsahuje jeden rozsah IP adres ve formátu CIDR.
+When you create or update named locations, for bulk updates, you can upload or download a CSV file with the IP ranges. An upload replaces the IP ranges in the list with those from the file. Each row of the file contains one IP Address range in CIDR format.
 
-### <a name="cloud-proxies-and-vpns"></a>Cloudové proxy servery a sítě VPN
+### <a name="cloud-proxies-and-vpns"></a>Cloud proxies and VPNs
 
-Pokud používáte cloudové proxy hostované nebo řešení sítě VPN, IP adresa Azure AD používá při vyhodnocování zásad je IP adresa proxy serveru. Záhlaví X-předané (XFF), které obsahuje veřejnou IP adresu uživatele, se nepoužívá, protože neexistuje žádné ověření, které pochází z důvěryhodného zdroje, takže by mohla představovat metodu pro Faking IP adresu.
+When you use a cloud hosted proxy or VPN solution, the IP address Azure AD uses while evaluating a policy is the IP address of the proxy. The X-Forwarded-For (XFF) header that contains the user’s public IP address is not used because there is no validation that it comes from a trusted source, so would present a method for faking an IP address.
 
-Pokud je cloudový proxy server, je možné použít zásadu, která vyžaduje zařízení připojené k doméně, nebo Corpnet deklaraci identity v rámci AD FS.
+When a cloud proxy is in place, a policy that is used to require a domain joined device can be used, or the inside corpnet claim from AD FS.
 
-### <a name="api-support-and-powershell"></a>Podpora rozhraní API a prostředí PowerShell
+### <a name="api-support-and-powershell"></a>API support and PowerShell
 
-Rozhraní API a PowerShell se zatím nepodporují pro pojmenovaná umístění nebo pro zásady podmíněného přístupu.
+API and PowerShell is not yet supported for named locations, or for Conditional Access policies.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
+- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).

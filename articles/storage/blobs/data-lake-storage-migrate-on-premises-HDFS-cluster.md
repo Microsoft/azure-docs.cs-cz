@@ -1,85 +1,85 @@
 ---
-title: Pomocí Azure Data Box migrujte data z místního úložiště HDFS do Azure Storage
-description: Migrace dat z místního úložiště HDFS do Azure Storage
+title: Migrate from on-prem HDFS store to Azure Storage with Azure Data Box
+description: Migrate data from an on-premises HDFS store to Azure Storage
 author: normesta
 ms.service: storage
-ms.date: 06/11/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 508c67f73bc0e11330b5772b1c1ba3f9bee5e231
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3360209e9de54d6011a2a430cd2c1fb54a315c43
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255674"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327604"
 ---
-# <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Pomocí Azure Data Box migrujte data z místního úložiště HDFS do Azure Storage
+# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrate from on-prem HDFS store to Azure Storage with Azure Data Box
 
-Data můžete migrovat z místního úložiště HDFS vašeho clusteru Hadoop do Azure Storage (úložiště objektů BLOB nebo Data Lake Storage Gen2) pomocí zařízení Data Box. Můžete vybrat z Data Box 80 TB nebo 770-TB Data Box Heavy.
+You can migrate data from an on-premises HDFS store of your Hadoop cluster into Azure Storage (blob storage or Data Lake Storage Gen2) by using a Data Box device. You can choose from an 80-TB Data Box or a 770-TB Data Box Heavy.
 
-Tento článek vám pomůže dokončit tyto úlohy:
+This article helps you complete these tasks:
 
 > [!div class="checklist"]
-> * Připravte se na migraci dat.
-> * Zkopírujte data do Data Box nebo Data Box Heavyho zařízení.
-> * Dodejte zařízení zpět společnosti Microsoft.
-> * Přesuňte data na Data Lake Storage Gen2.
+> * Prepare to migrate your data.
+> * Copy your data to a Data Box or a Data Box Heavy device.
+> * Ship the device back to Microsoft.
+> * Move the data onto Data Lake Storage Gen2.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení migrace potřebujete tyto věci.
+You need these things to complete the migration.
 
-* Dva účty úložiště; ten, který má povolen hierarchický obor názvů, a druhý.
+* Two storage accounts; one that has a hierarchical namespace enabled on it, and one that doesn't.
 
-* Místní cluster Hadoop, který obsahuje vaše zdrojová data.
+* An on-premises Hadoop cluster that contains your source data.
 
-* [Zařízení Azure Data box](https://azure.microsoft.com/services/storage/databox/).
+* An [Azure Data Box device](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Seřazení data box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) nebo [data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). Při objednávání zařízení si nezapomeňte zvolit účet úložiště, na kterém **nejsou** povolené hierarchické obory názvů. Důvodem je to, že zařízení Data Box ještě nepodporují přímé přijímání do Azure Data Lake Storage Gen2. Budete se muset zkopírovat do účtu úložiště a pak provést druhou kopii účtu ADLS Gen2. Pokyny k tomuto postupu jsou uvedené v následujících krocích.
+  * [Order your Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) or [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). While ordering your device, remember to choose a storage account that **doesn't** have hierarchical namespaces enabled on it. This is because Data Box devices do not yet support direct ingestion into Azure Data Lake Storage Gen2. You will need to copy into a storage account and then do a second copy into the ADLS Gen2 account. Instructions for this are given in the steps below.
 
-  * Připojte [data box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) nebo [data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) k místní síti kabelem.
+  * Cable and connect your [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) or [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) to an on-premises network.
 
-Pokud jste připraveni, začněte.
+If you are ready, let's start.
 
-## <a name="copy-your-data-to-a-data-box-device"></a>Zkopírování dat do zařízení Data Box
+## <a name="copy-your-data-to-a-data-box-device"></a>Copy your data to a Data Box device
 
-Pokud se data vejdou do jednoho Data Box zařízení, zkopírují se data do Data Box zařízení. 
+If your data fits into a single Data Box device, then you'll copy the data to the Data Box device. 
 
-Pokud velikost dat překročí kapacitu Data Box zařízení, pak pomocí [volitelného postupu rozdělte data mezi více zařízení data box](#appendix-split-data-across-multiple-data-box-devices) a pak tento krok proveďte. 
+If your data size exceeds the capacity of the Data Box device, then use the [optional procedure to split the data across multiple Data Box devices](#appendix-split-data-across-multiple-data-box-devices) and then perform this step. 
 
-Pokud chcete zkopírovat data z místního úložiště HDFS do zařízení Data Box, nastavili jste několik věcí a pak použijte nástroj [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) .
+To copy the data from your on-premises HDFS store to a Data Box device, you'll set a few things up, and then use the [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) tool.
 
-Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro úložiště objektů BLOB a objektů do zařízení Data Box. Rozhraní REST API umožní, aby se zařízení zobrazilo jako úložiště HDFS do vašeho clusteru.
+Follow these steps to copy data via the REST APIs of Blob/Object storage to your Data Box device. The REST API interface will make the device appear as an HDFS store to your cluster.
 
-1. Před kopírováním dat pomocí REST Identifikujte prvky zabezpečení a připojení, které se připojí k rozhraní REST na Data Box nebo Data Box Heavy. Přihlaste se k místnímu webovému uživatelskému rozhraní Data Box a přejít na stránku **připojit a kopírovat** . Na účtu úložiště Azure pro vaše zařízení v části **nastavení přístupu**vyhledejte a vyberte **REST**.
+1. Before you copy the data via REST, identify the security and connection primitives to connect to the REST interface on the Data Box or Data Box Heavy. Sign in to the local web UI of Data Box and go to **Connect and copy** page. Against the Azure storage account for your device, under **Access settings**, locate, and select **REST**.
 
-    ![Stránka připojit a kopírovat](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
+    !["Connect and copy" page](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. V dialogu pro přístup k účtu úložiště a nahrávání dat zkopírujte **BLOB Service koncový bod** a **klíč účtu úložiště**. Z koncového bodu služby objektů BLOB vynechejte `https://` a koncové lomítko.
+2. In the Access storage account and upload data dialog, copy the **Blob service endpoint** and the **Storage account key**. From the blob service endpoint, omit the `https://` and the trailing slash.
 
-    V tomto případě je koncový bod: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Část hostitele identifikátoru URI, kterou budete používat, je: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Příklad najdete v tématu Jak se [připojit k REST přes protokol HTTP](/azure/databox/data-box-deploy-copy-data-via-rest). 
+    In this case, the endpoint is: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. The host portion of the URI that you'll use is: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. For an example, see how to [Connect to REST over http](/azure/databox/data-box-deploy-copy-data-via-rest). 
 
-     ![Dialogová okna přístup k účtu úložiště a nahrání dat](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
+     !["Access storage account and upload data" dialog](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Přidejte koncový bod a IP adresu uzlu Data Box nebo Data Box Heavy na `/etc/hosts` na každém uzlu.
+3. Add the endpoint and the Data Box or Data Box Heavy node IP address to `/etc/hosts` on each node.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
     ```
 
-    Pokud používáte nějaký jiný mechanismus pro DNS, měli byste zajistit, aby bylo možné přeložit koncový bod Data Box.
+    If you are using some other mechanism for DNS, you should ensure that the Data Box endpoint can be resolved.
 
-4. Nastavte proměnnou prostředí `azjars` na umístění souborů JAR `hadoop-azure` a `azure-storage`. Tyto soubory najdete v instalačním adresáři Hadoop.
+4. Set the shell variable `azjars` to the location of the `hadoop-azure` and `azure-storage` jar files. You can find these files under the Hadoop installation directory.
 
-    Chcete-li zjistit, zda tyto soubory existují, použijte následující příkaz: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. Nahraďte zástupný text `<hadoop_install_dir>` cestou k adresáři, do kterého jste nainstalovali Hadoop. Nezapomeňte použít plně kvalifikované cesty.
+    To determine if these files exist, use the following command: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. Replace the `<hadoop_install_dir>` placeholder with the path to the directory where you've installed Hadoop. Be sure to use fully qualified paths.
 
     Příklady:
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
-5. Vytvořte kontejner úložiště, který chcete použít pro kopírování dat. Jako součást tohoto příkazu byste měli taky zadat cílový adresář. V tomto okamžiku může být fiktivní cílový adresář.
+5. Create the storage container that you want to use for data copy. You should also specify a destination directory as part of this command. This could be a dummy destination directory at this point.
 
     ```
     hadoop fs -libjars $azjars \
@@ -88,15 +88,15 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Zástupný text `<blob_service_endpoint>` nahraďte názvem vašeho koncového bodu služby BLOB Service.
+    * Replace the `<blob_service_endpoint>` placeholder with the name of your blob service endpoint.
 
-    * Zástupný text `<account_key>` nahraďte přístupovým klíčem vašeho účtu.
+    * Replace the `<account_key>` placeholder with the access key of your account.
 
-    * Zástupný text `<container-name>` nahraďte názvem vašeho kontejneru.
+    * Replace the `<container-name>` placeholder with the name of your container.
 
-    * Zástupný text `<destination_directory>` nahraďte názvem adresáře, do kterého chcete data zkopírovat.
+    * Replace the `<destination_directory>` placeholder with the name of the directory that you want to copy your data to.
 
-6. Spuštěním příkazu seznam zkontrolujte, zda byl vytvořen kontejner a adresář.
+6. Run a list command to ensure that your container and directory were created.
 
     ```
     hadoop fs -libjars $azjars \
@@ -105,13 +105,13 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * Zástupný text `<blob_service_endpoint>` nahraďte názvem vašeho koncového bodu služby BLOB Service.
+   * Replace the `<blob_service_endpoint>` placeholder with the name of your blob service endpoint.
 
-   * Zástupný text `<account_key>` nahraďte přístupovým klíčem vašeho účtu.
+   * Replace the `<account_key>` placeholder with the access key of your account.
 
-   * Zástupný text `<container-name>` nahraďte názvem vašeho kontejneru.
+   * Replace the `<container-name>` placeholder with the name of your container.
 
-7. Zkopírujte data ze služby Hadoop HDFS do úložiště objektů BLOB Data Box do kontejneru, který jste vytvořili dříve. Pokud adresář, který kopírujete do, nebyl nalezen, příkaz jej automaticky vytvoří.
+7. Copy data from the Hadoop HDFS to Data Box Blob storage, into the container that you created earlier. If the directory that you are copying into is not found, the command automatically creates it.
 
     ```
     hadoop distcp \
@@ -123,21 +123,21 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Zástupný text `<blob_service_endpoint>` nahraďte názvem vašeho koncového bodu služby BLOB Service.
+    * Replace the `<blob_service_endpoint>` placeholder with the name of your blob service endpoint.
 
-    * Zástupný text `<account_key>` nahraďte přístupovým klíčem vašeho účtu.
+    * Replace the `<account_key>` placeholder with the access key of your account.
 
-    * Zástupný text `<container-name>` nahraďte názvem vašeho kontejneru.
+    * Replace the `<container-name>` placeholder with the name of your container.
 
-    * Nahraďte zástupný text `<exlusion_filelist_file>` názvem souboru, který obsahuje seznam vyloučení souborů.
+    * Replace the `<exlusion_filelist_file>` placeholder with the name of the file that contains your list of file exclusions.
 
-    * Nahraďte zástupný text `<source_directory>` názvem adresáře, který obsahuje data, která chcete kopírovat.
+    * Replace the `<source_directory>` placeholder with the name of the directory that contains the data that you want to copy.
 
-    * Zástupný text `<destination_directory>` nahraďte názvem adresáře, do kterého chcete data zkopírovat.
+    * Replace the `<destination_directory>` placeholder with the name of the directory that you want to copy your data to.
 
-    Možnost `-libjars` slouží k zpřístupnění `hadoop-azure*.jar` a závislých souborů `azure-storage*.jar` pro `distcp`. K tomu může již dojít u některých clusterů.
+    The `-libjars` option is used to make the `hadoop-azure*.jar` and the dependent `azure-storage*.jar` files available to `distcp`. This    may already occur for some clusters.
 
-    Následující příklad ukazuje, jak se používá příkaz `distcp` ke kopírování dat.
+    The following example shows how the `distcp` command is used to copy data.
 
     ```
      hadoop distcp \
@@ -149,123 +149,123 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
     wasb://hdfscontainer@mystorageaccount.blob.mydataboxno.microsoftdatabox.com/data
     ```
   
-    Zlepšení rychlosti kopírování:
+    To improve the copy speed:
 
-    * Zkuste změnit počet mapovačů. (Výše uvedený příklad používá mapovače `m` = 4.)
+    * Try changing the number of mappers. (The above example uses `m` = 4 mappers.)
 
-    * Zkuste spustit více `distcp` paralelně.
+    * Try running multiple `distcp` in parallel.
 
-    * Pamatujte, že velké soubory fungují lépe než malé soubory.
+    * Remember that large files perform better than small files.
 
-## <a name="ship-the-data-box-to-microsoft"></a>Odeslání Data Box Microsoftu
+## <a name="ship-the-data-box-to-microsoft"></a>Ship the Data Box to Microsoft
 
-Pomocí těchto kroků Připravte a odešlete zařízení Data Box společnosti Microsoft.
+Follow these steps to prepare and ship the Data Box device to Microsoft.
 
-1. Nejprve [Příprava k odeslání na data box nebo data box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+1. First,  [Prepare to ship on your Data Box or Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
 
-2. Až se dokončí příprava zařízení, Stáhněte soubory BOM. Tyto soubory kusovníku nebo manifest budete později používat k ověření dat odesílaných do Azure.
+2. After the device preparation is complete, download the BOM files. You will use these BOM or manifest files later to verify the data uploaded to Azure.
 
-3. Vypněte zařízení a odeberte kabely.
+3. Shut down the device and remove the cables.
 
-4. Naplánujte vyzvednutí pomocí zdroje UPS.
+4. Naplánujte vyzvednutí službou UPS.
 
-    * Data Box zařízení najdete v tématu věnovaném [Dodávání data box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
+    * For Data Box devices, see [Ship your Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
 
-    * Data Box Heavy zařízení najdete v tématu věnovaném [Dodávání data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
+    * For Data Box Heavy devices, see [Ship your Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
 
-5. Jakmile Microsoft přijme vaše zařízení, připojí se k síti datového centra a data se nahrají do zadaného účtu úložiště (s nepovolenými hierarchickými obory názvů), když jste umístili pořadí zařízení. Ověřte soubory kusovníku, že všechna vaše data jsou nahraná do Azure. Tato data teď můžete přesunout do účtu úložiště Data Lake Storage Gen2.
+5. After Microsoft receives your device, it is connected to the data center network and the data is uploaded to the storage account you specified (with hierarchical namespaces disabled) when you placed the device order. Verify against the BOM files that all your data is uploaded to Azure. You can now move this data to a Data Lake Storage Gen2 storage account.
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Přesunout data do Azure Data Lake Storage Gen2
+## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Move the data into Azure Data Lake Storage Gen2
 
-Data už máte ve svém účtu Azure Storage. Teď budete kopírovat data do svého účtu úložiště Azure Data Lake a použít přístupová oprávnění k souborům a adresářům.
+You already have the data into your Azure Storage account. Now you will copy the data into your Azure Data Lake storage account and apply access permissions to files and directories.
 
 > [!NOTE]
-> Tento krok je nutný, pokud používáte Azure Data Lake Storage Gen2 jako úložiště dat. Pokud používáte pouze účet Blob Storage bez hierarchického oboru názvů jako úložiště dat, můžete tuto část přeskočit.
+> This step is needed if you are using Azure Data Lake Storage Gen2 as your data store. If you are using just a blob storage account without hierarchical namespace as your data store, you can skip this section.
 
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Kopírovat data na účet Azure Data Lake Storage Gen 2
+### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Copy data to the Azure Data Lake Storage Gen 2 account
 
-Data můžete kopírovat pomocí Azure Data Factory nebo pomocí clusteru Hadoop založeného na Azure.
+You can copy data by using Azure Data Factory, or by using your Azure-based Hadoop cluster.
 
-* Pokud chcete použít Azure Data Factory, [přejeďte data na adls Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)v tématu Azure Data Factory. Ujistěte se, že jako zdroj určíte **Azure Blob Storage** .
+* To use Azure Data Factory, see [Azure Data Factory to move data to ADLS Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2). Make sure to specify **Azure Blob Storage** as the source.
 
-* Pokud chcete použít cluster Hadoop založený na Azure, spusťte tento příkaz DistCp:
+* To use your Azure-based Hadoop cluster, run this DistCp command:
 
     ```bash
     hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
     ```
 
-    * Nahraďte zástupné symboly `<source_account>` a `<dest_account>` názvy zdrojového a cílového účtu úložiště.
+    * Replace the `<source_account>` and `<dest_account>` placeholders with the names of the source and destination storage accounts.
 
-    * Nahraďte zástupné symboly `<source_container>` a `<dest_container>` názvy zdrojového a cílového kontejneru.
+    * Replace the `<source_container>` and `<dest_container>` placeholders with the names of the source and destination containers.
 
-    * Nahraďte zástupné symboly `<source_path>` a `<dest_path>` pomocí cest zdrojového a cílového adresáře.
+    * Replace the `<source_path>` and `<dest_path>` placeholders with the source and destination directory paths.
 
-    * Zástupný text `<source_account_key>` nahraďte přístupovým klíčem účtu úložiště, který obsahuje data.
+    * Replace the `<source_account_key>` placeholder with the access key of the storage account that contains the data.
 
-    Tento příkaz zkopíruje data i metadata z vašeho účtu úložiště do svého účtu služby Data Lake Storage Gen2 Storage.
+    This command copies both data and metadata from your storage account into your Data Lake Storage Gen2 storage account.
 
-### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Vytvoření instančního objektu pro účet Azure Data Lake Storage Gen2
+### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Create a service principal for your Azure Data Lake Storage Gen2 account
 
-Chcete-li vytvořit instanční objekt, přečtěte si téma [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+To create a service principal, see [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-* Při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+* When performing the steps in the [Assign the application to a role](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) section of the article, make sure to assign the **Storage Blob Data Contributor** role to the service principal.
 
-* Při provádění kroků v části [získat hodnoty pro podepsání v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku, uložte ID aplikace a hodnoty tajného klíče klienta do textového souboru. Budete je potřebovat brzy.
+* When performing the steps in the [Get values for signing in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) section of the article, save application ID, and client secret values into a text file. You'll need those soon.
 
-### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Vygeneruje seznam kopírovaných souborů s jejich oprávněními.
+### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Generate a list of copied files with their permissions
 
-Z místního clusteru Hadoop spusťte tento příkaz:
+From the on-premises Hadoop cluster, run this command:
 
 ```bash
 
 sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 ```
 
-Tento příkaz vygeneruje seznam kopírovaných souborů s jejich oprávněními.
+This command generates a list of copied files with their permissions.
 
 > [!NOTE]
-> V závislosti na počtu souborů v HDFS může spuštění tohoto příkazu trvat dlouhou dobu.
+> Depending on the number of files in the HDFS, this command can take a long time to run.
 
-### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Generování seznamu identit a jejich mapování na Azure Active Directory (přidání) identit
+### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Generate a list of identities and map them to Azure Active Directory (ADD) identities
 
-1. Stáhněte si skript `copy-acls.py`. Podívejte se na téma [stažení pomocníka a nastavte svůj hraniční uzel tak, aby se spouštěl](#download-helper-scripts) v tomto článku.
+1. Download the `copy-acls.py` script. See the [Download helper scripts and set up your edge node to run them](#download-helper-scripts) section of this article.
 
-2. Spuštěním tohoto příkazu vygenerujte seznam jedinečných identit.
+2. Run this command to generate a list of unique identities.
 
    ```bash
    
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Tento skript vygeneruje soubor s názvem `id_map.json` obsahující identity, které potřebujete namapovat na identity založené na DOPLŇKu.
+   This script generates a file named `id_map.json` that contains the identities that you need to map to ADD-based identities.
 
-3. V textovém editoru otevřete soubor `id_map.json`.
+3. Open the `id_map.json` file in a text editor.
 
-4. Pro každý objekt JSON, který se zobrazí v souboru, aktualizujte atribut `target` buď na hlavní název uživatele (UPN) služby AAD, nebo na ID objektu (OID), s příslušnou namapovanou identitou. Až budete hotovi, soubor uložte. Tento soubor budete potřebovat v dalším kroku.
+4. For each JSON object that appears in the file, update the `target` attribute of either an AAD User Principal Name (UPN) or ObjectId (OID), with the appropriate mapped identity. After you're done, save the file. You'll need this file in the next step.
 
-### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Použít oprávnění pro zkopírované soubory a použít mapování identit
+### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Apply permissions to copied files and apply identity mappings
 
-Spuštěním tohoto příkazu můžete použít oprávnění pro data, která jste zkopírovali do účtu Data Lake Storage Gen2:
+Run this command to apply permissions to the data that you copied into the Data Lake Storage Gen2 account:
 
 ```bash
 ./copy-acls.py -s ./filelist.json -i ./id_map.json  -A <storage-account-name> -C <container-name> --dest-spn-id <application-id>  --dest-spn-secret <client-secret>
 ```
 
-* Zástupný text `<storage-account-name>` nahraďte názvem vašeho účtu úložiště.
+* Replace the `<storage-account-name>` placeholder with the name of your storage account.
 
-* Zástupný text `<container-name>` nahraďte názvem vašeho kontejneru.
+* Replace the `<container-name>` placeholder with the name of your container.
 
-* Nahraďte zástupné symboly `<application-id>` a `<client-secret>` pomocí ID aplikace a tajného klíče klienta, který jste shromáždili při vytváření instančního objektu.
+* Replace the `<application-id>` and `<client-secret>` placeholders with the application ID and client secret that you collected when you created the service principal.
 
-## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Příloha: rozdělení dat napříč více Data Box zařízeních
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Appendix: Split data across multiple Data Box devices
 
-Před přesunutím dat do zařízení Data Box budete muset stáhnout některé pomocné skripty, zajistit, aby vaše data byla uspořádaná do Data Box zařízení a vyloučila všechny nepotřebné soubory.
+Before you move your data onto a Data Box device, you'll need to download some helper scripts, ensure that your data is organized to fit onto a Data Box device, and exclude any unnecessary files.
 
 <a id="download-helper-scripts" />
 
-### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Stáhněte si pomocné skripty a nastavte si hraniční uzel, ve kterém se budou spouštět.
+### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Download helper scripts and set up your edge node to run them
 
-1. Z hraničního nebo hlavního uzlu vašeho místního clusteru Hadoop spusťte tento příkaz:
+1. From your edge or head node of your on-premises Hadoop cluster, run this command:
 
    ```bash
    
@@ -273,23 +273,23 @@ Před přesunutím dat do zařízení Data Box budete muset stáhnout některé 
    cd databox-adls-loader
    ```
 
-   Tento příkaz naklonuje úložiště GitHub, které obsahuje pomocné skripty.
+   This command clones the GitHub repository that contains the helper scripts.
 
-2. Ujistěte se, že je na vašem místním počítači nainstalovaný balíček [JQ](https://stedolan.github.io/jq/) .
+2. Make sure that have the [jq](https://stedolan.github.io/jq/) package installed on your local computer.
 
    ```bash
    
    sudo apt-get install jq
    ```
 
-3. Nainstalujte balíček [žádosti](http://docs.python-requests.org/en/master/) Python.
+3. Install the [Requests](http://docs.python-requests.org/en/master/) python package.
 
    ```bash
    
    pip install requests
    ```
 
-4. Nastavte oprávnění EXECUTE pro požadované skripty.
+4. Set execute permissions on the required scripts.
 
    ```bash
    
@@ -297,15 +297,15 @@ Před přesunutím dat do zařízení Data Box budete muset stáhnout některé 
 
    ```
 
-### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>Ujistěte se, že jsou vaše data uspořádaná tak, aby se vešla na Data Box zařízení.
+### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>Ensure that your data is organized to fit onto a Data Box device
 
-Pokud velikost dat překročí velikost jednoho Data Box zařízení, můžete soubory rozdělit do skupin, které můžete ukládat na více Data Boxch zařízení.
+If the size of your data exceeds the size of a single Data Box device, you can split files up into groups that you can store onto multiple Data Box devices.
 
-Pokud vaše data nepřekročí velikost jednotlivě Data Box zařízení, můžete přejít k další části.
+If your data doesn't exceed the size of a singe Data Box device, you can proceed to the next section.
 
-1. Se zvýšenými oprávněními spusťte skript `generate-file-list`, který jste stáhli podle pokynů v předchozí části.
+1. With elevated permissions, run the `generate-file-list` script that you downloaded by following the guidance in the previous section.
 
-   Tady je popis parametrů příkazu:
+   Here's a description of the command parameters:
 
    ```
    sudo -u hdfs ./generate-file-list.py [-h] [-s DATABOX_SIZE] [-b FILELIST_BASENAME]
@@ -333,17 +333,17 @@ Pokud vaše data nepřekročí velikost jednotlivě Data Box zařízení, může
                         Level of log information to output. Default is 'INFO'.
    ```
 
-2. Zkopírujte seznam vygenerovaných souborů do HDFS, aby byly dostupné pro úlohu [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) .
+2. Copy the generated file lists to HDFS so that they are accessible to the [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) job.
 
    ```
    hadoop fs -copyFromLocal {filelist_pattern} /[hdfs directory]
    ```
 
-### <a name="exclude-unnecessary-files"></a>Vyloučit nepotřebné soubory
+### <a name="exclude-unnecessary-files"></a>Exclude unnecessary files
 
-Musíte vyloučit některé adresáře z úlohy DisCp. Například vylučte adresáře, které obsahují informace o stavu, které udržují cluster spuštěný.
+You'll need to exclude some directories from the DisCp job. For example, exclude directories that contain state information that keep the cluster running.
 
-V rámci místního clusteru Hadoop, kde plánujete spustit úlohu DistCp, vytvořte soubor, který určuje seznam adresářů, které chcete vyloučit.
+On the on-premises Hadoop cluster where you plan to initiate the DistCp job, create a file that specifies the list of directories that you want to exclude.
 
 Tady je příklad:
 
@@ -354,4 +354,4 @@ Tady je příklad:
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak Data Lake Storage Gen2 pracuje s clustery HDInsight. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Learn how Data Lake Storage Gen2 works with HDInsight clusters. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).

@@ -1,6 +1,6 @@
 ---
-title: Použití externích úložišť metadat – Azure HDInsight
-description: Používejte externí úložiště metadat s clustery Azure HDInsight a osvědčenými postupy.
+title: Use external metadata stores - Azure HDInsight
+description: Use external metadata stores with Azure HDInsight clusters, and best practices.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,108 +8,104 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 18e03b6828922b3444d9461bef394b5c6682c238
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 14b36a391778649e96694f1cb1d3a1b4e7ee89ba
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930315"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327368"
 ---
-# <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat ve službě Azure HDInsight
+# <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Use external metadata stores in Azure HDInsight
 
-HDInsight umožňuje převzít kontrolu nad daty a metadaty nasazením klíčových řešení metadat a databází pro správu do externích úložišť dat. Tato funkce je aktuálně dostupná pro [Apache Hive metastore](#custom-metastore), [Apache Oozie metastore](#apache-oozie-metastore) a [Apache Ambari Database](#custom-ambari-db).
+HDInsight allows you to take control of your data and metadata by deploying key metadata solutions and management databases to external data stores. This feature is currently available for [Apache Hive metastore](#custom-metastore), [Apache Oozie metastore](#apache-oozie-metastore) and [Apache Ambari database](#custom-ambari-db).
 
-Apache Hive metastore v HDInsight je důležitou součástí architektury Apache Hadoop. Metastore je centrální úložiště schémat, které můžou používat jiné nástroje pro přístup k velkým datům, jako jsou Apache Spark, interaktivní dotazy (LLAP), presto nebo Apache prasete. HDInsight používá jako metastore Hive Azure SQL Database.
+The Apache Hive metastore in HDInsight is an essential part of the Apache Hadoop architecture. A metastore is the central schema repository that can be used by other big data access tools such as Apache Spark, Interactive Query (LLAP), Presto, or Apache Pig. HDInsight uses an Azure SQL Database as the Hive metastore.
 
-![Architektura úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+![HDInsight Hive Metadata Store Architecture](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
-Existují dva způsoby, jak můžete nastavit metastore pro clustery HDInsight:
+There are two ways you can set up a metastore for your HDInsight clusters:
 
-* [Výchozí metastore](#default-metastore)
-* [Vlastní metastore](#custom-metastore)
+* [Default metastore](#default-metastore)
+* [Custom metastore](#custom-metastore)
 
-## <a name="default-metastore"></a>Výchozí metastore
+## <a name="default-metastore"></a>Default metastore
 
-Ve výchozím nastavení HDInsight vytvoří metastore s každým typem clusteru. Místo toho můžete zadat vlastní metastore. Výchozí metastore zahrnuje následující požadavky:
+By default, HDInsight creates a metastore with every cluster type. You can instead specify a custom metastore. The default metastore includes the following considerations:
 
-* Žádné další náklady. HDInsight vytvoří metastore s každým typem clusteru bez dalších nákladů.
+* No additional cost. HDInsight creates a metastore with every cluster type without any additional cost to you.
 
-* Každé výchozí metastore je součástí životního cyklu clusteru. Při odstranění clusteru se odstraní také odpovídající metastore a metadata.
+* Each default metastore is part of the cluster lifecycle. When you delete a cluster, the corresponding metastore and metadata are also deleted.
 
-* Výchozí metastore nejde sdílet s ostatními clustery.
+* You can't share the default metastore with other clusters.
 
-* Výchozí metastore používá základní Azure SQL DB, který má pět jednotek DTU (databázová jednotka).
-Tento výchozí metastore se obvykle používá pro poměrně jednoduché úlohy, které nevyžadují více clusterů, a nepotřebují uchovávat metadata po dobu životního cyklu clusteru.
+* The default metastore uses the basic Azure SQL DB, which has a five DTU (database transaction unit) limit.
+This default metastore is typically used for relatively simple workloads that don't require multiple clusters and don’t need metadata preserved beyond the cluster's lifecycle.
 
-## <a name="custom-metastore"></a>Vlastní metastore
+## <a name="custom-metastore"></a>Custom metastore
 
-HDInsight podporuje také vlastní metaúložiště, které se doporučují pro produkční clustery:
+HDInsight also supports custom metastores, which are recommended for production clusters:
 
-* Jako metastore zadáte vlastní Azure SQL Database.
+* You specify your own Azure SQL Database as the metastore.
 
-* Životní cyklus metastore není svázán s životním cyklem clusterů, takže můžete vytvářet a odstraňovat clustery bez ztráty metadat. Metadata, jako jsou schémata podregistru, zůstanou zachována i po odstranění a opětovném vytvoření clusteru HDInsight.
+* The lifecycle of the metastore isn't tied to a clusters lifecycle, so you can create and delete clusters without losing metadata. Metadata such as your Hive schemas will persist even after you delete and re-create the HDInsight cluster.
 
-* Vlastní metastore umožňuje připojit k danému metastore několik clusterů a typů clusterů. Například jeden metastore může být sdílen napříč interaktivními clustery, podregistru a Sparky v HDInsight.
+* A custom metastore lets you attach multiple clusters and cluster types to that metastore. For example, a single metastore can be shared across Interactive Query, Hive, and Spark clusters in HDInsight.
 
-* Platíte za náklady na metastore (Azure SQL DB) podle úrovně výkonu, kterou si zvolíte.
+* You pay for the cost of a metastore (Azure SQL DB) according to the performance level you choose.
 
-* Metastore můžete škálovat podle potřeby.
+* You can scale up the metastore as needed.
 
-![Případ použití úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+![HDInsight Hive Metadata Store Use Case](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
-### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Vytvoření a konfigurace Azure SQL Database pro vlastní metastore
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Create and config Azure SQL Database for the custom metastore
 
-Než nastavíte vlastní metastore Hive pro cluster HDInsight, musíte vytvořit nebo mít existující Azure SQL Database.  Další informace najdete v tématu [rychlý Start: vytvoření izolované databáze ve službě Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+You need to create or have an existing Azure SQL Database before setting up a custom Hive metastore for a HDInsight cluster.  For more information, see [Quickstart: Create a single database in Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
-Aby se zajistilo, že cluster HDInsight bude mít přístup k připojeným Azure SQL Database, nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru.
+To make sure that your HDInsight cluster can access the connected Azure SQL Database, configure Azure SQL Database firewall rules to allow Azure services and resources to access the server.
 
-Tuto možnost můžete povolit v Azure Portal kliknutím na **nastavit bránu firewall serveru**a kliknutím **na** pod položkou **Povolit službám a prostředkům Azure přístup k tomuto serveru** pro Azure SQL Database Server nebo databázi. Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
+You can enable this option in the Azure portal by clicking **Set server firewall**, and clicking **ON** underneath **Allow Azure services and resources to access this server** for the Azure SQL Database server or database. For more information, see [Create and manage IP firewall rules](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
-![tlačítko nastavit bránu firewall serveru](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+![set server firewall button](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
-![povolení přístupu ke službám Azure](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+![allow azure services access](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
 
-### <a name="select-a-custom-metastore-during-cluster-creation"></a>Vybrat vlastní metastore při vytváření clusteru
+### <a name="select-a-custom-metastore-during-cluster-creation"></a>Select a custom metastore during cluster creation
 
-Cluster můžete nasměrovat na dříve vytvořený Azure SQL Database během vytváření clusteru, nebo můžete nakonfigurovat SQL Database po vytvoření clusteru. Tato možnost se při vytváření nového clusteru Hadoop, Sparku nebo interaktivního podregistru v Azure Portal používá v **Nastavení úložiště > metastore** .
+You can point your cluster to a previously created Azure SQL Database during cluster creation, or you can configure the SQL Database after the cluster is created. This option is specified with the **Storage > Metastore settings** while creating a new Hadoop, Spark, or interactive Hive cluster from Azure portal.
 
-![Azure Portal úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
+![HDInsight Hive Metadata Store Azure portal](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
-Do vlastních metastore můžete také přidat další clustery Azure Portal z konfigurace Ambari (> pro podregistr).
+## <a name="hive-metastore-best-practices"></a>Hive metastore best practices
 
-![Ambari úložiště metadat v podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-ambari.png)
+Here are some general HDInsight Hive metastore best practices:
 
-## <a name="hive-metastore-best-practices"></a>metastore Hive osvědčené postupy
+* Use a custom metastore whenever possible, to help separate compute resources (your running cluster) and metadata (stored in the metastore).
 
-Tady jsou některé obecné metastore Hive osvědčené postupy pro HDInsight:
+* Start with an S2 tier, which provides  50 DTU and 250 GB of storage. If you see a bottleneck, you can scale the database up.
 
-* Pokud je to možné, využijte vlastní metastore, abyste mohli oddělit výpočetní prostředky (váš běžící cluster) a metadata (uložené v metastore).
+* If you intend multiple HDInsight clusters to access separate data, use a separate database for the metastore on each cluster. If you share a metastore across multiple HDInsight clusters, it means that the clusters use the same metadata and underlying user data files.
 
-* Začněte s vrstvou S2, která poskytuje 50 DTU a 250 GB úložiště. Pokud se zobrazí kritický bod, můžete databázi škálovat nahoru.
+* Back up your custom metastore periodically. Azure SQL Database generates backups automatically, but the backup retention timeframe varies. For more information, see [Learn about automatic SQL Database backups](../sql-database/sql-database-automated-backups.md).
 
-* Pokud máte v úmyslu více clusterů HDInsight pro přístup k samostatným datům, použijte pro metastore na jednotlivých clusterech samostatnou databázi. Pokud sdílíte metastore napříč několika clustery HDInsight, znamená to, že clustery používají stejná metadata a základní soubory uživatelských dat.
+* Locate your metastore and HDInsight cluster in the same region, for highest performance and lowest network egress charges.
 
-* Pravidelně zálohujte vlastní metastore. Azure SQL Database automaticky generuje zálohy, ale časový interval pro uchovávání záloh se liší. Další informace najdete v tématu [informace o automatickém zálohování SQL Database](../sql-database/sql-database-automated-backups.md).
+* Monitor your metastore for performance and availability using Azure SQL Database Monitoring tools, such as the Azure portal or Azure Monitor logs.
 
-* Najděte cluster metastore a HDInsight ve stejné oblasti pro nejvyšší výkon a nejnižší poplatky za odchozí přenos v síti.
+* When a new, higher version of Azure HDInsight is created against an existing custom metastore database, the system upgrades the schema of the metastore, which is irreversible without restoring the database from backup.
 
-* Monitorujte metastore o výkonu a dostupnosti pomocí nástrojů pro monitorování Azure SQL Database, jako jsou protokoly Azure Portal nebo Azure Monitor.
+* If you share a metastore across multiple clusters, ensure all the clusters are the same HDInsight version. Different Hive versions use different metastore database schemas. For example, you can't share a metastore across Hive 2.1 and Hive 3.1 versioned clusters.
 
-* Když je v existující vlastní databázi metastore vytvořená nová, vyšší verze Azure HDInsight, systém upgraduje schéma metastore, což je nevratné bez obnovení databáze ze zálohy.
-
-* Pokud sdílíte metastore napříč několika clustery, ujistěte se, že všechny clustery mají stejnou verzi HDInsight. Různé verze podregistru používají různá schémata metastore Database. Nemůžete například sdílet metastore mezi podregistrem 2,1 a clustery s verzemi v registru 3,1.
-
-* Spark a podregistr v HDInsight 4,0 používají nezávislé katalogy pro přístup k SparkSQL nebo tabulkám podregistru. Tabulka vytvořená nástrojem Spark se nachází v katalogu Spark. Tabulka vytvořená podregistrem se nachází v katalogu podregistru. To se liší od HDInsight 3,6, ve kterém se společný katalog pro podregistr a Spark sdílí. Integrace podregistru a Sparku v HDInsight 4,0 spoléhá na umožní (podregistr Warehouse Connector). UMOŽNÍ funguje jako most mezi Sparkem a podregistrem. [Seznamte se s konektorem skladiště pro podregistr](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+* In HDInsight 4.0, Spark and Hive use independent catalogs for accessing SparkSQL or Hive tables. A table created by Spark resides in the Spark catalog. A table created by Hive resides in the Hive catalog. This is different than HDInsight 3.6 where Hive and Spark shared common catalog. Hive and Spark Integration in HDInsight 4.0 relies on Hive Warehouse Connector (HWC). HWC works as a bridge between Spark and Hive. [Learn about Hive Warehouse Connector](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie metastore
 
-Apache Oozie je systém koordinace pracovních postupů, který spravuje úlohy Hadoop.  Oozie podporuje úlohy Hadoop pro Apache MapReduce, prase, podregistr a další.  Oozie používá metastore k ukládání podrobností o aktuálních a dokončených pracovních postupech. Pokud chcete zvýšit výkon při použití Oozie, můžete použít Azure SQL Database jako vlastní metastore. Metastore může také po odstranění clusteru poskytnout přístup k datům úlohy Oozie.
+Apache Oozie is a workflow coordination system that manages Hadoop jobs.  Oozie supports Hadoop jobs for Apache MapReduce, Pig, Hive, and others.  Oozie uses a metastore to store details about current and completed workflows. To increase performance when using Oozie, you can use Azure SQL Database as a custom metastore. The metastore can also provide access to Oozie job data after you delete your cluster.
 
-Pokyny k vytvoření Oozie metastore pomocí Azure SQL Database najdete v tématu [použití Apache Oozie pro pracovní postupy](hdinsight-use-oozie-linux-mac.md).
+For instructions on creating an Oozie metastore with Azure SQL Database, see [Use Apache Oozie for workflows](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="custom-ambari-db"></a>Vlastní Ambari DB
 
-Pokud chcete používat svou vlastní externí databázi s Apache Ambari ve službě HDInsight, podívejte se na [vlastní databázi Apache Ambari](hdinsight-custom-ambari-db.md).
+To use your own external database with Apache Ambari on HDInsight, see [Custom Apache Ambari database](hdinsight-custom-ambari-db.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat a povolit zásady rizik v Azure Active Directory Identity Protection
-description: Povolení a konfigurace zásad rizik v Azure Active Directory Identity Protection
+title: Risk policies - Azure Active Directory Identity Protection
+description: Enable and configure risk policies in Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,73 +11,73 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f919633f6b1912ef07b7ff636eb60fb3d5859f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886958"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382181"
 ---
-# <a name="how-to-configure-and-enable-risk-policies"></a>Postupy: konfigurace a povolení zásad rizik
+# <a name="how-to-configure-and-enable-risk-policies"></a>How To: Configure and enable risk policies
 
-Jak jsme se naučili v předchozím článku, [Zásady ochrany identit](concept-identity-protection-policies.md) máme dvě rizikové zásady, které můžeme v našem adresáři povolit. 
+As we learned in the previous article, [Identity Protection policies](concept-identity-protection-policies.md) we have two risk policies that we can enable in our directory. 
 
-- Zásady rizik přihlašování
-- Zásady rizik uživatelů
+- Sign-in risk policy
+- User risk policy
 
-![Stránka s přehledem zabezpečení pro povolení zásad rizik uživatelů a přihlašování](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
+![Security overview page to enable user and sign-in risk policies](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
-Obě zásady pracují na automatizaci reakcí na detekci rizik ve vašem prostředí a umožňují uživatelům, aby při zjištění rizika prováděli vlastní nápravu. 
+Both policies work to automate the response to risk detections in your environment and allow users to self-remediate when risk is detected. 
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="prerequisites"></a>Předpoklady 
 
-Pokud chce vaše organizace uživatelům dovolit, aby při zjištění rizik prováděli vlastní nápravu, musí se uživatelé zaregistrovat pro Samoobslužné resetování hesla i pro Azure Multi-Factor Authentication. Pro zajištění nejlepšího prostředí doporučujeme [, abyste povolili kombinované možnosti registrace informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md) . Umožnění, aby si uživatelé sami opravili stav do produktivního přípravení rychleji, aniž by museli mít zásah správce. Správci můžou tyto události pořád zobrazit a prozkoumat je po faktu. 
+If your organization wants to allow users to self-remediate when risks are detected, users must be registered for both self-service password reset and Azure Multi-Factor Authentication. We recommend [enabling the combined security information registration experience](../authentication/howto-registration-mfa-sspr-combined.md) for the best experience. Allowing users to self-remediate gets them back to a productive state more quickly without requiring administrator intervention. Administrators can still see these events and investigate them after the fact. 
 
-## <a name="choosing-acceptable-risk-levels"></a>Výběr přípustných úrovní rizika
+## <a name="choosing-acceptable-risk-levels"></a>Choosing acceptable risk levels
 
-Organizace musí rozhodnout, jakou úroveň rizika mají přijmout vyvážení uživatelského prostředí a stav zabezpečení. 
+Organizations must decide the level of risk they are willing to accept balancing user experience and security posture. 
 
-Doporučení Microsoftu je nastavit prahovou hodnotu zásad rizik uživatelů na **vysokou** a na **střední a vyšší**rizikové zásady pro přihlašování.
+Microsoft's recommendation is to set the user risk policy threshold to **High** and the sign-in risk policy to **Medium and above**.
 
-Výběr **vysoké** prahové hodnoty snižuje počet aktivovaných zásad a minimalizuje dopad na uživatele. Z těchto zásad ale nevylučuje detekci **nízkých** a **středních** rizik, což nemusí útočníkovi zabránit v zneužití ohrožené identity. Výběr **nízké** prahové hodnoty zavádí další přerušení uživatele, ale zvýšené zabezpečení stav.
+Choosing a **High** threshold reduces the number of times a policy is triggered and minimizes the impact to users. However, it excludes **Low** and **Medium** risk detections from the policy, which may not block an attacker from exploiting a compromised identity. Selecting a **Low** threshold introduces additional user interrupts, but increased security posture.
 
 ## <a name="exclusions"></a>Vyloučení
 
-Všechny zásady umožňují vyloučit uživatele, jako jsou například účty pro [nouzový přístup nebo správce přestávek](../users-groups-roles/directory-emergency-access.md). Organizace můžou určit, že budou muset vyloučit další účty z konkrétních zásad na základě způsobu použití účtů. Všechna vyloučení by měla být pravidelně přezkoumána, aby bylo možné zjistit, zda jsou stále k dispozici.
+All of the policies allow for excluding users such as your [emergency access or break-glass administrator accounts](../users-groups-roles/directory-emergency-access.md). Organizations may determine they need to exclude other accounts from specific policies based on the way the accounts are used. All exclusions should be reviewed regularly to see if they are still applicable.
 
-## <a name="enable-policies"></a>Povolit zásady
+## <a name="enable-policies"></a>Enable policies
 
-Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveďte následující kroky.
+To enable the user risk and sign-in risk policies complete the following steps.
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory** > **Security** > **Identity Protection** > **Overview**.
-1. Vyberte **Konfigurovat zásady rizik uživatelů**.
-   1. V části **přiřazení**
-      1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
-         1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
-      1. **Podmínky** - **riziku pro uživatele** Microsoftu je nastavit tuto možnost na **Vysoká**.
-   1. Pod **ovládacími prvky**
-      1. **Přístup** – doporučení Microsoftu je **Povolení přístupu** a **vyžadování změny hesla**.
-   1. **Vynutilit** ** - ** zásad
-   1. **Uložit** – Tato akce vás vrátí na stránku **Přehled** .
-1. Vyberte **Konfigurovat zásady rizik přihlašování**.
-   1. V části **přiřazení**
-      1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
-         1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
-      1. **Podmínky** - **rizika přihlašování** od Microsoftu je nastavení této možnosti na **střední a vyšší**.
-   1. Pod **ovládacími prvky**
-      1. **Přístup** – doporučení Microsoftu je **Povolení přístupu** a **vyžadování služby Multi-Factor Authentication**.
-   1. **Vynutilit** ** - ** zásad
-   1. **Uloží**
+1. Browse to **Azure Active Directory** > **Security** > **Identity Protection** > **Overview**.
+1. Select **Configure user risk policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+      1. **Conditions** - **User risk** Microsoft's recommendation is to set this option to **High**.
+   1. Under **Controls**
+      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require password change**.
+   1. **Enforce Policy** - **On**
+   1. **Save** - This action will return you to the **Overview** page.
+1. Select **Configure sign-in risk policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+      1. **Conditions** - **Sign-in risk** Microsoft's recommendation is to set this option to **Medium and above**.
+   1. Under **Controls**
+      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require multi-factor authentication**.
+   1. **Enforce Policy** - **On**
+   1. **Save**
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit zásady registrace pro Azure Multi-Factor Authentication](howto-identity-protection-configure-mfa-policy.md)
+- [Enable Azure Multi-Factor Authentication registration policy](howto-identity-protection-configure-mfa-policy.md)
 
-- [Co je riziko](concept-identity-protection-risks.md)
+- [What is risk](concept-identity-protection-risks.md)
 
-- [Prozkoumat detekci rizik](howto-identity-protection-investigate-risk.md)
+- [Investigate risk detections](howto-identity-protection-investigate-risk.md)
 
-- [Simulace zjišťování rizik](howto-identity-protection-simulate-risk.md)
+- [Simulate risk detections](howto-identity-protection-simulate-risk.md)

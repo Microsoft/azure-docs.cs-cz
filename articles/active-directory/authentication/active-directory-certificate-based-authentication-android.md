@@ -1,83 +1,83 @@
 ---
-title: Ověřování pomocí certifikátu v systému Android – Azure Active Directory
-description: Další informace o podporovaných scénářích a požadavky pro konfiguraci ověřování na základě certifikátů v řešeních pro zařízení s Androidem
+title: Android certificate-based authentication - Azure Active Directory
+description: Learn about the supported scenarios and the requirements for configuring certificate-based authentication in solutions with Android devices
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: effa03f042b44890fccd474128e75bd1c0f782a3
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60416164"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381993"
 ---
-# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Ověřování Azure Active Directory na základě certifikátů v Androidu
+# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory certificate-based authentication on Android
 
-Zařízení s androidem můžete použít k ověření do Azure Active Directory pomocí klientského certifikátu na svých zařízeních při připojování k ověřování prostřednictvím certifikátu (certifikátů):
+Android devices can use certificate-based authentication (CBA) to authenticate to Azure Active Directory using a client certificate on their device when connecting to:
 
-* Mobilní aplikace Office, jako je například Microsoft Outlook a Microsoft Word
-* Klienti Exchange ActiveSync (EAS)
+* Office mobile applications such as Microsoft Outlook and Microsoft Word
+* Exchange ActiveSync (EAS) clients
 
-Tuto funkci konfiguruje eliminuje nutnost zadat kombinace uživatelského jména a hesla do určité e-mailu a aplikace Microsoft Office na svém mobilním zařízení.
+Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
 
-Toto téma obsahuje požadavky a podporované scénáře konfigurace certifikátů pro zařízení s iOS(Android) pro uživatele tenantů v Office 365 Enterprise, obchodní, vzdělávání, pro státní správu USA, Čína, a Německo plány.
+This topic provides you with the requirements and the supported scenarios for configuring CBA on an iOS(Android) device for users of tenants in Office 365 Enterprise, Business, Education, US Government, China, and Germany plans.
 
-Tato funkce je dostupná ve verzi preview v plánech Office 365 Government obrany USA a federální.
+This feature is available in preview in Office 365 US Government Defense and Federal plans.
 
-## <a name="microsoft-mobile-applications-support"></a>Podpora mobilních aplikací Microsoft
+## <a name="microsoft-mobile-applications-support"></a>Microsoft mobile applications support
 
 | Aplikace | Podpora |
 | --- | --- |
-| Azure Information Protection aplikace |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Portál společnosti Intune |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Microsoft Teams |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| OneNote |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| OneDrive |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Outlook |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Power BI |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Skype pro firmy |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Word / Excel / PowerPoint |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Yammer |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Azure Information Protection app |![Check mark signifying support for this application][1] |
+| Intune Company Portal |![Check mark signifying support for this application][1] |
+| Microsoft Teams |![Check mark signifying support for this application][1] |
+| OneNote |![Check mark signifying support for this application][1] |
+| OneDrive |![Check mark signifying support for this application][1] |
+| Outlook |![Check mark signifying support for this application][1] |
+| Power BI |![Check mark signifying support for this application][1] |
+| Skype pro firmy |![Check mark signifying support for this application][1] |
+| Word / Excel / PowerPoint |![Check mark signifying support for this application][1] |
+| Yammer |![Check mark signifying support for this application][1] |
 
-### <a name="implementation-requirements"></a>Požadavky na implementaci
+### <a name="implementation-requirements"></a>Implementation requirements
 
-Musí být verze operačního systému zařízení s Androidem 5.0 (Lollipop) a vyšší.
+The device OS version must be Android 5.0 (Lollipop) and above.
 
-Federační server musí být nakonfigurován.
+A federation server must be configured.
 
-Pro Azure Active Directory k odvolání klientského certifikátu musí mít token služby AD FS následující deklarace:
+For Azure Active Directory to revoke a client certificate, the ADFS token must have the following claims:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (Sériové číslo certifikátu klienta)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (Řetězce pro vystavitele certifikátu klienta)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (The serial number of the client certificate)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (The string for the issuer of the client certificate)
 
-Azure Active Directory přidá tyto deklarace do tokenu obnovení v případě, že jsou k dispozici v tokenu služby AD FS (nebo jiný token SAML). Pokud token obnovení je potřeba ověřit, tyto informace slouží ke kontrole odvolání.
+Azure Active Directory adds these claims to the refresh token if they are available in the ADFS token (or any other SAML token). When the refresh token needs to be validated, this information is used to check the revocation.
 
-Jako osvědčený postup měli byste aktualizovat chybové stránky služby AD FS vaší organizace s následujícími informacemi:
+As a best practice, you should update your organization's ADFS error pages with the following information:
 
-* Požadavky pro instalaci aplikace Microsoft Authenticator na Androidu.
-* Pokyny, jak získat certifikát uživatele.
+* The requirement for installing the Microsoft Authenticator on Android.
+* Instructions on how to get a user certificate.
 
-Další informace najdete v tématu [přizpůsobení stránek služby AD FS přihlásit](https://technet.microsoft.com/library/dn280950.aspx).
+For more information, see [Customizing the AD FS Sign-in Pages](https://technet.microsoft.com/library/dn280950.aspx).
 
-Některé aplikace Office (s povolené moderní ověřování) odeslat "*řádku = přihlášení*" do služby Azure AD v žádosti. Ve výchozím nastavení, Azure AD přeloží "*řádku = přihlášení*"v žádosti o služby AD FS jako"*wauth = usernamepassworduri*" (zeptá služby AD FS provést ověření U/P) a "*wfresh = 0*" (zeptá služby AD FS do Ignorovat stav jednotného přihlašování a proveďte nové ověření). Pokud chcete povolit ověřování pomocí certifikátu pro tyto aplikace, budete muset změnit výchozí chování služby Azure AD. Nastavte "*PromptLoginBehavior*'v nastavení federovanou doménu na"*zakázané*".
-Můžete použít [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) rutina k provedení této úlohy:
+Some Office apps (with modern authentication enabled) send ‘*prompt=login*’ to Azure AD in their request. By default, Azure AD translates ‘*prompt=login*’ in the request to ADFS as ‘*wauth=usernamepassworduri*’ (asks ADFS to do U/P Auth) and ‘*wfresh=0*’ (asks ADFS to ignore SSO state and do a fresh authentication). If you want to enable certificate-based authentication for these apps, you need to modify the default Azure AD behavior. Set the ‘*PromptLoginBehavior*’ in your federated domain settings to ‘*Disabled*‘.
+You can use the [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet to perform this task:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
-## <a name="exchange-activesync-clients-support"></a>Podpora klientů protokolu Exchange ActiveSync
+## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync clients support
 
-Některé aplikace Exchange ActiveSync v systému Android 5.0 (Lollipop) nebo novější podporují. Pokud chcete zjistit, pokud tuto funkci podporovat e-mailové aplikace, obraťte se na vaše aplikace pro vývojáře.
+Certain Exchange ActiveSync applications on Android 5.0 (Lollipop) or later are supported. To determine if your email application does support this feature, contact your application developer.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete nakonfigurovat ověřování prostřednictvím certifikátu ve vašem prostředí, přečtěte si téma [Začínáme s ověřováním na základě certifikátů v Androidu](active-directory-certificate-based-authentication-get-started.md) pokyny.
+If you want to configure certificate-based authentication in your environment, see [Get started with certificate-based authentication on Android](active-directory-certificate-based-authentication-get-started.md) for instructions.
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png

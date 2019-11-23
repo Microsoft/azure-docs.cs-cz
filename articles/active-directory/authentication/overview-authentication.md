@@ -1,28 +1,28 @@
 ---
-title: Ověřování uživatelů Azure Active Directory – Azure Active Directory
+title: Authenticating and securing users - Azure Active Directory
 description: Jak jako správce Azure AD ochráním ověřování uživatelů a zároveň snížím dopad na koncové uživatele?
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/11/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2f53243e49cc961f50ef09cf43a7ed174a82a9c
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ccbb754f03f77ce0571912a5443dc9b18c66b463
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65997267"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381109"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Které metody ověřování jsou dostupné?
 
 Občas můžete slyšet ve zprávách, jak někdo ukradne hesla nebo dojde k ohrožení zabezpečení identit. Zabezpečení organizace můžete kromě běžného hesla okamžitě zvýšit vynucením dvoufaktorového ověřování. Microsoft Azure Active Directory (Azure AD) obsahuje funkce, jako je Azure Multi-Factor Authentication (Azure MFA) a samoobslužné resetování hesla Azure AD (SSPR), které s dalšími metodami ověřování pomáhají správcům chránit organizace a uživatele.
 
-Existuje mnoho scénářů, které zahrnují: přihlášení k aplikaci, resetování hesla, povolení Windows Hello, společně s dalšími, uživatelé mohou požádáni o zadání dalšího ověření, že jsou kdo, Řekněme, že jsou.
+There are many scenarios that include: signing in to an application, resetting their password, enabling Windows Hello, and others, your users may be asked to provide additional verification that they are who they say they are.
 
 Dodatečné ověřování může mít podobu jedné z těchto metod ověřování:
 
@@ -43,9 +43,9 @@ Samoobslužné resetování hesla dává uživatelům v případě potřeby mož
 
 Samoobslužné resetování hesla zahrnuje:
 
-* **Změna hesla:** Jsem vím svoje heslo, ale chcete ho změnit na něco nového.
-* **Resetování hesla:** Mám nemůže přihlásit a chcete resetovat heslo pomocí metody jeden nebo více schválených ověřování.
-* **Odemknutí účtu:** Nemůžu se přihlásit vzhledem k tomu, že je můj účet uzamčen a chcete odemknout pomocí jednoho nebo více schválených ověřovacích metod.
+* **Změnu hesla:** Znám svoje heslo, ale chci ho změnit na nové.
+* **Resetování hesla:** Nemůžu se přihlásit a chci si heslo pomocí jedné ze schválených metod ověřování resetovat.
+* **Odemknutí účtu:** Nemůžu se přihlásit ke svému účtu, protože je uzamčený a chci ho jednou ze schválených metod ověřování odemknout.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
@@ -55,12 +55,12 @@ Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřová
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Dalším krokem je začít a nakonfigurovat samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication.
 
 Jak začít používat samoobslužné resetování hesla najdete v článku [Rychlé nasazení samoobslužného resetování hesla Azure AD](quickstart-sspr.md).
 
-Další informace o samoobslužné resetování hesla ve článku [jak to funguje: Azure AD samoobslužné resetování hesla](concept-sspr-howitworks.md)
+Další informace o samoobslužném resetování hesla najdete v článku o [fungování samoobslužného resetování hesla Azure AD](concept-sspr-howitworks.md)
 
-Další informace o ověřování Azure Multi-Factor Authentication v následujícím článku [jak to funguje: Azure Multi-Factor Authentication](concept-mfa-howitworks.md)
+Více informací o ověřování Azure Multi-Factor Authentication najdete v článku o [fungování ověřování Azure Multi-Factor Authentication](concept-mfa-howitworks.md)

@@ -1,6 +1,6 @@
 ---
-title: Ověřování a autorizace rozhraní API – Azure Time Series Insights | Microsoft Docs
-description: Tento článek popisuje, jak nakonfigurovat ověřování a autorizaci pro vlastní aplikaci, která volá rozhraní Azure Time Series Insights API.
+title: API authentication and authorization - Azure Time Series Insights | Microsoft Docs
+description: This article describes how to configure authentication and authorization for a custom application that calls the Azure Time Series Insights API.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,73 +12,73 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 60099689c79308a45e3d40d63e0f993b030db7cd
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d47f846f77d3552288dfea43b417d8c60856f41a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133576"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327889"
 ---
-# <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní Azure Time Series Insights API
+# <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentication and authorization for Azure Time Series Insights API
 
-Tento dokument popisuje, jak zaregistrovat aplikaci v Azure Active Directory pomocí nového okna Azure Active Directory. Aplikace zaregistrované v Azure Active Directory umožňují uživatelům ověřování a autorizaci používat rozhraní API služby Azure Time Series Insights přidružené k prostředí Time Series Insights.
+This document describes how to register an app in Azure Active Directory using the new Azure Active Directory blade. Apps registered in Azure Active Directory enable users to authenticate to and be authorized to use the Azure Time Series Insight API associated with a Time Series Insights environment.
 
-## <a name="service-principal"></a>Instanční objekt
+## <a name="service-principal"></a>Service principal
 
-Následující části popisují, jak nakonfigurovat aplikaci pro přístup k rozhraní Time Series Insights API jménem aplikace. Aplikace pak může dotazovat nebo publikovat referenční data v prostředí Time Series Insights pomocí vlastních přihlašovacích údajů aplikace prostřednictvím Azure Active Directory.
+The following sections describe how to configure an application to access the Time Series Insights API on behalf of an app. The application may then query or publish reference data in the Time Series Insights environment using its own application credentials through Azure Active Directory.
 
-## <a name="summary-and-best-practices"></a>Souhrn a osvědčené postupy
+## <a name="summary-and-best-practices"></a>Summary and best practices
 
-Registrační tok aplikace Azure Active Directory zahrnuje tři hlavní kroky.
+The Azure Active Directory app registration flow involves three main steps.
 
-1. [Registrace aplikace](#azure-active-directory-app-registration) v Azure Active Directory.
-1. Autorizujte aplikaci tak, aby měla [přístup k datům Time Series Insights prostředí](#granting-data-access).
-1. Použijte **ID aplikace** a **tajný klíč klienta** k získání tokenu z `https://api.timeseries.azure.com/` v [klientské aplikaci](#client-app-initialization). Token se pak dá použít k volání rozhraní Time Series Insights API.
+1. [Register an application](#azure-active-directory-app-registration) in Azure Active Directory.
+1. Authorize the application to have [data access to the Time Series Insights environment](#granting-data-access).
+1. Use the **Application ID** and **Client Secret** to acquire a token from `https://api.timeseries.azure.com/` in your [client app](#client-app-initialization). The token can then be used to call the Time Series Insights API.
 
-V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám umožní:
+Per **step 3**, separating your application's and your user credentials allows you to:
 
-* Přiřaďte oprávnění identitě aplikace, která se liší od vašich vlastních oprávnění. Tato oprávnění se většinou omezují jenom na to, co aplikace vyžaduje. Aplikaci můžete například dovolit číst data pouze z konkrétního Time Series Insightsho prostředí.
-* Izolujte zabezpečení aplikace od přihlašovacích údajů pro ověření uživatele pomocí **tajného klíče klienta** nebo certifikátu zabezpečení. V důsledku toho přihlašovací údaje aplikace nejsou závislé na přihlašovacích údajích konkrétního uživatele. Pokud se změní role uživatele, aplikace nemusí nutně vyžadovat nové přihlašovací údaje ani další konfiguraci. Pokud uživatel změní heslo, veškerý přístup k aplikaci nevyžaduje nové přihlašovací údaje ani klíče.
-* Spusťte bezobslužný skript pomocí **tajného klíče klienta** nebo certifikátu zabezpečení, nikoli přihlašovací údaje konkrétního uživatele (vyžaduje, aby byly přítomny).
-* Pro zabezpečení přístupu k rozhraní Azure Time Series Insights API použijte certifikát zabezpečení, nikoli heslo.
+* Assign permissions to the app identity that are distinct from your own permissions. Typically, these permissions are restricted to only what the app requires. For example, you can allow the app to read data only from a particular Time Series Insights environment.
+* Isolate the app's security from the creating user's authentication credentials by using a **Client Secret** or security certificate. As a result, the application's credentials are not dependent on a specific user's credentials. If the user's role changes, the application does not necessarily require new credentials or further configuration. If the user changes their password, all access to the application doesn't require new credentials or keys.
+* Run an unattended script using a **Client Secret** or security certificate rather than a specific user's credentials (requiring them to be present).
+* Use a security certificate rather than a password to secure access to your Azure Time Series Insights API.
 
 > [!IMPORTANT]
-> Při konfiguraci zásad zabezpečení Azure Time Series Insights postupujte podle principu **oddělení** potíží (popsané v tomto scénáři výše).
+> Follow the principle of **Separation of Concerns** (described for this scenario above) when configuring your Azure Time Series Insights security policy.
 
 > [!NOTE]
-> * Článek se zaměřuje na aplikaci s jedním tenantů, kde má aplikace běžet jenom v jedné organizaci.
-> * Pro obchodní aplikace, které běží ve vaší organizaci, obvykle používáte aplikace pro jednoho tenanta.
+> * The article focuses on a single-tenant application where the application is intended to run in only one organization.
+> * You'll typically use single-tenant applications for line-of-business applications that run in your organization.
 
-## <a name="detailed-setup"></a>Podrobné nastavení
+## <a name="detailed-setup"></a>Detailed setup
 
-### <a name="azure-active-directory-app-registration"></a>Registrace aplikace Azure Active Directory
+### <a name="azure-active-directory-app-registration"></a>Azure Active Directory app registration
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-### <a name="granting-data-access"></a>Udělení přístupu k datům
+### <a name="granting-data-access"></a>Granting data access
 
-1. V prostředí Time Series Insights vyberte **zásady přístupu k datům** a vyberte **Přidat**.
+1. For the Time Series Insights environment, select **Data Access Policies** and select **Add**.
 
-   [![přidat nové zásady přístupu k datům do prostředí Time Series Insights](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
+   [![Add new data access policy to the Time Series Insights environment](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
-1. V dialogovém okně **Vybrat uživatele** vložte **název aplikace** nebo **ID aplikace** z části registrace aplikace Azure Active Directory.
+1. In the **Select User** dialog box, paste either the **Application Name** or the **Application ID** from the Azure Active Directory app registration section.
 
-   [![najít aplikaci v dialogovém okně Vybrat uživatele](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
+   [![Find an application in the Select User dialog box](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. Vyberte roli. Výběr **čtecího zařízení** pro dotazování dat nebo **přispěvatele** k dotazování na data a změně referenčních dat. Vyberte **OK**.
+1. Select the role. Select **Reader** to query data or **Contributor** to query data and change reference data. Vyberte **OK**.
 
-   [![výběru čtecího modulu nebo přispěvatele v dialogovém okně Vybrat roli uživatele](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
+   [![Pick Reader or Contributor in the Select User Role dialog box](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
-1. Uložte zásadu výběrem **OK**.
+1. Save the policy by selecting **OK**.
 
    > [!TIP]
-   > Přečtěte si informace o [udělení přístupu k datům](./time-series-insights-data-access.md) do prostředí Time Series Insights v Azure Active Directory.
+   > For advanced data access options, read [granting data access](./time-series-insights-data-access.md).
 
-### <a name="client-app-initialization"></a>Inicializace klientské aplikace
+### <a name="client-app-initialization"></a>Client app initialization
 
-1. Použijte **ID aplikace** a **tajný klíč klienta** (aplikační klíč) z části registrace aplikace Azure Active Directory k získání tokenu jménem aplikace.
+1. Use the **Application ID** and **Client Secret** (Application Key) from the Azure Active Directory app registration section to acquire the token on behalf of the application.
 
-    V C#nástroji může následující kód získat token jménem aplikace. Úplnou ukázku najdete v tématu [dotazování na data C#pomocí ](time-series-insights-query-data-csharp.md).
+    In C#, the following code can acquire the token on behalf of the application. For a complete sample, see [Query data using C#](time-series-insights-query-data-csharp.md).
 
     ```csharp
     // Enter your Active Directory tenant domain name
@@ -99,58 +99,58 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
     string accessToken = token.AccessToken;
     ```
 
-1. Token se pak může předat v hlavičce `Authorization`, když aplikace volá rozhraní API Time Series Insights.
+1. The token can then be passed in the `Authorization` header when the application calls the Time Series Insights API.
 
-## <a name="common-headers-and-parameters"></a>Společné hlavičky a parametry
+## <a name="common-headers-and-parameters"></a>Common headers and parameters
 
-Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP, které slouží k vytváření dotazů proti Time Series Insights rozhraní API GA a Preview. Požadavky na konkrétní rozhraní API jsou podrobněji popsány v [referenční dokumentaci Time Series Insights REST API](https://docs.microsoft.com/rest/api/time-series-insights/).
+This section describes common HTTP request headers and parameters used to make queries against the Time Series Insights GA and Preview APIs. API-specific requirements are covered in greater detail in the [Time Series Insights REST API reference documentation](https://docs.microsoft.com/rest/api/time-series-insights/).
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Ověření
 
-Aby bylo možné provádět ověřené dotazy proti [Time Series Insights rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#). 
+To perform authenticated queries against the [Time Series Insights REST APIs](https://docs.microsoft.com/rest/api/time-series-insights/), a valid OAuth 2.0 bearer token must be passed in the [Authorization header](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) using a REST client of your choice (Postman, JavaScript, C#). 
 
 > [!IMPORTANT]
-> Token se musí vystavit přesně pro prostředek `https://api.timeseries.azure.com/` (označuje se také jako "cílová skupina" tokenu).
-> * Vaše [dodatečná](https://www.getpostman.com/) **AuthURLa** je proto vyhovující: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+> The token must be issued exactly to the `https://api.timeseries.azure.com/` resource (also known as the "audience" of the token).
+> * Your [Postman](https://www.getpostman.com/) **AuthURL** with therefore conform to: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 
 > [!TIP]
-> Podívejte se na [ukázkovou vizualizaci sady SDK](https://tsiclientsample.azurewebsites.net/) hostovaného Azure Time Series Insights a zjistěte, jak pomocí rozhraní API [klienta pro JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) společně s grafy a grafy ověřit ověřování pomocí rozhraní API pro Time Series Insights prostřednictvím kódu programu.
+> See the hosted Azure Time Series Insights [client SDK sample visualization](https://tsiclientsample.azurewebsites.net/) to see how to authenticate with the Time Series Insights APIs programmatically using the [JavaScript Client SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) along with charts and graphs.
 
-### <a name="http-headers"></a>Hlavičky protokolu HTTP
+### <a name="http-headers"></a>HTTP headers
 
-Požadované hlavičky žádosti:
+Required request headers:
 
-- `Authorization` pro ověřování a autorizaci musí být v autorizační hlavičce předán platný nosný token OAuth 2,0. Token se musí vystavit přesně pro prostředek `https://api.timeseries.azure.com/` (označuje se také jako "cílová skupina" tokenu).
+- `Authorization` for authentication and authorization, a valid OAuth 2.0 Bearer token must be passed in the Authorization header. The token must be issued exactly to the `https://api.timeseries.azure.com/` resource (also known as the "audience" of the token).
 
-Nepovinné hlavičky žádosti:
+Optional request headers:
 
-- je podporována pouze `Content-type` `application/json`.
-- `x-ms-client-request-id` – ID žádosti klienta. Služba zaznamenává tuto hodnotu. Umožňuje službě sledovat operace napříč službami.
-- `x-ms-client-session-id` – ID klientské relace. Služba zaznamenává tuto hodnotu. Umožňuje službě trasovat skupinu souvisejících operací napříč službami.
-- `x-ms-client-application-name` – název aplikace, která vygenerovala tento požadavek. Služba zaznamenává tuto hodnotu.
+- `Content-type` - only `application/json` is supported.
+- `x-ms-client-request-id` - a client request ID. Service records this value. Allows the service to trace operation across services.
+- `x-ms-client-session-id` - a client session ID. Service records this value. Allows the service to trace a group of related operations across services.
+- `x-ms-client-application-name` - name of the application that generated this request. Service records this value.
 
-Hlavičky odpovědi:
+Response headers:
 
-- je podporována pouze `Content-type` `application/json`.
-- `x-ms-request-id` – ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti.
+- `Content-type` - only `application/json` is supported.
+- `x-ms-request-id` - server-generated request ID. Can be used to contact Microsoft to investigate a request.
 
-### <a name="http-parameters"></a>Parametry HTTP
+### <a name="http-parameters"></a>HTTP parameters
 
-Požadované parametry řetězce dotazu adresy URL:
+Required URL query string parameters:
 
 - `api-version=2016-12-12`
 - `api-version=2018-11-01-preview`
 
-Volitelné parametry řetězce dotazu adresy URL:
+Optional URL query string parameters:
 
-- `timeout=<timeout>` – časový limit pro provedení žádosti na straně serveru. Dá se použít jenom pro [události Get prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) a rozhraní API pro [agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu doby trvání ISO 8601, například `"PT20S"` a měla by být v rozsahu `1-30 s`. Výchozí hodnota je `30 s`.
+- `timeout=<timeout>` – server-side timeout for the request execution. Applicable only to the [Get Environment Events](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) and [Get Environment Aggregates](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) APIs. Timeout value should be in ISO 8601 duration format, for example `"PT20S"` and should be in the range `1-30 s`. Default value is `30 s`.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vzorový kód, který volá rozhraní API GA Time Series Insights, najdete v tématu [dotazování dat pomocí C# ](./time-series-insights-query-data-csharp.md).
+- For sample code that calls the GA Time Series Insights API, see [Query data using C#](./time-series-insights-query-data-csharp.md).
 
-- Náhled ukázek kódu rozhraní API Time Series Insights najdete v tématu [dotazování dat C#ve verzi Preview pomocí ](./time-series-insights-update-query-data-csharp.md).
+- For Preview Time Series Insights API code samples, see [Query Preview data using C#](./time-series-insights-update-query-data-csharp.md).
 
-- Referenční informace k rozhraní API najdete v tématu [Reference k rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
+- For API reference information, see [Query API reference](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
 
-- Naučte se [vytvořit instanční objekt](../active-directory/develop/howto-create-service-principal-portal.md).
+- Learn how to [create a service principal](../active-directory/develop/howto-create-service-principal-portal.md).

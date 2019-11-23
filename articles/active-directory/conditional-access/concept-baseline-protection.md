@@ -1,92 +1,92 @@
 ---
-title: Zásady pro základní ochranu podmíněného přístupu – Azure Active Directory
-description: Základní zásady podmíněného přístupu pro ochranu organizací před běžnými útoky
+title: Conditional Access baseline policies - Azure Active Directory
+description: Baseline Conditional Access policies to protect organizations from common attacks
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd46b8cb734355a8394b7480c6def341cf9700d
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: c73b806d227fbe6e1f2c1d5a92d75a9827d69ed8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430330"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380642"
 ---
-# <a name="what-are-baseline-policies"></a>Co jsou základní zásady?
+# <a name="what-are-baseline-policies"></a>What are baseline policies?
 
-Základní zásady představují sadu předdefinovaných zásad, které vám pomůžou chránit organizace před velkým počtem běžných útoků. Mezi tyto běžné útoky můžou patřit spreje, přehrávání a útoky prostřednictvím hesla. Základní zásady jsou k dispozici ve všech edicích služby Azure AD. Společnost Microsoft tyto zásady ochrany základní úrovně zpřístupňuje všem, protože útoky na základě identity byly na nárůstu za posledních několik let. Cílem těchto čtyř zásad je zajistit, aby u všech organizací byla povolená základní úroveň zabezpečení bez dalších poplatků.  
+Baseline policies are a set of predefined policies that help protect organizations against many common attacks. These common attacks can include password spray, replay, and phishing. Baseline policies are available in all editions of Azure AD. Microsoft is making these baseline protection policies available to everyone because identity-based attacks have been on the rise over the last few years. The goal of these four policies is to ensure that all organizations have a baseline level of security enabled at no extra cost.  
 
-Správa vlastních zásad podmíněného přístupu vyžaduje licenci Azure AD Premium.
+Managing customized Conditional Access policies requires an Azure AD Premium license.
 
 ## <a name="baseline-policies"></a>Základní zásady
 
-![Základní zásady podmíněného přístupu v Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Conditional Access baseline policies in the Azure portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
-Existují čtyři základní zásady:
+There are four baseline policies:
 
-* Vyžadovat MFA pro správce (Preview)
-* Ochrana koncového uživatele (Preview)
-* Blokovat starší verze ověřování (Preview)
-* Vyžadovat MFA pro správu služby (Preview)
+* Require MFA for admins (preview)
+* End user protection (preview)
+* Block legacy authentication (preview)
+* Require MFA for service management (preview)
 
-Všechny čtyři tyto zásady budou mít vliv na starší toky ověřování, jako jsou POP, IMAP a starší Office desktopových klientů.
+All four of these policies will impact legacy authentication flows like POP, IMAP, and older Office desktop clients.
 
-### <a name="require-mfa-for-admins-preview"></a>Vyžadovat MFA pro správce (Preview)
+### <a name="require-mfa-for-admins-preview"></a>Require MFA for admins (preview)
 
-S ohledem na výkon a přístup k účtům správců byste je měli považovat za zvláštní péči. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat silnější formu ověření účtu, když se používají k přihlášení. V Azure Active Directory můžete získat silnější ověření účtu tím, že budete vyžadovat, aby se správci zaregistrovali a používali Azure Multi-Factor Authentication.
+Due to the power and access that administrator accounts have, you should treat them with special care. One common method to improve the protection of privileged accounts is to require a stronger form of account verification when they are used to sign in. In Azure Active Directory, you can get a stronger account verification by requiring administrators to register for and use Azure Multi-Factor Authentication.
 
-Vyžadovat MFA pro správce (Preview) je základní zásada, která vyžaduje vícefaktorové ověřování (MFA) pro následující role adresáře, které se považují za nejvíce privilegované role Azure AD:
+Require MFA for admins (preview) is a baseline policy that requires multi-factor authentication (MFA) for the following directory roles, considered to be the most privileged Azure AD roles:
 
 * Globální správce
 * Správce SharePointu
-* Správce Exchange
-* Správce podmíněného přístupu
+* Exchange administrator
+* Conditional Access administrator
 * Správce zabezpečení
-* Správce helpdesku/správce hesel
+* Helpdesk administrator / Password administrator
 * Správce fakturace
-* Správce uživatele
+* User administrator
 
-Pokud má vaše organizace tyto účty používané ve skriptech nebo v kódu, zvažte jejich nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md).
+If your organization has these accounts in use in scripts or code, consider replacing them with [managed identities](../managed-identities-azure-resources/overview.md).
 
-### <a name="end-user-protection-preview"></a>Ochrana koncového uživatele (Preview)
+### <a name="end-user-protection-preview"></a>End user protection (preview)
 
-Vysoce privilegovaní správci nejsou jediným cílem útoků. Chybné objekty actor mají za cíl normální uživatele. Po získání přístupu můžou tyto vadné aktéry požádat o přístup k privilegovaným informacím jménem původního držitele účtu nebo si stáhnout celý adresář a udělat útok útoku phishing na celou organizaci. Jednou z běžných metod, jak zlepšit ochranu pro všechny uživatele, je vyžadovat silnější formu ověření účtu, když se zjistí rizikové přihlášení.
+High privileged administrators aren’t the only ones targeted in attacks. Bad actors tend to target normal users. After gaining access, these bad actors can request access to privileged information on behalf of the original account holder or download the entire directory and perform a phishing attack on your whole organization. One common method to improve the protection for all users is to require a stronger form of account verification when a risky sign-in is detected.
 
-**Ochrana koncového uživatele (Preview)** je základní zásada, která chrání všechny uživatele v adresáři. Když se tyto zásady povolí, vyžaduje se, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication do 14 dnů. Po registraci se uživatelům zobrazí výzva k MFA jenom během pokusů o rizikové přihlašování. Ohrožení uživatelských účtů se zablokuje, dokud se resetování hesla nevrátí a nehrozí. 
+**End user protection (preview)** is a baseline policy that protects all users in a directory. Enabling this policy requires all users to register for Azure Multi-Factor Authentication within 14 days. Once registered, users will be prompted for MFA only during risky sign-in attempts. Compromised user accounts are blocked until password reset and risk dismissal. 
 
 [!NOTE]
-Všichni uživatelé, kteří byli dříve označeni příznakem rizika, budou zablokováni, dokud nevyberete heslo a nehrozí riziko při aktivaci zásad
+Any users previously flagged for risk are blocked until password reset and risk dismissal upon policy activation.
 
-### <a name="block-legacy-authentication-preview"></a>Blokovat starší verze ověřování (Preview)
+### <a name="block-legacy-authentication-preview"></a>Block legacy authentication (preview)
 
-Starší protokoly ověřování (např. IMAP, SMTP, POP3) jsou protokoly, které obvykle používají starší e-mailové klienty k ověřování. Starší protokoly nepodporují službu Multi-Factor Authentication. I v případě, že máte zásadu vyžadující službu Multi-Factor Authentication pro váš adresář, může se špatný objekt actor ověřit pomocí některého z těchto starších protokolů a obejít službu Multi-Factor Authentication.
+Legacy authentication protocols (ex: IMAP, SMTP, POP3) are protocols normally used by older mail clients to authenticate. Legacy protocols do not support multi-factor authentication. Even if you have a policy requiring multi-factor authentication for your directory, a bad actor can authenticate using one of these legacy protocols and bypass multi-factor authentication.
 
-Nejlepším způsobem, jak ochránit váš účet před nebezpečnými požadavky na ověření, které udělaly starší protokoly, je jejich blokování.
+The best way to protect your account from malicious authentication requests made by legacy protocols is to block them.
 
-Zásada směrného plánu **starší verze ověřování (Preview)** blokuje žádosti o ověření vytvořené pomocí starších protokolů. K úspěšnému přihlášení pro všechny uživatele se musí použít moderní ověřování. Při použití ve spojení s ostatními základními zásadami budou požadavky přicházející ze starších protokolů blokované. Všechny uživatele budou navíc vyžadovat MFA, kdykoli je to potřeba. Tato zásada neblokuje Exchange ActiveSync.
+The **Block legacy authentication (preview)** baseline policy blocks authentication requests that are made using legacy protocols. Modern authentication must be used to successfully sign in for all users. Used in conjunction with the other baseline policies, requests coming from legacy protocols will be blocked. In addition, all users will be required to MFA whenever required. This policy does not block Exchange ActiveSync.
 
-### <a name="require-mfa-for-service-management-preview"></a>Vyžadovat MFA pro správu služby (Preview)
+### <a name="require-mfa-for-service-management-preview"></a>Require MFA for service management (preview)
 
-Organizace využívají celou řadu služeb Azure a spravují je od Azure Resource Managerch nástrojů, jako jsou:
+Organizations use a variety of Azure services and manage them from Azure Resource Manager based tools like:
 
 * Portál Azure
 * Azure PowerShell
 * Azure CLI
 
-Použití některého z těchto nástrojů k provedení správy prostředků je vysoce privilegované akce. Tyto nástroje můžou upravovat konfigurace v rámci předplatného, jako je třeba nastavení služby a fakturace předplatného.
+Using any of these tools to perform resource management is a highly privileged action. These tools can alter subscription-wide configurations, such as service settings and subscription billing.
 
-Aby bylo možné chránit privilegované akce, bude **vyžadovat vícefaktorové ověřování** pro všechny uživatele, kteří přistupují k Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI.
+To protect privileged actions, this **Require MFA for service management (preview)** policy will require multi-factor authentication for any user accessing Azure portal, Azure PowerShell, or Azure CLI.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace:
 
-* [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
-* [Pět kroků pro zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md)
-* [Co je podmíněný přístup v Azure Active Directory?](overview.md)
+* [Common Conditional Access policies](concept-conditional-access-policy-common.md)
+* [Five steps to securing your identity infrastructure](../../security/fundamentals/steps-secure-identity.md)
+* [What is Conditional Access in Azure Active Directory?](overview.md)

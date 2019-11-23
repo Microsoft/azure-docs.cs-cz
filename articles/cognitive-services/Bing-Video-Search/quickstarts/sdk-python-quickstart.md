@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání videí pomocí Bingu Video Search SDK pro Python'
+title: 'Quickstart: Search for videos using the SDK for Python - Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků pro vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Python
+description: Use this quickstart to send video search requests using the Bing Video Search SDK for Python
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,31 +10,31 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 5fb6b2b349712a04b79564f9b748538a5cc32d73
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 62f929f3428ef7534d833e54b0b8f492636b8a7e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446988"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378753"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Rychlý start: Vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Python
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Python
 
-V tomto rychlém startu pomocí zahájíte hledání zpráv se sadou SDK vyhledávání Bingu videa pro Python. Při vyhledávání videí Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) pomocí dalších poznámek a funkcí.
+Use this quickstart to begin searching for news with the Bing Video Search SDK for Python. While Bing Video Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) with additional annotations, and features.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Python](https://www.python.org/) 2.x nebo 3.x
-- Video Bingu hledání sady SDK pro python
+- [Python](https://www.python.org/) 2.x or 3.x
+- The Bing Video Search SDK for python
 
-Doporučuje se používat python [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Můžete nainstalovat a inicializovat virtuální prostředí se [venv modulu](https://pypi.python.org/pypi/virtualenv). Nainstalujte virtualenv pro Python 2.7 pomocí:
+It is recommended that you use a python [virtual environment](https://docs.python.org/3/tutorial/venv.html). You can install and initialize a virtual environment with the [venv module](https://pypi.python.org/pypi/virtualenv). Install virtualenv for Python 2.7 with:
 
 ```console
 python -m venv mytestenv
 ```
 
-Video Bingu vyhledat sada SDK se instalace:
+Install the Bing Video Search SDK with:
 
 ```console
 cd mytestenv
@@ -43,7 +43,7 @@ python -m pip install azure-cognitiveservices-search-videosearch
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a přidejte následující příkazy pro import. 
+1. Create a new Python file in your favorite IDE or editor, and add the following import statements. 
 
     ```python
     from azure.cognitiveservices.search.videosearch import VideoSearchAPI
@@ -51,13 +51,13 @@ python -m pip install azure-cognitiveservices-search-videosearch
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Vytvořte proměnnou pro váš klíč předplatného. 
+2. Create a variable for your subscription key. 
 
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
     ```
 
-## <a name="create-the-search-client"></a>Vytvoření klienta služby search
+## <a name="create-the-search-client"></a>Create the search client
 
 Vytvořte instanci třídy `CognitiveServicesCredentials` a vytvořte instanci klienta:
 
@@ -65,15 +65,15 @@ Vytvořte instanci třídy `CognitiveServicesCredentials` a vytvořte instanci k
 client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
 
-## <a name="send-a-search-request-and-get-a-response"></a>Odeslat žádost o vyhledávání a získat odpověď
+## <a name="send-a-search-request-and-get-a-response"></a>Send a search request and get a response
 
-1. Použití `client.videos.search()` s vyhledávacímu dotazu do odeslat požadavek na rozhraní API Bingu pro vyhledávání Video a získejte odpověď.
+1. Use `client.videos.search()` with your search query to send a request to the Bing Video Search API, and get a response.
 
     ```python
     video_result = client.videos.search(query="SwiftKey")
     ```
 
-2. Pokud odpověď obsahuje výsledky hledání, získat první z nich a tisk jeho ID, název a adresu url.
+2. If the response contains search results, get the first one, and print its ID, name, and url.
 
     ```python
     if video_result.value:
@@ -86,12 +86,12 @@ client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
         print("Didn't see any video result data..")
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace v jediné stránce](../tutorial-bing-video-search-single-page-app.md)
+> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-- [Co je API pro vyhledávání videí Bingu?](../overview.md)
+- [What is the Bing Video Search API?](../overview.md)
 - [Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

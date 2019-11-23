@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API a PHP'
+title: 'Quickstart: Search for videos using the REST API and PHP - Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání videí do Vvyhledávání videí Bingu REST API pomocí PHP.
+description: Use this quickstart to send video search requests to the Bing Video Search REST API using PHP
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 8ecbba5ef046a284e9b4134f8703580021adb9d8
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 481bc700f86dfd8a28c074134fd5dcc85bb748c4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500109"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378617"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API a PHP
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Quickstart: Search for videos using the Bing Video Search REST API and PHP
 
-Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď. I když je tato aplikace napsaná v jazyce JavaScript a používá Node. js, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Use this quickstart to make your first call to the Bing Video Search API and view a search result from the JSON response. This simple JavaScript application sends an HTTP video search query to the API, and displays the response. While this application is written in JavaScript and uses Node.js, the API is a RESTful Web service compatible with most programming languages.
 Ukázka kódu byla napsaná tak, aby fungovala v PHP 5.6.
 
-Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference).
+V [referenci k API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) najdete technické podrobnosti o rozhraních API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* PHP 5,6 nebo novější
+* PHP 5.6 or later
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -210,11 +210,11 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
+> [Build a single-page web app](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
- [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)
+ [What is the Bing Video Search API?](../overview.md)

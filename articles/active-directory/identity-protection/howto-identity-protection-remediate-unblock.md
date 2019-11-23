@@ -1,94 +1,94 @@
 ---
-title: Postup nápravy rizik a odblokování uživatelů v Azure AD Identity Protection
-description: Seznamte se s možnostmi zavření aktivních detekcí rizik.
+title: Remediate risks and unblock users in Azure AD Identity Protection
+description: Learn about the options you have close active risk detections.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61fe0e14fbb6c6251b3bf19843b9c065df60dd86
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 350e7b37d36be70cea345db52cdfb639b2f1c1a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887517"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382098"
 ---
-# <a name="remediate-risks-and-unblock-users"></a>Oprava rizik a odblokování uživatelů
+# <a name="remediate-risks-and-unblock-users"></a>Remediate risks and unblock users
 
-Po dokončení [šetření](howto-identity-protection-investigate-risk.md)budete chtít provést akci k nápravě rizik nebo odblokování uživatelů. Organizace mají taky možnost Povolit automatizovanou nápravu pomocí zásad jejich [rizik](howto-identity-protection-configure-risk-policies.md). Organizace by se měli pokusit zavřít všechna zjišťování rizik, která se jim zobrazí, v časovém období, ve kterém je vaše organizace pohodlné. Společnost Microsoft doporučuje zavřít události co nejdříve, protože při práci s rizikem hrozí čas.
+After completing your [investigation](howto-identity-protection-investigate-risk.md), you will want to take action to remediate the risk or unblock users. Organizations also have the option to enable automated remediation using their [risk policies](howto-identity-protection-configure-risk-policies.md). Organizations should try to close all risk detections that they are presented with in a time period your organization is comfortable with. Microsoft recommends closing events as soon as possible because time matters when working with risk.
 
-## <a name="remediation"></a>Nápravy
+## <a name="remediation"></a>Remediation
 
-Všechna aktivní zjišťování rizik přispívají k výpočtu hodnoty s názvem úroveň rizika uživatele. Úroveň rizika uživatele je indikátorem (nízká, střední, vysoká) pro pravděpodobnost, že došlo k ohrožení bezpečnosti účtu. Jako správce chcete získat uzavřená všechna zjištění rizik, aby postižení uživatelé už nehrozí.
+All active risk detections contribute to the calculation of a value called user risk level. The user risk level is an indicator (low, medium, high) for the probability that an account has been compromised. As an administrator, you want to get all risk detections closed, so that the affected users are no longer at risk.
 
-Některá zjištění rizik můžou být označená ochranou identity jako uzavřená (systém), protože události už nejsou určené k riziku.
+Some risks detections may be marked by Identity Protection as "Closed (system)" because the events were no longer determined to be risky.
 
-Správci můžou opravit tyto možnosti:
+Administrators have the following options to remediate:
 
-- Zásady pro automatické nápravy pomocí zásad rizik
-- Ruční resetování hesla
-- Zavřít riziko uživatele
-- Ruční uzavření zjištění jednotlivých rizik
+- Self-remediation with risk policy
+- Manual password reset
+- Dismiss user risk
+- Close individual risk detections manually
 
-### <a name="self-remediation-with-risk-policy"></a>Zásady pro automatické nápravy pomocí zásad rizik
+### <a name="self-remediation-with-risk-policy"></a>Self-remediation with risk policy
 
-Pokud uživatelům povolíte vlastní nápravu, s využitím Azure Multi-Factor Authentication (MFA) a samoobslužného resetování hesla (SSPR) ve svých zásadách rizik, můžou při zjištění rizika odblokovat. Tyto detekce se pak považují za zavřené. Uživatelé musí mít dřív zaregistrovaný pro Azure MFA a SSPR, aby je bylo možné použít, když se zjistí riziko.
+If you allow users to self-remediate, with Azure Multi-Factor Authentication (MFA) and self-service password reset (SSPR) in your risk policies, they can unblock themselves when risk is detected. These detections are then considered closed. Users must have previously registered for Azure MFA and SSPR in order to use when risk is detected.
 
-Některé detekce nemusí vyvolávat riziko pro úroveň, kde by se vyžadovala samostatná náprava uživatele, ale Správci by tyto detekce měli ještě vyhodnotit. Správci mohou určit, že jsou potřeba další míry, jako je [blokování přístupu z umístění](../conditional-access/howto-conditional-access-policy-location.md) nebo snížení přijatelného rizika v jejich zásadách.
+Some detections may not raise risk to the level where a user self-remediation would be required but administrators should still evaluate these detections. Administrators may determine that additional measures are necessary like [blocking access from locations](../conditional-access/howto-conditional-access-policy-location.md) or lowering the acceptable risk in their policies.
 
-### <a name="manual-password-reset"></a>Ruční resetování hesla
+### <a name="manual-password-reset"></a>Manual password reset
 
-Pokud se vyžaduje resetování hesla pomocí zásad rizik uživatelů, může správce zavřít všechna zjišťování rizik pro uživatele s ručním resetováním hesla.
+If requiring a password reset using a user risk policy is not an option, administrators can close all risk detections for a user with a manual password reset.
 
-Správcům se při resetování hesla pro uživatele přidávají dvě možnosti:
+Administrators are given two options when resetting a password for their users:
 
-- **Vygenerovat dočasné heslo** – generováním dočasného hesla můžete okamžitě převést identitu zpátky do bezpečného stavu. Tato metoda vyžaduje kontaktování ovlivněných uživatelů, protože potřebují znát, co je dočasné heslo. Vzhledem k tomu, že je heslo dočasné, zobrazí se uživateli výzva ke změně hesla na něco nového při příštím přihlášení.
+- **Generate a temporary password** - By generating a temporary password, you can immediately bring an identity back into a safe state. This method requires contacting the affected users because they need to know what the temporary password is. Because the password is temporary, the user is prompted to change the password to something new during the next sign-in.
 
-- **Vyžadovat, aby uživatel resetoval heslo** – vyžaduje, aby uživatelé resetování hesla povolili automatické obnovení bez kontaktování helpdesku nebo správce. Tato metoda se vztahuje jenom na uživatele, kteří jsou zaregistrovaní pro Azure MFA a SSPR. Pro uživatele, kteří nejsou zaregistrovaní, tato možnost není k dispozici.
+- **Require the user to reset password** - Requiring the users to reset passwords enables self-recovery without contacting help desk or an administrator. This method only applies to users that are registered for Azure MFA and SSPR. For users that have not been registered, this option isn't available.
 
-### <a name="dismiss-user-risk"></a>Zavřít riziko uživatele
+### <a name="dismiss-user-risk"></a>Dismiss user risk
 
-Pokud resetování hesla není pro vás možnost, protože jste například odstranili uživatele, můžete si vybrat, jestli chcete zrušit rozpoznávání rizik uživatelů.
+If a password reset is not an option for you, because for example the user has been deleted, you can choose to dismiss user risk detections.
 
-Když kliknete na **Zrušit riziko uživatele**, všechny události se zavřou a ovlivněný uživatel už nehrozí. Vzhledem k tomu, že tato metoda nemá vliv na existující heslo, nepřinese související identitu zpátky do bezpečného stavu. 
+When you click **Dismiss user risk**, all events are closed and the affected user is no longer at risk. However, because this method doesn't have an impact on the existing password, it doesn't bring the related identity back into a safe state. 
 
-### <a name="close-individual-risk-detections-manually"></a>Ruční uzavření zjištění jednotlivých rizik
+### <a name="close-individual-risk-detections-manually"></a>Close individual risk detections manually
 
-Jednotlivá zjišťování rizik můžete uzavřít ručně. Pokud se detekce rizik uzavírá ručně, můžete snížit úroveň rizika uživatele. Detekce rizik je typicky uzavřená ručně v reakci na související šetření. Například při komunikaci s uživatelem se odhalí, že aktivní zjišťování rizik již není vyžadováno. 
+You can close individual risk detections manually. By closing risk detections manually, you can lower the user risk level. Typically, risk detections are closed manually in response to a related investigation. For example, when talking to a user reveals that an active risk detection is not required anymore. 
  
-Při ručním uzavírání detekce rizik můžete zvolit provedení libovolné z následujících akcí, abyste změnili stav detekce rizik:
+When closing risk detections manually, you can choose to take any of the following actions to change the status of a risk detection:
 
-- Potvrdit ohrožení uživatele
-- Zavřít riziko uživatele
-- Potvrzení bezpečného přihlášení
-- Potvrďte narušení přihlášení.
+- Confirm user compromised
+- Dismiss user risk
+- Confirm sign-in safe
+- Confirm sign-in compromised
 
-## <a name="unblocking-users"></a>Odblokování uživatelů
+## <a name="unblocking-users"></a>Unblocking users
 
-Správce se může rozhodnout, že se přihlásí na základě jejich rizikových zásad nebo šetření. Blok může vycházet buď při přihlašování, nebo na základě rizika uživatele.
+An administrator may choose to block a sign-in based on their risk policy or investigations. A block may occur based on either sign-in or user risk.
 
-### <a name="unblocking-based-on-user-risk"></a>Odblokování na základě rizika uživatele
+### <a name="unblocking-based-on-user-risk"></a>Unblocking based on user risk
 
-Aby měli správci odblokování účtu blokovanému z důvodu rizika uživatele, mají následující možnosti:
+To unblock an account blocked due to user risk, administrators have the following options:
 
-1. **Resetování hesla** – můžete resetovat heslo uživatele.
-1. **Zrušit riziko uživatele** – zásady rizik uživatelů blokují uživatele, pokud byla dosažena nakonfigurovaná úroveň rizika uživatele pro blokování přístupu. Úroveň rizika uživatele můžete snížit odvoláním rizika uživatele nebo ručním ukončením oznámených detekcí rizik.
-1. **Vyloučení uživatele ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlašování způsobuje problémy pro konkrétní uživatele, můžete z něj vyloučit uživatele. Další informace najdete v části vyloučení v článku [Postupy: konfigurace a povolení zásad rizik](howto-identity-protection-configure-risk-policies.md#exclusions).
-1. **Zakázat zásady** – Pokud se domníváte, že konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zásady zakázat. Další informace najdete v článku [How to: Configure and Enable rizikové zásady](howto-identity-protection-configure-risk-policies.md).
+1. **Reset password** - You can reset the user's password.
+1. **Dismiss user risk** - The user risk policy blocks a user if the configured user risk level for blocking access has been reached. You can reduce a user's risk level by dismissing user risk or manually closing reported risk detections.
+1. **Exclude the user from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. For more information, see the section Exclusions in the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md#exclusions).
+1. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. For more information, see the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md).
 
-### <a name="unblocking-based-on-sign-in-risk"></a>Odblokování na základě rizika přihlašování
+### <a name="unblocking-based-on-sign-in-risk"></a>Unblocking based on sign-in risk
 
-Aby správci odblokoval účet na základě rizika přihlašování, mají následující možnosti:
+To unblock an account based on sign-in risk, administrators have the following options:
 
-1. **Přihlaste se ze známého umístění nebo zařízení** – běžným důvodem pro blokované podezřelé přihlášení jsou pokusy o přihlášení z neznámých umístění nebo zařízení. Uživatelé mohou rychle zjistit, zda se jedná o důvod blokování, pokusit se o přihlášení ze známého umístění nebo zařízení.
-1. **Vyloučení uživatele ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlašování způsobuje problémy pro konkrétní uživatele, můžete z něj vyloučit uživatele. Další informace najdete v části vyloučení v článku [Postupy: konfigurace a povolení zásad rizik](howto-identity-protection-configure-risk-policies.md#exclusions).
-1. **Zakázat zásady** – Pokud se domníváte, že konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zásady zakázat. Další informace najdete v článku [How to: Configure and Enable rizikové zásady](howto-identity-protection-configure-risk-policies.md).
+1. **Sign in from a familiar location or device** - A common reason for blocked suspicious sign-ins are sign-in attempts from unfamiliar locations or devices. Your users can quickly determine whether this reason is the blocking reason by trying to sign-in from a familiar location or device.
+1. **Exclude the user from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. For more information, see the section Exclusions in the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md#exclusions).
+1. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. For more information, see the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled Azure AD Identity Protection najdete v tématu [Azure AD Identity Protection Overview](overview-identity-protection.md).
+To get an overview of Azure AD Identity Protection, see the [Azure AD Identity Protection overview](overview-identity-protection.md).

@@ -1,164 +1,164 @@
 ---
-title: Nejčastější dotazy k ochraně heslem v místní službě Azure AD – Azure Active Directory
-description: Nejčastější dotazy k ochraně heslem v místní službě Azure AD
+title: On-premises password protection FAQ - Azure Active Directory
+description: On-premises Azure AD Password Protection FAQ
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 02/01/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 473fe43bb4cf18c61f30d9b7e057da888dc6da62
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 9ee5d6328c6a3e4ea0b4a6359d4a21494e3ae62c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167900"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381704"
 ---
-# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Místní ochrana heslem Azure AD – Nejčastější dotazy
+# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Azure AD Password Protection on-premises - Frequently asked questions
 
-V této části najdete odpovědi na mnoho nejčastějších dotazů týkajících se ochrany heslem Azure AD.
+This section provides answers to many commonly asked questions about Azure AD Password Protection.
 
 ## <a name="general-questions"></a>Obecné otázky
 
-**Otázka: Jaké pokyny by se měly vydávat uživatelům při výběru zabezpečeného hesla?**
+**Q: What guidance should users be given on how to select a secure password?**
 
-Aktuální pokyny Microsoftu k tomuto tématu najdete na následujícím odkazu:
+Microsoft's current guidance on this topic can be found at the following link:
 
-[Pokyny k heslu Microsoftu](https://www.microsoft.com/research/publication/password-guidance)
+[Microsoft Password Guidance](https://www.microsoft.com/research/publication/password-guidance)
 
-**Otázka: je místní ochrana heslem Azure AD podporovaná v jiných než veřejných cloudech?**
+**Q: Is on-premises Azure AD Password Protection supported in non-public clouds?**
 
-Žádná ochrana heslem bez místní služby Azure AD je podporována pouze ve veřejném cloudu. Nebylo oznámeno žádné datum pro dostupnost neveřejného cloudu.
+No - on-premises Azure AD Password Protection is only supported in the public cloud. No date has been announced for non-public cloud availability.
 
-Portál Azure AD umožňuje úpravy místní ochrany heslem pro konfiguraci služby Windows Server Active Directory i v jiných než veřejných cloudech. Tyto změny budou trvalé, ale jinak se neprojeví. Registrace místních agentů proxy nebo doménových struktur není podporovaná, když se používají přihlašovací údaje pro jiné než veřejné cloudy, a všechny takové pokusy o registraci selžou vždycky.
+The Azure AD portal does allow modification of the on-premises-specific "Password protection for Windows Server Active Directory" configuration even in non-public clouds; such changes will be persisted but otherwise will never take effect. Registration of on-premises proxy agents or forests is unsupported when non-public cloud credentials are used, and any such registration attempts will always fail.
 
-**Otázka: Jak můžu použít výhody ochrany hesel Azure AD pro podmnožinu místních uživatelů?**
+**Q: How can I apply Azure AD Password Protection benefits to a subset of my on-premises users?**
 
-Nepodporuje se. Po nasazení a povolení ochrany heslem Azure AD nezáleží na tom, že všichni uživatelé získají stejné výhody zabezpečení.
+Nepodporuje se. Once deployed and enabled, Azure AD Password Protection doesn't discriminate - all users receive equal security benefits.
 
-**Otázka: Jaký je rozdíl mezi změnou hesla a nastavením hesla (nebo resetováním)?**
+**Q: What is the difference between a password change and a password set (or reset)?**
 
-Změna hesla je v případě, že uživatel po prokázání, že má informace o starém hesle, zvolí nové heslo. Například změna hesla je to, co se stane, když se uživatel přihlásí k Windows, a zobrazí se výzva k výběru nového hesla.
+A password change is when a user chooses a new password after proving they have knowledge of the old password. For example, a password change is what happens when a user logs into Windows and is then prompted to choose a new password.
 
-Sada hesel (někdy označované jako resetování hesla) je v případě, že správce nahradí heslo k účtu novým heslem, například pomocí nástroje pro správu Uživatelé a počítače služby Active Directory. Tato operace vyžaduje vysokou úroveň oprávnění (obvykle správce domény) a osoba provádějící tuto operaci obvykle nemá znalosti o původním hesle. Scénáře technické podpory často provádějí sady hesel, například při pomoci uživateli, který zapomněl heslo. Při prvním vytváření nového uživatelského účtu s heslem se zobrazí také události nastavování hesel.
+A password set (sometimes called a password reset) is when an administrator replaces the password on an account with a new password, for example by using the Active Directory Users and Computers management tool. This operation requires a high level of privilege (usually Domain Admin), and the person performing the operation usually does not have knowledge of the old password. Help-desk scenarios often perform password sets, for instance when assisting a user who has forgotten their password. You will also see password set events when a brand new user account is being created for the first time with a password.
 
-Zásady ověřování hesla se chovají stejně, bez ohledu na to, jestli se provádí změna nebo nastavení hesla. Služba agenta řadiče domény Azure AD pro ochranu hesel zaznamenává různé události, které vás informují o tom, jestli byla operace změny nebo nastavení hesla hotová.  Viz téma [monitorování a protokolování ochrany heslem služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+The password validation policy behaves the same regardless of whether a password change or set is being done. The Azure AD Password Protection DC Agent service does log different events to inform you whether a password change or set operation was done.  See [Azure AD Password Protection monitoring and logging](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
-**Otázka: Proč se při pokusu o nastavení slabého hesla pomocí modulu snap-in Správa uživatelů a počítačů služby Active Directory zaznamenaly duplicitní události odmítnutí hesla?**
+**Q: Why are duplicated password rejection events logged when attempting to set a weak password using the Active Directory Users and Computers management snap-in?**
 
-Modul snap-in Správa uživatelů a počítačů služby Active Directory se nejprve pokusí nastavit nové heslo pomocí protokolu Kerberos. Po selhání se modul snap-in postará o nastavení hesla pomocí staršího protokolu (SAM RPC) (používané konkrétní protokoly nejsou důležité). Pokud se nové heslo považuje za slabé pomocí ochrany heslem služby Azure AD, toto chování modulu snap-in bude mít za následek, že budou protokolovány dvě sady událostí odmítnutí resetování hesla.
+The Active Directory Users and Computers management snap-in will first try to set the new password using the Kerberos protocol. Upon failure, the snap-in will make a second attempt to set the password using a legacy (SAM RPC) protocol (the specific protocols used are not important). If the new password is considered weak by Azure AD Password Protection, this snap-in behavior will result in two sets of password reset rejection events being logged.
 
-**Otázka: Proč se události ověřování hesla ochrany heslem služby Azure AD zaprotokolují s prázdným uživatelským jménem?**
+**Q: Why are Azure AD Password Protection password validation events being logged with an empty user name?**
 
-Služba Active Directory podporuje možnost testování hesla, aby bylo možné zjistit, zda splňuje aktuální požadavky na složitost hesla domény, například pomocí rozhraní [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API. Když se heslo tímto způsobem ověří, testování zahrnuje taky ověřování v produktech založených na filtrech hesel, jako je třeba ochrana heslem Azure AD. uživatelská jména předaná do dané knihovny DLL filtru hesel ale budou prázdná. V tomto scénáři ochrana heslem Azure AD stále ověří heslo pomocí zásad hesel v současné době a vydá zprávu protokolu událostí pro zachycení výsledku, ale zpráva protokolu událostí bude mít prázdná pole uživatelského jména.
+Active Directory supports the ability to test a password to see if it passes the domain's current password complexity requirements, for example using the [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) api. When a password is validated in this way, the testing also includes validation by password-filter-dll based products such as Azure AD Password Protection - but the user names passed to a given password filter dll will be empty. In this scenario, Azure AD Password Protection will still validate the password using the currently in-effect password policy and will issue an event log message to capture the outcome, however the event log message will have empty user name fields.
 
-**Otázka: je podporována instalace ochrany heslem služby Azure AD vedle jiných produktů založených na filtrech hesel?**
+**Q: Is it supported to install Azure AD Password Protection side by side with other password-filter-based products?**
 
-Ano. Podpora více registrovaných knihoven DLL filtru hesel je základní funkcí Windows, která není specifická pro ochranu heslem Azure AD. Před přijetím hesla musí všechny knihovny DLL registrovaných filtrů hesel souhlasit.
+Ano. Support for multiple registered password filter dlls is a core Windows feature and not specific to Azure AD Password Protection. All registered password filter dlls must agree before a password is accepted.
 
-**Otázka: Jak můžu nasadit a nakonfigurovat ochranu hesel Azure AD v prostředí služby Active Directory bez použití Azure?**
+**Q: How can I deploy and configure Azure AD Password Protection in my Active Directory environment without using Azure?**
 
-Nepodporuje se. Ochrana heslem Azure AD je funkce Azure, která podporuje rozšíření do místního prostředí Active Directory.
+Nepodporuje se. Azure AD Password Protection is an Azure feature that supports being extended into an on-premises Active Directory environment.
 
-**Otázka: Jak mohu změnit obsah zásady na úrovni služby Active Directory?**
+**Q: How can I modify the contents of the policy at the Active Directory level?**
 
-Nepodporuje se. Zásady se dají spravovat jenom pomocí portálu Azure AD. Podívejte se také na předchozí otázku.
+Nepodporuje se. The policy can only be administered using the Azure AD portal. Also see previous question.
 
-**Otázka: Proč je Služba DFSR nutná pro replikaci adresáře SYSVOL?**
+**Q: Why is DFSR required for sysvol replication?**
 
-Služba replikace souborů (z předchůdce do DFSR) má mnoho známých problémů a je zcela nepodporovaná v novějších verzích služby Windows Server Active Directory. Žádné testování ochrany heslem Azure AD se provede na doménách konfigurovaných pro službu FRS.
+FRS (the predecessor technology to DFSR) has many known problems and is entirely unsupported in newer versions of Windows Server Active Directory. Zero testing of Azure AD Password Protection will be done on FRS-configured domains.
 
-Další informace najdete v následujících článcích:
+For more information, please see the following articles:
 
-[Případ migrace replikace adresáře SYSVOL do DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+[The Case for Migrating sysvol replication to DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
-[Konec je Nigh pro službu FRS.](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+[The End is Nigh for FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
-Pokud vaše doména již nepoužívá službu DFSR, je nutné ji před instalací ochrany hesel služby Azure AD migrovat na používání služby DFSR. Další informace najdete na následujícím odkazu:
+If your domain is not already using DFSR, you MUST migrate it to use DFSR before installing Azure AD Password Protection. For more information, see the following link:
 
-[Průvodce migrací replikace SYSVOL: replikace do Replikace DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+[SYSVOL Replication Migration Guide: FRS to DFS Replication](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
 > [!WARNING]
-> Software agenta řadiče domény Azure AD pro ochranu heslem se v tuto chvíli nainstaluje na řadičích domény v doménách, které ještě používají FRS pro replikaci SYSVOL, ale software v tomto prostředí fungovat nebude správně. Mezi další negativní vedlejší účinky patří neúspěšná replikace jednotlivých souborů a procedury obnovení adresáře SYSVOL, které jsou úspěšné, ale tiché selhání při replikaci všech souborů. Vaši doménu byste měli migrovat tak, aby používala službu DFSR co nejdříve, a to jak z hlediska výhod, tak i z důvodu odblokování nasazení ochrany heslem služby Azure AD. Budoucí verze softwaru budou automaticky zakázány při spuštění v doméně, která stále používá službu replikace souborů (FRS).
+> The Azure AD Password Protection DC Agent software will currently install on domain controllers in domains that are still using FRS for sysvol replication, but the software will NOT work properly in this environment. Additional negative side-effects include individual files failing to replicate, and sysvol restore procedures appearing to succeed but silently failing to replicate all files. You should migrate your domain to use DFSR as soon as possible, both for DFSR's inherent benefits and also to unblock the deployment of Azure AD Password Protection. Future versions of the software will be automatically disabled when running in a domain that is still using FRS.
 
-**Otázka: kolik místa na disku vyžaduje funkce ve sdílené složce SYSVOL v doméně?**
+**Q: How much disk space does the feature require on the domain sysvol share?**
 
-Přesné využití místa se liší, protože závisí na faktorech, jako je počet a délka zakázaných tokenů v seznamu globálních zakázaných společností Microsoft a na vlastní seznam pro jednotlivé klienty, a na režii šifrování. Obsah těchto seznamů se v budoucnu může zvětšovat. V takovém případě je vhodné předpokládat, že tato funkce bude potřebovat nejméně pět (5) MB místa na sdílené složce SYSVOL v doméně.
+The precise space usage varies since it depends on factors such as the number and length of the banned tokens in the Microsoft global banned list and the per-tenant custom list, plus encryption overhead. The contents of these lists are likely to grow in the future. With that in mind, a reasonable expectation is that the feature will need at least five (5) megabytes of space on the domain sysvol share.
 
-**Otázka: Proč je k instalaci nebo upgradu softwaru agenta DC vyžadován restart?**
+**Q: Why is a reboot required to install or upgrade the DC agent software?**
 
-Tento požadavek způsobuje základní chování systému Windows.
+This requirement is caused by core Windows behavior.
 
-**Otázka: existuje nějaký způsob, jak nakonfigurovat agenta řadiče domény pro použití konkrétního proxy server?**
+**Q: Is there any way to configure a DC agent to use a specific proxy server?**
 
-Ne. Vzhledem k tomu, že proxy server je Bezstavová, není důležité použít konkrétní proxy server.
+Ne. Since the proxy server is stateless, it's not important which specific proxy server is used.
 
-**Otázka: je v pořádku nasazovat službu proxy ochrany heslem Azure AD vedle jiných služeb, jako je například Azure AD Connect?**
+**Q: Is it okay to deploy the Azure AD Password Protection Proxy service side by side with other services such as Azure AD Connect?**
 
-Ano. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
+Ano. The Azure AD Password Protection Proxy service and Azure AD Connect should never conflict directly with each other.
 
-Nastala nekompatibilita mezi verzí služby Microsoft Azure AD Connect agent, která je nainstalovaná softwarem proxy ochrany heslem Azure AD, a verzí služby, kterou instaluje software [proxy aplikací služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) . Výsledkem této nekompatibility může být, že služba aktualizace agenta nemůže kontaktovat Azure kvůli aktualizacím softwaru. Nedoporučujeme instalovat proxy ochranu heslem Azure AD a Proxy aplikací služby Azure Active Directory ve stejném počítači.
+Unfortunately, an incompatibility has been found between the version of the Microsoft Azure AD Connect Agent Updater service that is installed by the Azure AD Password Protection Proxy software and the version of the service that is installed by the [Azure Active Directory Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) software. This incompatibility may result in the Agent Updater service being unable to contact Azure for software updates. It is not recommended to install Azure AD Password Protection Proxy and Azure Active Directory Application Proxy on the same machine.
 
-**Otázka: v jakém pořadí by se měly agenti a proxy řadiče domény instalovat a registrovat?**
+**Q: In what order should the DC agents and proxies be installed and registered?**
 
-Podporuje se jakékoli pořadí instalace agenta proxy, instalace agenta DC, registrace doménové struktury a registrace proxy serveru.
+Any ordering of Proxy agent installation, DC agent installation, forest registration, and Proxy registration  is supported.
 
-**Otázka: Mám obavy o úspěšnost výkonu na řadičích domény z nasazení této funkce?**
+**Q: Should I be concerned about the performance hit on my domain controllers from deploying this feature?**
 
-Služba agenta řadiče domény služby Azure AD Password Protection by neměla významně ovlivnit výkon řadiče domény v existujícím nasazení služby Active Directory v pořádku.
+The Azure AD Password Protection DC Agent service shouldn't significantly impact domain controller performance in an existing healthy Active Directory deployment.
 
-U většiny nasazení služby Active Directory jsou operace změny hesla malým podílem celkového zatížení na jakémkoli daném řadiči domény. Představte si například doménu služby Active Directory s uživatelskými účty 10000 a zásadami MaxPasswordAge nastavenými na 30 dní. V průměru bude tato doména zobrazovat 10 000/30 = ~ 333 operace změny hesla každý den, což je menší počet operací pro i jeden řadič domény. Vezměte v úvahu možný nejhorší scénář: Předpokládejme, že se na jednom řadiči domény provedly změny hesel 333 za jednu hodinu. K tomuto scénáři může například dojít, když spousta zaměstnanců pracuje na pondělí ráno. I v takovém případě se pořád zobrazujeme přibližně 333/60 minut = šest změn hesel za minutu, což ještě není významné zatížení.
+For most Active Directory deployments password change operations are a small proportion of the overall workload on any given domain controller. As an example, imagine an Active Directory domain with 10000 user accounts and a MaxPasswordAge policy set to 30 days. On average, this domain will see 10000/30=~333 password change operations each day, which is a minor number of operations for even a single domain controller. Consider a potential worst case scenario: suppose those ~333 password changes on a single DC were done over a single hour. For example, this scenario may occur when many employees all come to work on a Monday morning. Even in that case, we're still looking at ~333/60 minutes = six password changes per minute, which again is not a significant load.
 
-Pokud jsou však stávající řadiče domény již spuštěny na úrovni omezené výkonem (například vyčerpáním z hlediska procesoru, místa na disku, v/v disku atd.), je před nasazením této funkce vhodné přidat další řadiče domény nebo rozšířit dostupné místo na disku. Podívejte se také na otázku výše o využití místa na disku SYSVOL.
+However if your current domain controllers are already running at performance-limited levels (for example, maxed out with respect to CPU, disk space, disk I/O, etc.), it is advisable to add additional domain controllers or expand available disk space, before deploying this feature. Also see question above about sysvol disk space usage above.
 
-**Otázka: Chci otestovat ochranu heslem Azure AD na několika řadičích domény v doméně. Je možné vynutit, aby se změny hesla uživatele používaly pro tyto konkrétní řadiče domény?**
+**Q: I want to test Azure AD Password Protection on just a few DCs in my domain. Is it possible to force user password changes to use those specific DCs?**
 
-Ne. Klientský operační systém Windows řídí, který řadič domény se používá, když uživatel změní heslo. Řadič domény je vybraný na základě faktorů, jako je například lokalita a přiřazení podsítě služby Active Directory, konfigurace sítě specifická pro prostředí atd. Ochrana heslem Azure AD tyto faktory neřídí a nemůže ovlivnit, který řadič domény je vybraný pro změnu hesla uživatele.
+Ne. The Windows client OS controls which domain controller is used when a user changes their password. The domain controller is selected based on factors such as Active Directory site and subnet assignments, environment-specific network configuration, etc. Azure AD Password Protection does not control these factors and cannot influence which domain controller is selected to change a user's password.
 
-Jedním ze způsobů, jak částečně dosáhnout tohoto cíle, je nasazení ochrany heslem Azure AD na všech řadičích domény v dané lokalitě služby Active Directory. Tento přístup poskytne přiměřené pokrytí pro klienty systému Windows, kteří jsou k této lokalitě přiřazeni, a proto také pro uživatele, kteří se přihlásí do těchto klientů a mění hesla.
+One way to partially reach this goal would be to deploy Azure AD Password Protection on all of the domain controllers in a given Active Directory site. This approach will provide reasonable coverage for the Windows clients that are assigned to that site, and therefore also for the users that are logging into those clients and changing their passwords.
 
-**Otázka: Pokud nainstalujete službu agenta řadiče domény služby Azure AD heslem na jenom primární řadič domény, budou se taky chránit všechny ostatní řadiče domény v doméně?**
+**Q: If I install the Azure AD Password Protection DC Agent service on just the Primary Domain Controller (PDC), will all other domain controllers in the domain also be protected?**
 
-Ne. Když se heslo uživatele změní na daném řadiči domény, který není řadičem domény, heslo nešifrovaných textů se nikdy nepošle na primární řadič domény (Tento nápad je běžnou přívnímáním). Jakmile se v daném řadiči domény přijme nové heslo, tento řadič domény toto heslo použije k vytvoření různých hash hodnot specifických pro ověřování pro dané heslo a pak tyto hodnoty hash uchovává v adresáři. Heslo nešifrovaných textů není trvalé. Aktualizované hodnoty hash se pak replikují na primární řadič domény. Uživatelská hesla se můžou v některých případech změnit přímo na primárním řadiči domény, a to v závislosti na různých faktorech, jako je síťová topologie a návrh lokality služby Active Directory. (Podívejte se na předchozí otázku.)
+Ne. When a user's password is changed on a given non-PDC domain controller, the clear-text password is never sent to the PDC (this idea is a common mis-perception). Once a new password is accepted on a given DC, that DC uses that password to create the various authentication-protocol-specific hashes of that password and then persists those hashes in the directory. The clear-text password is not persisted. The updated hashes are then replicated to the PDC. User passwords may in some cases be changed directly on the PDC, again depending on various factors such as network topology and Active Directory site design. (See the previous question.)
 
-V souhrnu je potřeba nasazení služby agenta řadiče domény služby Azure AD Password na primárním řadiči domény dosáhnout 100% pokrytí zabezpečení funkce v rámci domény. Nasazení funkce na primární řadič domény jenom neposkytuje výhody zabezpečení ochrany heslem Azure AD pro žádné jiné řadiče domény v doméně.
+In summary, deployment of the Azure AD Password Protection DC Agent service on the PDC is required to reach 100% security coverage of the feature across the domain. Deploying the feature on the PDC only does not provide Azure AD Password Protection security benefits for any other DCs in the domain.
 
-**Otázka: Proč vlastní inteligentní uzamčení nefunguje ani po instalaci agentů v místním prostředí Active Directory?**
+**Q: Why is custom smart lockout not working even after the agents are installed in my on-premises Active Directory environment?**
 
-Vlastní inteligentní uzamčení se podporuje jenom v Azure AD. Změny nastavení vlastního inteligentního uzamčení na portálu Azure AD nemají žádný vliv na místní prostředí Active Directory, a to ani na nainstalovaných agentech.
+Custom smart lockout is only supported in Azure AD. Changes to the custom smart lockout settings in the Azure AD portal have no effect on the on-premises Active Directory environment, even with the agents installed.
 
-**Otázka: je Management Pack System Center Operations Manager k dispozici pro ochranu heslem Azure AD?**
+**Q: Is a System Center Operations Manager management pack available for Azure AD Password Protection?**
 
 Ne.
 
-**Otázka: Proč služba Azure AD stále odmítá slabé heslo, i když jsem nakonfigurovali zásady tak, aby byly v režimu auditování?**
+**Q: Why is Azure AD still rejecting weak passwords even though I've configured the policy to be in Audit mode?**
 
-Režim auditování se podporuje jenom v prostředí místní služby Active Directory. Služba Azure AD je implicitně vždy v režimu vynucení, když vyhodnocuje hesla.
+Audit mode is only supported in the on-premises Active Directory environment. Azure AD is implicitly always in "enforce" mode when it evaluates passwords.
 
-**Otázka: uživatelé uvidí tradiční chybovou zprávu Windows, když heslo odmítne ochrana heslem Azure AD. Je možné přizpůsobit tuto chybovou zprávu, aby uživatelé věděli, co se skutečně stalo?**
+**Q: My users see the traditional Windows error message when a password is rejected by Azure AD Password Protection. Is it possible to customize this error message so that users know what really happened?**
 
-Ne. Chybová zpráva zobrazená uživateli, když je heslo odmítnuto řadičem domény, řídí klientským počítačem, nikoli řadičem domény. K tomuto chování dochází, pokud je heslo odmítnuté pomocí výchozích zásad hesel služby Active Directory nebo řešení založeného na filtrech hesel, jako je třeba ochrana heslem Azure AD.
+Ne. The error message seen by users when a password is rejected by a domain controller is controlled by the client machine, not by the domain controller. This behavior happens whether a password is rejected by the default Active Directory password policies or by a password-filter-based solution such as Azure AD Password Protection.
 
-## <a name="additional-content"></a>Další obsah
+## <a name="additional-content"></a>Additional content
 
-Následující odkazy nejsou součástí základní dokumentace k ochraně hesel Azure AD, ale mohou být užitečným zdrojem dalších informací o této funkci.
+The following links are not part of the core Azure AD Password Protection documentation but may be a useful source of additional information on the feature.
 
-[Ochrana heslem Azure AD je teď všeobecně dostupná!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
+[Azure AD Password Protection is now generally available!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Průvodce ochranou útoků phishing – část 15: implementace služby ochrany heslem Microsoft Azure AD (v místním prostředí)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[Email Phishing Protection Guide – Part 15: Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
-[Ochrana hesel Azure AD a inteligentní uzamčení jsou teď v Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
+[Azure AD Password Protection and Smart Lockout are now in Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 
-## <a name="microsoft-premierunified-support-training-available"></a>Dostupné školení podpory Microsoft Premier\Unified
+## <a name="microsoft-premierunified-support-training-available"></a>Microsoft Premier\Unified support training available
 
-Pokud vás zajímá více o ochraně heslem Azure AD a jejich nasazení ve vašem prostředí, můžete využít výhod služby Microsoft Proactive Service dostupné zákazníkům se smlouvou Premier nebo Unified support. Služba se nazývá Azure Active Directory: ochrana heslem. Další informace vám poskytne váš správce technického účtu.
+If you're interested in learning more about Azure AD Password Protection and deploying it in your environment, you can take advantage of a Microsoft proactive service available to those customers with a Premier or Unified support contract. The service is called Azure Active Directory: Password Protection. Contact your Technical Account Manager for more information.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte místní otázku ochrany heslem služby Azure AD, která tady není zodpovězená, pošlete nám níže uvedenou položku zpětné vazby.
+If you have an on-premises Azure AD Password Protection question that isn't answered here, submit a Feedback item below - thank you!
 
 [Nasazení ochrany hesel Azure AD](howto-password-ban-bad-on-premises-deploy.md)

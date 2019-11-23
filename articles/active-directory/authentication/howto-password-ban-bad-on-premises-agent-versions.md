@@ -1,139 +1,139 @@
 ---
-title: Místní historie vydaných verzí agenta ochrany hesel služby Azure AD – Azure Active Directory
-description: Historii změn pro vydání verze dokumentů a chování
+title: Password protection agent release history - Azure Active Directory
+description: Documents version release and behavior change history
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c024954053588537ac3363703876f716a38f41d9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6458f31b21d09e54afb080ffc73598903a9831e0
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702936"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381737"
 ---
-# <a name="azure-ad-password-protection-agent-version-history"></a>Historie verze agenta Azure AD ochrana heslem
+# <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD Password Protection agent version history
 
 ## <a name="121250"></a>1.2.125.0
 
-Datum vydání: 3/22/2019
+Release date: 3/22/2019
 
-* Opravte chyby menší překlep v protokolu událostí zprávy
-* Smlouvu EULA aktualizace na finální verzi všeobecné dostupnosti
+* Fix minor typo errors in event log messages
+* Update EULA agreement to final General Availability version
 
 > [!NOTE]
-> Sestavení 1.2.125.0 je obecně dostupná sestavení. Děkujeme, že jste znovu pro všechny uživatele v produktu poskytuje zpětnou vazbu!
+> Build 1.2.125.0 is the General Availability build. Thank you again to everyone has provided feedback on the product!
 
 ## <a name="121160"></a>1.2.116.0
 
-Datum vydání: 3/13/2019
+Release date: 3/13/2019
 
-* Get-AzureADPasswordProtectionProxy a Get-AzureADPasswordProtectionDCAgent rutiny teď verze softwaru sestavy a aktuální Azure tenanta s těmito omezeními:
-  * Verze softwaru a data Azure tenanta se pouze k dispozici pro řadič domény agenty a servery proxy verzí 1.2.116.0 nebo novější.
-  * Data tenanta Azure nemusí být hlášena až do opětovné registraci (nebo prodloužení platnosti) proxy server nebo doménové struktury došlo k chybě.
-* Proxy služba teď vyžaduje, aby nainstalované rozhraní .NET 4.7.
-  * .NET 4.7 musí již nainstalován na serveru Windows Server kompletně aktualizovaný. Pokud to není tento případ, stáhněte a spusťte instalační program na [offline instalační program .NET Framework 4.7 pro Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
-  * V systémech jádra serveru může být potřeba předat příznakem /q do instalačního programu .NET 4.7 její úspěšné.
-* Služba proxy server nyní podporuje automatický upgrade. Automatický upgrade používá Microsoft Azure AD Connect agenta aktualizační služby, která je nainstalovaná – souběžně se službou Proxy. Ve výchozím nastavení zapnutý automatický upgrade.
-* Automatický upgrade může být povoleno nebo zakázáno, pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Aktuální nastavení může být dotázán pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration.
-* Binární služby pro službu agent řadič domény byl přejmenován na AzureADPasswordProtectionDCAgent.exe.
-* Binární služby pro službu Proxy byl přejmenován na AzureADPasswordProtectionProxy.exe. Pravidla brány firewall možná muset odpovídajícím způsobem upravit, pokud je brána firewall třetích stran používané.
-  * Poznámka: Pokud soubor konfigurace proxy serveru http se používal v předchozí proxy server nainstalovat, ji budou muset přejmenovat (z *proxyservice.exe.config* k *AzureADPasswordProtectionProxy.exe.config*) po této upgrade.
-* Všechny kontroly časově omezené funkce byly odebrány z agenta řadiče domény.
-* Protokolování vylepšení a oprav drobných chyb.
+* The Get-AzureADPasswordProtectionProxy and Get-AzureADPasswordProtectionDCAgent cmdlets now report software version and the current Azure tenant with the following limitations:
+  * Software version and Azure tenant data are only available for DC agents and proxies running version 1.2.116.0 or later.
+  * Azure tenant data may not be reported until a re-registration (or renewal) of the proxy or forest has occurred.
+* The Proxy service now requires that .NET 4.7 is installed.
+  * .NET 4.7 should already be installed on a fully updated Windows Server. If this is not the case, download and run the installer found at [The .NET Framework 4.7 offline installer for Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * On Server Core systems it may be necessary to pass the /q flag to the .NET 4.7 installer to get it to succeed.
+* The Proxy service now supports automatic upgrade. Automatic upgrade uses the Microsoft Azure AD Connect Agent Updater service which is installed side-by-side with the Proxy service. Automatic upgrade is on by default.
+* Automatic upgrade can be enabled or disabled using the Set-AzureADPasswordProtectionProxyConfiguration cmdlet. The current setting can be queried using the Get-AzureADPasswordProtectionProxyConfiguration cmdlet.
+* The service binary for the DC agent service has been renamed to AzureADPasswordProtectionDCAgent.exe.
+* The service binary for the Proxy service has been renamed to AzureADPasswordProtectionProxy.exe. Firewall rules may need to be modified accordingly if a third-party firewall is in-use.
+  * NOTE: if an http proxy config file was being used in a previous Proxy install, it will need to be renamed (from *proxyservice.exe.config* to *AzureADPasswordProtectionProxy.exe.config*) after this upgrade.
+* All time-limited functionality checks have been removed from the DC agent.
+* Minor bugs fixes and logging improvements.
 
 ## <a name="12650"></a>1.2.65.0
 
-Datum vydání: 2/1/2019
+Release date: 2/1/2019
 
-Změny:
+Changes:
 
-* Agent a server proxy služby řadiče domény jsou teď podporovány na jádro serveru. Požadavky na minimální operační systém se neliší od před: Windows Server 2012 pro agenty řadiče domény a Windows Server 2012 R2 pro proxy servery.
-* Rutiny AzureADPasswordProtectionProxy rejstříku a registrace AzureADPasswordProtectionForest nyní podporují režimy ověřování Azure na základě zařízení kódu.
-* Rutina Get-AzureADPasswordProtectionDCAgent bude ignorovat spojovací body služby pozměnění a/nebo neplatný. To řeší chyby, kdy řadiče domény se někdy zobrazují více než jednou ve výstupu.
-* Rutina Get-AzureADPasswordProtectionSummaryReport bude ignorovat spojovací body služby pozměnění a/nebo neplatný. To řeší chyby, kdy řadiče domény se někdy zobrazují více než jednou ve výstupu.
-* Modul proxy serveru prostředí powershell je teď zaregistrovaný z % ProgramFiles%\WindowsPowerShell\Modules. Proměnná prostředí PSModulePath počítače je již změnit.
-* Nová Rutina Get-AzureADPasswordProtectionProxy je přidaný do pomoci při zjišťování registrované servery proxy v doménové struktuře nebo doméně.
-* Agent řadič domény používá nové složky ve sdílené složce sysvol pro replikaci zásady pro hesla a další soubory.
+* DC agent and proxy service are now supported on Server Core. Mininimum OS requirements are unchanged from before: Windows Server 2012 for DC agents, and Windows Server 2012 R2 for proxies.
+* The Register-AzureADPasswordProtectionProxy and Register-AzureADPasswordProtectionForest cmdlets now support device-code-based Azure authentication modes.
+* The Get-AzureADPasswordProtectionDCAgent cmdlet will ignore mangled and/or invalid service connection points. This fixes the bug where domain controllers would sometimes show up multiple times in the output.
+* The Get-AzureADPasswordProtectionSummaryReport cmdlet will ignore mangled and/or invalid service connection points. This fixes the bug where domain controllers would sometimes show up multiple times in the output.
+* The Proxy powershell module is now registered from %ProgramFiles%\WindowsPowerShell\Modules. The machine's PSModulePath environment variable is no longer modified.
+* A new Get-AzureADPasswordProtectionProxy cmdlet has been added to aid in discovering registered proxies in a forest or domain.
+* The DC agent uses a new folder in the sysvol share for replicating password policies and other files.
 
-   Původní umístění složky:
+   Old folder location:
 
    `\\<domain>\sysvol\<domain fqdn>\Policies\{4A9AB66B-4365-4C2A-996C-58ED9927332D}`
 
-   Nové umístění složky:
+   New folder location:
 
    `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
 
-   (Tato změna byla provedena, aby upozornění falešně pozitivní "osamocený objekt zásad skupiny").
+   (This change was made to avoid false-positive "orphaned GPO" warnings.)
 
    > [!NOTE]
-   > Žádná migrace nebo sdílení dat bude provedeno mezi složkou staré a nové složky. Starší verzí agenta pro řadič domény bude nadále používat staré umístění, dokud nebudou upgradovány na tuto verzi nebo novější. Jakmile všichni agenti řadiče domény běží verze 1.2.65.0 nebo později, může ručně odstranit starý složku sysvol.
+   > No migration or sharing of data will be done between the old folder and the new folder. Older DC agent versions will continue to use the old location until upgraded to this version or later. Once all DC agents are running version 1.2.65.0 or later, the old sysvol folder may be manually deleted.
 
-* Službu řadiče domény a agent proxy nyní rozpozná a odstranit pozměnění kopie spojovací body jejich příslušné služby.
-* Každý agent řadiče domény se pravidelně odstraní spojovací body pozměnění a zastaralých služby ve své doméně pro oba řadiče domény a agent proxy spojovací body služby. Oba řadiče domény a agent proxy spojovací body služby se považují za zastaralé, pokud její časové razítko prezenčního signálu je starší než 7 dní.
-* Řadič domény agenta bude nyní obnovit certifikát doménové struktury, podle potřeby.
-* Služba Proxy bude nyní obnovit certifikát proxy serveru, podle potřeby.
-* Aktualizace hesla algoritmus pro ověření: seznam zakázaných hesel globální a seznam zakázaných hesel zákaznického (je-li konfigurováno) zkombinují před ověření hesla. Nyní mohou být odmítnuty dané heslo (selhat nebo jenom pro auditování) Pokud obsahuje tokeny ze seznamu globální a specifické pro zákazníka. Dokumentace ke službě protokol událostí byl aktualizován tak, aby odrážely to; Podrobnosti najdete na [ochrana hesel Azure AD monitorování](howto-password-ban-bad-on-premises-monitor.md).
-* Výkon a odolnost opravy
-* Zdokonalené funkce protokolování
+* The DC agent and proxy service will now detect and delete mangled copies of their respective service connection points.
+* Each DC agent will periodically delete mangled and stale service connection points in its domain, for both DC agent and proxy service connection points. Both DC agent and proxy service connection points are considered stale if its heartbeat timestamp is older than seven days.
+* The DC agent will now renew the forest certificate as needed.
+* The Proxy service will now renew the proxy certificate as needed.
+* Updates to password validation algorithm: the global banned password list and customer-specific banned password list (if configured) are combined prior to password validations. A given password may now be rejected (fail or audit-only) if it contains tokens from both the global and customer-specific list. The event log documentation has been updated to reflect this; please see [Monitor Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md).
+* Performance and robustness fixes
+* Improved logging
 
 > [!WARNING]
-> Časově omezené funkce: Služba agenta řadiče domény v této verzi (1.2.65.0) se zastaví zpracování žádostí o ověření hesla od 1. září 2019.  Řadič domény služby agenta v předchozích verzích (viz následující seznam) se zastaví zpracování od 1. července 2019. Služba agenta řadiče domény ve všech verzích bude zaznamenávat 10021 události do protokolu událostí správce do dvou měsíců dovedou až tyto termíny. Odebere všechny časový limit omezení v nadcházející verzi všeobecné dostupnosti. Službu agent Proxy není časově omezené v žádné verzi, ale stále nutné upgradovat na nejnovější verzi. abyste mohli využívat všechny další opravy chyb a další vylepšení.
+> Time-limited functionality:  the DC agent service in this release (1.2.65.0) will stop processing password validation requests as of September 1st 2019.  DC agent services in prior releases (see list below) will stop processing as of July 1st 2019. The DC agent service in all versions will log 10021 events to the Admin event log in the two months leading up these deadlines. All time-limit restrictions will be removed in the upcoming GA release. The Proxy agent service is not time-limited in any version but should still be upgraded to the latest version in order to take advantage of all subsequent bug fixes and other improvements.
 
 ## <a name="12250"></a>1.2.25.0
 
-Datum vydání: 11/01/2018
+Release date: 11/01/2018
 
-Opravy:
+Fixes:
 
-* Řadič domény proxy serveru a agent služby by měl už neselže kvůli chybám certifikátu vztahu důvěryhodnosti.
-* Služba agenta a proxy řadič domény nemá další opravy pro počítače kompatibilní se standardem FIPS.
-* Služba proxy bude nyní fungovat správně v protokolu TLS 1.2 – jen síťovém prostředí.
-* Menší výkon a odolnost opravy
-* Zdokonalené funkce protokolování
+* DC agent and proxy service should no longer fail due to certificate trust failures.
+* DC agent and proxy service have additional fixes for FIPS-compliant machines.
+* Proxy service will now work properly in a TLS 1.2-only networking environment.
+* Minor performance and robustness fixes
+* Improved logging
 
-Změny:
+Changes:
 
-* Minimální požadovaná úroveň operačního systému pro službu proxy serveru je nyní systému Windows Server 2012 R2. Minimální požadovanou úroveň operačního systému pro službu agenta DC zůstal ve Windows serveru 2012.
-* Služba Proxy nyní vyžaduje rozhraní .NET verze 4.6.2.
-* Algoritmus pro ověření hesla používá tabulku normalizace rozšířené znaky. Výsledkem může být odmítnuta, hesla, která byla přijata v předchozích verzích.
+* The minimum required OS level for the Proxy service is now Windows Server 2012 R2. The minimum required OS level for the DC agent service remains at Windows Server 2012.
+* The Proxy service now requires .NET version 4.6.2.
+* The password validation algorithm uses an expanded character normalization table. This may result in passwords being rejected that were accepted in prior versions.
 
 ## <a name="12100"></a>1.2.10.0
 
-Datum vydání: 8/17/2018
+Release date: 8/17/2018
 
-Opravy:
+Fixes:
 
-* Register-AzureADPasswordProtectionProxy a zaregistrujte AzureADPasswordProtectionForest teď podporují ověřování službou Multi-Factor Authentication
-* Register-AzureADPasswordProtectionProxy vyžaduje WS2012 nebo novější řadič domény v doméně, aby zabránil chybám při šifrování.
-* Služba agenta pro řadič domény je spolehlivější o vyžádání nové zásady hesla z Azure při spuštění.
-* Služba agenta řadiče domény z Azure každou hodinu v případě potřeby bude požadovat nové zásady hesel, ale bude teď udělat na náhodně vybrané počáteční čas.
-* Služba agenta řadiče domény už způsobí neomezenou zpoždění v nový řadič domény oznámení o inzerovaném programu při instalaci na serveru před jeho povýšení jako replika.
-* Služba agenta pro řadič domény bude nyní případném dalším sdílení dodržovat nastavení "Povolit ochranu hesla na Windows Server Active Directory"
-* Oba řadiče domény a agent proxy instalační programy teď podporují místní upgrade, při upgradu na budoucí verze.
+* Register-AzureADPasswordProtectionProxy and Register-AzureADPasswordProtectionForest now support multi-factor authentication
+* Register-AzureADPasswordProtectionProxy requires a WS2012 or later domain controller in the domain to avoid encryption errors.
+* DC agent service is more reliable about requesting a new password policy from Azure on startup.
+* DC agent service will request a new password policy from Azure every hour if necessary, but will now do so on a randomly selected start time.
+* DC agent service will no longer cause an indefinite delay in new DC advertisement when installed on a server prior to its promotion as a replica.
+* DC agent service will now honor the “Enable password protection on Windows Server Active Directory” configuration setting
+* Both DC agent and proxy installers will now support in-place upgrade when upgrading to future versions.
 
 > [!WARNING]
-> Místní upgrade z verze 1.1.10.3 nepodporuje a způsobí chybu instalace. Na upgrade na verzi 1.2.10 nebo novější, je nutné nejprve úplně odinstalovat softwaru řadič domény proxy serveru a agent služby, potom nainstalujte novou verzi úplně od začátku. Vyžaduje se opětovná registrace ochrany hesla Azure AD službu proxy serveru.  Není potřeba znovu zaregistrovat doménové struktury.
+> In-place upgrade from version 1.1.10.3 is not supported and will result in an installation error. To upgrade to version 1.2.10 or later, you must first completely uninstall the DC agent and proxy service software, then install the new version from scratch. Re-registration of the Azure AD password protection Proxy service is required.  It is not required to re-register the forest.
 
 > [!NOTE]
-> Místní upgrady softwaru agenta pro řadič domény bude vyžadovat restartování.
+> In-place upgrades of the DC agent software will require a reboot.
 
-* Řadič domény proxy serveru a agent služby teď podporují běží na serveru nakonfigurovaný tak, aby pouze používat algoritmy odpovídající standardu FIPS.
-* Menší výkon a odolnost opravy
-* Zdokonalené funkce protokolování
+* DC agent and proxy service now support running on a server configured to only use FIPS-compliant algorithms.
+* Minor performance and robustness fixes
+* Improved logging
 
 ## <a name="11103"></a>1.1.10.3
 
-Datum vydání: 6/15/2018
+Release date: 6/15/2018
 
-Počáteční veřejné verze preview
+Initial public preview release
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Nasazení ochrany hesel Azure AD](howto-password-ban-bad-on-premises-deploy.md)
+[Deploy Azure AD Password Protection](howto-password-ban-bad-on-premises-deploy.md)
