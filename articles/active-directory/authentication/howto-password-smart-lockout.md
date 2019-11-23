@@ -1,89 +1,89 @@
 ---
-title: Zabránění útokům hrubou silou pomocí inteligentního uzamčení Azure AD – Azure Active Directory
-description: Azure Active Directory Smart zamknutí pomáhá chránit vaši organizaci před útoky hrubou silou, které se pokoušejí uhodnout hesla.
+title: Preventing attacks using smart lockout - Azure Active Directory
+description: Azure Active Directory smart lockout helps protect your organization from brute-force attacks trying to guess passwords
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4cb2d424d242fd9ea078d981a85516a00c8115f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 066c4cb598d9a8c14ab5d6ee893376266e104d15
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268667"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381527"
 ---
-# <a name="azure-active-directory-smart-lockout"></a>Inteligentní uzamčení Azure Active Directory
+# <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory smart lockout
 
-Inteligentní zamykání pomáhá uzamknout chybné aktéry, které se pokoušejí uhodnout hesla uživatelů, nebo používat metody hrubou silou k získání. Dokáže rozpoznávat přihlášení pocházející od platných uživatelů a považovat je za odlišnou od útočníků a jiných neznámých zdrojů. Inteligentní uzamčení odblokuje útočníky, zatímco umožní uživatelům pokračovat v přístupu ke svým účtům a jejich produktivitu.
+Smart lockout assists in locking out bad actors who are trying to guess your users’ passwords or use brute-force methods to get in. It can recognize sign-ins coming from valid users and treat them differently than ones of attackers and other unknown sources. Smart lockout locks out the attackers, while letting your users continue to access their accounts and be productive.
 
-Ve výchozím nastavení zamkne inteligentní zámek účet z pokusů o přihlášení po jednu minutu po 10 neúspěšných pokusech. Po každém následném neúspěšném pokusu o přihlášení se účet zamkne znovu po dobu 1 minuty a v dalších pokusech.
+By default, smart lockout locks the account from sign-in attempts for one minute after 10 failed attempts. The account locks again after each subsequent failed sign-in attempt, for one minute at first and longer in subsequent attempts.
 
-Inteligentní uzamykání sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nebude mít za následek uzamčení účtu.
+Smart lockout tracks the last three bad password hashes to avoid incrementing the lockout counter for the same password. If someone enters the same bad password multiple times, this behavior will not cause the account to lockout.
 
  > [!NOTE]
- > Funkce sledování hodnoty hash není dostupná pro zákazníky s povoleným předávacím ověřováním, protože ověřování probíhá místně, ne v cloudu.
+ > Hash tracking functionality is not available for customers with pass-through authentication enabled as authentication happens on-premises not in the cloud.
 
-Federované nasazení pomocí AD FS 2016 a AF FS 2019 může povolit podobné výhody pomocí [AD FS uzamknutí extranetu a extranetového inteligentního uzamčení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
+Federated deployments using AD FS 2016 and AF FS 2019 can enable similar benefits using [AD FS Extranet Lockout and Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
 
-Inteligentní uzamčení je vždycky zapnuté pro všechny zákazníky Azure AD s těmito výchozími nastaveními, která nabízejí správnou kombinaci zabezpečení a použitelnosti. Přizpůsobení nastavení inteligentního uzamčení s hodnotami specifickými pro vaši organizaci vyžaduje placené licence Azure AD pro vaše uživatele.
+Smart lockout is always on for all Azure AD customers with these default settings that offer the right mix of security and usability. Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
 
-Pomocí inteligentního uzamčení není zaručeno, že se originální uživatel nikdy nezamkne. Když inteligentní uzamčení uzamkne uživatelský účet, zkusíme, že nebudete moct tohoto uživatele uzamknout. Služba uzamčení se pokusí zajistit, aby chybné objekty actor nemohly získat přístup k účtu originálního uživatele.  
+Using smart lockout does not guarantee that a genuine user will never be locked out. When smart lockout locks a user account, we try our best to not lockout the genuine user. The lockout service attempts to ensure that bad actors can’t gain access to a genuine user account.  
 
-* Každé Azure Active Directory datové centrum sleduje uzamčení nezávisle. Uživatel bude mít (threshold_limit * datacenter_count) počet pokusů, pokud se uživatel dostane do každého datového centra.
-* Inteligentní uzamčení používá ke odlišení vadného objektu actor a originálního uživatele známé umístění a neznámé umístění. Neznámá a známá umístění budou mít oddělené čítače uzamčení.
+* Each Azure Active Directory data center tracks lockout independently. A user will have (threshold_limit * datacenter_count) number of attempts, if the user hits each data center.
+* Smart Lockout uses familiar location vs unfamiliar location to differentiate between a bad actor and the genuine user. Unfamiliar and familiar locations will both have separate lockout counters.
 
-Inteligentní uzamčení se dá integrovat s hybridními nasazeními, a to pomocí synchronizace hodnot hash hesel nebo předávacího ověřování k ochraně místních účtů služby Active Directory před tím, než je útočníci zamkne. Pokud se ve službě Azure AD patřičně nastavují zásady inteligentního zamykání, můžou se útoky filtrovat předtím, než se dostanou k místní službě Active Directory.
+Smart lockout can be integrated with hybrid deployments, using password hash sync or pass-through authentication to protect on-premises Active Directory accounts from being locked out by attackers. By setting smart lockout policies in Azure AD appropriately, attacks can be filtered out before they reach on-premises Active Directory.
 
-Při použití [předávacího ověřování](../hybrid/how-to-connect-pta.md)je potřeba zajistit, aby:
+When using [pass-through authentication](../hybrid/how-to-connect-pta.md), you need to make sure that:
 
-* Prahová hodnota pro uzamčení Azure AD je **nižší** než prahová hodnota pro uzamčení účtu služby Active Directory. Nastavte hodnoty tak, aby prahová hodnota uzamčení účtu služby Active Directory byla minimálně dvě nebo třikrát delší než prahová hodnota pro uzamčení Azure AD. 
-* Doba trvání uzamčení Azure AD musí být nastavená na delší dobu, než je čítač uzamčení účtu služby Active Directory pro obnovení po dobu trvání. Počítejte s tím, že doba trvání služby Azure AD je nastavená v sekundách, ale doba trvání AD je nastavená v řádu minut. 
+* The Azure AD lockout threshold is **less** than the Active Directory account lockout threshold. Set the values so that the Active Directory account lockout threshold is at least two or three times longer than the Azure AD lockout threshold. 
+* The Azure AD lockout duration must be set longer than the Active Directory reset account lockout counter after duration. Be aware that the Azure AD duration is set in seconds, while the AD duration is set in minutes. 
 
-Například pokud chcete, aby byl čítač Azure AD vyšší než AD, pak bude Azure AD 120 sekund (2 minuty), zatímco vaše místní služba AD je nastavená na 1 minutu (60 sekund).
+For example, if you want your Azure AD counter to be higher than AD, then Azure AD would be 120 seconds (2 minutes) while your on-premises AD is set to 1 minute (60 seconds).
 
 > [!IMPORTANT]
-> Správce v současné době nemůže odemknout účty uživatelů cloudu, pokud byly uzamčeny funkcí inteligentního uzamčení. Správce musí počkat na vypršení platnosti doby uzamčení. Uživatel se ale může odemknout pomocí samoobslužného resetování hesla (SSPR) z důvěryhodného zařízení nebo umístění.
+> Currently, an administrator can't unlock the users' cloud accounts if they have been locked out by the Smart Lockout capability. The administrator must wait for the lockout duration to expire. However, the user can unlock by using self-service password reset (SSPR) from a trusted device or location.
 
-## <a name="verify-on-premises-account-lockout-policy"></a>Ověřit zásady uzamčení místních účtů
+## <a name="verify-on-premises-account-lockout-policy"></a>Verify on-premises account lockout policy
 
-Pomocí následujících pokynů ověřte zásady uzamčení místních účtů služby Active Directory:
+Use the following instructions to verify your on-premises Active Directory account lockout policy:
 
-1. Otevřete nástroj pro správu Zásady skupiny.
-2. Upravte zásady skupiny, které obsahují zásady uzamčení účtů vaší organizace, například **výchozí zásady domény**.
-3. Přejděte na **Konfigurace počítače** **zásady** >  > **nastavení systému Windows** > **nastavení zabezpečení** > zásady **účtů** > **zásady uzamčení účtů**.
-4. Ověřte **prahovou hodnotu uzamčení účtu** a **Vynulovat čítač uzamčení účtu po** hodnotách.
+1. Open the Group Policy Management tool.
+2. Edit the group policy that includes your organization's account lockout policy, for example, the **Default Domain Policy**.
+3. Browse to **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Account Policies** > **Account Lockout Policy**.
+4. Verify your **Account lockout threshold** and **Reset account lockout counter after** values.
 
-![Úprava zásad uzamčení místních účtů služby Active Directory](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![Modify the on-premises Active Directory account lockout policy](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
-## <a name="manage-azure-ad-smart-lockout-values"></a>Správa hodnot inteligentního uzamčení Azure AD
+## <a name="manage-azure-ad-smart-lockout-values"></a>Manage Azure AD smart lockout values
 
-Na základě požadavků vaší organizace může být nutné přizpůsobit hodnoty inteligentního uzamknutí. Přizpůsobení nastavení inteligentního uzamčení s hodnotami specifickými pro vaši organizaci vyžaduje placené licence Azure AD pro vaše uživatele.
+Based on your organizational requirements, smart lockout values may need to be customized. Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
 
-Chcete-li kontrolovat nebo upravovat hodnoty inteligentního uzamknutí pro vaši organizaci, použijte následující postup:
+To check or modify the smart lockout values for your organization, use the following steps:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **metody ověřování** > **ochrana heslem**.
-1. Nastavte **prahovou hodnotu uzamčení**na základě toho, kolik neúspěšných přihlášení na účtu je před prvním uzamčením povolené. Výchozí hodnota je 10.
-1. Nastavte **dobu uzamčení v sekundách**na délku v sekundách každého uzamknutí. Výchozí hodnota je 60 sekund (jedna minuta).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Search for and select *Azure Active Directory*. Select **Authentication methods** > **Password protection**.
+1. Set the **Lockout threshold**, based on how many failed sign-ins are allowed on an account before its first lockout. The default is 10.
+1. Set the **Lockout duration in seconds**, to the length in seconds of each lockout. The default is 60 seconds (one minute).
 
 > [!NOTE]
-> Pokud se první přihlášení po uzamčení nepovede, účet se znovu odblokuje. V případě opakovaného blokování účtu se zvýší doba trvání uzamčení.
+> If the first sign-in after a lockout also fails, the account locks out again. If an account locks repeatedly, the lockout duration increases.
 
-![Přizpůsobení zásady inteligentního uzamčení Azure AD v Azure Portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+![Customize the Azure AD smart lockout policy in the Azure portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Jak zjistit, zda funkce inteligentního zamykání funguje
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>How to determine if the Smart lockout feature is working or not
 
-Když se aktivuje prahová hodnota inteligentního uzamčení, při zamčení účtu se zobrazí následující zpráva:
+When the smart lockout threshold is triggered, you will get the following message while the account is locked:
 
-**Váš účet je dočasně zamčený, aby nedocházelo k neoprávněnému použití. Zkuste to znovu později. Pokud pořád máte potíže, obraťte se na správce.**
+**Your account is temporarily locked to prevent unauthorized use. Try again later, and if you still have trouble, contact your admin.**
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak zakázat chybná hesla ve vaší organizaci pomocí Azure AD.](howto-password-ban-bad.md)
-* [Nakonfigurujte Samoobslužné resetování hesla, aby uživatelé mohli odemknout svoje vlastní účty.](quickstart-sspr.md)
+* [Find out how to ban bad passwords in your organization using Azure AD.](howto-password-ban-bad.md)
+* [Configure self-service password reset to allow users to unlock their own accounts.](quickstart-sspr.md)

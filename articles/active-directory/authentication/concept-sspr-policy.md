@@ -1,166 +1,166 @@
 ---
-title: Zásady samoobslužného resetování hesel služby Azure AD – Azure Active Directory
-description: Konfigurace možností zásad samoobslužného resetování hesel služby Azure AD
+title: Self-service password reset policies - Azure Active Directory
+description: Configure Azure AD self-service password reset policy options
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f5371334fb383b15514c879ceb262fa78d7fca
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5af0c2ecde539c9737249e4251f7eab276affb9c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084958"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381924"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady a omezení hesel v Azure Active Directory
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Password policies and restrictions in Azure Active Directory
 
-Tento článek popisuje zásady hesel a požadavky na složitost spojené s uživatelskými účty v tenantovi Azure Active Directory (Azure AD).
+This article describes the password policies and complexity requirements associated with user accounts in your Azure Active Directory (Azure AD) tenant.
 
-## <a name="administrator-reset-policy-differences"></a>Správce vynulovat rozdíly zásad
+## <a name="administrator-reset-policy-differences"></a>Administrator reset policy differences
 
-**Microsoft vynutil silné výchozí zásady resetování hesel pro všechny role správce Azure** . Tato zásada se může lišit od toho, kterou jste definovali pro vaše uživatele, a nejde je změnit. Funkce resetování hesla byste měli vždycky testovat jako uživatel bez přiřazených rolí správce Azure.
+**Microsoft enforces a strong default *two-gate* password reset policy for any Azure administrator role** this policy may be different from the one you have defined for your users and cannot be changed. You should always test password reset functionality as a user without any Azure administrator roles assigned.
 
-Díky zásadám se dvěma branami nemají **správci možnost používat bezpečnostní otázky**.
+With a two-gate policy, **administrators don't have the ability to use security questions**.
 
-Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je **e-mailová adresa**, **ověřovací aplikace**nebo **telefonní číslo**. Zásady dvou bran se uplatní v následujících případech:
+The two-gate policy requires two pieces of authentication data, such as an **email address**, **authenticator app**, or a **phone number**. A two-gate policy applies in the following circumstances:
 
-* Ovlivněny jsou všechny následující role správce Azure:
-  * Správce helpdesku
-  * Správce služby Service support
+* All the following Azure administrator roles are affected:
+  * Helpdesk administrator
+  * Service support administrator
   * Správce fakturace
-  * Podpora partnerů úrovně 1
-  * Podpora partnerů úrovně 2
-  * Správce Exchange
-  * Správce Skypu pro firmy
-  * Správce uživatelů
-  * Uživatelé s oprávněním k zápisu do adresářů
-  * Globální správce nebo správce společnosti
+  * Partner Tier1 Support
+  * Partner Tier2 Support
+  * Exchange administrator
+  * Skype for Business administrator
+  * User administrator
+  * Directory writers
+  * Global administrator or company administrator
   * Správce SharePointu
-  * Správce dodržování předpisů
-  * Správce aplikací
+  * Compliance administrator
+  * Application administrator
   * Správce zabezpečení
-  * Správce privilegovaných rolí
-  * Správce Intune
-  * Správce služby proxy aplikací
-  * Správce Dynamics 365
-  * Správce služba Power BI
-  * Správce ověřování
-  * Správce privilegovaného ověřování
+  * Privileged role administrator
+  * Intune administrator
+  * Application proxy service administrator
+  * Dynamics 365 administrator
+  * Power BI service administrator
+  * Authentication administrator
+  * Privileged Authentication administrator
 
-* Pokud uplyne 30 dnů ve zkušebním předplatném, ani
-* Doména individuální je k dispozici, například contoso.com; ani
-* Azure AD Connect synchronizuje identity z místního adresáře.
+* If 30 days have elapsed in a trial subscription; or
+* A vanity domain is present, such as contoso.com; or
+* Azure AD Connect is synchronizing identities from your on-premises directory
 
 ### <a name="exceptions"></a>Výjimky
 
-Zásada s jedním bránou vyžaduje jedno z ověřovacích dat, jako je e-mailová adresa *nebo* telefonní číslo. Zásady s jednou bránou se uplatní v následujících případech:
+A one-gate policy requires one piece of authentication data, such as an email address *or* phone number. A one-gate policy applies in the following circumstances:
 
-* Je v průběhu prvních 30 dnů zkušebního předplatného; ani
-* Doména individuální není přítomna (*. onmicrosoft.com); ani
-* Azure AD Connect nesynchronizují identity
+* It's within the first 30 days of a trial subscription; or
+* A vanity domain isn't present (*.onmicrosoft.com); and
+* Azure AD Connect isn't synchronizing identities
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName – zásady, které se vztahují na všechny uživatelské účty
+## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName policies that apply to all user accounts
 
-Každý uživatelský účet, který musí být přihlášený k Azure AD, musí mít přidruženou hodnotu atributu hlavní název uživatele (UPN), která je přidružená ke svému účtu. Následující tabulka popisuje zásady, které platí pro místní uživatelské účty služby Active Directory, které jsou synchronizované s cloudem a jenom pro cloudové uživatelské účty:
+Every user account that needs to sign in to Azure AD must have a unique user principal name (UPN) attribute value associated with their account. The following table outlines the policies that apply to both on-premises Active Directory user accounts that are synchronized to the cloud and to cloud-only user accounts:
 
-| Vlastnost | Požadavky UserPrincipalName |
+| Vlastnost | UserPrincipalName requirements |
 | --- | --- |
-| Povolené znaky |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
-| Nepovolené znaky |<ul> <li>\@ Libovolnýznak,kterýodděluje\" uživatelské jméno z domény.</li> <li>Nemůže obsahovat znak tečky "." hned před symbolem\@ "\" ."</li></ul> |
-| Omezení délky |<ul> <li>Celková délka nesmí překročit 113 znaků.</li><li>\@ Před\" symbolem může být až 64 znaků.</li><li>\@ Za\" symbolem může být až 48 znaků.</li></ul> |
+| Characters allowed |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| Characters not allowed |<ul> <li>Any "\@\" character that's not separating the username from the domain.</li> <li>Can't contain a period character "." immediately preceding the "\@\" symbol</li></ul> |
+| Length constraints |<ul> <li>The total length must not exceed 113 characters</li><li>There can be up to 64 characters before the "\@\" symbol</li><li>There can be up to 48 characters after the "\@\" symbol</li></ul> |
 
-## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Zásady hesel, které platí jenom pro cloudové uživatelské účty
+## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Password policies that only apply to cloud user accounts
 
-Následující tabulka popisuje nastavení zásad hesel, která se používají u uživatelských účtů vytvořených a spravovaných v Azure AD:
+The following table describes the password policy settings applied to user accounts that are created and managed in Azure AD:
 
 | Vlastnost | Požadavky |
 | --- | --- |
-| Povolené znaky |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \`~ " ( ) ;</li> <li>prázdné místo</li></ul> |
-| Nepovolené znaky | Znaky Unicode. |
-| Omezení hesla |<ul><li>Minimálně 8 znaků a maximálně 256 znaků.</li><li>Vyžaduje tři ze čtyř z následujících možností:<ul><li>Malými písmeny.</li><li>Velká písmena.</li><li>Čísla (0-9).</li><li>Symboly (viz předchozí omezení hesla).</li></ul></li></ul> |
-| Doba platnosti hesla vypršela (maximální stáří hesla) |<ul><li>Výchozí hodnota: **90** dní.</li><li>Hodnota se dá nakonfigurovat pomocí `Set-MsolPasswordPolicy` rutiny z modulu Azure Active Directory pro Windows PowerShell.</li></ul> |
-| Oznámení o vypršení platnosti hesla (když jsou uživatelé upozorňováni na vypršení platnosti hesla) |<ul><li>Výchozí hodnota: **14** dní (před vypršením platnosti hesla).</li><li>Hodnotu lze konfigurovat pomocí `Set-MsolPasswordPolicy` rutiny.</li></ul> |
-| Vypršení platnosti hesla (do vypršení platnosti hesla) |<ul><li>Výchozí hodnota: **false** dnů (indikuje, že je povolené heslo je povolené).</li><li>Hodnotu lze nakonfigurovat pro jednotlivé uživatelské účty pomocí `Set-MsolUser` rutiny.</li></ul> |
-| Historie změn hesel | Poslední heslo *nelze* znovu použít, když uživatel změní heslo. |
-| Historie resetování hesla | Poslední heslo *lze* znovu použít, když uživatel resetuje zapomenuté heslo. |
-| Uzamčení účtu | Po 10 neúspěšných pokusech o přihlášení k nesprávnému heslu je uživatel zablokován na jednu minutu. Další nesprávné pokusy o přihlášení zablokují uživateli zvýšení doby trvání. [Inteligentní uzamykání](howto-password-smart-lockout.md) sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nebude mít za následek uzamčení účtu. |
+| Characters allowed |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>blank space</li></ul> |
+| Characters not allowed | Unicode characters. |
+| Password restrictions |<ul><li>A minimum of 8 characters and a maximum of 256 characters.</li><li>Requires three out of four of the following:<ul><li>Lowercase characters.</li><li>Uppercase characters.</li><li>Numbers (0-9).</li><li>Symbols (see the previous password restrictions).</li></ul></li></ul> |
+| Password expiry duration (Maximum password age) |<ul><li>Default value: **90** days.</li><li>The value is configurable by using the `Set-MsolPasswordPolicy` cmdlet from the Azure Active Directory Module for Windows PowerShell.</li></ul> |
+| Password expiry notification (When are users notified of password expiration) |<ul><li>Default value: **14** days (before password expires).</li><li>The value is configurable by using the `Set-MsolPasswordPolicy` cmdlet.</li></ul> |
+| Password expiry (Do passwords ever expire) |<ul><li>Default value: **false** days (indicates that password expiry is enabled).</li><li>The value can be configured for individual user accounts by using the `Set-MsolUser` cmdlet.</li></ul> |
+| Password change history | The last password *can't* be used again when the user changes a password. |
+| Password reset history | The last password *can* be used again when the user resets a forgotten password. |
+| Account lockout | After 10 unsuccessful sign-in attempts with the wrong password, the user is locked out for one minute. Further incorrect sign-in attempts lock out the user for increasing durations of time. [Smart lockout](howto-password-smart-lockout.md) tracks the last three bad password hashes to avoid incrementing the lockout counter for the same password. If someone enters the same bad password multiple times, this behavior will not cause the account to lockout. |
 
-## <a name="set-password-expiration-policies-in-azure-ad"></a>Nastavení zásad vypršení platnosti hesla ve službě Azure AD
+## <a name="set-password-expiration-policies-in-azure-ad"></a>Set password expiration policies in Azure AD
 
-Globální správce nebo Správce uživatelů cloudové služby Microsoftu může použít Modul Microsoft Azure AD pro Windows PowerShell k nastavení hesla uživatele, která nebrzy vyprší. Pomocí rutin prostředí Windows PowerShell můžete také odebrat konfiguraci pro nikdy nevypršení platnosti nebo zjistit, která uživatelská hesla jsou nastavena na hodnotu nikdy nevyprší. 
+A global administrator or user administrator for a Microsoft cloud service can use the Microsoft Azure AD Module for Windows PowerShell to set user passwords not to expire. You can also use Windows PowerShell cmdlets to remove the never-expires configuration or to see which user passwords are set to never expire. 
 
-Tento návod se vztahuje na jiné poskytovatele, jako je Intune a Office 365, které se taky spoléhají na Azure AD pro identity a adresářové služby. Vypršení platnosti hesla je jediná součást zásad, kterou je možné změnit.
+This guidance applies to other providers, such as Intune and Office 365, which also rely on Azure AD for identity and directory services. Password expiration is the only part of the policy that can be changed.
 
 > [!NOTE]
-> Jenom hesla pro uživatelské účty, která nejsou synchronizovaná prostřednictvím synchronizace adresářů, se dají nakonfigurovat tak, aby nevypršela platnost. Další informace o synchronizaci adresářů najdete v tématu [připojení AD pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+> Only passwords for user accounts that are not synchronized through directory synchronization can be configured to not expire. For more information about directory synchronization, see [Connect AD with Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 
-## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Nastavení nebo ověření zásad hesel pomocí prostředí PowerShell
+## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Set or check the password policies by using PowerShell
 
-Abyste mohli začít, musíte [si stáhnout a nainstalovat modul Azure AD PowerShell](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Po instalaci nástroje můžete pomocí následujících kroků nakonfigurovat jednotlivá pole.
+To get started, you need to [download and install the Azure AD PowerShell module](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). After you have it installed, you can use the following steps to configure each field.
 
-### <a name="check-the-expiration-policy-for-a-password"></a>Podívejte se na zásady vypršení platnosti hesla.
+### <a name="check-the-expiration-policy-for-a-password"></a>Check the expiration policy for a password
 
-1. Připojte se k Windows PowerShellu pomocí přihlašovacích údajů správce uživatele nebo správce společnosti.
-1. Spusťte jeden z následujících příkazů:
+1. Connect to Windows PowerShell by using your user administrator or company administrator credentials.
+1. Execute one of the following commands:
 
-   * Chcete-li zjistit, zda je uživatelské heslo pro jednoho uživatele nastaveno na hodnotu nikdy nevyprší, spusťte následující rutinu pomocí hlavního názvu uživatele *\@* (například ' contoso.onmicrosoft.com ') nebo ID uživatele, který chcete ověřit:
+   * To see if a single user’s password is set to never expire, run the following cmdlet by using the UPN (for example, *aprilr\@contoso.onmicrosoft.com*) or the user ID of the user you want to check:
 
    ```powershell
    Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-   * Pokud chcete zobrazit nastavení heslo pro všechny uživatele bez **vypršení platnosti** , spusťte následující rutinu:
+   * To see the **Password never expires** setting for all users, run the following cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-### <a name="set-a-password-to-expire"></a>Nastavit vypršení platnosti hesla
+### <a name="set-a-password-to-expire"></a>Set a password to expire
 
-1. Připojte se k Windows PowerShellu pomocí přihlašovacích údajů správce uživatele nebo správce společnosti.
-1. Spusťte jeden z následujících příkazů:
+1. Connect to Windows PowerShell by using your user administrator or company administrator credentials.
+1. Execute one of the following commands:
 
-   * Pokud chcete nastavit heslo jednoho uživatele, aby platnost hesla vyprší, spusťte následující rutinu pomocí hlavního názvu uživatele (UPN) nebo ID uživatele:
+   * To set the password of one user so that the password expires, run the following cmdlet by using the UPN or the user ID of the user:
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
    ```
 
-   * Pokud chcete nastavit hesla všech uživatelů v organizaci, aby vyprší platnost, použijte tuto rutinu:
+   * To set the passwords of all users in the organization so that they expire, use the following cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
    ```
 
-### <a name="set-a-password-to-never-expire"></a>Nastavit heslo na nikdy neplatnost
+### <a name="set-a-password-to-never-expire"></a>Set a password to never expire
 
-1. Připojte se k Windows PowerShellu pomocí přihlašovacích údajů správce uživatele nebo správce společnosti.
-1. Spusťte jeden z následujících příkazů:
+1. Connect to Windows PowerShell by using your user administrator or company administrator credentials.
+1. Execute one of the following commands:
 
-   * Chcete-li nastavit heslo pro jednoho uživatele na hodnotu nikdy nevyprší, spusťte následující rutinu pomocí hlavního názvu uživatele (UPN) nebo ID uživatele:
+   * To set the password of one user to never expire, run the following cmdlet by using the UPN or the user ID of the user:
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
    ```
 
-   * Pokud chcete nastavit heslo pro všechny uživatele v organizaci, na který nikdy nevypršela platnost, spusťte následující rutinu:
+   * To set the passwords of all the users in an organization to never expire, run the following cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
    ```
 
    > [!WARNING]
-   > Hesla jsou `-PasswordPolicies DisablePasswordExpiration` `pwdLastSet` nastavena na stáří na základě atributu. Pokud nastavíte heslo uživatele na hodnotu nikdy nevyprší a pak na 90 dní po, vyprší platnost hesla. Pokud v závislosti `pwdLastSet` na atributu změníte `-PasswordPolicies None`vypršení platnosti, `pwdLastSet` všechna hesla, která mají starší než 90 dní, vyžadují, aby je uživatel změnil při příštím přihlášení. Tato změna může ovlivnit velký počet uživatelů.
+   > Passwords set to `-PasswordPolicies DisablePasswordExpiration` still age based on the `pwdLastSet` attribute. If you set the user passwords to never expire and then 90+ days go by, the passwords expire. Based on the `pwdLastSet` attribute, if you change the expiration to `-PasswordPolicies None`, all passwords that have a `pwdLastSet` older than 90 days require the user to change them the next time they sign in. This change can affect a large number of users.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Následující články poskytují další informace o resetování hesla prostřednictvím služby Azure AD:
+The following articles provide additional information about password reset through Azure AD:
 
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
@@ -171,5 +171,5 @@ Následující články poskytují další informace o resetování hesla prost�
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco poškozené. Jak řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
+* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
 * [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)

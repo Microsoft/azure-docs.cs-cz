@@ -1,179 +1,179 @@
 ---
-title: Plánování a spuštění nasazení služby Azure Multi-Factor Authentication – Azure Active Directory
-description: Plánování nasazení Microsoft Azure Multi-Factor Authentication
+title: Deploy Azure Multi-Factor Authentication - Azure Active Directory
+description: Microsoft Azure Multi-Factor Authentication deployment planning
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22e3131a204589a506b2d5f1e2508c37ad3b4100
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: cab4b57513f90a5cbe80724d4937f8d0f87b5517
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847205"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381787"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování cloudového nasazení Azure Multi-Factor Authentication
+# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planning a cloud-based Azure Multi-Factor Authentication deployment
 
-Uživatelé se připojují k prostředkům organizace ve stále složitějších scénářích. Uživatelé se k podnikové síti připojují ze svých podnikových, osobních a veřejných zařízení pomocí inteligentních telefonů, tabletů, počítačů a notebooků, často na různých platformách. V tomto případě se trvale připojuje k více zařízením a na světě více platforem je zabezpečení uživatelských účtů důležitější než kdykoli dřív. Hesla, bez ohledu na jejich složitost, používaná na zařízeních, sítích a platformách již nejsou dostačující k zajištění zabezpečení uživatelského účtu, zejména v případě, že uživatelé mají v rámci účtů často opakovaně používat hesla. Sofistikované útoky phishing a další sociální inženýrství můžou vést k tomu, že se budou uživatelská jména a hesla publikovat a prodávat v tmavém webu.
+People are connecting to organizational resources in increasingly complicated scenarios. People connect from organization-owned, personal, and public devices on and off the corporate network using smart phones, tablets, PCs, and laptops, often on multiple platforms. In this always-connected, multi-device and multi-platform world, the security of user accounts is more important than ever. Passwords, no matter their complexity, used across devices, networks, and platforms are no longer sufficient to ensure the security of the user account, especially when users tend to reuse passwords across accounts. Sophisticated phishing and other social engineering attacks can result in usernames and passwords being posted and sold across the dark web.
 
-[Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) pomáhá chránit přístup k datům a aplikacím. Poskytuje další úroveň zabezpečení s použitím druhé formy ověřování. Organizace můžou pomocí [podmíněného přístupu](../conditional-access/overview.md) zajistit, aby řešení vyhovovalo konkrétním potřebám.
+[Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) helps safeguard access to data and applications. It provides an additional layer of security using a second form of authentication. Organizations can use [Conditional Access](../conditional-access/overview.md) to make the solution fit their specific needs.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete s nasazením Azure Multi-Factor Authentication, jsou k dispozici nezbytné položky, které byste měli vzít v úvahu.
+Before starting a deployment of Azure Multi-Factor Authentication, there are prerequisite items that should be considered.
 
 | Scénář | Požadavek |
 | --- | --- |
-| **Pouze cloudové** prostředí identity s moderním ověřováním | **Žádné další úlohy požadavků** |
-| **Hybridní** scénáře identity | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) je nasazený a identity uživatelů se synchronizují nebo federované s použitím místní Active Directory Domain Services Azure Active Directory. |
-| Místní starší verze aplikací publikované pro cloudový přístup | [Proxy aplikace](../manage-apps/application-proxy.md) služby Azure AD je nasazená. |
-| Použití Azure MFA s ověřováním RADIUS | Je nasazen [Server NPS (Network Policy Server)](howto-mfa-nps-extension.md) . |
-| Uživatelé mají systém Microsoft Office 2010 nebo starší nebo Apple Mail pro iOS 11 nebo starší. | Upgradujte na [systém Microsoft Office 2013 nebo novější](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) a Apple Mail pro iOS 12 nebo novější. Protokoly pro ověřování starší verze nepodporují podmíněný přístup. |
+| **Cloud-only** identity environment with modern authentication | **No additional prerequisite tasks** |
+| **Hybrid** identity scenarios | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) is deployed and user identities are synchronized or federated with the on-premises Active Directory Domain Services with Azure Active Directory. |
+| On-premises legacy applications published for cloud access | Azure AD [Application Proxy](../manage-apps/application-proxy.md) is deployed. |
+| Using Azure MFA with RADIUS Authentication | A [Network Policy Server (NPS)](howto-mfa-nps-extension.md) is deployed. |
+| Users have Microsoft Office 2010 or earlier, or Apple Mail for iOS 11 or earlier | Upgrade to [Microsoft Office 2013 or later](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) and Apple mail for iOS 12 or later. Conditional Access is not supported by legacy authentication protocols. |
 
-## <a name="plan-user-rollout"></a>Plánování zavedení uživatelů
+## <a name="plan-user-rollout"></a>Plan user rollout
 
-Plán zavedení MFA by měl zahrnovat pilotní nasazení, po kterém následují vlny nasazení, které jsou v rámci vaší kapacity podpory. Zahajte zavedení tak, že použijete zásady podmíněného přístupu na malou skupinu uživatelů pilotního nasazení. Po vyhodnocení účinku u pilotních uživatelů, použitých procesů a chování registrace můžete přidat do této zásady další skupiny nebo přidat další uživatele do stávajících skupin.
+Your MFA rollout plan should include a pilot deployment followed by deployment waves that are within your support capacity. Begin your rollout by applying your Conditional Access policies to a small group of pilot users. After evaluating the effect on the pilot users, process used, and registration behaviors, you can either add more groups to the policy or add more users to the existing groups.
 
-### <a name="user-communications"></a>Komunikace uživatelů
+### <a name="user-communications"></a>User communications
 
-Je důležité informovat uživatele, v plánované komunikaci, o nadcházejících změnách, požadavcích na registraci Azure MFA a všech nezbytných akcích uživatele. Doporučujeme, abyste komunikaci vyvinuli společně se zástupci z vaší organizace, jako je komunikace, Správa změn nebo oddělení lidských zdrojů.
+It is critical to inform users, in planned communications, about upcoming changes, Azure MFA registration requirements, and any necessary user actions. We recommend communications are developed in concert with representatives from within your organization, such as a Communications, Change Management, or Human Resources departments.
 
-Společnost Microsoft poskytuje [komunikační šablony](https://aka.ms/mfatemplates) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou při vypracovávání komunikace. Uživatelům můžete odeslat [https://myprofile.microsoft.com](https://myprofile.microsoft.com) k registraci přímo tak, že vyberete odkazy na **informace o zabezpečení** na této stránce.
+Microsoft provides [communication templates](https://aka.ms/mfatemplates) and [end-user documentation](../user-help/security-info-setup-signin.md) to help draft your communications. You can send users to [https://myprofile.microsoft.com](https://myprofile.microsoft.com) to register directly by selecting the **Security Info** links on that page.
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-Azure Multi-Factor Authentication se nasazuje vynucenými zásadami s podmíněným přístupem. [Zásada podmíněného přístupu](../conditional-access/overview.md) může vyžadovat, aby uživatelé při splnění určitých kritérií prováděli vícefaktorové ověřování, například:
+Azure Multi-factor Authentication is deployed by enforcing policies with Conditional Access. A [Conditional Access policy](../conditional-access/overview.md) can require users to perform multi-factor authentication when certain criteria are met such as:
 
-* Všichni uživatelé, konkrétní uživatel, člen skupiny nebo přiřazená role
-* Konkrétní cloudová aplikace, ke které se přistupoval
-* Platforma zařízení
-* Stav zařízení
-* Síťové umístění nebo IP adresa geograficky umístěné
+* All users, a specific user, member of a group, or assigned role
+* Specific cloud application being accessed
+* Device platform
+* State of device
+* Network location or geo-located IP address
 * Klientské aplikace
-* Riziko přihlášení (vyžaduje ochranu identity)
+* Sign-in risk (Requires Identity Protection)
 * Odpovídající zařízení
-* Zařízení připojené k hybridní službě Azure AD
-* Schválená klientská aplikace
+* Hybrid Azure AD joined device
+* Approved client application
 
-Používejte přizpůsobitelné plakáty a e-mailové šablony v [materiálech pro Multi-Factor Authentication](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) k zavedení služby Multi-Factor Authentication do vaší organizace.
+Use the customizable posters and email templates in [multi-factor authentication rollout materials](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) to roll out multi-factor authentication to your organization.
 
-## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Povolení Multi-Factor Authentication s podmíněným přístupem
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Enable Multi-Factor Authentication with Conditional Access
 
-Zásady podmíněného přístupu vynutily registraci, což vyžaduje, aby registraci při prvním přihlášení vyžadovali Neregistrovaní uživatelé, což je důležité bezpečnostní hledisko.
+Conditional Access policies enforce registration, requiring unregistered users to complete registration at first sign-in, an important security consideration.
 
-[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) do scénáře Azure Multi-Factor Authentication dospěje jak zásady registrace, tak i automatické zjišťování rizik a nápravné zásady. Zásady je možné vytvořit pro vynucení změny hesla, pokud dojde k ohrožení zabezpečení identity nebo pokud je přihlášení považováno za rizikové pomocí následujících [událostí](../reports-monitoring/concept-risk-events.md):
+[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) contributes both a registration policy for and automated risk detection and remediation policies to the Azure Multi-Factor Authentication story. Policies can be created to force password changes when there is a threat of compromised identity or require MFA when a sign-in is deemed risky by the following [events](../reports-monitoring/concept-risk-events.md):
 
-* Nevrácená pověření
+* Leaked credentials
 * Přihlášení z anonymních IP adres
 * Nemožná cesta do netypických míst
 * Přihlášení z neznámých míst
 * Přihlášení z nakažených zařízení
-* Přihlášení z IP adres s podezřelými aktivitami
+* Sign-ins from IP addresses with suspicious activities
 
-K některým detekcím rizik zjištěným Azure Active Directory Identity Protection dochází v reálném čase a některé vyžadují offline zpracování. Správci se můžou rozhodnout zablokovat uživatelům, kteří mají rizikové chování a opravovat je ručně, vyžadovat změnu hesla nebo vyžadují službu Multi-Factor Authentication v rámci zásad podmíněného přístupu.
+Some of the risk detections detected by Azure Active Directory Identity Protection occur in real time and some require offline processing. Administrators can choose to block users who exhibit risky behaviors and remediate manually, require a password change, or require a multi-factor authentication as part of their Conditional Access policies.
 
-## <a name="define-network-locations"></a>Definovat síťová umístění
+## <a name="define-network-locations"></a>Define network locations
 
-Doporučujeme, aby organizace používaly podmíněný přístup k definování sítě pomocí [pojmenovaných umístění](../conditional-access/location-condition.md#named-locations). Pokud vaše organizace používá Identity Protection, zvažte použití zásad na základě rizik namísto pojmenovaných umístění.
+We recommended that organizations use Conditional Access to define their network using [named locations](../conditional-access/location-condition.md#named-locations). If your organization is using Identity Protection, consider using risk-based policies instead of named locations.
 
-### <a name="configuring-a-named-location"></a>Konfigurace pojmenovaného umístění
+### <a name="configuring-a-named-location"></a>Configuring a named location
 
-1. Otevřít **Azure Active Directory** v Azure Portal
-2. Klikněte na **podmíněný přístup** .
-3. Klikněte na **pojmenovaná umístění** .
-4. Klikněte na **nové umístění** .
-5. Do pole **název** zadejte smysluplný název.
-6. Vyberte, jestli definujete umístění pomocí rozsahů IP adres nebo zemí nebo oblastí.
-   1. Pokud používáte rozsahy IP adres
-      1. Rozhodněte, jestli chcete umístění označit jako důvěryhodné. Přihlášení z důvěryhodného umístění snižuje riziko při přihlášení uživatele. Tuto složku označte jako důvěryhodnou jenom v případě, že víte, že zadané rozsahy IP adres jsou ve vaší organizaci zřízené a důvěryhodné.
-      2. Zadejte rozsahy IP adres.
-   2. Pokud používáte země nebo oblasti
-      1. Rozbalte rozevírací nabídku a vyberte země nebo oblasti, které chcete definovat pro toto pojmenované umístění.
-      2. Rozhodněte, jestli se mají zahrnout neznámé oblasti. Neznámé oblasti jsou IP adresy, které nejdou namapovat na zemi nebo oblast.
+1. Open **Azure Active Directory** in the Azure portal
+2. Click **Conditional Access**
+3. Click **Named Locations**
+4. Click **New Location**
+5. In the **Name** field, provide a meaningful name
+6. Select whether you are defining the location using IP ranges or Countries/Regions
+   1. If using IP Ranges
+      1. Decide whether to mark the location as Trusted. Přihlášení z důvěryhodného umístění snižuje riziko při přihlášení uživatele. Only mark this location as trusted if you know the IP ranges entered are established and credible in your organization.
+      2. Specify the IP Ranges
+   2. If using Countries/Regions
+      1. Expand the drop-down menu and select the countries or regions you wish to define for this named location.
+      2. Decide whether to Include unknown areas. Unknown areas are IP addresses that can't be mapped to a country/region.
 7. Klikněte na **Vytvořit**
 
-## <a name="plan-authentication-methods"></a>Plánování metod ověřování
+## <a name="plan-authentication-methods"></a>Plan authentication methods
 
-Správci mohou zvolit [metody ověřování](../authentication/concept-authentication-methods.md) , které mají být uživatelům k dispozici. Je důležité, abyste povolili více než jednu metodu ověřování, takže uživatelé mají k dispozici metodu zálohování pro případ, že jejich primární metoda není k dispozici. Pro povolení správců jsou k dispozici následující metody:
+Administrators can choose the [authentication methods](../authentication/concept-authentication-methods.md) that they want to make available for users. It is important to allow more than a single authentication method so that users have a backup method available in case their primary method is unavailable. The following methods are available for administrators to enable:
 
-### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
+### <a name="notification-through-mobile-app"></a>Notification through mobile app
 
-Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle nabízené oznámení. Uživatel zobrazí oznámení a vybere **schválit** k dokončení ověření. Nabízená oznámení prostřednictvím mobilní aplikace poskytují uživatelům nejméně rušivou možnost. Jsou také nejspolehlivější a zabezpečený způsob, protože místo telefonního subsystému používá datové připojení.
+A push notification is sent to the Microsoft Authenticator app on your mobile device. The user views the notification and selects **Approve** to complete verification. Push notifications through a mobile app provide the least intrusive option for users. They are also the most reliable and secure option because they use a data connection rather than telephony.
 
 > [!NOTE]
-> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, **oznámení prostřednictvím metody mobilní aplikace** v **zařízeních s Androidem** v dané zemi nefunguje. Pro tyto uživatele by měly být k dispozici alternativní metody.
+> If your organization has staff working in or traveling to China, the **Notification through mobile app** method on **Android devices** does not work in that country. Alternate methods should be made available for those users.
 
-### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
+### <a name="verification-code-from-mobile-app"></a>Verification code from mobile app
 
-Mobilní aplikace, jako je Microsoft Authenticator aplikace, vygeneruje nový ověřovací kód OATH každých 30 sekund. Uživatel zadá ověřovací kód do přihlašovacího rozhraní. Možnost mobilní aplikace se dá použít bez ohledu na to, jestli telefon obsahuje data nebo mobilní signál.
+A mobile app like the Microsoft Authenticator app generates a new OATH verification code every 30 seconds. The user enters the verification code into the sign-in interface. The mobile app option can be used whether or not the phone has a data or cellular signal.
 
-### <a name="call-to-phone"></a>Zavolat na telefon
+### <a name="call-to-phone"></a>Call to phone
 
-Automatické volání hlasu je umístěno uživateli. Uživatel odpoví na volání a stiskne **#** na klávesnici telefonu ke schválení ověřování. Volání na telefon je skvělou metodou zálohování pro oznámení nebo ověřovací kód z mobilní aplikace.
+An automated voice call is placed to the user. The user answers the call and presses **#** on the phone keypad to approve their authentication. Call to phone is a great backup method for notification or verification code from a mobile app.
 
-### <a name="text-message-to-phone"></a>Textová zpráva na telefon
+### <a name="text-message-to-phone"></a>Text message to phone
 
-Uživateli se pošle textová zpráva obsahující ověřovací kód. uživateli se zobrazí výzva k zadání ověřovacího kódu do přihlašovacího rozhraní.
+A text message that contains a verification code is sent to the user, the user is prompted to enter the verification code into the sign-in interface.
 
-### <a name="choose-verification-options"></a>Zvolit možnosti ověřování
+### <a name="choose-verification-options"></a>Choose verification options
 
-1. Přejděte na **Azure Active Directory**, **uživatele** **Multi-Factor Authentication**.
+1. Browse to **Azure Active Directory**, **Users**, **Multi-Factor Authentication**.
 
-   ![Přístup k portálu Multi-Factor Authentication z okna uživatelé Azure AD v Azure Portal](media/howto-mfa-getstarted/users-mfa.png)
+   ![Accessing the Multi-Factor Authentication portal from Azure AD Users blade in Azure portal](media/howto-mfa-getstarted/users-mfa.png)
 
-1. Na nové kartě, která se otevře, přejděte na **nastavení služby**.
-1. V části **Možnosti ověřování**zaškrtněte všechna políčka pro metody dostupné pro uživatele.
+1. In the new tab that opens browse to **service settings**.
+1. Under **verification options**, check all of the boxes for methods available to users.
 
-   ![Konfigurace metod ověřování na kartě nastavení služby Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
+   ![Configuring verification methods in the Multi-Factor Authentication service settings tab](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
 1. Klikněte na **Uložit**.
-1. Zavřete kartu **nastavení služby** .
+1. Close the **service settings** tab.
 
-## <a name="plan-registration-policy"></a>Plánování zásad registrace
+## <a name="plan-registration-policy"></a>Plan registration policy
 
-Správci musí určit, jak budou uživatelé registrovat své metody. Organizace by měly [Povolit nové kombinované registrační prostředí](howto-registration-mfa-sspr-combined.md) pro Azure MFA a Samoobslužné resetování hesla (SSPR). SSPR umožňuje uživatelům obnovit heslo zabezpečeným způsobem pomocí stejných metod, které používají pro službu Multi-Factor Authentication. Tuto kombinovanou registraci doporučujeme v současnosti ve verzi Public Preview, protože se jedná o Skvělé prostředí pro uživatele a možnost Registrovat se jednou pro obě služby. Povolení stejných metod pro SSPR a Azure MFA umožní uživatelům zaregistrovat se k používání obou funkcí.
+Administrators must determine how users will register their methods. Organizations should [enable the new combined registration experience](howto-registration-mfa-sspr-combined.md) for Azure MFA and self-service password reset (SSPR). SSPR allows users to reset their password in a secure way using the same methods they use for multi-factor authentication. We recommend this combined registration, currently in public preview, because it’s a great experience for users, with the ability to register once for both services. Enabling the same methods for SSPR and Azure MFA will allow your users to be registered to use both features.
 
-### <a name="registration-with-identity-protection"></a>Registrace pomocí Identity Protection
+### <a name="registration-with-identity-protection"></a>Registration with Identity Protection
 
-Pokud vaše organizace používá Azure Active Directory Identity Protection, [nakonfigurujte zásady registrace MFA](../identity-protection/howto-mfa-policy.md) , aby vyzvat uživatele k registraci při příštím přihlášení.
+If your organization is using Azure Active Directory Identity Protection, [configure the MFA registration policy](../identity-protection/howto-mfa-policy.md) to prompt your users to register the next time they sign in interactively.
 
-### <a name="registration-without-identity-protection"></a>Registrace bez ochrany identity
+### <a name="registration-without-identity-protection"></a>Registration without Identity Protection
 
-Pokud vaše organizace nemá licence, které umožňují ochranu identity, zobrazí se uživatelům výzva k registraci při příštím přihlášení ke službě MFA. Uživatelé nemusí být registrováni pro vícefaktorové ověřování, pokud nepoužívají aplikace chráněné s MFA. Je důležité, abyste získali všechny registrované uživatele, aby Neplatní aktéri nemohly uhodnout heslo uživatele a zaregistrovali je pro MFA jménem a účinně přebírají kontrolu nad účtem.
+If your organization does not have licenses that enable Identity Protection, users are prompted to register the next time that MFA is required at sign-in. Users may not be registered for MFA if they don't use applications protected with MFA. It's important to get all users registered so that bad actors cannot guess the password of a user and register for MFA on their behalf, effectively taking control of the account.
 
-#### <a name="enforcing-registration"></a>Vynucování registrace
+#### <a name="enforcing-registration"></a>Enforcing registration
 
-Pomocí následujících kroků může zásada podmíněného přístupu vynutit, aby se uživatelé zaregistrovali Multi-Factor Authentication
+Using the following steps a Conditional Access policy can force users to register for Multi-Factor Authentication
 
-1. Vytvořte skupinu a přidejte všechny uživatele, kteří nejsou aktuálně zaregistrovaní.
-2. Pomocí podmíněného přístupu vynuťte službu Multi-Factor Authentication pro tuto skupinu pro přístup ke všem prostředkům.
-3. Pravidelně znovu vyhodnoťte členství ve skupině a odeberte uživatele, kteří se zaregistrovali ze skupiny.
+1. Create a group, add all users not currently registered.
+2. Using Conditional Access, enforce multi-factor authentication for this group for access to all resources.
+3. Periodically, reevaluate the group membership, and remove users who have registered from the group.
 
-Registrované a Neregistrovaní uživatelé Azure MFA můžete identifikovat pomocí příkazů PowerShellu, které se spoléhají na [modul MSOnline PowerShellu](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
+You may identify registered and non-registered Azure MFA users with PowerShell commands that rely on the [MSOnline PowerShell module](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
 
-#### <a name="identify-registered-users"></a>Identifikace registrovaných uživatelů
+#### <a name="identify-registered-users"></a>Identify registered users
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-#### <a name="identify-non-registered-users"></a>Identifikace neregistrovaných uživatelů
+#### <a name="identify-non-registered-users"></a>Identify non-registered users
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Převod uživatelů z ověřování MFA na uživatele na vícefaktorové ověřování na základě podmíněného přístupu
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Convert users from per-user MFA to Conditional Access based MFA
 
-Pokud byly vaši uživatelé povoleni pomocí povolení a prosazování služby Azure Multi-Factor Authentication, může vám následující PowerShell pomoct při převodu na Multi-Factor Authentication Azure založené na podmíněném přístupu.
+If your users were enabled using per-user enabled and enforced Azure Multi-Factor Authentication the following PowerShell can assist you in making the conversion to Conditional Access based Azure Multi-Factor Authentication.
 
-Spusťte tento PowerShell v okně ISE nebo ho uložte jako. Soubor PS1, který se má spustit místně
+Run this PowerShell in an ISE window or save as a .PS1 file to run locally.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -210,153 +210,153 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> V nedávné době jsme změnili chování a skript PowerShellu. Dříve byl skript uložen mimo metody MFA, zakázal MFA a obnovil metody. Už to není nutné, když výchozí chování pro Disable nevymaže tyto metody.
+> We recently changed the behavior and PowerShell script above accordingly. Previously, the script saved off the MFA methods, disabled MFA, and restored the methods. This is no longer necessary now that the default behavior for disable doesn't clear the methods.
 
-## <a name="plan-conditional-access-policies"></a>Plánování zásad podmíněného přístupu
+## <a name="plan-conditional-access-policies"></a>Plan Conditional Access policies
 
-Pokud chcete naplánovat strategii zásad podmíněného přístupu, která určí, kdy se vyžadují MFA a jiné ovládací prvky, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md).
+To plan your Conditional Access policy strategy, which will determine when MFA and other controls are required, refer to [What is Conditional Access in Azure Active Directory?](../conditional-access/overview.md).
 
-Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure AD. Dopad tohoto neúmyslného přístupu správce můžete zmírnit tím, že [ve svém tenantovi vytvoříte dva nebo víc účtů pro nouzový přístup](../users-groups-roles/directory-emergency-access.md) a vyloučíte je ze zásad podmíněného přístupu.
+It is important that you prevent being inadvertently locked out of your Azure AD tenant. You can mitigate the impact of this inadvertent lack of administrative access by [creating two or more emergency access accounts in your tenant](../users-groups-roles/directory-emergency-access.md) and excluding them from your Conditional Access policy.
 
-### <a name="create-conditional-access-policy"></a>Vytvořit zásady podmíněného přístupu
+### <a name="create-conditional-access-policy"></a>Create Conditional Access policy
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce.
-1. Přejděte na **Azure Active Directory**, **podmíněný přístup**.
-1. Vyberte **nové zásady**.
-   ![vytvořit zásadu podmíněného přístupu, která povolí MFA pro Azure Portal uživatele v pilotní skupině](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
-1. Zadejte smysluplný název pro zásady.
-1. V části **Uživatelé a skupiny**:
-   * Na kartě **Zahrnout** klikněte na přepínač **Všichni uživatelé** .
-   * Na kartě **vyloučit** zaškrtněte políčko pro **uživatele a skupiny** a vyberte účty pro nouzový přístup.
+1. Sign in to the [Azure portal](https://portal.azure.com) using a global administrator account.
+1. Browse to **Azure Active Directory**, **Conditional Access**.
+1. Select **New policy**.
+   ![Create a Conditional Access policy to enable MFA for Azure portal users in pilot group](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+1. Provide a meaningful name for your policy.
+1. Under **users and groups**:
+   * On the **Include** tab, select the **All users** radio button
+   * On the **Exclude** tab, check the box for **Users and groups** and choose your emergency access accounts.
    * Klikněte na **Done** (Hotovo).
-1. V části **cloudové aplikace**vyberte přepínač **všechny cloudové aplikace** .
-   * Volitelně: na kartě **vyloučit** vyberte cloudové aplikace, pro které vaše organizace nevyžaduje MFA.
+1. Under **Cloud apps**, select the **All cloud apps** radio button.
+   * OPTIONALLY: On the **Exclude** tab, choose cloud apps that your organization does not require MFA for.
    * Klikněte na **Done** (Hotovo).
-1. Oddíl **podmínky** :
-   * Volitelně: Pokud jste povolili Azure Identity Protection, můžete v rámci této zásady vyhodnotit riziko přihlášení.
-   * Volitelně: Pokud jste nakonfigurovali důvěryhodná umístění nebo pojmenovaná umístění, můžete určit, jestli se mají tato umístění zahrnout nebo vyloučit ze zásad.
-1. V části **udělit**se ujistěte, že je vybrán přepínač **udělení přístupu** .
-    * Zaškrtněte políčko pro **vyžadovat službu Multi-Factor Authentication**.
+1. Under **Conditions** section:
+   * OPTIONALLY: If you have enabled Azure Identity Protection, you can choose to evaluate sign-in risk as part of the policy.
+   * OPTIONALLY: If you have configured trusted locations or named locations, you can specify to include or exclude those locations from the policy.
+1. Under **Grant**, make sure the **Grant access** radio button is selected.
+    * Check the box for **Require multi-factor authentication**.
     * Klikněte na **Vybrat**.
-1. Přeskočit část **relace** .
-1. Nastavte přepínač **Povolit zásady** na **zapnuto**.
+1. Skip the **Session** section.
+1. Set the **Enable policy** toggle to **On**.
 1. Klikněte na **Vytvořit**.
 
-## <a name="plan-integration-with-on-premises-systems"></a>Plánování integrace s místními systémy
+## <a name="plan-integration-with-on-premises-systems"></a>Plan integration with on-premises systems
 
-Některé starší verze a místní aplikace, které se neověřují přímo proti službě Azure AD, vyžadují další kroky pro použití vícefaktorového ověřování (MFA), včetně:
+Some legacy and on-premises applications that do not authenticate directly against Azure AD require additional steps to use MFA including:
 
-* Starší verze místních aplikací, které budou muset používat proxy aplikace.
-* Místní aplikace RADIUS, které budou muset používat adaptér MFA se serverem NPS.
-* Místní AD FS aplikace, které budou muset používat adaptér MFA s AD FS 2016 nebo novějším.
+* Legacy on-premises applications, which will need to use Application proxy.
+* On-premises RADIUS applications, which will need to use MFA adapter with NPS server.
+* On-premises AD FS applications, which will need to use MFA adapter with AD FS 2016 or newer.
 
-Aplikace, které se ověřují přímo pomocí Azure AD a mají moderní ověřování (WS-dodává, SAML, OAuth, OpenID Connect), můžou přímo využívat zásady podmíněného přístupu.
+Applications that authenticate directly with Azure AD and have modern authentication (WS-Fed, SAML, OAuth, OpenID Connect) can make use of Conditional Access policies directly.
 
-### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Použití Azure MFA s Azure Proxy aplikací služby AD
+### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Use Azure MFA with Azure AD Application Proxy
 
-Aplikace, které jsou umístěné místně, se dají publikovat do vašeho tenanta Azure AD prostřednictvím [Azure proxy aplikací služby AD](../manage-apps/application-proxy.md) a můžou využít výhod Azure Multi-Factor Authentication, pokud jsou nakonfigurované tak, aby používaly předběžné ověřování Azure AD.
+Applications residing on-premises can be published to your Azure AD tenant via [Azure AD Application Proxy](../manage-apps/application-proxy.md) and can take advantage of Azure Multi-Factor Authentication if they are configured to use Azure AD pre-authentication.
 
-Tyto aplikace podléhají zásadám podmíněného přístupu, které vynutily Azure Multi-Factor Authentication stejně jako jakékoli jiné aplikace integrované v Azure AD.
+These applications are subject to Conditional Access policies that enforce Azure Multi-Factor Authentication, just like any other Azure AD-integrated application.
 
-Podobně platí, že pokud se pro všechna přihlášení uživatelů vynutila Multi-Factor Authentication Azure, budou místní aplikace publikované s Azure Proxy aplikací služby AD chráněné.
+Likewise, if Azure Multi-Factor Authentication is enforced for all user sign-ins, on-premises applications published with Azure AD Application Proxy will be protected.
 
-### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Integrace služby Azure Multi-Factor Authentication se serverem NPS (Network Policy Server)
+### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Integrating Azure Multi-Factor Authentication with Network Policy Server
 
-Rozšíření serveru NPS (Network Policy Server) pro Azure MFA přidává cloudové možnosti MFA do vaší ověřovací infrastruktury pomocí stávajících serverů. S rozšířením NPS můžete do stávajícího toku ověřování přidat ověřování pomocí telefonního hovoru, textové zprávy nebo aplikace pro telefon. Tato integrace má následující omezení:
+The Network Policy Server (NPS) extension for Azure MFA adds cloud-based MFA capabilities to your authentication infrastructure using your existing servers. With the NPS extension, you can add phone call, text message, or phone app verification to your existing authentication flow. This integration has the following limitations:
 
-* Pomocí protokolu CHAPv2 jsou podporovány pouze nabízená oznámení a volání aplikace ověřovatele.
-* Zásady podmíněného přístupu nelze použít.
+* With the CHAPv2 protocol, only authenticator app push notifications and voice call are supported.
+* Conditional Access policies cannot be applied.
 
-Rozšíření serveru NPS funguje jako adaptér mezi POLOMĚRem a cloudovou službou Azure MFA, která poskytuje druhý faktor ověřování pro ochranu [VPN](howto-mfa-nps-extension-vpn.md), [Brána vzdálené plochy připojení](howto-mfa-nps-extension-rdg.md)nebo jiné aplikace podporující protokol RADIUS. Uživatelům, kteří se registrují pro Azure MFA v tomto prostředí, budou pro všechny pokusy o ověření vyhlášeni. nedostatečné zásady podmíněného přístupu znamenají, že se vždycky vyžaduje MFA.
+The NPS extension acts as an adapter between RADIUS and cloud-based Azure MFA to provide a second factor of authentication to protect [VPN](howto-mfa-nps-extension-vpn.md), [Remote Desktop Gateway connections](howto-mfa-nps-extension-rdg.md), or other RADIUS capable applications. Users that register for Azure MFA in this environment will be challenged for all authentication attempts, the lack of Conditional Access policies means MFA is always required.
 
-#### <a name="implementing-your-nps-server"></a>Implementace serveru NPS
+#### <a name="implementing-your-nps-server"></a>Implementing your NPS server
 
-Pokud máte nasazenou instanci serveru NPS a používáte ji již v provozu, odkaz [integruje stávající infrastrukturu serveru NPS do Azure Multi-Factor Authentication](howto-mfa-nps-extension.md). Pokud instalujete NPS poprvé, přečtěte si pokyny v tématu [NPS (Network Policy Server)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) . Pokyny k řešení potíží najdete v článku [řešení chybových zpráv z rozšíření serveru NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
+If you have an NPS instance deployed and in use already, reference [Integrate your existing NPS Infrastructure with Azure Multi-Factor Authentication](howto-mfa-nps-extension.md). If you are setting up NPS for the first time, refer to [Network Policy Server (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) for instructions. Troubleshooting guidance can be found in the article [Resolve error messages from the NPS extension for Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
 
-#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>Příprava serveru NPS pro uživatele, kteří nejsou zaregistrovaní pro MFA
+#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>Prepare NPS for users that aren't enrolled for MFA
 
-Vyberte, co se stane, když se uživatelé, kteří nejsou zaregistrovaní pomocí MFA, pokoušejí ověřit. Pro řízení chování funkcí použijte nastavení registru `REQUIRE_USER_MATCH` v cestě registru `HKLM\Software\Microsoft\AzureMFA`. Toto nastavení má jedinou možnost konfigurace.
+Choose what happens when users that aren’t enrolled with MFA try to authenticate. Use the registry setting `REQUIRE_USER_MATCH` in the registry path `HKLM\Software\Microsoft\AzureMFA` to control the feature behavior. This setting has a single configuration option.
 
 | Klíč | Hodnota | Výchozí |
 | --- | --- | --- |
-| `REQUIRE_USER_MATCH` | TRUE NEBO FALSE | Nenastaveno (ekvivalent hodnoty TRUE) |
+| `REQUIRE_USER_MATCH` | TRUE / FALSE | Not set (equivalent to TRUE) |
 
-Účelem tohoto nastavení je určit, co dělat, když není uživatel zaregistrovaný pro MFA. Účinky změny tohoto nastavení jsou uvedené v následující tabulce.
+The purpose of this setting is to determine what to do when a user is not enrolled for MFA. The effects of changing this setting are listed in the table below.
 
-| Nastavení | Stav MFA uživatele | Efekty |
+| Nastavení | User MFA Status | Effects |
 | --- | --- | --- |
-| Klíč neexistuje. | Zaregistrováno | Výzva MFA není úspěšná. |
-| Hodnota nastavená na true/Nenastaveno | Zaregistrováno | Výzva MFA není úspěšná. |
-| Nastavit klíč na false | Zaregistrováno | Ověřování bez MFA |
-| Klíč nastavený na hodnotu false nebo true | Zaregistrovaná | Je nutné provést ověření pomocí MFA |
+| Key does not exist | Not enrolled | MFA challenge is unsuccessful |
+| Value set to True / not set | Not enrolled | MFA challenge is unsuccessful |
+| Key set to False | Not enrolled | Authentication without MFA |
+| Key set to False or True | Enrolled | Must authenticate with MFA |
 
-### <a name="integrate-with-active-directory-federation-services"></a>Integrace s Active Directory Federation Services (AD FS)
+### <a name="integrate-with-active-directory-federation-services"></a>Integrate with Active Directory Federation Services
 
-Pokud je vaše organizace federované s Azure AD, můžete použít [Azure Multi-Factor Authentication k zabezpečení prostředků AD FS](multi-factor-authentication-get-started-adfs.md), a to místně i v cloudu. Azure MFA umožňuje omezit hesla a poskytnout bezpečnější způsob ověřování. Počínaje Windows serverem 2016 teď můžete nakonfigurovat Azure MFA pro primární ověřování.
+If your organization is federated with Azure AD, you can use [Azure Multi-Factor Authentication to secure AD FS resources](multi-factor-authentication-get-started-adfs.md), both on-premises and in the cloud. Azure MFA enables you to reduce passwords and provide a more secure way to authenticate. Starting with Windows Server 2016, you can now configure Azure MFA for primary authentication.
 
-Na rozdíl od AD FS ve Windows Serveru 2012 R2 se AD FS 2016 Azure MFA Adapter integruje přímo se službou Azure AD a nevyžaduje místní Azure MFA Server. Adaptér Azure MFA je integrovaný do systému Windows Server 2016 a nevyžaduje žádnou další instalaci.
+Unlike with AD FS in Windows Server 2012 R2, the AD FS 2016 Azure MFA adapter integrates directly with Azure AD and does not require an on-premises Azure MFA server. The Azure MFA adapter is built into Windows Server 2016, and there is no need for an additional installation.
 
-Pokud používáte Azure MFA s AD FS 2016 a cílová aplikace podléhá zásadám podmíněného přístupu, existují další okolnosti:
+When using Azure MFA with AD FS 2016 and the target application is subject to Conditional Access policy, there are additional considerations:
 
-* Podmíněný přístup je dostupný, když je aplikace předávající stranou Azure AD, federované s AD FS 2016 nebo novější.
-* Podmíněný přístup není k dispozici, pokud je aplikace předávající stranou AD FS 2016 nebo AD FS 2019 a je spravovaná nebo federované pomocí AD FS 2016 nebo AD FS 2019.
-* Podmíněný přístup není dostupný i v případě, že AD FS 2016 nebo AD FS 2019 je nakonfigurovaná tak, aby jako primární metodu ověřování používala Azure MFA.
+* Conditional Access is available when the application is a relying party to Azure AD, federated with AD FS 2016 or newer.
+* Conditional Access is not available when the application is a relying party to AD FS 2016 or AD FS 2019 and is managed or federated with AD FS 2016 or AD FS 2019.
+* Conditional Access is also not available when AD FS 2016 or AD FS 2019 is configured to use Azure MFA as the primary authentication method.
 
-#### <a name="ad-fs-logging"></a>Protokolování AD FS
+#### <a name="ad-fs-logging"></a>AD FS logging
 
-Standardní AD FS 2016 a 2019 protokolování v protokolu zabezpečení systému Windows a v protokolu AD FS správce obsahuje informace o požadavcích ověřování a jejich úspěchu nebo neúspěchu. Data protokolu událostí v těchto událostech určují, jestli se používala služba Azure MFA. Například ID události auditování AD FS 1200 může obsahovat:
+Standard AD FS 2016 and 2019 logging in both the Windows Security Log and the AD FS Admin log, contains information about authentication requests and their success or failure. Event log data within these events will indicate whether Azure MFA was used. For example, an AD FS Auditing Event ID 1200 may contain:
 
 ```
 <MfaPerformed>true</MfaPerformed>
 <MfaMethod>MFA</MfaMethod>
 ```
 
-#### <a name="renew-and-manage-certificates"></a>Obnovení a Správa certifikátů
+#### <a name="renew-and-manage-certificates"></a>Renew and manage certificates
 
-Na každém AD FSovém serveru bude v místním počítači moje úložiště k dispozici certifikát Azure MFA s názvem OU = Microsoft AD FS Azure MFA, který obsahuje datum vypršení platnosti certifikátu. Zkontrolujte dobu platnosti tohoto certifikátu na každém serveru AD FS, abyste zjistili datum vypršení platnosti.
+On each AD FS server, in the local computer My Store, there will be a self-signed Azure MFA certificate titled OU=Microsoft AD FS Azure MFA, which contains the certificate expiration date. Check the validity period of this certificate on each AD FS server to determine the expiration date.
 
-Pokud se doba platnosti vašich certifikátů blíží k vypršení platnosti, [vygenerujte a ověřte nový certifikát MFA na každém serveru AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
+If the validity period of your certificates is nearing expiration, [generate and verify a new MFA certificate on each AD FS server](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-Následující pokyny vám podrobně poradí, jak spravovat certifikáty Azure MFA na serverech AD FS. Když nakonfigurujete AD FS s využitím Azure MFA, certifikáty vygenerované pomocí rutiny `New-AdfsAzureMfaTenantCertificate` PowerShellu platí po 2 roky. Obnovte a nainstalujte obnovené certifikáty před vypršením platnosti ovoid výpadků ve službě MFA.
+The following guidance details how to manage the Azure MFA certificates on your AD FS servers. When you configure AD FS with Azure MFA, the certificates generated via the `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet are valid for 2 years. Renew and install the renewed certificates prior to expiration to ovoid disruptions in MFA service.
 
-## <a name="implement-your-plan"></a>Implementace plánu
+## <a name="implement-your-plan"></a>Implement your plan
 
-Teď, když jste naplánovali řešení, můžete implementovat podle následujících kroků:
+Now that you have planned your solution, you can implement by following the steps below:
 
-1. Splnění všech nezbytných požadavků
-   1. Nasazení [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) pro všechny hybridní scénáře
-   1. Nasazení [Azure proxy aplikací služby AD](../manage-apps/application-proxy.md) pro na všech místních aplikacích publikovaných pro přístup z cloudu
-   1. Nasazení [serveru NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) pro jakékoli ověřování pomocí protokolu RADIUS
-   1. Zajistěte, aby byly uživatelé upgradováni na podporované verze systém Microsoft Office s povoleným moderním ověřováním.
-1. Konfigurovat zvolené [metody ověřování](#choose-verification-options)
-1. Definice [pojmenovaných síťových umístění](../conditional-access/location-condition.md#named-locations)
-1. Vyberte skupiny, které zahájí zavedení vícefaktorového ověřování.
-1. Konfigurace [zásad podmíněného přístupu](#create-conditional-access-policy)
-1. Konfigurace zásad registrace MFA
-   1. [Kombinované MFA a SSPR](howto-registration-mfa-sspr-combined.md)
-   1. S [identitou Protection](../identity-protection/howto-mfa-policy.md)
-1. Odeslání komunikace uživatele a získání uživatelů k registraci na [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
-1. [Udržujte si přehled o tom, kdo je zaregistrovaný](#identify-non-registered-users)
+1. Meet any necessary prerequisites
+   1. Deploy [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) for any hybrid scenarios
+   1. Deploy [Azure AD Application Proxy](../manage-apps/application-proxy.md) for on any on-premises apps published for cloud access
+   1. Deploy [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) for any RADIUS authentication
+   1. Ensure users have upgraded to supported versions of Microsoft Office with modern authentication enabled
+1. Configure chosen [authentication methods](#choose-verification-options)
+1. Define your [named network locations](../conditional-access/location-condition.md#named-locations)
+1. Select groups to begin rolling out MFA.
+1. Configure your [Conditional Access policies](#create-conditional-access-policy)
+1. Configure your MFA registration policy
+   1. [Combined MFA and SSPR](howto-registration-mfa-sspr-combined.md)
+   1. With [Identity Protection](../identity-protection/howto-mfa-policy.md)
+1. Send user communications and get users to enroll at [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. [Keep track of who’s enrolled](#identify-non-registered-users)
 
 > [!TIP]
-> Uživatelé cloudu pro státní správu se můžou zaregistrovat na [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> Government cloud users can enroll at [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
-## <a name="manage-your-solution"></a>Správa řešení
+## <a name="manage-your-solution"></a>Manage your solution
 
-Sestavy pro Azure MFA
+Reports for Azure MFA
 
-Azure Multi-Factor Authentication poskytuje sestavy prostřednictvím Azure Portal:
+Azure Multi-Factor Authentication provides reports through the Azure portal:
 
-| Sestava | Umístění | Popis |
+| Zpráva | Umístění | Popis |
 | --- | --- | --- |
-| Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
+| Usage and fraud alerts | Azure AD > Sign-ins | Provides information on overall usage, user summary, and user details; as well as a history of fraud alerts submitted during the date range specified. |
 
-## <a name="troubleshoot-mfa-issues"></a>Řešení potíží s MFA
+## <a name="troubleshoot-mfa-issues"></a>Troubleshoot MFA issues
 
-Řešení běžných problémů s Azure MFA najdete v [článku řešení potíží s azure Multi-Factor Authentication](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) na centra podpora Microsoftu.
+Find solutions for common issues with Azure MFA at the [Troubleshooting Azure Multi-Factor Authentication article](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) on the Microsoft Support Center.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Co jsou metody ověřování?](concept-authentication-methods.md)
-* [Povolit sblíženou registraci pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla služby Azure AD](concept-registration-mfa-sspr-converged.md)
-* Proč se uživateli zobrazila výzva nebo nezobrazila výzva k provedení MFA? Viz část [Sestava přihlášení k Azure AD v sestavách v dokumentu azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* [Enable converged registration for Azure Multi-Factor Authentication and Azure AD self-service password reset](concept-registration-mfa-sspr-converged.md)
+* Why was a user prompted or not prompted to perform MFA? See the section [Azure AD sign-ins report in the Reports in Azure Multi-Factor Authentication document](howto-mfa-reporting.md#azure-ad-sign-ins-report).

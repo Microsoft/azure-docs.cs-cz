@@ -1,6 +1,6 @@
 ---
-title: Nastavení přípravného prostředí pro webové aplikace v Azure App Service | Microsoft Docs
-description: Naučte se používat dvoufázové publikování pro webové aplikace v Azure App Service.
+title: Set up staging environments for web apps in Azure App Service | Microsoft Docs
+description: Learn how to use staged publishing for web apps in Azure App Service.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,195 +15,195 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 02d8c511b799a4caee185f7ecb847e6cc15f3c87
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304744"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382270"
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravného prostředí v Azure App Service
+# <a name="set-up-staging-environments-in-azure-app-service"></a>Set up staging environments in Azure App Service
 <a name="Overview"></a>
 
-Když nasadíte webovou aplikaci, webovou aplikaci v systému Linux, back-end Mobile nebo aplikaci API na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), můžete místo výchozího produkčního slotu použít samostatný slot pro nasazení, když pracujete v rámci **Standard**, **Premium**nebo **Isolated.** App Service úroveň plánu. Sloty nasazení jsou živé aplikace s vlastními názvy hostitelů. Prvky obsahu aplikace a konfigurace je možné prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. 
+When you deploy your web app, web app on Linux, mobile back end, or API app to [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), you can use a separate deployment slot instead of the default production slot when you're running in the **Standard**, **Premium**, or **Isolated** App Service plan tier. Deployment slots are live apps with their own host names. App content and configurations elements can be swapped between two deployment slots, including the production slot. 
 
-Nasazení aplikace do neprodukčního slotu má následující výhody:
+Deploying your application to a non-production slot has the following benefits:
 
-* Změny aplikace můžete ověřit v pracovním slotu nasazení před jejich přepnutím do produkčního slotu.
-* Když nasadíte aplikaci do slotu a zaměníte ji do produkčního prostředí, zajistíte, aby se všechny instance slotu před jejich přepnutím do produkčního prostředí zahodily. Tím se eliminuje prostoje při nasazení aplikace. Přesměrování provozu je bezproblémové a žádné požadavky nejsou vyřazeny z důvodu operací prohození. Tento celý pracovní postup můžete automatizovat konfigurací [automatického prohození](#Auto-Swap) , pokud není nutné ověření předem.
-* Po prohození teď má slot s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neočekávají, můžete stejnou záměnu provést hned a získat tak svůj "poslední známý dobrý web" zpátky.
+* You can validate app changes in a staging deployment slot before swapping it with the production slot.
+* Deploying an app to a slot first and swapping it into production makes sure that all instances of the slot are warmed up before being swapped into production. This eliminates downtime when you deploy your app. The traffic redirection is seamless, and no requests are dropped because of swap operations. You can automate this entire workflow by configuring [auto swap](#Auto-Swap) when pre-swap validation isn't needed.
+* After a swap, the slot with previously staged app now has the previous production app. If the changes swapped into the production slot aren't as you expect, you can perform the same swap immediately to get your "last known good site" back.
 
-Každá úroveň plánu App Service podporuje jiný počet slotů nasazení. Za použití slotů nasazení se neúčtují žádné další poplatky. Pokud chcete zjistit počet slotů, které podporuje vrstva vaší aplikace, přečtěte si téma [omezení App Service](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+Each App Service plan tier supports a different number of deployment slots. There's no additional charge for using deployment slots. To find out the number of slots your app's tier supports, see [App Service limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
 
-Pokud chcete aplikaci škálovat na jinou úroveň, ujistěte se, že cílová vrstva podporuje počet slotů, které už vaše aplikace používá. Pokud má vaše aplikace například více než pět slotů, nemůžete ji škálovat na úroveň **Standard** , protože úroveň **Standard** podporuje jenom pět slotů nasazení. 
+To scale your app to a different tier, make sure that the target tier supports the number of slots your app already uses. For example, if your app has more than five slots, you can't scale it down to the **Standard** tier, because the **Standard** tier supports only five deployment slots. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Přidat slot
-Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná v úrovni **Standard**, **Premium**nebo **izolovaná** .
+## <a name="add-a-slot"></a>Add a slot
+The app must be running in the **Standard**, **Premium**, or **Isolated** tier in order for you to enable multiple deployment slots.
 
-1. V [Azure Portal](https://portal.azure.com/)otevřete [stránku prostředků](../azure-resource-manager/manage-resources-portal.md#manage-resources)vaší aplikace.
+1. In the [Azure portal](https://portal.azure.com/), open your app's [resource page](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
-2. V levém podokně vyberte **nasazovací sloty** > **Přidat slot**.
+2. In the left pane, select **Deployment slots** > **Add Slot**.
    
-    ![Přidat nový slot nasazení](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Add a new deployment slot](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Pokud aplikace ještě není v úrovni **Standard**, **Premium**nebo **izolovaná** , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
+   > If the app isn't already in the **Standard**, **Premium**, or **Isolated** tier, you receive a message that indicates the supported tiers for enabling staged publishing. At this point, you have the option to select **Upgrade** and go to the **Scale** tab of your app before continuing.
    > 
 
-3. V dialogovém okně **Přidat slot** zadejte název slotu a vyberte, jestli se má naklonovat konfigurace aplikace z jiného slotu nasazení. Pokračujte výběrem **Přidat** .
+3. In the **Add a slot** dialog box, give the slot a name, and select whether to clone an app configuration from another deployment slot. Select **Add** to continue.
    
-    ![Zdroj konfigurace](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Configuration source](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
-    Můžete naklonovat konfiguraci z jakékoli existující patice. Nastavení, která je možné klonovat, zahrnují nastavení aplikace, připojovací řetězce, verze jazykových rozhraní, webové sokety, verzi HTTP a bitová verze platformy.
+    You can clone a configuration from any existing slot. Settings that can be cloned include app settings, connection strings, language framework versions, web sockets, HTTP version, and platform bitness.
 
-4. Po přidání slotu vyberte **Zavřít** , aby se dialogové okno zavřelo. Nový slot se teď zobrazuje na stránce **sloty nasazení** . Ve výchozím nastavení je **přenos%** nastaven na hodnotu 0 pro novou patici a veškerý provoz zákazníka je směrován do produkčního slotu.
+4. After the slot is added, select **Close** to close the dialog box. The new slot is now shown on the **Deployment slots** page. By default, **Traffic %** is set to 0 for the new slot, with all customer traffic routed to the production slot.
 
-5. Výběrem nového slotu nasazení otevřete stránku prostředků této patice.
+5. Select the new deployment slot to open that slot's resource page.
    
-    ![Název slotu nasazení](./media/web-sites-staged-publishing/StagingTitle.png)
+    ![Deployment slot title](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Pracovní slot má stránku správy stejně jako jakoukoli jinou aplikaci App Service. Můžete změnit konfiguraci slotu. Název slotu se zobrazí v horní části stránky a upozorní vás, že prohlížíte slot nasazení.
+    The staging slot has a management page just like any other App Service app. You can change the slot's configuration. The name of the slot is shown at the top of the page to remind you that you're viewing the deployment slot.
 
-6. Vyberte adresu URL aplikace na stránce prostředku slotu. Slot nasazení má svůj vlastní název hostitele a zároveň je to živá aplikace. Pokud chcete omezit veřejný přístup k slotu nasazení, přečtěte si téma [Azure App Service omezení IP adres](app-service-ip-restrictions.md).
+6. Select the app URL on the slot's resource page. The deployment slot has its own host name and is also a live app. To limit public access to the deployment slot, see [Azure App Service IP restrictions](app-service-ip-restrictions.md).
 
-Nový slot pro nasazení nemá žádný obsah, i když naklonujte nastavení z jiné patice. Můžete například [publikovat na tuto pozici v Gitu](app-service-deploy-local-git.md). Do slotu se dá nasadit z jiné větve úložiště nebo z jiného úložiště. 
+The new deployment slot has no content, even if you clone the settings from a different slot. For example, you can [publish to this slot with Git](app-service-deploy-local-git.md). You can deploy to the slot from a different repository branch or a different repository. 
 
 <a name="AboutConfiguration"></a>
 
-## <a name="what-happens-during-a-swap"></a>Co se stane během prohození
+## <a name="what-happens-during-a-swap"></a>What happens during a swap
 
-### <a name="swap-operation-steps"></a>Kroky operace prohození
+### <a name="swap-operation-steps"></a>Swap operation steps
 
-Když provedete prohozením dvou slotů (obvykle z přípravného slotu do produkčního slotu), App Service provede následující kroky, které zajistí, že cílový slot nefunguje bez výpadku:
+When you swap two slots (usually from a staging slot into the production slot), App Service does the following to ensure that the target slot doesn't experience downtime:
 
-1. Použijte následující nastavení z cílového slotu (například z produkčního slotu) na všechny instance zdrojové patice: 
-    - Nastavení aplikace [konkrétního slotu](#which-settings-are-swapped) a připojovací řetězce, pokud jsou k dispozici.
-    - Nastavení [průběžného nasazování](deploy-continuous-deployment.md) , pokud je povoleno.
-    - [App Service nastavení ověřování](overview-authentication-authorization.md) , pokud je povoleno.
+1. Apply the following settings from the target slot (for example, the production slot) to all instances of the source slot: 
+    - [Slot-specific](#which-settings-are-swapped) app settings and connection strings, if applicable.
+    - [Continuous deployment](deploy-continuous-deployment.md) settings, if enabled.
+    - [App Service authentication](overview-authentication-authorization.md) settings, if enabled.
     
-    Kterýkoli z těchto případů aktivuje všechny instance ve zdrojové patici, aby se restartovaly. Během [prohození s náhledem](#Multi-Phase)označuje konec první fáze. Operace swapu je pozastavená a můžete ověřit, jestli zdrojové sloty správně funguje s nastaveními cílové patice.
+    Any of these cases trigger all instances in the source slot to restart. During [swap with preview](#Multi-Phase), this marks the end of the first phase. The swap operation is paused, and you can validate that the source slot works correctly with the target slot's settings.
 
-1. Počkejte na všechny instance ve zdrojové patici, aby se dokončilo restartování. Pokud se nepovede restartování jakékoli instance, operace přepnutí vrátí všechny změny zdrojové patice a zastaví operaci.
+1. Wait for every instance in the source slot to complete its restart. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
 
-1. Pokud je povolena [místní mezipaměť](overview-local-cache.md) , spusťte inicializaci místní mezipaměti tím, že na každou instanci zdrojové patice nastavíte požadavek HTTP na kořen aplikace ("/"). Počkejte, dokud každá instance nevrátí žádnou odpověď HTTP. Inicializace místní mezipaměti způsobí další restartování každé instance.
+1. If [local cache](overview-local-cache.md) is enabled, trigger local cache initialization by making an HTTP request to the application root ("/") on each instance of the source slot. Wait until each instance returns any HTTP response. Local cache initialization causes another restart on each instance.
 
-1. Pokud je [Automatické prohození](#Auto-Swap) povoleno s [vlastním zahříváním](#Warm-up), spusťte spuštění [aplikace](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) spuštěním požadavku HTTP do kořenového adresáře aplikace ("/") v každé instanci zdrojové patice.
+1. If [auto swap](#Auto-Swap) is enabled with [custom warm-up](#Warm-up), trigger [Application Initiation](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) by making an HTTP request to the application root ("/") on each instance of the source slot.
 
-    Pokud `applicationInitialization` není zadaný, aktivujte v každé instanci požadavek HTTP do kořenového adresáře aplikace zdrojové patice. 
+    If `applicationInitialization` isn't specified, trigger an HTTP request to the application root of the source slot on each instance. 
     
-    Pokud instance vrátí odpověď HTTP, je považována za zahřívání.
+    If an instance returns any HTTP response, it's considered to be warmed up.
 
-1. Pokud se všechny instance ve zdrojové patici zahřívá úspěšně, Proměňte tyto dva sloty tak, že přepnete pravidla směrování pro tyto dva sloty. Po provedení tohoto kroku bude mít cílová patice (například produkční slot) aplikaci, která byla dříve zahřívání ve zdrojové patici.
+1. If all instances on the source slot are warmed up successfully, swap the two slots by switching the routing rules for the two slots. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
 
-1. Teď, když má zdrojový slot předem prohozenou aplikaci v cílové patici, proveďte stejnou operaci pomocí všech nastavení a restartováním instancí.
+1. Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances.
 
-V jakémkoli okamžiku swapu se veškerá práce s inicializací vyměněných aplikací stane ve zdrojové pozici. Cílový slot zůstane online, zatímco se zdrojové sloty připravují a zahřívá, bez ohledu na to, kde se prohození zdaří nebo selže. Pokud chcete vyměnit pracovní slot s produkčním slotem, ujistěte se, že produkční slot je vždycky cílový slot. Tato operace přepnutí nijak neovlivní vaši produkční aplikaci.
+At any point of the swap operation, all work of initializing the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared and warmed up, regardless of where the swap succeeds or fails. To swap a staging slot with the production slot, make sure that the production slot is always the target slot. This way, the swap operation doesn't affect your production app.
 
-### <a name="which-settings-are-swapped"></a>Která nastavení jsou zahozena?
+### <a name="which-settings-are-swapped"></a>Which settings are swapped?
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-Pokud chcete nakonfigurovat nastavení aplikace nebo připojovací řetězec tak, aby přešel na konkrétní slot (neswaped), na stránce **Konfigurace** této přihrádky se dostanete. Přidejte nebo upravte nastavení a pak vyberte **nastavení slotu nasazení**. Zaškrtnutí tohoto políčka informuje App Service, že nastavení nelze měnit. 
+To configure an app setting or connection string to stick to a specific slot (not swapped), go to the **Configuration** page for that slot. Add or edit a setting, and then select **deployment slot setting**. Selecting this check box tells App Service that the setting is not swappable. 
 
-![Nastavení slotu](./media/web-sites-staged-publishing/SlotSetting.png)
+![Slot setting](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
-## <a name="swap-two-slots"></a>Prohození dvou slotů 
-Na stránce **sloty nasazení** vaší aplikace a na stránce **Přehled** můžete vyměnit sloty nasazení. Technické podrobnosti o prohození slotu najdete v tématu [co se stane při prohození](#AboutConfiguration).
+## <a name="swap-two-slots"></a>Swap two slots 
+You can swap deployment slots on your app's **Deployment slots** page and the **Overview** page. For technical details on the slot swap, see [What happens during swap](#AboutConfiguration).
 
 > [!IMPORTANT]
-> Před zavedením aplikace z slotu nasazení do produkčního prostředí se ujistěte, že je produkční a že všechna nastavení ve zdrojové pozici jsou nakonfigurovaná přesně tak, jak je chcete mít v produkčním prostředí.
+> Before you swap an app from a deployment slot into production, make sure that production is your target slot and that all settings in the source slot are configured exactly as you want to have them in production.
 > 
 > 
 
-Postup při prohození slotů nasazení:
+To swap deployment slots:
 
-1. Přejít na stránku **sloty nasazení** vaší aplikace a vyberte **swap**.
+1. Go to your app's **Deployment slots** page and select **Swap**.
    
-    ![Tlačítko pro přepnutí](./media/web-sites-staged-publishing/SwapButtonBar.png)
+    ![Swap button](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    Dialogové okno **swap** zobrazuje nastavení ve vybraných zdrojových a cílových slotech, které budou změněny.
+    The **Swap** dialog box shows settings in the selected source and target slots that will be changed.
 
-2. Vyberte požadované **zdrojové** a **cílové** sloty. Obvykle je cílem produkční slot. Také vyberte karty **změny zdrojového kódu** a **cíl změny** a ověřte, zda byly provedeny změny konfigurace. Až budete hotovi, můžete sloty hned vyměnit tak, že vyberete **swap**.
+2. Select the desired **Source** and **Target** slots. Usually, the target is the production slot. Also, select the **Source Changes** and **Target Changes** tabs and verify that the configuration changes are expected. When you're finished, you can swap the slots immediately by selecting **Swap**.
 
     ![Dokončení výměny slotů](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    Pokud chcete zjistit, jak by se cílový slot spouštěl s novým nastavením před tím, než dojde ke skutečnému prohození, nevybírejte možnost **swap**, ale postupujte podle pokynů v části [prohození s náhledem](#Multi-Phase)
+    To see how your target slot would run with the new settings before the swap actually happens, don't select **Swap**, but follow the instructions in [Swap with preview](#Multi-Phase).
 
-3. Až skončíte, zavřete dialogové okno tak, že vyberete **Zavřít**.
+3. When you're finished, close the dialog box by selecting **Close**.
 
-Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
 <a name="Multi-Phase"></a>
 
-### <a name="swap-with-preview-multi-phase-swap"></a>Prohodit ve verzi Preview (vícenásobné swapy)
+### <a name="swap-with-preview-multi-phase-swap"></a>Swap with preview (multi-phase swap)
 
-Před přepnutím do produkčního prostředí jako cílového slotu ověřte, že aplikace běží s vyměněným nastavením. Zdrojové sloty se také zahřeje před dokončením swapu, což je žádoucí pro klíčové aplikace.
+Before you swap into production as the target slot, validate that the app runs with the swapped settings. The source slot is also warmed up before the swap completion, which is desirable for mission-critical applications.
 
-Když provedete prohození s náhledem, App Service provede stejnou [operaci přepnutí](#AboutConfiguration) , ale po prvním kroku se pozastaví. Před dokončením prohození pak můžete ověřit výsledek na přípravném slotu. 
+When you perform a swap with preview, App Service performs the same [swap operation](#AboutConfiguration) but pauses after the first step. You can then verify the result on the staging slot before completing the swap. 
 
-Pokud zrušíte prohození, App Service znovu aplikuje prvky konfigurace na zdrojovou pozici.
+If you cancel the swap, App Service reapplies configuration elements to the source slot.
 
-Pro prohození s náhledem:
+To swap with preview:
 
-1. Postupujte podle kroků v části [prohození slotů nasazení](#Swap) , ale vyberte **provést prohození s náhledem**.
+1. Follow the steps in [Swap deployment slots](#Swap) but select **Perform swap with preview**.
 
-    ![Prohodit s náhledem](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Swap with preview](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
-    V dialogovém okně se dozvíte, jak se změní konfigurace ve zdrojovém slotu ve fázi 1 a jak se změní zdrojový a cílový slot ve fázi 2.
+    The dialog box shows you how the configuration in the source slot changes in phase 1, and how the source and target slot change in phase 2.
 
-2. Až budete připraveni zahájit prohození, vyberte možnost **Spustit prohození**.
+2. When you're ready to start the swap, select **Start Swap**.
 
-    Po dokončení fáze 1 se zobrazí upozornění v dialogovém okně. Zobrazte náhled swapu ve zdrojovém slotu přechodem na `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
+    When phase 1 finishes, you're notified in the dialog box. Preview the swap in the source slot by going to `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
 
-3. Až budete připraveni dokončit vyřazení, vyberte **Dokončit prohození** v **akci prohození** a vyberte **Dokončit prohození**.
+3. When you're ready to complete the pending swap, select **Complete Swap** in **Swap action** and select **Complete Swap**.
 
-    Chcete-li zrušit probíhající zahození, vyberte možnost **Zrušit zaměnit** místo.
+    To cancel a pending swap, select **Cancel Swap** instead.
 
-4. Až skončíte, zavřete dialogové okno tak, že vyberete **Zavřít**.
+4. When you're finished, close the dialog box by selecting **Close**.
 
-Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
-Informace o automatizaci vícenásobného swapu najdete v tématu [automatizace pomocí PowerShellu](#automate-with-powershell).
+To automate a multi-phase swap, see [Automate with PowerShell](#automate-with-powershell).
 
 <a name="Rollback"></a>
 
-## <a name="roll-back-a-swap"></a>Vrácení swapu zpět
-Pokud dojde k nějakým chybám v cílové patici (například k produkčnímu slotu) po prohození slotu, obnovte tyto sloty do jejich předem odkládacích stavů tak, že tyto dva sloty hned odměňujete.
+## <a name="roll-back-a-swap"></a>Roll back a swap
+If any errors occur in the target slot (for example, the production slot) after a slot swap, restore the slots to their pre-swap states by swapping the same two slots immediately.
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Konfigurovat automatické prohození
+## <a name="configure-auto-swap"></a>Configure auto swap
 
 > [!NOTE]
-> Automatické prohození není podporováno ve webových aplikacích v systému Linux.
+> Auto swap isn't supported in web apps on Linux.
 
-Automatické prohození zjednodušuje scénáře Azure DevOps, ve kterých chcete aplikaci průběžně nasadit s nulovým startem a s nulovými výpadky pro zákazníky aplikace. Když je automatický swap povolený z slotu do produkčního prostředí, pokaždé, když se do této patice nahraje změny kódu, App Service automaticky [zahodí aplikaci do produkčního prostředí](#swap-operation-steps) po zahřívání ve zdrojové pozici.
+Auto swap streamlines Azure DevOps scenarios where you want to deploy your app continuously with zero cold starts and zero downtime for customers of the app. When auto swap is enabled from a slot into production, every time you push your code changes to that slot, App Service automatically [swaps the app into production](#swap-operation-steps) after it's warmed up in the source slot.
 
    > [!NOTE]
-   > Před konfigurací automatického prohození pro produkční slot zvažte možnost testování automatického prohození na neprodukčním cílovém slotu.
+   > Before you configure auto swap for the production slot, consider testing auto swap on a non-production target slot.
    > 
 
-Konfigurace automatického prohození:
+To configure auto swap:
 
-1. Přejít na stránku prostředků vaší aplikace. Vyberte možnost **sloty nasazení** >  *\<požadované zdrojové patice >*  > nastavení **Konfigurace** > **Obecné nastavení**.
+1. Go to your app's resource page. Select **Deployment slots** >  *\<desired source slot>*  > **Configuration** > **General settings**.
    
-2. Pro **Automatické prohození**vyberte **zapnuto**. Pak vyberte požadovanou cílovou patici pro **slot nasazení automatického prohození**a na panelu příkazů vyberte **Uložit** . 
+2. For **Auto swap enabled**, select **On**. Then select the desired target slot for **Auto swap deployment slot**, and select **Save** on the command bar. 
    
-    ![Výběry pro konfiguraci automatického prohození](./media/web-sites-staged-publishing/AutoSwap02.png)
+    ![Selections for configuring auto swap](./media/web-sites-staged-publishing/AutoSwap02.png)
 
-3. Spusťte do zdrojové patice nabízení kódu. Automatické prohození proběhne po krátké době a aktualizace se projeví na adrese URL cílové patice.
+3. Execute a code push to the source slot. Auto swap happens after a short time, and the update is reflected at your target slot's URL.
 
-Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
 <a name="Warm-up"></a>
 
-## <a name="specify-custom-warm-up"></a>Zadat vlastní zahřívání
+## <a name="specify-custom-warm-up"></a>Specify custom warm-up
 
-Některé aplikace mohou před zahozením vyžadovat vlastní akce. Konfigurační prvek `applicationInitialization` v souboru Web. config umožňuje zadat vlastní inicializační akce. [Operace prohození](#AboutConfiguration) počká na dokončení tohoto vlastního zahřívání a teprve potom bude prohozena s cílovou paticí. Zde je ukázkový fragment souboru Web. config.
+Some apps might require custom warm-up actions before the swap. The `applicationInitialization` configuration element in web.config lets you specify custom initialization actions. The [swap operation](#AboutConfiguration) waits for this custom warm-up to finish before swapping with the target slot. Here's a sample web.config fragment.
 
     <system.webServer>
         <applicationInitialization>
@@ -212,75 +212,75 @@ Některé aplikace mohou před zahozením vyžadovat vlastní akce. Konfiguračn
         </applicationInitialization>
     </system.webServer>
 
-Další informace o přizpůsobení prvku `applicationInitialization` najdete v části Nejčastější [selhání přepnutí slotu nasazení a jejich](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)řešení.
+For more information on customizing the `applicationInitialization` element, see [Most common deployment slot swap failures and how to fix them](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-Můžete také přizpůsobit chování zahřívání pomocí jednoho nebo obou následujících [nastavení aplikace](configure-common.md):
+You can also customize the warm-up behavior with one or both of the following [app settings](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: cesta k nástroji Tester pro zahřívání webu. Toto nastavení aplikace přidejte zadáním vlastní cesty, která začíná lomítkem jako hodnotou. Příklad: `/statuscheck`. Výchozí hodnota je `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: platné kódy odpovědí HTTP pro operaci zahřívání. Přidejte toto nastavení aplikace s čárkami odděleným seznamem kódů HTTP. Příklad je `200,202`. Pokud vrácený stavový kód není v seznamu, operace zahřívání a swap se zastaví. Ve výchozím nastavení jsou všechny kódy odpovědí platné.
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: The path to ping to warm up your site. Add this app setting by specifying a custom path that begins with a slash as the value. Příklad: `/statuscheck`. The default value is `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Valid HTTP response codes for the warm-up operation. Add this app setting with a comma-separated list of HTTP codes. An example is `200,202` . If the returned status code isn't in the list, the warmup and swap operations are stopped. By default, all response codes are valid.
 
 > [!NOTE]
-> Prvek konfigurace `<applicationInitialization>` je součástí spuštění každé aplikace, zatímco dvě nastavení aplikace pro zahřívání se vztahují jenom na zahození slotu.
+> The `<applicationInitialization>` configuration element is part of each app start-up, whereas the two warm-up behavior app settings apply only to slot swaps.
 
-Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
-## <a name="monitor-a-swap"></a>Monitorování swapu
+## <a name="monitor-a-swap"></a>Monitor a swap
 
-Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+If the [swap operation](#AboutConfiguration) takes a long time to complete, you can get information on the swap operation in the [activity log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-Na stránce prostředků vaší aplikace na portálu v levém podokně vyberte **Protokol aktivit**.
+On your app's resource page in the portal, in the left pane, select **Activity log**.
 
-Operace prohození se zobrazí v dotazu protokolu jako `Swap Web App Slots`. Můžete ho rozbalit a vybrat jednu z dílčích operací nebo chyb a zobrazit podrobnosti.
+A swap operation appears in the log query as `Swap Web App Slots`. You can expand it and select one of the suboperations or errors to see the details.
 
-## <a name="route-traffic"></a>Směrování provozu
+## <a name="route-traffic"></a>Route traffic
 
-Ve výchozím nastavení se všechny požadavky klientů na produkční adresu URL (`http://<app_name>.azurewebsites.net`) aplikace směrují do produkčního slotu. Část provozu můžete směrovat do jiné patice. Tato funkce je užitečná v případě, že potřebujete zpětnou vazbu od uživatele k nové aktualizaci, ale nejste připraveni ho uvolnit do produkčního prostředí.
+By default, all client requests to the app's production URL (`http://<app_name>.azurewebsites.net`) are routed to the production slot. You can route a portion of the traffic to another slot. This feature is useful if you need user feedback for a new update, but you're not ready to release it to production.
 
-### <a name="route-production-traffic-automatically"></a>Směrovat provozní provoz automaticky
+### <a name="route-production-traffic-automatically"></a>Route production traffic automatically
 
-Postup automatického směrování provozních přenosů:
+To route production traffic automatically:
 
-1. Přejít na stránku prostředků vaší aplikace a vyberte **sloty nasazení**.
+1. Go to your app's resource page and select **Deployment slots**.
 
-2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Uložit**.
+2. In the **Traffic %** column of the slot you want to route to, specify a percentage (between 0 and 100) to represent the amount of total traffic you want to route. Vyberte **Save** (Uložit).
 
-    ![Nastavení procenta provozu](./media/web-sites-staged-publishing/RouteTraffic.png)
+    ![Setting a traffic percentage](./media/web-sites-staged-publishing/RouteTraffic.png)
 
-Po uložení nastavení se zadané procento klientů náhodně směruje do neprodukčního slotu. 
+After the setting is saved, the specified percentage of clients is randomly routed to the non-production slot. 
 
-Po automatickém směrování klienta na konkrétní slot je tento slot "připnuté" do této patice po celou dobu trvání této klientské relace. V klientském prohlížeči uvidíte, ke kterému slotu je vaše relace připnuté, a Prohlédněte si soubor cookie `x-ms-routing-name` v hlavičkách protokolu HTTP. Žádost, která je směrována do "přípravného" slotu, má soubor cookie `x-ms-routing-name=staging`. Požadavek, který je směrován do produkčního slotu, má `x-ms-routing-name=self`souborů cookie.
+After a client is automatically routed to a specific slot, it's "pinned" to that slot for the life of that client session. On the client browser, you can see which slot your session is pinned to by looking at the `x-ms-routing-name` cookie in your HTTP headers. A request that's routed to the "staging" slot has the cookie `x-ms-routing-name=staging`. A request that's routed to the production slot has the cookie `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Vedle webu Azure Portal můžete k nastavení procenta směrování z nástrojů CI/CD, jako jsou kanály DevOps nebo jiné systémy automatizace, použít také příkaz [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing.md#az-webapp-traffic-routing-set) v rozhraní příkazového řádku Azure CLI.
+   > Next to the Azure Portal, you can also use the [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) command in the Azure CLI to set the routing percentages from CI/CD tools like DevOps pipelines or other automation systems.
    > 
 
-### <a name="route-production-traffic-manually"></a>Ruční směrování provozní provozu
+### <a name="route-production-traffic-manually"></a>Route production traffic manually
 
-Kromě automatického směrování provozu můžou App Service směrovat požadavky do konkrétního slotu. To je užitečné, když chcete, aby se vaši uživatelé mohli vyjádřit nebo odhlásit z vaší beta aplikace. K ručnímu směrování produkčního provozu použijte parametr `x-ms-routing-name` dotazu.
+In addition to automatic traffic routing, App Service can route requests to a specific slot. This is useful when you want your users to be able to opt in to or opt out of your beta app. To route production traffic manually, you use the `x-ms-routing-name` query parameter.
 
-Pokud chcete uživatelům umožnit, aby si z aplikace nahlásili svůj souhlas, můžete tento odkaz umístit na svou webovou stránku:
+To let users opt out of your beta app, for example, you can put this link on your webpage:
 
 ```HTML
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-Řetězec `x-ms-routing-name=self` určuje provozní slot. Po přístupu klientského prohlížeče k odkazu se přesměruje na produkční slot. Každý další požadavek obsahuje `x-ms-routing-name=self` soubor cookie, který zakládá relaci do produkčního slotu.
+The string `x-ms-routing-name=self` specifies the production slot. After the client browser accesses the link, it's redirected to the production slot. Every subsequent request has the `x-ms-routing-name=self` cookie that pins the session to the production slot.
 
-Pokud chcete uživatelům umožnit, aby se do aplikace beta přihlášeni, nastavte stejný parametr dotazu na název neprodukčního slotu. Tady je příklad:
+To let users opt in to your beta app, set the same query parameter to the name of the non-production slot. Tady je příklad:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-Ve výchozím nastavení mají nové sloty pravidlo směrování `0%`, zobrazené šedě. Když explicitně nastavíte tuto hodnotu na `0%` (zobrazená v černém textu), můžou uživatelé přistupovat k pracovnímu slotu ručně pomocí parametru dotazu `x-ms-routing-name`. Nebudou ale směrovány do slotu automaticky, protože procento směrování je nastaveno na 0. Toto je pokročilý scénář, ve kterém můžete "svůj pracovní slot" Skrýt z veřejného a zároveň umožnit interním týmům testování změn na slotu.
+By default, new slots are given a routing rule of `0%`, shown in grey. When you explicitly set this value to `0%` (shown in black text), your users can access the staging slot manually by using the `x-ms-routing-name` query parameter. But they won't be routed to the slot automatically because the routing percentage is set to 0. This is an advanced scenario where you can "hide" your staging slot from the public while allowing internal teams to test changes on the slot.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-slot"></a>Odstranění slotu
+## <a name="delete-a-slot"></a>Delete a slot
 
-Přejít na stránku prostředků vaší aplikace. Vyberte možnost **sloty nasazení** >  *\<slot pro odstranění >*  > **Overview**. Na panelu příkazů vyberte **Odstranit** .  
+Go to your app's resource page. Select **Deployment slots** >  *\<slot to delete>*  > **Overview**. Select **Delete** on the command bar.  
 
-![Odstranění slotu nasazení](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
+![Delete a deployment slot](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -290,63 +290,63 @@ Přejít na stránku prostředků vaší aplikace. Vyberte možnost **sloty nasa
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure PowerShell je modul, který poskytuje rutiny pro správu Azure prostřednictvím prostředí Windows PowerShell, včetně podpory pro správu slotů nasazení v Azure App Service.
+Azure PowerShell is a module that provides cmdlets to manage Azure through Windows PowerShell, including support for managing deployment slots in Azure App Service.
 
-Informace o instalaci a konfiguraci Azure PowerShell a o ověřování Azure PowerShell pomocí předplatného Azure najdete v tématu [Jak nainstalovat a nakonfigurovat Microsoft Azure PowerShell](/powershell/azure/overview).  
+For information on installing and configuring Azure PowerShell, and on authenticating Azure PowerShell with your Azure subscription, see [How to install and configure Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
-### <a name="create-a-web-app"></a>Vytvoření webové aplikace
+### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 ---
-### <a name="create-a-slot"></a>Vytvoření slotu
+### <a name="create-a-slot"></a>Create a slot
 ```powershell
 New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 ---
-### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Zahájit prohození s náhledem (vícenásobná swap) a použít konfiguraci cílového slotu na zdrojový slot
+### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Initiate a swap with a preview (multi-phase swap), and apply destination slot configuration to the source slot
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Zrušení nedokončeného zahození (prohození s revizí) a obnovení konfigurace zdrojového slotu
+### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Cancel a pending swap (swap with review) and restore the source slot configuration
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Prohození slotů nasazení
+### <a name="swap-deployment-slots"></a>Swap deployment slots
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-### <a name="monitor-swap-events-in-the-activity-log"></a>Monitorování událostí prohození v protokolu aktivit
+### <a name="monitor-swap-events-in-the-activity-log"></a>Monitor swap events in the activity log
 ```powershell
 Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 ---
-### <a name="delete-a-slot"></a>Odstranění slotu
+### <a name="delete-a-slot"></a>Delete a slot
 ```powershell
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automatizace pomocí šablon ARM
+## <a name="automate-with-arm-templates"></a>Automate with ARM templates
 
-[Šablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) jsou DEKLARATIVNÍ soubory JSON, které slouží k automatizaci nasazení a konfigurace prostředků Azure. Chcete-li vyměnit sloty pomocí šablon ARM, nastavte dvě vlastnosti v prostředcích *Microsoft. Web/Web/sloty* a *Microsoft. Web/Sites* :
+[ARM Templates](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) are declarative JSON files used to automate the deployment and configuration of Azure resources. To swap slots using ARM templates, you will set two properties on the *Microsoft.Web/sites/slots* and *Microsoft.Web/sites* resources:
 
-- `buildVersion`: Jedná se o řetězcovou vlastnost, která představuje aktuální verzi aplikace nasazené ve slotu. Například: "v1", "1.0.0.1" nebo "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: Jedná se o řetězcovou vlastnost, která určuje, co má `buildVersion` slot. Pokud se targetBuildVersion nerovná aktuálnímu `buildVersion`, aktivuje se operace přepnutí tím, že najde slot, který má zadanou `buildVersion`.
+- `buildVersion`: this is a string property which represents the current version of the app deployed in the slot. For example: "v1", "1.0.0.1", or "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: this is a string property that specifies what `buildVersion` the slot should have. If the targetBuildVersion does not equal the current `buildVersion`, then this will trigger the swap operation by finding the slot which has the specified `buildVersion`.
 
-### <a name="example-arm-template"></a>Příklad šablony ARM
+### <a name="example-arm-template"></a>Example ARM Template
 
-Následující šablona ARM aktualizuje `buildVersion` přípravného slotu a nastaví `targetBuildVersion` na produkční pozici. Tím se tyto dva sloty zahodí. Šablona předpokládá, že už máte vytvořenou WebApp s slotem s názvem "fázování".
+The following ARM template will update the `buildVersion` of the staging slot and set the `targetBuildVersion` on the production slot. This will swap the two slots. The template assumes you already have a webapp created with a slot named "staging".
 
 ```json
 {
@@ -390,27 +390,27 @@ Následující šablona ARM aktualizuje `buildVersion` přípravného slotu a na
 }
 ```
 
-Tato šablona ARM je idempotentní, což znamená, že je možné ji provést opakovaně a získat stejný stav slotů. Po prvním spuštění bude `targetBuildVersion` odpovídat aktuálnímu `buildVersion`, takže se neaktivuje swap.
+This ARM template is idempotent, meaning that it can be executed repeatedly and produce the same state of the slots. After the first execution, `targetBuildVersion` will match the current `buildVersion`, so a swap will not be triggered.
 
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
 
-## <a name="automate-with-the-cli"></a>Automatizace pomocí rozhraní příkazového řádku
+## <a name="automate-with-the-cli"></a>Automate with the CLI
 
-Příkazy rozhraní příkazového [řádku Azure](https://github.com/Azure/azure-cli) pro sloty nasazení najdete v tématu [AZ WebApp Deployment slot](/cli/azure/webapp/deployment/slot).
+For [Azure CLI](https://github.com/Azure/azure-cli) commands for deployment slots, see [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
 
-## <a name="troubleshoot-swaps"></a>Řešení potíží se zahozením
+## <a name="troubleshoot-swaps"></a>Troubleshoot swaps
 
-Pokud dojde k nějaké chybě během [prohození slotu](#AboutConfiguration), přihlásí se k *D:\home\LogFiles\eventlog.XML*. Je také zaznamenána v protokolu chyb konkrétní aplikace.
+If any error occurs during a [slot swap](#AboutConfiguration), it's logged in *D:\home\LogFiles\eventlog.xml*. It's also logged in the application-specific error log.
 
-Zde jsou některé běžné chyby swapu:
+Here are some common swap errors:
 
-- Požadavku HTTP na kořen aplikace vypršel časový limit. Operace prohození čeká na každou žádost HTTP na 90 sekund a opakuje se až 5 časů. Pokud dojde k vypršení časového limitu pro všechny opakované pokusy, operace přepnutí se zastaví.
+- An HTTP request to the application root is timed. The swap operation waits for 90 seconds for each HTTP request, and retries up to 5 times. If all retries are timed out, the swap operation is stopped.
 
-- Inicializace místní mezipaměti může selhat, pokud obsah aplikace překračuje kvótu místního disku zadanou pro místní mezipaměť. Další informace najdete v tématu [Přehled místní mezipaměti](overview-local-cache.md).
+- Local cache initialization might fail when the app content exceeds the local disk quota specified for the local cache. For more information, see [Local cache overview](overview-local-cache.md).
 
-- Při [vlastním zahřívání](#Warm-up)se požadavky HTTP provádějí interně (bez průchodu externí adresou URL). V *souboru Web. config*mohou selhat s některými pravidly pro přepsání adresy URL. Například pravidla pro přesměrování názvů domén nebo vynucení HTTPS můžou zabránit zahřívání požadavků, aby dosáhly kódu aplikace. Pokud chcete tento problém obejít, upravte pravidla přepsání přidáním následujících dvou podmínek:
+- During [custom warm-up](#Warm-up), the HTTP requests are made internally (without going through the external URL). They can fail with certain URL rewrite rules in *Web.config*. For example, rules for redirecting domain names or enforcing HTTPS can prevent warm-up requests from reaching the app code. To work around this issue, modify your rewrite rules by adding the following two conditions:
 
     ```xml
     <conditions>
@@ -419,7 +419,7 @@ Zde jsou některé běžné chyby swapu:
       ...
     </conditions>
     ```
-- Bez vlastního zahřívání můžou pravidla přepisu adresy URL pořád blokovat požadavky HTTP. Pokud chcete tento problém obejít, upravte pravidla přepsání přidáním následující podmínky:
+- Without a custom warm-up, the URL rewrite rules can still block HTTP requests. To work around this issue, modify your rewrite rules by adding the following condition:
 
     ```xml
     <conditions>
@@ -427,9 +427,9 @@ Zde jsou některé běžné chyby swapu:
       ...
     </conditions>
     ```
-- Některá [pravidla omezení IP adres](app-service-ip-restrictions.md) můžou zabránit operaci přepnutí z odesílání požadavků HTTP do vaší aplikace. Rozsahy IPv4 adres, které začínají na `10.` a `100.` jsou interní pro vaše nasazení. Měli byste jim dovolit, aby se připojili k vaší aplikaci.
+- Some [IP restriction rules](app-service-ip-restrictions.md) might prevent the swap operation from sending HTTP requests to your app. IPv4 address ranges that start with `10.` and `100.` are internal to your deployment. You should allow them to connect to your app.
 
-- Po prohození slotu může aplikace zaznamenat neočekávané restartování. Důvodem je to, že po prohození není konfigurace vazeb názvů hostitelů synchronizovaná, což sám o sobě nezpůsobí restart. Některé zdrojové události úložiště (například převzetí služeb při selhání svazku úložiště) ale můžou detekovat rozdíly a vynutit restartování všech pracovních procesů. K minimalizaci těchto typů restartování nastavte [nastavení aplikace`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *všech slotech*. Toto nastavení *aplikace ale nefunguje s* aplikacemi Windows Communication Foundation (WCF).
+- After slot swaps, the app may experience unexpected restarts. This is because after a swap, the hostname binding configuration goes out of sync, which by itself doesn't cause restarts. However, certain underlying storage events (such as storage volume failovers) may detect these discrepancies and force all worker processes to restart. To minimize these types of restarts, set the [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app setting](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) on *all slots*. However, this app setting does *not* work with Windows Communication Foundation (WCF) apps.
 
 ## <a name="next-steps"></a>Další kroky
-[Blokovat přístup k neprodukčním slotům](app-service-ip-restrictions.md)
+[Block access to non-production slots](app-service-ip-restrictions.md)

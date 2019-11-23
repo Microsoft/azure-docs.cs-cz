@@ -1,6 +1,6 @@
 ---
-title: Jak prozkoumat rizika v Azure Active Directory Identity Protection
-description: Naučte se prozkoumat rizikové uživatele, detekce a přihlášení v Azure Active Directory Identity Protection
+title: Investigate risk Azure Active Directory Identity Protection
+description: Learn how to investigate risky users, detections, and sign-ins in Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,85 +11,85 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e04cadef1f6a4aee7d8f807fc7aaa999ba6da8d7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887088"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382119"
 ---
-# <a name="how-to-investigate-risk"></a>Postupy: šetření rizik
+# <a name="how-to-investigate-risk"></a>How To: Investigate risk
 
-Identity Protection poskytuje organizacím se třemi sestavami, které mohou používat k prozkoumání rizik identity ve svém prostředí. Tyto sestavy jsou **rizikové uživatele**, **rizikové přihlášení**a **detekce rizik**. Zkoumání událostí je klíč pro lepší porozumění a identifikaci slabých bodů ve vaší strategii zabezpečení.
+Identity Protection provides organizations with three reports they can use to investigate identity risks in their environment. These reports are the **risky users**, **risky sign-ins**, and **risk detections**. Investigation of events is key to better understanding and identifying any weak points in your security strategy.
 
-Všechny tři sestavy umožňují stažení událostí v nástroji. Formát CSV pro další analýzu mimo Azure Portal. Sestavy rizikových uživatelů a rizikových přihlášení umožňují stahovat nejnovější položky 2500, zatímco sestava detekce rizik umožňuje stáhnout nejnovější záznamy 5000.
+All three reports allow for downloading of events in .CSV format for further analysis outside of the Azure portal. The risky users and risky sign-ins reports allow for downloading the most recent 2500 entries, while the risk detections report allows for downloading the most recent 5000 records.
 
-Organizace můžou využít výhod Microsoft Graph integrace rozhraní API k agregaci dat s jinými zdroji, ke kterým můžou mít přístup jako organizace.
+Organizations can take advantage of the Microsoft Graph API integrations to aggregate data with other sources they may have access to as an organization.
 
-Tři sestavy se nacházejí v **Azure Portal** > **Azure Active Directory** > **zabezpečení**.
+The three reports are found in the **Azure portal** > **Azure Active Directory** > **Security**.
 
-## <a name="navigating-the-reports"></a>Navigace v sestavách
+## <a name="navigating-the-reports"></a>Navigating the reports
 
-Každá sestava se spustí se seznamem všech zjišťování pro období zobrazené v horní části sestavy. Každá sestava umožňuje přidání nebo odebrání sloupců na základě předvolby správce. Správci si mohou stáhnout data v nástroji. Formát CSV. Sestavy lze filtrovat pomocí filtrů v horní části sestavy.
+Each report launches with a list of all detections for the period shown at the top of the report. Each report allows for the addition or removal of columns based on administrator preference. Administrators can choose to download the data in .CSV format. Reports can be filtered using the filters across the top of the report.
 
-Výběr jednotlivých položek může v horní části sestavy povolit další položky, jako je například možnost potvrdit přihlašování jako napadené nebo bezpečné, potvrdit uživatele jako napadený nebo odstranit riziko uživatele.
+Selecting individual entries may enable additional entries at the top of the report such as the ability to confirm a sign-in as compromised or safe, confirm a user as compromised, or dismiss user risk.
 
-Výběr jednotlivých položek rozbalí okno podrobností pod detekci. Zobrazení podrobností umožňuje správcům prozkoumat a provádět akce při každém zjišťování. 
+Selecting individual entries expands a details window below the detections. The details view allows administrators to investigate and perform actions on each detection. 
 
-![Ukázková sestava Identity Protection ukazující rizikové přihlašovací údaje a podrobnosti](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
+![Example Identity Protection report showing risky sign-ins and details](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
 
-## <a name="risky-users"></a>Rizikové uživatele
+## <a name="risky-users"></a>Risky users
 
-Pomocí informací uvedených v sestavě rizikové uživatele můžou správci najít:
+With the information provided by the risky users report, administrators can find:
 
-- Kteří uživatelé jsou ohroženi, došlo k nápravě rizik nebo byly vyrušeny riziko?
-- Podrobnosti o detekcích
-- Historie rizikových přihlášení
-- Historie rizik
+- Which users are at risk, have had risk remediated, or have had risk dismissed?
+- Details about detections
+- History of risky sign-ins
+- Risk history
  
-Správci se pak mohou rozhodnout, že budou provádět akce s těmito událostmi. Správci se můžou rozhodnout:
+Administrators can then choose to take action on these events. Administrators can choose to:
 
-- Resetování hesla uživatele
-- Potvrdit ohrožení uživatele
-- Zavřít riziko uživatele
-- Zablokovat uživatelům přihlášení
-- Prozkoumat dál pomocí Azure ATP
+- Reset the user password
+- Confirm user compromise
+- Dismiss user risk
+- Block user from signing in
+- Investigate further using Azure ATP
 
 ## <a name="risky-sign-ins"></a>Riziková přihlášení
 
-Sestava rizikových přihlášení obsahuje data, která lze filtrovat až v posledních 30 dnech (1 měsíc).
+The risky sign-ins report contains filterable data for up to the past 30 days (1 month).
 
-Na základě informací poskytnutých sestavou rizikových přihlášení můžou správci najít:
+With the information provided by the risky sign-ins report, administrators can find:
 
-- Která označení jsou klasifikována jako ohrožená, potvrzená ohrožení, potvrzená v bezpečí, zrušena nebo opravena.
-- Úrovně rizik v reálném čase a agregované úrovně rizika spojené s pokusy o přihlášení.
-- Aktivované typy detekce
-- Aplikovány zásady podmíněného přístupu
-- Podrobnosti MFA
-- Informace o zařízení
+- Which sign-ins are classified as at risk, confirmed compromised, confirmed safe, dismissed, or remediated.
+- Real-time and aggregate risk levels associated with sign-in attempts.
+- Detection types triggered
+- Conditional Access policies applied
+- MFA details
+- Device information
 - Informace o aplikaci
-- Informace o poloze
+- Location information
 
-Správci se pak mohou rozhodnout, že budou provádět akce s těmito událostmi. Správci se můžou rozhodnout:
+Administrators can then choose to take action on these events. Administrators can choose to:
 
-- Potvrdit ohrožení při přihlašování
-- Potvrzení bezpečného přihlášení
+- Confirm sign-in compromise
+- Confirm sign-in safe
 
 ## <a name="risk-detections"></a>Detekce rizik
 
-Sestava zjišťování rizik obsahuje data, která lze filtrovat až do posledních 90 dní (3 měsíce).
+The risk detections report contains filterable data for up to the past 90 days (3 months).
 
-Pomocí informací poskytnutých sestavou zjišťování rizik můžou správci najít:
+With the information provided by the risk detections report, administrators can find:
 
-- Informace o každém zjišťování rizik včetně typu.
-- Další rizika aktivované ve stejnou dobu
-- Umístění pokusu o přihlášení
-- Odkaz na Další informace z Microsoft Cloud App Security (MCAS).
+- Information about each risk detection including type.
+- Other risks triggered at the same time
+- Sign-in attempt location
+- Link out to more detail from Microsoft Cloud App Security (MCAS).
 
-Správci se pak mohou rozhodnout, že se vrátí do sestavy rizika nebo přihlášení uživatele, aby mohli provádět akce založené na shromažďovaných informacích.
+Administrators can then choose to return to the user's risk or sign-ins report to take actions based on information gathered.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dostupné zásady pro zmírnění rizik](concept-identity-protection-policies.md)
+- [Policies available to mitigate risks](concept-identity-protection-policies.md)
 
-- [Povolit přihlašování a zásady rizik uživatelů](howto-identity-protection-configure-risk-policies.md)
+- [Enable sign-in and user risk policies](howto-identity-protection-configure-risk-policies.md)

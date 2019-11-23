@@ -1,188 +1,188 @@
 ---
-title: Rychlý Start – vyžaduje vícefaktorové ověřování (MFA) pro konkrétní aplikace s Azure Active Directory podmíněný přístup | Microsoft Docs
-description: V tomto rychlém startu se dozvíte, jak můžete své požadavky na ověřování spojit s typem cloudové aplikace, ke které se přistupuje pomocí podmíněného přístupu Azure Active Directory (Azure AD).
+title: Require Azure MFA with Conditional Access -Azure Active Directory
+description: In this quickstart, you learn how you can tie your authentication requirements to the type of accessed cloud app using Azure Active Directory (Azure AD) Conditional Access.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 01/30/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a23f8fc10e0e5a19be1f93cc6d6e5e8e301f86d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55c9188a1320b92aafa5fc67a253b42b6b107711
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474024"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381083"
 ---
-# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Rychlý Start: vyžadování MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup
+# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Quickstart: Require MFA for specific apps with Azure Active Directory Conditional Access
 
-Chcete-li zjednodušit přihlašování uživatelů, můžete jim dovolit, aby se k vašim cloudovým aplikacím přihlásili pomocí uživatelského jména a hesla. Mnoho prostředí ale má alespoň několik aplikací, pro které se doporučuje vyžadovat silnější formu ověření účtu, jako je vícefaktorové ověřování (MFA). Tato zásada může platit pro přístup k e-mailovým systémům vaší organizace nebo k vašim aplikacím na HR. V Azure Active Directory (Azure AD) můžete tento cíl dosáhnout pomocí zásad podmíněného přístupu.
+To simplify the sign in experience of your users, you might want to allow them to sign in to your cloud apps using a user name and a password. However, many environments have at least a few apps for which it is advisable to require a stronger form of account verification, such as multi-factor authentication (MFA). This policy might be true for access to your organization's email system or your HR apps. In Azure Active Directory (Azure AD), you can accomplish this goal with a Conditional Access policy.
 
-V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md) , které pro vybranou cloudovou aplikaci ve vašem prostředí vyžadují službu Multi-Factor Authentication.
+This quickstart shows how to configure an [Azure AD Conditional Access policy](../active-directory-conditional-access-azure-portal.md) that requires multi-factor authentication for a selected cloud app in your environment.
 
-![Příklad zásad podmíněného přístupu v Azure Portal](./media/app-based-mfa/32.png)
+![Example Conditional Access policy in the Azure portal](./media/app-based-mfa/32.png)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-K dokončení scénáře v tomto rychlém startu budete potřebovat:
+To complete the scenario in this quickstart, you need:
 
-- **Přístup k edici Azure AD Premium** – podmíněný přístup Azure AD je Azure AD Premium funkce.
-- **Testovací účet s názvem Isabella Simonsen** – Pokud nevíte, jak vytvořit testovací účet, podívejte se na téma [Přidání cloudových uživatelů](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Access to an Azure AD Premium edition** - Azure AD Conditional Access is an Azure AD Premium capability.
+- **A test account called Isabella Simonsen** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
-Scénář v tomto rychlém startu vyžaduje, aby pro váš zkušební účet nebyla povolena MFA pro jednotlivé uživatele. Další informace najdete v tématu [jak pro uživatele vyžadovat dvoustupňové ověřování](../authentication/howto-mfa-userstates.md).
+The scenario in this quickstart requires that per user MFA is not enabled for your test account. For more information, see [How to require two-step verification for a user](../authentication/howto-mfa-userstates.md).
 
-## <a name="test-your-experience"></a>Vyzkoušejte si prostředí
+## <a name="test-your-experience"></a>Test your experience
 
-Cílem tohoto kroku je získat dojem o prostředí bez zásad podmíněného přístupu.
+The goal of this step is to get an impression of the experience without a Conditional Access policy.
 
-**Postup při inicializaci prostředí:**
+**To initialize your environment:**
 
-1. Přihlaste se k vašemu Azure Portal jako Isabella Simonsen.
+1. Sign in to your Azure portal as Isabella Simonsen.
 1. Odhlaste se.
 
-## <a name="create-your-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
+## <a name="create-your-conditional-access-policy"></a>Create your Conditional Access policy
 
-V této části se dozvíte, jak vytvořit požadované zásady podmíněného přístupu. Scénář v tomto rychlém startu používá:
+This section shows how to create the required Conditional Access policy. The scenario in this quickstart uses:
 
-- Azure Portal jako zástupný symbol pro cloudovou aplikaci, která vyžaduje MFA. 
-- Ukázkový uživatel, který otestuje zásady podmíněného přístupu.  
+- The Azure portal as placeholder for a cloud app that requires MFA. 
+- Your sample user to test the Conditional Access policy.  
 
-V zásadách nastavte:
+In your policy, set:
 
 | Nastavení | Hodnota |
 | --- | --- |
 | Uživatelé a skupiny | Isabella Simonsen |
-| Cloudové aplikace | Správa Microsoft Azure |
-| Udělení přístupu | Vyžadovat Multi-Factor Authentication |
+| Cloud apps | Microsoft Azure Management |
+| Udělení přístupu | Require multi-factor authentication |
 
-![Rozšířené zásady podmíněného přístupu](./media/app-based-mfa/31.png)
+![Expanded Conditional Access policy](./media/app-based-mfa/31.png)
 
-**Konfigurace zásad podmíněného přístupu:**
+**To configure your Conditional Access policy:**
 
-1. Přihlaste se ke svému [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
+1. Sign in to your [Azure portal](https://portal.azure.com) as global administrator, security administrator, or a Conditional Access administrator.
+1. In the Azure portal, search for and select **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-1. Na stránce **Azure Active Directory** v části **zabezpečení** klikněte na **podmíněný přístup**.
+1. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
 
    ![Podmíněný přístup](./media/app-based-mfa/03.png)
 
-1. Na stránce **podmíněný přístup** klikněte na panelu nástrojů v horní části na **nové zásady**.
+1. On the **Conditional Access** page, in the toolbar on the top, click **New policy**.
 
    ![Přidat](./media/app-based-mfa/04.png)
 
-1. Na **nové** stránce zadejte do textového pole **název** **požadavek MFA pro přístup Azure Portal**.
+1. On the **New** page, in the **Name** textbox, type **Require MFA for Azure portal access**.
 
    ![Name (Název)](./media/app-based-mfa/05.png)
 
-1. V části **přiřazení** klikněte na **Uživatelé a skupiny**.
+1. In the **Assignment** section, click **Users and groups**.
 
    ![Uživatelé a skupiny](./media/app-based-mfa/06.png)
 
-1. Na stránce **Uživatelé a skupiny** proveďte následující kroky:
+1. On the **Users and groups** page, perform the following steps:
 
    ![Uživatelé a skupiny](./media/app-based-mfa/24.png)
 
-   1. Klikněte na **Vybrat uživatele a skupiny**a pak vyberte **Uživatelé a skupiny**.
+   1. Click **Select users and groups**, and then select **Users and groups**.
    1. Klikněte na **Vybrat**.
-   1. Na stránce **Vybrat** vyberte **Isabella Simonsen**a pak klikněte na **Vybrat**.
-   1. Na stránce **Uživatelé a skupiny** klikněte na **Hotovo**.
+   1. On the **Select** page, select **Isabella Simonsen**, and then click **Select**.
+   1. On the **Users and groups** page, click **Done**.
 
-1. Klikněte na **cloudové aplikace**.
+1. Click **Cloud apps**.
 
-   ![Cloudové aplikace](./media/app-based-mfa/08.png)
+   ![Cloud apps](./media/app-based-mfa/08.png)
 
-1. Na stránce **cloudové aplikace** proveďte následující kroky:
+1. On the **Cloud apps** page, perform the following steps:
 
-   ![Vybrat cloudové aplikace](./media/app-based-mfa/26.png)
+   ![Select cloud apps](./media/app-based-mfa/26.png)
 
-   1. Klikněte na **vybrat aplikace**.
+   1. Click **Select apps**.
    1. Klikněte na **Vybrat**.
-   1. Na stránce **Vybrat** vyberte **Microsoft Azure Management**a pak klikněte na **Vybrat**.
-   1. Na stránce **cloudové aplikace** klikněte na **Hotovo**.
+   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
+   1. On the **Cloud apps** page, click **Done**.
 
-1. V části **řízení přístupu** klikněte na **udělit**.
+1. In the **Access controls** section, click **Grant**.
 
-   ![Řízení přístupu](./media/app-based-mfa/10.png)
+   ![Access controls](./media/app-based-mfa/10.png)
 
-1. Na stránce **udělení** proveďte následující kroky:
+1. On the **Grant** page, perform the following steps:
 
-   ![Udělit](./media/app-based-mfa/11.png)
+   ![Grant](./media/app-based-mfa/11.png)
 
-   1. Vyberte **udělit přístup**.
-   1. Vyberte **vyžadovat službu Multi-Factor Authentication**.
+   1. Select **Grant access**.
+   1. Select **Require multi-factor authentication**.
    1. Klikněte na **Vybrat**.
 
-1. V části **Povolit zásady** klikněte **na zapnuto**.
+1. In the **Enable policy** section, click **On**.
 
-   ![Povolit zásadu](./media/app-based-mfa/18.png)
+   ![Enable policy](./media/app-based-mfa/18.png)
 
 1. Klikněte na **Vytvořit**.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnotit simulované přihlašování
+## <a name="evaluate-a-simulated-sign-in"></a>Evaluate a simulated sign in
 
-Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít zjistit, jestli funguje podle očekávání. Jako první krok použijte nástroj Zásady podmíněného přístupu, který je v případě, že chcete simulovat přihlašování testovacího uživatele. Simulace odhadne dopad tohoto přihlášení na vaše zásady a vygeneruje sestavu simulace.  
+Now that you have configured your Conditional Access policy, you probably want to know whether it works as expected. As a first step, use the Conditional Access what if policy tool to simulate a sign in of your test user. The simulation estimates the impact this sign in has on your policies and generates a simulation report.  
 
-Pro inicializaci nástroje pro vyhodnocování zásad **What If** nastavte:
+To initialize the **What If** policy evaluation tool, set:
 
-- **Isabella Simonsen** jako uživatel
-- **Správa Microsoft Azure** jako cloudová aplikace
+- **Isabella Simonsen** as user
+- **Microsoft Azure Management** as cloud app
 
-Kliknutím na **What If** se vytvoří sestava simulace, která zobrazuje:
+Clicking **What If** creates a simulation report that shows:
 
-- **Vyžadovat vícefaktorové ověřování pro přístup k Azure Portal** v rámci **zásad, které se použijí**
-- **Vyžadovat službu Multi-Factor Authentication** jako **udělení ovládacích prvků**.
+- **Require MFA for Azure portal access** under **Policies that will apply**
+- **Require multi-factor authentication** as **Grant Controls**.
 
-![Nástroj Policy if](./media/app-based-mfa/23.png)
+![What if policy tool](./media/app-based-mfa/23.png)
 
-**Vyhodnocení zásad podmíněného přístupu:**
+**To evaluate your Conditional Access policy:**
 
-1. Na stránce [zásady podmíněného přístupu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) klikněte v nabídce v horní části na **What If**.  
+1. On the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page, in the menu on the top, click **What If**.  
 
-   ![Co když](./media/app-based-mfa/14.png)
+   ![What If](./media/app-based-mfa/14.png)
 
-1. Klikněte na **Uživatelé**, vyberte **Isabella Simonsen**a pak klikněte na **Vybrat**.
+1. Click **Users**, select **Isabella Simonsen**, and then click **Select**.
 
    ![Uživatel](./media/app-based-mfa/15.png)
 
-1. Pokud chcete vybrat cloudovou aplikaci, proveďte následující kroky:
+1. To select a cloud app, perform the following steps:
 
-   ![Cloudové aplikace](./media/app-based-mfa/16.png)
+   ![Cloud apps](./media/app-based-mfa/16.png)
 
-   1. Klikněte na **cloudové aplikace**.
-   1. Na **stránce cloudové aplikace**klikněte na **vybrat aplikace**.
+   1. Click **Cloud apps**.
+   1. On the **Cloud apps page**, click **Select apps**.
    1. Klikněte na **Vybrat**.
-   1. Na stránce **Vybrat** vyberte **Microsoft Azure Management**a pak klikněte na **Vybrat**.
-   1. Na stránce cloudové aplikace klikněte na **Hotovo**.
+   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
+   1. On the cloud apps page, click **Done**.
 
-1. Klikněte na **What If**.
+1. Click **What If**.
 
-## <a name="test-your-conditional-access-policy"></a>Testování zásad podmíněného přístupu
+## <a name="test-your-conditional-access-policy"></a>Test your Conditional Access policy
 
-V předchozí části jste se dozvěděli, jak vyhodnotit simulované přihlašování. Kromě simulace byste měli také otestovat zásady podmíněného přístupu, aby se zajistilo, že funguje podle očekávání.
+In the previous section, you have learned how to evaluate a simulated sign in. In addition to a simulation, you should also test your Conditional Access policy to ensure that it works as expected.
 
-Pokud chcete zásady otestovat, zkuste se přihlásit ke svému [Azure Portal](https://portal.azure.com) pomocí účtu testování **Simonsen Isabella** . Mělo by se zobrazit dialogové okno, které vyžaduje, abyste si nastavili účet pro další ověření zabezpečení.
+To test your policy, try to sign in to your [Azure portal](https://portal.azure.com) using your **Isabella Simonsen** test account. You should see a dialog that requires you to set up your account for additional security verification.
 
 ![Multi-Factor Authentication](./media/app-based-mfa/22.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte testovacího uživatele a zásadu podmíněného přístupu:
+When no longer needed, delete the test user and the Conditional Access policy:
 
-- Pokud nevíte, jak odstranit uživatele Azure AD, přečtěte si téma [odstranění uživatelů ze služby Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- Pokud chcete zásadu odstranit, vyberte zásadu a pak na panelu nástrojů Rychlý přístup klikněte na **Odstranit** .
+- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
+- To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
 
     ![Multi-Factor Authentication](./media/app-based-mfa/33.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vyžadovat, aby byly podmínkami použití přijaty](require-tou.md)
-> [blokovat přístup, když se zjistí riziko relace](app-sign-in-risk.md)
+> [Require terms of use to be accepted](require-tou.md)
+> [Block access when a session risk is detected](app-sign-in-risk.md)
